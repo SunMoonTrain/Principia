@@ -5,12 +5,15 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router';
 import { App } from './App';
 import { ContentProvider } from './content/ContentContext';
+import { ProgressProvider } from './progress/ProgressContext';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <ContentProvider>
-        <App />
+        <ProgressProvider>
+          <App />
+        </ProgressProvider>
       </ContentProvider>
     </BrowserRouter>
   </StrictMode>,

@@ -6,6 +6,7 @@ import { useEffect, useLayoutEffect, type ReactNode } from 'react';
 import { Link, useLocation, useParams } from 'react-router';
 import type { GraphLesson, LessonContent, Rich as RichValue, Tier } from '../../shared/content-types';
 import { lessonPath } from '../../shared/ids';
+import { localTimestamp } from '../../shared/progress';
 import { SectionKindContext } from '../components/AnchorBlock';
 import { LessonSidebar, type OutlineItem } from '../components/LessonSidebar';
 import { ProblemCard } from '../components/ProblemCard';
@@ -13,6 +14,7 @@ import { StatusBadge } from '../components/StatusBadge';
 import { useContent, useDomainPack } from '../content/ContentContext';
 import { LessonContext } from '../content/LessonContext';
 import { Rich } from '../content/Rich';
+import { useProgress } from '../progress/ProgressContext';
 import { subjectTitle } from '../subjects';
 import { NotFoundPage } from './NotFoundPage';
 
@@ -103,6 +105,46 @@ function SectionNav({ outline }: { outline: OutlineItem[] }) {
   );
 }
 
+/** 「11 月 8 日 16:10」 */
+function shortTime(at: string | undefined): string {
+  if (!at) return '';
+  const d = new Date(at);
+  return `${d.getMonth() + 1} 月 ${d.getDate()} 日 ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+}
+
+/** 页尾的「这节学完了」，可以撤销。 */
+function LessonDone({ lesson }: { lesson: GraphLesson }) {
+  const progress = useProgress();
+  const record = progress.state.lessons[lesson.id];
+  const done = record?.status === 'completed';
+  const set = (status: 'completed' | 'none'): void =>
+    progress.dispatch({ type: 'lesson-status', lesson: lesson.id, status, at: localTimestamp() });
+  return (
+    <section className={done ? 'lesson-done lesson-done-yes' : 'lesson-done'} aria-label="学完这一节">
+      {done ? (
+        <>
+          <span className="lesson-done-text">
+            <span className="lesson-done-check" aria-hidden="true">
+              ✓
+            </span>
+            这节学完了<span className="lesson-done-time">（{shortTime(record.statusAt)}）</span>
+          </span>
+          <button type="button" className="giveup-button" onClick={() => set('none')}>
+            撤销
+          </button>
+        </>
+      ) : (
+        <>
+          <span className="lesson-done-text">讲解读完、题做完了，就标记一下。</span>
+          <button type="button" className="answer-submit" onClick={() => set('completed')}>
+            这节学完了
+          </button>
+        </>
+      )}
+    </section>
+  );
+}
+
 function WrittenLesson({ lesson, content }: { lesson: GraphLesson; content: LessonContent }) {
   const { sections } = content;
   return (
@@ -154,6 +196,7 @@ function WrittenLesson({ lesson, content }: { lesson: GraphLesson; content: Less
           ))}
         </div>
       </Section>
+      <LessonDone lesson={lesson} />
     </>
   );
 }
@@ -221,6 +264,16 @@ export function LessonPage() {
   const ready = !!lesson && (lesson.status === 'outline' || !!content);
   useScrollToHash(ready);
 
+  // 记下第一次打开这一节的时间（只记写好了的小节）
+  const progress = useProgress();
+  const startedAt = progress.state.lessons[id]?.startedAt;
+  const writtenLesson = !!lesson && lesson.status !== 'outline';
+  const { dispatch, ready: progressReady } = progress;
+  useEffect(() => {
+    if (progressReady && writtenLesson && !startedAt) dispatch({ type: 'lesson-open', lesson: id, at: localTimestamp() });
+  }, [progressReady, writtenLesson, startedAt, id, dispatch]);
+  const done = progress.state.lessons[id]?.status === 'completed';
+
   useEffect(() => {
     if (lesson) document.title = `${lesson.titleText} · Principia`;
     return () => {
@@ -249,6 +302,7 @@ export function LessonPage() {
             <h1 className="lesson-title">
               <Rich value={lesson.title} />
               <StatusBadge status={lesson.status} />
+              {done && <span className="badge badge-done">已学完</span>}
             </h1>
             <div className="lesson-meta">
               <span>层级 {lesson.level}</span>

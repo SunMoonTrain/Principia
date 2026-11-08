@@ -25,6 +25,7 @@
     "vitest.config.ts",
     "compiler",
     "shared",
-    "tools"
+    "tools",
+    "server"
   ]
 }

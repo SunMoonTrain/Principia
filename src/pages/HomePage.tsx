@@ -5,10 +5,12 @@ import { lessonPath } from '../../shared/ids';
 import { StatusBadge } from '../components/StatusBadge';
 import { useContent } from '../content/ContentContext';
 import { Rich } from '../content/Rich';
+import { useProgress } from '../progress/ProgressContext';
 import { subjectTitle } from '../subjects';
 
 export function HomePage() {
   const { graph, error } = useContent();
+  const progress = useProgress();
   if (error && !graph) return <p className="page-message">读不到内容：{error}。先运行 npm run dev（会自动编译 content/）。</p>;
   if (!graph) return <p className="page-message">正在读取内容…</p>;
 
@@ -44,6 +46,7 @@ export function HomePage() {
                             <Rich value={lesson.summary ?? lesson.goal} />
                           </span>
                         </span>
+                        {progress.state.lessons[lesson.id]?.status === 'completed' && <span className="badge badge-done">已学完</span>}
                         <StatusBadge status={lesson.status} />
                       </li>
                     ))}

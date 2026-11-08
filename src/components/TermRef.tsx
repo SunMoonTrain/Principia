@@ -23,7 +23,7 @@ import { lessonPath } from '../../shared/ids';
 import { useContent } from '../content/ContentContext';
 import { useLessonContext } from '../content/LessonContext';
 import { Rich } from '../content/Rich';
-import { useProgress } from '../progress/useProgress';
+import { useProgress } from '../progress/ProgressContext';
 
 function TermCard({ term, onNavigate }: { term: TermEntry; onNavigate: () => void }) {
   const { lessons } = useContent();

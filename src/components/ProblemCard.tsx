@@ -4,9 +4,18 @@
 import { useState, type FormEvent } from 'react';
 import type { Answer, Problem, Tier } from '../../shared/content-types';
 import { judgeChoice, judgeNumeric, type Verdict } from '../../shared/judge';
+import {
+  firstResult,
+  hintsBeforeFirstCorrect,
+  hintsShown,
+  localTimestamp,
+  solutionUnlocked,
+  solvedBeforeGivingUp,
+  type AttemptResult,
+} from '../../shared/progress';
 import { useLessonContext } from '../content/LessonContext';
 import { Rich } from '../content/Rich';
-import { firstResult, practiceKey, recordAttempt, revealHint, solutionUnlocked, solvedBeforeGivingUp, usePractice } from '../practice/store';
+import { newId, useProgress } from '../progress/ProgressContext';
 
 const TIER_LABELS: Record<Tier, string> = { easy: '简单', medium: '中等', hard: '难', thinking: '思考' };
 const HINT_NAMES = ['方向', '关键步骤', '完整解答'];
@@ -44,7 +53,7 @@ interface Feedback {
 }
 
 /** 判完一次：格式错误只提示；判了对错就记一次作答。 */
-function useSubmit(key: string): [Feedback | null, (input: string, verdict: Verdict) => void, (f: Feedback) => void] {
+function useSubmit(record: (input: string, result: AttemptResult) => void): [Feedback | null, (input: string, verdict: Verdict) => void, (f: Feedback) => void] {
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const submit = (input: string, verdict: Verdict): void => {
     const nonce = Date.now();
@@ -52,7 +61,7 @@ function useSubmit(key: string): [Feedback | null, (input: string, verdict: Verd
       setFeedback({ kind: 'format', text: `${verdict.message}（这次不算作答）`, nonce });
       return;
     }
-    recordAttempt(key, input, verdict.correct ? 'correct' : 'wrong');
+    record(input, verdict.correct ? 'correct' : 'wrong');
     setFeedback(verdict.correct ? { kind: 'correct', text: '对了！', nonce } : { kind: 'wrong', text: '不对，再想想。', nonce });
   };
   return [feedback, submit, setFeedback];
@@ -157,17 +166,25 @@ function FirstResultBadge({ result }: { result: ReturnType<typeof firstResult> }
 
 export function ProblemCard({ problem, index }: { problem: Problem; index: number }) {
   const { lessonId } = useLessonContext();
-  const key = practiceKey(lessonId ?? '', problem.id);
-  const practice = usePractice(key);
-  const [feedback, submit, setFeedback] = useSubmit(key);
+  const lesson = lessonId ?? '';
+  const progress = useProgress();
+  const record = progress.state.problems[lesson]?.[problem.id];
+  const shown = hintsShown(record);
+  const recordAttempt = (input: string, result: AttemptResult): void =>
+    progress.dispatch({ type: 'attempt', lesson, problem: problem.id, attempt: { id: newId(), at: localTimestamp(), input, result } });
+  const revealHint = (): void => {
+    if (shown < 3) progress.dispatch({ type: 'hint', lesson, problem: problem.id, level: (shown + 1) as 1 | 2 | 3, at: localTimestamp() });
+  };
+  const [feedback, submit, setFeedback] = useSubmit(recordAttempt);
   const [confirmGiveUp, setConfirmGiveUp] = useState(false);
   const a = problem.answer;
-  const unlocked = solutionUnlocked(practice);
+  const unlocked = solutionUnlocked(record);
   // 放弃看过解答之后再答对的，不说「没看提示就答对了」
-  const solved = solvedBeforeGivingUp(practice);
+  const solved = solvedBeforeGivingUp(record);
+  const hintsBefore = hintsBeforeFirstCorrect(record);
 
   const giveUp = (): void => {
-    recordAttempt(key, '', 'gave-up');
+    recordAttempt('', 'gave-up');
     setConfirmGiveUp(false);
     setFeedback({ kind: 'gave-up', text: '已放弃，看看下面的解答。', nonce: Date.now() });
   };
@@ -178,7 +195,7 @@ export function ProblemCard({ problem, index }: { problem: Problem; index: numbe
         <span className={`tier tier-${problem.tier}`}>{TIER_LABELS[problem.tier]}</span>
         <span className="problem-number">第 {index + 1} 题</span>
         <span className="problem-kind">{answerKind(problem)}</span>
-        {a && <FirstResultBadge result={firstResult(practice)} />}
+        {a && <FirstResultBadge result={firstResult(record)} />}
       </header>
       <div className="problem-statement">
         <Rich value={problem.statement} />
@@ -189,7 +206,7 @@ export function ProblemCard({ problem, index }: { problem: Problem; index: numbe
       <FeedbackLine feedback={feedback} />
 
       <div className="hints">
-        {problem.hints.slice(0, practice.hintsShown).map((hint, i) => (
+        {problem.hints.slice(0, shown).map((hint, i) => (
           <div key={i} className="hint">
             <div className="hint-label">
               提示 {i + 1} · {HINT_NAMES[i]}
@@ -200,9 +217,9 @@ export function ProblemCard({ problem, index }: { problem: Problem; index: numbe
           </div>
         ))}
         <div className="problem-actions">
-          {practice.hintsShown < 3 && (
-            <button type="button" className="hint-button" onClick={() => revealHint(key)}>
-              看提示 {practice.hintsShown + 1}：{HINT_NAMES[practice.hintsShown]}
+          {shown < 3 && (
+            <button type="button" className="hint-button" onClick={revealHint}>
+              看提示 {shown + 1}：{HINT_NAMES[shown]}
             </button>
           )}
           {a && !unlocked && !confirmGiveUp && (
@@ -230,7 +247,7 @@ export function ProblemCard({ problem, index }: { problem: Problem; index: numbe
             解答
             {solved && (
               <span className="solution-note">
-                {practice.hintsBeforeCorrect ? `答对前看了 ${practice.hintsBeforeCorrect} 级提示` : '没看提示就答对了'}
+                {hintsBefore ? `答对前看了 ${hintsBefore} 级提示` : '没看提示就答对了'}
               </span>
             )}
           </div>

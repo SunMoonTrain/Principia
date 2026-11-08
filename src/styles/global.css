@@ -150,6 +150,80 @@ code {
   gap: 8px;
 }
 
+/* 存档按钮和进度服务的连接状态 */
+.archive {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.archive-button {
+  padding: 5px 14px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.archive-button:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.archive-button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.sync-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.sync-offline {
+  color: var(--warn);
+}
+
+.sync-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.archive-notice {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 30;
+  width: max-content;
+  max-width: min(420px, calc(100vw - 32px));
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.archive-notice-ok {
+  border-color: color-mix(in srgb, var(--good) 45%, var(--border));
+  color: var(--good);
+}
+
+.archive-notice-error {
+  border-color: color-mix(in srgb, var(--danger) 45%, var(--border));
+  color: var(--danger);
+}
+
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -233,6 +307,42 @@ code {
 .badge-unreviewed {
   background: color-mix(in srgb, var(--warn) 16%, transparent);
   color: var(--warn);
+}
+
+.badge-done {
+  background: color-mix(in srgb, var(--good) 16%, transparent);
+  color: var(--good);
+}
+
+/* 页尾的「这节学完了」 */
+.lesson-done {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin-top: 40px;
+  padding: 14px 20px;
+  border: 1.5px dashed var(--border);
+  border-radius: 14px;
+  color: var(--text-soft);
+}
+
+.lesson-done-yes {
+  border-style: solid;
+  border-color: color-mix(in srgb, var(--good) 45%, var(--border));
+  background: color-mix(in srgb, var(--good) 8%, var(--surface));
+  color: var(--good);
+  font-weight: 600;
+}
+
+.lesson-done-check {
+  margin-right: 6px;
+}
+
+.lesson-done-time {
+  color: var(--muted);
+  font-weight: 400;
 }
 
 /* ---------- 首页 ---------- */

@@ -1,4 +1,5 @@
 import { Link, Route, Routes } from 'react-router';
+import { ArchiveButton } from './components/ArchiveButton';
 import { BuildStatusBanner } from './components/BuildStatusBanner';
 import { ThemeToggle } from './components/ThemeToggle';
 import { HomePage } from './pages/HomePage';
@@ -15,6 +16,7 @@ export function App() {
             Principia
           </Link>
           <div className="topbar-actions">
+            <ArchiveButton />
             <ThemeToggle />
           </div>
         </div>
