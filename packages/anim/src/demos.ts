@@ -1,0 +1,118 @@
+// 组件画廊的演示：参数和小节里 :::anim 块的写法一样。不带 React，编译器的测试拿它检查每个演示的写法都能通过构建。
+
+export interface Demo {
+  component: string;
+  title: string;
+  /** 看什么。 */
+  note: string;
+  params: Record<string, unknown>;
+}
+
+export const DEMOS: Demo[] = [
+  {
+    component: 'function-plot',
+    title: 'FunctionPlot · 数列的极限',
+    note: '拖动 ε，看 aₙ 从第几项起超过 1 − ε。鼠标移到图上，图例里显示那一项的值。',
+    params: {
+      range: { x: [0, 41], y: [0, 1.1] },
+      functions: [{ expr: '1 - eps', label: '$y=1-\\varepsilon$' }],
+      sequences: [{ expr: '1 - 1/n', n: [1, 40], label: '$a_n=1-\\frac{1}{n}$' }],
+      sliders: [{ name: 'eps', min: 0.02, max: 0.5, step: 0.01, default: 0.2, label: '$\\varepsilon$' }],
+    },
+  },
+  {
+    component: 'function-plot',
+    title: 'FunctionPlot · 切线',
+    note: '拖动 a，切点和切线跟着动；a = ±1/√3 ≈ ±0.58 时切线是水平的。',
+    params: {
+      range: { x: [-2, 2], y: [-1.5, 1.5] },
+      functions: [
+        { expr: 'x^3 - x', label: '$y=x^3-x$' },
+        { expr: '(a^3 - a) + (3*a^2 - 1)*(x - a)', label: '在$x=a$处的切线' },
+      ],
+      points: [{ x: 'a', y: 'a^3 - a' }],
+      sliders: [{ name: 'a', min: -1.5, max: 1.5, step: 0.05, default: 0.9, label: '切点$a$' }],
+    },
+  },
+  {
+    component: 'phase-portrait',
+    title: 'PhasePortrait · 有阻尼的单摆',
+    note: 'x 是摆角，y 是角速度。b = 0 时轨迹是闭合曲线（周期运动）；b > 0 时盘旋着落向平衡点。在图上点一下，从那里放一条新轨迹。',
+    params: {
+      system: { x: 'y', y: '-sin(x) - b*y' },
+      range: { x: [-6.3, 6.3], y: [-3, 3] },
+      dt: 0.01,
+      initial: [
+        [1, 0],
+        [3, 0],
+      ],
+      sliders: [{ name: 'b', min: 0, max: 1, step: 0.05, default: 0.2, label: '阻尼系数$b$' }],
+    },
+  },
+  {
+    component: 'vector-field-2d',
+    title: 'VectorField2D · 旋转加伸缩',
+    note: 'a = 0 时是纯旋转，粒子绕圈；a < 0 时螺旋着收向原点，a > 0 时螺旋着向外散开。',
+    params: {
+      field: { x: 'a*x - y', y: 'x + a*y' },
+      range: { x: [-3, 3], y: [-3, 3] },
+      dt: 0.02,
+      particles: 300,
+      sliders: [{ name: 'a', min: -0.5, max: 0.5, step: 0.05, default: -0.15, label: '$a$' }],
+    },
+  },
+  {
+    component: 'oscillator',
+    title: 'Oscillator · 两个耦合振子',
+    note: '只拉开左边的物块再放手。中间的弹簧弱（k 小）时，振动在两个物块之间来回转移（拍）；k 越大，转移得越快。',
+    params: {
+      masses: [1, 1],
+      springs: [1, 'k', 1],
+      initial: [1, 0],
+      dt: 0.01,
+      sliders: [{ name: 'k', min: 0.05, max: 2, step: 0.05, default: 0.3, label: '中间弹簧的劲度系数$k$' }],
+    },
+  },
+  {
+    component: 'oscillator',
+    title: 'Oscillator · 有阻尼的单个振子',
+    note: '右端的弹簧写 0，不连墙。c 小时振幅慢慢衰减；c = 4（临界阻尼，2√(km)）附近不再来回振动。',
+    params: {
+      masses: [1],
+      springs: [4, 0],
+      damping: 'c',
+      initial: [1],
+      dt: 0.01,
+      sliders: [{ name: 'c', min: 0, max: 6, step: 0.1, default: 0.4, label: '阻尼系数$c$' }],
+    },
+  },
+];
+
+function flow(v: unknown): string {
+  if (typeof v === 'string') return JSON.stringify(v);
+  if (Array.isArray(v)) return `[${v.map(flow).join(', ')}]`;
+  if (v && typeof v === 'object') return `{ ${Object.entries(v).map(([k, x]) => `${k}: ${flow(x)}`).join(', ')} }`;
+  return String(v);
+}
+
+/** 演示写回小节里的写法：对象列表逐项展开，label 用块写法 |，其余用流式写法。 */
+export function demoSource(demo: Demo): string {
+  const lines = [`:::anim{component="${demo.component}"}`];
+  for (const [key, value] of Object.entries(demo.params)) {
+    const objects = Array.isArray(value) && value.some((x) => x && typeof x === 'object' && !Array.isArray(x));
+    if (!objects) {
+      lines.push(`${key}: ${flow(value)}`);
+      continue;
+    }
+    lines.push(`${key}:`);
+    for (const item of value as Record<string, unknown>[]) {
+      Object.entries(item).forEach(([k, x], i) => {
+        const prefix = i === 0 ? '  - ' : '    ';
+        if (k === 'label') lines.push(`${prefix}label: |`, `      ${String(x)}`);
+        else lines.push(`${prefix}${k}: ${k === 'name' ? String(x) : flow(x)}`);
+      });
+    }
+  }
+  lines.push(':::');
+  return lines.join('\n');
+}

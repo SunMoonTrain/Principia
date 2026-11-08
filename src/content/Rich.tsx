@@ -5,7 +5,7 @@ import { useMemo, type ReactNode } from 'react';
 import { Fragment, jsx, jsxs } from 'react/jsx-runtime';
 import type { Rich as RichValue } from '../../shared/content-types';
 import { AnchorBlock } from '../components/AnchorBlock';
-import { AnimPlaceholder } from '../components/AnimPlaceholder';
+import { AnimBlock, AnimLabel } from '../components/AnimBlock';
 import { ContentLink } from '../components/ContentLink';
 import { MathHtml } from '../components/MathHtml';
 import { TermRef } from '../components/TermRef';
@@ -17,7 +17,8 @@ function Plain({ children }: { children?: ReactNode }) {
 const components = {
   'x-math': MathHtml,
   'x-term': TermRef,
-  'x-anim': AnimPlaceholder,
+  'x-anim': AnimBlock,
+  'x-anim-label': AnimLabel,
   'x-anchor': AnchorBlock,
   a: ContentLink,
 } as unknown as Partial<Components>;

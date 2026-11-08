@@ -1002,6 +1002,286 @@ code {
   font-size: 14px;
 }
 
+/* ---------- 动画组件（packages/anim）：画面用 Canvas，颜色从上面的变量里取 ---------- */
+.anim {
+  margin: 0.6em 0 1.4em;
+  padding: 12px 14px 10px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.anim-loading {
+  min-height: 360px;
+  background: repeating-linear-gradient(-45deg, transparent 0 12px, var(--surface-2) 12px 13px);
+}
+
+.anim-stage {
+  position: relative;
+  width: 100%;
+}
+
+.anim-stage canvas {
+  display: block;
+  margin: 0 auto;
+  touch-action: manipulation;
+}
+
+.anim-clickable {
+  cursor: crosshair;
+}
+
+.anim-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 18px;
+  min-height: 1.7em;
+  margin: 6px 2px 0;
+  color: var(--text-soft);
+  font-size: 14.5px;
+}
+
+.anim-legend-header,
+.anim-legend-value {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 鼠标所在处的坐标放在最右边，出现、消失时不挤动图例 */
+.anim-legend-header {
+  order: 1;
+  margin-left: auto;
+}
+
+.anim-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.anim-swatch {
+  flex: none;
+}
+
+.anim-swatch-line {
+  width: 18px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.anim-swatch-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.anim-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 24px;
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.anim-sliders {
+  flex: 1 1 320px;
+  display: grid;
+  gap: 6px;
+}
+
+.anim-slider {
+  display: grid;
+  grid-template-columns: minmax(3em, max-content) minmax(120px, 1fr) 4em;
+  align-items: center;
+  gap: 12px;
+  font-size: 14.5px;
+}
+
+.anim-slider input[type='range'] {
+  width: 100%;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.anim-slider-value {
+  color: var(--text-soft);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.anim-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  margin-left: auto;
+}
+
+.anim-button {
+  padding: 4px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--accent);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.anim-button:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.anim-button-main {
+  min-width: 4.6em;
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.anim-speed {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.anim-speed select {
+  padding: 3px 6px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.anim-hint {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.anim-error {
+  margin: 8px 0;
+  padding: 10px 14px;
+  border: 1px solid var(--danger);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--danger);
+  font-size: 14px;
+}
+
+.anim-stage .anim-error {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  left: 12px;
+  margin: 0;
+}
+
+/* 组件画廊（/gallery） */
+.gallery-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 16px 96px;
+}
+
+.gallery-page h1 {
+  margin: 0 0 6px;
+  font-size: 30px;
+  line-height: 1.3;
+}
+
+.gallery-lead {
+  margin: 0 0 32px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.anim-demo {
+  margin: 0 0 44px;
+}
+
+.anim-demo h2 {
+  margin: 0 0 4px;
+  font-size: 20px;
+}
+
+.anim-demo-note {
+  margin: 0 0 10px;
+  color: var(--text-soft);
+  font-size: 15px;
+}
+
+.anim-demo-source summary {
+  color: var(--accent);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.anim-demo-source pre {
+  margin: 8px 0 0;
+  padding: 12px 14px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-2);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.anim-demo-source pre code {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: inherit;
+}
+
+.anim-checks {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+
+.anim-checks th,
+.anim-checks td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.anim-checks th {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.anim-checks td:nth-child(n + 2) {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.anim-check-pass {
+  color: var(--good);
+  font-weight: 600;
+}
+
+.anim-check-fail {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.home-footer {
+  margin: 40px 0 0;
+  color: var(--muted);
+  font-size: 14.5px;
+}
+
 /* ---------- 术语与浮窗 ---------- */
 .term {
   text-decoration-line: underline;

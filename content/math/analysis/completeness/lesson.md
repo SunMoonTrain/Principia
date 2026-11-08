@@ -66,10 +66,16 @@ $$
 图里实心的点是$A$的元素，它们越来越挤向$s=\sup A$，而$s$本身可以不属于$A$（画成空心圆）。$s$和它右边的数都是:term[上界]{id="math.analysis.upper-bound"}；在$s$左边任取一点$s-\varepsilon$，它和$s$之间总有$A$的元素，所以$s-\varepsilon$不是上界。
 
 :::anim{component="function-plot"}
+range: { x: [0, 41], y: [0, 1.1] }
 functions:
-  - "1 - 1/x"
-  - "1 - eps"
-range: { x: [1, 40], y: [0, 1.1] }
+  - expr: "1 - eps"
+    label: |
+      $y=1-\varepsilon$
+sequences:
+  - expr: "1 - 1/n"
+    n: [1, 40]
+    label: |
+      $a_n=1-\frac{1}{n}$
 sliders:
   - name: eps
     min: 0.02

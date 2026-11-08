@@ -1,3 +1,10 @@
-// 动画组件库：台阶 1 只建空包，组件从台阶 7 开始实现。
-// 约定见 docs/plan.md「可复用动画组件库」与「附录：动画组件参数」。
-export {};
+// 可复用动画组件库（docs/plan.md「可复用动画组件库」）。不依赖网站的任何代码；
+// 参数格式和检查在 specs.ts（编译器从 @principia/anim/specs 引入，不带 React）。
+
+export { FunctionPlot } from './FunctionPlot';
+export { Gallery } from './Gallery';
+export type { AnimProps } from './kit';
+export { Oscillator } from './Oscillator';
+export { PhasePortrait } from './PhasePortrait';
+export { ANIMATIONS } from './registry';
+export { VectorField2D } from './VectorField2D';

@@ -1,29 +1,36 @@
 // :::anim 动画组件块，见 docs/plan.md「可复用动画组件库」和「附录：动画组件参数」。
-// 台阶 1 还没有实现任何组件：附录里列了的组件只警告、页面显示占位框；附录里没有的名字直接报错。
-// 通用参数（sliders）的规则现在就检查；各组件的专有参数等台阶 7 实现组件时再补。
+// 已实现的组件（packages/anim 的 SPECS）查全部参数：结构、式子能不能编译、个数对不对；
+// 附录里列了但还没实现的组件只查通用参数（sliders），构建警告、页面显示占位框；附录里没有的名字直接报错。
+// 滑块标签和图例在这里排好版，作为 x-anim-label 子元素交给网站。
 
+import type { ElementContent } from 'hast';
 import { z } from 'zod';
+// 用相对路径而不是 @principia/anim/specs：vite.config.ts 加载内容插件时只打包相对路径引入的文件，
+// 包名引入的交给 Node 直接加载，而 Node 22 不认 .ts 文件
+import { SPECS } from '../packages/anim/src/specs.ts';
+import type { Rich } from '../shared/content-types.ts';
 import type { MdContext, MdNode } from './markdown.ts';
 import { renderField } from './markdown.ts';
+import { reportIssues } from './schema.ts';
 import { lineOf, parseYaml, textAt } from './yaml-text.ts';
 
-/** 附录「各组件」表里的组件；值是「状态变量」所在的参数名（滑块不能和状态变量重名）。 */
-export const ANIM_COMPONENTS: Record<string, { stateKey?: string }> = {
-  'phase-portrait': { stateKey: 'system' },
-  'function-plot': {},
-  'vector-field-2d': {},
-  oscillator: {},
-  'particle-motion': {},
-  'wave-1d': {},
-  'linear-map-2d': {},
-  'surface-3d': {},
-  'complex-map': {},
-  distribution: {},
-  construction: {},
-};
+/** 附录「各组件」表里的组件。 */
+export const ANIM_COMPONENTS = new Set([
+  'phase-portrait',
+  'function-plot',
+  'vector-field-2d',
+  'oscillator',
+  'particle-motion',
+  'wave-1d',
+  'linear-map-2d',
+  'surface-3d',
+  'complex-map',
+  'distribution',
+  'construction',
+]);
 
-/** 已经实现的组件（台阶 7 起由 packages/anim 提供）。 */
-export const IMPLEMENTED_COMPONENTS = new Set<string>();
+/** 已经实现的组件（由 packages/anim 提供）。 */
+export const IMPLEMENTED_COMPONENTS = new Set(Object.keys(SPECS));
 
 /** 滑块不能用的名字：时间变量 t，以及 math.js 的 e、pi、i、Infinity 和它们的大写形式。 */
 const RESERVED_NAMES = new Set(['t', 'e', 'pi', 'i', 'Infinity', 'E', 'PI', 'I', 'INFINITY']);
@@ -43,6 +50,11 @@ export interface AnimUse {
   line: number;
 }
 
+/** 排好版的一段文字，网站按 key 取（`slider:<名字>`、`function:<序号>` 等）。 */
+function labelElement(key: string, rich: Rich): ElementContent {
+  return { type: 'element', tagName: 'x-anim-label', properties: { dataKey: key }, children: rich.children as ElementContent[] };
+}
+
 export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
   const line = (node.position?.start.line ?? 1) + ctx.lineOffset;
   const attrs = node.attributes ?? {};
@@ -51,7 +63,7 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
     ctx.diags.error(ctx.file, line, '动画组件块缺 component，写法是 :::anim{component="phase-portrait"}');
     return null;
   }
-  if (!Object.hasOwn(ANIM_COMPONENTS, component)) {
+  if (!ANIM_COMPONENTS.has(component)) {
     ctx.diags.error(ctx.file, line, `没有叫「${component}」的动画组件；能用的组件见 plan.md「附录：动画组件参数」`);
     return null;
   }
@@ -76,13 +88,26 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
     return null;
   }
 
-  const stateKey = ANIM_COMPONENTS[component].stateKey;
-  const stateVars = stateKey && params[stateKey] && typeof params[stateKey] === 'object' ? Object.keys(params[stateKey] as object) : [];
+  // 专有参数的结构；结构对了才知道这个组件的变量名（滑块不能和它们重名）
+  const spec = SPECS[component];
+  let checked: unknown = null;
+  let reserved: string[] = [];
+  if (spec) {
+    const parsed = spec.schema.safeParse(params);
+    if (parsed.success) {
+      checked = parsed.data;
+      reserved = spec.reserved(checked as never);
+    } else {
+      reportIssues(y, parsed.error.issues, ctx.diags, [], (path) => `参数 ${path.join('.')}`);
+    }
+  }
+
+  const labels: ElementContent[] = [];
+  const sliderNames: string[] = [];
   if (params.sliders !== undefined) {
     if (!Array.isArray(params.sliders)) {
       ctx.diags.error(ctx.file, lineOf(y, ['sliders']), 'sliders 要写成列表');
     } else {
-      const seen = new Set<string>();
       params.sliders.forEach((raw, i) => {
         const parsed = Slider.safeParse(raw);
         if (!parsed.success) {
@@ -93,17 +118,31 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
         }
         const s = parsed.data;
         const at = lineOf(y, ['sliders', i, 'name']);
-        if (RESERVED_NAMES.has(s.name) || stateVars.includes(s.name)) {
-          ctx.diags.error(ctx.file, at, `滑块名「${s.name}」和时间变量 t、状态变量或 e、pi、i、Infinity（含大写）重名`);
+        if (RESERVED_NAMES.has(s.name)) {
+          ctx.diags.error(ctx.file, at, `滑块名「${s.name}」和时间变量 t 或 e、pi、i、Infinity（含大写）重名`);
+        } else if (reserved.includes(s.name)) {
+          ctx.diags.error(ctx.file, at, `滑块名「${s.name}」和这个组件的变量重名（${reserved.join('、')}）`);
         }
-        if (seen.has(s.name)) ctx.diags.error(ctx.file, at, `滑块名「${s.name}」重复了`);
-        seen.add(s.name);
+        if (sliderNames.includes(s.name)) ctx.diags.error(ctx.file, at, `滑块名「${s.name}」重复了`);
+        sliderNames.push(s.name);
         if (!(s.min < s.max) || s.default < s.min || s.default > s.max) {
           ctx.diags.error(ctx.file, lineOf(y, ['sliders', i]), `滑块「${s.name}」要满足 min < max，且 default 在 min 和 max 之间`);
         }
         const label = textAt(y, ['sliders', i, 'label'], ctx.diags);
-        if (label) renderField(label, ctx, 'plain');
+        if (label) labels.push(labelElement(`slider:${s.name}`, renderField(label, ctx, 'plain')));
       });
+    }
+  }
+
+  // 式子能不能编译、个数对不对；图例排版
+  if (spec && checked) {
+    for (const issue of spec.check(checked as never, sliderNames)) {
+      const where = issue.path.length ? `参数 ${issue.path.join('.')}` : '参数';
+      ctx.diags.error(ctx.file, lineOf(y, issue.path), `${where}：${issue.message}`);
+    }
+    for (const { path, key } of spec.labels(checked as never)) {
+      const field = textAt(y, path, ctx.diags);
+      if (field) labels.push(labelElement(key, renderField(field, ctx, 'plain')));
     }
   }
 
@@ -115,7 +154,7 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
     data: {
       hName: 'x-anim',
       hProperties: { dataComponent: component, dataParams: JSON.stringify(params), dataImplemented: String(implemented) },
-      hChildren: [],
+      hChildren: labels,
     },
   };
 }

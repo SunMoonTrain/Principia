@@ -60,6 +60,9 @@ export function HomePage() {
               })}
           </section>
         ))}
+        <p className="home-footer">
+          <Link to="/gallery">动画组件画廊</Link>：小节里用的动画组件，每个一个演示。
+        </p>
       </div>
     </>
   );

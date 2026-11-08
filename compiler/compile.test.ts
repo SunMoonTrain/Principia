@@ -6,6 +6,8 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { afterEach, describe, expect, it } from 'vitest';
+import type { Element } from 'hast';
+import { demoSource, DEMOS } from '../packages/anim/src/demos.ts';
 import type { Diagnostic, Rich } from '../shared/content-types.ts';
 import { compileContent } from './compile.ts';
 import { sourceText } from './markdown.ts';
@@ -224,5 +226,66 @@ describe('故意改坏，构建失败并指出文件和行号', () => {
     const root = fixture();
     edit(root, 'content/math/analysis/_domain.yaml', 'anchor: def-supremum\n', 'anchor: def-sup\n');
     expect(errors(root)[0].message).toContain('def-sup');
+  });
+});
+
+describe('动画组件块（台阶 7）', () => {
+  const findAll = (node: Rich | Rich['children'][number], tag: string): Element[] => {
+    const own = node.type === 'element' && node.tagName === tag ? [node] : [];
+    const kids = 'children' in node ? (node.children as Rich['children']) : [];
+    return [...own, ...kids.flatMap((c) => findAll(c, tag))];
+  };
+
+  it('function-plot 已实现：参数原样交给网站，滑块标签和图例排好版放在 x-anim-label 里', () => {
+    const lesson = compileContent(repo).packs!.get('math.analysis')!.lessons['math.analysis.completeness'];
+    const [anim] = findAll(lesson.sections.picture, 'x-anim');
+    expect(anim.properties).toMatchObject({ dataComponent: 'function-plot', dataImplemented: 'true' });
+    expect(JSON.parse(String(anim.properties.dataParams)).sequences).toEqual([{ expr: '1 - 1/n', n: [1, 40], label: '$a_n=1-\\frac{1}{n}$\n' }]);
+    const labels = findAll(anim, 'x-anim-label');
+    expect(labels.map((l) => l.properties.dataKey)).toEqual(['slider:eps', 'function:0', 'sequence:0']);
+    expect(findAll(labels[0], 'x-math')).toHaveLength(1);
+  });
+
+  it('式子里用了不认识的名字，报错指出那一行', () => {
+    const root = fixture();
+    const line = edit(root, LESSON, 'expr: "1 - eps"', 'expr: "1 - epsilon"');
+    expect(errors(root)).toMatchObject([{ file: LESSON, line, message: expect.stringContaining('不认识的名字「epsilon」') }]);
+  });
+
+  it('滑块名和组件的变量重名', () => {
+    const root = fixture();
+    const line = edit(root, LESSON, '  - name: eps', '  - name: n');
+    const found = errors(root).find((e) => e.message.includes('和这个组件的变量重名'));
+    expect(found).toMatchObject({ file: LESSON, line });
+  });
+
+  it('振子的弹簧个数不对，报错指出 springs 那一行', () => {
+    const root = fixture();
+    const at = edit(root, LESSON, '## 例题\n', ':::anim{component="oscillator"}\nmasses: [1, 1]\nsprings: [1, 1]\ninitial: [1, 0]\ndt: 0.01\n:::\n\n## 例题\n');
+    expect(errors(root)).toMatchObject([{ file: LESSON, line: at + 2, message: expect.stringContaining('2 个物块要写 3 根弹簧') }]);
+  });
+
+  it('组件画廊里每个演示的「写法」原样写进小节都能通过构建，参数和演示的一样', () => {
+    const root = fixture();
+    const blocks = DEMOS.map(demoSource).join('\n\n');
+    edit(root, LESSON, '## 例题\n', `${blocks}\n\n## 例题\n`);
+    const result = compileContent(root);
+    expect(result.report.errors).toEqual([]);
+    const lesson = result.packs!.get('math.analysis')!.lessons['math.analysis.completeness'];
+    const params = findAll(lesson.sections.picture, 'x-anim')
+      .slice(1)
+      .map((a) => JSON.parse(String(a.properties.dataParams)));
+    // 块写法的 label 末尾多一个换行，比较前去掉
+    const trim = (v: unknown): unknown =>
+      typeof v === 'string' ? v.replace(/\n$/, '') : Array.isArray(v) ? v.map(trim) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, trim(x)])) : v;
+    expect(params.map(trim)).toEqual(DEMOS.map((d) => d.params));
+  });
+
+  it('还没实现的组件只警告，页面上显示占位框', () => {
+    const root = fixture();
+    const at = edit(root, LESSON, '## 例题\n', ':::anim{component="wave-1d"}\n:::\n\n## 例题\n');
+    const result = compileContent(root);
+    expect(result.report.errors).toEqual([]);
+    expect(result.report.warnings).toContainEqual(expect.objectContaining({ file: LESSON, line: at, message: expect.stringContaining('还没实现') }));
   });
 });

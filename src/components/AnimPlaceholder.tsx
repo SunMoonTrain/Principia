@@ -1,4 +1,4 @@
-// 动画组件：台阶 7 才实现，现在一律显示占位框。
+// 还没实现的动画组件（附录里列了、packages/anim 里还没有）：显示占位框，构建同时给警告。
 
 function pascalCase(name: string): string {
   return name.replace(/(^|-)([a-z0-9])/g, (_, __, c: string) => c.toUpperCase());
