@@ -1,0 +1,26 @@
+# math.analysis 各题的作答记录。网站写入，你点「存档」时提交；格式见 docs/plan.md「进度存储」。
+math.analysis.completeness:
+  p1:
+    attempts:
+      - id: d4d4bfef-e70c-482e-8173-24ef05975aee
+        at: 2026-11-08T18:13:41+08:00
+        input: 3^0.5
+        result: correct
+  p2:
+    attempts:
+      - id: 69f6474a-2621-41e4-baaf-4011cde8f8f9
+        at: 2026-11-08T18:13:31+08:00
+        input: AD
+        result: correct
+  p3:
+    attempts:
+      - id: 83ea2c1f-e04d-4389-9d06-3c9ef80dffe6
+        at: 2026-11-08T18:10:12+08:00
+        input: -1，1
+        result: correct
+  p5:
+    status: none
+    statusAt: 2026-11-08T18:08:03+08:00
+  p8:
+    status: none
+    statusAt: 2026-11-08T18:07:52+08:00
