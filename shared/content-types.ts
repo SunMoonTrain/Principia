@@ -31,6 +31,9 @@ export interface GraphLesson {
   level: number;
   /** 星图展开图的横坐标：领域扇区里的角度（度，0–360）。纵坐标就是层级。 */
   x2d: number;
+  /** 立体星图里的角度（度）和离中轴的距离（场景单位）；高度就是层级。 */
+  angle: number;
+  radius: number;
 }
 
 export interface GraphDomain {

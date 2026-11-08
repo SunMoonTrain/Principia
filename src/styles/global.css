@@ -2391,3 +2391,124 @@ code {
     transition: none;
   }
 }
+
+/* ---------- 台阶 6：立体星图、2D/3D 切换、点亮动画 ---------- */
+
+.map-tools {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-left: auto;
+}
+
+.map-mode {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.map-mode .chip:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.map-note {
+  margin: 0 0 10px;
+  color: var(--warn);
+  font-size: 14px;
+}
+
+/* 立体图例：已会是实心菱形，可学是实心点加光（和立体图里一样） */
+.map-legend-3d .map-node-known-3d .map-dot,
+.map-legend-3d .map-node-available .map-dot {
+  fill: var(--node);
+  stroke: none;
+}
+
+.map3d {
+  position: relative;
+  height: clamp(420px, 64vh, 700px);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: radial-gradient(ellipse at 50% 35%, color-mix(in srgb, var(--accent) 7%, var(--surface)), var(--surface) 70%);
+  touch-action: none;
+}
+
+.map3d canvas {
+  display: block;
+}
+
+.map3d-loading {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+}
+
+.map3d-card {
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+/* 学完一节回到平面图：这颗星闪一下，光沿连线流向刚解锁的节点 */
+.map-node-new .map-dot {
+  animation: map-pop 1.2s ease-out;
+}
+
+.map-node-new .map-halo {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: map-burst 1.4s ease-out;
+}
+
+@keyframes map-pop {
+  0% {
+    r: 4;
+  }
+
+  45% {
+    r: 15;
+  }
+
+  100% {
+    r: 9;
+  }
+}
+
+@keyframes map-burst {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.4);
+  }
+
+  100% {
+    opacity: 0.22;
+    transform: scale(1);
+  }
+}
+
+/* 虚线只在动画期间有，三遍流完连线变回实线 */
+.map-edge-flow {
+  animation: map-flow 1.1s linear 3;
+}
+
+@keyframes map-flow {
+  from {
+    stroke-dasharray: 10 14;
+    stroke-dashoffset: 48;
+  }
+
+  to {
+    stroke-dasharray: 10 14;
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-node-new .map-dot,
+  .map-node-new .map-halo,
+  .map-edge-flow {
+    animation: none;
+  }
+}

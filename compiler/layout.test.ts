@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { computeLevels, type PrereqMap } from './graph.ts';
-import { layoutMap, PREFERRED_GAP, type LayoutInput } from './layout.ts';
+import { layoutMap, MIN_DISTANCE_3D, PREFERRED_GAP, RADIUS_INNER, RADIUS_OUTER, type LayoutInput } from './layout.ts';
 
 /** 小节 id 写成「领域.名字」，前置写在后面。 */
 function input(domains: Record<string, string>, entries: Record<string, string[]>): LayoutInput {
@@ -71,5 +71,39 @@ describe('星图展开图的布局', () => {
     const layout = layoutMap(data);
     expect(layout.x.get('physics.c.y')).toBeGreaterThan(180);
     expect(layoutMap(data).x).toEqual(layout.x);
+    expect(layoutMap(data).polar).toEqual(layout.polar);
+  });
+});
+
+describe('立体星图的布局', () => {
+  it('不挤的时候角度和展开图一样，半径在圆柱壳里', () => {
+    const layout = layoutMap(input({ 'math.a': 'math' }, { 'math.a.a': [], 'math.a.b': ['math.a.a'], 'math.a.c': ['math.a.b'] }));
+    for (const [id, { angle, radius }] of layout.polar) {
+      expect(angle).toBeCloseTo(layout.x.get(id)!, 1);
+      expect(radius).toBeGreaterThanOrEqual(RADIUS_INNER);
+      expect(radius).toBeLessThanOrEqual(RADIUS_OUTER);
+    }
+  });
+
+  it('同一层挤在小扇区里的节点在立体图里互相推开，角度不出扇区', () => {
+    const entries: Record<string, string[]> = {};
+    for (let i = 0; i < 12; i++) entries[`math.a.n${String(i).padStart(2, '0')}`] = [];
+    for (let i = 0; i < 60; i++) entries[`math.b.n${String(i).padStart(2, '0')}`] = [];
+    const layout = layoutMap(input({ 'math.a': 'math', 'math.b': 'math' }, entries));
+    const sector = layout.domains.get('math.a')!;
+    const points = Object.keys(entries)
+      .filter((id) => id.startsWith('math.a.'))
+      .map((id) => {
+        const { angle, radius } = layout.polar.get(id)!;
+        expect(angle).toBeGreaterThan(sector.start);
+        expect(angle).toBeLessThan(sector.end);
+        return [radius * Math.cos((angle * Math.PI) / 180), radius * Math.sin((angle * Math.PI) / 180)];
+      });
+    // 12 个节点挤在约 30° 的扇区里：展开图里只隔 2° 多，立体图里靠半径错开
+    let closest = Infinity;
+    for (let i = 0; i < points.length; i++) {
+      for (let j = i + 1; j < points.length; j++) closest = Math.min(closest, Math.hypot(points[i][0] - points[j][0], points[i][1] - points[j][1]));
+    }
+    expect(closest).toBeGreaterThan(MIN_DISTANCE_3D * 0.8);
   });
 });

@@ -229,6 +229,8 @@ export function compileContent(root: string): CompileResult {
       prerequisites: l.prerequisites,
       level: levels.get(l.id) ?? 0,
       x2d: layout.x.get(l.id) ?? 0,
+      angle: layout.polar.get(l.id)?.angle ?? 0,
+      radius: layout.polar.get(l.id)?.radius ?? 0,
     }))
     .sort((a, b) => a.domain.localeCompare(b.domain) || a.level - b.level || a.id.localeCompare(b.id));
   const graph: Graph = { format: CONTENT_FORMAT, subjects: layout.subjects, domains: graphDomains, lessons: graphLessons, edges };

@@ -1,14 +1,22 @@
-// 星图的平面展开图（2D）布局，见 docs/plan.md「立体知识图谱与动态效果」：
-// 横轴是领域扇区里的角度（0–360°，数学占前半圈、物理占后半圈），纵轴是层级。构建时算好写进全局图谱，
-// 不用随机数，同样的内容每次位置都一样。同一层里的节点按前置、后续的平均位置排，挨得太近时沿横轴推开。
+// 星图的布局，见 docs/plan.md「立体知识图谱与动态效果」。构建时算好写进全局图谱，同样的内容每次位置都一样。
+// 平面展开图（2D）：横轴是领域扇区里的角度（0–360°，数学占前半圈、物理占后半圈），纵轴是层级；
+// 同一层里的节点按前置、后续的平均位置排，挨得太近时沿横轴推开。
+// 立体星图（3D）：高度是层级，角度从展开图的横坐标出发，半径在一个圆柱壳里（固定种子的随机数），
+// 同一层离得太近的互相推开（力导向微调），角度不出自己领域的扇区。
 
+import { RADIUS_INNER, RADIUS_OUTER } from '../shared/map.ts';
 import type { PrereqMap } from './graph.ts';
+
+export { RADIUS_INNER, RADIUS_OUTER };
 
 /** 学科在圆周上的顺序：数学占前半圈，物理占后半圈；没有内容的学科也留着它那半圈，加内容时别的节点不挪位置。 */
 export const SUBJECT_ORDER = ['math', 'physics'];
 
 /** 同一层相邻两个节点之间想留的角度（度）。领域扇区放不下时按扇区宽度均分。 */
 export const PREFERRED_GAP = 10;
+
+/** 立体星图里同一层两个节点至少隔这么远（场景单位），太近就互相推开。 */
+export const MIN_DISTANCE_3D = 1.2;
 
 export interface LayoutInput {
   domains: { id: string; subject: string }[];
@@ -27,6 +35,73 @@ export interface MapLayout {
   domains: Map<string, Sector & { hue: number }>;
   /** 小节 → 展开图的横坐标（度）。 */
   x: Map<string, number>;
+  /** 小节 → 立体星图里的角度（度）和半径。 */
+  polar: Map<string, { angle: number; radius: number }>;
+}
+
+/** 固定种子的伪随机数（FNV-1a 散列 + mulberry32）：同一个 id 每次得到同一串数。 */
+function seeded(id: string): () => number {
+  let h = 2166136261;
+  for (const ch of id) h = Math.imul(h ^ ch.codePointAt(0)!, 16777619);
+  let a = h >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+const RAD = Math.PI / 180;
+
+/**
+ * 立体星图：从展开图的横坐标出发，半径取圆柱壳中间那一段里的随机值；同一层里离得比 MIN_DISTANCE_3D 近的
+ * 两两推开，再往起点拉回一点，反复几十次。角度不出自己领域扇区的可用范围，半径不出圆柱壳。
+ */
+function relax3d(
+  lessons: { id: string; domain: string; level: number }[],
+  x: Map<string, number>,
+  usable: (domain: string) => [number, number],
+): Map<string, { angle: number; radius: number }> {
+  const mid = (RADIUS_INNER + RADIUS_OUTER) / 2;
+  const nodes = [...lessons]
+    .sort((a, b) => a.id.localeCompare(b.id))
+    .map((l) => {
+      const random = seeded(l.id);
+      const radius = RADIUS_INNER + (RADIUS_OUTER - RADIUS_INNER) * (0.2 + 0.6 * random());
+      return { ...l, home: x.get(l.id)!, angle: x.get(l.id)!, radius };
+    });
+  const byLevel = new Map<number, typeof nodes>();
+  for (const n of nodes) byLevel.set(n.level, [...(byLevel.get(n.level) ?? []), n]);
+  for (let step = 0; step < 60; step++) {
+    for (const row of byLevel.values()) {
+      const xy = row.map((n) => [n.radius * Math.cos(n.angle * RAD), n.radius * Math.sin(n.angle * RAD)]);
+      for (let i = 0; i < row.length; i++) {
+        for (let j = i + 1; j < row.length; j++) {
+          let dx = xy[j][0] - xy[i][0];
+          let dy = xy[j][1] - xy[i][1];
+          let d = Math.hypot(dx, dy);
+          if (d >= MIN_DISTANCE_3D) continue;
+          if (d < 1e-6) [dx, dy, d] = [1e-3, 0, 1e-3];
+          const push = (MIN_DISTANCE_3D - d) / 2 / d;
+          xy[i][0] -= dx * push;
+          xy[i][1] -= dy * push;
+          xy[j][0] += dx * push;
+          xy[j][1] += dy * push;
+        }
+      }
+      row.forEach((n, i) => {
+        const [lo, hi] = usable(n.domain);
+        const angle = Math.atan2(xy[i][1], xy[i][0]) / RAD;
+        // atan2 给的是 -180–180°，换回离原来最近的那个角度
+        const unwrapped = angle + 360 * Math.round((n.angle - angle) / 360);
+        n.angle = Math.min(hi, Math.max(lo, unwrapped + (n.home - unwrapped) * 0.05));
+        n.radius = Math.min(RADIUS_OUTER, Math.max(RADIUS_INNER, Math.hypot(xy[i][0], xy[i][1]) + (mid - n.radius) * 0.01));
+      });
+    }
+  }
+  return new Map(nodes.map((n) => [n.id, { angle: Math.round(n.angle * 100) / 100, radius: Math.round(n.radius * 100) / 100 }]));
 }
 
 /**
@@ -132,5 +207,5 @@ export function layoutMap({ domains, lessons, prereqs }: LayoutInput): MapLayout
   sweep(up, fromPrereqs);
   // 坐标保留两位小数就够了，图谱文件也好读
   for (const [id, value] of x) x.set(id, Math.round(value * 100) / 100);
-  return { subjects, domains: sectors, x };
+  return { subjects, domains: sectors, x, polar: relax3d(lessons, x, usable) };
 }
