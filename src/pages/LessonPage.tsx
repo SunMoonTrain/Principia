@@ -6,6 +6,7 @@ import { useEffect, useLayoutEffect, type ReactNode } from 'react';
 import { Link, useLocation, useParams } from 'react-router';
 import type { GraphLesson, LessonContent, Rich as RichValue, Tier } from '../../shared/content-types';
 import { lessonPath } from '../../shared/ids';
+import { SectionKindContext } from '../components/AnchorBlock';
 import { LessonSidebar, type OutlineItem } from '../components/LessonSidebar';
 import { ProblemCard } from '../components/ProblemCard';
 import { StatusBadge } from '../components/StatusBadge';
@@ -118,7 +119,10 @@ function WrittenLesson({ lesson, content }: { lesson: GraphLesson; content: Less
       )}
       <Section id="explanation" title="讲解">
         <div className="prose">
-          <Rich value={sections.explanation} />
+          {/* 讲解里带锚点的定义段落显示成卡片 */}
+          <SectionKindContext.Provider value="explanation">
+            <Rich value={sections.explanation} />
+          </SectionKindContext.Provider>
         </div>
       </Section>
       <Section id="picture" title="几何图像">

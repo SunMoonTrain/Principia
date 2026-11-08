@@ -89,12 +89,20 @@ describe('样例内容', () => {
     edit(root, LESSON, '就说$M$是$A$的', '就说  $M$  是$A$的');
     const lesson = compileContent(root).packs!.get('math.analysis')!.lessons['math.analysis.completeness'];
     const para = lesson.sections.explanation.children.find(
-      (c) => c.type === 'element' && c.tagName === 'div' && JSON.stringify(c).includes('"如果实数 "'),
+      (c) => c.type === 'element' && c.tagName === 'x-anchor' && JSON.stringify(c).includes('"如果实数 "'),
     );
     expect(para).toBeDefined();
     const text = outline((para as { children: Rich['children'] }).children.flatMap((c) => (c.type === 'element' && c.tagName === 'p' ? c.children : [])));
     expect(text.startsWith('"设 " [<x-math> "。"] "如果实数 " <x-math>')).toBe(true);
     expect(text).toContain('[<x-math> "，"] "就说 " <x-math> " 是 " <x-math> " 的"');
+  });
+
+  it('锚点段落包在 x-anchor 里（网站把讲解里的显示成定义卡片）', () => {
+    const lesson = compileContent(repo).packs!.get('math.analysis')!.lessons['math.analysis.completeness'];
+    const anchors = lesson.sections.explanation.children.flatMap((c) =>
+      c.type === 'element' && c.tagName === 'x-anchor' ? [c.properties.dataAnchor] : [],
+    );
+    expect(anchors).toEqual(['def-upper-bound', 'def-supremum', 'def-maximum', 'def-infimum', 'def-supremum-principle']);
   });
 
   it('三级标题带 id，供目录栏跳转', () => {

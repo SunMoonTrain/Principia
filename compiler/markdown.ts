@@ -453,7 +453,7 @@ function transformChildren(parent: MdNode, ctx: MdContext, mode: Mode, para: See
   parent.children = keepPunctuationWithMath(spaceAroundMath(output));
 }
 
-/** `::anchor{id="..."}` 单独一行，标记紧接着的那一段：把那一段包进带 data-anchor 的 div。 */
+/** `::anchor{id="..."}` 单独一行，标记紧接着的那一段：把那一段包进带 data-anchor 的 x-anchor。 */
 function anchorTarget(node: MdNode, next: MdNode | undefined, ctx: MdContext, mode: Mode, scope: Seen, topLevel: boolean): MdNode | null {
   const line = lineOf(ctx, node) ?? 1;
   const attrs = node.attributes ?? {};
@@ -474,7 +474,8 @@ function anchorTarget(node: MdNode, next: MdNode | undefined, ctx: MdContext, mo
   const inner = transformNode(next, ctx, mode, scope, topLevel);
   return {
     type: 'anchorTarget',
-    data: { hName: 'div', hProperties: { className: ['anchor-target'], dataAnchor: id } },
+    // 网站把它渲染成可跳转的块；讲解里的显示成定义卡片
+    data: { hName: 'x-anchor', hProperties: { dataAnchor: id } },
     children: inner,
   };
 }

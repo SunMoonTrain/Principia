@@ -67,6 +67,8 @@ export function normalizeExpression(input: string): string {
     .replace(/[×·⋅]/g, '*')
     .replace(/÷/g, '/')
     .replace(/π/g, 'pi')
+    // √3、√x 补上括号；√(…) 直接换成 sqrt(…)
+    .replace(/√\s*([0-9.]+|[A-Za-z]+)/g, 'sqrt($1)')
     .replace(/√/g, 'sqrt')
     .trim();
 }

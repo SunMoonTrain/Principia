@@ -4,6 +4,7 @@ import { toJsxRuntime, type Components } from 'hast-util-to-jsx-runtime';
 import { useMemo, type ReactNode } from 'react';
 import { Fragment, jsx, jsxs } from 'react/jsx-runtime';
 import type { Rich as RichValue } from '../../shared/content-types';
+import { AnchorBlock } from '../components/AnchorBlock';
 import { AnimPlaceholder } from '../components/AnimPlaceholder';
 import { ContentLink } from '../components/ContentLink';
 import { MathHtml } from '../components/MathHtml';
@@ -17,6 +18,7 @@ const components = {
   'x-math': MathHtml,
   'x-term': TermRef,
   'x-anim': AnimPlaceholder,
+  'x-anchor': AnchorBlock,
   a: ContentLink,
 } as unknown as Partial<Components>;
 
@@ -25,6 +27,7 @@ const inertComponents = {
   'x-math': MathHtml,
   'x-term': Plain,
   'x-anim': () => null,
+  'x-anchor': Plain,
   a: Plain,
 } as unknown as Partial<Components>;
 
