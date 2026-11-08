@@ -2049,3 +2049,345 @@ code {
   line-height: 20px;
   text-align: center;
 }
+
+/* ---------- 台阶 5：知识星图（平面展开图）、已会、够不着 ---------- */
+
+/* 领域颜色：每个领域一个色相（构建时按扇区位置定），亮色、暗色主题各配明暗 */
+:root {
+  --map-sat: 58%;
+  --map-light: 44%;
+}
+
+:root[data-theme='dark'] {
+  --map-sat: 72%;
+  --map-light: 68%;
+}
+
+.badge-known {
+  border: 1px solid color-mix(in srgb, var(--good) 55%, transparent);
+  color: var(--good);
+}
+
+.map {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 28px 16px 8px;
+}
+
+.map-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+
+.map-head .home-lead {
+  margin: 0;
+}
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin: 10px 0 12px;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.map-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.map-legend svg {
+  overflow: visible;
+}
+
+.map-legend-unreviewed {
+  color: var(--warn);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.map-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.map-canvas {
+  position: relative;
+}
+
+.map-canvas svg {
+  display: block;
+  overflow: visible;
+}
+
+.map-subject-0 {
+  fill: transparent;
+}
+
+.map-subject-1 {
+  fill: color-mix(in srgb, var(--text) 3%, transparent);
+}
+
+.map-subject-label {
+  fill: var(--text-soft);
+  font-size: 14px;
+  font-weight: 600;
+  text-anchor: middle;
+}
+
+.map-sector {
+  fill: hsl(var(--hue) 60% 55% / 0.07);
+}
+
+.map-domain-label {
+  fill: hsl(var(--hue) var(--map-sat) var(--map-light));
+  font-size: 13px;
+  font-weight: 600;
+  text-anchor: middle;
+}
+
+.map-level-line {
+  stroke: var(--border);
+  stroke-dasharray: 2 6;
+}
+
+.map-level-label {
+  fill: var(--muted);
+  font-size: 12px;
+}
+
+.map-edge {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 1.6;
+}
+
+.map-edge-lit {
+  stroke: hsl(var(--hue) var(--map-sat) var(--map-light) / 0.8);
+  stroke-width: 2.2;
+}
+
+.map-node {
+  --node: hsl(var(--hue) var(--map-sat) var(--map-light));
+  cursor: pointer;
+  outline: none;
+}
+
+.map-node .map-dot {
+  transition: r 0.15s ease;
+}
+
+.map-node-active .map-dot,
+.map-node:focus-visible .map-dot {
+  r: 11;
+}
+
+.map-node:focus-visible .map-dot {
+  stroke: var(--accent);
+  stroke-width: 3;
+}
+
+.map-label {
+  fill: var(--text-soft);
+  font-size: 13px;
+}
+
+.map-node-active .map-label {
+  fill: var(--text);
+  font-weight: 600;
+}
+
+.map-unreviewed {
+  fill: var(--warn);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* 已完成：实心，带领域颜色和一圈淡光 */
+.map-node-completed .map-dot {
+  fill: var(--node);
+}
+
+.map-node-completed .map-halo {
+  fill: var(--node);
+  opacity: 0.22;
+}
+
+/* 已会：也是亮的，但画成一个圈里一个点，和已完成区分开 */
+.map-node-known .map-dot {
+  fill: var(--surface);
+  stroke: var(--node);
+  stroke-width: 3;
+}
+
+.map-node-known .map-dot-inner {
+  fill: var(--node);
+}
+
+/* 可学：领域颜色的圈，外面一层缓慢呼吸的光 */
+.map-node-available .map-dot {
+  fill: var(--surface);
+  stroke: var(--node);
+  stroke-width: 2.5;
+}
+
+.map-node-available .map-glow {
+  fill: var(--node);
+  opacity: 0.25;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: map-breathe 3.2s ease-in-out infinite;
+}
+
+@keyframes map-breathe {
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 0.42;
+    transform: scale(1.15);
+  }
+}
+
+/* 够不着：暗 */
+.map-node-locked .map-dot {
+  fill: color-mix(in srgb, var(--muted) 45%, var(--surface));
+}
+
+.map-node-locked .map-label {
+  fill: var(--muted);
+}
+
+/* 待写：虚线圈 */
+.map-node-outline .map-dot {
+  fill: var(--surface);
+  stroke: var(--muted);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 3;
+}
+
+.map-node-outline .map-label {
+  fill: var(--muted);
+}
+
+.map-card {
+  position: absolute;
+  z-index: 5;
+  padding: 10px 14px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  font-size: 14px;
+  line-height: 1.65;
+  pointer-events: none;
+}
+
+.map-card-title {
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.map-card-tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin: 2px 0 6px;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.map-card-tags .badge {
+  margin-left: 0;
+}
+
+.map-state {
+  --node: hsl(var(--hue) var(--map-sat) var(--map-light));
+  padding: 0 8px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.map-state-completed,
+.map-state-known,
+.map-state-available {
+  background: color-mix(in srgb, var(--node) 16%, transparent);
+  color: var(--node);
+}
+
+.map-state-locked,
+.map-state-outline {
+  border: 1px dashed var(--muted);
+  color: var(--muted);
+}
+
+.map-card-text {
+  color: var(--text-soft);
+}
+
+.map-card-missing {
+  margin-top: 4px;
+  color: var(--warn);
+  font-size: 13px;
+}
+
+.home-list-title {
+  margin: 8px 0 4px;
+  font-size: 22px;
+}
+
+/* 待写小节的「我已经会了」、够不着时的提示 */
+.known-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  font-size: 15px;
+}
+
+.known-row-yes {
+  color: var(--good);
+  font-weight: 600;
+}
+
+.missing-prereqs {
+  margin: 4px 0 20px;
+  padding: 10px 16px;
+  border: 1px solid color-mix(in srgb, var(--warn) 40%, var(--border));
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--warn) 7%, var(--surface));
+  color: var(--text-soft);
+  font-size: 15px;
+}
+
+.missing-prereqs-note {
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-node-available .map-glow {
+    animation: none;
+    opacity: 0.3;
+  }
+
+  .map-node .map-dot {
+    transition: none;
+  }
+}

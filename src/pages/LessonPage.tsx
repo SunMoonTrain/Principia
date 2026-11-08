@@ -6,6 +6,7 @@ import { useEffect, useLayoutEffect, type ReactNode } from 'react';
 import { Link, useLocation, useParams } from 'react-router';
 import type { GraphLesson, LessonContent, Rich as RichValue, Tier } from '../../shared/content-types';
 import { lessonPath } from '../../shared/ids';
+import { missingPrereqs, nodeState } from '../../shared/node-state';
 import { laterTimestamp, localTimestamp } from '../../shared/progress';
 import { SectionKindContext } from '../components/AnchorBlock';
 import { IssueReporter } from '../components/IssueReporter';
@@ -121,13 +122,19 @@ function shortTime(at: string | undefined): string {
   return `${d.getMonth() + 1} 月 ${d.getDate()} 日 ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 }
 
-/** 页尾的「这节学完了」，可以撤销。 */
+/** 改这一节的学习状态（学完、已会、撤销）；时间至少比现有的晚 1 秒，同一秒连点两下也算数。 */
+function useSetLessonStatus(lesson: GraphLesson): (status: 'completed' | 'known' | 'none') => void {
+  const progress = useProgress();
+  const record = progress.state.lessons[lesson.id];
+  return (status) => progress.dispatch({ type: 'lesson-status', lesson: lesson.id, status, at: laterTimestamp(record?.statusAt) });
+}
+
+/** 页尾的「这节学完了」，可以撤销。这一节写好以前标过「已会」的，也在这里显示，可以撤销。 */
 function LessonDone({ lesson }: { lesson: GraphLesson }) {
   const progress = useProgress();
   const record = progress.state.lessons[lesson.id];
   const done = record?.status === 'completed';
-  const set = (status: 'completed' | 'none'): void =>
-    progress.dispatch({ type: 'lesson-status', lesson: lesson.id, status, at: laterTimestamp(record?.statusAt) });
+  const set = useSetLessonStatus(lesson);
   return (
     <section className={done ? 'lesson-done lesson-done-yes' : 'lesson-done'} aria-label="学完这一节">
       {done ? (
@@ -140,6 +147,18 @@ function LessonDone({ lesson }: { lesson: GraphLesson }) {
           </span>
           <button type="button" className="giveup-button" onClick={() => set('none')}>
             撤销
+          </button>
+        </>
+      ) : record?.status === 'known' ? (
+        <>
+          <span className="lesson-done-text">
+            这一节写好以前你标过「已会」<span className="lesson-done-time">（{shortTime(record.statusAt)}）</span>
+          </span>
+          <button type="button" className="answer-submit" onClick={() => set('completed')}>
+            这节学完了
+          </button>
+          <button type="button" className="giveup-button" onClick={() => set('none')}>
+            撤销「已会」
           </button>
         </>
       ) : (
@@ -210,6 +229,59 @@ function WrittenLesson({ lesson, content }: { lesson: GraphLesson; content: Less
   );
 }
 
+/** 「够不着」的小节（写好了，但还有前置既没学完也没标「已会」）：页面顶上提示缺哪些前置，仍然可以往下读。 */
+function MissingPrereqs({ lesson }: { lesson: GraphLesson }) {
+  const progress = useProgress();
+  const { lessons } = useContent();
+  const missing = missingPrereqs(lesson, progress.state);
+  return (
+    <div className="missing-prereqs" role="note">
+      这一节还够不着：前置
+      {missing.map((id, i) => {
+        const p = lessons.get(id);
+        return (
+          <span key={id}>
+            {i > 0 && '、'}「
+            <Link to={lessonPath(id)}>{p ? <Rich value={p.title} inert /> : id}</Link>」
+            {p?.status === 'outline' && <span className="missing-prereqs-note">（待写，会了可以标「已会」）</span>}
+          </span>
+        );
+      })}
+      还没学完。可以先回去学，也可以直接往下读。
+    </div>
+  );
+}
+
+/** 待写的小节：「我已经会了」，标了以后这一节算学过（星图上点亮，后面的小节可学），可以撤销。 */
+function KnownButton({ lesson }: { lesson: GraphLesson }) {
+  const progress = useProgress();
+  const record = progress.state.lessons[lesson.id];
+  const set = useSetLessonStatus(lesson);
+  if (record?.status === 'known') {
+    return (
+      <div className="known-row known-row-yes">
+        <span>
+          <span className="lesson-done-check" aria-hidden="true">
+            ✓
+          </span>
+          你标了「已会」<span className="lesson-done-time">（{shortTime(record.statusAt)}）</span>，后面以它为前置的小节可以学了。
+        </span>
+        <button type="button" className="giveup-button" onClick={() => set('none')}>
+          撤销
+        </button>
+      </div>
+    );
+  }
+  return (
+    <div className="known-row">
+      <span>这些你已经会了的话，标一下，后面以它为前置的小节就可以学了。</span>
+      <button type="button" className="answer-submit" onClick={() => set('known')}>
+        我已经会了
+      </button>
+    </div>
+  );
+}
+
 function OutlineLesson({ lesson }: { lesson: GraphLesson }) {
   return (
     <>
@@ -220,6 +292,7 @@ function OutlineLesson({ lesson }: { lesson: GraphLesson }) {
             <Rich value={lesson.goal} />
           </strong>
         </p>
+        <KnownButton lesson={lesson} />
       </div>
       {lesson.prerequisites.length > 0 && (
         <Section id="prerequisites" title="前置回顾" auto>
@@ -282,6 +355,7 @@ export function LessonPage() {
     if (progressReady && writtenLesson && !startedAt) dispatch({ type: 'lesson-open', lesson: id, at: localTimestamp() });
   }, [progressReady, writtenLesson, startedAt, id, dispatch]);
   const done = progress.state.lessons[id]?.status === 'completed';
+  const known = progress.state.lessons[id]?.status === 'known';
   // 难题、思考题的思路笔记
   useLessonNotes(writtenLesson ? id : null);
 
@@ -315,6 +389,7 @@ export function LessonPage() {
                 <Rich value={lesson.title} />
                 <StatusBadge status={lesson.status} />
                 {done && <span className="badge badge-done">已学完</span>}
+                {known && <span className="badge badge-known">已会</span>}
               </h1>
               <div className="lesson-meta">
                 <span>层级 {lesson.level}</span>
@@ -322,6 +397,7 @@ export function LessonPage() {
                 {lesson.status !== 'outline' && <span>{PROOF_POLICY[content?.proofPolicy ?? domain.proofPolicy]}</span>}
               </div>
             </header>
+            {nodeState(lesson, progress.state) === 'locked' && <MissingPrereqs lesson={lesson} />}
             {lesson.status === 'outline' ? (
               <OutlineLesson lesson={lesson} />
             ) : content ? (

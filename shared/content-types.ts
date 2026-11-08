@@ -29,6 +29,8 @@ export interface GraphLesson {
   prerequisites: string[];
   /** 层级 = 从没有前置的小节出发的最长前置链长度，根节点为 0。 */
   level: number;
+  /** 星图展开图的横坐标：领域扇区里的角度（度，0–360）。纵坐标就是层级。 */
+  x2d: number;
 }
 
 export interface GraphDomain {
@@ -40,12 +42,26 @@ export interface GraphDomain {
   /** 内容包的文件名（相对 /data/），带内容哈希，便于浏览器缓存。 */
   pack: string;
   lessons: string[];
+  /** 在星图圆周上占的扇区（度）。 */
+  sector: [number, number];
+  /** 领域颜色的色相（0–360），亮色、暗色主题各自配明暗。 */
+  hue: number;
+}
+
+export interface GraphSubject {
+  id: string;
+  /** 在星图圆周上占的那一段（度）：数学前半圈，物理后半圈。 */
+  start: number;
+  end: number;
 }
 
 export interface Graph {
   format: typeof CONTENT_FORMAT;
+  subjects: GraphSubject[];
   domains: GraphDomain[];
   lessons: GraphLesson[];
+  /** 星图上画的连线 [前置, 后续]：只有直接前置，能由别的前置推出来的不画。 */
+  edges: [string, string][];
 }
 
 export interface TermEntry {

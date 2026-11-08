@@ -18,6 +18,7 @@ import { Diagnostics } from './diagnostics.ts';
 import { processDomain, type DomainInfo, type GlossaryInfo } from './domain.ts';
 import { relPosix } from './fsutil.ts';
 import { computeLevels, findCycles, redundantPrereqs, type PrereqMap } from './graph.ts';
+import { layoutMap } from './layout.ts';
 import { processLesson, type LessonInfo } from './lesson.ts';
 
 export interface CompileResult {
@@ -161,6 +162,17 @@ export function compileContent(root: string): CompileResult {
   };
   if (!report.ok) return { report, files: null, graph: null, packs: null };
 
+  // ---- 星图：展开图坐标、领域扇区和颜色、只画直接前置的连线 ----
+  const layout = layoutMap({
+    domains: [...domains.values()].map((d) => ({ id: d.id, subject: d.subject })),
+    lessons: [...lessons.values()].map((l) => ({ id: l.id, domain: l.domain, level: levels.get(l.id) ?? 0 })),
+    prereqs,
+  });
+  const redundant = new Set(redundantPrereqs(prereqs).map((r) => `${r.redundant}>${r.lesson}`));
+  const edges: [string, string][] = [...prereqs]
+    .flatMap(([lesson, ps]) => ps.filter((p) => !redundant.has(`${p}>${lesson}`)).map((p): [string, string] => [p, lesson]))
+    .sort((a, b) => a[0].localeCompare(b[0]) || a[1].localeCompare(b[1]));
+
   // ---- 输出：全局图谱 + 每领域一个内容包 ----
   const files = new Map<string, string>();
   const packs = new Map<string, DomainPack>();
@@ -199,6 +211,8 @@ export function compileContent(root: string): CompileResult {
       proofPolicy: domain.proofPolicy,
       pack: `${name}?v=${hash(text)}`,
       lessons: own.map((l) => l.id),
+      sector: [layout.domains.get(domain.id)!.start, layout.domains.get(domain.id)!.end],
+      hue: layout.domains.get(domain.id)!.hue,
     });
   }
   const graphLessons: GraphLesson[] = [...lessons.values()]
@@ -214,9 +228,10 @@ export function compileContent(root: string): CompileResult {
       minutes: l.minutes,
       prerequisites: l.prerequisites,
       level: levels.get(l.id) ?? 0,
+      x2d: layout.x.get(l.id) ?? 0,
     }))
     .sort((a, b) => a.domain.localeCompare(b.domain) || a.level - b.level || a.id.localeCompare(b.id));
-  const graph: Graph = { format: CONTENT_FORMAT, domains: graphDomains, lessons: graphLessons };
+  const graph: Graph = { format: CONTENT_FORMAT, subjects: layout.subjects, domains: graphDomains, lessons: graphLessons, edges };
   files.set('graph.json', JSON.stringify(graph));
   return { report, files, graph, packs };
 }
