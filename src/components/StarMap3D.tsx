@@ -1,26 +1,29 @@
 // 立体星图（three.js + react-three-fiber），见 docs/plan.md「立体知识图谱与动态效果」：
-// 高度是层级，每个领域在圆周上占一块扇区（数学前半圈、物理后半圈），节点在一个圆柱壳里，坐标在构建时算好。
+// 一个横放的圆筒，沿轴往右越深；每个领域是圆筒上的一条（数学那半圈正对镜头，物理在背面），节点在一个圆筒壳里，坐标在构建时算好。
 // 节点用实例化渲染（每种状态一个 InstancedMesh）；只在需要时重画，有动画时最多每秒 30 帧。
-// 拖动旋转、滚轮缩放、右键拖动平移；悬停显示卡片，点击时镜头飞向那颗星再进入小节。
-// 系统设置了「减少动态效果」时：光晕不呼吸、没有点亮动画和镜头飞行、旋转不带惯性。
+// 左右拖动沿着层级走，上下拖动转动圆筒，滚轮缩放（以鼠标所在处为准）；悬停显示卡片，点击时镜头飞向那颗星再进入小节。
+// 系统设置了「减少动态效果」时：光晕不呼吸、没有点亮动画和镜头飞行。
 // 这个文件连同 three.js 按需加载（切到「立体」时才下载）。
 
 import { Canvas, useFrame, useThree, type ThreeEvent } from '@react-three/fiber';
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type MutableRefObject, type ReactNode } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type MutableRefObject, type ReactNode, type RefObject } from 'react';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import type { Graph, GraphLesson } from '../../shared/content-types';
-import { LEVEL_HEIGHT, position3d, RADIUS_INNER, RADIUS_OUTER } from '../../shared/map';
+import { LEVEL_GAP, position3d, RADIUS_INNER, RADIUS_OUTER } from '../../shared/map';
 import type { NodeState } from '../../shared/node-state';
 import { subjectTitle } from '../subjects';
 import { prefersReducedMotion, type Reveal } from './StarMap';
 
 const RAD = Math.PI / 180;
-/** 地面（领域扇区、领域名）放在第 0 层下面一点。 */
-const FLOOR_Y = -1.3;
 const CARD_WIDTH = 300;
 /** 镜头的上下视角（度）。 */
 const FOV = 45;
+/** 圆筒壳中间的半径：上下拖动时，这一圈跟着鼠标走。 */
+const RADIUS_MID = (RADIUS_INNER + RADIUS_OUTER) / 2;
+/** 领域条、层级圈画在节点外面一点。 */
+const SHELL = RADIUS_OUTER + 0.6;
+/** 滚轮最多推到离轴这么近（还在圆筒外面）；点一颗星时飞到它跟前，不受这个限制。 */
+const MIN_DISTANCE = RADIUS_OUTER + 8;
 
 /**
  * 发光点（THREE.Points）的 size 不是场景单位：画出来的直径相当于 size × tan(视角/2) 个场景单位。
@@ -37,20 +40,38 @@ interface Props {
   onOpen(lesson: GraphLesson): void;
   /** 「我现在能学什么」：每次值变了就把镜头对准所有可学的节点。 */
   focusAvailable: number;
+  /** 「全图」：每次值变了就回到一开始的全景。 */
+  home: number;
   renderCard(lesson: GraphLesson): ReactNode;
 }
 
 interface Item {
   lesson: GraphLesson;
   state: NodeState;
+  /** 圆筒自己的坐标（圆筒转动时跟着转）。 */
   position: THREE.Vector3;
   color: THREE.Color;
 }
 
-/** 镜头：飞到某个位置、看着某个点。 */
+/** 镜头总是正对圆筒（看向 -z）：x 是镜头对着的位置（沿轴），distance 是离轴多远；roll 是圆筒绕轴转过的角度（弧度）。 */
+interface DrumView {
+  x: number;
+  roll: number;
+  distance: number;
+}
+
 interface Rig {
-  flyTo(position: THREE.Vector3, target: THREE.Vector3, ms: number, done?: () => void): void;
-  camera: THREE.Camera;
+  current(): DrumView;
+  flyTo(view: DrumView, ms: number, done?: () => void): void;
+}
+
+/** 节点绕轴的角度（弧度）：0 在正上方，π/2 正对镜头。 */
+const phiOf = (p: THREE.Vector3): number => Math.atan2(p.z, p.y);
+
+/** 把角度为 phi 的节点转到正对镜头要转到的 roll，取离现在最近的那一圈。 */
+function rollToFront(phi: number, current: number): number {
+  const target = Math.PI / 2 - phi;
+  return target + 2 * Math.PI * Math.round((current - target) / (2 * Math.PI));
 }
 
 // ---------- 颜色跟着亮色、暗色主题 ----------
@@ -185,125 +206,216 @@ function Ticker({ active }: { active: boolean }) {
   return null;
 }
 
-function Controls({ target, position, reduce, rig }: { target: THREE.Vector3; position: THREE.Vector3; reduce: boolean; rig: MutableRefObject<Rig | null> }) {
+/**
+ * 操作：左右拖动沿轴走，上下拖动转圆筒（圆筒中间那一圈跟着鼠标走），右键拖动一样；滚轮推近拉远，鼠标所在的那一层留在原处。
+ * 一开始（以及窗口大小变了、还没动过时）是全景；「全图」回到全景。
+ */
+function DrumControls({
+  home,
+  homeSignal,
+  span,
+  maxDistance,
+  drum,
+  rig,
+  reduce,
+}: {
+  home: DrumView;
+  homeSignal: number;
+  span: [number, number];
+  maxDistance: number;
+  drum: RefObject<THREE.Group | null>;
+  rig: MutableRefObject<Rig | null>;
+  reduce: boolean;
+}) {
   const { camera, gl, invalidate } = useThree();
-  const controls = useMemo(() => new OrbitControls(camera, gl.domElement), [camera, gl]);
-  const tween = useRef<{ p0: THREE.Vector3; t0: THREE.Vector3; p1: THREE.Vector3; t1: THREE.Vector3; start: number; ms: number; done?: () => void } | null>(null);
+  const view = useRef<DrumView>({ ...home });
+  const moved = useRef(false);
+  const tween = useRef<{ from: DrumView; to: DrumView; start: number; ms: number; done?: () => void } | null>(null);
+
+  const apply = useCallback(() => {
+    const v = view.current;
+    camera.position.set(v.x, 0, v.distance);
+    camera.lookAt(v.x, 0, 0);
+    if (drum.current) drum.current.rotation.x = v.roll;
+    invalidate();
+  }, [camera, drum, invalidate]);
 
   useLayoutEffect(() => {
-    camera.position.copy(position);
-    controls.target.copy(target);
-    controls.update();
-    invalidate();
-  }, [camera, controls, position, target, invalidate]);
+    if (moved.current) return;
+    view.current = { ...home };
+    apply();
+  }, [home, apply]);
 
-  useEffect(() => {
-    const onChange = (): void => invalidate();
-    controls.addEventListener('change', onChange);
-    return () => {
-      controls.removeEventListener('change', onChange);
-      controls.dispose();
-    };
-  }, [controls, invalidate]);
-
-  useEffect(() => {
-    // 减少动态效果时不带惯性，松手就停
-    controls.enableDamping = !reduce;
-    controls.dampingFactor = 0.08;
-    controls.minDistance = 2.5;
-    controls.maxDistance = 200;
-  }, [controls, reduce]);
-
-  rig.current = {
-    camera,
-    flyTo(p, t, ms, done) {
+  const flyTo = useCallback(
+    (to: DrumView, ms: number, done?: () => void) => {
       if (ms <= 0) {
-        camera.position.copy(p);
-        controls.target.copy(t);
-        controls.update();
-        invalidate();
+        tween.current = null;
+        view.current = { ...to };
+        apply();
         done?.();
         return;
       }
-      tween.current = { p0: camera.position.clone(), t0: controls.target.clone(), p1: p.clone(), t1: t.clone(), start: performance.now(), ms, done };
+      tween.current = { from: { ...view.current }, to: { ...to }, start: performance.now(), ms, done };
       invalidate();
     },
-  };
+    [apply, invalidate],
+  );
+  rig.current = { current: () => ({ ...view.current }), flyTo };
+
+  const firstHome = useRef(homeSignal);
+  useEffect(() => {
+    if (homeSignal === firstHome.current) return;
+    moved.current = false;
+    flyTo(home, reduce ? 0 : 700);
+  }, [homeSignal]);
+
+  useEffect(() => {
+    const el = gl.domElement;
+    const unitsPerPx = (): number => (2 * view.current.distance * Math.tan((FOV / 2) * RAD)) / Math.max(1, el.clientHeight);
+    const clampX = (x: number): number => Math.min(span[1], Math.max(span[0], x));
+    let drag: { id: number; x: number; y: number; from: DrumView } | null = null;
+    const down = (e: PointerEvent): void => {
+      if (e.button !== 0 && e.button !== 2) return;
+      drag = { id: e.pointerId, x: e.clientX, y: e.clientY, from: { ...view.current } };
+      tween.current = null;
+    };
+    const move = (e: PointerEvent): void => {
+      if (!drag || drag.id !== e.pointerId) return;
+      const u = unitsPerPx();
+      moved.current = true;
+      view.current = {
+        ...drag.from,
+        x: clampX(drag.from.x - (e.clientX - drag.x) * u),
+        roll: drag.from.roll + ((e.clientY - drag.y) * u) / RADIUS_MID,
+      };
+      apply();
+    };
+    const up = (e: PointerEvent): void => {
+      if (drag?.id === e.pointerId) drag = null;
+    };
+    const wheel = (e: WheelEvent): void => {
+      e.preventDefault();
+      tween.current = null;
+      moved.current = true;
+      const rect = el.getBoundingClientRect();
+      const offset = e.clientX - rect.left - rect.width / 2;
+      const at = view.current.x + offset * unitsPerPx();
+      view.current = { ...view.current, distance: Math.min(maxDistance, Math.max(MIN_DISTANCE, view.current.distance * Math.exp(e.deltaY * 0.0015))) };
+      view.current.x = clampX(at - offset * unitsPerPx());
+      apply();
+    };
+    const menu = (e: Event): void => e.preventDefault();
+    el.addEventListener('pointerdown', down);
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+    window.addEventListener('pointercancel', up);
+    el.addEventListener('wheel', wheel, { passive: false });
+    el.addEventListener('contextmenu', menu);
+    return () => {
+      el.removeEventListener('pointerdown', down);
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+      window.removeEventListener('pointercancel', up);
+      el.removeEventListener('wheel', wheel);
+      el.removeEventListener('contextmenu', menu);
+    };
+  }, [gl, apply, span, maxDistance]);
 
   useFrame(() => {
     const tw = tween.current;
-    if (tw) {
-      const k = Math.min(1, (performance.now() - tw.start) / tw.ms);
-      const e = k < 0.5 ? 4 * k * k * k : 1 - (-2 * k + 2) ** 3 / 2;
-      camera.position.lerpVectors(tw.p0, tw.p1, e);
-      controls.target.lerpVectors(tw.t0, tw.t1, e);
-      if (k >= 1) {
-        tween.current = null;
-        tw.done?.();
-      }
+    if (!tw) return;
+    const k = Math.min(1, (performance.now() - tw.start) / tw.ms);
+    const e = k < 0.5 ? 4 * k * k * k : 1 - (-2 * k + 2) ** 3 / 2;
+    view.current = {
+      x: tw.from.x + (tw.to.x - tw.from.x) * e,
+      roll: tw.from.roll + (tw.to.roll - tw.from.roll) * e,
+      distance: tw.from.distance + (tw.to.distance - tw.from.distance) * e,
+    };
+    apply();
+    if (k >= 1) {
+      tween.current = null;
+      tw.done?.();
     }
-    // 带惯性时停手以后还会转一会儿，转动期间接着画
-    if (controls.update() || tween.current) invalidate();
   });
   return null;
 }
 
-/** 地面：每个领域一块扇形，标出领域名；外圈标学科名；中轴标层级。 */
-function Floor({ graph, palette, domainColor, maxLevel }: { graph: Graph; palette: Palette; domainColor: (hue: number) => THREE.Color; maxLevel: number }) {
+/** 圆筒上的东西（跟着圆筒转）：每个领域一条，沿着这一条隔一段写一次领域名；两个学科的分界线；右端写学科名。 */
+function DrumFrame({ graph, palette, domainColor, maxLevel }: { graph: Graph; palette: Palette; domainColor: (hue: number) => THREE.Color; maxLevel: number }) {
   const group = useDisposable(() => {
     const g = new THREE.Group();
+    const from = -1.6 * LEVEL_GAP;
+    const to = (maxLevel + 0.8) * LEVEL_GAP;
     for (const d of graph.domains) {
       const [start, end] = d.sector;
-      const ring = new THREE.Mesh(
-        new THREE.RingGeometry(RADIUS_INNER - 1.2, RADIUS_OUTER + 1.2, Math.max(8, Math.ceil((end - start) / 3)), 1, (start + 180) * RAD, (end - start) * RAD),
-        new THREE.MeshBasicMaterial({ color: domainColor(d.hue), transparent: true, opacity: palette.dark ? 0.16 : 0.2, side: THREE.DoubleSide, depthWrite: false }),
+      // CylinderGeometry 绕 y 轴，转成绕 x 轴以后角度差 90°（θ = 我们的角度 - 90°）
+      const stripe = new THREE.Mesh(
+        new THREE.CylinderGeometry(SHELL, SHELL, to - from, Math.max(4, Math.ceil((end - start) / 3)), 1, true, (start - 90) * RAD, (end - start) * RAD),
+        new THREE.MeshBasicMaterial({ color: domainColor(d.hue), transparent: true, opacity: palette.dark ? 0.1 : 0.14, side: THREE.DoubleSide, depthWrite: false }),
       );
-      ring.rotation.x = -Math.PI / 2;
-      ring.position.y = FLOOR_Y;
-      ring.raycast = () => undefined;
-      g.add(ring);
-      const label = textSprite(d.titleText, `#${domainColor(d.hue).getHexString(THREE.SRGBColorSpace)}`, 0.75);
-      label.position.set(...position3d((start + end) / 2, RADIUS_OUTER + 2.4, 0)).setY(FLOOR_Y);
-      g.add(label);
+      stripe.rotation.z = -Math.PI / 2;
+      stripe.position.x = (from + to) / 2;
+      stripe.raycast = () => undefined;
+      g.add(stripe);
+      // 领域名写在圆筒两端，不放在中间挡住节点
+      const label = textSprite(d.titleText, `#${domainColor(d.hue).getHexString(THREE.SRGBColorSpace)}`, 0.8);
+      label.position.set(...position3d((start + end) / 2, SHELL + 1.2, -1.4));
+      const right = label.clone();
+      right.position.set(...position3d((start + end) / 2, SHELL + 1.2, maxLevel + 1.4));
+      g.add(label, right);
     }
-    // 学科名浮在圆柱顶上方，往各自那半圈偏一点，不挡住星星；高度错开，从正面看前后两个名字不叠在一起
-    graph.subjects.forEach((s, i) => {
-      const empty = !graph.domains.some((d) => d.subject === s.id);
-      const label = textSprite(`${subjectTitle(s.id)}${empty ? '（还没有内容）' : ''}`, palette.text, 1.1);
-      label.position.set(...position3d((s.start + s.end) / 2, RADIUS_INNER, maxLevel)).setY(maxLevel * LEVEL_HEIGHT + 3 + 2.6 * i);
-      g.add(label);
-    });
-    // 圆周上分开两个学科的两条线
+    // 两个学科的分界线（沿着圆筒），学科名写在右端
     const border = new THREE.LineBasicMaterial({ color: palette.border, transparent: true, opacity: 0.9 });
-    for (const s of graph.subjects) {
-      const geometry = new THREE.BufferGeometry().setFromPoints([
-        new THREE.Vector3(...position3d(s.start, RADIUS_INNER - 1.2, 0)).setY(FLOOR_Y),
-        new THREE.Vector3(...position3d(s.start, RADIUS_OUTER + 4, 0)).setY(FLOOR_Y),
-      ]);
-      const line = new THREE.Line(geometry, border);
+    graph.subjects.forEach((s) => {
+      const line = new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(...position3d(s.start, SHELL, from / LEVEL_GAP)), new THREE.Vector3(...position3d(s.start, SHELL, to / LEVEL_GAP))]),
+        border,
+      );
       line.raycast = () => undefined;
       g.add(line);
+      const empty = !graph.domains.some((d) => d.subject === s.id);
+      const label = textSprite(`${subjectTitle(s.id)}${empty ? '（还没有内容）' : ''}`, palette.text, 1.3);
+      label.position.set(...position3d((s.start + s.end) / 2, RADIUS_MID, maxLevel + 2.6));
+      g.add(label);
+    });
+    return g;
+  }, [graph, palette, domainColor, maxLevel]);
+  // 转到背面的领域名、学科名变淡，免得透过圆筒和正面的叠在一起
+  const v = useMemo(() => new THREE.Vector3(), []);
+  useFrame(() => {
+    for (const child of group.children) {
+      if (!(child instanceof THREE.Sprite)) continue;
+      child.getWorldPosition(v);
+      child.material.opacity = v.z >= -0.5 ? 1 : 0.15;
     }
-    // 中轴和每一层的刻度：越往上越深
+  });
+  return <primitive object={group} />;
+}
+
+/** 不跟着圆筒转的东西：中轴、每一层的圈和层级数字（在圆筒上方）。 */
+function Rulers({ palette, maxLevel }: { palette: Palette; maxLevel: number }) {
+  const group = useDisposable(() => {
+    const g = new THREE.Group();
     const axis = new THREE.Line(
-      new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, FLOOR_Y, 0), new THREE.Vector3(0, maxLevel * LEVEL_HEIGHT + 1, 0)]),
+      new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-1.6 * LEVEL_GAP, 0, 0), new THREE.Vector3((maxLevel + 0.8) * LEVEL_GAP, 0, 0)]),
       new THREE.LineBasicMaterial({ color: palette.border }),
     );
     axis.raycast = () => undefined;
     g.add(axis);
+    const ring = new THREE.LineBasicMaterial({ color: palette.border, transparent: true, opacity: palette.dark ? 0.35 : 0.6 });
     for (let level = 0; level <= maxLevel; level++) {
-      const label = textSprite(`层级 ${level}`, palette.muted, 0.6, 400);
-      label.position.set(0.9, level * LEVEL_HEIGHT, 0);
-      g.add(label);
-      const circle = new THREE.LineLoop(
-        new THREE.BufferGeometry().setFromPoints(Array.from({ length: 96 }, (_, i) => new THREE.Vector3(...position3d((i * 360) / 96, RADIUS_OUTER + 0.6, level)))),
-        new THREE.LineBasicMaterial({ color: palette.border, transparent: true, opacity: palette.dark ? 0.35 : 0.6 }),
-      );
+      const circle = new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(Array.from({ length: 96 }, (_, i) => new THREE.Vector3(...position3d((i * 360) / 96, SHELL, level)))), ring);
       circle.raycast = () => undefined;
       g.add(circle);
+      const label = textSprite(String(level), palette.muted, 0.9, 500);
+      label.position.set(level * LEVEL_GAP, SHELL + 2.2, 0);
+      g.add(label);
     }
+    const title = textSprite('层级 →', palette.muted, 0.9, 500);
+    title.position.set(-2.4 * LEVEL_GAP, SHELL + 2.2, 0);
+    g.add(title);
     return g;
-  }, [graph, palette, domainColor, maxLevel]);
+  }, [palette, maxLevel]);
   return <primitive object={group} />;
 }
 
@@ -459,15 +571,16 @@ function RevealEffects({ reveal, items, texture, additive }: { reveal: Reveal; i
   );
 }
 
-/** 悬停卡片跟着那颗星在屏幕上的位置走（旋转、缩放时也跟着）。 */
-function CardTracker({ position, cardRef }: { position: THREE.Vector3 | null; cardRef: MutableRefObject<HTMLDivElement | null> }) {
+/** 悬停卡片跟着那颗星在屏幕上的位置走（拖动、转动、缩放时也跟着）。 */
+function CardTracker({ position, drum, cardRef }: { position: THREE.Vector3 | null; drum: RefObject<THREE.Group | null>; cardRef: MutableRefObject<HTMLDivElement | null> }) {
   const { camera, size, invalidate } = useThree();
   const v = useMemo(() => new THREE.Vector3(), []);
   useEffect(() => invalidate(), [position, invalidate]);
   useFrame(() => {
     const el = cardRef.current;
-    if (!el || !position) return;
-    v.copy(position).project(camera);
+    if (!el || !position || !drum.current) return;
+    drum.current.updateMatrixWorld();
+    v.copy(position).applyMatrix4(drum.current.matrixWorld).project(camera);
     const x = ((v.x + 1) / 2) * size.width;
     const y = ((1 - v.y) / 2) * size.height;
     const left = x + 22 + CARD_WIDTH > size.width ? x - 22 - CARD_WIDTH : x + 22;
@@ -484,6 +597,7 @@ function Scene({
   reveal,
   onOpen,
   focusAvailable,
+  home,
   hover,
   setHover,
   cardRef,
@@ -491,7 +605,9 @@ function Scene({
   const palette = usePalette();
   const reduce = useMemo(prefersReducedMotion, []);
   const rig = useRef<Rig | null>(null);
+  const drum = useRef<THREE.Group | null>(null);
   const invalidate = useThree((s) => s.invalidate);
+  const canvas = useThree((s) => s.size);
 
   const domainColor = useMemo(() => (hue: number) => new THREE.Color().setHSL(hue / 360, palette.sat, palette.light, THREE.SRGBColorSpace), [palette]);
   const hues = useMemo(() => new Map(graph.domains.map((d) => [d.id, d.hue])), [graph]);
@@ -518,14 +634,16 @@ function Scene({
   const all = useMemo(() => [...items.values()], [items]);
   const maxLevel = Math.max(0, ...graph.lessons.map((l) => l.level));
 
-  // 镜头：从数学那半圈正前方、略高一点看过去，圆柱的前半边占满画面
-  const view = useMemo(() => {
-    const height = maxLevel * LEVEL_HEIGHT;
-    const target = new THREE.Vector3(0, height / 2, 0);
-    const distance = Math.max((RADIUS_OUTER + 4) * 1.7, height * 1.4);
-    const position = new THREE.Vector3(0, height / 2 + distance * Math.sin(16 * RAD), distance * Math.cos(16 * RAD));
-    return { target, position };
-  }, [maxLevel]);
+  // 全景：镜头正对数学那半圈，整个圆筒横着占满画面（按画布的宽高比算）
+  const aspect = canvas.width / Math.max(1, canvas.height) || 1.8;
+  const tan = Math.tan((FOV / 2) * RAD);
+  const homeView = useMemo<DrumView>(() => {
+    const length = maxLevel * LEVEL_GAP;
+    const fitLength = RADIUS_OUTER + (length / 2 + 4 * LEVEL_GAP) / (tan * aspect);
+    const fitHeight = (SHELL + 3) / tan;
+    return { x: length / 2, roll: 0, distance: Math.max(fitLength, fitHeight) };
+  }, [maxLevel, aspect, tan]);
+  const span = useMemo<[number, number]>(() => [-LEVEL_GAP, maxLevel * LEVEL_GAP + LEVEL_GAP], [maxLevel]);
 
   // 材质：每种状态一个；颜色由每个节点自己带（领域颜色）
   const looks = useMemo(() => {
@@ -556,11 +674,15 @@ function Scene({
   const glows = useMemo(() => {
     const unreviewed = all.filter((i) => i.lesson.status === 'written');
     const orange = new THREE.Color(palette.warn);
-    const lift = new THREE.Vector3(0, 0.62, 0);
+    // 小橙点放在节点外侧（离轴更远的方向）
+    const lift = (p: THREE.Vector3): THREE.Vector3 => {
+      const out = new THREE.Vector3(0, p.y, p.z).normalize().multiplyScalar(0.62);
+      return p.clone().add(out);
+    };
     return {
       completed: { points: byState.completed.map((i) => i.position), colors: byState.completed.map((i) => i.color) },
       available: { points: byState.available.map((i) => i.position), colors: byState.available.map((i) => i.color) },
-      unreviewed: { points: unreviewed.map((i) => i.position.clone().add(lift)), colors: unreviewed.map(() => orange) },
+      unreviewed: { points: unreviewed.map((i) => lift(i.position)), colors: unreviewed.map(() => orange) },
     };
   }, [all, byState, palette]);
   const glow = useMemo(glowTexture, []);
@@ -591,20 +713,21 @@ function Scene({
     [hit],
   );
 
-  // 「我现在能学什么」：镜头转到所有可学节点的正前方
-  const firstFocus = useRef(focusAvailable);
+  // 「我现在能学什么」：转到可学节点所在的那一面，左右对准它们，推近到正好装下
+  // 只在按钮按下（值变了）时转一次；之后节点状态变了不再转
+  const handledFocus = useRef(focusAvailable);
   useEffect(() => {
-    if (focusAvailable === firstFocus.current) return;
-    const targets = byState.available.map((i) => i.position);
+    if (focusAvailable === handledFocus.current) return;
+    handledFocus.current = focusAvailable;
+    const targets = byState.available;
     if (!targets.length || !rig.current) return;
-    const center = targets.reduce((sum, p) => sum.add(p), new THREE.Vector3()).divideScalar(targets.length);
-    const spread = Math.max(...targets.map((p) => p.distanceTo(center)));
-    const outward = new THREE.Vector3(center.x, 0, center.z);
-    if (outward.length() < 1e-3) outward.set(0, 0, 1);
-    outward.normalize();
-    const distance = Math.max(10, spread * 2.6);
-    const position = center.clone().addScaledVector(outward, distance).add(new THREE.Vector3(0, distance * 0.3, 0));
-    rig.current.flyTo(position, center, reduce ? 0 : 900);
+    const xs = targets.map((i) => i.position.x);
+    const [lo, hi] = [Math.min(...xs), Math.max(...xs)];
+    const sin = targets.reduce((sum, i) => sum + Math.sin(phiOf(i.position)), 0);
+    const cos = targets.reduce((sum, i) => sum + Math.cos(phiOf(i.position)), 0);
+    const current = rig.current.current();
+    const distance = Math.min(homeView.distance, Math.max(18, RADIUS_OUTER + ((hi - lo) / 2 + 3 * LEVEL_GAP) / (tan * aspect)));
+    rig.current.flyTo({ x: (lo + hi) / 2, roll: rollToFront(Math.atan2(sin, cos), current.roll), distance }, reduce ? 0 : 900);
   }, [focusAvailable, byState, reduce]);
 
   useEffect(() => {
@@ -615,7 +738,7 @@ function Scene({
   }, [hover]);
 
   const pick = (e: ThreeEvent<MouseEvent>): void => {
-    // 拖动旋转时松开鼠标不算点击
+    // 拖动时松开鼠标不算点击
     if (e.delta > 6 || e.instanceId === undefined) return;
     e.stopPropagation();
     const item = all[e.instanceId];
@@ -624,10 +747,10 @@ function Scene({
       onOpen(item.lesson);
       return;
     }
-    // 镜头飞向那颗星，再进入小节
-    const camera = rig.current.camera;
-    const toward = camera.position.clone().sub(item.position).normalize();
-    rig.current.flyTo(item.position.clone().addScaledVector(toward, 3), item.position, 650, () => onOpen(item.lesson));
+    // 圆筒转到这颗星正对镜头，镜头飞到它跟前，再进入小节
+    const current = rig.current.current();
+    const fromAxis = Math.hypot(item.position.y, item.position.z);
+    rig.current.flyTo({ x: item.position.x, roll: rollToFront(phiOf(item.position), current.roll), distance: fromAxis + 3 }, 650, () => onOpen(item.lesson));
   };
 
   const hovered = hover ? items.get(hover) : undefined;
@@ -636,37 +759,40 @@ function Scene({
 
   return (
     <>
-      <Controls target={view.target} position={view.position} reduce={reduce} rig={rig} />
+      <DrumControls home={homeView} homeSignal={home} span={span} maxDistance={homeView.distance * 1.4} drum={drum} rig={rig} reduce={reduce} />
       <Ticker active={!reduce && byState.available.length > 0} />
-      <Floor graph={graph} palette={palette} domainColor={domainColor} maxLevel={maxLevel} />
-      <Edges graph={graph} items={items} palette={palette} domainColor={domainColor} />
-      <NodeLayer items={byState.completed} geometry={looks.completed.geometry} material={looks.completed.material} />
-      <NodeLayer items={byState.known} geometry={looks.known.geometry} material={looks.known.material} />
-      <NodeLayer items={byState.available} geometry={looks.available.geometry} material={looks.available.material} />
-      <NodeLayer items={neutral.locked} geometry={looks.locked.geometry} material={looks.locked.material} />
-      <NodeLayer items={neutral.outline} geometry={looks.outline.geometry} material={looks.outline.material} />
-      {glows.completed.points.length > 0 && <Glow {...glows.completed} size={pointSize(2)} opacity={additive ? 0.6 : 0.4} additive={additive} texture={glow} />}
-      {glows.available.points.length > 0 && <Glow {...glows.available} size={pointSize(2.4)} opacity={additive ? 0.85 : 0.55} breathe={!reduce} additive={additive} texture={glow} />}
-      {glows.unreviewed.points.length > 0 && <Glow {...glows.unreviewed} size={pointSize(0.42)} opacity={1} additive={false} texture={glow} />}
-      {hoverRing && <Glow {...hoverRing} size={pointSize(1.5)} opacity={0.9} additive={false} texture={ring} />}
-      {reveal && <RevealEffects reveal={reveal} items={items} texture={glow} additive={additive} />}
-      <primitive
-        object={hit}
-        onPointerMove={(e: ThreeEvent<PointerEvent>) => {
-          e.stopPropagation();
-          const id = e.instanceId === undefined ? null : (all[e.instanceId]?.lesson.id ?? null);
-          if (id !== hover) {
-            setHover(id);
+      <Rulers palette={palette} maxLevel={maxLevel} />
+      <group ref={drum}>
+        <DrumFrame graph={graph} palette={palette} domainColor={domainColor} maxLevel={maxLevel} />
+        <Edges graph={graph} items={items} palette={palette} domainColor={domainColor} />
+        <NodeLayer items={byState.completed} geometry={looks.completed.geometry} material={looks.completed.material} />
+        <NodeLayer items={byState.known} geometry={looks.known.geometry} material={looks.known.material} />
+        <NodeLayer items={byState.available} geometry={looks.available.geometry} material={looks.available.material} />
+        <NodeLayer items={neutral.locked} geometry={looks.locked.geometry} material={looks.locked.material} />
+        <NodeLayer items={neutral.outline} geometry={looks.outline.geometry} material={looks.outline.material} />
+        {glows.completed.points.length > 0 && <Glow {...glows.completed} size={pointSize(2)} opacity={additive ? 0.6 : 0.4} additive={additive} texture={glow} />}
+        {glows.available.points.length > 0 && <Glow {...glows.available} size={pointSize(2.4)} opacity={additive ? 0.85 : 0.55} breathe={!reduce} additive={additive} texture={glow} />}
+        {glows.unreviewed.points.length > 0 && <Glow {...glows.unreviewed} size={pointSize(0.42)} opacity={1} additive={false} texture={glow} />}
+        {hoverRing && <Glow {...hoverRing} size={pointSize(1.5)} opacity={0.9} additive={false} texture={ring} />}
+        {reveal && <RevealEffects reveal={reveal} items={items} texture={glow} additive={additive} />}
+        <primitive
+          object={hit}
+          onPointerMove={(e: ThreeEvent<PointerEvent>) => {
+            e.stopPropagation();
+            const id = e.instanceId === undefined ? null : (all[e.instanceId]?.lesson.id ?? null);
+            if (id !== hover) {
+              setHover(id);
+              invalidate();
+            }
+          }}
+          onPointerOut={() => {
+            setHover(null);
             invalidate();
-          }
-        }}
-        onPointerOut={() => {
-          setHover(null);
-          invalidate();
-        }}
-        onClick={pick}
-      />
-      <CardTracker position={hovered?.position ?? null} cardRef={cardRef} />
+          }}
+          onClick={pick}
+        />
+      </group>
+      <CardTracker position={hovered?.position ?? null} drum={drum} cardRef={cardRef} />
     </>
   );
 }

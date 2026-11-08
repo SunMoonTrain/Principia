@@ -13,7 +13,7 @@ export type LessonStatus = 'outline' | 'written' | 'reviewed';
 export type Tier = 'easy' | 'medium' | 'hard' | 'thinking';
 export type ProofPolicy = 'sketch' | 'full';
 
-export const CONTENT_FORMAT = 1;
+export const CONTENT_FORMAT = 2;
 
 export interface GraphLesson {
   id: string;
@@ -29,9 +29,9 @@ export interface GraphLesson {
   prerequisites: string[];
   /** 层级 = 从没有前置的小节出发的最长前置链长度，根节点为 0。 */
   level: number;
-  /** 星图展开图的横坐标：领域扇区里的角度（度，0–360）。纵坐标就是层级。 */
-  x2d: number;
-  /** 立体星图里的角度（度）和离中轴的距离（场景单位）；高度就是层级。 */
+  /** 横向展开图的纵坐标：领域带里的位置，用圆周上的角度表示（度，0–360）。横坐标就是层级。 */
+  y2d: number;
+  /** 立体星图（横放的圆筒）里绕轴的角度（度）和离轴的距离（场景单位）；沿轴的位置就是层级。 */
   angle: number;
   radius: number;
 }
@@ -45,7 +45,7 @@ export interface GraphDomain {
   /** 内容包的文件名（相对 /data/），带内容哈希，便于浏览器缓存。 */
   pack: string;
   lessons: string[];
-  /** 在星图圆周上占的扇区（度）。 */
+  /** 在星图圆周上占的那一段（度）：横向展开图里是一条横带，立体图里是圆筒上的一条。 */
   sector: [number, number];
   /** 领域颜色的色相（0–360），亮色、暗色主题各自配明暗。 */
   hue: number;
@@ -56,6 +56,8 @@ export interface GraphSubject {
   /** 在星图圆周上占的那一段（度）：数学前半圈，物理后半圈。 */
   start: number;
   end: number;
+  /** 这个学科里一行占多少度：同一层相邻两个节点至少隔一行。 */
+  row: number;
 }
 
 export interface Graph {

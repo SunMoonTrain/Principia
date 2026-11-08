@@ -2348,8 +2348,9 @@ code {
   color: var(--good);
 }
 
+/* 星图比正文宽，尽量用满窗口（平面图再宽的部分横向滚动） */
 .map {
-  max-width: 1120px;
+  max-width: 1680px;
   margin: 0 auto;
   padding: 28px 16px 8px;
 }
@@ -2392,20 +2393,123 @@ code {
   font-weight: 600;
 }
 
-.map-scroll {
-  overflow-x: auto;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: var(--surface);
-}
-
-.map-canvas {
+/* 平面图：横向展开，比屏幕宽，横向滚动。外层是普通的滚动框，里面撑开和图一样大的地方；
+   画图的 SVG 用 sticky 钉在看得见的那一块上，左边一栏领域名、顶上一行层级滚动时不动 */
+.map2d-wrap {
   position: relative;
 }
 
-.map-canvas svg {
+.map2d {
+  height: clamp(460px, 76vh, 860px);
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  user-select: none;
+}
+
+.map2d-spacer {
+  position: relative;
+}
+
+.map2d-svg {
+  position: sticky;
+  top: 0;
+  left: 0;
   display: block;
-  overflow: visible;
+  overflow: hidden;
+  cursor: grab;
+}
+
+.map2d-svg:active {
+  cursor: grabbing;
+}
+
+/* 节点在屏幕上的大小由 --kx、--ky 定（横、纵缩放不一样时点也是圆的）：放大到看得清时不再变，缩小时跟着行距变小 */
+.map2d .map-glyph {
+  transform: scale(var(--kx), var(--ky));
+}
+
+/* 标题按屏幕像素画：字号不随缩放变 */
+.map2d .map-text {
+  transform: scale(var(--ux), var(--uy));
+}
+
+/* 点缩小时圈的线不跟着变细，不然细到半个像素就成了锯齿 */
+.map2d .map-dot {
+  vector-effect: non-scaling-stroke;
+}
+
+/* 待写的虚线圈：点小的时候虚线碎成锯齿，改成实线细圈；放大到显示标题时才是虚线 */
+.map2d-svg:not(.map2d-zoomed) .map-node-outline .map-dot {
+  stroke-dasharray: none;
+  stroke-width: 1.2;
+}
+
+/* 缩小看全图时，没点亮的连线再淡一些，节点更显眼 */
+.map2d-svg:not(.map2d-zoomed) .map-edge:not(.map-edge-lit) {
+  stroke-opacity: 0.5;
+}
+
+/* 缩小看全图时不显示节点标题（看悬停卡片），放大到看得清时才显示 */
+.map2d-svg:not(.map2d-zoomed) .map-label {
+  display: none;
+}
+
+/* 连线、层级线的粗细和虚线不随缩放变 */
+.map2d .map-edge,
+.map2d .map-level-line {
+  vector-effect: non-scaling-stroke;
+}
+
+.map2d-head {
+  fill: color-mix(in srgb, var(--surface) 94%, transparent);
+}
+
+.map2d-level {
+  text-anchor: middle;
+}
+
+/* 学科名竖着写（汉字立着），在左边一栏里上下居中 */
+.map2d-subject {
+  writing-mode: vertical-rl;
+  letter-spacing: 0.3em;
+}
+
+.map2d .map2d-level-title,
+.map2d .map2d-domain {
+  text-anchor: end;
+}
+
+.map2d .map2d-domain {
+  font-size: 12px;
+}
+
+.map2d-zoom {
+  position: absolute;
+  right: 14px;
+  bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.map2d-zoom-button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text-soft);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.map2d-zoom-button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .map-subject-0 {
@@ -2707,7 +2811,7 @@ code {
 
 .map3d {
   position: relative;
-  height: clamp(420px, 64vh, 700px);
+  height: clamp(380px, 56vh, 600px);
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 14px;

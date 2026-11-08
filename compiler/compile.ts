@@ -228,7 +228,7 @@ export function compileContent(root: string): CompileResult {
       minutes: l.minutes,
       prerequisites: l.prerequisites,
       level: levels.get(l.id) ?? 0,
-      x2d: layout.x.get(l.id) ?? 0,
+      y2d: layout.y2d.get(l.id) ?? 0,
       angle: layout.polar.get(l.id)?.angle ?? 0,
       radius: layout.polar.get(l.id)?.radius ?? 0,
     }))
