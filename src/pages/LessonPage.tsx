@@ -1,0 +1,269 @@
+// 小节页：按固定顺序显示 7 个必选部分（根节点没有前置回顾）和可选的常见误区，
+// 见 docs/plan.md「每节固定结构与写作规范」。前置回顾、一句话总结、8 道题由数据自动生成。
+// 宽屏时左侧有目录栏，窄屏（iPad 竖屏）改成顶部的一行目录。
+
+import { useEffect, useLayoutEffect, type ReactNode } from 'react';
+import { Link, useLocation, useParams } from 'react-router';
+import type { GraphLesson, LessonContent, Rich as RichValue, Tier } from '../../shared/content-types';
+import { lessonPath } from '../../shared/ids';
+import { LessonSidebar, type OutlineItem } from '../components/LessonSidebar';
+import { ProblemCard } from '../components/ProblemCard';
+import { StatusBadge } from '../components/StatusBadge';
+import { useContent, useDomainPack } from '../content/ContentContext';
+import { LessonContext } from '../content/LessonContext';
+import { Rich } from '../content/Rich';
+import { subjectTitle } from '../subjects';
+import { NotFoundPage } from './NotFoundPage';
+
+const PROOF_POLICY: Record<string, string> = { sketch: '讲解只给证明思路', full: '讲解给完整证明' };
+const TIER_LABELS: Record<Tier, string> = { easy: '简单', medium: '中等', hard: '难', thinking: '思考' };
+
+function Section({ id, title, auto, children }: { id: string; title: string; auto?: boolean; children: ReactNode }) {
+  return (
+    <section className={auto ? 'lesson-section lesson-section-auto' : 'lesson-section'} id={`section-${id}`} aria-labelledby={`section-${id}-title`}>
+      <h2 className="lesson-section-title" id={`section-${id}-title`}>
+        {title}
+      </h2>
+      <div className="lesson-section-body">{children}</div>
+    </section>
+  );
+}
+
+function PrereqReview({ lesson }: { lesson: GraphLesson }) {
+  const { lessons } = useContent();
+  return (
+    <ul className="prereq-list">
+      {lesson.prerequisites.map((id) => {
+        const p = lessons.get(id);
+        if (!p) return null;
+        const outline = p.status === 'outline';
+        return (
+          <li key={id}>
+            <Link to={lessonPath(id)} className="prereq-title">
+              <Rich value={p.title} />
+            </Link>
+            {outline && <span className="badge badge-outline">待写</span>}
+            <span className="prereq-text">
+              ：<Rich value={outline ? p.goal : (p.summary ?? p.goal)} />
+            </span>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+/** 一个部分里的三级标题（编译器给它们编了 id）。 */
+function subheadings(section: RichValue | null): OutlineItem[] {
+  const items: OutlineItem[] = [];
+  for (const node of section?.children ?? []) {
+    if (node.type !== 'element' || node.tagName !== 'h3' || typeof node.properties.id !== 'string') continue;
+    items.push({ id: node.properties.id, label: { type: 'root', children: node.children }, depth: 2 });
+  }
+  return items;
+}
+
+/** 这一节的目录：各部分，加上讲解、例题等部分里的三级标题，和 8 道题。 */
+function buildOutline(lesson: GraphLesson, content: LessonContent | null): OutlineItem[] {
+  if (!content) {
+    return lesson.prerequisites.length ? [{ id: 'section-prerequisites', label: '前置回顾', depth: 1 }] : [];
+  }
+  const { sections } = content;
+  const part = (key: string, label: string, sub: RichValue | null = null): OutlineItem[] => [
+    { id: `section-${key}`, label, depth: 1 },
+    ...subheadings(sub),
+  ];
+  return [
+    ...part('question', '这一节要回答的问题', sections.question),
+    ...(lesson.prerequisites.length ? part('prerequisites', '前置回顾') : []),
+    ...part('explanation', '讲解', sections.explanation),
+    ...part('picture', '几何图像', sections.picture),
+    ...part('examples', '例题', sections.examples),
+    ...part('summary', '一句话总结'),
+    ...(sections.misconceptions ? part('misconceptions', '常见误区', sections.misconceptions) : []),
+    ...part('problems', '8 道题'),
+    ...content.problems.map((p, i): OutlineItem => ({ id: `problem-${p.id}`, label: `第 ${i + 1} 题 · ${TIER_LABELS[p.tier]}`, depth: 2, tier: p.tier })),
+  ];
+}
+
+/** 窄屏时顶部的一行目录（宽屏改用左侧目录栏）。 */
+function SectionNav({ outline }: { outline: OutlineItem[] }) {
+  const short: Record<string, string> = { 'section-question': '问题' };
+  return (
+    <nav className="section-nav" aria-label="本节目录">
+      {outline
+        .filter((item) => item.depth === 1)
+        .map((item) => (
+          <Link key={item.id} to={`#${item.id}`}>
+            {short[item.id] ?? (item.label as string)}
+          </Link>
+        ))}
+    </nav>
+  );
+}
+
+function WrittenLesson({ lesson, content }: { lesson: GraphLesson; content: LessonContent }) {
+  const { sections } = content;
+  return (
+    <>
+      <Section id="question" title="这一节要回答的问题">
+        <div className="prose prose-lead">
+          <Rich value={sections.question} />
+        </div>
+      </Section>
+      {lesson.prerequisites.length > 0 && (
+        <Section id="prerequisites" title="前置回顾" auto>
+          <PrereqReview lesson={lesson} />
+        </Section>
+      )}
+      <Section id="explanation" title="讲解">
+        <div className="prose">
+          <Rich value={sections.explanation} />
+        </div>
+      </Section>
+      <Section id="picture" title="几何图像">
+        <div className="prose">
+          <Rich value={sections.picture} />
+        </div>
+      </Section>
+      <Section id="examples" title="例题">
+        <div className="prose">
+          <Rich value={sections.examples} />
+        </div>
+      </Section>
+      <Section id="summary" title="一句话总结" auto>
+        <p className="summary-text">
+          <Rich value={lesson.summary} />
+        </p>
+      </Section>
+      {sections.misconceptions && (
+        <Section id="misconceptions" title="常见误区">
+          <div className="prose">
+            <Rich value={sections.misconceptions} />
+          </div>
+        </Section>
+      )}
+      <Section id="problems" title="8 道题" auto>
+        <div className="problem-list">
+          {content.problems.map((p, i) => (
+            <ProblemCard key={p.id} problem={p} index={i} />
+          ))}
+        </div>
+      </Section>
+    </>
+  );
+}
+
+function OutlineLesson({ lesson }: { lesson: GraphLesson }) {
+  return (
+    <>
+      <div className="outline-note">
+        <p>
+          这一节还没写，只有目录。它要做到的是：
+          <strong>
+            <Rich value={lesson.goal} />
+          </strong>
+        </p>
+      </div>
+      {lesson.prerequisites.length > 0 && (
+        <Section id="prerequisites" title="前置回顾" auto>
+          <PrereqReview lesson={lesson} />
+        </Section>
+      )}
+    </>
+  );
+}
+
+/** 跳到地址里 # 后面的位置（目录栏、术语浮窗的链接），没有就回到顶部。定义段落跳过去后高亮一下。 */
+function useScrollToHash(ready: boolean): void {
+  const location = useLocation();
+  useLayoutEffect(() => {
+    if (!ready) return;
+    const hash = decodeURIComponent(location.hash.replace(/^#/, ''));
+    if (!hash) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    const target = document.querySelector<HTMLElement>(`[data-anchor="${CSS.escape(hash)}"]`) ?? document.getElementById(hash);
+    if (!target) return;
+    // 滚动停下来以后再高亮，不然长距离滚动时高亮在半路就褪完了
+    let flashed = !target.matches('[data-anchor]');
+    const flash = (): void => {
+      if (flashed) return;
+      flashed = true;
+      window.removeEventListener('scrollend', flash);
+      target.classList.remove('anchor-flash');
+      void target.offsetWidth; // 重新触发高亮动画
+      target.classList.add('anchor-flash');
+    };
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.addEventListener('scrollend', flash);
+    const timer = window.setTimeout(flash, reduce ? 0 : 1000);
+    target.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener('scrollend', flash);
+    };
+  }, [location.key, location.hash, ready]);
+}
+
+export function LessonPage() {
+  const { id = '' } = useParams();
+  const { graph, lessons, domains, error } = useContent();
+  const lesson = lessons.get(id);
+  const domain = lesson ? domains.get(lesson.domain) : undefined;
+  const { pack, error: packError } = useDomainPack(lesson?.domain);
+  const content = pack?.lessons[id] ?? null;
+  const ready = !!lesson && (lesson.status === 'outline' || !!content);
+  useScrollToHash(ready);
+
+  useEffect(() => {
+    if (lesson) document.title = `${lesson.titleText} · Principia`;
+    return () => {
+      document.title = 'Principia';
+    };
+  }, [lesson]);
+
+  if (error && !graph) return <p className="page-message">读不到内容：{error}</p>;
+  if (!graph) return <p className="page-message">正在读取内容…</p>;
+  if (!lesson || !domain) return <NotFoundPage what={`小节「${id}」`} />;
+
+  const outline = buildOutline(lesson, lesson.status === 'outline' ? null : content);
+  return (
+    <LessonContext.Provider value={{ lessonId: lesson.id, glossary: pack?.glossary ?? {} }}>
+      <div className="lesson-layout">
+        <LessonSidebar lesson={lesson} outline={outline} />
+        <article className="lesson">
+          <header className="lesson-head">
+            <div className="lesson-crumbs">
+              <Link to="/">{subjectTitle(lesson.subject)}</Link>
+              <span aria-hidden="true">／</span>
+              <span>
+                <Rich value={domain.title} />
+              </span>
+            </div>
+            <h1 className="lesson-title">
+              <Rich value={lesson.title} />
+              <StatusBadge status={lesson.status} />
+            </h1>
+            <div className="lesson-meta">
+              <span>层级 {lesson.level}</span>
+              {lesson.minutes !== null && <span>约 {lesson.minutes} 分钟（不含做题）</span>}
+              {lesson.status !== 'outline' && <span>{PROOF_POLICY[content?.proofPolicy ?? domain.proofPolicy]}</span>}
+            </div>
+          </header>
+          {lesson.status === 'outline' ? (
+            <OutlineLesson lesson={lesson} />
+          ) : content ? (
+            <>
+              <SectionNav outline={outline} />
+              <WrittenLesson lesson={lesson} content={content} />
+            </>
+          ) : (
+            <p className="page-message">{packError ? `读不到内容包：${packError}` : '正在读取这一节…'}</p>
+          )}
+        </article>
+      </div>
+    </LessonContext.Provider>
+  );
+}

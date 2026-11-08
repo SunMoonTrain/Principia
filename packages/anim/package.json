@@ -1,0 +1,13 @@
+{
+  "name": "@principia/anim",
+  "version": "0.0.0",
+  "private": true,
+  "description": "可复用动画组件库（台阶 7 起实现）；不依赖网站的任何代码",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  }
+}

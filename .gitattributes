@@ -1,0 +1,10 @@
+# 统一 LF 换行：不让 Git 在 Windows 上把 YAML、Markdown 转成 CRLF（见 docs/plan.md「Windows 上额外的坑」）
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary

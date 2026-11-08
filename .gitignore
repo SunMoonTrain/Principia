@@ -1,0 +1,9 @@
+node_modules/
+dist/
+# 内容编译器的输出（graph.json、各领域内容包、校验报告），每次构建重新生成
+generated/
+*.log
+*.tsbuildinfo
+.vite/
+.DS_Store
+Thumbs.db
