@@ -1,6 +1,7 @@
 // 顶栏右上角：进度服务的连接状态，和「存档」按钮（把 progress/ 提交到 Git）。
 
 import { useEffect, useState } from 'react';
+import { useNotesSync } from '../progress/notes';
 import { useProgress } from '../progress/ProgressContext';
 
 interface Notice {
@@ -10,6 +11,10 @@ interface Notice {
 
 export function ArchiveButton() {
   const progress = useProgress();
+  const notes = useNotesSync();
+  // 笔记停止输入 1 秒就保存，顶栏不跟着闪「正在保存」；只有连不上时把没保存的笔记也算进待补交
+  const online = progress.online && !notes.offline;
+  const pending = progress.pending + (online ? 0 : notes.pending);
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState<Notice | null>(null);
 
@@ -37,13 +42,13 @@ export function ArchiveButton() {
 
   return (
     <div className="archive">
-      {!progress.online && (
-        <span className="sync-status sync-offline" title="页面开着时进度服务断了：记录先存在这台设备的浏览器里，连上后自动补交">
+      {!online && (
+        <span className="sync-status sync-offline" title="页面开着时进度服务断了：记录和笔记先存在这台设备的浏览器里，连上后自动补交">
           <span className="sync-dot" aria-hidden="true" />
-          没连上进度服务{progress.pending ? ` · ${progress.pending} 条待补交` : ''}
+          没连上进度服务{pending ? ` · ${pending} 条待补交` : ''}
         </span>
       )}
-      {progress.online && progress.pending > 0 && <span className="sync-status">正在保存…</span>}
+      {online && pending > 0 && <span className="sync-status">正在保存…</span>}
       <button type="button" className="archive-button" onClick={() => void archive()} disabled={busy} title="把进度（progress/）提交到 Git">
         {busy ? '存档中…' : '存档'}
       </button>

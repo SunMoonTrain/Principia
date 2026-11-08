@@ -59,6 +59,54 @@ describe('读写 progress/', () => {
     expect(parse(fs.readFileSync(store.problemsFile('math.analysis'), 'utf8'))[L].p5.note).toBe('手写的备注');
   });
 
+  it('台阶 4 的字段按定好的格式和顺序写；批语写成块写法', async () => {
+    const store = new ProgressStore(path.join(tempDir(), 'progress'));
+    await store.apply([
+      { type: 'grade', lesson: L, problem: 'p5', grade: { id: '5e1d0c2a-0001', at: '2026-11-09T11:05:00+08:00', result: 'partial', comment: '第二步没说明 $A+B$ 非空。' } },
+      { type: 'hint', lesson: L, problem: 'p5', level: 1, at: '2026-11-09T10:10:00+08:00' },
+      { type: 'review-dismiss', lesson: L, problem: 'p1', at: '2026-11-10T21:00:00+08:00' },
+      { type: 'unsure', lesson: L, problem: 'p1', value: true, at: '2026-11-09T10:02:11+08:00' },
+      attempt('aaaaaaaa', '2026-11-08T15:41:02+08:00', 'correct', 'sqrt(3)'),
+    ]);
+    const text = fs.readFileSync(store.problemsFile('math.analysis'), 'utf8');
+    expect(text).toContain(
+      `  p1:\n    attempts:\n      - id: aaaaaaaa\n        at: 2026-11-08T15:41:02+08:00\n        input: sqrt(3)\n        result: correct\n` +
+        `    unsure: true\n    unsureAt: 2026-11-09T10:02:11+08:00\n    reviewDismissedAt: 2026-11-10T21:00:00+08:00\n`,
+    );
+    expect(text).toContain(
+      `  p5:\n    hints:\n      1: 2026-11-09T10:10:00+08:00\n    status: graded\n    statusAt: 2026-11-09T11:05:00+08:00\n` +
+        `    grades:\n      - id: 5e1d0c2a-0001\n        at: 2026-11-09T11:05:00+08:00\n        result: partial\n        comment: |-\n          第二步没说明 $A+B$ 非空。\n`,
+    );
+    // 读回来一样
+    expect(store.read().problems[L].p5.grades?.[0].comment).toBe('第二步没说明 $A+B$ 非空。');
+  });
+
+  it('「内容有误」写进 content/issues.yaml：只往后追加，按 id 去重，原文写成块写法', async () => {
+    const dir = tempDir();
+    const store = new ProgressStore(path.join(dir, 'progress'));
+    const issue = { id: '7f3c2a1e-0001', at: '2026-11-09T10:20:00+08:00', lesson: L, part: 'p3 / 解答', quote: '偶数项从下方逼近 $1$', note: '应该是奇数项？' };
+    await store.apply([{ type: 'issue', issue }, { type: 'issue', issue }]);
+    await store.apply([{ type: 'issue', issue: { id: '7f3c2a1e-0002', at: '2026-11-09T10:25:00+08:00', lesson: L, part: '讲解 / 有理数轴上的洞' } }]);
+    const file = path.join(dir, 'content', 'issues.yaml');
+    expect(store.issuesFile).toBe(file);
+    const text = fs.readFileSync(file, 'utf8');
+    expect(text).toContain(
+      `- id: 7f3c2a1e-0001\n  at: 2026-11-09T10:20:00+08:00\n  lesson: ${L}\n  part: p3 / 解答\n  quote: |-\n    偶数项从下方逼近 $1$\n  note: |-\n    应该是奇数项？\n- id: 7f3c2a1e-0002\n`,
+    );
+    expect(store.readIssues().map((i) => i.id)).toEqual(['7f3c2a1e-0001', '7f3c2a1e-0002']);
+    // 进度文件不受影响
+    expect(fs.existsSync(store.dir)).toBe(false);
+  });
+
+  it('issues.yaml 被改成了别的样子：报错，不覆盖', async () => {
+    const dir = tempDir();
+    const store = new ProgressStore(path.join(dir, 'progress'));
+    fs.mkdirSync(path.dirname(store.issuesFile), { recursive: true });
+    fs.writeFileSync(store.issuesFile, 'a: 1\n');
+    await expect(store.apply([{ type: 'issue', issue: { id: 'iiiiiiii', at: '2026-11-09T10:20:00+08:00', lesson: L, part: 'p1' } }])).rejects.toThrow('应该是一个列表');
+    expect(fs.readFileSync(store.issuesFile, 'utf8')).toBe('a: 1\n');
+  });
+
   it('文件被手动改坏时报错，不覆盖', async () => {
     const store = new ProgressStore(path.join(tempDir(), 'progress'));
     fs.mkdirSync(store.dir, { recursive: true });
@@ -142,6 +190,24 @@ describe('存档', () => {
     // 第二次只算新做的题
     await store.apply([attempt('dddddddd', '2026-11-08T17:00:00+08:00', 'wrong', '0', 'p3')]);
     expect(await archiveProgress(store, dir, title)).toMatchObject({ committed: true, message: '做题 1 道' });
+  });
+
+  it('批改记录算做题；写过的笔记另算「写笔记 N 题」，另存的冲突版本不算', async () => {
+    const dir = repo();
+    const store = new ProgressStore(path.join(dir, 'progress'));
+    await store.apply([{ type: 'grade', lesson: L, problem: 'p5', grade: { id: 'gggggggg-1', at: '2026-11-09T11:05:00+08:00', result: 'pass' } }]);
+    const notesDir = path.join(dir, 'progress', 'notes', L);
+    fs.mkdirSync(notesDir, { recursive: true });
+    fs.writeFileSync(path.join(notesDir, 'p5.md'), '思路\n');
+    fs.writeFileSync(path.join(notesDir, 'p7.md'), '想法\n');
+    fs.writeFileSync(path.join(notesDir, 'p5.conflict-20261109-104000.md'), '另一份\n');
+    const result = await archiveProgress(store, dir, title);
+    expect(result).toMatchObject({ committed: true, message: '做题 1 道；写笔记 2 题' });
+    expect(git(dir, 'show', '--name-only', '--format=', 'HEAD').trim().split('\n')).toContain(`progress/notes/${L}/p5.conflict-20261109-104000.md`);
+    // 改一份、删一份：只算改的
+    fs.writeFileSync(path.join(notesDir, 'p5.md'), '思路，补了第二步\n');
+    fs.rmSync(path.join(notesDir, 'p7.md'));
+    expect(await archiveProgress(store, dir, title)).toMatchObject({ committed: true, message: '写笔记 1 题' });
   });
 
   it('只看了提示、打开了小节时，提交信息写「更新学习进度」', () => {

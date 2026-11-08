@@ -4,7 +4,7 @@ import type { Answer, Problem, Rich, Tier, Tolerance } from '../shared/content-t
 import { evaluateValue } from '../shared/expr.ts';
 import { PROBLEM_IDS, TIER_ORDER } from '../shared/ids.ts';
 import { readText } from './fsutil.ts';
-import { renderField, type MdContext } from './markdown.ts';
+import { renderField, sourceText, type MdContext } from './markdown.ts';
 import { ProblemSchema, reportIssues } from './schema.ts';
 import { PRECISION_RE } from './text-rules.ts';
 import { lineOf, parseYaml, textAt, type TextField, type YamlFile } from './yaml-text.ts';
@@ -125,6 +125,7 @@ function processProblem(y: YamlFile, raw: unknown, i: number, ctx: FieldCtx): Pr
     id: p.id,
     tier: p.tier,
     statement: render(y, statement, ctx, 'rich') ?? { type: 'root', children: [] },
+    statementText: !auto && statement ? sourceText(statement.value) : null,
     answer,
     tolerance,
     hints: [renderedHints[0], renderedHints[1], renderedHints[2]],

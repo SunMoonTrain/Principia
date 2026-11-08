@@ -4,7 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { Plugin, ResolvedConfig, ViteDevServer } from 'vite';
-import { compileContent, type CompileResult } from './compile.ts';
+import { compileContent, NOT_CONTENT, type CompileResult } from './compile.ts';
 import { formatReport } from './diagnostics.ts';
 import { writeOutputs } from './output.ts';
 
@@ -85,7 +85,7 @@ export function contentPlugin(): Plugin {
       server.watcher.add(contentDir);
       server.watcher.on('all', (_event, file) => {
         const relative = path.relative(contentDir, file);
-        if (!relative.startsWith('..') && !path.isAbsolute(relative)) recompile();
+        if (!relative.startsWith('..') && !path.isAbsolute(relative) && !NOT_CONTENT.has(relative)) recompile();
       });
       // 构建失败时打开页面，也要看到错误
       server.ws.on('connection', () => {

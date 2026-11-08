@@ -33,8 +33,11 @@ async function readCommitted(root: string, rel: string): Promise<ProgressState> 
   return { lessons, problems };
 }
 
-/** 例如「学完 2 节：实数的完备性、确界原理；做题 11 道」。做题数按题目数计，不按作答次数。 */
-export function archiveMessage(before: ProgressState, after: ProgressState, title: (lessonId: string) => string): string {
+/**
+ * 例如「学完 2 节：实数的完备性、确界原理；做题 11 道」。做题数按题目数计，不按作答次数：
+ * 有新作答或新批改记录的题算一道。notesChanged 是新写或改过的笔记数（不算另存的冲突版本）。
+ */
+export function archiveMessage(before: ProgressState, after: ProgressState, title: (lessonId: string) => string, notesChanged = 0): string {
   const changedTo = (status: string): string[] =>
     Object.keys(after.lessons)
       .filter((id) => after.lessons[id].status === status && before.lessons[id]?.status !== status)
@@ -45,15 +48,27 @@ export function archiveMessage(before: ProgressState, after: ProgressState, titl
   let solved = 0;
   for (const [lesson, problems] of Object.entries(after.problems)) {
     for (const [problem, record] of Object.entries(problems)) {
-      const old = new Set((before.problems[lesson]?.[problem]?.attempts ?? []).map((a) => a.id));
-      if ((record.attempts ?? []).some((a) => !old.has(a.id))) solved++;
+      const previous = before.problems[lesson]?.[problem];
+      const old = new Set([...(previous?.attempts ?? []), ...(previous?.grades ?? [])].map((r) => r.id));
+      if ([...(record.attempts ?? []), ...(record.grades ?? [])].some((r) => !old.has(r.id))) solved++;
     }
   }
   const parts: string[] = [];
   if (completed.length) parts.push(`学完 ${completed.length} 节：${completed.join('、')}`);
   if (known.length) parts.push(`标为已会 ${known.length} 节：${known.join('、')}`);
   if (solved) parts.push(`做题 ${solved} 道`);
+  if (notesChanged) parts.push(`写笔记 ${notesChanged} 题`);
   return parts.join('；') || '更新学习进度';
+}
+
+/** git status --porcelain 里新写或改过的笔记 progress/notes/<小节>/<题号>.md（删掉的、另存的冲突版本不算）。 */
+export function changedNotes(status: string, rel: string): number {
+  const prefix = `${rel}/notes/`;
+  return status.split('\n').filter((line) => {
+    const code = line.slice(0, 2);
+    const file = line.slice(3).replace(/^"|"$/g, '');
+    return !code.includes('D') && file.startsWith(prefix) && /^[^/]+\/p[1-8]\.md$/.test(file.slice(prefix.length));
+  }).length;
 }
 
 export interface ArchiveResult {
@@ -67,7 +82,7 @@ export async function archiveProgress(store: ProgressStore, root: string, title:
   // -uall：即使 Git 配置里关了「显示未跟踪文件」，第一次存档的新文件也要看得到
   const status = await git(root, ['status', '--porcelain', '--untracked-files=all', '--', rel]);
   if (!status.trim()) return { committed: false, message: '没有新的进度，不用存档' };
-  const message = archiveMessage(await readCommitted(root, rel), store.read(), title);
+  const message = archiveMessage(await readCommitted(root, rel), store.read(), title, changedNotes(status, rel));
   await git(root, ['add', '--', rel]);
   // 带上路径只提交 progress/，暂存区里别的改动不受影响
   await git(root, ['commit', '-m', message, '--', rel]);

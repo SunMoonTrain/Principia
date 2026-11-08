@@ -28,6 +28,9 @@ export interface CompileResult {
   packs: Map<string, DomainPack> | null;
 }
 
+/** content/ 下不算内容的文件：网站写的「内容有误」和写内容 agent 的处理记录。改了它们不用重编。 */
+export const NOT_CONTENT = new Set(['issues.yaml', 'issues-resolved.yaml']);
+
 function dirs(dir: string): string[] {
   return fs
     .readdirSync(dir, { withFileTypes: true })

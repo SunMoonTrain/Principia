@@ -6,24 +6,33 @@ import { useEffect, useLayoutEffect, type ReactNode } from 'react';
 import { Link, useLocation, useParams } from 'react-router';
 import type { GraphLesson, LessonContent, Rich as RichValue, Tier } from '../../shared/content-types';
 import { lessonPath } from '../../shared/ids';
-import { localTimestamp } from '../../shared/progress';
+import { laterTimestamp, localTimestamp } from '../../shared/progress';
 import { SectionKindContext } from '../components/AnchorBlock';
+import { IssueReporter } from '../components/IssueReporter';
 import { LessonSidebar, type OutlineItem } from '../components/LessonSidebar';
 import { ProblemCard } from '../components/ProblemCard';
 import { StatusBadge } from '../components/StatusBadge';
 import { useContent, useDomainPack } from '../content/ContentContext';
 import { LessonContext } from '../content/LessonContext';
 import { Rich } from '../content/Rich';
+import { useLessonNotes } from '../progress/notes';
 import { useProgress } from '../progress/ProgressContext';
 import { subjectTitle } from '../subjects';
 import { NotFoundPage } from './NotFoundPage';
 
 const PROOF_POLICY: Record<string, string> = { sketch: '讲解只给证明思路', full: '讲解给完整证明' };
+const NO_MACROS: Record<string, string> = {};
 const TIER_LABELS: Record<Tier, string> = { easy: '简单', medium: '中等', hard: '难', thinking: '思考' };
 
 function Section({ id, title, auto, children }: { id: string; title: string; auto?: boolean; children: ReactNode }) {
   return (
-    <section className={auto ? 'lesson-section lesson-section-auto' : 'lesson-section'} id={`section-${id}`} aria-labelledby={`section-${id}-title`}>
+    // data-part：「内容有误」记下选中的文字在哪一部分
+    <section
+      className={auto ? 'lesson-section lesson-section-auto' : 'lesson-section'}
+      id={`section-${id}`}
+      aria-labelledby={`section-${id}-title`}
+      data-part={title}
+    >
       <h2 className="lesson-section-title" id={`section-${id}-title`}>
         {title}
       </h2>
@@ -118,7 +127,7 @@ function LessonDone({ lesson }: { lesson: GraphLesson }) {
   const record = progress.state.lessons[lesson.id];
   const done = record?.status === 'completed';
   const set = (status: 'completed' | 'none'): void =>
-    progress.dispatch({ type: 'lesson-status', lesson: lesson.id, status, at: localTimestamp() });
+    progress.dispatch({ type: 'lesson-status', lesson: lesson.id, status, at: laterTimestamp(record?.statusAt) });
   return (
     <section className={done ? 'lesson-done lesson-done-yes' : 'lesson-done'} aria-label="学完这一节">
       {done ? (
@@ -273,6 +282,8 @@ export function LessonPage() {
     if (progressReady && writtenLesson && !startedAt) dispatch({ type: 'lesson-open', lesson: id, at: localTimestamp() });
   }, [progressReady, writtenLesson, startedAt, id, dispatch]);
   const done = progress.state.lessons[id]?.status === 'completed';
+  // 难题、思考题的思路笔记
+  useLessonNotes(writtenLesson ? id : null);
 
   useEffect(() => {
     if (lesson) document.title = `${lesson.titleText} · Principia`;
@@ -287,41 +298,43 @@ export function LessonPage() {
 
   const outline = buildOutline(lesson, lesson.status === 'outline' ? null : content);
   return (
-    <LessonContext.Provider value={{ lessonId: lesson.id, glossary: pack?.glossary ?? {} }}>
-      <div className="lesson-layout">
-        <LessonSidebar lesson={lesson} outline={outline} />
-        <article className="lesson">
-          <header className="lesson-head">
-            <div className="lesson-crumbs">
-              <Link to="/">{subjectTitle(lesson.subject)}</Link>
-              <span aria-hidden="true">／</span>
-              <span>
-                <Rich value={domain.title} />
-              </span>
-            </div>
-            <h1 className="lesson-title">
-              <Rich value={lesson.title} />
-              <StatusBadge status={lesson.status} />
-              {done && <span className="badge badge-done">已学完</span>}
-            </h1>
-            <div className="lesson-meta">
-              <span>层级 {lesson.level}</span>
-              {lesson.minutes !== null && <span>约 {lesson.minutes} 分钟（不含做题）</span>}
-              {lesson.status !== 'outline' && <span>{PROOF_POLICY[content?.proofPolicy ?? domain.proofPolicy]}</span>}
-            </div>
-          </header>
-          {lesson.status === 'outline' ? (
-            <OutlineLesson lesson={lesson} />
-          ) : content ? (
-            <>
-              <SectionNav outline={outline} />
-              <WrittenLesson lesson={lesson} content={content} />
-            </>
-          ) : (
-            <p className="page-message">{packError ? `读不到内容包：${packError}` : '正在读取这一节…'}</p>
-          )}
-        </article>
-      </div>
+    <LessonContext.Provider value={{ lessonId: lesson.id, glossary: pack?.glossary ?? {}, macros: pack?.macros ?? NO_MACROS }}>
+      <IssueReporter lesson={lesson.id}>
+        <div className="lesson-layout">
+          <LessonSidebar lesson={lesson} outline={outline} />
+          <article className="lesson">
+            <header className="lesson-head">
+              <div className="lesson-crumbs">
+                <Link to="/">{subjectTitle(lesson.subject)}</Link>
+                <span aria-hidden="true">／</span>
+                <span>
+                  <Rich value={domain.title} />
+                </span>
+              </div>
+              <h1 className="lesson-title">
+                <Rich value={lesson.title} />
+                <StatusBadge status={lesson.status} />
+                {done && <span className="badge badge-done">已学完</span>}
+              </h1>
+              <div className="lesson-meta">
+                <span>层级 {lesson.level}</span>
+                {lesson.minutes !== null && <span>约 {lesson.minutes} 分钟（不含做题）</span>}
+                {lesson.status !== 'outline' && <span>{PROOF_POLICY[content?.proofPolicy ?? domain.proofPolicy]}</span>}
+              </div>
+            </header>
+            {lesson.status === 'outline' ? (
+              <OutlineLesson lesson={lesson} />
+            ) : content ? (
+              <>
+                <SectionNav outline={outline} />
+                <WrittenLesson lesson={lesson} content={content} />
+              </>
+            ) : (
+              <p className="page-message">{packError ? `读不到内容包：${packError}` : '正在读取这一节…'}</p>
+            )}
+          </article>
+        </div>
+      </IssueReporter>
     </LessonContext.Provider>
   );
 }

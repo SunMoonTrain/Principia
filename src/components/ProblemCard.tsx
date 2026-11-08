@@ -1,5 +1,6 @@
 // 一道题。简单题、中等题可以当场作答：数值题填式子，选择题点选项；答对或放弃后显示解答。
-// 难题、思考题只显示题干和提示（笔记与批改是台阶 4）。提示点开一级才出现下一级的按钮。
+// 难题、思考题写思路笔记、复制给 Claude 批改、录入批改结果（ProblemWork）。提示点开一级才出现下一级的按钮。
+// 每道题底下都有「没把握」「内容有误」（ProblemMarks）。data-problem、data-subpart 给「内容有误」定位用。
 
 import { useState, type FormEvent } from 'react';
 import type { Answer, Problem, Tier } from '../../shared/content-types';
@@ -16,6 +17,8 @@ import {
 import { useLessonContext } from '../content/LessonContext';
 import { Rich } from '../content/Rich';
 import { newId, useProgress } from '../progress/ProgressContext';
+import { ProblemMarks } from './ProblemMarks';
+import { ProblemWork, WorkBadge } from './ProblemWork';
 
 const TIER_LABELS: Record<Tier, string> = { easy: '简单', medium: '中等', hard: '难', thinking: '思考' };
 const HINT_NAMES = ['方向', '关键步骤', '完整解答'];
@@ -130,7 +133,7 @@ function ChoiceForm({ answer, onSubmit }: { answer: ChoiceAnswer; onSubmit: (inp
           const n = i + 1;
           const on = selected.includes(n);
           return (
-            <li key={n}>
+            <li key={n} data-subpart={`选项 ${OPTION_LABELS[i]}`}>
               <button
                 type="button"
                 className={on ? 'option option-selected' : 'option'}
@@ -190,24 +193,29 @@ export function ProblemCard({ problem, index }: { problem: Problem; index: numbe
   };
 
   return (
-    <article className={`problem problem-${problem.tier}${feedback?.kind === 'correct' ? ' problem-just-solved' : ''}`} id={`problem-${problem.id}`}>
+    <article
+      className={`problem problem-${problem.tier}${feedback?.kind === 'correct' ? ' problem-just-solved' : ''}`}
+      id={`problem-${problem.id}`}
+      data-problem={problem.id}
+    >
       <header className="problem-head">
         <span className={`tier tier-${problem.tier}`}>{TIER_LABELS[problem.tier]}</span>
         <span className="problem-number">第 {index + 1} 题</span>
         <span className="problem-kind">{answerKind(problem)}</span>
-        {a && <FirstResultBadge result={firstResult(record)} />}
+        {a ? <FirstResultBadge result={firstResult(record)} /> : <WorkBadge record={record} />}
       </header>
-      <div className="problem-statement">
+      <div className="problem-statement" data-subpart="题干">
         <Rich value={problem.statement} />
       </div>
 
       {a?.type === 'choice' && <ChoiceForm answer={a} onSubmit={submit} />}
       {a && a.type !== 'choice' && <NumericForm answer={a} problem={problem} onSubmit={submit} />}
       <FeedbackLine feedback={feedback} />
+      {!a && <ProblemWork problem={problem} index={index} record={record} />}
 
       <div className="hints">
         {problem.hints.slice(0, shown).map((hint, i) => (
-          <div key={i} className="hint">
+          <div key={i} className="hint" data-subpart={`提示 ${i + 1}`}>
             <div className="hint-label">
               提示 {i + 1} · {HINT_NAMES[i]}
             </div>
@@ -242,7 +250,7 @@ export function ProblemCard({ problem, index }: { problem: Problem; index: numbe
       </div>
 
       {a && unlocked && problem.solution && (
-        <section className="solution" aria-label="解答">
+        <section className="solution" aria-label="解答" data-subpart="解答">
           <div className="solution-label">
             解答
             {solved && (
@@ -254,6 +262,7 @@ export function ProblemCard({ problem, index }: { problem: Problem; index: numbe
           <Rich value={problem.solution} />
         </section>
       )}
+      <ProblemMarks problem={problem.id} record={record} />
     </article>
   );
 }

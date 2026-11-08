@@ -3,7 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { compileContent } from './compile.ts';
+import { compileContent, NOT_CONTENT } from './compile.ts';
 import { formatReport } from './diagnostics.ts';
 import { writeOutputs } from './output.ts';
 
@@ -49,7 +49,9 @@ if (process.argv.includes('--watch')) {
       }
     }, 150);
   };
-  fs.watch(path.join(root, 'content'), { recursive: true }, trigger);
+  fs.watch(path.join(root, 'content'), { recursive: true }, (_event, name) => {
+    if (!name || !NOT_CONTENT.has(name.toString())) trigger();
+  });
   console.log('\n正在监听 content/ 的变化（Ctrl+C 退出）');
 } else {
   process.exitCode = (await runOnce()) ? 0 : 1;

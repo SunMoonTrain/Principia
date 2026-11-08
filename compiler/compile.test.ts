@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { afterEach, describe, expect, it } from 'vitest';
 import type { Diagnostic, Rich } from '../shared/content-types.ts';
 import { compileContent } from './compile.ts';
+import { sourceText } from './markdown.ts';
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const LESSON = 'content/math/analysis/completeness/lesson.md';
@@ -126,6 +127,19 @@ describe('样例内容', () => {
     const p2 = lesson.problems[1];
     expect(JSON.stringify(p2.statement)).toContain('"dataTermId":"math.analysis.maximum"');
     expect(JSON.stringify(p2.hints[0])).toContain('"dataTermId":"math.analysis.supremum"');
+  });
+
+  it('难题、思考题带题干原文（「复制给 Claude」用）：公式原样，术语标记换成文字；简单题、中等题没有', () => {
+    const lesson = compileContent(repo).packs!.get('math.analysis')!.lessons['math.analysis.completeness'];
+    expect(lesson.problems[0].statementText).toBeNull();
+    expect(lesson.problems[4].statementText).toBe(
+      '设$A,B$是$\\R$的非空、有上界的子集，$A+B=\\{a+b : a\\in A,\\ b\\in B\\}$。证明$\\sup(A+B)=\\sup A+\\sup B$。',
+    );
+    for (const p of lesson.problems.slice(4)) expect(p.statementText).toMatch(/\S/);
+    expect(lesson.problems.slice(4).some((p) => p.statementText!.includes(':term'))).toBe(false);
+    expect(sourceText('按:term[上确界]{id="math.analysis.supremum"}的定义，见[实数的完备性](lesson:math.analysis.completeness#def-supremum)。$\\sup A$')).toBe(
+      '按上确界的定义，见实数的完备性。$\\sup A$',
+    );
   });
 });
 

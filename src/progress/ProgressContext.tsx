@@ -3,6 +3,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { applyOp, EMPTY_PROGRESS, isLearned, type ProgressOp, type ProgressState } from '../../shared/progress';
+import { flushNotes } from './notes';
 
 const QUEUE_KEY = 'principia.pending-ops';
 const RETRY_MS = 3000;
@@ -115,8 +116,11 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     let stopped = false;
     const start = async (): Promise<void> => {
-      if (await load()) void flush();
-      else if (!stopped) window.setTimeout(() => void start(), RETRY_MS);
+      if (await load()) {
+        void flush();
+        // 上次关页面前没保存上的笔记草稿
+        void flushNotes();
+      } else if (!stopped) window.setTimeout(() => void start(), RETRY_MS);
     };
     void start();
     return () => {
@@ -148,7 +152,8 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   );
 
   const archive = useCallback(async (): Promise<ArchiveResult> => {
-    if (!(await flush())) throw new Error('连不上进度服务，等连上、记录补交完再存档');
+    // 存档要带上最新的记录和笔记：先把没发出去的都保存上
+    if (!(await flush()) || !(await flushNotes())) throw new Error('还有记录或笔记没保存上（连不上进度服务？），等保存上再存档');
     const res = await fetch('/api/archive', { method: 'POST' });
     const body = (await res.json()) as ArchiveResult & { error?: string };
     if (!res.ok) throw new Error(body.error ?? `存档失败（HTTP ${res.status}）`);

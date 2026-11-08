@@ -81,6 +81,8 @@ export interface Problem {
   id: string;
   tier: Tier;
   statement: Rich;
+  /** 题干原文（Markdown，公式保留 $…$，术语标记换成文字），「复制给 Claude」用；只有难题、思考题有。 */
+  statementText: string | null;
   /** 难题、思考题没有 answer、solution、tolerance。 */
   answer: Answer | null;
   tolerance: Tolerance | null;
