@@ -16,6 +16,8 @@ const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const LESSON = 'content/math/analysis/completeness/lesson.md';
 const PROBLEMS = 'content/math/analysis/completeness/problems.yaml';
 const LIMITS = 'content/math/analysis/sequences-limits/lesson.md';
+/** 文件头里的整个 prerequisites 字段（`[...]` 写法或逐行 `- ` 写法都算）：内容补全以后样例节可能多了前置。 */
+const PREREQUISITES = /^prerequisites:.*(?:\n[ \t]+-.*)*/m;
 
 const roots: string[] = [];
 
@@ -47,15 +49,15 @@ afterEach(() => {
 });
 
 describe('样例内容', () => {
-  it('构建通过，三节的层级依次是 0、1、2', () => {
+  it('构建通过；样例的三节链 sequences-limits → completeness → bounded-monotone 层级逐节升高', () => {
+    // 「三节链的层级依次为 0、1、2」在 graph.test.ts 里用构造的小节测；这里的真实内容会越写越多，只查链上逐节升高
     const result = compileContent(repo);
     expect(result.report.errors).toEqual([]);
     const levels = Object.fromEntries(result.graph!.lessons.map((l) => [l.id, l.level]));
-    expect(levels).toEqual({
-      'math.analysis.sequences-limits': 0,
-      'math.analysis.completeness': 1,
-      'math.analysis.bounded-monotone': 2,
-    });
+    const chain = ['math.analysis.sequences-limits', 'math.analysis.completeness', 'math.analysis.bounded-monotone'].map((id) => levels[id]);
+    expect(chain.every((level) => typeof level === 'number')).toBe(true);
+    expect(chain[1]).toBeGreaterThan(chain[0]);
+    expect(chain[2]).toBeGreaterThan(chain[1]);
   });
 
   it('completeness 有固定结构的各部分和 8 道题', () => {
@@ -157,7 +159,7 @@ describe('故意改坏，构建失败并指出文件和行号', () => {
 
   it('前置形成环，列出环上所有小节', () => {
     const root = fixture();
-    edit(root, LIMITS, 'prerequisites: []', 'prerequisites: [math.analysis.bounded-monotone]');
+    edit(root, LIMITS, PREREQUISITES, 'prerequisites: [math.analysis.bounded-monotone]');
     const [e] = errors(root);
     for (const id of ['math.analysis.sequences-limits', 'math.analysis.completeness', 'math.analysis.bounded-monotone']) {
       expect(e.message).toContain(id);
@@ -218,7 +220,7 @@ describe('故意改坏，构建失败并指出文件和行号', () => {
 
   it('前置引用了不存在的小节', () => {
     const root = fixture();
-    const line = edit(root, LIMITS, 'prerequisites: []', 'prerequisites: [math.analysis.nothing]');
+    const line = edit(root, LIMITS, PREREQUISITES, 'prerequisites: [math.analysis.nothing]');
     expect(errors(root)).toMatchObject([{ file: LIMITS, line, message: expect.stringContaining('不存在') }]);
   });
 
