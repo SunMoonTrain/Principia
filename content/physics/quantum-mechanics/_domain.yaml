@@ -1,0 +1,24 @@
+id: physics.quantum-mechanics
+title: |
+  量子力学
+proofPolicy: sketch
+macros:
+  \ket: |
+    \left|#1\right\rangle
+  \bra: |
+    \left\langle #1\right|
+  \braket: |
+    \left\langle #1\middle| #2\right\rangle
+  \expval: |
+    \left\langle #1\right\rangle
+  \comm: |
+    \left[#1,#2\right]
+  \dd: |
+    \mathop{}\!\mathrm{d}
+  \dv: |
+    \frac{\mathrm{d} #1}{\mathrm{d} #2}
+  \pdv: |
+    \frac{\partial #1}{\partial #2}
+  \vb: |
+    \mathbf{#1}
+glossary: []

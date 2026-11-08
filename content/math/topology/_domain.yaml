@@ -1,0 +1,16 @@
+id: math.topology
+title: |
+  拓扑
+proofPolicy: full
+macros:
+  \R: |
+    \mathbb{R}
+  \N: |
+    \mathbb{N}
+  \Q: |
+    \mathbb{Q}
+  \Z: |
+    \mathbb{Z}
+  \Int: |
+    \operatorname{int}
+glossary: []

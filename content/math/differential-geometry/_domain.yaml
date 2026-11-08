@@ -1,0 +1,16 @@
+id: math.differential-geometry
+title: |
+  微分几何
+proofPolicy: sketch
+macros:
+  \R: |
+    \mathbb{R}
+  \vb: |
+    \mathbf{#1}
+  \dd: |
+    \mathop{}\!\mathrm{d}
+  \pdv: |
+    \frac{\partial #1}{\partial #2}
+  \Lie: |
+    \mathcal{L}
+glossary: []

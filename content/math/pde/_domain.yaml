@@ -1,0 +1,12 @@
+id: math.pde
+title: |
+  偏微分方程
+proofPolicy: sketch
+macros:
+  \R: |
+    \mathbb{R}
+  \dd: |
+    \mathop{}\!\mathrm{d}
+  \pdv: |
+    \frac{\partial #1}{\partial #2}
+glossary: []

@@ -1,0 +1,10 @@
+id: physics.general-relativity
+title: |
+  广义相对论
+proofPolicy: sketch
+macros:
+  \dd: |
+    \mathop{}\!\mathrm{d}
+  \pdv: |
+    \frac{\partial #1}{\partial #2}
+glossary: []

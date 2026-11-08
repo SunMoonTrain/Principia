@@ -4,7 +4,7 @@ title: |
   实数的完备性
 goal: |
   知道实数轴「没有洞」指什么，会用确界原理论证简单命题。
-prerequisites: [math.analysis.sequences-limits]
+prerequisites: [math.analysis.sequences-limits, math.logic-sets.sets]
 minutes: 25
 summary: |
   实数轴上没有洞：有上界的非空集合一定有最小上界。

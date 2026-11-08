@@ -1,0 +1,20 @@
+id: math.abstract-algebra
+title: |
+  抽象代数
+proofPolicy: full
+macros:
+  \Z: |
+    \mathbb{Z}
+  \Q: |
+    \mathbb{Q}
+  \R: |
+    \mathbb{R}
+  \C: |
+    \mathbb{C}
+  \Aut: |
+    \operatorname{Aut}
+  \Gal: |
+    \operatorname{Gal}
+  \normal: |
+    \trianglelefteq
+glossary: []

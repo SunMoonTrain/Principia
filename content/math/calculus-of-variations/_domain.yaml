@@ -1,0 +1,14 @@
+id: math.calculus-of-variations
+title: |
+  变分法
+proofPolicy: sketch
+macros:
+  \R: |
+    \mathbb{R}
+  \dd: |
+    \mathop{}\!\mathrm{d}
+  \dv: |
+    \frac{\mathrm{d} #1}{\mathrm{d} #2}
+  \pdv: |
+    \frac{\partial #1}{\partial #2}
+glossary: []

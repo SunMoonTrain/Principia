@@ -1,7 +1,7 @@
 id: math.analysis
 title: |
-  分析
-proofPolicy: sketch
+  数学分析
+proofPolicy: full
 macros:
   \R: |
     \mathbb{R}
@@ -11,6 +11,8 @@ macros:
     \mathbb{N}
   \Z: |
     \mathbb{Z}
+  \dd: |
+    \mathop{}\!\mathrm{d}
 glossary:
   - id: math.analysis.sequence-limit
     zh: |

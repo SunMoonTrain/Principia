@@ -1,0 +1,12 @@
+id: physics.special-relativity
+title: |
+  狭义相对论
+proofPolicy: full
+macros:
+  \vb: |
+    \mathbf{#1}
+  \dd: |
+    \mathop{}\!\mathrm{d}
+  \dv: |
+    \frac{\mathrm{d} #1}{\mathrm{d} #2}
+glossary: []

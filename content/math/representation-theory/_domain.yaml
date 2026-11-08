@@ -1,0 +1,24 @@
+id: math.representation-theory
+title: |
+  群表示论
+proofPolicy: sketch
+macros:
+  \C: |
+    \mathbb{C}
+  \R: |
+    \mathbb{R}
+  \GL: |
+    \mathrm{GL}
+  \SO: |
+    \mathrm{SO}
+  \SU: |
+    \mathrm{SU}
+  \so: |
+    \mathfrak{so}
+  \su: |
+    \mathfrak{su}
+  \tr: |
+    \operatorname{tr}
+  \Hom: |
+    \operatorname{Hom}
+glossary: []

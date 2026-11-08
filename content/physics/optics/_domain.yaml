@@ -1,0 +1,10 @@
+id: physics.optics
+title: |
+  光学
+proofPolicy: sketch
+macros:
+  \vb: |
+    \mathbf{#1}
+  \dd: |
+    \mathop{}\!\mathrm{d}
+glossary: []

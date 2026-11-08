@@ -1,0 +1,22 @@
+id: math.linear-algebra
+title: |
+  线性代数
+proofPolicy: sketch
+macros:
+  \R: |
+    \mathbb{R}
+  \C: |
+    \mathbb{C}
+  \vb: |
+    \mathbf{#1}
+  \T: |
+    ^{\mathsf{T}}
+  \Span: |
+    \operatorname{span}
+  \rank: |
+    \operatorname{rank}
+  \tr: |
+    \operatorname{tr}
+  \im: |
+    \operatorname{im}
+glossary: []

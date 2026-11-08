@@ -1,0 +1,20 @@
+id: physics.electromagnetism
+title: |
+  电磁学与电动力学
+proofPolicy: sketch
+macros:
+  \vb: |
+    \mathbf{#1}
+  \uv: |
+    \hat{\mathbf{#1}}
+  \dd: |
+    \mathop{}\!\mathrm{d}
+  \pdv: |
+    \frac{\partial #1}{\partial #2}
+  \divg: |
+    \nabla\cdot
+  \curl: |
+    \nabla\times
+  \lap: |
+    \nabla^2
+glossary: []

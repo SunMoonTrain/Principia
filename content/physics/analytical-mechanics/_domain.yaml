@@ -1,0 +1,16 @@
+id: physics.analytical-mechanics
+title: |
+  分析力学
+proofPolicy: full
+macros:
+  \vb: |
+    \mathbf{#1}
+  \dd: |
+    \mathop{}\!\mathrm{d}
+  \dv: |
+    \frac{\mathrm{d} #1}{\mathrm{d} #2}
+  \pdv: |
+    \frac{\partial #1}{\partial #2}
+  \pb: |
+    \left\{#1,#2\right\}
+glossary: []

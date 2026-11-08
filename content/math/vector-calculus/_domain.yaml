@@ -1,0 +1,22 @@
+id: math.vector-calculus
+title: |
+  多变量微积分与向量分析
+proofPolicy: sketch
+macros:
+  \R: |
+    \mathbb{R}
+  \vb: |
+    \mathbf{#1}
+  \uv: |
+    \hat{\mathbf{#1}}
+  \dd: |
+    \mathop{}\!\mathrm{d}
+  \pdv: |
+    \frac{\partial #1}{\partial #2}
+  \divg: |
+    \nabla\cdot
+  \curl: |
+    \nabla\times
+  \lap: |
+    \nabla^2
+glossary: []

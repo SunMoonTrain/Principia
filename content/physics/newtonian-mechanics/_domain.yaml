@@ -1,0 +1,14 @@
+id: physics.newtonian-mechanics
+title: |
+  牛顿力学
+proofPolicy: sketch
+macros:
+  \vb: |
+    \mathbf{#1}
+  \uv: |
+    \hat{\mathbf{#1}}
+  \dd: |
+    \mathop{}\!\mathrm{d}
+  \dv: |
+    \frac{\mathrm{d} #1}{\mathrm{d} #2}
+glossary: []

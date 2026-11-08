@@ -1,0 +1,18 @@
+id: math.complex-analysis
+title: |
+  复分析
+proofPolicy: full
+macros:
+  \C: |
+    \mathbb{C}
+  \R: |
+    \mathbb{R}
+  \Re: |
+    \operatorname{Re}
+  \Im: |
+    \operatorname{Im}
+  \Res: |
+    \operatorname*{Res}
+  \dd: |
+    \mathop{}\!\mathrm{d}
+glossary: []

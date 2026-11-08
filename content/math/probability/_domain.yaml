@@ -1,0 +1,14 @@
+id: math.probability
+title: |
+  概率论
+proofPolicy: sketch
+macros:
+  \R: |
+    \mathbb{R}
+  \E: |
+    \operatorname{E}
+  \Var: |
+    \operatorname{Var}
+  \Cov: |
+    \operatorname{Cov}
+glossary: []

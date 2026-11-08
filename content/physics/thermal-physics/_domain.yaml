@@ -1,0 +1,14 @@
+id: physics.thermal-physics
+title: |
+  热力学与统计力学
+proofPolicy: sketch
+macros:
+  \dd: |
+    \mathop{}\!\mathrm{d}
+  \pdv: |
+    \frac{\partial #1}{\partial #2}
+  \pdvc: |
+    \left(\frac{\partial #1}{\partial #2}\right)_{#3}
+  \kB: |
+    k_{\mathrm{B}}
+glossary: []

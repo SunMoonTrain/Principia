@@ -1,0 +1,16 @@
+id: math.logic-sets
+title: |
+  逻辑与集合
+proofPolicy: full
+macros:
+  \N: |
+    \mathbb{N}
+  \Z: |
+    \mathbb{Z}
+  \Q: |
+    \mathbb{Q}
+  \R: |
+    \mathbb{R}
+  \Pow: |
+    \mathcal{P}
+glossary: []
