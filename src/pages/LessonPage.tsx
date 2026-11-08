@@ -4,9 +4,10 @@
 
 import { useEffect, useLayoutEffect, type ReactNode } from 'react';
 import { Link, useLocation, useParams } from 'react-router';
-import type { GraphLesson, LessonContent, Rich as RichValue, Tier } from '../../shared/content-types';
+import type { GraphLesson, LessonContent, Rich as RichValue } from '../../shared/content-types';
 import { lessonPath } from '../../shared/ids';
 import { missingPrereqs, nodeState } from '../../shared/node-state';
+import { TIER_LABELS } from '../../shared/problem-text';
 import { laterTimestamp, localTimestamp } from '../../shared/progress';
 import { SectionKindContext } from '../components/AnchorBlock';
 import { IssueReporter } from '../components/IssueReporter';
@@ -23,7 +24,6 @@ import { NotFoundPage } from './NotFoundPage';
 
 const PROOF_POLICY: Record<string, string> = { sketch: '讲解只给证明思路', full: '讲解给完整证明' };
 const NO_MACROS: Record<string, string> = {};
-const TIER_LABELS: Record<Tier, string> = { easy: '简单', medium: '中等', hard: '难', thinking: '思考' };
 
 function Section({ id, title, auto, children }: { id: string; title: string; auto?: boolean; children: ReactNode }) {
   return (

@@ -3,8 +3,9 @@
 // 每道题底下都有「没把握」「内容有误」（ProblemMarks）。data-problem、data-subpart 给「内容有误」定位用。
 
 import { useState, type FormEvent } from 'react';
-import type { Answer, Problem, Tier } from '../../shared/content-types';
+import type { Answer, Problem } from '../../shared/content-types';
 import { judgeChoice, judgeNumeric, type Verdict } from '../../shared/judge';
+import { answerKind, OPTION_LABELS, TIER_LABELS } from '../../shared/problem-text';
 import {
   firstResult,
   hintsBeforeFirstCorrect,
@@ -20,27 +21,10 @@ import { newId, useProgress } from '../progress/ProgressContext';
 import { ProblemMarks } from './ProblemMarks';
 import { ProblemWork, WorkBadge } from './ProblemWork';
 
-const TIER_LABELS: Record<Tier, string> = { easy: '简单', medium: '中等', hard: '难', thinking: '思考' };
 const HINT_NAMES = ['方向', '关键步骤', '完整解答'];
-const OPTION_LABELS = 'ABCDEFGHIJ';
 
 type NumericAnswer = Extract<Answer, { type: 'number' | 'tuple' | 'set' }>;
 type ChoiceAnswer = Extract<Answer, { type: 'choice' }>;
-
-function answerKind(problem: Problem): string {
-  const a = problem.answer;
-  if (!a) return '写思路笔记，找 Claude 批改';
-  switch (a.type) {
-    case 'number':
-      return '填一个数';
-    case 'tuple':
-      return `按顺序填 ${a.value.length} 个数`;
-    case 'set':
-      return `填 ${a.value.length} 个数，不分顺序`;
-    case 'choice':
-      return a.multiple ? '多选' : '单选';
-  }
-}
 
 const HELP: Record<NumericAnswer['type'], string> = {
   number: '可以写式子：分数 1/3、根号 sqrt(2)、π 写 pi、乘方 2^10、对数 ln(2)',
@@ -201,7 +185,7 @@ export function ProblemCard({ problem, index }: { problem: Problem; index: numbe
       <header className="problem-head">
         <span className={`tier tier-${problem.tier}`}>{TIER_LABELS[problem.tier]}</span>
         <span className="problem-number">第 {index + 1} 题</span>
-        <span className="problem-kind">{answerKind(problem)}</span>
+        <span className="problem-kind">{answerKind(problem.answer)}</span>
         {a ? <FirstResultBadge result={firstResult(record)} /> : <WorkBadge record={record} />}
       </header>
       <div className="problem-statement" data-subpart="题干">

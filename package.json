@@ -20,6 +20,7 @@
     "content": "tsx compiler/cli.ts",
     "content:watch": "tsx compiler/cli.ts --watch",
     "verify": "tsx tools/verify/index.ts",
+    "statements": "tsx tools/statements/index.ts",
     "test": "vitest run",
     "typecheck": "tsc -b"
   },

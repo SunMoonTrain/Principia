@@ -5,13 +5,13 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router';
 import type { DomainPack, Tier } from '../../shared/content-types';
 import { domainOf, lessonPath, PROBLEM_IDS, TIER_ORDER } from '../../shared/ids';
+import { TIER_LABELS } from '../../shared/problem-text';
 import { lastActivity, localTimestamp, reviewReasons, type ReviewReason } from '../../shared/progress';
 import { useContent } from '../content/ContentContext';
 import { Rich } from '../content/Rich';
 import { useProgress } from '../progress/ProgressContext';
 
 const REASON_LABELS: Record<ReviewReason, string> = { unsure: '没把握', wrong: '答错过', hints: '看过提示' };
-const TIER_LABELS: Record<Tier, string> = { easy: '简单', medium: '中等', hard: '难', thinking: '思考' };
 
 export interface ReviewItem {
   lesson: string;
