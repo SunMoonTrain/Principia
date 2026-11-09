@@ -1,0 +1,159 @@
+- id: p1
+  tier: easy
+  statement: |
+    在$y(0)=y(1)=0$、$\int_0^1y\,\dd x=1$的条件下，求$J[y]=\int_0^1y'^2\,\dd x$的最小值。
+  answer:
+    type: number
+    value: 12
+  hints:
+    - |
+      用乘子法则：$H=y'^2-\lambda y$，写出方程。
+    - |
+      方程是$-\lambda-2y''=0$，$y''=-\frac\lambda2$；用端点条件得$y=\frac\lambda4(x-x^2)$，再用约束定$\lambda$。
+    - |
+      $\int_0^1\frac\lambda4(x-x^2)\,\dd x=\frac{\lambda}{24}=1$，$\lambda=24$，$y=6(x-x^2)$，$J=\int_0^136(1-2x)^2\,\dd x=12$。
+  solution: |
+    $H=y'^2-\lambda y$，方程$y''=-\frac\lambda2$，由$y(0)=y(1)=0$得$y=\frac\lambda4(x-x^2)$。约束给出$\frac{\lambda}{24}=1$，所以$y=6x(1-x)$，$J=\int_0^136(1-2x)^2\,\dd x=12$。像讲解例 1 那样展开，交叉项因约束而为零，可知这确实是最小值。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些是等周问题，即约束是一个积分？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        在$y(0)=y(1)=0$、$\int_0^1y^2\,\dd x=1$下，使$\int_0^1y'^2\,\dd x$最小
+      - |
+        在$y(0)=0$、$y(1)=1$、$y(\frac12)=2$下，使$\int_0^1y'^2\,\dd x$最小
+      - |
+        曲线绕$x$轴转出的立体体积$\pi\int_a^by^2\,\dd x$固定，使旋转曲面（surface of revolution）的面积最小
+      - |
+        在$y(x)\ge0$处处成立的条件下，使$\int_0^1\bigl(y'^2-y\bigr)\dd x$最小
+      - |
+        在$y(0)=y(1)=0$、$\int_0^1xy\,\dd x=1$下，使$\int_0^1y''^2\,\dd x$最小
+    value: [1, 3, 5]
+  hints:
+    - |
+      看约束是不是「某个积分等于给定的值」。只在一个点上、或者在每一点上提的条件，不算积分约束。
+    - |
+      B 是在$x=\frac12$这一个点上给定函数值；D 要求每一点都满足一个不等式。
+    - |
+      A（$\int y^2$）、C（体积是积分）、E（$\int xy$）是等周问题；B、D 不是。
+  solution: |
+    A、C、E 的约束都形如$K[y]=\ell$，$K$是积分，是等周问题（E 的泛函含$y''$也一样，乘子法则照样用）。B 的条件只在一点上；D 的条件要在每一点上成立，是不等式形式的逐点约束，处理方法不同。
+
+- id: p3
+  tier: medium
+  statement: |
+    绳子两端在$(\pm1,0)$，长$\ell=\frac{\sqrt2}{2}\pi$，写成$y=y(x)\ge0$。求它和$x$轴围成的最大面积。
+  answer:
+    type: number
+    value: pi/2-1
+  hints:
+    - |
+      最优的曲线是过$(\pm1,0)$的圆弧。设圆心角为$2\alpha$、半径为$\lambda$，则$\lambda\sin\alpha=1$、$2\lambda\alpha=\ell$。
+    - |
+      试$\alpha=\frac\pi4$：$\lambda=\sqrt2$，$2\lambda\alpha=\frac{\sqrt2}{2}\pi$，正好。
+    - |
+      面积是扇形减去三角形：$\frac12\lambda^2(2\alpha-\sin2\alpha)=\frac\pi2-1\approx0.571$。
+  solution: |
+    最优曲线是圆弧。$\lambda\sin\alpha=1$、$2\lambda\alpha=\frac{\sqrt2}2\pi$的解是$\alpha=\frac\pi4$、$\lambda=\sqrt2$（$\frac{\alpha}{\sin\alpha}$递增，解唯一）。面积$\frac12\lambda^2(2\alpha-\sin2\alpha)=\frac\pi2-1$。
+
+- id: p4
+  tier: medium
+  statement: |
+    在$y(0)=y(1)=0$、$\int_0^1y\,\dd x=0$、$\int_0^1xy\,\dd x=1$的条件下，求$J[y]=\int_0^1y'^2\,\dd x$的最小值。
+  answer:
+    type: number
+    value: 720
+  hints:
+    - |
+      两个积分约束，引入两个乘子：$H=y'^2-\lambda_1y-\lambda_2xy$。方程说明$y''$是$x$的一次函数，$y$是三次多项式。
+    - |
+      满足$y(0)=y(1)=0$的三次多项式可以写成$y=x(1-x)(p+qx)$。用两个约束定出$p$、$q$。
+    - |
+      $\int_0^1y\,\dd x=\frac p6+\frac q{12}=0$，所以$p=-\frac q2$，$y=q\,x(1-x)(x-\frac12)$；$\int_0^1xy\,\dd x=\frac{q}{120}=1$，$q=120$。$y'=120\bigl(-3x^2+3x-\frac12\bigr)$，$J=14400\int_0^1\bigl(-3x^2+3x-\frac12\bigr)^2\dd x=14400\cdot\frac1{20}=720$。
+  solution: |
+    $H=y'^2-\lambda_1y-\lambda_2xy$，方程$y''=-\frac{\lambda_1+\lambda_2x}{2}$，所以$y$是三次多项式，满足端点条件的写成$y=x(1-x)(p+qx)$。两个约束给出$p=-\frac q2$、$q=120$，即$y=120\,x(1-x)(x-\frac12)$，$J=720$。和例 1 一样展开，两个约束使交叉项为零，这是最小值。
+
+- id: p5
+  tier: hard
+  statement: |
+    把讲解里乘子法则的证明写完整。要说明：(1) 「$y$不是$K$的极值曲线」怎样保证能选出$\eta_2$；(2) 为什么可以用二元函数的拉格朗日乘数法，它要求什么条件；(3) $\lambda$为什么和$\eta_1$无关；(4) 怎样得到$H$的欧拉-拉格朗日方程。
+  hints:
+    - |
+      (1) 若对所有$\eta$都有$\delta K[y;\eta]=0$，由基本引理，$y$就是$K$的极值曲线。
+    - |
+      (2) $\varphi$、$\psi$关于$(\varepsilon_1,\varepsilon_2)$有连续的偏导数（在积分号下求导），$\psi(0,0)=0$，$\nabla\psi(0,0)\ne0$；$\varphi$限制在$\psi=0$上在原点取局部极值，因为这条曲线上的点对应满足约束、离$y$很近的容许函数。
+    - |
+      (3) $\lambda$由$\eta_2$那个方向定出：$\lambda=\frac{\delta J[y;\eta_2]}{\delta K[y;\eta_2]}$，选定$\eta_2$以后，对每个$\eta_1$都用同一个$\lambda$。(4) 于是$\delta J[y;\eta_1]-\lambda\delta K[y;\eta_1]=\int_a^b\bigl(H_y-\dv{}{x}H_{y'}\bigr)\eta_1\,\dd x=0$对所有$\eta_1$成立，由基本引理得方程。
+  reference: |
+    (1) $\delta K[y;\eta]=\int_a^b\bigl(G_y-\dv{}{x}G_{y'}\bigr)\eta\,\dd x$。若它对所有两端为零的$\eta$都为零，由基本引理，$G_y-\dv{}{x}G_{y'}\equiv0$，$y$是$K$的极值曲线，与假设矛盾。所以有$\eta_2$使$\delta K[y;\eta_2]\ne0$。
+
+    (2) 固定这个$\eta_2$，任取两端为零的$\eta_1$，令$\varphi(\varepsilon_1,\varepsilon_2)=J[y+\varepsilon_1\eta_1+\varepsilon_2\eta_2]$，$\psi(\varepsilon_1,\varepsilon_2)=K[y+\varepsilon_1\eta_1+\varepsilon_2\eta_2]-\ell$。$F$、$G$有连续的二阶偏导数，在积分号下求导可知$\varphi$、$\psi$有连续的偏导数，$\frac{\partial\varphi}{\partial\varepsilon_i}(0,0)=\delta J[y;\eta_i]$，$\frac{\partial\psi}{\partial\varepsilon_i}(0,0)=\delta K[y;\eta_i]$。$\psi(0,0)=0$，$\frac{\partial\psi}{\partial\varepsilon_2}(0,0)\ne0$，所以原点附近$\psi=0$是一条光滑曲线。
+
+    这条曲线上的点对应满足约束的容许函数，$(\varepsilon_1,\varepsilon_2)\to0$时它们离$y$越来越近（讲解的距离），所以$\varphi$限制在这条曲线上，在原点取局部极值。二元函数的拉格朗日乘数法（要求约束的梯度不为零）给出$\lambda$，使$\nabla\varphi(0,0)=\lambda\nabla\psi(0,0)$。
+
+    (3) 第二个分量给出$\lambda=\frac{\delta J[y;\eta_2]}{\delta K[y;\eta_2]}$，只依赖$\eta_2$，所以对所有$\eta_1$用的是同一个$\lambda$。
+
+    (4) 第一个分量是$\delta J[y;\eta_1]=\lambda\,\delta K[y;\eta_1]$，即$\int_a^b\bigl(H_y-\dv{}{x}H_{y'}\bigr)\eta_1\,\dd x=0$，$H=F-\lambda G$，对所有两端为零的$\eta_1$成立。由基本引理，$H_y-\dv{}{x}H_{y'}=0$。
+
+- id: p6
+  tier: hard
+  statement: |
+    长为$\ell$的均匀链条两端挂在$(\pm a,0)$（$\ell>2a$，$y$轴向上），平衡时重力势能$\int y\sqrt{1+y'^2}\,\dd x$（差一个正的常数因子）最小。证明链条的形状是悬链线$y=\lambda+c\cosh\frac xc$，并写出确定$c$的方程。可以直接用[贝尔特拉米恒等式与最速降线](lesson:math.calculus-of-variations.beltrami-identity)里肥皂膜（soap film）问题的解法。
+  hints:
+    - |
+      这是等周问题：$F=y\sqrt{1+y'^2}$，$G=\sqrt{1+y'^2}$，$H=(y-\lambda)\sqrt{1+y'^2}$。
+    - |
+      令$u=y-\lambda$，$H=u\sqrt{1+u'^2}$，和肥皂膜问题的被积函数一模一样，而且不含$x$，可以用贝尔特拉米恒等式（Beltrami identity）。
+    - |
+      $u=c\cosh\frac{x-x_0}{c}$，由对称$x_0=0$，所以$y=\lambda+c\cosh\frac xc$。链长$\int_{-a}^a\cosh\frac xc\,\dd x=2c\sinh\frac ac=\ell$定出$c$，再由$y(a)=0$得$\lambda=-c\cosh\frac ac$。
+  reference: |
+    势能$J=\int y\sqrt{1+y'^2}\,\dd x$，约束$K=\int\sqrt{1+y'^2}\,\dd x=\ell$。$y$不是$K$的极值曲线（$\ell>2a$，曲线不是直线），由乘子法则，$y$满足$H=(y-\lambda)\sqrt{1+y'^2}$的方程。令$u=y-\lambda$，$u'=y'$，$H=u\sqrt{1+u'^2}$，正是肥皂膜问题的被积函数，它不含$x$。由贝尔特拉米恒等式，$\frac{u}{\sqrt{1+u'^2}}=c$，解得$u=c\cosh\frac{x-x_0}{c}$（常函数不是方程的解，见那一节）。
+
+    两端在同一高度，由对称$x_0=0$，$y=\lambda+c\cosh\frac xc$：一条悬链线，开口向上，最低点在$x=0$。约束：$\int_{-a}^{a}\sqrt{1+\sinh^2\frac xc}\,\dd x=\int_{-a}^{a}\cosh\frac xc\,\dd x=2c\sinh\frac ac=\ell$。$\frac{\sinh t}{t}$在$t>0$上从$1$严格增到无穷，所以$\ell>2a$时这个方程对$c$恰有一个正解。再由$y(\pm a)=0$得$\lambda=-c\cosh\frac ac$。
+
+    乘子在这里的作用是把高度平移了$\lambda$：链条和肥皂膜的被积函数只差这一步平移，所以都是悬链线。
+
+- id: p7
+  tier: thinking
+  statement: |
+    讲解解决的是狄多问题：曲线两端在一条直线（海岸）上。怎样由它推出「周长一定的闭曲线中，圆围成的面积最大」？反过来，「面积一定的闭曲线中，圆的周长最短」和它是什么关系？这两个说法常合写成等周不等式（isoperimetric inequality）$L^2\ge4\pi A$，等号何时成立？
+  hints:
+    - |
+      取一条把闭曲线的周长平分的直线，它把闭曲线分成两段，每一段和这条直线组成一个狄多问题。
+    - |
+      若某一半围出的面积比另一半小，把大的那一半对这条直线作镜像，换掉小的那一半，周长不变、面积不减。所以只需考虑关于这条直线对称的情形，每一半是一个狄多问题，最优的是半圆。
+    - |
+      两半各是半圆时合起来是圆，所以周长$L$一定时面积不超过$\frac{L^2}{4\pi}$，即$L^2\ge4\pi A$。反过来，面积$A$一定时，周长不小于$2\sqrt{\pi A}$，同一个不等式换个方向读。等号只对圆成立。严格的证明还要说明最优的闭曲线存在，这一步不平凡（[直接方法与里茨近似](lesson:math.calculus-of-variations.direct-methods)）；上面的论证只说明「如果有最优的，它就是圆」。
+  reference: |
+    取一条把闭曲线周长平分的直线（这样的直线总存在）。它把闭曲线分成两段，每段长$\frac L2$，各和这条直线围成一块面积$A_1$、$A_2$。若$A_1\ge A_2$，把第一段对这条直线作镜像，代替第二段，得到一条周长仍为$L$、面积为$2A_1\ge A_1+A_2$的闭曲线。
+
+    所以只需考虑关于这条直线对称的曲线，每一半都是一个两端在直线上、长$\frac L2$的狄多问题，而端点之间的距离也可以自由选：最优的是以端点连线为直径的半圆（端点距离自由时，取弦使圆弧恰为半圆，这和讲解的乘子法则一致：半径$\lambda$由弧长定）。两个半圆合成一个圆，所以$A\le\frac{L^2}{4\pi}$。
+
+    「面积一定、周长最短」是同一个不等式$L^2\ge4\pi A$换个方向读：固定$A$，周长不小于$2\sqrt{\pi A}$。两个问题的乘子互为倒数，最优曲线都是圆。等号只对圆成立。
+
+    这个论证的缺口：它默认最优的曲线存在。施泰纳（Jakob Steiner）当年的论证正缺了这一步，后来魏尔斯特拉斯（Karl Weierstrass）等人给出了严格的证明。变分法的必要条件只能告诉我们「如果有最优解，它是什么样」，存在性要另外证明，见[直接方法与里茨近似](lesson:math.calculus-of-variations.direct-methods)。
+
+- id: p8
+  tier: thinking
+  statement: |
+    乘子$\lambda$有没有意义？在 p1 里把约束换成$\int_0^1y\,\dd x=m$，算出最小值$J^*(m)$和乘子$\lambda(m)$，比较$\dv{J^*}{m}$和$\lambda$。狄多问题里$\lambda$是圆弧的半径，它和最大面积$A^*(\ell)$随绳长$\ell$的变化率有什么关系？为什么会这样？
+  hints:
+    - |
+      p1 的解法对一般的$m$照样成立：$y=\frac\lambda4(x-x^2)$，约束给出$\lambda=24m$。
+    - |
+      $J^*(m)=\int_0^1(6m)^2(1-2x)^2\,\dd x=12m^2$，$\dv{J^*}{m}=24m=\lambda$。狄多问题里也有$\dv{A^*}{\ell}=\lambda$：绳子加长一点，面积的增加量约为半径乘加长的长度。
+    - |
+      一般地，$J^*(\ell)=J[y_\ell]$，$y_\ell$是约束值为$\ell$时的解。对$\ell$求导：$\dv{J^*}{\ell}=\delta J[y_\ell;\dot y]$，$\dot y=\frac{\partial y_\ell}{\partial\ell}$；而对$K[y_\ell]=\ell$求导得$\delta K[y_\ell;\dot y]=1$。乘子法则说$\delta J=\lambda\,\delta K$（在$\dot y$方向也成立，它的端点条件是零），所以$\dv{J^*}{\ell}=\lambda$。乘子是最优值对约束的「价格」，经济学里叫影子价格（shadow price）。
+  reference: |
+    p1 推广：$y=\frac\lambda4(x-x^2)$，约束$\frac{\lambda}{24}=m$，所以$\lambda=24m$，$y=6m(x-x^2)$，$J^*(m)=12m^2$，$\dv{J^*}{m}=24m=\lambda$。
+
+    狄多问题：$\dv{A^*}{\ell}=\lambda$，即最大面积对绳长的变化率等于圆弧的半径。这可以用$A^*=\frac12\lambda^2(2\alpha-\sin2\alpha)$、$\ell=2\lambda\alpha$、$\lambda\sin\alpha=a$直接求导验证。
+
+    一般的理由：设约束值为$\ell$时的解$y_\ell$光滑地依赖$\ell$，记$\dot y=\frac{\partial y_\ell}{\partial\ell}$，它在两端为零（端点固定）。$J^*(\ell)=J[y_\ell]$，所以$\dv{J^*}{\ell}=\delta J[y_\ell;\dot y]$；对$K[y_\ell]=\ell$求导得$\delta K[y_\ell;\dot y]=1$。乘子法则给出$\delta J[y_\ell;\eta]=\lambda\,\delta K[y_\ell;\eta]$对所有两端为零的$\eta$成立，取$\eta=\dot y$，得$\dv{J^*}{\ell}=\lambda$。
+
+    这就是乘子的意义：约束放松一个单位，最优值改变$\lambda$。有限维的拉格朗日乘数法里乘子也有同样的意义，经济学里称为影子价格（shadow price）。

@@ -1,0 +1,163 @@
+- id: p1
+  tier: easy
+  statement: |
+    $J[u]=\iint_D\bigl(u_x^2+u_y^2+2u\bigr)\dd x\,\dd y$的极值函数满足方程$u_{xx}+u_{yy}=c$。求常数$c$。
+  answer:
+    type: number
+    value: 1
+  hints:
+    - |
+      写出$F_u$、$F_{u_x}$、$F_{u_y}$，代进二元函数的欧拉-拉格朗日方程。
+    - |
+      $F_u=2$，$F_{u_x}=2u_x$，$F_{u_y}=2u_y$。
+    - |
+      $2-2u_{xx}-2u_{yy}=0$，即$u_{xx}+u_{yy}=1$，$c=1$。
+  solution: |
+    $F_u=2$，$F_{u_x}=2u_x$，$F_{u_y}=2u_y$，方程$2-\frac{\partial}{\partial x}(2u_x)-\frac{\partial}{\partial y}(2u_y)=0$，即$u_{xx}+u_{yy}=1$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些函数（在给出的范围里）满足拉普拉斯方程$u_{xx}+u_{yy}=0$？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $x^3-3xy^2$
+      - |
+        $x^2+y^2$
+      - |
+        $e^x\cos y$
+      - |
+        $e^x\sin x$
+      - |
+        $\ln(x^2+y^2)$，$(x,y)\ne(0,0)$
+    value: [1, 3, 5]
+  hints:
+    - |
+      逐个求$u_{xx}$和$u_{yy}$，看它们的和是不是恒为零。
+    - |
+      A：$6x-6x=0$；B：$2+2=4$；C：$e^x\cos y-e^x\cos y=0$；D 只含$x$，$u_{yy}=0$，看$u_{xx}$。
+    - |
+      E：$u_x=\frac{2x}{x^2+y^2}$，$u_{xx}=\frac{2(y^2-x^2)}{(x^2+y^2)^2}$，$u_{yy}=\frac{2(x^2-y^2)}{(x^2+y^2)^2}$，和为零。D 的$u_{xx}=2e^x\cos x\ne0$。所以选 A、C、E。
+  solution: |
+    A：$u_{xx}=6x$，$u_{yy}=-6x$；C：$u_{xx}=e^x\cos y$，$u_{yy}=-e^x\cos y$；E：$u_{xx}+u_{yy}=\frac{2(y^2-x^2)+2(x^2-y^2)}{(x^2+y^2)^2}=0$。B 的和是$4$，D 的和是$2e^x\cos x$，都不为零。所以是 A、C、E。
+
+- id: p3
+  tier: medium
+  statement: |
+    在单位正方形$D=[0,1]^2$上，$u=x^2-y^2$满足拉普拉斯方程。$v=u+\sin(\pi x)\sin(\pi y)$和$u$的边界值相同。求两者的狄利克雷积分之差$D[v]-D[u]$。
+  answer:
+    type: number
+    value: pi^2/4
+  hints:
+    - |
+      按狄利克雷原理的证明，$D[v]=D[u]+D[\eta]$，$\eta=\sin(\pi x)\sin(\pi y)$，交叉项是零。
+    - |
+      $\eta_x=\pi\cos(\pi x)\sin(\pi y)$，$\eta_y=\pi\sin(\pi x)\cos(\pi y)$，$\int_0^1\cos^2(\pi x)\,\dd x=\int_0^1\sin^2(\pi x)\,\dd x=\frac12$。
+    - |
+      $\iint_D(\eta_x^2+\eta_y^2)\,\dd x\,\dd y=\pi^2\bigl(\frac14+\frac14\bigr)=\frac{\pi^2}{2}$，$D[\eta]=\frac{\pi^2}{4}$，所以$D[v]-D[u]=\frac{\pi^2}4\approx2.47$。
+  solution: |
+    $\eta=\sin(\pi x)\sin(\pi y)$在边界上为零，$u$满足拉普拉斯方程，交叉项$\iint_D(u_x\eta_x+u_y\eta_y)\,\dd x\,\dd y=-\iint_D(u_{xx}+u_{yy})\eta\,\dd x\,\dd y=0$。所以$D[v]-D[u]=D[\eta]=\frac12\cdot\pi^2\bigl(\frac14+\frac14\bigr)=\frac{\pi^2}{4}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    在单位正方形$D=[0,1]^2$上，$f(x,y)=-2x(1-x)-2y(1-y)$。求$J[u]=\iint_D\bigl(u_x^2+u_y^2+2fu\bigr)\dd x\,\dd y$在边界上$u=0$时的极值函数在$(\frac12,\frac12)$处的值。
+  answer:
+    type: number
+    value: 1/16
+  hints:
+    - |
+      方程是$u_{xx}+u_{yy}=f$。在边界上为零的函数，最简单的是$x(1-x)y(1-y)$的倍数，试一试。
+    - |
+      $\frac{\partial^2}{\partial x^2}\bigl[x(1-x)y(1-y)\bigr]=-2y(1-y)$，$\frac{\partial^2}{\partial y^2}\bigl[x(1-x)y(1-y)\bigr]=-2x(1-x)$。
+    - |
+      所以$u=x(1-x)y(1-y)$满足方程和边界条件；像狄利克雷原理那样展开可知极值函数只有这一个。$u(\frac12,\frac12)=\frac1{16}$。
+  solution: |
+    $F_u=2f$，$F_{u_x}=2u_x$，$F_{u_y}=2u_y$，方程$u_{xx}+u_{yy}=f$。$u=x(1-x)y(1-y)$的二阶偏导数之和正是$-2y(1-y)-2x(1-x)=f$，它在边界上为零。唯一性：若$u+\eta$也是极值函数，展开得$J[u+\eta]=J[u]+\iint_D(\eta_x^2+\eta_y^2)\,\dd x\,\dd y$（交叉项分部积分后为零），两者都是极值函数只能$\eta\equiv0$。所以$u(\frac12,\frac12)=\frac14\cdot\frac14=\frac1{16}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    把二维的变分法基本引理的证明写完整：说明讲解里的$\eta=(\rho^2-r^2)^2$（圆盘外为$0$）为什么有连续的一阶偏导数，为什么能取到在$D$内、$g$为正的小圆盘，以及$g(P_0)<0$的情形。
+  hints:
+    - |
+      用$r^2=(x-x_0)^2+(y-y_0)^2$把$\eta$写成$x$、$y$的多项式，在圆周上看值和偏导数。
+    - |
+      圆盘内$\eta_x=-4(\rho^2-r^2)(x-x_0)$，在$r=\rho$处为零，和圆盘外的$0$衔接。$P_0$在开区域$D$内，$g$连续，小圆盘可以取得既在$D$里、又使$g>0$。
+    - |
+      $\eta$在圆盘内是多项式，圆盘外是$0$；在圆周上$\eta=0$，$\eta_x=-4(\rho^2-r^2)(x-x_0)=0$，$\eta_y$同样，所以一阶偏导数在全平面连续。$\eta\ge0$，在圆盘内部为正，$g\eta$在圆盘内连续且为正，积分大于零，矛盾。$g(P_0)<0$时对$-g$同样论证。于是$g$在$D$内恒为零。
+  reference: |
+    $P_0=(x_0,y_0)\in D$，$D$是开集，$g$连续且$g(P_0)>0$，所以有$\rho>0$，使闭圆盘$B=\{r\le\rho\}$含于$D$，且$g$在$B$上为正（$r$是到$P_0$的距离）。
+
+    令$\eta=(\rho^2-r^2)^2$（$r\le\rho$），$\eta=0$（$r>\rho$）。在$B$内，$r^2=(x-x_0)^2+(y-y_0)^2$，$\eta$是$x$、$y$的多项式，$\eta_x=-4(\rho^2-r^2)(x-x_0)$，$\eta_y=-4(\rho^2-r^2)(y-y_0)$。在圆周$r=\rho$上，$\eta$和这两个偏导数都等于$0$，与圆盘外的零函数衔接，所以$\eta$在全平面有连续的一阶偏导数；它在$\partial D$上为零（$\partial D$在圆盘外）。
+
+    $\eta\ge0$，在$B$的内部为正，$g\eta$在$B$上连续、在内部为正，所以$\iint_Dg\eta\,\dd x\,\dd y=\iint_Bg\eta\,\dd x\,\dd y>0$，与假设矛盾。$g(P_0)<0$时对$-g$用同样的论证。所以$g$在$D$内恒为零，由连续性在边界上也为零。
+
+- id: p6
+  tier: hard
+  statement: |
+    (1) 由$\frac{\partial}{\partial x}\frac{u_x}{W}+\frac{\partial}{\partial y}\frac{u_y}{W}=0$（$W=\sqrt{1+u_x^2+u_y^2}$）推出讲解里展开的极小曲面方程。
+
+    (2) 验证螺旋面（helicoid）$u=\arctan\frac yx$（$x>0$）满足极小曲面方程。
+  hints:
+    - |
+      (1) $\frac{\partial W}{\partial x}=\frac{u_xu_{xx}+u_yu_{xy}}{W}$，求$\frac{\partial}{\partial x}\frac{u_x}{W}$用商的求导法则。
+    - |
+      (1) 两项相加乘$W^3$，用$W^2=1+u_x^2+u_y^2$合并。(2) 记$r^2=x^2+y^2$，$u_x=-\frac{y}{r^2}$，$u_y=\frac{x}{r^2}$。
+    - |
+      (1) $W^3\frac{\partial}{\partial x}\frac{u_x}{W}=W^2u_{xx}-u_x(u_xu_{xx}+u_yu_{xy})$，$y$的那一项同理，相加得$(1+u_y^2)u_{xx}-2u_xu_yu_{xy}+(1+u_x^2)u_{yy}$。(2) $u_{xx}=\frac{2xy}{r^4}$，$u_{yy}=-\frac{2xy}{r^4}$，$u_{xy}=\frac{y^2-x^2}{r^4}$，代入得$\frac{2xy}{r^4}\cdot\frac{x^2-y^2}{r^4}+\frac{2xy(y^2-x^2)}{r^8}=0$。
+  reference: |
+    (1) $\frac{\partial W}{\partial x}=\frac{u_xu_{xx}+u_yu_{xy}}{W}$，所以$\frac{\partial}{\partial x}\frac{u_x}{W}=\frac{u_{xx}}{W}-\frac{u_x(u_xu_{xx}+u_yu_{xy})}{W^3}$；同理$\frac{\partial}{\partial y}\frac{u_y}{W}=\frac{u_{yy}}{W}-\frac{u_y(u_xu_{xy}+u_yu_{yy})}{W^3}$。相加乘$W^3$：
+    $$
+    (u_{xx}+u_{yy})(1+u_x^2+u_y^2)-u_x^2u_{xx}-2u_xu_yu_{xy}-u_y^2u_{yy}=(1+u_y^2)u_{xx}-2u_xu_yu_{xy}+(1+u_x^2)u_{yy} .
+    $$
+    $W^3>0$，所以两个方程等价。
+
+    (2) $r^2=x^2+y^2$，$u_x=-\frac{y}{r^2}$，$u_y=\frac{x}{r^2}$，$u_{xx}=\frac{2xy}{r^4}$，$u_{yy}=-\frac{2xy}{r^4}$，$u_{xy}=\frac{y^2-x^2}{r^4}$。代入：
+    $$
+    \Bigl(1+\frac{x^2}{r^4}\Bigr)\frac{2xy}{r^4}+\frac{2xy}{r^4}\cdot\frac{y^2-x^2}{r^4}-\Bigl(1+\frac{y^2}{r^4}\Bigr)\frac{2xy}{r^4}=\frac{2xy}{r^4}\cdot\frac{x^2-y^2}{r^4}+\frac{2xy(y^2-x^2)}{r^8}=0 .
+    $$
+    螺旋面是一条水平直线一边绕$z$轴转、一边匀速上升扫出的曲面，也是极小曲面。
+
+- id: p7
+  tier: thinking
+  statement: |
+    讲解的狄利克雷原理是说：满足拉普拉斯方程的函数使狄利克雷积分最小。十九世纪黎曼（Bernhard Riemann）等人反过来用它：狄利克雷积分非负，所以在取给定边界值的函数中「一定有」一个使它最小的，这个函数就满足拉普拉斯方程，于是拉普拉斯方程的边值问题（boundary value problem）总有解。这个推理哪里有漏洞？你能用前面学过的例子说明「有下界的泛函不一定取得到最小值」吗？
+  hints:
+    - |
+      「非负，所以有最小值」对有限个变量的连续函数在有界闭集上才成立。容许函数有无穷多个自由度（degrees of freedom）。
+    - |
+      回想[泛函与变分问题](lesson:math.calculus-of-variations.functionals)里$\int_0^1y^2\,\dd x$的例子，以及[第一变分与欧拉-拉格朗日方程](lesson:math.calculus-of-variations.euler-lagrange)p6 里魏尔斯特拉斯（Karl Weierstrass）的例子。
+    - |
+      漏洞在于最小值的存在：泛函有下界，只说明有下确界（infimum），不说明有函数取到它。魏尔斯特拉斯（Karl Weierstrass）指出了这一点，并给出了取不到最小值的例子（$\int_{-1}^1x^2y'^2\,\dd x$）。阿达马（Jacques Hadamard）还找到了圆盘上连续的边界值，使所有取这些边界值的函数的狄利克雷积分都是无穷大，这时「最小」无从谈起，而拉普拉斯方程的解仍然存在。二十世纪初希尔伯特（David Hilbert）在合适的函数类里证明了极小者的存在，挽救了这个原理，这就是直接方法（direct method，见[直接方法与里茨近似](lesson:math.calculus-of-variations.direct-methods)）。
+  reference: |
+    漏洞：「狄利克雷积分非负，所以有最小值」把有限维的直觉搬到了无穷维。有下界只保证下确界存在，不保证有函数取到它；有限维里靠的是有界闭集上的连续函数取到最小值，而容许函数构成的集合没有这样的紧性（compactness）。
+
+    例子：[泛函与变分问题](lesson:math.calculus-of-variations.functionals)里，$y(0)=0$、$y(1)=1$时$\int_0^1y^2\,\dd x$总是正的，却能任意接近$0$；[第一变分与欧拉-拉格朗日方程](lesson:math.calculus-of-variations.euler-lagrange)p6 里，魏尔斯特拉斯（Karl Weierstrass）的$\int_{-1}^1x^2y'^2\,\dd x$也是这样。魏尔斯特拉斯正是用这类例子批评了黎曼（Bernhard Riemann）的用法。
+
+    更糟的情形：阿达马（Jacques Hadamard）找到了单位圆盘上的连续边界值，使每个取这些边界值、在圆盘内光滑的函数，狄利克雷积分都是无穷大，可拉普拉斯方程在圆盘上的边值问题仍然有解。所以「方程有解」和「泛函有极小」并不总是一回事。希尔伯特（David Hilbert）在二十世纪初把容许函数放宽到合适的函数类，证明了极小者存在，再证明它足够光滑，挽救了这个原理；这条路线就是[直接方法与里茨近似](lesson:math.calculus-of-variations.direct-methods)。
+
+- id: p8
+  tier: thinking
+  statement: |
+    一块薄膜，边界的一部分$\Gamma_1$固定（$u$给定），另一部分$\Gamma_2$可以自由上下移动（$u$不给定）。在没有外力的情况下，平衡形状使狄利克雷积分最小。
+
+    在$\Gamma_2$上会出现什么条件？它和一元的自然边界条件$F_{y'}=0$有什么关系？物理上怎样理解？
+  hints:
+    - |
+      照讲解用格林公式，这次$\eta$在$\Gamma_2$上不为零，边界积分$\oint\eta\,(F_{u_x}\dd y-F_{u_y}\dd x)$不再全部消失。
+    - |
+      对狄利克雷积分，$F_{u_x}\dd y-F_{u_y}\dd x=u_x\dd y-u_y\dd x$。沿边界逆时针走，它等于$\nabla u$与外法向量（outward normal vector）的点积乘弧长（arc length）元素。
+    - |
+      先取在整个边界上为零的$\eta$，得到拉普拉斯方程；再让$\eta$在$\Gamma_2$上任取，得到$\nabla u\cdot\mathbf n=0$（$\mathbf n$是外法向量），即$u$沿边界法向的方向导数（directional derivative）为零。它是一元的$F_{y'}=0$的二维版本：一元时「边界」是两个端点，「法向」就是$x$轴方向。物理上，自由的边缘不受竖直方向的外力，薄膜在那里必须水平地「离开」边界，否则张力有竖直分量，边缘不会平衡。
+  reference: |
+    设$\eta$在$\Gamma_1$上为零，在$\Gamma_2$上任意。用格林公式，
+    $$
+    \delta D=\oint_{\partial D}\eta\,(u_x\,\dd y-u_y\,\dd x)-\iint_D(u_{xx}+u_{yy})\eta\,\dd x\,\dd y .
+    $$
+    先取在整个边界上为零的$\eta$，得$u_{xx}+u_{yy}=0$；于是$\delta D=\int_{\Gamma_2}\eta\,(u_x\,\dd y-u_y\,\dd x)$。沿边界逆时针走、以弧长$s$为参数时，$(\dd y,-\dd x)=\mathbf n\,\dd s$，$\mathbf n$是单位外法向量，所以$\delta D=\int_{\Gamma_2}\eta\,\nabla u\cdot\mathbf n\,\dd s$。$\eta$在$\Gamma_2$上任取，得$\nabla u\cdot\mathbf n=0$：$u$沿边界法向的方向导数为零。
+
+    这是一元的自然边界条件$F_{y'}=0$在二维的样子：一元的「边界」是两个端点，「外法向」就是$\pm x$方向，$F_{y'}=y'$。一般的$F$，条件是$F_{u_x}n_1+F_{u_y}n_2=0$。物理上，自由的边缘只受薄膜内部的张力，张力的竖直分量约为张力乘$\nabla u\cdot\mathbf n$，平衡要求它为零，薄膜必须水平地离开这段边界。

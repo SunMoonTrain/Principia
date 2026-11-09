@@ -11,4 +11,166 @@ macros:
     \frac{\mathrm{d} #1}{\mathrm{d} #2}
   \pdv: |
     \frac{\partial #1}{\partial #2}
-glossary: []
+glossary:
+  - id: math.calculus-of-variations.functional
+    zh: |
+      泛函
+    en: |
+      functional
+    brief: |
+      把一类函数中的每个函数对应到一个实数的规则，例如把曲线对应到它的长度。
+    definedIn: math.calculus-of-variations.functionals
+    anchor: def-functional
+  - id: math.calculus-of-variations.admissible-function
+    zh: |
+      容许函数
+    en: |
+      admissible function
+    brief: |
+      变分问题里参加比较的函数：满足给定的端点条件，导数连续。
+    definedIn: math.calculus-of-variations.functionals
+    anchor: def-admissible-function
+  - id: math.calculus-of-variations.variational-problem
+    zh: |
+      变分问题
+    en: |
+      variational problem
+    brief: |
+      在容许函数中找使泛函取最小值或最大值的函数。
+    definedIn: math.calculus-of-variations.functionals
+    anchor: def-variational-problem
+  - id: math.calculus-of-variations.brachistochrone
+    zh: |
+      最速降线
+    en: |
+      brachistochrone
+    brief: |
+      小球由静止沿光滑轨道滑到较低的一点，用时最短的那条轨道；它是一段摆线。
+    definedIn: math.calculus-of-variations.functionals
+    anchor: def-brachistochrone
+  - id: math.calculus-of-variations.first-variation
+    zh: |
+      第一变分
+    en: |
+      first variation
+    brief: |
+      泛函沿方向$\eta$的导数$\delta J=\dv{}{\varepsilon}J[y+\varepsilon\eta]$在$\varepsilon=0$处的值。
+    definedIn: math.calculus-of-variations.euler-lagrange
+    anchor: def-first-variation
+  - id: math.calculus-of-variations.fundamental-lemma
+    zh: |
+      变分法基本引理
+    en: |
+      fundamental lemma of the calculus of variations
+    brief: |
+      连续函数$g$与所有两端为零的光滑函数$\eta$之积的积分都为零，则$g$恒为零。
+    definedIn: math.calculus-of-variations.euler-lagrange
+    anchor: thm-fundamental-lemma
+  - id: math.calculus-of-variations.euler-lagrange-equation
+    zh: |
+      欧拉-拉格朗日方程
+    en: |
+      Euler–Lagrange equation
+    brief: |
+      泛函$\int F(x,y,y')\,\dd x$的光滑局部极值满足的方程$F_y-\dv{}{x}F_{y'}=0$。
+    definedIn: math.calculus-of-variations.euler-lagrange
+    anchor: thm-euler-lagrange
+  - id: math.calculus-of-variations.extremal
+    zh: |
+      极值曲线
+    en: |
+      extremal
+    brief: |
+      满足欧拉-拉格朗日方程的函数；它使第一变分为零，但不一定取极值。
+    definedIn: math.calculus-of-variations.euler-lagrange
+    anchor: def-extremal
+  - id: math.calculus-of-variations.beltrami-identity
+    zh: |
+      贝尔特拉米恒等式
+    en: |
+      Beltrami identity
+    brief: |
+      被积函数$F(y,y')$不显含$x$时，沿每条极值曲线$F-y'F_{y'}$是常数。
+    definedIn: math.calculus-of-variations.beltrami-identity
+    anchor: thm-beltrami
+  - id: math.calculus-of-variations.first-integral
+    zh: |
+      首次积分
+    en: |
+      first integral
+    brief: |
+      沿每条极值曲线都保持为常数的量；知道它，二阶的方程就降成一阶。
+    definedIn: math.calculus-of-variations.beltrami-identity
+    anchor: def-first-integral
+  - id: math.calculus-of-variations.catenoid
+    zh: |
+      悬链面
+    en: |
+      catenoid
+    brief: |
+      悬链线$y=c\cosh\frac{x-x_0}{c}$绕$x$轴转出的曲面，连接两个圆环的肥皂膜就是它。
+    definedIn: math.calculus-of-variations.beltrami-identity
+    anchor: def-catenary
+  - id: math.calculus-of-variations.natural-boundary-condition
+    zh: |
+      自然边界条件
+    en: |
+      natural boundary condition
+    brief: |
+      端点的值不给定时，局部极值在那里自动满足的条件$F_{y'}=0$。
+    definedIn: math.calculus-of-variations.natural-boundary-conditions
+    anchor: def-natural-boundary-condition
+  - id: math.calculus-of-variations.transversality-condition
+    zh: |
+      横截条件
+    en: |
+      transversality condition
+    brief: |
+      终点在曲线$y=\varphi(x)$上滑动时，局部极值在终点满足$F+(\varphi'-y')F_{y'}=0$。
+    definedIn: math.calculus-of-variations.natural-boundary-conditions
+    anchor: def-transversality-condition
+  - id: math.calculus-of-variations.euler-poisson-equation
+    zh: |
+      欧拉-泊松方程
+    en: |
+      Euler–Poisson equation
+    brief: |
+      被积函数含$y''$时的方程$F_y-\dv{}{x}F_{y'}+\frac{\dd^2}{\dd x^2}F_{y''}=0$，一般是四阶的。
+    definedIn: math.calculus-of-variations.several-functions
+    anchor: thm-euler-poisson
+  - id: math.calculus-of-variations.isoperimetric-problem
+    zh: |
+      等周问题
+    en: |
+      isoperimetric problem
+    brief: |
+      带积分约束的变分问题：求$\int F\,\dd x$的极值，同时要求$\int G\,\dd x$等于给定的值。
+    definedIn: math.calculus-of-variations.isoperimetric-problems
+    anchor: def-isoperimetric-problem
+  - id: math.calculus-of-variations.dirichlet-integral
+    zh: |
+      狄利克雷积分
+    en: |
+      Dirichlet integral
+    brief: |
+      $D[u]=\frac12\iint(u_x^2+u_y^2)\,\dd x\,\dd y$，衡量$u$起伏的程度；它的极值函数满足拉普拉斯方程。
+    definedIn: math.calculus-of-variations.multivariable-functionals
+    anchor: def-dirichlet-integral
+  - id: math.calculus-of-variations.dirichlet-principle
+    zh: |
+      狄利克雷原理
+    en: |
+      Dirichlet principle
+    brief: |
+      满足拉普拉斯方程的函数，在边界值相同的函数中使狄利克雷积分最小。
+    definedIn: math.calculus-of-variations.multivariable-functionals
+    anchor: thm-dirichlet-principle
+  - id: math.calculus-of-variations.minimal-surface
+    zh: |
+      极小曲面
+    en: |
+      minimal surface
+    brief: |
+      使面积的第一变分为零的曲面；作为图像$z=u(x,y)$时满足极小曲面方程。
+    definedIn: math.calculus-of-variations.multivariable-functionals
+    anchor: def-minimal-surface

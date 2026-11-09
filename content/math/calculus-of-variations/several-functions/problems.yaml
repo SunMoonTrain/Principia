@@ -1,0 +1,153 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$J[y]=\int_0^1y''^2\,\dd x$在$y(0)=0$、$y'(0)=0$、$y(1)=1$、$y'(1)=0$下的最小值。
+  answer:
+    type: number
+    value: 12
+  hints:
+    - |
+      欧拉-泊松方程是$y''''=0$，极值曲线是三次多项式。
+    - |
+      由$y(0)=y'(0)=0$，$y=c_3x^3+c_2x^2$；再由$y(1)=1$、$y'(1)=0$定出$c_3$、$c_2$。
+    - |
+      $c_3+c_2=1$，$3c_3+2c_2=0$，得$y=3x^2-2x^3$，$y''=6-12x$，$J=\int_0^1(6-12x)^2\,\dd x=12$。
+  solution: |
+    方程$y''''=0$，$y=c_3x^3+c_2x^2$（已用$y(0)=y'(0)=0$）。$y(1)=c_3+c_2=1$，$y'(1)=3c_3+2c_2=0$，所以$c_3=-2$、$c_2=3$，$y=3x^2-2x^3$。$J=\int_0^1(6-12x)^2\,\dd x=36-72+48=12$。和讲解例 2 一样展开可知它确实是最小值。
+
+- id: p2
+  tier: easy
+  statement: |
+    $J[y]=\int_a^b\bigl(y''^2+y'^2\bigr)\dd x$的欧拉-泊松方程是哪一个？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        $y''''=y''$
+      - |
+        $y''''=-y''$
+      - |
+        $y''=y$
+      - |
+        $y''''=y$
+    value: 1
+  hints:
+    - |
+      方程是$F_y-\dv{}{x}F_{y'}+\frac{\dd^2}{\dd x^2}F_{y''}=0$，分别求三个偏导数。
+    - |
+      $F_y=0$，$F_{y'}=2y'$，$F_{y''}=2y''$。
+    - |
+      $0-2y''+2y''''=0$，即$y''''=y''$，选 A。
+  solution: |
+    $F_y=0$，$F_{y'}=2y'$，$F_{y''}=2y''$，代入得$-2y''+2y''''=0$，即$y''''=y''$，选 A。注意$y'$那一项前面是减号、$y''$那一项是加号。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$J[y,z]=\int_0^1\bigl(y'z'+2xy\bigr)\dd x$在$y(0)=0$、$y(1)=1$、$z(0)=0$、$z(1)=0$下的极值曲线中$z$在$x=\frac12$处的值。
+  answer:
+    type: number
+    value: -1/8
+  hints:
+    - |
+      两个未知函数，各写一个欧拉-拉格朗日方程。注意$y'z'$这一项：对$y'$求偏导数得$z'$，对$z'$求偏导数得$y'$。
+    - |
+      对$y$：$F_y=2x$，$F_{y'}=z'$，方程是$2x-z''=0$。对$z$：$F_z=0$，$F_{z'}=y'$，方程是$y''=0$。
+    - |
+      $z''=2x$，$z=\frac{x^3}{3}+C_1x+C_2$，由$z(0)=z(1)=0$得$z=\frac{x^3-x}{3}$，$z(\frac12)=\frac{1/8-1/2}{3}=-\frac18$。
+  solution: |
+    $y$的方程：$F_y-\dv{}{x}F_{y'}=2x-z''=0$；$z$的方程：$F_z-\dv{}{x}F_{z'}=-y''=0$。所以$y=x$，$z''=2x$，$z=\frac{x^3-x}{3}$，$z(\frac12)=-\frac18$。有意思的是，$y$的方程决定的是$z$，$z$的方程决定的是$y$。
+
+- id: p4
+  tier: medium
+  statement: |
+    梁的两端夹紧（clamped）：$y(0)=y'(0)=0$，$y(1)=y'(1)=0$。在均匀载荷下，它的挠度（deflection）使$J[y]=\int_0^1\Bigl(\frac12y''^2-y\Bigr)\dd x$最小（$y$向下为正）。求中点的挠度$y(\frac12)$。
+  answer:
+    type: number
+    value: 1/384
+  hints:
+    - |
+      欧拉-泊松方程：$F_y=-1$，$F_{y''}=y''$。
+    - |
+      方程是$-1+y''''=0$，即$y''''=1$，$y=\frac{x^4}{24}+c_3x^3+c_2x^2+c_1x+c_0$。
+    - |
+      四个夹紧条件给出$y=\frac{x^2(1-x)^2}{24}$，$y(\frac12)=\frac{1}{24}\cdot\frac1{16}=\frac1{384}$。
+  solution: |
+    方程$y''''=1$。由$y(0)=y'(0)=0$，$y=\frac{x^4}{24}+c_3x^3+c_2x^2$；由$y(1)=y'(1)=0$得$c_3=-\frac1{12}$、$c_2=\frac1{24}$，即$y=\frac{x^2(1-x)^2}{24}$。中点挠度$\frac{1}{384}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    (1) 对$J[y]=\int_a^bF(x,y,y',y'')\,\dd x$，两端只给定$y$、不给定$y'$。证明局部极值除了满足欧拉-泊松方程，还要在两端满足$F_{y''}=0$。
+
+    (2) 两端简支（simply supported）的梁：$y(0)=y(1)=0$，$y'$不给定，挠度使$J[y]=\int_0^1\bigl(\frac12y''^2-y\bigr)\dd x$最小。求$y$和中点的挠度，并和两端夹紧（p4）比较。
+  hints:
+    - |
+      (1) 照讲解分部积分，这次$\eta(a)=\eta(b)=0$，但$\eta'$在两端不为零，看哪一项边界项留了下来。
+    - |
+      (1) 留下的是$\bigl[F_{y''}\eta'\bigr]_a^b$；先取$\eta'$在两端为零得到方程，再让$\eta'(a)$、$\eta'(b)$任取。(2) 条件是$y''(0)=y''(1)=0$。
+    - |
+      (1) $\delta J=\int_a^b(\text{欧拉-泊松方程的左边})\eta\,\dd x+\bigl[F_{y''}\eta'\bigr]_a^b$，先得方程，再得$F_{y''}=0$（两端）。(2) $y''''=1$，$y(0)=y(1)=0$，$y''(0)=y''(1)=0$，解得$y=\frac{x^4-2x^3+x}{24}$，中点挠度$\frac{5}{384}$，是夹紧时的$5$倍。
+  reference: |
+    (1) 对$\eta(a)=\eta(b)=0$、$\eta'$不受限制的$\eta$，分部积分得
+    $$
+    \delta J=\int_a^b\Bigl(F_y-\dv{}{x}F_{y'}+\frac{\dd^2}{\dd x^2}F_{y''}\Bigr)\eta\,\dd x+\Bigl[F_{y'}\eta-\Bigl(\dv{}{x}F_{y''}\Bigr)\eta+F_{y''}\eta'\Bigr]_a^b ,
+    $$
+    方括号里含$\eta$的两项因$\eta=0$而消失。先取两端$\eta'$也为零的$\eta$，由基本引理得欧拉-泊松方程；于是$\delta J=F_{y''}\big|_b\eta'(b)-F_{y''}\big|_a\eta'(a)=0$，$\eta'(a)$、$\eta'(b)$可以分别任取，所以两端$F_{y''}=0$。这是二阶导数那一层的自然边界条件（natural boundary condition）。
+
+    (2) $F_{y''}=y''$，条件是$y''(0)=y''(1)=0$。方程$y''''=1$，$y=\frac{x^4}{24}+c_3x^3+c_2x^2+c_1x+c_0$：$y(0)=0$得$c_0=0$，$y''(0)=0$得$c_2=0$，$y''(1)=\frac12+6c_3=0$得$c_3=-\frac1{12}$，$y(1)=\frac1{24}-\frac1{12}+c_1=0$得$c_1=\frac1{24}$。所以$y=\frac{x^4-2x^3+x}{24}$，$y(\frac12)=\frac{1}{24}\bigl(\frac1{16}-\frac14+\frac12\bigr)=\frac{5}{384}$，是两端夹紧时$\frac1{384}$的$5$倍。物理上，$y''=0$表示端点不受力矩，梁可以绕端点自由转动，所以弯得更多。
+
+- id: p6
+  tier: hard
+  statement: |
+    把平面曲线写成参数形式$x=x(t)$、$y=y(t)$，$t\in[0,1]$，长度是$L=\int_0^1\sqrt{\dot x^2+\dot y^2}\,\dd t$（点表示对$t$求导）。把$x(t)$、$y(t)$都当作未知函数，写出两个欧拉-拉格朗日方程，证明它们不是互相独立的，并说明极值曲线都是直线；为什么端点条件定不下$x(t)$、$y(t)$？
+  hints:
+    - |
+      $F=\sqrt{\dot x^2+\dot y^2}$不含$x$、$y$，两个方程都是「某个量的导数为零」。
+    - |
+      记$v=\sqrt{\dot x^2+\dot y^2}$，方程是$\dv{}{t}\frac{\dot x}{v}=0$、$\dv{}{t}\frac{\dot y}{v}=0$，即单位切向量不变。把两个方程的左边分别乘$\dot x$、$\dot y$再相加，看看得到什么。
+    - |
+      $\frac{\dot x}{v}\dv{}{t}\frac{\dot x}{v}+\frac{\dot y}{v}\dv{}{t}\frac{\dot y}{v}=\frac12\dv{}{t}\Bigl(\frac{\dot x^2+\dot y^2}{v^2}\Bigr)=0$恒成立，所以两个方程满足一个恒等式，只有一个是独立的。单位切向量不变说明曲线是直线；但沿直线怎样走（参数化）任意，$L$都一样，所以端点条件只能定出那条线段，定不下$x(t)$、$y(t)$。
+  reference: |
+    $F=\sqrt{\dot x^2+\dot y^2}$，记$v=\sqrt{\dot x^2+\dot y^2}>0$。两个方程是$\dv{}{t}\frac{\dot x}{v}=0$、$\dv{}{t}\frac{\dot y}{v}=0$。
+
+    不独立：记$u=\bigl(\frac{\dot x}{v},\frac{\dot y}{v}\bigr)$，它是单位向量，$|u|^2\equiv1$，求导得$u\cdot\dv{u}{t}\equiv0$。也就是说，对任何曲线，第一个方程的左边乘$\frac{\dot x}{v}$加上第二个方程的左边乘$\frac{\dot y}{v}$恒为零：两个方程中只有一个独立的（另一个在$\dot x\ne0$处由它推出）。
+
+    极值曲线：两个方程说单位切向量$u$是常数，曲线方向不变，是直线段。端点条件只规定$t=0$、$t=1$时的位置，而同一条线段的任何参数化（例如$x=x_A+(x_B-x_A)s(t)$，$s$从$0$单调增到$1$）长度都一样，都满足方程，所以$x(t)$、$y(t)$定不下来。原因是$L$不依赖参数化：换一个参数，$L$不变。这和讲解里「几个未知函数各自独立」不矛盾：方程个数等于未知函数个数，但它们之间有恒等式，这种恒等式来自泛函的对称性。
+
+- id: p7
+  tier: thinking
+  statement: |
+    讲解说，$F$不含某个$y_k$时，$F_{y_k'}$是首次积分。
+
+    在平面上用极坐标（polar coordinates，见[极坐标与极坐标下的面积](lesson:math.calculus.polar-area)）$r(t)$、$\theta(t)$描述一个质点，$F=\frac12\bigl(\dot r^2+r^2\dot\theta^2\bigr)-V(r)$（点表示对时间$t$求导）。哪个量守恒？它在物理上是什么？为什么「$F$不含$\theta$」可以看成一种对称性？
+  hints:
+    - |
+      $F$含$\theta$吗？对$\dot\theta$求偏导数。
+    - |
+      $F$不含$\theta$，所以$F_{\dot\theta}=r^2\dot\theta$守恒。
+    - |
+      $r^2\dot\theta$乘质量就是角动量（angular momentum）。$F$不含$\theta$，意味着把整个运动绕原点转一个角度（$\theta\to\theta+c$），$F$不变：问题有转动对称性。对称性给出守恒量，这正是分析力学里:term[诺特定理]{id="physics.analytical-mechanics.noether-theorem"}（Noether's theorem，见[诺特定理](lesson:physics.analytical-mechanics.noether-theorem)）的一个特例。
+  reference: |
+    $F$不含$\theta$，$\theta$的方程积分一次：$F_{\dot\theta}=r^2\dot\theta=$常数。乘上质量，它就是质点对原点的角动量，这是有心力问题中角动量守恒。
+
+    对称性：把$\theta$换成$\theta+c$（整个轨道绕原点转一个角度），$\dot\theta$不变，$F$也不变。$F$不含某个坐标，等价于沿这个坐标平移是对称操作；对应的$F_{y_k'}$守恒。分析力学里的[诺特定理](lesson:physics.analytical-mechanics.noether-theorem)把这推广到一般的连续对称性：每一个使$F$不变的连续变换都给出一个守恒量。贝尔特拉米恒等式（Beltrami identity）也是同一回事，它对应的对称性是沿$x$（时间）的平移。
+
+- id: p8
+  tier: thinking
+  statement: |
+    被积函数对$y''$是一次的，例如$F=y\,y''$，欧拉-泊松方程还是四阶的吗？用分部积分把$\int_a^by\,y''\,\dd x$改写一下，解释发生了什么。这时还能像讲解那样在两端给定$y$和$y'$四个条件吗？一般地，$F=g(x,y,y')\,y''+h(x,y,y')$时会怎样？
+  hints:
+    - |
+      直接代公式：$F_y=y''$，$F_{y'}=0$，$F_{y''}=y$，方程的阶数是多少？
+    - |
+      方程是$y''+y''=0$，只有二阶。$\int_a^by\,y''\,\dd x=\bigl[yy'\bigr]_a^b-\int_a^by'^2\,\dd x$，两端$y$、$y'$给定时方括号是常数。
+    - |
+      $F=yy''$和$-y'^2$相差一个全导数（total derivative）$(yy')'$，所以极值曲线一样，方程只有二阶（$y''=0$）。二阶方程的解是直线，一般满足不了两端$y$、$y'$四个条件，这样提出的问题通常没有极值曲线，是退化的。一般地，$g\,y''=\dv{}{x}G(x,y,y')-G_x-G_yy'$，其中$G$是$g$对第三个变量的原函数，$y''$的一次项总能化成全导数加上只含$y$、$y'$的项，欧拉-泊松方程降为二阶：真正决定阶数的是$F$对$y''$的二阶偏导数$F_{y''y''}$是否为零。
+  reference: |
+    $F=yy''$：$F_y=y''$，$F_{y'}=0$，$F_{y''}=y$，欧拉-泊松方程$y''-0+y''=0$，即$y''=0$，只有二阶。原因：$\int_a^byy''\,\dd x=\bigl[yy'\bigr]_a^b-\int_a^by'^2\,\dd x$，两端$y$、$y'$给定时方括号对所有比较函数都一样，所以这个问题和求$-\int y'^2\,\dd x$的极值是同一个问题，后者的方程正是$y''=0$。
+
+    四个端点条件：$y''=0$的解是直线，只有两个常数，一般满足不了两端的$y$、$y'$四个条件。所以除非端点数据恰好相容，这样提出的问题没有极值曲线：$-\int y'^2\,\dd x$在这些条件下的上确界（supremum）可以用「中间几乎是直线、两端很快拐弯」的函数逼近，却取不到。四阶方程配四个条件、二阶方程配两个条件，阶数一降，原来的边界条件就太多了。
+
+    一般情形：设$G(x,y,p)$满足$G_p=g$，则$\dv{}{x}G(x,y,y')=G_x+G_yy'+g\,y''$，所以$g\,y''=\dv{}{x}G-G_x-G_yy'$。$F$就化成一个全导数加上只含$x,y,y'$的函数，全导数积分以后只依赖端点值，不影响极值曲线，方程降为二阶。四阶的条件是$F_{y''y''}\ne0$；这和[第一变分与欧拉-拉格朗日方程](lesson:math.calculus-of-variations.euler-lagrange)里「$F_{y'y'}\ne0$时方程才是二阶的」是同一回事。

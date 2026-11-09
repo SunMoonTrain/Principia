@@ -1,0 +1,167 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$J[y]=\int_0^1\bigl(y'^2+2y\bigr)\dd x$在$y(0)=0$、$y(1)=2$下的极值曲线在$x=\frac12$处的值。
+  answer:
+    type: number
+    value: 7/8
+  hints:
+    - |
+      写出$F_y$、$F_{y'}$，代进欧拉-拉格朗日方程。
+    - |
+      $F_y=2$，$F_{y'}=2y'$，方程是$2-2y''=0$，即$y''=1$。
+    - |
+      $y=\frac{x^2}{2}+C_1x+C_2$。由$y(0)=0$得$C_2=0$，由$y(1)=2$得$C_1=\frac32$，所以$y(\frac12)=\frac18+\frac34=\frac78$。
+  solution: |
+    $F=p^2+2y$，$F_y=2$，$F_{y'}=2y'$，欧拉-拉格朗日方程是$2-2y''=0$，即$y''=1$。积分两次，$y=\frac{x^2}{2}+C_1x+C_2$；端点条件给出$C_2=0$、$C_1=\frac32$。所以$y=\frac{x^2}2+\frac32x$，$y(\frac12)=\frac78$。
+
+- id: p2
+  tier: easy
+  statement: |
+    设$J[y]=\int_0^1y'^2\,\dd x$。求它在$y=x^2$处沿$\eta=x(1-x)$的第一变分$\delta J[y;\eta]$。
+  answer:
+    type: number
+    value: -2/3
+  hints:
+    - |
+      用$\delta J=\int_0^1\bigl(F_y\eta+F_{y'}\eta'\bigr)\dd x$，这里$F=p^2$。
+    - |
+      $F_y=0$，$F_{y'}=2y'=4x$，$\eta'=1-2x$，所以$\delta J=\int_0^14x(1-2x)\,\dd x$。
+    - |
+      $\int_0^1(4x-8x^2)\,\dd x=2-\frac83=-\frac23$。
+  solution: |
+    $F_{y'}=2y'=4x$，$\eta'=1-2x$，$\delta J=\int_0^14x(1-2x)\,\dd x=2-\frac83=-\frac23$。也可以直接展开：$J[x^2+\varepsilon\eta]=\int_0^1\bigl(2x+\varepsilon(1-2x)\bigr)^2\dd x=\frac43-\frac23\varepsilon+\frac13\varepsilon^2$，它在$\varepsilon=0$处的导数是$-\frac23$。第一变分不为零，说明$y=x^2$不是极值。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$J[y]=\int_1^ex\,y'^2\,\dd x$在$y(1)=0$、$y(e)=1$下的极值曲线，并求$J$在它上面的值。
+  answer:
+    type: number
+    value: 1
+  hints:
+    - |
+      被积函数不含$y$，方程可以积分一次：$F_{y'}=C$。
+    - |
+      $2xy'=C$，所以$y'=\frac{C}{2x}$，$y=\frac C2\ln x+D$；端点条件给出$y=\ln x$。
+    - |
+      $J[\ln x]=\int_1^ex\cdot\frac{1}{x^2}\,\dd x=\int_1^e\frac{\dd x}{x}=1$。
+  solution: |
+    $F=xp^2$不含$y$，所以$F_{y'}=2xy'=C$，$y'=\frac{C}{2x}$，$y=\frac C2\ln x+D$。由$y(1)=0$得$D=0$，由$y(e)=1$得$C=2$，极值曲线是$y=\ln x$。$J[\ln x]=\int_1^ex\cdot\frac1{x^2}\,\dd x=1$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$J[y]=\int_0^1\bigl(y'^2+2yy'+4xy\bigr)\dd x$在$y(0)=0$、$y(1)=1$下的极值曲线在$x=\frac12$处的值。
+  answer:
+    type: number
+    value: 3/8
+  hints:
+    - |
+      $F_y$和$F_{y'}$里都有$2yy'$贡献的项，求$\dv{}{x}F_{y'}$时别漏掉$y$也随$x$变。
+    - |
+      $F_y=2y'+4x$，$F_{y'}=2y'+2y$，$\dv{}{x}F_{y'}=2y''+2y'$。方程是$2y'+4x-2y''-2y'=0$，即$y''=2x$。
+    - |
+      $y=\frac{x^3}{3}+C_1x+C_2$，端点条件给出$C_2=0$、$C_1=\frac23$，$y(\frac12)=\frac1{24}+\frac13=\frac38$。
+  solution: |
+    $F_y=2y'+4x$，$F_{y'}=2y'+2y$，$\dv{}{x}F_{y'}=2y''+2y'$，方程化成$y''=2x$。于是$y=\frac{x^3}{3}+\frac23x$，$y(\frac12)=\frac38$。$2yy'$这一项在方程里抵消了，原因是$2yy'=(y^2)'$，它的积分等于$y(1)^2-y(0)^2=1$，对所有容许函数都一样，不影响谁大谁小。
+
+- id: p5
+  tier: hard
+  statement: |
+    (1) 把讲解里变分法基本引理的证明写完整：说明「小鼓包」$\eta$为什么有连续导数，并处理$g(x_0)<0$和端点的情形。
+
+    (2) 证明杜布瓦-雷蒙引理（du Bois-Reymond lemma）：设$h$在$[a,b]$上连续，如果对所有在$[a,b]$上有连续导数、两端为零的$\eta$都有$\int_a^bh\,\eta'\,\dd x=0$，那么$h$是常数。
+
+    (3) 用 (2) 说明：容许函数$y$只有连续的一阶导数时，局部极值处$F_{y'}-\int_a^xF_y\,\dd t$是常数，从而$F_{y'}\bigl(x,y(x),y'(x)\bigr)$对$x$可导，欧拉-拉格朗日方程仍然成立。
+  hints:
+    - |
+      (1) 看$\eta$在小区间端点处两侧的值和导数。(2) 要构造一个$\eta$，使$\eta'$正好是$h$减去一个常数。
+    - |
+      (2) 取$c$为$h$在$[a,b]$上的平均值，$\eta(x)=\int_a^x\bigl(h(t)-c\bigr)\dd t$，算$\int_a^b(h-c)^2\,\dd x$。(3) 把$\int_a^bF_y\eta\,\dd x$分部积分，变成$\eta'$的积分。
+    - |
+      (1) 在$[x_0-r,x_0+r]$内$\eta$是多项式；在两个端点处$\eta=0$，而且是二重零点（double root），所以从里面算的导数也是$0$，和外面一致，$\eta$有连续导数。$\eta\ge0$，在$(x_0-r,x_0+r)$内为正，$g$在那里为正，所以$\int_a^bg\eta\,\dd x>0$，矛盾。$g(x_0)<0$时对$-g$用同样的论证。于是$g$在$(a,b)$内为零，由连续性$g(a)=g(b)=0$。
+
+      (2) 上面的$\eta$两端为零、导数连续，$\int_a^b(h-c)^2\,\dd x=\int_a^b(h-c)\eta'\,\dd x=\int_a^bh\eta'\,\dd x-c\bigl(\eta(b)-\eta(a)\bigr)=0$，所以$h\equiv c$。
+
+      (3) 记$G(x)=\int_a^xF_y\,\dd t$，$\int_a^bF_y\eta\,\dd x=-\int_a^bG\eta'\,\dd x$，所以$\delta J=\int_a^b(F_{y'}-G)\eta'\,\dd x=0$；由 (2)，$F_{y'}=G+$常数，右边可导，导数是$F_y$。
+  reference: |
+    (1) 取$r$使$[x_0-r,x_0+r]\subset(a,b)$且$g$在其上为正。$\eta$在$[x_0-r,x_0+r]$内是多项式$(x-x_0+r)^2(x_0+r-x)^2$，在外面恒为零。在$x_0\pm r$处多项式的值和导数都是零（二重零点），和外面的零函数衔接，所以$\eta$在$[a,b]$上有连续导数，两端为零。
+
+    $\eta\ge0$，在$(x_0-r,x_0+r)$内为正，$g\eta$在那里是正的连续函数，所以$\int_a^bg\eta\,\dd x>0$，和假设矛盾。$g(x_0)<0$时对$-g$用同样的论证。所以$g$在$(a,b)$内恒为零，由连续性$g(a)=\lim_{x\to a^+}g(x)=0$，$g(b)=0$。
+
+    (2) 令$c=\frac{1}{b-a}\int_a^bh\,\dd x$，$\eta(x)=\int_a^x\bigl(h(t)-c\bigr)\dd t$。由微积分基本定理（fundamental theorem of calculus），$\eta'=h-c$连续；$\eta(a)=0$，$\eta(b)=\int_a^bh\,\dd t-c(b-a)=0$。于是
+    $$
+    \int_a^b(h-c)^2\,\dd x=\int_a^b(h-c)\eta'\,\dd x=\int_a^bh\eta'\,\dd x-c\bigl(\eta(b)-\eta(a)\bigr)=0 ,
+    $$
+    被积函数连续、非负，所以$h\equiv c$。
+
+    (3) $y$只有连续一阶导数时，$F_y$、$F_{y'}$（代入$y(x)$、$y'(x)$以后）都是$x$的连续函数，$\delta J=\int_a^b(F_y\eta+F_{y'}\eta')\,\dd x$照样成立。记$G(x)=\int_a^xF_y\,\dd t$，$G'=F_y$，分部积分得$\int_a^bF_y\eta\,\dd x=[G\eta]_a^b-\int_a^bG\eta'\,\dd x=-\int_a^bG\eta'\,\dd x$。局部极值处$\delta J=0$，即$\int_a^b(F_{y'}-G)\eta'\,\dd x=0$对所有$\eta$成立，由 (2)，$F_{y'}-G$是常数。所以$F_{y'}$可导，$\dv{}{x}F_{y'}=G'=F_y$，欧拉-拉格朗日方程成立。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$J[y]=\int_{-1}^{1}x^2y'^2\,\dd x$，端点条件$y(-1)=-1$、$y(1)=1$。
+
+    (1) 证明没有满足端点条件的极值曲线。
+
+    (2) 证明对每个满足端点条件、有连续导数的$y$都有$J[y]>0$，但$J$的值可以任意接近$0$，所以最小值不存在。
+  hints:
+    - |
+      (1) 方程积分一次是$x^2y'=C$，在$x=0$处看看$C$只能是多少。(2) 要让$J$小，$y'$大的地方应该集中在$x=0$附近。
+    - |
+      (1) $C=0$，于是除$x=0$外$y'=0$，再由连续性$y'\equiv0$。(2) 试$y_k=\frac{\arctan(kx)}{\arctan k}$，$k\to\infty$。
+    - |
+      (1) 方程是$(2x^2y')'=0$，$x^2y'=C$；令$x=0$得$C=0$，所以$x\ne0$时$y'=0$，由$y'$连续，$y'\equiv0$，$y$是常数，不可能满足$y(\pm1)=\pm1$。(2) 若$J[y]=0$，被积函数连续、非负，处处为零，同样推出$y$是常数，矛盾，所以$J[y]>0$。对$y_k$，$y_k'=\frac{k}{(1+k^2x^2)\arctan k}$，而$\frac{k^2x^2}{(1+k^2x^2)^2}\le\frac{1}{1+k^2x^2}$，所以$J[y_k]\le\frac{1}{\arctan^2k}\int_{-1}^{1}\frac{\dd x}{1+k^2x^2}=\frac{2}{k\arctan k}\to0$。
+  reference: |
+    (1) $F=x^2p^2$不含$y$，方程是$\dv{}{x}(2x^2y')=0$，所以$x^2y'=C$在$[-1,1]$上成立。令$x=0$得$C=0$，于是$x\ne0$时$y'=0$；$y'$连续，所以$y'\equiv0$，$y$是常数，不可能满足$y(-1)=-1$、$y(1)=1$。
+
+    (2) 若$J[y]=0$，被积函数$x^2y'^2$连续、非负，只能处处为零，同(1)推出$y$是常数，矛盾，所以$J[y]>0$。取$y_k=\frac{\arctan(kx)}{\arctan k}$，它满足端点条件、导数连续，$y_k'=\frac{k}{(1+k^2x^2)\arctan k}$。由$\frac{k^2x^2}{(1+k^2x^2)^2}\le\frac{1}{1+k^2x^2}$，
+    $$
+    J[y_k]=\frac{1}{\arctan^2k}\int_{-1}^{1}\frac{k^2x^2}{(1+k^2x^2)^2}\,\dd x\le\frac{1}{\arctan^2k}\cdot\frac{2\arctan k}{k}=\frac{2}{k\arctan k}\to0\quad(k\to\infty).
+    $$
+    所以$J$的值能任意接近$0$却取不到，最小值不存在。这个例子是魏尔斯特拉斯（Karl Weierstrass）给出的：欧拉-拉格朗日方程没有合适的解，并不意味着问题有别的光滑解，而是可能根本没有最小值。
+
+- id: p7
+  tier: thinking
+  statement: |
+    欧拉最初是这样推这个方程的：把$[a,b]$等分成$N$段，步长$h$，节点$x_i=a+ih$，用折线代替曲线，把$J$近似成
+    $$
+    J_N(y_1,\dots,y_{N-1})=\sum_{i=0}^{N-1}F\Bigl(x_i,\,y_i,\,\frac{y_{i+1}-y_i}{h}\Bigr)h ,
+    $$
+    其中$y_0$、$y_N$是给定的端点值。令$\frac{\partial J_N}{\partial y_i}=0$（$1\le i\le N-1$），写出得到的方程，说明$h\to0$时它变成什么。这种做法和讲解的推导各有什么长处？
+  hints:
+    - |
+      $y_i$出现在求和的哪几项里？它在第$i$项里出现两次（第二个变量和斜率），在第$i-1$项里出现一次（斜率）。
+    - |
+      记$s_i=\frac{y_{i+1}-y_i}{h}$，$\frac{\partial J_N}{\partial y_i}=hF_y(x_i,y_i,s_i)-F_p(x_i,y_i,s_i)+F_p(x_{i-1},y_{i-1},s_{i-1})$。除以$h$。
+    - |
+      方程是$F_y(x_i,y_i,s_i)-\frac{F_p(x_i,y_i,s_i)-F_p(x_{i-1},y_{i-1},s_{i-1})}{h}=0$，$h\to0$时差商变成导数，正是$F_y-\dv{}{x}F_{y'}=0$。离散的做法只用多元函数求偏导数，直观，也直接给出数值解法；讲解的做法得到的是精确的条件，边界项、基本引理在哪里起作用一目了然，端点不固定时还能看出要加什么条件。
+  reference: |
+    $y_i$出现在第$i$项（作为第二个变量，以及斜率$s_i=\frac{y_{i+1}-y_i}{h}$里，系数$-\frac1h$）和第$i-1$项（斜率$s_{i-1}=\frac{y_i-y_{i-1}}{h}$里，系数$+\frac1h$）。所以
+    $$
+    \frac{\partial J_N}{\partial y_i}=hF_y(x_i,y_i,s_i)-F_p(x_i,y_i,s_i)+F_p(x_{i-1},y_{i-1},s_{i-1}),
+    $$
+    令它为零再除以$h$：$F_y(x_i,y_i,s_i)-\frac{F_p(x_i,y_i,s_i)-F_p(x_{i-1},y_{i-1},s_{i-1})}{h}=0$。$h\to0$时，$s_i\to y'(x_i)$，后一项是$F_p$沿曲线的差商，趋于$\dv{}{x}F_{y'}$，方程变成欧拉-拉格朗日方程。
+
+    长处：离散的做法只用到有限个变量的偏导数，直观，说明了「对函数求极值」就是「对无穷多个变量求极值」的极限；它也直接给出数值解法（解$N-1$个方程）。讲解的做法不需要取极限，得到的是精确的条件，分部积分产生的边界项、基本引理的作用都看得清楚；端点不固定时，边界项不再消失，正好给出额外的条件（[自然边界条件与可动端点](lesson:math.calculus-of-variations.natural-boundary-conditions)），离散的做法里这一点要单独处理第$N$个变量才看得出来。
+
+- id: p8
+  tier: thinking
+  statement: |
+    讲解只沿「直线」$y+\varepsilon\eta$变动。
+
+    设$y$是局部极小，$y_\varepsilon$是一族满足端点条件的容许函数，$y_0=y$，并且$\frac{\partial y_\varepsilon}{\partial\varepsilon}\big|_{\varepsilon=0}=\eta$（各阶导数都足够光滑）。$\dv{}{\varepsilon}J[y_\varepsilon]\big|_{\varepsilon=0}$等于什么？为什么只考虑$y+\varepsilon\eta$并不失一般性？这和多元函数沿一条曲线求导有什么相似之处？
+  hints:
+    - |
+      照讲解的办法在积分号下对$\varepsilon$求导，再令$\varepsilon=0$。
+    - |
+      结果只依赖$\eta=\frac{\partial y_\varepsilon}{\partial\varepsilon}\big|_{\varepsilon=0}$，和这一族在$\varepsilon\ne0$时长什么样无关。
+    - |
+      $\dv{}{\varepsilon}J[y_\varepsilon]\big|_{\varepsilon=0}=\int_a^b(F_y\eta+F_{y'}\eta')\,\dd x=\delta J[y;\eta]$。所以沿任何一族变动，一阶的变化都只由「初速度」$\eta$决定，用$y+\varepsilon\eta$已经覆盖了所有可能的$\eta$。这和多元函数$f$沿过点$P$的曲线$\mathbf r(t)$求导一样：$\dv{}{t}f(\mathbf r(t))$只依赖$\mathbf r'(0)$，等于$\nabla f\cdot\mathbf r'(0)$，其中的梯度（gradient）见[方向导数与梯度](lesson:math.vector-calculus.gradient)。
+  reference: |
+    在积分号下对$\varepsilon$求导：$\dv{}{\varepsilon}J[y_\varepsilon]=\int_a^b\bigl(F_y\,\partial_\varepsilon y_\varepsilon+F_{y'}\,\partial_\varepsilon y_\varepsilon'\bigr)\dd x$，在$\varepsilon=0$处等于$\int_a^b(F_y\eta+F_{y'}\eta')\,\dd x=\delta J[y;\eta]$。$\eta$两端为零，因为$y_\varepsilon$的端点值不随$\varepsilon$变。
+
+    所以一阶的变化只依赖这一族的「初速度」$\eta$，和它在$\varepsilon\ne0$时走了什么样的弯路无关；$y+\varepsilon\eta$已经让$\eta$取遍了所有可能，不失一般性。另一方面，$y$是局部极小，$y_\varepsilon$光滑地依赖$\varepsilon$时，$\varepsilon$小则$y_\varepsilon$离$y$近，$J[y_\varepsilon]\ge J[y]$，所以这个导数也必须为零，给出同样的条件。
+
+    这和多元函数的情形一样：$f$沿过点$P$的光滑曲线$\mathbf r(t)$（$\mathbf r(0)=P$）求导，结果$\nabla f(P)\cdot\mathbf r'(0)$只依赖切向量。第一变分就是泛函的「方向导数」（directional derivative），$\eta$就是方向。

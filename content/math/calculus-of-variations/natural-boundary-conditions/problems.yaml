@@ -1,0 +1,155 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$J[y]=\int_0^2\bigl(y'^2+2xy\bigr)\dd x$在$y(0)=0$、$y(2)$不给定时的极值曲线在$x=2$处的值。
+  answer:
+    type: number
+    value: -8/3
+  hints:
+    - |
+      先解欧拉-拉格朗日方程并用上$y(0)=0$，剩下的常数由右端的自然边界条件定。
+    - |
+      方程是$y''=x$，$y=\frac{x^3}{6}+C_1x$；自然边界条件是$F_{y'}=2y'(2)=0$。
+    - |
+      $y'(2)=2+C_1=0$，$C_1=-2$，$y(2)=\frac86-4=-\frac83$。
+  solution: |
+    $F_y=2x$，$F_{y'}=2y'$，方程$y''=x$，由$y(0)=0$得$y=\frac{x^3}{6}+C_1x$。右端自由，自然边界条件$2y'(2)=0$，即$2+C_1=0$，所以$y=\frac{x^3}{6}-2x$，$y(2)=-\frac83$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $J[y]=\int_a^b\bigl(y'^2+yy'+y^2\bigr)\dd x$，左端给定，右端$y(b)$不给定。右端的自然边界条件是哪一个？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        $y'(b)=0$
+      - |
+        $y(b)=0$
+      - |
+        $2y'(b)+y(b)=0$
+      - |
+        $y'(b)+2y(b)=0$
+    value: 3
+  hints:
+    - |
+      自然边界条件是$F_{y'}\big|_{x=b}=0$，只要求$F$对第三个变量的偏导数（partial derivative）。
+    - |
+      $F=p^2+yp+y^2$，对$p$求偏导数，$y^2$这一项没有贡献。
+    - |
+      $F_{y'}=2y'+y$，条件是$2y'(b)+y(b)=0$，选 C。
+  solution: |
+    $F_{y'}=2y'+y$，所以右端的自然边界条件是$2y'(b)+y(b)=0$，选 C。它不是$y'(b)=0$：$yy'$这一项也贡献了$F_{y'}$。
+
+- id: p3
+  tier: medium
+  statement: |
+    求从$A=(0,2)$到抛物线$y=x^2$的最短曲线。曲线写成$y=y(x)$，$0\le x\le x_b$，$x_b>0$是终点的横坐标。求$x_b$。
+  answer:
+    type: number
+    value: sqrt(3/2)
+  hints:
+    - |
+      长度的极值曲线是直线；终点在抛物线上滑动，用横截条件。
+    - |
+      对长度，横截条件是「在终点处和抛物线垂直」：向量$(t-0,\,t^2-2)$和切向量$(1,2t)$的点积为零。
+    - |
+      $t+2t(t^2-2)=0$，即$t(2t^2-3)=0$；$t>0$，所以$x_b=\sqrt{\frac32}$。
+  solution: |
+    极值曲线是直线，终点$(t,t^2)$。$F=\sqrt{1+p^2}$的横截条件是$1+\varphi'y'=0$，即线段和抛物线在终点处垂直：$(t,\,t^2-2)\cdot(1,\,2t)=t+2t(t^2-2)=0$。$t>0$，解得$t=\sqrt{\frac32}\approx1.22$，这时距离是$\sqrt{t^2+(t^2-2)^2}=\frac{\sqrt7}{2}$，比到顶点的距离$2$小。
+
+- id: p4
+  tier: medium
+  statement: |
+    曲线从$A=(0,0)$出发，终点落在直线$y=1-x$上（终点的横坐标不给定）。求$J[y]=\int_0^{x_b}\bigl(1+y'^2\bigr)\dd x$的最小值，$x_b$是终点的横坐标。
+  answer:
+    type: number
+    value: 2*sqrt(2)-2
+  hints:
+    - |
+      方程是$y''=0$，极值曲线是$y=kx$；终点在$\varphi=1-x$上，用横截条件$F+(\varphi'-y')F_{y'}=0$。
+    - |
+      $F=1+k^2$，$F_{y'}=2k$，$\varphi'=-1$：$1+k^2+(-1-k)\cdot2k=1-2k-k^2=0$。
+    - |
+      $k=\sqrt2-1$（另一个根使终点的横坐标为负），终点$x_b=\frac{1}{1+k}=\frac{1}{\sqrt2}$，$J=(1+k^2)x_b=2\sqrt2-2\approx0.828$。
+  solution: |
+    极值曲线$y=kx$，横截条件$1+k^2-2k(1+k)=0$，即$k^2+2k-1=0$，$k=\sqrt2-1$（$k=-1-\sqrt2$时终点横坐标为负）。终点$x_b=\frac{1}{1+k}=\frac{\sqrt2}{2}$，$J=(1+k^2)x_b=(4-2\sqrt2)\cdot\frac{\sqrt2}{2}=2\sqrt2-2$。也可以直接把$J=\frac{1+k^2}{1+k}$对$k$求最小值验证。注意$k\cdot\varphi'=1-\sqrt2\ne-1$：这条极值曲线和端点直线并不垂直。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$在$[0,1]$上连续，$J[y]=\int_0^1\Bigl(\frac12y'^2-f(x)\,y\Bigr)\dd x$，两个端点的值都不给定。证明：有满足两端自然边界条件的极值曲线，当且仅当$\int_0^1f\,\dd x=0$；这时极值曲线只差一个常数，而且都使$J$取最小值。$\int_0^1f\,\dd x\ne0$时，$J$有没有最小值？
+  hints:
+    - |
+      写出方程和两端的自然边界条件，把方程从$0$积到$1$。
+    - |
+      方程是$y''=-f$，自然边界条件是$y'(0)=y'(1)=0$，所以$y'(1)-y'(0)=-\int_0^1f\,\dd x$必须为零。
+    - |
+      必要性见上。充分性：$\int_0^1f=0$时取$y'(x)=-\int_0^xf\,\dd t$，它满足两个边界条件，$y$确定到差一个常数；$J[y+c]=J[y]-c\int_0^1f=J[y]$。最小性：$J[y+\eta]=J[y]+\frac12\int_0^1\eta'^2\,\dd x$（交叉项分部积分后为零）。$\int_0^1f\ne0$时取常数$y=c$，$J=-c\int_0^1f$可以任意负，没有最小值。
+  reference: |
+    方程：$F=\frac12p^2-fy$，$F_y=-f$，$F_{y'}=y'$，方程是$y''=-f$；两端自由，自然边界条件是$y'(0)=0$、$y'(1)=0$。
+
+    必要性：极值曲线满足$y'(1)-y'(0)=\int_0^1y''\,\dd x=-\int_0^1f\,\dd x$，左边为零，所以$\int_0^1f\,\dd x=0$。
+
+    充分性：$\int_0^1f\,\dd x=0$时，令$y'(x)=-\int_0^xf(t)\,\dd t$，则$y'(0)=0$，$y'(1)=-\int_0^1f=0$，再积分一次得$y$，它和任何解只差一个常数（两解之差的二阶导数为零、一阶导数在$0$处为零）。加常数不改变$J$：$J[y+c]=J[y]-c\int_0^1f\,\dd x=J[y]$。
+
+    最小性：对任意有连续导数的$\eta$（两端不加限制），$J[y+\eta]=J[y]+\int_0^1(y'\eta'-f\eta)\,\dd x+\frac12\int_0^1\eta'^2\,\dd x$。中间一项分部积分得$[y'\eta]_0^1-\int_0^1(y''+f)\eta\,\dd x=0$，所以$J[y+\eta]\ge J[y]$。
+
+    $\int_0^1f\,\dd x\ne0$时，取常数函数$y=c$，$J=-c\int_0^1f\,\dd x$，让$c$趋于正无穷或负无穷可以任意小，$J$没有下界，更没有最小值。力学上：两端都不固定的弦受分布的横向力$f$，合力不为零时根本没有平衡位置。
+
+- id: p6
+  tier: hard
+  statement: |
+    小球由静止从$A=(0,0)$出发（$y$轴向下），要以最短的时间到达竖直线$x=b$（$b>0$），到达的高度不限。证明最快的轨道是摆线（cycloid）$x=r(\theta-\sin\theta)$、$y=r(1-\cos\theta)$中$0\le\theta\le\pi$的一段，$r=\frac b\pi$，所用时间是$\sqrt{\pi b/g}$。可以直接用[贝尔特拉米恒等式与最速降线](lesson:math.calculus-of-variations.beltrami-identity)的结论：从$A$出发的极值曲线是这样的摆线。
+  hints:
+    - |
+      右端在竖直线上自由，自然边界条件是$F_{y'}\big|_{x=b}=0$，其中$F=\sqrt{(1+p^2)/y}$。
+    - |
+      $F_{y'}=\frac{y'}{\sqrt y\sqrt{1+y'^2}}$，条件是$y'(b)=0$：小球水平地到达竖直线。摆线上$\dv{y}{x}=\cot\frac\theta2$。
+    - |
+      $\cot\frac{\theta_B}{2}=0$，$\theta_B=\pi$，所以$b=r(\pi-\sin\pi)=\pi r$，$r=\frac b\pi$。时间$T=\theta_B\sqrt{\frac rg}=\pi\sqrt{\frac{b}{\pi g}}=\sqrt{\frac{\pi b}{g}}$。
+  reference: |
+    时间泛函$T[y]=\frac{1}{\sqrt{2g}}\int_0^b\sqrt{\frac{1+y'^2}{y}}\,\dd x$，右端$y(b)$不给定。最优的轨道是极值曲线，即从$A$出发的摆线$x=r(\theta-\sin\theta)$、$y=r(1-\cos\theta)$；右端满足自然边界条件$F_{y'}\big|_{x=b}=0$，$F_{y'}=\frac{y'}{\sqrt y\sqrt{1+y'^2}}$，所以$y'(b)=0$。
+
+    摆线上$\dv yx=\cot\frac\theta2$，在$(0,2\pi)$内只在$\theta=\pi$处为零，所以终点是摆线的最低点，$b=r(\pi-\sin\pi)=\pi r$，$r=\frac b\pi$。沿摆线$\dd t=\sqrt{r/g}\,\dd\theta$，$T=\pi\sqrt{\frac rg}=\sqrt{\frac{\pi b}{g}}$。
+
+    小球水平地到达竖直线，和「到竖直线的最短线段水平地到达」是同一个条件$F_{y'}=0$在两个问题里的样子。
+
+- id: p7
+  tier: thinking
+  statement: |
+    一根张紧的弦，张力（tension）为$T$，左端固定在$x=0$，右端系在一个轻环上，环套在$x=\ell$处的光滑竖直杆上，可以无摩擦地上下滑动。弦受竖直方向的分布外力，平衡时的小挠度（small deflection）形状$y(x)$使某个势能泛函取最小值，右端的高度不给定。
+
+    自然边界条件在这里说的是什么？从轻环受力平衡的角度看为什么对？如果环有重力$mg$（$y$轴向上），泛函要多出哪一项，自然边界条件会变成什么？
+  hints:
+    - |
+      小挠度时弦的弹性势能是$\int_0^\ell\frac T2y'^2\,\dd x$，$F_{y'}$是什么？
+    - |
+      $F_{y'}=Ty'$，自然边界条件是$Ty'(\ell)=0$。轻环受弦的拉力，竖直分量约为$-Ty'(\ell)$，它必须为零。
+    - |
+      自然边界条件$Ty'(\ell)=0$就是「轻环在竖直方向受力平衡」：弦必须垂直于杆。环有重力时，势能多出$mg\,y(\ell)$，第一变分（first variation）多出$mg\,\eta(\ell)$，条件变成$Ty'(\ell)+mg=0$：弦对环的拉力的竖直分量正好托住环的重力。自然边界条件在力学里就是边界上的受力平衡，用不着单独去推。
+  reference: |
+    势能泛函是$\int_0^\ell\bigl(\frac T2y'^2+V(x,y)\bigr)\dd x$，$V$来自分布外力。$F_{y'}=Ty'$，右端自由，自然边界条件$Ty'(\ell)=0$，即$y'(\ell)=0$：弦在杆处水平，和杆垂直。
+
+    受力的角度：轻环没有质量，杆光滑，只能给环水平的力；弦对环的拉力沿弦的切线，竖直分量约为$-Ty'(\ell)$（小挠度），平衡要求它为零。所以自然边界条件就是边界上的受力平衡。
+
+    环有重力时，势能多一项$mg\,y(\ell)$（只依赖端点），第一变分多出$mg\,\eta(\ell)$，边界项变成$\bigl(Ty'(\ell)+mg\bigr)\eta(\ell)$，自然边界条件是$Ty'(\ell)+mg=0$：拉力的竖直分量$-Ty'(\ell)$等于$mg$，正好托住环。一般地，泛函里只依赖端点值的项会进入自然边界条件，这也是有限元（finite element method）计算里不用单独施加这类条件的原因：把它们写进泛函，极小化时自动满足。
+
+- id: p8
+  tier: thinking
+  statement: |
+    讲解说，对$F=n(x,y)\sqrt{1+y'^2}$，横截条件就是「垂直」。小球从一点出发，要以最短的时间滑到一条给定的曲线上，最快的轨道在终点处和这条曲线垂直吗？在几何光学里，从一点发出的光线和「同一时刻到达的点组成的曲线」（波前，wavefront）有什么关系，和横截条件有什么联系？
+  hints:
+    - |
+      最速降线（brachistochrone）问题的$F=\sqrt{(1+p^2)/y}$可以写成$n(y)\sqrt{1+p^2}$的形式吗？
+    - |
+      可以，$n=\frac{1}{\sqrt y}$，所以最快的轨道在终点处和端点曲线垂直。
+    - |
+      光线的情形：从一点出发、用时为$\tau$的点组成波前。把波前当作端点曲线，到它用时最短的路正是到达它的光线，横截条件说光线和波前垂直（这对$F=n\sqrt{1+p^2}$成立）。反过来，每条光线都和所有波前垂直，这是惠更斯原理（Huygens' principle）背后的几何事实；分析力学里的哈密顿-雅可比理论（Hamilton–Jacobi theory）把它推广到一般的$F$，那时「垂直」要换成横截条件本身。
+  reference: |
+    最速降线的$F=\sqrt{\frac{1+p^2}{y}}=\frac{1}{\sqrt y}\sqrt{1+p^2}$正是$n(y)\sqrt{1+p^2}$的形式，横截条件化成$1+\varphi'y'=0$，所以最快的轨道在终点处和给定曲线垂直。
+
+    光线：设光从一点出发，所有用时为$\tau$的点组成一条曲线（波前）。到达波前上一点的光线，用时恰为$\tau$，而波前上每一点用时都是$\tau$，所以「到波前用时最短」的路也就是这些光线中的任一条，它们都要满足横截条件。对$F=n\sqrt{1+p^2}$，这就是光线和波前处处垂直。这是惠更斯原理和程函方程（eikonal equation）背后的几何事实。
+
+    对一般的$F$，「垂直」要换成横截条件本身，极值曲线和「等值曲线」满足的是$F+(\varphi'-y')F_{y'}=0$。分析力学里的[哈密顿-雅可比方程](lesson:physics.analytical-mechanics.hamilton-jacobi)就是从这个角度研究一族极值曲线和它们的「波前」的。

@@ -1,0 +1,156 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$J[y]=\int_0^1\bigl(y'^2+xy\bigr)\,\dd x$，求$J[x^2]$。
+  answer:
+    type: number
+    value: 19/12
+  hints:
+    - |
+      把$y=x^2$、$y'=2x$代进被积函数，它就成了$x$的函数。
+    - |
+      被积函数是$4x^2+x^3$。
+    - |
+      $\int_0^1(4x^2+x^3)\,\dd x=\frac43+\frac14=\frac{19}{12}$。
+  solution: |
+    $y=x^2$时$y'=2x$，被积函数是$4x^2+x\cdot x^2=4x^2+x^3$，所以$J[x^2]=\frac43+\frac14=\frac{19}{12}$。泛函把整个函数$x^2$对应到这一个数。
+
+- id: p2
+  tier: easy
+  statement: |
+    设$y$在$[0,1]$上有连续导数。下面哪些是泛函，即把$y$对应到一个确定的实数？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\int_0^1\sin\bigl(y(x)\bigr)\,\dd x$
+      - |
+        $y(1)-y(0)$
+      - |
+        函数$x\mapsto y(x)^2$
+      - |
+        $\int_0^1y\,\dd x\cdot\int_0^1y'\,\dd x$
+      - |
+        函数$x\mapsto\int_0^xy(t)\,\dd t$
+    value: [1, 2, 4]
+  hints:
+    - |
+      看结果是一个数，还是一个仍随$x$变化的函数。
+    - |
+      C、E 对每个$x$给出一个值，整体是一个函数；A、B、D 不管$y$是什么，算出来都是一个数。
+    - |
+      泛函是 A、B、D。B、D 不是积分型的，但同样是泛函；C、E 把函数变成另一个函数，不是泛函。
+  solution: |
+    A 是积分型的泛函，被积函数$F=\sin y$；B 只用到两个端点的值，D 是两个泛函的乘积，结果都是数，也是泛函。C、E 的结果仍是$x$的函数，不是泛函。
+
+- id: p3
+  tier: medium
+  statement: |
+    取$y$轴竖直向下，小球由静止从$A=(0,0)$沿直线轨道无摩擦地滑到$B=(2,1)$（单位 m），$g=9.8\,\mathrm{m/s^2}$。用讲解里的$T[y]$求所用的时间，结果保留三位有效数字。
+  answer:
+    type: number
+    value: sqrt(10/9.8)
+    unit: |
+      $\mathrm{s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      直线轨道是$y=\frac x2$，$y'=\frac12$，代进$T[y]$。
+    - |
+      被积函数是$\sqrt{\frac{1+1/4}{x/2}}=\sqrt{\frac52}\,x^{-1/2}$；$\int_0^2x^{-1/2}\,\dd x$是反常积分，等于$2\sqrt2$。
+    - |
+      $T=\frac{1}{\sqrt{2g}}\cdot\sqrt{\frac52}\cdot2\sqrt2=\sqrt{\frac{10}{g}}\approx1.01\,\mathrm s$。
+  solution: |
+    直线是$y=\frac x2$，$1+y'^2=\frac54$，所以$T=\frac{1}{\sqrt{2g}}\int_0^2\sqrt{\frac{5}{2x}}\,\dd x$。被积函数在$x=0$处无界，按反常积分算：$\int_\delta^2x^{-1/2}\,\dd x=2\sqrt2-2\sqrt\delta\to2\sqrt2$。于是$T=\frac{1}{\sqrt{2g}}\sqrt{\frac52}\cdot2\sqrt2=\sqrt{\frac{10}{g}}\approx1.01\,\mathrm s$。
+
+- id: p4
+  tier: medium
+  statement: |
+    两个半径为$1$的圆环放在$x=\pm1$处。把曲线$y=1+\varepsilon\cos\frac{\pi x}{2}$绕$x$轴旋转，得到连接两环的曲面，记它的面积为$\Phi(\varepsilon)$。求$\Phi'(0)$。
+  answer:
+    type: number
+    value: 8
+  hints:
+    - |
+      记$\eta=\cos\frac{\pi x}2$，它在$x=\pm1$处为零。$\Phi(\varepsilon)=2\pi\int_{-1}^{1}(1+\varepsilon\eta)\sqrt{1+\varepsilon^2\eta'^2}\,\dd x$。
+    - |
+      由$0\le\sqrt{1+t}-1\le\frac t2$，$\Phi(\varepsilon)-\Phi(0)-2\pi\varepsilon\int_{-1}^{1}\eta\,\dd x$的绝对值不超过一个常数乘$\varepsilon^2$。除以$\varepsilon$再令$\varepsilon\to0$，得$\Phi'(0)=2\pi\int_{-1}^1\eta\,\dd x$。
+    - |
+      $\int_{-1}^{1}\cos\frac{\pi x}{2}\,\dd x=\frac4\pi$，所以$\Phi'(0)=2\pi\cdot\frac4\pi=8$。
+  solution: |
+    记$\eta=\cos\frac{\pi x}2$，$\Phi(\varepsilon)-\Phi(0)-2\pi\varepsilon\int_{-1}^1\eta\,\dd x=2\pi\int_{-1}^{1}(1+\varepsilon\eta)\bigl(\sqrt{1+\varepsilon^2\eta'^2}-1\bigr)\dd x$。由$0\le\sqrt{1+t}-1\le\frac t2$，$|\varepsilon|\le1$时它的绝对值不超过$2\pi\int_{-1}^{1}(1+|\varepsilon|)\frac{\varepsilon^2\eta'^2}{2}\,\dd x$，是$\varepsilon^2$乘一个常数。所以$\Phi'(0)=2\pi\int_{-1}^{1}\cos\frac{\pi x}{2}\,\dd x=2\pi\cdot\frac4\pi=8$。导数是正的：把圆柱面往外鼓，面积变大，和例 1 往里收正好相反。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明：轨道在起点处水平时，小球永远到不了终点。具体地，设$y$在$[0,b]$上有连续导数，$y(0)=0$，并且有常数$c>0$使$0<y(x)\le cx^2$（$0<x\le b$），证明讲解里的反常积分$T[y]$发散。再说明直线、摆线这样在起点处斜率不为零或无界的轨道为什么没有这个问题。
+  hints:
+    - |
+      估计被积函数$\sqrt{\frac{1+y'^2}{y}}$的下界，分子、分母各用一个已知的不等式。
+    - |
+      $\sqrt{1+y'^2}\ge1$，$\frac{1}{\sqrt y}\ge\frac{1}{\sqrt c\,x}$；而$\int_0^b\frac{\dd x}{x}$发散。
+    - |
+      被积函数不小于$\frac{1}{\sqrt c\,x}$，而$\int_\delta^b\frac{\dd x}{x}=\ln b-\ln\delta\to+\infty$（$\delta\to0^+$），由比较判别法（comparison test），$T[y]=+\infty$。直线$y=\frac hbx$的被积函数是常数乘$x^{-1/2}$，积分收敛。摆线$x=\theta-\sin\theta$、$y=1-\cos\theta$在起点附近$x\approx\frac{\theta^3}{6}$、$y\approx\frac{\theta^2}{2}$，所以$y\approx\frac12(6x)^{2/3}$，$y'$像$x^{-1/3}$那样增大，被积函数像$x^{-2/3}$，积分也收敛。起点越陡，小球一开始加速越快；起点水平时，沿轨道方向的力为零，小球停着不动。
+  reference: |
+    因为$\sqrt{1+y'^2}\ge1$、$0<y\le cx^2$，被积函数满足$\sqrt{\frac{1+y'^2}{y}}\ge\frac{1}{\sqrt c\,x}$。而$\int_\delta^b\frac{\dd x}{x}=\ln b-\ln\delta\to+\infty$（$\delta\to0^+$），由比较判别法，$T[y]=+\infty$。
+
+    直线$y=\frac hbx$：被积函数是$\sqrt{\frac{b}{h}\bigl(1+\frac{h^2}{b^2}\bigr)}\,x^{-1/2}$，积分收敛。摆线（取$r=1$）在起点附近$x=\theta-\sin\theta\approx\frac{\theta^3}{6}$，$y=1-\cos\theta\approx\frac{\theta^2}{2}$，于是$\theta\approx(6x)^{1/3}$，$y\approx\frac12(6x)^{2/3}$；$y'=\frac{\sin\theta}{1-\cos\theta}\approx\frac2\theta$，像$x^{-1/3}$那样增大。被积函数约为$\frac{|y'|}{\sqrt y}$，像$x^{-2/3}$，指数小于$1$，积分收敛。
+
+    物理上：起点水平时，重力沿轨道方向的分量为零，小球处于平衡，不会开始运动。要尽快出发，起点处应当陡；但纯粹竖直下落又不前进，最速降线在两者之间取舍。
+
+- id: p6
+  tier: hard
+  statement: |
+    在$y(1)=0$、$y(2)=1$的容许函数中，求$J[y]=\int_1^2x^2y'^2\,\dd x$的最小值和取到最小值的函数，并证明它确实最小。不用下一节的方程，仿照例 2 构造一个不等式。
+  hints:
+    - |
+      例 2 的关键是一个「平方非负」的不等式，积分以后只剩端点的值。试着在$\int_1^2\bigl(xy'-g(x)\bigr)^2\dd x\ge0$里选一个合适的$g$。
+    - |
+      展开后交叉项是$-2\int_1^2xy'g\,\dd x$。要它只依赖端点的值，取$xg$为常数，即$g=\frac cx$。
+    - |
+      对任意常数$c$，$0\le\int_1^2\bigl(xy'-\frac cx\bigr)^2\dd x=J[y]-2c\int_1^2y'\,\dd x+c^2\int_1^2\frac{\dd x}{x^2}=J[y]-2c+\frac{c^2}{2}$，所以$J[y]\ge2c-\frac{c^2}2$；取$c=2$得$J[y]\ge2$。等号要求$xy'=\frac2x$，即$y=2-\frac2x$，它满足端点条件，$J=\int_1^2\frac{4}{x^2}\,\dd x=2$。最小值是$2$。
+  reference: |
+    对任意常数$c$，
+    $$
+    0\le\int_1^2\Bigl(xy'-\frac cx\Bigr)^2\dd x=J[y]-2c\int_1^2y'\,\dd x+c^2\int_1^2\frac{\dd x}{x^2}=J[y]-2c+\frac{c^2}{2},
+    $$
+    这里用了$\int_1^2y'\,\dd x=y(2)-y(1)=1$。所以$J[y]\ge2c-\frac{c^2}{2}$对所有$c$成立，右边在$c=2$时最大，得$J[y]\ge2$。
+
+    等号成立当且仅当被积函数处处为零（它连续、非负），即$xy'=\frac2x$，$y'=\frac{2}{x^2}$，$y=2-\frac2x$。它满足$y(1)=0$、$y(2)=1$，并且$J=\int_1^2\frac4{x^2}\,\dd x=2$。所以最小值是$2$，只有$y=2-\frac2x$取到。
+
+- id: p7
+  tier: thinking
+  statement: |
+    讲解用$d(y,\hat y)=\max|y-\hat y|+\max|y'-\hat y'|$衡量远近。如果只用$\max|y-\hat y|$，「局部极小」的要求会变强还是变弱？以$y(0)=y(1)=0$时的$J[y]=\int_0^1\bigl(y'^2-y'^4\bigr)\,\dd x$和$y=0$为例：按讲解的定义，$y=0$是不是局部极小？只看函数值的远近呢？
+  hints:
+    - |
+      「附近」的函数越多，要满足的不等式就越多。只看函数值时，哪些函数也算到「附近」里来了？
+    - |
+      按讲解的定义，$d<1$时$|\hat y'|<1$，看被积函数的符号。只看函数值时，想想怎样让$|\hat y'|$大而$|\hat y|$小。
+    - |
+      只看函数值时，函数值接近、导数差很多的函数也算「附近」，要求更强，满足的$y$更少。按讲解的定义，$d(\hat y,0)<1$推出$|\hat y'|<1$，于是$\hat y'^2-\hat y'^4=\hat y'^2(1-\hat y'^2)\ge0$，$J[\hat y]\ge0=J[0]$，$y=0$是局部极小。只看函数值时，取斜率在$2$和$-2$之间来回切换的密集锯齿（把尖角磨圆一点，使导数连续），$\max|\hat y|$可以任意小，而被积函数在绝大部分地方等于$4-16=-12$，$J[\hat y]$接近$-12$，所以$y=0$不是这个意义下的局部极小。前者叫弱极小（weak minimum），后者叫强极小（strong minimum）。
+  reference: |
+    只看函数值时，「附近」的函数更多：函数值接近、导数却可以差很多的函数也算进来。要对更多的函数满足$J[\hat y]\ge J[y]$，条件更强，满足的$y$更少。
+
+    例子。按讲解的定义取$\delta=1$：$d(\hat y,0)<1$推出$|\hat y'|<1$，于是$\hat y'^2-\hat y'^4=\hat y'^2(1-\hat y'^2)\ge0$，$J[\hat y]\ge0=J[0]$，所以$y=0$是局部极小。
+
+    只看函数值：取锯齿形的函数，斜率在$2$和$-2$之间来回切换，把每个尖角在很短的一段上磨圆，使导数连续。齿越密，$\max|\hat y|$越小；被积函数除了磨圆的小段外都等于$4-16=-12$，所以$J[\hat y]$可以任意接近$-12$。因此$y=0$不是这个意义下的局部极小。
+
+    讲解里的意义叫弱极小（weak minimum），只看函数值的叫强极小（strong minimum）。强极小一定是弱极小，反过来不对，上面的$y=0$就是弱极小而不是强极小。下一节的必要条件只用到弱极小。
+
+- id: p8
+  tier: thinking
+  statement: |
+    [贝尔特拉米恒等式与最速降线](lesson:math.calculus-of-variations.beltrami-identity)会求出最速降线是一段摆线。它在起点处是竖直的，斜率无界，按讲解的定义不是容许函数。如果坚持要求容许函数在$[0,b]$上有连续导数，最速降线问题还有没有解？放宽容许函数的条件，又可能带来什么麻烦？
+  hints:
+    - |
+      如果最速降线不在容许函数里，容许函数中能不能有一条和它一样快的曲线？
+    - |
+      用起点处斜率有限、但很陡的曲线逼近摆线，时间可以任意接近摆线的时间。这和讲解里$\int_0^1y^2\,\dd x$取不到最小值是同一类现象。
+    - |
+      没有解：导数连续的函数里，时间能任意接近摆线的时间，却取不到，因为只有摆线取到它。最小值不存在的原因是容许函数选得太窄。放宽条件，允许端点处导数无界，或者改用参数曲线（parametric curve），摆线就进来了；但要说明$T[y]$对新加进来的函数仍有意义，推导中用到的光滑性也要重新检查，例如分部积分（integration by parts）要求导数连续。在哪一类函数里找极值，本身就是问题的一部分。
+  reference: |
+    没有解。在导数连续的函数中，可以取起点处很陡但斜率有限的曲线逼近摆线，时间任意接近摆线的时间；而摆线的时间是所有曲线中最短的，并且只有摆线取到，它又不在这一类函数里，所以这一类函数中最小值取不到。这和讲解里$\int_0^1y^2\,\dd x$的例子是同一类现象：最小值不存在，原因是容许函数选得太窄。
+
+    放宽条件，例如允许导数在端点处无界、只在开区间上连续，或者把曲线写成参数形式，摆线就进来了。代价是：要确认$T[y]$对新加进来的函数仍然有意义（反常积分收敛），推导必要条件时用到的光滑性（例如分部积分要求导数连续）也要重新检查。类太窄可能没有解，类太宽可能连泛函都没有定义；「在哪一类函数里找极值」本身就是问题的一部分，[直接方法与里茨近似](lesson:math.calculus-of-variations.direct-methods)还会遇到它。

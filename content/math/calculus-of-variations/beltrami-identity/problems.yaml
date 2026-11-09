@@ -1,0 +1,167 @@
+- id: p1
+  tier: easy
+  statement: |
+    $y=x^{2/3}$（$x>0$）是$J[y]=\int y\,y'^2\,\dd x$的一条极值曲线。求沿这条曲线，贝尔特拉米恒等式里的常数$F-y'F_{y'}$。
+  answer:
+    type: number
+    value: -4/9
+  hints:
+    - |
+      $F=yp^2$不含$x$。先求$F_{y'}$，再化简$F-y'F_{y'}$。
+    - |
+      $F_{y'}=2yy'$，$F-y'F_{y'}=yy'^2-2yy'^2=-yy'^2$。
+    - |
+      $y'=\frac23x^{-1/3}$，$-yy'^2=-x^{2/3}\cdot\frac49x^{-2/3}=-\frac49$，确实是常数。
+  solution: |
+    $F=yp^2$，$F_{y'}=2yy'$，$F-y'F_{y'}=-yy'^2$。代入$y=x^{2/3}$、$y'=\frac23x^{-1/3}$，得$-\frac49$，和$x$无关，符合贝尔特拉米恒等式。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些泛函（functional）可以直接用贝尔特拉米恒等式把欧拉-拉格朗日方程降成一阶？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\int\bigl(y'^2-y^4\bigr)\dd x$
+      - |
+        $\int x\,y'^2\,\dd x$
+      - |
+        $\int y^2\sqrt{1+y'^2}\,\dd x$
+      - |
+        $\int e^x\bigl(y'^2+y^2\bigr)\dd x$
+      - |
+        $\int\frac{\sqrt{1+y'^2}}{y}\,\dd x$
+    value: [1, 3, 5]
+  hints:
+    - |
+      贝尔特拉米恒等式要求被积函数不显含自变量$x$。
+    - |
+      逐个看被积函数里有没有单独出现的$x$：B 有$x$，D 有$e^x$。
+    - |
+      A、C、E 不含$x$，可以用；B、D 显含$x$，不能直接用（B 不含$y$，可以改用$F_{y'}=C$积分一次）。
+  solution: |
+    A、C、E 的被积函数只依赖$y$和$y'$，可以用贝尔特拉米恒等式。B、D 显含$x$，$F-y'F_{y'}$沿极值曲线不再是常数；其中 B 不含$y$，另有首次积分$F_{y'}=2xy'$。
+
+- id: p3
+  tier: medium
+  statement: |
+    取$y$轴竖直向下，小球由静止从$A=(0,0)$沿最速降线滑到$B=(\pi-2,\,2)$（单位 m），$g=9.8\,\mathrm{m/s^2}$。求所用的时间，结果保留三位有效数字。
+  answer:
+    type: number
+    value: (pi/2)*sqrt(2/9.8)
+    unit: |
+      $\mathrm{s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      最速降线是摆线$x=r(\theta-\sin\theta)$、$y=r(1-\cos\theta)$。先由$\frac{\theta_B-\sin\theta_B}{1-\cos\theta_B}=\frac{\pi-2}{2}$定出$\theta_B$。
+    - |
+      $\theta_B=\frac\pi2$满足这个方程，所以$r=\frac{2}{1-\cos(\pi/2)}=2$。
+    - |
+      沿摆线$\dd t=\sqrt{r/g}\,\dd\theta$，$T=\theta_B\sqrt{\frac rg}=\frac\pi2\sqrt{\frac{2}{9.8}}\approx0.710\,\mathrm s$。
+  solution: |
+    $\frac bh=\frac{\pi-2}{2}=\frac\pi2-1$，而$\theta=\frac\pi2$时$\frac{\theta-\sin\theta}{1-\cos\theta}=\frac\pi2-1$，这个方程在$(0,2\pi)$内只有一个解，所以$\theta_B=\frac\pi2$，$r=\frac{h}{1-\cos\theta_B}=2\,\mathrm m$。沿摆线$\dd t=\sqrt{r/g}\,\dd\theta$，所以$T=\frac\pi2\sqrt{\frac{2}{9.8}}\approx0.710\,\mathrm s$。
+
+- id: p4
+  tier: medium
+  statement: |
+    两个半径为$1$的圆环套在同一根轴上，相距$1$。经过两环的悬链面有两个，求较粗的那一个最细处的半径，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 0.8483379
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      对称地放：圆环在$x=\pm\frac12$处，悬链线$y=c\cosh\frac xc$，最细处的半径就是$c$。
+    - |
+      经过两环的条件是$c\cosh\frac{1}{2c}=1$，它有两个正根，要求较大的那个。
+    - |
+      数值求解：$c=0.85$时左边约$1.001$，$c=0.84$时约$0.993$，再二分下去得$c\approx0.848$；另一个根约$0.235$。
+  solution: |
+    圆环放在$x=\pm\frac12$，悬链线$y=c\cosh\frac xc$经过$(\frac12,1)$，即$c\cosh\frac{1}{2c}=1$。它有两个正根，约为$0.235$和$0.848$，较粗的悬链面最细处的半径约为$0.848$。
+
+- id: p5
+  tier: hard
+  statement: |
+    （摆线的等时性，tautochrone property）沿最速降线所在的摆线$x=r(\theta-\sin\theta)$、$y=r(1-\cos\theta)$（$y$轴向下）放一个小球，从$\theta=\theta_0$（$0<\theta_0<\pi$）处由静止滑下。证明它到达最低点$\theta=\pi$所用的时间是$\pi\sqrt{r/g}$，和出发点无关。
+  hints:
+    - |
+      从$\theta_0$由静止滑下，速率是$v=\sqrt{2g\bigl(y-y(\theta_0)\bigr)}$；弧长（arc length）元素和讲解例 1 一样是$2r\sin\frac\theta2\,\dd\theta$。
+    - |
+      用$\cos\theta=2\cos^2\frac\theta2-1$，把$v$写成$\cos\frac{\theta}{2}$的式子，再换元$u=\cos\frac\theta2$（换元积分法，integration by substitution，见[换元积分法](lesson:math.calculus.substitution)）。
+    - |
+      $v=2\sqrt{gr}\sqrt{u_0^2-u^2}$，$u_0=\cos\frac{\theta_0}2$；$\sin\frac\theta2\,\dd\theta=-2\,\dd u$，所以$\dd t=-2\sqrt{\frac rg}\frac{\dd u}{\sqrt{u_0^2-u^2}}$。$\theta$从$\theta_0$到$\pi$，$u$从$u_0$到$0$，$T=2\sqrt{\frac rg}\int_0^{u_0}\frac{\dd u}{\sqrt{u_0^2-u^2}}=2\sqrt{\frac rg}\cdot\frac\pi2=\pi\sqrt{\frac rg}$。积分在$u=u_0$处是反常积分，用$\arcsin\frac{u}{u_0}$求原函数。
+  reference: |
+    由机械能守恒（conservation of mechanical energy），从$\theta_0$由静止滑到$\theta$时$v^2=2g\bigl(y(\theta)-y(\theta_0)\bigr)=2gr(\cos\theta_0-\cos\theta)$。用$\cos\theta=2\cos^2\frac\theta2-1$，记$u=\cos\frac\theta2$、$u_0=\cos\frac{\theta_0}{2}$，得$v=2\sqrt{gr}\sqrt{u_0^2-u^2}$。弧长元素$\dd s=2r\sin\frac\theta2\,\dd\theta$，而$\dd u=-\frac12\sin\frac\theta2\,\dd\theta$，所以
+    $$
+    \dd t=\frac{\dd s}{v}=\frac{2r\cdot(-2\,\dd u)}{2\sqrt{gr}\sqrt{u_0^2-u^2}}=-2\sqrt{\frac rg}\,\frac{\dd u}{\sqrt{u_0^2-u^2}} .
+    $$
+    $\theta$从$\theta_0$增到$\pi$时$u$从$u_0$减到$0$，
+    $$
+    T=2\sqrt{\frac rg}\int_0^{u_0}\frac{\dd u}{\sqrt{u_0^2-u^2}}=2\sqrt{\frac rg}\Bigl[\arcsin\frac{u}{u_0}\Bigr]_0^{u_0}=\pi\sqrt{\frac rg} .
+    $$
+    积分在$u=u_0$处被积函数无界，是反常积分，原函数$\arcsin\frac u{u_0}$在端点连续，所以收敛。结果与$\theta_0$无关。惠更斯（Christiaan Huygens）发现了这一点，并据此设计了摆长随摆角变化的摆钟。
+
+- id: p6
+  tier: hard
+  statement: |
+    证明$f(\theta)=\dfrac{\theta-\sin\theta}{1-\cos\theta}$在$(0,2\pi)$上严格递增，并且$\theta\to0^+$时$f\to0$、$\theta\to2\pi^-$时$f\to+\infty$。由此说明：对任意$b>0$、$h>0$，从$A=(0,0)$出发、经过$B=(b,h)$的摆线（$\theta$在$(0,2\pi)$内）恰好有一条。
+  hints:
+    - |
+      $f'(\theta)$的分子是$(1-\cos\theta)^2-(\theta-\sin\theta)\sin\theta$。用半角公式把它写成$\sin\frac\theta2$乘一个式子。
+    - |
+      令$\varphi=\frac\theta2\in(0,\pi)$，分子等于$4\sin\varphi\,(\sin\varphi-\varphi\cos\varphi)$。再证$\sin\varphi-\varphi\cos\varphi>0$。
+    - |
+      记$k(\varphi)=\sin\varphi-\varphi\cos\varphi$，$k(0)=0$，$k'(\varphi)=\varphi\sin\varphi>0$（$0<\varphi<\pi$），所以$k>0$，$f'>0$。$\theta\to0^+$时$\theta-\sin\theta\approx\frac{\theta^3}6$、$1-\cos\theta\approx\frac{\theta^2}2$，$f\approx\frac\theta3\to0$；$\theta\to2\pi^-$时分子趋于$2\pi$，分母趋于$0^+$。所以$f$是$(0,2\pi)$到$(0,+\infty)$的严格递增的满射，$f(\theta_B)=\frac bh$恰有一个解，再由$r=\frac{h}{1-\cos\theta_B}$定出$r$。
+  reference: |
+    $f'(\theta)=\dfrac{N(\theta)}{(1-\cos\theta)^2}$，$N=(1-\cos\theta)^2-(\theta-\sin\theta)\sin\theta$。记$\varphi=\frac\theta2\in(0,\pi)$，$1-\cos\theta=2\sin^2\varphi$，$\sin\theta=2\sin\varphi\cos\varphi$，
+    $$
+    N=4\sin^4\varphi-(2\varphi-2\sin\varphi\cos\varphi)\,2\sin\varphi\cos\varphi=4\sin\varphi\bigl(\sin^3\varphi+\sin\varphi\cos^2\varphi-\varphi\cos\varphi\bigr)=4\sin\varphi\,(\sin\varphi-\varphi\cos\varphi).
+    $$
+    令$k(\varphi)=\sin\varphi-\varphi\cos\varphi$，$k(0)=0$，$k'(\varphi)=\varphi\sin\varphi>0$（$0<\varphi<\pi$），由中值定理（mean value theorem）$k>0$。又$\sin\varphi>0$，所以$N>0$，$f$在$(0,2\pi)$上严格递增。
+
+    $\theta\to0^+$时，$\theta-\sin\theta$和$1-\cos\theta$分别与$\frac{\theta^3}{6}$、$\frac{\theta^2}{2}$之比趋于$1$，所以$f\to0$。$\theta\to2\pi^-$时分子趋于$2\pi$，分母趋于$0^+$，$f\to+\infty$。$f$连续，由介值性质（intermediate value property），它把$(0,2\pi)$一一地映到$(0,+\infty)$。
+
+    摆线经过$B$的条件是$r(\theta_B-\sin\theta_B)=b$、$r(1-\cos\theta_B)=h$，两式相除得$f(\theta_B)=\frac bh$，恰有一个解$\theta_B\in(0,2\pi)$，再由$r=\frac{h}{1-\cos\theta_B}>0$定出$r$。所以这样的摆线恰好有一条。
+
+- id: p7
+  tier: thinking
+  statement: |
+    约翰·伯努利（Johann Bernoulli）当年是借光学解出最速降线的。光在折射率随高度变化的介质里走用时最短的路（费马原理，Fermat's principle，见[费马原理](lesson:physics.optics.fermat-principle)）；把介质分成很多薄层，每过一层界面都满足折射定律（Snell's law）$\frac{\sin\alpha}{v}=$常数，$\alpha$是光线和竖直方向的夹角，$v$是光速。让光速随深度变化为$v=\sqrt{2gy}$，这个条件和贝尔特拉米恒等式是什么关系？为什么两个看起来不同的问题会得到同一条曲线？
+  hints:
+    - |
+      光线和竖直方向的夹角$\alpha$与斜率的关系：$\sin\alpha=\frac{\dd x}{\dd s}$。
+    - |
+      $\sin\alpha=\frac{1}{\sqrt{1+y'^2}}$，所以$\frac{\sin\alpha}{v}=\frac{1}{\sqrt{2g}\sqrt{y(1+y'^2)}}$。
+    - |
+      它正是最速降线问题里的$F-y'F_{y'}$（差一个常数因子），折射定律就是贝尔特拉米恒等式。两个问题求的都是$\int\frac{\dd s}{v}$的最小值，只是$v$的来历不同：一个是介质里的光速，一个是小球下落的速率。泛函相同，极值曲线自然相同；被积函数不含$x$对应介质在水平方向均匀，首次积分对应「每层界面上$\frac{\sin\alpha}{v}$不变」。
+  reference: |
+    设光线和竖直方向的夹角为$\alpha$，则$\sin\alpha=\frac{\dd x}{\dd s}=\frac{1}{\sqrt{1+y'^2}}$。折射定律给出
+    $$
+    \frac{\sin\alpha}{v}=\frac{1}{\sqrt{2gy}\sqrt{1+y'^2}}=\text{常数},
+    $$
+    即$y(1+y'^2)=$常数，这正是讲解里由贝尔特拉米恒等式得到的式子。
+
+    原因：两个问题求的是同一个泛函$\int\frac{\dd s}{v}=\int\frac{\sqrt{1+y'^2}}{v(y)}\,\dd x$的最小值，光在介质中走用时最短的路，小球也是。被积函数不含$x$，对应介质在水平方向是均匀的；首次积分$F-y'F_{y'}=\frac{1}{v\sqrt{1+y'^2}}=\frac{\sin\alpha}{v}$，就是「穿过每一层时$\frac{\sin\alpha}{v}$不变」。折射定律本身也可以看成两层介质之间这个首次积分的离散版本。约翰·伯努利的思路是把光学里已知的规律借来用，变分法则把它变成了一般的方法：凡是被积函数不含$x$的问题，都有这样一个「折射定律」。
+
+- id: p8
+  tier: thinking
+  statement: |
+    例 2 说，两个半径为$R$的圆环相距$2a$，$\frac aR<0.663$时有两个悬链面。$R=1$、$a=\frac12$时，两个悬链面的面积约为$5.99$和$6.85$，而分别封住两个圆环的两张圆片总面积是$2\pi\approx6.28$。
+
+    肥皂膜实际是哪一个？把圆环慢慢拉开，肥皂膜会怎样变化？$\frac aR$在什么范围里，较粗的悬链面虽然存在、面积却比两张圆片大？这时它还可能是肥皂膜吗？
+  hints:
+    - |
+      肥皂膜要停在面积比附近的形状都小的位置上（局部极小），不一定是所有形状里面积最小的。
+    - |
+      较细的悬链面面积比两张圆片还大，而且它只是第一变分为零。拉开圆环时，两个解在$\frac aR\approx0.663$处合二为一，再往后就没有了。
+    - |
+      肥皂膜是较粗的那一个（面积$5.99$）；较细的那一个不是局部极小，稍一扰动就会塌掉。拉开时较粗的悬链面越来越细，到$\frac aR\approx0.663$与较细的解合并，再拉就断开，变成两张圆片。数值计算可知$\frac aR$超过约$0.528$时较粗的悬链面面积比两张圆片大，但它仍是局部极小，肥皂膜可以停在上面，只是一碰就可能跳到面积更小的两张圆片。判断局部极小要用第二变分（second variation，见[第二变分与勒让德条件](lesson:math.calculus-of-variations.second-variation)、[雅可比条件与共轭点](lesson:math.calculus-of-variations.jacobi-condition)）。
+  reference: |
+    肥皂膜停在局部极小上。$R=1$、$a=\frac12$时两个悬链面的$c$约为$0.848$和$0.235$，面积用$A=\pi c\bigl(2a+c\sinh\frac{2a}{c}\bigr)$算出约为$5.99$和$6.85$。较粗的那一个是肥皂膜。较细的那一个只是第一变分为零，面积比两张圆片还大，它不是局部极小（这要用第二变分和共轭点（conjugate point）来证明，见[雅可比条件与共轭点](lesson:math.calculus-of-variations.jacobi-condition)），实际的肥皂膜不会停在那里。
+
+    慢慢拉开圆环，较粗的悬链面变细、较细的变粗，两者在$\frac aR\approx0.663$处合并成一个，再拉开就不存在悬链面，肥皂膜破开，剩下封住两个圆环的两张圆片。
+
+    数值上，$\frac aR$超过约$0.528$以后，较粗的悬链面面积就比两张圆片大了；但它直到$0.663$都还是局部极小，肥皂膜可以停在上面（「亚稳」，metastable），受到较大的扰动才会跳到两张圆片。这说明变分法的必要条件只挑出候选者，「是不是局部极小」「是不是全局最小」是另外两个问题。
