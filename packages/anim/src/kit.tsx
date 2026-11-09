@@ -270,6 +270,7 @@ export function arrow(ctx: CanvasRenderingContext2D, x: number, y: number, dx: n
 
 // ---------- 滑块和播放控制 ----------
 
+/** 滑块的值只在挂载时按默认值初始化：参数换了一组滑块，要换 key 让组件重新挂载（网站按参数原文给 key），不然按新名字取不到值。 */
 export function useSliders(sliders: SliderSpec[] | undefined) {
   const defaults = (): Record<string, number> => Object.fromEntries((sliders ?? []).map((s) => [s.name, s.default]));
   const [values, setValues] = useState(defaults);

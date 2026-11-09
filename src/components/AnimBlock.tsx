@@ -38,7 +38,8 @@ export function AnimBlock(props: { 'data-component'?: string; 'data-params'?: st
   if (props['data-implemented'] !== 'true' || !params) return <AnimPlaceholder data-component={name} />;
   return (
     <Suspense fallback={<div className="anim anim-loading" aria-busy="true" />}>
-      <AnimRuntime component={name} params={params} labels={labels} />
+      {/* 参数原文作 key：参数原地变了（开发时内容热更新）就重新挂载，滑块、轨迹从头开始；换小节由小节页的 key 负责 */}
+      <AnimRuntime key={source} component={name} params={params} labels={labels} />
     </Suspense>
   );
 }

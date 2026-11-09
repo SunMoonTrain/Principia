@@ -373,7 +373,8 @@ export function LessonPage() {
   const outline = buildOutline(lesson, lesson.status === 'outline' ? null : content);
   return (
     <LessonContext.Provider value={{ lessonId: lesson.id, glossary: pack?.glossary ?? {}, macros: pack?.macros ?? NO_MACROS }}>
-      <IssueReporter lesson={lesson.id}>
+      {/* 换小节时整页重新挂载：每节的题号都是 p1…p8、动画组件也常同类，不重新挂载会带着上一节的输入、判题结果和滑块 */}
+      <IssueReporter key={lesson.id} lesson={lesson.id}>
         <div className="lesson-layout">
           <LessonSidebar lesson={lesson} outline={outline} />
           <article className="lesson">
