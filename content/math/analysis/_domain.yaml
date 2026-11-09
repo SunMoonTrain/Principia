@@ -368,3 +368,147 @@ glossary:
       对任意实数$x$，都有正整数$n>x$；也就是说，正整数集没有上界。
     definedIn: math.analysis.completeness
     anchor: def-archimedean
+  - id: math.analysis.differentiable-function
+    zh: |
+      可导函数
+    en: |
+      differentiable function
+    brief: |
+      $f$在$a$处可导：差商$\frac{f(a+h)-f(a)}{h}$在$h\to0$时有极限$f'(a)$；在区间上每一点都可导的函数叫可导函数。
+    definedIn: math.analysis.differentiability
+    anchor: def-differentiable
+  - id: math.analysis.linear-approximation
+    zh: |
+      线性近似
+    en: |
+      linear approximation
+    brief: |
+      $f(a+h)=f(a)+f'(a)h+r(h)$，误差满足$\frac{r(h)}{h}\to0$；$f$在$a$处可导，当且仅当能这样近似。
+    definedIn: math.analysis.differentiability
+    anchor: thm-linear-approximation
+  - id: math.analysis.chain-rule
+    zh: |
+      链式法则
+    en: |
+      chain rule
+    brief: |
+      $g$在$a$处可导、$f$在$g(a)$处可导，则$f\circ g$在$a$处可导，$(f\circ g)'(a)=f'(g(a))\,g'(a)$。
+    definedIn: math.analysis.differentiability
+    anchor: thm-chain-rule
+  - id: math.analysis.fermat-theorem
+    zh: |
+      费马定理
+    en: |
+      Fermat's theorem
+    brief: |
+      $f$在$c$处取到极大值或极小值（$c$两边都有定义域里的点），并且在$c$处可导，则$f'(c)=0$。
+    definedIn: math.analysis.mean-value-proofs
+    anchor: thm-fermat
+  - id: math.analysis.rolle-theorem
+    zh: |
+      罗尔定理
+    en: |
+      Rolle's theorem
+    brief: |
+      $f$在$[a,b]$上连续、在$(a,b)$内可导、$f(a)=f(b)$，则有$\xi\in(a,b)$使$f'(\xi)=0$。
+    definedIn: math.analysis.mean-value-proofs
+    anchor: thm-rolle
+  - id: math.analysis.mean-value-theorem
+    zh: |
+      拉格朗日中值定理
+    en: |
+      mean value theorem
+    brief: |
+      $f$在$[a,b]$上连续、在$(a,b)$内可导，则有$\xi\in(a,b)$使$f'(\xi)=\frac{f(b)-f(a)}{b-a}$。
+    definedIn: math.analysis.mean-value-proofs
+    anchor: thm-mean-value
+  - id: math.analysis.cauchy-mean-value-theorem
+    zh: |
+      柯西中值定理
+    en: |
+      Cauchy's mean value theorem
+    brief: |
+      $f$、$g$在$[a,b]$上连续、在$(a,b)$内可导，$g'\ne0$，则有$\xi\in(a,b)$使$\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f'(\xi)}{g'(\xi)}$。
+    definedIn: math.analysis.mean-value-proofs
+    anchor: thm-cauchy-mean-value
+  - id: math.analysis.partition
+    zh: |
+      分割
+    en: |
+      partition
+    brief: |
+      $[a,b]$上有限个点$a=x_0<x_1<\cdots<x_n=b$，它们把区间分成$n$个小区间。
+    definedIn: math.analysis.riemann-integral
+    anchor: def-darboux-sums
+  - id: math.analysis.upper-sum
+    zh: |
+      上和
+    en: |
+      upper sum
+    brief: |
+      有界函数$f$关于分割$P$的上和$U(f,P)=\sum M_i\Delta x_i$，$M_i$是$f$在第$i$段上的上确界。
+    definedIn: math.analysis.riemann-integral
+    anchor: def-darboux-sums
+  - id: math.analysis.lower-sum
+    zh: |
+      下和
+    en: |
+      lower sum
+    brief: |
+      有界函数$f$关于分割$P$的下和$L(f,P)=\sum m_i\Delta x_i$，$m_i$是$f$在第$i$段上的下确界。
+    definedIn: math.analysis.riemann-integral
+    anchor: def-darboux-sums
+  - id: math.analysis.refinement
+    zh: |
+      加细
+    en: |
+      refinement
+    brief: |
+      分割$P^*$包含分割$P$的所有分点；加细以后上和不增、下和不减。
+    definedIn: math.analysis.riemann-integral
+    anchor: def-refinement
+  - id: math.analysis.riemann-integral
+    zh: |
+      黎曼积分
+    en: |
+      Riemann integral
+    brief: |
+      有界函数$f$的下和的上确界等于上和的下确界时，说$f$可积，这个公共值就是积分$\int_a^bf(x)\dd x$。
+    definedIn: math.analysis.riemann-integral
+    anchor: def-riemann-integral
+  - id: math.analysis.integrability-criterion
+    zh: |
+      可积准则
+    en: |
+      Riemann's criterion
+    brief: |
+      有界函数$f$在$[a,b]$上可积，当且仅当任给$\varepsilon>0$，都有分割$P$使$U(f,P)-L(f,P)<\varepsilon$。
+    definedIn: math.analysis.riemann-integral
+    anchor: thm-integrability-criterion
+  - id: math.analysis.variable-upper-limit-integral
+    zh: |
+      变上限积分
+    en: |
+      integral with variable upper limit
+    brief: |
+      $f$在$[a,b]$上可积时，$F(x)=\int_a^xf(t)\dd t$；它在$[a,b]$上连续，在$f$的连续点处可导。
+    definedIn: math.analysis.ftc-proof
+    anchor: def-variable-upper-limit
+  - id: math.analysis.fundamental-theorem-of-calculus
+    zh: |
+      微积分基本定理
+    en: |
+      fundamental theorem of calculus
+    brief: |
+      $f$在$[a,b]$上可积、在$x_0$处连续，则变上限积分$F$在$x_0$处可导，并且$F'(x_0)=f(x_0)$。
+    definedIn: math.analysis.ftc-proof
+    anchor: thm-ftc
+  - id: math.analysis.newton-leibniz-formula
+    zh: |
+      牛顿-莱布尼茨公式
+    en: |
+      Newton-Leibniz formula
+    brief: |
+      $F$在$[a,b]$上可导，并且$F'$可积，则$\int_a^bF'(x)\dd x=F(b)-F(a)$。
+    definedIn: math.analysis.ftc-proof
+    anchor: thm-newton-leibniz

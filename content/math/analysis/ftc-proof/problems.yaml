@@ -1,0 +1,159 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$F(x)=\int_0^x\lfloor t\rfloor\,\dd t$，其中$\lfloor t\rfloor$是不超过$t$的最大整数。求$F(2.5)$和$F'(1.5)$，按这个顺序填写。
+  answer:
+    type: tuple
+    value: [2, 1]
+  hints:
+    - |
+      $F(2.5)$按$[0,1]$、$[1,2]$、$[2,2.5]$分段算；$\lfloor t\rfloor$在$1.5$处:term[连续]{id="math.analysis.continuous-function"}（continuous），$F'(1.5)$用定理 2。
+    - |
+      三段上$\lfloor t\rfloor$分别是$0$、$1$、$2$（只在端点上不同，不影响积分）。$F'(1.5)=\lfloor1.5\rfloor$。
+    - |
+      由区间可加性（additivity），$F(2.5)=\int_0^1\lfloor t\rfloor\dd t+\int_1^2\lfloor t\rfloor\dd t+\int_2^{2.5}\lfloor t\rfloor\dd t=0+1+2\times0.5=2$；每一段上被积函数除端点外是常数，由引理 1 和[黎曼积分与达布和](lesson:math.analysis.riemann-integral)的例 2 得到各段的值。
+
+      $\lfloor t\rfloor$在$1.5$处连续，由定理 2，$F'(1.5)=\lfloor1.5\rfloor=1$。答案是$(2,\ 1)$。
+  solution: |
+    $F(2.5)=0+1+2\times0.5=2$；$\lfloor t\rfloor$在$1.5$处连续，$F'(1.5)=1$，填 `2, 1`。
+
+- id: p2
+  tier: easy
+  statement: |
+    记$F(x)=\int_a^xf(t)\dd t$。下面哪些说法对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $f$在$[a,b]$上可积，则$F$在$[a,b]$上连续
+      - |
+        $f$在$[a,b]$上可积，则$F$在$(a,b)$内处处可导
+      - |
+        $f$在$[a,b]$上可积、在$x_0\in(a,b)$处连续，则$F'(x_0)=f(x_0)$
+      - |
+        $G$在$[a,b]$上处处可导，则$\int_a^bG'(x)\dd x=G(b)-G(a)$
+    value: [1, 3]
+  hints:
+    - |
+      对照讲解里的定理 1、2、3，看每条说法的条件够不够。
+    - |
+      B 想想例 1 的$\operatorname{sgn}$。D 里$G'$一定:term[可积]{id="math.analysis.riemann-integral"}（Riemann integrable）吗？
+    - |
+      A 对，就是定理 1。C 对，就是定理 2（:term[微积分基本定理]{id="math.analysis.fundamental-theorem-of-calculus"}，fundamental theorem of calculus）。
+
+      B 不对：$f=\operatorname{sgn}$、$a=-1$时$F(x)=|x|-1$，在$0$处不可导（例 1）。D 不对：:term[牛顿-莱布尼茨公式]{id="math.analysis.newton-leibniz-formula"}（Newton-Leibniz formula）还要求$G'$可积，第 7 题的$G'$无界，左边根本没有意义。
+
+      答案是 A 和 C。
+  solution: |
+    A 是定理 1，C 是定理 2。B 的反例是$\operatorname{sgn}$的变上限积分；D 缺了「$G'$可积」这个条件。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$G(x)=\int_0^{x^2}\frac{\dd t}{1+t}$。求$G'(1)$。
+  answer:
+    type: number
+    value: 1
+  hints:
+    - |
+      $G$是$F(u)=\int_0^u\frac{\dd t}{1+t}$和$u=x^2$的复合，用:term[链式法则]{id="math.analysis.chain-rule"}（chain rule）和定理 2。
+    - |
+      $\frac{1}{1+t}$在$t\ge0$时连续，由定理 2，$F'(u)=\frac{1}{1+u}$。所以$G'(x)=F'(x^2)\cdot2x$。
+    - |
+      $\frac{1}{1+t}$在$[0,+\infty)$上连续，由定理 2，$F'(u)=\frac{1}{1+u}$。由链式法则，$G'(x)=F'(x^2)\cdot2x=\frac{2x}{1+x^2}$，所以$G'(1)=\frac{2}{2}=1$。
+  solution: |
+    $G'(x)=\frac{1}{1+x^2}\cdot2x$，$G'(1)=1$。
+
+- id: p4
+  tier: medium
+  statement: |
+    用:term[牛顿-莱布尼茨公式]{id="math.analysis.newton-leibniz-formula"}（Newton-Leibniz formula）求$\int_{-1}^{2}2|x|\,\dd x$。
+  answer:
+    type: number
+    value: 5
+  hints:
+    - |
+      找一个导数处处等于$2|x|$的函数，$x=0$这一点要单独验证。
+    - |
+      试试$F(x)=x|x|$：$x>0$时它是$x^2$，$x<0$时是$-x^2$。在$0$处的差商是$\frac{h|h|}{h}=|h|$。
+    - |
+      $F(x)=x|x|$：$x>0$时$F'(x)=2x=2|x|$，$x<0$时$F'(x)=-2x=2|x|$；在$0$处差商$|h|\to0$，$F'(0)=0=2|0|$。所以$F'=2|x|$处处成立，它连续，也就可积。
+
+      由牛顿-莱布尼茨公式，$\int_{-1}^22|x|\,\dd x=F(2)-F(-1)=4-(-1)=5$。用面积核对：两个三角形的面积是$1$和$4$，合起来也是$5$。
+  solution: |
+    $F(x)=x|x|$处处可导，$F'=2|x|$，所以积分是$F(2)-F(-1)=4+1=5$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$在$[a,b]$上:term[连续]{id="math.analysis.continuous-function"}（continuous）。用定理 2 和:term[拉格朗日中值定理]{id="math.analysis.mean-value-theorem"}（mean value theorem）证明：有$\xi\in(a,b)$使$\int_a^bf(x)\dd x=f(\xi)(b-a)$。连续这个条件能不能去掉？
+  hints:
+    - |
+      对变上限积分$F(x)=\int_a^xf(t)\dd t$用拉格朗日中值定理。
+    - |
+      $F$在$[a,b]$上连续（定理 1），在$(a,b)$内可导，$F'=f$（定理 2）。$F(a)=0$，$F(b)=\int_a^bf$。去掉连续时，试试在$[0,1)$上取$0$、在$[1,2]$上取$1$的函数。
+    - |
+      令$F(x)=\int_a^xf(t)\dd t$。由定理 1，$F$在$[a,b]$上连续；$f$处处连续，由定理 2，$F$在$(a,b)$内可导，$F'=f$。由拉格朗日中值定理，有$\xi\in(a,b)$使
+
+      $$
+      \int_a^bf=F(b)-F(a)=F'(\xi)(b-a)=f(\xi)(b-a) .
+      $$
+
+      连续不能去掉。$f=0$（$0\le x<1$）、$f=1$（$1\le x\le2$）可积，$\int_0^2f=1$，要$f(\xi)\cdot2=1$就得$f(\xi)=\frac12$，可$f$只取$0$和$1$。几何上，结论说的是：连续函数在区间上的平均值$\frac{1}{b-a}\int_a^bf$一定被取到。
+  reference: |
+    $F(x)=\int_a^xf$连续、可导且$F'=f$，由拉格朗日中值定理$F(b)-F(a)=f(\xi)(b-a)$。不连续时反例：$[0,1)$上为$0$、$[1,2]$上为$1$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$在$[a,b]$上:term[连续]{id="math.analysis.continuous-function"}，$f(x)\ge0$对所有$x$成立，并且$\int_a^bf(x)\dd x=0$。证明$f$在$[a,b]$上恒为$0$。连续这个条件能不能去掉？
+  hints:
+    - |
+      看变上限积分$F(x)=\int_a^xf(t)\dd t$：它是单调的吗？$F(a)$、$F(b)$各是多少？
+    - |
+      $F'=f\ge0$，由拉格朗日中值定理，$F$单调不减；又$F(a)=0=F(b)$。
+    - |
+      令$F(x)=\int_a^xf(t)\dd t$。$f$连续，由定理 2，$F$在$[a,b]$上可导，$F'=f\ge0$。对$a\le x<y\le b$，由:term[拉格朗日中值定理]{id="math.analysis.mean-value-theorem"}，$F(y)-F(x)=f(\xi)(y-x)\ge0$，所以$F$单调不减。
+
+      于是$0=F(a)\le F(x)\le F(b)=\int_a^bf=0$，$F$恒为$0$，所以$f(x)=F'(x)=0$对所有$x$成立。
+
+      连续不能去掉：只在一点取$1$、其余点取$0$的函数非负，积分是$0$（[黎曼积分与达布和](lesson:math.analysis.riemann-integral)的例 2），却不恒为$0$。
+  reference: |
+    $F=\int_a^xf$可导且$F'=f\ge0$，故单调不减；$F(a)=F(b)=0$推出$F\equiv0$，于是$f=F'\equiv0$。不连续时反例：单点取$1$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    设$F(x)=x^2\sin\frac{1}{x^2}$（$x\ne0$），$F(0)=0$。它在$[0,1]$上处处:term[可导]{id="math.analysis.differentiable-function"}（differentiable）吗？$\int_0^1F'(x)\dd x=F(1)-F(0)$成立吗？
+  hints:
+    - |
+      $0$处用定义；$x\ne0$时用求导法则和$\sin$、$\cos$的导数（见[初等函数的导数](lesson:math.calculus.elementary-derivatives)）。再看$F'$在$0$附近有没有界。
+    - |
+      $F'(0)=\lim_{h\to0}h\sin\frac{1}{h^2}=0$；$x\ne0$时$F'(x)=2x\sin\frac{1}{x^2}-\frac2x\cos\frac{1}{x^2}$。在$x=\frac{1}{\sqrt{2k\pi}}$处，$F'(x)=-2\sqrt{2k\pi}$。
+    - |
+      $F$处处可导：$0$处$\bigl|\frac{F(h)}{h}\bigr|\le|h|\to0$，$F'(0)=0$；别处由求导法则，$F'(x)=2x\sin\frac{1}{x^2}-\frac2x\cos\frac{1}{x^2}$。在$x=\frac{1}{\sqrt{2k\pi}}$处它等于$-2\sqrt{2k\pi}$，要多小有多小，$F'$在$[0,1]$上无界，不:term[可积]{id="math.analysis.riemann-integral"}。所以等式左边在黎曼积分的意义下没有意义，:term[牛顿-莱布尼茨公式]{id="math.analysis.newton-leibniz-formula"}的条件「$F'$可积」不满足。
+
+      退一步，在每个$[\delta,1]$上$F'$连续，公式成立：$\int_\delta^1F'=F(1)-F(\delta)$，$\delta\to0^+$时趋于$F(1)=\sin1$。这是反常积分（improper integral）的说法，见[反常积分](lesson:math.calculus.improper-integrals)。
+
+      更麻烦的是，导函数有界也不一定黎曼可积，沃尔泰拉函数（Volterra's function）就是例子。在勒贝格积分（Lebesgue integral）里，「$F$处处可导、$F'$有界」就保证$\int_a^bF'=F(b)-F(a)$。这是黎曼积分不够用、要发展新积分的原因之一，这一版的课程没有收。
+  reference: |
+    $F$处处可导，$F'(0)=0$，但$F'(1/\sqrt{2k\pi})=-2\sqrt{2k\pi}$无界，不黎曼可积，公式左边无意义。在$[\delta,1]$上成立，取极限得反常积分$\sin1$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$f(0)=1$，$x\ne0$时$f(x)=0$，$F(x)=\int_{-1}^xf(t)\dd t$。$F$在$0$处:term[可导]{id="math.analysis.differentiable-function"}吗？$F'(0)$等于$f(0)$吗？一般地，$f$在$x_0$处不连续时，$F$在$x_0$处会怎样？
+  hints:
+    - |
+      先把$F$求出来：$f$只在一个点上不为$0$。
+    - |
+      由[黎曼积分与达布和](lesson:math.analysis.riemann-integral)的例 2，$F$恒为$0$，所以$F'(0)=0\ne f(0)$。再对比例 1：$f$有跳跃时，$F$有拐角。
+    - |
+      $F$恒为$0$：改动一个点的函数值，积分不变。所以$F$处处可导，$F'(0)=0$，可$f(0)=1$，定理 2 的结论不成立。原因是$F$「看不见」单独一个点上的值：积分只记录$f$在一小段上的总体情况。
+
+      一般地，把定理 2 的证明里的$f(x_0)$换成$f$在$x_0$处的右极限、左极限（如果存在），同样的论证说明$F$的右导数、左导数分别等于它们。于是：可去间断（左、右极限相等，但不等于$f(x_0)$）时，$F$可导，$F'(x_0)$等于那个极限，而不是$f(x_0)$；跳跃间断时，左、右导数不相等，$F$在那里有拐角，例 1 就是这样。
+
+      定理 2 要求$f$在$x_0$处连续，正是为了把单独一点的值$f(x_0)$和它附近的值绑在一起。
+  reference: |
+    $F\equiv0$，$F'(0)=0\ne f(0)$。$F$在$x_0$处的单侧导数等于$f$的单侧极限：可去间断时$F'(x_0)$是极限值而非$f(x_0)$，跳跃间断时$F$有拐角。

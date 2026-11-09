@@ -1,0 +1,149 @@
+- id: p1
+  tier: easy
+  statement: |
+    把$[0,2]$四等分，求$f(x)=x$关于这个分割的:term[上和]{id="math.analysis.upper-sum"}（upper sum）和:term[下和]{id="math.analysis.lower-sum"}（lower sum），按（上和, 下和）的顺序填写。
+  answer:
+    type: tuple
+    value: [5/2, 3/2]
+  hints:
+    - |
+      $f$递增，每一段上的上确界在右端点，下确界在左端点。
+    - |
+      分点是$0,\ 0.5,\ 1,\ 1.5,\ 2$，每段长$0.5$。上和取右端点$0.5,1,1.5,2$，下和取左端点$0,0.5,1,1.5$。
+    - |
+      上和$=0.5\times(0.5+1+1.5+2)=2.5$，下和$=0.5\times(0+0.5+1+1.5)=1.5$。答案是$(2.5,\ 1.5)$，两者之差$1$正好是$f(2)-f(0)$乘段长$0.5$。
+  solution: |
+    上和$=0.5\times(0.5+1+1.5+2)=2.5$，下和$=0.5\times(0+0.5+1+1.5)=1.5$，填 `2.5, 1.5`。
+
+- id: p2
+  tier: easy
+  statement: |
+    在$[0,1]$上，$f\bigl(\frac12\bigr)=5$，其余点上$f=1$。取:term[分割]{id="math.analysis.partition"}（partition）$P=\{0,\ 0.4,\ 0.6,\ 1\}$，求$U(f,P)$和$L(f,P)$，按这个顺序填写。
+  answer:
+    type: tuple
+    value: [9/5, 1]
+  hints:
+    - |
+      分别找出三段上的上确界和下确界。$\frac12$在哪一段里？
+    - |
+      $\frac12$在$[0.4,0.6]$里，那一段的上确界是$5$；其余的上确界、下确界都是$1$。
+    - |
+      三段的长度是$0.4$、$0.2$、$0.4$。上确界依次是$1$、$5$、$1$，下确界都是$1$。$U(f,P)=0.4+0.2\times5+0.4=1.8$，$L(f,P)=0.4+0.2+0.4=1$。答案是$(1.8,\ 1)$。
+
+      把中间那一段取得更短，上和就更接近$1$，所以这个函数的积分是$1$，和例 2 的道理一样。
+  solution: |
+    中间一段的上确界是$5$，其余都是$1$：$U(f,P)=0.4+1+0.4=1.8$，$L(f,P)=1$，填 `1.8, 1`。
+
+- id: p3
+  tier: medium
+  statement: |
+    把$[0,1]$等分成$k$段，$f(x)=x^2$。要使$U(f,P)-L(f,P)<0.01$，$k$至少是多少？
+  answer:
+    type: number
+    value: 101
+  hints:
+    - |
+      $f$在$[0,1]$上递增，第$i$段上的上确界、下确界分别是右端点、左端点的值。写出$U-L$，看看能不能化简。
+    - |
+      $U-L=\sum_{i=1}^k\Bigl[\bigl(\tfrac ik\bigr)^2-\bigl(\tfrac{i-1}{k}\bigr)^2\Bigr]\cdot\frac1k$，方括号里的项一项接一项地相消。
+    - |
+      $U-L=\frac1k\sum_{i=1}^k\Bigl[\bigl(\tfrac ik\bigr)^2-\bigl(\tfrac{i-1}{k}\bigr)^2\Bigr]=\frac1k\bigl(1^2-0^2\bigr)=\frac1k$。要$\frac1k<0.01$，即$k>100$，所以$k$至少是$101$。$k=100$时差恰好是$0.01$，不满足「小于」。
+  solution: |
+    相消后$U-L=\frac1k$，要$\frac1k<0.01$，$k$至少是$101$。
+
+- id: p4
+  tier: medium
+  statement: |
+    在$[0,1]$上，$x$是有理数时$f(x)=x$，$x$是无理数时$f(x)=0$。求$f$的上积分和下积分，按（上积分, 下积分）的顺序填写。
+  answer:
+    type: tuple
+    value: [1/2, 0]
+  hints:
+    - |
+      每一小段里既有有理数也有无理数。分别求每一段上$f$的上确界和下确界。
+    - |
+      第$i$段上，上确界是右端点$x_i$（有理数可以任意接近$x_i$），下确界是$0$。所以$U(f,P)=\sum x_i\Delta x_i$，它正是$g(x)=x$的上和。
+    - |
+      在$[x_{i-1},x_i]$里，有理数可以任意接近$x_i$，所以上确界是$x_i$；无理数处$f=0$，其余处$f\ge0$，所以下确界是$0$。于是$L(f,P)=0$，下积分是$0$。
+
+      $U(f,P)=\sum x_i\Delta x_i=U(g,P)$，$g(x)=x$。由例 1，$g$可积，积分是$\frac12$，所以上和的下确界是$\frac12$：上积分是$\frac12$。
+
+      答案是$\bigl(\frac12,\ 0\bigr)$。上积分不等于下积分，$f$在$[0,1]$上不可积。
+  solution: |
+    每一段上，上确界是右端点，下确界是$0$。上和就是$x$的上和，下确界为$\frac12$；下和恒为$0$。填 `1/2, 0`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$、$g$在$[a,b]$上:term[可积]{id="math.analysis.riemann-integral"}（Riemann integrable），$c$是常数。证明$f+g$和$cf$也可积，并且$\int_a^b(f+g)=\int_a^bf+\int_a^bg$，$\int_a^bcf=c\int_a^bf$。
+  hints:
+    - |
+      在同一段上，比较$f+g$的上确界和$f$、$g$各自上确界之和。$cf$要按$c$的正负分开。
+    - |
+      每一段上$\sup(f+g)\le\sup f+\sup g$，$\inf(f+g)\ge\inf f+\inf g$，所以$L(f,P)+L(g,P)\le L(f+g,P)\le U(f+g,P)\le U(f,P)+U(g,P)$。$c\ge0$时$U(cf,P)=cU(f,P)$；$c<0$时$U(cf,P)=cL(f,P)$。
+    - |
+      和：在第$i$段上，每个$x$都满足$f(x)+g(x)\le M_i(f)+M_i(g)$，所以$M_i(f+g)\le M_i(f)+M_i(g)$；同理$m_i(f+g)\ge m_i(f)+m_i(g)$。于是对每个分割$P$，
+
+      $$
+      L(f,P)+L(g,P)\le L(f+g,P)\le U(f+g,P)\le U(f,P)+U(g,P) .
+      $$
+
+      任给$\varepsilon>0$，由:term[可积准则]{id="math.analysis.integrability-criterion"}（Riemann's criterion）有$P_1$、$P_2$分别使$f$、$g$的上和与下和之差小于$\frac\varepsilon2$；取$P=P_1\cup P_2$，由定理 1，差仍小于$\frac\varepsilon2$。所以$U(f+g,P)-L(f+g,P)<\varepsilon$，$f+g$可积。$\int(f+g)$和$\int f+\int g$都夹在$L(f,P)+L(g,P)$与$U(f,P)+U(g,P)$之间，两者相差小于$\varepsilon$；$\varepsilon$任意，所以相等。
+
+      数乘：$c\ge0$时，每一段上$\sup(cf)=c\sup f$，$\inf(cf)=c\inf f$，所以$U(cf,P)=cU(f,P)$，$L(cf,P)=cL(f,P)$，上积分、下积分都乘上$c$。$c<0$时上确界、下确界对调：$U(cf,P)=cL(f,P)$，$L(cf,P)=cU(f,P)$，于是$cf$的上积分是$\inf_PcL(f,P)=c\sup_PL(f,P)=c\int f$，下积分同样是$c\int f$。两种情形都有$cf$可积、$\int cf=c\int f$。
+  reference: |
+    $L(f)+L(g)\le L(f+g)\le U(f+g)\le U(f)+U(g)$，取共同加细用准则得可积，夹逼得积分可加。数乘：$c\ge0$时上下和乘$c$，$c<0$时上下和对调再乘$c$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$、$g$在$[a,b]$上:term[可积]{id="math.analysis.riemann-integral"}。(1) 若$f(x)\le g(x)$对所有$x$成立，证明$\int_a^bf\le\int_a^bg$。(2) 证明$|f|$也可积，并且$\Bigl|\int_a^bf\Bigr|\le\int_a^b|f|$。
+  hints:
+    - |
+      (1) 比较同一个分割下两者的下和。(2) 比较$|f|$和$f$在同一段上的振幅（oscillation）。
+    - |
+      (1) $L(f,P)\le L(g,P)\le\int g$，再对$P$取上确界。(2) 同一段里任意两点都有$\bigl||f(x)|-|f(y)|\bigr|\le|f(x)-f(y)|\le M_i-m_i$。
+    - |
+      (1) 每一段上$\inf f\le\inf g$，所以$L(f,P)\le L(g,P)\le\int_a^bg$。这对每个$P$成立，对$P$取上确界，得$\int_a^bf\le\int_a^bg$。
+
+      (2) 记$|f|$在第$i$段上的上确界、下确界为$M_i'$、$m_i'$。同一段里的$x$、$y$满足$|f(x)|-|f(y)|\le|f(x)-f(y)|\le M_i-m_i$；先对$x$取上确界，再对$y$取上确界（$-|f(y)|$的上确界是$-m_i'$），得$M_i'-m_i'\le M_i-m_i$。于是$U(|f|,P)-L(|f|,P)\le U(f,P)-L(f,P)$，由:term[可积准则]{id="math.analysis.integrability-criterion"}，$|f|$可积。
+
+      $-|f|\le f\le|f|$，由 (1) 和第 5 题（$\int(-|f|)=-\int|f|$），$-\int|f|\le\int f\le\int|f|$，即$\bigl|\int f\bigr|\le\int|f|$。反过来不成立：有理数处取$1$、无理数处取$-1$的函数不可积，它的绝对值却是常数$1$。
+  reference: |
+    (1) $L(f,P)\le L(g,P)\le\int g$，取上确界。(2) $|f|$在每段上的振幅不超过$f$的，由准则可积；由$-|f|\le f\le|f|$和单调性得不等式。
+
+- id: p7
+  tier: thinking
+  statement: |
+    微积分里常这样定义积分：:term[分割]{id="math.analysis.partition"}的最大段长$\lambda(P)=\max\Delta x_i$趋于$0$时，黎曼和$\sum f(\xi_i)\Delta x_i$不论怎样挑点，都趋于同一个数$I$。这和这一节用上和、下和的定义一样吗？难在哪里？
+  hints:
+    - |
+      从黎曼和的定义推出这一节的定义比较容易：上和是同一分割下黎曼和的上确界，挑点可以让黎曼和任意接近上和。难的是反方向：可积准则只给出一个好的分割，不保证所有足够细的分割都好。
+    - |
+      关键一步：取一个$U-L<\varepsilon$的分割$Q$，设它有$k$个内部分点，$|f|\le K$。对任意分割$P$，$P$和$P\cup Q$只在含$Q$的分点的那些段上不同，至多$k$段；每一段上，上和的差不超过$2K\lambda(P)$。
+    - |
+      设$f$按这一节的定义可积，积分是$I$。任给$\varepsilon$，取分割$Q$使$U(Q)-L(Q)<\varepsilon$，设它有$k$个内部分点，$|f|\le K$。对任意分割$P$，$P\cup Q$和$P$只在至多$k$段上不同，每段对上和的贡献至多差$2K\lambda(P)$，所以$U(P)\le U(P\cup Q)+2kK\lambda(P)\le U(Q)+2kK\lambda(P)$；同理$L(P)\ge L(Q)-2kK\lambda(P)$。于是$\lambda(P)<\frac{\varepsilon}{4kK}$时$U(P)-L(P)<2\varepsilon$，而黎曼和与$I$都夹在$L(P)$、$U(P)$之间，相差小于$2\varepsilon$。
+
+      反过来，若黎曼和在$\lambda(P)\to0$时都趋于$I$：取一个足够细的分割，在每一段里挑点使$f(\xi_i)>M_i-\varepsilon$，黎曼和就大于$U(P)-\varepsilon(b-a)$，所以$U(P)$离$I$不远；下和同理，由可积准则，$f$按这一节的定义可积。
+
+      所以两种定义等价，只是这一节的定义更好用：它不用处理「挑点」和「所有足够细的分割」这两层任意性。最大段长$\lambda(P)$也叫分割的细度（mesh）。
+  reference: |
+    两种定义等价。难的方向：取$U(Q)-L(Q)<\varepsilon$的$Q$（$k$个分点），则任意$P$有$U(P)-L(P)\le U(Q)-L(Q)+4kK\lambda(P)$，$\lambda(P)$小时差小于$2\varepsilon$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    这一节的定义要求$f$有界。$f(x)=\frac{1}{\sqrt x}$（$0<x\le1$）、$f(0)=0$在$[0,1]$上无界，按这一节的定义它不:term[可积]{id="math.analysis.riemann-integral"}；可微积分里常说$\int_0^1\frac{\dd x}{\sqrt x}=2$。这两种说法怎么协调？无界函数的黎曼和会出什么问题？
+  hints:
+    - |
+      看含$0$的第一段：挑的点$\xi_1$离$0$越近，$f(\xi_1)\Delta x_1$越大。
+    - |
+      不管分割多细，都能让$f(\xi_1)\Delta x_1$要多大有多大，黎曼和没有极限。微积分里的$\int_0^1\frac{\dd x}{\sqrt x}$是另一种定义：先在$[\delta,1]$上积分，再令$\delta\to0^+$。
+    - |
+      任取分割$P$，第一段是$[0,x_1]$。在$(0,x_1]$里挑$\xi_1$足够靠近$0$，使$\frac{1}{\sqrt{\xi_1}}>\frac{N}{x_1}$，黎曼和就大于$N$。所以对每个分割，黎曼和都可以要多大有多大，上和不存在，两种定义都给不出积分。
+
+      $\int_0^1\frac{\dd x}{\sqrt x}=2$说的是反常积分（improper integral）：$f$在每个$[\delta,1]$上连续（continuous），因而可积（见[哪些函数可积](lesson:math.analysis.integrable-functions)），用牛顿-莱布尼茨公式（Newton-Leibniz formula）算得$\int_\delta^1\frac{\dd x}{\sqrt x}=2-2\sqrt\delta$（见[微积分基本定理的证明](lesson:math.analysis.ftc-proof)），再令$\delta\to0^+$，极限是$2$。这是在黎曼积分之外多取一次极限，见[反常积分](lesson:math.calculus.improper-integrals)。
+
+      所以「有界」是黎曼积分定义的一部分，不是可以省略的细节；无界函数要先截掉坏点附近的一小段，再看截掉的部分缩小时积分有没有极限。
+  reference: |
+    含$0$的那段里$f(\xi_1)\Delta x_1$可任意大，黎曼和无界，按定义不可积。$\int_0^1x^{-1/2}\dd x=2$是反常积分：$\lim_{\delta\to0^+}\int_\delta^1=\lim(2-2\sqrt\delta)=2$。

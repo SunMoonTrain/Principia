@@ -1,0 +1,173 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$f(x)=x^3-x$，$a=1$。把$f(1+h)$写成$f(1)+Ah+r(h)$，其中$\frac{r(h)}{h}\to0$（$h\to0$）。求$A$，以及$h=0.1$时$\frac{r(h)}{h}$的值，按$\bigl(A,\ \frac{r(0.1)}{0.1}\bigr)$的顺序填写。
+  answer:
+    type: tuple
+    value: [2, 31/100]
+  hints:
+    - |
+      展开$(1+h)^3-(1+h)$，按$h$的次数整理。
+    - |
+      $f(1+h)=2h+3h^2+h^3$，$f(1)=0$。一次项的系数就是$A$，剩下的是$r(h)$。
+    - |
+      $f(1+h)=(1+3h+3h^2+h^3)-(1+h)=2h+3h^2+h^3$。取$A=2$，$r(h)=3h^2+h^3$，则$\frac{r(h)}{h}=3h+h^2\to0$。由:term[线性近似]{id="math.analysis.linear-approximation"}（linear approximation）那条定理，$f'(1)=A=2$。
+
+      $h=0.1$时$\frac{r(h)}{h}=0.3+0.01=0.31$。答案是$(2,\ 0.31)$。
+  solution: |
+    $f(1+h)=2h+3h^2+h^3$，所以$A=2=f'(1)$，$r(h)=3h^2+h^3$，$\frac{r(0.1)}{0.1}=0.31$，填 `2, 0.31`。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些函数在$0$处:term[可导]{id="math.analysis.differentiable-function"}（differentiable）？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $f(x)=|x|$
+      - |
+        $f(x)=x|x|$
+      - |
+        $f(x)=\sqrt[3]{x}$
+      - |
+        $f(x)=x^2\sin\frac1x$（$x\ne0$），$f(0)=0$
+    value: [2, 4]
+  hints:
+    - |
+      逐个写出$0$处的差商$\frac{f(h)-f(0)}{h}$，看$h\to0$时它有没有极限。
+    - |
+      A：$\frac{|h|}{h}$；B：$\frac{h|h|}{h}=|h|$；C：$\frac{\sqrt[3]h}{h}=\frac{1}{\sqrt[3]{h^2}}$；D：$h\sin\frac1h$。
+    - |
+      A：右导数是$1$，左导数是$-1$，不可导。B：差商$|h|\to0$，可导，导数是$0$。
+
+      C：$\frac{1}{\sqrt[3]{h^2}}$要多大有多大，不可导，图像在原点处的切线是竖直的。D：$\bigl|h\sin\frac1h\bigr|\le|h|\to0$，可导，导数是$0$（例 2）。
+
+      答案是 B 和 D。
+  solution: |
+    B、D 的差商分别是$|h|$和$h\sin\frac1h$，都趋于$0$，可导；A 的左、右导数不相等；C 的差商$h^{-2/3}$趋于无穷大。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$f(x)=x^2$（$x\le1$），$f(x)=ax+b$（$x>1$）。$a$、$b$取多少时$f$在$1$处:term[可导]{id="math.analysis.differentiable-function"}？按$(a,\ b)$的顺序填写。
+  answer:
+    type: tuple
+    value: [2, -1]
+  hints:
+    - |
+      可导必:term[连续]{id="math.analysis.continuous-function"}（continuous），先写出在$1$处连续的条件；再让左导数等于右导数。
+    - |
+      连续要求$a+b=1$。左导数是$\lim_{h\to0^-}\frac{(1+h)^2-1}{h}$；右边的差商是$\frac{a(1+h)+b-1}{h}$。
+    - |
+      $f(1)=1$，在$1$处连续要求$\lim_{x\to1^+}(ax+b)=a+b$等于$1$。这时右边的差商$\frac{a(1+h)+b-1}{h}=\frac{ah}{h}=a$，右导数是$a$。
+
+      左导数是$\lim_{h\to0^-}\frac{2h+h^2}{h}=\lim_{h\to0^-}(2+h)=2$。可导要求左、右导数相等，所以$a=2$，$b=1-a=-1$。答案是$(2,\ -1)$。
+  solution: |
+    连续要求$a+b=1$；左导数是$2$，右导数是$a$，相等得$a=2$，于是$b=-1$，填 `2, -1`。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$f$在$a$处:term[可导]{id="math.analysis.differentiable-function"}，$f'(a)=3$。求$\lim_{h\to0}\frac{f(a+2h)-f(a-h)}{h}$。
+  answer:
+    type: number
+    value: 9
+  hints:
+    - |
+      用:term[线性近似]{id="math.analysis.linear-approximation"}（linear approximation）分别写出$f(a+2h)$和$f(a-h)$。
+    - |
+      $f(a+2h)=f(a)+6h+r(2h)$，$f(a-h)=f(a)-3h+r(-h)$，其中$t\to0$时$\frac{r(t)}{t}\to0$。
+    - |
+      记$r(t)=f(a+t)-f(a)-3t$，则$\frac{r(t)}{t}\to0$。于是
+
+      $$
+      \frac{f(a+2h)-f(a-h)}{h}=\frac{9h+r(2h)-r(-h)}{h}=9+2\cdot\frac{r(2h)}{2h}+\frac{r(-h)}{-h} .
+      $$
+
+      $h\to0$时$2h\to0$、$-h\to0$，后两项都趋于$0$，所以极限是$9$。
+  solution: |
+    由线性近似，分子是$9h+r(2h)-r(-h)$，除以$h$以后后两项趋于$0$，极限是$9$。
+
+- id: p5
+  tier: hard
+  statement: |
+    用讲解里的定理 3 证明乘积的求导法则：若$f$、$g$都在$a$处:term[可导]{id="math.analysis.differentiable-function"}，则$fg$在$a$处可导，并且$(fg)'(a)=f'(a)g(a)+f(a)g'(a)$。
+  hints:
+    - |
+      目标是把$f(x)g(x)-f(a)g(a)$写成$(x-a)$乘上一个在$a$处:term[连续]{id="math.analysis.continuous-function"}的函数。
+    - |
+      $f(x)g(x)-f(a)g(a)=\bigl(f(x)-f(a)\bigr)g(x)+f(a)\bigl(g(x)-g(a)\bigr)$。再把两个差分别写成$\varphi(x)(x-a)$和$\psi(x)(x-a)$。
+    - |
+      由定理 3，有在$a$处连续的$\varphi$、$\psi$，使$f(x)-f(a)=\varphi(x)(x-a)$，$g(x)-g(a)=\psi(x)(x-a)$，并且$\varphi(a)=f'(a)$，$\psi(a)=g'(a)$。于是
+
+      $$
+      f(x)g(x)-f(a)g(a)=\bigl(f(x)-f(a)\bigr)g(x)+f(a)\bigl(g(x)-g(a)\bigr)=\bigl[\varphi(x)g(x)+f(a)\psi(x)\bigr](x-a) .
+      $$
+
+      $g$在$a$处可导，由定理 1 也在$a$处连续。方括号里是在$a$处连续的函数的积与和，由[连续函数的严格定义](lesson:math.analysis.continuity)的定理 2，它在$a$处连续，在$a$处的值是$f'(a)g(a)+f(a)g'(a)$。再由定理 3，$fg$在$a$处可导，导数就是这个值。
+
+      注意方括号里是$g(x)$而不是$g(a)$，所以要用到$g$的连续性。
+  reference: |
+    $fg(x)-fg(a)=[\varphi(x)g(x)+f(a)\psi(x)](x-a)$，方括号在$a$处连续（$g$可导故连续），由定理 3 得$(fg)'(a)=\varphi(a)g(a)+f(a)\psi(a)$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$在$a$处:term[可导]{id="math.analysis.differentiable-function"}，数列$x_n<a<y_n$，并且$x_n\to a$，$y_n\to a$。证明$\frac{f(y_n)-f(x_n)}{y_n-x_n}\to f'(a)$。
+
+    如果只要求$x_n\ne y_n$、两者都趋于$a$，而不要求它们分在$a$的两侧，结论还对吗？
+  hints:
+    - |
+      用定理 3 写出$f(y_n)-f(a)$和$f(x_n)-f(a)$，再相减。所求的割线斜率是$\varphi(y_n)$和$\varphi(x_n)$按某种比例的混合。
+    - |
+      记$t_n=\frac{y_n-a}{y_n-x_n}$，则$0<t_n<1$，并且$\frac{f(y_n)-f(x_n)}{y_n-x_n}=t_n\varphi(y_n)+(1-t_n)\varphi(x_n)$。没有$x_n<a<y_n$时，$t_n$可以不在$0$和$1$之间。反例试试例 2 的$g(x)=x^2\sin\frac1x$，取$y_n=\frac{1}{2n\pi}$，$x_n=\frac{1}{2n\pi+\pi/2}$。
+    - |
+      由定理 3，$f(y_n)-f(x_n)=\varphi(y_n)(y_n-a)-\varphi(x_n)(x_n-a)$，$\varphi$在$a$处连续，$\varphi(a)=f'(a)$。记$t_n=\frac{y_n-a}{y_n-x_n}$，则$1-t_n=\frac{a-x_n}{y_n-x_n}$，两者都在$0$和$1$之间，并且
+
+      $$
+      \frac{f(y_n)-f(x_n)}{y_n-x_n}-f'(a)=t_n\bigl(\varphi(y_n)-\varphi(a)\bigr)+(1-t_n)\bigl(\varphi(x_n)-\varphi(a)\bigr) .
+      $$
+
+      右边的绝对值不超过$|\varphi(y_n)-\varphi(a)|+|\varphi(x_n)-\varphi(a)|$，由$\varphi$在$a$处连续和[连续函数的严格定义](lesson:math.analysis.continuity)的定理 1，它趋于$0$。
+
+      两点在同一侧时不一定对。取$g(x)=x^2\sin\frac1x$，$g(0)=0$，$g'(0)=0$；$y_n=\frac{1}{2n\pi}$，$x_n=\frac{1}{2n\pi+\pi/2}$，都在$0$的右边。$g(y_n)=0$，$g(x_n)=x_n^2$，$y_n-x_n=\frac{\pi/2}{2n\pi\,(2n\pi+\pi/2)}$，于是割线斜率是$-\frac{x_n^2}{y_n-x_n}=-\frac2\pi\cdot\frac{2n\pi}{2n\pi+\pi/2}\to-\frac2\pi$，不趋于$0$。
+  reference: |
+    斜率$=t_n\varphi(y_n)+(1-t_n)\varphi(x_n)$，$t_n\in(0,1)$，故趋于$\varphi(a)=f'(a)$。同侧时$t_n$无界，反例$x^2\sin\frac1x$沿$\frac{1}{2n\pi+\pi/2},\frac{1}{2n\pi}$斜率趋于$-\frac2\pi$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    对二元函数$f(x,y)$，在点$(a,b)$处，自变量的改变量是平面上的位移$(h,k)$，没法拿来做除数，差商也就写不出来。讲解里定理 2 的线性近似能怎样推广到这里？如果只要求沿$x$轴方向、沿$y$轴方向的两个差商都有极限，够不够？
+  hints:
+    - |
+      定理 2 里，导数是一次函数$Ah$的系数，误差要比$|h|$小得多。平面上的一次函数长什么样？「比位移小得多」该怎么说？
+    - |
+      要求$f(a+h,b+k)=f(a,b)+Ah+Bk+r(h,k)$，并且$\frac{r(h,k)}{\sqrt{h^2+k^2}}\to0$。只看两个坐标方向不够：试试$f(x,y)=\frac{xy}{x^2+y^2}$，$f(0,0)=0$，沿直线$y=x$看一看。
+    - |
+      一维时，线性近似说的是$f(a+h)=f(a)+Ah+r(h)$，$\frac{r(h)}{h}\to0$。推广到平面，把$Ah$换成平面上的一次函数$Ah+Bk$，把「比$h$小得多」换成「比位移的长度$\sqrt{h^2+k^2}$小得多」：$f(a+h,b+k)=f(a,b)+Ah+Bk+r(h,k)$，$\frac{r(h,k)}{\sqrt{h^2+k^2}}\to0$。这时就说$f$在$(a,b)$处可微（differentiable），$A$、$B$就是两个偏导数（partial derivative）。
+
+      只要求两个偏导数存在不够。$f(x,y)=\frac{xy}{x^2+y^2}$（$f(0,0)=0$）在两条坐标轴上恒为$0$，两个偏导数在原点都是$0$；可沿直线$y=x$，函数值恒为$\frac12$，它在原点连不连续都成问题，更谈不上用一次函数近似。
+
+      所以多元的时候，「可导」要用线性近似来定义，差商的极限只是它的一个推论。这就是[全微分与切平面](lesson:math.vector-calculus.differentiability)要讲的全微分（total differential）。
+  reference: |
+    推广为$f(a+h,b+k)=f(a,b)+Ah+Bk+r$，$r/\sqrt{h^2+k^2}\to0$（可微）。偏导数存在不够：$\frac{xy}{x^2+y^2}$在原点偏导数为$0$却不连续（沿$y=x$恒为$\frac12$）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    例 2 的$g(x)=x^2\sin\frac1x$（$g(0)=0$）在$0$处:term[可导]{id="math.analysis.differentiable-function"}。它的导函数$g'$在$0$处连续吗？一般地，一个函数的导函数会不会像$\operatorname{sgn}x$那样有跳跃？
+  hints:
+    - |
+      先求$x\ne0$时的$g'(x)$：要用乘积和复合函数的求导法则，以及$\sin$、$\cos$的导数（见[初等函数的导数](lesson:math.calculus.elementary-derivatives)）。
+    - |
+      $x\ne0$时$g'(x)=2x\sin\frac1x-\cos\frac1x$。看$x=\frac{1}{2k\pi}$和$x=\frac{1}{(2k+1)\pi}$这两串点上的值。
+    - |
+      $x\ne0$时$g'(x)=2x\sin\frac1x-\cos\frac1x$。在$x=\frac{1}{2k\pi}$处它等于$-1$，在$x=\frac{1}{(2k+1)\pi}$处它等于$1$，两串点都趋于$0$，所以$x\to0$时$g'(x)$没有极限。$g'(0)=0$存在，$g'$却在$0$处不连续：导函数可以存在而不连续。
+
+      但导函数不会有跳跃。可以证明：导函数和连续函数一样，能取到任意两个函数值之间的每一个值（达布定理，Darboux's theorem），证明见[中值定理的证明](lesson:math.analysis.mean-value-proofs)第 5 题。$\operatorname{sgn}x$在$0$的两边只取$\pm1$，跳过了中间的值，所以它不是任何函数在含$0$的区间上的导函数。
+
+      导函数的间断只能像$g'$这样，在一点附近来回剧烈摆动。
+  reference: |
+    $g'(x)=2x\sin\frac1x-\cos\frac1x$在$\frac{1}{2k\pi}$处为$-1$、在$\frac{1}{(2k+1)\pi}$处为$1$，在$0$处无极限，故$g'$存在而不连续。导函数有介值性（达布定理），不会有跳跃间断。

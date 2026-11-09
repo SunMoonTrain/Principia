@@ -1,0 +1,161 @@
+- id: p1
+  tier: easy
+  statement: |
+    把$[1,3]$四等分，$f(x)=x^3$。求$U(f,P)-L(f,P)$。
+  answer:
+    type: number
+    value: 13
+  hints:
+    - |
+      $x^3$在$[1,3]$上递增，可以直接用定理 1 证明里的那个算式。
+    - |
+      $U-L=\bigl(f(3)-f(1)\bigr)\cdot\frac{3-1}{4}$。
+    - |
+      $f$递增，各段的振幅（oscillation）相消以后，$U-L=\bigl(f(3)-f(1)\bigr)\cdot\frac{3-1}{4}=26\times0.5=13$。
+
+      也可以直接算：上和$=0.5\times(3.375+8+15.625+27)=27$，下和$=0.5\times(1+3.375+8+15.625)=14$，差是$13$。
+  solution: |
+    $x^3$递增，$U-L=\bigl(27-1\bigr)\times\frac{2}{4}=13$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些函数在$[0,1]$上:term[可积]{id="math.analysis.riemann-integral"}（Riemann integrable）？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        狄利克雷函数（Dirichlet function）：有理数处取$1$，无理数处取$0$
+      - |
+        $f(x)=\lfloor3x\rfloor$（不超过$3x$的最大整数）
+      - |
+        $f(x)=\frac1x$（$0<x\le1$），$f(0)=0$
+      - |
+        $f(x)=\sin\frac1x$（$0<x\le1$），$f(0)=0$
+    value: [2, 4]
+  hints:
+    - |
+      先看有没有界；有界的，再看它是单调函数、连续函数，还是像例 1 那样只有一个坏点。
+    - |
+      A 在每一段上的振幅都是$1$。B 是一级一级往上走的台阶。C 在$0$附近无界。D 就是例 1。
+    - |
+      A：每个分割下$U-L=1$，不可积。B：$\lfloor3x\rfloor$递增，由定理 1 可积，虽然它在$\frac13,\frac23,1$处跳跃。
+
+      C：$\frac1x$在$0$附近无界，上和没有定义，不可积。D：有界，只在$0$处不连续，由例 1 可积。
+
+      答案是 B 和 D。
+  solution: |
+    B 单调，D 有界且只有一个间断点，都可积；A 的振幅处处是$1$；C 无界。
+
+- id: p3
+  tier: medium
+  statement: |
+    把$[0,1]$四等分，$f(x)=4x(1-x)$。求$U(f,P)$和$L(f,P)$，按（上和, 下和）的顺序填写。
+  answer:
+    type: tuple
+    value: [7/8, 3/8]
+  hints:
+    - |
+      $f$在$\bigl[0,\frac12\bigr]$上递增，在$\bigl[\frac12,1\bigr]$上递减，最大值$1$在$x=\frac12$处。逐段找出:term[上确界]{id="math.analysis.supremum"}（supremum，sup）和:term[下确界]{id="math.analysis.infimum"}（infimum，inf）。
+    - |
+      $f\bigl(\frac14\bigr)=f\bigl(\frac34\bigr)=\frac34$，$f\bigl(\frac12\bigr)=1$，$f(0)=f(1)=0$。中间两段都以$\frac12$为一个端点。
+    - |
+      四段上的上确界依次是$\frac34,\ 1,\ 1,\ \frac34$，下确界依次是$0,\ \frac34,\ \frac34,\ 0$。每段长$\frac14$，所以
+
+      $$
+      U=\frac14\Bigl(\frac34+1+1+\frac34\Bigr)=\frac78,\qquad L=\frac14\Bigl(0+\frac34+\frac34+0\Bigr)=\frac38 .
+      $$
+
+      答案是$\bigl(\frac78,\ \frac38\bigr)$。
+  solution: |
+    上确界依次是$\frac34,1,1,\frac34$，下确界依次是$0,\frac34,\frac34,0$，$U=\frac78$，$L=\frac38$，填 `7/8, 3/8`。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$f$在$[0,1]$上满足$|f(x)-f(y)|\le3|x-y|$（对所有$x$、$y$）。把$[0,1]$十等分，$U(f,P)-L(f,P)$最大可能是多少？
+  answer:
+    type: number
+    value: 3/10
+  hints:
+    - |
+      先估计每一段上的振幅最多多大，再加起来；然后找一个让估计取到等号的函数。
+    - |
+      同一段里$|f(x)-f(y)|\le3\times\frac{1}{10}$，所以每段的振幅不超过$0.3$，$U-L\le\sum0.3\times0.1$。等号试试$f(x)=3x$。
+    - |
+      同一段里任意两点相距不超过$\frac{1}{10}$，函数值相差不超过$0.3$，所以$M_i-m_i\le0.3$，$U-L=\sum(M_i-m_i)\cdot0.1\le10\times0.3\times0.1=0.3$。
+
+      $f(x)=3x$满足条件，它递增，$U-L=\bigl(f(1)-f(0)\bigr)\times\frac{1}{10}=0.3$，取到了这个上界（upper bound）。所以最大可能是$0.3$。
+  solution: |
+    每段振幅不超过$3\times0.1$，$U-L\le0.3$；$f(x)=3x$时恰好等于$0.3$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$在$[a,b]$上:term[有界]{id="math.analysis.bounded-function"}（bounded function），并且只在有限个点处不:term[连续]{id="math.analysis.continuous-function"}（continuous）。证明$f$在$[a,b]$上:term[可积]{id="math.analysis.riemann-integral"}。
+  hints:
+    - |
+      照例 1 的办法：把每个间断点放进一小段，这些小段的总长取得很小；剩下的是有限个闭区间，$f$在上面连续。
+    - |
+      设$|f|\le K$，间断点是$c_1<\cdots<c_m$。用总长小于$\frac{\varepsilon}{4K}$的小区间盖住它们，剩下的闭区间$J_1,\dots,J_r$上$f$连续，由定理 2 各有一个分割，使上和与下和之差小于$\frac{\varepsilon}{2r}$。
+    - |
+      设$|f|\le K$，间断点是$c_1<\cdots<c_m$。任给$\varepsilon>0$，取互不重叠的小区间盖住这些点（端点处的间断点只用一侧的区间），总长小于$\frac{\varepsilon}{4K}$。$[a,b]$去掉它们，剩下至多$m+1$个闭区间$J_1,\dots,J_r$；$J_l$里的点都是$f$的连续点，所以$f$在每个$J_l$上连续，由定理 2 可积。由:term[可积准则]{id="math.analysis.integrability-criterion"}，有$J_l$的分割$Q_l$，使上和与下和之差小于$\frac{\varepsilon}{2r}$。
+
+      把所有$Q_l$的分点合起来，就得到$[a,b]$的一个分割$P$，它的段要么属于某个$Q_l$，要么是盖住间断点的小区间。前一类的贡献合计小于$r\cdot\frac{\varepsilon}{2r}=\frac\varepsilon2$；后一类上振幅不超过$2K$，贡献合计小于$2K\cdot\frac{\varepsilon}{4K}=\frac\varepsilon2$。所以$U(f,P)-L(f,P)<\varepsilon$，$f$可积。
+  reference: |
+    设$|f|\le K$，用总长$<\frac{\varepsilon}{4K}$的小区间盖住间断点，其余有限个闭区间上$f$连续可积，各取分割使差$<\frac{\varepsilon}{2r}$，合并后$U-L<\frac\varepsilon2+2K\cdot\frac{\varepsilon}{4K}=\varepsilon$。
+
+- id: p6
+  tier: hard
+  statement: |
+    托梅函数（Thomae's function）：在$[0,1]$上，$x=\frac pq$（既约分数，$q\ge1$）时$f(x)=\frac1q$，$x$是无理数时$f(x)=0$，并约定$f(0)=1$。它在每个有理点都不:term[连续]{id="math.analysis.continuous-function"}。证明$f$在$[0,1]$上:term[可积]{id="math.analysis.riemann-integral"}，积分是$0$。
+  hints:
+    - |
+      下和总是$0$。对上和，想一想：使$f(x)\ge\frac\varepsilon2$的点有多少个？
+    - |
+      $f(x)=\frac1q\ge\frac\varepsilon2$就是$q\le\frac2\varepsilon$，这样的既约分数$\frac pq\in[0,1]$只有有限个。把它们放进总长小于$\frac\varepsilon2$的几段里，其余各段上$f<\frac\varepsilon2$。
+    - |
+      每一段里都有无理数，$f\ge0$，所以每段的下确界是$0$，$L(f,P)=0$。
+
+      任给$\varepsilon>0$，使$f(x)\ge\frac\varepsilon2$的点满足$q\le\frac2\varepsilon$，对每个这样的$q$，分子$p$只有$q+1$种取法，所以这样的点只有有限个，设为$N$个。取一个分割，让这$N$个点所在的段（每个点至多在两段里）的总长小于$\frac\varepsilon2$：这些段上$M_i\le1$，贡献小于$\frac\varepsilon2$；其余段里的点都满足$f<\frac\varepsilon2$，所以$M_i\le\frac\varepsilon2$，贡献不超过$\frac\varepsilon2\times1$。
+
+      于是$U(f,P)<\varepsilon$，$U-L<\varepsilon$，由:term[可积准则]{id="math.analysis.integrability-criterion"}，$f$可积；积分夹在$0$和$\varepsilon$之间，$\varepsilon$任意，所以积分是$0$。
+  reference: |
+    $L(f,P)=0$。$f\ge\frac\varepsilon2$的点（$q\le\frac2\varepsilon$）只有有限个，放进总长$<\frac\varepsilon2$的段里，其余段$M_i\le\frac\varepsilon2$，故$U<\varepsilon$。积分为$0$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    狄利克雷函数处处间断，不:term[可积]{id="math.analysis.riemann-integral"}；例 2 的单调函数有无穷多个间断点，可积；第 6 题的托梅函数在每个有理点都间断，也可积。可积函数的间断点到底能有多少？
+  hints:
+    - |
+      例 1、例 2 和第 5、6 题的证明是同一个套路：把振幅大的「坏点」放进总长任意小的几段里。坏点要是能被这样盖住，函数就可积。
+    - |
+      能排成一列的点集，都能被总长任意小的一串区间盖住：第$k$个点用长$\frac{\varepsilon}{2^k}$的区间。有理数能排成一列，$[0,1]$却不能。
+    - |
+      能排成一列$x_1,x_2,\dots$的集合叫可数集（countable set），见[等势与可数集](lesson:math.logic-sets.countable-sets)。用长$\frac{\varepsilon}{2},\frac{\varepsilon}{4},\frac{\varepsilon}{8},\dots$的区间依次盖住$x_1,x_2,x_3,\dots$，总长不超过$\varepsilon$。对任意$\varepsilon$都能用总长小于$\varepsilon$的一串区间盖住的集合，叫零测集（set of measure zero）。可数集都是零测集；$[0,1]$不是，它的「总长」是$1$。
+
+      答案是勒贝格判别法（Lebesgue's criterion）：$[a,b]$上的有界函数可积，当且仅当它的间断点组成零测集。狄利克雷函数的间断点是整个区间，不是零测集；托梅函数的间断点是全体有理点，单调函数的间断点只有可数个，都是零测集。也有不可数的零测集，比如康托尔集（Cantor set），在它上面间断的有界函数也可能可积。
+
+      这一版的课程没有收测度论（measure theory）。上面说的「总长」就是测度的雏形：黎曼积分能不能做，取决于坏点的测度是不是零。
+  reference: |
+    勒贝格判别法：有界函数黎曼可积当且仅当间断点集是零测集。可数集是零测集（用长$\varepsilon/2^k$的区间覆盖），故托梅函数、单调函数可积；狄利克雷函数间断点为全区间，不可积。
+
+- id: p8
+  tier: thinking
+  statement: |
+    定理 2 的证明用的是:term[一致连续]{id="math.analysis.uniform-continuity"}（uniform continuity）。只用「每一点都连续」去写，会卡在哪一步？反过来，在$(0,1]$上连续的有界函数，在$0$处随便补一个值，在$[0,1]$上一定可积吗？
+  hints:
+    - |
+      只知道每一点连续时，每个点$x$有自己的$\delta(x)$。为了让每一段上的振幅都小，段要短到什么程度？
+    - |
+      $\delta(x)$在某些地方可以要多小有多小，比如$\sin\frac1x$在$0$附近；这时找不到一个统一的段长。可是可积只要求振幅大的地方总长能任意小，例 1 的办法对$(0,1]$上任何连续的有界函数都适用。
+    - |
+      只用逐点连续，每个$x$附近有一个$\delta(x)$，在$(x-\delta(x),x+\delta(x))$里振幅小。想用等分分割，段长就得小于所有的$\delta(x)$；可在不一致连续的地方，比如$\sin\frac1x$在$0$附近，$\delta(x)$没有正的下界（lower bound），等分怎么分都不够细。一致连续恰好保证了这个下界存在，闭区间上的连续函数都有这个性质（:term[康托尔定理]{id="math.analysis.heine-cantor-theorem"}，Heine-Cantor theorem）。
+
+      第二问的答案是肯定的。设$|f|\le K$，任给$\varepsilon$，先取$\delta<\frac{\varepsilon}{4K}$，$[0,\delta]$这一段的贡献不超过$2K\delta<\frac\varepsilon2$；$f$在$[\delta,1]$上连续，由定理 2 可积，取一个分割让那里的差小于$\frac\varepsilon2$。合起来$U-L<\varepsilon$。
+
+      所以一致连续是证明的工具，不是可积的必要条件：$(0,1]$上的$\sin\frac1x$不一致连续，补上一个值以后照样可积。要紧的是有界：$\frac1x$在$(0,1]$上连续，却无界，补什么值都不可积。
+  reference: |
+    逐点连续时$\delta(x)$可无正下界，找不到统一细度；一致连续给出统一的$\delta$。$(0,1]$上连续有界的$f$补值后可积：$[0,\delta]$贡献$\le2K\delta$，$[\delta,1]$上连续可积。无界则不行。

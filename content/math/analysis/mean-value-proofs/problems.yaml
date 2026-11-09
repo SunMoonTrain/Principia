@@ -1,0 +1,165 @@
+- id: p1
+  tier: easy
+  statement: |
+    $f(x)=x^3$在$[0,3]$上满足:term[拉格朗日中值定理]{id="math.analysis.mean-value-theorem"}（mean value theorem）的条件。求定理里的$\xi$。
+  answer:
+    type: number
+    value: sqrt(3)
+  hints:
+    - |
+      先算连接两个端点的弦的斜率，再解$f'(\xi)$等于这个斜率。
+    - |
+      弦的斜率是$\frac{27-0}{3-0}=9$，$f'(\xi)=3\xi^2$。
+    - |
+      $f(3)-f(0)=27$，弦的斜率是$9$。由$3\xi^2=9$得$\xi=\pm\sqrt3$，只有$\sqrt3$在$(0,3)$里。答案是$\sqrt3$。
+  solution: |
+    弦的斜率是$9$，$3\xi^2=9$，在$(0,3)$里的解是$\xi=\sqrt3$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些函数在所给的区间上满足:term[罗尔定理]{id="math.analysis.rolle-theorem"}（Rolle's theorem）的全部条件？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $f(x)=|x|$，区间$[-1,1]$
+      - |
+        $f(x)=x^3-x$，区间$[-1,1]$
+      - |
+        $f(x)=x$（$0\le x<1$），$f(1)=0$，区间$[0,1]$
+      - |
+        $f(x)=\sqrt{1-x^2}$，区间$[-1,1]$
+    value: [2, 4]
+  hints:
+    - |
+      逐条检查三个条件：在闭区间上:term[连续]{id="math.analysis.continuous-function"}（continuous）；在开区间内:term[可导]{id="math.analysis.differentiable-function"}（differentiable）；两端的函数值相等。可导只要求在开区间内。
+    - |
+      A 看$0$处，C 看$1$处。D 的导数$-\frac{x}{\sqrt{1-x^2}}$在$\pm1$处没有定义，可那是端点。
+    - |
+      A：连续，两端都是$1$，可在$(-1,1)$里的$0$处不可导，不满足。B：多项式处处可导，$f(\pm1)=0$，满足，$\xi=\pm\frac{1}{\sqrt3}$。
+
+      C：$f(0)=f(1)=0$，在$(0,1)$内可导，可在端点$1$处不连续，不满足；它的导数处处是$1$，结论也不成立。D：在$[-1,1]$上连续，在$(-1,1)$内可导（由链式法则，chain rule），$f(\pm1)=0$，满足，$\xi=0$。
+
+      答案是 B 和 D。
+  solution: |
+    B、D 在闭区间上连续、开区间内可导、两端相等。A 在$0$处不可导；C 在端点$1$处不连续。
+
+- id: p3
+  tier: medium
+  statement: |
+    对$f(x)=x^3$、$g(x)=x^2$在$[1,2]$上用:term[柯西中值定理]{id="math.analysis.cauchy-mean-value-theorem"}（Cauchy's mean value theorem），求定理里的$\xi$。
+  answer:
+    type: number
+    value: 14/9
+  hints:
+    - |
+      分别算出$\frac{f(2)-f(1)}{g(2)-g(1)}$和$\frac{f'(\xi)}{g'(\xi)}$，让它们相等。
+    - |
+      左边是$\frac{8-1}{4-1}=\frac73$；右边是$\frac{3\xi^2}{2\xi}=\frac{3\xi}{2}$。
+    - |
+      $g'(x)=2x$在$(1,2)$里不为零，条件满足。$\frac{f(2)-f(1)}{g(2)-g(1)}=\frac73$，$\frac{f'(\xi)}{g'(\xi)}=\frac{3\xi}{2}$。由$\frac{3\xi}{2}=\frac73$得$\xi=\frac{14}{9}\approx1.556$，在$(1,2)$里。
+
+      对比一下：对$f$、$g$分别用拉格朗日中值定理，得到的是$\sqrt{\frac73}\approx1.528$和$\frac32$，都不是$\frac{14}{9}$。
+  solution: |
+    $\frac{f(2)-f(1)}{g(2)-g(1)}=\frac73=\frac{3\xi}{2}$，所以$\xi=\frac{14}{9}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$f$在$[0,4]$上:term[可导]{id="math.analysis.differentiable-function"}，$f(0)=0$，$f(4)=8$，并且$f'(x)\le3$对$[0,4]$里的$x$都成立。$f(1)$最小能是多少？
+  answer:
+    type: number
+    value: -1
+  hints:
+    - |
+      对$[1,4]$用:term[拉格朗日中值定理]{id="math.analysis.mean-value-theorem"}，把$f(4)-f(1)$和导数联系起来。得到下界（lower bound）以后，再想一想它能不能取到。
+    - |
+      $f(4)-f(1)=3f'(\xi)\le9$，所以$f(1)\ge-1$。要取到$-1$，$f$在$[1,4]$上只能是斜率为$3$的直线$3x-4$；$[0,1]$上可以试试$2x^3-3x$。
+    - |
+      由拉格朗日中值定理，有$\xi\in(1,4)$使$f(4)-f(1)=3f'(\xi)\le9$，即$f(1)\ge8-9=-1$。
+
+      这个下界取得到。令$f(x)=2x^3-3x$（$0\le x\le1$），$f(x)=3x-4$（$1<x\le4$）。两段在$x=1$处的值都是$-1$；左导数是$6-3=3$，右导数是$3$，所以$f$在$1$处可导。$[0,1]$上$f'(x)=6x^2-3\le3$，$(1,4]$上$f'=3$，并且$f(0)=0$，$f(4)=8$。
+
+      所以$f(1)$最小是$-1$。
+  solution: |
+    中值定理给出$f(4)-f(1)\le3\times3$，即$f(1)\ge-1$；$f(x)=2x^3-3x$（$x\le1$）、$3x-4$（$x>1$）满足全部条件，$f(1)=-1$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$在$[a,b]$上:term[可导]{id="math.analysis.differentiable-function"}（端点处是单侧导数，one-sided derivative），并且$f'(a)<c<f'(b)$。证明有$\xi\in(a,b)$使$f'(\xi)=c$。
+
+    这里没有假定$f'$连续，所以不能直接对$f'$用介值定理（intermediate value theorem，见[介值定理](lesson:math.analysis.intermediate-value)）。
+  hints:
+    - |
+      令$g(x)=f(x)-cx$，则$g'(a)<0<g'(b)$。要找的是$g'$的零点，想想:term[费马定理]{id="math.analysis.fermat-theorem"}（Fermat's theorem）：$g$在哪里取到最小值？
+    - |
+      $g$可导，所以连续，由:term[最值定理]{id="math.analysis.extreme-value-theorem"}（extreme value theorem），它在某个$\xi$处取到最小值。用$g'(a)<0$说明$a$附近右边有比$g(a)$更小的值，$a$不是最小值点；$b$同理。
+    - |
+      令$g(x)=f(x)-cx$，它在$[a,b]$上可导，$g'(a)=f'(a)-c<0$，$g'(b)=f'(b)-c>0$。$g$可导，所以连续，由最值定理，有$\xi\in[a,b]$使$g(\xi)$是最小值。
+
+      $\xi\ne a$：$\lim_{h\to0^+}\frac{g(a+h)-g(a)}{h}=g'(a)<0$，取$\varepsilon=-\frac{g'(a)}{2}$，按极限的定义，$h>0$足够小时差商小于$\frac{g'(a)}{2}<0$，于是$g(a+h)<g(a)$，$g(a)$不是最小值。同理，由$g'(b)>0$，$h>0$足够小时$\frac{g(b-h)-g(b)}{-h}>0$，即$g(b-h)<g(b)$，$\xi\ne b$。
+
+      所以$\xi\in(a,b)$，$g$在$\xi$处取到极小值，由费马定理，$g'(\xi)=0$，即$f'(\xi)=c$。这说明导函数即使不连续，也能取到任意两个导数值之间的每一个值，这叫作达布定理（Darboux's theorem）。
+  reference: |
+    令$g=f-cx$，$g'(a)<0<g'(b)$；由最值定理$g$在$\xi$取最小值，由单侧导数的符号知$\xi\ne a,b$，再由费马定理$g'(\xi)=0$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$在$[0,1]$上:term[连续]{id="math.analysis.continuous-function"}，在$(0,1)$内:term[可导]{id="math.analysis.differentiable-function"}，$f(1)=0$。证明有$\xi\in(0,1)$使$\xi f'(\xi)+2f(\xi)=0$。
+  hints:
+    - |
+      找一个辅助函数$g$，使$g'(x)$恰好是$\xi f'(\xi)+2f(\xi)$乘上一个不为零的因子，再对$g$用:term[罗尔定理]{id="math.analysis.rolle-theorem"}（Rolle's theorem）。
+    - |
+      $\bigl(x^2f(x)\bigr)'=2xf(x)+x^2f'(x)=x\bigl(xf'(x)+2f(x)\bigr)$。看看$g(x)=x^2f(x)$在两个端点的值。
+    - |
+      令$g(x)=x^2f(x)$。它在$[0,1]$上连续，在$(0,1)$内可导，$g(0)=0$，$g(1)=f(1)=0$。由罗尔定理，有$\xi\in(0,1)$使
+
+      $$
+      g'(\xi)=2\xi f(\xi)+\xi^2f'(\xi)=\xi\bigl(\xi f'(\xi)+2f(\xi)\bigr)=0 .
+      $$
+
+      $\xi>0$，所以$\xi f'(\xi)+2f(\xi)=0$。
+
+      为什么想到$x^2f(x)$：要证的式子像乘积求导的结果。$\xi f'+2f$乘上$\xi$，正好是$x^2f$的导数；同样的办法，$\xi f'+nf=0$用$x^nf(x)$。
+  reference: |
+    令$g(x)=x^2f(x)$，$g(0)=g(1)=0$，由罗尔定理$g'(\xi)=\xi(\xi f'(\xi)+2f(\xi))=0$，$\xi\ne0$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    能不能对$f$、$g$分别用:term[拉格朗日中值定理]{id="math.analysis.mean-value-theorem"}（mean value theorem），再把两个式子相除，得到柯西中值定理？拿$f(x)=x^3$、$g(x)=x^2$在$[0,1]$上试一试。
+  hints:
+    - |
+      分别对$f$、$g$用拉格朗日中值定理，各得到一个$\xi$。它们是同一个点吗？
+    - |
+      对$f$：$1=3\xi_1^2$，$\xi_1=\frac{1}{\sqrt3}$；对$g$：$1=2\xi_2$，$\xi_2=\frac12$。柯西中值定理要的是$\frac{3\xi}{2}=1$，$\xi=\frac23$。
+    - |
+      分别用拉格朗日中值定理，得到$f(1)-f(0)=f'(\xi_1)$、$g(1)-g(0)=g'(\xi_2)$，相除得$\frac{f(1)-f(0)}{g(1)-g(0)}=\frac{f'(\xi_1)}{g'(\xi_2)}$，分子、分母在两个不同的点上取值。这里$\xi_1=\frac{1}{\sqrt3}\approx0.577$，$\xi_2=\frac12$，而柯西中值定理给出的是同一个点$\xi=\frac23$。
+
+      几何上，柯西中值定理说的是曲线$\bigl(g(t),f(t)\bigr)=(t^2,t^3)$上，有一点的切线和连接两个端点的弦平行；切线斜率是$\frac{f'(t)}{g'(t)}=\frac{3t}{2}$，弦的斜率是$1$，于是$t=\frac23$。这件事不是两个分量各自的性质，所以不能从两个分量各用一次中值定理拼出来。
+
+      「同一个点」很要紧：证明洛必达法则（L'Hôpital's rule）时要让这一点趋于端点，$\frac{f'(\xi)}{g'(\xi)}$才会变成导数之比的极限。
+  reference: |
+    分别用拉格朗日得$\frac{f'(\xi_1)}{g'(\xi_2)}$，$\xi_1=\frac{1}{\sqrt3}$、$\xi_2=\frac12$，与柯西的$\xi=\frac23$都不同。柯西中值定理是曲线$(g,f)$的切线平行于弦，需要同一点。
+
+- id: p8
+  tier: thinking
+  statement: |
+    :term[罗尔定理]{id="math.analysis.rolle-theorem"}对平面上运动的点还成立吗？设点的位置是$P(t)=(t^2-t,\ t^3-t)$，$t\in[0,1]$。$P(0)=P(1)$，有没有$\xi\in(0,1)$使速度$P'(\xi)=\bigl(2\xi-1,\ 3\xi^2-1\bigr)$是零向量？如果没有，中值定理还能保留下什么？
+  hints:
+    - |
+      两个分量各自满足罗尔定理的条件，各有一个导数为零的点。这两个点是同一个吗？
+    - |
+      $2t-1=0$只在$t=\frac12$，$3t^2-1=0$只在$t=\frac{1}{\sqrt3}$。保留下来的可以是一个不等式：位移的长度不超过时间乘以速度大小的最大值。
+    - |
+      速度为零要求$2t-1=0$和$3t^2-1=0$同时成立，前者给出$t=\frac12$，可$3\cdot\frac14-1\ne0$，所以没有这样的$\xi$：罗尔定理对向量值函数（vector-valued function）不成立。两个分量各有自己的$\xi$，凑不到同一个时刻。
+
+      保留下来的是一个不等式：$|P(b)-P(a)|\le(b-a)\sup_{a<t<b}|P'(t)|$。证法是把问题变回一维：设$P(b)\ne P(a)$，$u$是$P(b)-P(a)$方向的单位向量，令$\varphi(t)=u\cdot P(t)$。$\varphi$是实值函数，由拉格朗日中值定理，$|P(b)-P(a)|=\varphi(b)-\varphi(a)=(b-a)\,u\cdot P'(\xi)\le(b-a)|P'(\xi)|$。
+
+      物理上这很好懂：绕一圈回到原处的点，不必在某一刻停下来，但它走过的直线距离不会超过最大速率乘以时间。
+  reference: |
+    $2t-1$与$3t^2-1$无公共零点，故无$\xi$使$P'(\xi)=0$。保留中值不等式$|P(b)-P(a)|\le(b-a)\sup_{a<t<b}|P'(t)|$：取$u$为位移方向，对$u\cdot P(t)$用拉格朗日中值定理。

@@ -85,6 +85,32 @@ export function firstReach(g: (t: number) => number, level: number, lo: number, 
   return (a + b) / 2;
 }
 
+/**
+ * 达布上和、下和 [U, L]（批次 3 起用）：分点 points 从小到大；每一段上的上确界、下确界在 samples + 1 个等分点（含两端）
+ * 和落在这一段里的 special 点上取。values(x) 返回 x 处可能的函数值：分有理点、无理点定义的函数，两种值都放进去
+ * （有理点、无理点在每一段里都有）；只在个别点和别处不同的函数，把那些点放进 special。
+ */
+export function darboux(values: (x: number) => number[], points: number[], special: number[] = [], samples = 2000): [number, number] {
+  let U = 0;
+  let L = 0;
+  for (let i = 1; i < points.length; i++) {
+    const a = points[i - 1];
+    const b = points[i];
+    let M = -Infinity;
+    let m = Infinity;
+    const xs = [...grid(a, b, samples), ...special.filter((s) => s >= a && s <= b)];
+    for (const x of xs) {
+      for (const v of values(x)) {
+        if (v > M) M = v;
+        if (v < m) m = v;
+      }
+    }
+    U += M * (b - a);
+    L += m * (b - a);
+  }
+  return [U, L];
+}
+
 /** 可重复的伪随机数（mulberry32），给「随机符号」一类的检验数列用。 */
 export function seededRandom(seed: number): () => number {
   let s = seed >>> 0;
