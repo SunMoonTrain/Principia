@@ -17,6 +17,11 @@ describe('第一批组件的参数检查', () => {
     expect(problems('function-plot', { range, functions: [{ expr: 'n^2' }] })).toEqual(['functions.0.expr：不认识的名字「n」']);
     expect(problems('function-plot', { range, sequences: [{ expr: '1/n', n: [10, 1] }] })).toEqual(['sequences.0.n：n 要从小写到大，最多画 5000 项']);
     expect(problems('function-plot', { range, sequences: [{ expr: '1/n', n: [2, 10], step: 2 }] })).toEqual([]);
+    expect(problems('function-plot', { range, sequences: [{ expr: 'sum(k, 1, n, 1/k^2)', n: [1, 40] }] })).toEqual([]);
+    expect(problems('function-plot', { range, functions: [{ expr: 'sum(k, 1, 3, x^k/k)' }], sequences: [{ expr: 'sum(k, 1, n, k)', n: [1, 9] }] }, ['k'])).toEqual([
+      'functions.0.expr：sum 的变量「k」和已有的名字重名，换一个名字',
+      'sequences.0.expr：sum 的变量「k」和已有的名字重名，换一个名字',
+    ]);
     expect(problems('function-plot', { range, sequences: [{ expr: '1/n', n: [2, 10], step: 0 }] })[0]).toMatch(/^sequences\.0\.step/);
     expect(problems('function-plot', { range, sequences: [{ expr: '1/n', n: [2, 10], step: 1.5 }] })[0]).toMatch(/^sequences\.0\.step/);
     expect(problems('function-plot', { range: { x: [1, 0], y: [0, 1] }, functions: [{ expr: 'x' }] })).toEqual(['range.x：范围要从小写到大，如 [-3, 3]']);

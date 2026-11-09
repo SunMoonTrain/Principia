@@ -35,6 +35,19 @@ export const DEMOS: Demo[] = [
     },
   },
   {
+    component: 'function-plot',
+    title: 'FunctionPlot · 级数的部分和',
+    note: '拖动 N，看方波的傅里叶级数前 N 项的和怎样逼近方波；跳跃点两边冲过头的高度不随 N 变小，只是越来越窄（吉布斯现象）。式子里用 sum(k, 1, N, …) 求和。',
+    params: {
+      range: { x: [-3.5, 3.5], y: [-1.5, 1.5] },
+      functions: [
+        { expr: 'sign(sin(x))', label: '方波' },
+        { expr: '4/pi * sum(k, 1, N, sin((2k - 1)*x) / (2k - 1))', label: '前$N$项的和' },
+      ],
+      sliders: [{ name: 'N', min: 1, max: 40, step: 1, default: 5, label: '项数$N$' }],
+    },
+  },
+  {
     component: 'phase-portrait',
     title: 'PhasePortrait · 有阻尼的单摆',
     note: 'x 是摆角，y 是角速度。b = 0 时轨迹是闭合曲线（周期运动）；b > 0 时盘旋着落向平衡点。在图上点一下，从那里放一条新轨迹。',
