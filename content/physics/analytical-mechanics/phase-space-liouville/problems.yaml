@@ -1,0 +1,155 @@
+- id: p1
+  tier: easy
+  statement: |
+    谐振子的:term[哈密顿量]{id="physics.analytical-mechanics.hamiltonian"}是$H=\frac{p^2}{2}+2q^2$（$q$、$p$都按无量纲的数处理）。经过相点$(q,p)=(1,0)$的:term[相轨道]{id="physics.analytical-mechanics.phase-trajectory"}在$(q,p)$平面上围成的面积是多少？
+  answer:
+    type: number
+    value: 2*pi
+  hints:
+    - |
+      $H$不显含时间，相轨道是等值线$H=E$。先由那个相点算出$E$。
+    - |
+      $E=H(1,0)=2$，相轨道是$\frac{p^2}{2}+2q^2=2$，即$q^2+\frac{p^2}{4}=1$。
+    - |
+      这是一个椭圆，$q$方向的半轴是$1$，$p$方向的半轴是$2$，面积是$\pi\times1\times2=2\pi\approx6.283$。答案填 `2*pi`。
+  solution: |
+    $E=2$，相轨道$q^2+\frac{p^2}{4}=1$是半轴为$1$和$2$的椭圆，面积$2\pi$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些方程组的相流保持$(q,p)$平面上的面积不变？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\dot q=p$，$\dot p=-q$
+      - |
+        $\dot q=p$，$\dot p=-q-0.2p$
+      - |
+        $\dot q=q$，$\dot p=-p$
+      - |
+        $\dot q=p$，$\dot p=-\sin q+0.5\cos t$
+    value: [1, 3, 4]
+  hints:
+    - |
+      算速度场的散度$\frac{\partial\dot q}{\partial q}+\frac{\partial\dot p}{\partial p}$，为零就保持面积。
+    - |
+      A：$0+0$。B：$0-0.2$。C：$1-1$。D：$0+0$。
+    - |
+      A、C、D 的散度为零，面积不变；B 的散度是$-0.2$，面积按$e^{-0.2t}$缩小。C 来自$H=qp$，D 来自显含时间的$H=\frac{p^2}{2}-\cos q-0.5\,q\cos t$，显含时间并不影响面积守恒。
+
+      答案是 A、C、D。
+  solution: |
+    A、C、D。它们都来自哈密顿量（D 的$H$显含时间），散度为零；B 有阻尼，散度是$-0.2$。
+
+- id: p3
+  tier: medium
+  statement: |
+    质量$m=2\,\mathrm{kg}$的振子受弹力$-kq$（$k=8\,\mathrm{N/m}$）和阻力$-\gamma\dot q$（$\gamma=1\,\mathrm{kg/s}$），在直线上运动。在$(q,p)$平面上，一小块初始状态的面积是$A_0=0.01\,\mathrm{kg\cdot m^2/s}$。经过$t=4\,\mathrm{s}$，这些状态占据的区域面积是多少？
+  answer:
+    type: number
+    value: 0.01*exp(-2)
+    unit: |
+      $\mathrm{kg\cdot m^2/s}$
+  hints:
+    - |
+      面积的变化率等于速度场的散度乘面积。先把方程写成$\dot q=\dots$、$\dot p=\dots$的形式。
+    - |
+      $\dot q=\frac{p}{m}$，$\dot p=-kq-\frac{\gamma}{m}p$。弹力那一项不含$p$，对散度没有贡献。
+    - |
+      散度是$\frac{\partial}{\partial q}\frac{p}{m}+\frac{\partial}{\partial p}\bigl(-kq-\frac{\gamma}{m}p\bigr)=-\frac{\gamma}{m}=-0.5\,\mathrm{s^{-1}}$，处处一样。所以$\dv{A}{t}=-0.5A$，$A=A_0e^{-0.5t}=0.01\,e^{-2}\approx1.353\times10^{-3}\,\mathrm{kg\cdot m^2/s}$。
+
+      答案填 `0.01*exp(-2)`。弹簧的劲度系数不影响结果。
+  solution: |
+    散度$-\frac{\gamma}{m}=-0.5\,\mathrm{s^{-1}}$与位置无关，$A=A_0e^{-\gamma t/m}=0.01\,e^{-2}\approx1.353\times10^{-3}\,\mathrm{kg\cdot m^2/s}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    :term[哈密顿量]{id="physics.analytical-mechanics.hamiltonian"}$H=qp$（$q$、$p$、$t$都按无量纲的数处理）。初始状态均匀地分布在$1\le q\le2$、$1\le p\le2$的正方形里。经过时间$t=\ln2$，这些状态占据的区域的周长是多少？
+  answer:
+    type: number
+    value: 5
+  hints:
+    - |
+      写出:term[正则方程]{id="physics.analytical-mechanics.hamiltons-equations"}并解出$q(t)$、$p(t)$，看正方形的四条边变到哪里。
+    - |
+      $\dot q=\frac{\partial H}{\partial p}=q$，$\dot p=-\frac{\partial H}{\partial q}=-p$，所以$q=q_0e^t$，$p=p_0e^{-t}$。
+    - |
+      $t=\ln2$时$q=2q_0$，$p=\frac12p_0$。正方形变成矩形$2\le q\le4$、$\frac12\le p\le1$，边长是$2$和$\frac12$，周长$2\times\bigl(2+\frac12\bigr)=5$。
+
+      面积仍是$2\times\frac12=1$，和原来一样；形状却被拉长压扁了。答案是$5$。
+  solution: |
+    $q=q_0e^t$，$p=p_0e^{-t}$；$t=\ln2$时正方形变成$2\times\frac12$的矩形，周长$5$，面积仍为$1$。
+
+- id: p5
+  tier: hard
+  statement: |
+    平衡点叫作渐近稳定的（asymptotically stable），如果它周围有一块面积不为零的区域$D_0$，经过足够长的时间，$D_t$整个落进以平衡点为中心、任意小的圆里（例如有阻力的单摆的最低点）。用:term[刘维尔定理]{id="physics.analytical-mechanics.liouville-theorem"}证明：一个自由度的哈密顿系统没有渐近稳定的平衡点。谐振子的平衡点是不是一个反例？
+  hints:
+    - |
+      $D_t$的面积随时间怎样变？一个半径为$\varepsilon$的圆面积是多少？
+    - |
+      $D_t$的面积始终等于$D_0$的面积$A>0$，而它能放进面积为$\pi\varepsilon^2$的圆里。取$\varepsilon$足够小。
+    - |
+      设平衡点$x^*$是渐近稳定的，$D_0$是定义里的那块区域，面积$A>0$。由刘维尔定理，对所有$t$，$D_t$的面积都是$A$。取$\varepsilon$使$\pi\varepsilon^2<A$，按定义，足够长时间后$D_t$整个落在以$x^*$为中心、半径$\varepsilon$的圆里，于是$A\le\pi\varepsilon^2<A$，矛盾。所以哈密顿系统没有渐近稳定的平衡点。
+
+      谐振子的平衡点$(0,0)$是稳定的：从附近出发的相点一直在附近（在小椭圆上转），但不趋于它，所以不是渐近稳定的，不构成反例。有阻力的单摆能有渐近稳定的平衡点，正因为它的相流不保持面积。$n$个自由度时证明一字不改，把面积换成体积。
+  reference: |
+    若$x^*$渐近稳定，取定义中的$D_0$（面积$A>0$）。刘维尔定理给出$D_t$面积恒为$A$；取$\pi\varepsilon^2<A$，足够久后$D_t$落入半径$\varepsilon$的圆，得$A\le\pi\varepsilon^2<A$，矛盾。谐振子的平衡点只是稳定（相点在附近的椭圆上转）而非渐近稳定，不是反例。阻尼系统能有渐近稳定点，因为其相流收缩面积。高维同理用体积。
+
+- id: p6
+  tier: hard
+  statement: |
+    $n$个自由度的哈密顿系统，$H$不显含时间，所有相点都限制在相空间里一块体积有限的区域$G$里，$G$在:term[相流]{id="physics.analytical-mechanics.phase-flow"}下不变（$g_t(G)=G$，比如能量不超过某个值、坐标也有界的两个耦合单摆）。证明庞加莱回归定理（Poincaré recurrence theorem）：对$G$里任意一块体积不为零的区域$D$，总有$D$里的点在以后某个时刻回到$D$。
+  hints:
+    - |
+      看$D$、$g_1(D)$、$g_2(D)$、……这一串区域（每隔时间$1$看一次）。它们的体积各是多少？能不能两两不相交？
+    - |
+      它们体积都等于$D$的体积，都在$G$里，所以不可能两两不相交；设$g_i(D)$和$g_j(D)$相交（$i<j$），再倒着走$i$个时间单位。
+    - |
+      记$V$为$D$的体积。由刘维尔定理，$g_k(D)$的体积都是$V$，它们都在$G$里。如果它们两两不相交，前$N$个的总体积$NV$不超过$G$的体积，可$N$可以任意大，矛盾。所以有$i<j$使$g_i(D)\cap g_j(D)$不空：有$x,y\in D$满足$g_i(x)=g_j(y)$。
+
+      $H$不显含时间，相流满足$g_s\circ g_t=g_{s+t}$，而且可以倒着走（$g_{-i}$）。对上式两边作用$g_{-i}$，得$x=g_{j-i}(y)$。也就是说，$D$里的点$y$经过时间$j-i$以后到了$D$里的$x$。
+
+      这里只用到两件事：体积不变（刘维尔定理），以及$G$的体积有限、在相流下不变。对一个自由度的来回摆动，这个结论是显然的（运动本来就是周期的）；它的力量在于多个自由度、运动不周期的情形。
+  reference: |
+    $g_k(D)$（$k=0,1,2,\dots$）体积都等于$V>0$且都在体积有限的$G$里，不能两两不交，故存在$i<j$与$x,y\in D$使$g_i(x)=g_j(y)$。$H$不显含时间时$g_s\circ g_t=g_{s+t}$，作用$g_{-i}$得$x=g_{j-i}(y)$，即$y\in D$经过时间$j-i$回到$D$。关键：刘维尔定理与$G$有限、不变。
+
+- id: p7
+  tier: thinking
+  statement: |
+    例 2 里阻力让相平面上的面积按指数缩小。可阻力本来是物体和周围空气分子之间的力：把所有空气分子也算进来，整个系统是哈密顿系统，由:term[刘维尔定理]{id="physics.analytical-mechanics.liouville-theorem"}，整个:term[相空间]{id="physics.analytical-mechanics.phase-space"}里的体积不变。这两件事怎么能同时成立？物体那个相平面上缩小的面积到哪里去了？
+  hints:
+    - |
+      区分两个空间：只看物体的二维$(q,p)$平面，和包含所有分子的、维数很大的整个相空间。体积守恒说的是哪一个？
+    - |
+      物体损失的能量去了哪里？分子们能占据的状态因此变多还是变少？
+    - |
+      刘维尔定理管的是整个系统的相空间：物体的两个坐标加上全部空气分子的坐标和动量。只看物体的$(q,p)$，相当于把整个相空间里的区域投影到二维平面上，投影的面积可以缩小。
+
+      物体减速时把能量交给了空气分子，分子能量更大，能到达的状态更多，这一团状态在分子那些方向上散开。物体方向上缩小、分子方向上张开，整个相空间里的体积保持不变，只是被「挪」到了你不看的那些方向。阻力是忘掉周围那么多自由度以后得到的有效描述，它自然不满足正则方程。
+
+      这正是热力学第二定律（second law of thermodynamics）里熵（entropy）增加的来源之一：能量从少数宏观自由度流向大量微观自由度，在那里分散得几乎不可能再收回来。
+  reference: |
+    体积守恒针对包含全部分子的整个相空间；物体的$(q,p)$是投影，投影面积可以缩小。物体把能量交给空气，分子可达状态增多、在其方向上散开；收缩与扩张抵消，总体积不变。阻力是忽略环境自由度后的有效描述，不满足正则方程；这与熵增、能量从宏观自由度流向大量微观自由度相联系。
+
+- id: p8
+  tier: thinking
+  statement: |
+    例 1 里，摆球在最低点的角速度恰好是$2\sqrt{g/l}$，相点落在分界线上。它要多长时间才能到达最高点？分界线在鞍点处看上去「交叉」，这是不是两条:term[相轨道]{id="physics.analytical-mechanics.phase-trajectory"}相交了？
+  hints:
+    - |
+      分界线上$\dot\theta=2\sqrt{g/l}\cos\frac{\theta}{2}$。写出从$\theta=0$走到$\theta$所用的时间，看$\theta\to\pi$时它怎样变。
+    - |
+      记$\omega_0=\sqrt{g/l}$，时间是$\int_0^{\theta}\frac{\dd\theta'}{2\omega_0\cos(\theta'/2)}$。靠近$\pi$时$\cos\frac{\theta'}{2}\approx\frac{\pi-\theta'}{2}$，比较$\int\frac{\dd\theta'}{\pi-\theta'}$。鞍点本身也是一条相轨道吗？
+    - |
+      分界线上$t(\theta)=\int_0^{\theta}\frac{\dd\theta'}{2\omega_0\cos(\theta'/2)}=\frac{1}{\omega_0}\ln\Bigl(\sec\frac{\theta}{2}+\tan\frac{\theta}{2}\Bigr)$。靠近$\pi$时被积函数约为$\frac{1}{\omega_0(\pi-\theta')}$，积分像$\ln\frac{1}{\pi-\theta}$一样发散，所以$\theta\to\pi$时$t\to\infty$：摆球越来越慢地爬向最高点，永远到不了。
+
+      鞍点$(\pi,0)$本身是一条相轨道：摆球静止地竖直朝上。如果分界线上的运动在有限时间内到达这个状态，那么从这个状态出发就有两种运动（一直静止，以及倒着时间回到下面的那一个），和「状态决定以后的运动」矛盾。所以那里是四条相轨道（两条趋向鞍点，两条离开鞍点）加上鞍点本身，它们都不相交，只是在$t\to\pm\infty$时无限接近鞍点。
+
+      这也说明分界线附近的周期很长：能量略低于$mgl$的来回摆，周期随着能量趋于$mgl$而趋于无穷，所以单摆的周期和振幅有关。
+  reference: |
+    分界线上$t(\theta)=\frac{1}{\omega_0}\ln(\sec\frac{\theta}{2}+\tan\frac{\theta}{2})$，$\theta\to\pi$时对数发散，永远到不了最高点。鞍点是一条（静止的）相轨道；若有限时间到达，同一状态出发将有两种运动，与解的唯一性矛盾。故是四条渐近趋近/离开鞍点的相轨道加鞍点本身，互不相交。推论：能量趋于$mgl$时周期趋于无穷。

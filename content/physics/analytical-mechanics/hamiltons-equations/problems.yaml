@@ -1,0 +1,185 @@
+- id: p1
+  tier: easy
+  statement: |
+    质量$m=2\,\mathrm{kg}$的质点在势能$V(x)=3x^2$（$V$以$\mathrm{J}$为单位、$x$以$\mathrm{m}$为单位）里做一维运动，$L=\frac12m\dot x^2-V(x)$。某一时刻$x=1\,\mathrm{m}$，动量$p=4\,\mathrm{kg\cdot m/s}$。求此刻的:term[哈密顿量]{id="physics.analytical-mechanics.hamiltonian"}$H$。
+  answer:
+    type: number
+    value: 7
+    unit: |
+      $\mathrm{J}$
+  hints:
+    - |
+      先写出$H(x,p)$：从$p=\frac{\partial L}{\partial\dot x}$解出$\dot x$，代进$H=p\dot x-L$。
+    - |
+      $p=m\dot x$，$\dot x=\frac{p}{m}$，所以$H=\frac{p^2}{2m}+3x^2$。
+    - |
+      $H=\frac{4^2}{2\times2}+3\times1^2=4+3=7\,\mathrm{J}$。也可以先求出速度$\dot x=2\,\mathrm{m/s}$，再算$p\dot x-L=8-(4-3)=7\,\mathrm{J}$。
+  solution: |
+    $H=\frac{p^2}{2m}+3x^2=4+3=7\,\mathrm{J}$。位置不显含时间、势能只依赖位置，这里$H$就是机械能。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些:term[拉格朗日量]{id="physics.analytical-mechanics.lagrangian"}能由$p=\frac{\partial L}{\partial\dot q}$唯一地解出$\dot q$，从而能做勒让德变换得到:term[哈密顿量]{id="physics.analytical-mechanics.hamiltonian"}？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $L=\frac12m\dot q^2-V(q)$
+      - |
+        $L=q\dot q-\frac12q^2$
+      - |
+        $L=\frac12\dot q^2+q\dot q$
+      - |
+        $L=\dot q\cos q$
+    value: [1, 3]
+  hints:
+    - |
+      分别算出$p=\frac{\partial L}{\partial\dot q}$，看它含不含$\dot q$、能不能反解。
+    - |
+      A：$p=m\dot q$。B：$p=q$。C：$p=\dot q+q$。D：$p=\cos q$。
+    - |
+      A、C 的$p$里含$\dot q$，而且是一次式，能解出$\dot q=\frac{p}{m}$和$\dot q=p-q$。B、D 的$L$对$\dot q$是一次的，$p$根本不含$\dot q$，给定$p$解不出速度，勒让德变换做不了。
+
+      答案是 A、C。
+  solution: |
+    A、C。B、D 的$L$对$\dot q$是一次式，$p$不含$\dot q$，解不出速度。C 的$H=\frac12(p-q)^2$。
+
+- id: p3
+  tier: medium
+  statement: |
+    球面摆：质量$m=1\,\mathrm{kg}$的摆球挂在长$l=1\,\mathrm{m}$的轻杆下端，杆的上端是固定的悬点，摆球可以在以悬点为中心的球面上运动，取$g=9.8\,\mathrm{m/s^2}$。用$\theta$（杆和竖直向下方向的夹角）和方位角$\varphi$作:term[广义坐标]{id="physics.analytical-mechanics.generalized-coordinates"}。要让摆球在$\theta=\frac{\pi}{3}$处做匀速圆周运动（$\theta$不变、$p_\theta=0$），由:term[正则方程]{id="physics.analytical-mechanics.hamiltons-equations"}求$p_\varphi$应取多大（取正值）。
+  answer:
+    type: number
+    value: sqrt(9.8*9/8)
+    unit: |
+      $\mathrm{kg\cdot m^2/s}$
+  hints:
+    - |
+      写出$L$，求出$p_\theta$、$p_\varphi$和$H(\theta,p_\theta,p_\varphi)$。$\theta$保持不变要求$\dot\theta=0$和$\dot p_\theta=0$。
+    - |
+      $L=\frac12ml^2(\dot\theta^2+\sin^2\theta\,\dot\varphi^2)+mgl\cos\theta$，$H=\frac{p_\theta^2}{2ml^2}+\frac{p_\varphi^2}{2ml^2\sin^2\theta}-mgl\cos\theta$。求$\dot p_\theta=-\frac{\partial H}{\partial\theta}$时$p_\varphi$保持不变。
+    - |
+      $\dot\theta=\frac{p_\theta}{ml^2}=0$已经满足。$\dot p_\theta=-\frac{\partial H}{\partial\theta}=\frac{p_\varphi^2\cos\theta}{ml^2\sin^3\theta}-mgl\sin\theta=0$，所以
+
+      $$
+      p_\varphi^2=\frac{m^2gl^3\sin^4\theta}{\cos\theta}=9.8\times\frac{9}{16}\times2=11.025 ,
+      $$
+
+      $p_\varphi=\sqrt{11.025}\approx3.320\,\mathrm{kg\cdot m^2/s}$，填 `sqrt(9.8*9/8)` 或 `3.320`。由$\dot\varphi=\frac{p_\varphi}{ml^2\sin^2\theta}$得$\dot\varphi^2=\frac{g}{l\cos\theta}$，和讲循环坐标时圆锥摆的结果一致。
+  solution: |
+    $\dot p_\theta=\frac{p_\varphi^2\cos\theta}{ml^2\sin^3\theta}-mgl\sin\theta=0$，$p_\varphi=\sqrt{\frac{m^2gl^3\sin^4\theta}{\cos\theta}}=\sqrt{11.025}\approx3.320\,\mathrm{kg\cdot m^2/s}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    双摆：上面一根长$l=1\,\mathrm{m}$的轻杆挂在固定的悬点上，下端是质量$m=1\,\mathrm{kg}$的摆球；第二根同样的杆挂在这个摆球上，下端是另一个质量$1\,\mathrm{kg}$的摆球，整个系统在竖直平面内运动。:term[广义坐标]{id="physics.analytical-mechanics.generalized-coordinates"}是两根杆和竖直向下方向的夹角$\theta_1$、$\theta_2$。某一时刻两根杆都竖直向下（$\theta_1=\theta_2=0$），:term[广义动量]{id="physics.analytical-mechanics.generalized-momentum"}$p_1=3\,\mathrm{kg\cdot m^2/s}$、$p_2=1\,\mathrm{kg\cdot m^2/s}$。求此刻上面那根杆的角速度$\dot\theta_1$。
+  answer:
+    type: number
+    value: 2
+    unit: |
+      $\mathrm{rad/s}$
+  hints:
+    - |
+      先写出两个摆球的位置和动能，求出$p_1=\frac{\partial L}{\partial\dot\theta_1}$、$p_2=\frac{\partial L}{\partial\dot\theta_2}$，它们各混着两个角速度，再解一组一次方程。
+    - |
+      第二个摆球在$(l\sin\theta_1+l\sin\theta_2,\ -l\cos\theta_1-l\cos\theta_2)$，动能$T=ml^2\dot\theta_1^2+\frac12ml^2\dot\theta_2^2+ml^2\cos(\theta_1-\theta_2)\,\dot\theta_1\dot\theta_2$。
+    - |
+      $p_1=2ml^2\dot\theta_1+ml^2\cos(\theta_1-\theta_2)\,\dot\theta_2$，$p_2=ml^2\dot\theta_2+ml^2\cos(\theta_1-\theta_2)\,\dot\theta_1$。此刻$\theta_1=\theta_2$，代入数值：$2\dot\theta_1+\dot\theta_2=3$，$\dot\theta_1+\dot\theta_2=1$。两式相减得$\dot\theta_1=2\,\mathrm{rad/s}$，再得$\dot\theta_2=-1\,\mathrm{rad/s}$。
+
+      答案是$2$。若把$p_1$当成$ml^2\dot\theta_1$，会错得出$3$。
+  solution: |
+    $p_1=2\dot\theta_1+\dot\theta_2=3$，$p_2=\dot\theta_1+\dot\theta_2=1$（取了$m=l=1$、$\theta_1=\theta_2$），解得$\dot\theta_1=2\,\mathrm{rad/s}$、$\dot\theta_2=-1\,\mathrm{rad/s}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    平面上一个不受力的质点（质量$m$），用以角速度$\omega$绕原点匀速转动的坐标$(x',y')$作:term[广义坐标]{id="physics.analytical-mechanics.generalized-coordinates"}，$L=\frac12m\bigl[(\dot x'-\omega y')^2+(\dot y'+\omega x')^2\bigr]$。求:term[广义动量]{id="physics.analytical-mechanics.generalized-momentum"}$p_{x'}$、$p_{y'}$，并说明它们是惯性系里的动量在转动坐标轴上的分量；证明:term[哈密顿量]{id="physics.analytical-mechanics.hamiltonian"}是
+
+    $$
+    H=\frac{p_{x'}^2+p_{y'}^2}{2m}-\omega\,(x'p_{y'}-y'p_{x'}) ;
+    $$
+
+    写出:term[正则方程]{id="physics.analytical-mechanics.hamiltons-equations"}，并解释$\dot p_{x'}$、$\dot p_{y'}$的那两个方程在说什么。
+  hints:
+    - |
+      惯性系里的速度$(\dot x,\dot y)$等于把$(\dot x'-\omega y',\ \dot y'+\omega x')$转过$\omega t$角，所以$L$就是惯性系里的动能。先求动量，再把速度反解出来。
+    - |
+      $p_{x'}=m(\dot x'-\omega y')$，$p_{y'}=m(\dot y'+\omega x')$；反解得$\dot x'=\frac{p_{x'}}{m}+\omega y'$，$\dot y'=\frac{p_{y'}}{m}-\omega x'$，并且$L=\frac{p_{x'}^2+p_{y'}^2}{2m}$。
+    - |
+      $p_{x'}=\frac{\partial L}{\partial\dot x'}=m(\dot x'-\omega y')$，$p_{y'}=m(\dot y'+\omega x')$。惯性系里的动量$m(\dot x,\dot y)$是把$(p_{x'},p_{y'})$转过$\omega t$角得到的，所以$(p_{x'},p_{y'})$正是惯性系里的动量在转动坐标轴上的分量。
+
+      反解得$\dot x'=\frac{p_{x'}}{m}+\omega y'$，$\dot y'=\frac{p_{y'}}{m}-\omega x'$，$L=\frac{p_{x'}^2+p_{y'}^2}{2m}$。于是
+
+      $$
+      H=p_{x'}\dot x'+p_{y'}\dot y'-L=\frac{p_{x'}^2+p_{y'}^2}{m}+\omega(y'p_{x'}-x'p_{y'})-\frac{p_{x'}^2+p_{y'}^2}{2m}=\frac{p_{x'}^2+p_{y'}^2}{2m}-\omega\,(x'p_{y'}-y'p_{x'}).
+      $$
+
+      正则方程的前两个就是上面的反解：$\dot x'=\frac{\partial H}{\partial p_{x'}}=\frac{p_{x'}}{m}+\omega y'$，$\dot y'=\frac{\partial H}{\partial p_{y'}}=\frac{p_{y'}}{m}-\omega x'$。后两个是$\dot p_{x'}=-\frac{\partial H}{\partial x'}=\omega p_{y'}$，$\dot p_{y'}=-\frac{\partial H}{\partial y'}=-\omega p_{x'}$，说明矢量$(p_{x'},p_{y'})$长度不变，以角速度$\omega$顺时针转。惯性系里自由质点的动量不变，而坐标轴以$\omega$逆时针转，从转动的轴上看，这个不变的矢量就反着转。
+
+      $H$的第一项是惯性系里的动能$E$，$x'p_{y'}-y'p_{x'}$是对原点的角动量$L_z$（它在转动下不变），所以$H=E-\omega L_z$。两者都守恒，$H$也守恒，但它不是机械能：转动坐标使质点的位置显含时间。
+  reference: |
+    $p_{x'}=m(\dot x'-\omega y')$，$p_{y'}=m(\dot y'+\omega x')$，是惯性系动量$m(\dot x,\dot y)$在转动轴上的分量。反解$\dot x'=\frac{p_{x'}}{m}+\omega y'$，$\dot y'=\frac{p_{y'}}{m}-\omega x'$，$L=\frac{p^2}{2m}$，得$H=\frac{p_{x'}^2+p_{y'}^2}{2m}-\omega(x'p_{y'}-y'p_{x'})=E-\omega L_z$。正则方程：前两个是反解式；$\dot p_{x'}=\omega p_{y'}$，$\dot p_{y'}=-\omega p_{x'}$，即$(p_{x'},p_{y'})$以$\omega$顺时针转，反映惯性系中动量不变而坐标轴逆时针转。$H$守恒但不是机械能。
+
+- id: p6
+  tier: hard
+  statement: |
+    一维的:term[拉格朗日量]{id="physics.analytical-mechanics.lagrangian"}$L=\frac12m\dot q^2+b(q)\dot q-V(q)$，$b(q)$是给定的函数。求:term[哈密顿量]{id="physics.analytical-mechanics.hamiltonian"}$H(q,p)$，写出:term[正则方程]{id="physics.analytical-mechanics.hamiltons-equations"}，证明它们给出的运动是$m\ddot q=-V'(q)$，和$b$无关。$b$不影响运动，却改变了什么？$H$的值和$b$有关吗？
+  hints:
+    - |
+      先求$p=\frac{\partial L}{\partial\dot q}$，注意它不等于$m\dot q$。
+    - |
+      $p=m\dot q+b(q)$，$\dot q=\frac{p-b(q)}{m}$。代进$H=p\dot q-L$后整理，应当得到一个完全平方。
+    - |
+      $p=m\dot q+b(q)$，所以$\dot q=\frac{p-b}{m}$。代进$H=p\dot q-L$：
+
+      $$
+      H=\frac{p\,(p-b)}{m}-\frac{(p-b)^2}{2m}-\frac{b\,(p-b)}{m}+V=\frac{\bigl(p-b(q)\bigr)^2}{2m}+V(q).
+      $$
+
+      正则方程：$\dot q=\frac{\partial H}{\partial p}=\frac{p-b}{m}$，$\dot p=-\frac{\partial H}{\partial q}=\frac{(p-b)\,b'(q)}{m}-V'(q)=b'(q)\,\dot q-V'(q)$。由第一式$m\dot q=p-b(q)$，对时间求导得$m\ddot q=\dot p-b'(q)\dot q=-V'(q)$，$b$完全消失了。
+
+      $b$不影响运动，是因为一维时$b(q)\dot q=\dv{}{t}B(q)$（$B'=b$）是一个全导数。可它改变了广义动量（$p=m\dot q+b\neq m\dot q$），也改变了$H$作为$q$、$p$的函数的样子。$H$的值是$\frac{(p-b)^2}{2m}+V=\frac12m\dot q^2+V$，和$b$无关：同一个运动，可以有不同的广义动量和不同形式的哈密顿量。
+  reference: |
+    $p=m\dot q+b$，$\dot q=\frac{p-b}{m}$，$H=\frac{(p-b(q))^2}{2m}+V(q)$。正则方程$\dot q=\frac{p-b}{m}$，$\dot p=b'\dot q-V'$，于是$m\ddot q=\dot p-b'\dot q=-V'$，与$b$无关（一维时$b\dot q=\dv{}{t}B(q)$是全导数）。$b$改变了广义动量和$H$的函数形式；$H$的值$=\frac12m\dot q^2+V$与$b$无关。
+
+- id: p7
+  tier: thinking
+  statement: |
+    :term[拉格朗日方程]{id="physics.analytical-mechanics.lagrange-equations"}本身也能写成$2n$个一阶方程：把$v_j=\dot q_j$当作新变量，方程是$\dot q_j=v_j$，以及由拉格朗日方程解出的$\dot v_j$。那为什么还要换成$p$？以一维的$L=\frac12a(q)\dot q^2-V(q)$（$a(q)>0$，比如用了弯曲的坐标）为例，分别写出用$(q,v)$和用$(q,p)$的一阶方程组，比较它们的样子，想一想$(q,p)$这一组好在哪里。
+  hints:
+    - |
+      先由拉格朗日方程解出$\ddot q$；再写出$H(q,p)$和:term[正则方程]{id="physics.analytical-mechanics.hamiltons-equations"}。
+    - |
+      $(q,v)$：$\dot q=v$，$\dot v=-\frac{a'(q)}{2a(q)}v^2-\frac{V'(q)}{a(q)}$。$(q,p)$：$H=\frac{p^2}{2a(q)}+V(q)$，$\dot q=\frac{p}{a}$，$\dot p=\frac{a'p^2}{2a^2}-V'$。看看哪一组的两个右边来自同一个函数。
+    - |
+      拉格朗日方程是$\dv{}{t}(a\dot q)-\frac12a'\dot q^2+V'=0$，即$\ddot q=-\frac{a'}{2a}\dot q^2-\frac{V'}{a}$，所以$(q,v)$的方程组是$\dot q=v$、$\dot v=-\frac{a'}{2a}v^2-\frac{V'}{a}$。用$p=a\dot q$，$H=\frac{p^2}{2a}+V$，正则方程是$\dot q=\frac{p}{a}$、$\dot p=\frac{a'p^2}{2a^2}-V'$。
+
+      两组都是两个一阶方程，但$(q,p)$那一组的两个右边是同一个函数$H$的两个偏导数（差一个负号）。所以$H$守恒一眼就看出来：$\dv{H}{t}=\frac{\partial H}{\partial q}\frac{\partial H}{\partial p}-\frac{\partial H}{\partial p}\frac{\partial H}{\partial q}=0$。用$(q,v)$时，要另外去找守恒的$\frac12av^2+V$。
+
+      还有一个差别以后才看得清。算一算两组方程右边的「散度」（divergence）：$(q,v)$是$\frac{\partial v}{\partial q}+\frac{\partial\dot v}{\partial v}=-\frac{a'}{a}v$，一般不为零；$(q,p)$是$\frac{\partial}{\partial q}\frac{p}{a}+\frac{\partial}{\partial p}\bigl(\frac{a'p^2}{2a^2}-V'\bigr)=-\frac{a'p}{a^2}+\frac{a'p}{a^2}=0$。讲相空间时会看到，后者说明$(q,p)$平面上一块区域随运动移动时面积不变，在$(q,v)$平面上就没有这个性质。此外，$q$和$p$对称的方程允许把坐标和动量混起来换变量（以后的正则变换，canonical transformation），这是$(q,v)$做不到的。
+  reference: |
+    $(q,v)$：$\dot q=v$，$\dot v=-\frac{a'}{2a}v^2-\frac{V'}{a}$；$(q,p)$：$H=\frac{p^2}{2a}+V$，$\dot q=\frac{p}{a}$，$\dot p=\frac{a'p^2}{2a^2}-V'$。后者的右边是同一个函数$H$的偏导数，$H$守恒立即可见；其「散度」为零（前者为$-\frac{a'}{a}v$），对应相空间面积守恒（刘维尔定理）；$q$、$p$对称还允许混合坐标与动量的正则变换。
+
+- id: p8
+  tier: thinking
+  statement: |
+    勒让德变换要求能由$p=\frac{\partial L}{\partial\dot q}$唯一地解出$\dot q$。
+
+    （1）对一个自由度的$L=\frac14\dot q^4-\frac12\dot q^2$，这个要求满足吗？画出$L$随$\dot q$变化的图，说明:term[哈密顿量]{id="physics.analytical-mechanics.hamiltonian"}会出什么问题。
+
+    （2）两个自由度的$L=\frac12(\dot q_1-\dot q_2)^2-\frac12(q_1-q_2)^2$又怎样？它的:term[拉格朗日方程]{id="physics.analytical-mechanics.lagrange-equations"}能定出$q_1(t)$和$q_2(t)$吗？这说明坐标选得怎么样？
+  hints:
+    - |
+      （1）算出$p=\dot q^3-\dot q$，看同一个$p$对应几个$\dot q$，$L$对$\dot q$是不是凸的。（2）看两个动量之间有什么关系。
+    - |
+      （1）$L''(\dot q)=3\dot q^2-1$在$|\dot q|<\frac{1}{\sqrt3}$时为负；$|p|<\frac{2}{3\sqrt3}$时有三个$\dot q$。（2）$p_1=\dot q_1-\dot q_2=-p_2$；方程只含$u=q_1-q_2$。
+    - |
+      （1）$L$不是凸函数：$p=\dot q^3-\dot q$在$|\dot q|<\frac{1}{\sqrt3}$上递减，$|p|<\frac{2}{3\sqrt3}$时同一个$p$对应三个$\dot q$。于是$H=p\dot q-L$对同一个$p$有三个值，不再是$q$、$p$的函数，正则方程无从写起。曲线上斜率为$p$的切线不止一条，正是图上看到的情形；动能的二次部分为正时$L$总是凸的，所以质点力学里不会碰到这种情况。
+
+      （2）$p_1=\frac{\partial L}{\partial\dot q_1}=\dot q_1-\dot q_2$，$p_2=-(\dot q_1-\dot q_2)$，所以对任何运动都有$p_1+p_2=0$：两个动量不独立，由它们只能定出$\dot q_1-\dot q_2$，定不出两个速度。拉格朗日方程两个都是$\ddot u=-u$（$u=q_1-q_2$），对$q_1+q_2$没有任何限制，它可以是任意的时间函数。
+
+      这说明坐标选多了：$q_1+q_2$这个方向不是物理上确定的量，描述里有多余的自由度。只用$u$作坐标，$L=\frac12\dot u^2-\frac12u^2$，勒让德变换就没有问题了。勒让德变换做不了，往往就是在提示某个坐标不受方程约束；电磁场的势那样的「规范自由度」（gauge freedom）就是这类情形。
+  reference: |
+    （1）$L''=3\dot q^2-1$在$|\dot q|<1/\sqrt3$为负，不凸；$p=\dot q^3-\dot q$不单调，$|p|<\frac{2}{3\sqrt3}$时三个$\dot q$，$H$多值，正则方程无法写出。$T_2>0$时$L$总凸，质点力学不会出现。（2）$p_1=-p_2$，动量不独立，只能定出$\dot q_1-\dot q_2$；两方程都是$\ddot u=-u$，$q_1+q_2$完全不定：坐标有冗余（类似规范自由度）。只用$u$即可正常做勒让德变换。

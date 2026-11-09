@@ -1,0 +1,151 @@
+- id: p1
+  tier: easy
+  statement: |
+    质量$m=2\,\mathrm{kg}$的物体挂在劲度系数$k=8\,\mathrm{N/m}$的弹簧上做简谐振动，振幅$A=0.5\,\mathrm{m}$。求它的:term[作用量变量]{id="physics.analytical-mechanics.action-variable"}$I$。
+  answer:
+    type: number
+    value: 1/2
+    unit: |
+      $\mathrm{J\cdot s}$
+  hints:
+    - |
+      谐振子的$I=\frac{E}{\omega}$。先求能量和角频率。
+    - |
+      $E=\frac12kA^2$，$\omega=\sqrt{k/m}$。
+    - |
+      $E=\frac12\times8\times0.25=1\,\mathrm{J}$，$\omega=\sqrt{8/2}=2\,\mathrm{rad/s}$，所以$I=\frac{E}{\omega}=0.5\,\mathrm{J\cdot s}$。也可以直接算椭圆面积：半轴是$A=0.5\,\mathrm{m}$和$m\omega A=2\,\mathrm{kg\cdot m/s}$，面积$\pi\times0.5\times2=\pi$，除以$2\pi$得$0.5$。
+  solution: |
+    $E=1\,\mathrm{J}$，$\omega=2\,\mathrm{rad/s}$，$I=\frac{E}{\omega}=0.5\,\mathrm{J\cdot s}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    某个一维周期运动的哈密顿量用:term[作用量变量]{id="physics.analytical-mechanics.action-variable"}写成$H=3I^{4/3}$（无量纲）。求$I=8$时运动的角频率$\omega$。
+  answer:
+    type: number
+    value: 8
+  hints:
+    - |
+      角频率是$\omega=\dv{H}{I}$。
+    - |
+      $\dv{H}{I}=3\cdot\frac43I^{1/3}=4I^{1/3}$。
+    - |
+      $\omega=4\times8^{1/3}=4\times2=8$。频率随$I$增大，周期$\frac{2\pi}{\omega}=\frac{\pi}{4}$。
+  solution: |
+    $\omega=\dv{H}{I}=4I^{1/3}=8$。
+
+- id: p3
+  tier: medium
+  statement: |
+    质量$m=1\,\mathrm{kg}$的质点在「V 字形」势阱$V(q)=F|q|$（$F=2\,\mathrm{N}$）里来回运动，能量$E=2\,\mathrm{J}$。用:term[作用量变量]{id="physics.analytical-mechanics.action-variable"}求运动的周期。
+  answer:
+    type: number
+    value: 4
+    unit: |
+      $\mathrm{s}$
+  hints:
+    - |
+      先求$I(E)=\frac{1}{2\pi}\oint p\,\dd q$，转折点在$q=\pm\frac{E}{F}$；再用$T=2\pi\dv{I}{E}$。
+    - |
+      由对称性，$\oint p\,\dd q=4\int_0^{E/F}\sqrt{2m(E-Fq)}\,\dd q$。
+    - |
+      $\int_0^{E/F}\sqrt{2m(E-Fq)}\,\dd q=\frac{\sqrt{2m}}{F}\cdot\frac23E^{3/2}$，所以$I=\frac{1}{2\pi}\cdot4\cdot\frac{2\sqrt{2m}}{3F}E^{3/2}=\frac{4\sqrt{2m}}{3\pi F}E^{3/2}$。
+
+      $T=2\pi\dv{I}{E}=2\pi\cdot\frac{4\sqrt{2m}}{3\pi F}\cdot\frac32E^{1/2}=\frac{4\sqrt{2mE}}{F}=\frac{4\times2}{2}=4\,\mathrm{s}$。核对：从$q=0$以动量$\sqrt{2mE}=2\,\mathrm{kg\cdot m/s}$出发，受力$F$减速，$1\,\mathrm{s}$停下，一个周期是这样的四段。
+  solution: |
+    $I=\frac{4\sqrt{2m}}{3\pi F}E^{3/2}$，$T=2\pi\dv{I}{E}=\frac{4\sqrt{2mE}}{F}=4\,\mathrm{s}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    质点在势能$V(q)=\lambda q^4$（$\lambda>0$）里来回运动。能量变成原来的$16$倍时，周期变成原来的几倍？
+  answer:
+    type: number
+    value: 1/2
+  hints:
+    - |
+      不必算出积分的值，只要知道:term[作用量变量]{id="physics.analytical-mechanics.action-variable"}$I$怎样随$E$变：在$I=\frac{1}{2\pi}\oint\sqrt{2m(E-\lambda q^4)}\,\dd q$里换元$q=(E/\lambda)^{1/4}u$。
+    - |
+      换元后$I=\frac{1}{2\pi}\sqrt{2mE}\Bigl(\frac{E}{\lambda}\Bigr)^{1/4}\oint\sqrt{1-u^4}\,\dd u$，所以$I\propto E^{3/4}$。
+    - |
+      $I=cE^{3/4}$，$c$是与$E$无关的常数。周期$T=2\pi\dv{I}{E}=\frac{3\pi c}{2}E^{-1/4}$，所以$T\propto E^{-1/4}$。能量变成$16$倍，周期变成$16^{-1/4}=\frac12$倍。
+
+      和单摆相反，四次方势的势阱越往外越陡，能量越大，来回反而越快。答案填 `1/2`。
+  solution: |
+    换元得$I\propto E^{3/4}$，$T=2\pi\dv{I}{E}\propto E^{-1/4}$，能量变$16$倍，周期变$\frac12$倍。
+
+- id: p5
+  tier: hard
+  statement: |
+    单摆的振幅不太小时，周期会变长。取$m=l=g=1$，摆角记作$\phi$，以最低点为势能零点，把$1-\cos\phi$展开到$\phi^4$：$H\approx\frac{p^2}{2}+\frac{\phi^2}{2}-\varepsilon\phi^4$，$\varepsilon=\frac{1}{24}$。用:term[作用量变量]{id="physics.analytical-mechanics.action-variable"}证明：到$\varepsilon$的一次，$I=E+\frac{E^2}{16}$，于是振幅为$\phi_0$时角频率$\omega\approx1-\frac{\phi_0^2}{16}$。
+  hints:
+    - |
+      $I(E,\varepsilon)=\frac{1}{2\pi}\oint\sqrt{2(E-\frac{\phi^2}{2}+\varepsilon\phi^4)}\,\dd\phi$。$\varepsilon=0$时是谐振子，$I=E$；再求$\frac{\partial I}{\partial\varepsilon}$在$\varepsilon=0$处的值。
+    - |
+      $\frac{\partial I}{\partial\varepsilon}\Big|_{\varepsilon=0}=\frac{1}{2\pi}\oint\frac{\phi^4\,\dd\phi}{\sqrt{2(E-\phi^2/2)}}$（转折点处被积函数$\sqrt{\cdots}$为零，端点移动不贡献）。换元$\phi=\sqrt{2E}\sin u$，并用$\int_{-\pi/2}^{\pi/2}\sin^4u\,\dd u=\frac{3\pi}{8}$。
+    - |
+      $\varepsilon=0$时相轨道是椭圆，$I=E$。对$\varepsilon$求导，被积函数的导数是$\frac{\phi^4}{\sqrt{2(E-\phi^2/2)}}$。换元$\phi=\sqrt{2E}\sin u$，$\sqrt{2(E-\phi^2/2)}=\sqrt{2E}\cos u$，$\dd\phi=\sqrt{2E}\cos u\,\dd u$，一个来回的两半各贡献$\int_{-\pi/2}^{\pi/2}(2E)^2\sin^4u\,\dd u=4E^2\cdot\frac{3\pi}{8}$，合起来$3\pi E^2$。所以$\frac{\partial I}{\partial\varepsilon}=\frac{3E^2}{2}$，$I\approx E+\frac{3}{2}\varepsilon E^2=E+\frac{E^2}{16}$。
+
+      反过来，$E\approx I-\frac{I^2}{16}$（误差是$\varepsilon^2$的量级），$\omega=\dv{E}{I}\approx1-\frac{I}{8}$。到同样的精度可以用$I\approx E\approx\frac{\phi_0^2}{2}$，于是$\omega\approx1-\frac{\phi_0^2}{16}$，恢复单位就是$\omega\approx\sqrt{g/l}\,\bigl(1-\frac{\phi_0^2}{16}\bigr)$：振幅越大，频率越低，周期越长。
+
+      和精确值比：$\phi_0\approx37^\circ$（$0.644\,\mathrm{rad}$）时公式给出$0.9741$，精确值是$0.9742$；振幅大到$120^\circ$时公式给出$0.726$，精确值约$0.728$。整个过程没有解运动方程。
+  reference: |
+    $I(E,\varepsilon)=\frac1{2\pi}\oint\sqrt{2(E-\phi^2/2+\varepsilon\phi^4)}\,\dd\phi$，$\varepsilon=0$时$I=E$。$\partial_\varepsilon I|_0=\frac1{2\pi}\oint\frac{\phi^4\,\dd\phi}{\sqrt{2(E-\phi^2/2)}}$，换元$\phi=\sqrt{2E}\sin u$得$\frac1{2\pi}\cdot2\cdot4E^2\cdot\frac{3\pi}8=\frac32E^2$，故$I\approx E+\frac{E^2}{16}$。反解$E\approx I-\frac{I^2}{16}$，$\omega=\dv EI\approx1-\frac I8\approx1-\frac{\phi_0^2}{16}$。
+
+- id: p6
+  tier: hard
+  statement: |
+    平面各向异性振子$H=\frac{p_x^2+p_y^2}{2m}+\frac12m(\omega_x^2x^2+\omega_y^2y^2)$，两个方向都在振动。
+
+    （1）写出两组:term[作用量变量]{id="physics.analytical-mechanics.action-variable"}和:term[角变量]{id="physics.analytical-mechanics.angle-variable"}，把$H$用$I_x$、$I_y$表示。
+
+    （2）证明：运动是周期的（经过某段时间$T>0$回到完全相同的状态），当且仅当$\frac{\omega_x}{\omega_y}$是有理数。
+
+    （3）$I_x$、$I_y$固定时，状态由两个角变量$(\theta_x,\theta_y)$决定，它们各自加$2\pi$回到同一状态。描述运动在这个「角度空间」里的样子。
+  hints:
+    - |
+      两个方向互不耦合，各自是谐振子；状态回到原处，就是两个角变量都恰好增加了$2\pi$的整数倍。
+    - |
+      $H=\omega_xI_x+\omega_yI_y$，$\theta_x=\omega_xt+\theta_{x0}$，$\theta_y=\omega_yt+\theta_{y0}$。$(\theta_x,\theta_y)$平面的正方形把对边粘起来是一个环面。
+    - |
+      （1）两个方向各是一维谐振子，$I_x=\frac{E_x}{\omega_x}$、$I_y=\frac{E_y}{\omega_y}$，$H=\omega_xI_x+\omega_yI_y$，频率$\frac{\partial H}{\partial I_x}=\omega_x$、$\frac{\partial H}{\partial I_y}=\omega_y$，角变量$\theta_x=\omega_xt+\theta_{x0}$、$\theta_y=\omega_yt+\theta_{y0}$。
+
+      （2）状态由$(I_x,I_y,\theta_x,\theta_y)$决定，$I$不变，所以经过$T$回到原状态当且仅当$\omega_xT=2\pi k$、$\omega_yT=2\pi l$（$k$、$l$是正整数），此时$\frac{\omega_x}{\omega_y}=\frac kl$是有理数。反过来，若$\frac{\omega_x}{\omega_y}=\frac kl$，取$T=\frac{2\pi k}{\omega_x}=\frac{2\pi l}{\omega_y}$即可。
+
+      （3）$\theta_x$、$\theta_y$各自模$2\pi$，角度空间是正方形对边粘起来的环面，和讲约束时双摆的位形空间一样。运动在环面上是斜率为$\frac{\omega_y}{\omega_x}$的直线：比值有理时直线绕几圈后首尾相接，$(x,y)$平面上是闭合的利萨如图形（Lissajous figure）；比值无理时直线永不闭合，越绕越密，铺满整个环面，$(x,y)$平面上的轨迹铺满一个矩形。以后讲混沌时会看到，受到扰动的系统里，有理与无理的差别非常要紧。
+  reference: |
+    （1）$I_x=E_x/\omega_x$，$I_y=E_y/\omega_y$，$H=\omega_xI_x+\omega_yI_y$，$\theta_{x,y}=\omega_{x,y}t+\theta_{x,y,0}$。（2）回到原状态⇔$\omega_xT=2\pi k$、$\omega_yT=2\pi l$⇔$\omega_x/\omega_y=k/l$有理（反之取$T=2\pi k/\omega_x$）。（3）角度空间是环面，运动是斜率$\omega_y/\omega_x$的直线：有理时闭合（利萨如图形），无理时稠密地铺满环面。
+
+- id: p7
+  tier: thinking
+  statement: |
+    量子力学建立以前，玻尔和索末菲（Bohr–Sommerfeld）提出：周期运动的:term[作用量变量]{id="physics.analytical-mechanics.action-variable"}只能取$\hbar$的整数倍，$I=n\hbar$。用这条规则求谐振子和盒子里的粒子（例 1）的能量，和你知道的量子力学结果比一比。为什么偏偏是$I$被「量子化」，而不是能量或别的量？
+  hints:
+    - |
+      谐振子$H=\omega I$，盒子里的粒子$E=\frac{\pi^2I^2}{2mL^2}$，把$I=n\hbar$代进去。
+    - |
+      $I$在正则变换下不变，量纲又和$\hbar$相同。下一节会看到，参数缓慢变化时$I$几乎不变，而能量会变。
+    - |
+      谐振子：$E_n=n\hbar\omega$，和量子力学的$\bigl(n+\frac12\bigr)\hbar\omega$只差一个常数$\frac12\hbar\omega$，能级间隔$\hbar\omega$完全一样。盒子：$E_n=\frac{\pi^2\hbar^2n^2}{2mL^2}$（$n=1,2,\dots$），和量子力学的结果恰好相同。
+
+      为什么是$I$：首先，$\hbar$的量纲是能量乘时间，和$I$一样；$I$在正则变换下不变，是相轨道本身的属性，不依赖坐标怎么选，这样的量拿来规定「允许的状态」才不会因为换坐标而变。更深的理由是埃伦费斯特（Ehrenfest）指出的：把系统的参数（比如盒子长度）缓慢地改变，系统应当从一个允许的状态连续地变到另一个允许的状态，所以被量子化的量必须在缓慢变化下保持不变，这正是下一节的浸渐不变量，而$I$是，能量不是。
+
+      在量子力学里，这条规则成了 WKB 近似（WKB approximation）下的量子化条件$\oint p\,\dd q=2\pi\hbar\bigl(n+\frac12\bigr)$，多出的$\frac12$来自转折点附近波函数（wave function）的行为。
+  reference: |
+    谐振子$E_n=n\hbar\omega$（量子力学$(n+\frac12)\hbar\omega$，间隔相同）；盒子$E_n=\frac{\pi^2\hbar^2n^2}{2mL^2}$，与量子力学一致。$I$与$\hbar$同量纲，且在正则变换下不变；埃伦费斯特：被量子化的量须在参数缓慢变化下不变（浸渐不变量），$I$是而$E$不是。WKB 给出$\oint p\,\dd q=2\pi\hbar(n+\frac12)$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    平面开普勒问题$V=-\frac{k}{r}$里，用极坐标分离变量，有两对作用量-角变量：$I_\varphi=\frac{1}{2\pi}\oint p_\varphi\,\dd\varphi=p_\varphi$（角动量），以及$I_r=\frac{1}{2\pi}\oint p_r\,\dd r$。可以算出（这里不要求算）束缚运动的$I_r=-I_\varphi+k\sqrt{\frac{m}{-2E}}$。由此求$H(I_r,I_\varphi)$和两个频率$\omega_r$、$\omega_\varphi$，说明为什么束缚轨道总是闭合的。如果势能多一项$\frac{\varepsilon}{r^2}$（$\varepsilon$很小），会怎样？
+  hints:
+    - |
+      从$I_r+I_\varphi=k\sqrt{\frac{m}{-2E}}$解出$E$，再对$I_r$、$I_\varphi$分别求偏导数。
+    - |
+      $H=-\frac{mk^2}{2(I_r+I_\varphi)^2}$只依赖$I_r+I_\varphi$，所以$\omega_r=\omega_\varphi$。多一项$\frac{\varepsilon}{r^2}$时，$p_r$的式子里$p_\varphi^2$变成$p_\varphi^2+2m\varepsilon$。
+    - |
+      由$I_r+I_\varphi=k\sqrt{\frac{m}{-2E}}$得$H=E=-\frac{mk^2}{2(I_r+I_\varphi)^2}$，所以$\omega_r=\frac{\partial H}{\partial I_r}=\frac{mk^2}{(I_r+I_\varphi)^3}=\omega_\varphi$。$r$来回一次和$\varphi$转一圈用的时间相同，质点回到同一个$r$时正好转过$2\pi$，轨道闭合，这就是椭圆。像这样两个频率相等的情形叫简并（degenerate）。
+
+      多一项$\frac{\varepsilon}{r^2}$时，它和离心项$\frac{p_\varphi^2}{2mr^2}$合在一起，相当于把$p_\varphi^2$换成$p_\varphi^2+2m\varepsilon$，所以$I_r=-\sqrt{I_\varphi^2+2m\varepsilon}+k\sqrt{\frac{m}{-2E}}$，$H=-\frac{mk^2}{2\bigl(I_r+\sqrt{I_\varphi^2+2m\varepsilon}\bigr)^2}$。这时$\omega_\varphi=\omega_r\frac{I_\varphi}{\sqrt{I_\varphi^2+2m\varepsilon}}\neq\omega_r$：$r$来回一次，$\varphi$转过的角度不再恰好是$2\pi$，椭圆一圈一圈地转动，叫进动（precession）。水星近日点的进动，一部分就来自广义相对论给出的类似修正。
+  reference: |
+    $H=-\frac{mk^2}{2(I_r+I_\varphi)^2}$，$\omega_r=\omega_\varphi=\frac{mk^2}{(I_r+I_\varphi)^3}$（简并），$r$振荡一次恰转$2\pi$，束缚轨道闭合。加$\varepsilon/r^2$相当于$p_\varphi^2\to p_\varphi^2+2m\varepsilon$，$H$依赖$I_r+\sqrt{I_\varphi^2+2m\varepsilon}$，$\omega_\varphi=\omega_r I_\varphi/\sqrt{I_\varphi^2+2m\varepsilon}\neq\omega_r$，轨道进动（水星近日点进动的相对论修正类似）。

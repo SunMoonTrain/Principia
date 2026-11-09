@@ -1,0 +1,159 @@
+- id: p1
+  tier: easy
+  statement: |
+    弹簧振子的弹簧缓慢地变硬，劲度系数从$k_0$变到$4k_0$，质量不变。开始时振动的能量是$1\,\mathrm{J}$，最后是多少？
+  answer:
+    type: number
+    value: 2
+    unit: |
+      $\mathrm{J}$
+  hints:
+    - |
+      :term[浸渐不变量]{id="physics.analytical-mechanics.adiabatic-invariant"}是$I=\frac{E}{\omega}$。$\omega$怎样随$k$变？
+    - |
+      $\omega=\sqrt{k/m}$，$k$变成$4$倍，$\omega$变成$2$倍。
+    - |
+      $\frac{E}{\omega}$不变，$\omega$变成$2$倍，所以$E$也变成$2$倍，是$2\,\mathrm{J}$。注意不是$4\,\mathrm{J}$：振幅在变小，$E=\frac12kA^2$里$k$变成$4$倍、$A^2$变成$\frac12$倍。
+  solution: |
+    $\frac{E}{\omega}$不变，$\omega\propto\sqrt k$变成$2$倍，$E=2\,\mathrm{J}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    单摆的摆长缓慢变短，摆角一直很小。记摆动的能量（相对于当时的最低点）为$E_{\mathrm{osc}}$，角频率$\omega=\sqrt{g/l}$，振幅$\phi_0$。下面哪些量在这个过程中近似不变？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\frac{E_{\mathrm{osc}}}{\omega}$
+      - |
+        $E_{\mathrm{osc}}$
+      - |
+        $\phi_0$
+      - |
+        $\phi_0^2\,l^{3/2}$
+    value: [1, 4]
+  hints:
+    - |
+      近似不变的是:term[作用量变量]{id="physics.analytical-mechanics.action-variable"}$I=\frac{E_{\mathrm{osc}}}{\omega}$。其余的量都用$I$和$l$表示出来。
+    - |
+      $E_{\mathrm{osc}}=\frac12mgl\phi_0^2$，$\omega\propto l^{-1/2}$。
+    - |
+      A 就是$I$，不变。B：$E_{\mathrm{osc}}=I\omega\propto l^{-1/2}$，摆长变短时增加。C：$\phi_0^2=\frac{2E_{\mathrm{osc}}}{mgl}\propto l^{-3/2}$，振幅增加。D：$\phi_0^2l^{3/2}$正好不变。
+
+      答案是 A、D。
+  solution: |
+    A、D。$I=\frac{E_{\mathrm{osc}}}{\omega}$不变；$E_{\mathrm{osc}}\propto l^{-1/2}$，$\phi_0\propto l^{-3/4}$，所以$\phi_0^2l^{3/2}$不变。
+
+- id: p3
+  tier: medium
+  statement: |
+    上一节例 2 的弹跳小球：小球在地板上竖直地弹跳，每次落地以原速率弹起。现在让重力加速度缓慢地变成原来的$8$倍（例如在一个缓慢加大加速度、向上加速的升降机里看）。弹跳的最大高度变成原来的几倍？
+  answer:
+    type: number
+    value: 1/2
+  hints:
+    - |
+      上一节算过$I=\frac{2\sqrt{2m}}{3\pi mg}E^{3/2}$。$g$缓慢变化时$I$不变，先求$E$怎样随$g$变，再求最大高度$h=\frac{E}{mg}$。
+    - |
+      $I$不变要求$\frac{E^{3/2}}{g}$不变，即$E\propto g^{2/3}$。
+    - |
+      由$E\propto g^{2/3}$，$h=\frac{E}{mg}\propto g^{-1/3}$。$g$变成$8$倍，$h$变成$8^{-1/3}=\frac12$倍；能量（相对于地板）变成$8^{2/3}=4$倍。答案填 `1/2`。
+  solution: |
+    $I\propto E^{3/2}/g$不变，$E\propto g^{2/3}$，$h=\frac{E}{mg}\propto g^{-1/3}$，变成$\frac12$倍。
+
+- id: p4
+  tier: medium
+  statement: |
+    质点在势能$V(q)=\lambda q^4$里来回运动，系数$\lambda$缓慢地变成原来的$8$倍。运动的能量变成原来的几倍？
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      先求:term[作用量变量]{id="physics.analytical-mechanics.action-variable"}怎样依赖$E$和$\lambda$：在$I=\frac{1}{2\pi}\oint\sqrt{2m(E-\lambda q^4)}\,\dd q$里换元$q=(E/\lambda)^{1/4}u$。
+    - |
+      $I=\frac{1}{2\pi}\sqrt{2mE}\Bigl(\frac{E}{\lambda}\Bigr)^{1/4}\oint\sqrt{1-u^4}\,\dd u\propto E^{3/4}\lambda^{-1/4}$。
+    - |
+      $I\propto E^{3/4}\lambda^{-1/4}$不变，所以$E^3\propto\lambda$，$E\propto\lambda^{1/3}$。$\lambda$变成$8$倍，$E$变成$8^{1/3}=2$倍。答案是$2$。
+  solution: |
+    $I\propto E^{3/4}\lambda^{-1/4}$不变，$E\propto\lambda^{1/3}$，变成$2$倍。
+
+- id: p5
+  tier: hard
+  statement: |
+    谐振子$H=\frac{p^2}{2m}+\frac12m\omega(t)^2q^2$，$\omega$随时间缓慢变化。
+
+    （1）证明$\dv{E}{t}=m\omega\dot\omega q^2$，这里$E=H$。（2）在一个周期里把$\omega$、$\dot\omega$看成常数，运动近似是$q=A\cos(\omega t+\delta)$，求$\dv{E}{t}$在一个周期里的平均值。
+
+    （3）由此说明$\frac{E}{\omega}$在一个周期里的平均变化率为零。（4）$\dv{}{t}\frac{E}{\omega}$的瞬时值是什么样子？
+  hints:
+    - |
+      $\dv{H}{t}=\frac{\partial H}{\partial t}$。周期平均用$\langle\cos^2\rangle=\frac12$，而$E=\frac12m\omega^2A^2$。
+    - |
+      $\langle q^2\rangle=\frac{A^2}{2}=\frac{E}{m\omega^2}$，所以$\bigl\langle\dv{E}{t}\bigr\rangle=\frac{\dot\omega}{\omega}E$。再算$\dv{}{t}\frac{E}{\omega}=\frac{\dot E}{\omega}-\frac{E\dot\omega}{\omega^2}$。
+    - |
+      （1）由正则方程，$\dv{H}{t}=\frac{\partial H}{\partial t}=m\omega\dot\omega q^2$。
+
+      （2）$q^2=A^2\cos^2(\omega t+\delta)$，一个周期的平均是$\frac{A^2}{2}=\frac{E}{m\omega^2}$，所以$\bigl\langle\dv{E}{t}\bigr\rangle=m\omega\dot\omega\frac{E}{m\omega^2}=\frac{\dot\omega}{\omega}E$：能量平均按$\omega$的比例增长。
+
+      （3）$\dv{}{t}\frac{E}{\omega}=\frac{1}{\omega}\dv{E}{t}-\frac{E\dot\omega}{\omega^2}$，平均是$\frac{\dot\omega}{\omega^2}E-\frac{E\dot\omega}{\omega^2}=0$。
+
+      （4）瞬时值是$\frac{\dot\omega}{\omega^2}\bigl(m\omega^2q^2-E\bigr)=\frac{\dot\omega}{\omega}\cdot\frac{E}{\omega}\bigl(2\cos^2(\omega t+\delta)-1\bigr)=\frac{\dot\omega}{\omega}\cdot\frac{E}{\omega}\cos2(\omega t+\delta)$。它以两倍的频率来回摆动，幅度正比于$\dot\omega$，每半个周期正负抵消一次。$\dot\omega$很小时，$\frac{E}{\omega}$只是在一个几乎不变的值附近轻轻抖动，这就是它成为浸渐不变量的原因；而能量的平均变化率$\frac{\dot\omega}{\omega}E$不抵消，一直在累积。
+  reference: |
+    （1）$\dot H=\partial_tH=m\omega\dot\omega q^2$。（2）$\langle q^2\rangle=\frac{A^2}{2}=\frac{E}{m\omega^2}$，$\langle\dot E\rangle=\frac{\dot\omega}{\omega}E$。（3）$\frac{\dd}{\dd t}\frac E\omega=\frac{\dot E}{\omega}-\frac{E\dot\omega}{\omega^2}$，平均为零。（4）瞬时值$=\frac{\dot\omega}{\omega}\frac{E}{\omega}\cos2(\omega t+\delta)$，以两倍频率振荡、平均为零、幅度正比于$\dot\omega$；能量的平均变化率不抵消。
+
+- id: p6
+  tier: hard
+  statement: |
+    谐振子的角频率突然（在极短的时间里）从$\omega$变成$2\omega$，质量不变。设变化前能量是$E$，:term[作用量变量]{id="physics.analytical-mechanics.action-variable"}$I=\frac{E}{\omega}$。求变化后的作用量变量$I'$：（1）变化发生在$q$最大、$p=0$的时刻；（2）变化发生在$q=0$、$|p|$最大的时刻；（3）变化发生的时刻是随机的，各个相位机会均等，求$I'$的平均值。和缓慢变化的结果比较。
+  hints:
+    - |
+      变化极快时，位置和动量都来不及变：$q$、$p$保持变化前的值，只有$H$换成了新的。用新的$H$算能量，再除以新的频率。
+    - |
+      （1）$E'=\frac12m(2\omega)^2A^2=4E$。（2）$E'=E$。（3）平均时用$\langle q^2\rangle=\frac{E}{m\omega^2}$、$\bigl\langle\frac{p^2}{2m}\bigr\rangle=\frac{E}{2}$。
+    - |
+      突然变化时$(q,p)$不变，新的能量是$E'=\frac{p^2}{2m}+\frac12m(2\omega)^2q^2$，新的作用量变量是$I'=\frac{E'}{2\omega}$。
+
+      （1）$p=0$、$q=A$：$E'=4\cdot\frac12m\omega^2A^2=4E$，$I'=\frac{4E}{2\omega}=2I$。（2）$q=0$：$E'=E$，$I'=\frac{E}{2\omega}=\frac I2$。（3）一个周期里动能和势能各占一半，$\bigl\langle\frac{p^2}{2m}\bigr\rangle=\frac E2$，$\bigl\langle\frac12m\omega^2q^2\bigr\rangle=\frac E2$，所以$\langle E'\rangle=\frac E2+4\cdot\frac E2=\frac{5E}{2}$，$\langle I'\rangle=\frac{5E}{4\omega}=\frac54I$。
+
+      缓慢变化时$I'=I$，能量变成$2E$，和相位无关。突然变化时$I$不再不变：结果依赖于变化发生时的相位，从$\frac I2$到$2I$都有可能，平均还大了$\frac14$。在相平面上看，突然变化把原来的圆形相轨道原封不动地放进新的哈密顿量里，它不再是新的等能线，而是被新的运动带着转动；缓慢变化时，相轨道才有时间一点一点地变成新的等能线，面积保持不变。
+  reference: |
+    突变时$(q,p)$不变，$E'=\frac{p^2}{2m}+2m\omega^2q^2$，$I'=E'/(2\omega)$。（1）$E'=4E$，$I'=2I$；（2）$E'=E$，$I'=I/2$；（3）$\langle E'\rangle=\frac E2+4\cdot\frac E2=\frac52E$，$\langle I'\rangle=\frac54I$。缓慢变化时$I'=I$、$E'=2E$且与相位无关；突变时依赖相位，$I$不守恒。
+
+- id: p7
+  tier: thinking
+  statement: |
+    热力学里也有「绝热过程」，英文同样叫 adiabatic：气体被缓慢压缩、和外界没有热交换。
+
+    用例 2 的盒子想一想：一维盒子里有很多互不碰撞的粒子，墙缓慢地向里推，总能量$E$和盒子长度$L$满足什么关系？墙受的平均力$F$和$L$满足什么关系？这和理想气体的绝热过程$pV^\gamma=$常数有什么关系，$\gamma$是多少？为什么两个领域会用同一个词？
+  hints:
+    - |
+      每个粒子的$v_iL$不变，所以总能量$E\propto L^{-2}$。墙受的平均力是$F=-\dv{E}{L}$。
+    - |
+      $F=\frac{2E}{L}\propto L^{-3}$，所以$FL^3$不变。一维的「体积」是$L$，「压强」是$F$；单原子理想气体（monatomic ideal gas）每个粒子有$f$个平动自由度时$\gamma=\frac{f+2}{f}$。
+    - |
+      每个粒子的$I_i=\frac{mv_iL}{\pi}$各自不变，所以$v_i\propto\frac1L$，总能量$E=\sum_i\frac12mv_i^2\propto L^{-2}$。墙受的平均力$F=-\dv{E}{L}=\frac{2E}{L}$（也可以由动量传递直接算：每个粒子每隔$\frac{2L}{v_i}$给墙$2mv_i$的冲量），所以$F\propto L^{-3}$，$FL^3=$常数。这正是绝热过程$pV^\gamma=$常数在一维的样子，$\gamma=3$，和$\gamma=\frac{f+2}{f}$在$f=1$时一致。
+
+      两个词的共同点是「缓慢、不和外界交换热」：在力学里是参数变得比运动的周期慢得多，在热力学里是过程进行得足够慢，系统时时处在平衡态，又没有热量出入。更深的联系是熵（entropy）：一个自由度的相轨道围成的面积是$2\pi I$，统计力学里熵由系统能到达的相空间体积决定，$I$不变就意味着熵不变，所以缓慢的绝热过程是等熵过程（isentropic process）。浸渐不变量正是在这里把力学和热力学连在一起。
+  reference: |
+    每个粒子$v_iL$不变，$E\propto L^{-2}$；$F=-\dv{E}{L}=\frac{2E}{L}\propto L^{-3}$，$FL^3=$常数，即一维的$pV^\gamma$守恒，$\gamma=3=\frac{f+2}{f}$（$f=1$）。共同点是缓慢、无热交换；更深的联系是熵由相空间体积决定，$I$不变即等熵。
+
+- id: p8
+  tier: thinking
+  statement: |
+    例 1 的单摆，如果一直把绳往上拉，振幅$\phi_0\propto l^{-3/4}$越来越大，小角度近似总会失效。摆动的能量能不能最后超过让摆球转过最高点所需的能量？在那附近，作用量变量还近似不变吗？为什么？
+  hints:
+    - |
+      比较摆动的能量$E_{\mathrm{osc}}\propto l^{-1/2}$和转过最高点所需的能量$2mgl$随$l$怎样变。分界线附近的周期是多少？
+    - |
+      $\frac{E_{\mathrm{osc}}}{2mgl}\propto l^{-3/2}$，摆长变短时一直增大。分界线上运动走一圈要无限长的时间，$T\to\infty$。
+    - |
+      摆动的能量按$l^{-1/2}$增加，而转过最高点需要的$2mgl$按$l$减小，两者之比按$l^{-3/2}$增大，所以绳拉得足够短，摆动的能量一定会达到分界线的能量（这时小角度近似早已不成立，但$I$守恒的结论不依赖小角度）。
+
+      可是浸渐不变性正是在那里失效。它的前提是参数在一个周期里变化很小，而相轨道越接近分界线，周期越长，在分界线上是无穷大（讲相空间时说过，要无限长的时间才接近最高点）。不管拉得多慢，总有一段时间里「一个周期内的变化」不再小，$I$不再近似不变。
+
+      越过分界线时还有一个麻烦：来回摆的相轨道是一个闭曲线，转圈的相轨道是上下两条波浪线中的一条，两种运动的$I$定义的方式不同，越过时$I$会跳变；跳成多少、转向哪一边，取决于越过时的相位，对相位稍有不同的初始状态，结果可以完全不同。天体力学里，行星和卫星被「捕获」进轨道共振（orbital resonance），就是这类越过分界线的问题。
+  reference: |
+    $E_{\mathrm{osc}}\propto l^{-1/2}$，所需能量$2mgl\propto l$，比值$\propto l^{-3/2}$增大，终会达到分界线。但分界线附近周期$T\to\infty$，「一周期内参数变化小」不再成立，浸渐不变性失效。越过分界线时来回摆与转圈的$I$定义不同，$I$跳变，结果依赖相位（轨道共振捕获等问题）。

@@ -1,0 +1,169 @@
+- id: p1
+  tier: easy
+  statement: |
+    一个自由度，在$q>0$的区域里作换元$Q=q^2$、$P=\frac{ap}{q}$，$a$是常数。$a$取多少时它是:term[正则变换]{id="physics.analytical-mechanics.canonical-transformation"}？
+  answer:
+    type: number
+    value: 1/2
+  hints:
+    - |
+      一个自由度时，只要检查$\pb{Q}{P}=1$。
+    - |
+      $\pb{Q}{P}=\frac{\partial Q}{\partial q}\frac{\partial P}{\partial p}-\frac{\partial Q}{\partial p}\frac{\partial P}{\partial q}$，其中$\frac{\partial Q}{\partial p}=0$。
+    - |
+      $\pb{Q}{P}=2q\cdot\frac{a}{q}-0=2a$。要它等于$1$，$a=\frac12$，填 `1/2`。这个换元是$F_2=q^2P$给出的点变换：$Q=q^2$，$p=2qP$。
+  solution: |
+    $\pb{Q}{P}=2q\cdot\frac{a}{q}=2a=1$，$a=\frac12$。
+
+- id: p2
+  tier: easy
+  statement: |
+    一个自由度，下面哪些换元是:term[正则变换]{id="physics.analytical-mechanics.canonical-transformation"}（$\alpha$是常数）？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $Q=p$，$P=-q$
+      - |
+        $Q=p$，$P=q$
+      - |
+        $Q=q\cos\alpha-p\sin\alpha$，$P=q\sin\alpha+p\cos\alpha$
+      - |
+        $Q=2q$，$P=2p$
+    value: [1, 3]
+  hints:
+    - |
+      逐个算$\pb{Q}{P}$，等于$1$的才是。
+    - |
+      A：$\pb{p}{-q}$。B：$\pb{p}{q}$。C：$\cos\alpha\cdot\cos\alpha-(-\sin\alpha)\cdot\sin\alpha$。D：$\pb{2q}{2p}$。
+    - |
+      A：$\pb{p}{-q}=-\pb{p}{q}=\pb{q}{p}=1$，是。B：$\pb{p}{q}=-1$，不是。C：$\cos^2\alpha+\sin^2\alpha=1$，是，它是$(q,p)$平面上的转动。D：$\pb{2q}{2p}=4$，不是，它把面积放大了$4$倍。
+
+      答案是 A、C。
+  solution: |
+    A、C。$\pb{Q}{P}$依次是$1$、$-1$、$1$、$4$。
+
+- id: p3
+  tier: medium
+  statement: |
+    一个自由度，$H=\frac{p^2}{2}+q$（无量纲）。用:term[生成函数]{id="physics.analytical-mechanics.generating-function"}$F_2(q,P)=e^qP$造一个换元，求新的:term[哈密顿量]{id="physics.analytical-mechanics.hamiltonian"}$K$在$Q=2$、$P=3$处的值。
+  answer:
+    type: number
+    value: 18 + log(2)
+  hints:
+    - |
+      按$p=\frac{\partial F_2}{\partial q}$、$Q=\frac{\partial F_2}{\partial P}$写出换元，再把$q$、$p$用$Q$、$P$表示。$F_2$不显含时间。
+    - |
+      $Q=e^q$，$p=e^qP$，所以$q=\ln Q$，$p=QP$；$K=H$。
+    - |
+      $K=\frac{(QP)^2}{2}+\ln Q$。在$Q=2$、$P=3$处，$K=\frac{36}{2}+\ln2=18+\ln2\approx18.693$。答案填 `18 + log(2)`（`log` 是自然对数）。
+  solution: |
+    $Q=e^q$，$p=QP$，$K=H=\frac{Q^2P^2}{2}+\ln Q=18+\ln2\approx18.693$。
+
+- id: p4
+  tier: medium
+  statement: |
+    一个自由度，$H=\frac12(p^2+q^2)$（无量纲）。用显含时间的:term[生成函数]{id="physics.analytical-mechanics.generating-function"}$F_2(q,P,t)=qPe^{t}$造一个换元，求新的:term[哈密顿量]{id="physics.analytical-mechanics.hamiltonian"}$K$在$t=0$、$Q=1$、$P=1$时的值。
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      $K=H+\frac{\partial F_2}{\partial t}$，两项都要用新变量写出来。注意$t=0$时换元恰好是恒等变换，可$K$不等于$H$。
+    - |
+      $Q=qe^t$，$p=Pe^t$；$\frac{\partial F_2}{\partial t}=qPe^t=QP$。
+    - |
+      由$Q=\frac{\partial F_2}{\partial P}=qe^t$、$p=\frac{\partial F_2}{\partial q}=Pe^t$，$q=Qe^{-t}$，$p=Pe^t$。所以
+
+      $$
+      K=\frac12\bigl(P^2e^{2t}+Q^2e^{-2t}\bigr)+QP .
+      $$
+
+      $t=0$、$Q=P=1$时$K=\frac12(1+1)+1=2$。若漏掉$\frac{\partial F_2}{\partial t}$，会错得出$1$。
+  solution: |
+    $K=H+\frac{\partial F_2}{\partial t}=\frac12(P^2e^{2t}+Q^2e^{-2t})+QP$，$t=0$时等于$2$。
+
+- id: p5
+  tier: hard
+  statement: |
+    质点在匀强重力场中沿竖直方向运动，$H=\frac{p^2}{2m}+mgq$（$q$向上为正）。改用自由下落的参考系：$Q=q+\frac12gt^2$，$P=p+mgt$。证明:term[生成函数]{id="physics.analytical-mechanics.generating-function"}$F_2(q,P,t)=\bigl(q+\frac12gt^2\bigr)(P-mgt)+\frac13mg^2t^3$给出这个换元，并求新的:term[哈密顿量]{id="physics.analytical-mechanics.hamiltonian"}$K$。在自由下落的参考系里看，重力到哪里去了？
+  hints:
+    - |
+      按$p=\frac{\partial F_2}{\partial q}$、$Q=\frac{\partial F_2}{\partial P}$验证换元；再算$\frac{\partial F_2}{\partial t}$，把$H+\frac{\partial F_2}{\partial t}$全部用$Q$、$P$写出来。
+    - |
+      $\frac{\partial F_2}{\partial t}=gtP-mgq-\frac12mg^2t^2$。代入$p=P-mgt$、$q=Q-\frac12gt^2$以后，含$t$的项全部抵消。
+    - |
+      $\frac{\partial F_2}{\partial q}=P-mgt=p$，$\frac{\partial F_2}{\partial P}=q+\frac12gt^2=Q$，正是要的换元。
+
+      $\frac{\partial F_2}{\partial t}=gt(P-mgt)-mg\bigl(q+\frac12gt^2\bigr)+mg^2t^2=gtP-mgq-\frac12mg^2t^2$。用新变量，$q=Q-\frac12gt^2$，它等于$gtP-mgQ$。而
+
+      $$
+      H=\frac{(P-mgt)^2}{2m}+mg\Bigl(Q-\frac12gt^2\Bigr)=\frac{P^2}{2m}-gtP+mgQ ,
+      $$
+
+      所以$K=H+\frac{\partial F_2}{\partial t}=\frac{P^2}{2m}$。
+
+      新的哈密顿量是自由质点的：$\dot P=0$，$\dot Q=\frac{P}{m}$，在自由下落的参考系里质点做匀速直线运动，重力消失了。这是等效原理（equivalence principle）最简单的例子，广义相对论正是从这里出发的。$F_2$里的$\frac13mg^2t^3$只是消掉了$K$里一个只含时间的项，没有它$K$多出$-mg^2t^2$，方程不变。
+  reference: |
+    $\partial_qF_2=P-mgt=p$，$\partial_PF_2=q+\frac12gt^2=Q$。$\partial_tF_2=gtP-mgq-\frac12mg^2t^2=gtP-mgQ$（代入$q=Q-\frac12gt^2$）；$H=\frac{P^2}{2m}-gtP+mgQ$。故$K=\frac{P^2}{2m}$，自由下落参考系里质点不受力（等效原理）。$\frac13mg^2t^3$只消去只含$t$的项，不影响方程。
+
+- id: p6
+  tier: hard
+  statement: |
+    一个自由度，:term[生成函数]{id="physics.analytical-mechanics.generating-function"}$F_1(q,Q)$不显含时间，且$\frac{\partial^2F_1}{\partial q\,\partial Q}\neq0$。由$p=\frac{\partial F_1}{\partial q}$、$P=-\frac{\partial F_1}{\partial Q}$定出$Q(q,p)$、$P(q,p)$。不用哈密顿原理，直接计算证明$\pb{Q}{P}=1$。条件$\frac{\partial^2F_1}{\partial q\,\partial Q}\neq0$起什么作用？
+  hints:
+    - |
+      把$p=\frac{\partial F_1}{\partial q}(q,Q)$两边取全微分，解出$\dd Q$，读出$\frac{\partial Q}{\partial q}$、$\frac{\partial Q}{\partial p}$；再对$P=-\frac{\partial F_1}{\partial Q}(q,Q)$取全微分。
+    - |
+      记$F_{qq}$、$F_{qQ}$、$F_{QQ}$为二阶偏导数。$\dd p=F_{qq}\dd q+F_{qQ}\dd Q$，所以$\dd Q=\frac{\dd p-F_{qq}\dd q}{F_{qQ}}$。
+    - |
+      由$\dd Q=\frac{\dd p-F_{qq}\dd q}{F_{qQ}}$，$\frac{\partial Q}{\partial q}=-\frac{F_{qq}}{F_{qQ}}$，$\frac{\partial Q}{\partial p}=\frac{1}{F_{qQ}}$。$\dd P=-F_{Qq}\dd q-F_{QQ}\dd Q=-F_{Qq}\dd q-F_{QQ}\frac{\dd p-F_{qq}\dd q}{F_{qQ}}$，所以$\frac{\partial P}{\partial q}=-F_{Qq}+\frac{F_{QQ}F_{qq}}{F_{qQ}}$，$\frac{\partial P}{\partial p}=-\frac{F_{QQ}}{F_{qQ}}$。
+
+      $$
+      \pb{Q}{P}=\Bigl(-\frac{F_{qq}}{F_{qQ}}\Bigr)\Bigl(-\frac{F_{QQ}}{F_{qQ}}\Bigr)-\frac{1}{F_{qQ}}\Bigl(-F_{Qq}+\frac{F_{QQ}F_{qq}}{F_{qQ}}\Bigr)=\frac{F_{Qq}}{F_{qQ}}=1 ,
+      $$
+
+      最后用了混合偏导数相等$F_{Qq}=F_{qQ}$。
+
+      条件$F_{qQ}\neq0$保证能从$p=\frac{\partial F_1}{\partial q}(q,Q)$解出$Q$：它说明$p$真的随$Q$变，$q$和$Q$可以当作独立的变量。$F_{qQ}=0$时，$p$只依赖$q$，比如$F_1=q^2$给出$p=2q$，这根本不是$(q,p)$平面上的换元。例：$F_1=qQ$，$F_{qQ}=1$，给出$p=Q$、$P=-q$，$\pb{Q}{P}=\pb{p}{-q}=1$。
+  reference: |
+    $\dd p=F_{qq}\dd q+F_{qQ}\dd Q\Rightarrow Q_q=-F_{qq}/F_{qQ}$，$Q_p=1/F_{qQ}$；$\dd P=-F_{Qq}\dd q-F_{QQ}\dd Q\Rightarrow P_q=-F_{Qq}+F_{QQ}F_{qq}/F_{qQ}$，$P_p=-F_{QQ}/F_{qQ}$。$\pb{Q}{P}=Q_qP_p-Q_pP_q=F_{Qq}/F_{qQ}=1$。$F_{qQ}\ne0$保证能由$p=F_q(q,Q)$解出$Q$，即$q$、$Q$独立。
+
+- id: p7
+  tier: thinking
+  statement: |
+    把系统从$t=0$的状态$(q,p)$带到$t$时刻的状态$(q(t),p(t))$，这也是一个换元。它是不是:term[正则变换]{id="physics.analytical-mechanics.canonical-transformation"}？
+
+    先看$t$很小的情形，一个自由度、$H$不显含时间时，$Q\approx q+t\frac{\partial H}{\partial p}$、$P\approx p-t\frac{\partial H}{\partial q}$，算$\pb{Q}{P}$到$t$的一次项。为什么$t$不小时结论也对？一个自由度时，这说明运动对$(q,p)$平面上的面积做了什么？
+  hints:
+    - |
+      $\pb{Q}{P}=\frac{\partial Q}{\partial q}\frac{\partial P}{\partial p}-\frac{\partial Q}{\partial p}\frac{\partial P}{\partial q}$，每个偏导数都是「$1$或$0$加上$t$乘二阶偏导数」。
+    - |
+      一次项是$t\bigl(\frac{\partial^2H}{\partial q\,\partial p}-\frac{\partial^2H}{\partial p\,\partial q}\bigr)$。两个正则变换接连做，结果还是正则变换。
+    - |
+      $\frac{\partial Q}{\partial q}=1+tH_{pq}$，$\frac{\partial Q}{\partial p}=tH_{pp}$，$\frac{\partial P}{\partial q}=-tH_{qq}$，$\frac{\partial P}{\partial p}=1-tH_{qp}$。所以$\pb{Q}{P}=(1+tH_{pq})(1-tH_{qp})+t^2H_{pp}H_{qq}=1+t(H_{pq}-H_{qp})+O(t^2)=1+O(t^2)$：一小段时间的运动，在一次近似下是正则变换。
+
+      把$0$到$t$分成$N$小段，每段长$\frac tN$。保持括号的换元接连做，括号仍保持；每段只差$O\bigl((t/N)^2\bigr)$，$N$段一共差$O(t^2/N)$，$N\to\infty$时趋于零。所以任何时刻的运动都是正则变换，可以说$H$生成了运动，就像泊松括号那一节 p5 里$G$生成变换一样。它的生成函数是沿真实运动的作用量，下一节的哈密顿-雅可比方程要用到这件事。
+
+      一个自由度时，正则变换保持面积：一块初始状态随运动变形，面积不变。这和[相空间与刘维尔定理](lesson:physics.analytical-mechanics.phase-space-liouville)那一节的刘维尔定理是同一件事。
+  reference: |
+    小$t$：$Q_q=1+tH_{pq}$，$Q_p=tH_{pp}$，$P_q=-tH_{qq}$，$P_p=1-tH_{qp}$，$\pb{Q}{P}=1+t(H_{pq}-H_{qp})+O(t^2)=1+O(t^2)$。分成$N$段，每段误差$O((t/N)^2)$，总误差$O(t^2/N)\to0$，正则变换的复合仍正则，故运动是正则变换（$H$生成运动，生成函数是作用量）。一个自由度时即保持面积（刘维尔定理）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    $Q=\lambda q$、$P=p$（$\lambda\neq1$是常数）不满足$\pb{Q}{P}=1$，不是:term[正则变换]{id="physics.analytical-mechanics.canonical-transformation"}。可是验证一下：新变量满足以$K=\lambda H$为哈密顿量的正则方程。那为什么不把它也算作正则变换？想想它对泊松括号、对$(q,p)$平面上的面积做了什么，再想想它和「换单位」的关系。
+  hints:
+    - |
+      验证$\dot Q=\frac{\partial(\lambda H)}{\partial P}$、$\dot P=-\frac{\partial(\lambda H)}{\partial Q}$，注意$\frac{\partial q}{\partial Q}=\frac1\lambda$。
+    - |
+      按新变量算的括号是按旧变量算的$\frac1\lambda$倍；面积变成$\lambda$倍。
+    - |
+      把$H$改用$Q$、$P$写，$\frac{\partial H}{\partial Q}=\frac1\lambda\frac{\partial H}{\partial q}$，$\frac{\partial H}{\partial P}=\frac{\partial H}{\partial p}$。于是$\dot Q=\lambda\dot q=\lambda\frac{\partial H}{\partial p}=\frac{\partial(\lambda H)}{\partial P}$，$\dot P=\dot p=-\frac{\partial H}{\partial q}=-\frac{\partial(\lambda H)}{\partial Q}$，确实成立。
+
+      但它改变了别的东西：按新变量算的括号是$\pb{f}{g}_{Q,P}=\frac1\lambda\pb{f}{g}_{q,p}$，$(q,p)$平面上的面积变成$\lambda$倍，新的哈密顿量的值也不再等于能量。它其实就是把$q$换了个单位（比如米换成厘米）：方程的形式照旧，只是「能量」的数值跟着变。
+
+      把基本括号严格规定为$\delta_{ij}$，排除的正是这种单纯的伸缩：这样括号、面积和$H$的值都在正则变换下不变，后面讲的作用量变量才是一个确定的数。有的书把伸缩也包进来，叫扩展的正则变换（extended canonical transformation），它总可以看成一个正则变换再加一次换单位。
+  reference: |
+    验证：$\dot Q=\lambda\dot q=\partial(\lambda H)/\partial P$，$\dot P=-\partial H/\partial q=-\partial(\lambda H)/\partial Q$。但括号按新变量算是旧的$1/\lambda$倍，面积放大$\lambda$倍，$K$的值不再是能量；它相当于换单位。规定基本括号为$\delta_{ij}$排除了单纯伸缩，使括号、面积、$H$的值都不变（作用量变量才有确定的值）；把伸缩包含进来的叫扩展的正则变换。

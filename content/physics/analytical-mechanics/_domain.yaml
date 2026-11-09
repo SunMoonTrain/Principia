@@ -268,3 +268,174 @@ glossary:
       拉格朗日量的连续对称性给出守恒量$\sum_jp_jK_j$；平移对应动量，转动对应角动量。
     definedIn: physics.analytical-mechanics.noether-theorem
     anchor: def-noether
+  - id: physics.analytical-mechanics.hamiltonian
+    zh: |
+      哈密顿量
+    en: |
+      Hamiltonian
+    brief: |
+      用广义坐标和广义动量表示的能量函数$H(q,p,t)=\sum_jp_j\dot q_j-L$，是$L$对广义速度的勒让德变换。
+    definedIn: physics.analytical-mechanics.hamiltons-equations
+    anchor: def-hamiltonian
+  - id: physics.analytical-mechanics.hamiltons-equations
+    zh: |
+      哈密顿正则方程
+    en: |
+      Hamilton's canonical equations
+    brief: |
+      $\dot q_j=\frac{\partial H}{\partial p_j}$，$\dot p_j=-\frac{\partial H}{\partial q_j}$：$2n$个一阶方程，和拉格朗日方程等价。
+    definedIn: physics.analytical-mechanics.hamiltons-equations
+    anchor: def-hamiltons-equations
+  - id: physics.analytical-mechanics.phase-space
+    zh: |
+      相空间
+    en: |
+      phase space
+    brief: |
+      以全部广义坐标和广义动量$(q,p)$为坐标的$2n$维空间，系统的每个状态是其中的一点。
+    definedIn: physics.analytical-mechanics.phase-space-liouville
+    anchor: def-phase-space
+  - id: physics.analytical-mechanics.phase-trajectory
+    zh: |
+      相轨道
+    en: |
+      phase trajectory
+    brief: |
+      系统的一个运动在相空间里画出的曲线；$H$不显含时间时，不同的相轨道不相交。
+    definedIn: physics.analytical-mechanics.phase-space-liouville
+    anchor: def-phase-space
+  - id: physics.analytical-mechanics.phase-flow
+    zh: |
+      相流
+    en: |
+      phase flow
+    brief: |
+      让每个相点沿相轨道走$t$时间的映射$g_t$，它把一块区域$D_0$变成$D_t$。
+    definedIn: physics.analytical-mechanics.phase-space-liouville
+    anchor: def-phase-flow
+  - id: physics.analytical-mechanics.liouville-theorem
+    zh: |
+      刘维尔定理
+    en: |
+      Liouville's theorem
+    brief: |
+      哈密顿系统的相流保持相空间的体积不变；$H$显含时间时也成立。
+    definedIn: physics.analytical-mechanics.phase-space-liouville
+    anchor: thm-liouville
+  - id: physics.analytical-mechanics.poisson-bracket
+    zh: |
+      泊松括号
+    en: |
+      Poisson bracket
+    brief: |
+      $\{f,g\}=\sum_j\bigl(\frac{\partial f}{\partial q_j}\frac{\partial g}{\partial p_j}-\frac{\partial f}{\partial p_j}\frac{\partial g}{\partial q_j}\bigr)$；沿运动$\frac{\mathrm{d}f}{\mathrm{d}t}=\{f,H\}+\frac{\partial f}{\partial t}$。
+    definedIn: physics.analytical-mechanics.poisson-brackets
+    anchor: def-poisson-bracket
+  - id: physics.analytical-mechanics.fundamental-poisson-brackets
+    zh: |
+      基本泊松括号
+    en: |
+      fundamental Poisson brackets
+    brief: |
+      坐标和动量之间的括号：$\{q_i,q_j\}=\{p_i,p_j\}=0$，$\{q_i,p_j\}=\delta_{ij}$。
+    definedIn: physics.analytical-mechanics.poisson-brackets
+    anchor: def-fundamental-brackets
+  - id: physics.analytical-mechanics.jacobi-identity
+    zh: |
+      雅可比恒等式
+    en: |
+      Jacobi identity
+    brief: |
+      $\{f,\{g,h\}\}+\{g,\{h,f\}\}+\{h,\{f,g\}\}=0$，泊松括号的基本性质之一。
+    definedIn: physics.analytical-mechanics.poisson-brackets
+    anchor: thm-jacobi
+  - id: physics.analytical-mechanics.poisson-theorem
+    zh: |
+      泊松定理
+    en: |
+      Poisson's theorem
+    brief: |
+      $H$不显含时间时，两个不显含时间的守恒量的泊松括号也守恒。
+    definedIn: physics.analytical-mechanics.poisson-brackets
+    anchor: thm-poisson
+  - id: physics.analytical-mechanics.canonical-transformation
+    zh: |
+      正则变换
+    en: |
+      canonical transformation
+    brief: |
+      保持基本泊松括号、因而保持正则方程形式的换元$(q,p)\to(Q,P)$；显含时间时新哈密顿量要加上$\frac{\partial F}{\partial t}$。
+    definedIn: physics.analytical-mechanics.canonical-transformations
+    anchor: def-canonical-transformation
+  - id: physics.analytical-mechanics.generating-function
+    zh: |
+      生成函数
+    en: |
+      generating function
+    brief: |
+      新旧变量各取一半的函数，如$F_2(q,P,t)$：$p=\frac{\partial F_2}{\partial q}$，$Q=\frac{\partial F_2}{\partial P}$，$K=H+\frac{\partial F_2}{\partial t}$。
+    definedIn: physics.analytical-mechanics.canonical-transformations
+    anchor: def-generating-function
+  - id: physics.analytical-mechanics.hamilton-jacobi-equation
+    zh: |
+      哈密顿-雅可比方程
+    en: |
+      Hamilton–Jacobi equation
+    brief: |
+      $H\bigl(q,\frac{\partial S}{\partial q},t\bigr)+\frac{\partial S}{\partial t}=0$：让新哈密顿量为零的生成函数$S$满足的偏微分方程。
+    definedIn: physics.analytical-mechanics.hamilton-jacobi
+    anchor: def-hamilton-jacobi
+  - id: physics.analytical-mechanics.complete-integral
+    zh: |
+      完全积分
+    en: |
+      complete integral
+    brief: |
+      哈密顿-雅可比方程含$n$个独立常数$\alpha_j$的解$S(q,\alpha,t)$；由$\frac{\partial S}{\partial\alpha_j}=\beta_j$解出运动。
+    definedIn: physics.analytical-mechanics.hamilton-jacobi
+    anchor: def-hamilton-jacobi
+  - id: physics.analytical-mechanics.principal-function
+    zh: |
+      哈密顿主函数
+    en: |
+      Hamilton's principal function
+    brief: |
+      用作生成函数的完全积分$S(q,\alpha,t)$；沿真实运动$\frac{\mathrm{d}S}{\mathrm{d}t}=L$，它就是作用量。
+    definedIn: physics.analytical-mechanics.hamilton-jacobi
+    anchor: def-hamilton-jacobi
+  - id: physics.analytical-mechanics.characteristic-function
+    zh: |
+      哈密顿特征函数
+    en: |
+      Hamilton's characteristic function
+    brief: |
+      $H$不显含时间时$S=W-Et$中的$W(q,\alpha)$，满足$H\bigl(q,\frac{\partial W}{\partial q}\bigr)=E$。
+    definedIn: physics.analytical-mechanics.hamilton-jacobi
+    anchor: def-characteristic-function
+  - id: physics.analytical-mechanics.action-variable
+    zh: |
+      作用量变量
+    en: |
+      action variable
+    brief: |
+      周期运动的$I=\frac{1}{2\pi}\oint p\,\mathrm{d}q$，即相轨道围成的面积除以$2\pi$；它守恒，$H$只依赖它。
+    definedIn: physics.analytical-mechanics.action-angle-variables
+    anchor: def-action-variable
+  - id: physics.analytical-mechanics.angle-variable
+    zh: |
+      角变量
+    en: |
+      angle variable
+    brief: |
+      和作用量变量$I$共轭的坐标$\theta=\frac{\partial W}{\partial I}$，以角频率$\omega=\frac{\mathrm{d}H}{\mathrm{d}I}$均匀增加，每个周期增加$2\pi$。
+    definedIn: physics.analytical-mechanics.action-angle-variables
+    anchor: def-angle-variable
+  - id: physics.analytical-mechanics.adiabatic-invariant
+    zh: |
+      浸渐不变量
+    en: |
+      adiabatic invariant
+    brief: |
+      参数变化越慢、在整个过程中改变得越少的量；一个自由度周期运动的作用量变量就是。
+    definedIn: physics.analytical-mechanics.adiabatic-invariants
+    anchor: def-adiabatic-invariant

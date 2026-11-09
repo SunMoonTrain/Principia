@@ -1,0 +1,173 @@
+- id: p1
+  tier: easy
+  statement: |
+    自由质点$H=\frac{p^2}{2m}$，:term[哈密顿-雅可比方程]{id="physics.analytical-mechanics.hamilton-jacobi-equation"}有:term[完全积分]{id="physics.analytical-mechanics.complete-integral"}$S=\alpha q-\frac{\alpha^2t}{2m}$。取$m=2\,\mathrm{kg}$、$\alpha=4\,\mathrm{kg\cdot m/s}$，常数$\beta=\frac{\partial S}{\partial\alpha}=-1\,\mathrm{m}$。求$t=3\,\mathrm{s}$时的$q$。
+  answer:
+    type: number
+    value: 5
+    unit: |
+      $\mathrm{m}$
+  hints:
+    - |
+      先算出$\frac{\partial S}{\partial\alpha}$，令它等于$\beta$，解出$q(t)$。
+    - |
+      $\frac{\partial S}{\partial\alpha}=q-\frac{\alpha t}{m}$，所以$q=\beta+\frac{\alpha}{m}t$。
+    - |
+      $q=-1+\frac{4}{2}\times3=5\,\mathrm{m}$。这是速度$\frac{\alpha}{m}=2\,\mathrm{m/s}$的匀速运动，$\alpha$是动量，$\beta$是$t=0$时的位置。
+  solution: |
+    $\beta=q-\frac{\alpha t}{m}$，$q=\beta+\frac{\alpha t}{m}=-1+6=5\,\mathrm{m}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    自由质点$H=\frac{p^2}{2}$（取$m=1$，无量纲）。下面哪些$S(q,t)$满足:term[哈密顿-雅可比方程]{id="physics.analytical-mechanics.hamilton-jacobi-equation"}（$\alpha$是任意常数，要求对所有$\alpha$都成立；$t>0$）？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $S=\alpha q-\frac12\alpha^2t$
+      - |
+        $S=\frac{q^2}{2t}$
+      - |
+        $S=\alpha q-\alpha t$
+      - |
+        $S=qt$
+    value: [1, 2]
+  hints:
+    - |
+      方程是$\frac12\bigl(\frac{\partial S}{\partial q}\bigr)^2+\frac{\partial S}{\partial t}=0$，逐个代进去，看是不是对所有$q$、$t$都成立。
+    - |
+      B：$\frac{\partial S}{\partial q}=\frac{q}{t}$，$\frac{\partial S}{\partial t}=-\frac{q^2}{2t^2}$。C：左边是$\frac12\alpha^2-\alpha$。D：左边是$\frac12t^2+q$。
+    - |
+      A：$\frac12\alpha^2-\frac12\alpha^2=0$，满足。B：$\frac12\cdot\frac{q^2}{t^2}-\frac{q^2}{2t^2}=0$，满足。C：$\frac12\alpha^2-\alpha$只在$\alpha=0$或$2$时为零，不是对所有常数都满足，作为含常数的解不行。D：$\frac12t^2+q$不恒为零。
+
+      答案是 A、B。B 是$t=0$时从原点出发、$t$时刻到达$q$的那段运动的作用量（见 p5）。
+  solution: |
+    A、B。代入$\frac12(\partial_qS)^2+\partial_tS$：A、B 恒为零，C 得$\frac12\alpha^2-\alpha$，D 得$\frac12t^2+q$。
+
+- id: p3
+  tier: medium
+  statement: |
+    质点受恒力$F$作一维运动，$H=\frac{p^2}{2m}-Fq$。验证$S(q,\alpha,t)=(\alpha+Ft)\,q-\frac{(\alpha+Ft)^3}{6mF}$满足:term[哈密顿-雅可比方程]{id="physics.analytical-mechanics.hamilton-jacobi-equation"}，再由$\beta=\frac{\partial S}{\partial\alpha}$求运动。取$m=1\,\mathrm{kg}$、$F=2\,\mathrm{N}$、$\alpha=1\,\mathrm{kg\cdot m/s}$、$\beta=0$，求$t=1\,\mathrm{s}$时的$q$。
+  answer:
+    type: number
+    value: 9/4
+    unit: |
+      $\mathrm{m}$
+  hints:
+    - |
+      代入$\frac{1}{2m}\bigl(\frac{\partial S}{\partial q}\bigr)^2-Fq+\frac{\partial S}{\partial t}$，看是否恒为零；再对$\alpha$求偏导数。
+    - |
+      $\frac{\partial S}{\partial q}=\alpha+Ft$，$\frac{\partial S}{\partial t}=Fq-\frac{(\alpha+Ft)^2}{2m}$；$\frac{\partial S}{\partial\alpha}=q-\frac{(\alpha+Ft)^2}{2mF}$。
+    - |
+      $\frac{1}{2m}(\alpha+Ft)^2-Fq+Fq-\frac{(\alpha+Ft)^2}{2m}=0$，满足方程。由$\beta=q-\frac{(\alpha+Ft)^2}{2mF}$得
+
+      $$
+      q=\beta+\frac{(\alpha+Ft)^2}{2mF} ,
+      $$
+
+      $p=\frac{\partial S}{\partial q}=\alpha+Ft$：动量均匀增加，是匀加速运动。代入数值，$q=\frac{(1+2)^2}{2\times1\times2}=\frac94=2.25\,\mathrm{m}$。答案填 `9/4`。用牛顿定律核对：$t=0$时$q=\frac14\,\mathrm{m}$、速度$1\,\mathrm{m/s}$、加速度$2\,\mathrm{m/s^2}$，一秒后$q=\frac14+1+1=\frac94$。
+  solution: |
+    $S$满足方程；$q=\beta+\frac{(\alpha+Ft)^2}{2mF}=\frac94\,\mathrm{m}$，$p=\alpha+Ft$，是匀加速运动。
+
+- id: p4
+  tier: medium
+  statement: |
+    质量$m=1\,\mathrm{kg}$的质点在引力势能$V=-\frac{k}{r}$（$k=1\,\mathrm{J\cdot m}$）里运动。某一时刻它在$r=1\,\mathrm{m}$处，速度$1.2\,\mathrm{m/s}$，方向垂直于矢径。用例 2 得到的轨道，求它离力心最远时的距离。
+  answer:
+    type: number
+    value: 18/7
+    unit: |
+      $\mathrm{m}$
+  hints:
+    - |
+      先由此刻的状态求出两个常数：角动量$\alpha_\varphi$和能量$E$。再求偏心率$e$和$\frac{\alpha_\varphi^2}{mk}$。
+    - |
+      $\alpha_\varphi=mrv=1.2$，$E=\frac12mv^2-\frac{k}{r}=-0.28$，$e=\sqrt{1+\frac{2E\alpha_\varphi^2}{mk^2}}$。最远处$\cos(\varphi-\beta_\varphi)=-1$。
+    - |
+      $\alpha_\varphi=1\times1\times1.2=1.2\,\mathrm{kg\cdot m^2/s}$，$E=0.72-1=-0.28\,\mathrm{J}$，$e=\sqrt{1-2\times0.28\times1.44}=\sqrt{0.1936}=0.44$，$\frac{\alpha_\varphi^2}{mk}=1.44\,\mathrm{m}$。
+
+      最远距离$r_{\max}=\frac{1.44}{1-0.44}=\frac{18}{7}\approx2.571\,\mathrm{m}$；最近距离$\frac{1.44}{1+0.44}=1\,\mathrm{m}$，正是出发点，出发时速度垂直于矢径，那里是近点。答案填 `18/7`。
+  solution: |
+    $\alpha_\varphi=1.2$，$E=-0.28$，$e=0.44$，$r_{\max}=\frac{\alpha_\varphi^2/(mk)}{1-e}=\frac{1.44}{0.56}=\frac{18}{7}\,\mathrm{m}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$S(q,\alpha,t)$是:term[哈密顿-雅可比方程]{id="physics.analytical-mechanics.hamilton-jacobi-equation"}的一个:term[完全积分]{id="physics.analytical-mechanics.complete-integral"}，$q(t)$是由它给出的一个真实运动。证明沿这个运动$\dv{}{t}S\bigl(q(t),\alpha,t\bigr)=L$。
+
+    再看自由质点：验证$S_2(q,t)=\frac{m(q-q_0)^2}{2(t-t_0)}$（$q_0$、$t_0$是常数，$t>t_0$）满足哈密顿-雅可比方程，并且正好等于从$(q_0,t_0)$走到$(q,t)$的真实运动的作用量$\int_{t_0}^{t}L\,\dd t$。$S_2$对终点的$q$、$t$求偏导数，分别得到什么？
+  hints:
+    - |
+      用链式法则展开$\dv{S}{t}$，再用$p_j=\frac{\partial S}{\partial q_j}$和方程本身$\frac{\partial S}{\partial t}=-H$。
+    - |
+      $\dv{S}{t}=\sum_jp_j\dot q_j-H=L$。自由质点从$(q_0,t_0)$到$(q,t)$的真实运动是匀速的，速度$v=\frac{q-q_0}{t-t_0}$，$L=\frac12mv^2$不变。
+    - |
+      沿运动，$\dv{S}{t}=\sum_j\frac{\partial S}{\partial q_j}\dot q_j+\frac{\partial S}{\partial t}$。由完全积分给出的运动满足$p_j=\frac{\partial S}{\partial q_j}$，方程又说$\frac{\partial S}{\partial t}=-H(q,p,t)$，所以$\dv{S}{t}=\sum_jp_j\dot q_j-H=L$。$S$沿真实运动的增量就是这段运动的作用量。
+
+      自由质点：$\frac{\partial S_2}{\partial q}=\frac{m(q-q_0)}{t-t_0}$，$\frac{\partial S_2}{\partial t}=-\frac{m(q-q_0)^2}{2(t-t_0)^2}$，于是$\frac{1}{2m}\bigl(\frac{\partial S_2}{\partial q}\bigr)^2+\frac{\partial S_2}{\partial t}=0$，满足方程。真实运动速度不变，$\int_{t_0}^{t}\frac12mv^2\,\dd t=\frac12m\frac{(q-q_0)^2}{(t-t_0)^2}(t-t_0)=S_2$。
+
+      $\frac{\partial S_2}{\partial q}=mv=p$是到达终点时的动量，$\frac{\partial S_2}{\partial t}=-\frac12mv^2=-E$是负的能量。作用量对终点位置的变化率是动量、对终点时刻的变化率是负的能量，这正是哈密顿-雅可比方程$\frac{\partial S}{\partial t}+H\bigl(q,\frac{\partial S}{\partial q}\bigr)=0$的来历。
+  reference: |
+    $\dv{S}{t}=\sum\partial_{q_j}S\,\dot q_j+\partial_tS=\sum p_j\dot q_j-H=L$。自由质点：$\partial_qS_2=\frac{m(q-q_0)}{t-t_0}$，$\partial_tS_2=-\frac{m(q-q_0)^2}{2(t-t_0)^2}$，满足方程；匀速运动$v=\frac{q-q_0}{t-t_0}$，$\int L\,\dd t=\frac12mv^2(t-t_0)=S_2$。$\partial_qS_2=p$，$\partial_tS_2=-E$。
+
+- id: p6
+  tier: hard
+  statement: |
+    平面各向同性振子，势能$V=\frac12kr^2$。照例 2 的做法，在极坐标里分离变量，写出轨道方程的积分；令$w=\frac{1}{r^2}$把它积出来，证明轨道是以原点为中心的椭圆。对照例 2：开普勒问题的椭圆以力心为焦点，这里的椭圆却以力心为中心。
+  hints:
+    - |
+      轨道方程是$\varphi-\beta_\varphi=\int\frac{\alpha_\varphi\,\dd r}{r^2\sqrt{2m(E-\frac12kr^2)-\alpha_\varphi^2/r^2}}$。用$w=\frac{1}{r^2}$时，$\frac{\dd r}{r^2}=-\frac{\dd w}{2\sqrt w}$。
+    - |
+      换元后被积函数是$-\frac{\alpha_\varphi}{2}\frac{\dd w}{\sqrt{2mEw-mk-\alpha_\varphi^2w^2}}$，配方以后是反余弦。结果里出现的是$\cos2(\varphi-\beta_\varphi)$。
+    - |
+      令$w=\frac{1}{r^2}$，$\dd w=-\frac{2\,\dd r}{r^3}$，$\frac{\dd r}{r^2}=-\frac{\dd w}{2\sqrt w}$；根号$\sqrt{2mE-mkr^2-\alpha_\varphi^2/r^2}=\frac{\sqrt{2mEw-mk-\alpha_\varphi^2w^2}}{\sqrt w}$。所以
+
+      $$
+      \varphi-\beta_\varphi=-\frac{\alpha_\varphi}{2}\int\frac{\dd w}{\sqrt{2mEw-mk-\alpha_\varphi^2w^2}}=-\frac12\int\frac{\dd w}{\sqrt{D^2-(w-w_0)^2}}=\frac12\arccos\frac{w-w_0}{D},
+      $$
+
+      其中配方给出$w_0=\frac{mE}{\alpha_\varphi^2}$，$D^2=w_0^2-\frac{mk}{\alpha_\varphi^2}$。于是$\frac{1}{r^2}=w_0+D\cos2(\varphi-\beta_\varphi)$。
+
+      取$\beta_\varphi=0$的方向为$x$轴，$\cos2\varphi=\cos^2\varphi-\sin^2\varphi$，两边乘$r^2$：$1=(w_0+D)x^2+(w_0-D)y^2$。因为$0\le D<w_0$，这是以原点为中心、半轴为$\frac{1}{\sqrt{w_0\pm D}}$的椭圆。
+
+      两个问题都得到闭合的椭圆，但开普勒问题里出现的是$\cos(\varphi-\beta_\varphi)$，力心在焦点上，绕一圈$r$变化一个周期；这里是$\cos2(\varphi-\beta_\varphi)$，力心在中心，绕一圈$r$变化两个周期。在所有幂律的有心力里，只有这两种力让所有有界轨道都闭合（伯特兰定理，Bertrand's theorem）。
+  reference: |
+    $w=1/r^2$，$\frac{\dd r}{r^2}=-\frac{\dd w}{2\sqrt w}$，轨道积分化为$-\frac{\alpha_\varphi}{2}\int\frac{\dd w}{\sqrt{2mEw-mk-\alpha_\varphi^2w^2}}=\frac12\arccos\frac{w-w_0}{D}$，$w_0=\frac{mE}{\alpha_\varphi^2}$，$D^2=w_0^2-\frac{mk}{\alpha_\varphi^2}$。得$\frac{1}{r^2}=w_0+D\cos2(\varphi-\beta_\varphi)$，即$(w_0+D)x^2+(w_0-D)y^2=1$，以原点为中心的椭圆。开普勒为$\cos(\varphi-\beta)$、焦点在力心。伯特兰定理：只有这两种幂律力的有界轨道都闭合。
+
+- id: p7
+  tier: thinking
+  statement: |
+    几何图像里，轨道处处垂直于$W$的等值线，就像光线垂直于波面。把$S=W-Et$想成一个波的相位，一维时，等相位点$S(q,t)=$常数以多快的速度移动？它和质点本身的速度一样吗？如果学过量子力学，试着把$\psi=Ae^{iS/\hbar}$代进薛定谔方程（Schrödinger equation），看$\hbar\to0$时剩下什么。
+  hints:
+    - |
+      等相位点满足$\dd S=\frac{\partial S}{\partial q}\dd q+\frac{\partial S}{\partial t}\dd t=0$，即$p\,\dd q-E\,\dd t=0$。
+    - |
+      等相位点的速度是$\frac{E}{p}$，质点的速度是$\frac{p}{m}$。自由质点$E=\frac{p^2}{2m}$时，前者是后者的一半；能量零点一换，前者也跟着变。
+    - |
+      由$p\,\dd q=E\,\dd t$，等相位点以$\frac{E}{p}$的速度移动。它和质点的速度$\frac{p}{m}$不同：自由质点时只有一半，而且给势能加一个常数，$E$变了，这个速度也跟着变，所以它不是能直接测量的量。真正对应质点运动的是波包（wave packet）的群速度（group velocity），那是另一回事。
+
+      哈密顿当年正是从光学出发发现这套理论的：光线垂直于波面，费马原理（Fermat's principle）说光走时间取驻值的路，力学里轨道垂直于$S$的等值面，作用量取驻值。
+
+      量子力学里，薛定谔方程$i\hbar\frac{\partial\psi}{\partial t}=-\frac{\hbar^2}{2m}\frac{\partial^2\psi}{\partial q^2}+V\psi$，代入$\psi=Ae^{iS/\hbar}$，按$\hbar$的幂整理，最低阶给出$-\frac{\partial S}{\partial t}=\frac{1}{2m}\bigl(\frac{\partial S}{\partial q}\bigr)^2+V$，正是哈密顿-雅可比方程。经典力学是波动力学（wave mechanics）在$\hbar\to0$时的「几何光学」（geometric optics）极限，$S$就是以$\hbar$为单位的相位；以后量子力学的 WKB 近似（WKB approximation）就从这里出发。
+  reference: |
+    等相位点：$p\,\dd q=E\,\dd t$，相速度$E/p$，与质点速度$p/m$不同（自由质点为一半，且依赖能量零点，不可直接测量；对应粒子运动的是群速度）。哈密顿从光学类比出发：光线⊥波面、费马原理。$\psi=Ae^{iS/\hbar}$代入薛定谔方程，最低阶即哈密顿-雅可比方程：经典力学是$\hbar\to0$的几何光学极限（WKB）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    一维的来回运动（例如谐振子），$q$走完一个来回回到原处，:term[哈密顿特征函数]{id="physics.analytical-mechanics.characteristic-function"}$W=\int p\,\dd q$却增加了$\Delta W=\oint p\,\dd q$。这个增量在$(q,p)$平面上是什么？对谐振子算出$\Delta W(E)$，再求$\frac{\dd\,\Delta W}{\dd E}$，它是什么？对一般的势能$V(q)$，为什么也有同样的关系？
+  hints:
+    - |
+      $p>0$的那半圈和$p<0$的那半圈各贡献多少？它们合起来是$(q,p)$平面上那条闭合轨迹围成的什么？
+    - |
+      谐振子在$(q,p)$平面上的轨迹是半轴为$\sqrt{\frac{2E}{m\omega^2}}$和$\sqrt{2mE}$的椭圆。一般情形，$\frac{\partial p}{\partial E}$等于什么？
+    - |
+      去程$p>0$、$\dd q>0$，回程$p<0$、$\dd q<0$，两段都是正的，合起来$\oint p\,\dd q$正是$(q,p)$平面上那条闭合轨迹围成的面积。谐振子的椭圆面积是$\pi\sqrt{\frac{2E}{m\omega^2}}\sqrt{2mE}=\frac{2\pi E}{\omega}$，所以$\frac{\dd\,\Delta W}{\dd E}=\frac{2\pi}{\omega}$，正是周期。
+
+      一般地，由$H(q,p)=E$，$\frac{\partial p}{\partial E}=\frac{1}{\partial H/\partial p}=\frac{1}{\dot q}$，所以$\frac{\dd}{\dd E}\oint p\,\dd q=\oint\frac{\dd q}{\dot q}=\oint\dd t=T$：相轨道围成的面积对能量求导，就是周期。转折点处$\frac{1}{\dot q}$发散，但积分是收敛的反常积分。
+
+      这和例 1 一致：$\beta=\frac{\partial W}{\partial E}-t$不变，而走完一圈$\frac{\partial W}{\partial E}$增加了$T$，时间也正好过了$T$。下一节就用这个面积定义一个新的守恒量，叫作用量变量，并由它直接得到频率，不必解出运动。
+  reference: |
+    $\oint p\,\dd q$去程、回程都为正，合起来是$(q,p)$平面上闭合轨迹围成的面积。谐振子为$\pi\sqrt{2E/(m\omega^2)}\sqrt{2mE}=2\pi E/\omega$，对$E$求导得$2\pi/\omega=T$。一般地$\partial p/\partial E=1/\dot q$，$\frac{\dd}{\dd E}\oint p\,\dd q=\oint\dd q/\dot q=T$（转折点处为收敛的反常积分）。与$\beta=\partial_EW-t$一致；预告作用量变量。

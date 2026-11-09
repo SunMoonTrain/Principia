@@ -1,0 +1,161 @@
+- id: p1
+  tier: easy
+  statement: |
+    一个自由度，按本节的定义求:term[泊松括号]{id="physics.analytical-mechanics.poisson-bracket"}$\pb{q^2}{p^2}$在$q=1$、$p=2$处的值。
+  answer:
+    type: number
+    value: 8
+  hints:
+    - |
+      用定义$\pb{f}{g}=\frac{\partial f}{\partial q}\frac{\partial g}{\partial p}-\frac{\partial f}{\partial p}\frac{\partial g}{\partial q}$，或者用复合函数的规则。
+    - |
+      $\frac{\partial q^2}{\partial q}=2q$，$\frac{\partial p^2}{\partial p}=2p$，另外两个偏导数为零。
+    - |
+      $\pb{q^2}{p^2}=2q\cdot2p-0=4qp$，在$q=1$、$p=2$处等于$8$。
+  solution: |
+    $\pb{q^2}{p^2}=4qp=8$。
+
+- id: p2
+  tier: easy
+  statement: |
+    平面上的各向异性振子，$H=\frac12(p_x^2+p_y^2)+\frac12(x^2+4y^2)$。下面哪些量守恒？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\frac12(p_x^2+x^2)$
+      - |
+        $L_z=xp_y-yp_x$
+      - |
+        $p_y$
+      - |
+        $\frac12p_y^2+2y^2$
+    value: [1, 4]
+  hints:
+    - |
+      它们都不显含时间，算各自和$H$的:term[泊松括号]{id="physics.analytical-mechanics.poisson-bracket"}，为零就守恒。
+    - |
+      $H$是$x$方向和$y$方向两部分之和，两部分各自只含自己的变量。$\pb{L_z}{x^2}=2xy$，$\pb{L_z}{y^2}=-2xy$，$\pb{L_z}{p_x^2+p_y^2}=0$。
+    - |
+      A：只含$x$、$p_x$，和$H$里$y$的那部分括号为零，和自己的括号也为零，守恒。D 同理。B：$\pb{L_z}{H}=\frac12\cdot2xy+\frac12\cdot4\cdot(-2xy)=-3xy\neq0$，不守恒，因为势能不是各向同性的。C：$\pb{p_y}{H}=-\frac{\partial H}{\partial y}=-4y\neq0$。
+
+      答案是 A、D。
+  solution: |
+    A、D。两个方向的运动互不耦合，各自的能量守恒；$\pb{L_z}{H}=-3xy$，$\pb{p_y}{H}=-4y$，都不为零。
+
+- id: p3
+  tier: medium
+  statement: |
+    平面各向同性振子$H=\frac12(p_x^2+p_y^2+x^2+y^2)$（无量纲）。$L_z=xp_y-yp_x$和$A=p_xp_y+xy$都守恒，由:term[泊松定理]{id="physics.analytical-mechanics.poisson-theorem"}，$C=\pb{L_z}{A}$（按本节的定义，注意次序）也守恒。求$C$在状态$x=1$、$y=0$、$p_x=0$、$p_y=2$时的值。
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      先用乘积法则把$\pb{L_z}{A}$拆开，用到$L_z$和$x$、$y$、$p_x$、$p_y$的四个括号。
+    - |
+      $\pb{L_z}{x}=y$，$\pb{L_z}{y}=-x$，$\pb{L_z}{p_x}=p_y$，$\pb{L_z}{p_y}=-p_x$。
+    - |
+      $\pb{L_z}{p_xp_y}=p_x\pb{L_z}{p_y}+\pb{L_z}{p_x}p_y=p_y^2-p_x^2$，$\pb{L_z}{xy}=x\pb{L_z}{y}+\pb{L_z}{x}y=y^2-x^2$，所以
+
+      $$
+      C=p_y^2-p_x^2+y^2-x^2 .
+      $$
+
+      代入得$C=4-0+0-1=3$。$C=(p_y^2+y^2)-(p_x^2+x^2)$是$y$方向和$x$方向的能量之差的$2$倍，两个方向互不耦合、各自的能量守恒，所以它确实守恒。答案是$3$。
+  solution: |
+    $C=\pb{L_z}{A}=p_y^2-p_x^2+y^2-x^2=3$，即$y$方向与$x$方向能量之差的$2$倍。
+
+- id: p4
+  tier: medium
+  statement: |
+    一维运动，$H=\frac{p^2}{2}+\frac{q^4}{4}$（无量纲）。先求$\dv{(qp)}{t}=\pb{qp}{H}$。运动是周期的，$qp$经过一个周期回到原值，所以$\dv{(qp)}{t}$在一个周期里的平均值为零。由此求能量$E=3$的运动里，动能$T=\frac{p^2}{2}$在一个周期里的平均值。
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      $\pb{qp}{H}$用定义算，把结果写成动能$T$和势能$V=\frac{q^4}{4}$的组合，再对一个周期取平均。
+    - |
+      $\pb{qp}{H}=p^2-q^4=2T-4V$。平均值为零给出$\langle T\rangle=2\langle V\rangle$；能量守恒给出$\langle T\rangle+\langle V\rangle=E$。
+    - |
+      $\pb{qp}{H}=\frac{\partial(qp)}{\partial q}\frac{\partial H}{\partial p}-\frac{\partial(qp)}{\partial p}\frac{\partial H}{\partial q}=p\cdot p-q\cdot q^3=2T-4V$。一个周期里平均，左边$\dv{(qp)}{t}$的平均是$\frac{(qp)|_{\text{末}}-(qp)|_{\text{初}}}{\text{周期}}=0$，所以$2\langle T\rangle=4\langle V\rangle$。
+
+      又$T+V=E$时时成立，$\langle T\rangle+\langle V\rangle=3$，解得$\langle V\rangle=1$，$\langle T\rangle=2$。答案是$2$。这就是位力定理（virial theorem）的一个例子：$V\propto q^k$时$2\langle T\rangle=k\langle V\rangle$。
+  solution: |
+    $\pb{qp}{H}=p^2-q^4=2T-4V$，周期平均为零，$\langle T\rangle=2\langle V\rangle$；结合$\langle T\rangle+\langle V\rangle=3$得$\langle T\rangle=2$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$G(q,p)$不显含时间。把每个点$(q,p)$挪到$q_j+\varepsilon\frac{\partial G}{\partial p_j}$、$p_j-\varepsilon\frac{\partial G}{\partial q_j}$（$\varepsilon$很小），叫作由$G$生成的无穷小变换。证明：$H$（不显含时间）在这个变换下的一阶改变是$\varepsilon\pb{H}{G}$。
+
+    由此说明「$H$在$G$生成的变换下不变」和「$G$守恒」是同一件事。再分别写出$G=p_x$和$G=L_z=xp_y-yp_x$生成的变换，说明它们是平移和转动。
+  hints:
+    - |
+      $H$的一阶改变是$\sum_j\bigl(\frac{\partial H}{\partial q_j}\delta q_j+\frac{\partial H}{\partial p_j}\delta p_j\bigr)$，把$\delta q_j$、$\delta p_j$代进去，和:term[泊松括号]{id="physics.analytical-mechanics.poisson-bracket"}的定义比较。
+    - |
+      $\delta H=\varepsilon\pb{H}{G}=-\varepsilon\pb{G}{H}$，而$\dv{G}{t}=\pb{G}{H}$。对$G=L_z$：$\delta x=\varepsilon\frac{\partial L_z}{\partial p_x}=-\varepsilon y$。
+    - |
+      $\delta H=\sum_j\bigl(\frac{\partial H}{\partial q_j}\varepsilon\frac{\partial G}{\partial p_j}-\frac{\partial H}{\partial p_j}\varepsilon\frac{\partial G}{\partial q_j}\bigr)=\varepsilon\pb{H}{G}$。由反对称，$\pb{H}{G}=-\pb{G}{H}=-\dv{G}{t}$。所以$H$在这个变换下一阶不变（$\delta H=0$），当且仅当$\pb{G}{H}=0$，当且仅当$G$守恒：同一个式子$\pb{G}{H}=0$，从$G$看是守恒，从$H$看是对称。
+
+      $G=p_x$：$\delta x=\varepsilon$，其余坐标和全部动量不变，这是沿$x$方向平移$\varepsilon$。$G=L_z$：$\delta x=\varepsilon\frac{\partial L_z}{\partial p_x}=-\varepsilon y$，$\delta y=\varepsilon x$，$\delta p_x=-\varepsilon\frac{\partial L_z}{\partial x}=-\varepsilon p_y$，$\delta p_y=-\varepsilon\frac{\partial L_z}{\partial y}=\varepsilon p_x$。位置$(x,y)$和动量$(p_x,p_y)$都绕$z$轴转过小角度$\varepsilon$，这是转动。
+
+      所以「动量守恒对应平移对称、角动量守恒对应转动对称」在哈密顿力学里就是$\pb{p_x}{H}=0$和$\pb{L_z}{H}=0$这两个式子的两种读法。这和[诺特定理](lesson:physics.analytical-mechanics.noether-theorem)（Noether's theorem）那一节说的是同一件事，只是这里的变换可以同时挪动坐标和动量。
+  reference: |
+    $\delta H=\sum_j(\frac{\partial H}{\partial q_j}\delta q_j+\frac{\partial H}{\partial p_j}\delta p_j)=\varepsilon\pb{H}{G}=-\varepsilon\pb{G}{H}=-\varepsilon\dv{G}{t}$，故$H$一阶不变$\Leftrightarrow G$守恒。$G=p_x$：$\delta x=\varepsilon$，平移。$G=L_z$：$\delta x=-\varepsilon y$，$\delta y=\varepsilon x$，$\delta p_x=-\varepsilon p_y$，$\delta p_y=\varepsilon p_x$，位置与动量一起绕$z$轴转$\varepsilon$。即哈密顿形式的诺特定理。
+
+- id: p6
+  tier: hard
+  statement: |
+    平面各向同性振子$H=\frac12(p_x^2+p_y^2+x^2+y^2)$（无量纲）有三个守恒量：$L_z=xp_y-yp_x$，$A=p_xp_y+xy$，$B=\frac12(x^2+p_x^2-y^2-p_y^2)$。求它们两两之间的:term[泊松括号]{id="physics.analytical-mechanics.poisson-bracket"}$\pb{L_z}{A}$、$\pb{L_z}{B}$、$\pb{A}{B}$，说明括号又回到这三个量本身。取$S_1=\frac{L_z}{2}$、$S_2=\frac{A}{2}$、$S_3=-\frac{B}{2}$，证明它们满足和角动量分量一样的关系$\pb{S_1}{S_2}=S_3$、$\pb{S_2}{S_3}=S_1$、$\pb{S_3}{S_1}=S_2$。
+  hints:
+    - |
+      先列出$L_z$和$x$、$y$、$p_x$、$p_y$的括号，以及$A$和$x^2$、$p_x^2$、$y^2$、$p_y^2$的括号，再用乘积法则和线性组装。
+    - |
+      $\pb{L_z}{A}=-2B$，$\pb{L_z}{B}=2A$，$\pb{A}{B}=-2L_z$。
+    - |
+      由$\pb{L_z}{x}=y$、$\pb{L_z}{y}=-x$、$\pb{L_z}{p_x}=p_y$、$\pb{L_z}{p_y}=-p_x$：$\pb{L_z}{A}=p_x(-p_x)+p_yp_y+x(-x)+yy=-(x^2+p_x^2-y^2-p_y^2)=-2B$；$\pb{L_z}{x^2}=2xy$，$\pb{L_z}{p_x^2}=2p_xp_y$，$\pb{L_z}{y^2}=-2xy$，$\pb{L_z}{p_y^2}=-2p_xp_y$，所以$\pb{L_z}{B}=\frac12(4xy+4p_xp_y)=2A$。
+
+      $\pb{A}{x^2}=\pb{p_x}{x^2}p_y=-2xp_y$，$\pb{A}{p_x^2}=y\pb{x}{p_x^2}=2yp_x$，$\pb{A}{y^2}=p_x\pb{p_y}{y^2}=-2yp_x$，$\pb{A}{p_y^2}=x\pb{y}{p_y^2}=2xp_y$。所以$\pb{A}{B}=\frac12(-2xp_y+2yp_x+2yp_x-2xp_y)=2(yp_x-xp_y)=-2L_z$。
+
+      括号只给出这三个量（乘常数），没有新东西。对$S$：$\pb{S_1}{S_2}=\frac14\pb{L_z}{A}=-\frac{B}{2}=S_3$；$\pb{S_2}{S_3}=-\frac14\pb{A}{B}=\frac{L_z}{2}=S_1$；$\pb{S_3}{S_1}=-\frac14\pb{B}{L_z}=\frac14\pb{L_z}{B}=\frac{A}{2}=S_2$。和$\pb{L_x}{L_y}=L_z$一模一样：这个振子除了明显的转动对称，还藏着一个更大的对称，它的生成元像三维空间里的角动量。
+  reference: |
+    $\pb{L_z}{A}=-2B$，$\pb{L_z}{B}=2A$，$\pb{A}{B}=-2L_z$（用$\pb{L_z}{x}=y$等与乘积法则逐项计算）。括号封闭在三者的线性组合里。$S_1=\frac{L_z}{2}$、$S_2=\frac A2$、$S_3=-\frac B2$满足$\pb{S_1}{S_2}=S_3$、$\pb{S_2}{S_3}=S_1$、$\pb{S_3}{S_1}=S_2$，与角动量分量相同，反映振子隐藏的更大对称性。
+
+- id: p7
+  tier: thinking
+  statement: |
+    :term[泊松括号]{id="physics.analytical-mechanics.poisson-bracket"}为什么定义成反对称的？假如换成「对称括号」$[f,g]=\sum_j\bigl(\frac{\partial f}{\partial q_j}\frac{\partial g}{\partial p_j}+\frac{\partial f}{\partial p_j}\frac{\partial g}{\partial q_j}\bigr)$，$\dv{f}{t}$还能写成$[f,H]$吗？$[H,H]$等于多少，还能由它推出$H$守恒吗？如果学过量子力学，比较一下：对易子（commutator）$[\hat A,\hat B]=\hat A\hat B-\hat B\hat A$也是反对称的，$\pb{q}{p}=1$对应$[\hat x,\hat p]=i\hbar$。
+  hints:
+    - |
+      把正则方程代进$\dv{f}{t}=\sum_j\bigl(\frac{\partial f}{\partial q_j}\dot q_j+\frac{\partial f}{\partial p_j}\dot p_j\bigr)$，负号是从哪里来的？
+    - |
+      $[H,H]=2\sum_j\frac{\partial H}{\partial q_j}\frac{\partial H}{\partial p_j}$，一般不为零。反对称还让「$f$在$g$生成的变换下不变」和「$g$在$f$生成的变换下不变」成为同一件事。
+    - |
+      负号来自$\dot p_j=-\frac{\partial H}{\partial q_j}$：$\dv{f}{t}$本来就是反对称的组合，对称括号$[f,H]$不等于$\dv{f}{t}$。$[H,H]=2\sum_j\frac{\partial H}{\partial q_j}\frac{\partial H}{\partial p_j}$一般不为零，而反对称直接给出$\pb{H}{H}=0$，也就是$H$不显含时间时守恒：能量守恒就藏在反对称里。
+
+      反对称还有一层意思：$\pb{f}{g}=0$既说「$f$沿$g$生成的运动不变」，也说「$g$沿$f$生成的运动不变」，所以守恒和对称是同一件事（p5）。
+
+      量子力学里，可观测量（observable）随时间的变化是$\dv{\hat A}{t}=\frac{1}{i\hbar}[\hat A,\hat H]$，形式和$\dv{f}{t}=\pb{f}{H}$一样；狄拉克（Dirac）注意到，把泊松括号换成$\frac{1}{i\hbar}$乘对易子，经典力学的很多关系就变成量子力学的关系。对易子同样反对称、满足乘积法则和雅可比恒等式，所以$[\hat H,\hat H]=0$照样给出能量守恒。
+  reference: |
+    负号源自$\dot p=-\partial H/\partial q$，$\dv{f}{t}$本身是反对称组合；对称括号不给出$\dv{f}{t}$，且$[H,H]=2\sum\partial_qH\partial_pH\ne0$，失去能量守恒。反对称使$\pb{f}{g}=0$对两者对称地成立（守恒⇔对称）。量子力学中$\dv{\hat A}{t}=\frac{1}{i\hbar}[\hat A,\hat H]$与$\dv{f}{t}=\pb{f}{H}$同形，对易子同样反对称并满足雅可比恒等式（狄拉克的对应）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    :term[泊松定理]{id="physics.analytical-mechanics.poisson-theorem"}说两个守恒量的括号也守恒。三维空间里的自由质点，$p_x$、$p_y$、$p_z$、$L_x$、$L_y$、$L_z$都守恒。反复取它们两两之间的括号，能不能造出无穷多个新的守恒量？一个有$n$个自由度的系统，最多能有几个互相独立、不显含时间的守恒量？
+  hints:
+    - |
+      算几个括号试试，例如$\pb{L_x}{p_y}$、$\pb{p_x}{p_y}$、$\pb{L_x}{L_y}$，看结果在不在原来那六个里。
+    - |
+      $\pb{L_x}{p_y}=p_z$，$\pb{p_x}{p_y}=0$，$\pb{L_x}{L_y}=L_z$。守恒量$I(q,p)=c$各自截出$2n$维空间里的一个「面」，运动被限制在它们的交上。
+    - |
+      六个量两两的括号都落回这六个量（或者为零），例如$\pb{L_x}{p_y}=p_z$、$\pb{L_y}{L_z}=L_x$：再怎么取括号也跑不出它们的线性组合。泊松定理给出的「新」守恒量常常是零、常数或旧守恒量的函数。
+
+      数量上也有上限。$n$个自由度时，状态空间是$2n$维的；每个不显含时间、互相独立的守恒量$I(q,p)=c$把运动限制在少一维的「面」上，$2n-1$个这样的面一般已经交成一条曲线，就是轨道本身。所以最多有$2n-1$个独立的守恒量。自由质点$n=3$，最多$5$个；而那六个量满足$\vb{L}\cdot\vb{p}=0$，确实只有$5$个是独立的。
+
+      还要注意，「独立的守恒量有$2n-1$个」通常只在局部成立；能找到$n$个彼此括号为零的守恒量的系统叫可积系统（integrable system），以后讲作用量-角变量和混沌时会再遇到。
+  reference: |
+    括号封闭：$\pb{L_x}{p_y}=p_z$，$\pb{L_x}{L_y}=L_z$，$\pb{p_i}{p_j}=0$等，结果都在六个量的线性组合中，不会产生无穷多新量；新量常是零、常数或旧量的函数。$2n$维状态空间中独立、不显含时间的守恒量至多$2n-1$个（$2n-1$个等值面已交成轨道）。自由质点$n=3$至多$5$个，且$\vb{L}\cdot\vb{p}=0$使六个量中只有五个独立。可积系统（$n$个对合守恒量）以后再讲。
