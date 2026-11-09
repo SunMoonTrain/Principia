@@ -1,0 +1,189 @@
+- id: p1
+  tier: easy
+  statement: |
+    对数列$a_n=\frac{2n}{n+1}$和$\varepsilon=0.01$，求最小的正整数$N$，使当$n>N$时都有$|a_n-2|<\varepsilon$。
+  answer:
+    type: number
+    value: 199
+  hints:
+    - |
+      先把$|a_n-2|$化简成一个简单的式子，再解不等式。
+    - |
+      $|a_n-2|=\frac{2}{n+1}$，它随$n$增大而减小；$\frac{2}{n+1}<0.01$等价于$n+1>200$。
+    - |
+      $|a_n-2|=\left|\frac{2n-2(n+1)}{n+1}\right|=\frac{2}{n+1}$，所以$|a_n-2|<0.01$当且仅当$n>199$。
+
+      于是$N=199$满足要求：$n>199$时都有$|a_n-2|<0.01$。$N=198$不行：$n=199$时$|a_n-2|=\frac{2}{200}=0.01$，不小于$0.01$。答案是$199$。
+  solution: |
+    $|a_n-2|=\frac{2}{n+1}$，而$\frac{2}{n+1}<0.01\iff n>199$，所以最小的$N$是$199$。第$199$项离$2$恰好是$0.01$，不满足严格的不等号，所以$N$不能更小。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法和「$\lim_{n\to\infty}a_n=L$」意思完全相同（互相等价）？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        任给$\varepsilon>0$，都存在正整数$N$，使当$n>N$时$|a_n-L|<\varepsilon$
+      - |
+        存在正整数$N$，使得任给$\varepsilon>0$，当$n>N$时都有$|a_n-L|<\varepsilon$
+      - |
+        任给$\varepsilon>0$，都有无穷多个$n$使$|a_n-L|<\varepsilon$
+      - |
+        任给$\varepsilon>0$，都存在正整数$N$，使当$n>N$时$|a_n-L|<2\varepsilon$
+    value: [1, 4]
+  hints:
+    - |
+      A 就是定义。对其余三个，分别判断它比定义强、比定义弱，还是和定义一样。可以拿$a_n=\frac1n$、$L=0$和$a_n=(-1)^n$、$L=1$来检验。
+    - |
+      B 要求$n>N$的每一项对所有$\varepsilon$都满足$|a_n-L|<\varepsilon$，也就是$a_n=L$；C 只要求有无穷多项靠近$L$；D 里的$\varepsilon$本身是任意的，可以拿$\frac{\varepsilon}{2}$去用。
+    - |
+      A 是定义。
+
+      B 等于说「从某一项起$a_n=L$」。$\frac1n\to0$，可它没有一项等于$0$，所以 B 比定义强，和定义不等价。
+
+      C：$\{(-1)^n\}$有无穷多项等于$1$，对$L=1$满足 C，可它发散，所以 C 比定义弱，也不等价。
+
+      D：定义显然推出 D（$|a_n-L|<\varepsilon<2\varepsilon$）。反过来，若 D 成立，任给$\varepsilon>0$，把 D 用在$\frac{\varepsilon}{2}$上，得到$N$使$n>N$时$|a_n-L|<2\cdot\frac{\varepsilon}{2}=\varepsilon$，这就是定义。
+
+      所以答案是 A 和 D。
+  solution: |
+    A 是定义；D 和它等价，因为$\varepsilon$是任意的，把 D 用在$\frac{\varepsilon}{2}$上就回到定义。B 等于要求从某一项起$a_n=L$，太强；C 只要求有无穷多项靠近$L$，太弱：$\{(-1)^n\}$对$L=1$满足 C，却是发散的。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$a_n=\sqrt{n+1}-\sqrt{n}$。先求它的极限$L$，再对$\varepsilon=0.1$求最小的正整数$N$，使当$n>N$时都有$|a_n-L|<\varepsilon$。按$(L,N)$的顺序填写。
+  answer:
+    type: tuple
+    value: [0, 24]
+  hints:
+    - |
+      两个根号相减不好直接看大小，先做分子有理化：乘以$\sqrt{n+1}+\sqrt{n}$再除回去。
+    - |
+      $a_n=\frac{1}{\sqrt{n+1}+\sqrt{n}}$，分母随$n$增大而增大，所以$a_n$越来越小，趋于$0$。$a_n<0.1$等价于$\sqrt{n+1}+\sqrt{n}>10$。
+    - |
+      分子有理化得$a_n=\frac{1}{\sqrt{n+1}+\sqrt{n}}>0$，并且$a_n<\frac{1}{2\sqrt n}$。任给$\varepsilon>0$，取正整数$N>\frac{1}{4\varepsilon^2}$，$n>N$时$a_n<\frac{1}{2\sqrt n}<\varepsilon$，所以$L=0$。
+
+      $a_n<0.1$当且仅当$\sqrt{n+1}+\sqrt{n}>10$，左边随$n$增大而增大。$n=24$时左边是$5+\sqrt{24}\approx9.90<10$；$n=25$时是$\sqrt{26}+5\approx10.10>10$。所以$n>24$时都有$a_n<0.1$，而$n=24$时不成立，最小的$N$是$24$。答案是$(0,24)$。
+  solution: |
+    $a_n=\frac{1}{\sqrt{n+1}+\sqrt n}$随$n$增大而减小，趋于$0$。$a_{24}=\frac{1}{5+\sqrt{24}}\approx0.101$，$a_{25}=\frac{1}{\sqrt{26}+5}\approx0.0990$，所以$L=0$，最小的$N$是$24$，填 `0, 24`。
+
+- id: p4
+  tier: medium
+  statement: |
+    下面哪些数列:term[收敛]{id="math.analysis.convergent-sequence"}？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $a_n=\frac{(-1)^n}{n}$
+      - |
+        $a_n=\sin\frac{n\pi}{2}$
+      - |
+        $a_n=\frac{1+(-1)^n}{\sqrt{n}}$
+      - |
+        $a_n=n^{(-1)^n}$
+    value: [1, 3]
+  hints:
+    - |
+      先写出每个数列的前几项，看它是不是从某一项起都挤在某个数附近。
+    - |
+      A、C 的项到$0$的距离分别不超过$\frac1n$和$\frac{2}{\sqrt n}$。B 的项在$1,0,-1,0$之间循环；D 的奇数项是$\frac1n$，偶数项是$n$本身。
+    - |
+      A：$|a_n-0|=\frac1n$，任给$\varepsilon>0$，取$N>\frac1\varepsilon$即可，收敛于$0$。
+
+      C：$|a_n-0|\le\frac{2}{\sqrt n}$，要它小于$\varepsilon$，只要$n>\frac{4}{\varepsilon^2}$，收敛于$0$。
+
+      B：项依次是$1,0,-1,0,1,\dots$，$1$和$-1$都出现无穷多次。对任何实数$L$，$|1-L|$和$|-1-L|$中至少有一个不小于$1$，和$\{(-1)^n\}$一样，它发散。
+
+      D：偶数项$a_n=n$。对任何实数$L$和正整数$N$，都有偶数$n$同时大于$N$和$L+1$，这时$|a_n-L|>1$，所以发散。
+
+      答案是 A 和 C。
+  solution: |
+    A、C 收敛于$0$（$|a_n|\le\frac1n$，$|a_n|\le\frac{2}{\sqrt n}$）。B 在$1,0,-1,0$之间循环，D 的偶数项$a_n=n$越来越大，都发散。
+
+- id: p5
+  tier: hard
+  statement: |
+    用$\varepsilon$-$N$语言证明$\lim_{n\to\infty}\sqrt[n]{n}=1$。
+  hints:
+    - |
+      令$h_n=\sqrt[n]{n}-1$，它不是负数；要证的是$h_n\to0$。把$n=(1+h_n)^n$用二项式定理展开，只留下合适的一项。
+    - |
+      $n\ge2$时，$n=(1+h_n)^n\ge\frac{n(n-1)}{2}h_n^2$，所以$0\le h_n\le\sqrt{\frac{2}{n-1}}$。
+    - |
+      对每个正整数$n$有$n\ge1$，所以$\sqrt[n]{n}\ge1$，$h_n=\sqrt[n]{n}-1\ge0$。
+
+      $n\ge2$时，由二项式定理，$n=(1+h_n)^n=1+nh_n+\frac{n(n-1)}{2}h_n^2+\dots\ge\frac{n(n-1)}{2}h_n^2$（各项都非负）。于是$h_n^2\le\frac{2}{n-1}$，即$0\le h_n\le\sqrt{\frac{2}{n-1}}$。
+
+      任给$\varepsilon>0$，取正整数$N>1+\frac{2}{\varepsilon^2}$（这时$N\ge2$）。当$n>N$时$n-1>\frac{2}{\varepsilon^2}$，所以
+
+      $$
+      \bigl|\sqrt[n]{n}-1\bigr|=h_n\le\sqrt{\frac{2}{n-1}}<\varepsilon .
+      $$
+
+      故$\lim_{n\to\infty}\sqrt[n]{n}=1$。
+  reference: |
+    令$h_n=\sqrt[n]n-1\ge0$。$n\ge2$时由二项式定理$n=(1+h_n)^n\ge\frac{n(n-1)}{2}h_n^2$，得$h_n\le\sqrt{\frac{2}{n-1}}$。任给$\varepsilon>0$，取正整数$N>1+\frac{2}{\varepsilon^2}$，则$n>N$时$|\sqrt[n]n-1|=h_n\le\sqrt{\frac{2}{n-1}}<\varepsilon$。
+
+- id: p6
+  tier: hard
+  statement: |
+    证明数列$\{\sin n\}$发散（$n$按弧度计）。
+  hints:
+    - |
+      反证：设$\sin n\to L$，取$\varepsilon=\frac12$。只要说明无论从多靠后看起，后面总有$\sin n>\frac12$的项，也总有$\sin n<-\frac12$的项，就能导出矛盾。
+    - |
+      开区间$\bigl(2k\pi+\frac{\pi}{6},\,2k\pi+\frac{5\pi}{6}\bigr)$的长度是$\frac{2\pi}{3}>1$，里面一定有整数$n$，这时$\sin n>\frac12$；同样，$\bigl(2k\pi+\frac{7\pi}{6},\,2k\pi+\frac{11\pi}{6}\bigr)$里有整数$m$，$\sin m<-\frac12$。
+    - |
+      先说明：长度大于$1$的开区间$(a,b)$里一定有整数。取不超过$a$的最大整数$k_0$，则$a<k_0+1\le a+1<b$，所以$k_0+1$在区间里。
+
+      假设$\sin n\to L$。取$\varepsilon=\frac12$，有正整数$N$，使$n>N$时$|\sin n-L|<\frac12$。取正整数$k$使$2k\pi>N$。
+
+      开区间$\bigl(2k\pi+\frac{\pi}{6},\,2k\pi+\frac{5\pi}{6}\bigr)$长$\frac{2\pi}{3}>1$，含有整数$n$。$n>2k\pi>N$，而正弦在$\bigl(\frac{\pi}{6},\frac{5\pi}{6}\bigr)$上大于$\frac12$，所以$\sin n>\frac12$。同理，$\bigl(2k\pi+\frac{7\pi}{6},\,2k\pi+\frac{11\pi}{6}\bigr)$含有整数$m>N$，$\sin m<-\frac12$。
+
+      于是$L>\sin n-\frac12>0$，又$L<\sin m+\frac12<0$，矛盾。所以$\{\sin n\}$发散。
+  reference: |
+    设$\sin n\to L$，取$\varepsilon=\frac12$得$N$。取$k$使$2k\pi>N$。长度为$\frac{2\pi}{3}>1$的开区间$(2k\pi+\frac\pi6,2k\pi+\frac{5\pi}6)$和$(2k\pi+\frac{7\pi}6,2k\pi+\frac{11\pi}6)$各含一个整数$n$、$m$（长度大于$1$的开区间必含整数），都大于$N$，且$\sin n>\frac12$，$\sin m<-\frac12$。于是$L>\sin n-\frac12>0$且$L<\sin m+\frac12<0$，矛盾。
+
+- id: p7
+  tier: thinking
+  statement: |
+    有人提议：实际计算的精度反正有限，不如把「$\{a_n\}$收敛于$L$」定义成「存在正整数$N$，使$n>N$时都有$|a_n-L|<10^{-100}$」。照这个定义会出什么问题？
+
+    极限还唯一吗？哪些不该算收敛的数列会被算作收敛？原定义里的「任给$\varepsilon>0$」到底保证了什么？
+  hints:
+    - |
+      拿常数数列$a_n=0$试试：照新定义，它「收敛」于哪些数？再试试$a_n=10^{-101}\cdot(-1)^n$。
+    - |
+      照新定义，$a_n=0$「收敛」于区间$(-10^{-100},10^{-100})$里的每一个数。$10^{-101}\cdot(-1)^n$在两个值之间来回跳，也算「收敛」于$0$；把$10^{-101}$换成$10^{-99}$，它又不算了，差别只在一个人为挑的门槛。
+    - |
+      新定义有两个毛病。第一，极限不唯一：离$L$不到$10^{-100}$的数都能当「极限」，$\lim$这个记号就没法用了。第二，它分不出「真的稳定下来」和「小幅振荡」：$10^{-101}\cdot(-1)^n$从来没有稳定在一个数上，却算作收敛，而同样形状、幅度大一点的数列就不算，结论取决于门槛挑在哪里。
+
+      原定义要求的是：无论把门槛定得多小，数列最终都能跨过它。这样，两个不同的数$L_1\ne L_2$之间隔着正的距离，取$\varepsilon$为这个距离的一半就能把它们分开，所以极限至多只有一个（下一节[收敛数列的基本性质](lesson:math.analysis.limit-properties)会证明）；而且收不收敛只取决于数列本身，不取决于选了哪个门槛。
+
+      放到计算里说，「任给$\varepsilon$」的意思是：你要多少位精度都行，算到足够靠后的项总能达到，而不是只保证某一个固定的精度。
+  reference: |
+    固定门槛的定义下，极限不唯一（离$L$不到$10^{-100}$的数都可作极限），也分不出收敛和小幅振荡（$10^{-101}(-1)^n$算收敛，$10^{-99}(-1)^n$不算），结论依赖人为的门槛。原定义要求对每个门槛最终都能满足：不同的$L_1,L_2$可用$\varepsilon=\frac{|L_1-L_2|}{2}$分开，所以极限唯一；收敛与否只由数列本身决定。
+
+- id: p8
+  tier: thinking
+  statement: |
+    用迭代算一个数时，常见的停止规则是：相邻两次的结果相差小于$10^{-6}$就停下，把最后的结果当答案。这个规则用在数列$a_n=\sqrt{n}$上会怎样？「相邻两项之差趋于$0$」和「数列收敛」是什么关系？这个停止规则在什么情况下才靠得住？
+  hints:
+    - |
+      算一算$a_{n+1}-a_n=\sqrt{n+1}-\sqrt{n}$在$n$很大时有多小（第 3 题算过它），再看$\sqrt n$本身收不收敛。
+    - |
+      $\sqrt{n+1}-\sqrt n<\frac{1}{2\sqrt n}$，$n>2.5\times10^{11}$时就小于$10^{-6}$；可$\sqrt n$和讲解里的$a_n=n$一样越来越大，没有极限。
+    - |
+      按停止规则，$\sqrt n$的迭代会在大约第$2.5\times10^{11}$步停下，报出一个约$5\times10^5$的「答案」，可这个数列根本没有极限。所以「相邻两项之差趋于$0$」推不出收敛：它只说每一步挪得越来越少，没说所有靠后的项彼此都近，$\sqrt n$一步比一步挪得慢，加起来却能走到任意远。
+
+      反过来，收敛的数列相邻两项之差一定趋于$0$：两项都离$L$很近，彼此就很近，$|a_{n+1}-a_n|\le|a_{n+1}-L|+|L-a_n|$。
+
+      停止规则要靠得住，得有额外的信息。例如知道误差每一步至少按固定比例缩小：$|a_{n+1}-L|\le q|a_n-L|$，$0<q<1$。这时由$|a_n-L|\le|a_n-a_{n+1}|+|a_{n+1}-L|\le|a_n-a_{n+1}|+q|a_n-L|$，得$|a_n-L|\le\frac{|a_{n+1}-a_n|}{1-q}$，相邻两项之差就管住了误差。更一般的「所有靠后的项彼此都近」，就是以后要讲的[柯西收敛准则](lesson:math.analysis.cauchy-sequences)（Cauchy criterion）。
+  reference: |
+    $\sqrt{n+1}-\sqrt n<\frac{1}{2\sqrt n}\to0$，但$\sqrt n$发散，停止规则会在约$2.5\times10^{11}$步时给出约$5\times10^5$的错误「答案」。相邻差趋于$0$是收敛的必要条件，不是充分条件。若已知$|a_{n+1}-L|\le q|a_n-L|$（$q<1$），则$|a_n-L|\le\frac{|a_{n+1}-a_n|}{1-q}$，停止规则可靠；一般情形要用「任意两个靠后的项都近」（柯西准则）。

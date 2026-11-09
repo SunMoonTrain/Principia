@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 286" width="640" height="286" font-size="14">
+  <!-- 致密性定理证明里的二分：数列 aₙ = (−1)ⁿ(1 + 1/n)，横坐标 px = 50 + 120(x + 2) -->
+  <!-- ξ = 1 -->
+  <line x1="410" y1="28" x2="410" y2="252" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 4" />
+  <text x="410" y="272" text-anchor="middle" fill="currentColor"><tspan font-style="italic">ξ</tspan> = 1</text>
+  <!-- 第一行：数列的项 -->
+  <line x1="50" y1="40" x2="530" y2="40" stroke="currentColor" stroke-width="1.2" />
+  <g stroke="currentColor" stroke-width="1.2">
+    <line x1="50" y1="35" x2="50" y2="45" />
+    <line x1="170" y1="35" x2="170" y2="45" />
+    <line x1="290" y1="35" x2="290" y2="45" />
+    <line x1="410" y1="35" x2="410" y2="45" />
+    <line x1="530" y1="35" x2="530" y2="45" />
+  </g>
+  <g text-anchor="middle" font-size="12" fill="currentColor">
+    <text x="50" y="62">−2</text>
+    <text x="170" y="62">−1</text>
+    <text x="290" y="62">0</text>
+    <text x="399" y="62">1</text>
+    <text x="530" y="62">2</text>
+  </g>
+  <g style="fill: var(--good, #059669)">
+    <circle cx="50" cy="40" r="4" />
+    <circle cx="130" cy="40" r="3.6" />
+    <circle cx="146" cy="40" r="3.3" />
+    <circle cx="152.57" cy="40" r="3" />
+    <circle cx="156.67" cy="40" r="2.8" />
+    <circle cx="159.09" cy="40" r="2.6" />
+    <circle cx="160.77" cy="40" r="2.4" />
+  </g>
+  <g style="fill: var(--accent, #2563eb)">
+    <circle cx="470" cy="40" r="4" />
+    <circle cx="440" cy="40" r="3.6" />
+    <circle cx="430" cy="40" r="3.3" />
+    <circle cx="425" cy="40" r="3" />
+    <circle cx="422" cy="40" r="2.8" />
+    <circle cx="420" cy="40" r="2.6" />
+    <circle cx="418.57" cy="40" r="2.4" />
+  </g>
+  <text x="50" y="18" fill="currentColor">奇数项挤向 −1，偶数项挤向 1</text>
+  <!-- 区间 I₁ 到 I₆：每次留下含无穷多项的一半（两半都含时留右边） -->
+  <g stroke-width="3" stroke-linecap="round" style="stroke: var(--muted, #6b7280)">
+    <line x1="50" y1="90" x2="530" y2="90" />
+    <line x1="290" y1="120" x2="530" y2="120" />
+    <line x1="410" y1="150" x2="530" y2="150" />
+    <line x1="410" y1="180" x2="470" y2="180" />
+    <line x1="410" y1="210" x2="440" y2="210" />
+    <line x1="410" y1="240" x2="425" y2="240" />
+  </g>
+  <!-- 每个区间里挑出的那一项 -->
+  <g fill="currentColor">
+    <circle cx="50" cy="90" r="4.5" />
+    <circle cx="470" cy="120" r="4.5" />
+    <circle cx="440" cy="150" r="4.5" />
+    <circle cx="430" cy="180" r="4.5" />
+    <circle cx="425" cy="210" r="4.5" />
+    <circle cx="422" cy="240" r="4.5" />
+  </g>
+  <g text-anchor="end" fill="currentColor">
+    <text x="38" y="95"><tspan font-style="italic">I</tspan><tspan dy="4" font-size="10">1</tspan></text>
+    <text x="38" y="125"><tspan font-style="italic">I</tspan><tspan dy="4" font-size="10">2</tspan></text>
+    <text x="38" y="155"><tspan font-style="italic">I</tspan><tspan dy="4" font-size="10">3</tspan></text>
+    <text x="38" y="185"><tspan font-style="italic">I</tspan><tspan dy="4" font-size="10">4</tspan></text>
+    <text x="38" y="215"><tspan font-style="italic">I</tspan><tspan dy="4" font-size="10">5</tspan></text>
+    <text x="38" y="245"><tspan font-style="italic">I</tspan><tspan dy="4" font-size="10">6</tspan></text>
+  </g>
+  <g fill="currentColor">
+    <text x="544" y="95"><tspan font-style="italic">a</tspan><tspan dy="4" font-size="10">1</tspan><tspan dy="-4"> = −2</tspan></text>
+    <text x="544" y="125"><tspan font-style="italic">a</tspan><tspan dy="4" font-size="10">2</tspan><tspan dy="-4"> = 1.5</tspan></text>
+    <text x="544" y="155"><tspan font-style="italic">a</tspan><tspan dy="4" font-size="10">4</tspan><tspan dy="-4"> = 1.25</tspan></text>
+    <text x="544" y="185"><tspan font-style="italic">a</tspan><tspan dy="4" font-size="10">6</tspan><tspan dy="-4"> ≈ 1.17</tspan></text>
+    <text x="544" y="215"><tspan font-style="italic">a</tspan><tspan dy="4" font-size="10">8</tspan><tspan dy="-4"> = 1.125</tspan></text>
+    <text x="544" y="245"><tspan font-style="italic">a</tspan><tspan dy="4" font-size="10">10</tspan><tspan dy="-4"> = 1.1</tspan></text>
+  </g>
+</svg>

@@ -1,0 +1,169 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$a_1=1$，$a_{n+1}=\sqrt{6+a_n}$。已知这个数列单调递增、有上界（不用证明），求$\lim_{n\to\infty}a_n$。
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      由:term[单调有界原理]{id="math.analysis.monotone-convergence-theorem"}，极限$L$存在。在递推式两边取极限，得到$L$满足的方程。
+    - |
+      $L=\sqrt{6+L}$，平方得$L^2-L-6=0$，两个根是$3$和$-2$。
+    - |
+      由单调有界原理，$a_n\to L$。对$a_{n+1}^2=6+a_n$两边取极限，得$L^2=6+L$，即$(L-3)(L+2)=0$，$L=3$或$L=-2$。数列递增，每一项都不小于$a_1=1$，由保不等式性$L\ge1$，所以$L=3$。
+  solution: |
+    极限$L$满足$L^2=L+6$，根是$3$和$-2$；数列各项不小于$1$，所以$L=3$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法是对的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        收敛数列一定是单调数列
+      - |
+        单调递减的数列一定收敛
+      - |
+        单调递增且有上界的数列收敛，极限是它的项的上确界
+      - |
+        单调递增的数列收敛，当且仅当它有上界
+    value: [3, 4]
+  hints:
+    - |
+      逐条对照:term[单调有界原理]{id="math.analysis.monotone-convergence-theorem"}，对可疑的说法找反例。D 是「当且仅当」，两个方向都要看。
+    - |
+      A 想想$\{\frac{(-1)^n}{n}\}$；B 想想$\{-n\}$。D 的一个方向是单调有界原理，另一个方向是「收敛数列有界」。
+    - |
+      A 错：$\frac{(-1)^n}{n}\to0$，但它正负交替，不单调。B 错：$\{-n\}$单调递减，却发散，因为没有下界。C 对：这就是单调有界原理。D 对：有上界时由单调有界原理收敛；反过来，收敛数列一定有界，当然有上界。
+
+      答案是 C 和 D。
+  solution: |
+    C 是单调有界原理；D 的「有上界$\Rightarrow$收敛」是单调有界原理，「收敛$\Rightarrow$有上界」是收敛数列有界。A 错，$\frac{(-1)^n}{n}$收敛但不单调；B 错，$\{-n\}$单调递减却没有下界、发散。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$a_1=0$，$a_{n+1}=\frac{a_n^2+2}{3}$。求$\lim_{n\to\infty}a_n$。
+  answer:
+    type: number
+    value: 1
+  hints:
+    - |
+      先算前几项，看数列往哪个方向走、被什么挡住；再设极限为$L$，列出方程。方程会有两个根，要想办法排除一个。
+    - |
+      方程$L=\frac{L^2+2}{3}$的根是$1$和$2$。用归纳法证明$0\le a_n<1$，再证数列单调递增。
+    - |
+      归纳证明$0\le a_n<1$：$a_1=0$满足；若$0\le a_n<1$，则$\frac23\le a_{n+1}=\frac{a_n^2+2}{3}<\frac{1+2}{3}=1$。
+
+      单调递增：$a_{n+1}-a_n=\frac{a_n^2-3a_n+2}{3}=\frac{(a_n-1)(a_n-2)}{3}>0$，因为两个因子都是负数。
+
+      由:term[单调有界原理]{id="math.analysis.monotone-convergence-theorem"}，$a_n\to L$。两边取极限得$L=\frac{L^2+2}{3}$，即$(L-1)(L-2)=0$。每一项都小于$1$，由保不等式性$L\le1$，所以$L=1$。
+  solution: |
+    数列单调递增、以$1$为上界，极限$L$满足$L^2-3L+2=0$，又$L\le1$，所以极限是$1$。只解方程不看界，就可能误选$2$。
+
+- id: p4
+  tier: medium
+  statement: |
+    已知$\lim_{n\to\infty}\left(1+\frac1n\right)^n=e$。求$\lim_{n\to\infty}\left(1-\frac1n\right)^n$。
+  answer:
+    type: number
+    value: 1/e
+  hints:
+    - |
+      把$1-\frac1n$写成$\frac{n-1}{n}$，再取倒数，看能不能凑出$\left(1+\frac{1}{m}\right)^m$的样子。
+    - |
+      $n\ge2$时，$\left(1-\frac1n\right)^n=\dfrac{1}{\left(\frac{n}{n-1}\right)^n}=\dfrac{1}{\left(1+\frac{1}{n-1}\right)^{n-1}\left(1+\frac{1}{n-1}\right)}$。
+    - |
+      记$e_m=\left(1+\frac1m\right)^m$。$n\ge2$时，上式的分母是$e_{n-1}\cdot\left(1+\frac{1}{n-1}\right)$。数列$e_1,e_2,e_3,\dots$和$e_{n-1}$（$n=2,3,4,\dots$）是同一串数，只是编号错开一位，所以$e_{n-1}\to e$；又$1+\frac{1}{n-1}\to1$。由:term[极限的四则运算法则]{id="math.analysis.algebraic-limit-theorem"}，分母趋于$e\ne0$，原式趋于$\frac1e$。
+  solution: |
+    $\left(1-\frac1n\right)^n=\dfrac{1}{\left(1+\frac{1}{n-1}\right)^{n-1}\left(1+\frac{1}{n-1}\right)}\to\dfrac1e\approx0.368$，填 `1/e`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$e_n=\left(1+\frac1n\right)^n$。证明$\{e_n\}$单调递增，并且$e_n<3$对所有$n$成立，从而$\{e_n\}$收敛（它的极限就是$e$）。
+  hints:
+    - |
+      用二项式定理展开$e_n$，把第$k$项写成$\frac{1}{k!}$乘上一串形如$1-\frac jn$的因子。
+    - |
+      $e_n=\sum_{k=0}^{n}\frac{1}{k!}\left(1-\frac1n\right)\left(1-\frac2n\right)\cdots\left(1-\frac{k-1}{n}\right)$。$n$变大时，每一项都变大，项数也变多；而每一项都不超过$\frac{1}{k!}$，并且$k!\ge2^{k-1}$。
+    - |
+      由二项式定理，
+
+      $$
+      e_n=\sum_{k=0}^{n}\binom{n}{k}\frac{1}{n^k}=\sum_{k=0}^{n}\frac{1}{k!}\cdot\frac{n(n-1)\cdots(n-k+1)}{n^k}=\sum_{k=0}^{n}\frac{1}{k!}\left(1-\frac1n\right)\left(1-\frac2n\right)\cdots\left(1-\frac{k-1}{n}\right) ,
+      $$
+
+      其中$k=0,1$的两项都是$1$。
+
+      单调：把$n$换成$n+1$，每个因子$1-\frac{j}{n}$都变成更大的$1-\frac{j}{n+1}$，而且都是正数，所以$k=0,1,\dots,n$这些项都不减小；$e_{n+1}$还多出$k=n+1$那一项，它是正数。所以$e_{n+1}>e_n$。
+
+      有界：每个因子都在$(0,1]$里，所以$e_n\le\sum_{k=0}^{n}\frac{1}{k!}$。$k\ge1$时$k!=1\cdot2\cdot3\cdots k\ge2^{k-1}$，于是
+
+      $$
+      e_n\le1+\sum_{k=1}^{n}\frac{1}{2^{k-1}}=1+2\left(1-\frac{1}{2^n}\right)<3 .
+      $$
+
+      由:term[单调有界原理]{id="math.analysis.monotone-convergence-theorem"}，$\{e_n\}$收敛，极限记作$e$。由于$e_2=\frac94$且数列递增，$\frac94\le e\le3$。
+  reference: |
+    二项式展开得$e_n=\sum_{k=0}^n\frac{1}{k!}\prod_{j=1}^{k-1}\left(1-\frac jn\right)$。$n$增大时每项不减且项数增加，故$e_n$递增；每项不超过$\frac1{k!}\le\frac1{2^{k-1}}$，故$e_n<1+2=3$。由单调有界原理$e_n$收敛。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$0<a_1<b_1$，$a_{n+1}=\sqrt{a_nb_n}$，$b_{n+1}=\frac{a_n+b_n}{2}$。证明$\{a_n\}$、$\{b_n\}$都收敛，并且极限相同。这个公共的极限叫作$a_1$、$b_1$的算术-几何平均（arithmetic-geometric mean）。
+  hints:
+    - |
+      用两个正数的几何平均不超过算术平均：$\sqrt{xy}\le\frac{x+y}{2}$，等号只在$x=y$时成立。先比较$a_n$和$b_n$的大小。
+    - |
+      归纳证明$0<a_n<b_n$；由此$a_{n+1}=\sqrt{a_nb_n}>a_n$，$b_{n+1}=\frac{a_n+b_n}{2}<b_n$。
+    - |
+      先用归纳法证明$0<a_n<b_n$。$n=1$时成立。若$0<a_n<b_n$，则$a_{n+1}=\sqrt{a_nb_n}>0$；再由$\frac{x+y}{2}-\sqrt{xy}=\frac12\left(\sqrt x-\sqrt y\right)^2$，当$x\ne y$时它大于$0$，所以$a_{n+1}<b_{n+1}$。
+
+      单调：$a_{n+1}=\sqrt{a_nb_n}>\sqrt{a_na_n}=a_n$，$b_{n+1}=\frac{a_n+b_n}{2}<\frac{b_n+b_n}{2}=b_n$。
+
+      有界：$a_1\le a_n<b_n\le b_1$，所以$\{a_n\}$递增、以$b_1$为上界，$\{b_n\}$递减、以$a_1$为下界。由:term[单调有界原理]{id="math.analysis.monotone-convergence-theorem"}，$a_n\to\alpha$，$b_n\to\beta$。
+
+      极限相同：$\{b_{n+1}\}$也趋于$\beta$，对$b_{n+1}=\frac{a_n+b_n}{2}$两边取极限，得$\beta=\frac{\alpha+\beta}{2}$，所以$\alpha=\beta$。
+  reference: |
+    归纳得$0<a_n<b_n$（几何平均小于算术平均）。于是$a_{n+1}>a_n$、$b_{n+1}<b_n$，且$a_1\le a_n<b_n\le b_1$。两者都单调有界，分别收敛于$\alpha$、$\beta$；由$b_{n+1}=\frac{a_n+b_n}2$取极限得$\alpha=\beta$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    这一节用确界原理证明了单调有界原理。反过来，如果只承认「单调有界的数列收敛」，能不能推出确界原理？也就是说，这两条性质是不是一样强？试着给出思路。
+  hints:
+    - |
+      设$A$非空、有上界。想办法造两个数列：一个单调递增，每一项都不超过$A$的某个元素；另一个单调递减，每一项都是$A$的上界；而且两者越来越近。
+    - |
+      用二分法：取$x_1\in A$，$u_1$是$A$的一个上界。看中点$m=\frac{x_n+u_n}{2}$：如果$m$是上界，令$x_{n+1}=x_n$、$u_{n+1}=m$；否则$A$里有比$m$大的元素，令$x_{n+1}=m$、$u_{n+1}=u_n$。
+    - |
+      按提示 2 造出$\{x_n\}$、$\{u_n\}$：$\{x_n\}$单调递增、以$u_1$为上界；$\{u_n\}$单调递减、以$x_1$为下界；每个$u_n$都是$A$的上界，每个$x_n$都不超过$A$的某个元素；$u_n-x_n=\frac{u_1-x_1}{2^{n-1}}\to0$。由单调有界原理，$x_n\to s$，$u_n\to t$，再由$u_n-x_n\to0$得$s=t$。
+
+      $s$是上界：若有$a\in A$使$a>s$，由于每个$u_n\ge a$，保不等式性给出$s=\lim u_n\ge a>s$，矛盾。$s$是最小的上界：任给$\varepsilon>0$，从某一项起$x_n>s-\varepsilon$，而$A$里有不小于$x_n$的元素，它大于$s-\varepsilon$，所以$s-\varepsilon$不是上界。于是$s=\sup A$。
+
+      所以在实数的其他性质（四则运算、大小关系）都成立的前提下，单调有界原理和确界原理一样强，都可以当作「实数没有洞」的表述。上面$\frac{1}{2^{n-1}}\to0$要用阿基米德性质（Archimedean property），它也能由单调有界原理推出：若正整数有上界，递增数列$\{n\}$就收敛于某个$L$，而$\{n+1\}$也收敛于$L$，得$L+1=L$，矛盾。下一节的[闭区间套定理](lesson:math.analysis.nested-intervals)（nested interval theorem），就是把这里的二分法单独拿出来。
+  reference: |
+    能。对非空有上界的$A$二分：$x_n$递增且不超过$A$的某元素，$u_n$递减且为上界，$u_n-x_n=\frac{u_1-x_1}{2^{n-1}}\to0$。单调有界原理给出公共极限$s$；$s$是上界（否则与$u_n\ge a$矛盾），且任意$s-\varepsilon$不是上界（$x_n>s-\varepsilon$），故$s=\sup A$。阿基米德性质也可由单调有界原理推出。两者等价。
+
+- id: p8
+  tier: thinking
+  statement: |
+    为什么每个无限小数（比如$0.101001000100001\dots$，相邻两个$1$之间依次隔$1,2,3,\dots$个$0$）都表示一个确定的实数？用单调有界原理说明。$0.999\dots$等于多少？在只有有理数的世界里，这件事会在哪里出问题？
+  hints:
+    - |
+      把小数截到第$n$位，得到有理数$x_n$。$\{x_n\}$单调吗？有界吗？
+    - |
+      多截一位，只是加上一个非负数，所以$\{x_n\}$单调递增；又每个$x_n$都不超过$0.99\cdots9=1-10^{-n}<1$。对$0.999\dots$，$x_n=1-10^{-n}$。
+    - |
+      截到第$n$位的有限小数$x_n=0.d_1d_2\cdots d_n$是有理数。多截一位就加上$\frac{d_{n+1}}{10^{n+1}}\ge0$，所以$\{x_n\}$单调递增；又$x_n\le1-10^{-n}<1$，有上界。由单调有界原理，$\{x_n\}$收敛，「无限小数$0.d_1d_2\cdots$」指的就是这个极限，所以它是一个确定的实数。
+
+      $0.999\dots$：$x_n=1-10^{-n}$，而$10^{-n}\to0$（[数列的极限](lesson:math.analysis.sequences-limits)的例 2），所以$0.999\dots=1$。这不是「差一点点」，按定义两者就是同一个数。
+
+      在有理数里：$0.101001000100001\dots$不循环，而有理数的小数展开最终都是循环的，所以它不是有理数。它的截断$\{x_n\}$单调、有界，却找不到有理数作极限。小数展开能「填满」数轴，靠的正是实数的完备性。
+  reference: |
+    截断$x_n$单调递增且小于$1$，由单调有界原理收敛，无限小数即定义为此极限。$0.999\dots=\lim(1-10^{-n})=1$。在$\Q$中，不循环小数（如所给的数）的截断单调有界却无有理极限，说明这一点依赖完备性。

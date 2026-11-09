@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" font-size="14">
+  <!-- 二分法找 √2 的前 7 个区间：横坐标 px = 80 + 500(x − 1)，√2 在 px ≈ 287.1 -->
+  <!-- √2 的位置 -->
+  <line x1="287.1" y1="22" x2="287.1" y2="250" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 4" />
+  <text x="287.1" y="292" text-anchor="middle" fill="currentColor">√2 ≈ 1.41421</text>
+  <!-- 区间：一行一个，端点画实心点（闭区间） -->
+  <g stroke-width="3" stroke-linecap="round" style="stroke: var(--accent, #2563eb)">
+    <line x1="80" y1="40" x2="580" y2="40" />
+    <line x1="80" y1="70" x2="330" y2="70" />
+    <line x1="205" y1="100" x2="330" y2="100" />
+    <line x1="267.5" y1="130" x2="330" y2="130" />
+    <line x1="267.5" y1="160" x2="298.75" y2="160" />
+    <line x1="283.125" y1="190" x2="298.75" y2="190" />
+    <line x1="283.125" y1="220" x2="290.94" y2="220" />
+  </g>
+  <g style="fill: var(--accent, #2563eb)">
+    <circle cx="80" cy="40" r="4" /><circle cx="580" cy="40" r="4" />
+    <circle cx="80" cy="70" r="4" /><circle cx="330" cy="70" r="4" />
+    <circle cx="205" cy="100" r="4" /><circle cx="330" cy="100" r="4" />
+    <circle cx="267.5" cy="130" r="4" /><circle cx="330" cy="130" r="4" />
+    <circle cx="267.5" cy="160" r="3.5" /><circle cx="298.75" cy="160" r="3.5" />
+    <circle cx="283.125" cy="190" r="3" /><circle cx="298.75" cy="190" r="3" />
+    <circle cx="283.125" cy="220" r="2.5" /><circle cx="290.94" cy="220" r="2.5" />
+  </g>
+  <!-- 左边：第几个区间 -->
+  <g text-anchor="end" fill="currentColor">
+    <text x="66" y="45"><tspan font-style="italic">n</tspan> = 1</text>
+    <text x="66" y="75">2</text>
+    <text x="66" y="105">3</text>
+    <text x="66" y="135">4</text>
+    <text x="66" y="165">5</text>
+    <text x="66" y="195">6</text>
+    <text x="66" y="225">7</text>
+  </g>
+  <!-- 右边：区间的端点 -->
+  <g fill="currentColor">
+    <text x="592" y="45">[1, 2]</text>
+    <text x="342" y="75">[1, 1.5]</text>
+    <text x="342" y="105">[1.25, 1.5]</text>
+    <text x="342" y="135">[1.375, 1.5]</text>
+    <text x="342" y="165">[1.375, 1.4375]</text>
+    <text x="342" y="195">[1.40625, 1.4375]</text>
+    <text x="342" y="225">[1.40625, 1.421875]</text>
+  </g>
+  <!-- 数轴 -->
+  <line x1="80" y1="255" x2="580" y2="255" stroke="currentColor" stroke-width="1.2" />
+  <g stroke="currentColor" stroke-width="1.2">
+    <line x1="80" y1="250" x2="80" y2="260" />
+    <line x1="205" y1="250" x2="205" y2="260" />
+    <line x1="330" y1="250" x2="330" y2="260" />
+    <line x1="455" y1="250" x2="455" y2="260" />
+    <line x1="580" y1="250" x2="580" y2="260" />
+  </g>
+  <g text-anchor="middle" fill="currentColor" font-size="12">
+    <text x="80" y="274">1</text>
+    <text x="205" y="274">1.25</text>
+    <text x="330" y="274">1.5</text>
+    <text x="455" y="274">1.75</text>
+    <text x="580" y="274">2</text>
+  </g>
+</svg>

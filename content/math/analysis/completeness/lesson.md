@@ -8,7 +8,7 @@ prerequisites: [math.analysis.sequences-limits, math.logic-sets.sets]
 minutes: 25
 summary: |
   实数轴上没有洞：有上界的非空集合一定有最小上界。
-status: written
+status: reviewed
 ---
 
 ## 这一节要回答的问题
@@ -57,7 +57,7 @@ $$
 
 为什么把它当作实数的基本性质：前面的$S$说明，$\Q$恰恰缺这一条，$S$非空、有上界，在$\Q$里却没有上确界。确界原理要求这种事在$\R$里不再发生，等于把所有的洞都补上：$S$在$\R$里的上确界就是$\sqrt{2}$。两个条件缺一不可：空集没有上确界；$\N^+$非空但没有上界，也没有上确界（见例 1）。
 
-证明思路：确界原理在$\Q$里不成立，所以它不可能只从有理数的四则运算和大小关系推出来。一种做法是把它当作实数的公理；另一种是先用有理数「造出」实数，例如把每个实数看成它左边所有有理数组成的集合（Dedekind 分割，Dedekind cut），再证明一族这样的集合的上确界就是它们的并集。这一节采用第一种看法，构造方法以后再讲。
+证明思路：确界原理在$\Q$里不成立，所以它不可能只从有理数的四则运算和大小关系推出来。一种做法是把它当作实数的公理；另一种是先用有理数「造出」实数，例如把每个实数看成它左边所有有理数组成的集合（戴德金分割，Dedekind cut），再证明一族这样的集合的上确界就是它们的并集。这一节采用第一种看法，构造方法见[用戴德金分割构造实数](lesson:math.analysis.real-construction)。
 
 ## 几何图像
 
@@ -78,7 +78,7 @@ sequences:
       $a_n=1-\frac{1}{n}$
 sliders:
   - name: eps
-    min: 0.02
+    min: 0.05
     max: 0.5
     step: 0.01
     default: 0.2
@@ -99,6 +99,8 @@ sliders:
 
 **推导**：假设结论不成立，即有实数$x$，使所有正整数$n$都满足$n\le x$。这时$\N^+$非空、有上界，由确界原理，它有上确界$s$。因为$s-1<s$，$s-1$不是$\N^+$的上界，所以有正整数$m>s-1$。于是$m+1>s$，而$m+1$也是正整数，这和$s$是上界矛盾。
 
+[数列的极限](lesson:math.analysis.sequences-limits)里找$N$时一直在用这条性质，到这里它才有了证明。
+
 ### 例 2　$\sup\{1-\frac{1}{n} : n\in\N^+\}=1$
 
 设$A=\{1-\frac{1}{n} : n\in\N^+\}$，证明$\sup A=1$。
@@ -111,7 +113,7 @@ $$
 1-\frac{1}{n} > 1-\varepsilon ,
 $$
 
-所以$1-\varepsilon$不是上界，于是$\sup A=1$。注意$1\notin A$，所以$A$没有:term[最大元]{id="math.analysis.maximum"}；$1$也是数列$1-\frac{1}{n}$的:term[极限]{id="math.analysis.sequence-limit"}（limit of a sequence，lim），单调数列的极限和确界的关系是下一节的内容。
+所以$1-\varepsilon$不是上界，于是$\sup A=1$。注意$1\notin A$，所以$A$没有:term[最大元]{id="math.analysis.maximum"}；$1$也是数列$1-\frac{1}{n}$的:term[极限]{id="math.analysis.sequence-limit"}（limit of a sequence，lim），:term[单调数列]{id="math.analysis.monotone-sequence"}（monotone sequence）的极限和确界的关系见[单调有界数列](lesson:math.analysis.bounded-monotone)。
 
 ## 常见误区
 

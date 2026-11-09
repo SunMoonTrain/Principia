@@ -22,9 +22,135 @@ glossary:
     abbr: |
       lim
     brief: |
-      数列$a_n$越来越接近$L$：任给$\varepsilon>0$，从某一项起都有$|a_n-L|<\varepsilon$。
+      数列$\{a_n\}$趋于$L$：任给$\varepsilon>0$，都有正整数$N$，使$n>N$时$|a_n-L|<\varepsilon$。
     definedIn: math.analysis.sequences-limits
     anchor: def-limit
+  - id: math.analysis.convergent-sequence
+    zh: |
+      收敛数列
+    en: |
+      convergent sequence
+    brief: |
+      有极限的数列：存在实数$L$使$\lim_{n\to\infty}a_n=L$，也说它收敛于$L$。
+    definedIn: math.analysis.sequences-limits
+    anchor: def-limit
+  - id: math.analysis.divergent-sequence
+    zh: |
+      发散数列
+    en: |
+      divergent sequence
+    brief: |
+      不收敛的数列：没有任何实数是它的极限，例如$\{(-1)^n\}$和$\{n\}$。
+    definedIn: math.analysis.sequences-limits
+    anchor: def-divergent
+  - id: math.analysis.neighborhood
+    zh: |
+      邻域
+    en: |
+      neighborhood
+    brief: |
+      以$a$为中心、$\varepsilon$为半径的开区间$(a-\varepsilon,a+\varepsilon)$，叫作$a$的$\varepsilon$邻域。
+    definedIn: math.analysis.sequences-limits
+    anchor: def-neighborhood
+  - id: math.analysis.bounded-sequence
+    zh: |
+      有界数列
+    en: |
+      bounded sequence
+    brief: |
+      存在正数$M$，使每一项都满足$|a_n|\le M$的数列；收敛数列一定有界。
+    definedIn: math.analysis.limit-properties
+    anchor: def-bounded
+  - id: math.analysis.sign-preservation
+    zh: |
+      保号性
+    en: |
+      sign-preserving property
+    brief: |
+      若$a_n\to L$且$L>0$，则从某一项起$a_n>0$；$L<0$时同理。极限为零时推不出符号。
+    definedIn: math.analysis.limit-properties
+    anchor: thm-sign-preserving
+  - id: math.analysis.order-limit-theorem
+    zh: |
+      保不等式性
+    en: |
+      order limit theorem
+    brief: |
+      若$a_n\to a$，$b_n\to b$，且从某一项起$a_n\le b_n$，则$a\le b$；严格的$<$取极限后只保得住$\le$。
+    definedIn: math.analysis.limit-properties
+    anchor: thm-order-limit
+  - id: math.analysis.algebraic-limit-theorem
+    zh: |
+      极限的四则运算法则
+    en: |
+      algebraic limit theorem
+    brief: |
+      若$a_n\to a$，$b_n\to b$，则$a_n\pm b_n\to a\pm b$，$a_nb_n\to ab$；$b\ne0$时$\frac{a_n}{b_n}\to\frac ab$。
+    definedIn: math.analysis.limit-arithmetic
+    anchor: thm-limit-arithmetic
+  - id: math.analysis.squeeze-theorem
+    zh: |
+      夹逼定理
+    en: |
+      squeeze theorem
+    brief: |
+      若从某一项起$b_n\le a_n\le c_n$，且$b_n$、$c_n$都趋于$L$，则$a_n$也趋于$L$。
+    definedIn: math.analysis.limit-arithmetic
+    anchor: thm-squeeze
+  - id: math.analysis.monotone-sequence
+    zh: |
+      单调数列
+    en: |
+      monotone sequence
+    brief: |
+      每一项都不小于前一项（单调递增），或都不大于前一项（单调递减）的数列。
+    definedIn: math.analysis.bounded-monotone
+    anchor: def-monotone
+  - id: math.analysis.monotone-convergence-theorem
+    zh: |
+      单调有界原理
+    en: |
+      monotone convergence theorem
+    brief: |
+      单调递增且有上界的数列收敛于项的上确界；单调递减且有下界的数列收敛于项的下确界。
+    definedIn: math.analysis.bounded-monotone
+    anchor: thm-monotone-convergence
+  - id: math.analysis.nested-intervals
+    zh: |
+      闭区间套
+    en: |
+      nested intervals
+    brief: |
+      一串一个套一个、长度趋于$0$的闭区间$[a_n,b_n]$，即$[a_{n+1},b_{n+1}]\subseteq[a_n,b_n]$。
+    definedIn: math.analysis.nested-intervals
+    anchor: def-nested-intervals
+  - id: math.analysis.nested-interval-theorem
+    zh: |
+      闭区间套定理
+    en: |
+      nested interval theorem
+    brief: |
+      闭区间套恰有一个公共点$\xi$，并且左、右端点都趋于$\xi$。
+    definedIn: math.analysis.nested-intervals
+    anchor: thm-nested-intervals
+  - id: math.analysis.subsequence
+    zh: |
+      子列
+    en: |
+      subsequence
+    brief: |
+      从数列里按原来的顺序取出无穷多项组成的数列$\{a_{n_k}\}$，下标满足$n_1<n_2<\cdots$。
+    definedIn: math.analysis.subsequences
+    anchor: def-subsequence
+  - id: math.analysis.bolzano-weierstrass
+    zh: |
+      致密性定理
+    en: |
+      Bolzano-Weierstrass theorem
+    brief: |
+      有界数列一定有收敛的子列。也叫波尔查诺-魏尔斯特拉斯定理。
+    definedIn: math.analysis.subsequences
+    anchor: thm-bolzano-weierstrass
   - id: math.analysis.upper-bound
     zh: |
       上界
@@ -82,7 +208,7 @@ glossary:
     en: |
       completeness of the real numbers
     brief: |
-      实数轴「没有洞」的性质。这一节用确界原理来表述它，以后还会见到等价的其他说法。
+      实数轴「没有洞」的性质，通常用确界原理来表述；单调有界原理、闭区间套定理是它的另外几种说法。
     definedIn: math.analysis.completeness
     anchor: def-supremum-principle
   - id: math.analysis.archimedean-property

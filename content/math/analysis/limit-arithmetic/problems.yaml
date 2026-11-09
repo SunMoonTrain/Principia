@@ -1,0 +1,151 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\lim_{n\to\infty}\frac{2n^2+3n}{5n^2-1}$。
+  answer:
+    type: number
+    value: 2/5
+  hints:
+    - |
+      分子分母都越来越大，不能直接用商的法则。先把分子分母同除以$n$的最高次幂。
+    - |
+      同除以$n^2$得$\frac{2+\frac3n}{5-\frac{1}{n^2}}$，分子趋于$2$，分母趋于$5$。
+    - |
+      $\frac{2n^2+3n}{5n^2-1}=\frac{2+\frac3n}{5-\frac{1}{n^2}}$。由$\frac1n\to0$和:term[极限的四则运算法则]{id="math.analysis.algebraic-limit-theorem"}，$\frac3n\to0$，$\frac{1}{n^2}=\frac1n\cdot\frac1n\to0$，所以分子趋于$2$，分母趋于$5\ne0$。由商的法则，极限是$\frac25$。
+  solution: |
+    分子分母同除以$n^2$，得$\frac{2+3/n}{5-1/n^2}$，由四则运算法则趋于$\frac25$。
+
+- id: p2
+  tier: easy
+  statement: |
+    已知$\lim_{n\to\infty}a_n=3$，$\lim_{n\to\infty}b_n=-2$。求$\lim_{n\to\infty}\frac{a_n^2-2b_n}{a_n+b_n}$。
+  answer:
+    type: number
+    value: 13
+  hints:
+    - |
+      分子、分母分别用四则运算法则求极限，再看分母的极限是不是$0$。
+    - |
+      分子趋于$3^2-2\cdot(-2)$，分母趋于$3+(-2)$。
+    - |
+      由积的法则$a_n^2=a_n\cdot a_n\to9$，$2b_n\to-4$，所以分子$a_n^2-2b_n\to9-(-4)=13$；分母$a_n+b_n\to3+(-2)=1\ne0$。由商的法则，极限是$\frac{13}{1}=13$。
+  solution: |
+    分子趋于$9+4=13$，分母趋于$1\ne0$，由商的法则，极限是$13$。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\lim_{n\to\infty}\frac{1^2+2^2+\dots+n^2}{n^3}$。
+  answer:
+    type: number
+    value: 1/3
+  hints:
+    - |
+      分子的项数随$n$增加，不能逐项取极限。先用求和公式把分子写成$n$的式子。
+    - |
+      $1^2+2^2+\dots+n^2=\frac{n(n+1)(2n+1)}{6}$。
+    - |
+      由求和公式，原式$=\frac{n(n+1)(2n+1)}{6n^3}=\frac16\left(1+\frac1n\right)\left(2+\frac1n\right)$。由:term[极限的四则运算法则]{id="math.analysis.algebraic-limit-theorem"}，它趋于$\frac16\cdot1\cdot2=\frac13$。
+  solution: |
+    用$1^2+2^2+\dots+n^2=\frac{n(n+1)(2n+1)}{6}$，原式$=\frac16\bigl(1+\frac1n\bigr)\bigl(2+\frac1n\bigr)\to\frac13$。注意不能说「每一项$\frac{k^2}{n^3}$都趋于$0$，所以和趋于$0$」：项数在跟着$n$变。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\lim_{n\to\infty}\frac{n+\sin n}{2n+\cos n}$。
+  answer:
+    type: number
+    value: 1/2
+  hints:
+    - |
+      分子分母同除以$n$，看多出来的$\frac{\sin n}{n}$、$\frac{\cos n}{n}$趋于什么。
+    - |
+      $\bigl|\frac{\sin n}{n}\bigr|\le\frac1n$，$\bigl|\frac{\cos n}{n}\bigr|\le\frac1n$，由:term[夹逼定理]{id="math.analysis.squeeze-theorem"}，它们都趋于$0$。
+    - |
+      原式$=\frac{1+\frac{\sin n}{n}}{2+\frac{\cos n}{n}}$。由$-\frac1n\le\frac{\sin n}{n}\le\frac1n$和夹逼定理，$\frac{\sin n}{n}\to0$；同理$\frac{\cos n}{n}\to0$。分子趋于$1$，分母趋于$2\ne0$，由商的法则，极限是$\frac12$。
+  solution: |
+    同除以$n$后，$\frac{\sin n}{n}$、$\frac{\cos n}{n}$被$\pm\frac1n$夹住，趋于$0$，所以原式趋于$\frac{1+0}{2+0}=\frac12$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$a_n\to L$。证明$\frac{a_1+a_2+\dots+a_n}{n}\to L$。反过来，由$\Bigl\{\frac{a_1+a_2+\dots+a_n}{n}\Bigr\}$收敛，能推出$\{a_n\}$收敛吗？
+  hints:
+    - |
+      把$\frac{a_1+\dots+a_n}{n}-L$写成$\frac{(a_1-L)+\dots+(a_n-L)}{n}$，再把和分成前面有限项和后面的项两部分。
+    - |
+      取$N_1$使$k>N_1$时$|a_k-L|<\frac\varepsilon2$。前$N_1$项的和$C=\sum_{k=1}^{N_1}|a_k-L|$是一个固定的数，$\frac{C}{n}\to0$；后面每一项都小于$\frac\varepsilon2$，平均下来也小于$\frac\varepsilon2$。
+    - |
+      任给$\varepsilon>0$，有$N_1$使$k>N_1$时$|a_k-L|<\frac{\varepsilon}{2}$。记$C=|a_1-L|+\dots+|a_{N_1}-L|$。当$n>N_1$时
+
+      $$
+      \left|\frac{a_1+\dots+a_n}{n}-L\right|\le\frac{C}{n}+\frac1n\sum_{k=N_1+1}^{n}|a_k-L|<\frac{C}{n}+\frac{n-N_1}{n}\cdot\frac{\varepsilon}{2}<\frac{C}{n}+\frac{\varepsilon}{2} .
+      $$
+
+      取正整数$N_2>\frac{2C}{\varepsilon}$，则$n>N_2$时$\frac{C}{n}<\frac{\varepsilon}{2}$。所以$n>\max\{N_1,N_2\}$时上式小于$\varepsilon$，即平均值趋于$L$。
+
+      反过来不行：$a_n=(-1)^n$发散，而$a_1+\dots+a_n$只能是$-1$或$0$，所以$\frac{a_1+\dots+a_n}{n}\to0$。
+  reference: |
+    任给$\varepsilon$，取$N_1$使$k>N_1$时$|a_k-L|<\frac\varepsilon2$，记$C=\sum_{k\le N_1}|a_k-L|$。$n>N_1$时平均值与$L$之差小于$\frac Cn+\frac\varepsilon2$，再取$N_2>\frac{2C}{\varepsilon}$即得。逆命题不成立：$(-1)^n$的平均值趋于$0$而它本身发散。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$a,b>0$。证明$\lim_{n\to\infty}\sqrt[n]{a^n+b^n}=\max\{a,b\}$。
+  hints:
+    - |
+      不妨设$a\ge b$。把$a^n+b^n$夹在$a^n$和$2a^n$之间，再开$n$次方。
+    - |
+      $a<\sqrt[n]{a^n+b^n}\le\sqrt[n]{2}\,a$。剩下要证$\sqrt[n]{2}\to1$：写$\sqrt[n]{2}=1+h_n$，用二项式定理得$(1+h_n)^n\ge1+nh_n$。
+    - |
+      不妨设$a\ge b$（否则把两者交换），这时$\max\{a,b\}=a$。由$0<b^n\le a^n$得$a^n<a^n+b^n\le2a^n$，开$n$次方得
+
+      $$
+      a<\sqrt[n]{a^n+b^n}\le\sqrt[n]{2}\,a .
+      $$
+
+      再证$\sqrt[n]{2}\to1$。令$h_n=\sqrt[n]{2}-1>0$，由二项式定理$2=(1+h_n)^n\ge1+nh_n$，所以$0<h_n\le\frac1n$，由:term[夹逼定理]{id="math.analysis.squeeze-theorem"}得$h_n\to0$，即$\sqrt[n]{2}\to1$。
+
+      于是右边$\sqrt[n]{2}\,a\to a$（积的法则），左边是常数$a$。由夹逼定理，$\sqrt[n]{a^n+b^n}\to a=\max\{a,b\}$。
+  reference: |
+    设$a\ge b$。$a<\sqrt[n]{a^n+b^n}\le\sqrt[n]2\,a$。由$(1+h_n)^n\ge1+nh_n$得$\sqrt[n]2=1+h_n$，$0<h_n\le\frac1n$，故$\sqrt[n]2\to1$。夹逼得极限为$a=\max\{a,b\}$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    四则运算法则要求$\lim a_n$、$\lim b_n$都存在。如果只知道其中一个收敛，会怎样？
+
+    分别想一想：$\{a_n\}$收敛、$\{b_n\}$发散时，$\{a_n+b_n\}$一定发散吗？$\{a_nb_n\}$一定发散吗？如果不一定，在什么条件下一定发散？
+  hints:
+    - |
+      对和：假设$\{a_n+b_n\}$收敛，能不能把$b_n$写成两个收敛数列的差？
+    - |
+      和的情形看$b_n=(a_n+b_n)-a_n$。积的情形试试$a_n=\frac1n$、$b_n=(-1)^n$；再想想$\lim a_n\ne0$时，能不能写$b_n=\frac{a_nb_n}{a_n}$。
+    - |
+      和一定发散：若$\{a_n+b_n\}$收敛，则$b_n=(a_n+b_n)-a_n$是两个收敛数列之差，由差的法则收敛，矛盾。
+
+      积不一定：$a_n=\frac1n\to0$，$b_n=(-1)^n$发散，乘积$\frac{(-1)^n}{n}\to0$却收敛。若$\lim a_n=a\ne0$，乘积一定发散：否则从某一项起$a_n\ne0$，$b_n=\frac{a_nb_n}{a_n}$由商的法则收敛，矛盾。$a=0$时什么都可能：$\frac1n\cdot n=1$收敛，$\frac1n\cdot n^2=n$发散。
+
+      顺带得到一条常用的结论：若$a_n\to0$而$\{b_n\}$有界，则$a_nb_n\to0$（$|a_nb_n|\le M|a_n|$，再用夹逼定理）。乘法法则要两个都收敛，这一条只要一个趋于$0$、另一个有界。
+  reference: |
+    收敛加发散必发散（$b_n=(a_n+b_n)-a_n$）。收敛乘发散：若$\lim a_n\ne0$必发散（$b_n=\frac{a_nb_n}{a_n}$）；若$\lim a_n=0$则都可能（$\frac1n\cdot(-1)^n\to0$，$\frac1n\cdot n^2$发散）。附带：$a_n\to0$、$b_n$有界时$a_nb_n\to0$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    做物理实验时测一个矩形的长和宽，真实值是$a$、$b$，测量值是$a+\delta_a$、$b+\delta_b$。用测量值算出的面积，误差有多大？
+
+    把它和这一节积的法则的证明对照：证明里的拆分对应什么？证明里为什么要用到「收敛数列有界」？商的法则要求$b\ne0$，在误差估计里对应什么现象？
+  hints:
+    - |
+      展开$(a+\delta_a)(b+\delta_b)-ab$，看它由哪几部分组成，再对照「几何图像」里的两条窄带。
+    - |
+      $(a+\delta_a)(b+\delta_b)-ab=b\,\delta_a+(a+\delta_a)\,\delta_b$。除以$ab$得相对误差$\frac{\delta_a}{a}+\frac{\delta_b}{b}+\frac{\delta_a\delta_b}{ab}$。
+    - |
+      面积误差$(a+\delta_a)(b+\delta_b)-ab=b\,\delta_a+(a+\delta_a)\,\delta_b$，正是证明里的$a_nb_n-ab=b(a_n-a)+a_n(b_n-b)$：$\delta_a$、$\delta_b$对应$a_n-a$、$b_n-b$，两项就是图里的两条窄带。所以误差的绝对值不超过$|b|\,|\delta_a|+|a+\delta_a|\,|\delta_b|$，相对误差约为$\bigl|\frac{\delta_a}{a}\bigr|+\bigl|\frac{\delta_b}{b}\bigr|$。物理实验里「乘积的相对误差约等于各因子的相对误差之和」就是这么来的。
+
+      「有界」对应第二条窄带的长边$a+\delta_a$：它不会大得没边，$\delta_b$小才能保证这条窄带的面积小。证明里$a_n$随$n$变，所以要用有界给它一个统一的上限$M$。
+
+      商的情形：$\frac{a+\delta_a}{b+\delta_b}-\frac ab=\frac{b\,\delta_a-a\,\delta_b}{b(b+\delta_b)}$，分母里有$b(b+\delta_b)$。$b$接近$0$时，同样大小的测量误差会被放大很多倍，结果很不可靠。商的法则要求$b\ne0$，并且先证明从某一项起$|b_n|>\frac{|b|}{2}$，就是在保证分母离$0$不太近。
+  reference: |
+    面积误差$b\,\delta_a+(a+\delta_a)\delta_b$即积的法则中的拆分（两条窄带），相对误差约为两因子相对误差之和。有界保证长边$a_n$不失控。商的误差$\frac{b\delta_a-a\delta_b}{b(b+\delta_b)}$在$b\approx0$时被放大，对应商的法则要求$b\ne0$并让$|b_n|>\frac{|b|}{2}$。

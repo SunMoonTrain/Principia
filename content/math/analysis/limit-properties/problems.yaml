@@ -1,0 +1,167 @@
+- id: p1
+  tier: easy
+  statement: |
+    下面哪些说法是对的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        :term[有界数列]{id="math.analysis.bounded-sequence"}一定收敛
+      - |
+        收敛数列一定有界
+      - |
+        若对每个$n$都有$a_n>0$，并且$a_n\to L$，则$L>0$
+      - |
+        若$a_n\to L$且$L<0$，则从某一项起$a_n<0$
+    value: [2, 4]
+  hints:
+    - |
+      逐条对照这一节的三个定理，对可疑的说法找反例。
+    - |
+      A 的反例想想$\{(-1)^n\}$；C 的反例想想$\{\frac1n\}$。B 是定理 2，D 是:term[保号性]{id="math.analysis.sign-preservation"}。
+    - |
+      A 错：$\{(-1)^n\}$有界，却发散。B 对：这是定理 2。C 错：$\frac1n>0$对每个$n$成立，极限却是$0$，保不等式性只能推出$L\ge0$。D 对：这是保号性中$L<0$的情形。
+
+      答案是 B 和 D。
+  solution: |
+    B 是定理 2，D 是保号性，都对。A 错，$\{(-1)^n\}$有界但发散；C 错，$\frac1n>0$而极限是$0$，极限只能保住$\ge$，保不住$>$。
+
+- id: p2
+  tier: easy
+  statement: |
+    数列$a_n=2-\frac{9}{n}$收敛于$2$。求最小的正整数$N$，使当$n>N$时都有$a_n>1$。
+  answer:
+    type: number
+    value: 9
+  hints:
+    - |
+      直接解不等式$2-\frac9n>1$。
+    - |
+      $2-\frac9n>1$等价于$\frac9n<1$，也就是$n>9$。
+    - |
+      $2-\frac9n>1\iff\frac9n<1\iff n>9$。所以$N=9$满足要求；$N=8$不行，因为$a_9=2-1=1$，不大于$1$。答案是$9$。
+
+      这和:term[保号性]{id="math.analysis.sign-preservation"}一致：极限$2>1$，所以从某一项起$a_n>1$。
+  solution: |
+    $a_n>1\iff n>9$，所以最小的$N$是$9$。前$9$项都不大于$1$（例如$a_1=-7$），但从第$10$项起都大于$1$：极限大于$1$，从某一项起各项就都大于$1$。
+
+- id: p3
+  tier: medium
+  statement: |
+    数列$a_n=\frac{n^2-6n}{n^2+1}$是收敛数列，所以有界。求最小的正数$M$，使$|a_n|\le M$对所有正整数$n$成立。
+  answer:
+    type: number
+    value: 5/2
+  hints:
+    - |
+      和定理 2 的证明一样分两部分：先看靠后的项落在哪个范围，再把前面有限项逐个算出来。
+    - |
+      $a_n-1=-\frac{6n+1}{n^2+1}<0$，而$n\ge6$时$a_n\ge0$，所以$n\ge6$时$0\le a_n<1$。前$5$项都是负数，算出它们的绝对值。
+    - |
+      $n\ge6$时分子$n^2-6n=n(n-6)\ge0$，又$a_n=1-\frac{6n+1}{n^2+1}<1$，所以$|a_n|<1$。
+
+      前$5$项依次是$-\frac52$、$-\frac85$、$-\frac{9}{10}$、$-\frac{8}{17}$、$-\frac{5}{26}$，绝对值最大的是$|a_1|=\frac52$。
+
+      所以$|a_n|\le\frac52$对所有$n$成立，并且$n=1$时取等号，最小的$M$是$\frac52$。
+  solution: |
+    $n\ge6$时$0\le a_n<1$；前$5$项是$-\frac52,-\frac85,-\frac{9}{10},-\frac{8}{17},-\frac{5}{26}$。最小的$M$是$|a_1|=\frac52$，填 `5/2`。数列虽然收敛于$1$，界却由前面的项决定，这正是定理 2 的证明里要把前$N$项单独拿出来的原因。
+
+- id: p4
+  tier: medium
+  statement: |
+    已知数列$\{a_n\}$收敛，并且对所有正整数$n$都有
+
+    $$
+    \frac{3n^2-1}{n^2+n}\le a_n\le\frac{3n+2}{n} .
+    $$
+
+    求$\lim_{n\to\infty}a_n$。
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      已经知道$\{a_n\}$收敛，所以只要从两边夹出它的极限。先分别求两边那两个数列的极限，再用保不等式性。
+    - |
+      $\frac{3n+2}{n}=3+\frac2n\to3$；$\frac{3n^2-1}{n^2+n}=3-\frac{3n+1}{n^2+n}$，而$0<\frac{3n+1}{n^2+n}\le\frac{4n}{n^2}=\frac4n$，所以它也趋于$3$。
+    - |
+      设$a_n\to L$。右边：$\bigl|\frac{3n+2}{n}-3\bigr|=\frac2n$，取$N>\frac2\varepsilon$即可，所以$\frac{3n+2}{n}\to3$。左边：$\bigl|\frac{3n^2-1}{n^2+n}-3\bigr|=\frac{3n+1}{n^2+n}\le\frac4n$，同样趋于$3$。
+
+      由保不等式性，$a_n\le\frac{3n+2}{n}$推出$L\le3$，$\frac{3n^2-1}{n^2+n}\le a_n$推出$3\le L$。所以$L=3$。
+  solution: |
+    两边的数列都收敛于$3$（与$3$的差分别不超过$\frac4n$和$\frac2n$），由保不等式性得$3\le\lim a_n\le3$，所以极限是$3$。这里用到了「已知$\{a_n\}$收敛」；下一节的夹逼定理（squeeze theorem）连这个条件也不需要。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明：收敛数列一定有最大的一项或者最小的一项（至少有一个）。也就是说，若$a_n\to L$，则存在$k$使$a_k\ge a_n$对所有$n$成立，或者存在$m$使$a_m\le a_n$对所有$n$成立。
+  hints:
+    - |
+      按各项和$L$的大小关系分情况：有没有一项大于$L$？有没有一项小于$L$？
+    - |
+      若有一项$a_k>L$，取$\varepsilon=a_k-L$：从某一项起$a_n<a_k$，所以最大项只需在前面有限项里找。
+    - |
+      情形 1：存在$k$使$a_k>L$。取$\varepsilon=a_k-L>0$，有正整数$N$，使$n>N$时$a_n<L+\varepsilon=a_k$。
+
+      令$K=\max\{N,k\}$，在有限个数$a_1,a_2,\dots,a_K$中取最大的一个，记作$a_p$，则$a_p\ge a_k$。对$n\le K$，$a_n\le a_p$；对$n>K$，$a_n<a_k\le a_p$。所以$a_p$是整个数列的最大项。
+
+      情形 2：存在$m$使$a_m<L$。对$\{-a_n\}$（它收敛于$-L$，且$-a_m>-L$）用情形 1，得$\{-a_n\}$有最大项，也就是$\{a_n\}$有最小项。
+
+      情形 3：没有一项大于$L$，也没有一项小于$L$，即每一项都等于$L$。这时每一项既是最大项也是最小项。
+
+      三种情形包括了所有可能，所以收敛数列一定有最大项或最小项。例如$\{\frac1n\}$有最大项$1$、没有最小项；$\{\frac{(-1)^n}{n}\}$两者都有。
+  reference: |
+    若某项$a_k>L$，取$\varepsilon=a_k-L$，得$N$使$n>N$时$a_n<a_k$；$a_1,\dots,a_{\max\{N,k\}}$中的最大者就是全数列的最大项。若某项小于$L$，对$\{-a_n\}$同理得最小项。否则每项都等于$L$，最大、最小项都有。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$a_n\to a$，$b_n\to b$。证明$\max\{a_n,b_n\}\to\max\{a,b\}$。
+  hints:
+    - |
+      分$a\ne b$和$a=b$两种情况。$a>b$时，想想从某一项起$\max\{a_n,b_n\}$等于哪一个。
+    - |
+      $a>b$时取$\varepsilon=\frac{a-b}{2}$，从某一项起$a_n>\frac{a+b}{2}>b_n$，于是$\max\{a_n,b_n\}=a_n$。$a=b$时用不等式$|\max\{x,y\}-c|\le\max\{|x-c|,|y-c|\}$。
+    - |
+      设$a>b$（$a<b$时把两个数列对调）。取$\varepsilon_0=\frac{a-b}{2}$，有$N_1$、$N_2$，使$n>N_1$时$a_n>a-\varepsilon_0=\frac{a+b}{2}$，$n>N_2$时$b_n<b+\varepsilon_0=\frac{a+b}{2}$。所以$n>\max\{N_1,N_2\}$时$a_n>b_n$，$\max\{a_n,b_n\}=a_n$。任给$\varepsilon>0$，有$N_3$使$n>N_3$时$|a_n-a|<\varepsilon$；于是$n>\max\{N_1,N_2,N_3\}$时$|\max\{a_n,b_n\}-a|=|a_n-a|<\varepsilon$。
+
+      设$a=b$。对任意实数$x,y,c$，$\max\{x,y\}$等于$x$或$y$，所以$|\max\{x,y\}-c|\le\max\{|x-c|,|y-c|\}$。任给$\varepsilon>0$，有$N$使$n>N$时$|a_n-a|<\varepsilon$且$|b_n-a|<\varepsilon$，于是$|\max\{a_n,b_n\}-a|<\varepsilon$。
+
+      两种情况都得到$\max\{a_n,b_n\}\to\max\{a,b\}$。
+  reference: |
+    $a>b$时取$\varepsilon_0=\frac{a-b}{2}$，从某一项起$a_n>\frac{a+b}{2}>b_n$，故$\max\{a_n,b_n\}=a_n\to a$。$a=b$时$|\max\{a_n,b_n\}-a|\le\max\{|a_n-a|,|b_n-a|\}$，两者从某一项起都小于$\varepsilon$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    保不等式性说：若每一项都满足$a_n\le b$，则$\lim a_n\le b$；把$\le$换成$<$就不对了。换个说法：每一项都在闭区间$[0,1]$里的收敛数列，极限也在$[0,1]$里；每一项都在开区间$(0,1)$里的收敛数列，极限却可能跑出去。为什么闭区间「关得住」极限、开区间关不住？这和集合的什么特点有关？
+  hints:
+    - |
+      先找一个每一项都在$(0,1)$里、极限却不在$(0,1)$里的数列。极限能落在哪些地方？
+    - |
+      $\frac{1}{n+1}$的每一项都在$(0,1)$里，极限$0$是区间的端点。对$[0,1]$，分别和常数数列$0$、$1$比较，由保不等式性得$0\le L\le1$。
+    - |
+      开区间缺了两个端点，而端点能被区间里的点任意逼近：数列可以一步步靠向端点，极限就落在端点上，跑出了区间。闭区间把这样的点都收了进来，所以里面的收敛数列跑不出去。
+
+      一般地，「集合里的点组成的收敛数列，极限还在集合里」是一种性质，有这种性质的集合叫作闭集（closed set）：$[0,1]$是闭集，$(0,1)$不是。保不等式性说的就是$(-\infty,b]$这样的集合关得住极限，而$(-\infty,b)$关不住。拓扑里的[开集与闭集](lesson:math.topology.open-closed-sets)会把这个想法推广到更一般的空间。
+  reference: |
+    $\frac{1}{n+1}\in(0,1)$而极限$0\notin(0,1)$；$[0,1]$中的收敛数列由保不等式性极限仍在$[0,1]$。开区间缺少能被它的点任意逼近的端点，闭区间包含了它们。「点列极限仍在集合内」刻画了闭集；保不等式性即$(-\infty,b]$是闭集。
+
+- id: p8
+  tier: thinking
+  statement: |
+    定理 2 说收敛数列一定有界，反过来不对。举出几个有界但发散的数列，看看它们「不收敛」的方式有什么共同点。要给有界数列再加上什么条件，才能保证它收敛？你能想到几种？
+  hints:
+    - |
+      看$\{(-1)^n\}$、$\{\sin\frac{n\pi}{2}\}$、$\{\sin n\}$：它们的项在哪些数附近反复出现？
+    - |
+      这些数列都在两个或更多的「聚集点」（cluster point）之间来回跳，没有稳定在一个数上。想想什么条件能阻止来回跳：只许往一个方向走？只许有一个聚集点？要求靠后的项彼此都很近？
+    - |
+      有界而发散的数列，典型的样子是在几个数附近反复出现：$(-1)^n$在$\pm1$，$\sin\frac{n\pi}{2}$在$1,0,-1$，$\sin n$甚至在$[-1,1]$里到处出现。
+
+      可以加的条件：第一，单调，即只许往一个方向走，又有界，就没法来回跳，[单调有界数列](lesson:math.analysis.bounded-monotone)会证明它一定收敛；第二，只有一个聚集点，即从数列里挑出来的收敛的「子列」（subsequence）都趋于同一个数（见[子列与致密性定理](lesson:math.analysis.subsequences)）；第三，靠后的项彼此任意近（[柯西收敛准则](lesson:math.analysis.cauchy-sequences)，Cauchy criterion）。
+
+      这三条都要靠实数「没有洞」：在有理数里，$1,1.4,1.41,1.414,\dots$单调、有界、项彼此越来越近，却没有有理数作它的极限。
+  reference: |
+    有界发散数列在几个聚集点之间来回（$(-1)^n$、$\sin\frac{n\pi}2$、$\sin n$）。保证收敛的附加条件：单调（单调有界原理）；所有收敛子列极限相同；柯西条件。三者都依赖实数的完备性，在$\Q$中$\sqrt2$的不足近似值单调有界却无有理极限。

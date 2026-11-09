@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 262" width="640" height="262" font-size="14">
+  <!-- 示意图：横轴是项的序号 n，纵轴是项的值；横带是 L 的 ε 邻域，第 N 项以后的点全在带子里 -->
+  <!-- L 的 ε 邻域 -->
+  <rect x="50" y="95" width="560" height="60" style="fill: var(--accent, #2563eb); opacity: 0.14" />
+  <line x1="50" y1="95" x2="610" y2="95" stroke-width="1.2" stroke-dasharray="5 4" style="stroke: var(--accent, #2563eb)" />
+  <line x1="50" y1="155" x2="610" y2="155" stroke-width="1.2" stroke-dasharray="5 4" style="stroke: var(--accent, #2563eb)" />
+  <line x1="50" y1="125" x2="610" y2="125" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4" opacity="0.5" />
+  <!-- 坐标轴 -->
+  <line x1="50" y1="235" x2="612" y2="235" stroke="currentColor" stroke-width="1.5" />
+  <path d="M 624 235 L 610 229 L 610 241 Z" fill="currentColor" />
+  <text x="630" y="240" font-style="italic" fill="currentColor">n</text>
+  <line x1="50" y1="235" x2="50" y2="28" stroke="currentColor" stroke-width="1.5" />
+  <path d="M 50 16 L 44 30 L 56 30 Z" fill="currentColor" />
+  <!-- 纵轴上的刻度 -->
+  <text x="44" y="99" text-anchor="end" fill="currentColor"><tspan font-style="italic">L</tspan> + <tspan font-style="italic">ε</tspan></text>
+  <text x="44" y="129" text-anchor="end" fill="currentColor" font-style="italic">L</text>
+  <text x="44" y="159" text-anchor="end" fill="currentColor"><tspan font-style="italic">L</tspan> − <tspan font-style="italic">ε</tspan></text>
+  <!-- 带子的半宽是 ε -->
+  <line x1="620" y1="100" x2="620" y2="120" stroke="currentColor" stroke-width="1.2" />
+  <path d="M 620 95 L 616 103 L 624 103 Z M 620 125 L 616 117 L 624 117 Z" fill="currentColor" />
+  <text x="628" y="115" font-style="italic" fill="currentColor">ε</text>
+  <!-- 第 N 项 -->
+  <line x1="204" y1="40" x2="204" y2="235" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 4" />
+  <text x="204" y="254" text-anchor="middle" font-style="italic" fill="currentColor">N</text>
+  <!-- 前 N 项：在不在带子里都行 -->
+  <g style="fill: var(--muted, #6b7280)">
+    <circle cx="72" cy="205" r="4" />
+    <circle cx="94" cy="48" r="4" />
+    <circle cx="116" cy="182" r="4" />
+    <circle cx="138" cy="112" r="4" />
+    <circle cx="160" cy="70" r="4" />
+    <circle cx="182" cy="170" r="4" />
+    <circle cx="204" cy="80" r="4" />
+  </g>
+  <!-- 第 N 项以后：全在带子里 -->
+  <g style="fill: var(--accent, #2563eb)">
+    <circle cx="226" cy="146" r="4" />
+    <circle cx="248" cy="104" r="4" />
+    <circle cx="270" cy="142" r="4" />
+    <circle cx="292" cy="109" r="4" />
+    <circle cx="314" cy="138" r="4" />
+    <circle cx="336" cy="113" r="4" />
+    <circle cx="358" cy="135" r="4" />
+    <circle cx="380" cy="116" r="4" />
+    <circle cx="402" cy="133" r="4" />
+    <circle cx="424" cy="118" r="4" />
+    <circle cx="446" cy="131" r="4" />
+    <circle cx="468" cy="119.5" r="4" />
+    <circle cx="490" cy="129.5" r="4" />
+    <circle cx="512" cy="121" r="4" />
+    <circle cx="534" cy="128.5" r="4" />
+    <circle cx="556" cy="122" r="4" />
+    <circle cx="578" cy="127.5" r="4" />
+    <circle cx="600" cy="123" r="4" />
+  </g>
+  <text x="135" y="28" text-anchor="middle" style="fill: var(--muted, #6b7280)">前 <tspan font-style="italic">N</tspan> 项在哪儿都行</text>
+  <text x="440" y="82" text-anchor="middle" fill="currentColor"><tspan font-style="italic">n</tspan> &gt; <tspan font-style="italic">N</tspan> 的项全在 <tspan font-style="italic">L</tspan> 的 <tspan font-style="italic">ε</tspan> 邻域里</text>
+</svg>
