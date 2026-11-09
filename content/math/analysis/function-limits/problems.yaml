@@ -1,0 +1,167 @@
+- id: p1
+  tier: easy
+  statement: |
+    对$\lim_{x\to1}(3x-1)=2$，取$\varepsilon=0.03$。能使「$0<|x-1|<\delta$时$|(3x-1)-2|<0.03$」成立的$\delta$里，最大的是多少？
+  answer:
+    type: number
+    value: 1/100
+  hints:
+    - |
+      先把$|(3x-1)-2|$化成$|x-1|$的倍数。
+    - |
+      $|(3x-1)-2|=3|x-1|$，所以条件就是$3|x-1|<0.03$。
+    - |
+      $|(3x-1)-2|=3|x-1|<0.03$等价于$|x-1|<0.01$。
+
+      取$\delta=0.01$时，$0<|x-1|<0.01$的$x$都满足要求。取$\delta>0.01$时，$x=1.01$满足$0<|x-1|<\delta$，可$|(3x-1)-2|=0.03$，不小于$0.03$。所以最大的$\delta$是$0.01$。
+  solution: |
+    $|(3x-1)-2|=3|x-1|<0.03$等价于$|x-1|<0.01$，所以最大的$\delta$是$0.01$；再大一点，$x=1.01$就不满足了。
+
+- id: p2
+  tier: easy
+  statement: |
+    设$g(x)=x+1$（$x\ne1$），$g(1)=5$。下面哪些说法对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\lim_{x\to1}g(x)=5$
+      - |
+        $\lim_{x\to1}g(x)=2$
+      - |
+        $\lim_{x\to1}g(x)$不存在，因为$g$的图像在$x=1$处断开了
+      - |
+        把$g(1)$改成任何别的数，或者干脆让$g$在$x=1$处没有定义，$\lim_{x\to1}g(x)$都不变
+    value: [2, 4]
+  hints:
+    - |
+      :term[函数的极限]{id="math.analysis.function-limit"}（limit of a function）的定义里，只看满足$0<|x-1|<\delta$的$x$。$g(1)$在不在考虑范围里？
+    - |
+      $x\ne1$时$g(x)=x+1$，所以$0<|x-1|<\delta$时$|g(x)-2|=|x-1|$。
+    - |
+      $0<|x-1|<\delta$时$|g(x)-2|=|x-1|<\delta$，任给$\varepsilon>0$取$\delta=\varepsilon$就行，所以$\lim_{x\to1}g(x)=2$，B 对。极限只有一个，A 错。
+
+      图像在$x=1$处断开，只说明极限不等于$g(1)$，不说明极限不存在，C 错。定义根本不看$x=1$这一点，所以怎么改$g(1)$都不影响极限，D 对。答案是 B 和 D。
+  solution: |
+    定义只看$0<|x-1|<\delta$的$x$，那里$g(x)=x+1$，所以极限是$2$，和$g(1)$无关：B、D 对，A、C 错。
+
+- id: p3
+  tier: medium
+  statement: |
+    对$\lim_{x\to2}x^2=4$，取$\varepsilon=0.41$。能使「$0<|x-2|<\delta$时$|x^2-4|<0.41$」成立的$\delta$里，最大的是多少？
+  answer:
+    type: number
+    value: 1/10
+  hints:
+    - |
+      先在$2$附近解出$|x^2-4|<0.41$，也就是$3.59<x^2<4.41$。再看以$2$为中心的对称区间，最多能伸到多宽。
+    - |
+      在$x>0$的范围里，$3.59<x^2<4.41$就是$\sqrt{3.59}<x<2.1$，而$\sqrt{3.59}\approx1.895$。区间左边能伸约$0.105$，右边只能伸$0.1$。
+    - |
+      $x>0$时，$|x^2-4|<0.41$等价于$\sqrt{3.59}<x<\sqrt{4.41}=2.1$，其中$\sqrt{3.59}\approx1.895$。$2$到右端的距离是$0.1$，到左端的距离约是$0.105$，取较小的：
+
+      取$\delta=0.1$时，$1.9<x<2.1$（$x\ne2$）都满足$3.61<x^2<4.41$，符合要求。取$\delta>0.1$时，$x=2.1$满足$0<|x-2|<\delta$，可$|x^2-4|=0.41$，不小于$0.41$。所以最大的$\delta$是$0.1$。
+  solution: |
+    $|x^2-4|<0.41$在$2$附近就是$\sqrt{3.59}<x<2.1$，$2$到两端的距离约为$0.105$和$0.1$，取较小的，最大的$\delta$是$0.1$。
+
+- id: p4
+  tier: medium
+  statement: |
+    下面哪些函数在$x\to0$时有极限？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $x\sin\frac1x$
+      - |
+        $\sin\frac1x$
+      - |
+        $\frac{|x|}{x}$
+      - |
+        $f(x)=x^2$（$x$是有理数），$f(x)=0$（$x$是无理数）
+    value: [1, 4]
+  hints:
+    - |
+      能找到一个把$|f(x)-L|$压住、又趋于$0$的式子，就用定义证明极限存在；怀疑不存在，就用:term[海涅定理]{id="math.analysis.heine-theorem"}（Heine's theorem）找两个数列，或者看:term[单侧极限]{id="math.analysis.one-sided-limit"}（one-sided limit）。
+    - |
+      A：$\bigl|x\sin\frac1x\bigr|\le|x|$。D：不管$x$是有理数还是无理数，都有$|f(x)|\le x^2$。B 是例 2。C：$x>0$时它等于$1$，$x<0$时等于$-1$。
+    - |
+      A：$\bigl|x\sin\frac1x\bigr|\le|x|$，任给$\varepsilon>0$取$\delta=\varepsilon$，极限是$0$。
+
+      B：例 2 已经证明，沿$x_n=\frac{1}{n\pi}$和$y_n=\frac{1}{2n\pi+\pi/2}$，函数值分别趋于$0$和$1$，极限不存在。C：右极限是$1$，左极限是$-1$，不相等，极限不存在。
+
+      D：$|f(x)|\le x^2$对所有$x$成立，任给$\varepsilon>0$取$\delta=\sqrt\varepsilon$，$0<|x|<\delta$时$|f(x)|<\varepsilon$，极限是$0$。答案是 A 和 D。
+  solution: |
+    A、D 都被趋于$0$的式子压住（$|x|$和$x^2$），极限是$0$。B 沿两个数列趋于不同的数；C 的左、右极限是$-1$和$1$，都没有极限。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$\lim_{x\to a}f(x)=b$，$\lim_{y\to b}g(y)=c$，并且在$a$的某个:term[去心邻域]{id="math.analysis.punctured-neighborhood"}（punctured neighborhood）里$f(x)\ne b$。证明$\lim_{x\to a}g\bigl(f(x)\bigr)=c$。
+  hints:
+    - |
+      从要证的结论倒着想：要$|g(f(x))-c|<\varepsilon$，只要$f(x)$落在$b$的某个去心邻域里，这个邻域的大小由$g$的极限给出；再让$f$的极限把$f(x)$送进去。
+    - |
+      先由$g(y)\to c$得到$\eta$：$0<|y-b|<\eta$时$|g(y)-c|<\varepsilon$。再由$f(x)\to b$得到$\delta_1$：$0<|x-a|<\delta_1$时$|f(x)-b|<\eta$。条件$f(x)\ne b$保证$|f(x)-b|$大于$0$。
+    - |
+      设$g$在$b$的去心邻域$\{y:0<|y-b|<\rho\}$里有定义，在$a$的去心邻域$\{x:0<|x-a|<\delta_2\}$里$f(x)\ne b$。任给$\varepsilon>0$，由$\lim_{y\to b}g(y)=c$，有$\eta$（不妨设$\eta\le\rho$）使$0<|y-b|<\eta$时$|g(y)-c|<\varepsilon$。由$\lim_{x\to a}f(x)=b$，有$\delta_1$使$0<|x-a|<\delta_1$时$|f(x)-b|<\eta$。
+
+      取$\delta=\min\{\delta_1,\delta_2\}$。当$0<|x-a|<\delta$时，$f(x)\ne b$且$|f(x)-b|<\eta$，即$0<|f(x)-b|<\eta$，所以$g(f(x))$有定义，并且$|g(f(x))-c|<\varepsilon$。这就证明了$\lim_{x\to a}g(f(x))=c$。
+
+      条件$f(x)\ne b$不能去掉。设$f(x)=0$（对所有$x$），$g(y)=1$（$y\ne0$），$g(0)=0$，则$\lim_{x\to0}f(x)=0$，$\lim_{y\to0}g(y)=1$，可$g(f(x))=0$，极限是$0$而不是$1$：问题出在$f(x)$恰好落在$g$的极限不管的那一点上。
+  reference: |
+    任给$\varepsilon$，取$\eta$使$0<|y-b|<\eta$时$|g(y)-c|<\varepsilon$；取$\delta_1$使$0<|x-a|<\delta_1$时$|f(x)-b|<\eta$；$\delta_2$使$f(x)\ne b$。$\delta=\min\{\delta_1,\delta_2\}$时$0<|f(x)-b|<\eta$，结论成立。反例：$f\equiv0$，$g(y)=1\,(y\ne0)$，$g(0)=0$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$在$a$的某个去心邻域里有定义，并且对这个去心邻域里每个趋于$a$的数列$\{x_n\}$，数列$\{f(x_n)\}$都:term[收敛]{id="math.analysis.convergent-sequence"}（不要求极限是同一个数）。证明$\lim_{x\to a}f(x)$存在。
+  hints:
+    - |
+      由:term[海涅定理]{id="math.analysis.heine-theorem"}，只要证明：沿不同的数列，$f(x_n)$的极限都相同。拿两个数列，想办法把它们合成一个。
+    - |
+      设$x_n\to a$、$y_n\to a$，$f(x_n)\to A$，$f(y_n)\to B$。把两个数列交错排成$x_1,y_1,x_2,y_2,\dots$，它也趋于$a$，所以$f$沿它也收敛。
+    - |
+      设$\{x_n\}$、$\{y_n\}$是去心邻域里两个趋于$a$的数列，$f(x_n)\to A$，$f(y_n)\to B$。令$z_{2k-1}=x_k$，$z_{2k}=y_k$。任给$\varepsilon>0$，$|x_k-a|$和$|y_k-a|$从某一项起都小于$\varepsilon$，所以$z_n\to a$，而且各项都在这个去心邻域里。按条件，$f(z_n)$收敛，设$f(z_n)\to C$。
+
+      $f(z_n)\to C$，就是任给$\varepsilon>0$，有$N$使$n>N$时$|f(z_n)-C|<\varepsilon$。$k>N$时$2k-1>N$、$2k>N$，所以$|f(x_k)-C|<\varepsilon$，$|f(y_k)-C|<\varepsilon$，即$f(x_k)\to C$，$f(y_k)\to C$。由数列极限的唯一性，$A=C=B$。
+
+      所以沿每个这样的数列，$f(x_n)$都收敛于同一个数$L$，由海涅定理，$\lim_{x\to a}f(x)=L$。
+  reference: |
+    任取两个数列$x_n,y_n\to a$，$f(x_n)\to A$，$f(y_n)\to B$。交错得$z_n\to a$，$f(z_n)\to C$，其奇、偶项分别为$f(x_k)$、$f(y_k)$，也都趋于$C$，故$A=B=C$。于是所有数列给出同一极限$L$，由海涅定理$f(x)\to L$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    :term[函数的极限]{id="math.analysis.function-limit"}的定义里，为什么要求$0<|x-a|<\delta$，而不是$|x-a|<\delta$？如果改成后者，会发生什么？
+  hints:
+    - |
+      改成$|x-a|<\delta$以后，$x=a$也要满足$|f(x)-L|<\varepsilon$。$f$在$a$处有定义时，这会逼出什么？
+    - |
+      取$x=a$，得$|f(a)-L|<\varepsilon$对每个$\varepsilon>0$成立，所以$L$只能等于$f(a)$。想一想前面的$g$，和导数里的差商（difference quotient）$\frac{f(a+h)-f(a)}{h}$。
+    - |
+      改成$|x-a|<\delta$以后，只要$f$在$a$处有定义，取$x=a$就得$|f(a)-L|<\varepsilon$对每个$\varepsilon$成立，所以$L=f(a)$。于是「有极限」变成了「极限等于函数值」，也就是[连续函数的严格定义](lesson:math.analysis.continuity)里的连续。前面的$g$（$g(1)=5$，别处是$x+1$）就会「没有极限」，尽管它在$1$附近明明在往$2$走。
+
+      更要紧的是导数。导数是差商$\frac{f(a+h)-f(a)}{h}$在$h\to0$时的极限，而差商在$h=0$处根本没有定义；我们关心的恰恰是$h$趋于$0$、但不等于$0$时的走向。去心邻域让极限只描述「趋近时」的行为，把「到达时」的值留给连续去管。这样分开以后，「极限存在」和「连续」成了两个概念，可以分别讨论。
+  reference: |
+    若用$|x-a|<\delta$，$f$在$a$有定义时必有$L=f(a)$，极限就退化成连续，像$g$这样的可去间断处会被判为无极限；导数的差商在$h=0$处无定义，必须排除这一点。去心邻域使极限只刻画趋近的行为。
+
+- id: p8
+  tier: thinking
+  statement: |
+    :term[海涅定理]{id="math.analysis.heine-theorem"}要求「每个」趋于$a$、各项不等于$a$的数列都满足$f(x_n)\to L$。只检验一个数列够不够？只检验$a+\frac1n$和$a-\frac1n$这两个呢？只检验所有:term[单调数列]{id="math.analysis.monotone-sequence"}（monotone sequence）呢？
+  hints:
+    - |
+      一个数列：想想例 2。两个特定的数列：找一个在$\pm\frac1n$处全为$0$、却没有极限的函数，比如试试$\sin\frac\pi x$。
+    - |
+      $\sin\frac{\pi}{\pm1/n}=\sin(\pm n\pi)=0$，可在$x=\frac{2}{4n+1}$处$\sin\frac\pi x=1$。单调的数列：看看海涅定理证明里造出的$x_n$，再参考[子列与致密性定理](lesson:math.analysis.subsequences)第 6 题。
+    - |
+      一个数列不够：$\sin\frac1x$沿$x_n=\frac1{n\pi}$趋于$0$，可它没有极限。两个特定的数列也不够：$f(x)=\sin\frac{\pi}{x}$在$x=\pm\frac1n$处都等于$0$，在$x=\frac{2}{4n+1}$处都等于$1$，所以没有极限。有限个事先取定的数列，都可能漏掉函数的毛病。
+
+      检验所有单调的数列就够了。海涅定理反方向的证明里，如果$f(x)$不趋于$L$，就造出了$x_n\to a$，并且各项都满足$|f(x_n)-L|\ge\varepsilon_0$。由那道第 6 题，每个数列都有单调的:term[子列]{id="math.analysis.subsequence"}（subsequence）；它仍然趋于$a$、各项不等于$a$，而函数值仍然离$L$至少$\varepsilon_0$。所以只要沿每个单调数列都有$f(x_n)\to L$，就不会出现这种反例。
+
+      这说明，定理里「每个数列」的「每个」，是为了堵住函数可能藏着的任何坏点；而单调数列已经多到足以把它们都找出来。
+  reference: |
+    一个或两个指定数列都不够：$\sin\frac1x$、$\sin\frac\pi x$（在$\pm\frac1n$处为$0$，在$\frac{2}{4n+1}$处为$1$）。单调数列够：若$f(x)\not\to L$，证明中的反例数列有单调子列，仍是反例。

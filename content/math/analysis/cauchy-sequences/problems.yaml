@@ -1,0 +1,195 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$a_n=\frac1n$。要使$m,n>N$时总有$|a_m-a_n|<\frac{1}{100}$，正整数$N$最小取多少？
+  answer:
+    type: number
+    value: 99
+  hints:
+    - |
+      $m,n>N$时，$\frac1m$和$\frac1n$都在区间$\left(0,\frac{1}{N+1}\right]$里。两项的距离最大能接近多少？
+    - |
+      两个都在$\left(0,\frac{1}{N+1}\right]$里的正数，相距小于$\frac{1}{N+1}$；取$m=N+1$、$n$很大时，距离又能任意接近$\frac{1}{N+1}$。
+    - |
+      若$N=99$：$m,n\ge100$时$0<\frac1m\le\frac1{100}$，$0<\frac1n\le\frac1{100}$，两个都在这个范围里的正数相距小于$\frac1{100}$，满足要求。
+
+      若$N=98$：取$m=99$、$n=9900$，$\frac1{99}-\frac1{9900}=\frac{100-1}{9900}=\frac1{100}$，不小于$\frac1{100}$，不满足。$N$更小时要管的项更多，更不满足。
+
+      所以$N$最小是$99$。
+  solution: |
+    $m,n\ge100$时两项都在$\left(0,\frac1{100}\right]$里，相距小于$\frac1{100}$；$N=98$时取$m=99$、$n=9900$，两项恰好相距$\frac1{100}$，不满足。所以$N$最小是$99$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪一个是「$\{a_n\}$不是:term[柯西列]{id="math.analysis.cauchy-sequence"}」的正确写法？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        存在$\varepsilon_0>0$，对每个正整数$N$，都有$m,n>N$使$|a_m-a_n|\ge\varepsilon_0$
+      - |
+        对每个$\varepsilon>0$，都有正整数$N$和$m,n>N$使$|a_m-a_n|\ge\varepsilon$
+      - |
+        存在$\varepsilon_0>0$和正整数$N$，使所有$m,n>N$都满足$|a_m-a_n|\ge\varepsilon_0$
+      - |
+        存在$\varepsilon_0>0$，对每个正整数$N$，都有$n>N$使$|a_{n+1}-a_n|\ge\varepsilon_0$
+    value: 1
+  hints:
+    - |
+      柯西列的定义是「任给$\varepsilon>0$，存在$N$，对所有$m,n>N$，$|a_m-a_n|<\varepsilon$」。否定时每个量词都要换，最后的不等式取反。
+    - |
+      逐个换：「任给$\varepsilon$」变「存在$\varepsilon_0$」，「存在$N$」变「对每个$N$」，「对所有$m,n>N$」变「有$m,n>N$」，$<\varepsilon$变$\ge\varepsilon_0$。再看 B、C、D 各错在哪里。
+    - |
+      A 正是逐个否定的结果。
+
+      B 要求对很大的$\varepsilon$也找得到相距这么远的两项。有界的$\{(-1)^n\}$不是柯西列，却不满足 B（没有两项相距$3$）。C 取$m=n$时$|a_m-a_n|=0$，所以 C 对任何数列都不成立。
+
+      D 只看相邻两项。满足 D 的数列确实不是柯西列，但反过来不行：$\{\sqrt n\}$不是柯西列，相邻两项之差却趋于$0$，不满足 D。
+
+      答案是 A。
+  solution: |
+    A 是把定义里的量词逐个否定得到的。B 对有界的$\{(-1)^n\}$不成立；C 取$m=n$就不成立；D 只是「不是柯西列」的充分条件，$\{\sqrt n\}$不满足 D，却也不是柯西列。
+
+- id: p3
+  tier: medium
+  statement: |
+    数列$a_1=1$，$a_{n+1}=\frac{1}{2+a_n}$:term[收敛]{id="math.analysis.convergent-sequence"}（可以照例 1 用:term[柯西收敛准则]{id="math.analysis.cauchy-criterion"}证明）。求它的极限。
+  answer:
+    type: number
+    value: sqrt(2) - 1
+  hints:
+    - |
+      照例 1，先用归纳法确定各项的范围，再比较$|a_{n+1}-a_n|$和$|a_n-a_{n-1}|$。知道收敛以后，在递推式两边取极限。
+    - |
+      各项都是正数，所以$(2+a_n)(2+a_{n-1})>4$，$|a_{n+1}-a_n|<\frac14|a_n-a_{n-1}|$。设极限为$L$，它满足$L=\frac{1}{2+L}$，并且$L\ge0$。
+    - |
+      由归纳法，各项都大于$0$。于是
+
+      $$
+      |a_{n+1}-a_n|=\left|\frac{1}{2+a_n}-\frac{1}{2+a_{n-1}}\right|=\frac{|a_n-a_{n-1}|}{(2+a_n)(2+a_{n-1})}\le\frac14|a_n-a_{n-1}| .
+      $$
+
+      照例 1 的办法，由$|a_2-a_1|=\frac23$得$|a_m-a_n|<\frac{8}{9}\cdot\frac{1}{4^{n-1}}$（$m>n$），所以它是:term[柯西列]{id="math.analysis.cauchy-sequence"}，收敛。设极限为$L$，由保不等式性$L\ge0$。
+
+      在递推式两边取极限，得$L=\frac{1}{2+L}$，即$L^2+2L-1=0$，$L=-1\pm\sqrt2$。只有$\sqrt2-1$不小于$0$，所以极限是$\sqrt2-1\approx0.414$。
+  solution: |
+    各项为正，相邻两项之差每一步至少缩小到四分之一，所以它是柯西列，收敛。设极限为$L\ge0$，由$L=\frac{1}{2+L}$得$L^2+2L-1=0$，所以$L=\sqrt2-1$。
+
+- id: p4
+  tier: medium
+  statement: |
+    下面哪些数列一定:term[收敛]{id="math.analysis.convergent-sequence"}？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $a_n=\sum_{k=1}^{n}\frac{\sin k}{2^k}$
+      - |
+        $a_n=\sin\sqrt n$
+      - |
+        满足$|a_{n+1}-a_n|\le\frac1n$（对每个$n$）的任意数列
+      - |
+        满足$|a_{n+1}-a_n|\le\frac1{n^2}$（对每个$n$）的任意数列
+    value: [1, 4]
+  hints:
+    - |
+      都用:term[柯西收敛准则]{id="math.analysis.cauchy-criterion"}：能把$|a_m-a_n|$（$m>n$）估计得任意小，就收敛；找得到「无论多靠后都相距不小的两项」，就发散。估计时把$a_m-a_n$写成相邻两项之差的和。
+    - |
+      A：$|a_m-a_n|\le\sum_{k=n+1}^{m}\frac1{2^k}$。C：例 2 的$H_n$满足这个条件。D：$k\ge2$时$\frac1{k^2}<\frac1{k-1}-\frac1k$。B：$\sqrt n$每次只走一小步，$\sin\sqrt n$会不会一遍遍地经过$1$和$-1$附近？
+    - |
+      A：$|a_m-a_n|\le\sum_{k=n+1}^{m}\frac{|\sin k|}{2^k}\le\sum_{k=n+1}^{m}\frac1{2^k}<\frac1{2^n}$，可以任意小，所以是:term[柯西列]{id="math.analysis.cauchy-sequence"}，收敛。
+
+      B：$\sqrt{n+1}-\sqrt n=\frac{1}{\sqrt{n+1}+\sqrt n}\le\sqrt2-1<1$，而区间$\bigl[2j\pi+\frac\pi6,\ 2j\pi+\frac{5\pi}6\bigr]$的长度$\frac{2\pi}{3}>1$，越来越大的$\sqrt n$跨不过去，总有一项落在里面，那一项满足$\sin\sqrt n\ge\frac12$。同样，每个$\bigl[2j\pi+\frac{7\pi}6,\ 2j\pi+\frac{11\pi}6\bigr]$里也有$\sqrt n$，那一项满足$\sin\sqrt n\le-\frac12$。所以无论多靠后，总有两项相距至少$1$，它发散。
+
+      C：$H_n$满足$|H_{n+1}-H_n|=\frac{1}{n+1}\le\frac1n$，却发散（例 2），所以不一定收敛。
+
+      D：$n\ge2$时$|a_m-a_n|\le\sum_{k=n}^{m-1}\frac1{k^2}<\sum_{k=n}^{m-1}\left(\frac1{k-1}-\frac1k\right)<\frac1{n-1}$，所以是柯西列，收敛。答案是 A 和 D。
+  solution: |
+    A、D 用相邻两项之差的和估计$|a_m-a_n|$，分别小于$\frac1{2^n}$和$\frac1{n-1}$，是柯西列，收敛。B 中$\sqrt n$每步不超过$\sqrt2-1$，每一圈都会落到$\sin\ge\frac12$和$\sin\le-\frac12$的地方，靠后总有相距至少$1$的两项，发散。C 的反例是$H_n$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$0<q<1$，数列$\{a_n\}$对每个$n\ge2$都满足$|a_{n+1}-a_n|\le q\,|a_n-a_{n-1}|$。证明$\{a_n\}$:term[收敛]{id="math.analysis.convergent-sequence"}。
+  hints:
+    - |
+      照例 1：先用归纳法把相邻两项之差用$|a_2-a_1|$和$q$的幂管住，再把$a_m-a_n$拆成相邻两项之差的和。
+    - |
+      记$d=|a_2-a_1|$，归纳得$|a_{k+1}-a_k|\le q^{k-1}d$。对$m>n$，$|a_m-a_n|\le d\,(q^{n-1}+q^n+\cdots+q^{m-2})<\frac{q^{n-1}}{1-q}\,d$。
+    - |
+      记$d=|a_2-a_1|$。$k=1$时$|a_2-a_1|=d$；若$|a_{k+1}-a_k|\le q^{k-1}d$，则$|a_{k+2}-a_{k+1}|\le q\,|a_{k+1}-a_k|\le q^kd$。由归纳法，对每个$k$都有$|a_{k+1}-a_k|\le q^{k-1}d$。
+
+      对$m>n$，
+
+      $$
+      |a_m-a_n|\le\sum_{k=n}^{m-1}|a_{k+1}-a_k|\le d\sum_{k=n}^{m-1}q^{k-1}=d\,q^{n-1}\cdot\frac{1-q^{m-n}}{1-q}<\frac{d}{1-q}\,q^{n-1} .
+      $$
+
+      若$d=0$，每一项都等于$a_1$，数列收敛。若$d>0$，任给$\varepsilon>0$，由$q^{n}\to0$（[数列的极限](lesson:math.analysis.sequences-limits)的例 2），有$N$使$q^{N-1}<\frac{(1-q)\varepsilon}{d}$。于是$m>n>N$时$|a_m-a_n|<\frac{d}{1-q}q^{n-1}\le\frac{d}{1-q}q^{N-1}<\varepsilon$。
+
+      所以$\{a_n\}$是:term[柯西列]{id="math.analysis.cauchy-sequence"}，由:term[柯西收敛准则]{id="math.analysis.cauchy-criterion"}，它收敛。这样的数列叫作压缩数列（contractive sequence）。
+  reference: |
+    记$d=|a_2-a_1|$，归纳得$|a_{k+1}-a_k|\le q^{k-1}d$。对$m>n$，$|a_m-a_n|\le\sum_{k=n}^{m-1}q^{k-1}d<\frac{d}{1-q}q^{n-1}\to0$，所以是柯西列，由柯西收敛准则收敛（$d=0$时是常数数列）。
+
+- id: p6
+  tier: hard
+  statement: |
+    证明：单调递增且有:term[上界]{id="math.analysis.upper-bound"}（upper bound）的数列一定是:term[柯西列]{id="math.analysis.cauchy-sequence"}。证明里只许用:term[阿基米德性质]{id="math.analysis.archimedean-property"}（Archimedean property），不许用:term[单调有界原理]{id="math.analysis.monotone-convergence-theorem"}、:term[确界原理]{id="math.analysis.supremum-principle"}（least-upper-bound property）这些完备性的结论。
+
+    这说明：如果把「柯西列都收敛」和阿基米德性质一起当作出发点，也能推出单调有界原理。
+  hints:
+    - |
+      用反证法：假设$\{a_n\}$不是柯西列，写出否定形式。数列递增，所以$m>n$时$|a_m-a_n|\ge\varepsilon_0$就是$a_m\ge a_n+\varepsilon_0$。
+    - |
+      反复用否定形式：先找$m_1>n_1$使$a_{m_1}\ge a_{n_1}+\varepsilon_0$；再在$m_1$后面找$m_2>n_2>m_1$，使$a_{m_2}\ge a_{n_2}+\varepsilon_0$……每一段都让数列至少涨$\varepsilon_0$，涨$k$段就至少涨$k\varepsilon_0$，最后越过上界。
+    - |
+      设$\{a_n\}$单调递增，$a_n\le M$对所有$n$成立。假设它不是柯西列，则有$\varepsilon_0>0$，对每个正整数$N$都有$m,n>N$使$|a_m-a_n|\ge\varepsilon_0$；不妨设$m>n$，由递增得$a_m\ge a_n+\varepsilon_0$。
+
+      取$N=1$，得到$m_1>n_1>1$使$a_{m_1}\ge a_{n_1}+\varepsilon_0\ge a_1+\varepsilon_0$。已经取好$m_k$时，取$N=m_k$，得到$m_{k+1}>n_{k+1}>m_k$使$a_{m_{k+1}}\ge a_{n_{k+1}}+\varepsilon_0\ge a_{m_k}+\varepsilon_0$，最后一步用了$n_{k+1}>m_k$和数列递增。由归纳法，$a_{m_k}\ge a_1+k\varepsilon_0$。
+
+      由:term[阿基米德性质]{id="math.analysis.archimedean-property"}，有正整数$k>\frac{M-a_1}{\varepsilon_0}$，这时$a_{m_k}\ge a_1+k\varepsilon_0>M$，和$M$是上界矛盾。所以$\{a_n\}$是柯西列。
+
+      如果承认「柯西列都收敛」，就得到单调递增、有上界的数列收敛；递减、有下界（lower bound）的数列换成$\{-a_n\}$即可。这就是单调有界原理的收敛部分。所以「柯西列都收敛」和阿基米德性质合在一起，同确界原理一样，可以当作实数完备性的出发点。阿基米德性质不能省：有些不满足它的有序域（ordered field，像$\Q$、$\R$那样能做四则运算、能比大小的数系）里，柯西列都收敛，单调有界原理却不成立。
+  reference: |
+    设$a_n$递增、$a_n\le M$，又不是柯西列：有$\varepsilon_0$使任意$N$后都有$m>n$且$a_m-a_n\ge\varepsilon_0$。依次取$n_1<m_1<n_2<m_2<\cdots$，每段涨至少$\varepsilon_0$，得$a_{m_k}\ge a_1+k\varepsilon_0$，由阿基米德性质超过$M$，矛盾。
+
+- id: p7
+  tier: thinking
+  statement: |
+    :term[柯西列]{id="math.analysis.cauchy-sequence"}要求「$m,n>N$时$|a_m-a_n|<\varepsilon$」。如果只要求「对每个固定的正整数$p$，都有$a_{n+p}-a_n\to0$」，这个条件和柯西列一样吗？两者差在哪里？
+  hints:
+    - |
+      先看$p=1$的情形：$a_{n+1}-a_n\to0$。再看$\sqrt n$和例 2 的$H_n$，对每个固定的$p$满不满足这个条件。
+    - |
+      $a_{n+p}-a_n$是$p$个相邻两项之差的和，$p$固定时它趋于$0$，所以这个条件和$a_{n+1}-a_n\to0$是一回事。柯西列要的是：同一个$N$，对所有的$p$一起管用。
+    - |
+      不一样。对固定的$p$，$|a_{n+p}-a_n|\le|a_{n+1}-a_n|+\cdots+|a_{n+p}-a_{n+p-1}|$，所以「对每个固定的$p$都有$a_{n+p}-a_n\to0$」和「$a_{n+1}-a_n\to0$」等价。$H_n$满足它（$0<H_{n+p}-H_n\le\frac pn\to0$），却发散。
+
+      柯西列可以写成：任给$\varepsilon>0$，有$N$，使$n>N$时对一切正整数$p$都有$|a_{n+p}-a_n|<\varepsilon$。这里的$N$只依赖$\varepsilon$，对所有的$p$一起管用。前一个条件里，$N$可以随$p$变大：对$H_n$，要$|H_{n+p}-H_n|<\varepsilon$，$N$大约得取$\frac p\varepsilon$，$p$越大越靠后，找不到一个对所有$p$都管用的$N$。
+
+      这种「一个$N$对所有的$p$一起管用」的要求，叫作关于$p$一致（uniform）。后面的[一致连续](lesson:math.analysis.uniform-continuity)（uniform continuity），以及一串函数的一致收敛（uniform convergence），讲的都是同一种区别。
+  reference: |
+    对固定$p$，$a_{n+p}-a_n\to0$等价于$a_{n+1}-a_n\to0$，$H_n$满足而发散。柯西条件是对$p$一致的：任给$\varepsilon$，同一个$N$对一切$p$成立；逐个$p$的条件允许$N$随$p$增大。
+
+- id: p8
+  tier: thinking
+  statement: |
+    在$\Q$里，:term[柯西列]{id="math.analysis.cauchy-sequence"}不一定有极限。能不能反过来，干脆把有理数的柯西列「当成」实数，用它们把$\Q$里的洞补上？这样做要解决哪些问题？
+  hints:
+    - |
+      $1,\ 1.4,\ 1.41,\dots$和$2,\ 1.5,\ 1.42,\ 1.415,\dots$都「挤向」$\sqrt2$，应该代表同一个数。什么时候两个柯西列应该代表同一个数？
+    - |
+      规定两个有理数柯西列$\{a_n\}$、$\{b_n\}$代表同一个数，当且仅当$a_n-b_n\to0$。要检查：这个规定把柯西列分成互不相交的组；加法、乘法和大小能用项来定义，而且和挑哪个代表无关；最后，造出来的数系里柯西列都收敛。
+    - |
+      可以，这是康托尔构造实数的办法（Cantor's construction），和用戴德金分割（Dedekind cut）构造实数是两条并行的路，后者见[用戴德金分割构造实数](lesson:math.analysis.real-construction)。
+
+      把有理数柯西列按「$a_n-b_n\to0$」分组，每一组就是一个实数。用集合论的话说，这是一个等价关系（equivalence relation），每组是一个等价类（equivalence class），见[等价关系与商集](lesson:math.logic-sets.equivalence-relations)。有理数$q$对应常数数列$q,q,q,\dots$所在的那一组。
+
+      加法、乘法用逐项相加、相乘来定义，要验证结果仍是柯西列，并且换一个同组的代表，结果不变。$x<y$定义为：$y$的代表减去$x$的代表，从某一项起都大于某个固定的正有理数。最后要证明完备性：这个新数系里的柯西列都收敛。
+
+      这个办法只用到「两项之间的距离」，所以能搬到任何有距离的地方。在度量空间（metric space）里，用同样的办法添上所有柯西列的「极限」，叫作完备化（completion），见[完备度量空间](lesson:math.topology.complete-metric-spaces)。
+  reference: |
+    康托尔构造：有理数柯西列按$a_n-b_n\to0$分等价类，每类是一个实数；运算逐项定义，需验证与代表无关；序由「从某项起差大于固定正数」定义；再证完备。推广为度量空间的完备化。

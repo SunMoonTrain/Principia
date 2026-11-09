@@ -1,0 +1,147 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$a_n=\frac{(-1)^n n}{2n+1}$。求$\limsup_{n\to\infty}a_n$和$\liminf_{n\to\infty}a_n$，按（上极限, 下极限）的顺序填写。
+  answer:
+    type: tuple
+    value: [1/2, -1/2]
+  hints:
+    - |
+      按$n$的奇偶分开看，偶数项、奇数项各是一个:term[子列]{id="math.analysis.subsequence"}。
+    - |
+      偶数项$\frac{n}{2n+1}\to\frac12$，奇数项$-\frac{n}{2n+1}\to-\frac12$。再想一想：为什么任何收敛的子列，极限都只能是这两个数之一？
+    - |
+      偶数项子列趋于$\frac12$，奇数项子列趋于$-\frac12$。任何收敛的子列，下标里都有无穷多个同奇偶的，这些项组成的子列趋于$\frac12$或$-\frac12$，所以子列的极限只能是$\pm\frac12$。
+
+      :term[上极限]{id="math.analysis.limit-superior"}是最大的子列极限，:term[下极限]{id="math.analysis.limit-inferior"}是最小的，答案是$\left(\frac12,-\frac12\right)$。
+  solution: |
+    偶数项趋于$\frac12$，奇数项趋于$-\frac12$，子列的极限只有这两个，所以上极限是$\frac12$，下极限是$-\frac12$，填 `1/2, -1/2`。
+
+- id: p2
+  tier: easy
+  statement: |
+    设$a_n=\frac{(-1)^n}{n}$。求$M_5=\sup\{a_k:k\ge5\}$和$m_5=\inf\{a_k:k\ge5\}$，按$(M_5,m_5)$的顺序填写。
+  answer:
+    type: tuple
+    value: [1/6, -1/5]
+  hints:
+    - |
+      从第$5$项起，偶数项是正数、奇数项是负数。最大的项在偶数项里找，最小的在奇数项里找。
+    - |
+      偶数项$\frac1k$随$k$增大而减小，奇数项$-\frac1k$随$k$增大而增大（越来越接近$0$）。
+    - |
+      $k\ge5$时，偶数项里最大的是第一个偶数项$a_6=\frac16$，奇数项都是负数，所以$M_5=\frac16$。奇数项里最小的是第一个奇数项$a_5=-\frac15$，偶数项都是正数，所以$m_5=-\frac15$。
+
+      答案是$\left(\frac16,-\frac15\right)$。这两个数都被取到了；$n\to\infty$时$M_n$、$m_n$都趋于$0$，上、下极限都是$0$，数列收敛于$0$。
+  solution: |
+    从第$5$项起，最大的是$a_6=\frac16$，最小的是$a_5=-\frac15$，填 `1/6, -1/5`。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$a_n=\left(1+\frac1n\right)^n\cos\frac{2n\pi}{3}$。求$\limsup_{n\to\infty}a_n$和$\liminf_{n\to\infty}a_n$，按（上极限, 下极限）的顺序填写。
+  answer:
+    type: tuple
+    value: [e, -e/2]
+  hints:
+    - |
+      $\cos\frac{2n\pi}{3}$随$n$每 3 个一循环。按$n$除以$3$的余数把项分成三组，再用$\left(1+\frac1n\right)^n\to e$。
+    - |
+      $n=3k$时$\cos\frac{2n\pi}{3}=1$，$n=3k+1$、$3k+2$时它等于$-\frac12$。三组子列分别趋于$e$、$-\frac e2$、$-\frac e2$。
+    - |
+      $\left(1+\frac1n\right)^n\to e$（见[单调有界数列](lesson:math.analysis.bounded-monotone)），它的子列也趋于$e$。所以$a_{3k}\to e$，$a_{3k+1}\to-\frac e2$，$a_{3k+2}\to-\frac e2$。
+
+      任何收敛的:term[子列]{id="math.analysis.subsequence"}都有无穷多项落在同一组里，所以它的极限只能是$e$或$-\frac e2$。:term[上极限]{id="math.analysis.limit-superior"}是最大的子列极限，:term[下极限]{id="math.analysis.limit-inferior"}是最小的，答案是$\left(e,-\frac e2\right)$。
+  solution: |
+    三组子列分别趋于$e$、$-\frac e2$、$-\frac e2$，子列的极限只有$e$和$-\frac e2$，所以上极限是$e$，下极限是$-\frac e2$，填 `e, -e/2`。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$a_n=\sin\frac{n\pi}{2}$，$b_n=\cos\frac{n\pi}{2}$。求$\limsup_{n\to\infty}(a_n+b_n)$和$\limsup_{n\to\infty}a_n+\limsup_{n\to\infty}b_n$，按这个顺序填写。
+  answer:
+    type: tuple
+    value: [1, 2]
+  hints:
+    - |
+      三个数列都每 4 项一循环。写出$n=1,2,3,4$时的$a_n$、$b_n$、$a_n+b_n$。
+    - |
+      $a_n$依次是$1,0,-1,0$，$b_n$依次是$0,-1,0,1$，$a_n+b_n$依次是$1,-1,-1,1$。周期数列（periodic sequence）的上极限，就是一个周期里最大的那个值。
+    - |
+      周期数列里，一个周期中的每个值都出现无穷多次，所以都是子列的极限；子列的极限也只能是这几个值。所以周期数列的:term[上极限]{id="math.analysis.limit-superior"}就是一个周期里的最大值。
+
+      $a_n+b_n$依次是$1,-1,-1,1$，上极限是$1$；$a_n$的上极限是$1$，$b_n$的上极限也是$1$，相加是$2$。答案是$(1,2)$：两者不相等，和的上极限可以严格小于上极限的和。
+  solution: |
+    $a_n+b_n$是$1,-1,-1,1$循环，上极限是$1$；$a_n$、$b_n$的上极限都是$1$，和是$2$，填 `1, 2`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$\{a_n\}$、$\{b_n\}$都:term[有界]{id="math.analysis.bounded-sequence"}。证明$\limsup_{n\to\infty}(a_n+b_n)\le\limsup_{n\to\infty}a_n+\limsup_{n\to\infty}b_n$；若$\{b_n\}$还:term[收敛]{id="math.analysis.convergent-sequence"}，则等号成立。
+  hints:
+    - |
+      从定义出发：比较三个数列去掉前$n-1$项以后的:term[上确界]{id="math.analysis.supremum"}，再令$n\to\infty$。
+    - |
+      记$A_n=\sup_{k\ge n}a_k$，$B_n=\sup_{k\ge n}b_k$。$k\ge n$时$a_k+b_k\le A_n+B_n$，所以$\sup_{k\ge n}(a_k+b_k)\le A_n+B_n$。等号那一半：把$a_n$写成$(a_n+b_n)+(-b_n)$，再用刚证的不等式。
+    - |
+      记$A_n=\sup_{k\ge n}a_k$，$B_n=\sup_{k\ge n}b_k$，$C_n=\sup_{k\ge n}(a_k+b_k)$。对每个$k\ge n$，$a_k+b_k\le A_n+B_n$，所以$A_n+B_n$是$\{a_k+b_k:k\ge n\}$的上界，$C_n\le A_n+B_n$。三个数列都收敛，由:term[保不等式性]{id="math.analysis.order-limit-theorem"}和和的法则，$\limsup(a_n+b_n)\le\limsup a_n+\limsup b_n$。
+
+      设$b_n\to b$。收敛数列的上极限就是它的极限（定理 2），所以$\limsup b_n=b$，$\limsup(-b_n)=-b$。对$a_n=(a_n+b_n)+(-b_n)$用刚证的不等式，得$\limsup a_n\le\limsup(a_n+b_n)-b$，即$\limsup a_n+\limsup b_n\le\limsup(a_n+b_n)$。和前一半合起来，等号成立。
+  reference: |
+    $\sup_{k\ge n}(a_k+b_k)\le\sup_{k\ge n}a_k+\sup_{k\ge n}b_k$，取极限即得不等式。$b_n\to b$时$\limsup b_n=b$、$\limsup(-b_n)=-b$，对$a_n=(a_n+b_n)+(-b_n)$再用不等式，得反向不等式，所以相等。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$\{a_n\}$:term[有界]{id="math.analysis.bounded-sequence"}，$\sigma_n=\frac{a_1+a_2+\cdots+a_n}{n}$。证明$\limsup_{n\to\infty}\sigma_n\le\limsup_{n\to\infty}a_n$。
+  hints:
+    - |
+      记$L^*=\limsup_{n\to\infty}a_n$。用定理 1 的 (1)：任给$\varepsilon>0$，从某一项起所有的项都不超过$L^*+\varepsilon$。把$\sigma_n$拆成前面有限项和后面的项两部分。
+    - |
+      设$k>N$时$a_k\le L^*+\varepsilon$。$n>N$时$\sigma_n\le\frac{a_1+\cdots+a_N}{n}+\frac{n-N}{n}(L^*+\varepsilon)$，右边趋于$L^*+\varepsilon$。再说明：从某一项起$x_n\le y_n$时，$\limsup x_n\le\limsup y_n$。
+    - |
+      记$L^*=\limsup_{n\to\infty}a_n$，$S=a_1+\cdots+a_N$。任给$\varepsilon>0$，由定理 1 的 (1)，有$N$使$k>N$时$a_k\le L^*+\varepsilon$。于是$n>N$时
+
+      $$
+      \sigma_n=\frac{S}{n}+\frac{a_{N+1}+\cdots+a_n}{n}\le\frac{S}{n}+\frac{n-N}{n}(L^*+\varepsilon)=:c_n ,
+      $$
+
+      而$c_n\to L^*+\varepsilon$。$\{\sigma_n\}$有界（$|a_k|\le M$时$|\sigma_n|\le M$）。若$m>N$，则$k\ge m$时$\sigma_k\le c_k\le\sup_{j\ge m}c_j$，所以$\sup_{k\ge m}\sigma_k\le\sup_{j\ge m}c_j$；令$m\to\infty$，由:term[保不等式性]{id="math.analysis.order-limit-theorem"}，$\limsup\sigma_n\le\limsup c_n=L^*+\varepsilon$。
+
+      $\varepsilon$是任意的，所以$\limsup\sigma_n\le L^*$。同样可证$\liminf a_n\le\liminf\sigma_n$。由此，$a_n\to L$时，$L=\liminf a_n\le\liminf\sigma_n\le\limsup\sigma_n\le\limsup a_n=L$，由定理 2，$\sigma_n\to L$：这就是「算术平均收敛于同一个极限」的另一个证明。
+  reference: |
+    任给$\varepsilon$，从$N$项后$a_k\le L^*+\varepsilon$，得$\sigma_n\le\frac{S_N}{n}+\frac{n-N}{n}(L^*+\varepsilon)\to L^*+\varepsilon$；从某项起$x_n\le y_n$蕴含$\limsup x_n\le\limsup y_n$，故$\limsup\sigma_n\le L^*+\varepsilon$，再令$\varepsilon\to0$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    :term[上极限]{id="math.analysis.limit-superior"}有两种看法：去掉前$n-1$项后的上确界的极限，和最大的子列极限。如果直接拿「最大的子列极限」当定义，会遇到什么问题？在$\Q$里，上极限还总存在吗？
+  hints:
+    - |
+      「最大的子列极限」要有意义，得先知道子列极限至少有一个，而且其中真有最大的。无穷多个数里不一定有最大的。
+    - |
+      至少有一个，靠的是:term[致密性定理]{id="math.analysis.bolzano-weierstrass"}（Bolzano-Weierstrass theorem）；有最大的，正是定理 1 用尾巴上确界证出来的。在$\Q$里试试$\sqrt2$的不足近似值$1,1.4,1.41,\dots$。
+    - |
+      用「最大的子列极限」当定义，要先证明两件事：子列极限至少有一个（致密性定理）；所有子列极限里有最大的。后一件并不显然，比如$\left\{1-\frac1n\right\}$里就没有最大的数。定理 1 恰好用尾巴上确界的极限$L^*$证明了：$L^*$本身是子列极限，又不小于任何子列极限。所以先用尾巴上确界定义，存在性是送的，子列的刻画再作为定理。
+
+      在$\Q$里两种定义都会失效。$\sqrt2$的不足近似值有界，可$\{a_k:k\ge n\}$在$\Q$里没有上确界（这个上确界是$\sqrt2$）。它的每个子列在$\R$里都趋于$\sqrt2$，在$\Q$里就没有子列极限。上极限总存在，靠的是:term[实数的完备性]{id="math.analysis.real-completeness"}（completeness of the real numbers）：确界原理给出$M_n$，单调有界原理给出$\lim M_n$。
+  reference: |
+    以最大子列极限为定义需先证子列极限存在（致密性定理）且有最大者，后者正是定理 1 的内容；尾巴上确界定义直接保证存在。在$\Q$中，$\sqrt2$的不足近似值的尾巴上确界与子列极限都不存在，上极限的存在依赖完备性。
+
+- id: p8
+  tier: thinking
+  statement: |
+    幂级数（power series）$\sum c_nx^n$的收敛半径（radius of convergence）$R$有一个公式：$\frac1R=\limsup_{n\to\infty}\sqrt[n]{|c_n|}$。例如$1+x^2+x^4+\cdots$，$n$为偶数时$c_n=1$，为奇数时$c_n=0$。为什么公式里用:term[上极限]{id="math.analysis.limit-superior"}，而不用极限或下极限？
+  hints:
+    - |
+      对这个例子，$\sqrt[n]{|c_n|}$依次是$0,1,0,1,\dots$，它没有极限。上极限、下极限各是多少？$1+x^2+x^4+\cdots$实际在什么范围里收敛？
+    - |
+      上极限是$1$，给出$R=1$；下极限是$0$，会给出$R=\infty$。级数在$|x|<1$时收敛，$|x|>1$时各项不趋于$0$，发散。决定收敛与否的，是无穷多次出现的那些「最大」的项。
+    - |
+      这个级数是公比为$x^2$的等比级数（geometric series），$|x|<1$时收敛，$|x|\ge1$时各项不趋于$0$，发散，所以$R=1$。$\sqrt[n]{|c_n|}$在$0$和$1$之间跳，没有极限；上极限是$1$，恰好给出$R=1$；下极限是$0$，会错误地给出$R=\infty$。
+
+      道理和例 2 一样。若$\limsup\sqrt[n]{|c_nx^n|}<1$，这个数列非负、有上界，所以有界；由定理 1 的 (1)，从某一项起$|c_nx^n|\le q^n$（$q<1$），级数像等比级数一样收敛。若它大于$1$：数列有界时由 (2)，无界时直接可见，都有无穷多项满足$|c_nx^n|>1$，各项不趋于$0$，级数发散。
+
+      所以收敛半径取决于$\sqrt[n]{|c_n|}$最终能无穷多次达到的最高处，也就是上极限；只看极限会漏掉没有极限的情形，看下极限会被那些等于$0$的项骗了。证明见[幂级数的收敛理论](lesson:math.analysis.power-series-theory)。
+  reference: |
+    例中$\sqrt[n]{|c_n|}$在$0,1$间交替，无极限；上极限$1$给出正确的$R=1$，下极限$0$给出错误的$R=\infty$。根值判别：$\limsup\sqrt[n]{|c_nx^n|}<1$时由定理 1(1)尾项被等比数列控制而收敛，$>1$时由 (2) 有无穷多项$>1$而发散。

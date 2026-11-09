@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="640" height="340" font-size="14">
+  <!-- y = x²/4 在 x = 2 附近：横坐标 px = 60 + 150(x − 0.3)，纵坐标 py = 300 − 90y；L = 1，ε = 0.4，δ = 0.33 -->
+  <!-- 横带：L − ε < y < L + ε；竖带：a − δ < x < a + δ；f(2) 另外定义成 2.2 -->
+  <rect x="50" y="174" width="500" height="72" style="fill: var(--accent, #2563eb)" fill-opacity="0.12" />
+  <rect x="265.5" y="26" width="99" height="274" style="fill: var(--good, #059669)" fill-opacity="0.14" />
+  <line x1="50" y1="300" x2="560" y2="300" stroke="currentColor" stroke-width="1.2" />
+  <line x1="50" y1="300" x2="50" y2="22" stroke="currentColor" stroke-width="1.2" />
+  <text x="568" y="304" fill="currentColor"><tspan font-style="italic">x</tspan></text>
+  <text x="44" y="16" fill="currentColor"><tspan font-style="italic">y</tspan></text>
+  <line x1="50" y1="246" x2="550" y2="246" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.6" />
+  <line x1="50" y1="210" x2="550" y2="210" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.6" />
+  <line x1="50" y1="174" x2="550" y2="174" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.6" />
+  <line x1="265.5" y1="26" x2="265.5" y2="300" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.6" />
+  <line x1="315" y1="26" x2="315" y2="300" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.6" />
+  <line x1="364.5" y1="26" x2="364.5" y2="300" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.6" />
+  <path d="M 60 297.98 L 67.62 297.23 L 75.25 296.37 L 82.88 295.39 L 90.5 294.3 L 98.12 293.09 L 105.75 291.76 L 113.38 290.32 L 121 288.76 L 128.62 287.09 L 136.25 285.3 L 143.88 283.39 L 151.5 281.37 L 159.12 279.23 L 166.75 276.97 L 174.38 274.6 L 182 272.11 L 189.62 269.51 L 197.25 266.78 L 204.88 263.95 L 212.5 260.99 L 220.13 257.92 L 227.75 254.74 L 235.38 251.43 L 243 248.02 L 250.62 244.48 L 258.25 240.83 L 265.88 237.06 L 273.5 233.18 L 281.12 229.18 L 288.75 225.06 L 296.38 220.83 L 304 216.48 L 311.62 212.01 L 319.25 207.43 L 326.88 202.73 L 334.5 197.92 L 342.13 192.99 L 349.75 187.94 L 357.38 182.78 L 365 177.5 L 372.63 172.1 L 380.25 166.59 L 387.88 160.96 L 395.5 155.22 L 403.12 149.36 L 410.75 143.38 L 418.38 137.29 L 426 131.08 L 433.63 124.75 L 441.25 118.31 L 448.88 111.75 L 456.5 105.08 L 464.12 98.29 L 471.75 91.38 L 479.38 84.36 L 487 77.22 L 494.63 69.96 L 502.25 62.59 L 509.88 55.1 L 517.5 47.49" fill="none" stroke="currentColor" stroke-width="1.6" />
+  <path d="M 265.5 237.25 L 270.45 234.75 L 275.4 232.19 L 280.35 229.59 L 285.3 226.94 L 290.25 224.24 L 295.2 221.49 L 300.15 218.69 L 305.1 215.84 L 310.05 212.95 L 315 210 L 319.95 207.01 L 324.9 203.96 L 329.85 200.87 L 334.8 197.73 L 339.75 194.54 L 344.7 191.3 L 349.65 188.01 L 354.6 184.67 L 359.55 181.29 L 364.5 177.85" fill="none" stroke-width="3.2" style="stroke: var(--accent, #2563eb)" />
+  <circle cx="315" cy="210" r="4.5" style="fill: var(--bg, #ffffff)" stroke="currentColor" stroke-width="1.6" />
+  <circle cx="315" cy="102" r="4" fill="currentColor" />
+  <text x="325" y="107" fill="currentColor"><tspan font-style="italic">f</tspan>(<tspan font-style="italic">a</tspan>)，和极限无关</text>
+  <g text-anchor="end" font-size="13" fill="currentColor">
+    <text x="44" y="179"><tspan font-style="italic">L</tspan> + <tspan font-style="italic">ε</tspan></text>
+    <text x="44" y="215"><tspan font-style="italic">L</tspan></text>
+    <text x="44" y="251"><tspan font-style="italic">L</tspan> − <tspan font-style="italic">ε</tspan></text>
+  </g>
+  <g text-anchor="middle" font-size="13" fill="currentColor">
+    <text x="259.5" y="320"><tspan font-style="italic">a</tspan> − <tspan font-style="italic">δ</tspan></text>
+    <text x="315" y="320"><tspan font-style="italic">a</tspan></text>
+    <text x="370.5" y="320"><tspan font-style="italic">a</tspan> + <tspan font-style="italic">δ</tspan></text>
+  </g>
+  <text x="480" y="114" fill="currentColor"><tspan font-style="italic">y</tspan> = <tspan font-style="italic">f</tspan>(<tspan font-style="italic">x</tspan>)</text>
+</svg>

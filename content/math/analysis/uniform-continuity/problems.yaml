@@ -1,0 +1,157 @@
+- id: p1
+  tier: easy
+  statement: |
+    $f(x)=3x$在$\R$上:term[一致连续]{id="math.analysis.uniform-continuity"}（uniformly continuous）。取$\varepsilon=0.3$，能使「$|x-y|<\delta$时$|f(x)-f(y)|<0.3$」对所有实数$x$、$y$成立的$\delta$里，最大的是多少？
+  answer:
+    type: number
+    value: 1/10
+  hints:
+    - |
+      $|f(x)-f(y)|$可以写成$|x-y|$的倍数。
+    - |
+      $|f(x)-f(y)|=3|x-y|$，所以条件就是$3|x-y|<0.3$。
+    - |
+      $|f(x)-f(y)|=3|x-y|<0.3$等价于$|x-y|<0.1$。取$\delta=0.1$时条件对所有$x$、$y$成立；取$\delta>0.1$时，$x=0.1$、$y=0$满足$|x-y|<\delta$，可$|f(x)-f(y)|=0.3$，不小于$0.3$。所以最大的$\delta$是$0.1$，它和$x$、$y$在哪里无关。
+  solution: |
+    $|f(x)-f(y)|=3|x-y|<0.3$等价于$|x-y|<0.1$，所以最大的$\delta$是$0.1$，对整条实数轴都管用。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些函数在所给的区间上:term[一致连续]{id="math.analysis.uniform-continuity"}？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $f(x)=x^2$，区间$[0,10]$
+      - |
+        $f(x)=x^2$，区间$[0,+\infty)$
+      - |
+        $f(x)=\frac1x$，区间$[1,+\infty)$
+      - |
+        $f(x)=\frac1x$，区间$(0,1)$
+    value: [1, 3]
+  hints:
+    - |
+      闭区间上的连续函数可以直接用:term[康托尔定理]{id="math.analysis.heine-cantor-theorem"}（Heine-Cantor theorem）。别的情形，要么估计$|f(x)-f(y)|$，要么找越挤越近、函数值却相差不小的两串点。
+    - |
+      A 用康托尔定理。B 试试$x_n=n+\frac1n$、$y_n=n$。C：$x,y\ge1$时$\bigl|\frac1x-\frac1y\bigr|=\frac{|x-y|}{xy}\le|x-y|$。D 试试$x_n=\frac1n$、$y_n=\frac{1}{n+1}$。
+    - |
+      A：$x^2$在闭区间$[0,10]$上连续，由康托尔定理，一致连续。C：$x,y\ge1$时$\bigl|\frac1x-\frac1y\bigr|\le|x-y|$，取$\delta=\varepsilon$即可，一致连续。
+
+      B：$x_n=n+\frac1n$与$y_n=n$越来越近，$x_n^2-y_n^2>2$，不一致连续。D：$x_n=\frac1n$与$y_n=\frac1{n+1}$越来越近，函数值相差$1$，不一致连续。答案是 A 和 C。
+  solution: |
+    A 由康托尔定理一致连续；C 满足$\bigl|\frac1x-\frac1y\bigr|\le|x-y|$，取$\delta=\varepsilon$。B、D 各有越挤越近、函数值却相差至少$2$或$1$的点对，不一致连续。
+
+- id: p3
+  tier: medium
+  statement: |
+    $f(x)=x^2$在$[0,3]$上:term[一致连续]{id="math.analysis.uniform-continuity"}。取$\varepsilon=0.59$，能使「$x,y\in[0,3]$且$|x-y|<\delta$时$|x^2-y^2|<0.59$」成立的$\delta$里，最大的是多少？
+  answer:
+    type: number
+    value: 1/10
+  hints:
+    - |
+      相距一定的两点，函数值在哪里相差最大？$x^2$越往右越陡，最坏的情形在右端点附近。
+    - |
+      设$y=x-d$，$0<d<\delta$，$x\le3$。$x^2-y^2=2xd-d^2\le6d-d^2$，在$x=3$时最大。要求$6d-d^2\le0.59$对所有$d<\delta$成立。
+    - |
+      设$x,y\in[0,3]$，$x=y+d$，$0<d<\delta$，则$x^2-y^2=2xd-d^2\le6d-d^2$，等号在$x=3$时成立。$6d-d^2$在$0<d<3$上递增，$6\cdot0.1-0.1^2=0.59$。
+
+      取$\delta=0.1$：$d<0.1$时$x^2-y^2\le6d-d^2<0.59$，满足要求。取$\delta>0.1$：取$d$在$0.1$和$\delta$之间，$x=3$、$y=3-d$，则$x^2-y^2=6d-d^2>0.59$，不满足。所以最大的$\delta$是$0.1$。最坏的点对在右端点附近，那里曲线最陡；对整个区间找$\delta$，要看最陡的地方。
+  solution: |
+    $x=y+d$时$x^2-y^2=2xd-d^2\le6d-d^2$，在右端点$x=3$处最大；$6d-d^2<0.59$等价于$d<0.1$，所以最大的$\delta$是$0.1$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $\sqrt x$在$[0,+\infty)$上:term[一致连续]{id="math.analysis.uniform-continuity"}。取$\varepsilon=0.1$，能使「$x,y\ge0$且$|x-y|<\delta$时$|\sqrt x-\sqrt y|<0.1$」成立的$\delta$里，最大的是多少？
+  answer:
+    type: number
+    value: 1/100
+  hints:
+    - |
+      用例 1 的不等式$|\sqrt x-\sqrt y|\le\sqrt{|x-y|}$找一个够用的$\delta$；再看最陡的地方（$0$附近），说明更大的$\delta$不行。
+    - |
+      $\delta=0.01$时，$|\sqrt x-\sqrt y|\le\sqrt{|x-y|}<0.1$。$\delta>0.01$时，试试$y=0$、$x$稍大于$0.01$。
+    - |
+      由例 1，$|\sqrt x-\sqrt y|\le\sqrt{|x-y|}$，所以$\delta=0.01$时，$|x-y|<0.01$推出$|\sqrt x-\sqrt y|<0.1$，满足要求。
+
+      取$\delta>0.01$：取$x$在$0.01$和$\delta$之间，$y=0$，则$|x-y|<\delta$，可$\sqrt x>0.1$，不满足。所以最大的$\delta$是$0.01=\varepsilon^2$。最坏的地方在$0$，那里曲线最陡；离$0$越远，同样的$\varepsilon$允许的$\delta$越大。
+  solution: |
+    由$|\sqrt x-\sqrt y|\le\sqrt{|x-y|}$，$\delta=0.01$够用；$\delta>0.01$时取$y=0$、$x$略大于$0.01$就不行。最大的$\delta$是$0.01$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$在有界的开区间$(a,b)$上:term[一致连续]{id="math.analysis.uniform-continuity"}。证明$f$在$(a,b)$上:term[有界]{id="math.analysis.bounded-function"}。
+  hints:
+    - |
+      取$\varepsilon=1$，得到一个对整个区间管用的$\delta$。把$(a,b)$切成有限段，每段长度小于$\delta$，每段里取一个代表点。
+    - |
+      取正整数$N>\frac{b-a}{\delta}$，令$t_k=a+\frac{k(b-a)}{N}$（$k=0,1,\dots,N$），每段$[t_{k-1},t_k]$长度小于$\delta$，取它的中点$c_k$。任何$x\in(a,b)$都落在某一段里，和那一段的中点相距小于$\delta$。
+    - |
+      取$\varepsilon=1$，有$\delta>0$使$x,y\in(a,b)$、$|x-y|<\delta$时$|f(x)-f(y)|<1$。由阿基米德性质（Archimedean property），取正整数$N>\frac{b-a}{\delta}$，把$[a,b]$等分成$N$段，分点$t_k=a+\frac{k(b-a)}{N}$，每段长度$\frac{b-a}{N}<\delta$；记第$k$段的中点为$c_k$，它在$(a,b)$里。
+
+      任取$x\in(a,b)$，它属于某一段$[t_{k-1},t_k]$，所以$|x-c_k|\le\frac{b-a}{2N}<\delta$，$|f(x)|<|f(c_k)|+1$。令$M=\max\{|f(c_1)|,\dots,|f(c_N)|\}+1$，则所有$x\in(a,b)$都满足$|f(x)|<M$。
+
+      只连续不行：$\frac1x$在$(0,1)$上连续却无界。一致连续把「局部管得住」变成了「每一段都用同样宽度管得住」，有限段就盖住了整个有界区间。
+  reference: |
+    取$\varepsilon=1$得$\delta$，把$(a,b)$分成$N>\frac{b-a}{\delta}$段，各取中点$c_k$；任意$x$距某个$c_k$小于$\delta$，故$|f(x)|<\max|f(c_k)|+1$。$\frac1x$在$(0,1)$上说明只连续不够。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$在$[a,+\infty)$上:term[连续]{id="math.analysis.continuous-function"}，并且$\lim_{x\to+\infty}f(x)=L$存在。证明$f$在$[a,+\infty)$上:term[一致连续]{id="math.analysis.uniform-continuity"}。
+  hints:
+    - |
+      分两块：很远的地方，$f(x)$都接近$L$，任意两点的函数值自然接近；有限的一段$[a,X+1]$是闭区间，用:term[康托尔定理]{id="math.analysis.heine-cantor-theorem"}。难点是两块交界处的点对。
+    - |
+      任给$\varepsilon$，取$X$使$x>X$时$|f(x)-L|<\frac\varepsilon2$；在$[a,X+1]$上由康托尔定理得$\delta_1$。取$\delta=\min\{\delta_1,1\}$，分「两点都在$[a,X+1]$里」和「有一点大于$X+1$」两种情况。
+    - |
+      任给$\varepsilon>0$。由$\lim_{x\to+\infty}f(x)=L$，有$X>a$使$x>X$时$|f(x)-L|<\frac\varepsilon2$。$f$在闭区间$[a,X+1]$上连续，由康托尔定理，有$\delta_1>0$使$x,y\in[a,X+1]$、$|x-y|<\delta_1$时$|f(x)-f(y)|<\varepsilon$。令$\delta=\min\{\delta_1,1\}$。
+
+      设$x,y\ge a$，$|x-y|<\delta$。若两点都在$[a,X+1]$里，则$|f(x)-f(y)|<\varepsilon$。否则有一点大于$X+1$，因为$|x-y|<1$，另一点大于$X$，于是$|f(x)-f(y)|\le|f(x)-L|+|L-f(y)|<\varepsilon$。所以$f$在$[a,+\infty)$上一致连续。
+
+      取$\delta\le1$是为了处理交界：把有限段多延长$1$，保证跨过$X$的点对整个落在某一块里。
+  reference: |
+    任给$\varepsilon$，取$X$使$x>X$时$|f(x)-L|<\frac\varepsilon2$；$[a,X+1]$上由康托尔定理得$\delta_1$，取$\delta=\min\{\delta_1,1\}$。两点都在$[a,X+1]$时直接得；否则两点都大于$X$，经$L$用三角不等式得$|f(x)-f(y)|<\varepsilon$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    一致连续把「$\delta$可以随点$a$变」改成了「一个$\delta$对所有的点都管用」。[柯西收敛准则](lesson:math.analysis.cauchy-sequences)第 7 题里，:term[柯西列]{id="math.analysis.cauchy-sequence"}（Cauchy sequence）也要求一个$N$对所有的$p$都管用。下面这个问题里，你能找出同一种区别吗：函数$f_n(x)=x^n$在$[0,1)$上，对每个$x$都有$f_n(x)\to0$？
+  hints:
+    - |
+      对固定的$x\in[0,1)$，要$x^n<\varepsilon$，$n$要多大？这个门槛随$x$怎样变？
+    - |
+      $x^n<\varepsilon$要$n>\frac{\ln\varepsilon}{\ln x}$；$x$越接近$1$，$\ln x$越接近$0$，门槛越高。问：有没有一个$N$，使$n>N$时对所有$x\in[0,1)$都有$x^n<\varepsilon$？
+    - |
+      对每个$x\in[0,1)$，$x^n\to0$，可$N$必须随$x$变：$x$越接近$1$，要等越久。没有一个$N$对所有$x$一起管用：不管$N$多大，取$n=N+1$，再取$x=\bigl(\frac12\bigr)^{1/n}$，就有$x^n=\frac12$。
+
+      量词的顺序和一致连续一模一样。「对每个$x$，任给$\varepsilon$，有$N$……」叫逐点收敛（pointwise convergence）；把$N$提到「对每个$x$」前面，「任给$\varepsilon$，有$N$，对所有$x$……」叫一致收敛（uniform convergence）。$x^n$在$[0,1)$上逐点收敛于$0$，却不一致收敛。
+
+      一致收敛要紧的原因和一致连续类似：它能保证极限函数（limit function）保留连续这类性质，而逐点收敛不能，比如$x^n$在$[0,1]$上的极限在$x=1$处断开。见[逐点收敛与一致收敛](lesson:math.analysis.uniform-convergence)。
+  reference: |
+    $x^n\to0$对每个$x\in[0,1)$成立，但所需的$N$随$x\to1$而无界（$x=2^{-1/n}$时$x^n=\frac12$），没有一致的$N$。这正是逐点收敛与一致收敛之别，量词次序与连续、一致连续相同。
+
+- id: p8
+  tier: thinking
+  statement: |
+    定积分要用小矩形去逼近曲边梯形。把$[a,b]$切成小段以后，我们希望每一段上，$f$的最大值减最小值都小于$\varepsilon$。
+
+    对$[a,b]$上的:term[连续函数]{id="math.analysis.continuous-function"}，这总能做到吗？靠的是哪个定理？换成$(0,1]$上的$\sin\frac1x$呢？
+  hints:
+    - |
+      「每一段上最大值减最小值小于$\varepsilon$」，就是「每一段里任意两点的函数值相差小于$\varepsilon$」。段的长度要多短？这个长度能不能对所有段都一样？
+    - |
+      由:term[康托尔定理]{id="math.analysis.heine-cantor-theorem"}，对给定的$\varepsilon$有一个$\delta$，只要每段都短于$\delta$，段里任意两点的函数值都相差小于$\varepsilon$；再由最值定理（extreme value theorem，见[有界性定理与最值定理](lesson:math.analysis.extreme-value)），每段上真有最大值、最小值。$\sin\frac1x$在$0$附近，不管段多短都有从$-1$到$1$的摆动。
+    - |
+      能。由康托尔定理，有$\delta$使$|x-y|<\delta$时$|f(x)-f(y)|<\varepsilon$；把$[a,b]$切成长度都小于$\delta$的小段，每段是闭区间，由最值定理，$f$在上面取到最大值$M_k$和最小值$m_k$，它们是段里两点的函数值，所以$M_k-m_k<\varepsilon$。于是用最大值算出的上和（upper sum）减去用最小值算出的下和（lower sum），不超过$\varepsilon(b-a)$，可以任意小，这正是下一步证明连续函数可积（integrable）的关键。
+
+      要是只知道处处连续，每个点附近各有各的$\delta$，越陡的地方要切得越细，就不能保证有限次切分就够。$\sin\frac1x$在$(0,1]$上就是这样：含有$0$附近的那一段，不管多短，函数值都在$-1$和$1$之间来回，最大值减最小值是$2$。
+
+      有意思的是，$\sin\frac1x$（在$0$处随便补一个值）在$[0,1]$上仍然可积：坏的只有$0$附近那一小段，把它切得很短，它对上和减下和的贡献就很小。可积和一致连续不是一回事，见[哪些函数可积](lesson:math.analysis.integrable-functions)。
+  reference: |
+    康托尔定理给出统一的$\delta$，切成短于$\delta$的段，每段上由最值定理得$M_k-m_k<\varepsilon$，上和减下和$\le\varepsilon(b-a)$。$\sin\frac1x$在$0$附近任意短的段上振幅为$2$，但它在$[0,1]$上仍可积，因为坏的部分可以任意短。

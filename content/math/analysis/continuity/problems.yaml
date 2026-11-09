@@ -1,0 +1,157 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$f(x)=\frac{x^2-9}{x-3}$（$x\ne3$），$f(3)=c$。$c$取多少时，$f$在$3$处:term[连续]{id="math.analysis.continuous-function"}（continuous）？
+  answer:
+    type: number
+    value: 6
+  hints:
+    - |
+      连续要求$\lim_{x\to3}f(x)=f(3)$。先求$x\to3$时的极限。
+    - |
+      $x\ne3$时$\frac{x^2-9}{x-3}=x+3$。
+    - |
+      $x\ne3$时$f(x)=x+3$，所以$\lim_{x\to3}f(x)=6$（$0<|x-3|<\delta$时$|f(x)-6|=|x-3|$，取$\delta=\varepsilon$）。在$3$处连续要求$f(3)=6$，所以$c=6$。
+  solution: |
+    $x\ne3$时$f(x)=x+3$，极限是$6$，连续要求$f(3)$等于这个极限，所以$c=6$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些函数在$0$处:term[连续]{id="math.analysis.continuous-function"}？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $f(x)=x\sin\frac1x$（$x\ne0$），$f(0)=0$
+      - |
+        $f(x)=\sin\frac1x$（$x\ne0$），$f(0)=0$
+      - |
+        $f(x)=|x|$
+      - |
+        $f(x)=\operatorname{sgn}x$
+    value: [1, 3]
+  hints:
+    - |
+      对每个函数，看能不能把$|f(x)-f(0)|$用一个趋于$0$的式子压住；怀疑不连续，就找一个趋于$0$的数列，让$f(x_n)$不趋于$f(0)$。
+    - |
+      A：$|f(x)-0|\le|x|$。C：$\bigl||x|-0\bigr|=|x|$。B：试试$x_n=\frac{1}{2n\pi+\pi/2}$。D：试试$x_n=\frac1n$。
+    - |
+      A：$|f(x)-f(0)|\le|x|$，任给$\varepsilon>0$取$\delta=\varepsilon$，连续。C：$|f(x)-f(0)|=|x|$，同样取$\delta=\varepsilon$，连续。
+
+      B：$x_n=\frac{1}{2n\pi+\pi/2}\to0$，而$f(x_n)=1$，不趋于$f(0)=0$，所以不连续。D：$x_n=\frac1n\to0$，$\operatorname{sgn}x_n=1$，不趋于$\operatorname{sgn}0=0$，不连续。答案是 A 和 C。
+  solution: |
+    A、C 都满足$|f(x)-f(0)|\le|x|$，取$\delta=\varepsilon$即可，连续。B 沿$x_n=\frac{1}{2n\pi+\pi/2}$函数值恒为$1$，D 沿$x_n=\frac1n$恒为$1$，都不趋于$f(0)=0$，不连续。
+
+- id: p3
+  tier: medium
+  statement: |
+    对$f(x)=\sqrt x$在$a=4$处的连续性，取$\varepsilon=0.1$。能使「$|x-4|<\delta$（$x\ge0$）时$|\sqrt x-2|<0.1$」成立的$\delta$里，最大的是多少？
+  answer:
+    type: number
+    value: 39/100
+  hints:
+    - |
+      先解出$|\sqrt x-2|<0.1$，也就是$1.9<\sqrt x<2.1$，得到$x$的范围；再看以$4$为中心的对称区间最多能伸到多宽。
+    - |
+      $1.9<\sqrt x<2.1$就是$3.61<x<4.41$。$4$到左端的距离是$0.39$，到右端是$0.41$。
+    - |
+      $|\sqrt x-2|<0.1$等价于$3.61<x<4.41$。以$4$为中心的区间要整个落在里面，半径不能超过$\min\{0.39,\ 0.41\}=0.39$。
+
+      取$\delta=0.39$时，$3.61<x<4.39$，都满足要求。取$\delta>0.39$时，$x=3.61$满足$|x-4|<\delta$，可$|\sqrt{3.61}-2|=0.1$，不小于$0.1$。所以最大的$\delta$是$0.39$。曲线在左边更陡，所以左边先碰到带子的边。
+  solution: |
+    $|\sqrt x-2|<0.1$等价于$3.61<x<4.41$，$4$到两端的距离是$0.39$和$0.41$，取较小的，最大的$\delta$是$0.39$。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$f(x)=x^2$（$x$是有理数），$f(x)=2x-1$（$x$是无理数）。$f$只在一个点处:term[连续]{id="math.analysis.continuous-function"}，求这个点。
+  answer:
+    type: number
+    value: 1
+  hints:
+    - |
+      在一点$a$处连续，沿趋于$a$的有理数列和无理数列，函数值都得趋于$f(a)$。这两种数列上，$f$分别跟着$x^2$和$2x-1$走。
+    - |
+      每个实数$a$都是有理数列的极限，也是无理数列的极限。连续就要求$a^2=2a-1$。
+    - |
+      取$r_n$为$a$的十进制小数截到第$n$位得到的有理数，则$|a-r_n|\le10^{-n}$，$r_n\to a$；令$s_n=r_n+\frac{\sqrt2}{10^n}$，它是无理数，也趋于$a$。若$f$在$a$处连续，由定理 1，$f(r_n)=r_n^2\to a^2$和$f(s_n)=2s_n-1\to2a-1$都等于$f(a)$，所以$a^2=2a-1$，即$(a-1)^2=0$，$a=1$。
+
+      反过来，$f(1)=1$。对任何$x$，$|f(x)-1|$等于$|x^2-1|$或$|2x-2|$，都不超过$|x-1|\max\{|x+1|,2\}$。$|x-1|<1$时$|x+1|<3$，所以取$\delta=\min\{1,\frac\varepsilon3\}$，$|x-1|<\delta$时$|f(x)-1|<3\delta\le\varepsilon$，$f$在$1$处连续。答案是$1$。
+  solution: |
+    沿有理数列和无理数列逼近$a$，连续要求$a^2=2a-1$，只有$a=1$。在$1$处，$|f(x)-1|\le|x-1|\max\{|x+1|,2\}$，确实连续。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$在$\R$上:term[连续]{id="math.analysis.continuous-function"}，并且对所有实数$x$、$y$都有$f(x+y)=f(x)+f(y)$。证明：$f(x)=cx$，其中$c=f(1)$。
+  hints:
+    - |
+      先只用等式：依次求$f(0)$、$f(-x)$、$f(nx)$，再求$f\bigl(\frac mn\bigr)$。最后用连续性，从有理数推到所有实数。
+    - |
+      $f(0)=0$，$f(-x)=-f(x)$，由归纳法$f(nx)=nf(x)$。由$nf\bigl(\frac1n\bigr)=f(1)$得$f\bigl(\frac mn\bigr)=\frac mnc$。任取实数$x$，用有理数列$r_k\to x$（比如十进制小数的截断）和定理 1。
+    - |
+      取$x=y=0$，得$f(0)=2f(0)$，$f(0)=0$。取$y=-x$，得$0=f(x)+f(-x)$，$f(-x)=-f(x)$。由归纳法，对正整数$n$，$f(nx)=f((n-1)x)+f(x)=nf(x)$。
+
+      取$x=\frac1n$，得$f(1)=nf\bigl(\frac1n\bigr)$，$f\bigl(\frac1n\bigr)=\frac cn$；于是对正整数$m$，$f\bigl(\frac mn\bigr)=mf\bigl(\frac1n\bigr)=\frac mnc$。再由$f(-x)=-f(x)$和$f(0)=0$，对所有有理数$r$都有$f(r)=cr$。
+
+      任取实数$x$，令$r_k$为$x$的十进制小数截到第$k$位得到的有理数，则$|x-r_k|\le10^{-k}$，$r_k\to x$。由$f$在$x$处连续和定理 1，$f(r_k)\to f(x)$；而$f(r_k)=cr_k\to cx$。由极限的唯一性，$f(x)=cx$。
+  reference: |
+    $f(0)=0$，$f(-x)=-f(x)$，$f(nx)=nf(x)$，得$f(m/n)=\frac mnf(1)$，即有理点上$f(r)=cr$。任一实数$x$取有理数列$r_k\to x$，由连续$f(x)=\lim f(r_k)=\lim cr_k=cx$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$在$\R$上有定义，在$0$处:term[连续]{id="math.analysis.continuous-function"}，并且对所有$x$都有$f(2x)=f(x)$。证明$f$是常数函数。
+  hints:
+    - |
+      反复用$f(2x)=f(x)$：把$x$换成$\frac x2$，得$f(x)=f\bigl(\frac x2\bigr)$。一直除下去，自变量趋于哪里？
+    - |
+      对每个$n$，$f(x)=f\bigl(\frac{x}{2^n}\bigr)$。数列$\frac{x}{2^n}$趋于$0$，再用定理 1。
+    - |
+      任取$x$。由$f(2t)=f(t)$（取$t=\frac x2$）得$f(x)=f\bigl(\frac x2\bigr)$，由归纳法，对每个正整数$n$，$f(x)=f\bigl(\frac{x}{2^n}\bigr)$。
+
+      数列$x_n=\frac{x}{2^n}$趋于$0$（$\frac{1}{2^n}\to0$，再乘常数$x$）。$f$在$0$处连续，由定理 1，$f(x_n)\to f(0)$。可$f(x_n)$的每一项都等于$f(x)$，常数数列的极限就是它自己，所以$f(x)=f(0)$。$x$是任意的，$f$是常数。
+
+      只用到了$f$在$0$这一点连续。去掉这个条件就不对了：$f(x)=1$（$x\ne0$），$f(0)=0$也满足$f(2x)=f(x)$，却不是常数。
+  reference: |
+    $f(x)=f(x/2^n)$对每个$n$成立，$x/2^n\to0$，由$f$在$0$处连续，$f(x/2^n)\to f(0)$，而左边恒为$f(x)$，故$f(x)=f(0)$。反例说明在$0$处连续不能去掉。
+
+- id: p7
+  tier: thinking
+  statement: |
+    人们常说「:term[连续函数]{id="math.analysis.continuous-function"}（continuous function）的图像能一笔画出来」。按这一节的定义，这句话对吗？「在一点连续」和「一笔画」差在哪里？
+  hints:
+    - |
+      想想$x\sin\frac1x$（$f(0)=0$）在$0$附近的图像能不能真的画完。再想一个只在一个点连续的函数，它的「图像」是什么样子。
+    - |
+      $x\sin\frac1x$在$0$处连续，可它在$0$附近摆动无穷多次，摆动的总路程是无穷大。$f(x)=x$（$x$是有理数）、$f(x)=0$（$x$是无理数）只在$0$处连续，它的图像是两条「布满了洞」的直线。
+    - |
+      不完全对。在一点连续只是一个局部的条件：$a$附近的函数值离$f(a)$可以任意近。函数可以只在一个点连续，比如$f(x)=x$（$x$是有理数）、$f(x)=0$（$x$是无理数），由$|f(x)|\le|x|$它在$0$处连续，在别处都不连续；它的图像根本没法「画」。
+
+      即使在整个区间上连续，「一笔画」也只是个比喻。$x\sin\frac1x$在$[-1,1]$上连续，可它在$0$附近摆动无穷多次，摆幅加起来像$\frac1\pi+\frac1{2\pi}+\frac1{3\pi}+\cdots$一样没有限度，图像的长度是无穷大，任何一支笔都画不完。
+
+      「一笔画」真正对应的，是区间上连续函数的两条整体性质：图像不跳，中间的值一个都不漏（[介值定理](lesson:math.analysis.intermediate-value)）；图像不会跑到无穷远（后面的有界性定理，boundedness theorem，见[有界性定理与最值定理](lesson:math.analysis.extreme-value)）。而一点处的连续，是用$\varepsilon$-$\delta$描述的局部性质，不需要也不保证能画出来。
+  reference: |
+    一点处的连续是局部性质，可以只在一点成立（如$x$乘以有理数的指示函数，只在$0$连续）。区间上的连续也不保证能画：$x\sin\frac1x$的图像长度无穷。「一笔画」对应的是介值性、有界性等区间上的整体性质。
+
+- id: p8
+  tier: thinking
+  statement: |
+    把连续的定义改写成:term[邻域]{id="math.analysis.neighborhood"}（neighborhood）的语言：对$f(a)$的每个$\varepsilon$邻域$V$，都有$a$的$\delta$邻域$U$，使$f$把$U$（里属于定义域的点）全送进$V$。拓扑里，连续映射（continuous map）定义为「开集（open set）的原像（preimage）是开集」。这两种说法有什么联系？为什么数学家要把连续推广成后一种样子？
+  hints:
+    - |
+      在$\R$里，开集是这样的集合：它的每个点都有一个邻域整个在集合里面。试着用「每个点都有邻域」把两种说法连起来。
+    - |
+      设$f:\R\to\R$。若$V$是开集，$a$属于原像$f^{-1}(V)=\{x:f(x)\in V\}$，则$f(a)\in V$，$V$里有$f(a)$的一个$\varepsilon$邻域。连续给出$a$的$\delta$邻域被送进去，所以它在原像里。
+    - |
+      对$f:\R\to\R$，两种说法等价。设$f$处处连续，$V$是开集，$a\in f^{-1}(V)$。$f(a)\in V$，所以有$\varepsilon$使$f(a)$的$\varepsilon$邻域在$V$里；由连续，有$\delta$使$a$的$\delta$邻域被送进这个邻域，于是整个在$f^{-1}(V)$里。所以$f^{-1}(V)$是开集。
+
+      反过来，若开集的原像都是开集，取$V$为$f(a)$的$\varepsilon$邻域，$f^{-1}(V)$是含$a$的开集，里面有$a$的某个$\delta$邻域，这正是$\varepsilon$-$\delta$定义。
+
+      后一种说法里没有距离，只有「开集」。所以它能用在没有自然距离的地方，比如函数组成的空间、几何里的曲面，只要事先说好哪些集合算开集。这就是拓扑的出发点：连续只依赖于「谁离谁近」，不依赖于具体有多近。
+
+      见[开集与闭集](lesson:math.topology.open-closed-sets)和[连续映射与同胚](lesson:math.topology.continuous-maps)。
+  reference: |
+    在$\R$上，$\varepsilon$-$\delta$连续等价于开集的原像为开集：前推后用邻域包含，后推前取$V$为$f(a)$的$\varepsilon$邻域。开集的说法不依赖距离，只依赖「哪些集合是开集」，因此能推广到一般的拓扑空间。

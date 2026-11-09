@@ -1,0 +1,169 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$f$在$[0,3]$上:term[连续]{id="math.analysis.continuous-function"}（continuous），$f(0)=2$，$f(1)=-1$，$f(2)=1$，$f(3)=-2$。方程$f(x)=0$在$(0,3)$里至少有几个根？
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      在每个小区间$[0,1]$、$[1,2]$、$[2,3]$上分别看两端的符号。
+    - |
+      三个小区间两端的函数值都异号，每个小区间里都能用一次:term[零点定理]{id="math.analysis.bolzano-theorem"}（Bolzano's theorem）。
+    - |
+      $f(0)=2>0$，$f(1)=-1<0$，由零点定理，$(0,1)$里有一个根；同样$(1,2)$里、$(2,3)$里各有一个根。三个开区间互不相交，所以这三个根互不相同，至少有$3$个。不能说「恰好$3$个」：$f$在两个给定点之间可以来回穿过横轴好几次。
+  solution: |
+    $f$在$[0,1]$、$[1,2]$、$[2,3]$的两端都异号，由零点定理每段里各有一个根，所以至少有$3$个。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些函数在所给的区间上满足:term[零点定理]{id="math.analysis.bolzano-theorem"}的条件？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $f(x)=\frac1x$，区间$[-1,1]$（$f(0)$规定为$0$）
+      - |
+        $f(x)=x^3-x-1$，区间$[1,2]$
+      - |
+        $f(x)=x^2-1$，区间$[-2,2]$
+      - |
+        $f(x)=\sqrt x-\frac12$，区间$[0,1]$
+    value: [2, 4]
+  hints:
+    - |
+      零点定理有两个条件：在整个闭区间上:term[连续]{id="math.analysis.continuous-function"}；两端的函数值异号。逐个检查。
+    - |
+      A 在$0$处不连续。C 两端都是$3$。B：$f(1)=-1$，$f(2)=5$。D：$\sqrt x$在$[0,1]$上连续（包括左端点$0$），$f(0)=-\frac12$，$f(1)=\frac12$。
+    - |
+      A：两端$f(-1)=-1$、$f(1)=1$异号，可$f$在$0$处不连续（$x\to0^+$时$\frac1x$越来越大），不满足条件。它倒是在$x=0$处有零点，那只是因为题目规定了$f(0)=0$，不是零点定理给的；把$f(0)$规定成$1$，它就一个零点也没有。条件不满足时，结论可能成立，也可能不成立。
+
+      B：多项式连续，$f(1)=-1<0<5=f(2)$，满足。C：连续，但$f(-2)=f(2)=3$同号，不满足（虽然它有零点$\pm1$）。D：$\sqrt x$在$[0,1]$上连续，在左端点$0$处是单侧连续，$f(0)=-\frac12<0<\frac12=f(1)$，满足。
+
+      答案是 B 和 D。
+  solution: |
+    B、D 在闭区间上连续，两端异号，满足条件。A 在$0$处不连续；C 两端同号。
+
+- id: p3
+  tier: medium
+  statement: |
+    方程$x^3-4x+2=0$有几个实根？
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      算几个整数点上的函数值，找出符号的变化，再用:term[零点定理]{id="math.analysis.bolzano-theorem"}。最后别忘了：三次多项式最多有几个根？
+    - |
+      记$f(x)=x^3-4x+2$。$f(-3)=-13$，$f(-2)=2$，$f(0)=2$，$f(1)=-1$，$f(2)=2$。
+    - |
+      $f$处处:term[连续]{id="math.analysis.continuous-function"}。$f(-3)=-13<0<2=f(-2)$，$(-3,-2)$里有一个根；$f(0)=2>0>-1=f(1)$，$(0,1)$里有一个根；$f(1)=-1<0<2=f(2)$，$(1,2)$里有一个根。三个区间互不相交，所以至少有$3$个实根。
+
+      另一方面，三次多项式最多有$3$个根（每个根$r$对应一个因式$x-r$）。所以恰好有$3$个实根。
+  solution: |
+    $f(x)=x^3-4x+2$在$(-3,-2)$、$(0,1)$、$(1,2)$的两端都异号，各有一个根；三次多项式最多$3$个根，所以恰好$3$个。
+
+- id: p4
+  tier: medium
+  statement: |
+    下面哪些说法对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $f$在$[a,b]$上连续，$f(a)f(b)>0$，则$f$在$(a,b)$里没有零点
+      - |
+        $f$在$[0,1]$上连续，所有的函数值都在$[0,1]$里，则有$\xi\in[0,1]$使$f(\xi)=\xi$
+      - |
+        $f$在开区间$(0,1)$上连续，在某处取值$0$、在某处取值$1$，则它在某处取值$\frac12$
+      - |
+        $f$定义在$[0,1]$上，$f(0)=0$，$f(1)=1$，并且取遍了$[0,1]$里的每一个值，则$f$在$[0,1]$上连续
+    value: [2, 3]
+  hints:
+    - |
+      A、D 是要找反例的说法，B、C 是要用:term[介值定理]{id="math.analysis.intermediate-value-theorem"}（intermediate value theorem）证明的说法。C 里的区间是开的，想想介值定理要用在哪个闭区间上。
+    - |
+      A：$x^2-1$在$[-2,2]$上。B：例 2。C：设$f(x_1)=0$，$f(x_2)=1$，在$x_1$、$x_2$之间的闭区间上用介值定理。D：试试在$[0,\frac12]$上用$2x$、在$(\frac12,1]$上用$2x-1$。
+    - |
+      A 不对：$x^2-1$在$[-2,2]$上连续，两端都是$3$，却有零点$\pm1$。B 对，这就是例 2。
+
+      C 对：设$f(x_1)=0$，$f(x_2)=1$，$x_1,x_2\in(0,1)$。$x_1$、$x_2$之间的闭区间整个在$(0,1)$里，$f$在上面连续，由介值定理，中间有一点取值$\frac12$。
+
+      D 不对：令$f(x)=2x$（$0\le x\le\frac12$），$f(x)=2x-1$（$\frac12<x\le1$）。它的值取遍$[0,1]$，$f(0)=0$，$f(1)=1$，可在$\frac12$处，左边的值是$1$，右边的值趋于$0$，不连续。答案是 B 和 C。
+  solution: |
+    B 是例 2；C 在两个取值点之间的闭区间上用介值定理。A 的反例是$x^2-1$在$[-2,2]$上；D 的反例是$[0,\frac12]$上取$2x$、$(\frac12,1]$上取$2x-1$。
+
+- id: p5
+  tier: hard
+  statement: |
+    不用闭区间套，改用:term[确界原理]{id="math.analysis.supremum-principle"}（least-upper-bound property）证明:term[零点定理]{id="math.analysis.bolzano-theorem"}：设$f$在$[a,b]$上:term[连续]{id="math.analysis.continuous-function"}，$f(a)<0<f(b)$，令$S=\{x\in[a,b]:f(x)<0\}$，$\xi=\sup S$，证明$f(\xi)=0$。
+  hints:
+    - |
+      先说明$\xi$存在、在$[a,b]$里。然后用反证法，分$f(\xi)<0$和$f(\xi)>0$两种情况，各用一次[连续函数的严格定义](lesson:math.analysis.continuity)例 2 的局部保号性（local sign preservation）。
+    - |
+      若$f(\xi)<0$，则$\xi<b$，并且$\xi$右边紧挨着的点也满足$f<0$，它们属于$S$，和$\xi$是:term[上界]{id="math.analysis.upper-bound"}（upper bound）矛盾。若$f(\xi)>0$，则$\xi>a$，$\xi$左边紧挨着的一小段里$f>0$，那里没有$S$的点，于是有比$\xi$小的上界。
+    - |
+      $a\in S$，$S$非空；$S\subseteq[a,b]$，$b$是上界。由确界原理，$\xi=\sup S$存在，并且$a\le\xi\le b$。
+
+      若$f(\xi)<0$：因为$f(b)>0$，$\xi\ne b$，$\xi<b$。由局部保号性，有$\delta>0$使$[a,b]$里满足$|x-\xi|<\delta$的$x$都有$f(x)<0$。取$x=\min\bigl\{\xi+\frac\delta2,\ b\bigr\}$，则$x>\xi$，$f(x)<0$，$x\in S$，和$\xi$是$S$的上界矛盾。
+
+      若$f(\xi)>0$：因为$f(a)<0$，$\xi>a$。由局部保号性，有$\delta>0$（不妨设$\xi-\delta>a$）使$\xi-\delta<x\le\xi$时$f(x)>0$，这些$x$都不在$S$里；$\xi$右边也没有$S$的点。所以$\xi-\delta$是$S$的上界，它比$\xi$小，和$\xi$是最小上界矛盾。
+
+      所以$f(\xi)=0$；又$f(a)<0<f(b)$，所以$\xi\in(a,b)$。这个证明里，完备性用在确界原理上：在$\Q$里，$S=\{x\in\Q\cap[1,2]:x^2-2<0\}$就没有:term[上确界]{id="math.analysis.supremum"}（supremum，sup）。
+  reference: |
+    $S$非空有上界，$\xi=\sup S\in[a,b]$。若$f(\xi)<0$，则$\xi<b$，由局部保号性$\xi$右侧附近有$S$的点，矛盾；若$f(\xi)>0$，则$\xi>a$，左侧一段$(\xi-\delta,\xi]$无$S$的点，$\xi-\delta$是更小的上界，矛盾。故$f(\xi)=0$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$在$[0,1]$上:term[连续]{id="math.analysis.continuous-function"}，$f(0)=f(1)$。证明：有$\xi\in\bigl[0,\frac12\bigr]$使$f\bigl(\xi+\frac12\bigr)=f(\xi)$。
+  hints:
+    - |
+      要找的是$f\bigl(x+\frac12\bigr)-f(x)$的零点。把它当作$\bigl[0,\frac12\bigr]$上的一个新函数，看两端的值。
+    - |
+      令$g(x)=f\bigl(x+\frac12\bigr)-f(x)$。算出$g(0)$和$g\bigl(\frac12\bigr)$，利用$f(0)=f(1)$，它们恰好互为相反数。
+    - |
+      令$g(x)=f\bigl(x+\frac12\bigr)-f(x)$，$x\in\bigl[0,\frac12\bigr]$。$x+\frac12$在$\bigl[\frac12,1\bigr]$里，$g$由连续函数复合、相减得到，在$\bigl[0,\frac12\bigr]$上连续。
+
+      $g(0)=f\bigl(\frac12\bigr)-f(0)$，$g\bigl(\frac12\bigr)=f(1)-f\bigl(\frac12\bigr)=f(0)-f\bigl(\frac12\bigr)=-g(0)$。若$g(0)=0$，取$\xi=0$；否则$g(0)$与$g\bigl(\frac12\bigr)$异号，由:term[零点定理]{id="math.analysis.bolzano-theorem"}，有$\xi\in\bigl(0,\frac12\bigr)$使$g(\xi)=0$，即$f\bigl(\xi+\frac12\bigr)=f(\xi)$。
+
+      换个说法：一个人从山脚出发、一小时后回到同一高度，中间一定有某段半小时，起点和终点一样高。用类似的办法能证明，把$\frac12$换成$\frac1n$也对；可换成$\frac25$就不一定了。
+  reference: |
+    令$g(x)=f(x+\frac12)-f(x)$，$x\in[0,\frac12]$，$g$连续，$g(\frac12)=f(0)-f(\frac12)=-g(0)$。$g(0)=0$时取$\xi=0$，否则两端异号，由零点定理得零点。
+
+- id: p7
+  tier: thinking
+  statement: |
+    在有理数里，:term[介值定理]{id="math.analysis.intermediate-value-theorem"}会彻底失败。看函数$f(x)=-1$（$x^2<2$），$f(x)=1$（$x^2>2$），定义在$\Q\cap[0,2]$上。它在定义域的每一点都连续吗？讲解里的二分证明、第 5 题的确界证明，分别在哪一步卡住？
+  hints:
+    - |
+      定义域里没有$\sqrt2$。对一个有理数$a$，$a^2$要么小于$2$、要么大于$2$；在$a$附近足够小的范围里，$x^2$和$a^2$在$2$的同一侧吗？
+    - |
+      对有理数$a$，取$\delta=\bigl|a-\sqrt2\bigr|$（它大于$0$），$|x-a|<\delta$的$x$和$a$在$\sqrt2$的同一侧，$f(x)=f(a)$。二分证明要用闭区间套定理，确界证明要用$\sup S$。
+    - |
+      连续。设$a\in\Q\cap[0,2]$，因为$a\ne\sqrt2$，$\delta=|a-\sqrt2|>0$。定义域里满足$|x-a|<\delta$的$x$都和$a$在$\sqrt2$的同一侧，所以$f(x)=f(a)$，$|f(x)-f(a)|=0<\varepsilon$。所以$f$在定义域的每一点都连续，两端$f(0)=-1$、$f(2)=1$异号，它却只取$\pm1$两个值，连$0$都取不到。
+
+      二分证明卡在「由闭区间套定理，有$\xi$属于每一个区间」：二分出来的有理数区间缩向$\sqrt2$，在$\Q$里没有公共点。确界证明卡在「$\xi=\sup S$存在」：$S=\{x\in\Q\cap[0,2]:x^2<2\}$在$\Q$里没有上确界。
+
+      两条证明的其余步骤（连续的定义、保不等式性、局部保号性）在$\Q$里都成立。所以介值定理说的，与其说是连续函数的性质，不如说是实数轴「连成一片」的性质：一个连续函数从负走到正，路上没有洞可以让它跳过$0$。在拓扑里，这叫区间是连通的（connected）。
+  reference: |
+    $f$在$\Q\cap[0,2]$的每点连续（取$\delta=|a-\sqrt2|$），两端异号但不取$0$。二分证明失败于闭区间套定理（$\Q$中区间缩向$\sqrt2$无公共点），确界证明失败于$\sup S$不存在；其余步骤在$\Q$中成立。介值性反映实数的连通性。
+
+- id: p8
+  tier: thinking
+  statement: |
+    假设地球赤道上的气温随位置:term[连续]{id="math.analysis.continuous-function"}变化。能不能断定：赤道上一定有两个正好相对（经度相差$180^\circ$）的地点，气温相同？要是换成整个地球表面呢？
+  hints:
+    - |
+      用经度$\theta$描述赤道上的位置，气温$T(\theta)$是周期为$360^\circ$的连续函数。考虑每一对相对的点的温差。
+    - |
+      令$g(\theta)=T(\theta)-T(\theta+180^\circ)$，它连续，并且$g(\theta+180^\circ)=-g(\theta)$。在$[0^\circ,180^\circ]$上用零点定理。
+    - |
+      能。令$g(\theta)=T(\theta)-T(\theta+180^\circ)$，它在$[0^\circ,180^\circ]$上连续，$g(180^\circ)=T(180^\circ)-T(360^\circ)=T(180^\circ)-T(0^\circ)=-g(0^\circ)$。若$g(0^\circ)=0$，经度$0^\circ$和$180^\circ$就是答案；否则$g$两端异号，由:term[零点定理]{id="math.analysis.bolzano-theorem"}，有$\theta_0$使$g(\theta_0)=0$，这一对相对的点气温相同。
+
+      换成整个球面，结论更强：总有两个相对的点，气温相同，气压也相同。这是拓扑里的博苏克-乌拉姆定理（Borsuk-Ulam theorem），它的一维情形就是上面这个论证；二维的证明要用更多拓扑工具，介值定理不够用了。
+  reference: |
+    $g(\theta)=T(\theta)-T(\theta+180^\circ)$连续且$g(\theta+180^\circ)=-g(\theta)$，由零点定理在$[0^\circ,180^\circ]$有零点。球面上的推广是博苏克-乌拉姆定理：任意两个连续函数在某对对径点上同时相等。

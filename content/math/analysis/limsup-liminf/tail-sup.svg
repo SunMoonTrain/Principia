@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" font-size="14">
+  <!-- 数列 aₙ = (−1)ⁿ(1 + 1/n) 的前 20 项；横坐标 px = 50 + 28(n − 1)，纵坐标 py = 175 − 100v -->
+  <!-- Mₙ = sup{aₖ : k ≥ n}（上面的台阶）、mₙ = inf{aₖ : k ≥ n}（下面的台阶），每个台阶画在 n − 0.5 到 n + 0.5 之间 -->
+  <line x1="36" y1="175" x2="600" y2="175" stroke="currentColor" stroke-width="1.2" />
+  <g stroke="currentColor" stroke-width="1.2">
+    <line x1="50" y1="171" x2="50" y2="179" />
+    <line x1="162" y1="171" x2="162" y2="179" />
+    <line x1="302" y1="171" x2="302" y2="179" />
+    <line x1="442" y1="171" x2="442" y2="179" />
+    <line x1="582" y1="171" x2="582" y2="179" />
+  </g>
+  <g text-anchor="middle" font-size="12" fill="currentColor">
+    <text x="162" y="193">5</text>
+    <text x="302" y="193">10</text>
+    <text x="442" y="193">15</text>
+    <text x="582" y="193">20</text>
+    <text x="614" y="179"><tspan font-style="italic">n</tspan></text>
+  </g>
+  <line x1="36" y1="75" x2="600" y2="75" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" opacity="0.7" />
+  <line x1="36" y1="275" x2="600" y2="275" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" opacity="0.7" />
+  <path d="M 36 25 L 64 25 L 64 25 L 92 25 L 92 50 L 120 50 L 120 50 L 148 50 L 148 58.33 L 176 58.33 L 176 58.33 L 204 58.33 L 204 62.5 L 232 62.5 L 232 62.5 L 260 62.5 L 260 65 L 288 65 L 288 65 L 316 65 L 316 66.67 L 344 66.67 L 344 66.67 L 372 66.67 L 372 67.86 L 400 67.86 L 400 67.86 L 428 67.86 L 428 68.75 L 456 68.75 L 456 68.75 L 484 68.75 L 484 69.44 L 512 69.44 L 512 69.44 L 540 69.44 L 540 70 L 568 70 L 568 70 L 596 70" fill="none" stroke-width="2" style="stroke: var(--accent, #2563eb)" />
+  <path d="M 36 375 L 64 375 L 64 308.33 L 92 308.33 L 92 308.33 L 120 308.33 L 120 295 L 148 295 L 148 295 L 176 295 L 176 289.29 L 204 289.29 L 204 289.29 L 232 289.29 L 232 286.11 L 260 286.11 L 260 286.11 L 288 286.11 L 288 284.09 L 316 284.09 L 316 284.09 L 344 284.09 L 344 282.69 L 372 282.69 L 372 282.69 L 400 282.69 L 400 281.67 L 428 281.67 L 428 281.67 L 456 281.67 L 456 280.88 L 484 280.88 L 484 280.88 L 512 280.88 L 512 280.26 L 540 280.26 L 540 280.26 L 568 280.26 L 568 279.76 L 596 279.76" fill="none" stroke-width="2" style="stroke: var(--good, #059669)" />
+  <g fill="currentColor">
+    <circle cx="50" cy="375" r="3.4" />
+    <circle cx="78" cy="25" r="3.4" />
+    <circle cx="106" cy="308.33" r="3.4" />
+    <circle cx="134" cy="50" r="3.4" />
+    <circle cx="162" cy="295" r="3.4" />
+    <circle cx="190" cy="58.33" r="3.4" />
+    <circle cx="218" cy="289.29" r="3.4" />
+    <circle cx="246" cy="62.5" r="3.4" />
+    <circle cx="274" cy="286.11" r="3.4" />
+    <circle cx="302" cy="65" r="3.4" />
+    <circle cx="330" cy="284.09" r="3.4" />
+    <circle cx="358" cy="66.67" r="3.4" />
+    <circle cx="386" cy="282.69" r="3.4" />
+    <circle cx="414" cy="67.86" r="3.4" />
+    <circle cx="442" cy="281.67" r="3.4" />
+    <circle cx="470" cy="68.75" r="3.4" />
+    <circle cx="498" cy="280.88" r="3.4" />
+    <circle cx="526" cy="69.44" r="3.4" />
+    <circle cx="554" cy="280.26" r="3.4" />
+    <circle cx="582" cy="70" r="3.4" />
+  </g>
+  <g font-size="13" fill="currentColor">
+    <text x="40" y="93">上极限 1</text>
+    <text x="40" y="268">下极限 −1</text>
+    <text x="98" y="29"><tspan font-style="italic">a</tspan><tspan dy="4" font-size="10">2</tspan><tspan dy="-4"> = 1.5 是全部项的上确界</tspan></text>
+    <text x="274" y="53" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">M</tspan><tspan dy="4" font-size="10">n</tspan><tspan dy="-4"> 一路下降</tspan></text>
+    <text x="274" y="309" style="fill: var(--good, #059669)"><tspan font-style="italic">m</tspan><tspan dy="4" font-size="10">n</tspan><tspan dy="-4"> 一路上升</tspan></text>
+  </g>
+</svg>
