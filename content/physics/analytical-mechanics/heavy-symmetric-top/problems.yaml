@@ -1,0 +1,159 @@
+- id: p1
+  tier: easy
+  statement: |
+    一个转得很快的陀螺，质量$M=0.2\,\mathrm{kg}$，质心离尖端$l=5\,\mathrm{cm}$，绕对称轴的角动量$I_3\omega_3=0.02\,\mathrm{kg\cdot m^2/s}$，取$g=9.8\,\mathrm{m/s^2}$。用快陀螺的近似，求它慢进动的角速度。
+  answer:
+    type: number
+    value: 0.2*9.8*0.05/0.02
+    unit: |
+      $\mathrm{rad/s}$
+  hints:
+    - |
+      讲解里匀速进动的二次方程，快陀螺时较小的根近似是多少？
+    - |
+      慢进动$\dot\varphi\approx\frac{Mgl}{I_3\omega_3}$，和倾角无关。
+    - |
+      $\dot\varphi\approx\frac{0.2\times9.8\times0.05}{0.02}=4.9\,\mathrm{rad/s}$。答案填 `4.9`。
+  solution: |
+    $\dot\varphi\approx\frac{Mgl}{I_3\omega_3}=4.9\,\mathrm{rad/s}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    尖端固定在桌面上的重对称陀螺（不计摩擦），下面哪些量在运动中保持不变？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        角动量的竖直分量$p_\varphi=L_z$
+      - |
+        角速度沿对称轴的分量$\omega_3$
+      - |
+        能量$E$
+      - |
+        角动量的大小$|\vb{L}|$
+    value: [1, 2, 3]
+  hints:
+    - |
+      $\varphi$、$\psi$是循环坐标；拉格朗日量不显含时间，约束力不做功。
+    - |
+      重力对$O$的力矩$\boldsymbol{\tau}$垂直于竖直方向和对称轴。$\frac{\dd}{\dd t}|\vb{L}|^2=2\vb{L}\cdot\boldsymbol{\tau}$，$\vb{L}$和$\boldsymbol{\tau}$一定垂直吗？
+    - |
+      A、B 对：它们是两个循环坐标对应的广义动量（$p_\psi=I_3\omega_3$）。C 对：支点不动，约束力不做功，重力是保守力。D 错：$\vb{L}=I_1\boldsymbol{\omega}+(I_3-I_1)\omega_3\vb{e}'_3$，$\boldsymbol{\tau}$垂直于$\vb{e}'_3$，所以$\vb{L}\cdot\boldsymbol{\tau}=I_1\boldsymbol{\omega}\cdot\boldsymbol{\tau}$；算出来$\boldsymbol{\omega}\cdot\boldsymbol{\tau}=Mgl\sin\theta\,\dot\theta$，章动时$\dot\theta\ne0$，$|\vb{L}|$会变，只有匀速进动时才不变。
+
+      答案是 A、B、C。
+  solution: |
+    A、B、C。$p_\varphi$、$p_\psi=I_3\omega_3$对应循环坐标，能量守恒；$\frac{\dd}{\dd t}|\vb{L}|^2=2I_1Mgl\sin\theta\,\dot\theta$，章动时不为零。
+
+- id: p3
+  tier: medium
+  statement: |
+    一个陀螺对尖端的主转动惯量$I_1=4\times10^{-4}\,\mathrm{kg\cdot m^2}$、$I_3=1\times10^{-4}\,\mathrm{kg\cdot m^2}$，质量$0.1\,\mathrm{kg}$，质心离尖端$4\,\mathrm{cm}$，取$g=9.8\,\mathrm{m/s^2}$。要让它竖直地稳定转动，$\omega_3$至少要多大？
+  answer:
+    type: number
+    value: 2*sqrt(4e-4*0.1*9.8*0.04)/1e-4
+    unit: |
+      $\mathrm{rad/s}$
+  hints:
+    - |
+      用讲解里睡陀螺的条件：有效势在$\theta=0$处要是极小值。
+    - |
+      条件是$I_3^2\omega_3^2>4I_1Mgl$，即$\omega_3>\frac{2\sqrt{I_1Mgl}}{I_3}$。
+    - |
+      $Mgl=0.1\times9.8\times0.04=0.0392\,\mathrm{N\cdot m}$，$\sqrt{I_1Mgl}=\sqrt{1.568\times10^{-5}}\approx3.96\times10^{-3}$，$\omega_3>\frac{2\times3.96\times10^{-3}}{10^{-4}}\approx79.2\,\mathrm{rad/s}$。答案填 `79.2` 或原式。
+  solution: |
+    $\omega_3>\frac{2\sqrt{I_1Mgl}}{I_3}\approx79.2\,\mathrm{rad/s}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    例 1 的陀螺改为以$\omega_3=200\,\mathrm{rad/s}$自转，对称轴倾斜$\theta_0=60^\circ$。求慢的那种匀速进动的角速度（严格解，不用快陀螺近似）。
+  answer:
+    type: number
+    value: (0.04 - sqrt(0.04^2 - 4*1e-3*0.196*0.5))/(2*1e-3*0.5)
+    unit: |
+      $\mathrm{rad/s}$
+  hints:
+    - |
+      解$I_1\cos\theta_0\,\dot\varphi^2-I_3\omega_3\,\dot\varphi+Mgl=0$，取较小的根。
+    - |
+      $I_3\omega_3=0.04$，$Mgl=0.196$，$\cos\theta_0=0.5$，$I_1=10^{-3}$（国际单位）。
+    - |
+      判别式$0.04^2-4\times10^{-3}\times0.196\times0.5=1.208\times10^{-3}$，开方约$0.03476$；较小的根$\dot\varphi=\frac{0.04-0.03476}{2\times10^{-3}\times0.5}\approx5.24\,\mathrm{rad/s}$。快陀螺近似给出$\frac{0.196}{0.04}=4.9\,\mathrm{rad/s}$，差了约$7\%$。答案填 `5.24` 或原式。
+  solution: |
+    $\dot\varphi=\frac{I_3\omega_3-\sqrt{I_3^2\omega_3^2-4I_1Mgl\cos\theta_0}}{2I_1\cos\theta_0}\approx5.24\,\mathrm{rad/s}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    转得很快的重对称陀螺，在倾角$\theta_0$处从静止放开：$\dot\theta=\dot\varphi=0$，只在自转，$p_\psi=I_3\omega_3$。设$p_\psi^2\gg I_1Mgl$，记$x=\theta-\theta_0$。
+
+    （1）证明$x$近似满足$\frac12I_1\dot x^2=Mgl\sin\theta_0\,x-\frac{p_\psi^2}{2I_1}x^2$。（2）由此求章动的幅度和角频率。（3）证明平均进动角速度约为$\frac{Mgl}{p_\psi}$。
+  hints:
+    - |
+      （1）放手时$p_\varphi=p_\psi\cos\theta_0$，$E'=Mgl\cos\theta_0$，代进讲解里的能量方程；$x$很小时$\cos\theta_0-\cos\theta\approx x\sin\theta_0$，$\sin^2\theta\approx\sin^2\theta_0$。
+    - |
+      （2）对（1）求导得$I_1\ddot x=Mgl\sin\theta_0-\frac{p_\psi^2}{I_1}x$，是平衡位置（equilibrium position）移开了的简谐运动（simple harmonic motion）。（3）$\dot\varphi=\frac{p_\psi(\cos\theta_0-\cos\theta)}{I_1\sin^2\theta}\approx\frac{p_\psi x}{I_1\sin\theta_0}$。
+    - |
+      （1）能量方程是$\frac12I_1\dot\theta^2=Mgl(\cos\theta_0-\cos\theta)-\frac{p_\psi^2(\cos\theta_0-\cos\theta)^2}{2I_1\sin^2\theta}$。保留到$x$的二次项，$\cos\theta_0-\cos\theta\approx x\sin\theta_0$，第二项里的$\sin^2\theta$换成$\sin^2\theta_0$，正好约掉，得到要证的式子。
+
+      （2）求导并约去$\dot x$：$I_1\ddot x=Mgl\sin\theta_0-\frac{p_\psi^2}{I_1}x$。它是以$x_c=\frac{I_1Mgl\sin\theta_0}{p_\psi^2}$为中心、角频率$\frac{p_\psi}{I_1}=\frac{I_3\omega_3}{I_1}$的简谐运动；$x(0)=\dot x(0)=0$，所以$x=x_c\bigl(1-\cos\frac{p_\psi t}{I_1}\bigr)$，在$0$和$2x_c=\frac{2I_1Mgl\sin\theta_0}{p_\psi^2}$之间来回，这就是章动的幅度。转得越快，章动越小越快。
+
+      （3）$\dot\varphi\approx\frac{p_\psi x}{I_1\sin\theta_0}$，$x$的平均值是$x_c$，所以平均进动角速度是$\frac{p_\psi x_c}{I_1\sin\theta_0}=\frac{Mgl}{p_\psi}$，正是慢进动的值。对称轴的平均倾角是$\theta_0+x_c$，比放手时低一点，降低的势能变成了进动和章动的动能。
+  reference: |
+    （1）$p_\varphi=p_\psi\cos\theta_0$，$E'=Mgl\cos\theta_0$，用$\cos\theta_0-\cos\theta\approx x\sin\theta_0$展开到二次。（2）$I_1\ddot x=Mgl\sin\theta_0-\frac{p_\psi^2}{I_1}x$，$x=x_c(1-\cos\frac{p_\psi t}{I_1})$，$x_c=\frac{I_1Mgl\sin\theta_0}{p_\psi^2}$：幅度$2x_c$，角频率$p_\psi/I_1$。（3）$\dot\varphi\approx\frac{p_\psi x}{I_1\sin\theta_0}$，平均为$Mgl/p_\psi$。
+
+- id: p6
+  tier: hard
+  statement: |
+    重对称陀螺。（1）用上一节的欧拉方程证明$\omega_3$不变。（2）证明$p_\varphi=I_1\dot\varphi\sin^2\theta+I_3\omega_3\cos\theta$就是角动量的竖直分量$L_z$。（3）用力矩说明$L_z$为什么守恒，并说明$|\vb{L}|$一般不守恒。
+  hints:
+    - |
+      （1）重力对$O$的力矩是$\boldsymbol{\tau}=l\vb{e}'_3\times(-Mg\vb{e}_3)$，它的体分量$\tau_3$是多少？第三个欧拉方程里$I_1-I_2=0$。
+    - |
+      （2）$\vb{L}=I_1(\omega'_1\vb{e}'_1+\omega'_2\vb{e}'_2)+I_3\omega_3\vb{e}'_3=I_1\boldsymbol{\omega}+(I_3-I_1)\omega_3\vb{e}'_3$；$\boldsymbol{\omega}$的竖直分量是$\dot\varphi+\dot\psi\cos\theta$（[刚体的角速度与欧拉角](lesson:physics.analytical-mechanics.rigid-body-kinematics)例 1）。
+    - |
+      （1）$\boldsymbol{\tau}=-Mgl\,\vb{e}'_3\times\vb{e}_3$垂直于$\vb{e}'_3$，$\tau_3=0$。第三个欧拉方程$I_3\dot\omega_3-(I_1-I_2)\omega_1\omega_2=\tau_3$在$I_1=I_2$时变成$I_3\dot\omega_3=0$。
+
+      （2）$L_z=I_1(\dot\varphi+\dot\psi\cos\theta)+(I_3-I_1)\omega_3\cos\theta$。代入$\dot\psi=\omega_3-\dot\varphi\cos\theta$：$L_z=I_1\dot\varphi+I_1\omega_3\cos\theta-I_1\dot\varphi\cos^2\theta+I_3\omega_3\cos\theta-I_1\omega_3\cos\theta=I_1\dot\varphi\sin^2\theta+I_3\omega_3\cos\theta$。
+
+      （3）$\boldsymbol{\tau}$也垂直于$\vb{e}_3$，$\dot L_z=\tau_z=0$。$\frac{\dd}{\dd t}|\vb{L}|^2=2\vb{L}\cdot\boldsymbol{\tau}=2I_1\boldsymbol{\omega}\cdot\boldsymbol{\tau}$（$\boldsymbol{\tau}\perp\vb{e}'_3$），而$\vb{e}'_3\times\vb{e}_3=-\sin\theta\,\vb{e}_N$，$\boldsymbol{\tau}=Mgl\sin\theta\,\vb{e}_N$，$\boldsymbol{\omega}$沿节线（line of nodes）的分量是$\dot\theta$，所以$\frac{\dd}{\dd t}|\vb{L}|^2=2I_1Mgl\sin\theta\,\dot\theta$，章动时不为零。
+  reference: |
+    （1）$\tau_3=0$、$I_1=I_2$，第三个欧拉方程给出$\dot\omega_3=0$。（2）$L_z=I_1\omega_z+(I_3-I_1)\omega_3\cos\theta$，$\omega_z=\dot\varphi+\dot\psi\cos\theta$，代入$\dot\psi=\omega_3-\dot\varphi\cos\theta$即得。（3）$\boldsymbol{\tau}=Mgl\sin\theta\,\vb{e}_N$水平，$\dot L_z=0$；$\frac{\dd}{\dd t}|\vb{L}|^2=2I_1Mgl\sin\theta\,\dot\theta$，章动时$|\vb{L}|$变化。
+
+- id: p7
+  tier: thinking
+  statement: |
+    地球的自转轴和黄道面（ecliptic plane）的法线成约$23.4^\circ$，每约$2.6$万年绕这根法线转一圈，这叫岁差（precession of the equinoxes）。
+
+    （1）把地球看成对称陀螺，力矩从哪里来？如果地球是完美的球，还会有岁差吗？（2）为什么岁差对应的是「慢进动」那一支？（3）地球自转轴还有周期约$18.6$年的小幅章动，它可能从哪里来？
+  hints:
+    - |
+      （1）地球赤道附近鼓出来一圈（扁球，oblate spheroid）。太阳、月亮对这圈鼓出部分近的一侧拉得重、远的一侧拉得轻，会产生什么力矩？
+    - |
+      （2）比较地球的自转角动量和这个力矩的大小。（3）月球绕地球的轨道面本身也在进动，周期约$18.6$年。
+    - |
+      （1）地球是扁球，$I_3>I_1$。赤道面和黄道面（以及月球的轨道面）不重合，太阳、月亮对赤道鼓出部分的引力，近侧大、远侧小，合起来产生一个力矩，试图把赤道面拉向黄道面。完美的球（三个主转动惯量相等）在外部引力场里受到的力矩为零，就不会有岁差。
+
+      （2）地球每天自转一圈，自转角动量$I_3\omega_3$很大，而潮汐（tide）性质的力矩很小，正是快陀螺的情形：慢进动的角速度约为「力矩除以角动量」这一量级，周期长达万年。另一支快进动和力矩几乎无关，对应上一节的自由进动（free precession），从地面上看就是钱德勒摆动（Chandler wobble）。
+
+      （3）力矩的大小取决于月球轨道面和地球赤道面的相对位置；月球轨道面每约$18.6$年绕黄道面的法线转一圈，力矩随之周期性地变化，叠加在岁差上就是周期约$18.6$年的小幅点头，也就是天文学里说的章动。这里的力矩随时间变，和这一节力矩恒定的陀螺不完全一样，但「力矩改变角动量、倾角来回变化」的图像相同。
+  reference: |
+    （1）力矩来自太阳、月亮对地球赤道鼓出部分的潮汐性引力，试图把赤道面拉向黄道面；完美的球不受力矩，没有岁差。（2）自转角动量大、力矩小，是快陀螺，慢进动角速度约为力矩/角动量，周期约 2.6 万年；快的一支对应自由进动。（3）月球轨道面以约 18.6 年的周期进动，使力矩周期性变化，产生同周期的章动。
+
+- id: p8
+  tier: thinking
+  statement: |
+    几何图像里对称轴的轨迹有波浪、打圈、尖点三种。（1）陀螺在倾角$\theta_0$处以$\dot\theta=0$、某个$\dot\varphi_0$放开：$\dot\varphi_0=0$、$\dot\varphi_0$为很小的正数、$\dot\varphi_0<0$时，各是哪一种？（2）为什么尖点总出现在上面的转折角$\theta_1$处，而不会出现在下面的$\theta_2$处？
+  hints:
+    - |
+      （1）$\dot\varphi=\frac{p_\varphi-p_\psi\cos\theta}{I_1\sin^2\theta}$，$\theta$从$\theta_0$开始往哪边走？$\theta$变大时$p_\varphi-p_\psi\cos\theta$怎样变？
+    - |
+      （2）尖点处$\dot\theta=\dot\varphi=0$。这时除了自转，动能是多少？势能$Mgl\cos\theta$相对能达到的其他位置是大还是小？
+    - |
+      （1）$\dot\varphi_0=0$：从静止放开，轨迹有尖点。$\dot\varphi_0$为很小的正数（小于慢进动的值）：重力的作用来不及被进动平衡，陀螺先往下掉，$\theta_0$是上面的转折角；$\theta$变大时$\cos\theta$变小，$p_\varphi-p_\psi\cos\theta$从正数继续变大，$\dot\varphi$一直为正，轨迹是波浪。$\dot\varphi_0<0$：同样先往下掉，$p_\varphi-p_\psi\cos\theta$从负数变大、在$\theta_1$和$\theta_2$之间变号，进动时退时进，轨迹打圈。
+
+      （2）尖点处$\dot\theta=\dot\varphi=0$，除去不变的自转动能$\frac{p_\psi^2}{2I_3}$，其余动能为零，$E'=Mgl\cos\theta_c$。别处$E'=\frac12I_1(\dot\theta^2+\dot\varphi^2\sin^2\theta)+Mgl\cos\theta\ge Mgl\cos\theta$，所以$\cos\theta\le\cos\theta_c$，$\theta\ge\theta_c$：尖点是$\theta$能取的最小值，也就是对称轴最高的位置$\theta_1$。直观地说，对称轴停下的那一刻没有多余的动能，只能是它爬得最高的时候。
+  reference: |
+    （1）$\dot\varphi_0=0$：尖点；很小的正$\dot\varphi_0$：先下落，$p_\varphi-p_\psi\cos\theta$一直为正，波浪；$\dot\varphi_0<0$：$p_\varphi-p_\psi\cos\theta$在$\theta_1,\theta_2$之间变号，打圈。（2）尖点处除自转外动能为零，$E'=Mgl\cos\theta_c$；其他时刻$E'\ge Mgl\cos\theta$，故$\theta\ge\theta_c$，尖点只能在最高处$\theta_1$。

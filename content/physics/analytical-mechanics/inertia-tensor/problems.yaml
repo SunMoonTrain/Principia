@@ -1,0 +1,157 @@
+- id: p1
+  tier: easy
+  statement: |
+    以惯量主轴为体坐标轴，刚体的主转动惯量是$I_1=1$、$I_2=2$、$I_3=3$（单位$\mathrm{kg\cdot m^2}$），某时刻角速度的体分量是$\omega'=(1,1,1)\T\,\mathrm{rad/s}$。求这时的转动动能。
+  answer:
+    type: number
+    value: 3
+    unit: |
+      $\mathrm{J}$
+  hints:
+    - |
+      在主轴坐标下，惯性张量是对角矩阵，$T=\frac12\boldsymbol{\omega}\T I\boldsymbol{\omega}$只剩平方项。
+    - |
+      $T=\frac12\bigl(I_1(\omega'_1)^2+I_2(\omega'_2)^2+I_3(\omega'_3)^2\bigr)$。
+    - |
+      $T=\frac12(1+2+3)=3\,\mathrm{J}$。顺便看一下：$\vb{L}$的体分量是$(1,2,3)\T$，和$\omega'=(1,1,1)\T$不平行。
+  solution: |
+    $T=\frac12(1\cdot1^2+2\cdot1^2+3\cdot1^2)=3\,\mathrm{J}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    质量$M$、边长$a\ne b$的均匀矩形薄板，取板的中心为$O$，两条坐标轴平行于两边，第三条垂直于板。关于它对$O$的惯性张量，下面哪些说法对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        三个惯量积都是零
+      - |
+        $I_{33}=I_{11}+I_{22}$
+      - |
+        板面里过$O$的任何轴都是惯量主轴
+      - |
+        绕板的一条对角线转动时，角动量沿这条对角线
+    value: [1, 2]
+  hints:
+    - |
+      板关于三个坐标平面都镜面对称，用讲解里镜面对称的定理。薄板上所有点的$z=0$。
+    - |
+      $I_{11}=\sum m_iy_i^2$，$I_{22}=\sum m_ix_i^2$，$I_{33}=\sum m_i(x_i^2+y_i^2)$。C、D 要看$I_{11}$和$I_{22}$是否相等。
+    - |
+      A 对：三个坐标平面都是对称面，三根坐标轴都是主轴，惯量积为零。B 对：$z_i=0$，三个对角元按提示 2 写出来，正好$I_{33}=I_{11}+I_{22}$。C 错：$I_{11}=\frac{Mb^2}{12}\ne I_{22}=\frac{Ma^2}{12}$（设边长$a$沿$x$轴），板面里只有两根坐标轴是主轴。D 错：沿对角线$\boldsymbol{\omega}\propto(a,b,0)\T$，$\vb{L}\propto\bigl(\frac{b^2}{12}a,\frac{a^2}{12}b,0\bigr)\T\propto(b,a,0)\T$，$a\ne b$时不沿对角线。
+
+      答案是 A、B。
+  solution: |
+    A、B。三个坐标平面都是对称面；薄板$z=0$给出$I_{33}=I_{11}+I_{22}$；$I_{11}\ne I_{22}$，所以板面里只有两根坐标轴是主轴，绕对角线转动时$\vb{L}\propto(b,a,0)\T$不沿对角线。
+
+- id: p3
+  tier: medium
+  statement: |
+    用例 1 的结果，求质量$M$、棱长$a$的均匀立方体绕一条面对角线（face diagonal）转动时的转动惯量，这条面对角线从顶点$O$出发。答案以$Ma^2$为单位。
+  answer:
+    type: number
+    value: 5/12
+  hints:
+    - |
+      对过$O$、方向为单位矢量$\vb{n}$的轴，转动惯量是$\vb{n}\T I^O\vb{n}$。从$O$出发的面对角线方向是$\vb{n}=\frac{1}{\sqrt2}(1,1,0)\T$。
+    - |
+      $\vb{n}\T I^O\vb{n}=\frac12\bigl(I_{11}+I_{22}+2I_{12}\bigr)$。也可以用平行轴定理从中心算起。
+    - |
+      $\vb{n}\T I^O\vb{n}=\frac12Ma^2\bigl(\frac23+\frac23-\frac12\bigr)=\frac{5}{12}Ma^2$。用平行轴定理检验：对中心是$\frac16Ma^2$，质心到这根轴的距离平方是$|\vb{d}|^2-(\vb{n}\cdot\vb{d})^2=\frac34a^2-\frac12a^2=\frac14a^2$，$\frac16+\frac14=\frac5{12}$。答案填 `5/12`。
+  solution: |
+    $\vb{n}\T I^O\vb{n}=\frac12Ma^2(\frac23+\frac23-\frac12)=\frac5{12}Ma^2$。
+
+- id: p4
+  tier: medium
+  statement: |
+    质量$2\,\mathrm{kg}$、半径$0.3\,\mathrm{m}$的均匀薄圆盘装在过盘心的轴上，装歪了：轴和盘的对称轴成$\gamma=0.01\,\mathrm{rad}$的角。轴以$\omega=20\,\mathrm{rad/s}$匀速转动，求轴承需要提供的力矩的大小。薄圆盘对盘心的主转动惯量：对称轴方向是$\frac12MR^2$，盘面里任何方向都是$\frac14MR^2$。
+  answer:
+    type: number
+    value: 2*0.3^2/8*20^2*sin(0.02)
+    unit: |
+      $\mathrm{N\cdot m}$
+  hints:
+    - |
+      在主轴坐标下写$\boldsymbol{\omega}$：取对称轴为$3'$轴，轴的方向在$1'3'$平面里，$\boldsymbol{\omega}=\omega(\sin\gamma,0,\cos\gamma)$。
+    - |
+      和例 2 一样，$\boldsymbol{\omega}$不变时力矩是$\boldsymbol{\omega}\times\vb{L}$，大小是$\omega$乘$\vb{L}$垂直于$\boldsymbol{\omega}$的部分。
+    - |
+      $\vb{L}=\omega\bigl(\frac14MR^2\sin\gamma,\,0,\,\frac12MR^2\cos\gamma\bigr)$。$|\boldsymbol{\omega}\times\vb{L}|=\omega^2\bigl|\sin\gamma\cdot\frac12MR^2\cos\gamma-\cos\gamma\cdot\frac14MR^2\sin\gamma\bigr|=\frac{MR^2}{8}\omega^2\sin2\gamma$。代入数字：$\frac{2\times0.09}{8}\times400\times\sin0.02\approx0.180\,\mathrm{N\cdot m}$。答案填 `2*0.3^2/8*20^2*sin(0.02)` 或 `0.18`。
+  solution: |
+    $|\boldsymbol{\tau}|=(I_3-I_1)\omega^2\sin\gamma\cos\gamma=\frac{MR^2}{8}\omega^2\sin2\gamma\approx0.180\,\mathrm{N\cdot m}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$I_1,I_2,I_3$是刚体对某点的主转动惯量。（1）证明$I_1+I_2\ge I_3$，另外两个轮换的不等式也成立。（2）等号什么时候成立？（3）能不能找到一个刚体，它对某点的主转动惯量是$1$、$2$、$4$？
+  hints:
+    - |
+      取惯量主轴为坐标轴，三个主转动惯量都按定义写成$\sum m_i(\cdots)$。
+    - |
+      $I_1=\sum m_i(y_i^2+z_i^2)$，$I_2=\sum m_i(x_i^2+z_i^2)$，$I_3=\sum m_i(x_i^2+y_i^2)$。
+    - |
+      （1）在主轴坐标下惯量积为零，对角元就是主转动惯量，$I_1+I_2-I_3=2\sum_im_iz_i^2\ge0$；同理$I_2+I_3-I_1=2\sum m_ix_i^2\ge0$，$I_3+I_1-I_2=2\sum m_iy_i^2\ge0$。
+
+      （2）$I_1+I_2=I_3$当且仅当所有质点的$z_i=0$，即刚体是垂直于$3'$轴、过参考点的薄板，这时的等式就是薄板的垂直轴定理（perpendicular axis theorem）。
+
+      （3）不能：$1+2<4$，违反（1）。三个主转动惯量必须能当三角形的三条边（允许退化）。
+  reference: |
+    主轴坐标下$I_1+I_2-I_3=2\sum m_iz_i^2\ge0$，其余轮换同理。等号当且仅当所有质点在过参考点、垂直于$3'$轴的平面里（薄板，垂直轴定理）。$(1,2,4)$不满足$1+2\ge4$，不可能。
+
+- id: p6
+  tier: hard
+  statement: |
+    设刚体有一根过$O$的$n$次对称轴，取它为$z$轴：绕$z$轴转$\alpha=\frac{2\pi}{n}$，质量分布不变。（1）证明对$O$的惯性张量满足$SIS\T=I$，$S=R_z(\alpha)$。（2）设$n\ge3$，证明$z$轴是惯量主轴，并且另外两个主转动惯量相等。（3）$n=2$时结论还对吗？
+  hints:
+    - |
+      （1）把每个质点$\vb{r}_i$换成$S\vb{r}_i$，质量分布不变，所以按定义算出的$I$也不变；把$I_{jk}$写成矩阵$\sum m_i(r_i^2E-\vb{r}_i\vb{r}_i\T)$（$E$是单位矩阵）。
+    - |
+      （2）由$SI=IS$，$S(I\vb{e}_3)=I\vb{e}_3$：$I\vb{e}_3$被$S$保持不动。再看左上角的$2\times2$块$B$，它和平面转动$\begin{pmatrix}\cos\alpha&-\sin\alpha\\\sin\alpha&\cos\alpha\end{pmatrix}$可以交换。
+    - |
+      （1）$I=\sum_im_i(r_i^2E-\vb{r}_i\vb{r}_i\T)$。转过以后的质点在$S\vb{r}_i$，算出的是$\sum m_i(r_i^2E-S\vb{r}_i\vb{r}_i\T S\T)=SIS\T$；质量分布不变，它就是$I$。
+
+      （2）$SIS\T=I$即$SI=IS$，所以$S(I\vb{e}_3)=IS\vb{e}_3=I\vb{e}_3$。$\alpha$不是$2\pi$的整数倍，$S$保持不动的矢量只有沿$z$轴的，所以$I\vb{e}_3\parallel\vb{e}_3$，$z$轴是主轴；于是$I_{13}=I_{23}=0$，$I$分成左上角的$2\times2$块$B=\begin{pmatrix}p&q\\q&r\end{pmatrix}$和$I_{33}$。
+
+      $B$和$J=\begin{pmatrix}c&-s\\s&c\end{pmatrix}$（$c=\cos\alpha$，$s=\sin\alpha$）可以交换。比较$BJ$和$JB$的第一行：$pc+qs=cp-sq$，$-ps+qc=cq-sr$，得$2qs=0$、$s(p-r)=0$。$n\ge3$时$s\ne0$，所以$q=0$、$p=r$，$B=pE$，另外两个主转动惯量相等，$xy$平面里任何方向都是主轴。
+
+      （3）$n=2$时$\alpha=\pi$，$s=0$，第二步得不出$q=0$、$p=r$；$z$轴仍是主轴（$S$保持不动的仍只有$z$轴），但另外两个主转动惯量可以不同。矩形薄板绕垂直于板的中心轴就是$2$次对称，它在板面里的两个主转动惯量$\frac{Mb^2}{12}\ne\frac{Ma^2}{12}$。
+  reference: |
+    （1）$I=\sum m_i(r_i^2E-\vb{r}_i\vb{r}_i\T)$，换成$S\vb{r}_i$得$SIS\T$，质量分布不变故等于$I$。（2）$S(I\vb{e}_3)=I\vb{e}_3$，$S$只保持$z$轴不动，故$z$轴是主轴；左上角块$B$与平面转动$J$可交换，$s\ne0$推出$B=pE$，两个主转动惯量相等。（3）$n=2$时$s=0$，$z$轴仍是主轴，另两个可以不等（矩形薄板）。
+
+- id: p7
+  tier: thinking
+  statement: |
+    给汽车轮胎做「动平衡」（dynamic balancing）时，机器会在轮辋（rim）的内侧和外侧各夹一块小配重（counterweight）。只要轮子的质心在转轴上（「静平衡」，static balance），为什么还不够？为什么一块配重通常不够，要在两个不同的平面里各加一块？
+  hints:
+    - |
+      轴承受到的力来自两件事：质心绕轴做圆周运动需要向心力（centripetal force）；角动量不沿转轴、跟着轮子转，需要力矩（例 2）。
+    - |
+      静平衡消除哪一个？要消除另一个，转轴必须是什么？一块配重能同时改变质心位置和惯量积吗？
+    - |
+      质心偏离转轴时，轴承要提供向心力$M\omega^2d$，它随轮子转动，表现为周期性的振动，这就是静不平衡。质心在轴上以后，如果转轴不是惯量主轴，角动量有垂直于转轴的分量，跟着轮子一起转，轴承要提供大小$\omega$乘这个分量的力矩（例 2），这就是动不平衡，它在两个轴承上表现为一对方向相反的力。
+
+      一块配重放在某个平面里，会同时移动质心、改变惯量积，一般没法同时把两件事都消掉。在内外两个平面里各加一块，相当于有了足够多的可调参数：两块合起来质心不动（加在相对的方向上），却产生一个力偶（couple）抵消惯量积，使转轴成为惯量主轴。所以动平衡要求转轴同时过质心并且是惯量主轴，这时轴承不受周期性的力。
+  reference: |
+    静平衡只保证质心在轴上，消除向心力；转轴不是惯量主轴时，$\vb{L}$不沿轴、随轮转动，需要力矩$\boldsymbol{\omega}\times\vb{L}$，轴承受一对反向的周期性力（动不平衡）。要转轴既过质心又是主轴，需要在两个平面各加配重，既不移动质心又能消掉惯量积。
+
+- id: p8
+  tier: thinking
+  statement: |
+    刚体对$O$的惯量椭球（inertia ellipsoid）是曲面$\vb{x}\T I\vb{x}=1$。（1）它的三根半轴在什么方向上，各长多少？
+
+    （2）设$\boldsymbol{\omega}$沿从$O$指向椭球上一点$\vb{x}$的方向，说明$\vb{L}$垂直于椭球在$\vb{x}$处的切平面。由此解释：为什么只有$\boldsymbol{\omega}$沿主轴时$\vb{L}\parallel\boldsymbol{\omega}$？（3）立方体对中心的惯量椭球是什么样子？
+  hints:
+    - |
+      （1）在主轴坐标下，$\vb{x}\T I\vb{x}=I_1x_1^2+I_2x_2^2+I_3x_3^2$。（2）曲面$f(\vb{x})=1$在一点的法线方向是$f$的梯度（gradient）。
+    - |
+      $f(\vb{x})=\vb{x}\T I\vb{x}$的梯度是$2I\vb{x}$。椭球上哪些点的法线经过中心$O$？
+    - |
+      （1）主轴坐标下方程是$I_1x_1^2+I_2x_2^2+I_3x_3^2=1$，半轴沿三根惯量主轴，长度是$\frac{1}{\sqrt{I_1}}$、$\frac{1}{\sqrt{I_2}}$、$\frac{1}{\sqrt{I_3}}$：转动惯量越大的方向，椭球越扁。
+
+      （2）$\boldsymbol{\omega}=\lambda\vb{x}$时$\vb{L}=I\boldsymbol{\omega}=\lambda I\vb{x}$，正比于梯度$2I\vb{x}$，所以$\vb{L}$沿椭球在$\vb{x}$处的法线。$\vb{L}\parallel\boldsymbol{\omega}$要求这一点的法线经过中心，椭球上只有半轴的端点是这样（主转动惯量互不相等时），所以$\boldsymbol{\omega}$必须沿主轴。
+
+      （3）$I=\frac16Ma^2$乘单位矩阵，惯量椭球是球面，处处的法线都过中心，每个方向都是主轴，和例 1 一致。
+  reference: |
+    （1）半轴沿惯量主轴，长$1/\sqrt{I_k}$。（2）$\vb{L}=I\boldsymbol{\omega}\propto\nabla(\vb{x}\T I\vb{x})$，沿椭球法线；法线过中心的只有半轴端点，故只有$\boldsymbol{\omega}$沿主轴时$\vb{L}\parallel\boldsymbol{\omega}$。（3）立方体对中心的惯量椭球是球面。

@@ -1,0 +1,165 @@
+- id: p1
+  tier: easy
+  statement: |
+    弦的张力$T=100\,\mathrm{N}$，线密度$\mu=0.01\,\mathrm{kg/m}$，拉格朗日密度是$\mathcal L=\frac12\mu y_t^2-\frac12Ty_x^2$。求它的运动方程给出的波速。
+  answer:
+    type: number
+    value: 100
+    unit: |
+      $\mathrm{m/s}$
+  hints:
+    - |
+      用场的欧拉-拉格朗日方程写出运动方程。
+    - |
+      方程是$\mu y_{tt}-Ty_{xx}=0$，即$y_{tt}=v^2y_{xx}$，$v=\sqrt{T/\mu}$。
+    - |
+      $v=\sqrt{100/0.01}=100\,\mathrm{m/s}$。答案填 `100`。
+  solution: |
+    $\mu y_{tt}=Ty_{xx}$，$v=\sqrt{T/\mu}=100\,\mathrm{m/s}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些拉格朗日密度给出的运动方程是波动方程$y_{tt}=\frac T\mu y_{xx}$（$\mu,T,\kappa$都是正的常数）？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\frac12\mu y_t^2-\frac12Ty_x^2$
+      - |
+        $\frac12\mu y_t^2+\frac12Ty_x^2$
+      - |
+        $3\bigl(\frac12\mu y_t^2-\frac12Ty_x^2\bigr)$
+      - |
+        $\frac12\mu y_t^2-\frac12Ty_x^2-\frac12\kappa y^2$
+    value: [1, 3]
+  hints:
+    - |
+      对每个$\mathcal L$算$\frac{\partial\mathcal L}{\partial y}$、$\frac{\partial\mathcal L}{\partial y_t}$、$\frac{\partial\mathcal L}{\partial y_x}$，代进场的欧拉-拉格朗日方程。
+    - |
+      $\mathcal L$整体乘一个常数，方程会变吗？势能密度的符号反了会怎样？
+    - |
+      A：$\mu y_{tt}-Ty_{xx}=0$，是。B：$\mu y_{tt}+Ty_{xx}=0$，即$y_{tt}=-\frac T\mu y_{xx}$，不是波动方程，它的解会指数增长。C：整体乘$3$，方程也只乘$3$，是。D：多出$\kappa y$，是例 1 弹性基底上的弦，不是。
+
+      答案是 A、C。
+  solution: |
+    A、C。B 给出$\mu y_{tt}+Ty_{xx}=0$；D 给出$\mu y_{tt}-Ty_{xx}+\kappa y=0$。
+
+- id: p3
+  tier: medium
+  statement: |
+    例 1 弹性基底上的弦：$T=100\,\mathrm{N}$，$\mu=0.01\,\mathrm{kg/m}$，$\ell=1\,\mathrm{m}$，$\kappa=400\,\mathrm{N/m^2}$，两端固定。求最低的简正频率（角频率，angular frequency）。
+  answer:
+    type: number
+    value: sqrt(100/0.01*pi^2 + 400/0.01)
+    unit: |
+      $\mathrm{rad/s}$
+  hints:
+    - |
+      用例 1 的$\omega_n=\sqrt{\frac T\mu(\frac{n\pi}{\ell})^2+\frac\kappa\mu}$，最低的是$n=1$。
+    - |
+      $\frac T\mu=10^4\,\mathrm{m^2/s^2}$，$\frac\kappa\mu=4\times10^4\,\mathrm{s^{-2}}$。
+    - |
+      $\omega_1=\sqrt{10^4\pi^2+4\times10^4}\approx\sqrt{98696+40000}\approx372.4\,\mathrm{rad/s}$。没有基底时是$100\pi\approx314.2\,\mathrm{rad/s}$。答案填 `372.4` 或原式。
+  solution: |
+    $\omega_1=\sqrt{\frac T\mu\pi^2+\frac\kappa\mu}\approx372.4\,\mathrm{rad/s}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    张力$T=100\,\mathrm{N}$的长弦上，一个三角形的脉冲向右传播：$y=f(x-vt)$，$f(u)=A\bigl(1-\frac{|u|}{w}\bigr)$（$|u|<w$），其余为零，$A=0.01\,\mathrm{m}$，$w=0.1\,\mathrm{m}$。求它携带的总能量。
+  answer:
+    type: number
+    value: 0.2
+    unit: |
+      $\mathrm{J}$
+  hints:
+    - |
+      例 2：向右传播的行波，能量密度是$Tf'^2$。
+    - |
+      $|f'|=\frac Aw$，只在长度$2w$的范围里不为零。
+    - |
+      总能量$\int Tf'^2\,\dd x=T\cdot\frac{A^2}{w^2}\cdot2w=\frac{2TA^2}{w}=\frac{2\times100\times10^{-4}}{0.1}=0.2\,\mathrm{J}$，一半是动能，一半是势能。答案填 `0.2`。
+  solution: |
+    $E=\int Tf'^2\,\dd x=\frac{2TA^2}{w}=0.2\,\mathrm{J}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    细梁（beam）的横向振动：拉格朗日密度$\mathcal L=\frac12\mu y_t^2-\frac12EIy_{xx}^2$，$EI$是抗弯刚度（flexural rigidity），势能和弯曲程度$y_{xx}$有关。（1）仿照讲解里的证明，推出含二阶导数的场的欧拉-拉格朗日方程$\frac{\partial\mathcal L}{\partial y}-\partial_t\frac{\partial\mathcal L}{\partial y_t}-\partial_x\frac{\partial\mathcal L}{\partial y_x}+\partial_x^2\frac{\partial\mathcal L}{\partial y_{xx}}=0$，变分$\eta$在边界上要满足什么条件？
+
+    （2）写出梁的运动方程。（3）验证$y=\cos(kx-\omega t)$是解当且仅当$\omega=\sqrt{EI/\mu}\,k^2$，并说明不同波长的波速度不同。
+  hints:
+    - |
+      （1）比讲解多一项$\frac{\partial\mathcal L}{\partial y_{xx}}\eta_{xx}$，对$x$分部积分两次。
+    - |
+      （2）$\frac{\partial\mathcal L}{\partial y_{xx}}=-EIy_{xx}$。（3）代入后比较系数；波速是$\omega/k$。
+    - |
+      （1）$\frac{\dd S}{\dd\varepsilon}$里多出$\iint\frac{\partial\mathcal L}{\partial y_{xx}}\eta_{xx}\,\dd x\,\dd t$。对$x$分部积分两次，得到$\iint\partial_x^2\Bigl(\frac{\partial\mathcal L}{\partial y_{xx}}\Bigr)\eta\,\dd x\,\dd t$，加两个边界项$\bigl[\frac{\partial\mathcal L}{\partial y_{xx}}\eta_x\bigr]$和$\bigl[-\partial_x\frac{\partial\mathcal L}{\partial y_{xx}}\eta\bigr]$。要它们消失，在两端除了$\eta=0$，还要$\eta_x=0$（两端夹紧，clamped，位移和斜率都给定）；其余和讲解一样，由基本引理得到所给的方程。
+
+      （2）$-\mu y_{tt}+\partial_x^2(-EIy_{xx})=0$，即$\mu y_{tt}+EIy_{xxxx}=0$。
+
+      （3）$y_{tt}=-\omega^2y$，$y_{xxxx}=k^4y$，代入得$(-\mu\omega^2+EIk^4)y=0$，对所有$x,t$成立当且仅当$\omega^2=\frac{EI}{\mu}k^4$。波速$\frac\omega k=\sqrt{EI/\mu}\,k$随$k$增大：波长越短跑得越快，一个脉冲在梁上传播时会散开。弦的$\omega=vk$，所有波长速度相同，脉冲不变形。
+  reference: |
+    （1）多出的项分部积分两次，边界上需$\eta=\eta_x=0$，得到$\frac{\partial\mathcal L}{\partial y}-\partial_t\frac{\partial\mathcal L}{\partial y_t}-\partial_x\frac{\partial\mathcal L}{\partial y_x}+\partial_x^2\frac{\partial\mathcal L}{\partial y_{xx}}=0$。（2）$\mu y_{tt}+EIy_{xxxx}=0$。（3）代入得$\omega^2=\frac{EI}{\mu}k^4$，波速$\sqrt{EI/\mu}\,k$依赖波长（色散，dispersion），脉冲会散开。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）设拉格朗日密度$\mathcal L(y,y_t,y_x)$不显含$x$、$t$，$y$满足场的欧拉-拉格朗日方程。证明$\mathcal H=\pi y_t-\mathcal L$（$\pi=\frac{\partial\mathcal L}{\partial y_t}$）满足$\partial_t\mathcal H+\partial_xj=0$，其中$j=\frac{\partial\mathcal L}{\partial y_x}y_t$；对弦检验$j=-Ty_xy_t$。
+
+    （2）设$F(y,x,t)$、$G(y,x,t)$有连续的二阶偏导数。证明$\mathcal L'=\partial_tF+\partial_xG$（$\partial_t$、$\partial_x$是把$y=y(x,t)$代进去以后的全导数，total derivative）代进场的欧拉-拉格朗日方程，左边恒为零。
+  hints:
+    - |
+      （1）$\partial_t\mathcal H=\partial_t\pi\cdot y_t+\pi y_{tt}-\frac{\partial\mathcal L}{\partial y}y_t-\pi y_{tt}-\frac{\partial\mathcal L}{\partial y_x}y_{xt}$，用方程把$\frac{\partial\mathcal L}{\partial y}$换掉。
+    - |
+      （2）$\partial_tF=F_yy_t+F_t$，$\partial_xG=G_yy_x+G_x$。算$\frac{\partial\mathcal L'}{\partial y}$、$\frac{\partial\mathcal L'}{\partial y_t}=F_y$、$\frac{\partial\mathcal L'}{\partial y_x}=G_y$。
+    - |
+      （1）$\mathcal L$不显含$t$，$\partial_t\mathcal L=\frac{\partial\mathcal L}{\partial y}y_t+\pi y_{tt}+\frac{\partial\mathcal L}{\partial y_x}y_{xt}$。由方程$\frac{\partial\mathcal L}{\partial y}=\partial_t\pi+\partial_x\frac{\partial\mathcal L}{\partial y_x}$，
+
+      $$
+      \partial_t\mathcal H=\partial_t\pi\,y_t+\pi y_{tt}-\Bigl(\partial_t\pi+\partial_x\frac{\partial\mathcal L}{\partial y_x}\Bigr)y_t-\pi y_{tt}-\frac{\partial\mathcal L}{\partial y_x}y_{xt}=-\partial_x\Bigl(\frac{\partial\mathcal L}{\partial y_x}y_t\Bigr).
+      $$
+
+      弦的$\frac{\partial\mathcal L}{\partial y_x}=-Ty_x$，$j=-Ty_xy_t$，和讲解一致。
+
+      （2）$\frac{\partial\mathcal L'}{\partial y}=F_{yy}y_t+F_{ty}+G_{yy}y_x+G_{xy}$；$\partial_t(F_y)=F_{yy}y_t+F_{yt}$，$\partial_x(G_y)=G_{yy}y_x+G_{yx}$。相减得$F_{ty}-F_{yt}+G_{xy}-G_{yx}=0$（混合偏导数相等）。所以给$\mathcal L$加上这样的全导数，运动方程不变。
+  reference: |
+    （1）用方程消去$\frac{\partial\mathcal L}{\partial y}$，得$\partial_t\mathcal H=-\partial_x(\frac{\partial\mathcal L}{\partial y_x}y_t)$；弦的$j=-Ty_xy_t$。（2）$\mathcal L'=F_yy_t+F_t+G_yy_x+G_x$代入，欧拉-拉格朗日表达式化为$F_{ty}-F_{yt}+G_{xy}-G_{yx}=0$，恒为零。
+
+- id: p7
+  tier: thinking
+  statement: |
+    $N$个小球的链的简正角频率是$\omega_n=2\sqrt{k/m}\sin\frac{n\pi}{2(N+1)}$，连续的弦是$\omega_n=\frac{n\pi v}{\ell}$。（1）什么情况下两者接近？（2）真实的弦是由原子组成的，原子间距约$10^{-10}\,\mathrm{m}$，为什么用连续的拉格朗日密度描述它几乎总是够用？（3）什么时候必须回到离散的链？
+  hints:
+    - |
+      （1）$\sin x\approx x$在$x$很小时成立。$\frac{n\pi}{N+1}$和波长、间距是什么关系？
+    - |
+      （2）比较乐器弦上的波长和原子间距。（3）想一想晶体里的声子（phonon）：波长能短到什么程度？
+    - |
+      （1）链的波数（wave number）$k_n=\frac{n\pi}{\ell}$，波长$\lambda_n=\frac{2\ell}{n}$，$\frac{n\pi}{2(N+1)}=\frac{\pi a}{\lambda_n}$。波长远大于间距$a$时$\sin\frac{\pi a}{\lambda_n}\approx\frac{\pi a}{\lambda_n}$，链的频率$\approx\frac{2\pi a}{\lambda_n}\sqrt{k/m}=\frac{n\pi v}{\ell}$（$v=a\sqrt{k/m}$），和弦一致；波长接近$2a$时链的频率明显偏低，最高也只到$2\sqrt{k/m}$。
+
+      （2）乐器弦上的波长是厘米到米的量级，比原子间距大$10^8$倍以上，$\frac{\pi a}{\lambda}$小得可以忽略，连续描述的误差远在测量精度之外。宏观的波几乎总是这样，所以弹性体、流体都用连续的场来描述。
+
+      （3）波长短到和原子间距可比时（固体里的高频声子、热振动），必须用离散的链：频率不再正比于波数（色散，dispersion），存在最高频率，这对固体的比热（specific heat）有直接的影响。
+  reference: |
+    （1）波长远大于间距时$\sin\frac{\pi a}{\lambda}\approx\frac{\pi a}{\lambda}$，两者一致；波长接近$2a$时链的频率偏低，有上限$2\sqrt{k/m}$。（2）宏观波长比原子间距大$10^8$倍以上，连续近似的误差可以忽略。（3）波长和原子间距可比时（固体的高频振动）必须用离散模型，出现色散和最高频率。
+
+- id: p8
+  tier: thinking
+  statement: |
+    电磁场也有拉格朗日密度（这里是对三维空间的密度）：$\mathcal L=\frac{\varepsilon_0}{2}|\vb{E}|^2-\frac{1}{2\mu_0}|\vb{B}|^2$，其中$\vb{E}=-\nabla\varphi-\partial_t\vb{A}$，$\vb{B}=\nabla\times\vb{A}$（见[电磁势与规范变换](lesson:physics.electromagnetism.gauge-potentials)），这里没有电荷。和弦对比：（1）场的「坐标」是什么？（2）哪一项像动能、哪一项像势能？（3）弦的波速$\sqrt{T/\mu}$对应电磁波（electromagnetic wave）的什么？
+  hints:
+    - |
+      （1）弦的坐标是每一点的位移$y(x,t)$；这里在每一点、每个时刻取值、被拿来做变分的是什么？
+    - |
+      （2）弦的动能密度含$y_t$，势能密度含$y_x$。$\vb{E}$里有$\partial_t\vb{A}$，$\vb{B}$里只有空间导数。（3）比较两个密度前面的系数。
+    - |
+      （1）坐标是势$\varphi(\vb{r},t)$和$\vb{A}(\vb{r},t)$在每一点的值，自由度是三维的连续无穷多个；下标从$x$变成了三维位置$\vb{r}$。
+
+      （2）$\vb{E}$含$\partial_t\vb{A}$，$\frac{\varepsilon_0}{2}|\vb{E}|^2$像动能（对应弦的$\frac12\mu y_t^2$）；$\vb{B}=\nabla\times\vb{A}$只含空间导数，$\frac{1}{2\mu_0}|\vb{B}|^2$像势能（对应$\frac12Ty_x^2$）。拉格朗日密度同样是「动能减势能」。
+
+      （3）$\varepsilon_0$相当于线密度$\mu$，$\frac1{\mu_0}$相当于张力$T$，「波速」$\sqrt{T/\mu}$对应$\frac{1}{\sqrt{\varepsilon_0\mu_0}}=c$：变分得到的方程（取适当的规范）就是波速为光速的波动方程。场的拉格朗日表述把弦、电磁场以及量子场论（quantum field theory）里的各种场放在同一个框架里。
+  reference: |
+    （1）坐标是每一点的势$\varphi,\vb{A}$。（2）$\frac{\varepsilon_0}{2}|\vb{E}|^2$含$\partial_t\vb{A}$，像动能；$\frac1{2\mu_0}|\vb{B}|^2$只含空间导数，像势能。（3）$\varepsilon_0\leftrightarrow\mu$，$1/\mu_0\leftrightarrow T$，波速对应$1/\sqrt{\varepsilon_0\mu_0}=c$。

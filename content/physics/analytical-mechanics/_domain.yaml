@@ -15,6 +15,8 @@ macros:
     \frac{\partial #1}{\partial #2}
   \pb: |
     \left\{#1,#2\right\}
+  \T: |
+    ^{\mathsf{T}}
 glossary:
   - id: physics.analytical-mechanics.constraint
     zh: |
@@ -439,3 +441,158 @@ glossary:
       参数变化越慢、在整个过程中改变得越少的量；一个自由度周期运动的作用量变量就是。
     definedIn: physics.analytical-mechanics.adiabatic-invariants
     anchor: def-adiabatic-invariant
+  - id: physics.analytical-mechanics.normal-coordinates
+    zh: |
+      简正坐标
+    en: |
+      normal coordinates
+    brief: |
+      使小振动的拉格朗日量变成$\frac12\sum_k(\dot\Theta_k^2-\omega_k^2\Theta_k^2)$的坐标$\Theta_k$，每个各自做简谐运动。
+    definedIn: physics.analytical-mechanics.small-oscillations
+    anchor: def-normal-coordinates
+  - id: physics.analytical-mechanics.rotation-matrix
+    zh: |
+      转动矩阵
+    en: |
+      rotation matrix
+    brief: |
+      满足$R\T R=I$、$\det R=1$的$3\times3$实矩阵；描述刚体取向时，第$k$列是第$k$根体坐标轴的空间分量。
+    definedIn: physics.analytical-mechanics.rigid-body-kinematics
+    anchor: def-rotation-matrix
+  - id: physics.analytical-mechanics.angular-velocity
+    zh: |
+      角速度矢量
+    en: |
+      angular velocity vector
+    brief: |
+      刚体绕固定点转动时，使刚体上每一点的速度都等于$\boldsymbol{\omega}\times\vb{r}$的唯一矢量$\boldsymbol{\omega}$。
+    definedIn: physics.analytical-mechanics.rigid-body-kinematics
+    anchor: def-angular-velocity
+  - id: physics.analytical-mechanics.euler-angles
+    zh: |
+      欧拉角
+    en: |
+      Euler angles
+    brief: |
+      把转动矩阵写成$R_z(\varphi)R_x(\theta)R_z(\psi)$时的三个角，是描述刚体取向的常用广义坐标。
+    definedIn: physics.analytical-mechanics.rigid-body-kinematics
+    anchor: def-euler-angles
+  - id: physics.analytical-mechanics.inertia-tensor
+    zh: |
+      惯性张量
+    en: |
+      inertia tensor
+    brief: |
+      元素为$I_{jk}=\sum_im_i(r_i^2\delta_{jk}-x_{ij}x_{ik})$的对称矩阵，把角速度变成角动量：$\vb{L}=I\boldsymbol{\omega}$。
+    definedIn: physics.analytical-mechanics.inertia-tensor
+    anchor: def-inertia-tensor
+  - id: physics.analytical-mechanics.principal-axes
+    zh: |
+      惯量主轴
+    en: |
+      principal axes of inertia
+    brief: |
+      惯性张量的三个正交规范特征向量方向上的轴；角速度沿主轴时，角动量和它同向。
+    definedIn: physics.analytical-mechanics.inertia-tensor
+    anchor: def-principal-axes
+  - id: physics.analytical-mechanics.euler-equations
+    zh: |
+      欧拉方程
+    en: |
+      Euler's equations
+    brief: |
+      在主轴坐标下写的刚体转动方程，如$I_1\dot\omega_1-(I_2-I_3)\omega_2\omega_3=\tau_1$，另两个轮换得到。
+    definedIn: physics.analytical-mechanics.euler-equations
+    anchor: thm-euler-equations
+  - id: physics.analytical-mechanics.symmetric-top
+    zh: |
+      对称陀螺
+    en: |
+      symmetric top
+    brief: |
+      有两个主转动惯量相等（$I_1=I_2\ne I_3$）的刚体，第三根主轴是它的对称轴。
+    definedIn: physics.analytical-mechanics.euler-equations
+    anchor: def-symmetric-top
+  - id: physics.analytical-mechanics.nutation
+    zh: |
+      章动
+    en: |
+      nutation
+    brief: |
+      重陀螺的对称轴一边进动、一边上下点头：倾角$\theta$在两个转折角之间周期性地来回变化。
+    definedIn: physics.analytical-mechanics.heavy-symmetric-top
+    anchor: def-nutation
+  - id: physics.analytical-mechanics.lagrangian-density
+    zh: |
+      拉格朗日密度
+    en: |
+      Lagrangian density
+    brief: |
+      场的拉格朗日量对空间的密度$\mathcal L$，$L=\int\mathcal L\,\dd x$；弦的是$\frac12\mu y_t^2-\frac12Ty_x^2$。
+    definedIn: physics.analytical-mechanics.field-lagrangian
+    anchor: def-lagrangian-density
+  - id: physics.analytical-mechanics.hamiltonian-density
+    zh: |
+      哈密顿密度
+    en: |
+      Hamiltonian density
+    brief: |
+      $\mathcal H=\pi y_t-\mathcal L$，$\pi=\partial\mathcal L/\partial y_t$；弦的是能量密度$\frac12\mu y_t^2+\frac12Ty_x^2$。
+    definedIn: physics.analytical-mechanics.field-lagrangian
+    anchor: def-hamiltonian-density
+  - id: physics.analytical-mechanics.generalized-potential
+    zh: |
+      广义势
+    en: |
+      generalized potential
+    brief: |
+      依赖速度的函数$U(q,\dot q,t)$，使广义力$Q_j=-\frac{\partial U}{\partial q_j}+\frac{\dd}{\dd t}\frac{\partial U}{\partial\dot q_j}$，于是$L=T-U$。
+    definedIn: physics.analytical-mechanics.charged-particle-lagrangian
+    anchor: def-generalized-potential
+  - id: physics.analytical-mechanics.integrable-system
+    zh: |
+      可积系统
+    en: |
+      integrable system
+    brief: |
+      $n$个自由度、有$n$个两两泊松括号为零且独立的守恒量的哈密顿系统；运动有界时轨道在不变环面上。
+    definedIn: physics.analytical-mechanics.hamiltonian-chaos
+    anchor: def-integrable-system
+  - id: physics.analytical-mechanics.invariant-torus
+    zh: |
+      不变环面
+    en: |
+      invariant torus
+    brief: |
+      可积系统中运动有界时，作用量变量取定值的集合是$n$维环面；轨道留在上面，角变量匀速转动。
+    definedIn: physics.analytical-mechanics.hamiltonian-chaos
+    anchor: def-invariant-torus
+  - id: physics.analytical-mechanics.poincare-section
+    zh: |
+      庞加莱截面
+    en: |
+      Poincaré section
+    brief: |
+      在能量面里取的一个截面，只记录轨道每次穿过它的位置；规则运动排成曲线，混沌散成一片。
+    definedIn: physics.analytical-mechanics.hamiltonian-chaos
+    anchor: def-poincare-section
+  - id: physics.analytical-mechanics.standard-map
+    zh: |
+      标准映射
+    en: |
+      standard map
+    brief: |
+      受周期冲击的转子的庞加莱映射$p'=p+K\sin q$，$q'=q+p'$（取模$2\pi$），保持面积。
+    definedIn: physics.analytical-mechanics.hamiltonian-chaos
+    anchor: def-standard-map
+  - id: physics.analytical-mechanics.kam-theorem
+    zh: |
+      KAM 定理
+    en: |
+      Kolmogorov–Arnold–Moser theorem
+    abbr: |
+      KAM
+    brief: |
+      可积系统受到小扰动后，频率足够无理的不变环面大多保留下来，只是稍微变形。
+    definedIn: physics.analytical-mechanics.hamiltonian-chaos
+    anchor: thm-kam

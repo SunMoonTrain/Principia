@@ -1,0 +1,155 @@
+- id: p1
+  tier: easy
+  statement: |
+    自由刚体的主转动惯量是$I_1=2$、$I_2=3$、$I_3=4$（单位$\mathrm{kg\cdot m^2}$），某时刻角速度在三根主轴上的分量是$\omega_1=1$、$\omega_2=2$、$\omega_3=3$（单位$\mathrm{rad/s}$）。求这时的$\dot\omega_3$。
+  answer:
+    type: number
+    value: -0.5
+    unit: |
+      $\mathrm{rad/s^2}$
+  hints:
+    - |
+      没有力矩，用第三个欧拉方程$I_3\dot\omega_3-(I_1-I_2)\omega_1\omega_2=0$。
+    - |
+      $\dot\omega_3=\frac{(I_1-I_2)\omega_1\omega_2}{I_3}$。
+    - |
+      $\dot\omega_3=\frac{(2-3)\times1\times2}{4}=-0.5\,\mathrm{rad/s^2}$。答案填 `-0.5`。
+  solution: |
+    $\dot\omega_3=\frac{(I_1-I_2)\omega_1\omega_2}{I_3}=-0.5\,\mathrm{rad/s^2}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    自由刚体的三个主转动惯量$I_1<I_2<I_3$。让它分别绕三根主轴匀速转动，下面哪些转动是稳定的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        绕$1$轴（转动惯量最小）
+      - |
+        绕$2$轴
+      - |
+        绕$3$轴（转动惯量最大）
+      - |
+        三种都不稳定：没有力矩时，刚体怎样转都会翻
+    value: [1, 3]
+  hints:
+    - |
+      看讲解里的中间轴定理。
+    - |
+      绕第$k$根主轴转动时，小偏离满足$\ddot\omega_i=-\frac{(I_k-I_i)(I_k-I_j)}{I_iI_j}\Omega^2\omega_i$。右边的系数什么时候是负的？
+    - |
+      $I_k$最大或最小时，$(I_k-I_i)(I_k-I_j)>0$，系数是负的，偏离做简谐运动；$I_k$居中时系数是正的，偏离按指数增长。所以绕$1$轴、$3$轴稳定，绕$2$轴不稳定。
+
+      答案是 A、C。
+  solution: |
+    A、C。绕最小、最大主轴的转动稳定，绕中间主轴的不稳定。
+
+- id: p3
+  tier: medium
+  statement: |
+    自由刚体的主转动惯量是$I_1=1$、$I_2=2$、$I_3=3$（单位$\mathrm{kg\cdot m^2}$），绕$1$轴以$\Omega=3\,\mathrm{rad/s}$匀速转动时受到一点扰动。求$\omega_2$、$\omega_3$做小振动的角频率。
+  answer:
+    type: number
+    value: sqrt(3)
+    unit: |
+      $\mathrm{rad/s}$
+  hints:
+    - |
+      $\omega_1\approx\Omega$，略去$\omega_2\omega_3$，写出第二、第三个欧拉方程线性化以后的形式。
+    - |
+      $I_2\dot\omega_2=(I_3-I_1)\Omega\omega_3$，$I_3\dot\omega_3=(I_1-I_2)\Omega\omega_2$，再求一次导数消去$\omega_3$。
+    - |
+      $\ddot\omega_2=\frac{(I_3-I_1)(I_1-I_2)}{I_2I_3}\Omega^2\omega_2=-\frac{2\times1}{2\times3}\times9\,\omega_2=-3\,\omega_2$，角频率$\sqrt3\approx1.732\,\mathrm{rad/s}$。答案填 `sqrt(3)`。
+  solution: |
+    $\ddot\omega_2=-\frac{(I_2-I_1)(I_3-I_1)}{I_2I_3}\Omega^2\omega_2=-3\omega_2$，角频率$\sqrt3\approx1.732\,\mathrm{rad/s}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    自由对称陀螺的$I_1=I_2=2\,\mathrm{kg\cdot m^2}$，$I_3=3\,\mathrm{kg\cdot m^2}$。某时刻角速度沿对称轴的分量是$\omega_3=2\,\mathrm{rad/s}$，垂直于对称轴的分量大小是$1.5\,\mathrm{rad/s}$。在空间里看，对称轴绕角动量转动的角速度是多少？
+  answer:
+    type: number
+    value: sqrt(45)/2
+    unit: |
+      $\mathrm{rad/s}$
+  hints:
+    - |
+      讲解里的定理：对称轴以角速度$|\vb{L}|/I_1$绕$\vb{L}$转。
+    - |
+      $\vb{L}$在对称轴上的分量是$I_3\omega_3$，垂直于对称轴的部分是$I_1$乘角速度垂直于对称轴的部分。
+    - |
+      $|\vb{L}|=\sqrt{(2\times1.5)^2+(3\times2)^2}=\sqrt{45}$，转动的角速度是$\frac{\sqrt{45}}{2}\approx3.354\,\mathrm{rad/s}$。答案填 `sqrt(45)/2`。
+  solution: |
+    $|\vb{L}|=\sqrt{(I_1\omega_\perp)^2+(I_3\omega_3)^2}=\sqrt{45}$，角速度$|\vb{L}|/I_1=\frac{\sqrt{45}}{2}\approx3.354\,\mathrm{rad/s}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    自由对称陀螺，取空间的$z$轴沿守恒的$\vb{L}$，用[刚体的角速度与欧拉角](lesson:physics.analytical-mechanics.rigid-body-kinematics)的$z$-$x$-$z$欧拉角（Euler angles）描述它的取向，$3'$轴是对称轴。（1）证明$\theta$不变，$\cos\theta=\frac{I_3\omega_3}{|\vb{L}|}$。（2）证明$\dot\varphi=\frac{|\vb{L}|}{I_1}$，$\dot\psi=\frac{I_1-I_3}{I_1}\omega_3$。（3）用体分量公式$\omega'_3=\dot\varphi\cos\theta+\dot\psi$检验结果。
+  hints:
+    - |
+      （1）$\cos\theta=\frac{\vb{L}\cdot\vb{e}'_3}{|\vb{L}|}$，$\vb{L}$在对称轴上的分量是$I_3\omega_3$，而$\omega_3$不变。
+    - |
+      （2）讲解里得到$\boldsymbol{\omega}=\frac{1}{I_1}\vb{L}-\frac{I_3-I_1}{I_1}\omega_3\vb{e}'_3$；另一方面$\boldsymbol{\omega}=\dot\varphi\vb{e}_3+\dot\theta\vb{e}_N+\dot\psi\vb{e}'_3$。比较两种写法。
+    - |
+      （1）$\vb{L}\cdot\vb{e}'_3$是$\vb{L}$的第三个体分量$I_3\omega_3$，$\omega_3$和$|\vb{L}|$都不变，所以$\cos\theta=\frac{I_3\omega_3}{|\vb{L}|}$不变，$\dot\theta=0$。
+
+      （2）$\vb{L}=|\vb{L}|\vb{e}_3$，所以$\boldsymbol{\omega}=\frac{|\vb{L}|}{I_1}\vb{e}_3-\frac{I_3-I_1}{I_1}\omega_3\vb{e}'_3$。又$\dot\theta=0$，$\boldsymbol{\omega}=\dot\varphi\vb{e}_3+\dot\psi\vb{e}'_3$。$0<\theta<\pi$时$\vb{e}_3$、$\vb{e}'_3$不共线，系数必须分别相等：$\dot\varphi=\frac{|\vb{L}|}{I_1}$，$\dot\psi=-\frac{I_3-I_1}{I_1}\omega_3=\frac{I_1-I_3}{I_1}\omega_3$。三个变化率都是常数，这正是规则进动。
+
+      （3）$\dot\varphi\cos\theta+\dot\psi=\frac{|\vb{L}|}{I_1}\cdot\frac{I_3\omega_3}{|\vb{L}|}+\frac{I_1-I_3}{I_1}\omega_3=\omega_3$，和体分量一致。另外，那一节例 1 说体分量$(\omega'_1,\omega'_2)$以角速度$-\dot\psi$绕$3'$轴转，$-\dot\psi=\frac{I_3-I_1}{I_1}\omega_3=\Omega_b$，正是讲解里的结果。
+  reference: |
+    （1）$\cos\theta=L_3/|\vb{L}|=I_3\omega_3/|\vb{L}|$不变。（2）$\boldsymbol{\omega}=\frac{|\vb{L}|}{I_1}\vb{e}_3-\frac{I_3-I_1}{I_1}\omega_3\vb{e}'_3=\dot\varphi\vb{e}_3+\dot\psi\vb{e}'_3$，比较系数得$\dot\varphi=|\vb{L}|/I_1$，$\dot\psi=(I_1-I_3)\omega_3/I_1$。（3）$\dot\varphi\cos\theta+\dot\psi=\omega_3$；且$-\dot\psi=\Omega_b$。
+
+- id: p6
+  tier: hard
+  statement: |
+    自由刚体$I_1<I_2<I_3$，运动恰好在分界线上：$|\vb{L}|^2=2TI_2$。记$\omega_0=|\vb{L}|/I_2$，于是$2T=I_2\omega_0^2$。（1）证明$\omega_1^2=\frac{I_2(I_3-I_2)}{I_1(I_3-I_1)}(\omega_0^2-\omega_2^2)$，$\omega_3^2=\frac{I_2(I_2-I_1)}{I_3(I_3-I_1)}(\omega_0^2-\omega_2^2)$。
+
+    （2）证明$\omega_1\omega_3>0$时$\dot\omega_2=\mu(\omega_0^2-\omega_2^2)$，$\mu=\sqrt{\frac{(I_2-I_1)(I_3-I_2)}{I_1I_3}}$；再验证$\omega_2=\omega_0\tanh(\mu\omega_0t)$满足这个方程和$\omega_2(0)=0$，这里$\tanh x=\frac{e^x-e^{-x}}{e^x+e^{-x}}$。（3）$t\to\pm\infty$时刚体怎样转？$\mu\omega_0$和讲解里的增长率$\lambda$有什么关系？
+  hints:
+    - |
+      （1）分界线上$|L'|^2-2TI_2=I_1(I_1-I_2)\omega_1^2+I_3(I_3-I_2)\omega_3^2=0$，再和能量$I_1\omega_1^2+I_2\omega_2^2+I_3\omega_3^2=I_2\omega_0^2$联立。
+    - |
+      （2）第二个欧拉方程$I_2\dot\omega_2=(I_3-I_1)\omega_3\omega_1$，$\omega_1\omega_3=\sqrt{\omega_1^2\omega_3^2}$用（1）代入。验证时用$\frac{\dd}{\dd x}\tanh x=1-\tanh^2x$。
+    - |
+      （1）由分界线条件，$I_3\omega_3^2=\frac{I_1(I_2-I_1)}{I_3-I_2}\omega_1^2$，代进能量：$I_1\omega_1^2\bigl(1+\frac{I_2-I_1}{I_3-I_2}\bigr)=I_2(\omega_0^2-\omega_2^2)$，即$I_1\omega_1^2\frac{I_3-I_1}{I_3-I_2}=I_2(\omega_0^2-\omega_2^2)$，得到$\omega_1^2$的式子；再代回分界线条件得$\omega_3^2$。
+
+      （2）$\omega_1^2\omega_3^2=\frac{I_2^2(I_3-I_2)(I_2-I_1)}{I_1I_3(I_3-I_1)^2}(\omega_0^2-\omega_2^2)^2$，开方得$\omega_1\omega_3=\frac{I_2}{I_3-I_1}\mu(\omega_0^2-\omega_2^2)$，代进$\dot\omega_2=\frac{I_3-I_1}{I_2}\omega_3\omega_1$即得。由$\frac{\dd}{\dd x}\tanh x=1-\tanh^2x$，$\frac{\dd}{\dd t}\omega_0\tanh(\mu\omega_0t)=\mu\omega_0^2\bigl(1-\tanh^2(\mu\omega_0t)\bigr)=\mu(\omega_0^2-\omega_2^2)$，且$\tanh0=0$。$|\omega_2|<\omega_0$时$\omega_1$、$\omega_3$都不为零，它们的符号不会变，所以$\omega_1\omega_3>0$一直成立。
+
+      （3）$t\to-\infty$时$\omega_2\to-\omega_0$，$t\to+\infty$时$\omega_2\to\omega_0$，$\omega_1$、$\omega_3\to0$：刚体从绕$-2$轴转变成绕$+2$轴转，相对于守恒的$\vb{L}$整个翻了个面。恰好在分界线上，这次翻转要无穷长的时间；稍微偏离一点，就变成周期性的来回翻转。$\mu\omega_0$正是讲解里以$\Omega=\omega_0$绕$2$轴转动时的增长率$\lambda$，线性化看到的指数增长，就是这次翻转的开头。
+  reference: |
+    （1）分界线条件与能量守恒联立，得$\omega_1^2=\frac{I_2(I_3-I_2)}{I_1(I_3-I_1)}(\omega_0^2-\omega_2^2)$，$\omega_3^2=\frac{I_2(I_2-I_1)}{I_3(I_3-I_1)}(\omega_0^2-\omega_2^2)$。（2）代入$I_2\dot\omega_2=(I_3-I_1)\omega_1\omega_3$得$\dot\omega_2=\mu(\omega_0^2-\omega_2^2)$，$\omega_0\tanh(\mu\omega_0t)$满足它。（3）从绕$-2$轴转到绕$+2$轴转，翻转一次；$\mu\omega_0=\lambda$（$\Omega=\omega_0$）。
+
+- id: p7
+  tier: thinking
+  statement: |
+    1958 年美国的第一颗人造卫星探险者 1 号（Explorer 1）是细长的圆柱，发射时让它绕长轴自旋，以为这样最稳；它带着几根柔软的鞭状天线（whip antenna），不久就变成了绕横轴翻滚。用这一节的结论解释：能量会慢慢耗散、角动量保持不变的物体，最后会绕哪根主轴转？
+  hints:
+    - |
+      细长圆柱绕长轴的转动惯量是最大还是最小？天线的抖动会消耗动能，但对质心的角动量不变（没有外力矩）。
+    - |
+      $|\vb{L}|$固定时，绕第$k$根主轴转动的动能是$\frac{|\vb{L}|^2}{2I_k}$。在$|\vb{L}|$固定的所有转动里，动能最小的是哪一种？
+    - |
+      绕长轴的转动惯量最小。没有能量耗散时，绕最小主轴的转动是稳定的（中间轴定理）；可是天线、燃料晃动这些非刚性的部分会把动能慢慢变成热，而$|\vb{L}|$保持不变。$|\vb{L}|$固定时$T=\frac12\sum_k\frac{L_k^2}{I_k}\ge\frac{|\vb{L}|^2}{2I_3}$，等号当且仅当$\vb{L}$沿转动惯量最大的主轴；动能一路减小，最后只能停在这种转动上，绕最小主轴的转动反而不稳。
+
+      所以探险者 1 号从绕长轴自旋变成了绕垂直于长轴的轴翻滚（那是最大主轴）。从那以后，靠自旋稳定的卫星都设计成绕最大主轴转，或者另加阻尼装置（damper）；地球绕它的最大主轴自转，也是这种意义下稳定的。
+  reference: |
+    细长圆柱绕长轴的转动惯量最小。能量耗散而$|\vb{L}|$守恒时，$T=\frac12\sum L_k^2/I_k\ge|\vb{L}|^2/(2I_{\max})$，动能减到最小时只能绕最大主轴转，所以绕最小主轴的自旋在有耗散时不稳定，卫星最后绕横轴（最大主轴）翻滚。自旋稳定的航天器因此绕最大主轴转。
+
+- id: p8
+  tier: thinking
+  statement: |
+    1985 年，宇航员贾尼别科夫（Vladimir Dzhanibekov）在礼炮 7 号（Salyut 7）空间站里拧下一个蝶形螺母（wing nut），螺母一边自转一边飘，过一会儿就翻一次面，然后又翻回来。为什么它会周期性地来回翻，而不是翻一次就停下？起初的转动离中间主轴越近，翻面的间隔越长还是越短？
+  hints:
+    - |
+      看几何图像里的球面：起初靠近中间主轴的$L'$，走的是哪一类曲线？它是闭合的吗？
+    - |
+      $L'$在$2$轴附近时，偏离按$e^{\lambda t}$增长；起初偏离为$\delta$，要多久才长到和$|\vb{L}|$同一量级？
+    - |
+      螺母在失重状态下几乎不受力矩，$L'$沿球面和能量椭球面的交线走。起初的转动靠近中间主轴但不恰好在分界线上，交线是一条贴着分界线的闭合曲线：$L'$在$+2$轴附近停留一阵，迅速沿分界线走到$-2$轴附近（翻面），在那里又停留一阵，再翻回来，周而复始。曲线是闭合的，所以运动是周期性的。
+
+      在$2$轴附近偏离按$e^{\lambda t}$增长，从$\delta$长到$1$的量级要$\frac{1}{\lambda}\ln\frac1\delta$左右的时间，翻面本身只用很短的时间。所以起初越接近中间主轴，两次翻面之间的间隔越长，但只按$\ln\frac1\delta$缓慢地变长；恰好在$2$轴上（$\delta=0$）才永远不翻。
+  reference: |
+    $L'$沿球面与能量椭球面的交线运动；靠近中间主轴的交线是贴着分界线的闭合曲线，$L'$在$\pm2$轴附近交替停留，中间快速翻转，所以周期性地来回翻面。在$2$轴附近偏离按$e^{\lambda t}$增长，停留时间约$\frac1\lambda\ln\frac1\delta$，起初越接近中间主轴间隔越长（对数增长）。

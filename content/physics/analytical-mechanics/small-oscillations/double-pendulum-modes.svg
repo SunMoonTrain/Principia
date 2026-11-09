@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 330" width="520" height="330" font-size="14">
+  <!-- 等质量 m、等长 l 的双摆，摆角 θ1、θ2 都从竖直向下量起。左：低频模 ω² = (2 − √2)g/l，θ2 = √2 θ1；右：高频模 ω² = (2 + √2)g/l，θ2 = −√2 θ1。
+       摆长 110 像素，θ1 = 0.25 rad。虚线是平衡位置和竖直参考线。 -->
+  <!-- 低频模：同向 -->
+  <line x1="90" y1="34" x2="170" y2="34" stroke="currentColor" stroke-width="2" />
+  <g stroke-width="1" stroke-dasharray="4 4" style="stroke: var(--muted, #6b7280)">
+    <line x1="130" y1="34" x2="130" y2="274" />
+    <line x1="157.2" y1="140.6" x2="157.2" y2="223.1" />
+  </g>
+  <g stroke="currentColor" stroke-width="2.2">
+    <line x1="130" y1="34" x2="157.2" y2="140.6" />
+    <line x1="157.2" y1="140.6" x2="195.3" y2="243.8" />
+  </g>
+  <g stroke-width="1.6" fill="none" style="stroke: var(--accent, #2563eb)">
+    <path d="M 130.0 72.0 A 38 38 0 0 0 139.4 70.8" />
+    <path d="M 157.2 174.6 A 34 34 0 0 0 169.0 172.5" />
+  </g>
+  <text x="138.0" y="92.0" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">θ</tspan><tspan font-size="10" dy="4">1</tspan></text>
+  <text x="167.2" y="192.6" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">θ</tspan><tspan font-size="10" dy="4">2</tspan></text>
+  <g stroke="currentColor" stroke-width="1.5" style="fill: var(--good, #059669)">
+    <circle cx="157.2" cy="140.6" r="9" />
+    <circle cx="195.3" cy="243.8" r="9" />
+  </g>
+  <text x="130" y="296" text-anchor="middle" fill="currentColor">低频模：同向</text>
+  <text x="130" y="318" text-anchor="middle" fill="currentColor"><tspan font-style="italic">ω</tspan>² = (2 − √2)<tspan font-style="italic">g</tspan>/<tspan font-style="italic">l</tspan>，<tspan font-style="italic">θ</tspan><tspan font-size="10" dy="4">2</tspan><tspan dy="-4"> = √2 </tspan><tspan font-style="italic">θ</tspan><tspan font-size="10" dy="4">1</tspan></text>
+  <!-- 高频模：反向 -->
+  <line x1="350" y1="34" x2="430" y2="34" stroke="currentColor" stroke-width="2" />
+  <g stroke-width="1" stroke-dasharray="4 4" style="stroke: var(--muted, #6b7280)">
+    <line x1="390" y1="34" x2="390" y2="274" />
+    <line x1="417.2" y1="140.6" x2="417.2" y2="223.1" />
+  </g>
+  <g stroke="currentColor" stroke-width="2.2">
+    <line x1="390" y1="34" x2="417.2" y2="140.6" />
+    <line x1="417.2" y1="140.6" x2="379.1" y2="243.8" />
+  </g>
+  <g stroke-width="1.6" fill="none" style="stroke: var(--accent, #2563eb)">
+    <path d="M 390.0 72.0 A 38 38 0 0 0 399.4 70.8" />
+    <path d="M 417.2 174.6 A 34 34 0 0 1 405.4 172.5" />
+  </g>
+  <text x="398.0" y="92.0" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">θ</tspan><tspan font-size="10" dy="4">1</tspan></text>
+  <text x="393.2" y="192.6" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">θ</tspan><tspan font-size="10" dy="4">2</tspan></text>
+  <g stroke="currentColor" stroke-width="1.5" style="fill: var(--good, #059669)">
+    <circle cx="417.2" cy="140.6" r="9" />
+    <circle cx="379.1" cy="243.8" r="9" />
+  </g>
+  <text x="390" y="296" text-anchor="middle" fill="currentColor">高频模：反向</text>
+  <text x="390" y="318" text-anchor="middle" fill="currentColor"><tspan font-style="italic">ω</tspan>² = (2 + √2)<tspan font-style="italic">g</tspan>/<tspan font-style="italic">l</tspan>，<tspan font-style="italic">θ</tspan><tspan font-size="10" dy="4">2</tspan><tspan dy="-4"> = −√2 </tspan><tspan font-style="italic">θ</tspan><tspan font-size="10" dy="4">1</tspan></text>
+</svg>

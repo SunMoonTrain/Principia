@@ -1,0 +1,165 @@
+- id: p1
+  tier: easy
+  statement: |
+    某时刻刚体的欧拉角$\theta=\frac\pi3$，变化率$\dot\varphi=2\,\mathrm{rad/s}$、$\dot\theta=1\,\mathrm{rad/s}$、$\dot\psi=3\,\mathrm{rad/s}$。求这时角速度矢量的大小。
+  answer:
+    type: number
+    value: sqrt(20)
+    unit: |
+      $\mathrm{rad/s}$
+  hints:
+    - |
+      角速度是$\boldsymbol{\omega}=\dot\varphi\vb{e}_3+\dot\theta\vb{e}_N+\dot\psi\vb{e}'_3$。$z$轴、节线、$3'$轴两两之间的夹角各是多少？
+    - |
+      $\vb{e}_3\perp\vb{e}_N$，$\vb{e}_N\perp\vb{e}'_3$，$\vb{e}_3\cdot\vb{e}'_3=\cos\theta$，所以$|\boldsymbol{\omega}|^2=\dot\varphi^2+\dot\theta^2+\dot\psi^2+2\dot\varphi\dot\psi\cos\theta$。
+    - |
+      $|\boldsymbol{\omega}|^2=4+1+9+2\times2\times3\times\frac12=20$，$|\boldsymbol{\omega}|=\sqrt{20}=2\sqrt5\approx4.472\,\mathrm{rad/s}$。答案填 `sqrt(20)`。
+  solution: |
+    $|\boldsymbol{\omega}|^2=\dot\varphi^2+\dot\theta^2+\dot\psi^2+2\dot\varphi\dot\psi\cos\theta=20$，$|\boldsymbol{\omega}|=2\sqrt5\approx4.472\,\mathrm{rad/s}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些矩阵是转动矩阵？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\begin{pmatrix}0&-1&0\\1&0&0\\0&0&1\end{pmatrix}$
+      - |
+        $\begin{pmatrix}1&0&0\\0&1&0\\0&0&-1\end{pmatrix}$
+      - |
+        $\begin{pmatrix}1&1&0\\0&1&0\\0&0&1\end{pmatrix}$
+      - |
+        $\begin{pmatrix}0&0&1\\1&0&0\\0&1&0\end{pmatrix}$
+    value: [1, 4]
+  hints:
+    - |
+      转动矩阵要满足两条：$R\T R=I$，即三列是两两垂直的单位向量；$\det R=1$。
+    - |
+      C 的第一、二列垂直吗？B 的三列两两垂直，它的行列式是多少？
+    - |
+      A 是绕$z$轴转$90^\circ$，$R\T R=I$，行列式是$1$。B 是正交矩阵，但行列式是$-1$，是关于$xy$平面的镜像。C 的前两列$(1,0,0)\T$、$(1,1,0)\T$不垂直，不是正交矩阵。D 的三列依次是$\vb{e}_2,\vb{e}_3,\vb{e}_1$，两两垂直的单位向量，行列式是$\vb{e}_2\cdot(\vb{e}_3\times\vb{e}_1)=\vb{e}_2\cdot\vb{e}_2=1$；它把$x,y,z$轴依次转到$y,z,x$轴，是绕$(1,1,1)$方向转$120^\circ$。
+
+      答案是 A、D。
+  solution: |
+    A、D。B 的行列式是$-1$（镜像），C 不是正交矩阵。
+
+- id: p3
+  tier: medium
+  statement: |
+    刚体做规则进动：$\theta=\frac\pi3$保持不变，$\dot\varphi=\dot\psi=1.5\,\mathrm{rad/s}$。求角速度矢量与刚体$3'$轴的夹角（用弧度表示）。
+  answer:
+    type: number
+    value: pi/6
+  hints:
+    - |
+      $\boldsymbol{\omega}=\dot\varphi\vb{e}_3+\dot\psi\vb{e}'_3$，夹角的余弦是$\frac{\boldsymbol{\omega}\cdot\vb{e}'_3}{|\boldsymbol{\omega}|}$。
+    - |
+      $\boldsymbol{\omega}\cdot\vb{e}'_3=\dot\varphi\cos\theta+\dot\psi$，$|\boldsymbol{\omega}|^2=\dot\varphi^2+\dot\psi^2+2\dot\varphi\dot\psi\cos\theta$。
+    - |
+      记$\dot\varphi=\dot\psi=a$，则$\boldsymbol{\omega}\cdot\vb{e}'_3=a(1+\cos\theta)$，$|\boldsymbol{\omega}|=a\sqrt{2(1+\cos\theta)}$，余弦是$\sqrt{\frac{1+\cos\theta}{2}}=\cos\frac\theta2$。所以夹角是$\frac\theta2=\frac\pi6\approx0.5236$：$\dot\varphi=\dot\psi$时，$\boldsymbol{\omega}$正好平分$z$轴和$3'$轴的夹角，和$a$的大小无关。答案填 `pi/6`。
+  solution: |
+    夹角余弦$\frac{\dot\varphi\cos\theta+\dot\psi}{|\boldsymbol{\omega}|}=\cos\frac\theta2$，夹角$\frac\pi6\approx0.5236$。
+
+- id: p4
+  tier: medium
+  statement: |
+    刚体绕固定点$O$转动，某时刻的欧拉角是$\theta=\frac\pi3$、$\psi=\frac\pi2$，变化率$\dot\varphi=2\,\mathrm{rad/s}$、$\dot\theta=1\,\mathrm{rad/s}$、$\dot\psi=1\,\mathrm{rad/s}$。刚体上一点在$1'$轴上、离$O$为$0.5\,\mathrm{m}$，求它此刻的速率。
+  answer:
+    type: number
+    value: sqrt(5)/2
+    unit: |
+      $\mathrm{m/s}$
+  hints:
+    - |
+      速度是$\boldsymbol{\omega}\times\vb{r}$。在体坐标轴下算最方便：这一点的体分量是$\rho=(0.5,0,0)\T$。
+    - |
+      先用讲解里的公式算出$\omega'$。转动矩阵保持叉积和长度，$\boldsymbol{\omega}\times\vb{r}=R(\omega'\times\rho)$，所以速率是$|\omega'\times\rho|$。
+    - |
+      $\omega'_1=2\sin\frac\pi3\sin\frac\pi2+\cos\frac\pi2=\sqrt3$，$\omega'_2=2\sin\frac\pi3\cos\frac\pi2-\sin\frac\pi2=-1$，$\omega'_3=2\cos\frac\pi3+1=2$。$\omega'\times\rho=(0,\ 0.5\,\omega'_3,\ -0.5\,\omega'_2)\T=(0,1,0.5)\T$，速率是$\sqrt{1+0.25}=\frac{\sqrt5}{2}\approx1.118\,\mathrm{m/s}$。答案填 `sqrt(5)/2`。
+  solution: |
+    $\omega'=(\sqrt3,-1,2)\T$，$\omega'\times\rho=(0,1,0.5)\T$，速率$\frac{\sqrt5}{2}\approx1.118\,\mathrm{m/s}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明欧拉转动定理（Euler's rotation theorem）。设$R$是转动矩阵。（1）证明$\det(R-I)=0$，因而有单位矢量$\vb{n}$使$R\vb{n}=\vb{n}$。（2）证明$R\ne I$时，满足$R\vb{v}=\vb{v}$的矢量都和$\vb{n}$平行。
+
+    （3）取单位矢量$\vb{f}_1\perp\vb{n}$，令$\vb{f}_2=\vb{n}\times\vb{f}_1$。证明存在角$\alpha$，使$R\vb{f}_1=\cos\alpha\,\vb{f}_1+\sin\alpha\,\vb{f}_2$，$R\vb{f}_2=-\sin\alpha\,\vb{f}_1+\cos\alpha\,\vb{f}_2$。由此说明：刚体绕固定点从一个取向变到另一个取向，总可以由绕某根轴的一次转动完成。
+  hints:
+    - |
+      （1）$R-I=R(I-R\T)=R(I-R)\T$，两边取行列式；$3\times3$矩阵有$\det(-A)=-\det A$。
+    - |
+      （2）若还有不平行于$\vb{n}$的$\vb{v}$满足$R\vb{v}=\vb{v}$，看$R(\vb{n}\times\vb{v})$。（3）$R$保持点积，$R\vb{f}_1$和$R\vb{n}=\vb{n}$垂直；$R\vb{f}_2=R\vb{n}\times R\vb{f}_1$。
+    - |
+      （1）$\det(R-I)=\det R\cdot\det\bigl((I-R)\T\bigr)=\det(I-R)=(-1)^3\det(R-I)$，所以$\det(R-I)=0$。于是齐次方程组（homogeneous linear system）$(R-I)\vb{v}=0$有不为零的解，把它除以长度就得到$\vb{n}$。
+
+      （2）若$\vb{v}$不平行于$\vb{n}$而$R\vb{v}=\vb{v}$，由转动矩阵保持叉积，$R(\vb{n}\times\vb{v})=R\vb{n}\times R\vb{v}=\vb{n}\times\vb{v}$。$\vb{n}$、$\vb{v}$、$\vb{n}\times\vb{v}$线性无关（linearly independent），$R$把这三个矢量都保持不动，而一个线性变换（linear transformation）由它在一组基上的作用决定，所以$R=I$，矛盾。
+
+      （3）$R\vb{f}_1\cdot\vb{n}=R\vb{f}_1\cdot R\vb{n}=\vb{f}_1\cdot\vb{n}=0$，$|R\vb{f}_1|=1$，所以$R\vb{f}_1$是$\vb{f}_1$、$\vb{f}_2$张成的平面里的单位矢量，可以写成$\cos\alpha\,\vb{f}_1+\sin\alpha\,\vb{f}_2$。$\vb{f}_1,\vb{f}_2,\vb{n}$是右手正交规范基，$\vb{n}\times\vb{f}_1=\vb{f}_2$，$\vb{n}\times\vb{f}_2=-\vb{f}_1$，所以$R\vb{f}_2=R\vb{n}\times R\vb{f}_1=\vb{n}\times(\cos\alpha\,\vb{f}_1+\sin\alpha\,\vb{f}_2)=\cos\alpha\,\vb{f}_2-\sin\alpha\,\vb{f}_1$。
+
+      这说明$R$不动$\vb{n}$，并把垂直于$\vb{n}$的平面按右手方向转了$\alpha$角，正是绕$\vb{n}$转$\alpha$角的转动。刚体从取向$R_a$变到$R_b$，相当于整体转了一个$R_bR_a\T$，它也是转动矩阵，所以是绕某根轴的一次转动。
+  reference: |
+    （1）$\det(R-I)=\det R\det(I-R)\T=\det(I-R)=-\det(R-I)$，故为零，$(R-I)\vb{v}=0$有非零解。（2）若另有$\vb{v}\nparallel\vb{n}$不动，则$\vb{n}\times\vb{v}$也不动，$R$保持一组基不动，$R=I$。（3）$R\vb{f}_1\perp\vb{n}$且为单位矢量，$R\vb{f}_1=\cos\alpha\vb{f}_1+\sin\alpha\vb{f}_2$；$R\vb{f}_2=\vb{n}\times R\vb{f}_1=-\sin\alpha\vb{f}_1+\cos\alpha\vb{f}_2$。从$R_a$到$R_b$是转动$R_bR_a\T$，即绕某轴的一次转动。
+
+- id: p6
+  tier: hard
+  statement: |
+    一般运动的刚体上各点的位置是$\vb{r}_i(t)=\vb{r}_A(t)+R(t)\rho_i$，$A$是刚体上任取的一点，$\rho_i$不随时间变。（1）证明$\dot{\vb{r}}_i=\dot{\vb{r}}_A+\boldsymbol{\omega}\times(\vb{r}_i-\vb{r}_A)$，$\boldsymbol{\omega}$由$\dot RR\T$定出。（2）证明$\boldsymbol{\omega}$既不依赖于参考点$A$，也不依赖于体坐标轴的选取：换一组固连在刚体上的坐标轴，$R$变成$RC$，$C$是常数转动矩阵。
+
+    （3）设某时刻$\boldsymbol{\omega}\ne0$。证明有一条平行于$\boldsymbol{\omega}$的直线，上面各点的速度都相同、并且平行于$\boldsymbol{\omega}$；所以刚体此刻的运动是绕这条直线的转动加上沿它的平移，即螺旋运动（screw motion）。
+  hints:
+    - |
+      （1）$\vb{r}_i-\vb{r}_A=R\rho_i$，对时间求导。（2）以另一点$B$为参考点时，$\vb{r}_i=\vb{r}_B+R(\rho_i-\rho_B)$，$R$没变。
+    - |
+      （3）把$\vb{v}_A=\dot{\vb{r}}_A$分解成平行于$\boldsymbol{\omega}$的$\vb{v}_\parallel$和垂直于$\boldsymbol{\omega}$的$\vb{v}_\perp$，试试$\vb{r}-\vb{r}_A=\frac{\boldsymbol{\omega}\times\vb{v}_A}{|\boldsymbol{\omega}|^2}$。
+    - |
+      （1）$\dot{\vb{r}}_i=\dot{\vb{r}}_A+\dot R\rho_i=\dot{\vb{r}}_A+\dot RR\T(\vb{r}_i-\vb{r}_A)=\dot{\vb{r}}_A+\boldsymbol{\omega}\times(\vb{r}_i-\vb{r}_A)$。
+
+      （2）换参考点$B$：$\vb{r}_i=\vb{r}_B+R(\rho_i-\rho_B)$，转动矩阵还是同一个$R$，由（1）得到的$\boldsymbol{\omega}$还是$\dot RR\T$定出的那个。换体坐标轴：$\frac{\dd(RC)}{\dd t}(RC)\T=\dot RCC\T R\T=\dot RR\T$，也不变。所以角速度是刚体本身的性质。
+
+      （3）对刚体此刻的速度场（velocity field）$\vb{v}(\vb{r})=\vb{v}_A+\boldsymbol{\omega}\times(\vb{r}-\vb{r}_A)$，取$\vb{r}_0-\vb{r}_A=\frac{\boldsymbol{\omega}\times\vb{v}_A}{|\boldsymbol{\omega}|^2}$。由$\vb{a}\times(\vb{b}\times\vb{c})=\vb{b}(\vb{a}\cdot\vb{c})-\vb{c}(\vb{a}\cdot\vb{b})$，$\boldsymbol{\omega}\times(\boldsymbol{\omega}\times\vb{v}_A)=\boldsymbol{\omega}(\boldsymbol{\omega}\cdot\vb{v}_A)-\vb{v}_A|\boldsymbol{\omega}|^2$，所以$\vb{v}(\vb{r}_0)=\vb{v}_A+\frac{\boldsymbol{\omega}(\boldsymbol{\omega}\cdot\vb{v}_A)}{|\boldsymbol{\omega}|^2}-\vb{v}_A=\vb{v}_\parallel$。直线$\vb{r}_0+\lambda\boldsymbol{\omega}$上各点的速度是$\vb{v}_\parallel+\lambda\boldsymbol{\omega}\times\boldsymbol{\omega}=\vb{v}_\parallel$，都相同并且平行于$\boldsymbol{\omega}$。
+
+      其他点的速度是$\vb{v}_\parallel+\boldsymbol{\omega}\times(\vb{r}-\vb{r}_0)$：沿这条直线的平移，加上绕它的转动。平面运动（例如车轮在地面上纯滚动）时$\vb{v}_A\perp\boldsymbol{\omega}$，$\vb{v}_\parallel=0$，这条直线上的点速度为零，就是瞬时转轴，车轮的瞬时转轴是过接触点（contact point）、平行于车轴的直线。
+  reference: |
+    （1）$\dot{\vb{r}}_i=\dot{\vb{r}}_A+\dot R\rho_i=\dot{\vb{r}}_A+\dot RR\T(\vb{r}_i-\vb{r}_A)$。（2）换参考点$R$不变；换体坐标轴$\frac{\dd(RC)}{\dd t}(RC)\T=\dot RR\T$。（3）取$\vb{r}_0=\vb{r}_A+\boldsymbol{\omega}\times\vb{v}_A/|\boldsymbol{\omega}|^2$，则$\vb{v}(\vb{r}_0+\lambda\boldsymbol{\omega})=\vb{v}_\parallel$，$\vb{v}_\parallel$是$\vb{v}_A$平行于$\boldsymbol{\omega}$的部分；运动是绕该直线转动加沿它平移。平面运动时$\vb{v}_\parallel=0$，即瞬时转轴。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）记$R_y(\alpha)$为绕$y$轴按右手方向转$\alpha$角的转动矩阵。分别算出$R_y(\frac\pi2)R_x(\frac\pi2)\vb{e}_3$和$R_x(\frac\pi2)R_y(\frac\pi2)\vb{e}_3$，再拿一本书试一试。
+
+    （2）保持$\psi=\frac\pi2$，让刚体沿一条闭合路径运动一周：先在$\theta=\theta_1$时$\varphi$从$0$增加到$\Phi$，再在$\varphi=\Phi$时$\theta$从$\theta_1$变到$\theta_2$，然后在$\theta=\theta_2$时$\varphi$减回$0$，最后$\theta$回到$\theta_1$。算出$\int\omega'_1\,\dd t$。能不能找到一个由取向决定的角$\chi$，使任何运动中都有$\dot\chi=\omega'_1$？（3）小角度的转动为什么近似可以交换次序？
+  hints:
+    - |
+      （1）$R_y(\alpha)=\begin{pmatrix}\cos\alpha&0&\sin\alpha\\0&1&0\\-\sin\alpha&0&\cos\alpha\end{pmatrix}$，从右往左一步步作用在$\vb{e}_3$上。
+    - |
+      （2）$\psi=\frac\pi2$时$\omega'_1=\dot\varphi\sin\theta$，只有$\varphi$变化的两段有贡献。如果$\chi$存在，绕一圈回到原来的取向，$\int\dot\chi\,\dd t$应该是多少？（3）把$R_x(\varepsilon)$、$R_y(\delta)$展开到一阶。
+    - |
+      （1）$R_x(\frac\pi2)\vb{e}_3=-\vb{e}_2$，$R_y(\frac\pi2)(-\vb{e}_2)=-\vb{e}_2$；而$R_y(\frac\pi2)\vb{e}_3=\vb{e}_1$，$R_x(\frac\pi2)\vb{e}_1=\vb{e}_1$。同样两次转动换个次序，书脊（$3'$轴）一个指向$-y$，一个指向$x$。
+
+      （2）$\int\omega'_1\,\dd t=\Phi\sin\theta_1-\Phi\sin\theta_2$，一般不为零。若$\chi$存在，回到原来的取向时$\chi$也回到原值，积分应为零，矛盾。所以$\omega'_1$不是任何坐标的时间导数，$\int\omega'_1\dd t$和路径有关；人们把$\omega'_k$叫作准速度（quasi-velocity）。所以要把欧拉角这样真正的坐标当作广义坐标，而不是$\omega'_k$的积分。
+
+      （3）$R_x(\varepsilon)=I+\varepsilon A_x+O(\varepsilon^2)$，$R_y(\delta)=I+\delta A_y+O(\delta^2)$，$A_x$、$A_y$是常数矩阵，两种次序的乘积都是$I+\varepsilon A_x+\delta A_y$加二阶小量，差别是$\varepsilon\delta(A_xA_y-A_yA_x)$这样的二阶项。所以无穷小转动可以相加，角速度（单位时间里的无穷小转动）才是矢量；有限转动的不可交换性来自二阶以上的项。
+  reference: |
+    （1）$R_yR_x\vb{e}_3=-\vb{e}_2$，$R_xR_y\vb{e}_3=\vb{e}_1$，有限转动不可交换。（2）$\int\omega'_1\dd t=\Phi(\sin\theta_1-\sin\theta_2)\ne0$，闭合路径上积分不为零，不存在$\chi$；$\omega'_k$是准速度，不是坐标的导数。（3）一阶展开$I+\varepsilon A_x+\delta A_y$与次序无关，差别是二阶小量，所以无穷小转动（角速度）可以按矢量相加。
+
+- id: p8
+  tier: thinking
+  statement: |
+    飞机常用偏航角（yaw）$a$、俯仰角（pitch）$b$、滚转角（roll）$c$描述姿态：$R=R_z(a)R_y(b)R_x(c)$，$-\frac\pi2\le b\le\frac\pi2$。（1）这组角在什么姿态下失效？（2）有人说「只要选对三个角，就能处处没有奇点」，这对吗？（3）航天器（spacecraft）和计算机图形学（computer graphics）里常用四个数（单位四元数，unit quaternion）描述转动，多用一个数有什么好处？
+  hints:
+    - |
+      （1）仿照欧拉角在$\theta=0$处的情形：什么时候第一次转动的轴和第三次转动的轴变成同一根？算一算$R_y(\frac\pi2)\vb{e}_1$。
+    - |
+      （2）欧拉角和这组角的奇点不在同一处，但各有奇点。（3）四个数满足一个约束，想一想转动轴和转角怎样放进四个数里。
+    - |
+      （1）$R_y(\frac\pi2)\vb{e}_1=-\vb{e}_3$：俯仰角$b=\pm\frac\pi2$（机头竖直朝上或朝下）时，滚转所绕的机身纵轴和偏航所绕的竖直轴重合，$R_z(a)R_y(\frac\pi2)R_x(c)=R_z(a-c)R_y(\frac\pi2)$只依赖$a-c$（$b=-\frac\pi2$时只依赖$a+c$），失去一个自由度，和欧拉角在$\theta=0$处一样。阿波罗（Apollo）飞船的惯性测量装置（inertial measurement unit）只有三个框架，宇航员要刻意避开会让框架锁住的姿态。
+
+      （2）不对。换一组角只是把奇点挪到别处；可以证明（要用到拓扑学，topology），任何用三个参数描述转动的办法，都不可能既覆盖所有取向、又处处没有奇点。
+
+      （3）绕单位矢量$\vb{n}$转$\alpha$角对应$q=\bigl(\cos\frac\alpha2,\ \vb{n}\sin\frac\alpha2\bigr)$，四个数满足$|q|=1$。它覆盖所有转动、处处光滑，没有奇点；代价是多一个约束（数值计算里要不时归一化），而且$q$和$-q$表示同一个转动。两次转动的组合是四元数的乘法，计算量小、误差小，在两个姿态之间插值（interpolation）也平滑。
+  reference: |
+    （1）$b=\pm\frac\pi2$时滚转轴与偏航轴重合，$R$只依赖$a-c$，即万向节锁。（2）不对：任何三参数描述都不能既覆盖全部取向又处处无奇点（拓扑学的结论），换参数只是移动奇点。（3）单位四元数$(\cos\frac\alpha2,\vb{n}\sin\frac\alpha2)$用四个数加一个约束，全局光滑无奇点，组合是乘法、插值平滑；代价是约束和$\pm q$的双重表示。

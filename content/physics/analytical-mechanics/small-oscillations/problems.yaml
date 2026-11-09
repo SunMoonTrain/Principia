@@ -1,0 +1,169 @@
+- id: p1
+  tier: easy
+  statement: |
+    某个两自由度系统在稳定平衡位置附近的小振动拉格朗日量是$L_2=\frac12\dot\eta\T T\dot\eta-\frac12\eta\T V\eta$，其中$T=\begin{pmatrix}1&0\\0&1\end{pmatrix}$，$V=\begin{pmatrix}5&-2\\-2&2\end{pmatrix}$（无量纲）。求较高的那个简正频率。
+  answer:
+    type: number
+    value: sqrt(6)
+  hints:
+    - |
+      简正频率满足$\det(V-\omega^2T)=0$。这里$T$是单位矩阵，$\omega^2$就是$V$的特征值。
+    - |
+      $\det\begin{pmatrix}5-\omega^2&-2\\-2&2-\omega^2\end{pmatrix}=(5-\omega^2)(2-\omega^2)-4$。
+    - |
+      $(5-\omega^2)(2-\omega^2)-4=\omega^4-7\omega^2+6=(\omega^2-1)(\omega^2-6)=0$，所以$\omega^2=1$或$6$，较高的简正频率是$\sqrt6\approx2.449$。答案填 `sqrt(6)`。
+  solution: |
+    $\omega^4-7\omega^2+6=0$，$\omega^2=1$、$6$，较高的是$\sqrt6\approx2.449$。
+
+- id: p2
+  tier: easy
+  statement: |
+    质量为$1$的质点在平面上运动，势能$V(x,y)$在原点有平衡位置（无量纲）。下面哪些势能使原点附近的两个简正频率都大于零？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $V=x^2+xy+y^2$
+      - |
+        $V=x^2-y^2$
+      - |
+        $V=x^2+2xy+y^2$
+      - |
+        $V=2x^2+3xy+2y^2$
+    value: [1, 4]
+  hints:
+    - |
+      动能是$\frac12(\dot x^2+\dot y^2)$，$T$是单位矩阵，$\omega^2$是黑塞矩阵$V_{jk}$的特征值。两个都为正，黑塞矩阵要正定。
+    - |
+      四个黑塞矩阵依次是$\begin{pmatrix}2&1\\1&2\end{pmatrix}$、$\begin{pmatrix}2&0\\0&-2\end{pmatrix}$、$\begin{pmatrix}2&2\\2&2\end{pmatrix}$、$\begin{pmatrix}4&3\\3&4\end{pmatrix}$。
+    - |
+      特征值：A 是$1$、$3$；B 是$2$、$-2$，原点是鞍点（saddle point），不稳定；C 是$0$、$4$，有一个简正频率为零，沿$x=-y$方向势能不变；D 是$1$、$7$。
+
+      答案是 A、D。
+  solution: |
+    A、D。黑塞矩阵的特征值：A 为$1,3$；B 为$2,-2$；C 为$0,4$；D 为$1,7$。
+
+- id: p3
+  tier: medium
+  statement: |
+    双摆的两根杆都长$l$，上面的摆球质量是$3m$，下面的是$m$，摆角都从竖直向下量起。求竖直平衡位置附近较高与较低两个简正频率之比。
+  answer:
+    type: number
+    value: sqrt(3)
+  hints:
+    - |
+      照例 1 的做法写出$T$、$V$两个矩阵，只是上面那个摆球的质量变了。
+    - |
+      $T=ml^2\begin{pmatrix}4&1\\1&1\end{pmatrix}$，$V=mgl\begin{pmatrix}4&0\\0&1\end{pmatrix}$。
+    - |
+      动能是$\frac12(3m+m)l^2\dot\theta_1^2+\frac12ml^2\dot\theta_2^2+ml^2\cos(\theta_1-\theta_2)\dot\theta_1\dot\theta_2$，势能是$-4mgl\cos\theta_1-mgl\cos\theta_2$，展开到二阶得到上面的$T$、$V$。记$\omega_0^2=\frac gl$，$\det(V-\omega^2T)=0$约去$ml^2$：$(4\omega_0^2-4\omega^2)(\omega_0^2-\omega^2)-\omega^4=0$，即$4(\omega_0^2-\omega^2)^2=\omega^4$，$2(\omega_0^2-\omega^2)=\pm\omega^2$。
+
+      所以$\omega^2=\frac23\omega_0^2$或$2\omega_0^2$，两个频率之比是$\sqrt{2\big/\frac23}=\sqrt3\approx1.732$。答案填 `sqrt(3)`。
+  solution: |
+    $T=ml^2\begin{pmatrix}4&1\\1&1\end{pmatrix}$，$V=mgl\begin{pmatrix}4&0\\0&1\end{pmatrix}$，$\omega^2=\frac23\frac gl$、$2\frac gl$，比值$\sqrt3$。
+
+- id: p4
+  tier: medium
+  statement: |
+    光滑的碗的内表面是$z=\frac{x^2+2y^2}{2R}$，$R=0.5\,\mathrm{m}$，$z$轴竖直向上，取$g=9.8\,\mathrm{m/s^2}$。小珠子在碗底附近做小振动，求较高的那个简正频率。
+  answer:
+    type: number
+    value: sqrt(2*9.8/0.5)
+    unit: |
+      $\mathrm{rad/s}$
+  hints:
+    - |
+      用$x$、$y$作广义坐标，$z$由约束定出。写出$L$以后只保留到二阶：动能里的$\dot z^2$是几阶小量？
+    - |
+      $\dot z=\frac{x\dot x+2y\dot y}{R}$，$\dot z^2$是四阶小量，舍掉。剩下$L_2=\frac12m(\dot x^2+\dot y^2)-\frac{mg}{2R}(x^2+2y^2)$。
+    - |
+      $L=\frac12m(\dot x^2+\dot y^2+\dot z^2)-mgz$，$\dot z^2=\frac{(x\dot x+2y\dot y)^2}{R^2}$是四阶小量，二阶近似下舍掉。$L_2$里$x$、$y$已经分开，两个简正坐标就是$x$、$y$，频率是$\sqrt{g/R}$和$\sqrt{2g/R}$。
+
+      较高的是$\sqrt{\frac{2\times9.8}{0.5}}=\sqrt{39.2}\approx6.261\,\mathrm{rad/s}$，填 `sqrt(2*9.8/0.5)` 或 `6.261`。
+  solution: |
+    $\dot z^2$是四阶小量，$L_2=\frac12m(\dot x^2+\dot y^2)-\frac{mg}{2R}(x^2+2y^2)$，较高的频率$\sqrt{2g/R}=\sqrt{39.2}\approx6.261\,\mathrm{rad/s}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    小振动的$T$正定、$V$正定，最低的简正频率是$\omega_1$。证明：对任何不为零的列向量$a$，$\frac{a\T Va}{a\T Ta}\ge\omega_1^2$，等号在$a$是最低的那个简正模时成立。再说明：给系统加一个约束（例如把某个坐标固定为零），最低的简正频率不会降低。
+  hints:
+    - |
+      用讲解里的换元$\eta=A\Theta$：它满足$A\T TA=I$，$A\T VA$是以$\omega_k^2$为对角元的对角矩阵。令$a=Ac$。
+    - |
+      $\frac{a\T Va}{a\T Ta}=\frac{\sum_k\omega_k^2c_k^2}{\sum_kc_k^2}$。加了约束以后的系统，它的最低频率平方也是这个比值的最小值，只是$a$只能在满足约束的那些向量里取。
+    - |
+      由讲解里的定理，$\eta=A\Theta$使$\dot\eta\T T\dot\eta=\dot\Theta\T\dot\Theta$、$\eta\T V\eta=\sum_k\omega_k^2\Theta_k^2$，即$A\T TA=I$，$A\T VA=\Omega$。$A$可逆，任何$a\neq0$都写成$a=Ac$，$c\neq0$，于是
+
+      $$
+      \frac{a\T Va}{a\T Ta}=\frac{\sum_k\omega_k^2c_k^2}{\sum_kc_k^2}\ge\frac{\sum_k\omega_1^2c_k^2}{\sum_kc_k^2}=\omega_1^2 ,
+      $$
+
+      等号当且仅当$c$只在$\omega_k=\omega_1$的分量上不为零，即$a$是最低的简正模。
+
+      加一个线性约束（比如$\eta_n=0$）以后，系统的坐标只在一个子空间（subspace）里取值，小振动的$T$、$V$就是原来的二次型（quadratic form）限制到这个子空间上，仍然正定。对新系统用上面的结论，它的最低频率平方是同一个比值在子空间上的最小值。在更小的集合上取最小值，结果不会更小，所以新的最低频率不低于$\omega_1$。例如把双摆上面的摆球固定住，剩下一个单摆，频率$\sqrt{g/l}$确实高于双摆的低频$\sqrt{(2-\sqrt2)g/l}$。
+  reference: |
+    取$A$使$A\T TA=I$、$A\T VA=\Omega$，$a=Ac$：$\frac{a\T Va}{a\T Ta}=\frac{\sum\omega_k^2c_k^2}{\sum c_k^2}\ge\omega_1^2$，等号当且仅当$a$为最低简正模。加约束后$T$、$V$限制到子空间，最低频率平方是同一比值在子空间上的最小值，不小于全空间的最小值。例：双摆固定上摆球后频率$\sqrt{g/l}>\sqrt{(2-\sqrt2)g/l}$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$a^{(k)}$、$a^{(l)}$是两个简正模，$(V-\omega_k^2T)a^{(k)}=0$，$(V-\omega_l^2T)a^{(l)}=0$。（1）证明$\omega_k^2\neq\omega_l^2$时$a^{(k)\mathsf{T}}Ta^{(l)}=0$。
+
+    （2）由此说明：初始位移$\eta(0)$（初速度为零）里第$k$个简正模的系数是$C_k=\frac{a^{(k)\mathsf{T}}T\eta(0)}{a^{(k)\mathsf{T}}Ta^{(k)}}$（设各频率互不相同）。
+
+    （3）例 1 的双摆从$\theta_1=\theta_0$、$\theta_2=0$静止释放，写出$\theta_1(t)$、$\theta_2(t)$。
+  hints:
+    - |
+      两个方程分别左乘$a^{(l)\mathsf{T}}$和$a^{(k)\mathsf{T}}$，再相减，利用$T$、$V$对称。
+    - |
+      （2）初速度为零时$\eta(t)=\sum_kC_ka^{(k)}\cos\omega_kt$，在$t=0$处两边左乘$a^{(k)\mathsf{T}}T$。（3）例 1 的两个简正模是$(1,\sqrt2)$和$(1,-\sqrt2)$。
+    - |
+      （1）由$Va^{(k)}=\omega_k^2Ta^{(k)}$、$Va^{(l)}=\omega_l^2Ta^{(l)}$，分别左乘$a^{(l)\mathsf{T}}$、$a^{(k)\mathsf{T}}$：$a^{(l)\mathsf{T}}Va^{(k)}=\omega_k^2a^{(l)\mathsf{T}}Ta^{(k)}$，$a^{(k)\mathsf{T}}Va^{(l)}=\omega_l^2a^{(k)\mathsf{T}}Ta^{(l)}$。$V$、$T$对称，两式左边相等，$T$的两个式子也相等，相减得$(\omega_k^2-\omega_l^2)a^{(k)\mathsf{T}}Ta^{(l)}=0$，所以$a^{(k)\mathsf{T}}Ta^{(l)}=0$。
+
+      （2）初速度为零，每个简正坐标是$C_k\cos\omega_kt$，$\eta(0)=\sum_lC_la^{(l)}$。左乘$a^{(k)\mathsf{T}}T$，由（1）只剩$l=k$那一项：$a^{(k)\mathsf{T}}T\eta(0)=C_ka^{(k)\mathsf{T}}Ta^{(k)}$。
+
+      （3）$\eta(0)=(\theta_0,0)=C_1(1,\sqrt2)+C_2(1,-\sqrt2)$，由第二个分量$C_1=C_2$，再由第一个分量$C_1=C_2=\frac{\theta_0}{2}$（用（2）的公式算，结果相同）。记$\omega_\mp^2=(2\mp\sqrt2)\frac gl$，
+
+      $$
+      \theta_1=\frac{\theta_0}{2}\bigl(\cos\omega_-t+\cos\omega_+t\bigr),\qquad \theta_2=\frac{\theta_0}{\sqrt2}\bigl(\cos\omega_-t-\cos\omega_+t\bigr).
+      $$
+
+      两个频率之比$\sqrt{(2+\sqrt2)/(2-\sqrt2)}=1+\sqrt2$不是有理数，这个运动永远不会精确地重复。
+  reference: |
+    （1）左乘相减并用对称性得$(\omega_k^2-\omega_l^2)a^{(k)\mathsf{T}}Ta^{(l)}=0$。（2）$\eta(0)=\sum C_la^{(l)}$，左乘$a^{(k)\mathsf{T}}T$只剩$l=k$项。（3）$C_1=C_2=\theta_0/2$，$\theta_1=\frac{\theta_0}{2}(\cos\omega_-t+\cos\omega_+t)$，$\theta_2=\frac{\theta_0}{\sqrt2}(\cos\omega_-t-\cos\omega_+t)$，$\omega_\mp^2=(2\mp\sqrt2)g/l$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    小振动只把$L$展开到二阶。（1）质点在势能$V=\lambda x^4$的最低点附近来回运动，二阶近似给出什么？真实的运动又怎样？（2）一般的系统，振幅变大以后，三阶、四阶项会带来哪些二阶近似里没有的现象？
+  hints:
+    - |
+      （1）$V=\lambda x^4$在$x=0$处的二阶导数是多少？[作用量-角变量](lesson:physics.analytical-mechanics.action-angle-variables)那一节算过四次方势的周期怎样随能量变（p4）。
+    - |
+      （2）想一想单摆：振幅大了周期怎样变？两个简正模之间还能互不相干吗？
+    - |
+      （1）$V''(0)=0$，二阶近似给出$L_2=\frac12m\dot x^2$，好像质点不受力、匀速跑开，频率为零。这不对：真实的运动是有界的来回振动，只是回复力$-4\lambda x^3$在小振幅时很弱。周期随振幅变（[作用量-角变量](lesson:physics.analytical-mechanics.action-angle-variables)那一节 p4：能量变成$16$倍，周期变成$\frac12$倍），振幅越小周期越长。二阶近似失效的原因是黑塞矩阵不正定，最低的那一阶不是二阶。
+
+      （2）三阶以上的项让方程不再是线性的：频率随振幅变（单摆的周期随振幅变长），振动不再是严格的简谐运动，而且各个简正模不再相互独立，能量会在它们之间转移；频率之比接近整数比时（共振，resonance），转移尤其明显。著名的费米-帕斯塔-乌拉姆（Fermi–Pasta–Ulam）实验原本想看能量均分到所有简正模，结果却看到能量几乎周期性地回到最初的那个模，这个意外促成了对非线性波（nonlinear waves）的研究。
+  reference: |
+    （1）$V''(0)=0$，二阶近似给出自由运动、频率为零，是错的；真实运动有界振动，周期随振幅变小而变长（$T\propto E^{-1/4}$），二阶近似失效因为最低非零阶是四阶。（2）高阶项使方程非线性：频率依赖振幅，简正模之间耦合、交换能量，接近共振时明显（费米-帕斯塔-乌拉姆实验）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    球面摆（spherical pendulum）的摆球被约束在以悬点为中心的球面上，它在最低点附近有两个相等的简正频率。这时简正模、简正坐标还唯一吗？摆球沿小圆周匀速转动的运动，是哪两个简正模叠加出来的？频率相等（简并，degeneracy）和系统的对称性有什么关系？
+  hints:
+    - |
+      用摆球的水平位移$x$、$y$作坐标，二阶近似下$L_2=\frac12m(\dot x^2+\dot y^2)-\frac{mg}{2l}(x^2+y^2)$。
+    - |
+      $T$、$V$都正比于单位矩阵，任何方向的$a$都满足$(V-\omega^2T)a=0$。圆周运动是$x=A\cos\omega t$、$y=A\sin\omega t$。
+    - |
+      二阶近似下$T=mI$，$V=\frac{mg}{l}I$，$\det(V-\omega^2T)=0$有二重根$\omega^2=\frac gl$。这时任何水平方向的往复摆动都是简正模，简正坐标可以取任意一对互相垂直的方向，不再唯一；讲解里的定理仍然成立，只是第二步的谱定理在特征值相同时，特征向量（eigenvector）可以在那个特征子空间（eigenspace）里任意选正交的一组。
+
+      圆周运动$x=A\cos\omega t$、$y=A\sin\omega t$，是沿$x$和沿$y$两个往复摆动以相同的振幅、相差四分之一周期叠加出来的。
+
+      简并来自对称性：势能和动能在绕竖直轴转动下不变，把一个简正模转一个角度，得到的还是简正模，频率当然相同。对称性被破坏（比如碗的截面变成椭圆，或在一个方向上加一根弹簧），简并就消失，频率分开，简正模的方向被定下来。量子力学（quantum mechanics）里能级（energy level）的简并同样来自对称性。
+  reference: |
+    二阶近似$T=mI$、$V=\frac{mg}{l}I$，$\omega^2=g/l$二重根；任何水平方向的往复摆动都是简正模，简正坐标可取任意正交方向，不唯一（谱定理在重特征值处特征向量可任选）。圆周运动是两垂直方向等幅、相差四分之一周期的往复摆动的叠加。简并源于绕竖直轴的转动对称；对称破缺则频率分裂、方向确定。

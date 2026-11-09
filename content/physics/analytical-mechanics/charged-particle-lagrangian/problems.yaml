@@ -1,0 +1,149 @@
+- id: p1
+  tier: easy
+  statement: |
+    质量$m=2\,\mathrm{kg}$、电荷$q=0.5\,\mathrm{C}$的粒子某时刻速度的$x$分量是$3\,\mathrm{m/s}$，所在处矢势的$x$分量是$A_x=4\,\mathrm{T\cdot m}$。求正则动量的$x$分量。
+  answer:
+    type: number
+    value: 8
+    unit: |
+      $\mathrm{kg\cdot m/s}$
+  hints:
+    - |
+      正则动量是$\frac{\partial L}{\partial\dot{\vb{r}}}$，拉格朗日量里含速度的项有哪些？
+    - |
+      $p_x=m\dot x+qA_x$。
+    - |
+      $p_x=2\times3+0.5\times4=8\,\mathrm{kg\cdot m/s}$，机械动量只有$6$。答案填 `8`。
+  solution: |
+    $p_x=m\dot x+qA_x=8\,\mathrm{kg\cdot m/s}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    在规范变换$\varphi\to\varphi-\partial_t\chi$、$\vb{A}\to\vb{A}+\nabla\chi$下，下面哪些量不变？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        电场$\vb{E}$
+      - |
+        磁场$\vb{B}$
+      - |
+        正则动量$\vb{p}=m\dot{\vb{r}}+q\vb{A}$
+      - |
+        机械动量$m\dot{\vb{r}}$
+    value: [1, 2, 4]
+  hints:
+    - |
+      $\vb{E}=-\nabla\varphi-\partial_t\vb{A}$，$\vb{B}=\nabla\times\vb{A}$，代入变换后的势算一算。
+    - |
+      规范变换不改变运动，所以轨道$\vb{r}(t)$不变。正则动量里的$\vb{A}$变了没有？
+    - |
+      A 对：$-\nabla(\varphi-\partial_t\chi)-\partial_t(\vb{A}+\nabla\chi)=\vb{E}$。B 对：$\nabla\times\nabla\chi=0$。C 错：$\vb{p}$变成$\vb{p}+q\nabla\chi$。D 对：运动不变，$\dot{\vb{r}}$不变。
+
+      答案是 A、B、D。
+  solution: |
+    A、B、D。正则动量变成$\vb{p}+q\nabla\chi$。
+
+- id: p3
+  tier: medium
+  statement: |
+    例 1 中，$E=1000\,\mathrm{V/m}$，$B=0.01\,\mathrm{T}$，正电荷从静止出发。求它在运动中达到的最大速率。
+  answer:
+    type: number
+    value: 2*1000/0.01
+    unit: |
+      $\mathrm{m/s}$
+  hints:
+    - |
+      由例 1，$\dot x=\frac EB(1-\cos\omega_ct)$，$\dot y=\frac EB\sin\omega_ct$。
+    - |
+      速率的平方是$\bigl(\frac EB\bigr)^2\bigl[(1-\cos\omega_ct)^2+\sin^2\omega_ct\bigr]=2\bigl(\frac EB\bigr)^2(1-\cos\omega_ct)$。
+    - |
+      $\cos\omega_ct=-1$时最大，速率$\frac{2E}{B}=\frac{2\times1000}{0.01}=2\times10^5\,\mathrm{m/s}$，正好是漂移速度的两倍（摆线的最高点）。答案填 `2e5`。
+  solution: |
+    $|\vb{v}|^2=2(E/B)^2(1-\cos\omega_ct)$，最大$\frac{2E}{B}=2\times10^5\,\mathrm{m/s}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    例 1 中的粒子是质子（$m=1.67\times10^{-27}\,\mathrm{kg}$，$q=1.6\times10^{-19}\,\mathrm{C}$），$E=1000\,\mathrm{V/m}$，$B=0.01\,\mathrm{T}$，从静止出发。它沿电场方向最远走到多远？
+  answer:
+    type: number
+    value: 2*1.67e-27*1000/(1.6e-19*0.01^2)
+    unit: |
+      $\mathrm{m}$
+  hints:
+    - |
+      由例 1，$y=\frac{E}{B\omega_c}(1-\cos\omega_ct)$，最大值是多少？
+    - |
+      $y_{\max}=\frac{2E}{B\omega_c}=\frac{2mE}{qB^2}$。
+    - |
+      $y_{\max}=\frac{2\times1.67\times10^{-27}\times1000}{1.6\times10^{-19}\times10^{-4}}\approx0.209\,\mathrm{m}$。这也可以用能量检验：最高点速率$\frac{2E}{B}$，$\frac12m\bigl(\frac{2E}{B}\bigr)^2=qEy_{\max}$。答案填 `0.209` 或原式。
+  solution: |
+    $y_{\max}=\frac{2mE}{qB^2}\approx0.209\,\mathrm{m}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    由$H=\frac{|\vb{p}-q\vb{A}|^2}{2m}+q\varphi$出发：（1）写出哈密顿正则方程；（2）证明它们给出$\dot{\vb{r}}=\frac{\vb{p}-q\vb{A}}{m}$和$m\ddot{\vb{r}}=q(\vb{E}+\dot{\vb{r}}\times\vb{B})$。
+  hints:
+    - |
+      （1）$\dot x_j=\frac{\partial H}{\partial p_j}$，$\dot p_j=-\frac{\partial H}{\partial x_j}$，$H$通过$\vb{A}$和$\varphi$依赖$\vb{r}$。
+    - |
+      （2）记$\vb{v}=\frac{\vb{p}-q\vb{A}}{m}$。$m\ddot x_j=\dot p_j-q\frac{\dd A_j}{\dd t}$，$\frac{\dd A_j}{\dd t}=\partial_tA_j+\sum_kv_k\partial_kA_j$。
+    - |
+      （1）$\dot x_j=\frac{p_j-qA_j}{m}$；$\dot p_j=-\partial_jH=\frac qm\sum_k(p_k-qA_k)\partial_jA_k-q\partial_j\varphi=q\sum_kv_k\partial_jA_k-q\partial_j\varphi$。
+
+      （2）第一组就是$\dot{\vb{r}}=\vb{v}$。由$m\dot x_j=p_j-qA_j$求导：$m\ddot x_j=\dot p_j-q\partial_tA_j-q\sum_kv_k\partial_kA_j=q(-\partial_j\varphi-\partial_tA_j)+q\sum_kv_k(\partial_jA_k-\partial_kA_j)=qE_j+q(\vb{v}\times\vb{B})_j$，和讲解里由拉格朗日方程得到的一样。
+  reference: |
+    （1）$\dot x_j=(p_j-qA_j)/m$，$\dot p_j=q\sum_kv_k\partial_jA_k-q\partial_j\varphi$。（2）$m\ddot x_j=\dot p_j-q(\partial_tA_j+\sum_kv_k\partial_kA_j)=qE_j+q\sum_kv_k(\partial_jA_k-\partial_kA_j)=q(\vb{E}+\vb{v}\times\vb{B})_j$。
+
+- id: p6
+  tier: hard
+  statement: |
+    例 2 的对称规范，$q>0$。（1）在垂直于磁场的平面里，粒子以角频率$\omega_c=\frac{qB}{m}$沿半径$R$的圆周运动，圆心离原点$d$。证明$p_\theta=m\rho^2\dot\theta+\frac{qB}{2}\rho^2=\frac{qB}{2}(d^2-R^2)$，并说明它确实不随时间变。（2）由此说明：$p_\theta$守恒，记录的是什么几何量？
+  hints:
+    - |
+      正电荷在$+z$方向的磁场里顺时针转。设圆心是$\vb{c}$，$\vb{r}=\vb{c}+R(\cos u,\sin u)$，$u=-\omega_ct+u_0$。
+    - |
+      $m\rho^2\dot\theta=m(x\dot y-y\dot x)$是对原点的机械角动量；$\rho^2=|\vb{r}|^2=d^2+R^2+2R\,\vb{c}\cdot\vb{n}$，$\vb{n}=(\cos u,\sin u)$。
+    - |
+      （1）$\dot{\vb{r}}=R\omega_c(\sin u,-\cos u)$。$m(x\dot y-y\dot x)=-mR\omega_c\bigl(R+\vb{c}\cdot\vb{n}\bigr)$，$\frac{qB}{2}\rho^2=\frac{m\omega_c}{2}\bigl(d^2+R^2+2R\,\vb{c}\cdot\vb{n}\bigr)$。相加，含$\vb{c}\cdot\vb{n}$的项抵消：$p_\theta=\frac{m\omega_c}{2}(d^2+R^2)-mR^2\omega_c=\frac{qB}{2}(d^2-R^2)$，和$u$无关，不随时间变。
+
+      （2）$R$由速率决定（$R=v/\omega_c$），能量守恒使它不变；$p_\theta$守恒于是说圆心到原点的距离$d$不变：圆周不会绕着原点漂移。在$\vb{A}_1$下守恒的$p_x=m\dot x-qBy$同样有几何意义：$m\dot x-qBy=-qBy_c$，$y_c$是圆心的$y$坐标。两种规范给出的守恒量合起来，说的都是「回旋的圆心不动」。
+  reference: |
+    （1）$\dot{\vb{r}}=R\omega_c(\sin u,-\cos u)$，机械角动量$-mR\omega_c(R+\vb{c}\cdot\vb{n})$，加$\frac{m\omega_c}{2}(d^2+R^2+2R\vb{c}\cdot\vb{n})$，得$p_\theta=\frac{qB}{2}(d^2-R^2)$，与时间无关。（2）$R$不变，故$p_\theta$守恒即圆心到原点的距离不变；$\vb{A}_1$下$p_x=-qBy_c$，同样表示圆心不动。
+
+- id: p7
+  tier: thinking
+  statement: |
+    一根很长的螺线管（solenoid）外面，$\vb{B}=0$，但矢势$\vb{A}\ne0$（绕螺线管一圈，$\oint\vb{A}\cdot\dd\vb{l}$等于管内的磁通量，magnetic flux）。（1）经典的带电粒子在管外运动，受不受磁场的影响？它的正则动量和机械动量一样吗？（2）为什么有人说，在量子力学里$\vb{A}$比$\vb{B}$「更基本」？
+  hints:
+    - |
+      （1）经典的运动方程只含$\vb{E}$、$\vb{B}$。管外$\vb{B}=0$，粒子受力吗？$\vb{p}=m\dot{\vb{r}}+q\vb{A}$里的$\vb{A}$呢？
+    - |
+      （2）量子力学里动量算符对应的是正则动量$\vb{p}$，不是$m\dot{\vb{r}}$；绕螺线管两侧走的两束电子，相位会差多少？
+    - |
+      （1）管外$\vb{E}=\vb{B}=0$，粒子不受力，轨道和没有螺线管时一样；但正则动量$\vb{p}=m\dot{\vb{r}}+q\vb{A}$和机械动量差$q\vb{A}$，而这个差可以用规范变换在局部去掉，绕螺线管一圈的$\oint\vb{A}\cdot\dd\vb{l}$却去不掉，它等于管内的磁通量。经典力学里这件事没有可观测的后果。
+
+      （2）量子力学里用的是$H=\frac{|\vb{p}-q\vb{A}|^2}{2m}+q\varphi$，波函数（wave function）的相位里出现$\frac q\hbar\int\vb{A}\cdot\dd\vb{l}$。从螺线管两侧绕过的两束电子，相位差是$\frac q\hbar\oint\vb{A}\cdot\dd\vb{l}=\frac{q\Phi}{\hbar}$，干涉条纹（interference fringes）会随管内的磁通量$\Phi$移动，尽管电子走过的地方$\vb{B}=0$：这就是阿哈罗诺夫-玻姆效应（Aharonov–Bohm effect），1959 年预言，后来被实验证实。所以量子力学里，规范不变（gauge-invariant）的$\oint\vb{A}\cdot\dd\vb{l}$有可观测的后果，只知道各处的$\vb{B}$还不够。
+  reference: |
+    （1）经典粒子在管外不受力，运动不受影响；正则动量与机械动量差$q\vb{A}$，局部可用规范去掉，但$\oint\vb{A}\cdot\dd\vb{l}=\Phi$去不掉，经典上无可观测后果。（2）量子力学用正则动量，相位含$\frac q\hbar\int\vb{A}\cdot\dd\vb{l}$，绕螺线管两侧的电子相位差$q\Phi/\hbar$，干涉条纹随$\Phi$移动（阿哈罗诺夫-玻姆效应），即使电子所在处$\vb{B}=0$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    摩擦力$\vb{F}=-b\dot{\vb{r}}$也和速度有关。它能不能像洛伦兹力那样，写成某个广义势$U(\vb{r},\dot{\vb{r}},t)$给出的力？想一想$U$对速度是一次、二次时分别会给出什么样的力。
+  hints:
+    - |
+      设$U=U_0(\vb{r},t)+\dot{\vb{r}}\cdot\vb{C}(\vb{r},t)$，照讲解里的证明算$-\frac{\partial U}{\partial x_j}+\frac{\dd}{\dd t}\frac{\partial U}{\partial\dot x_j}$。
+    - |
+      一次项给出的力里，和速度有关的部分做功吗？$U$含速度的二次项时，$\frac{\dd}{\dd t}\frac{\partial U}{\partial\dot x_j}$里会出现什么？
+    - |
+      一次的情形：$Q_j=-\partial_jU_0+\partial_tC_j+\sum_k\dot x_k(\partial_kC_j-\partial_jC_k)$，和速度有关的部分是$-\dot{\vb{r}}\times(\nabla\times\vb{C})$，垂直于速度，功率为零。摩擦力和速度反向，功率$-b|\dot{\vb{r}}|^2<0$，所以不可能来自一次的$U$。
+
+      二次的情形：$\frac{\partial U}{\partial\dot x_j}$含$\dot x$，求时间导数会出现加速度$\ddot x$，给出的「力」依赖加速度，也不是$-b\dot{\vb{r}}$。更一般地，由广义势给出的力总有一个守恒的能量$\sum_j\frac{\partial L}{\partial\dot q_j}\dot q_j-L$（$L$不显含时间时），而摩擦力让能量单调减少。所以摩擦力不能用广义势描述，处理它要在拉格朗日方程右边保留非保守的广义力，或者另外引入耗散函数（dissipation function）。
+  reference: |
+    一次的$U$给出的速度相关力是$-\dot{\vb{r}}\times(\nabla\times\vb{C})$，垂直于速度、不做功；摩擦力做负功，不可能。二次的$U$会使力含加速度。且有广义势而$L$不显含时间时存在守恒的能量，摩擦使能量减少。故摩擦力没有广义势，需作为非保守广义力或用耗散函数处理。
