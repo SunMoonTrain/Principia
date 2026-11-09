@@ -1,5 +1,6 @@
 // FunctionPlot：函数曲线、数列和标出的点，参数可拖，没有时间演化。写法见 docs/plan.md「附录：动画组件参数」。
-// 鼠标移到图上，图例里显示各条曲线在那一处的值（数列取最近的整数 n）。
+// 鼠标移到图上，图例里显示各条曲线在那一处的值（数列取最近的整数 n，这个 n 不是它画出的项时不显示）。
+// 式子算出来没有定义的地方：曲线断开，数列那一项不画。
 
 import { useEffect, useMemo, useState, type PointerEvent } from 'react';
 import { compileExpr, type CompiledExpr } from './expr';
@@ -23,6 +24,22 @@ interface Compiled {
   functions: CompiledExpr[];
   sequences: CompiledExpr[];
   points: [CompiledExpr, CompiledExpr][];
+}
+
+type Sequence = NonNullable<FunctionPlotParams['sequences']>[number];
+
+/** 数列画在横轴 [lo, hi] 里的那些项：n₀、n₀ + step、n₀ + 2·step……不超过 n₁。 */
+export function termsIn(s: Sequence, lo: number, hi: number): number[] {
+  const step = s.step ?? 1;
+  const [n0, n1] = s.n;
+  const terms: number[] = [];
+  for (let n = n0 + Math.max(0, Math.ceil((lo - n0) / step)) * step; n <= Math.min(n1, hi); n += step) terms.push(n);
+  return terms;
+}
+
+/** n 是不是这个数列画出来的一项。 */
+export function isTerm(s: Sequence, n: number): boolean {
+  return n >= s.n[0] && n <= s.n[1] && (n - s.n[0]) % (s.step ?? 1) === 0;
 }
 
 function compile(p: FunctionPlotParams): Compiled | string {
@@ -119,12 +136,9 @@ export function FunctionPlot({ params: p, labels }: AnimProps<FunctionPlotParams
     const unit = view.scale[0];
     const radius = Math.max(1.6, Math.min(3.6, unit * 0.28));
     compiled.sequences.forEach((f, i) => {
-      const [n0, n1] = sequences[i].n;
-      const from = Math.max(n0, Math.ceil(view.x[0]));
-      const to = Math.min(n1, Math.floor(view.x[1]));
       ctx.fillStyle = color(functions.length + i);
       ctx.beginPath();
-      for (let n = from; n <= to; n++) {
+      for (const n of termsIn(sequences[i], view.x[0], view.x[1])) {
         vars[0] = n;
         const y = f(vars);
         if (!Number.isFinite(y)) continue;
@@ -151,8 +165,7 @@ export function FunctionPlot({ params: p, labels }: AnimProps<FunctionPlotParams
         ctx.stroke();
       });
       compiled.sequences.forEach((f, i) => {
-        const [n0, n1] = sequences[i].n;
-        if (hoverN! < n0 || hoverN! > n1) return;
+        if (!isTerm(sequences[i], hoverN!)) return;
         vars[0] = hoverN!;
         const y = f(vars);
         if (!Number.isFinite(y)) return;
@@ -192,7 +205,7 @@ export function FunctionPlot({ params: p, labels }: AnimProps<FunctionPlotParams
     }),
     ...sequences.map((s, i): LegendItem => {
       let value: string | undefined;
-      if (hoverN !== null && hoverN >= s.n[0] && hoverN <= s.n[1]) {
+      if (hoverN !== null && isTerm(s, hoverN)) {
         vars[0] = hoverN;
         value = formatNumber(compiled.sequences[i](vars));
       }

@@ -32,7 +32,8 @@ export interface SliderSpec {
 export const FunctionPlotSchema = z.strictObject({
   range: z.strictObject({ x: Range, y: Range }),
   functions: z.array(z.strictObject({ expr: Expr, label: Label.optional() })).optional(),
-  sequences: z.array(z.strictObject({ expr: Expr, n: z.tuple([z.int(), z.int()]), label: Label.optional() })).optional(),
+  // step：隔几项画一个（默认 1），画子列用，如 n: [2, 40] 加 step: 2 只画偶数项
+  sequences: z.array(z.strictObject({ expr: Expr, n: z.tuple([z.int(), z.int()]), step: z.int().min(1).optional(), label: Label.optional() })).optional(),
   points: z.array(z.strictObject({ x: Expr, y: Expr })).optional(),
   sliders: Sliders,
 });

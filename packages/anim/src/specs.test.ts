@@ -16,6 +16,9 @@ describe('第一批组件的参数检查', () => {
     expect(problems('function-plot', { range })).toEqual(['：functions 和 sequences 至少要有一种']);
     expect(problems('function-plot', { range, functions: [{ expr: 'n^2' }] })).toEqual(['functions.0.expr：不认识的名字「n」']);
     expect(problems('function-plot', { range, sequences: [{ expr: '1/n', n: [10, 1] }] })).toEqual(['sequences.0.n：n 要从小写到大，最多画 5000 项']);
+    expect(problems('function-plot', { range, sequences: [{ expr: '1/n', n: [2, 10], step: 2 }] })).toEqual([]);
+    expect(problems('function-plot', { range, sequences: [{ expr: '1/n', n: [2, 10], step: 0 }] })[0]).toMatch(/^sequences\.0\.step/);
+    expect(problems('function-plot', { range, sequences: [{ expr: '1/n', n: [2, 10], step: 1.5 }] })[0]).toMatch(/^sequences\.0\.step/);
     expect(problems('function-plot', { range: { x: [1, 0], y: [0, 1] }, functions: [{ expr: 'x' }] })).toEqual(['range.x：范围要从小写到大，如 [-3, 3]']);
     expect(problems('function-plot', { range, functions: ['x'] })[0]).toMatch(/^functions\.0/);
     expect(SPECS['function-plot'].reserved({} as never)).toEqual(['x', 'n']);
