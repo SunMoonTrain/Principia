@@ -33,6 +33,8 @@ export interface DomainInfo {
   titleText: string;
   proofPolicy: ProofPolicy;
   macros: Record<string, string>;
+  /** 每个宏在 _domain.yaml 里的行号，跨领域核对宏定义时报错用。 */
+  macroLines: Record<string, number>;
   glossary: GlossaryInfo[];
 }
 
@@ -66,8 +68,10 @@ export function processDomain(file: string, reportFile: string, expectedId: stri
 
   // 符号约定：宏名是反斜杠加字母；定义本身也要能被 KaTeX 渲染（用 {x} 填参数试一次）。
   const macros: Record<string, string> = {};
+  const macroLines: Record<string, number> = {};
   for (const [name, value] of Object.entries(d.macros ?? {})) {
-    if (!/^\\[A-Za-z]+$/.test(name)) diags.error(reportFile, lineOf(y, ['macros', name]), `宏名「${name}」要写成反斜杠加英文字母，如 \\R`);
+    macroLines[name] = lineOf(y, ['macros', name]);
+    if (!/^\\[A-Za-z]+$/.test(name)) diags.error(reportFile, macroLines[name], `宏名「${name}」要写成反斜杠加英文字母，如 \\R`);
     macros[name] = value.trim();
   }
   for (const [name, value] of Object.entries(macros)) {
@@ -124,6 +128,39 @@ export function processDomain(file: string, reportFile: string, expectedId: stri
     titleText: plainText(d.title),
     proofPolicy: d.proofPolicy,
     macros,
+    macroLines,
     glossary,
   };
+}
+
+/**
+ * 同一个宏名在各领域的定义要一样（plan.md「内容模型」的符号宏约定：同名的宏在哪个领域都是同一个意思，别的领域照抄定义）。
+ * 比较时空白不算（首尾去掉，连续的空白当一个）。以用得最多的定义为准，一样多时以领域 id 排在前面的为准；
+ * 和它不一样的领域逐个报错，指到那个领域里这个宏的那一行。
+ */
+export function checkMacroConsistency(domains: DomainInfo[], diags: Diagnostics): void {
+  const normalize = (s: string): string => s.trim().replace(/\s+/g, ' ');
+  const owners = new Map<string, DomainInfo[]>();
+  for (const d of [...domains].sort((a, b) => a.id.localeCompare(b.id))) {
+    for (const name of Object.keys(d.macros)) owners.set(name, [...(owners.get(name) ?? []), d]);
+  }
+  for (const [name, list] of owners) {
+    const counts = new Map<string, number>();
+    for (const d of list) {
+      const value = normalize(d.macros[name]);
+      counts.set(value, (counts.get(value) ?? 0) + 1);
+    }
+    if (counts.size < 2) continue;
+    let standard = normalize(list[0].macros[name]);
+    for (const [value, n] of counts) if (n > counts.get(standard)!) standard = value;
+    const keeper = list.find((d) => normalize(d.macros[name]) === standard)!;
+    const n = counts.get(standard)!;
+    // 中文和英文之间留空格：「math.x 里是」「math.x 等 3 个领域里是」
+    const where = n > 1 ? `${keeper.id} 等 ${n} 个领域` : `${keeper.id} `;
+    for (const d of list) {
+      const value = normalize(d.macros[name]);
+      if (value === standard) continue;
+      diags.error(d.file, d.macroLines[name], `宏 ${name} 在各领域的定义要一样：这里是「${value}」，${where}里是「${standard}」`);
+    }
+  }
 }

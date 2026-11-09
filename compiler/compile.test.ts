@@ -229,6 +229,13 @@ describe('故意改坏，构建失败并指出文件和行号', () => {
     edit(root, 'content/math/analysis/_domain.yaml', 'anchor: def-supremum\n', 'anchor: def-sup\n');
     expect(errors(root)[0].message).toContain('def-sup');
   });
+
+  it('同一个宏在各领域的定义不一样：以多数领域的为准，指出不一样的那个领域和行号', () => {
+    const root = fixture();
+    const file = 'content/math/calculus/_domain.yaml';
+    const line = edit(root, file, /\\R: \|\n {4}\\mathbb\{R\}/, '\\R: |\n    \\mathbf{R}');
+    expect(errors(root)).toMatchObject([{ file, line, message: expect.stringMatching(/宏 \\R 在各领域的定义要一样：这里是「\\mathbf\{R\}」，.+ 等 \d+ 个领域里是「\\mathbb\{R\}」/) }]);
+  });
 });
 
 describe('动画组件块（台阶 7）', () => {

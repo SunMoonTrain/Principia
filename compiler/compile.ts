@@ -15,7 +15,7 @@ import {
 } from '../shared/content-types.ts';
 import { SEGMENT_RE } from '../shared/ids.ts';
 import { Diagnostics } from './diagnostics.ts';
-import { processDomain, type DomainInfo, type GlossaryInfo } from './domain.ts';
+import { checkMacroConsistency, processDomain, type DomainInfo, type GlossaryInfo } from './domain.ts';
 import { relPosix } from './fsutil.ts';
 import { computeLevels, findCycles, redundantPrereqs, type PrereqMap } from './graph.ts';
 import { layoutMap } from './layout.ts';
@@ -94,6 +94,9 @@ export function compileContent(root: string): CompileResult {
       }
     }
   }
+
+  // ---- 符号宏：同一个宏名在各领域的定义要一样 ----
+  checkMacroConsistency([...domains.values()], diags);
 
   // ---- 前置关系：引用的 id 必须存在、不能有环；层级 = 最长前置链长度 ----
   const prereqs: PrereqMap = new Map();
