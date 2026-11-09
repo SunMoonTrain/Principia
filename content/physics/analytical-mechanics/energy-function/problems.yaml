@@ -1,0 +1,173 @@
+- id: p1
+  tier: easy
+  statement: |
+    珠子套在水平面内绕一端匀速转动的光滑直铁丝上，$L=\frac12m(\dot s^2+s^2\omega^2)$，$s$是珠子到转轴的距离。取$m=1\,\mathrm{kg}$、$\omega=1\,\mathrm{rad/s}$，某一时刻$s=2\,\mathrm{m}$、$\dot s=3\,\mathrm{m/s}$。求此刻的:term[能量函数]{id="physics.analytical-mechanics.energy-function"}$h$。
+  answer:
+    type: number
+    value: 5/2
+    unit: |
+      $\mathrm{J}$
+  hints:
+    - |
+      用定义$h=\dot s\frac{\partial L}{\partial\dot s}-L$。
+    - |
+      $\frac{\partial L}{\partial\dot s}=m\dot s$，所以$h=m\dot s^2-\frac12m(\dot s^2+s^2\omega^2)=\frac12m\dot s^2-\frac12ms^2\omega^2$。
+    - |
+      $h=\frac12\times1\times3^2-\frac12\times1\times2^2\times1^2=4.5-2=2.5\,\mathrm{J}$。注意它不是动能：此刻的动能是$\frac12(9+4)=6.5\,\mathrm{J}$。
+  solution: |
+    $h=\frac12m\dot s^2-\frac12ms^2\omega^2=2.5\,\mathrm{J}$，而动能是$6.5\,\mathrm{J}$：约束在转，珠子的位置$(s\cos\omega t,\ s\sin\omega t)$显含时间，$h$不是机械能。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些系统（用题中自然的广义坐标）的:term[能量函数]{id="physics.analytical-mechanics.energy-function"}守恒？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        珠子套在固定的光滑抛物线铁丝上，受重力作用
+      - |
+        珠子套在光滑直铁丝上，铁丝和竖直轴成固定的角，绕竖直轴匀速转动
+      - |
+        单摆的摆长按$l(t)=l_0+ut$均匀变长（$u$是常数）
+      - |
+        质点在势能$V(x,t)=\frac12kx^2\cos^2\Omega t$里做一维运动
+    value: [1, 2]
+  hints:
+    - |
+      $h$守恒的条件只有一条：$L$不显含时间。约束转不转、机械能守不守恒，在这里都不影响判断。
+    - |
+      B 的$L=\frac12m(\dot s^2+s^2\omega^2\sin^2\alpha)-mgs\cos\alpha$。C、D 的$L$里会明写$t$。
+    - |
+      A：约束固定、势能不显含$t$，$h=E$守恒。B：铁丝在转，但转速恒定，$L$里没有$t$，$h$守恒（不等于机械能）。C：摆长是$t$的函数，$L$显含$t$，$h$不守恒。D：势能显含$t$，$h$不守恒。
+
+      答案是 A、B。
+  solution: |
+    A、B。B 的约束随时间转，但$L$不显含$t$，所以$h$守恒；C、D 的$L$显含$t$。
+
+- id: p3
+  tier: medium
+  statement: |
+    例 1 的转动圆环，取$\omega^2=\frac{2g}{R}$。珠子在最低点附近由静止开始（受到一点扰动），沿圆环滑开。它能升到的最大的$\theta$是多少（弧度，从最低点量起）？
+  answer:
+    type: number
+    value: pi/2
+  hints:
+    - |
+      机械能不守恒（圆环在转），但:term[能量函数]{id="physics.analytical-mechanics.energy-function"}$h$守恒。最高点是$\dot\theta=0$的点。
+    - |
+      $h=\frac12mR^2\dot\theta^2-\frac12mR^2\omega^2\sin^2\theta-mgR\cos\theta$。一开始$\theta\approx0$、$\dot\theta\approx0$，$h=-mgR$。
+    - |
+      在最高点$\dot\theta=0$：$-\frac12mR^2\omega^2\sin^2\theta-mgR\cos\theta=-mgR$。代入$\omega^2=\frac{2g}{R}$：$\sin^2\theta+\cos\theta=1$，即$\cos\theta(1-\cos\theta)=0$。$\cos\theta=1$是出发点，所以最高点$\cos\theta=0$，$\theta=\frac{\pi}{2}$。
+
+      答案是$\frac{\pi}{2}$，填 `pi/2`。珠子在$0$到$\frac{\pi}{2}$之间来回，围着$\cos\theta=\frac12$的相对静止位置摆动。
+  solution: |
+    $h$守恒：$\frac12R\omega^2\sin^2\theta=g(1-\cos\theta)$，代入$\omega^2=\frac{2g}{R}$得$\cos\theta=0$，最大$\theta=\frac{\pi}{2}$。若误用机械能守恒，会得出珠子根本升不起来的错误结论。
+
+- id: p4
+  tier: medium
+  statement: |
+    光滑直铁丝在水平面内绕一端以$\omega=2\,\mathrm{rad/s}$匀速转动，质量$m=0.5\,\mathrm{kg}$的珠子从离转轴$s_0=0.1\,\mathrm{m}$处、相对铁丝静止开始被甩出。珠子到达$s=1\,\mathrm{m}$时，铁丝对它一共做了多少功？
+  answer:
+    type: number
+    value: 99/50
+    unit: |
+      $\mathrm{J}$
+  hints:
+    - |
+      铁丝做的功等于珠子动能（机械能）的增加。先用守恒的:term[能量函数]{id="physics.analytical-mechanics.energy-function"}求出到达$s$时的$\dot s$。
+    - |
+      $h=\frac12m\dot s^2-\frac12ms^2\omega^2$守恒，初值$h=-\frac12ms_0^2\omega^2$，所以$\dot s^2=\omega^2(s^2-s_0^2)$。动能$E=\frac12m(\dot s^2+s^2\omega^2)$。
+    - |
+      到达$s$时$E=\frac12m\omega^2(2s^2-s_0^2)$，出发时$E_0=\frac12m\omega^2s_0^2$，所以铁丝做的功
+
+      $$
+      W=E-E_0=m\omega^2(s^2-s_0^2)=0.5\times4\times(1-0.01)=1.98\,\mathrm{J}.
+      $$
+
+      答案是$1.98\,\mathrm{J}$，填 `1.98` 或 `99/50`。
+  solution: |
+    由$h$守恒得$\dot s^2=\omega^2(s^2-s_0^2)$，$W=\Delta E=m\omega^2(s^2-s_0^2)=1.98\,\mathrm{J}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    平面上一个不受力的质点。取一个以角速度$\omega$绕原点匀速转动的坐标系，用其中的坐标$(x',y')$作广义坐标：$x=x'\cos\omega t-y'\sin\omega t$，$y=x'\sin\omega t+y'\cos\omega t$。写出$L(x',y',\dot x',\dot y')$，求:term[能量函数]{id="physics.analytical-mechanics.energy-function"}$h$并说明它守恒；再证明$h=E-\omega L_z$，其中$E$是惯性系里的动能，$L_z$是对原点的角动量。$h$和$E$都守恒，为什么却不相等？
+  hints:
+    - |
+      先求$(\dot x,\dot y)$，它等于把向量$(\dot x'-\omega y',\ \dot y'+\omega x')$转过$\omega t$角，所以长度相同。
+    - |
+      $L=\frac12m\bigl[(\dot x'-\omega y')^2+(\dot y'+\omega x')^2\bigr]$，不显含$t$。$L_z=m(xv_y-yv_x)$在转动下不变，可以直接用转动坐标系里的分量算。
+    - |
+      $\dot x=(\dot x'-\omega y')\cos\omega t-(\dot y'+\omega x')\sin\omega t$，$\dot y=(\dot x'-\omega y')\sin\omega t+(\dot y'+\omega x')\cos\omega t$，所以
+
+      $$
+      L=\frac12m\bigl[(\dot x'-\omega y')^2+(\dot y'+\omega x')^2\bigr].
+      $$
+
+      $L$不显含$t$，$h$守恒。$\frac{\partial L}{\partial\dot x'}=m(\dot x'-\omega y')$，$\frac{\partial L}{\partial\dot y'}=m(\dot y'+\omega x')$，所以
+
+      $$
+      h=\dot x'\frac{\partial L}{\partial\dot x'}+\dot y'\frac{\partial L}{\partial\dot y'}-L=\frac12m(\dot x'^2+\dot y'^2)-\frac12m\omega^2(x'^2+y'^2).
+      $$
+
+      $E=L=\frac12m\bigl[\dot x'^2+\dot y'^2+\omega^2(x'^2+y'^2)+2\omega(x'\dot y'-y'\dot x')\bigr]$；$L_z=m\bigl[x'(\dot y'+\omega x')-y'(\dot x'-\omega y')\bigr]=m(x'\dot y'-y'\dot x')+m\omega(x'^2+y'^2)$。于是$E-\omega L_z=\frac12m(\dot x'^2+\dot y'^2)-\frac12m\omega^2(x'^2+y'^2)=h$。
+
+      自由质点的$E$和$L_z$都守恒，所以$h$守恒，这和上面的结论一致。两者不相等，是因为用转动坐标时$\vb{r}$显含$t$，$h=T_2-T_0$，不再是$T$。$h$依赖坐标的选择，而$E$是惯性系里的量；在转动坐标系里，$h$守恒是$E$守恒和$L_z$守恒合在一起的结果。
+  reference: |
+    $L=\frac12m[(\dot x'-\omega y')^2+(\dot y'+\omega x')^2]$不显含$t$，$h$守恒；$h=\frac12m(\dot x'^2+\dot y'^2)-\frac12m\omega^2(x'^2+y'^2)$。$E=L$，$L_z=m(x'\dot y'-y'\dot x')+m\omega(x'^2+y'^2)$，故$E-\omega L_z=h$。转动坐标使$\vb{r}$显含$t$，$h=T_2-T_0\ne T$；$h$依赖坐标，是$E$与$L_z$两个守恒量的组合。
+
+- id: p6
+  tier: hard
+  statement: |
+    例 1 的转动圆环。利用:term[能量函数]{id="physics.analytical-mechanics.energy-function"}守恒证明：$\omega^2<\frac{g}{R}$时，最低点$\theta=0$是稳定的平衡位置（珠子从它附近、以很小的速度出发，就一直留在它附近）；$\omega^2>\frac{g}{R}$时最低点不稳定，而$\cos\theta^*=\frac{g}{R\omega^2}$处是稳定的。
+  hints:
+    - |
+      把$h$写成$\frac12mR^2\dot\theta^2+U(\theta)$，第一项不小于零。看$U$在平衡位置是极小还是极大。
+    - |
+      $U(\theta)=-mgR\cos\theta-\frac12mR^2\omega^2\sin^2\theta$，$U'(\theta)=mR\sin\theta\,(g-R\omega^2\cos\theta)$。分别算$U''(0)$和$U''(\theta^*)$的符号。
+    - |
+      $h=\frac12mR^2\dot\theta^2+U(\theta)$守恒，$U(\theta)=-mgR\cos\theta-\frac12mR^2\omega^2\sin^2\theta$，$U'(\theta)=mR\sin\theta\,(g-R\omega^2\cos\theta)$，平衡位置就是$U$的驻点。
+
+      $U''(0)=mR(g-R\omega^2)$。$\omega^2<\frac{g}{R}$时$U''(0)>0$，$\theta=0$是$U$的严格极小。设$U$在$[-\delta,\delta]$里只在$0$处取最小，令$\varepsilon=\min\{U(\delta),U(-\delta)\}-U(0)>0$。若出发时$h-U(0)<\varepsilon$（离$0$足够近、速度足够小），由$U(\theta)\le h$，$\theta$永远到不了$\pm\delta$，而且$\frac12mR^2\dot\theta^2\le h-U(0)$也一直很小：珠子留在最低点附近，平衡稳定。
+
+      $\omega^2>\frac{g}{R}$时$U''(0)<0$，$\theta=0$是$U$的严格极大。珠子从$\theta_0>0$（很小）静止出发，$h=U(\theta_0)<U(0)$，它永远回不到$\theta=0$；而它在$\theta_0$处受的$\ddot\theta=-U'(\theta_0)/(mR^2)>0$，会离开$0$滑向$\theta^*$那一侧，并越过$\theta^*$摆到另一个转折点，那里离$0$并不近，所以不稳定。
+
+      在$\theta^*$处$g=R\omega^2\cos\theta^*$，$U''(\theta^*)=mR\bigl[\cos\theta^*(g-R\omega^2\cos\theta^*)+R\omega^2\sin^2\theta^*\bigr]=mR^2\omega^2\sin^2\theta^*>0$，是严格极小，按上面同样的论证是稳定的。
+  reference: |
+    $h=\frac12mR^2\dot\theta^2+U(\theta)$，$U=-mgR\cos\theta-\frac12mR^2\omega^2\sin^2\theta$。$U''(0)=mR(g-R\omega^2)$：$\omega^2<g/R$时为严格极小，由$h$守恒和动能项非负，初始$h-U(0)$小于周围的势垒高度时$\theta$被困在附近，稳定；$\omega^2>g/R$时为极大，从附近静止出发的珠子回不到$0$且被推向$\theta^*$，不稳定。$U''(\theta^*)=mR^2\omega^2\sin^2\theta^*>0$，稳定。
+
+- id: p7
+  tier: thinking
+  statement: |
+    转动圆环上，机械能不守恒，:term[能量函数]{id="physics.analytical-mechanics.energy-function"}$h=\frac12mR^2\dot\theta^2-\frac12mR^2\omega^2\sin^2\theta-mgR\cos\theta$却守恒。如果站在跟着圆环一起转动的参考系里看，$h$的三项各是什么？为什么在那个参考系里它像是「能量守恒」？
+  hints:
+    - |
+      在转动参考系里圆环不动，珠子沿圆环的速度是多少？珠子绕轴的距离是$R\sin\theta$。
+    - |
+      转动参考系里有惯性离心力（centrifugal force）$m\omega^2\rho$（$\rho$是到转轴的距离，方向背离转轴）和科里奥利力（Coriolis force）。离心力能写成某个势能的负梯度吗？科里奥利力做不做功？
+    - |
+      在跟着圆环转的参考系里，圆环是固定的，珠子的速率是$R\dot\theta$，所以第一项是相对这个参考系的动能，第三项是重力势能。第二项$-\frac12m\omega^2\rho^2$（$\rho=R\sin\theta$）是惯性离心力的势能：离心力$m\omega^2\rho$背离转轴，正是$-\frac12m\omega^2\rho^2$对$\rho$求导再取负号。
+
+      在那个参考系里，约束（圆环）不动，是定常约束；离心力是保守力；科里奥利力垂直于相对速度，不做功；圆环的支持力垂直于相对速度，也不做功。所以「相对动能+重力势能+离心势能」守恒，这就是$h$。在惯性系里看，圆环在动，支持力有一个沿转动方向的分量在做功，机械能当然不守恒。同一个守恒量，换一个参考系就有了「能量」的样子。
+  reference: |
+    转动系中：$\frac12mR^2\dot\theta^2$是相对动能，$-mgR\cos\theta$是重力势能，$-\frac12m\omega^2\rho^2$（$\rho=R\sin\theta$）是离心势能。转动系里圆环固定（定常约束），离心力保守，科里奥利力与支持力都垂直于相对速度、不做功，故三者之和守恒，即$h$。惯性系里圆环在动，支持力做功，机械能不守恒。
+
+- id: p8
+  tier: thinking
+  statement: |
+    单摆的绳从悬点处的小孔里被极慢地往上拉，摆长$l$缓慢变短，摆角一直很小。$L$显含时间，:term[能量函数]{id="physics.analytical-mechanics.energy-function"}不守恒，摆动的能量会增加。有没有一个量几乎不变？试估计摆长从$l$变成$\frac{l}{4}$时，摆动的能量（相对于当时的最低点）变成原来的几倍。
+  hints:
+    - |
+      拉绳的人做的功分成两部分：把摆球提高，以及增加摆动的能量。算一个周期里绳子拉力的平均值。
+    - |
+      拉力是$mg\cos\theta+ml\dot\theta^2$。设$\theta=\theta_0\cos\omega t$，$\omega=\sqrt{g/l}$，一个周期的平均是$mg\bigl(1+\frac{\theta_0^2}{4}\bigr)$。摆动的能量$E=\frac12mgl\theta_0^2$。
+    - |
+      拉力的周期平均：$\langle\cos\theta\rangle\approx1-\frac{\theta_0^2}{4}$，$\langle l\dot\theta^2\rangle=\frac12l\omega^2\theta_0^2=\frac12g\theta_0^2$，所以$\langle F\rangle=mg\bigl(1+\frac{\theta_0^2}{4}\bigr)$。绳缩短$|\dd l|$时，人做的功$\langle F\rangle|\dd l|$里，$mg|\dd l|$用来提高摆球，剩下的$\frac14mg\theta_0^2|\dd l|=\frac{E}{2l}|\dd l|$增加了摆动的能量。所以$\frac{\dd E}{E}=-\frac{\dd l}{2l}$，$E\propto l^{-1/2}$。
+
+      而$\omega=\sqrt{g/l}\propto l^{-1/2}$，所以$\frac{E}{\omega}$几乎不变。摆长变成$\frac{l}{4}$，$\omega$加倍，摆动的能量也变成原来的$2$倍。
+
+      这种在参数缓慢变化时几乎守恒的量叫浸渐不变量（adiabatic invariant），它和这一节的$h$不同：$h$在$L$完全不显含时间时严格守恒，而$\frac{E}{\omega}$只在变化足够慢时近似守恒。以后讲浸渐不变量的那一节会说明它的来历。
+  reference: |
+    拉力周期平均$\langle F\rangle=mg(1+\theta_0^2/4)$；缩短$|\dd l|$时多出的功$\frac14mg\theta_0^2|\dd l|=\frac{E}{2l}|\dd l|$进入摆动能量$E=\frac12mgl\theta_0^2$，得$E\propto l^{-1/2}\propto\omega$，即$E/\omega$近似不变（浸渐不变量）。摆长变为$\frac l4$时$\omega$加倍，$E$变为$2$倍。

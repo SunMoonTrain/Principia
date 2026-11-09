@@ -1,0 +1,172 @@
+- id: p1
+  tier: easy
+  statement: |
+    质量$m=0.5\,\mathrm{kg}$的质点在平面上运动，用极坐标写出$L=\frac12m(\dot r^2+r^2\dot\varphi^2)-V(r)$。某一时刻$r=2\,\mathrm{m}$、$\dot\varphi=3\,\mathrm{rad/s}$，求和$\varphi$对应的:term[广义动量]{id="physics.analytical-mechanics.generalized-momentum"}$p_\varphi$。
+  answer:
+    type: number
+    value: 6
+    unit: |
+      $\mathrm{kg\cdot m^2/s}$
+  hints:
+    - |
+      用定义$p_\varphi=\frac{\partial L}{\partial\dot\varphi}$。
+    - |
+      $L$里只有$\frac12mr^2\dot\varphi^2$含$\dot\varphi$，所以$p_\varphi=mr^2\dot\varphi$。
+    - |
+      $p_\varphi=0.5\times2^2\times3=6\,\mathrm{kg\cdot m^2/s}$，它是质点对原点的角动量。
+  solution: |
+    $p_\varphi=mr^2\dot\varphi=0.5\times4\times3=6\,\mathrm{kg\cdot m^2/s}$，即对原点的角动量。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些坐标是:term[循环坐标]{id="physics.analytical-mechanics.cyclic-coordinate"}？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        单摆$L=\frac12ml^2\dot\theta^2+mgl\cos\theta$里的$\theta$
+      - |
+        平面上的自由质点用极坐标，$L=\frac12m(\dot r^2+r^2\dot\varphi^2)$里的$r$
+      - |
+        同一个拉格朗日量里的$\varphi$
+      - |
+        光滑地面上的斜面和滑块（讲拉格朗日方程时的例 1）里斜面的位置$X$
+    value: [3, 4]
+  hints:
+    - |
+      看整个:term[拉格朗日量]{id="physics.analytical-mechanics.lagrangian"}里有没有这个坐标本身（不算它的速度）。
+    - |
+      A 的$\theta$在$\cos\theta$里；B 的$r$在动能$\frac12mr^2\dot\varphi^2$里。
+    - |
+      A 不是：势能里有$\cos\theta$。B 不是：$r$虽然不在势能里，却在动能里。C 是：$L$只含$\dot\varphi$。D 是：例 1 的$L$只含$\dot X$，不含$X$。
+
+      答案是 C、D。
+  solution: |
+    C、D。判断循环坐标要看整个$L$，$r$在动能里出现，所以不是。
+
+- id: p3
+  tier: medium
+  statement: |
+    光滑水平桌面上的小球系在细绳一端，绳穿过桌面中央的小孔。桌下的人慢慢拉绳，使小球到小孔的距离从$r_1$变成$r_2=\frac{r_1}{2}$。拉得很慢，$\dot r$可以忽略，小球始终近似做圆周运动。小球的动能变为原来的几倍？
+  answer:
+    type: number
+    value: 4
+  hints:
+    - |
+      把$r(t)$看成人规定好的时间函数（这是:term[非定常约束]{id="physics.analytical-mechanics.rheonomic-constraint"}），只剩一个广义坐标$\varphi$。看$L$里有没有$\varphi$。
+    - |
+      $L=\frac12m\bigl(\dot r^2+r^2\dot\varphi^2\bigr)$，$\varphi$是:term[循环坐标]{id="physics.analytical-mechanics.cyclic-coordinate"}，$p_\varphi=mr^2\dot\varphi$守恒。$\dot r$可以忽略时，动能$T\approx\frac12mr^2\dot\varphi^2=\frac{p_\varphi^2}{2mr^2}$。
+    - |
+      $p_\varphi$不变，$T\approx\frac{p_\varphi^2}{2mr^2}\propto\frac{1}{r^2}$，所以$\frac{T_2}{T_1}=\bigl(\frac{r_1}{r_2}\bigr)^2=4$。
+
+      答案是$4$。动能增加，是因为拉绳的人做了功：约束随时间变，能量不守恒，角动量却守恒。
+  solution: |
+    $p_\varphi=mr^2\dot\varphi$守恒，$T\approx\frac{p_\varphi^2}{2mr^2}$，半径减半，动能变为$4$倍。多出来的动能来自拉绳的人做的功。
+
+- id: p4
+  tier: medium
+  statement: |
+    光滑地面上，质量$M=3m$、倾角$\alpha=\frac{\pi}{3}$的斜面上放着质量$m$的滑块，斜面也光滑。两者从静止释放，滑块沿斜面滑下$1\,\mathrm{m}$时，斜面在地面上移动了多远？
+  answer:
+    type: number
+    value: 1/8
+    unit: |
+      $\mathrm{m}$
+  hints:
+    - |
+      用讲拉格朗日方程时例 1 的坐标：斜面的位置$X$、滑块沿斜面下滑的距离$s$。$X$是:term[循环坐标]{id="physics.analytical-mechanics.cyclic-coordinate"}。
+    - |
+      $p_X=(M+m)\dot X+m\cos\alpha\,\dot s$守恒，一开始静止，所以它一直是$0$。对时间积分，得到$X$和$s$的改变量之间的关系。
+    - |
+      $(M+m)\dot X+m\cos\alpha\,\dot s=0$对时间积分：$(M+m)\Delta X+m\cos\alpha\,\Delta s=0$，所以$|\Delta X|=\frac{m\cos\alpha}{M+m}\Delta s=\frac{m\times\frac12}{4m}\times1=\frac18\,\mathrm{m}$。
+
+      答案是$\frac18\,\mathrm{m}$，斜面向和滑块水平运动相反的方向退。这也就是说，两个物体的质心在水平方向不动。
+  solution: |
+    $p_X=0$积分得$(M+m)\Delta X=-m\cos\alpha\,\Delta s$，$|\Delta X|=\frac{\cos\alpha}{4}\times1=\frac18\,\mathrm{m}$：水平方向上质心不动。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$q_n$是:term[循环坐标]{id="physics.analytical-mechanics.cyclic-coordinate"}，$p_n=\frac{\partial L}{\partial\dot q_n}=c$（常数），并且可以从这个式子解出$\dot q_n=g(q_1,\dots,q_{n-1},\dot q_1,\dots,\dot q_{n-1},t;c)$。定义劳斯函数（Routhian）
+
+    $$
+    R=L-c\,\dot q_n ,
+    $$
+
+    其中所有的$\dot q_n$都用$g$代替，$R$只是$q_1,\dots,q_{n-1}$、$\dot q_1,\dots,\dot q_{n-1}$和$t$的函数。证明：对$j=1,\dots,n-1$，$\dv{}{t}\frac{\partial R}{\partial\dot q_j}-\frac{\partial R}{\partial q_j}=0$，即$R$可以当作剩下$n-1$个坐标的拉格朗日量。用它重新推出有心力问题中$r$的方程，并说明讲解里「直接代进$L$」错在哪里。
+  hints:
+    - |
+      $R$通过两条路依赖$\dot q_j$：直接出现在$L$里，以及通过$g$。用链式法则，注意$\frac{\partial L}{\partial\dot q_n}=c$。
+    - |
+      $\frac{\partial R}{\partial\dot q_j}=\frac{\partial L}{\partial\dot q_j}+\Bigl(\frac{\partial L}{\partial\dot q_n}-c\Bigr)\frac{\partial g}{\partial\dot q_j}$，括号是零；$\frac{\partial R}{\partial q_j}$同理。
+    - |
+      记$\hat L(q',\dot q',t)=L(q',\dot q',g,t)$（$q'$表示前$n-1$个坐标，$L$不含$q_n$）。由链式法则
+
+      $$
+      \frac{\partial R}{\partial\dot q_j}=\frac{\partial L}{\partial\dot q_j}+\frac{\partial L}{\partial\dot q_n}\frac{\partial g}{\partial\dot q_j}-c\frac{\partial g}{\partial\dot q_j}=\frac{\partial L}{\partial\dot q_j},\qquad
+      \frac{\partial R}{\partial q_j}=\frac{\partial L}{\partial q_j}+\Bigl(\frac{\partial L}{\partial\dot q_n}-c\Bigr)\frac{\partial g}{\partial q_j}=\frac{\partial L}{\partial q_j},
+      $$
+
+      右边都在$\dot q_n=g$处取值，而那里$\frac{\partial L}{\partial\dot q_n}=c$。所以$\dv{}{t}\frac{\partial R}{\partial\dot q_j}-\frac{\partial R}{\partial q_j}=\dv{}{t}\frac{\partial L}{\partial\dot q_j}-\frac{\partial L}{\partial q_j}=0$。
+
+      有心力：$c=p_\varphi=mr^2\dot\varphi$，$g=\frac{c}{mr^2}$。$R=\frac12m\dot r^2+\frac12mr^2g^2-V-cg=\frac12m\dot r^2-\frac{c^2}{2mr^2}-V(r)$。它的方程是$m\ddot r-\frac{c^2}{mr^3}+V'(r)=0$，和讲解一致。
+
+      直接代进$L$得到的是$\hat L=\frac12m\dot r^2+\frac{c^2}{2mr^2}-V$，它和正确的$R$差了$c\,g=\frac{c^2}{mr^2}$，而这一项依赖$r$，所以符号会错。错在$\hat L$对$r$求偏导数时，$\dot q_n=g$也跟着$r$变，多出了$\frac{\partial L}{\partial\dot q_n}\frac{\partial g}{\partial r}=c\frac{\partial g}{\partial r}$这一项；减去$c\,g$正好把它抵消掉。
+  reference: |
+    链式法则：$\frac{\partial R}{\partial\dot q_j}=\frac{\partial L}{\partial\dot q_j}+(\frac{\partial L}{\partial\dot q_n}-c)\frac{\partial g}{\partial\dot q_j}=\frac{\partial L}{\partial\dot q_j}$，$\frac{\partial R}{\partial q_j}=\frac{\partial L}{\partial q_j}$（在$\dot q_n=g$处$\frac{\partial L}{\partial\dot q_n}=c$），故$R$满足剩余坐标的拉格朗日方程。有心力：$R=\frac12m\dot r^2-\frac{c^2}{2mr^2}-V$，得$m\ddot r=\frac{c^2}{mr^3}-V'$。直接代入$L$少减了$cg$，对$r$求偏导时多出$c\,\partial g/\partial r$，导致离心项符号反了。
+
+- id: p6
+  tier: hard
+  statement: |
+    两个质点（质量$m_1$、$m_2$）之间只有沿连线、只依赖距离的相互作用，势能$V(|\vb{r}_1-\vb{r}_2|)$，不受外力。用:term[循环坐标]{id="physics.analytical-mechanics.cyclic-coordinate"}说明：总动量守恒；相对运动在一个平面内，且相对运动的角动量守恒；最后把问题化成一个一维的径向运动方程。
+  hints:
+    - |
+      换成质心坐标$\vb{R}=\frac{m_1\vb{r}_1+m_2\vb{r}_2}{m_1+m_2}$和相对坐标$\vb{r}=\vb{r}_1-\vb{r}_2$，先把动能写成两部分之和。
+    - |
+      $T=\frac12M\dot{\vb{R}}^2+\frac12\mu\dot{\vb{r}}^2$，其中$M=m_1+m_2$，$\mu=\frac{m_1m_2}{m_1+m_2}$。$\vb{R}$的三个分量都是循环坐标。相对坐标再用球坐标，或者先说明运动在一个平面内再用平面极坐标。
+    - |
+      $\vb{r}_1=\vb{R}+\frac{m_2}{M}\vb{r}$，$\vb{r}_2=\vb{R}-\frac{m_1}{M}\vb{r}$，代进动能，交叉项$\dot{\vb{R}}\cdot\dot{\vb{r}}\bigl(m_1\frac{m_2}{M}-m_2\frac{m_1}{M}\bigr)$为零，得$L=\frac12M\dot{\vb{R}}^2+\frac12\mu\dot{\vb{r}}^2-V(|\vb{r}|)$。
+
+      $\vb{R}$的三个分量都是循环坐标，$M\dot{\vb{R}}=m_1\dot{\vb{r}}_1+m_2\dot{\vb{r}}_2$守恒，即总动量守恒。剩下的$\frac12\mu\dot{\vb{r}}^2-V(|\vb{r}|)$就是一个质量为$\mu$的质点在有心力场里的拉格朗日量。
+
+      相对运动用球坐标$(r,\theta,\varphi)$：$L_{\mathrm{rel}}=\frac12\mu(\dot r^2+r^2\dot\theta^2+r^2\sin^2\theta\,\dot\varphi^2)-V(r)$。$\varphi$是循环坐标，$p_\varphi$守恒。选$z$轴使初始时刻$\vb{r}$和$\dot{\vb{r}}$都在$xy$平面内，即$\theta=\frac{\pi}{2}$、$\dot\theta=0$；$\theta$的方程$\mu r^2\ddot\theta+2\mu r\dot r\dot\theta-\mu r^2\sin\theta\cos\theta\,\dot\varphi^2=0$在$\theta=\frac{\pi}{2}$、$\dot\theta=0$时给出$\ddot\theta=0$，所以$\theta\equiv\frac{\pi}{2}$是解，运动一直在这个平面内。
+
+      平面内$p_\varphi=\mu r^2\dot\varphi$守恒，按讲解的方法消去$\dot\varphi$：$\mu\ddot r=-V'(r)+\frac{p_\varphi^2}{\mu r^3}$。二体问题化成了一个质量为约化质量（reduced mass）$\mu$的质点在有效势$V(r)+\frac{p_\varphi^2}{2\mu r^2}$里的一维运动。
+  reference: |
+    质心与相对坐标：$L=\frac12M\dot{\vb{R}}^2+\frac12\mu\dot{\vb{r}}^2-V(r)$，$\mu=\frac{m_1m_2}{M}$。$\vb{R}$循环，总动量$M\dot{\vb{R}}$守恒。相对部分用球坐标，$\varphi$循环；取初始$\vb{r}$、$\dot{\vb{r}}$在$xy$平面，$\theta$方程在$\theta=\frac\pi2$、$\dot\theta=0$时给出$\ddot\theta=0$，运动保持在平面内。平面内$p_\varphi=\mu r^2\dot\varphi$守恒，消去$\dot\varphi$得$\mu\ddot r=-V'(r)+\frac{p_\varphi^2}{\mu r^3}$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    一个坐标是:term[循环坐标]{id="physics.analytical-mechanics.cyclic-coordinate"}，说明系统有什么样的对称性？既然循环坐标依赖坐标的选择（例 2），有没有办法不靠猜坐标，就判断系统有没有这类守恒量？
+  hints:
+    - |
+      $q_j$是循环坐标，意味着把$q_j$换成$q_j+\varepsilon$、别的坐标和所有速度都不变时，$L$怎么变？
+    - |
+      例 2 里，「两个物体一起水平平移」在$(x,X)$坐标里是$x\to x+\varepsilon$、$X\to X+\varepsilon$，在$(X_{\mathrm{c}},u)$坐标里只是$X_{\mathrm{c}}\to X_{\mathrm{c}}+\varepsilon$。
+    - |
+      $q_j$是循环坐标，等于说把系统沿$q_j$平移任意的$\varepsilon$（$q_j\to q_j+\varepsilon$，其余不变），$L$不变：系统有一个连续的对称性。$\varphi$循环对应绕轴转动不变，$X$循环对应整体平移不变。
+
+      反过来，对称性是不依赖坐标的说法：例 2 里不管用哪组坐标，「两个物体一起平移，$L$不变」都成立，只是在$(x,X)$坐标里这个平移同时改变两个坐标，看不出循环坐标；换成$(X_{\mathrm{c}},u)$，平移只改变一个坐标，它就成了循环坐标。
+
+      所以判断有没有守恒量，可以直接问「$L$在哪些连续变换下不变」，而不必先找到让它变成循环坐标的那组坐标。把这个想法做成一般的定理，并直接写出守恒量的表达式，就是讲诺特定理的那一节的内容。
+  reference: |
+    循环坐标即$L$在$q_j\to q_j+\varepsilon$下不变，是一种连续对称性（转动、平移等）。对称性与坐标无关：例 2 中整体平移在$(x,X)$里同时改变两个坐标，在$(X_{\mathrm{c}},u)$里只改变$X_{\mathrm{c}}$。因此可直接问$L$在哪些连续变换下不变来寻找守恒量，这就是诺特定理。
+
+- id: p8
+  tier: thinking
+  statement: |
+    单摆的$L=\frac12ml^2\dot\theta^2+mgl\cos\theta$是$\theta$的周期函数：把$\theta$换成$\theta+2\pi$，$L$完全不变。为什么这不给出守恒量，而$\varphi$换成$\varphi+\varepsilon$对任意小的$\varepsilon$都不变，才给出守恒量？
+  hints:
+    - |
+      推出守恒量用的是哪个条件？它是对$L$的什么要求？
+    - |
+      守恒来自$\frac{\partial L}{\partial q_j}=0$，这是关于导数的条件。$\cos\theta$是周期函数，它的导数是零吗？
+    - |
+      守恒量来自拉格朗日方程里的$\frac{\partial L}{\partial q_j}=0$，这是一个关于导数的、局部的条件，要求$L$在任意小的平移下都不变。只在平移$2\pi$这一个特定的量时不变，对导数没有任何约束：$\cos\theta$是周期函数，但$\frac{\dd}{\dd\theta}\cos\theta=-\sin\theta$不是零，所以$p_\theta=ml^2\dot\theta$并不守恒，摆一来一回，它不停地变号。
+
+      对称性分成连续的和离散的。连续对称性（任意小的平移、转动）给出守恒量；离散对称性（平移一个固定的量、镜像反射）只给出较弱的结论，例如运动方程的解在反射下变成另一个解。$\theta$的$2\pi$周期性只是说$\theta$和$\theta+2\pi$是同一个位置，它反映的是位形空间是圆，而不是一种动力学上的对称性。
+  reference: |
+    守恒需要$\frac{\partial L}{\partial q}=0$，即对任意小平移不变（局部、导数条件）。只对平移$2\pi$不变是离散对称性，不约束导数：$\cos\theta$周期但导数$-\sin\theta\ne0$，故$p_\theta$不守恒。连续对称性给出守恒量，离散对称性只给出解之间的对应关系；$2\pi$周期性只反映位形空间是圆。

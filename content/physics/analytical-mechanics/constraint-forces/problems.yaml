@@ -1,0 +1,185 @@
+- id: p1
+  tier: easy
+  statement: |
+    单摆的绳长$l=1\,\mathrm{m}$，摆球质量$m=0.5\,\mathrm{kg}$，摆球经过最低点时速率是$2\,\mathrm{m/s}$。用讲解里由乘子得到的结果，求此刻绳子的拉力，取$g=9.8\,\mathrm{m/s^2}$。
+  answer:
+    type: number
+    value: 6.9
+    unit: |
+      $\mathrm{N}$
+  hints:
+    - |
+      讲解里用极坐标$(r,\theta)$、约束$f=r-l$，得到拉力是$-\lambda=ml\dot\theta^2+mg\cos\theta$。
+    - |
+      最低点$\theta=0$，$\cos\theta=1$；速率$v=l\dot\theta$，所以$ml\dot\theta^2=\frac{mv^2}{l}$。
+    - |
+      拉力$=\frac{mv^2}{l}+mg=\frac{0.5\times2^2}{1}+0.5\times9.8=2+4.9=6.9\,\mathrm{N}$。
+  solution: |
+    $-\lambda=ml\dot\theta^2+mg\cos\theta=\frac{mv^2}{l}+mg=6.9\,\mathrm{N}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    关于:term[带乘子的拉格朗日方程]{id="physics.analytical-mechanics.lagrange-equations-with-multipliers"}，下面哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        把约束$r-R=0$改写成$2(r-R)=0$，乘子$\lambda$变成原来的一半，约束力不变
+      - |
+        约束$r=R$也可以写成$(r-R)^2=0$，结果一样
+      - |
+        乘子$\lambda$一般随时间变化，要和坐标一起解出来
+      - |
+        乘子只能处理:term[完整约束]{id="physics.analytical-mechanics.holonomic-constraint"}，处理不了速度之间的约束
+    value: [1, 3]
+  hints:
+    - |
+      :term[广义约束力]{id="physics.analytical-mechanics.generalized-constraint-force"}是$\lambda\frac{\partial f}{\partial q_j}$，想想每种改写对$\frac{\partial f}{\partial q_j}$有什么影响。
+    - |
+      $(r-R)^2$对$r$的导数$2(r-R)$在$r=R$时是零。速度约束$\sum_ja_j\dot q_j+a_0=0$给出的虚位移满足$\sum_ja_j\delta q_j=0$。
+    - |
+      A 对：$\frac{\partial f}{\partial r}$变成$2$，$\lambda$减半，乘积不变。B 错：梯度在约束上为零，乘子项表示不了任何力。C 对：比如单摆的$\lambda=-ml\dot\theta^2-mg\cos\theta$随时间变。D 错：速度约束同样给出$E_j=\lambda a_j$，冰刀就是这样处理的。
+
+      答案是 A、C。
+  solution: |
+    A、C。B 的梯度在约束上为零，方法失效；D 错，速度之间的约束同样能配乘子。
+
+- id: p3
+  tier: medium
+  statement: |
+    质量$m$的珠子套在半径$R$的光滑竖直圆环上，从和最低点成$\theta_0=\frac{2\pi}{3}$的位置由静止释放。珠子滑到某处时，圆环对它的力为零。求珠子在该处的速率，以$\sqrt{gR}$为单位。
+  answer:
+    type: number
+    value: sqrt(1/3)
+  hints:
+    - |
+      分两步：先用乘子求出圆环的力随$\theta$的变化，找到力为零的位置；再求珠子到那里时的速率。
+    - |
+      例 1 得到$\lambda=-mg(3\cos\theta-2\cos\theta_0)$，所以力为零处$\cos\theta=\frac23\cos\theta_0$。速率由$R\dot\theta^2=2g(\cos\theta-\cos\theta_0)$给出（$\theta$的方程乘以$\dot\theta$积分，也就是能量守恒）。
+    - |
+      $\cos\theta_0=-\frac12$，令$\lambda=0$得$\cos\theta=-\frac13$，对应$\theta\approx109.5^\circ$，比释放角$120^\circ$小，确实在运动范围内。
+
+      速率的平方$v^2=R^2\dot\theta^2=2gR(\cos\theta-\cos\theta_0)=2gR\bigl(-\frac13+\frac12\bigr)=\frac{gR}{3}$，所以$v=\sqrt{\frac13}\sqrt{gR}\approx0.577\sqrt{gR}$。
+
+      答案是$\sqrt{\frac13}$，填 `sqrt(1/3)`。
+  solution: |
+    力为零处$\cos\theta=\frac23\cos\theta_0=-\frac13$；由$v^2=2gR(\cos\theta-\cos\theta_0)=\frac{gR}{3}$，速率是$\sqrt{\frac13}\sqrt{gR}\approx0.577\sqrt{gR}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    质点在固定的光滑半球（半径$R$）的顶点，以水平速度$v_0$出发，$v_0^2=\frac12gR$，沿球面滑下。求它离开球面时的$\cos\theta$（$\theta$从竖直向上的方向量起）。
+  answer:
+    type: number
+    value: 5/6
+  hints:
+    - |
+      和例 2 一样用乘子，只是出发时有初速度，积分常数要改。
+    - |
+      在球面上$\lambda=mg\cos\theta-mR\dot\theta^2$，而由$\theta$的方程积分（或能量守恒）得$R^2\dot\theta^2=v_0^2+2gR(1-\cos\theta)$。
+    - |
+      $\lambda=mg\cos\theta-\frac{m}{R}\bigl[v_0^2+2gR(1-\cos\theta)\bigr]=mg(3\cos\theta-2)-\frac{mv_0^2}{R}$。令$\lambda=0$：
+
+      $$
+      \cos\theta=\frac{2+v_0^2/(gR)}{3}=\frac{2+\frac12}{3}=\frac56 .
+      $$
+
+      答案是$\frac56$，填 `5/6`。
+  solution: |
+    $\lambda=mg(3\cos\theta-2)-\frac{mv_0^2}{R}=0$，$\cos\theta=\frac{2+v_0^2/(gR)}{3}=\frac56$。初速度越大，离开得越早；$v_0^2\ge gR$时一出发就离开。
+
+- id: p5
+  tier: hard
+  statement: |
+    光滑的直铁丝在水平面内绕一端（取为原点）以角速度$\omega$匀速转动，质量$m$的珠子套在铁丝上，重力竖直向下。用直角坐标$(x,y,z)$和两个约束
+
+    $$
+    f_1=z=0,\qquad f_2=-x\sin\omega t+y\cos\omega t=0
+    $$
+
+    写出:term[带乘子的拉格朗日方程]{id="physics.analytical-mechanics.lagrange-equations-with-multipliers"}，求铁丝对珠子的力。再验证：这个力做功的功率等于珠子动能的增加率。（可以用上一节例 2 的结果：珠子到原点的距离$s$满足$\ddot s=\omega^2s$。）
+  hints:
+    - |
+      $L=\frac12m(\dot x^2+\dot y^2+\dot z^2)-mgz$，每个约束一个乘子。$f_2=0$说明珠子在方向$(\cos\omega t,\ \sin\omega t,\ 0)$的直线上，$\nabla f_2=(-\sin\omega t,\ \cos\omega t,\ 0)$是水平面内垂直于铁丝的方向。
+    - |
+      三个方程是$m\ddot x=-\lambda_2\sin\omega t$、$m\ddot y=\lambda_2\cos\omega t$、$m\ddot z+mg=\lambda_1$。把$x=s\cos\omega t$、$y=s\sin\omega t$代进去，用$-\sin\omega t$、$\cos\omega t$去组合前两式，就能解出$\lambda_2$。
+    - |
+      $\nabla f_1=(0,0,1)$，$\nabla f_2=(-\sin\omega t,\ \cos\omega t,\ 0)$，方程是
+
+      $$
+      m\ddot x=-\lambda_2\sin\omega t,\qquad m\ddot y=\lambda_2\cos\omega t,\qquad m\ddot z+mg=\lambda_1 .
+      $$
+
+      由$z=0$得$\lambda_1=mg$：竖直方向的力托住珠子。把$x=s\cos\omega t$、$y=s\sin\omega t$求两次导数，用$\hat{\vb{n}}=(-\sin\omega t,\cos\omega t)$点乘加速度，得$\ddot{\vb{r}}\cdot\hat{\vb{n}}=2\omega\dot s$；沿铁丝的分量是$\ddot s-\omega^2s=0$。于是$\lambda_2=m\,\ddot{\vb{r}}\cdot\hat{\vb{n}}=2m\omega\dot s$。铁丝的力是$\lambda_1\uv{z}+\lambda_2\hat{\vb{n}}$：竖直分量$mg$，水平分量$2m\omega\dot s$垂直于铁丝、指向转动的方向。
+
+      功率：珠子的速度是$\dot s$沿铁丝加上$s\omega$沿$\hat{\vb{n}}$，竖直的力不做功，所以$P=\lambda_2\cdot s\omega=2m\omega^2s\dot s$。动能$T=\frac12m(\dot s^2+s^2\omega^2)$，$\dv{T}{t}=m\dot s\ddot s+m\omega^2s\dot s=2m\omega^2s\dot s$（用了$\ddot s=\omega^2s$），两者相等。
+
+      这说明:term[非定常约束]{id="physics.analytical-mechanics.rheonomic-constraint"}的约束力虽然不做虚功，却在实际运动中做功：珠子的动能全部来自转动的铁丝。
+  reference: |
+    $L=\frac12m(\dot x^2+\dot y^2+\dot z^2)-mgz$，方程$m\ddot x=-\lambda_2\sin\omega t$、$m\ddot y=\lambda_2\cos\omega t$、$m\ddot z+mg=\lambda_1$。$z=0$得$\lambda_1=mg$。代入$x=s\cos\omega t$、$y=s\sin\omega t$，加速度沿$\hat{\vb{n}}=(-\sin\omega t,\cos\omega t)$的分量为$2\omega\dot s$，沿铁丝的分量$\ddot s-\omega^2s=0$，故$\lambda_2=2m\omega\dot s$。功率$P=\lambda_2s\omega=2m\omega^2s\dot s$，而$\dv{T}{t}=m\dot s\ddot s+m\omega^2s\dot s=2m\omega^2s\dot s$，相等。
+
+- id: p6
+  tier: hard
+  statement: |
+    质点在重力作用下沿固定的光滑曲面$z=h(x,y)$运动（$z$轴竖直向上，质点一直贴着曲面）。用直角坐标和一个乘子证明：曲面对质点的力的大小是
+
+    $$
+    N=\frac{m\bigl(g+h_{xx}\dot x^2+2h_{xy}\dot x\dot y+h_{yy}\dot y^2\bigr)}{\sqrt{1+h_x^2+h_y^2}},
+    $$
+
+    其中$h_x$、$h_{xx}$等是$h$的偏导数。用这个结果重新得到例 2 的离开角。
+  hints:
+    - |
+      取$f=z-h(x,y)$，写出三个方程；再把约束对时间求两次导数，用它消去$\ddot z$，解出$\lambda$。
+    - |
+      方程是$m\ddot x=-\lambda h_x$、$m\ddot y=-\lambda h_y$、$m\ddot z+mg=\lambda$。约束求两次导数：$\ddot z=h_x\ddot x+h_y\ddot y+h_{xx}\dot x^2+2h_{xy}\dot x\dot y+h_{yy}\dot y^2$。
+    - |
+      $L=\frac12m(\dot x^2+\dot y^2+\dot z^2)-mgz$，$\nabla f=(-h_x,\,-h_y,\,1)$，所以
+
+      $$
+      m\ddot x=-\lambda h_x,\qquad m\ddot y=-\lambda h_y,\qquad m\ddot z+mg=\lambda .
+      $$
+
+      记$K=h_{xx}\dot x^2+2h_{xy}\dot x\dot y+h_{yy}\dot y^2$。约束$z=h(x,y)$求两次导数，$\ddot z=h_x\ddot x+h_y\ddot y+K=-\frac{\lambda}{m}(h_x^2+h_y^2)+K$。代进第三式：$-\lambda(h_x^2+h_y^2)+mK+mg=\lambda$，所以$\lambda=\frac{m(g+K)}{1+h_x^2+h_y^2}$。
+
+      曲面的力是$\lambda\nabla f$，大小$N=\lambda\sqrt{1+h_x^2+h_y^2}=\frac{m(g+K)}{\sqrt{1+h_x^2+h_y^2}}$。质点在曲面上方时，力朝上推要求$\lambda\ge0$，即$g+K\ge0$；$g+K$降到零，质点就离开曲面。
+
+      对半球$h=\sqrt{R^2-x^2}$（在竖直平面内，只用$x$），$h_x=-\frac{x}{h}$，$h_{xx}=-\frac{R^2}{h^3}$。离开时$g+h_{xx}\dot x^2=0$，即$\dot x^2=\frac{gh^3}{R^2}$。在$\theta$处$x=R\sin\theta$、$h=R\cos\theta$，速率$v$满足$\dot x=v\cos\theta$，由此$v^2\cos^2\theta=gR\cos^3\theta$，$v^2=gR\cos\theta$。再用能量守恒$v^2=2gR(1-\cos\theta)$，得$\cos\theta=\frac23$，和例 2 一致。
+  reference: |
+    $f=z-h$，方程$m\ddot x=-\lambda h_x$、$m\ddot y=-\lambda h_y$、$m\ddot z+mg=\lambda$。约束二阶导$\ddot z=h_x\ddot x+h_y\ddot y+K$，$K=h_{xx}\dot x^2+2h_{xy}\dot x\dot y+h_{yy}\dot y^2$，代入得$\lambda=\frac{m(g+K)}{1+|\nabla h|^2}$，$N=\lambda|\nabla f|=\frac{m(g+K)}{\sqrt{1+|\nabla h|^2}}$。半球：$h_{xx}=-R^2/h^3$，离开时$\dot x^2=gh^3/R^2$，即$v^2=gR\cos\theta$，配合$v^2=2gR(1-\cos\theta)$得$\cos\theta=\frac23$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    多变量微积分里求条件极值时，乘子有一个解释：把约束放松一点点（$g=c$里的$c$变一点），目标函数的极值改变多少，比值就是乘子。力学里的乘子却是约束力。这两个解释之间有没有联系？另外，如果约束不是理想的（例如珠子和圆环之间有滑动摩擦），乘子方法哪里会出问题？
+  hints:
+    - |
+      想想力学里「把约束放松一点」是什么意思：比如把单摆的绳子放长$\delta l$，谁对谁做了功？
+    - |
+      约束力不做虚功，所以它总是沿着$\nabla f$；滑动摩擦力沿着运动方向，不在$\nabla f$方向上。
+    - |
+      两种解释都来自「梯度平行」：极值点处目标函数的梯度和约束的梯度平行，比例系数就是乘子。最优化里，把约束$g=c$放松$\delta c$，极值变化$\lambda\,\delta c$。力学里，把约束$f=0$放松成$f=\delta c$，比如把单摆的绳放长，约束力在这段「被允许」的位移上做功$\lambda\,\delta c$：乘子衡量的都是约束被放松时，相应的量变化多快。静力学里这两者完全重合：平衡是势能的驻点，拉格朗日乘数法求带约束的势能驻点时，乘子正是约束力的大小（差一个符号）。
+
+      方法的前提是约束力沿$\nabla f$，这来自理想约束不做虚功。有滑动摩擦时，约束力多了一个沿运动方向的分量，不再沿$\nabla f$，乘子项写不出它。补救办法是把摩擦力当作主动力，写进右边的广义力，而它的大小$\mu N$又依赖支持力，于是要和乘子联立求解：乘子仍然给出法向分量，摩擦力要另外按物理规律加进去。
+  reference: |
+    两种解释都源于梯度平行。最优化中乘子是极值对约束常数的变化率；力学中把约束$f=0$放松为$f=\delta c$，约束力在被允许的位移上做功$\lambda\delta c$，乘子同样衡量放松约束时的变化率；静力学里带约束的势能驻点问题中两者重合。乘子法要求约束力沿$\nabla f$（理想约束）；滑动摩擦力有沿运动方向的分量，须作为主动力加入，且其大小$\mu N$依赖由乘子给出的法向力，二者联立。
+
+- id: p8
+  tier: thinking
+  statement: |
+    冰刀在水平冰面上滑行，刀的中点是$(x,y)$，朝向$\theta(t)$由滑冰的人随意控制，约束是$\dot x\sin\theta-\dot y\cos\theta=0$。只考虑中点的运动，质量$m$。用乘子写出$(x,y)$的方程，说明：冰刀的速率不变；乘子和$\theta$的变化快慢有什么关系；为什么这个约束不能靠「少选一个坐标」来处理？
+  hints:
+    - |
+      这是速度之间的约束，冻结时间后允许的虚位移满足$\delta x\sin\theta-\delta y\cos\theta=0$，所以乘子项是$\lambda(\sin\theta,\ -\cos\theta)$。
+    - |
+      方程$m\ddot x=\lambda\sin\theta$、$m\ddot y=-\lambda\cos\theta$。用$(\dot x,\dot y)$点乘这两式，看动能怎么变。速度沿刀刃：$(\dot x,\dot y)=v(\cos\theta,\ \sin\theta)$。
+    - |
+      方程是$m\ddot x=\lambda\sin\theta$、$m\ddot y=-\lambda\cos\theta$。点乘速度：$\dv{}{t}\bigl[\frac12m(\dot x^2+\dot y^2)\bigr]=\lambda(\dot x\sin\theta-\dot y\cos\theta)=0$，所以速率$v$不变：冰面横推的力始终垂直于速度，不做功。
+
+      速度沿刀刃，$(\dot x,\dot y)=v(\cos\theta,\sin\theta)$，求导得加速度$v\dot\theta(-\sin\theta,\ \cos\theta)$。和方程比较得$\lambda=-mv\dot\theta$：大小$mv|\dot\theta|$，正是让速度方向以角速度$\dot\theta$转动所需的向心力，转得越快，冰面要推得越狠。$\theta$不变时$\lambda=0$，冰刀直线滑行。
+
+      不能少选坐标：讲约束时的例 2 证明过冰刀能从任意$(x,y,\theta)$滑到任意$(x,y,\theta)$，这个约束积不成坐标之间的等式，三个坐标一个也省不掉，只是速度少了一个方向。所以只能保留全部坐标，把速度约束配上乘子；完整约束则既可以这样做，也可以选更少的:term[广义坐标]{id="physics.analytical-mechanics.generalized-coordinates"}把它吃掉。
+  reference: |
+    乘子项$\lambda(\sin\theta,-\cos\theta)$，方程$m\ddot x=\lambda\sin\theta$、$m\ddot y=-\lambda\cos\theta$。点乘速度得动能变化率$\lambda(\dot x\sin\theta-\dot y\cos\theta)=0$，速率不变。速度$v(\cos\theta,\sin\theta)$求导得$v\dot\theta(-\sin\theta,\cos\theta)$，故$\lambda=-mv\dot\theta$，即转弯所需的向心力。约束不可积（任意位形可达），坐标不能减少，只能保留坐标并用乘子；完整约束才能用更少的广义坐标消去。

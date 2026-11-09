@@ -1,0 +1,167 @@
+- id: p1
+  tier: easy
+  statement: |
+    质量$m=2\,\mathrm{kg}$的自由质点在平面上运动，$L=\frac12m(\dot x^2+\dot y^2)$在绕原点的转动下不变，生成元是$K=(-y,\ x)$。某一时刻质点在$(1,\ 2)\,\mathrm{m}$，速度是$(3,\ -1)\,\mathrm{m/s}$。求:term[诺特定理]{id="physics.analytical-mechanics.noether-theorem"}给出的守恒量$I=p_xK_x+p_yK_y$。
+  answer:
+    type: number
+    value: -14
+    unit: |
+      $\mathrm{kg\cdot m^2/s}$
+  hints:
+    - |
+      先求广义动量$p_x=\frac{\partial L}{\partial\dot x}$、$p_y=\frac{\partial L}{\partial\dot y}$，再代进$I$。
+    - |
+      $p_x=m\dot x=6$，$p_y=m\dot y=-2$；生成元在此处是$K=(-2,\ 1)$。
+    - |
+      $I=6\times(-2)+(-2)\times1=-14\,\mathrm{kg\cdot m^2/s}$。它就是角动量$m(x\dot y-y\dot x)=2\times(1\times(-1)-2\times3)=-14$。
+  solution: |
+    $I=-p_xy+p_yx=m(x\dot y-y\dot x)=-14\,\mathrm{kg\cdot m^2/s}$，即对原点的角动量。
+
+- id: p2
+  tier: easy
+  statement: |
+    平面各向同性振子$L=\frac12m(\dot x^2+\dot y^2)-\frac12k(x^2+y^2)$。下面哪一族变换是它的:term[连续对称性]{id="physics.analytical-mechanics.continuous-symmetry"}？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        所有点沿$x$方向平移$s$：$x\mapsto x+s$
+      - |
+        绕原点转过角度$s$
+      - |
+        伸缩：$x\mapsto e^sx$，$y\mapsto e^sy$
+      - |
+        剪切：$x\mapsto x+sy$，$y$不变
+    value: 2
+  hints:
+    - |
+      分别看动能和势能在变换下变不变；两者都不变才是对称性。
+    - |
+      平移改变$x^2$；伸缩让动能和势能都乘上$e^{2s}$；剪切改变$x^2$，也改变$\dot x^2$。
+    - |
+      A：势能里$x^2$变成$(x+s)^2$，变了。B：转动不改变速度的大小，也不改变到原点的距离，$L$不变。C：$L$整体变成$e^{2s}$倍，不是不变。D：$\dot x\mapsto\dot x+s\dot y$，动能和势能都变了。
+
+      答案是 B。
+  solution: |
+    B。转动保持$\dot x^2+\dot y^2$和$x^2+y^2$不变，对应的守恒量是角动量。
+
+- id: p3
+  tier: medium
+  statement: |
+    例 1 的螺旋对称势能，取$m=1\,\mathrm{kg}$、$k=2\,\mathrm{m^{-1}}$。某一时刻质点在$\rho=1\,\mathrm{m}$处，$\dot\varphi=3\,\mathrm{rad/s}$，$\dot z=4\,\mathrm{m/s}$。后来它到了$\rho=2\,\mathrm{m}$处，此时$\dot\varphi=0.5\,\mathrm{rad/s}$。求此时的$\dot z$。
+  answer:
+    type: number
+    value: 6
+    unit: |
+      $\mathrm{m/s}$
+  hints:
+    - |
+      用:term[诺特定理]{id="physics.analytical-mechanics.noether-theorem"}给出的螺旋守恒量，而不是$L_z$或$p_z$（它们单独都不守恒）。
+    - |
+      守恒量是$I=m\rho^2\dot\varphi+\frac{m\dot z}{k}$。
+    - |
+      开始时$I=1\times1^2\times3+\frac{1\times4}{2}=5$。后来$1\times2^2\times0.5+\frac{\dot z}{2}=5$，所以$\dot z=6\,\mathrm{m/s}$。
+  solution: |
+    $I=m\rho^2\dot\varphi+\frac{m\dot z}{k}$守恒：$3+2=2+\frac{\dot z}{2}$，$\dot z=6\,\mathrm{m/s}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    平面振子$L=\frac12(\dot x^2+\dot y^2)-\frac12(x^2+4y^2)$（取$m=1$）。$t=0$时质点在$(1,\ 0)$，速度$(0,\ 1)$。求$t=\frac{\pi}{4}$时的$L_z=x\dot y-y\dot x$（$t=0$时它等于$1$）。
+  answer:
+    type: number
+    value: sqrt(2)/4
+  hints:
+    - |
+      势能不是各向同性的，绕原点的转动不是:term[连续对称性]{id="physics.analytical-mechanics.continuous-symmetry"}，不能指望$L_z$守恒。两个方向的运动互不影响，分别解出来。
+    - |
+      $\ddot x=-x$、$\ddot y=-4y$。由初始条件$x=\cos t$，$y=\frac12\sin2t$。
+    - |
+      $x=\cos t$，$\dot x=-\sin t$；$y=\frac12\sin2t$，$\dot y=\cos2t$。在$t=\frac{\pi}{4}$：$x=\frac{\sqrt2}{2}$，$\dot x=-\frac{\sqrt2}{2}$，$y=\frac12$，$\dot y=0$。
+
+      $L_z=x\dot y-y\dot x=0-\frac12\times\bigl(-\frac{\sqrt2}{2}\bigr)=\frac{\sqrt2}{4}\approx0.354$。答案填 `sqrt(2)/4`。$L_z$从$1$变成了$0.354$，确实不守恒；而能量$\frac12(\dot x^2+\dot y^2)+\frac12(x^2+4y^2)$始终是$1$。
+  solution: |
+    $x=\cos t$，$y=\frac12\sin2t$，$t=\frac{\pi}{4}$时$L_z=\frac{\sqrt2}{4}\approx0.354$，和开始时的$1$不同：没有转动对称性，角动量不守恒。
+
+- id: p5
+  tier: hard
+  statement: |
+    $N$个质点之间的相互作用只依赖它们的相对位置，不受外力：$L=\sum_i\frac12m_i\dot{\vb{r}}_i^2-V(\vb{r}_1-\vb{r}_2,\dots)$。考虑伽利略变换$\vb{r}_i\mapsto\vb{r}_i+st\vb{u}$（$\vb{u}$是固定的单位矢量，变换显含时间）。证明$L$的改变在$s$的一阶上是一个全导数，求出$G$，并用推广的:term[诺特定理]{id="physics.analytical-mechanics.noether-theorem"}得到守恒量。由此说明质心做匀速直线运动。
+  hints:
+    - |
+      变换后速度变成$\dot{\vb{r}}_i+s\vb{u}$，相对位置不变。把动能展开到$s$的一次项。
+    - |
+      $\frac{\partial L}{\partial s}\big|_{s=0}=\sum_im_i\dot{\vb{r}}_i\cdot\vb{u}=\vb{P}\cdot\vb{u}=\dv{}{t}\bigl(M\vb{R}\cdot\vb{u}\bigr)$，其中$M$是总质量，$\vb{R}$是质心。生成元是每个质点的$t\vb{u}$。
+    - |
+      变换后$\vb{r}_i-\vb{r}_j$不变，$V$不变；速度变成$\dot{\vb{r}}_i+s\vb{u}$，动能变成$\sum_i\frac12m_i(\dot{\vb{r}}_i+s\vb{u})^2=T+s\,\vb{P}\cdot\vb{u}+O(s^2)$。所以$\frac{\partial L}{\partial s}\big|_{s=0}=\vb{P}\cdot\vb{u}=\sum_im_i\dot{\vb{r}}_i\cdot\vb{u}=\dv{}{t}\bigl(M\vb{R}\cdot\vb{u}\bigr)$，$G=M\vb{R}\cdot\vb{u}$。
+
+      每个质点的生成元是$\vb{K}_i=t\vb{u}$，广义动量是$m_i\dot{\vb{r}}_i$。推广的诺特定理给出守恒量
+
+      $$
+      I=\sum_im_i\dot{\vb{r}}_i\cdot t\vb{u}-M\vb{R}\cdot\vb{u}=\bigl(t\vb{P}-M\vb{R}\bigr)\cdot\vb{u}.
+      $$
+
+      $\vb{u}$可以是任何方向，所以$t\vb{P}-M\vb{R}$守恒，记它为$-M\vb{R}_0$。系统也有平移对称性，$\vb{P}$守恒，于是$\vb{R}(t)=\vb{R}_0+\frac{\vb{P}}{M}t$：质心做匀速直线运动。也可以直接验证：$\dv{}{t}(t\vb{P}-M\vb{R})=\vb{P}+t\dot{\vb{P}}-M\dot{\vb{R}}=t\dot{\vb{P}}=\vb{0}$。
+  reference: |
+    伽利略变换不改变相对位置，$V$不变；$T\to T+s\vb{P}\cdot\vb{u}+O(s^2)$，故$\frac{\partial L}{\partial s}|_0=\vb{P}\cdot\vb{u}=\dv{}{t}(M\vb{R}\cdot\vb{u})$，$G=M\vb{R}\cdot\vb{u}$。生成元$t\vb{u}$，守恒量$I=(t\vb{P}-M\vb{R})\cdot\vb{u}$。对所有$\vb{u}$成立，故$t\vb{P}-M\vb{R}$守恒；结合$\vb{P}$守恒，$\vb{R}=\vb{R}_0+\frac{\vb{P}}{M}t$，质心匀速直线运动。
+
+- id: p6
+  tier: hard
+  statement: |
+    设同一个系统有两组:term[广义坐标]{id="physics.analytical-mechanics.generalized-coordinates"}$q$和$q'$，$q=q(q')$（不显含时间），雅可比矩阵可逆。一族变换在$q$坐标里的生成元是$K_j$，在$q'$坐标里是$K'_k$。证明:term[诺特定理]{id="physics.analytical-mechanics.noether-theorem"}给出的守恒量与坐标无关：$\sum_kp'_kK'_k=\sum_jp_jK_j$。用这个结论解释讲循环坐标时的例 2：在$(x,X)$坐标里算出的$p_x+p_X$，和在$(X_{\mathrm{c}},u)$坐标里算出的$p_{X_{\mathrm{c}}}$为什么相等。
+  hints:
+    - |
+      生成元是一个「无穷小位移」，在两组坐标之间怎么换算？广义动量又怎么换算？讲拉格朗日方程时的「消点」恒等式在这里有用。
+    - |
+      $K'_k=\sum_j\frac{\partial q'_k}{\partial q_j}K_j$；由「消点」$\frac{\partial\dot q_j}{\partial\dot q'_k}=\frac{\partial q_j}{\partial q'_k}$，得$p'_k=\sum_jp_j\frac{\partial q_j}{\partial q'_k}$。
+    - |
+      变换后的点在$q$坐标里是$Q(q,s)$，在$q'$坐标里是$q'(Q(q,s))$，对$s$求导、令$s=0$，由链式法则$K'_k=\sum_j\frac{\partial q'_k}{\partial q_j}K_j$。
+
+      $L'(q',\dot q')=L(q(q'),\dot q)$，而$\dot q_j=\sum_k\frac{\partial q_j}{\partial q'_k}\dot q'_k$，所以$\frac{\partial\dot q_j}{\partial\dot q'_k}=\frac{\partial q_j}{\partial q'_k}$，$p'_k=\frac{\partial L'}{\partial\dot q'_k}=\sum_jp_j\frac{\partial q_j}{\partial q'_k}$。于是
+
+      $$
+      \sum_kp'_kK'_k=\sum_{j,l}p_j\Bigl(\sum_k\frac{\partial q_j}{\partial q'_k}\frac{\partial q'_k}{\partial q_l}\Bigr)K_l=\sum_jp_jK_j ,
+      $$
+
+      括号里是两个互逆的雅可比矩阵相乘，等于$\delta_{jl}$。
+
+      讲循环坐标时的例 2：两个物体一起水平平移，在$(x,X)$坐标里生成元是$(1,1)$，守恒量是$p_x+p_X$；在$(X_{\mathrm{c}},u)$坐标里，$X_{\mathrm{c}}$增加$s$、$u$不变，生成元是$(1,0)$，守恒量是$p_{X_{\mathrm{c}}}$。由上面的结论两者相等，都等于水平总动量$m\dot x+M\dot X$。
+  reference: |
+    $K'_k=\sum_j\frac{\partial q'_k}{\partial q_j}K_j$（链式法则）；由消点恒等式$p'_k=\sum_jp_j\frac{\partial q_j}{\partial q'_k}$。故$\sum_kp'_kK'_k=\sum_{j,l}p_j(\sum_k\frac{\partial q_j}{\partial q'_k}\frac{\partial q'_k}{\partial q_l})K_l=\sum_jp_jK_j$。整体平移在$(x,X)$中生成元$(1,1)$，在$(X_{\mathrm{c}},u)$中为$(1,0)$，所以$p_x+p_X=p_{X_{\mathrm{c}}}=m\dot x+M\dot X$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    :term[诺特定理]{id="physics.analytical-mechanics.noether-theorem"}说「对称性给出守恒量」。反过来，每个守恒量都来自某个对称性吗？以平面各向同性振子$L=\frac12m(\dot x^2+\dot y^2)-\frac12k(x^2+y^2)$为例：除了能量和角动量，验证$A=m\dot x\dot y+kxy$也守恒。它对应的是什么样的「变换」？
+  hints:
+    - |
+      先用运动方程$m\ddot x=-kx$、$m\ddot y=-ky$算$\dv{A}{t}$。
+    - |
+      想想$A$能不能写成$\sum_jp_jK_j$的样子，$K$会不会依赖速度。这样的「变换」还能理解成把位形空间里的点挪一挪吗？
+    - |
+      $\dv{A}{t}=m\ddot x\dot y+m\dot x\ddot y+k\dot xy+kx\dot y=-kx\dot y-k\dot xy+k\dot xy+kx\dot y=0$，确实守恒。
+
+      $A$里有两个速度相乘，而点变换给出的$\sum_jp_jK_j(q)$对速度是一次的，所以$A$不可能来自点变换。取依赖速度的生成元$K_x=\dot y$、$K_y=\dot x$：$L$的一阶改变是$\sum_j\bigl(\frac{\partial L}{\partial q_j}K_j+\frac{\partial L}{\partial\dot q_j}\dot K_j\bigr)=-kx\dot y-ky\dot x+m\dot x\ddot y+m\dot y\ddot x$，它恰好等于$\dv{}{t}\bigl(m\dot x\dot y-kxy\bigr)$，即$G=m\dot x\dot y-kxy$。推广的诺特定理给出守恒量$\sum_jp_jK_j-G=2m\dot x\dot y-(m\dot x\dot y-kxy)=A$。这样的变换不再是「把位形空间里每个点挪到另一个点」，要同时知道速度才能定下来，几何意义不直观，所以叫隐藏的对称性。
+
+      在允许生成元依赖速度以后，可以证明守恒量和对称性大致是一一对应的。各向同性振子的这类隐藏对称性和转动合在一起，比普通的转动对称更大；开普勒问题也有一个类似的隐藏守恒量（龙格-楞次矢量，Runge–Lenz vector），它解释了为什么平方反比力下的轨道是闭合的椭圆。用哈密顿力学的语言（以后的泊松括号，Poisson bracket），守恒量生成对称性这件事会说得更自然。
+  reference: |
+    $\dv{A}{t}=-kx\dot y-k\dot xy+k\dot xy+kx\dot y=0$。$A$对速度是二次的，不能来自点变换的$\sum p_jK_j(q)$；取依赖速度的生成元$K_x=\dot y$、$K_y=\dot x$，$L$的一阶改变恰为$\dv{}{t}(m\dot x\dot y-kxy)$，推广的诺特定理给出$\sum p_jK_j-G=A$，即「隐藏的对称性」，不再是位形空间里点到点的变换。允许速度依赖的生成元后，守恒量与对称性基本一一对应（逆诺特定理）；开普勒问题的龙格-楞次矢量是类似例子。哈密顿力学中守恒量通过泊松括号生成对称变换，表述更自然。
+
+- id: p8
+  tier: thinking
+  statement: |
+    按:term[诺特定理]{id="physics.analytical-mechanics.noether-theorem"}，空间平移不变给出动量守恒，转动不变给出角动量守恒，时间平移不变给出能量守恒。如果物理规律或环境随时间变化（$L$显含$t$），能量还守恒吗？宇宙在膨胀，远方星系发出的光到达我们时频率变低、光子的能量变小（红移，redshift），这和能量守恒矛盾吗？
+  hints:
+    - |
+      回到能量函数那一节：$\dv{h}{t}=-\frac{\partial L}{\partial t}$。举一个$L$显含时间的例子，看能量到哪里去了。
+    - |
+      $k(t)$振子、振动悬点的单摆，能量都不守恒，因为外界在改变系统。膨胀的宇宙里，「环境」（空间的尺度）本身随时间在变。
+    - |
+      $L$显含$t$时没有时间平移对称性，能量一般不守恒：$k(t)$振子的能量变化来自改变弹簧的外界，振动悬点的单摆从驱动悬点的装置那里得到或失去能量。只要能把外界也算进系统，使总的拉格朗日量不显含时间，总能量又会守恒。
+
+      膨胀的宇宙里，空间本身的尺度随时间变化，光和物质的拉格朗日量显含时间，所以没有一个全局的、对时间平移不变的能量可以守恒。光子的能量随宇宙尺度按比例减小，这不违反任何定律，只是说明「能量守恒」本来就是时间平移对称性的推论：对称性没有了，守恒量也就没有了。在空间的每一个小区域里（局部），能量动量守恒仍然成立，那是广义相对论里的说法。
+
+      这一点反过来也很有用：在实验室里能量守恒得这么好，正说明物理规律在实验的时间尺度上不随时间变化。
+  reference: |
+    $L$显含$t$时无时间平移对称性，能量一般不守恒（如$k(t)$振子、振动悬点的单摆，能量来自外界）；把外界纳入、使总$L$不显含$t$，总能量守恒。膨胀宇宙中空间尺度随时间变化，拉格朗日量显含时间，不存在全局守恒的能量，光子红移不违反定律；局部的能量动量守恒仍成立（广义相对论）。能量守恒是时间平移对称性的推论。

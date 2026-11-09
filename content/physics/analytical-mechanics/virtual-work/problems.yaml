@@ -1,0 +1,180 @@
+- id: p1
+  tier: easy
+  statement: |
+    质点在平面上运动，取极坐标$(r,\varphi)$为:term[广义坐标]{id="physics.analytical-mechanics.generalized-coordinates"}。在$r=3\,\mathrm{m}$、$\varphi=0$的位置，它受的主动力是$\vb{F}=(1,\ 2)\,\mathrm{N}$（直角坐标分量）。求对应$\varphi$的:term[广义力]{id="physics.analytical-mechanics.generalized-force"}$Q_\varphi$。
+  answer:
+    type: number
+    value: 6
+    unit: |
+      $\mathrm{N\cdot m}$
+  hints:
+    - |
+      用定义$Q_\varphi=\vb{F}\cdot\frac{\partial\vb{r}}{\partial\varphi}$，先写出$\vb{r}(r,\varphi)$。
+    - |
+      $\vb{r}=(r\cos\varphi,\ r\sin\varphi)$，$\frac{\partial\vb{r}}{\partial\varphi}=(-r\sin\varphi,\ r\cos\varphi)$，在$r=3$、$\varphi=0$处等于$(0,\ 3)$。
+    - |
+      $Q_\varphi=(1,\ 2)\cdot(0,\ 3)=6\,\mathrm{N\cdot m}$。它等于力在$\varphi$方向的分量乘以$r$：$rF_\varphi=3\times2$。
+
+      答案是$6$。
+  solution: |
+    $Q_\varphi=\vb{F}\cdot\frac{\partial\vb{r}}{\partial\varphi}=(1,\ 2)\cdot(0,\ 3)=6\,\mathrm{N\cdot m}$，即$rF_\varphi$。广义坐标是角度时，广义力的单位是$\mathrm{N\cdot m}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些约束是:term[理想约束]{id="physics.analytical-mechanics.ideal-constraint"}？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        质点在光滑的固定曲面上运动，曲面对它的支持力
+      - |
+        两个质点之间的刚性轻杆对它们的力
+      - |
+        木块在粗糙水平面上滑动时受的滑动摩擦力
+      - |
+        珠子套在匀速转动的光滑直铁丝上，铁丝对珠子的力
+    value: [1, 2, 4]
+  hints:
+    - |
+      判断理想约束只看约束力在:term[虚位移]{id="physics.analytical-mechanics.virtual-displacement"}上的总虚功，不看实际做的功。
+    - |
+      冻结时间以后，D 的铁丝不动，珠子的虚位移沿着铁丝，而光滑铁丝的力垂直于铁丝。C 的摩擦力和木块的运动方向相反，而沿运动方向的虚位移是允许的。
+    - |
+      A：支持力垂直于曲面，虚位移沿着曲面，虚功为零。B：两个力的虚功正好相消（讲解里算过）。C：取沿运动方向的虚位移，摩擦力的虚功是负的，不是理想约束。D：冻结时间后虚功为零，是理想约束，尽管它实际上一直在对珠子做功。
+
+      答案是 A、B、D。
+  solution: |
+    A、B、D 是理想约束，C 不是。D 的铁丝实际上在做功，但虚功为零：判断理想约束只看虚功。
+
+- id: p3
+  tier: medium
+  statement: |
+    两根长都是$l$的轻杆$AB$、$BC$在$B$处铰接。$A$端铰接在地面上的固定点，$C$端套在和$A$等高的光滑水平导轨上，可以沿导轨滑动，$B$在导轨上方。在$B$处挂一个重$mg$的物体，在$C$端加一个沿导轨指向$A$的水平力$F$，使系统静止在$\angle BAC=\frac{\pi}{6}$的位置。求$F/(mg)$。
+  answer:
+    type: number
+    value: sqrt(3)/2
+  hints:
+    - |
+      系统只有一个:term[自由度]{id="physics.analytical-mechanics.degrees-of-freedom"}。取$\theta=\angle BAC$作广义坐标，写出重物的高度和$C$的位置，再用:term[虚功原理]{id="physics.analytical-mechanics.virtual-work-principle"}。
+    - |
+      取$A$为原点，$x$轴沿导轨，则$B=(l\cos\theta,\ l\sin\theta)$，$C=(2l\cos\theta,\ 0)$。重力的虚功是$-mg\,\delta(l\sin\theta)$，$F$沿$-x$方向，它的虚功是$-F\,\delta(2l\cos\theta)$。
+    - |
+      $\delta W=-mgl\cos\theta\,\delta\theta+2Fl\sin\theta\,\delta\theta=0$，所以$F=\frac{mg}{2}\cot\theta$。$\theta=\frac{\pi}{6}$时$\cot\theta=\sqrt3$，$F/(mg)=\frac{\sqrt3}{2}$。
+
+      铰链和导轨的:term[约束力]{id="physics.analytical-mechanics.constraint-force"}都是理想约束力，从头到尾没有出现。答案是$\frac{\sqrt3}{2}$，填 `sqrt(3)/2`。
+  solution: |
+    $\delta W=(2Fl\sin\theta-mgl\cos\theta)\,\delta\theta=0$，$F=\frac{mg}{2}\cot\theta$，$\theta=\frac{\pi}{6}$时$F/(mg)=\frac{\sqrt3}{2}\approx0.866$。
+
+- id: p4
+  tier: medium
+  statement: |
+    双阿特伍德机：轻绳跨过光滑的定滑轮，一端挂质量$m_1$的物块，另一端挂一个轻质的动滑轮；另一根轻绳跨过动滑轮，两端挂质量$m_2$、$m_3$的物块。滑轮都光滑，绳不可伸长，绳和滑轮的质量不计。取$m_1=4m$、$m_2=m$、$m_3=3m$，求$m_1$的加速度，以$g$为单位，向下为正。
+  answer:
+    type: number
+    value: 1/7
+  hints:
+    - |
+      系统有两个:term[自由度]{id="physics.analytical-mechanics.degrees-of-freedom"}。用$m_1$在定滑轮下方的距离$y_1$、$m_2$在动滑轮下方的距离$u$作广义坐标，把三个物块的位置都用它们表示，再用:term[达朗贝尔原理]{id="physics.analytical-mechanics.dalembert-principle"}。
+    - |
+      动滑轮在定滑轮下方$L_1-y_1$处，所以$y_2=L_1-y_1+u$，$y_3=L_1-y_1+L_2-u$（$L_1$、$L_2$是常数）。达朗贝尔原理是$\sum_i m_i(g-\ddot y_i)\,\delta y_i=0$，其中$\delta y_2=-\delta y_1+\delta u$，$\delta y_3=-\delta y_1-\delta u$。
+    - |
+      分别收集$\delta y_1$和$\delta u$的系数，令它们为零：
+
+      $$
+      \begin{aligned}
+      (m_1-m_2-m_3)g-(m_1+m_2+m_3)\ddot y_1+(m_2-m_3)\ddot u&=0,\\
+      (m_2-m_3)(g+\ddot y_1)-(m_2+m_3)\ddot u&=0.
+      \end{aligned}
+      $$
+
+      代入数值：$-8\ddot y_1-2\ddot u=0$，$-2(g+\ddot y_1)-4\ddot u=0$。由第一式$\ddot u=-4\ddot y_1$，代入第二式得$14\ddot y_1=2g$，$\ddot y_1=\frac{g}{7}$。
+
+      答案是$\frac17$，填 `1/7`。虽然$m_1=m_2+m_3$，$m_1$仍然加速下降。
+  solution: |
+    $\ddot y_1=\frac{g}{7}$，填 `1/7`。动滑轮两边不等重，下面的两个物块一个加速上升、一个加速下降，整体对绳的拉力小于$4mg$，所以$m_1$会加速下降。
+
+- id: p5
+  tier: hard
+  statement: |
+    长$l$、质量$m$的均匀梯子靠在光滑的竖直墙上，下端放在光滑的水平地面上，并用一根水平轻绳拴在墙脚，梯子和墙成$\theta$角静止。只用:term[虚功原理]{id="physics.analytical-mechanics.virtual-work-principle"}（不列牛顿定律），求绳的拉力$T$、墙对梯子的支持力$N_1$和地面对梯子的支持力$N_2$。
+  hints:
+    - |
+      虚功原理里:term[理想约束]{id="physics.analytical-mechanics.ideal-constraint"}的:term[约束力]{id="physics.analytical-mechanics.constraint-force"}不出现。想求哪个约束力，就把对应的约束拿掉，换成一个大小未知的主动力：系统多了一种:term[虚位移]{id="physics.analytical-mechanics.virtual-displacement"}，这个力的虚功就出现了。
+    - |
+      求$T$：拿掉绳子，梯子能贴着墙和地面滑动（这就是例 1）。求$N_1$：拿掉墙，保留绳和地面，梯子能绕下端转动。求$N_2$：拿掉地面，保留墙和绳，梯子能整体竖直平移。
+    - |
+      取墙脚为原点，$x$轴水平离开墙，$y$轴竖直向上。下端在$(l\sin\theta,\ 0)$，上端在$(0,\ l\cos\theta)$，质心在$\bigl(\frac{l}{2}\sin\theta,\ \frac{l}{2}\cos\theta\bigr)$。
+
+      求$T$：拿掉绳，换成作用在下端、指向墙的力$T$。梯子贴着墙和地面滑动，和例 1 一样得$\delta W=\bigl(\frac12mgl\sin\theta-Tl\cos\theta\bigr)\delta\theta=0$，所以$T=\frac12mg\tan\theta$。
+
+      求$N_1$：拿掉墙，换成作用在上端、沿$+x$方向的力$N_1$。绳和地面把下端固定在$(l\sin\theta,\ 0)$，梯子只能绕下端转。设梯子和竖直方向的夹角变为$\varphi$，上端的$x$坐标是$l\sin\theta-l\sin\varphi$，质心高$\frac{l}{2}\cos\varphi$。在$\varphi=\theta$处，$\delta W=N_1(-l\cos\theta\,\delta\varphi)-mg\bigl(-\frac{l}{2}\sin\theta\,\delta\varphi\bigr)=0$，所以$N_1=\frac12mg\tan\theta$。
+
+      求$N_2$：拿掉地面，换成作用在下端、竖直向上的力$N_2$。墙和绳只限制梯子两端的$x$坐标，梯子可以整体竖直平移$\delta y$，各点的虚位移都是$(0,\ \delta y)$。$\delta W=N_2\,\delta y-mg\,\delta y=0$，所以$N_2=mg$。
+
+      检验：水平方向$T=N_1$，竖直方向$N_2=mg$，对下端的力矩$N_1l\cos\theta=mg\frac{l}{2}\sin\theta$，都和牛顿定律一致。
+  reference: |
+    逐个解除约束，换成未知力，用虚功原理。拿掉绳：贴墙贴地滑动，$\delta W=(\frac12mgl\sin\theta-Tl\cos\theta)\delta\theta=0$，$T=\frac12mg\tan\theta$。拿掉墙：下端固定、绕下端转，上端$x=l\sin\theta-l\sin\varphi$，$\delta W=(-N_1l\cos\theta+\frac12mgl\sin\theta)\delta\varphi=0$，$N_1=\frac12mg\tan\theta$。拿掉地面：整体竖直平移，$(N_2-mg)\delta y=0$，$N_2=mg$。与牛顿定律的三个平衡方程一致。
+
+- id: p6
+  tier: hard
+  statement: |
+    长$2a$的均匀细杆放在半径为$R$的光滑半球形碗里：杆的下端$A$抵着碗的内壁，杆搭在碗边上的一点$C$，上端伸出碗外。设杆和水平方向的夹角是$\theta$（$2a>2R\cos\theta$）。用:term[虚功原理]{id="physics.analytical-mechanics.virtual-work-principle"}证明杆静止时
+
+    $$
+    2R\cos2\theta=a\cos\theta ,
+    $$
+
+    并说明为什么碗壁和碗边对杆的力不必考虑。
+  hints:
+    - |
+      两处接触都光滑，是:term[理想约束]{id="physics.analytical-mechanics.ideal-constraint"}；主动力只有重力，虚功原理变成「重心的高度取驻值」。关键是把重心高度写成$\theta$的函数。
+    - |
+      在过碗心$O$、包含杆的竖直截面里看：碗是以$O$为圆心、半径$R$的半圆，碗边是$C=(R,\ 0)$。$A$、$C$都在圆上，弦$AC$和水平方向成$\theta$角，弦长是$2R\cos\theta$。
+    - |
+      先看约束力。$A$处碗壁的力垂直于碗壁，而$A$的虚位移沿着碗壁，虚功为零。$C$处碗边的力垂直于杆，而杆在$C$处贴着碗边滑动，杆上正好在$C$的那一点的虚位移沿着杆，虚功也为零。所以两处都是理想约束，主动力只有重力$-mg\,\uv{y}$，虚功原理给出$\delta W=-mg\,\delta y_G=0$，即$\frac{\dd y_G}{\dd\theta}=0$。
+
+      再算$y_G$。取$O$为原点，$C=(R,\ 0)$，从$A$指向$C$的单位矢量是$(\cos\theta,\ \sin\theta)$。设$A=C-s(\cos\theta,\ \sin\theta)$，由$|A|=R$得$(R-s\cos\theta)^2+s^2\sin^2\theta=R^2$，即$s=2R\cos\theta$。重心$G$在离$A$距离$a$处：$G=A+a(\cos\theta,\ \sin\theta)=C+(a-2R\cos\theta)(\cos\theta,\ \sin\theta)$，所以$y_G=(a-2R\cos\theta)\sin\theta$。
+
+      求导：$\frac{\dd y_G}{\dd\theta}=2R\sin^2\theta+(a-2R\cos\theta)\cos\theta=a\cos\theta-2R(\cos^2\theta-\sin^2\theta)=a\cos\theta-2R\cos2\theta$。令它为零，就得到$2R\cos2\theta=a\cos\theta$。
+  reference: |
+    两处光滑接触：$A$处的力垂直于碗壁、虚位移沿碗壁；$C$处的力垂直于杆、杆上$C$点的虚位移沿杆；虚功都为零，是理想约束。于是$\delta W=-mg\,\delta y_G=0$。以碗心为原点，$C=(R,0)$，弦长$|AC|=2R\cos\theta$，$y_G=(a-2R\cos\theta)\sin\theta$，$\frac{\dd y_G}{\dd\theta}=a\cos\theta-2R\cos2\theta=0$，即$2R\cos2\theta=a\cos\theta$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    :term[虚位移]{id="physics.analytical-mechanics.virtual-displacement"}为什么要冻结时间？以套在匀速转动的光滑铁丝上的珠子为例：如果把实际位移$\dd\vb{r}$当作虚位移，铁丝的力的「虚功」还为零吗？:term[达朗贝尔原理]{id="physics.analytical-mechanics.dalembert-principle"}还对吗？另外，「理想约束的约束力不做虚功」是定理还是假设？
+  hints:
+    - |
+      比较实际位移和虚位移相差的那一项$\frac{\partial\vb{r}_i}{\partial t}\dd t$，看约束力在这一项上做不做功。
+    - |
+      光滑铁丝的力垂直于铁丝；铁丝在转，实际位移有一个垂直于铁丝的分量$s\omega\,\dd t$。如果把$\dd\vb{r}$代进达朗贝尔原理，左边就是$\dd T$减去主动力的功。
+    - |
+      实际位移比虚位移多出$\frac{\partial\vb{r}}{\partial t}\dd t$，对转动铁丝上的珠子，它垂直于铁丝，大小是$s\omega\,\dd t$。铁丝的力恰好也垂直于铁丝，所以$\vb{N}\cdot\dd\vb{r}=Ns\omega\,\dd t\ne0$。如果用$\dd\vb{r}$，约束力就不会从式子里消失；硬写成$\sum_i(\vb{F}_i-m_i\ddot{\vb{r}}_i)\cdot\dd\vb{r}_i=0$，等于说动能的增加全部来自主动力，而实际上铁丝一直在推着珠子加速转动，这个式子是错的。冻结时间以后，约束在那一瞬间不动，光滑约束的力才和所有允许的挪动垂直。
+
+      对定常约束，实际位移本身就是一个虚位移，所以理想约束的约束力实际上也不做功，这正是机械能守恒的来源；非定常约束下就不一定了。
+
+      「理想约束不做虚功」是一条物理假设：它是光滑、刚性、不可伸长、不打滑这些理想化模型的数学表述，要对每种约束单独论证，最终靠实验检验。真实的约束都有一点摩擦和形变，只是常常小到可以忽略；滑动摩擦明显时，这条假设就不成立，摩擦力要当作主动力。
+  reference: |
+    实际位移多出$\frac{\partial\vb{r}}{\partial t}\dd t$，转动铁丝上它垂直于铁丝，和铁丝的力同向，故$\vb{N}\cdot\dd\vb{r}\ne0$：用实际位移，约束力消不掉，$\sum(\vb{F}-m\ddot{\vb{r}})\cdot\dd\vb{r}=0$会推出「动能增量只来自主动力」，与铁丝做功矛盾。冻结时间使光滑约束的力与允许的挪动垂直。定常约束下实际位移是虚位移之一，理想约束力不做实功，得机械能守恒。「不做虚功」是光滑、刚性、不可伸长、不打滑等理想化模型的假设，逐个验证、靠实验支持；滑动摩擦时不成立。
+
+- id: p8
+  tier: thinking
+  statement: |
+    几何图像里的倒立摆：轻杆下端铰接，上端有小球，扭簧的势能是$\frac12\kappa\theta^2$，总势能$V=\frac12\kappa\theta^2+mgl\cos\theta$。:term[虚功原理]{id="physics.analytical-mechanics.virtual-work-principle"}只告诉你平衡位置在哪里。
+
+    请讨论：$K=\kappa/(mgl)$大于$1$和小于$1$时，$\theta=0$的平衡是稳定还是不稳定？为什么$K$降到$1$以下时会冒出两个新的平衡位置？这和竖直的弹性细杆顶端压上重物后会突然弯向一边有什么联系？
+  hints:
+    - |
+      稳定平衡对应势能的极小，不稳定平衡对应极大。看$V$在$\theta=0$附近的近似。
+    - |
+      $\cos\theta\approx1-\frac{\theta^2}{2}$，所以$V\approx mgl+\frac12(\kappa-mgl)\theta^2$。新的平衡位置满足$\sin\theta=K\theta$：比较直线$y=K\theta$和曲线$y=\sin\theta$。
+    - |
+      在$\theta=0$附近$V\approx mgl+\frac12(\kappa-mgl)\theta^2$。$K>1$时$\theta=0$是$V$的极小，平衡稳定：扭簧的回复作用胜过重力的倾覆作用。$K<1$时它变成极大，平衡不稳定。
+
+      别的平衡位置满足$Q=0$，即$\sin\theta=K\theta$。$\sin\theta$在原点的斜率是$1$，所以直线$y=K\theta$只有在$K<1$时才和$y=\sin\theta$在$\theta\ne0$处相交，交点是对称的$\pm\theta^*$，而且都是$V$的极小，是稳定的。$K$从大于$1$降到小于$1$，一个极小分裂成两个极小夹着一个极大，杆会倒向一边、停在$\theta^*$或$-\theta^*$。
+
+      竖直的弹性细杆在顶端受压时是同一回事：弹性提供回复，压力提供倾覆，压力超过临界值时，笔直的平衡变得不稳定，杆弯向一边（屈曲，buckling）。弯向哪边由很小的不对称决定，这种「对称的问题给出不对称的结果」在物理里很常见。
+  reference: |
+    $V\approx mgl+\frac12(\kappa-mgl)\theta^2$：$K>1$时$\theta=0$为极小（稳定），$K<1$时为极大（不稳定）。新平衡点满足$\sin\theta=K\theta$，只在$K<1$时有非零解$\pm\theta^*$，且为极小（稳定）：一个极小分裂为两个极小夹一个极大（叉式分岔）。弹性杆受压屈曲同理：回复与倾覆竞争，超过临界载荷后直立平衡失稳，由微小不对称决定弯向哪边。

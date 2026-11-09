@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 310" width="420" height="310" font-size="14">
+  <!-- 竖直的光滑圆环绕竖直直径以恒定角速度 ω 转动，珠子套在环上，θ 从最低点量起（图里 θ = 55°）。 -->
+  <!-- 转轴 -->
+  <line x1="200" y1="14" x2="200" y2="290" stroke-width="1.2" stroke-dasharray="5 4" style="stroke: var(--muted, #6b7280)" />
+  <!-- 转动方向 -->
+  <path d="M 172 30 A 28 8 0 1 0 228 30" fill="none" stroke="currentColor" stroke-width="1.5" />
+  <path d="M 228 30 L 220 25 L 221 34 Z" fill="currentColor" />
+  <text x="238" y="30" fill="currentColor" font-style="italic">ω</text>
+  <!-- 圆环在另一时刻的样子（转过一个角度，看起来是椭圆） -->
+  <ellipse cx="200" cy="150" rx="46" ry="110" fill="none" stroke-width="1.2" stroke-dasharray="3 4" style="stroke: var(--muted, #6b7280)" />
+  <!-- 圆环 -->
+  <circle cx="200" cy="150" r="110" fill="none" stroke="currentColor" stroke-width="2.5" />
+  <circle cx="200" cy="150" r="3" fill="currentColor" />
+  <!-- 半径和 θ -->
+  <line x1="200" y1="150" x2="290.1" y2="213.1" stroke="currentColor" stroke-width="1.2" />
+  <text x="252" y="174" fill="currentColor" font-style="italic">R</text>
+  <path d="M 200 180 A 30 30 0 0 0 224.6 167.2" fill="none" stroke-width="1.6" style="stroke: var(--accent, #2563eb)" />
+  <text x="213" y="199" text-anchor="middle" fill="currentColor" font-style="italic">θ</text>
+  <!-- 珠子绕轴转的圆的半径 R sin θ -->
+  <line x1="200" y1="213.1" x2="290.1" y2="213.1" stroke-width="1.4" stroke-dasharray="4 3" style="stroke: var(--good, #059669)" />
+  <text x="246" y="234" text-anchor="middle" style="fill: var(--good, #059669)"><tspan font-style="italic">R</tspan> sin <tspan font-style="italic">θ</tspan></text>
+  <!-- 珠子 -->
+  <circle cx="290.1" cy="213.1" r="8" stroke="currentColor" stroke-width="1.5" style="fill: var(--accent, #2563eb)" />
+  <text x="302" y="210" fill="currentColor" font-style="italic">m</text>
+  <!-- 重力 -->
+  <line x1="290.1" y1="221" x2="290.1" y2="262" stroke="currentColor" stroke-width="2" />
+  <path d="M 290.1 271 L 286.1 262 L 294.1 262 Z" fill="currentColor" />
+  <text x="298" y="268" fill="currentColor" font-style="italic">mg</text>
+  <text x="200" y="304" text-anchor="middle" fill="currentColor">绕竖直直径匀速转动的圆环上的珠子</text>
+</svg>

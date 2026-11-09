@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" font-size="14">
+  <!-- (t, q) 平面：两端固定在 A(t1, q1)、B(t2, q2)。实线是真实路径，虚线是变动以后的路径 q + εη，η 在两端为零。 -->
+  <!-- 坐标轴 -->
+  <line x1="60" y1="250" x2="608" y2="250" stroke="currentColor" stroke-width="1.5" />
+  <path d="M 616 250 L 606 246 L 606 254 Z" fill="currentColor" />
+  <line x1="60" y1="250" x2="60" y2="38" stroke="currentColor" stroke-width="1.5" />
+  <path d="M 60 30 L 56 40 L 64 40 Z" fill="currentColor" />
+  <text x="612" y="272" text-anchor="end" fill="currentColor" font-style="italic">t</text>
+  <text x="46" y="42" text-anchor="end" fill="currentColor" font-style="italic">q</text>
+  <!-- 两个端点的时刻 -->
+  <g stroke-width="1" stroke-dasharray="3 4" style="stroke: var(--muted, #6b7280)">
+    <line x1="110" y1="200" x2="110" y2="250" />
+    <line x1="560" y1="110" x2="560" y2="250" />
+  </g>
+  <text x="110" y="270" text-anchor="middle" fill="currentColor"><tspan font-style="italic">t</tspan><tspan font-size="10" dy="4">1</tspan></text>
+  <text x="560" y="270" text-anchor="middle" fill="currentColor"><tspan font-style="italic">t</tspan><tspan font-size="10" dy="4">2</tspan></text>
+  <!-- 变动以后的两条路径 -->
+  <g fill="none" stroke-width="1.8" stroke-dasharray="6 4" style="stroke: var(--muted, #6b7280)">
+    <path d="M 110.0 200.0 L 121.2 191.0 L 132.5 181.5 L 143.8 171.6 L 155.0 161.4 L 166.2 151.1 L 177.5 140.9 L 188.8 130.8 L 200.0 121.3 L 211.2 112.3 L 222.5 104.1 L 233.8 96.8 L 245.0 90.6 L 256.2 85.5 L 267.5 81.6 L 278.8 78.9 L 290.0 77.3 L 301.2 76.7 L 312.5 77.1 L 323.8 78.3 L 335.0 80.0 L 346.2 82.2 L 357.5 84.6 L 368.8 87.1 L 380.0 89.5 L 391.2 91.7 L 402.5 93.6 L 413.8 95.1 L 425.0 96.2 L 436.2 96.9 L 447.5 97.3 L 458.8 97.4 L 470.0 97.4 L 481.2 97.5 L 492.5 97.7 L 503.8 98.2 L 515.0 99.2 L 526.2 100.8 L 537.5 103.1 L 548.8 106.1 L 560.0 110.0" />
+    <path d="M 110.0 200.0 L 121.2 198.1 L 132.5 196.8 L 143.8 196.2 L 155.0 196.1 L 166.2 196.3 L 177.5 196.8 L 188.8 197.4 L 200.0 197.9 L 211.2 198.1 L 222.5 198.0 L 233.8 197.3 L 245.0 196.1 L 256.2 194.1 L 267.5 191.5 L 278.8 188.1 L 290.0 184.1 L 301.2 179.4 L 312.5 174.3 L 323.8 168.8 L 335.0 163.0 L 346.2 157.2 L 357.5 151.4 L 368.8 145.8 L 380.0 140.6 L 391.2 135.8 L 402.5 131.6 L 413.8 128.0 L 425.0 125.0 L 436.2 122.6 L 447.5 120.7 L 458.8 119.4 L 470.0 118.4 L 481.2 117.7 L 492.5 117.1 L 503.8 116.5 L 515.0 115.8 L 526.2 114.9 L 537.5 113.6 L 548.8 112.0 L 560.0 110.0" />
+  </g>
+  <!-- 真实路径 -->
+  <path d="M 110.0 200.0 L 121.2 194.8 L 132.5 189.8 L 143.8 184.9 L 155.0 180.2 L 166.2 175.6 L 177.5 171.2 L 188.8 166.9 L 200.0 162.8 L 211.2 158.8 L 222.5 155.0 L 233.8 151.3 L 245.0 147.8 L 256.2 144.4 L 267.5 141.2 L 278.8 138.1 L 290.0 135.2 L 301.2 132.4 L 312.5 129.8 L 323.8 127.3 L 335.0 125.0 L 346.2 122.8 L 357.5 120.8 L 368.8 118.9 L 380.0 117.2 L 391.2 115.6 L 402.5 114.2 L 413.8 112.9 L 425.0 111.8 L 436.2 110.8 L 447.5 110.0 L 458.8 109.3 L 470.0 108.8 L 481.2 108.4 L 492.5 108.2 L 503.8 108.1 L 515.0 108.2 L 526.2 108.4 L 537.5 108.8 L 548.8 109.3 L 560.0 110.0" fill="none" stroke-width="3" style="stroke: var(--accent, #2563eb)" />
+  <!-- 某一时刻的偏离 εη(t) -->
+  <g stroke-width="1.6" style="stroke: var(--good, #059669); fill: var(--good, #059669)">
+    <line x1="380" y1="113" x2="380" y2="94" />
+    <path d="M 380 89.5 L 376.5 97 L 383.5 97 Z" stroke-width="1" />
+    <path d="M 380 117.2 L 376.5 109.7 L 383.5 109.7 Z" stroke-width="1" />
+  </g>
+  <text x="388" y="106" style="fill: var(--good, #059669)"><tspan font-style="italic">εη</tspan>(<tspan font-style="italic">t</tspan>)</text>
+  <!-- 端点 -->
+  <g stroke="currentColor" stroke-width="1.5" style="fill: var(--bg, #ffffff)">
+    <circle cx="110" cy="200" r="6" />
+    <circle cx="560" cy="110" r="6" />
+  </g>
+  <text x="96" y="194" text-anchor="end" fill="currentColor" font-style="italic">A</text>
+  <text x="574" y="104" fill="currentColor" font-style="italic">B</text>
+  <text x="250" y="140" text-anchor="end" style="fill: var(--accent, #2563eb)">真实路径</text>
+  <text x="200" y="64" style="fill: var(--muted, #6b7280)">变动后的路径 <tspan font-style="italic">q</tspan> + <tspan font-style="italic">εη</tspan></text>
+</svg>

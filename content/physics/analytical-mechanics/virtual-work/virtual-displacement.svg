@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" font-size="14">
+  <!-- 铁丝绕 O 逆时针匀速转动。t 时刻铁丝和水平方向成 25°，t + dt 时刻成 33°。 -->
+  <!-- 珠子 P 在 t 时刻离 O 230 个单位；虚位移沿 t 时刻的铁丝，实际位移指向 t + dt 时刻铁丝上的 P'。 -->
+  <!-- t + dt 时刻的铁丝（淡、虚线） -->
+  <line x1="120" y1="230" x2="407.6" y2="43.3" stroke-width="2" stroke-dasharray="6 5" style="stroke: var(--muted, #6b7280)" />
+  <text x="414" y="48" style="fill: var(--muted, #6b7280)"><tspan font-style="italic">t</tspan> + d<tspan font-style="italic">t</tspan> 时刻</text>
+  <!-- t 时刻的铁丝 -->
+  <line x1="120" y1="230" x2="464.4" y2="69.3" stroke="currentColor" stroke-width="2.5" />
+  <text x="470" y="74" fill="currentColor"><tspan font-style="italic">t</tspan> 时刻的铁丝</text>
+  <!-- 转轴和转动方向 -->
+  <circle cx="120" cy="230" r="4" fill="currentColor" />
+  <text x="112" y="252" text-anchor="middle" fill="currentColor">O</text>
+  <path d="M 165 230 A 45 45 0 0 0 148.9 195.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+  <path d="M 148.9 195.5 L 157.3 197.9 L 152.8 203.3 Z" fill="currentColor" />
+  <text x="132" y="190" fill="currentColor" font-style="italic">ω</text>
+  <!-- 虚位移 δr：沿着 t 时刻的铁丝 -->
+  <g style="stroke: var(--accent, #2563eb); fill: var(--accent, #2563eb)">
+    <line x1="328.4" y1="132.7" x2="382.7" y2="107.3" stroke-width="3.5" />
+    <path d="M 391.8 103.1 L 384.4 110.9 L 381 103.7 Z" stroke-width="1" />
+  </g>
+  <text x="398" y="112" style="fill: var(--accent, #2563eb)">δ<tspan font-weight="bold">r</tspan>（虚位移）</text>
+  <!-- 实际位移 dr：沿铁丝的一段加上铁丝转动带来的一段 -->
+  <g style="stroke: var(--good, #059669); fill: var(--good, #059669)">
+    <line x1="328.4" y1="132.7" x2="358.2" y2="80.8" stroke-width="3" />
+    <path d="M 363.2 72.1 L 361.7 82.8 L 354.7 78.8 Z" stroke-width="1" />
+  </g>
+  <text x="352" y="58" text-anchor="end" style="fill: var(--good, #059669)">d<tspan font-weight="bold">r</tspan>（实际位移）</text>
+  <!-- 光滑铁丝的力 N：垂直于铁丝 -->
+  <line x1="328.4" y1="132.7" x2="313.6" y2="101" stroke="currentColor" stroke-width="2.5" />
+  <path d="M 309.4 91.9 L 317.2 99.3 L 310 102.7 Z" fill="currentColor" />
+  <text x="300" y="104" text-anchor="end" fill="currentColor" font-weight="bold">N</text>
+  <path d="M 337.5 128.5 L 333.2 119.4 L 324.2 123.6" fill="none" stroke="currentColor" stroke-width="1" />
+  <!-- 珠子 -->
+  <circle cx="328.4" cy="132.7" r="7" stroke="currentColor" stroke-width="1.5" style="fill: var(--bg, #ffffff)" />
+  <text x="334" y="156" fill="currentColor" font-style="italic">P</text>
+  <text x="320" y="288" text-anchor="middle" fill="currentColor">光滑铁丝的力垂直于铁丝：<tspan font-weight="bold">N</tspan> · δ<tspan font-weight="bold">r</tspan> = 0，<tspan font-weight="bold">N</tspan> · d<tspan font-weight="bold">r</tspan> ≠ 0</text>
+</svg>

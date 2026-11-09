@@ -1,0 +1,204 @@
+- id: p1
+  tier: easy
+  statement: |
+    长$l$的单摆，摆球质量$m$，摆角$\theta$从竖直向下的方向量起，$y$轴竖直向上。下面哪些可以作为它的:term[拉格朗日量]{id="physics.analytical-mechanics.lagrangian"}（用它写出的拉格朗日方程是正确的单摆方程）？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\frac12ml^2\dot\theta^2+mgl\cos\theta$
+      - |
+        $\frac12ml^2\dot\theta^2-mgl\cos\theta$
+      - |
+        $\frac12ml^2\dot\theta^2-mgl(1-\cos\theta)$
+      - |
+        $\frac12ml\dot\theta^2+mgl\cos\theta$
+    value: [1, 3]
+  hints:
+    - |
+      $L=T-V$。先写出动能$T$，再写出势能$V$；势能的零点取在哪里都行，只差一个常数。
+    - |
+      摆球的速率是$l\dot\theta$，$T=\frac12ml^2\dot\theta^2$。取悬点处势能为零，$V=-mgl\cos\theta$；取最低点处势能为零，$V=mgl(1-\cos\theta)$。
+    - |
+      A 是$T-V$，取悬点处势能为零。C 也是$T-V$，取最低点处势能为零，和 A 只差常数$mgl$，方程一样。B 是$T+V$，给出$\ddot\theta=+\frac{g}{l}\sin\theta$，不对。D 的动能少了一个$l$，量纲都不对。
+
+      答案是 A、C。
+  solution: |
+    A、C。两者只差一个常数，给出同一个方程$\ddot\theta=-\frac{g}{l}\sin\theta$；B 是$T+V$，D 的动能写错了。
+
+- id: p2
+  tier: easy
+  statement: |
+    光滑的固定铁丝弯成抛物线$y=\frac12x^2$（长度单位$\mathrm{m}$），平放在水平桌面上，重力不做功。珠子套在铁丝上滑动，取$x$为:term[广义坐标]{id="physics.analytical-mechanics.generalized-coordinates"}。某一时刻珠子在$x=1\,\mathrm{m}$处，$\dot x=1\,\mathrm{m/s}$，求此刻的$\ddot x$。
+  answer:
+    type: number
+    value: -1/2
+    unit: |
+      $\mathrm{m/s^2}$
+  hints:
+    - |
+      先用$y=\frac12x^2$把动能写成$x$、$\dot x$的函数，再写:term[拉格朗日方程]{id="physics.analytical-mechanics.lagrange-equations"}。
+    - |
+      $\dot y=x\dot x$，所以$L=T=\frac12m\dot x^2(1+x^2)$。$\frac{\partial L}{\partial\dot x}=m\dot x(1+x^2)$，$\frac{\partial L}{\partial x}=mx\dot x^2$。
+    - |
+      $\dv{}{t}\bigl[m\dot x(1+x^2)\bigr]=m\ddot x(1+x^2)+2mx\dot x^2$，方程是$m\ddot x(1+x^2)+2mx\dot x^2-mx\dot x^2=0$，即
+
+      $$
+      \ddot x=-\frac{x\dot x^2}{1+x^2}.
+      $$
+
+      代入$x=1$、$\dot x=1$，得$\ddot x=-\frac12\,\mathrm{m/s^2}$。
+  solution: |
+    $L=\frac12m\dot x^2(1+x^2)$，方程$\ddot x(1+x^2)+x\dot x^2=0$，所以$\ddot x=-\frac{1}{2}\,\mathrm{m/s^2}$。珠子的速率不变，$\ddot x$不为零只是因为铁丝在拐弯。
+
+- id: p3
+  tier: medium
+  statement: |
+    质量$M$的滑块在光滑的水平导轨上，下面用长$l$的轻杆挂着质量$m$的摆球，摆在竖直平面内。取$M=m$，把摆杆拉到和竖直方向成$\theta_0=\frac{\pi}{3}$的位置，滑块和摆球都静止，然后释放。求释放瞬间摆角的角加速度$\ddot\theta$，以$g/l$为单位，带符号（$\theta$以$\theta_0$所在的那一侧为正）。
+  answer:
+    type: number
+    value: -4*sqrt(3)/7
+  hints:
+    - |
+      用滑块的位置$x$和摆角$\theta$作:term[广义坐标]{id="physics.analytical-mechanics.generalized-coordinates"}，写出:term[拉格朗日量]{id="physics.analytical-mechanics.lagrangian"}和两个方程。释放瞬间$\dot x=\dot\theta=0$，含速度的项都是零。
+    - |
+      摆球在$(x+l\sin\theta,\ -l\cos\theta)$，$L=\frac12(M+m)\dot x^2+ml\cos\theta\,\dot x\dot\theta+\frac12ml^2\dot\theta^2+mgl\cos\theta$。两个方程是$(M+m)\ddot x+ml\cos\theta\,\ddot\theta-ml\sin\theta\,\dot\theta^2=0$和$l\ddot\theta+\cos\theta\,\ddot x+g\sin\theta=0$。
+    - |
+      释放瞬间$\dot\theta=0$，第一式给出$\ddot x=-\frac{ml\cos\theta}{M+m}\ddot\theta$。代进第二式：
+
+      $$
+      \ddot\theta=-\frac{(M+m)\,g\sin\theta}{l\,(M+m\sin^2\theta)} .
+      $$
+
+      $M=m$、$\theta=\frac{\pi}{3}$时$\sin\theta=\frac{\sqrt3}{2}$、$\sin^2\theta=\frac34$，$\ddot\theta=-\frac{2\cdot\frac{\sqrt3}{2}}{1+\frac34}\cdot\frac{g}{l}=-\frac{4\sqrt3}{7}\cdot\frac{g}{l}$。
+
+      答案是$-\frac{4\sqrt3}{7}\approx-0.990$，填 `-4*sqrt(3)/7`。
+  solution: |
+    $\ddot\theta=-\frac{(M+m)g\sin\theta}{l(M+m\sin^2\theta)}=-\frac{4\sqrt3}{7}\cdot\frac{g}{l}\approx-0.990\,\frac{g}{l}$。悬点固定时是$-\frac{\sqrt3}{2}\cdot\frac{g}{l}\approx-0.866\,\frac{g}{l}$：滑块往反方向退，摆球加速得更快。
+
+- id: p4
+  tier: medium
+  statement: |
+    光滑的直铁丝下端固定在竖直转轴上，铁丝和转轴成$\alpha=\frac{\pi}{4}$角、斜向上张开，绕竖直轴以角速度$\omega=2\,\mathrm{rad/s}$匀速转动。珠子套在铁丝上。取$g=9.8\,\mathrm{m/s^2}$，求珠子能相对铁丝静止的位置到铁丝下端的距离$s_0$。
+  answer:
+    type: number
+    value: 49*sqrt(2)/20
+    unit: |
+      $\mathrm{m}$
+  hints:
+    - |
+      取珠子到下端的距离$s$作:term[广义坐标]{id="physics.analytical-mechanics.generalized-coordinates"}。珠子绕轴转的圆半径是$s\sin\alpha$，动能要用惯性系里的速度。
+    - |
+      珠子在$(s\sin\alpha\cos\omega t,\ s\sin\alpha\sin\omega t,\ s\cos\alpha)$，$T=\frac12m\bigl(\dot s^2+s^2\omega^2\sin^2\alpha\bigr)$，$V=mgs\cos\alpha$。
+    - |
+      :term[拉格朗日方程]{id="physics.analytical-mechanics.lagrange-equations"}：$m\ddot s=ms\omega^2\sin^2\alpha-mg\cos\alpha$。相对铁丝静止要求$\ddot s=0$，所以
+
+      $$
+      s_0=\frac{g\cos\alpha}{\omega^2\sin^2\alpha}=\frac{9.8\times\frac{\sqrt2}{2}}{4\times\frac12}=\frac{49\sqrt2}{20}\approx3.46\,\mathrm{m}.
+      $$
+  solution: |
+    方程$\ddot s=s\omega^2\sin^2\alpha-g\cos\alpha$，$s_0=\frac{g\cos\alpha}{\omega^2\sin^2\alpha}=\frac{49\sqrt2}{20}\approx3.46\,\mathrm{m}$。这个位置不稳定：珠子稍往外一点，$\ddot s>0$，会被越甩越远。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$q_1,\dots,q_n$和$Q_1,\dots,Q_n$是同一个系统的两组:term[广义坐标]{id="physics.analytical-mechanics.generalized-coordinates"}，$q_i=q_i(Q_1,\dots,Q_n,t)$，雅可比矩阵$\bigl(\frac{\partial q_i}{\partial Q_k}\bigr)$可逆。把$L(q,\dot q,t)$里的$q$、$\dot q$用$Q$、$\dot Q$表示，得到$L'(Q,\dot Q,t)$。证明：
+
+    $$
+    \dv{}{t}\frac{\partial L'}{\partial\dot Q_k}-\frac{\partial L'}{\partial Q_k}=\sum_{i=1}^{n}\Bigl(\dv{}{t}\frac{\partial L}{\partial\dot q_i}-\frac{\partial L}{\partial q_i}\Bigr)\frac{\partial q_i}{\partial Q_k},
+    $$
+
+    并由此说明：:term[拉格朗日方程]{id="physics.analytical-mechanics.lagrange-equations"}在两组坐标里同时成立或同时不成立。
+  hints:
+    - |
+      $q_i(Q,t)$和讲解里的$\vb{r}_i(q,t)$地位一样，「消点」和「交换」两个恒等式照样成立。
+    - |
+      $\dot q_i=\sum_k\frac{\partial q_i}{\partial Q_k}\dot Q_k+\frac{\partial q_i}{\partial t}$，所以$\frac{\partial\dot q_i}{\partial\dot Q_k}=\frac{\partial q_i}{\partial Q_k}$，$\dv{}{t}\frac{\partial q_i}{\partial Q_k}=\frac{\partial\dot q_i}{\partial Q_k}$。再用链式法则算$\frac{\partial L'}{\partial\dot Q_k}$和$\frac{\partial L'}{\partial Q_k}$。
+    - |
+      由$\dot q_i=\sum_k\frac{\partial q_i}{\partial Q_k}\dot Q_k+\frac{\partial q_i}{\partial t}$得两个恒等式：$\frac{\partial\dot q_i}{\partial\dot Q_k}=\frac{\partial q_i}{\partial Q_k}$（系数不含$\dot Q$），$\dv{}{t}\frac{\partial q_i}{\partial Q_k}=\frac{\partial\dot q_i}{\partial Q_k}$（混合偏导数可交换，证明同讲解）。
+
+      $L'$通过$q$、$\dot q$依赖$Q$、$\dot Q$，而$q$不含$\dot Q$。由链式法则
+
+      $$
+      \frac{\partial L'}{\partial\dot Q_k}=\sum_i\frac{\partial L}{\partial\dot q_i}\frac{\partial\dot q_i}{\partial\dot Q_k}=\sum_i\frac{\partial L}{\partial\dot q_i}\frac{\partial q_i}{\partial Q_k},\qquad
+      \frac{\partial L'}{\partial Q_k}=\sum_i\Bigl(\frac{\partial L}{\partial q_i}\frac{\partial q_i}{\partial Q_k}+\frac{\partial L}{\partial\dot q_i}\frac{\partial\dot q_i}{\partial Q_k}\Bigr).
+      $$
+
+      对第一式求时间导数，并用「交换」：$\dv{}{t}\frac{\partial L'}{\partial\dot Q_k}=\sum_i\Bigl(\dv{}{t}\frac{\partial L}{\partial\dot q_i}\cdot\frac{\partial q_i}{\partial Q_k}+\frac{\partial L}{\partial\dot q_i}\frac{\partial\dot q_i}{\partial Q_k}\Bigr)$。减去第二式，含$\frac{\partial\dot q_i}{\partial Q_k}$的项相消，就得到要证的等式。
+
+      记$E_i=\dv{}{t}\frac{\partial L}{\partial\dot q_i}-\frac{\partial L}{\partial q_i}$、$E'_k$为左边。若所有$E_i=0$，则所有$E'_k=0$；反过来，$E'_k=\sum_iE_i\frac{\partial q_i}{\partial Q_k}$，矩阵$\bigl(\frac{\partial q_i}{\partial Q_k}\bigr)$可逆，所以$E'=0$推出$E=0$。拉格朗日方程的形式不依赖坐标的选取，这也是它能「按步骤」使用的原因：用哪组广义坐标都行，只要把同一个$L$换过去。
+  reference: |
+    由$\dot q_i=\sum_k\frac{\partial q_i}{\partial Q_k}\dot Q_k+\frac{\partial q_i}{\partial t}$得$\frac{\partial\dot q_i}{\partial\dot Q_k}=\frac{\partial q_i}{\partial Q_k}$、$\dv{}{t}\frac{\partial q_i}{\partial Q_k}=\frac{\partial\dot q_i}{\partial Q_k}$。链式法则：$\frac{\partial L'}{\partial\dot Q_k}=\sum_i\frac{\partial L}{\partial\dot q_i}\frac{\partial q_i}{\partial Q_k}$，$\frac{\partial L'}{\partial Q_k}=\sum_i(\frac{\partial L}{\partial q_i}\frac{\partial q_i}{\partial Q_k}+\frac{\partial L}{\partial\dot q_i}\frac{\partial\dot q_i}{\partial Q_k})$。前者求导后减去后者，得$E'_k=\sum_iE_i\frac{\partial q_i}{\partial Q_k}$。雅可比矩阵可逆，故$E=0\iff E'=0$。
+
+- id: p6
+  tier: hard
+  statement: |
+    长$l$的单摆，悬点不固定，而是在竖直方向按$y_0(t)=a\cos\Omega t$振动（$a$、$\Omega$是常数），摆在竖直平面内。用:term[拉格朗日方程]{id="physics.analytical-mechanics.lagrange-equations"}推出摆角$\theta$满足
+
+    $$
+    l\ddot\theta=-\bigl(g-a\Omega^2\cos\Omega t\bigr)\sin\theta ,
+    $$
+
+    并解释括号里的量。
+  hints:
+    - |
+      这是:term[非定常约束]{id="physics.analytical-mechanics.rheonomic-constraint"}：摆球的位置显含$t$。仍取$\theta$作广义坐标，按步骤写出$T$和$V$。只含$t$、不含$\theta$和$\dot\theta$的项不影响方程，可以先扔掉。
+    - |
+      摆球在$(l\sin\theta,\ a\cos\Omega t-l\cos\theta)$，速度是$(l\cos\theta\,\dot\theta,\ -a\Omega\sin\Omega t+l\sin\theta\,\dot\theta)$。$L$里有一项交叉项$-mal\Omega\sin\Omega t\sin\theta\,\dot\theta$，它对时间求导时会冒出一项和$\dot\theta$有关的项，要和$\frac{\partial L}{\partial\theta}$里的一项相消。
+    - |
+      $T=\frac12m\bigl(l^2\dot\theta^2-2al\Omega\sin\Omega t\sin\theta\,\dot\theta+a^2\Omega^2\sin^2\Omega t\bigr)$，$V=mg(a\cos\Omega t-l\cos\theta)$。扔掉只含$t$的项，
+
+      $$
+      L=\frac12ml^2\dot\theta^2-mal\Omega\sin\Omega t\,\sin\theta\,\dot\theta+mgl\cos\theta .
+      $$
+
+      $\frac{\partial L}{\partial\dot\theta}=ml^2\dot\theta-mal\Omega\sin\Omega t\sin\theta$，对时间求导得$ml^2\ddot\theta-mal\Omega^2\cos\Omega t\sin\theta-mal\Omega\sin\Omega t\cos\theta\,\dot\theta$。$\frac{\partial L}{\partial\theta}=-mal\Omega\sin\Omega t\cos\theta\,\dot\theta-mgl\sin\theta$。两者相减，含$\dot\theta$的项相消：
+
+      $$
+      ml^2\ddot\theta-mal\Omega^2\cos\Omega t\sin\theta+mgl\sin\theta=0,
+      $$
+
+      即$l\ddot\theta=-(g-a\Omega^2\cos\Omega t)\sin\theta$。
+
+      括号里是$g+\ddot y_0$（$\ddot y_0=-a\Omega^2\cos\Omega t$）：在跟着悬点一起振动的参考系里看，摆球感受到的「有效重力加速度」随时间变化，悬点向上加速时变大，向下加速时变小。
+  reference: |
+    摆球$(l\sin\theta,\ a\cos\Omega t-l\cos\theta)$，去掉只含$t$的项后$L=\frac12ml^2\dot\theta^2-mal\Omega\sin\Omega t\sin\theta\,\dot\theta+mgl\cos\theta$。$\dv{}{t}\frac{\partial L}{\partial\dot\theta}=ml^2\ddot\theta-mal\Omega^2\cos\Omega t\sin\theta-mal\Omega\sin\Omega t\cos\theta\,\dot\theta$，$\frac{\partial L}{\partial\theta}=-mal\Omega\sin\Omega t\cos\theta\,\dot\theta-mgl\sin\theta$，相减得$l\ddot\theta=-(g-a\Omega^2\cos\Omega t)\sin\theta$。括号为$g+\ddot y_0$，即随悬点加速度变化的有效重力加速度。
+
+- id: p7
+  tier: thinking
+  statement: |
+    :term[拉格朗日量]{id="physics.analytical-mechanics.lagrangian"}$L=T-V$不是能量。为什么偏偏是差而不是和？
+
+    把$L$乘一个非零常数、加一个常数，方程变不变？能不能找到两个看起来很不一样、却给出同一个运动方程的拉格朗日量？由此看，$L$本身有没有直接的物理意义？
+  hints:
+    - |
+      回到推导的最后一步，看$V$是怎么并进去的；再想想对$L$做哪些改动不影响方程两边的每一项。
+    - |
+      $L$乘常数$c$，方程两边同乘$c$。对自由质点试试$L_1=\frac12m\dot x^2$和$L_2=\frac12m\dot x^2+x\dot x$，或者$L_3=\dot x^4$。
+    - |
+      推导最后得到$\dv{}{t}\frac{\partial T}{\partial\dot q_j}-\frac{\partial T}{\partial q_j}=-\frac{\partial V}{\partial q_j}$，把右边移过去并利用$\frac{\partial V}{\partial\dot q_j}=0$，只能并成$T-V$；用$T+V$会把力的符号弄反。
+
+      $L\to cL$（$c\ne0$）和$L\to L+C$都不改变方程。还有更多例子：自由质点的$L_1=\frac12m\dot x^2$和$L_2=\frac12m\dot x^2+x\dot x$给出同一个方程$m\ddot x=0$，因为$x\dot x=\dv{}{t}\bigl(\frac12x^2\bigr)$是一个函数对时间的全导数，它对方程的贡献$\dv{}{t}x-\dot x=0$。更怪的是$L_3=\dot x^4$：方程是$12\dot x^2\ddot x=0$，在$\dot x\ne0$时也给出$\ddot x=0$。
+
+      所以$L$不是一个能直接测量的量，它更像是「生成运动方程的工具」：真正有物理意义的是它给出的方程。$T-V$是从牛顿定律推出来的那个选择，而且它最自然：在后面讲的哈密顿原理里，$\int L\,\dd t$取驻值正好给出运动方程；加上一个全导数只改变这个积分的端点值。
+  reference: |
+    $V$与$T$合并时因$\frac{\partial V}{\partial\dot q}=0$只能写成$T-V$，$T+V$会使力反号。$cL$、$L+C$、$L+\dv{F(q,t)}{t}$给出同样方程（如$\frac12m\dot x^2$与$\frac12m\dot x^2+x\dot x$）；甚至$\dot x^4$对自由质点也给出$\ddot x=0$（$\dot x\ne0$时）。$L$不唯一、不可直接测量，其意义在于生成运动方程；$T-V$由牛顿定律推出，且使作用量取驻值给出运动方程。
+
+- id: p8
+  tier: thinking
+  statement: |
+    推导:term[拉格朗日方程]{id="physics.analytical-mechanics.lagrange-equations"}时，哪一步用到了惯性系？在例 2 里，如果站在随铁丝一起转的参考系里看，珠子只沿铁丝走，速度是$\dot s$，直接写$T=\frac12m\dot s^2$会得到什么？例 2 的方程里$ms\omega^2$这一项在牛顿力学里对应什么？为什么拉格朗日方法里不用自己去想这一项？
+  hints:
+    - |
+      推导的出发点是哪个方程？它在什么参考系里成立？
+    - |
+      用$T=\frac12m\dot s^2$，方程变成$\ddot s=0$。在转动参考系里用牛顿定律，要加上惯性离心力（centrifugal force）和科里奥利力（Coriolis force）。
+    - |
+      出发点是$m_i\ddot{\vb{r}}_i=\vb{F}_i+\vb{R}_i$，它只在惯性系里成立，所以$T$必须是惯性系里的动能。如果用相对于铁丝的速度写$T=\frac12m\dot s^2$，方程就成了$\ddot s=0$，珠子会匀速滑动，这是错的。
+
+      正确的$T=\frac12m(\dot s^2+s^2\omega^2)$里，$s^2\omega^2$来自铁丝转动带来的速度，它在方程里给出$ms\omega^2$。在随铁丝转动的参考系里用牛顿定律，这一项就是惯性离心力；那里还有一个科里奥利力，它垂直于铁丝，被铁丝的约束力平衡，所以不出现在沿铁丝的方程里。
+
+      拉格朗日方法的好处是：广义坐标可以是相对于转动物体量的（$s$就是），只要把惯性系里的动能用这些坐标写出来，离心力、科里奥利力这些效应会自动从$T$里出来，不用单独去想。
+  reference: |
+    出发点$m_i\ddot{\vb{r}}_i=\vb{F}_i+\vb{R}_i$只在惯性系成立，$T$须为惯性系动能。用$T=\frac12m\dot s^2$得$\ddot s=0$，错误。正确$T$含$\frac12ms^2\omega^2$，给出$ms\omega^2$，即转动系中的惯性离心力；科里奥利力垂直于铁丝，被约束力平衡。广义坐标可在非惯性系中度量，只要$T$是惯性系动能，惯性力效应自动出现。

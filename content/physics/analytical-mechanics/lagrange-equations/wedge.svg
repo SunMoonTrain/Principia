@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 270" width="640" height="270" font-size="14">
+  <!-- 光滑地面上的斜面（质量 M，倾角 α = 30°）和斜面上的滑块（质量 m）。广义坐标：斜面的位置 X、滑块沿斜面下滑的距离 s。 -->
+  <!-- 地面 -->
+  <line x1="40" y1="220" x2="600" y2="220" stroke="currentColor" stroke-width="2" />
+  <g stroke="currentColor" stroke-width="1">
+    <line x1="60" y1="220" x2="52" y2="228" />
+    <line x1="100" y1="220" x2="92" y2="228" />
+    <line x1="180" y1="220" x2="172" y2="228" />
+    <line x1="220" y1="220" x2="212" y2="228" />
+    <line x1="260" y1="220" x2="252" y2="228" />
+    <line x1="300" y1="220" x2="292" y2="228" />
+    <line x1="340" y1="220" x2="332" y2="228" />
+    <line x1="380" y1="220" x2="372" y2="228" />
+    <line x1="420" y1="220" x2="412" y2="228" />
+    <line x1="460" y1="220" x2="452" y2="228" />
+    <line x1="500" y1="220" x2="492" y2="228" />
+    <line x1="540" y1="220" x2="532" y2="228" />
+    <line x1="580" y1="220" x2="572" y2="228" />
+  </g>
+  <text x="596" y="208" text-anchor="end" style="fill: var(--muted, #6b7280)">光滑地面</text>
+  <!-- 斜面 -->
+  <path d="M 150 220 L 450 220 L 150 46.8 Z" stroke="currentColor" stroke-width="2" style="fill: var(--accent, #2563eb); fill-opacity: 0.08" />
+  <text x="215" y="185" text-anchor="middle" fill="currentColor" font-style="italic">M</text>
+  <!-- 倾角 α -->
+  <path d="M 400 220 A 50 50 0 0 1 406.7 195" fill="none" stroke="currentColor" stroke-width="1.5" />
+  <text x="384" y="212" text-anchor="end" fill="currentColor" font-style="italic">α</text>
+  <!-- 滑块 -->
+  <g transform="translate(271.2 116.8) rotate(30)">
+    <rect x="-25" y="-34" width="50" height="34" stroke="currentColor" stroke-width="2" style="fill: var(--accent, #2563eb); fill-opacity: 0.35" />
+  </g>
+  <text x="300" y="92" fill="currentColor" font-style="italic">m</text>
+  <!-- 重力 -->
+  <line x1="279.7" y1="102.1" x2="279.7" y2="140" stroke="currentColor" stroke-width="2" />
+  <path d="M 279.7 148 L 275.7 139 L 283.7 139 Z" fill="currentColor" />
+  <text x="287" y="146" fill="currentColor"><tspan font-style="italic">mg</tspan></text>
+  <!-- s：从斜面顶端沿斜面量到滑块 -->
+  <g style="stroke: var(--accent, #2563eb); fill: var(--accent, #2563eb)">
+    <line x1="138" y1="53.8" x2="146" y2="67.6" stroke-width="1.5" />
+    <line x1="142" y1="60.7" x2="255.4" y2="126.2" stroke-width="1.8" />
+    <path d="M 263.2 130.7 L 253.7 129.2 L 257.2 123.2 Z" stroke-width="1" />
+  </g>
+  <text x="192" y="112" text-anchor="middle" font-style="italic" style="fill: var(--accent, #2563eb)">s</text>
+  <!-- X：从固定点量到斜面左边 -->
+  <line x1="80" y1="232" x2="80" y2="248" stroke="currentColor" stroke-width="1.5" />
+  <line x1="150" y1="226" x2="150" y2="248" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" />
+  <g style="stroke: var(--accent, #2563eb); fill: var(--accent, #2563eb)">
+    <line x1="80" y1="240" x2="142" y2="240" stroke-width="1.8" />
+    <path d="M 150 240 L 141 236 L 141 244 Z" stroke-width="1" />
+  </g>
+  <text x="115" y="262" text-anchor="middle" font-style="italic" style="fill: var(--accent, #2563eb)">X</text>
+  <text x="80" y="262" text-anchor="middle" style="fill: var(--muted, #6b7280)">O</text>
+</svg>

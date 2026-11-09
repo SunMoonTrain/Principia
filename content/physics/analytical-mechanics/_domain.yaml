@@ -5,6 +5,8 @@ proofPolicy: full
 macros:
   \vb: |
     \mathbf{#1}
+  \uv: |
+    \hat{\mathbf{#1}}
   \dd: |
     \mathop{}\!\mathrm{d}
   \dv: |
@@ -13,4 +15,256 @@ macros:
     \frac{\partial #1}{\partial #2}
   \pb: |
     \left\{#1,#2\right\}
-glossary: []
+glossary:
+  - id: physics.analytical-mechanics.constraint
+    zh: |
+      约束
+    en: |
+      constraint
+    brief: |
+      系统各质点的位置（有时还有速度）事先必须满足的条件，例如单摆的$x^2+y^2=l^2$。
+    definedIn: physics.analytical-mechanics.constraints
+    anchor: def-constraint
+  - id: physics.analytical-mechanics.constraint-force
+    zh: |
+      约束力
+    en: |
+      constraint force
+    brief: |
+      维持约束的力，如绳子的拉力、斜面的支持力；大小事先不知道，要由运动定出。
+    definedIn: physics.analytical-mechanics.constraints
+    anchor: def-constraint
+  - id: physics.analytical-mechanics.holonomic-constraint
+    zh: |
+      完整约束
+    en: |
+      holonomic constraint
+    brief: |
+      能写成坐标和时间之间的等式$f(\vb{r}_1,\dots,\vb{r}_N,t)=0$的约束。
+    definedIn: physics.analytical-mechanics.constraints
+    anchor: def-holonomic
+  - id: physics.analytical-mechanics.nonholonomic-constraint
+    zh: |
+      非完整约束
+    en: |
+      nonholonomic constraint
+    brief: |
+      不能写成坐标和时间之间等式的约束，例如积不出来的速度关系、不等式。
+    definedIn: physics.analytical-mechanics.constraints
+    anchor: def-holonomic
+  - id: physics.analytical-mechanics.scleronomic-constraint
+    zh: |
+      定常约束
+    en: |
+      scleronomic constraint
+    brief: |
+      等式里不显含时间的约束。
+    definedIn: physics.analytical-mechanics.constraints
+    anchor: def-scleronomic
+  - id: physics.analytical-mechanics.rheonomic-constraint
+    zh: |
+      非定常约束
+    en: |
+      rheonomic constraint
+    brief: |
+      等式里显含时间的约束，例如套在匀速转动的铁丝上的珠子。
+    definedIn: physics.analytical-mechanics.constraints
+    anchor: def-scleronomic
+  - id: physics.analytical-mechanics.degrees-of-freedom
+    zh: |
+      自由度
+    en: |
+      degrees of freedom
+    brief: |
+      确定系统位置所需的独立坐标个数；$N$个质点受$k$个独立的完整约束时是$3N-k$。
+    definedIn: physics.analytical-mechanics.constraints
+    anchor: def-dof
+  - id: physics.analytical-mechanics.generalized-coordinates
+    zh: |
+      广义坐标
+    en: |
+      generalized coordinates
+    brief: |
+      唯一确定系统位置、彼此独立、个数等于自由度的一组数$q_1,\dots,q_n$，约束自动满足。
+    definedIn: physics.analytical-mechanics.constraints
+    anchor: def-generalized-coordinates
+  - id: physics.analytical-mechanics.configuration-space
+    zh: |
+      位形空间
+    en: |
+      configuration space
+    brief: |
+      广义坐标所有可能取值组成的空间；系统的位置是其中的点，运动是其中的曲线。
+    definedIn: physics.analytical-mechanics.constraints
+    anchor: def-configuration-space
+  - id: physics.analytical-mechanics.virtual-displacement
+    zh: |
+      虚位移
+    en: |
+      virtual displacement
+    brief: |
+      冻结时间时，和此刻的约束相容的无穷小位置改变$\delta\vb{r}_i=\sum_j\frac{\partial\vb{r}_i}{\partial q_j}\delta q_j$。
+    definedIn: physics.analytical-mechanics.virtual-work
+    anchor: def-virtual-displacement
+  - id: physics.analytical-mechanics.applied-force
+    zh: |
+      主动力
+    en: |
+      applied force
+    brief: |
+      约束力以外的力，如重力、弹簧的弹力；它们是位置、速度、时间的已知函数。
+    definedIn: physics.analytical-mechanics.virtual-work
+    anchor: def-applied-force
+  - id: physics.analytical-mechanics.virtual-work
+    zh: |
+      虚功
+    en: |
+      virtual work
+    brief: |
+      力在虚位移上做的功，主动力的虚功是$\delta W=\sum_i\vb{F}_i\cdot\delta\vb{r}_i$。
+    definedIn: physics.analytical-mechanics.virtual-work
+    anchor: def-virtual-work
+  - id: physics.analytical-mechanics.ideal-constraint
+    zh: |
+      理想约束
+    en: |
+      ideal constraint
+    brief: |
+      约束力在任何虚位移上总虚功为零的约束，如光滑面、刚性杆、不可伸长的绳、纯滚动。
+    definedIn: physics.analytical-mechanics.virtual-work
+    anchor: def-ideal-constraint
+  - id: physics.analytical-mechanics.virtual-work-principle
+    zh: |
+      虚功原理
+    en: |
+      principle of virtual work
+    brief: |
+      受定常的理想约束的系统静止，当且仅当主动力在任何虚位移上的虚功都为零。
+    definedIn: physics.analytical-mechanics.virtual-work
+    anchor: def-virtual-work-principle
+  - id: physics.analytical-mechanics.generalized-force
+    zh: |
+      广义力
+    en: |
+      generalized force
+    brief: |
+      $Q_j=\sum_i\vb{F}_i\cdot\frac{\partial\vb{r}_i}{\partial q_j}$，使主动力的虚功写成$\delta W=\sum_j Q_j\delta q_j$。
+    definedIn: physics.analytical-mechanics.virtual-work
+    anchor: def-generalized-force
+  - id: physics.analytical-mechanics.dalembert-principle
+    zh: |
+      达朗贝尔原理
+    en: |
+      d'Alembert's principle
+    brief: |
+      受理想约束的系统运动时，主动力和惯性力$-m_i\ddot{\vb{r}}_i$的总虚功为零。
+    definedIn: physics.analytical-mechanics.virtual-work
+    anchor: def-dalembert
+  - id: physics.analytical-mechanics.generalized-velocity
+    zh: |
+      广义速度
+    en: |
+      generalized velocity
+    brief: |
+      广义坐标对时间的导数$\dot q_j$；在拉格朗日力学里和$q_j$当作互相独立的变量。
+    definedIn: physics.analytical-mechanics.lagrange-equations
+    anchor: def-generalized-velocity
+  - id: physics.analytical-mechanics.lagrangian
+    zh: |
+      拉格朗日量
+    en: |
+      Lagrangian
+    brief: |
+      动能减势能$L(q,\dot q,t)=T-V$；它不是能量，加常数或乘非零常数不改变运动方程。
+    definedIn: physics.analytical-mechanics.lagrange-equations
+    anchor: def-lagrangian
+  - id: physics.analytical-mechanics.lagrange-equations
+    zh: |
+      拉格朗日方程
+    en: |
+      Lagrange's equations
+    brief: |
+      $\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial L}{\partial\dot q_j}-\frac{\partial L}{\partial q_j}=0$，每个广义坐标一个，不含约束力。
+    definedIn: physics.analytical-mechanics.lagrange-equations
+    anchor: def-lagrange-equations
+  - id: physics.analytical-mechanics.lagrange-equations-with-multipliers
+    zh: |
+      带乘子的拉格朗日方程
+    en: |
+      Lagrange's equations with multipliers
+    brief: |
+      多留坐标、保留约束$f=0$时的方程，右边是$\lambda\frac{\partial f}{\partial q_j}$；乘子$\lambda$给出约束力。
+    definedIn: physics.analytical-mechanics.constraint-forces
+    anchor: def-multiplier-equations
+  - id: physics.analytical-mechanics.generalized-constraint-force
+    zh: |
+      广义约束力
+    en: |
+      generalized constraint force
+    brief: |
+      约束力的广义力$Q_j^{\mathrm{c}}=\sum_i\vb{R}_i\cdot\frac{\partial\vb{r}_i}{\partial q_j}$，等于$\lambda\frac{\partial f}{\partial q_j}$。
+    definedIn: physics.analytical-mechanics.constraint-forces
+    anchor: def-generalized-constraint-force
+  - id: physics.analytical-mechanics.generalized-momentum
+    zh: |
+      广义动量
+    en: |
+      generalized momentum
+    brief: |
+      $p_j=\frac{\partial L}{\partial\dot q_j}$，也叫和$q_j$共轭的动量；坐标是角度时它是角动量。
+    definedIn: physics.analytical-mechanics.cyclic-coordinates
+    anchor: def-generalized-momentum
+  - id: physics.analytical-mechanics.cyclic-coordinate
+    zh: |
+      循环坐标
+    en: |
+      cyclic coordinate
+    brief: |
+      拉格朗日量里不出现（只出现它的速度）的广义坐标；和它对应的广义动量守恒。
+    definedIn: physics.analytical-mechanics.cyclic-coordinates
+    anchor: def-cyclic-coordinate
+  - id: physics.analytical-mechanics.energy-function
+    zh: |
+      能量函数
+    en: |
+      energy function
+    brief: |
+      $h=\sum_jp_j\dot q_j-L$，沿运动$\frac{\mathrm{d}h}{\mathrm{d}t}=-\frac{\partial L}{\partial t}$；$\vb{r}_i$不显含时间时等于机械能。
+    definedIn: physics.analytical-mechanics.energy-function
+    anchor: def-energy-function
+  - id: physics.analytical-mechanics.action
+    zh: |
+      作用量
+    en: |
+      action
+    brief: |
+      拉格朗日量沿一条路径的积分$S[q]=\int_{t_1}^{t_2}L\,\mathrm{d}t$，量纲是能量乘时间。
+    definedIn: physics.analytical-mechanics.hamiltons-principle
+    anchor: def-action
+  - id: physics.analytical-mechanics.hamiltons-principle
+    zh: |
+      哈密顿原理
+    en: |
+      Hamilton's principle
+    brief: |
+      在两端固定的路径中，真实运动使作用量取驻值（$\delta S=0$），与拉格朗日方程等价。
+    definedIn: physics.analytical-mechanics.hamiltons-principle
+    anchor: def-hamiltons-principle
+  - id: physics.analytical-mechanics.continuous-symmetry
+    zh: |
+      连续对称性
+    en: |
+      continuous symmetry
+    brief: |
+      一族依赖连续参数$s$的变换$q\mapsto Q(q,s)$，使拉格朗日量的值不变（或只差一个全导数）。
+    definedIn: physics.analytical-mechanics.noether-theorem
+    anchor: def-continuous-symmetry
+  - id: physics.analytical-mechanics.noether-theorem
+    zh: |
+      诺特定理
+    en: |
+      Noether's theorem
+    brief: |
+      拉格朗日量的连续对称性给出守恒量$\sum_jp_jK_j$；平移对应动量，转动对应角动量。
+    definedIn: physics.analytical-mechanics.noether-theorem
+    anchor: def-noether
