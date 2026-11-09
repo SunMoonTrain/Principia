@@ -1,0 +1,155 @@
+- id: p1
+  tier: easy
+  statement: |
+    求最小的正整数$n$，使$f_n(x)=x^n$在$[0,0.9]$上与$0$的:term[上确界距离]{id="math.analysis.uniform-distance"}$\|f_n-0\|_\infty$小于$0.01$。
+  answer:
+    type: number
+    value: 44
+  hints:
+    - |
+      $x^n$在$[0,0.9]$上递增，上确界在哪里取到？
+    - |
+      $\|f_n-0\|_\infty=0.9^n$，解$0.9^n<0.01$。
+    - |
+      $x^n$在$[0,0.9]$上递增，上确界在右端点取到，是$0.9^n$。$0.9^n<0.01$即$n>\frac{\ln0.01}{\ln0.9}\approx43.7$，所以$n$最小是$44$。核对一下：$0.9^{43}\approx0.0108$，$0.9^{44}\approx0.0097$。
+  solution: |
+    $\|f_n\|_\infty=0.9^n$，要$0.9^n<0.01$，$n>43.7$，所以$n$最小是$44$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些函数列在$[0,1]$上:term[一致收敛]{id="math.analysis.uniform-convergence"}？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $f_n(x)=\frac{nx}{1+nx}$
+      - |
+        $f_n(x)=\frac{\sin nx}{\sqrt n}$
+      - |
+        $f_n(x)=\frac{n^2x}{1+n^3x^2}$
+      - |
+        $f_n(x)=x^n(1-x)$
+    value: [2, 4]
+  hints:
+    - |
+      用定理 1：先求出极限函数$f$，再算（或估计）$\|f_n-f\|_\infty$。
+    - |
+      A 的极限函数在$0$处是$0$，别处是$1$。B 不超过$\frac{1}{\sqrt n}$。C 在$x=n^{-3/2}$处的值是多少？D 可以用$(n+1)x^n\le1+x+\cdots+x^n$来估计。
+    - |
+      A：$f_n(0)=0$；$x>0$时$f_n(x)=1-\frac{1}{1+nx}\to1$，极限函数在$0$处断开。在$(0,1]$上$|f_n(x)-1|=\frac{1}{1+nx}$，$x\to0^+$时趋于$1$，上确界是$1$，不一致收敛。B：$|f_n(x)|\le\frac{1}{\sqrt n}\to0$，一致收敛于$0$。
+
+      C：$f_n(0)=0$；$x>0$时$0\le f_n(x)\le\frac{n^2x}{n^3x^2}=\frac{1}{nx}\to0$，逐点收敛于$0$。可$f_n\bigl(n^{-3/2}\bigr)=\frac{\sqrt n}{2}$，上确界距离趋于无穷，不一致收敛。
+
+      D：$0\le x\le1$时，$k\le n$就有$x^n\le x^k$，所以$(n+1)x^n\le1+x+\cdots+x^n$，于是$0\le(1-x)x^n\le\frac{(1-x)(1+x+\cdots+x^n)}{n+1}=\frac{1-x^{n+1}}{n+1}\le\frac{1}{n+1}$。上确界距离不超过$\frac{1}{n+1}$，一致收敛于$0$。
+
+      答案是 B 和 D。
+  solution: |
+    B 的上确界距离不超过$\frac{1}{\sqrt n}$，D 的不超过$\frac{1}{n+1}$，都一致收敛于$0$；A 的极限函数在$0$处断开，上确界距离是$1$；C 在$x=n^{-3/2}$处的值是$\frac{\sqrt n}{2}$，上确界距离趋于无穷。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$f_n(x)=\frac{x}{4+nx^2}$，$x\in\R$。求:term[上确界距离]{id="math.analysis.uniform-distance"}$\|f_{25}-0\|_\infty$。
+  answer:
+    type: number
+    value: 1/20
+  hints:
+    - |
+      照例 1 的办法，用均值不等式放大分母。
+    - |
+      $4+nx^2\ge2\sqrt{4nx^2}=4\sqrt n\,|x|$，等号在$nx^2=4$时成立。
+    - |
+      $x\ne0$时$4+nx^2\ge4\sqrt n\,|x|$，所以$|f_n(x)|\le\frac{1}{4\sqrt n}$；$x=\frac{2}{\sqrt n}$时等号成立。于是$\|f_n\|_\infty=\frac{1}{4\sqrt n}$，$n=25$时是$\frac{1}{20}$。核对：$f_{25}(0.4)=\frac{0.4}{4+4}=0.05$。
+  solution: |
+    由均值不等式，$\|f_n\|_\infty=\frac{1}{4\sqrt n}$，在$x=\frac{2}{\sqrt n}$处取到；$n=25$时是$\frac{1}{20}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$g_n(x)=\frac{nx}{1+n^2x^2}$。求最小的正整数$N$，使得当$n\ge N$时，$g_n$在$[0.1,1]$上的:term[上确界]{id="math.analysis.supremum"}都小于$0.05$。
+  answer:
+    type: number
+    value: 200
+  hints:
+    - |
+      $g_n(x)=h(nx)$，$h(t)=\frac{t}{1+t^2}$。$h$在$t\ge1$时是增还是减？
+    - |
+      $t\ge1$时$h$递减。$n\ge10$时，$[0.1,1]$上$nx\ge1$，所以上确界在$x=0.1$处取到；$n<10$时，$x=\frac1n$在区间里，$g_n\bigl(\frac1n\bigr)=\frac12$。
+    - |
+      $h(s)-h(t)=\frac{(t-s)(st-1)}{(1+s^2)(1+t^2)}$，所以$1\le s<t$时$h(s)>h(t)$，$h$在$[1,+\infty)$上递减。$n\ge10$时，$[0.1,1]$上$nx\ge1$，上确界是$g_n(0.1)=\frac{0.1n}{1+0.01n^2}$；$n<10$时上确界是$\frac12$。
+
+      $\frac{0.1n}{1+0.01n^2}<0.05$即$n^2-200n+100>0$，$n>100+\sqrt{9900}\approx199.5$。$g_{199}(0.1)\approx0.05013$，$g_{200}(0.1)=\frac{20}{401}\approx0.04988$，而$n>200$时$g_n(0.1)$更小。所以$N$最小是$200$。
+  solution: |
+    $n\ge10$时上确界是$g_n(0.1)=\frac{0.1n}{1+0.01n^2}$，它随$n$增大而减小；要小于$0.05$，需$n>199.5$，所以$N=200$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设每个$f_n$在$D$上都:term[有界]{id="math.analysis.bounded-function"}（bounded function），即有$M_n$使所有$x\in D$都满足$|f_n(x)|\le M_n$，并且$\{f_n\}$在$D$上:term[一致收敛]{id="math.analysis.uniform-convergence"}于$f$。证明$f$在$D$上有界，并且存在一个$M$，使所有$n$和所有$x\in D$都满足$|f_n(x)|\le M$。只是逐点收敛时，结论还对吗？
+  hints:
+    - |
+      取$\varepsilon=1$，用一致收敛找$N$，把$f$和$f_{N+1}$比。
+    - |
+      $|f(x)|\le|f_{N+1}(x)|+1$；$n>N$时$|f_n(x)|\le|f(x)|+1$。前$N$个函数只有有限个。
+    - |
+      取$\varepsilon=1$，有$N$，使$n>N$时所有$x$都满足$|f_n(x)-f(x)|<1$。设$|f_{N+1}|\le M_{N+1}$，则$|f(x)|\le|f_{N+1}(x)|+1\le M_{N+1}+1$，$f$有界。$n>N$时$|f_n(x)|\le|f(x)|+1\le M_{N+1}+2$；$f_1,\dots,f_N$各有界，设$|f_k|\le M_k$。取$M=\max\{M_1,\dots,M_N,M_{N+1}+2\}$即可。
+
+      只是逐点收敛时不对。在$(0,1]$上令$f_n(x)=\min\bigl\{\frac1x,n\bigr\}$，每个$f_n$都有界（不超过$n$），并且逐点收敛于$\frac1x$：$x\ge\frac1n$时$f_n(x)=\frac1x$。可极限函数$\frac1x$在$(0,1]$上无界。
+  reference: |
+    取$\varepsilon=1$得$N$：$|f|\le|f_{N+1}|+1$有界；$n>N$时$|f_n|\le|f|+1$，再和前$N$个的界取最大。逐点收敛不够：$f_n=\min\{\frac1x,n\}$在$(0,1]$上逐点收敛于无界的$\frac1x$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$\{f_n\}$、$\{g_n\}$在$D$上分别:term[一致收敛]{id="math.analysis.uniform-convergence"}于$f$、$g$。证明$f_n+g_n$一致收敛于$f+g$。$f_ng_n$一定一致收敛于$fg$吗？如果再假定$f$、$g$都有界呢？
+  hints:
+    - |
+      和：用:term[上确界距离]{id="math.analysis.uniform-distance"}的三角不等式。积：把$f_ng_n-fg$拆成两项，每项都是「一个函数」乘「一个一致小的差」。
+    - |
+      $f_ng_n-fg=f_n(g_n-g)+(f_n-f)g$。在$\R$上试试$f_n=g_n=x+\frac1n$。
+    - |
+      和：$\|(f_n+g_n)-(f+g)\|_\infty\le\|f_n-f\|_\infty+\|g_n-g\|_\infty\to0$。
+
+      积不一定。在$\R$上取$f_n(x)=g_n(x)=x+\frac1n$，它们一致收敛于$x$（上确界距离是$\frac1n$），可$f_ng_n-x^2=\frac{2x}{n}+\frac{1}{n^2}$，对每个$n$都随$x$无界，上确界距离是$+\infty$，不一致收敛。
+
+      $f$、$g$都有界时成立。设$|f|\le A$，$|g|\le B$。$\|f_n-f\|_\infty\to0$，所以$n$足够大时$\|f_n-f\|_\infty\le1$，$|f_n|\le A+1$。于是$|f_ng_n-fg|\le|f_n||g_n-g|+|f_n-f||g|\le(A+1)\|g_n-g\|_\infty+B\|f_n-f\|_\infty\to0$。
+  reference: |
+    和由三角不等式。积一般不对：$f_n=g_n=x+\frac1n$在$\R$上一致收敛于$x$，$f_ng_n-x^2=\frac{2x}{n}+\frac{1}{n^2}$无界。$f$、$g$有界时，$|f_ng_n-fg|\le|f_n||g_n-g|+|f_n-f||g|$一致趋于$0$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    设$f_n$在$[a,b]$上都:term[连续]{id="math.analysis.continuous-function"}，对每个$x$，$\{f_n(x)\}$单调递减，并且:term[逐点收敛]{id="math.analysis.pointwise-convergence"}于一个连续函数$f$。这时一定一致收敛吗？把$[a,b]$换成$[0,1)$，或者去掉「$f$连续」呢？
+  hints:
+    - |
+      令$h_n=f_n-f$，它连续、非负，逐点递减趋于$0$。如果不一致收敛，会有$x_n$使$h_n(x_n)\ge c>0$。
+    - |
+      闭区间上的这串$x_n$能挑出趋于某一点的一串，这一点$x^*$还在$[a,b]$里，在$x^*$处推出矛盾。$x^n$在$[0,1)$上可以当反例。
+    - |
+      会一致收敛，这叫作迪尼定理（Dini's theorem）。令$h_n=f_n-f$，它连续、非负，对每个$x$递减趋于$0$。若不一致收敛，有$c>0$和$x_n\in[a,b]$，使$h_n(x_n)\ge c$。用对半分区间的办法（见[闭区间套定理](lesson:math.analysis.nested-intervals)），可以挑出$x_n$的一个:term[子列]{id="math.analysis.subsequence"}（subsequence）趋于某个$x^*\in[a,b]$，见[子列与致密性定理](lesson:math.analysis.subsequences)。
+
+      固定$m$。子列里$n\ge m$的那些项，$h_m(x_n)\ge h_n(x_n)\ge c$；$h_m$在$x^*$处连续，取极限得$h_m(x^*)\ge c$。这对每个$m$都成立，和$h_m(x^*)\to0$矛盾。
+
+      三个条件都不能少。区间换成$[0,1)$：$x^n$连续、递减，逐点收敛于连续的$0$，却不一致收敛，毛病是$x_n$可以逃向$1$，而$1$不在区间里。去掉「$f$连续」：$x^n$在$[0,1]$上递减收敛于在$1$处断开的函数，也不一致收敛。
+  reference: |
+    迪尼定理：会一致收敛。否则有$x_n$使$h_n(x_n)\ge c$（$h_n=f_n-f$），取子列趋于$x^*\in[a,b]$，由递减和连续得$h_m(x^*)\ge c$对所有$m$成立，矛盾。$[0,1)$上的$x^n$、$[0,1]$上的$x^n$分别说明闭区间、$f$连续不能少。
+
+- id: p8
+  tier: thinking
+  statement: |
+    $x^n$在每个$[0,r]$（$0<r<1$）上都:term[一致收敛]{id="math.analysis.uniform-convergence"}于$0$，在$[0,1)$上却不一致收敛；例 2 的$g_n$在每个$[\delta,1]$上一致收敛，在$[0,1]$上却不一致收敛。「在每个闭子区间上一致收敛」和「在整个区间上一致收敛」差在哪里？什么时候前者就够用了？
+  hints:
+    - |
+      一致收敛的$N$要对整个集合管用。闭子区间$[0,r]$对应的$N$随$r$怎么变？
+    - |
+      $x^n$在$[0,r]$上，要$r^n<\varepsilon$，$N$大约是$\frac{\ln\varepsilon}{\ln r}$，$r\to1$时趋于无穷。很多性质（比如连续）只和一点附近有关。
+    - |
+      在$[0,r]$上，$\|x^n\|_\infty=r^n$，要它小于$\varepsilon$，$n$得大于$\frac{\ln\varepsilon}{\ln r}$，$r\to1$时这个数趋于无穷，所以没有一个$N$能同时管住所有的$[0,r]$。「每个闭子区间上一致收敛」允许$N$随子区间变，因而更弱。
+
+      可很多性质只和一点附近有关。比如以后要证的「连续函数列一致收敛，极限函数连续」：要看极限函数在$x_0\in[0,1)$处连不连续，只要在包含$x_0$的某个$[0,r]$上一致收敛就够了。所以$x^n$的极限函数在$[0,1)$上连续，毛病只在$x=1$。
+
+      以后讲幂级数（power series，见[幂级数的收敛理论](lesson:math.analysis.power-series-theory)）时，常见的情形正是这样：在收敛区间里不一定一致收敛，但在每个闭子区间上一致收敛，这已经够用来证明和函数连续、可以逐项求导。
+  reference: |
+    「每个闭子区间上一致收敛」允许$N$随子区间变化（$x^n$在$[0,r]$上$N\approx\frac{\ln\varepsilon}{\ln r}$，$r\to1$时无界），所以更弱；但对连续这类局部性质已经够用，幂级数在收敛区间内就是这样。

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 300" width="660" height="300" font-size="14">
+  <!-- 左：例 1 的系数 a_n（n 为偶数时 2^n，奇数时 1），画 |a_n|^(1/n)，n = 1…30；px = 50 + 8.6n，py = 220 − 80y -->
+  <!-- 右：Σ xⁿ/n 的收敛情况，数轴 px = 495 + 110x，x 从 −1.45 到 1.45 -->
+  <line x1="50" y1="220" x2="320" y2="220" stroke="currentColor" stroke-width="1.2" />
+  <line x1="50" y1="226" x2="50" y2="34" stroke="currentColor" stroke-width="1.2" />
+  <line x1="46" y1="140" x2="50" y2="140" stroke="currentColor" stroke-width="1.2" />
+  <text x="43" y="144" text-anchor="end" font-size="12" fill="currentColor">1</text>
+  <line x1="46" y1="60" x2="50" y2="60" stroke="currentColor" stroke-width="1.2" />
+  <text x="43" y="64" text-anchor="end" font-size="12" fill="currentColor">2</text>
+  <line x1="136" y1="220" x2="136" y2="224" stroke="currentColor" stroke-width="1.2" />
+  <text x="136" y="238" text-anchor="middle" font-size="12" fill="currentColor">10</text>
+  <line x1="222" y1="220" x2="222" y2="224" stroke="currentColor" stroke-width="1.2" />
+  <text x="222" y="238" text-anchor="middle" font-size="12" fill="currentColor">20</text>
+  <line x1="308" y1="220" x2="308" y2="224" stroke="currentColor" stroke-width="1.2" />
+  <text x="308" y="238" text-anchor="middle" font-size="12" fill="currentColor">30</text>
+  <text x="324" y="224" font-size="12" fill="currentColor"><tspan font-style="italic">n</tspan></text>
+  <line x1="50" y1="60" x2="318" y2="60" stroke="currentColor" stroke-width="0.8" stroke-dasharray="5 4" opacity="0.7" />
+  <circle cx="58.6" cy="140" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="67.2" cy="60" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="75.8" cy="140" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="84.4" cy="60" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="93" cy="140" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="101.6" cy="60" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="110.2" cy="140" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="118.8" cy="60" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="127.4" cy="140" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="136" cy="60" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="144.6" cy="140" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="153.2" cy="60" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="161.8" cy="140" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="170.4" cy="60" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="179" cy="140" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="187.6" cy="60" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="196.2" cy="140" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="204.8" cy="60" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="213.4" cy="140" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="222" cy="60" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="230.6" cy="140" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="239.2" cy="60" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="247.8" cy="140" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="256.4" cy="60" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="265" cy="140" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="273.6" cy="60" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="282.2" cy="140" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="290.8" cy="60" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="299.4" cy="140" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="308" cy="60" r="2.8" style="fill: var(--accent, #2563eb)" />
+  <text x="318" y="50" text-anchor="end" font-size="12" fill="currentColor">上极限 2，所以 <tspan font-style="italic">R</tspan> = 1/2</text>
+  <text x="30" y="260" font-size="12" fill="currentColor">例 1：|<tspan font-style="italic">a</tspan><tspan baseline-shift="sub" font-size="9"><tspan font-style="italic">n</tspan></tspan>|<tspan baseline-shift="super" font-size="9">1/<tspan font-style="italic">n</tspan></tspan> 在 1 和 2 之间跳，没有极限</text>
+  <text x="30" y="284" font-size="12" fill="currentColor">比值 <tspan font-style="italic">a</tspan><tspan baseline-shift="sub" font-size="9"><tspan font-style="italic">n</tspan>+1</tspan>/<tspan font-style="italic">a</tspan><tspan baseline-shift="sub" font-size="9"><tspan font-style="italic">n</tspan></tspan> 也没有极限，比值判别法用不上</text>
+  <line x1="335.5" y1="140" x2="654.5" y2="140" stroke="currentColor" stroke-width="1.2" />
+  <line x1="385" y1="140" x2="605" y2="140" stroke-width="5" style="stroke: var(--accent, #2563eb); stroke-opacity: 0.45" />
+  <line x1="385" y1="136" x2="385" y2="144" stroke="currentColor" stroke-width="1.2" />
+  <text x="385" y="162" text-anchor="middle" font-size="12" fill="currentColor">−1</text>
+  <line x1="495" y1="136" x2="495" y2="144" stroke="currentColor" stroke-width="1.2" />
+  <text x="495" y="162" text-anchor="middle" font-size="12" fill="currentColor">0</text>
+  <line x1="605" y1="136" x2="605" y2="144" stroke="currentColor" stroke-width="1.2" />
+  <text x="605" y="162" text-anchor="middle" font-size="12" fill="currentColor">1</text>
+  <circle cx="385" cy="140" r="5" style="fill: var(--accent, #2563eb)" />
+  <circle cx="605" cy="140" r="5" stroke-width="1.6" style="fill: var(--bg, #ffffff); stroke: var(--accent, #2563eb)" />
+  <text x="495" y="124" text-anchor="middle" font-size="12" fill="currentColor">|<tspan font-style="italic">x</tspan>| &lt; 1：绝对收敛</text>
+  <text x="346.5" y="124" text-anchor="middle" font-size="12" fill="currentColor">发散</text>
+  <text x="643.5" y="124" text-anchor="middle" font-size="12" fill="currentColor">发散</text>
+  <line x1="385" y1="170" x2="379" y2="192" stroke="currentColor" stroke-width="0.8" />
+  <text x="377" y="206" text-anchor="middle" font-size="12" fill="currentColor"><tspan font-style="italic">x</tspan> = −1：条件收敛</text>
+  <line x1="605" y1="170" x2="611" y2="192" stroke="currentColor" stroke-width="0.8" />
+  <text x="613" y="206" text-anchor="middle" font-size="12" fill="currentColor"><tspan font-style="italic">x</tspan> = 1：发散</text>
+  <text x="495" y="80" text-anchor="middle" font-size="12" fill="currentColor">Σ <tspan font-style="italic">x</tspan><tspan baseline-shift="super" font-size="9"><tspan font-style="italic">n</tspan></tspan>/<tspan font-style="italic">n</tspan>，收敛半径 <tspan font-style="italic">R</tspan> = 1</text>
+  <text x="495" y="284" text-anchor="middle" font-size="12" fill="currentColor">端点要单独判断</text>
+</svg>

@@ -512,3 +512,210 @@ glossary:
       $F$在$[a,b]$上可导，并且$F'$可积，则$\int_a^bF'(x)\dd x=F(b)-F(a)$。
     definedIn: math.analysis.ftc-proof
     anchor: thm-newton-leibniz
+  - id: math.analysis.series
+    zh: |
+      级数
+    en: |
+      series
+    brief: |
+      数列的各项依次相加写成的$\sum a_n$；它的和定义成部分和数列的极限。
+    definedIn: math.analysis.series-cauchy
+    anchor: def-series
+  - id: math.analysis.partial-sum
+    zh: |
+      部分和
+    en: |
+      partial sum
+    brief: |
+      级数前$n$项的和$S_n=a_1+a_2+\cdots+a_n$。
+    definedIn: math.analysis.series-cauchy
+    anchor: def-series
+  - id: math.analysis.convergent-series
+    zh: |
+      收敛级数
+    en: |
+      convergent series
+    brief: |
+      部分和数列收敛的级数；部分和的极限叫作级数的和。
+    definedIn: math.analysis.series-cauchy
+    anchor: def-series
+  - id: math.analysis.divergent-series
+    zh: |
+      发散级数
+    en: |
+      divergent series
+    brief: |
+      部分和数列发散的级数，如$1-1+1-\cdots$和调和级数$\sum\frac1n$。
+    definedIn: math.analysis.series-cauchy
+    anchor: def-series
+  - id: math.analysis.series-cauchy-criterion
+    zh: |
+      级数的柯西准则
+    en: |
+      Cauchy criterion for series
+    brief: |
+      $\sum a_n$收敛，当且仅当任给$\varepsilon>0$有$N$，使$n>m>N$时$|a_{m+1}+\cdots+a_n|<\varepsilon$。
+    definedIn: math.analysis.series-cauchy
+    anchor: thm-series-cauchy
+  - id: math.analysis.absolute-convergence
+    zh: |
+      绝对收敛
+    en: |
+      absolute convergence
+    brief: |
+      $\sum|a_n|$收敛时，说$\sum a_n$绝对收敛；绝对收敛的级数一定收敛。
+    definedIn: math.analysis.series-cauchy
+    anchor: def-absolute-convergence
+  - id: math.analysis.conditional-convergence
+    zh: |
+      条件收敛
+    en: |
+      conditional convergence
+    brief: |
+      $\sum a_n$收敛而$\sum|a_n|$发散，如$1-\frac12+\frac13-\cdots$。
+    definedIn: math.analysis.series-cauchy
+    anchor: def-absolute-convergence
+  - id: math.analysis.comparison-test
+    zh: |
+      比较判别法
+    en: |
+      comparison test
+    brief: |
+      从某一项起$0\le a_n\le b_n$：$\sum b_n$收敛则$\sum a_n$收敛，$\sum a_n$发散则$\sum b_n$发散。
+    definedIn: math.analysis.series-cauchy
+    anchor: thm-comparison
+  - id: math.analysis.rearrangement
+    zh: |
+      重排
+    en: |
+      rearrangement
+    brief: |
+      每个正整数恰好是一个$\sigma(n)$时，$\sum a_{\sigma(n)}$叫作$\sum a_n$的重排：各项都用上，只换次序。
+    definedIn: math.analysis.rearrangement
+    anchor: def-rearrangement
+  - id: math.analysis.riemann-rearrangement-theorem
+    zh: |
+      黎曼重排定理
+    en: |
+      Riemann rearrangement theorem
+    brief: |
+      条件收敛的级数，对任意实数$L$，都有一个重排收敛到$L$。
+    definedIn: math.analysis.rearrangement
+    anchor: thm-riemann-rearrangement
+  - id: math.analysis.cauchy-product
+    zh: |
+      柯西乘积
+    en: |
+      Cauchy product
+    brief: |
+      $\sum a_n$与$\sum b_n$的柯西乘积是$\sum c_n$，$c_n=\sum_{k=0}^na_kb_{n-k}$；两者都绝对收敛时，和是两个和之积。
+    definedIn: math.analysis.rearrangement
+    anchor: def-cauchy-product
+  - id: math.analysis.pointwise-convergence
+    zh: |
+      逐点收敛
+    en: |
+      pointwise convergence
+    brief: |
+      对每个$x\in D$，数列$\{f_n(x)\}$都收敛于$f(x)$；$N$可以随$x$变。
+    definedIn: math.analysis.uniform-convergence
+    anchor: def-pointwise
+  - id: math.analysis.uniform-convergence
+    zh: |
+      一致收敛
+    en: |
+      uniform convergence
+    brief: |
+      任给$\varepsilon>0$有$N$，使$n>N$时对所有$x\in D$都有$|f_n(x)-f(x)|<\varepsilon$。
+    definedIn: math.analysis.uniform-convergence
+    anchor: def-uniform-convergence
+  - id: math.analysis.uniform-distance
+    zh: |
+      上确界距离
+    en: |
+      uniform distance
+    brief: |
+      $\|f-g\|_\infty=\sup_{x\in D}|f(x)-g(x)|$；$f_n$一致收敛于$f$，当且仅当$\|f_n-f\|_\infty\to0$。
+    definedIn: math.analysis.uniform-convergence
+    anchor: def-uniform-distance
+  - id: math.analysis.function-series
+    zh: |
+      函数项级数
+    en: |
+      series of functions
+    brief: |
+      各项都是函数的级数$\sum u_n(x)$；它的收敛、一致收敛指部分和函数列的收敛、一致收敛。
+    definedIn: math.analysis.function-series
+    anchor: def-function-series
+  - id: math.analysis.uniform-cauchy-criterion
+    zh: |
+      一致收敛的柯西准则
+    en: |
+      Cauchy criterion for uniform convergence
+    brief: |
+      $\{f_n\}$在$D$上一致收敛，当且仅当任给$\varepsilon>0$有$N$，使$m,n>N$时对所有$x\in D$都有$|f_m(x)-f_n(x)|<\varepsilon$。
+    definedIn: math.analysis.function-series
+    anchor: thm-uniform-cauchy
+  - id: math.analysis.weierstrass-m-test
+    zh: |
+      魏尔斯特拉斯判别法
+    en: |
+      Weierstrass M-test
+    brief: |
+      对所有$x\in D$都有$|u_n(x)|\le M_n$，并且$\sum M_n$收敛，则$\sum u_n(x)$在$D$上一致收敛。
+    definedIn: math.analysis.function-series
+    anchor: thm-weierstrass-m-test
+  - id: math.analysis.bernstein-polynomial
+    zh: |
+      伯恩斯坦多项式
+    en: |
+      Bernstein polynomial
+    brief: |
+      $B_nf(x)=\sum_{k=0}^nf\bigl(\frac kn\bigr)\binom nkx^k(1-x)^{n-k}$，是$f$在节点处的值的加权平均。
+    definedIn: math.analysis.weierstrass-approximation
+    anchor: def-bernstein
+  - id: math.analysis.weierstrass-approximation-theorem
+    zh: |
+      魏尔斯特拉斯逼近定理
+    en: |
+      Weierstrass approximation theorem
+    brief: |
+      闭区间上的连续函数，都有一列多项式在这个区间上一致收敛于它。
+    definedIn: math.analysis.weierstrass-approximation
+    anchor: thm-weierstrass-approximation
+  - id: math.analysis.power-series
+    zh: |
+      幂级数
+    en: |
+      power series
+    brief: |
+      形如$\sum_{n=0}^\infty a_n(x-x_0)^n$的级数，各项是$x-x_0$的幂乘系数；收敛的$x$组成以$x_0$为中心的区间。
+    definedIn: math.analysis.power-series-theory
+    anchor: def-power-series
+  - id: math.analysis.radius-of-convergence
+    zh: |
+      收敛半径
+    en: |
+      radius of convergence
+    brief: |
+      一个数$R$（可以是$0$或$+\infty$）：$|x|<R$时$\sum a_nx^n$绝对收敛，$|x|>R$时发散。
+    definedIn: math.analysis.power-series-theory
+    anchor: def-radius
+  - id: math.analysis.cauchy-hadamard-formula
+    zh: |
+      柯西-阿达马公式
+    en: |
+      Cauchy-Hadamard formula
+    brief: |
+      幂级数$\sum a_nx^n$的收敛半径$R=\frac{1}{\limsup_{n\to\infty}\sqrt[n]{|a_n|}}$。
+    definedIn: math.analysis.power-series-theory
+    anchor: thm-cauchy-hadamard
+  - id: math.analysis.locally-uniform-convergence
+    zh: |
+      内闭一致收敛
+    en: |
+      uniform convergence on compact subsets
+    brief: |
+      在区间里的每个闭子区间上都一致收敛；幂级数在收敛区间内就是这样。
+    definedIn: math.analysis.power-series-theory
+    anchor: def-locally-uniform

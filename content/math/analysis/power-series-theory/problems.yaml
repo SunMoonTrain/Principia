@@ -1,0 +1,157 @@
+- id: p1
+  tier: easy
+  statement: |
+    求:term[幂级数]{id="math.analysis.power-series"}（power series）$\sum_{n=1}^\infty\frac{n}{5^n}x^n$的:term[收敛半径]{id="math.analysis.radius-of-convergence"}（radius of convergence）。
+  answer:
+    type: number
+    value: 5
+  hints:
+    - |
+      用柯西-阿达马公式，先求$\sqrt[n]{|a_n|}$。
+    - |
+      $\sqrt[n]{\frac{n}{5^n}}=\frac{\sqrt[n]n}{5}$，而$\sqrt[n]n\to1$（[数列的极限](lesson:math.analysis.sequences-limits)第 5 题）。
+    - |
+      $\sqrt[n]{|a_n|}=\frac{\sqrt[n]n}{5}\to\frac15$。数列收敛时，:term[上极限]{id="math.analysis.limit-superior"}（limit superior，lim sup）就是极限，所以$\rho=\frac15$，由:term[柯西-阿达马公式]{id="math.analysis.cauchy-hadamard-formula"}（Cauchy-Hadamard formula），$R=5$。
+  solution: |
+    $\sqrt[n]{|a_n|}=\frac{\sqrt[n]n}{5}\to\frac15$，由柯西-阿达马公式，$R=5$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $\sum_{n=1}^\infty\frac{(-1)^nx^n}{\sqrt n}$在下面哪些点处:term[收敛]{id="math.analysis.convergent-series"}（convergent series）？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $x=-1$
+      - |
+        $x=1$
+      - |
+        $x=-\frac12$
+      - |
+        $x=\frac32$
+    value: [2, 3]
+  hints:
+    - |
+      先求收敛半径，区间里面和外面就清楚了；端点单独代进去看。
+    - |
+      收敛半径是$1$。$x=-1$时级数是$\sum\frac{1}{\sqrt n}$，$x=1$时是$\sum\frac{(-1)^n}{\sqrt n}$。
+    - |
+      $\sqrt[n]{\frac{1}{\sqrt n}}=\frac{1}{\sqrt{\sqrt[n]n}}\to1$，收敛半径$R=1$。所以$x=-\frac12$处绝对收敛，$x=\frac32$处发散。
+
+      $x=-1$时，$(-1)^n(-1)^n=1$，级数是$\sum\frac{1}{\sqrt n}$，它的项不小于$\frac1n$，发散。$x=1$时是交错级数$\sum\frac{(-1)^n}{\sqrt n}$，$\frac{1}{\sqrt n}$单调递减趋于$0$，由交错级数判别法（alternating series test），收敛。
+
+      答案是 B 和 C。
+  solution: |
+    收敛半径是$1$，所以$x=-\frac12$处收敛、$x=\frac32$处发散；$x=1$处是交错级数，收敛；$x=-1$处是$\sum\frac{1}{\sqrt n}$，发散。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$a_n=\bigl(3+(-1)^n\bigr)^n$。求$\sum_{n=0}^\infty a_nx^n$的:term[收敛半径]{id="math.analysis.radius-of-convergence"}。
+  answer:
+    type: number
+    value: 1/4
+  hints:
+    - |
+      $\sqrt[n]{|a_n|}=3+(-1)^n$只取两个值。比值有没有极限？
+    - |
+      $\sqrt[n]{|a_n|}$在$n$为偶数时是$4$，为奇数时是$2$，上极限是$4$。
+    - |
+      $\sqrt[n]{|a_n|}=3+(-1)^n$，偶数项是$4$，奇数项是$2$。大于$4+\varepsilon$的项一个也没有，大于$4-\varepsilon$的项有无穷多个，所以:term[上极限]{id="math.analysis.limit-superior"}是$4$。由:term[柯西-阿达马公式]{id="math.analysis.cauchy-hadamard-formula"}，$R=\frac14$。
+
+      这里比值$\frac{a_{n+1}}{a_n}$在$\frac{2^{n+1}}{4^n}$和$\frac{4^{n+1}}{2^n}$之间跳，没有极限，比值算法用不上。
+  solution: |
+    $\sqrt[n]{|a_n|}$交替取$4$和$2$，上极限是$4$，所以$R=\frac14$。
+
+- id: p4
+  tier: medium
+  statement: |
+    用逐项求导求$\sum_{n=1}^\infty\frac{n^2}{2^n}$。
+  answer:
+    type: number
+    value: 6
+  hints:
+    - |
+      从$\sum_{n=0}^\infty x^n=\frac{1}{1-x}$（$|x|<1$）出发：求导后乘以$x$，再求导、再乘以$x$。
+    - |
+      由定理 3，$\sum_{n=1}^\infty nx^n=\frac{x}{(1-x)^2}$；再逐项求导，$\sum_{n=1}^\infty n^2x^{n-1}=\frac{1+x}{(1-x)^3}$。
+    - |
+      $\sum x^n$的收敛半径是$1$，和函数是$\frac{1}{1-x}$。由定理 3，$|x|<1$时逐项求导、两边乘以$x$，得$\sum_{n=1}^\infty nx^n=\frac{x}{(1-x)^2}$；它的收敛半径还是$1$，再逐项求导，$\sum_{n=1}^\infty n^2x^{n-1}=\Bigl(\frac{x}{(1-x)^2}\Bigr)'=\frac{1+x}{(1-x)^3}$。
+
+      两边乘以$x$，得$\sum_{n=1}^\infty n^2x^n=\frac{x(1+x)}{(1-x)^3}$。$x=\frac12$在收敛区间里，代入得$\frac{\frac12\cdot\frac32}{\frac18}=6$。
+  solution: |
+    $\sum n^2x^n=\frac{x(1+x)}{(1-x)^3}$（$|x|<1$），取$x=\frac12$得$6$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$a_n\ne0$，并且$\bigl|\frac{a_{n+1}}{a_n}\bigr|\to L$（$0<L<+\infty$）。证明$\sqrt[n]{|a_n|}\to L$，从而$\sum a_nx^n$的:term[收敛半径]{id="math.analysis.radius-of-convergence"}是$\frac1L$。
+  hints:
+    - |
+      比值从第$N$项起夹在$L-\varepsilon$和$L+\varepsilon$之间，把$|a_n|$写成$|a_N|$乘上$n-N$个比值。
+    - |
+      $n>N$时$|a_N|(L-\varepsilon)^{n-N}\le|a_n|\le|a_N|(L+\varepsilon)^{n-N}$；开$n$次方，$\sqrt[n]{c}\to1$（$c>0$）。
+    - |
+      任给$0<\varepsilon<L$，有$N$，使$n\ge N$时$L-\varepsilon<\bigl|\frac{a_{n+1}}{a_n}\bigr|<L+\varepsilon$。于是$n>N$时，$|a_n|=|a_N|\prod_{k=N}^{n-1}\bigl|\frac{a_{k+1}}{a_k}\bigr|$满足$C_1(L-\varepsilon)^n\le|a_n|\le C_2(L+\varepsilon)^n$，其中$C_1=\frac{|a_N|}{(L-\varepsilon)^N}$，$C_2=\frac{|a_N|}{(L+\varepsilon)^N}$是正的常数。
+
+      开$n$次方：$\sqrt[n]{C_1}(L-\varepsilon)\le\sqrt[n]{|a_n|}\le\sqrt[n]{C_2}(L+\varepsilon)$。对正的常数$c$，$\sqrt[n]c\to1$：$c\ge1$时记$\sqrt[n]c=1+h_n$，由$c=(1+h_n)^n\ge1+nh_n$得$0\le h_n\le\frac{c-1}{n}$；$c<1$时对$\frac1c$用同样的办法。所以$n$足够大时$L-2\varepsilon<\sqrt[n]{|a_n|}<L+2\varepsilon$。$\varepsilon$是任意的，$\sqrt[n]{|a_n|}\to L$。
+
+      数列收敛时上极限就是极限，由:term[柯西-阿达马公式]{id="math.analysis.cauchy-hadamard-formula"}，$R=\frac1L$。这说明微积分里用比值求收敛半径的办法，是柯西-阿达马公式的特殊情形；反过来不成立，例 1 里根值有上极限，比值却没有极限。
+  reference: |
+    比值从某项起夹在$L\pm\varepsilon$之间，得$C_1(L-\varepsilon)^n\le|a_n|\le C_2(L+\varepsilon)^n$，开$n$次方并用$\sqrt[n]{C}\to1$，得$\sqrt[n]{|a_n|}\to L$，再由柯西-阿达马公式$R=\frac1L$。
+
+- id: p6
+  tier: hard
+  statement: |
+    证明$\sum_{n=1}^\infty\frac{x^n}{n^2}$在$[-1,1]$上:term[一致收敛]{id="math.analysis.uniform-convergence"}，和函数在$[-1,1]$上:term[连续]{id="math.analysis.continuous-function"}。逐项求导得到的级数在哪些点收敛？定理 3 的 (2) 能不能用到$x=1$上？
+  hints:
+    - |
+      在$[-1,1]$上$\bigl|\frac{x^n}{n^2}\bigr|\le\frac{1}{n^2}$。逐项求导以后是$\sum\frac{x^{n-1}}{n}$，代入两个端点看看。
+    - |
+      用魏尔斯特拉斯判别法得一致收敛，再用一致收敛保持连续。逐项求导的级数在$x=1$处是调和级数。
+    - |
+      $x\in[-1,1]$时$\bigl|\frac{x^n}{n^2}\bigr|\le\frac{1}{n^2}$，$\sum\frac{1}{n^2}$收敛，由:term[魏尔斯特拉斯判别法]{id="math.analysis.weierstrass-m-test"}（Weierstrass M-test），级数在$[-1,1]$上一致收敛。部分和都连续，由[一致收敛与极限交换](lesson:math.analysis.uniform-limit-theorems)的定理 1，和函数在$[-1,1]$上连续，包括两个端点。
+
+      逐项求导得$\sum_{n=1}^\infty\frac{x^{n-1}}{n}$，收敛半径仍是$1$（定理 3 的 (1)）。$x=-1$时是交错级数，收敛；$x=1$时是调和级数，发散。所以它的收敛范围是$[-1,1)$，比原级数的$[-1,1]$少了一个端点。
+
+      定理 3 的 (2) 只管开区间$(-1,1)$，在$x=1$处，逐项求导的级数连收敛都谈不上，当然不能用来求导数。收敛半径在逐项求导下不变，端点处的情形却可能变。
+  reference: |
+    $\bigl|\frac{x^n}{n^2}\bigr|\le\frac{1}{n^2}$，由魏尔斯特拉斯判别法在$[-1,1]$上一致收敛，和函数连续。逐项求导得$\sum\frac{x^{n-1}}{n}$，在$x=-1$处收敛、$x=1$处发散，所以在$x=1$处不能逐项求导。
+
+- id: p7
+  tier: thinking
+  statement: |
+    例 2 算出$|x|<1$时$\sum_{n=1}^\infty\frac{x^n}{n}=-\ln(1-x)$。级数在$x=-1$处也收敛，能不能直接把$x=-1$代进去，得到$1-\frac12+\frac13-\cdots=\ln2$？一般地，幂级数在端点处收敛时，和函数在端点处的极限等于端点处的级数和吗？
+  hints:
+    - |
+      定理 2 只说和函数在开区间上连续。端点处要单独证明：若$\sum a_n$收敛，$x\to1^-$时$\sum a_nx^n$是否趋于$\sum a_n$？
+    - |
+      证明的工具是阿贝尔变换（summation by parts）：记$A_n=a_0+\cdots+a_n$，把$\sum a_nx^n$写成$(1-x)\sum A_nx^n$，再把$A_n$换成$A_n-A$。
+    - |
+      这个结论叫作阿贝尔定理（Abel's theorem）：若$\sum a_n$收敛于$A$，则$x\to1^-$时$\sum a_nx^n\to A$。证明的思路：$|x|<1$时$\sum a_nx^n=(1-x)\sum_{n=0}^\infty A_nx^n$，而$(1-x)\sum x^n=1$，所以$\sum a_nx^n-A=(1-x)\sum(A_n-A)x^n$。$A_n-A\to0$：前面有限项的贡献乘上$(1-x)$后，$x\to1^-$时趋于$0$；后面的项$|A_n-A|<\varepsilon$，贡献不超过$(1-x)\sum\varepsilon x^n=\varepsilon$。
+
+      用到$x=-1$：令$x=-t$，$\sum\frac{(-t)^n}{n}=-\ln(1+t)$，$t\to1^-$时左边趋于$\sum\frac{(-1)^n}{n}=-\bigl(1-\frac12+\frac13-\cdots\bigr)$，右边趋于$-\ln2$。所以$1-\frac12+\frac13-\cdots=\ln2$，可以放心地代进去。
+
+      反过来不成立：$\sum(-1)^nx^n=\frac{1}{1+x}$在$x\to1^-$时趋于$\frac12$，可$\sum(-1)^n$本身发散。所以端点处要先确认级数收敛，阿贝尔定理才能用。
+  reference: |
+    阿贝尔定理：$\sum a_n$收敛于$A$时，$x\to1^-$时$\sum a_nx^n\to A$（用阿贝尔变换$\sum a_nx^n-A=(1-x)\sum(A_n-A)x^n$证明）。由此$1-\frac12+\frac13-\cdots=\ln2$。反之不然：$\sum(-1)^nx^n\to\frac12$，而$\sum(-1)^n$发散。
+
+- id: p8
+  tier: thinking
+  statement: |
+    $\frac{1}{1+x^2}$在整个$\R$上都光滑，可它的展开式$\sum_{n=0}^\infty(-1)^nx^{2n}$的:term[收敛半径]{id="math.analysis.radius-of-convergence"}只有$1$。在实数轴上看不出毛病，收敛半径为什么偏偏是$1$？
+  hints:
+    - |
+      $\frac{1}{1-x}$的展开式收敛半径是$1$，是因为$x=1$处函数没有定义。$\frac{1}{1+x^2}$的分母在实数上不为零，在复数上呢？
+    - |
+      $1+z^2=0$的解是$z=\pm i$，离原点的距离是$1$。
+    - |
+      把$x$换成复数$z$，$\sum(-1)^nz^{2n}$仍然在$|z|<1$时收敛（阿贝尔引理对复数同样成立），在$|z|>1$时发散。收敛的范围是复平面上的一个圆盘，「收敛半径」这个名字由此而来。
+
+      $\frac{1}{1+z^2}$在$z=\pm i$处分母为零，它们离原点的距离恰好是$1$。圆盘再大一点就要碰到这两个坏点，所以收敛半径只能是$1$。在实数轴上看不到$\pm i$，只能看到它们留下的后果。
+
+      一般地，函数在一点处的幂级数展开，收敛半径等于这一点到最近的「坏点」的距离，这要在复分析里才能说清，见[全纯函数的幂级数展开](lesson:math.complex-analysis.power-series)。
+  reference: |
+    在复数上$\frac{1}{1+z^2}$在$\pm i$处没有定义，它们到原点的距离是$1$；收敛的范围是复平面上的圆盘，圆盘碰到最近的坏点就停住，所以收敛半径是$1$。

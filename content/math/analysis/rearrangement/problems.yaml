@@ -1,0 +1,157 @@
+- id: p1
+  tier: easy
+  statement: |
+    把交错调和级数$1-\frac12+\frac13-\frac14+\cdots$按「两正一负」:term[重排]{id="math.analysis.rearrangement"}成$1+\frac13-\frac12+\frac15+\frac17-\frac14+\cdots$，即依次取两个正项、一个负项。求重排后的级数的第$6$个:term[部分和]{id="math.analysis.partial-sum"}$T_6$。
+  answer:
+    type: number
+    value: 389/420
+  hints:
+    - |
+      前$6$项正好是两组，每组两个正项、一个负项。
+    - |
+      两组分别是$1+\frac13-\frac12$和$\frac15+\frac17-\frac14$，分别算出来再相加。
+    - |
+      $1+\frac13-\frac12=\frac56$，$\frac15+\frac17-\frac14=\frac{28+20-35}{140}=\frac{13}{140}$，所以$T_6=\frac56+\frac{13}{140}=\frac{350+39}{420}=\frac{389}{420}$。
+
+      和例 1 反过来，这里正项用得快：原级数前$6$项之和是$\frac{37}{60}$，比$T_6=\frac{389}{420}$小不少。
+  solution: |
+    两组分别是$\frac56$和$\frac{13}{140}$，$T_6=\frac{389}{420}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些级数，不论怎样:term[重排]{id="math.analysis.rearrangement"}，和都不变？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\sum_{n=1}^\infty\frac{(-1)^{n+1}}{2n-1}$
+      - |
+        $\sum_{n=1}^\infty\frac{(-1)^{n+1}}{2^n}$
+      - |
+        $\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^3}$
+      - |
+        $\sum_{n=1}^\infty\frac{(-1)^{n+1}}{\sqrt n}$
+    value: [2, 3]
+  hints:
+    - |
+      对照定理 1 和定理 2：要看的是各项取绝对值以后还收敛不收敛。
+    - |
+      A、D 各项的绝对值是$\frac{1}{2n-1}$、$\frac{1}{\sqrt n}$；B、C 是$\frac{1}{2^n}$、$\frac{1}{n^3}$。
+    - |
+      B、C :term[绝对收敛]{id="math.analysis.absolute-convergence"}：等比级数（geometric series）$\sum\frac{1}{2^n}$收敛；$\frac{1}{n^3}\le\frac{1}{n^2}$，而$\sum\frac{1}{n^2}$收敛，由:term[比较判别法]{id="math.analysis.comparison-test"}（comparison test），$\sum\frac{1}{n^3}$也收敛。由定理 1，它们怎么重排和都不变。
+
+      A、D 由交错级数判别法（alternating series test）收敛。可$\frac{1}{2n-1}\ge\frac{1}{2n}$、$\frac{1}{\sqrt n}\ge\frac1n$，而$\sum\frac{1}{2n}$、$\sum\frac1n$发散，由比较判别法，$\sum\frac{1}{2n-1}$、$\sum\frac{1}{\sqrt n}$也发散。所以它们:term[条件收敛]{id="math.analysis.conditional-convergence"}（conditional convergence），由定理 2，能重排成任意的和。
+
+      答案是 B 和 C。
+  solution: |
+    B、C 绝对收敛，重排后和不变；A、D 条件收敛，由黎曼重排定理，能重排成别的和。
+
+- id: p3
+  tier: medium
+  statement: |
+    按定理 2 证明里的办法，把交错调和级数重排成和为$1.3$的级数：先依次取正项$1,\frac13,\frac15,\dots$，直到部分和第一次大于$1.3$；再依次取负项$-\frac12,-\frac14,\dots$，直到部分和第一次小于$1.3$；再接着取正项……第一段取了几个正项？第二次取正项的那一段又取了几个？按这个顺序填写。
+  answer:
+    type: tuple
+    value: [2, 4]
+  hints:
+    - |
+      逐项加，每加一项和$1.3$比一比。
+    - |
+      $1<1.3$，$1+\frac13=\frac43>1.3$。接着取负项$-\frac12$，部分和是$\frac56$，已经小于$1.3$。
+    - |
+      第一段：$1$还不到$1.3$；再加$\frac13$得$\frac43\approx1.333$，超过了，所以取了$2$个正项。
+
+      然后取负项：$\frac43-\frac12=\frac56\approx0.833<1.3$，一个就够。第二次取正项：依次加$\frac15,\frac17,\frac19$，部分和约为$1.033$、$1.176$、$1.287$，都还不到$1.3$；再加$\frac{1}{11}$得约$1.378$，超过了，所以这一段取了$4$个。答案是$(2,\ 4)$。
+  solution: |
+    $1+\frac13\approx1.333$，第一段取$2$个；减去$\frac12$后约为$0.833$，再加$\frac15,\frac17,\frac19,\frac{1}{11}$才超过$1.3$（约$1.378$），第二段取$4$个，填 `2, 4`。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\sum_{n=0}^\infty\frac{1}{2^n}$与$\sum_{n=0}^\infty\frac{1}{3^n}$的:term[柯西乘积]{id="math.analysis.cauchy-product"}$\sum c_n$的第三项$c_2$，以及$\sum_{n=0}^\infty c_n$，按$\bigl(c_2,\ \sum c_n\bigr)$的顺序填写。
+  answer:
+    type: tuple
+    value: [19/36, 3]
+  hints:
+    - |
+      $c_2=a_0b_2+a_1b_1+a_2b_0$。和用定理 3。
+    - |
+      $c_2=\frac19+\frac12\cdot\frac13+\frac14$。两个等比级数都绝对收敛，和分别是$2$和$\frac32$。
+    - |
+      $c_2=1\cdot\frac19+\frac12\cdot\frac13+\frac14\cdot1=\frac{4+6+9}{36}=\frac{19}{36}$。两个级数的各项都是正数，绝对收敛，和分别是$\frac{1}{1-\frac12}=2$和$\frac{1}{1-\frac13}=\frac32$；由定理 3，$\sum c_n=2\times\frac32=3$。答案是$\bigl(\frac{19}{36},\ 3\bigr)$。
+  solution: |
+    $c_2=\frac19+\frac16+\frac14=\frac{19}{36}$；由定理 3，$\sum c_n=2\times\frac32=3$，填 `19/36, 3`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$\sum a_n$:term[收敛]{id="math.analysis.convergent-series"}（可以是条件收敛），和是$S$；$\sigma$是一个:term[重排]{id="math.analysis.rearrangement"}，并且有正整数$K$，使所有$n$都满足$|\sigma(n)-n|\le K$。证明$\sum a_{\sigma(n)}$也收敛，和也是$S$。
+  hints:
+    - |
+      比较$T_n=\sum_{j=1}^na_{\sigma(j)}$和$S_n=\sum_{k=1}^na_k$：它们各自用到了哪些下标？
+    - |
+      $k\le n-K$时，$a_k$一定在$T_n$里；$T_n$里的下标都不超过$n+K$。所以$T_n-S_n$至多是$2K$个$\pm a_k$之和，这些$k$都大于$n-K$。
+    - |
+      设$k=\sigma(j)$。由$|\sigma(j)-j|\le K$，$|j-k|\le K$。若$k\le n-K$，则$j\le k+K\le n$，所以$a_k$在$T_n$里；若$j\le n$，则$k\le j+K\le n+K$。于是$T_n$和$S_n$用到的下标，只在$n-K+1,\dots,n+K$这$2K$个数里可能不同，$|T_n-S_n|$不超过这些$|a_k|$之和。
+
+      级数收敛，$a_k\to0$，所以$n\to\infty$时这至多$2K$项之和趋于$0$，$T_n-S_n\to0$，$T_n\to S$。
+
+      这说明黎曼重排定理里改变和的重排，一定要把某些项挪到任意远的地方。
+  reference: |
+    $T_n$与$S_n$所用下标的差别只在$n-K+1,\dots,n+K$之间，故$|T_n-S_n|\le\sum_{k=n-K+1}^{n+K}|a_k|\to0$（$a_k\to0$），所以$T_n\to S$。
+
+- id: p6
+  tier: hard
+  statement: |
+    证明$\sum_{n=0}^\infty\frac{(-1)^n}{\sqrt{n+1}}$:term[收敛]{id="math.analysis.convergent-series"}，但它和自己的:term[柯西乘积]{id="math.analysis.cauchy-product"}:term[发散]{id="math.analysis.divergent-series"}。
+  hints:
+    - |
+      收敛用交错级数判别法。柯西乘积的项$c_n$里，每一项的符号都一样，看$|c_n|$会不会趋于$0$。
+    - |
+      $c_n=(-1)^n\sum_{k=0}^n\frac{1}{\sqrt{(k+1)(n-k+1)}}$。由均值不等式，$\sqrt{(k+1)(n-k+1)}\le\frac{n+2}{2}$。
+    - |
+      $\frac{1}{\sqrt{n+1}}$单调递减趋于$0$，由[级数的柯西准则与绝对收敛](lesson:math.analysis.series-cauchy)例 2，级数收敛。它不绝对收敛，因为$\frac{1}{\sqrt{n+1}}\ge\frac{1}{n+1}$。
+
+      $c_n=\sum_{k=0}^n\frac{(-1)^k}{\sqrt{k+1}}\cdot\frac{(-1)^{n-k}}{\sqrt{n-k+1}}=(-1)^n\sum_{k=0}^n\frac{1}{\sqrt{(k+1)(n-k+1)}}$。由均值不等式，$\sqrt{(k+1)(n-k+1)}\le\frac{(k+1)+(n-k+1)}{2}=\frac{n+2}{2}$，所以每一项不小于$\frac{2}{n+2}$，$|c_n|\ge\frac{2(n+1)}{n+2}\ge1$。
+
+      $c_n$不趋于$0$，柯西乘积发散。所以定理 3 里的「绝对收敛」不能随便去掉。
+  reference: |
+    交错级数判别法给出收敛；$|c_n|=\sum_{k=0}^n\frac{1}{\sqrt{(k+1)(n-k+1)}}\ge\frac{2(n+1)}{n+2}\ge1$，项不趋于$0$，柯西乘积发散。
+
+- id: p7
+  tier: thinking
+  statement: |
+    设$\sum a_n$:term[条件收敛]{id="math.analysis.conditional-convergence"}。能不能把它重排成：部分和不收敛，也不趋于无穷，而是在$-1$和$1$之间来回摆动，并且对$[-1,1]$里的每个数，都有部分和的子列趋于它？
+  hints:
+    - |
+      定理 2 的办法里，目标$L$是固定的。如果让目标在$1$和$-1$之间交替，会怎样？
+    - |
+      先取正项直到部分和大于$1$，再取负项直到小于$-1$，再取正项直到大于$1$……项趋于$0$，每次越过的量越来越小。
+    - |
+      能。沿用定理 2 的记号，交替地取$P$直到部分和大于$1$，取$-Q$直到部分和小于$-1$。和定理 2 的证明一样，每一步都能完成，所有的项都被用上，这是一个:term[重排]{id="math.analysis.rearrangement"}；越过$\pm1$的量不超过刚取的那一项，趋于$0$。
+
+      部分和在$-1$和$1$之间来回走，每一步的步长趋于$0$。任取$x\in[-1,1]$和$\varepsilon>0$，每一趟从$-1$附近走到$1$附近，后来的步长都小于$\varepsilon$，所以总有某个部分和落在$(x-\varepsilon,x+\varepsilon)$里，而且这样的部分和有无穷多个。由此能挑出趋于$x$的子列；部分和的:term[上极限]{id="math.analysis.limit-superior"}（limit superior，lim sup）是$1$、:term[下极限]{id="math.analysis.limit-inferior"}（limit inferior，lim inf）是$-1$，见[上极限与下极限](lesson:math.analysis.limsup-liminf)。
+
+      一般地，任给$\alpha\le\beta$（可以是$\pm\infty$），都能重排出上极限为$\beta$、下极限为$\alpha$的部分和。绝对收敛的级数做不到这些，它的重排都收敛到同一个和。
+  reference: |
+    能：交替地取正项直到部分和大于$1$、取负项直到小于$-1$。步长趋于$0$，所以$[-1,1]$里每一点都是部分和某个子列的极限，上极限$1$、下极限$-1$。一般地，可以排出任意给定的上极限、下极限。
+
+- id: p8
+  tier: thinking
+  statement: |
+    把$a_{ij}$（$i,j\ge1$）排成一个无穷的方阵：$a_{ii}=1$，$a_{i,i+1}=-1$，其余都是$0$。先把每一行加起来，再把这些行和加起来；先把每一列加起来，再把列和加起来。两种算法结果一样吗？定理 3 的证明里，为什么可以放心地「怎么排都行」？
+  hints:
+    - |
+      每一行只有两个不为零的数。第一列和别的列有什么不同？
+    - |
+      每一行的和都是$0$；第一列的和是$1$，其余各列的和都是$0$。
+    - |
+      第$i$行是$1$和$-1$，和是$0$，所以按行算得$0$。第$1$列只有$a_{11}=1$，第$j$列（$j\ge2$）是$a_{j-1,j}=-1$和$a_{jj}=1$，和是$0$，所以按列算得$1$。两种算法不一样。
+
+      原因是$\sum_{i,j}|a_{ij}|=+\infty$：把方阵里的数排成一列，得到的级数不:term[绝对收敛]{id="math.analysis.absolute-convergence"}，换个排法、分组方式，和就可能变。定理 3 的证明先说明$\sum|a_ib_j|$的部分和有上界，排成的级数绝对收敛，再用定理 1，所以怎么排、怎么分组都得到同一个和。
+
+      一般地，只要$\sum_{i,j}|a_{ij}|$有限（任取有限个$|a_{ij}|$，和都不超过同一个数），先按行加和先按列加结果相同，也等于排成一列以后任何一种排法的和。这是二重级数（double series）交换求和次序的条件。
+  reference: |
+    按行求和得$0$，按列求和得$1$。原因是$\sum|a_{ij}|=+\infty$，排成一列的级数不绝对收敛。$\sum|a_{ij}|$有限时，任何排法、按行或按列求和都相等，定理 3 正是用了这一点。

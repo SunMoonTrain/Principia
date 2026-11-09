@@ -1,0 +1,165 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$f(x)=\bigl|x-\frac12\bigr|$。求它的第$2$个:term[伯恩斯坦多项式]{id="math.analysis.bernstein-polynomial"}（Bernstein polynomial）在$x=\frac12$处的值$B_2f\bigl(\frac12\bigr)$。
+  answer:
+    type: number
+    value: 1/4
+  hints:
+    - |
+      $n=2$时节点是$0,\frac12,1$，权重是$(1-x)^2$、$2x(1-x)$、$x^2$。
+    - |
+      $f(0)=f(1)=\frac12$，$f\bigl(\frac12\bigr)=0$；$x=\frac12$时三个权重是$\frac14,\frac12,\frac14$。
+    - |
+      $B_2f(x)=f(0)(1-x)^2+f\bigl(\frac12\bigr)\cdot2x(1-x)+f(1)x^2=\frac12(1-x)^2+\frac12x^2$。$x=\frac12$时是$\frac12\cdot\frac14+\frac12\cdot\frac14=\frac14$。
+
+      而$f\bigl(\frac12\bigr)=0$，伯恩斯坦多项式在中间的节点上一般不等于$f$。
+  solution: |
+    $B_2f(x)=\frac12(1-x)^2+\frac12x^2$，$B_2f\bigl(\frac12\bigr)=\frac14$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些函数，在所给的集合上能被多项式:term[一致收敛]{id="math.analysis.uniform-convergence"}（uniform convergence）地逼近，即有一列多项式在那个集合上一致收敛于它？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\sqrt x$，在$[0,1]$上
+      - |
+        $\frac{1}{1-x}$，在$[0,1)$上
+      - |
+        $0<x\le1$时取$\sin\frac1x$、$x=0$时取$0$的函数，在$[0,1]$上
+      - |
+        $\sin x$，在$[0,100]$上
+    value: [1, 4]
+  hints:
+    - |
+      对照定理的两个条件：闭区间，连续。不满足条件时，再想想是不是真的做不到。
+    - |
+      B 照例 2 的办法。C 在$0$附近来回摆，想想定理后面那个跳跃函数的论证。
+    - |
+      A、D 都是闭区间上的连续函数，由魏尔斯特拉斯逼近定理，能。
+
+      B 不能：多项式$p$在$[0,1]$上有界，设$|p|\le K$；若所有$x\in[0,1)$都满足$\bigl|\frac{1}{1-x}-p(x)\bigr|<1$，则$\frac{1}{1-x}<K+1$，取$x$离$1$足够近就矛盾。
+
+      C 不能：取$x_k=\frac{1}{\pi/2+2k\pi}$、$y_k=\frac{1}{3\pi/2+2k\pi}$，它们都趋于$0$，$f(x_k)=1$，$f(y_k)=-1$。若多项式$p$处处满足$|f-p|<\frac12$，则$p(x_k)>\frac12$、$p(y_k)<-\frac12$；让$k\to\infty$，由$p$在$0$处连续，$p(0)\ge\frac12$，又$p(0)\le-\frac12$，矛盾。
+
+      答案是 A 和 D。
+  solution: |
+    A、D 是闭区间上的连续函数，由逼近定理能逼近；B 在$[0,1)$上无界，C 在$0$附近来回摆、在$0$处不连续，都不能。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$f(x)=x^3$。求它的第$5$个:term[伯恩斯坦多项式]{id="math.analysis.bernstein-polynomial"}在$x=\frac12$处的值$B_5f\bigl(\frac12\bigr)$。
+  answer:
+    type: number
+    value: 1/5
+  hints:
+    - |
+      $x=\frac12$时权重$p_{5,k}\bigl(\frac12\bigr)=\binom5k\frac{1}{2^5}$。
+    - |
+      $B_5f\bigl(\frac12\bigr)=\frac{1}{32}\sum_{k=0}^5\binom5k\Bigl(\frac k5\Bigr)^3$，二项式系数依次是$1,5,10,10,5,1$。
+    - |
+      $\sum_{k=0}^5\binom5kk^3=0+5\cdot1+10\cdot8+10\cdot27+5\cdot64+1\cdot125=800$，所以$B_5f\bigl(\frac12\bigr)=\frac{800}{32\times125}=\frac15$。
+
+      而$f\bigl(\frac12\bigr)=\frac18$，两者差$\frac{3}{40}$。照引理的证明再算一步（用$k(k-1)(k-2)\binom nk=n(n-1)(n-2)\binom{n-3}{k-3}$），可以得到一般的$B_nf\bigl(\frac12\bigr)-f\bigl(\frac12\bigr)=\frac{3}{8n}$，误差也是$\frac1n$量级。
+  solution: |
+    $B_5f\bigl(\frac12\bigr)=\frac{1}{32}\sum_k\binom5k\bigl(\frac k5\bigr)^3=\frac{800}{4000}=\frac15$。
+
+- id: p4
+  tier: medium
+  statement: |
+    定理的证明里，离$x$远的那些节点贡献的误差不超过$\frac{M}{2n\delta^2}$。取$M=1$、$\delta=0.1$，要使它小于$0.05$，$n$最小是多少？
+  answer:
+    type: number
+    value: 1001
+  hints:
+    - |
+      把数代进去，解关于$n$的不等式。
+    - |
+      $\frac{1}{2n\times0.01}<0.05$，即$\frac{50}{n}<0.05$。
+    - |
+      $\frac{M}{2n\delta^2}=\frac{1}{0.02n}=\frac{50}{n}$。要$\frac{50}{n}<0.05$，即$n>1000$，所以$n$最小是$1001$。
+
+      这个$n$只是让估计成立的一个够大的数。实际的误差往往小得多，可估计对所有连续函数都管用，又和$x$无关，正好说明逼近是一致的。
+  solution: |
+    $\frac{1}{2n\times0.01}=\frac{50}{n}<0.05$，即$n>1000$，$n$最小是$1001$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$在$[a,b]$上:term[连续]{id="math.analysis.continuous-function"}。证明有一列多项式$p_n$在$[a,b]$上:term[一致收敛]{id="math.analysis.uniform-convergence"}于$f$，并且每个$p_n$在两个端点处都和$f$相等：$p_n(a)=f(a)$，$p_n(b)=f(b)$。
+  hints:
+    - |
+      先由:term[魏尔斯特拉斯逼近定理]{id="math.analysis.weierstrass-approximation-theorem"}（Weierstrass approximation theorem）取一列一致收敛于$f$的多项式$q_n$，再加一个一次函数，把两端的值修正过来。
+    - |
+      令$p_n(x)=q_n(x)+\bigl(f(a)-q_n(a)\bigr)\frac{b-x}{b-a}+\bigl(f(b)-q_n(b)\bigr)\frac{x-a}{b-a}$。
+    - |
+      由逼近定理，有多项式$q_n$使$\|f-q_n\|_\infty\to0$。令
+
+      $$
+      p_n(x)=q_n(x)+\bigl(f(a)-q_n(a)\bigr)\frac{b-x}{b-a}+\bigl(f(b)-q_n(b)\bigr)\frac{x-a}{b-a} ,
+      $$
+
+      它还是多项式，并且$p_n(a)=f(a)$，$p_n(b)=f(b)$。两个分式在$[a,b]$上都在$0$和$1$之间，所以$|p_n(x)-q_n(x)|\le|f(a)-q_n(a)|+|f(b)-q_n(b)|\le2\|f-q_n\|_\infty$，于是$\|p_n-f\|_\infty\le3\|f-q_n\|_\infty\to0$。
+
+      在$[0,1]$上其实不用修正：伯恩斯坦多项式本来就满足$B_nf(0)=f(0)$、$B_nf(1)=f(1)$。
+  reference: |
+    取一致收敛于$f$的多项式$q_n$，加上把两端修正过来的一次函数；修正量不超过$2\|f-q_n\|_\infty$，所以$\|p_n-f\|_\infty\le3\|f-q_n\|_\infty\to0$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$在$[0,1]$上满足$|f(x)-f(y)|\le L|x-y|$（对所有$x$、$y$）。证明对所有$x\in[0,1]$，$|B_nf(x)-f(x)|\le\frac{L}{2\sqrt n}$。
+  hints:
+    - |
+      $|B_nf(x)-f(x)|\le\sum_k\bigl|f(x)-f(\frac kn)\bigr|p_{n,k}(x)\le L\sum_k\bigl|x-\frac kn\bigr|p_{n,k}(x)$。剩下的是估计一个加权平均。
+    - |
+      对非负、和为$1$的权重$p_k$，有$\bigl(\sum a_kp_k\bigr)^2\le\sum a_k^2p_k$。再用引理 (3)。
+    - |
+      由引理 (1)，$B_nf(x)-f(x)=\sum_k\bigl(f(\frac kn)-f(x)\bigr)p_{n,k}(x)$，所以$|B_nf(x)-f(x)|\le L\sum_k\bigl|x-\frac kn\bigr|p_{n,k}(x)$。
+
+      对非负、和为$1$的权重$p_k$，记$A=\sum a_kp_k$，则$0\le\sum(a_k-A)^2p_k=\sum a_k^2p_k-A^2$，即$A^2\le\sum a_k^2p_k$。取$a_k=\bigl|x-\frac kn\bigr|$，由引理 (3)，$\sum_k\bigl(x-\frac kn\bigr)^2p_{n,k}(x)=\frac{x(1-x)}{n}\le\frac{1}{4n}$。
+
+      所以$\sum_k\bigl|x-\frac kn\bigr|p_{n,k}(x)\le\frac{1}{2\sqrt n}$，$|B_nf(x)-f(x)|\le\frac{L}{2\sqrt n}$。这比定理的证明多给了一个逼近的速度，代价是要求$f$满足这个比连续强的条件。
+  reference: |
+    $|B_nf-f|\le L\sum|x-\frac kn|p_{n,k}$；加权平均满足$\bigl(\sum a_kp_k\bigr)^2\le\sum a_k^2p_k$，再由引理 (3)，$\sum(x-\frac kn)^2p_{n,k}=\frac{x(1-x)}{n}\le\frac{1}{4n}$，得$|B_nf-f|\le\frac{L}{2\sqrt n}$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    魏尔斯特拉斯逼近定理只说闭区间。能不能用多项式在整个$\R$上一致逼近$\sin x$？如果不能，用什么样的函数来逼近周期函数更合适？
+  hints:
+    - |
+      若多项式$p$在整个$\R$上都满足$|\sin x-p(x)|<1$，$p$会是什么样？
+    - |
+      那样$p$在$\R$上有界。不是常数的多项式在$\R$上有界吗？
+    - |
+      不能。若多项式$p$对所有$x\in\R$都满足$|\sin x-p(x)|<1$，则$|p(x)|<2$，$p$在$\R$上有界。不是常数的多项式，最高次项在$|x|\to\infty$时压过其余各项，没有界，所以$p$是常数$c$。可$x=\frac\pi2$给出$|1-c|<1$，即$c>0$；$x=-\frac\pi2$给出$|-1-c|<1$，即$c<0$，矛盾。
+
+      多项式在远处总要跑到无穷，而$\sin x$永远在$-1$和$1$之间，所以在$\R$上不可能一致逼近。对周期函数，更合适的是三角多项式（trigonometric polynomial）$a_0+\sum_{k=1}^n(a_k\cos kx+b_k\sin kx)$，它们本身就是周期函数。
+
+      魏尔斯特拉斯还证明过：连续的、以$2\pi$为周期的函数，都能被三角多项式一致逼近。用三角多项式展开周期函数，就是傅里叶级数（Fourier series），见[傅里叶级数](lesson:math.analysis.fourier-series)。
+  reference: |
+    不能：$|\sin x-p|<1$在$\R$上成立会使$p$有界，于是$p$是常数，再取$x=\pm\frac\pi2$得矛盾。周期函数应该用三角多项式逼近（也有对应的逼近定理），这引向傅里叶级数。
+
+- id: p8
+  tier: thinking
+  statement: |
+    权重$p_{n,k}(x)=\binom nkx^k(1-x)^{n-k}$有一个概率解释：抛$n$次硬币，每次正面朝上的概率是$x$，恰好出现$k$次正面的概率就是$p_{n,k}(x)$。用这个解释说说：引理的三条各在说什么？伯恩斯坦多项式为什么会逼近$f$？
+  hints:
+    - |
+      $\frac kn$是正面出现的频率。频率在$n$很大时会怎样？
+    - |
+      引理 (2)(3) 分别是正面次数的平均值和方差（variance）。
+    - |
+      (1) 说所有可能结果的概率加起来是$1$。(2) 说正面次数的平均值是$nx$，也就是频率$\frac kn$的平均值是$x$。(3) 说正面次数的方差（variance）是$nx(1-x)$，频率$\frac kn$的方差是$\frac{x(1-x)}{n}$，$n$越大，频率越集中在$x$附近，这就是大数定律（law of large numbers）的一个形式。
+
+      $B_nf(x)=\sum_kf\bigl(\frac kn\bigr)p_{n,k}(x)$是$f$在频率处的值$f\bigl(\frac kn\bigr)$的平均值。频率几乎一定落在$x$附近，$f$又连续，所以$f\bigl(\frac kn\bigr)$几乎一定接近$f(x)$，平均值也就接近$f(x)$。定理证明里「近的用一致连续、远的用权重小」，正是把这句话说严格；估计远处权重用的不等式，在概率里叫切比雪夫不等式（Chebyshev's inequality）。
+
+      伯恩斯坦就是在这样的概率想法下，于 1912 年给出这个证明的。
+  reference: |
+    (1) 概率总和为$1$；(2) 正面次数的平均值$nx$；(3) 方差$nx(1-x)$，频率$\frac kn$集中在$x$附近（大数定律）。$B_nf(x)$是$f\bigl(\frac kn\bigr)$按这些概率取的平均值，$f$连续，故接近$f(x)$；远处权重的估计就是切比雪夫不等式。

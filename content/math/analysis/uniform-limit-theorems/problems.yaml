@@ -1,0 +1,161 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\lim_{n\to\infty}\int_0^2\Bigl(x^2+\frac{\sin nx}{n}\Bigr)\dd x$。
+  answer:
+    type: number
+    value: 8/3
+  hints:
+    - |
+      被积函数在$[0,2]$上:term[一致收敛]{id="math.analysis.uniform-convergence"}（uniform convergence）于什么？
+    - |
+      $\bigl|\frac{\sin nx}{n}\bigr|\le\frac1n$，所以被积函数一致收敛于$x^2$。用定理 2。
+    - |
+      被积函数和$x^2$的:term[上确界距离]{id="math.analysis.uniform-distance"}（uniform distance）不超过$\frac1n\to0$，它们都连续，因而可积。由定理 2，极限是$\int_0^2x^2\dd x=\frac83$。
+  solution: |
+    被积函数一致收敛于$x^2$，由定理 2，极限是$\int_0^2x^2\dd x=\frac83$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        连续函数列在$[a,b]$上一致收敛，极限函数在$[a,b]$上连续
+      - |
+        连续函数列在$[a,b]$上逐点收敛，极限函数在$[a,b]$上连续
+      - |
+        可导函数列在$[a,b]$上一致收敛，极限函数在$[a,b]$上可导
+      - |
+        可积函数列在$[a,b]$上一致收敛于$f$，则$\int_a^bf_n\to\int_a^bf$
+    value: [1, 4]
+  hints:
+    - |
+      对照定理 1、2、3，看每条说法的条件够不够。
+    - |
+      B 想想$x^n$；C 想想例 2。
+    - |
+      A 是定理 1，D 是定理 2。B 不对：$x^n$在$[0,1]$上逐点收敛，极限函数在$1$处断开。C 不对：例 2 的$\sqrt{x^2+\frac1n}$在$[-1,1]$上一致收敛于$|x|$，可$|x|$在$0$处不可导；定理 3 要求的是导函数一致收敛。
+
+      答案是 A 和 D。
+  solution: |
+    A 是定理 1，D 是定理 2；B 的反例是$x^n$，C 的反例是例 2。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$f_n(x)=nx(1-x^2)^n$，$0\le x\le1$。求$\lim_{n\to\infty}\int_0^1f_n(x)\dd x$和$\int_0^1\lim_{n\to\infty}f_n(x)\dd x$，按这个顺序填写。
+  answer:
+    type: tuple
+    value: [1/2, 0]
+  hints:
+    - |
+      $-\frac{n(1-x^2)^{n+1}}{2(n+1)}$求导是什么？逐点的极限：$x=0$和$0<x\le1$分开看。
+    - |
+      由牛顿-莱布尼茨公式，$\int_0^1f_n=\frac{n}{2(n+1)}$。$0<x\le1$时$0\le1-x^2<1$，$n(1-x^2)^n\to0$。
+    - |
+      $F_n(x)=-\frac{n(1-x^2)^{n+1}}{2(n+1)}$的导数是$nx(1-x^2)^n$，所以$\int_0^1f_n=F_n(1)-F_n(0)=\frac{n}{2(n+1)}\to\frac12$。
+
+      $x=0$时$f_n(0)=0$；$0<x\le1$时记$q=1-x^2\in[0,1)$。$q=0$时$nq^n=0$；$0<q<1$时记$\frac1q=1+h$（$h>0$），由二项式定理$(1+h)^n\ge\frac{n(n-1)}{2}h^2$，所以$0<nq^n\le\frac{2}{(n-1)h^2}\to0$。于是$f_n$逐点收敛于$0$，$\int_0^1\lim f_n=0$，答案是$\bigl(\frac12,\ 0\bigr)$。
+
+      两者不等，所以$f_n$在$[0,1]$上不一致收敛：鼓包的最高点挤向$0$，高度却越来越大。
+  solution: |
+    $\int_0^1f_n=\frac{n}{2(n+1)}\to\frac12$；$f_n$逐点收敛于$0$，极限函数的积分是$0$，填 `1/2, 0`。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$f_n(x)=\frac{x^n}{n}$，$0\le x\le1$，$f$是$\{f_n\}$的极限函数。求$\lim_{n\to\infty}f_n'(1)$和$f'(1)$（$1$处是左导数），按这个顺序填写。
+  answer:
+    type: tuple
+    value: [1, 0]
+  hints:
+    - |
+      先求$f_n'$和$f$。$\|f_n\|_\infty$是多少？
+    - |
+      $f_n'(x)=x^{n-1}$，$f_n'(1)=1$。$0\le f_n\le\frac1n$，所以$f_n$一致收敛于$0$。
+    - |
+      $f_n'(x)=x^{n-1}$，所以$f_n'(1)=1$，极限是$1$。$0\le f_n(x)\le\frac1n$，$f_n$:term[一致收敛]{id="math.analysis.uniform-convergence"}于$f=0$，$f'(1)=0$。答案是$(1,\ 0)$。
+
+      $f_n$一致收敛，求导和取极限的次序却不能换。定理 3 的条件不满足：$f_n'=x^{n-1}$在$[0,1]$上不一致收敛，它的极限函数在$1$处断开。
+  solution: |
+    $f_n'(1)=1$，极限是$1$；$f_n$一致收敛于$0$，$f'(1)=0$，填 `1, 0`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设每个$f_n$在$D$上:term[一致连续]{id="math.analysis.uniform-continuity"}（uniform continuity），$\{f_n\}$在$D$上:term[一致收敛]{id="math.analysis.uniform-convergence"}于$f$。证明$f$在$D$上一致连续。
+  hints:
+    - |
+      照定理 1 的证明，把$|f(x)-f(y)|$拆成三段。
+    - |
+      取$n$使$\|f_n-f\|_\infty<\frac\varepsilon3$，再用$f_n$一致连续给出的$\delta$。
+    - |
+      任给$\varepsilon>0$，由一致收敛，有$n$使所有$x\in D$都满足$|f_n(x)-f(x)|<\frac\varepsilon3$。$f_n$一致连续，有$\delta>0$，使$D$里$|x-y|<\delta$的两点都满足$|f_n(x)-f_n(y)|<\frac\varepsilon3$。于是这样的$x$、$y$满足
+
+      $$
+      |f(x)-f(y)|\le|f(x)-f_n(x)|+|f_n(x)-f_n(y)|+|f_n(y)-f(y)|<\varepsilon .
+      $$
+
+      $\delta$只依赖$\varepsilon$，和$x$、$y$无关，所以$f$一致连续。和定理 1 比，这里$\delta$对所有点都管用，正好对应一致连续里的「一致」。
+  reference: |
+    $\frac\varepsilon3$论证：取$n$使$\|f_n-f\|_\infty<\frac\varepsilon3$，再取$f_n$的一致连续性给出的$\delta$，则$|x-y|<\delta$时$|f(x)-f(y)|<\varepsilon$。
+
+- id: p6
+  tier: hard
+  statement: |
+    去掉定理 3 里「导函数$f_n'$连续」这个条件：设每个$f_n$在$[a,b]$上:term[可导]{id="math.analysis.differentiable-function"}，$\{f_n'\}$在$[a,b]$上:term[一致收敛]{id="math.analysis.uniform-convergence"}于$g$，$\{f_n(a)\}$收敛。证明$\{f_n\}$一致收敛于某个$f$，$f$可导，并且$f'=g$。
+  hints:
+    - |
+      没有导函数连续，就不能写成积分。对$f_m-f_n$用:term[拉格朗日中值定理]{id="math.analysis.mean-value-theorem"}（mean value theorem），把函数值之差和导函数之差联系起来。
+    - |
+      $|(f_m-f_n)(x)-(f_m-f_n)(y)|\le|x-y|\,\|f_m'-f_n'\|_\infty$。用它说明$\{f_n\}$满足一致收敛的柯西准则（Cauchy criterion for uniform convergence，见[函数项级数与魏尔斯特拉斯判别法](lesson:math.analysis.function-series)定理 1）；再对差商$\frac{f_n(x)-f_n(x_0)}{x-x_0}$做同样的事。
+    - |
+      任给$\varepsilon>0$，$f_n'$一致收敛，有$N$，使$m,n>N$时$\|f_m'-f_n'\|_\infty<\varepsilon$。对$h=f_m-f_n$用拉格朗日中值定理，任意$x,y\in[a,b]$都满足$|h(x)-h(y)|\le\varepsilon|x-y|$。取$y=a$，$|f_m(x)-f_n(x)|\le|f_m(a)-f_n(a)|+\varepsilon(b-a)$，而$\{f_n(a)\}$收敛，右边对足够大的$m$、$n$一致地小。由:term[一致收敛的柯西准则]{id="math.analysis.uniform-cauchy-criterion"}（见[函数项级数与魏尔斯特拉斯判别法](lesson:math.analysis.function-series)定理 1），$f_n$一致收敛于某个$f$。
+
+      再看导数。固定$x_0$，对$x\ne x_0$令$\varphi_n(x)=\frac{f_n(x)-f_n(x_0)}{x-x_0}$，$\varphi(x)=\frac{f(x)-f(x_0)}{x-x_0}$。上面的不等式说$m,n>N$时$|\varphi_m(x)-\varphi_n(x)|\le\varepsilon$，对所有$x\ne x_0$都成立；令$m\to\infty$，$|\varphi(x)-\varphi_n(x)|\le\varepsilon$。
+
+      于是$|\varphi(x)-g(x_0)|\le|\varphi(x)-\varphi_n(x)|+|\varphi_n(x)-f_n'(x_0)|+|f_n'(x_0)-g(x_0)|$。先取$n>N$使第三项小于$\varepsilon$，第一项已经不超过$\varepsilon$；$f_n$在$x_0$处可导，$x$离$x_0$足够近时第二项也小于$\varepsilon$。所以$\varphi(x)\to g(x_0)$，即$f'(x_0)=g(x_0)$。
+
+      这和定理 1 是同一个想法：差商在$n$上一致收敛，所以「$x\to x_0$」和「$n\to\infty$」这两个极限可以交换。
+  reference: |
+    对$f_m-f_n$用中值定理得$|(f_m-f_n)(x)-(f_m-f_n)(y)|\le|x-y|\,\|f_m'-f_n'\|_\infty$，由一致收敛的柯西准则得$f_n$一致收敛；差商$\varphi_n$关于$n$一致收敛，用$\frac\varepsilon3$论证交换$x\to x_0$与$n\to\infty$，得$f'(x_0)=g(x_0)$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    $x^n$在$[0,1]$上不:term[一致收敛]{id="math.analysis.uniform-convergence"}，可$\int_0^1x^n\dd x=\frac{1}{n+1}\to0$，正好等于极限函数的积分。为什么这里积分和极限还能交换？一般地，不一致收敛时，什么条件下还能交换？
+  hints:
+    - |
+      毛病只出在$1$附近。把$[0,1]$分成$[0,1-\delta]$和$[1-\delta,1]$两段。
+    - |
+      在$[0,1-\delta]$上一致收敛；在$[1-\delta,1]$上$0\le x^n\le1$，这一段的积分不超过$\delta$。
+    - |
+      极限函数$f$在$[0,1)$上是$0$、$f(1)=1$，只在一点不为$0$，积分是$0$。任给$\delta\in(0,1)$，$\int_0^1x^n=\int_0^{1-\delta}x^n+\int_{1-\delta}^1x^n\le(1-\delta)^{n+1}+\delta$，$(1-\delta)^{n+1}\to0$，所以$n$足够大时$\int_0^1x^n<2\delta$；$\delta$是任意的，积分趋于$0$。
+
+      起作用的是两件事：$x^n$都不超过$1$（一致有界），不一致收敛的地方可以用总长任意小的区间盖住。阿尔泽拉（Arzelà）证明过：一致有界、逐点收敛于可积函数的可积函数列，积分一定收敛于极限函数的积分，不过证明不容易。帐篷函数不满足「一致有界」，所以积分不能交换。
+
+      这件事在勒贝格积分（Lebesgue integral）里变得很简单，叫控制收敛定理（dominated convergence theorem）：只要$|f_n|$被同一个可积函数压住，逐点收敛就可以交换积分和极限。这一版的课程没有收。
+  reference: |
+    分成$[0,1-\delta]$和$[1-\delta,1]$：前者一致收敛，后者因$|x^n|\le1$贡献不超过$\delta$。一般地，一致有界的可积函数列逐点收敛于可积函数时积分可以交换（阿尔泽拉），勒贝格积分里的控制收敛定理是它的推广。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$a_{mn}=\frac{m}{m+n}$。分别求$\lim_{m\to\infty}\lim_{n\to\infty}a_{mn}$和$\lim_{n\to\infty}\lim_{m\to\infty}a_{mn}$。定理 1 说的「交换两个极限」，一般在什么条件下成立？
+  hints:
+    - |
+      先固定$m$让$n\to\infty$，再反过来。
+    - |
+      两种次序分别得到$0$和$1$。想想定理 1 的证明里，一致收敛用在了哪一步。
+    - |
+      固定$m$，$n\to\infty$时$a_{mn}\to0$，所以先对$n$取极限得$0$；固定$n$，$m\to\infty$时$a_{mn}\to1$，所以另一种次序得$1$。两个极限的次序一般不能交换。
+
+      定理 1 里，$f_n(x)$相当于$a_{mn}$，两个下标是$n$和$x$。证明的关键是：$n$大了以后，$f_n$和$f$的差对所有$x$一致地小，于是可以先在固定的$n$上取$x\to x_0$的极限。一般地，若$\lim_{n\to\infty}a_{mn}=b_m$对$m$一致成立，并且对每个$n$，$\lim_{m\to\infty}a_{mn}$存在，则两种次序的极限都存在并且相等（穆尔-奥斯古德定理，Moore-Osgood theorem），证明就是定理 1 的$\frac\varepsilon3$论证。
+
+      这里$a_{mn}=\frac{m}{m+n}$对$m$不一致：$n$再大，取$m=n$就有$a_{mn}=\frac12$。
+  reference: |
+    两种次序分别是$0$和$1$。一个极限关于另一个下标一致成立时，两个极限可以交换（穆尔-奥斯古德定理），证明是$\frac\varepsilon3$论证；这里$a_{nn}=\frac12$，不一致。

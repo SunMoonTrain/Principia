@@ -1,0 +1,155 @@
+- id: p1
+  tier: easy
+  statement: |
+    :term[级数]{id="math.analysis.series"}$\sum_{n=1}^\infty a_n$的项是$a_n=\frac{1}{n(n+2)}$。求:term[部分和]{id="math.analysis.partial-sum"}$S_8$和级数的和$S$，按$(S_8,\ S)$的顺序填写。
+  answer:
+    type: tuple
+    value: [29/45, 3/4]
+  hints:
+    - |
+      把$\frac{1}{n(n+2)}$拆成两个分数之差，看相加时哪些项能抵消。
+    - |
+      $\frac{1}{n(n+2)}=\frac12\Bigl(\frac1n-\frac{1}{n+2}\Bigr)$，相加时隔一项抵消。
+    - |
+      $S_N=\frac12\Bigl[\Bigl(1-\frac13\Bigr)+\Bigl(\frac12-\frac14\Bigr)+\cdots+\Bigl(\frac1N-\frac{1}{N+2}\Bigr)\Bigr]=\frac12\Bigl(1+\frac12-\frac{1}{N+1}-\frac{1}{N+2}\Bigr)$。所以$S_8=\frac12\bigl(\frac32-\frac19-\frac{1}{10}\bigr)=\frac{29}{45}$；$N\to\infty$时后两项趋于$0$，$S=\frac34$。答案是$\bigl(\frac{29}{45},\ \frac34\bigr)$。
+  solution: |
+    $a_n=\frac12\bigl(\frac1n-\frac{1}{n+2}\bigr)$，$S_N=\frac12\bigl(\frac32-\frac{1}{N+1}-\frac{1}{N+2}\bigr)$，$S_8=\frac{29}{45}$，$S=\frac34$，填 `29/45, 3/4`。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些级数:term[绝对收敛]{id="math.analysis.absolute-convergence"}？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\sum_{n=1}^\infty\frac{(-1)^n}{2n+1}$
+      - |
+        $\sum_{n=1}^\infty\frac{(-1)^n}{n(n+1)}$
+      - |
+        $\sum_{n=1}^\infty\frac{\cos n}{2^n}$
+      - |
+        $\sum_{n=1}^\infty(-1)^n\frac{n}{n+1}$
+    value: [2, 3]
+  hints:
+    - |
+      先把各项换成绝对值，看得到的正项级数收敛不收敛；用:term[比较判别法]{id="math.analysis.comparison-test"}时，找一个已知收敛或发散的级数来比。
+    - |
+      A 的绝对值是$\frac{1}{2n+1}$，和$\frac1n$比。B 的绝对值是$\frac{1}{n(n+1)}=\frac1n-\frac{1}{n+1}$。C 的绝对值不超过$\frac{1}{2^n}$。D 的项趋于什么？
+    - |
+      A：$\frac{1}{2n+1}\ge\frac{1}{3n}$，而$\sum\frac{1}{3n}$发散，所以$\sum\frac{1}{2n+1}$发散，A 不绝对收敛（由例 2，它条件收敛）。B：$\sum\frac{1}{n(n+1)}$的部分和是$1-\frac{1}{n+1}\to1$，收敛，所以 B 绝对收敛。
+
+      C：$\bigl|\frac{\cos n}{2^n}\bigr|\le\frac{1}{2^n}$，等比级数（geometric series）$\sum\frac{1}{2^n}$收敛，由:term[比较判别法]{id="math.analysis.comparison-test"}，绝对收敛。D：$\bigl|(-1)^n\frac{n}{n+1}\bigr|\to1$，项不趋于$0$，由定理 1 的推论，它连收敛都谈不上。
+
+      答案是 B 和 C。
+  solution: |
+    B 的绝对值组成的级数部分和是$1-\frac{1}{n+1}$，C 和$\sum\frac{1}{2^n}$比，都绝对收敛；A 条件收敛；D 的项不趋于$0$，发散。
+
+- id: p3
+  tier: medium
+  statement: |
+    对级数$\sum_{n=1}^\infty\frac{1}{2^n}$，求最小的正整数$N$，使得只要$n>m\ge N$，就有$a_{m+1}+a_{m+2}+\cdots+a_n<0.001$。
+  answer:
+    type: number
+    value: 10
+  hints:
+    - |
+      先算出从第$m+1$项到第$n$项的和，再看$n$越来越大时它趋于什么。
+    - |
+      $a_{m+1}+\cdots+a_n=\frac{1}{2^m}\Bigl(1-\frac{1}{2^{n-m}}\Bigr)$，它小于$\frac{1}{2^m}$，$n\to\infty$时又趋于$\frac{1}{2^m}$。
+    - |
+      这段和小于$\frac{1}{2^m}$，$n$足够大时又能任意接近$\frac{1}{2^m}$。所以对一个固定的$m$，所有$n>m$都满足条件，当且仅当$\frac{1}{2^m}\le0.001$，即$2^m\ge1000$。
+
+      $m\ge10$时，这段和小于$\frac{1}{2^m}\le\frac{1}{1024}<0.001$；$m=9$时，$n$取得足够大，这段和接近$\frac{1}{512}\approx0.00195$，超过$0.001$。所以$N$最小是$10$。
+  solution: |
+    这段和是$\frac{1}{2^m}\bigl(1-\frac{1}{2^{n-m}}\bigr)<\frac{1}{2^m}$，$n\to\infty$时趋于$\frac{1}{2^m}$；要求$\frac{1}{2^m}\le0.001$，即$m\ge10$，所以$N=10$。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$a_k=\frac{(-1)^{k+1}}{2k-1}$。在所有$n\ge5$中，$|a_5+a_6+\cdots+a_n|$的最大值是多少？
+  answer:
+    type: number
+    value: 1/9
+  hints:
+    - |
+      $a_5$是正的，这段和正负交替。想想例 2 里对一段和的估计。
+    - |
+      这段和是$\frac19-\frac{1}{11}+\frac{1}{13}-\cdots\pm\frac{1}{2n-1}$。由例 2，它不小于$0$、不大于第一项。等号能不能取到？
+    - |
+      $\frac{1}{2k-1}$单调递减趋于$0$。按例 2 的两种加括号方式，$0\le\frac19-\frac{1}{11}+\frac{1}{13}-\cdots\pm\frac{1}{2n-1}\le\frac19$，所以绝对值不超过$\frac19$。$n=5$时这段和只有一项，恰好是$\frac19$，所以最大值是$\frac19$。
+  solution: |
+    由例 2 的估计，$0\le\frac19-\frac{1}{11}+\cdots\pm\frac{1}{2n-1}\le\frac19$，$n=5$时取等号，最大值是$\frac19$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$\sum a_n^2$:term[收敛]{id="math.analysis.convergent-series"}。证明$\sum\frac{a_n}{n}$:term[绝对收敛]{id="math.analysis.absolute-convergence"}。
+  hints:
+    - |
+      要把$\bigl|\frac{a_n}{n}\bigr|$放大成两个收敛级数的项之和。想想$xy\le\frac{x^2+y^2}{2}$。
+    - |
+      $\bigl|\frac{a_n}{n}\bigr|=|a_n|\cdot\frac1n\le\frac12\Bigl(a_n^2+\frac{1}{n^2}\Bigr)$，右边是两个收敛级数的项。
+    - |
+      由$\bigl(|a_n|-\frac1n\bigr)^2\ge0$，得$\bigl|\frac{a_n}{n}\bigr|\le\frac12a_n^2+\frac{1}{2n^2}$。$\sum a_n^2$收敛，$\sum\frac{1}{n^2}$收敛（例 1），由:term[极限的四则运算法则]{id="math.analysis.algebraic-limit-theorem"}，$\sum\bigl(\frac12a_n^2+\frac{1}{2n^2}\bigr)$也收敛。再由:term[比较判别法]{id="math.analysis.comparison-test"}，$\sum\frac{a_n}{n}$绝对收敛。
+
+      条件换成$a_n\to0$就不够：$a_n=\frac{1}{\ln(n+1)}$趋于$0$，$\sum\frac{a_n}{n}$却发散，可以用第 6 题的办法证明。
+  reference: |
+    $\bigl|\frac{a_n}{n}\bigr|\le\frac12\bigl(a_n^2+\frac{1}{n^2}\bigr)$，右边是两个收敛级数之和的项，由比较判别法，$\sum\frac{a_n}{n}$绝对收敛。
+
+- id: p6
+  tier: hard
+  statement: |
+    设数列$\{a_n\}$单调递减，各项都不小于$0$。证明$\sum_{n=1}^\infty a_n$:term[收敛]{id="math.analysis.convergent-series"}，当且仅当$\sum_{k=0}^\infty2^ka_{2^k}$收敛。再用它说明：$p>1$时$\sum\frac{1}{n^p}$收敛，$0<p\le1$时发散。
+  hints:
+    - |
+      各项不小于$0$的级数收敛，当且仅当部分和有上界（:term[单调有界原理]{id="math.analysis.monotone-convergence-theorem"}，monotone convergence theorem）。把$\sum a_n$的项按$a_1$，$a_2,a_3$，$a_4,\dots,a_7$，$a_8,\dots,a_{15}$……分段，每段和$2^ka_{2^k}$比。
+    - |
+      $a_{2^k}+\cdots+a_{2^{k+1}-1}$共$2^k$项，都不超过$a_{2^k}$；$a_{2^{k-1}+1}+\cdots+a_{2^k}$共$2^{k-1}$项，都不小于$a_{2^k}$。
+    - |
+      各项不小于$0$，部分和单调递增，由单调有界原理，这样的级数收敛当且仅当部分和有上界。记$S_n=\sum_{i=1}^na_i$，$T_k=\sum_{j=0}^k2^ja_{2^j}$。
+
+      一方面，$S_{2^{k+1}-1}=\sum_{j=0}^k\bigl(a_{2^j}+\cdots+a_{2^{j+1}-1}\bigr)\le\sum_{j=0}^k2^ja_{2^j}=T_k$。另一方面，$S_{2^k}=a_1+\sum_{j=1}^k\bigl(a_{2^{j-1}+1}+\cdots+a_{2^j}\bigr)\ge a_1+\sum_{j=1}^k2^{j-1}a_{2^j}\ge\frac12T_k$。
+
+      $\{S_n\}$递增，$n\le2^{k+1}-1$时$S_n\le T_k$，所以$\{T_k\}$有上界时$\{S_n\}$也有；反过来$T_k\le2S_{2^k}$。两个级数同时收敛、同时发散。
+
+      $a_n=\frac{1}{n^p}$时，$2^ka_{2^k}=\bigl(2^{1-p}\bigr)^k$，是公比为$2^{1-p}$的等比级数：$p>1$时公比小于$1$，收敛；$0<p\le1$时公比不小于$1$，发散。这个办法叫作柯西凝聚判别法（Cauchy condensation test）。
+  reference: |
+    按$2^k$分段：$S_{2^{k+1}-1}\le T_k\le2S_{2^k}$；各项非负的级数收敛当且仅当部分和有上界，所以两个级数同时收敛或同时发散。$\sum n^{-p}$对应公比为$2^{1-p}$的等比级数。
+
+- id: p7
+  tier: thinking
+  statement: |
+    把收敛级数相邻的若干项用括号合成一项（不改变顺序），得到的新级数还收敛吗？和变不变？反过来，加了括号的级数收敛，去掉括号以后一定收敛吗？什么情况下可以放心地去掉括号？
+  hints:
+    - |
+      加了括号以后，新级数的:term[部分和]{id="math.analysis.partial-sum"}是原来的哪些部分和？
+    - |
+      新级数的部分和数列是原来部分和数列的一个:term[子列]{id="math.analysis.subsequence"}（subsequence）。去括号的反例：$(1-1)+(1-1)+\cdots$。
+    - |
+      设原级数收敛，和是$S$。加括号后第$k$个括号结束在原来的第$n_k$项，$n_1<n_2<\cdots$，新级数的第$k$个部分和就是$S_{n_k}$。它是$\{S_n\}$的子列，所以也趋于$S$：收敛级数随便加括号，和不变。
+
+      反过来不行：$(1-1)+(1-1)+\cdots$每个括号都是$0$，和是$0$，去掉括号却是发散的$1-1+1-\cdots$。子列收敛，推不出整个数列收敛。
+
+      两种情况可以去括号。一是每个括号里的项同号（比如正项级数）：这时原来的$S_n$夹在相邻两个括号结束处的部分和之间。二是$a_n\to0$，并且每个括号里的项数不超过某个固定的$L$：原来的$S_n$和最近一个括号结束处的部分和只差不到$L$项，这点差趋于$0$。
+  reference: |
+    加括号后的部分和是原部分和的子列，所以和不变；反之不然，如$(1-1)+(1-1)+\cdots$。括号内各项同号，或$a_n\to0$且括号长度有界时，可以去括号。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$a_n>0$，$\sum a_n$:term[发散]{id="math.analysis.divergent-series"}，部分和是$S_n$。证明$\sum\frac{a_n}{S_n}$也发散。$\frac{a_n}{S_n}$比$a_n$小得多，这说明了什么？
+  hints:
+    - |
+      $\{S_n\}$递增，又发散，它趋于什么？用:term[级数的柯西准则]{id="math.analysis.series-cauchy-criterion"}，看从第$m+1$项到第$n$项那一段。
+    - |
+      $k\le n$时$S_k\le S_n$，所以$\frac{a_{m+1}}{S_{m+1}}+\cdots+\frac{a_n}{S_n}\ge\frac{a_{m+1}+\cdots+a_n}{S_n}=1-\frac{S_m}{S_n}$。
+    - |
+      $\{S_n\}$单调递增而发散，由单调有界原理，它没有上界，于是$S_n\to+\infty$。对每个$m$，$n\to\infty$时$1-\frac{S_m}{S_n}\to1$，所以有$n>m$使这段和不小于$\frac12$。柯西准则对$\varepsilon=\frac12$不成立，$\sum\frac{a_n}{S_n}$发散。
+
+      $\frac{a_n}{S_n}$和$a_n$之比是$\frac{1}{S_n}\to0$，新级数照样发散。所以没有「发散得最慢」的正项级数：任给一个发散的正项级数，都能造出一个项比它小得多、仍然发散的级数。比如$\sum\frac1n$发散，于是$\sum\frac{1}{nH_n}$也发散，这里$H_n=1+\frac12+\cdots+\frac1n$。
+
+      同样也没有「收敛得最慢」的：$\sum a_n$收敛时，记尾巴$r_n=\sum_{k\ge n}a_k$，则$\frac{a_n}{\sqrt{r_n}}=\frac{r_n-r_{n+1}}{\sqrt{r_n}}\le2\bigl(\sqrt{r_n}-\sqrt{r_{n+1}}\bigr)$，右边的部分和一项接一项地相消，所以$\sum\frac{a_n}{\sqrt{r_n}}$收敛，而它的项比$a_n$大得多。比较判别法永远找不到一个「分界」的级数，一劳永逸地把收敛和发散分开。
+  reference: |
+    由$S_n\to\infty$，$\sum_{k=m+1}^n\frac{a_k}{S_k}\ge1-\frac{S_m}{S_n}\to1$，柯西准则不成立。这说明没有发散得最慢的正项级数；同理也没有收敛得最慢的。

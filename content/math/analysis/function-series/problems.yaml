@@ -1,0 +1,159 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$S_n(x)=1+x+\cdots+x^n$，$S(x)=\frac{1}{1-x}$。求$S_4$与$S$在$\bigl[-\frac13,\frac13\bigr]$上的:term[上确界距离]{id="math.analysis.uniform-distance"}（uniform distance）$\|S-S_4\|_\infty$。
+  answer:
+    type: number
+    value: 1/162
+  hints:
+    - |
+      先写出$S(x)-S_4(x)$，它是一个分式。
+    - |
+      $S(x)-S_4(x)=\frac{x^5}{1-x}$。在$\bigl[-\frac13,\frac13\bigr]$上，它的绝对值在哪里最大？
+    - |
+      $|S(x)-S_4(x)|=\frac{|x|^5}{1-x}$。在这个区间上$|x|^5\le\frac{1}{243}$，$\frac{1}{1-x}\le\frac32$，两者都在$x=\frac13$处取到最大，所以上确界是$\frac{1}{243}\times\frac32=\frac{1}{162}$，在$x=\frac13$处取到。
+  solution: |
+    $|S-S_4|=\frac{|x|^5}{1-x}$，在$x=\frac13$处最大，$\|S-S_4\|_\infty=\frac{1}{162}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些级数能用:term[魏尔斯特拉斯判别法]{id="math.analysis.weierstrass-m-test"}证明在$\R$上:term[一致收敛]{id="math.analysis.uniform-convergence"}？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\sum_{n=1}^\infty\frac{\cos nx}{n^2+1}$
+      - |
+        $\sum_{n=1}^\infty\frac{\cos nx}{n}$
+      - |
+        $\sum_{n=1}^\infty\frac{1}{n^2+x^2}$
+      - |
+        $\sum_{n=1}^\infty\frac{x}{n^2}$
+    value: [1, 3]
+  hints:
+    - |
+      要找和$x$无关的$M_n$，并且$\sum M_n$收敛；最好的$M_n$是$\sup_{x\in\R}|u_n(x)|$。
+    - |
+      A 的$\sup|u_n|$是$\frac{1}{n^2+1}$；B 的是$\frac1n$；C 的是$\frac{1}{n^2}$；D 的是多少？
+    - |
+      A、C 的$\sup|u_n|$分别是$\frac{1}{n^2+1}$和$\frac{1}{n^2}$（都在$x=0$处取到），都不超过$\frac{1}{n^2}$，而$\sum\frac{1}{n^2}$收敛，可以用。B 的$\sup|u_n|=\frac1n$（在$x=0$处取到），$\sum\frac1n$发散，判别法用不上；事实上它在$x=0$处就发散。
+
+      D 的$\sup_{x\in\R}\bigl|\frac{x}{n^2}\bigr|=+\infty$，找不到$M_n$。它在每一点都收敛，但$\|u_n\|_\infty$不趋于$0$，由定理 1 的推论，在$\R$上不一致收敛。
+
+      答案是 A 和 C。
+  solution: |
+    A、C 取$M_n=\frac{1}{n^2}$即可；B 的$\sup|u_n|=\frac1n$，$\sum\frac1n$发散；D 的$\sup|u_n|=+\infty$。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$S_N(x)=\sum_{n=1}^N\bigl(\frac x3\bigr)^n$，$S(x)=\sum_{n=1}^\infty\bigl(\frac x3\bigr)^n$。求最小的正整数$N$，使$S_N$与$S$在$[-2,2]$上的上确界距离$\|S-S_N\|_\infty<0.01$。
+  answer:
+    type: number
+    value: 14
+  hints:
+    - |
+      余下的部分是$\sum_{n>N}\bigl(\frac x3\bigr)^n$。它的绝对值在哪里最大？
+    - |
+      $\bigl|\sum_{n>N}\bigl(\frac x3\bigr)^n\bigr|\le\sum_{n>N}\bigl(\frac23\bigr)^n=2\bigl(\frac23\bigr)^N$，$x=2$时等号成立。
+    - |
+      $|S(x)-S_N(x)|\le\sum_{n>N}\bigl|\frac x3\bigr|^n\le\sum_{n>N}\bigl(\frac23\bigr)^n=2\bigl(\frac23\bigr)^N$；$x=2$时各项都是正的，等号成立，所以$\|S-S_N\|_\infty=2\bigl(\frac23\bigr)^N$。
+
+      要它小于$0.01$，即$\bigl(\frac23\bigr)^N<0.005$。$\bigl(\frac23\bigr)^{13}\approx0.00514$，$\bigl(\frac23\bigr)^{14}\approx0.00343$，所以$N$最小是$14$。
+  solution: |
+    余项的上确界在$x=2$处取到，是$2\bigl(\frac23\bigr)^N$；要小于$0.01$，需$\bigl(\frac23\bigr)^N<0.005$，$N$最小是$14$。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$u_n(x)=\frac{x}{n(1+nx^2)}$，$x\in\R$。求$\|u_4\|_\infty=\sup_{x\in\R}|u_4(x)|$。
+  answer:
+    type: number
+    value: 1/16
+  hints:
+    - |
+      先求$\sup_x\frac{|x|}{1+nx^2}$，用均值不等式。
+    - |
+      $1+nx^2\ge2\sqrt n\,|x|$，所以$\frac{|x|}{1+nx^2}\le\frac{1}{2\sqrt n}$，在$x=\frac{1}{\sqrt n}$处取等号。
+    - |
+      $|u_n(x)|=\frac1n\cdot\frac{|x|}{1+nx^2}\le\frac1n\cdot\frac{1}{2\sqrt n}$，在$x=\frac{1}{\sqrt n}$处取等号，所以$\|u_n\|_\infty=\frac{1}{2n^{3/2}}$，$n=4$时是$\frac{1}{16}$。
+
+      $\sum\frac{1}{2n^{3/2}}$收敛（见[级数的柯西准则与绝对收敛](lesson:math.analysis.series-cauchy)第 6 题），由:term[魏尔斯特拉斯判别法]{id="math.analysis.weierstrass-m-test"}，$\sum u_n(x)$在$\R$上一致收敛。
+  solution: |
+    $\|u_n\|_\infty=\frac{1}{2n^{3/2}}$，在$x=\frac{1}{\sqrt n}$处取到；$n=4$时是$\frac{1}{16}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明$\sum_{n=1}^\infty\frac{(-1)^n}{n+x^2}$在$\R$上:term[一致收敛]{id="math.analysis.uniform-convergence"}，但$\sum_{n=1}^\infty\|u_n\|_\infty$发散，所以:term[魏尔斯特拉斯判别法]{id="math.analysis.weierstrass-m-test"}用不上。
+  hints:
+    - |
+      对固定的$x$，这是交错级数（alternating series），项$\frac{1}{n+x^2}$单调递减趋于$0$。想想交错级数一段和的估计。
+    - |
+      交错的一段和不超过它第一项的绝对值：$|u_{m+1}(x)+\cdots+u_n(x)|\le\frac{1}{m+1+x^2}\le\frac{1}{m+1}$，和$x$无关。
+    - |
+      对固定的$x$，$\frac{1}{n+x^2}$单调递减趋于$0$。由[级数的柯西准则与绝对收敛](lesson:math.analysis.series-cauchy)例 2 的推导，交错的一段和不超过它第一项的绝对值：$|u_{m+1}(x)+\cdots+u_n(x)|\le\frac{1}{m+1+x^2}\le\frac{1}{m+1}$。
+
+      任给$\varepsilon>0$，取$N>\frac1\varepsilon$，则$n>m>N$时这段和小于$\varepsilon$，对所有$x$都成立。由定理 1 的推论，级数在$\R$上一致收敛。
+
+      可$\|u_n\|_\infty=\sup_x\frac{1}{n+x^2}=\frac1n$（在$x=0$处取到），$\sum\frac1n$发散。满足$|u_n(x)|\le M_n$的$M_n$都不小于$\frac1n$，$\sum M_n$也发散，所以判别法用不上。这里的一致收敛靠的是正负相消，而判别法只看绝对值。
+  reference: |
+    交错级数的一段和$|u_{m+1}+\cdots+u_n|\le\frac{1}{m+1+x^2}\le\frac{1}{m+1}$，与$x$无关，由一致收敛的柯西准则得一致收敛；而$\|u_n\|_\infty=\frac1n$，$\sum\frac1n$发散。
+
+- id: p6
+  tier: hard
+  statement: |
+    设每个$u_n$在$[a,b]$上:term[连续]{id="math.analysis.continuous-function"}，并且$\sum u_n(x)$在开区间$(a,b)$上:term[一致收敛]{id="math.analysis.uniform-convergence"}。证明$\sum u_n(a)$和$\sum u_n(b)$都收敛，并且$\sum u_n(x)$在$[a,b]$上一致收敛。再用它说明$\sum_{n=1}^\infty\frac{x^n}{n}$在$[0,1)$上不一致收敛。
+  hints:
+    - |
+      用定理 1 的推论：在$(a,b)$上，一段和对所有$x$都小于$\varepsilon$。让$x$趋于$a$，这个不等式会变成什么？
+    - |
+      $u_{m+1}+\cdots+u_n$是有限个连续函数之和，在$a$处连续，所以$x\to a^+$时$|u_{m+1}(x)+\cdots+u_n(x)|\to|u_{m+1}(a)+\cdots+u_n(a)|$。
+    - |
+      任给$\varepsilon>0$，由定理 1 的推论，有$N$，使$n>m>N$时，对所有$x\in(a,b)$都有$|u_{m+1}(x)+\cdots+u_n(x)|<\varepsilon$。取$(a,b)$里趋于$a$的数列$x_k$，这段和是连续函数，$x_k\to a$时它在$x_k$处的值趋于在$a$处的值；由:term[保不等式性]{id="math.analysis.order-limit-theorem"}（order limit theorem），$|u_{m+1}(a)+\cdots+u_n(a)|\le\varepsilon$。$b$处同理。
+
+      所以这段和在整个$[a,b]$上都不超过$\varepsilon$。由级数的柯西准则，$\sum u_n(a)$、$\sum u_n(b)$收敛；由定理 1 的推论，$\sum u_n(x)$在$[a,b]$上一致收敛。
+
+      $\sum\frac{x^n}{n}$的每一项在$[0,1]$上连续。若它在$[0,1)$上一致收敛，在$(0,1)$上也一致收敛，由上面的结论，$x=1$处的$\sum\frac1n$就该收敛，可调和级数（harmonic series）发散。所以它在$[0,1)$上不一致收敛。
+  reference: |
+    一段和在$(a,b)$上一致地小于$\varepsilon$，由连续性取$x\to a^+$、$x\to b^-$，端点处也不超过$\varepsilon$，由柯西准则得端点处收敛、$[a,b]$上一致收敛。$\sum\frac{x^n}{n}$在$x=1$处是发散的调和级数，所以在$[0,1)$上不一致收敛。
+
+- id: p7
+  tier: thinking
+  statement: |
+    $\sum|u_n(x)|$在$D$上:term[一致收敛]{id="math.analysis.uniform-convergence"}，能推出$\sum u_n(x)$在$D$上一致收敛吗？反过来呢？$\sum u_n(x)$一致收敛、又对每个$x$都:term[绝对收敛]{id="math.analysis.absolute-convergence"}，$\sum|u_n(x)|$一定一致收敛吗？
+  hints:
+    - |
+      第一问用:term[一致收敛的柯西准则]{id="math.analysis.uniform-cauchy-criterion"}和三角不等式。第二问想想常数函数组成的级数。
+    - |
+      第二问：常数函数$u_n=\frac{(-1)^n}{n}$。第三问：在$[0,1)$上试试$\frac{(-1)^nx^n}{n}$，和第 6 题对照。
+    - |
+      第一问能：$|u_{m+1}(x)+\cdots+u_n(x)|\le|u_{m+1}(x)|+\cdots+|u_n(x)|$，右边对所有$x$一致地小，由一致收敛的柯西准则即得。
+
+      第二问不能：常数函数$u_n(x)=\frac{(-1)^n}{n}$组成的级数和$x$无关，收敛就是一致收敛，$\sum|u_n|=\sum\frac1n$却发散。
+
+      第三问也不能。在$[0,1)$上取$u_n(x)=\frac{(-1)^nx^n}{n}$。对每个$x$，$\frac{x^n}{n}\le x^n$，由:term[比较判别法]{id="math.analysis.comparison-test"}（comparison test），$\sum\frac{x^n}{n}$收敛，所以绝对收敛；交错的一段和不超过第一项，$|u_{m+1}(x)+\cdots+u_n(x)|\le\frac{x^{m+1}}{m+1}\le\frac{1}{m+1}$，所以一致收敛。
+
+      可$\sum|u_n(x)|=\sum\frac{x^n}{n}$在$[0,1)$上不一致收敛（第 6 题）。一致收敛和绝对收敛是两件不同的事。
+  reference: |
+    $\sum|u_n|$一致收敛推出$\sum u_n$一致收敛（三角不等式加柯西准则）；反过来不对（常数函数$\frac{(-1)^n}{n}$）。一致收敛加逐点绝对收敛也推不出$\sum|u_n|$一致收敛：$[0,1)$上的$\frac{(-1)^nx^n}{n}$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    $\sum_{n=0}^\infty x^n(1-x)$的每一项在$[0,1]$上都:term[连续]{id="math.analysis.continuous-function"}。求它的和函数，和函数连续吗？这说明了什么？
+  hints:
+    - |
+      部分和可以算出来：一项接一项地相消。
+    - |
+      $S_n(x)=\sum_{k=0}^n\bigl(x^k-x^{k+1}\bigr)=1-x^{n+1}$。
+    - |
+      $S_n(x)=1-x^{n+1}$。$0\le x<1$时和是$1$；$x=1$时每一项都是$0$，和是$0$。和函数在$1$处断开，不连续。
+
+      在$[0,1)$上$\|S-S_n\|_\infty=\sup_{0\le x<1}x^{n+1}=1$，不趋于$0$，所以这个级数在$[0,1)$上就不:term[一致收敛]{id="math.analysis.uniform-convergence"}，在$[0,1]$上更不会。以后要证：连续函数组成的级数在$D$上一致收敛时，和函数在$D$上连续（见[一致收敛与极限交换](lesson:math.analysis.uniform-limit-theorems)，那里对函数列证明，用到部分和上即可）。这里的不连续，正是不一致收敛的后果。
+
+      这也给了一个判断不一致收敛的办法：各项连续，和函数却不连续，级数就不可能一致收敛。反过来，和函数连续并不保证一致收敛：同一个级数在$[0,1)$上的和函数是常数$1$，连续，可上面算过它在$[0,1)$上不一致收敛。
+  reference: |
+    $S_n=1-x^{n+1}$，和函数在$[0,1)$上是$1$、在$x=1$处是$0$，不连续；$[0,1)$上$\|S-S_n\|_\infty=1$，不一致收敛。各项连续而和函数不连续说明不一致收敛；和函数连续也不保证一致收敛。

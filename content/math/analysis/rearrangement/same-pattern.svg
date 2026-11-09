@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 300" width="660" height="300" font-size="14">
+  <!-- 同样「一正两负」的重排。左：交错调和级数，px = 40 + 7.5m，py = 230 − 200(S − 0.2)；右：1 − 1/2² + 1/3² − ⋯，px = 370 + 7.5m，py = 230 − 360(S − 0.55) -->
+  <!-- 灰色空心点：原来顺序的部分和；实心点：重排后的部分和；虚线：两者各自的极限 -->
+  <line x1="40" y1="230" x2="320" y2="230" stroke="currentColor" stroke-width="1.2" />
+  <line x1="40" y1="236" x2="40" y2="30" stroke="currentColor" stroke-width="1.2" />
+  <line x1="36" y1="220" x2="40" y2="220" stroke="currentColor" stroke-width="1.2" />
+  <text x="33" y="224" text-anchor="end" font-size="12" fill="currentColor">0.25</text>
+  <line x1="36" y1="170" x2="40" y2="170" stroke="currentColor" stroke-width="1.2" />
+  <text x="33" y="174" text-anchor="end" font-size="12" fill="currentColor">0.5</text>
+  <line x1="36" y1="120" x2="40" y2="120" stroke="currentColor" stroke-width="1.2" />
+  <text x="33" y="124" text-anchor="end" font-size="12" fill="currentColor">0.75</text>
+  <line x1="36" y1="70" x2="40" y2="70" stroke="currentColor" stroke-width="1.2" />
+  <text x="33" y="74" text-anchor="end" font-size="12" fill="currentColor">1</text>
+  <line x1="115" y1="230" x2="115" y2="234" stroke="currentColor" stroke-width="1.2" />
+  <text x="115" y="248" text-anchor="middle" font-size="12" fill="currentColor">10</text>
+  <line x1="190" y1="230" x2="190" y2="234" stroke="currentColor" stroke-width="1.2" />
+  <text x="190" y="248" text-anchor="middle" font-size="12" fill="currentColor">20</text>
+  <line x1="265" y1="230" x2="265" y2="234" stroke="currentColor" stroke-width="1.2" />
+  <text x="265" y="248" text-anchor="middle" font-size="12" fill="currentColor">30</text>
+  <line x1="40" y1="131.37" x2="320" y2="131.37" stroke="currentColor" stroke-width="0.8" stroke-dasharray="5 4" opacity="0.7" />
+  <line x1="40" y1="200.69" x2="320" y2="200.69" stroke="currentColor" stroke-width="0.8" stroke-dasharray="5 4" opacity="0.7" />
+  <circle cx="47.5" cy="70" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="55" cy="170" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="62.5" cy="103.33" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="70" cy="153.33" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="77.5" cy="113.33" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="85" cy="146.67" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="92.5" cy="118.1" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="100" cy="143.1" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="107.5" cy="120.87" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="115" cy="140.87" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="122.5" cy="122.69" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="130" cy="139.36" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="137.5" cy="123.97" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="145" cy="138.26" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="152.5" cy="124.93" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="160" cy="137.43" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="167.5" cy="125.66" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="175" cy="136.77" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="182.5" cy="126.25" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="190" cy="136.25" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="197.5" cy="126.72" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="205" cy="135.81" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="212.5" cy="127.12" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="220" cy="135.45" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="227.5" cy="127.45" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="235" cy="135.14" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="242.5" cy="127.74" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="250" cy="134.88" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="257.5" cy="127.98" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="265" cy="134.65" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="272.5" cy="128.2" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="280" cy="134.45" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="287.5" cy="128.39" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="295" cy="134.27" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="302.5" cy="128.55" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="310" cy="134.11" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="47.5" cy="70" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="55" cy="170" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="62.5" cy="220" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="70" cy="153.33" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="77.5" cy="186.67" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="85" cy="211.67" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="92.5" cy="171.67" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="100" cy="191.67" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="107.5" cy="208.33" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="115" cy="179.76" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="122.5" cy="194.05" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="130" cy="206.55" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="137.5" cy="184.33" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="145" cy="195.44" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="152.5" cy="205.44" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="160" cy="187.25" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="167.5" cy="196.35" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="175" cy="204.68" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="182.5" cy="189.29" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="190" cy="196.99" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="197.5" cy="204.13" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="205" cy="190.8" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="212.5" cy="197.46" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="220" cy="203.71" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="227.5" cy="191.95" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="235" cy="197.83" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="242.5" cy="203.39" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="250" cy="192.86" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="257.5" cy="198.12" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="265" cy="203.12" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="272.5" cy="193.6" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="280" cy="198.36" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="287.5" cy="202.91" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="295" cy="194.21" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="302.5" cy="198.56" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="310" cy="202.73" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <text x="20" y="270" font-size="12" fill="currentColor">1 − 1/2 + 1/3 − ⋯（条件收敛）</text>
+  <text x="20" y="288" font-size="12" fill="currentColor">重排后趋于另一个数：原来的一半</text>
+  <line x1="370" y1="230" x2="650" y2="230" stroke="currentColor" stroke-width="1.2" />
+  <line x1="370" y1="236" x2="370" y2="30" stroke="currentColor" stroke-width="1.2" />
+  <line x1="366" y1="212" x2="370" y2="212" stroke="currentColor" stroke-width="1.2" />
+  <text x="363" y="216" text-anchor="end" font-size="12" fill="currentColor">0.6</text>
+  <line x1="366" y1="140" x2="370" y2="140" stroke="currentColor" stroke-width="1.2" />
+  <text x="363" y="144" text-anchor="end" font-size="12" fill="currentColor">0.8</text>
+  <line x1="366" y1="68" x2="370" y2="68" stroke="currentColor" stroke-width="1.2" />
+  <text x="363" y="72" text-anchor="end" font-size="12" fill="currentColor">1</text>
+  <line x1="445" y1="230" x2="445" y2="234" stroke="currentColor" stroke-width="1.2" />
+  <text x="445" y="248" text-anchor="middle" font-size="12" fill="currentColor">10</text>
+  <line x1="520" y1="230" x2="520" y2="234" stroke="currentColor" stroke-width="1.2" />
+  <text x="520" y="248" text-anchor="middle" font-size="12" fill="currentColor">20</text>
+  <line x1="595" y1="230" x2="595" y2="234" stroke="currentColor" stroke-width="1.2" />
+  <text x="595" y="248" text-anchor="middle" font-size="12" fill="currentColor">30</text>
+  <line x1="370" y1="131.91" x2="650" y2="131.91" stroke="currentColor" stroke-width="0.8" stroke-dasharray="5 4" opacity="0.7" />
+  <line x1="370" y1="131.91" x2="650" y2="131.91" stroke="currentColor" stroke-width="0.8" stroke-dasharray="5 4" opacity="0.7" />
+  <circle cx="377.5" cy="68" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="385" cy="158" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="392.5" cy="118" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="400" cy="140.5" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="407.5" cy="126.1" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="415" cy="136.1" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="422.5" cy="128.75" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="430" cy="134.38" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="437.5" cy="129.93" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="445" cy="133.53" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="452.5" cy="130.56" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="460" cy="133.06" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="467.5" cy="130.93" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="475" cy="132.76" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="482.5" cy="131.16" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="490" cy="132.57" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="497.5" cy="131.33" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="505" cy="132.44" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="512.5" cy="131.44" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="520" cy="132.34" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="527.5" cy="131.52" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="535" cy="132.27" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="542.5" cy="131.59" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="550" cy="132.21" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="557.5" cy="131.64" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="565" cy="132.17" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="572.5" cy="131.67" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="580" cy="132.13" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="587.5" cy="131.71" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="595" cy="132.11" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="602.5" cy="131.73" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="610" cy="132.08" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="617.5" cy="131.75" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="625" cy="132.06" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="632.5" cy="131.77" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="640" cy="132.05" r="2.6" stroke-width="1.2" fill="none" stroke="currentColor" opacity="0.55" />
+  <circle cx="377.5" cy="68" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="385" cy="158" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="392.5" cy="180.5" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="400" cy="140.5" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="407.5" cy="150.5" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="415" cy="156.12" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="422.5" cy="141.72" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="430" cy="145.32" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="437.5" cy="147.82" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="445" cy="140.48" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="452.5" cy="142.31" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="460" cy="143.72" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="467.5" cy="139.28" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="475" cy="140.39" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="482.5" cy="141.29" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="490" cy="138.31" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="497.5" cy="139.06" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="505" cy="139.68" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="512.5" cy="137.55" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="520" cy="138.08" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="527.5" cy="138.54" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="535" cy="136.94" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="542.5" cy="137.34" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="550" cy="137.69" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="557.5" cy="136.45" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="565" cy="136.76" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="572.5" cy="137.04" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="580" cy="136.04" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="587.5" cy="136.29" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="595" cy="136.52" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="602.5" cy="135.7" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="610" cy="135.9" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="617.5" cy="136.09" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="625" cy="135.41" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="632.5" cy="135.58" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <circle cx="640" cy="135.73" r="2.6" style="fill: var(--accent, #2563eb)" />
+  <text x="350" y="270" font-size="12" fill="currentColor">1 − 1/2² + 1/3² − ⋯（绝对收敛）</text>
+  <text x="350" y="288" font-size="12" fill="currentColor">重排后和原来趋于同一个数</text>
+</svg>

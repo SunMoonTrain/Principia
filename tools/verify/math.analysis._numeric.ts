@@ -1,6 +1,7 @@
 // math.analysis 验算脚本共用的数值小工具（批次 2 起用）。
 // 文件名第三段以下划线开头，npm run verify 不把它当成小节脚本（见 docs/plan.md「每批的流程」第 3 条）。
-// 这里只放和具体题目无关的算法：Richardson 外推、数列收不收敛、一点处最大的 δ、连续模。
+// 这里只放和具体题目无关的算法：Richardson 外推、数列收不收敛、一点处最大的 δ、连续模；
+// 批次 3 加了达布和，批次 4 加了部分和、上确界、辛普森积分和切比雪夫插值。
 
 import { infOfPredicate, supOfPredicate } from './lib.ts';
 
@@ -109,6 +110,91 @@ export function darboux(values: (x: number) => number[], points: number[], speci
     L += m * (b - a);
   }
   return [U, L];
+}
+
+/** 部分和 S_1…S_count（下标 0 不用），a(n) 是第 n 项（批次 4 起用）。 */
+export function partialSums(count: number, a: (n: number) => number): Float64Array {
+  return terms(count, (n, previous) => (n > 1 ? previous : 0) + a(n));
+}
+
+/** g 在 [a, b] 上单峰时的最大值点：黄金分割搜索（批次 4 起用）。 */
+export function goldenMax(g: (x: number) => number, a: number, b: number, iterations = 120): number {
+  const r = (Math.sqrt(5) - 1) / 2;
+  let lo = a;
+  let hi = b;
+  for (let k = 0; k < iterations; k++) {
+    const x1 = hi - r * (hi - lo);
+    const x2 = lo + r * (hi - lo);
+    if (g(x1) >= g(x2)) hi = x2;
+    else lo = x1;
+  }
+  return (lo + hi) / 2;
+}
+
+/**
+ * sup |f| 在点集 xs（从小到大）上的近似（批次 4 起用）：先取样，再在取样值最大的 keep 个点两侧的格子里用黄金分割细找。
+ * 只用到 xs 所在的范围；f 在某点没有定义（NaN）时跳过那一点。
+ */
+export function supAbs(f: (x: number) => number, xs: number[], keep = 6): number {
+  // 一遍扫过去，留下取样值最大的 keep 个点（从大到小）
+  const top: [number, number][] = [];
+  xs.forEach((x, i) => {
+    const v = Math.abs(f(x));
+    if (!Number.isFinite(v)) return;
+    if (top.length === keep && v <= top[keep - 1][0]) return;
+    let j = top.length;
+    while (j > 0 && top[j - 1][0] < v) j--;
+    top.splice(j, 0, [v, i]);
+    if (top.length > keep) top.pop();
+  });
+  let best = top.length > 0 ? top[0][0] : Number.NaN;
+  for (const [, i] of top) {
+    const a = xs[Math.max(0, i - 1)];
+    const b = xs[Math.min(xs.length - 1, i + 1)];
+    if (b <= a) continue;
+    const g = (x: number): number => {
+      const v = Math.abs(f(x));
+      return Number.isFinite(v) ? v : -Infinity;
+    };
+    const v = g(goldenMax(g, a, b));
+    if (v > best) best = v;
+  }
+  return best;
+}
+
+/** 复合辛普森公式，n 段（偶数）。 */
+export function simpson(f: (x: number) => number, a: number, b: number, n: number): number {
+  const m = n % 2 === 0 ? n : n + 1;
+  const h = (b - a) / m;
+  let s = f(a) + f(b);
+  for (let i = 1; i < m; i++) s += (i % 2 === 1 ? 4 : 2) * f(a + i * h);
+  return (s * h) / 3;
+}
+
+/** f 在 [a, b] 上的 k 次切比雪夫插值多项式（第一类切比雪夫点，重心公式求值）（批次 4 起用）。 */
+export function chebyshevInterpolant(f: (x: number) => number, a: number, b: number, k: number): (x: number) => number {
+  const nodes: number[] = [];
+  const values: number[] = [];
+  const weights: number[] = [];
+  for (let j = 0; j <= k; j++) {
+    const theta = (Math.PI * (j + 0.5)) / (k + 1);
+    const x = (a + b) / 2 + ((b - a) / 2) * Math.cos(theta);
+    nodes.push(x);
+    values.push(f(x));
+    weights.push((j % 2 === 0 ? 1 : -1) * Math.sin(theta));
+  }
+  return (x: number): number => {
+    let num = 0;
+    let den = 0;
+    for (let j = 0; j <= k; j++) {
+      const d = x - nodes[j];
+      if (d === 0) return values[j];
+      const w = weights[j] / d;
+      num += w * values[j];
+      den += w;
+    }
+    return num / den;
+  };
 }
 
 /** 可重复的伪随机数（mulberry32），给「随机符号」一类的检验数列用。 */
