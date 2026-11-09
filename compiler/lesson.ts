@@ -13,7 +13,7 @@ import { parseLessonMarkdown, plainText, renderField, toRich, transformBody, typ
 import { processProblems } from './problems.ts';
 import { LessonFrontmatter, reportIssues } from './schema.ts';
 import { countChars } from './text-rules.ts';
-import { lineOf, parseYaml, textAt } from './yaml-text.ts';
+import { controlChar, lineOf, parseYaml, textAt } from './yaml-text.ts';
 
 export const SUMMARY_MAX = 30;
 
@@ -134,6 +134,12 @@ export function processLesson(
   }
 
   const errorsBefore = diags.errorCount;
+  // 正文里的控制字符：sed、shell 或脚本把 \theta 的 \t 吃成了制表符，KaTeX 当空白照样渲染（文件头的文字字段由 textAt 查）
+  const frontEnd = front.position.end.line;
+  source.split('\n').forEach((text, i) => {
+    const control = i >= frontEnd ? controlChar(text) : null;
+    if (control) diags.error(reportFile, i + 1, `正文里出现了控制字符 ${control}`);
+  });
   const anims: AnimUse[] = [];
   const svgCount = { value: 0 };
   const ctx: MdContext = {

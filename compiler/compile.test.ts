@@ -186,6 +186,13 @@ describe('故意改坏，构建失败并指出文件和行号', () => {
     expect(errs.some((e) => e.message.includes('U+0009'))).toBe(true);
   });
 
+  it('正文公式里 \\theta 的反斜杠连同 t 被吃成了制表符', () => {
+    const root = fixture();
+    // JS 字符串里的 \t 就是制表符：和 sed 把 \theta 换成「制表符 + heta」以后一样，KaTeX 当空白照样渲染
+    const line = edit(root, LESSON, 'c-b &= \\frac{2-b^2}{b+2}', 'c-b &= \\frac{2-b^2}{b+2}\theta');
+    expect(errors(root)).toMatchObject([{ file: LESSON, line, message: expect.stringContaining('U+0009') }]);
+  });
+
   it('文件头 id 和路径不一致', () => {
     const root = fixture();
     const line = edit(root, LESSON, 'id: math.analysis.completeness', 'id: math.analysis.real-completeness');
@@ -247,6 +254,33 @@ describe('故意改坏，构建失败并指出文件和行号', () => {
     const file = 'content/math/calculus/_domain.yaml';
     const line = edit(root, file, /\\R: \|\n {4}\\mathbb\{R\}/, '\\R: |\n    \\mathbf{R}');
     expect(errors(root)).toMatchObject([{ file, line, message: expect.stringMatching(/宏 \\R 在各领域的定义要一样：这里是「\\mathbf\{R\}」，.+ 等 \d+ 个领域里是「\\mathbb\{R\}」/) }]);
+  });
+});
+
+describe('公式能渲染、但多半是反斜杠被吃掉了：只警告，指出文件和行号', () => {
+  /** 构建照样通过；去掉样例里本来就有的「还是 outline」那条。 */
+  function warnings(root: string): Diagnostic[] {
+    const { report } = compileContent(root);
+    expect(report.errors).toEqual([]);
+    return report.warnings.filter((w) => !w.message.includes('还是 outline'));
+  }
+
+  it('正文的多行公式里 \\frac 只剩 frac', () => {
+    const root = fixture();
+    const line = edit(root, LESSON, 'c-b &= \\frac{2-b^2}{b+2}', 'c-b &= frac{2-b^2}{b+2}');
+    expect(warnings(root)).toMatchObject([{ file: LESSON, line, message: expect.stringContaining('是不是 \\frac') }]);
+  });
+
+  it('多行公式行末的换行只剩一个反斜杠', () => {
+    const root = fixture();
+    const line = edit(root, LESSON, '{b+2},\\\\\n', '{b+2},\\\n');
+    expect(warnings(root)).toMatchObject([{ file: LESSON, line, message: expect.stringContaining('末尾只有一个反斜杠') }]);
+  });
+
+  it('题目文字里的公式也查', () => {
+    const root = fixture();
+    const line = edit(root, PROBLEMS, '求$\\sup A$。\n', '求$sup A$。\n');
+    expect(warnings(root)).toMatchObject([{ file: PROBLEMS, line, message: expect.stringContaining('是不是 \\sup') }]);
   });
 });
 

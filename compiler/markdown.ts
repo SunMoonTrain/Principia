@@ -19,7 +19,7 @@ import { processAnim, type AnimUse } from './anim.ts';
 import type { Diagnostics } from './diagnostics.ts';
 import { loadSvg } from './svg.ts';
 import { keepPunctuationWithMath, spaceAroundMath } from '../shared/cjk-spacing.ts';
-import { compileTex } from './tex.ts';
+import { compileTex, suspectTex } from './tex.ts';
 import type { TextField } from './yaml-text.ts';
 
 /** mdast 节点的宽松写法：这里要改写节点、造自定义节点，用联合类型反而碍事。 */
@@ -125,16 +125,17 @@ const KIND_NAMES: Record<string, string> = {
 function renderMath(node: MdNode, ctx: MdContext): void {
   const display = node.type === 'math';
   const tex = node.value ?? '';
+  // 行间公式的内容从 $$ 的下一行开始；知道出错位置（公式里的字符下标）时，精确到公式里的那一行。
+  const start = lineOf(ctx, node) ?? 1;
+  const multiline = node.position ? node.position.end.line > node.position.start.line : false;
+  const lineAt = (position = 0) => start + (display && multiline ? 1 : 0) + countNewlines(tex.slice(0, position));
   const result = compileTex(tex, display, ctx.macros);
   if (result.problems.length || result.html === undefined) {
-    // 行间公式的内容从 $$ 的下一行开始；ParseError 给出了出错位置时，精确到公式里的那一行。
-    const start = lineOf(ctx, node) ?? 1;
-    const multiline = node.position ? node.position.end.line > node.position.start.line : false;
-    const inside = result.position === undefined ? 0 : countNewlines(tex.slice(0, result.position));
-    ctx.diags.error(ctx.file, start + (display && multiline ? 1 : 0) + inside, `公式无法渲染：${result.problems.join('；')}`, `公式：${tex}`);
+    ctx.diags.error(ctx.file, lineAt(result.position), `公式无法渲染：${result.problems.join('；')}`, `公式：${tex}`);
     node.data = { hName: 'code', hProperties: { className: ['math-error'] }, hChildren: [{ type: 'text', value: tex }] };
     return;
   }
+  for (const s of suspectTex(tex)) ctx.diags.warn(ctx.file, lineAt(s.position), s.message, `公式：${tex}`);
   node.data = {
     hName: 'x-math',
     hProperties: display ? { dataHtml: result.html, dataDisplay: 'true' } : { dataHtml: result.html },

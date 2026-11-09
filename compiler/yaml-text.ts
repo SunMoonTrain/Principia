@@ -51,14 +51,23 @@ export function lineOf(y: YamlFile, path: readonly PropertyKey[]): number {
 const CONTROL_RE = /[\u0000-\u0009\u000B-\u001F\u007F-\u009F]/;
 
 const CONTROL_NAMES: Record<string, string> = {
-  '\t': '制表符，多半是 \\t（如 \\theta、\\tau）被双引号当成了转义',
-  '\b': '退格符，多半是 \\b（如 \\beta）被双引号当成了转义',
-  '\f': '换页符，多半是 \\f（如 \\frac）被双引号当成了转义',
-  '\r': '回车符，多半是 \\r（如 \\rho）被双引号当成了转义',
-  '\v': '垂直制表符，多半是 \\v（如 \\varepsilon）被双引号当成了转义',
-  '\u0007': '响铃符，多半是 \\a（如 \\alpha）被双引号当成了转义',
+  '\t': '制表符，多半是 \\t（如 \\theta、\\tau）被双引号、sed 或脚本当成了转义',
+  '\b': '退格符，多半是 \\b（如 \\beta）被双引号、sed 或脚本当成了转义',
+  '\f': '换页符，多半是 \\f（如 \\frac）被双引号、sed 或脚本当成了转义',
+  '\r': '回车符，多半是 \\r（如 \\rho）被双引号、sed 或脚本当成了转义',
+  '\v': '垂直制表符，多半是 \\v（如 \\varepsilon）被双引号、sed 或脚本当成了转义',
+  '\u0007': '响铃符，多半是 \\a（如 \\alpha）被双引号、sed 或脚本当成了转义',
   '\u001b': '转义符，多半是 \\e（如 \\epsilon）被双引号当成了转义',
 };
+
+/** 换行以外的第一个控制字符，写成「U+0009（制表符，多半是……）」；没有时返回 null。 */
+export function controlChar(text: string): string | null {
+  const control = CONTROL_RE.exec(text);
+  if (!control) return null;
+  const ch = control[0];
+  const code = `U+${ch.codePointAt(0)!.toString(16).toUpperCase().padStart(4, '0')}`;
+  return `${code}（${CONTROL_NAMES[ch] ?? '换行以外的控制字符'}）`;
+}
 
 /**
  * 取一个文字字段并检查写法：必须用块写法 `|`；解析出来后不能有换行以外的控制字符。
@@ -76,11 +85,7 @@ export function textAt(y: YamlFile, path: readonly PropertyKey[], diags: Diagnos
       `文字字段 ${name} 要用块写法 |：双引号会把 \\n、\\t 这类反斜杠当成转义吃掉，不加引号时「冒号+空格」和「空格+#」会出错`,
     );
   }
-  const control = CONTROL_RE.exec(node.value);
-  if (control) {
-    const ch = control[0];
-    const code = `U+${ch.codePointAt(0)!.toString(16).toUpperCase().padStart(4, '0')}`;
-    diags.error(y.file, line, `文字字段 ${name} 里出现了控制字符 ${code}（${CONTROL_NAMES[ch] ?? '换行以外的控制字符'}）`);
-  }
+  const control = controlChar(node.value);
+  if (control) diags.error(y.file, line, `文字字段 ${name} 里出现了控制字符 ${control}`);
   return { value: node.value, line, contentLine: block ? line + 1 : line };
 }
