@@ -1,5 +1,7 @@
 // 内容编译器的验收用例（docs/plan.md「给写代码 agent 的提示词」里台阶 1 的验收）：
-// 把仓库里的 content/ 拷到临时目录，逐条故意改坏，确认构建失败并指出文件和行号。
+// 把样例内容拷到临时目录，逐条故意改坏，确认构建失败并指出文件和行号。
+// 样例内容是 compiler/fixtures/sample：台阶 1 的样例节和它们引用到的几节，从批次 0 的提交里拷来后冻结，
+// 前置剪到这几节为止。真实内容每批都在改，测试拿它的措辞做断言会一写内容就坏；真实内容只测「整体能通过构建」。
 
 import fs from 'node:fs';
 import os from 'node:os';
@@ -12,18 +14,20 @@ import type { Diagnostic, Rich } from '../shared/content-types.ts';
 import { compileContent } from './compile.ts';
 import { sourceText } from './markdown.ts';
 
-const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const here = path.dirname(fileURLToPath(import.meta.url));
+const repo = path.resolve(here, '..');
+const SAMPLE = path.join(here, 'fixtures', 'sample');
 const LESSON = 'content/math/analysis/completeness/lesson.md';
 const PROBLEMS = 'content/math/analysis/completeness/problems.yaml';
 const LIMITS = 'content/math/analysis/sequences-limits/lesson.md';
-/** 文件头里的整个 prerequisites 字段（`[...]` 写法或逐行 `- ` 写法都算）：内容补全以后样例节可能多了前置。 */
+/** 文件头里的整个 prerequisites 字段（`[...]` 写法或逐行 `- ` 写法都算）。 */
 const PREREQUISITES = /^prerequisites:.*(?:\n[ \t]+-.*)*/m;
 
 const roots: string[] = [];
 
 function fixture(): string {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'principia-test-'));
-  fs.cpSync(path.join(repo, 'content'), path.join(root, 'content'), { recursive: true });
+  fs.cpSync(path.join(SAMPLE, 'content'), path.join(root, 'content'), { recursive: true });
   roots.push(root);
   return root;
 }
@@ -48,7 +52,7 @@ afterEach(() => {
   for (const root of roots.splice(0)) fs.rmSync(root, { recursive: true, force: true });
 });
 
-describe('样例内容', () => {
+describe('真实内容', () => {
   it('构建通过；样例的三节链 sequences-limits → completeness → bounded-monotone 层级逐节升高', () => {
     // 「三节链的层级依次为 0、1、2」在 graph.test.ts 里用构造的小节测；这里的真实内容会越写越多，只查链上逐节升高
     const result = compileContent(repo);
@@ -59,9 +63,17 @@ describe('样例内容', () => {
     expect(chain[1]).toBeGreaterThan(chain[0]);
     expect(chain[2]).toBeGreaterThan(chain[1]);
   });
+});
+
+describe('样例内容', () => {
+  it('样例构建通过，只有「定义小节还是 outline」这一条警告', () => {
+    const { report } = compileContent(SAMPLE);
+    expect(report.errors).toEqual([]);
+    expect(report.warnings).toMatchObject([{ message: expect.stringContaining('还是 outline') }]);
+  });
 
   it('completeness 有固定结构的各部分和 8 道题', () => {
-    const lesson = compileContent(repo).packs!.get('math.analysis')!.lessons['math.analysis.completeness'];
+    const lesson = compileContent(SAMPLE).packs!.get('math.analysis')!.lessons['math.analysis.completeness'];
     expect(Object.keys(lesson.sections)).toEqual(['question', 'explanation', 'picture', 'examples', 'misconceptions']);
     expect(lesson.problems.map((p) => `${p.id}:${p.tier}`)).toEqual([
       'p1:easy',
@@ -82,7 +94,7 @@ describe('样例内容', () => {
       .join(' ');
 
   it('行内公式和汉字之间自动留一个空格；挨着中文标点时不留，且标点和公式不分开折行', () => {
-    const pack = compileContent(repo).packs!.get('math.analysis')!;
+    const pack = compileContent(SAMPLE).packs!.get('math.analysis')!;
     expect(outline(pack.glossary['math.analysis.sequence-limit'].brief.children)).toBe(
       '"数列 " <x-math> " 越来越接近 " [<x-math> "："] "任给 " [<x-math> "，"] "从某一项起都有 " [<x-math> "。"]',
     );
@@ -103,7 +115,7 @@ describe('样例内容', () => {
   });
 
   it('锚点段落包在 x-anchor 里（网站把讲解里的显示成定义卡片）', () => {
-    const lesson = compileContent(repo).packs!.get('math.analysis')!.lessons['math.analysis.completeness'];
+    const lesson = compileContent(SAMPLE).packs!.get('math.analysis')!.lessons['math.analysis.completeness'];
     const anchors = lesson.sections.explanation.children.flatMap((c) =>
       c.type === 'element' && c.tagName === 'x-anchor' ? [c.properties.dataAnchor] : [],
     );
@@ -111,7 +123,7 @@ describe('样例内容', () => {
   });
 
   it('三级标题带 id，供目录栏跳转', () => {
-    const lesson = compileContent(repo).packs!.get('math.analysis')!.lessons['math.analysis.completeness'];
+    const lesson = compileContent(SAMPLE).packs!.get('math.analysis')!.lessons['math.analysis.completeness'];
     const ids = lesson.sections.explanation.children.flatMap((c) => (c.type === 'element' && c.tagName === 'h3' ? [c.properties.id] : []));
     expect(ids).toEqual(['h-explanation-1', 'h-explanation-2', 'h-explanation-3']);
   });
@@ -127,14 +139,14 @@ describe('样例内容', () => {
   });
 
   it('题目文字里每个字段各算一块范围', () => {
-    const lesson = compileContent(repo).packs!.get('math.analysis')!.lessons['math.analysis.completeness'];
+    const lesson = compileContent(SAMPLE).packs!.get('math.analysis')!.lessons['math.analysis.completeness'];
     const p2 = lesson.problems[1];
     expect(JSON.stringify(p2.statement)).toContain('"dataTermId":"math.analysis.maximum"');
     expect(JSON.stringify(p2.hints[0])).toContain('"dataTermId":"math.analysis.supremum"');
   });
 
   it('难题、思考题带题干原文（「复制给 Claude」用）：公式原样，术语标记换成文字；简单题、中等题没有', () => {
-    const lesson = compileContent(repo).packs!.get('math.analysis')!.lessons['math.analysis.completeness'];
+    const lesson = compileContent(SAMPLE).packs!.get('math.analysis')!.lessons['math.analysis.completeness'];
     expect(lesson.problems[0].statementText).toBeNull();
     expect(lesson.problems[4].statementText).toBe(
       '设$A,B$是$\\R$的非空、有上界的子集，$A+B=\\{a+b : a\\in A,\\ b\\in B\\}$。证明$\\sup(A+B)=\\sup A+\\sup B$。',
@@ -246,7 +258,7 @@ describe('动画组件块（台阶 7）', () => {
   };
 
   it('function-plot 已实现：参数原样交给网站，滑块标签和图例排好版放在 x-anim-label 里', () => {
-    const lesson = compileContent(repo).packs!.get('math.analysis')!.lessons['math.analysis.completeness'];
+    const lesson = compileContent(SAMPLE).packs!.get('math.analysis')!.lessons['math.analysis.completeness'];
     const [anim] = findAll(lesson.sections.picture, 'x-anim');
     expect(anim.properties).toMatchObject({ dataComponent: 'function-plot', dataImplemented: 'true' });
     expect(JSON.parse(String(anim.properties.dataParams)).sequences).toEqual([{ expr: '1 - 1/n', n: [1, 40], label: '$a_n=1-\\frac{1}{n}$\n' }]);

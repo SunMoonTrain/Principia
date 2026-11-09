@@ -1,0 +1,96 @@
+id: math.analysis
+title: |
+  数学分析
+proofPolicy: full
+macros:
+  \R: |
+    \mathbb{R}
+  \Q: |
+    \mathbb{Q}
+  \N: |
+    \mathbb{N}
+  \Z: |
+    \mathbb{Z}
+  \dd: |
+    \mathop{}\!\mathrm{d}
+glossary:
+  - id: math.analysis.sequence-limit
+    zh: |
+      数列的极限
+    en: |
+      limit of a sequence
+    abbr: |
+      lim
+    brief: |
+      数列$a_n$越来越接近$L$：任给$\varepsilon>0$，从某一项起都有$|a_n-L|<\varepsilon$。
+    definedIn: math.analysis.sequences-limits
+    anchor: def-limit
+  - id: math.analysis.upper-bound
+    zh: |
+      上界
+    en: |
+      upper bound
+    brief: |
+      不小于集合里每一个元素的数：对所有$a\in A$都有$a\le M$，就说$M$是$A$的上界。
+    definedIn: math.analysis.completeness
+    anchor: def-upper-bound
+  - id: math.analysis.supremum
+    zh: |
+      上确界
+    en: |
+      supremum
+    abbr: |
+      sup
+    brief: |
+      有上界的非空实数集的最小上界，记作$\sup A$；它不一定属于$A$。
+    definedIn: math.analysis.completeness
+    anchor: def-supremum
+  - id: math.analysis.infimum
+    zh: |
+      下确界
+    en: |
+      infimum
+    abbr: |
+      inf
+    brief: |
+      有下界的非空实数集的最大下界，记作$\inf A$。
+    definedIn: math.analysis.completeness
+    anchor: def-infimum
+  - id: math.analysis.maximum
+    zh: |
+      最大元
+    en: |
+      maximum
+    abbr: |
+      max
+    brief: |
+      属于集合本身的上界；有最大元时，它就是上确界。
+    definedIn: math.analysis.completeness
+    anchor: def-maximum
+  - id: math.analysis.supremum-principle
+    zh: |
+      确界原理
+    en: |
+      least-upper-bound property
+    brief: |
+      $\R$的每个有上界的非空子集都在$\R$中有上确界；这正是「实数轴没有洞」的精确说法。
+    definedIn: math.analysis.completeness
+    anchor: def-supremum-principle
+  - id: math.analysis.real-completeness
+    zh: |
+      实数的完备性
+    en: |
+      completeness of the real numbers
+    brief: |
+      实数轴「没有洞」的性质。这一节用确界原理来表述它，以后还会见到等价的其他说法。
+    definedIn: math.analysis.completeness
+    anchor: def-supremum-principle
+  - id: math.analysis.archimedean-property
+    zh: |
+      阿基米德性质
+    en: |
+      Archimedean property
+    brief: |
+      对任意实数$x$，都有正整数$n>x$；也就是说，正整数集没有上界。
+    definedIn: math.analysis.completeness
+    anchor: def-archimedean

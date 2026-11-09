@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 170" width="640" height="170" font-size="14">
+  <!-- 线条和文字用 currentColor，强调色用页面的 CSS 变量（带默认值），这样亮色、暗色主题下都看得清 -->
+  <!-- s − ε 到 s 的一小段：这里面总有 A 的元素 -->
+  <rect x="395" y="84" width="35" height="32" rx="4" style="fill: var(--accent, #2563eb); opacity: 0.16" />
+  <!-- 数轴 -->
+  <line x1="24" y1="100" x2="604" y2="100" stroke="currentColor" stroke-width="1.5" />
+  <path d="M 616 100 L 602 94 L 602 106 Z" fill="currentColor" />
+  <!-- 上界：s 和它右边的数 -->
+  <line x1="430" y1="100" x2="598" y2="100" stroke-width="6" stroke-linecap="round" style="stroke: var(--good, #059669); opacity: 0.85" />
+  <text x="514" y="76" text-anchor="middle" fill="currentColor">上界：<tspan font-style="italic">s</tspan> 和它右边的数</text>
+  <!-- A 的元素，越来越挤向 s -->
+  <g style="fill: var(--accent, #2563eb)">
+    <circle cx="110" cy="100" r="5" />
+    <circle cx="270" cy="100" r="5" />
+    <circle cx="323.3" cy="100" r="5" />
+    <circle cx="350" cy="100" r="5" />
+    <circle cx="366" cy="100" r="4.5" />
+    <circle cx="376.7" cy="100" r="4" />
+    <circle cx="390" cy="100" r="3.6" />
+    <circle cx="401" cy="100" r="3.6" />
+    <circle cx="410" cy="100" r="3.2" />
+    <circle cx="416.5" cy="100" r="3" />
+    <circle cx="421.5" cy="100" r="2.6" />
+  </g>
+  <text x="240" y="76" text-anchor="middle" fill="currentColor"><tspan font-style="italic">A</tspan> 的元素</text>
+  <!-- s = sup A，可以不属于 A：画成空心圆 -->
+  <circle cx="430" cy="100" r="6.5" stroke-width="2.5" style="fill: var(--bg, #ffffff); stroke: var(--accent, #2563eb)" />
+  <text x="456" y="136" text-anchor="middle" fill="currentColor"><tspan font-style="italic">s</tspan> = sup <tspan font-style="italic">A</tspan></text>
+  <!-- s − ε -->
+  <line x1="395" y1="92" x2="395" y2="108" stroke="currentColor" stroke-width="1.5" />
+  <text x="384" y="136" text-anchor="end" fill="currentColor"><tspan font-style="italic">s</tspan> − <tspan font-style="italic">ε</tspan></text>
+  <text x="412" y="160" text-anchor="middle" font-size="12" style="fill: var(--muted, #6b7280)">这一小段里总有 <tspan font-style="italic">A</tspan> 的元素</text>
+</svg>

@@ -1,0 +1,163 @@
+# 简单题、中等题的标准答案已用 tools/verify/math.analysis.completeness.ts 独立验算。
+- id: p1
+  tier: easy
+  statement: |
+    设$A=\{x\in\R : x^2<3\}$，求$\sup A$。
+  answer:
+    type: number
+    value: sqrt(3)
+  hints:
+    - |
+      $A$是一个区间。先找出它的两个端点，再看右端点是不是上界、还能不能更小。
+    - |
+      $x^2<3$等价于$-\sqrt{3}<x<\sqrt{3}$，所以$A=(-\sqrt{3},\sqrt{3})$。
+    - |
+      $A=(-\sqrt{3},\sqrt{3})$，所以$\sqrt{3}$是$A$的:term[上界]{id="math.analysis.upper-bound"}。任给$0<\varepsilon<2\sqrt{3}$，数$\sqrt{3}-\frac{\varepsilon}{2}$属于$A$，并且大于$\sqrt{3}-\varepsilon$，所以比$\sqrt{3}$小的数都不是上界（$\varepsilon\ge 2\sqrt{3}$时$\sqrt{3}-\varepsilon\le-\sqrt{3}$，更不是上界）。
+
+      于是$\sup A=\sqrt{3}$，可以填 `sqrt(3)`。
+  solution: |
+    $A=(-\sqrt{3},\sqrt{3})$，$\sup A=\sqrt{3}\approx 1.732$。注意$\sqrt{3}\notin A$：:term[上确界]{id="math.analysis.supremum"}不一定属于集合。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些集合有:term[最大元]{id="math.analysis.maximum"}（也就是上确界属于这个集合）？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $[0,1]$
+      - |
+        $[0,1)$
+      - |
+        $\{1-\frac{1}{n} : n\in\N^+\}$
+      - |
+        $\{\frac{1}{n} : n\in\N^+\}$
+    value: [1, 4]
+  hints:
+    - |
+      对每个集合，先求出它的:term[上确界]{id="math.analysis.supremum"}，再看这个数在不在集合里。
+    - |
+      四个集合的上确界都是$1$。
+    - |
+      A 含$1$；B 不含$1$；$1-\frac{1}{n}<1$对所有$n$成立，所以 C 不含$1$；$\frac{1}{n}$在$n=1$时等于$1$，所以 D 的最大元是$1$。
+
+      有最大元的是 A 和 D。
+  solution: |
+    四个集合的上确界都是$1$，区别只在$1$属不属于集合：A、D 含$1$，有最大元；B、C 不含$1$，没有最大元。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$A=\{(-1)^n\bigl(1-\frac{1}{n}\bigr) : n\in\N^+\}$，求$A$的下确界和上确界，按$(\inf A,\sup A)$的顺序填写。
+  answer:
+    type: tuple
+    value: [-1, 1]
+  hints:
+    - |
+      把$n$分成偶数和奇数两组，分别看这两组数的符号和大小。
+    - |
+      $n$为偶数时元素是$1-\frac{1}{n}$，落在$[\frac{1}{2},1)$里，越来越接近$1$；$n$为奇数时元素是$-\bigl(1-\frac{1}{n}\bigr)$，落在$(-1,0]$里，越来越接近$-1$。
+    - |
+      所有元素都满足$-1<a<1$，所以$1$是:term[上界]{id="math.analysis.upper-bound"}，$-1$是下界。任给$\varepsilon>0$，取偶数$n>\frac{1}{\varepsilon}$，则$1-\frac{1}{n}>1-\varepsilon$，所以比$1$小的数都不是上界，$\sup A=1$。
+
+      同理取奇数$n>\frac{1}{\varepsilon}$，得$\inf A=-1$。答案是$(-1,1)$，两个确界都不属于$A$。
+  solution: |
+    $\inf A=-1$，$\sup A=1$，填 `-1, 1`。偶数项从下方逼近$1$，奇数项从上方逼近$-1$，都取不到。
+
+- id: p4
+  tier: medium
+  statement: |
+    对实数$c$，设$A_c=\{x\in\R : x^2-cx<0\}$。求所有使$\sup A_c-\inf A_c=3$成立的$c$。
+  answer:
+    type: set
+    value: [-3, 3]
+  hints:
+    - |
+      先解不等式$x(x-c)<0$，按$c$的正负分情况，别忘了$c=0$。
+    - |
+      $c>0$时$A_c=(0,c)$；$c<0$时$A_c=(c,0)$；$c=0$时$A_c$是空集，没有:term[上确界]{id="math.analysis.supremum"}。
+    - |
+      $c>0$时$\sup A_c-\inf A_c=c-0=c$；$c<0$时等于$0-c=-c$。令它等于$3$，得$c=3$或$c=-3$。
+
+      $c=0$时$A_c=\varnothing$，确界不存在，式子没有意义。答案是$\{-3,3\}$。
+  solution: |
+    $c\ne0$时$\sup A_c-\inf A_c=|c|$，所以$c=\pm3$，填 `-3, 3`。$c=0$时$A_c$是空集，没有确界。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$A,B$是$\R$的非空、有上界的子集，$A+B=\{a+b : a\in A,\ b\in B\}$。证明$\sup(A+B)=\sup A+\sup B$。
+  hints:
+    - |
+      按:term[上确界]{id="math.analysis.supremum"}的定义分两步：先证$\sup A+\sup B$是$A+B$的上界，再证比它小的数都不是上界。
+    - |
+      第二步用$\varepsilon$形式：给定$\varepsilon>0$，在$A$里找$a>\sup A-\frac{\varepsilon}{2}$，在$B$里找$b>\sup B-\frac{\varepsilon}{2}$。
+    - |
+      由:term[确界原理]{id="math.analysis.supremum-principle"}，$s=\sup A$和$t=\sup B$存在，而且$A+B$非空。
+
+      第一步：对任意$a\in A$、$b\in B$，有$a\le s$、$b\le t$，所以$a+b\le s+t$。因此$s+t$是$A+B$的上界，$A+B$有上确界，且$\sup(A+B)\le s+t$。
+
+      第二步：任给$\varepsilon>0$。因为$s-\frac{\varepsilon}{2}$不是$A$的上界，有$a\in A$使$a>s-\frac{\varepsilon}{2}$；同理有$b\in B$使$b>t-\frac{\varepsilon}{2}$。于是$a+b>s+t-\varepsilon$，即$s+t-\varepsilon$不是$A+B$的上界。
+
+      由$\varepsilon$的任意性，$\sup(A+B)=s+t=\sup A+\sup B$。
+  reference: |
+    记$s=\sup A$，$t=\sup B$（由确界原理存在）。对任意$a\in A$、$b\in B$有$a+b\le s+t$，所以$s+t$是$A+B$的上界，$\sup(A+B)\le s+t$。任给$\varepsilon>0$，取$a\in A$使$a>s-\frac{\varepsilon}{2}$，取$b\in B$使$b>t-\frac{\varepsilon}{2}$，则$a+b>s+t-\varepsilon$，所以$s+t-\varepsilon$不是上界。故$\sup(A+B)=s+t$。
+
+- id: p6
+  tier: hard
+  statement: |
+    用确界原理证明：存在实数$s>0$，使$s^2=2$。
+  hints:
+    - |
+      取$S=\{x>0 : x^2<2\}$，令$s=\sup S$，然后用反证法分别排除$s^2<2$和$s^2>2$。
+    - |
+      若$s^2<2$，找一个很小的$h>0$，使$(s+h)^2<2$，说明$s$不是:term[上界]{id="math.analysis.upper-bound"}；若$s^2>2$，找$h>0$使$(s-h)^2>2$，说明$s-h$仍是上界。
+    - |
+      $1\in S$，所以$S$非空；$x\ge2$时$x^2\ge4>2$，所以$2$是$S$的上界。由:term[确界原理]{id="math.analysis.supremum-principle"}，$s=\sup S$存在，且$s\ge1>0$。
+
+      若$s^2<2$：取$h=\min\bigl\{\frac{1}{2},\ \frac{2-s^2}{2(2s+1)}\bigr\}$，则$0<h<1$，$(s+h)^2=s^2+2sh+h^2<s^2+h(2s+1)\le s^2+\frac{2-s^2}{2}<2$。于是$s+h\in S$且$s+h>s$，和$s$是上界矛盾。
+
+      若$s^2>2$：取$h=\frac{s^2-2}{2s}$，则$0<h<s$，$(s-h)^2>s^2-2sh=2$。对任意$x\in S$，有$x^2<2<(s-h)^2$，所以$x<s-h$，即$s-h$是比$s$小的上界，矛盾。
+
+      所以$s^2=2$。
+  reference: |
+    令$S=\{x>0 : x^2<2\}$，它非空（$1\in S$）、有上界（$2$），由确界原理$s=\sup S$存在且$s\ge1$。若$s^2<2$，取$h=\min\{\frac12,\frac{2-s^2}{2(2s+1)}\}$，则$(s+h)^2<s^2+h(2s+1)<2$，$s+h\in S$，与$s$是上界矛盾。若$s^2>2$，取$h=\frac{s^2-2}{2s}\in(0,s)$，则$(s-h)^2>s^2-2sh=2$，$s-h$是更小的上界，矛盾。故$s^2=2$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    「有上界的非空整数集一定有:term[最大元]{id="math.analysis.maximum"}」在$\Z$里成立，而「有上界的非空有理数集一定有上确界」在$\Q$里不成立。为什么整数没有「洞」的麻烦？这和$\Q$的「稠密」（任意两个有理数之间还有有理数）有什么关系？
+  hints:
+    - |
+      想一想：从一个:term[上界]{id="math.analysis.upper-bound"}出发往下压，在整数里和在有理数里各能压多少次？
+    - |
+      整数集$A$的上界$M$可以换成不超过它的最大整数$\lfloor M\rfloor$；再任取$a\in A$，从$\lfloor M\rfloor$往下逐个检查到$a$，只有有限个整数要看。
+    - |
+      $\Z$是离散的，相邻整数相差$1$：从任意一个上界往下走，有限步之内一定撞上集合的元素，第一个撞上的就是最大元，所以不会出现「上界能无限往下压」的情况。
+
+      $\Q$是稠密的：上界可以一个比一个小，永远压不完（这一节的$S$就是例子），而它们逼近的那个位置恰好不是有理数。所以「洞」是「稠密」和「不完备」同时出现的结果：$\Z$不稠密，没有这个问题；$\R$既稠密又满足:term[确界原理]{id="math.analysis.supremum-principle"}，也没有这个问题。
+  reference: |
+    $\Z$离散：非空、有上界的整数集$A$，取$a\in A$和上界$M$，$a$到$\lfloor M\rfloor$之间只有有限个整数，其中属于$A$的最大者就是最大元。$\Q$稠密：上界可以无限地往下压（如$S=\{x\in\Q:x^2<2\}$），逼近的极限点$\sqrt2$不在$\Q$中，所以上确界不存在。洞来自「稠密但不完备」；$\R$用确界原理补上了这些洞。
+
+- id: p8
+  tier: thinking
+  statement: |
+    :term[上确界]{id="math.analysis.supremum"}在别的领域里也很常见：
+
+    - 定积分$\int_0^1 f(x)\,\mathrm{d}x$可以定义为所有「下和」组成的集合的上确界；
+    - 矩阵$M=\begin{pmatrix}2&1\\0&1\end{pmatrix}$把平面上的向量拉长，它的「最大拉伸倍数」定义为$\sup\{|Mx| : |x|=1\}$。
+
+    如果数系里只有有理数，这两个定义会在哪里出问题？为什么说它们都悄悄依赖了:term[确界原理]{id="math.analysis.supremum-principle"}？
+  hints:
+    - |
+      两个定义都是「对一个有上界的非空数集取上确界」。先确认这两个集合确实非空、有上界，再想想上确界可能是什么样的数。
+    - |
+      试一试$f(x)=\frac{1}{1+x^2}$：它在有理点上的值都是有理数，用有理分点算出的下和也都是有理数，可积分值是$\frac{\pi}{4}$。矩阵那一问里，最大拉伸倍数是$\sqrt{3+\sqrt{5}}$。
+    - |
+      下和的集合以任意一个上和为上界；对$|x|=1$，$|Mx|\le|2x_1+x_2|+|x_2|\le4$，所以拉伸倍数的集合以$4$为上界。两个集合都非空、有上界，所以在$\R$里有上确界，这一步用的正是确界原理。
+
+      可它们的上确界$\frac{\pi}{4}$、$\sqrt{3+\sqrt{5}}$都不是有理数。如果数系只有$\Q$，这两个集合就没有上确界，定积分和矩阵的「拉伸倍数」（以后叫作范数）根本定义不出来。分析里很多「取最好的那个值」的定义，背后靠的都是实数的完备性。
+  reference: |
+    两个集合都非空、有上界（下和以任一上和为上界；$|Mx|\le4$），在$\R$中由确界原理有上确界。取$f(x)=\frac{1}{1+x^2}$，有理分点的下和都是有理数，但$\int_0^1 f=\frac{\pi}{4}\notin\Q$；$M^{\mathsf T}M=\begin{pmatrix}4&2\\2&2\end{pmatrix}$的最大特征值是$3+\sqrt5$，所以最大拉伸倍数$\sqrt{3+\sqrt5}\notin\Q$。在$\Q$中这两个上确界都不存在，定义失效；它们依赖完备性。
