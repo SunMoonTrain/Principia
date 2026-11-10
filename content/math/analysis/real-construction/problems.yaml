@@ -1,0 +1,161 @@
+- id: p1
+  tier: easy
+  statement: |
+    下面哪些有理数集是:term[戴德金分割]{id="math.analysis.dedekind-cut"}？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\{p\in\Q:p<-2\}$
+      - |
+        $\{p\in\Q:p\le0\}\cup\{p\in\Q:p^2\le4\}$
+      - |
+        $\{p\in\Q:p^2<3\}$
+      - |
+        $\{p\in\Q:p^3<5\}$
+    value: [1, 4]
+  hints:
+    - |
+      逐条检查三个条件：非空且不是全体、向下封闭、没有最大元。
+    - |
+      B 化简以后是什么集合？C 里有$1$，有没有$-5$？
+    - |
+      A 是$(-2)^*$，是分割。B 等于$\{p\in\Q:p\le2\}$，有最大元$2$，不满足 (3)。C 含$1$却不含$-5$，不满足 (2)。
+
+      D：$p^3<5$对较小的$p$也成立，所以向下封闭；$\sqrt[3]{5}$不是有理数，对$p^3<5$总能找到稍大一点、立方仍小于$5$的有理数，没有最大元，是分割。答案是 A 和 D。
+  solution: |
+    A 是$(-2)^*$；D 向下封闭、没有最大元。B 有最大元$2$，C 不向下封闭。答案是 A、D。
+
+- id: p2
+  tier: easy
+  statement: |
+    设$\alpha=\{p\in\Q:p<0\}\cup\{p\in\Q:p^2<5\}$。在形如$\frac{k}{10}$（$k$为整数）的有理数里，属于$\alpha$的最大的一个是多少？
+  answer:
+    type: number
+    value: 2.2
+  hints:
+    - |
+      正的$\frac{k}{10}$属于$\alpha$，当且仅当$\bigl(\frac{k}{10}\bigr)^2<5$。
+    - |
+      $\frac{k^2}{100}<5$即$k^2<500$。
+    - |
+      $k^2<500$的最大正整数$k$是$22$（$22^2=484$，$23^2=529$），所以答案是$\frac{22}{10}=2.2$。
+  solution: |
+    $k^2<500$的最大的$k$是$22$，所以是$2.2$，填 `2.2`。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$\alpha=\{p\in\Q:p<0\}\cup\{p\in\Q:p^2<2\}$，$\beta=1^*=\{p\in\Q:p<1\}$。下面哪些有理数属于$\alpha+\beta$？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $2.4$
+      - |
+        $2.41$
+      - |
+        $2.42$
+      - |
+        $2.5$
+    value: [1, 2]
+  hints:
+    - |
+      $t\in\alpha+\beta$当且仅当$t=p+q$，$p\in\alpha$，$q<1$。$t$属于$\alpha+\beta$，要找到这样的拆法；不属于，要说明怎么拆都不行。
+    - |
+      $t=p+q$、$q<1$时$p>t-1$。看$t-1$附近的正有理数$p$是否满足$p^2<2$。
+    - |
+      $2.41=1.414+0.996$，$1.414^2=1.999396<2$，$0.996<1$，所以$2.41\in\alpha+\beta$；$2.4=1.414+0.986$同理。若$2.42=p+q$、$q<1$，则$p>1.42$，$p^2>2.0164>2$，$p\notin\alpha$，所以$2.42$不属于；$2.5$同理。答案是 A 和 B。
+  solution: |
+    $2.4$、$2.41$都能拆成$p+q$（如$1.414+0.986$、$1.414+0.996$）；$2.42$、$2.5$拆开时$p>1.42$，$p^2>2$。答案是 A、B。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$A$是所有满足$r^2<3$的有理数$r$对应的有理分割$r^*$组成的集合，$\gamma=\sup A$。在形如$\frac{k}{100}$（$k$为整数）的有理数里，属于$\gamma$的最大的一个是多少？
+  answer:
+    type: number
+    value: 1.73
+  hints:
+    - |
+      由定理 2，$\gamma$是所有$r^*$的并集。$p\in\gamma$当且仅当有满足$r^2<3$的有理数$r>p$。
+    - |
+      所以正的$p$属于$\gamma$，当且仅当$p^2<3$（有理数$p$的平方不会等于$3$）。
+    - |
+      若$p>0$、$p^2<3$，取比$p$稍大、平方仍小于$3$的有理数$r$，则$p\in r^*\subseteq\gamma$；若$p>0$、$p^2>3$，满足$r^2<3$的$r$都小于$p$，$p$不在任何$r^*$里。$\bigl(\frac{k}{100}\bigr)^2<3$即$k^2<30000$，最大的$k$是$173$（$173^2=29929$，$174^2=30276$），所以答案是$1.73$。
+  solution: |
+    $\gamma$是这些$r^*$的并，正的$p$属于$\gamma$当且仅当$p^2<3$；$k^2<30000$的最大$k$是$173$，填 `1.73`。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明$\alpha=\{p\in\Q:p<0\}\cup\{p\in\Q:p^2<2\}$是戴德金分割，并且它不等于任何有理分割$r^*$。
+  hints:
+    - |
+      没有最大元，用[实数的完备性](lesson:math.analysis.completeness)里的$c=\frac{2b+2}{b+2}$。不等于$r^*$，看$\Q\setminus\alpha$有没有最小元。
+    - |
+      $r^*$的补集$\{p:p\ge r\}$有最小元$r$。$\alpha$的补集是$\{p\in\Q:p>0,\ p^2>2\}$，用同一个$c$说明它没有最小元。
+    - |
+      (1) $0\in\alpha$，$2\notin\alpha$。(2) 设$p\in\alpha$、$q<p$：$q<0$时$q\in\alpha$；$0\le q<p$时$p>0$，$p^2<2$，$q^2\le p^2<2$，所以$q\in\alpha$。(3) 设$p\in\alpha$：$p\le0$时$1\in\alpha$比它大；$p>0$时令$c=\frac{2p+2}{p+2}$，则$c-p=\frac{2-p^2}{p+2}>0$，$c^2-2=\frac{2(p^2-2)}{(p+2)^2}<0$，$c\in\alpha$。
+
+      若$\alpha=r^*$，则$\Q\setminus\alpha=\{p:p\ge r\}$有最小元$r$。可$\Q\setminus\alpha=\{p\in\Q:p>0,\ p^2>2\}$（没有有理数的平方是$2$），对其中的$b$，$c=\frac{2b+2}{b+2}$满足$c<b$、$c^2>2$，还在补集里，所以补集没有最小元，矛盾。
+  reference: |
+    (1) $0\in\alpha$，$2\notin\alpha$；(2) 分$q<0$和$0\le q<p$讨论；(3) $p>0$时$c=\frac{2p+2}{p+2}$满足$c>p$、$c^2<2$。
+
+    补集$\{p>0:p^2>2\}$对同一个$c$满足$c<b$、$c^2>2$，没有最小元；而$r^*$的补集有最小元$r$，所以$\alpha\ne r^*$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$\alpha$、$\beta$是戴德金分割。证明$\alpha+\beta=\{p+q:p\in\alpha,\ q\in\beta\}$也是戴德金分割，并且$\alpha+0^*=\alpha$。
+  hints:
+    - |
+      逐条验证三个条件。不是全体$\Q$：取$\alpha$、$\beta$之外的有理数$a$、$b$，$a+b$不在$\alpha+\beta$里。
+    - |
+      $\alpha+0^*\subseteq\alpha$用 (2)；反过来，对$p\in\alpha$，由 (3) 取$r\in\alpha$、$r>p$，写$p=r+(p-r)$。
+    - |
+      非空显然。取$a\notin\alpha$、$b\notin\beta$，则$\alpha$里的数都小于$a$，$\beta$里的都小于$b$，所以$\alpha+\beta$里的数都小于$a+b$，$a+b\notin\alpha+\beta$。(2)：若$t<p+q$（$p\in\alpha$，$q\in\beta$），则$t=(t-q)+q$，$t-q<p$，$t-q\in\alpha$。(3)：$p+q$中取$r\in\alpha$、$r>p$，则$r+q>p+q$，仍在$\alpha+\beta$里。
+
+      $\alpha+0^*$：$p\in\alpha$、$q<0$时$p+q<p$，由 (2)，$p+q\in\alpha$，所以$\alpha+0^*\subseteq\alpha$。反过来，对$p\in\alpha$，由 (3) 取$r\in\alpha$、$r>p$，则$p=r+(p-r)$，$p-r<0$，$p-r\in0^*$，所以$\alpha\subseteq\alpha+0^*$。
+  reference: |
+    非空；$a\notin\alpha$、$b\notin\beta$时$a+b\notin\alpha+\beta$；向下封闭：$t<p+q$时$t=(t-q)+q$；无最大元：把$p$换成$\alpha$里更大的$r$。
+
+    $\alpha+0^*\subseteq\alpha$由 (2)；$\alpha\subseteq\alpha+0^*$：$p=r+(p-r)$，$r\in\alpha$、$r>p$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    另一种构造实数的办法是：把有理数的:term[柯西列]{id="math.analysis.cauchy-sequence"}（Cauchy sequence）看成实数，两个柯西列之差趋于$0$时看成同一个实数。和戴德金分割比，这种构造里什么容易、什么麻烦？
+  hints:
+    - |
+      分别想想两种构造下：加法和乘法怎么定义，确界原理（或:term[柯西收敛准则]{id="math.analysis.cauchy-criterion"}（Cauchy criterion））怎么证明。
+    - |
+      柯西列逐项相加、相乘就是运算，域的公理几乎是现成的；可「实数」变成了等价类（equivalence class），要证明:term[完备性]{id="math.analysis.real-completeness"}（completeness of the real numbers），得处理「柯西列的柯西列」。
+    - |
+      柯西列构造：运算逐项进行，$(a_n)+(b_n)=(a_n+b_n)$，$(a_n)(b_n)=(a_nb_n)$，域的公理从有理数直接继承，只需验证和等价类的选取无关。麻烦在完备性：要证明实数的柯西列:term[收敛]{id="math.analysis.convergent-sequence"}（convergent sequence），每一项本身又是一个等价类，需要用有理数去逼近每一项、再拼成一个新的有理柯西列。
+
+      戴德金分割正好相反：确界原理是定理 2，一句话；运算（尤其乘法和相反数）要分情况，验证域的公理很繁琐。两种构造得到的有序域在保持运算和大小的意义下是同一个。柯西列的办法还能推广到别的场合：凡是有「距离」的空间都能这样补全，戴德金分割却依赖于有理数的大小顺序。
+  reference: |
+    柯西列构造：运算逐项定义，域公理直接继承（只需验证与代表元无关）；完备性要对「柯西列的柯西列」做对角线式的构造，较麻烦。
+
+    戴德金分割：确界原理几乎显然，运算和域公理的验证繁琐。两者得到同构的完备有序域；柯西列方法可推广到一般度量空间的完备化，分割方法依赖于序。
+
+- id: p8
+  tier: thinking
+  statement: |
+    用戴德金分割补全了$\Q$，得到$\R$。如果对$\R$再做一次同样的事：把满足 (1)(2)(3) 的$\R$的子集都当作新的「数」，会得到比$\R$更多的数吗？这说明了什么？
+  hints:
+    - |
+      设$\Lambda$是这样一个$\R$的子集，它有上界吗？它的上确界$s$和$\Lambda$是什么关系？
+    - |
+      证明$\Lambda=\{x\in\R:x<s\}$，其中$s=\sup\Lambda$。
+    - |
+      $\Lambda$非空、不是全体，取$\Lambda$外的一个实数$b$，由 (2)，$\Lambda$里的数都小于$b$，$\Lambda$有上界；由:term[确界原理]{id="math.analysis.supremum-principle"}，$s=\sup\Lambda$存在。$\Lambda$没有最大元，所以$s\notin\Lambda$，$\Lambda\subseteq\{x<s\}$；反过来，$x<s$时有$\lambda\in\Lambda$使$x<\lambda$，由 (2)，$x\in\Lambda$。所以$\Lambda=\{x\in\R:x<s\}$，正好由实数$s$确定。
+
+      于是$\R$的「分割」和$\R$的元素一一对应，再做一次得不到新的数：$\R$里已经没有洞了。这正是「完备」的另一种说法：$\Q$做一次分割就补全了，补全后的东西再补，什么也加不进去。
+  reference: |
+    $\R$的满足 (1)(2)(3) 的子集$\Lambda$有上界，设$s=\sup\Lambda$；由无最大元得$s\notin\Lambda$，再由向下封闭得$\Lambda=\{x<s\}$。
+
+    所以每个这样的子集都对应唯一的实数，不会产生新数：$\R$已经完备，再补也没有洞可补。

@@ -1,0 +1,141 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$f(x)=e^x$（$-\pi<x\le\pi$），再以$2\pi$为周期延拓到整条直线。它的:term[傅里叶级数]{id="math.analysis.fourier-series"}在$x=\pi$处的和是多少？
+  answer:
+    type: number
+    value: (exp(pi) + exp(-pi))/2
+  hints:
+    - |
+      $f$分段光滑，用狄利克雷定理；$x=\pi$处延拓后的$f$连续吗？
+    - |
+      $x=\pi$处的左极限是$e^\pi$，右极限要看$-\pi$右边的值。
+    - |
+      延拓后，$f(\pi^-)=e^\pi$，$f(\pi^+)=f(-\pi^+)=e^{-\pi}$，在$x=\pi$处跳跃。由:term[狄利克雷定理]{id="math.analysis.dirichlet-theorem"}，级数的和是$\frac{e^\pi+e^{-\pi}}{2}\approx11.59$，不是$f(\pi)=e^\pi$。
+  solution: |
+    $x=\pi$处是跳跃点，和是$\frac{f(\pi^-)+f(\pi^+)}{2}=\frac{e^\pi+e^{-\pi}}{2}$，填 `(exp(pi)+exp(-pi))/2`。
+
+- id: p2
+  tier: easy
+  statement: |
+    设$f(x)=0$（$-\pi<x<0$），$f(x)=x$（$0\le x<\pi$），以$2\pi$为周期延拓。求它的傅里叶级数在$x=0$、$x=\frac{\pi}{2}$、$x=\pi$处的和，按这个顺序填。
+  answer:
+    type: tuple
+    value: [0, pi/2, pi/2]
+  hints:
+    - |
+      $f$分段光滑。逐个看这三点处的左、右极限。
+    - |
+      $x=0$处左右极限都是$0$；$x=\frac{\pi}{2}$处连续；$x=\pi$处左极限是$\pi$，右极限是$f(-\pi^+)=0$。
+    - |
+      由狄利克雷定理：$x=0$处$f$连续，和是$0$；$x=\frac{\pi}{2}$处连续，和是$\frac{\pi}{2}$；$x=\pi$处跳跃，和是$\frac{\pi+0}{2}=\frac{\pi}{2}$。
+  solution: |
+    和分别是$0$、$\frac{\pi}{2}$、$\frac{\pi}{2}$（最后一个是跳跃两侧的中点），填 `0, pi/2, pi/2`。
+
+- id: p3
+  tier: medium
+  statement: |
+    先求$f(x)=x^2$（$-\pi\le x\le\pi$）的傅里叶级数，再用它求$\sum_{n=1}^\infty\frac{1}{n^2}$。
+  answer:
+    type: number
+    value: pi^2/6
+  hints:
+    - |
+      $x^2$是偶函数，只有$a_n$；分部积分两次。周期延拓后它在$x=\pi$处连续吗？
+    - |
+      $a_0=\frac{2\pi^2}{3}$，$a_n=\frac{4(-1)^n}{n^2}$。在$x=\pi$处$\cos n\pi=(-1)^n$。
+    - |
+      $a_n=\frac2\pi\int_0^\pi x^2\cos nx\dd x=\frac{4(-1)^n}{n^2}$（$n\ge1$），$a_0=\frac{2\pi^2}{3}$，所以$x^2\sim\frac{\pi^2}{3}+4\sum_{n=1}^\infty\frac{(-1)^n\cos nx}{n^2}$。延拓后的函数连续（$(-\pi)^2=\pi^2$）、分段光滑，由狄利克雷定理，在$x=\pi$处级数的和是$\pi^2$：$\pi^2=\frac{\pi^2}{3}+4\sum_{n=1}^\infty\frac{1}{n^2}$。所以$\sum_{n=1}^\infty\frac{1}{n^2}=\frac{\pi^2}{6}\approx1.645$。
+  solution: |
+    $x^2\sim\frac{\pi^2}{3}+4\sum\frac{(-1)^n\cos nx}{n^2}$，在$x=\pi$处取值得$\pi^2=\frac{\pi^2}{3}+4\sum\frac1{n^2}$，所以和是$\frac{\pi^2}{6}$，填 `pi^2/6`。
+
+- id: p4
+  tier: medium
+  statement: |
+    用$f(x)=|x|$（$-\pi\le x\le\pi$）的傅里叶级数求$\sum_{k=1}^\infty\frac{1}{(2k-1)^2}=1+\frac{1}{9}+\frac{1}{25}+\cdots$。
+  answer:
+    type: number
+    value: pi^2/8
+  hints:
+    - |
+      $|x|$的系数在[傅里叶级数](lesson:math.analysis.fourier-series)第 3 题算过：$a_0=\pi$，$a_n=\frac{2((-1)^n-1)}{\pi n^2}$。代进哪一点最方便？
+    - |
+      偶数$n$的$a_n=0$，奇数$n=2k-1$的$a_n=-\frac{4}{\pi(2k-1)^2}$。在$x=0$处所有$\cos nx=1$。
+    - |
+      $|x|\sim\frac{\pi}{2}-\frac4\pi\sum_{k=1}^\infty\frac{\cos(2k-1)x}{(2k-1)^2}$。延拓后连续、分段光滑，在$x=0$处级数的和是$|0|=0$：$0=\frac{\pi}{2}-\frac4\pi\sum_{k=1}^\infty\frac{1}{(2k-1)^2}$。所以和是$\frac{\pi^2}{8}\approx1.234$。
+  solution: |
+    在$x=0$处，$0=\frac{\pi}{2}-\frac4\pi\sum\frac{1}{(2k-1)^2}$，所以和是$\frac{\pi^2}{8}$，填 `pi^2/8`。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明黎曼-勒贝格引理：设$g$在$[a,b]$上:term[可积]{id="math.analysis.riemann-integral"}，则$\lambda\to+\infty$时$\int_a^bg(u)\sin\lambda u\dd u\to0$。
+  hints:
+    - |
+      先对常数函数、再对阶梯函数证明，然后用阶梯函数逼近$g$。
+    - |
+      任给$\varepsilon>0$，取分割$P$使:term[上和]{id="math.analysis.upper-sum"}（upper sum）与下和之差小于$\varepsilon$；令$h$在每个小区间上等于$g$在那里的:term[下确界]{id="math.analysis.infimum"}（infimum，inf），则$0\le g-h$，$\int_a^b(g-h)<\varepsilon$。
+    - |
+      常数$c$在$[\alpha,\beta]$上：$\bigl|\int_\alpha^\beta c\sin\lambda u\dd u\bigr|=\Bigl|\frac{c(\cos\lambda\alpha-\cos\lambda\beta)}{\lambda}\Bigr|\le\frac{2|c|}{\lambda}$。所以对阶梯函数$h$（$m$段，各段上的常数绝对值不超过$M$），$\bigl|\int_a^bh(u)\sin\lambda u\dd u\bigr|\le\frac{2mM}{\lambda}\to0$。
+
+      任给$\varepsilon>0$，由:term[可积准则]{id="math.analysis.integrability-criterion"}（Riemann's criterion），有分割$P$使上和与下和之差小于$\varepsilon$。令$h$在$P$的每个小区间上取$g$在那里的下确界，则$0\le g-h$，$\int_a^b(g-h)\le U(g,P)-L(g,P)<\varepsilon$。于是$\bigl|\int_a^bg\sin\lambda u\bigr|\le\int_a^b(g-h)+\bigl|\int_a^bh\sin\lambda u\bigr|<\varepsilon+\frac{2mM}{\lambda}$，$\lambda$足够大时小于$2\varepsilon$。
+  reference: |
+    阶梯函数：每段$\bigl|\int c\sin\lambda u\bigr|\le\frac{2|c|}{\lambda}$，有限段相加趋于$0$。
+
+    一般可积$g$：取分割使$U-L<\varepsilon$，$h$取各段下确界，$\int(g-h)<\varepsilon$，所以$\bigl|\int g\sin\lambda u\bigr|\le\varepsilon+\bigl|\int h\sin\lambda u\bigr|$，后者趋于$0$。
+
+- id: p6
+  tier: hard
+  statement: |
+    (1) 证明$u$不是$2\pi$的整数倍时，$D_N(u)=\frac12+\sum_{n=1}^N\cos nu=\frac{\sin(N+\frac12)u}{2\sin\frac u2}$。(2) 证明$\frac1\pi\int_{-\pi}^{\pi}D_N(u)\dd u=1$。(3) 设$f$以$2\pi$为周期、在一个周期上可积，证明它的部分和$S_N(x)=\frac1\pi\int_{-\pi}^{\pi}f(x+u)D_N(u)\dd u$。
+  hints:
+    - |
+      (1) 用积化和差：$2\sin\frac u2\cos nu=\sin\bigl(n+\frac12\bigr)u-\sin\bigl(n-\frac12\bigr)u$，相加时中间的项相消。
+    - |
+      (2) 逐项积分。(3) 把$a_n$、$b_n$的积分式代进$S_N(x)$，用$\cos nt\cos nx+\sin nt\sin nx=\cos n(t-x)$，再换元$t=x+u$。
+    - |
+      (1) $2\sin\frac u2\cdot\frac12=\sin\frac u2$；$2\sin\frac u2\cos nu=\sin\bigl(n+\frac12\bigr)u-\sin\bigl(n-\frac12\bigr)u$。把$n=1,\dots,N$的式子和第一式相加，中间的项两两相消，得$2\sin\frac u2\,D_N(u)=\sin\bigl(N+\frac12\bigr)u$，除以$2\sin\frac u2\ne0$即得。
+
+      (2) $\int_{-\pi}^{\pi}\cos nu\dd u=0$（$n\ge1$），所以$\frac1\pi\int_{-\pi}^{\pi}D_N=\frac1\pi\cdot\frac12\cdot2\pi=1$。
+
+      (3) $S_N(x)=\frac1\pi\int_{-\pi}^{\pi}f(t)\Bigl[\frac12+\sum_{n=1}^N(\cos nt\cos nx+\sin nt\sin nx)\Bigr]\dd t=\frac1\pi\int_{-\pi}^{\pi}f(t)D_N(t-x)\dd t$。令$t=x+u$，被积函数以$2\pi$为周期，积分区间平移一个$x$不改变积分（[傅里叶级数](lesson:math.analysis.fourier-series)第 6 题），得$S_N(x)=\frac1\pi\int_{-\pi}^{\pi}f(x+u)D_N(u)\dd u$。
+  reference: |
+    (1) $2\sin\frac u2\cos nu=\sin(n+\frac12)u-\sin(n-\frac12)u$，求和相消得$2\sin\frac u2D_N(u)=\sin(N+\frac12)u$。(2) 余弦项积分为$0$，只剩$\frac12\cdot2\pi$。
+
+    (3) 代入系数公式，$\cos nt\cos nx+\sin nt\sin nx=\cos n(t-x)$，得$S_N=\frac1\pi\int f(t)D_N(t-x)\dd t$；换元$t=x+u$并利用周期性。
+
+- id: p7
+  tier: thinking
+  statement: |
+    定理 1 要求$f$分段光滑。只要求$f$:term[连续]{id="math.analysis.continuous-function"}，傅里叶级数还会处处收敛到$f$吗？如果不会，有没有别的办法从傅里叶系数把连续函数「恢复」出来？
+  hints:
+    - |
+      定理 1 的证明里，哪一步用到了分段光滑？只连续时那一步还成立吗？
+    - |
+      证明里要$\frac{f(x+u)-f(x^+)}{u}$有界，连续函数做不到。部分和是$f$和狄利克雷核$D_N$的积分，而$\int|D_N|\to\infty$。
+    - |
+      证明里用到了差商$\frac{f(x+u)-f(x^+)}{u}$有界，只连续时这一步失效。这不只是证明方法的问题：杜布瓦-雷蒙（du Bois-Reymond）造出过一个连续函数，它的傅里叶级数在某一点:term[发散]{id="math.analysis.divergent-series"}（divergent series）。根源在于$\int_{-\pi}^{\pi}|D_N|$随$N$无界增长，「加权平均」的权重太大。
+
+      补救的办法是把部分和再平均一次：$\sigma_N=\frac{S_0+S_1+\cdots+S_{N-1}}{N}$，它对应的费耶尔核（Fejér kernel）是非负的，积分为$1$。费耶尔定理说：$f$连续时，$\sigma_N$一致收敛于$f$。所以连续函数仍由傅里叶系数唯一确定，只是要换一种求和方式。
+  reference: |
+    不一定：分段光滑在证明里保证差商有界，只连续不够；存在连续函数，其傅里叶级数在某点发散（杜布瓦-雷蒙）。原因是$\int|D_N|\to\infty$。
+
+    恢复办法：取部分和的算术平均$\sigma_N$，对应非负的费耶尔核，由费耶尔定理，连续$f$的$\sigma_N$一致收敛于$f$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    在方波的跳跃点$x=0$处，把$f(0)$定义成$0$（两侧的中点），这时级数在每一点都收敛到$f$。部分和能不能一致收敛到$f$？吉布斯现象说明了逐点收敛和一致收敛的什么差别？
+  hints:
+    - |
+      部分和都是连续函数。一致收敛的连续函数列，极限有什么性质？
+    - |
+      改了一点的值，$f$在$0$处仍不连续。看$\sup_x|S_N(x)-f(x)|$，尖峰附近这个差有多大。
+    - |
+      不能：部分和都连续，如果一致收敛，极限必须连续，而$f$在$0$处有跳跃，改一点的值不改变这一点。更具体地，在$x=\frac{\pi}{2N}$处$S_N-f\to1.179-1\approx0.179$，所以$\sup_x|S_N(x)-f(x)|$不趋于$0$。
+
+      逐点收敛只要求每一点各自最终贴近，允许「不贴近的地方」随$N$移动；吉布斯尖峰正是这样一个随$N$移向跳跃点的「不贴近的地方」。一致收敛要求所有点同时贴近，尖峰的存在就把它否定了。工程上，截断傅里叶级数重建方波时，跳变沿旁边总有过冲和振铃（ringing），就是这个原因。
+  reference: |
+    不能一致收敛：连续函数列的一致极限连续，而$f$在$0$处跳跃；具体地，$x=\frac{\pi}{2N}$处$S_N-f\to0.179$，上确界距离不趋于$0$。
+
+    吉布斯尖峰是一个随$N$移向跳跃点的「不贴近处」：逐点收敛允许它，一致收敛不允许。

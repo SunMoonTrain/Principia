@@ -1,0 +1,149 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$x\ne0$时$f(x,y)=\frac{\sin(xy)}{x}$，$f(0,y)=y$，$F(y)=\int_0^1f(x,y)\dd x$。求$F'\bigl(\frac{\pi}{3}\bigr)$。
+  answer:
+    type: number
+    value: 3*sqrt(3)/(2*pi)
+  hints:
+    - |
+      用:term[积分号下求导]{id="math.analysis.differentiation-under-integral"}（定理 2），先求$\frac{\partial f}{\partial y}$，并检查它连续。
+    - |
+      $\frac{\partial f}{\partial y}=\cos(xy)$，$x=0$处也对，它在$[0,1]\times[1,2]$上连续，所以$F'(y)=\int_0^1\cos(xy)\dd x$。
+    - |
+      $f$和$\frac{\partial f}{\partial y}=\cos(xy)$都在$[0,1]\times[1,2]$上连续，由定理 2，$F'(y)=\int_0^1\cos(xy)\dd x=\Bigl[\frac{\sin(xy)}{y}\Bigr]_{x=0}^{x=1}=\frac{\sin y}{y}$。所以$F'\bigl(\frac{\pi}{3}\bigr)=\frac{\sqrt3/2}{\pi/3}=\frac{3\sqrt3}{2\pi}\approx0.8270$。
+  solution: |
+    $F'(y)=\int_0^1\cos(xy)\dd x=\frac{\sin y}{y}$，所以$F'\bigl(\frac{\pi}{3}\bigr)=\frac{3\sqrt3}{2\pi}$，填 `3*sqrt(3)/(2*pi)`。
+
+- id: p2
+  tier: easy
+  statement: |
+    求$\lim_{y\to0}\int_0^2\frac{\dd x}{1+x^2+y^2}$。
+  answer:
+    type: number
+    value: atan(2)
+  hints:
+    - |
+      被积函数是$x$、$y$的二元连续函数，用定理 1。
+    - |
+      $F(y)=\int_0^2\frac{\dd x}{1+x^2+y^2}$在$y=0$处连续，极限就是$F(0)$。
+    - |
+      $\frac{1}{1+x^2+y^2}$在$[0,2]\times[-1,1]$上连续，由定理 1，$F$在$[-1,1]$上:term[连续]{id="math.analysis.continuous-function"}，所以极限等于$F(0)=\int_0^2\frac{\dd x}{1+x^2}=\arctan2\approx1.1071$。
+  solution: |
+    由定理 1，极限是$\int_0^2\frac{\dd x}{1+x^2}=\arctan2$，填 `atan(2)`。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\int_0^\infty x^4e^{-2x^2}\dd x$。
+  answer:
+    type: number
+    value: 3/32*sqrt(pi/2)
+  hints:
+    - |
+      从$F(y)=\int_0^\infty e^{-yx^2}\dd x=\frac{\sqrt\pi}{2}y^{-1/2}$出发，对$y$求两次导数。
+    - |
+      每求一次导，被积函数多一个因子$-x^2$；所以$\int_0^\infty x^4e^{-yx^2}\dd x=F''(y)$。两次都要检查定理 4 的条件。
+    - |
+      在$[c,d]$（$0<c<2<d$）上，$\bigl|\frac{\partial}{\partial y}e^{-yx^2}\bigr|\le x^2e^{-cx^2}$，$\bigl|\frac{\partial}{\partial y}\bigl(-x^2e^{-yx^2}\bigr)\bigr|\le x^4e^{-cx^2}$，两个控制函数（dominating function）的积分都收敛，定理 4 可以用两次：$F''(y)=\int_0^\infty x^4e^{-yx^2}\dd x$。
+
+      $F(y)=\frac{\sqrt\pi}{2}y^{-1/2}$，$F''(y)=\frac{\sqrt\pi}{2}\cdot\frac34y^{-5/2}=\frac{3\sqrt\pi}{8}y^{-5/2}$。代入$y=2$，得$\frac{3\sqrt\pi}{8}\cdot2^{-5/2}=\frac{3}{32}\sqrt{\frac{\pi}{2}}\approx0.1175$。
+  solution: |
+    $\int_0^\infty x^4e^{-yx^2}\dd x=F''(y)=\frac{3\sqrt\pi}{8}y^{-5/2}$，代入$y=2$得$\frac{3}{32}\sqrt{\frac{\pi}{2}}\approx0.1175$，填 `3/32*sqrt(pi/2)`。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$f(x,y)=\frac{x^2-y^2}{(x^2+y^2)^2}$。求两个累次积分（iterated integral）$I_1=\int_0^1\Bigl(\int_0^1f(x,y)\dd y\Bigr)\dd x$与$I_2=\int_0^1\Bigl(\int_0^1f(x,y)\dd x\Bigr)\dd y$，按$I_1$、$I_2$的顺序填。内层积分只在$x=0$（或$y=0$）这一点没有意义，不影响外层积分。
+  answer:
+    type: tuple
+    value: [pi/4, -pi/4]
+  hints:
+    - |
+      找内层积分的原函数：$\frac{\partial}{\partial y}\frac{y}{x^2+y^2}$是什么？
+    - |
+      $\frac{\partial}{\partial y}\frac{y}{x^2+y^2}=\frac{x^2-y^2}{(x^2+y^2)^2}=f$，$\frac{\partial}{\partial x}\frac{x}{x^2+y^2}=\frac{y^2-x^2}{(x^2+y^2)^2}=-f$。
+    - |
+      $x\ne0$时$\int_0^1f(x,y)\dd y=\Bigl[\frac{y}{x^2+y^2}\Bigr]_{y=0}^{y=1}=\frac{1}{1+x^2}$，所以$I_1=\int_0^1\frac{\dd x}{1+x^2}=\frac{\pi}{4}$。$y\ne0$时$\int_0^1f(x,y)\dd x=-\Bigl[\frac{x}{x^2+y^2}\Bigr]_{x=0}^{x=1}=-\frac{1}{1+y^2}$，所以$I_2=-\frac{\pi}{4}$。
+
+      两种次序结果不同，和定理 3 不矛盾：$f$在$(0,0)$附近无界，不是闭矩形上的连续函数。
+  solution: |
+    $I_1=\int_0^1\frac{\dd x}{1+x^2}=\frac{\pi}{4}$，$I_2=-\int_0^1\frac{\dd y}{1+y^2}=-\frac{\pi}{4}$，填 `pi/4, -pi/4`。$f$在$(0,0)$附近无界，定理 3 用不上。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$、$\frac{\partial f}{\partial y}$在$[a,b]\times[c,d]$上连续，$\alpha$、$\beta$是$[c,d]$上的可导函数，取值都在$[a,b]$里。证明$G(y)=\int_{\alpha(y)}^{\beta(y)}f(x,y)\dd x$可导，并且$G'(y)=f\bigl(\beta(y),y\bigr)\beta'(y)-f\bigl(\alpha(y),y\bigr)\alpha'(y)+\int_{\alpha(y)}^{\beta(y)}\frac{\partial f}{\partial y}(x,y)\dd x$。
+  hints:
+    - |
+      把$G(y+h)-G(y)$拆成三段：上限变动的部分、下限变动的部分、被积函数变动的部分。
+    - |
+      $G(y+h)-G(y)=\int_{\beta(y)}^{\beta(y+h)}f(x,y+h)\dd x-\int_{\alpha(y)}^{\alpha(y+h)}f(x,y+h)\dd x+\int_{\alpha(y)}^{\beta(y)}\bigl(f(x,y+h)-f(x,y)\bigr)\dd x$。前两段用一致连续估计，第三段照定理 2 的证明。
+    - |
+      记上式三段为$A_h$、$B_h$、$C_h$。由引理，任给$\varepsilon>0$有$\delta>0$，$|h|<\delta$且$|x-\beta(y)|\le|\beta(y+h)-\beta(y)|$时，$|f(x,y+h)-f(\beta(y),y)|<\varepsilon$（$\beta$连续，$h$小时$|\beta(y+h)-\beta(y)|<\delta$）。于是$\bigl|A_h-f(\beta(y),y)\bigl(\beta(y+h)-\beta(y)\bigr)\bigr|\le\varepsilon\,|\beta(y+h)-\beta(y)|$，两边除以$h$，令$h\to0$，得$\frac{A_h}{h}\to f(\beta(y),y)\beta'(y)$。
+
+      同理$\frac{B_h}{h}\to f(\alpha(y),y)\alpha'(y)$。第三段照定理 2 的证明：由拉格朗日中值定理和引理，$\bigl|\frac{C_h}{h}-\int_{\alpha(y)}^{\beta(y)}\frac{\partial f}{\partial y}(x,y)\dd x\bigr|\le(b-a)\varepsilon$。三段相加，就得到$G'(y)$的公式。
+  reference: |
+    $G(y+h)-G(y)=A_h-B_h+C_h$，其中$A_h=\int_{\beta(y)}^{\beta(y+h)}f(x,y+h)\dd x$，$B_h=\int_{\alpha(y)}^{\alpha(y+h)}f(x,y+h)\dd x$，$C_h=\int_{\alpha(y)}^{\beta(y)}\bigl(f(x,y+h)-f(x,y)\bigr)\dd x$。
+
+    由$f$的一致连续和$\beta$的连续，$h\to0$时$A_h$的被积函数一致地接近$f(\beta(y),y)$，所以$\frac{A_h}{h}\to f(\beta(y),y)\beta'(y)$；同理$\frac{B_h}{h}\to f(\alpha(y),y)\alpha'(y)$。$\frac{C_h}{h}$照定理 2 的证明趋于$\int_{\alpha(y)}^{\beta(y)}\frac{\partial f}{\partial y}\dd x$。
+
+- id: p6
+  tier: hard
+  statement: |
+    证明：对每个实数$y$，$\int_0^\infty e^{-x^2}\cos(2xy)\dd x=\frac{\sqrt\pi}{2}e^{-y^2}$。
+  hints:
+    - |
+      记左边为$F(y)$，用定理 4 对$y$求导，再找$F'$和$F$的关系。
+    - |
+      $F'(y)=-\int_0^\infty2xe^{-x^2}\sin(2xy)\dd x$。注意$\bigl(e^{-x^2}\bigr)'=-2xe^{-x^2}$，把它和$\sin(2xy)$的导数配起来，得$F'(y)=-2yF(y)$。
+    - |
+      在任意$[c,d]$上，$\bigl|\frac{\partial}{\partial y}e^{-x^2}\cos(2xy)\bigr|=\bigl|2xe^{-x^2}\sin(2xy)\bigr|\le2xe^{-x^2}$，$\int_0^\infty2xe^{-x^2}\dd x=1$收敛；$F(y)$本身也收敛，因为$|e^{-x^2}\cos(2xy)|\le e^{-x^2}$。由定理 4，$F'(y)=-\int_0^\infty2xe^{-x^2}\sin(2xy)\dd x$。
+
+      由乘积的求导法则，$\bigl(e^{-x^2}\sin(2xy)\bigr)'=-2xe^{-x^2}\sin(2xy)+2ye^{-x^2}\cos(2xy)$。从$0$积到$A$再令$A\to\infty$，左边的积分是$e^{-A^2}\sin(2Ay)\to0$，所以$F'(y)=-2yF(y)$（这就是[分部积分法](lesson:math.calculus.integration-by-parts)）。
+
+      于是$\bigl(F(y)e^{y^2}\bigr)'=\bigl(F'(y)+2yF(y)\bigr)e^{y^2}=0$，$F(y)e^{y^2}$是常数，等于$F(0)=\int_0^\infty e^{-x^2}\dd x=\frac{\sqrt\pi}{2}$。所以$F(y)=\frac{\sqrt\pi}{2}e^{-y^2}$。
+  reference: |
+    $|\partial_y(e^{-x^2}\cos2xy)|\le2xe^{-x^2}$，积分收敛，由定理 4，$F'(y)=-\int_0^\infty2xe^{-x^2}\sin(2xy)\dd x$。对$e^{-x^2}\sin(2xy)$求导并从$0$积到$\infty$（边界项为$0$），得$F'=-2yF$。
+
+    于是$(Fe^{y^2})'=0$，$F(y)=F(0)e^{-y^2}=\frac{\sqrt\pi}{2}e^{-y^2}$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    设$f(x,y)=ye^{-xy}$，它在$[0,+\infty)\times[0,1]$上连续，并且对每个$y\in[0,1]$，$F(y)=\int_0^\infty f(x,y)\dd x$都收敛。求出$F$，它在$y=0$处连续吗？定理 4 里那个$g$在这里为什么找不到？怎样的条件能保证$F$连续？
+  hints:
+    - |
+      分$y>0$和$y=0$两种情况算$F(y)$。
+    - |
+      $y>0$时$F(y)=1$，$F(0)=0$。看尾巴$\int_A^\infty ye^{-xy}\dd x$：对固定的$A$，它在$y\in(0,1]$上能不能一起变小？
+    - |
+      $y>0$时$\int_0^\infty ye^{-xy}\dd x=\bigl[-e^{-xy}\bigr]_0^\infty=1$，而$F(0)=0$，所以$F$在$0$处不连续。尾巴$\int_A^\infty ye^{-xy}\dd x=e^{-Ay}$，$y\to0^+$时趋于$1$：不论$A$多大，总有$y$使尾巴接近$1$，尾巴不能对所有$y$同时变小。
+
+      若有$g$使$|f(x,y)|\le g(x)$，则$g(x)\ge\sup_{0<y\le1}ye^{-xy}$，而$x\ge1$时这个:term[上确界]{id="math.analysis.supremum"}（supremum，sup）是$\frac{1}{ex}$（在$y=\frac1x$处取到），$\int_1^\infty\frac{\dd x}{ex}$发散，所以找不到积分收敛的$g$。
+
+      保证连续的条件是尾巴一致地变小：$\sup_{y}\bigl|\int_A^\infty f(x,y)\dd x\bigr|\to0$（$A\to\infty$），叫作含参变量反常积分一致收敛。这时$F_n(y)=\int_0^nf(x,y)\dd x$:term[一致收敛]{id="math.analysis.uniform-convergence"}（uniform convergence）于$F$，由定理 1 和一致收敛的极限保持连续性，$F$连续。有积分收敛的$g$使$|f|\le g$，就是一致收敛的一个充分条件，和:term[级数]{id="math.analysis.series"}（series）的:term[魏尔斯特拉斯判别法]{id="math.analysis.weierstrass-m-test"}（Weierstrass M-test）同一个道理。
+  reference: |
+    $F(y)=1$（$y>0$），$F(0)=0$，在$0$处不连续。尾巴$\int_A^\infty ye^{-xy}\dd x=e^{-Ay}$在$y\to0^+$时趋于$1$，不能一致变小；$\sup_yye^{-xy}=\frac{1}{ex}$（$x\ge1$）的积分发散，所以没有可积的控制函数。
+
+    保证连续的条件：尾巴关于$y$一致趋于$0$（含参变量反常积分一致收敛），这时$F$是连续函数$F_n$的一致极限，因而连续；有可积的$g$使$|f|\le g$是它的充分条件。
+
+- id: p8
+  tier: thinking
+  statement: |
+    定理 1、定理 2 和[一致收敛与极限交换](lesson:math.analysis.uniform-limit-theorems)的定理 1、定理 3 很像。把$F(y)=\int_a^bf(x,y)\dd x$看成黎曼和（Riemann sum）$\sum_if(\xi_i,y)\Delta x_i$的极限，说说两组定理是怎样对应的：哪里用到了「一致」？定理 3 又对应有限和的什么性质？
+  hints:
+    - |
+      对固定的:term[分割]{id="math.analysis.partition"}（partition），黎曼和$S_P(y)=\sum_if(\xi_i,y)\Delta x_i$是$y$的连续函数、可导函数。分割越来越细时，$S_P$对所有$y$同时接近$F$吗？
+    - |
+      由引理，$|S_P(y)-F(y)|\le(b-a)\varepsilon$，只要分割的细度小于$\delta$，而$\delta$与$y$无关。
+    - |
+      取一列越来越细的分割$P_n$。$|f(x,y)-f(\xi_i,y)|<\varepsilon$对每个小区间里的$x$和所有$y$同时成立（引理），所以$|S_{P_n}(y)-F(y)|\le(b-a)\varepsilon$：$S_{P_n}$一致收敛于$F$。每个$S_{P_n}$连续，一致极限也连续，这就是定理 1。
+
+      $S_{P_n}'(y)=\sum_i\frac{\partial f}{\partial y}(\xi_i,y)\Delta x_i$也是$\frac{\partial f}{\partial y}$的黎曼和，同理一致收敛于$\int_a^b\frac{\partial f}{\partial y}\dd x$，由求导与极限交换的定理，得到定理 2。所以「一致」都来自$f$（或$\frac{\partial f}{\partial y}$）在闭矩形上的一致连续。
+
+      定理 3 对应有限的二重和可以换次序：$\sum_i\sum_jf(\xi_i,\eta_j)\Delta x_i\Delta y_j=\sum_j\sum_if(\xi_i,\eta_j)\Delta x_i\Delta y_j$。两种次序的累次积分都是这同一个和的极限，一致连续保证两边的误差都能同时变小，所以相等。第 4 题的$f$在角上无界，这一步就断了。
+  reference: |
+    黎曼和$S_P(y)$是$y$的连续可导函数；由$f$在闭矩形上的一致连续，分割细度小于$\delta$时$|S_P(y)-F(y)|\le(b-a)\varepsilon$对所有$y$成立，即一致收敛，于是由「一致极限保持连续」得定理 1；对$\frac{\partial f}{\partial y}$同样处理，由求导与极限交换得定理 2。
+
+    定理 3 对应有限二重和可以交换求和次序，两种累次积分都是同一个二重黎曼和的极限；一致连续保证误差一致地小。$f$无界或不连续时这一步失效，例如第 4 题。

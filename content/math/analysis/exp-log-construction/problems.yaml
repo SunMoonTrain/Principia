@@ -1,0 +1,149 @@
+- id: p1
+  tier: easy
+  statement: |
+    设实数$a$满足$\exp a=3$，这里$\exp$是本节用:term[幂级数]{id="math.analysis.power-series"}定义的:term[指数函数]{id="math.analysis.exponential-function"}。求$\exp\bigl(-\frac a2\bigr)$。
+  answer:
+    type: number
+    value: 1/sqrt(3)
+  hints:
+    - |
+      用加法公式（定理 2）把$\exp a$写成$\exp\frac a2$的平方，再看$\exp\bigl(-\frac a2\bigr)$和$\exp\frac a2$的关系。
+    - |
+      $\bigl(\exp\frac a2\bigr)^2=\exp a=3$，而$\exp\frac a2>0$；又$\exp\bigl(-\frac a2\bigr)\exp\frac a2=\exp 0=1$。
+    - |
+      由定理 2，$\bigl(\exp\frac a2\bigr)^2=\exp a=3$。指数函数只取正值，所以$\exp\frac a2=\sqrt3$，不是$-\sqrt3$。再由$\exp\bigl(-\frac a2\bigr)\exp\frac a2=\exp 0=1$，得$\exp\bigl(-\frac a2\bigr)=\frac{1}{\sqrt3}$。
+  solution: |
+    $\bigl(\exp\frac a2\bigr)^2=\exp a=3$，$\exp\frac a2>0$，所以$\exp\frac a2=\sqrt3$；$\exp\bigl(-\frac a2\bigr)=\frac{1}{\exp\frac a2}=\frac{1}{\sqrt3}$，填 `1/sqrt(3)`。
+
+- id: p2
+  tier: easy
+  statement: |
+    按本节的定义，$x>0$时$x^x=e^{x\ln x}$。求$f(x)=x^x$在$x=e$处的导数。
+  answer:
+    type: number
+    value: 2*e^e
+  hints:
+    - |
+      把$f$看成$\exp$和$g(x)=x\ln x$的复合，用链式法则。
+    - |
+      $f'(x)=e^{x\ln x}\cdot(x\ln x)'$，其中$(x\ln x)'=\ln x+1$。
+    - |
+      由定理 1、定理 5 和:term[链式法则]{id="math.analysis.chain-rule"}，$f'(x)=e^{x\ln x}\bigl(\ln x+x\cdot\frac1x\bigr)=x^x(\ln x+1)$。代入$x=e$，$\ln e=1$，得$f'(e)=e^e\cdot2=2e^e\approx30.31$。
+  solution: |
+    $f'(x)=x^x(\ln x+1)$，所以$f'(e)=2e^e\approx30.31$，填 `2*e^e`。
+
+- id: p3
+  tier: medium
+  statement: |
+    记$S_N=\sum_{n=0}^N\frac{1}{n!}$。求使$e-S_N<10^{-6}$成立的最小正整数$N$。
+  answer:
+    type: number
+    value: 9
+  hints:
+    - |
+      $e-S_N=\sum_{n=N+1}^\infty\frac{1}{n!}$。从上、下两边估计它：下界取第一项，:term[上界]{id="math.analysis.upper-bound"}（upper bound）和等比级数（geometric series）比。
+    - |
+      $\frac{1}{(N+1)!}<e-S_N<\frac{1}{(N+1)!}\Bigl(1+\frac{1}{N+2}+\frac{1}{(N+2)^2}+\cdots\Bigr)=\frac{1}{(N+1)!}\cdot\frac{N+2}{N+1}$。
+    - |
+      $n\ge N+1$时$n!\ge(N+1)!\,(N+2)^{n-N-1}$，所以$e-S_N$在$\frac{1}{(N+1)!}$和$\frac{1}{(N+1)!}\cdot\frac{N+2}{N+1}$之间。$N=8$时下界是$\frac{1}{9!}=\frac{1}{362880}>10^{-6}$；$N=9$时上界是$\frac{1}{10!}\cdot\frac{11}{10}=\frac{11}{36288000}<10^{-6}$。
+
+      $e-S_N$随$N$增大而减小，所以$N\le8$时都不满足，最小的$N$是$9$。
+  solution: |
+    $\frac{1}{(N+1)!}<e-S_N<\frac{1}{(N+1)!}\cdot\frac{N+2}{N+1}$。$N=8$时$e-S_8>\frac{1}{9!}\approx2.76\times10^{-6}$，$N=9$时$e-S_9<\frac{11}{36288000}\approx3.03\times10^{-7}$，填 `9`。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\sum_{n=0}^\infty\frac{1}{(2n)!}=1+\frac{1}{2!}+\frac{1}{4!}+\cdots$。
+  answer:
+    type: number
+    value: (e+1/e)/2
+  hints:
+    - |
+      $e=\sum_{n=0}^\infty\frac{1}{n!}$，$e^{-1}=\sum_{n=0}^\infty\frac{(-1)^n}{n!}$。两式相加，奇数项会怎样？
+    - |
+      $e+e^{-1}=\sum_{n=0}^\infty\frac{1+(-1)^n}{n!}$：$n$为奇数的项是$0$，$n$为偶数的项是$\frac{2}{n!}$。
+    - |
+      两个:term[收敛级数]{id="math.analysis.convergent-series"}逐项相加，和也相加：$e+e^{-1}=\sum_{n=0}^\infty\frac{1+(-1)^n}{n!}$。去掉值为$0$的奇数项以后，新级数的:term[部分和]{id="math.analysis.partial-sum"}正是原来部分和的:term[子列]{id="math.analysis.subsequence"}（subsequence）$T_0,T_2,T_4,\dots$，极限不变。所以$e+e^{-1}=\sum_{n=0}^\infty\frac{2}{(2n)!}$，所求的和是$\frac{e+e^{-1}}{2}\approx1.5431$。
+  solution: |
+    $e+e^{-1}=\sum_{n=0}^\infty\frac{1+(-1)^n}{n!}=2\sum_{n=0}^\infty\frac{1}{(2n)!}$，所以和是$\frac{e+e^{-1}}{2}\approx1.5431$，填 `(e+1/e)/2`。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明$e$是无理数。
+  hints:
+    - |
+      反证：设$e=\frac pq$，$p$、$q$是正整数。比较$q!\,e$和$q!\,S_q$，其中$S_q=\sum_{n=0}^q\frac{1}{n!}$。
+    - |
+      $q!\,e$和$q!\,S_q$都是整数，所以$r=q!\,(e-S_q)$也是整数；另一方面，$r=\frac{1}{q+1}+\frac{1}{(q+1)(q+2)}+\cdots$。
+    - |
+      设$e=\frac pq$，$p$、$q$是正整数。$q!\,e=(q-1)!\,p$是整数；$q!\,S_q=\sum_{n=0}^q\frac{q!}{n!}$的每一项都是整数。所以$r=q!\,(e-S_q)$是整数。
+
+      另一方面，$r=\sum_{n=q+1}^\infty\frac{q!}{n!}=\frac{1}{q+1}+\frac{1}{(q+1)(q+2)}+\cdots>0$。第$k$项不超过$\frac{1}{(q+1)^k}$，从第二项起严格小于它，所以$r<\sum_{k=1}^\infty\frac{1}{(q+1)^k}=\frac1q\le1$。整数$r$满足$0<r<1$，矛盾。
+  reference: |
+    设$e=\frac pq$，$p$、$q$是正整数。$q!\,e=(q-1)!\,p$是整数，$q!\,S_q=\sum_{n=0}^q\frac{q!}{n!}$也是整数，所以$r=q!\,(e-S_q)$是整数。
+
+    另一方面，$r=\sum_{n=q+1}^\infty\frac{q!}{n!}=\frac{1}{q+1}+\frac{1}{(q+1)(q+2)}+\cdots>0$。第$k$项不超过$\frac{1}{(q+1)^k}$，从第二项起严格小于它，所以$r<\sum_{k=1}^\infty\frac{1}{(q+1)^k}=\frac1q\le1$。整数$r$满足$0<r<1$，矛盾，所以$e$是无理数。
+
+- id: p6
+  tier: hard
+  statement: |
+    证明$\lim_{n\to\infty}\bigl(1+\frac1n\bigr)^n=e$，这里$e=\sum_{k=0}^\infty\frac{1}{k!}$是本节的定义。
+  hints:
+    - |
+      用二项式定理展开$\bigl(1+\frac1n\bigr)^n$，和$S_n=\sum_{k=0}^n\frac{1}{k!}$逐项比较。上界容易；下界只看前面固定的几项。
+    - |
+      $\bigl(1+\frac1n\bigr)^n=\sum_{k=0}^n\frac{1}{k!}\Bigl(1-\frac1n\Bigr)\Bigl(1-\frac2n\Bigr)\cdots\Bigl(1-\frac{k-1}{n}\Bigr)$。每一项不超过$\frac{1}{k!}$；固定$m$，只保留前$m+1$项，再让$n\to\infty$。
+    - |
+      记$e_n=\bigl(1+\frac1n\bigr)^n$。由二项式定理，$e_n=\sum_{k=0}^n\binom{n}{k}\frac{1}{n^k}=\sum_{k=0}^n\frac{1}{k!}\prod_{j=1}^{k-1}\Bigl(1-\frac jn\Bigr)$，乘积里的因子都在$0$和$1$之间。所以$0<e_n\le S_n<e$，数列:term[有界]{id="math.analysis.bounded-sequence"}（bounded sequence），并且:term[上极限]{id="math.analysis.limit-superior"}（limit superior，lim sup）$\limsup_{n\to\infty}e_n\le e$。
+
+      另一方面，固定$m$，$n>m$时只保留前$m+1$项：$e_n\ge\sum_{k=0}^m\frac{1}{k!}\prod_{j=1}^{k-1}\bigl(1-\frac jn\bigr)$。右边只有有限项，$n\to\infty$时每个因子都趋于$1$，右边趋于$S_m$，所以:term[下极限]{id="math.analysis.limit-inferior"}（limit inferior，lim inf）$\liminf_{n\to\infty}e_n\ge S_m$。再让$m\to\infty$，得$\liminf e_n\ge e$。
+
+      上极限不超过$e$，下极限不小于$e$，两者都等于$e$。由[上极限与下极限](lesson:math.analysis.limsup-liminf#thm-limsup-convergence)的定理 2，$e_n$收敛于$e$。
+  reference: |
+    记$e_n=\bigl(1+\frac1n\bigr)^n$。由二项式定理，$e_n=\sum_{k=0}^n\frac{1}{k!}\prod_{j=1}^{k-1}\bigl(1-\frac jn\bigr)$，各因子在$0$和$1$之间，所以$0<e_n\le S_n<e$，$\limsup e_n\le e$。
+
+    固定$m$，$n>m$时$e_n\ge\sum_{k=0}^m\frac{1}{k!}\prod_{j=1}^{k-1}\bigl(1-\frac jn\bigr)$，右边是有限项，$n\to\infty$时趋于$S_m$，所以$\liminf e_n\ge S_m$；再让$m\to\infty$，$\liminf e_n\ge e$。上、下极限都等于$e$，由[上极限与下极限](lesson:math.analysis.limsup-liminf#thm-limsup-convergence)的定理 2，$e_n\to e$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    设$f:\R\to\R$:term[连续]{id="math.analysis.continuous-function"}，不恒为$0$，并且对任意$x$、$y$都有$f(x+y)=f(x)f(y)$。$f$一定是某个$a^x$（$a>0$）吗？如果只知道$f$在$0$这一点连续呢？
+  hints:
+    - |
+      先证$f(0)=1$、$f>0$，再取:term[自然对数]{id="math.analysis.natural-logarithm"}，把乘法变成加法：$g=\ln f$满足$g(x+y)=g(x)+g(y)$。
+    - |
+      记$c=g(1)$。先在整数上、再在有理数上求出$g(x)=cx$，最后用连续性推到所有实数。只在$0$处连续时，看$f(x+h)-f(x)=f(x)\bigl(f(h)-1\bigr)$。
+    - |
+      取$x_0$使$f(x_0)\ne0$，由$f(x_0)=f(0)f(x_0)$得$f(0)=1$。若某处$f(x_1)=0$，则$f(x)=f(x_1)f(x-x_1)=0$处处成立，矛盾；又$f(x)=f\bigl(\frac x2\bigr)^2\ge0$，所以$f>0$。令$a=f(1)$，$g=\ln f$，则$g$连续，$g(x+y)=g(x)+g(y)$。
+
+      由归纳法，正整数$m$满足$g(mx)=mg(x)$；又$g(0)=0$，$g(-x)=-g(x)$，对整数$m$也成立。于是$q\,g\bigl(\frac pq\bigr)=g(p)=p\ln a$，有理数$r$都满足$g(r)=r\ln a$。任取实数$x$和有理数列$r_k\to x$，由连续性，$g(x)=\lim_{k\to\infty}g(r_k)=x\ln a$，所以$f(x)=e^{x\ln a}=a^x$。
+
+      只在$0$处连续也够：$f(x+h)-f(x)=f(x)\bigl(f(h)-1\bigr)$，$h\to0$时$f(h)\to f(0)=1$，所以$f$处处连续，回到上面的情形。连续性完全去掉就不行了：存在满足这个方程、却处处不连续的$f$，构造要用到选择公理（axiom of choice），超出了这门课的范围。
+  reference: |
+    $f(0)=1$，$f>0$（若某处为$0$则处处为$0$；$f(x)=f(\frac x2)^2\ge0$）。令$a=f(1)$、$g=\ln f$，则$g(x+y)=g(x)+g(y)$，在整数、有理数上依次得$g(r)=r\ln a$，再由连续性和有理数列逼近得$g(x)=x\ln a$，即$f(x)=a^x$。
+
+    只在$0$处连续时，$f(x+h)-f(x)=f(x)\bigl(f(h)-1\bigr)\to0$，$f$处处连续，结论不变。完全不要连续性时结论不成立：借助选择公理可以造出处处不连续的解。这说明$a^x$由「把加法变成乘法」加上很弱的正则性就完全确定了。
+
+- id: p8
+  tier: thinking
+  statement: |
+    本节用:term[幂级数]{id="math.analysis.power-series"}定义$e^x$。另有两种常见的定义：(1) $e^x=\lim_{n\to\infty}\bigl(1+\frac xn\bigr)^n$；(2) $e^x$是满足$f'=f$、$f(0)=1$的那个函数。每种定义在使用之前，各要先证明什么？用幂级数定义省掉了哪些麻烦？
+  hints:
+    - |
+      一个定义要能用，先得说明被定义的东西存在、唯一；然后才轮到证明$e^{x+y}=e^xe^y$、$(e^x)'=e^x$这些性质。
+    - |
+      (1) 要证极限对每个$x$都存在，加法公式和导数也都要另做估计；(2) 唯一性可以照定理 3，存在性却要先造出一个解。
+    - |
+      (1) 先要证明$\bigl(1+\frac xn\bigr)^n$对每个实数$x$都收敛，$x<0$时也要，第 6 题只处理了$x=1$。加法公式要估计$\frac{(1+\frac xn)^n(1+\frac yn)^n}{(1+\frac{x+y}{n})^n}=\Bigl(1+\frac{xy}{n^2+n(x+y)}\Bigr)^n\to1$；求导更麻烦，要交换求导和取极限，先得有一致收敛之类的保证。
+
+      (2) 唯一性照定理 3：两个解之比的导数是$0$。存在性却不能凭空得到：要么借助微分方程解的存在定理（见[解的存在唯一性](lesson:math.ode.existence-uniqueness)），要么直接造出一个解，而最直接的造法就是本节的幂级数。加法公式可以由唯一性推出：固定$y$，$x\mapsto\frac{f(x+y)}{f(y)}$也满足$f'=f$、$f(0)=1$。
+
+      用幂级数定义时，存在性就是收敛半径为$+\infty$；导数靠逐项求导，加法公式靠柯西乘积，用的都是前面证过的一般定理。这个定义还能原样用到复数上：$\sum\frac{z^n}{n!}$对每个复数$z$都收敛，以后在[欧拉公式与复指数](lesson:math.complex-analysis.complex-exponential)里会用到。
+  reference: |
+    (1) 要先证$\bigl(1+\frac xn\bigr)^n$对每个实数$x$收敛；加法公式要估计两边之比$\Bigl(1+\frac{xy}{n^2+n(x+y)}\Bigr)^n\to1$；求导要交换求导和取极限，需要一致收敛之类的保证。
+
+    (2) 唯一性照定理 3；存在性要靠常微分方程的存在定理，或者直接构造，而最直接的构造就是幂级数。加法公式由唯一性推出：固定$y$，$x\mapsto\frac{f(x+y)}{f(y)}$满足同一个方程和初值。
+
+    幂级数的定义把存在性交给收敛半径，把导数交给逐项求导，把加法公式交给柯西乘积，都是一般定理的直接应用。它还能原样推广到复数（以及方阵），这是另外两种定义做不到或者做起来很麻烦的。

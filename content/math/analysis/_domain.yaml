@@ -719,3 +719,191 @@ glossary:
       在区间里的每个闭子区间上都一致收敛；幂级数在收敛区间内就是这样。
     definedIn: math.analysis.power-series-theory
     anchor: def-locally-uniform
+  - id: math.analysis.exponential-function
+    zh: |
+      指数函数
+    en: |
+      exponential function
+    abbr: |
+      exp
+    brief: |
+      以$e$为底的指数函数$e^x$，也记作$\exp x$；数学分析里用幂级数$\sum_{n=0}^\infty\frac{x^n}{n!}$定义它，并证明$e^{x+y}=e^xe^y$。
+    definedIn: math.analysis.exp-log-construction
+    anchor: def-exp
+  - id: math.analysis.natural-logarithm
+    zh: |
+      自然对数
+    en: |
+      natural logarithm
+    abbr: |
+      ln
+    brief: |
+      以$e$为底的对数，记作$\ln x$，定义在$(0,+\infty)$上，是$e^x$的反函数；$\ln(ab)=\ln a+\ln b$。
+    definedIn: math.analysis.exp-log-construction
+    anchor: def-ln
+  - id: math.analysis.sine
+    zh: |
+      正弦
+    en: |
+      sine
+    abbr: |
+      sin
+    brief: |
+      三角函数之一，记作$\sin x$；数学分析里用幂级数$\sum_{n=0}^\infty\frac{(-1)^nx^{2n+1}}{(2n+1)!}$定义，$(\sin x)'=\cos x$。
+    definedIn: math.analysis.trig-construction
+    anchor: def-sin-cos
+  - id: math.analysis.cosine
+    zh: |
+      余弦
+    en: |
+      cosine
+    abbr: |
+      cos
+    brief: |
+      三角函数之一，记作$\cos x$；数学分析里用幂级数$\sum_{n=0}^\infty\frac{(-1)^nx^{2n}}{(2n)!}$定义，$(\cos x)'=-\sin x$。
+    definedIn: math.analysis.trig-construction
+    anchor: def-sin-cos
+  - id: math.analysis.pi
+    zh: |
+      圆周率
+    en: |
+      pi
+    brief: |
+      圆的周长与直径之比，约为$3.14159$，记作$\pi$；数学分析里把$\frac{\pi}{2}$定义成$\cos x$的最小正零点。
+    definedIn: math.analysis.trig-construction
+    anchor: def-pi
+  - id: math.analysis.parameter-integral
+    zh: |
+      含参变量积分
+    en: |
+      integral depending on a parameter
+    brief: |
+      积分号里除积分变量外还含一个参变量$y$的积分，如$F(y)=\int_a^bf(x,y)\dd x$，结果是$y$的函数。
+    definedIn: math.analysis.parameter-integrals
+    anchor: def-parameter-integral
+  - id: math.analysis.differentiation-under-integral
+    zh: |
+      积分号下求导
+    en: |
+      differentiation under the integral sign
+    brief: |
+      $f$与$\frac{\partial f}{\partial y}$在矩形上连续时，$\frac{\dd}{\dd y}\int_a^bf(x,y)\dd x=\int_a^b\frac{\partial f}{\partial y}(x,y)\dd x$。
+    definedIn: math.analysis.parameter-integrals
+    anchor: thm-leibniz-rule
+  - id: math.analysis.gamma-function
+    zh: |
+      伽马函数
+    en: |
+      gamma function
+    brief: |
+      对$x>0$定义为$\Gamma(x)=\int_0^\infty t^{x-1}e^{-t}\dd t$；满足$\Gamma(x+1)=x\Gamma(x)$，$\Gamma(n+1)=n!$。
+    definedIn: math.analysis.gamma-function
+    anchor: def-gamma
+  - id: math.analysis.trig-system
+    zh: |
+      三角函数系
+    en: |
+      trigonometric system
+    brief: |
+      函数列$1,\cos x,\sin x,\cos2x,\sin2x,\dots$；其中任意两个不同的函数相乘，在$[-\pi,\pi]$上积分为$0$。
+    definedIn: math.analysis.fourier-series
+    anchor: def-trig-system
+  - id: math.analysis.fourier-coefficients
+    zh: |
+      傅里叶系数
+    en: |
+      Fourier coefficients
+    brief: |
+      $a_n=\frac1\pi\int_{-\pi}^{\pi}f(x)\cos nx\dd x$，$b_n=\frac1\pi\int_{-\pi}^{\pi}f(x)\sin nx\dd x$。
+    definedIn: math.analysis.fourier-series
+    anchor: def-fourier-series
+  - id: math.analysis.fourier-series
+    zh: |
+      傅里叶级数
+    en: |
+      Fourier series
+    brief: |
+      级数$\frac{a_0}{2}+\sum_{n=1}^\infty(a_n\cos nx+b_n\sin nx)$，系数是$f$的傅里叶系数；它不一定收敛到$f$。
+    definedIn: math.analysis.fourier-series
+    anchor: def-fourier-series
+  - id: math.analysis.dirichlet-kernel
+    zh: |
+      狄利克雷核
+    en: |
+      Dirichlet kernel
+    brief: |
+      $D_N(u)=\frac12+\sum_{n=1}^N\cos nu=\frac{\sin(N+\frac12)u}{2\sin\frac u2}$；傅里叶级数的部分和是$f$与它的积分。
+    definedIn: math.analysis.fourier-convergence
+    anchor: def-dirichlet-kernel
+  - id: math.analysis.piecewise-smooth
+    zh: |
+      分段光滑
+    en: |
+      piecewise smooth
+    brief: |
+      区间能分成有限段，每段内部导数连续，分点处函数和导数的单侧极限都存在。
+    definedIn: math.analysis.fourier-convergence
+    anchor: def-piecewise-smooth
+  - id: math.analysis.dirichlet-theorem
+    zh: |
+      狄利克雷定理
+    en: |
+      Dirichlet's theorem
+    brief: |
+      分段光滑的周期函数，傅里叶级数在每一点收敛到$\frac{f(x^-)+f(x^+)}{2}$。
+    definedIn: math.analysis.fourier-convergence
+    anchor: thm-dirichlet
+  - id: math.analysis.riemann-lebesgue-lemma
+    zh: |
+      黎曼-勒贝格引理
+    en: |
+      Riemann-Lebesgue lemma
+    brief: |
+      $g$可积时，$\lambda\to\infty$时$\int_a^bg(u)\sin\lambda u\dd u\to0$；傅里叶系数因此趋于$0$。
+    definedIn: math.analysis.fourier-convergence
+    anchor: thm-riemann-lebesgue
+  - id: math.analysis.gibbs-phenomenon
+    zh: |
+      吉布斯现象
+    en: |
+      Gibbs phenomenon
+    brief: |
+      傅里叶级数的部分和在跳跃点旁冲过头，过冲约为跳跃高度的$9\%$，不随项数增加而减小。
+    definedIn: math.analysis.fourier-convergence
+    anchor: def-gibbs
+  - id: math.analysis.bessel-inequality
+    zh: |
+      贝塞尔不等式
+    en: |
+      Bessel's inequality
+    brief: |
+      $\frac{a_0^2}{2}+\sum_{n=1}^\infty(a_n^2+b_n^2)\le\frac1\pi\int_{-\pi}^{\pi}f(x)^2\dd x$：傅里叶系数的平方和不超过$f$的「能量」。
+    definedIn: math.analysis.parseval
+    anchor: thm-bessel
+  - id: math.analysis.mean-square-convergence
+    zh: |
+      平方平均收敛
+    en: |
+      convergence in mean square
+    brief: |
+      傅里叶部分和$S_N$满足$\int_{-\pi}^{\pi}(f-S_N)^2\dd x\to0$：用积分量误差，不在乎个别点上的值。
+    definedIn: math.analysis.parseval
+    anchor: def-mean-square
+  - id: math.analysis.parseval-identity
+    zh: |
+      帕塞瓦尔等式
+    en: |
+      Parseval's identity
+    brief: |
+      $\frac{a_0^2}{2}+\sum_{n=1}^\infty(a_n^2+b_n^2)=\frac1\pi\int_{-\pi}^{\pi}f(x)^2\dd x$：无穷维的勾股定理。
+    definedIn: math.analysis.parseval
+    anchor: thm-parseval
+  - id: math.analysis.dedekind-cut
+    zh: |
+      戴德金分割
+    en: |
+      Dedekind cut
+    brief: |
+      非空、不是全体、向下封闭、没有最大元的有理数集；把每个实数看成比它小的有理数组成的这样一个集合。
+    definedIn: math.analysis.real-construction
+    anchor: def-dedekind-cut

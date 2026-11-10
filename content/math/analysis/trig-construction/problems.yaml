@@ -1,0 +1,143 @@
+- id: p1
+  tier: easy
+  statement: |
+    用:term[正弦]{id="math.analysis.sine"}和:term[余弦]{id="math.analysis.cosine"}的幂级数，求$\sin x\cos x$展开成幂级数后$x^3$的系数。
+  answer:
+    type: number
+    value: -2/3
+  hints:
+    - |
+      两个级数相乘时，只需要次数不超过$3$的项：$\sin x=x-\frac{x^3}{6}+\cdots$，$\cos x=1-\frac{x^2}{2}+\cdots$。
+    - |
+      $x^3$的系数来自$x\cdot\bigl(-\frac{x^2}{2}\bigr)$和$\bigl(-\frac{x^3}{6}\bigr)\cdot1$两项。
+    - |
+      两个级数都绝对收敛，由[级数的重排](lesson:math.analysis.rearrangement#thm-cauchy-product)的定理 3，乘积等于它们的:term[柯西乘积]{id="math.analysis.cauchy-product"}（Cauchy product），可以逐项相乘、合并同次项。$x^3$的系数是$-\frac12-\frac16=-\frac23$。也可以用定理 4：$\sin x\cos x=\frac12\sin2x$，$x^3$的系数是$\frac12\cdot\bigl(-\frac{2^3}{6}\bigr)=-\frac23$。
+  solution: |
+    $x^3$的系数来自$x\cdot\bigl(-\frac{x^2}{2}\bigr)$和$\bigl(-\frac{x^3}{6}\bigr)\cdot1$，是$-\frac12-\frac16=-\frac23$，填 `-2/3`。
+
+- id: p2
+  tier: easy
+  statement: |
+    设实数$a$、$b$满足$\sin a=\frac35$，$\cos a=\frac45$，$\sin b=\frac{5}{13}$，$\cos b=\frac{12}{13}$。求$\cos(a+b)$。
+  answer:
+    type: number
+    value: 33/65
+  hints:
+    - |
+      用和角公式（定理 4）。
+    - |
+      $\cos(a+b)=\cos a\cos b-\sin a\sin b$。
+    - |
+      $\cos(a+b)=\frac45\cdot\frac{12}{13}-\frac35\cdot\frac{5}{13}=\frac{48}{65}-\frac{15}{65}=\frac{33}{65}$。
+  solution: |
+    $\cos(a+b)=\frac45\cdot\frac{12}{13}-\frac35\cdot\frac{5}{13}=\frac{33}{65}$，填 `33/65`。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$f(x)=2\sin x-3\cos x$在$\R$上的最大值。
+  answer:
+    type: number
+    value: sqrt(13)
+  hints:
+    - |
+      先找:term[上界]{id="math.analysis.upper-bound"}（upper bound）：把$f(x)^2$和$\sin^2x+\cos^2x$联系起来。再找使上界取到的$x$。
+    - |
+      $(2\sin x-3\cos x)^2+(2\cos x+3\sin x)^2=13(\sin^2x+\cos^2x)=13$，所以$f(x)\le\sqrt{13}$。取到上界，要$(\cos x,\sin x)=\bigl(-\frac{3}{\sqrt{13}},\frac{2}{\sqrt{13}}\bigr)$。
+    - |
+      展开得$(2\sin x-3\cos x)^2+(2\cos x+3\sin x)^2=13(\sin^2x+\cos^2x)=13$，所以$f(x)^2\le13$，$f(x)\le\sqrt{13}$。点$\bigl(-\frac{3}{\sqrt{13}},\frac{2}{\sqrt{13}}\bigr)$在单位圆上，由定理 6，有$t$使$\cos t=-\frac{3}{\sqrt{13}}$、$\sin t=\frac{2}{\sqrt{13}}$。这时$f(t)=\frac{4}{\sqrt{13}}+\frac{9}{\sqrt{13}}=\sqrt{13}$，最大值是$\sqrt{13}\approx3.606$。
+  solution: |
+    $f(x)^2\le(2\sin x-3\cos x)^2+(2\cos x+3\sin x)^2=13$，所以$f\le\sqrt{13}$；由定理 6，取$t$使$(\cos t,\sin t)=\bigl(-\frac{3}{\sqrt{13}},\frac{2}{\sqrt{13}}\bigr)$，则$f(t)=\sqrt{13}$，填 `sqrt(13)`。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\sum_{n=0}^\infty\frac{(-1)^n\pi^{2n}}{4^n\,(2n+1)!}$。
+  answer:
+    type: number
+    value: 2/pi
+  hints:
+    - |
+      和$\sin x$的级数比较：每一项像是$\frac{(-1)^nx^{2n+1}}{(2n+1)!}$除以$x$。
+    - |
+      取$x=\frac{\pi}{2}$，则$x^{2n}=\frac{\pi^{2n}}{4^n}$；所求的和是$\frac{\sin x}{x}$在$x=\frac{\pi}{2}$处的值。
+    - |
+      $x\ne0$时，把$\sin x$的级数逐项除以$x$，得$\frac{\sin x}{x}=\sum_{n=0}^\infty\frac{(-1)^nx^{2n}}{(2n+1)!}$。取$x=\frac{\pi}{2}$，$x^{2n}=\frac{\pi^{2n}}{4^n}$，由定理 5，$\sin\frac{\pi}{2}=1$，所以和是$\frac{1}{\pi/2}=\frac{2}{\pi}\approx0.6366$。
+  solution: |
+    和是$\frac{\sin x}{x}$在$x=\frac{\pi}{2}$处的值，$\sin\frac{\pi}{2}=1$，所以等于$\frac{2}{\pi}$，填 `2/pi`。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明$3<\pi<3.2$。
+  hints:
+    - |
+      也就是证明$\cos$在$[0,1.5]$上没有零点，而在$(1.5,1.6)$里有。先证$(0,2]$上$\sin x>0$，于是$\cos$在$[0,2]$上严格递减，最多有一个零点。
+    - |
+      $0<x\le2$时，$\sin x$的级数各项的绝对值从第一项起递减，$\cos x$的从第二项起递减。把项两两结合，可以得到$\sin x>x-\frac{x^3}{6}$，以及$1-\frac{x^2}{2}+\frac{x^4}{24}-\frac{x^6}{720}<\cos x<1-\frac{x^2}{2}+\frac{x^4}{24}$。
+    - |
+      设$0<x\le2$。$\sin x$的级数各项绝对值$b_n=\frac{x^{2n+1}}{(2n+1)!}$满足$\frac{b_{n+1}}{b_n}=\frac{x^2}{(2n+2)(2n+3)}\le\frac46<1$，两两结合得$\sin x=(b_0-b_1)+(b_2-b_3)+\cdots>b_0-b_1=x\bigl(1-\frac{x^2}{6}\bigr)>0$。所以$\cos'=-\sin<0$，$\cos$在$[0,2]$上严格递减。
+
+      $\cos x$的各项绝对值$a_n=\frac{x^{2n}}{(2n)!}$满足$\frac{a_{n+1}}{a_n}=\frac{x^2}{(2n+1)(2n+2)}\le\frac{4}{12}<1$（$n\ge1$），从第四项、第五项起两两结合，得$a_0-a_1+a_2-a_3<\cos x<a_0-a_1+a_2$。代入数值：$\cos1.6<1-1.28+0.27307<-0.0069<0$；$\cos1.5>1-1.125+0.21094-0.01583>0.0701>0$。
+
+      $\cos$在$[0,2]$上严格递减，$\cos1.5>0$，所以$[0,1.5]$上没有零点；$\cos1.6<0$，由零点定理，零点在$(1.5,1.6)$里。于是$1.5<\frac{\pi}{2}<1.6$，即$3<\pi<3.2$。
+  reference: |
+    $0<x\le2$时，$\sin x$的级数各项绝对值递减，两两结合得$\sin x>x\bigl(1-\frac{x^2}{6}\bigr)>0$，所以$\cos$在$[0,2]$上严格递减。$\cos x$的级数从第二项起各项绝对值递减，两两结合得$1-\frac{x^2}{2}+\frac{x^4}{24}-\frac{x^6}{720}<\cos x<1-\frac{x^2}{2}+\frac{x^4}{24}$。
+
+    $\cos1.6<1-1.28+0.273067=-0.006933<0$，$\cos1.5>1-1.125+0.2109375-0.0158203=0.0701172>0$。$\cos$在$[0,2]$上严格递减，所以它的最小正零点在$(1.5,1.6)$里，$3<\pi<3.2$。
+
+- id: p6
+  tier: hard
+  statement: |
+    证明：$\sin x=0$当且仅当$x=k\pi$（$k$为整数）。再由此证明$2\pi$是$\sin$的最小正周期。
+  hints:
+    - |
+      先看$[0,\pi)$里的零点，再用$\sin(x+\pi)=-\sin x$推到整条直线上。
+    - |
+      $(0,\pi)$上$\sin>0$（定理 6 的证明）。设$T>0$是$\sin$的周期，先代入$x=0$，再代入$x=\frac{\pi}{2}$。
+    - |
+      $\sin 0=0$，$\sin\pi=-\sin0=0$；由定理 6 的证明，$(0,\pi)$上$\sin>0$。任取实数$x$，取整数$k$使$x=k\pi+r$，$r\in[0,\pi)$；由$\sin(x+\pi)=-\sin x$，$\sin x=(-1)^k\sin r$。所以$\sin x=0$当且仅当$\sin r=0$，当且仅当$r=0$，即$x=k\pi$。
+
+      由定理 5，$2\pi$是周期。设$T>0$也是周期，则$\sin T=\sin0=0$，所以$T=k\pi$，$k$是正整数。$k$为奇数时$\sin\bigl(\frac{\pi}{2}+T\bigr)=(-1)^k\sin\frac{\pi}{2}=-1\ne\sin\frac{\pi}{2}$，矛盾；所以$k$是偶数，$T\ge2\pi$。
+  reference: |
+    $(0,\pi)$上$\sin>0$，$\sin0=\sin\pi=0$。写$x=k\pi+r$，$r\in[0,\pi)$，则$\sin x=(-1)^k\sin r$，所以$\sin x=0$当且仅当$r=0$。
+
+    若$T>0$是周期，则$\sin T=0$，$T=k\pi$；$k$为奇数时$\sin\bigl(\frac{\pi}{2}+T\bigr)=-1\ne1$，所以$k$是偶数，$T\ge2\pi$，而$2\pi$确实是周期。
+
+- id: p7
+  tier: thinking
+  statement: |
+    这一节的$\pi$只用级数定义。它和几何里的$\pi$（圆的周长与直径之比）是同一个数吗？$(\cos t,\sin t)$里的$t$和几何里的角（弧度）是什么关系？为什么不直接用几何来定义三角函数？
+  hints:
+    - |
+      用弧长公式（arc length）算曲线$(\cos s,\sin s)$，$s$从$0$到$t$的长度，见[弧长与旋转曲面的面积](lesson:math.calculus.arc-length)。
+    - |
+      $\sqrt{(\cos s)'^2+(\sin s)'^2}=\sqrt{\sin^2s+\cos^2s}=1$，所以长度就是$t$。再想想几何定义要用到哪些还没有严格化的东西。
+    - |
+      曲线$(\cos s,\sin s)$，$0\le s\le t$，由定理 6，它从$(1,0)$出发沿单位圆走，不重复地经过角$[0,t]$对应的点（$t\le2\pi$）。它的长度是$\int_0^t\sqrt{\sin^2s+\cos^2s}\,\dd s=t$：$t$正是从$(1,0)$量起的弧长，也就是弧度制下的角。取$t=2\pi$，单位圆的周长是$2\pi$，直径是$2$，比值是$\pi$，两个$\pi$是同一个数。
+
+      几何定义要先有「角」和「弧长」：弧长要用积分定义，而算$\sin$、$\cos$的导数时，几何证明又要比较扇形和三角形的面积，面积和弧长的严格理论都要先建立。级数定义一步就给出每一点的值，导数、和角公式、周期都成了定理，几何意义最后再由弧长公式接上。
+  reference: |
+    弧长$\int_0^t\sqrt{\sin^2s+\cos^2s}\,\dd s=t$，所以$t$就是从$(1,0)$量起的弧长（弧度）；$t=2\pi$时得单位圆周长$2\pi$，与直径之比是$\pi$。
+
+    几何定义依赖角和弧长，而弧长、扇形面积都要先有积分理论，求导时还要用面积比较；级数定义直接给出函数值，所有性质都是定理，最后再用弧长公式说明它和几何定义一致。
+
+- id: p8
+  tier: thinking
+  statement: |
+    照这一节的做法，用$S'=C$、$C'=S$、$S(0)=0$、$C(0)=1$找一对幂级数$S$、$C$（注意没有负号）。它们满足什么样的「勾股恒等式」和和角公式？有没有正零点，是不是周期函数？定理 3 的证明还管用吗？
+  hints:
+    - |
+      照开头的推导比较系数，$S$、$C$的级数和$\sin$、$\cos$一样，只是没有$(-1)^n$。看$C^2-S^2$的导数。
+    - |
+      $(C^2-S^2)'=2CS-2SC=0$，所以$C^2-S^2=1$。定理 3 里的「能量」换成$f^2-f'^2$，它守恒，却不再是平方和。
+    - |
+      $C(x)=\sum_{n=0}^\infty\frac{x^{2n}}{(2n)!}$，$S(x)=\sum_{n=0}^\infty\frac{x^{2n+1}}{(2n+1)!}$，也就是$\frac{e^x+e^{-x}}{2}$和$\frac{e^x-e^{-x}}{2}$，微积分里叫双曲余弦（hyperbolic cosine）、双曲正弦（hyperbolic sine），见[双曲函数](lesson:math.calculus.hyperbolic-functions)。由$(C^2-S^2)'=0$得$C^2-S^2=1$：点$(C(x),S(x))$在双曲线$u^2-v^2=1$上，不在圆上。
+
+      和角公式是$S(x+y)=S(x)C(y)+C(x)S(y)$，$C(x+y)=C(x)C(y)+S(x)S(y)$。证明时定理 3 的办法失效：$f''=f$时守恒的是$f^2-f'^2$，它等于$0$推不出$f=0$。改用$g=f+f'$、$h=f-f'$：$g'=g$，$h'=-h$，初值都是$0$，由上一节:term[指数函数]{id="math.analysis.exponential-function"}（exponential function，exp）的唯一性（[那一节](lesson:math.analysis.exp-log-construction#thm-exp-unique)的定理 3，对$h$用$h(x)\exp x$的导数为$0$）得$g=h=0$，于是$f=0$。
+
+      $C(x)\ge1$，没有零点；$S$严格递增，不是周期函数。差别就在那个负号：$f''=-f$让「能量」$f^2+f'^2$守恒，解被关在圆上来回转；$f''=f$的解会像$e^x$那样一直长大。
+  reference: |
+    $C=\sum\frac{x^{2n}}{(2n)!}=\frac{e^x+e^{-x}}{2}$，$S=\sum\frac{x^{2n+1}}{(2n+1)!}=\frac{e^x-e^{-x}}{2}$，满足$C^2-S^2=1$，$S(x+y)=S(x)C(y)+C(x)S(y)$，$C(x+y)=C(x)C(y)+S(x)S(y)$。
+
+    定理 3 的能量论证失效（$f^2-f'^2$不定号），改用$f\pm f'$分别满足$g'=\pm g$，由指数函数的唯一性得零解。$C\ge1$无零点，$S$严格递增，都不是周期函数；负号决定了解是绕圆周转，还是指数式增长。

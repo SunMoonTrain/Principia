@@ -1,0 +1,139 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$f(x)=1+2\cos x-3\sin2x$。求$\int_{-\pi}^{\pi}f(x)^2\dd x$。
+  answer:
+    type: number
+    value: 15*pi
+  hints:
+    - |
+      不用展开平方：$f$是三角多项式，用正交性，或者直接用帕塞瓦尔等式。
+    - |
+      $f$的傅里叶系数是$a_0=2$（常数项$1=\frac{a_0}{2}$）、$a_1=2$、$b_2=-3$，其余为$0$。
+    - |
+      展开$f^2$后，由正交性，交叉项的积分都是$0$：$\int f^2=\int1^2+\int4\cos^2x+\int9\sin^22x=2\pi+4\pi+9\pi=15\pi\approx47.12$。用:term[帕塞瓦尔等式]{id="math.analysis.parseval-identity"}也一样：$\frac1\pi\int f^2=\frac{a_0^2}{2}+a_1^2+b_2^2=2+4+9=15$。
+  solution: |
+    由正交性，$\int f^2=2\pi+4\pi+9\pi=15\pi$，填 `15*pi`。
+
+- id: p2
+  tier: easy
+  statement: |
+    设$f(x)=|x|$（$-\pi\le x\le\pi$）。在所有常数$c$中，使$\int_{-\pi}^{\pi}\bigl(f(x)-c\bigr)^2\dd x$最小的$c$是多少？
+  answer:
+    type: number
+    value: pi/2
+  hints:
+    - |
+      常数是次数为$0$的三角多项式，用定理 1。
+    - |
+      最好的常数是$S_0=\frac{a_0}{2}$，也就是$f$在一个周期上的平均值。
+    - |
+      由定理 1（$N=0$），最好的常数是$S_0=\frac{a_0}{2}=\frac{1}{2\pi}\int_{-\pi}^{\pi}|x|\dd x=\frac{1}{2\pi}\cdot\pi^2=\frac{\pi}{2}\approx1.571$。
+  solution: |
+    $c=\frac{a_0}{2}=\frac{1}{2\pi}\int_{-\pi}^{\pi}|x|\dd x=\frac{\pi}{2}$，填 `pi/2`。
+
+- id: p3
+  tier: medium
+  statement: |
+    用$f(x)=|x|$（$-\pi\le x\le\pi$）的帕塞瓦尔等式，求$\sum_{k=1}^\infty\frac{1}{(2k-1)^4}=1+\frac{1}{3^4}+\frac{1}{5^4}+\cdots$。
+  answer:
+    type: number
+    value: pi^4/96
+  hints:
+    - |
+      $|x|$延拓后连续、分段光滑，定理 3 (2) 适用。它的系数在[傅里叶级数](lesson:math.analysis.fourier-series)第 3 题算过。
+    - |
+      $a_0=\pi$，$a_{2k-1}=-\frac{4}{\pi(2k-1)^2}$，其余系数为$0$；$\frac1\pi\int_{-\pi}^{\pi}x^2\dd x=\frac{2\pi^2}{3}$。
+    - |
+      由帕塞瓦尔等式，$\frac{\pi^2}{2}+\sum_{k=1}^\infty\frac{16}{\pi^2(2k-1)^4}=\frac{2\pi^2}{3}$，所以$\frac{16}{\pi^2}\sum\frac{1}{(2k-1)^4}=\frac{\pi^2}{6}$，$\sum_{k=1}^\infty\frac{1}{(2k-1)^4}=\frac{\pi^4}{96}\approx1.0147$。
+  solution: |
+    $\frac{\pi^2}{2}+\frac{16}{\pi^2}\sum\frac{1}{(2k-1)^4}=\frac{2\pi^2}{3}$，所以和是$\frac{\pi^4}{96}$，填 `pi^4/96`。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$f(x)=x$（$-\pi<x<\pi$）。在所有次数不超过$2$的三角多项式$T$中，$\int_{-\pi}^{\pi}\bigl(f(x)-T(x)\bigr)^2\dd x$的最小值是多少？
+  answer:
+    type: number
+    value: 2*pi^3/3 - 5*pi
+  hints:
+    - |
+      由定理 1，最小值在$T=S_2$时取到，值是$\int f^2-\pi\bigl(\frac{a_0^2}{2}+\sum_{n=1}^2(a_n^2+b_n^2)\bigr)$。
+    - |
+      $x$的系数：$a_n=0$，$b_n=\frac{2(-1)^{n+1}}{n}$，所以$b_1=2$、$b_2=-1$。
+    - |
+      $\int_{-\pi}^{\pi}x^2\dd x=\frac{2\pi^3}{3}$。由定理 1，最小值是$\frac{2\pi^3}{3}-\pi(b_1^2+b_2^2)=\frac{2\pi^3}{3}-\pi(4+1)=\frac{2\pi^3}{3}-5\pi\approx4.963$。定理 1 对任何可积函数都成立，$x$延拓后不连续也没关系。
+  solution: |
+    最小值是$\int x^2-\pi(b_1^2+b_2^2)=\frac{2\pi^3}{3}-5\pi$，填 `2*pi^3/3-5*pi`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$、$g$都以$2\pi$为周期、连续、在$[-\pi,\pi]$上分段光滑，傅里叶系数分别是$a_n,b_n$和$\alpha_n,\beta_n$。证明$\frac1\pi\int_{-\pi}^{\pi}f(x)g(x)\dd x=\frac{a_0\alpha_0}{2}+\sum_{n=1}^\infty(a_n\alpha_n+b_n\beta_n)$。
+  hints:
+    - |
+      对$f+g$和$f-g$分别用帕塞瓦尔等式，再相减。
+    - |
+      $fg=\frac14\bigl[(f+g)^2-(f-g)^2\bigr]$；$f\pm g$的傅里叶系数是$a_n\pm\alpha_n$、$b_n\pm\beta_n$。
+    - |
+      $f+g$、$f-g$也以$2\pi$为周期、连续、分段光滑（把两者的分点合在一起），由定理 3 (2)，它们满足帕塞瓦尔等式。傅里叶系数对函数是线性的，$f\pm g$的系数是$a_n\pm\alpha_n$、$b_n\pm\beta_n$。
+
+      所以$\frac1\pi\int(f+g)^2=\frac{(a_0+\alpha_0)^2}{2}+\sum\bigl((a_n+\alpha_n)^2+(b_n+\beta_n)^2\bigr)$，$f-g$同理。两式相减再除以$4$：左边是$\frac1\pi\int fg$，右边由$(u+v)^2-(u-v)^2=4uv$，得$\frac{a_0\alpha_0}{2}+\sum(a_n\alpha_n+b_n\beta_n)$。两个级数都收敛，相减可以逐项进行。
+  reference: |
+    $f\pm g$满足定理 3 (2) 的条件，系数为$a_n\pm\alpha_n$、$b_n\pm\beta_n$。对两者写帕塞瓦尔等式，相减除以$4$，用$(u+v)^2-(u-v)^2=4uv$，即得。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$以$2\pi$为周期、连续、在$[-\pi,\pi]$上分段光滑，并且$\int_{-\pi}^{\pi}f(x)\dd x=0$。证明$\int_{-\pi}^{\pi}f(x)^2\dd x\le\int_{-\pi}^{\pi}f'(x)^2\dd x$，并且等号只在$f(x)=a\cos x+b\sin x$时成立。
+  hints:
+    - |
+      $f'$的傅里叶系数是什么？对$f$用帕塞瓦尔等式，对$f'$用贝塞尔不等式。
+    - |
+      $f'$的系数是$nb_n$、$-na_n$（分部积分，用到$f(-\pi)=f(\pi)$）；$a_0=0$。比较$\sum(a_n^2+b_n^2)$和$\sum n^2(a_n^2+b_n^2)$。
+    - |
+      $a_0=\frac1\pi\int f=0$。分部积分，$f'$的傅里叶系数是$nb_n$和$-na_n$（边界项因$f(-\pi)=f(\pi)$而消去）。由帕塞瓦尔等式，$\frac1\pi\int f^2=\sum_{n=1}^\infty(a_n^2+b_n^2)$；由:term[贝塞尔不等式]{id="math.analysis.bessel-inequality"}，$\sum_{n=1}^\infty n^2(a_n^2+b_n^2)\le\frac1\pi\int f'^2$。而$n^2\ge1$，所以$\int f^2\le\int f'^2$。
+
+      等号成立时，$\sum(n^2-1)(a_n^2+b_n^2)=0$，各项非负，所以$n\ge2$时$a_n=b_n=0$。于是$f$的部分和$S_N=a_1\cos x+b_1\sin x$（$N\ge1$），由:term[狄利克雷定理]{id="math.analysis.dirichlet-theorem"}（Dirichlet's theorem），连续的$f$就是这个级数的和，$f=a_1\cos x+b_1\sin x$。反过来，这样的$f$确实取等号。这叫作维尔丁格不等式（Wirtinger's inequality），可以用来证明平面上的等周不等式（isoperimetric inequality，见[等周问题](lesson:math.calculus-of-variations.isoperimetric-problems)）。
+  reference: |
+    $a_0=0$，$f'$的系数是$nb_n$、$-na_n$。帕塞瓦尔：$\frac1\pi\int f^2=\sum(a_n^2+b_n^2)$；贝塞尔：$\sum n^2(a_n^2+b_n^2)\le\frac1\pi\int f'^2$。由$n^2\ge1$得不等式。
+
+    等号要求$n\ge2$的系数全为$0$，由狄利克雷定理$f=a_1\cos x+b_1\sin x$；反之这样的$f$取等号。
+
+- id: p7
+  tier: thinking
+  statement: |
+    把三角函数系里的$\cos x$去掉，剩下的函数仍然两两正交。对这个「残缺」的函数系，定理 1、贝塞尔不等式还成立吗？帕塞瓦尔等式呢？「完备」在这里是什么意思？
+  hints:
+    - |
+      定理 1 和贝塞尔不等式的证明，用到的只是正交性。试试$f=\cos x$。
+    - |
+      $\cos x$和剩下的每个函数都正交，所以它在残缺函数系下的「系数」全是$0$。
+    - |
+      定理 1 和贝塞尔不等式的证明只用到两两正交，对任何正交函数系都成立。可帕塞瓦尔等式不一定：取$f=\cos x$，它和剩下的每个函数都正交，所有「系数」都是$0$，左边是$0$，而$\frac1\pi\int\cos^2x\dd x=1$。部分和永远是$0$，误差$\|f-0\|$不会趋于$0$。
+
+      所以帕塞瓦尔等式成立，意味着函数系「够用」：没有一个非零函数能和其中所有函数都正交，也就是说，每个函数都能被它们的有限组合平方平均地任意逼近。这就叫完备（complete）。有限维时，「两两正交、个数等于维数」就保证完备；无穷维时个数说明不了问题，去掉一个，剩下的仍然有无穷多个，却不完备了。
+  reference: |
+    定理 1、贝塞尔不等式只用到正交性，仍成立。帕塞瓦尔等式失效：$f=\cos x$的所有系数为$0$，左边$0$，右边$1$。
+
+    完备：没有非零函数与系中所有函数正交，等价于每个函数都能被有限组合平方平均逼近，等价于帕塞瓦尔等式对所有$f$成立。无穷维时不能靠数个数判断完备。
+
+- id: p8
+  tier: thinking
+  statement: |
+    定理 3 (2) 只对连续、分段光滑的周期函数证明了帕塞瓦尔等式。怎样推到$[-\pi,\pi]$上任意的可积函数，比如延拓后有跳跃的$f(x)=x$？推出来以后，对$f(x)=x$用它，能得到什么？
+  hints:
+    - |
+      先用一个连续、分段线性（piecewise linear）、两端相等的函数$g$在平方平均意义下逼近$f$，再用$g$的傅里叶部分和逼近$g$，最后用定理 1 把两步接起来。
+    - |
+      若$\|f-g\|<\varepsilon$，$\|g-S_N(g)\|<\varepsilon$，则$\|f-S_N(f)\|\le\|f-S_N(g)\|\le\|f-g\|+\|g-S_N(g)\|<2\varepsilon$。第一个不等号是定理 1：$S_N(g)$是次数不超过$N$的三角多项式。
+    - |
+      第一步：可积函数$f$:term[有界]{id="math.analysis.bounded-function"}（bounded function），取细的:term[分割]{id="math.analysis.partition"}（partition），在每个小区间上用连接端点处:term[下和]{id="math.analysis.lower-sum"}（lower sum）对应高度的折线（并在$\pm\pi$附近改成两端相等），可以得到连续、分段线性、周期的$g$，使$\|f-g\|<\varepsilon$。这里用到:term[上和]{id="math.analysis.upper-sum"}（upper sum）与下和之差能任意小，细节要小心，但不需要新的想法。
+
+      第二步：$g$连续、分段光滑，由定理 3 (2)，$N$足够大时$\|g-S_N(g)\|<\varepsilon$。由定理 1，$\|f-S_N(f)\|\le\|f-S_N(g)\|\le\|f-g\|+\|g-S_N(g)\|<2\varepsilon$，所以$f$的级数平方平均收敛，由定理 3 (1)，帕塞瓦尔等式成立。
+
+      对$f(x)=x$：$b_n=\frac{2(-1)^{n+1}}{n}$，$\frac1\pi\int_{-\pi}^{\pi}x^2\dd x=\frac{2\pi^2}{3}$，于是$\sum\frac{4}{n^2}=\frac{2\pi^2}{3}$，$\sum_{n=1}^\infty\frac{1}{n^2}=\frac{\pi^2}{6}$，和[傅里叶级数的收敛](lesson:math.analysis.fourier-convergence)第 3 题用逐点收敛得到的结果一致。
+  reference: |
+    用连续分段线性周期函数$g$平方平均逼近$f$（$\|f-g\|<\varepsilon$），再由定理 3 (2) 取$N$使$\|g-S_N(g)\|<\varepsilon$；由定理 1，$\|f-S_N(f)\|\le\|f-S_N(g)\|<2\varepsilon$，所以平方平均收敛，帕塞瓦尔等式成立。
+
+    对$f=x$得$\sum\frac{4}{n^2}=\frac{2\pi^2}{3}$，即$\sum\frac{1}{n^2}=\frac{\pi^2}{6}$。

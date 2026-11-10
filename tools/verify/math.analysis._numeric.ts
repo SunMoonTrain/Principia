@@ -1,7 +1,7 @@
 // math.analysis 验算脚本共用的数值小工具（批次 2 起用）。
 // 文件名第三段以下划线开头，npm run verify 不把它当成小节脚本（见 docs/plan.md「每批的流程」第 3 条）。
 // 这里只放和具体题目无关的算法：Richardson 外推、数列收不收敛、一点处最大的 δ、连续模；
-// 批次 3 加了达布和，批次 4 加了部分和、上确界、辛普森积分和切比雪夫插值。
+// 批次 3 加了达布和，批次 4 加了部分和、上确界、辛普森积分和切比雪夫插值，批次 5 加了自适应辛普森积分和解线性方程组。
 
 import { infOfPredicate, supOfPredicate } from './lib.ts';
 
@@ -169,6 +169,85 @@ export function simpson(f: (x: number) => number, a: number, b: number, n: numbe
   let s = f(a) + f(b);
   for (let i = 1; i < m; i++) s += (i % 2 === 1 ? 4 : 2) * f(a + i * h);
   return (s * h) / 3;
+}
+
+/** 自适应辛普森积分：误差估计超过 tol 的段对半再分，最多分 depth 层（批次 5 起用）。 */
+export function adaptiveSimpson(f: (x: number) => number, a: number, b: number, tol = 1e-12, depth = 50): number {
+  const simpsonOn = (fa: number, fm: number, fb: number, h: number): number => ((fa + 4 * fm + fb) * h) / 6;
+  const step = (lo: number, hi: number, flo: number, fmid: number, fhi: number, whole: number, eps: number, d: number): number => {
+    const mid = (lo + hi) / 2;
+    const fl = f((lo + mid) / 2);
+    const fr = f((mid + hi) / 2);
+    const left = simpsonOn(flo, fl, fmid, mid - lo);
+    const right = simpsonOn(fmid, fr, fhi, hi - mid);
+    if (d <= 0 || Math.abs(left + right - whole) <= 15 * eps) return left + right + (left + right - whole) / 15;
+    return step(lo, mid, flo, fl, fmid, left, eps / 2, d - 1) + step(mid, hi, fmid, fr, fhi, right, eps / 2, d - 1);
+  };
+  const fa = f(a);
+  const fb = f(b);
+  const fm = f((a + b) / 2);
+  return step(a, b, fa, fm, fb, simpsonOn(fa, fm, fb, b - a), tol, depth);
+}
+
+/** n 点高斯-勒让德求积的节点和权重（[−1, 1] 上；牛顿迭代求勒让德多项式的根）（批次 5 起用）。 */
+export function gaussLegendreRule(n: number): { nodes: number[]; weights: number[] } {
+  const nodes: number[] = [];
+  const weights: number[] = [];
+  for (let i = 1; i <= n; i++) {
+    let x = Math.cos((Math.PI * (i - 0.25)) / (n + 0.5));
+    let dp = 0;
+    for (let it = 0; it < 100; it++) {
+      let p0 = 1;
+      let p1 = x;
+      for (let k = 2; k <= n; k++) {
+        const p2 = ((2 * k - 1) * x * p1 - (k - 1) * p0) / k;
+        p0 = p1;
+        p1 = p2;
+      }
+      dp = (n * (x * p1 - p0)) / (x * x - 1);
+      const dx = p1 / dp;
+      x -= dx;
+      if (Math.abs(dx) < 1e-16) break;
+    }
+    nodes.push(x);
+    weights.push(2 / ((1 - x * x) * dp * dp));
+  }
+  return { nodes, weights };
+}
+
+/** 分段高斯-勒让德求积：points 是从小到大的分段点，每段用 rule 的节点（不取分段点本身）（批次 5 起用）。 */
+export function gaussLegendre(f: (x: number) => number, points: number[], rule = gaussLegendreRule(20)): number {
+  let s = 0;
+  for (let i = 1; i < points.length; i++) {
+    const h = (points[i] - points[i - 1]) / 2;
+    const m = (points[i] + points[i - 1]) / 2;
+    let part = 0;
+    for (let j = 0; j < rule.nodes.length; j++) part += rule.weights[j] * f(m + h * rule.nodes[j]);
+    s += part * h;
+  }
+  return s;
+}
+
+/** 解线性方程组 Ax = b（列主元高斯消去）（批次 5 起用）。 */
+export function solveLinear(A: number[][], b: number[]): number[] {
+  const n = b.length;
+  const M = A.map((row, i) => [...row, b[i]]);
+  for (let c = 0; c < n; c++) {
+    let p = c;
+    for (let r = c + 1; r < n; r++) if (Math.abs(M[r][c]) > Math.abs(M[p][c])) p = r;
+    [M[c], M[p]] = [M[p], M[c]];
+    for (let r = c + 1; r < n; r++) {
+      const k = M[r][c] / M[c][c];
+      for (let j = c; j <= n; j++) M[r][j] -= k * M[c][j];
+    }
+  }
+  const x = new Array<number>(n).fill(0);
+  for (let r = n - 1; r >= 0; r--) {
+    let s = M[r][n];
+    for (let j = r + 1; j < n; j++) s -= M[r][j] * x[j];
+    x[r] = s / M[r][r];
+  }
+  return x;
 }
 
 /** f 在 [a, b] 上的 k 次切比雪夫插值多项式（第一类切比雪夫点，重心公式求值）（批次 4 起用）。 */

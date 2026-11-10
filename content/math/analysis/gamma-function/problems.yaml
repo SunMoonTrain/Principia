@@ -1,0 +1,143 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\int_0^\infty x^5e^{-x}\dd x$。
+  answer:
+    type: number
+    value: 120
+  hints:
+    - |
+      这个积分是:term[伽马函数]{id="math.analysis.gamma-function"}在哪一点的值？
+    - |
+      $\int_0^\infty x^5e^{-x}\dd x=\Gamma(6)$。
+    - |
+      被积函数是$x^{6-1}e^{-x}$，所以积分是$\Gamma(6)$。由定理 2，$\Gamma(6)=5!=120$。
+  solution: |
+    $\int_0^\infty x^5e^{-x}\dd x=\Gamma(6)=5!=120$，填 `120`。
+
+- id: p2
+  tier: easy
+  statement: |
+    求$\Gamma\bigl(\frac92\bigr)$。
+  answer:
+    type: number
+    value: 105*sqrt(pi)/16
+  hints:
+    - |
+      用递推公式把$\Gamma\bigl(\frac92\bigr)$一步步降到$\Gamma\bigl(\frac12\bigr)$。
+    - |
+      $\Gamma\bigl(\frac92\bigr)=\frac72\cdot\frac52\cdot\frac32\cdot\frac12\cdot\Gamma\bigl(\frac12\bigr)$。
+    - |
+      由定理 2，$\Gamma\bigl(\frac92\bigr)=\frac72\Gamma\bigl(\frac72\bigr)=\frac72\cdot\frac52\cdot\frac32\cdot\frac12\cdot\Gamma\bigl(\frac12\bigr)=\frac{105}{16}\sqrt\pi\approx11.63$。
+  solution: |
+    $\Gamma\bigl(\frac92\bigr)=\frac72\cdot\frac52\cdot\frac32\cdot\frac12\sqrt\pi=\frac{105\sqrt\pi}{16}$，填 `105*sqrt(pi)/16`。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\int_0^\infty\sqrt{x}\,e^{-2x}\dd x$。
+  answer:
+    type: number
+    value: sqrt(2*pi)/8
+  hints:
+    - |
+      换元$t=2x$，把$e^{-2x}$变成$e^{-t}$，再认出伽马函数。
+    - |
+      $\int_0^\infty\sqrt x\,e^{-2x}\dd x=\int_0^\infty\sqrt{\tfrac t2}\,e^{-t}\cdot\frac12\dd t=2^{-3/2}\Gamma\bigl(\frac32\bigr)$。
+    - |
+      令$t=2x$，$\dd x=\frac12\dd t$，积分变成$\frac{1}{2\sqrt2}\int_0^\infty t^{1/2}e^{-t}\dd t=\frac{1}{2\sqrt2}\Gamma\bigl(\frac32\bigr)$。由定理 2、定理 3，$\Gamma\bigl(\frac32\bigr)=\frac12\sqrt\pi$，所以积分是$\frac{\sqrt\pi}{4\sqrt2}=\frac{\sqrt{2\pi}}{8}\approx0.3133$。
+  solution: |
+    令$t=2x$，积分是$2^{-3/2}\Gamma\bigl(\frac32\bigr)=2^{-3/2}\cdot\frac{\sqrt\pi}{2}=\frac{\sqrt{2\pi}}{8}$，填 `sqrt(2*pi)/8`。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\int_0^1x^2(\ln x)^2\dd x$。
+  answer:
+    type: number
+    value: 2/27
+  hints:
+    - |
+      换元$x=e^{-t}$，把区间$(0,1]$变成$[0,+\infty)$。
+    - |
+      $x=e^{-t}$时$\ln x=-t$，$\dd x=-e^{-t}\dd t$，积分变成$\int_0^\infty t^2e^{-3t}\dd t$。
+    - |
+      令$x=e^{-t}$，$x$从$0$到$1$对应$t$从$+\infty$到$0$，积分变成$\int_0^\infty e^{-2t}t^2e^{-t}\dd t=\int_0^\infty t^2e^{-3t}\dd t$。再令$s=3t$，得$\frac{1}{27}\int_0^\infty s^2e^{-s}\dd s=\frac{\Gamma(3)}{27}=\frac{2}{27}\approx0.07407$。
+  solution: |
+    令$x=e^{-t}$，积分变成$\int_0^\infty t^2e^{-3t}\dd t=\frac{\Gamma(3)}{27}=\frac{2}{27}$，填 `2/27`。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明$\Gamma$在$(0,+\infty)$上二阶可导，并且$\Gamma''>0$；再证明$\Gamma$在$(1,2)$里恰有一个最小值点，并且在这一点左边严格递减、右边严格递增。
+  hints:
+    - |
+      照定理 4 的证明，再对$x$求一次导，找控制函数（dominating function）。
+    - |
+      $\Gamma''(x)=\int_0^\infty t^{x-1}(\ln t)^2e^{-t}\dd t>0$。$\Gamma(1)=\Gamma(2)=1$，用罗尔定理（Rolle's theorem）。
+    - |
+      在$[1,+\infty)\times[c,d]$上，$\bigl|t^{x-1}(\ln t)^2e^{-t}\bigr|\le t^{d+1}e^{-t}$（因为$(\ln t)^2\le t^2$），积分收敛；$\int_0^1$那一段换元$t=\frac1s$后，偏导数的绝对值不超过$s^{-c-1}(\ln s)^2$，在$[1,+\infty)$上积分收敛。由[含参变量积分](lesson:math.analysis.parameter-integrals#thm-leibniz-improper)的定理 4，$\Gamma''(x)=\int_0^\infty t^{x-1}(\ln t)^2e^{-t}\dd t$，被积函数除$t=1$外都是正的，所以$\Gamma''>0$。
+
+      于是$\Gamma'$严格递增。$\Gamma(1)=\Gamma(2)=1$，由:term[罗尔定理]{id="math.analysis.rolle-theorem"}，有$x_0\in(1,2)$使$\Gamma'(x_0)=0$；$\Gamma'$严格递增，所以$x<x_0$时$\Gamma'(x)<0$，$x>x_0$时$\Gamma'(x)>0$。由:term[拉格朗日中值定理]{id="math.analysis.mean-value-theorem"}（mean value theorem），$\Gamma$在$(0,x_0]$上严格递减，在$[x_0,+\infty)$上严格递增，$x_0$是唯一的最小值点（约为$1.4616$）。
+  reference: |
+    控制函数：$[1,+\infty)$上用$t^{d+1}e^{-t}$，$(0,1]$上换元$t=\frac1s$后用$s^{-c-1}(\ln s)^2$。由积分号下求导，$\Gamma''(x)=\int_0^\infty t^{x-1}(\ln t)^2e^{-t}\dd t>0$。
+
+    $\Gamma'$严格递增；$\Gamma(1)=\Gamma(2)$，由罗尔定理有$x_0\in(1,2)$使$\Gamma'(x_0)=0$，于是$\Gamma'$在$x_0$左边为负、右边为正，$\Gamma$先严格递减后严格递增，$x_0\approx1.4616$是唯一的最小值点。
+
+- id: p6
+  tier: hard
+  statement: |
+    对$a,b>0$，记$B(a,b)=\int_0^1t^{a-1}(1-t)^{b-1}\dd t$，叫作贝塔函数（beta function）。证明$B(a,b)=\frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}$。
+  hints:
+    - |
+      换元$t=u^2$，把$\Gamma(a)$写成$2\int_0^\infty u^{2a-1}e^{-u^2}\dd u$；于是$\Gamma(a)\Gamma(b)$是第一象限上的一个二重积分，换成极坐标。
+    - |
+      $\Gamma(a)\Gamma(b)=4\int_0^{\pi/2}\cos^{2a-1}\theta\sin^{2b-1}\theta\dd\theta\cdot\int_0^\infty r^{2a+2b-1}e^{-r^2}\dd r$。分别认出两个因子：一个与$B(a,b)$有关，一个与$\Gamma(a+b)$有关。
+    - |
+      由$t=u^2$，$\Gamma(a)=2\int_0^\infty u^{2a-1}e^{-u^2}\dd u$，所以$\Gamma(a)\Gamma(b)=4\iint u^{2a-1}v^{2b-1}e^{-(u^2+v^2)}\dd u\dd v$，积分区域是第一象限。被积函数非负，照[极坐标下的二重积分](lesson:math.vector-calculus.polar-double-integrals)对$e^{-x^2-y^2}$的做法，用正方形$[0,R]^2$和四分之一圆盘互相夹住再令$R\to\infty$，可以换成极坐标$u=r\cos\theta$、$v=r\sin\theta$：$\Gamma(a)\Gamma(b)=4\int_0^{\pi/2}\cos^{2a-1}\theta\sin^{2b-1}\theta\dd\theta\int_0^\infty r^{2a+2b-1}e^{-r^2}\dd r$。
+
+      第二个因子令$s=r^2$，等于$\frac12\Gamma(a+b)$。第一个因子：在$B(a,b)$里令$t=\cos^2\theta$，$\dd t=-2\cos\theta\sin\theta\dd\theta$，得$B(a,b)=2\int_0^{\pi/2}\cos^{2a-1}\theta\sin^{2b-1}\theta\dd\theta$。所以$\Gamma(a)\Gamma(b)=2\cdot\frac{B(a,b)}{2}\cdot2\cdot\frac{\Gamma(a+b)}{2}=B(a,b)\Gamma(a+b)$。
+  reference: |
+    $\Gamma(a)\Gamma(b)=4\iint_{u,v>0}u^{2a-1}v^{2b-1}e^{-(u^2+v^2)}\dd u\dd v$，被积函数非负，换成极坐标（正方形与四分之一圆盘互相夹住取极限）得$4\int_0^{\pi/2}\cos^{2a-1}\theta\sin^{2b-1}\theta\dd\theta\int_0^\infty r^{2a+2b-1}e^{-r^2}\dd r$。
+
+    后一个积分是$\frac12\Gamma(a+b)$；在$B(a,b)$里令$t=\cos^2\theta$得前一个积分等于$\frac12B(a,b)$。相乘即$\Gamma(a)\Gamma(b)=B(a,b)\Gamma(a+b)$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    积分只在$x>0$时收敛，能不能用递推公式$\Gamma(x)=\frac{\Gamma(x+1)}{x}$把$\Gamma$推广到负数上？$\Gamma\bigl(-\frac12\bigr)$应该等于多少？在$0,-1,-2,\dots$处会出什么事？推广后的$\Gamma$在$(-1,0)$、$(-2,-1)$上是正的还是负的？
+  hints:
+    - |
+      对$-1<x<0$，$x+1$已经是正数，$\Gamma(x+1)$有定义；再往左，就多用几次递推。
+    - |
+      $\Gamma\bigl(-\frac12\bigr)=\frac{\Gamma(\frac12)}{-1/2}$。$x\to0$时$\Gamma(x)=\frac{\Gamma(x+1)}{x}$，分子趋于$1$。
+    - |
+      对不是非正整数的$x<0$，取正整数$n$使$x+n>0$，定义$\Gamma(x)=\frac{\Gamma(x+n)}{x(x+1)\cdots(x+n-1)}$。由递推公式，换一个更大的$n$结果不变，所以定义没有歧义，而且推广后的$\Gamma$在整个定义域上仍满足$\Gamma(x+1)=x\Gamma(x)$。
+
+      $\Gamma\bigl(-\frac12\bigr)=\frac{\Gamma(1/2)}{-1/2}=-2\sqrt\pi$。$x\to0$时$\Gamma(x)=\frac{\Gamma(x+1)}{x}$，分子趋于$\Gamma(1)=1$，所以$|\Gamma(x)|\to+\infty$；同样，在每个$-k$（$k$是自然数）附近$|\Gamma|\to+\infty$，这些点上无法定义$\Gamma$。
+
+      符号：$(-1,0)$上分母$x<0$，分子$\Gamma(x+1)>0$，所以$\Gamma<0$；$(-2,-1)$上$\Gamma(x)=\frac{\Gamma(x+2)}{x(x+1)}$，分母是两个负数之积，为正，所以$\Gamma>0$。依此类推，每经过一个负整数，符号就变一次。
+  reference: |
+    取$n$使$x+n>0$，定义$\Gamma(x)=\frac{\Gamma(x+n)}{x(x+1)\cdots(x+n-1)}$（与$n$的选取无关），它满足同样的递推公式。$\Gamma(-\frac12)=-2\sqrt\pi$。
+
+    在$0,-1,-2,\dots$附近$|\Gamma|\to+\infty$，无法定义。符号：$(-1,0)$上为负，$(-2,-1)$上为正，此后交替。
+
+- id: p8
+  tier: thinking
+  statement: |
+    函数$f(x)=\Gamma(x)\bigl(1+\frac12\sin2\pi x\bigr)$在$(0,+\infty)$上处处为正、可导，也满足$f(x+1)=xf(x)$、$f(1)=1$。所以「把阶乘光滑地连起来」的函数不止$\Gamma$一个。要再加什么条件，才能唯一地确定$\Gamma$？
+  hints:
+    - |
+      先验证$f$确实满足这些条件。再看$\ln\Gamma$和$\ln f$的图像有什么不同。
+    - |
+      $\ln\Gamma$是凸函数（convex function），$\ln f$不是：$\ln f$多出的那一项$\ln\bigl(1+\frac12\sin2\pi x\bigr)$在一个周期里有向下弯得很厉害的地方。
+    - |
+      $\sin2\pi(x+1)=\sin2\pi x$，所以$f(x+1)=x\Gamma(x)\bigl(1+\frac12\sin2\pi x\bigr)=xf(x)$；$f(1)=\Gamma(1)\cdot1=1$；$1+\frac12\sin2\pi x\ge\frac12$，所以$f>0$。
+
+      要加的条件是$\ln f$为凸函数，即$f$对数凸（logarithmically convex）。玻尔-莫勒鲁普定理（Bohr-Mollerup theorem）说：在$(0,+\infty)$上满足$f(x+1)=xf(x)$、$f(1)=1$并且$\ln f$为凸函数的正函数只有$\Gamma$。$\ln\Gamma$确实是凸的（可以由施瓦茨不等式（Schwarz inequality）证明$\Gamma\Gamma''\ge(\Gamma')^2$）。
+
+      上面的$f$不满足这个条件：记$h(x)=\ln\bigl(1+\frac12\sin2\pi x\bigr)$，在$\sin2\pi x=1$的点$h''=-\frac{4\pi^2}{3}\approx-13.2$，而$(\ln\Gamma)''$在$(1,2)$里只有$1$左右，所以$\ln f=\ln\Gamma+h$在那里不是凸的。只要「光滑」，就挡不住这种摆动；对数凸把摆动排除掉了。
+  reference: |
+    $f$满足递推、$f(1)=1$、$f>0$。唯一性要加对数凸：玻尔-莫勒鲁普定理说，$(0,+\infty)$上满足$f(x+1)=xf(x)$、$f(1)=1$且$\ln f$凸的正函数只有$\Gamma$。
+
+    $\ln\Gamma$是凸的（$\Gamma\Gamma''\ge\Gamma'^2$，由施瓦茨不等式）；而$\ln f=\ln\Gamma+\ln(1+\frac12\sin2\pi x)$在$\sin2\pi x=1$处二阶导数约为$(\ln\Gamma)''-13.2<0$，不是凸的。
