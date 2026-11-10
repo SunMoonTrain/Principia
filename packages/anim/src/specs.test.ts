@@ -36,6 +36,9 @@ describe('第一批组件的参数检查', () => {
     expect(problems('phase-portrait', { ...ok, system: { t: 'x', x: 't' }, range: { t: [0, 1], x: [0, 1] } })).toEqual(['system：状态变量不能叫 t（t 是时间）']);
     expect(problems('phase-portrait', { ...ok, range: { x: [-3, 3], y: [-2, 2] } })).toEqual(['range：range 的键要和 system 的一样（q、p）']);
     expect(problems('phase-portrait', { ...ok, dt: 0 })[0]).toMatch(/^dt/);
+    expect(problems('phase-portrait', { ...ok, trail: 'full' })).toEqual([]);
+    expect(problems('phase-portrait', { ...ok, trail: 'fade' })).toEqual([]);
+    expect(problems('phase-portrait', { ...ok, trail: 'long' })[0]).toMatch(/^trail/);
     expect(SPECS['phase-portrait'].reserved(ok as never)).toEqual(['q', 'p']);
   });
 

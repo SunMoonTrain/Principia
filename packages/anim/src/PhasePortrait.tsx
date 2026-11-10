@@ -1,5 +1,6 @@
 // PhasePortrait：二维相平面。方向场画成小箭头，轨迹是跑动的点加尾迹；在图上点一下，就从那里放一条新轨迹。
 // 写法见 docs/plan.md「附录：动画组件参数」。改了滑块，所有轨迹从各自的起点、t = 0 重新开始，方便比较不同参数下的相图。
+// trail: full 时尾迹整条留着、不变淡，轨迹跑出画面就停：画一阶方程的解曲线用（横轴的变量匀速增加）。
 
 import { useCallback, useEffect, useMemo, type PointerEvent } from 'react';
 import { compileExpr, type CompiledExpr } from './expr';
@@ -28,15 +29,20 @@ const MAX_TRAJECTORIES = 12;
 /** 尾迹保留多长的模拟时间（秒），最多多少个点。 */
 const TRAIL_SECONDS = 8;
 const MAX_TRAIL = 3000;
+/** trail: full 时一条轨迹最多留多少个点（到了就停），两次记下的点至少隔开显示范围的多少。 */
+export const MAX_FULL_TRAIL = 20000;
+const FULL_MIN_STEP = 1e-3;
 /** 跑到这么远就不再算了（发散的轨迹）。 */
 const ESCAPE = 1e6;
+
+type Bounds = readonly [readonly [number, number], readonly [number, number]];
 
 interface Trajectory {
   start: [number, number];
   /** 在图上点出来的（重置时去掉）。 */
   user: boolean;
   y: Float64Array;
-  /** 尾迹：环形缓冲区，每个点两个数。 */
+  /** 尾迹：环形缓冲区，每个点两个数；trail: full 时不覆盖旧点，满了就加倍。 */
   trail: Float64Array;
   length: number;
   head: number;
@@ -44,18 +50,26 @@ interface Trajectory {
   stopped: boolean;
 }
 
-class PhaseSim {
+export class PhaseSim {
   t = 0;
   list: Trajectory[] = [];
   readonly clock: StepClock;
-  readonly capacity: number;
+  private readonly capacity: number;
   private colors = 0;
   private readonly solver = new RK4(2);
   private readonly values: Float64Array;
   private readonly derivative: Derivative;
   private readonly xy = new Float64Array(2);
 
-  constructor(fx: CompiledExpr, fy: CompiledExpr, readonly dt: number, sliderCount: number, initial: [number, number][]) {
+  /** full 是 trail: full 时的显示范围（[x 的范围, y 的范围]），跑出去就停；默认的尾迹给 null。 */
+  constructor(
+    fx: CompiledExpr,
+    fy: CompiledExpr,
+    readonly dt: number,
+    sliderCount: number,
+    initial: [number, number][],
+    readonly full: Bounds | null = null,
+  ) {
     // 变量数组：两个状态变量、t，然后是滑块
     const values = new Float64Array(3 + sliderCount);
     this.values = values;
@@ -127,17 +141,43 @@ class PhaseSim {
           tr.stopped = true;
           continue;
         }
-        this.record(tr);
+        // trail: full：跑出画面就停，出界的这一点一定记下，线画到边上
+        const box = this.full;
+        const out = box !== null && (x < box[0][0] || x > box[0][1] || y < box[1][0] || y > box[1][1]);
+        this.record(tr, out);
+        if (out) tr.stopped = true;
       }
       this.t += this.dt;
     }
   }
 
-  private record(tr: Trajectory): void {
+  private record(tr: Trajectory, force = false): void {
+    let capacity = tr.trail.length / 2;
+    const box = this.full;
+    if (box && tr.length > 0) {
+      // 整条留着时，离上一个记下的点太近就不记，省得停在平衡点附近的轨迹越攒越多
+      const last = ((tr.head - 1 + capacity) % capacity) * 2;
+      const near =
+        Math.abs(tr.y[0] - tr.trail[last]) < FULL_MIN_STEP * (box[0][1] - box[0][0]) &&
+        Math.abs(tr.y[1] - tr.trail[last + 1]) < FULL_MIN_STEP * (box[1][1] - box[1][0]);
+      if (near && !force) return;
+      if (tr.length === capacity) {
+        // 不覆盖旧点：缓冲区加倍（点是按先后存的，从 0 开始），到上限就停
+        if (capacity >= MAX_FULL_TRAIL) {
+          tr.stopped = true;
+          return;
+        }
+        const grown = new Float64Array(Math.min(MAX_FULL_TRAIL, capacity * 2) * 2);
+        grown.set(tr.trail);
+        tr.trail = grown;
+        tr.head = capacity;
+        capacity = grown.length / 2;
+      }
+    }
     tr.trail[tr.head * 2] = tr.y[0];
     tr.trail[tr.head * 2 + 1] = tr.y[1];
-    tr.head = (tr.head + 1) % this.capacity;
-    tr.length = Math.min(this.capacity, tr.length + 1);
+    tr.head = (tr.head + 1) % capacity;
+    tr.length = Math.min(capacity, tr.length + 1);
   }
 }
 
@@ -170,17 +210,18 @@ function drawDirectionField(ctx: CanvasRenderingContext2D, view: Viewport, theme
   ctx.stroke();
 }
 
-/** 尾迹分几段画，越早的越淡。 */
-function drawTrail(ctx: CanvasRenderingContext2D, view: Viewport, tr: Trajectory, capacity: number): void {
+/** 尾迹分几段画，越早的越淡；trail: full 时整条一样深。 */
+function drawTrail(ctx: CanvasRenderingContext2D, view: Viewport, tr: Trajectory, fade: boolean): void {
   const n = tr.length;
   if (n < 2) return;
-  const chunks = 10;
+  const capacity = tr.trail.length / 2;
+  const chunks = fade ? 10 : 1;
   const oldest = (tr.head - n + capacity) % capacity;
   for (let c = 0; c < chunks; c++) {
     const from = Math.floor((c * (n - 1)) / chunks);
     const to = Math.floor(((c + 1) * (n - 1)) / chunks);
     if (to <= from) continue;
-    ctx.globalAlpha = 0.08 + 0.92 * ((c + 1) / chunks) ** 1.6;
+    ctx.globalAlpha = fade ? 0.08 + 0.92 * ((c + 1) / chunks) ** 1.6 : 1;
     ctx.beginPath();
     for (let k = from; k <= to; k++) {
       const at = ((oldest + k) % capacity) * 2;
@@ -216,9 +257,13 @@ export function PhasePortrait({ params: p, labels }: AnimProps<PhasePortraitPara
   const { box, canvas, size, context } = useCanvas(Math.max(0.45, Math.min(0.85, ratio)), 540, ratio);
   const inView = useInView(box);
 
+  const full = p.trail === 'full';
   const sim = useMemo(
-    () => (typeof compiled === 'string' ? null : new PhaseSim(compiled[0], compiled[1], p.dt, p.sliders?.length ?? 0, p.initial ?? [])),
-    [compiled, p.dt, p.sliders, p.initial],
+    () =>
+      typeof compiled === 'string'
+        ? null
+        : new PhaseSim(compiled[0], compiled[1], p.dt, p.sliders?.length ?? 0, p.initial ?? [], full ? [rx, ry] : null),
+    [compiled, p.dt, p.sliders, p.initial, full, rx, ry],
   );
   const view = useMemo(() => new Viewport(rx, ry, size.width, size.height), [rx, ry, size]);
 
@@ -235,8 +280,9 @@ export function PhasePortrait({ params: p, labels }: AnimProps<PhasePortraitPara
     for (const tr of sim.list) {
       const color = theme.series[tr.color % theme.series.length];
       ctx.strokeStyle = color;
-      drawTrail(ctx, view, tr, sim.capacity);
-      const at = ((tr.head - 1 + sim.capacity) % sim.capacity) * 2;
+      drawTrail(ctx, view, tr, !full);
+      const capacity = tr.trail.length / 2;
+      const at = ((tr.head - 1 + capacity) % capacity) * 2;
       ctx.beginPath();
       ctx.arc(view.px(tr.trail[at]), view.py(tr.trail[at + 1]), 4.5, 0, Math.PI * 2);
       ctx.fillStyle = color;
@@ -258,7 +304,7 @@ export function PhasePortrait({ params: p, labels }: AnimProps<PhasePortraitPara
       ctx.font = '14px system-ui, sans-serif';
       ctx.fillText('在图上点一下，从那里放一条轨迹', (view.left + view.right) / 2, (view.top + view.bottom) / 2);
     }
-  }, [context, sim, size, view, theme, vx, vy]);
+  }, [context, sim, size, view, theme, vx, vy, full]);
 
   // 改了滑块：所有轨迹从起点重新开始（换主题、改尺寸只重画，不重来）
   useEffect(() => {

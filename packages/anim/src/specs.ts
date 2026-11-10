@@ -44,6 +44,8 @@ export const PhasePortraitSchema = z.strictObject({
   dt: Dt,
   // 图上同时最多 12 条轨迹（再点就去掉最早点出来的）
   initial: z.array(z.tuple([z.number(), z.number()])).max(12).optional(),
+  // 尾迹：fade（默认）只留最近 8 个单位的时间，越早越淡；full 整条留着、不变淡，跑出画面就停，画解曲线用
+  trail: z.enum(['fade', 'full']).optional(),
   sliders: Sliders,
 });
 

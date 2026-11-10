@@ -63,6 +63,24 @@ export const DEMOS: Demo[] = [
     },
   },
   {
+    component: 'phase-portrait',
+    title: 'PhasePortrait · 方向场和解曲线',
+    note: '画 y′ = y(1 − y) − h：横轴是自变量，写成 x′ = 1 让它匀速增加，轨迹就是解曲线。trail: full 让整条解曲线留着、不变淡，跑出画面就停。h > 1/4 时没有平衡点，解都往下跑出画面。在图上点一下，从那里放一条解曲线。',
+    params: {
+      system: { x: '1', y: 'y*(1 - y) - h' },
+      range: { x: [0, 12], y: [-0.5, 1.5] },
+      dt: 0.01,
+      trail: 'full',
+      initial: [
+        [0, 0.1],
+        [0, 0.3],
+        [0, 0.6],
+        [0, 1.3],
+      ],
+      sliders: [{ name: 'h', min: 0, max: 0.4, step: 0.01, default: 0.1, label: '捕捞量$h$' }],
+    },
+  },
+  {
     component: 'vector-field-2d',
     title: 'VectorField2D · 旋转加伸缩',
     note: 'a = 0 时是纯旋转，粒子绕圈；a < 0 时螺旋着收向原点，a > 0 时螺旋着向外散开。',
