@@ -641,6 +641,14 @@ math.analysis.completeness:
       - 变分法：`jacobi-condition` 加了 `beltrami-identity` 和常微分方程的「二阶线性方程的解的结构」；`holonomic-constraints` 加了线性代数的「叉积」；`direct-methods` 加了数学分析的「子列与致密性定理」。层级都不变。
     - 给以后写偏微分方程的会话留的话：变分法 `rayleigh-quotient` 用「见」链接引用了 `math.pde.sturm-liouville` 的两条结论：带系数时瑞利商的最小值取得到；更高的特征值在正交补里的刻画。写那一节时要讲到这两条，至少叙述清楚；否则把这两处链接改掉（批次 5 审查时提的）。
 - 批次 5 之后：照批次 4 之后的做法，提交后先停；两对会话手上的领域都写完了，下一批写哪个领域、什么时候发，等你说（写代码的会话定的）。
+- 批次 5 之后（你定的）：数学分析那一对会话接着写常微分方程，力学那一对接着写狭义相对论。
+- 批次 6：两个都是新领域，开写前读这个领域的 `_domain.yaml` 和全部小节的文件头，记号和已写的领域（数学分析、分析力学、变分法）保持一致。
+  - 常微分方程（`math.ode`，25 节，`sketch`）先写一阶方程 8 节，按前置顺序：`what-is-ode`、`separable`、`linear-first-order`、`exact-equations`、`numerical-methods`、`autonomous-equations`、`bifurcations`、`existence-uniqueness`。审查报告 `docs/reviews/batch-6-ode.md`。往后两批：二阶线性方程与拉普拉斯变换 9 节；线性方程组、相图与非线性系统 8 节。
+  - 狭义相对论（`physics.special-relativity`，19 节，`full`）先写运动学 8 节，按前置顺序：`postulates`、`relativity-of-simultaneity`、`time-dilation`、`length-contraction`、`lorentz-transformation`、`spacetime-interval`、`spacetime-diagrams`、`velocity-transformation`。审查报告 `docs/reviews/batch-6-special-relativity.md`。往后：四维矢量与相对论动力学 8 节；能量-动量张量和电磁场的协变形式 3 节。
+  - 新增的跨领域前置（还是待写）：
+    - 常微分方程：单变量微积分的「原函数与不定积分」「有理函数的积分」「泰勒公式」；另有列过的「偏导数」；数学分析的「一致收敛与极限交换」已经写好。
+    - 狭义相对论：牛顿力学的「参考系与相对运动」，线性代数的「线性变换及其矩阵」。
+- 批次 6 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 7（写代码的会话定的）。
 - 几个领域同时写时（批次 1 定的）：每个写内容会话只改自己领域的目录（`content/<学科>/<领域>/`），审内容会话只写自己的报告和验算脚本；`docs/plan.md` 不由它们直接改，要写回的内容写进汇报，由写代码的会话统一写进去、单独提交，免得几个会话同时改一个文件。每个领域各自作为一个提交。另一个领域写到一半、全量构建报错时，写内容会话可以把那个领域换成已提交的版本，在临时副本上构建，确认自己的领域 0 个错误；看页面同理，用临时副本编译的内容另起一个服务，进度写临时仓库，不改仓库的 `dist/`（批次 2 定的）。
 
 **分工**：一共三个 agent：写代码、写内容、审内容。开发台阶 8、9 由写内容 agent 和审内容 agent 执行。写内容和审内容必须是两个独立会话。
