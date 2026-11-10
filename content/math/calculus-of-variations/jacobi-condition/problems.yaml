@@ -1,0 +1,163 @@
+- id: p1
+  tier: easy
+  statement: |
+    $J[y]=\int_0^b\bigl(y'^2-9y^2\bigr)\dd x$，沿极值曲线$y=0$写出雅可比方程，求它满足$h(0)=0$、$h'(0)=1$的解在$x=\frac\pi6$处的值。
+  answer:
+    type: number
+    value: 1/3
+  hints:
+    - |
+      先求$P=F_{y'y'}$和$Q=F_{yy}-\dv{}{x}F_{yy'}$，写出$-(Ph')'+Qh=0$。
+    - |
+      $P=2$，$Q=-18$，方程是$h''+9h=0$。验证$\sin3x$、$\cos3x$是解。
+    - |
+      满足初始条件的解是$h=\frac13\sin3x$，$h(\frac\pi6)=\frac13$。
+  solution: |
+    $F=p^2-9y^2$，$P=2$，$Q=-18$，雅可比方程$-2h''-18h=0$即$h''+9h=0$。通解$A\cos3x+B\sin3x$，由$h(0)=0$、$h'(0)=1$得$h=\frac13\sin3x$，所以$h(\frac\pi6)=\frac13$。它在$x=\frac\pi3$处再次为零，那里是$0$的共轭点。
+
+- id: p2
+  tier: easy
+  statement: |
+    沿极值曲线$y=0$，下面哪些情形在区间的右端点之前（含右端点）没有左端点的共轭点？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\int_1^3x\,y'^2\,\dd x$
+      - |
+        $\int_0^2\bigl(y'^2-4y^2\bigr)\dd x$
+      - |
+        $\int_0^2\bigl(y'^2+y^2\bigr)\dd x$
+      - |
+        $\int_0^1\bigl(2y'^2-9y^2\bigr)\dd x$
+      - |
+        $\int_0^1\bigl(y'^2-16y^2\bigr)\dd x$
+    value: [1, 3, 4]
+  hints:
+    - |
+      对每一个写出雅可比方程，解出在左端点为零、导数为$1$的解，看它在区间内（含右端点）是否再为零。
+    - |
+      A：$(2xh')'=0$，$h=\ln x$；B：$h''+4h=0$，$h=\frac12\sin2x$；C：$h''=h$，$h=\sinh x$；D：$h''+\frac92h=0$；E：$h''+16h=0$。
+    - |
+      A 的$\ln x$在$(1,3]$上不为零；B 在$\frac\pi2<2$处为零；C 的$\sinh x$在$x>0$时不为零；D 的解$\sqrt{\frac29}\sin\bigl(\sqrt{\frac92}\,x\bigr)$第一次再为零在$\pi\sqrt{\frac29}\approx1.48>1$；E 在$\frac\pi4<1$处为零。选 A、C、D。
+  solution: |
+    A：$P=2x$，$Q=0$，$h=\ln x$，在$(1,3]$上不为零，没有共轭点。B：共轭点$\frac\pi2<2$。C：$Q=2>0$，$h=\sinh x$在$(0,2]$上为正，没有共轭点。
+
+    D：$P=4$，$Q=-18$，$h''+\frac92h=0$，共轭点$\pi\sqrt{2}/3\approx1.48>1$，区间内没有。E：共轭点$\frac\pi4<1$。所以是 A、C、D。
+
+- id: p3
+  tier: medium
+  statement: |
+    $J[y]=\int_0^b\bigl(2y'^2-y^2\bigr)\dd x$，$y(0)=y(b)=0$。求$0$的共轭点。
+  answer:
+    type: number
+    value: pi*sqrt(2)
+  hints:
+    - |
+      $P=F_{y'y'}$，$Q=F_{yy}$（$F_{yy'}=0$），写出雅可比方程。
+    - |
+      $P=4$，$Q=-2$，方程是$-4h''-2h=0$，即$h''+\frac12h=0$。
+    - |
+      满足$h(0)=0$、$h'(0)=1$的解是$\sqrt2\sin\frac{x}{\sqrt2}$，它第一次再为零在$\frac{x}{\sqrt2}=\pi$，即$x=\sqrt2\,\pi\approx4.443$。
+  solution: |
+    $P=4$，$Q=-2$，雅可比方程$h''+\frac12h=0$，解$h=\sqrt2\sin\frac{x}{\sqrt2}$。共轭点是$\sqrt2\,\pi$：$b<\sqrt2\,\pi$时$y=0$是局部极小，$b>\sqrt2\,\pi$时不是。
+
+- id: p4
+  tier: medium
+  statement: |
+    两个半径为$1$的圆环放在$x=\pm0.6$处。经过两环的悬链线$y=c\cosh\frac xc$有两条，取较细的那条（$c$较小）。讲解例 2 的雅可比场$h=\cosh\frac xc-\frac xc\sinh\frac xc$在$x>0$的零点在哪里？结果保留四位有效数字。
+  answer:
+    type: number
+    value: 0.4221525
+  tolerance: { rel: 5.0e-4 }
+  hints:
+    - |
+      先求较小的$c$：$c\cosh\frac{0.6}{c}=1$的较小正根。再求$t\tanh t=1$的正根$t_*$，零点在$x=ct_*$。
+    - |
+      $c$在$0.35$附近：$c=0.35$时左边约$1.003$，用二分法细化。$t_*\approx1.19968$。
+    - |
+      $c\approx0.35189$，零点$x=ct_*\approx0.4222$，比$0.6$小：零点在两环之间，所以这条悬链面不是局部极小。
+  solution: |
+    $c\cosh\frac{0.6}{c}=1$的较小正根$c\approx0.35189$，$t\tanh t=1$的正根$t_*\approx1.19968$，零点在$x=ct_*\approx0.4222$。它落在$(0,0.6)$内，按例 2，较细的悬链面不是局部极小。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明雅可比条件的 (1)：设沿极值曲线处处$P>0$，$h$是雅可比方程满足$h(a)=0$、$h'(a)=1$的解，$h(c)=0$，$a<c<b$。令$\eta_0$在$[a,c]$上等于$h$、在$[c,b]$上为零。证明$\int_a^b\bigl(P\eta_0'^2+Q\eta_0^2\bigr)\dd x=0$，再说明怎样把$\eta_0$在$c$处的折角磨圆，得到一个使第二变分为负的、有连续导数的$\eta$。
+  hints:
+    - |
+      第一步：在$[a,c]$上分部积分，$\int_a^cPh'^2\,\dd x=[Phh']_a^c-\int_a^ch(Ph')'\,\dd x$，再用雅可比方程。
+    - |
+      第二步：$h'(c)\ne0$（否则$h\equiv0$）。考虑$\eta=\eta_0+\varepsilon\psi$，$\psi$是集中在$c$附近的小鼓包，看第二变分对$\varepsilon$的一阶项。
+    - |
+      $\delta^2J[\eta_0+\varepsilon\psi]=2\varepsilon B(\eta_0,\psi)+\varepsilon^2\delta^2J[\psi]$，其中$B(\eta_0,\psi)=\int(P\eta_0'\psi'+Q\eta_0\psi)\,\dd x$。在$[a,c]$上分部积分并用雅可比方程，$B=P(c)h'(c)\psi(c)$。取$\psi(c)\ne0$，再选$\varepsilon$的符号使$2\varepsilon B<0$、$|\varepsilon|$足够小，就有$\delta^2J<0$。$\eta_0+\varepsilon\psi$还有折角，再在$c$附近很短的一段上把它磨圆，第二变分只改变一个可以任意小的量，仍为负。
+  reference: |
+    第一步：$\eta_0$在$[c,b]$上为零，所以
+    $$
+    \delta^2J[\eta_0]=\int_a^c\bigl(Ph'^2+Qh^2\bigr)\dd x=\bigl[Phh'\bigr]_a^c+\int_a^ch\bigl(-(Ph')'+Qh\bigr)\dd x=0 ,
+    $$
+    因为$h(a)=h(c)=0$，而括号里由雅可比方程为零。
+
+    第二步：$h'(c)\ne0$，否则$h(c)=h'(c)=0$，由唯一性$h\equiv0$，与$h'(a)=1$矛盾。设$\psi$是一个有连续导数、只在$c$附近不为零、$\psi(c)=1$的函数。记$B(u,v)=\int_a^b(Pu'v'+Quv)\,\dd x$，则$\delta^2J[\eta_0+\varepsilon\psi]=\delta^2J[\eta_0]+2\varepsilon B(\eta_0,\psi)+\varepsilon^2\delta^2J[\psi]=2\varepsilon B(\eta_0,\psi)+\varepsilon^2\delta^2J[\psi]$。
+
+    在$[a,c]$上分部积分：$B(\eta_0,\psi)=\int_a^c(Ph'\psi'+Qh\psi)\,\dd x=\bigl[Ph'\psi\bigr]_a^c+\int_a^c\psi\bigl(-(Ph')'+Qh\bigr)\dd x=P(c)h'(c)$，不为零。取$\varepsilon$与它异号、$|\varepsilon|$足够小，$\delta^2J[\eta_0+\varepsilon\psi]<0$。
+
+    $\eta_0+\varepsilon\psi$在$c$处仍有折角（$\eta_0'$从$h'(c)$跳到$0$）。在$[c-\rho,c+\rho]$上把它换成连续导数的过渡（例如用三次多项式连接两边的值和斜率），$\eta$和$\eta'$在这段上有界，第二变分的改变量不超过常数乘$\rho$，取$\rho$足够小仍为负。所以有一个两端为零、有连续导数的$\eta$使$\delta^2J<0$，$y$不是局部极小。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$h$满足雅可比方程$-(Ph')'+Qh=0$，并在$[a,b]$上恒正。(1) 验证讲解里的恒等式$P\eta'^2+Q\eta^2=P\bigl(\eta'-\frac{h'}{h}\eta\bigr)^2+\dv{}{x}\bigl(\frac{Ph'}{h}\eta^2\bigr)$。(2) 由此证明，$P>0$时，对所有不恒为零、两端为零、有连续导数的$\eta$，$\int_a^b\bigl(P\eta'^2+Q\eta^2\bigr)\dd x>0$。
+  hints:
+    - |
+      (1) 记$w=\frac{Ph'}{h}$，先用雅可比方程求$w'$。
+    - |
+      $w'=\frac{(Ph')'}{h}-\frac{Ph'^2}{h^2}=Q-P\frac{h'^2}{h^2}$。再把$\dv{}{x}(w\eta^2)=w'\eta^2+2w\eta\eta'$代进右边。
+    - |
+      (2) 积分后边界项$\bigl[w\eta^2\bigr]_a^b=0$，积分$=\int_a^bP\bigl(\eta'-\frac{h'}h\eta\bigr)^2\dd x\ge0$。若为零，则$\eta'=\frac{h'}h\eta$处处成立，$\bigl(\frac\eta h\bigr)'=0$，$\eta=Ch$；由$\eta(a)=0$、$h(a)>0$得$C=0$。
+  reference: |
+    (1) 记$w=\frac{Ph'}{h}$。由雅可比方程$(Ph')'=Qh$，$w'=\frac{(Ph')'}{h}-\frac{Ph'^2}{h^2}=Q-P\frac{h'^2}{h^2}$。于是
+    $$
+    P\Bigl(\eta'-\frac{h'}{h}\eta\Bigr)^2+(w\eta^2)'=P\eta'^2-2P\frac{h'}{h}\eta\eta'+P\frac{h'^2}{h^2}\eta^2+\Bigl(Q-P\frac{h'^2}{h^2}\Bigr)\eta^2+2P\frac{h'}{h}\eta\eta'=P\eta'^2+Q\eta^2 .
+    $$
+
+    (2) 对$x$从$a$到$b$积分，$w$在$[a,b]$上连续（$h>0$），$\eta(a)=\eta(b)=0$，所以$\int_a^b(w\eta^2)'\,\dd x=0$，得
+    $$
+    \int_a^b\bigl(P\eta'^2+Q\eta^2\bigr)\dd x=\int_a^bP\Bigl(\eta'-\frac{h'}{h}\eta\Bigr)^2\dd x\ge0 .
+    $$
+    若等号成立，被积函数连续、非负，$P>0$，所以$\eta'=\frac{h'}{h}\eta$，即$\bigl(\frac{\eta}{h}\bigr)'=\frac{\eta'h-\eta h'}{h^2}=0$，$\eta=Ch$。$\eta(a)=0$而$h(a)>0$，所以$C=0$，$\eta\equiv0$。因此对不恒为零的$\eta$积分严格为正。
+
+    注意：这里要求$h$在闭区间$[a,b]$上恒正，包括左端点。若只知道在$(a,b]$内没有共轭点，要先把起点挪到$a$的左边一点，借助解对初值的连续依赖得到这样的$h$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    在半径为$R$的球面上，从北极出发的大圆（great circle）都在南极再次相交；球面上两点之间的最短路径在大圆上，见[约束在曲面上的变分问题](lesson:math.calculus-of-variations.holonomic-constraints)。南极是北极的什么点？为什么一段超过半个大圆（长度大于$\pi R$）的弧一定不是两端点之间最短的路？它在什么意义下仍然是「直线」？
+  hints:
+    - |
+      从北极出发、方向略有不同的大圆，和原来那条什么时候再次交在一起？
+    - |
+      它们在南极再次相交，按讲解的说法，南极是北极的共轭点。
+    - |
+      超过$\pi R$的弧在两端点之间经过了南极这个共轭点，按雅可比条件不是局部极小：把经过南极的那一小段往旁边推一点，就能变短。它仍然满足（曲面上的）欧拉-拉格朗日方程，是测地线（geodesic）；只是不再是最短的。另外，同两点之间沿大圆的另一侧走更短，那是全局的比较。
+  reference: |
+    从北极出发的大圆都经过南极，方向略有不同的两条在南极再次相交，所以南极是北极的共轭点（这个结论对每一条大圆都成立）。超过半个大圆的弧，在两端点之间经过了南极，即包含了起点的共轭点，按雅可比条件它不是局部极小：可以在南极附近把它往旁边推一点，得到更短的邻近曲线。它仍然满足方程（是测地线），是「局部的直线」，只是在这么长的范围内不再最短。
+
+    这也说明「是测地线」和「是最短的」是两回事：短于$\pi R$的大圆弧是两端点间唯一的最短路；恰好$\pi R$时两端是对径点（antipodal points），有无穷多条同样短的大圆弧，这正是共轭点处的退化；超过$\pi R$就不是最短。
+
+- id: p8
+  tier: thinking
+  statement: |
+    [贝尔特拉米恒等式与最速降线](lesson:math.calculus-of-variations.beltrami-identity)说，最速降线（brachistochrone）是从起点$A$出发的摆线（cycloid），但没有证明它确实最快。从$A$出发的摆线$x=r(\theta-\sin\theta)$、$y=r(1-\cos\theta)$（不同的$r$）都是相似的。它们会不会在$A$之外再次相交？这对雅可比条件说明了什么？
+  hints:
+    - |
+      两条从$A$出发的摆线，半径$r_1\ne r_2$，一条是另一条以$A$为中心按比例$\frac{r_2}{r_1}$放大的结果。
+    - |
+      过$A$的每条射线和每条摆线只交一次（摆线上的点和$A$的连线方向随$\theta$单调变化），所以两条不同的摆线除$A$外不相交。
+    - |
+      从$A$出发的极值曲线族不再相交，就没有包络线，也就没有$A$的共轭点；最速降线的极值曲线满足雅可比条件，是局部极小。要说它在所有曲线中最快，还需要别的论证（例如说明这族摆线铺满了整个区域，用魏尔斯特拉斯（Karl Weierstrass）的场论（field theory）方法），这里只到「局部」。
+  reference: |
+    半径为$r$的摆线是半径为$1$的那条以$A$为中心放大$r$倍得到的。摆线上的点到$A$的连线和水平方向的夹角随$\theta$单调变化（从竖直向下逐渐转向水平），所以每条从$A$出发、指向右下方的射线和每条摆线恰好交一次；两条不同的摆线若交于$A$之外的一点$Q$，射线$AQ$与两者各交于$Q$，按比例放大又不可能，所以它们不相交。
+
+    从$A$出发的极值曲线族两两不交，就没有包络线，$A$在任何一条上都没有共轭点（$h=\frac{\partial y}{\partial r}$不会再为零）。雅可比条件满足，再加上$F_{y'y'}>0$，最速降线是局部极小。全局最快要另外证明：这族摆线不相交地铺满了$A$右下方的区域，用这样的「场」可以把任何别的曲线和它比较（魏尔斯特拉斯的场论），这超出了本节的范围。

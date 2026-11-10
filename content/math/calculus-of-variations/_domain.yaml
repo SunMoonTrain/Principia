@@ -174,3 +174,102 @@ glossary:
       使面积的第一变分为零的曲面；作为图像$z=u(x,y)$时满足极小曲面方程。
     definedIn: math.calculus-of-variations.multivariable-functionals
     anchor: def-minimal-surface
+  - id: math.calculus-of-variations.second-variation
+    zh: |
+      第二变分
+    en: |
+      second variation
+    brief: |
+      $\Phi(\varepsilon)=J[y+\varepsilon\eta]$在$\varepsilon=0$处的二阶导数；局部极小处它对所有$\eta$都非负。
+    definedIn: math.calculus-of-variations.second-variation
+    anchor: def-second-variation
+  - id: math.calculus-of-variations.legendre-condition
+    zh: |
+      勒让德条件
+    en: |
+      Legendre condition
+    brief: |
+      局部极小处沿极值曲线$F_{y'y'}\ge0$（极大处$\le0$）；它是必要条件，不是充分条件。
+    definedIn: math.calculus-of-variations.second-variation
+    anchor: thm-legendre
+  - id: math.calculus-of-variations.jacobi-equation
+    zh: |
+      雅可比方程
+    en: |
+      Jacobi equation
+    brief: |
+      沿极值曲线的线性方程$-(Ph')'+Qh=0$，$P=F_{y'y'}$，$Q=F_{yy}-\dv{}{x}F_{yy'}$；它是第二变分的欧拉-拉格朗日方程。
+    definedIn: math.calculus-of-variations.jacobi-condition
+    anchor: def-jacobi-equation
+  - id: math.calculus-of-variations.conjugate-point
+    zh: |
+      共轭点
+    en: |
+      conjugate point
+    brief: |
+      雅可比方程满足$h(a)=0$、$h'(a)=1$的解在$a$右边的第一个零点。
+    definedIn: math.calculus-of-variations.jacobi-condition
+    anchor: def-conjugate-point
+  - id: math.calculus-of-variations.jacobi-condition
+    zh: |
+      雅可比条件
+    en: |
+      Jacobi condition
+    brief: |
+      $F_{y'y'}>0$时，极值曲线是局部极小的必要条件是两端之间没有共轭点；伸到第一个共轭点为止都是极小。
+    definedIn: math.calculus-of-variations.jacobi-condition
+    anchor: thm-jacobi
+  - id: math.calculus-of-variations.holonomic-constraint
+    zh: |
+      完整约束
+    en: |
+      holonomic constraint
+    brief: |
+      未知函数在每一点都要满足、不含导数的方程，例如曲线必须落在曲面$G=0$上；它的乘子是一个函数。
+    definedIn: math.calculus-of-variations.holonomic-constraints
+    anchor: def-holonomic-constraint
+  - id: math.calculus-of-variations.rayleigh-quotient
+    zh: |
+      瑞利商
+    en: |
+      Rayleigh quotient
+    brief: |
+      两端为零的$y$的商$\frac{\int y'^2\,\dd x}{\int y^2\,\dd x}$及其带系数的推广；它的最小值是最小特征值。
+    definedIn: math.calculus-of-variations.rayleigh-quotient
+    anchor: def-rayleigh-quotient
+  - id: math.calculus-of-variations.trial-function
+    zh: |
+      试探函数
+    en: |
+      trial function
+    brief: |
+      为了估计极小值而代进瑞利商或泛函的具体容许函数；它给出的是上界。
+    definedIn: math.calculus-of-variations.rayleigh-quotient
+    anchor: def-trial-function
+  - id: math.calculus-of-variations.minimizing-sequence
+    zh: |
+      极小化序列
+    en: |
+      minimizing sequence
+    brief: |
+      一列容许函数$y_k$，使$J[y_k]$趋于$J$的下确界；它不一定收敛，极限也不一定是极小值点。
+    definedIn: math.calculus-of-variations.direct-methods
+    anchor: def-minimizing-sequence
+  - id: math.calculus-of-variations.direct-method
+    zh: |
+      直接方法
+    en: |
+      direct method
+    brief: |
+      不经过欧拉-拉格朗日方程，从极小化序列出发证明极小值点存在或求近似解的办法。
+    definedIn: math.calculus-of-variations.direct-methods
+    anchor: def-direct-method
+  - id: math.calculus-of-variations.ritz-method
+    zh: |
+      里茨方法
+    en: |
+      Ritz method
+    brief: |
+      在有限个基函数的线性组合中求泛函的最小值，用来近似原问题；得到的值是上界。
+    definedIn: math.calculus-of-variations.direct-methods
+    anchor: def-ritz-method

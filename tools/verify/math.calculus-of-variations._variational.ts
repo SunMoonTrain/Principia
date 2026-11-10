@@ -169,6 +169,19 @@ export function quadraticStationary(J: (x: Vec) => number, n: number, constraint
   return solve(A, rhs).slice(0, n);
 }
 
+// ---------- 多项式（系数从常数项开始），给「手推公式」那一半精确地积分 ----------
+
+export const polyMul = (a: Vec, b: Vec): Vec => {
+  const c = new Array<number>(a.length + b.length - 1).fill(0);
+  a.forEach((ai, i) => b.forEach((bj, j) => (c[i + j] += ai * bj)));
+  return c;
+};
+export const polyAdd = (a: Vec, b: Vec): Vec => Array.from({ length: Math.max(a.length, b.length) }, (_, i) => (a[i] ?? 0) + (b[i] ?? 0));
+export const polyScale = (a: Vec, s: number): Vec => a.map((v) => v * s);
+export const polyDer = (a: Vec): Vec => (a.length > 1 ? a.slice(1).map((v, i) => v * (i + 1)) : [0]);
+/** ∫_0^1 多项式。 */
+export const polyInt01 = (a: Vec): number => a.reduce((s, v, i) => s + v / (i + 1), 0);
+
 /** 误差按 h² 变小的两个近似值（h 和 h/2），外推到 h → 0。 */
 export const richardson = (coarse: number, fine: number): number => (4 * fine - coarse) / 3;
 

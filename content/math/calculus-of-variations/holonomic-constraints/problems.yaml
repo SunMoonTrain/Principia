@@ -1,0 +1,149 @@
+- id: p1
+  tier: easy
+  statement: |
+    在半径为$1$的圆柱面$x^2+y^2=1$上，求从$(1,0,0)$到$(-1,0,2)$的最短路径的长度。
+  answer:
+    type: number
+    value: sqrt(pi^2+4)
+  hints:
+    - |
+      把圆柱面沿一条母线剪开展平，长度不变，最短路径变成平面上的直线段。
+    - |
+      两点在圆柱上相差半圈，展开后横向相差弧长$\pi\cdot1=\pi$（往哪边绕都一样），纵向相差$2$。
+    - |
+      长度$\sqrt{\pi^2+2^2}=\sqrt{\pi^2+4}\approx3.724$。
+  solution: |
+    展开以后，横向距离是半圈的弧长$\pi$，纵向距离是$2$，最短路径长$\sqrt{\pi^2+4}\approx3.724$。往左、往右绕半圈的两条螺旋线一样长，都是最短的；绕得更多的螺旋线也是测地线，但更长。
+
+- id: p2
+  tier: easy
+  statement: |
+    曲线写成$y(x)$、$z(x)$。下面哪些条件是:term[完整约束]{id="math.calculus-of-variations.holonomic-constraint"}？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $x^2+2y^2=z$
+      - |
+        $\int\sqrt{1+y'^2+z'^2}\,\dd x=3$
+      - |
+        $y=xz$
+      - |
+        $y'=z$
+      - |
+        $z=\sin(x+y)$
+    value: [1, 3, 5]
+  hints:
+    - |
+      :term[完整约束]{id="math.calculus-of-variations.holonomic-constraint"}是每一点都要成立、不含导数的方程。
+    - |
+      B 是一个积分等于定值，整条曲线只有一个条件；D 含导数$y'$。
+    - |
+      A、C、E 不含导数、每一点都要满足，是:term[完整约束]{id="math.calculus-of-variations.holonomic-constraint"}；B 是积分约束，D 含导数，都不是。
+  solution: |
+    A、C、E 只涉及$x,y,z$本身，每一点各有一个条件，是:term[完整约束]{id="math.calculus-of-variations.holonomic-constraint"}（曲线落在一张曲面上）。B 是积分约束，整条曲线只有一个条件；D 含导数，限制的是方向而不是位置，也不是完整约束。
+
+- id: p3
+  tier: medium
+  statement: |
+    圆锥面（cone）$z=\sqrt{x^2+y^2}$上，$A$、$B$两点都在高度$z=1$的那一圈上，位置正好相对（从上往下看相差$180^\circ$）。求圆锥面上连接它们的最短路径的长度。
+  answer:
+    type: number
+    value: 2*sqrt(2)*sin(pi/(2*sqrt(2)))
+  hints:
+    - |
+      圆锥面也可以沿一条母线剪开展平，得到一个扇形（circular sector），长度不变。最短路径展开后是直线段（在扇形里放得下的话）。
+    - |
+      顶点到$A$的母线长$\rho=\sqrt2$。高度$1$的那一圈周长$2\pi$，展开后是半径$\sqrt2$的圆弧，所以那一圈上相差半圈（弧长$\pi$）的两点，展开后对顶点张的角是$\frac{\pi}{\sqrt2}$。
+    - |
+      张角$\frac{\pi}{\sqrt2}\approx2.22$小于$\pi$，线段在扇形里。它是半径$\sqrt2$、圆心角$\frac{\pi}{\sqrt2}$的弦（chord），长$2\sqrt2\sin\frac{\pi}{2\sqrt2}\approx2.534$，比沿那一圈走的$\pi$短。
+  solution: |
+    沿一条母线剪开，圆锥面展成一个扇形，母线长$\rho=\sqrt2$。$A$、$B$所在那一圈的半径是$1$，相差半圈的弧长是$\pi$，展开后对顶点张角$\frac{\pi}{\sqrt2}\approx2.22$，小于$\pi$，所以连接它们的线段在扇形内。最短路径长$2\sqrt2\sin\frac{\pi}{2\sqrt2}\approx2.534$，往两边绕一样长。
+
+- id: p4
+  tier: medium
+  statement: |
+    单位球面上，$A$在北纬$60^\circ$、经度$0^\circ$，$B$在北纬$60^\circ$、东经$90^\circ$。求两点之间在球面上的最短距离。
+  answer:
+    type: number
+    value: acos(3/4)
+  hints:
+    - |
+      最短路径是过两点的大圆的劣弧（minor arc），长度等于两点对球心张的角（半径为$1$）。
+    - |
+      $A=(\cos60^\circ,0,\sin60^\circ)$，$B=(0,\cos60^\circ,\sin60^\circ)$，用点积求夹角。
+    - |
+      $A\cdot B=\sin^260^\circ=\frac34$，张角$\arccos\frac34\approx0.7227$。沿纬线（parallel）走要$\frac\pi2\cdot\cos60^\circ=\frac\pi4\approx0.785$，更长。
+  solution: |
+    $A=(\frac12,0,\frac{\sqrt3}2)$，$B=(0,\frac12,\frac{\sqrt3}2)$，$A\cdot B=\frac34$。最短路径是大圆弧，长度$\arccos\frac34\approx0.7227$。沿纬线（它不是大圆）走的长度是$\frac\pi4\approx0.785$。
+
+- id: p5
+  tier: hard
+  statement: |
+    旋转曲面（surface of revolution）由曲线$\rho=f(z)$绕$z$轴转成，曲面上的点写成$(f(z)\cos\theta,\,f(z)\sin\theta,\,z)$，$\theta$为常数的曲线是经线（meridian）。证明：曲面上的测地线满足$f(z)\sin\psi=$常数，其中$\psi$是测地线和经线的夹角。这叫克莱罗关系（Clairaut's relation）。
+  hints:
+    - |
+      用曲面上的坐标$(z,\theta)$描述曲线，约束就自动满足了，问题变成不带约束的普通问题。写出长度元素$\dd s$。
+    - |
+      $\dd s^2=(1+f'^2)\,\dd z^2+f^2\,\dd\theta^2$。把曲线写成$\theta(z)$，$F=\sqrt{1+f'(z)^2+f(z)^2\theta'^2}$不含$\theta$，所以$F_{\theta'}$是:term[首次积分]{id="math.calculus-of-variations.first-integral"}（first integral）。
+    - |
+      $F_{\theta'}=\frac{f^2\theta'}{\sqrt{1+f'^2+f^2\theta'^2}}=C$。切向量（tangent vector）沿纬线方向的分量是$f\,\dd\theta$，它和$\dd s$之比正是$\sin\psi$，所以$F_{\theta'}=f\sin\psi$。
+  reference: |
+    用$(z,\theta)$作曲面上的坐标，曲线写成$\theta=\theta(z)$（局部总可以这样写，除非曲线在那里和纬线相切）。曲面上$\dd\mathbf r=(f'\cos\theta\,\dd z-f\sin\theta\,\dd\theta,\;f'\sin\theta\,\dd z+f\cos\theta\,\dd\theta,\;\dd z)$，所以$\dd s^2=(1+f'^2)\dd z^2+f^2\dd\theta^2$，长度是$\int\sqrt{1+f'(z)^2+f(z)^2\theta'^2}\,\dd z$。约束已经由参数化自动满足，这是一个未知函数、不带约束的:term[变分问题]{id="math.calculus-of-variations.variational-problem"}。
+
+    $F$不含$\theta$，:term[欧拉-拉格朗日方程]{id="math.calculus-of-variations.euler-lagrange-equation"}（Euler–Lagrange equation）积分一次：$F_{\theta'}=\frac{f^2\theta'}{\sqrt{1+f'^2+f^2\theta'^2}}=C$。
+
+    几何意义：经线方向和纬线方向在曲面上互相垂直，曲线的切向量沿纬线方向的分量长$f\,\dd\theta$，所以$\sin\psi=\frac{f\,\dd\theta}{\dd s}=\frac{f\theta'}{\sqrt{1+f'^2+f^2\theta'^2}}$，于是$F_{\theta'}=f\sin\psi=C$。这就是克莱罗关系：离轴越近（$f$越小），测地线越偏向纬线方向。$C=0$时$\psi=0$，经线是测地线。
+
+- id: p6
+  tier: hard
+  statement: |
+    在单位球面上用$(\varphi,\theta)$描述曲线，$\varphi$是到北极的角度，$\theta$是经度。把曲线的长度写成积分，证明经线（$\theta$为常数）是:term[极值曲线]{id="math.calculus-of-variations.extremal"}；再说明为什么由此可以推出所有大圆都是测地线，而不必解测地线方程。
+  hints:
+    - |
+      $\dd s^2=\dd\varphi^2+\sin^2\varphi\,\dd\theta^2$。把曲线写成$\theta(\varphi)$。
+    - |
+      $F=\sqrt{1+\sin^2\varphi\,\theta'^2}$不含$\theta$，:term[首次积分]{id="math.calculus-of-variations.first-integral"}是$F_{\theta'}=\frac{\sin^2\varphi\,\theta'}{\sqrt{1+\sin^2\varphi\,\theta'^2}}=C$。$\theta'=0$满足它（$C=0$）。
+    - |
+      所以经线是:term[极值曲线]{id="math.calculus-of-variations.extremal"}。任何大圆都可以经过一个旋转变成经线，旋转保持球面和长度，把极值曲线变成极值曲线，所以大圆都是测地线。
+  reference: |
+    单位球面上$\dd s^2=\dd\varphi^2+\sin^2\varphi\,\dd\theta^2$，曲线写成$\theta=\theta(\varphi)$，长度$L=\int\sqrt{1+\sin^2\varphi\,\theta'^2}\,\dd\varphi$。用坐标描述的曲线自动落在球面上，所以这个不带约束问题的:term[极值曲线]{id="math.calculus-of-variations.extremal"}，就是讲解里带约束问题的极值曲线，也就是测地线。
+
+    $F$不含$\theta$，:term[首次积分]{id="math.calculus-of-variations.first-integral"}是$\frac{\sin^2\varphi\,\theta'}{\sqrt{1+\sin^2\varphi\,\theta'^2}}=C$。经线$\theta'=0$对应$C=0$，满足方程，是极值曲线。更直接地，$\dd s\ge|\dd\varphi|$，所以两端在同一条经线上时，任何曲线都不短于经线上的那段（长$|\varphi_2-\varphi_1|$）。
+
+    推广到所有大圆：给定任意大圆，有绕球心的旋转把它变成一条经线（把它所在平面的法向量转到赤道平面内即可）。旋转把球面变成自己、保持曲线长度，所以把极值曲线变成极值曲线。经线是测地线，大圆就都是测地线，和讲解例 1 的结论一致；这里用的是对称性，不需要解方程。
+
+- id: p7
+  tier: thinking
+  statement: |
+    一颗珠子在光滑的固定曲面$G=0$上滑动，除了曲面的作用力不受别的力（忽略重力）。它沿什么样的路径运动，速率会不会变？乘子$\lambda$在这里有什么物理意义？分析力学（analytical mechanics）里用乘子求:term[约束力]{id="physics.analytical-mechanics.constraint-force"}（constraint force），见[拉格朗日乘子与约束力](lesson:physics.analytical-mechanics.constraint-forces)，和这里是什么关系？
+  hints:
+    - |
+      曲面光滑，曲面对珠子的作用力沿法向，它不做功。
+    - |
+      牛顿第二定律（Newton's second law）：$m\ddot{\mathbf r}=\mathbf N$，$\mathbf N$沿法向$\nabla G$。速率不变，所以可以用弧长作参数（差一个常数因子）。
+    - |
+      $\mathbf r''(s)=\frac{\ddot{\mathbf r}}{v^2}=\frac{\mathbf N}{mv^2}$沿法向，正是测地线方程；$\mathbf N=mv^2\lambda\nabla G$，乘子正比于曲面的作用力。
+  reference: |
+    曲面光滑，作用力$\mathbf N$沿法向，和速度垂直，不做功，所以动能不变、速率$v$不变。以弧长$s=vt$为参数，$\mathbf r''(s)=\frac{\ddot{\mathbf r}}{v^2}=\frac{\mathbf N}{mv^2}$，它沿曲面的法向，也就是$\mathbf r''=\lambda\nabla G$：珠子沿测地线运动。
+
+    乘子的意义：$\mathbf N=mv^2\lambda\nabla G$，$\lambda$正比于曲面对珠子的作用力。变分法里乘子由「约束在每一点成立」确定，力学里它就是维持约束所需的:term[约束力]{id="physics.analytical-mechanics.constraint-force"}。:term[带乘子的拉格朗日方程]{id="physics.analytical-mechanics.lagrange-equations-with-multipliers"}（Lagrange's equations with multipliers）里乘子给出约束力，说的是同一回事。
+
+- id: p8
+  tier: thinking
+  statement: |
+    圆柱面上两点之间有多少条测地线？哪一条最短，其余的是什么？对照球面：从北极出发的大圆都在南极重新会合；圆柱面上从一点出发、方向相差很小的测地线，会不会这样重新会合？
+  hints:
+    - |
+      展开以后，圆柱面上的一点对应展开平面上横向每隔$2\pi R$一个的无穷多个像。
+    - |
+      从$A$连到$B$的每个像，都是一条测地线（绕的圈数不同的螺旋线），有无穷多条，最短的连到最近的像。
+    - |
+      从$A$出发、方向相差很小的两条测地线，展开后是从同一点出发、夹角很小的两条直线。卷回圆柱面，它们要横向拉开整整一圈才会再碰上，夹角越小走得越远，夹角趋于零时会合点跑到无穷远。所以圆柱面上没有:term[共轭点]{id="math.calculus-of-variations.conjugate-point"}（conjugate point），这和球面不同。
+  reference: |
+    展开以后$B$有无穷多个像，横向每隔$2\pi R$一个；从$A$连到每个像的线段，卷回圆柱面上都是测地线（绕不同圈数的螺旋线）。所以有无穷多条，最短的连到横向最近的那个像；其余的也是测地线，绕的圈越多越长，都不是最短的。
+
+    从$A$出发、方向相差很小的两条测地线，展开后是夹角很小的两条直线，要横向拉开$2\pi R$才会在圆柱面上再碰上，夹角越小，会合点越远。它们不会像球面上的大圆那样在有限远处会聚，所以圆柱面上没有:term[共轭点]{id="math.calculus-of-variations.conjugate-point"}，每条测地线都是局部最短的：和它相近、两端相同的曲线都不比它短，只是绕圈多的不是全局最短。
+
+    球面上从北极出发、方向略有不同的大圆在南极重新会合，南极是共轭点，所以超过半个大圆的弧不再是局部最短。区别在于曲面的弯曲程度，也就是高斯曲率（Gaussian curvature）：圆柱面能展平，高斯曲率为零；球面不能。这是微分几何的话题，见[测地线](lesson:math.differential-geometry.geodesics)。

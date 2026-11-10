@@ -29,11 +29,7 @@ status: reviewed
 ### 乘子法则
 
 ::anchor{id="thm-multiplier-rule"}
-定理（乘子法则，multiplier rule）：设$F$、$G$有连续的二阶偏导数（partial derivative），$y$是:term[等周问题]{id="math.calculus-of-variations.isoperimetric-problem"}的局部极值，并且$y$不是$K$的:term[极值曲线]{id="math.calculus-of-variations.extremal"}（extremal）。那么有常数$\lambda$，使$y$满足$H=F-\lambda G$的:term[欧拉-拉格朗日方程]{id="math.calculus-of-variations.euler-lagrange-equation"}（Euler–Lagrange equation）：
-
-$$
-H_y-\dv{}{x}H_{y'}=0 ,\qquad H=F-\lambda G .
-$$
+定理（乘子法则，multiplier rule）：设$F$、$G$有连续的二阶偏导数（partial derivative），$y$是:term[等周问题]{id="math.calculus-of-variations.isoperimetric-problem"}的局部极值，并且$y$不是$K$的:term[极值曲线]{id="math.calculus-of-variations.extremal"}（extremal）。那么有常数$\lambda$，使$y$满足$H=F-\lambda G$的:term[欧拉-拉格朗日方程]{id="math.calculus-of-variations.euler-lagrange-equation"}（Euler–Lagrange equation）$H_y-\dv{}{x}H_{y'}=0$。
 
 证明思路：只沿一个方向$y+\varepsilon\eta$变动，一般会破坏约束，所以用两个方向：$y+\varepsilon_1\eta_1+\varepsilon_2\eta_2$。令$\varphi(\varepsilon_1,\varepsilon_2)$、$\psi(\varepsilon_1,\varepsilon_2)$分别是$J$和$K-\ell$在这条曲线上的值，问题就变成：在曲线$\psi=0$上，$\varphi$在原点取局部极值。$y$不是$K$的极值曲线，所以能选$\eta_2$使$\frac{\partial\psi}{\partial\varepsilon_2}=\delta K[y;\eta_2]\ne0$，由拉格朗日乘数法（Lagrange multiplier method），原点处两个梯度（gradient）平行：$\delta J[y;\eta_i]=\lambda\,\delta K[y;\eta_i]$，$i=1,2$。
 

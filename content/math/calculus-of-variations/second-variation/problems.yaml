@@ -1,0 +1,159 @@
+- id: p1
+  tier: easy
+  statement: |
+    $J[y]=\int_0^1\bigl(y'^2+2y^2\bigr)\dd x$，$y(0)=y(1)=0$，$y=0$是极值曲线。求它沿$\eta=x(1-x)$的第二变分$\delta^2J$。
+  answer:
+    type: number
+    value: 4/5
+  hints:
+    - |
+      第二变分是$\int\bigl(F_{yy}\eta^2+2F_{yy'}\eta\eta'+F_{y'y'}\eta'^2\bigr)\dd x$，先求三个二阶偏导数。
+    - |
+      $F=p^2+2y^2$，$F_{yy}=4$，$F_{yy'}=0$，$F_{y'y'}=2$，所以$\delta^2J=\int_0^1\bigl(4\eta^2+2\eta'^2\bigr)\dd x$。
+    - |
+      $\int_0^1x^2(1-x)^2\,\dd x=\frac1{30}$，$\int_0^1(1-2x)^2\,\dd x=\frac13$，$\delta^2J=\frac4{30}+\frac23=\frac45$。
+  solution: |
+    $F_{yy}=4$，$F_{yy'}=0$，$F_{y'y'}=2$，$\delta^2J=\int_0^1\bigl(4\eta^2+2\eta'^2\bigr)\dd x=4\cdot\frac{1}{30}+2\cdot\frac13=\frac45$。也可以直接算：$J[\varepsilon\eta]=\varepsilon^2\int_0^1(\eta'^2+2\eta^2)\,\dd x=\frac25\varepsilon^2$，它在$0$处的二阶导数是$\frac45$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些泛函，在它的任何一条极值曲线上都满足取局部极小的勒让德条件$F_{y'y'}\ge0$？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\int x^2\sqrt{1+y'^2}\,\dd x$
+      - |
+        $\int\bigl(y'^2+xyy'\bigr)\dd x$
+      - |
+        $\int\bigl(y-3y'^2\bigr)\dd x$
+      - |
+        $\int y'^3\,\dd x$
+      - |
+        $\int\bigl(1+y'^2\bigr)^{3/2}\dd x$
+    value: [1, 2, 5]
+  hints:
+    - |
+      对每个被积函数求$F_{y'y'}$，即对第三个变量$p$求两次偏导数，看它是否对所有的$p$都不小于零。
+    - |
+      A：$\frac{x^2}{(1+p^2)^{3/2}}$；B：$2$；C：$-6$；D：$6p$；E：$\frac{3(1+2p^2)}{\sqrt{1+p^2}}$。
+    - |
+      A、B、E 处处非负。C 处处为负，它的极值曲线不可能是极小。D 的极值曲线是直线$y=kx+d$，$k<0$时$F_{y'y'}=6k<0$，所以不是每一条都满足。选 A、B、E。
+  solution: |
+    $F_{y'y'}$分别是：A$\frac{x^2}{(1+p^2)^{3/2}}\ge0$；B$2$；C$-6$；D$6p$；E$\frac{3(1+2p^2)}{\sqrt{1+p^2}}>0$。A、B、E 在任何曲线上都满足；C 处处不满足；D 只在斜率非负的直线上满足。所以是 A、B、E。
+
+- id: p3
+  tier: medium
+  statement: |
+    $J[y]=\int_0^b\bigl(y'^2-4y^2\bigr)\dd x$，$y(0)=y(b)=0$，$y=0$是极值曲线。沿$\eta=\sin\frac{\pi x}{b}$变动，$b$大于多少时$J[\varepsilon\eta]<J[0]$（$\varepsilon\ne0$）？
+  answer:
+    type: number
+    value: pi/2
+  hints:
+    - |
+      $J$是二次的，$J[\varepsilon\eta]=\varepsilon^2\int_0^b\bigl(\eta'^2-4\eta^2\bigr)\dd x$，看这个积分什么时候变负。
+    - |
+      $\int_0^b\eta'^2\,\dd x=\frac{\pi^2}{2b}$，$\int_0^b\eta^2\,\dd x=\frac b2$。
+    - |
+      $\frac{\pi^2}{2b}-4\cdot\frac b2<0$，即$b^2>\frac{\pi^2}4$，$b>\frac\pi2$。
+  solution: |
+    $J[\varepsilon\eta]=\varepsilon^2\Bigl(\frac{\pi^2}{2b}-2b\Bigr)$，$b>\frac\pi2$时为负，这时$y=0$不是局部极小。注意这只是一个方向：$b<\frac\pi2$时这个方向给出正值，但要说明$y=0$是极小，还得对所有$\eta$都成立。
+
+- id: p4
+  tier: medium
+  statement: |
+    $J[y]=\int_0^1e^{y'}\,\dd x$，$y(0)=0$，$y(1)=1$。它的极值曲线是直线$y=x$。求沿$\eta=\sin\pi x$的第二变分$\delta^2J$。
+  answer:
+    type: number
+    value: e*pi^2/2
+  hints:
+    - |
+      $F=e^p$只含$p$，第二变分只剩$\int F_{y'y'}\eta'^2\,\dd x$。
+    - |
+      $F_{y'y'}=e^{p}$，在$y=x$上$p=1$，等于$e$。
+    - |
+      $\delta^2J=e\int_0^1\pi^2\cos^2(\pi x)\,\dd x=\frac{e\pi^2}{2}\approx13.41$。
+  solution: |
+    $F=e^p$，$F_{yy}=F_{yy'}=0$，$F_{y'y'}=e^p$，在$y=x$上等于$e$。$\delta^2J=e\int_0^1\eta'^2\,\dd x=e\cdot\frac{\pi^2}{2}$。它是正的，和勒让德条件$F_{y'y'}=e>0$一致。
+
+- id: p5
+  tier: hard
+  statement: |
+    把勒让德条件的证明写完整。设$P(x)=F_{y'y'}$、$Q(x)$在$[a,b]$上连续，对所有在$[a,b]$上有连续导数、两端为零的$\eta$都有$\int_a^b\bigl(P\eta'^2+Q\eta^2\bigr)\dd x\ge0$。证明$P\ge0$在$[a,b]$上处处成立。
+  hints:
+    - |
+      反证：设$P(x_0)<0$。在$x_0$附近取一个宽$2h$的小鼓包$\eta(x)=h\,\varphi\bigl(\frac{x-x_0}{h}\bigr)$，$\varphi$是固定的、在$[-1,1]$外为零的光滑函数。
+    - |
+      换元$t=\frac{x-x_0}{h}$：$\int P\eta'^2\,\dd x=h\int_{-1}^{1}P(x_0+ht)\varphi'(t)^2\,\dd t$，$\int Q\eta^2\,\dd x=h^3\int_{-1}^1Q(x_0+ht)\varphi(t)^2\,\dd t$。
+    - |
+      取$\varphi=(1-t^2)^2$。$h\to0$时，第一项除以$h$趋于$P(x_0)\int_{-1}^1\varphi'^2\,\dd t<0$，第二项除以$h$趋于$0$，所以$h$足够小时整个积分为负，矛盾。$x_0$在端点时把鼓包放在端点附近的内部，由$P$的连续性同样得到矛盾。
+  reference: |
+    设某点$x_0\in(a,b)$处$P(x_0)<0$。由连续性，有$\delta>0$使$[x_0-\delta,x_0+\delta]\subset(a,b)$且其上$P\le\frac12P(x_0)<0$。取$\varphi(t)=(1-t^2)^2$（$|t|\le1$），$\varphi(t)=0$（$|t|>1$），它有连续导数，在$\pm1$处值和导数都为零。对$0<h\le\delta$，令$\eta(x)=h\,\varphi\bigl(\frac{x-x_0}h\bigr)$，它有连续导数、两端为零，$\eta'(x)=\varphi'\bigl(\frac{x-x_0}h\bigr)$。
+
+    换元$x=x_0+ht$：
+    $$
+    \int_a^bP\eta'^2\,\dd x=h\int_{-1}^1P(x_0+ht)\varphi'(t)^2\,\dd t\le\frac{h}{2}P(x_0)\int_{-1}^1\varphi'^2\,\dd t ,\qquad\Bigl|\int_a^bQ\eta^2\,\dd x\Bigr|\le h^3M\int_{-1}^1\varphi^2\,\dd t ,
+    $$
+    $M=\max|Q|$。记$c_1=\int_{-1}^1\varphi'^2\,\dd t>0$、$c_2=\int_{-1}^1\varphi^2\,\dd t$，则整个积分不超过$h\bigl(\frac12P(x_0)c_1+h^2Mc_2\bigr)$，$h$足够小时为负，和假设矛盾。
+
+    所以$P\ge0$在$(a,b)$内成立，由连续性在端点也成立。证明只用到「$\eta'$可以保持有限而$\eta$变得很小」，所以$Q$不起作用。
+
+- id: p6
+  tier: hard
+  statement: |
+    设对每个$x\in[a,b]$，$F(x,y,p)$作为$(y,p)$的函数是凸（convex）的：它的黑塞矩阵$\begin{pmatrix}F_{yy}&F_{yp}\\F_{yp}&F_{pp}\end{pmatrix}$处处半正定（positive semidefinite，即对角元非负、行列式非负）。证明满足端点条件的极值曲线$y$是$J[y]=\int_a^bF(x,y,y')\,\dd x$在所有容许函数中的最小值。由此说明$\int\sqrt{1+y'^2}\,\dd x$、$\int\bigl(y'^2+y^2\bigr)\dd x$的极值曲线都是最小。
+  hints:
+    - |
+      凸函数在每一点都位于它的切平面上方：$F(x,y+u,p+v)\ge F(x,y,p)+F_yu+F_pv$。用多元泰勒公式证明它。
+    - |
+      泰勒公式的余项是$\frac12(u,v)H(u,v)^{\mathsf T}$，$H$是某个中间点处的黑塞矩阵；半正定的二次型非负。
+    - |
+      取$u=\eta(x)$、$v=\eta'(x)$，$\eta$两端为零，积分得$J[y+\eta]\ge J[y]+\delta J[y;\eta]=J[y]$。长度的$F_{pp}>0$、$F_{yy}=F_{yp}=0$；第二个泛函的黑塞矩阵是$\mathrm{diag}(2,2)$，都满足条件。
+  reference: |
+    固定$x$，设$g(t)=F(x,y+tu,p+tv)$。由多元泰勒公式（带拉格朗日余项，Lagrange remainder），$g(1)=g(0)+g'(0)+\frac12g''(\theta)$，$0<\theta<1$，其中$g'(0)=F_yu+F_pv$，$g''(\theta)=(u,v)\,H\,(u,v)^{\mathsf T}$，$H$是$(y+\theta u,p+\theta v)$处的黑塞矩阵。$H$半正定，$g''(\theta)\ge0$，所以$F(x,y+u,p+v)\ge F(x,y,p)+F_yu+F_pv$。
+
+    任取满足同样端点条件的容许函数$y+\eta$，$\eta$两端为零。上式中取$u=\eta(x)$、$v=\eta'(x)$，对$x$积分：
+    $$
+    J[y+\eta]\ge J[y]+\int_a^b\bigl(F_y\eta+F_{y'}\eta'\bigr)\dd x=J[y]+\delta J[y;\eta]=J[y] ,
+    $$
+    最后一步因为$y$是极值曲线，第一变分为零。所以$y$是全局最小。
+
+    例子：$F=\sqrt{1+p^2}$，$F_{yy}=F_{yp}=0$，$F_{pp}=(1+p^2)^{-3/2}>0$，黑塞矩阵半正定，所以直线是最短的，和[泛函与变分问题](lesson:math.calculus-of-variations.functionals)例 2 一致。$F=p^2+y^2$的黑塞矩阵是$\mathrm{diag}(2,2)$，正定。反过来，讲解例 1 的$F=p^2-y^2$不是凸的（$F_{yy}=-2$），所以那里要看区间长度。
+
+- id: p7
+  tier: thinking
+  statement: |
+    勒让德当年以为$P=F_{y'y'}>0$就足以保证极小。他的想法是：给$\delta^2J=\int(P\eta'^2+Q\eta^2)\,\dd x$加上$\int\dv{}{x}(w\eta^2)\,\dd x$（它等于零，因为$\eta$两端为零），再配成完全平方。试着写出$w$要满足的方程，看看这个想法在什么地方会出问题。讲解例 1（$b>\pi$）怎样说明它确实会出问题？
+  hints:
+    - |
+      $P\eta'^2+Q\eta^2+(w\eta^2)'=P\eta'^2+2w\eta\eta'+(Q+w')\eta^2$。什么时候它等于$P\bigl(\eta'+\frac wP\eta\bigr)^2$？
+    - |
+      需要$Q+w'=\frac{w^2}{P}$，即$w'=\frac{w^2}{P}-Q$。这是一个非线性的一阶方程，它的解可能在区间中途趋于无穷。
+    - |
+      例 1 中$P=2$、$Q=-2$（按讲解的记号），方程是$w'=\frac{w^2}2+2$，解是$w=2\tan(x+C)$，在任何长度超过$\pi$的区间上都必然穿过一个使$\tan$为无穷的点，配方失效。这和$b>\pi$时$y=0$不是极小一致。$w$在哪里能撑过整个区间，下一节用一个线性方程（雅可比方程，Jacobi equation）回答。
+  reference: |
+    配方：$P\eta'^2+Q\eta^2+(w\eta^2)'=P\eta'^2+2w\eta\eta'+(Q+w')\eta^2$。要它等于$P\bigl(\eta'+\frac{w}{P}\eta\bigr)^2=P\eta'^2+2w\eta\eta'+\frac{w^2}{P}\eta^2$，需要$w$在整个$[a,b]$上满足$w'=\frac{w^2}{P}-Q$，并且处处有限。若这样的$w$存在，$\delta^2J=\int P\bigl(\eta'+\frac wP\eta\bigr)^2\,\dd x\ge0$，$P>0$时只有$\eta'+\frac wP\eta\equiv0$且$\eta(a)=0$，即$\eta\equiv0$，才为零。
+
+    问题在于：这个方程是非线性的，解可能在区间中途趋于无穷（在有限的$x$处爆掉），这时配方在那里失效。勒让德没有说明$w$在整个区间上存在。
+
+    例 1：$P=2$、$Q=-2$，$w'=\frac{w^2}{2}+2$，解是$w=2\tan(x+C)$。$\tan$在长度为$\pi$的区间里必然经过一个无穷点，所以$b>\pi$时无论怎样选$C$都撑不过整个区间，配方失效，而那时$y=0$确实不是极小。令$w=-\frac{Ph'}{h}$可以把这个方程化成关于$h$的线性方程$-(Ph')'+Qh=0$，$w$爆掉对应$h$的零点；这就是[雅可比条件与共轭点](lesson:math.calculus-of-variations.jacobi-condition)的出发点。
+
+- id: p8
+  tier: thinking
+  statement: |
+    用折线近似$\eta$：把$[a,b]$分成$N$段，步长$h$，节点值$\eta_1,\dots,\eta_{N-1}$（两端为零），$\eta'$用差商（difference quotient）$\frac{\eta_{i+1}-\eta_i}{h}$代替，第二变分就成了这些节点值的二次型$\sum_{i,j}H_{ij}\eta_i\eta_j$。$H$的对角元里$P$和$Q$各带着$h$的几次方？由此说明，为什么$h\to0$时「二次型正定」首先要求$P\ge0$，而$Q$的作用要到整个区间的尺度上才显现。
+  hints:
+    - |
+      $\int P\eta'^2\,\dd x\approx\sum_iP_i\frac{(\eta_{i+1}-\eta_i)^2}{h^2}h$，$\int Q\eta^2\,\dd x\approx\sum_iQ_i\eta_i^2h$。
+    - |
+      所以$H$的对角元约为$\frac{2P_i}{h}+Q_ih$，非对角元约为$-\frac{P_i}{h}$。
+    - |
+      $h\to0$时$\frac Ph$这一部分远大于$Qh$。若某处$P<0$，只在那个节点放一个尖峰（单个$\eta_i\ne0$），二次型就是负的：这就是勒让德条件的离散版本。$P>0$时，$\frac Ph$那部分本身是正定的三对角矩阵（tridiagonal matrix），但它最小的特征值（eigenvalue，见[特征值与特征向量](lesson:math.linear-algebra.eigenvalues)）约为$P\pi^2h/L^2$（$L$是区间长度），和$Qh$同一个量级：只有在整个区间的尺度上，$Q$才可能把它压过去，这正是区间长度起作用的原因。
+  reference: |
+    离散后$\int P\eta'^2\,\dd x\approx\sum_iP_i\frac{(\eta_{i+1}-\eta_i)^2}{h}$，$\int Q\eta^2\,\dd x\approx\sum_iQ_i\eta_i^2h$。对应的矩阵$H$对角元约为$\frac{2P_i}{h}+Q_ih$，相邻的非对角元约为$-\frac{P_i}{h}$。
+
+    $h\to0$时$\frac{P}{h}$那部分是主要的。若某点$P<0$，只让那里的一个$\eta_i$不为零（一个尖峰），二次型约为$\frac{2P_i}{h}\eta_i^2<0$，不正定：这就是勒让德条件，它对应讲解里的「小鼓包」。
+
+    $P>0$时，$\frac Ph$那部分本身是正定的三对角矩阵，但它的特征值有大有小：振荡得快的向量对应约$\frac{4P}{h}$的特征值，最平缓的那个向量只对应约$\frac{P\pi^2}{L^2}h$（$L$是区间长度），和$Qh$同一个量级。所以$Q$为负时，只可能在最平缓的方向上、也就是在整个区间的尺度上把二次型压成负的；区间越长，$\frac{\pi^2}{L^2}$越小，越容易被压过去。这就是勒让德条件只管局部、区间长度要另外考虑的原因，下一节的雅可比条件（Jacobi condition）处理的正是这一点。

@@ -22,11 +22,7 @@ status: reviewed
 先看一个例子。$J[y]=\int\bigl(y'^2+y^2\bigr)\dd x$的方程是$2y-2y''=0$，即$y''=y$。两边乘$y'$，$y'y''=yy'$，也就是$\dv{}{x}\bigl(y'^2-y^2\bigr)=0$，所以沿每条:term[极值曲线]{id="math.calculus-of-variations.extremal"}（extremal），$y'^2-y^2$是常数。这里能这样做，靠的是被积函数不含$x$。
 
 ::anchor{id="thm-beltrami"}
-定理（:term[贝尔特拉米恒等式]{id="math.calculus-of-variations.beltrami-identity"}，Beltrami identity）：设$F=F(y,y')$不显含$x$，有连续的二阶偏导数（partial derivative）。则沿$J[y]=\int_a^bF(y,y')\,\dd x$的每条极值曲线，
-
-$$
-F-y'F_{y'}=C\quad(\text{常数}).
-$$
+定理（:term[贝尔特拉米恒等式]{id="math.calculus-of-variations.beltrami-identity"}，Beltrami identity）：设$F=F(y,y')$不显含$x$，有连续的二阶偏导数（partial derivative）。则沿$J[y]=\int_a^bF(y,y')\,\dd x$的每条极值曲线，$F-y'F_{y'}$都是常数：$F-y'F_{y'}=C$。
 
 证明思路：$F$不含$x$，求导时没有$F_x$这一项，$\dv{}{x}\bigl(F-y'F_{y'}\bigr)=F_yy'+F_{y'}y''-y''F_{y'}-y'\dv{}{x}F_{y'}=y'\Bigl(F_y-\dv{}{x}F_{y'}\Bigr)$。极值曲线上括号里为零，所以$F-y'F_{y'}$的导数为零。上面的例子里$F=p^2+y^2$，$F-y'F_{y'}=y^2-y'^2$，正是那个常数的相反数。
 

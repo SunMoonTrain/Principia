@@ -52,11 +52,7 @@ $$
 ### 欧拉-拉格朗日方程
 
 ::anchor{id="thm-euler-lagrange"}
-定理（:term[欧拉-拉格朗日方程]{id="math.calculus-of-variations.euler-lagrange-equation"}，Euler–Lagrange equation）：在上面的假设下，如果$J$在:term[容许函数]{id="math.calculus-of-variations.admissible-function"}$y$处取局部极值，那么在$[a,b]$上
-
-$$
-F_y-\dv{}{x}F_{y'}=0 .
-$$
+定理（:term[欧拉-拉格朗日方程]{id="math.calculus-of-variations.euler-lagrange-equation"}，Euler–Lagrange equation）：在上面的假设下，如果$J$在:term[容许函数]{id="math.calculus-of-variations.admissible-function"}$y$处取局部极值，那么在$[a,b]$上$F_y-\dv{}{x}F_{y'}=0$。
 
 证明思路：局部极值处$\delta J=0$对所有$\eta$成立；上一小节的式子说$\int_a^b\bigl(F_y-\dv{}{x}F_{y'}\bigr)\eta\,\dd x=0$，括号里是连续函数，由:term[基本引理]{id="math.calculus-of-variations.fundamental-lemma"}，它恒为零。只假设$y$有连续的一阶导数时，结论仍然成立，但不能直接分部积分，要换一个引理（p5）。
 

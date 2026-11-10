@@ -1,0 +1,143 @@
+- id: p1
+  tier: easy
+  statement: |
+    用:term[里茨方法]{id="math.calculus-of-variations.ritz-method"}近似求$J[y]=\int_0^1\bigl(y'^2-2xy\bigr)\dd x$、$y(0)=y(1)=0$的极小值点，基函数只取$x(1-x)$，即在$y=c\,x(1-x)$中求$J$的最小值。求$c$。
+  answer:
+    type: number
+    value: 1/4
+  hints:
+    - |
+      $J$是$c$的二次函数，先算出两个积分。
+    - |
+      $\int_0^1(1-2x)^2\,\dd x=\frac13$，$\int_0^1x\cdot x(1-x)\,\dd x=\frac1{12}$，所以$J(c)=\frac{c^2}{3}-\frac{c}{6}$。
+    - |
+      令$J'(c)=\frac{2c}{3}-\frac16=0$，得$c=\frac14$。
+  solution: |
+    $J(c)=c^2\int_0^1(1-2x)^2\,\dd x-2c\int_0^1x^2(1-x)\,\dd x=\frac{c^2}3-\frac c6$，在$c=\frac14$处最小，最小值是$-\frac1{48}$。精确解是$\frac{x-x^3}{6}$（见 p3），在$x=\frac12$处是$\frac1{16}$，和近似解$\frac14\cdot\frac14$恰好相同。
+
+- id: p2
+  tier: easy
+  statement: |
+    关于:term[里茨方法]{id="math.calculus-of-variations.ritz-method"}和极小值的存在，下面哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        里茨方法给出的$J$值不小于$J$的下确界
+      - |
+        每加一个基函数，里茨方法给出的$J$值不会变大
+      - |
+        里茨方法求出的近似函数一定满足欧拉-拉格朗日方程
+      - |
+        $J[y]=\int_0^1y'^2\,\dd x$，$y(0)=0$，$y(1)=1$，它的极小值取不到
+      - |
+        $J$是二次泛函时，里茨方法归结为解线性方程组
+    value: [1, 2, 5]
+  hints:
+    - |
+      里茨方法是在一部分函数里求最小值。
+    - |
+      近似函数只在基函数的组合里最好，一般不是方程的解；D 里试一试$y=x$。
+    - |
+      A、B、E 对。C 错，D 错：$J[y]\ge\bigl(\int_0^1y'\,\dd x\bigr)^2=1$，$y=x$取到$1$。
+  solution: |
+    A 对：在一部分函数里求最小值，结果不会比在全体里的小。B 对：加基函数是扩大比较的范围。C 错：近似函数一般不满足方程，只在精确解恰好是基函数的组合时才满足（p3）。D 错：$\int_0^1y'^2\,\dd x\ge\bigl(\int_0^1y'\,\dd x\bigr)^2=1$，$y=x$取到；E 对，令偏导数为零得到的是线性方程组。
+
+- id: p3
+  tier: medium
+  statement: |
+    对 p1 的泛函$J[y]=\int_0^1\bigl(y'^2-2xy\bigr)\dd x$，$y(0)=y(1)=0$，用两个基函数$\varphi_1=x(1-x)$、$\varphi_2=x^2(1-x)$做:term[里茨方法]{id="math.calculus-of-variations.ritz-method"}近似。求得到的$J$的最小值。
+  answer:
+    type: number
+    value: -1/45
+  hints:
+    - |
+      方程组是$A_{11}c_1+A_{12}c_2=b_1$、$A_{21}c_1+A_{22}c_2=b_2$，$A_{ij}=\int_0^1\varphi_i'\varphi_j'\,\dd x$，$b_i=\int_0^1x\varphi_i\,\dd x$。
+    - |
+      $A_{11}=\frac13$，$A_{12}=A_{21}=\frac16$，$A_{22}=\frac2{15}$，$b_1=\frac1{12}$，$b_2=\frac1{20}$。
+    - |
+      解得$c_1=c_2=\frac16$。在最小值点$A\mathbf c=\mathbf b$，所以最小值是$-(b_1c_1+b_2c_2)=-\frac1{45}$。
+  solution: |
+    算出$A_{11}=\frac13$、$A_{12}=\frac16$、$A_{22}=\frac2{15}$、$b_1=\frac1{12}$、$b_2=\frac1{20}$，解得$c_1=c_2=\frac16$，最小值是$-(b_1c_1+b_2c_2)=-\frac1{45}$。近似解是$\frac16\bigl(x(1-x)+x^2(1-x)\bigr)=\frac{x-x^3}{6}$，它满足欧拉-拉格朗日方程$-y''=x$和边界条件，正是精确的极小值点。精确解恰好是两个基函数的组合，里茨方法就给出精确解；最小值$-\frac1{45}$比 p1 的一项近似$-\frac1{48}$小。
+
+- id: p4
+  tier: medium
+  statement: |
+    $J[y]=\int_0^1\bigl((1+x)y'^2-2y\bigr)\dd x$，$y(0)=y(1)=0$。在$y=c\,x(1-x)$中求$J$的最小值（一项:term[里茨方法]{id="math.calculus-of-variations.ritz-method"}近似）。
+  answer:
+    type: number
+    value: -1/18
+  hints:
+    - |
+      $J(c)=c^2\int_0^1(1+x)(1-2x)^2\,\dd x-2c\int_0^1x(1-x)\,\dd x$。
+    - |
+      $\int_0^1(1+x)(1-2x)^2\,\dd x=\frac13+\frac16=\frac12$，$\int_0^1x(1-x)\,\dd x=\frac16$。
+    - |
+      $J(c)=\frac{c^2}{2}-\frac c3$，在$c=\frac13$处最小，最小值是$-\frac1{18}\approx-0.0556$。
+  solution: |
+    $J(c)=\frac{c^2}2-\frac c3$，$c=\frac13$时最小，近似最小值是$-\frac1{18}\approx-0.05556$。精确的极小值点满足$-\bigl((1+x)y'\bigr)'=1$，解得$y=\frac{\ln(1+x)}{\ln2}-x$，最小值是$\frac1{\ln2}-\frac32\approx-0.05730$。近似值比它大约$3\%$，是上界。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$连续，$u$满足$-u''=f$、$u(0)=u(1)=0$。证明对任何两端为零的容许函数$v$，$J[v]=\int_0^1\bigl(v'^2-2fv\bigr)\dd x$满足$J[v]-J[u]=\int_0^1(v'-u')^2\,\dd x$。由此说明:term[里茨方法]{id="math.calculus-of-variations.ritz-method"}的近似解在所有$\sum c_i\varphi_i$中使$\int_0^1(v'-u')^2\,\dd x$最小。
+  hints:
+    - |
+      把$f$换成$-u''$，对$\int_0^1fv\,\dd x$分部积分（integration by parts）。
+    - |
+      $\int_0^1fv\,\dd x=\int_0^1u'v'\,\dd x$，所以$J[v]=\int_0^1v'^2\,\dd x-2\int_0^1u'v'\,\dd x$。
+    - |
+      配方：$J[v]=\int_0^1(v'-u')^2\,\dd x-\int_0^1u'^2\,\dd x$，而$J[u]=-\int_0^1u'^2\,\dd x$。
+  reference: |
+    对两端为零的$v$，分部积分得$\int_0^1fv\,\dd x=\int_0^1(-u'')v\,\dd x=\int_0^1u'v'\,\dd x$，边界项$u'v$在两端为零。于是$J[v]=\int_0^1\bigl(v'^2-2u'v'\bigr)\dd x=\int_0^1(v'-u')^2\,\dd x-\int_0^1u'^2\,\dd x$。取$v=u$得$J[u]=-\int_0^1u'^2\,\dd x$，两式相减即得结论；它也说明$u$是唯一的最小值点（等号要求$v'\equiv u'$，再由$v(0)=u(0)$得$v=u$）。
+
+    里茨方法在$v=\sum c_i\varphi_i$中使$J[v]$最小，由上式，也就是使$\int_0^1(v'-u')^2\,\dd x$最小：在这些函数里，它按「导数之差的平方积分」这种距离最接近$u$。所以里茨近似的好坏，取决于基函数的组合能多接近$u$；p3 里$u=\frac{x-x^3}6$本身就是基函数的组合，近似就是精确的。
+
+- id: p6
+  tier: hard
+  statement: |
+    对$J[y]=\int_0^1\bigl(p\,y'^2+q\,y^2-2fy\bigr)\dd x$（$p>0$、$q\ge0$连续，$y(0)=y(1)=0$），:term[里茨方法]{id="math.calculus-of-variations.ritz-method"}的基函数$\varphi_1,\dots,\varphi_N$在两端为零，并且线性无关（linearly independent），即$\sum c_i\varphi_i\equiv0$只在所有$c_i=0$时成立。证明矩阵$A_{ij}=\int_0^1\bigl(p\,\varphi_i'\varphi_j'+q\,\varphi_i\varphi_j\bigr)\dd x$对称、正定（positive definite），因此方程组$A\mathbf c=\mathbf b$有唯一解。
+  hints:
+    - |
+      正定的意思是：对任何非零向量$\mathbf c$，$\mathbf c\cdot A\mathbf c>0$。
+    - |
+      记$v=\sum c_i\varphi_i$，算出$\mathbf c\cdot A\mathbf c=\int_0^1\bigl(p\,v'^2+q\,v^2\bigr)\dd x\ge0$。
+    - |
+      它等于零时$v'\equiv0$，又$v(0)=0$，所以$v\equiv0$，由线性无关得$\mathbf c=\mathbf 0$。于是$A\mathbf c=\mathbf 0$只有零解，$A$可逆。
+  reference: |
+    对称：$A_{ij}$的式子对$i$、$j$对称。正定：对$\mathbf c\ne\mathbf 0$，记$v=\sum c_i\varphi_i$，展开得$\mathbf c\cdot A\mathbf c=\sum_{i,j}c_ic_jA_{ij}=\int_0^1\bigl(p\,v'^2+q\,v^2\bigr)\dd x\ge0$。如果它等于零，由$p>0$和被积函数连续、非负，$v'\equiv0$，$v$是常数，又$v(0)=0$，所以$v\equiv0$；由线性无关，$\mathbf c=\mathbf 0$，矛盾。所以$\mathbf c\cdot A\mathbf c>0$。
+
+    唯一解：若$A\mathbf c=\mathbf 0$，则$\mathbf c\cdot A\mathbf c=0$，只能$\mathbf c=\mathbf 0$，所以齐次方程组只有零解，$A$可逆，$A\mathbf c=\mathbf b$有唯一解。如果$p$在某处为负，这个论证就不成立了，那时$J$可能没有下界，里茨方程组也可能无解或有无穷多解。
+
+- id: p7
+  tier: thinking
+  statement: |
+    闭区间上的连续函数一定取到最小值，靠的是「有界数列有收敛的子列」和连续性。为什么这两条搬到函数上会出问题？用例 2，再想一想$y_k=\frac{\sin k\pi x}{k\pi}$这一列函数。
+  hints:
+    - |
+      $\frac{\sin k\pi x}{k\pi}$本身趋于$0$，它的导数$\cos k\pi x$呢？
+    - |
+      泛函里有$y'$，函数趋于$0$不等于导数也收敛；导数大小不变而振荡越来越快，任何子列都不收敛。
+    - |
+      例 2 的锯齿函数也是这样：函数趋于$0$，导数在$\pm1$之间切换得越来越快，$J$在极限处跳了上去。要让:term[直接方法]{id="math.calculus-of-variations.direct-method"}成立，需要更弱的收敛和被积函数对$p$的凸性（见讲解）。
+  reference: |
+    数的情形：有界数列有收敛的子列（致密性定理），连续函数在极限处的值等于值的极限，两条合起来，最小值就取到了。函数的情形两条都可能失败。$y_k=\frac{\sin k\pi x}{k\pi}$满足$|y_k|\le\frac1{k\pi}$，函数本身趋于$0$；但导数$y_k'=\cos k\pi x$的大小不变，振荡越来越快，不收敛到任何函数，任何子列也一样。
+
+    泛函里含$y'$，只看函数收敛是不够的，$J[y_k]$不一定趋于$J$在极限处的值。例 2 正是这样：锯齿函数趋于$0$，$J[y_m]\to0$，可$J[0]=1$。补救的办法分两步：先用一种更弱的收敛，保证:term[极小化序列]{id="math.calculus-of-variations.minimizing-sequence"}有收敛的子列；再要求被积函数对$p$是凸的，保证$J$在极限处只会往下跳、不会往上跳。这正是讲解里说的成功条件，细节属于泛函分析。
+
+- id: p8
+  tier: thinking
+  statement: |
+    把$[0,1]$分成$N$等份，步长$h=\frac1N$，节点$x_i=ih$。「帽子函数」（hat function）$\varphi_i$在$x_i$处为$1$、在其余节点为$0$、在每一小段上是一次函数。用$\varphi_1,\dots,\varphi_{N-1}$对$J[y]=\int_0^1\bigl(y'^2-2fy\bigr)\dd x$做:term[里茨方法]{id="math.calculus-of-variations.ritz-method"}近似，矩阵$A$长什么样？和用差商（difference quotient）近似$y''$得到的方程比较，有什么好处？
+  hints:
+    - |
+      $\varphi_i'$只在$(x_{i-1},x_{i+1})$上不为零，在那里是$\pm\frac1h$。
+    - |
+      $A_{ii}=\frac2h$，$A_{i,i\pm1}=-\frac1h$，其余为零：$A$是三对角（tridiagonal）的。
+    - |
+      第$i$个方程是$\frac{-c_{i-1}+2c_i-c_{i+1}}{h}=\int_0^1f\varphi_i\,\dd x\approx hf(x_i)$。两边除以$h$，正是用差商近似$-y''=f$的方程，$c_i$就是近似解在节点处的值。
+  reference: |
+    $\varphi_i'$在$(x_{i-1},x_i)$上是$\frac1h$，在$(x_i,x_{i+1})$上是$-\frac1h$，别处为零。所以$A_{ii}=\int_0^1\varphi_i'^2\,\dd x=\frac2h$，$A_{i,i\pm1}=-\frac1h$，其余为零：$A$是三对角的，每行只有三个非零元，$N$很大时也很容易解。帽子函数有尖角，导数不连续，但$J$照样算得出来，把容许函数放宽到分段光滑的就行。
+
+    第$i$个方程是$\frac{-c_{i-1}+2c_i-c_{i+1}}{h}=\int_0^1f\varphi_i\,\dd x$，右边约是$hf(x_i)$。两边除以$h$，正是把$y''$换成差商$\frac{y_{i-1}-2y_i+y_{i+1}}{h^2}$得到的方程，$c_i$就是近似解在$x_i$处的值。好处在于：里茨方法从泛函出发，节点不等距、系数随位置变化、区域是二维的复杂形状时，照样能写出对称、正定的方程组，这就是有限元方法（finite element method）的出发点。

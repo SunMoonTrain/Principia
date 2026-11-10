@@ -28,13 +28,9 @@ $$
 每个$y_k$的两端都给定。
 
 ::anchor{id="thm-el-system"}
-定理（:term[欧拉-拉格朗日方程组]{id="math.calculus-of-variations.euler-lagrange-equation"}）：设$F$有连续的二阶偏导数（partial derivative），$y_1,\dots,y_n$有连续的二阶导数。如果$J$在$(y_1,\dots,y_n)$处取局部极值，那么
+定理（:term[欧拉-拉格朗日方程组]{id="math.calculus-of-variations.euler-lagrange-equation"}）：设$F$有连续的二阶偏导数（partial derivative），$y_1,\dots,y_n$有连续的二阶导数。如果$J$在$(y_1,\dots,y_n)$处取局部极值，那么$F_{y_k}-\dv{}{x}F_{y_k'}=0$，$k=1,\dots,n$。
 
-$$
-F_{y_k}-\dv{}{x}F_{y_k'}=0 ,\qquad k=1,\dots,n .
-$$
-
-证明思路：只把第$k$个函数换成$y_k+\varepsilon\eta$，其余不动，$J$就成了只含一个未知函数的:term[泛函]{id="math.calculus-of-variations.functional"}，照[第一变分与欧拉-拉格朗日方程](lesson:math.calculus-of-variations.euler-lagrange)的推导得到第$k$个方程。这里要求各个$y_k$能各自独立地变动；如果它们之间有:term[约束]{id="physics.analytical-mechanics.constraint"}（constraint，例如曲线必须落在一张曲面上），就不能这样做，那要用乘子（multiplier），见[约束在曲面上的变分问题](lesson:math.calculus-of-variations.holonomic-constraints)。
+证明思路：只把第$k$个函数换成$y_k+\varepsilon\eta$，其余不动，$J$就成了只含一个未知函数的:term[泛函]{id="math.calculus-of-variations.functional"}，照[第一变分与欧拉-拉格朗日方程](lesson:math.calculus-of-variations.euler-lagrange)的推导得到第$k$个方程。这里要求各个$y_k$能各自独立地变动；如果它们之间有:term[完整约束]{id="math.calculus-of-variations.holonomic-constraint"}（holonomic constraint，例如曲线必须落在一张曲面上），就不能这样做，那要用乘子（multiplier），见[约束在曲面上的变分问题](lesson:math.calculus-of-variations.holonomic-constraints)。
 
 $n$个方程一般各是二阶的，通解含$2n$个常数，正好由两端的$2n$个条件定出。$F$不含某个$y_k$时，第$k$个方程积分一次就是$F_{y_k'}=C$，它是一个:term[首次积分]{id="math.calculus-of-variations.first-integral"}（first integral）。分析力学里的:term[哈密顿原理]{id="physics.analytical-mechanics.hamiltons-principle"}（Hamilton's principle，见[哈密顿原理](lesson:physics.analytical-mechanics.hamiltons-principle)）就是这个定理：把$x$换成时间，$y_k$换成描述位置的坐标。
 
@@ -51,11 +47,7 @@ $$
 方括号因$\eta=\eta'=0$而为零。所以$\delta J=\int_a^b\bigl(F_y-\dv{}{x}F_{y'}+\frac{\dd^2}{\dd x^2}F_{y''}\bigr)\eta\,\dd x$，再用:term[变分法基本引理]{id="math.calculus-of-variations.fundamental-lemma"}（fundamental lemma of the calculus of variations）。
 
 ::anchor{id="thm-euler-poisson"}
-定理（:term[欧拉-泊松方程]{id="math.calculus-of-variations.euler-poisson-equation"}，Euler–Poisson equation）：设$F$足够光滑，$y$有连续的四阶导数，两端的$y$、$y'$都给定。如果$J[y]=\int_a^bF(x,y,y',y'')\,\dd x$在$y$处取局部极值，那么
-
-$$
-F_y-\dv{}{x}F_{y'}+\frac{\dd^2}{\dd x^2}F_{y''}=0 .
-$$
+定理（:term[欧拉-泊松方程]{id="math.calculus-of-variations.euler-poisson-equation"}，Euler–Poisson equation）：设$F$足够光滑，$y$有连续的四阶导数，两端的$y$、$y'$都给定。如果$J[y]=\int_a^bF(x,y,y',y'')\,\dd x$在$y$处取局部极值，那么$F_y-\dv{}{x}F_{y'}+\frac{\dd^2}{\dd x^2}F_{y''}=0$。
 
 $F_{y''y''}\ne0$时这是四阶方程，通解有四个常数，正好由两端的$y$、$y'$四个条件定出。如果只给定两端的$y$、不给$y'$，上面方括号里的$F_{y''}\eta'$不再消失，两端要另外满足$F_{y''}=0$（p5）。含更高阶导数时规律相同：$y^{(m)}$的那一项带$(-1)^m\frac{\dd^m}{\dd x^m}$。
 
