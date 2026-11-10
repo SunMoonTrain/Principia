@@ -1,0 +1,157 @@
+- id: p1
+  tier: easy
+  statement: |
+    在某惯性系里，两个事件相隔$13\,\mu\mathrm s$，相距$3600\,\mathrm m$（都在$x$轴上）。如果它们之间的间隔是类时的，求它们之间的固有时。取$c=3\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 5
+    unit: |
+      $\mu\mathrm s$
+  hints:
+    - |
+      先算$c\Delta t$，和$\Delta x$比较，判断间隔类型。
+    - |
+      $c\Delta t=3900\,\mathrm m$，$\Delta s^2=3900^2-3600^2=1500^2\,\mathrm{m^2}>0$，是类时的。
+    - |
+      $\Delta\tau=\frac{\sqrt{\Delta s^2}}{c}=\frac{1500\,\mathrm m}{3\times10^8\,\mathrm{m/s}}=5\,\mu\mathrm s$。
+  solution: |
+    $c\Delta t=3900\,\mathrm m$，$\Delta s^2=3900^2-3600^2=(1500\,\mathrm m)^2$，类时。固有时$\Delta\tau=\frac{1500\,\mathrm m}{c}=5\,\mu\mathrm s$，比$13\,\mu\mathrm s$短：在两个事件同地的惯性系里，它们只相隔$5\,\mu\mathrm s$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面每一项给出两个事件在某惯性系里的坐标差（光秒是光在$1\,\mathrm s$里走的距离）。哪些事件对之间的间隔是类时的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\Delta t=2\,\mathrm s$，$\Delta x=1.2$光秒
+      - |
+        $\Delta t=1\,\mathrm s$，$\Delta x=1.5$光秒
+      - |
+        $\Delta t=3\,\mathrm s$，$\Delta x=3$光秒
+      - |
+        $\Delta t=1\,\mathrm s$，$\Delta x=0.6$光秒，$\Delta y=0.6$光秒
+      - |
+        $\Delta t=0$，$\Delta x=0.1$光秒
+    value: [1, 4]
+  hints:
+    - |
+      用秒和光秒作单位时$c=1$，$\Delta s^2=\Delta t^2-\Delta x^2-\Delta y^2-\Delta z^2$。
+    - |
+      类时要求$\Delta s^2>0$；等于零是类光，小于零是类空。
+    - |
+      A：$4-1.44>0$；B：$1-2.25<0$；C：$0$；D：$1-0.72>0$；E：$-0.01<0$。
+  solution: |
+    A 的$\Delta s^2=2.56>0$，D 的$\Delta s^2=1-0.36-0.36=0.28>0$，都是类时的。B、E 是类空的，C 的$\Delta s^2=0$，是类光的。D 说明要用全部三个空间方向的位移，单看$\Delta x$不够。
+
+- id: p3
+  tier: medium
+  statement: |
+    在地面参考系（frame of reference）里，一个粒子从事件 A 出发，先以$0.6c$沿$x$轴飞行$5\,\mu\mathrm s$，再以$0.8c$沿同一方向飞行$5\,\mu\mathrm s$，到达事件 B（两段时间都按地面的钟）。粒子自己的钟从 A 到 B 走了多长时间？
+  answer:
+    type: number
+    value: 7
+    unit: |
+      $\mu\mathrm s$
+  hints:
+    - |
+      固有时沿世界线累加：两段都是匀速，分别算出再相加。
+    - |
+      速度为$u$的一段，粒子的钟走$\Delta t\sqrt{1-u^2/c^2}$；两段的因子分别是$\sqrt{1-0.36}=0.8$和$\sqrt{1-0.64}=0.6$。
+    - |
+      $5\times0.8\,\mu\mathrm s+5\times0.6\,\mu\mathrm s=7\,\mu\mathrm s$。
+  solution: |
+    第一段$\Delta\tau_1=5\sqrt{1-0.6^2}\,\mu\mathrm s=4\,\mu\mathrm s$，第二段$\Delta\tau_2=5\sqrt{1-0.8^2}\,\mu\mathrm s=3\,\mu\mathrm s$，共$7\,\mu\mathrm s$。作为对照，A、B 之间$\Delta t=10\,\mu\mathrm s$，$\frac{\Delta x}{c}=0.6\times5\,\mu\mathrm s+0.8\times5\,\mu\mathrm s=7\,\mu\mathrm s$，从 A 匀速直线到 B 的钟走$\sqrt{10^2-7^2}\,\mu\mathrm s=\sqrt{51}\,\mu\mathrm s\approx7.14\,\mu\mathrm s$，比粒子的钟多，和讲解里「直线的固有时最长」一致。
+
+- id: p4
+  tier: medium
+  statement: |
+    在惯性系$S$里，两个事件相隔$\Delta t=2\,\mu\mathrm s$，沿$x$轴相距$1000\,\mathrm m$。在让它们同时发生的那个惯性系里，它们相距多远？取$c=3\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 800
+    unit: |
+      $\mathrm m$
+  hints:
+    - |
+      $c\Delta t=600\,\mathrm m<1000\,\mathrm m$，类空，存在让它们同时的惯性系。
+    - |
+      在那个惯性系里$\Delta t'=0$，$\Delta s^2=-\Delta x'^2$；间隔不变。
+    - |
+      $\Delta x'^2=1000^2-600^2=800^2$，$\Delta x'=800\,\mathrm m$。
+  solution: |
+    $\Delta s^2=600^2-1000^2=-(800\,\mathrm m)^2$，类空。在两事件同时的惯性系里$\Delta s^2=-\Delta x'^2$，所以相距$800\,\mathrm m$。这个惯性系的速度是$v=\frac{c^2\Delta t}{\Delta x}=0.6c$，可以用洛伦兹变换验证：$\Delta x'=1.25\times(1000-0.6\times600)\,\mathrm m=800\,\mathrm m$。
+
+- id: p5
+  tier: hard
+  statement: |
+    事件 B 在事件 A 之后，C 在 B 之后，AB、BC 的间隔都是类时的。记$\tau_{XY}=\frac{\sqrt{\Delta s_{XY}^2}}{c}$。证明 AC 的间隔也是类时的，并且$\tau_{AC}\ge\tau_{AB}+\tau_{BC}$（「反三角不等式」，reverse triangle inequality），说明等号何时成立。
+  hints:
+    - |
+      先在一个惯性系里写出$\Delta t_{AC}=\Delta t_{AB}+\Delta t_{BC}$、$\Delta\vb r_{AC}=\Delta\vb r_{AB}+\Delta\vb r_{BC}$。
+    - |
+      类时且后于：$c\Delta t_{AB}>|\Delta\vb r_{AB}|$，$c\Delta t_{BC}>|\Delta\vb r_{BC}|$，相加并用三角不等式，得到 AC 类时。
+    - |
+      换到 A、C 同地的惯性系：$\tau_{AC}=\Delta t_{AC}'$，而$\tau_{AB}\le\Delta t_{AB}'$、$\tau_{BC}\le\Delta t_{BC}'$。
+  reference: |
+    在任一惯性系里，$c\Delta t_{AB}>|\Delta\vb r_{AB}|$，$c\Delta t_{BC}>|\Delta\vb r_{BC}|$（类时、且 B 在 A 后、C 在 B 后）。相加，$c\Delta t_{AC}>|\Delta\vb r_{AB}|+|\Delta\vb r_{BC}|\ge|\Delta\vb r_{AC}|$，所以 AC 也是类时的。
+
+    取 A、C 同地的惯性系，那里$\Delta\vb r_{AC}'=0$，$\tau_{AC}=\Delta t_{AC}'=\Delta t_{AB}'+\Delta t_{BC}'$。另一方面$\tau_{AB}=\sqrt{\Delta t_{AB}'^2-|\Delta\vb r_{AB}'|^2/c^2}\le\Delta t_{AB}'$，$\tau_{BC}\le\Delta t_{BC}'$。相加得$\tau_{AB}+\tau_{BC}\le\tau_{AC}$。
+
+    等号要求$\Delta\vb r_{AB}'=\Delta\vb r_{BC}'=0$，即在这个惯性系里 B 和 A、C 同地，三个事件在同一条匀速直线运动的世界线上。这和平面上的三角不等式方向相反：在时空里，绕道走的世界线固有时反而短，直线最长，和讲解里的定理一致。
+
+- id: p6
+  tier: hard
+  statement: |
+    飞船从静止出发，在地面参考系（frame of reference）里的速度按$u(t)=\frac{at}{\sqrt{1+(at/c)^2}}$增大，这是飞船上的人始终感到加速度为$a$的运动（推导见[四维力与相对论动力学](lesson:physics.special-relativity.four-force)）。求地面时间$t$内飞船上的钟走过的固有时；取$a=9.8\,\mathrm{m/s^2}$、$t=1$年估算，并说明$t$很大时固有时怎样增长。
+  hints:
+    - |
+      $\sqrt{1-\frac{u^2}{c^2}}=\frac{1}{\sqrt{1+(at/c)^2}}$。
+    - |
+      $\tau=\int_0^t\frac{\dd t'}{\sqrt{1+(at'/c)^2}}$；求导验证$\frac{\dd}{\dd t}\ln\bigl(kt+\sqrt{1+k^2t^2}\bigr)=\frac{k}{\sqrt{1+k^2t^2}}$。
+    - |
+      $\tau=\frac ca\ln\Bigl(\frac{at}c+\sqrt{1+\frac{a^2t^2}{c^2}}\Bigr)$；$t=1$年时$\frac{at}{c}\approx1.03$，$\tau\approx0.88$年。
+  reference: |
+    $1-\frac{u^2}{c^2}=1-\frac{(at/c)^2}{1+(at/c)^2}=\frac{1}{1+(at/c)^2}$，所以$\tau=\int_0^t\frac{\dd t'}{\sqrt{1+k^2t'^2}}$，$k=\frac ac$。由$\frac{\dd}{\dd t}\ln\bigl(kt+\sqrt{1+k^2t^2}\bigr)=\frac{k+\frac{k^2t}{\sqrt{1+k^2t^2}}}{kt+\sqrt{1+k^2t^2}}=\frac{k}{\sqrt{1+k^2t^2}}$，得$\tau=\frac1k\ln\bigl(kt+\sqrt{1+k^2t^2}\bigr)$。
+
+    代入$a=9.8\,\mathrm{m/s^2}$，$t=1$年$\approx3.156\times10^7\,\mathrm s$：$kt=\frac{9.8\times3.156\times10^7}{3\times10^8}\approx1.031$，$\frac1k=\frac{c}{a}\approx3.06\times10^7\,\mathrm s\approx0.97$年，$\tau\approx0.97\times\ln(1.031+1.436)\,\text{年}\approx0.88$年。
+
+    $t$很大时$kt+\sqrt{1+k^2t^2}\approx2kt$，$\tau\approx\frac ca\ln\frac{2at}{c}$：固有时只按对数增长。地面过去几千年，船上只过去十来年，这是持续加速的飞船能在一生中飞到很远地方的原因。
+
+- id: p7
+  tier: thinking
+  statement: |
+    时空间隔里时间项和空间项的符号相反。如果改用$c^2\Delta t^2+\Delta x^2$，它在洛伦兹变换下会不会不变？为什么「相反的符号」是必须的？
+  hints:
+    - |
+      用标准位形的变换算$c^2\Delta t'^2+\Delta x'^2$，看交叉项能不能消掉。
+    - |
+      $(c\Delta t-\beta\Delta x)^2+(\Delta x-\beta c\Delta t)^2$里交叉项是$-4\beta c\Delta t\Delta x$，不会抵消。
+    - |
+      光速不变要求「$\Delta s^2=0$」在所有惯性系里保持，即$c|\Delta t|=|\Delta x|$保持；只有相反的符号才能把这一条写成一个量为零。
+  reference: |
+    $c^2\Delta t'^2+\Delta x'^2=\gamma^2\bigl[(c\Delta t-\beta\Delta x)^2+(\Delta x-\beta c\Delta t)^2\bigr]=\gamma^2\bigl[(1+\beta^2)(c^2\Delta t^2+\Delta x^2)-4\beta c\Delta t\Delta x\bigr]$。除非$\beta=0$，它和$c^2\Delta t^2+\Delta x^2$一般不相等，所以不是不变量（invariant）。
+
+    相反的符号在推导里起了关键作用：交叉项$-2\beta c\Delta t\Delta x$在两个平方相减时正好抵消，剩下的$1-\beta^2$又被$\gamma^2$消掉。这背后是光速不变：光线满足$c^2\Delta t^2-\Delta x^2=0$，这个条件必须在所有惯性系里保持，而「平方和为零」只在$\Delta t=\Delta x=0$时成立，表达不了光线。
+
+    所以时空的「距离」不是欧几里得（Euclidean）的：转动保持平方和，洛伦兹变换保持平方差。用$ct$作坐标时，洛伦兹变换就是保持$c^2t^2-x^2$的线性变换（linear transformation），这一点在[四维矢量与闵可夫斯基度规](lesson:physics.special-relativity.four-vectors)里会写成度规（metric）的形式。
+
+- id: p8
+  tier: thinking
+  statement: |
+    沿一束光的世界线，固有时是多少？有人说「光子（photon）不会变老」，这句话有道理吗？
+  hints:
+    - |
+      光经过的任意两个事件，间隔是类光的，$\Delta s^2=0$。
+    - |
+      能不能找到一个光子静止的惯性系？洛伦兹变换在$v=c$时怎样？
+    - |
+      固有时为零是一个不变的事实，但「光子的感受」需要一个光子静止的参考系，而这样的惯性系不存在。
+  reference: |
+    沿光的世界线，任意两个事件之间$\Delta s^2=0$，按$\Delta\tau=\frac{\sqrt{\Delta s^2}}{c}$，固有时为零；用$\int\sqrt{1-u^2/c^2}\,\dd t$算，$u=c$时被积函数为零，结果也是零。这是一个和惯性系无关的事实。
+
+    但「光子不会变老」把固有时理解成光子自己的钟的读数。钟要有一个它静止的惯性系，而光在任何惯性系里都以$c$运动，$v=c$时$\gamma$没有定义，没有光子静止的惯性系。所以这句话只能当作「固有时为零」的形象说法。
+
+    比较有物理内容的推论是：一个粒子如果有变化（比如会衰变、会在几种状态之间振荡），它就不能以光速运动。中微子（neutrino）会在不同种类之间振荡（neutrino oscillation），这正是推断中微子有质量的理由之一。

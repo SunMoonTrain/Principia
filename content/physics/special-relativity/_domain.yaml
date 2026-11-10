@@ -9,4 +9,202 @@ macros:
     \mathop{}\!\mathrm{d}
   \dv: |
     \frac{\mathrm{d} #1}{\mathrm{d} #2}
-glossary: []
+glossary:
+  - id: physics.special-relativity.inertial-frame
+    zh: |
+      惯性系
+    en: |
+      inertial frame
+    brief: |
+      不受力的物体在其中保持静止或做匀速直线运动的参考系；相对它匀速运动的参考系也是惯性系。
+    definedIn: physics.special-relativity.postulates
+    anchor: def-inertial-frame
+  - id: physics.special-relativity.event
+    zh: |
+      事件
+    en: |
+      event
+    brief: |
+      在某个地点、某个时刻发生的一件事；在一个惯性系里由四个数$(t,x,y,z)$确定。
+    definedIn: physics.special-relativity.postulates
+    anchor: def-event
+  - id: physics.special-relativity.worldline
+    zh: |
+      世界线
+    en: |
+      world line
+    brief: |
+      一个质点经过的全部事件；在一个惯性系里由位置随时间变化的函数给出。
+    definedIn: physics.special-relativity.postulates
+    anchor: def-worldline
+  - id: physics.special-relativity.standard-configuration
+    zh: |
+      标准位形
+    en: |
+      standard configuration
+    brief: |
+      惯性系$S'$相对$S$以速度$v$沿$x$轴运动，坐标轴两两平行，$t=t'=0$时原点重合。
+    definedIn: physics.special-relativity.postulates
+    anchor: def-standard-configuration
+  - id: physics.special-relativity.principle-of-relativity
+    zh: |
+      相对性原理
+    en: |
+      principle of relativity
+    brief: |
+      物理定律在所有惯性系里形式相同，任何实验都分辨不出哪个惯性系「真正静止」。
+    definedIn: physics.special-relativity.postulates
+    anchor: def-principle-of-relativity
+  - id: physics.special-relativity.light-postulate
+    zh: |
+      光速不变原理
+    en: |
+      constancy of the speed of light
+    brief: |
+      真空中的光速在所有惯性系里都是$c$，和光源的运动无关。
+    definedIn: physics.special-relativity.postulates
+    anchor: def-light-postulate
+  - id: physics.special-relativity.synchronization
+    zh: |
+      同步
+    en: |
+      clock synchronization
+    brief: |
+      惯性系里两只静止的钟用光对准：光从一只钟到另一只再返回，反射时对方的读数等于发出和收回时读数的平均值。
+    definedIn: physics.special-relativity.relativity-of-simultaneity
+    anchor: def-synchronization
+  - id: physics.special-relativity.relativity-of-simultaneity
+    zh: |
+      同时的相对性
+    en: |
+      relativity of simultaneity
+    brief: |
+      惯性系$S'$里同时、沿运动方向分开的两个事件，在$S$里不同时：沿$S'$相对$S$的运动方向靠后的那个先发生。
+    definedIn: physics.special-relativity.relativity-of-simultaneity
+    anchor: thm-relativity-of-simultaneity
+  - id: physics.special-relativity.proper-time
+    zh: |
+      固有时
+    en: |
+      proper time
+    brief: |
+      两个事件在某个惯性系里发生在同一地点时，那里的一只钟测得的时间间隔，即随物体一起运动的钟的读数。
+    definedIn: physics.special-relativity.time-dilation
+    anchor: def-proper-time
+  - id: physics.special-relativity.lorentz-factor
+    zh: |
+      洛伦兹因子
+    en: |
+      Lorentz factor
+    brief: |
+      $\gamma=\frac{1}{\sqrt{1-v^2/c^2}}$，不小于$1$；速度越接近光速，它越大。
+    definedIn: physics.special-relativity.time-dilation
+    anchor: def-lorentz-factor
+  - id: physics.special-relativity.time-dilation
+    zh: |
+      时间延缓
+    en: |
+      time dilation
+    brief: |
+      运动的钟走得慢：两个事件在一个惯性系里同地、相隔$\Delta\tau$（固有时），在相对它以$v$运动的惯性系里相隔$\gamma\Delta\tau$。
+    definedIn: physics.special-relativity.time-dilation
+    anchor: thm-time-dilation
+  - id: physics.special-relativity.proper-length
+    zh: |
+      固有长度
+    en: |
+      proper length
+    brief: |
+      物体在它静止的惯性系里的长度；在其他惯性系里沿运动方向量到的长度都比它短。
+    definedIn: physics.special-relativity.length-contraction
+    anchor: def-proper-length
+  - id: physics.special-relativity.length-contraction
+    zh: |
+      长度收缩
+    en: |
+      length contraction
+    brief: |
+      沿运动方向，物体的长度是固有长度的$\frac1\gamma$；垂直于运动方向的长度不变。
+    definedIn: physics.special-relativity.length-contraction
+    anchor: thm-length-contraction
+  - id: physics.special-relativity.lorentz-transformation
+    zh: |
+      洛伦兹变换
+    en: |
+      Lorentz transformation
+    brief: |
+      标准位形下（$S'$相对$S$以$v$沿$x$轴运动）换算同一个事件坐标的公式：$t'=\gamma(t-vx/c^2)$，$x'=\gamma(x-vt)$，$y'=y$，$z'=z$。
+    definedIn: physics.special-relativity.lorentz-transformation
+    anchor: thm-lorentz
+  - id: physics.special-relativity.spacetime-interval
+    zh: |
+      时空间隔
+    en: |
+      spacetime interval
+    brief: |
+      两个事件之间的$\Delta s^2=c^2\Delta t^2-\Delta x^2-\Delta y^2-\Delta z^2$，在所有惯性系里相同。
+    definedIn: physics.special-relativity.spacetime-interval
+    anchor: def-interval
+  - id: physics.special-relativity.timelike
+    zh: |
+      类时
+    en: |
+      timelike
+    brief: |
+      时空间隔$\Delta s^2>0$：比光慢的信号能把两个事件连起来，有一个惯性系里它们同地发生。
+    definedIn: physics.special-relativity.spacetime-interval
+    anchor: def-interval-types
+  - id: physics.special-relativity.spacelike
+    zh: |
+      类空
+    en: |
+      spacelike
+    brief: |
+      时空间隔$\Delta s^2<0$：连光都来不及连接两个事件，有一个惯性系里它们同时发生。
+    definedIn: physics.special-relativity.spacetime-interval
+    anchor: def-interval-types
+  - id: physics.special-relativity.lightlike
+    zh: |
+      类光
+    en: |
+      lightlike
+    brief: |
+      时空间隔$\Delta s^2=0$：两个事件正好能用一束光连起来。
+    definedIn: physics.special-relativity.spacetime-interval
+    anchor: def-interval-types
+  - id: physics.special-relativity.spacetime-diagram
+    zh: |
+      时空图
+    en: |
+      spacetime diagram
+    brief: |
+      以$x$为横轴、$ct$为纵轴画事件和世界线的图；光线是$45^\circ$的斜线。
+    definedIn: physics.special-relativity.spacetime-diagrams
+    anchor: def-spacetime-diagram
+  - id: physics.special-relativity.light-cone
+    zh: |
+      光锥
+    en: |
+      light cone
+    brief: |
+      经过一个事件的所有光线；锥内的事件能和它用不超过光速的信号联系，锥外的不能。
+    definedIn: physics.special-relativity.spacetime-diagrams
+    anchor: def-light-cone
+  - id: physics.special-relativity.velocity-transformation
+    zh: |
+      速度变换
+    en: |
+      velocity transformation
+    brief: |
+      $S'$相对$S$以$v$沿$x$轴运动时，两个惯性系之间换算速度的公式：$u'_x=\frac{u_x-v}{1-u_xv/c^2}$；比光慢的速度合成后仍比光慢。
+    definedIn: physics.special-relativity.velocity-transformation
+    anchor: thm-velocity-transformation
+  - id: physics.special-relativity.rapidity
+    zh: |
+      快度
+    en: |
+      rapidity
+    brief: |
+      满足$\tanh\varphi=\frac uc$的$\varphi$；沿同一直线合成速度时，快度直接相加。
+    definedIn: physics.special-relativity.velocity-transformation
+    anchor: def-rapidity

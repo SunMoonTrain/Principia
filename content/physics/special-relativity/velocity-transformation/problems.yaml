@@ -1,0 +1,157 @@
+- id: p1
+  tier: easy
+  statement: |
+    火箭以$0.75c$相对地球飞行，向前发射一个相对火箭速度为$0.45c$的探测器。探测器相对地球的速度是多少？
+  answer:
+    type: number
+    value: (0.75+0.45)/(1+0.75*0.45)
+    unit: |
+      $c$
+  hints:
+    - |
+      地球为$S$，火箭为$S'$，$v=0.75c$；探测器相对$S'$的速度$u'=0.45c$。
+    - |
+      $u=\frac{u'+v}{1+u'v/c^2}$。
+    - |
+      $u=\frac{1.2}{1+0.3375}c=\frac{1.2}{1.3375}c\approx0.897c$。
+  solution: |
+    $u=\frac{0.45c+0.75c}{1+0.45\times0.75}=\frac{1.2}{1.3375}c\approx0.8972c$，比光慢；伽利略变换会给出$1.2c$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法是对的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        从以$0.9c$运动的飞船上向后发出的光，相对地面的速率是$c$
+      - |
+        两艘飞船在地面参考系里各以$0.7c$相向运动，一艘飞船上测得另一艘的速率是$1.4c$
+      - |
+        $|u_x|$和$|v|$都远小于$c$时，$u_x'\approx u_x-v$
+      - |
+        在$S$里静止的粒子，在$S'$里的速度是$-v$
+      - |
+        两个都小于$c$的速度沿同一直线合成，结果可能超过$c$
+    value: [1, 3, 4]
+  hints:
+    - |
+      光的速率在任何惯性系（inertial frame）里都是$c$；比光慢的速度合成后仍比光慢。
+    - |
+      B：在一艘飞船的参考系里，另一艘的速度是$\frac{1.4}{1+0.49}c$。
+    - |
+      A、C、D 对；B、E 错。
+  solution: |
+    A 对：$u'=-c$时$u=\frac{-c+0.9c}{1-0.9}=-c$。B 错：应是$\frac{1.4}{1.49}c\approx0.940c$。C 对，分母接近$1$；D 对，$u_x=0$代入得$u_x'=-v$；E 错，这是讲解里的定理。
+
+- id: p3
+  tier: medium
+  statement: |
+    $S'$相对$S$以$0.6c$处于标准位形。一个粒子在$S'$里沿$y'$轴以$0.5c$运动。它在$S$里的速率是多少？
+  answer:
+    type: number
+    value: sqrt(0.52)
+    unit: |
+      $c$
+  hints:
+    - |
+      用逆变换：$u_x=\frac{u_x'+v}{1+u_x'v/c^2}$，$u_y=\frac{u_y'}{\gamma(1+u_x'v/c^2)}$。
+    - |
+      $u_x'=0$，所以$u_x=0.6c$，$u_y=\frac{0.5c}{\gamma}=0.5\times0.8c=0.4c$。
+    - |
+      速率$\sqrt{0.36+0.16}\,c=\sqrt{0.52}\,c\approx0.721c$。
+  solution: |
+    $u_x'=0$，$u_x=v=0.6c$；$\gamma=1.25$，$u_y=\frac{u_y'}{\gamma}=0.4c$，而不是$0.5c$。速率$\sqrt{0.52}\,c\approx0.721c$，小于$c$；如果用伽利略变换，会得到$\sqrt{0.61}\,c$。
+
+- id: p4
+  tier: medium
+  statement: |
+    在地面参考系里，飞船 A 以$0.55c$向东飞，飞船 B 以$0.85c$向西飞。在 A 的参考系里，B 的速率是多少？
+  answer:
+    type: number
+    value: 1.4/(1+0.55*0.85)
+    unit: |
+      $c$
+  hints:
+    - |
+      地面为$S$，A 为$S'$，取向东为正：$v=0.55c$，B 的$u_x=-0.85c$。
+    - |
+      $u_x'=\frac{u_x-v}{1-u_xv/c^2}=\frac{-1.4c}{1+0.4675}$。
+    - |
+      速率$\frac{1.4}{1.4675}c\approx0.954c$。
+  solution: |
+    $u_x'=\frac{-0.85c-0.55c}{1-(-0.85)(0.55)}=\frac{-1.4c}{1.4675}\approx-0.9540c$，B 在 A 的参考系里以约$0.954c$向西飞。地面参考系里两船距离以$1.4c$缩小，这只是距离的变化率，不是任何物体的速度。
+
+- id: p5
+  tier: hard
+  statement: |
+    这道题讨论光行差（aberration of light）。在$S$里，来自一颗恒星的光沿$-y$方向传播。$S'$（例如随地球公转的参考系）相对$S$沿$x$轴以$v$运动。证明在$S'$里，光的传播方向偏离$-y'$方向的角度$\alpha$满足$\sin\alpha=\frac vc$；取$v=3\times10^4\,\mathrm{m/s}$估计$\alpha$，并和伽利略变换的结果比较。
+  hints:
+    - |
+      $u_x=0$、$u_y=-c$，代入速度变换。
+    - |
+      $u_x'=-v$，$u_y'=-\frac c\gamma$，速率仍是$c$。
+    - |
+      $\sin\alpha=\frac{|u_x'|}{c}=\frac vc$；伽利略变换给出$\tan\alpha=\frac vc$，两者只差$\frac{v^3}{c^3}$量级。
+  reference: |
+    在$S$里$u_x=0$，$u_y=-c$，$u_z=0$。由速度变换，$u_x'=\frac{0-v}{1-0}=-v$，$u_y'=\frac{-c}{\gamma(1-0)}=-\frac{c}{\gamma}$，速率$\sqrt{v^2+c^2(1-v^2/c^2)}=c$，和光速不变一致。
+
+    光在$S'$里的方向偏离$-y'$方向的角$\alpha$满足$\sin\alpha=\frac{|u_x'|}{c}=\frac{v}{c}$，偏向$-x'$方向，也就是逆着$S'$的运动方向；望远镜要朝运动方向前倾这个角度才能对准恒星。
+
+    $v=3\times10^4\,\mathrm{m/s}$时$\alpha\approx\frac vc=10^{-4}\,\mathrm{rad}\approx20.6''$。地球公转的速度方向一年转一圈，恒星的视位置（apparent position）随之画出一个长半轴约为这个角的小椭圆，只有黄道极（ecliptic pole）附近的恒星画的是圆。伽利略变换给出$\tan\alpha=\frac vc$，在$\frac vc=10^{-4}$时和$\sin\alpha=\frac vc$只差约$5\times10^{-13}\,\mathrm{rad}$，观测分辨不出；但对接近光速运动的观察者，两者差别很大：$v\to c$时相对论给出$\alpha\to90^\circ$，伽利略变换只给出$45^\circ$，而且算出的光速大于$c$。
+
+- id: p6
+  tier: hard
+  statement: |
+    一艘飞船相对地面以$\beta_0c$运动，它放出一艘相对自己以$\beta_0c$同方向运动的小飞船，小飞船又放出相对自己以$\beta_0c$运动的更小的飞船，如此进行$n$次。证明最后一艘相对地面的速度是$c\tanh(n\varphi_0)$，$\varphi_0$是$\beta_0c$的快度；对$\beta_0=\frac12$写出它的显式，并说明它永远小于$c$。
+  hints:
+    - |
+      沿同一直线合成速度时快度相加，用归纳法。
+    - |
+      第$k$艘相对地面的快度是$k\varphi_0$。
+    - |
+      $\beta_0=\frac12$时$\varphi_0=\frac12\ln3$，$\tanh(n\varphi_0)=\frac{e^{2n\varphi_0}-1}{e^{2n\varphi_0}+1}=\frac{3^n-1}{3^n+1}$。
+  reference: |
+    设第$k$艘飞船相对地面的速度是$c\tanh(k\varphi_0)$。第$k+1$艘相对第$k$艘的速度是$c\tanh\varphi_0$，在第$k$艘的参考系里用速度合成公式，它相对地面的速度是$c\frac{\tanh(k\varphi_0)+\tanh\varphi_0}{1+\tanh(k\varphi_0)\tanh\varphi_0}=c\tanh\bigl((k+1)\varphi_0\bigr)$（讲解里的恒等式）。$k=1$时成立，由归纳法，第$n$艘的速度是$c\tanh(n\varphi_0)$。
+
+    $\beta_0=\frac12$时，$\varphi_0=\frac12\ln\frac{1+1/2}{1-1/2}=\frac12\ln3$，$e^{2n\varphi_0}=3^n$，所以速度是$\frac{3^n-1}{3^n+1}c$：$n=1,2,3$时分别是$0.5c$、$0.8c$、$\frac{13}{14}c\approx0.929c$。
+
+    对每个$n$，$\frac{3^n-1}{3^n+1}<1$，$n\to\infty$时趋于$1$。快度可以无限增大，速度却只能无限接近$c$；伽利略变换下$n$次之后的速度是$\frac n2c$，第三次就超过光速了。
+
+- id: p7
+  tier: thinking
+  statement: |
+    菲佐流水实验的结果$\frac cn+v\bigl(1-\frac{1}{n^2}\bigr)$，在 19 世纪被解释成「流水把以太部分地拖着走，拖曳系数（drag coefficient）是$1-\frac1{n^2}$」。这个解释有什么不自然的地方？相对论的解释好在哪里？
+  hints:
+    - |
+      拖曳系数和折射率有关，而折射率又和光的颜色（频率）有关。
+    - |
+      如果以太被拖动，对不同颜色的光，以太应该以不同的速度运动吗？
+    - |
+      相对论里只有一条速度合成公式，系数是它在$v\ll c$时的展开，不需要任何关于以太的假设。
+  reference: |
+    在以太理论里，系数$1-\frac1{n^2}$要解释成以太被流水带动的程度。可水的折射率随光的颜色变化，于是对红光和蓝光，「以太」得以不同的速度流动，同一处的以太同时有好几种速度，很难说它是一种介质。洛伦兹（Hendrik Lorentz）后来用电子论（electron theory）推导出这个系数，但仍要假定一个静止的以太和物质中的电子。
+
+    相对论里，菲佐的结果只是速度合成公式$\frac{c/n+v}{1+v/(nc)}$在$v\ll c$时的近似，系数自动出现，色散（dispersion）的修正也能从同一个公式加上$n$对频率的依赖得到。它不需要以太，也不需要关于水和光相互作用的特别假定。
+
+    更一般的教训是：菲佐实验的部分拖曳和迈克耳孙-莫雷实验（Michelson–Morley experiment）的零结果（null result）都是正确的实验结果，在以太理论里要用两种互相别扭的机制解释，在相对论里却出自同一组公式。
+
+- id: p8
+  tier: thinking
+  statement: |
+    快度可以任意大，速度却永远到不了$c$。那么加速有没有极限？如果飞船一直以恒定的推力加速，船上的人会觉得什么在变？
+  hints:
+    - |
+      在飞船上看，每一小段时间里速度的增量都是同样的小量，这时快度增加同样的量。
+    - |
+      快度没有上限，所以从飞船上看「加速」可以一直进行；地面看速度趋于$c$。
+    - |
+      速度趋于$c$并不意味着「停止加速」，而是同样的推力带来的速度变化越来越小，见[四维力与相对论动力学](lesson:physics.special-relativity.four-force)。
+  reference: |
+    在飞船瞬时的静止参考系里，每过一小段时间，飞船获得相对这个参考系的一个小速度$\Delta u$，对应的快度增量约$\frac{\Delta u}{c}$。快度相加，所以在船上看，加速一直在进行，快度随船上的时间均匀增长，没有极限。
+
+    地面看到的速度是$c\tanh\varphi$，快度越大越接近$c$，但永远到不了。船上的人不会感到「快到光速了」：他感受到的加速度一直不变，船外的星空却越来越向前方聚拢（光行差），前方来的光越来越蓝；后方地面来的光越来越红，地面上的钟看起来越走越慢。
+
+    所以「速度上限」是地面参考系里的说法，不是加速的极限。真正的代价在能量：把物体推到接近光速，需要的能量没有上限，这是相对论动力学（relativistic dynamics）要讲的内容。

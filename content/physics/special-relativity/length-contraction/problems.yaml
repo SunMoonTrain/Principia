@@ -1,0 +1,157 @@
+- id: p1
+  tier: easy
+  statement: |
+    一根杆静止时长$5\,\mathrm m$，沿杆的方向以$0.6c$相对地面运动。在地面参考系里它有多长？
+  answer:
+    type: number
+    value: 4
+    unit: |
+      $\mathrm m$
+  hints:
+    - |
+      $5\,\mathrm m$是固有长度，运动方向沿着杆。
+    - |
+      $\gamma=\frac{1}{\sqrt{1-0.6^2}}=\frac{1}{0.8}$。
+    - |
+      $\ell=\frac{L}{\gamma}=5\times0.8\,\mathrm m=4\,\mathrm m$。
+  solution: |
+    固有长度$L=5\,\mathrm m$，$\gamma=1.25$，地面参考系里$\ell=\frac{L}{\gamma}=4\,\mathrm m$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法是对的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        静止时长为$L$的杆，在任何惯性系里量得的长度都不超过$L$
+      - |
+        在一个惯性系里量运动的杆的长度，要在这个惯性系里同一时刻记下两端的位置
+      - |
+        地面上$100\,\mathrm m$长的跑道，在沿跑道以$0.8c$飞行的飞船上量是$60\,\mathrm m$
+      - |
+        飞船上的人发现自己的飞船沿运动方向变短了
+      - |
+        地面认为飞船变短了，所以飞船上的人量地面上的尺子会发现它变长了
+    value: [1, 2, 3]
+  hints:
+    - |
+      固有长度是物体静止时的长度；长度收缩是相互的。
+    - |
+      跑道静止在地面上，$100\,\mathrm m$是它的固有长度；$\beta=0.8$时$\frac1\gamma=0.6$。
+    - |
+      A、B、C 对；D、E 错。
+  solution: |
+    A 对：沿运动方向缩短，横向不变，任何方向都不会变长。B 对，这是运动物体长度的定义。C 对：$100\times0.6=60\,\mathrm m$。D 错，飞船在自己的参考系里静止，长度就是固有长度；E 错，飞船上量地面的尺子同样变短。
+
+- id: p3
+  tier: medium
+  statement: |
+    地面上两个标志相距$90\,\mathrm m$（地面参考系里量）。一艘飞船沿两标志的连线匀速飞过，飞船上的钟测得从经过第一个标志到经过第二个标志用了$0.4\,\mu\mathrm s$。求飞船相对地面的速度，取$c=3\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 0.6
+    unit: |
+      $c$
+  hints:
+    - |
+      在飞船参考系里，两个标志以$v$运动，它们之间的距离是$\frac{90\,\mathrm m}{\gamma}$。
+    - |
+      $\frac{90\,\mathrm m}{\gamma v}=0.4\,\mu\mathrm s$，即$\gamma v=2.25\times10^8\,\mathrm{m/s}$，也就是$\frac{\beta}{\sqrt{1-\beta^2}}=0.75$。
+    - |
+      $\beta^2=0.5625(1-\beta^2)$，$\beta^2=0.36$，$\beta=0.6$。
+  solution: |
+    飞船经过两个标志，这两个事件都发生在飞船上，$0.4\,\mu\mathrm s$是固有时。在飞船参考系里两标志相距$\frac{90}{\gamma}\,\mathrm m$，以$v$掠过飞船，所以$\frac{90}{\gamma v}=4\times10^{-7}$，$\gamma\beta=0.75$，解得$\beta=0.6$。也可以在地面参考系里算：用时$\frac{90}{v}$，等于$\gamma\times0.4\,\mu\mathrm s$，得到同一个方程。
+
+- id: p4
+  tier: medium
+  statement: |
+    一根杆在自己静止的参考系里长$1\,\mathrm m$，和$x$轴成$60^\circ$角。它沿$x$轴以$0.8c$相对地面运动。在地面参考系里这根杆有多长？
+  answer:
+    type: number
+    value: sqrt(0.84)
+    unit: |
+      $\mathrm m$
+  hints:
+    - |
+      把杆分解成沿$x$轴和垂直于$x$轴的两个分量，分别处理。
+    - |
+      沿$x$轴的分量$\cos60^\circ=0.5\,\mathrm m$缩短为$0.5\times0.6=0.3\,\mathrm m$；垂直分量$\sin60^\circ\approx0.866\,\mathrm m$不变。
+    - |
+      长度$\sqrt{0.3^2+0.75}=\sqrt{0.84}\approx0.917\,\mathrm m$，和$x$轴的夹角也变大了。
+  solution: |
+    在地面参考系里，杆沿$x$轴的分量缩短为$0.5\times\frac1\gamma=0.3\,\mathrm m$，垂直分量仍是$\frac{\sqrt3}{2}\,\mathrm m$，长度$\sqrt{0.09+0.75}=\sqrt{0.84}\approx0.917\,\mathrm m$。它和$x$轴的夹角满足$\tan\theta=\frac{0.866}{0.3}$，约$71^\circ$：运动不仅改变长度，还改变方向。
+
+- id: p5
+  tier: hard
+  statement: |
+    车厢固有长度为$L$，以$v$相对站台运动。车头、车尾各有一只钟，在车厢参考系里同步。证明：在站台参考系的同一时刻，车尾的钟读数比车头的钟多$\frac{Lv}{c^2}$。
+  hints:
+    - |
+      回到[同时的相对性](lesson:physics.special-relativity.relativity-of-simultaneity)的 p6：用车厢中点的闪光对钟，站台系里车尾先收到光。
+    - |
+      站台系里车厢长$\frac{L}{\gamma}$，两端收到光相差$\Delta t=\frac{(L/\gamma)v}{c^2-v^2}=\frac{\gamma Lv}{c^2}$。
+    - |
+      两只钟在站台系里都走慢，每过站台系的$\Delta t$只走$\frac{\Delta t}{\gamma}$，所以读数差$\frac{\Delta t}{\gamma}=\frac{Lv}{c^2}$。
+  reference: |
+    用车厢中点的一次闪光对钟：光到达时两只钟都从$0$开始走，按中点判别法，它们在车厢参考系里同步。在站台参考系里，车厢长$\ell=\frac{L}{\gamma}$（长度收缩），车尾比车头早$\Delta t=\frac{\ell v}{c^2-v^2}$收到光（同时的相对性（relativity of simultaneity）那一节的计算）。代入$\ell$，$\Delta t=\frac{Lv}{\gamma c^2(1-v^2/c^2)}=\frac{\gamma Lv}{c^2}$。
+
+    两只钟在站台参考系里以速度$v$运动，按时间延缓，站台系过$\Delta T$时它们各走$\frac{\Delta T}{\gamma}$。站台系的某一时刻$t\ge t_{\text{头}}$，车尾的钟已经走了$\frac{t-t_{\text{尾}}}{\gamma}$，车头的钟走了$\frac{t-t_{\text{头}}}{\gamma}$，相差$\frac{t_{\text{头}}-t_{\text{尾}}}{\gamma}=\frac{\Delta t}{\gamma}=\frac{Lv}{c^2}$。
+
+    所以在站台参考系看来，车厢里同步好的钟沿运动方向每隔$L$，读数落后$\frac{Lv}{c^2}$。这个式子只和固有长度、速度有关，和用什么办法对钟无关，在[洛伦兹变换](lesson:physics.special-relativity.lorentz-transformation)里它就是$t'=\gamma\bigl(t-\frac{vx}{c^2}\bigr)$中的$\frac{vx}{c^2}$那一项。
+
+- id: p6
+  tier: hard
+  statement: |
+    迈克耳孙干涉仪的一条臂在仪器静止时长$L$，和仪器的运动方向成$\theta$角。仪器相对惯性系$S$以$v$运动。在$S$里计入长度收缩，证明光沿这条臂往返的时间是$\frac{2L\gamma}{c}$，和$\theta$无关。
+  hints:
+    - |
+      在$S$里臂沿运动方向的分量是$a=\frac{L\cos\theta}{\gamma}$，垂直分量是$b=L\sin\theta$。
+    - |
+      去程：光要追上移动的臂端，$(a+vt_1)^2+b^2=c^2t_1^2$；回程：$(a-vt_2)^2+b^2=c^2t_2^2$。
+    - |
+      $t_1+t_2=\frac{2\sqrt{a^2v^2+(c^2-v^2)(a^2+b^2)}}{c^2-v^2}$，根号里是$a^2c^2+\frac{c^2}{\gamma^2}b^2=\frac{c^2L^2}{\gamma^2}$。
+  reference: |
+    在$S$里，臂沿运动方向的分量收缩为$a=\frac{L\cos\theta}{\gamma}$，垂直分量$b=L\sin\theta$不变。光从臂的起点出发，到达臂端时臂端已经移动$vt_1$，所以$(a+vt_1)^2+b^2=c^2t_1^2$，即$(c^2-v^2)t_1^2-2avt_1-(a^2+b^2)=0$，取正根$t_1=\frac{av+D}{c^2-v^2}$，$D=\sqrt{a^2v^2+(c^2-v^2)(a^2+b^2)}$。回程起点迎着光移动，$(a-vt_2)^2+b^2=c^2t_2^2$，$t_2=\frac{-av+D}{c^2-v^2}$。
+
+    往返$t_1+t_2=\frac{2D}{c^2-v^2}$。由$c^2-v^2=\frac{c^2}{\gamma^2}$，$D^2=a^2c^2+(c^2-v^2)b^2=\frac{c^2L^2\cos^2\theta}{\gamma^2}+\frac{c^2L^2\sin^2\theta}{\gamma^2}=\frac{c^2L^2}{\gamma^2}$，所以$t_1+t_2=\frac{2cL/\gamma}{c^2/\gamma^2}=\frac{2L\gamma}{c}$。
+
+    结果和$\theta$无关，并且正是$\frac{2L}{c}$（仪器静止系里的往返时间）乘以$\gamma$，和时间延缓一致。所以无论臂朝哪个方向、仪器怎样转动，两束光的时间差都不变，迈克耳孙-莫雷实验必然是零结果。
+
+- id: p7
+  tier: thinking
+  statement: |
+    两艘一样的飞船一前一后停在地面参考系里，相距$D$，中间系着一根刚好拉直、不能伸长的细绳。它们同时（地面系里同时）按完全相同的方式加速，所以在地面参考系里两船始终相距$D$。绳子会不会断？（这是贝尔（John Bell）在 1976 年讨论过的「飞船佯谬」（Bell's spaceship paradox）。）
+  hints:
+    - |
+      绳子本身的长度要在它静止的参考系里看。在地面参考系里，运动的绳子应当收缩。
+    - |
+      地面系里两船相距一直是$D$，以速度$v$运动的绳子却只能有$\frac{L}{\gamma}$长（$L$是绳子的固有长度）。
+    - |
+      要让$\frac{L}{\gamma}=D$，绳子的固有长度得增加到$\gamma D$；它不能伸长，所以会断。在飞船自己的参考系里，两船之间的距离确实在变大。
+  reference: |
+    在地面参考系里，两船相距始终是$D$，绳子以速度$v$运动。一根以$v$运动、固有长度为$L$的绳子，在地面系里长$\frac{L}{\gamma}$。绳子要连住两船，就要$\frac L\gamma=D$，即$L=\gamma D$：速度越大，绳子的固有长度要越长。
+
+    绳子不能伸长，固有长度最多是$D$，所以当$\gamma$明显大于$1$时，绳子一定被拉断。在和飞船共动（comoving，即每一时刻都和飞船速度相同）的惯性系看来，原因是：两船的加速在地面系里同时，在飞船的参考系里不同时，前面的船先加速，两船之间的距离逐渐拉大到$\gamma D$。
+
+    这个例子常被用来说明，长度收缩不是一种「力」，而是不同参考系对同时的判断不同的结果；不过绳子被拉断却是实实在在的事，它在任何参考系里都会发生。
+
+- id: p8
+  tier: thinking
+  statement: |
+    一个圆盘绕中心高速转动，边缘的线速度接近光速。在地面（圆心不动的惯性系）里，边缘一段一段地沿切线方向运动，半径方向和运动方向垂直。按长度收缩，圆盘的周长和半径会怎样？这会带来什么困难？
+  hints:
+    - |
+      把边缘看成许多小段，每一段沿切线方向运动，半径沿着和运动垂直的方向。
+    - |
+      按长度收缩，边缘的每一小段在地面系里都缩短，半径不变。
+    - |
+      在转动的圆盘上用尺子量，周长和半径之比就不再是$2\pi$：转盘上的几何不是欧几里得几何（Euclidean geometry）。
+  reference: |
+    在地面惯性系里，边缘的每一小段沿切线以接近光速运动，沿切线的长度收缩为$\frac1\gamma$，半径方向和运动垂直，不收缩。如果圆盘原来静止时周长是$2\pi R$，转起来以后，转盘上贴着边缘摆放的尺子在地面系里都缩短了，要沿边缘摆满一圈就需要更多的尺子：转盘上的人量到的周长比$2\pi R$大，量到的半径仍是$R$。
+
+    于是在转盘上量，周长和半径之比大于$2\pi$，平面几何的结论在转盘上不成立。这就是埃伦费斯特（Paul Ehrenfest）在 1909 年提出的佯谬，也说明一个刚性圆盘不可能从静止加速转起来而不变形。
+
+    转动的参考系不是惯性系，狭义相对论在那里要小心使用；「加速的参考系里几何可能是弯的」这个想法，后来成了爱因斯坦（Albert Einstein）走向广义相对论（general relativity）的线索之一。

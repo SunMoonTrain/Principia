@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="600" height="320" font-size="14">
+  <!-- 光钟。左：钟静止的参考系 S′，两面镜子相距 d，光竖直往返。右：参考系 S 里钟以 v = 0.6c 向右运动，
+       三个位置分别是发光、反射、收回时钟所在的地方，光走两段斜线；半个周期里钟移动 vΔt/2 = 127.5，光走 cΔt/2 = 212.5，竖直距离 d = 170（像素）。 -->
+  <line x1="64.0" y1="56" x2="116.0" y2="56" stroke-width="4" stroke="currentColor" />
+  <line x1="64.0" y1="234" x2="116.0" y2="234" stroke-width="4" stroke="currentColor" />
+  <line x1="86" y1="230" x2="86" y2="60" stroke-width="2" style="stroke: var(--accent, #2563eb)" />
+  <line x1="94" y1="60" x2="94" y2="230" stroke-width="2" stroke-dasharray="6 4" style="stroke: var(--accent, #2563eb)" />
+  <path d="M 86 130 l -5 10 l 10 0 z" style="fill: var(--accent, #2563eb)" />
+  <path d="M 94 170 l -5 -10 l 10 0 z" style="fill: var(--accent, #2563eb)" />
+  <g stroke="currentColor" stroke-width="1">
+    <line x1="40" y1="60" x2="40" y2="230" />
+    <line x1="34" y1="60" x2="46" y2="60" />
+    <line x1="34" y1="230" x2="46" y2="230" />
+  </g>
+  <text x="20" y="150" fill="currentColor"><tspan font-style="italic">d</tspan></text>
+  <text x="90" y="298" text-anchor="middle" fill="currentColor">钟静止的参考系 <tspan font-style="italic">S</tspan>′</text>
+  <line x1="224.0" y1="56" x2="276.0" y2="56" stroke-width="4" style="stroke: var(--muted, #6b7280)" />
+  <line x1="224.0" y1="234" x2="276.0" y2="234" stroke-width="4" style="stroke: var(--muted, #6b7280)" />
+  <line x1="351.5" y1="56" x2="403.5" y2="56" stroke-width="4" style="stroke: var(--muted, #6b7280)" />
+  <line x1="351.5" y1="234" x2="403.5" y2="234" stroke-width="4" style="stroke: var(--muted, #6b7280)" />
+  <line x1="479.0" y1="56" x2="531.0" y2="56" stroke-width="4" stroke="currentColor" />
+  <line x1="479.0" y1="234" x2="531.0" y2="234" stroke-width="4" stroke="currentColor" />
+  <path d="M 250.0 230 L 377.5 60 L 505.0 230" fill="none" stroke-width="2" style="stroke: var(--accent, #2563eb)" />
+  <line x1="377.5" y1="60" x2="377.5" y2="230" stroke-width="1" stroke-dasharray="4 4" stroke="currentColor" />
+  <text x="385.5" y="175" fill="currentColor"><tspan font-style="italic">d</tspan></text>
+  <text x="299.8" y="139.0" text-anchor="end" fill="currentColor"><tspan font-style="italic">c</tspan>Δ<tspan font-style="italic">t</tspan>/2</text>
+  <g stroke="currentColor" stroke-width="1">
+    <line x1="250.0" y1="256" x2="377.5" y2="256" />
+    <line x1="250.0" y1="250" x2="250.0" y2="262" />
+    <line x1="377.5" y1="250" x2="377.5" y2="262" />
+  </g>
+  <text x="313.8" y="278" text-anchor="middle" fill="currentColor"><tspan font-style="italic">v</tspan>Δ<tspan font-style="italic">t</tspan>/2</text>
+  <line x1="445.0" y1="28" x2="483.0" y2="28" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 492.0 28 l -9 -4.5 l 0 9 z" fill="currentColor" />
+  <text x="499.0" y="33" fill="currentColor"><tspan font-style="italic">v</tspan></text>
+  <text x="377.5" y="298" text-anchor="middle" fill="currentColor">参考系 <tspan font-style="italic">S</tspan>：钟在运动，光走斜线</text>
+</svg>

@@ -1,0 +1,157 @@
+- id: p1
+  tier: easy
+  statement: |
+    在$S$里一个事件发生在$t=3\,\mathrm s$、$x=2$光秒处（光秒是光在$1\,\mathrm s$里走的距离）。$S'$以$0.6c$相对$S$处于标准位形。求这个事件在$S'$里的时刻$t'$。
+  answer:
+    type: number
+    value: 2.25
+    unit: |
+      $\mathrm s$
+  hints:
+    - |
+      用秒和光秒作单位时$c=1$，$t'=\gamma(t-\beta x)$。
+    - |
+      $\gamma=\frac{1}{\sqrt{1-0.36}}=1.25$。
+    - |
+      $t'=1.25\times(3-0.6\times2)=2.25\,\mathrm s$。
+  solution: |
+    $\gamma=1.25$，$t'=\gamma\bigl(t-\frac{vx}{c^2}\bigr)=1.25\times(3-1.2)\,\mathrm s=2.25\,\mathrm s$。顺便$x'=\gamma(x-vt)=1.25\times(2-1.8)=0.25$光秒。
+
+- id: p2
+  tier: easy
+  statement: |
+    关于标准位形下的洛伦兹变换，下面哪些说法是对的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $v=250\,\mathrm{m/s}$时，对$|x|\le4000\,\mathrm{km}$的事件，$t'$和$\gamma t$之差小于$1\,\mu\mathrm s$
+      - |
+        $x'$只依赖于$x$，和$t$无关
+      - |
+        以$(ct,x)$为坐标时，变换矩阵的行列式等于$1$
+      - |
+        在$S$里同一地点先后发生的两个事件，在$S'$里也发生在同一地点
+      - |
+        把$v$换成$-v$、带撇的量和不带撇的量对调，就得到逆变换
+    value: [1, 3, 5]
+  hints:
+    - |
+      $t'-\gamma t=-\frac{\gamma vx}{c^2}$；$x'=\gamma(x-vt)$里有$t$。
+    - |
+      矩阵$\begin{pmatrix}\gamma&-\gamma\beta\\-\gamma\beta&\gamma\end{pmatrix}$的行列式是$\gamma^2(1-\beta^2)$。
+    - |
+      A、C、E 对；B、D 错。
+  solution: |
+    A 对：$\gamma\approx1$，$\frac{\gamma v|x|}{c^2}\le\frac{250\times4\times10^6}{9\times10^{16}}\,\mathrm s\approx1.1\times10^{-8}\,\mathrm s$。B 错，$x'=\gamma(x-vt)$。C 对，$\gamma^2(1-\beta^2)=1$。D 错：$\Delta x=0$、$\Delta t\ne0$时$\Delta x'=-\gamma v\Delta t\ne0$；E 对，这体现了两个惯性系地位对称。
+
+- id: p3
+  tier: medium
+  statement: |
+    在$S$里，事件 A 发生在原点、$t=0$，事件 B 发生在$t=1\,\mu\mathrm s$、$x=600\,\mathrm m$。沿$x$轴以多大的速度运动的惯性系里，这两个事件同时发生？取$c=3\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 0.5
+    unit: |
+      $c$
+  hints:
+    - |
+      要求$\Delta t'=\gamma\bigl(\Delta t-\frac{v\Delta x}{c^2}\bigr)=0$。
+    - |
+      $v=\frac{c^2\Delta t}{\Delta x}$。
+    - |
+      $v=\frac{9\times10^{16}\times10^{-6}}{600}\,\mathrm{m/s}=1.5\times10^8\,\mathrm{m/s}=0.5c$。
+  solution: |
+    令$\Delta t'=0$，得$v=\frac{c^2\Delta t}{\Delta x}=1.5\times10^8\,\mathrm{m/s}=0.5c$。它小于$c$，所以这样的惯性系存在；这要求$c\Delta t<\Delta x$，也就是光来不及从 A 传到 B。
+
+- id: p4
+  tier: medium
+  statement: |
+    在$S$里，两个事件同时发生，沿$x$轴相距$900\,\mathrm m$。在以$0.8c$沿$x$轴运动的惯性系$S'$里，它们相隔多长时间？取$c=3\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 4
+    unit: |
+      $\mu\mathrm s$
+  hints:
+    - |
+      $\Delta t=0$，所以$\Delta t'=-\frac{\gamma v\Delta x}{c^2}$。
+    - |
+      $\gamma=\frac{1}{0.6}$。
+    - |
+      $|\Delta t'|=\frac{0.8\times900}{0.6\times3\times10^8}\,\mathrm s=4\times10^{-6}\,\mathrm s$。
+  solution: |
+    $|\Delta t'|=\frac{\gamma v\Delta x}{c^2}=\frac{(5/3)\times0.8\times900}{3\times10^8}\,\mathrm s=4\,\mu\mathrm s$。负号说明在$S'$里$x$较大的那个事件先发生，和同时的相对性一节的结论一致。
+
+- id: p5
+  tier: hard
+  statement: |
+    另一种推导：假定从$S$到$S'$的变换是线性的，并且$y'=y$、$z'=z$。只用两条基本假设（不用长度收缩），推出洛伦兹变换。
+  hints:
+    - |
+      $S'$的原点$x'=0$对应$x=vt$，线性就给出$x'=A(x-vt)$；反过来$S$的原点$x=0$对应$x'=-vt'$，$x=A'(x'+vt')$。
+    - |
+      按相对性原理和空间各向同性（isotropy of space），$A'=A$；$v\to0$时变换应变成恒等，所以$A>0$。
+    - |
+      光从原点在$t=0$沿$x$轴发出，$x=ct$且$x'=ct'$，代入两式得$A^2(1-\frac{v^2}{c^2})=1$。
+  reference: |
+    $S'$的原点在$S$里满足$x=vt$，变换是线性的，所以$x'$只能是$x-vt$的倍数：$x'=A(x-vt)$。同理，$S$的原点在$S'$里满足$x'=-vt'$，$x=A'(x'+vt')$。$A$和$A'$只能依赖$v$。按相对性原理，从$S'$看$S$和从$S$看$S'$是同一回事，只是速度方向相反；再用空间各向同性（把$x$轴反向），可得$A'(v)=A(v)$。
+
+    在$t=t'=0$时从原点沿$x$轴正方向发出一束光。按光速不变原理（constancy of the speed of light），$S$里$x=ct$，$S'$里$x'=ct'$。代入：$ct'=A(c-v)t$，$ct=A(c+v)t'$，两式相乘消去$tt'$，得$c^2=A^2(c^2-v^2)$，所以$A=\frac{1}{\sqrt{1-v^2/c^2}}=\gamma$（取正值，$v\to0$时变换要变成恒等）。
+
+    最后由$x=\gamma(x'+vt')$和$x'=\gamma(x-vt)$消去$x'$，像讲解里那样解出$t'=\gamma\bigl(t-\frac{vx}{c^2}\bigr)$。线性这个前提可以由时空的均匀性（homogeneity of spacetime）和惯性运动变成惯性运动来论证，见 p7。
+
+- id: p6
+  tier: hard
+  statement: |
+    $\Lambda(\beta)=\begin{pmatrix}\gamma&-\gamma\beta\\-\gamma\beta&\gamma\end{pmatrix}$。证明：$\Lambda(\beta_2)\Lambda(\beta_1)=\Lambda(\beta)$，其中$\beta=\frac{\beta_1+\beta_2}{1+\beta_1\beta_2}$；并说明这个结果的物理意义，以及为什么$\Lambda(\beta_1)$和$\Lambda(\beta_2)$可以交换次序。
+  hints:
+    - |
+      记$\gamma_i=\frac{1}{\sqrt{1-\beta_i^2}}$，直接相乘。
+    - |
+      乘积的对角元是$\gamma_1\gamma_2(1+\beta_1\beta_2)$，非对角元是$-\gamma_1\gamma_2(\beta_1+\beta_2)$。
+    - |
+      验证$\gamma_1\gamma_2(1+\beta_1\beta_2)=\frac{1}{\sqrt{1-\beta^2}}$，即$(1+\beta_1\beta_2)^2-(\beta_1+\beta_2)^2=(1-\beta_1^2)(1-\beta_2^2)$。
+  reference: |
+    直接相乘：对角元都是$\gamma_1\gamma_2+\gamma_1\gamma_2\beta_1\beta_2=\gamma_1\gamma_2(1+\beta_1\beta_2)$，非对角元都是$-\gamma_1\gamma_2(\beta_1+\beta_2)$。乘积关于$\beta_1$、$\beta_2$对称，所以两个矩阵可以交换次序。
+
+    令$\beta=\frac{\beta_1+\beta_2}{1+\beta_1\beta_2}$。展开得$(1+\beta_1\beta_2)^2-(\beta_1+\beta_2)^2=1+\beta_1^2\beta_2^2-\beta_1^2-\beta_2^2=(1-\beta_1^2)(1-\beta_2^2)$，所以$1-\beta^2=\frac{(1-\beta_1^2)(1-\beta_2^2)}{(1+\beta_1\beta_2)^2}$，$\frac{1}{\sqrt{1-\beta^2}}=\gamma_1\gamma_2(1+\beta_1\beta_2)$，即乘积的对角元是$\gamma(\beta)$，非对角元是$-\gamma(\beta)\beta$：乘积正是$\Lambda(\beta)$。
+
+    物理意义：$S'$相对$S$以$\beta_1c$运动，$S''$相对$S'$以$\beta_2c$运动（都沿$x$轴），那么$S''$相对$S$的速度是$\frac{\beta_1+\beta_2}{1+\beta_1\beta_2}c$，而不是$(\beta_1+\beta_2)c$。$|\beta_1|,|\beta_2|<1$时它的绝对值仍小于$1$，这就是相对论的速度合成，见[速度变换](lesson:physics.special-relativity.velocity-transformation)。
+
+- id: p7
+  tier: thinking
+  statement: |
+    洛伦兹变换为什么必须是线性的？如果$x'$里出现$x^2$这样的项，会和什么基本的事实冲突？
+  hints:
+    - |
+      想一想不受力的物体：在$S$里它做匀速直线运动，在$S'$里呢？
+    - |
+      时空是均匀的（homogeneous）：在$S$里两个事件的坐标差相同，在$S'$里坐标差也应相同，不依赖事件发生在哪里、什么时候。
+    - |
+      坐标差只依赖坐标差，加上连续性，变换就只能是线性的（再加一个平移）。
+  reference: |
+    两个理由。第一，惯性运动要变成惯性运动：不受力的物体在$S$里的世界线（world line）是直线$x=x_0+ut$，在$S'$里也必须是直线，否则$S'$就不是惯性系。如果$x'$里含有$x^2$，直线一般会变成曲线。
+
+    第二，时空是均匀的：没有哪个地点、哪个时刻是特殊的。所以一对事件在$S'$里的坐标差，只应依赖它们在$S$里的坐标差，而不依赖它们具体在哪里发生。记这个对应为$f$，它满足$f(a+b)=f(a)+f(b)$（把两个坐标差首尾相接）；再加上连续性，$f$只能是线性映射（linear map）。
+
+    所以两个惯性系之间的变换只能是「线性变换加一个平移」，标准位形取$t=t'=0$时原点重合，平移就是零。讲解里的推导没有直接假定线性，但用到的长度收缩、时间延缓同样依赖这种均匀性。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设想一个光速只有$10\,\mathrm{m/s}$的世界（伽莫夫（George Gamow）在科普书《物理世界奇遇记》里写过这样的世界）。骑自行车、开车、打电话对时，会遇到哪些在我们的世界里察觉不到的事？
+  hints:
+    - |
+      先算骑车（$5\,\mathrm{m/s}$）、开车（$9\,\mathrm{m/s}$）时的$\gamma$。
+    - |
+      长度收缩、时间延缓、同时的相对性都会变得肉眼可见；$\frac{vx}{c^2}$在日常距离下也不再很小。
+    - |
+      还要想到：没有东西能跑得比$10\,\mathrm{m/s}$快。
+  reference: |
+    骑车$v=5\,\mathrm{m/s}$时$\gamma=\frac{1}{\sqrt{1-0.25}}\approx1.15$，开车$9\,\mathrm{m/s}$时$\gamma\approx2.3$。车在街上的人看来沿行驶方向明显缩短；开车回家，车上的钟比家里的钟慢得多，出门一趟，家人比你老得多。
+
+    同时的相对性也变成日常：骑车经过相距$100\,\mathrm m$的两盏路灯，地面上同时亮起的两盏灯，在骑车的人看来相差$\frac{\gamma vx}{c^2}\approx5.8\,\mathrm s$。两个人按地面的钟约好「同时」出发，坐在车上的朋友会认为两人没有同时出发。
+
+    再者，任何物体都不能超过$10\,\mathrm{m/s}$：把速度加上去，只会越来越接近$10\,\mathrm{m/s}$（见速度变换（velocity transformation）一节）。我们的世界里$c$大得多，这些效应在日常速度下小到测不出来，所以牛顿力学用了两百多年才遇到它的边界。

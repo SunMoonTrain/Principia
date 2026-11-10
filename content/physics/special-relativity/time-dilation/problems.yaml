@@ -1,0 +1,159 @@
+- id: p1
+  tier: easy
+  statement: |
+    一只钟随飞船以$0.8c$相对地面运动，飞船上的钟走了$6\,\mu\mathrm s$。地面参考系里这段时间是多长？
+  answer:
+    type: number
+    value: 10
+    unit: |
+      $\mu\mathrm s$
+  hints:
+    - |
+      飞船上的钟两次读数发生在飞船里的同一地点，读出的是固有时。
+    - |
+      $\gamma=\frac{1}{\sqrt{1-0.8^2}}=\frac{1}{0.6}$。
+    - |
+      $\Delta t=\gamma\Delta\tau=\frac{6}{0.6}\,\mu\mathrm s=10\,\mu\mathrm s$。
+  solution: |
+    飞船上的钟读出固有时$\Delta\tau=6\,\mu\mathrm s$，$\gamma=\frac{1}{0.6}=\frac53$，地面参考系里相隔$\Delta t=\gamma\Delta\tau=10\,\mu\mathrm s$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法是对的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        运动的钟变慢是光钟特有的现象，机械钟不受影响
+      - |
+        随飞船一起运动的钟，读出的是飞船上先后两个事件之间的固有时
+      - |
+        地面认为飞船上的钟慢，飞船也认为地面上的钟慢
+      - |
+        洛伦兹因子$\gamma$在速度足够大时可以小于$1$
+      - |
+        速度为$0.6c$时，运动的钟每走$1\,\mathrm s$，地面参考系里过去$1.25\,\mathrm s$
+    value: [2, 3, 5]
+  hints:
+    - |
+      时间延缓对任何钟都成立；随物体运动的钟测的是同地的两个事件。
+    - |
+      $\gamma=\frac1{\sqrt{1-\beta^2}}\ge1$，$\beta=0.6$时$\gamma=1.25$。
+    - |
+      B、C、E 对；A、D 错。
+  solution: |
+    A 错：所有的钟都一样慢，否则相对性原理被破坏。B 对：飞船上的事件都发生在随飞船运动的钟所在之处。C 对：时间延缓是相互的。D 错，$\gamma\ge1$；E 对，$\gamma=\frac{1}{0.8}=1.25$。
+
+- id: p3
+  tier: medium
+  statement: |
+    一个缪子以$v=0.995c$竖直向下飞行，在地面参考系里从产生到抵达地面飞过了$9.0\,\mathrm{km}$。在缪子静止的参考系里，这段时间是多长？取$c=3\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 9000/(0.995*3e8)*sqrt(1-0.995^2)*1e6
+    unit: |
+      $\mu\mathrm s$
+  hints:
+    - |
+      先在地面参考系里算飞行时间。
+    - |
+      $\Delta t=\frac{9000\,\mathrm m}{0.995\times3\times10^8\,\mathrm{m/s}}\approx30.15\,\mu\mathrm s$。
+    - |
+      产生和到达都发生在缪子身上，缪子参考系里的间隔是固有时$\Delta\tau=\frac{\Delta t}{\gamma}=\Delta t\sqrt{1-0.995^2}\approx3.011\,\mu\mathrm s$。
+  solution: |
+    地面参考系里$\Delta t=\frac{9000}{0.995\times3\times10^8}\,\mathrm s\approx30.151\,\mu\mathrm s$，$\gamma=\frac{1}{\sqrt{1-0.995^2}}\approx10.01$，固有时$\Delta\tau=\frac{\Delta t}{\gamma}\approx3.011\,\mu\mathrm s$。这只比缪子的平均寿命$2.2\,\mu\mathrm s$略长，相当一部分缪子能飞完这段路。
+
+- id: p4
+  tier: medium
+  statement: |
+    飞机以$250\,\mathrm{m/s}$的速度匀速飞行$10\,\mathrm h$（地面参考系的时间）。只考虑狭义相对论的时间延缓，飞机上的钟比地面的钟少走多少？取$c=3\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 12.5
+    unit: |
+      $\mathrm{ns}$
+  hints:
+    - |
+      少走的时间是$\Delta t\bigl(1-\frac1\gamma\bigr)$，$v\ll c$，直接算$\gamma$会被舍入误差淹没。
+    - |
+      $1-\frac1\gamma=1-\sqrt{1-\frac{v^2}{c^2}}\approx\frac{v^2}{2c^2}$。
+    - |
+      $36000\times\frac{250^2}{2\times9\times10^{16}}\,\mathrm s=1.25\times10^{-8}\,\mathrm s=12.5\,\mathrm{ns}$。
+  solution: |
+    $\Delta t=3.6\times10^4\,\mathrm s$，少走$\Delta t\cdot\frac{v^2}{2c^2}=3.6\times10^4\times\frac{6.25\times10^4}{1.8\times10^{17}}\,\mathrm s=1.25\times10^{-8}\,\mathrm s$，即$12.5\,\mathrm{ns}$。1971 年哈费尔（Joseph Hafele）和基廷（Richard Keating）带着原子钟乘民航飞机环球飞行，测到的差别是几十到几百纳秒（其中还有引力和地球自转的效应）。
+
+- id: p5
+  tier: hard
+  statement: |
+    把光钟转$90^\circ$，让两面镜子之间的连线沿运动方向，在钟静止的参考系里两镜相距$L$。设在$S$里这只钟（以$v$运动）两镜相距$\ell$。利用「所有的钟都一样慢」，证明$\ell=\frac{L}{\gamma}$。
+  hints:
+    - |
+      在$S$里，光去程要追前面的镜子，回程迎着后面的镜子。
+    - |
+      $S$里往返时间是$\frac{\ell}{c-v}+\frac{\ell}{c+v}=\frac{2\ell}{c}\gamma^2$。
+    - |
+      这只钟走一下，在钟静止的参考系里用时$\frac{2L}{c}$，按时间延缓在$S$里应是$\gamma\frac{2L}{c}$；令两者相等。
+  reference: |
+    在$S$里镜子以$v$运动。光从后镜出发去追前镜：$c t_1=\ell+vt_1$，$t_1=\frac{\ell}{c-v}$；反射后迎着后镜回来：$ct_2=\ell-vt_2$，$t_2=\frac{\ell}{c+v}$。往返共$t_1+t_2=\frac{2\ell c}{c^2-v^2}=\frac{2\ell}{c}\gamma^2$。
+
+    另一方面，「光离开后镜」和「光回到后镜」在钟静止的参考系里同地，相隔$\frac{2L}{c}$。时间延缓对任何钟都成立（讲解第二步的论证同样适用于这只转过方向的光钟），所以在$S$里它们相隔$\gamma\cdot\frac{2L}{c}$。
+
+    令$\frac{2\ell}c\gamma^2=\frac{2L}c\gamma$，得$\ell=\frac{L}{\gamma}$。沿运动方向的长度在$S$里变短了，这就是下一节的长度收缩（length contraction），见[长度收缩](lesson:physics.special-relativity.length-contraction)；横向长度不变（讲解里的定理），所以只有转到沿运动方向时才出现这个效应。
+
+- id: p6
+  tier: hard
+  statement: |
+    $S$里沿$x$轴放一排静止、同步好的钟。$S'$里的一只钟以$v$沿$x$轴正方向运动，依次经过它们。
+
+    $S$说：$S'$的钟每经过一只$S$的钟，读数增加得都比$S$的钟少，所以$S'$的钟慢。$S'$却说：$S$的钟在运动，慢的是它们。说明两种说法不矛盾：在$S'$看来，$S$的这排钟并不同步，哪边的读数大？
+  hints:
+    - |
+      在$S'$里，$S$的这排钟以$v$沿$x$轴负方向运动。
+    - |
+      由同时的相对性（及那一节 p6），在$S'$看来，沿$S$运动方向靠后的钟读数大；$S$向$x$负方向运动，靠后的是$x$大的那些。
+    - |
+      $S'$的钟依次遇到的是$x$越来越大、读数越来越超前（大）的钟；它们每只都走得慢，但后遇到的那只读数本来就超前，所以读数增加得比$S'$的钟多，两种说法相容。
+  reference: |
+    在$S'$里，$S$的钟排成一列以$v$沿$x$轴负方向运动。按同时的相对性，在$S$里同步的钟，在$S'$里看并不同步：在$S$的运动方向上靠后的钟读数大（[同时的相对性](lesson:physics.special-relativity.relativity-of-simultaneity) p6 的结论，那里车厢换成$S$的这排钟、站台换成$S'$）。$S$向$x$轴负方向运动，靠后的是$x$大的钟，所以在$S'$同一时刻，$x$越大的$S$的钟读数越大。
+
+    $S'$的钟依次经过$x$越来越大的$S$的钟。在$S'$看来，每只$S$的钟都走得慢（比例$\gamma$），可是它遇到的下一只钟读数本来就更超前，超前量足以抵消并超过走慢少走的部分。所以$S'$同样看到「每遇到一只$S$的钟，它的读数都比我增加得多」，这和$S$的观察是同一组事件，结论一致。
+
+    双方的说法都对：$S$用两只同步的钟比较一只运动的钟，$S'$用自己的一只钟比较两只它认为不同步的钟。两个说法对不同的「同时」做了判断，并不冲突，具体的数量关系要用洛伦兹变换（Lorentz transformation）算，见[洛伦兹变换](lesson:physics.special-relativity.lorentz-transformation)。
+
+- id: p7
+  tier: thinking
+  statement: |
+    飞船以$0.99c$飞往$100$光年外的恒星（地面参考系里的距离）。地面算出飞船飞行约$101$年，船员的钟只走了约$14$年。船员在自己的参考系里怎样理解「$14$年里飞过了约$100$光年」？会不会超过光速？
+  hints:
+    - |
+      先验证$14$年：$\Delta\tau=\frac{\Delta t}{\gamma}$，$\gamma=\frac1{\sqrt{1-0.99^2}}\approx7.1$。
+    - |
+      在船员的参考系里，地球和恒星以$0.99c$运动，它们之间的距离还是$100$光年吗？
+    - |
+      按船员的钟，恒星以$0.99c$飞来，$14$年里它走过约$14$光年，所以在船员的参考系里，起点和终点之间只有约$14$光年。
+  reference: |
+    $\gamma=\frac{1}{\sqrt{1-0.99^2}}\approx7.09$，地面参考系里飞行$\frac{100\,\text{光年}}{0.99c}\approx101$年，船员的钟走了$\frac{101}{7.09}\approx14.2$年。
+
+    在船员的参考系里，飞船不动，地球和恒星以$0.99c$运动；恒星在$14.2$年里走了$0.99\times14.2\approx14.1$光年，从远处来到飞船旁边。所以在船员的参考系里，地球和恒星之间的距离只有约$14$光年，而不是$100$光年，没有任何东西超过光速。
+
+    两个参考系对「这段路有多长」的回答不同，比例正好也是$\gamma$。这就是下一节的长度收缩，见[长度收缩](lesson:physics.special-relativity.length-contraction)；它和时间延缓是同一件事在两个参考系里的两种说法。
+
+- id: p8
+  tier: thinking
+  statement: |
+    时间延缓是钟「看起来」变慢了，还是真的变慢了？讲解说效应是相互的，可飞机上的原子钟落地以后，确实和地面的钟差了几十到几百纳秒，这又怎么理解？
+  hints:
+    - |
+      缪子飞到地面、储存环里的缪子寿命变长，这些是可以计数、留下记录的结果。
+    - |
+      相互的时间延缓比较的是两个惯性系，各用自己的一套同步的钟；飞机绕地球飞一圈回到原地，和地面的钟并排比较，这时只用一只地面的钟。
+    - |
+      地面随地球自转，飞机绕地球飞行，两只钟都不在一个惯性系里；哪一方「真的」走慢了，要在不随地球转动的参考系里沿两只钟的世界线（world line）分别算，见双生子佯谬（twin paradox）那一节。
+  reference: |
+    时间延缓不是光学上的错觉：缪子确实能飞到地面，储存环里的缪子确实活得更久，这些是计数的结果，不依赖谁去「看」。
+
+    在两个惯性系之间，效应是相互的，因为双方比较时都要用自己同步好的两只钟，而对方不承认这两只钟同步（p6）。飞机和地面的钟最后并排放在一起比较，用的是同一地点的两只钟，结果不依赖同步，也不再对称。
+
+    但这时两只钟都不在一个惯性系里：地面随地球自转，飞机绕地球飞行。要在不随地球转动、近似是惯性系的地心参考系（Earth-centered inertial frame）里，沿两只钟各自的世界线累加固有时，算法见[双生子佯谬与其他佯谬](lesson:physics.special-relativity.twin-paradox)。在这个参考系里，地面的钟随地球自转以每秒几百米运动；向东飞的飞机比它快，钟走得少，向西飞的比它慢，钟走得多。1971 年实测向东飞的钟比地面的少走约$59\,\mathrm{ns}$，向西飞的多走约$273\,\mathrm{ns}$，两个数都含引力对钟的影响。

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 330" width="560" height="330" font-size="14">
+  <!-- 缪子飞向地面，两个参考系。左：地面参考系，大气层厚 H（200 像素），缪子以 v 向下运动。右：缪子参考系，缪子不动，
+       地面以 v 向上运动，大气层沿运动方向收缩成 H/γ（示意取 γ = 4，画成 50 像素）。 -->
+  <rect x="50" y="60" width="180" height="200" stroke="none" style="fill: var(--muted, #6b7280)" fill-opacity="0.15" />
+  <line x1="40" y1="260" x2="240" y2="260" stroke="currentColor" stroke-width="3" />
+  <circle cx="120" cy="42" r="6" style="fill: var(--accent, #2563eb)" />
+  <line x1="120" y1="56" x2="120" y2="92" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 120 100 l -5 -10 l 10 0 z" fill="currentColor" />
+  <text x="130" y="90" fill="currentColor"><tspan font-style="italic">v</tspan></text>
+  <text x="132" y="47" fill="currentColor">缪子</text>
+  <g stroke="currentColor" stroke-width="1">
+    <line x1="252" y1="60" x2="252" y2="260" />
+    <line x1="246" y1="60" x2="258" y2="60" />
+    <line x1="246" y1="260" x2="258" y2="260" />
+  </g>
+  <text x="260" y="165" fill="currentColor"><tspan font-style="italic">H</tspan></text>
+  <text x="140" y="300" text-anchor="middle" fill="currentColor">地面参考系</text>
+  <rect x="320" y="90.0" width="180" height="50.0" stroke="none" style="fill: var(--muted, #6b7280)" fill-opacity="0.15" />
+  <line x1="310" y1="140.0" x2="510" y2="140.0" stroke="currentColor" stroke-width="3" />
+  <circle cx="390" cy="68" r="6" style="fill: var(--accent, #2563eb)" />
+  <text x="402" y="73" fill="currentColor">缪子（静止）</text>
+  <line x1="390" y1="190" x2="390" y2="160" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 390 152 l -5 10 l 10 0 z" fill="currentColor" />
+  <text x="400" y="180" fill="currentColor"><tspan font-style="italic">v</tspan></text>
+  <text x="416" y="180" fill="currentColor">地面</text>
+  <g stroke="currentColor" stroke-width="1">
+    <line x1="522" y1="90.0" x2="522" y2="140.0" />
+    <line x1="516" y1="90.0" x2="528" y2="90.0" />
+    <line x1="516" y1="140.0" x2="528" y2="140.0" />
+  </g>
+  <text x="530" y="120.0" fill="currentColor"><tspan font-style="italic">H</tspan>/γ</text>
+  <text x="410" y="300" text-anchor="middle" fill="currentColor">缪子参考系</text>
+</svg>
