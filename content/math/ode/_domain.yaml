@@ -11,4 +11,296 @@ macros:
     \mathop{}\!\mathrm{d}
   \dv: |
     \frac{\mathrm{d} #1}{\mathrm{d} #2}
-glossary: []
+glossary:
+  - id: math.ode.differential-equation
+    zh: |
+      微分方程
+    en: |
+      differential equation
+    brief: |
+      含有未知函数的导数的方程，例如$y'=-ky$；要求的是一个函数，不是一个数。
+    definedIn: math.ode.what-is-ode
+    anchor: def-ode
+  - id: math.ode.ode
+    zh: |
+      常微分方程
+    en: |
+      ordinary differential equation
+    abbr: |
+      ODE
+    brief: |
+      未知函数只有一个自变量的微分方程，例如$y''+y=0$；有偏导数的叫偏微分方程。
+    definedIn: math.ode.what-is-ode
+    anchor: def-ode
+  - id: math.ode.general-solution
+    zh: |
+      通解
+    en: |
+      general solution
+    brief: |
+      含任意常数、常数取遍允许的值能给出（几乎）所有解的表达式，例如$y'=-ky$的$y=Ce^{-kx}$。
+    definedIn: math.ode.what-is-ode
+    anchor: def-general-solution
+  - id: math.ode.particular-solution
+    zh: |
+      特解
+    en: |
+      particular solution
+    brief: |
+      微分方程的某一个确定的解，通常是通解里的常数取定一个值得到的。
+    definedIn: math.ode.what-is-ode
+    anchor: def-general-solution
+  - id: math.ode.initial-value-problem
+    zh: |
+      初值问题
+    en: |
+      initial value problem
+    brief: |
+      微分方程加上初始条件$y(x_0)=y_0$，要求的是满足这个条件的解。
+    definedIn: math.ode.what-is-ode
+    anchor: def-ivp
+  - id: math.ode.direction-field
+    zh: |
+      方向场
+    en: |
+      direction field
+    brief: |
+      在许多点$(x,y)$处画斜率为$f(x,y)$的小线段得到的图；$y'=f(x,y)$的解曲线处处与它相切。
+    definedIn: math.ode.what-is-ode
+    anchor: def-direction-field
+  - id: math.ode.solution-curve
+    zh: |
+      解曲线
+    en: |
+      solution curve
+    brief: |
+      微分方程的一个解的图像；它在每一点的切线斜率等于方程在那一点给出的斜率。
+    definedIn: math.ode.what-is-ode
+    anchor: def-direction-field
+  - id: math.ode.isocline
+    zh: |
+      等倾线
+    en: |
+      isocline
+    brief: |
+      方向场里斜率相同的点组成的曲线$f(x,y)=c$；手工画方向场时先画它们。
+    definedIn: math.ode.what-is-ode
+    anchor: def-isocline
+  - id: math.ode.separable-equation
+    zh: |
+      可分离变量的方程
+    en: |
+      separable equation
+    brief: |
+      能写成$y'=g(x)h(y)$的一阶方程；把$y$、$x$分到两边各自积分就能求解，常数解要单独找。
+    definedIn: math.ode.separable
+    anchor: def-separable
+  - id: math.ode.logistic-equation
+    zh: |
+      逻辑斯谛方程
+    en: |
+      logistic equation
+    brief: |
+      $y'=ry\bigl(1-\frac yK\bigr)$：数量小时近似指数增长，接近$K$时增长停止，解是 S 形曲线。
+    definedIn: math.ode.separable
+    anchor: def-logistic
+  - id: math.ode.carrying-capacity
+    zh: |
+      环境容纳量
+    en: |
+      carrying capacity
+    brief: |
+      逻辑斯谛方程里的常数$K$：资源能维持的数量上限，正的解都趋于它。
+    definedIn: math.ode.separable
+    anchor: def-logistic
+  - id: math.ode.linear-first-order-equation
+    zh: |
+      一阶线性方程
+    en: |
+      first-order linear equation
+    brief: |
+      能写成$y'+p(x)y=q(x)$的方程；$y$和$y'$都只以一次的形式出现，可以用积分因子求解。
+    definedIn: math.ode.linear-first-order
+    anchor: def-linear-first-order
+  - id: math.ode.integrating-factor
+    zh: |
+      积分因子
+    en: |
+      integrating factor
+    brief: |
+      乘到方程两边、让左边变成某个函数的导数的因子；对$y'+py=q$，它是$e^{\int p\dd x}$。
+    definedIn: math.ode.linear-first-order
+    anchor: def-integrating-factor
+  - id: math.ode.exact-equation
+    zh: |
+      恰当方程
+    en: |
+      exact equation
+    brief: |
+      形如$M\dd x+N\dd y=0$、并且有函数$F$使$F_x=M$、$F_y=N$的方程；它的解曲线是$F=C$。
+    definedIn: math.ode.exact-equations
+    anchor: def-exact
+  - id: math.ode.potential-function
+    zh: |
+      势函数
+    en: |
+      potential function
+    brief: |
+      恰当方程$M\dd x+N\dd y=0$里满足$F_x=M$、$F_y=N$的函数$F$；解都落在它的等值线上。
+    definedIn: math.ode.exact-equations
+    anchor: def-exact
+  - id: math.ode.euler-method
+    zh: |
+      欧拉法
+    en: |
+      Euler's method
+    brief: |
+      求数值解的最简单方法：每一步沿切线走，$y_{n+1}=y_n+hf(x_n,y_n)$；整体误差与步长$h$成正比。
+    definedIn: math.ode.numerical-methods
+    anchor: def-euler
+  - id: math.ode.local-truncation-error
+    zh: |
+      局部截断误差
+    en: |
+      local truncation error
+    brief: |
+      从精确值出发、按数值方法走一步，与精确解在下一点的值之差。
+    definedIn: math.ode.numerical-methods
+    anchor: def-local-error
+  - id: math.ode.global-error
+    zh: |
+      整体误差
+    en: |
+      global error
+    brief: |
+      数值方法从起点一步步走到某一点后，算出的值与精确解之差；它像$Ch^p$那样变小时，方法是$p$阶的。
+    definedIn: math.ode.numerical-methods
+    anchor: def-local-error
+  - id: math.ode.improved-euler
+    zh: |
+      改进的欧拉法
+    en: |
+      improved Euler method
+    brief: |
+      每步取起点斜率和欧拉法试走终点的斜率的平均来前进，是二阶方法，也叫 Heun 方法。
+    definedIn: math.ode.numerical-methods
+    anchor: def-heun
+  - id: math.ode.rk4
+    zh: |
+      四阶龙格-库塔法
+    en: |
+      classical fourth-order Runge-Kutta method
+    abbr: |
+      RK4
+    brief: |
+      每步算四个斜率再加权平均的数值方法，整体误差与步长的四次方成正比。
+    definedIn: math.ode.numerical-methods
+    anchor: def-rk4
+  - id: math.ode.autonomous-equation
+    zh: |
+      自治方程
+    en: |
+      autonomous equation
+    brief: |
+      右边不显含自变量的方程$y'=f(y)$；规律不随时间变，解在时间上平移后仍是解。
+    definedIn: math.ode.autonomous-equations
+    anchor: def-autonomous
+  - id: math.ode.equilibrium-point
+    zh: |
+      平衡点
+    en: |
+      equilibrium point
+    brief: |
+      使$f(y^*)=0$的$y^*$：从那里出发的解一直不动；它可能稳定，也可能不稳定。
+    definedIn: math.ode.autonomous-equations
+    anchor: def-equilibrium
+  - id: math.ode.phase-line
+    zh: |
+      相线
+    en: |
+      phase line
+    brief: |
+      在$y$轴上标出平衡点、按$f$的符号画上下箭头的图，表示$y'=f(y)$的解往哪边走。
+    definedIn: math.ode.autonomous-equations
+    anchor: def-phase-line
+  - id: math.ode.asymptotically-stable
+    zh: |
+      渐近稳定
+    en: |
+      asymptotically stable
+    brief: |
+      平衡点附近出发的解都留在附近并趋于它；一维时，$f'(y^*)<0$就保证这一点。
+    definedIn: math.ode.autonomous-equations
+    anchor: def-stability
+  - id: math.ode.bifurcation
+    zh: |
+      分岔
+    en: |
+      bifurcation
+    brief: |
+      参数越过某个值（分岔值）时，平衡点的个数或某个平衡点的稳定性发生改变。
+    definedIn: math.ode.bifurcations
+    anchor: def-bifurcation
+  - id: math.ode.bifurcation-diagram
+    zh: |
+      分岔图
+    en: |
+      bifurcation diagram
+    brief: |
+      横轴是参数、纵轴是平衡点位置的图；稳定的平衡点画实线，不稳定的画虚线。
+    definedIn: math.ode.bifurcations
+    anchor: def-bifurcation-diagram
+  - id: math.ode.saddle-node-bifurcation
+    zh: |
+      鞍结分岔
+    en: |
+      saddle-node bifurcation
+    brief: |
+      一稳一不稳两个平衡点随参数靠近、合并后消失，标准例子是$y'=\mu-y^2$。
+    definedIn: math.ode.bifurcations
+    anchor: def-saddle-node
+  - id: math.ode.transcritical-bifurcation
+    zh: |
+      跨临界分岔
+    en: |
+      transcritical bifurcation
+    brief: |
+      两个平衡点相遇后穿过彼此、交换稳定性，标准例子是$y'=\mu y-y^2$。
+    definedIn: math.ode.bifurcations
+    anchor: def-transcritical
+  - id: math.ode.pitchfork-bifurcation
+    zh: |
+      叉式分岔
+    en: |
+      pitchfork bifurcation
+    brief: |
+      对称的方程里一个平衡点分成三个，标准例子是$y'=\mu y-y^3$。
+    definedIn: math.ode.bifurcations
+    anchor: def-pitchfork
+  - id: math.ode.lipschitz-condition
+    zh: |
+      利普希茨条件
+    en: |
+      Lipschitz condition
+    brief: |
+      有常数$L$使$|f(x,y_1)-f(x,y_2)|\le L|y_1-y_2|$；它保证初值问题的解唯一。
+    definedIn: math.ode.existence-uniqueness
+    anchor: def-lipschitz
+  - id: math.ode.picard-iteration
+    zh: |
+      皮卡迭代
+    en: |
+      Picard iteration
+    brief: |
+      从常数$y_0$出发，反复代入积分方程右边得到的函数列；它收敛到初值问题的解。
+    definedIn: math.ode.existence-uniqueness
+    anchor: def-picard-iteration
+  - id: math.ode.picard-lindelof-theorem
+    zh: |
+      皮卡-林德勒夫定理
+    en: |
+      Picard–Lindelöf theorem
+    brief: |
+      $f$连续、对$y$满足利普希茨条件时，初值问题在初始点附近有唯一的解。
+    definedIn: math.ode.existence-uniqueness
+    anchor: thm-picard-lindelof

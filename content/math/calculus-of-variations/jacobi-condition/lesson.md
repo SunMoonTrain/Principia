@@ -33,7 +33,7 @@ status: reviewed
 ::anchor{id="def-conjugate-point"}
 设$P>0$。:term[雅可比方程]{id="math.calculus-of-variations.jacobi-equation"}满足$h(a)=0$、$h'(a)=1$的解只有一个；如果它在$a$的右边又等于零，第一个这样的点$c$叫作$a$的:term[共轭点]{id="math.calculus-of-variations.conjugate-point"}（conjugate point）。
 
-为什么这样定义：从$A=(a,y(a))$出发、初始斜率稍有不同的:term[极值曲线]{id="math.calculus-of-variations.extremal"}，和原来那条的差约为$\Delta\alpha\cdot h(x)$。$h$再次为零的地方，相邻的极值曲线（准到一阶）又和它交在一起；$F=p^2-y^2$时，$y=\alpha\sin x$全都在$x=\pi$处相交，$\pi$就是$0$的共轭点。解的唯一性由常微分方程（ordinary differential equation）的存在唯一性定理（existence and uniqueness theorem）保证，见[解的存在唯一性](lesson:math.ode.existence-uniqueness)。边界情况：共轭点可能根本不存在，例如雅可比方程是$h''=0$时，满足条件的解是$x-a$，它不会再为零。
+为什么这样定义：从$A=(a,y(a))$出发、初始斜率稍有不同的:term[极值曲线]{id="math.calculus-of-variations.extremal"}，和原来那条的差约为$\Delta\alpha\cdot h(x)$。$h$再次为零的地方，相邻的极值曲线（准到一阶）又和它交在一起；$F=p^2-y^2$时，$y=\alpha\sin x$全都在$x=\pi$处相交，$\pi$就是$0$的共轭点。解的唯一性由常微分方程（ordinary differential equation）的存在唯一性定理（existence and uniqueness theorem）保证，见[解的存在唯一性](lesson:math.ode.existence-uniqueness#thm-systems)。边界情况：共轭点可能根本不存在，例如雅可比方程是$h''=0$时，满足条件的解是$x-a$，它不会再为零。
 
 ### 雅可比条件
 

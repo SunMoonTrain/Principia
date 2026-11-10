@@ -1,0 +1,145 @@
+- id: p1
+  tier: easy
+  statement: |
+    方程$(axy+1)\dd x+(x^2+y)\dd y=0$是:term[恰当方程]{id="math.ode.exact-equation"}（exact equation）。求常数$a$。
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      用判别法：比较$\frac{\partial M}{\partial y}$和$\frac{\partial N}{\partial x}$。
+    - |
+      $\frac{\partial M}{\partial y}=ax$，$\frac{\partial N}{\partial x}=2x$。
+    - |
+      恰当要求$\frac{\partial M}{\partial y}=\frac{\partial N}{\partial x}$，即$ax=2x$对所有$x$成立，所以$a=2$。这时势函数是$F=x^2y+x+\frac{y^2}{2}$。
+  solution: |
+    $ax=2x$，所以$a=2$，填 `2`。
+
+- id: p2
+  tier: easy
+  statement: |
+    解初值问题$(2x+y)\dd x+(x+2y)\dd y=0$，$y(1)=1$，求$y(0)$。
+  answer:
+    type: number
+    value: sqrt(3)
+  hints:
+    - |
+      先验证它恰当，再求势函数$F$，解满足$F(x,y)=C$。
+    - |
+      $F=x^2+xy+y^2$，由$y(1)=1$得$C=3$。
+    - |
+      $\frac{\partial M}{\partial y}=1=\frac{\partial N}{\partial x}$，恰当。$F=\int(2x+y)\dd x=x^2+xy+g(y)$，由$\frac{\partial F}{\partial y}=x+g'(y)=x+2y$得$g=y^2$，所以$F=x^2+xy+y^2$，过$(1,1)$的那条等值线是$x^2+xy+y^2=3$。$x=0$时$y^2=3$；解从$y(1)=1>0$连续地走过来，沿途$N=x+2y>0$，取正的那个，$y(0)=\sqrt3\approx1.732$。
+  solution: |
+    $F=x^2+xy+y^2=3$，$x=0$时$y=\sqrt3$，填 `sqrt(3)`。
+
+- id: p3
+  tier: medium
+  statement: |
+    方程$(3xy+y^2)\dd x+(x^2+xy)\dd y=0$有只依赖$x$的积分因子。用它解初值问题$y(1)=1$，求$y(2)$。
+  answer:
+    type: number
+    value: (sqrt(19) - 4)/2
+  hints:
+    - |
+      算$\frac1N\bigl(\frac{\partial M}{\partial y}-\frac{\partial N}{\partial x}\bigr)$。
+    - |
+      $\frac{(3x+2y)-(2x+y)}{x^2+xy}=\frac{x+y}{x(x+y)}=\frac1x$，积分因子是$\mu=x$。
+    - |
+      乘以$x$得$(3x^2y+xy^2)\dd x+(x^3+x^2y)\dd y=0$，恰当，势函数$F=x^3y+\frac{x^2y^2}{2}$。由$y(1)=1$得$F=\frac32$。$x=2$时$8y+2y^2=\frac32$，$y=\frac{-8\pm\sqrt{76}}{4}$；解从$y(1)=1$连续地走来，沿途$x+y>0$，取正的那个根：$y(2)=\frac{\sqrt{19}-4}{2}\approx0.1794$。
+  solution: |
+    $\mu=x$，$F=x^3y+\frac{x^2y^2}{2}=\frac32$；$x=2$时$2y^2+8y-\frac32=0$，取正根$y=\frac{\sqrt{19}-4}{2}$，填 `(sqrt(19)-4)/2`。
+
+- id: p4
+  tier: medium
+  statement: |
+    下面哪些方程在整个平面上是恰当方程？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $(y\cos x+2x)\dd x+\sin x\dd y=0$
+      - |
+        $x^2y\dd x+xy^2\dd y=0$
+      - |
+        $e^y\dd x+(xe^y+2y)\dd y=0$
+      - |
+        $(1+2y)\dd x+(x+1)\dd y=0$
+    value: [1, 3]
+  hints:
+    - |
+      逐个算$\frac{\partial M}{\partial y}$和$\frac{\partial N}{\partial x}$，整个平面是一个没有洞的区域。
+    - |
+      A：$\cos x$和$\cos x$；B：$x^2$和$y^2$；C：$e^y$和$e^y$；D：$2$和$1$。
+    - |
+      A、C 的两个偏导数处处相等，平面上判别法适用，是恰当方程；势函数分别是$y\sin x+x^2$和$xe^y+y^2$。B 的$x^2\ne y^2$，D 的$2\ne1$，不恰当。答案是 A 和 C。
+  solution: |
+    A、C 满足$\frac{\partial M}{\partial y}=\frac{\partial N}{\partial x}$（势函数$y\sin x+x^2$、$xe^y+y^2$），B、D 不满足。答案是 A、C。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$M$、$N$、$\frac{\partial M}{\partial y}$、$\frac{\partial N}{\partial x}$在矩形$R=[a,b]\times[c,d]$上连续，并且$\frac{\partial M}{\partial y}=\frac{\partial N}{\partial x}$。取$(x_0,y_0)\in R$，证明$F(x,y)=\int_{x_0}^{x}M(s,y_0)\dd s+\int_{y_0}^{y}N(x,t)\dd t$满足$\frac{\partial F}{\partial x}=M$、$\frac{\partial F}{\partial y}=N$。
+  hints:
+    - |
+      对$y$求偏导时，第一项不含$y$；对$x$求偏导时，第二项的被积函数含$x$。
+    - |
+      $\frac{\partial F}{\partial y}=N(x,y)$由[微积分基本定理](lesson:math.calculus.fundamental-theorem)（fundamental theorem of calculus）得到。$\frac{\partial F}{\partial x}=M(x,y_0)+\int_{y_0}^{y}\frac{\partial N}{\partial x}(x,t)\dd t$，这一步是积分号下求导（见[含参变量积分](lesson:math.analysis.parameter-integrals#thm-leibniz-rule)）。
+    - |
+      第一项与$y$无关，由[微积分基本定理](lesson:math.calculus.fundamental-theorem)，第二项对$y$的偏导是$N(x,y)$，所以$\frac{\partial F}{\partial y}=N$。
+
+      对$x$：第一项的偏导是$M(x,y_0)$；第二项是含参变量$x$的积分，$N$和$\frac{\partial N}{\partial x}$在矩形上连续，可以在积分号下求导（见[含参变量积分](lesson:math.analysis.parameter-integrals#thm-leibniz-rule)），得$\int_{y_0}^{y}\frac{\partial N}{\partial x}(x,t)\dd t=\int_{y_0}^{y}\frac{\partial M}{\partial y}(x,t)\dd t=M(x,y)-M(x,y_0)$。两项相加，$\frac{\partial F}{\partial x}=M(x,y)$。这里用到积分路线（先沿$y=y_0$走，再竖直走）留在$R$里，所以要求区域是矩形。
+  reference: |
+    $\frac{\partial F}{\partial y}=N$（[微积分基本定理](lesson:math.calculus.fundamental-theorem)）。$\frac{\partial F}{\partial x}=M(x,y_0)+\int_{y_0}^{y}N_x(x,t)\dd t=M(x,y_0)+\int_{y_0}^{y}M_y(x,t)\dd t=M(x,y)$，第二步[积分号下求导](lesson:math.analysis.parameter-integrals#thm-leibniz-rule)，第三步用$N_x=M_y$和牛顿-莱布尼茨公式。折线积分路线要留在区域里，所以用矩形。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$M=-\frac{y}{x^2+y^2}$，$N=\frac{x}{x^2+y^2}$，定义在去掉原点的平面$D$上。(1) 验证在$D$上$\frac{\partial M}{\partial y}=\frac{\partial N}{\partial x}$。(2) 证明方程$M\dd x+N\dd y=0$在$D$上不恰当。(3) 它在右半平面$x>0$上恰当吗？
+  hints:
+    - |
+      (2) 若有势函数$F$，沿单位圆$x=\cos\theta$、$y=\sin\theta$走一圈，$F$的变化是多少？
+    - |
+      沿单位圆，$\frac{\dd}{\dd\theta}F(\cos\theta,\sin\theta)=M\cdot(-\sin\theta)+N\cos\theta=1$，走一圈$F$增加$2\pi$，可回到了同一点。
+    - |
+      (1) $\frac{\partial M}{\partial y}=\frac{-(x^2+y^2)+2y^2}{(x^2+y^2)^2}=\frac{y^2-x^2}{(x^2+y^2)^2}$，$\frac{\partial N}{\partial x}=\frac{(x^2+y^2)-2x^2}{(x^2+y^2)^2}=\frac{y^2-x^2}{(x^2+y^2)^2}$，相等。
+
+      (2) 若$F$存在，令$g(\theta)=F(\cos\theta,\sin\theta)$，由多元复合函数的链式法则，$g'(\theta)=M(-\sin\theta)+N\cos\theta=\sin^2\theta+\cos^2\theta=1$，所以$g(2\pi)-g(0)=2\pi$；可$\theta=0$和$\theta=2\pi$是同一点，$g(2\pi)=g(0)$，矛盾。
+
+      (3) 恰当：$F=\arctan\frac yx$满足$\frac{\partial F}{\partial x}=-\frac{y}{x^2+y^2}$、$\frac{\partial F}{\partial y}=\frac{x}{x^2+y^2}$。它是极角$\theta$，在去掉原点的整个平面上没法连续地定义，转一圈多出$2\pi$；原点那个「洞」让判别法失效。
+  reference: |
+    (1) 两个偏导都等于$\frac{y^2-x^2}{(x^2+y^2)^2}$。(2) 若$F$存在，沿单位圆$\frac{\dd}{\dd\theta}F=1$，一圈增加$2\pi$，与回到原点矛盾。
+
+    (3) 右半平面上$F=\arctan\frac yx$是势函数，恰当。全平面去原点后极角不能连续定义，洞使判别法失效。
+
+- id: p7
+  tier: thinking
+  statement: |
+    热力学里，气体吸收的热量$\delta Q=C_V\dd T+\frac{RT}{V}\dd V$（理想气体，$C_V$、$R$是常数）。它是不是某个状态函数（state function）$Q(T,V)$的微分？除以温度$T$以后呢？这和本节的哪个概念对应？
+  hints:
+    - |
+      把$\delta Q$看成$M\dd T+N\dd V$，用判别法。
+    - |
+      $\frac{\partial M}{\partial V}=0$，$\frac{\partial N}{\partial T}=\frac RV$，不恰当。除以$T$以后再算一次。
+    - |
+      $M=C_V$，$N=\frac{RT}{V}$：$\frac{\partial M}{\partial V}=0\ne\frac{\partial N}{\partial T}=\frac{R}{V}$，不恰当，所以不存在状态函数$Q(T,V)$，「吸收了多少热」和走的路线有关。除以$T$得$\frac{C_V}{T}\dd T+\frac{R}{V}\dd V$，两个偏导都是$0$，恰当，势函数是$S=C_V\ln T+R\ln V$。
+
+      所以$\frac1T$是$\delta Q$的积分因子，乘出来的势函数就是熵（entropy）$S$：熵是状态函数，热量不是。这正是[克劳修斯不等式与熵](lesson:physics.thermal-physics.entropy)里熵的来历之一。
+  reference: |
+    $\delta Q$不恰当（$0\ne\frac RV$），没有状态函数$Q$；除以$T$后恰当，势函数$S=C_V\ln T+R\ln V$是[熵](lesson:physics.thermal-physics.entropy)。$\frac1T$是积分因子，对应本节的积分因子概念。
+
+- id: p8
+  tier: thinking
+  statement: |
+    恰当方程的解常常只能写成$F(x,y)=C$。什么时候能从中解出$y=y(x)$？在等值线上$N=0$的点会发生什么？用$x^2+y^2=C$说明。
+  hints:
+    - |
+      [隐函数定理](lesson:math.vector-calculus.inverse-implicit)（implicit function theorem）要求$\frac{\partial F}{\partial y}\ne0$，而$\frac{\partial F}{\partial y}=N$。
+    - |
+      $x^2+y^2=1$在$(\pm1,0)$处$N=2y=0$，切线竖直。
+    - |
+      若在某点$\frac{\partial F}{\partial y}=N\ne0$，由隐函数定理（见[反函数定理与隐函数定理](lesson:math.vector-calculus.inverse-implicit)），这点附近的等值线可以写成$y=y(x)$，它就是方程$y'=-\frac MN$的解。在$N=0$、$M\ne0$的点，等值线的切线竖直，$y'$不存在。
+
+      对$x\dd x+y\dd y=0$，等值线是圆$x^2+y^2=C$，在$(\pm\sqrt C,0)$处$N=y=0$，切线竖直：上半圆和下半圆各是一个解$y=\pm\sqrt{C-x^2}$，在这两点碰头，作为$x$的函数走不过去。把方程看成「$M\dd x+N\dd y=0$」而不是「$y'=f(x,y)$」，正好能把整条等值线当成一条解曲线，这也是写成对称形式的好处。
+  reference: |
+    $N=\frac{\partial F}{\partial y}\ne0$时由[隐函数定理](lesson:math.vector-calculus.inverse-implicit)局部可解出$y(x)$；$N=0$处切线竖直。圆的上下半圆各是一个解，在$(\pm\sqrt C,0)$相接；对称形式$M\dd x+N\dd y=0$把整条等值线当作一条解曲线。

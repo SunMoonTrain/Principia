@@ -138,7 +138,7 @@
     - |
       (1) 先要证明$\bigl(1+\frac xn\bigr)^n$对每个实数$x$都收敛，$x<0$时也要，第 6 题只处理了$x=1$。加法公式要估计$\frac{(1+\frac xn)^n(1+\frac yn)^n}{(1+\frac{x+y}{n})^n}=\Bigl(1+\frac{xy}{n^2+n(x+y)}\Bigr)^n\to1$；求导更麻烦，要交换求导和取极限，先得有一致收敛之类的保证。
 
-      (2) 唯一性照定理 3：两个解之比的导数是$0$。存在性却不能凭空得到：要么借助微分方程解的存在定理（见[解的存在唯一性](lesson:math.ode.existence-uniqueness)），要么直接造出一个解，而最直接的造法就是本节的幂级数。加法公式可以由唯一性推出：固定$y$，$x\mapsto\frac{f(x+y)}{f(y)}$也满足$f'=f$、$f(0)=1$。
+      (2) 唯一性照定理 3：两个解之比的导数是$0$。存在性却不能凭空得到：要么借助微分方程解的存在定理（见[解的存在唯一性](lesson:math.ode.existence-uniqueness#thm-picard-lindelof)），要么直接造出一个解，而最直接的造法就是本节的幂级数。加法公式可以由唯一性推出：固定$y$，$x\mapsto\frac{f(x+y)}{f(y)}$也满足$f'=f$、$f(0)=1$。
 
       用幂级数定义时，存在性就是收敛半径为$+\infty$；导数靠逐项求导，加法公式靠柯西乘积，用的都是前面证过的一般定理。这个定义还能原样用到复数上：$\sum\frac{z^n}{n!}$对每个复数$z$都收敛，以后在[欧拉公式与复指数](lesson:math.complex-analysis.complex-exponential)里会用到。
   reference: |

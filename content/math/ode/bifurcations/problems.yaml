@@ -1,0 +1,131 @@
+- id: p1
+  tier: easy
+  statement: |
+    方程$y'=y^2-4y+\mu$在某个$\mu_0$处发生:term[鞍结分岔]{id="math.ode.saddle-node-bifurcation"}（saddle-node bifurcation）：$\mu<\mu_0$时有两个平衡点，$\mu>\mu_0$时一个也没有。求$\mu_0$。
+  answer:
+    type: number
+    value: 4
+  hints:
+    - |
+      平衡点是$y^2-4y+\mu=0$的根；两个根合并时，判别式是多少？
+    - |
+      判别式是$16-4\mu$。也可以联立$f=0$和$f_y=0$。
+    - |
+      判别式$16-4\mu$：$\mu<4$时有两个根，$\mu=4$时只有一个，$\mu>4$时没有。用必要条件也一样：$f_y=2y-4=0$得$y=2$，代入$f=0$，$4-8+\mu=0$，$\mu=4$。
+  solution: |
+    $f_y=2y-4=0$得$y=2$，代入$f=0$得$\mu_0=4$，填 `4`。
+
+- id: p2
+  tier: easy
+  statement: |
+    鱼群满足$y'=y(1-y)-h$，$h\ge0$是每年固定的捕捞量。$h$超过某个值$h_c$后，方程没有平衡点，鱼群会被捕光。求$h_c$。
+  answer:
+    type: number
+    value: 1/4
+  hints:
+    - |
+      平衡点满足$y(1-y)=h$；$y(1-y)$最大是多少？
+    - |
+      $y(1-y)$是开口向下的抛物线，在$y=\frac12$处取最大值。
+    - |
+      $y(1-y)=\frac14-\bigl(y-\frac12\bigr)^2\le\frac14$，等号在$y=\frac12$成立。$h<\frac14$时有两个平衡点，$h=\frac14$时合并为$\frac12$，$h>\frac14$时没有，这是鞍结分岔，$h_c=\frac14$。和例 1 不同，鱼群的稳定数量在$h_c$处还有$\frac12$，越过$h_c$就整个崩溃。
+  solution: |
+    $y(1-y)$的最大值是$\frac14$，$h>\frac14$时没有平衡点，填 `1/4`。
+
+- id: p3
+  tier: medium
+  statement: |
+    方程$y'=\mu-y-e^{-y}$在某个$\mu_0$处发生分岔。求$\mu_0$。
+  answer:
+    type: number
+    value: 1
+  hints:
+    - |
+      联立$f=0$和$f_y=0$。
+    - |
+      $f_y=-1+e^{-y}$，它等于$0$时$y$是多少？
+    - |
+      $f_y=-1+e^{-y}=0$得$y=0$，代入$f=0$得$\mu_0-0-1=0$，$\mu_0=1$。也可以把平衡点满足的条件写成$\mu=y+e^{-y}$：右边在$y=0$处取最小值$1$，$\mu<1$时没有平衡点，$\mu>1$时有两个，是鞍结分岔。
+  solution: |
+    $f_y=e^{-y}-1=0$得$y=0$，$f(0,\mu_0)=\mu_0-1=0$，填 `1`。
+
+- id: p4
+  tier: medium
+  statement: |
+    取$\mu=8$，求$y'=\mu y-2y^3$所有稳定的平衡点。
+  answer:
+    type: set
+    value: [-2, 2]
+  hints:
+    - |
+      先求平衡点，再看$f_y$的符号。
+    - |
+      平衡点是$0$和满足$y^2=\frac\mu2$的两个数；$f_y=\mu-6y^2$。
+    - |
+      $y(8-2y^2)=0$，平衡点是$0$、$\pm2$。$f_y=8-6y^2$：$f_y(0)=8>0$，$0$不稳定；$f_y(\pm2)=8-24=-16<0$，$\pm2$稳定。这正是超临界的叉式分岔在$\mu>0$一侧的样子。
+  solution: |
+    平衡点是$0$、$\pm2$；$f_y(\pm2)=-16<0$，稳定，$f_y(0)=8>0$，不稳定。填 `-2, 2`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f(y,\mu)$和$f_y$连续，$f(y^*,\mu_0)=0$，$f_y(y^*,\mu_0)<0$。证明：有$\delta>0$、$\eta>0$，使$|\mu-\mu_0|<\eta$时，$f(y,\mu)$作为$y$的函数在$(y^*-\delta,y^*+\delta)$里恰好有一个零点，并且它是稳定的平衡点。
+  hints:
+    - |
+      先取一个小矩形，使$f_y$在上面处处为负。
+    - |
+      在这个矩形里，$f$对$y$严格递减；再看$f(y^*-\delta,\mu)$和$f(y^*+\delta,\mu)$的符号。
+    - |
+      由$f_y$的连续性，有$\delta>0$、$\eta_1>0$，使$|y-y^*|\le\delta$、$|\mu-\mu_0|\le\eta_1$时$f_y<0$。于是对每个这样的$\mu$，$f(y,\mu)$在$[y^*-\delta,y^*+\delta]$上对$y$严格递减；特别地，$f(y^*-\delta,\mu_0)>0>f(y^*+\delta,\mu_0)$。
+
+      $f$对$\mu$连续，所以有$\eta\le\eta_1$，使$|\mu-\mu_0|<\eta$时仍有$f(y^*-\delta,\mu)>0>f(y^*+\delta,\mu)$。由介值定理，$f(y,\mu)$在区间里有零点；它严格递减，所以零点只有一个。那里$f_y<0$，由判别法，它是稳定的平衡点。
+  reference: |
+    取矩形使$f_y<0$，$f$对$y$严格递减，$f(y^*-\delta,\mu_0)>0>f(y^*+\delta,\mu_0)$；由$f$对$\mu$连续，$\mu$靠近$\mu_0$时两端仍异号。介值定理给出零点，严格单调给出唯一性，$f_y<0$给出稳定性。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$\varepsilon>0$，$y'=-\varepsilon-y^2$就是$y'=\mu-y^2$在$\mu=-\varepsilon$时的方程，这时平衡点刚刚消失。它的解从$y=1$降到$y=-1$要用的时间记为$T(\varepsilon)$，求$T(\varepsilon)$，并证明$\varepsilon\to0^+$时$T(\varepsilon)\sqrt\varepsilon\to\pi$。
+  hints:
+    - |
+      方程可以分离变量：$\dd t=-\frac{\dd y}{\varepsilon+y^2}$。
+    - |
+      $T=\int_{-1}^{1}\frac{\dd y}{\varepsilon+y^2}$，而$\int\frac{\dd y}{\varepsilon+y^2}=\frac1{\sqrt\varepsilon}\arctan\frac{y}{\sqrt\varepsilon}+C$。
+    - |
+      $y'<0$，解从$1$单调下降到$-1$。分离变量，$T=\int_{-1}^{1}\frac{\dd y}{\varepsilon+y^2}=\frac{2}{\sqrt\varepsilon}\arctan\frac{1}{\sqrt\varepsilon}$；$\varepsilon\to0^+$时$\arctan\frac1{\sqrt\varepsilon}\to\frac\pi2$，所以$T\sqrt\varepsilon\to\pi$。
+
+      $T$像$\frac{\pi}{\sqrt\varepsilon}$那样变大，几乎全部时间都花在$y=0$附近：平衡点虽然消失了，它留下的「影子」仍让解在那里慢慢挤过去。第 2 题里捕捞量刚越过$h_c$时，鱼群也会先在$\frac12$附近停留很久，然后才崩溃。
+  reference: |
+    $T=\int_{-1}^{1}\frac{\dd y}{\varepsilon+y^2}=\frac{2}{\sqrt\varepsilon}\arctan\frac1{\sqrt\varepsilon}$，$\varepsilon\to0^+$时$\arctan\frac1{\sqrt\varepsilon}\to\frac\pi2$，$T\sqrt\varepsilon\to\pi$。消失的平衡点附近解走得极慢。
+
+- id: p7
+  tier: thinking
+  statement: |
+    对$y'=\mu-y^2$（$\mu>0$），稳定的平衡点$\sqrt\mu$受到小扰动以后，偏差大约按什么速度衰减？$\mu$逐渐减小、接近分岔值时，这个速度怎样变化？为什么有人想用它来预报湖泊变浑、气候突变这类临界点（tipping point）？
+  hints:
+    - |
+      用判别法背后的线性化：偏差$w=y-\sqrt\mu$满足$w'\approx f_y(\sqrt\mu,\mu)\,w$。
+    - |
+      $f_y(\sqrt\mu,\mu)=-2\sqrt\mu$，偏差像$e^{-2\sqrt\mu\,t}$那样衰减。
+    - |
+      偏差满足$w'\approx-2\sqrt\mu\,w$，像$e^{-2\sqrt\mu\,t}$那样衰减，恢复时间约为$\frac{1}{2\sqrt\mu}$。$\mu\to0^+$时它趋于无穷：越接近分岔，系统被扰动后回来得越慢，即临界慢化（critical slowing down）。
+
+      真实的系统总在受随机扰动，恢复变慢，表现为观测数据的波动变大、前后相关性变强。在鞍结分岔把稳定状态整个抹掉之前，这些统计特征会先变化，所以可以当作「快到临界点了」的预警。它说不出临界点的确切位置；突变不是由鞍结分岔引起的时候，预警也可能不出现。
+  reference: |
+    线性化$w'\approx-2\sqrt\mu\,w$，恢复时间约$\frac1{2\sqrt\mu}$，接近分岔时趋于无穷（临界慢化）。随机扰动下表现为波动变大、自相关变强，可作为鞍结分岔型突变的预警，但给不出确切位置，也不适用于别的机制。
+
+- id: p8
+  tier: thinking
+  statement: |
+    给$y'=\mu y-y^2$加一个小的常数项，变成$y'=\varepsilon+\mu y-y^2$，分岔图会怎样变化？为什么说鞍结分岔「最一般」，跨临界分岔和叉式分岔要靠方程的特殊结构？
+  hints:
+    - |
+      平衡点满足$y^2-\mu y-\varepsilon=0$，看判别式$\mu^2+4\varepsilon$。
+    - |
+      $\varepsilon>0$时判别式总为正，两个平衡点永不相遇；$\varepsilon<0$时，判别式在$\mu=\pm2\sqrt{-\varepsilon}$处为$0$。
+    - |
+      平衡点是$\frac{\mu\pm\sqrt{\mu^2+4\varepsilon}}{2}$。$\varepsilon>0$时两支永不相交，上支始终稳定、下支始终不稳定，原来的交叉断开成两条曲线，分岔消失；$\varepsilon<0$时，两支在$|\mu|<2\sqrt{-\varepsilon}$上不存在，在$\mu=\pm2\sqrt{-\varepsilon}$处各有一个鞍结分岔。
+
+      跨临界分岔靠的是「$0$总是平衡点」，叉式分岔靠的是对称性$f(-y,\mu)=-f(y,\mu)$；一点点破坏这种结构的扰动，就把它们变成鞍结分岔或者没有分岔。鞍结分岔不需要特殊结构，$f$的一个极值越过横轴就会发生，稍微改动方程，它只是挪一挪位置。所以在没有特殊结构的模型里，看到的分岔几乎总是鞍结分岔。
+  reference: |
+    $\varepsilon>0$时两支平衡点永不相交，分岔消失；$\varepsilon<0$时变成两个鞍结分岔。跨临界、叉式分岔依赖「$0$总是平衡点」或对称性，小扰动就会破坏；鞍结分岔只需极值越过横轴，小扰动下依然存在。

@@ -1,0 +1,131 @@
+- id: p1
+  tier: easy
+  statement: |
+    用欧拉法解$y'=x+y$，$y(0)=1$，步长$h=0.1$，走两步，求$y(0.2)$的近似值。
+  answer:
+    type: number
+    value: 1.22
+  hints:
+    - |
+      每一步$y_{n+1}=y_n+hf(x_n,y_n)$，$f(x,y)=x+y$。
+    - |
+      第一步在$(0,1)$处斜率是$1$；第二步在$(0.1,\,y_1)$处。
+    - |
+      $y_1=1+0.1\times(0+1)=1.1$；$y_2=1.1+0.1\times(0.1+1.1)=1.22$。精确解是$y=2e^x-x-1$，$y(0.2)\approx1.2428$，欧拉法的误差约$0.023$。
+  solution: |
+    $y_1=1.1$，$y_2=1.1+0.1\times1.2=1.22$，填 `1.22`。
+
+- id: p2
+  tier: easy
+  statement: |
+    用:term[欧拉法]{id="math.ode.euler-method"}（Euler's method）解$y'=-2y$，$y(0)=1$，步长$h=0.25$，求$y(1)$的近似值。
+  answer:
+    type: number
+    value: 0.0625
+  hints:
+    - |
+      每一步$y_{n+1}=y_n+h(-2y_n)$，这是乘以一个固定的数。
+    - |
+      $y_{n+1}=(1-2h)y_n=0.5y_n$，走到$x=1$要$4$步。
+    - |
+      每一步乘以$1-2\times0.25=0.5$，走$4$步，$y_4=0.5^4=0.0625$。精确值是$e^{-2}\approx0.1353$，步长这么大，误差不小。
+  solution: |
+    $y_4=(1-2h)^4=0.5^4=0.0625$，填 `0.0625`。
+
+- id: p3
+  tier: medium
+  statement: |
+    用四阶龙格-库塔法解$y'=x+y$，$y(0)=1$，取步长$h=1$只走一步，求$y(1)$的近似值。
+  answer:
+    type: number
+    value: 41/12
+  hints:
+    - |
+      按定义算四个斜率$k_1,k_2,k_3,k_4$，再取加权平均。
+    - |
+      $k_1=f(0,1)$，$k_2=f\bigl(\frac12,1+\frac12k_1\bigr)$，$k_3=f\bigl(\frac12,1+\frac12k_2\bigr)$，$k_4=f(1,1+k_3)$。
+    - |
+      $k_1=0+1=1$；$k_2=\frac12+\bigl(1+\frac12\bigr)=2$；$k_3=\frac12+(1+1)=2.5$；$k_4=1+(1+2.5)=4.5$。所以$y_1=1+\frac16(1+4+5+4.5)=1+\frac{14.5}{6}=\frac{41}{12}\approx3.4167$。精确值$2e-2\approx3.4366$，步长取到$1$，误差也只有$0.02$。
+  solution: |
+    $k_1=1$，$k_2=2$，$k_3=2.5$，$k_4=4.5$，$y_1=1+\frac{14.5}{6}=\frac{41}{12}$，填 `41/12`。
+
+- id: p4
+  tier: medium
+  statement: |
+    用:term[改进的欧拉法]{id="math.ode.improved-euler"}（improved Euler method）解$y'=y$，$y(0)=1$，步长$h=0.5$，走两步，求$y(1)$的近似值。
+  answer:
+    type: number
+    value: 169/64
+  hints:
+    - |
+      每一步$k_1=f(x_n,y_n)$，$k_2=f(x_n+h,\,y_n+hk_1)$，$y_{n+1}=y_n+\frac h2(k_1+k_2)$。
+    - |
+      对$f=y$，$k_1=y_n$，$k_2=y_n+hy_n$，所以每一步乘以$1+h+\frac{h^2}{2}$。
+    - |
+      $k_1=y_n$，$k_2=(1+h)y_n$，$y_{n+1}=y_n+\frac h2(2+h)y_n=\bigl(1+h+\frac{h^2}{2}\bigr)y_n$。$h=0.5$时每步乘以$1.625$，两步后$y_2=1.625^2=\frac{169}{64}\approx2.6406$。和欧拉法的$2.25$比，离$e\approx2.718$近多了。
+  solution: |
+    每步乘以$1+h+\frac{h^2}{2}=1.625$，$y_2=1.625^2=\frac{169}{64}$，填 `169/64`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$在带形区域上连续，对$y$满足$|f(x,y)-f(x,z)|\le L|y-z|$；初值问题的解$y$有连续的二阶导数，并且$|y''|\le M_2$。证明欧拉法的整体误差$e_n=y(x_n)-y_n$满足$|e_n|\le\frac{M_2h}{2L}\bigl(e^{L(x_n-x_0)}-1\bigr)$。
+  hints:
+    - |
+      写出$e_{n+1}$和$e_n$的关系：精确解走一步的泰勒展开，减去欧拉法的一步。
+    - |
+      $e_{n+1}=e_n+h\bigl(f(x_n,y(x_n))-f(x_n,y_n)\bigr)+\frac{h^2}{2}y''(\xi_n)$，所以$|e_{n+1}|\le(1+hL)|e_n|+\frac{M_2h^2}{2}$。
+    - |
+      由泰勒公式$y(x_{n+1})=y(x_n)+hf(x_n,y(x_n))+\frac{h^2}{2}y''(\xi_n)$，减去$y_{n+1}=y_n+hf(x_n,y_n)$，再用:term[利普希茨条件]{id="math.ode.lipschitz-condition"}（Lipschitz condition），得$|e_{n+1}|\le(1+hL)|e_n|+\frac{M_2h^2}{2}$，$e_0=0$。
+
+      由归纳法，$|e_n|\le\frac{M_2h^2}{2}\sum_{k=0}^{n-1}(1+hL)^k=\frac{M_2h^2}{2}\cdot\frac{(1+hL)^n-1}{hL}$。又$1+hL\le e^{hL}$，$(1+hL)^n\le e^{nhL}=e^{L(x_n-x_0)}$，所以$|e_n|\le\frac{M_2h}{2L}\bigl(e^{L(x_n-x_0)}-1\bigr)$。在固定的区间上，右边和$h$成正比，欧拉法是一阶的。
+  reference: |
+    $|e_{n+1}|\le(1+hL)|e_n|+\frac{M_2h^2}{2}$，$e_0=0$，递推得$|e_n|\le\frac{M_2h^2}{2}\cdot\frac{(1+hL)^n-1}{hL}\le\frac{M_2h}{2L}(e^{L(x_n-x_0)}-1)$。
+
+- id: p6
+  tier: hard
+  statement: |
+    证明改进的欧拉法是二阶方法的关键一步：设$f$足够光滑，从精确值出发走一步，$y_{n+1}=y(x_n)+\frac h2\bigl(k_1+k_2\bigr)$与$y(x_n+h)$的泰勒展开对到$h^2$项，局部截断误差是$h^3$量级。
+  hints:
+    - |
+      精确解的展开：$y(x+h)=y+hy'+\frac{h^2}{2}y''+O(h^3)$，其中$y'=f$，$y''=f_x+f_yf$。$f_x$、$f_y$是$f$对$x$、$y$的[偏导数](lesson:math.vector-calculus.partial-derivatives)（partial derivative），$y''$这一步是用[多元复合函数的链式法则](lesson:math.vector-calculus.multivariable-chain-rule)（multivariable chain rule）对$f(x,y(x))$求导。
+    - |
+      把$k_2=f(x+h,\,y+hf)$在$(x,y)$处展开到一阶（二元函数的一阶近似，见[全微分与切平面](lesson:math.vector-calculus.differentiability)）：$k_2=f+h(f_x+f_yf)+O(h^2)$。
+    - |
+      记$f$及其[偏导数](lesson:math.vector-calculus.partial-derivatives)$f_x$、$f_y$都在$(x_n,y(x_n))$处取值。精确解：$y(x_n+h)=y+hf+\frac{h^2}{2}(f_x+f_yf)+O(h^3)$，因为由[多元复合函数的链式法则](lesson:math.vector-calculus.multivariable-chain-rule)，$y''=\frac{\dd}{\dd x}f(x,y(x))=f_x+f_yf$。方法：$k_1=f$，$k_2=f(x_n+h,\,y+hf)=f+hf_x+hff_y+O(h^2)$。
+
+      所以$y+\frac h2(k_1+k_2)=y+hf+\frac{h^2}{2}(f_x+f_yf)+O(h^3)$，和精确解对到$h^2$项，局部截断误差$O(h^3)$。照第 5 题的累积方式，整体误差是$O(h^2)$，二阶。
+  reference: |
+    由[多元复合函数的链式法则](lesson:math.vector-calculus.multivariable-chain-rule)，$y(x+h)=y+hf+\frac{h^2}{2}(f_x+ff_y)+O(h^3)$；$k_2=f+h(f_x+ff_y)+O(h^2)$，于是$y+\frac h2(k_1+k_2)$对到$h^2$项，局部误差$O(h^3)$，整体误差$O(h^2)$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    用欧拉法解$y'=-50(y-\cos x)$，$y(0)=0$，精确解很快贴近$\cos x$，变化平缓。可取$h=0.1$时，欧拉法算出的值上下振荡、越来越大；取$h=0.01$就正常了。为什么？光看「误差和$h$成正比」能解释吗？
+  hints:
+    - |
+      看$y$离$\cos x$的偏差$w=y-\cos x$，它近似满足$w'=-50w$。欧拉法对$w'=-50w$每一步乘以什么？
+    - |
+      每一步乘以$1-50h$；$h=0.1$时是$-4$，$|1-50h|>1$，偏差每步放大四倍并变号。
+    - |
+      偏差$w$近似满足$w'=-50w$，真解里它按$e^{-50x}$迅速衰减。欧拉法对它每一步乘以$1-50h$：$h=0.1$时是$-4$，偏差每步变号、放大四倍，于是振荡发散；$h=0.01$时是$0.5$，偏差正常衰减。要稳定，必须$|1-50h|<1$，即$h<0.04$。
+
+      「误差和$h$成正比」只说$h\to0$时误差的趋势，没说$h$多大才算「小」。这里解本身很平缓，按精度本来用不着那么小的步长，限制步长的是方程里那个衰减得极快的成分。这种方程叫刚性方程（stiff equation），实际计算时要换用隐式方法之类更稳定的方法。
+  reference: |
+    偏差$w=y-\cos x$满足$w'\approx-50w$，欧拉法每步乘以$1-50h$；$h=0.1$时为$-4$，振荡放大；需要$h<0.04$才稳定。阶只描述$h\to0$的趋势，这里步长受稳定性限制而不是精度限制（刚性方程）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    既然整体误差随步长缩小，为什么不干脆取极小的步长，比如$h=10^{-12}$？实际计算中怎样选步长？
+  hints:
+    - |
+      步长太小时，要走多少步？计算机里的每一次加法都有多大的误差？
+    - |
+      走到$x=1$要$10^{12}$步；每步有约$10^{-16}$的相对舍入误差，会一步步积累。
+    - |
+      计算机里每次运算都有约$10^{-16}$的相对舍入误差（round-off error）。步数是$\frac1h$，舍入误差大致和步数一起积累，像$\frac{\varepsilon}{h}$那样随$h$变小反而变大；截断误差像$Ch^p$那样变小。两者加起来，存在一个最合适的步长，再小反而更差，何况$10^{12}$步的计算量也承受不起。
+
+      实际做法是先定一个误差容许值，再让程序自己调步长：比如每一步用两种不同阶的方法各算一次，二者之差估计这一步的误差，误差大就缩小步长，小就放大步长，叫作自适应步长（adaptive step size）。解变化快的地方步子小，平缓的地方步子大，同样的精度花的计算量少得多。
+  reference: |
+    舍入误差随步数积累，约$\frac{\varepsilon}{h}$，与截断误差$Ch^p$此消彼长，存在最优步长；计算量也随$\frac1h$增长。实际用自适应步长：用两种不同阶的方法估计每步误差，据此调整步长。

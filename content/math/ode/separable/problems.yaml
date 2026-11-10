@@ -1,0 +1,135 @@
+- id: p1
+  tier: easy
+  statement: |
+    解初值问题$y'=2xy$，$y(0)=3$，求$y(1)$。
+  answer:
+    type: number
+    value: 3*e
+  hints:
+    - |
+      右边是$2x$乘$y$，可以分离变量；别忘了先看$y=0$。
+    - |
+      $y\ne0$时$(\ln|y|)'=2x$，所以$\ln|y|=x^2+C$，通解是$y=Ae^{x^2}$。
+    - |
+      分离变量得$y=Ae^{x^2}$（$A=0$对应常数解$y=0$）。由$y(0)=A=3$，$y=3e^{x^2}$，所以$y(1)=3e\approx8.155$。
+  solution: |
+    $y=3e^{x^2}$，$y(1)=3e$，填 `3*e`。
+
+- id: p2
+  tier: easy
+  statement: |
+    某种放射性物质的质量满足$m'=-km$，半衰期是$5$年。求$k$（单位是每年）。
+  answer:
+    type: number
+    value: ln(2)/5
+  hints:
+    - |
+      半衰期和$k$有什么关系？
+    - |
+      $m=m_0e^{-kt}$，减少一半的时间满足$e^{-kT}=\frac12$。
+    - |
+      由$m_0e^{-5k}=\frac12m_0$得$5k=\ln2$，所以$k=\frac{\ln2}{5}\approx0.1386$。
+  solution: |
+    $e^{-5k}=\frac12$，$k=\frac{\ln2}{5}\approx0.1386$，填 `ln(2)/5`。
+
+- id: p3
+  tier: medium
+  statement: |
+    解初值问题$y'=x(1+y^2)$，$y(0)=0$，求$y(1)$。
+  answer:
+    type: number
+    value: tan(1/2)
+  hints:
+    - |
+      右边是$x$乘$1+y^2$，可以分离变量；$\frac{1}{1+y^2}$的原函数是什么？
+    - |
+      $1+y^2$永远不为$0$，没有常数解。分离变量得$(\arctan y)'=x$。
+    - |
+      $(\arctan y)'=\frac{y'}{1+y^2}=x$，所以$\arctan y=\frac{x^2}{2}+C$；由$y(0)=0$得$C=0$，$y=\tan\frac{x^2}{2}$（在$\frac{x^2}{2}<\frac\pi2$的范围内）。所以$y(1)=\tan\frac12\approx0.5463$。
+  solution: |
+    $\arctan y=\frac{x^2}{2}$，$y=\tan\frac{x^2}{2}$，$y(1)=\tan\frac12\approx0.5463$，填 `tan(1/2)`。
+
+- id: p4
+  tier: medium
+  statement: |
+    解初值问题$y'=3y-y^2$，$y(0)=1$，求$y(\ln2)$。
+  answer:
+    type: number
+    value: 12/5
+  hints:
+    - |
+      把右边写成$ry\bigl(1-\frac yK\bigr)$的样子，$r$、$K$各是多少？
+    - |
+      $3y-y^2=3y\bigl(1-\frac y3\bigr)$，$r=3$，$K=3$，用例 2 的公式。
+    - |
+      $r=K=3$，$y_0=1$，$A=\frac{K-y_0}{y_0}=2$，所以$y=\frac{3}{1+2e^{-3t}}$。$t=\ln2$时$e^{-3\ln2}=\frac18$，$y=\frac{3}{1+\frac14}=\frac{12}{5}=2.4$。
+  solution: |
+    $y=\frac{3}{1+2e^{-3t}}$，$y(\ln2)=\frac{3}{1+1/4}=\frac{12}{5}$，填 `12/5`。
+
+- id: p5
+  tier: hard
+  statement: |
+    水桶底部开一个小孔，水深$y(t)$满足$y'=-2\sqrt{y}$（$y\ge0$，单位适当选取）。(1) 求$y(0)=1$的解，说明桶在有限时间内流空，之后一直是空的。(2) 已知$t=2$时桶是空的，能不能推断出它是什么时候开始流空的？
+  hints:
+    - |
+      $y>0$时分离变量，$\frac{y'}{2\sqrt y}=-1$，左边是$\sqrt y$的导数。
+    - |
+      $\sqrt y=1-t$，到$t=1$时$y=0$；之后$y\equiv0$满足方程。(2) 想想$y=(a-t)^2$（$t\le a$）、$y=0$（$t>a$）对不同的$a$是不是都是解。
+    - |
+      (1) $y>0$时$(\sqrt y)'=\frac{y'}{2\sqrt y}=-1$，所以$\sqrt y=1-t$，$y=(1-t)^2$，$0\le t\le1$。$t=1$时水流空；之后若$y$又变正，由方程$y'=-2\sqrt y\le0$，$y$不会增加，所以$y\equiv0$。把两段接起来，在$t=1$处左右导数都是$0$，是一个解。
+
+      (2) 不能。对每个$a\le2$，函数$y=(a-t)^2$（$t\le a$）、$y=0$（$a<t$）都是解，并且$y(2)=0$；它们在$t=a$时流空，$a$可以是$2$以前的任何时刻。往未来推，结果是确定的；往过去推，从「空桶」出发不能唯一确定过去。原因是$\sqrt y$在$y=0$处导数无穷大，[解的存在唯一性](lesson:math.ode.existence-uniqueness)里的条件不满足。
+  reference: |
+    (1) $(\sqrt y)'=-1$，$y=(1-t)^2$（$0\le t\le1$），之后$y\equiv0$（$y'\le0$，不能再变正），两段在$t=1$处光滑相接。
+
+    (2) 不能：$y=(a-t)^2$（$t\le a$）接$y=0$对每个$a\le2$都是解，都满足$y(2)=0$。$\sqrt y$在$0$处不满足利普希茨条件，向过去的解不唯一。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$r,K>0$，$y$是$y'=ry\bigl(1-\frac yK\bigr)$满足$y(0)=y_0$的解，$0<y_0<\frac K2$。证明：(1) 对所有$t\ge0$，$0<y(t)<K$，并且$t\to+\infty$时$y\to K$；(2) $y$的增长率$y'(t)$先增后减，在$y=\frac K2$时最大，最大值是$\frac{rK}{4}$。
+  hints:
+    - |
+      (1) 用例 2 的公式$y=\frac{K}{1+Ae^{-rt}}$，$A>0$。(2) 把$y'$看成$y$的函数$ry\bigl(1-\frac yK\bigr)$，再看$y$随$t$怎样变。
+    - |
+      $y$随$t$严格递增，从$y_0$升向$K$；$ry\bigl(1-\frac yK\bigr)$作为$y$的二次函数，在$y=\frac K2$处最大。
+    - |
+      (1) $A=\frac{K-y_0}{y_0}>1>0$，所以$1+Ae^{-rt}>1$，$0<y<K$；$t\to+\infty$时$Ae^{-rt}\to0$，$y\to K$。
+
+      (2) 由 (1)，$y'=ry\bigl(1-\frac yK\bigr)>0$，$y$随$t$严格递增，取遍$(y_0,K)$。$y'$作为$y$的函数$\varphi(y)=ry-\frac{r}{K}y^2$在$y<\frac K2$时递增、在$y>\frac K2$时递减，最大值$\varphi\bigl(\frac K2\bigr)=\frac{rK}{4}$。复合起来，$y'(t)$先增后减，在$y(t)=\frac K2$的那一刻，即$t=\frac{\ln A}{r}$时最大。
+  reference: |
+    (1) $y=\frac{K}{1+Ae^{-rt}}$，$A>1$，所以$0<y<K$，$y\to K$。
+
+    (2) $y'>0$，$y$递增取遍$(y_0,K)$；$y'=\varphi(y)=ry-\frac rKy^2$在$y=\frac K2$处最大，值$\frac{rK}{4}$，对应时刻$t=\frac{\ln A}{r}$，所以$y'(t)$先增后减。
+
+- id: p7
+  tier: thinking
+  statement: |
+    解可分离变量的方程时，常常写$\frac{\dd y}{\dd x}=g(x)h(y)$，「把$\dd x$乘过去」得$\frac{\dd y}{h(y)}=g(x)\dd x$，再两边积分。$\frac{\dd y}{\dd x}$不是分数，为什么这样算是对的？有没有这样算会出错的地方？
+  hints:
+    - |
+      把「两边积分」翻译成关于$x$的求导：左边的积分是哪个函数对$x$的导数？
+    - |
+      对的原因是链式法则；出错的地方在除法和定义区间。
+    - |
+      记号背后的推导是：$H$是$\frac1h$的原函数时，由链式法则$\frac{\dd}{\dd x}H(y(x))=\frac{y'}{h(y)}=g(x)$，所以$H(y(x))=G(x)+C$。「乘过去、两边积分」只是这个推导的简写，莱布尼茨（Leibniz）的记号恰好让链式法则看起来像约分，所以算起来总是对的。
+
+      容易出错的地方不在记号，而在两步「隐蔽的除法」：除以$h(y)$会丢掉常数解；$\int\frac{\dd y}{y}$写成$\ln y$会丢掉负的解。另外，最后从$H(y)=G(x)+C$解出$y$时，要看清解在哪个区间上成立（例 1 的半圆只到$x=\pm2$）。
+  reference: |
+    「分离、积分」是链式法则$\frac{\dd}{\dd x}H(y(x))=\frac{y'}{h(y)}$的简写，所以总是对的。易错处在于除以$h(y)$丢掉常数解、$\ln y$丢掉负解，以及没有说明解的定义区间。
+
+- id: p8
+  tier: thinking
+  statement: |
+    $y'=ky$和$y'=ky^2$（$k>0$）都表示「$y$越大，长得越快」。前者的解永远有限，后者的正解却在有限时间内趋于无穷。差别出在哪里？在建模时，这说明了什么？
+  hints:
+    - |
+      分别解出$y(0)=y_0>0$的解，看$y$翻一倍各要多少时间。
+    - |
+      $y'=ky$的倍增时间是常数；$y'=ky^2$的解$y=\frac{y_0}{1-ky_0t}$在$t=\frac{1}{ky_0}$处爆破（blow-up），$y$越大，翻倍越快。
+    - |
+      $y'=ky$时每次翻倍都要$\frac{\ln2}{k}$，翻无穷多次要无穷长的时间。$y'=ky^2$的解$y=\frac{y_0}{1-ky_0t}$从$y$翻到$2y$只要$\frac{1}{2ky}$的时间，越来越短，加起来是有限的，于是在$t=\frac{1}{ky_0}$时爆破。
+
+      增长率比$y$本身长得更快（超线性）时，就可能在有限时间内爆破。建模时，这提醒我们：这样的方程只在某个范围内可信，真实的量不会变成无穷，到那时别的机制（资源、阻力）必然起作用，比如逻辑斯谛方程里的那个括号。
+  reference: |
+    $y'=ky$的倍增时间恒为$\frac{\ln2}{k}$，永不爆破；$y'=ky^2$的解$\frac{y_0}{1-ky_0t}$翻倍时间$\frac{1}{2ky}$越来越短，总和有限，在$t=\frac{1}{ky_0}$爆破。超线性增长可能有限时间爆破，模型只在一定范围内有效。

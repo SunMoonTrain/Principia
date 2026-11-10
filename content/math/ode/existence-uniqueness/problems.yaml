@@ -1,0 +1,141 @@
+- id: p1
+  tier: easy
+  statement: |
+    求最小的常数$L$，使$f(x,y)=x\sin y$在带形$|x|\le2$（$y$任意）上对$y$满足:term[利普希茨条件]{id="math.ode.lipschitz-condition"}（Lipschitz condition）$|f(x,y_1)-f(x,y_2)|\le L|y_1-y_2|$。
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      用充分条件：$|f_y|$在带形上最大是多少？
+    - |
+      $f_y=x\cos y$，$|f_y|\le|x|\le2$。再想想$L$能不能比这更小。
+    - |
+      $|f_y|=|x\cos y|\le2$，由微分中值定理，$L=2$可以。不能更小：取$x=2$、$y_1=t$、$y_2=0$，$\frac{|f(2,t)-f(2,0)|}{|t|}=\frac{2|\sin t|}{|t|}$，$t\to0$时趋于$2$，所以任何小于$2$的$L$都不行。
+  solution: |
+    $|f_y|=|x\cos y|\le2$，且$x=2$、$y\to0$时比值趋于$2$，最小的$L$是$2$，填 `2`。
+
+- id: p2
+  tier: easy
+  statement: |
+    对$y'=x+y^2$、$y(0)=0$作:term[皮卡迭代]{id="math.ode.picard-iteration"}（Picard iteration），求$\varphi_2(1)$。
+  answer:
+    type: number
+    value: 11/20
+  hints:
+    - |
+      $\varphi_0=0$，$\varphi_1(x)=\int_0^x\bigl(s+\varphi_0(s)^2\bigr)\dd s$。
+    - |
+      $\varphi_1=\frac{x^2}{2}$，$\varphi_2(x)=\int_0^x\bigl(s+\frac{s^4}{4}\bigr)\dd s$。
+    - |
+      $\varphi_1=\int_0^xs\dd s=\frac{x^2}{2}$；$\varphi_2=\int_0^x\bigl(s+\frac{s^4}{4}\bigr)\dd s=\frac{x^2}{2}+\frac{x^5}{20}$。所以$\varphi_2(1)=\frac12+\frac1{20}=\frac{11}{20}$。这个方程的解写不成初等函数，皮卡迭代照样能一步步逼近它。
+  solution: |
+    $\varphi_1=\frac{x^2}{2}$，$\varphi_2=\frac{x^2}{2}+\frac{x^5}{20}$，$\varphi_2(1)=\frac{11}{20}$，填 `11/20`。
+
+- id: p3
+  tier: medium
+  statement: |
+    对$y'=y^2$、$y(0)=1$，在矩形$|x|\le a$、$|y-1|\le b$上用皮卡-林德勒夫定理，它保证解在$[-h,h]$上存在，$h=\min\bigl(a,\frac bM\bigr)$。$a$、$b$可以任取，$h$最大能取到多少？
+  answer:
+    type: number
+    value: 1/4
+  hints:
+    - |
+      $M$是$|f|=y^2$在矩形上的最大值，用$b$表示出来。
+    - |
+      $M=(1+b)^2$，$h=\min\bigl(a,\frac{b}{(1+b)^2}\bigr)$；$a$可以取得很大，只需让$\frac{b}{(1+b)^2}$最大。
+    - |
+      矩形上$y\le1+b$，$|f|\le(1+b)^2=M$，$h=\min\bigl(a,\frac{b}{(1+b)^2}\bigr)$。记$g(b)=\frac{b}{(1+b)^2}$，$g'(b)=\frac{1-b}{(1+b)^3}$，$b=1$时取最大值$\frac14$。所以$h$最大是$\frac14$；可真正的解$\frac{1}{1-x}$在整个$(-\infty,1)$上都存在，定理给出的区间是保守的。
+  solution: |
+    $h=\frac{b}{(1+b)^2}$在$b=1$时最大，为$\frac14$，填 `1/4`。
+
+- id: p4
+  tier: medium
+  statement: |
+    下面哪些初值问题，皮卡-林德勒夫定理能保证它在初始点附近有唯一的解？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $y'=\sqrt{|y|}$，$y(0)=0$
+      - |
+        $y'=|y|$，$y(0)=0$
+      - |
+        $y'=e^{xy}$，$y(0)=0$
+      - |
+        $y'=\sqrt[3]{y}$，$y(1)=0$
+    value: [2, 3]
+  hints:
+    - |
+      逐个检查右边在初始点附近是否对$y$满足利普希茨条件。
+    - |
+      看$\frac{|f(y)-f(0)|}{|y|}$在$y\to0$时是否有界；$|y|$虽然在$0$处不可导，$\bigl||y_1|-|y_2|\bigr|$和$|y_1-y_2|$比起来呢？
+    - |
+      A：$\frac{\sqrt{|y|}}{|y|}=|y|^{-1/2}$无界，不满足，$y\equiv0$和$y=\frac{x^2}{4}$（$x\ge0$）都是解。B：$\bigl||y_1|-|y_2|\bigr|\le|y_1-y_2|$，$L=1$，满足。C：$f_y=xe^{xy}$在初始点附近的矩形上连续，满足。D：$\frac{|y|^{1/3}}{|y|}=|y|^{-2/3}$无界，不满足，$y\equiv0$和$y=\bigl(\frac{2(x-1)}{3}\bigr)^{3/2}$（$x\ge1$）都是解。
+  solution: |
+    B、C 满足利普希茨条件，A、D 在$y=0$附近不满足，选 B、C。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$w$在$[x_0,x_0+h]$上连续、非负，并且$w(x)\le L\int_{x_0}^{x}w(s)\dd s$。证明$w\equiv0$，并由此证明皮卡-林德勒夫定理中解的唯一性（只看$x\ge x_0$的一侧）。
+  hints:
+    - |
+      令$W(x)=\int_{x_0}^{x}w(s)\dd s$，条件变成$W'\le LW$。
+    - |
+      看$\bigl(e^{-L(x-x_0)}W(x)\bigr)'$的符号。
+    - |
+      $W'=w\le LW$，所以$\bigl(e^{-L(x-x_0)}W\bigr)'=e^{-L(x-x_0)}(W'-LW)\le0$，这个函数递减。它在$x_0$处是$0$，又非负，只能恒为$0$，于是$W\equiv0$，$w\le LW=0$，$w\equiv0$。
+
+      唯一性：设$\varphi$、$\psi$都是解，令$w=|\varphi-\psi|$。由积分方程和利普希茨条件，$w(x)=\bigl|\int_{x_0}^{x}\bigl(f(s,\varphi(s))-f(s,\psi(s))\bigr)\dd s\bigr|\le L\int_{x_0}^{x}w(s)\dd s$，所以$w\equiv0$。前一段的论证是格朗沃尔不等式（Grönwall's inequality）最简单的情形。
+  reference: |
+    $W=\int_{x_0}^{x}w$满足$W'\le LW$，$e^{-L(x-x_0)}W$递减、在$x_0$处为$0$且非负，故$W\equiv0$，$w\equiv0$。对两个解的差用积分方程和利普希茨条件，得$|\varphi-\psi|\le L\int_{x_0}^{x}|\varphi-\psi|$，于是$\varphi=\psi$。
+
+- id: p6
+  tier: hard
+  statement: |
+    在皮卡-林德勒夫定理的条件下，用归纳法证明$|x-x_0|\le h$时$|\varphi_{n+1}(x)-\varphi_n(x)|\le\frac{ML^n|x-x_0|^{n+1}}{(n+1)!}$，并说明$\varphi_n$在$[x_0-h,x_0+h]$上一致收敛。
+  hints:
+    - |
+      $n=0$：$|\varphi_1(x)-\varphi_0(x)|=\bigl|\int_{x_0}^{x}f(s,y_0)\dd s\bigr|$。
+    - |
+      归纳一步：$|\varphi_{n+1}(x)-\varphi_n(x)|\le\bigl|\int_{x_0}^{x}L|\varphi_n(s)-\varphi_{n-1}(s)|\dd s\bigr|$，再代入归纳假设。
+    - |
+      $n=0$时$|\varphi_1-\varphi_0|\le M|x-x_0|$。设对$n-1$成立，由利普希茨条件（各$\varphi_n$的图像都在$R$里），$|\varphi_{n+1}(x)-\varphi_n(x)|\le L\bigl|\int_{x_0}^{x}\frac{ML^{n-1}|s-x_0|^{n}}{n!}\dd s\bigr|=\frac{ML^n|x-x_0|^{n+1}}{(n+1)!}$。
+
+      在区间上，第$n$项不超过$c_n=\frac{ML^nh^{n+1}}{(n+1)!}$。$\frac{c_{n+1}}{c_n}=\frac{Lh}{n+2}$，$n\ge2Lh$以后不到$\frac12$，从那一项起，$c_n$不超过公比为$\frac12$的几何级数的对应项，所以$\sum c_n$收敛。$\varphi_n=\varphi_0+\sum_{k=0}^{n-1}(\varphi_{k+1}-\varphi_k)$，由[魏尔斯特拉斯判别法](lesson:math.analysis.function-series#thm-weierstrass-m-test)，右边在$n\to\infty$时一致收敛，所以$\varphi_n$一致收敛。
+  reference: |
+    归纳：$|\varphi_1-\varphi_0|\le M|x-x_0|$；$|\varphi_{n+1}-\varphi_n|\le L\bigl|\int_{x_0}^{x}\frac{ML^{n-1}|s-x_0|^n}{n!}\dd s\bigr|=\frac{ML^n|x-x_0|^{n+1}}{(n+1)!}$。上界$c_n=\frac{ML^nh^{n+1}}{(n+1)!}$相邻两项之比$\frac{Lh}{n+2}\to0$，和几何级数比较可知$\sum c_n$收敛，由[魏尔斯特拉斯判别法](lesson:math.analysis.function-series#thm-weierstrass-m-test)，$\varphi_n$一致收敛。
+
+- id: p7
+  tier: thinking
+  statement: |
+    一个质点静止在一个顶部形状特殊的光滑圆顶的顶点上。适当选取单位后，它沿表面离开顶点的距离$r$满足$r''=\sqrt r$，初始条件是$r(0)=0$、$r'(0)=0$。除了$r\equiv0$，你能找到别的解吗？这对「牛顿力学是决定论的」意味着什么？
+  hints:
+    - |
+      试试$t\ge T$时$r=c(t-T)^4$，$t<T$时$r=0$。
+    - |
+      $r''=12c(t-T)^2$，$\sqrt r=\sqrt c\,(t-T)^2$，让两者相等来定$c$。
+    - |
+      $12c=\sqrt c$得$c=\frac{1}{144}$。对任意$T\ge0$，$t\le T$时$r=0$、$t>T$时$r=\frac{(t-T)^4}{144}$都是解：质点可以在顶点静止任意久，然后自己滑下来，滑向哪一侧也不确定。化成方程组$r'=v$、$v'=\sqrt r$，右边在$r=0$附近不满足利普希茨条件，唯一性定理不适用。
+
+      哲学家诺顿（John Norton）用这个圆顶（Norton's dome）说明：牛顿方程本身不保证未来唯一确定，决定论要靠力满足利普希茨这样的条件。现实中物体有大小、表面不会无限光滑，这种情形并不出现；但它提醒我们，「给定初始状态，未来唯一确定」是一个需要条件的定理，而不是自明的事实。
+  reference: |
+    $r=\frac{(t-T)^4}{144}$（$t>T$）接上$r=0$（$t\le T$）对任意$T\ge0$都是解，质点可在任意时刻自发滑下。原因是$\sqrt r$在$0$处不满足利普希茨条件。牛顿方程给出唯一的未来需要力的正则性条件。
+
+- id: p8
+  tier: thinking
+  statement: |
+    二阶方程$y''=-y$的解$\sin x$、$2\sin x$、$0$都经过点$(0,0)$，它们的图像在那里相交。这和「解唯一」矛盾吗？为什么满足定理条件的一阶方程$y'=f(x,y)$的两个解，图像不能相交？
+  hints:
+    - |
+      二阶方程的初值是哪几个数？这几个解在$x=0$处的$y'$各是多少？
+    - |
+      在$x=0$处它们的$y$都是$0$，$y'$分别是$1$、$2$、$0$。一阶方程的初值只有$y$一个数。
+    - |
+      不矛盾。二阶方程化成方程组以后，状态是$(y,y')$，唯一性说的是：$x_0$处$y$和$y'$都相同的两个解才相同。这三个解在$x=0$处$y$相同、$y'$不同，是不同的解；它们在$xy$平面上的图像可以相交，可把$(x,y,y')$画在空间里，三条曲线并不相交。
+
+      一阶方程的状态只有$y$一个数，两个解的图像在某点相交，就意味着在那一点初值相同，由唯一性两解处处重合。变分法里的[共轭点](lesson:math.calculus-of-variations.jacobi-condition#def-conjugate-point)（conjugate point）用的正是二阶方程的这种相交：从同一点出发、初始斜率不同的解，会不会在别处再次交在一起。
+  reference: |
+    不矛盾：二阶方程的唯一性要求$y$和$y'$都相同，这三个解在$0$处斜率不同。一阶方程的状态只有$y$，图像相交即初值相同，由唯一性必重合。二阶方程解的这种相交正是变分法里[共轭点](lesson:math.calculus-of-variations.jacobi-condition#def-conjugate-point)的来源。
