@@ -265,3 +265,180 @@ export function legendre(l: number, x: number): number {
 export function integrate3(f: (x: number, y: number, z: number) => number, a: V3, b: V3, panels = 8, n = 8): number {
   return integrate((x) => integrate2((y, z) => f(x, y, z), a[1], b[1], a[2], b[2], panels, n), a[0], b[0], panels, n);
 }
+
+// ---- 批次 11 加的：毕奥-萨伐尔定律沿导线数值积分、闭合导线的磁矩和受力、龙格-库塔法、线性方程组 ----
+
+/** 题目里取的 μ₀ = 4π×10⁻⁷ N/A²。 */
+export const MU0 = 4 * Math.PI * 1e-7;
+
+/** 一段导线 r(t)（t 从 t0 到 t1，电流 I 沿 t 增大的方向）在 p 处的磁场：毕奥-萨伐尔定律沿导线数值积分。 */
+export function curveB(r: (t: number) => V3, dr: (t: number) => V3, t0: number, t1: number, I: number, p: V3, panels = 64, n = 16): V3 {
+  const comp = (k: number) =>
+    integrate(
+      (t) => {
+        const d = sub(p, r(t));
+        const len = norm(d);
+        return cross(dr(t), d)[k] / (len * len * len);
+      },
+      t0,
+      t1,
+      panels,
+      n,
+    );
+  return scale((MU0 * I) / (4 * Math.PI), [comp(0), comp(1), comp(2)]);
+}
+
+/** 直导线段 a→b 在 p 处的磁场（同样是数值积分，不用直导线的封闭公式）。 */
+export function segmentB(a: V3, b: V3, I: number, p: V3, panels = 64, n = 16): V3 {
+  const dl = sub(b, a);
+  return curveB((t) => add(a, scale(t, dl)), () => dl, 0, 1, I, p, panels, n);
+}
+
+/** 折线（pts 依次相连；closed 时末点再连回首点）在 p 处的磁场。 */
+export function polylineB(pts: V3[], I: number, p: V3, closed = true, panels = 64, n = 16): V3 {
+  let B: V3 = [0, 0, 0];
+  const m = closed ? pts.length : pts.length - 1;
+  for (let i = 0; i < m; i++) B = add(B, segmentB(pts[i], pts[(i + 1) % pts.length], I, p, panels, n));
+  return B;
+}
+
+/** xy 平面里圆心在原点、半径 R 的圆线圈（逆时针看为正）在 p 处的磁场。 */
+export function ringB(R: number, I: number, p: V3, panels = 64, n = 16): V3 {
+  return curveB(
+    (t) => [R * Math.cos(t), R * Math.sin(t), 0],
+    (t) => [-R * Math.sin(t), R * Math.cos(t), 0],
+    0,
+    2 * Math.PI,
+    I,
+    p,
+    panels,
+    n,
+  );
+}
+
+/** 闭合折线的磁矩 m = (I/2)∮ r × dl：逐段数值积分。 */
+export function loopMoment(pts: V3[], I: number): V3 {
+  let m: V3 = [0, 0, 0];
+  for (let i = 0; i < pts.length; i++) {
+    const a = pts[i];
+    const dl = sub(pts[(i + 1) % pts.length], a);
+    const comp = (k: number) => integrate((t) => cross(add(a, scale(t, dl)), dl)[k], 0, 1, 4, 8);
+    m = add(m, [comp(0), comp(1), comp(2)]);
+  }
+  return scale(I / 2, m);
+}
+
+/** 闭合导线 r(t) 在磁场 B(·) 里受的力和对原点的力矩：dF = I dl × B，dτ = r × dF，沿导线数值积分。 */
+export function loopForceTorque(r: (t: number) => V3, dr: (t: number) => V3, t0: number, t1: number, I: number, B: Field): { F: V3; tau: V3 } {
+  const dF = (t: number) => scale(I, cross(dr(t), B(r(t))));
+  const comp = (g: (t: number) => V3, k: number) => integrate((t) => g(t)[k], t0, t1, 64, 16);
+  const dT = (t: number) => cross(r(t), dF(t));
+  return { F: [comp(dF, 0), comp(dF, 1), comp(dF, 2)], tau: [comp(dT, 0), comp(dT, 1), comp(dT, 2)] };
+}
+
+type Rhs = (t: number, y: number[]) => number[];
+
+/** 四阶龙格-库塔法走一步。 */
+export function rk4Step(f: Rhs, t: number, y: number[], h: number): number[] {
+  const k1 = f(t, y);
+  const k2 = f(t + h / 2, y.map((v, j) => v + (h / 2) * k1[j]));
+  const k3 = f(t + h / 2, y.map((v, j) => v + (h / 2) * k2[j]));
+  const k4 = f(t + h, y.map((v, j) => v + h * k3[j]));
+  return y.map((v, j) => v + (h / 6) * (k1[j] + 2 * k2[j] + 2 * k3[j] + k4[j]));
+}
+
+/** 四阶龙格-库塔法：dy/dt = f(t, y)，从 t0 积到 t1，等分 steps 步。 */
+export function rk4(f: Rhs, y0: number[], t0: number, t1: number, steps: number): number[] {
+  const h = (t1 - t0) / steps;
+  let y = [...y0];
+  for (let i = 0; i < steps; i++) y = rk4Step(f, t0 + i * h, y, h);
+  return y;
+}
+
+/** 四阶龙格-库塔法，步长 h，积到 g(t, y) 第一次由负变成非负为止；在最后一步里二分出事件的时刻。 */
+export function rk4Until(f: Rhs, y0: number[], t0: number, h: number, maxSteps: number, g: (t: number, y: number[]) => number): { t: number; y: number[] } {
+  let t = t0;
+  let y = [...y0];
+  let gPrev = g(t, y);
+  for (let i = 0; i < maxSteps; i++) {
+    const yn = rk4Step(f, t, y, h);
+    const gn = g(t + h, yn);
+    if (gPrev < 0 && gn >= 0) {
+      let lo = 0;
+      let hi = h;
+      for (let k = 0; k < 200; k++) {
+        const mid = (lo + hi) / 2;
+        if (mid === lo || mid === hi) break;
+        if (g(t + mid, rk4Step(f, t, y, mid)) < 0) lo = mid;
+        else hi = mid;
+      }
+      return { t: t + hi, y: rk4Step(f, t, y, hi) };
+    }
+    t += h;
+    y = yn;
+    gPrev = gn;
+  }
+  throw new Error('rk4Until：积到最后也没等到事件');
+}
+
+/** 带电粒子在电场 E(·)、磁场 B(·) 里的运动方程，状态 [x, y, z, vx, vy, vz]。 */
+export function lorentzRhs(qOverM: number, E: Field, B: Field): (t: number, s: number[]) => number[] {
+  return (_t, s) => {
+    const r: V3 = [s[0], s[1], s[2]];
+    const v: V3 = [s[3], s[4], s[5]];
+    const a = scale(qOverM, add(E(r), cross(v, B(r))));
+    return [v[0], v[1], v[2], a[0], a[1], a[2]];
+  };
+}
+
+/** 线性方程组 Ax = b：部分主元高斯消元。 */
+export function solveLinear(A: number[][], b: number[]): number[] {
+  const n = b.length;
+  const M = A.map((row, i) => [...row, b[i]]);
+  for (let c = 0; c < n; c++) {
+    let p = c;
+    for (let r = c + 1; r < n; r++) if (Math.abs(M[r][c]) > Math.abs(M[p][c])) p = r;
+    [M[c], M[p]] = [M[p], M[c]];
+    for (let r = c + 1; r < n; r++) {
+      const f = M[r][c] / M[c][c];
+      for (let j = c; j <= n; j++) M[r][j] -= f * M[c][j];
+    }
+  }
+  const x = new Array<number>(n).fill(0);
+  for (let r = n - 1; r >= 0; r--) {
+    let s = M[r][n];
+    for (let j = r + 1; j < n; j++) s -= M[r][j] * x[j];
+    x[r] = s / M[r][r];
+  }
+  return x;
+}
+
+/**
+ * 直流电路的节点法：节点 0 接地，其余节点的电势是未知数；每条支路从节点 a 到节点 b，
+ * 由电动势 emf（沿 a→b 方向升高电势）和电阻 R 串联而成，支路电流沿 a→b 为 (φ_a − φ_b + emf)/R。
+ * 返回各节点电势和各支路电流。
+ */
+export function solveCircuit(nodes: number, branches: { a: number; b: number; R: number; emf?: number }[]): { phi: number[]; I: number[] } {
+  const n = nodes - 1;
+  const A = Array.from({ length: n }, () => new Array<number>(n).fill(0));
+  const rhs = new Array<number>(n).fill(0);
+  // 每个非接地节点：流出的支路电流之和为零
+  for (const br of branches) {
+    const g = 1 / br.R;
+    const emf = br.emf ?? 0;
+    for (const [node, sign] of [
+      [br.a, 1],
+      [br.b, -1],
+    ] as const) {
+      if (node === 0) continue;
+      // 支路电流（a→b）= g(φa − φb + emf)；从 a 流出记 +，从 b 流出记 −
+      if (br.a !== 0) A[node - 1][br.a - 1] += sign * g;
+      if (br.b !== 0) A[node - 1][br.b - 1] -= sign * g;
+      rhs[node - 1] -= sign * g * emf;
+    }
+  }
+  const x = solveLinear(A, rhs);
+  const phi = [0, ...x];
+  const I = branches.map((br) => (phi[br.a] - phi[br.b] + (br.emf ?? 0)) / br.R);
+  return { phi, I };
+}

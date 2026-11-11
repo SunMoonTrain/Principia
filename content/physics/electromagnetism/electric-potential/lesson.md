@@ -31,7 +31,7 @@ status: reviewed
 ::anchor{id="def-electric-potential"}
 选定一个参考点$O$，$\vb r$处的:term[电势]{id="physics.electromagnetism.electric-potential"}（electric potential）定义为$\varphi(\vb r)=-\int_O^{\vb r}\vb E\cdot\dd\vb l$，单位是伏特（volt），记作$\mathrm V$，$1\,\mathrm V=1\,\mathrm{J/C}$。:term[电荷]{id="physics.electromagnetism.electric-charge"}$q$在$\vb r$处的:term[电势能]{id="physics.electromagnetism.potential-energy"}（electric potential energy）是$U=q\varphi(\vb r)$。
 
-为什么这样定义：静:term[电场]{id="physics.electromagnetism.electric-field"}是保守场（conservative field），积分和路径无关，所以$\varphi$是位置的单值函数；$q\varphi$就是电荷$q$在电场力作用下的势能（见[保守力与势能的梯度](lesson:physics.newtonian-mechanics.conservative-forces)），负号保证正电荷从高电势移到低电势时电场力做正功。参考点常取在无穷远，那里的电势为零。边界情况：换一个参考点，各处的电势都加上同一个常数，电场不变；电荷一直分布到无穷远时（例如无限长的带电直线），不能取无穷远作参考点（p5）。
+为什么这样定义：:term[静电场]{id="physics.electromagnetism.electric-field"}是保守场（conservative field），积分和路径无关，所以$\varphi$是位置的单值函数；$q\varphi$就是电荷$q$在电场力作用下的势能（见[保守力与势能的梯度](lesson:physics.newtonian-mechanics.conservative-forces)），负号保证正电荷从高电势移到低电势时电场力做正功。参考点常取在无穷远，那里的电势为零。边界情况：换一个参考点，各处的电势都加上同一个常数，电场不变；电荷一直分布到无穷远时（例如无限长的带电直线），不能取无穷远作参考点（p5）。
 
 ::anchor{id="def-potential-difference"}
 两点电势之差$\varphi_A-\varphi_B=\int_A^B\vb E\cdot\dd\vb l$叫作:term[电势差]{id="physics.electromagnetism.potential-difference"}（potential difference），也叫电压（voltage）。电荷$q$从$A$移到$B$，电场力做的功是$W_{AB}=q(\varphi_A-\varphi_B)$。

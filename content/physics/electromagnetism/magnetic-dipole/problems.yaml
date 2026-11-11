@@ -1,0 +1,155 @@
+- id: p1
+  tier: easy
+  statement: |
+    一个小线圈的磁矩是$2.0\,\mathrm{A\,m^2}$。在它的轴线上、离线圈$1.0\,\mathrm m$处（远大于线圈的大小），磁场是多大？以$\mu\mathrm T$为单位，保留三位有效数字。取$\frac{\mu_0}{4\pi}=10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 1e-7*2*2.0/1.0^3*1e6
+    unit: |
+      $\mu\mathrm T$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      在磁偶极子（magnetic dipole）的轴线上，磁场沿磁矩方向，大小是$\frac{\mu_0}{4\pi}\frac{2m}{r^3}$。
+    - |
+      $\frac{\mu_0}{4\pi}\cdot2m=10^{-7}\times4.0\,\mathrm{T\,m^3}$，$r^3=1.0\,\mathrm{m^3}$。
+    - |
+      $B=4.0\times10^{-7}\,\mathrm T=0.400\,\mu\mathrm T$。
+  solution: |
+    $B=\frac{\mu_0}{4\pi}\frac{2m}{r^3}=10^{-7}\times\frac{2\times2.0}{1.0}\,\mathrm T=0.400\,\mu\mathrm T$，大约是地磁场的百分之一。
+
+- id: p2
+  tier: easy
+  statement: |
+    一块小磁铁可以看成磁矩为$1.0\,\mathrm{A\,m^2}$的磁偶极子。在它的中垂面上、离它$20\,\mathrm{cm}$处，磁场是多大？以$\mu\mathrm T$为单位，保留三位有效数字。取$\frac{\mu_0}{4\pi}=10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 1e-7*1.0/0.20^3*1e6
+    unit: |
+      $\mu\mathrm T$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      中垂面上$\theta=90^\circ$，磁场和磁矩反向，大小是$\frac{\mu_0}{4\pi}\frac{m}{r^3}$，是轴线上同样距离处的一半。
+    - |
+      $r^3=(0.20\,\mathrm m)^3=8.0\times10^{-3}\,\mathrm{m^3}$。
+    - |
+      $B=10^{-7}\times\frac{1.0}{8.0\times10^{-3}}\,\mathrm T=1.25\times10^{-5}\,\mathrm T=12.5\,\mu\mathrm T$。
+  solution: |
+    中垂面上$B=\frac{\mu_0}{4\pi}\frac{m}{r^3}=10^{-7}\times\frac{1.0}{(0.20)^3}\,\mathrm T=12.5\,\mu\mathrm T$，方向和磁矩相反。
+
+- id: p3
+  tier: medium
+  statement: |
+    把地磁场看成地心处一个磁偶极子的磁场，赤道附近地面上的磁场是$3.0\times10^{-5}\,\mathrm T$。在磁纬度（magnetic latitude）$60^\circ$的地面上（即和磁赤道面成$60^\circ$、和磁轴成$30^\circ$），磁场是多大？以$\mu\mathrm T$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 3.0e-5*sqrt(1+3*cos(pi/6)^2)*1e6
+    unit: |
+      $\mu\mathrm T$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      记$B_0=\frac{\mu_0}{4\pi}\frac{m}{r^3}$，就是赤道上的磁场；一般的位置$B_r=2B_0\cos\theta$，$B_\theta=B_0\sin\theta$，$\theta$是和磁轴的夹角。
+    - |
+      大小是$B_0\sqrt{4\cos^2\theta+\sin^2\theta}=B_0\sqrt{1+3\cos^2\theta}$，$\theta=30^\circ$。
+    - |
+      $\sqrt{1+3\times0.75}=\sqrt{3.25}\approx1.80$，$B\approx54.1\,\mu\mathrm T$。
+  solution: |
+    磁纬度$60^\circ$处和磁轴的夹角$\theta=30^\circ$。$B=B_0\sqrt{4\cos^2\theta+\sin^2\theta}=B_0\sqrt{1+3\cos^2\theta}=3.0\times10^{-5}\times\sqrt{3.25}\,\mathrm T\approx54.1\,\mu\mathrm T$。
+
+    磁场和水平面的夹角$\beta$满足$\tan\beta=\frac{B_r}{B_\theta}=2\cot\theta$，约为$73.9^\circ$：高纬度地区的磁场几乎竖直地插进地面，磁针的一端明显向下倾。
+
+- id: p4
+  tier: medium
+  statement: |
+    边长为$0.10\,\mathrm m$的正方形线圈通有$2.0\,\mathrm A$的电流。沿一条平行于两边的中线把它折成直角，两半各在一个平面里，两个平面互相垂直。折过以后，线圈的磁矩是多大？以$\mathrm{A\,m^2}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 2.0*sqrt(2)*0.10^2/2
+    unit: |
+      $\mathrm{A\,m^2}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      沿折痕补上一对方向相反的电流，线圈就变成两个矩形线圈，它们的磁矩相加。
+    - |
+      每个矩形的面积是$0.10\times0.05\,\mathrm{m^2}$，两个面积矢量互相垂直。
+    - |
+      $m=I\sqrt{a_1^2+a_2^2}=2.0\times\sqrt2\times5.0\times10^{-3}\,\mathrm{A\,m^2}\approx1.41\times10^{-2}\,\mathrm{A\,m^2}$。
+  solution: |
+    沿折痕加上一对大小为$I$、方向相反的电流，它们互相抵消，不改变什么；这样线圈就成了两个矩形线圈，各在一个平面里，面积都是$\frac{a^2}{2}=5.0\times10^{-3}\,\mathrm{m^2}$。
+
+    磁矩相加：两个面积矢量互相垂直，$m=I\sqrt{2}\cdot\frac{a^2}{2}=2.0\times\sqrt2\times5.0\times10^{-3}\,\mathrm{A\,m^2}\approx1.41\times10^{-2}\,\mathrm{A\,m^2}$，是折之前的$\frac{1}{\sqrt2}$，方向在两个法向的正中间。
+
+- id: p5
+  tier: hard
+  statement: |
+    半径为$R$的球面均匀带电，面电荷密度（surface charge density）为$\sigma$，绕通过球心的轴以角速度$\omega$转动。
+
+    （1）求它的磁矩。（2）求球心处的磁场。（3）把（2）的结果和磁偶极子在轴上离中心$R$处的磁场比较；已知球内的磁场处处相同（这里不证明），球内磁场的平均值和磁矩有什么关系？
+  hints:
+    - |
+      把球面分成纬度为$\theta$到$\theta+\dd\theta$的细圆环：电荷$\sigma\cdot2\pi R^2\sin\theta\,\dd\theta$，每$\frac{2\pi}{\omega}$转一圈，半径$R\sin\theta$，离球心$R\cos\theta$。
+    - |
+      圆环的电流$\dd I=\sigma\omega R^2\sin\theta\,\dd\theta$，磁矩$\pi R^2\sin^2\theta\,\dd I$；它在球心的磁场用圆线圈轴线上的公式。
+    - |
+      $m=\frac{4\pi}{3}\sigma\omega R^4$，球心的磁场$\frac23\mu_0\sigma\omega R$，正好等于$\frac{\mu_0}{4\pi}\frac{2m}{R^3}$。
+  reference: |
+    （1）纬度为$\theta$到$\theta+\dd\theta$的圆环带电$\sigma\cdot2\pi R^2\sin\theta\,\dd\theta$，转一圈的时间是$\frac{2\pi}{\omega}$，电流$\dd I=\sigma\omega R^2\sin\theta\,\dd\theta$，围成的面积是$\pi R^2\sin^2\theta$。所以$m=\pi\sigma\omega R^4\int_0^\pi\sin^3\theta\,\dd\theta=\frac{4\pi}{3}\sigma\omega R^4$，方向沿转轴，用总电荷$Q=4\pi R^2\sigma$写是$\frac13Q\omega R^2$。
+
+    （2）圆环半径$R\sin\theta$，环心离球心$R\cos\theta$，由[圆线圈轴线上的磁场](lesson:physics.electromagnetism.biot-savart#thm-loop-axis)，它在球心的磁场是$\frac{\mu_0\dd I\,R^2\sin^2\theta}{2R^3}=\frac{\mu_0\sigma\omega R}{2}\sin^3\theta\,\dd\theta$，沿转轴。积分得$B=\frac{\mu_0\sigma\omega R}{2}\cdot\frac43=\frac23\mu_0\sigma\omega R$。
+
+    （3）磁偶极子在轴上离中心$R$处的磁场是$\frac{\mu_0}{4\pi}\frac{2m}{R^3}=\frac{\mu_0}{4\pi}\cdot\frac{8\pi\sigma\omega R^4}{3R^3}=\frac23\mu_0\sigma\omega R$，和球心的值相同。事实上球外的磁场恰好就是这个磁偶极子的磁场，球内是匀强磁场$\frac23\mu_0\sigma\omega R$，从两极处和外面连起来。所以球内磁场的平均值是$\frac{\mu_0}{4\pi}\frac{2\vb m}{R^3}$，和$\vb m$同向；电偶极子的电荷包在半径$R$的球里时，球内电场的平均值却是$-\frac{1}{4\pi\varepsilon_0}\frac{\vb p}{R^3}$，方向相反，系数也不同。这正是讲解里说的「里面不同」。
+
+- id: p6
+  tier: hard
+  statement: |
+    两个磁矩分别为$m_1$、$m_2$的小磁体放在同一条直线上，磁矩都沿这条直线、方向相同，相距$z$（远大于磁体的大小）。
+
+    （1）磁体 2 在磁体 1 的磁场里的势能是多少？（2）两者之间的力是吸引还是排斥？有多大？（3）取$m_1=m_2=1.0\,\mathrm{A\,m^2}$，$z=5.0\,\mathrm{cm}$，算出力的大小。
+  hints:
+    - |
+      磁体 1 在磁体 2 处的磁场沿轴，大小$\frac{\mu_0}{4\pi}\frac{2m_1}{z^3}$；磁矩在磁场里的势能是$U=-\vb m\cdot\vb B$。
+    - |
+      $U(z)=-\frac{\mu_0}{4\pi}\frac{2m_1m_2}{z^3}$；力是$-\dv Uz$，看它的符号。
+    - |
+      $F=-\frac{3\mu_0m_1m_2}{2\pi z^4}$，负号表示指向$z$减小的方向，互相吸引；数值约为$0.096\,\mathrm N$。
+  reference: |
+    （1）磁体 1 在磁体 2 处的磁场沿轴，和$\vb m_2$同向，大小$\frac{\mu_0}{4\pi}\frac{2m_1}{z^3}$，所以$U=-\vb m_2\cdot\vb B_1=-\frac{\mu_0}{4\pi}\frac{2m_1m_2}{z^3}$。
+
+    （2）磁矩在磁场里的势能$-\vb m\cdot\vb B$，在磁矩大小不变时也给出它受的力$\vb F=\nabla(\vb m\cdot\vb B)$，就像[电流受到的磁力](lesson:physics.electromagnetism.magnetic-force-on-currents#thm-magnetic-energy)里由势能得到力矩一样。所以$F_z=-\dv Uz=-\frac{\mu_0}{4\pi}\frac{6m_1m_2}{z^4}=-\frac{3\mu_0m_1m_2}{2\pi z^4}$：负号说明磁体 2 被拉向磁体 1，两者互相吸引，正如两块磁铁的 N 极对着 S 极时那样。力和距离的四次方成反比，比两个电荷之间的力衰减得快得多，所以磁铁靠近时吸力增大得很猛。
+
+    （3）$F=\frac{3\times4\pi\times10^{-7}\times1.0\times1.0}{2\pi\times(0.050)^4}\,\mathrm N=\frac{6\times10^{-7}}{6.25\times10^{-6}}\,\mathrm N\approx0.096\,\mathrm N$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    在没有电流的地方，磁偶极子的磁场也可以用「一对磁荷」来描述：$+q_{\mathrm m}$和$-q_{\mathrm m}$相距$d$，按库仑定律（Coulomb's law）的形式产生磁场。两种描述在远处给出同样的磁场，在哪里不同？怎样判断哪一种对？
+  hints:
+    - |
+      把一对磁荷之间的「磁场」和电偶极子两个电荷之间的电场类比：它和偶极矩同向还是反向？
+    - |
+      电流环里面的磁场和磁矩同向，磁场线从环中间穿过，自己闭合；一对磁荷之间的磁场和偶极矩反向，磁场线从$+q_{\mathrm m}$出发、终止在$-q_{\mathrm m}$上。
+    - |
+      要看源的内部或紧挨着源的地方：原子能级的超精细结构、中子穿过磁化铁块时受到的作用，都是这样的检验。
+  reference: |
+    在源外面、离源较远的地方，两种描述给出同样的磁场：一对磁荷的「磁势」和电偶极子的电势（electric potential）形式相同，算出的场和电流环的磁偶极子场一样，计算磁铁外面的磁场时常常这样用。不同在源的内部和紧挨着源的地方：电流环里面的磁场和磁矩同向，磁场线从环中间穿过、自己闭合，满足$\divg\vb B=0$；一对磁荷之间的磁场和偶极矩反向，磁场线从$+q_{\mathrm m}$出发、终止在$-q_{\mathrm m}$上，$\divg\vb B\neq0$。把整个源包在一个球里，球内磁场的平均值在两种描述里方向相反（第 5 题）。
+
+    要判断哪一种对，得看能直接「进入」源内部的现象。原子核的磁矩和电子之间的相互作用里，有一部分来自电子出现在原子核所在处的那一点，它的正负和大小按电流环计算，和氢原子基态能级的超精细分裂相符；按磁荷计算则不对。所以原子、原子核的磁矩像电流环，而不是一对磁荷；这也和$\divg\vb B=0$、没有磁单极子（magnetic monopole）的事实一致。
+
+- id: p8
+  tier: thinking
+  statement: |
+    形状、大小各不相同的磁铁和电流分布，在足够远的地方，磁场为什么都像磁偶极子？地球的磁场为什么在地面附近只是「大致」像磁偶极子？
+  hints:
+    - |
+      回想讲解里的展开：$\frac{1}{|\vb r-\vb r'|}$按$\frac{r'}{r}$展开，零阶项对闭合电流恒为零，一阶项就是磁偶极子。
+    - |
+      更高阶的项按$\frac{1}{r^4}$、$\frac{1}{r^5}$……衰减，比偶极子的$\frac1{r^3}$快。
+    - |
+      地面离地核里产生磁场的电流区域并不远（地核半径约为地球半径的一半多），高阶项还没有衰减到可以忽略。
+  reference: |
+    磁矢势按$\frac{r'}{r}$展开时，零阶项正比于$\oint\dd\vb l'$，对闭合电流（以及任何恒定电流，steady current）恒为零，没有「磁单极子项」；第一个不为零的项一般就是磁偶极子项，磁场随$\frac1{r^3}$衰减。更高阶的项，例如磁四极子（magnetic quadrupole）的项，多乘了$\frac{r'}{r}$的若干次方，衰减得更快，离源足够远时只剩下偶极子，而它只由磁矩决定，和源的具体形状无关，就像电荷分布的[多极展开](lesson:physics.electromagnetism.multipole-expansion)一样。只有磁矩恰好为零时，远处才是四极子或更高阶的磁场。
+
+    地球的磁场来自地核里液态铁的流动形成的电流，地核的半径大约是地球半径的一半多，地面离源并不「远」，$\frac{r'}{r}$不是很小，高阶项还占相当的比例；地壳里的磁性岩石也有局部的贡献。所以地面附近的地磁场只是大致像一个偏离地轴约十度的磁偶极子，各地的磁偏角（magnetic declination）、磁倾角（magnetic inclination）都要用实测的地磁模型来查。离地球越远，地磁场越接近纯粹的偶极子场，直到太阳风（solar wind）把它压扁。

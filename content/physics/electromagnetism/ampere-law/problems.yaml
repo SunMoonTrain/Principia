@@ -1,0 +1,153 @@
+- id: p1
+  tier: easy
+  statement: |
+    一个很长的螺线管每米绕$2000$匝导线，通有$1.5\,\mathrm A$的电流。管内的磁场是多大？以$\mathrm{mT}$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 4*pi*1e-7*2000*1.5*1e3
+    unit: |
+      $\mathrm{mT}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      很长的螺线管（solenoid）里磁场均匀，$B=\mu_0nI$，$n$是每单位长度的匝数。
+    - |
+      $n=2000\,\mathrm{m^{-1}}$，$I=1.5\,\mathrm A$。
+    - |
+      $B=4\pi\times10^{-7}\times2000\times1.5\,\mathrm T\approx3.77\times10^{-3}\,\mathrm T=3.77\,\mathrm{mT}$。
+  solution: |
+    $B=\mu_0nI=4\pi\times10^{-7}\times2000\times1.5\,\mathrm T\approx3.77\,\mathrm{mT}$，和螺线管的半径无关。
+
+- id: p2
+  tier: easy
+  statement: |
+    一个螺绕环绕有$500$匝导线，通有$0.80\,\mathrm A$的电流。环内离对称轴$10\,\mathrm{cm}$处的磁场是多大？以$\mathrm{mT}$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 4*pi*1e-7*500*0.80/(2*pi*0.10)*1e3
+    unit: |
+      $\mathrm{mT}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      以对称轴为心、半径$10\,\mathrm{cm}$的圆作安培回路，穿过它的电流是$NI$。
+    - |
+      $2\pi sB=\mu_0NI$，$B=\frac{\mu_0NI}{2\pi s}$。
+    - |
+      $B=2\times10^{-7}\times\frac{500\times0.80}{0.10}\,\mathrm T=8.00\times10^{-4}\,\mathrm T=0.800\,\mathrm{mT}$。
+  solution: |
+    取以对称轴为心、半径$s=0.10\,\mathrm m$的圆作安培回路，$2\pi sB=\mu_0NI$，$B=\frac{\mu_0NI}{2\pi s}=0.800\,\mathrm{mT}$。
+
+- id: p3
+  tier: medium
+  statement: |
+    半径为$2.0\,\mathrm{mm}$的长直圆柱导线通有$10\,\mathrm A$的电流，电流均匀分布在横截面上。离轴$1.0\,\mathrm{mm}$处（导线内部）的磁场是多大？以$\mathrm{mT}$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 4*pi*1e-7*10*1.0e-3/(2*pi*(2.0e-3)^2)*1e3
+    unit: |
+      $\mathrm{mT}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      以轴为心、半径$s$的圆作安培回路（Amperian loop），只有回路包住的那部分电流算数。
+    - |
+      穿过的电流是$I\frac{s^2}{a^2}=\frac{10}{4}\,\mathrm A$；$2\pi sB=\mu_0I\frac{s^2}{a^2}$。
+    - |
+      $B=\frac{\mu_0Is}{2\pi a^2}=2\times10^{-7}\times\frac{10\times1.0\times10^{-3}}{(2.0\times10^{-3})^2}\,\mathrm T=0.500\,\mathrm{mT}$。
+  solution: |
+    半径$s=1.0\,\mathrm{mm}$的圆包住的电流是$I\frac{s^2}{a^2}=2.5\,\mathrm A$。由安培环路定理，$2\pi sB=\mu_0\times2.5\,\mathrm A$，$B=\frac{\mu_0Is}{2\pi a^2}=5.00\times10^{-4}\,\mathrm T=0.500\,\mathrm{mT}$，是导线表面处$1.00\,\mathrm{mT}$的一半。
+
+- id: p4
+  tier: medium
+  statement: |
+    同轴电缆的内导体通有$5.0\,\mathrm A$的电流；外导体是内半径$4.0\,\mathrm{mm}$、外半径$5.0\,\mathrm{mm}$的厚圆筒，带着大小相同、方向相反的电流，电流在它的横截面上均匀分布。外导体里离轴$4.5\,\mathrm{mm}$处的磁场是多大？以$\mathrm{mT}$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 4*pi*1e-7*5.0/(2*pi*4.5e-3)*(5.0^2-4.5^2)/(5.0^2-4.0^2)*1e3
+    unit: |
+      $\mathrm{mT}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      半径$s$的圆形安培回路包住内导体的全部电流$I$，和外导体里$s$以内那部分反向的电流。
+    - |
+      外导体里$s$以内的部分占它横截面的$\frac{s^2-b^2}{c^2-b^2}$，包住的总电流是$I\Bigl(1-\frac{s^2-b^2}{c^2-b^2}\Bigr)=I\frac{c^2-s^2}{c^2-b^2}$。
+    - |
+      $B=\frac{\mu_0I}{2\pi s}\cdot\frac{c^2-s^2}{c^2-b^2}=\frac{2\times10^{-7}\times5.0}{4.5\times10^{-3}}\times\frac{4.75}{9}\,\mathrm T\approx0.117\,\mathrm{mT}$。
+  solution: |
+    设$b=4.0\,\mathrm{mm}$，$c=5.0\,\mathrm{mm}$。半径$s$的圆形安培回路包住内导体的电流$I$，以及外导体里横截面积比例为$\frac{s^2-b^2}{c^2-b^2}$的反向电流，包住的总电流是$I\frac{c^2-s^2}{c^2-b^2}$。
+
+    所以$B=\frac{\mu_0I}{2\pi s}\cdot\frac{c^2-s^2}{c^2-b^2}=\frac{2\times10^{-7}\times5.0}{4.5\times10^{-3}}\times\frac{25-20.25}{25-16}\,\mathrm T\approx1.17\times10^{-4}\,\mathrm T=0.117\,\mathrm{mT}$。从$s=b$到$s=c$，磁场从$\frac{\mu_0I}{2\pi b}$连续地降到零。
+
+- id: p5
+  tier: hard
+  statement: |
+    实际的螺线管是一根导线绕成的螺旋线，每单位长度$n$匝，通有电流$I$，半径为$R$。
+
+    （1）沿螺线管的轴，导线还带着净电流吗？（2）管外离轴$s$处的磁场有多大？把它和管内的磁场比较，取$n=1000\,\mathrm{m^{-1}}$，$s=2.0\,\mathrm{cm}$。（3）这说明「无限长螺线管外磁场为零」在什么意义下成立？
+  hints:
+    - |
+      导线一圈圈地绕过去，每绕一圈就沿轴前进一段，从一端到另一端，电流$I$沿着轴的方向走了一遍。
+    - |
+      取以轴为心、半径$s>R$的圆作安培回路，穿过它的电流就是这个沿轴的$I$；管外还有沿$\uv\psi$的磁场$\frac{\mu_0I}{2\pi s}$。
+    - |
+      它和管内磁场之比是$\frac{1}{2\pi ns}$，$n=1000\,\mathrm{m^{-1}}$、$s=2.0\,\mathrm{cm}$时约为$0.008$。
+  reference: |
+    （1）带着。导线是螺旋线，每绕一圈沿轴前进$\frac1n$，整体上电流$I$从螺线管的一端流到另一端。所以螺线管等于两部分的叠加：一圈圈的环形电流（面电流密度$nI$沿$\uv\psi$方向），加上沿轴的直线电流$I$。
+
+    （2）环形电流部分在管外不产生磁场（讲解里的定理）；沿轴的电流$I$在管外产生$\frac{\mu_0I}{2\pi s}$，沿$\uv\psi$方向，用以轴为心的圆形安培回路就能求出。管内的磁场主要沿轴，是$\mu_0nI$。两者之比$\frac{\mu_0I/(2\pi s)}{\mu_0nI}=\frac{1}{2\pi ns}$，取$n=1000\,\mathrm{m^{-1}}$、$s=0.020\,\mathrm m$时约为$0.008$，不到百分之一。
+
+    （3）「管外磁场为零」说的是沿轴的分量：理想的螺线管只有环形电流，管外严格为零。实际的螺旋形绕组多出一个直导线那样的绕轴磁场，匝数越密，它和管内磁场之比越小；还可以把导线从管的末端沿轴绕回来，或者绕两层、方向相反，把这个净电流抵消掉。
+
+- id: p6
+  tier: hard
+  statement: |
+    一根半径为$a$的长直圆柱导体里，离轴$s$处的磁场是$\vb B=ks^2\uv\psi$（$s\le a$），$k$是常量。
+
+    （1）用直角坐标写出$\vb B$，求导体里的电流密度。（2）导体里的总电流是多少？导体外的磁场是多少？（3）验证$\divg\vb B=0$。
+  hints:
+    - |
+      $s\uv\psi=(-y,x,0)$，所以$\vb B=k\sqrt{x^2+y^2}\,(-y,x,0)$。由$\curl\vb B=\mu_0\vb J$求$\vb J$。
+    - |
+      $(\curl\vb B)_z=\partial_x(ksx)+\partial_y(ksy)$，其中$\partial_xs=\frac xs$；结果是$3ks$。总电流$\int_0^aJ\cdot2\pi s\,\dd s$。
+    - |
+      $\vb J=\frac{3ks}{\mu_0}\uv z$，总电流$\frac{2\pi ka^3}{\mu_0}$；导体外$\vb B=\frac{ka^3}{s}\uv\psi$；散度$-ky\frac xs+kx\frac ys=0$。
+  reference: |
+    （1）$s\uv\psi=(-y,x,0)$，所以$\vb B=k s(-y,x,0)$，$s=\sqrt{x^2+y^2}$。$\vb B$的$x$、$y$分量都不含$z$，$B_z=0$，旋度只有$z$分量：$(\curl\vb B)_z=\partial_x(ksx)+\partial_y(ksy)=k\Bigl(s+\frac{x^2}{s}\Bigr)+k\Bigl(s+\frac{y^2}{s}\Bigr)=3ks$。所以$\vb J=\frac{3ks}{\mu_0}\uv z$，电流沿轴，越往外越密。
+
+    （2）总电流$I=\int_0^a\frac{3ks}{\mu_0}\cdot2\pi s\,\dd s=\frac{2\pi ka^3}{\mu_0}$。用安培环路定理核对：导体表面$2\pi a\cdot ka^2=\mu_0I$，一致。导体外，以轴为心的圆形安培回路给出$2\pi sB=\mu_0I$，$\vb B=\frac{ka^3}{s}\uv\psi$，在$s=a$处和导体里的$ka^2$连续。
+
+    （3）$\divg\vb B=\partial_x(-ksy)+\partial_y(ksx)=-ky\frac xs+kx\frac ys=0$。任何只依赖$s$、沿$\uv\psi$的场都是这样，这正是讲解里证明$\divg\vb B=0$时用的计算。
+
+- id: p7
+  tier: thinking
+  statement: |
+    一根长直导线通有电流$I$。（1）一个闭合回路绕导线两圈，$\oint\vb B\cdot\dd\vb l$是多少？（2）两个闭合的电流环像链条的两个环那样套在一起，沿其中一个环积分另一个环产生的磁场，结果是多少？不套在一起时呢？
+  hints:
+    - |
+      长直导线的情形：$\vb B\cdot\dd\vb l=\frac{\mu_0I}{2\pi}\dd\psi$，绕两圈$\psi$增加多少？
+    - |
+      安培环路定理里，「穿过曲面的电流」要按穿过的次数和方向计数；以回路为边界的曲面被导线穿过几次？
+    - |
+      积分等于$\mu_0I$乘以两个闭合曲线的环绕数（linking number），只和它们怎样缠绕有关，和具体形状无关。
+  reference: |
+    （1）$\vb B\cdot\dd\vb l=\frac{\mu_0I}{2\pi}\dd\psi$，绕两圈$\psi$增加$4\pi$，积分是$2\mu_0I$。用安培环路定理看：以这个回路为边界的曲面像螺旋楼梯一样绕两层，导线穿过它两次，$I_{\text{穿}}=2I$。
+
+    （2）套在一起时，以第一个环为边界的曲面被第二个环穿过一次，积分是$\pm\mu_0I$，正负由两个环的方向决定；不套在一起时，可以选一个第二个环不穿过的曲面，积分是零。一般地，积分是$\mu_0I$乘以两个闭合曲线的环绕数，它是一个整数，只要两条曲线不互相穿过，怎样拉伸、扭曲它们都不变。这种只和缠绕方式有关的量叫作拓扑不变量（topological invariant）：电磁学里最早的例子之一，正是高斯从这个积分得出的「环绕数」公式。
+
+- id: p8
+  tier: thinking
+  statement: |
+    安培环路定理对任何恒定电流都成立。可是有人想用它求一段有限长的直导线在中垂面上的磁场：以导线为轴、在中垂面上取圆形回路，$2\pi sB=\mu_0I$，得$B=\frac{\mu_0I}{2\pi s}$，和用毕奥-萨伐尔定律算出的不同。错在哪里？又为什么不能用它求圆线圈轴线外的磁场？
+  hints:
+    - |
+      一段有限长的直导线单独存在时，电流是恒定的吗？它两端的电荷会怎样？
+    - |
+      把这段导线补成闭合电路，其余的导线也在回路上产生磁场；这时圆形回路上的磁场还处处相同吗？
+    - |
+      圆线圈没有那么多对称性：找不到一个回路，让磁场沿着它大小不变、方向和它平行。
+  reference: |
+    一段有限长的直导线单独载流，两端的电荷会越积越多，不是恒定电流，安培环路定理本来就不适用；而且穿过以圆形回路为边界的不同曲面的电流不同（曲面可以从导线的一端绕过去），「$I_{\text{穿}}$」都没有确定的值。实际的电流总在闭合电路里流，这时回路上的磁场是整个电路产生的：安培环路定理仍然成立，$\oint\vb B\cdot\dd\vb l=\mu_0I$，可是电路的其余部分破坏了对称性，回路上的磁场不再处处相同，不能写成$2\pi sB$。毕奥-萨伐尔定律算出的$\frac{\mu_0I}{4\pi s}(\sin\alpha_2-\sin\alpha_1)$只是这一段的贡献。
+
+    圆线圈也一样：安培环路定理对它成立，但没有一个回路能让磁场沿着它大小不变、方向和它平行，积分拆不成「长度乘以磁场」，定理给出的只是一个积分等式。安培环路定理和高斯定律（Gauss's law）一样，总是成立，但只有在对称性足够高时才能用来求场；其余的情形要用毕奥-萨伐尔定律（或者以后的磁矢势，magnetic vector potential）去积分。

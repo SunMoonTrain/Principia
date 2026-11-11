@@ -29,7 +29,7 @@ status: reviewed
 ::anchor{id="def-electrostatic-equilibrium"}
 导体里的电荷不再宏观地移动的状态，叫作:term[静电平衡]{id="physics.electromagnetism.electrostatic-equilibrium"}（electrostatic equilibrium）。
 
-为什么这样定义：导体放进电场，里面的:term[自由电荷]{id="physics.electromagnetism.free-charge"}（free charge）先被推动，堆积到某些地方，它们产生的电场抵消外电场，直到导体内部的电荷不再受力；对金属，这个过程极快，下面说的都是达到平衡以后的情形。边界情况：导体里一直有电流的状态，例如接在电池两极上的导线，不是静电平衡，导线里有电场（见[电流与欧姆定律](lesson:physics.electromagnetism.current-density)）。
+为什么这样定义：导体放进电场，里面的:term[自由电荷]{id="physics.electromagnetism.free-charge"}（free charge）先被推动，堆积到某些地方，它们产生的电场抵消外电场，直到导体内部的电荷不再受力；对金属，这个过程极快，下面说的都是达到平衡以后的情形。边界情况：导体里一直有:term[电流]{id="physics.electromagnetism.electric-current"}（electric current）的状态，例如接在电池两极上的导线，不是静电平衡，导线里有电场（见[电流与欧姆定律](lesson:physics.electromagnetism.current-density)）。
 
 ### 静电平衡的性质
 

@@ -22,14 +22,14 @@ status: reviewed
 把$\vb E=-\nabla\varphi$代进$\divg\vb E=\frac{\rho}{\varepsilon_0}$，得$\divg(\nabla\varphi)=-\frac{\rho}{\varepsilon_0}$。$\divg(\nabla\varphi)=\pdv{^2\varphi}{x^2}+\pdv{^2\varphi}{y^2}+\pdv{^2\varphi}{z^2}$就是拉普拉斯算子（Laplacian）$\nabla^2\varphi$（见[向量微分恒等式与拉普拉斯算子](lesson:math.vector-calculus.vector-identities)）。
 
 ::anchor{id="thm-poisson"}
-定理（:term[泊松方程]{id="physics.electromagnetism.poisson-equation"}，Poisson's equation）：静:term[电场]{id="physics.electromagnetism.electric-field"}的:term[电势]{id="physics.electromagnetism.electric-potential"}满足$\nabla^2\varphi=-\frac{\rho}{\varepsilon_0}$，$\rho$是:term[体电荷密度]{id="physics.electromagnetism.charge-density"}（volume charge density）。
+定理（:term[泊松方程]{id="physics.electromagnetism.poisson-equation"}，Poisson's equation）：:term[静电场]{id="physics.electromagnetism.electric-field"}的:term[电势]{id="physics.electromagnetism.electric-potential"}满足$\nabla^2\varphi=-\frac{\rho}{\varepsilon_0}$，$\rho$是:term[体电荷密度]{id="physics.electromagnetism.charge-density"}（volume charge density）。
 
 证明思路：上一段就是。这个方程最早出现在引力理论里：拉普拉斯（Pierre-Simon Laplace）指出物体外面的引力势（gravitational potential）满足$\nabla^2\Phi=0$，泊松（Siméon Denis Poisson）在 1813 年发表的文章里指出，物体内部要加上和密度成正比的一项。
 
 一个方程管住了三个分量的电场，未知函数只有一个，这是电势的好处。反过来，:term[库仑定律]{id="physics.electromagnetism.coulomb-law"}（Coulomb's law）给出的电势$\varphi(\vb r)=\frac{1}{4\pi\varepsilon_0}\int\frac{\rho(\vb r')}{|\vb r-\vb r'|}\dd V'$确实满足它：由$\nabla\frac{1}{r}=-\frac{\vb r}{r^3}$和$\divg\frac{\vb r}{r^3}=4\pi\delta^3(\vb r)$（见[三维 δ 函数与点源](lesson:math.vector-calculus.delta-3d)），$\nabla^2\frac{1}{|\vb r-\vb r'|}=-4\pi\delta^3(\vb r-\vb r')$，代进积分正好得到$-\frac{\rho}{\varepsilon_0}$。
 
 ::anchor{id="thm-electrostatic-equations"}
-定理（静电场的微分方程）：静:term[电场]{id="physics.electromagnetism.electric-field"}满足$\divg\vb E=\frac{\rho}{\varepsilon_0}$和$\curl\vb E=\vb 0$。
+定理（静电场的散度和旋度）：:term[静电场]{id="physics.electromagnetism.electric-field"}满足$\divg\vb E=\frac{\rho}{\varepsilon_0}$和$\curl\vb E=\vb 0$。
 
 证明思路：第一个是:term[高斯定律]{id="physics.electromagnetism.gauss-law"}（Gauss's law）的微分形式。静电场是一个函数的负梯度，而任何函数的梯度的旋度（curl）都是零，$\curl\nabla\varphi=\vb 0$（见[向量微分恒等式与拉普拉斯算子](lesson:math.vector-calculus.vector-identities)），所以第二个成立。
 

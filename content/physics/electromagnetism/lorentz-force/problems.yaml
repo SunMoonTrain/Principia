@@ -1,0 +1,172 @@
+- id: p1
+  tier: easy
+  statement: |
+    质子以$3.0\times10^5\,\mathrm{m/s}$的速度垂直射入$0.10\,\mathrm T$的匀强磁场。求它的回旋半径，以$\mathrm{cm}$为单位，保留三位有效数字。取$m_{\mathrm p}=1.6726\times10^{-27}\,\mathrm{kg}$，$e=1.6022\times10^{-19}\,\mathrm C$。
+  answer:
+    type: number
+    value: 1.6726e-27*3.0e5/(1.6022e-19*0.10)*100
+    unit: |
+      $\mathrm{cm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      速度垂直于磁场，磁力提供向心力（centripetal force）：$evB=\frac{m_{\mathrm p}v^2}{R}$。
+    - |
+      $R=\frac{m_{\mathrm p}v}{eB}$。
+    - |
+      $R=\frac{1.6726\times10^{-27}\times3.0\times10^5}{1.6022\times10^{-19}\times0.10}\,\mathrm m\approx3.13\times10^{-2}\,\mathrm m=3.13\,\mathrm{cm}$。
+  solution: |
+    $R=\frac{m_{\mathrm p}v}{eB}=\frac{1.6726\times10^{-27}\times3.0\times10^5}{1.6022\times10^{-19}\times0.10}\,\mathrm m\approx3.13\,\mathrm{cm}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        电子和质子以相同的速度垂直射入同一个匀强磁场，两者的回旋半径相同
+      - |
+        电子和质子以大小相同的动量垂直射入同一个匀强磁场，两者的回旋半径相同
+      - |
+        在匀强磁场里做圆周运动的粒子，磁场增强到原来的$2$倍时，回旋频率也变成原来的$2$倍
+      - |
+        一个带电粒子在磁场里沿直线匀速运动，那里的磁场一定为零
+      - |
+        带正电的粒子沿$x$轴正方向运动，磁场沿$z$轴正方向，它受的磁力沿$y$轴正方向
+    value: [2, 3]
+  hints:
+    - |
+      回旋半径$R=\frac{mv}{|q|B}=\frac{p}{|q|B}$，回旋频率（cyclotron frequency）$f_{\mathrm c}=\frac{|q|B}{2\pi m}$。
+    - |
+      速度平行于磁场时不受磁力；$\uv x\times\uv z$是什么方向？
+    - |
+      B、C 对；A、D、E 错。
+  solution: |
+    A 错：速度相同时$R$和质量成正比，质子的半径大得多。B 对：$R=\frac{p}{|q|B}$，两者的电荷大小都是$e$。C 对：$f_{\mathrm c}=\frac{|q|B}{2\pi m}$和$B$成正比。
+
+    D 错：粒子沿磁场方向运动时不受磁力，也可以沿直线匀速运动。E 错：$\uv x\times\uv z=-\uv y$，磁力沿$y$轴负方向。
+
+- id: p3
+  tier: medium
+  statement: |
+    一价的氩离子（质量取$40\,\mathrm u$，$1\,\mathrm u=1.6605\times10^{-27}\,\mathrm{kg}$，电荷为$e=1.6022\times10^{-19}\,\mathrm C$）通过速度选择器，那里的电场是$1.0\times10^4\,\mathrm{V/m}$，磁场是$0.10\,\mathrm T$，两者互相垂直。离子从出口垂直射入$0.40\,\mathrm T$的匀强磁场，转过半圈后打在底片上。落点离入口多远？以$\mathrm{cm}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 2*40*1.6605e-27*1.0e4/0.10/(1.6022e-19*0.40)*100
+    unit: |
+      $\mathrm{cm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      能直线穿过速度选择器（velocity selector）的离子，速率是$v=\frac EB$。
+    - |
+      $v=1.0\times10^5\,\mathrm{m/s}$；在第二个磁场里$R=\frac{mv}{eB'}$，落点离入口是直径$2R$。
+    - |
+      $2R=\frac{2\times40\times1.6605\times10^{-27}\times1.0\times10^5}{1.6022\times10^{-19}\times0.40}\,\mathrm m\approx0.207\,\mathrm m=20.7\,\mathrm{cm}$。
+  solution: |
+    速度选择器放过的离子速率是$v=\frac EB=\frac{1.0\times10^4}{0.10}\,\mathrm{m/s}=1.0\times10^5\,\mathrm{m/s}$。进入第二个磁场后，离子做半径$R=\frac{mv}{eB'}$的圆周运动，落点离入口是直径$2R$。
+
+    代入数值，$2R=\frac{2\times40\times1.6605\times10^{-27}\times1.0\times10^5}{1.6022\times10^{-19}\times0.40}\,\mathrm m\approx20.7\,\mathrm{cm}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    电子以$3.0\times10^6\,\mathrm{m/s}$的速度射入$2.0\,\mathrm{mT}$的匀强磁场，速度和磁场的夹角是$30^\circ$。电子沿螺旋线运动，每绕一圈沿磁场方向前进的距离（螺距，pitch）是多少？以$\mathrm{cm}$为单位，保留三位有效数字。取$m_{\mathrm e}=9.109\times10^{-31}\,\mathrm{kg}$，$e=1.602\times10^{-19}\,\mathrm C$。
+  answer:
+    type: number
+    value: 2*pi*9.109e-31*3.0e6*cos(pi/6)/(1.602e-19*2.0e-3)*100
+    unit: |
+      $\mathrm{cm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      把速度分解成平行于磁场和垂直于磁场的两部分：平行的部分不变，垂直的部分让电子绕圈。
+    - |
+      绕一圈的时间是$T=\frac{2\pi m_{\mathrm e}}{eB}$，和速率无关；螺距是$v\cos30^\circ\cdot T$。
+    - |
+      $T\approx1.79\times10^{-8}\,\mathrm s$，$v\cos30^\circ\approx2.60\times10^6\,\mathrm{m/s}$，螺距约为$4.64\,\mathrm{cm}$。
+  solution: |
+    平行于磁场的速度分量$v\cos30^\circ\approx2.60\times10^6\,\mathrm{m/s}$不变。绕一圈的时间是$T=\frac{2\pi m_{\mathrm e}}{eB}=\frac{2\pi\times9.109\times10^{-31}}{1.602\times10^{-19}\times2.0\times10^{-3}}\,\mathrm s\approx1.79\times10^{-8}\,\mathrm s$。
+
+    螺距是$v\cos30^\circ\cdot T\approx4.64\times10^{-2}\,\mathrm m=4.64\,\mathrm{cm}$；螺旋线的半径是$\frac{m_{\mathrm e}v\sin30^\circ}{eB}\approx0.43\,\mathrm{cm}$，比螺距小得多。
+
+- id: p5
+  tier: hard
+  statement: |
+    匀强电场$\vb E=E\uv y$和匀强磁场$\vb B=B\uv z$互相垂直，$E\ll cB$。质量为$m$、电荷为$q>0$的粒子在$t=0$时从原点由静止释放。
+
+    （1）求它的轨道$x(t)$、$y(t)$。（2）粒子最高升到多高？那时速率是多少？
+
+    （3）粒子沿$y$方向上升时电场对它做正功，下降时做负功。用能量守恒核对（2）的结果。
+  hints:
+    - |
+      用以$\vb u=\frac{\vb E\times\vb B}{B^2}=\frac EB\uv x$运动的参考系：粒子在那里只受磁力，开始时的速度是$-\vb u$。
+    - |
+      在新参考系里，粒子以速率$\frac EB$绕半径$\frac{mE}{qB^2}$的圆周运动；记$\omega=\frac{qB}{m}$，$a=\frac{E}{B\omega}$。
+    - |
+      $x=a(\omega t-\sin\omega t)$，$y=a(1-\cos\omega t)$，是摆线；最高点$y=2a=\frac{2mE}{qB^2}$，速率$\frac{2E}{B}$。
+  reference: |
+    （1）由讲解里的定理，在以$\vb u=\frac EB\uv x$运动的参考系里，粒子只受磁力，开始时速度是$-\frac EB\uv x$，做匀速圆周运动，半径$a=\frac{mE}{qB^2}=\frac{E}{B\omega}$，$\omega=\frac{qB}{m}$。从$\uv z$那一侧看正电荷顺时针转，开始时向$-x$运动，所以圆心在出发点正上方，粒子的位置是$x'=-a\sin\omega t$，$y'=a(1-\cos\omega t)$。回到原来的参考系，再加上平移$ut=a\omega t$：$x=a(\omega t-\sin\omega t)$，$y=a(1-\cos\omega t)$。这是摆线（cycloid），像一个半径为$a$的轮子沿$x$轴滚动时，轮缘上一点的轨迹。
+
+    （2）$y$的最大值是$2a=\frac{2mE}{qB^2}$，在$\omega t=\pi$时达到。速度是$\dot x=a\omega(1-\cos\omega t)$，$\dot y=a\omega\sin\omega t$，$\omega t=\pi$时速度沿$+x$，大小$2a\omega=\frac{2E}{B}$，是平移速度的$2$倍。
+
+    （3）上升$2a$，电场做功$qE\cdot2a=\frac{2mE^2}{B^2}$；动能从$0$变成$\frac12m\bigl(\frac{2E}{B}\bigr)^2=\frac{2mE^2}{B^2}$，两者相等。磁力不做功，所以动能完全来自电场；粒子回到$y=0$时速度又变成零，在尖点处停一下，然后重复。整体上粒子不沿电场方向前进，而是沿$\vb E\times\vb B$的方向漂移，电场对它平均不做功。
+
+- id: p6
+  tier: hard
+  statement: |
+    回旋加速器（cyclotron）里，两个 D 形的空心金属盒放在匀强磁场$B$里，盒间的缝隙加上交变的电势差（potential difference）；质子每次穿过缝隙被加速一次，在盒里转半圈，半径越转越大，到达盒的边缘（半径$R$）时被引出。
+
+    （1）为什么交变电势差的频率可以固定不变？应该取多大？（2）质子引出时的动能是多少？它和加速用的电势差有关吗？
+
+    （3）取$B=1.5\,\mathrm T$，$R=0.50\,\mathrm m$，算出动能（以$\mathrm{MeV}$为单位）和交变电势差的频率。已知质子的静止能量（rest energy）是$938.3\,\mathrm{MeV}$，按照这个动能，相对论的修正有多大？
+  hints:
+    - |
+      质子在盒里转半圈的时间是回旋周期的一半，和速率无关。
+    - |
+      引出时$R=\frac{mv}{eB}$，所以$v=\frac{eBR}{m}$，动能$\frac{(eBR)^2}{2m}$，只由$B$和$R$决定。
+    - |
+      动能约$26.9\,\mathrm{MeV}$，频率约$22.9\,\mathrm{MHz}$；$\gamma\approx1.029$，回旋频率降低约$3\%$。
+  reference: |
+    （1）质子在盒里只受磁力，转半圈的时间是$\frac{\pi m}{eB}$，和速率、半径都无关。所以只要交变电势差的频率等于回旋频率$f_{\mathrm c}=\frac{eB}{2\pi m}$，质子每次到达缝隙时电场的方向都恰好使它加速，不管它已经被加速了多少次。
+
+    （2）引出时$R=\frac{mv}{eB}$，动能$K=\frac12mv^2=\frac{(eBR)^2}{2m}$，只由磁场和盒的半径决定。加速用的电势差越小，每次得到的能量越少，转的圈数越多，最后的动能不变。
+
+    （3）$K=\frac{(1.602\times10^{-19}\times1.5\times0.50)^2}{2\times1.673\times10^{-27}}\,\mathrm J\approx4.32\times10^{-12}\,\mathrm J\approx26.9\,\mathrm{MeV}$，频率$f_{\mathrm c}=\frac{eB}{2\pi m}\approx22.9\,\mathrm{MHz}$。$\gamma=1+\frac{K}{mc^2}\approx1.029$，回旋频率变成$\frac{eB}{2\pi\gamma m}$，降低约$3\%$：质子越来越落后于交变电场，加速到几十$\mathrm{MeV}$以上就跟不上了。要再加速，就要随着能量升高调低频率（同步回旋加速器，synchrocyclotron）或者让磁场随半径增强。
+
+- id: p7
+  tier: thinking
+  statement: |
+    两个电子以相同的速度$\vb v$并排运动，速度垂直于它们的连线，相距$d$，$v\ll c$。
+
+    （1）在实验室里看，它们之间除了电力还有磁力。估算磁力和电力之比。（2）在和电子一起运动的参考系里，两个电子都静止，只有电力。这和（1）矛盾吗？
+  hints:
+    - |
+      以速度$\vb v$运动的点电荷在旁边产生磁场；速度远小于光速时，在垂直于速度的方向上相距$d$处，它的大小是$\frac{\mu_0}{4\pi}\frac{ev}{d^2}$（见[毕奥-萨伐尔定律](lesson:physics.electromagnetism.biot-savart)）。
+    - |
+      磁力是$evB$；电力是$\frac{1}{4\pi\varepsilon_0}\frac{e^2}{d^2}$。比值里出现$\mu_0\varepsilon_0=\frac{1}{c^2}$。
+    - |
+      比值是$\frac{v^2}{c^2}$，磁力是吸引的，比斥力小得多；不同的参考系里力本来就不同，要用狭义相对论统一起来。
+  reference: |
+    （1）电子 1 在电子 2 处产生的磁场大小是$\frac{\mu_0}{4\pi}\frac{ev}{d^2}$（见[毕奥-萨伐尔定律](lesson:physics.electromagnetism.biot-savart)），电子 2 受的磁力是$evB=\frac{\mu_0}{4\pi}\frac{e^2v^2}{d^2}$。按右手定则可以看出它指向电子 1，是吸引的：同向运动的电荷，就像同向的电流一样互相吸引。电力是$\frac{1}{4\pi\varepsilon_0}\frac{e^2}{d^2}$的斥力。两者之比是$\mu_0\varepsilon_0v^2=\frac{v^2}{c^2}$，电子以$10^6\,\mathrm{m/s}$运动时只有约$10^{-5}$。
+
+    （2）不矛盾，但牛顿力学解释不了。在电子静止的参考系里只有电力；换到实验室，电场和磁场都要按狭义相对论变换，力和时间也要变换（见狭义相对论的[电磁场张量](lesson:physics.special-relativity.field-tensor)）。算下来，实验室里电力减去磁力，恰好等于静止参考系里的电力经过相对论变换后的结果。磁力可以看成电力的相对论效应，比值$\frac{v^2}{c^2}$正是这种效应的大小；导线里电子的漂移速度（drift velocity）极小，磁力却能被觉察，是因为导线里正负电荷的电力几乎完全抵消了，剩下的只有磁力。
+
+- id: p8
+  tier: thinking
+  statement: |
+    太阳不断向外抛出带电粒子（太阳风，solar wind）。为什么地球的磁场能挡住大部分这样的粒子？极光（aurora）为什么多出现在高纬度地区？
+  hints:
+    - |
+      带电粒子横穿磁场线时被磁力拉成圆周运动，沿磁场线的运动却不受影响。
+    - |
+      估算一个速度为$4\times10^5\,\mathrm{m/s}$的质子在$3\times10^{-5}\,\mathrm T$的磁场里的回旋半径，和地球的大小比较。
+    - |
+      粒子绕着磁场线、沿磁场线运动；地球的磁场线在两极附近进入大气层。
+  reference: |
+    带电粒子横穿磁场线时，磁力使它绕着磁场线做圆周运动，很难横着穿过去。设质子速度为$4\times10^5\,\mathrm{m/s}$，在$3\times10^{-5}\,\mathrm T$的磁场里，回旋半径是$\frac{m_{\mathrm p}v}{eB}\approx140\,\mathrm m$，和地球的半径比微不足道：粒子被「拴」在磁场线上，只能一边绕圈一边沿磁场线滑动。地球的磁场离地越远越弱，但范围很大，大部分太阳风粒子在远离地面的地方就被偏转开了。
+
+    沿磁场线的运动不受磁力，所以进入地球磁场的粒子沿磁场线螺旋前进。地球的磁场线在低纬度地区大致平行于地面，在两个磁极附近几乎竖直地插进大气层，粒子顺着它们在高纬度地区冲进高层大气，撞击氧原子和氮原子使它们发光，这就是极光。磁场线越往磁极越密，螺旋前进的粒子还会被反射回去，在两个半球之间来回弹跳，形成环绕地球的辐射带（radiation belt）。

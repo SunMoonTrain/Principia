@@ -59,7 +59,7 @@ $\vb D=\varepsilon_0\vb E+\vb P$叫作:term[电位移]{id="physics.electromagnet
 ::anchor{id="thm-boundary"}
 定理（电介质界面上的条件）：界面上没有自由电荷时，$\vb D$垂直于界面的分量连续，$\vb E$平行于界面的分量连续。
 
-证明思路：取跨过界面的扁圆柱面作:term[高斯面]{id="physics.electromagnetism.gaussian-surface"}，两个底面紧贴界面，由$\oint\vb D\cdot\dd\vb a=0$得两侧$D$的法向分量相等。取跨过界面的扁矩形回路，两条长边紧贴界面，静:term[电场]{id="physics.electromagnetism.electric-field"}沿闭合曲线的积分为零（见[电势](lesson:physics.electromagnetism.electric-potential#thm-conservative)），得两侧$E$的切向分量相等。
+证明思路：取跨过界面的扁圆柱面作:term[高斯面]{id="physics.electromagnetism.gaussian-surface"}，两个底面紧贴界面，由$\oint\vb D\cdot\dd\vb a=0$得两侧$D$的法向分量相等。取跨过界面的扁矩形回路，两条长边紧贴界面，:term[静电场]{id="physics.electromagnetism.electric-field"}沿闭合曲线的积分为零（见[电势](lesson:physics.electromagnetism.electric-potential#thm-conservative)），得两侧$E$的切向分量相等。
 
 两个条件合起来，:term[电场线]{id="physics.electromagnetism.field-line"}（electric field line）穿过界面时会改变方向（p5）。界面上的:term[束缚电荷]{id="physics.electromagnetism.bound-charge"}就在这里：$\vb D$的法向分量连续，可$\varepsilon$不同，$\vb E$的法向分量跳了，跳的那一份正是束缚电荷的贡献。
 

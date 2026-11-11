@@ -1,0 +1,151 @@
+- id: p1
+  tier: easy
+  statement: |
+    一根很长的直导线通有$10\,\mathrm A$的电流。离导线$5.0\,\mathrm{cm}$处的磁场是多大？以$\mu\mathrm T$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 4*pi*1e-7*10/(2*pi*0.050)*1e6
+    unit: |
+      $\mu\mathrm T$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      无限长直导线外的磁场是$B=\frac{\mu_0I}{2\pi s}$。
+    - |
+      $\frac{\mu_0}{2\pi}=2\times10^{-7}\,\mathrm{N/A^2}$，$s=0.050\,\mathrm m$。
+    - |
+      $B=2\times10^{-7}\times\frac{10}{0.050}\,\mathrm T=4.00\times10^{-5}\,\mathrm T=40.0\,\mu\mathrm T$。
+  solution: |
+    $B=\frac{\mu_0I}{2\pi s}=2\times10^{-7}\times\frac{10}{0.050}\,\mathrm T=40.0\,\mu\mathrm T$，和地面附近的地球磁场差不多大，所以通电导线能使旁边的指南针明显偏转。
+
+- id: p2
+  tier: easy
+  statement: |
+    一个$20$匝的圆线圈，半径$5.0\,\mathrm{cm}$，通有$1.5\,\mathrm A$的电流。线圈圆心处的磁场是多大？以$\mathrm{mT}$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 20*4*pi*1e-7*1.5/(2*0.050)*1e3
+    unit: |
+      $\mathrm{mT}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      一匝圆线圈在圆心处的磁场是$\frac{\mu_0I}{2R}$，$N$匝叠加起来是$N$倍。
+    - |
+      $B=\frac{N\mu_0I}{2R}=\frac{20\times4\pi\times10^{-7}\times1.5}{2\times0.050}\,\mathrm T$。
+    - |
+      $B\approx3.77\times10^{-4}\,\mathrm T=0.377\,\mathrm{mT}$。
+  solution: |
+    $B=\frac{N\mu_0I}{2R}=\frac{20\times4\pi\times10^{-7}\times1.5}{0.10}\,\mathrm T\approx3.77\times10^{-4}\,\mathrm T=0.377\,\mathrm{mT}$。
+
+- id: p3
+  tier: medium
+  statement: |
+    两根相距$2.0\,\mathrm{cm}$的平行长直导线，各通有$20\,\mathrm A$的电流，方向相反。每米导线受的力是多大？以$\mathrm{mN}$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 4*pi*1e-7*20*20/(2*pi*0.020)*1e3
+    unit: |
+      $\mathrm{mN}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      一根导线在另一根处产生的磁场是$\frac{\mu_0I}{2\pi d}$，另一根上长为$L$的一段受力$ILB$。
+    - |
+      每米受力$\frac{\mu_0I_1I_2}{2\pi d}=2\times10^{-7}\times\frac{20\times20}{0.020}\,\mathrm N$。
+    - |
+      每米受力$4.00\times10^{-3}\,\mathrm N=4.00\,\mathrm{mN}$；电流反向，互相排斥。
+  solution: |
+    每米受力$\frac{\mu_0I_1I_2}{2\pi d}=2\times10^{-7}\times\frac{400}{0.020}\,\mathrm N=4.00\,\mathrm{mN}$。电流方向相反，两根导线互相排斥；家用电线里来回两根导线的电流也相反，通电时它们之间就有这样的斥力。
+
+- id: p4
+  tier: medium
+  statement: |
+    边长$10\,\mathrm{cm}$的正方形线圈通有$2.0\,\mathrm A$的电流。正方形中心处的磁场是多大？以$\mu\mathrm T$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 4*(1e-7*2.0/0.050)*2*sin(pi/4)*1e6
+    unit: |
+      $\mu\mathrm T$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      四条边在中心处的磁场方向相同、大小相同；每条边用有限长直导线的公式。
+    - |
+      中心到每条边的距离是$s=5.0\,\mathrm{cm}$，两端对应的角是$\pm45^\circ$，一条边贡献$\frac{\mu_0I}{4\pi s}\cdot2\sin45^\circ$。
+    - |
+      一条边贡献约$5.66\,\mu\mathrm T$，四条边共约$22.6\,\mu\mathrm T$。
+  solution: |
+    中心到每条边的距离是$s=0.050\,\mathrm m$，从中心看每条边两端的角是$\pm45^\circ$，一条边产生的磁场是$\frac{\mu_0I}{4\pi s}(\sin45^\circ+\sin45^\circ)=10^{-7}\times\frac{2.0}{0.050}\times\sqrt2\,\mathrm T\approx5.66\times10^{-6}\,\mathrm T$。
+
+    四条边的磁场都垂直于线圈平面、指向同一侧，加起来约$22.6\,\mu\mathrm T$。同样周长的圆线圈，在圆心处是$\frac{\mu_0I}{2R}$，$R=\frac{0.40}{2\pi}\,\mathrm m$，约$19.7\,\mu\mathrm T$，比正方形的小：正方形的边离中心更近。
+
+- id: p5
+  tier: hard
+  statement: |
+    两个半径都是$R$、各有$N$匝的圆线圈同轴放置，相距$d$，通有同向的电流$I$。取两线圈正中间为原点，轴线为$z$轴。
+
+    （1）写出轴线上的磁场$B(z)$。（2）证明$B$在原点的一阶导数为零；$d$取多大时，二阶导数也为零？（3）这时原点处的磁场是多大？
+  hints:
+    - |
+      每个线圈在轴上的磁场用定理，两个线圈的圆心分别在$z=\pm\frac d2$。
+    - |
+      $B(z)$是偶函数，所以$B'(0)=0$。对$f(z)=(R^2+z^2)^{-3/2}$求二阶导数，令$f''\bigl(\frac d2\bigr)=0$。
+    - |
+      $f''(z)$正比于$4z^2-R^2$，所以$d=R$；这时$B(0)=\bigl(\frac45\bigr)^{3/2}\frac{\mu_0NI}{R}$。
+  reference: |
+    （1）一个线圈在轴上离圆心$z$处的磁场是$\frac{\mu_0NIR^2}{2}f(z)$，$f(z)=(R^2+z^2)^{-3/2}$。两个线圈的圆心在$\pm\frac d2$，$B(z)=\frac{\mu_0NIR^2}{2}\Bigl[f\bigl(z-\tfrac d2\bigr)+f\bigl(z+\tfrac d2\bigr)\Bigr]$。
+
+    （2）$B(z)=B(-z)$，偶函数在原点的一阶导数为零（三阶导数也一样）。二阶导数$B''(0)=\mu_0NIR^2f''\bigl(\frac d2\bigr)$。$f'(z)=-3z(R^2+z^2)^{-5/2}$，$f''(z)=3(4z^2-R^2)(R^2+z^2)^{-7/2}$，所以$f''\bigl(\frac d2\bigr)=0$即$d^2=R^2$，$d=R$。这时$B(z)$在原点附近和$B(0)$只差$z^4$量级的小量，中间一大段磁场非常均匀，这就是亥姆霍兹线圈。
+
+    （3）$d=R$时，$B(0)=\mu_0NIR^2\Bigl(R^2+\frac{R^2}{4}\Bigr)^{-3/2}=\Bigl(\frac45\Bigr)^{3/2}\frac{\mu_0NI}{R}\approx0.716\,\frac{\mu_0NI}{R}$。
+
+- id: p6
+  tier: hard
+  statement: |
+    长为$L$、半径为$R$的螺线管（solenoid）每单位长度绕$n$匝导线，通有电流$I$，可以看成许多圆线圈紧挨着排在一起。
+
+    （1）求轴线上一点的磁场，用这一点到两端边缘的连线和轴线所成的角$\theta_1$、$\theta_2$表示。（2）螺线管很长时，中间和端口处的磁场各是多少？
+  hints:
+    - |
+      取轴线上的点为原点，管上$z$到$z+\dd z$的一段有$n\,\dd z$匝，相当于电流$nI\,\dd z$的圆线圈，在原点产生的磁场是$\frac{\mu_0nIR^2\,\dd z}{2(R^2+z^2)^{3/2}}$。
+    - |
+      代换$z=R\cot\theta$（$\theta$是这一段的边缘到原点的连线和轴线的夹角），被积式变成$-\frac{\mu_0nI}{2}\sin\theta\,\dd\theta$。
+    - |
+      $B=\frac{\mu_0nI}{2}(\cos\theta_2-\cos\theta_1)$的绝对值；很长时中间$\mu_0nI$，端口$\frac12\mu_0nI$。
+  reference: |
+    （1）取轴线上这一点为原点，管从$z_1$延伸到$z_2$。$z$到$z+\dd z$的一段有$n\,\dd z$匝，在原点产生沿轴的磁场$\frac{\mu_0nIR^2\,\dd z}{2(R^2+z^2)^{3/2}}$。令$z=R\cot\theta$，$\theta$是这一段的边缘到原点的连线和$z$轴正方向的夹角，$\dd z=-\frac{R\,\dd\theta}{\sin^2\theta}$，$R^2+z^2=\frac{R^2}{\sin^2\theta}$，被积式变成$-\frac{\mu_0nI}{2}\sin\theta\,\dd\theta$。积分得$B=\frac{\mu_0nI}{2}(\cos\theta_2-\cos\theta_1)$的绝对值，$\theta_1$、$\theta_2$对应两端的边缘。
+
+    （2）很长时，在中间看两端，$\theta_2\to0$、$\theta_1\to\pi$，$B\to\mu_0nI$，和半径无关；在一个端口上，一端$\theta=\frac\pi2$，另一端$\theta\to0$或$\pi$，$B\to\frac12\mu_0nI$，只有中间的一半。端口处的磁场只有一半，因为那里只有一侧有线圈；把两个半无限长的螺线管对接起来，正好拼成中间的情形。管内的磁场为什么处处是$\mu_0nI$、管外为什么几乎为零，用[安培环路定理](lesson:physics.electromagnetism.ampere-law)看得最清楚。
+
+- id: p7
+  tier: thinking
+  statement: |
+    毕奥和萨伐尔只测了长直导线的磁场，拉普拉斯据此写出每个电流元的贡献。只凭闭合电路的实验，能唯一地确定单个电流元产生的磁场吗？
+  hints:
+    - |
+      实验里的电流都是恒定电流，总是沿闭合回路流动；能测到的只是对整个回路积分以后的结果。
+    - |
+      如果在电流元的公式上加一项，它沿任一闭合回路的积分都是零，闭合电路的实验能发现这一项吗？
+    - |
+      例如加上一个关于$\vb r'$的全微分；历史上安培关于电流元之间作用力的公式，就和由毕奥-萨伐尔定律导出的不同，对闭合电路却给出同样的结果。
+  reference: |
+    不能。恒定电流只能沿闭合回路流动，实验测到的总是整个回路积分以后的磁场或力。在电流元的公式上加任意一项，只要它沿每个闭合回路的积分都是零，例如对$\vb r'$的某个全微分$\dd\vb F(\vb r,\vb r')$（沿闭合回路积一圈回到出发点，积分是零），闭合电路的结果就完全不变，这一项永远测不出来。
+
+    历史上确实有这样的例子：安培在 1820 年代给出的电流元之间的作用力公式，和由毕奥-萨伐尔定律加上$I\,\dd\vb l\times\vb B$得到的公式不同，前者总沿着两个电流元的连线，后者一般不沿连线，对闭合电路却给出同样的力。所以「单个电流元的磁场」只是一个方便的写法：真正被实验确定的，是闭合电流的磁场。毕奥-萨伐尔定律的形式之所以被普遍采用，是因为它和以后的麦克斯韦方程组、运动电荷的场一致。
+
+- id: p8
+  tier: thinking
+  statement: |
+    家用电线里，去和回的两根导线总是挨在一起，电子设备里还常把两根导线绞在一起（双绞线，twisted pair）。从磁场的角度看，这样做有什么好处？
+  hints:
+    - |
+      两根导线里的电流大小相同、方向相反。它们在远处产生的磁场会怎样？
+    - |
+      相距$d$的两根反向电流的长直导线，在远处$s\gg d$的磁场是$\frac{\mu_0Id}{2\pi s^2}$的量级，比一根导线的$\frac{\mu_0I}{2\pi s}$小一个因子$\frac ds$。
+    - |
+      绞在一起以后，相邻两段的这点剩余磁场方向相反，又进一步抵消；反过来，外面的变化磁场在双绞线里引起的干扰也互相抵消。
+  reference: |
+    两根导线的电流大小相同、方向相反，它们的磁场在远处几乎抵消。相距$d$的两根反向电流的长直导线，在远处$s\gg d$的地方，磁场是两个$\frac{\mu_0I}{2\pi s}$的差，量级是$\frac{\mu_0I}{2\pi s}\cdot\frac ds$，和$s^2$成反比，比单根导线的磁场小得多。导线挨得越近，$d$越小，剩下的磁场越弱，对附近的指南针、仪器的干扰越小。
+
+    双绞线还要更好一些：每绞半圈，两根导线交换位置，剩下的那一点磁场方向也反过来，一段段地互相抵消，在远处几乎没有磁场。反过来，外面的磁场变化时会在导线组成的回路里引起感应电流（见[法拉第电磁感应定律](lesson:physics.electromagnetism.faraday-law)），双绞线相邻两段的回路方向相反，引起的干扰也互相抵消，所以网线、电话线都用双绞线。

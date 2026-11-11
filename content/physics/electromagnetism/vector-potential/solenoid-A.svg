@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 340" width="700" height="340" font-size="14">
+  <!-- 左：无限长螺线管（半径 R，1 R = 52 像素）的横截面，管内磁场 B0 垂直纸面向外；磁矢势沿圆周逆时针，管内大小 B0 s/2，管外 B0 R²/(2s)，箭头长度和大小成正比（B0 R/2 对应 42 像素），画在 s = 0.55R、1.35R、2.4R 上。右：A_ψ（实线，以 B0 R 为单位）和 B（虚线，以 B0 为单位）随 s 的变化，s 从 0 到 3R。 -->
+  <circle cx="170.0" cy="175.0" r="52.0" style="stroke: currentColor" fill="none" stroke-width="2.0" />
+  <circle cx="170.0" cy="175.0" r="5.0" style="fill: var(--bg, #ffffff); stroke: var(--muted, #6b7280)" fill="var(--bg, #ffffff)" stroke-width="1.0" />
+  <circle cx="170.0" cy="175.0" r="1.3" style="fill: var(--muted, #6b7280)" />
+  <circle cx="170.0" cy="175.0" r="28.6" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="0.8" stroke-dasharray="3 3" />
+  <line x1="198.4" y1="162.9" x2="186.0" y2="150.6" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 182.1 146.6 L 188.6 149.1 L 184.6 153.1 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="157.9" y1="146.6" x2="145.6" y2="159.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 141.6 162.9 L 144.1 156.4 L 148.1 160.4 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="141.6" y1="187.1" x2="154.0" y2="199.4" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 157.9 203.4 L 151.4 200.9 L 155.4 196.9 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="182.1" y1="203.4" x2="194.4" y2="191.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 198.4 187.1 L 195.9 193.6 L 191.9 189.6 Z" style="fill: var(--accent, #2563eb)" />
+  <circle cx="170.0" cy="175.0" r="70.2" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="0.8" stroke-dasharray="3 3" />
+  <line x1="240.8" y1="162.5" x2="231.0" y2="138.9" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 228.9 133.8 L 234.0 138.6 L 228.7 140.8 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="211.2" y1="116.1" x2="187.7" y2="106.3" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 182.5 104.2 L 189.5 104.0 L 187.3 109.3 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="157.5" y1="104.2" x2="133.9" y2="114.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 128.8 116.1 L 133.6 111.0 L 135.8 116.3 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="111.1" y1="133.8" x2="101.3" y2="157.3" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 99.2 162.5 L 99.0 155.5 L 104.3 157.7 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="99.2" y1="187.5" x2="109.0" y2="211.1" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 111.1 216.2 L 106.0 211.4 L 111.3 209.2 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="128.8" y1="233.9" x2="152.3" y2="243.7" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 157.5 245.8 L 150.5 246.0 L 152.7 240.7 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="182.5" y1="245.8" x2="206.1" y2="236.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 211.2 233.9 L 206.4 239.0 L 204.2 233.7 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="228.9" y1="216.2" x2="238.7" y2="192.7" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 240.8 187.5 L 241.0 194.5 L 235.7 192.3 Z" style="fill: var(--accent, #2563eb)" />
+  <circle cx="170.0" cy="175.0" r="124.8" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="0.8" stroke-dasharray="3 3" />
+  <line x1="292.8" y1="151.2" x2="289.7" y2="139.7" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 288.3 134.2 L 292.7 139.7 L 287.2 141.2 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="264.4" y1="92.9" x2="256.0" y2="84.5" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 252.1 80.6 L 258.6 83.1 L 254.6 87.1 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="210.8" y1="56.7" x2="199.3" y2="53.6" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 193.8 52.2 L 200.8 51.1 L 199.3 56.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="146.2" y1="52.2" x2="134.7" y2="55.3" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 129.2 56.7 L 134.7 52.3 L 136.2 57.8 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="87.9" y1="80.6" x2="79.5" y2="89.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 75.6 92.9 L 78.1 86.4 L 82.1 90.4 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="51.7" y1="134.2" x2="48.6" y2="145.7" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 47.2 151.2 L 46.1 144.2 L 51.6 145.7 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="47.2" y1="198.8" x2="50.3" y2="210.3" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 51.7 215.8 L 47.3 210.3 L 52.8 208.8 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="75.6" y1="257.1" x2="84.0" y2="265.5" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 87.9 269.4 L 81.4 266.9 L 85.4 262.9 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="129.2" y1="293.3" x2="140.7" y2="296.4" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 146.2 297.8 L 139.2 298.9 L 140.7 293.4 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="193.8" y1="297.8" x2="205.3" y2="294.7" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 210.8 293.3 L 205.3 297.7 L 203.8 292.2 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="252.1" y1="269.4" x2="260.5" y2="261.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 264.4 257.1 L 261.9 263.6 L 257.9 259.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="288.3" y1="215.8" x2="291.4" y2="204.3" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 292.8 198.8 L 293.9 205.8 L 288.4 204.3 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="170.0" y="24.0" fill="currentColor" text-anchor="middle">螺线管的横截面</text>
+  <text x="38.8" y="328.2" fill="currentColor" font-size="13">⊙ 管内磁场垂直纸面向外</text>
+  <line x1="400.0" y1="275.0" x2="672.0" y2="275.0" style="stroke: currentColor" stroke-width="1.1" />
+  <path d="M 676.0 275.0 L 669.6 277.9 L 669.6 272.1 Z" style="fill: currentColor" />
+  <line x1="400.0" y1="275.0" x2="400.0" y2="56.5" style="stroke: currentColor" stroke-width="1.1" />
+  <path d="M 400.0 52.5 L 402.9 58.9 L 397.1 58.9 Z" style="fill: currentColor" />
+  <text x="680.0" y="293.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">s</tspan></text>
+  <line x1="485.0" y1="275.0" x2="485.0" y2="280.0" style="stroke: currentColor" stroke-width="1.0" />
+  <text x="485.0" y="295.0" fill="currentColor" text-anchor="middle" font-size="13"><tspan font-style="italic">R</tspan></text>
+  <line x1="570.0" y1="275.0" x2="570.0" y2="280.0" style="stroke: currentColor" stroke-width="1.0" />
+  <text x="570.0" y="295.0" fill="currentColor" text-anchor="middle" font-size="13">2<tspan font-style="italic">R</tspan></text>
+  <line x1="655.0" y1="275.0" x2="655.0" y2="280.0" style="stroke: currentColor" stroke-width="1.0" />
+  <text x="655.0" y="295.0" fill="currentColor" text-anchor="middle" font-size="13">3<tspan font-style="italic">R</tspan></text>
+  <text x="394.0" y="280.0" fill="currentColor" text-anchor="end" font-size="13">0</text>
+  <path d="M 400.0 85.0 L 485.0 85.0" style="stroke: var(--good, #059669)" fill="none" stroke-width="2.0" stroke-linejoin="round" stroke-dasharray="6 4" />
+  <path d="M 485.0 85.0 L 485.0 275.0" style="stroke: var(--good, #059669)" fill="none" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="2 3" />
+  <path d="M 485.0 275.0 L 655.0 275.0" style="stroke: var(--good, #059669)" fill="none" stroke-width="2.0" stroke-linejoin="round" stroke-dasharray="6 4" />
+  <text x="442.5" y="75.0" style="fill: var(--good, #059669)" text-anchor="middle"><tspan font-style="italic">B</tspan></text>
+  <path d="M 400.0 275.0 L 400.9 274.1 L 401.7 273.1 L 402.6 272.1 L 403.4 271.2 L 404.2 270.2 L 405.1 269.3 L 405.9 268.4 L 406.8 267.4 L 407.6 266.4 L 408.5 265.5 L 409.4 264.6 L 410.2 263.6 L 411.1 262.6 L 411.9 261.7 L 412.8 260.8 L 413.6 259.8 L 414.4 258.9 L 415.3 257.9 L 416.1 256.9 L 417.0 256.0 L 417.9 255.1 L 418.7 254.1 L 419.6 253.2 L 420.4 252.2 L 421.2 251.2 L 422.1 250.3 L 422.9 249.3 L 423.8 248.4 L 424.6 247.4 L 425.5 246.5 L 426.4 245.6 L 427.2 244.6 L 428.1 243.7 L 428.9 242.7 L 429.8 241.8 L 430.6 240.8 L 431.4 239.8 L 432.3 238.9 L 433.1 237.9 L 434.0 237.0 L 434.9 236.1 L 435.7 235.1 L 436.6 234.2 L 437.4 233.2 L 438.2 232.2 L 439.1 231.3 L 439.9 230.3 L 440.8 229.4 L 441.6 228.4 L 442.5 227.5 L 443.4 226.6 L 444.2 225.6 L 445.1 224.7 L 445.9 223.7 L 446.8 222.8 L 447.6 221.8 L 448.4 220.8 L 449.3 219.9 L 450.1 218.9 L 451.0 218.0 L 451.9 217.1 L 452.7 216.1 L 453.6 215.2 L 454.4 214.2 L 455.2 213.2 L 456.1 212.3 L 456.9 211.3 L 457.8 210.4 L 458.6 209.4 L 459.5 208.5 L 460.4 207.6 L 461.2 206.6 L 462.1 205.7 L 462.9 204.7 L 463.8 203.8 L 464.6 202.8 L 465.4 201.8 L 466.3 200.9 L 467.1 199.9 L 468.0 199.0 L 468.9 198.1 L 469.7 197.1 L 470.6 196.2 L 471.4 195.2 L 472.2 194.2 L 473.1 193.3 L 473.9 192.3 L 474.8 191.4 L 475.6 190.4 L 476.5 189.5 L 477.4 188.6 L 478.2 187.6 L 479.1 186.6 L 479.9 185.7 L 480.8 184.8 L 481.6 183.8 L 482.4 182.9 L 483.3 181.9 L 484.1 180.9 L 485.0 180.0 L 485.9 180.9 L 486.7 181.9 L 487.6 182.8 L 488.4 183.7 L 489.2 184.5 L 490.1 185.4 L 490.9 186.2 L 491.8 187.0 L 492.6 187.8 L 493.5 188.6 L 494.4 189.4 L 495.2 190.2 L 496.1 190.9 L 496.9 191.7 L 497.8 192.4 L 498.6 193.1 L 499.4 193.8 L 500.3 194.5 L 501.1 195.2 L 502.0 195.8 L 502.9 196.5 L 503.7 197.1 L 504.6 197.8 L 505.4 198.4 L 506.2 199.0 L 507.1 199.6 L 507.9 200.2 L 508.8 200.8 L 509.6 201.4 L 510.5 201.9 L 511.4 202.5 L 512.2 203.0 L 513.0 203.6 L 513.9 204.1 L 514.8 204.6 L 515.6 205.1 L 516.5 205.7 L 517.3 206.2 L 518.1 206.7 L 519.0 207.1 L 519.9 207.6 L 520.7 208.1 L 521.5 208.6 L 522.4 209.0 L 523.2 209.5 L 524.1 209.9 L 525.0 210.4 L 525.8 210.8 L 526.6 211.2 L 527.5 211.7 L 528.4 212.1 L 529.2 212.5 L 530.0 212.9 L 530.9 213.3 L 531.8 213.7 L 532.6 214.1 L 533.5 214.5 L 534.3 214.9 L 535.1 215.3 L 536.0 215.6 L 536.9 216.0 L 537.7 216.4 L 538.5 216.7 L 539.4 217.1 L 540.2 217.4 L 541.1 217.8 L 542.0 218.1 L 542.8 218.5 L 543.6 218.8 L 544.5 219.1 L 545.4 219.4 L 546.2 219.8 L 547.0 220.1 L 547.9 220.4 L 548.8 220.7 L 549.6 221.0 L 550.5 221.3 L 551.3 221.6 L 552.1 221.9 L 553.0 222.2 L 553.9 222.5 L 554.7 222.8 L 555.5 223.1 L 556.4 223.4 L 557.2 223.6 L 558.1 223.9 L 559.0 224.2 L 559.8 224.5 L 560.6 224.7 L 561.5 225.0 L 562.4 225.3 L 563.2 225.5 L 564.0 225.8 L 564.9 226.0 L 565.8 226.3 L 566.6 226.5 L 567.5 226.8 L 568.3 227.0 L 569.1 227.3 L 570.0 227.5 L 570.9 227.7 L 571.7 228.0 L 572.5 228.2 L 573.4 228.4 L 574.2 228.7 L 575.1 228.9 L 576.0 229.1 L 576.8 229.3 L 577.6 229.5 L 578.5 229.8 L 579.4 230.0 L 580.2 230.2 L 581.0 230.4 L 581.9 230.6 L 582.8 230.8 L 583.6 231.0 L 584.5 231.2 L 585.3 231.4 L 586.1 231.6 L 587.0 231.8 L 587.9 232.0 L 588.7 232.2 L 589.5 232.4 L 590.4 232.6 L 591.2 232.8 L 592.1 233.0 L 593.0 233.1 L 593.8 233.3 L 594.6 233.5 L 595.5 233.7 L 596.4 233.9 L 597.2 234.1 L 598.0 234.2 L 598.9 234.4 L 599.8 234.6 L 600.6 234.7 L 601.5 234.9 L 602.3 235.1 L 603.1 235.3 L 604.0 235.4 L 604.9 235.6 L 605.7 235.7 L 606.5 235.9 L 607.4 236.1 L 608.2 236.2 L 609.1 236.4 L 610.0 236.5 L 610.8 236.7 L 611.6 236.8 L 612.5 237.0 L 613.4 237.2 L 614.2 237.3 L 615.0 237.5 L 615.9 237.6 L 616.8 237.7 L 617.6 237.9 L 618.5 238.0 L 619.3 238.2 L 620.1 238.3 L 621.0 238.5 L 621.9 238.6 L 622.7 238.7 L 623.5 238.9 L 624.4 239.0 L 625.2 239.2 L 626.1 239.3 L 627.0 239.4 L 627.8 239.6 L 628.6 239.7 L 629.5 239.8 L 630.4 239.9 L 631.2 240.1 L 632.0 240.2 L 632.9 240.3 L 633.8 240.5 L 634.6 240.6 L 635.5 240.7 L 636.3 240.8 L 637.1 240.9 L 638.0 241.1 L 638.9 241.2 L 639.7 241.3 L 640.5 241.4 L 641.4 241.5 L 642.2 241.7 L 643.1 241.8 L 644.0 241.9 L 644.8 242.0 L 645.6 242.1 L 646.5 242.2 L 647.4 242.4 L 648.2 242.5 L 649.0 242.6 L 649.9 242.7 L 650.8 242.8 L 651.6 242.9 L 652.5 243.0 L 653.3 243.1 L 654.1 243.2 L 655.0 243.3" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="2.2" stroke-linejoin="round" />
+  <text x="531.8" y="172.0" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">A</tspan><tspan dy="4" font-size="11">ψ</tspan></text>
+  <text x="531.8" y="24.0" fill="currentColor" text-anchor="middle">大小随离轴距离的变化</text>
+</svg>

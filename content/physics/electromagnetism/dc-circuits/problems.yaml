@@ -1,0 +1,154 @@
+- id: p1
+  tier: easy
+  statement: |
+    电动势为$9.0\,\mathrm V$、内阻为$0.50\,\Omega$的电池，接上$8.5\,\Omega$的电阻。求电池两极之间的电势差，保留三位有效数字。
+  answer:
+    type: number
+    value: 9.0*8.5/(8.5+0.50)
+    unit: |
+      $\mathrm V$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先由回路定律（loop rule）求电流，再用$\varphi_+-\varphi_-=\mathcal E-Ir$。
+    - |
+      $I=\frac{\mathcal E}{R+r}=\frac{9.0}{9.0}\,\mathrm A=1.0\,\mathrm A$。
+    - |
+      $\varphi_+-\varphi_-=9.0\,\mathrm V-1.0\times0.50\,\mathrm V=8.50\,\mathrm V$，也就是外电阻两端的电势差$IR$。
+  solution: |
+    $I=\frac{\mathcal E}{R+r}=1.0\,\mathrm A$，两极之间的电势差是$\mathcal E-Ir=9.0\,\mathrm V-0.50\,\mathrm V=8.50\,\mathrm V$，等于$IR$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $12\,\Omega$、$6.0\,\Omega$、$4.0\,\Omega$三个电阻并联，求等效电阻（equivalent resistance），保留三位有效数字。
+  answer:
+    type: number
+    value: 1/(1/12+1/6.0+1/4.0)
+    unit: |
+      $\Omega$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      并联时各电阻两端的电势差相同，电流相加，所以电阻的倒数相加。
+    - |
+      $\frac1R=\frac1{12}+\frac16+\frac14$，通分到$12$。
+    - |
+      $\frac1R=\frac{1+2+3}{12}\,\Omega^{-1}=\frac12\,\Omega^{-1}$，$R=2.00\,\Omega$。
+  solution: |
+    $\frac1R=\frac1{12}+\frac16+\frac14=\frac12$（单位$\Omega^{-1}$），$R=2.00\,\Omega$，比三个中最小的$4.0\,\Omega$还小。
+
+- id: p3
+  tier: medium
+  statement: |
+    三条支路并联在节点$A$、$B$之间：第一条是电动势$12\,\mathrm V$的电源和$2.0\,\Omega$的电阻串联，第二条是电动势$6.0\,\mathrm V$的电源和$4.0\,\Omega$的电阻串联，两个电源的正极都朝向$A$；第三条只有一个$4.0\,\Omega$的电阻。电源的内阻不计。求第三条支路里的电流，保留三位有效数字。
+  answer:
+    type: number
+    value: (12/2.0+6.0/4.0)/(1/2.0+1/4.0+1/4.0)/4.0
+    unit: |
+      $\mathrm A$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      以$A$、$B$之间的电势差$\Delta\varphi=\varphi_A-\varphi_B$为未知数，三条支路的电流都能用它写出来，再用节点定律（junction rule）。
+    - |
+      第一条支路流向$A$的电流是$\frac{12\,\mathrm V-\Delta\varphi}{2.0\,\Omega}$，第二条是$\frac{6.0\,\mathrm V-\Delta\varphi}{4.0\,\Omega}$，第三条从$A$流走$\frac{\Delta\varphi}{4.0\,\Omega}$。
+    - |
+      $\frac{12-\Delta\varphi}{2}+\frac{6-\Delta\varphi}{4}=\frac{\Delta\varphi}{4}$，$\Delta\varphi=7.5\,\mathrm V$，第三条支路的电流是$1.88\,\mathrm A$。
+  solution: |
+    设$\Delta\varphi=\varphi_A-\varphi_B$。第一条支路流向$A$的电流是$\frac{12-\Delta\varphi}{2.0}$，第二条是$\frac{6.0-\Delta\varphi}{4.0}$，第三条从$A$流向$B$的是$\frac{\Delta\varphi}{4.0}$（电流以$\mathrm A$、电势差以$\mathrm V$为单位）。
+
+    节点$A$上，流进等于流出：$\frac{12-\Delta\varphi}{2}+\frac{6-\Delta\varphi}{4}=\frac{\Delta\varphi}{4}$，解得$\Delta\varphi=7.5\,\mathrm V$。第三条支路的电流是$\frac{7.5}{4.0}\,\mathrm A\approx1.88\,\mathrm A$。顺便可以看出，第二条支路的电流是$\frac{6.0-7.5}{4.0}\,\mathrm A<0$，电流从它的电源正极流进去。
+
+- id: p4
+  tier: medium
+  statement: |
+    一个电池接上$4.0\,\Omega$的电阻时，电流是$1.0\,\mathrm A$；换成$9.0\,\Omega$的电阻时，电流是$0.50\,\mathrm A$。求电池的电动势（以$\mathrm V$为单位）和内阻（以$\Omega$为单位），依次填写。
+  answer:
+    type: tuple
+    value: [5.0, 1.0]
+  hints:
+    - |
+      电动势和内阻不随外电阻变：两次都有$\mathcal E=I(R+r)$。
+    - |
+      $1.0\times(4.0+r)=0.50\times(9.0+r)$。
+    - |
+      $r=1.0\,\Omega$，$\mathcal E=1.0\times(4.0+1.0)\,\mathrm V=5.0\,\mathrm V$。
+  solution: |
+    两次都有$\mathcal E=I(R+r)$：$\mathcal E=1.0\times(4.0+r)$，$\mathcal E=0.50\times(9.0+r)$。两式相减得$0.50r=0.50$，$r=1.0\,\Omega$，$\mathcal E=5.0\,\mathrm V$。这正是实验室里测电池电动势和内阻的一种办法。
+
+- id: p5
+  tier: hard
+  statement: |
+    阻值都是$R$的电阻连成一个无穷长的梯形网络（ladder network）：从输入端$A_0$经一个电阻到节点$A_1$，$A_1$经一个电阻接到下面的公共导线，再经一个电阻到$A_2$，$A_2$又经一个电阻接到公共导线……一直延续下去。
+
+    （1）$A_0$和公共导线之间的电阻是多少？（2）在$A_0$和公共导线之间加电势差$\Delta\varphi_0$，节点$A_n$和公共导线之间的电势差是多少？
+  hints:
+    - |
+      网络是无穷长的，从$A_1$往右看，去掉第一节以后剩下的网络和原来的一模一样。
+    - |
+      设所求电阻为$R_\infty$，第一节是一个电阻串联上「一个电阻和$R_\infty$的并联」：$R_\infty=R+\frac{RR_\infty}{R+R_\infty}$。
+    - |
+      $R_\infty=\frac{1+\sqrt5}{2}R\approx1.618R$；每过一节，电势差变成前一节的$\frac{R}{R+R_\infty}=\frac{3-\sqrt5}{2}\approx0.382$。
+  reference: |
+    （1）设$A_0$和公共导线之间的电阻为$R_\infty$。从$A_1$往右看，去掉第一节后剩下的网络和原来的一样，它在$A_1$处和那个接到公共导线的电阻并联，再和第一个电阻串联，所以$R_\infty=R+\frac{RR_\infty}{R+R_\infty}$。整理得$R_\infty^2-RR_\infty-R^2=0$，取正根，$R_\infty=\frac{1+\sqrt5}{2}R\approx1.618R$，正好是黄金分割比乘$R$。
+
+    严格地说，无穷网络的电阻是有限节数时的极限：$n$节的电阻$R_n$满足$R_{n+1}=R+\frac{RR_n}{R+R_n}$，从$R_1=2R$起单调减少、有下界，极限就是上面方程的正根。
+
+    （2）$A_0$和公共导线之间的电势差$\Delta\varphi_0$，加在第一个电阻和$A_1$右边的并联部分（电阻$\frac{RR_\infty}{R+R_\infty}$）上，按电阻的比例分配：$\Delta\varphi_1=\Delta\varphi_0\cdot\frac{RR_\infty/(R+R_\infty)}{R_\infty}=\Delta\varphi_0\frac{R}{R+R_\infty}=\frac{3-\sqrt5}{2}\Delta\varphi_0$。每一节都一样，所以$\Delta\varphi_n=\Bigl(\frac{3-\sqrt5}{2}\Bigr)^n\Delta\varphi_0\approx0.382^n\Delta\varphi_0$，沿着网络按等比数列衰减。这种网络可以用来模拟一根漏电的长电缆：信号沿电缆走得越远越弱。
+
+- id: p6
+  tier: hard
+  statement: |
+    十二个阻值都是$R$的电阻连成一个立方体的十二条棱。
+
+    （1）求立方体一条体对角线两端之间的电阻。（2）求一条棱两端之间的电阻。
+  hints:
+    - |
+      用对称性找电势相等的点：电势相等的点用导线连起来，或者把它们之间的电阻拿掉，都不改变各处的电流。
+    - |
+      （1）电流从顶点$A$流进、从体对角线的另一端$G$流出时，和$A$相邻的三个顶点地位相同，电势相等，和$G$相邻的三个也一样；于是电路变成 3 个、6 个、3 个电阻的并联组再串联。（2）把立方体关于这条棱的中垂面反射，电势的分布反过来。
+    - |
+      （1）$\frac R3+\frac R6+\frac R3=\frac56R$。（2）用对称性只剩两个未知电势，解出棱两端的电阻是$\frac{7}{12}R$。
+  reference: |
+    （1）设电流$I$从顶点$A$流进、从体对角线的另一端$G$流出。把立方体绕体对角线$AG$转$120^\circ$，网络不变，所以和$A$相邻的三个顶点电势相等，和$G$相邻的三个顶点也电势相等。电流从$A$分成三份经过三个电阻，再分到中间的六个电阻，最后汇成三份流进$G$：$R_{AG}=\frac R3+\frac R6+\frac R3=\frac56R$。
+
+    （2）用坐标表示顶点，$A=(0,0,0)$，$B=(1,0,0)$，电流从$A$流进、从$B$流出，设$\varphi_A=\Delta\varphi$，$\varphi_B=0$。网络关于$x=\frac12$的平面对称，电流反向时电势分布反过来，所以$\varphi(1,y,z)=\Delta\varphi-\varphi(0,y,z)$；交换$y$、$z$，网络和$A$、$B$都不变，所以$\varphi(0,1,0)=\varphi(0,0,1)=a$，记$\varphi(0,1,1)=b$。
+
+    对顶点$(0,1,0)$用节点定律：它的三个邻居电势是$\Delta\varphi$、$b$、$\Delta\varphi-a$，得$2\Delta\varphi+b-4a=0$。对$(0,1,1)$：邻居电势是$a$、$a$、$\Delta\varphi-b$，得$2a+\Delta\varphi-4b=0$。解得$a=\frac{9}{14}\Delta\varphi$，$b=\frac47\Delta\varphi$。
+
+    从$A$流出的电流是$\frac{\Delta\varphi-0}{R}+2\cdot\frac{\Delta\varphi-a}{R}=\frac{12}{7}\cdot\frac{\Delta\varphi}{R}$，所以$R_{AB}=\frac{7}{12}R$，比单独一条棱的$R$小，因为别的路径和这条棱并联。
+
+- id: p7
+  tier: thinking
+  statement: |
+    发电厂向远处的城市输送电能，要求送到的功率一定。为什么输电线上要用很高的电势差（几十万伏），而不是用家里那样的两百多伏？
+  hints:
+    - |
+      输送的功率是$P=\Delta\varphi\cdot I$，输电线有电阻$R_{\text{线}}$，线上发热$I^2R_{\text{线}}$。
+    - |
+      $P$一定时，$\Delta\varphi$提高到$10$倍，电流变成$\frac1{10}$，线上的损耗变成多少？
+    - |
+      损耗$\frac{P^2}{\Delta\varphi^2}R_{\text{线}}$和$\Delta\varphi$的平方成反比；到了用户那里，再把电势差降下来。
+  reference: |
+    输送的功率$P=\Delta\varphi\cdot I$，输电线的电阻$R_{\text{线}}$上每秒放出焦耳热$I^2R_{\text{线}}=\frac{P^2}{\Delta\varphi^2}R_{\text{线}}$。功率一定时，电势差越高，电流越小，损耗和电势差的平方成反比。例如输送$1.0\,\mathrm{MW}$，线路电阻$10\,\Omega$：用$10\,\mathrm{kV}$时电流$100\,\mathrm A$，线上损耗$100\,\mathrm{kW}$，占十分之一；用$100\,\mathrm{kV}$时电流$10\,\mathrm A$，损耗只有$1\,\mathrm{kW}$，占千分之一。
+
+    要减小损耗，另一个办法是把导线做粗、减小$R_{\text{线}}$，但导线的重量和成本随之增加，远不如提高电势差划算。高压对用户不安全，所以在用户附近要把电势差降下来；交流电可以用变压器方便地升压、降压，这是交流电输电的一大优点（见[交流电路与阻抗](lesson:physics.electromagnetism.ac-circuits)）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    电路图里常把导线当作电阻为零。可是由欧姆定律$\vb J=\sigma\vb E$，电阻为零的导线里电场为零，电流却不为零，这矛盾吗？真的有电阻为零的导线吗？
+  hints:
+    - |
+      电阻为零相当于$\sigma\to\infty$。$\vb E=\frac{\vb J}{\sigma}$在$\sigma\to\infty$而$\vb J$有限时趋于什么？
+    - |
+      估算一根真实的铜导线（横截面积$1\,\mathrm{mm^2}$，电流$1\,\mathrm A$）里的电场有多大。
+    - |
+      超导体（superconductor）：1911 年昂内斯（Heike Kamerlingh Onnes）发现，汞在约$4.2\,\mathrm K$以下电阻消失。
+  reference: |
+    不矛盾。$\vb E=\frac{\vb J}{\sigma}$，$\sigma$越大，维持同样的电流需要的电场越小；「电阻为零」是$\sigma\to\infty$的极限，这时电场趋于零而电流有限。电荷在导线里流动并不需要电场「一直推」，电场只是用来克服碰撞造成的阻力，阻力越小需要的电场越小。
+
+    真实的铜导线电阻很小但不为零：横截面积$1\,\mathrm{mm^2}$、电流$1\,\mathrm A$时，$J=10^6\,\mathrm{A/m^2}$，$E=\frac J\sigma\approx\frac{10^6}{5.96\times10^7}\,\mathrm{V/m}\approx0.017\,\mathrm{V/m}$，一米导线上的电势差约$0.017\,\mathrm V$，不到五十分之一伏，和电路里别的电势差比起来可以忽略，这就是「理想导线」的意思。
+
+    真正电阻为零的材料是超导体。1911 年，昂内斯（Heike Kamerlingh Onnes）把汞冷却到约$4.2\,\mathrm K$以下，发现它的电阻突然消失；后来发现许多金属和合金在足够低的温度下都会这样。超导体里电流可以在没有电场的情况下一直流下去，它的性质不能用经典的碰撞图像解释，要用量子力学。

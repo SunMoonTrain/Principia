@@ -1,0 +1,151 @@
+- id: p1
+  tier: easy
+  statement: |
+    一段长$0.20\,\mathrm m$的直导线通有$5.0\,\mathrm A$的电流，放在$0.30\,\mathrm T$的匀强磁场里，导线和磁场的夹角是$60^\circ$。导线受的磁力是多大？保留三位有效数字。
+  answer:
+    type: number
+    value: 0.20*5.0*0.30*sin(pi/3)
+    unit: |
+      $\mathrm N$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      匀强磁场里直导线受力$\vb F=I\vb L\times\vb B$，大小是$ILB\sin\theta$。
+    - |
+      $\theta=60^\circ$，$\sin60^\circ\approx0.866$。
+    - |
+      $F=5.0\times0.20\times0.30\times0.866\,\mathrm N\approx0.260\,\mathrm N$。
+  solution: |
+    $F=ILB\sin60^\circ=5.0\times0.20\times0.30\times0.866\,\mathrm N\approx0.260\,\mathrm N$，方向垂直于导线和磁场所在的平面。
+
+- id: p2
+  tier: easy
+  statement: |
+    一个$100$匝的圆形线圈，半径$2.0\,\mathrm{cm}$，通有$0.50\,\mathrm A$的电流，放在$0.20\,\mathrm T$的匀强磁场里，线圈平面和磁场平行。线圈受的磁力矩是多大？保留三位有效数字。
+  answer:
+    type: number
+    value: 100*0.50*pi*0.020^2*0.20
+    unit: |
+      $\mathrm{N\,m}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先求磁矩（magnetic dipole moment）$m=NI\pi r^2$；线圈平面和磁场平行时，磁矩和磁场垂直。
+    - |
+      $m=100\times0.50\times\pi\times(0.020)^2\,\mathrm{A\,m^2}\approx6.28\times10^{-2}\,\mathrm{A\,m^2}$，$\tau=mB\sin90^\circ$。
+    - |
+      $\tau=6.28\times10^{-2}\times0.20\,\mathrm{N\,m}\approx1.26\times10^{-2}\,\mathrm{N\,m}$。
+  solution: |
+    磁矩$m=NI\pi r^2\approx6.28\times10^{-2}\,\mathrm{A\,m^2}$，方向垂直于线圈平面，和磁场垂直，力矩最大：$\tau=mB\approx1.26\times10^{-2}\,\mathrm{N\,m}$。
+
+- id: p3
+  tier: medium
+  statement: |
+    一条厚$0.10\,\mathrm{mm}$的铜片里通有$10\,\mathrm A$的电流，$1.0\,\mathrm T$的磁场垂直于铜片。铜里每立方米有$8.5\times10^{28}$个能移动的电子。铜片两侧的霍尔电势差是多大？以$\mu\mathrm V$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 10*1.0/(8.5e28*1.602176634e-19*1.0e-4)*1e6
+    unit: |
+      $\mu\mathrm V$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      霍尔效应（Hall effect）的电势差是$\frac{IB}{nqt}$，$t$是沿磁场方向的厚度，和铜片的宽度无关。
+    - |
+      $nqt=8.5\times10^{28}\times1.602\times10^{-19}\times1.0\times10^{-4}\,\mathrm{C/m^2}\approx1.36\times10^6\,\mathrm{C/m^2}$。
+    - |
+      电势差$\frac{10\times1.0}{1.36\times10^6}\,\mathrm V\approx7.34\times10^{-6}\,\mathrm V=7.34\,\mu\mathrm V$。
+  solution: |
+    电势差是$\frac{IB}{net}=\frac{10\times1.0}{8.5\times10^{28}\times1.602\times10^{-19}\times1.0\times10^{-4}}\,\mathrm V\approx7.34\,\mu\mathrm V$。金属里载流子多，霍尔电势差很小；半导体里$n$小得多，电势差大得多，所以霍尔元件用半导体做。
+
+- id: p4
+  tier: medium
+  statement: |
+    一个$50$匝的线圈，面积$4.0\,\mathrm{cm^2}$，通有$2.0\,\mathrm A$的电流，放在$0.50\,\mathrm T$的匀强磁场里，开始时磁矩和磁场同向。把它慢慢转到磁矩和磁场反向，外力至少要做多少功？保留三位有效数字。
+  answer:
+    type: number
+    value: 2*50*2.0*4.0e-4*0.50
+    unit: |
+      $\mathrm J$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      磁矩在磁场里的势能是$U=-\vb m\cdot\vb B$；慢慢转动，外力做的功等于势能的增加。
+    - |
+      $m=NIa=50\times2.0\times4.0\times10^{-4}\,\mathrm{A\,m^2}=4.0\times10^{-2}\,\mathrm{A\,m^2}$；势能从$-mB$变成$+mB$。
+    - |
+      外力做功$2mB=2\times4.0\times10^{-2}\times0.50\,\mathrm J=4.00\times10^{-2}\,\mathrm J$。
+  solution: |
+    $m=NIa=4.0\times10^{-2}\,\mathrm{A\,m^2}$。势能从$-mB$变成$mB$，增加$2mB$；慢慢转动时动能不变，外力做的功就是$2mB=4.00\times10^{-2}\,\mathrm J$。
+
+- id: p5
+  tier: hard
+  statement: |
+    半径为$R$、质量为$M$的薄圆盘均匀带电$Q$，电荷和质量都均匀分布在盘面上，绕通过盘心、垂直于盘面的轴以角速度$\omega$转动。
+
+    （1）求它的磁矩。（2）求它的角动量。（3）磁矩和角动量之比是多少？和例 2 里电子轨道的比值比较。
+  hints:
+    - |
+      把圆盘分成半径为$r$、宽$\dd r$的细圆环：每个圆环的电荷随圆盘转动，相当于一个圆形电流。
+    - |
+      圆环的电荷是$\frac{Q}{\pi R^2}2\pi r\,\dd r$，转一圈的时间$\frac{2\pi}{\omega}$，电流$\dd I=\frac{Q\omega r\,\dd r}{\pi R^2}$，磁矩$\pi r^2\dd I$。
+    - |
+      $m=\frac14Q\omega R^2$，$L=\frac12M\omega R^2$，比值$\frac{Q}{2M}$，和电子轨道的$\frac{e}{2m_{\mathrm e}}$形式相同。
+  reference: |
+    （1）把圆盘分成半径为$r$、宽$\dd r$的细圆环。圆环带电$\dd q=\frac{Q}{\pi R^2}\cdot2\pi r\,\dd r$，每$\frac{2\pi}{\omega}$转一圈，相当于电流$\dd I=\frac{\omega\,\dd q}{2\pi}=\frac{Q\omega r\,\dd r}{\pi R^2}$，磁矩$\pi r^2\dd I=\frac{Q\omega r^3\dd r}{R^2}$。从$0$积到$R$，$m=\frac14Q\omega R^2$，方向沿转轴：$Q>0$时和角速度同向。
+
+    （2）圆环的质量$\dd M=\frac{M}{\pi R^2}2\pi r\,\dd r$，每一点的速度都和半径垂直，大小$\omega r$，角动量$r\cdot\omega r\cdot\dd M=\frac{2M\omega r^3\dd r}{R^2}$，积分得$L=\frac12M\omega R^2$，方向也沿转轴。
+
+    （3）$\frac mL=\frac{Q}{2M}$，和半径、角速度都无关；电荷和质量的分布相同时，任何转动的物体都是这样，例 2 的电子轨道$\frac{e}{2m_{\mathrm e}}$是同一个规律。这个比值叫作回转磁比（gyromagnetic ratio）。电子本身的自旋（spin）磁矩和自旋角动量之比却约是$\frac{e}{m_{\mathrm e}}$，是这个经典值的$2$倍，说明自旋不能想象成带电小球的自转，要用量子力学理解。
+
+- id: p6
+  tier: hard
+  statement: |
+    简单的直流电动机：$N$匝矩形线圈，边长$a$、$b$，绕平行于$b$边的轴在匀强磁场$B$里转动，轴垂直于磁场；线圈里的电流$I$不变，换向器在线圈平面转到和磁场垂直时把电流反向。
+
+    （1）力矩怎样随转角变化？没有换向器会怎样？（2）转一圈的平均力矩是多少？（3）取$N=50$，$a=b=0.10\,\mathrm m$，$I=2.0\,\mathrm A$，$B=0.40\,\mathrm T$，线圈每分钟转$3000$圈，求平均的机械功率。
+  hints:
+    - |
+      力矩是$NIabB\sin\theta$，$\theta$是磁矩和磁场的夹角；换向器让力矩始终朝同一个方向转。
+    - |
+      有换向器时力矩是$NIabB|\sin\theta|$，$|\sin\theta|$在一圈里的平均值是$\frac2\pi$。
+    - |
+      平均力矩$\frac2\pi NIabB\approx0.255\,\mathrm{N\,m}$，角速度$100\pi\,\mathrm{rad/s}$，功率约$80\,\mathrm W$。
+  reference: |
+    （1）力矩的大小是$NIabB\sin\theta$。没有换向器时，$\theta$从$0$到$\pi$和从$\pi$到$2\pi$，力矩的方向相反：线圈转过和磁场垂直的位置后被往回拉，只能在磁矩和磁场同向的位置附近来回摆动，最后停在那里。有换向器时，每到$\theta=0$或$\pi$电流反向，磁矩跟着反向，力矩始终朝同一个方向，大小是$NIabB|\sin\theta|$。
+
+    （2）$|\sin\theta|$在一圈里的平均值是$\frac{1}{2\pi}\int_0^{2\pi}|\sin\theta|\,\dd\theta=\frac2\pi$，平均力矩是$\frac2\pi NIabB$。力矩在$\theta=0$、$\pi$附近接近零，实用的电动机用多组线圈错开角度，让力矩更平稳。
+
+    （3）$NIabB=50\times2.0\times0.10\times0.10\times0.40\,\mathrm{N\,m}=0.40\,\mathrm{N\,m}$，平均力矩约$0.255\,\mathrm{N\,m}$。每分钟$3000$圈，角速度$\omega=100\pi\,\mathrm{rad/s}$，平均功率$\bar\tau\omega\approx0.255\times314\,\mathrm W\approx80\,\mathrm W$。线圈转动时还会产生反向的感应电动势（induced electromotive force），电流不会一直保持不变（见[法拉第电磁感应定律](lesson:physics.electromagnetism.faraday-law)），这里先不考虑。
+
+- id: p7
+  tier: thinking
+  statement: |
+    磁力作用在导线里运动的电子上，可导线里的正离子（晶格）并不随电流运动，不受磁力。为什么整根导线会被推动？
+  hints:
+    - |
+      想想霍尔效应：电子被推到导线的一侧以后会怎样？
+    - |
+      积累在一侧的电荷产生横向电场；稳定以后，电子受的横向电力和磁力抵消。
+    - |
+      这个横向电场同样作用在正离子上，正离子受的电力就是传给导线的力；算一算它的总和。
+  reference: |
+    磁力$q\vb v_{\mathrm d}\times\vb B$把电子推向导线的一侧，那一侧积累负电荷，另一侧留下正电荷，产生横向的霍尔电场$\vb E_{\mathrm H}$。电子很快达到稳定：横向的电力和磁力抵消，电子不再偏移，沿导线漂移。
+
+    这个横向电场也作用在晶格的正离子上。单位体积里正离子的电荷是$ne$，和电子的电荷大小相同，受的电力$ne\vb E_{\mathrm H}$，而电子受的电力$-ne\vb E_{\mathrm H}$恰好和电子受的磁力抵消，所以正离子受的电力等于电子受的磁力$\vb J\times\vb B$。磁力就这样经过霍尔电场传给了导线的晶格，整根导线受力$I\vb L\times\vb B$。这和推一辆车时手推的是车门、整辆车跟着动一样：力最先作用在哪里，最后都由内部的相互作用传给整个物体。
+
+- id: p8
+  tier: thinking
+  statement: |
+    磁电式电流表（moving-coil ammeter）里，线圈装在磁铁两极之间，可以绕轴转动，一根细的螺旋弹簧产生和转角成正比的回复力矩，指针的偏转角表示电流的大小。磁极和中间的铁芯做成弧形，使线圈转到哪里，它的两条边都处在大小相同、沿半径方向的磁场里。为什么要这样设计？
+  hints:
+    - |
+      在匀强磁场里，线圈受的力矩是$NIabB\sin\theta$，和转角有关。
+    - |
+      沿半径方向的磁场里，线圈的两条边总和磁场垂直，力矩是多少？
+    - |
+      力矩$NIabB$和转角无关，和弹簧的回复力矩$\kappa\alpha$（$\alpha$是偏转角）平衡时，偏转角和电流成正比，刻度是均匀的。
+  reference: |
+    在匀强磁场里，线圈受的力矩$NIabB\sin\theta$随转角变化，偏转角和电流不成正比，表盘的刻度不均匀，转到磁矩和磁场同向时力矩还会变成零。
+
+    把磁极和铁芯做成弧形，两者之间的磁场沿半径方向、大小处处相同。线圈的两条有效边无论转到哪里，都和磁场垂直，受的力都是$NIbB$，方向都垂直于线圈平面，力矩总是$NIabB$，和转角无关。弹簧的回复力矩是$\kappa\alpha$（$\alpha$是偏转角，$\kappa$由弹簧决定），平衡时$\alpha=\frac{NabB}{\kappa}I$，偏转角和电流成正比，刻度是均匀的。$\frac{NabB}{\kappa}$越大，电流表越灵敏：多绕几匝、用强磁铁、用软的弹簧。

@@ -445,3 +445,275 @@ glossary:
       电容器一个极板的电荷与两板电势差之比$C=\frac{Q}{\Delta\varphi}$，和带电多少无关，由两个导体的形状、大小、相对位置和中间的电介质决定，单位是法拉。
     definedIn: physics.electromagnetism.capacitors
     anchor: def-capacitor
+  - id: physics.electromagnetism.electric-current
+    zh: |
+      电流
+    en: |
+      electric current
+    brief: |
+      单位时间穿过一个曲面的电荷$I=\dv Qt$，单位是安培；它是一个有正负的数，正负由选定的穿过方向决定。
+    definedIn: physics.electromagnetism.current-density
+    anchor: def-current
+  - id: physics.electromagnetism.current-density
+    zh: |
+      电流密度
+    en: |
+      current density
+    brief: |
+      方向是正电荷流动方向、大小是单位垂直面积上电流的矢量$\vb J$；只在薄层里流动的电流用面电流密度$\vb K$描述。
+    definedIn: physics.electromagnetism.current-density
+    anchor: def-current-density
+  - id: physics.electromagnetism.charge-carrier
+    zh: |
+      载流子
+    en: |
+      charge carrier
+    brief: |
+      导体里能移动、形成电流的带电粒子，例如金属里的电子、电解液里的正负离子。
+    definedIn: physics.electromagnetism.current-density
+    anchor: thm-drift
+  - id: physics.electromagnetism.drift-velocity
+    zh: |
+      漂移速度
+    en: |
+      drift velocity
+    brief: |
+      导体里载流子平均的定向速度$\vb v_{\mathrm d}$；每单位体积有$n$个、各带电$q$时，电流密度$\vb J=nq\vb v_{\mathrm d}$。
+    definedIn: physics.electromagnetism.current-density
+    anchor: thm-drift
+  - id: physics.electromagnetism.continuity-equation
+    zh: |
+      连续性方程
+    en: |
+      continuity equation
+    brief: |
+      电荷守恒在每一点的形式$\pdv\rho t+\divg\vb J=0$（$\rho$是电荷密度，$\vb J$是电流密度）：一处的电荷减少多快，电流就从那里流出多快。
+    definedIn: physics.electromagnetism.current-density
+    anchor: thm-continuity
+  - id: physics.electromagnetism.steady-current
+    zh: |
+      恒定电流
+    en: |
+      steady current
+    brief: |
+      各处电流密度和电荷密度都不随时间变化的电流；这时$\divg\vb J=0$，一根导线各个截面上的电流相同。
+    definedIn: physics.electromagnetism.current-density
+    anchor: def-steady-current
+  - id: physics.electromagnetism.ohms-law
+    zh: |
+      欧姆定律
+    en: |
+      Ohm's law
+    brief: |
+      许多导体里电流密度和电场成正比，$\vb J=\sigma\vb E$；对一段导体，就是两端的电势差和电流成正比。
+    definedIn: physics.electromagnetism.current-density
+    anchor: def-ohm
+  - id: physics.electromagnetism.conductivity
+    zh: |
+      电导率
+    en: |
+      electrical conductivity
+    brief: |
+      欧姆定律$\vb J=\sigma\vb E$里的比例系数$\sigma$，由材料和温度决定，单位是$\mathrm{S/m}$。
+    definedIn: physics.electromagnetism.current-density
+    anchor: def-ohm
+  - id: physics.electromagnetism.resistance
+    zh: |
+      电阻
+    en: |
+      resistance
+    brief: |
+      一段导体两端的电势差与电流之比$R=\frac{\varphi_a-\varphi_b}{I}$，单位是欧姆；长$L$、截面积$A$、电导率$\sigma$的均匀导线，电阻是$\frac{L}{\sigma A}$。
+    definedIn: physics.electromagnetism.current-density
+    anchor: def-resistance
+  - id: physics.electromagnetism.resistivity
+    zh: |
+      电阻率
+    en: |
+      resistivity
+    brief: |
+      电导率的倒数$\frac1\sigma$，单位是$\Omega\,\mathrm m$；长$L$、截面积$A$的均匀导线，电阻是电阻率乘$\frac LA$。
+    definedIn: physics.electromagnetism.current-density
+    anchor: thm-wire-resistance
+  - id: physics.electromagnetism.joule-heating
+    zh: |
+      焦耳热
+    en: |
+      Joule heating
+    brief: |
+      电流通过导体时电场做的功变成的热；单位体积每秒$\vb J\cdot\vb E$，一段电阻上每秒$I^2R$。
+    definedIn: physics.electromagnetism.current-density
+    anchor: thm-joule
+  - id: physics.electromagnetism.electromotive-force
+    zh: |
+      电动势
+    en: |
+      electromotive force
+    abbr: |
+      emf
+    brief: |
+      电源里的非静电力把单位正电荷沿电路推一圈所做的功$\mathcal E$，单位是伏特；它不是力。
+    definedIn: physics.electromagnetism.dc-circuits
+    anchor: def-emf
+  - id: physics.electromagnetism.internal-resistance
+    zh: |
+      内阻
+    en: |
+      internal resistance
+    brief: |
+      电源内部的电阻$r$；电源输出电流$I$时，两极之间的电势差是$\mathcal E-Ir$，比电动势小。
+    definedIn: physics.electromagnetism.dc-circuits
+    anchor: def-internal-resistance
+  - id: physics.electromagnetism.kirchhoff-laws
+    zh: |
+      基尔霍夫定律
+    en: |
+      Kirchhoff's circuit laws
+    brief: |
+      节点定律：流进一个节点的电流等于流出的；回路定律：沿闭合回路一圈，电动势之和等于电阻上的电势降落之和。
+    definedIn: physics.electromagnetism.dc-circuits
+    anchor: thm-kirchhoff
+  - id: physics.electromagnetism.time-constant
+    zh: |
+      时间常数
+    en: |
+      time constant
+    brief: |
+      按$e^{-t/\tau}$衰减的量里的$\tau$：每过时间$\tau$，它变成原来的$\frac1e$；RC 电路的时间常数是$RC$。
+    definedIn: physics.electromagnetism.rc-circuits
+    anchor: def-time-constant
+  - id: physics.electromagnetism.magnetic-field
+    zh: |
+      磁场
+    en: |
+      magnetic field
+    brief: |
+      描述运动电荷所受磁力的矢量场$\vb B$：以速度$\vb v$运动的电荷$q$受力$q\vb v\times\vb B$；单位是特斯拉，也叫磁感应强度。
+    definedIn: physics.electromagnetism.lorentz-force
+    anchor: def-magnetic-field
+  - id: physics.electromagnetism.magnetic-field-line
+    zh: |
+      磁场线
+    en: |
+      magnetic field line
+    brief: |
+      处处和磁场方向相切的曲线，也叫磁感线；磁场强的地方画得密，它不会在任何地方开始或终止。
+    definedIn: physics.electromagnetism.lorentz-force
+    anchor: def-magnetic-field-line
+  - id: physics.electromagnetism.lorentz-force
+    zh: |
+      洛伦兹力
+    en: |
+      Lorentz force
+    brief: |
+      电荷$q$以速度$\vb v$在电场$\vb E$和磁场$\vb B$里受的力$q(\vb E+\vb v\times\vb B)$；磁场部分和速度垂直，不做功。
+    definedIn: physics.electromagnetism.lorentz-force
+    anchor: def-lorentz-force
+  - id: physics.electromagnetism.cyclotron-frequency
+    zh: |
+      回旋频率
+    en: |
+      cyclotron frequency
+    brief: |
+      带电粒子在匀强磁场里绕圈的频率$f_{\mathrm c}=\frac{|q|B}{2\pi m}$，和速率无关；角频率是$\omega_{\mathrm c}=\frac{|q|B}{m}$。
+    definedIn: physics.electromagnetism.lorentz-force
+    anchor: thm-cyclotron
+  - id: physics.electromagnetism.current-element
+    zh: |
+      电流元
+    en: |
+      current element
+    brief: |
+      细导线上的一小段电流$I\,\dd\vb l$（$\dd\vb l$沿电流方向）；它在磁场里受力$I\,\dd\vb l\times\vb B$。
+    definedIn: physics.electromagnetism.magnetic-force-on-currents
+    anchor: thm-force-current
+  - id: physics.electromagnetism.magnetic-moment
+    zh: |
+      磁矩
+    en: |
+      magnetic dipole moment
+    brief: |
+      平面线圈的$\vb m=I\vb a$，$\vb a$的大小是线圈面积、方向按电流绕向用右手定则定；匀强磁场里线圈受的力矩是$\vb m\times\vb B$。
+    definedIn: physics.electromagnetism.magnetic-force-on-currents
+    anchor: def-magnetic-moment
+  - id: physics.electromagnetism.hall-effect
+    zh: |
+      霍尔效应
+    en: |
+      Hall effect
+    brief: |
+      载流导体放在垂直于电流的磁场里，两侧出现电势差$\frac{IB}{nqt}$，正负随载流子电荷$q$变；$n$是单位体积里的载流子数，$t$是沿磁场的厚度。
+    definedIn: physics.electromagnetism.magnetic-force-on-currents
+    anchor: thm-hall
+  - id: physics.electromagnetism.biot-savart-law
+    zh: |
+      毕奥-萨伐尔定律
+    en: |
+      Biot–Savart law
+    brief: |
+      恒定电流的磁场是各电流元贡献之和，$\vb B=\frac{\mu_0}{4\pi}\oint\frac{I\,\dd\vb l'\times(\vb r-\vb r')}{|\vb r-\vb r'|^3}$；长直导线外$B=\frac{\mu_0I}{2\pi s}$。
+    definedIn: physics.electromagnetism.biot-savart
+    anchor: def-biot-savart
+  - id: physics.electromagnetism.ampere-law
+    zh: |
+      安培环路定理
+    en: |
+      Ampère's circuital law
+    brief: |
+      恒定电流的磁场沿闭合回路的积分等于$\mu_0$乘穿过回路的电流，$\oint\vb B\cdot\dd\vb l=\mu_0I$；微分形式是$\curl\vb B=\mu_0\vb J$。
+    definedIn: physics.electromagnetism.ampere-law
+    anchor: thm-ampere
+  - id: physics.electromagnetism.magnetic-flux
+    zh: |
+      磁通量
+    en: |
+      magnetic flux
+    brief: |
+      磁场穿过一个曲面的通量$\Phi=\int\vb B\cdot\dd\vb a$，单位是韦伯；穿过任何闭合曲面的磁通量都是零。
+    definedIn: physics.electromagnetism.ampere-law
+    anchor: def-magnetic-flux
+  - id: physics.electromagnetism.solenoid
+    zh: |
+      螺线管
+    en: |
+      solenoid
+    brief: |
+      导线密绕成的长圆筒形线圈；很长时管内磁场均匀，$B=\mu_0nI$（$n$是每单位长度的匝数），管外几乎为零。
+    definedIn: physics.electromagnetism.ampere-law
+    anchor: thm-solenoid
+  - id: physics.electromagnetism.magnetic-monopole
+    zh: |
+      磁单极子
+    en: |
+      magnetic monopole
+    brief: |
+      能单独发出或吸收磁场线的「磁荷」；$\divg\vb B=0$说的就是它不存在，实验上至今没有找到。
+    definedIn: physics.electromagnetism.ampere-law
+    anchor: def-monopole
+  - id: physics.electromagnetism.vector-potential
+    zh: |
+      磁矢势
+    en: |
+      magnetic vector potential
+    brief: |
+      旋度等于磁场的矢量场$\vb A$，$\vb B=\curl\vb A$；恒定电流的磁矢势可取$\frac{\mu_0}{4\pi}\int\frac{\vb J(\vb r')}{|\vb r-\vb r'|}\dd V'$。
+    definedIn: physics.electromagnetism.vector-potential
+    anchor: def-vector-potential
+  - id: physics.electromagnetism.gauge-transformation
+    zh: |
+      规范变换
+    en: |
+      gauge transformation
+    brief: |
+      把磁矢势换成$\vb A+\nabla\chi$（$\chi$是任意函数）；磁场不变，所以磁矢势不唯一，这叫作规范自由度。
+    definedIn: physics.electromagnetism.vector-potential
+    anchor: thm-gauge
+  - id: physics.electromagnetism.magnetic-dipole
+    zh: |
+      磁偶极子
+    en: |
+      magnetic dipole
+    brief: |
+      从比自身大得多的距离看的小电流环；那里的磁场只由磁矩决定，形状和电偶极子的电场一样。
+    definedIn: physics.electromagnetism.magnetic-dipole
+    anchor: def-magnetic-dipole

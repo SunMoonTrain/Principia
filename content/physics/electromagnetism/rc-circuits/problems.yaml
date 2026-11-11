@@ -1,0 +1,150 @@
+- id: p1
+  tier: easy
+  statement: |
+    电阻为$47\,\mathrm{k\Omega}$、电容为$22\,\mu\mathrm F$的 RC 电路，时间常数（time constant）是多少？保留三位有效数字。
+  answer:
+    type: number
+    value: 47e3*22e-6
+    unit: |
+      $\mathrm s$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      RC 电路的时间常数是$\tau=RC$，先把单位换成$\Omega$和$\mathrm F$。
+    - |
+      $R=4.7\times10^4\,\Omega$，$C=2.2\times10^{-5}\,\mathrm F$。
+    - |
+      $\tau=4.7\times10^4\times2.2\times10^{-5}\,\mathrm s=1.03\,\mathrm s$。
+  solution: |
+    $\tau=RC=4.7\times10^4\,\Omega\times2.2\times10^{-5}\,\mathrm F\approx1.03\,\mathrm s$。
+
+- id: p2
+  tier: easy
+  statement: |
+    电容器经过电阻放电，过了两个时间常数，它储存的能量还剩开始时的几分之几？写成小数，保留三位有效数字。
+  answer:
+    type: number
+    value: exp(-4)
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      电荷按$e^{-t/\tau}$衰减；电容器储存的能量是$\frac{Q^2}{2C}$。
+    - |
+      能量和$Q^2$成正比，所以按$e^{-2t/\tau}$衰减，比电荷衰减得快。
+    - |
+      $t=2\tau$时，剩下$e^{-4}\approx0.0183$。
+  solution: |
+    $Q=Q_0e^{-t/\tau}$，能量$\frac{Q^2}{2C}$按$e^{-2t/\tau}$衰减。$t=2\tau$时剩下$e^{-4}\approx0.0183$，不到$2\%$；电荷还剩$e^{-2}\approx13.5\%$。
+
+- id: p3
+  tier: medium
+  statement: |
+    电动势$12\,\mathrm V$、内阻不计的电源经$2.0\,\mathrm{k\Omega}$的电阻给$470\,\mu\mathrm F$的电容器充电，电容器原来不带电。接通后经过多长时间，电容器两端的电势差达到$9.0\,\mathrm V$？保留三位有效数字。
+  answer:
+    type: number
+    value: 2.0e3*470e-6*ln(4)
+    unit: |
+      $\mathrm s$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      电容器两端的电势差是$\frac QC=\mathcal E\bigl(1-e^{-t/RC}\bigr)$。
+    - |
+      $1-e^{-t/\tau}=\frac{9.0}{12}=0.75$，所以$e^{-t/\tau}=\frac14$；$\tau=RC=0.94\,\mathrm s$。
+    - |
+      $t=\tau\ln4=0.94\times1.386\,\mathrm s\approx1.30\,\mathrm s$。
+  solution: |
+    $\tau=RC=2.0\times10^3\times4.70\times10^{-4}\,\mathrm s=0.94\,\mathrm s$。由$\mathcal E\bigl(1-e^{-t/\tau}\bigr)=9.0\,\mathrm V$得$e^{-t/\tau}=\frac14$，$t=\tau\ln4\approx1.30\,\mathrm s$。
+
+- id: p4
+  tier: medium
+  statement: |
+    电动势$12\,\mathrm V$、内阻不计的电源经电阻$R_1=10\,\mathrm{k\Omega}$给电容$C=10\,\mu\mathrm F$的电容器充电，电容器的两极之间还并联着一个电阻$R_2=10\,\mathrm{k\Omega}$。电容器原来不带电。求充电过程的时间常数（以$\mathrm s$为单位）和充好以后电容器两端的电势差（以$\mathrm V$为单位），依次填写。
+  answer:
+    type: tuple
+    value: [0.05, 6.0]
+  hints:
+    - |
+      以电容器两端的电势差$\Delta\varphi$为未知数：流过$R_1$的电流，一部分给电容器充电，一部分流过$R_2$。
+    - |
+      $\frac{\mathcal E-\Delta\varphi}{R_1}=C\dv{\Delta\varphi}{t}+\frac{\Delta\varphi}{R_2}$，整理成$\dv{\Delta\varphi}{t}+\frac{\Delta\varphi}{\tau}=$常数的样子。
+    - |
+      $\tau=\frac{C}{\frac1{R_1}+\frac1{R_2}}=\frac{R_1R_2}{R_1+R_2}C=0.050\,\mathrm s$；充好后没有电流流进电容器，$\Delta\varphi=\frac{R_2}{R_1+R_2}\mathcal E=6.0\,\mathrm V$。
+  solution: |
+    设电容器两端的电势差为$\Delta\varphi$。节点定律：流过$R_1$的电流$\frac{\mathcal E-\Delta\varphi}{R_1}$等于充电电流$C\dv{\Delta\varphi}{t}$加上流过$R_2$的电流$\frac{\Delta\varphi}{R_2}$，整理得$\dv{\Delta\varphi}{t}+\Bigl(\frac{1}{R_1}+\frac{1}{R_2}\Bigr)\frac{\Delta\varphi}{C}=\frac{\mathcal E}{R_1C}$。
+
+    所以时间常数是$\tau=\frac{R_1R_2}{R_1+R_2}C=5.0\times10^3\times1.0\times10^{-5}\,\mathrm s=0.050\,\mathrm s$，相当于电容器经$R_1$、$R_2$的并联放电。充好后电容器里没有电流，$R_1$、$R_2$串联分压，$\Delta\varphi=\frac{R_2}{R_1+R_2}\mathcal E=6.0\,\mathrm V$。
+
+- id: p5
+  tier: hard
+  statement: |
+    平行板电容器的两板之间填满了一种导电性很差的材料，电导率（conductivity）是$\sigma$，它对电场的响应除了导电以外和真空一样。把电容器充上电以后和外电路断开。
+
+    （1）证明它会自己放电，时间常数是$\frac{\varepsilon_0}{\sigma}$，和极板的面积、间隔都无关。（2）两个导体（conductor）是任意形状、中间充满这种材料时，时间常数还是$\frac{\varepsilon_0}{\sigma}$吗？
+  hints:
+    - |
+      两板之间的材料相当于一个电阻：电流穿过面积为$A$、厚度为$d$的材料，$R=\frac{d}{\sigma A}$；电容是$C=\frac{\varepsilon_0A}{d}$。
+    - |
+      $RC=\frac{\varepsilon_0}{\sigma}$。一般形状：$C=\frac{Q}{\Delta\varphi}$，$R=\frac{\Delta\varphi}{I}$，所以$RC=\frac QI$；用高斯定律（Gauss's law）把$Q$和$I$都写成电场穿过同一个闭合曲面的通量。
+    - |
+      $Q=\varepsilon_0\oint\vb E\cdot\dd\vb a$，$I=\sigma\oint\vb E\cdot\dd\vb a$，所以$RC=\frac{\varepsilon_0}{\sigma}$，和形状无关。
+  reference: |
+    （1）材料里的电流从正极板穿过材料流到负极板，它相当于一个电阻$R=\frac{d}{\sigma A}$，和电容器并联，电容器经它放电，时间常数是$RC=\frac{d}{\sigma A}\cdot\frac{\varepsilon_0A}{d}=\frac{\varepsilon_0}{\sigma}$，面积和间隔都约掉了。
+
+    （2）还是。取一个包住带正电的导体、整个在材料里的闭合曲面。由高斯定律（见[电通量与高斯定律](lesson:physics.electromagnetism.gauss-law)），导体上的电荷是$Q=\varepsilon_0\oint\vb E\cdot\dd\vb a$；由欧姆定律（Ohm's law），从这个导体流出的电流是$I=\oint\vb J\cdot\dd\vb a=\sigma\oint\vb E\cdot\dd\vb a$。两者之比$\frac QI=\frac{\varepsilon_0}{\sigma}$，而$\frac QI=\frac{Q}{\Delta\varphi}\cdot\frac{\Delta\varphi}{I}=CR$，所以$RC=\frac{\varepsilon_0}{\sigma}$，和导体的形状、大小、相对位置都无关；也就是$\dv Qt=-I=-\frac{\sigma}{\varepsilon_0}Q$。
+
+    这个时间常数和[电流与欧姆定律](lesson:physics.electromagnetism.current-density)第 5 题里导体内部电荷消失的时间常数一样：两件事都是电荷产生电场、电场按欧姆定律驱动电流把电荷带走。材料的相对介电常量（relative permittivity）是$\varepsilon_{\mathrm r}$时，$\varepsilon_0$换成$\varepsilon_{\mathrm r}\varepsilon_0$（见[电位移与线性电介质](lesson:physics.electromagnetism.electric-displacement)）。好的电容器要用电导率很小的电介质（dielectric），否则充好的电荷会慢慢漏掉。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）电容为$C$、两端电势差为$V_1$的电容器，经电阻接到电动势为$\mathcal E$的电源上，充到电势差为$\mathcal E$。证明电阻上放出的热是$\frac12C(\mathcal E-V_1)^2$，和电阻无关。
+
+    （2）把不带电的电容器分$N$步充到$\mathcal E$：先用电动势$\frac{\mathcal E}{N}$的电源充满，再换成$\frac{2\mathcal E}{N}$的电源……最后用$\mathcal E$的电源。电阻上一共放出多少热？（3）$N\to\infty$时会怎样？这说明了什么？
+  hints:
+    - |
+      用能量守恒：电源做的功等于电容器能量的增加加上电阻上放出的热。电源做的功是$\mathcal E$乘以流过它的电荷。
+    - |
+      （1）电源做功$\mathcal E\cdot C(\mathcal E-V_1)$，电容器的能量增加$\frac12C(\mathcal E^2-V_1^2)$。（2）每一步都是从$\frac{(k-1)\mathcal E}{N}$充到$\frac{k\mathcal E}{N}$。
+    - |
+      每一步放出$\frac12C\bigl(\frac{\mathcal E}{N}\bigr)^2$，共$\frac{C\mathcal E^2}{2N}$；$N\to\infty$时趋于零。
+  reference: |
+    （1）流过电源的电荷是$C(\mathcal E-V_1)$，电源做功$\mathcal E\cdot C(\mathcal E-V_1)$；电容器的能量从$\frac12CV_1^2$增加到$\frac12C\mathcal E^2$。由能量守恒，电阻上放出的热是$C\mathcal E(\mathcal E-V_1)-\frac12C(\mathcal E^2-V_1^2)=\frac12C(\mathcal E-V_1)^2$，只和电势差的「跳变」$\mathcal E-V_1$有关，和电阻无关。$V_1=0$时就是讲解里的$\frac12C\mathcal E^2$。
+
+    （2）第$k$步从$\frac{(k-1)\mathcal E}{N}$充到$\frac{k\mathcal E}{N}$，放出$\frac12C\bigl(\frac{\mathcal E}{N}\bigr)^2$；$N$步一共放出$\frac{C\mathcal E^2}{2N}$，是一步充满时的$\frac1N$。电容器最后储存的能量都是$\frac12C\mathcal E^2$，电源做的功少了。
+
+    （3）$N\to\infty$时放出的热趋于零：电源的电动势总是只比电容器的电势差高一点点，电流很小，几乎不发热。损失来自电源和电容器之间的电势差，让它始终很小，就能几乎无损耗地充电，代价是充得很慢。这和热力学里的准静态过程（quasi-static process）是一个道理；有的低功耗电路就是这样给电容充电的。
+
+- id: p7
+  tier: thinking
+  statement: |
+    给电容器充电时，导线里有电流，两块极板之间却是真空，没有电荷从中间流过。电流到了极板就「断」了吗？两板之间有什么东西在变？
+  hints:
+    - |
+      电流在极板上停下，正极板的电荷以$\dv Qt=I$的速率增加；这时$\divg\vb J\ne0$，不是恒定电流。
+    - |
+      两板之间的电场$E=\frac{Q}{\varepsilon_0A}$随之增大：算一算$\varepsilon_0A\dv Et$。
+    - |
+      $\varepsilon_0A\dv Et=I$：两板之间电场的变化率乘以$\varepsilon_0$，正好接上导线里的电流；麦克斯韦把$\varepsilon_0\pdv{\vb E}t$叫作位移电流（displacement current）。
+  reference: |
+    电荷确实不从两板之间流过：电流到了正极板就停下，极板上的电荷以$\dv Qt=I$的速率增加，所以这里$\divg\vb J\ne0$，不是恒定电流，基尔霍夫的节点定律在极板上不成立。
+
+    两板之间变的是电场。平行板之间$E=\frac{Q}{\varepsilon_0A}$，所以$\varepsilon_0A\dv Et=\dv Qt=I$：两板之间$\varepsilon_0\pdv{\vb E}t$穿过极板面积的「通量」，恰好等于导线里的电流。一般地，由连续性方程（continuity equation）和高斯定律的微分形式（见[高斯定律的微分形式](lesson:physics.electromagnetism.gauss-differential)），$\divg\Bigl(\vb J+\varepsilon_0\pdv{\vb E}t\Bigr)=-\pdv\rho t+\pdv\rho t=0$，把$\varepsilon_0\pdv{\vb E}t$加到电流密度（current density）上，「电流」就处处连续了。
+
+    麦克斯韦把$\varepsilon_0\pdv{\vb E}t$叫作位移电流，并且认为它和真实的电流一样产生磁场（magnetic field）；实验证实了这一点，这是电磁波存在的关键（见[位移电流与麦克斯韦方程组](lesson:physics.electromagnetism.maxwell-equations)）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    例 2 里电阻越小，时间常数$\frac{RC}{2}$越小，开始时的电流$\frac{Q_0}{RC}$越大。电阻趋于零时会怎样？两个电容器的总能量还会只剩一半吗？
+  hints:
+    - |
+      实际的电路总有一点电感（inductance）：电流不能突变，变化越快，阻碍越大。
+    - |
+      电阻很小时，电荷会冲过头，在两个电容器之间来回晃荡，像弹簧振子一样。
+    - |
+      终态由电荷守恒（conservation of charge）和两边电势差相等定死了；晃荡中的能量通过电阻发热和电磁辐射散失，最后还是只剩一半。
+  reference: |
+    「时间常数趋于零、电流趋于无穷」是只考虑电阻和电容时的结论。实际的电路是一个回路，电流变化时会在回路里感应出阻碍它变化的电动势，这就是电路的电感（见[自感、互感与磁场的能量](lesson:physics.electromagnetism.inductance)）。电感限制了电流增大的快慢，电阻很小时，电荷会冲过头：电荷从第一个电容器流向第二个，到两边相等时电流不为零，继续流，第二个电容器的电荷反而更多，然后再流回来，在两个电容器之间来回振荡，像弹簧振子一样。
+
+    振荡的能量一部分在电阻上变成热，一部分以电磁波的形式辐射出去，振荡慢慢停下来。终态由电荷守恒和两边电势差相等定死了：两个电容器各带$\frac{Q_0}{2}$，总能量是开始时的一半，和中间的过程无关（见[电容器](lesson:physics.electromagnetism.capacitors)第 7 题）。电阻的大小只决定是平稳地放电还是振荡着放电、损失的能量以什么形式离开。

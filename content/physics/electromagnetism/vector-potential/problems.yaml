@@ -1,0 +1,168 @@
+- id: p1
+  tier: easy
+  statement: |
+    某个区域里的磁矢势是$\vb A=(-3y,\ 2x,\ 0)\times10^{-2}\,\mathrm{T}$，$x$、$y$以$\mathrm m$为单位，所以$\vb A$的单位是$\mathrm{T\,m}$。求那里的磁场的大小，以$\mathrm T$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: (2+3)*1e-2
+    unit: |
+      $\mathrm T$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $\vb B=\curl\vb A$；$\vb A$只有$x$、$y$分量且不含$z$，旋度只有$z$分量。
+    - |
+      $B_z=\pdv{A_y}{x}-\pdv{A_x}{y}$。
+    - |
+      $B_z=2\times10^{-2}\,\mathrm T-(-3\times10^{-2}\,\mathrm T)=5.00\times10^{-2}\,\mathrm T$。
+  solution: |
+    $\vb A$的分量不含$z$，$A_z=0$，所以$B_x=B_y=0$，$B_z=\pdv{A_y}{x}-\pdv{A_x}{y}=2\times10^{-2}\,\mathrm T+3\times10^{-2}\,\mathrm T=0.0500\,\mathrm T$，是匀强磁场，沿$z$方向。
+
+- id: p2
+  tier: easy
+  statement: |
+    匀强磁场$B\uv z$的一个磁矢势是$\vb A_0=(-By,\ 0,\ 0)$。下面哪些也是同一个磁场的磁矢势？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $(-By+y^2,\ 2xy,\ 0)$
+      - |
+        $(Bx,\ By,\ 0)$
+      - |
+        $(By,\ 0,\ 0)$
+      - |
+        $(-By+3,\ 2z,\ 0)$
+      - |
+        $(-By+5x,\ 0,\ 0)$
+    value: [1, 5]
+  hints:
+    - |
+      逐个求旋度，看是不是$B\uv z$；也可以看它和$\vb A_0$的差是不是一个梯度。
+    - |
+      三个分量都要算，例如$\curl(-By+3,\,2z,\,0)$的$x$分量是$\partial_yA_z-\partial_zA_y$；$(Bx,\,By,\,0)$的旋度是多少？
+    - |
+      A、E 对；B、C、D 错。
+  solution: |
+    A 对：它和$\vb A_0$差$(y^2,2xy,0)=\nabla(xy^2)$；直接算也一样，$\partial_xA_y-\partial_yA_x=2y-(-B+2y)=B$。B 错：$\partial_x(By)-\partial_y(Bx)=0$，它是$\nabla\bigl(\frac B2(x^2+y^2)\bigr)$，给出的磁场为零。C 错：旋度是$-B\uv z$，磁场反向。
+
+    D 错：$x$分量是$\partial_yA_z-\partial_zA_y=0-2=-2$，多出一个沿$x$的磁场；它和$\vb A_0$的差$(3,2z,0)$不是梯度。E 对：差$(5x,0,0)=\nabla\bigl(\frac52x^2\bigr)$，是一次规范变换（gauge transformation）。
+
+- id: p3
+  tier: medium
+  statement: |
+    半径$1.0\,\mathrm{cm}$的长螺线管里的磁场是$0.20\,\mathrm T$。在管外取一个边长$6.0\,\mathrm{cm}$的正方形回路，正方形的中心在螺线管的轴上，平面和轴垂直。求磁矢势沿这个回路的环量的大小，以$\mu\mathrm{Wb}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: pi*0.010^2*0.20*1e6
+    unit: |
+      $\mu\mathrm{Wb}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      磁矢势的环量等于穿过回路的磁通量（magnetic flux），和回路的形状无关。
+    - |
+      回路里只有螺线管里面有磁场，磁通量是$\pi R^2B$。
+    - |
+      $\pi\times(0.010)^2\times0.20\,\mathrm{Wb}\approx6.28\times10^{-5}\,\mathrm{Wb}=62.8\,\mu\mathrm{Wb}$。
+  solution: |
+    $\oint\vb A\cdot\dd\vb l$等于穿过以回路为边界的曲面的磁通量。磁场只在螺线管里，磁通量是$\pi R^2B=\pi\times(0.010)^2\times0.20\,\mathrm{Wb}\approx62.8\,\mu\mathrm{Wb}$。回路换成任何形状，只要绕螺线管一圈，结果都一样，尽管回路经过的地方磁场都是零。
+
+- id: p4
+  tier: medium
+  statement: |
+    无限长直导线通有$10\,\mathrm A$的电流。求离导线$1.0\,\mathrm{cm}$处和$3.0\,\mathrm{cm}$处磁矢势之差的大小，以$\mu\mathrm T\,\mathrm m$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 2e-7*10*ln(3)*1e6
+    unit: |
+      $\mu\mathrm T\,\mathrm m$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      例 1：$\vb A=-\frac{\mu_0I}{2\pi}\ln\frac{s}{s_0}\uv z$，参考距离$s_0$在差里消掉。
+    - |
+      差的大小是$\frac{\mu_0I}{2\pi}\ln\frac{s_2}{s_1}$，$\frac{\mu_0}{2\pi}=2\times10^{-7}\,\mathrm{N/A^2}$。
+    - |
+      $2\times10^{-7}\times10\times\ln3\,\mathrm{T\,m}\approx2.20\times10^{-6}\,\mathrm{T\,m}$。
+  solution: |
+    $A_z(s_1)-A_z(s_2)=\frac{\mu_0I}{2\pi}\ln\frac{s_2}{s_1}=2\times10^{-7}\times10\times\ln3\,\mathrm{T\,m}\approx2.20\,\mu\mathrm T\,\mathrm m$。
+
+    它有一个直观的意思：在包含导线的平面里取一个矩形回路，两条边平行于导线、离导线$1.0\,\mathrm{cm}$和$3.0\,\mathrm{cm}$，沿导线方向长$1\,\mathrm m$。磁矢势沿另外两条边的积分抵消，环量就是这个差乘以$1\,\mathrm m$，也就是穿过矩形的磁通量。
+
+- id: p5
+  tier: hard
+  statement: |
+    匀强磁场$\vb B=B\uv z$。
+
+    （1）验证对称的磁矢势$\vb A=\frac12\vb B\times\vb r$满足库仑规范$\divg\vb A=0$，并找出把$\vb A_1=(-By,0,0)$变成它的函数$\chi$。（2）满足库仑规范、旋度又等于$\vb B$的磁矢势是唯一的吗？（3）对局限在有限区域里的电流，为什么积分公式给出的磁矢势却是确定的？
+  hints:
+    - |
+      （1）$\frac12\vb B\times\vb r=\frac B2(-y,x,0)$；差$\frac B2(y,x,0)$是谁的梯度？
+    - |
+      （2）在库仑规范里再做规范变换$\nabla\chi$，要保持$\divg\vb A=0$，$\chi$要满足什么方程？$\chi=xy$行不行？
+    - |
+      $\chi$只要满足拉普拉斯方程（Laplace's equation）$\nabla^2\chi=0$就行，$xy$、$x^2-y^2$都可以；匀强磁场伸到无穷远，没有「在无穷远处为零」的条件来排除它们。
+  reference: |
+    （1）$\frac12\vb B\times\vb r=\frac B2(-y,x,0)$，$\divg\vb A=\partial_x\bigl(-\frac{By}{2}\bigr)+\partial_y\bigl(\frac{Bx}{2}\bigr)=0$。它和$\vb A_1$差$\frac B2(y,x,0)=\nabla\bigl(\frac B2xy\bigr)$，所以$\chi=\frac B2xy$（再加任意常数）。$\vb A_1$本身也满足$\divg\vb A_1=\partial_x(-By)=0$。
+
+    （2）不唯一。两个都满足库仑规范、旋度相同的磁矢势，相差$\nabla\chi$，而$\divg\nabla\chi=\nabla^2\chi=0$：$\chi$可以是任何调和函数（harmonic function），比如$xy$、$x^2-y^2$、$xz$。（1）里的$\vb A_1$和对称的$\vb A$就是两个都满足库仑规范的例子，相差$\nabla\bigl(\frac B2xy\bigr)$。
+
+    （3）对局限在有限区域里的电流，再要求$\vb A$在无穷远处趋于零。在全空间有界、处处满足$\nabla^2\chi=0$的函数只能是常数（它的梯度在无穷远趋于零），于是$\nabla\chi=0$，磁矢势就唯一了，和[唯一性定理](lesson:physics.electromagnetism.images-uniqueness)对电势的道理一样。积分公式给出的磁矢势正是在无穷远处趋于零的那一个。匀强磁场没有这样的边界条件，所以有更多的余地。
+
+- id: p6
+  tier: hard
+  statement: |
+    无限长螺线管外，磁矢势是$\vb A=\frac{\Phi}{2\pi s}\uv\psi$，$\Phi$是管里的磁通量。
+
+    （1）证明在管外，$\vb A=\nabla\chi$，其中$\chi=\frac{\Phi}{2\pi}\psi$，$\psi$是方位角。（2）这样说来，用规范变换$\vb A\to\vb A-\nabla\chi$就能让管外的磁矢势处处为零。这和$\oint\vb A\cdot\dd\vb l=\Phi\neq0$矛盾吗？
+  hints:
+    - |
+      在柱坐标里，函数$f(\psi)$的梯度是$\frac1s\dv f\psi\uv\psi$；也可以用$\psi=\arctan\frac yx$在直角坐标里求梯度。
+    - |
+      $\psi$绕轴一圈增加$2\pi$，它不是管外整个区域上的单值函数。
+    - |
+      在不绕轴一圈的区域里（例如去掉一个半平面），$\chi$是单值的，可以把$\vb A$变成零；绕轴一圈的区域里不行，因为这个区域不是单连通（simply connected）的。
+  reference: |
+    （1）$\nabla\psi=\frac1s\uv\psi$，用直角坐标核对：$\psi=\arctan\frac yx$，$\nabla\psi=\bigl(\frac{-y}{x^2+y^2},\frac{x}{x^2+y^2},0\bigr)=\frac{1}{s}\uv\psi$。所以$\nabla\bigl(\frac{\Phi}{2\pi}\psi\bigr)=\frac{\Phi}{2\pi s}\uv\psi=\vb A$，管外的磁矢势在局部是一个梯度，这和管外$\curl\vb A=\vb B=0$一致。
+
+    （2）不矛盾。$\chi=\frac{\Phi}{2\pi}\psi$不是管外整个区域上的单值函数：绕轴一圈，$\psi$增加$2\pi$，$\chi$增加$\Phi$，规范变换要求$\chi$是一个处处有确定值的函数。在不包含完整一圈的区域里，例如去掉$x<0$、$y=0$的半平面，$\psi$可以取成单值的，$\vb A$能用规范变换变成零；绕轴一圈的区域里不行。管外的区域绕着螺线管，不是单连通的，[标量势与矢量势](lesson:math.vector-calculus.potentials)里「旋度为零的场是梯度」只在单连通区域上成立，环量$\oint\vb A\cdot\dd\vb l=\Phi$正是这个障碍的大小。
+
+- id: p7
+  tier: thinking
+  statement: |
+    1959 年，阿哈罗诺夫（Yakir Aharonov）和玻姆（David Bohm）指出：一束电子分成两路，从细长螺线管的两侧绕过再会合，形成干涉条纹；螺线管通电以后，电子走过的地方磁场仍然为零，干涉条纹却会移动，两路的相位差是$\frac{e}{\hbar}\oint\vb A\cdot\dd\vb l$。
+
+    （1）管里的磁通量要多大，条纹才移动一个条纹？（2）螺线管的半径是$1\,\mu\mathrm m$时，管里的磁场要多大？（3）这个效应说明了磁矢势的什么？
+  hints:
+    - |
+      条纹移动一个条纹，相位差改变$2\pi$；$\oint\vb A\cdot\dd\vb l$等于管里的磁通量$\Phi$。
+    - |
+      $\frac{e\Phi}{\hbar}=2\pi$，$\Phi=\frac{2\pi\hbar}{e}=\frac he$；$h=6.62607015\times10^{-34}\,\mathrm{J\,s}$。
+    - |
+      $\frac he\approx4.14\times10^{-15}\,\mathrm{Wb}$；半径$1\,\mu\mathrm m$时约$1.3\,\mathrm{mT}$。
+  reference: |
+    （1）相位差改变$2\pi$，条纹移动一个条纹：$\frac{e\Phi}{\hbar}=2\pi$，$\Phi=\frac he=\frac{6.62607015\times10^{-34}}{1.602176634\times10^{-19}}\,\mathrm{Wb}\approx4.14\times10^{-15}\,\mathrm{Wb}$。它是单个电子的磁通量子（magnetic flux quantum）；超导体（superconductor）里导电的是成对的电子，通常说的磁通量子是$\frac h{2e}\approx2.07\times10^{-15}\,\mathrm{Wb}$。2019 年以后$h$、$e$都是定义的常数，这两个量都是精确的数。
+
+    （2）$B=\frac{\Phi}{\pi R^2}=\frac{4.14\times10^{-15}}{\pi\times(10^{-6})^2}\,\mathrm T\approx1.3\times10^{-3}\,\mathrm T$，很容易做到，难的是让管外严格没有磁场。1986 年，外村彰（Akira Tonomura）等人用超导体包住环形的微小磁体，把磁场完全关在里面，用电子全息术（electron holography）看到了干涉条纹的移动。
+
+    （3）经典力学里，粒子只受$q(\vb E+\vb v\times\vb B)$，管外没有磁场，电子的运动不受影响，磁矢势只是计算工具。量子力学里，电子的相位直接和$\vb A$有关；规范变换只改变相位的局部写法，绕管一圈的$\oint\vb A\cdot\dd\vb l$不随规范变，它就是可观测的量。所以磁矢势（更准确地说，它的环量）有直接的物理意义；这也和分析力学里正则动量（canonical momentum）是$m\vb v+q\vb A$相呼应（见[电磁场中带电粒子的拉格朗日量](lesson:physics.analytical-mechanics.charged-particle-lagrangian)）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    在没有电流的地方，$\curl\vb B=0$，似乎可以像电势一样，用一个标量函数$\Phi_{\mathrm M}$写出$\vb B=-\mu_0\nabla\Phi_{\mathrm M}$（磁标势，magnetic scalar potential）。这样做有什么问题？为什么还要磁矢势？
+  hints:
+    - |
+      [安培环路定理](lesson:physics.electromagnetism.ampere-law)的证明里，闭合电流环的磁场是$\frac{\mu_0I}{4\pi}\nabla\Omega$。由此写出$\Phi_{\mathrm M}$。
+    - |
+      $\Phi_{\mathrm M}=-\frac{I\Omega}{4\pi}$；沿一条套住电流的回路绕一圈，$\Phi_{\mathrm M}$回到原值了吗？
+    - |
+      $\Phi_{\mathrm M}$绕一圈变化$I$，是多值的，这正是$\oint\vb B\cdot\dd\vb l=\mu_0I\neq0$的另一种说法；有电流的地方根本不能用它，磁矢势在哪里都能用。
+  reference: |
+    在没有电流的区域里确实可以这样做：由安培环路定理的证明，闭合电流环的磁场是$\frac{\mu_0I}{4\pi}\nabla\Omega$，所以$\Phi_{\mathrm M}=-\frac{I\Omega}{4\pi}$，$\Omega$是电流环对场点张的立体角（solid angle）。它满足拉普拉斯方程，在计算磁铁、线圈外面的磁场时常常很方便。
+
+    问题在于它是多值的：沿一条套住电流的回路绕一圈，$\Omega$连续变化了$4\pi$，$\Phi_{\mathrm M}$变化$I$，回不到原值。这正是$\oint\vb B\cdot\dd\vb l=\mu_0I\neq0$的另一种说法；要用磁标势，就得在区域里「切一刀」（例如去掉以电流环为边界的曲面），让剩下的区域里不能绕着电流转圈。有电流的地方$\curl\vb B\neq0$，磁标势根本不存在。
+
+    磁矢势没有这些限制：$\divg\vb B=0$在全空间成立，磁矢势处处存在，有电流的地方也能用，而且它的积分公式和电势的一样简单。代价是它有三个分量，并且有规范自由度。

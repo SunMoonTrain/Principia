@@ -168,4 +168,4 @@
 
     （2）不是。$q_1\varphi_2(\vb r_1)$和$q_2\varphi_1(\vb r_2)$都等于$\frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{r_{12}}$，是同一份相互作用能，相加就算了两次；系统的电势能是$\frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{r_{12}}$，即$\frac12\bigl[q_1\varphi_2(\vb r_1)+q_2\varphi_1(\vb r_2)\bigr]$。
 
-    （3）在静电学里，说能量在电荷上还是在场里，算出来的总数一样。可是电磁波离开了电荷照样带着能量，所以更好的说法是能量储存在场里；静电的情形只有电场，能量密度是$\frac{\varepsilon_0}{2}E^2$（见[静电场的能量](lesson:physics.electromagnetism.electrostatic-energy)）。
+    （3）在静电学里，说能量在电荷上还是在场里，算出来的总数一样。可是电磁波离开了电荷照样带着能量，所以更好的说法是能量储存在场里；静电的情形只有电场，能量密度（energy density）是$\frac{\varepsilon_0}{2}E^2$（见[静电场的能量](lesson:physics.electromagnetism.electrostatic-energy)）。
