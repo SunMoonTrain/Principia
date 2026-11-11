@@ -281,9 +281,20 @@ export function useSliders(sliders: SliderSpec[] | undefined) {
   };
 }
 
-function formatValue(value: number, step: number): string {
-  const decimals = Math.max(0, Math.min(6, -Math.floor(Math.log10(step) + 1e-9)));
-  return value.toFixed(decimals).replace(/^-/, '−');
+/** 写出 x 要几位小数，最多 6 位：0.25 要 2 位，3 要 0 位。 */
+function decimalsOf(x: number): number {
+  for (let d = 0; d < 6; d++) {
+    const scaled = x * 10 ** d;
+    if (Math.abs(scaled - Math.round(scaled)) < 1e-6) return d;
+  }
+  return 6;
+}
+
+/** 滑块的值都是 min 加整数个 step，按两者里小数位多的显示：step 0.25 显示两位，min 0.55、step 0.1 也显示两位。 */
+export function formatSliderValue(value: number, s: Pick<SliderSpec, 'min' | 'step'>): string {
+  const text = value.toFixed(Math.max(decimalsOf(s.step), decimalsOf(s.min)));
+  // 舍入出来的 −0.00 不带负号
+  return Number(text) === 0 ? text.replace(/^-/, '') : text.replace(/^-/, '−');
 }
 
 export function SliderPanel({
@@ -304,7 +315,7 @@ export function SliderPanel({
         <label key={s.name} className="anim-slider">
           <span className="anim-slider-label">{labels?.[`slider:${s.name}`] ?? s.name}</span>
           <input type="range" min={s.min} max={s.max} step={s.step} value={values[s.name] ?? s.default} onChange={(e) => onChange(s.name, Number(e.target.value))} />
-          <output className="anim-slider-value">{formatValue(values[s.name] ?? s.default, s.step)}</output>
+          <output className="anim-slider-value">{formatSliderValue(values[s.name] ?? s.default, s)}</output>
         </label>
       ))}
     </div>

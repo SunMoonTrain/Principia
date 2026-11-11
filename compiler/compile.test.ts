@@ -314,6 +314,16 @@ describe('动画组件块（台阶 7）', () => {
     expect(found).toMatchObject({ file: LESSON, line });
   });
 
+  it('滑块的 max、default 不等于 min 加整数个 step，报错指出那一行', () => {
+    const root = fixture();
+    const maxLine = edit(root, LESSON, '    max: 0.5\n', '    max: 0.505\n');
+    const defaultLine = edit(root, LESSON, '    default: 0.2\n', '    default: 0.205\n');
+    expect(errors(root)).toMatchObject([
+      { file: LESSON, line: defaultLine, message: '滑块「eps」的 default 要等于 min 加整数个 step（滑块只能停在这些值上）' },
+      { file: LESSON, line: maxLine, message: '滑块「eps」的 max 要等于 min 加整数个 step（滑块只能停在这些值上）' },
+    ]);
+  });
+
   it('振子的弹簧个数不对，报错指出 springs 那一行', () => {
     const root = fixture();
     const at = edit(root, LESSON, '## 例题\n', ':::anim{component="oscillator"}\nmasses: [1, 1]\nsprings: [1, 1]\ninitial: [1, 0]\ndt: 0.01\n:::\n\n## 例题\n');

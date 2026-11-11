@@ -8,6 +8,7 @@ describe('动画参数里的式子', () => {
     expect(compileExpr('2x^2 + pi', ['x'])([3])).toBeCloseTo(18 + Math.PI, 12);
     expect(compileExpr('log(e^2) + log(8, 2) + ln(1)', [])([])).toBeCloseTo(5, 12);
     expect(compileExpr('mod(-1, 3)', [])([])).toBe(2);
+    expect(compileExpr('atanh(0.6) + asinh(0) + acosh(1)', [])([])).toBeCloseTo(Math.log(2), 12);
     expect(compileExpr(1.5, [])([])).toBe(1.5);
   });
 

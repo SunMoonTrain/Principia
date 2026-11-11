@@ -14,6 +14,10 @@ describe('evaluateExpression', () => {
     ['（1+1）×3', 6],
     ['√(4)', 2],
     ['3!', 6],
+    ['atanh(0.6)', Math.log(2)],
+    ['artanh(3/5)', Math.log(2)],
+    ['arcsinh(1)', Math.log(1 + Math.SQRT2)],
+    ['acosh(2)', Math.log(2 + Math.sqrt(3))],
   ])('%s = %d', (input, value) => {
     const r = evaluateExpression(input);
     expect(r.ok).toBe(true);
@@ -31,6 +35,8 @@ describe('evaluateExpression', () => {
     ['2 s', 'unit'],
     ['3 cm', 'unit'],
     ['sqrt(-1)', 'complex'],
+    ['atanh(2)', 'complex'],
+    ['acosh(0.5)', 'complex'],
     ['1/0', 'infinite'],
     ['x = 1', 'unsupported'],
     ['[1, 2]', 'unsupported'],

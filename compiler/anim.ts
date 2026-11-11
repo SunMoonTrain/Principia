@@ -127,6 +127,14 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
         sliderNames.push(s.name);
         if (!(s.min < s.max) || s.default < s.min || s.default > s.max) {
           ctx.diags.error(ctx.file, lineOf(y, ['sliders', i]), `滑块「${s.name}」要满足 min < max，且 default 在 min 和 max 之间`);
+        } else {
+          // 滑块只能停在 min 加整数个 step 上：max 不在上面就拖不到，default 不在上面就和滑块的位置对不上
+          for (const key of ['default', 'max'] as const) {
+            const k = (s[key] - s.min) / s.step;
+            if (Math.abs(k - Math.round(k)) > 1e-6) {
+              ctx.diags.error(ctx.file, lineOf(y, ['sliders', i, key]), `滑块「${s.name}」的 ${key} 要等于 min 加整数个 step（滑块只能停在这些值上）`);
+            }
+          }
         }
         const label = textAt(y, ['sliders', i, 'label'], ctx.diags);
         if (label) labels.push(labelElement(`slider:${s.name}`, renderField(label, ctx, 'plain')));
