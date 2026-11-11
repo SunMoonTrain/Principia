@@ -1,0 +1,159 @@
+- id: p1
+  tier: easy
+  statement: |
+    在惯性系$S$里只有沿$z$轴的匀强磁场$B=0.50\,\mathrm T$，没有电场。$S'$相对$S$按标准位形以$0.6c$沿$x$轴运动，求$S'$里电场的$y$分量$E'_y$。
+  answer:
+    type: number
+    value: -1.25*0.6*299792458*0.5
+    unit: |
+      $\mathrm{V/m}$
+  hints:
+    - |
+      用标准位形下场的变换：$E'_y=\gamma(E_y-vB_z)$。
+    - |
+      $\gamma=\frac{1}{\sqrt{1-0.36}}=1.25$，$E_y=0$，$B_z=0.50\,\mathrm T$。
+    - |
+      $E'_y=-\gamma vB_z$，其中$v=0.6\times2.998\times10^8\,\mathrm{m/s}$，算得$E'_y\approx-1.12\times10^8\,\mathrm{V/m}$。
+  solution: |
+    $E'_y=\gamma(E_y-vB_z)=-\gamma vB_z$，代入$\gamma=1.25$、$v=0.6\times2.998\times10^8\,\mathrm{m/s}$、$B_z=0.50\,\mathrm T$，得$E'_y\approx-1.12\times10^8\,\mathrm{V/m}$。在$S'$里静止的电荷，在$S$里以$0.6c$沿$x$轴运动，受的磁力$q\vb v\times\vb B$沿$-y$方向；在$S'$里它不动，这个力只能来自电场，方向一致，大小多乘一个$\gamma$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法是对的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $F^{\mu\nu}$对角线上的 4 个元素在任何惯性系里都是零
+      - |
+        在$S$里只有沿$x$轴的匀强电场，$S'$沿$x$轴运动，那么$S'$里的电场和$S$里一样，也没有磁场
+      - |
+        在一个惯性系里只有电场，那么在所有惯性系里都只有电场
+      - |
+        在一个惯性系里$\vb E\perp\vb B$且$E=cB$，那么在任何惯性系里都有$E'=cB'$
+      - |
+        粒子静止时，它受的四维力$qF^{\mu\nu}U_\nu$只和磁场有关
+    value: [1, 2, 4]
+  hints:
+    - |
+      $F'=\Lambda F\Lambda\T$保持反对称；平行于运动方向的分量不变。
+    - |
+      $E^2-c^2B^2$是不变量；静止时$U_\nu=(c,0,0,0)$，只用到$F^{\mu0}$。
+    - |
+      A、B、D 对；C、E 错。
+  solution: |
+    A 对：$(\Lambda F\Lambda\T)\T=\Lambda F\T\Lambda\T=-\Lambda F\Lambda\T$，反对称矩阵换惯性系后仍反对称，对角元为零。B 对：$E'_x=E_x$，而$E_y=E_z=0$、$\vb B=0$，所以$E'_y$、$E'_z$和$\vb B'$都是零。C 错：例 2 里$S$只有电场，$S'$里出现了磁场。D 对，$E^2-c^2B^2=0$在所有惯性系里都是零；E 错，静止时$K^\mu=qF^{\mu0}c$，只用到电场。
+
+- id: p3
+  tier: medium
+  statement: |
+    在惯性系$S$里，电场沿$y$轴，$E=1.0\times10^6\,\mathrm{V/m}$；磁场沿$z$轴，$B=0.010\,\mathrm T$。存在一个沿$x$轴运动的惯性系，在那里电场为零。求那个惯性系里磁场的大小。
+  answer:
+    type: number
+    value: sqrt(0.01^2 - (1e6/299792458)^2)
+    unit: |
+      $\mathrm T$
+  hints:
+    - |
+      由$E'_y=\gamma(E-vB)=0$可以求出$v$；先确认它小于$c$。
+    - |
+      $E^2-c^2B^2$是不变量，在那个惯性系里电场为零。
+    - |
+      $B'=\sqrt{B^2-\frac{E^2}{c^2}}=\sqrt{(0.010)^2-\bigl(\frac{10^6}{2.998\times10^8}\bigr)^2}\,\mathrm T\approx9.43\times10^{-3}\,\mathrm T$。
+  solution: |
+    $E'_y=\gamma(E-vB)=0$给出$v=\frac EB=1.0\times10^8\,\mathrm{m/s}\approx0.334c$，小于$c$，这个惯性系存在。那里$E'=0$，由不变量$E^2-c^2B^2=-c^2B'^2$，$B'=\sqrt{B^2-\frac{E^2}{c^2}}\approx9.43\times10^{-3}\,\mathrm T$。也可以直接算：$B'_z=\gamma\bigl(B-\frac v{c^2}E\bigr)=\gamma B\bigl(1-\frac{v^2}{c^2}\bigr)=\frac B\gamma$，结果相同。
+
+- id: p4
+  tier: medium
+  statement: |
+    两个电子在惯性系$S$里并排以$0.8c$沿$x$轴运动，连线和$x$轴垂直，相距$1.0\,\mu\mathrm m$。取$e=1.602\times10^{-19}\,\mathrm C$，$\frac{1}{4\pi\varepsilon_0}=8.988\times10^9\,\mathrm{N\,m^2/C^2}$，求$S$里它们之间的作用力的大小。
+  answer:
+    type: number
+    value: 8.988e9*(1.602e-19)^2/(1.0e-6)^2*0.6
+    unit: |
+      $\mathrm N$
+  hints:
+    - |
+      在电子静止的惯性系里只有库仑力；也可以在$S$里用例 1 的电场和磁场算洛伦兹力。
+    - |
+      在$S$里，一个电子在另一个处产生$E=\gamma\frac{e}{4\pi\varepsilon_0d^2}$，$B=\frac v{c^2}E$，电力和磁力方向相反。
+    - |
+      $F=e(E-vB)=eE\bigl(1-\frac{v^2}{c^2}\bigr)=\frac1\gamma\cdot\frac{e^2}{4\pi\varepsilon_0d^2}$，代入数值，$F\approx0.6\times2.307\times10^{-16}\,\mathrm N\approx1.38\times10^{-16}\,\mathrm N$。
+  solution: |
+    在$S$里，一个电子在另一个电子处的电场垂直于运动方向，按例 1 的结果是$E=\gamma\frac{e}{4\pi\varepsilon_0d^2}$，磁场$B=\frac v{c^2}E$。电力是排斥的，磁力（两个同向运动的同号电荷）是吸引的，合力$F=e(E-vB)=eE\bigl(1-\frac{v^2}{c^2}\bigr)=\frac1\gamma\cdot\frac{e^2}{4\pi\varepsilon_0d^2}$，代入数值是$0.6\times2.307\times10^{-16}\,\mathrm N\approx1.38\times10^{-16}\,\mathrm N$。在电子静止的惯性系里，力是库仑力$\frac{e^2}{4\pi\varepsilon_0d^2}$；垂直于运动方向的力换到$S$里要除以$\gamma$，结果一致。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）用标准位形下场的变换，证明$\vb E\cdot\vb B$在所有惯性系里相同。（2）由$E^2-c^2B^2$和$\vb E\cdot\vb B$两个不变量说明：如果在某个惯性系里$\vb E\perp\vb B$且$E<cB$，那么存在一个只有磁场的惯性系；如果$\vb E\cdot\vb B\ne0$，就不存在只有电场或只有磁场的惯性系。
+  hints:
+    - |
+      $\vb E'\cdot\vb B'=E'_xB'_x+E'_yB'_y+E'_zB'_z$，代入变换式展开。
+    - |
+      交叉项$\pm\frac v{c^2}E_yE_z$、$\pm vB_yB_z$两两抵消，剩下$\gamma^2\bigl(1-\frac{v^2}{c^2}\bigr)(E_yB_y+E_zB_z)$。
+    - |
+      取$\vb B$沿$z$轴、$\vb E$沿$y$轴，以$v=\frac EB<c$沿$x$轴推进，$E'_y=\gamma(E-vB)=0$；只有电场或只有磁场的惯性系里$\vb E\cdot\vb B=0$。
+  reference: |
+    （1）$E'_xB'_x=E_xB_x$。$E'_yB'_y=\gamma^2(E_y-vB_z)\bigl(B_y+\frac v{c^2}E_z\bigr)$，$E'_zB'_z=\gamma^2(E_z+vB_y)\bigl(B_z-\frac v{c^2}E_y\bigr)$。展开相加，$\frac v{c^2}E_yE_z$和$-\frac v{c^2}E_zE_y$抵消，$-vB_zB_y$和$vB_yB_z$抵消，剩下$\gamma^2\bigl(1-\frac{v^2}{c^2}\bigr)(E_yB_y+E_zB_z)=E_yB_y+E_zB_z$，所以$\vb E'\cdot\vb B'=\vb E\cdot\vb B$。转动坐标轴不改变点积，一般的洛伦兹变换由转动和沿$x$轴的推进组成，所以$\vb E\cdot\vb B$在所有惯性系里相同。
+
+    （2）$\vb E\perp\vb B$时取$\vb B=B\hat{\vb z}$，$\vb E=E\hat{\vb y}$。沿$x$轴以$v=\frac EB$推进，$E<cB$保证$v<c$；这时$E'_y=\gamma(E-vB)=0$，$E'_x=E_x=0$，$E'_z=\gamma(E_z+vB_y)=0$，只剩磁场，大小$B'=\sqrt{B^2-\frac{E^2}{c^2}}$。只有电场或只有磁场的惯性系里$\vb E\cdot\vb B=0$；如果某个惯性系里$\vb E\cdot\vb B\ne0$，由不变性，所有惯性系里都不为零，这样的惯性系就不存在。
+
+    $E^2-c^2B^2$的符号决定能变成只有电场（正）还是只有磁场（负）的惯性系；两个不变量都为零的，例如平面电磁波，既变不成只有电场，也变不成只有磁场。
+
+- id: p6
+  tier: hard
+  statement: |
+    匀速运动的点电荷在某一时刻的电场（例 1）沿径向，大小是$E=\frac{q}{4\pi\varepsilon_0r^2}\cdot\frac{1-\beta^2}{(1-\beta^2\sin^2\theta)^{3/2}}$。（1）以电荷此刻的位置为球心，作半径为$r$的球面，证明穿过它的电通量是$\frac q{\varepsilon_0}$，和速度无关。（2）为什么这正是应当得到的？
+  hints:
+    - |
+      电场沿径向，在$\theta$到$\theta+\dd\theta$的环带上是常数，环带面积是$2\pi r^2\sin\theta\,\dd\theta$。
+    - |
+      令$u=\cos\theta$，$1-\beta^2\sin^2\theta=(1-\beta^2)+\beta^2u^2$；$\int_{-1}^{1}\frac{\dd u}{(a^2+\beta^2u^2)^{3/2}}=\frac{2}{a^2\sqrt{a^2+\beta^2}}$，$a^2=1-\beta^2$。
+    - |
+      通量$=\frac{q}{4\pi\varepsilon_0}(1-\beta^2)\cdot2\pi\cdot\frac{2}{1-\beta^2}=\frac q{\varepsilon_0}$。高斯定律在每个惯性系里都成立，电荷又不随速度变。
+  reference: |
+    （1）电场沿径向，大小只和$\theta$有关。$\theta$到$\theta+\dd\theta$的环带面积是$2\pi r^2\sin\theta\,\dd\theta$，所以通量是$\Phi=\frac{q(1-\beta^2)}{4\pi\varepsilon_0}\int_0^\pi\frac{2\pi\sin\theta\,\dd\theta}{(1-\beta^2\sin^2\theta)^{3/2}}$。令$u=\cos\theta$，$1-\beta^2\sin^2\theta=a^2+\beta^2u^2$，$a^2=1-\beta^2$，$\int_{-1}^{1}\frac{\dd u}{(a^2+\beta^2u^2)^{3/2}}=\Bigl[\frac{u}{a^2\sqrt{a^2+\beta^2u^2}}\Bigr]_{-1}^{1}=\frac2{a^2}$，因为$a^2+\beta^2=1$。于是$\Phi=\frac{q(1-\beta^2)}{4\pi\varepsilon_0}\cdot2\pi\cdot\frac{2}{1-\beta^2}=\frac q{\varepsilon_0}$。
+
+    （2）高斯定律（Gauss's law）是麦克斯韦方程组的一部分，按相对性原理（principle of relativity）在每个惯性系里都成立；球面所包的电荷就是那个点电荷，电荷又不随速度变，所以通量必须是$\frac q{\varepsilon_0}$。前后方向的场弱了，两侧的场强了，两者在球面上正好抵消。电场线聚拢只是重新分布，总条数不变。
+
+- id: p7
+  tier: thinking
+  statement: |
+    一根很长的直导线不带电，通有电流$I$。导线外有一个正电荷$q$，以速度$v$平行于导线运动，在导线静止的惯性系里它受磁力。
+
+    （1）换到$q$静止的惯性系，$q$受的是什么力？用场的变换说明那里一定有电场。（2）导线在那个惯性系里为什么会带电？
+  hints:
+    - |
+      在$q$静止的惯性系里，$q$不动，磁场对它没有作用，力只能来自电场；由$\vb E'_\perp=\gamma(\vb E+\vb v\times\vb B)_\perp$，$\vb E=0$而$\vb v\times\vb B\ne0$。
+    - |
+      由高斯定律，导线周围有沿径向的电场，导线就要带电。
+    - |
+      正离子和电子在两个惯性系里的速度不同，按长度收缩（length contraction），它们的线密度变得不一样；下一节会算出带多少电。
+  reference: |
+    （1）在$q$静止的惯性系$S'$里，$q$的速度为零，洛伦兹力里只剩$q\vb E'$。由场的变换，$\vb E'_\perp=\gamma(\vb E+\vb v\times\vb B)_\perp=\gamma\,\vb v\times\vb B$，导线外的磁场绕着导线，$\vb v$平行于导线，$\vb v\times\vb B$沿径向，所以$S'$里有沿径向的电场，大小是$\gamma vB$。$q$在$S'$里受电场力，大小是$S$里磁力的$\gamma$倍，正是垂直方向的力在静止系里该大的那么多。
+
+    （2）$S'$里导线周围有沿径向的电场，按高斯定律导线必须带电，单位长度的电荷是$\lambda'=2\pi\varepsilon_0r\cdot\gamma vB=\gamma\frac{vI}{c^2}$（$B=\frac{\mu_0I}{2\pi r}$，$\mu_0\varepsilon_0=\frac1{c^2}$），符号取决于$q$相对电流的运动方向。电荷是怎么来的：导线里正离子不动、电子在漂移，单位长度里两者的电荷在$S$里正好抵消；在$S'$里，正离子和电子的速度不同，长度收缩的程度不同，单位长度的电荷不再抵消。下一节用四维电流（four-current）把它算出来（见[麦克斯韦方程组的协变形式](lesson:physics.special-relativity.covariant-maxwell)）。
+
+    电子的漂移速度只有每秒零点几毫米，正、负电荷线密度的相对差别小得惊人，可导线里正、负电荷的总量极大，所以磁力并不弱。在这个意义上，磁力是电力的相对论效应。
+
+- id: p8
+  tier: thinking
+  statement: |
+    真空里沿$x$轴传播的平面电磁波，某处某时$\vb E=E\hat{\vb y}$，$\vb B=\frac Ec\hat{\vb z}$。
+
+    （1）它的两个不变量$E^2-c^2B^2$和$\vb E\cdot\vb B$各是多少？（2）在沿$x$轴以$v$运动的惯性系里，电场和磁场变成多少？（3）有没有一个惯性系，在那里这个波的场消失了？这和光的多普勒效应（Doppler effect）有什么关系（见[相对论多普勒效应](lesson:physics.special-relativity.relativistic-doppler)）？
+  hints:
+    - |
+      两个不变量都是零。
+    - |
+      $E'_y=\gamma(E-vB_z)=\gamma E\Bigl(1-\frac vc\Bigr)=E\sqrt{\frac{1-\beta}{1+\beta}}$，$B'_z=\frac{E'_y}c$。
+    - |
+      $\beta\to1$时$E'\to0$，但对$v<c$总不为零；振幅变小的因子和频率变低的因子一样，都是$\sqrt{\frac{1-\beta}{1+\beta}}$。
+  reference: |
+    （1）$E^2-c^2B^2=E^2-E^2=0$，$\vb E\cdot\vb B=0$，两个不变量都是零，所以在任何惯性系里都有$\vb E'\perp\vb B'$、$E'=cB'$：光在每个惯性系里都是光。
+
+    （2）$E'_y=\gamma(E-vB_z)=\gamma E(1-\beta)=E\sqrt{\frac{1-\beta}{1+\beta}}$，$B'_z=\gamma\bigl(B_z-\frac v{c^2}E\bigr)=\frac Ec\gamma(1-\beta)=\frac{E'_y}c$，其余分量为零。迎着光运动（$v<0$）时场变强，顺着光运动时场变弱。
+
+    （3）只有$v\to c$时场才趋于零，对任何真实的惯性系场都不为零：两个不变量都是零的场既变不成只有电场，也变不成只有磁场，也消失不了。追着光跑的观察者看到的光，频率按$\sqrt{\frac{1-\beta}{1+\beta}}$变低（多普勒效应），振幅也按同一个因子变小，能量密度按它的平方变小。没有惯性系能以光速运动，所以也就没有「追上光、看到静止不动的电磁场」这回事。

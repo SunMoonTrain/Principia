@@ -1,0 +1,159 @@
+- id: p1
+  tier: easy
+  statement: |
+    尘埃的粒子质量是$m$，静止数密度是$n_0$。在尘埃以$0.6c$沿$x$轴运动的惯性系里，$T^{01}$是$mn_0c^2$的几倍？
+  answer:
+    type: number
+    value: 0.6/(1 - 0.36)
+  hints:
+    - |
+      尘埃的能量-动量张量是$T^{\mu\nu}=mn_0U^\mu U^\nu$。
+    - |
+      $U^\mu=\gamma_u(c,0.6c,0,0)$，$\gamma_u=\frac{1}{\sqrt{1-0.36}}=1.25$。
+    - |
+      $T^{01}=mn_0\gamma_u^2\cdot c\cdot0.6c=1.5625\times0.6\,mn_0c^2=0.9375\,mn_0c^2$。
+  solution: |
+    $\gamma_u=1.25$，$T^{01}=mn_0\gamma_u^2\times0.6c^2=0.9375\,mn_0c^2$。$cT^{01}$是沿$x$方向的能流密度：单位体积有$1.25n_0$个粒子，每个的能量是$1.25mc^2$，以$0.6c$流动，乘起来正是$0.9375\,mn_0c^3$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于能量-动量张量的说法，哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        同一团尘埃，在它沿$x$轴运动的惯性系里$T^{11}\ne0$，在它的静止系里$T^{11}=0$
+      - |
+        理想流体的$T^{\mu\nu}$在任何惯性系里都是对角矩阵
+      - |
+        一束光的能流密度是$1\,\mathrm{W/m^2}$时，它的动量密度是$\frac{1\,\mathrm{W/m^2}}{c^2}$
+      - |
+        对尘埃，$\eta_{\mu\nu}T^{\mu\nu}=mn_0c^2$
+      - |
+        静止的理想流体里，$T^{12}$等于压强$p$
+    value: [1, 3, 4]
+  hints:
+    - |
+      尘埃的$T^{11}=mn_0(U^1)^2$；理想流体沿$x$轴运动时，算一算$T^{01}$。
+    - |
+      动量密度是$\frac1cT^{i0}$，能流密度是$cT^{0i}$，张量是对称的；$\eta_{\mu\nu}U^\mu U^\nu=U\cdot U=c^2$。
+    - |
+      A、C、D 对；B、E 错。
+  solution: |
+    A 对：$T^{11}=mn_0(U^1)^2=\gamma_u^2mn_0u_x^2$，尘埃沿$x$轴运动时不为零，静止时$u_x=0$。B 错：沿$x$轴运动时$T^{01}=\gamma_u^2(\varepsilon+p)\frac uc\ne0$。C 对：$T^{0i}=T^{i0}$，能流密度除以$c^2$就是动量密度。D 对，$\eta_{\mu\nu}T^{\mu\nu}=mn_0U\cdot U=mn_0c^2$；E 错，静止时$T^{ij}=p\,\delta^{ij}$，$T^{12}=0$，$T^{11}=p$。
+
+- id: p3
+  tier: medium
+  statement: |
+    光子组成的各向同性的气体是理想流体，局部静止系里的能量密度是$\varepsilon$，压强是$\frac\varepsilon3$。这团气体整体以多大的速率运动时，它的能量密度$T^{00}$是$2\varepsilon$？
+  answer:
+    type: number
+    value: sqrt(3/7)
+    unit: |
+      $c$
+  hints:
+    - |
+      用讲解里流体沿$x$轴运动时的$T^{00}=\gamma_u^2\bigl(\varepsilon+\frac{u^2}{c^2}p\bigr)$。
+    - |
+      记$\beta=\frac uc$，条件是$\frac{1+\beta^2/3}{1-\beta^2}=2$。
+    - |
+      $1+\frac{\beta^2}3=2-2\beta^2$，$\beta^2=\frac37$，$\beta=\sqrt{\frac37}\approx0.6547$。
+  solution: |
+    代入$p=\frac\varepsilon3$，$T^{00}=\frac{1+\beta^2/3}{1-\beta^2}\,\varepsilon$。令它等于$2\varepsilon$，得$\beta^2=\frac37$，$u=\sqrt{\frac37}\,c\approx0.6547c$。同样速率下，能量密度相同的尘埃（$p=0$）只有$\frac{\varepsilon}{1-\beta^2}=1.75\varepsilon$，多出的部分来自压强。
+
+- id: p4
+  tier: medium
+  statement: |
+    地球附近的太阳光，垂直于光线的每平方米上每秒通过约$1361\,\mathrm J$的能量。一块面积为$100\,\mathrm{m^2}$的平板垂直于光线放置，把照到的光全部反射回去。求平板受的力。
+  answer:
+    type: number
+    value: 2*1361*100/299792458
+    unit: |
+      $\mathrm N$
+  hints:
+    - |
+      光强$I$是能流密度；沿传播方向的那个动量分量，它沿传播方向的流密度是$\frac Ic$（例 2）。
+    - |
+      反射光沿反方向传播，它带的动量分量是负的，流动的方向也是负的，两个负号相乘，它的$T^{11}$也是$\frac Ic$；平板前面的总动量流密度是$\frac{2I}c$。
+    - |
+      $F=\frac{2IA}c=\frac{2\times1361\times100}{2.998\times10^8}\,\mathrm N\approx9.08\times10^{-4}\,\mathrm N$。
+  solution: |
+    入射光每秒带到平板上的动量是$\frac{IA}c$，反射光每秒带走反方向的$\frac{IA}c$，平板每秒得到$\frac{2IA}c$的动量，这就是力：$F=\frac{2\times1361\times100}{2.998\times10^8}\,\mathrm N\approx9.08\times10^{-4}\,\mathrm N$。用张量的话说，平板前面入射光和反射光的$T^{11}$都是$\frac Ic$，加起来是$\frac{2I}c$。这个力很小，但能一直作用下去，太阳帆（solar sail）就是靠它推动的。
+
+- id: p5
+  tier: hard
+  statement: |
+    一团气体由许多粒子组成，粒子的速度各不相同，但在气体的静止系里速度的方向各向同性，没有哪个方向特殊。把速度相近的粒子分成一组，第$k$组的数密度是$n_k$，每个粒子的能量是$E_k$、动量是$\vb p_k$、速度是$\vb u_k$。
+
+    （1）说明这团气体的$T^{\mu\nu}$是各组按尘埃算出的张量之和，并证明静止系里$T^{ij}=p\,\delta^{ij}$，其中$p=\frac13\sum_kn_k\,\vb p_k\cdot\vb u_k$。（2）证明光子组成的这样的气体$p=\frac\varepsilon3$。（3）粒子的速率都远小于$c$时，$p$和单位体积里的动能有什么关系？
+  hints:
+    - |
+      每组粒子的张量是$T_k^{\mu\nu}=n_kP_k^\mu v_k^\nu$，$v_k^\nu=(c,\vb u_k)$；单位体积里的能量、动量和它们的流，都是各组相加。
+    - |
+      各向同性：$\sum_kn_kp_k^iu_k^j$在$i\ne j$时正负抵消为零，三个对角元相等，各是它们之和的三分之一。
+    - |
+      光子$\vb p\cdot\vb u=\frac Ec\cdot c=E$，所以$p=\frac13\sum_kn_kE_k=\frac\varepsilon3$。低速时$\vb p\cdot\vb u\approx mu^2$，$p\approx\frac23$乘单位体积的动能。
+  reference: |
+    （1）每组粒子速度相同，正是一团尘埃，按讲解里各分量的意义，它的能量-动量张量是$T_k^{\mu\nu}=n_kP_k^\mu v_k^\nu$，$v_k^\nu=(c,\vb u_k)$。整团气体单位体积里的能量、动量，以及单位时间穿过单位面积的能量、动量，都是各组的和，所以$T^{\mu\nu}=\sum_kT_k^{\mu\nu}$，它也是四维张量。静止系里$T^{ij}=\sum_kn_kp_k^iu_k^j$；把所有粒子的速度方向一起转一个角度，各向同性的分布不变，所以这个$3\times3$矩阵在一切转动下不变，只能是一个数乘单位矩阵，$T^{ij}=p\,\delta^{ij}$。取三个对角元之和，$3p=\sum_kn_k\vb p_k\cdot\vb u_k$。
+
+    （2）光子的$|\vb p|=\frac Ec$、$|\vb u|=c$，两者同向，$\vb p\cdot\vb u=E$，所以$p=\frac13\sum_kn_kE_k=\frac\varepsilon3$。也可以这样看：$v^\nu=\frac{c^2}{E}P^\nu$，每个光子的$\eta_{\mu\nu}P^\mu P^\nu=0$，所以光子气体的$\eta_{\mu\nu}T^{\mu\nu}=0$；而静止系里$\eta_{\mu\nu}T^{\mu\nu}=\varepsilon-3p$。
+
+    （3）低速时$\vb p\approx m\vb u$，$\vb p\cdot\vb u\approx mu^2=2\times\frac12mu^2$，所以$p\approx\frac23\times$单位体积的动能。这就是气体动理论（kinetic theory of gases）里的压强公式；单原子气体的能量密度$\varepsilon\approx nmc^2+\frac32p$，压强比$\varepsilon$小得多，所以低速的气体接近尘埃。
+
+- id: p6
+  tier: hard
+  statement: |
+    理想流体满足$\partial_\mu T^{\mu\nu}=0$，并且粒子数守恒：$\partial_\mu(n_0U^\mu)=0$，$n_0$是静止数密度。（1）把$\partial_\mu T^{\mu\nu}=0$乘以$U_\nu$再对$\nu$求和，证明$U^\mu\partial_\mu\varepsilon+(\varepsilon+p)\,\partial_\mu U^\mu=0$。（2）设$V=\frac1{n_0}$是每个粒子占的体积，证明沿流体元的世界线$\dv{(\varepsilon V)}{\tau}=-p\dv V\tau$，并说明它的物理意义。
+  hints:
+    - |
+      $U_\nu U^\nu=c^2$，所以$U_\nu\partial_\mu U^\nu=0$；$\eta^{\mu\nu}U_\nu=U^\mu$；沿世界线$U^\mu\partial_\mu=\dv{}{\tau}$。
+    - |
+      （1）$U_\nu\partial_\mu\Bigl[(\varepsilon+p)\frac{U^\mu U^\nu}{c^2}\Bigr]=\partial_\mu\bigl[(\varepsilon+p)U^\mu\bigr]$，$U_\nu\partial_\mu(p\,\eta^{\mu\nu})=U^\mu\partial_\mu p$。（2）由粒子数守恒，$\partial_\mu U^\mu=-\frac1{n_0}U^\mu\partial_\mu n_0=\frac1V\dv V\tau$。
+    - |
+      $\dv\varepsilon\tau+(\varepsilon+p)\frac1V\dv V\tau=0$，乘以$V$整理得$\dv{(\varepsilon V)}\tau=-p\dv V\tau$：一个粒子占的那一小块流体，能量的减少等于它膨胀时对外做的功。这是没有热传导时的热力学第一定律（first law of thermodynamics）。
+  reference: |
+    （1）$T^{\mu\nu}=(\varepsilon+p)\frac{U^\mu U^\nu}{c^2}-p\,\eta^{\mu\nu}$，所以$\partial_\mu T^{\mu\nu}=\frac1{c^2}\partial_\mu\bigl[(\varepsilon+p)U^\mu U^\nu\bigr]-\partial^\nu p$。乘以$U_\nu$求和：第一项按乘积求导，$\frac1{c^2}\bigl\{U_\nu U^\nu\,\partial_\mu[(\varepsilon+p)U^\mu]+(\varepsilon+p)U^\mu U_\nu\partial_\mu U^\nu\bigr\}=\partial_\mu[(\varepsilon+p)U^\mu]$，用到$U_\nu U^\nu=c^2$和$U_\nu\partial_\mu U^\nu=\frac12\partial_\mu(U_\nu U^\nu)=0$；第二项是$U_\nu\partial^\nu p=U^\mu\partial_\mu p$。于是$0=U^\mu\partial_\mu(\varepsilon+p)+(\varepsilon+p)\partial_\mu U^\mu-U^\mu\partial_\mu p=U^\mu\partial_\mu\varepsilon+(\varepsilon+p)\partial_\mu U^\mu$。
+
+    （2）沿流体元的世界线$x^\mu(\tau)$，由链式法则$U^\mu\partial_\mu f=\dv f\tau$。粒子数守恒给出$U^\mu\partial_\mu n_0+n_0\partial_\mu U^\mu=0$，所以$\partial_\mu U^\mu=-\frac1{n_0}\dv{n_0}\tau=\frac1V\dv V\tau$。代入（1）：$\dv\varepsilon\tau+\frac{\varepsilon+p}V\dv V\tau=0$，乘以$V$得$V\dv\varepsilon\tau+\varepsilon\dv V\tau=-p\dv V\tau$，即$\dv{(\varepsilon V)}\tau=-p\dv V\tau$。
+
+    $\varepsilon V$是一个粒子占的那一小块流体在自己静止系里的能量，$p\,\dd V$是它膨胀$\dd V$时对周围做的功。所以这就是热力学第一定律（first law of thermodynamics）在没有热传导时的形式：$\dd(\varepsilon V)=-p\,\dd V$。$\partial_\mu T^{\mu\nu}=0$沿$U$方向的分量是能量方程，垂直于$U$的三个分量是相对论的运动方程。
+
+- id: p7
+  tier: thinking
+  statement: |
+    一个长为$L$、质量为$M$的箱子静止在光滑的水平面上。左端发出一个能量为$E$的光脉冲，光飞到右端被吸收，设$E\ll Mc^2$。
+
+    （1）光飞行的时候箱子怎样运动，最后移动了多少？（2）没有外力时，整个系统按能量加权的平均位置（「能量中心」，center of energy）不应移动；要做到这一点，光脉冲从左到右运送了什么？（3）这和能量-动量张量的对称性$T^{0i}=T^{i0}$有什么关系？
+  hints:
+    - |
+      光脉冲的动量是$\frac Ec$，发射时箱子向左反冲，速度约为$\frac E{Mc}$。
+    - |
+      光飞行约$\frac Lc$的时间，箱子向左移动约$\frac{EL}{Mc^2}$；要让「能量乘位置」的总和不变，光要把能量$E$从左端搬到右端，相当于搬走质量$\frac E{c^2}$。
+    - |
+      能量流动时就带着动量，能流密度除以$c^2$就是动量密度，这就是$T^{0i}=T^{i0}$；否则一个孤立的系统可以只靠内部的过程把自己挪到别处。
+  reference: |
+    （1）发射时光脉冲带走动量$\frac Ec$，箱子以$v\approx\frac E{Mc}$向左运动；光走过约$L$的距离、用时约$\frac Lc$后被吸收，箱子又停下，共向左移动$\Delta x\approx\frac{EL}{Mc^2}$。
+
+    （2）没有外力时总动量为零，按能量加权的平均位置$\frac{\sum E_ix_i}{\sum E_i}$应当不动（这正是总动量为零的另一种说法）。箱子的能量约为$Mc^2$，向左移了$\Delta x$，「能量乘位置」减少约$Mc^2\cdot\frac{EL}{Mc^2}=EL$；光把能量$E$从左端搬到右端，增加$EL$，正好抵消。所以光脉冲运送的不只是能量，还有它的惯性$\frac E{c^2}$：被吸收以后，箱子的右端比原来多了这么多质量。
+
+    （3）能量中心不动，要求能量的流动和动量相互配合：单位体积里的动量必须等于能流密度除以$c^2$，即$\frac1cT^{i0}=\frac1{c^2}\cdot cT^{0i}$，也就是$T^{0i}=T^{i0}$。如果某种物质的能量流动时不带相应的动量，箱子里的这种过程就能让系统在不受外力、总动量为零的情况下挪动位置，这和动量守恒（重心不动）矛盾。相对论里所有物质和场的能量-动量张量都是对称的，这是原因之一。
+
+- id: p8
+  tier: thinking
+  statement: |
+    「孤立系统的总能量不变」和「$\partial_\mu T^{\mu\nu}=0$」，哪个说得更多？为什么相对论里要用后一种局部的说法？在有引力的弯曲时空里，$\partial_\mu$要换成另一种导数（见[弯曲时空中的能量-动量张量](lesson:physics.general-relativity.stress-energy-curved)），那时还能直接说「总能量不变」吗？
+  hints:
+    - |
+      由局部的说法加上散度定理，能推出整体的说法；反过来呢？想想一份能量在一处消失、同时在远处出现。
+    - |
+      整体的说法要在某个惯性系的「同一时刻」把各处的能量加起来；由同时的相对性，换一个惯性系，「同一时刻」就换成了另一组事件（event）。
+    - |
+      平直时空里，局部守恒保证每个惯性系里的总能量、总动量都不变；在弯曲时空里，不同地点的矢量没法直接相加，局部的说法仍然成立，却一般得不出守恒的总能量。
+  reference: |
+    局部的说法说得更多。由$\partial_\mu T^{\mu\nu}=0$和散度定理，任一区域里能量的变化都等于穿过边界的流，把区域取得足够大、边界外没有物质，就得到总能量不变；反过来，「一份能量在$A$处消失、同时在远处的$B$处出现」满足整体守恒，却违反局部守恒。
+
+    相对论里这种过程不能允许。由同时的相对性，另一个惯性系里$A$、$B$两个事件不同时，那里的观察者会看到有一段时间总能量少了（或多了）一份，整体守恒在那个惯性系里就不成立了。所以只有局部守恒才能在所有惯性系里同时成立；而且在平直时空里，孤立系统的总能量、总动量$\frac1c\int T^{\mu0}\,\dd V$合成一个四维矢量。
+
+    在弯曲时空里，$\partial_\mu$换成另一种导数，局部守恒的方程仍然成立。可是要得到「总能量」，得把不同地点的能量、动量加起来，弯曲时空里不同地点的矢量没有自然的办法直接相加，引力场本身的能量也没法局部地定义。所以一般得不出守恒的总能量，只有时空有特殊的对称性（例如不随时间变）或者在远处趋于平直时，才能定义守恒的总能量。

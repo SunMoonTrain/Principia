@@ -1,0 +1,159 @@
+- id: p1
+  tier: easy
+  statement: |
+    在惯性系$S$里，一团带电的云静止不动，电荷密度是$\rho_0$。$S'$相对$S$按标准位形（standard configuration）以$0.6c$沿$x$轴运动，求$S'$里的电荷密度和电流密度的$x$分量，分别写成$\rho_0$和$c\rho_0$的几倍，依次填写。
+  answer:
+    type: tuple
+    value: [1.25, -0.75]
+  hints:
+    - |
+      $S$里的四维电流是$J^\mu=(c\rho_0,0,0,0)$，它按四维矢量变换。
+    - |
+      $J'^0=\gamma\bigl(J^0-\beta J^1\bigr)$，$J'^1=\gamma\bigl(J^1-\beta J^0\bigr)$，$\gamma=1.25$，$\beta=0.6$。
+    - |
+      $J'^0=1.25c\rho_0$，即$\rho'=1.25\rho_0$；$J'^1=-0.75c\rho_0$。
+  solution: |
+    $J'^0=\gamma c\rho_0$，所以$\rho'=1.25\rho_0$；$J'_x=-\gamma\beta c\rho_0=-0.75c\rho_0$。在$S'$里这团云以$0.6c$沿$-x$方向运动，沿运动方向缩短，所以电荷更密；电荷随云运动，就是沿$-x$方向的电流，$J'_x=\rho'\cdot(-0.6c)$，正好一致。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法是对的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        静止时电荷密度为$\rho_0$、里面没有电流的带电体，在它以$0.8c$运动的惯性系里电荷密度是$\frac53\rho_0$
+      - |
+        $\partial_\mu F^{\mu\nu}=\mu_0J^\nu$包含 4 个分量方程，其中 1 个是高斯定律
+      - |
+        在$S$里$\vb J=0$的地方，在任何惯性系里都有$\vb J'=0$
+      - |
+        $S$里的电磁场满足麦克斯韦方程组，其中处处有$\divg\vb B=0$，那么在任何惯性系里也处处有$\divg\vb B'=0$
+      - |
+        $\Box=\partial_\mu\partial^\mu$换惯性系时会多出一个因子$\gamma^2$
+    value: [1, 2, 4]
+  hints:
+    - |
+      电荷密度是$J^0/c$，按四维矢量的时间分量变换；方程组是洛伦兹协变的。
+    - |
+      $\vb J=0$但$\rho\ne0$时，看看$J'^1=\gamma(J^1-\beta J^0)$；$\Box$是四维梯度一上一下配对得到的。
+    - |
+      A、B、D 对；C、E 错。
+  solution: |
+    A 对：带电体里没有电流，静止系里$J^\mu=(c\rho_0,0,0,0)$，换过去$\rho=\gamma\rho_0$，$\gamma=\frac53$。B 对：$\nu=0$是高斯定律，$\nu=1,2,3$是安培-麦克斯韦定律的三个分量。C 错：静止的电荷$\vb J=0$、$\rho\ne0$，在运动的惯性系里$J'^1=-\gamma\beta c\rho\ne0$。
+
+    D 对：方程组是洛伦兹协变的，无源的两个方程在$S$里成立，在所有惯性系里就都成立。只知道$\divg\vb B=0$还不够：沿$x$轴推进后，新惯性系里的$\divg\vb B'$还混进了法拉第定律的$x$分量。E 错：$\Box$是不变的算符，不会多出因子。
+
+- id: p3
+  tier: medium
+  statement: |
+    一根很长的直导线在实验室里不带电，通有沿$+x$方向的电流$2.0\,\mathrm A$。在以$0.8c$沿$+x$方向运动的惯性系里，导线单位长度带多少电荷？
+  answer:
+    type: number
+    value: -(5/3)*0.8*2.0/299792458
+    unit: |
+      $\mathrm{C/m}$
+  hints:
+    - |
+      对截面积分后，$(c\lambda,I)$像$(ct,x)$那样变换（例 1）。
+    - |
+      $c\lambda'=\gamma\bigl(c\lambda-\frac vcI\bigr)$，$\lambda=0$，$\gamma=\frac53$。
+    - |
+      $\lambda'=-\gamma\frac{vI}{c^2}=-\frac{\frac53\times0.8\times2.0}{2.998\times10^8}\,\mathrm{C/m}\approx-8.90\times10^{-9}\,\mathrm{C/m}$。
+  solution: |
+    $\lambda'=\gamma\bigl(\lambda-\frac{vI}{c^2}\bigr)=-\frac53\times\frac{0.8\times2.0}{2.998\times10^8}\,\mathrm{C/m}\approx-8.90\times10^{-9}\,\mathrm{C/m}$，带负电。实验室里沿$-x$方向漂移的电子，在这个惯性系里跑得更快、挤得更密，正离子以$0.8c$沿$-x$方向运动，也变密了，但电子变密得更多。
+
+- id: p4
+  tier: medium
+  statement: |
+    半径$R=1.0\,\mathrm{cm}$的很长的圆柱在惯性系$S$里静止，均匀带电，电荷密度$\rho_0=1.0\times10^{-6}\,\mathrm{C/m^3}$。在以$0.6c$沿圆柱的轴运动的惯性系$S'$里，离轴$5.0\,\mathrm{cm}$处的磁场多大？取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 2e-7*1.25*0.6*299792458*1e-6*pi*0.01^2/0.05
+    unit: |
+      $\mathrm T$
+  hints:
+    - |
+      单位长度的电荷$\lambda_0=\rho_0\pi R^2$；对截面积分后，$(c\lambda,I)$按四维矢量的前两个分量变换。
+    - |
+      $S'$里圆柱以$0.6c$运动，电流$|I'|=\gamma v\lambda_0$；圆柱外的磁场由安培环路定理（Ampère's circuital law）求。
+    - |
+      $B'=\frac{\mu_0|I'|}{2\pi r}=2\times10^{-7}\times\frac{1.25\times0.6\times2.998\times10^8\times\pi\times10^{-10}}{0.050}\,\mathrm T\approx2.83\times10^{-7}\,\mathrm T$。
+  solution: |
+    $\lambda_0=\rho_0\pi R^2=\pi\times10^{-10}\,\mathrm{C/m}$。$S'$里$c\lambda'=\gamma c\lambda_0$，$I'=-\gamma v\lambda_0$，$|I'|=1.25\times0.6\times2.998\times10^8\times\pi\times10^{-10}\,\mathrm A\approx0.0706\,\mathrm A$。由安培环路定理，$B'=\frac{\mu_0|I'|}{2\pi r}\approx\frac{2\times10^{-7}\times0.0706}{0.050}\,\mathrm T\approx2.83\times10^{-7}\,\mathrm T$。用场的变换也一样：$S$里那里只有电场$E=\frac{\lambda_0}{2\pi\varepsilon_0r}$，$B'_\perp=\gamma\frac{vE}{c^2}$，结果相同。
+
+- id: p5
+  tier: hard
+  statement: |
+    把电磁场张量$F^{\mu\nu}$里的$\frac{\vb E}c$换成$\vb B$、$\vb B$换成$-\frac{\vb E}c$，得到对偶场张量（dual field tensor）$G^{\mu\nu}$：$G^{0i}=-B_i$，$G^{12}=\frac{E_z}c$，$G^{13}=-\frac{E_y}c$，$G^{23}=\frac{E_x}c$，其余由反对称定出。（1）证明$\partial_\mu G^{\mu\nu}=0$正是无源的两个方程。（2）证明$F_{\mu\nu}G^{\mu\nu}=-\frac4c\vb E\cdot\vb B$。
+  hints:
+    - |
+      （1）$\nu=0$：$\partial_iG^{i0}=\partial_iB_i$；$\nu=1$：$\partial_0G^{01}+\partial_2G^{21}+\partial_3G^{31}$。
+    - |
+      $\nu=1$的式子是$-\frac1c\bigl(\pdv{B_x}t+\pdv{E_z}y-\pdv{E_y}z\bigr)$。（2）$F_{0i}=\frac{E_i}c$，$F_{ij}=F^{ij}$。
+    - |
+      $F_{\mu\nu}G^{\mu\nu}=2\sum_iF_{0i}G^{0i}+\sum_{i,j}F_{ij}G^{ij}=-\frac2c\vb E\cdot\vb B-\frac2c\vb E\cdot\vb B$。
+  reference: |
+    （1）$\nu=0$：$\partial_\mu G^{\mu0}=\partial_iG^{i0}=\partial_iB_i=\divg\vb B$。$\nu=1$：$\partial_0G^{01}+\partial_2G^{21}+\partial_3G^{31}=\frac1c\pdv{(-B_x)}t+\pdv{}{y}\Bigl(-\frac{E_z}c\Bigr)+\pdv{}{z}\Bigl(\frac{E_y}c\Bigr)=-\frac1c\Bigl(\pdv{B_x}t+(\curl\vb E)_x\Bigr)$；$\nu=2,3$同理。所以$\partial_\mu G^{\mu\nu}=0$就是$\divg\vb B=0$和$\curl\vb E=-\pdv{\vb B}t$。
+
+    （2）$F_{0i}=\frac{E_i}c$，$G^{0i}=-B_i$，$\sum_iF_{0i}G^{0i}=-\frac1c\vb E\cdot\vb B$，$F_{i0}G^{i0}$给出同样的和。空间部分$F_{12}G^{12}=(-B_z)\frac{E_z}c$，$F_{13}G^{13}=B_y\bigl(-\frac{E_y}c\bigr)$，$F_{23}G^{23}=(-B_x)\frac{E_x}c$，再加上交换两个指标的三项，共$-\frac2c\vb E\cdot\vb B$。总和是$-\frac4c\vb E\cdot\vb B$。
+
+    $G^{\mu\nu}$也是四维张量（可以写成$F_{\mu\nu}$的线性组合，系数在洛伦兹变换下不变，这里不证），所以$F_{\mu\nu}G^{\mu\nu}$是洛伦兹标量，$\vb E\cdot\vb B$是不变量；这和用场的变换直接验证的结果（见[电磁场张量](lesson:physics.special-relativity.field-tensor)的 p5）一致。用$G$写，麦克斯韦方程组成了对称的一对：$\partial_\mu F^{\mu\nu}=\mu_0J^\nu$，$\partial_\mu G^{\mu\nu}=0$。
+
+- id: p6
+  tier: hard
+  statement: |
+    在没有电荷和电流的地方，考虑四维势$A^\mu=a^\mu\cos(k_\nu x^\nu)$，$a^\mu$、$k^\mu$是常数，$k^\mu=\bigl(\frac\omega c,\vb k\bigr)$。（1）证明它满足洛伦茨规范和$\Box A^\mu=0$，当且仅当$k\cdot a=0$且$k\cdot k=0$；由$k\cdot k=0$说明这样的波在每个惯性系里都以$c$传播。（2）把$a^\mu$换成$a^\mu+sk^\mu$（$s$是常数），场张量变不变？为什么？
+  hints:
+    - |
+      $\partial_\lambda\cos(k_\nu x^\nu)=-k_\lambda\sin(k_\nu x^\nu)$；$k_\nu x^\nu=\omega t-\vb k\cdot\vb r$。
+    - |
+      $\partial_\mu A^\mu=-k_\mu a^\mu\sin(\cdots)$，$\Box A^\mu=-(k\cdot k)A^\mu$；$k\cdot k=\frac{\omega^2}{c^2}-|\vb k|^2$是洛伦兹标量。
+    - |
+      $F^{\mu\nu}=-(k^\mu a^\nu-k^\nu a^\mu)\sin(k_\lambda x^\lambda)$，把$a^\nu$换成$a^\nu+sk^\nu$，多出的两项抵消；这就是一个规范变换。
+  reference: |
+    （1）$\partial_\lambda A^\mu=-a^\mu k_\lambda\sin(k_\nu x^\nu)$，所以$\partial_\mu A^\mu=-(k\cdot a)\sin(k_\nu x^\nu)$，处处为零当且仅当$k\cdot a=0$。再求一次导，$\Box A^\mu=\partial_\lambda\partial^\lambda A^\mu=-(k_\lambda k^\lambda)\,a^\mu\cos(k_\nu x^\nu)$，处处为零当且仅当$k\cdot k=0$（$a^\mu$不全为零）。没有电荷和电流时，洛伦茨规范下的方程正是$\Box A^\mu=0$，所以这两条就是这样的波存在的条件。$k\cdot k=\frac{\omega^2}{c^2}-|\vb k|^2=0$即$\omega=c|\vb k|$，相速度是$c$；$k\cdot k$是洛伦兹标量，在另一个惯性系里同样为零，所以那里的波也以$c$传播。
+
+    （2）$F^{\mu\nu}=\partial^\mu A^\nu-\partial^\nu A^\mu=-(k^\mu a^\nu-k^\nu a^\mu)\sin(k_\lambda x^\lambda)$。把$a^\nu$换成$a^\nu+sk^\nu$，多出$-s(k^\mu k^\nu-k^\nu k^\mu)\sin(\cdots)=0$，场张量不变。这相当于规范变换$A^\mu\to A^\mu-\partial^\mu\chi$，取$\chi=-s\sin(k_\nu x^\nu)$，则$-\partial^\mu\chi=sk^\mu\cos(k_\nu x^\nu)$，正好把$a^\mu$换成$a^\mu+sk^\mu$。$\Box\chi=0$，所以变换后仍满足洛伦茨规范。
+
+    所以$a^\mu$的四个分量里，$k\cdot a=0$去掉一个，规范变换又去掉一个，只剩两个有物理意义：光的两个偏振方向。
+
+- id: p7
+  tier: thinking
+  statement: |
+    19 世纪的人用伽利略变换（Galilean transformation）$x'=x-vt$，$t'=t$在两个惯性系之间换算。（1）在$S$里满足$\Box f=0$的波，在$S'$里满足的方程是什么形式？（2）为什么当时的人认为麦克斯韦方程组只在一个特殊的惯性系，即以太（ether）静止的参考系里成立？爱因斯坦为什么选择改变换，而不是改方程组（见[相对性原理与光速不变](lesson:physics.special-relativity.postulates)）？
+  hints:
+    - |
+      由链式法则，$\pdv{}{t}=\pdv{}{t'}-v\pdv{}{x'}$，$\pdv{}{x}=\pdv{}{x'}$。
+    - |
+      $\Box$变成$\frac1{c^2}\bigl(\pdv{}{t'}-v\pdv{}{x'}\bigr)^2-\nabla'^2$，多出交叉项，形式变了；沿$x'$轴传播的波速变成$c\mp v$。
+    - |
+      方程组里有$c$，又说不出是相对谁的速度；保留方程组、要求它在每个惯性系里形式相同，就必须换掉伽利略变换。
+  reference: |
+    （1）$t=t'$，$x=x'+vt'$，由链式法则$\pdv{}{t'}=\pdv{}{t}+v\pdv{}{x}$，即$\pdv{}{t}=\pdv{}{t'}-v\pdv{}{x'}$，空间导数不变。所以$\Box f=0$在$S'$里变成$\frac1{c^2}\Bigl(\pdv{}{t'}-v\pdv{}{x'}\Bigr)^2f-\nabla'^2f=0$，多出$-\frac{2v}{c^2}\frac{\partial^2f}{\partial t'\partial x'}$和$\frac{v^2}{c^2}\frac{\partial^2f}{\partial x'^2}$两项，形式和$S$里不同：沿$+x'$和$-x'$方向的波速分别是$c-v$和$c+v$。
+
+    （2）在伽利略变换下，麦克斯韦方程组只在一个惯性系里有简单的形式，在那里光沿各个方向都以$c$传播，19 世纪的人自然认为这就是以太静止的参考系。可迈克耳孙-莫雷实验（Michelson–Morley experiment）找不到地球相对以太的运动。爱因斯坦把相对性原理放在第一位：既然实验分辨不出哪个惯性系特殊，麦克斯韦方程组就应当在每个惯性系里成立；方程组里只出现$c$，那就要求光速在每个惯性系里都是$c$，变换必须是洛伦兹变换。这一节说明这条路走得通：在洛伦兹变换下方程组是协变的，$\Box$是不变的算符。
+
+    代价是牛顿力学要改，换成四维动量守恒、$K^\mu=\dv{P^\mu}\tau$这一套。电磁学这边一个字都不用改，只是写法变了。
+
+- id: p8
+  tier: thinking
+  statement: |
+    带电尘埃满足$\partial_\mu T^{\mu\nu}=F^{\nu\lambda}J_\lambda$，它自己的能量和动量不守恒。
+
+    （1）$\nu=0$分量说了什么，电场对电荷做正功时尘埃的能量怎样变？（2）如果总的能量和动量要守恒，电磁场自己必须有一个能量-动量张量$T^{\mu\nu}_{\text{场}}$，它要满足什么方程？（3）电磁场的能量密度和能流密度（见[坡印亭定理](lesson:physics.electromagnetism.poynting-theorem)）应当是$T^{\mu\nu}_{\text{场}}$的哪些分量？
+  hints:
+    - |
+      $\nu=0$：$\frac1c\bigl(\pdv{T^{00}}t+\divg(c\,T^{i0})\bigr)=\frac1c\vb J\cdot\vb E$。
+    - |
+      要$\partial_\mu\bigl(T^{\mu\nu}+T^{\mu\nu}_{\text{场}}\bigr)=0$，就要$\partial_\mu T^{\mu\nu}_{\text{场}}=-F^{\nu\lambda}J_\lambda$。
+    - |
+      场的能量密度$\frac{\varepsilon_0}2(E^2+c^2B^2)$应是$T^{00}_{\text{场}}$，坡印亭矢量（Poynting vector）$\frac1{\mu_0}\vb E\times\vb B$应是能流密度$cT^{0i}_{\text{场}}$。
+  reference: |
+    （1）$\nu=0$分量乘以$c$是$\pdv{T^{00}}t+\partial_i\bigl(cT^{i0}\bigr)=\vb J\cdot\vb E$：尘埃的能量密度的增加，等于流进来的能量加上电场在单位体积里做功的功率$\vb J\cdot\vb E$。电场做正功时，尘埃的能量增加，空间分量则说它的动量按洛伦兹力密度$\rho\vb E+\vb J\times\vb B$增加。
+
+    （2）尘埃得到的能量和动量是从电磁场那里来的。要总量守恒，就要$\partial_\mu\bigl(T^{\mu\nu}+T^{\mu\nu}_{\text{场}}\bigr)=0$，即$\partial_\mu T^{\mu\nu}_{\text{场}}=-F^{\nu\lambda}J_\lambda$：场的能量、动量减少的地方，正是它对电荷做功、推动电荷的地方。
+
+    （3）坡印亭定理说，场的能量密度$u=\frac{\varepsilon_0}2(E^2+c^2B^2)$和能流密度（坡印亭矢量，Poynting vector）$\vb S=\frac1{\mu_0}\vb E\times\vb B$满足$\pdv ut+\divg\vb S=-\vb J\cdot\vb E$，这正是$\nu=0$分量的方程，所以$T^{00}_{\text{场}}=u$，$cT^{0i}_{\text{场}}=S_i$，场的动量密度是$\frac{\vb S}{c^2}$。用电磁场张量可以把整个张量写成$T^{\mu\nu}_{\text{场}}=\frac1{\mu_0}\bigl(F^{\mu\lambda}F_\lambda{}^\nu+\frac14\eta^{\mu\nu}F_{\lambda\kappa}F^{\lambda\kappa}\bigr)$，空间分量是麦克斯韦应力张量（Maxwell stress tensor）的相反数。

@@ -13,6 +13,10 @@ macros:
     \frac{\partial #1}{\partial #2}
   \T: |
     ^{\mathsf{T}}
+  \divg: |
+    \nabla\cdot
+  \curl: |
+    \nabla\times
 glossary:
   - id: physics.special-relativity.inertial-frame
     zh: |
@@ -446,3 +450,84 @@ glossary:
       在观察者的惯性系里光的来向和光源速度垂直时的频移，频率乘$\frac1\gamma$，来自光源的时间延缓。
     definedIn: physics.special-relativity.relativistic-doppler
     anchor: def-doppler-types
+  - id: physics.special-relativity.four-tensor
+    zh: |
+      四维张量
+    en: |
+      four-tensor
+    brief: |
+      16 个量$T^{\mu\nu}$，换惯性系时每个指标各乘一次洛伦兹变换的矩阵：$T'=\Lambda T\Lambda\T$。
+    definedIn: physics.special-relativity.stress-energy-tensor
+    anchor: def-four-tensor
+  - id: physics.special-relativity.four-gradient
+    zh: |
+      四维梯度
+    en: |
+      four-gradient
+    brief: |
+      $\partial_\mu=\pdv{}{x^\mu}$，即$\bigl(\frac1c\pdv{}{t},\nabla\bigr)$；换惯性系时和四维矢量的下标分量一样变换。
+    definedIn: physics.special-relativity.stress-energy-tensor
+    anchor: def-four-gradient
+  - id: physics.special-relativity.dust
+    zh: |
+      尘埃
+    en: |
+      dust
+    brief: |
+      每一点附近速度相同、彼此没有相互作用的一团粒子；能量-动量张量是$mn_0U^\mu U^\nu$，$n_0$是静止数密度。
+    definedIn: physics.special-relativity.stress-energy-tensor
+    anchor: def-dust
+  - id: physics.special-relativity.stress-energy-tensor
+    zh: |
+      能量-动量张量
+    en: |
+      stress–energy tensor
+    brief: |
+      对称张量$T^{\mu\nu}$：$T^{00}$是能量密度，$cT^{0i}$是能流密度，$T^{i0}/c$是动量密度，$T^{ij}$是动量流密度。
+    definedIn: physics.special-relativity.stress-energy-tensor
+    anchor: def-stress-energy-tensor
+  - id: physics.special-relativity.perfect-fluid
+    zh: |
+      理想流体
+    en: |
+      perfect fluid
+    brief: |
+      局部静止系里能量-动量张量是$\mathrm{diag}(\varepsilon,p,p,p)$的连续介质，$\varepsilon$是能量密度，$p$是压强。
+    definedIn: physics.special-relativity.stress-energy-tensor
+    anchor: def-perfect-fluid
+  - id: physics.special-relativity.field-tensor
+    zh: |
+      电磁场张量
+    en: |
+      electromagnetic field tensor
+    brief: |
+      由电场和磁场组成的反对称四维张量$F^{\mu\nu}$：$F^{i0}$是电场分量除以$c$，$F^{ij}$是磁场分量；洛伦兹力是$K^\mu=qF^{\mu\nu}U_\nu$。
+    definedIn: physics.special-relativity.field-tensor
+    anchor: def-field-tensor
+  - id: physics.special-relativity.four-potential
+    zh: |
+      四维势
+    en: |
+      four-potential
+    brief: |
+      标势和矢势合成的$A^\mu=(\phi/c,\vb A)$；电磁场张量是$F^{\mu\nu}=\partial^\mu A^\nu-\partial^\nu A^\mu$。
+    definedIn: physics.special-relativity.field-tensor
+    anchor: def-four-potential
+  - id: physics.special-relativity.four-current
+    zh: |
+      四维电流
+    en: |
+      four-current
+    brief: |
+      电荷密度和电流密度合成的四维矢量$J^\mu=(c\rho,\vb J)$；电荷守恒写成$\partial_\mu J^\mu=0$。
+    definedIn: physics.special-relativity.covariant-maxwell
+    anchor: def-four-current
+  - id: physics.special-relativity.lorentz-covariance
+    zh: |
+      洛伦兹协变
+    en: |
+      Lorentz covariance
+    brief: |
+      方程两边换惯性系时按同样的方式变换（如都是四维矢量），所以在所有惯性系里形式相同。
+    definedIn: physics.special-relativity.covariant-maxwell
+    anchor: def-lorentz-covariance

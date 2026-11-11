@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" width="560" height="300" font-size="14">
+  <!-- 左：静止的点电荷，24 条电场线每隔 15°；右：以 0.8c 向右运动，方向按 tan t = (5/3) tan t' 压缩。线段从半径 13 画到 100 像素。 -->
+  <line x1="153.0" y1="150.0" x2="240.0" y2="150.0" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 212.0 150.0 L 206.5 152.4 L 206.5 147.6 z" style="fill: currentColor" />
+  <line x1="152.6" y1="146.6" x2="236.6" y2="124.1" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 209.5 131.4 L 204.9 135.1 L 203.6 130.4 z" style="fill: currentColor" />
+  <line x1="151.3" y1="143.5" x2="226.6" y2="100.0" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 202.4 114.0 L 198.8 118.9 L 196.4 114.6 z" style="fill: currentColor" />
+  <line x1="149.2" y1="140.8" x2="210.7" y2="79.3" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 190.9 99.1 L 188.8 104.7 L 185.3 101.2 z" style="fill: currentColor" />
+  <line x1="146.5" y1="138.7" x2="190.0" y2="63.4" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 176.0 87.6 L 175.4 93.6 L 171.1 91.2 z" style="fill: currentColor" />
+  <line x1="143.4" y1="137.4" x2="165.9" y2="53.4" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 158.6 80.5 L 159.6 86.4 L 154.9 85.1 z" style="fill: currentColor" />
+  <line x1="140.0" y1="137.0" x2="140.0" y2="50.0" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 140.0 78.0 L 142.4 83.5 L 137.6 83.5 z" style="fill: currentColor" />
+  <line x1="136.6" y1="137.4" x2="114.1" y2="53.4" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 121.4 80.5 L 125.1 85.1 L 120.4 86.4 z" style="fill: currentColor" />
+  <line x1="133.5" y1="138.7" x2="90.0" y2="63.4" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 104.0 87.6 L 108.9 91.2 L 104.6 93.6 z" style="fill: currentColor" />
+  <line x1="130.8" y1="140.8" x2="69.3" y2="79.3" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 89.1 99.1 L 94.7 101.2 L 91.2 104.7 z" style="fill: currentColor" />
+  <line x1="128.7" y1="143.5" x2="53.4" y2="100.0" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 77.6 114.0 L 83.6 114.6 L 81.2 118.9 z" style="fill: currentColor" />
+  <line x1="127.4" y1="146.6" x2="43.4" y2="124.1" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 70.5 131.4 L 76.4 130.4 L 75.1 135.1 z" style="fill: currentColor" />
+  <line x1="127.0" y1="150.0" x2="40.0" y2="150.0" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 68.0 150.0 L 73.5 147.6 L 73.5 152.4 z" style="fill: currentColor" />
+  <line x1="127.4" y1="153.4" x2="43.4" y2="175.9" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 70.5 168.6 L 75.1 164.9 L 76.4 169.6 z" style="fill: currentColor" />
+  <line x1="128.7" y1="156.5" x2="53.4" y2="200.0" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 77.6 186.0 L 81.2 181.1 L 83.6 185.4 z" style="fill: currentColor" />
+  <line x1="130.8" y1="159.2" x2="69.3" y2="220.7" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 89.1 200.9 L 91.2 195.3 L 94.7 198.8 z" style="fill: currentColor" />
+  <line x1="133.5" y1="161.3" x2="90.0" y2="236.6" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 104.0 212.4 L 104.6 206.4 L 108.9 208.8 z" style="fill: currentColor" />
+  <line x1="136.6" y1="162.6" x2="114.1" y2="246.6" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 121.4 219.5 L 120.4 213.6 L 125.1 214.9 z" style="fill: currentColor" />
+  <line x1="140.0" y1="163.0" x2="140.0" y2="250.0" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 140.0 222.0 L 137.6 216.5 L 142.4 216.5 z" style="fill: currentColor" />
+  <line x1="143.4" y1="162.6" x2="165.9" y2="246.6" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 158.6 219.5 L 154.9 214.9 L 159.6 213.6 z" style="fill: currentColor" />
+  <line x1="146.5" y1="161.3" x2="190.0" y2="236.6" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 176.0 212.4 L 171.1 208.8 L 175.4 206.4 z" style="fill: currentColor" />
+  <line x1="149.2" y1="159.2" x2="210.7" y2="220.7" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 190.9 200.9 L 185.3 198.8 L 188.8 195.3 z" style="fill: currentColor" />
+  <line x1="151.3" y1="156.5" x2="226.6" y2="200.0" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 202.4 186.0 L 196.4 185.4 L 198.8 181.1 z" style="fill: currentColor" />
+  <line x1="152.6" y1="153.4" x2="236.6" y2="175.9" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 209.5 168.6 L 203.6 169.6 L 204.9 164.9 z" style="fill: currentColor" />
+  <circle cx="140.0" cy="150.0" r="8" style="fill: var(--accent, #2563eb)" />
+  <line x1="433.0" y1="150.0" x2="520.0" y2="150.0" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 492.0 150.0 L 486.5 152.4 L 486.5 147.6 z" style="fill: currentColor" />
+  <line x1="431.9" y1="144.7" x2="511.3" y2="109.2" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 485.7 120.6 L 481.7 125.1 L 479.7 120.6 z" style="fill: currentColor" />
+  <line x1="429.4" y1="141.0" x2="492.1" y2="80.7" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 471.9 100.1 L 469.6 105.6 L 466.2 102.1 z" style="fill: currentColor" />
+  <line x1="426.7" y1="138.9" x2="471.4" y2="64.3" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 457.0 88.3 L 456.3 94.2 L 452.1 91.7 z" style="fill: currentColor" />
+  <line x1="424.3" y1="137.7" x2="452.7" y2="55.5" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 443.6 82.0 L 444.1 87.9 L 439.5 86.3 z" style="fill: currentColor" />
+  <line x1="422.1" y1="137.2" x2="435.9" y2="51.3" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 431.4 78.9 L 433.0 84.7 L 428.1 83.9 z" style="fill: currentColor" />
+  <line x1="420.0" y1="137.0" x2="420.0" y2="50.0" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 420.0 78.0 L 422.4 83.5 L 417.6 83.5 z" style="fill: currentColor" />
+  <line x1="417.9" y1="137.2" x2="404.1" y2="51.3" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 408.6 78.9 L 411.9 83.9 L 407.0 84.7 z" style="fill: currentColor" />
+  <line x1="415.7" y1="137.7" x2="387.3" y2="55.5" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 396.4 82.0 L 400.5 86.3 L 395.9 87.9 z" style="fill: currentColor" />
+  <line x1="413.3" y1="138.9" x2="368.6" y2="64.3" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 383.0 88.3 L 387.9 91.7 L 383.7 94.2 z" style="fill: currentColor" />
+  <line x1="410.6" y1="141.0" x2="347.9" y2="80.7" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 368.1 100.1 L 373.8 102.1 L 370.4 105.6 z" style="fill: currentColor" />
+  <line x1="408.1" y1="144.7" x2="328.7" y2="109.2" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 354.3 120.6 L 360.3 120.6 L 358.3 125.1 z" style="fill: currentColor" />
+  <line x1="407.0" y1="150.0" x2="320.0" y2="150.0" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 348.0 150.0 L 353.5 147.6 L 353.5 152.4 z" style="fill: currentColor" />
+  <line x1="408.1" y1="155.3" x2="328.7" y2="190.8" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 354.3 179.4 L 358.3 174.9 L 360.3 179.4 z" style="fill: currentColor" />
+  <line x1="410.6" y1="159.0" x2="347.9" y2="219.3" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 368.1 199.9 L 370.4 194.4 L 373.8 197.9 z" style="fill: currentColor" />
+  <line x1="413.3" y1="161.1" x2="368.6" y2="235.7" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 383.0 211.7 L 383.7 205.8 L 387.9 208.3 z" style="fill: currentColor" />
+  <line x1="415.7" y1="162.3" x2="387.3" y2="244.5" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 396.4 218.0 L 395.9 212.1 L 400.5 213.7 z" style="fill: currentColor" />
+  <line x1="417.9" y1="162.8" x2="404.1" y2="248.7" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 408.6 221.1 L 407.0 215.3 L 411.9 216.1 z" style="fill: currentColor" />
+  <line x1="420.0" y1="163.0" x2="420.0" y2="250.0" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 420.0 222.0 L 417.6 216.5 L 422.4 216.5 z" style="fill: currentColor" />
+  <line x1="422.1" y1="162.8" x2="435.9" y2="248.7" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 431.4 221.1 L 428.1 216.1 L 433.0 215.3 z" style="fill: currentColor" />
+  <line x1="424.3" y1="162.3" x2="452.7" y2="244.5" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 443.6 218.0 L 439.5 213.7 L 444.1 212.1 z" style="fill: currentColor" />
+  <line x1="426.7" y1="161.1" x2="471.4" y2="235.7" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 457.0 211.7 L 452.1 208.3 L 456.3 205.8 z" style="fill: currentColor" />
+  <line x1="429.4" y1="159.0" x2="492.1" y2="219.3" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 471.9 199.9 L 466.2 197.9 L 469.6 194.4 z" style="fill: currentColor" />
+  <line x1="431.9" y1="155.3" x2="511.3" y2="190.8" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 485.7 179.4 L 479.7 179.4 L 481.7 174.9 z" style="fill: currentColor" />
+  <circle cx="420.0" cy="150.0" r="8" style="fill: var(--accent, #2563eb)" />
+  <text x="140.0" y="26.0" fill="currentColor" text-anchor="middle">静止</text>
+  <text x="420.0" y="26.0" fill="currentColor" text-anchor="middle">以 0.8<tspan font-style="italic">c</tspan> 向右运动</text>
+  <line x1="394.0" y1="280.0" x2="446.0" y2="280.0" stroke-width="2.2" style="stroke: var(--accent, #2563eb)" />
+  <path d="M 450.0 280.0 L 441.8 283.7 L 441.8 276.3 z" style="fill: var(--accent, #2563eb)" />
+  <text x="460.0" y="285.0" fill="currentColor"><tspan font-style="italic">v</tspan></text>
+</svg>
