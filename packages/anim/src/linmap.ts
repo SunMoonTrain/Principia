@@ -58,11 +58,13 @@ export function stepAt(time: number, steps: number): { index: number; s: number;
   return { index, s: ease(raw), progress: index + raw };
 }
 
-/** 进度条的位置（0 到步数）→ 时间轴上的时刻。 */
+/**
+ * 进度条的位置（0 到步数）→ 时间轴上的时刻。
+ * 整数 k（1 ≤ k ≤ 步数）落在第 k 步的终点，而不是第 k + 1 步的起点：两处画面一样，标题要写第 k 步。
+ */
 export function timeAtProgress(progress: number, steps: number): number {
   const p = Math.max(0, Math.min(progress, steps));
-  if (p >= steps) return totalTime(steps);
-  const index = Math.floor(p);
+  const index = p > 0 && Number.isInteger(p) ? p - 1 : Math.floor(p);
   return index * (STEP_SECONDS + STEP_HOLD) + (p - index) * STEP_SECONDS;
 }
 

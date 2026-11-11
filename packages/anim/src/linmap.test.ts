@@ -62,7 +62,12 @@ describe('LinearMap2D 的计算', () => {
     // 走到一半时两头放慢的进度也是一半
     expect(stepAt(STEP_SECONDS / 2, 1).s).toBeCloseTo(0.5, 12);
     expect(stepAt(STEP_SECONDS / 4, 1).s).toBeLessThan(0.25);
-    for (const p of [0, 0.3, 1, 1.7, 2.5, 3]) expect(stepAt(timeAtProgress(p, 3), 3).progress).toBeCloseTo(p, 12);
+    for (const p of [0, 0.3, 1, 1.7, 2, 2.5, 3]) expect(stepAt(timeAtProgress(p, 3), 3).progress).toBeCloseTo(p, 12);
+    // 进度条拖到整数 k：停在第 k 步的终点，标题写第 k 步，不提前跳到下一步
+    expect(stepAt(timeAtProgress(1, 3), 3)).toEqual({ index: 0, s: 1, progress: 1 });
+    expect(stepAt(timeAtProgress(2, 3), 3)).toEqual({ index: 1, s: 1, progress: 2 });
+    expect(timeAtProgress(3, 3)).toBeCloseTo(totalTime(3), 12);
+    expect(stepAt(timeAtProgress(1, 1), 1)).toEqual({ index: 0, s: 1, progress: 1 });
   });
 
   it('特征向量的方向：对角矩阵、剪切、对称矩阵、旋转、单位矩阵的倍数', () => {
