@@ -124,7 +124,7 @@ sliders:
 
 **推导**：$S'$里$\vb E'=\frac{q}{4\pi\varepsilon_0}\frac{(x',y',z')}{r'^3}$，$\vb B'=0$，$\varepsilon_0$是真空介电常量（vacuum permittivity）。换回$S$：$E_x=E'_x$，$E_y=\gamma E'_y$，$E_z=\gamma E'_z$，代入$x'=\gamma x$，得$\vb E=\frac{q}{4\pi\varepsilon_0}\frac{\gamma(x,y,z)}{(\gamma^2x^2+y^2+z^2)^{3/2}}$；磁场$B_y=-\frac{\gamma v}{c^2}E'_z$，$B_z=\frac{\gamma v}{c^2}E'_y$，就是$\vb B=\frac1{c^2}\vb v\times\vb E$。
 
-电场沿$(x,y,z)$方向，指向背离电荷此刻位置的方向。设场点到原点的距离为$r$、和$x$轴的夹角为$\theta$，$\gamma^2x^2+y^2+z^2=\gamma^2r^2(1-\beta^2\sin^2\theta)$，所以$E=\frac{q}{4\pi\varepsilon_0r^2}\cdot\frac{1-\beta^2}{(1-\beta^2\sin^2\theta)^{3/2}}$，这就是上面函数图里的曲线。速度低时$\vb B\approx\frac{\mu_0}{4\pi}\frac{q\vb v\times\hat{\vb r}}{r^2}$，$\mu_0=\frac1{\varepsilon_0c^2}$是真空磁导率（vacuum permeability），和毕奥-萨伐尔定律（Biot–Savart law）给出的一样。
+电场沿$(x,y,z)$方向，指向背离电荷此刻位置的方向。设场点到原点的距离为$r$、和$x$轴的夹角为$\theta$，$\gamma^2x^2+y^2+z^2=\gamma^2r^2(1-\beta^2\sin^2\theta)$，所以$E=\frac{q}{4\pi\varepsilon_0r^2}\cdot\frac{1-\beta^2}{(1-\beta^2\sin^2\theta)^{3/2}}$，这就是上面函数图里的曲线。速度低时$\vb B\approx\frac{\mu_0}{4\pi}\frac{q\vb v\times\hat{\vb r}}{r^2}$，$\mu_0=\frac1{\varepsilon_0c^2}$是:term[真空磁导率]{id="physics.electromagnetism.permeability"}（vacuum permeability），和毕奥-萨伐尔定律（Biot–Savart law）给出的一样。
 
 ### 例 2　平行板电容器之间的场
 

@@ -1,0 +1,176 @@
+- id: p1
+  tier: easy
+  statement: |
+    镍的原子数密度是$9.14\times10^{28}\,\mathrm{m^{-3}}$，在很低的温度下每个原子的磁矩约为$0.60\mu_{\mathrm B}$，$\mu_{\mathrm B}=9.274\times10^{-24}\,\mathrm{J/T}$。所有原子的磁矩都排成同一个方向时，镍的磁化强度是多少？以$10^5\,\mathrm{A/m}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 9.14e28*0.60*9.274e-24/1e5
+    unit: |
+      $10^5\,\mathrm{A/m}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      磁矩都同向时，$\vb M=n\vb m$；$\mathrm{J/T}=\mathrm{A\,m^2}$。
+    - |
+      每个原子的磁矩是$0.60\times9.274\times10^{-24}\,\mathrm{A\,m^2}\approx5.56\times10^{-24}\,\mathrm{A\,m^2}$。
+    - |
+      $M=9.14\times10^{28}\times5.56\times10^{-24}\,\mathrm{A/m}\approx5.09\times10^5\,\mathrm{A/m}$。
+  solution: |
+    $M=nm=9.14\times10^{28}\times0.60\times9.274\times10^{-24}\,\mathrm{A/m}\approx5.09\times10^5\,\mathrm{A/m}$。对应的$\mu_0M\approx0.64\,\mathrm T$，比铁的小，因为镍每个原子的磁矩只有约$0.6\mu_{\mathrm B}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        一块磁介质板的磁化强度均匀、和板面垂直，那么板的两个大表面上没有束缚电流
+      - |
+        温度从$300\,\mathrm K$升到$600\,\mathrm K$，顺磁性物质在同一个磁场里的磁化强度变成原来的$2$倍
+      - |
+        把一块永磁铁加热到它的居里温度以上，再放在没有磁场的地方冷却，它的磁性会大大减弱
+      - |
+        磁化强度为$\vb M=kx\uv z$（$k$是正的常量）的磁介质，体内的束缚电流沿$-y$方向
+      - |
+        抗磁性只出现在没有原子磁矩的物质里
+    value: [1, 3, 4]
+  hints:
+    - |
+      表面上$\vb K_{\mathrm b}=\vb M\times\uv n$，体内$\vb J_{\mathrm b}=\curl\vb M$；顺磁性物质的磁化和绝对温度成反比。
+    - |
+      $\curl(kx\uv z)$的$y$分量是$\partial_zM_x-\partial_xM_z$；居里温度以上铁磁性消失，磁畴的方向被打乱。
+    - |
+      A、C、D 对；B、E 错。
+  solution: |
+    A 对：$\vb M$和法线平行，$\vb M\times\uv n=\vb 0$。B 错：磁化和绝对温度成反比，温度加倍，磁化变成原来的一半。C 对：居里温度以上自发的排列被热运动打乱，在没有磁场的地方冷却，各个磁畴的方向杂乱，整块的磁化大大减弱。
+
+    D 对：$(\curl\vb M)_y=\partial_zM_x-\partial_xM_z=-k$，束缚电流沿$-y$方向。E 错：每种物质都有抗磁性，在有原子磁矩的物质里只是被顺磁性盖过。
+
+- id: p3
+  tier: medium
+  statement: |
+    半径$1.0\,\mathrm{cm}$、长$2.0\,\mathrm{cm}$的圆柱形磁铁沿轴均匀磁化，磁化强度是$8.0\times10^5\,\mathrm{A/m}$。求它中心的磁场，以$\mathrm T$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 4*pi*1e-7*8.0e5*0.010/sqrt(0.010^2+0.010^2)
+    unit: |
+      $\mathrm T$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $\vb M$均匀，体内没有束缚电流；侧面上有$K_{\mathrm b}=M$的面电流绕着轴流，两个端面上没有。
+    - |
+      侧面上$z$到$z+\dd z$的一圈，电流是$M\,\dd z$，在中心产生$\frac{\mu_0MR^2\,\dd z}{2(R^2+z^2)^{3/2}}$；从$-\frac L2$积到$\frac L2$。
+    - |
+      $B=\mu_0M\frac{L/2}{\sqrt{(L/2)^2+R^2}}=\frac{\mu_0M}{\sqrt2}\approx0.711\,\mathrm T$。
+  solution: |
+    侧面上的束缚面电流是$M\uv\psi$，像一个每单位长度电流为$M$的短螺线管。$z$到$z+\dd z$的一圈在中心产生$\frac{\mu_0MR^2\,\dd z}{2(R^2+z^2)^{3/2}}$，积分得$B=\mu_0M\frac{L/2}{\sqrt{(L/2)^2+R^2}}$。
+
+    $\frac L2=R=1.0\,\mathrm{cm}$，$B=\frac{\mu_0M}{\sqrt2}=\frac{4\pi\times10^{-7}\times8.0\times10^5}{\sqrt2}\,\mathrm T\approx0.711\,\mathrm T$，比很长的磁铁中段的$\mu_0M\approx1.01\,\mathrm T$小。
+
+- id: p4
+  tier: medium
+  statement: |
+    很长的圆柱半径为$2.0\,\mathrm{cm}$，磁化强度沿轴，大小和离轴的距离$s$成正比：$\vb M=ks\uv z$，$k=3.0\times10^7\,\mathrm{A/m^2}$。求离轴$1.0\,\mathrm{cm}$处的磁场，以$\mathrm T$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 4*pi*1e-7*3.0e7*0.010
+    unit: |
+      $\mathrm T$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      体内的束缚电流$\vb J_{\mathrm b}=\curl(ks\uv z)$，表面上$\vb K_{\mathrm b}=\vb M\times\uv s$；都绕着轴流，像一层层套着的螺线管。
+    - |
+      $\curl(g(s)\uv z)=-g'(s)\uv\psi$（见[磁矢势](lesson:physics.electromagnetism.vector-potential)例 1），所以$\vb J_{\mathrm b}=-k\uv\psi$；表面上$\vb K_{\mathrm b}=ka\uv\psi$。圆柱外沿轴每单位长度的束缚电流加起来是零，磁场为零。
+    - |
+      取一个矩形安培回路，一条边在离轴$s$处、一条边在圆柱外：每单位长度包住的电流是$ka-k(a-s)=ks$，$B=\mu_0ks\approx0.377\,\mathrm T$。
+  solution: |
+    $\vb J_{\mathrm b}=\curl(ks\uv z)=-k\uv\psi$，圆柱表面上$\vb K_{\mathrm b}=ka\uv z\times\uv s=ka\uv\psi$，$a=2.0\,\mathrm{cm}$；每单位长度绕轴的电流总共是$-ka+ka=0$，圆柱外的磁场为零。
+
+    取一个矩形安培回路，平行于轴的两条边一条在离轴$s$处、一条在圆柱外，长都是$l$。它包住的束缚电流是$\bigl(ka-k(a-s)\bigr)l=ksl$，所以$Bl=\mu_0ksl$，$B=\mu_0ks=\mu_0M(s)=4\pi\times10^{-7}\times3.0\times10^7\times0.010\,\mathrm T\approx0.377\,\mathrm T$，沿$+z$。
+
+- id: p5
+  tier: hard
+  statement: |
+    半径为$R$的球均匀磁化，磁化强度为$\vb M$。
+
+    （1）把球里各小块磁矩的磁矢势加起来，证明$\vb A(\vb r)=\frac{\mu_0}{4\pi}\vb M\times\int\frac{\vb r-\vb r'}{|\vb r-\vb r'|^3}\dd V'$，积分遍及整个球。（2）这个积分和均匀带电球的电场（electric field）有什么关系？由此求球里和球外的$\vb A$。（3）求球里的磁场，说明它处处相同；球外的磁场是什么样的？
+  hints:
+    - |
+      每一小块的磁矢势是$\frac{\mu_0}{4\pi}\frac{\vb M\,\dd V'\times(\vb r-\vb r')}{|\vb r-\vb r'|^3}$；$\vb M$是常矢量，可以提到积分号外。
+    - |
+      $\frac{\rho}{4\pi\varepsilon_0}\int\frac{\vb r-\vb r'}{|\vb r-\vb r'|^3}\dd V'$是电荷密度（charge density）为$\rho$的均匀带电球的电场：球里是$\frac{\rho\vb r}{3\varepsilon_0}$，球外是$\frac{\rho R^3\vb r}{3\varepsilon_0r^3}$（见[用高斯定律求对称电场](lesson:physics.electromagnetism.gauss-applications)）。
+    - |
+      所以积分在球里是$\frac{4\pi}{3}\vb r$，在球外是$\frac{4\pi R^3}{3}\frac{\vb r}{r^3}$。球里$\vb A=\frac{\mu_0}{3}\vb M\times\vb r$，由$\curl(\vb M\times\vb r)=2\vb M$得$\vb B=\frac23\mu_0\vb M$，处处相同；球外$\vb A=\frac{\mu_0}{4\pi}\frac{\vb m\times\vb r}{r^3}$，$\vb m=\frac43\pi R^3\vb M$，正是这个磁偶极子的磁场。
+  reference: |
+    （1）$\dd V'$里的磁矩是$\vb M\,\dd V'$，它的磁矢势是$\frac{\mu_0}{4\pi}\frac{\vb M\,\dd V'\times(\vb r-\vb r')}{|\vb r-\vb r'|^3}$。$\vb M$处处相同，叉乘可以提到积分号外，得$\vb A=\frac{\mu_0}{4\pi}\vb M\times\vb I(\vb r)$，$\vb I(\vb r)=\int\frac{\vb r-\vb r'}{|\vb r-\vb r'|^3}\dd V'$。场点在球里时被积函数在$\vb r'=\vb r$有奇点，但它按$\frac{1}{|\vb r-\vb r'|^2}$发散，积分收敛。
+
+    （2）电荷密度为$\rho$的均匀带电球，电场是$\frac{\rho}{4\pi\varepsilon_0}\vb I(\vb r)$。由高斯定律（Gauss's law），球里电场是$\frac{\rho\vb r}{3\varepsilon_0}$，球外是$\frac{\rho R^3\vb r}{3\varepsilon_0r^3}$，所以球里$\vb I=\frac{4\pi}{3}\vb r$，球外$\vb I=\frac{4\pi R^3}{3}\frac{\vb r}{r^3}$。于是球里$\vb A=\frac{\mu_0}{3}\vb M\times\vb r$，球外$\vb A=\frac{\mu_0}{4\pi}\frac{\vb m\times\vb r}{r^3}$，$\vb m=\frac43\pi R^3\vb M$。
+
+    （3）对常矢量$\vb M$，$\curl(\vb M\times\vb r)=\vb M(\divg\vb r)-(\vb M\cdot\nabla)\vb r=3\vb M-\vb M=2\vb M$，所以球里$\vb B=\frac23\mu_0\vb M$，处处相同，和例 2 算的球心的值一致。球外的$\vb A$正是位于球心、磁矩为$\vb m$的磁偶极子的磁矢势，所以球外处处是这个磁偶极子的磁场，不只是远处。它和讲解里的束缚电流一致：表面电流$M\sin\theta\,\uv\psi$和[磁偶极子](lesson:physics.electromagnetism.magnetic-dipole)第 5 题转动的带电球壳的面电流分布相同。
+
+- id: p6
+  tier: hard
+  statement: |
+    圆环形的磁铁，横截面是矩形：内半径$a$、外半径$b$、高$h$，沿圆周方向磁化，$\vb M=M\uv\psi$，$M$是常量，$\uv\psi$绕环的对称轴转。
+
+    （1）求体内和四个表面上的束缚电流。（2）求环里和环外的磁场。（3）这样的磁铁能把铁钉吸起来吗？
+  hints:
+    - |
+      在直角坐标里，$M\uv\psi=\frac{M}{s}(-y,x,0)$，$s=\sqrt{x^2+y^2}$，求它的旋度；表面上逐个算$\vb M\times\uv n$。
+    - |
+      束缚电流都在过对称轴的平面里流动，绕轴转动不变，磁场沿$\uv\psi$，和[螺绕环](lesson:physics.electromagnetism.ampere-law#thm-toroid)（toroid）一样。取以对称轴为心、半径为$s$的圆作安培回路，数一数穿过它的束缚电流。
+    - |
+      $\vb J_{\mathrm b}=\frac Ms\uv z$；内侧面上$M\uv z$，外侧面上$-M\uv z$，上下底面上$\pm M\uv s$。环里$B\cdot2\pi s=\mu_0(2\pi aM+2\pi(s-a)M)$，$\vb B=\mu_0M\uv\psi$；环外穿过的束缚电流加起来为零，$\vb B=\vb 0$，吸不起放在外面的铁钉。
+  reference: |
+    （1）$(\curl\vb M)_z=\partial_x\Bigl(\frac{Mx}{s}\Bigr)+\partial_y\Bigl(\frac{My}{s}\Bigr)=M\Bigl(\frac2s-\frac{x^2+y^2}{s^3}\Bigr)=\frac Ms$，另两个分量为零，所以$\vb J_{\mathrm b}=\frac Ms\uv z$。表面上：上底面$\uv n=\uv z$，$\vb K_{\mathrm b}=M\uv\psi\times\uv z=M\uv s$；下底面$-M\uv s$；内侧面$\uv n=-\uv s$，$\vb K_{\mathrm b}=M\uv z$；外侧面$\uv n=\uv s$，$\vb K_{\mathrm b}=-M\uv z$。这些电流在过对称轴的每个平面里连成闭合的圈：内侧面向上，沿上底面向外，沿外侧面向下，沿下底面向里，体内还有向上的电流。
+
+    （2）束缚电流的分布绕轴转动不变，又都在过轴的平面里，和螺绕环的绕线一样，磁场只有$\uv\psi$分量，大小只和$s$、$z$有关。
+
+    取高度在$0<z<h$之间、以轴为心、半径为$s$的圆作安培回路。$a<s<b$时，穿过它的电流是内侧面的$2\pi aM$加上体内的$\int_a^s\frac{M}{s'}2\pi s'\,\dd s'=2\pi(s-a)M$，共$2\pi sM$，所以$2\pi sB=\mu_0\cdot2\pi sM$，$\vb B=\mu_0M\uv\psi=\mu_0\vb M$。$s>b$时还要加上外侧面的$-2\pi bM$，总和$2\pi bM-2\pi bM=0$；$s<a$或者回路在环的上下方时，没有电流穿过。所以环外处处$\vb B=\vb 0$。
+
+    （3）吸不起来：环外没有磁场，放在外面的铁钉不会被磁化，也不受力。磁场线全部关在环里，绕着环转圈。早年计算机的磁芯存储器就用这样的小磁环存一位数据，两个方向的磁化分别代表 0 和 1，磁环之间互不干扰。
+
+- id: p7
+  tier: thinking
+  statement: |
+    1820 年代，安培（André-Marie Ampère）猜想：磁铁的磁性来自物质里大量微小的环形电流。
+
+    （1）按当时对电流的了解，这个猜想有什么难以解释的地方？（2）今天怎样理解原子的磁矩？（3）用束缚电流计算磁铁的磁场时，为什么不必知道这些「电流」的微观来历？
+  hints:
+    - |
+      导线里的电流会发热，要电池一直供给能量才能维持；分子里的电流为什么不衰减？
+    - |
+      量子力学里，原子里的电子处在稳定的状态，轨道运动带来的磁矩不需要能量来维持；电子的自旋磁矩甚至没有经典的电流对应。
+    - |
+      宏观上只要知道每一小块的磁矩，即磁化强度；束缚电流由$\vb M$决定，算出的磁场和磁矩是怎样产生的无关。
+  reference: |
+    （1）当时知道的电流都要电源维持：伏打电堆接上导线，导线发热，电堆的化学能不断消耗。如果磁铁里有永不停息的环形电流，它们为什么不发热、不衰减？一块磁铁可以保持磁性几百年，这和电流要消耗能量的经验相矛盾。另外，当时也不知道物质由什么组成，「分子里的电流」只能是假设。
+
+    （2）原子里的电子按量子力学处在稳定的定态，绕核的轨道运动带来轨道磁矩，不会因为「发热」而衰减，因为没有可以让它损失能量的更低的状态（或者跃迁被禁止）；电子还有自旋磁矩，它是电子的内禀性质，不对应任何真实的转动或环流。所以安培的猜想在宏观上是对的，但「分子电流」的来历要用量子力学解释。
+
+    （3）磁介质对外的影响只取决于各处单位体积的磁矩$\vb M$。束缚电流$\vb J_{\mathrm b}=\curl\vb M$、$\vb K_{\mathrm b}=\vb M\times\uv n$是由$\vb M$算出来的等效电流，它们产生的磁场等于所有原子磁矩的磁场之和，推导里只用到每个磁矩的磁矢势，和磁矩是轨道运动还是自旋产生的无关。超精细结构的实验说明，在原子核的位置，磁矩的磁场也和电流环的一样（见[磁偶极子](lesson:physics.electromagnetism.magnetic-dipole)）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    一枚没有磁化的铁钉，靠近磁铁的 N 极会被吸过去，靠近 S 极也会被吸过去。
+
+    （1）为什么铁钉不会被其中一极推开？（2）铁钉被吸住时，它自己也能吸起别的小铁钉，为什么？（3）把磁铁拿开以后，铁钉往往还能吸起一点铁屑，这说明了什么？
+  hints:
+    - |
+      磁铁的磁场使铁钉磁化，磁化的方向由磁场决定，不由铁钉本身决定。
+    - |
+      磁矩和磁场同向时，被拉向磁场强的地方；被磁化的铁钉也有自己的磁场。
+    - |
+      铁磁性物质撤去磁场后还保留一部分磁化。
+  reference: |
+    （1）没有磁化时铁钉里各个磁畴的方向杂乱，整体的磁矩为零。靠近 N 极时，磁场使顺着它的磁畴长大，铁钉沿磁场方向被磁化，磁矩和磁场同向；在不均匀的磁场里，这样的磁矩被拉向磁场强的地方，也就是拉向磁极（见[磁偶极子](lesson:physics.electromagnetism.magnetic-dipole)）。换成 S 极，磁场反向，铁钉的磁化也跟着反向，仍和磁场同向，所以仍被吸引。永磁铁之间才会互相推开，因为它们的磁化不随外磁场翻转。
+
+    （2）被磁化的铁钉自己就是一块磁铁，它的磁场又使第二枚铁钉磁化，于是一串铁钉可以连着挂起来。
+
+    （3）铁磁性物质的磁化和以前经历过的磁场有关，撤去磁场后磁畴不能完全恢复杂乱，留下一部分磁化，铁钉变成了一块弱的永磁铁。软铁剩下的磁化很少，钢剩下的多，所以永磁铁用钢或别的合金做（见[磁场强度与线性磁介质](lesson:physics.electromagnetism.magnetic-intensity)）。

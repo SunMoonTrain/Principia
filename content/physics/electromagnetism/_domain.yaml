@@ -717,3 +717,255 @@ glossary:
       从比自身大得多的距离看的小电流环；那里的磁场只由磁矩决定，形状和电偶极子的电场一样。
     definedIn: physics.electromagnetism.magnetic-dipole
     anchor: def-magnetic-dipole
+  - id: physics.electromagnetism.magnetic-material
+    zh: |
+      磁介质
+    en: |
+      magnetic material
+    brief: |
+      从磁化的角度看的物质：放进磁场里，原子的磁矩转向磁场或产生新的磁矩；任何物质都是磁介质。
+    definedIn: physics.electromagnetism.magnetization
+    anchor: def-magnetic-material
+  - id: physics.electromagnetism.magnetization
+    zh: |
+      磁化强度
+    en: |
+      magnetization
+    brief: |
+      磁介质里单位体积的磁矩$\vb M$，单位是$\mathrm{A/m}$；它的旋度和切向分量给出束缚电流。
+    definedIn: physics.electromagnetism.magnetization
+    anchor: def-magnetization
+  - id: physics.electromagnetism.bound-current
+    zh: |
+      束缚电流
+    en: |
+      bound current
+    brief: |
+      磁介质里原子磁矩合起来形成的电流：体内$\vb J_{\mathrm b}=\curl\vb M$，表面上$\vb K_{\mathrm b}=\vb M\times\uv n$。
+    definedIn: physics.electromagnetism.magnetization
+    anchor: def-bound-current
+  - id: physics.electromagnetism.free-current
+    zh: |
+      自由电流
+    en: |
+      free current
+    brief: |
+      束缚电流以外的电流，例如导线里传导的电流，记作$\vb J_{\mathrm f}$、$I_{\mathrm f}$。
+    definedIn: physics.electromagnetism.magnetization
+    anchor: def-bound-current
+  - id: physics.electromagnetism.paramagnetism
+    zh: |
+      顺磁性
+    en: |
+      paramagnetism
+    brief: |
+      磁化强度和磁场同向、磁场撤去后随即消失的性质，来自原子磁矩转向磁场；很弱，温度越高越弱。
+    definedIn: physics.electromagnetism.magnetization
+    anchor: def-para-dia
+  - id: physics.electromagnetism.diamagnetism
+    zh: |
+      抗磁性
+    en: |
+      diamagnetism
+    brief: |
+      磁化强度和磁场反向的性质，来自磁场改变电子的轨道运动；每种物质都有，极弱。
+    definedIn: physics.electromagnetism.magnetization
+    anchor: def-para-dia
+  - id: physics.electromagnetism.ferromagnetism
+    zh: |
+      铁磁性
+    en: |
+      ferromagnetism
+    brief: |
+      铁、钴、镍等物质里相邻原子的磁矩自发排齐的性质：磁化很强，撤去磁场后还能保留。
+    definedIn: physics.electromagnetism.magnetization
+    anchor: def-ferromagnetism
+  - id: physics.electromagnetism.magnetic-domain
+    zh: |
+      磁畴
+    en: |
+      magnetic domain
+    brief: |
+      铁磁性物质里原子磁矩排成同一方向的小区域；没有磁化时各个磁畴的方向杂乱。
+    definedIn: physics.electromagnetism.magnetization
+    anchor: def-ferromagnetism
+  - id: physics.electromagnetism.magnetic-field-strength
+    zh: |
+      磁场强度
+    en: |
+      magnetic field strength
+    brief: |
+      $\vb H=\frac{\vb B}{\mu_0}-\vb M$，单位是$\mathrm{A/m}$；它的旋度只由自由电流决定，$\curl\vb H=\vb J_{\mathrm f}$。
+    definedIn: physics.electromagnetism.magnetic-intensity
+    anchor: def-h
+  - id: physics.electromagnetism.linear-magnetic-material
+    zh: |
+      线性磁介质
+    en: |
+      linear magnetic material
+    brief: |
+      磁化强度和磁场强度成正比的磁介质，$\vb M=\chi_{\mathrm m}\vb H$；顺磁性、抗磁性的物质在磁场不太强时都是这样。
+    definedIn: physics.electromagnetism.magnetic-intensity
+    anchor: def-linear-magnetic
+  - id: physics.electromagnetism.magnetic-susceptibility
+    zh: |
+      磁化率
+    en: |
+      magnetic susceptibility
+    brief: |
+      线性磁介质里$\vb M=\chi_{\mathrm m}\vb H$的比例系数$\chi_{\mathrm m}$，无量纲；顺磁性的为正，抗磁性的为负，都很小。
+    definedIn: physics.electromagnetism.magnetic-intensity
+    anchor: def-linear-magnetic
+  - id: physics.electromagnetism.permeability
+    zh: |
+      磁导率
+    en: |
+      permeability
+    brief: |
+      线性磁介质里$\vb B=\mu\vb H$的比例系数$\mu=\mu_0(1+\chi_{\mathrm m})$；真空里就是$\mu_0$。
+    definedIn: physics.electromagnetism.magnetic-intensity
+    anchor: def-permeability
+  - id: physics.electromagnetism.relative-permeability
+    zh: |
+      相对磁导率
+    en: |
+      relative permeability
+    brief: |
+      磁导率和真空磁导率之比$\mu_{\mathrm r}=\frac{\mu}{\mu_0}=1+\chi_{\mathrm m}$；填满线性磁介质的螺线管里，磁场是真空时的$\mu_{\mathrm r}$倍。
+    definedIn: physics.electromagnetism.magnetic-intensity
+    anchor: def-permeability
+  - id: physics.electromagnetism.hysteresis
+    zh: |
+      磁滞
+    en: |
+      hysteresis
+    brief: |
+      铁磁性物质的磁化还和以前经历过的磁场有关；$H$往复变化时$B$画出闭合的磁滞回线，$H$回到零时留下剩磁。
+    definedIn: physics.electromagnetism.magnetic-intensity
+    anchor: def-hysteresis
+  - id: physics.electromagnetism.electromagnetic-induction
+    zh: |
+      电磁感应
+    en: |
+      electromagnetic induction
+    brief: |
+      穿过闭合回路的磁通量变化时，回路里出现电动势、产生电流的现象；1831 年由法拉第发现。
+    definedIn: physics.electromagnetism.faraday-law
+    anchor: def-induction
+  - id: physics.electromagnetism.induced-emf
+    zh: |
+      感应电动势
+    en: |
+      induced electromotive force
+    brief: |
+      电磁感应时回路里出现的电动势；由法拉第定律$\mathcal E=-\dv{\Phi}{t}$给出，方向由楞次定律判断。
+    definedIn: physics.electromagnetism.faraday-law
+    anchor: def-induction
+  - id: physics.electromagnetism.faraday-law
+    zh: |
+      法拉第电磁感应定律
+    en: |
+      Faraday's law of induction
+    brief: |
+      闭合回路里的感应电动势等于穿过它的磁通量的变化率的负值，$\mathcal E=-\dv{\Phi}{t}$；回路运动、磁场变化都适用。
+    definedIn: physics.electromagnetism.faraday-law
+    anchor: thm-faraday
+  - id: physics.electromagnetism.lenz-law
+    zh: |
+      楞次定律
+    en: |
+      Lenz's law
+    brief: |
+      感应电流的方向总是使它产生的磁场阻碍引起感应的磁通量的变化；它是法拉第定律里负号的意思，和能量守恒一致。
+    definedIn: physics.electromagnetism.faraday-law
+    anchor: thm-lenz
+  - id: physics.electromagnetism.induced-electric-field
+    zh: |
+      感生电场
+    en: |
+      induced electric field
+    brief: |
+      变化的磁场在周围产生的电场；它的旋度是$-\pdv{\vb B}t$，沿闭合曲线的积分不为零，没有电势。
+    definedIn: physics.electromagnetism.induced-electric-field
+    anchor: def-induced-field
+  - id: physics.electromagnetism.eddy-current
+    zh: |
+      涡电流
+    en: |
+      eddy current
+    brief: |
+      大块导体里由感生电场推动、沿闭合路径绕圈的电流；会发热，也会阻碍导体和磁场的相对运动。
+    definedIn: physics.electromagnetism.induced-electric-field
+    anchor: def-eddy
+  - id: physics.electromagnetism.mutual-inductance
+    zh: |
+      互感
+    en: |
+      mutual inductance
+    brief: |
+      一个线圈的电流在另一个线圈里产生的磁通量与这个电流之比$M$，单位是亨利；两个线圈的互感相等，$M_{12}=M_{21}$。
+    definedIn: physics.electromagnetism.inductance
+    anchor: def-mutual
+  - id: physics.electromagnetism.self-inductance
+    zh: |
+      自感
+    en: |
+      self-inductance
+    brief: |
+      线圈自己的电流产生的穿过它自己的磁通量与电流之比$L=\frac{\Phi}{I}$，也叫电感；自感电动势是$-L\dv It$。
+    definedIn: physics.electromagnetism.inductance
+    anchor: def-self
+  - id: physics.electromagnetism.alternating-current
+    zh: |
+      交流电
+    en: |
+      alternating current
+    brief: |
+      大小和方向按正弦规律随时间变化的电流；交流发电机直接产生它，输电时用变压器方便地升压、降压。
+    definedIn: physics.electromagnetism.ac-circuits
+    anchor: def-ac
+  - id: physics.electromagnetism.transformer
+    zh: |
+      变压器
+    en: |
+      transformer
+    brief: |
+      两个线圈绕在同一个闭合铁芯上，靠铁芯里交变的磁通量改变交流电路的电势差；理想时两端电势差之比等于匝数之比。
+    definedIn: physics.electromagnetism.ac-circuits
+    anchor: def-transformer
+  - id: physics.electromagnetism.displacement-current
+    zh: |
+      位移电流
+    en: |
+      displacement current
+    brief: |
+      $\varepsilon_0\pdv{\vb E}t$穿过曲面的通量；它和电流一样产生磁场，补上它，安培环路定理在电流变化时也成立。
+    definedIn: physics.electromagnetism.maxwell-equations
+    anchor: def-displacement-current
+  - id: physics.electromagnetism.ampere-maxwell-law
+    zh: |
+      安培-麦克斯韦定律
+    en: |
+      Ampère–Maxwell law
+    brief: |
+      $\curl\vb B=\mu_0\vb J+\mu_0\varepsilon_0\pdv{\vb E}t$：电流和变化的电场都产生磁场，是安培环路定理加上位移电流的结果。
+    definedIn: physics.electromagnetism.maxwell-equations
+    anchor: thm-ampere-maxwell
+  - id: physics.electromagnetism.maxwell-equations
+    zh: |
+      麦克斯韦方程组
+    en: |
+      Maxwell's equations
+    brief: |
+      电场和磁场满足的两个散度方程和两个旋度方程；加上洛伦兹力，经典电磁学的现象都可以由它们推出。
+    definedIn: physics.electromagnetism.maxwell-equations
+    anchor: def-maxwell-equations
+  - id: physics.electromagnetism.toroid
+    zh: |
+      螺绕环
+    en: |
+      toroid
+    brief: |
+      导线均匀地绕在一个环上做成的线圈；磁场沿环的方向、关在环里，离对称轴$s$处是$\frac{\mu_0NI}{2\pi s}$，环外为零。
+    definedIn: physics.electromagnetism.ampere-law
+    anchor: thm-toroid

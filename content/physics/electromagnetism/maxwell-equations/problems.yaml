@@ -1,0 +1,170 @@
+- id: p1
+  tier: easy
+  statement: |
+    平行板电容器的极板面积是$0.020\,\mathrm{m^2}$，充电时两板之间的电场以$1.0\times10^{12}\,\mathrm{V/(m\,s)}$的速率增大，边缘的电场不计。求两板之间的位移电流，以$\mathrm A$为单位，保留三位有效数字。取$\varepsilon_0=8.854\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: number
+    value: 8.854e-12*0.020*1.0e12
+    unit: |
+      $\mathrm A$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      位移电流是$\varepsilon_0\pdv{\vb E}t$穿过曲面的通量。
+    - |
+      两板之间的电场均匀、垂直于极板，通量就是$\varepsilon_0A\dv Et$。
+    - |
+      $8.854\times10^{-12}\times0.020\times1.0\times10^{12}\,\mathrm A\approx0.177\,\mathrm A$。
+  solution: |
+    两板之间的电场均匀、垂直于极板，位移电流是$\varepsilon_0A\dv Et=8.854\times10^{-12}\times0.020\times1.0\times10^{12}\,\mathrm A\approx0.177\,\mathrm A$。它等于这时导线里给电容器充电的电流。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        变化的电场产生的磁场，绕着$\pdv{\vb E}t$的方向转，转向和沿这个方向的电流产生的磁场相同
+      - |
+        平行板电容器放电时，两板之间的位移电流和导线里的传导电流沿电路绕同一个方向流，电路里的「电流」是连续的
+      - |
+        磁场随时间变化时，穿过闭合曲面的磁通量（magnetic flux）可以不为零
+      - |
+        没有电荷、电流的地方，磁场的旋度一定为零
+      - |
+        给定的电荷密度和电流密度如果不满足连续性方程，麦克斯韦方程组就没有解
+    value: [1, 2, 5]
+  hints:
+    - |
+      安培-麦克斯韦定律里$\mu_0\varepsilon_0\pdv{\vb E}t$和$\mu_0\vb J$的地位一样；$\divg\vb B=0$对随时间变化的场也成立。
+    - |
+      放电时两板之间的电场在减小，$\pdv{\vb E}t$从负极板指向正极板；方程组蕴含电荷守恒。
+    - |
+      A、B、E 对；C、D 错。
+  solution: |
+    A 对：$\curl\vb B=\mu_0\vb J+\mu_0\varepsilon_0\pdv{\vb E}t$，$\pdv{\vb E}t$和电流密度在方程里的地位一样。B 对：放电时传导电流从正极板经导线流到负极板，两板之间的电场从正极板指向负极板、在减小，$\pdv{\vb E}t$从负极板指向正极板，正好沿电路接着绕下去。
+
+    C 错：$\divg\vb B=0$任何时候都成立，穿过闭合曲面的磁通量总是零。D 错：那里$\curl\vb B=\mu_0\varepsilon_0\pdv{\vb E}t$，电场变化时不为零。E 对：方程组蕴含连续性方程，电荷、电流不满足它，方程组就互相矛盾。
+
+- id: p3
+  tier: medium
+  statement: |
+    两块半径$5.0\,\mathrm{cm}$的圆形极板正对着放，相距$2.0\,\mathrm{mm}$，中间是真空；两板之间的电势差（potential difference）是$100\cos\omega t\,\mathrm V$，频率是$1.0\,\mathrm{MHz}$。边缘的电场不计，求极板边缘处磁场的振幅，以$\mathrm{nT}$为单位，保留三位有效数字。取$\varepsilon_0=8.854\times10^{-12}\,\mathrm{F/m}$，$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 4*pi*1e-7*8.854e-12*0.050*2*pi*1.0e6*100/(2*2.0e-3)/1e-9
+    unit: |
+      $\mathrm{nT}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      两板之间的电场是$E=\frac Vd$，位移电流的密度是$\varepsilon_0\pdv Et$，均匀分布。
+    - |
+      沿极板边缘半径为$R$的圆周，$2\pi RB=\mu_0\varepsilon_0\pi R^2\dv Et$，所以$B=\frac{\mu_0\varepsilon_0R}{2}\dv Et$。
+    - |
+      $\dv Et$的振幅是$\frac{\omega V_0}{d}$，$B$的振幅是$\frac{\mu_0\varepsilon_0R\omega V_0}{2d}\approx8.74\times10^{-8}\,\mathrm T=87.4\,\mathrm{nT}$。
+  solution: |
+    两板之间$E=\frac{V_0}{d}\cos\omega t$，$\dv Et=-\frac{\omega V_0}{d}\sin\omega t$。沿极板边缘的圆周用安培-麦克斯韦定律，$2\pi RB=\mu_0\varepsilon_0\pi R^2\dv Et$，磁场的振幅是$\frac{\mu_0\varepsilon_0R\omega V_0}{2d}=\frac{4\pi\times10^{-7}\times8.854\times10^{-12}\times0.050\times2\pi\times10^6\times100}{2\times2.0\times10^{-3}}\,\mathrm T\approx8.74\times10^{-8}\,\mathrm T$，即$87.4\,\mathrm{nT}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    把海水看成相对介电常量$\varepsilon_{\mathrm r}=80$、电导率$\sigma=4.0\,\mathrm{S/m}$的材料：它满足欧姆定律，$\vb D=\varepsilon_{\mathrm r}\varepsilon_0\vb E$，这两个数不随频率变。海水里的电场按$E_0\cos\omega t$变化时，传导电流的密度$\sigma E$和位移电流的密度$\pdv Dt$的振幅在什么频率相等？以$\mathrm{MHz}$为单位，保留三位有效数字。取$\varepsilon_0=8.854\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: number
+    value: 4.0/(2*pi*80*8.854e-12)/1e6
+    unit: |
+      $\mathrm{MHz}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      记$\varepsilon=\varepsilon_{\mathrm r}\varepsilon_0$，位移电流密度$\varepsilon\pdv Et$的振幅是$\varepsilon\omega E_0$。
+    - |
+      令$\sigma E_0=\varepsilon\omega E_0$，得$\omega=\frac\sigma\varepsilon$。
+    - |
+      $f=\frac{\sigma}{2\pi\varepsilon_{\mathrm r}\varepsilon_0}=\frac{4.0}{2\pi\times80\times8.854\times10^{-12}}\,\mathrm{Hz}\approx8.99\times10^8\,\mathrm{Hz}=899\,\mathrm{MHz}$。
+  solution: |
+    传导电流密度的振幅是$\sigma E_0$，位移电流密度$\varepsilon\pdv Et$的振幅是$\varepsilon\omega E_0$，$\varepsilon=\varepsilon_{\mathrm r}\varepsilon_0$。两者相等时$\omega=\frac{\sigma}{\varepsilon}$，$f=\frac{\sigma}{2\pi\varepsilon_{\mathrm r}\varepsilon_0}\approx899\,\mathrm{MHz}$。频率比这低得多时，海水基本是导体，位移电流可以不计；比这高得多时反过来，海水更像电介质。
+
+- id: p5
+  tier: hard
+  statement: |
+    一个小金属球带电，周围的空气稍微导电，电荷沿各个方向均匀地向外漏走，一切都保持球对称：球外离球心$r$处的电流密度是$\vb J=J(r,t)\uv r$，$J>0$。
+
+    （1）说明球外的磁场只能是零。（2）只用安培环路定理$\curl\vb B=\mu_0\vb J$，会出什么矛盾？（3）加上位移电流，验证矛盾消失。
+  hints:
+    - |
+      （1）球对称：磁场垂直于径向的分量没有可以指向的特殊方向，只能是零；剩下的径向分量只和$r$有关，再用穿过球面的磁通量为零。
+    - |
+      （2）$\vb B=\vb 0$，所以$\curl\vb B=\vb 0$，可是$\mu_0\vb J\ne\vb 0$。（3）记$Q_{\text{内}}(r,t)$为半径为$r$的球面里的电荷，用高斯定律和电荷守恒。
+    - |
+      （3）$E=\frac{Q_{\text{内}}}{4\pi\varepsilon_0r^2}$，$\pdv{Q_{\text{内}}}t=-4\pi r^2J$，所以$\varepsilon_0\pdv{\vb E}t=-\vb J$，传导电流和位移电流处处抵消。
+  reference: |
+    （1）球外一点的磁场如果有垂直于径向的分量，它总要指向某个方向；绕这一点的径向转一个角度，整个电荷、电流的分布不变，这个分量却转到了别的方向，所以它只能是零。剩下$\vb B=B(r)\uv r$，大小只和$r$有关。穿过半径为$r$的球面的磁通量是$4\pi r^2B(r)$，由$\divg\vb B=0$它为零，所以$\vb B=\vb 0$。
+
+    （2）$\vb B=\vb 0$，$\curl\vb B=\vb 0$，可是球外$\mu_0\vb J\ne\vb 0$，安培环路定理不成立。用积分形式看也一样：取一个小圆作回路，$\oint\vb B\cdot\dd\vb l=0$，穿过以它为边界的一小块球面的电流却不为零。问题在于电荷在流走、球上的电荷在减少，不是恒定电流。
+
+    （3）记$Q_{\text{内}}(r,t)$为半径为$r$的球面里的电荷。由高斯定律，球对称的电场是$\vb E=\frac{Q_{\text{内}}}{4\pi\varepsilon_0r^2}\uv r$；由电荷守恒，球面里电荷减少的速率等于穿出球面的电流，$\pdv{Q_{\text{内}}}t=-4\pi r^2J$。所以$\varepsilon_0\pdv{\vb E}t=\frac{1}{4\pi r^2}\pdv{Q_{\text{内}}}t\uv r=-\vb J$，$\vb J+\varepsilon_0\pdv{\vb E}t=\vb 0$，安培-麦克斯韦定律给出$\curl\vb B=\vb 0$，和$\vb B=\vb 0$相容：传导电流和位移电流处处大小相等、方向相反，合起来不产生磁场。
+
+- id: p6
+  tier: hard
+  statement: |
+    两块半径为$R$的圆形极板正对着放，中间是真空，两板之间中轴上的电场是$E_0\cos\omega t$，方向垂直于极板。
+
+    （1）先把两板之间的电场看成均匀的，用安培-麦克斯韦定律求离中轴$s$处的磁场。（2）这个磁场随时间变化，又会感应出电场。用法拉第定律沿一个矩形回路（一条边在中轴上，对边离中轴$s$，另两条边沿径向）求离中轴$s$处的电场比中轴上小多少，算到含$\omega^2$的项。
+
+    （3）$R=5.0\,\mathrm{cm}$时，频率多高，极板边缘处的电场就比中轴上小$1\%$？
+  hints:
+    - |
+      （1）和例 1 一样，$2\pi sB=\mu_0\varepsilon_0\pi s^2\dv Et$，$B=\frac{s}{2c^2}\dv Et$，$c^2=\frac{1}{\mu_0\varepsilon_0}$。
+    - |
+      （2）矩形回路高为$h$，沿径向的两条边和电场垂直，$\oint\vb E\cdot\dd\vb l=h\bigl[E(s)-E(0)\bigr]$；穿过回路的磁通量是$\pm h\int_0^sB\,\dd s'$，正负由回路的绕行方向和磁场的方向定。
+    - |
+      （2）$E(s)-E(0)=\frac{s^2}{4c^2}\dv{^2E}{t^2}=-\frac{\omega^2s^2}{4c^2}E(0)$；（3）$\frac{\omega^2R^2}{4c^2}=0.01$，$f=\frac{0.2c}{2\pi R}\approx191\,\mathrm{MHz}$。
+  reference: |
+    以中轴为$z$轴，沿电场的方向。（1）取以中轴为轴、半径为$s$的圆作回路，穿过圆面的位移电流是$\varepsilon_0\pi s^2\dv Et$；由对称性，磁场沿$\uv\psi$方向（绕中轴转），$2\pi sB=\mu_0\varepsilon_0\pi s^2\dv Et$，$B=\frac{s}{2c^2}\dv Et=-\frac{\omega s}{2c^2}E_0\sin\omega t$，$c^2=\frac{1}{\mu_0\varepsilon_0}$。
+
+    （2）矩形回路在含中轴的平面里：从中轴沿径向走到$s$，再沿$+z$走高度$h$，沿径向走回中轴，最后沿中轴回到出发点。径向的两条边和电场垂直，$\oint\vb E\cdot\dd\vb l=h\bigl[E(s)-E(0)\bigr]$。按这个绕行方向，回路的法向是$-\uv\psi$，穿过回路的磁通量是$-h\int_0^sB(s')\,\dd s'$。法拉第定律给出$E(s)-E(0)=\int_0^s\pdv Bt\,\dd s'=\frac{s^2}{4c^2}\dv{^2E}{t^2}$，用$\dv{^2E}{t^2}=-\omega^2E$，得$E(s)=E(0)\Bigl(1-\frac{\omega^2s^2}{4c^2}\Bigr)$：离中轴越远，电场越弱。
+
+    （3）$\frac{\omega^2R^2}{4c^2}=0.01$，$\omega=\frac{0.2c}{R}=\frac{0.2\times3.00\times10^8}{0.050}\,\mathrm{rad/s}=1.2\times10^9\,\mathrm{rad/s}$，$f=\frac{\omega}{2\pi}\approx1.91\times10^8\,\mathrm{Hz}$，约$191\,\mathrm{MHz}$。频率再高，两板之间的电场就明显不均匀，要继续往下修正，或者直接解电磁波的方程；电容器不再能只用电容（capacitance）来描述。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）没有电荷和电流的地方，把麦克斯韦方程组里的$\vb E$换成$c\vb B$、$\vb B$换成$-\frac{\vb E}{c}$（$c^2=\frac{1}{\mu_0\varepsilon_0}$），方程组变不变？（2）有电荷和电流时，哪里不对称？（3）如果存在带「磁荷」（magnetic charge）的磁单极子，方程组可以怎样改？改的时候要保证什么？
+  hints:
+    - |
+      逐个代入，例如$\curl\vb E=-\pdv{\vb B}t$变成$\curl(c\vb B)=\pdv{}{t}\frac{\vb E}{c}$。
+    - |
+      有源时，$\divg\vb E$的右边有电荷密度，$\curl\vb B$的右边有电流密度；$\divg\vb B$和$\curl\vb E$里却没有对应的「磁荷」「磁流」。
+    - |
+      加上磁荷密度$\rho_{\mathrm m}$和磁流密度$\vb J_{\mathrm m}$：$\divg\vb B=\mu_0\rho_{\mathrm m}$，$\curl\vb E=-\mu_0\vb J_{\mathrm m}-\pdv{\vb B}t$；对第二式求散度，得$\pdv{\rho_{\mathrm m}}t+\divg\vb J_{\mathrm m}=0$，磁荷也守恒。
+  reference: |
+    （1）代入后，$\divg\vb E=0$变成$\divg\vb B=0$，$\divg\vb B=0$变成$\divg\vb E=0$。$\curl\vb E=-\pdv{\vb B}t$变成$c\curl\vb B=\frac1c\pdv{\vb E}t$，即$\curl\vb B=\mu_0\varepsilon_0\pdv{\vb E}t$；$\curl\vb B=\mu_0\varepsilon_0\pdv{\vb E}t$变成$-\frac1c\curl\vb E=\frac1c\pdv{\vb B}t$，即$\curl\vb E=-\pdv{\vb B}t$。四个方程两两互换，方程组不变：没有电荷、电流时，电场和磁场的地位是对称的。
+
+    （2）有源时，$\divg\vb E=\frac{\rho}{\varepsilon_0}$的右边有电荷，$\curl\vb B$的右边有电流；对应的$\divg\vb B$右边是零，$\curl\vb E$里也没有「磁流」。这是因为至今没有发现磁单极子（见[安培环路定理](lesson:physics.electromagnetism.ampere-law#def-monopole)），磁场线没有起点和终点。
+
+    （3）设有磁荷密度$\rho_{\mathrm m}$和磁流密度$\vb J_{\mathrm m}$，仿照电荷写成$\divg\vb B=\mu_0\rho_{\mathrm m}$、$\curl\vb E=-\mu_0\vb J_{\mathrm m}-\pdv{\vb B}t$。对第二式求散度，左边为零，右边是$-\mu_0\Bigl(\divg\vb J_{\mathrm m}+\pdv{\rho_{\mathrm m}}t\Bigr)$，所以$\vb J_{\mathrm m}$前面取负号，磁荷才和电荷一样守恒；这样改了以后，有源时也能保持（1）里的对称，只是源也要跟着互换。1931 年狄拉克（Paul Dirac）指出，只要宇宙里有一个磁单极子，电荷就必须是某个最小单位的整数倍；可是到现在还没有找到磁单极子。
+
+- id: p8
+  tier: thinking
+  statement: |
+    给定电荷密度和电流密度，麦克斯韦方程组的未知函数是$\vb E$、$\vb B$的 6 个分量，方程却有 8 个分量式（两个散度方程各 1 个，两个旋度方程各 3 个）。
+
+    （1）证明：只要开始时$\divg\vb B=0$，由法拉第定律，以后一直$\divg\vb B=0$。（2）开始时$\divg\vb E=\frac\rho{\varepsilon_0}$，以后还成立吗？要用到什么？（3）方程比未知函数多，为什么不矛盾？
+  hints:
+    - |
+      （1）对法拉第定律求散度：$\pdv{}{t}(\divg\vb B)=-\divg(\curl\vb E)$。
+    - |
+      （2）对安培-麦克斯韦定律求散度，得$\pdv{}{t}\Bigl(\divg\vb E-\frac\rho{\varepsilon_0}\Bigr)=-\frac{1}{\varepsilon_0}\Bigl(\divg\vb J+\pdv\rho t\Bigr)$。
+    - |
+      （3）两个旋度方程（6 个分量式）决定场怎样随时间变；两个散度方程是对开始时的场的要求，旋度方程会自动保持它们。
+  reference: |
+    （1）$\pdv{}{t}(\divg\vb B)=\divg\pdv{\vb B}t=-\divg(\curl\vb E)=0$，$\divg\vb B$不随时间变，开始时为零就一直为零。
+
+    （2）由安培-麦克斯韦定律，$\pdv{\vb E}t=c^2\curl\vb B-\frac{\vb J}{\varepsilon_0}$（$c^2=\frac{1}{\mu_0\varepsilon_0}$），求散度得$\pdv{}{t}(\divg\vb E)=-\frac{\divg\vb J}{\varepsilon_0}$。所以$\pdv{}{t}\Bigl(\divg\vb E-\frac{\rho}{\varepsilon_0}\Bigr)=-\frac1{\varepsilon_0}\Bigl(\divg\vb J+\pdv\rho t\Bigr)$：只要电荷守恒，右边就是零，开始时成立的高斯定律以后一直成立。
+
+    （3）两个旋度方程有 6 个分量式，正好给出 6 个未知函数对时间的导数，决定场怎样随时间演化；两个散度方程不含时间导数，是对每一时刻的场的约束，只要开始时满足，旋度方程就自动保持它们（第二个还要用到电荷守恒）。所以方程组既不多余，也不矛盾。反过来，给定的电荷和电流如果不守恒，高斯定律就保持不住，方程组没有解。

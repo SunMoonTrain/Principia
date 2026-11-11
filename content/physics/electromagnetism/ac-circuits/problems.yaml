@@ -1,0 +1,155 @@
+- id: p1
+  tier: easy
+  statement: |
+    电容为$10\,\mu\mathrm F$的电容器接在频率$50\,\mathrm{Hz}$的交流电源上。求它的阻抗的大小（容抗），以$\Omega$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 1/(2*pi*50*10e-6)
+    unit: |
+      $\Omega$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      电容器的阻抗是$\frac{1}{i\omega C}$，大小是$\frac{1}{\omega C}$。
+    - |
+      $\omega=2\pi f=100\pi\,\mathrm{rad/s}$。
+    - |
+      $\frac{1}{\omega C}=\frac{1}{100\pi\times10^{-5}}\,\Omega\approx318\,\Omega$。
+  solution: |
+    $\frac{1}{\omega C}=\frac{1}{2\pi\times50\times10\times10^{-6}}\,\Omega\approx318\,\Omega$。频率越高，容抗越小；频率为零（直流）时容抗是无穷大。
+
+- id: p2
+  tier: easy
+  statement: |
+    电阻、自感为$10\,\mathrm{mH}$的线圈和电容为$1.0\,\mu\mathrm F$的电容器串联，接在电动势按正弦规律变化、频率可调的电源上。电源的频率是多少时，电流的振幅最大？以$\mathrm{kHz}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 1/(2*pi*sqrt(10e-3*1.0e-6))/1e3
+    unit: |
+      $\mathrm{kHz}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      电流振幅最大时$|Z|$最小，这时$\omega L=\frac{1}{\omega C}$，角频率是$\omega_0=\frac{1}{\sqrt{LC}}$，频率是$\frac{\omega_0}{2\pi}$。
+    - |
+      $LC=10^{-2}\times10^{-6}\,\mathrm{s^2}=10^{-8}\,\mathrm{s^2}$，$\omega_0=10^4\,\mathrm{rad/s}$。
+    - |
+      $f_0=\frac{10^4}{2\pi}\,\mathrm{Hz}\approx1.59\times10^3\,\mathrm{Hz}=1.59\,\mathrm{kHz}$。
+  solution: |
+    共振时电流振幅最大，$\omega_0=\frac{1}{\sqrt{LC}}=\frac{1}{\sqrt{10^{-8}}}\,\mathrm{rad/s}=10^4\,\mathrm{rad/s}$，$f_0=\frac{\omega_0}{2\pi}\approx1.59\,\mathrm{kHz}$。电阻的大小不影响共振频率，只影响峰的高低和宽窄。
+
+- id: p3
+  tier: medium
+  statement: |
+    电动势为$10\cos(1000t)\,\mathrm V$（$t$以秒为单位）的电源，和$30\,\Omega$的电阻、$0.10\,\mathrm H$的线圈、$25\,\mu\mathrm F$的电容器串联。求稳态电流的振幅（以$\mathrm A$为单位）和电流落后于电动势的相位（以度为单位），依次填写，保留三位有效数字。
+  answer:
+    type: tuple
+    value: [10/sqrt(30^2+(1000*0.10-1/(1000*25e-6))^2), atan((1000*0.10-1/(1000*25e-6))/30)*180/pi]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      总阻抗$Z=R+i\Bigl(\omega L-\frac{1}{\omega C}\Bigr)$，电流振幅是$\frac{\mathcal E_0}{|Z|}$，落后的相位是$\arg Z$。
+    - |
+      $\omega L=100\,\Omega$，$\frac{1}{\omega C}=40\,\Omega$，所以$Z=(30+60i)\,\Omega$。
+    - |
+      $|Z|=\sqrt{30^2+60^2}\,\Omega\approx67.1\,\Omega$，$I_0\approx0.149\,\mathrm A$；$\tan\theta=2$，$\theta\approx63.4^\circ$。
+  solution: |
+    $\omega L=1000\times0.10\,\Omega=100\,\Omega$，$\frac{1}{\omega C}=\frac{1}{1000\times25\times10^{-6}}\,\Omega=40\,\Omega$，$Z=(30+60i)\,\Omega$。$|Z|=\sqrt{4500}\,\Omega\approx67.1\,\Omega$，$I_0=\frac{10}{67.1}\,\mathrm A\approx0.149\,\mathrm A$；$\tan\theta=\frac{60}{30}=2$，$\theta\approx63.4^\circ$。$\omega=1000\,\mathrm{rad/s}$高于$\omega_0=\frac{1}{\sqrt{LC}}=632\,\mathrm{rad/s}$，线圈起主导作用，电流落后。
+
+- id: p4
+  tier: medium
+  statement: |
+    一个理想变压器把有效值$220\,\mathrm V$的电势差降到$12\,\mathrm V$，原线圈有$1100$匝。副线圈接一个电阻，电阻上的平均功率是$24\,\mathrm W$。求副线圈的匝数和原线圈里电流的有效值（以$\mathrm A$为单位），依次填写，保留三位有效数字。
+  answer:
+    type: tuple
+    value: [1100*12/220, 24/220]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      理想变压器$\frac{V_2}{V_1}=\frac{N_2}{N_1}$。
+    - |
+      没有损耗，输入功率等于输出功率：$V_1I_1=V_2I_2=24\,\mathrm W$。
+    - |
+      $N_2=1100\times\frac{12}{220}=60$；$I_1=\frac{24}{220}\,\mathrm A\approx0.109\,\mathrm A$。
+  solution: |
+    $N_2=N_1\frac{V_2}{V_1}=1100\times\frac{12}{220}=60$。理想变压器没有损耗，原线圈输入的功率等于负载的$24\,\mathrm W$，$I_1=\frac{24\,\mathrm W}{220\,\mathrm V}\approx0.109\,\mathrm A$；副线圈里的电流是$\frac{24}{12}\,\mathrm A=2.0\,\mathrm A$，是原线圈的$\frac{N_1}{N_2}\approx18$倍。
+
+- id: p5
+  tier: hard
+  statement: |
+    RLC 串联电路接在角频率可调、电动势振幅为$\mathcal E_0$的电源上，$\omega_\pm$是讲解里电流振幅降到最大值的$\frac{1}{\sqrt2}$的两个角频率。
+
+    （1）在$\omega_\pm$处，电阻上的平均功率是共振时的几分之几？证明$\omega_+\omega_-=\omega_0^2$。
+
+    （2）证明共振时电路储存的能量（电容器里电场的能量加上线圈里磁场的能量）不随时间变；记它为$U$，电阻上的平均功率为$\bar P$，证明$Q=\frac{\omega_0U}{\bar P}$。（3）$Q$大意味着什么？
+  hints:
+    - |
+      （1）平均功率是$\frac12I_0^2R$，和电流振幅的平方成正比。记$a=\frac{R}{2L}$，讲解里$\omega_\pm=\pm a+\sqrt{a^2+\omega_0^2}$。
+    - |
+      （1）$\omega_+\omega_-$是两数和与两数差的乘积。（2）共振时$q=\frac{I_0}{\omega_0}\sin\omega_0t$（电流是$I_0\cos\omega_0t$），$\frac{q^2}{2C}+\frac12LI^2$里用$\frac{1}{C}=\omega_0^2L$。
+    - |
+      （1）一半，$\omega_+\omega_-=\bigl(a^2+\omega_0^2\bigr)-a^2=\omega_0^2$；（2）$U=\frac12LI_0^2$，$\bar P=\frac12I_0^2R$，$\frac{\omega_0U}{\bar P}=\frac{\omega_0L}{R}=Q$；（3）$Q$大，每振荡一周损失的能量只占储存能量的一小部分，共振峰窄。
+  reference: |
+    （1）平均功率$\frac12I_0^2R$和电流振幅的平方成正比，振幅降到$\frac{1}{\sqrt2}$，功率降到共振时的一半。记$a=\frac{R}{2L}$，讲解里$\omega_\pm=\pm a+\sqrt{a^2+\omega_0^2}$，所以$\omega_+\omega_-=\bigl(a^2+\omega_0^2\bigr)-a^2=\omega_0^2$。$\omega_0$是$\omega_+$、$\omega_-$的几何平均：把$\frac{\omega}{\omega_0}$换成$\frac{\omega_0}{\omega}$，$\omega L-\frac{1}{\omega C}=\omega_0L\Bigl(\frac{\omega}{\omega_0}-\frac{\omega_0}{\omega}\Bigr)$只变号，所以横轴取$\omega$的对数时，共振峰左右对称。
+
+    （2）共振时电流$I=I_0\cos\omega_0t$，电荷$q=\frac{I_0}{\omega_0}\sin\omega_0t$。电容器的能量$\frac{q^2}{2C}=\frac{I_0^2}{2C\omega_0^2}\sin^2\omega_0t=\frac12LI_0^2\sin^2\omega_0t$（用到$\frac{1}{C\omega_0^2}=L$），线圈的能量$\frac12LI_0^2\cos^2\omega_0t$，两者之和$U=\frac12LI_0^2$，不随时间变。电阻上的平均功率$\bar P=\frac12I_0^2R$。所以$\frac{\omega_0U}{\bar P}=\frac{\omega_0L}{R}=Q$。
+
+    （3）每振荡一周，电阻上损失的能量是$\bar P\cdot\frac{2\pi}{\omega_0}=\frac{2\pi U}{Q}$，只占储存能量的$\frac{2\pi}{Q}$。$Q$大的电路损耗小，能量在电场和磁场之间来回交换很多周才明显衰减，共振峰也就又高又窄，选频能力强；这和受迫振动里品质因数的意思一样。
+
+- id: p6
+  tier: hard
+  statement: |
+    线圈和电容器并联，接在角频率为$\omega$的交流电源上；线圈的自感为$L$、导线电阻为$r$，电容器的电容为$C$。
+
+    （1）$r=0$时，求并联电路的阻抗，说明在$\omega_0=\frac{1}{\sqrt{LC}}$处会发生什么。（2）$r\ne0$但$r\ll\omega_0L$时，求$\omega=\omega_0$处阻抗的近似值。（3）这样的电路有什么用？
+  hints:
+    - |
+      并联时阻抗的倒数相加：$\frac1Z=\frac{1}{r+i\omega L}+i\omega C$。
+    - |
+      $r=0$时$\frac1Z=i\Bigl(\omega C-\frac{1}{\omega L}\Bigr)$，在$\omega_0$处为零，$Z$是无穷大：电源不供电流，线圈和电容器里却有大小相等、方向相反的电流来回流。
+    - |
+      $r\ne0$时在$\omega_0$处$Z=\frac{r+i\omega_0L}{i\omega_0Cr}\approx\frac{L}{rC}$，用$Q=\frac{\omega_0L}{r}$写是$Q^2r$，比$r$大得多。
+  reference: |
+    （1）$\frac1Z=\frac{1}{i\omega L}+i\omega C=i\Bigl(\omega C-\frac{1}{\omega L}\Bigr)$，$Z=\frac{i\omega L}{1-\omega^2LC}$。$\omega=\omega_0$时分母为零，阻抗是无穷大：电源一点电流都不供，可线圈和电容器里的电流振幅都是$\frac{V_0}{\omega_0L}$，大小相等、方向相反，在两者之间来回流，能量在磁场和电场之间交换。
+
+    （2）$Z=\frac{(r+i\omega L)\cdot\frac{1}{i\omega C}}{r+i\omega L+\frac{1}{i\omega C}}=\frac{r+i\omega L}{1-\omega^2LC+i\omega Cr}$。在$\omega_0$处分母只剩$i\omega_0Cr$，$Z=\frac{r+i\omega_0L}{i\omega_0Cr}=\frac{L}{rC}-\frac{i}{\omega_0C}$。$r\ll\omega_0L$时第一项远大于第二项（两者之比是$Q=\frac{\omega_0L}{r}$），$Z\approx\frac{L}{rC}=Q^2r$。
+
+    （3）并联电路在共振频率附近阻抗很大，别的频率阻抗小：接在信号源上，它两端只对共振频率的信号有大的电势差，可以用来从许多频率里挑出一个（选频），振荡器里也常用它来决定振荡的频率。它和串联电路正好相反：串联电路共振时阻抗最小，并联电路共振时阻抗最大。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）为什么发电厂送出的是交流电，而不是电池那样的直流电？（2）变压器为什么只对交流电起作用？（3）输电的电势差升得越高越好吗？有什么代价？
+  hints:
+    - |
+      回想[电动势与直流电路](lesson:physics.electromagnetism.dc-circuits)第 7 题：输送同样的功率，电压越高、电流越小，输电线上的损耗和电流的平方成正比。
+    - |
+      变压器靠铁芯里变化的磁通量在副线圈里感应出电动势；直流电的磁通量不变。
+    - |
+      电势差太高，导线附近的空气会电离、放电，绝缘要做得更好，杆塔要更高；交流电还有线路的电感、电容带来的问题。
+  reference: |
+    （1）远距离输电要用很高的电压，降低电流、减少输电线上的损耗（损耗是$I^2R_{\text{线}}$），到用户那里又要降到安全的电压。交流电用变压器就能方便地升压、降压，几乎没有损耗；交流发电机也直接给出交流电。19 世纪 80 年代闭合铁芯的变压器出现以后，交流输电很快推广开来。
+
+    （2）变压器的原线圈和副线圈之间没有导线相连，副线圈里的电动势来自铁芯里磁通量的变化（法拉第定律）。直流电在铁芯里产生的磁通量不变，副线圈里没有感应电动势；直流电要升压，只能先变成交流电或用别的电子电路。
+
+    （3）不是越高越好。电势差太高，导线附近的电场强到使空气电离，产生电晕放电（corona discharge），也在损耗能量；绝缘要做得更好，杆塔要更高，设备更贵。交流输电还有线路的电感和电容：电流要不断给线路的电容充电、放电，线路的感抗也限制了能输送的功率，线路很长时这些问题更突出，所以很长的海底电缆和特别远的线路也用直流输电，两端用电子设备在交流和直流之间转换。实际的电势差要在损耗和成本之间权衡。
+
+- id: p8
+  tier: thinking
+  statement: |
+    电路里的电流、电势差都是实数，计算时却用了复数。
+
+    （1）为什么可以这样做？依靠的是电路的什么性质？（2）算功率时为什么不能直接把复数$\tilde V$和$\tilde I$相乘？（3）电路里有二极管（diode）这样电流和电势差不成正比的元件时，还能用阻抗吗？
+  hints:
+    - |
+      电路的方程（回路定律、节点定律、元件的关系）对电流、电势差都是线性的，系数是实数：求导、乘实数、相加，都可以和取实部交换次序。
+    - |
+      功率是两个量的乘积，乘积不是线性运算：$\operatorname{Re}(a)\operatorname{Re}(b)\ne\operatorname{Re}(ab)$。
+    - |
+      二极管的电流不和电势差成正比，正弦的电动势会产生别的频率的电流，复振幅之比不再是一个确定的数。
+  reference: |
+    （1）电路方程是线性的、系数是实数，求导、乘实数、相加都可以和取实部交换次序：复数的$I(t)$满足电动势为$\mathcal E_0e^{i\omega t}$的方程，它的实部就满足电动势为$\mathcal E_0\cos\omega t$的方程。所以可以先用$e^{i\omega t}$解，最后取实部。复数的好处是求导变成乘以$i\omega$，微分方程变成代数方程，相位也自动记在辐角里。
+
+    （2）功率是电势差和电流的乘积，乘积不是线性运算，实部的乘积不等于乘积的实部：$\operatorname{Re}(\tilde Ve^{i\omega t})\operatorname{Re}(\tilde Ie^{i\omega t})$里还有一项$\cos(2\omega t+\cdots)$。平均功率要用$\frac12\operatorname{Re}(\tilde V\tilde I^*)$，其中$\tilde I^*$是共轭复数，这正是$\frac12V_0I_0\cos\theta$。
+
+    （3）不能直接用。二极管的电流和电势差不成正比，正弦的电动势会产生含有$2\omega$、$3\omega$等别的频率的电流，复振幅之比不再是一个和振幅无关的数。只有在电势差的变化很小、可以把元件的电流在某个直流电势差附近近似成线性关系时，才能对这个小的变化用阻抗。

@@ -49,7 +49,7 @@ status: reviewed
 
 ### 和电偶极子的不同
 
-远处两者形状一样，近处却不同。:term[电偶极子]{id="physics.electromagnetism.electric-dipole"}的:term[电场线]{id="physics.electromagnetism.field-line"}（electric field line）从$+q$出发、终止在$-q$上，两个:term[电荷]{id="physics.electromagnetism.electric-charge"}之间的:term[电场]{id="physics.electromagnetism.electric-field"}和$\vb p$反向；:term[磁偶极子]{id="physics.electromagnetism.magnetic-dipole"}没有「磁荷」（magnetic charge），:term[磁场线]{id="physics.electromagnetism.magnetic-field-line"}（magnetic field line）从电流环中间穿过去，绕到外面再回来，连成闭合的曲线，环里的:term[磁场]{id="physics.electromagnetism.magnetic-field"}和$\vb m$同向（几何图像）。
+远处两者形状一样，近处却不同。:term[电偶极子]{id="physics.electromagnetism.electric-dipole"}的:term[电场线]{id="physics.electromagnetism.field-line"}（electric field line）从$+q$出发、终止在$-q$上，两个:term[电荷]{id="physics.electromagnetism.electric-charge"}之间的:term[电场]{id="physics.electromagnetism.electric-field"}和$\vb p$反向；:term[磁偶极子]{id="physics.electromagnetism.magnetic-dipole"}没有「:term[磁荷]{id="physics.electromagnetism.magnetic-monopole"}」（magnetic charge），:term[磁场线]{id="physics.electromagnetism.magnetic-field-line"}（magnetic field line）从电流环中间穿过去，绕到外面再回来，连成闭合的曲线，环里的:term[磁场]{id="physics.electromagnetism.magnetic-field"}和$\vb m$同向（几何图像）。
 
 把整个源包在一个球里，球内电场的平均值和$\vb p$反向，磁场的平均值却和$\vb m$同向（第 5 题算磁场的这个平均值的一个例子）。这一点能用实验检验：原子核的:term[磁矩]{id="physics.electromagnetism.magnetic-moment"}和电子之间的相互作用，按「电流环」算和按「一对磁荷」算结果不同，原子能级的超精细结构（hyperfine structure）支持电流环的图像。安培在 1820 年代就猜想，磁铁的磁性来自物质内部大量微小的:term[环形电流]{id="physics.electromagnetism.electric-current"}；今天知道，原子的磁矩来自电子的轨道运动和自旋（spin）。
 
@@ -102,7 +102,7 @@ sliders:
 
 ## 常见误区
 
-- 「:term[磁偶极子]{id="physics.electromagnetism.magnetic-dipole"}就是一对 N、S 磁荷。」没有磁荷；用一对磁荷算，远处的:term[磁场]{id="physics.electromagnetism.magnetic-field"}和电流环一样，近处和里面却不对，环里的磁场和:term[磁矩]{id="physics.electromagnetism.magnetic-moment"}同向，一对磁荷之间的却是反向的。
+- 「:term[磁偶极子]{id="physics.electromagnetism.magnetic-dipole"}就是一对 N、S :term[磁荷]{id="physics.electromagnetism.magnetic-monopole"}。」没有磁荷；用一对磁荷算，远处的:term[磁场]{id="physics.electromagnetism.magnetic-field"}和电流环一样，近处和里面却不对，环里的磁场和:term[磁矩]{id="physics.electromagnetism.magnetic-moment"}同向，一对磁荷之间的却是反向的。
 - 「磁偶极子的磁场在任何地方都和:term[电偶极子]{id="physics.electromagnetism.electric-dipole"}的:term[电场]{id="physics.electromagnetism.electric-field"}形状相同。」只在远处相同；在源的附近和内部，两者方向相反。
 - 「远处的磁场和电流环的形状有关。」只要磁矩相同，形状不同的小电流环在远处的磁场相同，形状的影响随距离衰减得更快。
 - 「磁偶极子在匀强磁场里会被拉向某个方向。」匀强磁场里只有力矩、没有合力；磁场不均匀时才有合力。

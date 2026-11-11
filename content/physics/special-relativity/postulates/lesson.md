@@ -53,7 +53,7 @@ $$
 
 ### 光速的困难
 
-麦克斯韦方程组（Maxwell's equations）预言电磁波（electromagnetic wave）在真空中以$c=1/\sqrt{\mu_0\varepsilon_0}\approx3.00\times10^8\,\mathrm{m/s}$传播，光就是电磁波（见[真空中的电磁波](lesson:physics.electromagnetism.em-waves)）。方程里只出现$c$，没有说是相对什么的速度。
+:term[麦克斯韦方程组]{id="physics.electromagnetism.maxwell-equations"}（Maxwell's equations）预言电磁波（electromagnetic wave）在真空中以$c=1/\sqrt{\mu_0\varepsilon_0}\approx3.00\times10^8\,\mathrm{m/s}$传播，光就是电磁波（见[真空中的电磁波](lesson:physics.electromagnetism.em-waves)）。方程里只出现$c$，没有说是相对什么的速度。
 
 ::anchor{id="thm-galilean-light"}
 定理（伽利略变换和光速不能两全）：如果伽利略变换成立，并且$v\ne0$，那么不可能在$S$和$S'$里，沿每个方向传播的光速都是$c$。

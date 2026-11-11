@@ -1,0 +1,159 @@
+- id: p1
+  tier: easy
+  statement: |
+    自感为$0.30\,\mathrm H$的线圈和$15\,\Omega$的电阻串联。这个 RL 电路的时间常数是多少？以$\mathrm{ms}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 0.30/15*1e3
+    unit: |
+      $\mathrm{ms}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      RL 电路的时间常数是$\tau=\frac LR$。
+    - |
+      $\frac{0.30\,\mathrm H}{15\,\Omega}$，$\mathrm{H/\Omega}=\mathrm s$。
+    - |
+      $\tau=0.020\,\mathrm s=20.0\,\mathrm{ms}$。
+  solution: |
+    $\tau=\frac LR=\frac{0.30}{15}\,\mathrm s=0.020\,\mathrm s=20.0\,\mathrm{ms}$。电阻加倍，时间常数减半。
+
+- id: p2
+  tier: easy
+  statement: |
+    电动势$6.0\,\mathrm V$、内阻不计的电池，和$3.0\,\Omega$的电阻、自感$0.60\,\mathrm H$的线圈串联，$t=0$时接通。$t=0.20\,\mathrm s$时电流是多少？以$\mathrm A$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 6.0/3.0*(1-exp(-0.20*3.0/0.60))
+    unit: |
+      $\mathrm A$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $I(t)=\frac{\mathcal E}{R}\bigl(1-e^{-t/\tau}\bigr)$，$\tau=\frac LR$。
+    - |
+      $\tau=\frac{0.60}{3.0}\,\mathrm s=0.20\,\mathrm s$，所以$t=\tau$；终值是$2.0\,\mathrm A$。
+    - |
+      $I=2.0\times(1-e^{-1})\,\mathrm A\approx1.26\,\mathrm A$。
+  solution: |
+    $\tau=\frac LR=0.20\,\mathrm s$，终值$\frac{\mathcal E}{R}=2.0\,\mathrm A$。$t=\tau$时$I=2.0\times(1-e^{-1})\,\mathrm A\approx1.26\,\mathrm A$，是终值的约$63\%$。
+
+- id: p3
+  tier: medium
+  statement: |
+    电动势$12\,\mathrm V$、内阻不计的电池，经$R_1=4.0\,\Omega$的电阻接到一个自感$L=2.0\,\mathrm H$、导线电阻不计的线圈上；线圈两端还并联着$R_2=12\,\Omega$的电阻。$t=0$时接通电池。求线圈里电流增长的时间常数（以$\mathrm s$为单位）和线圈里电流的终值（以$\mathrm A$为单位），依次填写，保留三位有效数字。
+  answer:
+    type: tuple
+    value: [2.0*(4.0+12)/(4.0*12), 12/4.0]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      以线圈里的电流$I_L$和线圈两端的电势差$V=L\dv{I_L}t$为未知数：流过$R_1$的电流是$I_L+\frac{V}{R_2}$，回路定律给出$\mathcal E=R_1\Bigl(I_L+\frac{V}{R_2}\Bigr)+V$。
+    - |
+      消去$V$：$L\dv{I_L}t=\frac{R_2}{R_1+R_2}(\mathcal E-R_1I_L)$，整理成$\dv{I_L}t+\frac{I_L}{\tau}=$常数的样子。
+    - |
+      $\tau=\frac{L(R_1+R_2)}{R_1R_2}=\frac{L}{R_1R_2/(R_1+R_2)}\approx0.667\,\mathrm s$；稳定后线圈两端没有电势差，$R_2$里没有电流，$I_L=\frac{\mathcal E}{R_1}=3.00\,\mathrm A$。
+  solution: |
+    设线圈里的电流为$I_L$，线圈两端的电势差为$V=L\dv{I_L}t$。流过$R_1$的电流是$I_L+\frac{V}{R_2}$，回路定律给出$\mathcal E=R_1\Bigl(I_L+\frac V{R_2}\Bigr)+V$，解出$V=\frac{R_2}{R_1+R_2}(\mathcal E-R_1I_L)$，即$L\dv{I_L}t+\frac{R_1R_2}{R_1+R_2}I_L=\frac{R_2\mathcal E}{R_1+R_2}$。
+
+    所以时间常数是$\frac{L}{R_1R_2/(R_1+R_2)}=\frac{2.0}{3.0}\,\mathrm s\approx0.667\,\mathrm s$，相当于线圈经$R_1$、$R_2$的并联放电。稳定后$V=0$，$R_2$被线圈短路，$I_L=\frac{\mathcal E}{R_1}=3.00\,\mathrm A$。
+
+- id: p4
+  tier: medium
+  statement: |
+    自感$0.80\,\mathrm H$的线圈里原有$2.0\,\mathrm A$的电流，$t=0$时撤去电源，让它和$5.0\,\Omega$的电阻接成回路。经过多长时间，线圈里储存的能量减少到开始时的$10\%$？以$\mathrm s$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 0.80/5.0/2*ln(10)
+    unit: |
+      $\mathrm s$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      电流按$I_0e^{-t/\tau}$衰减，$\tau=\frac LR$；线圈储存的能量是$\frac12LI^2$。
+    - |
+      能量和$I^2$成正比，按$e^{-2t/\tau}$衰减，比电流衰减得快。
+    - |
+      $e^{-2t/\tau}=0.10$，$t=\frac\tau2\ln10=0.080\times2.303\,\mathrm s\approx0.184\,\mathrm s$。
+  solution: |
+    $\tau=\frac LR=0.16\,\mathrm s$。能量$\frac12LI^2$按$e^{-2t/\tau}$衰减，由$e^{-2t/\tau}=0.10$得$t=\frac\tau2\ln10\approx0.184\,\mathrm s$。结果和开始时的电流无关；这时电流还剩开始时的$\sqrt{0.10}\approx32\%$。
+
+- id: p5
+  tier: hard
+  statement: |
+    电动势$\mathcal E$的电源经电阻$R$接通自感为$L$的线圈，$t=0$时电流为零。
+
+    （1）求从$0$到$t$电源做的功$W(t)$和电阻上放出的热$Q(t)$。（2）证明$W(t)-Q(t)=\frac12LI(t)^2$。（3）经过很长时间后，电源每秒做的功全部变成什么？
+  hints:
+    - |
+      电源每秒做功$\mathcal EI$，电阻上每秒放热$I^2R$，$I=\frac{\mathcal E}{R}(1-e^{-t/\tau})$，$\tau=\frac LR$。
+    - |
+      直接积分也可以，更快的办法是用回路定律$\mathcal E=IR+L\dv It$两边乘以$I$：$\mathcal EI=I^2R+\dv{}{t}\bigl(\frac12LI^2\bigr)$。
+    - |
+      两边从$0$积到$t$就得到（2）；很久以后电流不变，$\frac12LI^2$不再增加，电源的功全部变成焦耳热。
+  reference: |
+    （1）$W(t)=\int_0^t\mathcal EI\,\dd t'=\frac{\mathcal E^2}{R}\bigl[t-\tau(1-e^{-t/\tau})\bigr]$；$Q(t)=\int_0^tI^2R\,\dd t'=\frac{\mathcal E^2}{R}\Bigl[t-2\tau(1-e^{-t/\tau})+\frac\tau2(1-e^{-2t/\tau})\Bigr]$。
+
+    （2）两者之差是$\frac{\mathcal E^2\tau}{R}\Bigl[(1-e^{-t/\tau})-\frac12(1-e^{-2t/\tau})\Bigr]=\frac{\mathcal E^2\tau}{2R}(1-e^{-t/\tau})^2=\frac12L\Bigl(\frac{\mathcal E}{R}\Bigr)^2(1-e^{-t/\tau})^2=\frac12LI^2$，用到了$\tau=\frac LR$。更直接的办法：回路定律$\mathcal E=IR+L\dv It$乘以$I$，得$\mathcal EI=I^2R+\dv{}{t}\bigl(\frac12LI^2\bigr)$，电源每秒做的功一部分变成热，一部分存进磁场；从$0$积到$t$，因为$I(0)=0$，就是$W-Q=\frac12LI^2$。
+
+    （3）很久以后$I\to\frac{\mathcal E}{R}$，$\dv It\to0$，磁场的能量停在$\frac12L\frac{\mathcal E^2}{R^2}$，电源每秒做的功$\frac{\mathcal E^2}{R}$全部变成焦耳热。和 RC 电路不同，这里电源一直在做功；RC 电路充满以后电流为零，电源不再做功。
+
+- id: p6
+  tier: hard
+  statement: |
+    超导线圈接成闭合回路以后，里面的电流可以长时间不变。设一个自感为$10\,\mathrm H$的超导线圈，在一年（约$3.2\times10^7\,\mathrm s$）里没有测到电流的变化，测量的精度是电流的十万分之一。
+
+    （1）把超导线圈看成电阻为$R$的 RL 回路，电流按什么规律变化？（2）由测量结果，估计回路电阻的上限。（3）为什么这样的测量比直接测电阻灵敏得多？
+  hints:
+    - |
+      回路里没有电源，$I=I_0e^{-Rt/L}$。
+    - |
+      $\frac{Rt}{L}$很小时，$e^{-Rt/L}\approx1-\frac{Rt}{L}$，电流一年里减少的比例约是$\frac{Rt}{L}$，它小于$10^{-5}$。
+    - |
+      $R<10^{-5}\frac Lt\approx\frac{10^{-5}\times10}{3.2\times10^7}\,\Omega\approx3\times10^{-12}\,\Omega$；时间常数$\frac LR$里有很大的$L$和很长的$t$，把很小的$R$放大了。
+  reference: |
+    （1）回路里没有电源，回路定律给出$-L\dv It=IR$，$I=I_0e^{-Rt/L}$，时间常数$\frac LR$。
+
+    （2）一年里电流的相对变化是$1-e^{-Rt/L}\approx\frac{Rt}{L}$（这个量很小）。没有测到变化，说明$\frac{Rt}{L}<10^{-5}$，$R<10^{-5}\cdot\frac{L}{t}=\frac{10^{-5}\times10}{3.2\times10^7}\,\Omega\approx3\times10^{-12}\,\Omega$。对应的时间常数超过$\frac{t}{10^{-5}}\approx3\times10^{12}\,\mathrm s$，约十万年。
+
+    （3）直接测电阻，要在电阻两端测电势差，$3\times10^{-12}\,\Omega$上流过几安的电流，电势差只有$10^{-11}\,\mathrm V$量级，淹没在噪声里。看电流的衰减，等于用自感很大的线圈和很长的时间把$R$「放大」：比值$\frac{Rt}{L}$里，$t$可以取得很长，$L$可以取得很大，极小的电阻也会留下可测的痕迹。
+
+- id: p7
+  tier: thinking
+  statement: |
+    把 RL 电路和 RC 电路放在一起比较。
+
+    （1）两种电路里，什么量不能突变？为什么？（2）刚接通和很久以后，电容器、线圈分别像什么？
+
+    （3）两种电路的能量储存在哪里？断开电源后又去了哪里？
+  hints:
+    - |
+      电容器两端的电势差是$\frac QC$，线圈两端的电势差是$L\dv It$；有限的电动势只能推动有限的电流。
+    - |
+      电荷不能突变，电容器的电势差就不能突变；$\dv It$不能是无穷大，线圈的电流就不能突变。
+    - |
+      电容器的能量$\frac{Q^2}{2C}$在电场里，线圈的能量$\frac12LI^2$在磁场里；断开电源后都通过电阻变成热。
+  reference: |
+    （1）RC 电路里，电容器上的电荷要靠电流慢慢送上去，电流有限，电荷和两端的电势差$\frac QC$就不能突变。RL 电路里，线圈两端的电势差是$L\dv It$，电路里的电动势有限，$\dv It$也有限，所以线圈里的电流不能突变；硬要它突变，电势差就会非常大（打火花）。
+
+    （2）刚接通时，电容器不带电，两端没有电势差，像一根导线；线圈里电流为零，像断开的开关。很久以后，电容器充满，没有电流，像断开的开关；线圈里电流不变，两端没有电势差，像一根导线。两者正好相反。
+
+    （3）电容器的能量$\frac{Q^2}{2C}$储存在两板之间的电场里，线圈的能量$\frac12LI^2$储存在磁场里。断开电源后，电容器经电阻放电、线圈经电阻放出电流，能量都在电阻上变成热；时间常数分别是$RC$和$\frac LR$，都由「储存的能量」和「每秒放出的热」的比例决定。
+
+- id: p8
+  tier: thinking
+  statement: |
+    [电动势与直流电路](lesson:physics.electromagnetism.dc-circuits)一节说，有变化的磁场穿过回路时，回路定律要改写。
+
+    （1）RL 电路里，沿整个回路$\oint\vb E\cdot\dd\vb l$还是零吗？回路定律为什么还能用？（2）理想线圈两端接一只电压表，它读的是什么？读数和电压表的导线怎样走有没有关系？
+  hints:
+    - |
+      线圈里的磁通量（magnetic flux）在变，沿穿过线圈导线的回路，$\oint\vb E\cdot\dd\vb l=-\dv{\Phi}{t}=-L\dv It\ne0$。
+    - |
+      把$-L\dv It$当作一个电动势算进回路定律，等式就成立了；变化的磁场主要在线圈里，线圈外面的电场近似是静电场。
+    - |
+      电压表的导线在线圈外面走、不套住线圈里的磁通量时，读的是$L\dv It$；导线如果绕着线圈的磁场走，读数会变。
+  reference: |
+    （1）不是零。回路包住线圈里的磁通量$\Phi=LI$，$\oint\vb E\cdot\dd\vb l=-\dv{\Phi}{t}=-L\dv It$。回路定律能用，是因为把这一项当作线圈的电动势，和电池的电动势一起放在等号的一边：$\mathcal E-L\dv It=IR$。这正是「改写」的意思：电场的环量不再是零，但它集中在线圈里，可以算成一个元件的电动势。
+
+    （2）理想线圈的导线里电场为零，变化的磁场几乎都在线圈里；线圈外面的电场近似是静电场，两端的电势有确定的值，差是$L\dv It$。电压表的导线在线圈外面走、和线圈的导线组成的回路不包住线圈里变化的磁通量时，读的就是$L\dv It$。如果电压表的导线绕着线圈、包住了一部分变化的磁通量，读数就会多出那一部分的$-\dv{\Phi}{t}$（见[感生电场](lesson:physics.electromagnetism.induced-electric-field)第 6 题）；所以测量带线圈的电路时，导线要贴着走，不要绕圈。

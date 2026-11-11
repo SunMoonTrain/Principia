@@ -1,0 +1,174 @@
+- id: p1
+  tier: easy
+  statement: |
+    某种顺磁性的盐可以看成磁化率为$1.5\times10^{-3}$的线性磁介质。它里面的磁场是$1.2\,\mathrm T$，求它的磁化强度，以$10^3\,\mathrm{A/m}$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 1.5e-3*1.2/(4*pi*1e-7*(1+1.5e-3))/1e3
+    unit: |
+      $10^3\,\mathrm{A/m}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $\vb M=\chi_{\mathrm m}\vb H$，而$\vb H=\frac{\vb B}{\mu}=\frac{\vb B}{\mu_0(1+\chi_{\mathrm m})}$。
+    - |
+      $H=\frac{1.2}{4\pi\times10^{-7}\times1.0015}\,\mathrm{A/m}\approx9.54\times10^5\,\mathrm{A/m}$。
+    - |
+      $M=1.5\times10^{-3}\times9.54\times10^5\,\mathrm{A/m}\approx1.43\times10^3\,\mathrm{A/m}$。
+  solution: |
+    $H=\frac{B}{\mu_0(1+\chi_{\mathrm m})}=\frac{1.2}{4\pi\times10^{-7}\times1.0015}\,\mathrm{A/m}\approx9.54\times10^5\,\mathrm{A/m}$，$M=\chi_{\mathrm m}H\approx1.43\times10^3\,\mathrm{A/m}$。$\chi_{\mathrm m}$很小，用$\frac{B}{\mu_0}$代替$H$，差别只有千分之一点五。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        一种线性磁介质的相对磁导率小于$1$，说明它是抗磁性的
+      - |
+        没有自由电流的地方，磁场强度$\vb H$一定为零
+      - |
+        铁磁性物质里，$B$和$\mu_0H$的比值是一个和$H$无关的常数
+      - |
+        螺绕环的环里填满线性磁介质，线圈的电流不变，那么环里的磁场强度$H$不变
+      - |
+        一根钢针在磁铁上擦过以后能吸起小铁屑，同样处理的软铁丝剩下的磁性要弱得多
+    value: [1, 4, 5]
+  hints:
+    - |
+      $\mu_{\mathrm r}=1+\chi_{\mathrm m}$；$\oint\vb H\cdot\dd\vb l$只由自由电流决定，可$\divg\vb H=-\divg\vb M$不一定为零。
+    - |
+      螺绕环有足够的对称性，$H$可以由线圈的电流直接求出；软铁的矫顽力小，剩磁容易消失。
+    - |
+      A、D、E 对；B、C 错。
+  solution: |
+    A 对：$\mu_{\mathrm r}<1$即$\chi_{\mathrm m}<0$，磁化和磁场反向。B 错：永磁铁周围没有自由电流，$\vb H$不为零，因为$\divg\vb H=-\divg\vb M$。C 错：铁磁性物质不是线性的，比值随$H$变，还和以前的磁化有关。
+
+    D 对：以对称轴为心的圆上$2\pi sH=NI$，和环里有没有磁介质无关；变的是$B=\mu H$。E 对：钢的矫顽力大，擦过以后留下较强的剩磁；软铁的矫顽力小，磁化很容易消失。
+
+- id: p3
+  tier: medium
+  statement: |
+    铁和空气的平面交界面上没有自由电流。把铁当作相对磁导率为$1000$的线性磁介质，铁里紧贴界面处的磁场和界面的法线成$80^\circ$。求空气里紧贴界面处的磁场和法线的夹角，以度为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: atan(tan(80*pi/180)/1000)*180/pi
+    unit: |
+      $^\circ$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      法向：$\vb B$连续；切向：$\vb H$连续，而$\vb H=\frac{\vb B}{\mu}$。
+    - |
+      和法线的夹角满足$\tan\theta=\frac{B_t}{B_n}$；从铁到空气，$B_n$不变，$B_t$变成铁里的$\frac{1}{\mu_{\mathrm r}}$。
+    - |
+      $\tan\theta_{\text{空气}}=\frac{\tan80^\circ}{1000}\approx5.67\times10^{-3}$，$\theta_{\text{空气}}\approx0.325^\circ$。
+  solution: |
+    $B_n$连续；$H_t$连续，铁里$H_t=\frac{B_t}{\mu_{\mathrm r}\mu_0}$，空气里$H_t=\frac{B_t'}{\mu_0}$，所以$B_t'=\frac{B_t}{\mu_{\mathrm r}}$。于是$\tan\theta_{\text{空气}}=\frac{\tan\theta_{\text{铁}}}{\mu_{\mathrm r}}=\frac{5.671}{1000}$，$\theta_{\text{空气}}\approx0.325^\circ$。
+
+    铁里的磁场几乎贴着界面走，出到空气里却几乎垂直于界面：从铁的表面出来的磁场线都近似垂直于表面，就像从导体（conductor）表面出来的电场线（electric field line）一样。
+
+- id: p4
+  tier: medium
+  statement: |
+    平均半径$10\,\mathrm{cm}$的铁环上均匀地绕着$500$匝导线，通有$1.0\,\mathrm A$的电流；铁环上切开一道宽$2.0\,\mathrm{mm}$的缝。把铁当作相对磁导率为$2000$的线性磁介质，铁环的截面比半径小得多，缝里的磁场不向外散开。求缝里的磁场，以$\mathrm T$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 4*pi*1e-7*500*1.0/((2*pi*0.10-0.0020)/2000+0.0020)
+    unit: |
+      $\mathrm T$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      磁场沿环的方向，垂直于缝的两个面，法向分量连续：铁里和缝里的$B$相同。$H$在铁里是$\frac{B}{\mu_{\mathrm r}\mu_0}$，在缝里是$\frac{B}{\mu_0}$。
+    - |
+      沿环的平均圆周用有磁介质时的安培环路定理：$\frac{B}{\mu_{\mathrm r}\mu_0}(2\pi R-g)+\frac{B}{\mu_0}g=NI$。
+    - |
+      $B=\frac{\mu_0NI}{(2\pi R-g)/\mu_{\mathrm r}+g}\approx0.272\,\mathrm T$。
+  solution: |
+    缝的两个面垂直于磁场，$B$的法向分量连续，铁里和缝里$B$相同。沿平均圆周积分：$\frac{B}{\mu_{\mathrm r}\mu_0}(2\pi R-g)+\frac{B}{\mu_0}g=NI$，所以$B=\frac{\mu_0NI}{(2\pi R-g)/\mu_{\mathrm r}+g}=\frac{4\pi\times10^{-7}\times500\times1.0}{3.13\times10^{-4}+2.0\times10^{-3}}\,\mathrm T\approx0.272\,\mathrm T$。
+
+    没有缝时$B=\frac{\mu_{\mathrm r}\mu_0NI}{2\pi R}=2.0\,\mathrm T$。一道$2\,\mathrm{mm}$的缝里的$H$是铁里的$2000$倍，$\oint\vb H\cdot\dd\vb l$大部分「花」在缝上，磁场减小到不到原来的七分之一。
+
+- id: p5
+  tier: hard
+  statement: |
+    半径为$R$、相对磁导率为$\mu_{\mathrm r}$的线性磁介质球，放进原来匀强的磁场$\vb B_0$里，产生$\vb B_0$的电流离球很远。
+
+    （1）设球被均匀磁化，磁化强度为$\vb M$，用[磁化与束缚电流](lesson:physics.electromagnetism.magnetization)第 5 题的结果写出球里的$\vb B$和$\vb H$。（2）由$\vb M=\chi_{\mathrm m}\vb H$定出$\vb M$，求球里的磁场。（3）为什么「均匀磁化」这个猜测是对的？（4）$\mu_{\mathrm r}<1$、$\mu_{\mathrm r}>1$和$\mu_{\mathrm r}\to\infty$时，球里的磁场各怎样？
+  hints:
+    - |
+      均匀磁化的球自己在球里产生$\frac23\mu_0\vb M$，所以球里$\vb B=\vb B_0+\frac23\mu_0\vb M$，$\vb H=\frac{\vb B}{\mu_0}-\vb M=\frac{\vb B_0}{\mu_0}-\frac13\vb M$。
+    - |
+      $\vb M=\chi_{\mathrm m}\Bigl(\frac{\vb B_0}{\mu_0}-\frac13\vb M\Bigr)$，解出$\vb M=\frac{3\chi_{\mathrm m}}{3+\chi_{\mathrm m}}\frac{\vb B_0}{\mu_0}$。
+    - |
+      球里$\vb B=\frac{3\mu_{\mathrm r}}{\mu_{\mathrm r}+2}\vb B_0$，处处相同，所以$\vb H$也处处相同，$\vb M=\chi_{\mathrm m}\vb H$确实均匀；$\mu_{\mathrm r}<1$时比$\vb B_0$弱，$\mu_{\mathrm r}>1$时比$\vb B_0$强，$\mu_{\mathrm r}\to\infty$时趋于$3\vb B_0$。
+  reference: |
+    （1）均匀磁化的球在球里产生匀强的$\frac23\mu_0\vb M$，在球外产生磁矩为$\frac43\pi R^3\vb M$的磁偶极子（magnetic dipole）的磁场。叠加原来的$\vb B_0$，球里$\vb B=\vb B_0+\frac23\mu_0\vb M$，$\vb H=\frac{\vb B}{\mu_0}-\vb M=\frac{\vb B_0}{\mu_0}-\frac13\vb M$。
+
+    （2）$\vb M=\chi_{\mathrm m}\vb H$给出$\vb M\bigl(1+\frac{\chi_{\mathrm m}}{3}\bigr)=\chi_{\mathrm m}\frac{\vb B_0}{\mu_0}$，$\vb M=\frac{3\chi_{\mathrm m}}{3+\chi_{\mathrm m}}\frac{\vb B_0}{\mu_0}$。代回，$\vb B=\vb B_0\Bigl(1+\frac{2\chi_{\mathrm m}}{3+\chi_{\mathrm m}}\Bigr)=\frac{3(1+\chi_{\mathrm m})}{3+\chi_{\mathrm m}}\vb B_0=\frac{3\mu_{\mathrm r}}{\mu_{\mathrm r}+2}\vb B_0$。
+
+    （3）这样得到的场在球里、球外都满足$\divg\vb B=0$、$\curl\vb H=\vb 0$（没有自由电流），球面上满足两个界面条件（它就是叠加出来的真实场），球里又处处满足$\vb M=\chi_{\mathrm m}\vb H$，远处趋于$\vb B_0$。所有条件都满足，它就是要找的解；这样的问题的解是唯一的，和静电学里唯一性定理（uniqueness theorem）的道理一样。
+
+    （4）抗磁性的球$\mu_{\mathrm r}<1$，球里的磁场比$\vb B_0$稍弱；顺磁性的稍强；$\mu_{\mathrm r}\to\infty$时趋于$3\vb B_0$，磁场线被吸进球里。电介质（dielectric）球在匀强电场里的结果$\vb E=\frac{3}{\varepsilon_{\mathrm r}+2}\vb E_0$形式相似，但那里球里的电场总是变弱，因为对应的是$\vb E$，不是$\vb D$。
+
+- id: p6
+  tier: hard
+  statement: |
+    一大块磁介质均匀磁化，里面的$\vb B_0$、$\vb H_0$、$\vb M_0$处处相同，互相平行，没有自由电流。在里面挖两个空腔：（1）沿磁场方向的细长针形空腔；（2）垂直于磁场的薄饼形空腔。分别求两个空腔中间的磁场。（3）由此说明怎样在磁介质里「测」出$\vb B$和$\vb H$。
+  hints:
+    - |
+      挖掉一块磁介质，等于在原来的场上叠加一块磁化强度为$-\vb M_0$、形状和空腔一样的磁介质的场；它只有空腔表面上的束缚电流。
+    - |
+      针形：侧面上的束缚电流像一个细长的螺线管，每单位长度是$M_0$，方向和原来磁介质的表面电流相反；两端极小。饼形：大表面和$\vb M_0$垂直，$\vb M\times\uv n=\vb 0$，侧面极窄。
+    - |
+      针形空腔里$\vb B=\vb B_0-\mu_0\vb M_0=\mu_0\vb H_0$；饼形空腔里$\vb B=\vb B_0$。也可以用界面条件：针形的长侧面平行于磁场，$\vb H$的切向连续；饼形的大表面垂直于磁场，$\vb B$的法向连续。
+  reference: |
+    （1）挖掉空腔里的磁介质，相当于在原来处处均匀的场上，再叠加一块磁化强度为$-\vb M_0$、形状和空腔一样的磁介质产生的场。针形空腔沿磁场方向，这块「负磁介质」的侧面上有束缚电流$(-\vb M_0)\times\uv n$，像一个细长的螺线管，在中间产生$-\mu_0\vb M_0$；两端的截面极小，它们的影响可以忽略。所以针形空腔里$\vb B=\vb B_0-\mu_0\vb M_0=\mu_0\vb H_0$。
+
+    （2）饼形空腔的两个大表面和$\vb M_0$垂直，$(-\vb M_0)\times\uv n=\vb 0$，没有束缚电流；侧面的高度极小，侧面上的电流在中间产生的磁场可以忽略。所以饼形空腔里$\vb B=\vb B_0$。
+
+    （3）同样的结论也可以由界面条件得到：针形空腔的长侧面平行于磁场，$\vb H$的切向分量连续，空腔里$\vb H=\vb H_0$，而空腔里是真空，$\vb B=\mu_0\vb H_0$；饼形空腔的大表面垂直于磁场，$\vb B$的法向分量连续，空腔里$\vb B=\vb B_0$。把测磁场的小探头放进两种空腔，就分别量到$\mu_0\vb H_0$和$\vb B_0$。磁介质「里面」的场，要说明是在什么形状的空腔里量的；宏观的$\vb B$、$\vb H$是在比原子大的尺度上平均的结果，两者都不是在某个原子之间的空隙里量到的场。
+
+- id: p7
+  tier: thinking
+  statement: |
+    一个均匀磁化的永磁铁球，磁化强度为$\vb M$，周围没有自由电流。
+
+    （1）球里的$\vb B$和$\vb H$各是什么方向？（2）球里$\vb H$和$\vb B$方向相反，这和$\vb B=\mu\vb H$矛盾吗？（3）为什么常说$\vb H$的「源」可以看成磁荷？
+  hints:
+    - |
+      用[磁化与束缚电流](lesson:physics.electromagnetism.magnetization)第 5 题：球里$\vb B=\frac23\mu_0\vb M$，再由$\vb H=\frac{\vb B}{\mu_0}-\vb M$求$\vb H$。
+    - |
+      永磁铁不是线性磁介质：撤去外磁场后它停在磁滞回线上$B>0$、$H<0$的那一段。
+    - |
+      $\curl\vb H=\vb 0$，$\divg\vb H=-\divg\vb M$，球面上$\vb H$的法向分量跳变$\vb M\cdot\uv n$：$\vb H$满足的方程和静电场一样，「电荷」（electric charge）换成了$-\divg\vb M$和$\vb M\cdot\uv n$。
+  reference: |
+    （1）球里$\vb B=\frac23\mu_0\vb M$，沿$\vb M$；$\vb H=\frac{\vb B}{\mu_0}-\vb M=-\frac13\vb M$，和$\vb M$、$\vb B$反向。
+
+    （2）不矛盾。$\vb B=\mu\vb H$只对线性磁介质成立，永磁铁是铁磁性物质，撤去磁化它的外磁场以后，它停在磁滞回线上$B>0$、$H<0$的一段，靠剩磁维持磁化。这里的$\vb H$反着$\vb M$，会使磁化减弱，叫作退磁场；矫顽力大的材料才经得起它，做成永磁铁。
+
+    （3）没有自由电流时$\curl\vb H=\vb 0$，而$\divg\vb H=-\divg\vb M$，表面上$\vb H$的法向分量跳变$\vb M\cdot\uv n$。这和静电场$\curl\vb E=\vb 0$、$\divg\vb E=\frac\rho{\varepsilon_0}$的形式一样，把$-\divg\vb M$看成体「磁荷」密度、$\vb M\cdot\uv n$看成面「磁荷」密度，$\vb H$就是它们按库仑定律（Coulomb's law）产生的场。均匀磁化的球只有面磁荷$M\cos\theta$，北半球正、南半球负，像两个错开一点的均匀带电球，里面的场均匀、从正磁荷指向负磁荷，也就是和$\vb M$反向。磁荷只是计算$\vb H$的工具，$\divg\vb B=0$，真正的磁单极子（magnetic monopole）并不存在。
+
+- id: p8
+  tier: thinking
+  statement: |
+    变压器和电磁铁的铁芯用软铁、硅钢，永磁铁用钢、钕铁硼这类材料。
+
+    （1）从磁滞回线看，这两类用途各要什么样的材料？（2）交流电（alternating current）里铁芯每秒被反复磁化几十次，磁滞会带来什么后果？（3）硬盘、磁带为什么能把数据长期保存下来？
+  hints:
+    - |
+      铁芯要的是：很小的电流就能产生很强的磁化，电流撤去后磁化随即消失。永磁铁要的是：撤去外磁场后磁化留得多，反向的磁场也不容易把它退掉。
+    - |
+      沿磁滞回线走一圈，磁畴的边界反复越过障碍，每一圈都有一部分能量变成热；回线越宽，损失越多。
+    - |
+      记录时用磁头的磁场把一小块材料磁化到一个方向，撤去后靠剩磁保持；矫顽力要足够大，才不会被周围的杂散磁场改写。
+  reference: |
+    （1）铁芯要「软」：磁滞回线窄、矫顽力小，$\frac{B}{\mu_0H}$大，小电流就能磁化得很强，电流反向时磁化跟着反向，没有多余的剩磁。永磁铁要「硬」：剩磁大、矫顽力大，回线又高又宽，撤去外磁场后留下很强的磁化，退磁场和外界的杂散磁场也退不掉它。
+
+    （2）每磁化一圈，磁畴的边界都要反复越过杂质和缺陷造成的障碍，这部分功变成热，铁芯发热、浪费电能。以后学了电磁感应（electromagnetic induction）可以证明：电源要克服线圈里的感应电动势（induced electromotive force）做功，每磁化一圈，单位体积上做的功等于磁滞回线围成的面积（感应电动势见[法拉第电磁感应定律](lesson:physics.electromagnetism.faraday-law)）。所以交流电用的铁芯要选回线窄的软磁材料；铁芯还要叠成彼此绝缘的薄片，减少另一种损耗，即感应出的涡电流（eddy current）。
+
+    （3）记录时磁头的磁场把磁层里很小的一块磁化到一个方向，代表 0 或 1；磁头走开后，靠剩磁保持这个方向。材料的矫顽力足够大，日常环境里的杂散磁场就改写不了它，数据可以保存很多年；用很强的交变磁场才能把它抹掉。

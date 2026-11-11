@@ -44,7 +44,7 @@ status: reviewed
 
 证明思路：先看一个:term[点电荷]{id="physics.electromagnetism.point-charge"}$q$。它的:term[电场]{id="physics.electromagnetism.electric-field"}穿过一小块面积的电通量是$\frac{1}{4\pi\varepsilon_0}\frac{q\,\dd a\cos\alpha}{r^2}=\frac{q}{4\pi\varepsilon_0}\dd\Omega$；$q$在面内时，曲面把它整个围住，:term[立体角]{id="physics.electromagnetism.solid-angle"}加起来是$4\pi$，电通量是$\frac{q}{\varepsilon_0}$，和曲面的形状无关。$q$在面外时，从它出发的每个小圆锥都穿过曲面偶数次，一进一出，立体角正负抵消，电通量为零。一般的电荷分布，由:term[叠加原理]{id="physics.electromagnetism.superposition-principle"}（superposition principle）把各个点电荷的电通量加起来。
 
-关键在平方反比：电场的$\frac{1}{r^2}$正好抵消了面积随距离增长的$r^2$，电通量才和曲面离电荷多远无关。如果电力和距离的$2+\delta$次方成反比，穿过以电荷为中心的球面的电通量会随球的半径变（p5，也可以在几何图像的动画里看）。对静止的电荷，高斯定律和:term[库仑定律]{id="physics.electromagnetism.coulomb-law"}包含同样的内容；但高斯定律对运动的电荷也成立，是麦克斯韦方程组（Maxwell's equations）的一部分（见[位移电流与麦克斯韦方程组](lesson:physics.electromagnetism.maxwell-equations)）。
+关键在平方反比：电场的$\frac{1}{r^2}$正好抵消了面积随距离增长的$r^2$，电通量才和曲面离电荷多远无关。如果电力和距离的$2+\delta$次方成反比，穿过以电荷为中心的球面的电通量会随球的半径变（p5，也可以在几何图像的动画里看）。对静止的电荷，高斯定律和:term[库仑定律]{id="physics.electromagnetism.coulomb-law"}包含同样的内容；但高斯定律对运动的电荷也成立，是:term[麦克斯韦方程组]{id="physics.electromagnetism.maxwell-equations"}（Maxwell's equations）的一部分（见[位移电流与麦克斯韦方程组](lesson:physics.electromagnetism.maxwell-equations)）。
 
 用:term[电场线]{id="physics.electromagnetism.field-line"}的话说：从$q$发出的电场线条数和$q$成正比，它们全都穿出包住$q$的任何闭合曲面；面外的电荷发出的线穿进来又穿出去，净条数为零。所以电场线在没有电荷的地方不会凭空出现或中断（电场为零的个别点除外），这正是上一节没能说明的那一点。
 

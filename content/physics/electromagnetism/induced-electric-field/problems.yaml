@@ -1,0 +1,174 @@
+- id: p1
+  tier: easy
+  statement: |
+    半径$3.0\,\mathrm{cm}$的长螺线管里，磁场以$0.20\,\mathrm{T/s}$的速率均匀增加。求离轴$6.0\,\mathrm{cm}$处感生电场的大小，以$\mathrm{mV/m}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 0.030^2/(2*0.060)*0.20*1e3
+    unit: |
+      $\mathrm{mV/m}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $6.0\,\mathrm{cm}$在管外；以轴为心的圆上$2\pi sE=\dv{\Phi}{t}$，$\Phi$是整个管里的磁通量。
+    - |
+      $E=\frac{R^2}{2s}\dv Bt$。
+    - |
+      $E=\frac{(0.030)^2}{2\times0.060}\times0.20\,\mathrm{V/m}=1.50\times10^{-3}\,\mathrm{V/m}=1.50\,\mathrm{mV/m}$。
+  solution: |
+    管外以轴为心的圆包住整个管里的磁通量$\pi R^2B$，$2\pi sE=\pi R^2\dv Bt$，$E=\frac{R^2}{2s}\dv Bt=\frac{(0.030)^2}{2\times0.060}\times0.20\,\mathrm{V/m}=1.50\,\mathrm{mV/m}$。这里没有磁场，电场是管里的磁场变化产生的。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        没有电荷的地方，感生电场的电场线（electric field line）不会在哪里开始或终止
+      - |
+        感生电场沿任意闭合曲线的积分都是零
+      - |
+        长螺线管里的电流均匀增大时，管外静止的电子会受到电场力
+      - |
+        在长螺线管外面套一个圆形的导线圈，圈围成的面积越大，圈里的感应电动势越大
+      - |
+        长螺线管里的磁场在减小时，从磁场指向的一侧看去，管里的感生电场沿逆时针方向
+    value: [1, 3, 5]
+  hints:
+    - |
+      没有电荷时$\divg\vb E=0$；感生电场沿闭合曲线的积分等于$-\dv{\Phi}{t}$。
+    - |
+      长螺线管外没有磁场，穿过管外任一圈的磁通量都是管里的磁通量；磁场减小时$\dv Bt<0$，$E_\psi=-\frac s2\dv Bt>0$。
+    - |
+      A、C、E 对；B、D 错。
+  solution: |
+    A 对：没有电荷时$\divg\vb E=0$，电场线不会开始或终止，螺线管周围的电场线是一个个圆。B 错：它的积分等于穿过曲线的磁通量变化率的负值，一般不为零。C 对：管外磁场为零，感生电场却不为零，静止的电子受力$-e\vb E$。
+
+    D 错：圈套在管外时，穿过它的磁通量就是管里的$\pi R^2B$，和圈多大无关，电动势（electromotive force）也一样。E 对：$\dv Bt<0$时$E_\psi=-\frac s2\dv Bt>0$，沿$\uv\psi$，从磁场指向的一侧看是逆时针，它驱动的电流要补上减少的磁通量。
+
+- id: p3
+  tier: medium
+  statement: |
+    电子感应加速器里，电子在半径$0.10\,\mathrm m$的圆形轨道上运动。轨道围住的区域里，平均磁场在$4.0\,\mathrm{ms}$内从零均匀地增加到$0.80\,\mathrm T$。电子每转一圈，从感生电场得到多少能量？以电子伏特（electron volt）为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: pi*0.10^2*0.80/4.0e-3
+    unit: |
+      $\mathrm{eV}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      电子每转一圈，感生电场对它做的功是$e\oint\vb E\cdot\dd\vb l$，大小是$e\dv{\Phi}{t}$。
+    - |
+      $\dv{\Phi}{t}=\pi r^2\dv{\bar B}t=\pi\times(0.10)^2\times\frac{0.80}{4.0\times10^{-3}}\,\mathrm{V}$。
+    - |
+      $\dv{\Phi}{t}\approx6.28\,\mathrm V$，每圈得到约$6.28\,\mathrm{eV}$。
+  solution: |
+    轨道围住的磁通量的变化率$\dv{\Phi}{t}=\pi r^2\dv{\bar B}t=\pi\times(0.10)^2\times200\,\mathrm{V}\approx6.28\,\mathrm V$，这就是沿轨道一圈的感应电动势。电子每转一圈，电场对它做功$e\times6.28\,\mathrm V$，即$6.28\,\mathrm{eV}$。每圈得到的能量很少，可电子在几毫秒里能转上百万圈，加起来就到了$\mathrm{MeV}$量级。
+
+- id: p4
+  tier: medium
+  statement: |
+    半径$1.0\,\mathrm{cm}$的长螺线管每米绕$2000$匝，管里的电流在$0.10\,\mathrm s$内从零均匀地增加到$3.0\,\mathrm A$。求离轴$5.0\,\mathrm{cm}$处感生电场的大小，以$\mu\mathrm{V/m}$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 0.010^2/(2*0.050)*4*pi*1e-7*2000*3.0/0.10*1e6
+    unit: |
+      $\mu\mathrm{V/m}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      管里的磁场是$\mu_0nI$，它的变化率是$\mu_0n\dv It$。
+    - |
+      离轴$5.0\,\mathrm{cm}$在管外，$E=\frac{R^2}{2s}\dv Bt$。
+    - |
+      $\dv Bt=4\pi\times10^{-7}\times2000\times30\,\mathrm{T/s}\approx7.54\times10^{-2}\,\mathrm{T/s}$，$E\approx\frac{(0.010)^2}{0.10}\times7.54\times10^{-2}\,\mathrm{V/m}\approx75.4\,\mu\mathrm{V/m}$。
+  solution: |
+    $\dv Bt=\mu_0n\dv It=4\pi\times10^{-7}\times2000\times30\,\mathrm{T/s}\approx7.54\times10^{-2}\,\mathrm{T/s}$。管外$E=\frac{R^2}{2s}\dv Bt=\frac{(0.010)^2}{2\times0.050}\times7.54\times10^{-2}\,\mathrm{V/m}\approx7.54\times10^{-5}\,\mathrm{V/m}=75.4\,\mu\mathrm{V/m}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    半径为$a$、厚为$h$（$h\ll a$）的金属圆盘，电导率（electrical conductivity）为$\sigma$，放在垂直于盘面的匀强磁场$B(t)=B_0\sin\omega t$里，磁场在盘里引起的涡电流本身产生的磁场可以忽略。
+
+    （1）求盘里离中心$r$处的感生电场和电流密度。（2）求涡电流放出的平均焦耳功率。（3）把同样的一块盘换成$N^2$个半径为$\frac aN$、彼此绝缘的小盘，总面积大致不变，平均功率变成多少？这说明了什么？
+  hints:
+    - |
+      盘里的感生电场和长螺线管里的一样：沿圆周，大小$\frac r2\left|\dv Bt\right|$；电流密度$J=\sigma E$。
+    - |
+      单位体积的焦耳热是$\sigma E^2$，在盘上积分：$\int_0^a\sigma\frac{r^2}{4}\Bigl(\dv Bt\Bigr)^2\cdot2\pi rh\,\dd r$；$\Bigl(\dv Bt\Bigr)^2$的时间平均是$\frac12B_0^2\omega^2$。
+    - |
+      平均功率$\frac{\pi\sigma h\omega^2B_0^2a^4}{16}$，和$a^4$成正比；$N^2$个小盘总共是$N^2\cdot\frac{a^4}{N^4}$，变成原来的$\frac{1}{N^2}$。所以铁芯要切成薄片。
+  reference: |
+    （1）磁场均匀、垂直于盘面，问题有轴对称。离中心$r$的圆上$2\pi rE=-\pi r^2\dv Bt$，$E_\psi=-\frac r2\dv Bt=-\frac{r}{2}B_0\omega\cos\omega t$，电流密度$\vb J=\sigma\vb E$，沿圆周绕圈，越往外越大。
+
+    （2）单位体积每秒放热$\sigma E^2$，瞬时总功率$P=\int_0^a\sigma\frac{r^2}{4}\Bigl(\dv Bt\Bigr)^2\,2\pi rh\,\dd r=\frac{\pi\sigma h a^4}{8}\Bigl(\dv Bt\Bigr)^2$。$\Bigl(\dv Bt\Bigr)^2=B_0^2\omega^2\cos^2\omega t$，一个周期的平均是$\frac12B_0^2\omega^2$，所以平均功率是$\frac{\pi\sigma h\omega^2B_0^2a^4}{16}$。它和频率的平方成正比，频率高时涡电流发热很厉害，电磁炉就是这样加热锅底的。
+
+    （3）每个小盘的平均功率是$\frac{\pi\sigma h\omega^2B_0^2}{16}\frac{a^4}{N^4}$，$N^2$个一共是原来的$\frac{1}{N^2}$。涡电流要绕着变化的磁场转大圈才能大，把导体分成彼此绝缘的小块（变压器（transformer）的铁芯叠成薄片也是这个道理），电流只能绕小圈，损耗就大大减小。
+
+- id: p6
+  tier: hard
+  statement: |
+    长螺线管外套着一个圆环，画在纸面上：$P$在环的最上端，$Q$在最下端，左半圈的电阻（resistance）是$R_1$，右半圈是$R_2$。环里的感应电动势是$\mathcal E$，沿逆时针方向。两只理想电压表都接在$P$、$Q$之间：一只的导线在环的左边，另一只在环的右边，导线都在纸面里，不套住螺线管。
+
+    （1）环里的电流是多少？（2）两只电压表的读数各是多少？它们一样吗？（3）「$P$、$Q$之间的电势差」还有意义吗？
+  hints:
+    - |
+      环里只有一个闭合回路，套住整个螺线管：$I=\frac{\mathcal E}{R_1+R_2}$。
+    - |
+      理想电压表的读数是$\vb E$沿它的导线和表内部那条路径的积分；那条路径和环的哪一段组成的回路不套住螺线管，那个回路里没有电动势，读数就等于那一段上的$IR$。
+    - |
+      都按从$P$到$Q$积分：左边的电压表读$IR_1$，右边的读$-IR_2$，两者相差$\mathcal E$；有感生电场时，两点之间的电压和路径有关。
+  reference: |
+    （1）环套住螺线管，沿环一圈的电动势是$\mathcal E$，电流$I=\frac{\mathcal E}{R_1+R_2}$，沿逆时针方向。
+
+    （2）理想电压表里几乎没有电流，它的读数是电场沿「表的导线加表的内部」这条路径从$P$到$Q$的积分。电流沿逆时针方向，在左半圈里从$P$流到$Q$。左边那只电压表的路径和左半圈组成的回路不套住螺线管，回路里的总电动势为零，所以沿表的路径的积分等于沿左半圈从$P$到$Q$的积分，读数是$IR_1$。
+
+    右边那只电压表的路径和右半圈组成不套住螺线管的回路，读数是沿右半圈从$P$到$Q$的积分；那里电流从$Q$流向$P$，所以读数是$-IR_2$。两只表接在同样两点上，读数一个是$IR_1$，一个是$-IR_2$，差$\mathcal E$。
+
+    （3）没有感生电场时，电场沿任意路径的积分只由两端点决定，叫作电势差。有变化的磁场时，$\oint\vb E\cdot\dd\vb l\neq0$，积分和路径有关，单说「$P$、$Q$之间的电势差」没有确定的值，要说清是沿哪条路径（或者表的导线怎样走）量的。用电压表测带线圈的电路时，导线的走法会影响读数，就是这个原因。
+
+- id: p7
+  tier: thinking
+  statement: |
+    把原子里的电子看成以速率$v$绕核做半径为$r$的圆周运动。现在慢慢加上一个垂直于轨道平面的磁场，从零增加到$B$，设轨道半径不变。
+
+    （1）加磁场的过程中，感生电场使电子加速还是减速？（2）电子的磁矩（magnetic dipole moment）改变了多少？方向和磁场同向还是反向？和电子原来绕哪个方向转有没有关系？
+
+    （3）为什么说这就是抗磁性（diamagnetism）的来源？
+  hints:
+    - |
+      轨道上的感生电场大小是$\frac r2\dv Bt$；电子带负电，切向的力是$m_{\mathrm e}\dv{v_\psi}t=-eE_\psi=\frac{er}{2}\dv Bt$（取$\vb B$沿$+z$，$v_\psi$是沿$\uv\psi$的速度分量）。
+    - |
+      积分得$\Delta v_\psi=\frac{erB}{2m_{\mathrm e}}$；电子的磁矩$\vb m=-\frac{e}{2m_{\mathrm e}}\vb L$（见[电流受到的磁力](lesson:physics.electromagnetism.magnetic-force-on-currents)例 2），$\Delta L_z=m_{\mathrm e}r\Delta v_\psi$。
+    - |
+      $\Delta m_z=-\frac{e^2r^2B}{4m_{\mathrm e}}$，总和磁场反向，和电子原来的转向无关；每个原子都有绕核的电子，所以每种物质都有这样一个和磁场反向的磁化。
+  reference: |
+    （1）取$\vb B=B\uv z$。增加磁场时，轨道上的感生电场$E_\psi=-\frac r2\dv Bt$。电子带负电，受的切向力$-eE_\psi=\frac{er}{2}\dv Bt$，沿$+\uv\psi$。所以沿$+\uv\psi$转的电子被加速，沿$-\uv\psi$转的被减速；两种情况下$v_\psi$都增加了$\Delta v_\psi=\frac{erB}{2m_{\mathrm e}}$。
+
+    （2）$\Delta L_z=m_{\mathrm e}r\Delta v_\psi=\frac{er^2B}{2}$，$\Delta m_z=-\frac{e}{2m_{\mathrm e}}\Delta L_z=-\frac{e^2r^2B}{4m_{\mathrm e}}$，和$\vb B$反向，大小和电子原来往哪个方向转无关。（轨道半径能保持不变，是因为速度改变后，新出现的磁力$-e\vb v\times\vb B$正好补上所需的向心力的变化，近似成立。）
+
+    （3）原子里成对的电子沿相反方向转，原来的轨道磁矩互相抵消，可每个电子都多出一个和磁场反向的$\Delta\vb m$，加起来不抵消。所以每种物质被磁场磁化时都多出一个和磁场反向的磁化，这就是[磁化与束缚电流](lesson:physics.electromagnetism.magnetization)里说的抗磁性；它极弱，在有原子磁矩的物质里被顺磁性（paramagnetism）盖过。严格的理论要用量子力学，经典的推导只能给出量级（这样算出的磁化率（magnetic susceptibility）和实验同一个量级）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    长螺线管外没有磁场，感生电场却不为零。
+
+    （1）用[磁矢势](lesson:physics.electromagnetism.vector-potential)一节例 2 的结果（管外$A_\psi=\frac{B_0R^2}{2s}$），算一算$-\pdv{\vb A}t$，和本节的感生电场比较。（2）这说明感生电场和磁矢势（magnetic vector potential）有什么关系？（3）这个电场是不是「从远处的磁场变化瞬间传过来」的？
+  hints:
+    - |
+      $-\pdv{A_\psi}t=-\frac{R^2}{2s}\dv{B_0}t$，和本节管外的$E_\psi$完全相同；管内$A_\psi=\frac{B_0s}{2}$，也一样。
+    - |
+      $\vb B=\curl\vb A$，所以$\curl\Bigl(\vb E+\pdv{\vb A}t\Bigr)=\vb 0$；没有电荷时，可以取$\vb E=-\pdv{\vb A}t$。
+    - |
+      这一节的结果都假定磁场变化得足够慢；变化的磁场和电场以光速传播，远处的电场要等一会儿才「知道」管里的变化。
+  reference: |
+    （1）管外$\vb A=\frac{B_0R^2}{2s}\uv\psi$，$-\pdv{\vb A}t=-\frac{R^2}{2s}\dv{B_0}t\uv\psi$，正是本节定理给出的管外感生电场；管内$\vb A=\frac{B_0s}{2}\uv\psi$，$-\pdv{\vb A}t=-\frac s2\dv{B_0}t\uv\psi$，也一致。
+
+    （2）由法拉第定律的微分形式和$\vb B=\curl\vb A$，$\curl\Bigl(\vb E+\pdv{\vb A}t\Bigr)=\vb 0$，括号里的场是某个函数的负梯度；没有电荷、这个函数可以取零时，$\vb E=-\pdv{\vb A}t$。管外磁场为零而磁矢势不为零，磁矢势随时间变，就有电场：电子在管外受的力是可以测量的，磁矢势在这里不只是计算工具。完整的关系$\vb E=-\nabla\varphi-\pdv{\vb A}t$见[电磁势与规范变换](lesson:physics.electromagnetism.gauge-potentials)。
+
+    （3）不是瞬间。本节把螺线管当作磁场缓慢变化的情形：变化的电场还会产生磁场（见[位移电流与麦克斯韦方程组](lesson:physics.electromagnetism.maxwell-equations)），扰动以光速传播；离螺线管$s$处要过$\frac sc$左右的时间才感到变化。变化慢时这个延迟可以忽略，本节的结果就是这种情况下的近似。

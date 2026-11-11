@@ -1,0 +1,172 @@
+- id: p1
+  tier: easy
+  statement: |
+    一个长螺线管长$25\,\mathrm{cm}$、半径$1.0\,\mathrm{cm}$，共绕$500$匝。求它的自感，以$\mathrm{mH}$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 4*pi*1e-7*500^2*pi*0.010^2/0.25*1e3
+    unit: |
+      $\mathrm{mH}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      长螺线管的自感是$L=\frac{\mu_0N^2A}{l}$。
+    - |
+      $A=\pi(0.010\,\mathrm m)^2\approx3.14\times10^{-4}\,\mathrm{m^2}$，$N^2=2.5\times10^5$。
+    - |
+      $L=\frac{4\pi\times10^{-7}\times2.5\times10^5\times3.14\times10^{-4}}{0.25}\,\mathrm H\approx3.95\times10^{-4}\,\mathrm H=0.395\,\mathrm{mH}$。
+  solution: |
+    $L=\frac{\mu_0N^2A}{l}=\frac{4\pi\times10^{-7}\times500^2\times\pi\times(0.010)^2}{0.25}\,\mathrm H\approx3.95\times10^{-4}\,\mathrm H=0.395\,\mathrm{mH}$。匝数加倍，自感变成原来的$4$倍：磁场加倍，被它穿过的匝数也加倍。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        线圈里的电流加倍，它的自感也加倍
+      - |
+        线圈里的电流均匀增大时，自感电动势的大小不变
+      - |
+        把一个长螺线管均匀地拉长成原来的$2$倍，匝数和横截面积不变，它的自感变成原来的一半
+      - |
+        电流一直不变的线圈里没有储存能量
+      - |
+        自感为$L$的线圈通有电流$I$时，它的磁场储存的能量是$LI^2$
+    value: [2, 3]
+  hints:
+    - |
+      自感只由线圈本身决定；自感电动势是$-L\dv It$。
+    - |
+      长螺线管$L=\frac{\mu_0N^2A}{l}$；线圈储存的能量由当时的电流决定，和电流变不变无关。
+    - |
+      B、C 对；A、D、E 错。
+  solution: |
+    A 错：自感$\frac{\Phi}{I}$由线圈的形状、匝数和周围的物质决定，和电流无关。B 对：$\dv It$不变，$L\dv It$也不变。C 对：$L=\frac{\mu_0N^2A}{l}$，$l$加倍，$L$减半。
+
+    D 错：通有电流$I$的线圈，磁场里储存着$\frac12LI^2$；电流不变只说明这份能量不增不减。E 错：是$\frac12LI^2$，建立电流时自感电动势从零开始，平均只有一半。
+
+- id: p3
+  tier: medium
+  statement: |
+    螺绕环（toroid）的横截面是矩形：内半径$5.0\,\mathrm{cm}$，外半径$8.0\,\mathrm{cm}$，高$2.0\,\mathrm{cm}$，均匀地绕着$1000$匝导线，里面是空气。求它的自感，以$\mathrm{mH}$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 4*pi*1e-7*1000^2*0.020/(2*pi)*ln(0.080/0.050)*1e3
+    unit: |
+      $\mathrm{mH}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      环里离对称轴$s$处的磁场是$\frac{\mu_0NI}{2\pi s}$（见[安培环路定理](lesson:physics.electromagnetism.ampere-law#thm-toroid)），它随$s$变。
+    - |
+      每一匝的磁通量是$\int_a^b\frac{\mu_0NI}{2\pi s}h\,\dd s=\frac{\mu_0NIh}{2\pi}\ln\frac ba$，$N$匝一共是它的$N$倍。
+    - |
+      $L=\frac{\mu_0N^2h}{2\pi}\ln\frac ba=2\times10^{-7}\times10^6\times0.020\times\ln1.6\,\mathrm H\approx1.88\times10^{-3}\,\mathrm H$。
+  solution: |
+    每一匝的磁通量是$\int_a^b\frac{\mu_0NI}{2\pi s}h\,\dd s=\frac{\mu_0NIh}{2\pi}\ln\frac ba$，$N$匝一共乘以$N$，所以$L=\frac{\mu_0N^2h}{2\pi}\ln\frac ba=2\times10^{-7}\times10^6\times0.020\times\ln1.6\,\mathrm H\approx1.88\,\mathrm{mH}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    磁共振成像用的超导磁体，可以粗略地看成长$2.0\,\mathrm m$、半径$0.40\,\mathrm m$的长螺线管，管内的磁场是$1.5\,\mathrm T$，管外的磁场忽略不计，线圈里的电流是$450\,\mathrm A$。求磁体的自感，以$\mathrm H$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 2*(1.5^2/(2*4*pi*1e-7))*pi*0.40^2*2.0/450^2
+    unit: |
+      $\mathrm H$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先求磁场储存的能量：能量密度$\frac{B^2}{2\mu_0}$乘以管里的体积。
+    - |
+      $\frac{B^2}{2\mu_0}\approx8.95\times10^5\,\mathrm{J/m^3}$，体积$\pi\times0.40^2\times2.0\,\mathrm{m^3}\approx1.01\,\mathrm{m^3}$，能量约$9.0\times10^5\,\mathrm J$。
+    - |
+      由$U=\frac12LI^2$，$L=\frac{2U}{I^2}\approx\frac{1.8\times10^6}{450^2}\,\mathrm H\approx8.89\,\mathrm H$。
+  solution: |
+    能量$U=\frac{B^2}{2\mu_0}\cdot\pi r^2l=\frac{1.5^2}{2\times4\pi\times10^{-7}}\times\pi\times0.40^2\times2.0\,\mathrm J\approx9.0\times10^5\,\mathrm J$，相当于一辆小汽车以每小时一百多千米行驶的动能。$L=\frac{2U}{I^2}\approx8.89\,\mathrm H$。
+
+    这么大的能量储存在磁场里，超导线圈一旦局部失去超导性，电流要在很短的时间里经过电阻衰减，能量变成热，所以这类磁体都有专门的保护电路。
+
+- id: p5
+  tier: hard
+  statement: |
+    半径为$R$的大圆线圈 1 和半径为$r$的小圆线圈 2 同轴，相距$z$，$r\ll R$。
+
+    （1）给线圈 1 通电流$I_1$，求穿过线圈 2 的磁通量和互感。（2）给线圈 2 通电流$I_2$，把它看成磁偶极子（magnetic dipole），求它的磁场穿过线圈 1 的磁通量。（3）比较两个结果。
+  hints:
+    - |
+      （1）线圈 2 很小，它所在处线圈 1 的磁场近似等于轴上的值$\frac{\mu_0I_1R^2}{2(R^2+z^2)^{3/2}}$（见[毕奥-萨伐尔定律](lesson:physics.electromagnetism.biot-savart#thm-loop-axis)）。
+    - |
+      （2）线圈 2 的磁矩（magnetic dipole moment）$m=I_2\pi r^2$，磁矢势$\frac{\mu_0}{4\pi}\frac{m\sin\theta}{\rho^2}\uv\psi$，$\rho$是到线圈 2 中心的距离；穿过线圈 1 的磁通量等于磁矢势沿线圈 1 的环量。线圈 1 上$\rho=\sqrt{R^2+z^2}$，$\sin\theta=\frac{R}{\sqrt{R^2+z^2}}$。
+    - |
+      （1）$M=\frac{\mu_0\pi R^2r^2}{2(R^2+z^2)^{3/2}}$；（2）$\Phi_{12}=2\pi R\cdot\frac{\mu_0I_2\pi r^2}{4\pi}\frac{R}{(R^2+z^2)^{3/2}}$，除以$I_2$得到同一个$M$。
+  reference: |
+    （1）$\Phi_{21}\approx\pi r^2\cdot\frac{\mu_0I_1R^2}{2(R^2+z^2)^{3/2}}$，$M_{21}=\frac{\mu_0\pi R^2r^2}{2(R^2+z^2)^{3/2}}$。
+
+    （2）线圈 2 是磁矩$m=I_2\pi r^2$的磁偶极子，磁矢势$\vb A=\frac{\mu_0}{4\pi}\frac{m\sin\theta}{\rho^2}\uv\psi$（见[磁偶极子](lesson:physics.electromagnetism.magnetic-dipole#def-magnetic-dipole)）。线圈 1 上各点到线圈 2 中心的距离都是$\rho=\sqrt{R^2+z^2}$，$\sin\theta=\frac{R}{\rho}$，$\vb A$沿着线圈 1 的方向，大小处处相同。所以$\Phi_{12}=\oint_1\vb A\cdot\dd\vb l=2\pi R\cdot\frac{\mu_0I_2\pi r^2}{4\pi}\cdot\frac{R}{(R^2+z^2)^{3/2}}=\frac{\mu_0\pi R^2r^2}{2(R^2+z^2)^{3/2}}I_2$。
+
+    （3）$M_{12}=M_{21}$。第一种算法用的是大线圈在小线圈处的磁场，第二种用的是小线圈的磁场在大线圈上的磁矢势，两者毫不相干，结果却一样，正是诺伊曼公式的对称性。直接用小线圈的磁场在大圆盘上积分算$\Phi_{12}$也可以，只是要积分，比用磁矢势麻烦得多。
+
+- id: p6
+  tier: hard
+  statement: |
+    同轴电缆的内导体是半径为$a$的实心圆柱，电流$I$均匀分布在它的横截面上；外导体是半径为$b$的薄壁圆筒，带着反向的电流$I$。
+
+    （1）求各处的磁场。（2）用磁场的能量求长为$l$的一段电缆的自感。（3）和例 1 的薄壁内导体比较，多出来的一项从哪里来？
+  hints:
+    - |
+      $s<a$时穿过半径为$s$的圆的电流是$I\frac{s^2}{a^2}$，$B=\frac{\mu_0Is}{2\pi a^2}$；$a<s<b$时$B=\frac{\mu_0I}{2\pi s}$；$s>b$时$B=0$。
+    - |
+      $U=\int\frac{B^2}{2\mu_0}\dd V$，分成内导体里和两个导体之间两部分，体积元是$2\pi sl\,\dd s$。
+    - |
+      内导体里的能量是$\frac{\mu_0I^2l}{16\pi}$，所以$L=\frac{\mu_0l}{2\pi}\Bigl(\frac14+\ln\frac ba\Bigr)$；多出的$\frac14$来自导体内部的磁场。
+  reference: |
+    （1）由安培环路定理（Ampère's circuital law），$s<a$时$B=\frac{\mu_0Is}{2\pi a^2}$，$a<s<b$时$B=\frac{\mu_0I}{2\pi s}$，$s>b$时穿过的电流一正一负，$B=0$；方向都沿$\uv\psi$。
+
+    （2）内导体里：$\int_0^a\frac{1}{2\mu_0}\Bigl(\frac{\mu_0Is}{2\pi a^2}\Bigr)^2 2\pi sl\,\dd s=\frac{\mu_0I^2l}{4\pi a^4}\int_0^as^3\,\dd s=\frac{\mu_0I^2l}{16\pi}$。两个导体之间和例 1 一样，是$\frac{\mu_0I^2l}{4\pi}\ln\frac ba$。总能量$U=\frac{\mu_0I^2l}{4\pi}\Bigl(\frac14+\ln\frac ba\Bigr)$，令它等于$\frac12LI^2$，$L=\frac{\mu_0l}{2\pi}\Bigl(\frac14+\ln\frac ba\Bigr)$。
+
+    （3）实心的内导体里也有磁场，储存着能量$\frac{\mu_0I^2l}{16\pi}$，和导体的粗细无关，对应自感里多出的$\frac{\mu_0l}{8\pi}$（每单位长度$0.05\,\mu\mathrm H/\mathrm m$）。这时用「磁通量」算自感就不方便了：内导体里的磁场只包住一部分电流，「穿过电路的磁通量」说不清楚，用能量定义自感最干净。
+
+- id: p7
+  tier: thinking
+  statement: |
+    1832 年，亨利注意到：线圈很多的电路在断开的一瞬间，开关处会出现很亮的火花，电路里的电池却只有几伏。
+
+    （1）为什么断开电路会产生很高的电动势？（2）火花放出的能量从哪里来？（3）怎样避免它烧坏开关？汽车发动机的点火线圈又是怎样利用这个现象的？
+  hints:
+    - |
+      断开时电流在极短的时间里降到零，$\dv It$很大，自感电动势$-L\dv It$也很大。
+    - |
+      电流为$I$时线圈的磁场里储存着$\frac12LI^2$；电流突然减小，这些能量要有地方去。
+    - |
+      在线圈两端并联一个电阻或二极管，给电流留一条慢慢衰减的路；点火线圈利用断开初级电流时的高电动势，通过互感在匝数多的次级线圈里得到上万伏的电压。
+  reference: |
+    （1）电流不能在线圈里突然变化：断开开关时电流要在极短的时间里从$I$降到零，自感电动势$-L\dv It$方向和电流相同、数值非常大，可以远远超过电池的电动势。这个电动势加在断开的开关两端，把空气击穿，形成火花。
+
+    （2）电流为$I$时线圈的磁场里储存着$\frac12LI^2$。断开时电流迅速减小，这份能量通过火花放出，变成光和热，烧蚀开关的触点。
+
+    （3）在线圈两端并联一个电阻（或者反向接一个二极管），断开时电流可以经过它继续流动、按时间常数（time constant）慢慢衰减，能量在电阻上变成热，开关两端不会出现高电动势；继电器、电动机的线圈常这样保护。汽车的点火线圈反过来利用它：初级线圈的电流被突然切断，初级里产生很高的电动势，再通过互感在匝数多得多的次级线圈里得到上万伏的电压，在火花塞上跳出火花，点燃汽油和空气的混合气。
+
+- id: p8
+  tier: thinking
+  statement: |
+    电容（capacitance）为$C$的电容器充电到$Q_0$，接到自感为$L$的线圈两端（电路的电阻忽略不计）。
+
+    （1）电容器放电后，电流会立刻停下来吗？能量怎样在电容器和线圈之间转移？（2）不解方程，用量纲估计振荡的角频率由什么决定。（3）这和弹簧振子有怎样的对应？
+  hints:
+    - |
+      电容器放完电时电流最大，线圈的磁场里储存着全部能量，自感电动势要阻碍电流减小。
+    - |
+      $L$的单位是$\mathrm{V\,s/A}$，$C$的单位是$\mathrm{A\,s/V}$，$LC$的单位是什么？
+    - |
+      $\sqrt{LC}$的单位是秒，角频率是$\frac{1}{\sqrt{LC}}$的量级；$L$对应质量，$\frac1C$对应劲度系数，电荷$Q$对应位移，电流对应速度。
+  reference: |
+    （1）不会。电容器放电时电流增大，电场的能量$\frac{Q^2}{2C}$变成线圈磁场的能量$\frac12LI^2$；电容器放完电时电流最大，能量全在磁场里。这时自感电动势阻碍电流减小，电流继续流，给电容器反向充电，能量又回到电场里。如此往复，电荷在两个极板之间来回振荡，总能量$\frac{Q^2}{2C}+\frac12LI^2$保持不变。
+
+    （2）$LC$的单位是$\frac{\mathrm{V\,s}}{\mathrm A}\cdot\frac{\mathrm{A\,s}}{\mathrm V}=\mathrm s^2$，能由$L$、$C$构成的时间只有$\sqrt{LC}$（乘一个数），所以角频率是$\frac{1}{\sqrt{LC}}$的量级。精确地解方程，正好是$\omega_0=\frac{1}{\sqrt{LC}}$（见[交流电路与阻抗](lesson:physics.electromagnetism.ac-circuits)）。
+
+    （3）回路定律给出$L\dv{^2Q}{t^2}+\frac QC=0$，和弹簧振子$m\ddot x+kx=0$一模一样：$L$对应质量（电流的「惯性」），$\frac1C$对应劲度系数，$Q$对应位移，电流$I=\dv Qt$对应速度；电场的能量对应弹性势能，磁场的能量对应动能。电路里的电阻对应阻尼，所以真实的电路里振荡会慢慢衰减。

@@ -57,7 +57,7 @@ $$
 ::anchor{id="def-minkowski-metric"}
 对角矩阵$\eta=\mathrm{diag}(1,-1,-1,-1)$，即$\eta_{00}=1$、$\eta_{11}=\eta_{22}=\eta_{33}=-1$、其余$\eta_{\mu\nu}=0$，叫作:term[闵可夫斯基度规]{id="physics.special-relativity.minkowski-metric"}（Minkowski metric）；两个:term[四维矢量]{id="physics.special-relativity.four-vector"}的内积规定为$A\cdot B=\eta_{\mu\nu}A^\mu B^\nu=A^0B^0-A^1B^1-A^2B^2-A^3B^3$。
 
-为什么这样定义：$\Delta s^2=\eta_{\mu\nu}\Delta x^\mu\Delta x^\nu=\Delta x\cdot\Delta x$，间隔就是坐标差和自己的内积，正像平面上距离的平方是位移和自己的点积。这个二次型有一个正项、三个负项，号差（signature）是$(+,-,-,-)$；按惯性定律（Sylvester's law of inertia），无论怎样线性换元，正项、负项的个数都不变，所以时间和空间的差别不是坐标取法造成的。边界情况：$A\cdot A$可以是负数或零，「长度的平方」不一定是正的；$\eta$不是正定的，平面上的一些不等式在时空里要反过来（见 p6）。
+为什么这样定义：$\Delta s^2=\eta_{\mu\nu}\Delta x^\mu\Delta x^\nu=\Delta x\cdot\Delta x$，间隔就是坐标差和自己的内积，正像平面上距离的平方是位移和自己的点积。这个二次型有一个正项、三个负项，号差（signature）是$(+,-,-,-)$；按惯性定理（Sylvester's law of inertia），无论怎样线性换元，正项、负项的个数都不变，所以时间和空间的差别不是坐标取法造成的。边界情况：$A\cdot A$可以是负数或零，「长度的平方」不一定是正的；$\eta$不是正定的，平面上的一些不等式在时空里要反过来（见 p6）。
 
 ::anchor{id="thm-metric-preserved"}
 定理（:term[洛伦兹变换]{id="physics.special-relativity.lorentz-transformation"}保持度规）：线性变换$\Lambda$保持时空间隔，当且仅当$\Lambda\T\eta\Lambda=\eta$，用指标写是$\Lambda^\rho{}_\mu\,\eta_{\rho\sigma}\Lambda^\sigma{}_\nu=\eta_{\mu\nu}$。

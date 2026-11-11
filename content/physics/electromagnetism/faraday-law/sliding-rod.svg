@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 290" width="540" height="290" font-size="14">
+  <!-- 平行导轨上向右滑动的金属杆。磁场 B 垂直纸面向外（⊙）；杆里的正电荷受磁力 q v × B 沿杆向下，电流在回路里顺时针流动；杆受的磁力 I L × B 向左，阻碍杆的运动。 -->
+  <circle cx="20.0" cy="34.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="20.0" cy="34.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="20.0" cy="88.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="20.0" cy="88.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="20.0" cy="142.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="20.0" cy="142.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="20.0" cy="196.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="20.0" cy="196.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="20.0" cy="250.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="20.0" cy="250.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="76.0" cy="34.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="76.0" cy="34.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="76.0" cy="250.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="76.0" cy="250.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="132.0" cy="34.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="132.0" cy="34.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="132.0" cy="88.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="132.0" cy="88.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="132.0" cy="142.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="132.0" cy="142.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="132.0" cy="196.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="132.0" cy="196.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="132.0" cy="250.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="132.0" cy="250.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="188.0" cy="34.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="188.0" cy="34.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="188.0" cy="88.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="188.0" cy="88.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="188.0" cy="142.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="188.0" cy="142.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="188.0" cy="196.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="188.0" cy="196.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="188.0" cy="250.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="188.0" cy="250.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="244.0" cy="34.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="244.0" cy="34.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="244.0" cy="88.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="244.0" cy="88.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="244.0" cy="142.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="244.0" cy="142.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="244.0" cy="250.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="244.0" cy="250.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="300.0" cy="34.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="300.0" cy="34.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="300.0" cy="88.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="300.0" cy="88.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="300.0" cy="142.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="300.0" cy="142.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="300.0" cy="250.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="300.0" cy="250.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="356.0" cy="34.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="356.0" cy="34.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="356.0" cy="88.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="356.0" cy="88.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="356.0" cy="196.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="356.0" cy="196.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="356.0" cy="250.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="356.0" cy="250.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="412.0" cy="34.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="412.0" cy="34.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="412.0" cy="88.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="412.0" cy="88.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="412.0" cy="142.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="412.0" cy="142.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="412.0" cy="196.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="412.0" cy="196.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="412.0" cy="250.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="412.0" cy="250.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="468.0" cy="34.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="468.0" cy="34.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="468.0" cy="88.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="468.0" cy="88.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="468.0" cy="142.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="468.0" cy="142.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="468.0" cy="196.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="468.0" cy="196.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="468.0" cy="250.0" r="5.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" />
+  <circle cx="468.0" cy="250.0" r="1.5" style="fill: var(--muted, #6b7280)" />
+  <text x="510.0" y="282.0" style="fill: var(--muted, #6b7280)" text-anchor="end"><tspan font-style="italic" font-weight="bold">B</tspan></text>
+  <line x1="70.0" y1="62.0" x2="490.0" y2="62.0" style="stroke: currentColor" stroke-width="2.4" />
+  <line x1="70.0" y1="222.0" x2="490.0" y2="222.0" style="stroke: currentColor" stroke-width="2.4" />
+  <path d="M 70.0 62.0 L 70.0 106.0 L 80.0 110.5 L 60.0 119.5 L 80.0 128.5 L 60.0 137.5 L 80.0 146.5 L 60.0 155.5 L 80.0 164.5 L 60.0 173.5 L 70.0 178.0 L 70.0 222.0" style="stroke: currentColor" fill="none" stroke-width="2.0" stroke-linejoin="round" />
+  <text x="52.0" y="147.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">R</tspan></text>
+  <line x1="320.0" y1="50.0" x2="320.0" y2="234.0" style="stroke: currentColor" stroke-width="5.0" />
+  <path d="M 184.0 62.0 L 173.0 66.9 L 173.0 57.1 Z" style="fill: var(--accent, #2563eb)" />
+  <path d="M 176.0 222.0 L 187.0 217.1 L 187.0 226.9 Z" style="fill: var(--accent, #2563eb)" />
+  <path d="M 70.0 196.0 L 74.9 207.0 L 65.1 207.0 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="342.0" y1="136.0" x2="342.0" y2="164.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.8" />
+  <path d="M 342.0 172.0 L 337.9 162.9 L 346.1 162.9 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="350.0" y="160.0" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">I</tspan></text>
+  <text x="176.0" y="50.0" style="fill: var(--accent, #2563eb)" text-anchor="middle"><tspan font-style="italic">I</tspan></text>
+  <line x1="332.0" y1="106.0" x2="394.0" y2="106.0" style="stroke: currentColor" stroke-width="2.0" />
+  <path d="M 402.0 106.0 L 392.9 110.1 L 392.9 101.9 Z" style="fill: currentColor" />
+  <text x="408.0" y="111.0" fill="currentColor"><tspan font-style="italic" font-weight="bold">v</tspan></text>
+  <line x1="308.0" y1="186.0" x2="252.0" y2="186.0" style="stroke: var(--good, #059669)" stroke-width="2.0" />
+  <path d="M 244.0 186.0 L 253.1 181.9 L 253.1 190.1 Z" style="fill: var(--good, #059669)" />
+  <text x="238.0" y="191.0" style="fill: var(--good, #059669)" text-anchor="end"><tspan font-style="italic" font-weight="bold">F</tspan></text>
+  <text x="308.0" y="214.0" style="fill: var(--muted, #6b7280)" text-anchor="end"><tspan font-style="italic">L</tspan></text>
+</svg>

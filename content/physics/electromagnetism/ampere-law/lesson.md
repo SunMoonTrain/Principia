@@ -35,7 +35,7 @@ status: reviewed
 ::anchor{id="def-amperian-loop"}
 用安培环路定理求磁场时选的回路，叫作安培回路（Amperian loop），作用和:term[高斯面]{id="physics.electromagnetism.gaussian-surface"}（Gaussian surface）一样：电流分布有对称性时，选一个磁场沿着它大小不变、方向和它平行或垂直的回路，积分就变成乘法。
 
-边界情况：定理只对恒定电流成立。给:term[电容器]{id="physics.electromagnetism.capacitor"}（capacitor）充电时，用同一个回路，曲面穿过导线时$I_{\text{穿}}=I$，从两块极板之间穿过时$I_{\text{穿}}=0$，两种说法矛盾，要加上麦克斯韦的位移电流（displacement current）才能统一（见[位移电流与麦克斯韦方程组](lesson:physics.electromagnetism.maxwell-equations)）。
+边界情况：定理只对恒定电流成立。给:term[电容器]{id="physics.electromagnetism.capacitor"}（capacitor）充电时，用同一个回路，曲面穿过导线时$I_{\text{穿}}=I$，从两块极板之间穿过时$I_{\text{穿}}=0$，两种说法矛盾，要加上麦克斯韦的:term[位移电流]{id="physics.electromagnetism.displacement-current"}（displacement current）才能统一（见[位移电流与麦克斯韦方程组](lesson:physics.electromagnetism.maxwell-equations)）。
 
 ### 静磁场的散度和旋度
 
@@ -49,7 +49,7 @@ status: reviewed
 ::anchor{id="def-magnetic-flux"}
 磁场穿过一个曲面$S$的通量$\Phi=\int_S\vb B\cdot\dd\vb a$叫作:term[磁通量]{id="physics.electromagnetism.magnetic-flux"}（magnetic flux），单位是韦伯（weber），记作$\mathrm{Wb}$，$1\,\mathrm{Wb}=1\,\mathrm{T\,m^2}$。由$\divg\vb B=0$和高斯公式（divergence theorem），穿过任何闭合曲面的磁通量都是零。
 
-为什么这样定义：穿过闭合曲面的磁通量为零，说的是:term[磁场线]{id="physics.electromagnetism.magnetic-field-line"}从哪里穿进去，就会从哪里穿出来，不会在曲面里开始或终止。所以穿过以同一条闭合曲线为边界的任意两个曲面的磁通量相同，可以说「穿过这条曲线的磁通量」；讲电磁感应时要用到这一点（见[法拉第电磁感应定律](lesson:physics.electromagnetism.faraday-law)）。边界情况：磁铁里面也有磁场，磁场线在磁铁外从 N 极到 S 极，在里面从 S 极回到 N 极。
+为什么这样定义：穿过闭合曲面的磁通量为零，说的是:term[磁场线]{id="physics.electromagnetism.magnetic-field-line"}从哪里穿进去，就会从哪里穿出来，不会在曲面里开始或终止。所以穿过以同一条闭合曲线为边界的任意两个曲面的磁通量相同，可以说「穿过这条曲线的磁通量」；讲:term[电磁感应]{id="physics.electromagnetism.electromagnetic-induction"}（electromagnetic induction）时要用到这一点（见[法拉第电磁感应定律](lesson:physics.electromagnetism.faraday-law)）。边界情况：磁铁里面也有磁场，磁场线在磁铁外从 N 极到 S 极，在里面从 S 极回到 N 极。
 
 ::anchor{id="def-monopole"}
 能单独发出或吸收磁场线的「磁荷」（magnetic charge），叫作:term[磁单极子]{id="physics.electromagnetism.magnetic-monopole"}（magnetic monopole）。$\divg\vb B=0$说的正是没有磁单极子：把一根磁铁截成两段，得到的是两根各有 N 极和 S 极的短磁铁，而不是单独的 N 极和 S 极。
@@ -69,7 +69,7 @@ status: reviewed
 证明思路：把螺线管看成许多紧挨着的圆形电流，它们绕轴转动、沿轴平移都不变，由毕奥-萨伐尔定律可以看出磁场沿轴，大小只和$s$有关。取一个矩形安培回路，两条边平行于轴、长为$l$：两条边都在管外时，回路里没有电流，两边的磁场相等，而离管很远处磁场趋于零，所以管外处处为零；一条边在管内、一条在管外时，穿过的电流是$nlI$，$Bl=\mu_0nlI$。
 
 ::anchor{id="thm-toroid"}
-定理（螺绕环的磁场）：$N$匝导线均匀地绕在一个环上，做成螺绕环（toroid），通有电流$I$。环内离对称轴$s$处的磁场沿环的方向，大小是$\frac{\mu_0NI}{2\pi s}$；环外的磁场为零。
+定理（:term[螺绕环]{id="physics.electromagnetism.toroid"}（toroid）的磁场）：$N$匝导线均匀地绕在一个环上，做成螺绕环，通有电流$I$。环内离对称轴$s$处的磁场沿环的方向，大小是$\frac{\mu_0NI}{2\pi s}$；环外的磁场为零。
 
 证明思路：取以对称轴为心、半径为$s$的圆作安培回路。在环内，回路穿过$N$匝导线，每匝电流$I$，所以$2\pi sB=\mu_0NI$；在环外（$s$比环小或比环大），穿过回路的电流一进一出，代数和为零。环的截面比$s$小得多时，环内的磁场近似均匀，$B\approx\mu_0nI$，$n=\frac{N}{2\pi s}$，就像弯成环的螺线管。
 

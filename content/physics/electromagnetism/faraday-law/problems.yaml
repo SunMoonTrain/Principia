@@ -1,0 +1,168 @@
+- id: p1
+  tier: easy
+  statement: |
+    一个$200$匝的线圈面积是$5.0\,\mathrm{cm^2}$，放在垂直于线圈平面的匀强磁场里。磁场在$0.050\,\mathrm s$内从零均匀地增加到$0.40\,\mathrm T$，求这段时间里线圈的感应电动势的大小，以$\mathrm V$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 200*5.0e-4*0.40/0.050
+    unit: |
+      $\mathrm V$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $N$匝线圈的感应电动势是$-N\dv{\Phi}{t}$；磁场垂直于线圈平面，每一匝的磁通量是$BA$。
+    - |
+      磁场均匀增加，$\dv{B}{t}=\frac{0.40\,\mathrm T}{0.050\,\mathrm s}=8.0\,\mathrm{T/s}$。
+    - |
+      $|\mathcal E|=NA\dv{B}{t}=200\times5.0\times10^{-4}\times8.0\,\mathrm V=0.800\,\mathrm V$。
+  solution: |
+    $|\mathcal E|=N\dv{\Phi}{t}=NA\dv{B}{t}=200\times5.0\times10^{-4}\,\mathrm{m^2}\times8.0\,\mathrm{T/s}=0.800\,\mathrm V$。磁场停止变化以后，不管它多强，电动势都是零。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        线圈在匀强磁场里平移（不转动、不变形），线圈里就有感应电流
+      - |
+        条形磁铁的 N 极朝下，插进水平放着的线圈，从上往下看，线圈里的感应电流沿逆时针方向
+      - |
+        铜环套在竖直放着的条形磁铁上方，由静止释放，在落到磁铁中部之前，它受的磁力向上
+      - |
+        发电机的线圈转到穿过它的磁通量为零的那一刻，感应电动势也为零
+      - |
+        两个同轴放着的线圈，一个突然接通电流时，另一个闭合的线圈被推开
+    value: [2, 3, 5]
+  hints:
+    - |
+      先看磁通量怎样变，再用楞次定律：感应电流的磁场阻碍磁通量的变化，也就阻碍磁铁和线圈的相对运动。
+    - |
+      发电机里磁通量按$\cos\omega t$变，电动势按$\sin\omega t$变；方向相反的两个电流互相排斥。
+    - |
+      B、C、E 对；A、D 错。
+  solution: |
+    A 错：匀强磁场里平移，穿过线圈的磁通量不变，没有感应电动势。B 对：N 极下面的磁场向下，向下的磁通量增加，感应电流的磁场要向上，从上往下看是逆时针。C 对：铜环下落时穿过它的磁通量在变，感应电流阻碍铜环和磁铁的相对运动，磁力向上。
+
+    D 错：磁通量$BA\cos\omega t$为零时，它变化得最快，电动势$BA\omega\sin\omega t$的大小最大。E 对：接通时穿过第二个线圈的磁通量增加，它的感应电流和第一个线圈的电流方向相反，互相排斥。
+
+- id: p3
+  tier: medium
+  statement: |
+    两条竖直的平行导轨相距$0.25\,\mathrm m$，上端接着$0.50\,\Omega$的电阻；质量为$0.020\,\mathrm{kg}$的金属杆水平地架在导轨上，可以无摩擦地滑下，匀强磁场$0.80\,\mathrm T$垂直于导轨平面。导轨和杆的电阻不计，取$g=9.8\,\mathrm{m/s^2}$。杆由静止释放，最后匀速下落的速度是多少？以$\mathrm{m/s}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 0.020*9.8*0.50/(0.80^2*0.25^2)
+    unit: |
+      $\mathrm{m/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      速度为$v$时，感应电动势是$BLv$，电流$\frac{BLv}{R}$，杆受的磁力$\frac{B^2L^2v}{R}$，向上。
+    - |
+      匀速时磁力和重力平衡：$\frac{B^2L^2v}{R}=mg$。
+    - |
+      $v=\frac{mgR}{B^2L^2}=\frac{0.020\times9.8\times0.50}{0.80^2\times0.25^2}\,\mathrm{m/s}=2.45\,\mathrm{m/s}$。
+  solution: |
+    速度为$v$时，电动势$BLv$，电流$\frac{BLv}{R}$，磁力$\frac{B^2L^2v}{R}$阻碍下落。速度越大磁力越大，最后磁力等于重力：$v=\frac{mgR}{B^2L^2}=\frac{0.020\times9.8\times0.50}{0.80^2\times0.25^2}\,\mathrm{m/s}=2.45\,\mathrm{m/s}$。这时重力每秒做的功$mgv$全部变成电阻上的焦耳热$\frac{(BLv)^2}{R}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $50$匝、边长$0.20\,\mathrm m\times0.10\,\mathrm m$的矩形线圈在$0.30\,\mathrm T$的匀强磁场里，绕垂直于磁场的轴每分钟转$1500$圈。求感应电动势的峰值，以$\mathrm V$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 50*0.20*0.10*0.30*1500*2*pi/60
+    unit: |
+      $\mathrm V$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      电动势是$NBA\omega\sin\omega t$，峰值是$NBA\omega$。
+    - |
+      每分钟$1500$圈即每秒$25$圈，$\omega=2\pi\times25\,\mathrm{rad/s}=50\pi\,\mathrm{rad/s}$；$A=0.020\,\mathrm{m^2}$。
+    - |
+      $NBA\omega=50\times0.30\times0.020\times50\pi\,\mathrm V\approx47.1\,\mathrm V$。
+  solution: |
+    $\omega=2\pi\times\frac{1500}{60}\,\mathrm{rad/s}=50\pi\,\mathrm{rad/s}$，峰值$NBA\omega=50\times0.30\times0.020\times50\pi\,\mathrm V\approx47.1\,\mathrm V$。转速加倍，峰值和频率都加倍。
+
+- id: p5
+  tier: hard
+  statement: |
+    一根长直导线通有恒定电流（steady current）$I$。一个矩形线圈和导线在同一个平面里，平行于导线的两条边长$a$，垂直于导线的两条边长$b$，近的那条边离导线$s$。线圈以速度$v$沿垂直于导线的方向匀速离开导线。
+
+    （1）用磁通量的变化率求线圈里的感应电动势。（2）不用法拉第定律，直接由各边里电荷受的磁力求电动势，核对（1）。（3）感应电流是什么方向？
+  hints:
+    - |
+      离导线$x$处的磁场是$\frac{\mu_0I}{2\pi x}$，垂直于线圈平面；磁通量是$\int_s^{s+b}\frac{\mu_0Ia}{2\pi x}\dd x=\frac{\mu_0Ia}{2\pi}\ln\frac{s+b}{s}$，$\dv st=v$。
+    - |
+      平行于导线的两条边以$v$运动，单位正电荷受的磁力$vB$沿边的方向，两条边上的磁场不同；垂直于导线的两条边上，$\vb v\times\vb B$垂直于边，不贡献电动势。
+    - |
+      $\mathcal E=\frac{\mu_0Iav}{2\pi}\Bigl(\frac1s-\frac1{s+b}\Bigr)$；线圈远离导线，磁通量减少，感应电流在线圈里的磁场和导线的磁场同向，近的那条边里的电流和导线里的电流同向。
+  reference: |
+    （1）$\Phi=\frac{\mu_0Ia}{2\pi}\ln\frac{s+b}{s}$，$\dv{\Phi}{t}=\frac{\mu_0Ia}{2\pi}\Bigl(\frac{1}{s+b}-\frac1s\Bigr)v$，所以感应电动势的大小是$\frac{\mu_0Iav}{2\pi}\Bigl(\frac1s-\frac1{s+b}\Bigr)=\frac{\mu_0Iabv}{2\pi s(s+b)}$。
+
+    （2）近的那条边上磁场是$\frac{\mu_0I}{2\pi s}$，单位正电荷受的磁力$vB$沿这条边，积分得$\frac{\mu_0Iav}{2\pi s}$；远的那条边上同样方向的力是$\frac{\mu_0Iav}{2\pi(s+b)}$。绕线圈一圈，两条边走的方向相反，电动势是两者之差，和（1）相同。两条垂直于导线的边上，力垂直于边，不做功。
+
+    （3）磁通量在减少，感应电流的磁场要和导线的磁场同向，补上减少的那部分。在线圈围成的面上，导线的磁场和近边里的电流（若与导线同向）产生的磁场方向相同，所以近边里的感应电流和导线里的电流同向，远边里反向。也可以直接看：近边受的力更大，电荷沿近边受力的方向流，这个方向正是$\vb v\times\vb B$，即和导线里的电流同向。
+
+- id: p6
+  tier: hard
+  statement: |
+    水平放着的两条平行导轨相距$L$，左端接电阻$R$，竖直向上的匀强磁场$B$垂直于导轨平面。质量为$m$的金属杆架在导轨上，$t=0$时以速度$v_0$向右滑出，此后不受别的外力，导轨光滑，导轨和杆的电阻不计。
+
+    （1）求杆的速度随时间的变化。（2）杆一共滑出多远？（3）电阻上一共放出多少热？
+  hints:
+    - |
+      速度为$v$时杆受的磁力是$\frac{B^2L^2v}{R}$，和速度反向：$m\dv vt=-\frac{B^2L^2}{R}v$。
+    - |
+      速度的变化率和速度本身成正比，解是$v=v_0e^{-t/\tau}$，$\tau=\frac{mR}{B^2L^2}$；滑出的距离是$\int_0^\infty v\,\dd t$。
+    - |
+      距离是$v_0\tau=\frac{mv_0R}{B^2L^2}$；动能全部变成焦耳热，共$\frac12mv_0^2$。
+  reference: |
+    （1）速度为$v$时，电动势$BLv$，电流$\frac{BLv}{R}$，杆受的磁力大小$\frac{B^2L^2v}{R}$，阻碍运动。由牛顿第二定律$m\dv vt=-\frac{B^2L^2}{R}v$，速度的变化率和速度成正比，$v=v_0e^{-t/\tau}$，$\tau=\frac{mR}{B^2L^2}$，直接求导就能验证。
+
+    （2）$x=\int_0^\infty v_0e^{-t/\tau}\,\dd t=v_0\tau=\frac{mv_0R}{B^2L^2}$。速度只是越来越小，不在有限时间里停下，但滑出的总距离有限。也可以不解方程：$m\,\dd v=-\frac{B^2L^2}{R}v\,\dd t=-\frac{B^2L^2}{R}\dd x$，积分得$mv_0=\frac{B^2L^2}{R}x$。
+
+    （3）电阻上每秒放热$\frac{B^2L^2v^2}{R}$，积分$\int_0^\infty\frac{B^2L^2v_0^2}{R}e^{-2t/\tau}\dd t=\frac{B^2L^2v_0^2}{R}\cdot\frac\tau2=\frac12mv_0^2$，正是开始时的动能。磁场本身不做功，动能经过感应电流全部变成了热；这就是电磁阻尼。
+
+- id: p7
+  tier: thinking
+  statement: |
+    例 2 的法拉第圆盘里，用电刷、转轴和外面的导线组成回路。
+
+    （1）取回路经过盘的那一段为「从轴到电刷的那条半径」，它不动，回路围成的面积不变，穿过它的磁通量也不变，可回路里确实有电动势。这和法拉第定律矛盾吗？（2）应该怎样用法拉第定律？（3）这说明了法拉第定律和洛伦兹力（Lorentz force）之间是什么关系？
+  hints:
+    - |
+      电动势来自盘上运动的电荷受的磁力$q\vb v\times\vb B$；回路里那条不动的半径上，每一刻都是新的铜，里面的电荷在运动。
+    - |
+      法拉第定律里的回路要跟着导体一起运动：取随盘一起转的那条半径，它在$\dd t$里扫过的面积是多少？
+    - |
+      随盘转的半径每秒扫过$\frac12\omega a^2$的面积，$\dv{\Phi}{t}=\frac12B\omega a^2$，和例 2 一致。基本的规律是洛伦兹力（加上变化的磁场产生的电场），磁通量的规则是它们在回路由同一块导体组成时的推论。
+  reference: |
+    （1）矛盾只是表面的。法拉第定律对运动导体的那一半，是由导体里电荷受的磁力推出来的：推导里的回路每一段都随着导体运动。圆盘上不动的那条几何半径不是同一块导体，每一刻经过它的铜都在换，用它算磁通量不对路。
+
+    （2）取随盘一起转的那条半径作回路的一段（另外几段是电刷、导线，不动）。$\dd t$里这条半径转过$\omega\,\dd t$，扫过面积$\frac12a^2\omega\,\dd t$，回路围成的面积增加这么多，$\dv{\Phi}{t}=\frac12B\omega a^2$，电动势就是例 2 的$\frac12B\omega a^2$。
+
+    （3）真正的规律是：电荷受力$q(\vb E+\vb v\times\vb B)$，变化的磁场产生电场（见[感生电场](lesson:physics.electromagnetism.induced-electric-field)）。法拉第的磁通量规则是它们的推论，前提是回路由同一块导体组成、跟着导体运动。也有反过来的例子：两块紧贴的弯曲金属板在磁场里来回摇摆，接触点移动，「回路」包住的磁通量变化很大，却几乎没有电动势，因为电荷本身并没有在磁场里快速运动。
+
+- id: p8
+  tier: thinking
+  statement: |
+    直流电动机的线圈电阻很小。（1）刚接通电源、电动机还没转起来时，电流为什么特别大？（2）转起来以后电流为什么变小？（3）电动机被卡住不转，为什么容易烧坏？
+  hints:
+    - |
+      转动的线圈在磁场里也产生感应电动势（见[电流受到的磁力](lesson:physics.electromagnetism.magnetic-force-on-currents)第 6 题），它的方向和外加的电动势相反。
+    - |
+      电流$I=\frac{\mathcal E-\mathcal E_{\text{感}}}{R}$，$\mathcal E_{\text{感}}$和转速成正比。
+    - |
+      卡住时$\mathcal E_{\text{感}}=0$，电流一直是$\frac{\mathcal E}{R}$，线圈电阻小，焦耳热$I^2R$很大。
+  reference: |
+    （1）没转起来时线圈不动，没有感应电动势，电流是$\frac{\mathcal E}{R}$，线圈电阻小，电流很大，所以大电动机要串电阻或者降压启动。
+
+    （2）线圈转动时切割磁场线（magnetic field line），产生和外加电动势相反的感应电动势$\mathcal E_{\text{感}}$，大小和转速成正比，电流变成$\frac{\mathcal E-\mathcal E_{\text{感}}}{R}$。转速越高电流越小，直到电流产生的力矩刚好带动负载。这时电源输出的功率$\mathcal EI$，一部分$I^2R$变成热，其余$\mathcal E_{\text{感}}I$变成机械功：反向的电动势正是电能变成机械能的地方，和楞次定律、能量守恒一致。
+
+    （3）卡住时转速为零，没有反向的电动势，电流一直停在启动时的大小，电能全部变成线圈里的热，绝缘被烧坏。负载太重、转速降得很低时也一样。
