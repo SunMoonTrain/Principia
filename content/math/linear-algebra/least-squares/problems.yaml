@@ -1,0 +1,123 @@
+- id: p1
+  tier: easy
+  statement: |
+    三次测量同一个量，得到$2$、$3$、$7$。用最小二乘法求这三个方程$c=2$、$c=3$、$c=7$的最小二乘解$\hat c$。
+  answer:
+    type: number
+    value: 4
+  hints:
+    - |
+      这是$A\vb x=\vb b$，$A$是一列三个$1$，$\vb b=(2,3,7)$。
+    - |
+      法方程是$A\T A\hat c=A\T\vb b$，$A\T A=3$，$A\T\vb b=2+3+7$。
+    - |
+      $3\hat c=12$，$\hat c=4$：最小二乘解就是平均值。
+  solution: |
+    法方程$3\hat c=12$，$\hat c=4$，填 `4`。
+
+- id: p2
+  tier: easy
+  statement: |
+    $A=\begin{pmatrix}1&1\\1&2\\1&3\end{pmatrix}$。求$A\T A$，按行填写四个元素。
+  answer:
+    type: tuple
+    value: [3, 6, 6, 14]
+  hints:
+    - |
+      $A\T A$的第$i$行第$j$列，是$A$的第$i$列和第$j$列的点积。
+    - |
+      第一列是$(1,1,1)$，第二列是$(1,2,3)$。
+    - |
+      $1+1+1=3$，$1+2+3=6$，$1+4+9=14$，$A\T A=\begin{pmatrix}3&6\\6&14\end{pmatrix}$。
+  solution: |
+    $A\T A=\begin{pmatrix}3&6\\6&14\end{pmatrix}$，填 `3, 6, 6, 14`。
+
+- id: p3
+  tier: medium
+  statement: |
+    求数据$(0,0)$、$(1,1)$、$(2,1)$的拟合直线$y=c_0+c_1t$，按顺序填写$c_0$、$c_1$。
+  answer:
+    type: tuple
+    value: [1/6, 1/2]
+  hints:
+    - |
+      法方程是$\begin{pmatrix}m&\sum t_i\\\sum t_i&\sum t_i^2\end{pmatrix}\begin{pmatrix}c_0\\c_1\end{pmatrix}=\begin{pmatrix}\sum y_i\\\sum t_iy_i\end{pmatrix}$。
+    - |
+      $m=3$，$\sum t_i=3$，$\sum t_i^2=5$，$\sum y_i=2$，$\sum t_iy_i=3$。
+    - |
+      $3c_0+3c_1=2$，$3c_0+5c_1=3$，相减得$2c_1=1$，$c_1=\frac12$，$c_0=\frac16$。验算：残差$\bigl(-\frac16,\frac13,-\frac16\bigr)$的和是$0$。
+  solution: |
+    解$3c_0+3c_1=2$、$3c_0+5c_1=3$，得$c_0=\frac16$、$c_1=\frac12$，填 `1/6, 1/2`。
+
+- id: p4
+  tier: medium
+  statement: |
+    方程组$x+y=2$、$x-y=0$、$2x+y=4$无解。求它的最小二乘解，按顺序填写$x$、$y$。
+  answer:
+    type: tuple
+    value: [9/7, 8/7]
+  hints:
+    - |
+      $A=\begin{pmatrix}1&1\\1&-1\\2&1\end{pmatrix}$，$\vb b=(2,0,4)$，写出法方程。
+    - |
+      $A\T A=\begin{pmatrix}6&2\\2&3\end{pmatrix}$，$A\T\vb b=(10,6)$。
+    - |
+      $6x+2y=10$，$2x+3y=6$，解得$y=\frac87$、$x=\frac97$。验算：残差$\vb b-A\hat{\vb x}=\bigl(-\frac37,-\frac17,\frac27\bigr)$，和$A$的两列点积都是$0$。
+  solution: |
+    法方程$6x+2y=10$、$2x+3y=6$，解得$\bigl(\frac97,\frac87\bigr)$，填 `9/7, 8/7`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设数据$(t_1,y_1),\dots,(t_m,y_m)$的$t_i$不全相同，拟合直线是$y=c_0+c_1t$。证明残差之和$\sum r_i=0$，并且拟合直线经过点$(\bar t,\bar y)$，其中$\bar t$、$\bar y$是$t_i$、$y_i$的平均值。
+  hints:
+    - |
+      残差和$A$的每一列正交；$A$的第一列全是$1$。
+    - |
+      $\sum r_i=\sum\bigl(y_i-c_0-c_1t_i\bigr)$，除以$m$看看。
+    - |
+      由法方程，$\vb r$和第一列$(1,\dots,1)$的点积是$0$，即$\sum r_i=0$。展开得$\sum y_i-mc_0-c_1\sum t_i=0$，除以$m$得$\bar y=c_0+c_1\bar t$，所以$(\bar t,\bar y)$在拟合直线上。
+  reference: |
+    残差与$A$的第一列正交，$\sum r_i=0$；即$\sum y_i=mc_0+c_1\sum t_i$，除以$m$得$\bar y=c_0+c_1\bar t$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$A$是$m\times n$矩阵。证明$A\T A$和$A$的零空间（null space）相同，即$N(A\T A)=N(A)$；并由此说明：$A\T A$可逆，当且仅当$A$的各列线性无关。
+  hints:
+    - |
+      $N(A)\subseteq N(A\T A)$是显然的。反过来，若$A\T A\vb x=\vb 0$，两边左乘$\vb x\T$。
+    - |
+      $\vb x\T A\T A\vb x=\|A\vb x\|^2$。
+    - |
+      $A\vb x=\vb 0$时$A\T A\vb x=\vb 0$。反过来$A\T A\vb x=\vb 0$时$\|A\vb x\|^2=\vb x\T A\T A\vb x=0$，所以$A\vb x=\vb 0$。于是$N(A\T A)=N(A)$。$A\T A$是方阵，可逆当且仅当$N(A\T A)=\{\vb 0\}$，即$N(A)=\{\vb 0\}$，即$A$的各列线性无关。
+  reference: |
+    $A\vb x=\vb 0\Rightarrow A\T A\vb x=\vb 0$；$A\T A\vb x=\vb 0\Rightarrow\|A\vb x\|^2=\vb x\T A\T A\vb x=0\Rightarrow A\vb x=\vb 0$。方阵$A\T A$可逆当且仅当零空间只有$\vb 0$，即$A$的各列线性无关。
+
+- id: p7
+  tier: thinking
+  statement: |
+    数据大致按指数规律变化，满足$y=ce^{kt}$，它对$c$、$k$不是线性的。取对数得$\ln y=\ln c+kt$，用$(t_i,\ln y_i)$拟合直线，再换回$c$、$k$。这样得到的曲线，是不是让$\sum\bigl(y_i-ce^{kt_i}\bigr)^2$最小的那条？差别在哪里？
+  hints:
+    - |
+      取对数以后，最小化的是$\sum\bigl(\ln y_i-\ln c-kt_i\bigr)^2$，比较它和原来的平方和。
+    - |
+      $\ln y_i-\ln(ce^{kt_i})$约等于$\frac{y_i-ce^{kt_i}}{y_i}$。
+    - |
+      不是同一条：取对数后最小化的是相对误差的平方和（误差除以$y_i$），原来要最小化的是绝对误差的平方和。$y_i$大的点，同样的绝对误差在对数里显得小，权重被压低了。取对数把问题变成了线性的、能用法方程一步解出，代价是换了一种衡量误差的方式；要最小化原来的平方和，得用别的办法（例如以对数拟合的结果为起点，再逐步调整）。
+  reference: |
+    不一定是。对数拟合最小化$\sum(\ln y_i-\ln c-kt_i)^2$，近似于相对误差的平方和，和原来的绝对误差平方和权重不同；好处是变成了线性问题。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$A$的各列线性无关，$P=A(A\T A)^{-1}A\T$。$P\vb b$是什么？验证$P^2=P$、$P\T=P$。$A$是可逆方阵时，$P$是什么？
+  hints:
+    - |
+      $P\vb b=A\hat{\vb x}$，$\hat{\vb x}$是最小二乘解。
+    - |
+      $P^2=A(A\T A)^{-1}A\T A(A\T A)^{-1}A\T$，中间消掉一对。转置（transpose）用$(XYZ)\T=Z\T Y\T X\T$和$(A\T A)\T=A\T A$。
+    - |
+      $P\vb b=A\hat{\vb x}=\operatorname{proj}_{C(A)}\vb b$：$P$是向列空间作正交投影的矩阵。$P^2=A(A\T A)^{-1}(A\T A)(A\T A)^{-1}A\T=P$，投影两次和一次一样；$P\T=A\bigl((A\T A)^{-1}\bigr)\T A\T=P$。$A$可逆时，$P=AA^{-1}(A\T)^{-1}A\T=I$：列空间是整个$\R^n$，每个向量的投影是它自己。
+  reference: |
+    $P\vb b=\operatorname{proj}_{C(A)}\vb b$。$P^2=P$（中间$A\T A$与逆相消），$P\T=P$（$(A\T A)^{-1}$对称）。$A$可逆时$P=I$。

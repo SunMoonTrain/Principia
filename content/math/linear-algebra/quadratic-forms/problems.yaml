@@ -1,0 +1,135 @@
+- id: p1
+  tier: easy
+  statement: |
+    写出二次型$Q(x,y)=3x^2-6xy+2y^2$的矩阵（对称矩阵），按行填写四个元素。
+  answer:
+    type: tuple
+    value: [3, -3, -3, 2]
+  hints:
+    - |
+      $Q=\begin{pmatrix}x&y\end{pmatrix}A\begin{pmatrix}x\\y\end{pmatrix}=a_{11}x^2+(a_{12}+a_{21})xy+a_{22}y^2$。
+    - |
+      交叉项$-6xy$的系数平分给$a_{12}$、$a_{21}$。
+    - |
+      $A=\begin{pmatrix}3&-3\\-3&2\end{pmatrix}$。
+  solution: |
+    $A=\begin{pmatrix}3&-3\\-3&2\end{pmatrix}$，填 `3, -3, -3, 2`。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些对称矩阵是正定的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\begin{pmatrix}2&1\\1&3\end{pmatrix}$
+      - |
+        $\begin{pmatrix}2&3\\3&4\end{pmatrix}$
+      - |
+        $\begin{pmatrix}-1&0\\0&-2\end{pmatrix}$
+      - |
+        $\begin{pmatrix}4&-2\\-2&2\end{pmatrix}$
+      - |
+        $\begin{pmatrix}1&1\\1&1\end{pmatrix}$
+    value: [1, 4]
+  hints:
+    - |
+      二阶对称矩阵$\begin{pmatrix}a&b\\b&c\end{pmatrix}$正定，当且仅当$a>0$、$ac-b^2>0$。
+    - |
+      逐个算$a$和$ac-b^2$。
+    - |
+      选项 A：$2>0$，$6-1=5>0$，正定；选项 D：$4>0$，$8-4=4>0$，也正定。选项 B 的主对角元都为正，$8-9<0$，仍然不定，$(3,-2)$处为$-2$；选项 C 的$a<0$。选项 E 的$1-1=0$，只是半正定，$(1,-1)$处为$0$。
+  solution: |
+    选项 A、D 正定。
+
+- id: p3
+  tier: medium
+  statement: |
+    用主轴变换把$6x^2+4xy+3y^2$化成$\lambda_1u^2+\lambda_2v^2$，$\lambda_1\le\lambda_2$。按顺序填写$\lambda_1$、$\lambda_2$。
+  answer:
+    type: tuple
+    value: [2, 7]
+  hints:
+    - |
+      主轴变换后的系数是矩阵的特征值。
+    - |
+      矩阵是$\begin{pmatrix}6&2\\2&3\end{pmatrix}$，迹（trace）$9$，行列式$18-4=14$。
+    - |
+      $\lambda^2-9\lambda+14=(\lambda-2)(\lambda-7)$，$\lambda_1=2$、$\lambda_2=7$。主轴沿特征向量$(1,-2)$、$(2,1)$。
+  solution: |
+    矩阵$\begin{pmatrix}6&2\\2&3\end{pmatrix}$的特征值是$2$、$7$，填 `2, 7`。
+
+- id: p4
+  tier: medium
+  statement: |
+    求二次型$Q=x_1^2+2x_1x_2+2x_2^2+4x_2x_3+x_3^2$的正惯性指数$p$和负惯性指数$q$，按顺序填写。
+  answer:
+    type: tuple
+    value: [2, 1]
+  hints:
+    - |
+      由惯性定理，用配方化成平方和就行，不必求特征值。
+    - |
+      先把含$x_1$的项凑成$(x_1+x_2)^2$，再把剩下的含$x_2$的项凑成平方。
+    - |
+      $Q=(x_1+x_2)^2+x_2^2+4x_2x_3+x_3^2=(x_1+x_2)^2+(x_2+2x_3)^2-3x_3^2$，换元$y_1=x_1+x_2$、$y_2=x_2+2x_3$、$y_3=x_3$可逆，$p=2$，$q=1$。验算：矩阵的行列式是$-3<0$，迹是$4>0$，恰有一个负特征值。
+  solution: |
+    配方得$(x_1+x_2)^2+(x_2+2x_3)^2-3x_3^2$，$p=2$，$q=1$，填 `2, 1`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$A$是正定矩阵。证明$A$可逆，$A^{-1}$也正定；并证明对任何可逆矩阵$P$，$P\T AP$也正定。
+  hints:
+    - |
+      用特征值：$A$的特征值都为正，$A^{-1}$的特征值是什么？
+    - |
+      $A=QDQ\T$时$A^{-1}=QD^{-1}Q\T$。第二问直接用定义：$\vb x\T P\T AP\vb x=(P\vb x)\T A(P\vb x)$。
+    - |
+      $A$的特征值都为正，没有$0$，所以$A$可逆；$A^{-1}=QD^{-1}Q\T$是对称矩阵，特征值是$\frac1{\lambda_i}>0$，正定。$P\T AP$对称；$\vb x\ne\vb 0$时$P\vb x\ne\vb 0$（$P$可逆），所以$\vb x\T P\T AP\vb x=(P\vb x)\T A(P\vb x)>0$。
+  reference: |
+    特征值全正，无零特征值，可逆；$A^{-1}=QD^{-1}Q\T$的特征值$1/\lambda_i>0$。$\vb x\ne\vb 0$时$P\vb x\ne\vb 0$，$\vb x\T P\T AP\vb x=(P\vb x)\T A(P\vb x)>0$。
+
+- id: p6
+  tier: hard
+  statement: |
+    证明：二阶对称矩阵$\begin{pmatrix}a&b\\b&c\end{pmatrix}$正定，当且仅当$a>0$、$ac-b^2>0$。分别用特征值和配方各证一次。
+  hints:
+    - |
+      特征值之和是$a+c$，积是$ac-b^2$。
+    - |
+      配方：$a\ne0$时$ax^2+2bxy+cy^2=a\bigl(x+\frac bay\bigr)^2+\frac{ac-b^2}ay^2$。
+    - |
+      特征值：两个都为正，当且仅当积$ac-b^2>0$、和$a+c>0$；积为正时$ac>b^2\ge0$，$a$、$c$同号，于是$a+c>0$等价于$a>0$。配方：$a>0$、$ac-b^2>0$时两项系数都正，只在$y=0$、$x=0$时为$0$，正定；反过来，正定时取$(1,0)$得$a>0$，取$x=-\frac bay$、$y=1$得$\frac{ac-b^2}a>0$。
+  reference: |
+    特征值法：两正 ⇔ 积$ac-b^2>0$且和$a+c>0$，积为正时后者等价于$a>0$。配方法：$Q=a(x+\frac bay)^2+\frac{ac-b^2}ay^2$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    设$T$是正定矩阵，$V$是对称矩阵。为什么有可逆矩阵$P$，使$P\T TP=I$，同时$P\T VP$是对角矩阵？这时$P\T VP$的对角元满足什么方程？
+  hints:
+    - |
+      先用谱定理把$T$写成$ODO\T$，$D$的对角元为正，令$P_1=OD^{-1/2}$，$P_1\T TP_1=I$。
+    - |
+      $M=P_1\T VP_1$仍是对称矩阵，再对$M$用一次谱定理。
+    - |
+      $M=R\Omega R\T$，$R$是正交矩阵，$\Omega$是对角矩阵。取$P=P_1R$：$P\T TP=R\T IR=I$，$P\T VP=R\T MR=\Omega$。$\Omega$的对角元是$M$的特征值；$M-\omega I=P_1\T(V-\omega T)P_1$，$P_1$可逆，所以它们是$\det(V-\omega T)=0$的根。分析力学里同时化简动能、势能，求简正频率（normal frequency），用的正是这两步（见[小振动与简正坐标](lesson:physics.analytical-mechanics.small-oscillations)）。
+  reference: |
+    $T=ODO\T$，$P_1=OD^{-1/2}$使$P_1\T TP_1=I$；$M=P_1\T VP_1=R\Omega R\T$；$P=P_1R$。对角元是$\det(V-\omega T)=0$的根。
+
+- id: p8
+  tier: thinking
+  statement: |
+    狭义相对论里，间隔$\Delta s^2=c^2\Delta t^2-\Delta x^2-\Delta y^2-\Delta z^2$是四个坐标差的二次型。它的正、负惯性指数是多少？有的书把符号全部反过来，写成$-c^2\Delta t^2+\Delta x^2+\Delta y^2+\Delta z^2$，物理内容变了吗？有没有一种线性换元，能把它变成两个正项、两个负项？
+  hints:
+    - |
+      矩阵是$\mathrm{diag}(c^2,-1,-1,-1)$，直接数正负系数。
+    - |
+      把整个二次型乘以$-1$，$p$、$q$互换。
+    - |
+      $p=1$、$q=3$。整体换号只是约定，$p$、$q$互换成$3$、$1$，「一个方向和另外三个不同」这件事不变，物理内容一样。由惯性定理，任何可逆线性换元都不改变$p$、$q$，所以不可能变成两正两负：时间和空间的区别不是坐标取法造成的（见[四维矢量与闵可夫斯基度规](lesson:physics.special-relativity.four-vectors)）。
+  reference: |
+    $p=1$、$q=3$；整体换号得$3$、$1$，只是约定。由惯性定理，线性换元不能得到两正两负。

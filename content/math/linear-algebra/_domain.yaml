@@ -21,6 +21,10 @@ macros:
     \operatorname{im}
   \uv: |
     \hat{\mathbf{#1}}
+  \dd: |
+    \mathop{}\!\mathrm{d}
+  \HT: |
+    ^{\mathsf{H}}
 glossary:
   - id: math.linear-algebra.zero-vector
     zh: |
@@ -868,3 +872,237 @@ glossary:
       和$A$相似、由若尔当块沿主对角线拼成的矩阵$J$，$A=PJP^{-1}$；不计各块次序时唯一。
     definedIn: math.linear-algebra.jordan-form
     anchor: thm-jordan
+  - id: math.linear-algebra.inner-product
+    zh: |
+      内积
+    en: |
+      inner product
+    brief: |
+      向量空间上对称、对每个变量线性、并且非零向量和自己的值为正的二元运算$\langle\vb u,\vb v\rangle$，例如点积。
+    definedIn: math.linear-algebra.inner-product-spaces
+    anchor: def-inner-product
+  - id: math.linear-algebra.inner-product-space
+    zh: |
+      内积空间
+    en: |
+      inner product space
+    brief: |
+      规定了一个内积的向量空间，例如带点积的$\R^n$、带积分内积的连续函数空间。
+    definedIn: math.linear-algebra.inner-product-spaces
+    anchor: def-inner-product
+  - id: math.linear-algebra.norm
+    zh: |
+      范数
+    en: |
+      norm
+    brief: |
+      内积空间里向量的长度$\|\vb v\|=\sqrt{\langle\vb v,\vb v\rangle}$；取点积时就是$|\vb v|$。
+    definedIn: math.linear-algebra.inner-product-spaces
+    anchor: def-norm
+  - id: math.linear-algebra.orthogonal-complement
+    zh: |
+      正交补
+    en: |
+      orthogonal complement
+    brief: |
+      和子空间$W$里每个向量都正交的向量全体$W^\perp$，它也是子空间。
+    definedIn: math.linear-algebra.orthogonal-projection
+    anchor: def-orthogonal-complement
+  - id: math.linear-algebra.orthogonal-projection
+    zh: |
+      正交投影
+    en: |
+      orthogonal projection
+    brief: |
+      $W$中使$\vb v-\vb p$和$W$正交的那个$\vb p$，记作$\operatorname{proj}_W\vb v$；它是$W$里离$\vb v$最近的点。
+    definedIn: math.linear-algebra.orthogonal-projection
+    anchor: def-orthogonal-projection
+  - id: math.linear-algebra.direct-sum
+    zh: |
+      直和
+    en: |
+      direct sum
+    brief: |
+      $V$的每个向量都能唯一地写成$W_1$中一个向量与$W_2$中一个向量之和时，记作$V=W_1\oplus W_2$。
+    definedIn: math.linear-algebra.orthogonal-projection
+    anchor: def-direct-sum
+  - id: math.linear-algebra.orthogonal-decomposition
+    zh: |
+      正交分解
+    en: |
+      orthogonal decomposition
+    brief: |
+      $W$是内积空间$V$的有限维子空间时，$V=W\oplus W^\perp$：每个向量都能唯一地写成$W$里一个向量与$W^\perp$里一个向量之和。
+    definedIn: math.linear-algebra.orthogonal-projection
+    anchor: thm-orthogonal-decomposition
+  - id: math.linear-algebra.orthogonal-basis
+    zh: |
+      正交基
+    en: |
+      orthogonal basis
+    brief: |
+      由两两正交的非零向量组成的基；在它下面求投影、求坐标都不用解方程组。
+    definedIn: math.linear-algebra.gram-schmidt
+    anchor: def-orthonormal-basis
+  - id: math.linear-algebra.orthonormal-basis
+    zh: |
+      正交规范基
+    en: |
+      orthonormal basis
+    brief: |
+      两两正交、范数都是$1$的基；在它下面，向量的坐标是$\langle\vb v,\vb q_i\rangle$，内积就是坐标的点积。
+    definedIn: math.linear-algebra.gram-schmidt
+    anchor: def-orthonormal-basis
+  - id: math.linear-algebra.gram-schmidt
+    zh: |
+      施密特正交化
+    en: |
+      Gram-Schmidt process
+    brief: |
+      把线性无关的向量依次减去在前面已正交化的向量上的投影，得到两两正交的向量，再各自单位化。
+    definedIn: math.linear-algebra.gram-schmidt
+    anchor: thm-gram-schmidt
+  - id: math.linear-algebra.qr-decomposition
+    zh: |
+      QR 分解
+    en: |
+      QR decomposition
+    brief: |
+      各列线性无关的矩阵写成$A=QR$：$Q$的各列正交规范，$R$是主对角线以下全为$0$、对角元为正的方阵。
+    definedIn: math.linear-algebra.gram-schmidt
+    anchor: thm-qr
+  - id: math.linear-algebra.least-squares-solution
+    zh: |
+      最小二乘解
+    en: |
+      least-squares solution
+    brief: |
+      使$\|A\vb x-\vb b\|$最小的$\hat{\vb x}$；$A\vb x=\vb b$无解时，它让各方程误差的平方和最小。
+    definedIn: math.linear-algebra.least-squares
+    anchor: def-least-squares
+  - id: math.linear-algebra.normal-equations
+    zh: |
+      法方程
+    en: |
+      normal equations
+    brief: |
+      方程组$A\T A\vb x=A\T\vb b$；它的解正是$A\vb x=\vb b$的最小二乘解，残差和$A$的各列正交。
+    definedIn: math.linear-algebra.least-squares
+    anchor: thm-normal-equations
+  - id: math.linear-algebra.orthogonal-matrix
+    zh: |
+      正交矩阵
+    en: |
+      orthogonal matrix
+    brief: |
+      满足$Q\T Q=I$的方阵，即各列是正交规范基；它保持长度和夹角，逆是转置，行列式是$\pm1$。
+    definedIn: math.linear-algebra.orthogonal-matrices
+    anchor: def-orthogonal-matrix
+  - id: math.linear-algebra.orthogonal-transformation
+    zh: |
+      正交变换
+    en: |
+      orthogonal transformation
+    brief: |
+      由正交矩阵给出的线性变换$\vb x\mapsto Q\vb x$，例如旋转、关于过原点的直线或平面的反射。
+    definedIn: math.linear-algebra.orthogonal-matrices
+    anchor: def-orthogonal-transformation
+  - id: math.linear-algebra.spectral-theorem
+    zh: |
+      谱定理
+    en: |
+      spectral theorem
+    brief: |
+      实对称矩阵的特征值都是实数，并且有一组由特征向量组成的正交规范基，即$A=QDQ\T$，$Q$是正交矩阵。
+    definedIn: math.linear-algebra.spectral-theorem
+    anchor: thm-spectral
+  - id: math.linear-algebra.spectral-decomposition
+    zh: |
+      谱分解
+    en: |
+      spectral decomposition
+    brief: |
+      实对称矩阵写成$A=\lambda_1\vb q_1\vb q_1\T+\dots+\lambda_n\vb q_n\vb q_n\T$，$\vb q_i$是正交规范的特征向量：投到各特征向量方向上，乘特征值，再相加。
+    definedIn: math.linear-algebra.spectral-theorem
+    anchor: def-spectral-decomposition
+  - id: math.linear-algebra.complex-inner-product
+    zh: |
+      复内积
+    en: |
+      complex inner product
+    brief: |
+      复向量空间上的内积，交换两个向量时取共轭，对第二个变量线性；$\C^n$里是$\langle\vb u,\vb v\rangle=\sum\bar u_iv_i$。
+    definedIn: math.linear-algebra.hermitian-unitary
+    anchor: def-complex-inner-product
+  - id: math.linear-algebra.conjugate-transpose
+    zh: |
+      共轭转置
+    en: |
+      conjugate transpose
+    brief: |
+      把矩阵的各元素取共轭再转置，记作$A\HT$；复内积可以写成$\langle\vb u,\vb v\rangle=\vb u\HT\vb v$。
+    definedIn: math.linear-algebra.hermitian-unitary
+    anchor: def-hermitian
+  - id: math.linear-algebra.hermitian-matrix
+    zh: |
+      厄米矩阵
+    en: |
+      Hermitian matrix
+    brief: |
+      满足$A\HT=A$的复方阵；特征值都是实数，能用酉矩阵对角化。实的厄米矩阵就是对称矩阵。
+    definedIn: math.linear-algebra.hermitian-unitary
+    anchor: def-hermitian
+  - id: math.linear-algebra.unitary-matrix
+    zh: |
+      酉矩阵
+    en: |
+      unitary matrix
+    brief: |
+      满足$U\HT U=I$的复方阵，即各列在复内积下正交规范；它保持复内积，特征值的模都是$1$。
+    definedIn: math.linear-algebra.hermitian-unitary
+    anchor: def-unitary
+  - id: math.linear-algebra.quadratic-form
+    zh: |
+      二次型
+    en: |
+      quadratic form
+    brief: |
+      $n$个变量的二次齐次多项式，写成$\vb x\T A\vb x$，$A$取对称矩阵，例如$5x^2-4xy+8y^2$。
+    definedIn: math.linear-algebra.quadratic-forms
+    anchor: def-quadratic-form
+  - id: math.linear-algebra.positive-definite
+    zh: |
+      正定
+    en: |
+      positive definite
+    brief: |
+      对所有$\vb x\ne\vb 0$都有$\vb x\T A\vb x>0$；对称矩阵正定当且仅当特征值都为正。
+    definedIn: math.linear-algebra.quadratic-forms
+    anchor: def-positive-definite
+  - id: math.linear-algebra.law-of-inertia
+    zh: |
+      惯性定理
+    en: |
+      Sylvester's law of inertia
+    brief: |
+      二次型用任何可逆线性换元化成平方和，正系数、负系数的个数都不变，分别等于正、负特征值的个数。
+    definedIn: math.linear-algebra.quadratic-forms
+    anchor: thm-inertia
+  - id: math.linear-algebra.singular-value
+    zh: |
+      奇异值
+    en: |
+      singular value
+    brief: |
+      $A\T A$的特征值的平方根$\sigma_i\ge0$，是$A$把一组互相垂直的单位向量拉成的长度。
+    definedIn: math.linear-algebra.svd
+    anchor: def-singular-value
+  - id: math.linear-algebra.svd
+    zh: |
+      奇异值分解
+    en: |
+      singular value decomposition
+    brief: |
+      把任何矩阵写成$A=U\Sigma V\T$，$U$、$V$是正交矩阵，$\Sigma$的对角线上是从大到小的奇异值。
+    definedIn: math.linear-algebra.svd
+    anchor: thm-svd

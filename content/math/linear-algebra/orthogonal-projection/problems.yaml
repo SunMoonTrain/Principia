@@ -1,0 +1,123 @@
+- id: p1
+  tier: easy
+  statement: |
+    在$\R^3$里取点积，$W=\Span\{\vb u_1,\vb u_2\}$，$\vb u_1=(1,1,1)$，$\vb u_2=(1,-1,0)$，这两个向量正交。求$\vb v=(1,2,0)$在$W$上的正交投影，按顺序填写三个分量（component）。
+  answer:
+    type: tuple
+    value: [1/2, 3/2, 1]
+  hints:
+    - |
+      基两两正交时，投影是分别投到$\vb u_1$、$\vb u_2$上再相加：$\operatorname{proj}_W\vb v=\frac{\vb v\cdot\vb u_1}{\vb u_1\cdot\vb u_1}\vb u_1+\frac{\vb v\cdot\vb u_2}{\vb u_2\cdot\vb u_2}\vb u_2$。
+    - |
+      $\vb v\cdot\vb u_1=3$，$\vb u_1\cdot\vb u_1=3$；$\vb v\cdot\vb u_2=-1$，$\vb u_2\cdot\vb u_2=2$。
+    - |
+      $\operatorname{proj}_W\vb v=(1,1,1)-\frac12(1,-1,0)=\bigl(\frac12,\frac32,1\bigr)$。验算：$\vb v-\operatorname{proj}_W\vb v=\bigl(\frac12,\frac12,-1\bigr)$，和$\vb u_1$、$\vb u_2$的点积都是$0$。
+  solution: |
+    $\operatorname{proj}_W\vb v=1\cdot\vb u_1-\frac12\vb u_2=\bigl(\frac12,\frac32,1\bigr)$，填 `1/2, 3/2, 1`。
+
+- id: p2
+  tier: easy
+  statement: |
+    在$\R^5$里取点积，$W$由两个线性无关的向量生成。$W^\perp$是几维的？
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      用正交分解：$\R^5=W\oplus W^\perp$。
+    - |
+      有限维时$\dim W+\dim W^\perp=\dim V$。
+    - |
+      $\dim W=2$，所以$\dim W^\perp=5-2=3$。
+  solution: |
+    $\dim W^\perp=5-2=3$，填 `3`。
+
+- id: p3
+  tier: medium
+  statement: |
+    在$\R^3$里取点积，$W=\Span\{(1,0,1),(0,1,1)\}$。求$\vb v=(3,1,0)$到$W$的距离的平方。
+  answer:
+    type: number
+    value: 16/3
+  hints:
+    - |
+      两个基向量的点积是$1$，不正交，要解方程组$\sum_jc_j\langle\vb w_j,\vb w_i\rangle=\langle\vb v,\vb w_i\rangle$求投影；距离是$\|\vb v-\operatorname{proj}_W\vb v\|$。
+    - |
+      方程组是$2c_1+c_2=3$、$c_1+2c_2=1$。
+    - |
+      $c_1=\frac53$，$c_2=-\frac13$，投影是$\bigl(\frac53,-\frac13,\frac43\bigr)$，$\vb v-\vb p=\frac43(1,1,-1)$，距离的平方是$\frac{16}9\cdot3=\frac{16}3$。
+  solution: |
+    投影$\bigl(\frac53,-\frac13,\frac43\bigr)$，$\|\vb v-\vb p\|^2=\frac{16}3$，填 `16/3`。
+
+- id: p4
+  tier: medium
+  statement: |
+    在$C[-1,1]$里取积分内积$\langle f,g\rangle=\int_{-1}^1f(x)g(x)\dd x$。在所有一次函数$ax+b$里，使$\int_{-1}^1(x^3-ax-b)^2\dd x$最小的那个，$a$等于多少？
+  answer:
+    type: number
+    value: 3/5
+  hints:
+    - |
+      要找的是$x^3$在$\Span\{1,x\}$上的正交投影。
+    - |
+      在$[-1,1]$上$\langle1,x\rangle=\int_{-1}^1x\dd x=0$，这组基正交，可以分别投影。
+    - |
+      $\langle x^3,1\rangle=0$，所以$b=0$；$a=\frac{\langle x^3,x\rangle}{\langle x,x\rangle}=\frac{2/5}{2/3}=\frac35$。
+  solution: |
+    $1$、$x$正交，$a=\frac{\langle x^3,x\rangle}{\langle x,x\rangle}=\frac35$，$b=0$，填 `3/5`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$V$是有限维内积空间，$W$是它的子空间。证明$\dim W+\dim W^\perp=\dim V$，并由此证明$(W^\perp)^\perp=W$。
+  hints:
+    - |
+      由正交分解，$V=W\oplus W^\perp$。取$W$的一组基、$W^\perp$的一组基，合起来是什么？
+    - |
+      合起来能生成$V$：每个$\vb v$是$W$中向量与$W^\perp$中向量之和。合起来线性无关：一个组合等于$\vb 0$时，$W$部分等于$W^\perp$部分的相反数，两者都在$W\cap W^\perp=\{\vb 0\}$里。
+    - |
+      所以合起来是$V$的一组基，$\dim W+\dim W^\perp=\dim V$。$W$里每个向量都和$W^\perp$正交，所以$W\subseteq(W^\perp)^\perp$；对$W^\perp$用同一个等式，$\dim(W^\perp)^\perp=\dim V-\dim W^\perp=\dim W$。一个子空间包含在另一个维数相同的子空间里，两者相等（[基与维数](lesson:math.linear-algebra.basis-dimension)第 5 题）。
+  reference: |
+    $W$的基与$W^\perp$的基合起来生成$V$，又因$W\cap W^\perp=\{\vb 0\}$而线性无关，所以维数相加为$\dim V$。$W\subseteq(W^\perp)^\perp$，且两者维数都是$\dim V-\dim W^\perp=\dim W$，故相等。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$W$是内积空间$V$的有限维子空间，$P(\vb v)=\operatorname{proj}_W\vb v$。证明：$P(\vb u+\vb v)=P(\vb u)+P(\vb v)$，$P(c\vb v)=cP(\vb v)$；$P(P(\vb v))=P(\vb v)$；并且对任意$\vb u$、$\vb v$都有$\langle P(\vb u),\vb v\rangle=\langle\vb u,P(\vb v)\rangle$。
+  hints:
+    - |
+      投影由两个条件刻画：$\vb p\in W$，$\vb v-\vb p\in W^\perp$。验证$P(\vb u)+P(\vb v)$满足$\vb u+\vb v$的这两个条件。
+    - |
+      $P(\vb v)$已经在$W$里，在$W$上的投影就是它自己。最后一条：把$\vb u$、$\vb v$都分成$W$和$W^\perp$两部分。
+    - |
+      $P(\vb u)+P(\vb v)\in W$，$(\vb u+\vb v)-(P(\vb u)+P(\vb v))=(\vb u-P(\vb u))+(\vb v-P(\vb v))\in W^\perp$，由唯一性它就是$P(\vb u+\vb v)$；数乘同理。$\vb u=\vb p+\vb q$、$\vb v=\vb p'+\vb q'$（$\vb p,\vb p'\in W$，$\vb q,\vb q'\in W^\perp$），则$\langle P(\vb u),\vb v\rangle=\langle\vb p,\vb p'+\vb q'\rangle=\langle\vb p,\vb p'\rangle$，$\langle\vb u,P(\vb v)\rangle=\langle\vb p+\vb q,\vb p'\rangle=\langle\vb p,\vb p'\rangle$，两者相等。
+  reference: |
+    线性：$P(\vb u)+P(\vb v)$在$W$里，且与$\vb u+\vb v$之差在$W^\perp$里，由唯一性等于$P(\vb u+\vb v)$；数乘同理。$P(\vb v)\in W$，所以$P(P(\vb v))=P(\vb v)$。写$\vb u=\vb p+\vb q$、$\vb v=\vb p'+\vb q'$，两边都等于$\langle\vb p,\vb p'\rangle$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    设$\vb u_1,\dots,\vb u_k$是内积空间里两两正交的非零向量。为什么对每个$\vb v$都有$\sum_{i=1}^k\frac{\langle\vb v,\vb u_i\rangle^2}{\|\vb u_i\|^2}\le\|\vb v\|^2$？什么时候取等号？用到$C[-\pi,\pi]$里的$1,\cos x,\sin x,\dots,\cos Nx,\sin Nx$上，这说明傅里叶系数（Fourier coefficients）有什么性质？
+  hints:
+    - |
+      左边是$\vb v$在$W=\Span\{\vb u_1,\dots,\vb u_k\}$上的投影$\vb p$的范数的平方。
+    - |
+      $\vb v=\vb p+(\vb v-\vb p)$，两部分正交，用勾股定理（Pythagorean theorem）。
+    - |
+      $\|\vb p\|^2=\sum\frac{\langle\vb v,\vb u_i\rangle^2}{\|\vb u_i\|^2}$（各项两两正交，再用勾股定理），而$\|\vb v\|^2=\|\vb p\|^2+\|\vb v-\vb p\|^2\ge\|\vb p\|^2$，等号当且仅当$\vb v\in W$。用到三角函数上：无论取多少项，傅里叶系数的平方和都不超过一个固定的数$\frac1\pi\int_{-\pi}^{\pi}f^2\dd x$，所以$a_n$、$b_n$趋于$0$。这叫贝塞尔不等式（Bessel's inequality），什么时候能取等号，见[贝塞尔不等式与帕塞瓦尔等式](lesson:math.analysis.parseval)。
+  reference: |
+    左边是$\|\operatorname{proj}_W\vb v\|^2$，由勾股定理不超过$\|\vb v\|^2$，等号当且仅当$\vb v\in W$。对三角函数，傅里叶系数的平方和有界，系数趋于零。
+
+- id: p8
+  tier: thinking
+  statement: |
+    在$C[-1,1]$里取积分内积，$W$是$[-1,1]$上连续的奇函数全体。$W^\perp$是什么？$f(x)=e^x$在$W$上的正交投影是什么？$W$是无限维的，这里的投影为什么还存在？
+  hints:
+    - |
+      奇函数和偶函数的乘积是奇函数，在$[-1,1]$上积分为$0$。
+    - |
+      每个$f$都能写成$\frac{f(x)-f(-x)}2+\frac{f(x)+f(-x)}2$，前一部分是奇函数，后一部分是偶函数。
+    - |
+      偶函数都和$W$正交。反过来，若$f\in W^\perp$，把它拆成奇部分$g$和偶部分$h$，$g$在$W$里，$0=\langle f,g\rangle=\langle g,g\rangle+\langle h,g\rangle=\|g\|^2$，所以$g=0$，$f$是偶函数：$W^\perp$是偶函数全体。$e^x$的奇部分是$\frac{e^x-e^{-x}}2$，偶部分和$W$正交，所以投影是$\frac{e^x-e^{-x}}2$。定理只保证有限维子空间上的投影存在；这里不用定理，直接拆成奇、偶两部分就找到了，$C[-1,1]=W\oplus W^\perp$照样成立。
+  reference: |
+    $W^\perp$是偶函数全体：偶函数显然正交于奇函数；若$f\perp W$，其奇部分$g\in W$满足$\|g\|^2=\langle f,g\rangle=0$。$e^x$的投影是$\frac{e^x-e^{-x}}2$。奇偶分解直接给出$C[-1,1]=W\oplus W^\perp$。

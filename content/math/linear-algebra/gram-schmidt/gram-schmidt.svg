@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" width="600" height="350" font-size="13">
+  <!-- 原点 (250, 250)，一个单位 70 像素；a1=(3,1)，a2=(1,2)，投影 (1.5,0.5)，u2=(-0.5,1.5)，q1、q2 是单位向量，虚线是单位圆 -->
+  <line x1="50" y1="250" x2="550" y2="250" stroke="currentColor" stroke-width="1" opacity="0.45" />
+  <line x1="250" y1="300" x2="250" y2="35" stroke="currentColor" stroke-width="1" opacity="0.45" />
+  <circle cx="250" cy="250" r="70" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" opacity="0.6" />
+  <line x1="250" y1="250" x2="451.46" y2="182.85" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 460 180 L 452.88 187.12 L 450.04 178.58 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="250" y1="250" x2="315.98" y2="118.05" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 320 110 L 320 120.06 L 311.95 116.04 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="320" y1="110" x2="355" y2="215" style="stroke: var(--warn, #a8661a)" stroke-width="1.8" stroke-dasharray="6 4" />
+  <line x1="250" y1="250" x2="346.46" y2="217.85" style="stroke: var(--muted, #6b7280)" stroke-width="1.8" />
+  <path d="M 355 215 L 347.88 222.12 L 345.04 213.58 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="250" y1="250" x2="217.85" y2="153.54" style="stroke: var(--warn, #a8661a)" stroke-width="2.4" />
+  <path d="M 215 145 L 222.12 152.12 L 213.58 154.96 Z" style="fill: var(--warn, #a8661a)" />
+  <line x1="250" y1="250" x2="307.87" y2="230.71" style="stroke: var(--good, #0f8a5f)" stroke-width="3" />
+  <path d="M 316.41 227.86 L 309.29 234.98 L 306.45 226.44 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="250" y1="250" x2="230.71" y2="192.13" style="stroke: var(--good, #0f8a5f)" stroke-width="3" />
+  <path d="M 227.86 183.59 L 234.98 190.71 L 226.44 193.55 Z" style="fill: var(--good, #0f8a5f)" />
+  <path d="M 344.56 218.48 L 341.09 208.04 L 351.52 204.56" fill="none" stroke="currentColor" stroke-width="1.2" />
+  <text x="468" y="184" font-size="15" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-weight="bold">a</tspan><tspan baseline-shift="sub" font-size="10">1</tspan></text>
+  <text x="326" y="102" font-size="15" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-weight="bold">a</tspan><tspan baseline-shift="sub" font-size="10">2</tspan></text>
+  <text x="359" y="237" text-anchor="middle" style="fill: var(--muted, #6b7280)" fill="currentColor">投影</text>
+  <text x="207" y="139" text-anchor="end" font-size="15" style="fill: var(--warn, #a8661a)" fill="currentColor"><tspan font-weight="bold">u</tspan><tspan baseline-shift="sub" font-size="10">2</tspan></text>
+  <text x="286.41" y="221.86" font-size="15" style="fill: var(--good, #0f8a5f)" fill="currentColor"><tspan font-weight="bold">q</tspan><tspan baseline-shift="sub" font-size="10">1</tspan></text>
+  <text x="231.86" y="165.59" font-size="15" style="fill: var(--good, #0f8a5f)" fill="currentColor"><tspan font-weight="bold">q</tspan><tspan baseline-shift="sub" font-size="10">2</tspan></text>
+  <text x="242" y="268" text-anchor="end" font-size="14" fill="currentColor"><tspan font-style="italic">O</tspan></text>
+  <text x="300" y="336" text-anchor="middle" fill="currentColor"><tspan font-weight="bold">u</tspan><tspan baseline-shift="sub" font-size="10">2</tspan> = <tspan font-weight="bold">a</tspan><tspan baseline-shift="sub" font-size="10">2</tspan> − 投影，和 <tspan font-weight="bold">a</tspan><tspan baseline-shift="sub" font-size="10">1</tspan> 正交；<tspan font-weight="bold">q</tspan><tspan baseline-shift="sub" font-size="10">1</tspan>、<tspan font-weight="bold">q</tspan><tspan baseline-shift="sub" font-size="10">2</tspan> 是单位向量</text>
+</svg>

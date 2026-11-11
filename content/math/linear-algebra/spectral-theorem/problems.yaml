@@ -1,0 +1,135 @@
+- id: p1
+  tier: easy
+  statement: |
+    下面哪些矩阵能写成$QDQ\T$（$Q$是正交矩阵，$D$是实对角矩阵）？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\begin{pmatrix}1&2\\2&1\end{pmatrix}$
+      - |
+        $\begin{pmatrix}1&2\\0&3\end{pmatrix}$
+      - |
+        $\begin{pmatrix}0&-1\\1&0\end{pmatrix}$
+      - |
+        $\begin{pmatrix}5&0\\0&5\end{pmatrix}$
+      - |
+        $\begin{pmatrix}2&-3\\-3&0\end{pmatrix}$
+    value: [1, 4, 5]
+  hints:
+    - |
+      由谱定理，能这样写的恰好是实对称矩阵。
+    - |
+      逐个看$A\T=A$是否成立。
+    - |
+      选项 A、D、E 是对称矩阵，能写成$QDQ\T$。选项 B 能对角化，特征向量$(1,0)$、$(1,1)$却不正交；选项 C 是旋转，连实数特征值都没有。
+  solution: |
+    能写成$QDQ\T$的恰好是实对称矩阵：选项 A、D、E。
+
+- id: p2
+  tier: easy
+  statement: |
+    二阶实对称矩阵$A$有特征值$3$和$-1$，属于$3$的特征向量是$(1,2)$。属于$-1$的特征向量写成$(2,k)$的形式，求$k$。
+  answer:
+    type: number
+    value: -1
+  hints:
+    - |
+      属于不同特征值的特征向量互相正交。
+    - |
+      $(2,k)\cdot(1,2)=2+2k=0$。
+    - |
+      $k=-1$。在平面里，和$(1,2)$正交的方向只有一个，就是$(2,-1)$的方向。
+  solution: |
+    $(2,k)\cdot(1,2)=0$，$k=-1$，填 `-1`。
+
+- id: p3
+  tier: medium
+  statement: |
+    二阶实对称矩阵$A$的特征值是$1$和$3$，属于$1$的特征向量是$(1,1)$。求$A$，按行填写四个元素。
+  answer:
+    type: tuple
+    value: [2, -1, -1, 2]
+  hints:
+    - |
+      属于$3$的特征向量和$(1,1)$正交，可以取$(1,-1)$。
+    - |
+      用谱分解$A=1\cdot\vb q_1\vb q_1\T+3\cdot\vb q_2\vb q_2\T$，$\vb q_1=\frac1{\sqrt2}(1,1)$，$\vb q_2=\frac1{\sqrt2}(1,-1)$。
+    - |
+      $\vb q_1\vb q_1\T=\frac12\begin{pmatrix}1&1\\1&1\end{pmatrix}$，$\vb q_2\vb q_2\T=\frac12\begin{pmatrix}1&-1\\-1&1\end{pmatrix}$，$A=\begin{pmatrix}2&-1\\-1&2\end{pmatrix}$。验算：$A(1,1)=(1,1)$，$A(1,-1)=(3,-3)$。
+  solution: |
+    $A=\vb q_1\vb q_1\T+3\vb q_2\vb q_2\T=\begin{pmatrix}2&-1\\-1&2\end{pmatrix}$，填 `2, -1, -1, 2`。
+
+- id: p4
+  tier: medium
+  statement: |
+    三阶实对称矩阵$A$的特征值是$2$、$2$、$5$，属于$5$的特征向量是$(1,1,1)$。求$A$的第$1$行第$2$列的元素。
+  answer:
+    type: number
+    value: 1
+  hints:
+    - |
+      属于$2$的特征空间是$(1,1,1)$的正交补，平面$x+y+z=0$。
+    - |
+      令$\vb q=\frac1{\sqrt3}(1,1,1)$。谱分解里属于$2$的那部分是$2(I-\vb q\vb q\T)$，所以$A=2(I-\vb q\vb q\T)+5\vb q\vb q\T=2I+3\vb q\vb q\T$。
+    - |
+      $3\vb q\vb q\T$的每个元素都是$3\cdot\frac13=1$，$A=2I+\begin{pmatrix}1&1&1\\1&1&1\\1&1&1\end{pmatrix}$，第$1$行第$2$列是$1$。验算：$A(1,1,1)=(5,5,5)$，$A(1,-1,0)=(2,-2,0)$。
+  solution: |
+    $A=2I+3\vb q\vb q\T=\begin{pmatrix}3&1&1\\1&3&1\\1&1&3\end{pmatrix}$，填 `1`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$A$是实对称矩阵，并且对某个正整数$k$有$A^k=O$。证明$A=O$。不对称时结论还成立吗？
+  hints:
+    - |
+      由谱定理写$A=QDQ\T$，算$A^k$。
+    - |
+      $A^k=QD^kQ\T$，所以$D^k=Q\T A^kQ=O$。
+    - |
+      $D^k$的对角元是$\lambda_i^k$，都为$0$，所以每个$\lambda_i=0$，$D=O$，$A=QDQ\T=O$。不对称时不成立：$N=\begin{pmatrix}0&1\\0&0\end{pmatrix}$满足$N^2=O$，$N\ne O$，它不能对角化。
+  reference: |
+    $A=QDQ\T$，$A^k=QD^kQ\T=O$推出$D^k=O$，各$\lambda_i=0$，$A=O$。不对称时有反例$\begin{pmatrix}0&1\\0&0\end{pmatrix}$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$A$、$B$是$n$阶实对称矩阵，$AB=BA$，并且$A$的$n$个特征值互不相同。证明有同一个正交矩阵$Q$，使$Q\T AQ$、$Q\T BQ$都是对角矩阵。
+  hints:
+    - |
+      设$A\vb q=\lambda\vb q$，看$A(B\vb q)$等于什么。
+    - |
+      $A(B\vb q)=B(A\vb q)=\lambda B\vb q$，所以$B\vb q$也在属于$\lambda$的特征空间里。这个特征空间是几维的？
+    - |
+      特征值互不相同，每个特征空间都是一维的，$B\vb q$只能是$\vb q$的倍数，即$\vb q$也是$B$的特征向量。取$A$的一组由单位特征向量组成的正交规范基作$Q$的各列，它们也都是$B$的特征向量，所以$Q\T AQ$、$Q\T BQ$都是对角矩阵。（特征值有重复时结论仍成立，要在每个特征空间里再对$B$用谱定理。）
+  reference: |
+    $A\vb q=\lambda\vb q$时$A(B\vb q)=\lambda B\vb q$；特征空间一维，故$B\vb q\parallel\vb q$。$A$的正交规范特征向量也是$B$的特征向量，同一个$Q$把两者都对角化。
+
+- id: p7
+  tier: thinking
+  statement: |
+    复矩阵$\begin{pmatrix}0&i\\i&0\end{pmatrix}$等于自己的转置，特征值却是$\pm i$。「特征值是实数」的证明，用到$A$是实矩阵的是哪一步？把条件「$A\T=A$」换成什么，证明又能走通？
+  hints:
+    - |
+      证明里先把$\bar{\vb v}\T A\vb v$取共轭，得到$\vb v\T\bar A\bar{\vb v}$。
+    - |
+      $A$是实矩阵时$\bar A=A$，这一步才得到$\vb v\T A\bar{\vb v}$。
+    - |
+      取共轭那一步用了$\bar A=A$；复对称矩阵的$\bar A\ne A$，$\bar{\vb v}\T A\vb v$不一定是实数。证明真正需要的是$\bar A\T=A$：这时$\bar{\vb v}\T A\vb v$的共轭是$\vb v\T\bar A\bar{\vb v}=(\bar{\vb v}\T\bar A\T\vb v)\T=\bar{\vb v}\T A\vb v$，仍是实数。满足$\bar A\T=A$的矩阵叫厄米矩阵（Hermitian matrix），见[复内积空间、厄米矩阵与酉矩阵](lesson:math.linear-algebra.hermitian-unitary)；实矩阵时它就是对称矩阵。
+  reference: |
+    用到实矩阵的是$\overline{\bar{\vb v}\T A\vb v}=\vb v\T A\bar{\vb v}$这一步（需要$\bar A=A$）。条件应换成$\bar A\T=A$（厄米矩阵），证明照样成立。
+
+- id: p8
+  tier: thinking
+  statement: |
+    实对称矩阵$A$的特征值都为正时，令$\sqrt A=Q\sqrt DQ\T$，$\sqrt D$的对角元是特征值的正平方根。验证$(\sqrt A)^2=A$，并求$A=\begin{pmatrix}5&4\\4&5\end{pmatrix}$的$\sqrt A$。这样的矩阵平方根有什么用？
+  hints:
+    - |
+      $(Q\sqrt DQ\T)^2=Q\sqrt D(Q\T Q)\sqrt DQ\T$。
+    - |
+      $A$的特征值是$9$、$1$，特征向量是$(1,1)$、$(1,-1)$。
+    - |
+      $(\sqrt A)^2=Q(\sqrt D)^2Q\T=QDQ\T=A$。用谱分解，$\sqrt A=3\cdot\frac12\begin{pmatrix}1&1\\1&1\end{pmatrix}+1\cdot\frac12\begin{pmatrix}1&-1\\-1&1\end{pmatrix}=\begin{pmatrix}2&1\\1&2\end{pmatrix}$，验算$\begin{pmatrix}2&1\\1&2\end{pmatrix}^2=\begin{pmatrix}5&4\\4&5\end{pmatrix}$。分析力学里求小振动（small oscillations）的简正坐标（normal coordinates），第一步就用$D^{1/2}$把动能变成平方和（见[小振动与简正坐标](lesson:physics.analytical-mechanics.small-oscillations)）。
+  reference: |
+    $(\sqrt A)^2=Q\sqrt D\sqrt DQ\T=A$。$A$的谱分解给出$\sqrt A=\begin{pmatrix}2&1\\1&2\end{pmatrix}$。

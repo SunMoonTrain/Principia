@@ -1,0 +1,135 @@
+- id: p1
+  tier: easy
+  statement: |
+    在$\C^2$里取标准复内积$\langle\vb u,\vb v\rangle=\bar u_1v_1+\bar u_2v_2$，$\vb u=(1,i)$，$\vb v=(2,1+i)$。求$\langle\vb u,\vb v\rangle$，写成$a+bi$，按顺序填写$a$、$b$。
+  answer:
+    type: tuple
+    value: [3, -1]
+  hints:
+    - |
+      先把$\vb u$的分量取共轭：$\bar u_1=1$，$\bar u_2=-i$。
+    - |
+      $\langle\vb u,\vb v\rangle=1\cdot2+(-i)(1+i)$。
+    - |
+      $(-i)(1+i)=-i-i^2=1-i$，所以$\langle\vb u,\vb v\rangle=3-i$。
+  solution: |
+    $\langle\vb u,\vb v\rangle=2+(-i)(1+i)=3-i$，填 `3, -1`。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些是厄米矩阵？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\begin{pmatrix}1&i\\-i&2\end{pmatrix}$
+      - |
+        $\begin{pmatrix}1&i\\i&2\end{pmatrix}$
+      - |
+        $\begin{pmatrix}0&2\\2&0\end{pmatrix}$
+      - |
+        $\begin{pmatrix}i&1\\1&0\end{pmatrix}$
+      - |
+        $\begin{pmatrix}3&1+2i\\1-2i&-1\end{pmatrix}$
+    value: [1, 3, 5]
+  hints:
+    - |
+      逐个算共轭转置$A\HT$，看是否等于$A$。
+    - |
+      主对角元必须是实数；主对角线两侧对称位置上的元素要互为共轭。
+    - |
+      选项 A、C、E 满足；选项 B 对称位置都是$i$，不互为共轭；选项 D 的主对角元$i$不是实数。
+  solution: |
+    选项 A、C、E 是厄米矩阵。
+
+- id: p3
+  tier: medium
+  statement: |
+    求厄米矩阵$\begin{pmatrix}0&1-i\\1+i&1\end{pmatrix}$的两个特征值（顺序不限）。
+  answer:
+    type: set
+    value: [-1, 2]
+  hints:
+    - |
+      二阶时特征多项式是$\lambda^2-(\tr A)\lambda+\det A$。
+    - |
+      $\tr A=1$，$\det A=0-(1-i)(1+i)=-2$。
+    - |
+      $\lambda^2-\lambda-2=(\lambda-2)(\lambda+1)$，特征值是$2$、$-1$，都是实数。
+  solution: |
+    特征多项式$\lambda^2-\lambda-2$，特征值$2$、$-1$，填 `-1, 2`。
+
+- id: p4
+  tier: medium
+  statement: |
+    $U=\begin{pmatrix}\frac{1+i}2&\frac{1-i}2\\\frac{1-i}2&x\end{pmatrix}$是酉矩阵。求$x$，写成$a+bi$，按顺序填写$a$、$b$。
+  answer:
+    type: tuple
+    value: [1/2, 1/2]
+  hints:
+    - |
+      酉矩阵的两列在复内积下正交：$\langle\vb u_1,\vb u_2\rangle=0$，第一列要取共轭。
+    - |
+      $\langle\vb u_1,\vb u_2\rangle=\frac{1-i}2\cdot\frac{1-i}2+\frac{1+i}2\cdot x=-\frac i2+\frac{1+i}2x$。
+    - |
+      令它为$0$，$x=\frac{i}{1+i}=\frac{i(1-i)}2=\frac{1+i}2$。验算第二列的长度：$\bigl|\frac{1-i}2\bigr|^2+\bigl|\frac{1+i}2\bigr|^2=\frac12+\frac12=1$。
+  solution: |
+    由两列正交得$x=\frac{1+i}2$，填 `1/2, 1/2`。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明：酉矩阵$U$的特征值的模都是$1$，属于不同特征值的特征向量正交。
+  hints:
+    - |
+      $\langle U\vb v,U\vb v\rangle=\langle\vb v,U\HT U\vb v\rangle=\langle\vb v,\vb v\rangle$。
+    - |
+      $U\vb v=\lambda\vb v$时，$\langle U\vb v,U\vb v\rangle=\bar\lambda\lambda\langle\vb v,\vb v\rangle$。
+    - |
+      所以$|\lambda|^2\langle\vb v,\vb v\rangle=\langle\vb v,\vb v\rangle$，$|\lambda|=1$。若$U\vb x=\lambda_1\vb x$、$U\vb y=\lambda_2\vb y$，则$\langle\vb x,\vb y\rangle=\langle U\vb x,U\vb y\rangle=\bar\lambda_1\lambda_2\langle\vb x,\vb y\rangle$；$|\lambda_1|=1$时$\bar\lambda_1=\frac1{\lambda_1}$，$\bar\lambda_1\lambda_2=\frac{\lambda_2}{\lambda_1}\ne1$，所以$\langle\vb x,\vb y\rangle=0$。
+  reference: |
+    $\langle U\vb v,U\vb v\rangle=\langle\vb v,\vb v\rangle$给出$|\lambda|^2=1$。$\langle\vb x,\vb y\rangle=\bar\lambda_1\lambda_2\langle\vb x,\vb y\rangle$，而$\bar\lambda_1\lambda_2=\lambda_2/\lambda_1\ne1$，故正交。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$A$是任意$m\times n$复矩阵。证明$A\HT A$是厄米矩阵，并且它的特征值都不小于$0$。
+  hints:
+    - |
+      共轭转置也满足$(XY)\HT=Y\HT X\HT$、$(X\HT)\HT=X$。
+    - |
+      设$A\HT A\vb v=\lambda\vb v$，$\vb v\ne\vb 0$，算$\langle\vb v,A\HT A\vb v\rangle$。
+    - |
+      $(A\HT A)\HT=A\HT(A\HT)\HT=A\HT A$，是厄米矩阵，特征值是实数。$\lambda\langle\vb v,\vb v\rangle=\langle\vb v,A\HT A\vb v\rangle=\langle A\vb v,A\vb v\rangle=\|A\vb v\|^2\ge0$，而$\langle\vb v,\vb v\rangle>0$，所以$\lambda\ge0$。实矩阵时就是$A\T A$，以后在[奇异值分解](lesson:math.linear-algebra.svd)里要用到它。
+  reference: |
+    $(A\HT A)\HT=A\HT A$。$A\HT A\vb v=\lambda\vb v$时$\lambda\|\vb v\|^2=\|A\vb v\|^2\ge0$，故$\lambda\ge0$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    旋转矩阵（rotation matrix）$R_\theta$（$0<\theta<\pi$）不是厄米矩阵，特征值$e^{\pm i\theta}$也不是实数。验证$U=\frac1{\sqrt2}\begin{pmatrix}1&1\\-i&i\end{pmatrix}$是酉矩阵，并且$R_\theta=U\begin{pmatrix}e^{i\theta}&0\\0&e^{-i\theta}\end{pmatrix}U\HT$。能用酉矩阵对角化（diagonalization）的，为什么不只是厄米矩阵？
+  hints:
+    - |
+      $U$的两列是$R_\theta$属于$e^{i\theta}$、$e^{-i\theta}$的特征向量$(1,-i)$、$(1,i)$，各除以$\sqrt2$。
+    - |
+      验证$R_\theta(1,-i)=(\cos\theta+i\sin\theta,\sin\theta-i\cos\theta)=e^{i\theta}(1,-i)$，另一个同理。
+    - |
+      两列的内积是$\frac12\bigl(1\cdot1+\overline{(-i)}\cdot i\bigr)=\frac12(1+i\cdot i)=0$，长度都是$1$，$U$是酉矩阵；$R_\theta U=UD$，所以$R_\theta=UDU\HT$。厄米矩阵用酉矩阵对角化时$D$是实的；$D$允许是复数时，条件放宽成$A$与$A\HT$可以交换：$R_\theta R_\theta\HT=I=R_\theta\HT R_\theta$。满足$AA\HT=A\HT A$的矩阵叫正规矩阵（normal matrix），正好是能用酉矩阵对角化的那些。
+  reference: |
+    $(1,\mp i)$是$R_\theta$属于$e^{\pm i\theta}$的特征向量，彼此正交，单位化得酉矩阵$U$，$R_\theta=UDU\HT$。能用酉矩阵对角化的正是满足$AA\HT=A\HT A$的正规矩阵，厄米矩阵和酉矩阵都在其中。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$A$是厄米矩阵。为什么对每个$\vb x\in\C^n$，$\langle\vb x,A\vb x\rangle$都是实数？反过来，若方阵$A$使$\langle\vb x,A\vb x\rangle$对每个$\vb x$都是实数，$A$一定是厄米矩阵吗？实数里有没有类似的结论？
+  hints:
+    - |
+      $\overline{\langle\vb x,A\vb x\rangle}=\langle A\vb x,\vb x\rangle$。
+    - |
+      反过来，取$\vb x=\vb e_j+\vb e_k$和$\vb x=\vb e_j+i\vb e_k$，看$a_{jk}$和$a_{kj}$。
+    - |
+      $A\HT=A$时$\overline{\langle\vb x,A\vb x\rangle}=\langle A\vb x,\vb x\rangle=\langle\vb x,A\vb x\rangle$，是实数。反过来：取$\vb e_j$得$a_{jj}$是实数；取$\vb e_j+\vb e_k$得$a_{jk}+a_{kj}$是实数，取$\vb e_j+i\vb e_k$得$i(a_{jk}-a_{kj})$是实数，两者合起来就是$a_{kj}=\bar a_{jk}$，$A$是厄米矩阵。实数里没有这样的结论：$\begin{pmatrix}0&1\\-1&0\end{pmatrix}$不对称，$\vb x\T A\vb x$却恒为$0$；复数里多了$i$这个方向，才能把矩阵完全确定下来。
+  reference: |
+    厄米时$\langle\vb x,A\vb x\rangle$等于自己的共轭。反之取$\vb e_j$、$\vb e_j+\vb e_k$、$\vb e_j+i\vb e_k$可得$a_{kj}=\bar a_{jk}$。实数时不成立，如反对称矩阵使$\vb x\T A\vb x\equiv0$。

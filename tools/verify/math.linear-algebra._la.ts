@@ -253,3 +253,39 @@ export function polyPad(p: number[], n: number): number[] {
   if (p.slice(n).some((a) => Math.abs(a) > 1e-12)) throw new Error('多项式次数超出');
   return Array.from({ length: n }, (_, i) => p[i] ?? 0);
 }
+
+/** 复合辛普森公式求 ∫_a^b f(x) dx，n 取偶数。 */
+export function simpson(f: (x: number) => number, a: number, b: number, n = 2000): number {
+  const h = (b - a) / n;
+  let s = f(a) + f(b);
+  for (let i = 1; i < n; i++) s += (i % 2 === 1 ? 4 : 2) * f(a + i * h);
+  return (s * h) / 3;
+}
+
+/**
+ * g 在平面单位圆上的最小值和最大值：先按角度粗扫，再在最好的格点两侧用黄金分割法细化。
+ * 不用特征值。
+ */
+export function circleMinMax(g: (x: Vec) => number, steps = 20000): [number, number] {
+  const at = (t: number): number => g([Math.cos(t), Math.sin(t)]);
+  const h = (2 * Math.PI) / steps;
+  let tMin = 0;
+  let tMax = 0;
+  for (let k = 1; k < steps; k++) {
+    if (at(k * h) < at(tMin)) tMin = k * h;
+    if (at(k * h) > at(tMax)) tMax = k * h;
+  }
+  const lo = at(argMin(at, tMin - h, tMin + h));
+  const hi = at(argMin((t) => -at(t), tMax - h, tMax + h));
+  return [Math.min(lo, at(tMin)), Math.max(hi, at(tMax))];
+}
+
+/** 复矩阵：元素写成 [实部, 虚部]。 */
+export type CMat = Cx[][];
+export const cconj = (a: Cx): Cx => [a[0], -a[1]];
+export const cmatMul = (A: CMat, B: CMat): CMat =>
+  A.map((row) => B[0].map((_, j) => row.reduce<Cx>((s, a, k) => cadd(s, cmul(a, B[k][j])), [0, 0])));
+/** 共轭转置：各元素取共轭再转置。 */
+export const cconjT = (A: CMat): CMat => A[0].map((_, j) => A.map((row) => cconj(row[j])));
+/** 两个复矩阵各元素之差的最大模。 */
+export const cmatDist = (A: CMat, B: CMat): number => Math.max(...A.flatMap((row, i) => row.map((a, j) => cabs(csub(a, B[i][j])))));

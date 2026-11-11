@@ -1,0 +1,123 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$A=\begin{pmatrix}3&0\\0&-2\end{pmatrix}$的两个奇异值$\sigma_1\ge\sigma_2$，按顺序填写。
+  answer:
+    type: tuple
+    value: [3, 2]
+  hints:
+    - |
+      奇异值是$A\T A$的特征值的平方根。
+    - |
+      $A\T A=\begin{pmatrix}9&0\\0&4\end{pmatrix}$。
+    - |
+      特征值$9$、$4$，奇异值$3$、$2$：对称矩阵的奇异值是特征值的绝对值，$-2$的负号放进了$U$。
+  solution: |
+    $A\T A=\mathrm{diag}(9,4)$，奇异值$3$、$2$，填 `3, 2`。
+
+- id: p2
+  tier: easy
+  statement: |
+    $A=\begin{pmatrix}3\\4\end{pmatrix}$是$2\times1$矩阵。求它唯一的奇异值。
+  answer:
+    type: number
+    value: 5
+  hints:
+    - |
+      $A\T A$是$1\times1$矩阵。
+    - |
+      $A\T A=3^2+4^2=25$。
+    - |
+      奇异值是$\sqrt{25}=5$：$A$把数轴上的单位长度拉成长度为$5$的向量$(3,4)$。
+  solution: |
+    $A\T A=25$，奇异值$5$，填 `5`。
+
+- id: p3
+  tier: medium
+  statement: |
+    $A=\begin{pmatrix}2&2\\-1&1\end{pmatrix}$。求两个奇异值的平方$\sigma_1^2\ge\sigma_2^2$，按顺序填写。
+  answer:
+    type: tuple
+    value: [8, 2]
+  hints:
+    - |
+      $\sigma_i^2$是$A\T A$的特征值。
+    - |
+      $A\T A=\begin{pmatrix}5&3\\3&5\end{pmatrix}$，迹（trace）$10$，行列式（determinant）$16$。
+    - |
+      $\lambda^2-10\lambda+16=(\lambda-8)(\lambda-2)$，$\sigma_1^2=8$，$\sigma_2^2=2$。验算：$\sigma_1\sigma_2=4=|\det A|$，$\sigma_1^2+\sigma_2^2=10$等于$A$的元素的平方和。
+  solution: |
+    $A\T A$的特征值是$8$、$2$，填 `8, 2`。
+
+- id: p4
+  tier: medium
+  statement: |
+    $A=\begin{pmatrix}1&2\\3&6\end{pmatrix}$的秩是$1$。求它不为零的那个奇异值的平方。
+  answer:
+    type: number
+    value: 50
+  hints:
+    - |
+      秩为$1$，$A\T A$的两个特征值里有一个是$0$。
+    - |
+      $A\T A=\begin{pmatrix}10&20\\20&40\end{pmatrix}$，另一个特征值等于迹。
+    - |
+      特征值是$50$、$0$，所以$\sigma_1^2=50$。也可以写$A=\begin{pmatrix}1\\3\end{pmatrix}\begin{pmatrix}1&2\end{pmatrix}$，$\sigma_1=|(1,3)|\cdot|(1,2)|=\sqrt{10}\cdot\sqrt5$。
+  solution: |
+    $A\T A$的特征值是$50$、$0$，填 `50`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$A$是$n$阶方阵。证明$|\det A|=\sigma_1\sigma_2\cdots\sigma_n$；并证明对所有单位向量$\vb x$，$|A\vb x|\le\sigma_1$，等号在$\vb x=\vb v_1$时成立。
+  hints:
+    - |
+      $\det A=\det U\det\Sigma\det V\T$，正交矩阵的行列式是$\pm1$。
+    - |
+      $|A\vb x|=|U\Sigma V\T\vb x|=|\Sigma\vb y|$，$\vb y=V\T\vb x$也是单位向量。
+    - |
+      $|\det A|=|\det\Sigma|=\sigma_1\cdots\sigma_n$。$|A\vb x|^2=|\Sigma\vb y|^2=\sum\sigma_i^2y_i^2\le\sigma_1^2\sum y_i^2=\sigma_1^2$（正交矩阵保持长度），$\vb x=\vb v_1$时$\vb y=\vb e_1$，取等号。所以$\sigma_1$是$A$对单位向量的最大拉长倍数，$|\det A|$是单位正方形（立方体）的像（image）的面积（体积）。
+  reference: |
+    $\det A=\pm\det\Sigma$。$|A\vb x|=|\Sigma V\T\vb x|$，$\vb y=V\T\vb x$为单位向量，$|\Sigma\vb y|^2=\sum\sigma_i^2y_i^2\le\sigma_1^2$，$\vb x=\vb v_1$时取等号。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$A=U\Sigma V\T$，恰有$r$个奇异值不为零。证明：$A$的列空间（column space）由$\vb u_1,\dots,\vb u_r$生成（span），零空间（null space）由$\vb v_{r+1},\dots,\vb v_n$生成，因而$\rank A=r$。
+  hints:
+    - |
+      $A\vb x=\sum_{i\le r}\sigma_i(\vb v_i\cdot\vb x)\vb u_i$。
+    - |
+      $A\vb x=\vb 0$当且仅当$\vb v_i\cdot\vb x=0$对$i\le r$都成立。
+    - |
+      由$A=\sum_{i\le r}\sigma_i\vb u_i\vb v_i\T$，$A\vb x$总是$\vb u_1,\dots,\vb u_r$的组合，取$\vb x=\vb v_j$又得$\sigma_j\vb u_j$，所以列空间是$\Span\{\vb u_1,\dots,\vb u_r\}$，$r$维。$A\vb x=\vb 0$当且仅当$\vb x$和$\vb v_1,\dots,\vb v_r$都正交，即$\vb x\in\Span\{\vb v_{r+1},\dots,\vb v_n\}$。列空间的维数（dimension）是秩，所以$\rank A=r$，和秩-零化度定理（rank–nullity theorem）$r+(n-r)=n$对得上。
+  reference: |
+    $A\vb x=\sum_{i\le r}\sigma_i(\vb v_i\cdot\vb x)\vb u_i$，列空间是$\Span\{\vb u_1,\dots,\vb u_r\}$；零空间是$\vb v_1,\dots,\vb v_r$的正交补，即$\Span\{\vb v_{r+1},\dots,\vb v_n\}$。$\rank A=r$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    对称矩阵$A=QDQ\T$本身就是「正交矩阵·对角矩阵（diagonal matrix）·正交矩阵的转置（transpose）」。它算不算$A$的奇异值分解？特征值有负数时，怎样改成奇异值分解？用$A=\begin{pmatrix}1&2\\2&1\end{pmatrix}$说明。
+  hints:
+    - |
+      奇异值分解要求$\Sigma$的对角元（diagonal entries）不为负，并且从大到小排。
+    - |
+      $A$的特征值是$3$、$-1$，特征向量$\frac1{\sqrt2}(1,1)$、$\frac1{\sqrt2}(1,-1)$。
+    - |
+      特征值都不为负时，按从大到小排好，$A=QDQ\T$就是奇异值分解，$U=V=Q$。有负特征值时，把负号挪进$U$：$A=3\vb q_1\vb q_1\T+(-1)\vb q_2\vb q_2\T=3\vb q_1\vb q_1\T+1\cdot(-\vb q_2)\vb q_2\T$，取$U$的两列$\vb q_1$、$-\vb q_2$，$V$的两列$\vb q_1$、$\vb q_2$，$\Sigma=\mathrm{diag}(3,1)$。奇异值是特征值的绝对值，$U\ne V$。
+  reference: |
+    特征值非负时是。$A$的特征值$3$、$-1$：取$\Sigma=\mathrm{diag}(3,1)$，$V=(\vb q_1,\vb q_2)$，$U=(\vb q_1,-\vb q_2)$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    $100\times100$矩阵$A=\sigma_1\vb u_1\vb v_1\T+\sigma_2\vb u_2\vb v_2\T+\dots$，奇异值从大到小；只保留第一项$A_1=\sigma_1\vb u_1\vb v_1\T$，要存多少个数？和存整个$A$比呢？对单位向量$\vb x$，$|A\vb x-A_1\vb x|$不超过多少？为什么要保留最大的那几项？
+  hints:
+    - |
+      存$\sigma_1$、$\vb u_1$、$\vb v_1$，各几个数？
+    - |
+      $A-A_1=\sum_{i\ge2}\sigma_i\vb u_i\vb v_i\T$，它的奇异值是$\sigma_2,\sigma_3,\dots$。
+    - |
+      $1+100+100=201$个数，整个$A$要$10000$个。$A-A_1$的最大奇异值是$\sigma_2$，由第 5 题，$|(A-A_1)\vb x|\le\sigma_2$。所以误差由第一个被扔掉的奇异值控制：留下最大的几项，扔掉的都是小的。奇异值下降得快的矩阵，保留几项就够了；保留$k$项要存$k(1+2\cdot100)$个数。
+  reference: |
+    $201$个数，原来$10000$个。$A-A_1$的奇异值为$\sigma_2,\dots$，由第 5 题$|(A-A_1)\vb x|\le\sigma_2$；保留大的奇异值使误差最小。

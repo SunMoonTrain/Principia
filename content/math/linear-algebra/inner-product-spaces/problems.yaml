@@ -1,0 +1,135 @@
+- id: p1
+  tier: easy
+  statement: |
+    在$C[0,1]$里取积分内积$\langle f,g\rangle=\int_0^1f(x)g(x)\dd x$。求$\langle x,x^2\rangle$。
+  answer:
+    type: number
+    value: 1/4
+  hints:
+    - |
+      按定义，$\langle x,x^2\rangle=\int_0^1x\cdot x^2\dd x$。
+    - |
+      $x\cdot x^2=x^3$，它的一个原函数是$\frac{x^4}4$。
+    - |
+      $\int_0^1x^3\dd x=\frac14-0=\frac14$。
+  solution: |
+    $\langle x,x^2\rangle=\int_0^1x^3\dd x=\frac14$，填 `1/4`。
+
+- id: p2
+  tier: easy
+  statement: |
+    在$\R^2$里规定$\langle\vb u,\vb v\rangle=2u_1v_1+3u_2v_2$，它是一个内积。求$\vb v=(1,-2)$的范数的平方$\|\vb v\|^2$。
+  answer:
+    type: number
+    value: 14
+  hints:
+    - |
+      $\|\vb v\|^2=\langle\vb v,\vb v\rangle$。
+    - |
+      $\langle\vb v,\vb v\rangle=2v_1^2+3v_2^2$。
+    - |
+      $2\cdot1^2+3\cdot(-2)^2=2+12=14$。
+  solution: |
+    $\|\vb v\|^2=2\cdot1+3\cdot4=14$，填 `14`。
+
+- id: p3
+  tier: medium
+  statement: |
+    $a$取下面哪些值时，$\langle\vb u,\vb v\rangle=u_1v_1+a(u_1v_2+u_2v_1)+4u_2v_2$是$\R^2$上的内积？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $a=0$
+      - |
+        $a=1.5$
+      - |
+        $a=2$
+      - |
+        $a=-1$
+      - |
+        $a=-2.5$
+    value: [1, 2, 4]
+  hints:
+    - |
+      对每个$a$，对称和线性都成立，要看的是第 (3) 条：$\langle\vb u,\vb u\rangle=u_1^2+2au_1u_2+4u_2^2$是否只在$\vb u=\vb 0$时为$0$、其余时候为正。
+    - |
+      配方：$u_1^2+2au_1u_2+4u_2^2=(u_1+au_2)^2+(4-a^2)u_2^2$。
+    - |
+      $a^2<4$时两项都不小于$0$，同时为$0$只能$u_2=0$、$u_1=0$，是内积；$a^2\ge4$时取$\vb u=(-a,1)$，得$\langle\vb u,\vb u\rangle=4-a^2\le0$，不是内积。所以选项 A、B、D 是内积。
+  solution: |
+    $\langle\vb u,\vb u\rangle=(u_1+au_2)^2+(4-a^2)u_2^2$，是内积当且仅当$-2<a<2$，选 A、B、D。
+
+- id: p4
+  tier: medium
+  statement: |
+    在$C[-1,1]$里取积分内积$\langle f,g\rangle=\int_{-1}^1f(x)g(x)\dd x$。求$f(x)=1+x$与$g(x)=1-x$夹角的余弦$\cos\theta$。
+  answer:
+    type: number
+    value: 1/2
+  hints:
+    - |
+      $\cos\theta=\frac{\langle f,g\rangle}{\|f\|\,\|g\|}$，先算三个积分。
+    - |
+      $\langle f,g\rangle=\int_{-1}^1(1-x^2)\dd x$，$\|f\|^2=\int_{-1}^1(1+x)^2\dd x$，$\|g\|^2=\int_{-1}^1(1-x)^2\dd x$。
+    - |
+      三个积分是$\frac43$、$\frac83$、$\frac83$（奇函数$2x$、$-2x$在$[-1,1]$上积分为$0$），所以$\cos\theta=\frac{4/3}{8/3}=\frac12$。
+  solution: |
+    $\langle f,g\rangle=\frac43$，$\|f\|^2=\|g\|^2=\frac83$，$\cos\theta=\frac12$，填 `1/2`。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明：在内积空间里，对任意$\vb u$、$\vb v$都有$\|\vb u+\vb v\|^2+\|\vb u-\vb v\|^2=2\|\vb u\|^2+2\|\vb v\|^2$，并且$\langle\vb u,\vb v\rangle=\frac14\bigl(\|\vb u+\vb v\|^2-\|\vb u-\vb v\|^2\bigr)$。第二个等式说明了什么？
+  hints:
+    - |
+      把$\|\vb u\pm\vb v\|^2$写成$\langle\vb u\pm\vb v,\vb u\pm\vb v\rangle$，按内积的线性展开。
+    - |
+      $\|\vb u+\vb v\|^2=\|\vb u\|^2+2\langle\vb u,\vb v\rangle+\|\vb v\|^2$，$\|\vb u-\vb v\|^2=\|\vb u\|^2-2\langle\vb u,\vb v\rangle+\|\vb v\|^2$。
+    - |
+      两式相加，交叉项抵消，得第一个等式；两式相减，得$4\langle\vb u,\vb v\rangle$，就是第二个等式。第一个等式说平行四边形两条对角线的平方和，等于四条边的平方和。第二个等式说，知道了每个向量的范数，内积就完全确定了：量得出长度，就算得出内积，夹角、正交也跟着确定。
+  reference: |
+    展开得$\|\vb u\pm\vb v\|^2=\|\vb u\|^2\pm2\langle\vb u,\vb v\rangle+\|\vb v\|^2$。相加得平行四边形等式，相减得$\|\vb u+\vb v\|^2-\|\vb u-\vb v\|^2=4\langle\vb u,\vb v\rangle$。所以内积由范数决定。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$在$[0,1]$上连续。证明$\bigl(\int_0^1f(x)\dd x\bigr)^2\le\int_0^1f(x)^2\dd x$，并说明等号何时成立。
+  hints:
+    - |
+      在$C[0,1]$的积分内积里用柯西-施瓦茨不等式，另一个函数取常数$1$。
+    - |
+      $\langle f,1\rangle=\int_0^1f(x)\dd x$，$\|1\|^2=\int_0^11\dd x=1$。
+    - |
+      由柯西-施瓦茨不等式，$\langle f,1\rangle^2\le\|f\|^2\|1\|^2=\int_0^1f^2\dd x$。等号当且仅当$f$和$1$线性相关，即$f$是常数函数。换个说法：$f$的平均值的平方不超过$f^2$的平均值，差额正是$\int_0^1\bigl(f-\int_0^1f\dd t\bigr)^2\dd x$。
+  reference: |
+    取$g=1$，$\langle f,1\rangle^2\le\|f\|^2\|1\|^2$，即$\bigl(\int_0^1f\dd x\bigr)^2\le\int_0^1f^2\dd x$；等号当且仅当$f$与$1$线性相关，即$f$为常数。
+
+- id: p7
+  tier: thinking
+  statement: |
+    在$\R^2$里规定$\langle\vb u,\vb v\rangle=u_1v_1-u_2v_2$。它满足内积的哪几条？找一个非零向量$\vb v$使$\langle\vb v,\vb v\rangle=0$；再找两个向量$\vb u$、$\vb v$，使$\langle\vb u,\vb u\rangle$、$\langle\vb v,\vb v\rangle$都为正，却有$|\langle\vb u,\vb v\rangle|>\sqrt{\langle\vb u,\vb u\rangle}\sqrt{\langle\vb v,\vb v\rangle}$。
+  hints:
+    - |
+      对称、线性逐条验证；第 (3) 条看$\langle\vb v,\vb v\rangle=v_1^2-v_2^2$。
+    - |
+      $v_1=\pm v_2$时$\langle\vb v,\vb v\rangle=0$。试$\vb u=(2,1)$、$\vb v=(2,-1)$。
+    - |
+      对称和线性都满足，第 (3) 条不满足：$(1,1)$不是$\vb 0$，$\langle(1,1),(1,1)\rangle=0$，$\langle(0,1),(0,1)\rangle=-1$甚至是负数。$\vb u=(2,1)$、$\vb v=(2,-1)$时$\langle\vb u,\vb v\rangle=4+1=5$，$\langle\vb u,\vb u\rangle=\langle\vb v,\vb v\rangle=3$，$5>3$，柯西-施瓦茨不等式反过来了：它的证明要用第 (3) 条。狭义相对论的时空间隔（spacetime interval）正是这种式子，那里有不少不等式要反过来（见[四维矢量](lesson:physics.special-relativity.four-vectors)）。
+  reference: |
+    满足对称和线性，不满足第 (3) 条：$\langle(1,1),(1,1)\rangle=0$。取$\vb u=(2,1)$、$\vb v=(2,-1)$，$\langle\vb u,\vb v\rangle=5>3=\sqrt3\cdot\sqrt3$。柯西-施瓦茨不等式的证明依赖第 (3) 条，所以这里不成立。
+
+- id: p8
+  tier: thinking
+  statement: |
+    在次数不超过$2$的多项式组成的$P_2$里规定$\langle p,q\rangle=p(0)q(0)+p(1)q(1)+p(2)q(2)$。它是内积吗？在次数不超过$3$的多项式组成的$P_3$里同样规定，还是内积吗？
+  hints:
+    - |
+      对称、线性都成立，问题在第 (3) 条：$\langle p,p\rangle=p(0)^2+p(1)^2+p(2)^2$什么时候等于$0$？
+    - |
+      $\langle p,p\rangle=0$说明$0$、$1$、$2$都是$p$的根。次数不超过$2$的非零多项式最多有几个根？
+    - |
+      在$P_2$里，有三个根的多项式只能是零多项式，所以是内积；它把$p$看成三个取值$\bigl(p(0),p(1),p(2)\bigr)$，再做点积。在$P_3$里，$p=x(x-1)(x-2)$不是零多项式，$\langle p,p\rangle=0$，第 (3) 条不成立，不是内积：三个点的取值不足以区分次数为$3$的多项式。
+  reference: |
+    $P_2$里：$\langle p,p\rangle=0$推出$p$有三个根，只能是$0$，是内积。$P_3$里：$x(x-1)(x-2)\ne0$但$\langle p,p\rangle=0$，不是内积。

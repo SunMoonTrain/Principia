@@ -1,0 +1,123 @@
+- id: p1
+  tier: easy
+  statement: |
+    $\vb q_1=\bigl(\frac35,\frac45\bigr)$、$\vb q_2=\bigl(-\frac45,\frac35\bigr)$是$\R^2$在点积下的一组正交规范基。求$\vb v=(2,1)$在这组基下的坐标，按顺序填写两个数。
+  answer:
+    type: tuple
+    value: [2, -1]
+  hints:
+    - |
+      正交规范基下，第$i$个坐标就是$\vb v\cdot\vb q_i$，不用解方程组。
+    - |
+      $\vb v\cdot\vb q_1=\frac65+\frac45$，$\vb v\cdot\vb q_2=-\frac85+\frac35$。
+    - |
+      坐标是$(2,-1)$。验算：$2\vb q_1-\vb q_2=\bigl(\frac65+\frac45,\frac85-\frac35\bigr)=(2,1)$。
+  solution: |
+    坐标是$(\vb v\cdot\vb q_1,\vb v\cdot\vb q_2)=(2,-1)$，填 `2, -1`。
+
+- id: p2
+  tier: easy
+  statement: |
+    在$\R^3$里取点积，对$\vb a_1=(1,0,1)$、$\vb a_2=(2,1,0)$做施密特正交化（不单位化）。求$\vb u_2$，按顺序填写三个分量。
+  answer:
+    type: tuple
+    value: [1, 1, -1]
+  hints:
+    - |
+      $\vb u_1=\vb a_1$，$\vb u_2=\vb a_2-\frac{\vb a_2\cdot\vb u_1}{\vb u_1\cdot\vb u_1}\vb u_1$。
+    - |
+      $\vb a_2\cdot\vb u_1=2$，$\vb u_1\cdot\vb u_1=2$。
+    - |
+      $\vb u_2=(2,1,0)-(1,0,1)=(1,1,-1)$，和$\vb u_1$的点积是$1+0-1=0$。
+  solution: |
+    $\vb u_2=\vb a_2-\vb a_1=(1,1,-1)$，填 `1, 1, -1`。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$A=\begin{pmatrix}3&1\\4&2\end{pmatrix}$的$QR$分解中$R$的三个非零元素$r_{11}$、$r_{12}$、$r_{22}$，按顺序填写。
+  answer:
+    type: tuple
+    value: [5, 11/5, 2/5]
+  hints:
+    - |
+      对$A$的两列$\vb a_1=(3,4)$、$\vb a_2=(1,2)$做施密特正交化：$r_{11}=\|\vb a_1\|$，$r_{12}=\vb a_2\cdot\vb q_1$，$r_{22}=\|\vb u_2\|$。
+    - |
+      $\vb q_1=\bigl(\frac35,\frac45\bigr)$，$r_{12}=\frac35+\frac85$。
+    - |
+      $r_{11}=5$，$r_{12}=\frac{11}5$；$\vb u_2=\vb a_2-\frac{11}5\vb q_1=\bigl(-\frac8{25},\frac6{25}\bigr)$，$r_{22}=\frac{10}{25}=\frac25$。验算：$Q=\begin{pmatrix}\frac35&-\frac45\\\frac45&\frac35\end{pmatrix}$，$QR$的第二列是$\frac{11}5\bigl(\frac35,\frac45\bigr)+\frac25\bigl(-\frac45,\frac35\bigr)=(1,2)$。
+  solution: |
+    $r_{11}=5$，$r_{12}=\frac{11}5$，$r_{22}=\frac25$，填 `5, 11/5, 2/5`。
+
+- id: p4
+  tier: medium
+  statement: |
+    在$C[0,1]$里取积分内积，对$1$、$x$做施密特正交化再单位化，得到$q_1=1$、$q_2=a\bigl(x-\frac12\bigr)$，$a>0$。求$a^2$。
+  answer:
+    type: number
+    value: 12
+  hints:
+    - |
+      $q_2$是$u_2=x-\frac12$除以它的范数，所以$a=\frac1{\|u_2\|}$。
+    - |
+      $\|u_2\|^2=\int_0^1\bigl(x-\frac12\bigr)^2\dd x$。
+    - |
+      $\int_0^1\bigl(x-\frac12\bigr)^2\dd x=\frac13\bigl(x-\frac12\bigr)^3\Big|_0^1=\frac1{24}+\frac1{24}=\frac1{12}$，所以$a^2=12$。
+  solution: |
+    $\|x-\frac12\|^2=\frac1{12}$，$a^2=12$，填 `12`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$V$是$n$维内积空间，$\vb q_1,\dots,\vb q_k$正交规范。证明可以再添上$\vb q_{k+1},\dots,\vb q_n$，使$\vb q_1,\dots,\vb q_n$成为$V$的正交规范基。
+  hints:
+    - |
+      $\vb q_1,\dots,\vb q_k$线性无关，可以添上一些向量补成$V$的一组基。
+    - |
+      对补成的基按原来的次序做施密特正交化，前$k$个向量会怎样？
+    - |
+      补成基$\vb q_1,\dots,\vb q_k,\vb a_{k+1},\dots,\vb a_n$后做施密特正交化：$\vb q_j$和前面的都正交，减去的投影都是$\vb 0$，所以前$k$个不变（范数已经是$1$）；后面得到的$\vb q_{k+1},\dots,\vb q_n$和前面都正交，合起来是$n$个正交规范的向量，线性无关，是$V$的正交规范基。另一种说法：在$W=\Span\{\vb q_1,\dots,\vb q_k\}$的正交补（orthogonal complement）$W^\perp$里取一组正交规范基。
+  reference: |
+    把$\vb q_1,\dots,\vb q_k$补成一组基再施密特正交化；前$k$个向量两两正交、范数为$1$，正交化时不变；得到的$n$个向量正交规范，构成正交规范基。
+
+- id: p6
+  tier: hard
+  statement: |
+    把施密特正交化的式子用到$\vb a_1,\dots,\vb a_k$上，但不假设它们线性无关（遇到$\vb u_i=\vb 0$时，后面的式子里跳过这一项）。证明：若$\vb a_1,\dots,\vb a_{j-1}$线性无关，而$\vb a_j$是它们的线性组合，则算出的$\vb u_j=\vb 0$。
+  hints:
+    - |
+      $\vb u_1,\dots,\vb u_{j-1}$是$W=\Span\{\vb a_1,\dots,\vb a_{j-1}\}$的正交基。
+    - |
+      减去的和式是$\vb a_j$在$W$上的正交投影。$\vb a_j$本身在$W$里，它的投影是什么？
+    - |
+      前$j-1$步和定理里一样，$\vb u_1,\dots,\vb u_{j-1}$两两正交、都不为$\vb 0$，生成$W$。减去的和式是$\operatorname{proj}_W\vb a_j$，$\vb a_j\in W$时它就是$\vb a_j$本身，所以$\vb u_j=\vb 0$。这给出一个判断线性相关的办法：正交化途中出现零向量（zero vector），就说明对应的向量是前面向量的线性组合。
+  reference: |
+    前$j-1$个$\vb u_i$是$W$的正交基，减去的和式等于$\operatorname{proj}_W\vb a_j$；$\vb a_j\in W$时投影等于它本身，故$\vb u_j=\vb 0$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    在$\R^2$里取点积，对$\vb a_1=(1,0)$、$\vb a_2=(1,1)$做施密特正交化再单位化；再把次序换成$(1,1)$、$(1,0)$做一遍。两次得到的正交规范基一样吗？施密特正交化的结果由什么决定？
+  hints:
+    - |
+      第一次：$\vb q_1$沿$(1,0)$；第二次：$\vb q_1$沿$(1,1)$。
+    - |
+      第一次得$(1,0)$、$(0,1)$；第二次$\vb u_2=(1,0)-\frac12(1,1)=\bigl(\frac12,-\frac12\bigr)$。
+    - |
+      第一次是$(1,0)$、$(0,1)$，第二次是$\frac1{\sqrt2}(1,1)$、$\frac1{\sqrt2}(1,-1)$，两组不一样。由施密特正交化的定理，$\vb q_1,\dots,\vb q_j$生成的子空间和$\vb a_1,\dots,\vb a_j$生成的一样，并且$\vb a_j$在$\vb q_j$上的坐标为正：这串子空间和这些正负号把结果完全定死，所以结果由向量的次序决定。
+  reference: |
+    不一样：$(1,0),(0,1)$与$\frac1{\sqrt2}(1,1),\frac1{\sqrt2}(1,-1)$。结果由每一步的子空间$\Span\{\vb a_1,\dots,\vb a_j\}$和$r_{jj}>0$决定，所以依赖次序。
+
+- id: p8
+  tier: thinking
+  statement: |
+    例 2 在$C[-1,1]$里把$1,x,x^2$正交化成$1$、$x$、$x^2-\frac13$。接着对$x^3$做下一步，$u_4$是什么？为什么得到的多项式依次是偶、奇、偶、奇函数？[正交补与正交投影](lesson:math.linear-algebra.orthogonal-projection)第 4 题里出现过的$\frac35$，在这里又是什么意思？
+  hints:
+    - |
+      $u_4=x^3-\frac{\langle x^3,1\rangle}{\langle1,1\rangle}-\frac{\langle x^3,x\rangle}{\langle x,x\rangle}x-\frac{\langle x^3,u_3\rangle}{\langle u_3,u_3\rangle}u_3$。哪些内积是奇函数的积分？
+    - |
+      $x^3$乘偶函数是奇函数，在$[-1,1]$上积分为$0$。
+    - |
+      只剩$x$那一项：$\frac{\langle x^3,x\rangle}{\langle x,x\rangle}=\frac{2/5}{2/3}=\frac35$，$u_4=x^3-\frac35x$。奇函数和偶函数总是正交，$x^k$只需减去在和它奇偶相同的那些多项式上的投影，所以结果的奇偶和$x^k$一样。$\frac35x$是$x^3$在$\Span\{1,x,x^2\}$上的投影，也就是第 4 题里用一次函数逼近$x^3$的答案：$u_4$正是逼近的误差。
+  reference: |
+    $u_4=x^3-\frac35x$。奇偶性不同的函数在$[-1,1]$上正交，所以每步只减去同奇偶的项，结果的奇偶性和$x^k$相同。$\frac35x$是$x^3$在一次函数（以及二次函数）子空间上的投影，$u_4$是逼近误差。

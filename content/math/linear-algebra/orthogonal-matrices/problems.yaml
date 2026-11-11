@@ -1,0 +1,137 @@
+- id: p1
+  tier: easy
+  statement: |
+    下面哪些是正交矩阵？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\begin{pmatrix}0&1\\1&0\end{pmatrix}$
+      - |
+        $\begin{pmatrix}1&1\\-1&1\end{pmatrix}$
+      - |
+        $\frac1{\sqrt2}\begin{pmatrix}1&1\\-1&1\end{pmatrix}$
+      - |
+        $\begin{pmatrix}1&0\\0&-1\end{pmatrix}$
+      - |
+        $\begin{pmatrix}0.6&0.8\\0.8&0.6\end{pmatrix}$
+    value: [1, 3, 4]
+  hints:
+    - |
+      看各列是不是两两正交、长度都是$1$。
+    - |
+      选项 B 的两列正交，长度都是$\sqrt2$；选项 E 的两列长度都是$1$，点积却是$0.96$。
+    - |
+      选项 A、C、D 的两列都正交规范，是正交矩阵；选项 B 的列长度不是$1$，$Q\T Q=2I$；选项 E 的两列不正交，$Q\T Q=\begin{pmatrix}1&0.96\\0.96&1\end{pmatrix}$。
+  solution: |
+    选项 A、C、D 是正交矩阵；选项 B 的两列正交，长度却是$\sqrt2$；选项 E 的两列长度是$1$，却不正交。
+
+- id: p2
+  tier: easy
+  statement: |
+    $Q=\begin{pmatrix}\frac35&-\frac45\\\frac45&\frac35\end{pmatrix}$。求$Q^{-1}$，按行填写四个元素。
+  answer:
+    type: tuple
+    value: [3/5, 4/5, -4/5, 3/5]
+  hints:
+    - |
+      先看$Q$是不是正交矩阵：两列长度都是$1$，点积是$0$。
+    - |
+      正交矩阵的逆就是它的转置。
+    - |
+      $Q^{-1}=Q\T=\begin{pmatrix}\frac35&\frac45\\-\frac45&\frac35\end{pmatrix}$。验算：$Q\T Q=\begin{pmatrix}\frac9{25}+\frac{16}{25}&0\\0&\frac{16}{25}+\frac9{25}\end{pmatrix}=I$。
+  solution: |
+    $Q$是正交矩阵，$Q^{-1}=Q\T$，填 `3/5, 4/5, -4/5, 3/5`。
+
+- id: p3
+  tier: medium
+  statement: |
+    二阶正交矩阵$Q$的第一列是$\bigl(\frac5{13},\frac{12}{13}\bigr)$，$\det Q=-1$。求$Q$的第二列，按顺序填写两个元素。
+  answer:
+    type: tuple
+    value: [12/13, -5/13]
+  hints:
+    - |
+      第二列是和第一列正交的单位向量，只有两种可能。
+    - |
+      两种可能是$\bigl(-\frac{12}{13},\frac5{13}\bigr)$和$\bigl(\frac{12}{13},-\frac5{13}\bigr)$，各算一下行列式。
+    - |
+      取$\bigl(\frac{12}{13},-\frac5{13}\bigr)$时$\det Q=-\frac{25}{169}-\frac{144}{169}=-1$，符合；另一种行列式是$1$，是旋转。
+  solution: |
+    第二列是$\bigl(\frac{12}{13},-\frac5{13}\bigr)$，填 `12/13, -5/13`。
+
+- id: p4
+  tier: medium
+  statement: |
+    $Q=\begin{pmatrix}-\frac12&\frac{\sqrt3}2\\\frac{\sqrt3}2&\frac12\end{pmatrix}$是关于一条过原点的直线的反射。这条直线和$x$轴正方向的夹角是多少度（取$0^\circ$到$180^\circ$之间）？
+  answer:
+    type: number
+    value: 60
+    unit: |
+      °
+  hints:
+    - |
+      对照$S_\theta=\begin{pmatrix}\cos\theta&\sin\theta\\\sin\theta&-\cos\theta\end{pmatrix}$，镜子和$x$轴的夹角是$\frac\theta2$。
+    - |
+      $\cos\theta=-\frac12$，$\sin\theta=\frac{\sqrt3}2$，所以$\theta=120^\circ$。
+    - |
+      镜子和$x$轴的夹角是$60^\circ$。验算：$Q\bigl(\frac12,\frac{\sqrt3}2\bigr)=\bigl(-\frac14+\frac34,\frac{\sqrt3}4+\frac{\sqrt3}4\bigr)=\bigl(\frac12,\frac{\sqrt3}2\bigr)$，沿这条直线的向量不动。
+  solution: |
+    $\theta=120^\circ$，镜子的夹角是$\frac\theta2=60^\circ$，填 `60`。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明：平面上两个反射的乘积是旋转。具体地，设$S_\alpha$、$S_\beta$是定理里的反射矩阵，证明$S_\beta S_\alpha=R_{\beta-\alpha}$，并说明为什么不用计算也能知道乘积是旋转。
+  hints:
+    - |
+      不用计算的理由：两个正交矩阵的乘积还是正交矩阵，行列式相乘。
+    - |
+      直接乘：$S_\beta S_\alpha$的第一列是$S_\beta(\cos\alpha,\sin\alpha)$。
+    - |
+      乘积是正交矩阵，$\det(S_\beta S_\alpha)=(-1)(-1)=1$，由平面上正交矩阵的分类，它是旋转。计算：$S_\beta(\cos\alpha,\sin\alpha)$的第一个分量（component）是$\cos\beta\cos\alpha+\sin\beta\sin\alpha=\cos(\beta-\alpha)$，第二个分量是$\sin\beta\cos\alpha-\cos\beta\sin\alpha=\sin(\beta-\alpha)$，正是$R_{\beta-\alpha}$的第一列，旋转由第一列决定，所以$S_\beta S_\alpha=R_{\beta-\alpha}$。镜子的夹角是$\frac\alpha2$、$\frac\beta2$，转角是两面镜子夹角的$2$倍。
+  reference: |
+    乘积正交且行列式为$1$，故是旋转；第一列算得$(\cos(\beta-\alpha),\sin(\beta-\alpha))$，所以是$R_{\beta-\alpha}$，转角是两镜夹角的两倍。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$\vb u\in\R^n$，$|\vb u|=1$，$H=I-2\vb u\vb u\T$。证明$H$既是对称矩阵（symmetric matrix）又是正交矩阵，$H\vb u=-\vb u$，并且和$\vb u$正交的$\vb x$都满足$H\vb x=\vb x$。$H$在几何上是什么？
+  hints:
+    - |
+      $\vb u\vb u\T$是$n$阶方阵，它的转置是它自己；$\vb u\T\vb u=|\vb u|^2=1$。
+    - |
+      $H\T H=H^2=(I-2\vb u\vb u\T)(I-2\vb u\vb u\T)$，展开时用$\vb u\T\vb u=1$。
+    - |
+      $H\T=I-2(\vb u\T)\T\vb u\T=H$，$H^2=I-4\vb u\vb u\T+4\vb u(\vb u\T\vb u)\vb u\T=I$，所以$H\T H=I$。$H\vb u=\vb u-2\vb u(\vb u\T\vb u)=-\vb u$；$\vb u\T\vb x=0$时$H\vb x=\vb x-2\vb u(\vb u\T\vb x)=\vb x$。$H\vb x=\vb x-2(\vb x\cdot\vb u)\vb u$，是$\vb x$减去两倍的它在$\vb u$上的投影（projection）：$H$是关于和$\vb u$垂直的超平面（hyperplane）的镜面反射。例 1 的$Q$就是$\vb u=\frac1{\sqrt3}(1,-1,-1)$时的$H$。
+  reference: |
+    $H\T=H$；$H^2=I-4\vb u\vb u\T+4\vb u\vb u\T=I$，故$H\T H=I$。$H\vb u=-\vb u$，$\vb x\perp\vb u$时$H\vb x=\vb x$。$H$是关于$\vb u^\perp$的反射。
+
+- id: p7
+  tier: thinking
+  statement: |
+    动画从$I$插值到旋转矩阵$R_\theta$，途中的矩阵是$(1-s)I+sR_\theta$。对单位向量$\vb x$，算$s=\frac12$时$\bigl|\bigl(\frac12I+\frac12R_\theta\bigr)\vb x\bigr|$，说明为什么途中会缩小、转$180^\circ$时会缩成一点。真正的匀速旋转动画应该怎样插值？
+  hints:
+    - |
+      $\frac12(\vb x+R_\theta\vb x)$是两个单位向量的中点，它们的夹角是$\theta$。
+    - |
+      两个夹角为$\theta$的单位向量，中点到原点的距离是$\cos\frac\theta2$。
+    - |
+      $\bigl|\frac12(\vb x+R_\theta\vb x)\bigr|=\cos\frac\theta2$，$\theta=60^\circ$时约$0.87$，$\theta=180^\circ$时是$0$：$R_\pi=-I$，$\frac12(I-I)=O$，整个平面缩成原点。插值走的是两个矩阵之间的直线，途中的矩阵不是正交矩阵；匀速旋转要让角度均匀变化，用$R_{s\theta}$，途中每一刻都是正交矩阵，长度一直不变。
+  reference: |
+    $\bigl|\frac12(\vb x+R_\theta\vb x)\bigr|=\cos\frac\theta2<1$，$\theta=\pi$时为$0$。线性插值途中不是正交矩阵；匀速旋转应插值角度，取$R_{s\theta}$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$f:\R^n\to\R^n$保持距离，即对所有$\vb x$、$\vb y$都有$|f(\vb x)-f(\vb y)|=|\vb x-\vb y|$，并且$f(\vb 0)=\vb 0$。为什么$f$一定保持点积？由此能说明$f$是正交变换吗？
+  hints:
+    - |
+      取$\vb y=\vb 0$，$f$保持长度；再展开$|f(\vb x)-f(\vb y)|^2=|\vb x-\vb y|^2$。
+    - |
+      展开得$|f(\vb x)|^2-2f(\vb x)\cdot f(\vb y)+|f(\vb y)|^2=|\vb x|^2-2\vb x\cdot\vb y+|\vb y|^2$，长度项消掉。
+    - |
+      所以$f(\vb x)\cdot f(\vb y)=\vb x\cdot\vb y$。令$\vb q_i=f(\vb e_i)$，它们是一组正交规范基，$f(\vb x)$在这组基（basis）下的坐标是$f(\vb x)\cdot\vb q_i=\vb x\cdot\vb e_i=x_i$，即$f(\vb x)=x_1\vb q_1+\dots+x_n\vb q_n=Q\vb x$，$Q$的各列是$\vb q_i$，是正交矩阵。所以保持距离、固定原点的变换，自动是线性的正交变换；不固定原点时，它是一个正交变换再加一个平移。
+  reference: |
+    由$f(\vb 0)=\vb 0$得长度不变，展开距离平方得点积不变。$\vb q_i=f(\vb e_i)$正交规范，$f(\vb x)$的坐标为$x_i$，故$f(\vb x)=Q\vb x$，是正交变换。
