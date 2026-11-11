@@ -195,10 +195,11 @@ export function niceStep(span: number, target = 6): number {
   return (norm < 1.5 ? 1 : norm < 3 ? 2 : norm < 7 ? 5 : 10) * magnitude;
 }
 
-function formatTick(value: number, step: number): string {
+/** 刻度数字：小数位跟着间隔走，负号用 −；刻度是一格格加出来的，0 处可能是 −1e-17 这样的数，舍入成 0 的不带负号。 */
+export function formatTick(value: number, step: number): string {
   const decimals = Math.max(0, -Math.floor(Math.log10(step) + 1e-9));
   const text = value.toFixed(decimals);
-  return text === '-0' ? '0' : text.replace(/^-/, '−');
+  return Number(text) === 0 ? text.replace(/^-/, '') : text.replace(/^-/, '−');
 }
 
 /** 网格、坐标轴（过原点时画）和刻度数字。 */
