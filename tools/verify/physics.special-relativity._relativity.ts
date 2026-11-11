@@ -153,3 +153,49 @@ export function radarVelocity(v: number, c: number, ux: number, uy = 0): [number
   const b = radar(v, c, { t: T, x: ux * T, y: uy * T });
   return [(b.x - a.x) / (b.t - a.t), (b.y - a.y) / (b.t - a.t)];
 }
+
+// ---------- 三、四维矢量（批次 7 起） ----------
+
+export type Four = [number, number, number, number];
+
+/** 闵可夫斯基内积，号差 (+,−,−,−)。 */
+export const dot4 = (A: Four, B: Four): number => A[0] * B[0] - A[1] * B[1] - A[2] * B[2] - A[3] * B[3];
+
+/** 不写度规的另一条路：「间隔的平方」= 时间分量² − 空间部分的几何长度²，再用极化恒等式 A·B = (s²(A+B) − s²(A−B))/4。 */
+export function dotByPolarization(A: Four, B: Four): number {
+  const s2 = (X: Four): number => X[0] * X[0] - Math.hypot(X[1], X[2], X[3]) ** 2;
+  const plus = A.map((a, i) => a + B[i]) as Four;
+  const minus = A.map((a, i) => a - B[i]) as Four;
+  return (s2(plus) - s2(minus)) / 4;
+}
+
+/** 把四维矢量当成原点到一个事件的坐标差（c = 1），用雷达法求它在沿 x 轴以 β 运动的惯性系里的分量；横向分量不变。 */
+export function boost4ByRadar(beta: number, A: Four): Four {
+  const e = radar(beta, 1, { t: A[0], x: A[1], y: Math.hypot(A[2], A[3]) });
+  return [e.t, e.x, A[2], A[3]];
+}
+
+/** 沿单位矢量 n 方向、快度为 φ 的推进（不只是沿 x 轴），作用在四维矢量上。 */
+export function boostAlong(phi: number, n: [number, number, number], A: Four): Four {
+  const len = Math.hypot(...n);
+  const [nx, ny, nz] = n.map((v) => v / len);
+  const ch = Math.cosh(phi);
+  const sh = Math.sinh(phi);
+  const par = A[1] * nx + A[2] * ny + A[3] * nz;
+  const t = ch * A[0] - sh * par;
+  const parNew = ch * par - sh * A[0];
+  return [t, A[1] + (parNew - par) * nx, A[2] + (parNew - par) * ny, A[3] + (parNew - par) * nz];
+}
+
+/**
+ * 运动光源的频率比（操作性算法）：光源沿 x 轴以 v 运动、自己的钟每走 T0 发一个波峰（S 里相隔 T0 ÷ 光钟的读数比），
+ * 波峰沿单位矢量 dir 传到很远处的观察者；两个波峰到达的时间差 = 发出的时间差 −（光源位移在 dir 上的投影）/ c。
+ * 返回 ω/ω₀ = T0 / 到达的时间差。
+ */
+export function dopplerRatio(v: number, c: number, dir: [number, number]): number {
+  const T0 = 1;
+  const emit = T0 / clockRate(v, c);
+  const len = Math.hypot(...dir);
+  const arrive = emit - (v * emit * (dir[0] / len)) / c;
+  return T0 / arrive;
+}

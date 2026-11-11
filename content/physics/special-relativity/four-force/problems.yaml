@@ -1,0 +1,157 @@
+- id: p1
+  tier: easy
+  statement: |
+    质量为$m$的质点从静止开始，在大小、方向都不变的力$F$作用下沿直线运动。经过时间$t$，$Ft=mc$。这时它的速率是多少？
+  answer:
+    type: number
+    value: sqrt(2)/2
+    unit: |
+      $c$
+  hints:
+    - |
+      $F=\dv pt$，力不变，从静止出发，$p=Ft$。
+    - |
+      $\gamma_umu=mc$，即$\frac{u/c}{\sqrt{1-u^2/c^2}}=1$。
+    - |
+      $\frac{u^2}{c^2}=1-\frac{u^2}{c^2}$，$u=\frac{c}{\sqrt2}\approx0.707c$。
+  solution: |
+    动量$p=Ft=mc$，即$\gamma_umu=mc$，平方得$\frac{u^2}{c^2}=1-\frac{u^2}{c^2}$，$u=\frac{\sqrt2}{2}c\approx0.707c$。按牛顿力学，这时速度已经是$c$；相对论里还差得远，而且永远到不了$c$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法是对的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        恒力作用足够久，质点的速度可以超过光速
+      - |
+        质量不变时，四维力和四维速度的内积为零
+      - |
+        质点沿直线加速时，固有加速度等于实验室里量到的$\frac{\dd u}{\dd t}$
+      - |
+        力对质点做功的功率是$\vb F\cdot\vb u$
+      - |
+        双曲运动中，快度随船上的钟读数均匀增长
+    value: [2, 4, 5]
+  hints:
+    - |
+      看双曲运动的$u(t)$；对$P\cdot P=m^2c^2$求导。
+    - |
+      沿直线运动时$\dv ut=\frac{\alpha}{\gamma_u^3}$；功率定理$\dv Et=\vb F\cdot\vb u$。
+    - |
+      B、D、E 对；A、C 错。
+  solution: |
+    A 错，$u=\frac{\alpha t}{\sqrt{1+\alpha^2t^2/c^2}}<c$。B 对：对$P\cdot P=m^2c^2$求导得$P\cdot K=0$。C 错，实验室里的$\frac{\dd u}{\dd t}$只有固有加速度的$\frac{1}{\gamma_u^3}$；D 对，这是功率定理。E 对，快度$\varphi=\frac{\alpha\tau}c$。
+
+- id: p3
+  tier: medium
+  statement: |
+    飞船从静止出发，以固有加速度$\alpha=10\,\mathrm{m/s^2}$直线加速。船上的钟要走多少年，飞船相对出发点的速度才达到$0.9c$？取$c=2.997\,924\,58\times10^8\,\mathrm{m/s}$，$1$年$=365.25$天。
+  answer:
+    type: number
+    value: 299792458/10*0.5*ln(19)/(365.25*86400)
+    unit: |
+      年
+  hints:
+    - |
+      双曲运动中$u=c\tanh\frac{\alpha\tau}c$，所以$\tau=\frac c\alpha\,\varphi$，$\varphi$是$0.9c$的快度。
+    - |
+      $\tanh\varphi=0.9$，$\varphi=\frac12\ln\frac{1+0.9}{1-0.9}=\frac12\ln19\approx1.472$。
+    - |
+      $\tau=\frac{2.9979\times10^8}{10}\times1.472\,\mathrm s\approx4.41\times10^7\,\mathrm s\approx1.399$年。
+  solution: |
+    $0.9c$的快度$\varphi=\frac12\ln19\approx1.4722$，$\tau=\frac c\alpha\varphi\approx2.998\times10^7\times1.4722\,\mathrm s\approx4.414\times10^7\,\mathrm s\approx1.399$年。这时地面上过了$\frac c\alpha\sinh\varphi\approx0.950\times2.065\approx1.96$年，比船上多出约四成。
+
+- id: p4
+  tier: medium
+  statement: |
+    电子在$1.5\times10^6\,\mathrm{V/m}$的匀强电场里从静止开始，沿电场力的方向走了$2\,\mathrm m$。$m_ec^2=0.511\,\mathrm{MeV}$。求它的速率。
+  answer:
+    type: number
+    value: sqrt(1 - (0.511/3.511)^2)
+    unit: |
+      $c$
+  hints:
+    - |
+      由功率定理，电场力做的功等于电子能量的增加。
+    - |
+      做功$1.5\,\mathrm{MeV/m}\times2\,\mathrm m=3\,\mathrm{MeV}$，电子的能量$E=3.511\,\mathrm{MeV}$。
+    - |
+      $\gamma_u=\frac{3.511}{0.511}$，$\frac uc=\sqrt{1-\bigl(\frac{0.511}{3.511}\bigr)^2}\approx0.9894$。
+  solution: |
+    电场力$eE$对电子做功$3\,\mathrm{MeV}$，能量从$0.511\,\mathrm{MeV}$增加到$3.511\,\mathrm{MeV}$，$\gamma_u\approx6.871$，$u=c\sqrt{1-\gamma_u^{-2}}\approx0.9894c$。按牛顿力学会得到$c\sqrt{\frac{2\times3}{0.511}}\approx3.4c$。
+
+- id: p5
+  tier: hard
+  statement: |
+    质点以速度$\vb u$运动，受力$\vb F$。证明：力垂直于$\vb u$时，$\vb F=\gamma_um\vb a$；力平行于$\vb u$时，$\vb F=\gamma_u^3m\vb a$，$\vb a=\dv{\vb u}{t}$。所以一般情况下力和加速度不平行。
+  hints:
+    - |
+      $\vb F=\dv{(\gamma_um\vb u)}{t}=m\gamma_u\vb a+m\vb u\dv{\gamma_u}{t}$。
+    - |
+      $\dv{\gamma_u}{t}=\gamma_u^3\frac{\vb u\cdot\vb a}{c^2}$。
+    - |
+      力垂直于$\vb u$时，先由功率定理说明速率不变，于是$\vb u\cdot\vb a=0$；力平行于$\vb u$时，$\vb a$也平行于$\vb u$。
+  reference: |
+    $\vb F=\dv{(\gamma_um\vb u)}{t}=m\gamma_u\vb a+m\vb u\dv{\gamma_u}{t}$，而$\gamma_u=(1-\vb u\cdot\vb u/c^2)^{-1/2}$，$\dv{\gamma_u}{t}=\gamma_u^3\frac{\vb u\cdot\vb a}{c^2}$。所以$\vb F=m\gamma_u\vb a+m\gamma_u^3\frac{(\vb u\cdot\vb a)}{c^2}\vb u$。
+
+    力垂直于$\vb u$：由功率定理，$\dv Et=\vb F\cdot\vb u=0$，能量不变，速率不变，$\vb u\cdot\vb a=0$，于是$\vb F=\gamma_um\vb a$。力平行于$\vb u$：加速度也沿$\vb u$，$(\vb u\cdot\vb a)\vb u=u^2\vb a$，$\vb F=m\gamma_u\vb a\bigl(1+\gamma_u^2\frac{u^2}{c^2}\bigr)=m\gamma_u^3\vb a$，用到了$1+\gamma_u^2\frac{u^2}{c^2}=\gamma_u^2$。
+
+    一般的力可以分成平行和垂直于$\vb u$的两部分，两部分对应的「惯性」相差$\gamma_u^2$倍，所以$\vb a$不和$\vb F$平行，除非$\vb F$恰好平行或垂直于$\vb u$。速度接近光速时，沿运动方向推很难让它再快，侧向推却相对容易让它转弯：磁场里的带电粒子做圆周运动，用的就是$\vb F=\gamma_um\vb a$。
+
+- id: p6
+  tier: hard
+  statement: |
+    飞船从地球（$x=0$）出发做双曲运动，固有加速度为$\alpha$。地球在$t_e$时刻向飞船发出一个光信号。证明：$t_e\ge\frac c\alpha$时，这个信号永远追不上飞船；$t_e<\frac c\alpha$时能追上，而且飞船收到它时船上的钟读数随$t_e\to\frac c\alpha$趋于无穷。
+  hints:
+    - |
+      信号的世界线是$x=c(t-t_e)$，飞船的是$\bigl(x+\frac{c^2}\alpha\bigr)^2-c^2t^2=\frac{c^4}{\alpha^2}$。
+    - |
+      飞船世界线的渐近线是$x=ct-\frac{c^2}{\alpha}$，它也是一条光线，从$t=\frac c\alpha$时的地球出发。
+    - |
+      联立求交点：用$ct=\frac{c^2}\alpha\sinh\frac{\alpha\tau}c$、$x=\frac{c^2}\alpha\bigl(\cosh\frac{\alpha\tau}c-1\bigr)$代入$x=c(t-t_e)$。
+  reference: |
+    信号的世界线$x=ct-ct_e$。飞船的世界线$x+\frac{c^2}\alpha=\sqrt{c^2t^2+\frac{c^4}{\alpha^2}}>ct$，所以飞船始终在光线$x=ct-\frac{c^2}{\alpha}$的前方，并且越来越接近它。$t_e\ge\frac c\alpha$时，信号的世界线在这条光线上或后面，两条平行的光线不会相交，信号就永远追不上飞船。
+
+    $t_e<\frac c\alpha$时，把飞船的世界线写成固有时的形式代入$x=c(t-t_e)$：$\frac{c^2}\alpha\bigl(\cosh\frac{\alpha\tau}c-1\bigr)=\frac{c^2}\alpha\sinh\frac{\alpha\tau}c-ct_e$。利用$\cosh y-\sinh y=e^{-y}$，得$e^{-\alpha\tau/c}=1-\frac{\alpha t_e}{c}$，即$\tau=-\frac c\alpha\ln\bigl(1-\frac{\alpha t_e}c\bigr)$，$t_e\to\frac c\alpha$时$\tau\to\infty$。
+
+    所以船上的人看地球：收到的信号来自越来越接近$t=\frac c\alpha$的时刻，地球上的钟看起来越走越慢，最后停在$\frac c\alpha$；$t=\frac c\alpha$以后地球上发生的事，飞船永远看不到。只要飞船一直这样加速，这条光线就像一道「视界」（horizon）挡在它身后。
+
+- id: p7
+  tier: thinking
+  statement: |
+    牛顿第二定律$\vb F=m\vb a$在相对论里还成立吗？在什么参考系里成立？为什么不能简单地把它改成$\vb F=\gamma_um\vb a$？
+  hints:
+    - |
+      看瞬时静止系：那里质点这一瞬间速度为零。
+    - |
+      沿运动方向和垂直于运动方向推，$\vb F$和$\vb a$的比例一样吗？
+    - |
+      用四维力写，$K^\mu=mA^\mu$对吗？
+  reference: |
+    在质点的瞬时静止系里，$\gamma_u=1$，$\gamma_u$的变化率也是零，$\vb F'=m\vb a'$在这一瞬间严格成立；船上的人用牛顿第二定律算自己受的力，是对的。
+
+    在别的惯性系里，$\vb F=\dv{\vb p}{t}$展开是$m\gamma_u\vb a+m\gamma_u^3\frac{\vb u\cdot\vb a}{c^2}\vb u$（见 p5），沿运动方向的比例是$\gamma_u^3m$，垂直方向是$\gamma_um$，没有一个数能写成$\vb F=(\text{常数})\vb a$，所以$\vb F=\gamma_um\vb a$只对垂直于运动方向的力成立。
+
+    相对论里真正形式简单的是四维写法：质量不变时$K^\mu=\dv{P^\mu}{\tau}=mA^\mu$，四维力等于质量乘四维加速度，在每个惯性系里都成立。牛顿第二定律是它在瞬时静止系里的空间分量。
+
+- id: p8
+  tier: thinking
+  statement: |
+    一根杆沿自身方向整体加速，要求在每一时刻的瞬时静止系里，杆的长度都保持$L$不变。杆的前端和后端可以用同样的固有加速度吗？这和[长度收缩](lesson:physics.special-relativity.length-contraction)里贝尔（John Bell）讨论的飞船佯谬（Bell's spaceship paradox）有什么关系？
+  hints:
+    - |
+      固有加速度为$\alpha$的双曲运动，世界线是$\bigl(x+\frac{c^2}\alpha\bigr)^2-c^2t^2=\frac{c^4}{\alpha^2}$，所有这样的双曲线有共同的中心吗？
+    - |
+      取后端、前端的双曲线有同一个中心，$X^2-c^2t^2=\rho^2$，$\rho$不同。过中心的直线$ct=kX$是它们共同的同时线。
+    - |
+      在每条同时线上，两条双曲线之间的距离都是$\rho_{\text{前}}-\rho_{\text{后}}$；固有加速度是$\frac{c^2}{\rho}$，后端更大。
+  reference: |
+    不可以。设杆的各点做中心相同的双曲运动：$X^2-c^2t^2=\rho^2$（$X$从共同的中心量起），固有加速度是$\frac{c^2}{\rho}$。过中心的直线$ct=kX$（$|k|<1$）是某个瞬时静止系的同时线，它和每条双曲线都垂直相交（闵可夫斯基意义下），在这条线上两端的距离始终是$\rho_{\text{前}}-\rho_{\text{后}}=L$。所以要保持瞬时静止系里的长度不变，后端的$\rho$小，固有加速度$\frac{c^2}{\rho_{\text{后}}}$比前端大。
+
+    反过来，如果前后两端用同样的固有加速度，它们的双曲线是左右平移的两条，在地面参考系里两端的距离始终不变；可地面看杆在运动，固有长度（proper length）应当是$\gamma$倍，于是杆在自己的瞬时静止系里被越拉越长。这正是贝尔的飞船佯谬：两艘以同样方式加速的飞船之间的绳子会被拉断。
+
+    所以相对论里，一个物体整体加速而不变形，各部分的加速度必须不同；没有哪个物体能对推力「整体同时」作出反应，后端要先推、推得更猛。

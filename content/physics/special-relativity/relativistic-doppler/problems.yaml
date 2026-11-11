@@ -1,0 +1,153 @@
+- id: p1
+  tier: easy
+  statement: |
+    光源以$0.8c$正对着背离观察者的方向飞走。观察者测到的频率是光源静止时发出的频率的几倍？
+  answer:
+    type: number
+    value: 1/3
+  hints:
+    - |
+      这是纵向多普勒效应，光源远离。
+    - |
+      频率比是$\sqrt{\frac{1-\beta}{1+\beta}}$，$\beta=0.8$。
+    - |
+      $\sqrt{\frac{0.2}{1.8}}=\sqrt{\frac19}=\frac13$。
+  solution: |
+    $\frac{\omega}{\omega_0}=\sqrt{\frac{1-0.8}{1+0.8}}=\frac13$，波长变成原来的$3$倍。按声波的公式（波源在介质里运动）会得到$\frac{1}{1.8}\approx0.556$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法是对的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        光的多普勒频移只取决于光源和观察者的相对速度
+      - |
+        在观察者的惯性系里，光传来的方向和光源速度垂直时，测到的频率比光源静止时的低
+      - |
+        光源以$\beta c$远离时，测到的频率是$\omega_0(1-\beta)$
+      - |
+        真空中的光，四维波矢满足$k\cdot k=0$
+      - |
+        相对速度相同时，光源朝观察者飞来和观察者朝光源飞去，测到的频率不同
+    value: [1, 2, 4]
+  hints:
+    - |
+      光没有介质；四维波矢的时间分量是$\frac\omega c$。
+    - |
+      横向时$\omega=\frac{\omega_0}{\gamma}$；纵向时是$\sqrt{\frac{1\mp\beta}{1\pm\beta}}$倍。
+    - |
+      A、B、D 对；C、E 错。
+  solution: |
+    A 对，只有相对速度有意义。B 对，这是横向多普勒效应，频率乘$\frac1\gamma$。C 错，远离时是$\omega_0\sqrt{\frac{1-\beta}{1+\beta}}$，$\omega_0(1-\beta)$是观察者在介质里运动时声波的公式；D 对，$\omega=c|\vb k|$。E 错，两种情形只是换了个惯性系描述，结果相同。
+
+- id: p3
+  tier: medium
+  statement: |
+    一个远离我们的天体发出的一条谱线，测得的波长是它静止时的$1.5$倍。按纵向多普勒效应，它远离的速度是多少？
+  answer:
+    type: number
+    value: 5/13
+    unit: |
+      $c$
+  hints:
+    - |
+      波长和频率成反比，远离时$\frac{\lambda}{\lambda_0}=\sqrt{\frac{1+\beta}{1-\beta}}$。
+    - |
+      $\frac{1+\beta}{1-\beta}=2.25$。
+    - |
+      $1+\beta=2.25-2.25\beta$，$\beta=\frac{1.25}{3.25}=\frac5{13}\approx0.385$。
+  solution: |
+    $\frac{\lambda}{\lambda_0}=\sqrt{\frac{1+\beta}{1-\beta}}=1.5$，平方得$1+\beta=2.25(1-\beta)$，$\beta=\frac{5}{13}\approx0.385$，速度约$0.385c$。按一阶公式$\frac{\Delta\lambda}{\lambda_0}\approx\beta$会得到$0.5c$，速度大时一阶公式不够用。
+
+- id: p4
+  tier: medium
+  statement: |
+    光源以$0.6c$相对观察者运动。在光源自己的静止系里，它沿垂直于运动方向的方向发出角频率为$\omega_0$的光，这束光后来被观察者收到。观察者测到的频率是$\omega_0$的几倍？
+  answer:
+    type: number
+    value: 1.25
+  hints:
+    - |
+      在光源的静止系$S'$里写出四维波矢：$k'=\frac{\omega_0}{c}(1,0,1,0)$（取运动方向为$x$轴）。
+    - |
+      观察者的惯性系相对$S'$以$-0.6c$运动，$k^0=\gamma(k'^0+\beta k'^1)$。
+    - |
+      $k'^1=0$，所以$\omega=\gamma\omega_0=1.25\omega_0$。
+  solution: |
+    在光源的静止系里$k'=\frac{\omega_0}c(1,0,1,0)$。观察者的惯性系相对它以$-0.6c$运动，$k^0=\gamma(k'^0+0.6k'^1)=\gamma\frac{\omega_0}{c}$，$\omega=1.25\,\omega_0$，是蓝移。在观察者的惯性系里，这束光的方向满足$\cos\theta=\frac{k^1}{|\vb k|}=0.6$，不是垂直的；代入讲解的公式，$\omega=\frac{\omega_0}{\gamma(1-0.6\times0.6)}=\frac{0.8}{0.64}\omega_0=1.25\omega_0$，结果相同。
+
+- id: p5
+  tier: hard
+  statement: |
+    用四维波矢推出光行差公式：光在光源静止系$S'$里的传播方向和$x'$轴成$\theta'$，在观察者的惯性系$S$里和$x$轴成$\theta$（$S'$相对$S$以$v$处于标准位形），证明$\cos\theta=\frac{\cos\theta'+\beta}{1+\beta\cos\theta'}$。再说明：$\theta'=\frac\pi2$时$\cos\theta=\beta$，并和[速度变换](lesson:physics.special-relativity.velocity-transformation)的 p5 对照。
+  hints:
+    - |
+      $k'=\frac{\omega'}c(1,\cos\theta',\sin\theta',0)$，用逆变换求$k$。
+    - |
+      $k^0=\gamma\frac{\omega'}c(1+\beta\cos\theta')$，$k^1=\gamma\frac{\omega'}c(\cos\theta'+\beta)$。
+    - |
+      光的$|\vb k|=k^0$，所以$\cos\theta=\frac{k^1}{k^0}$。
+  reference: |
+    $S$相对$S'$以$-v$运动，所以$k^0=\gamma(k'^0+\beta k'^1)=\gamma\frac{\omega'}{c}(1+\beta\cos\theta')$，$k^1=\gamma(k'^1+\beta k'^0)=\gamma\frac{\omega'}{c}(\cos\theta'+\beta)$，$k^2=\frac{\omega'}c\sin\theta'$。光在$S$里也有$|\vb k|=k^0$，所以$\cos\theta=\frac{k^1}{k^0}=\frac{\cos\theta'+\beta}{1+\beta\cos\theta'}$。
+
+    $\theta'=\frac\pi2$时$\cos\theta=\beta$：在$S'$里横着发出的光，在$S$里朝前倾斜。频率$\omega=ck^0=\gamma\omega'(1+\beta\cos\theta')$，和讲解的公式一致（把$\cos\theta'$用$\cos\theta$表示，$1+\beta\cos\theta'=\frac{1}{\gamma^2(1-\beta\cos\theta)}$）。
+
+    速度变换（velocity transformation）那一节的 p5 里，恒星的光在$S$里沿$-y$方向，变到随地球运动的$S'$里偏了角$\alpha$，$\sin\alpha=\beta$。在这里取$\theta=\frac\pi2$（在$S$里垂直），反解得$\cos\theta'=-\beta$，即$S'$里的方向和$-y'$轴的夹角$\alpha$满足$\sin\alpha=\beta$，两种算法一致。四维波矢一次就给出了频率和方向两者的变换。
+
+- id: p6
+  tier: hard
+  statement: |
+    用多普勒效应重新算[双生子佯谬与其他佯谬](lesson:physics.special-relativity.twin-paradox)里的例子：乙以$0.8c$飞到$4$光年外再返回。甲每过自己的$1$年向乙发一个光信号，乙也每过自己的$1$年向甲发一个。证明：乙一共收到$10$个甲的信号，甲一共收到$6$个乙的信号；不用同时线，也能得出两人的年龄。
+  hints:
+    - |
+      去程两人互相远离，收到信号的频率是发出频率的$\sqrt{\frac{1-0.8}{1+0.8}}=\frac13$；回程互相靠近，是$3$倍。
+    - |
+      乙去程、回程各用自己的$3$年。甲那边：乙掉头时发出的光，要到地球时间第$5+4=9$年才到。
+    - |
+      乙收到$3\times\frac13+3\times3=10$个；甲在前$9$年里收到$9\times\frac13=3$个，最后$1$年收到$1\times3=3$个。
+  reference: |
+    乙收到的信号：去程乙用了自己的$3$年，这期间两人互相远离，甲的信号到达乙的频率是每年$\frac13$个，收到$1$个；回程乙用了自己的$3$年，频率是每年$3$个，收到$9$个。共$10$个，说明甲的钟走了$10$年。
+
+    甲收到的信号：乙掉头事件在地球参考系里是$t=5$年、$x=4$光年，那一刻乙发出的光要到$t=9$年才到地球。所以前$9$年（甲的时间）甲收到的是乙去程发的信号，每年$\frac13$个，共$3$个；最后$1$年收到乙回程发的，每年$3$个，共$3$个。共$6$个，说明乙的钟走了$6$年。
+
+    两人数的都是实实在在到达的信号，结论一致：甲$10$年，乙$6$年。不对称在于：乙掉头那一刻就开始以每年$3$个的频率收信号，甲却要等到第$9$年才知道乙掉了头，看到快频率的时间只有$1$年。乙在掉头时「看到」的，并不是甲突然变老，而是甲的信号突然变密。
+
+- id: p7
+  tier: thinking
+  statement: |
+    声波的多普勒效应里，波源以$v$飞向静止的观察者，和观察者以$v$走向静止的波源，频移不同。光为什么没有这种区别？如果真有以太，光的多普勒效应会是什么样？
+  hints:
+    - |
+      声波的两种情形，物理上有什么不同？空气相对谁静止？
+    - |
+      光速不变原理（constancy of the speed of light）说，没有一个特殊的「光的介质」参考系。
+    - |
+      以太理论里，光的公式会像声波一样依赖光源、观察者各自相对以太的速度。
+  reference: |
+    声波在空气里传播，空气挑出了一个特殊的参考系。波源运动时，波长被压缩，频率是$\frac{f_0}{1-v/v_s}$；观察者运动时，波长不变，观察者迎着波跑，频率是$f_0(1+v/v_s)$。两者物理上确实不同，因为分别是波源、观察者相对空气在动。
+
+    光没有这样的介质：按相对性原理（principle of relativity），「光源动、观察者静止」和「观察者动、光源静止」只是同一个过程在两个惯性系里的描述，结果必须相同。用四维波矢推出的公式只含相对速度，正是这个原因；数值上它是声波两个公式的几何平均。
+
+    如果真有以太，光的频移就会像声波那样依赖光源、观察者各自相对以太的速度，精确测量频移就能测出地球相对以太的速度。艾夫斯-斯迪威型的实验和后来的离子储存环实验正是在检验这种依赖，结果和只含相对速度的相对论公式一致。
+
+- id: p8
+  tier: thinking
+  statement: |
+    雷达测速：静止的雷达向一个以速度$v$远离的反射面发出频率为$\omega$的电磁波，再接收反射回来的波。反射回来的频率是多少？为什么测汽车速度的雷达用一阶公式$\Delta\omega\approx-2\frac vc\omega$就够了？
+  hints:
+    - |
+      分两步：反射面的静止系里收到的频率，和反射面把这个频率「原样」发回时雷达收到的频率。
+    - |
+      两步都是纵向多普勒效应，各乘一次$\sqrt{\frac{1-\beta}{1+\beta}}$。
+    - |
+      $\omega_r=\omega\frac{1-\beta}{1+\beta}\approx\omega(1-2\beta)$；汽车的$\beta\sim10^{-7}$。
+  reference: |
+    在反射面的静止系里，雷达以$v$远离，收到的频率是$\omega\sqrt{\frac{1-\beta}{1+\beta}}$；反射面在自己的静止系里把这个频率反射回去，相当于一个以$v$远离雷达的光源，雷达收到的又乘一次同样的因子。所以$\omega_r=\omega\frac{1-\beta}{1+\beta}$。
+
+    展开：$\frac{1-\beta}{1+\beta}=1-2\beta+2\beta^2-\cdots$。汽车的速度约$30\,\mathrm{m/s}$，$\beta=10^{-7}$，二阶项$2\beta^2\sim10^{-14}$，远小于一阶项和测量误差，所以用$\Delta\omega\approx-2\beta\omega$就够了。
+
+    反过来，测近光速的物体（如加速器里的电子束反射激光）时，必须用完整的公式；这时反射光的频率可以变化很大，这正是用激光打高能电子束得到高能光子的道理。

@@ -1,0 +1,157 @@
+- id: p1
+  tier: easy
+  statement: |
+    自由粒子以$0.8c$运动。它的拉格朗日量$L=-mc^2\sqrt{1-u^2/c^2}$是多少？以$mc^2$为单位。
+  answer:
+    type: number
+    value: -0.6
+    unit: |
+      $mc^2$
+  hints:
+    - |
+      直接代入$u=0.8c$。
+    - |
+      $\sqrt{1-0.64}=0.6$。
+    - |
+      $L=-0.6\,mc^2$。
+  solution: |
+    $L=-mc^2\sqrt{1-0.64}=-0.6\,mc^2$。它等于$-\frac{mc^2}{\gamma_u}$：速度越大，$L$越接近$0$；低速近似$-mc^2+\frac12mu^2$在这里给出$-0.68\,mc^2$，已经差得不少。
+
+- id: p2
+  tier: easy
+  statement: |
+    关于自由粒子的相对论作用量，下面哪些说法是对的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        作用量正比于世界线的固有时
+      - |
+        拉格朗日量$L=-mc^2\sqrt{1-u^2/c^2}$在所有惯性系里取值相同
+      - |
+        由这个拉格朗日量算出的$\pdv{L}{\vb u}$等于$\gamma_um\vb u$
+      - |
+        低速时$L\approx-mc^2+\frac12mu^2$，其中的常数不影响运动方程
+      - |
+        把作用量取成$+mc^2\int\dd\tau$，算出的动量和能量都不变
+    value: [1, 3, 4]
+  hints:
+    - |
+      $\mathcal S=-mc^2\int\dd\tau$；$L\,\dd t$和$L$哪个是洛伦兹标量？
+    - |
+      整个拉格朗日量变号，运动方程不变，可$\pdv{L}{\vb u}$也跟着变号。
+    - |
+      A、C、D 对；B、E 错。
+  solution: |
+    A 对，$\mathcal S=-mc^2\int\dd\tau$。B 错，$L=-\frac{mc^2}{\gamma_u}$随惯性系变，不变的是$L\,\dd t$。C 对，这是讲解里的定理；D 对，加常数不改变拉格朗日方程。E 错：运动方程不变，可动量变成$-\gamma_um\vb u$、能量变成$-\gamma_umc^2$。
+
+- id: p3
+  tier: medium
+  statement: |
+    自由粒子以$0.96c$运动。由拉格朗日量$L=-mc^2\sqrt{1-u^2/c^2}$，先求动量$p=\pdv Lu$，再用$E=up-L$求能量。答案填能量，以$mc^2$为单位。
+  answer:
+    type: number
+    value: 25/7
+    unit: |
+      $mc^2$
+  hints:
+    - |
+      $\sqrt{1-0.96^2}=0.28$，$L=-0.28\,mc^2$。
+    - |
+      $p=\frac{m\times0.96c}{0.28}=\frac{24}{7}mc$，$up=0.96c\times\frac{24}7mc$。
+    - |
+      $E=\frac{23.04}{7}mc^2+0.28\,mc^2=\frac{25}{7}mc^2\approx3.571\,mc^2$。
+  solution: |
+    $\sqrt{1-0.9216}=0.28$，$L=-0.28\,mc^2$，$p=\frac{0.96}{0.28}mc=\frac{24}7mc$，$E=up-L=\frac{23.04}{7}mc^2+\frac{1.96}{7}mc^2=\frac{25}{7}mc^2$。它等于$\gamma_umc^2=\frac{mc^2}{0.28}$，和讲解的定理一致。
+
+- id: p4
+  tier: medium
+  statement: |
+    自由粒子的动量是$p=\pdv Lu=3mc$。它的能量是多少？以$mc^2$为单位。
+  answer:
+    type: number
+    value: sqrt(10)
+    unit: |
+      $mc^2$
+  hints:
+    - |
+      由$\gamma_umu=3mc$先求速度，或者直接用能量-动量关系。
+    - |
+      $\gamma_u\frac uc=3$，所以$\gamma_u^2=1+\gamma_u^2\frac{u^2}{c^2}=10$。
+    - |
+      $E=\gamma_umc^2=\sqrt{10}\,mc^2\approx3.162\,mc^2$。
+  solution: |
+    $\gamma_u^2=1+(\gamma_uu/c)^2=1+9=10$，$E=\gamma_umc^2=\sqrt{10}\,mc^2\approx3.162\,mc^2$；速度是$\frac{3}{\sqrt{10}}c\approx0.949c$。也可以直接用$E=\sqrt{p^2c^2+m^2c^4}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设自由粒子沿匀速直线世界线的作用量形如$\mathcal S=\int f(u^2)\,\dd t$，并要求：同一段世界线在任何惯性系里算，作用量都相同。证明$f(u^2)=f(0)\sqrt{1-u^2/c^2}$；再由低速时应回到$\frac12mu^2$（加一个常数），定出$f(0)=-mc^2$。
+  hints:
+    - |
+      取一段匀速世界线，在粒子静止的惯性系里算一次，在它以$u$运动的惯性系里算一次。
+    - |
+      静止系里作用量是$f(0)\Delta\tau$；运动的惯性系里是$f(u^2)\Delta t$，$\Delta t=\gamma_u\Delta\tau$。
+    - |
+      低速时$f(0)\sqrt{1-u^2/c^2}\approx f(0)-\frac{f(0)}{2c^2}u^2$，要它等于常数加$\frac12mu^2$。
+  reference: |
+    取粒子的一段匀速世界线，两端的固有时间隔为$\Delta\tau$。在粒子静止的惯性系里，速度为零，作用量是$f(0)\Delta\tau$；在粒子以$u$运动的惯性系里，这段世界线经历$\Delta t=\gamma_u\Delta\tau$，作用量是$f(u^2)\gamma_u\Delta\tau$。两者相等，$f(u^2)=\frac{f(0)}{\gamma_u}=f(0)\sqrt{1-u^2/c^2}$。
+
+    低速时$f(u^2)\approx f(0)-\frac{f(0)}{2c^2}u^2$。常数项不影响运动方程，$u^2$项要等于$\frac12mu^2$，所以$-\frac{f(0)}{2c^2}=\frac m2$，$f(0)=-mc^2$。
+
+    所以$\mathcal S=-mc^2\int\sqrt{1-u^2/c^2}\,\dd t=-mc^2\int\dd\tau$。这里只用了匀速运动；变速的世界线可以分成许多近似匀速的小段，作用量可加，结果仍是$-mc^2\int\dd\tau$。
+
+- id: p6
+  tier: hard
+  statement: |
+    在讲解的四维写法$\mathcal S=-mc\int\sqrt{\eta_{\mu\nu}\dot x^\mu\dot x^\nu}\,\dd\lambda$里，取$\lambda=t$（某个惯性系的时间），证明它回到$\mathcal S=-mc^2\int\sqrt{1-u^2/c^2}\,\dd t$；再由$x^0$共轭的量是$-P_0$，说明为什么改用$\lambda=t$以后，$x^0$不再是要求解的未知函数，而能量$E=\vb u\cdot\pdv L{\vb u}-L$仍然出现。
+  hints:
+    - |
+      $\lambda=t$时$\dot x^0=c$，$\dot x^i=u^i$。
+    - |
+      $\sqrt{\eta_{\mu\nu}\dot x^\mu\dot x^\nu}=\sqrt{c^2-u^2}$。
+    - |
+      把$x^0$当成参数，「和$x^0$共轭的量」就变成了能量函数，它的守恒对应$L$不显含$t$。
+  reference: |
+    取$\lambda=t$，$\dot x^0=\dv{(ct)}{t}=c$，$\dot x^i=u^i$，$\eta_{\mu\nu}\dot x^\mu\dot x^\nu=c^2-u^2$，所以$\mathcal S=-mc\int\sqrt{c^2-u^2}\,\dd t=-mc^2\int\sqrt{1-u^2/c^2}\,\dd t$，正是讲解里的式子。
+
+    在四维写法里，四个坐标都是参数$\lambda$的未知函数，欧拉-拉格朗日方程有四个；和$x^0$共轭的量$-P_0=-\frac Ec$，它的方程$\dv{P_0}{\lambda}=0$就是能量守恒。改用$\lambda=t$，等于把$x^0=ct$本身当作参数，只剩三个空间坐标是未知函数，方程少了一个。
+
+    少掉的那个方程并没有丢：$L$不显含$t$，能量函数$\vb u\cdot\pdv{L}{\vb u}-L=\gamma_umc^2$守恒，这就是原来那个方程。两种写法给出同样的运动，四维写法的好处是看得出四维动量四个分量的地位相同。
+
+- id: p7
+  tier: thinking
+  statement: |
+    带电粒子在电磁场里的拉格朗日量可以写成$L=-mc^2\sqrt{1-u^2/c^2}-q\phi+q\vb u\cdot\vb A$（$\phi$、$\vb A$是电磁势（electromagnetic potentials），见[电磁场中带电粒子的拉格朗日量](lesson:physics.analytical-mechanics.charged-particle-lagrangian)的低速版本）。它的作用量是不是洛伦兹标量？这对电磁势提出了什么要求？
+  hints:
+    - |
+      把作用量写成$\int L\,\dd t=\int\bigl(-mc^2\,\dd\tau-q\phi\,\dd t+q\vb A\cdot\dd\vb r\bigr)$。
+    - |
+      $-q\phi\,\dd t+q\vb A\cdot\dd\vb r$能不能写成某个四维矢量（four-vector）和$\dd x^\mu$的内积？
+    - |
+      若$A^\mu=\bigl(\frac\phi c,\vb A\bigr)$是四维矢量，这一项就是$-qA_\mu\,\dd x^\mu$。
+  reference: |
+    作用量$\mathcal S=\int\bigl(-mc^2\,\dd\tau-q\phi\,\dd t+q\vb A\cdot\dd\vb r\bigr)$。第一项是洛伦兹标量。第二、三项合起来是$-q\bigl(\frac\phi c\,\dd(ct)-\vb A\cdot\dd\vb r\bigr)=-q\,A\cdot\dd x$，其中$A^\mu=\bigl(\frac\phi c,\vb A\bigr)$；只要$A^\mu$是四维矢量，这一项就是两个四维矢量的内积，也是洛伦兹标量。
+
+    所以要电磁学满足相对性原理（principle of relativity），标势和矢势必须合成一个四维矢量（四维势），它们在换惯性系时像$(ct,\vb r)$那样混合，合成的叫四维势（four-potential）；这正是后面讲电磁场张量（electromagnetic field tensor）时用到的。由这个拉格朗日量，正则动量（canonical momentum）是$\gamma_um\vb u+q\vb A$，运动方程是$\dv{}{t}(\gamma_um\vb u)=q(\vb E+\vb u\times\vb B)$：洛伦兹力（Lorentz force）改变的是相对论动量。
+
+    另外，作用量只需要在相差一个全导数$\int\dv{F}{t}\dd t$的意义下相同，运动方程就不变；电磁势的规范变换（gauge transformation）正是给作用量加上这样一项。
+
+- id: p8
+  tier: thinking
+  statement: |
+    牛顿力学里，拉格朗日量加一个常数不影响运动方程，所以自由质点取$L=\frac12mu^2$就够了。相对论的$L=-mc^2\sqrt{1-u^2/c^2}$低速展开后多出一个常数$-mc^2$。能不能说这个常数没有物理意义？
+  hints:
+    - |
+      常数对拉格朗日方程有没有影响？对能量函数$\vb u\cdot\pdv L{\vb u}-L$呢？
+    - |
+      能量的零点在牛顿力学里可以随便选；相对论里，能量除以$c$是四维动量的时间分量，零点还能随便选吗？
+    - |
+      想想质能关系（mass–energy equivalence）：物体内部能量变化时，它的质量会变。
+  reference: |
+    对运动方程，常数确实没有影响。但它出现在能量函数里：$E=\vb u\cdot\pdv{L}{\vb u}-L$里的$-L$贡献了$mc^2$，正是粒子静止时的能量。
+
+    牛顿力学里能量的零点可以随便选，加一个常数没有可观测的后果。相对论里能量除以$c$是四维动量的时间分量，它必须和动量一起按洛伦兹变换（Lorentz transformation）变换：如果给能量加一个常数$E_0$而动量不变，$(E/c,\vb p)$就不再是四维矢量，$E^2-p^2c^2$也不再是$m^2c^4$。所以这个常数被相对性原理固定成了$mc^2$。
+
+    它的物理后果是质能关系：物体内部能量变化，质量随之变化（见[质能关系](lesson:physics.special-relativity.mass-energy)）。到了广义相对论，引力的源是能量，能量的绝对大小就更有意义了。

@@ -38,7 +38,7 @@ $$
 \begin{pmatrix}ct'\\x'\end{pmatrix}=\begin{pmatrix}\gamma&-\gamma\beta\\-\gamma\beta&\gamma\end{pmatrix}\begin{pmatrix}ct\\x\end{pmatrix} .
 $$
 
-这是一个线性变换（linear transformation），矩阵记作$\Lambda(\beta)$，它的行列式（determinant）$\gamma^2-\gamma^2\beta^2=1$。逆矩阵（inverse matrix）是$\Lambda(-\beta)$，直接相乘可以验证$\Lambda(\beta)\Lambda(-\beta)$是单位矩阵（identity matrix），和逆变换把$v$换成$-v$一致。以后都用$(ct,x,y,z)$作:term[事件]{id="physics.special-relativity.event"}的坐标，后面讲四维矢量（four-vector）时，$ct$就是第$0$个分量。
+这是一个线性变换（linear transformation），矩阵记作$\Lambda(\beta)$，它的行列式（determinant）$\gamma^2-\gamma^2\beta^2=1$。逆矩阵（inverse matrix）是$\Lambda(-\beta)$，直接相乘可以验证$\Lambda(\beta)\Lambda(-\beta)$是单位矩阵（identity matrix），和逆变换把$v$换成$-v$一致。以后都用$(ct,x,y,z)$作:term[事件]{id="physics.special-relativity.event"}的坐标，后面讲:term[四维矢量]{id="physics.special-relativity.four-vector"}（four-vector）时，$ct$就是第$0$个分量。
 
 ### 低速时回到伽利略变换
 

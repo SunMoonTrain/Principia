@@ -1,0 +1,159 @@
+- id: p1
+  tier: easy
+  statement: |
+    $1\,\mathrm g$物质的静能是多少焦耳？取$c=2.997\,924\,58\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 1e-3*299792458^2
+    unit: |
+      $\mathrm J$
+  hints:
+    - |
+      静能$E_0=mc^2$，质量要换成千克。
+    - |
+      $E_0=10^{-3}\,\mathrm{kg}\times(2.997\,924\,58\times10^8\,\mathrm{m/s})^2$。
+    - |
+      $E_0\approx8.988\times10^{13}\,\mathrm J$。
+  solution: |
+    $E_0=mc^2=10^{-3}\times(2.99792458\times10^8)^2\,\mathrm J\approx8.988\times10^{13}\,\mathrm J$，比一座百万千瓦的发电站一整天的发电量（约$8.6\times10^{13}\,\mathrm J$）还多。平常的反应只能放出其中极小的一部分。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法是对的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        静止的电子的能量是$0.511\,\mathrm{MeV}$
+      - |
+        动能为$K$、质量为$m$的粒子，总能量是$K+mc^2$
+      - |
+        氦-4 核的质量等于两个质子和两个中子的质量之和
+      - |
+        一块铁被加热以后，质量略有增加
+      - |
+        粒子的动能可以写成$\frac12\gamma_umu^2$
+    value: [1, 2, 4]
+  hints:
+    - |
+      静能$mc^2$；总能量是静能加动能。
+    - |
+      原子核有结合能；物体的质量包括内部的能量。
+    - |
+      A、B、D 对；C、E 错。
+  solution: |
+    A 对，这是电子的静能$m_ec^2$。B 对，按定义$K=E-mc^2$。C 错，氦-4 核有结合能，质量比四个核子的质量之和少；D 对，内能增加，质量就增加$\frac{\Delta E}{c^2}$，只是小得测不出。E 错，动能是$(\gamma_u-1)mc^2$。
+
+- id: p3
+  tier: medium
+  statement: |
+    一个电子的动能是$1\,\mathrm{MeV}$，$m_ec^2=0.511\,\mathrm{MeV}$。求它的速率。
+  answer:
+    type: number
+    value: sqrt(1 - (0.511/1.511)^2)
+    unit: |
+      $c$
+  hints:
+    - |
+      总能量$E=K+m_ec^2$，$\gamma_u=\frac{E}{m_ec^2}$。
+    - |
+      $E=1.511\,\mathrm{MeV}$，$\gamma_u=\frac{1.511}{0.511}\approx2.957$。
+    - |
+      $\frac uc=\sqrt{1-\frac{1}{\gamma_u^2}}=\sqrt{1-\bigl(\frac{0.511}{1.511}\bigr)^2}\approx0.9411$。
+  solution: |
+    $E=K+m_ec^2=1.511\,\mathrm{MeV}$，$\gamma_u\approx2.957$，$u=c\sqrt{1-\gamma_u^{-2}}\approx0.9411c$。按牛顿力学$\frac12m_eu^2=1\,\mathrm{MeV}$会得到$u\approx1.98c$，比光还快。
+
+- id: p4
+  tier: medium
+  statement: |
+    两个氘核聚变：$\mathrm d+\mathrm d\to{}^3\mathrm{He}+\mathrm n$。已知氘核的$m_dc^2=1875.613\,\mathrm{MeV}$，氦-3 核的$m_hc^2=2808.392\,\mathrm{MeV}$，中子的$m_nc^2=939.565\,\mathrm{MeV}$。求这个反应的反应能（$\mathrm{MeV}$）。
+  answer:
+    type: number
+    value: 2*1875.613 - 2808.392 - 939.565
+    unit: |
+      $\mathrm{MeV}$
+  hints:
+    - |
+      反应能是反应前的质量之和减去反应后的质量之和，再乘$c^2$。
+    - |
+      反应前$2\times1875.613\,\mathrm{MeV}=3751.226\,\mathrm{MeV}$，反应后$2808.392+939.565=3747.957\,\mathrm{MeV}$。
+    - |
+      $Q=3.269\,\mathrm{MeV}$。
+  solution: |
+    $Q=(2m_d-m_h-m_n)c^2=3751.226-3747.957=3.269\,\mathrm{MeV}>0$，反应放出能量，变成氦-3 核和中子的动能。两个氘核的质量之和只减少了约$0.09\%$。
+
+- id: p5
+  tier: hard
+  statement: |
+    按爱因斯坦 1905 年的思路重新证明质能关系：一个静止在$S$里的物体沿$+x$、$-x$方向各放出能量为$\frac L2$的光，物体仍静止。在相对$S$以$v$沿$x$轴运动的惯性系（inertial frame）$S'$里，（1）求两束光的能量之和；（2）用能量守恒证明物体在$S'$里的动能减少了$(\gamma-1)L$；（3）由此说明物体的质量减少了$\frac{L}{c^2}$。
+  hints:
+    - |
+      光的四维动量是$\bigl(\frac Ec,\pm\frac Ec,0,0\bigr)$，按洛伦兹变换（Lorentz transformation）求$S'$里的能量。
+    - |
+      物体在$S'$里的能量是$E'=E+K$（$E$是它在$S$里的能量）。分别在$S$、$S'$里写能量守恒，相减。
+    - |
+      $S'$里物体的动能是$(\gamma-1)Mc^2$，$\gamma$由物体在$S'$里的速率$v$决定。
+  reference: |
+    （1）沿$+x$的光，四维动量$\bigl(\frac{L}{2c},\frac{L}{2c},0,0\bigr)$，在$S'$里能量$\gamma\bigl(\frac L2-v\frac{L}{2c}\bigr)=\frac L2\gamma(1-\beta)$；沿$-x$的是$\frac L2\gamma(1+\beta)$。两束光在$S'$里共$\gamma L$。
+
+    （2）设物体放光前后在$S$里的能量是$E_0$、$E_1$，在$S'$里是$H_0$、$H_1$。能量守恒：$S$里$E_0=E_1+L$，$S'$里$H_0=H_1+\gamma L$。物体在$S'$里以$-v$运动，它在$S'$里的动能是$K=H-E$（两个惯性系里能量之差，正是动能）。相减得$(H_0-E_0)-(H_1-E_1)=\gamma L-L$，即$K_0-K_1=(\gamma-1)L$。
+
+    （3）物体放光前后在$S'$里的速率都是$v$，动能是$(\gamma-1)Mc^2$，所以$(\gamma-1)(M_0-M_1)c^2=(\gamma-1)L$，$M_0-M_1=\frac{L}{c^2}$。爱因斯坦当时用的正是这个思路，只是他手里的动能公式是低速近似$\frac12Mv^2$，于是得到「质量减少$\frac{L}{c^2}$」，并说物体的质量是它所含能量的量度。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）设核反应前后质子总数、中子总数各自不变。证明反应能$Q$等于反应后各核结合能之和减去反应前各核结合能之和（自由的中子、质子结合能算$0$）。
+
+    （2）铀-235 吸收一个中子后裂变成两个中等的核，放出两三个中子。铀-235 的平均每核子结合能约$7.59\,\mathrm{MeV}$，裂变碎片约$8.4\,\mathrm{MeV}$，估计一次裂变放出的能量。
+  hints:
+    - |
+      每个核的质量是$\frac{1}{c^2}\bigl(Zm_pc^2+Nm_nc^2-B\bigr)$，$Z$、$N$是质子数和中子数。
+    - |
+      代入$Q=(\sum m_{\text{前}}-\sum m_{\text{后}})c^2$，质子、中子的质量项前后相同，相互抵消。
+    - |
+      （2）$Q\approx(\text{碎片的核子数})\times8.4-235\times7.59\,\mathrm{MeV}$，碎片共约$233$到$234$个核子。
+  reference: |
+    （1）一个核含$Z$个质子、$N$个中子，按结合能的定义，它的质量$m=Zm_p+Nm_n-\frac{B}{c^2}$。于是$Q=\bigl(\sum m_{\text{前}}-\sum m_{\text{后}}\bigr)c^2=\bigl(\sum Z_{\text{前}}-\sum Z_{\text{后}}\bigr)m_pc^2+\bigl(\sum N_{\text{前}}-\sum N_{\text{后}}\bigr)m_nc^2+\sum B_{\text{后}}-\sum B_{\text{前}}$。质子数、中子数各自守恒，前两项为零，$Q=\sum B_{\text{后}}-\sum B_{\text{前}}$。
+
+    （2）反应前：铀-235 的结合能约$235\times7.59\approx1784\,\mathrm{MeV}$，那个中子是$0$。反应后：两个碎片共约$234$个核子（另有两三个自由中子，结合能为$0$），结合能约$234\times8.4\approx1966\,\mathrm{MeV}$。$Q\approx1966-1784\approx180\,\mathrm{MeV}$，再加上碎片后续衰变放出的能量，一次裂变共约$200\,\mathrm{MeV}$。
+
+    这就是几何图像里那条曲线的用处：重核分裂、轻核聚合，只要产物的平均结合能更高，就放出能量。注意（1）要求质子数、中子数分别守恒；$\beta$衰变（beta decay）里中子变成质子，不能直接这样算。
+
+- id: p7
+  tier: thinking
+  statement: |
+    常听人说「核反应把质量转化成了能量」。这个说法哪里对、哪里不对？在核反应里，什么是守恒的？
+  hints:
+    - |
+      静能是不是能量的一部分？反应前后总能量变了吗？
+    - |
+      反应前后什么变了：各粒子的质量之和，还是能量之和？
+    - |
+      放出的能量最后去了哪里？装着产物的一个封闭的盒子，整体的质量变不变？
+  reference: |
+    不对的地方：能量是守恒的，不会凭空产生；静能$mc^2$本来就是能量的一部分。核反应前后，总能量（静能加动能，再加光子的能量）不变，变的是各粒子的质量之和：一部分静能变成了动能。所以准确的说法是「一部分静能变成了动能」，而不是「质量变成了能量」。
+
+    对的地方：反应前后各粒子质量之和确实减少了$\frac{Q}{c^2}$，这部分质量对应的能量以动能的形式出现了。
+
+    如果把反应物封在一个盒子里，放出的动能最后变成盒子里的热，盒子整体静止时的质量（各部分的总能量除以$c^2$）其实没有变；只有当热量（例如以光的形式）跑出盒子，盒子的质量才减少。质量和能量都守恒，前提是算的是整个封闭系统，而且「质量」指整体的质量，不是各部分质量之和。
+
+- id: p8
+  tier: thinking
+  statement: |
+    一壶热茶比同样的一壶冷茶重吗？一根压紧的弹簧比松开的重吗？估计一下：把$1\,\mathrm{kg}$水从$20^\circ\mathrm C$加热到$100^\circ\mathrm C$，质量增加多少？为什么平常察觉不到？
+  hints:
+    - |
+      加热时水吸收的能量$\Delta E=c_{\text{水}}m\Delta T$，$c_{\text{水}}\approx4.2\times10^3\,\mathrm{J/(kg\cdot K)}$是水的比热容（specific heat capacity）。
+    - |
+      $\Delta m=\frac{\Delta E}{c^2}$，这里的$c$是光速。
+    - |
+      $\Delta E\approx3.4\times10^5\,\mathrm J$，$\Delta m\approx4\times10^{-12}\,\mathrm{kg}$。
+  reference: |
+    重。按质能关系，物体静止时的质量包括它内部的全部能量：热茶的分子运动得更快，压紧的弹簧储存了弹性势能，它们的质量都比冷茶、松开的弹簧大。
+
+    $1\,\mathrm{kg}$水升温$80\,\mathrm K$，吸收$\Delta E\approx4.2\times10^3\times1\times80\,\mathrm J\approx3.4\times10^5\,\mathrm J$，质量增加$\Delta m=\frac{\Delta E}{c^2}\approx\frac{3.4\times10^5}{9.0\times10^{16}}\,\mathrm{kg}\approx3.7\times10^{-12}\,\mathrm{kg}$，只是原来质量的$4\times10^{-12}$。一根弹簧储存几焦耳的能量，质量只增加$10^{-16}\,\mathrm{kg}$的量级。
+
+    最好的天平也只能分辨约$10^{-9}$到$10^{-10}$的相对变化，所以这些效应察觉不到。只有核反应放出的能量占静能的$10^{-3}$到$10^{-2}$，质量的变化才明显，例如氘核的质量亏损约占$0.12\%$。

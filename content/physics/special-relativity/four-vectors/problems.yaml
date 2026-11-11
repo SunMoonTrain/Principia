@@ -1,0 +1,149 @@
+- id: p1
+  tier: easy
+  statement: |
+    两个四维矢量$A=(3,1,2,0)$、$B=(2,1,0,1)$（各分量单位相同）。求$A\cdot B$。
+  answer:
+    type: number
+    value: 5
+  hints:
+    - |
+      按闵可夫斯基度规$\eta=\mathrm{diag}(1,-1,-1,-1)$算：时间分量的乘积取正号，空间分量的乘积取负号。
+    - |
+      $A\cdot B=A^0B^0-A^1B^1-A^2B^2-A^3B^3$。
+    - |
+      $3\times2-1\times1-2\times0-0\times1=5$。
+  solution: |
+    $A\cdot B=3\times2-1\times1-2\times0-0\times1=5$。注意不是三维点积那样全取正号，全取正号会得到$7$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法是对的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        在$x^\mu=(ct,x,y,z)$里，$x^3$是$z$坐标
+      - |
+        $A_\mu B^\mu$和$A^\mu B_\mu$相等
+      - |
+        四维矢量的时间分量在所有惯性系里都相同
+      - |
+        满足$A\cdot A<0$的四维矢量是类空的
+      - |
+        按求和约定，$A^\mu B^\mu$表示对$\mu$从$0$到$3$求和
+    value: [1, 2, 4]
+  hints:
+    - |
+      上标是编号；下标分量$A_\mu=\eta_{\mu\nu}A^\nu$。
+    - |
+      求和约定只在一个指标一上一下配对时求和；四维矢量的分量会随惯性系变。
+    - |
+      A、B、D 对；C、E 错。
+  solution: |
+    A 对：$x^0=ct$，$x^1=x$，$x^2=y$，$x^3=z$；B 对，两者都等于$A\cdot B$。C 错，时间分量换惯性系时会变，例 1 里$A^0$从$5$变成了$3$；D 对，这是类空的定义。E 错：两个都是上标，按约定不求和。
+
+- id: p3
+  tier: medium
+  statement: |
+    在$S$里，四维矢量$A=(5,3,4,0)$（各分量单位相同）。$S'$以$\beta=0.8$相对$S$处于标准位形。求$A$在$S'$里的时间分量$A'^0$。
+  answer:
+    type: number
+    value: 13/3
+  hints:
+    - |
+      $A'^\mu=\Lambda^\mu{}_\nu A^\nu$，其中$A'^0=\gamma(A^0-\beta A^1)$，$\gamma=\frac{1}{\sqrt{1-0.64}}=\frac53$。
+    - |
+      $A'^0=\frac53(5-0.8\times3)$；$A^2$、$A^3$不参与。
+    - |
+      $A'^0=\frac53\times2.6=\frac{13}3\approx4.333$。
+  solution: |
+    $A'^0=\frac53(5-2.4)=\frac{13}3\approx4.333$，$A'^1=\frac53(3-0.8\times5)=-\frac53$，$A'^2=4$，$A'^3=0$。核对：$A\cdot A=25-9-16=0$，$A'\cdot A'=\frac{169}9-\frac{25}9-16=0$，$A$在两个惯性系里都是类光的。
+
+- id: p4
+  tier: medium
+  statement: |
+    四维矢量$A=(2,1,0,0)$、$B=(k,3,1,0)$（各分量单位相同）。$k$取多少时$A\cdot B=0$？这时$B$是哪一类四维矢量？答案填$k$。
+  answer:
+    type: number
+    value: 1.5
+  hints:
+    - |
+      先写出$A\cdot B$关于$k$的式子。
+    - |
+      $A\cdot B=2k-1\times3-0\times1=2k-3$。
+    - |
+      $k=1.5$；这时$B\cdot B=2.25-9-1=-7.75<0$，$B$是类空的。
+  solution: |
+    $A\cdot B=2k-3=0$，$k=1.5$。$A\cdot A=4-1=3>0$，$A$是类时的；$B\cdot B=1.5^2-9-1=-7.75<0$，$B$是类空的。和一个类时矢量内积为零的非零矢量总是类空的，证明见 p6。
+
+- id: p5
+  tier: hard
+  statement: |
+    把满足$\Lambda\T\eta\Lambda=\eta$的$4\times4$实矩阵叫作洛伦兹变换的矩阵。证明：（1）两个洛伦兹变换的乘积、一个洛伦兹变换的逆仍是洛伦兹变换；（2）$\Lambda^{-1}=\eta\Lambda\T\eta$；（3）下标分量按$A'_\mu=A_\nu\,(\Lambda^{-1})^\nu{}_\mu$变换，并由此说明$A_\mu B^\mu$不随惯性系变。
+  hints:
+    - |
+      （1）对$\Lambda_1\Lambda_2$直接验证；先由行列式说明$\Lambda$可逆。注意$\eta^{-1}=\eta$。
+    - |
+      （2）在$\Lambda\T\eta\Lambda=\eta$两边左乘$\eta$。
+    - |
+      （3）把下标分量排成行向量$A\T\eta$，变换后是$(\Lambda A)\T\eta=A\T\eta\,(\eta\Lambda\T\eta)$。
+  reference: |
+    （1）设$\Lambda_1\T\eta\Lambda_1=\eta$，$\Lambda_2\T\eta\Lambda_2=\eta$，则$(\Lambda_1\Lambda_2)\T\eta(\Lambda_1\Lambda_2)=\Lambda_2\T(\Lambda_1\T\eta\Lambda_1)\Lambda_2=\Lambda_2\T\eta\Lambda_2=\eta$。对$\Lambda\T\eta\Lambda=\eta$取行列式，$(\det\Lambda)^2\det\eta=\det\eta$，$\det\eta=-1\ne0$，所以$\det\Lambda=\pm1$，$\Lambda$可逆。在$\Lambda\T\eta\Lambda=\eta$两边左乘$(\Lambda^{-1})\T$、右乘$\Lambda^{-1}$，得$\eta=(\Lambda^{-1})\T\eta\Lambda^{-1}$，所以$\Lambda^{-1}$也是洛伦兹变换。
+
+    （2）$\eta\eta=I$，在$\Lambda\T\eta\Lambda=\eta$两边左乘$\eta$，得$(\eta\Lambda\T\eta)\Lambda=I$，所以$\Lambda^{-1}=\eta\Lambda\T\eta$。例如$\Lambda(\beta)^{-1}=\eta\Lambda(\beta)\eta=\Lambda(-\beta)$，和逆变换把$v$换成$-v$一致。
+
+    （3）下标分量$A_\mu=\eta_{\mu\nu}A^\nu$排成行向量就是$A\T\eta$。换惯性系后它变成$(\Lambda A)\T\eta=A\T\Lambda\T\eta=A\T\eta\,(\eta\Lambda\T\eta)=(A\T\eta)\Lambda^{-1}$，写成分量是$A'_\mu=A_\nu(\Lambda^{-1})^\nu{}_\mu$：下标分量按逆矩阵变换。于是$A'_\mu B'^\mu=(A\T\eta)\Lambda^{-1}\Lambda B=A_\mu B^\mu$，一上一下的求和不随惯性系变，这正是内积不变定理。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$A$是类时的四维矢量。证明：（1）存在一个惯性系，在其中$A$只有时间分量；（2）若$A\cdot B=0$且$B\ne0$，则$B$是类空的；（3）若$B$也是类时的，且$A^0$、$B^0$都是正的，则$A\cdot B\ge\sqrt{A\cdot A}\,\sqrt{B\cdot B}$，等号当且仅当$B$是$A$的正数倍。
+  hints:
+    - |
+      （1）先转动空间坐标轴，让$A$的空间部分沿$x$轴，再沿$x$轴推进，速度取$\beta=\frac{A^1}{A^0}$。
+    - |
+      （2）、（3）都在（1）的惯性系里算：那里$A=(a,0,0,0)$，内积只剩$aB^0$。
+    - |
+      （3）需要说明$B^0$在新的惯性系里仍是正的；然后$B^0=\sqrt{B\cdot B+|\vb B|^2}\ge\sqrt{B\cdot B}$，$\vb B$是$B$的空间部分。
+  reference: |
+    （1）转动空间坐标轴，使$A$的空间部分沿$x$轴：$A=(a_0,a_1,0,0)$，类时意味着$|a_1|<|a_0|$。取$\beta=\frac{a_1}{a_0}$，$|\beta|<1$，推进后$A'^1=\gamma(a_1-\beta a_0)=0$，$A'^0=\gamma(a_0-\beta a_1)=\gamma a_0(1-\beta^2)=\frac{a_0}{\gamma}$，和$a_0$同号。
+
+    （2）在这个惯性系里$A=(a,0,0,0)$，$a\ne0$。$A\cdot B=aB^0=0$，所以$B^0=0$，$B\cdot B=-|\vb B|^2$；$B\ne0$时$\vb B\ne0$，$B\cdot B<0$，$B$是类空的。
+
+    （3）由（1），$a>0$。$B$是类时的，$|B^1|\le|\vb B|<B^0$，推进后$B'^0=\gamma(B^0-\beta B^1)\ge\gamma(B^0-|B^1|)>0$，转动不改变时间分量，所以新的惯性系里$B^0$仍为正。于是$A\cdot B=aB^0=a\sqrt{B\cdot B+|\vb B|^2}\ge a\sqrt{B\cdot B}=\sqrt{A\cdot A}\,\sqrt{B\cdot B}$，等号当且仅当$\vb B=0$，即$B$是$A$的正数倍。这是「反过来的」柯西-施瓦茨不等式（Cauchy–Schwarz inequality）：在平面上$|A\cdot B|\le|A||B|$，在时空里两个同向的类时矢量反而有$A\cdot B\ge|A||B|$，它就是[时空间隔与固有时](lesson:physics.special-relativity.spacetime-interval)里「直线的固有时最长」背后的不等式。
+
+- id: p7
+  tier: thinking
+  statement: |
+    有的老教科书把时间坐标写成$x_4=ict$（$i$是虚数单位），间隔就写成平方和：$\sum_{k=1}^{4}(\Delta x_k)^2=\Delta x^2+\Delta y^2+\Delta z^2-c^2\Delta t^2$。这种写法和本节的$\eta$有什么关系？它有什么好处，为什么现在一般不用？
+  hints:
+    - |
+      把$x_4=ict$代进平方和，和$\Delta s^2$比较。
+    - |
+      在这种写法里，推进像一个「转动」，转角是多少？是实数吗？
+    - |
+      物理上的坐标都是实数；到了广义相对论，度规不再是常数，也不再总是对角的。
+  reference: |
+    代入得$\sum_k(\Delta x_k)^2=-\Delta s^2$：用虚数把$\eta$里的负号吸收进了坐标，于是不必区分上标、下标，度规就是单位矩阵，洛伦兹变换看起来像四维的正交变换。沿$x$轴的推进变成$(x_1,x_4)$平面上的转动，转角是$i\varphi$，$\varphi$正是快度（rapidity），$\cos(i\varphi)=\cosh\varphi=\gamma$。
+
+    坏处是：事件的坐标是实数，把时间写成虚数只是记账的手段，物理量（如能量）也会跟着出现虚数分量；双曲的几何被藏进了虚角里，例如类时、类空的区别看不出来。更重要的是，它只适用于度规是常数对角矩阵的情形。广义相对论里度规随位置变化、一般不是对角的，不能再靠一个$i$消掉负号，所以现在一般用实坐标加度规$\eta_{\mu\nu}$，并区分上标、下标。
+
+- id: p8
+  tier: thinking
+  statement: |
+    类时四维矢量的时间分量$A^0>0$。换一个惯性系，$A'^0$会不会变成负的？类光的、类空的四维矢量呢？这和[时空图与光锥](lesson:physics.special-relativity.spacetime-diagrams)里的因果次序不变有什么关系？
+  hints:
+    - |
+      转动不改变时间分量，只要看沿$x$轴的推进：$A'^0=\gamma(A^0-\beta A^1)$。
+    - |
+      类时、类光时$|A^1|\le|\vb A|\le A^0$，而$|\beta|<1$。
+    - |
+      类空时$|\vb A|>|A^0|$：先转动使空间部分沿$x$轴，再取$\beta=\frac{A^0}{A^1}$看看。
+  reference: |
+    转动不改变$A^0$，只需看推进：$A'^0=\gamma(A^0-\beta A^1)$。类时或非零类光时，$|A^1|\le|\vb A|\le A^0$，又$|\beta|<1$，所以$|\beta A^1|<A^0$（$A^1=0$时显然），$A'^0>0$：时间分量的符号在所有惯性系里相同。所以「指向未来」对类时、类光矢量是和惯性系无关的说法。
+
+    类空时$|\vb A|>|A^0|$。转动使空间部分沿$x$轴，$A=(A^0,|\vb A|,0,0)$，取$\beta=\frac{A^0}{|\vb A|}$，$|\beta|<1$，得$A'^0=0$；$\beta$再大一些，$A'^0$就变号。所以类空矢量的时间分量可正可负，取决于惯性系。
+
+    取$A$为两个事件的坐标差，这就是因果次序不变：一个事件在另一个的未来光锥里（类时或类光、$\Delta t>0$），所有惯性系都同意先后；类空的两个事件，先后取决于惯性系，它们之间也就不能有因果联系。

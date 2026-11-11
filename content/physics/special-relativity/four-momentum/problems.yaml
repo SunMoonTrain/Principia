@@ -1,0 +1,157 @@
+- id: p1
+  tier: easy
+  statement: |
+    一个质子的能量是它静止时能量的两倍，即$E=2m_pc^2$。求它的速率。
+  answer:
+    type: number
+    value: sqrt(3)/2
+    unit: |
+      $c$
+  hints:
+    - |
+      $E=\gamma_um_pc^2$，所以$\gamma_u=2$。
+    - |
+      $\frac{1}{\sqrt{1-u^2/c^2}}=2$，$1-\frac{u^2}{c^2}=\frac14$。
+    - |
+      $u=\frac{\sqrt3}{2}c\approx0.866c$。
+  solution: |
+    $\gamma_u=\frac{E}{m_pc^2}=2$，$1-\frac{u^2}{c^2}=\frac14$，$u=\frac{\sqrt3}2c\approx0.866c$。这时它的动量$p=\gamma_um_pu=\sqrt3\,m_pc$，可以用$E^2=p^2c^2+m_p^2c^4$核对：$4=3+1$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法是对的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        任何有质量的质点，四维速度都满足$U\cdot U=c^2$
+      - |
+        能量为$E$的光子，动量的大小是$\frac Ec$
+      - |
+        质点的能量在所有惯性系里都相同
+      - |
+        一个过程前后，各粒子的四维动量之和在一个惯性系里相等，在每个惯性系里就都相等
+      - |
+        速率接近光速时，相对论动量$\gamma_umu$接近$mc$
+    value: [1, 2, 4]
+  hints:
+    - |
+      $U^\mu=\gamma_u(c,\vb u)$；无质量粒子$E=pc$。
+    - |
+      能量除以$c$是四维动量的时间分量，会随惯性系变；$\gamma_u$在$u\to c$时趋于无穷。
+    - |
+      A、B、D 对；C、E 错。
+  solution: |
+    A 对：$U\cdot U=\gamma_u^2(c^2-u^2)=c^2$。B 对，$m=0$时$E=pc$。C 错，能量除以$c$是四维动量的时间分量，换惯性系就变；D 对，四维动量之和按同一个线性变换变换。E 错：$u\to c$时$\gamma_u\to\infty$，动量没有上限。
+
+- id: p3
+  tier: medium
+  statement: |
+    一个电子的动量是$1\,\mathrm{MeV}/c$，$m_ec^2=0.511\,\mathrm{MeV}$。求它的能量（$\mathrm{MeV}$）。
+  answer:
+    type: number
+    value: sqrt(1 + 0.511^2)
+    unit: |
+      $\mathrm{MeV}$
+  hints:
+    - |
+      用能量-动量关系，把各项都写成以$\mathrm{MeV}$为单位的数。
+    - |
+      $E^2=(pc)^2+(m_ec^2)^2=1^2+0.511^2$（单位$\mathrm{MeV}^2$）。
+    - |
+      $E=\sqrt{1.261121}\,\mathrm{MeV}\approx1.123\,\mathrm{MeV}$。
+  solution: |
+    $pc=1\,\mathrm{MeV}$，$E=\sqrt{(pc)^2+(m_ec^2)^2}=\sqrt{1+0.261121}\,\mathrm{MeV}\approx1.123\,\mathrm{MeV}$。它的速率$u=\frac{pc^2}{E}\approx0.890c$；电子的能量比$m_ec^2$大一倍多，已经是相对论性的了。
+
+- id: p4
+  tier: medium
+  statement: |
+    一个$\pi^+$介子（positive pion，$m_\pi c^2=139.57\,\mathrm{MeV}$）的动量是$200\,\mathrm{MeV}/c$。在实验室里它飞过$10\,\mathrm m$要多少纳秒？取$c=2.997\,924\,58\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 10/(200/sqrt(200^2 + 139.57^2)*299792458)*1e9
+    unit: |
+      $\mathrm{ns}$
+  hints:
+    - |
+      先由能量-动量关系求能量，再由$u=\frac{pc^2}{E}$求速率。
+    - |
+      $E=\sqrt{200^2+139.57^2}\,\mathrm{MeV}\approx243.89\,\mathrm{MeV}$，$\frac uc=\frac{200}{243.89}\approx0.8200$。
+    - |
+      $t=\frac{10\,\mathrm m}{0.8200\times2.9979\times10^8\,\mathrm{m/s}}\approx40.68\,\mathrm{ns}$。
+  solution: |
+    $E=\sqrt{(pc)^2+(m_\pi c^2)^2}=\sqrt{40000+19479.78}\,\mathrm{MeV}\approx243.89\,\mathrm{MeV}$，$\frac uc=\frac{pc}{E}\approx0.82006$，飞过$10\,\mathrm m$用时$\frac{10}{0.82006\times2.99792458\times10^8}\,\mathrm s\approx40.68\,\mathrm{ns}$。按牛顿力学$u=\frac pm$会算出$1.43c$，比光还快。
+
+- id: p5
+  tier: hard
+  statement: |
+    质点在$S$里的速度是$\vb u=(u_x,u_y,u_z)$，$S'$相对$S$以$v$处于标准位形（standard configuration）。把四维速度$U^\mu=\gamma_u(c,\vb u)$按洛伦兹变换（Lorentz transformation）变到$S'$，由此推出速度变换公式$u_x'=\frac{u_x-v}{1-u_xv/c^2}$、$u_y'=\frac{u_y}{\gamma(1-u_xv/c^2)}$，并得到$\gamma_{u'}=\gamma\gamma_u\bigl(1-\frac{u_xv}{c^2}\bigr)$。
+  hints:
+    - |
+      $U'^0=\gamma(U^0-\beta U^1)$，$U'^1=\gamma(U^1-\beta U^0)$，$U'^2=U^2$。
+    - |
+      $U'^0=\gamma_{u'}c$，而$U'^0=\gamma\gamma_u(c-\beta u_x)$。
+    - |
+      速度是空间分量除以时间分量再乘$c$：$u_x'=\frac{cU'^1}{U'^0}$。
+  reference: |
+    $U=(\gamma_uc,\gamma_uu_x,\gamma_uu_y,\gamma_uu_z)$是四维矢量，所以$U'^0=\gamma(\gamma_uc-\beta\gamma_uu_x)=\gamma\gamma_uc\bigl(1-\frac{u_xv}{c^2}\bigr)$，$U'^1=\gamma(\gamma_uu_x-\beta\gamma_uc)=\gamma\gamma_u(u_x-v)$，$U'^2=\gamma_uu_y$，$U'^3=\gamma_uu_z$。
+
+    另一方面，$S'$里$U'^\mu=\gamma_{u'}(c,\vb u')$，比较时间分量得$\gamma_{u'}=\gamma\gamma_u\bigl(1-\frac{u_xv}{c^2}\bigr)$。空间分量除以时间分量：$u_x'=\frac{cU'^1}{U'^0}=\frac{u_x-v}{1-u_xv/c^2}$，$u_y'=\frac{cU'^2}{U'^0}=\frac{u_y}{\gamma(1-u_xv/c^2)}$，$u_z'$同理。
+
+    这就是[速度变换](lesson:physics.special-relativity.velocity-transformation)的公式；$\gamma_{u'}$的式子正是那里由恒等式得到的$\frac{1}{\sqrt{1-u'^2/c^2}}$。用四维速度推，不必像那里那样取两个相邻事件求差商：四维速度已经是线性变换的对象，非线性只出现在最后「空间分量除以时间分量」那一步。
+
+- id: p6
+  tier: hard
+  statement: |
+    设质点的动量必须是$\vb p=mf(u)\vb u$的形式（$f$只依赖速率$u$，低速时$f\to1$），并且碰撞中总动量在每个惯性系里都守恒。考虑两个相同的小球的斜碰：在$S$里，球 A 沿$y$轴以很小的速率$w$向上运动；$S'$相对$S$以$v$沿$x$轴运动，在$S'$里球 B 沿$y'$轴以$w$向下运动。两球相碰，各自$y$方向的速度反向，$x$方向不变。证明$f(v)=\gamma(v)$。
+  hints:
+    - |
+      由对称性，在$S'$里球 A 的$y'$速度是$-\frac{w}{\gamma}$，在$S$里球 B 的$y$速度是$-\frac w\gamma$（用速度变换）。
+    - |
+      在$S$里写$y$方向的动量守恒：碰撞前后 A 的$y$动量变化$-2mf(w)w$，B 的是$+2mf(u_B)\frac w\gamma$，$u_B=\sqrt{v^2+w^2/\gamma^2}$。
+    - |
+      得$f(u_B)=\gamma f(w)$；令$w\to0$。
+  reference: |
+    在$S'$里，B 的速度是$(0,-w)$；变到$S$（$S$相对$S'$以$-v$运动），$u_x=v$，$u_y=\frac{-w}{\gamma(1+0)}=-\frac w\gamma$。两球相同，整个过程在$S$和$S'$里互为镜像，所以碰撞后 A 在$S$里的速度是$(0,-w)$，B 在$S$里是$\bigl(v,\frac w\gamma\bigr)$：各自的$y$分量反向。
+
+    在$S$里，$y$方向动量守恒：碰撞前$mf(w)w-mf(u_B)\frac w\gamma$，碰撞后$-mf(w)w+mf(u_B)\frac w\gamma$，两者相等要求$f(w)w=f(u_B)\frac w\gamma$，即$f(u_B)=\gamma f(w)$，其中$u_B=\sqrt{v^2+\frac{w^2}{\gamma^2}}$是 B 在$S$里的速率。
+
+    这对任意小的$w$都成立。令$w\to0$：$u_B\to v$，$f(w)\to1$，于是$f(v)=\gamma(v)=\frac{1}{\sqrt{1-v^2/c^2}}$，动量只能是$\gamma_um\vb u$。牛顿的$m\vb u$（$f\equiv1$）在这里不守恒：$S$里 B 的$y$速度只有$\frac w\gamma$，比 A 的小，两者的$m\vb u$不能抵消。
+
+- id: p7
+  tier: thinking
+  statement: |
+    有的书把$\gamma_um$叫作「相对论质量」，说「物体运动越快，质量越大」。按这种说法，$\vb p=m_{\text{相对论}}\vb u$，$E=m_{\text{相对论}}c^2$，好像很方便。为什么现在一般不这样说？
+  hints:
+    - |
+      「质量」这个词在本领域指什么？它随惯性系变吗？
+    - |
+      如果$\gamma_um$真是「质量」，那么$\vb F=m_{\text{相对论}}\vb a$对吗？沿运动方向和垂直于运动方向推，结果一样吗？
+    - |
+      $\gamma_umc^2$就是能量$E$，多起一个名字会带来什么？
+  reference: |
+    $\gamma_um$只是能量除以$c^2$，起名「相对论质量」并没有新内容，反而让「质量」随惯性系变，和「静止质量」两个词并存，容易混淆。$m$是四维动量的「长度」除以$c$，是洛伦兹标量，描述粒子本身；$\frac Ec$和$\vb p$是四维动量的分量，描述粒子在某个惯性系里的运动。把两种东西都叫「质量」，模糊了这个区别。
+
+    更麻烦的是，它暗示运动物体对力的反应像一个质量为$\gamma_um$的牛顿质点，这不对：沿运动方向推，$F=\gamma_u^3ma$；垂直于运动方向推，$F=\gamma_uma$（见[四维力与相对论动力学](lesson:physics.special-relativity.four-force)），没有一个单独的「质量」能描述。
+
+    所以现在多数教材只用$m$表示质量，并写明$E=\gamma_umc^2$、$\vb p=\gamma_um\vb u$。物体的质量确实可以变，例如它吸收能量时，那是另一回事，见[质能关系](lesson:physics.special-relativity.mass-energy)。
+
+- id: p8
+  tier: thinking
+  statement: |
+    无质量粒子能不能静止？能不能以比光慢的速度运动？光在水里的速度只有约$0.75c$，这和「无质量粒子总以光速运动」矛盾吗？
+  hints:
+    - |
+      由能量-动量关系，$m=0$时$E$和$p$是什么关系？$\vb u=\frac{\vb pc^2}{E}$等于多少？
+    - |
+      如果它静止，$\vb p=0$，能量是多少？还有这个粒子吗？
+    - |
+      水里的光是电磁波和水分子里的电荷一起振动的结果，不是一个光子在真空里自由飞。
+  reference: |
+    $m=0$时$E=pc$，速率$u=\frac{pc^2}{E}=c$，与能量大小无关，也与惯性系无关：无质量粒子在每个惯性系里都以光速运动。它不能静止，否则$\vb p=0$、$E=0$，什么也没有；也不能比光慢。所以无质量粒子没有静止的惯性系，也没有四维速度。
+
+    光在水里变慢不矛盾：真空里的光速$c$是无质量粒子自由传播的速度；在水里，光的电场推动水分子里的电荷振动，这些电荷又发出电磁波，和原来的波叠加，合成的波向前传播得慢一些。这是介质的集体效应，不是光子本身变慢，在两个分子之间，光仍以$c$传播。
+
+    反过来，任何有质量的粒子都不能达到光速：$u\to c$时$E=\gamma_umc^2\to\infty$。有质量和无质量的粒子在速度上被光速截然分开。

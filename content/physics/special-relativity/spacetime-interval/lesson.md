@@ -71,7 +71,7 @@ $\Delta s^2>0$的间隔叫作:term[类时]{id="physics.special-relativity.timeli
 ::anchor{id="thm-max-proper-time"}
 定理（直线的固有时最长）：设两个事件的间隔是类时的。在连接它们的所有世界线中（速度处处小于$c$），匀速直线运动的那条固有时最长，等于$\frac{\sqrt{\Delta s^2}}{c}$。
 
-证明：在两个事件同地的惯性系里计算，设两个事件分别发生在$t_1$、$t_2$，那里的匀速直线世界线就是静止不动，固有时$t_2-t_1$。任何其他连接它们的世界线，$\tau=\int_{t_1}^{t_2}\sqrt{1-\frac{u^2}{c^2}}\,\dd t\le\int_{t_1}^{t_2}\dd t=t_2-t_1$，等号只在$u\equiv0$时成立。固有时和惯性系无关，所以这个结论在任何惯性系里都对；它就是双生子佯谬（twin paradox）的答案，见[双生子佯谬与其他佯谬](lesson:physics.special-relativity.twin-paradox)。
+证明：在两个事件同地的惯性系里计算，设两个事件分别发生在$t_1$、$t_2$，那里的匀速直线世界线就是静止不动，固有时$t_2-t_1$。任何其他连接它们的世界线，$\tau=\int_{t_1}^{t_2}\sqrt{1-\frac{u^2}{c^2}}\,\dd t\le\int_{t_1}^{t_2}\dd t=t_2-t_1$，等号只在$u\equiv0$时成立。固有时和惯性系无关，所以这个结论在任何惯性系里都对；它就是:term[双生子佯谬]{id="physics.special-relativity.twin-paradox"}（twin paradox）的答案，见[双生子佯谬与其他佯谬](lesson:physics.special-relativity.twin-paradox)。
 
 ## 几何图像
 

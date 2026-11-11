@@ -1,0 +1,157 @@
+- id: p1
+  tier: easy
+  statement: |
+    两个光子的能量都是$300\,\mathrm{MeV}$，运动方向的夹角是$60^\circ$。求这两个光子的不变质量（$\mathrm{MeV}/c^2$）。
+  answer:
+    type: number
+    value: 300
+    unit: |
+      $\mathrm{MeV}/c^2$
+  hints:
+    - |
+      $M^2c^2=(P_1+P_2)\cdot(P_1+P_2)$，光子的$P\cdot P=0$。
+    - |
+      $P_1\cdot P_2=\frac{E_1E_2}{c^2}-\vb p_1\cdot\vb p_2=\frac{E_1E_2}{c^2}(1-\cos60^\circ)$。
+    - |
+      $M^2c^4=2E_1E_2(1-\cos60^\circ)=300^2\,\mathrm{MeV}^2$，$M=300\,\mathrm{MeV}/c^2$。
+  solution: |
+    $M^2c^4=(P_1+P_2)^2c^2=2P_1\cdot P_2\,c^2=2E_1E_2(1-\cos\theta)=2\times300^2\times\frac12\,\mathrm{MeV}^2$，所以$Mc^2=300\,\mathrm{MeV}$。两个光子各自的质量都是零，合起来的不变质量却不是零；夹角越大，不变质量越大，反向飞时最大，是$2\times300\,\mathrm{MeV}/c^2$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法是对的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        一组粒子的不变质量在所有惯性系里都相同
+      - |
+        一组粒子的不变质量总等于它们的质量之和
+      - |
+        静止的粒子衰变成两个粒子时，每个产物的能量是确定的
+      - |
+        粒子打在静止的靶上产生新粒子，所需的最小能量等于新粒子静止时的能量之和
+      - |
+        两个光子组成的系统，不变质量可以不是零
+    value: [1, 3, 5]
+  hints:
+    - |
+      不变质量来自总四维动量的内积。
+    - |
+      不变质量不小于质量之和，速度都相同时才相等；打静止靶时动量要守恒。
+    - |
+      A、C、E 对；B、D 错。
+  solution: |
+    A 对，它是总四维动量的内积。B 错，一般比质量之和大；C 对，这是两体衰变定理。D 错，打静止靶时产物必须带着动能飞走，阈能比新粒子静止时的能量之和大。E 对，两个方向不同的光子，不变质量不是零。
+
+- id: p3
+  tier: medium
+  statement: |
+    静止的$K^+$介子（positive kaon）衰变成$\pi^+$和$\pi^0$介子。已知$m_Kc^2=493.677\,\mathrm{MeV}$，$m_{\pi^+}c^2=139.570\,\mathrm{MeV}$，$m_{\pi^0}c^2=134.977\,\mathrm{MeV}$。求$\pi^+$的动量大小（$\mathrm{MeV}/c$）。
+  answer:
+    type: number
+    value: sqrt((493.677^2 - (139.570 + 134.977)^2)*(493.677^2 - (139.570 - 134.977)^2))/(2*493.677)
+    unit: |
+      $\mathrm{MeV}/c$
+  hints:
+    - |
+      用两体衰变定理求$\pi^+$的能量，再用能量-动量关系求动量。
+    - |
+      $E_{\pi^+}=\frac{493.677^2+139.570^2-134.977^2}{2\times493.677}\,\mathrm{MeV}\approx248.12\,\mathrm{MeV}$。
+    - |
+      $pc=\sqrt{E^2-(m_{\pi^+}c^2)^2}\approx\sqrt{248.12^2-139.570^2}\,\mathrm{MeV}\approx205.14\,\mathrm{MeV}$。
+  solution: |
+    $E_{\pi^+}=\frac{(m_K^2+m_{\pi^+}^2-m_{\pi^0}^2)c^2}{2m_K}\approx248.12\,\mathrm{MeV}$，$pc=\sqrt{E^2-m_{\pi^+}^2c^4}\approx205.14\,\mathrm{MeV}$，所以动量约$205.1\,\mathrm{MeV}/c$。$\pi^0$的动量大小相同、方向相反，可以用它的能量$m_Kc^2-E_{\pi^+}\approx245.56\,\mathrm{MeV}$核对：$\sqrt{245.56^2-134.977^2}\approx205.14$。
+
+- id: p4
+  tier: medium
+  statement: |
+    质子打在静止的质子上产生一个$\pi^0$介子：$\mathrm p+\mathrm p\to\mathrm p+\mathrm p+\pi^0$。已知$m_pc^2=938.272\,\mathrm{MeV}$，$m_{\pi^0}c^2=134.977\,\mathrm{MeV}$。求入射质子的阈动能（阈能减去它静止时的能量$m_pc^2$，单位$\mathrm{MeV}$）。
+  answer:
+    type: number
+    value: ((2*938.272 + 134.977)^2 - 4*938.272^2)/(2*938.272)
+    unit: |
+      $\mathrm{MeV}$
+  hints:
+    - |
+      阈能$E_a=\frac{(M_f^2-m_a^2-m_b^2)c^2}{2m_b}$，这里$M_f=2m_p+m_\pi$，$m_a=m_b=m_p$。
+    - |
+      阈动能$K=E_a-m_pc^2=\frac{(M_f^2-4m_p^2)c^2}{2m_p}$。
+    - |
+      $K=2m_\pi c^2+\frac{m_\pi^2c^2}{2m_p}\approx269.95+9.71\approx279.66\,\mathrm{MeV}$。
+  solution: |
+    $K=\frac{(2m_p+m_\pi)^2-4m_p^2}{2m_p}c^2=2m_\pi c^2+\frac{m_\pi^2}{2m_p}c^2\approx279.66\,\mathrm{MeV}$，是$m_{\pi^0}c^2$的两倍多一点。若只给$\pi^0$静止时的能量$135\,\mathrm{MeV}$，动量就不能守恒。
+
+- id: p5
+  tier: hard
+  statement: |
+    质量为$m$的粒子以速度$u$打在静止的、同样质量的粒子上，发生弹性碰撞（碰撞后仍是这两个粒子）。证明碰撞后两个粒子运动方向的夹角$\theta$小于$90^\circ$（两者都运动时）；速度很小时$\theta$趋于$90^\circ$，这是牛顿力学的结果。
+  hints:
+    - |
+      记碰撞前、后的四维动量为$P_1+P_2=P_3+P_4$，两边平方，比较交叉项。
+    - |
+      $P_1\cdot P_2=P_3\cdot P_4$。左边是$mE_1$，右边是$\frac{E_3E_4}{c^2}-|\vb p_3||\vb p_4|\cos\theta$。
+    - |
+      写成$\gamma$：$\gamma_3+\gamma_4=\gamma_1+1$，$\gamma_3\gamma_4-\gamma_1=(\gamma_3-1)(\gamma_4-1)$。
+  reference: |
+    四个粒子的质量都是$m$，$P_i\cdot P_i=m^2c^2$。由$P_1+P_2=P_3+P_4$两边平方，得$P_1\cdot P_2=P_3\cdot P_4$。左边，粒子 2 静止，$P_1\cdot P_2=mE_1=m^2c^2\gamma_1$；右边$P_3\cdot P_4=\frac{E_3E_4}{c^2}-|\vb p_3||\vb p_4|\cos\theta=m^2c^2\gamma_3\gamma_4-|\vb p_3||\vb p_4|\cos\theta$。
+
+    所以$|\vb p_3||\vb p_4|\cos\theta=m^2c^2(\gamma_3\gamma_4-\gamma_1)$。能量守恒给出$\gamma_3+\gamma_4=\gamma_1+1$，于是$\gamma_3\gamma_4-\gamma_1=\gamma_3\gamma_4-\gamma_3-\gamma_4+1=(\gamma_3-1)(\gamma_4-1)$。两个粒子都运动时$\gamma_3,\gamma_4>1$，右边为正，$\cos\theta>0$，$\theta<90^\circ$。
+
+    低速时$\gamma-1\approx\frac{u^2}{2c^2}$，$(\gamma_3-1)(\gamma_4-1)$是$u^4$量级，而$|\vb p_3||\vb p_4|$是$u^2$量级，$\cos\theta\to0$，回到牛顿力学「等质量弹性斜碰后两球互相垂直」的结论。在气泡室照片里，高能质子打质子后两条径迹的夹角明显小于$90^\circ$，就是这个效应。
+
+- id: p6
+  tier: hard
+  statement: |
+    证明：一个自由电子不能吸收一个光子而仍是一个电子（$e+\gamma\to e$不可能），也不能自己放出一个光子（$e\to e+\gamma$不可能）。为什么原子里的电子可以吸收、放出光子？
+  hints:
+    - |
+      写出四维动量守恒$P_e+P_\gamma=P_e'$，两边平方。
+    - |
+      光子的$P_\gamma\cdot P_\gamma=0$，得$P_e\cdot P_\gamma=0$；在电子的静止系里算这个内积。
+    - |
+      电子静止系里$P_e\cdot P_\gamma=m_eE_\gamma$。
+  reference: |
+    吸收：$P_e+P_\gamma=P_e'$，两边平方得$m_e^2c^2+2P_e\cdot P_\gamma+0=m_e^2c^2$，所以$P_e\cdot P_\gamma=0$。这是洛伦兹标量，在电子原来的静止系里算：$P_e=(m_ec,0,0,0)$，$P_e\cdot P_\gamma=m_eE_\gamma$，于是$E_\gamma=0$，没有光子，矛盾。放出的情形把过程倒过来，同样不可能。
+
+    换个说法：吸收前后系统的不变质量必须相等。电子加一个光子，不变质量$\sqrt{m_e^2+2m_eE_\gamma/c^2}$大于$m_e$，而吸收后只剩一个电子，不变质量是$m_e$。
+
+    原子里的电子不是自由的，原子作为一个整体有许多能级，吸收光子后变成一个质量更大的激发态原子，不变质量可以对上；原子核也能分担动量。同样的道理，一个光子在真空里不能变成一对正负电子，必须在原子核附近才行。
+
+- id: p7
+  tier: thinking
+  statement: |
+    大型强子对撞机（Large Hadron Collider，LHC）里两束质子迎面对撞，每个质子的能量是$6.8\,\mathrm{TeV}$（$1\,\mathrm{TeV}=10^{12}\,\mathrm{eV}$）。如果改成一个质子打静止的质子，要得到同样大的不变质量，入射质子要多大的能量？为什么高能物理用对撞机，而不是打静止靶？
+  hints:
+    - |
+      对撞时实验室就是零动量系，不变质量$Mc^2=2\times6.8\,\mathrm{TeV}$。
+    - |
+      打静止靶时$M^2c^4=2m_pc^2E_a+2m_p^2c^4\approx2m_pc^2E_a$。
+    - |
+      $E_a\approx\frac{(13.6\,\mathrm{TeV})^2}{2\times0.938\,\mathrm{GeV}}\approx10^{8}\,\mathrm{GeV}=10^{17}\,\mathrm{eV}$。
+  reference: |
+    对撞时两个质子的总动量为零，$Mc^2=13.6\,\mathrm{TeV}$。打静止靶时$M^2c^4=(m_a^2+m_b^2)c^4+2m_bc^2E_a$，$E_a$很大时约为$2m_pc^2E_a$，要$Mc^2=13.6\,\mathrm{TeV}$，$E_a\approx\frac{(1.36\times10^4\,\mathrm{GeV})^2}{2\times0.938\,\mathrm{GeV}}\approx9.9\times10^7\,\mathrm{GeV}\approx10^{17}\,\mathrm{eV}$，是对撞时单个质子能量的一万多倍。
+
+    原因在于不变质量随入射能量的增长：打静止靶时$Mc^2\approx\sqrt{2m_pc^2E_a}$，只按能量的平方根增长，大部分能量变成产物整体飞走的动能；对撞时$Mc^2$等于两束的能量之和，全部能用来产生新粒子。
+
+    能量达到$10^{17}\,\mathrm{eV}$以上的粒子在自然界里有：宇宙射线（cosmic rays）里的质子打在大气的原子核上，就是天然的打静止靶实验，只是数量稀少、无法控制。
+
+- id: p8
+  tier: thinking
+  statement: |
+    $\beta$衰变（beta decay）里，原子核放出一个电子，变成另一个原子核。如果只有这两个产物，按两体衰变定理，电子的能量应该是确定的。可 1914 年起的实验发现，电子的能量从零到某个最大值连续分布。这说明什么？
+  hints:
+    - |
+      两体衰变的产物能量确定；三个或更多产物时呢？
+    - |
+      如果另有一个看不见的产物，能量和动量可以在三个粒子之间分配。
+    - |
+      连续谱的最大值对应那个看不见的粒子几乎不带能量的情形，由此还能估计它的质量。
+  reference: |
+    两体衰变里，母核静止，产物的能量由各自的质量完全确定，电子应该有确定的能量，能谱是一条线。实验却是连续谱，说明要么四维动量不守恒，要么还有别的产物带走了一部分能量和动量。
+
+    1930 年，泡利（Wolfgang Pauli）提出后一种解释：β 衰变还放出一个不带电、很难探测的轻粒子，后来叫中微子（neutrino）。有了三个产物，能量和动量可以在它们之间以各种方式分配，电子的能量就是连续的；电子能量的最大值对应中微子几乎不带能量的情形，最大值的位置和中微子的质量有关，测得最大值和质量差算出的值相符，说明中微子的质量很小。
+
+    中微子直到 1956 年才被科温（Clyde Cowan）和莱因斯（Frederick Reines）在核反应堆旁直接探测到。这个例子说明，四维动量守恒加上两体衰变定理，足以从能谱的形状推断出有一个看不见的粒子。

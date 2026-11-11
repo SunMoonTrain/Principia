@@ -33,7 +33,7 @@ status: reviewed
 
 证明：由:term[速度变换]{id="physics.special-relativity.velocity-transformation"}公式，$u'^2=\frac{(u_x-v)^2+(u_y^2+u_z^2)(1-v^2/c^2)}{(1-u_xv/c^2)^2}$。展开$\bigl(1-\frac{u_xv}{c^2}\bigr)^2-\frac{(u_x-v)^2}{c^2}=1-\frac{u_x^2}{c^2}-\frac{v^2}{c^2}+\frac{u_x^2v^2}{c^4}=\bigl(1-\frac{u_x^2}{c^2}\bigr)\bigl(1-\frac{v^2}{c^2}\bigr)$，于是$1-\frac{u'^2}{c^2}=\frac{(1-u^2/c^2)(1-v^2/c^2)}{(1-u_xv/c^2)^2}$。$u<c$、$|v|<c$时右边为正，所以$u'<c$；$u=c$时右边为零，$u'=c$，光沿任何方向的速率在$S'$里仍是$c$。
 
-这个恒等式还给出$\frac{1}{\sqrt{1-u'^2/c^2}}=\frac{1-u_xv/c^2}{\sqrt{1-u^2/c^2}\sqrt{1-v^2/c^2}}$，以后讲四维速度（four-velocity）时会用到。
+这个恒等式还给出$\frac{1}{\sqrt{1-u'^2/c^2}}=\frac{1-u_xv/c^2}{\sqrt{1-u^2/c^2}\sqrt{1-v^2/c^2}}$，以后讲:term[四维速度]{id="physics.special-relativity.four-velocity"}（four-velocity）时会用到。
 
 ### 快度
 

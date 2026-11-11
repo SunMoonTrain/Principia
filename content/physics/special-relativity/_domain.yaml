@@ -9,6 +9,10 @@ macros:
     \mathop{}\!\mathrm{d}
   \dv: |
     \frac{\mathrm{d} #1}{\mathrm{d} #2}
+  \pdv: |
+    \frac{\partial #1}{\partial #2}
+  \T: |
+    ^{\mathsf{T}}
 glossary:
   - id: physics.special-relativity.inertial-frame
     zh: |
@@ -208,3 +212,237 @@ glossary:
       满足$\tanh\varphi=\frac uc$的$\varphi$；沿同一直线合成速度时，快度直接相加。
     definedIn: physics.special-relativity.velocity-transformation
     anchor: def-rapidity
+  - id: physics.special-relativity.summation-convention
+    zh: |
+      爱因斯坦求和约定
+    en: |
+      Einstein summation convention
+    brief: |
+      同一项里一个指标在上标、下标各出现一次时，就对它从$0$到$3$求和，求和号省去不写。
+    definedIn: physics.special-relativity.four-vectors
+    anchor: def-summation-convention
+  - id: physics.special-relativity.four-vector
+    zh: |
+      四维矢量
+    en: |
+      four-vector
+    brief: |
+      四个量$A^\mu=(A^0,A^1,A^2,A^3)$，换惯性系时和两个事件的坐标差一样按洛伦兹变换变换。
+    definedIn: physics.special-relativity.four-vectors
+    anchor: def-four-vector
+  - id: physics.special-relativity.minkowski-metric
+    zh: |
+      闵可夫斯基度规
+    en: |
+      Minkowski metric
+    brief: |
+      $\eta=\mathrm{diag}(1,-1,-1,-1)$；用它算的内积$A\cdot B=\eta_{\mu\nu}A^\mu B^\nu$在各惯性系相同。
+    definedIn: physics.special-relativity.four-vectors
+    anchor: def-minkowski-metric
+  - id: physics.special-relativity.lorentz-scalar
+    zh: |
+      洛伦兹标量
+    en: |
+      Lorentz scalar
+    brief: |
+      在所有惯性系里取值相同的量，如四维矢量的内积、时空间隔、固有时。
+    definedIn: physics.special-relativity.four-vectors
+    anchor: def-lorentz-scalar
+  - id: physics.special-relativity.twin-paradox
+    zh: |
+      双生子佯谬
+    en: |
+      twin paradox
+    brief: |
+      一只钟一直做惯性运动，另一只出发后再返回，重逢时谁走得少；答案是一直做惯性运动的那只走得多。
+    definedIn: physics.special-relativity.twin-paradox
+    anchor: def-twin-paradox
+  - id: physics.special-relativity.ladder-paradox
+    zh: |
+      车库佯谬
+    en: |
+      ladder paradox
+    brief: |
+      比车库长的梯子高速冲进车库，车库系说能关进去、梯子系说装不下；分歧出在两扇门是否同时关上。
+    definedIn: physics.special-relativity.twin-paradox
+    anchor: def-ladder-paradox
+  - id: physics.special-relativity.four-velocity
+    zh: |
+      四维速度
+    en: |
+      four-velocity
+    brief: |
+      坐标对固有时的导数$U^\mu=\dv{x^\mu}{\tau}=\gamma_u(c,\vb u)$；对每个质点都有$U\cdot U=c^2$。
+    definedIn: physics.special-relativity.four-momentum
+    anchor: def-four-velocity
+  - id: physics.special-relativity.four-momentum
+    zh: |
+      四维动量
+    en: |
+      four-momentum
+    brief: |
+      $P^\mu=mU^\mu=(E/c,\vb p)$，其中$E=\gamma_umc^2$，$\vb p=\gamma_um\vb u$；孤立系统的总四维动量守恒。
+    definedIn: physics.special-relativity.four-momentum
+    anchor: def-four-momentum
+  - id: physics.special-relativity.energy-momentum-relation
+    zh: |
+      能量-动量关系
+    en: |
+      energy–momentum relation
+    brief: |
+      $E^2=p^2c^2+m^2c^4$，来自$P\cdot P=m^2c^2$；质点的速度$\vb u=\vb pc^2/E$。
+    definedIn: physics.special-relativity.four-momentum
+    anchor: thm-energy-momentum
+  - id: physics.special-relativity.massless-particle
+    zh: |
+      无质量粒子
+    en: |
+      massless particle
+    brief: |
+      质量为零的粒子，如光子：$E=pc$，在任何惯性系里都以光速运动。
+    definedIn: physics.special-relativity.four-momentum
+    anchor: def-massless-particle
+  - id: physics.special-relativity.rest-energy
+    zh: |
+      静能
+    en: |
+      rest energy
+    brief: |
+      质点静止时的能量$E_0=mc^2$；总能量$E=\gamma_umc^2$减去静能就是动能。
+    definedIn: physics.special-relativity.mass-energy
+    anchor: def-rest-energy
+  - id: physics.special-relativity.mass-energy-equivalence
+    zh: |
+      质能关系
+    en: |
+      mass–energy equivalence
+    brief: |
+      静止的物体放出或吸收能量$\Delta E$，质量就减少或增加$\Delta E/c^2$；物体静止时的能量是$mc^2$。
+    definedIn: physics.special-relativity.mass-energy
+    anchor: thm-mass-energy
+  - id: physics.special-relativity.binding-energy
+    zh: |
+      结合能
+    en: |
+      binding energy
+    brief: |
+      把原子核拆成彼此远离、静止的质子和中子，至少要给它的能量。
+    definedIn: physics.special-relativity.mass-energy
+    anchor: def-binding-energy
+  - id: physics.special-relativity.mass-defect
+    zh: |
+      质量亏损
+    en: |
+      mass defect
+    brief: |
+      原子核的质量比组成它的质子、中子的质量之和少的部分，等于结合能除以$c^2$。
+    definedIn: physics.special-relativity.mass-energy
+    anchor: def-binding-energy
+  - id: physics.special-relativity.q-value
+    zh: |
+      反应能
+    en: |
+      Q value
+    brief: |
+      反应前后各粒子质量之和的差乘以$c^2$，等于反应后增加的总动能。
+    definedIn: physics.special-relativity.mass-energy
+    anchor: def-q-value
+  - id: physics.special-relativity.invariant-mass
+    zh: |
+      不变质量
+    en: |
+      invariant mass
+    brief: |
+      一组粒子总四维动量的「长度」除以$c$：$Mc^2=\sqrt{E_{\text{总}}^2-p_{\text{总}}^2c^2}$，在各惯性系相同，反应前后不变。
+    definedIn: physics.special-relativity.relativistic-collisions
+    anchor: def-invariant-mass
+  - id: physics.special-relativity.zero-momentum-frame
+    zh: |
+      零动量系
+    en: |
+      zero-momentum frame
+    brief: |
+      一组粒子总动量为零的惯性系，也常叫质心系；它相对实验室的速度是$\vb p_{\text{总}}c^2/E_{\text{总}}$。
+    definedIn: physics.special-relativity.relativistic-collisions
+    anchor: def-zero-momentum-frame
+  - id: physics.special-relativity.threshold-energy
+    zh: |
+      阈能
+    en: |
+      threshold energy
+    brief: |
+      一个粒子打在静止的靶粒子上，要产生指定的一组粒子，它至少要有的能量。
+    definedIn: physics.special-relativity.relativistic-collisions
+    anchor: def-threshold-energy
+  - id: physics.special-relativity.four-force
+    zh: |
+      四维力
+    en: |
+      four-force
+    brief: |
+      四维动量对固有时的导数$K^\mu=\dv{P^\mu}{\tau}=\gamma_u\bigl(\frac{\vb F\cdot\vb u}{c},\vb F\bigr)$；质量不变时$K\cdot U=0$。
+    definedIn: physics.special-relativity.four-force
+    anchor: def-four-force
+  - id: physics.special-relativity.instantaneous-rest-frame
+    zh: |
+      瞬时静止系
+    en: |
+      instantaneous rest frame
+    brief: |
+      某一时刻和质点速度相同的惯性系，质点在这一瞬间在其中静止。
+    definedIn: physics.special-relativity.four-force
+    anchor: def-instantaneous-rest-frame
+  - id: physics.special-relativity.proper-acceleration
+    zh: |
+      固有加速度
+    en: |
+      proper acceleration
+    brief: |
+      质点在瞬时静止系里的加速度大小，也就是随质点一起运动的人感到的加速度。
+    definedIn: physics.special-relativity.four-force
+    anchor: def-instantaneous-rest-frame
+  - id: physics.special-relativity.four-acceleration
+    zh: |
+      四维加速度
+    en: |
+      four-acceleration
+    brief: |
+      四维速度对固有时的导数$A^\mu=\dv{U^\mu}{\tau}$；它满足$A\cdot U=0$，$A\cdot A=-\alpha^2$，$\alpha$是固有加速度。
+    definedIn: physics.special-relativity.four-force
+    anchor: def-four-acceleration
+  - id: physics.special-relativity.hyperbolic-motion
+    zh: |
+      双曲运动
+    en: |
+      hyperbolic motion
+    brief: |
+      从静止出发、固有加速度不变的直线运动；世界线是双曲线，速度趋于光速，快度随固有时均匀增长。
+    definedIn: physics.special-relativity.four-force
+    anchor: def-hyperbolic-motion
+  - id: physics.special-relativity.four-wavevector
+    zh: |
+      四维波矢
+    en: |
+      four-wavevector
+    brief: |
+      平面波的$k^\mu=(\frac\omega c,\vb k)$；相位$\omega t-\vb k\cdot\vb r$在各惯性系相同，所以它是四维矢量。
+    definedIn: physics.special-relativity.relativistic-doppler
+    anchor: def-four-wavevector
+  - id: physics.special-relativity.longitudinal-doppler
+    zh: |
+      纵向多普勒效应
+    en: |
+      longitudinal Doppler effect
+    brief: |
+      光源正对着观察者飞来或飞走时的频移：靠近时频率乘$\sqrt{\frac{1+\beta}{1-\beta}}$，远离时乘$\sqrt{\frac{1-\beta}{1+\beta}}$。
+    definedIn: physics.special-relativity.relativistic-doppler
+    anchor: def-doppler-types
+  - id: physics.special-relativity.transverse-doppler
+    zh: |
+      横向多普勒效应
+    en: |
+      transverse Doppler effect
+    brief: |
+      在观察者的惯性系里光的来向和光源速度垂直时的频移，频率乘$\frac1\gamma$，来自光源的时间延缓。
+    definedIn: physics.special-relativity.relativistic-doppler
+    anchor: def-doppler-types
