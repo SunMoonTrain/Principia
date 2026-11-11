@@ -11,10 +11,248 @@ macros:
     \mathop{}\!\mathrm{d}
   \pdv: |
     \frac{\partial #1}{\partial #2}
+  \dv: |
+    \frac{\mathrm{d} #1}{\mathrm{d} #2}
   \divg: |
     \nabla\cdot
   \curl: |
     \nabla\times
   \lap: |
     \nabla^2
-glossary: []
+glossary:
+  - id: physics.electromagnetism.electric-charge
+    zh: |
+      电荷
+    en: |
+      electric charge
+    brief: |
+      描述物体带电多少和正负的量$q$，单位是库仑；同号的互相排斥，异号的互相吸引。
+    definedIn: physics.electromagnetism.coulomb-law
+    anchor: def-electric-charge
+  - id: physics.electromagnetism.elementary-charge
+    zh: |
+      元电荷
+    en: |
+      elementary charge
+    brief: |
+      质子电荷的大小$e=1.602176634\times10^{-19}\,\mathrm C$；任何带电体的电荷都是$e$的整数倍。
+    definedIn: physics.electromagnetism.coulomb-law
+    anchor: def-elementary-charge
+  - id: physics.electromagnetism.charge-conservation
+    zh: |
+      电荷守恒
+    en: |
+      conservation of charge
+    brief: |
+      和外界没有电荷交换的系统，正负电荷的代数和保持不变。
+    definedIn: physics.electromagnetism.coulomb-law
+    anchor: def-charge-conservation
+  - id: physics.electromagnetism.point-charge
+    zh: |
+      点电荷
+    en: |
+      point charge
+    brief: |
+      大小比到其他带电体的距离小得多、可以看成一个点的带电体。
+    definedIn: physics.electromagnetism.coulomb-law
+    anchor: def-point-charge
+  - id: physics.electromagnetism.coulomb-law
+    zh: |
+      库仑定律
+    en: |
+      Coulomb's law
+    brief: |
+      真空中两个静止的点电荷之间的力，大小是$\frac{1}{4\pi\varepsilon_0}\frac{|q_1q_2|}{r^2}$，沿两者的连线，同号相斥、异号相吸。
+    definedIn: physics.electromagnetism.coulomb-law
+    anchor: def-coulomb-law
+  - id: physics.electromagnetism.superposition-principle
+    zh: |
+      叠加原理
+    en: |
+      superposition principle
+    brief: |
+      几个电荷对一个电荷的作用力，等于每个电荷单独存在时对它的力的矢量和。
+    definedIn: physics.electromagnetism.coulomb-law
+    anchor: def-superposition
+  - id: physics.electromagnetism.electric-field
+    zh: |
+      电场
+    en: |
+      electric field
+    brief: |
+      空间每一点上的矢量$\vb E$：静止的试探电荷在那里受的力除以它的电荷；电荷$q$受的力是$q\vb E$。
+    definedIn: physics.electromagnetism.electric-field
+    anchor: def-electric-field
+  - id: physics.electromagnetism.test-charge
+    zh: |
+      试探电荷
+    en: |
+      test charge
+    brief: |
+      用来探测电场的点电荷，电荷小到不影响产生电场的那些电荷。
+    definedIn: physics.electromagnetism.electric-field
+    anchor: def-electric-field
+  - id: physics.electromagnetism.field-line
+    zh: |
+      电场线
+    en: |
+      electric field line
+    brief: |
+      处处和电场方向相切、按电场方向标上箭头的曲线；从正电荷出发，终止在负电荷上或延伸到无穷远。
+    definedIn: physics.electromagnetism.electric-field
+    anchor: def-field-line
+  - id: physics.electromagnetism.charge-density
+    zh: |
+      电荷密度
+    en: |
+      charge density
+    brief: |
+      单位长度、单位面积或单位体积上的电荷，分别叫作线电荷密度$\lambda$、面电荷密度$\sigma$、体电荷密度$\rho$。
+    definedIn: physics.electromagnetism.continuous-charge
+    anchor: def-charge-density
+  - id: physics.electromagnetism.electric-potential
+    zh: |
+      电势
+    en: |
+      electric potential
+    brief: |
+      选定参考点$O$，$\varphi(\vb r)=-\int_O^{\vb r}\vb E\cdot\dd\vb l$，是单位电荷的电势能；单位是伏特。
+    definedIn: physics.electromagnetism.electric-potential
+    anchor: def-electric-potential
+  - id: physics.electromagnetism.potential-energy
+    zh: |
+      电势能
+    en: |
+      electric potential energy
+    brief: |
+      电荷$q$在电势为$\varphi$的地方的势能$U=q\varphi$。
+    definedIn: physics.electromagnetism.electric-potential
+    anchor: def-electric-potential
+  - id: physics.electromagnetism.potential-difference
+    zh: |
+      电势差
+    en: |
+      potential difference
+    brief: |
+      两点电势之差$\varphi_A-\varphi_B=\int_A^B\vb E\cdot\dd\vb l$，也叫电压；和参考点的选择无关。
+    definedIn: physics.electromagnetism.electric-potential
+    anchor: def-potential-difference
+  - id: physics.electromagnetism.electron-volt
+    zh: |
+      电子伏特
+    en: |
+      electron volt
+    abbr: |
+      eV
+    brief: |
+      电荷为$e$的粒子经过$1\,\mathrm V$的电势差，电场力对它做的功：$1\,\mathrm{eV}=1.602176634\times10^{-19}\,\mathrm J$。
+    definedIn: physics.electromagnetism.electric-potential
+    anchor: def-electron-volt
+  - id: physics.electromagnetism.equipotential-surface
+    zh: |
+      等势面
+    en: |
+      equipotential surface
+    brief: |
+      电势相等的点组成的曲面；电场处处和它垂直，指向电势降低的一侧。
+    definedIn: physics.electromagnetism.electric-potential
+    anchor: def-equipotential
+  - id: physics.electromagnetism.electric-flux
+    zh: |
+      电通量
+    en: |
+      electric flux
+    brief: |
+      电场穿过一个曲面的曲面积分$\Phi_E=\int\vb E\cdot\dd\vb a$，和穿过曲面的电场线净条数成正比。
+    definedIn: physics.electromagnetism.gauss-law
+    anchor: def-electric-flux
+  - id: physics.electromagnetism.solid-angle
+    zh: |
+      立体角
+    en: |
+      solid angle
+    brief: |
+      一小块面积对一点张的立体角$\dd\Omega=\frac{\dd a\cos\alpha}{r^2}$，即它投影到以这点为心的单位球面上的面积；全球面是$4\pi$。
+    definedIn: physics.electromagnetism.gauss-law
+    anchor: def-solid-angle
+  - id: physics.electromagnetism.gauss-law
+    zh: |
+      高斯定律
+    en: |
+      Gauss's law
+    brief: |
+      穿出任一闭合曲面的电通量等于面内的总电荷除以$\varepsilon_0$：$\oint\vb E\cdot\dd\vb a=\frac{Q_{\text{内}}}{\varepsilon_0}$。
+    definedIn: physics.electromagnetism.gauss-law
+    anchor: thm-gauss-law
+  - id: physics.electromagnetism.gaussian-surface
+    zh: |
+      高斯面
+    en: |
+      Gaussian surface
+    brief: |
+      为了用高斯定律求电场而选的闭合曲面；选得好时，面上的电场要么垂直于面且大小处处相同，要么平行于面。
+    definedIn: physics.electromagnetism.gauss-applications
+    anchor: def-gaussian-surface
+  - id: physics.electromagnetism.electric-dipole
+    zh: |
+      电偶极子
+    en: |
+      electric dipole
+    brief: |
+      相距$d$的一对等量异号点电荷，从比$d$远得多的地方看；那里的电场只由电偶极矩决定。
+    definedIn: physics.electromagnetism.electric-dipole
+    anchor: def-electric-dipole
+  - id: physics.electromagnetism.dipole-moment
+    zh: |
+      电偶极矩
+    en: |
+      electric dipole moment
+    brief: |
+      $\vb p=q\vb d$，$\vb d$是从$-q$指向$+q$的位移；一般的电荷分布是$\vb p=\sum_iq_i\vb r_i$。
+    definedIn: physics.electromagnetism.electric-dipole
+    anchor: def-electric-dipole
+  - id: physics.electromagnetism.conductor
+    zh: |
+      导体
+    en: |
+      conductor
+    brief: |
+      内部有大量能自由移动的电荷的物体，例如金属；电场会推动这些电荷重新分布。
+    definedIn: physics.electromagnetism.conductors
+    anchor: def-conductor
+  - id: physics.electromagnetism.insulator
+    zh: |
+      绝缘体
+    en: |
+      insulator
+    brief: |
+      电荷几乎不能移动的物体，例如玻璃、橡胶；电荷放在哪里就留在哪里。
+    definedIn: physics.electromagnetism.conductors
+    anchor: def-conductor
+  - id: physics.electromagnetism.electrostatic-equilibrium
+    zh: |
+      静电平衡
+    en: |
+      electrostatic equilibrium
+    brief: |
+      导体里的电荷不再宏观移动的状态；这时导体内部电场为零，整个导体等势。
+    definedIn: physics.electromagnetism.conductors
+    anchor: def-electrostatic-equilibrium
+  - id: physics.electromagnetism.induced-charge
+    zh: |
+      感应电荷
+    en: |
+      induced charge
+    brief: |
+      导体在外电场或附近电荷的作用下，自由电荷重新分布，在表面上出现的电荷。
+    definedIn: physics.electromagnetism.conductors
+    anchor: def-induced-charge
+  - id: physics.electromagnetism.electrostatic-shielding
+    zh: |
+      静电屏蔽
+    en: |
+      electrostatic shielding
+    brief: |
+      导体壳把外面的电场挡在外面，使里面的空腔不受外面电荷的影响。
+    definedIn: physics.electromagnetism.conductors
+    anchor: def-shielding

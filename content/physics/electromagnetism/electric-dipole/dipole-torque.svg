@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 290" width="520" height="290" font-size="14">
+  <!-- 匀强电场向右（只画上下两条电场线）；偶极子中心 (250,150)，半长 80 像素，p 和 E 夹角 50°；+q、-q 受的力各画 70 像素。 -->
+  <line x1="30.0" y1="22.0" x2="483.6" y2="22.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <path d="M 490.0 22.0 L 482.7 25.3 L 482.7 18.7 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="30.0" y1="276.0" x2="483.6" y2="276.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <path d="M 490.0 276.0 L 482.7 279.3 L 482.7 272.7 Z" style="fill: var(--muted, #6b7280)" />
+  <text x="452.0" y="44.0" style="fill: var(--muted, #6b7280)">电场 <tspan font-style="italic" font-weight="bold">E</tspan></text>
+  <line x1="198.6" y1="211.3" x2="301.4" y2="88.7" style="stroke: currentColor" stroke-width="2.0" />
+  <line x1="210.5" y1="169.1" x2="257.3" y2="113.3" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 261.9 107.8 L 259.5 116.4 L 253.8 111.7 Z" style="fill: var(--good, #059669)" />
+  <text x="243.9" y="101.8" style="fill: var(--good, #059669)"><tspan font-style="italic" font-weight="bold">p</tspan></text>
+  <line x1="301.4" y1="88.7" x2="364.2" y2="88.7" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 371.4 88.7 L 363.2 92.4 L 363.2 85.0 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="198.6" y1="211.3" x2="135.8" y2="211.3" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 128.6 211.3 L 136.8 207.6 L 136.8 215.0 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="353.4" y="78.7" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">q</tspan><tspan font-style="italic" font-weight="bold">E</tspan></text>
+  <text x="126.6" y="201.3" style="fill: var(--accent, #2563eb)">−<tspan font-style="italic">q</tspan><tspan font-style="italic" font-weight="bold">E</tspan></text>
+  <circle cx="301.4" cy="88.7" r="9.0" style="fill: var(--bg, #ffffff); stroke: currentColor" fill="var(--bg, #ffffff)" stroke-width="1.5" />
+  <line x1="296.5" y1="88.7" x2="306.4" y2="88.7" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="301.4" y1="83.8" x2="301.4" y2="93.7" style="stroke: currentColor" stroke-width="1.6" />
+  <circle cx="198.6" cy="211.3" r="9.0" style="fill: var(--bg, #ffffff); stroke: currentColor" fill="var(--bg, #ffffff)" stroke-width="1.5" />
+  <line x1="193.6" y1="211.3" x2="203.5" y2="211.3" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="250.0" y1="150.0" x2="296.0" y2="150.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="3 3" />
+  <path d="M 284.0 150.0 L 283.9 147.5 L 283.6 145.1 L 283.2 142.6 L 282.6 140.2 L 281.8 137.9 L 280.8 135.6 L 279.7 133.4 L 278.4 131.3 L 277.0 129.3 L 275.4 127.4 L 273.7 125.6 L 271.9 124.0" style="stroke: currentColor" fill="none" stroke-width="1.1" stroke-linejoin="round" />
+  <text x="288.0" y="138.0" fill="currentColor"><tspan font-style="italic">θ</tspan></text>
+  <path d="M 299.1 49.3 L 302.1 50.9 L 305.2 52.5 L 308.1 54.2 L 311.0 56.1 L 313.8 58.0 L 316.6 60.0 L 319.3 62.0 L 322.0 64.2 L 324.6 66.4 L 327.1 68.8 L 329.5 71.2 L 331.9 73.6 L 334.2 76.2 L 336.4 78.8 L 338.6 81.4 L 340.6 84.2" style="stroke: currentColor" fill="none" stroke-width="1.4" stroke-linejoin="round" stroke-dasharray="5 3" />
+  <path d="M 340.6 84.2 L 333.6 80.3 L 338.8 76.4 Z" style="fill: currentColor" />
+  <text x="291.1" y="41.3" fill="currentColor" text-anchor="end">力矩使</text>
+  <text x="291.1" y="64.3" fill="currentColor" text-anchor="end"><tspan font-style="italic" font-weight="bold">p</tspan> 转向 <tspan font-style="italic" font-weight="bold">E</tspan></text>
+</svg>

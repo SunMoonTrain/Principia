@@ -1,0 +1,171 @@
+- id: p1
+  tier: easy
+  statement: |
+    $q_1=+3.0\,\mathrm{nC}$在原点，$q_2=-2.0\,\mathrm{nC}$在$(0.40\,\mathrm m,\,0)$。取无穷远为参考点，求$(0,\,0.30\,\mathrm m)$处的电势，取$\frac{1}{4\pi\varepsilon_0}=8.988\times10^9\,\mathrm{N\,m^2/C^2}$。
+  answer:
+    type: number
+    value: 8.988e9*(3.0e-9/0.30 - 2.0e-9/0.50)
+    unit: |
+      $\mathrm V$
+  hints:
+    - |
+      电势是标量，两个点电荷的电势直接相加，负电荷的电势是负的。
+    - |
+      $(0,\,0.30\,\mathrm m)$到$q_1$的距离是$0.30\,\mathrm m$，到$q_2$的距离是$0.50\,\mathrm m$。
+    - |
+      $\varphi=8.988\times10^9\times\Bigl(\frac{3.0\times10^{-9}}{0.30}-\frac{2.0\times10^{-9}}{0.50}\Bigr)\,\mathrm V\approx53.9\,\mathrm V$。
+  solution: |
+    两个电荷到那一点的距离分别是$0.30\,\mathrm m$和$\sqrt{0.30^2+0.40^2}\,\mathrm m=0.50\,\mathrm m$。电势是代数和：$\varphi=8.988\times10^9\times\Bigl(\frac{3.0\times10^{-9}}{0.30}-\frac{2.0\times10^{-9}}{0.50}\Bigr)\,\mathrm V\approx53.9\,\mathrm V$。不用分解矢量，也不用管方向，这正是电势的方便之处。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        电荷为$-2e$的粒子从电势为$0$的地方移到电势为$+100\,\mathrm V$的地方，电场力对它做功$+200\,\mathrm{eV}$
+      - |
+        一个点电荷的电场里，把参考点从无穷远改到离电荷$1\,\mathrm m$处，离电荷$2\,\mathrm m$和$3\,\mathrm m$两处的电势都变了，它们之间的电势差却不变
+      - |
+        某区域里电势随$x$增大而升高，那里电场的$x$分量为正
+      - |
+        一块区域里电势处处是$50\,\mathrm V$，那里的电场为零
+      - |
+        同一个等势面上，各处电场的大小都相等
+    value: [1, 2, 4]
+  hints:
+    - |
+      电场力做的功是$W_{AB}=q(\varphi_A-\varphi_B)$；电场是电势的负梯度。
+    - |
+      换参考点时，各处的电势都加上同一个常数；电势沿$x$升高，$\pdv{\varphi}{x}>0$。
+    - |
+      A、B、D 对；C、E 错。
+  solution: |
+    A 对：$W=q(\varphi_A-\varphi_B)=(-2e)\times(0-100\,\mathrm V)=+200\,\mathrm{eV}$。B 对：各处的电势加上同一个常数，差不变。C 错：$E_x=-\pdv{\varphi}{x}<0$。
+
+    D 对：$\nabla\varphi=\vb 0$，所以$\vb E=\vb 0$。E 错：例如几何图像里两个电荷正中间的那条等势线，离电荷越远，电场越弱。
+
+- id: p3
+  tier: medium
+  statement: |
+    动能为$5.0\,\mathrm{MeV}$的$\alpha$粒子（alpha particle，电荷$2e$）正对着金原子核（电荷$79e$）射去。把金核看成固定不动的点电荷，$\alpha$粒子最近能到离金核多远？取$e=1.602176634\times10^{-19}\,\mathrm C$，$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{C^2/(N\,m^2)}$。
+  answer:
+    type: number
+    value: 2*79*1.602176634e-19/(4*pi*8.8541878188e-12*5.0e6)
+    unit: |
+      $\mathrm m$
+  hints:
+    - |
+      只有电场力做功，动能和电势能之和不变；离得最近时$\alpha$粒子的速度为零。
+    - |
+      $K=\frac{1}{4\pi\varepsilon_0}\frac{(2e)(79e)}{d}$；$K=5.0\times10^6\,\mathrm{eV}=5.0\times10^6e\,\mathrm{J}$（$e$以库仑为单位的数值）。
+    - |
+      $d=\frac{1}{4\pi\varepsilon_0}\frac{158e}{5.0\times10^6}\approx4.55\times10^{-14}\,\mathrm m$。
+  solution: |
+    在无穷远处电势能为零、动能为$K$；最近点速度为零，动能全部变成电势能：$K=\frac{1}{4\pi\varepsilon_0}\frac{(2e)(79e)}{d}$。$K=5.0\times10^6\,\mathrm{eV}$，两边约掉一个$e$，$d=\frac{1}{4\pi\varepsilon_0}\frac{158e}{5.0\times10^6\,\mathrm V}\approx4.55\times10^{-14}\,\mathrm m$。原子的大小约$10^{-10}\,\mathrm m$，是这个距离的两千多倍，可见原子的正电荷集中在一个很小的核里。
+
+- id: p4
+  tier: medium
+  statement: |
+    某个区域里，电势是$\varphi=(3x^2y-y^3)\,\mathrm V$，其中$x$、$y$是以米为单位的坐标的数值。求$(1\,\mathrm m,\,2\,\mathrm m)$处电场的大小。
+  answer:
+    type: number
+    value: sqrt((6*1*2)^2 + (3*1^2 - 3*2^2)^2)
+    unit: |
+      $\mathrm{V/m}$
+  hints:
+    - |
+      电场是电势的负梯度：$E_x=-\pdv{\varphi}{x}$，$E_y=-\pdv{\varphi}{y}$。
+    - |
+      $\pdv{\varphi}{x}=6xy$，$\pdv{\varphi}{y}=3x^2-3y^2$。
+    - |
+      在$(1,2)$处$\vb E=(-12,\,9)\,\mathrm{V/m}$，大小$15\,\mathrm{V/m}$。
+  solution: |
+    $E_x=-\pdv{\varphi}{x}=-6xy$，$E_y=-\pdv{\varphi}{y}=3y^2-3x^2$。在$(1,2)$处$\vb E=(-12,\,9)\,\mathrm{V/m}$，大小$\sqrt{12^2+9^2}\,\mathrm{V/m}=15\,\mathrm{V/m}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）长为$2L$、线电荷密度为$\lambda>0$的均匀带电细棒，取无穷远为参考点，求它的中垂线上离棒$s$处的电势。（2）$L\to\infty$时，这个电势怎样？中垂线上两点之间的电势差呢？
+
+    （3）对无限长的均匀带电直线，改取离它$s_0$处为参考点，求离它$s$处的电势，并由电势求电场。
+  hints:
+    - |
+      （1）$x$处的一小段到场点的距离是$\sqrt{s^2+x^2}$；$\ln\bigl(x+\sqrt{x^2+s^2}\bigr)$对$x$求导是$\frac{1}{\sqrt{x^2+s^2}}$。
+    - |
+      $\varphi=\frac{\lambda}{2\pi\varepsilon_0}\ln\frac{L+\sqrt{L^2+s^2}}{s}$，$L\to\infty$时趋于无穷大；两点之差$\varphi(s_1)-\varphi(s_2)$的极限是$\frac{\lambda}{2\pi\varepsilon_0}\ln\frac{s_2}{s_1}$。
+    - |
+      （3）$\varphi(s)=-\int_{s_0}^{s}\frac{\lambda}{2\pi\varepsilon_0s'}\,\dd s'=-\frac{\lambda}{2\pi\varepsilon_0}\ln\frac{s}{s_0}$，$E=-\dv{\varphi}{s}=\frac{\lambda}{2\pi\varepsilon_0s}$。
+  reference: |
+    （1）取棒的中点为原点，$\varphi=\frac{1}{4\pi\varepsilon_0}\int_{-L}^{L}\frac{\lambda\,\dd x}{\sqrt{s^2+x^2}}=\frac{\lambda}{4\pi\varepsilon_0}\Bigl[\ln\bigl(x+\sqrt{x^2+s^2}\bigr)\Bigr]_{-L}^{L}$。$\sqrt{L^2+s^2}-L=\frac{s^2}{\sqrt{L^2+s^2}+L}$，所以结果是$\frac{\lambda}{4\pi\varepsilon_0}\ln\frac{\bigl(L+\sqrt{L^2+s^2}\bigr)^2}{s^2}=\frac{\lambda}{2\pi\varepsilon_0}\ln\frac{L+\sqrt{L^2+s^2}}{s}$。
+
+    （2）$L\to\infty$时它像$\frac{\lambda}{2\pi\varepsilon_0}\ln\frac{2L}{s}$一样趋于无穷大：电荷一直分布到无穷远，以无穷远为参考点就没有意义。但两点之差$\varphi(s_1)-\varphi(s_2)=\frac{\lambda}{2\pi\varepsilon_0}\ln\frac{L+\sqrt{L^2+s_1^2}}{L+\sqrt{L^2+s_2^2}}\cdot\frac{s_2}{s_1}$，极限是有限的$\frac{\lambda}{2\pi\varepsilon_0}\ln\frac{s_2}{s_1}$。
+
+    （3）无限长直线的电场是$\frac{\lambda}{2\pi\varepsilon_0s}$，沿径向，所以$\varphi(s)=-\int_{s_0}^{s}\frac{\lambda}{2\pi\varepsilon_0s'}\,\dd s'=-\frac{\lambda}{2\pi\varepsilon_0}\ln\frac{s}{s_0}$，在$s=s_0$处为零。$E=-\dv{\varphi}{s}=\frac{\lambda}{2\pi\varepsilon_0s}$，回到原来的电场；换一个$s_0$，电势差一个常数，电场不变。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）半径为$R$的球面上均匀分布着电荷$Q$。把球面分成一圈圈细圆环，取无穷远为参考点，求离球心$r$处的电势，分$r>R$和$r<R$。
+
+    （2）半径为$R$的球体里均匀分布着电荷$Q$。把球体分成一层层同心球壳，用（1）的结果求球内离球心$r$处的电势。（3）由（2）的电势求球内的电场。
+  hints:
+    - |
+      （1）极角$\theta$处的圆环带电$\dd q=\frac Q2\sin\theta\,\dd\theta$，到场点的距离$w$满足$w^2=r^2+R^2-2rR\cos\theta$，$w\,\dd w=rR\sin\theta\,\dd\theta$；圆环的电势是$\frac{1}{4\pi\varepsilon_0}\frac{\dd q}{w}$，所以$w$约掉了。
+    - |
+      （1）外面$\varphi=\frac{1}{4\pi\varepsilon_0}\frac Qr$，里面处处$\frac{1}{4\pi\varepsilon_0}\frac QR$。（2）半径小于$r$的球壳像点电荷，大于$r$的球壳各贡献$\frac{1}{4\pi\varepsilon_0}\frac{\dd q}{s}$。
+    - |
+      $\varphi(r)=\frac{1}{4\pi\varepsilon_0}\frac{Q(3R^2-r^2)}{2R^3}$，$E=-\dv{\varphi}{r}=\frac{1}{4\pi\varepsilon_0}\frac{Qr}{R^3}$，沿径向。
+  reference: |
+    （1）以过球心和场点的直线为轴，极角$\theta$到$\theta+\dd\theta$的圆环带电$\dd q=\frac{Q}{2}\sin\theta\,\dd\theta$，到场点的距离$w=\sqrt{r^2+R^2-2rR\cos\theta}$。$w\,\dd w=rR\sin\theta\,\dd\theta$，所以$\dd\varphi=\frac{1}{4\pi\varepsilon_0}\frac{\dd q}{w}=\frac{1}{4\pi\varepsilon_0}\frac{Q}{2rR}\,\dd w$，被积式是常数。$r>R$时$w$从$r-R$到$r+R$，差$2R$，$\varphi=\frac{1}{4\pi\varepsilon_0}\frac Qr$；$r<R$时$w$从$R-r$到$R+r$，差$2r$，$\varphi=\frac{1}{4\pi\varepsilon_0}\frac QR$，和$r$无关。
+
+    球面里面电势处处相等，电场是电势的负梯度，所以里面没有电场；这比直接积电场（见[连续分布电荷的电场](lesson:physics.electromagnetism.continuous-charge)的 p6）简单得多。
+
+    （2）体电荷密度$\rho=\frac{3Q}{4\pi R^3}$。半径小于$r$的部分带电$Q\frac{r^3}{R^3}$，对场点而言像点电荷，贡献$\frac{1}{4\pi\varepsilon_0}\frac{Qr^2}{R^3}$；半径$s$到$s+\dd s$的球壳（$s>r$）带电$4\pi\rho s^2\,\dd s$，场点在它里面，贡献$\frac{1}{4\pi\varepsilon_0}4\pi\rho s\,\dd s$。从$r$积到$R$得$\frac{1}{4\pi\varepsilon_0}\frac{3Q(R^2-r^2)}{2R^3}$，合起来$\varphi(r)=\frac{1}{4\pi\varepsilon_0}\frac{Q(3R^2-r^2)}{2R^3}$；$r=R$时是$\frac{1}{4\pi\varepsilon_0}\frac QR$，和外面接得上。
+
+    （3）$E=-\dv{\varphi}{r}=\frac{1}{4\pi\varepsilon_0}\frac{Qr}{R^3}$，沿径向向外（$Q>0$），在球心为零，和半径成正比。
+
+- id: p7
+  tier: thinking
+  statement: |
+    电势的数值和参考点的选择有关。
+
+    （1）物理上有意义的是什么？换参考点时什么变、什么不变？
+
+    （2）为什么常选无穷远作参考点？什么时候不能这样选？（3）电子线路里常把「地」的电势定为零，这和选无穷远有什么异同？
+  hints:
+    - |
+      电场、电势差、电场力做的功都和参考点无关。
+    - |
+      电荷集中在有限的范围里时，离得很远处电场和电势都趋于零，选无穷远最自然；电荷一直分布到无穷远时不行（p5）。
+    - |
+      「地」是一个方便的、大家共用的参考点；它相对无穷远的电势并不一定是零，但只要大家都用它，电势差就不受影响。
+  reference: |
+    （1）测得到的是电场、电势差和电场力做的功，它们都和参考点无关；换参考点只是让各处的电势都加上同一个常数，电场$\vb E=-\nabla\varphi$不变。所以电势本身的数值没有绝对的意义，像海拔一样，要说明从哪里量起。
+
+    （2）电荷集中在有限的范围里时，远处的电场和电势都趋于零，取无穷远为零最自然，点电荷的电势也就写成$\frac{1}{4\pi\varepsilon_0}\frac Qr$。电荷一直分布到无穷远（无限长的直线、无穷大的平面）时，从无穷远积分会发散，只能取一个有限远的点作参考（p5）。
+
+    （3）「地」是一个大导体，各处电势相同，又是大家都接的，用它作参考点，电路里各点的电势就是相对于它的电压。它相对无穷远的电势是多少，对电路无关紧要；选无穷远是理论上方便，选地是实验上方便，本质都是挑一个点当零点。
+
+- id: p8
+  tier: thinking
+  statement: |
+    电荷$q$放在另一个电荷$Q$的电场里，它的电势能是$q\varphi$。
+
+    （1）这份能量算$q$的、$Q$的，还是两者共有的？（2）两个点电荷$q_1$、$q_2$组成的系统，总的电势能是$q_1\varphi_2(\vb r_1)+q_2\varphi_1(\vb r_2)$吗？（$\varphi_2$是$q_2$的电势，$\varphi_1$同理。）（3）这份能量存放在哪里？
+  hints:
+    - |
+      把$q$挪开到无穷远，或者把$Q$挪开到无穷远，电场力做的功一样多。
+    - |
+      $q_1\varphi_2(\vb r_1)=q_2\varphi_1(\vb r_2)=\frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{r_{12}}$，两项是同一份能量算了两次。
+    - |
+      以后会看到，这份能量可以看成储存在两个电荷合起来的电场里（见[静电场的能量](lesson:physics.electromagnetism.electrostatic-energy)）。
+  reference: |
+    （1）它是两者共有的相互作用能：把$q$挪到无穷远，或者把$Q$挪到无穷远，电场力做的功都是$\frac{1}{4\pi\varepsilon_0}\frac{qQ}{r}$。说「$q$的电势能」只是在$Q$固定不动时的方便说法。
+
+    （2）不是。$q_1\varphi_2(\vb r_1)$和$q_2\varphi_1(\vb r_2)$都等于$\frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{r_{12}}$，是同一份相互作用能，相加就算了两次；系统的电势能是$\frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{r_{12}}$，即$\frac12\bigl[q_1\varphi_2(\vb r_1)+q_2\varphi_1(\vb r_2)\bigr]$。
+
+    （3）在静电学里，说能量在电荷上还是在场里，算出来的总数一样。可是电磁波离开了电荷照样带着能量，所以更好的说法是能量储存在场里；静电的情形只有电场，能量密度是$\frac{\varepsilon_0}{2}E^2$（见[静电场的能量](lesson:physics.electromagnetism.electrostatic-energy)）。

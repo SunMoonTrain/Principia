@@ -1,0 +1,167 @@
+- id: p1
+  tier: easy
+  statement: |
+    在玻尔模型里，氢原子的电子离质子的距离是玻尔半径（Bohr radius）$a_0=5.29177210544\times10^{-11}\,\mathrm m$。按 CODATA 2022 的值，取$e=1.602176634\times10^{-19}\,\mathrm C$，$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{C^2/(N\,m^2)}$，求质子在这个距离上产生的电场的大小。
+  answer:
+    type: number
+    value: 1.602176634e-19/(4*pi*8.8541878188e-12*(5.29177210544e-11)^2)
+    unit: |
+      $\mathrm{N/C}$
+  hints:
+    - |
+      质子可以看成点电荷，电荷是$e$。
+    - |
+      $E=\frac{1}{4\pi\varepsilon_0}\frac{e}{a_0^2}$。
+    - |
+      代入数值，$E\approx5.14\times10^{11}\,\mathrm{N/C}$。
+  solution: |
+    质子是电荷为$e$的点电荷，$E=\frac{1}{4\pi\varepsilon_0}\frac{e}{a_0^2}\approx5.14\times10^{11}\,\mathrm{N/C}$，方向背离质子。空气里的电场超过约$3\times10^6\,\mathrm{N/C}$就会击穿放电，原子里的这个电场是它的十几万倍。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        某点放上$1\,\mathrm{nC}$的试探电荷，它受的力是$2\times10^{-6}\,\mathrm N$；换成$2\,\mathrm{nC}$的试探电荷，那一点的电场变成原来的$2$倍
+      - |
+        真空中两个等量同号的点电荷，它们连线的中点处电场为零
+      - |
+        真空中一个点电荷的电场，离它$2\,\mathrm m$处的大小是离它$1\,\mathrm m$处的$\frac12$
+      - |
+        负电荷在电场中受的电场力和它所在处的电场方向相反
+      - |
+        真空中两个等量异号的点电荷，它们连线的中点处电场为零
+    value: [2, 4]
+  hints:
+    - |
+      电场只由产生它的电荷决定；点电荷的电场和距离的平方成反比。
+    - |
+      在连线的中点，两个电荷的电场大小相等；同号时方向相反，异号时方向相同。
+    - |
+      B、D 对；A、C、E 错。
+  solution: |
+    A 错：力加倍，电场不变，电场和试探电荷无关。B 对：两个电场大小相等、方向相反。C 错：距离加倍，电场变成$\frac14$。
+
+    D 对：$\vb F=q\vb E$，$q<0$时力和电场反向。E 错：两个电场都指向负电荷，同向相加，不为零。
+
+- id: p3
+  tier: medium
+  statement: |
+    边长$a=0.20\,\mathrm m$的正方形，上面两个顶点各有$+2.0\,\mathrm{nC}$的点电荷，下面两个顶点各有$-2.0\,\mathrm{nC}$的点电荷。求正方形中心的电场的大小，取$\frac{1}{4\pi\varepsilon_0}=8.988\times10^9\,\mathrm{N\,m^2/C^2}$。
+  answer:
+    type: number
+    value: 4*sqrt(2)*8.988e9*2.0e-9/0.20^2
+    unit: |
+      $\mathrm{N/C}$
+  hints:
+    - |
+      四个电荷到中心的距离都是$\frac{a}{\sqrt2}$，电场大小都是$E_0=\frac{1}{4\pi\varepsilon_0}\frac{2q}{a^2}$。
+    - |
+      正电荷的电场背离它，负电荷的电场指向它；左上的正电荷和右下的负电荷，电场都指向右下方。
+    - |
+      指向右下、左下的各两个，合起来竖直向下，大小$2\sqrt2E_0=\frac{1}{4\pi\varepsilon_0}\frac{4\sqrt2q}{a^2}\approx2.54\times10^3\,\mathrm{N/C}$。
+  solution: |
+    每个电荷到中心的距离是$\frac{a}{\sqrt2}$，电场大小都是$E_0=8.988\times10^9\times\frac{2.0\times10^{-9}}{0.020}\,\mathrm{N/C}\approx899\,\mathrm{N/C}$。左上的正电荷和右下的负电荷，电场都指向右下方；右上的正电荷和左下的负电荷，电场都指向左下方。两组的水平分量抵消，合电场竖直向下，从正电荷那一边指向负电荷那一边，大小$2\times2E_0\cos45^\circ=2\sqrt2E_0\approx2.54\times10^3\,\mathrm{N/C}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    电子以$2.0\times10^7\,\mathrm{m/s}$的速度水平射入两块平行金属板之间，板间是竖直方向、大小$1.0\times10^4\,\mathrm{N/C}$的匀强电场，板长$5.0\,\mathrm{cm}$。不计重力，电子离开两板时，在竖直方向上偏离了多少？电子的电荷和质量取 CODATA 2022 的值$e=1.602176634\times10^{-19}\,\mathrm C$，$m_e=9.1093837139\times10^{-31}\,\mathrm{kg}$。
+  answer:
+    type: number
+    value: 0.5*(1.602176634e-19*1.0e4/9.1093837139e-31)*(0.050/2.0e7)^2
+    unit: |
+      $\mathrm m$
+  hints:
+    - |
+      电场力是恒力，只在竖直方向；水平方向电子做匀速运动，和抛体运动一样分开处理。
+    - |
+      在板间的时间$t=\frac{L}{v_0}$，竖直方向的加速度$a=\frac{eE}{m_e}$。
+    - |
+      $y=\frac12at^2=\frac12\times\frac{eE}{m_e}\times\Bigl(\frac{L}{v_0}\Bigr)^2\approx5.50\times10^{-3}\,\mathrm m$。
+  solution: |
+    电子受的电场力$eE$竖直、大小不变，竖直方向的加速度是$a=\frac{eE}{m_e}\approx1.76\times10^{15}\,\mathrm{m/s^2}$；水平方向不受力，在板间的时间$t=\frac{L}{v_0}=2.5\times10^{-9}\,\mathrm s$。竖直方向从静止开始匀加速，偏离$y=\frac12at^2\approx5.50\times10^{-3}\,\mathrm m$，约$5.5\,\mathrm{mm}$。重力加速度和$a$相比小$10^{14}$倍以上，确实可以不计。
+
+- id: p5
+  tier: hard
+  statement: |
+    $N$个点电荷$q_i$分别在$\vb r_i$处，总电荷$Q=\sum_iq_i$。
+
+    （1）场点沿一个固定的方向$\uv n$走向无穷远，即$\vb r=r\uv n$、$r\to\infty$。证明$r^2\vb E(\vb r)\to\frac{1}{4\pi\varepsilon_0}Q\uv n$，即远处的电场像一个电荷为$Q$的点电荷的电场。
+
+    （2）$+q$在$x=-a$处，$-q$在$x=a$处，$Q=0$。沿$x$轴（$x>a$）走向远处时，电场的主要项是什么？它怎样随$x$衰减？
+  hints:
+    - |
+      （1）每个电荷那一项乘上$r^2$以后，写成$\frac{\uv n-\vb r_i/r}{|\uv n-\vb r_i/r|^3}$。
+    - |
+      $r\to\infty$时$\frac{\vb r_i}{r}\to0$，每一项都趋于$\uv n$，再乘$q_i$相加。（2）$E_x=\frac{q}{4\pi\varepsilon_0}\Bigl[\frac{1}{(x+a)^2}-\frac{1}{(x-a)^2}\Bigr]$。
+    - |
+      （2）通分得$E_x=-\frac{1}{4\pi\varepsilon_0}\frac{4qax}{(x^2-a^2)^2}$，主要项是$-\frac{1}{4\pi\varepsilon_0}\frac{4qa}{x^3}$，随$\frac{1}{x^3}$衰减，指向$-x$方向。
+  reference: |
+    （1）$r^2\vb E=\frac{1}{4\pi\varepsilon_0}\sum_iq_i\frac{r^2(r\uv n-\vb r_i)}{|r\uv n-\vb r_i|^3}=\frac{1}{4\pi\varepsilon_0}\sum_iq_i\frac{\uv n-\vb r_i/r}{|\uv n-\vb r_i/r|^3}$。$r\to\infty$时$\frac{\vb r_i}{r}\to\vb 0$，分母趋于$|\uv n|^3=1$，不为零，每一项都连续地趋于$\uv n$。有限项相加，极限是$\frac{1}{4\pi\varepsilon_0}Q\uv n$。
+
+    （2）$E_x=\frac{q}{4\pi\varepsilon_0}\Bigl[\frac{1}{(x+a)^2}-\frac{1}{(x-a)^2}\Bigr]=-\frac{1}{4\pi\varepsilon_0}\frac{4qax}{(x^2-a^2)^2}$。$x\gg a$时它约为$-\frac{1}{4\pi\varepsilon_0}\frac{4qa}{x^3}$，指向$-x$，也就是指向离得近的负电荷。$Q=0$时，（1）里的极限是零，电场比$\frac{1}{x^2}$衰减得快，这里是$\frac{1}{x^3}$；和例 1 中垂线上的$\frac{2qa}{y^3}$相比，同样的距离上，连线方向上的电场大一倍。
+
+- id: p6
+  tier: hard
+  statement: |
+    四个电荷都是$Q>0$的点电荷固定在$(\pm a,0,0)$、$(0,\pm a,0)$，正的点电荷$q$放在原点。
+
+    （1）证明原点处$q$受的合力为零。（2）把$q$沿$x$轴挪到$(x,0,0)$，$|x|\ll a$，求它受的力的$x$分量，只保留$x$的一次项；这个方向上的平衡稳定吗？（3）沿$z$轴挪到$(0,0,z)$呢？（4）把$x$、$y$、$z$三个方向的一次项系数加起来，得到多少？
+  hints:
+    - |
+      （1）四个力两两等大反向。（2）$x$轴上的两个电荷给出$\frac{1}{(a+x)^2}-\frac{1}{(a-x)^2}$，$y$轴上的两个电荷各给出$x$分量$\frac{x}{(a^2+x^2)^{3/2}}$。
+    - |
+      $\frac{1}{(a+x)^2}-\frac{1}{(a-x)^2}$对$x$求导，在$x=0$处是$-\frac{4}{a^3}$；$\frac{2x}{(a^2+x^2)^{3/2}}$的一次项是$\frac{2x}{a^3}$。
+    - |
+      $F_x\approx-\frac{1}{4\pi\varepsilon_0}\frac{2Qq}{a^3}x$，稳定；$F_z\approx\frac{1}{4\pi\varepsilon_0}\frac{4Qq}{a^3}z$，不稳定。三个系数是$-2$、$-2$、$4$（以$\frac{1}{4\pi\varepsilon_0}\frac{Qq}{a^3}$为单位），加起来为零。
+  reference: |
+    （1）$(a,0,0)$和$(-a,0,0)$处的电荷对$q$的力等大反向，$(0,\pm a,0)$处的也一样，合力为零。
+
+    （2）记$k=\frac{1}{4\pi\varepsilon_0}$。$(a,0,0)$的电荷把$q$往$-x$推，力是$-\frac{kQq}{(a-x)^2}$；$(-a,0,0)$的往$+x$推，是$\frac{kQq}{(a+x)^2}$；$(0,\pm a,0)$的两个各给出$x$分量$\frac{kQqx}{(a^2+x^2)^{3/2}}$。$\frac{1}{(a+x)^2}-\frac{1}{(a-x)^2}$在$x=0$处的值是零、导数是$-\frac{4}{a^3}$，$\frac{2x}{(a^2+x^2)^{3/2}}$的导数在$x=0$处是$\frac{2}{a^3}$，所以$F_x\approx-\frac{2kQq}{a^3}x$。力指回原点，这个方向上平衡是稳定的，$y$方向也一样。
+
+    （3）四个电荷到$(0,0,z)$的距离都是$\sqrt{a^2+z^2}$，各给出$z$分量$\frac{kQqz}{(a^2+z^2)^{3/2}}$，$F_z\approx\frac{4kQq}{a^3}z$。力把$q$往外推，$z$方向上平衡不稳定。
+
+    （4）三个方向的系数是$-2$、$-2$、$4$（以$\frac{kQq}{a^3}$为单位），和为零。所以总有某个方向把$q$往外推，只靠这几个点电荷，$q$在原点不可能处处稳定。这不是巧合：在没有电荷的地方，这三个系数之和总是零，原因要到[高斯定律的微分形式](lesson:physics.electromagnetism.gauss-differential)才能说明。
+
+- id: p7
+  tier: thinking
+  statement: |
+    在静电学里，有了库仑定律和叠加原理，电场似乎只是换了一种算力的办法。
+
+    （1）为什么还要引入电场？（2）一个电荷突然挪动一下，远处的电荷是不是立刻就受到变化了的力？如果不是，这段时间里能量和动量放在哪里？
+  hints:
+    - |
+      电场把「谁产生」和「谁受力」分开了：同一个电场里放任何电荷，受力都是$q\vb E$。
+    - |
+      相对论里没有比光更快的作用；挪动的消息以光速传出去。
+    - |
+      在消息传到之前，两个电荷受的力不再等大反向，它们的总动量似乎不守恒；把场本身的动量算进去才守恒。
+  reference: |
+    （1）电场把「产生」和「受力」分开：一组电荷产生的电场算一次，往哪里放什么电荷都用$\vb F=q\vb E$，不必每次回到每一个源电荷。电场还能直接测量（试探电荷），也能画出来，帮助看清整体的形状。
+
+    （2）不是。变化以光速传播，远处的电荷要晚一段时间才「知道」（见[真空中的电磁波](lesson:physics.electromagnetism.em-waves)）。这段时间里两个电荷受的力不再等大反向，牛顿第三定律对它们不成立，它们的总动量会变；守恒的是电荷和电磁场合起来的能量和动量（见[电磁场的动量](lesson:physics.electromagnetism.field-momentum)）。所以电场不只是计算工具，它和电荷一样是实在的物理对象。
+
+- id: p8
+  tier: thinking
+  statement: |
+    在纸面上画一个点电荷的电场线，从电荷出发画$N$条，方向均匀分布。
+
+    （1）离电荷$r$处，纸面上单位长度穿过多少条线？它和电场的大小成正比吗？（2）为什么说在三维空间里，电场线的疏密能表示电场的强弱？（3）什么样的电荷分布，画在纸面上的电场线疏密恰好和电场的大小成正比？
+  hints:
+    - |
+      纸面上半径为$r$的圆周长$2\pi r$。
+    - |
+      三维空间里，$N$条线穿过面积为$4\pi r^2$的球面；点电荷的电场和$\frac{1}{r^2}$成正比。
+    - |
+      要找电场和$\frac1r$成正比的分布：一根垂直于纸面、很长的均匀带电直线（见[连续分布电荷的电场](lesson:physics.electromagnetism.continuous-charge)）。
+  reference: |
+    （1）$N$条线均匀穿过半径为$r$的圆，单位长度上是$\frac{N}{2\pi r}$条，和$\frac1r$成正比；电场却和$\frac{1}{r^2}$成正比，所以纸面上的疏密不和电场成正比，只能定性地看。
+
+    （2）在三维空间里，$N$条线均匀穿过半径为$r$的球面，单位面积上是$\frac{N}{4\pi r^2}$条，和电场一样随$\frac{1}{r^2}$变。这依赖平方反比：如果电场随$\frac{1}{r^3}$衰减，线的疏密就跟不上，也就不能用条数表示强弱。
+
+    （3）一根垂直于纸面、很长的均匀带电直线，它的电场在纸面里沿径向，大小和$\frac1r$成正比（见[连续分布电荷的电场](lesson:physics.electromagnetism.continuous-charge)），正好和纸面上线的疏密一样。这时纸面上的图就是整个电场的一个截面，疏密能准确表示强弱。

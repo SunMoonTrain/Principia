@@ -1,0 +1,165 @@
+- id: p1
+  tier: easy
+  statement: |
+    一个电偶极子的电偶极矩是$1.0\times10^{-29}\,\mathrm{C\,m}$。在离它中心$2.0\,\mathrm{nm}$、方向和$\vb p$成$60^\circ$的地方，电势是多少？取无穷远为参考点，$\frac{1}{4\pi\varepsilon_0}=8.988\times10^9\,\mathrm{N\,m^2/C^2}$。
+  answer:
+    type: number
+    value: 8.988e9*1.0e-29*cos(60*pi/180)/(2.0e-9)^2
+    unit: |
+      $\mathrm V$
+  hints:
+    - |
+      $2.0\,\mathrm{nm}$比电偶极子的尺寸大得多，可以用远处的公式。
+    - |
+      $\varphi=\frac{1}{4\pi\varepsilon_0}\frac{p\cos\theta}{r^2}$。
+    - |
+      $\varphi=8.988\times10^9\times\frac{1.0\times10^{-29}\times0.5}{(2.0\times10^{-9})^2}\,\mathrm V\approx1.12\times10^{-2}\,\mathrm V$。
+  solution: |
+    $\varphi=\frac{1}{4\pi\varepsilon_0}\frac{p\cos60^\circ}{r^2}=8.988\times10^9\times\frac{1.0\times10^{-29}\times0.5}{(2.0\times10^{-9})^2}\,\mathrm V\approx1.12\times10^{-2}\,\mathrm V$。在$\theta=90^\circ$的方向上电势为零，$\theta>90^\circ$时为负。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        电偶极矩为$\vb p$的偶极子在匀强电场$\vb E$里，$\vb p$和$\vb E$垂直时受的力矩最大
+      - |
+        在远处同一个方向上，到电偶极子中心的距离加倍，电势变成原来的$\frac14$
+      - |
+        在远处同一个方向上，到电偶极子中心的距离加倍，电场变成原来的$\frac14$
+      - |
+        在匀强电场里，把$\vb p$从和$\vb E$同向转到和$\vb E$垂直，电场的力矩做负功
+      - |
+        电荷分别为$+2q$和$-q$的两个点电荷，在离它们很远的地方，电场主要是电偶极子的电场
+    value: [1, 2, 4]
+  hints:
+    - |
+      力矩的大小是$pE\sin\theta$；电势随$\frac{1}{r^2}$衰减，电场随$\frac{1}{r^3}$衰减。
+    - |
+      电势能$U=-pE\cos\theta$，电场的力矩做的功是$-\Delta U$；总电荷不为零时，远处最主要的是点电荷的电场。
+    - |
+      A、B、D 对；C、E 错。
+  solution: |
+    A 对：$\sin\theta$在$90^\circ$时最大。B 对：电势和$\frac{1}{r^2}$成正比。C 错：电场和$\frac{1}{r^3}$成正比，变成$\frac18$。
+
+    D 对：$U$从$-pE$增加到$0$，电场的力矩做功$-\Delta U=-pE<0$。E 错：总电荷是$q$，远处最主要的是电荷为$q$的点电荷的电场，随$\frac{1}{r^2}$衰减，比偶极子的部分强得多。
+
+- id: p3
+  tier: medium
+  statement: |
+    $+1.0\,\mathrm{nC}$和$-1.0\,\mathrm{nC}$两个点电荷用长$2.0\,\mathrm{mm}$的轻质绝缘杆连成一个电偶极子，放在$5.0\times10^4\,\mathrm{N/C}$的匀强电场里。把它从电偶极矩和电场成$30^\circ$缓慢转到成$150^\circ$，外力至少要做多少功？
+  answer:
+    type: number
+    value: 1.0e-9*2.0e-3*5.0e4*(cos(30*pi/180) - cos(150*pi/180))
+    unit: |
+      $\mathrm J$
+  hints:
+    - |
+      缓慢转动时，外力做的功等于电势能的增加。
+    - |
+      $p=qd=2.0\times10^{-12}\,\mathrm{C\,m}$，$U=-pE\cos\theta$。
+    - |
+      $W=pE(\cos30^\circ-\cos150^\circ)=\sqrt3pE\approx1.73\times10^{-7}\,\mathrm J$。
+  solution: |
+    电偶极矩$p=qd=1.0\times10^{-9}\times2.0\times10^{-3}\,\mathrm{C\,m}=2.0\times10^{-12}\,\mathrm{C\,m}$，$pE=1.0\times10^{-7}\,\mathrm J$。缓慢转动时动能不变，外力做的功等于电势能的增加：$W=U(150^\circ)-U(30^\circ)=pE(\cos30^\circ-\cos150^\circ)=\sqrt3pE\approx1.73\times10^{-7}\,\mathrm J$。
+
+- id: p4
+  tier: medium
+  statement: |
+    一个钠离子（电荷$e$）在一个水分子的电偶极矩所在的直线上，离水分子的中心$0.30\,\mathrm{nm}$，水分子的$\vb p$指向钠离子。把水分子看成电偶极矩为$6.19\times10^{-30}\,\mathrm{C\,m}$的电偶极子，求两者之间的作用力的大小。取$e=1.602176634\times10^{-19}\,\mathrm C$，$\frac{1}{4\pi\varepsilon_0}=8.988\times10^9\,\mathrm{N\,m^2/C^2}$。
+  answer:
+    type: number
+    value: 2*8.988e9*6.19e-30*1.602176634e-19/(0.30e-9)^3
+    unit: |
+      $\mathrm N$
+  hints:
+    - |
+      钠离子受的力是$e$乘以电偶极子在它那里的电场。
+    - |
+      钠离子在偶极子的轴上，$\theta=0$，电场沿$\vb p$，大小$\frac{1}{4\pi\varepsilon_0}\frac{2p}{r^3}$。
+    - |
+      $F=\frac{1}{4\pi\varepsilon_0}\frac{2pe}{r^3}\approx6.60\times10^{-10}\,\mathrm N$，是斥力；由牛顿第三定律，水分子受同样大小的力。
+  solution: |
+    钠离子在电偶极子的轴上，那里的电场沿$\vb p$、背离偶极子，大小$\frac{1}{4\pi\varepsilon_0}\frac{2p}{r^3}$。钠离子受的力$F=\frac{1}{4\pi\varepsilon_0}\frac{2pe}{r^3}=8.988\times10^9\times\frac{2\times6.19\times10^{-30}\times1.602\times10^{-19}}{(0.30\times10^{-9})^3}\,\mathrm N\approx6.60\times10^{-10}\,\mathrm N$，把它推开。水分子的$\vb p$反过来指时，同样大小的力是吸引，离子周围的水分子就是这样转过去、吸过来的。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）一组点电荷$q_i$在$\vb r_i$处，电偶极矩定义为$\vb p=\sum_iq_i\vb r_i$。证明：总电荷为零时，$\vb p$和原点的选取无关；总电荷不为零时，有关。
+
+    （2）$+q$在$z=\frac d2$，$-q$在$z=-\frac d2$。求$z$轴上$z=r>\frac d2$处的精确电势，并说明电偶极子的近似在那里的相对误差约为$\frac{d^2}{4r^2}$。
+  hints:
+    - |
+      （1）原点挪动$\vb a$，每个$\vb r_i$变成$\vb r_i-\vb a$。
+    - |
+      $\vb p'=\vb p-Q\vb a$，$Q=\sum_iq_i$。（2）$\varphi=\frac{q}{4\pi\varepsilon_0}\Bigl(\frac{1}{r-d/2}-\frac{1}{r+d/2}\Bigr)$。
+    - |
+      $\varphi=\frac{1}{4\pi\varepsilon_0}\frac{qd}{r^2-d^2/4}=\frac{1}{4\pi\varepsilon_0}\frac{p}{r^2}\cdot\frac{1}{1-d^2/(4r^2)}$，最后一个因子约为$1+\frac{d^2}{4r^2}$。
+  reference: |
+    （1）把原点挪到$\vb a$处，每个电荷的位置变成$\vb r_i-\vb a$，$\vb p'=\sum_iq_i(\vb r_i-\vb a)=\vb p-Q\vb a$，$Q=\sum_iq_i$。$Q=0$时$\vb p'=\vb p$，和原点无关；$Q\ne0$时，选$\vb a=\frac{\vb p}{Q}$就能让$\vb p'=\vb 0$，电偶极矩取决于原点，没有确定的意义。
+
+    （2）$z$轴上$z=r$处到两个电荷的距离是$r\mp\frac d2$，$\varphi=\frac{q}{4\pi\varepsilon_0}\Bigl(\frac{1}{r-d/2}-\frac{1}{r+d/2}\Bigr)=\frac{1}{4\pi\varepsilon_0}\frac{qd}{r^2-d^2/4}$。$p=qd$，所以$\varphi=\frac{1}{4\pi\varepsilon_0}\frac{p}{r^2}\cdot\frac{1}{1-d^2/(4r^2)}$。电偶极子的近似只取了第一个因子，第二个因子约为$1+\frac{d^2}{4r^2}$，相对误差约$\frac{d^2}{4r^2}$；$r=5d$时约$1\%$。
+
+    误差从$\frac{d^2}{r^2}$开始而不是$\frac dr$：$\pm q$关于原点对称，展开里$\frac{1}{r^3}$那一项（四极项）正好是零。
+
+- id: p6
+  tier: hard
+  statement: |
+    一组固定在一起的点电荷，总电荷为零，电偶极矩为$\vb p$。
+
+    （1）证明它在匀强电场$\vb E$里受的合力为零，对任意一点的力矩都是$\vb p\times\vb E$，电势能是$-\vb p\cdot\vb E$（加一个常数）。（2）一个电偶极子沿$x$轴放置，$\vb p$指向$+x$；$x$轴上的电场沿$x$方向，大小是$E(x)$（例如一个点电荷在它所在的这条轴上产生的电场）。证明电偶极子受的合力约为$p\dv{E}{x}$，沿$x$方向。
+  hints:
+    - |
+      （1）合力$\sum_iq_i\vb E=Q\vb E$；对点$\vb O$的力矩$\sum_i(\vb r_i-\vb O)\times q_i\vb E$。
+    - |
+      匀强电场里$\varphi=-\vb E\cdot\vb r+$常数，$U=\sum_iq_i\varphi(\vb r_i)$。（2）$+q$在$x+\frac d2$，$-q$在$x-\frac d2$，$F=q\Bigl[E\bigl(x+\tfrac d2\bigr)-E\bigl(x-\tfrac d2\bigr)\Bigr]$。
+    - |
+      （2）由导数的定义，$E\bigl(x+\tfrac d2\bigr)-E\bigl(x-\tfrac d2\bigr)\approx d\,\dv{E}{x}$，$F\approx qd\dv{E}{x}=p\dv{E}{x}$：$\vb p$顺着电场时，偶极子被拉向电场强的地方。
+  reference: |
+    （1）合力$\sum_iq_i\vb E=Q\vb E=\vb 0$。对点$\vb O$的力矩$\sum_i(\vb r_i-\vb O)\times q_i\vb E=\Bigl(\sum_iq_i\vb r_i\Bigr)\times\vb E-\Bigl(\sum_iq_i\Bigr)\vb O\times\vb E=\vb p\times\vb E$，和$\vb O$无关。匀强电场的电势是$\varphi=-\vb E\cdot\vb r+C$，$U=\sum_iq_i\varphi(\vb r_i)=-\vb E\cdot\vb p+QC=-\vb p\cdot\vb E$。
+
+    （2）两个电荷受的力分别是$qE\bigl(x+\frac d2\bigr)$和$-qE\bigl(x-\frac d2\bigr)$，合力$F=q\Bigl[E\bigl(x+\frac d2\bigr)-E\bigl(x-\frac d2\bigr)\Bigr]$。$d$很小时，差除以$d$接近$\dv Ex$，所以$F\approx qd\dv Ex=p\dv Ex$。$\vb p$顺着电场、电场沿$+x$增强时，$F>0$，偶极子被拉向电场强的地方；也可以由电势能$U=-pE(x)$求导，$F=-\dv Ux=p\dv Ex$，结果一样。
+
+- id: p7
+  tier: thinking
+  statement: |
+    用毛皮摩擦过的塑料梳子能吸起碎纸屑，可碎纸屑本来是不带电的。
+
+    （1）碎纸屑为什么会被吸引？（2）如果梳子产生的电场是匀强的，碎纸屑还会被吸过去吗？（3）为什么不管梳子带正电还是负电，碎纸屑都是被吸引？
+  hints:
+    - |
+      梳子的电场把纸里的正负电荷稍微推开，纸屑变成一个电偶极子，$\vb p$顺着电场。
+    - |
+      匀强电场里电偶极子受的合力为零；电场不均匀时，合力指向电场强的地方。
+    - |
+      梳子的电荷变号，电场反向，感应出的$\vb p$也反向，$\vb p$总是顺着电场；被拉向电场强处，也就是靠近梳子。
+  reference: |
+    （1）纸是电介质（dielectric），里面的电荷不能自由移动，但梳子的电场能把每个分子里的正负电荷稍微推开，纸屑就有了顺着电场的电偶极矩。梳子附近电场很不均匀，越靠近梳子越强；电偶极子在不均匀电场里受的合力约为$p$乘以电场沿$\vb p$方向的变化率，指向电场强的地方（见 p6），所以纸屑被吸向梳子。
+
+    （2）不会。匀强电场里电偶极子受的合力为零，纸屑只会被极化、转一转，不会被吸过去。
+
+    （3）感应出的电偶极矩总是顺着当地的电场，梳子变号，电场和$\vb p$一起反向，$\vb p\cdot\vb E$不变，受力仍指向电场强的地方。所以中性的东西总是被带电体吸引，和带电体的正负无关；这些内容以后在[电介质与极化](lesson:physics.electromagnetism.polarization)里细讲。
+
+- id: p8
+  tier: thinking
+  statement: |
+    单个点电荷的电势随$\frac1r$衰减，电偶极子的随$\frac{1}{r^2}$衰减。
+
+    （1）$+q$、$-2q$、$+q$依次放在$z$轴上$z=d$、$0$、$-d$处，它的总电荷和电偶极矩各是多少？（2）远处的电势随$r$怎样衰减？为什么？（3）由此你会怎样给电荷分布在远处的电势分类？
+  hints:
+    - |
+      总电荷$q-2q+q=0$；电偶极矩$q\cdot d+(-2q)\cdot0+q\cdot(-d)=0$。
+    - |
+      它可以看成两个方向相反、错开$d$的电偶极子，两者的电势在远处几乎抵消。
+    - |
+      远处的电势按$\frac1r$、$\frac{1}{r^2}$、$\frac{1}{r^3}$……逐级展开，系数分别由总电荷、电偶极矩、更高阶的「矩」决定（见[多极展开](lesson:physics.electromagnetism.multipole-expansion)）。
+  reference: |
+    （1）总电荷$q-2q+q=0$；电偶极矩$\sum_iq_iz_i=q d+(-2q)\cdot0+q(-d)=0$。
+
+    （2）它是两个电偶极子：上面一对$\vb p=qd\uv z$，中心在$\frac d2$；下面一对$\vb p=-qd\uv z$，中心在$-\frac d2$。两者的电势在远处几乎抵消，剩下的部分比$\frac{1}{r^2}$再快一阶，随$\frac{1}{r^3}$衰减。也可以直接在轴上算：$\frac{1}{r-d}+\frac{1}{r+d}-\frac2r=\frac{2d^2}{r(r^2-d^2)}\approx\frac{2d^2}{r^3}$。
+
+    （3）远处的电势可以按$\frac1r$、$\frac{1}{r^2}$、$\frac{1}{r^3}$……逐级写开：第一项由总电荷决定（单极），第二项由电偶极矩决定（偶极），第三项由一个更复杂的量决定（四极）。一个分布前面几项为零，远处就由第一个不为零的项决定，这就是[多极展开](lesson:physics.electromagnetism.multipole-expansion)。

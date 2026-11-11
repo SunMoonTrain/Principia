@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 300" width="430" height="300" font-size="14">
+  <!-- 斜着看的圆环，半径 R=115 像素（椭圆半轴 115、34），场点 P 在轴上 z=130 像素处；两小段 dq 在环的左右两端，dE 长 62 像素，合成的竖直分量是 2·62·cosα。 -->
+  <line x1="170.0" y1="278.0" x2="170.0" y2="26.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" stroke-dasharray="6 4" />
+  <path d="M 285.0 248.0 L 284.8 246.2 L 284.4 244.4 L 283.6 242.7 L 282.5 240.9 L 281.1 239.2 L 279.4 237.5 L 277.4 235.8 L 275.1 234.2 L 272.5 232.6 L 269.6 231.0 L 266.4 229.5 L 263.0 228.0 L 259.4 226.6 L 255.5 225.2 L 251.3 224.0 L 247.0 222.7 L 242.4 221.6 L 237.6 220.5 L 232.6 219.5 L 227.5 218.6 L 222.2 217.7 L 216.8 216.9 L 211.2 216.3 L 205.5 215.7 L 199.8 215.2 L 193.9 214.7 L 188.0 214.4 L 182.0 214.2 L 176.0 214.0 L 170.0 214.0 L 164.0 214.0 L 158.0 214.2 L 152.0 214.4 L 146.1 214.7 L 140.2 215.2 L 134.5 215.7 L 128.8 216.3 L 123.2 216.9 L 117.8 217.7 L 112.5 218.6 L 107.4 219.5 L 102.4 220.5 L 97.6 221.6 L 93.0 222.7 L 88.7 224.0 L 84.5 225.2 L 80.6 226.6 L 77.0 228.0 L 73.6 229.5 L 70.4 231.0 L 67.5 232.6 L 64.9 234.2 L 62.6 235.8 L 60.6 237.5 L 58.9 239.2 L 57.5 240.9 L 56.4 242.7 L 55.6 244.4 L 55.2 246.2 L 55.0 248.0" style="stroke: currentColor" fill="none" stroke-width="1.6" stroke-linejoin="round" stroke-dasharray="4 3" />
+  <path d="M 285.0 248.0 L 284.8 249.8 L 284.4 251.6 L 283.6 253.3 L 282.5 255.1 L 281.1 256.8 L 279.4 258.5 L 277.4 260.2 L 275.1 261.8 L 272.5 263.4 L 269.6 265.0 L 266.4 266.5 L 263.0 268.0 L 259.4 269.4 L 255.5 270.8 L 251.3 272.0 L 247.0 273.3 L 242.4 274.4 L 237.6 275.5 L 232.6 276.5 L 227.5 277.4 L 222.2 278.3 L 216.8 279.1 L 211.2 279.7 L 205.5 280.3 L 199.8 280.8 L 193.9 281.3 L 188.0 281.6 L 182.0 281.8 L 176.0 282.0 L 170.0 282.0 L 164.0 282.0 L 158.0 281.8 L 152.0 281.6 L 146.1 281.3 L 140.2 280.8 L 134.5 280.3 L 128.8 279.7 L 123.2 279.1 L 117.8 278.3 L 112.5 277.4 L 107.4 276.5 L 102.4 275.5 L 97.6 274.4 L 93.0 273.3 L 88.7 272.0 L 84.5 270.8 L 80.6 269.4 L 77.0 268.0 L 73.6 266.5 L 70.4 265.0 L 67.5 263.4 L 64.9 261.8 L 62.6 260.2 L 60.6 258.5 L 58.9 256.8 L 57.5 255.1 L 56.4 253.3 L 55.6 251.6 L 55.2 249.8 L 55.0 248.0" style="stroke: currentColor" fill="none" stroke-width="2.0" stroke-linejoin="round" />
+  <circle cx="55.0" cy="248.0" r="5.0" style="fill: var(--bg, #ffffff); stroke: var(--accent, #2563eb)" fill="var(--bg, #ffffff)" stroke-width="1.6" />
+  <circle cx="285.0" cy="248.0" r="5.0" style="fill: var(--bg, #ffffff); stroke: var(--accent, #2563eb)" fill="var(--bg, #ffffff)" stroke-width="1.6" />
+  <line x1="170.0" y1="248.0" x2="285.0" y2="248.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <text x="223.5" y="242.0" style="fill: var(--muted, #6b7280)" text-anchor="middle"><tspan font-style="italic">R</tspan></text>
+  <circle cx="170.0" cy="248.0" r="2.6" style="fill: currentColor" />
+  <text x="177.0" y="188.0" style="fill: var(--muted, #6b7280)"><tspan font-style="italic">z</tspan></text>
+  <line x1="55.0" y1="248.0" x2="170.0" y2="118.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" stroke-dasharray="3 3" />
+  <line x1="285.0" y1="248.0" x2="170.0" y2="118.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" stroke-dasharray="3 3" />
+  <line x1="170.0" y1="118.0" x2="206.8" y2="76.4" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 211.1 71.6 L 208.7 79.2 L 203.8 74.9 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="170.0" y1="118.0" x2="133.2" y2="76.4" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 128.9 71.6 L 136.2 74.9 L 131.3 79.2 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="170.0" y1="118.0" x2="170.0" y2="33.1" style="stroke: var(--good, #059669)" stroke-width="2.6" />
+  <path d="M 170.0 25.1 L 174.1 34.3 L 165.9 34.3 Z" style="fill: var(--good, #059669)" />
+  <path d="M 170.0 94.0 L 168.9 94.0 L 167.8 94.1 L 166.8 94.2 L 165.7 94.4 L 164.6 94.6 L 163.6 94.9 L 162.5 95.2 L 161.5 95.6 L 160.5 96.0 L 159.5 96.4 L 158.5 96.9 L 157.6 97.5 L 156.7 98.0 L 155.8 98.7 L 154.9 99.3 L 154.1 100.0" style="stroke: currentColor" fill="none" stroke-width="1.1" stroke-linejoin="round" />
+  <text x="149.0" y="90.0" fill="currentColor"><tspan font-style="italic">α</tspan></text>
+  <circle cx="170.0" cy="118.0" r="3.0" style="fill: currentColor" />
+  <text x="183.0" y="124.0" fill="currentColor"><tspan font-style="italic">P</tspan></text>
+  <text x="49.0" y="274.0" style="fill: var(--accent, #2563eb)" text-anchor="middle">d<tspan font-style="italic">q</tspan></text>
+  <text x="291.0" y="274.0" style="fill: var(--accent, #2563eb)" text-anchor="middle">d<tspan font-style="italic">q</tspan></text>
+  <text x="134.9" y="69.6" style="fill: var(--accent, #2563eb)">d<tspan font-style="italic" font-weight="bold">E</tspan></text>
+  <text x="185.1" y="69.6" style="fill: var(--accent, #2563eb)">d<tspan font-style="italic" font-weight="bold">E</tspan></text>
+  <text x="180.0" y="37.1" style="fill: var(--good, #059669)"><tspan font-style="italic" font-weight="bold">E</tspan></text>
+  <text x="300.0" y="80.0" style="fill: var(--muted, #6b7280)">垂直于轴的分量</text>
+  <text x="300.0" y="100.0" style="fill: var(--muted, #6b7280)">两两抵消，</text>
+  <text x="300.0" y="120.0" style="fill: var(--muted, #6b7280)">沿轴的分量相加</text>
+</svg>

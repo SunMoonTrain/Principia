@@ -1,0 +1,161 @@
+- id: p1
+  tier: easy
+  statement: |
+    半径$5.0\,\mathrm{cm}$的细圆环均匀带电$2.0\,\mathrm{nC}$。求它的轴上离环心$12\,\mathrm{cm}$处的电场的大小，取$\frac{1}{4\pi\varepsilon_0}=8.988\times10^9\,\mathrm{N\,m^2/C^2}$。
+  answer:
+    type: number
+    value: 8.988e9*2.0e-9*0.12/(0.12^2+0.05^2)^1.5
+    unit: |
+      $\mathrm{N/C}$
+  hints:
+    - |
+      用均匀带电圆环轴线上的电场公式。
+    - |
+      $E=\frac{1}{4\pi\varepsilon_0}\frac{Qz}{(z^2+R^2)^{3/2}}$，这里$\sqrt{z^2+R^2}=13\,\mathrm{cm}$。
+    - |
+      $E=8.988\times10^9\times\frac{2.0\times10^{-9}\times0.12}{0.13^3}\,\mathrm{N/C}\approx982\,\mathrm{N/C}$。
+  solution: |
+    $\sqrt{z^2+R^2}=\sqrt{0.12^2+0.05^2}\,\mathrm m=0.13\,\mathrm m$，$E=8.988\times10^9\times\frac{2.0\times10^{-9}\times0.12}{0.13^3}\,\mathrm{N/C}\approx982\,\mathrm{N/C}$，沿轴背离圆环。同样的电荷放在环心，那里的点电荷在$12\,\mathrm{cm}$处的电场约$1.25\times10^3\,\mathrm{N/C}$：圆环上的电荷离场点更远，而且只有沿轴的分量有贡献。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        长$0.50\,\mathrm m$、均匀带电$2.0\,\mu\mathrm C$的细棒，线电荷密度是$4.0\,\mu\mathrm C/\mathrm m$
+      - |
+        半径为$R$的球体均匀带电$Q$，体电荷密度是$\frac{Q}{4\pi R^2}$
+      - |
+        均匀带电的半圆环，圆心处的电场为零
+      - |
+        真空中两根平行的、很长的均匀带电细棒，线电荷密度相同，在两者所在平面内、和两者等距的点上电场为零
+      - |
+        用积分求电场时，可以先把各小块电场的大小加起来，再定合电场的方向
+    value: [1, 4]
+  hints:
+    - |
+      线电荷密度是电荷除以长度，体电荷密度是电荷除以体积。
+    - |
+      半圆环没有和每一小段关于圆心对称的另一小段；两根细棒在等距点上的电场大小相等、方向相反。
+    - |
+      A、D 对；B、C、E 错。
+  solution: |
+    A 对：$\frac{2.0\,\mu\mathrm C}{0.50\,\mathrm m}=4.0\,\mu\mathrm C/\mathrm m$。B 错：$4\pi R^2$是球面积，体电荷密度是$\frac{3Q}{4\pi R^3}$。C 错：半圆环各小段的电场在圆心处都有指向背离半圆环一侧的分量，加起来不为零（见 p3）。
+
+    D 对：两根细棒在这一点的电场大小相同，都垂直于细棒、背离各自的细棒，方向相反，合起来为零。E 错：电场是矢量，方向不同的小块会互相抵消，要按分量相加。
+
+- id: p3
+  tier: medium
+  statement: |
+    半径$R=0.10\,\mathrm m$的半圆环上均匀分布着$3.0\,\mathrm{nC}$的电荷。求圆心处的电场的大小，取$\frac{1}{4\pi\varepsilon_0}=8.988\times10^9\,\mathrm{N\,m^2/C^2}$。
+  answer:
+    type: number
+    value: 2*8.988e9*3.0e-9/(pi*0.10^2)
+    unit: |
+      $\mathrm{N/C}$
+  hints:
+    - |
+      线电荷密度$\lambda=\frac{Q}{\pi R}$；用角度$\theta$标出半圆环上的位置，一小段长$R\,\dd\theta$。
+    - |
+      关于半圆环的对称轴，两侧的小段沿轴方向的分量相加、垂直方向的分量抵消；沿轴的分量是$\frac{1}{4\pi\varepsilon_0}\frac{\lambda R\,\dd\theta}{R^2}\sin\theta$。
+    - |
+      $E=\frac{1}{4\pi\varepsilon_0}\frac{\lambda}{R}\int_0^\pi\sin\theta\,\dd\theta=\frac{1}{4\pi\varepsilon_0}\frac{2Q}{\pi R^2}\approx1.72\times10^3\,\mathrm{N/C}$。
+  solution: |
+    半圆环两端连线取作$x$轴，圆心在原点，半圆环在$y>0$一侧，$\theta$处的一小段长$R\,\dd\theta$，带电$\lambda R\,\dd\theta$，$\lambda=\frac{Q}{\pi R}$。它在圆心的电场大小是$\frac{1}{4\pi\varepsilon_0}\frac{\lambda\,\dd\theta}{R}$，指向$-(\cos\theta,\sin\theta)$；$x$分量关于$\theta=\frac\pi2$两两抵消。$E=\frac{1}{4\pi\varepsilon_0}\frac{\lambda}{R}\int_0^\pi\sin\theta\,\dd\theta=\frac{1}{4\pi\varepsilon_0}\frac{2Q}{\pi R^2}\approx1.72\times10^3\,\mathrm{N/C}$，指向$-y$。
+
+- id: p4
+  tier: medium
+  statement: |
+    半径$R=0.10\,\mathrm m$的细圆环均匀带电$1.0\,\mathrm{nC}$。在它的轴线上，电场最大的地方电场多大？取$\frac{1}{4\pi\varepsilon_0}=8.988\times10^9\,\mathrm{N\,m^2/C^2}$。
+  answer:
+    type: number
+    value: 2*8.988e9*1.0e-9/(3*sqrt(3)*0.10^2)
+    unit: |
+      $\mathrm{N/C}$
+  hints:
+    - |
+      $E(z)=\frac{1}{4\pi\varepsilon_0}\frac{Qz}{(z^2+R^2)^{3/2}}$在$z=0$和$z\to\infty$时都趋于零，中间有最大值。
+    - |
+      $\frac{z}{(z^2+R^2)^{3/2}}$对$z$求导，令导数为零，得$z^2+R^2=3z^2$，$z=\frac{R}{\sqrt2}$。
+    - |
+      代回去，$E_{\max}=\frac{1}{4\pi\varepsilon_0}\frac{2Q}{3\sqrt3R^2}\approx346\,\mathrm{N/C}$。
+  solution: |
+    $\dv{}{z}\frac{z}{(z^2+R^2)^{3/2}}=\frac{(z^2+R^2)-3z^2}{(z^2+R^2)^{5/2}}$，在$z=\frac{R}{\sqrt2}$处为零，此前为正、此后为负，所以那里取最大值。代回去，$z^2+R^2=\frac32R^2$，$E_{\max}=\frac{1}{4\pi\varepsilon_0}\frac{Q\,R/\sqrt2}{(3R^2/2)^{3/2}}=\frac{1}{4\pi\varepsilon_0}\frac{2Q}{3\sqrt3R^2}\approx346\,\mathrm{N/C}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    沿$x$轴放着一根均匀带电细棒，线电荷密度$\lambda>0$，从$x=x_1$到$x=x_2$。场点$P$离$x$轴的距离是$s$，在轴上的垂足是原点。
+
+    （1）记$P$到棒两端的连线和$P$到原点的连线的夹角分别为$\theta_1$、$\theta_2$（在原点右侧取正），证明$E_\perp=\frac{1}{4\pi\varepsilon_0}\frac{\lambda}{s}(\sin\theta_2-\sin\theta_1)$，$E_\parallel=\frac{1}{4\pi\varepsilon_0}\frac{\lambda}{s}(\cos\theta_2-\cos\theta_1)$。（2）由此求无限长直线的电场；再求半无限长直线端点正对面（$x_1=0$，$x_2\to\infty$）的电场方向。
+  hints:
+    - |
+      换元$x=s\tan\theta$，$\dd x=\frac{s}{\cos^2\theta}\,\dd\theta$，距离$\sqrt{s^2+x^2}=\frac{s}{\cos\theta}$。
+    - |
+      $x$处一小段的电场，垂直分量是$\frac{1}{4\pi\varepsilon_0}\frac{\lambda\,\dd x}{s^2+x^2}\cos\theta$，平行分量是$-\frac{1}{4\pi\varepsilon_0}\frac{\lambda\,\dd x}{s^2+x^2}\sin\theta$；换元后都只剩$\frac{\lambda}{s}$乘三角函数。
+    - |
+      （2）$\theta_1\to-\frac\pi2$、$\theta_2\to\frac\pi2$，得$E_\perp=\frac{\lambda}{2\pi\varepsilon_0s}$、$E_\parallel=0$；$\theta_1=0$、$\theta_2\to\frac\pi2$时$E_\perp=|E_\parallel|=\frac{1}{4\pi\varepsilon_0}\frac{\lambda}{s}$，电场和直线成$45^\circ$，偏离带电的那一侧。
+  reference: |
+    （1）$x$处长$\dd x$的一小段到$P$的距离是$\sqrt{s^2+x^2}$，连线和$P$到原点的连线的夹角$\theta$满足$x=s\tan\theta$。它在$P$的电场背离它，垂直于棒的分量是$\frac{1}{4\pi\varepsilon_0}\frac{\lambda\cos\theta\,\dd x}{s^2+x^2}$，沿$+x$的分量是$-\frac{1}{4\pi\varepsilon_0}\frac{\lambda\sin\theta\,\dd x}{s^2+x^2}$。换元$\dd x=\frac{s\,\dd\theta}{\cos^2\theta}$，$s^2+x^2=\frac{s^2}{\cos^2\theta}$，两个被积式变成$\frac{\lambda}{s}\cos\theta\,\dd\theta$和$-\frac{\lambda}{s}\sin\theta\,\dd\theta$。从$\theta_1$积到$\theta_2$，得$E_\perp=\frac{1}{4\pi\varepsilon_0}\frac{\lambda}{s}(\sin\theta_2-\sin\theta_1)$，$E_\parallel=\frac{1}{4\pi\varepsilon_0}\frac{\lambda}{s}(\cos\theta_2-\cos\theta_1)$。
+
+    （2）无限长直线：$\theta_1\to-\frac\pi2$、$\theta_2\to\frac\pi2$，$E_\perp=\frac{1}{4\pi\varepsilon_0}\frac{2\lambda}{s}=\frac{\lambda}{2\pi\varepsilon_0s}$，$E_\parallel=0$，和例 1 取极限的结果一致。半无限长直线：$\theta_1=0$、$\theta_2\to\frac\pi2$，$E_\perp=\frac{1}{4\pi\varepsilon_0}\frac{\lambda}{s}$，$E_\parallel=-\frac{1}{4\pi\varepsilon_0}\frac{\lambda}{s}$，两者等大，电场和直线成$45^\circ$，指向背离带电那一侧的斜上方。
+
+- id: p6
+  tier: hard
+  statement: |
+    半径为$R$的球面上均匀分布着电荷$Q$，面电荷密度$\sigma=\frac{Q}{4\pi R^2}$。把球面分成一圈圈细圆环，用圆环轴线上的电场公式，求离球心$z$处的电场：分$z>R$和$0<z<R$两种情况。
+  hints:
+    - |
+      取过球心、过场点的直线为轴，极角$\theta$处的圆环半径是$R\sin\theta$，离球心$R\cos\theta$，带电$\dd q=2\pi\sigma R^2\sin\theta\,\dd\theta$。
+    - |
+      圆环到场点的距离是$w=\sqrt{z^2+R^2-2zR\cos\theta}$，$\dd(w^2)=2zR\sin\theta\,\dd\theta$，$z-R\cos\theta=\frac{w^2+z^2-R^2}{2z}$；把积分变量换成$w$。
+    - |
+      $E=\frac{\sigma\pi R}{4\pi\varepsilon_0z^2}\int\Bigl(1+\frac{z^2-R^2}{w^2}\Bigr)\dd w$；$z>R$时$w$从$z-R$到$z+R$，得$\frac{1}{4\pi\varepsilon_0}\frac{Q}{z^2}$；$z<R$时$w$从$R-z$到$R+z$，得$0$。
+  reference: |
+    以过球心和场点的直线为轴，极角$\theta$到$\theta+\dd\theta$的一圈是半径$R\sin\theta$的圆环，环心离场点$z-R\cos\theta$，带电$\dd q=2\pi\sigma R^2\sin\theta\,\dd\theta$。由圆环的结果，它在场点的电场沿轴，$\dd E=\frac{1}{4\pi\varepsilon_0}\frac{(z-R\cos\theta)\,\dd q}{w^3}$，其中$w^2=z^2+R^2-2zR\cos\theta$。
+
+    换变量：$2w\,\dd w=2zR\sin\theta\,\dd\theta$，$z-R\cos\theta=\frac{w^2+z^2-R^2}{2z}$，所以$\dd E=\frac{1}{4\pi\varepsilon_0}\cdot\frac{\pi\sigma R}{z^2}\Bigl(1+\frac{z^2-R^2}{w^2}\Bigr)\dd w$。原函数是$w-\frac{z^2-R^2}{w}$。
+
+    $z>R$时$w$从$z-R$积到$z+R$：$2R-(z^2-R^2)\Bigl(\frac{1}{z+R}-\frac{1}{z-R}\Bigr)=2R+2R=4R$，$E=\frac{1}{4\pi\varepsilon_0}\frac{4\pi\sigma R^2}{z^2}=\frac{1}{4\pi\varepsilon_0}\frac{Q}{z^2}$，像全部电荷集中在球心。$0<z<R$时$w$从$R-z$积到$R+z$：$2z-(z^2-R^2)\Bigl(\frac{1}{R+z}-\frac{1}{R-z}\Bigr)=2z-2z=0$；球心处按对称性也是零，所以球面里面处处没有电场。
+
+    这和[电荷与库仑定律](lesson:physics.electromagnetism.coulomb-law)的 p6 用小圆锥得到的结论一致。积分算起来费事；有了高斯定律（Gauss's law），球对称的电场一两行就能求出来（见[用高斯定律求对称电场](lesson:physics.electromagnetism.gauss-applications)）。
+
+- id: p7
+  tier: thinking
+  statement: |
+    例 2 说，无穷大均匀带电平面的电场是$\frac{\sigma}{2\varepsilon_0}$，和到平面的距离无关。
+
+    （1）离平面越远，每一小块电荷的电场都越弱，为什么合起来不变？（2）实际的带电板都是有限大的，什么时候可以当成无穷大平面？用几何图像里的动画说明。
+  hints:
+    - |
+      离远了，每一块的电场变弱，但同样张角里的电荷变多了，而且电场更接近垂直于平面。
+    - |
+      看从场点出发的一个圆锥：它在平面上截出的面积和距离的平方成正比，正好抵消$\frac{1}{r^2}$。
+    - |
+      圆盘轴线上$E=\frac{\sigma}{2\varepsilon_0}\Bigl(1-\frac{z}{\sqrt{z^2+R^2}}\Bigr)$；$z\ll R$时接近$\frac{\sigma}{2\varepsilon_0}$。
+  reference: |
+    （1）从场点出发、顶角一定的圆锥，在平面上截出的面积和距离的平方成正比，里面的电荷也是；这些电荷的电场又和距离的平方成反比，两者正好抵消。场点离平面的距离加倍，同样张角里的电荷变成$4$倍，每一份的电场弱到$\frac14$，合起来一样。整个平面对场点张开的「视野」总是半边天，所以电场不随距离变。
+
+    （2）离板的距离比板的尺寸小得多、又不靠近板的边缘时，可以当成无穷大平面。动画里，$z\ll R$时圆盘的曲线贴着$1$（即$\frac{\sigma}{2\varepsilon_0}$）；$z$和$R$差不多时已经明显变小，$z\gg R$时又贴近点电荷的曲线。圆盘越大，像平面的那一段越长。
+
+- id: p8
+  tier: thinking
+  statement: |
+    电荷其实是一个个电子和质子，这一节却把它们当成连续分布。
+
+    （1）用连续的电荷密度描述，在什么尺度上合理，在什么尺度上不合理？（2）面电荷密度为$\sigma$的带电面两侧，电场的法向分量相差多少？带电面「上」的电场应该取哪个值？
+  hints:
+    - |
+      一小块要小到可以看成点电荷，又要大到里面有很多个电荷。
+    - |
+      看例 2：圆盘两侧离盘很近处，电场分别是$\pm\frac{\sigma}{2\varepsilon_0}$（沿轴向外）。
+    - |
+      两侧的法向分量相差$\frac{\sigma}{\varepsilon_0}$；带电面本身是一层很薄的电荷，面上的电场没有唯一的值，常取两侧的平均。
+  reference: |
+    （1）一小块要比场点的距离、电荷分布变化的尺度小得多，才能当点电荷；又要比原子间距大得多，里面有大量电荷，密度才是平滑的函数。宏观问题里这两个要求都容易满足；离带电体只有几个原子的距离时就不行，必须考虑一个个电荷。
+
+    （2）圆盘轴线上两侧离盘很近处，电场分别是$+\frac{\sigma}{2\varepsilon_0}$和$-\frac{\sigma}{2\varepsilon_0}$（沿轴的分量），相差$\frac{\sigma}{\varepsilon_0}$。这对任何带电面都成立：贴近面的那一小块像无穷大平面，别处的电荷在两侧的电场几乎相同。带电面其实是有厚度的一层电荷，电场在层里连续地变，所以「面上的电场」没有唯一的值；算面电荷受的力时，要用两侧电场的平均值。

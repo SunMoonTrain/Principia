@@ -1,0 +1,167 @@
+- id: p1
+  tier: easy
+  statement: |
+    晴天时，地面附近的电场约为$100\,\mathrm{V/m}$，方向竖直向下，指向地面。把地面看成导体的表面，求地面的面电荷密度（带正负号），取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{C^2/(N\,m^2)}$。
+  answer:
+    type: number
+    value: -8.8541878188e-12*100
+    unit: |
+      $\mathrm{C/m^2}$
+  hints:
+    - |
+      紧贴导体表面外侧的电场垂直于表面，大小是$\frac{\sigma}{\varepsilon_0}$；$\sigma>0$时电场背离表面。
+    - |
+      这里电场指向地面，所以$\sigma<0$。
+    - |
+      $\sigma=-\varepsilon_0E=-8.854\times10^{-12}\times100\,\mathrm{C/m^2}\approx-8.85\times10^{-10}\,\mathrm{C/m^2}$。
+  solution: |
+    地面是导体表面，紧贴它的电场垂直于地面，大小$\frac{|\sigma|}{\varepsilon_0}$；电场指向地面，说明地面带负电。$\sigma=-\varepsilon_0E\approx-8.85\times10^{-10}\,\mathrm{C/m^2}$，每平方米多出五十多亿个电子。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于处于静电平衡的导体的说法，哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        一个带电的实心导体球，球心处的电场为零
+      - |
+        导体表面附近，面电荷密度越大的地方，紧贴表面外侧的电场越强
+      - |
+        一个中性的导体壳，空腔里放入点电荷$+q$（不碰壁），壳的外表面上的总电荷是$-q$
+      - |
+        一块导体的电势为零（以无穷远为参考点），那么它表面上处处没有电荷
+      - |
+        导体表面附近的电场可以有平行于表面的分量
+    value: [1, 2]
+  hints:
+    - |
+      导体内部电场为零；紧贴表面外侧的电场垂直于表面，大小是$\frac{\sigma}{\varepsilon_0}$。
+    - |
+      空腔内表面感应出$-q$，中性的壳外表面就是$+q$；电势为零的导体，附近有别的电荷时表面上照样有感应电荷。
+    - |
+      A、B 对；C、D、E 错。
+  solution: |
+    A 对：球心在导体内部。B 对：$E=\frac{\sigma}{\varepsilon_0}$。C 错：内表面$-q$，外表面$+q$。
+
+    D 错：例如一块接地的导体放在一个点电荷旁边，它的电势是零，表面上却有感应电荷。E 错：表面是等势面，电场垂直于它，平行的分量会推动表面上的电荷。
+
+- id: p3
+  tier: medium
+  statement: |
+    一个半径$0.20\,\mathrm m$的导体球放在空气里，离别的物体都很远。空气中的电场超过约$3.0\times10^6\,\mathrm{V/m}$时会被击穿。这个球最高能充到多大的电势（取无穷远为零）？
+  answer:
+    type: number
+    value: 3.0e6*0.20
+    unit: |
+      $\mathrm V$
+  hints:
+    - |
+      导体球的电荷均匀分布在表面，外面的电场像点电荷，表面上最强。
+    - |
+      表面的电场$E=\frac{1}{4\pi\varepsilon_0}\frac{Q}{R^2}$，球的电势$\varphi=\frac{1}{4\pi\varepsilon_0}\frac QR=ER$。
+    - |
+      $\varphi_{\max}=E_{\max}R=3.0\times10^6\times0.20\,\mathrm V=6.0\times10^5\,\mathrm V$。
+  solution: |
+    孤立的导体球，电荷均匀分布在球面上，外面的电场和电势都像集中在球心的点电荷：表面的电场$E=\frac{1}{4\pi\varepsilon_0}\frac{Q}{R^2}$，电势$\varphi=\frac{1}{4\pi\varepsilon_0}\frac{Q}{R}=ER$。电场不能超过击穿的值，所以$\varphi_{\max}=E_{\max}R=6.0\times10^5\,\mathrm V$。球越大，能保持的电势越高。
+
+- id: p4
+  tier: medium
+  statement: |
+    半径$a=5.0\,\mathrm{cm}$的导体球带电$2.0\,\mathrm{nC}$，外面套一个同心的、不带电的导体球壳，内半径$b=10\,\mathrm{cm}$，外半径$c=12\,\mathrm{cm}$。取无穷远为零，求里面那个导体球的电势，取$\frac{1}{4\pi\varepsilon_0}=8.988\times10^9\,\mathrm{N\,m^2/C^2}$。
+  answer:
+    type: number
+    value: 8.988e9*2.0e-9*(1/0.050 - 1/0.10 + 1/0.12)
+    unit: |
+      $\mathrm V$
+  hints:
+    - |
+      球壳的内表面感应出$-q$，外表面带$+q$；用同心球面上的高斯定律求各处的电场。
+    - |
+      $a<r<b$时$E=\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}$，$b<r<c$时$E=0$，$r>c$时$E=\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}$。
+    - |
+      从无穷远积分到$a$：$\varphi=\frac{q}{4\pi\varepsilon_0}\Bigl(\frac1c+\frac1a-\frac1b\Bigr)\approx330\,\mathrm V$。
+  solution: |
+    球壳内表面带$-q$，外表面带$+q$，电场在$a<r<b$和$r>c$处是$\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}$，在壳里为零。从无穷远积到$c$得$\frac{1}{4\pi\varepsilon_0}\frac qc$，壳里不变，再从$b$积到$a$加上$\frac{q}{4\pi\varepsilon_0}\Bigl(\frac1a-\frac1b\Bigr)$。合起来$\varphi=8.988\times10^9\times2.0\times10^{-9}\times\Bigl(\frac{1}{0.050}-\frac{1}{0.10}+\frac{1}{0.12}\Bigr)\,\mathrm V\approx330\,\mathrm V$。
+
+- id: p5
+  tier: hard
+  statement: |
+    导体里有一个空腔，腔里没有电荷，导体外面可以有任意的电荷。证明：静电平衡时腔里的电场处处为零，腔的内表面上处处没有电荷。
+
+    只用三条事实：高斯定律；$\vb E=-\nabla\varphi$；静电平衡的导体是等势体。
+  hints:
+    - |
+      先证明：以腔里一点$P$为中心、整个在腔里的球面上，电势的平均值$\bar\varphi(r)=\frac{1}{4\pi}\oint\varphi\,\dd\Omega$等于$\varphi(P)$。对球面的半径$r$求导看看。
+    - |
+      $\dv{\bar\varphi}{r}=\frac{1}{4\pi}\oint\pdv{\varphi}{r}\,\dd\Omega=-\frac{1}{4\pi r^2}\oint\vb E\cdot\dd\vb a$，球里没有电荷，由高斯定律它是零；$r\to0$时$\bar\varphi\to\varphi(P)$。
+    - |
+      电势在腔里连同腔壁上的最大值$M$如果比腔壁的电势$\varphi_0$高，就在腔里某点$Q$取到；以$Q$为中心的球面上处处$\varphi\le M$，平均值却等于$M$，只能处处等于$M$。把球面一直放大到碰到腔壁，碰到的那一点电势也是$M>\varphi_0$，矛盾；最小值同理，所以腔里的电势处处是$\varphi_0$，$\vb E=\vb 0$，紧贴内表面的电场$\frac{\sigma}{\varepsilon_0}$也是零。
+  reference: |
+    先证明一个引理：以腔里一点$P$为中心、半径为$r$的球面如果整个在腔里，电势在这个球面上的平均值$\bar\varphi(r)=\frac{1}{4\pi}\oint\varphi\,\dd\Omega$等于$\varphi(P)$。对$r$求导，$\dv{\bar\varphi}{r}=\frac{1}{4\pi}\oint\pdv{\varphi}{r}\,\dd\Omega=-\frac{1}{4\pi r^2}\oint\vb E\cdot\dd\vb a$，这里用了$\pdv{\varphi}{r}=-E_r$和$\dd a=r^2\,\dd\Omega$。球里没有电荷，由高斯定律这个电通量是零，所以$\bar\varphi$不随$r$变；$r\to0$时它趋于$\varphi(P)$，所以总等于$\varphi(P)$。
+
+    腔壁是导体的表面，电势处处是$\varphi_0$。电势在腔里连同腔壁上连续，有最大值$M$，而且$M\ge\varphi_0$。假如$M>\varphi_0$，它就在腔里某点$Q$取到；设$Q$到腔壁的距离是$d$，以$Q$为中心、半径$r<d$的球面整个在腔里，面上处处$\varphi\le M$，平均值却等于$M$，所以面上处处$\varphi=M$（有一处小于$M$，附近一小块都小于$M$，平均值就小于$M$）。
+
+    $r$可以取$0$到$d$之间的任何值，所以以$Q$为中心、半径为$d$的球里处处$\varphi=M$；这个球碰到腔壁的那一点，由连续性也有$\varphi=M>\varphi_0$，矛盾。所以$M=\varphi_0$；同样地，最小值也是$\varphi_0$。腔里的电势处处是$\varphi_0$，电场$\vb E=-\nabla\varphi=\vb 0$。
+
+    最后，紧贴内表面的腔里一侧电场为零，导体里电场也为零，取跨过内表面的扁圆柱面作高斯面，电通量为零，所以那里的面电荷密度为零。结论和导体外面的电荷怎样分布无关，这就是静电屏蔽。
+
+- id: p6
+  tier: hard
+  statement: |
+    带电导体的表面受到向外的力。
+
+    （1）说明作用在面电荷上的电场不是紧贴表面外侧的$\frac{\sigma}{\varepsilon_0}$，而是它的一半，并由此证明单位面积受的力是$\frac{\sigma^2}{2\varepsilon_0}=\frac{\varepsilon_0}{2}E^2$，$E$是紧贴表面外侧的电场。（2）为什么不管$\sigma$是正是负，这个力都向外？（3）在空气里刚好不被击穿的导体表面（$E=3.0\times10^6\,\mathrm{V/m}$），这个压强有多大？和大气压（约$1.0\times10^5\,\mathrm{Pa}$）比一比。
+  hints:
+    - |
+      把表面上一小块电荷单独拿出来：它在两侧各产生$\frac{\sigma}{2\varepsilon_0}$；导体其余的电荷在这里产生的电场，才是推动这一小块的电场。
+    - |
+      其余的电荷在这里产生$\frac{\sigma}{2\varepsilon_0}$，方向向外（$\sigma>0$），和这一小块自己的电场在里侧相消、外侧相加。
+    - |
+      力是$\sigma\,\dd a\cdot\frac{\sigma}{2\varepsilon_0}$，压强$\frac{\sigma^2}{2\varepsilon_0}=\frac{\varepsilon_0E^2}{2}\approx40\,\mathrm{Pa}$，只有大气压的约$4\times10^{-4}$。
+  reference: |
+    （1）一小块电荷对自己没有净力，推动它的只是导体上其余的电荷产生的电场$\vb E_{\text{其余}}$。这一小块像一小片带电平面，在两侧各产生$\frac{\sigma}{2\varepsilon_0}$、方向背离它；里侧总电场为零，所以$\vb E_{\text{其余}}$在这里是$\frac{\sigma}{2\varepsilon_0}$、向外，外侧才加成$\frac{\sigma}{\varepsilon_0}$。$\vb E_{\text{其余}}$也就是两侧电场的平均。单位面积受的力是$\sigma\cdot\frac{\sigma}{2\varepsilon_0}=\frac{\sigma^2}{2\varepsilon_0}=\frac{\varepsilon_0}{2}E^2$，$E=\frac{\sigma}{\varepsilon_0}$。
+
+    （2）$\sigma$变号时，$\vb E_{\text{其余}}$也跟着变号，力$\sigma\vb E_{\text{其余}}$的方向不变，总是向外：同号的电荷互相排斥，都想离得远一点。
+
+    （3）$\frac{\varepsilon_0}{2}E^2=\frac{8.854\times10^{-12}\times(3.0\times10^6)^2}{2}\,\mathrm{Pa}\approx40\,\mathrm{Pa}$，约为大气压的$4\times10^{-4}$。所以静电力虽然能吸起纸屑，对一块金属的表面来说却是极小的拉力。
+
+- id: p7
+  tier: thinking
+  statement: |
+    手机在金属外壳的电梯里，信号常常变差；汽车被闪电击中时，车里的人一般安全。
+
+    （1）这两件事和静电屏蔽有关吗？（2）这一节的结论建立在静电平衡上，用在随时间很快变化的电场（例如手机的无线电波）上时，要注意什么？
+  hints:
+    - |
+      汽车的金属车身接近一个导体壳，电荷和电流主要从车身的外面走。
+    - |
+      静电平衡要求电荷有时间重新分布；无线电波的电场每秒变化上亿次。
+    - |
+      导体对很快变化的电场也有屏蔽作用，但道理和程度不同，要看电磁波进入导体能有多深（见[导体中的电磁波与趋肤效应](lesson:physics.electromagnetism.skin-effect)），还要看缝隙有多大。
+  reference: |
+    （1）两者都和导体壳挡住外面的电场有关。汽车的金属车身接近一个导体壳，闪电带来的电荷和电流主要沿车身外表面走，车里的电场很小；电梯的金属外壳把外面的无线电波挡掉了一大部分，信号就变差。
+
+    （2）这一节的结论都是静电平衡以后的结果，前提是自由电荷有足够的时间重新分布。金属里电荷重新分布得极快，所以对变化慢的电场，结论照样近似成立；但对频率很高的电磁波，要考虑电磁波能透进导体多深（趋肤深度，见[导体中的电磁波与趋肤效应](lesson:physics.electromagnetism.skin-effect)），而且缝隙、门缝和波长差不多大时，电磁波能漏进来。所以电梯里信号变差，但常常不会完全没有。
+
+- id: p8
+  tier: thinking
+  statement: |
+    卡文迪什检验平方反比的办法是：一个导体球放在一个同心的导体球壳里，给外壳充电，用导线把两者连通，再断开，看里面的球带不带电。
+
+    （1）如果库仑定律（Coulomb's law）严格地是平方反比，里面的球为什么不带电？（2）如果力和距离的$2+\delta$次方成反比，$\delta>0$，电荷会怎样分配？（3）为什么说这种「看有没有」的实验，比直接测力精确得多？
+  hints:
+    - |
+      连通以后，内球和外壳是同一个导体，电势相等；均匀带电的球面里面有没有电场？
+    - |
+      平方反比时球壳里面没有电场，电荷没有理由跑到内球上；$\delta>0$时，球壳里的电场把正电荷推向中心（见[电荷与库仑定律](lesson:physics.electromagnetism.coulomb-law)的 p6）。
+    - |
+      直接测力要比较两个都不为零的数；「看有没有」只要判断一个本该为零的量是不是零，仪器再小的读数都算数。
+  reference: |
+    （1）连通后，电荷在外壳和内球之间重新分布，直到电势相等。外壳上的电荷均匀分布在球面上，按平方反比，均匀带电的球面里面没有电场，电势处处相等，内球和外壳之间没有电势差；内球带电反而会在两者之间产生电场，所以平衡时内球不带电。这也是导体的结论：电荷全在导体的外表面上。
+
+    （2）$\delta>0$时，均匀带电的球面里面有电场，把同号的电荷推向中心（见[电荷与库仑定律](lesson:physics.electromagnetism.coulomb-law)的 p6），连通时会有一部分电荷跑到内球上，断开后内球带同号的电。
+
+    （3）测力要比较两个都不为零的量，精度受仪器读数的相对误差限制；「看有没有」只需判断一个本该为零的量是不是零，验电器再微小的反应都能察觉。卡文迪什据此估计指数和$2$相差不到$\frac{1}{50}$，1877 年麦卡利斯特用麦克斯韦设计的装置把界缩小到$\frac{1}{21600}$。

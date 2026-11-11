@@ -1,0 +1,159 @@
+- id: p1
+  tier: easy
+  statement: |
+    一根很长的均匀带电细线，线电荷密度是$3.0\,\mathrm{nC/m}$。求离它$0.20\,\mathrm m$处的电场的大小，取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{C^2/(N\,m^2)}$。
+  answer:
+    type: number
+    value: 3.0e-9/(2*pi*8.8541878188e-12*0.20)
+    unit: |
+      $\mathrm{N/C}$
+  hints:
+    - |
+      取和细线同轴、半径$0.20\,\mathrm m$、长为$L$的圆柱面作高斯面。
+    - |
+      $E\cdot2\pi sL=\frac{\lambda L}{\varepsilon_0}$，$E=\frac{\lambda}{2\pi\varepsilon_0s}$。
+    - |
+      $E=\frac{3.0\times10^{-9}}{2\pi\times8.854\times10^{-12}\times0.20}\,\mathrm{N/C}\approx270\,\mathrm{N/C}$。
+  solution: |
+    按轴对称，电场垂直于细线、沿径向。取同轴圆柱面作高斯面，侧面的电通量$E\cdot2\pi sL$等于$\frac{\lambda L}{\varepsilon_0}$，所以$E=\frac{\lambda}{2\pi\varepsilon_0s}=\frac{3.0\times10^{-9}}{2\pi\times8.854\times10^{-12}\times0.20}\,\mathrm{N/C}\approx270\,\mathrm{N/C}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些带电体的电场，可以只靠高斯定律、选一个高斯面直接求出来？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        均匀带电的无限长圆柱体，求它里面和外面各处的电场
+      - |
+        均匀带电的正方体，求它外面各处的电场
+      - |
+        电荷密度只和到球心的距离有关的球体，求各处的电场
+      - |
+        均匀带电的有限长细棒，求它的中垂线上的电场
+      - |
+        均匀带电的圆盘，求它的轴线上的电场
+    value: [1, 3]
+  hints:
+    - |
+      要能选出一个高斯面，面上每一部分的电场要么垂直于面、大小相同，要么平行于面。
+    - |
+      正方体、有限长的棒、圆盘都没有那样的对称：面上的电场大小随位置变。
+    - |
+      A、C 对；B、D、E 错。
+  solution: |
+    A 对：轴对称，用同轴圆柱面。B 错：正方体外面的电场既不沿径向，大小也随方向变，找不到合适的面。C 对：球对称，用同心球面，$Q(r)$由密度积分得到。
+
+    D 错：有限长的棒没有沿轴平移的对称，同轴圆柱面的底面上有电通量、侧面上电场大小也不同。E 错：圆盘只绕轴对称，轴线上的电场要用积分（或电势，electric potential）求。
+
+- id: p3
+  tier: medium
+  statement: |
+    一个厚球壳的内半径$a=5.0\,\mathrm{cm}$，外半径$b=10\,\mathrm{cm}$，壳体里均匀带电，体电荷密度$\rho=2.0\times10^{-6}\,\mathrm{C/m^3}$，空腔里没有电荷。求离球心$8.0\,\mathrm{cm}$处的电场的大小，取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{C^2/(N\,m^2)}$。
+  answer:
+    type: number
+    value: 2.0e-6*(0.080^3 - 0.050^3)/(3*8.8541878188e-12*0.080^2)
+    unit: |
+      $\mathrm{N/C}$
+  hints:
+    - |
+      取半径$r=8.0\,\mathrm{cm}$的同心球面，它围住的只是半径从$a$到$r$那一层的电荷。
+    - |
+      $Q(r)=\frac43\pi\rho(r^3-a^3)$，$E\cdot4\pi r^2=\frac{Q(r)}{\varepsilon_0}$。
+    - |
+      $E=\frac{\rho(r^3-a^3)}{3\varepsilon_0r^2}\approx4.55\times10^3\,\mathrm{N/C}$。
+  solution: |
+    电荷分布球对称，取半径$r=0.080\,\mathrm m$的同心球面。它里面的电荷是$Q(r)=\frac43\pi\rho(r^3-a^3)$，空腔里没有电荷。由$E\cdot4\pi r^2=\frac{Q(r)}{\varepsilon_0}$，$E=\frac{\rho(r^3-a^3)}{3\varepsilon_0r^2}=\frac{2.0\times10^{-6}\times(0.080^3-0.050^3)}{3\times8.854\times10^{-12}\times0.080^2}\,\mathrm{N/C}\approx4.55\times10^3\,\mathrm{N/C}$，沿径向向外。
+
+- id: p4
+  tier: medium
+  statement: |
+    一块无穷大的平板厚$2.0\,\mathrm{cm}$，里面均匀带电，体电荷密度$\rho=1.0\times10^{-6}\,\mathrm{C/m^3}$。求板内离中间平面$0.50\,\mathrm{cm}$处的电场的大小，取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{C^2/(N\,m^2)}$。
+  answer:
+    type: number
+    value: 1.0e-6*0.0050/8.8541878188e-12
+    unit: |
+      $\mathrm{N/C}$
+  hints:
+    - |
+      按对称性，电场垂直于板，关于中间平面对称，在中间平面上为零。
+    - |
+      取一个圆柱面作高斯面，两个底面分别在离中间平面$+x$和$-x$处，面积为$A$；里面的电荷是$\rho\cdot2xA$。
+    - |
+      $2EA=\frac{2\rho xA}{\varepsilon_0}$，$E=\frac{\rho x}{\varepsilon_0}\approx565\,\mathrm{N/C}$。
+  solution: |
+    电场垂直于板，在中间平面两侧对称，所以中间平面上为零。取一个两个底面分别在$\pm x$处、底面积为$A$的圆柱面，侧面和电场平行；电通量$2EA$等于面内电荷$2\rho xA$除以$\varepsilon_0$。$E=\frac{\rho x}{\varepsilon_0}=\frac{1.0\times10^{-6}\times0.0050}{8.854\times10^{-12}}\,\mathrm{N/C}\approx565\,\mathrm{N/C}$，在板内随$x$线性增大，到板外变成常数$\frac{\rho d}{2\varepsilon_0}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    半径为$R$的球体均匀带电，体电荷密度为$\rho$，里面挖去一个半径为$a$的球形空腔，空腔的中心离球心的距离是$\vb d$（$|\vb d|+a<R$），空腔里没有电荷。证明空腔里的电场是匀强的，并求出它。
+  hints:
+    - |
+      把带空腔的球看成「一个完整的、密度为$\rho$的大球」加上「一个密度为$-\rho$、占据空腔位置的小球」。
+    - |
+      均匀带电球体内的电场可以写成矢量形式：$\vb E=\frac{\rho}{3\varepsilon_0}\vb r$，$\vb r$是从它的球心指向场点的矢量。
+    - |
+      空腔里一点$P$，到大球心的矢量是$\vb r$，到小球心的矢量是$\vb r-\vb d$；$\vb E=\frac{\rho}{3\varepsilon_0}\vb r-\frac{\rho}{3\varepsilon_0}(\vb r-\vb d)=\frac{\rho}{3\varepsilon_0}\vb d$。
+  reference: |
+    由例 1，均匀带电球体内离球心$r$处的电场是$\frac{1}{4\pi\varepsilon_0}\frac{Qr}{R^3}$，沿径向，写成矢量就是$\vb E=\frac{\rho}{3\varepsilon_0}\vb r$，$\vb r$从球心指向场点。
+
+    带空腔的球体等于一个完整的、密度为$\rho$的大球，加上一个密度为$-\rho$、正好占据空腔的小球：两者叠加，空腔里的电荷是零，其余地方是$\rho$。空腔里一点$P$到大球心的矢量是$\vb r$，到小球心的矢量是$\vb r-\vb d$，$P$在两个球的里面，所以$\vb E=\frac{\rho}{3\varepsilon_0}\vb r+\frac{-\rho}{3\varepsilon_0}(\vb r-\vb d)=\frac{\rho}{3\varepsilon_0}\vb d$。
+
+    它和$P$在空腔里的位置无关，是匀强的，方向从大球心指向空腔中心（$\rho>0$）。$\vb d=\vb 0$时空腔和球同心，电场为零，和高斯定律直接给出的一致。
+
+- id: p6
+  tier: hard
+  statement: |
+    1904 年汤姆孙（J. J. Thomson）提出的原子模型里，正电荷均匀分布在一个球里，电子嵌在其中。设氢原子的正电荷$e$均匀分布在半径$R=1.0\times10^{-10}\,\mathrm m$的球里，一个电子在球里。
+
+    （1）证明电子离开球心一小段距离后，受的力指回球心、和离开的距离成正比。（2）求它在球心附近做简谐运动（simple harmonic motion，见[简谐运动](lesson:physics.oscillations-waves.simple-harmonic-motion)）的频率，以及频率对应的光的波长（取 CODATA 2022 的$e$、$\varepsilon_0$、$m_e$，$c=2.99792458\times10^8\,\mathrm{m/s}$）。
+  hints:
+    - |
+      电子在离球心$r$处（$r<R$），由例 1，正电荷的电场是$\frac{1}{4\pi\varepsilon_0}\frac{er}{R^3}$，沿径向向外。
+    - |
+      电子受的力$\vb F=-\frac{1}{4\pi\varepsilon_0}\frac{e^2}{R^3}\vb r$，和弹簧的弹力一样，$k=\frac{e^2}{4\pi\varepsilon_0R^3}$。
+    - |
+      $\omega=\sqrt{\frac{e^2}{4\pi\varepsilon_0m_eR^3}}\approx1.59\times10^{16}\,\mathrm{s^{-1}}$，$f=\frac{\omega}{2\pi}\approx2.53\times10^{15}\,\mathrm{Hz}$，波长$\frac cf\approx1.18\times10^{-7}\,\mathrm m$。
+  reference: |
+    （1）电子在离球心$r$处，半径为$r$的球里的正电荷是$e\frac{r^3}{R^3}$，由球对称的定理，那里的电场是$\frac{1}{4\pi\varepsilon_0}\frac{er}{R^3}$，沿径向向外。电子带$-e$，受力$\vb F=-\frac{1}{4\pi\varepsilon_0}\frac{e^2}{R^3}\vb r$，指回球心、和$|\vb r|$成正比，相当于劲度系数$k=\frac{e^2}{4\pi\varepsilon_0R^3}$的弹簧。
+
+    （2）$\omega=\sqrt{\frac{k}{m_e}}=\sqrt{\frac{e^2}{4\pi\varepsilon_0m_eR^3}}\approx1.59\times10^{16}\,\mathrm{s^{-1}}$，$f=\frac{\omega}{2\pi}\approx2.53\times10^{15}\,\mathrm{Hz}$。按经典电磁学，振动的电子发出同样频率的光，波长$\frac cf\approx1.18\times10^{-7}\,\mathrm m$，在紫外。氢原子实际的谱线（例如可见光里的一组）不是这样一个单一的频率，这个模型后来被有核的原子模型取代。
+
+- id: p7
+  tier: thinking
+  statement: |
+    均匀带电的正方体，高斯定律当然成立。
+
+    （1）为什么不能像球那样，选一个高斯面把正方体外面的电场求出来？（2）离正方体很远的地方，电场近似是什么样？在那里高斯定律能帮上忙吗？
+  hints:
+    - |
+      试着取一个包住正方体的同心球面：电通量还是$\frac Q{\varepsilon_0}$，可面上的电场大小和方向都随位置变。
+    - |
+      高斯定律只给出一个数（总电通量），电场在面上的分布有无穷多种可能。
+    - |
+      很远处，电荷分布的细节不重要，电场接近点电荷的电场，这时对球面用高斯定律就近似可行。
+  reference: |
+    （1）高斯定律只给出一个数：穿出闭合曲面的总电通量。要由它解出电场，必须事先知道电场在面上的方向，并且大小处处相同，这要靠对称性。正方体只有有限个转动对称，电场在包住它的任何曲面上都随位置变，总电通量相同的电场分布有无穷多种，高斯定律分不出来；只能用积分（或电势）去算。
+
+    （2）离正方体很远时，电场接近电荷为$Q$的点电荷的电场（见[电场](lesson:physics.electromagnetism.electric-field)的 p5），几乎沿径向、大小几乎处处相同。这时对同心球面用高斯定律，得到的$\frac{1}{4\pi\varepsilon_0}\frac{Q}{r^2}$是很好的近似；越近，偏离越大。
+
+- id: p8
+  tier: thinking
+  statement: |
+    万有引力也和距离的平方成反比，引力场满足同样形式的「高斯定律」。
+
+    （1）把地球看成密度均匀的球，地面以下深处的引力随深度怎样变？（2）实际的地球中心部分（地核）比外层密得多，从地面往下走，引力起初怎样变？
+  hints:
+    - |
+      均匀球体内，离中心$r$处的引力场只由半径$r$以内的质量决定，和电场的例 1 一样。
+    - |
+      均匀密度时$g\propto r$，从地面到地心线性减小到零。
+    - |
+      密度向中心增大时，往下走，「外层被扣掉的质量」相对较少，而离中心又近了，引力可能先增大。
+  reference: |
+    （1）引力场的高斯定律和电场的形式相同，由球对称，离中心$r$处的引力只由半径$r$以内的质量$M(r)$决定，大小是$\frac{GM(r)}{r^2}$。密度均匀时$M(r)=M\frac{r^3}{R^3}$，$g(r)=g_0\frac rR$，从地面到地心线性减小到零，正像均匀带电球体里的电场（例 1）。
+
+    （2）$g(r)=\frac{GM(r)}{r^2}$：往下走，$M(r)$减小，$\frac{1}{r^2}$增大。求导可得，往下走时引力增大的条件是：那一层的密度小于它以内的平均密度的$\frac23$。外层越稀，扣掉的质量越少，$\frac{1}{r^2}$的增大就占上风。地球表层的岩石比地球的平均密度小得多，满足这个条件，所以从地面往下走一段，引力起初反而变大。

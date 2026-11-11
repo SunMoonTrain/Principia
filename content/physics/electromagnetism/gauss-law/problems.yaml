@@ -1,0 +1,163 @@
+- id: p1
+  tier: easy
+  statement: |
+    匀强电场的大小是$2.0\times10^3\,\mathrm{N/C}$，一块面积为$0.050\,\mathrm{m^2}$的平面放在其中，平面的法线和电场方向成$60^\circ$。求穿过这块平面的电通量的大小。
+  answer:
+    type: number
+    value: 2.0e3*0.050*cos(60*pi/180)
+    unit: |
+      $\mathrm{N\,m^2/C}$
+  hints:
+    - |
+      匀强电场穿过平面，$\Phi_E=\vb E\cdot\vb A=EA\cos\theta$，$\theta$是电场和法线的夹角。
+    - |
+      $\cos60^\circ=\frac12$。
+    - |
+      $\Phi_E=2.0\times10^3\times0.050\times\frac12\,\mathrm{N\,m^2/C}=50\,\mathrm{N\,m^2/C}$。
+  solution: |
+    电场处处相同，积分就是乘积：$\Phi_E=EA\cos60^\circ=2.0\times10^3\times0.050\times0.5\,\mathrm{N\,m^2/C}=50\,\mathrm{N\,m^2/C}$。只有垂直于平面的分量$E\cos60^\circ$穿过平面，平行的分量不贡献电通量。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        一个闭合曲面里有$+3\,\mathrm{nC}$和$-1\,\mathrm{nC}$两个点电荷，面外没有电荷，穿出它的电通量是$\frac{2\,\mathrm{nC}}{\varepsilon_0}$
+      - |
+        一个闭合曲面里只有一个点电荷，把它挪到面里的另一处（不出面），穿出这个面的电通量不变
+      - |
+        把一个点电荷$q$从闭合曲面外面移到里面，穿出这个面的电通量增加$\frac{q}{\varepsilon_0}$
+      - |
+        一个闭合曲面上处处电场为零，那么面里没有电荷
+      - |
+        整个球面对球心张的立体角是$2\pi$
+    value: [1, 2, 3]
+  hints:
+    - |
+      高斯定律：电通量只由面内的总电荷决定。
+    - |
+      面上处处$\vb E=\vb 0$只能说明面内的总电荷为零；立体角是投影到单位球面上的面积。
+    - |
+      A、B、C 对；D、E 错。
+  solution: |
+    A 对：面内总电荷$2\,\mathrm{nC}$。B 对：电通量只看面内的总电荷，不看它在哪里。C 对：面内的总电荷多了$q$。
+
+    D 错：球心放$+q$，外面再套一层均匀带电$-q$的球面，球面以外电场处处为零（球面外的电场像它的电荷集中在球心）；取一个比它大的同心球面，面上电场为零，面里却有电荷。E 错：单位球面的面积是$4\pi$。
+
+- id: p3
+  tier: medium
+  statement: |
+    点电荷$q=2.0\,\mathrm{nC}$放在一个立方体的一个顶点上。穿过立方体上不含这个顶点的那三个面之一的电通量是多少？取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{C^2/(N\,m^2)}$。
+  answer:
+    type: number
+    value: 2.0e-9/(24*8.8541878188e-12)
+    unit: |
+      $\mathrm{N\,m^2/C}$
+  hints:
+    - |
+      用 8 个同样的立方体拼成一个大立方体，让$q$正好在大立方体的中心。
+    - |
+      大立方体有 24 个这样的「外侧」小面，每个都和原来的那三个面一样；含这个顶点的三个面和电场平行，电通量为零。
+    - |
+      $\Phi=\frac{q}{24\varepsilon_0}\approx9.41\,\mathrm{N\,m^2/C}$。
+  solution: |
+    电场沿着从$q$出发的射线，含这个顶点的三个面都包含这些射线，电通量为零。用 8 个同样的立方体拼成大立方体，$q$在中心，穿出大立方体的电通量是$\frac{q}{\varepsilon_0}$，大立方体的表面由 24 个小面组成，按对称性每个分到$\frac{q}{24\varepsilon_0}$。原来立方体上不含这个顶点的三个面正是其中的三个，每个$\frac{q}{24\varepsilon_0}=\frac{2.0\times10^{-9}}{24\times8.854\times10^{-12}}\,\mathrm{N\,m^2/C}\approx9.41\,\mathrm{N\,m^2/C}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    点电荷$q=1.0\,\mathrm{nC}$放在一个半径为$R$的圆面的轴上，离圆心的距离也是$R$。穿过这个圆面的电通量是多少？取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{C^2/(N\,m^2)}$。
+  answer:
+    type: number
+    value: 1.0e-9/(2*8.8541878188e-12)*(1 - 1/sqrt(2))
+    unit: |
+      $\mathrm{N\,m^2/C}$
+  hints:
+    - |
+      电通量等于$\frac{q}{4\pi\varepsilon_0}$乘以圆面对$q$张的立体角。
+    - |
+      圆面对$q$张的立体角，等于以$q$为中心的球面被同一个圆锥截出的球冠的立体角；半顶角为$\alpha$的圆锥是$2\pi(1-\cos\alpha)$。
+    - |
+      这里$\cos\alpha=\frac{1}{\sqrt2}$，$\Phi=\frac{q}{2\varepsilon_0}\Bigl(1-\frac{1}{\sqrt2}\Bigr)\approx16.5\,\mathrm{N\,m^2/C}$。
+  solution: |
+    圆面的边缘对$q$张的半顶角$\alpha$满足$\cos\alpha=\frac{R}{\sqrt{R^2+R^2}}=\frac{1}{\sqrt2}$。以$q$为中心的球面上，半顶角为$\alpha$的球冠的立体角是$2\pi(1-\cos\alpha)$，圆面和球冠被同一个圆锥截出，立体角相同。电通量$\Phi=\frac{q}{4\pi\varepsilon_0}\cdot2\pi(1-\cos\alpha)=\frac{q}{2\varepsilon_0}\Bigl(1-\frac{1}{\sqrt2}\Bigr)\approx16.5\,\mathrm{N\,m^2/C}$，约占$q$的总电通量的$15\%$。
+
+- id: p5
+  tier: hard
+  statement: |
+    假设点电荷的电场是$\vb E=\frac{q}{4\pi\varepsilon_0}\frac{\uv r}{r^{2+\delta}}$，$\delta\ne0$。
+
+    （1）求穿出以$q$为中心、半径为$r$的球面的电通量，说明它和$r$有关。（2）构造一个不包含$q$的闭合曲面，使穿出它的电通量不为零。（3）由此说明：高斯定律对任意闭合曲面成立，要求电场严格地和$\frac{1}{r^2}$成正比。
+  hints:
+    - |
+      （1）球面上$\vb E$处处沿法线、大小相同。
+    - |
+      （2）取两个同心球面之间、再被一个圆锥截出的那块区域：两个球面部分上的电通量不相等，侧面和电场平行。
+    - |
+      （1）$\Phi=\frac{q}{\varepsilon_0}r^{-\delta}$。（2）半顶角为$\alpha$的圆锥截出的一块，电通量是$\frac{q}{2\varepsilon_0}(1-\cos\alpha)(r_2^{-\delta}-r_1^{-\delta})\ne0$。
+  reference: |
+    （1）球面上电场沿法线，大小是$\frac{q}{4\pi\varepsilon_0r^{2+\delta}}$，乘上面积$4\pi r^2$，$\Phi=\frac{q}{\varepsilon_0}r^{-\delta}$，随$r$变：$\delta>0$时球越大电通量越小。
+
+    （2）取以$q$为顶点、半顶角为$\alpha$的圆锥，被半径为$r_1<r_2$的两个同心球面截出的一块区域，$q$不在里面。侧面由从$q$出发的射线组成，和电场平行，电通量为零；外球面那一块穿出的电通量是$\frac{q}{2\varepsilon_0}(1-\cos\alpha)r_2^{-\delta}$，内球面那一块穿进的是同样的式子，只是$r_2$换成$r_1$。总电通量是$\frac{q}{2\varepsilon_0}(1-\cos\alpha)\bigl(r_2^{-\delta}-r_1^{-\delta}\bigr)$，$\delta\ne0$时不为零。
+
+    （3）如果电场不是严格的平方反比，面外的电荷也会贡献电通量，电通量就不只由面内电荷决定。所以高斯定律在任意闭合曲面上成立，等价于点电荷的电场严格地和$\frac{1}{r^2}$成正比（并且沿径向）；检验高斯定律，也就是检验库仑定律的指数。
+
+- id: p6
+  tier: hard
+  statement: |
+    $+q$在$(-a,0,0)$，$-q$在$(a,0,0)$。考虑两者中间的平面$x=0$，法线取$+x$方向。
+
+    （1）证明平面上的电场处处沿$+x$方向，求它的大小随到原点的距离$s$怎样变。（2）积分求穿过整个平面的电通量。（3）用电场线解释这个结果。
+  hints:
+    - |
+      （1）平面上的点到两个电荷的距离相等，两个电场的平行于平面的分量抵消；可以参考[电场](lesson:physics.electromagnetism.electric-field)例 1。
+    - |
+      $E_x=\frac{1}{4\pi\varepsilon_0}\frac{2qa}{(a^2+s^2)^{3/2}}$；面元取半径$s$、宽$\dd s$的圆环，面积$2\pi s\,\dd s$。
+    - |
+      $\Phi=\frac{2qa}{4\pi\varepsilon_0}\int_0^\infty\frac{2\pi s\,\dd s}{(a^2+s^2)^{3/2}}=\frac{q}{\varepsilon_0}$：$+q$发出的电场线全都终止在$-q$上，每一条都恰好穿过这个平面一次。
+  reference: |
+    （1）平面上离原点$s$处的点到两个电荷的距离都是$\sqrt{a^2+s^2}$，两个电场大小相同；平行于平面的分量抵消，垂直于平面的分量都沿$+x$。合起来$E_x=\frac{1}{4\pi\varepsilon_0}\frac{2qa}{(a^2+s^2)^{3/2}}$，离原点越远越弱，远处像$\frac{1}{s^3}$。
+
+    （2）把平面分成以原点为心的细圆环，$\Phi=\int_0^\infty E_x\,2\pi s\,\dd s=\frac{qa}{\varepsilon_0}\int_0^\infty\frac{s\,\dd s}{(a^2+s^2)^{3/2}}=\frac{qa}{\varepsilon_0}\Bigl[-\frac{1}{\sqrt{a^2+s^2}}\Bigr]_0^\infty=\frac{q}{\varepsilon_0}$。
+
+    （3）等量异号时，$+q$发出的电场线全部终止在$-q$上，每一条都从左半空间走到右半空间，恰好穿过这个平面一次。$+q$发出的电场线的「总量」对应电通量$\frac{q}{\varepsilon_0}$，所以平面上的电通量正是这么多。单看$+q$，它的电场穿过这个平面的电通量是$\frac{q}{2\varepsilon_0}$（一半的立体角）；$-q$的电场在平面上也指向$+x$，又贡献$\frac{q}{2\varepsilon_0}$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    对静止的电荷，由库仑定律能推出高斯定律；反过来，由高斯定律加上点电荷电场的球对称，也能推出库仑定律。
+
+    （1）既然两者等价，为什么说高斯定律更基本？（2）在什么情况下，库仑定律不再成立，高斯定律却仍然成立？
+  hints:
+    - |
+      想一想电荷运动起来以后的情形：库仑定律只管静止的电荷。
+    - |
+      高斯定律只说电通量和面内电荷的关系，不要求电荷静止，也不要求对称。
+    - |
+      运动的电荷的电场不再是球对称的（例如匀速运动的电荷，电场线向垂直于运动的方向聚拢），可穿出任何包住它的闭合曲面的电通量仍是$\frac{q}{\varepsilon_0}$。
+  reference: |
+    （1）对静止的电荷两者确实等价。但高斯定律不要求电荷静止：它是麦克斯韦方程组的一条，对随时间变化的电磁场也成立；库仑定律只是它在静止、点电荷这种特殊情形下的结果。所以把高斯定律当作基本定律，适用的范围更广。
+
+    （2）电荷运动时，它的电场不再是库仑场：匀速运动的点电荷，电场线向垂直于运动的方向聚拢（见狭义相对论的[电磁场张量](lesson:physics.special-relativity.field-tensor)例 1），库仑定律不成立。可是穿出任何包住它的闭合曲面的电通量仍是$\frac{q}{\varepsilon_0}$（那一节的 p6 正是这样算的），高斯定律仍然成立。
+
+- id: p8
+  tier: thinking
+  statement: |
+    万有引力和库仑力都和距离的平方成反比。
+
+    （1）引力场$\vb g$（单位质量受的引力）满足什么样的「高斯定律」？和电场的高斯定律有什么不同？（2）为什么引力没有「屏蔽」，电力却可以被屏蔽？
+  hints:
+    - |
+      把$\frac{1}{4\pi\varepsilon_0}q$换成$-Gm$：点质量的引力场是$\vb g=-\frac{Gm}{r^2}\uv r$。
+    - |
+      $\oint\vb g\cdot\dd\vb a=-4\pi GM_{\text{内}}$；负号表示引力场的「力线」汇入质量。
+    - |
+      质量只有正的，引力只吸引；电荷有正有负，异号的电荷能把电场抵消掉。
+  reference: |
+    （1）点质量$m$的引力场是$\vb g=-\frac{Gm}{r^2}\uv r$，和点电荷的电场一样随$\frac{1}{r^2}$变，所以同样的论证给出$\oint\vb g\cdot\dd\vb a=-4\pi GM_{\text{内}}$。不同之处：系数是$-4\pi G$而不是$\frac{1}{\varepsilon_0}$，负号表示引力场指向质量；均匀球体外的引力像质量集中在球心，正是[球壳定理](lesson:physics.newtonian-mechanics.shell-theorem)。
+
+    （2）电荷有正有负，一块电荷周围可以聚起异号的电荷，把它的电场在外面抵消掉；质量只有正的，没有办法用「负质量」抵消引力。所以引力不能被屏蔽，电场却可以（见[导体与静电平衡](lesson:physics.electromagnetism.conductors)）。
