@@ -110,7 +110,7 @@
     - |
       (1) 不会变。点积等于$|\vb u||\vb v|\cos\theta$，长度和夹角都是图形本身的性质，坐标轴转过去，它们都不变；按新坐标算出的$u_1'v_1'+u_2'v_2'$也是同一个数。
 
-      (2) 一般不等。展开得$\vb u\cdot\vb v=u_1v_1\,\vb a\cdot\vb a+(u_1v_2+u_2v_1)\,\vb a\cdot\vb b+u_2v_2\,\vb b\cdot\vb b$，只有在$\vb a\cdot\vb a=\vb b\cdot\vb b=1$、$\vb a\cdot\vb b=0$时，才化成$u_1v_1+u_2v_2$。例如取$\vb a=(1,0)$、$\vb b=(1,1)$作斜坐标轴，$\vb a$、$\vb b$在这组轴下的坐标是$(1,0)$、$(0,1)$，按公式算得$0$，它们的点积却是$1$。所以「对应分量相乘再相加」要求坐标轴互相垂直、单位长度都是$1$，以后在[正交规范基与施密特正交化](lesson:math.linear-algebra.gram-schmidt)里会把这样的基叫作正交规范基（orthonormal basis）。
+      (2) 一般不等。展开得$\vb u\cdot\vb v=u_1v_1\,\vb a\cdot\vb a+(u_1v_2+u_2v_1)\,\vb a\cdot\vb b+u_2v_2\,\vb b\cdot\vb b$，只有在$\vb a\cdot\vb a=\vb b\cdot\vb b=1$、$\vb a\cdot\vb b=0$时，才化成$u_1v_1+u_2v_2$。例如取$\vb a=(1,0)$、$\vb b=(1,1)$作斜坐标轴，$\vb a$、$\vb b$在这组轴下的坐标是$(1,0)$、$(0,1)$，按公式算得$0$，它们的点积却是$1$。所以「对应分量相乘再相加」要求坐标轴互相垂直、单位长度都是$1$，以后在[正交规范基与施密特正交化](lesson:math.linear-algebra.gram-schmidt)里会把这样的一组坐标轴方向叫作正交规范基（orthonormal basis）。
   reference: |
     (1) 不变：点积等于$|\vb u||\vb v|\cos\theta$，只依赖长度和夹角。(2) 斜坐标下$\vb u\cdot\vb v=u_1v_1\vb a\cdot\vb a+(u_1v_2+u_2v_1)\vb a\cdot\vb b+u_2v_2\vb b\cdot\vb b$，只有$\vb a$、$\vb b$是互相垂直的单位向量时才等于$u_1v_1+u_2v_2$；$\vb a=(1,0)$、$\vb b=(1,1)$是反例。
 

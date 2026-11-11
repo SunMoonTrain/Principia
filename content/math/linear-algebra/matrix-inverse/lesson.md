@@ -46,7 +46,7 @@ status: reviewed
 ::anchor{id="thm-two-by-two"}
 **二阶矩阵的逆**　设$A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$。$ad-bc\ne0$时$A$可逆，$A^{-1}=\frac1{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$；$ad-bc=0$时$A$不可逆。
 
-**证明思路**：直接相乘，$\begin{pmatrix}a&b\\c&d\end{pmatrix}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}=(ad-bc)I$，$ad-bc\ne0$时两边除以它即得，乘一边就够。$ad-bc=0$时，这个乘积是$O$；若$A$可逆，左乘$A^{-1}$得$\begin{pmatrix}d&-b\\-c&a\end{pmatrix}=O$，于是$A=O$，可$O$不可逆，矛盾。以后[行列式：有向面积与体积](lesson:math.linear-algebra.determinant)里讲的行列式（determinant），对二阶矩阵正是这个$ad-bc$。
+**证明思路**：直接相乘，$\begin{pmatrix}a&b\\c&d\end{pmatrix}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}=(ad-bc)I$，$ad-bc\ne0$时两边除以它即得，乘一边就够。$ad-bc=0$时，这个乘积是$O$；若$A$可逆，左乘$A^{-1}$得$\begin{pmatrix}d&-b\\-c&a\end{pmatrix}=O$，于是$A=O$，可$O$不可逆，矛盾。以后[行列式：有向面积与体积](lesson:math.linear-algebra.determinant)里讲的:term[行列式]{id="math.linear-algebra.determinant"}（determinant），对二阶矩阵正是这个$ad-bc$。
 
 ::anchor{id="thm-inverse-laws"}
 **逆矩阵的运算律**　设$A$、$B$是同阶的可逆矩阵，$c\ne0$：(1) $(A^{-1})^{-1}=A$；(2) $AB$可逆，$(AB)^{-1}=B^{-1}A^{-1}$；(3) $(cA)^{-1}=c^{-1}A^{-1}$。

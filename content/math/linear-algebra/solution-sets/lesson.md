@@ -38,7 +38,7 @@ status: reviewed
 ::anchor{id="thm-homogeneous-combinations"}
 **齐次解相加、数乘仍是解**　如果$\vb u$、$\vb v$是:term[齐次线性方程组]{id="math.linear-algebra.homogeneous-system"}（homogeneous linear system）的解，$c$是数，那么$\vb u+\vb v$和$c\vb u$也是它的解；所以齐次方程组的解的任何:term[线性组合]{id="math.linear-algebra.linear-combination"}（linear combination）都是它的解。
 
-**证明思路**：对每个方程，$L(\vb u+\vb v)=L(\vb u)+L(\vb v)=0+0=0$，$L(c\vb u)=cL(\vb u)=0$。齐次方程组的:term[通解]{id="math.linear-algebra.general-solution"}$t_1\vb v_1+\dots+t_k\vb v_k$里没有$\vb p$：常数项都是$0$，参数全取$0$得到的就是零解（trivial solution）。所以齐次方程组的全部解，正是$\vb v_1,\dots,\vb v_k$的全部线性组合。以后[列空间与零空间](lesson:math.linear-algebra.column-null-space)里讲的零空间（null space），就是这个集合。
+**证明思路**：对每个方程，$L(\vb u+\vb v)=L(\vb u)+L(\vb v)=0+0=0$，$L(c\vb u)=cL(\vb u)=0$。齐次方程组的:term[通解]{id="math.linear-algebra.general-solution"}$t_1\vb v_1+\dots+t_k\vb v_k$里没有$\vb p$：常数项都是$0$，参数全取$0$得到的就是零解（trivial solution）。所以齐次方程组的全部解，正是$\vb v_1,\dots,\vb v_k$的全部线性组合。以后[列空间与零空间](lesson:math.linear-algebra.column-null-space)里讲的:term[零空间]{id="math.linear-algebra.null-space"}（null space），就是这个集合。
 
 ### 非齐次方程组的解集
 

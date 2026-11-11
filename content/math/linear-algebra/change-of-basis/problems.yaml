@@ -1,0 +1,131 @@
+- id: p1
+  tier: easy
+  statement: |
+    $\mathcal B=\bigl((1,0),(1,2)\bigr)$是$\R^2$的一组基。求$\vb v=(3,1)$的坐标向量$[\vb v]_{\mathcal B}$，按顺序填写两个数。
+  answer:
+    type: tuple
+    value: [5/2, 1/2]
+  hints:
+    - |
+      解方程组$c_1(1,0)+c_2(1,2)=(3,1)$。
+    - |
+      第二个分量（component）给出$2c_2=1$。
+    - |
+      $c_2=\frac12$，第一个分量$c_1+c_2=3$，$c_1=\frac52$。验算：$\frac52(1,0)+\frac12(1,2)=(3,1)$。
+  solution: |
+    $c_2=\frac12$、$c_1=\frac52$，填 `5/2, 1/2`。
+
+- id: p2
+  tier: easy
+  statement: |
+    $\mathcal B$是$\R^2$的一组基，$P_{\mathcal B}=\begin{pmatrix}2&1\\1&1\end{pmatrix}$，$[\vb v]_{\mathcal B}=(3,-1)$。求$\vb v$，按顺序填写两个分量。
+  answer:
+    type: tuple
+    value: [5, 2]
+  hints:
+    - |
+      $\vb v=P_{\mathcal B}[\vb v]_{\mathcal B}$。
+    - |
+      也就是$3\vb b_1-\vb b_2$，$\vb b_1=(2,1)$、$\vb b_2=(1,1)$。
+    - |
+      $3(2,1)-(1,1)=(5,2)$。
+  solution: |
+    $\vb v=3(2,1)-(1,1)=(5,2)$，填 `5, 2`。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$\mathcal B=\bigl((1,0),(1,1)\bigr)$、$\mathcal C=\bigl((2,1),(1,1)\bigr)$。求$P_{\mathcal C\leftarrow\mathcal B}$，按行依次填写四个数。
+  answer:
+    type: tuple
+    value: [1, 0, -1, 1]
+  hints:
+    - |
+      $P_{\mathcal C\leftarrow\mathcal B}=P_{\mathcal C}^{-1}P_{\mathcal B}$，各列是$\vb b_1$、$\vb b_2$在$\mathcal C$下的坐标。
+    - |
+      $P_{\mathcal C}=\begin{pmatrix}2&1\\1&1\end{pmatrix}$，$ad-bc=1$，$P_{\mathcal C}^{-1}=\begin{pmatrix}1&-1\\-1&2\end{pmatrix}$。
+    - |
+      $P_{\mathcal C}^{-1}\begin{pmatrix}1&1\\0&1\end{pmatrix}=\begin{pmatrix}1&0\\-1&1\end{pmatrix}$。验算：$(1,0)=(2,1)-(1,1)$，坐标$(1,-1)$；$(1,1)=0\cdot(2,1)+(1,1)$，坐标$(0,1)$。
+  solution: |
+    $P_{\mathcal C\leftarrow\mathcal B}=\begin{pmatrix}1&0\\-1&1\end{pmatrix}$，填 `1, 0, -1, 1`。
+
+- id: p4
+  tier: medium
+  statement: |
+    在$P_2$里，求$x^2$在基$\mathcal C=\bigl(1,\ x+1,\ (x+1)^2\bigr)$下的坐标，按顺序填写三个数。
+  answer:
+    type: tuple
+    value: [1, -2, 1]
+  hints:
+    - |
+      把$x$写成$(x+1)-1$。
+    - |
+      $x^2=\bigl((x+1)-1\bigr)^2$，展开。
+    - |
+      $x^2=(x+1)^2-2(x+1)+1$，坐标是$(1,-2,1)$。验算：$x^2+2x+1-2x-2+1=x^2$。
+  solution: |
+    $x^2=1-2(x+1)+(x+1)^2$，填 `1, -2, 1`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$\mathcal B$、$\mathcal C$、$\mathcal D$是$V$的三组基。证明$P_{\mathcal D\leftarrow\mathcal B}=P_{\mathcal D\leftarrow\mathcal C}P_{\mathcal C\leftarrow\mathcal B}$。
+  hints:
+    - |
+      两边乘以任意一个$[\vb v]_{\mathcal B}$，看结果是不是一样。
+    - |
+      若两个矩阵乘任何向量都得到同样的结果，它们相等：分别乘$\vb e_1,\dots,\vb e_n$，比较各列。
+    - |
+      对任意$\vb v$，$P_{\mathcal D\leftarrow\mathcal C}P_{\mathcal C\leftarrow\mathcal B}[\vb v]_{\mathcal B}=P_{\mathcal D\leftarrow\mathcal C}[\vb v]_{\mathcal C}=[\vb v]_{\mathcal D}=P_{\mathcal D\leftarrow\mathcal B}[\vb v]_{\mathcal B}$。$[\vb v]_{\mathcal B}$取遍$\R^n$的所有向量，特别地取$\vb e_1,\dots,\vb e_n$，两边的各列相同，所以两个矩阵相等。
+
+      先从$\mathcal B$换到$\mathcal C$、再从$\mathcal C$换到$\mathcal D$，等于直接从$\mathcal B$换到$\mathcal D$；矩阵从右往左读，正是换算的先后。取$\mathcal D=\mathcal B$，就得到正文里$P_{\mathcal B\leftarrow\mathcal C}P_{\mathcal C\leftarrow\mathcal B}=I$。
+  reference: |
+    对任意$\vb v$，$P_{\mathcal D\leftarrow\mathcal C}P_{\mathcal C\leftarrow\mathcal B}[\vb v]_{\mathcal B}=[\vb v]_{\mathcal D}=P_{\mathcal D\leftarrow\mathcal B}[\vb v]_{\mathcal B}$，取$[\vb v]_{\mathcal B}=\vb e_j$比较各列。
+
+- id: p6
+  tier: hard
+  statement: |
+    证明：$\R^n$里的$n$个向量$\vb b_1,\dots,\vb b_n$是一组基，当且仅当以它们为各列的矩阵$P$可逆。
+  hints:
+    - |
+      $\dim\R^n=n$，$n$个向量只要线性无关就是一组基。
+    - |
+      $\vb b_1,\dots,\vb b_n$线性无关，就是$P\vb x=\vb 0$只有零解。
+    - |
+      $P\vb x=x_1\vb b_1+\dots+x_n\vb b_n$，所以$\vb b_1,\dots,\vb b_n$线性无关，当且仅当$P\vb x=\vb 0$只有零解，由[可逆与方程组](lesson:math.linear-algebra.matrix-inverse#thm-invertible)，当且仅当$P$可逆。又由[个数对了，只需查一条](lesson:math.linear-algebra.basis-dimension#thm-basis-criteria)，$\R^n$里$n$个线性无关的向量就是一组基。
+
+      所以每个可逆的$n$阶矩阵的各列都是$\R^n$的一组基，基和可逆矩阵一一对应；基变换矩阵总是可逆的，也是这个道理。
+  reference: |
+    各列线性无关⟺$P\vb x=\vb 0$只有零解⟺$P$可逆；$\R^n$里$n$个线性无关的向量就是一组基。
+
+- id: p7
+  tier: thinking
+  statement: |
+    在一条直线上量距离，把单位从米换成厘米。作为一维向量空间的基，新的基向量（$1$厘米）是旧的基向量（$1$米）的几倍？同一段距离的坐标（读数）又变成原来的几倍？为什么说坐标和基向量的变化「方向相反」？
+  hints:
+    - |
+      $1$厘米$=\frac1{100}$米。
+    - |
+      一段$2$米长的线段，用厘米量是多少？
+    - |
+      新基向量$\vb c=\frac1{100}\vb b$，只有旧的$\frac1{100}$；$2$米$=2\vb b=200\vb c$，读数变成$100$倍。一维时$P_{\mathcal C\leftarrow\mathcal B}$就是数$100$，正是$\vb b$在$\mathcal C$下的坐标。
+
+      基向量缩小多少倍，坐标就放大多少倍，因为两者相乘要还原出同一个向量；一般地，基向量按某个矩阵变，坐标就按它的逆变。物理里换单位、换坐标系时，分量跟着「反着变」，就是这个道理。
+  reference: |
+    新基向量是旧的$\frac1{100}$，读数变成$100$倍；坐标乘基向量要还原同一个向量，所以基向量缩小、坐标放大，坐标按基变换的逆来变。
+
+- id: p8
+  tier: thinking
+  statement: |
+    在$\R^2$里，把标准基$\vb e_1$、$\vb e_2$逆时针转过角$\theta$，得到新基$\mathcal C=\bigl((\cos\theta,\sin\theta),\ (-\sin\theta,\cos\theta)\bigr)$。求从标准基$\mathcal E$到$\mathcal C$的基变换矩阵$P_{\mathcal C\leftarrow\mathcal E}$。坐标轴转过$\theta$，一个固定不动的向量的坐标怎样变？
+  hints:
+    - |
+      $P_{\mathcal C\leftarrow\mathcal E}=P_{\mathcal C}^{-1}$。
+    - |
+      $P_{\mathcal C}=\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}$，二阶矩阵的逆可以直接写出。
+    - |
+      $P_{\mathcal C}$的$ad-bc=\cos^2\theta+\sin^2\theta=1$，所以$P_{\mathcal C\leftarrow\mathcal E}=P_{\mathcal C}^{-1}=\begin{pmatrix}\cos\theta&\sin\theta\\-\sin\theta&\cos\theta\end{pmatrix}$。验算第一列：$\vb e_1=\cos\theta\,(\cos\theta,\sin\theta)-\sin\theta\,(-\sin\theta,\cos\theta)$。
+
+      这个矩阵正是转过$-\theta$的[旋转矩阵](lesson:math.linear-algebra.linear-maps#def-rotation-shear)（rotation matrix）：坐标轴逆时针转过$\theta$，固定的向量在新坐标轴里看，就像向量本身顺时针转了$\theta$。「转坐标轴」和「转向量」方向相反，和第 7 题里坐标「反着变」是同一件事。
+  reference: |
+    $P_{\mathcal C\leftarrow\mathcal E}=\begin{pmatrix}\cos\theta&\sin\theta\\-\sin\theta&\cos\theta\end{pmatrix}$，即转过$-\theta$的旋转；轴转$\theta$，向量的坐标像向量转了$-\theta$。

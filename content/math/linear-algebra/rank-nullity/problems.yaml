@@ -1,0 +1,143 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\begin{pmatrix}1&2&3\\2&4&6\\1&1&1\end{pmatrix}$的秩。
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      化成行阶梯形，数主元。
+    - |
+      做$R_2-2R_1$，第二行全是零；做$R_3-R_1$，第三行是$(0,-1,-2)$。
+    - |
+      非零行是$(1,2,3)$、$(0,-1,-2)$，主元有$2$个，秩是$2$。
+  solution: |
+    化简后两个主元，秩是$2$，填 `2`。
+
+- id: p2
+  tier: easy
+  statement: |
+    $A$是$4\times7$矩阵，秩是$3$。求$A$的零空间的维数。
+  answer:
+    type: number
+    value: 4
+  hints:
+    - |
+      用秩-零化度定理：秩加零化度等于列数。
+    - |
+      列数是$7$。
+    - |
+      零化度是$7-3=4$，即$A\vb x=\vb 0$的解集是$\R^7$里的$4$维子空间。
+  solution: |
+    $7-3=4$，填 `4`。
+
+- id: p3
+  tier: medium
+  statement: |
+    $k$取多少时，$\begin{pmatrix}1&1&1\\1&2&k\\2&3&4\end{pmatrix}$的秩是$2$？
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      化成行阶梯形，看什么时候只剩两个主元。
+    - |
+      做$R_2-R_1$得$(0,1,k-1)$，做$R_3-2R_1$得$(0,1,2)$。
+    - |
+      再做$R_3-R_2$，第三行是$(0,0,3-k)$。$k=3$时第三行全是零，秩是$2$；其余时候秩是$3$。
+  solution: |
+    消元后第三行是$(0,0,3-k)$，$k=3$时秩是$2$，填 `3`。
+
+- id: p4
+  tier: medium
+  statement: |
+    $A$是$5\times3$矩阵，秩是$3$。下面哪些说法一定成立？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $A\vb x=\vb 0$只有零解
+      - |
+        $A\vb x=\vb b$对每个$\vb b\in\R^5$都有解
+      - |
+        $A$的$5$行里，最多有$3$行线性无关
+      - |
+        $A$的$3$列线性无关
+      - |
+        $A$的列空间是$\R^5$
+    value: [1, 3, 4]
+  hints:
+    - |
+      零化度是$3-3=0$；对每个$\vb b$都有解要秩等于行数。
+    - |
+      行秩等于列秩；列空间的维数是秩。
+    - |
+      零化度是$0$，零空间只有$\vb 0$，选项 1、4 成立。秩$3<5$，列空间是$\R^5$里的$3$维子空间，不是$\R^5$，有的$\vb b$无解，选项 2、5 不成立。行空间的维数也是$3$，$5$行里线性无关的最多$3$行，选项 3 成立。
+  solution: |
+    选项 1、3、4 成立；秩$3$小于行数$5$，2、5 不成立。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$A$是$m\times n$矩阵，$B$是$n\times p$矩阵。证明$\rank(AB)\le\min(\rank A,\rank B)$。
+  hints:
+    - |
+      $\rank(AB)\le\rank A$：比较$C(AB)$和$C(A)$。
+    - |
+      $\rank(AB)\le\rank B$：比较$N(B)$和$N(AB)$，再用秩-零化度定理；$AB$和$B$都是$p$列。
+    - |
+      由[列空间与零空间](lesson:math.linear-algebra.column-null-space)第 6 题，$C(AB)\subseteq C(A)$，所以$\rank(AB)\le\rank A$。
+
+      又$N(B)\subseteq N(AB)$，所以$\dim N(AB)\ge\dim N(B)$。$AB$和$B$都是$p$列，由秩-零化度定理，$\rank(AB)=p-\dim N(AB)\le p-\dim N(B)=\rank B$。两者合起来就是结论：乘上一个矩阵，秩不会变大。
+  reference: |
+    $C(AB)\subseteq C(A)$给出$\rank(AB)\le\rank A$；$N(B)\subseteq N(AB)$加上秩-零化度定理（都是$p$列）给出$\rank(AB)\le\rank B$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$A$是$m\times n$矩阵。证明：(1) $\rank A=n$，当且仅当$A$的各列线性无关；(2) $\rank A=m$，当且仅当$A$的各列生成$\R^m$。由此说明，方阵的各列线性无关和各列生成整个空间是一回事。
+  hints:
+    - |
+      (1) 各列线性无关，就是零空间只有$\vb 0$。
+    - |
+      (2) 各列生成$\R^m$，就是列空间是$\R^m$。
+    - |
+      (1) 各列线性无关，当且仅当$N(A)=\{\vb 0\}$，即零化度为$0$，由秩-零化度定理即$\rank A=n$。(2) 列空间是$\R^m$的子空间，它等于$\R^m$当且仅当它的维数是$m$（[基与维数](lesson:math.linear-algebra.basis-dimension)第 5 题），即$\rank A=m$。
+
+      方阵$m=n$时，两条都等价于$\rank A=n$，所以各列线性无关当且仅当各列生成整个空间，也就是方程组「有解」和「解唯一」对方阵总是同时成立或同时不成立。
+  reference: |
+    (1) 列无关⟺零化度$0$⟺$\rank A=n$。(2) 列生成$\R^m$⟺$\dim C(A)=m$⟺$\rank A=m$。方阵时两者都等价于$\rank A=n$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    常听说「$n$个未知数、$m$个方程，每个方程去掉一个自由度，解还剩$n-m$个自由度」。为什么准确的说法是$n-\rank A$？举一个$n-\rank A\ne n-m$的例子。
+  hints:
+    - |
+      有的方程可能是别的方程的组合。
+    - |
+      三个未知数，第三个方程是前两个之和。
+    - |
+      一个方程只有在它不能由别的方程组合出来时，才真的去掉一个自由度；能组合出来的方程，有解时不添新的限制。线性无关的方程有几个，就是行空间的维数，也就是$\rank A$，所以有解时剩下$n-\rank A$个自由度。
+
+      例如$x+y+z=1$、$x-y=0$、$2x+z=1$：第三个方程是前两个之和，$\rank A=2$。$n-m=3-3=0$，但方程组有解（$x=y=0$、$z=1$），解集是$3-2=1$维的一条直线。反过来，方程互相矛盾时干脆无解，自由度无从谈起。
+  reference: |
+    只有线性无关的方程才各去掉一个自由度，它们的个数是行空间的维数$\rank A$。例：三个方程中第三个是前两个之和，$\rank A=2$，解集是$1$维而非$0$维。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$A$是$m\times n$矩阵，秩是$r$。用$C$表示$A$的主元列组成的$m\times r$矩阵，$R$表示$A$的简化行阶梯形（reduced row echelon form）去掉零行后的$r\times n$矩阵。说明$A=CR$，并对正文例 1 的$A$验证。存一个秩为$r$的矩阵，最少大约要存多少个数？
+  hints:
+    - |
+      $A$的每一列都是主元列的组合，组合系数是什么？
+    - |
+      行变换不改变各列之间的线性关系（linear relation），看简化行阶梯形的第$j$列。
+    - |
+      简化行阶梯形里，第$j$列的各个数正是这一列用主元列表示时的系数（在简化行阶梯形里，主元列是$\vb e_1,\dots,\vb e_r$），行变换不改变各列之间的线性关系，所以$A$的第$j$列等于$C$乘以$R$的第$j$列，即$A=CR$。例 1 里$C=\begin{pmatrix}1&1\\2&3\\1&2\end{pmatrix}$，$R=\begin{pmatrix}1&2&0&-1&2\\0&0&1&1&1\end{pmatrix}$，乘出来正是$A$。
+
+      存$C$和$R$要$r(m+n)$个数，存$A$本身要$mn$个。$1000\times1000$、秩为$10$的矩阵，前者只要$2\times10^4$个，后者要$10^6$个；秩低的矩阵包含的信息少，可以压缩。
+  reference: |
+    $R$的第$j$列是$A$的第$j$列用主元列表示的系数，所以$A=CR$；例 1 中$C$为第一、三列，$R$为简化行阶梯形的两行。存储约$r(m+n)$个数。

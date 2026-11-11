@@ -67,7 +67,7 @@ status: reviewed
 ::anchor{id="thm-laws"}
 **运算律**　对$\R^n$中的向量$\vb u$、$\vb v$、$\vb w$和数$c$、$d$：$\vb u+\vb v=\vb v+\vb u$，$(\vb u+\vb v)+\vb w=\vb u+(\vb v+\vb w)$，$\vb v+\vb 0=\vb v$，$\vb v+(-\vb v)=\vb 0$，$c(\vb u+\vb v)=c\vb u+c\vb v$，$(c+d)\vb v=c\vb v+d\vb v$，$(cd)\vb v=c(d\vb v)$，$1\vb v=\vb v$。
 
-**证明思路**：每一条按分量写开，都是数的运算律；例如第$i$个分量上，$c(u_i+v_i)=cu_i+cv_i$。以后在[抽象向量空间](lesson:math.linear-algebra.vector-spaces)里，这八条会成为向量空间的定义。
+**证明思路**：每一条按分量写开，都是数的运算律；例如第$i$个分量上，$c(u_i+v_i)=cu_i+cv_i$。以后在[抽象向量空间](lesson:math.linear-algebra.vector-spaces)里，这八条会成为:term[向量空间]{id="math.linear-algebra.vector-space"}（vector space）的定义。
 
 ### 线性组合
 
@@ -81,7 +81,7 @@ status: reviewed
 ::anchor{id="def-standard-basis"}
 $\R^n$中第$i$个:term[分量]{id="math.linear-algebra.component"}是$1$、其余分量是$0$的向量记作$\vb e_i$，$\vb e_1,\dots,\vb e_n$叫作:term[标准基向量]{id="math.linear-algebra.standard-basis-vector"}（standard basis vectors）；每个向量都能写成它们的线性组合$\vb v=v_1\vb e_1+\dots+v_n\vb e_n$，系数正是$\vb v$的分量。
 
-为什么这样定义：$\R^3$里的$\vb e_1$、$\vb e_2$、$\vb e_3$是沿三条坐标轴正方向、:term[长度]{id="math.linear-algebra.length"}为$1$的向量，把$\vb v$写成它们的线性组合，就是把它拆成沿各条坐标轴的部分。物理里常写作$\uv x$、$\uv y$、$\uv z$，也有书写作$\vb i$、$\vb j$、$\vb k$；「基」的一般含义以后在[基与维数](lesson:math.linear-algebra.basis-dimension)里讲。边界情况：系数是唯一的，因为$v_1\vb e_1+\dots+v_n\vb e_n$的第$i$个分量就是$v_i$，两组不同的系数给出不同的向量。
+为什么这样定义：$\R^3$里的$\vb e_1$、$\vb e_2$、$\vb e_3$是沿三条坐标轴正方向、:term[长度]{id="math.linear-algebra.length"}为$1$的向量，把$\vb v$写成它们的线性组合，就是把它拆成沿各条坐标轴的部分。物理里常写作$\uv x$、$\uv y$、$\uv z$，也有书写作$\vb i$、$\vb j$、$\vb k$；「:term[基]{id="math.linear-algebra.basis"}（basis）」的一般含义以后在[基与维数](lesson:math.linear-algebra.basis-dimension)里讲。边界情况：系数是唯一的，因为$v_1\vb e_1+\dots+v_n\vb e_n$的第$i$个分量就是$v_i$，两组不同的系数给出不同的向量。
 
 ## 几何图像
 

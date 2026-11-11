@@ -427,3 +427,192 @@ glossary:
       满足$A\T=A$的方阵，即$a_{ij}=a_{ji}$，关于主对角线对称。
     definedIn: math.linear-algebra.matrix-inverse
     anchor: def-transpose
+  - id: math.linear-algebra.span
+    zh: |
+      生成
+    en: |
+      span
+    brief: |
+      $\vb v_1,\dots,\vb v_k$的全部线性组合组成的集合，记作$\Span\{\vb v_1,\dots,\vb v_k\}$，也说它们张成这个集合。
+    definedIn: math.linear-algebra.span-subspaces
+    anchor: def-span
+  - id: math.linear-algebra.subspace
+    zh: |
+      子空间
+    en: |
+      subspace
+    brief: |
+      含$\vb 0$、对加法和数乘都封闭的子集，例如过原点的直线、平面和齐次方程组的解集。
+    definedIn: math.linear-algebra.span-subspaces
+    anchor: def-subspace
+  - id: math.linear-algebra.signed-area
+    zh: |
+      有向面积
+    en: |
+      signed area
+    brief: |
+      以$\vb a$、$\vb b$为邻边的平行四边形的面积，按从$\vb a$转到$\vb b$是逆时针还是顺时针取正负号，等于$a_1b_2-a_2b_1$。
+    definedIn: math.linear-algebra.determinant
+    anchor: def-signed-area
+  - id: math.linear-algebra.determinant
+    zh: |
+      行列式
+    en: |
+      determinant
+    brief: |
+      方阵的各列的函数$\det A$，由多重线性、交错和$\det I=1$确定；它是线性变换对有向体积的放大倍数。
+    definedIn: math.linear-algebra.determinant
+    anchor: def-determinant
+  - id: math.linear-algebra.multilinear
+    zh: |
+      多重线性
+    en: |
+      multilinear
+    brief: |
+      固定其余各列时，对每一列都是线性的；行列式的第一条性质。
+    definedIn: math.linear-algebra.determinant
+    anchor: def-determinant
+  - id: math.linear-algebra.alternating
+    zh: |
+      交错
+    en: |
+      alternating
+    brief: |
+      有两列相同时值为零；由此交换两列时变号。行列式的第二条性质。
+    definedIn: math.linear-algebra.determinant
+    anchor: def-determinant
+  - id: math.linear-algebra.linearly-independent
+    zh: |
+      线性无关
+    en: |
+      linearly independent
+    brief: |
+      只有系数全为零的线性组合才等于零向量；这时生成的子空间里每个向量的写法唯一。
+    definedIn: math.linear-algebra.linear-independence
+    anchor: def-linear-independence
+  - id: math.linear-algebra.linearly-dependent
+    zh: |
+      线性相关
+    en: |
+      linearly dependent
+    brief: |
+      有系数不全为零的线性组合等于零向量；这时其中某个向量能用其余的线性表示。
+    definedIn: math.linear-algebra.linear-independence
+    anchor: def-linear-independence
+  - id: math.linear-algebra.basis
+    zh: |
+      基
+    en: |
+      basis
+    brief: |
+      子空间里线性无关、又生成这个子空间的一组向量；子空间里每个向量都唯一地写成它们的线性组合。
+    definedIn: math.linear-algebra.basis-dimension
+    anchor: def-basis
+  - id: math.linear-algebra.coordinate-vector
+    zh: |
+      坐标向量
+    en: |
+      coordinate vector
+    brief: |
+      $\vb v=c_1\vb b_1+\dots+c_k\vb b_k$时，系数排成的$(c_1,\dots,c_k)$，记作$[\vb v]_{\mathcal B}$。
+    definedIn: math.linear-algebra.basis-dimension
+    anchor: def-coordinates
+  - id: math.linear-algebra.dimension
+    zh: |
+      维数
+    en: |
+      dimension
+    brief: |
+      子空间的一组基所含向量的个数，对每组基都一样，记作$\dim V$；$\dim\R^n=n$。
+    definedIn: math.linear-algebra.basis-dimension
+    anchor: def-dimension
+  - id: math.linear-algebra.upper-triangular-matrix
+    zh: |
+      上三角矩阵
+    en: |
+      upper triangular matrix
+    brief: |
+      主对角线以下的数都是$0$的方阵；它的行列式等于主对角线上各数的乘积。
+    definedIn: math.linear-algebra.determinant-properties
+    anchor: def-triangular
+  - id: math.linear-algebra.minor
+    zh: |
+      余子式
+    en: |
+      minor
+    brief: |
+      划去第$i$行、第$j$列后剩下的$n-1$阶方阵的行列式，记作$M_{ij}$。
+    definedIn: math.linear-algebra.determinant-properties
+    anchor: def-cofactor
+  - id: math.linear-algebra.cofactor
+    zh: |
+      代数余子式
+    en: |
+      cofactor
+    brief: |
+      $C_{ij}=(-1)^{i+j}M_{ij}$；按第$i$行展开，$\det A=\sum_ja_{ij}C_{ij}$。
+    definedIn: math.linear-algebra.determinant-properties
+    anchor: def-cofactor
+  - id: math.linear-algebra.column-space
+    zh: |
+      列空间
+    en: |
+      column space
+    brief: |
+      矩阵的各列生成的子空间$C(A)$，也就是全体$A\vb x$；$A\vb x=\vb b$有解当且仅当$\vb b\in C(A)$。
+    definedIn: math.linear-algebra.column-null-space
+    anchor: def-column-null-space
+  - id: math.linear-algebra.null-space
+    zh: |
+      零空间
+    en: |
+      null space
+    brief: |
+      齐次方程组$A\vb x=\vb 0$的全部解组成的子空间$N(A)$；它的维数等于自由变量的个数。
+    definedIn: math.linear-algebra.column-null-space
+    anchor: def-column-null-space
+  - id: math.linear-algebra.vector-space
+    zh: |
+      向量空间
+    en: |
+      vector space
+    brief: |
+      元素能相加、能乘以数，并满足八条运算律的集合，例如$\R^n$、多项式全体、函数全体。
+    definedIn: math.linear-algebra.vector-spaces
+    anchor: def-vector-space
+  - id: math.linear-algebra.change-of-basis-matrix
+    zh: |
+      基变换矩阵
+    en: |
+      change-of-basis matrix
+    brief: |
+      以旧基$\mathcal B$的向量在新基$\mathcal C$下的坐标为各列的矩阵$P_{\mathcal C\leftarrow\mathcal B}$，满足$[\vb v]_{\mathcal C}=P_{\mathcal C\leftarrow\mathcal B}[\vb v]_{\mathcal B}$。
+    definedIn: math.linear-algebra.change-of-basis
+    anchor: def-change-of-basis
+  - id: math.linear-algebra.rank
+    zh: |
+      秩
+    en: |
+      rank
+    brief: |
+      矩阵的列空间的维数$\rank A$，等于化成行阶梯形后主元的个数，也等于行空间的维数。
+    definedIn: math.linear-algebra.rank-nullity
+    anchor: def-rank
+  - id: math.linear-algebra.nullity
+    zh: |
+      零化度
+    en: |
+      nullity
+    brief: |
+      矩阵的零空间的维数，等于方程组$A\vb x=\vb 0$的自由变量的个数。
+    definedIn: math.linear-algebra.rank-nullity
+    anchor: def-rank
+  - id: math.linear-algebra.rank-nullity-theorem
+    zh: |
+      秩-零化度定理
+    en: |
+      rank–nullity theorem
+    brief: |
+      $m\times n$矩阵满足$\rank A+\dim N(A)=n$：秩与零化度之和等于列数。
+    definedIn: math.linear-algebra.rank-nullity
+    anchor: thm-rank-nullity

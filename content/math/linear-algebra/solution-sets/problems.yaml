@@ -104,7 +104,7 @@
     - |
       设自由变量是$x_{f_1},\dots,x_{f_k}$。按构造，$\vb v_j$的第$f_j$个分量是$1$，第$f_i$个分量（$i\ne j$）是$0$。所以$t_1\vb v_1+\dots+t_k\vb v_k$的第$f_i$个分量恰好是$t_i$。
 
-      如果这个组合等于$\vb 0$，它的每个分量都是$0$，于是每个$t_i=0$。两组参数给出同一个解时，它们的差给出零向量，所以差全为零，两组参数相同。以后在[线性无关](lesson:math.linear-algebra.linear-independence)里，这样的一组向量叫作线性无关的。
+      如果这个组合等于$\vb 0$，它的每个分量都是$0$，于是每个$t_i=0$。两组参数给出同一个解时，它们的差给出零向量，所以差全为零，两组参数相同。以后在[线性无关](lesson:math.linear-algebra.linear-independence)里，这样的一组向量叫作线性无关（linearly independent）的。
   reference: |
     $\vb v_j$在自由变量$x_{f_i}$处的分量是$\delta_{ij}$（$i=j$时为$1$，否则为$0$），所以组合在$x_{f_i}$处的分量是$t_i$；组合为零推出每个$t_i=0$。
 

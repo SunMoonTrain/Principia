@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" width="640" height="320" font-size="13">
+  <!-- 左：span{u} 是过原点的直线，u = (0.5, 1, 0.5)，标出 -u、u、2u；右：span{u, v} 是过原点的平面的一块，u = (0, 1.4, 0.7)、v = (1.4, 0, -0.2)，虚线补成平行四边形，第四个顶点 u + v 在平面上，b = (0.3, 0.8, 1.9) 在平面上方，虚线竖直连到平面上的 (0.3, 0.8, 0.36)。斜投影：x 轴画向左下 (-0.6, 0.45)，y 轴向右，z 轴向上 -->
+  <line x1="70.84" y1="202.17" x2="231" y2="139.25" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" opacity="0.75" />
+  <line x1="140" y1="175" x2="168.02" y2="163.99" style="stroke: var(--accent, #2563eb)" stroke-width="2.4" />
+  <path d="M 176.4 160.7 L 169.67 168.18 L 166.38 159.8 Z" style="fill: var(--accent, #2563eb)" />
+  <circle cx="103.6" cy="189.3" r="3" style="fill: var(--accent, #2563eb)" />
+  <circle cx="212.8" cy="146.4" r="3" style="fill: var(--accent, #2563eb)" />
+  <circle cx="140" cy="175" r="2.6" fill="currentColor" />
+  <text x="142" y="193" text-anchor="middle" fill="currentColor"><tspan font-style="italic">O</tspan></text>
+  <text x="170.4" y="152.7" text-anchor="end" font-size="14" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-weight="bold">u</tspan></text>
+  <text x="206.8" y="138.4" text-anchor="end" style="fill: var(--accent, #2563eb)" fill="currentColor">2<tspan font-weight="bold">u</tspan></text>
+  <text x="95.6" y="183.3" text-anchor="end" style="fill: var(--accent, #2563eb)" fill="currentColor">−<tspan font-weight="bold">u</tspan></text>
+  <text x="140" y="300" text-anchor="middle" fill="currentColor"><tspan font-style="normal">span</tspan>{<tspan font-weight="bold">u</tspan>}：过原点的直线</text>
+  <path d="M 430.88 158.24 L 610.08 68.64 L 502.56 174.88 L 323.36 264.48 Z" style="fill: var(--accent, #2563eb); stroke: currentColor" fill-opacity="0.13" stroke-width="0.8" stroke-opacity="0.6" />
+  <line x1="516" y1="137" x2="482.4" y2="170.2" style="stroke: var(--muted, #6b7280)" stroke-width="1" stroke-dasharray="4 3" />
+  <line x1="426.4" y1="198.2" x2="482.4" y2="170.2" style="stroke: var(--muted, #6b7280)" stroke-width="1" stroke-dasharray="4 3" />
+  <line x1="460" y1="165" x2="507.95" y2="141.02" style="stroke: var(--accent, #2563eb)" stroke-width="2.4" />
+  <path d="M 516 137 L 509.96 145.05 L 505.94 137 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="460" y1="165" x2="432.8" y2="191.87" style="stroke: var(--good, #0f8a5f)" stroke-width="2.4" />
+  <path d="M 426.4 198.2 L 429.64 188.67 L 435.96 195.08 Z" style="fill: var(--good, #0f8a5f)" />
+  <circle cx="482.4" cy="170.2" r="3.2" fill="currentColor" />
+  <line x1="484.8" y1="94.4" x2="484.8" y2="156.11" style="stroke: var(--warn, #a8661a)" stroke-width="1.2" stroke-dasharray="4 3" />
+  <line x1="460" y1="165" x2="481.82" y2="102.89" style="stroke: var(--warn, #a8661a)" stroke-width="2.2" />
+  <path d="M 484.8 94.4 L 486.06 104.38 L 477.57 101.4 Z" style="fill: var(--warn, #a8661a)" />
+  <circle cx="484.8" cy="156.11" r="2.4" style="fill: var(--warn, #a8661a)" />
+  <circle cx="460" cy="165" r="2.6" fill="currentColor" />
+  <text x="522" y="141" font-size="14" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-weight="bold">u</tspan></text>
+  <text x="418.4" y="202.2" text-anchor="end" font-size="14" style="fill: var(--good, #0f8a5f)" fill="currentColor"><tspan font-weight="bold">v</tspan></text>
+  <text x="492.8" y="98.4" font-size="14" style="fill: var(--warn, #a8661a)" fill="currentColor"><tspan font-weight="bold">b</tspan></text>
+  <text x="470" y="300" text-anchor="middle" fill="currentColor"><tspan font-style="normal">span</tspan>{<tspan font-weight="bold">u</tspan>, <tspan font-weight="bold">v</tspan>}：过原点的平面，<tspan font-weight="bold">b</tspan> 不在上面</text>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" width="640" height="330" font-size="13">
+  <!-- 左：标准网格，原点 (70, 250)，一个单位 36 像素，v = (1, 5)，虚线 O → e1 → v；右：原点 (420, 250)，基 b1 = (2, 1)、b2 = (-1, 1) 的斜网格，虚线 O → 2b1 → v = 2b1 + 3b2。网格线裁在各自的矩形框里，标签放在格子中间 -->
+  <line x1="34" y1="282" x2="34" y2="20" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="70" y1="282" x2="70" y2="20" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="20" y1="250" x2="290" y2="250" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="106" y1="282" x2="106" y2="20" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="20" y1="214" x2="290" y2="214" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="142" y1="282" x2="142" y2="20" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="20" y1="178" x2="290" y2="178" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="178" y1="282" x2="178" y2="20" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="20" y1="142" x2="290" y2="142" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="214" y1="282" x2="214" y2="20" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="20" y1="106" x2="290" y2="106" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="250" y1="282" x2="250" y2="20" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="20" y1="70" x2="290" y2="70" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="286" y1="282" x2="286" y2="20" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="20" y1="34" x2="290" y2="34" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="20" y1="250" x2="290" y2="250" stroke="currentColor" stroke-width="1" opacity="0.7" />
+  <line x1="70" y1="282" x2="70" y2="20" stroke="currentColor" stroke-width="1" opacity="0.7" />
+  <line x1="106" y1="250" x2="106" y2="70" style="stroke: var(--muted, #6b7280)" stroke-width="1.4" stroke-dasharray="5 4" />
+  <line x1="70" y1="250" x2="97" y2="250" style="stroke: var(--accent, #2563eb)" stroke-width="2.4" />
+  <path d="M 106 250 L 97 254.5 L 97 245.5 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="70" y1="250" x2="70" y2="223" style="stroke: var(--good, #0f8a5f)" stroke-width="2.4" />
+  <path d="M 70 214 L 74.5 223 L 65.5 223 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="70" y1="250" x2="104.23" y2="78.83" style="stroke: var(--warn, #a8661a)" stroke-width="2.4" />
+  <path d="M 106 70 L 108.65 79.71 L 99.82 77.94 Z" style="fill: var(--warn, #a8661a)" />
+  <circle cx="70" cy="250" r="2.6" fill="currentColor" />
+  <text x="52" y="273" text-anchor="middle" fill="currentColor"><tspan font-style="italic">O</tspan></text>
+  <text x="88" y="273" text-anchor="middle" font-size="14" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-weight="bold">e</tspan><tspan baseline-shift="sub" font-size="10">1</tspan></text>
+  <text x="52" y="237" text-anchor="middle" font-size="14" style="fill: var(--good, #0f8a5f)" fill="currentColor"><tspan font-weight="bold">e</tspan><tspan baseline-shift="sub" font-size="10">2</tspan></text>
+  <text x="124" y="93" text-anchor="middle" font-size="14" style="fill: var(--warn, #a8661a)" fill="currentColor"><tspan font-weight="bold">v</tspan></text>
+  <text x="155" y="312" text-anchor="middle" fill="currentColor">标准基：<tspan font-weight="bold">v</tspan> = <tspan font-weight="bold">e</tspan><tspan baseline-shift="sub" font-size="10">1</tspan> + 5<tspan font-weight="bold">e</tspan><tspan baseline-shift="sub" font-size="10">2</tspan>，坐标 (1, 5)</text>
+  <line x1="572" y1="282" x2="620" y2="258" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="344" y1="282" x2="335" y2="273" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="464" y1="282" x2="620" y2="204" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="452" y1="282" x2="335" y2="165" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="356" y1="282" x2="620" y2="150" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="560" y1="282" x2="335" y2="57" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="335" y1="238.5" x2="620" y2="96" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="620" y1="234" x2="406" y2="20" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="335" y1="184.5" x2="620" y2="42" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="620" y1="126" x2="514" y2="20" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="335" y1="130.5" x2="556" y2="20" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="335" y1="76.5" x2="448" y2="20" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="335" y1="22.5" x2="340" y2="20" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" opacity="0.5" />
+  <line x1="356" y1="282" x2="620" y2="150" stroke="currentColor" stroke-width="1" opacity="0.7" />
+  <line x1="452" y1="282" x2="335" y2="165" stroke="currentColor" stroke-width="1" opacity="0.7" />
+  <line x1="492" y1="214" x2="564" y2="178" style="stroke: var(--muted, #6b7280)" stroke-width="1.4" stroke-dasharray="5 4" />
+  <line x1="564" y1="178" x2="456" y2="70" style="stroke: var(--muted, #6b7280)" stroke-width="1.4" stroke-dasharray="5 4" />
+  <line x1="420" y1="250" x2="483.95" y2="218.02" style="stroke: var(--accent, #2563eb)" stroke-width="2.4" />
+  <path d="M 492 214 L 485.96 222.05 L 481.94 214 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="420" y1="250" x2="390.36" y2="220.36" style="stroke: var(--good, #0f8a5f)" stroke-width="2.4" />
+  <path d="M 384 214 L 393.55 217.18 L 387.18 223.55 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="420" y1="250" x2="454.23" y2="78.83" style="stroke: var(--warn, #a8661a)" stroke-width="2.4" />
+  <path d="M 456 70 L 458.65 79.71 L 449.82 77.94 Z" style="fill: var(--warn, #a8661a)" />
+  <circle cx="420" cy="250" r="2.6" fill="currentColor" />
+  <text x="474" y="255" text-anchor="middle" font-size="14" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-weight="bold">b</tspan><tspan baseline-shift="sub" font-size="10">1</tspan></text>
+  <text x="366" y="255" text-anchor="middle" font-size="14" style="fill: var(--good, #0f8a5f)" fill="currentColor"><tspan font-weight="bold">b</tspan><tspan baseline-shift="sub" font-size="10">2</tspan></text>
+  <text x="474" y="39" text-anchor="middle" font-size="14" style="fill: var(--warn, #a8661a)" fill="currentColor"><tspan font-weight="bold">v</tspan></text>
+  <text x="478" y="312" text-anchor="middle" fill="currentColor">基 <tspan font-weight="bold">b</tspan><tspan baseline-shift="sub" font-size="10">1</tspan>、<tspan font-weight="bold">b</tspan><tspan baseline-shift="sub" font-size="10">2</tspan>：<tspan font-weight="bold">v</tspan> = 2<tspan font-weight="bold">b</tspan><tspan baseline-shift="sub" font-size="10">1</tspan> + 3<tspan font-weight="bold">b</tspan><tspan baseline-shift="sub" font-size="10">2</tspan>，坐标 (2, 3)</text>
+</svg>

@@ -128,3 +128,60 @@ export function rng(seed: number): () => number {
     return s / 2 ** 32;
   };
 }
+
+/** 混合积 a · (b × c)，不经过行列式。 */
+export const triple = (a: Vec, b: Vec, c: Vec): number => dot(a, cross(b, c));
+
+/**
+ * 施密特正交化：依次减去在前面各个方向上的投影，剩下的长度小于 tol 就丢掉。
+ * 返回张成同一空间的单位正交组，它的个数就是张成空间的维数（不用消元）。
+ */
+export function orthonormalize(vectors: Vec[], tol = 1e-9): Vec[] {
+  const basis: Vec[] = [];
+  for (const v of vectors) {
+    let w = [...v];
+    for (let pass = 0; pass < 2; pass++) for (const q of basis) w = sub(w, scale(dot(w, q), q));
+    const len = norm(w);
+    if (len > tol * Math.max(1, norm(v))) basis.push(scale(1 / len, w));
+  }
+  return basis;
+}
+
+/** 张成空间的维数：正交化后剩下几个向量。 */
+export const spanDim = (vectors: Vec[]): number => orthonormalize(vectors).length;
+
+/**
+ * 和给定各行都正交的向量组成的子空间（齐次方程组的解集）在 R^n 里的一组单位正交基：
+ * 把标准基向量逐个减去在各行张成的空间上的投影，再正交化。不用消元。
+ */
+export function orthogonalComplement(rows: Vec[], n: number): Vec[] {
+  const q = orthonormalize(rows);
+  const residues = identity(n).map((e) => q.reduce((w, u) => sub(w, scale(dot(w, u), u)), e));
+  return orthonormalize(residues);
+}
+
+/** 行列式按排列展开（莱布尼茨公式）：对所有排列求和，符号按逆序数的奇偶。不用消元。 */
+export function permDet(A: Mat): number {
+  const n = A.length;
+  let total = 0;
+  const perm: number[] = [];
+  const used = new Array<boolean>(n).fill(false);
+  const go = (row: number): void => {
+    if (row === n) {
+      let inv = 0;
+      for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) if (perm[i] > perm[j]) inv++;
+      total += (inv % 2 === 0 ? 1 : -1) * perm.reduce((p, col, i) => p * A[i][col], 1);
+      return;
+    }
+    for (let col = 0; col < n; col++) {
+      if (used[col]) continue;
+      used[col] = true;
+      perm.push(col);
+      go(row + 1);
+      perm.pop();
+      used[col] = false;
+    }
+  };
+  go(0);
+  return total;
+}

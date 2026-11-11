@@ -50,7 +50,7 @@ $\vb u$、$\vb v$不平行时，$\vb u\times\vb v$的方向由:term[右手定则
 ::anchor{id="def-triple-product"}
 三个向量$\vb u$、$\vb v$、$\vb w$的:term[混合积]{id="math.linear-algebra.scalar-triple-product"}（scalar triple product）是数$(\vb u\times\vb v)\cdot\vb w$；它的绝对值等于以$\vb u$、$\vb v$、$\vb w$为棱的平行六面体（parallelepiped）的体积。
 
-为什么这样定义：平行六面体的底是以$\vb u$、$\vb v$为邻边的平行四边形，面积是$|\vb u\times\vb v|$；高是$\vb w$在垂直于底面的方向（即$\vb u\times\vb v$的方向）上的:term[投影]{id="math.linear-algebra.projection"}（projection）的:term[长度]{id="math.linear-algebra.length"}$|\vb w||\cos\varphi|$，$\varphi$是$\vb w$与$\vb u\times\vb v$的:term[夹角]{id="math.linear-algebra.angle"}。两者相乘正是$|(\vb u\times\vb v)\cdot\vb w|$。边界情况：混合积为零，当且仅当$\vb u\times\vb v=\vb 0$或$\vb w$与它:term[正交]{id="math.linear-algebra.orthogonal"}，也就是三个向量落在同一个过原点的平面上，平行六面体被压扁成体积为零；以后在[行列式：有向面积与体积](lesson:math.linear-algebra.determinant)里会看到，混合积正是三阶行列式。
+为什么这样定义：平行六面体的底是以$\vb u$、$\vb v$为邻边的平行四边形，面积是$|\vb u\times\vb v|$；高是$\vb w$在垂直于底面的方向（即$\vb u\times\vb v$的方向）上的:term[投影]{id="math.linear-algebra.projection"}（projection）的:term[长度]{id="math.linear-algebra.length"}$|\vb w||\cos\varphi|$，$\varphi$是$\vb w$与$\vb u\times\vb v$的:term[夹角]{id="math.linear-algebra.angle"}。两者相乘正是$|(\vb u\times\vb v)\cdot\vb w|$。边界情况：混合积为零，当且仅当$\vb u\times\vb v=\vb 0$或$\vb w$与它:term[正交]{id="math.linear-algebra.orthogonal"}，也就是三个向量落在同一个过原点的平面上，平行六面体被压扁成体积为零；以后在[行列式：有向面积与体积](lesson:math.linear-algebra.determinant)里会看到，混合积正是三阶:term[行列式]{id="math.linear-algebra.determinant"}（determinant）。
 
 ## 几何图像
 
