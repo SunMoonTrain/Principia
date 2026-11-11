@@ -813,6 +813,27 @@ math.analysis.completeness:
   - 电磁学这一批的术语取舍（写代码的会话和审查会话的看法）：「自由电荷」进术语表，定义在 `polarization`，和「束缚电荷」共用一个锚点，批次 9 的 `conductors` 补标后随这一批复核；「介电常量」只在一节用，只加锚点。
   - 电磁学球坐标的方位角写 $\psi$：$\varphi$ 是电势，正体、斜体两种 φ 并排时几乎分不出（写内容会话提的，写代码的会话定的）。以后交流电路的相位差不要再用 $\psi$。
 - 批次 10 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 11（写代码的会话定的）。
+- 批次 10 之后（你定的）：发批次 11。
+- 批次 11：两个领域的第三批，做法和批次 10 一样。
+  - 线性代数写线性映射、特征值与对角化 9 节，按前置顺序：`eigenvalues`、`kernel-image`、`dual-space`、`similarity`、`diagonalization`、`tensor-product`、`complex-eigenvalues`、`jordan-form`、`matrix-powers`。审查报告 `docs/reviews/batch-11-linear-algebra.md`。最后一批是内积空间与谱定理 9 节。
+  - 电磁学写电流与静磁场 9 节，按前置顺序：`current-density`、`dc-circuits`、`rc-circuits`、`lorentz-force`、`magnetic-force-on-currents`、`biot-savart`、`ampere-law`、`vector-potential`、`magnetic-dipole`。审查报告 `docs/reviews/batch-11-electromagnetism.md`。往后三批：磁介质、电磁感应与麦克斯韦方程组 8 节；守恒律与电磁波 9 节；势与辐射 5 节。
+  - 已写的小节有链接或用法指向这一批，写的时候要接得住（写代码的会话查的）：
+    - 线性代数：`matrices` 第 8 题，人口迁移 $M^k\vb x$ 长期的样子（`matrix-powers`）；变分法 `second-variation` 第 8 题，三对角矩阵最小的特征值（`eigenvalues`）。
+    - 以这一批为直接前置的已写小节，按批次 9 定的规矩查了它们的用法：
+      - 常微分方程 `phase-plane-linear` ← `complex-eigenvalues`：用迹和行列式给平衡点分类，$T=\operatorname{tr}A$，抛物线 $T^2=4D$ 上方的特征值是复数。所以迹（对角元之和）和二阶的特征多项式 $\lambda^2-(\operatorname{tr}A)\lambda+\det A$ 要在它链上的 `eigenvalues` 里讲到；`complex-eigenvalues` 要讲清实矩阵的复特征值成对出现，在适当的实基下矩阵是 $\begin{pmatrix}a&-b\\b&a\end{pmatrix}$，即旋转加伸缩。
+      - 常微分方程 `matrix-exponential` ← `jordan-form`：用到若尔当块 $\lambda I+N$、$N$ 幂零，$A=PJP^{-1}$（复特征值时 $P$、$J$ 是复矩阵）；第 5 题用到迹。
+      - 常微分方程 `eigen-solutions` ← `diagonalization`：用到「$n$ 个实特征值互不相同时特征向量线性无关、矩阵可以对角化」。
+      - 狭义相对论 `stress-energy-tensor` ← `tensor-product`：$T=T^{\mu\nu}e_\mu\otimes e_\nu$，换基时分量的两个指标各变换一次。所以 `tensor-product` 要讲到换基时分量怎样变。
+    - 电磁学：
+      - `coulomb-law:55` 和第 8 题：运动电荷之间的磁力（`lorentz-force`）；
+      - `conductors:32`：接在电池两极上的导线里有电场（`current-density`）；
+      - 狭义相对论 `covariant-maxwell:25`：电荷守恒的连续性方程 $\pdv\rho t+\divg\vb J=0$（`current-density`）；
+      - 批次 10 留的：`capacitors` 第 7 题，两个电容器相连损失一半能量和电阻无关（`rc-circuits` 可以算一遍）；
+      - 狭义相对论 `field-tensor`、分析力学 `charged-particle-lagrangian` 都用了洛伦兹力，记号要一致；磁偶极子要用的方位方向单位矢量写 $\uv\psi$（批次 10 定的方位角）。
+  - 以这一批为前置、还没写的别的小节：`dual-space` ← 微分几何「余切空间与 1 形式」；`similarity` ← 群表示论「群表示」；`diagonalization` ← 振动与波「耦合振子与简正模」；`tensor-product` ← 微分几何「张量场与指标记号」、群表示论「表示的张量积」、量子力学「角动量的耦合」；`complex-eigenvalues` ← 群表示论「舒尔引理」；`matrix-powers` ← 概率论「马尔可夫链」。
+  - 新增的跨领域前置（还是待写）：电磁学要牛顿力学的「圆周运动的动力学」，多变量微积分的「斯托克斯公式」「标量势与矢量势」；另有列过的「高斯公式（散度定理）」。线性代数另有列过的复分析「复数与复平面」。
+  - 动画：线性代数的特征值、对角化、复特征值、若尔当形、矩阵的幂都可以用 LinearMap2D（`eigen` 画特征向量的直线，`steps` 演示 $PDP^{-1}$）；电磁学的磁场用 vector-field-2d，带电粒子在磁场里的轨道要四个状态变量，相图组件画不了，画成 SVG（写代码的会话提的）。
+- 批次 11 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 12（写代码的会话定的）。
 - 几个领域同时写时（批次 1 定的）：每个写内容会话只改自己领域的目录（`content/<学科>/<领域>/`），审内容会话只写自己的报告和验算脚本；`docs/plan.md` 不由它们直接改，要写回的内容写进汇报，由写代码的会话统一写进去、单独提交，免得几个会话同时改一个文件。每个领域各自作为一个提交。另一个领域写到一半、全量构建报错时，写内容会话可以把那个领域换成已提交的版本，在临时副本上构建，确认自己的领域 0 个错误；看页面同理，用临时副本编译的内容另起一个服务，进度写临时仓库，不改仓库的 `dist/`（批次 2 定的）。test-serve 和 `npm run serve` 提供的是 `dist/` 里构建好的网站，不读 `generated/`：改完内容要重新 `vite build`，页面上才看得到（批次 6 时写内容会话提的）。临时副本的做法（批次 10 时写内容会话提的，写代码的会话核过）：用 `git archive HEAD` 导出已提交的版本，再拷进自己的改动；`node_modules` 不要复制，在副本里建一个指向仓库 `node_modules` 的目录联接（PowerShell 的 `New-Item -ItemType Junction`）；建网站时在副本目录里跑 `npx vite build --outDir <目录>`，或者把副本目录写成 `vite build` 的第一个参数（Vite 8 的根目录是位置参数）；删副本之前先单独删掉联接本身（PowerShell 的 `[System.IO.Directory]::Delete(<联接>, $false)`），否则删除命令会顺着联接把仓库的 `node_modules` 一起删掉。
 
 **分工**：一共三个 agent：写代码、写内容、审内容。开发台阶 8、9 由写内容 agent 和审内容 agent 执行。写内容和审内容必须是两个独立会话。
