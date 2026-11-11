@@ -662,6 +662,19 @@ math.analysis.completeness:
   - 给以后写 `lyapunov-stability`、`phase-plane-linear` 的会话留的话：`autonomous-equations`、`bifurcations` 里的「稳定」都指渐近稳定。写李雅普诺夫稳定性时，把「稳定」定义成附近出发的解都留在附近，并交代一维孤立的平衡点两者一样；平面上的中心、分析力学 `small-oscillations` 里的「稳定平衡点」是稳定而不渐近稳定的例子（批次 6 审查时提的）。
   - 已写的两处链接改成指向常微分方程的具体定理（写代码的会话定的）：数学分析 `exp-log-construction` 第 8 题指向 `existence-uniqueness#thm-picard-lindelof`，变分法 `jacobi-condition` 指向 `#thm-systems`。这两节退回 `written`，由常微分方程的审查会话复核。
 - 批次 6 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 7（写代码的会话定的）。
+- 批次 6 之后（你定的）：发批次 7，两对会话接着写各自的领域。
+- 批次 7：两个领域的第二批，做法和批次 6 一样。
+  - 常微分方程写二阶线性方程与拉普拉斯变换 9 节，按前置顺序：`second-order-linear`、`constant-coefficients`、`undetermined-coefficients`、`variation-of-parameters`、`series-solutions`、`frobenius`、`laplace-transform`、`laplace-ivp`、`convolution-impulse`。审查报告 `docs/reviews/batch-7-ode.md`。最后一批是线性方程组、相图与非线性系统 8 节。
+  - 狭义相对论写四维矢量与相对论动力学 8 节，按前置顺序：`four-vectors`、`twin-paradox`、`four-momentum`、`mass-energy`、`relativistic-collisions`、`four-force`、`relativistic-action`、`relativistic-doppler`。审查报告 `docs/reviews/batch-7-special-relativity.md`。最后一批是能量-动量张量、电磁场张量、麦克斯韦方程组的协变形式 3 节。
+  - 已写的小节有链接指向这一批，写的时候要接得住（写代码的会话查的）：
+    - 变分法 `jacobi-condition:27`：二阶线性方程的解组成二维的向量空间（`second-order-linear`）。
+    - 常微分方程 `linear-first-order` 第 8 题：常数变易法推广到高阶线性方程（`variation-of-parameters`）。
+    - 狭义相对论 `spacetime-interval:74` 和 `spacetime-diagrams`、`time-dilation` 的各一道题：指向双生子佯谬，用到「直线的固有时最长」和沿世界线累加固有时的算法（`twin-paradox`）。
+    - 狭义相对论 `spacetime-interval` 的两道题：间隔不变写成度规的形式（`four-vectors`）；固有加速度不变的运动的推导（`four-force`）。`velocity-transformation` 的一道题：同样的推力带来的速度变化越来越小（`four-force`）。
+  - 新增的跨领域前置（还是待写）：
+    - 常微分方程：线性代数的「抽象向量空间」，复分析的「欧拉公式与复指数」，单变量微积分的「狄拉克 δ 函数」；另有列过的「幂级数的逐项求导与逐项积分」「反常积分」「分部积分法」。
+    - 狭义相对论：牛顿力学的「碰撞」，振动与波的「多普勒效应」；另有列过的「二次型与正定矩阵」「双曲函数」；分析力学的「哈密顿原理」已经写好。
+- 批次 7 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 8（写代码的会话定的）。
 - 几个领域同时写时（批次 1 定的）：每个写内容会话只改自己领域的目录（`content/<学科>/<领域>/`），审内容会话只写自己的报告和验算脚本；`docs/plan.md` 不由它们直接改，要写回的内容写进汇报，由写代码的会话统一写进去、单独提交，免得几个会话同时改一个文件。每个领域各自作为一个提交。另一个领域写到一半、全量构建报错时，写内容会话可以把那个领域换成已提交的版本，在临时副本上构建，确认自己的领域 0 个错误；看页面同理，用临时副本编译的内容另起一个服务，进度写临时仓库，不改仓库的 `dist/`（批次 2 定的）。test-serve 和 `npm run serve` 提供的是 `dist/` 里构建好的网站，不读 `generated/`：改完内容要重新 `vite build`，页面上才看得到（批次 6 时写内容会话提的）。
 
 **分工**：一共三个 agent：写代码、写内容、审内容。开发台阶 8、9 由写内容 agent 和审内容 agent 执行。写内容和审内容必须是两个独立会话。
