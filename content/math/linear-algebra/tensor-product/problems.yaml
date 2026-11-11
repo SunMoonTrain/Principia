@@ -1,0 +1,131 @@
+- id: p1
+  tier: easy
+  statement: |
+    $P_2$是次数不超过$2$的多项式全体。求$\dim(P_2\otimes\R^2)$。
+  answer:
+    type: number
+    value: 6
+  hints:
+    - |
+      张量积的维数是两个空间维数之积。
+    - |
+      $\dim P_2=3$，基是$1,x,x^2$；$\dim\R^2=2$。
+    - |
+      基是$1\otimes\vb e_1,\ 1\otimes\vb e_2,\ x\otimes\vb e_1,\ \dots,\ x^2\otimes\vb e_2$，共$3\times2=6$个。
+  solution: |
+    $\dim(P_2\otimes\R^2)=3\times2=6$，填 `6`。
+
+- id: p2
+  tier: easy
+  statement: |
+    在$\R^2\otimes\R^2$里，求$(2,-1)\otimes(1,3)$在基$\vb e_i\otimes\vb e_j$下的系数，按$t_{11},t_{12},t_{21},t_{22}$的顺序填写。
+  answer:
+    type: tuple
+    value: [2, 6, -1, -3]
+  hints:
+    - |
+      $t_{ij}=x_iy_j$。
+    - |
+      $x=(2,-1)$，$y=(1,3)$，系数矩阵是一列乘一行。
+    - |
+      $t_{11}=2\cdot1=2$，$t_{12}=2\cdot3=6$，$t_{21}=-1\cdot1=-1$，$t_{22}=-1\cdot3=-3$。
+  solution: |
+    系数是$x_iy_j$，填 `2, 6, -1, -3`。
+
+- id: p3
+  tier: medium
+  statement: |
+    $f(\vb u,\vb v)=2u_1v_1+u_1v_2-3u_2v_2$是$\R^2\times\R^2$上的双线性函数，$F$是$\R^2\otimes\R^2$上使$F(\vb u\otimes\vb v)=f(\vb u,\vb v)$的线性函数。求$F(T)$，其中$T=\vb e_1\otimes\vb e_2+2\,\vb e_2\otimes\vb e_1-\vb e_2\otimes\vb e_2$。
+  answer:
+    type: number
+    value: 4
+  hints:
+    - |
+      $F$在基$\vb e_i\otimes\vb e_j$上的值是$f(\vb e_i,\vb e_j)$。
+    - |
+      $f(\vb e_1,\vb e_2)=1$，$f(\vb e_2,\vb e_1)=0$，$f(\vb e_2,\vb e_2)=-3$。
+    - |
+      $F(T)=f(\vb e_1,\vb e_2)+2f(\vb e_2,\vb e_1)-f(\vb e_2,\vb e_2)=1+0+3=4$。
+  solution: |
+    $F(T)=1+2\cdot0-(-3)=4$，填 `4`。
+
+- id: p4
+  tier: medium
+  statement: |
+    在$\R^2\otimes\R^2$里，两个因子都换成基$\vb b_1'=(1,1)$、$\vb b_2'=(0,1)$。把$\vb e_1\otimes\vb e_2$写成$\sum t'_{kl}\,\vb b_k'\otimes\vb b_l'$，按$t'_{11},t'_{12},t'_{21},t'_{22}$的顺序填写。
+  answer:
+    type: tuple
+    value: [0, 1, 0, -1]
+  hints:
+    - |
+      先把$\vb e_1$、$\vb e_2$用新基表示，再用双线性展开；也可以用$T'=QTQ\T$。
+    - |
+      $\vb e_2=\vb b_2'$，$\vb e_1=\vb b_1'-\vb b_2'$。
+    - |
+      $\vb e_1\otimes\vb e_2=(\vb b_1'-\vb b_2')\otimes\vb b_2'=\vb b_1'\otimes\vb b_2'-\vb b_2'\otimes\vb b_2'$，系数是$0,1,0,-1$。用公式：$Q=\begin{pmatrix}1&0\\-1&1\end{pmatrix}$，$T=\begin{pmatrix}0&1\\0&0\end{pmatrix}$，$QTQ\T=\begin{pmatrix}0&1\\0&-1\end{pmatrix}$。
+  solution: |
+    $\vb e_1\otimes\vb e_2=\vb b_1'\otimes\vb b_2'-\vb b_2'\otimes\vb b_2'$，填 `0, 1, 0, -1`。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明：在$V\otimes W$里，$\vb v\otimes\vb w=\vb 0$当且仅当$\vb v=\vb 0$或$\vb w=\vb 0$；再证明，若$\vb v\otimes\vb w=\vb v'\otimes\vb w'\ne\vb 0$，则有数$c\ne0$使$\vb v'=c\vb v$、$\vb w'=\frac1c\vb w$。
+  hints:
+    - |
+      看系数矩阵$\vb x\vb y\T$：它什么时候是零矩阵（zero matrix）？
+    - |
+      $\vb x\ne\vb 0$、$\vb y\ne\vb 0$时，某个$x_i\ne0$、$y_j\ne0$，$x_iy_j\ne0$。第二问比较两个系数矩阵的各列。
+    - |
+      $\vb v\otimes\vb w$的系数矩阵是$\vb x\vb y\T$，元素$x_iy_j$。若$\vb x$、$\vb y$都不是零向量（zero vector），取$x_i\ne0$、$y_j\ne0$，则$x_iy_j\ne0$；反过来，有一个是零向量，系数全是$0$。
+
+      若$\vb x\vb y\T=\vb x'(\vb y')\T\ne O$，取$y_j\ne0$，比较第$j$列：$y_j\vb x=y'_j\vb x'$，所以$\vb x'$是$\vb x$的非零倍数，记$\vb x'=c\vb x$。代回去得$\vb x\vb y\T=c\,\vb x(\vb y')\T$，比较$x_i\ne0$的那一行，$\vb y=c\vb y'$，即$\vb w'=\frac1c\vb w$。
+  reference: |
+    系数矩阵$\vb x\vb y\T$为零当且仅当$\vb x=\vb 0$或$\vb y=\vb 0$。$\vb x\vb y\T=\vb x'(\vb y')\T\ne O$时，比较一列得$\vb x'=c\vb x$，再比较一行得$\vb y'=\frac1c\vb y$。
+
+- id: p6
+  tier: hard
+  statement: |
+    $T\in V\otimes W$的系数矩阵的秩是$r$。证明$T$能写成$r$个形如$\vb v\otimes\vb w$的项之和，但不能写成更少的这种项之和。
+  hints:
+    - |
+      $\vb v\otimes\vb w$的系数矩阵的秩不超过$1$；矩阵相加，秩不超过各自的秩之和。
+    - |
+      能写成$r$项：用[秩与秩-零化度定理](lesson:math.linear-algebra.rank-nullity)第 8 题的$A=CR$。
+    - |
+      若$T$是$s$项之和，系数矩阵是$s$个秩不超过$1$的矩阵之和，它的列空间（column space）含在$s$个一维子空间（subspace）之和里，秩不超过$s$，所以$s\ge r$。
+
+      反过来，系数矩阵$A=CR$，$C$是$m\times r$、$R$是$r\times n$。记$C$的第$k$列是$\vb p_k$、$R$的第$k$行是$\vb q_k\T$，则$A=\sum_{k=1}^r\vb p_k\vb q_k\T$，每一项是一列乘一行，正是某个$\vb v\otimes\vb w$的系数矩阵，所以$T$是$r$个这样的项之和。
+  reference: |
+    每个$\vb v\otimes\vb w$的系数矩阵秩$\le1$，$s$项之和秩$\le s$，故至少要$r$项；由$A=CR$，$A$是$r$个「一列乘一行」之和，所以$r$项够用。
+
+- id: p7
+  tier: thinking
+  statement: |
+    $V=\R^2$，换基时向量的坐标按$\vb x'=Q\vb x$变。有人在每一组基下都把某个「张量」的系数取成$\begin{pmatrix}1&0\\0&0\end{pmatrix}$。这样一组数，能不能是$V\otimes V$里同一个张量在各组基下的系数？
+  hints:
+    - |
+      同一个张量在新基下的系数是$QTQ\T$。
+    - |
+      试$Q=\begin{pmatrix}1&0\\1&1\end{pmatrix}$。
+    - |
+      $Q\begin{pmatrix}1&0\\0&0\end{pmatrix}Q\T=\begin{pmatrix}1&1\\1&1\end{pmatrix}$，不是$\begin{pmatrix}1&0\\0&0\end{pmatrix}$。所以如果它在一组基下是$\begin{pmatrix}1&0\\0&0\end{pmatrix}$，换到这组基以后就一定变了，不可能处处都是同一组数。
+
+      一个张量的各组系数之间必须按$T'=QTQ\T$联系起来，随便在每组基下各定一组数，一般不是张量。[能量-动量张量](lesson:physics.special-relativity.stress-energy-tensor)里的边界情况说的正是这件事，那里换基的矩阵是洛伦兹变换的矩阵。
+  reference: |
+    不能。$Q=\begin{pmatrix}1&0\\1&1\end{pmatrix}$时$Q\begin{pmatrix}1&0\\0&0\end{pmatrix}Q\T=\begin{pmatrix}1&1\\1&1\end{pmatrix}$，同一个张量换基后系数会变；各组系数必须满足$T'=QTQ\T$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    对$\vb w\in W$和$f\in V^*$，让$\vb w\otimes f$对应线性映射$\vb v\mapsto f(\vb v)\,\vb w$，再按线性扩充到整个$W\otimes V^*$。为什么这样得到$W\otimes V^*$和「$V$到$W$的全体线性映射」之间的同构？它的系数矩阵和映射的矩阵是什么关系？
+  hints:
+    - |
+      $(\vb w,f)\mapsto\bigl(\vb v\mapsto f(\vb v)\vb w\bigr)$对$\vb w$、$f$都是线性的，可以用张量积把双线性变成线性的那条定理。
+    - |
+      取$V$的基、它的对偶基（dual basis）$f_j$，和$W$的基$\vb c_i$。$\vb c_i\otimes f_j$对应的映射把$\vb b_j$送到$\vb c_i$，把别的基向量送到$\vb 0$。
+    - |
+      由定理，有唯一的线性映射$\Phi$，从$W\otimes V^*$到「$V$到$W$的线性映射」组成的空间。$\Phi(\vb c_i\otimes f_j)$的矩阵只在第$i$行第$j$列是$1$，这些矩阵是全体$m\times n$矩阵的一组基；所以$\Phi$把一组基送到一组基，是同构，两边都是$mn$维。
+
+      $T=\sum t_{ij}\,\vb c_i\otimes f_j$对应的映射的矩阵正是$(t_{ij})$：矩阵就是$W\otimes V^*$里的张量。换基时它的行指标按向量变、列指标按余向量（covector）反着变，这就是矩阵换基时两边各乘一个矩阵的来历。
+  reference: |
+    $\Phi(\vb w\otimes f)=(\vb v\mapsto f(\vb v)\vb w)$由双线性扩充成线性映射；$\Phi(\vb c_i\otimes f_j)$是只在$(i,j)$处为$1$的矩阵，基对应基，所以是同构，张量的系数矩阵就是映射的矩阵。

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 370" width="640" height="370" font-size="13">
+  <!-- 原点 (260, 260)，一个单位 60 像素；b1 = (1,1)、b2 = (1,2)；f1 = 2x - y 的等值线 f1 = 0、1 平行于 b2，f2 = -x + y 的等值线 f2 = 0、1 平行于 b1 -->
+  <line x1="245" y1="290" x2="353" y2="74" style="stroke: var(--good, #0f8a5f)" stroke-width="1.8" stroke-dasharray="6 4" />
+  <line x1="275" y1="290" x2="407" y2="26" style="stroke: var(--good, #0f8a5f)" stroke-width="1.8" stroke-dasharray="6 4" />
+  <line x1="230" y1="290" x2="410" y2="110" style="stroke: var(--warn, #a8661a)" stroke-width="1.8" stroke-dasharray="6 4" />
+  <line x1="230" y1="230" x2="437" y2="23" style="stroke: var(--warn, #a8661a)" stroke-width="1.8" stroke-dasharray="6 4" />
+  <line x1="260" y1="260" x2="313.64" y2="206.36" style="stroke: var(--accent, #2563eb)" stroke-width="2.4" />
+  <path d="M 320 200 L 316.82 209.55 L 310.45 203.18 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="260" y1="260" x2="315.98" y2="148.05" style="stroke: var(--accent, #2563eb)" stroke-width="2.4" />
+  <path d="M 320 140 L 320 150.06 L 311.95 146.04 Z" style="fill: var(--accent, #2563eb)" />
+  <circle cx="260" cy="260" r="2.8" fill="currentColor" />
+  <text x="246" y="266" text-anchor="end" fill="currentColor"><tspan font-style="italic">O</tspan></text>
+  <text x="330" y="216" font-size="14" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-weight="bold">b</tspan><tspan baseline-shift="sub" font-size="10">1</tspan></text>
+  <text x="298" y="136" text-anchor="end" font-size="14" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-weight="bold">b</tspan><tspan baseline-shift="sub" font-size="10">2</tspan></text>
+  <text x="330" y="100" text-anchor="end" style="fill: var(--good, #0f8a5f)" fill="currentColor"><tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10">1</tspan> = 0</text>
+  <text x="305" y="254" style="fill: var(--good, #0f8a5f)" fill="currentColor"><tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10">1</tspan> = 1</text>
+  <text x="395" y="154" style="fill: var(--warn, #a8661a)" fill="currentColor"><tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10">2</tspan> = 0</text>
+  <text x="252" y="178" text-anchor="end" style="fill: var(--warn, #a8661a)" fill="currentColor"><tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10">2</tspan> = 1</text>
+  <text x="320" y="312" text-anchor="middle" fill="currentColor"><tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10">1</tspan>(<tspan font-weight="bold">b</tspan><tspan baseline-shift="sub" font-size="10">1</tspan>) = 1，<tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10">1</tspan>(<tspan font-weight="bold">b</tspan><tspan baseline-shift="sub" font-size="10">2</tspan>) = 0</text>
+  <text x="320" y="344" text-anchor="middle" fill="currentColor"><tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10">2</tspan>(<tspan font-weight="bold">b</tspan><tspan baseline-shift="sub" font-size="10">1</tspan>) = 0，<tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10">2</tspan>(<tspan font-weight="bold">b</tspan><tspan baseline-shift="sub" font-size="10">2</tspan>) = 1</text>
+</svg>

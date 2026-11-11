@@ -185,3 +185,71 @@ export function permDet(A: Mat): number {
   go(0);
   return total;
 }
+
+/** 方阵的迹：主对角元之和。 */
+export const trace = (A: Mat): number => A.reduce((s, row, i) => s + row[i], 0);
+
+/**
+ * det(λI − A) 的系数 [c_0, c_1, …, c_n]（c_n = 1），用法捷耶夫-勒维耶递推：
+ * M_1 = I，c_{n−k} = −tr(A M_k)/k，M_{k+1} = A M_k + c_{n−k} I。不展开行列式。
+ */
+export function charPoly(A: Mat): number[] {
+  const n = A.length;
+  const c = new Array<number>(n + 1).fill(0);
+  c[n] = 1;
+  let M = identity(n);
+  for (let k = 1; k <= n; k++) {
+    const AM = matMul(A, M);
+    c[n - k] = -trace(AM) / k;
+    M = AM.map((row, i) => row.map((x, j) => x + (i === j ? c[n - k] : 0)));
+  }
+  return c;
+}
+
+/** 复数写成 [实部, 虚部]。 */
+export type Cx = [number, number];
+export const cadd = (a: Cx, b: Cx): Cx => [a[0] + b[0], a[1] + b[1]];
+export const csub = (a: Cx, b: Cx): Cx => [a[0] - b[0], a[1] - b[1]];
+export const cmul = (a: Cx, b: Cx): Cx => [a[0] * b[0] - a[1] * b[1], a[0] * b[1] + a[1] * b[0]];
+export function cdiv(a: Cx, b: Cx): Cx {
+  const d = b[0] * b[0] + b[1] * b[1];
+  return [(a[0] * b[0] + a[1] * b[1]) / d, (a[1] * b[0] - a[0] * b[1]) / d];
+}
+export const cabs = (a: Cx): number => Math.hypot(a[0], a[1]);
+
+/** 实系数多项式 Σ c_k z^k 的全部复根（杜朗-克尔纳迭代，不用求根公式）。 */
+export function polyRoots(c: number[]): Cx[] {
+  const n = c.length - 1;
+  const monic = c.map((x) => x / c[n]);
+  const value = (z: Cx): Cx => monic.reduceRight<Cx>((s, a) => cadd(cmul(s, z), [a, 0]), [0, 0]);
+  let z: Cx[] = Array.from({ length: n }, (_, k) => {
+    const r = 0.4 + 0.9 * k;
+    return [r * Math.cos(0.7 + k), r * Math.sin(0.7 + k)];
+  });
+  for (let it = 0; it < 500; it++) {
+    z = z.map((zi, i) => {
+      let den: Cx = [1, 0];
+      z.forEach((zj, j) => {
+        if (j !== i) den = cmul(den, csub(zi, zj));
+      });
+      return csub(zi, cdiv(value(zi), den));
+    });
+  }
+  return z;
+}
+
+/** 多项式按系数 [a_0, a_1, …] 表示。 */
+export const polyEval = (p: number[], x: number): number => p.reduce((s, a, i) => s + a * x ** i, 0);
+export const polyAdd = (p: number[], q: number[]): number[] => Array.from({ length: Math.max(p.length, q.length) }, (_, i) => (p[i] ?? 0) + (q[i] ?? 0));
+export const polyScale = (c: number, p: number[]): number[] => p.map((a) => c * a);
+export function polyMul(p: number[], q: number[]): number[] {
+  const r = new Array<number>(p.length + q.length - 1).fill(0);
+  p.forEach((a, i) => q.forEach((b, j) => (r[i + j] += a * b)));
+  return r;
+}
+export const polyDeriv = (p: number[]): number[] => (p.length > 1 ? p.slice(1).map((a, i) => (i + 1) * a) : [0]);
+/** 补零或截到 n 个系数；截掉的系数不为零时抛错（次数超了）。 */
+export function polyPad(p: number[], n: number): number[] {
+  if (p.slice(n).some((a) => Math.abs(a) > 1e-12)) throw new Error('多项式次数超出');
+  return Array.from({ length: n }, (_, i) => p[i] ?? 0);
+}

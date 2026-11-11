@@ -469,7 +469,7 @@ glossary:
     en: |
       multilinear
     brief: |
-      固定其余各列时，对每一列都是线性的；行列式的第一条性质。
+      对每个变量都是线性的：固定其余变量，对这一个变量是线性映射；行列式对它的各列就是这样。
     definedIn: math.linear-algebra.determinant
     anchor: def-determinant
   - id: math.linear-algebra.alternating
@@ -580,6 +580,15 @@ glossary:
       元素能相加、能乘以数，并满足八条运算律的集合，例如$\R^n$、多项式全体、函数全体。
     definedIn: math.linear-algebra.vector-spaces
     anchor: def-vector-space
+  - id: math.linear-algebra.finite-dimensional
+    zh: |
+      有限维
+    en: |
+      finite-dimensional
+    brief: |
+      能由有限个向量生成的向量空间叫有限维的，维数是它的一组基所含向量的个数；否则叫无限维的。
+    definedIn: math.linear-algebra.vector-spaces
+    anchor: def-finite-dimensional
   - id: math.linear-algebra.change-of-basis-matrix
     zh: |
       基变换矩阵
@@ -616,3 +625,246 @@ glossary:
       $m\times n$矩阵满足$\rank A+\dim N(A)=n$：秩与零化度之和等于列数。
     definedIn: math.linear-algebra.rank-nullity
     anchor: thm-rank-nullity
+  - id: math.linear-algebra.eigenvalue
+    zh: |
+      特征值
+    en: |
+      eigenvalue
+    brief: |
+      使$A\vb v=\lambda\vb v$有非零解$\vb v$的数$\lambda$；它是特征多项式$\det(A-\lambda I)$的根。
+    definedIn: math.linear-algebra.eigenvalues
+    anchor: def-eigen
+  - id: math.linear-algebra.eigenvector
+    zh: |
+      特征向量
+    en: |
+      eigenvector
+    brief: |
+      满足$A\vb v=\lambda\vb v$的非零向量$\vb v$：$A$把它变成原来的$\lambda$倍，不离开它所在的直线。
+    definedIn: math.linear-algebra.eigenvalues
+    anchor: def-eigen
+  - id: math.linear-algebra.characteristic-polynomial
+    zh: |
+      特征多项式
+    en: |
+      characteristic polynomial
+    brief: |
+      $n$阶方阵$A$的$\det(A-\lambda I)$，是$\lambda$的$n$次多项式，它的根就是$A$的特征值。
+    definedIn: math.linear-algebra.eigenvalues
+    anchor: def-characteristic-polynomial
+  - id: math.linear-algebra.eigenspace
+    zh: |
+      特征空间
+    en: |
+      eigenspace
+    brief: |
+      属于特征值$\lambda$的特征向量连同$\vb 0$组成的子空间，即零空间$N(A-\lambda I)$。
+    definedIn: math.linear-algebra.eigenvalues
+    anchor: def-characteristic-polynomial
+  - id: math.linear-algebra.trace
+    zh: |
+      迹
+    en: |
+      trace
+    brief: |
+      方阵主对角线上的元素之和，记作$\tr A$；它等于全部特征值（按重数计）之和。
+    definedIn: math.linear-algebra.eigenvalues
+    anchor: def-trace
+  - id: math.linear-algebra.algebraic-multiplicity
+    zh: |
+      代数重数
+    en: |
+      algebraic multiplicity
+    brief: |
+      特征值作为特征多项式的根的重数。
+    definedIn: math.linear-algebra.eigenvalues
+    anchor: def-multiplicity
+  - id: math.linear-algebra.geometric-multiplicity
+    zh: |
+      几何重数
+    en: |
+      geometric multiplicity
+    brief: |
+      特征值的特征空间的维数，即属于它的线性无关的特征向量最多有几个。
+    definedIn: math.linear-algebra.eigenvalues
+    anchor: def-multiplicity
+  - id: math.linear-algebra.linear-map
+    zh: |
+      线性映射
+    en: |
+      linear map
+    brief: |
+      向量空间$V$到$W$的对应$T$，满足$T(\vb u+\vb v)=T(\vb u)+T(\vb v)$、$T(c\vb u)=cT(\vb u)$。
+    definedIn: math.linear-algebra.kernel-image
+    anchor: def-linear-map
+  - id: math.linear-algebra.image
+    zh: |
+      像
+    en: |
+      image
+    brief: |
+      向量$\vb x$在线性变换$T$下对应的向量$T(\vb x)$；一个集合里各向量的像，组成这个集合的像；整个空间的像记作$\im T$。
+    definedIn: math.linear-algebra.linear-maps
+    anchor: def-linear-transformation
+  - id: math.linear-algebra.kernel
+    zh: |
+      核
+    en: |
+      kernel
+    brief: |
+      线性映射$T$送到$\vb 0$的向量全体$\ker T$，是定义域的子空间；$\vb x\mapsto A\vb x$的核就是$N(A)$。
+    definedIn: math.linear-algebra.kernel-image
+    anchor: def-kernel-image
+  - id: math.linear-algebra.injective
+    zh: |
+      单射
+    en: |
+      injective
+    brief: |
+      不同的向量总有不同的像；线性映射是单射，当且仅当核只有$\vb 0$。
+    definedIn: math.linear-algebra.kernel-image
+    anchor: def-injective-surjective
+  - id: math.linear-algebra.surjective
+    zh: |
+      满射
+    en: |
+      surjective
+    brief: |
+      目标空间的每个向量都是某个向量的像，即$\im T$是整个目标空间。
+    definedIn: math.linear-algebra.kernel-image
+    anchor: def-injective-surjective
+  - id: math.linear-algebra.dimension-formula
+    zh: |
+      维数公式
+    en: |
+      dimension theorem
+    brief: |
+      $V$有限维时，线性映射$T:V\to W$满足$\dim\ker T+\dim\im T=\dim V$；对矩阵，这就是秩-零化度定理。
+    definedIn: math.linear-algebra.kernel-image
+    anchor: thm-dimension-formula
+  - id: math.linear-algebra.isomorphism
+    zh: |
+      同构
+    en: |
+      isomorphism
+    brief: |
+      两个向量空间之间保持加法和数乘的一一对应，例如$\vb v\mapsto[\vb v]_{\mathcal B}$。
+    definedIn: math.linear-algebra.vector-spaces
+    anchor: thm-coordinates-iso
+  - id: math.linear-algebra.linear-functional
+    zh: |
+      线性函数
+    en: |
+      linear functional
+    brief: |
+      向量空间$V$到$\R$的线性映射；在$\R^n$上就是$a_1x_1+\dots+a_nx_n$，相当于一个行向量。
+    definedIn: math.linear-algebra.dual-space
+    anchor: def-dual-space
+  - id: math.linear-algebra.covector
+    zh: |
+      余向量
+    en: |
+      covector
+    brief: |
+      线性函数的另一个名字；换基时它的坐标和向量的坐标反着变。
+    definedIn: math.linear-algebra.dual-space
+    anchor: def-dual-space
+  - id: math.linear-algebra.dual-space
+    zh: |
+      对偶空间
+    en: |
+      dual space
+    brief: |
+      $V$上全体线性函数组成的向量空间$V^*$；$V$是$n$维时，它也是$n$维。
+    definedIn: math.linear-algebra.dual-space
+    anchor: def-dual-space
+  - id: math.linear-algebra.dual-basis
+    zh: |
+      对偶基
+    en: |
+      dual basis
+    brief: |
+      基$\vb b_1,\dots,\vb b_n$的对偶基$f_1,\dots,f_n$：$f_i$取向量的第$i$个坐标，所以$f_i(\vb b_j)$在$i=j$时为$1$、否则为$0$。
+    definedIn: math.linear-algebra.dual-space
+    anchor: def-dual-basis
+  - id: math.linear-algebra.linear-operator
+    zh: |
+      线性算子
+    en: |
+      linear operator
+    brief: |
+      向量空间$V$到它自己的线性映射；取一组基$\mathcal B$，它就对应一个方阵$[T]_{\mathcal B}$。
+    definedIn: math.linear-algebra.similarity
+    anchor: def-operator-matrix
+  - id: math.linear-algebra.similar
+    zh: |
+      相似
+    en: |
+      similar
+    brief: |
+      有可逆矩阵$P$使$B=P^{-1}AP$时，说$A$与$B$相似：它们是同一个线性算子在两组基下的矩阵。
+    definedIn: math.linear-algebra.similarity
+    anchor: def-similar
+  - id: math.linear-algebra.diagonalization
+    zh: |
+      对角化
+    en: |
+      diagonalization
+    brief: |
+      找可逆矩阵$P$和对角矩阵$D$使$A=PDP^{-1}$；能做到，当且仅当$A$有$n$个线性无关的特征向量。
+    definedIn: math.linear-algebra.diagonalization
+    anchor: def-diagonalizable
+  - id: math.linear-algebra.bilinear-map
+    zh: |
+      双线性映射
+    en: |
+      bilinear map
+    brief: |
+      $f:V\times W\to U$，固定一个变量时对另一个变量是线性映射；它由各对基向量上的值决定。
+    definedIn: math.linear-algebra.tensor-product
+    anchor: def-bilinear
+  - id: math.linear-algebra.tensor-product
+    zh: |
+      张量积
+    en: |
+      tensor product
+    brief: |
+      以$\vb b_i\otimes\vb c_j$为基的$mn$维空间$V\otimes W$；$V\times W$上的双线性映射就是它上面的线性映射。
+    definedIn: math.linear-algebra.tensor-product
+    anchor: def-tensor-product
+  - id: math.linear-algebra.jordan-block
+    zh: |
+      若尔当块
+    en: |
+      Jordan block
+    brief: |
+      主对角线上都是$\lambda$、紧挨着它上方的斜线上都是$1$、其余为$0$的方阵$J_m(\lambda)=\lambda I+N$。
+    definedIn: math.linear-algebra.jordan-form
+    anchor: def-jordan-block
+  - id: math.linear-algebra.nilpotent-matrix
+    zh: |
+      幂零矩阵
+    en: |
+      nilpotent matrix
+    brief: |
+      某个正整数次幂是零矩阵的方阵，例如若尔当块里的$N$；它的特征值只有$0$。
+    definedIn: math.linear-algebra.jordan-form
+    anchor: def-nilpotent
+  - id: math.linear-algebra.generalized-eigenvector
+    zh: |
+      广义特征向量
+    en: |
+      generalized eigenvector
+    brief: |
+      满足$(A-\lambda I)^k\vb w=\vb 0$的非零向量$\vb w$；特征向量不够时，用它补成一组基。
+    definedIn: math.linear-algebra.jordan-form
+    anchor: def-generalized-eigenvector
+  - id: math.linear-algebra.jordan-canonical-form
+    zh: |
+      若尔当标准形
+    en: |
+      Jordan canonical form
+    brief: |
+      和$A$相似、由若尔当块沿主对角线拼成的矩阵$J$，$A=PJP^{-1}$；不计各块次序时唯一。
+    definedIn: math.linear-algebra.jordan-form
+    anchor: thm-jordan

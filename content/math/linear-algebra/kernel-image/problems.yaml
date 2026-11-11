@@ -1,0 +1,141 @@
+- id: p1
+  tier: easy
+  statement: |
+    线性映射$T:\R^5\to\R^3$是满射。求$\dim\ker T$。
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      满射说明$T$的像是什么？
+    - |
+      像是整个$\R^3$，$\dim\im T=3$。
+    - |
+      由维数公式，$\dim\ker T=5-3=2$。
+  solution: |
+    $\dim\ker T=\dim\R^5-\dim\im T=5-3=2$，填 `2`。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些是线性映射？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $P_2\to P_3$，$p\mapsto xp$
+      - |
+        $P_2\to\R$，$p\mapsto p(0)\,p(1)$
+      - |
+        $P_2\to\R$，$p\mapsto p(2)-p(-2)$
+      - |
+        $\R^2\to\R^2$，$(x,y)\mapsto(xy,0)$
+      - |
+        $P_2\to\R^2$，$p\mapsto\bigl(p'(0),p(1)\bigr)$
+    value: [1, 3, 5]
+  hints:
+    - |
+      逐个检查$T(\vb u+\vb v)=T(\vb u)+T(\vb v)$和$T(c\vb u)=cT(\vb u)$；不满足的，找一个具体的反例。
+    - |
+      两个量相乘的往往不是线性的：把$p$换成$2p$试试。
+    - |
+      选项 1：$x(p+q)=xp+xq$，$x(cp)=c\,xp$。选项 3、5：取值、求导都保持加法和数乘，相减、并排也一样。选项 2：$2p$的值是$4p(0)p(1)$，不是$2p(0)p(1)$；选项 4：$(2,2)$送到$(4,0)$，不是$(1,1)$的像$(1,0)$的$2$倍。
+  solution: |
+    选项 1、3、5 是线性映射；2、4 里两个量相乘，不满足$T(c\vb u)=cT(\vb u)$。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$T:P_3\to P_3$，$T(p)=xp'-p$。求$\dim\im T$。
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      算基$1,x,x^2,x^3$的像。
+    - |
+      $T(x^k)=x\cdot kx^{k-1}-x^k=(k-1)x^k$。
+    - |
+      $T(1)=-1$，$T(x)=0$，$T(x^2)=x^2$，$T(x^3)=2x^3$，所以$\im T$由$1$、$x^2$、$x^3$生成，维数是$3$。核由$x$生成，$1+3=4$，和维数公式对得上。
+  solution: |
+    $T(x^k)=(k-1)x^k$，像由$1,x^2,x^3$生成，填 `3`。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$T:P_2\to\R^2$，$T(p)=\bigl(p(1),p'(0)\bigr)$。$\ker T$由一个形如$a+bx+x^2$的多项式生成，按顺序填写$a$、$b$。
+  answer:
+    type: tuple
+    value: [-1, 0]
+  hints:
+    - |
+      设$p=a+bx+cx^2$，写出$p(1)$和$p'(0)$。
+    - |
+      $p(1)=a+b+c$，$p'(0)=b$，两者都要等于$0$。
+    - |
+      $b=0$，$a=-c$。取$c=1$得$p=-1+x^2$；验算：$p(1)=0$，$p'(0)=0$。$T(1)=(1,0)$，$T(x-1)=(0,1)$，$T$是满射，核的维数是$3-2=1$，这一个多项式就生成了核。
+  solution: |
+    由$a+b+c=0$、$b=0$得核由$x^2-1$生成，填 `-1, 0`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$T:V\to W$是线性映射。证明：$T$是单射，当且仅当$T$把$V$中任何一组线性无关（linearly independent）的向量都送到一组线性无关的向量。
+  hints:
+    - |
+      「仅当」：设$c_1T(\vb v_1)+\dots+c_kT(\vb v_k)=\vb 0$，把左边写成一个向量的像。
+    - |
+      「当」：如果$T$不是单射，核里有一个非零向量$\vb k$，看只含它的那一组。
+    - |
+      若$T$是单射，$\vb v_1,\dots,\vb v_k$线性无关，且$c_1T(\vb v_1)+\dots+c_kT(\vb v_k)=\vb 0$，则$T(c_1\vb v_1+\dots+c_k\vb v_k)=\vb 0$，组合落在核里，只能是$\vb 0$；由线性无关，各$c_i=0$。
+
+      反过来，若$T$不是单射，由[单射看核](lesson:math.linear-algebra.kernel-image#thm-injective-kernel)，核里有非零向量$\vb k$。只含$\vb k$的一组线性无关，它的像却只有$\vb 0$，线性相关（linearly dependent），与假设矛盾。
+  reference: |
+    单射时，$\sum c_iT(\vb v_i)=T(\sum c_i\vb v_i)=\vb 0$推出$\sum c_i\vb v_i=\vb 0$，再由线性无关得$c_i=0$。不是单射时，核里的非零$\vb k$线性无关，像$\vb 0$却线性相关。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$V$是$n$维向量空间，线性映射$T:V\to V$满足：对每个$\vb v$都有$T\bigl(T(\vb v)\bigr)=\vb 0$。证明$\im T\subseteq\ker T$，并由此说明$\dim\im T\le\frac n2$。
+  hints:
+    - |
+      像里的向量都形如$T(\vb v)$，把$T$再作用一次。
+    - |
+      子空间包含在另一个子空间里时，维数不超过它的维数；再用维数公式。
+    - |
+      $\im T$里的向量$\vb w=T(\vb v)$满足$T(\vb w)=T\bigl(T(\vb v)\bigr)=\vb 0$，所以$\vb w\in\ker T$，$\im T\subseteq\ker T$，于是$\dim\im T\le\dim\ker T$。由维数公式$\dim\ker T+\dim\im T=n$，得$2\dim\im T\le n$。例 2 的$p\mapsto p''$在$P_3$上作用两次得到四阶导数，就是零，那里$\dim\im T=2=\frac42$，等号成立。
+  reference: |
+    $T(T(\vb v))=\vb 0$说明像里的向量都在核里，$\dim\im T\le\dim\ker T=n-\dim\im T$，所以$\dim\im T\le\frac n2$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    设$x_0,x_1,\dots,x_n$是$n+1$个两两不同的数，$E:P_n\to\R^{n+1}$，$E(p)=\bigl(p(x_0),p(x_1),\dots,p(x_n)\bigr)$。为什么对任意给定的$n+1$个数$y_0,\dots,y_n$，恰好有一个次数不超过$n$的多项式在$x_i$处取值$y_i$？如果有两个$x_i$相同，会怎样？
+  hints:
+    - |
+      先看$E$的核：一个次数不超过$n$的多项式，在$n+1$个不同的点上都等于$0$，会是什么？
+    - |
+      $\dim P_n=n+1=\dim\R^{n+1}$，单射和满射是一回事。
+    - |
+      次数不超过$n$的非零多项式最多有$n$个根，所以$\ker E=\{\vb 0\}$，$E$是单射；两边维数都是$n+1$，由[维数相同时，单射就是满射](lesson:math.linear-algebra.kernel-image#thm-isomorphism)，$E$也是满射，是同构。满射说的是这样的多项式存在，单射说的是它唯一，这就是拉格朗日插值（Lagrange interpolation）的存在唯一性。
+
+      若$x_0=x_1$，$E$的像里每个向量的前两个分量（component）都相等，像不是整个$\R^{n+1}$：给定的$y_0\ne y_1$时没有解。由维数公式，这时核也不只有零，满足条件的多项式即使存在，也不唯一。
+  reference: |
+    非零的、次数不超过$n$的多项式最多$n$个根，$\ker E=\{\vb 0\}$；维数都是$n+1$，所以$E$是同构：满足条件的多项式存在且唯一。两点重合时像少了一维，核多了一维，解可能不存在，存在也不唯一。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$P$是全体实系数多项式组成的向量空间，次数不限。$D(p)=p'$，$M(p)=xp$都是$P\to P$的线性映射。它们各是不是单射、满射？这和「维数相同时，单射就是满射」矛盾吗？
+  hints:
+    - |
+      $D$的核是什么？每个多项式都是某个多项式的导数吗？
+    - |
+      $xp=0$只能是$p=0$；常数$1$能写成$xp$吗？
+    - |
+      $D$把常数送到$0$，不是单射；每个多项式都是它的一个原函数的导数，$D$是满射。$M$的核只有$0$，是单射；$1$不是任何$xp$，$M$不是满射。
+
+      不矛盾：那个定理要求维数有限，而$P$里$1,x,x^2,\dots$对每个$n$都线性无关，是无限维（infinite-dimensional）的，维数公式用不上。函数空间里也常这样：微分方程（differential equation）$y''+y=0$的解，正是线性映射$L(y)=y''+y$的核，以后在[二阶线性方程的解的结构](lesson:math.ode.second-order-linear)里会看到它是二维的。
+  reference: |
+    $D$是满射、不是单射；$M$是单射、不是满射。不矛盾，因为$P$是无限维的，「维数相同时单射就是满射」只对有限维成立。

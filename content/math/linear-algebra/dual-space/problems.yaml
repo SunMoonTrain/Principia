@@ -1,0 +1,131 @@
+- id: p1
+  tier: easy
+  statement: |
+    $\R^2$的基$\vb b_1=(1,0)$、$\vb b_2=(2,1)$的对偶基是$f_1$、$f_2$。$f_1(x,y)=ax+by$，按顺序填写$a$、$b$。
+  answer:
+    type: tuple
+    value: [1, -2]
+  hints:
+    - |
+      要$f_1(\vb b_1)=1$、$f_1(\vb b_2)=0$。
+    - |
+      $f_1(1,0)=a=1$，$f_1(2,1)=2a+b=0$。
+    - |
+      $a=1$，$b=-2$，$f_1=x-2y$。也可以求$P_{\mathcal B}^{-1}=\begin{pmatrix}1&-2\\0&1\end{pmatrix}$，它的第一行就是$f_1$。
+  solution: |
+    由$f_1(\vb b_1)=1$、$f_1(\vb b_2)=0$得$a=1$、$b=-2$，填 `1, -2`。
+
+- id: p2
+  tier: easy
+  statement: |
+    $f$是$\R^3$上的线性函数，$f(1,0,0)=4$，$f(0,1,0)=1$，$f(0,0,1)=-2$。求$f(2,-1,3)$。
+  answer:
+    type: number
+    value: 1
+  hints:
+    - |
+      $(2,-1,3)=2\vb e_1-\vb e_2+3\vb e_3$，线性函数保持这个组合。
+    - |
+      $f(2,-1,3)=2f(\vb e_1)-f(\vb e_2)+3f(\vb e_3)$。
+    - |
+      $2\cdot4-1+3\cdot(-2)=8-1-6=1$。
+  solution: |
+    $f(x,y,z)=4x+y-2z$，$f(2,-1,3)=8-1-6=1$，填 `1`。
+
+- id: p3
+  tier: medium
+  statement: |
+    在$P_2$上，$f(p)=p(1)+p'(0)$。设$f_0,f_1,f_2$是基$1,x,x^2$的对偶基，$f=af_0+bf_1+cf_2$。按顺序填写$a$、$b$、$c$。
+  answer:
+    type: tuple
+    value: [1, 2, 1]
+  hints:
+    - |
+      由对偶基是一组基那条定理，系数就是$f$在三个基向量上的值。
+    - |
+      $a=f(1)$，$b=f(x)$，$c=f(x^2)$。
+    - |
+      $f(1)=1+0=1$，$f(x)=1+1=2$，$f(x^2)=1+0=1$，所以$(a,b,c)=(1,2,1)$。
+  solution: |
+    系数是$f$在$1$、$x$、$x^2$上的值，填 `1, 2, 1`。
+
+- id: p4
+  tier: medium
+  statement: |
+    $\R^2$的基$\mathcal B$是$\vb b_1=(1,0)$、$\vb b_2=(1,1)$，线性函数$f$满足$[f]_{\mathcal B}=(2,-1)$。另一组基$\mathcal C$是$\vb c_1=(1,1)$、$\vb c_2=(0,1)$。求$[f]_{\mathcal C}$，按顺序填写两个数。
+  answer:
+    type: tuple
+    value: [-1, -3]
+  hints:
+    - |
+      $[f]_{\mathcal C}=[f]_{\mathcal B}P_{\mathcal B\leftarrow\mathcal C}$，先写出$\vb c_1$、$\vb c_2$在$\mathcal B$下的坐标。
+    - |
+      $\vb c_1=\vb b_2$，$\vb c_2=\vb b_2-\vb b_1$，所以$P_{\mathcal B\leftarrow\mathcal C}=\begin{pmatrix}0&-1\\1&1\end{pmatrix}$。
+    - |
+      $(2,-1)\begin{pmatrix}0&-1\\1&1\end{pmatrix}=(-1,-3)$。验算：$f(\vb c_1)=f(\vb b_2)=-1$，$f(\vb c_2)=f(\vb b_2)-f(\vb b_1)=-1-2=-3$。
+  solution: |
+    $P_{\mathcal B\leftarrow\mathcal C}=\begin{pmatrix}0&-1\\1&1\end{pmatrix}$，$[f]_{\mathcal C}=(2,-1)P_{\mathcal B\leftarrow\mathcal C}=(-1,-3)$，填 `-1, -3`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$T:V\to W$是线性映射。对$W$上的线性函数$g$，令$T^*(g)=g\circ T$，即$T^*(g)(\vb v)=g\bigl(T(\vb v)\bigr)$。证明$T^*$是$W^*$到$V^*$的线性映射；再证明：取$V$的基$\mathcal B$、$W$的基$\mathcal C$和它们的对偶基，若以$[T(\vb b_j)]_{\mathcal C}$为各列的矩阵是$A$，则$T^*$对应的矩阵是$A$的转置（transpose）$A\T$。
+  hints:
+    - |
+      $g\circ T$是两个线性映射接起来，还是线性的；$T^*(g_1+g_2)$在每个$\vb v$上的值是多少？
+    - |
+      设$\mathcal C$的对偶基是$g_1,\dots,g_m$，$\mathcal B$的对偶基是$f_1,\dots,f_n$。$T^*(g_i)$在对偶基$f_j$下的系数是$T^*(g_i)(\vb b_j)=g_i\bigl(T(\vb b_j)\bigr)$。
+    - |
+      $T^*(g_1+g_2)(\vb v)=(g_1+g_2)(T\vb v)=g_1(T\vb v)+g_2(T\vb v)$，数乘同理，所以$T^*$是线性的。
+
+      $g_i\bigl(T(\vb b_j)\bigr)$是$T(\vb b_j)$在$\mathcal C$下的第$i$个坐标，即$a_{ij}$。所以$T^*(g_i)=\sum_ja_{ij}f_j$：$T^*(g_i)$的坐标是$A$的第$i$行，排成各列，就是$A\T$。
+  reference: |
+    $T^*(g_1+g_2)=(g_1+g_2)\circ T=g_1\circ T+g_2\circ T$。$T^*(g_i)(\vb b_j)=g_i(T\vb b_j)=a_{ij}$，所以$T^*(g_i)=\sum_ja_{ij}f_j$，矩阵是$A\T$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$V$是$n$维向量空间，$f$是$V$上不为零的线性函数。证明$\dim\ker f=n-1$；再证明：若线性函数$g$满足$\ker g\supseteq\ker f$，则$g$是$f$的倍数。
+  hints:
+    - |
+      $f$不为零，它的像（image）是$\R$的哪个子空间（subspace）？用维数公式（dimension theorem）。
+    - |
+      取$\vb v_0$使$f(\vb v_0)\ne0$，令$h=g-\frac{g(\vb v_0)}{f(\vb v_0)}f$，看$h$在哪些向量上为零。
+    - |
+      $f\ne0$，像是$\R$的非零子空间，就是$\R$，由[维数公式](lesson:math.linear-algebra.kernel-image#thm-dimension-formula)，$\dim\ker f=n-1$。
+
+      $h(\vb v_0)=0$；$\ker f$上$f=0$、$g=0$，所以$h$在$\ker f$上为零。取$\ker f$的一组基$\vb u_1,\dots,\vb u_{n-1}$，若$\sum a_i\vb u_i+a\vb v_0=\vb 0$，两边作用$f$得$af(\vb v_0)=0$，$a=0$，再得各$a_i=0$；所以这$n$个向量线性无关，由[个数对了，只需查一条](lesson:math.linear-algebra.basis-dimension#thm-basis-criteria)是$V$的一组基。$h$在这组基上都是零，所以$h=0$，$g=\frac{g(\vb v_0)}{f(\vb v_0)}f$。
+  reference: |
+    $\im f=\R$，$\dim\ker f=n-1$。取$f(\vb v_0)\ne0$，$h=g-\frac{g(\vb v_0)}{f(\vb v_0)}f$在$\ker f$和$\vb v_0$上为零，它们合起来含$V$的一组基，所以$h=0$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    温度随位置变化。从某一点出发，位移$\vb v$很小时，温度的变化近似是$\vb v$的一个线性函数$f(\vb v)=a_1v_1+a_2v_2+a_3v_3$。把单位从米换成厘米，也就是三个基向量都变成原来的$\frac1{100}$，$\vb v$的坐标和$f$的坐标$(a_1,a_2,a_3)$各变成原来的多少倍？为什么说$f$和位移$\vb v$不是同一种东西？
+  hints:
+    - |
+      位移本身没变，基向量变短了，坐标怎样变？$f$在新的基向量上的值是多少？
+    - |
+      用这一节的定理：$P_{\mathcal B\leftarrow\mathcal C}=\frac1{100}I$。
+    - |
+      $[\vb v]_{\mathcal C}=100[\vb v]_{\mathcal B}$，坐标变成原来的$100$倍；$[f]_{\mathcal C}=[f]_{\mathcal B}\cdot\frac1{100}I$，坐标变成原来的$\frac1{100}$。两者一乘，温度的变化不变。
+
+      所以「每厘米升高多少度」的数和「位移多少厘米」的数变法相反：同样三个数$(a_1,a_2,a_3)$，若把它当成一个位移，换单位时就会变错。位移是向量，$f$是余向量，以后在[余切空间与 1 形式](lesson:math.differential-geometry.cotangent-spaces)里，函数在一点附近的这种线性近似（linear approximation）就是余向量的来历。
+  reference: |
+    基向量变成$\frac1{100}$，$\vb v$的坐标变成$100$倍，$f$的坐标变成$\frac1{100}$，$f(\vb v)$不变。两者换基时变法相反，所以$f$是余向量，不是位移那样的向量。
+
+- id: p8
+  tier: thinking
+  statement: |
+    $V$是:term[有限维]{id="math.linear-algebra.finite-dimensional"}（finite-dimensional）向量空间。对每个$\vb v\in V$，「在$\vb v$处取值」$f\mapsto f(\vb v)$是$V^*$上的线性函数，所以是$(V^*)^*$的元素。说明$\vb v\mapsto$「在$\vb v$处取值」是$V$到$(V^*)^*$的同构（isomorphism）。$V$和$V^*$也同构，两种同构有什么不同？
+  hints:
+    - |
+      先验证这个对应是线性映射，再看它的核（kernel）；$V$、$V^*$、$(V^*)^*$的维数都是多少？
+    - |
+      若对每个$f$都有$f(\vb v)=0$，任取一组基，用它的对偶基试试。
+    - |
+      对应是线性的：$f(\vb u+\vb v)=f(\vb u)+f(\vb v)$。若$\vb v\ne\vb 0$，任取一组基，$\vb v$总有一个坐标$c_i\ne0$，对偶基里的$f_i$满足$f_i(\vb v)=c_i\ne0$，所以核只有$\vb 0$；三者维数都是$n$，由[维数相同时，单射就是满射](lesson:math.linear-algebra.kernel-image#thm-isomorphism)，它是同构。
+
+      $V$到$V^*$的同构要先选一组基（把$\vb b_i$对应到$f_i$），换一组基，对应就变了；$V$到$(V^*)^*$的这个同构不用选任何基，定义里只有「取值」。数学里把这种不依赖选择的对应叫作自然的（natural）。
+  reference: |
+    $\vb v\mapsto(f\mapsto f(\vb v))$是线性的；$\vb v\ne\vb 0$时总有$f$使$f(\vb v)\ne0$，所以是单射（injective）；维数都是$n$，故为同构。它不依赖基的选取，而$V\cong V^*$要先选基。

@@ -22,7 +22,7 @@ status: reviewed
 [矩阵与矩阵乘法](lesson:math.linear-algebra.matrices)里，$\vb x\mapsto A\vb x$把$\R^n$中的向量变成$\R^m$中的向量，并且$A(\vb x+\vb y)=A\vb x+A\vb y$、$A(c\vb x)=cA\vb x$。把这两条性质单独拿出来，就是:term[线性变换]{id="math.linear-algebra.linear-transformation"}（linear transformation）的定义。
 
 ::anchor{id="def-linear-transformation"}
-把$\R^n$中的每个向量$\vb x$变成$\R^m$中一个向量$T(\vb x)$的对应$T$，如果对任意向量$\vb u$、$\vb v$和数$c$都有$T(\vb u+\vb v)=T(\vb u)+T(\vb v)$、$T(c\vb u)=cT(\vb u)$，就叫作:term[线性变换]{id="math.linear-algebra.linear-transformation"}（linear transformation），也叫线性映射（linear map），记作$T:\R^n\to\R^m$；$T(\vb x)$叫作$\vb x$在$T$下的像（image）。
+把$\R^n$中的每个向量$\vb x$变成$\R^m$中一个向量$T(\vb x)$的对应$T$，如果对任意向量$\vb u$、$\vb v$和数$c$都有$T(\vb u+\vb v)=T(\vb u)+T(\vb v)$、$T(c\vb u)=cT(\vb u)$，就叫作:term[线性变换]{id="math.linear-algebra.linear-transformation"}（linear transformation），也叫:term[线性映射]{id="math.linear-algebra.linear-map"}（linear map），记作$T:\R^n\to\R^m$；$T(\vb x)$叫作$\vb x$在$T$下的:term[像]{id="math.linear-algebra.image"}（image）。
 
 为什么这样定义：两条等式合起来，说的是$T$保持:term[线性组合]{id="math.linear-algebra.linear-combination"}（linear combination）：$T(c_1\vb v_1+\dots+c_k\vb v_k)=c_1T(\vb v_1)+\dots+c_kT(\vb v_k)$。几何上，它把网格变成平直、等距的网格，原点不动，因为$T(\vb 0)=T(0\vb 0)=0\,T(\vb 0)=\vb 0$。边界情况：平移$\vb x\mapsto\vb x+\vb b$（$\vb b\ne\vb 0$）把原点移走了，不是线性变换；$(x_1,x_2)\mapsto(x_1^2,x_2)$也不是，因为$T(2\vb e_1)=(4,0)\ne2T(\vb e_1)$。
 
@@ -33,7 +33,7 @@ status: reviewed
 
 **证明思路**：$\vb x=x_1\vb e_1+\dots+x_n\vb e_n$，由线性，$T(\vb x)=x_1T(\vb e_1)+\dots+x_nT(\vb e_n)$，按矩阵乘向量的定义，这正是$A\vb x$。标准矩阵是唯一的：若$T(\vb x)=B\vb x$对每个$\vb x$成立，取$\vb x=\vb e_j$，$B$的第$j$列只能是$T(\vb e_j)$。
 
-所以要写出一个线性变换的矩阵，只要看它把:term[标准基向量]{id="math.linear-algebra.standard-basis-vector"}（standard basis vectors）变到哪里，把这些像依次排成列。
+所以要写出一个线性变换的矩阵，只要看它把:term[标准基向量]{id="math.linear-algebra.standard-basis-vector"}（standard basis vectors）变到哪里，把这些:term[像]{id="math.linear-algebra.image"}依次排成列。
 
 ### 平面上的几种变换
 
@@ -42,7 +42,7 @@ status: reviewed
 
 为什么这样定义：旋转把以$\vb u$、$\vb v$为邻边的平行四边形整个转过去，对角线还是对角线，所以旋转保持加法，也保持:term[数乘]{id="math.linear-algebra.scalar-multiplication"}（scalar multiplication），是:term[线性变换]{id="math.linear-algebra.linear-transformation"}；$\vb e_2$在$\vb e_1$逆时针转过$\frac\pi2$的位置，转过$\theta$后到了角$\theta+\frac\pi2$的方向，就是$(-\sin\theta,\cos\theta)$。剪切让每个点沿水平方向移动，移动的距离和它的纵坐标成正比，横线仍是横线，竖线变成斜线，像推一叠扑克牌的侧面。边界情况：$\theta=0$时$R_\theta=I$，$k=0$时剪切也是$I$，都是什么也不动的恒等变换（identity transformation）。
 
-其他几种常见变换，同样看$\vb e_1$、$\vb e_2$的像：
+其他几种常见变换，同样看$\vb e_1$、$\vb e_2$的:term[像]{id="math.linear-algebra.image"}：
 
 | 变换 | $\vb e_1$的像 | $\vb e_2$的像 | 标准矩阵 |
 | --- | --- | --- | --- |
@@ -103,7 +103,7 @@ sliders:
       $d$
 :::
 
-动画从:term[单位矩阵]{id="math.linear-algebra.identity-matrix"}（identity matrix）开始，一点点变到$A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$，四个滑块一开始就是上图的矩阵。图例里「$\vb e_1$的像」那支箭头始终是第一列$(a,c)$，「$\vb e_2$的像」那支是第二列$(b,d)$，网格和单位正方形跟着这两支箭头走。可以试几组：$b=c=0$时沿两条坐标轴分别伸缩；$a=d=1$、$c=0$时是:term[剪切]{id="math.linear-algebra.shear"}；$a=d=0$、$b=-1$、$c=1$时是转过$90^\circ$。
+动画从:term[单位矩阵]{id="math.linear-algebra.identity-matrix"}（identity matrix）开始，一点点变到$A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$，四个滑块一开始就是上图的矩阵。图例里「$\vb e_1$的:term[像]{id="math.linear-algebra.image"}」那支箭头始终是第一列$(a,c)$，「$\vb e_2$的像」那支是第二列$(b,d)$，网格和单位正方形跟着这两支箭头走。可以试几组：$b=c=0$时沿两条坐标轴分别伸缩；$a=d=1$、$c=0$时是:term[剪切]{id="math.linear-algebra.shear"}；$a=d=0$、$b=-1$、$c=1$时是转过$90^\circ$。
 
 两列:term[平行]{id="math.linear-algebra.parallel"}（parallel）时，例如四个数都是$1$，整个平面被压到一条直线上，单位正方形压扁成一条线段。动画的中途只是从$I$到$A$的过渡，中间的矩阵不一定是同一种变换，比较开头和结尾就行。
 
@@ -129,5 +129,5 @@ sliders:
 
 - 「平移$\vb x\mapsto\vb x+\vb b$也是:term[线性变换]{id="math.linear-algebra.linear-transformation"}。」线性变换必须把$\vb 0$变成$\vb 0$；$\vb b\ne\vb 0$时平移不是线性变换，也没有:term[标准矩阵]{id="math.linear-algebra.standard-matrix"}（第 7 题）。
 - 「先做$T$再做$S$，矩阵是$AB$。」复合$S\circ T$的矩阵是$BA$：先做的写在右边。
-- 「矩阵的第$j$行是$\vb e_j$的像。」$\vb e_j$的像是第$j$列；按行排就成了另一个矩阵。
+- 「矩阵的第$j$行是$\vb e_j$的:term[像]{id="math.linear-algebra.image"}。」$\vb e_j$的像是第$j$列；按行排就成了另一个矩阵。
 - 「线性变换总把正方形变成平行四边形。」:term[投影]{id="math.linear-algebra.projection"}（projection）会把正方形压成一条线段，退化的平行四边形也要算上。例如把每个向量换成它在$x$轴方向上的投影（见[点积、长度与夹角](lesson:math.linear-algebra.dot-product#def-projection)），也就是$(x,y)\mapsto(x,0)$，单位正方形变成从原点到$(1,0)$的线段。

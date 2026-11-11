@@ -1,0 +1,127 @@
+- id: p1
+  tier: easy
+  statement: |
+    $A=\begin{pmatrix}3&-4\\4&3\end{pmatrix}$的特征值是$a\pm bi$，$b>0$。按顺序填写$a$、$b$。
+  answer:
+    type: tuple
+    value: [3, 4]
+  hints:
+    - |
+      写出特征多项式，用求根公式。
+    - |
+      $\tr A=6$，$\det A=9+16=25$，特征多项式是$\lambda^2-6\lambda+25$。
+    - |
+      $\lambda=\frac{6\pm\sqrt{36-100}}2=3\pm4i$。$A$本来就是$\begin{pmatrix}a&-b\\b&a\end{pmatrix}$的样子，$a=3$、$b=4$。
+  solution: |
+    特征多项式$\lambda^2-6\lambda+25$的根是$3\pm4i$，填 `3, 4`。
+
+- id: p2
+  tier: easy
+  statement: |
+    $A=\begin{pmatrix}1&-\sqrt3\\\sqrt3&1\end{pmatrix}$把平面先转一个角、再把每个向量变成原来的$r$倍。求$r$。
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      $A$是$\begin{pmatrix}a&-b\\b&a\end{pmatrix}$的样子，$r$是特征值的模。
+    - |
+      $a=1$，$b=\sqrt3$，$r=\sqrt{a^2+b^2}$。
+    - |
+      $r=\sqrt{1+3}=2$，转的角度是$60^\circ$，因为$1+\sqrt3\,i=2(\cos60^\circ+i\sin60^\circ)$。
+  solution: |
+    $r=\sqrt{1^2+(\sqrt3)^2}=2$，填 `2`。
+
+- id: p3
+  tier: medium
+  statement: |
+    $A=\begin{pmatrix}2&-5\\1&0\end{pmatrix}$的特征值是$a\pm bi$，$b>0$。按顺序填写$a$、$b$。
+  answer:
+    type: tuple
+    value: [1, 2]
+  hints:
+    - |
+      二阶矩阵的特征多项式是$\lambda^2-(\tr A)\lambda+\det A$。
+    - |
+      $\tr A=2$，$\det A=0+5=5$，特征多项式是$\lambda^2-2\lambda+5$。
+    - |
+      $\lambda=\frac{2\pm\sqrt{4-20}}2=1\pm2i$，所以$a=1$、$b=2$。$A$不是$\begin{pmatrix}a&-b\\b&a\end{pmatrix}$的样子，换到实基以后才是。
+  solution: |
+    特征多项式$\lambda^2-2\lambda+5$的根是$1\pm2i$，填 `1, 2`。
+
+- id: p4
+  tier: medium
+  statement: |
+    $A=\begin{pmatrix}3&-2\\4&-1\end{pmatrix}$有特征值$1+2i$。把属于它的特征向量写成$(1,\ p+qi)$，$p$、$q$是实数，按顺序填写$p$、$q$。
+  answer:
+    type: tuple
+    value: [1, -1]
+  hints:
+    - |
+      解$\bigl(A-(1+2i)I\bigr)\vb x=\vb 0$，取$x_1=1$。
+    - |
+      第一行是$(2-2i,\ -2)$，给出$(2-2i)x_1=2x_2$。
+    - |
+      $x_2=(1-i)x_1$，取$x_1=1$得$(1,1-i)$，$p=1$、$q=-1$。验算第二行：$4\cdot1+(-2-2i)(1-i)=4+(-2+2i-2i-2)=0$。
+  solution: |
+    由第一行$x_2=(1-i)x_1$，特征向量是$(1,1-i)$，填 `1, -1`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$A$是$n$阶实矩阵，$n$是奇数。证明$A$至少有一个实数特征值。
+  hints:
+    - |
+      特征多项式的系数都是实数，非实数的根成对出现。
+    - |
+      数一数根的个数：重根按重数算，一共是$n$个。
+    - |
+      由[复特征值成对出现](lesson:math.linear-algebra.complex-eigenvalues#thm-conjugate-pairs)，非实数的根和它的共轭成对出现，而且两者的重数相同，所以非实数的根一共有偶数个。按重数算，全部根是$n$个，$n$是奇数，所以至少有一个实数根，它就是$A$的实数特征值。
+  reference: |
+    实系数多项式的非实数根成对出现，共偶数个；根一共$n$个（按重数计），$n$为奇数，故至少有一个实根。
+
+- id: p6
+  tier: hard
+  statement: |
+    设二阶实矩阵$A$的特征值是$a\pm bi$，$b\ne0$。证明$A^2-2aA+(a^2+b^2)I=O$。
+  hints:
+    - |
+      先对$C=\begin{pmatrix}a&-b\\b&a\end{pmatrix}$验证，再用$A=PCP^{-1}$。
+    - |
+      $C^2=\begin{pmatrix}a^2-b^2&-2ab\\2ab&a^2-b^2\end{pmatrix}$。
+    - |
+      $C^2-2aC+(a^2+b^2)I$的左上角是$a^2-b^2-2a^2+a^2+b^2=0$，右上角是$-2ab+2ab=0$，另两个同理，所以等于$O$。由[旋转加伸缩](lesson:math.linear-algebra.complex-eigenvalues#thm-rotation-scaling)，$A=PCP^{-1}$，$A^2=PC^2P^{-1}$，代进去得$A^2-2aA+(a^2+b^2)I=P\bigl(C^2-2aC+(a^2+b^2)I\bigr)P^{-1}=O$。左边用的多项式$\lambda^2-2a\lambda+a^2+b^2$，正是$A$的特征多项式。
+  reference: |
+    对$C=\begin{pmatrix}a&-b\\b&a\end{pmatrix}$直接验算$C^2-2aC+(a^2+b^2)I=O$，再由$A=PCP^{-1}$得同样的等式。
+
+- id: p7
+  tier: thinking
+  statement: |
+    设$A$是二阶实矩阵，有特征值$a\pm bi$，$b\ne0$，$r=\sqrt{a^2+b^2}$。从$\vb x_0\ne\vb 0$出发，令$\vb x_{k+1}=A\vb x_k$。$r<1$、$r=1$、$r>1$时，点$\vb x_k$各怎样运动？
+  hints:
+    - |
+      在实基下$A$是旋转$\theta$加伸缩$r$倍；$\vb x_k=A^k\vb x_0$。
+    - |
+      $A^k=PC^kP^{-1}$，$C^k$是旋转$k\theta$、伸缩$r^k$倍。
+    - |
+      在$P$给出的坐标里，每一步转$\theta$、再变成原来的$r$倍：$r<1$时绕原点螺旋着趋于原点，$r=1$时在一个圆上转，$r>1$时螺旋着跑向无穷远。换回原来的坐标，$P$把圆变成椭圆，所以是沿椭圆或椭圆形的螺旋运动。
+
+      连续时间的方程$\vb x'=A\vb x$也一样，起作用的是特征值的实部：[平面线性系统的相图](lesson:math.ode.phase-plane-linear)里，实部小于零时解螺旋着趋于原点。离散时看的是模$r$和$1$比，连续时看的是实部和$0$比。
+  reference: |
+    $A^k=PC^kP^{-1}$，$C^k$转$k\theta$、伸缩$r^k$。$r<1$螺旋趋于原点，$r=1$沿椭圆转，$r>1$螺旋向外。
+
+- id: p8
+  tier: thinking
+  statement: |
+    绕$z$轴逆时针转$\theta$（$0<\theta<\pi$）的三阶矩阵是$R=\begin{pmatrix}\cos\theta&-\sin\theta&0\\\sin\theta&\cos\theta&0\\0&0&1\end{pmatrix}$。它的特征值是什么？属于实数特征值的特征向量是什么，几何上是什么？为什么说任何三阶实矩阵都有一个实数特征值？
+  hints:
+    - |
+      按第三行展开$\det(R-\lambda I)$。
+    - |
+      $\det(R-\lambda I)=(1-\lambda)\bigl((\cos\theta-\lambda)^2+\sin^2\theta\bigr)$。
+    - |
+      特征值是$1$和$\cos\theta\pm i\sin\theta$。属于$1$的特征向量是$(0,0,1)$的倍数，正是转轴：轴上的点不动。$xy$平面那一块是二阶的旋转，给出那对复特征值。
+
+      三阶实矩阵的特征多项式是三次实系数多项式，非实数的根成对出现，所以至少有一个实根（第 5 题）。对绕某条轴的旋转来说，这个实数特征向量就指出了转轴。
+  reference: |
+    特征值$1$、$\cos\theta\pm i\sin\theta$；属于$1$的特征向量$(0,0,1)$是转轴。三阶实矩阵的特征多项式是三次实系数多项式，至少有一个实根。

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" width="640" height="320" font-size="13">
+  <!-- 左：定义域，原点 (150, 150)，一个单位 30 像素，核 x+y=0 和平行线 x+y=3，各线上标三个点；右：目标空间，原点 (400, 205)，像是沿 (2,1) 的直线，原点和 (3, 1.5) 两点；中间箭头 T -->
+  <line x1="25" y1="150" x2="285" y2="150" stroke="currentColor" stroke-width="1" opacity="0.45" />
+  <line x1="150" y1="265" x2="150" y2="25" stroke="currentColor" stroke-width="1" opacity="0.45" />
+  <line x1="25" y1="25" x2="265" y2="265" style="stroke: var(--accent, #2563eb)" stroke-width="2.4" />
+  <line x1="115" y1="25" x2="285" y2="195" style="stroke: var(--good, #0f8a5f)" stroke-width="2.4" />
+  <circle cx="90" cy="90" r="3.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="150" cy="150" r="3.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="180" cy="180" r="3.8" style="fill: var(--accent, #2563eb)" />
+  <circle cx="150" cy="60" r="3.8" style="fill: var(--good, #0f8a5f)" />
+  <circle cx="240" cy="150" r="3.8" style="fill: var(--good, #0f8a5f)" />
+  <circle cx="270" cy="180" r="3.8" style="fill: var(--good, #0f8a5f)" />
+  <text x="65" y="125" text-anchor="middle" style="fill: var(--accent, #2563eb)" fill="currentColor">核 <tspan font-style="italic">x</tspan> + <tspan font-style="italic">y</tspan> = 0</text>
+  <text x="232" y="98" text-anchor="middle" style="fill: var(--good, #0f8a5f)" fill="currentColor"><tspan font-style="italic">x</tspan> + <tspan font-style="italic">y</tspan> = 3</text>
+  <line x1="292" y1="150" x2="319" y2="150" stroke="currentColor" stroke-width="1.8" />
+  <path d="M 328 150 L 319 154.5 L 319 145.5 Z" fill="currentColor" />
+  <text x="310" y="140" text-anchor="middle" font-size="14" fill="currentColor"><tspan font-style="italic">T</tspan></text>
+  <line x1="335" y1="205" x2="615" y2="205" stroke="currentColor" stroke-width="1" opacity="0.45" />
+  <line x1="400" y1="265" x2="400" y2="25" stroke="currentColor" stroke-width="1" opacity="0.45" />
+  <line x1="335" y1="237.5" x2="615" y2="97.5" style="stroke: var(--muted, #6b7280)" stroke-width="2.4" />
+  <circle cx="400" cy="205" r="4.4" style="fill: var(--accent, #2563eb)" />
+  <circle cx="490" cy="160" r="4.4" style="fill: var(--good, #0f8a5f)" />
+  <text x="512" y="184" text-anchor="middle" style="fill: var(--good, #0f8a5f)" fill="currentColor">(3, 1.5)</text>
+  <text x="560" y="95" text-anchor="middle" style="fill: var(--muted, #6b7280)" fill="currentColor">像 im <tspan font-style="italic">T</tspan></text>
+  <text x="155" y="296" text-anchor="middle" fill="currentColor">定义域：核和一条与它平行的直线</text>
+  <text x="475" y="296" text-anchor="middle" fill="currentColor">每条直线整条变成像上的一个点</text>
+</svg>

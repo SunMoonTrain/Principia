@@ -1,0 +1,131 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$A=\begin{pmatrix}5&2\\2&2\end{pmatrix}$的两个特征值（顺序不限）。
+  answer:
+    type: set
+    value: [1, 6]
+  hints:
+    - |
+      二阶矩阵的特征多项式可以由迹和行列式直接写出。
+    - |
+      $\tr A=7$，$\det A=10-4=6$，特征多项式是$\lambda^2-7\lambda+6$。
+    - |
+      $\lambda^2-7\lambda+6=(\lambda-1)(\lambda-6)$，特征值是$1$、$6$。验算：$A(1,-2)=(1,-2)$，$A(2,1)=(12,6)=6(2,1)$。
+  solution: |
+    特征多项式$\lambda^2-7\lambda+6=(\lambda-1)(\lambda-6)$，填 `1, 6`。
+
+- id: p2
+  tier: easy
+  statement: |
+    一个二阶方阵的迹是$-1$，行列式是$-6$。求它的两个特征值（顺序不限）。
+  answer:
+    type: set
+    value: [-3, 2]
+  hints:
+    - |
+      特征值之和是迹，积是行列式。
+    - |
+      两个特征值是$\lambda^2+\lambda-6=0$的两个根。
+    - |
+      $\lambda^2+\lambda-6=(\lambda+3)(\lambda-2)$，特征值是$-3$、$2$：和是$-1$，积是$-6$。
+  solution: |
+    特征多项式是$\lambda^2+\lambda-6=(\lambda+3)(\lambda-2)$，填 `-3, 2`。
+
+- id: p3
+  tier: medium
+  statement: |
+    $A=\begin{pmatrix}1&2&0\\0&3&0\\2&-4&2\end{pmatrix}$有一个特征值是$3$。求属于$3$的特征向量，写成$(1,a,b)$的形式，按顺序填写$1$、$a$、$b$。
+  answer:
+    type: tuple
+    value: [1, 1, -2]
+  hints:
+    - |
+      解齐次方程组$(A-3I)\vb x=\vb 0$。
+    - |
+      $A-3I$的三行是$(-2,2,0)$、$(0,0,0)$、$(2,-4,-1)$。
+    - |
+      第一行给出$x_1=x_2$，第三行给出$2x_1-4x_2-x_3=0$，即$x_3=-2x_1$。取$x_1=1$，得$(1,1,-2)$。验算：$A(1,1,-2)=(3,3,-6)=3(1,1,-2)$。
+  solution: |
+    $(A-3I)\vb x=\vb 0$给出$x_2=x_1$、$x_3=-2x_1$，特征向量是$(1,1,-2)$的非零倍数，填 `1, 1, -2`。
+
+- id: p4
+  tier: medium
+  statement: |
+    $k$取多少时，$A=\begin{pmatrix}1&k\\2&3\end{pmatrix}$的两个特征值相等？
+  answer:
+    type: number
+    value: -1/2
+  hints:
+    - |
+      特征多项式是二次的，两个根相等，就是判别式为零。
+    - |
+      $\tr A=4$，$\det A=3-2k$，特征多项式$\lambda^2-4\lambda+3-2k$的判别式是$16-4(3-2k)$。
+    - |
+      $16-4(3-2k)=4+8k=0$，$k=-\frac12$。这时特征多项式是$(\lambda-2)^2$。
+  solution: |
+    判别式$4+8k=0$，填 `-1/2`。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明：方阵$A$和它的转置（transpose）$A\T$有相同的特征多项式，因而有相同的特征值。再举一个例子，说明$A$和$A\T$属于同一个特征值的特征向量可以不同。
+  hints:
+    - |
+      $A\T-\lambda I$是哪个矩阵的转置？
+    - |
+      $(A-\lambda I)\T=A\T-\lambda I$，转置不改变行列式。例子可以试一个上三角矩阵。
+    - |
+      由[转置不变](lesson:math.linear-algebra.determinant-properties#thm-det-transpose)，$\det(A\T-\lambda I)=\det\bigl((A-\lambda I)\T\bigr)=\det(A-\lambda I)$，所以特征多项式相同，特征值也相同。
+
+      例如$A=\begin{pmatrix}2&1\\0&3\end{pmatrix}$，$A\T=\begin{pmatrix}2&0\\1&3\end{pmatrix}$，特征值都是$2$、$3$。属于$3$的特征向量，$A$的是$(1,1)$的倍数，$A\T$的是$(0,1)$的倍数。
+  reference: |
+    $\det(A\T-\lambda I)=\det((A-\lambda I)\T)=\det(A-\lambda I)$。例：$A=\begin{pmatrix}2&1\\0&3\end{pmatrix}$属于$3$的特征向量是$(1,1)$的倍数，$A\T$的是$(0,1)$的倍数。
+
+- id: p6
+  tier: hard
+  statement: |
+    设方阵$A$满足$A^2=A$。证明$A$的特征值只能是$0$或$1$；再举例说明，$0$和$1$可能都出现，也可能只出现其中一个。
+  hints:
+    - |
+      设$A\vb v=\lambda\vb v$、$\vb v\ne\vb 0$，算$A^2\vb v$。
+    - |
+      一方面$A^2\vb v=A(\lambda\vb v)=\lambda^2\vb v$，另一方面$A^2\vb v=A\vb v=\lambda\vb v$。
+    - |
+      所以$(\lambda^2-\lambda)\vb v=\vb 0$；$\vb v\ne\vb 0$，故$\lambda^2=\lambda$，$\lambda=0$或$1$。
+
+      例子：$\begin{pmatrix}1&0\\0&0\end{pmatrix}$保留第一个分量（component）、把第二个分量变成$0$，特征值$0$、$1$都有；单位矩阵只有$1$；零矩阵（zero matrix）只有$0$。三个都满足$A^2=A$。
+  reference: |
+    $A\vb v=\lambda\vb v$时$\lambda\vb v=A\vb v=A^2\vb v=\lambda^2\vb v$，$\vb v\ne\vb 0$，所以$\lambda^2=\lambda$。例：$\begin{pmatrix}1&0\\0&0\end{pmatrix}$有$0$和$1$，$I$只有$1$，零矩阵只有$0$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    $n$阶方阵$K$的主对角元都是$2$，紧挨着主对角线上下的两条斜线上都是$-1$，其余都是$0$。取$\theta=\frac{k\pi}{n+1}$（$k=1,\dots,n$），令向量$\vb v$的第$j$个分量是$\sin j\theta$。验证$K\vb v=(2-2\cos\theta)\vb v$，由此写出$K$的全部特征值；$n$很大时，最小的特征值大约是多少？
+  hints:
+    - |
+      $K\vb v$的第$j$个分量是$-v_{j-1}+2v_j-v_{j+1}$；第一行和最后一行少一项，可以看成$v_0=0$、$v_{n+1}=0$。
+    - |
+      和差化积：$\sin(j-1)\theta+\sin(j+1)\theta=2\sin j\theta\cos\theta$。另外$\sin0=0$，$\sin(n+1)\theta=\sin k\pi=0$。
+    - |
+      第$j$个分量是$2\sin j\theta-2\sin j\theta\cos\theta=(2-2\cos\theta)\sin j\theta$；$j=1$和$j=n$时也成立，因为补上的$v_0$、$v_{n+1}$正好是$0$。$\vb v$的第一个分量$\sin\theta>0$，不是零向量，所以$2-2\cos\frac{k\pi}{n+1}$（$k=1,\dots,n$）都是特征值；它们两两不同，$n$阶方阵最多有$n$个特征值，这就是全部。
+
+      最小的是$k=1$：$2-2\cos\frac{\pi}{n+1}=4\sin^2\frac{\pi}{2(n+1)}\approx\bigl(\frac{\pi}{n+1}\bigr)^2$，$n$越大越接近$0$。$K$相当于在等距的$n$个点上，用差分近似（finite difference approximation）代替$-y''$；[第二变分与勒让德条件](lesson:math.calculus-of-variations.second-variation)第 8 题用到的正是它最小的特征值。
+  reference: |
+    $K\vb v$的第$j$个分量$-\sin(j-1)\theta+2\sin j\theta-\sin(j+1)\theta=(2-2\cos\theta)\sin j\theta$，边界处$\sin0=\sin(n+1)\theta=0$。特征值是$2-2\cos\frac{k\pi}{n+1}$，$k=1,\dots,n$；最小的约为$\bigl(\frac{\pi}{n+1}\bigr)^2$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$A_\varepsilon=\begin{pmatrix}0&1\\\varepsilon&0\end{pmatrix}$。$\varepsilon=0$时，$A_0$的特征值$0$的代数重数、几何重数各是多少？$\varepsilon=10^{-10}$时，$A_\varepsilon$的特征值是多少？对比$B_\varepsilon=\begin{pmatrix}0&0\\0&\varepsilon\end{pmatrix}$：两个矩阵的元素都只变了$10^{-10}$，为什么特征值变化的大小差这么多？
+  hints:
+    - |
+      $A_\varepsilon$的迹是$0$，行列式是$-\varepsilon$。
+    - |
+      $A_\varepsilon$的特征值是$\pm\sqrt\varepsilon$，$B_\varepsilon$的是$0$、$\varepsilon$。$A_0$的零空间是几维？
+    - |
+      $A_0=\begin{pmatrix}0&1\\0&0\end{pmatrix}$的特征多项式是$\lambda^2$，特征值$0$的代数重数是$2$；零空间由$(1,0)$生成，几何重数是$1$。$\varepsilon=10^{-10}$时特征值是$\pm10^{-5}$，变化是元素变化的$10^5$倍；$B_\varepsilon$的特征值只变了$10^{-10}$。
+
+      $A_0$的两个重数不相等，特征多项式$\lambda^2-\varepsilon$的常数项一变，根就按$\sqrt\varepsilon$变，比$\varepsilon$本身大得多；$B_0$是零矩阵，两个重数相等，特征值跟着元素按同样的大小变。所以重特征值，尤其是几何重数小于代数重数的，对误差可能非常敏感：数据只有$10^{-10}$的误差，特征值就可能差出$10^{-5}$。
+  reference: |
+    $A_0$：代数重数$2$，几何重数$1$。$A_\varepsilon$的特征值$\pm\sqrt\varepsilon=\pm10^{-5}$，$B_\varepsilon$的特征值只变了$10^{-10}$。几何重数小于代数重数时，特征多项式的根按$\sqrt\varepsilon$移动，重特征值对误差很敏感。

@@ -33,12 +33,12 @@ status: reviewed
 [生成与子空间](lesson:math.linear-algebra.span-subspaces)、[线性无关](lesson:math.linear-algebra.linear-independence)、[基与维数](lesson:math.linear-algebra.basis-dimension)里的定义，只用到加法和:term[数乘]{id="math.linear-algebra.scalar-multiplication"}，原样适用于任何:term[向量空间]{id="math.linear-algebra.vector-space"}：含$\vb 0$、对加法和数乘封闭的子集是:term[子空间]{id="math.linear-algebra.subspace"}，:term[线性组合]{id="math.linear-algebra.linear-combination"}（linear combination）、:term[生成]{id="math.linear-algebra.span"}（span）、:term[线性无关]{id="math.linear-algebra.linearly-independent"}、:term[基]{id="math.linear-algebra.basis"}、:term[坐标向量]{id="math.linear-algebra.coordinate-vector"}（coordinate vector）都照旧。证明里用到的除了这八条，只有关于系数的:term[线性方程组]{id="math.linear-algebra.linear-system"}（system of linear equations），所以那些定理也照旧成立。
 
 ::anchor{id="def-finite-dimensional"}
-向量空间$V$如果能由有限个向量生成，就说它是有限维的（finite-dimensional），它的:term[维数]{id="math.linear-algebra.dimension"}$\dim V$是它的任意一组基所含向量的个数；否则说它是无限维的（infinite-dimensional）。
+向量空间$V$如果能由有限个向量生成，就说它是:term[有限维]{id="math.linear-algebra.finite-dimensional"}（finite-dimensional）的，它的:term[维数]{id="math.linear-algebra.dimension"}$\dim V$是它的任意一组基所含向量的个数；否则说它是无限维（infinite-dimensional）的。
 
 为什么这样定义：有限维时，[个数的上限](lesson:math.linear-algebra.basis-dimension#thm-exchange)的证明照搬过来，任意两组基一样多，维数才有意义。$P_n$的一组基是$1,x,\dots,x^n$，所以$\dim P_n=n+1$；它们线性无关，因为$c_0+c_1x+\dots+c_nx^n$对每个$x$都等于$0$时，这个多项式有无穷多个根，系数只能全是$0$。边界情况：全体实函数组成的空间是无限维的，因为对每个$n$，$1,x,\dots,x^n$都线性无关，有限个函数生成不了它。
 
 ::anchor{id="thm-coordinates-iso"}
-**坐标把$V$变成$\R^n$**　设$\mathcal B=(\vb b_1,\dots,\vb b_n)$是$V$的一组基。$\vb v\mapsto[\vb v]_{\mathcal B}$是$V$和$\R^n$之间的一一对应，并且$[\vb u+\vb v]_{\mathcal B}=[\vb u]_{\mathcal B}+[\vb v]_{\mathcal B}$，$[c\vb u]_{\mathcal B}=c[\vb u]_{\mathcal B}$；这样保持加法和数乘的一一对应叫作同构（isomorphism）。
+**坐标把$V$变成$\R^n$**　设$\mathcal B=(\vb b_1,\dots,\vb b_n)$是$V$的一组基。$\vb v\mapsto[\vb v]_{\mathcal B}$是$V$和$\R^n$之间的一一对应，并且$[\vb u+\vb v]_{\mathcal B}=[\vb u]_{\mathcal B}+[\vb v]_{\mathcal B}$，$[c\vb u]_{\mathcal B}=c[\vb u]_{\mathcal B}$；这样保持加法和数乘的一一对应叫作:term[同构]{id="math.linear-algebra.isomorphism"}（isomorphism）。
 
 **证明思路**：坐标是唯一的，$\R^n$里每个数组$(c_1,\dots,c_n)$又恰好对应$V$里的$c_1\vb b_1+\dots+c_n\vb b_n$，所以是一一对应。两个线性组合相加、乘以数，系数也对应相加、乘以数（[基与维数](lesson:math.linear-algebra.basis-dimension)第 7 题）。所以在$n$维的$V$里判断线性无关、求维数、解方程，都可以先换成坐标，在$\R^n$里用消元来做（例 1）。
 

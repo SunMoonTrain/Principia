@@ -1,0 +1,131 @@
+- id: p1
+  tier: easy
+  statement: |
+    若尔当块$J_3(5)$的特征值$5$，几何重数是多少？
+  answer:
+    type: number
+    value: 1
+  hints:
+    - |
+      几何重数是$N(J_3(5)-5I)$的维数。
+    - |
+      $J_3(5)-5I=\begin{pmatrix}0&1&0\\0&0&1\\0&0&0\end{pmatrix}$。
+    - |
+      它的秩是$2$，零空间是$3-2=1$维，只由$\vb e_1$生成，所以几何重数是$1$，而代数重数是$3$。
+  solution: |
+    $J_3(5)-5I$的秩是$2$，零空间一维，填 `1`。
+
+- id: p2
+  tier: easy
+  statement: |
+    $N=\begin{pmatrix}0&1&0\\0&0&1\\0&0&0\end{pmatrix}$。最小的使$N^k=O$的正整数$k$是多少？
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      看$N$怎样作用在$\vb e_1,\vb e_2,\vb e_3$上。
+    - |
+      $N\vb e_3=\vb e_2$，$N\vb e_2=\vb e_1$，$N\vb e_1=\vb 0$。
+    - |
+      $N^2\vb e_3=\vb e_1\ne\vb 0$，所以$N^2\ne O$；$N^3$把每个基向量都送到$\vb 0$，$N^3=O$。最小的$k$是$3$。
+  solution: |
+    $N^2\vb e_3=\vb e_1\ne\vb 0$，$N^3=O$，填 `3`。
+
+- id: p3
+  tier: medium
+  statement: |
+    $A=\begin{pmatrix}3&1\\-1&1\end{pmatrix}$只有一个特征值$2$，特征向量是$\vb v=(1,-1)$的倍数。求满足$(A-2I)\vb w=\vb v$、且第一个分量（component）为$0$的$\vb w$，按顺序填写两个分量。
+  answer:
+    type: tuple
+    value: [0, 1]
+  hints:
+    - |
+      写出$A-2I$，解方程组。
+    - |
+      $A-2I=\begin{pmatrix}1&1\\-1&-1\end{pmatrix}$，方程是$w_1+w_2=1$。
+    - |
+      $w_1=0$时$w_2=1$，$\vb w=(0,1)$。验算：$(A-2I)(0,1)=(1,-1)=\vb v$；在基$\vb v$、$\vb w$下，$A$的矩阵是$J_2(2)$。
+  solution: |
+    由$w_1+w_2=1$、$w_1=0$得$\vb w=(0,1)$，填 `0, 1`。
+
+- id: p4
+  tier: medium
+  statement: |
+    四阶方阵$A$只有一个特征值$0$，并且$\rank A=2$、$\rank A^2=1$、$\rank A^3=0$。$A$的若尔当标准形里，最大的块是几阶？
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      阶数至少为$k$的块的个数是$\rank A^{k-1}-\rank A^k$（$A^0=I$）。
+    - |
+      至少一阶的有$4-2=2$个，至少二阶的有$2-1=1$个，至少三阶的有$1-0=1$个。
+    - |
+      所以一个块至少是三阶的，而至少四阶的有$\rank A^3-\rank A^4=0$个。两个块的阶数之和是$4$，所以是一个三阶块、一个一阶块，最大的是三阶。
+  solution: |
+    块数$4-2=2$，至少二阶、三阶的各$1$个，没有四阶的，是$3+1$，填 `3`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$m\ge2$。证明$\bigl(J_m(\lambda)-\lambda I\bigr)^m=O$，而$J_m(\lambda)$不能对角化。
+  hints:
+    - |
+      $J_m(\lambda)-\lambda I=N$，看$N$怎样挪动标准基向量。
+    - |
+      能对角化要$m$个线性无关的特征向量；$\lambda$的特征空间是几维？
+    - |
+      $N\vb e_1=\vb 0$、$N\vb e_k=\vb e_{k-1}$，作用$m$次后每个$\vb e_k$都变成$\vb 0$，所以$N^m=O$。
+
+      特征值只有$\lambda$，特征空间是$N(N)$。$N$的后$m-1$列是$\vb e_1,\dots,\vb e_{m-1}$，线性无关，秩是$m-1$，零空间只有一维。$m\ge2$时一维少于$m$，由[对角化就是找够特征向量](lesson:math.linear-algebra.diagonalization#thm-diagonalizable)，不能对角化。
+  reference: |
+    $N=J_m(\lambda)-\lambda I$把$\vb e_k$挪到$\vb e_{k-1}$，$N^m=O$。$\rank N=m-1$，特征空间一维，$m\ge2$时特征向量不够，不能对角化。
+
+- id: p6
+  tier: hard
+  statement: |
+    二阶实矩阵$A$只有一个特征值$\lambda$（二重根）。证明$(A-\lambda I)^2=O$；由此说明，$A$不能对角化时，任取一个不是特征向量的$\vb w$，$\vb v=(A-\lambda I)\vb w$都是特征向量。
+  hints:
+    - |
+      对任何二阶矩阵验证$A^2-(\tr A)A+(\det A)I=O$。
+    - |
+      特征多项式是$(\lambda'-\lambda)^2$，所以$\tr A=2\lambda$、$\det A=\lambda^2$。
+    - |
+      $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$时直接乘出来：$A^2$的左上角是$a^2+bc$，减去$(a+d)a$，加上$ad-bc$，得$0$，其余三个位置同理，所以$A^2-(\tr A)A+(\det A)I=O$。代入$\tr A=2\lambda$、$\det A=\lambda^2$，得$(A-\lambda I)^2=A^2-2\lambda A+\lambda^2I=O$。
+
+      于是$(A-\lambda I)\vb v=(A-\lambda I)^2\vb w=\vb 0$；$\vb w$不是特征向量，所以$\vb v\ne\vb 0$，$\vb v$是特征向量，$\vb v$、$\vb w$是一条若尔当链。
+  reference: |
+    二阶矩阵满足$A^2-(\tr A)A+(\det A)I=O$；二重特征值$\lambda$时$\tr A=2\lambda$、$\det A=\lambda^2$，即$(A-\lambda I)^2=O$。所以$(A-\lambda I)\vb w$非零时一定是特征向量。
+
+- id: p7
+  tier: thinking
+  statement: |
+    算$J_2(\lambda)^k$。$|\lambda|<1$、$\lambda=1$时，$k$越来越大，$J_2(\lambda)^k$会怎样？和$\begin{pmatrix}\lambda&0\\0&\lambda\end{pmatrix}^k$比有什么不同？
+  hints:
+    - |
+      $J_2(\lambda)=\lambda I+N$，$N^2=O$，$\lambda I$和$N$可以交换次序。
+    - |
+      和二项式展开一样，只剩两项：$(\lambda I+N)^k=\lambda^kI+k\lambda^{k-1}N$。
+    - |
+      $J_2(\lambda)^k=\begin{pmatrix}\lambda^k&k\lambda^{k-1}\\0&\lambda^k\end{pmatrix}$。$|\lambda|<1$时，$\lambda^k$和$k\lambda^{k-1}$都趋于$0$，只是右上角多了因子$k$，趋于$0$要慢一些；$\lambda=1$时右上角是$k$，越来越大，平面被剪切得越来越厉害，而$I^k$始终是$I$。
+
+      所以特征值相同，能不能对角化会让幂的长期行为不同：多出来的$k$、$k^2$这样的因子来自若尔当块。[矩阵的幂与线性递推](lesson:math.linear-algebra.matrix-powers)里会看到能对角化时怎样算幂，[矩阵指数](lesson:math.ode.matrix-exponential)里同样的原因带来了$te^{\lambda t}$。
+  reference: |
+    $J_2(\lambda)^k=\begin{pmatrix}\lambda^k&k\lambda^{k-1}\\0&\lambda^k\end{pmatrix}$。$|\lambda|<1$时仍趋于$O$但慢一些；$\lambda=1$时右上角$k$无限增大，和$I^k=I$不同。
+
+- id: p8
+  tier: thinking
+  statement: |
+    有的书把若尔当块的$1$放在主对角线下方，写成$J_m(\lambda)$的转置（transpose）。这两种写法本质上一样吗？以$m=3$为例，找一个$P$使$P^{-1}J_3(\lambda)P=J_3(\lambda)\T$。
+  hints:
+    - |
+      把基向量的次序倒过来试试：$\vb e_3,\vb e_2,\vb e_1$。
+    - |
+      $P$取把$\vb e_1$、$\vb e_3$对调的矩阵$\begin{pmatrix}0&0&1\\0&1&0\\1&0&0\end{pmatrix}$。
+    - |
+      在倒序的基$\vb e_3,\vb e_2,\vb e_1$下，$N$把第一个基向量$\vb e_3$送到第二个$\vb e_2$，把第二个送到第三个，正是主对角线下方那条斜线上的$1$。$P$的各列就是这组倒序的基，所以$P^{-1}J_3(\lambda)P=J_3(\lambda)\T$。
+
+      两种写法只差基向量的次序，是同一个线性算子（linear operator）在两组基下的矩阵，彼此相似；选哪一种，只是约定。
+  reference: |
+    $P=\begin{pmatrix}0&0&1\\0&1&0\\1&0&0\end{pmatrix}$（把基倒过来排），$P^{-1}J_3(\lambda)P=J_3(\lambda)\T$；两种写法相似，只是约定不同。

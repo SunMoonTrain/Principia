@@ -1,0 +1,129 @@
+- id: p1
+  tier: easy
+  statement: |
+    $A=PDP^{-1}$，$P=\begin{pmatrix}1&1\\0&1\end{pmatrix}$，$D=\begin{pmatrix}3&0\\0&-1\end{pmatrix}$。求$A^2$，按行填写四个元素。
+  answer:
+    type: tuple
+    value: [9, -8, 0, 1]
+  hints:
+    - |
+      $A^2=PD^2P^{-1}$。
+    - |
+      $D^2=\begin{pmatrix}9&0\\0&1\end{pmatrix}$，$P^{-1}=\begin{pmatrix}1&-1\\0&1\end{pmatrix}$。
+    - |
+      $PD^2=\begin{pmatrix}9&1\\0&1\end{pmatrix}$，再乘$P^{-1}$得$\begin{pmatrix}9&-9+1\\0&1\end{pmatrix}=\begin{pmatrix}9&-8\\0&1\end{pmatrix}$。
+  solution: |
+    $A^2=PD^2P^{-1}=\begin{pmatrix}9&-8\\0&1\end{pmatrix}$，填 `9, -8, 0, 1`。
+
+- id: p2
+  tier: easy
+  statement: |
+    斐波那契数列$F_0=0$、$F_1=1$、$F_{k+2}=F_{k+1}+F_k$。求$F_{20}$。
+  answer:
+    type: number
+    value: 6765
+  hints:
+    - |
+      可以一项项往下算，也可以用通项：$F_k$是离$\frac{\varphi^k}{\sqrt5}$最近的整数。
+    - |
+      往下算：$\dots,F_{10}=55,F_{11}=89,F_{12}=144,\dots$。
+    - |
+      继续：$F_{13}=233$，$F_{14}=377$，$F_{15}=610$，$F_{16}=987$，$F_{17}=1597$，$F_{18}=2584$，$F_{19}=4181$，$F_{20}=6765$。用通项验算：$\frac{\varphi^{20}}{\sqrt5}\approx6765.00003$。
+  solution: |
+    一项项算到$F_{20}=6765$，和$\frac{\varphi^{20}}{\sqrt5}$四舍五入一致，填 `6765`。
+
+- id: p3
+  tier: medium
+  statement: |
+    另一个地区每年城区人口的$80\%$留在城区、$20\%$迁往郊区，郊区人口的$70\%$留在郊区、$30\%$迁往城区，即$M=\begin{pmatrix}0.8&0.3\\0.2&0.7\end{pmatrix}$。很多年以后，住在城区的人约占总人口的多少？
+  answer:
+    type: number
+    value: 0.6
+  hints:
+    - |
+      长期的样子由属于特征值$1$的特征向量决定。
+    - |
+      $M$的特征值是$1$和$0.5$；解$(M-I)\vb x=\vb 0$。
+    - |
+      $M-I$的第一行是$(-0.2,\ 0.3)$，给出$2x_1=3x_2$，特征向量取$(3,2)$。另一个特征值$0.5$的那部分每年减半，长期只剩$(3,2)$方向，城区占$\frac35=0.6$。
+  solution: |
+    属于特征值$1$的特征向量是$(3,2)$，城区占$\frac3{3+2}=0.6$，填 `0.6`。
+
+- id: p4
+  tier: medium
+  statement: |
+    数列满足$a_0=0$、$a_1=1$、$a_{k+2}=5a_{k+1}-6a_k$。把通项写成$a_k=\alpha\cdot2^k+\beta\cdot3^k$，按顺序填写$\alpha$、$\beta$。
+  answer:
+    type: tuple
+    value: [-1, 1]
+  hints:
+    - |
+      $\lambda^2=5\lambda-6$的根是$2$和$3$。
+    - |
+      $a_0=\alpha+\beta=0$，$a_1=2\alpha+3\beta=1$。
+    - |
+      $\beta=-\alpha$，代入得$\alpha=-1$、$\beta=1$，$a_k=3^k-2^k$。验算：$a_2=9-4=5=5\cdot1-6\cdot0$。
+  solution: |
+    由$\alpha+\beta=0$、$2\alpha+3\beta=1$得$\alpha=-1$、$\beta=1$，填 `-1, 1`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$A$可以对角化。证明：所有特征值的模都小于$1$时，$k\to\infty$时$A^k$的每个元素都趋于$0$；若有一个特征值的模大于$1$，就有$\vb x$使$A^k\vb x$的某个分量的绝对值趋于无穷大。
+  hints:
+    - |
+      用$A^k=PD^kP^{-1}$：$P$、$P^{-1}$固定不变，只有$D^k$随$k$变。
+    - |
+      $|\lambda_i|<1$时$\lambda_i^k\to0$。第二问取$\vb x$为属于那个特征值的特征向量。
+    - |
+      $A^k=PD^kP^{-1}$的每个元素都是$\lambda_1^k,\dots,\lambda_n^k$的固定线性组合（系数由$P$、$P^{-1}$的元素决定），各$\lambda_i^k\to0$，所以每个元素都趋于$0$。
+
+      若$|\lambda|>1$，$\vb v$是属于它的特征向量，则$A^k\vb v=\lambda^k\vb v$。$\vb v$有一个分量$v_j\ne0$，$|\lambda^kv_j|=|\lambda|^k|v_j|\to\infty$。
+  reference: |
+    $A^k=PD^kP^{-1}$的元素是各$\lambda_i^k$的固定线性组合，全部$|\lambda_i|<1$时都趋于$0$。$|\lambda|>1$时取特征向量$\vb v$，$A^k\vb v=\lambda^k\vb v$的非零分量趋于无穷。
+
+- id: p6
+  tier: hard
+  statement: |
+    二阶方阵（square matrix）$A$有两个不同的特征值$\lambda_1$、$\lambda_2$。证明对每个正整数$k$，$A^k=\frac{\lambda_1^k(A-\lambda_2I)-\lambda_2^k(A-\lambda_1I)}{\lambda_1-\lambda_2}$。
+  hints:
+    - |
+      两边都是矩阵；取属于$\lambda_1$、$\lambda_2$的特征向量$\vb v_1$、$\vb v_2$，比较两边作用在它们上的结果。
+    - |
+      $(A-\lambda_2I)\vb v_1=(\lambda_1-\lambda_2)\vb v_1$，$(A-\lambda_1I)\vb v_1=\vb 0$。
+    - |
+      右边作用在$\vb v_1$上得$\frac{\lambda_1^k(\lambda_1-\lambda_2)\vb v_1-0}{\lambda_1-\lambda_2}=\lambda_1^k\vb v_1=A^k\vb v_1$；同样作用在$\vb v_2$上都得$\lambda_2^k\vb v_2$。$\vb v_1$、$\vb v_2$属于不同的特征值，线性无关（linearly independent），是$\R^2$的一组基（basis）；两个矩阵在一组基上作用相同，所以相等。
+  reference: |
+    右边作用在$\vb v_1$上得$\lambda_1^k\vb v_1$，作用在$\vb v_2$上得$\lambda_2^k\vb v_2$，和$A^k$一致；$\vb v_1$、$\vb v_2$是一组基，所以两边相等。
+
+- id: p7
+  tier: thinking
+  statement: |
+    斐波那契数列相邻两项的比$\frac{F_{k+1}}{F_k}$，$k$越来越大时趋于什么？为什么$F_k$总是离$\frac{\varphi^k}{\sqrt5}$最近的整数？
+  hints:
+    - |
+      用通项$F_k=\frac{\varphi^k-\psi^k}{\sqrt5}$，$|\psi|<1$。
+    - |
+      $\frac{F_{k+1}}{F_k}=\frac{\varphi^{k+1}-\psi^{k+1}}{\varphi^k-\psi^k}$，分子分母同除以$\varphi^k$。
+    - |
+      $\bigl(\frac\psi\varphi\bigr)^k\to0$，所以比值趋于$\varphi=\frac{1+\sqrt5}2\approx1.618$，即黄金分割比；这正是主导特征值的意思：$\vb u_k$的方向趋于属于$\varphi$的特征向量$(\varphi,1)$。
+
+      $F_k-\frac{\varphi^k}{\sqrt5}=-\frac{\psi^k}{\sqrt5}$，而$\frac{|\psi|^k}{\sqrt5}\le\frac1{\sqrt5}<\frac12$，$F_k$又是整数，所以它就是离$\frac{\varphi^k}{\sqrt5}$最近的整数。
+  reference: |
+    $\frac{F_{k+1}}{F_k}\to\varphi=\frac{1+\sqrt5}2$，因为$(\psi/\varphi)^k\to0$。$|F_k-\frac{\varphi^k}{\sqrt5}|=\frac{|\psi|^k}{\sqrt5}<\frac12$，所以$F_k$是离$\frac{\varphi^k}{\sqrt5}$最近的整数。
+
+- id: p8
+  tier: thinking
+  statement: |
+    和人口的$M$一样，每个元素都不小于$0$、每一列之和都是$1$的方阵，为什么一定有特征值$1$？$M\vb x$的分量之和和$\vb x$的有什么关系？这和「很多年以后的分布」有什么联系？
+  hints:
+    - |
+      看$M\T$：它的每一行之和都是$1$，$M\T(1,1,\dots,1)$是什么？
+    - |
+      $M$和$M\T$的特征多项式相同；分量之和就是$(1,\dots,1)$这一行乘$\vb x$。
+    - |
+      $M\T(1,\dots,1)=(1,\dots,1)$，所以$1$是$M\T$的特征值，也就是$M$的特征值（[特征值与特征向量](lesson:math.linear-algebra.eigenvalues)第 5 题）。$(1,\dots,1)M=(1,\dots,1)$，所以$M\vb x$的分量之和等于$\vb x$的，总人口不变。
+
+      属于$1$的特征向量$\vb v$满足$M\vb v=\vb v$，按它的比例分布的人口年年不变；其余特征值的模都小于$1$时，$M^k\vb x$就趋于它的倍数。以后在[马尔可夫链](lesson:math.probability.markov-chains)里，这样的矩阵描述随机的转移，这个特征向量就是长期的分布。
+  reference: |
+    $M\T(1,\dots,1)=(1,\dots,1)$，$M$与$M\T$特征多项式相同，所以$M$有特征值$1$；列和为$1$说明分量之和不变。属于$1$的特征向量给出不变的分布，其余特征值模小于$1$时$M^k\vb x$趋于它。

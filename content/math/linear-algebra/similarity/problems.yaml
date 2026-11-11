@@ -1,0 +1,127 @@
+- id: p1
+  tier: easy
+  statement: |
+    $P_1$是次数不超过$1$的多项式全体，$T(p)=p(x+1)$，即把$x$换成$x+1$。求$T$在基$1,x$下的矩阵，按行填写四个元素。
+  answer:
+    type: tuple
+    value: [1, 1, 0, 1]
+  hints:
+    - |
+      矩阵的第$j$列是第$j$个基向量的像的坐标。
+    - |
+      $T(1)=1$，$T(x)=x+1$。
+    - |
+      $T(1)=1$的坐标是$(1,0)$，$T(x)=1+x$的坐标是$(1,1)$，所以矩阵是$\begin{pmatrix}1&1\\0&1\end{pmatrix}$。
+  solution: |
+    两列是$(1,0)$、$(1,1)$，矩阵$\begin{pmatrix}1&1\\0&1\end{pmatrix}$，填 `1, 1, 0, 1`。
+
+- id: p2
+  tier: easy
+  statement: |
+    $A=\begin{pmatrix}1&0\\0&2\end{pmatrix}$，$P=\begin{pmatrix}1&1\\0&1\end{pmatrix}$。求$P^{-1}AP$，按行填写四个元素。
+  answer:
+    type: tuple
+    value: [1, -1, 0, 2]
+  hints:
+    - |
+      先求$P^{-1}$，再依次相乘。
+    - |
+      $P^{-1}=\begin{pmatrix}1&-1\\0&1\end{pmatrix}$，$AP=\begin{pmatrix}1&1\\0&2\end{pmatrix}$。
+    - |
+      $P^{-1}(AP)=\begin{pmatrix}1-0&1-2\\0&2\end{pmatrix}=\begin{pmatrix}1&-1\\0&2\end{pmatrix}$。
+  solution: |
+    $P^{-1}AP=\begin{pmatrix}1&-1\\0&2\end{pmatrix}$，填 `1, -1, 0, 2`。
+
+- id: p3
+  tier: medium
+  statement: |
+    在$P_2$上，$T(p)=(x+1)p'$。求$T$在基$\mathcal C=\bigl(1,\,x+1,\,(x+1)^2\bigr)$下的矩阵，按行填写九个元素。
+  answer:
+    type: tuple
+    value: [0, 0, 0, 0, 1, 0, 0, 0, 2]
+  hints:
+    - |
+      依次算三个基向量的像，再写成$\mathcal C$下的坐标。
+    - |
+      $T(1)=0$，$T(x+1)=x+1$，$T\bigl((x+1)^2\bigr)=(x+1)\cdot2(x+1)$。
+    - |
+      三个像是$0$、$1\cdot(x+1)$、$2(x+1)^2$，坐标是$(0,0,0)$、$(0,1,0)$、$(0,0,2)$，所以$[T]_{\mathcal C}$是主对角元为$0,1,2$的对角矩阵。
+  solution: |
+    $T$把三个基向量分别变成它们的$0$、$1$、$2$倍，$[T]_{\mathcal C}$是对角元$0,1,2$的对角矩阵，填 `0, 0, 0, 0, 1, 0, 0, 0, 2`。
+
+- id: p4
+  tier: medium
+  statement: |
+    $\R^2$上的线性算子$T$在基$\mathcal C=\bigl((1,0),(1,1)\bigr)$下的矩阵是$\begin{pmatrix}1&2\\0&3\end{pmatrix}$。求$T$的标准矩阵，按行填写四个元素。
+  answer:
+    type: tuple
+    value: [1, 4, 0, 3]
+  hints:
+    - |
+      $P=P_{\mathcal E\leftarrow\mathcal C}$的两列就是$(1,0)$、$(1,1)$；$[T]_{\mathcal E}=P[T]_{\mathcal C}P^{-1}$。
+    - |
+      $P=\begin{pmatrix}1&1\\0&1\end{pmatrix}$，$P^{-1}=\begin{pmatrix}1&-1\\0&1\end{pmatrix}$，$P[T]_{\mathcal C}=\begin{pmatrix}1&5\\0&3\end{pmatrix}$。
+    - |
+      $\begin{pmatrix}1&5\\0&3\end{pmatrix}\begin{pmatrix}1&-1\\0&1\end{pmatrix}=\begin{pmatrix}1&4\\0&3\end{pmatrix}$。验算：$T(1,1)$应是$2(1,0)+3(1,1)=(5,3)$，标准矩阵乘$(1,1)$也得$(5,3)$。
+  solution: |
+    $[T]_{\mathcal E}=P[T]_{\mathcal C}P^{-1}=\begin{pmatrix}1&4\\0&3\end{pmatrix}$，填 `1, 4, 0, 3`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$A$与$B$相似。证明：对任何数$c$，$A-cI$与$B-cI$也相似；由此说明$N(A-cI)$和$N(B-cI)$的维数（dimension）相同。
+  hints:
+    - |
+      设$B=P^{-1}AP$，算$P^{-1}(A-cI)P$。
+    - |
+      $P^{-1}(cI)P=cI$。相似的矩阵秩相同，再用秩-零化度定理（rank–nullity theorem）。
+    - |
+      $P^{-1}(A-cI)P=P^{-1}AP-cP^{-1}P=B-cI$，所以$A-cI$与$B-cI$相似。由[相似的矩阵的秩和幂](lesson:math.linear-algebra.similarity#thm-similar-invariants)，两者的秩相同；它们都是$n$列，由[秩-零化度定理](lesson:math.linear-algebra.rank-nullity#thm-rank-nullity)，零空间（null space）的维数都是$n$减去秩，所以相同。
+  reference: |
+    $P^{-1}(A-cI)P=B-cI$；相似的矩阵秩相同，零空间的维数$n-\rank$也相同。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$T$是$n$维向量空间$V$上的线性算子，$W$是$V$的$k$维子空间（subspace），$T$把$W$里的向量都送回$W$（即$W$是$T$的不变子空间，invariant subspace）。取$W$的一组基$\vb b_1,\dots,\vb b_k$，再补成$V$的一组基$\mathcal B=(\vb b_1,\dots,\vb b_n)$。证明$[T]_{\mathcal B}$的前$k$列里，第$k+1$行到第$n$行全是$0$。
+  hints:
+    - |
+      补成一组基的做法，和[基总是存在](lesson:math.linear-algebra.basis-dimension#thm-basis-exists)的证明一样：从$\vb b_1,\dots,\vb b_k$出发，逐个添加不在已有向量所生成（span）的子空间里的向量。
+    - |
+      第$j$列是$[T(\vb b_j)]_{\mathcal B}$；$j\le k$时，$T(\vb b_j)$在$W$里。
+    - |
+      $j\le k$时$T(\vb b_j)\in W$，是$\vb b_1,\dots,\vb b_k$的线性组合（linear combination），在$\mathcal B$下的坐标从第$k+1$个起都是$0$。所以$[T]_{\mathcal B}=\begin{pmatrix}A_1&A_2\\O&A_3\end{pmatrix}$，左下角是$(n-k)\times k$的零块；$A_1$正是$T$限制在$W$上时在$\vb b_1,\dots,\vb b_k$下的矩阵。
+  reference: |
+    $j\le k$时$T(\vb b_j)\in W=\Span\{\vb b_1,\dots,\vb b_k\}$，坐标的后$n-k$个分量为$0$，所以$[T]_{\mathcal B}$左下角是零块。
+
+- id: p7
+  tier: thinking
+  statement: |
+    能不能在$\R^2$里找一组基，使逆时针转$90^\circ$的旋转在这组基下的矩阵是对角矩阵？
+  hints:
+    - |
+      在基$\vb c_1,\vb c_2$下的矩阵是对角矩阵，说的是$T(\vb c_1)$、$T(\vb c_2)$各是自己的多少倍。
+    - |
+      转$90^\circ$把$(x,y)$变成$(-y,x)$。有没有非零向量$\vb v$，使$T(\vb v)$平行（parallel）于$\vb v$？
+    - |
+      若$(-y,x)=a(x,y)$，则$-y=ax$、$x=ay$，于是$x=-a^2x$，$(1+a^2)x=0$，$x=0$，再得$y=0$。所以没有非零向量被送到自己的倍数，也就找不到这样的基：转$90^\circ$在任何一组基下的矩阵都不是对角矩阵。
+
+      在复数范围里情形不同，以后在[复特征值与旋转](lesson:math.linear-algebra.complex-eigenvalues)里会看到，旋转加伸缩正是实矩阵不能化成对角矩阵的一种典型情形。
+  reference: |
+    不能。对角矩阵要求$T(\vb c_i)$是$\vb c_i$的倍数；$(-y,x)=a(x,y)$推出$(1+a^2)x=0$，只有零向量，所以没有这样的基。
+
+- id: p8
+  tier: thinking
+  statement: |
+    两个线性算子$S$、$T$在基$\mathcal B$下的矩阵是$A_1$、$A_2$。换到基$\mathcal C$，它们都按同一个$P$变成$P^{-1}A_1P$、$P^{-1}A_2P$。先作用$T$、再作用$S$的算子$S\circ T$，矩阵怎样变？这说明一组算子换了基以后，彼此的关系有没有变？
+  hints:
+    - |
+      在$\mathcal B$下，$S\circ T$的矩阵是$A_1A_2$。
+    - |
+      算$(P^{-1}A_1P)(P^{-1}A_2P)$，中间的$PP^{-1}$消掉。
+    - |
+      $(P^{-1}A_1P)(P^{-1}A_2P)=P^{-1}A_1A_2P$，正是$S\circ T$在$\mathcal C$下的矩阵。所以「先做$T$再做$S$等于做某个$R$」这类关系，在哪组基下写成矩阵都同样成立。
+
+      一组变换（例如正方形的各种旋转、翻转）可以在不同的基下写成不同的一组矩阵，它们之间差的只是同一个$P$。以后在[群表示](lesson:math.representation-theory.representations)里，这样相差一次换基的两组矩阵被看成同一个表示。
+  reference: |
+    $S\circ T$在$\mathcal C$下的矩阵是$P^{-1}A_1A_2P=(P^{-1}A_1P)(P^{-1}A_2P)$；换基保持乘法关系，一组算子的矩阵整体相差同一个$P$。

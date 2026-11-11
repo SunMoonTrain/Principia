@@ -1,0 +1,129 @@
+- id: p1
+  tier: easy
+  statement: |
+    三阶方阵$A=PDP^{-1}$，$D$是主对角元为$1$、$2$、$4$的对角矩阵。求$\det A$。
+  answer:
+    type: number
+    value: 8
+  hints:
+    - |
+      相似的矩阵行列式相同。
+    - |
+      $\det A=\det D$，对角矩阵的行列式是主对角元之积。
+    - |
+      $\det A=\det P\det D\det P^{-1}=\det D=1\cdot2\cdot4=8$。
+  solution: |
+    $A$与$D$相似，$\det A=\det D=8$，填 `8`。
+
+- id: p2
+  tier: easy
+  statement: |
+    $P=\begin{pmatrix}1&1\\0&1\end{pmatrix}$，$D=\begin{pmatrix}2&0\\0&3\end{pmatrix}$。求$A=PDP^{-1}$，按行填写四个元素。
+  answer:
+    type: tuple
+    value: [2, 1, 0, 3]
+  hints:
+    - |
+      先求$P^{-1}$，再算$PD$，最后乘$P^{-1}$。
+    - |
+      $P^{-1}=\begin{pmatrix}1&-1\\0&1\end{pmatrix}$，$PD=\begin{pmatrix}2&3\\0&3\end{pmatrix}$。
+    - |
+      $PDP^{-1}=\begin{pmatrix}2&-2+3\\0&3\end{pmatrix}=\begin{pmatrix}2&1\\0&3\end{pmatrix}$。验算：$P$的两列$(1,0)$、$(1,1)$分别是属于$2$、$3$的特征向量。
+  solution: |
+    $A=PDP^{-1}=\begin{pmatrix}2&1\\0&3\end{pmatrix}$，填 `2, 1, 0, 3`。
+
+- id: p3
+  tier: medium
+  statement: |
+    把$A=\begin{pmatrix}5&-2\\4&-1\end{pmatrix}$对角化成$A=PDP^{-1}$，其中$D=\begin{pmatrix}1&0\\0&3\end{pmatrix}$，$P=\begin{pmatrix}1&1\\a&b\end{pmatrix}$。按顺序填写$a$、$b$。
+  answer:
+    type: tuple
+    value: [2, 1]
+  hints:
+    - |
+      $P$的第一列是属于$1$的特征向量，第二列是属于$3$的特征向量。
+    - |
+      $A-I=\begin{pmatrix}4&-2\\4&-2\end{pmatrix}$，$A-3I=\begin{pmatrix}2&-2\\4&-4\end{pmatrix}$。
+    - |
+      $A-I$给出$4x_1=2x_2$，取$(1,2)$；$A-3I$给出$x_1=x_2$，取$(1,1)$。所以$a=2$、$b=1$。验算：$A(1,2)=(1,2)$，$A(1,1)=(3,3)$。
+  solution: |
+    属于$1$、$3$的特征向量是$(1,2)$、$(1,1)$，填 `2, 1`。
+
+- id: p4
+  tier: medium
+  statement: |
+    $a$取多少时，$A=\begin{pmatrix}a&1\\0&2\end{pmatrix}$不能对角化？
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      特征值是主对角元$a$、$2$。两个特征值不同时会怎样？
+    - |
+      $a\ne2$时有两个不同的特征值，一定能对角化；只剩$a=2$要检查。
+    - |
+      $a=2$时，$A-2I=\begin{pmatrix}0&1\\0&0\end{pmatrix}$的秩是$1$，特征值$2$的几何重数是$1$，小于代数重数$2$，不能对角化。
+  solution: |
+    $a\ne2$时两个特征值不同，能对角化；$a=2$时几何重数$1$小于代数重数$2$，填 `2`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$n$阶方阵$A$满足$A^2=A$。证明$A$可以对角化。
+  hints:
+    - |
+      每个$\vb x$都能写成$(\vb x-A\vb x)+A\vb x$。这两部分各被$A$变成什么？
+    - |
+      $A(\vb x-A\vb x)=\vb 0$，$A(A\vb x)=A\vb x$：一部分在$N(A)$里，一部分在属于$1$的特征空间里。
+    - |
+      由上面的分解，属于$0$的特征空间$N(A)$和属于$1$的特征空间合起来生成（span）$\R^n$。两个特征空间各取一组基，合在一起线性无关（不同特征值的特征向量线性无关，见讲解），又生成$\R^n$，所以是$n$个线性无关的特征向量，$A$可以对角化，$D$的主对角元只有$0$和$1$。
+  reference: |
+    $\vb x=(\vb x-A\vb x)+A\vb x$，前一部分属于$0$、后一部分属于$1$的特征空间；两个特征空间的基合起来线性无关又生成$\R^n$，所以有$n$个线性无关的特征向量。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$A=PD_1P^{-1}$、$B=PD_2P^{-1}$，$D_1$、$D_2$都是对角矩阵，即$A$、$B$能用同一个$P$对角化。证明$AB=BA$；再举例说明，两个都能对角化的矩阵不一定满足$AB=BA$。
+  hints:
+    - |
+      对角矩阵相乘可以交换次序。
+    - |
+      $AB=PD_1P^{-1}PD_2P^{-1}=PD_1D_2P^{-1}$。例子可以找两个特征向量不同的矩阵。
+    - |
+      $AB=PD_1D_2P^{-1}=PD_2D_1P^{-1}=BA$，因为对角矩阵相乘就是对应的对角元相乘。
+
+      例子：$A=\begin{pmatrix}1&0\\0&2\end{pmatrix}$，$B=\begin{pmatrix}1&1\\0&2\end{pmatrix}$，都有两个不同的特征值，都能对角化；$AB=\begin{pmatrix}1&1\\0&4\end{pmatrix}$，$BA=\begin{pmatrix}1&2\\0&4\end{pmatrix}$，不相等。
+  reference: |
+    $AB=PD_1D_2P^{-1}=PD_2D_1P^{-1}=BA$。反例：$\begin{pmatrix}1&0\\0&2\end{pmatrix}$和$\begin{pmatrix}1&1\\0&2\end{pmatrix}$都能对角化，但乘积和次序有关。
+
+- id: p7
+  tier: thinking
+  statement: |
+    两面墙之间用三根相同的弹簧串着两个质量相同的小球，取合适的单位，由牛顿第二定律（Newton's second law）和胡克定律（Hooke's law），两球偏离平衡位置的位移满足$x_1''=-2x_1+x_2$、$x_2''=x_1-2x_2$，即$\vb x''=-K\vb x$，$K=\begin{pmatrix}2&-1\\-1&2\end{pmatrix}$。把$K$对角化，换到特征向量的坐标里，方程会变成什么样？两种运动各是什么样子？
+  hints:
+    - |
+      $K$的迹是$4$、行列式是$3$。
+    - |
+      特征值是$1$、$3$，特征向量是$(1,1)$、$(1,-1)$。令$\vb x=P\vb y$，$P$的两列取这两个向量。
+    - |
+      $\vb x=P\vb y$代进去，$P\vb y''=-KP\vb y$，两边左乘$P^{-1}$得$\vb y''=-D\vb y$，即$y_1''=-y_1$、$y_2''=-3y_2$：两个方程互不牵连，各是一个简单的振动，$y_1=\cos t$、$y_2=\cos\sqrt3\,t$这样的函数都满足。
+
+      $y_1$对应$(1,1)$：两球同向、同样大小地一起摆；$y_2$对应$(1,-1)$：两球反向摆，中间的弹簧被拉伸、压缩得更厉害，所以振得更快。一般的运动是这两种的叠加。这就是以后[耦合振子与简正模](lesson:physics.oscillations-waves.normal-modes)里的简正模（normal mode）。
+  reference: |
+    $K=PDP^{-1}$，$D=\begin{pmatrix}1&0\\0&3\end{pmatrix}$，$P$的两列是$(1,1)$、$(1,-1)$。$\vb x=P\vb y$后$y_1''=-y_1$、$y_2''=-3y_2$，两种运动互不牵连：同向一起摆，和反向、振得更快地摆。
+
+- id: p8
+  tier: thinking
+  statement: |
+    $A_\varepsilon=\begin{pmatrix}1&1\\0&1+\varepsilon\end{pmatrix}$，$\varepsilon\ne0$时能不能对角化？$P$可以取什么？$\varepsilon$越来越接近$0$时，$P$和$P^{-1}$会怎样？$\varepsilon=0$时呢？
+  hints:
+    - |
+      特征值是主对角元。两个特征值不同吗？
+    - |
+      属于$1$的特征向量是$(1,0)$，属于$1+\varepsilon$的是$(1,\varepsilon)$。
+    - |
+      $\varepsilon\ne0$时两个特征值不同，能对角化，$P=\begin{pmatrix}1&1\\0&\varepsilon\end{pmatrix}$，$P^{-1}=\begin{pmatrix}1&-\frac1\varepsilon\\0&\frac1\varepsilon\end{pmatrix}$。$\varepsilon\to0$时，两个特征向量越来越接近平行（parallel），$P$越来越接近不可逆，$P^{-1}$的元素越来越大。
+
+      $\varepsilon=0$时两个特征向量并成一个方向，矩阵不能对角化。所以「能不能对角化」虽然是非此即彼，接近不能对角化的矩阵，对角化出来的$P^{-1}$却很大，用它计算时误差会被放大，和[特征值与特征向量](lesson:math.linear-algebra.eigenvalues)第 8 题看到的是同一回事。
+  reference: |
+    $\varepsilon\ne0$时能对角化，$P=\begin{pmatrix}1&1\\0&\varepsilon\end{pmatrix}$，$P^{-1}$含$\frac1\varepsilon$，$\varepsilon\to0$时变得很大；$\varepsilon=0$时不能对角化。

@@ -91,7 +91,7 @@ sliders:
 
 设$A=\begin{pmatrix}3&1\\1&2\end{pmatrix}$。:term[线性变换]{id="math.linear-algebra.linear-transformation"}$\vb x\mapsto A\vb x$把单位正方形变成什么？面积放大几倍，朝向变没变？
 
-**为什么想到这么做**：单位正方形的像以$A$的两列为邻边，:term[有向面积]{id="math.linear-algebra.signed-area"}就是$\det A$。
+**为什么想到这么做**：单位正方形的:term[像]{id="math.linear-algebra.image"}（image）以$A$的两列为邻边，:term[有向面积]{id="math.linear-algebra.signed-area"}就是$\det A$。
 
 **推导**：两列是$(3,1)$、$(1,2)$，单位正方形变成以它们为邻边的平行四边形。$\det A=3\cdot2-1\cdot1=5>0$，所以面积放大$5$倍，朝向不变：从$(3,1)$逆时针转不到$180^\circ$就到$(1,2)$的方向。验算：这个平行四边形恰好放进$[0,4]\times[0,3]$的长方形，长方形里多出的部分是两个$1\times1$的小长方形、两个直角边为$3$和$1$的直角三角形、两个直角边为$1$和$2$的直角三角形，$12-2-3-2=5$。
 
