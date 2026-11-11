@@ -773,6 +773,28 @@ math.analysis.completeness:
     - `coulomb-law:55`：运动电荷之间的磁力（`lorentz-force`）；`gauss-applications` 例 2：平行板电容器（`capacitors`）。
   - 几何图像：画线性变换的组件 LinearMap2D 属于台阶 10，原来还没做，这一批先用 SVG 和附录里已有的四个组件（写代码的会话提的）。批次 9 开写后你定了先做它，做好以后线性代数从这一批起就能用，写法见附录「第二批组件的写法」。
 - 批次 9 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 10（写代码的会话定的）。
+- 批次 9 之后（你定的）：发批次 10。
+- 批次 10：两个领域的第二批，做法和批次 9 一样。
+  - 线性代数写子空间、行列式与向量空间 9 节，按前置顺序：`span-subspaces`、`determinant`、`linear-independence`、`basis-dimension`、`determinant-properties`、`column-null-space`、`vector-spaces`、`change-of-basis`、`rank-nullity`。审查报告 `docs/reviews/batch-10-linear-algebra.md`。
+  - 电磁学写静电学的微分形式、边值问题与电介质 9 节，按前置顺序：`gauss-differential`、`capacitors`、`electrostatic-energy`、`poisson-equation`、`images-uniqueness`、`electrostatic-separation`、`multipole-expansion`、`polarization`、`electric-displacement`。审查报告 `docs/reviews/batch-10-electromagnetism.md`。往后四批：电流与静磁场 9 节；磁介质、电磁感应与麦克斯韦方程组 8 节；守恒律与电磁波 9 节；势与辐射 5 节。
+  - 已写的小节有链接或用法指向这一批，写的时候要接得住（写代码的会话查的）：
+    - 线性代数批次 9 的前向链接：
+      - `vectors:70`：八条运算律以后成为向量空间的定义；第 8 题：把函数也当作向量（都指向 `vector-spaces`）。
+      - `vectors:84`：「基」的一般含义（`basis-dimension`）。
+      - `cross-product:53`：混合积正是三阶行列式；第 7 题：$u_1v_2-u_2v_1$ 正是二阶行列式（都指向 `determinant`）。
+      - `solution-sets:41`：齐次方程组的解集就是零空间（`column-null-space`）；第 6 题：通解的参数唯一，这样的一组向量叫线性无关（`linear-independence`）。
+      - `matrix-inverse:49`：二阶矩阵的 $ad-bc$ 正是行列式（`determinant`）。
+    - 以这一批为直接前置的已写小节，按批次 9 新定的规矩查了它们的用法：
+      - 分析力学 `phase-space-liouville` ← `determinant`：用了 $2n$ 维的行列式，以 $2n$ 条棱为列的行列式是平行多面体的体积，并且对每一列是线性的。所以 `determinant` 要讲到 $n$ 维的定义（对每一列线性、交错、单位矩阵为 1，是有向体积的放大倍数），不能只讲二阶、三阶。
+      - 狭义相对论 `lorentz-transformation` ← `determinant`：只用了二阶行列式。
+      - 常微分方程 `second-order-linear` ← `vector-spaces`：函数按逐点运算组成向量空间、二维解空间、线性无关；朗斯基行列式只用到 $ad-bc$，`:56` 已链接 `determinant` 并说明只用这个式子。
+    - 电磁学批次 9 的前向链接（批次 9 那一段列过）：`electric-field` 第 6 题（`gauss-differential`），`electric-potential` 第 8 题（`electrostatic-energy`），`electric-dipole` 第 7 题（`polarization`）、第 8 题（`multipole-expansion`），`gauss-applications` 例 2（`capacitors`）。狭义相对论 `covariant-maxwell` 用了 $\divg\vb E=\rho/\varepsilon_0$，记号要一致。
+  - 以这一批为前置、还没写的别的小节（写代码的会话查的）：`determinant` ← 多变量微积分「重积分的换元与雅可比行列式」；`determinant-properties` ← 多变量微积分「反函数定理与隐函数定理」；`vector-spaces` ← 抽象代数「域扩张与代数元」。
+  - 新增的跨领域前置（还是待写）：
+    - 电磁学：多变量微积分的「三维 δ 函数与点源」「向量微分恒等式与拉普拉斯算子」，偏微分方程的「拉普拉斯方程与调和函数」「球坐标下的分离变量与勒让德多项式」。
+    - 线性代数这一批没有别的领域的前置。
+  - 动画：行列式、基变换、列空间与零空间可以用 LinearMap2D（`det` 显示行列式，`steps` 分步，不可逆时平面压成一条线）；电磁学照旧用 vector-field-2d、function-plot，电场线、等势线画成 SVG，出框的线要画回来（写代码的会话提的）。
+- 批次 10 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 11（写代码的会话定的）。
 - 几个领域同时写时（批次 1 定的）：每个写内容会话只改自己领域的目录（`content/<学科>/<领域>/`），审内容会话只写自己的报告和验算脚本；`docs/plan.md` 不由它们直接改，要写回的内容写进汇报，由写代码的会话统一写进去、单独提交，免得几个会话同时改一个文件。每个领域各自作为一个提交。另一个领域写到一半、全量构建报错时，写内容会话可以把那个领域换成已提交的版本，在临时副本上构建，确认自己的领域 0 个错误；看页面同理，用临时副本编译的内容另起一个服务，进度写临时仓库，不改仓库的 `dist/`（批次 2 定的）。test-serve 和 `npm run serve` 提供的是 `dist/` 里构建好的网站，不读 `generated/`：改完内容要重新 `vite build`，页面上才看得到（批次 6 时写内容会话提的）。
 
 **分工**：一共三个 agent：写代码、写内容、审内容。开发台阶 8、9 由写内容 agent 和审内容 agent 执行。写内容和审内容必须是两个独立会话。
