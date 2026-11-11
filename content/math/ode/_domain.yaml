@@ -304,3 +304,219 @@ glossary:
       $f$连续、对$y$满足利普希茨条件时，初值问题在初始点附近有唯一的解。
     definedIn: math.ode.existence-uniqueness
     anchor: thm-picard-lindelof
+  - id: math.ode.second-order-linear-equation
+    zh: |
+      二阶线性方程
+    en: |
+      second-order linear equation
+    brief: |
+      形如$y''+p(x)y'+q(x)y=g(x)$的方程；$g\equiv0$时是齐次的。
+    definedIn: math.ode.second-order-linear
+    anchor: def-second-order-linear
+  - id: math.ode.superposition-principle
+    zh: |
+      叠加原理
+    en: |
+      superposition principle
+    brief: |
+      齐次线性方程的解的线性组合仍是解，所以全部解组成一个向量空间。
+    definedIn: math.ode.second-order-linear
+    anchor: thm-superposition
+  - id: math.ode.fundamental-set
+    zh: |
+      基本解组
+    en: |
+      fundamental set of solutions
+    brief: |
+      二阶齐次线性方程的两个线性无关的解；全部解都是它们的线性组合。
+    definedIn: math.ode.second-order-linear
+    anchor: def-fundamental-set
+  - id: math.ode.wronskian
+    zh: |
+      朗斯基行列式
+    en: |
+      Wronskian
+    brief: |
+      $W=y_1y_2'-y_1'y_2$；对同一个方程的两个解，它不为零当且仅当两者线性无关。
+    definedIn: math.ode.second-order-linear
+    anchor: def-wronskian
+  - id: math.ode.abel-formula
+    zh: |
+      阿贝尔公式
+    en: |
+      Abel's formula
+    brief: |
+      两个解的朗斯基行列式满足$W'=-pW$，所以要么处处为零，要么处处不为零。
+    definedIn: math.ode.second-order-linear
+    anchor: thm-abel
+  - id: math.ode.characteristic-equation
+    zh: |
+      特征方程
+    en: |
+      characteristic equation
+    brief: |
+      把$y=e^{rx}$代入常系数线性方程得到的代数方程，如$y''+ay'+by=0$的$r^2+ar+b=0$。
+    definedIn: math.ode.constant-coefficients
+    anchor: def-characteristic-equation
+  - id: math.ode.method-of-undetermined-coefficients
+    zh: |
+      待定系数法
+    en: |
+      method of undetermined coefficients
+    brief: |
+      照右边的样子写出系数待定的试探解，代入方程比较系数，求常系数方程的特解。
+    definedIn: math.ode.undetermined-coefficients
+    anchor: def-undetermined-coefficients
+  - id: math.ode.resonance
+    zh: |
+      共振
+    en: |
+      resonance
+    brief: |
+      外力的频率等于方程自己的频率时，特解要乘上$t$，无阻尼时振幅随时间线性增长。
+    definedIn: math.ode.undetermined-coefficients
+    anchor: def-resonance
+  - id: math.ode.variation-of-parameters-method
+    zh: |
+      常数变易法
+    en: |
+      variation of parameters
+    brief: |
+      把齐次方程通解里的常数换成待定函数，加一个条件后解出特解；右边是什么函数都能用。
+    definedIn: math.ode.variation-of-parameters
+    anchor: def-variation-of-parameters
+  - id: math.ode.ordinary-point
+    zh: |
+      常点
+    en: |
+      ordinary point
+    brief: |
+      标准形式$y''+Py'+Qy=0$里，$P$、$Q$在附近都能写成收敛幂级数的点；那里的解是幂级数。
+    definedIn: math.ode.series-solutions
+    anchor: def-ordinary-point
+  - id: math.ode.singular-point
+    zh: |
+      奇点
+    en: |
+      singular point
+    brief: |
+      不是常点的点，例如首项系数$a(x)$的零点；解在那里可能不是幂级数。
+    definedIn: math.ode.series-solutions
+    anchor: def-ordinary-point
+  - id: math.ode.recurrence-relation
+    zh: |
+      递推公式
+    en: |
+      recurrence relation
+    brief: |
+      把幂级数代入方程、令各次幂的系数为零，得到的用前面的系数表示后面系数的式子。
+    definedIn: math.ode.series-solutions
+    anchor: def-recurrence
+  - id: math.ode.regular-singular-point
+    zh: |
+      正则奇点
+    en: |
+      regular singular point
+    brief: |
+      奇点$0$处$xP(x)$和$x^2Q(x)$都是收敛幂级数；那里的解形如$x^r\sum a_nx^n$。
+    definedIn: math.ode.frobenius
+    anchor: def-regular-singular-point
+  - id: math.ode.frobenius-method
+    zh: |
+      弗罗贝尼乌斯方法
+    en: |
+      Frobenius method
+    brief: |
+      在正则奇点附近试$y=x^r\sum a_nx^n$（$a_0\ne0$），由指标方程定$r$，再递推求系数。
+    definedIn: math.ode.frobenius
+    anchor: def-frobenius
+  - id: math.ode.indicial-equation
+    zh: |
+      指标方程
+    en: |
+      indicial equation
+    brief: |
+      弗罗贝尼乌斯方法里最低次幂的系数给出的二次方程$r(r-1)+p_0r+q_0=0$。
+    definedIn: math.ode.frobenius
+    anchor: def-frobenius
+  - id: math.ode.bessel-equation
+    zh: |
+      贝塞尔方程
+    en: |
+      Bessel's equation
+    brief: |
+      $x^2y''+xy'+(x^2-\nu^2)y=0$；$0$是正则奇点，指标方程的根是$\pm\nu$。
+    definedIn: math.ode.frobenius
+    anchor: def-bessel
+  - id: math.ode.bessel-function
+    zh: |
+      贝塞尔函数
+    en: |
+      Bessel function
+    brief: |
+      贝塞尔方程在$0$处有界的解$J_n$，由弗罗贝尼乌斯级数给出；像振幅渐小的余弦。
+    definedIn: math.ode.frobenius
+    anchor: def-bessel
+  - id: math.ode.laplace-transform
+    zh: |
+      拉普拉斯变换
+    en: |
+      Laplace transform
+    brief: |
+      $F(s)=\int_0^{\infty}e^{-st}f(t)\dd t$；它把求导变成乘以$s$，把常系数线性方程变成代数方程。
+    definedIn: math.ode.laplace-transform
+    anchor: def-laplace
+  - id: math.ode.exponential-order
+    zh: |
+      指数阶
+    en: |
+      exponential order
+    brief: |
+      $t$足够大时$|f(t)|\le Me^{at}$；这时拉普拉斯变换在$s>a$时存在。
+    definedIn: math.ode.laplace-transform
+    anchor: def-exponential-order
+  - id: math.ode.inverse-laplace-transform
+    zh: |
+      拉普拉斯逆变换
+    en: |
+      inverse Laplace transform
+    brief: |
+      由$F(s)$找回$f(t)$；连续函数的变换相同则函数相同，通常拆项查表求得。
+    definedIn: math.ode.laplace-transform
+    anchor: def-inverse-laplace
+  - id: math.ode.transfer-function
+    zh: |
+      传递函数
+    en: |
+      transfer function
+    brief: |
+      $H(s)=\frac{1}{s^2+as+b}$：初值为零时输出的变换等于$H$乘输入的变换；分母为零处是特征根。
+    definedIn: math.ode.laplace-ivp
+    anchor: def-transfer-function
+  - id: math.ode.unit-step-function
+    zh: |
+      单位阶跃函数
+    en: |
+      unit step function
+    brief: |
+      $t<c$时为$0$、$t\ge c$时为$1$的函数$u_c(t)$，描述在$c$时刻接通的作用；变换是$\frac{e^{-cs}}{s}$。
+    definedIn: math.ode.convolution-impulse
+    anchor: def-step
+  - id: math.ode.impulse-response
+    zh: |
+      冲激响应
+    en: |
+      impulse response
+    brief: |
+      初值为零时，在$t=0$敲一下（输入$\delta(t)$）的响应$h$；它的变换是传递函数。
+    definedIn: math.ode.convolution-impulse
+    anchor: def-impulse-response
+  - id: math.ode.convolution
+    zh: |
+      卷积
+    en: |
+      convolution
+    brief: |
+      $(f*g)(t)=\int_0^tf(\tau)g(t-\tau)\dd\tau$；它的拉普拉斯变换是$F(s)G(s)$。
+    definedIn: math.ode.convolution-impulse
+    anchor: def-convolution

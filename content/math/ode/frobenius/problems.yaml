@@ -1,0 +1,131 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$x^2y''+xy'+\bigl(x^2-\frac14\bigr)y=0$在$0$处的:term[指标方程]{id="math.ode.indicial-equation"}（indicial equation）的全部根。
+  answer:
+    type: set
+    value: [-1/2, 1/2]
+  hints:
+    - |
+      写成$x^2y''+xp(x)y'+q(x)y=0$，找出$p_0=p(0)$、$q_0=q(0)$。
+    - |
+      $p=1$，$q=x^2-\frac14$，所以$p_0=1$、$q_0=-\frac14$。
+    - |
+      指标方程$r(r-1)+r-\frac14=r^2-\frac14=0$，根是$\pm\frac12$。这是$\nu=\frac12$的贝塞尔方程，指标方程的根总是$\pm\nu$。
+  solution: |
+    $r^2-\frac14=0$，填 `-1/2, 1/2`。
+
+- id: p2
+  tier: easy
+  statement: |
+    方程$x^2y''+3xy'+y=0$（$x>0$）有形如$x^r$的解。求$r$。
+  answer:
+    type: number
+    value: -1
+  hints:
+    - |
+      把$y=x^r$代进去，约去$x^r$。
+    - |
+      得到$r(r-1)+3r+1=0$。
+    - |
+      $r(r-1)+3r+1=r^2+2r+1=(r+1)^2=0$，$r=-1$（重根），所以$x^{-1}$是解。另一个解是$x^{-1}\ln x$，带着对数，和重根时第二个解的说法一致。
+  solution: |
+    $(r+1)^2=0$，$r=-1$，填 `-1`。
+
+- id: p3
+  tier: medium
+  statement: |
+    对$\nu=2$的:term[贝塞尔方程]{id="math.ode.bessel-equation"}（Bessel's equation）$x^2y''+xy'+(x^2-4)y=0$，取$r=2$，设解为$x^2\sum_{m=0}^{\infty}a_mx^m$，$a_0=1$。求$a_2$。
+  answer:
+    type: number
+    value: -1/12
+  hints:
+    - |
+      代入后比较$x^{m+2}$的系数，得到$a_m$和$a_{m-2}$的关系。
+    - |
+      $\bigl((m+2)^2-4\bigr)a_m+a_{m-2}=0$，即$m(m+4)a_m=-a_{m-2}$。
+    - |
+      $x^2y''+xy'-4y$作用在$x^{m+2}$上得$\bigl((m+2)^2-4\bigr)x^{m+2}=m(m+4)x^{m+2}$，$x^2y$贡献$a_{m-2}x^{m+2}$，所以$m(m+4)a_m=-a_{m-2}$。$m=2$时$12a_2=-a_0$，$a_2=-\frac1{12}$。核对：$J_2$的级数$\frac{x^2}{8}-\frac{x^4}{96}+\cdots$，两项之比也是$-\frac1{12}$。
+  solution: |
+    $m(m+4)a_m=-a_{m-2}$，$a_2=-\frac{1}{12}$，填 `-1/12`。
+
+- id: p4
+  tier: medium
+  statement: |
+    方程$2xy''+y'+y=0$以$0$为正则奇点，指标方程的根是$0$和$\frac12$。对$r=\frac12$的弗罗贝尼乌斯解$\sum_{n=0}^{\infty}a_nx^{n+1/2}$，求$\frac{a_1}{a_0}$。
+  answer:
+    type: number
+    value: -1/3
+  hints:
+    - |
+      代入$y=\sum a_nx^{n+r}$，比较$x^{n+r-1}$的系数。
+    - |
+      $2xy''$、$y'$都贡献$x^{n+r-1}$，$y$贡献$a_{n-1}x^{n+r-1}$：$(n+r)\bigl(2(n+r)-1\bigr)a_n+a_{n-1}=0$。
+    - |
+      $2xy''+y'=\sum\bigl(2(n+r)(n+r-1)+(n+r)\bigr)a_nx^{n+r-1}=\sum(n+r)(2n+2r-1)a_nx^{n+r-1}$，加上$y=\sum a_{n-1}x^{n+r-1}$。$n=0$时得指标方程$r(2r-1)=0$；$r=\frac12$时，$n(2n+1)a_n=-a_{n-1}$，所以$a_1=-\frac{a_0}{3}$，$\frac{a_1}{a_0}=-\frac13$。
+  solution: |
+    $r=\frac12$时$n(2n+1)a_n=-a_{n-1}$，$\frac{a_1}{a_0}=-\frac13$，填 `-1/3`。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明$J_n(x)=\sum_{k=0}^{\infty}\frac{(-1)^k}{k!\,(k+n)!}\bigl(\frac x2\bigr)^{2k+n}$（$n$是非负整数）对所有实数$x$收敛，并且满足$x^2y''+xy'+(x^2-n^2)y=0$。
+  hints:
+    - |
+      收敛：看相邻两项之比。满足方程：逐项求导（term-by-term differentiation），算$x^2y''+xy'-n^2y$作用在$x^{2k+n}$上得什么。
+    - |
+      $x^2(x^m)''+x(x^m)'-n^2x^m=(m^2-n^2)x^m$；$m=2k+n$时$m^2-n^2=4k(k+n)$。
+    - |
+      相邻两项之比的绝对值是$\frac{x^2/4}{(k+1)(k+n+1)}\to0$，由比值判别法（ratio test）对每个$x$收敛，幂级数可以逐项求导。记$c_k=\frac{(-1)^k}{k!(k+n)!2^{2k+n}}$，则$x^2J_n''+xJ_n'-n^2J_n=\sum_k c_k\cdot4k(k+n)x^{2k+n}$。
+
+      另一方面$x^2J_n=\sum_kc_kx^{2k+n+2}=\sum_{k\ge1}c_{k-1}x^{2k+n}$。而$4k(k+n)c_k=\frac{4k(k+n)(-1)^k}{k!(k+n)!2^{2k+n}}=-\frac{(-1)^{k-1}}{(k-1)!(k+n-1)!2^{2k+n-2}}=-c_{k-1}$，所以两部分逐项相消，$J_n$满足贝塞尔方程。
+  reference: |
+    相邻项之比$\frac{x^2/4}{(k+1)(k+n+1)}\to0$，处处收敛。$x^2y''+xy'-n^2y$把$x^{2k+n}$变成$4k(k+n)x^{2k+n}$，而$4k(k+n)c_k=-c_{k-1}$，恰好与$x^2J_n$的对应项相消。
+
+- id: p6
+  tier: hard
+  statement: |
+    对$\nu=\frac12$的贝塞尔方程$x^2y''+xy'+\bigl(x^2-\frac14\bigr)y=0$（$x>0$），令$y=\frac{u}{\sqrt x}$。证明$u''+u=0$，并写出贝塞尔方程的:term[通解]{id="math.ode.general-solution"}（general solution）。
+  hints:
+    - |
+      $y=ux^{-1/2}$，算出$y'$、$y''$。
+    - |
+      $y'=u'x^{-1/2}-\frac12ux^{-3/2}$，$y''=u''x^{-1/2}-u'x^{-3/2}+\frac34ux^{-5/2}$。
+    - |
+      $x^2y''=u''x^{3/2}-u'x^{1/2}+\frac34ux^{-1/2}$，$xy'=u'x^{1/2}-\frac12ux^{-1/2}$，$\bigl(x^2-\frac14\bigr)y=ux^{3/2}-\frac14ux^{-1/2}$。相加，$u'$的两项抵消，$x^{-1/2}$的项$\frac34-\frac12-\frac14=0$，剩下$x^{3/2}(u''+u)=0$，所以$u''+u=0$。
+
+      于是$u=C_1\cos x+C_2\sin x$，通解$y=\frac{C_1\cos x+C_2\sin x}{\sqrt x}$。两个指数$\pm\frac12$之差是$1$，是整数，可这里两个解都不带对数：定理只说「可能」带对数。$\frac{\sin x}{\sqrt x}$在$0$处有界，它正比于$J_{1/2}$。
+  reference: |
+    代入$y=ux^{-1/2}$，$u'$项抵消、$x^{-1/2}$项系数为零，得$u''+u=0$。通解$y=\frac{C_1\cos x+C_2\sin x}{\sqrt x}$；指数之差为整数但不出现对数。
+
+- id: p7
+  tier: thinking
+  statement: |
+    指标方程有重根时，第二个解为什么会带$\ln x$？用最简单的$x^2y''+xy'=0$（$x>0$）看一看，再和常系数方程重根时的$xe^{rx}$比较。
+  hints:
+    - |
+      $x^2y''+xy'=0$的指标方程是$r^2=0$，$x^0=1$是一个解。另一个呢？
+    - |
+      令$x=e^t$，这个方程变成$\ddot y=0$。
+    - |
+      $x^2y''+xy'=0$即$(xy')'=0$，所以$xy'=C$，$y=C\ln x+D$：第二个解是$\ln x$。令$x=e^t$，$x\frac{\dd}{\dd x}=\frac{\dd}{\dd t}$，方程变成$\ddot y=0$，解是$1$和$t$，换回来正是$1$和$\ln x$。
+
+      一般地，$x=e^t$把$x^r$变成$e^{rt}$，把$x^r\ln x$变成$te^{rt}$。常系数方程重根时第二个解是$te^{rt}$，换到$x$上就是$x^r\ln x$：对数项和常系数方程重根时多出的$t$是同一回事。
+  reference: |
+    $x^2y''+xy'=0$即$(xy')'=0$，解是$1$和$\ln x$。$x=e^t$把它变成$\ddot y=0$，解$1$、$t$；$x^r\ln x$对应$te^{rt}$，对数项相当于常系数方程重根时的$te^{rt}$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    边缘固定的圆形鼓面做轴对称振动（各点的位移只和到中心的距离有关）时，振动频率正比于$J_0$的零点$2.405$、$5.520$、$8.654$……，而琴弦的频率是基频（fundamental frequency）的$1$、$2$、$3$……倍。为什么同样是振动，鼓的音高听起来不如琴弦明确？
+  hints:
+    - |
+      算一算鼓的各个频率和最低频率之比。
+    - |
+      $\frac{5.520}{2.405}\approx2.295$，$\frac{8.654}{2.405}\approx3.598$，不是整数。
+    - |
+      琴弦各个振动方式的频率是基频的整数倍，叠加起来的波形以基频为周期重复，耳朵听到一个明确的音高。鼓面的频率之比约是$1:2.295:3.598$，不是整数比，叠加后的波形不再周期性地重复，音高就不明确，听起来更像「咚」的一声。
+
+      这些零点要靠贝塞尔函数算出来，正是弗罗贝尼乌斯方法的用处之一。以后在[圆膜振动与贝塞尔函数](lesson:math.pde.bessel-functions)那一节，会用[分离变量法](lesson:math.pde.separation-of-variables)（separation of variables）把鼓面的振动化成贝塞尔方程。
+  reference: |
+    琴弦的频率是整数倍，合成的波形周期重复，音高明确；鼓面的频率比是$J_0$零点之比，约$1:2.295:3.598$，不成整数比，波形不周期，音高不明确。

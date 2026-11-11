@@ -27,6 +27,91 @@ export function rk4Accurate(f: Rhs, t0: number, y0: number, t1: number, steps = 
   return b + (b - a) / 15;
 }
 
+/** 方程组 Y' = F(t, Y) 的四阶龙格-库塔法，返回 t1 处的 Y。二阶方程写成 Y = [y, y']。 */
+export function rk4Vec(F: (t: number, Y: number[]) => number[], t0: number, Y0: number[], t1: number, steps = 20_000): number[] {
+  const h = (t1 - t0) / steps;
+  let Y = [...Y0];
+  const add = (u: number[], v: number[], c: number): number[] => u.map((x, j) => x + c * v[j]);
+  for (let i = 0; i < steps; i++) {
+    const t = t0 + i * h;
+    const k1 = F(t, Y);
+    const k2 = F(t + h / 2, add(Y, k1, h / 2));
+    const k3 = F(t + h / 2, add(Y, k2, h / 2));
+    const k4 = F(t + h, add(Y, k3, h));
+    Y = Y.map((x, j) => x + (h / 6) * (k1[j] + 2 * k2[j] + 2 * k3[j] + k4[j]));
+  }
+  return Y;
+}
+
+/** 同上，步数加倍外推。 */
+export function rk4VecAccurate(F: (t: number, Y: number[]) => number[], t0: number, Y0: number[], t1: number, steps = 20_000): number[] {
+  const a = rk4Vec(F, t0, Y0, t1, steps);
+  const b = rk4Vec(F, t0, Y0, t1, 2 * steps);
+  return b.map((x, j) => x + (x - a[j]) / 15);
+}
+
+/** 五点差分求一阶、二阶导数，误差是步长的四次方量级。 */
+export function d1(y: (x: number) => number, x: number, h = 1e-2): number {
+  return (-y(x + 2 * h) + 8 * y(x + h) - 8 * y(x - h) + y(x - 2 * h)) / (12 * h);
+}
+export function d2(y: (x: number) => number, x: number, h = 1e-2): number {
+  return (-y(x + 2 * h) + 16 * y(x + h) - 30 * y(x) + 16 * y(x - h) - y(x - 2 * h)) / (12 * h * h);
+}
+
+/** 线性方程组 Ax = b，高斯消元（列主元）。 */
+export function solveLinear(A: number[][], b: number[]): number[] {
+  const n = b.length;
+  const M = A.map((row, i) => [...row, b[i]]);
+  for (let c = 0; c < n; c++) {
+    let p = c;
+    for (let r = c + 1; r < n; r++) if (Math.abs(M[r][c]) > Math.abs(M[p][c])) p = r;
+    [M[c], M[p]] = [M[p], M[c]];
+    for (let r = 0; r < n; r++) {
+      if (r === c) continue;
+      const k = M[r][c] / M[c][c];
+      for (let j = c; j <= n; j++) M[r][j] -= k * M[c][j];
+    }
+  }
+  return M.map((row, i) => row[n] / row[i]);
+}
+
+/**
+ * 在形如 Σ a_m x^{m+r} 的级数上作用线性微分算子 Σ c(x)·y^{(d)}，c 是多项式（系数数组，c[j] 是 x^j 的系数）。
+ * 依次取 a_0 = 1、令最低的那些次幂的系数逐个为零，求出 a_1 … a_N。不预先推递推公式，只做系数的加减乘。
+ * shift 是各项作用后次数的最小变化量（例如 x²y″、xy′、y 都是 0，y″ 是 −2），用来确定 a_n 第一次出现在哪个次幂上。
+ */
+export function seriesCoefficients(terms: { c: number[]; d: number }[], r: number, N: number, a0 = 1, a1: number | null = null): number[] {
+  const shift = Math.min(...terms.map(({ c, d }) => c.findIndex((v) => v !== 0) - d));
+  const a: number[] = [a0];
+  // 次幂 x^{r+k} 的系数（k 从 shift 起算），只用到已知的 a_0 … a_{n-1} 和待定的 a_n
+  const coefficientAt = (k: number, aa: number[]): number => {
+    let s = 0;
+    for (const { c, d } of terms)
+      for (let j = 0; j < c.length; j++) {
+        if (c[j] === 0) continue;
+        const m = k - j + d; // 这一项里贡献到 x^{r+k} 的是 a_m x^{m+r} 求 d 阶导再乘 x^j
+        if (m < 0 || m >= aa.length) continue;
+        let fall = 1;
+        for (let i = 0; i < d; i++) fall *= m + r - i;
+        s += c[j] * fall * aa[m];
+      }
+    return s;
+  };
+  for (let n = 1; n <= N; n++) {
+    if (n === 1 && a1 !== null) {
+      a.push(a1);
+      continue;
+    }
+    // a_n 第一次出现在 x^{r+n+shift}；把它当未知数，系数是线性的：取 a_n = 0 和 1 各算一次
+    const k = n + shift;
+    const base = coefficientAt(k, [...a, 0]);
+    const slope = coefficientAt(k, [...a, 1]) - base;
+    if (Math.abs(slope) < 1e-14) throw new Error(`第 ${n} 个系数解不出来（指标方程的根相差整数）`);
+    a.push(-base / slope);
+  }
+  return a;
+}
+
 /**
  * 解往右走多远会跑到无穷：四阶龙格-库塔法，步长随 |y| 变小（每步 y 只变千分之几），
  * 直到 |y| 超过 big。返回那时的 t（再往后到无穷只剩约 1/big 量级的时间，可以忽略）。

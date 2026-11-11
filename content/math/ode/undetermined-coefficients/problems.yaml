@@ -1,0 +1,131 @@
+- id: p1
+  tier: easy
+  statement: |
+    用:term[待定系数法]{id="math.ode.method-of-undetermined-coefficients"}（method of undetermined coefficients）求$y''-3y'+2y=4$的常数特解$y_p=A$，求$A$。
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      常数的导数是$0$，把$y=A$代进去。
+    - |
+      代入得$2A=4$。
+    - |
+      $y=A$时$y'=y''=0$，方程变成$2A=4$，所以$A=2$。$0$不是特征根（特征根是$1$、$2$），所以常数试探解可行。
+  solution: |
+    $2A=4$，$A=2$，填 `2`。
+
+- id: p2
+  tier: easy
+  statement: |
+    求$y''+2y=e^x$形如$Ae^x$的特解里的$A$。
+  answer:
+    type: number
+    value: 1/3
+  hints:
+    - |
+      把$y=Ae^x$代进去，$e^x$求导不变。
+    - |
+      代入得$Ae^x+2Ae^x=e^x$。
+    - |
+      $(1+2)Ae^x=e^x$，$A=\frac13$。$1$不是特征方程$r^2+2=0$的根，所以不用乘$x$。
+  solution: |
+    $3A=1$，$A=\frac13$，填 `1/3`。
+
+- id: p3
+  tier: medium
+  statement: |
+    $y''-y=e^x$的右边对应的$1$是特征根，所以特解要写成$Axe^x$。求$A$。
+  answer:
+    type: number
+    value: 1/2
+  hints:
+    - |
+      算出$(xe^x)'$和$(xe^x)''$，代进左边。
+    - |
+      $(xe^x)'=(x+1)e^x$，$(xe^x)''=(x+2)e^x$。
+    - |
+      $(Axe^x)''-Axe^x=A(x+2)e^x-Axe^x=2Ae^x$，令它等于$e^x$，得$A=\frac12$，特解是$\frac12xe^x$。也可以用$L[ue^{kx}]=(u''+p'(k)u'+p(k)u)e^{kx}$：$p(r)=r^2-1$，$p(1)=0$，$p'(1)=2$，$u=Ax$时括号等于$2A$。
+  solution: |
+    代入得$2Ae^x=e^x$，$A=\frac12$，填 `1/2`。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$y''+4y=8x^2$形如$Ax^2+Bx+C$的特解，按$A$、$B$、$C$的顺序填写。
+  answer:
+    type: tuple
+    value: [2, 0, -1]
+  hints:
+    - |
+      代入后比较$x^2$、$x$、常数项的系数。
+    - |
+      $y''=2A$，$y''+4y=4Ax^2+4Bx+(2A+4C)$。
+    - |
+      $4A=8$，$4B=0$，$2A+4C=0$，得$A=2$、$B=0$、$C=-1$，特解是$2x^2-1$。$0$不是特征根（特征根是$\pm2i$），所以二次多项式的试探解可行。
+  solution: |
+    比较系数：$A=2$、$B=0$、$C=-1$，填 `2, 0, -1`。
+
+- id: p5
+  tier: hard
+  statement: |
+    记$L[y]=y''+ay'+by$，$p(r)=r^2+ar+b$。(1) 证明对任意两次可导的$u$，$L[ue^{kx}]=\bigl(u''+p'(k)u'+p(k)u\bigr)e^{kx}$。(2) 由此说明：$k$是二重特征根、右边是$e^{kx}$时，特解可以取$\frac{x^2}{2}e^{kx}$。
+  hints:
+    - |
+      $(ue^{kx})'=(u'+ku)e^{kx}$，再求一次导。
+    - |
+      $(ue^{kx})''=(u''+2ku'+k^2u)e^{kx}$，代入后按$u''$、$u'$、$u$整理。
+    - |
+      (1) $L[ue^{kx}]=(u''+2ku'+k^2u)e^{kx}+a(u'+ku)e^{kx}+bue^{kx}=\bigl(u''+(2k+a)u'+(k^2+ak+b)u\bigr)e^{kx}$，而$p'(k)=2k+a$，$p(k)=k^2+ak+b$。
+
+      (2) 二重根时$p(k)=p'(k)=0$，$L[ue^{kx}]=u''e^{kx}$。取$u=\frac{x^2}{2}$，$u''=1$，所以$L\bigl[\frac{x^2}{2}e^{kx}\bigr]=e^{kx}$。例如$y''-2y'+y=e^x$的一个特解是$\frac{x^2}{2}e^x$。
+  reference: |
+    (1) 求导整理得$L[ue^{kx}]=(u''+(2k+a)u'+(k^2+ak+b)u)e^{kx}$，即所证。(2) 二重根时$p(k)=p'(k)=0$，$L[ue^{kx}]=u''e^{kx}$，$u=\frac{x^2}{2}$给出$e^{kx}$。
+
+- id: p6
+  tier: hard
+  statement: |
+    有阻尼的振子受周期外力：$y''+cy'+y=\cos\omega t$（$c>0$）。(1) 求它形如$A\cos\omega t+B\sin\omega t$的特解的振幅$\sqrt{A^2+B^2}$。(2) 设$0<c<\sqrt2$，振幅在$\omega$取多少时最大？
+  hints:
+    - |
+      用复数更快：试$Ze^{i\omega t}$，代入$y''+cy'+y=e^{i\omega t}$，特解的实部就是原方程的特解。
+    - |
+      $(1-\omega^2+ic\omega)Z=1$，振幅是$|Z|=\frac{1}{\sqrt{(1-\omega^2)^2+c^2\omega^2}}$。
+    - |
+      (1) 代入$Ze^{i\omega t}$得$(1-\omega^2+ic\omega)Z=1$。$Ze^{i\omega t}$的实部是$A\cos\omega t+B\sin\omega t$的形式，振幅等于$|Z|=\frac{1}{\sqrt{(1-\omega^2)^2+c^2\omega^2}}$；$c>0$时$\pm i\omega$不是特征根，分母不为零。
+
+      (2) 令$u=\omega^2$，最小化$D(u)=(1-u)^2+c^2u$：$D'(u)=-2(1-u)+c^2=0$得$u=1-\frac{c^2}{2}$，它在$c<\sqrt2$时为正。所以$\omega=\sqrt{1-\frac{c^2}{2}}$时振幅最大，最大值$\frac{1}{c\sqrt{1-c^2/4}}$。阻尼越小，峰越高越尖，峰的位置越靠近固有频率$1$；$c\ge\sqrt2$时振幅随$\omega$单调下降，没有峰。
+  reference: |
+    复数试探解给出$(1-\omega^2+ic\omega)Z=1$，振幅$\frac{1}{\sqrt{(1-\omega^2)^2+c^2\omega^2}}$。令$u=\omega^2$求$(1-u)^2+c^2u$的最小值，得$\omega=\sqrt{1-c^2/2}$，最大振幅$\frac{1}{c\sqrt{1-c^2/4}}$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    为什么待定系数法对$y''+y=\tan x$行不通？右边的函数要满足什么条件，才能写出只有有限个未知系数的试探解？
+  hints:
+    - |
+      看$\tan x$的各阶导数：它们能不能用有限个固定的函数线性组合出来？
+    - |
+      $(\tan x)'=\sec^2x$，$(\sec^2x)'=2\sec^2x\tan x$，越来越复杂。
+    - |
+      待定系数法要求：存在一个有限维的函数空间，它包含$g$，并且对求导封闭。这样$L$把这个空间映到自己，求特解就成了在这个空间里解线性方程组。多项式乘$e^{kx}$、乘$\cos\beta x$或$\sin\beta x$的有限和正好满足这一点：它们是常系数齐次线性方程（homogeneous linear equation with constant coefficients）的解。
+
+      $\tan x$的导数$\sec^2x$、$2\sec^2x\tan x$、……一个比一个复杂，不落在任何有限维的、对求导封闭的空间里，所以找不到有限个系数的试探解。这时要用不依赖右边样子的[常数变易法](lesson:math.ode.variation-of-parameters)。
+  reference: |
+    需要包含$g$、对求导封闭的有限维函数空间，这样的$g$正是常系数齐次线性方程的解（多项式、指数、正弦余弦的乘积与和）。$\tan x$的各阶导数越来越复杂，不在这样的空间里，要用常数变易法。
+
+- id: p8
+  tier: thinking
+  statement: |
+    调吉他时，同时弹两根应当同音的弦，听到声音「哇——哇——」地忽强忽弱，拧弦钮让它越来越慢，直到消失。用拍的公式解释这个做法。
+  hints:
+    - |
+      两个频率接近的振动相加：$\cos\omega_1t+\cos\omega_2t$可以用和差化积写成什么？
+    - |
+      $\cos\omega_1t+\cos\omega_2t=2\cos\frac{(\omega_1-\omega_2)t}{2}\cos\frac{(\omega_1+\omega_2)t}{2}$。
+    - |
+      和差化积后，后一个因子是频率约为$\omega_1$的快振动，前一个因子是频率$\frac{|\omega_1-\omega_2|}{2}$的慢变化，当作缓慢变化的振幅。声音的响度随$|\cos\frac{(\omega_1-\omega_2)t}{2}|$变，每秒强弱$\frac{|\omega_1-\omega_2|}{2\pi}$次（以角频率计）。
+
+      所以「哇哇」声越慢，两根弦的频率差越小；拍消失时两根弦同音。本节的$\frac{\cos\omega t-\cos\omega_0t}{\omega_0^2-\omega^2}$也是这个道理：外力和振子自己的振动叠加，频率差越小，拍越慢、越大。
+  reference: |
+    $\cos\omega_1t+\cos\omega_2t=2\cos\frac{(\omega_1-\omega_2)t}{2}\cos\frac{(\omega_1+\omega_2)t}{2}$，响度按频率差的一半起伏，强弱的次数正比于$|\omega_1-\omega_2|$。拍越慢，频率越接近，拍消失即同音。

@@ -1,0 +1,131 @@
+- id: p1
+  tier: easy
+  statement: |
+    用:term[常数变易法]{id="math.ode.variation-of-parameters-method"}（variation of parameters）解$y''+y=\sec x$，取$y_1=\cos x$、$y_2=\sin x$。$u_2'(x)$恒等于一个常数，求这个常数。
+  answer:
+    type: number
+    value: 1
+  hints:
+    - |
+      公式是$u_2'=\frac{y_1g}{W}$，先算$W(\cos x,\sin x)$。
+    - |
+      $W=\cos^2x+\sin^2x=1$，$g=\sec x=\frac1{\cos x}$。
+    - |
+      $u_2'=\frac{\cos x\cdot\sec x}{1}=1$，所以$u_2=x$。另一个是$u_1'=-\sin x\sec x=-\tan x$，$u_1=\ln\cos x$。
+  solution: |
+    $u_2'=\frac{y_1g}{W}=\cos x\sec x=1$，填 `1`。
+
+- id: p2
+  tier: easy
+  statement: |
+    用常数变易法解$y''-y=6e^x$，取$y_1=e^x$、$y_2=e^{-x}$。$u_1'(x)$恒等于一个常数，求这个常数。
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      先算$W(e^x,e^{-x})$，再用$u_1'=-\frac{y_2g}{W}$。
+    - |
+      $W=e^x\cdot(-e^{-x})-e^x\cdot e^{-x}=-2$。
+    - |
+      $u_1'=-\frac{e^{-x}\cdot6e^x}{-2}=3$，所以$u_1=3x$；$u_2'=\frac{e^x\cdot6e^x}{-2}=-3e^{2x}$，$u_2=-\frac32e^{2x}$。特解$y_p=3xe^x-\frac32e^x$，后一项是齐次解，可以去掉。
+  solution: |
+    $W=-2$，$u_1'=-\frac{e^{-x}\cdot6e^x}{-2}=3$，填 `3`。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$y''+y=\sec x$满足$y(0)=0$、$y'(0)=0$的解在$x=\frac\pi4$处的值。
+  answer:
+    type: number
+    value: sqrt(2)/2*(pi/4 - ln(2)/2)
+  hints:
+    - |
+      用常数变易法求出$u_1$、$u_2$，取在$0$处为零的原函数。
+    - |
+      $u_1'=-\tan x$，$u_2'=1$；取$u_1=\ln\cos x$、$u_2=x$，它们在$0$处都是$0$。
+    - |
+      $y_p=\cos x\ln\cos x+x\sin x$。$y_p(0)=0$；$y_p'=-\sin x\ln\cos x+x\cos x$（$-\sin x$和$+\sin x$两项抵消），$y_p'(0)=0$，所以所求的解就是$y_p$。$y\bigl(\frac\pi4\bigr)=\frac{\sqrt2}{2}\ln\frac{\sqrt2}{2}+\frac\pi4\cdot\frac{\sqrt2}{2}=\frac{\sqrt2}{2}\bigl(\frac\pi4-\frac{\ln2}{2}\bigr)\approx0.3102958$。
+  solution: |
+    $y=\cos x\ln\cos x+x\sin x$，$y\bigl(\frac\pi4\bigr)=\frac{\sqrt2}{2}\bigl(\frac\pi4-\frac{\ln2}{2}\bigr)$，填 `sqrt(2)/2*(pi/4 - ln(2)/2)`。
+
+- id: p4
+  tier: medium
+  statement: |
+    $y''+y=x$满足$y(0)=y'(0)=0$的解可以写成$y(x)=\int_0^x\sin(x-s)\,s\dd s$。求$y(\pi)$。
+  answer:
+    type: number
+    value: pi
+  hints:
+    - |
+      可以直接算这个积分，也可以猜出特解再配初值。
+    - |
+      $\sin(x-s)=\sin x\cos s-\cos x\sin s$，把积分拆成两个；或者注意$x$是一个特解。
+    - |
+      特解$y=x$配上初值：$y=x+C_1\cos x+C_2\sin x$，$y(0)=C_1=0$，$y'(0)=1+C_2=0$，所以$y=x-\sin x$，$y(\pi)=\pi$。直接算积分也一样：$\int_0^x\sin(x-s)s\dd s=\sin x\int_0^xs\cos s\dd s-\cos x\int_0^xs\sin s\dd s=x-\sin x$。
+  solution: |
+    $y=x-\sin x$，$y(\pi)=\pi$，填 `pi`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$y_1$、$y_2$是$y''+py'+qy=0$在区间$I$上的基本解组。证明：若$u_1'$、$u_2'$满足$u_1'y_1+u_2'y_2=0$、$u_1'y_1'+u_2'y_2'=g$，则$y=u_1y_1+u_2y_2$满足$y''+py'+qy=g$；并解出$u_1'=-\frac{y_2g}{W}$、$u_2'=\frac{y_1g}{W}$。
+  hints:
+    - |
+      先用第一个条件化简$y'$，再求$y''$。
+    - |
+      $y'=u_1y_1'+u_2y_2'$，$y''=u_1y_1''+u_2y_2''+u_1'y_1'+u_2'y_2'$。
+    - |
+      由第一个条件，$y'=u_1y_1'+u_2y_2'+(u_1'y_1+u_2'y_2)=u_1y_1'+u_2y_2'$；再求导，$y''=u_1y_1''+u_2y_2''+u_1'y_1'+u_2'y_2'$。所以$y''+py'+qy=u_1(y_1''+py_1'+qy_1)+u_2(y_2''+py_2'+qy_2)+(u_1'y_1'+u_2'y_2')=0+0+g=g$。
+
+      解方程组：第一个方程乘$y_2'$、第二个乘$y_2$，相减得$u_1'(y_1y_2'-y_1'y_2)=-y_2g$，即$u_1'=-\frac{y_2g}{W}$；第一个乘$y_1'$、第二个乘$y_1$，相减得$u_2'(y_1y_2'-y_1'y_2)=y_1g$，即$u_2'=\frac{y_1g}{W}$。由阿贝尔公式，$W$在$I$上处处不为零，可以除。
+  reference: |
+    第一个条件给出$y'=u_1y_1'+u_2y_2'$，于是$L[y]=u_1L[y_1]+u_2L[y_2]+u_1'y_1'+u_2'y_2'=g$。消元得$u_1'W=-y_2g$、$u_2'W=y_1g$，$W\ne0$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$p$、$q$、$g$在$I$上连续，$y_1$、$y_2$是基本解组，$x_0\in I$。证明$y_p(x)=\int_{x_0}^{x}\frac{y_1(s)y_2(x)-y_1(x)y_2(s)}{W(s)}g(s)\dd s$满足$y_p(x_0)=y_p'(x_0)=0$，并且是$y''+py'+qy=g$的解。
+  hints:
+    - |
+      把$x$提到积分外面：$y_p=y_2(x)A(x)-y_1(x)B(x)$，$A$、$B$是变上限的积分。
+    - |
+      $A(x)=\int_{x_0}^{x}\frac{y_1g}{W}\dd s$，$B(x)=\int_{x_0}^{x}\frac{y_2g}{W}\dd s$，由微积分基本定理（fundamental theorem of calculus），$A'=\frac{y_1g}{W}$、$B'=\frac{y_2g}{W}$。
+    - |
+      记$u_2=A$、$u_1=-B$，则$y_p=u_1y_1+u_2y_2$，并且$u_1'=-\frac{y_2g}{W}$、$u_2'=\frac{y_1g}{W}$正是常数变易公式，所以由第 5 题，$y_p$是解。
+
+      $A(x_0)=B(x_0)=0$，所以$y_p(x_0)=0$。由附加条件$u_1'y_1+u_2'y_2=0$，$y_p'=u_1y_1'+u_2y_2'$，在$x_0$处也是$0$。这个特解是「零初值」的那一个；一般的初值再加上适当的$C_1y_1+C_2y_2$即可。
+  reference: |
+    $y_p=y_2A-y_1B$，$A'=\frac{y_1g}{W}$、$B'=\frac{y_2g}{W}$，即常数变易公式中的$u_2=A$、$u_1=-B$，由第 5 题是解；$A(x_0)=B(x_0)=0$给出$y_p(x_0)=0$，$y_p'=u_1y_1'+u_2y_2'$给出$y_p'(x_0)=0$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    常数变易法里，附加条件$u_1'y_1+u_2'y_2=0$为什么可以随便加？如果不加，或者换成别的条件，会怎样？
+  hints:
+    - |
+      数一数：未知函数有几个，要满足的方程有几个？
+    - |
+      两个未知函数$u_1$、$u_2$，只要满足一个方程，所以有很多组$(u_1,u_2)$都给出解，可以再挑一个条件。
+    - |
+      $y=u_1y_1+u_2y_2$里有两个未知函数，可它们只要让$y$满足一个方程，所以满足要求的$(u_1,u_2)$有无穷多组；挑哪一组都行，只要最后的$y$是解。附加条件是一种挑法，它的好处是$y'$里不出现$u_1'$、$u_2'$，$y''$里只出现一阶导数，$u_1'$、$u_2'$满足代数方程组。
+
+      不加条件，代入后得到的是关于$u_1$、$u_2$的二阶方程，比原问题还难。几何上，这个条件让$y_p$在每一点和「冻结$u_1$、$u_2$得到的齐次解」相切（见本节的动画），换别的条件就失去这种简单的关系。
+  reference: |
+    两个未知函数只需满足一个方程，有选择的余地；附加条件使$u_1'$、$u_2'$满足代数方程组。不加条件会得到二阶方程；这个条件的几何意义是$y_p$处处与冻结系数的齐次解相切。
+
+- id: p8
+  tier: thinking
+  statement: |
+    $y''+y=x^2$和$y''+y=e^{x^2}$，你会分别用哪种方法求特解？对后一个，常数变易法给出的结果能写成初等函数吗？这时这个结果还有什么用？
+  hints:
+    - |
+      $x^2$是多项式，待定系数法最快；$e^{x^2}$求导越来越复杂。
+    - |
+      常数变易法给出$y_p=\int_0^x\sin(x-s)e^{s^2}\dd s$，里面的原函数不是初等函数。
+    - |
+      $y''+y=x^2$：试$Ax^2+Bx+C$，马上得到$x^2-2$，比常数变易法省事。$y''+y=e^{x^2}$：待定系数法用不了，常数变易法给出$y_p(x)=\int_0^x\sin(x-s)e^{s^2}\dd s$，被积函数没有初等的原函数，结果写不成初等函数。
+
+      但这个积分本身就是一个明确的答案：可以用数值积分算出任意一点的值，可以由它估计解的大小，也可以由它看出解对右边的依赖是「加权叠加」。很多情形下，「把解写成一个积分」就是我们能得到的最好的公式。
+  reference: |
+    $x^2$用待定系数法得$x^2-2$；$e^{x^2}$只能用常数变易法，得到$\int_0^x\sin(x-s)e^{s^2}\dd s$，不是初等函数。这个积分仍可数值计算、估计大小，并显示解是外力的加权叠加。

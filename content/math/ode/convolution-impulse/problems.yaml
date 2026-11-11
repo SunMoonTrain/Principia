@@ -1,0 +1,131 @@
+- id: p1
+  tier: easy
+  statement: |
+    求:term[单位阶跃函数]{id="math.ode.unit-step-function"}（unit step function）$u_2(t)$的拉普拉斯变换在$s=1$处的值。
+  answer:
+    type: number
+    value: exp(-2)
+  hints:
+    - |
+      $\mathcal L\{u_c(t)\}=\frac{e^{-cs}}{s}$。
+    - |
+      这里$c=2$，$\mathcal L\{u_2\}=\frac{e^{-2s}}{s}$。
+    - |
+      直接算：$\int_2^{+\infty}e^{-st}\dd t=\frac{e^{-2s}}{s}$，$s=1$时等于$e^{-2}\approx0.1353353$。
+  solution: |
+    $\frac{e^{-2s}}{s}$在$s=1$处为$e^{-2}$，填 `exp(-2)`。
+
+- id: p2
+  tier: easy
+  statement: |
+    求卷积$(t*t)(1)$，即$f(t)=g(t)=t$时$(f*g)(t)$在$t=1$处的值。
+  answer:
+    type: number
+    value: 1/6
+  hints:
+    - |
+      按定义，$(t*t)(1)=\int_0^1\tau(1-\tau)\dd\tau$。
+    - |
+      $\int_0^1(\tau-\tau^2)\dd\tau=\frac12-\frac13$。
+    - |
+      $\int_0^1\tau(1-\tau)\dd\tau=\frac12-\frac13=\frac16$。用卷积定理核对：$\mathcal L\{t*t\}=\frac{1}{s^2}\cdot\frac{1}{s^2}=\frac{1}{s^4}=\mathcal L\bigl\{\frac{t^3}{6}\bigr\}$，所以$t*t=\frac{t^3}{6}$，在$1$处也是$\frac16$。
+  solution: |
+    $\int_0^1\tau(1-\tau)\dd\tau=\frac16$，填 `1/6`。
+
+- id: p3
+  tier: medium
+  statement: |
+    解$y''+4y=\delta(t-1)$、$y(0)=y'(0)=0$，求$y(2)$。
+  answer:
+    type: number
+    value: sin(2)/2
+  hints:
+    - |
+      先求冲激响应：$H=\frac{1}{s^2+4}$。
+    - |
+      $h(t)=\frac12\sin2t$；在$t=1$敲一下，响应是$h$平移$1$。
+    - |
+      $Y=\frac{e^{-s}}{s^2+4}$，$\frac{1}{s^2+4}=\mathcal L\bigl\{\frac12\sin2t\bigr\}$，由时间平移，$y=u_1(t)\cdot\frac12\sin\bigl(2(t-1)\bigr)$。$y(2)=\frac12\sin2\approx0.4546487$。
+  solution: |
+    $y=u_1(t)\frac12\sin2(t-1)$，$y(2)=\frac{\sin2}{2}$，填 `sin(2)/2`。
+
+- id: p4
+  tier: medium
+  statement: |
+    解$y'+y=u_1(t)$、$y(0)=0$，求$y(2)$。
+  answer:
+    type: number
+    value: 1-exp(-1)
+  hints:
+    - |
+      取变换：$(s+1)Y=\frac{e^{-s}}{s}$。
+    - |
+      $\frac{1}{s(s+1)}=\frac1s-\frac{1}{s+1}$，是$1-e^{-t}$的变换。
+    - |
+      $Y=e^{-s}\Bigl(\frac1s-\frac{1}{s+1}\Bigr)$，由时间平移，$y=u_1(t)\bigl(1-e^{-(t-1)}\bigr)$。$y(2)=1-e^{-1}\approx0.6321206$。
+  solution: |
+    $y=u_1(t)\bigl(1-e^{-(t-1)}\bigr)$，$y(2)=1-e^{-1}$，填 `1-exp(-1)`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$、$g$在$[0,+\infty)$上连续，$|f|,|g|\le Me^{at}$。证明$\mathcal L\{f*g\}=F(s)G(s)$（$s>a$）。交换积分次序可以直接用。
+  hints:
+    - |
+      从左边出发：$\mathcal L\{f*g\}=\int_0^{+\infty}e^{-st}\int_0^tf(\tau)g(t-\tau)\dd\tau\dd t$，积分区域是$0\le\tau\le t$。
+    - |
+      交换次序后，内层对$t$从$\tau$积到$+\infty$；再换元$\sigma=t-\tau$。
+    - |
+      积分区域是$\{(\tau,t):0\le\tau\le t\}$，交换次序得$\int_0^{+\infty}f(\tau)\Bigl(\int_\tau^{+\infty}e^{-st}g(t-\tau)\dd t\Bigr)\dd\tau$。内层令$\sigma=t-\tau$，等于$e^{-s\tau}\int_0^{+\infty}e^{-s\sigma}g(\sigma)\dd\sigma=e^{-s\tau}G(s)$。
+
+      所以$\mathcal L\{f*g\}=\int_0^{+\infty}e^{-s\tau}f(\tau)\dd\tau\cdot G(s)=F(s)G(s)$。交换次序是允许的：$\bigl|e^{-st}f(\tau)g(t-\tau)\bigr|\le M^2e^{a\tau}e^{a(t-\tau)}e^{-st}=M^2e^{-(s-a)t}$，它在区域上的积分是$\int_0^{+\infty}M^2te^{-(s-a)t}\dd t$，$s>a$时有限。
+  reference: |
+    在区域$0\le\tau\le t$上交换积分次序，内层换元$\sigma=t-\tau$得$e^{-s\tau}G(s)$，于是$\mathcal L\{f*g\}=F(s)G(s)$。$s>a$时被积函数被$M^2e^{-(s-a)t}$控制，交换次序合法。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$y''+ay'+by=0$的:term[特征方程]{id="math.ode.characteristic-equation"}（characteristic equation）有两个不同的实根$r_1$、$r_2$，$h$是冲激响应（$h(0)=0$、$h'(0)=1$），$g$连续。不用拉普拉斯变换，直接验证$y(t)=\int_0^th(t-\tau)g(\tau)\dd\tau$满足$y''+ay'+by=g$、$y(0)=y'(0)=0$。
+  hints:
+    - |
+      写出$h(t)=\frac{e^{r_1t}-e^{r_2t}}{r_1-r_2}$，于是$h(t-\tau)$可以拆成$e^{r_it}$乘$e^{-r_i\tau}$的形式。
+    - |
+      $y(t)=\frac{1}{r_1-r_2}\Bigl(e^{r_1t}A_1(t)-e^{r_2t}A_2(t)\Bigr)$，$A_i(t)=\int_0^te^{-r_i\tau}g(\tau)\dd\tau$，$A_i'=e^{-r_it}g(t)$。
+    - |
+      $h=\frac{e^{r_1t}-e^{r_2t}}{r_1-r_2}$满足$h(0)=0$、$h'(0)=1$。代入得$y=\frac{1}{r_1-r_2}(e^{r_1t}A_1-e^{r_2t}A_2)$。由微积分基本定理（fundamental theorem of calculus）$A_i'=e^{-r_it}g$，所以$y'=\frac{1}{r_1-r_2}(r_1e^{r_1t}A_1-r_2e^{r_2t}A_2)+\frac{g-g}{r_1-r_2}=\frac{1}{r_1-r_2}(r_1e^{r_1t}A_1-r_2e^{r_2t}A_2)$。
+
+      再求导，$y''=\frac{1}{r_1-r_2}(r_1^2e^{r_1t}A_1-r_2^2e^{r_2t}A_2)+\frac{(r_1-r_2)g}{r_1-r_2}$。于是$y''+ay'+by=\frac{1}{r_1-r_2}\bigl((r_1^2+ar_1+b)e^{r_1t}A_1-(r_2^2+ar_2+b)e^{r_2t}A_2\bigr)+g=g$。$A_i(0)=0$，所以$y(0)=y'(0)=0$。这和常数变易法的推导是一回事。
+  reference: |
+    $h(t-\tau)=\frac{e^{r_1t}e^{-r_1\tau}-e^{r_2t}e^{-r_2\tau}}{r_1-r_2}$，$y=\frac{e^{r_1t}A_1-e^{r_2t}A_2}{r_1-r_2}$，$A_i'=e^{-r_it}g$。求导两次，含$A_i$的项因特征方程而消失，剩下$g$；$A_i(0)=0$给出零初值。
+
+- id: p7
+  tier: thinking
+  statement: |
+    把「敲一下」换成一个真实的力：在$[0,\varepsilon]$上大小为$\frac1\varepsilon$、之后为零。$y''+y$受这个力、从静止出发，$t>\varepsilon$以后的运动是什么？$\varepsilon\to0$时趋于什么？为什么说冲激响应描述的是「冲量」而不是「力」？
+  hints:
+    - |
+      力写成$\frac1\varepsilon\bigl(u_0(t)-u_\varepsilon(t)\bigr)$，变换是$\frac{1-e^{-\varepsilon s}}{\varepsilon s}$。
+    - |
+      $y=\frac1\varepsilon\bigl((1-\cos t)-u_\varepsilon(t)(1-\cos(t-\varepsilon))\bigr)$；$t>\varepsilon$时化简。
+    - |
+      $t>\varepsilon$时，$y=\frac{\cos(t-\varepsilon)-\cos t}{\varepsilon}$。$\varepsilon\to0$时，它是$\cos$的差商（difference quotient），趋于$-\frac{\dd}{\dd t}\cos t=\sin t$，正是冲激响应。
+
+      力的冲量$\int_0^\varepsilon\frac1\varepsilon\dd t=1$不随$\varepsilon$变，力的大小却趋于无穷。只要作用时间远短于系统自己的时间尺度（这里是周期$2\pi$），响应就只取决于冲量：球拍击球、锤子敲钉子都是这样，所以用$\delta$函数，只记冲量，不管力在那一瞬间具体怎么变。
+  reference: |
+    $t>\varepsilon$时$y=\frac{\cos(t-\varepsilon)-\cos t}{\varepsilon}\to\sin t$。冲量恒为$1$，作用时间短于系统的时间尺度时，响应只由冲量决定，这正是$\delta$函数的意义。
+
+- id: p8
+  tier: thinking
+  statement: |
+    为什么对$y''+ay'+by=g$这样的系统，知道了冲激响应$h$，任何输入$g$的响应就都知道了？如果系数随时间变化，或者方程是非线性的，比如$y''+y^3=g$，这个说法还成立吗？
+  hints:
+    - |
+      推导$y=h*g$时，用到了方程的哪两个性质？
+    - |
+      一是线性：响应可以叠加；二是系数不随时间变：在$\tau$时刻敲一下的响应，是在$0$时刻敲一下的响应平移$\tau$。
+    - |
+      $y=h*g$的推导用到两点：线性，各个小冲击的响应可以相加；时不变（time-invariant，系数是常数），在$\tau$时刻敲一下的响应就是$h(t-\tau)$。两者都成立，一个函数$h$就把系统完全刻画了，工程上测一次冲激响应就能预测任何输入的输出。
+
+      系数随时间变化时，线性还在，但$\tau$时刻敲一下的响应不再是$h$的平移，要用一个两变量的函数$G(t,\tau)$代替$h(t-\tau)$，常数变易法给出的正是它。方程非线性时，例如$y''+y^3=g$，两个输入之和的响应不等于响应之和，叠加失效，冲激响应就不再能决定一切。
+  reference: |
+    靠的是线性（响应可叠加）和时不变（敲击时刻的响应是$h$的平移）。系数变化时要用两变量的$G(t,\tau)$代替$h(t-\tau)$；非线性时叠加失效，冲激响应不能决定一般输入的响应。

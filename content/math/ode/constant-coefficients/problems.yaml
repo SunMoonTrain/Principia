@@ -1,0 +1,131 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$y''-5y'+6y=0$的:term[特征方程]{id="math.ode.characteristic-equation"}（characteristic equation）的全部根。
+  answer:
+    type: set
+    value: [2, 3]
+  hints:
+    - |
+      试$y=e^{rx}$，代入得到$r$的二次方程。
+    - |
+      特征方程是$r^2-5r+6=0$。
+    - |
+      $r^2-5r+6=(r-2)(r-3)=0$，根是$2$、$3$，所以通解是$C_1e^{2x}+C_2e^{3x}$。
+  solution: |
+    $(r-2)(r-3)=0$，填 `2, 3`。
+
+- id: p2
+  tier: easy
+  statement: |
+    求$y''+4y=0$满足$y(0)=1$、$y'(0)=2$的解在$x=\frac\pi2$处的值。
+  answer:
+    type: number
+    value: -1
+  hints:
+    - |
+      特征方程$r^2+4=0$的根是$\pm2i$，通解是什么？
+    - |
+      通解$y=C_1\cos2x+C_2\sin2x$，$y(0)=C_1$，$y'(0)=2C_2$。
+    - |
+      $C_1=1$，$2C_2=2$，$C_2=1$，$y=\cos2x+\sin2x$，所以$y\bigl(\frac\pi2\bigr)=\cos\pi+\sin\pi=-1$。
+  solution: |
+    $y=\cos2x+\sin2x$，$y\bigl(\frac\pi2\bigr)=-1$，填 `-1`。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$y''+6y'+9y=0$满足$y(0)=0$、$y'(0)=1$的解在$x=1$处的值。
+  answer:
+    type: number
+    value: exp(-3)
+  hints:
+    - |
+      特征方程有重根，通解里要用到$xe^{rx}$。
+    - |
+      $r^2+6r+9=(r+3)^2$，通解$y=(C_1+C_2x)e^{-3x}$。
+    - |
+      $y(0)=C_1=0$；$y=C_2xe^{-3x}$，$y'=C_2(1-3x)e^{-3x}$，$y'(0)=C_2=1$。所以$y=xe^{-3x}$，$y(1)=e^{-3}\approx0.04979$。
+  solution: |
+    $y=xe^{-3x}$，$y(1)=e^{-3}$，填 `exp(-3)`。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$y$是$y''+2y'+5y=0$满足$y(0)=0$、$y'(0)=2$的解。求$y$在$x>0$上第一个极大值点的位置。
+  answer:
+    type: number
+    value: atan(2)/2
+  hints:
+    - |
+      先求出解：特征根是一对复根。
+    - |
+      特征根$-1\pm2i$，满足初值的解是$y=e^{-x}\sin2x$。极大值点处$y'=0$。
+    - |
+      $y=e^{-x}(C_1\cos2x+C_2\sin2x)$，$y(0)=C_1=0$，$y'(0)=2C_2=2$，所以$y=e^{-x}\sin2x$。$y'=e^{-x}(2\cos2x-\sin2x)=0$得$\tan2x=2$；$x>0$时第一个解是$x=\frac12\arctan2\approx0.5535744$，在它左边$y'>0$、右边$y'<0$，是极大值点。
+  solution: |
+    $y=e^{-x}\sin2x$，$y'=0$得$\tan2x=2$，第一个正根$x=\frac12\arctan2$，填 `atan(2)/2`。
+
+- id: p5
+  tier: hard
+  statement: |
+    记$L[y]=y''+ay'+by$，$p(r)=r^2+ar+b$（$a$、$b$是实常数）。(1) 证明$L[xe^{rx}]=p(r)xe^{rx}+p'(r)e^{rx}$，由此说明$r$是重根时$xe^{rx}$是解。(2) 设$p$有复根$\alpha+\beta i$，证明$e^{\alpha x}\cos\beta x$和$e^{\alpha x}\sin\beta x$都是解，并求它们的朗斯基行列式。
+  hints:
+    - |
+      (1) 先算出$(xe^{rx})'$和$(xe^{rx})''$，再按$r$的幂整理。(2) 复数值函数$u+iv$满足$L[u+iv]=0$，$L$的系数是实数。
+    - |
+      (1) $(xe^{rx})'=(1+rx)e^{rx}$，$(xe^{rx})''=(2r+r^2x)e^{rx}$。(2) $L[u+iv]=L[u]+iL[v]$，实部、虚部都要为零。
+    - |
+      (1) $L[xe^{rx}]=(2r+r^2x)e^{rx}+a(1+rx)e^{rx}+bxe^{rx}=(r^2+ar+b)xe^{rx}+(2r+a)e^{rx}=p(r)xe^{rx}+p'(r)e^{rx}$。$r$是重根时$p(r)=p'(r)=0$，所以$L[xe^{rx}]=0$。
+
+      (2) 由欧拉公式，$z=e^{(\alpha+\beta i)x}=u+iv$，$u=e^{\alpha x}\cos\beta x$，$v=e^{\alpha x}\sin\beta x$。复指数（complex exponential）的求导法则和实的一样，$L[z]=p(\alpha+\beta i)z=0$；$a$、$b$是实数，$L[z]=L[u]+iL[v]$，实部、虚部都为零，所以$L[u]=L[v]=0$。$W(u,v)=uv'-u'v=e^{2\alpha x}\bigl(\cos\beta x(\alpha\sin\beta x+\beta\cos\beta x)-(\alpha\cos\beta x-\beta\sin\beta x)\sin\beta x\bigr)=\beta e^{2\alpha x}\ne0$。
+  reference: |
+    (1) 直接求导得$L[xe^{rx}]=p(r)xe^{rx}+p'(r)e^{rx}$，重根时$p(r)=p'(r)=0$。(2) $L[e^{(\alpha+\beta i)x}]=0$，系数是实数，实部、虚部分别为零；$W=\beta e^{2\alpha x}\ne0$。
+
+- id: p6
+  tier: hard
+  statement: |
+    方程$x^2y''+axy'+by=0$（$x>0$，$a$、$b$是常数）叫作欧拉方程（Cauchy–Euler equation）。证明：令$x=e^t$，把$y$看成$t$的函数，方程化成常系数方程$\ddot y+(a-1)\dot y+by=0$（点表示对$t$求导）。再用它求$x^2y''-xy'+y=0$的通解。
+  hints:
+    - |
+      由链式法则（chain rule），$\dot y=\frac{\dd y}{\dd t}=xy'$。再求一次导。
+    - |
+      $\ddot y=\frac{\dd}{\dd t}(xy')=x y'+x^2y''$，所以$x^2y''=\ddot y-\dot y$。
+    - |
+      $x=e^t$，$\frac{\dd x}{\dd t}=x$，所以$\dot y=y'\cdot x$，$\ddot y=\frac{\dd}{\dd t}(xy')=\frac{\dd x}{\dd t}y'+x\cdot y''\frac{\dd x}{\dd t}=xy'+x^2y''$。于是$x^2y''=\ddot y-\dot y$，$xy'=\dot y$，原方程化成$\ddot y-\dot y+a\dot y+by=0$，即$\ddot y+(a-1)\dot y+by=0$。
+
+      对$x^2y''-xy'+y=0$，$a=-1$、$b=1$，得$\ddot y-2\dot y+y=0$，特征方程$(r-1)^2=0$有重根$1$，$y=(C_1+C_2t)e^t$。换回$x$：$y=C_1x+C_2x\ln x$。
+  reference: |
+    $x=e^t$时$\dot y=xy'$，$\ddot y=xy'+x^2y''$，代入得$\ddot y+(a-1)\dot y+by=0$。$x^2y''-xy'+y=0$化成$\ddot y-2\dot y+y=0$，通解$(C_1+C_2t)e^t$，即$y=C_1x+C_2x\ln x$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    对$y''+cy'+y=0$（$c>0$），解都趋于$0$。按趋于$0$的快慢来比，$c$取多少时最快？汽车减震器的阻尼为什么既不能太小，也不能太大？
+  hints:
+    - |
+      解趋于$0$的快慢，由衰减得最慢的那一项决定：看两个特征根里实部较大（离$0$较近）的那一个。
+    - |
+      $c\le2$时两个根的实部都是$-\frac c2$；$c>2$时较大的根是$\frac{-c+\sqrt{c^2-4}}{2}$。
+    - |
+      $c<2$时根是$-\frac c2\pm\beta i$，解按$e^{-\frac c2t}$衰减，衰减率$\frac c2$随$c$增大；$c=2$时重根$-1$，衰减率$1$；$c>2$时较大的根$\frac{-c+\sqrt{c^2-4}}{2}=-\frac{2}{c+\sqrt{c^2-4}}$，它随$c$增大而趋于$0$，衰减率越来越小。所以$c=2$（临界阻尼）时衰减得最快，衰减率$1$。
+
+      减震器要让车身受到冲击后尽快稳下来。阻尼太小，车身要上下晃好几下才停；阻尼太大，过了临界值回去反而变慢，而且阻尼的力和车轮相对车身的速度成正比，阻尼越大，路面上短促的颠簸越直接地传到车身上。所以轿车悬架的阻尼实际只取临界值的 20% 到 40%，相当于这里的$c=0.4$到$0.8$，用多晃一点换来乘坐舒适。从位移$1$处静止释放时，第一次冲过平衡位置的幅度是初始位移的$e^{-c\pi/\sqrt{4-c^2}}$倍，$c=0.4$、$0.6$、$0.8$时分别约为 53%、37%、25%。
+  reference: |
+    衰减率由离虚轴最近的特征根决定：$c\le2$时为$\frac c2$，$c>2$时为$\frac{2}{c+\sqrt{c^2-4}}$，在$c=2$处最大。阻尼太小会来回晃；太大则过了临界值回得慢，路面的颠簸也传得更直接。轿车悬架实际只取临界值的 20% 到 40%（$c=0.4$到$0.8$），冲过平衡位置的幅度约为初始位移的 25% 到 53%，用多晃一点换乘坐舒适。
+
+- id: p8
+  tier: thinking
+  statement: |
+    重根时的第二个解为什么是$xe^{rx}$？设两个不同的实根$r_1\ne r_2$，$\frac{e^{r_2x}-e^{r_1x}}{r_2-r_1}$也是解。让$r_2\to r_1$，它趋于什么？这说明了什么？
+  hints:
+    - |
+      把$\frac{e^{r_2x}-e^{r_1x}}{r_2-r_1}$看成函数$r\mapsto e^{rx}$在$r_1$、$r_2$之间的差商（difference quotient）。
+    - |
+      差商的极限是导数：把$x$看成常数，$\frac{\dd}{\dd r}e^{rx}=xe^{rx}$。
+    - |
+      它是两个解的线性组合，所以是解。固定$x$，它是$r\mapsto e^{rx}$的差商，$r_2\to r_1$时趋于对$r$的导数$xe^{r_1x}$。
+
+      这说明两个特征根合并时，解空间并没有「少一维」：$e^{r_1x}$和$e^{r_2x}$的差除以根的差，在合并的极限下变成了$xe^{r_1x}$。比如$y''+cy'+y=0$在$c\to2^+$时，过阻尼的解连续地变成临界阻尼的解。复根的情形也一样：$\beta\to0$时，$\frac{e^{\alpha x}\sin\beta x}{\beta}$趋于$xe^{\alpha x}$。
+  reference: |
+    差商$\frac{e^{r_2x}-e^{r_1x}}{r_2-r_1}$是解，$r_2\to r_1$时趋于$e^{rx}$对$r$的导数在$r_1$处的值$xe^{r_1x}$。合并的两个根留下的第二个解正是$xe^{rx}$；复根时$\frac{e^{\alpha x}\sin\beta x}{\beta}\to xe^{\alpha x}$同理。

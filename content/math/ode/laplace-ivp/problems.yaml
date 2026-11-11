@@ -1,0 +1,131 @@
+- id: p1
+  tier: easy
+  statement: |
+    对$y'+2y=0$、$y(0)=3$两边取拉普拉斯变换，求$Y(s)$在$s=1$处的值。
+  answer:
+    type: number
+    value: 1
+  hints:
+    - |
+      $\mathcal L\{y'\}=sY-y(0)$。
+    - |
+      $sY-3+2Y=0$。
+    - |
+      $(s+2)Y=3$，$Y=\frac{3}{s+2}$，$Y(1)=1$。它是$3e^{-2t}$的变换，正是这个初值问题的解。
+  solution: |
+    $Y=\frac{3}{s+2}$，$Y(1)=1$，填 `1`。
+
+- id: p2
+  tier: easy
+  statement: |
+    用拉普拉斯变换解$y''-y=0$、$y(0)=0$、$y'(0)=2$，求$y(\ln2)$。
+  answer:
+    type: number
+    value: 3/2
+  hints:
+    - |
+      $\mathcal L\{y''\}=s^2Y-sy(0)-y'(0)=s^2Y-2$。
+    - |
+      $Y=\frac{2}{s^2-1}$，拆成$\frac{1}{s-1}-\frac{1}{s+1}$。
+    - |
+      $(s^2-1)Y=2$，$Y=\frac{2}{(s-1)(s+1)}=\frac{1}{s-1}-\frac{1}{s+1}$，所以$y=e^t-e^{-t}$，$y(\ln2)=2-\frac12=\frac32$。
+  solution: |
+    $Y=\frac{1}{s-1}-\frac{1}{s+1}$，$y=e^t-e^{-t}$，$y(\ln2)=\frac32$，填 `3/2`。
+
+- id: p3
+  tier: medium
+  statement: |
+    用拉普拉斯变换解$y''+2y'+5y=0$、$y(0)=1$、$y'(0)=-1$，求$y\bigl(\frac\pi2\bigr)$。
+  answer:
+    type: number
+    value: -exp(-pi/2)
+  hints:
+    - |
+      取变换后，$Y=\frac{(s+a)y_0+y_1}{s^2+as+b}$，这里$a=2$、$b=5$。
+    - |
+      $Y=\frac{s+1}{s^2+2s+5}$，分母配方得$(s+1)^2+4$。
+    - |
+      $Y=\frac{(s+2)\cdot1-1}{s^2+2s+5}=\frac{s+1}{(s+1)^2+2^2}$，按表的第三行，$y=e^{-t}\cos2t$。$y\bigl(\frac\pi2\bigr)=e^{-\pi/2}\cos\pi=-e^{-\pi/2}\approx-0.2078796$。
+  solution: |
+    $Y=\frac{s+1}{(s+1)^2+4}$，$y=e^{-t}\cos2t$，$y\bigl(\frac\pi2\bigr)=-e^{-\pi/2}$，填 `-exp(-pi/2)`。
+
+- id: p4
+  tier: medium
+  statement: |
+    用拉普拉斯变换解$y''+3y'+2y=2$、$y(0)=0$、$y'(0)=0$，求$y(\ln2)$。
+  answer:
+    type: number
+    value: 1/4
+  hints:
+    - |
+      初值都为零，$Y=\frac{G}{s^2+3s+2}$，$G=\mathcal L\{2\}=\frac2s$。
+    - |
+      $Y=\frac{2}{s(s+1)(s+2)}$，拆成三个一次因式的部分分式。
+    - |
+      $Y=\frac{2}{s(s+1)(s+2)}=\frac1s-\frac{2}{s+1}+\frac{1}{s+2}$（$s=0,-1,-2$分别代入去掉对应因式的式子，得$1$、$-2$、$1$）。所以$y=1-2e^{-t}+e^{-2t}$，$y(\ln2)=1-1+\frac14=\frac14$。
+  solution: |
+    $Y=\frac1s-\frac{2}{s+1}+\frac{1}{s+2}$，$y=1-2e^{-t}+e^{-2t}$，$y(\ln2)=\frac14$，填 `1/4`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设特征方程$s^2+as+b=0$有两个不同的实根$r_1$、$r_2$。用拉普拉斯变换证明：$y''+ay'+by=0$满足$y(0)=y_0$、$y'(0)=y_1$的解是$C_1e^{r_1t}+C_2e^{r_2t}$，并求出$C_1$、$C_2$。
+  hints:
+    - |
+      $Y=\frac{(s+a)y_0+y_1}{(s-r_1)(s-r_2)}$，拆成部分分式。
+    - |
+      $C_1$是把$s=r_1$代入$\frac{(s+a)y_0+y_1}{s-r_2}$的值；注意$a=-(r_1+r_2)$。
+    - |
+      $s^2+as+b=(s-r_1)(s-r_2)$，$Y=\frac{C_1}{s-r_1}+\frac{C_2}{s-r_2}$，其中$C_1=\frac{(r_1+a)y_0+y_1}{r_1-r_2}$，$C_2=\frac{(r_2+a)y_0+y_1}{r_2-r_1}$。由$a=-(r_1+r_2)$，$r_1+a=-r_2$，所以$C_1=\frac{y_1-r_2y_0}{r_1-r_2}$、$C_2=\frac{r_1y_0-y_1}{r_1-r_2}$。
+
+      逐项变回，$y=C_1e^{r_1t}+C_2e^{r_2t}$。验算：$C_1+C_2=y_0$，$r_1C_1+r_2C_2=\frac{r_1y_1-r_1r_2y_0+r_1r_2y_0-r_2y_1}{r_1-r_2}=y_1$。这和由特征方程得到的通解一致，变换法自动定好了常数。
+  reference: |
+    $Y=\frac{(s+a)y_0+y_1}{(s-r_1)(s-r_2)}$，部分分式给出$C_1=\frac{y_1-r_2y_0}{r_1-r_2}$、$C_2=\frac{r_1y_0-y_1}{r_1-r_2}$，变回得$C_1e^{r_1t}+C_2e^{r_2t}$，满足两个初值。
+
+- id: p6
+  tier: hard
+  statement: |
+    (1) 设$r_1\ne r_2$，求$\frac{1}{(s-r_1)(s-r_2)}$的拉普拉斯逆变换。(2) 让$r_2\to r_1$，结果趋于什么？它和$\frac{1}{(s-r_1)^2}$的逆变换一致吗？
+  hints:
+    - |
+      (1) 拆成$\frac{A}{s-r_1}+\frac{B}{s-r_2}$。
+    - |
+      (1) $A=\frac{1}{r_1-r_2}$、$B=\frac{1}{r_2-r_1}$，逆变换是$\frac{e^{r_1t}-e^{r_2t}}{r_1-r_2}$。(2) 把它看成$e^{rt}$关于$r$的差商（difference quotient）。
+    - |
+      (1) $\frac{1}{(s-r_1)(s-r_2)}=\frac{1}{r_1-r_2}\Bigl(\frac{1}{s-r_1}-\frac{1}{s-r_2}\Bigr)$，逆变换$\frac{e^{r_1t}-e^{r_2t}}{r_1-r_2}$。
+
+      (2) 固定$t$，它是函数$r\mapsto e^{rt}$在$r_1$、$r_2$之间的差商，$r_2\to r_1$时趋于导数$te^{r_1t}$。另一方面$\mathcal L\{t\}=\frac{1}{s^2}$，平移得$\mathcal L\{te^{r_1t}\}=\frac{1}{(s-r_1)^2}$。两者一致：重根时的$te^{rt}$，正是两个单根合并的极限。
+  reference: |
+    (1) $\frac{e^{r_1t}-e^{r_2t}}{r_1-r_2}$。(2) 差商趋于$te^{r_1t}$，与$\mathcal L\{te^{r_1t}\}=\frac{1}{(s-r_1)^2}$一致。
+
+- id: p7
+  tier: thinking
+  statement: |
+    边值问题（boundary value problem）$y''+y=0$、$y(0)=0$、$y\bigl(\frac\pi2\bigr)=1$能用拉普拉斯变换解吗？变换法为什么特别适合初值问题？
+  hints:
+    - |
+      取变换时要用到$y(0)$和$y'(0)$。这里知道$y'(0)$吗？
+    - |
+      把未知的$y'(0)$记成一个常数$c$，照样解出$y$，最后用$y\bigl(\frac\pi2\bigr)=1$定出$c$。
+    - |
+      取变换得$s^2Y-sy(0)-y'(0)+Y=0$，其中$y'(0)$不知道，记为$c$：$Y=\frac{c}{s^2+1}$，$y=c\sin t$。再由$y\bigl(\frac\pi2\bigr)=c=1$，得$y=\sin t$。所以能解，只是要多带一个未知常数，最后再定。
+
+      变换法适合初值问题，是因为导数的变换里出现的恰好是$y$和各阶导数在$t=0$处的值，也就是初值。边值问题给的是两端的值，变换只能用上$t=0$那一端，另一端的条件要到最后才用得上，和直接求通解再定常数差不多。
+  reference: |
+    能：把未知的$y'(0)$记作$c$，得$y=c\sin t$，再由$y\bigl(\frac\pi2\bigr)=1$得$c=1$。导数的变换里出现的正是$t=0$处的值，所以变换法天然适合初值问题；边值问题要多带一个待定常数。
+
+- id: p8
+  tier: thinking
+  statement: |
+    工程师常说：传递函数$H(s)=\frac{1}{s^2+as+b}$的分母为零的那些$s$「都在左半平面（left half-plane）」时，系统是稳定的（stable）。这句话是什么意思？用本节的部分分式说明理由。
+  hints:
+    - |
+      分母为零的$s$就是特征根，可能是复数。「左半平面」指实部为负。
+    - |
+      实根$r$对应$e^{rt}$，复根$\alpha\pm\beta i$对应$e^{\alpha t}\cos\beta t$、$e^{\alpha t}\sin\beta t$。
+    - |
+      分母为零的$s$是特征根$r$，复根写成$\alpha\pm\beta i$。由部分分式，齐次部分的解是$e^{rt}$、$te^{rt}$、$e^{\alpha t}\cos\beta t$、$e^{\alpha t}\sin\beta t$这些项的组合。根的实部都为负（在复平面的左半边）时，这些项都随$t$衰减，初值引起的偏差最后都消失，有界的输入只引起有界的输出。
+
+      有一个根的实部为正，就有一项指数增长，系统不稳定；实部为零的单根给出不衰减的振荡，是两者的分界。所以工程师只要看分母的根落在哪里，就能判断系统稳不稳定，不用解方程。
+  reference: |
+    分母为零的$s$是特征根，部分分式把解写成$e^{rt}$、$e^{\alpha t}\cos\beta t$等项之和。实部全为负时各项衰减，系统稳定；有正实部则指数增长。看根的位置就能判断稳定性。
