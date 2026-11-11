@@ -1,0 +1,133 @@
+- id: p1
+  tier: easy
+  statement: |
+    求向量$\vb v=(2,-6,3)$的:term[长度]{id="math.linear-algebra.length"}（length）$|\vb v|$。
+  answer:
+    type: number
+    value: 7
+  hints:
+    - |
+      $|\vb v|=\sqrt{\vb v\cdot\vb v}$，先算各分量的平方和。
+    - |
+      $\vb v\cdot\vb v=2^2+(-6)^2+3^2$。
+    - |
+      $\vb v\cdot\vb v=4+36+9=49$，所以$|\vb v|=\sqrt{49}=7$。
+  solution: |
+    $|\vb v|=\sqrt{4+36+9}=7$，填 `7`。
+
+- id: p2
+  tier: easy
+  statement: |
+    $k$取多少时，$\vb u=(k,2,-1)$与$\vb v=(3,k,4)$:term[正交]{id="math.linear-algebra.orthogonal"}（orthogonal）？
+  answer:
+    type: number
+    value: 4/5
+  hints:
+    - |
+      正交就是:term[点积]{id="math.linear-algebra.dot-product"}（dot product）为零。
+    - |
+      $\vb u\cdot\vb v=3k+2k-4$。
+    - |
+      $5k-4=0$，所以$k=\frac45$。
+  solution: |
+    $\vb u\cdot\vb v=3k+2k-4=0$，$k=\frac45$，填 `4/5`。
+
+- id: p3
+  tier: medium
+  statement: |
+    求平面上$\vb u=(1,2)$与$\vb v=(3,1)$的:term[夹角]{id="math.linear-algebra.angle"}（angle），用弧度表示。
+  answer:
+    type: number
+    value: pi/4
+  hints:
+    - |
+      $\cos\theta=\frac{\vb u\cdot\vb v}{|\vb u||\vb v|}$。
+    - |
+      $\vb u\cdot\vb v=5$，$|\vb u|=\sqrt5$，$|\vb v|=\sqrt{10}$。
+    - |
+      $\cos\theta=\frac{5}{\sqrt5\cdot\sqrt{10}}=\frac{5}{\sqrt{50}}=\frac{1}{\sqrt2}$，所以$\theta=\frac\pi4\approx0.7853982$。
+  solution: |
+    $\cos\theta=\frac{5}{\sqrt{50}}=\frac{\sqrt2}{2}$，$\theta=\frac\pi4$，填 `pi/4`。
+
+- id: p4
+  tier: medium
+  statement: |
+    把$\vb u=(3,1,2)$分解成与$\vb v=(1,1,1)$平行的部分和与$\vb v$正交的部分。求与$\vb v$正交的那部分，按顺序填写三个分量。
+  answer:
+    type: tuple
+    value: [1, -1, 0]
+  hints:
+    - |
+      与$\vb v$平行的部分是:term[投影]{id="math.linear-algebra.projection"}（projection）$\frac{\vb u\cdot\vb v}{\vb v\cdot\vb v}\vb v$，与$\vb v$正交的部分是$\vb u$减去它。
+    - |
+      $\vb u\cdot\vb v=6$，$\vb v\cdot\vb v=3$，投影是$2\vb v=(2,2,2)$。
+    - |
+      $\vb u-2\vb v=(3-2,\ 1-2,\ 2-2)=(1,-1,0)$。验算：$(1,-1,0)\cdot(1,1,1)=0$。
+  solution: |
+    投影是$\frac63\vb v=(2,2,2)$，正交的部分是$(3,1,2)-(2,2,2)=(1,-1,0)$，填 `1, -1, 0`。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明三角不等式（triangle inequality）：对$\R^n$中任意两个向量，$|\vb u+\vb v|\le|\vb u|+|\vb v|$。等号在什么时候成立？用它说明平面上三角形的两边之和大于第三边。
+  hints:
+    - |
+      两边都不是负数，比较它们的平方。
+    - |
+      $|\vb u+\vb v|^2=|\vb u|^2+2\,\vb u\cdot\vb v+|\vb v|^2$，再对中间一项用:term[柯西-施瓦茨不等式]{id="math.linear-algebra.cauchy-schwarz-inequality"}（Cauchy-Schwarz inequality）。
+    - |
+      $|\vb u+\vb v|^2=|\vb u|^2+2\,\vb u\cdot\vb v+|\vb v|^2\le|\vb u|^2+2|\vb u||\vb v|+|\vb v|^2=(|\vb u|+|\vb v|)^2$，中间用了$\vb u\cdot\vb v\le|\vb u\cdot\vb v|\le|\vb u||\vb v|$。两边都不是负数，开平方即得。
+
+      等号要求$\vb u\cdot\vb v=|\vb u||\vb v|$：由柯西-施瓦茨不等式的等号条件，$\vb u$、$\vb v$平行，并且点积不为负，即一个是另一个的非负倍数，两者同向（或有一个是零向量）。三角形$ABC$里取$\vb u=\overrightarrow{AB}$、$\vb v=\overrightarrow{BC}$，$\vb u+\vb v=\overrightarrow{AC}$；三个顶点不共线，两者不同向，等号不成立，所以$|AC|<|AB|+|BC|$。
+  reference: |
+    $|\vb u+\vb v|^2=|\vb u|^2+2\vb u\cdot\vb v+|\vb v|^2\le(|\vb u|+|\vb v|)^2$，用了$\vb u\cdot\vb v\le|\vb u||\vb v|$。等号当且仅当$\vb u\cdot\vb v=|\vb u||\vb v|$，即两者同向（含零向量）。三角形的两边$\overrightarrow{AB}$、$\overrightarrow{BC}$不同向，所以严格不等。
+
+- id: p6
+  tier: hard
+  statement: |
+    平行四边形的两条邻边是$\vb u$、$\vb v$，两条对角线是$\vb u+\vb v$和$\vb u-\vb v$。(1) 证明$|\vb u+\vb v|^2+|\vb u-\vb v|^2=2|\vb u|^2+2|\vb v|^2$，即两条对角线的平方和等于四条边的平方和。(2) 证明两条对角线互相垂直，当且仅当这个平行四边形是菱形（$|\vb u|=|\vb v|$）。
+  hints:
+    - |
+      用点积的运算律展开$(\vb u+\vb v)\cdot(\vb u+\vb v)$和$(\vb u-\vb v)\cdot(\vb u-\vb v)$。
+    - |
+      (2) 两条对角线垂直，就是$(\vb u+\vb v)\cdot(\vb u-\vb v)=0$，把它展开。
+    - |
+      (1) $|\vb u+\vb v|^2=|\vb u|^2+2\,\vb u\cdot\vb v+|\vb v|^2$，$|\vb u-\vb v|^2=|\vb u|^2-2\,\vb u\cdot\vb v+|\vb v|^2$，相加，交叉项抵消，得$2|\vb u|^2+2|\vb v|^2$。
+
+      (2) $(\vb u+\vb v)\cdot(\vb u-\vb v)=\vb u\cdot\vb u-\vb u\cdot\vb v+\vb v\cdot\vb u-\vb v\cdot\vb v=|\vb u|^2-|\vb v|^2$，中间两项因为点积可交换而抵消。所以对角线正交，当且仅当$|\vb u|^2=|\vb v|^2$，即$|\vb u|=|\vb v|$，四条边一样长，是菱形。
+  reference: |
+    (1) 展开$|\vb u\pm\vb v|^2=|\vb u|^2\pm2\vb u\cdot\vb v+|\vb v|^2$，相加得$2|\vb u|^2+2|\vb v|^2$。(2) $(\vb u+\vb v)\cdot(\vb u-\vb v)=|\vb u|^2-|\vb v|^2$，为零当且仅当$|\vb u|=|\vb v|$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    点积按分量定义，而分量依赖坐标系。(1) 在平面上把两条坐标轴绕原点转一个角度（仍互相垂直、单位长度不变），同一个向量的分量变了，两个向量的点积会变吗？(2) 如果两条坐标轴不垂直，或者两条轴上的单位长度不同，$u_1v_1+u_2v_2$还等于$|\vb u||\vb v|\cos\theta$吗？
+  hints:
+    - |
+      (1) 想想定理「点积与夹角」：右边只和什么有关？
+    - |
+      (2) 设两条轴的单位向量是$\vb a$、$\vb b$，$\vb u=u_1\vb a+u_2\vb b$、$\vb v=v_1\vb a+v_2\vb b$，用运算律展开$\vb u\cdot\vb v$，看多出了哪些项。
+    - |
+      (1) 不会变。点积等于$|\vb u||\vb v|\cos\theta$，长度和夹角都是图形本身的性质，坐标轴转过去，它们都不变；按新坐标算出的$u_1'v_1'+u_2'v_2'$也是同一个数。
+
+      (2) 一般不等。展开得$\vb u\cdot\vb v=u_1v_1\,\vb a\cdot\vb a+(u_1v_2+u_2v_1)\,\vb a\cdot\vb b+u_2v_2\,\vb b\cdot\vb b$，只有在$\vb a\cdot\vb a=\vb b\cdot\vb b=1$、$\vb a\cdot\vb b=0$时，才化成$u_1v_1+u_2v_2$。例如取$\vb a=(1,0)$、$\vb b=(1,1)$作斜坐标轴，$\vb a$、$\vb b$在这组轴下的坐标是$(1,0)$、$(0,1)$，按公式算得$0$，它们的点积却是$1$。所以「对应分量相乘再相加」要求坐标轴互相垂直、单位长度都是$1$，以后在[正交规范基与施密特正交化](lesson:math.linear-algebra.gram-schmidt)里会把这样的基叫作正交规范基（orthonormal basis）。
+  reference: |
+    (1) 不变：点积等于$|\vb u||\vb v|\cos\theta$，只依赖长度和夹角。(2) 斜坐标下$\vb u\cdot\vb v=u_1v_1\vb a\cdot\vb a+(u_1v_2+u_2v_1)\vb a\cdot\vb b+u_2v_2\vb b\cdot\vb b$，只有$\vb a$、$\vb b$是互相垂直的单位向量时才等于$u_1v_1+u_2v_2$；$\vb a=(1,0)$、$\vb b=(1,1)$是反例。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设想把一段文字里各个词出现的次数排成$\R^n$中的一个向量（$n$是词表里的词数）。(1) 把一段文字原样重复两遍，它的向量变成什么？(2) 用两段文字的向量夹角的余弦$\cos\theta$比较它们的用词有多接近，和直接用点积比较，好在哪里？(3) 这些向量的分量都不是负数，$\theta$最大可能是多少，什么时候取到？
+  hints:
+    - |
+      (1) 每个词出现的次数都翻倍。
+    - |
+      (2) $\cos\theta=\frac{\vb u\cdot\vb v}{|\vb u||\vb v|}$在把$\vb u$换成$2\vb u$时怎样变？点积呢？
+    - |
+      (1) 变成原来的$2$倍，方向不变。
+
+      (2) 把$\vb u$换成$c\vb u$（$c>0$），点积变成$c$倍，$\cos\theta$却不变。直接比点积，长文章占便宜；用夹角只比较各个词所占的比例，和篇幅无关。
+
+      (3) 分量都不是负数时，点积是非负数的和，不是负数，所以$\cos\theta\ge0$，$\theta\le\frac\pi2$。$\theta=\frac\pi2$当且仅当点积为零，即每个词都至多在其中一段里出现，两段文字没有一个共同的词。
+  reference: |
+    (1) 向量变成$2$倍。(2) 点积随篇幅成比例变大，$\cos\theta$对正的数乘不变，只反映用词的比例。(3) 分量非负，点积非负，$\theta\le\frac\pi2$，等号当且仅当没有共同的词。

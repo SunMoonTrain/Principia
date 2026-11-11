@@ -52,7 +52,7 @@ $$
 \sum_{j=1}^NA_{ij}c_j=b_i ,\qquad A_{ij}=\int_a^b\bigl(p\,\varphi_i'\varphi_j'+q\,\varphi_i\varphi_j\bigr)\dd x ,\quad b_i=\int_a^bf\varphi_i\,\dd x .
 $$
 
-$A$是对称的，$p>0$、$q\ge0$时方程组有唯一解（p6）。这样，解微分方程（differential equation）的问题变成了解线性方程组，后者可以交给计算机。[瑞利商与特征值的变分刻画](lesson:math.calculus-of-variations.rayleigh-quotient)里用:term[试探函数]{id="math.calculus-of-variations.trial-function"}（trial function）估计特征值（eigenvalue），也是在一族函数里求最小值，得到的同样是上界。
+$A$是对称的（$A_{ij}=A_{ji}$），$p>0$、$q\ge0$时方程组有唯一解（p6）。这样，解微分方程（differential equation）的问题变成了解线性方程组，后者可以交给计算机。[瑞利商与特征值的变分刻画](lesson:math.calculus-of-variations.rayleigh-quotient)里用:term[试探函数]{id="math.calculus-of-variations.trial-function"}（trial function）估计特征值（eigenvalue），也是在一族函数里求最小值，得到的同样是上界。
 
 ## 几何图像
 

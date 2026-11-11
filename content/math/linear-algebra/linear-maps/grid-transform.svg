@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" font-size="13">
+  <!-- A = [[1.5, 0.5], [0.5, 1]]。左：网格 x, y ∈ [-1, 1] 和单位正方形，原点 (130, 150)；右：它们在 A 下的像，原点 (470, 150)；一个单位 60 像素 -->
+  <path d="M 130 150 L 190 150 L 190 90 L 130 90 Z" stroke="none" style="fill: var(--accent, #2563eb)" fill-opacity="0.22" />
+  <line x1="70" y1="210" x2="70" y2="90" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" stroke-dasharray="3 3" opacity="0.9" />
+  <line x1="70" y1="210" x2="190" y2="210" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" stroke-dasharray="3 3" opacity="0.9" />
+  <line x1="130" y1="210" x2="130" y2="90" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" opacity="0.9" />
+  <line x1="70" y1="150" x2="190" y2="150" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" opacity="0.9" />
+  <line x1="190" y1="210" x2="190" y2="90" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" stroke-dasharray="3 3" opacity="0.9" />
+  <line x1="70" y1="90" x2="190" y2="90" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" stroke-dasharray="3 3" opacity="0.9" />
+  <line x1="130" y1="150" x2="181" y2="150" style="stroke: var(--accent, #2563eb)" stroke-width="2.4" />
+  <path d="M 190 150 L 181 154.5 L 181 145.5 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="130" y1="150" x2="130" y2="99" style="stroke: var(--good, #0f8a5f)" stroke-width="2.4" />
+  <path d="M 130 90 L 134.5 99 L 125.5 99 Z" style="fill: var(--good, #0f8a5f)" />
+  <circle cx="130" cy="150" r="2.6" fill="currentColor" />
+  <path d="M 470 150 L 560 120 L 590 60 L 500 90 Z" stroke="none" style="fill: var(--accent, #2563eb)" fill-opacity="0.22" />
+  <line x1="350" y1="240" x2="410" y2="120" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" stroke-dasharray="3 3" opacity="0.9" />
+  <line x1="350" y1="240" x2="530" y2="180" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" stroke-dasharray="3 3" opacity="0.9" />
+  <line x1="440" y1="210" x2="500" y2="90" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" opacity="0.9" />
+  <line x1="380" y1="180" x2="560" y2="120" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" opacity="0.9" />
+  <line x1="530" y1="180" x2="590" y2="60" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" stroke-dasharray="3 3" opacity="0.9" />
+  <line x1="410" y1="120" x2="590" y2="60" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" stroke-dasharray="3 3" opacity="0.9" />
+  <line x1="470" y1="150" x2="551.46" y2="122.85" style="stroke: var(--accent, #2563eb)" stroke-width="2.4" />
+  <path d="M 560 120 L 552.88 127.12 L 550.04 118.58 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="470" y1="150" x2="495.98" y2="98.05" style="stroke: var(--good, #0f8a5f)" stroke-width="2.4" />
+  <path d="M 500 90 L 500 100.06 L 491.95 96.04 Z" style="fill: var(--good, #0f8a5f)" />
+  <circle cx="470" cy="150" r="2.6" fill="currentColor" />
+  <text x="162" y="168" text-anchor="middle" font-size="14" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-weight="bold">e</tspan><tspan baseline-shift="sub" font-size="10">1</tspan></text>
+  <text x="122" y="124" text-anchor="end" font-size="14" style="fill: var(--good, #0f8a5f)" fill="currentColor"><tspan font-weight="bold">e</tspan><tspan baseline-shift="sub" font-size="10">2</tspan></text>
+  <text x="570" y="128" font-size="14" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">A</tspan><tspan font-weight="bold">e</tspan><tspan baseline-shift="sub" font-size="10">1</tspan></text>
+  <text x="488" y="74" text-anchor="middle" font-size="14" style="fill: var(--good, #0f8a5f)" fill="currentColor"><tspan font-style="italic">A</tspan><tspan font-weight="bold">e</tspan><tspan baseline-shift="sub" font-size="10">2</tspan></text>
+  <line x1="222" y1="150" x2="284" y2="150" stroke="currentColor" stroke-width="1.6" />
+  <path d="M 292 150 L 284 154 L 284 146 Z" fill="currentColor" />
+  <text x="257" y="138" text-anchor="middle" font-size="15" fill="currentColor"><tspan font-style="italic">A</tspan></text>
+  <text x="130" y="284" text-anchor="middle" style="fill: var(--muted, #6b7280)" fill="currentColor">变换前：网格和单位正方形</text>
+  <text x="470" y="284" text-anchor="middle" style="fill: var(--muted, #6b7280)" fill="currentColor">变换后：网格仍平直、等距，正方形变成平行四边形</text>
+</svg>

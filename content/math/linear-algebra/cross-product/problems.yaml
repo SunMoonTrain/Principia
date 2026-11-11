@@ -1,0 +1,131 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$(2,-1,0)\times(1,3,1)$，按顺序填写三个分量。
+  answer:
+    type: tuple
+    value: [-1, -2, 7]
+  hints:
+    - |
+      $\vb u\times\vb v=(u_2v_3-u_3v_2,\ u_3v_1-u_1v_3,\ u_1v_2-u_2v_1)$。
+    - |
+      这里$u_1=2$、$u_2=-1$、$u_3=0$，$v_1=1$、$v_2=3$、$v_3=1$。
+    - |
+      $\bigl((-1)\cdot1-0\cdot3,\ 0\cdot1-2\cdot1,\ 2\cdot3-(-1)\cdot1\bigr)=(-1,-2,7)$。验算：它和$(2,-1,0)$的点积是$-2+2+0=0$。
+  solution: |
+    $(-1-0,\ 0-2,\ 6+1)=(-1,-2,7)$，填 `-1, -2, 7`。
+
+- id: p2
+  tier: easy
+  statement: |
+    求以$\vb u=(2,1,0)$、$\vb v=(0,1,2)$为邻边的平行四边形的面积。
+  answer:
+    type: number
+    value: 2*sqrt(6)
+  hints:
+    - |
+      平行四边形的面积是:term[叉积]{id="math.linear-algebra.cross-product"}（cross product）的长度$|\vb u\times\vb v|$。
+    - |
+      $\vb u\times\vb v=(1\cdot2-0\cdot1,\ 0\cdot0-2\cdot2,\ 2\cdot1-1\cdot0)$。
+    - |
+      $\vb u\times\vb v=(2,-4,2)$，长度$\sqrt{4+16+4}=\sqrt{24}=2\sqrt6\approx4.898979$。
+  solution: |
+    $\vb u\times\vb v=(2,-4,2)$，面积$\sqrt{24}=2\sqrt6$，填 `2*sqrt(6)`。
+
+- id: p3
+  tier: medium
+  statement: |
+    求一个同时与$(1,1,1)$、$(1,2,3)$:term[正交]{id="math.linear-algebra.orthogonal"}（orthogonal）的:term[单位向量]{id="math.linear-algebra.unit-vector"}（unit vector），要求它的第一个分量是正数，按顺序填写三个分量。
+  answer:
+    type: tuple
+    value: [1/sqrt(6), -2/sqrt(6), 1/sqrt(6)]
+  hints:
+    - |
+      两个向量的叉积与它们都正交，再除以自己的长度。
+    - |
+      $(1,1,1)\times(1,2,3)=(1\cdot3-1\cdot2,\ 1\cdot1-1\cdot3,\ 1\cdot2-1\cdot1)$。
+    - |
+      叉积是$(1,-2,1)$，长度$\sqrt6$，单位化得$\frac{1}{\sqrt6}(1,-2,1)$，第一个分量是正的。与两个向量都正交的单位向量只有它和它的相反向量两个。
+  solution: |
+    叉积$(1,-2,1)$除以长度$\sqrt6$，填 `1/sqrt(6), -2/sqrt(6), 1/sqrt(6)`。
+
+- id: p4
+  tier: medium
+  statement: |
+    求以$\vb u=(1,2,0)$、$\vb v=(0,1,3)$、$\vb w=(2,0,1)$为棱的平行六面体的体积。
+  answer:
+    type: number
+    value: 13
+  hints:
+    - |
+      体积是:term[混合积]{id="math.linear-algebra.scalar-triple-product"}（scalar triple product）的绝对值$|(\vb u\times\vb v)\cdot\vb w|$。
+    - |
+      先算$\vb u\times\vb v=(2\cdot3-0\cdot1,\ 0\cdot0-1\cdot3,\ 1\cdot1-2\cdot0)$。
+    - |
+      $\vb u\times\vb v=(6,-3,1)$，$(6,-3,1)\cdot(2,0,1)=12+0+1=13$，体积是$13$。
+  solution: |
+    $\vb u\times\vb v=(6,-3,1)$，点乘$\vb w$得$13$，填 `13`。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明拉格朗日恒等式（Lagrange's identity）$|\vb u\times\vb v|^2=|\vb u|^2|\vb v|^2-(\vb u\cdot\vb v)^2$，并由它推出$|\vb u\times\vb v|=|\vb u||\vb v|\sin\theta$。
+  hints:
+    - |
+      两边都按分量展开成$u_i$、$v_j$的多项式，比较各项。
+    - |
+      右边是$(u_1^2+u_2^2+u_3^2)(v_1^2+v_2^2+v_3^2)-(u_1v_1+u_2v_2+u_3v_3)^2$。展开后$u_i^2v_i^2$这几项消掉，剩下$i\ne j$的项。
+    - |
+      右边展开，$u_i^2v_i^2$相消，剩下$\sum_{i<j}\bigl(u_i^2v_j^2+u_j^2v_i^2-2u_iv_iu_jv_j\bigr)=\sum_{i<j}(u_iv_j-u_jv_i)^2$。三个$i<j$的组合$(1,2)$、$(1,3)$、$(2,3)$，正好给出叉积三个分量的平方：$(u_1v_2-u_2v_1)^2$、$(u_3v_1-u_1v_3)^2$、$(u_2v_3-u_3v_2)^2$，加起来是$|\vb u\times\vb v|^2$。
+
+      两个向量都不为零时，代入$\vb u\cdot\vb v=|\vb u||\vb v|\cos\theta$，得$|\vb u\times\vb v|^2=|\vb u|^2|\vb v|^2(1-\cos^2\theta)=|\vb u|^2|\vb v|^2\sin^2\theta$。$\theta\in[0,\pi]$时$\sin\theta\ge0$，开平方即得。
+  reference: |
+    右边展开后对角项相消，剩下$\sum_{i<j}(u_iv_j-u_jv_i)^2$，正是叉积三个分量的平方和。再代入$\vb u\cdot\vb v=|\vb u||\vb v|\cos\theta$，得$|\vb u|^2|\vb v|^2\sin^2\theta$，$\sin\theta\ge0$，开平方。
+
+- id: p6
+  tier: hard
+  statement: |
+    证明$\vb u\times(\vb v\times\vb w)=(\vb u\cdot\vb w)\vb v-(\vb u\cdot\vb v)\vb w$，并用它说明叉积不满足结合律。
+  hints:
+    - |
+      两边对$\vb u$、$\vb v$、$\vb w$都是线性的，所以只要对标准基向量（standard basis vector）验证；也可以直接比较第一个分量，另两个同理。
+    - |
+      比较第一个分量：左边是$u_2(\vb v\times\vb w)_3-u_3(\vb v\times\vb w)_2$，其中$(\vb v\times\vb w)_3=v_1w_2-v_2w_1$，$(\vb v\times\vb w)_2=v_3w_1-v_1w_3$。
+    - |
+      左边的第一个分量是$u_2(v_1w_2-v_2w_1)-u_3(v_3w_1-v_1w_3)=v_1(u_2w_2+u_3w_3)-w_1(u_2v_2+u_3v_3)$。右边的第一个分量是$(\vb u\cdot\vb w)v_1-(\vb u\cdot\vb v)w_1$，展开后多出的$u_1w_1v_1-u_1v_1w_1=0$，所以两边相等。第二、三个分量按下标轮换$1\to2\to3\to1$同理。
+
+      由此$(\vb u\times\vb v)\times\vb w=-\vb w\times(\vb u\times\vb v)=(\vb w\cdot\vb u)\vb v-(\vb w\cdot\vb v)\vb u$，它和$\vb u\times(\vb v\times\vb w)=(\vb u\cdot\vb w)\vb v-(\vb u\cdot\vb v)\vb w$一般不等，例如$\vb u=\vb v=\vb e_1$、$\vb w=\vb e_2$时，前者是$\vb 0$，后者是$-\vb e_2$。
+  reference: |
+    比较第一个分量：$u_2(v_1w_2-v_2w_1)-u_3(v_3w_1-v_1w_3)=(\vb u\cdot\vb w)v_1-(\vb u\cdot\vb v)w_1$，其余按轮换同理。$(\vb u\times\vb v)\times\vb w=(\vb u\cdot\vb w)\vb v-(\vb v\cdot\vb w)\vb u$与之一般不等，$\vb u=\vb v=\vb e_1$、$\vb w=\vb e_2$是反例。
+
+- id: p7
+  tier: thinking
+  statement: |
+    为什么叉积只在$\R^3$里定义？在$\R^2$里、在$\R^4$里，与两个不平行的向量都正交的向量各有多少，它们组成什么样的集合？
+  hints:
+    - |
+      在$\R^2$里，与一个非零向量正交的向量都在一条直线上；与两个不平行的向量都正交呢？
+    - |
+      在$\R^4$里，与$\vb e_1$、$\vb e_2$都正交的向量是$(0,0,a,b)$，有几个自由的数？
+    - |
+      在$\R^2$里，与两个不平行的向量都正交的只有零向量（zero vector），找不到一个非零的「垂直方向」。在$\R^4$里，例如与$\vb e_1$、$\vb e_2$都正交的是全部$(0,0,a,b)$，它们组成一个平面，有无穷多个互不平行的方向，没有一个自然的选法。
+
+      只有在$\R^3$里，与两个不平行的向量都正交的向量恰好组成一条过原点的直线，方向只差一个正负号；叉积在这条直线上选出长度等于平行四边形面积、方向按右手定则的那一个。平面上留下的是那个带符号的面积$u_1v_2-u_2v_1$，它是一个数，以后在[行列式：有向面积与体积](lesson:math.linear-algebra.determinant)里正是二阶行列式。
+  reference: |
+    $\R^2$里与两个不平行向量都正交的只有零向量；$\R^4$里它们组成一个平面（如$\vb e_1$、$\vb e_2$对应$(0,0,a,b)$），方向不唯一。只有$\R^3$里恰好是一条直线，叉积在上面按面积和右手定则取一个向量；平面上剩下的是带符号的面积$u_1v_2-u_2v_1$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    叉积的方向靠:term[右手定则]{id="math.linear-algebra.right-hand-rule"}（right-hand rule）规定，坐标系也取了右手系。如果把$z$轴反过来，得到一个左手系（left-handed coordinate system），对同样两个几何上的向量（箭头）按公式算叉积，得到的箭头和原来的相比怎样？物理里有些量（如力矩）用叉积定义，这说明了什么？
+  hints:
+    - |
+      $z$轴反过来，同一个箭头的坐标$(x,y,z)$变成$(x,y,-z)$。
+    - |
+      取$\vb u$、$\vb v$为$x$轴、$y$轴方向的单位箭头，在新坐标下它们仍是$(1,0,0)$、$(0,1,0)$，公式给出$(0,0,1)$，这代表哪个箭头？
+    - |
+      $x$轴、$y$轴方向的单位箭头在新坐标下仍是$(1,0,0)$、$(0,1,0)$，公式给出$(0,0,1)$，可新坐标的$z$轴朝下，所以算出的是朝下的箭头，和原来朝上的$\vb u\times\vb v$正好相反。一般地，在左手系里按公式算出的叉积，指向按左手定则，方向全部反过来，长度不变。
+
+      所以叉积不只是由两个箭头决定，还依赖「右手」这个约定。用叉积定义的物理量（力矩、角动量、磁场）在镜面反射下和位移、速度这类向量的变法不同，物理里管它们叫轴矢量（axial vector），也叫赝矢量（pseudovector），见费曼《物理学讲义》第一卷第 20 章和第 52 章。
+  reference: |
+    反转$z$轴后，同样两个箭头按公式算出的叉积是原来箭头的反方向：叉积依赖右手的约定。用叉积定义的量在镜面反射下与普通向量变法不同，叫轴矢量（赝矢量），如力矩、角动量、磁场。

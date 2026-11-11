@@ -1,0 +1,133 @@
+- id: p1
+  tier: easy
+  statement: |
+    把点$(2,5)$绕原点逆时针旋转$\frac\pi2$，求它的新位置，按顺序填写两个坐标。
+  answer:
+    type: tuple
+    value: [-5, 2]
+  hints:
+    - |
+      旋转$\frac\pi2$的:term[旋转矩阵]{id="math.linear-algebra.rotation-matrix"}（rotation matrix）是$R_{\pi/2}=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$。
+    - |
+      $R_{\pi/2}(x,y)=(-y,x)$。
+    - |
+      $R_{\pi/2}(2,5)=(-5,2)$。验算：$(2,5)$在第一象限，转$90^\circ$到了第二象限，横坐标变成负的。
+  solution: |
+    $R_{\pi/2}(2,5)=(-5,2)$，填 `-5, 2`。
+
+- id: p2
+  tier: easy
+  statement: |
+    求关于$y$轴的反射（把$(x,y)$变成$(-x,y)$）的:term[标准矩阵]{id="math.linear-algebra.standard-matrix"}（standard matrix），按行依次填写四个数。
+  answer:
+    type: tuple
+    value: [-1, 0, 0, 1]
+  hints:
+    - |
+      标准矩阵的第$j$列是$\vb e_j$的像。
+    - |
+      $\vb e_1=(1,0)$变成$(-1,0)$，$\vb e_2=(0,1)$不动。
+    - |
+      两列依次是$(-1,0)$、$(0,1)$，矩阵是$\begin{pmatrix}-1&0\\0&1\end{pmatrix}$。
+  solution: |
+    两列是$(-1,0)$、$(0,1)$，填 `-1, 0, 0, 1`。
+
+- id: p3
+  tier: medium
+  statement: |
+    先关于$x$轴反射，再绕原点逆时针旋转$\frac\pi2$。求这个复合变换的标准矩阵，按行依次填写四个数。
+  answer:
+    type: tuple
+    value: [0, 1, 1, 0]
+  hints:
+    - |
+      先做的变换的矩阵写在右边：复合的矩阵是$R_{\pi/2}F$，$F$是关于$x$轴反射的矩阵。
+    - |
+      $R_{\pi/2}=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$，$F=\begin{pmatrix}1&0\\0&-1\end{pmatrix}$。
+    - |
+      $R_{\pi/2}F=\begin{pmatrix}0&1\\1&0\end{pmatrix}$。检查$\vb e_1$：反射后不动，再转到$\vb e_2$，正是第一列$(0,1)$。这个复合原来就是关于直线$y=x$的反射。
+  solution: |
+    复合的矩阵是$R_{\pi/2}F=\begin{pmatrix}0&1\\1&0\end{pmatrix}$，填 `0, 1, 1, 0`。
+
+- id: p4
+  tier: medium
+  statement: |
+    一个:term[线性变换]{id="math.linear-algebra.linear-transformation"}（linear transformation）$T:\R^2\to\R^2$把$(1,1)$变成$(3,1)$，把$(1,-1)$变成$(1,3)$。求它的标准矩阵，按行依次填写四个数。
+  answer:
+    type: tuple
+    value: [2, 1, 2, -1]
+  hints:
+    - |
+      把$\vb e_1$、$\vb e_2$写成$(1,1)$、$(1,-1)$的线性组合。
+    - |
+      $\vb e_1=\frac12(1,1)+\frac12(1,-1)$，$\vb e_2=\frac12(1,1)-\frac12(1,-1)$。
+    - |
+      由线性，$T(\vb e_1)=\frac12(3,1)+\frac12(1,3)=(2,2)$，$T(\vb e_2)=\frac12(3,1)-\frac12(1,3)=(1,-1)$。两者依次作为两列，矩阵是$\begin{pmatrix}2&1\\2&-1\end{pmatrix}$；验算：它乘$(1,1)$得$(3,1)$。
+  solution: |
+    $T(\vb e_1)=(2,2)$，$T(\vb e_2)=(1,-1)$，矩阵$\begin{pmatrix}2&1\\2&-1\end{pmatrix}$，填 `2, 1, 2, -1`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$T:\R^2\to\R^2$是线性变换。(1) 证明$T$把每条直线$\{\vb p+t\vb v\mid t\in\R\}$（$\vb v\ne\vb 0$）变成一条直线或一个点，并说明什么时候是一个点。(2) 证明$T$把以$\vb p$为一个顶点、以$\vb u$、$\vb v$为邻边的平行四边形，变成以$T(\vb p)$为顶点、以$T(\vb u)$、$T(\vb v)$为邻边的平行四边形（可能退化）。
+  hints:
+    - |
+      用线性：$T(\vb p+t\vb v)=T(\vb p)+tT(\vb v)$。
+    - |
+      平行四边形里的点是$\vb p+s\vb u+t\vb v$，$0\le s,t\le1$。
+    - |
+      (1) $T(\vb p+t\vb v)=T(\vb p)+tT(\vb v)$。$T(\vb v)\ne\vb 0$时，$t$取遍实数，这些点组成过$T(\vb p)$、方向为$T(\vb v)$的直线；$T(\vb v)=\vb 0$时，它们都是同一个点$T(\vb p)$，直线被压成一点。
+
+      (2) 平行四边形是$\{\vb p+s\vb u+t\vb v\mid0\le s,t\le1\}$，它的像是$\{T(\vb p)+sT(\vb u)+tT(\vb v)\mid0\le s,t\le1\}$，正是以$T(\vb p)$为顶点、$T(\vb u)$、$T(\vb v)$为邻边的平行四边形。$T(\vb u)$、$T(\vb v)$平行（parallel）时，它退化成一条线段或一个点。
+  reference: |
+    $T(\vb p+t\vb v)=T(\vb p)+tT(\vb v)$：$T(\vb v)\ne\vb 0$时是直线，$T(\vb v)=\vb 0$时是一点。平行四边形$\vb p+s\vb u+t\vb v$（$0\le s,t\le1$）的像是$T(\vb p)+sT(\vb u)+tT(\vb v)$，以$T(\vb u)$、$T(\vb v)$为邻边，二者平行时退化。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$F_\varphi$是关于过原点、和$x$轴正方向成角$\varphi$的直线的反射。(1) 证明$F_\varphi=\begin{pmatrix}\cos2\varphi&\sin2\varphi\\\sin2\varphi&-\cos2\varphi\end{pmatrix}$。(2) 证明先做$F_\beta$、再做$F_\alpha$，得到的是绕原点转过$2(\alpha-\beta)$的旋转。
+  hints:
+    - |
+      (1) 反射保持到直线的角度、改变侧向：和$x$轴成角$\theta$的向量，反射后和$x$轴成角$2\varphi-\theta$，长短不变。
+    - |
+      (2) 复合的矩阵是$F_\alpha F_\beta$，乘出来以后用和角公式化简。
+    - |
+      (1) 向量$(\cos\theta,\sin\theta)$和$x$轴成角$\theta$，关于这条直线反射后成角$2\varphi-\theta$、长短不变，所以像是$\bigl(\cos(2\varphi-\theta),\sin(2\varphi-\theta)\bigr)$。$\vb e_1$的$\theta=0$，像是$(\cos2\varphi,\sin2\varphi)$；$\vb e_2$的$\theta=\frac\pi2$，像是$\bigl(\cos(2\varphi-\frac\pi2),\sin(2\varphi-\frac\pi2)\bigr)=(\sin2\varphi,-\cos2\varphi)$。反射是线性变换（它把平行四边形变成平行四边形），两列就是这两个像。
+
+      (2) 记$a=2\alpha$、$b=2\beta$。$F_\alpha F_\beta$左上角是$\cos a\cos b+\sin a\sin b=\cos(a-b)$，右上角是$\cos a\sin b-\sin a\cos b=-\sin(a-b)$，左下角是$\sin a\cos b-\cos a\sin b=\sin(a-b)$，右下角是$\sin a\sin b+\cos a\cos b=\cos(a-b)$，所以$F_\alpha F_\beta=R_{a-b}=R_{2(\alpha-\beta)}$，正是旋转矩阵。从第二面镜子（和$x$轴成角$\beta$）转到第一面（成角$\alpha$）要转过$\alpha-\beta$，连续反射两次，相当于转过这个角的两倍。
+  reference: |
+    (1) 向量$(\cos\theta,\sin\theta)$反射后成角$2\varphi-\theta$、长短不变，所以$\vb e_1\mapsto(\cos2\varphi,\sin2\varphi)$，$\vb e_2\mapsto(\sin2\varphi,-\cos2\varphi)$。(2) $F_\alpha F_\beta$乘出来用和角公式化简，得$R_{2(\alpha-\beta)}$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    平移$\vb x\mapsto\vb x+\vb b$（$\vb b\ne\vb 0$）不是线性变换，没有$2\times2$的标准矩阵。如果给平面上的点$(x,y)$添一个总是等于$1$的第三个坐标，写成$(x,y,1)$，能不能用一个$3\times3$矩阵表示平移？旋转呢？这样做的好处是什么？
+  hints:
+    - |
+      找一个$3\times3$矩阵$M$，使$M(x,y,1)=(x+b_1,\,y+b_2,\,1)$。
+    - |
+      第三列负责加上$b_1$、$b_2$：因为第三个坐标总是$1$。
+    - |
+      $M=\begin{pmatrix}1&0&b_1\\0&1&b_2\\0&0&1\end{pmatrix}$满足$M(x,y,1)=(x+b_1,\,y+b_2,\,1)$。旋转写成$\begin{pmatrix}R_\theta&\vb 0\\\vb 0&1\end{pmatrix}$（左上角是$2\times2$的旋转矩阵，第三行、第三列只有右下角是$1$）。
+
+      好处是平移、旋转、伸缩都成了$3\times3$矩阵，先后做几次变换，就是把矩阵乘起来，可以先乘好再作用到所有的点上。代价是多了一个坐标：平移在$\R^2$里不是线性变换，在这个$\R^3$里却是一个保持$z=1$这个平面的线性变换。
+  reference: |
+    添第三个坐标$1$后，平移是$\begin{pmatrix}1&0&b_1\\0&1&b_2\\0&0&1\end{pmatrix}$，旋转是左上角放$R_\theta$、右下角为$1$的矩阵。所有这些变换的复合都化成矩阵乘法；平移在$\R^3$里成了保持$z=1$平面的线性变换。
+
+- id: p8
+  tier: thinking
+  statement: |
+    下面两个平面变换看起来都很规整：(a) 每个点到原点的距离不变，和$x$轴正方向所成的角加倍；(b) 每个非零点沿着从原点出发的射线推到半径为$1$的圆上，原点不动。它们是线性变换吗？怎样快速判断一个变换不是线性的？
+  hints:
+    - |
+      (a) 看$\vb e_1$、$\vb e_2$和$(1,1)$的像。(b) 比较$T(2\vb e_1)$和$2T(\vb e_1)$。
+    - |
+      (a) 中$\vb e_2$的角度从$\frac\pi2$变成$\pi$，像是$-\vb e_1$。
+    - |
+      (a) 不是。$\vb e_1$的角度是$0$，不动；$\vb e_2$变成$(-1,0)$；所以$T(\vb e_1)+T(\vb e_2)=\vb 0$。可$(1,1)$的角度是$\frac\pi4$，变成$\frac\pi2$，像是$(0,\sqrt2)\ne\vb 0$，加法不保持。
+
+      (b) 不是。$T(2\vb e_1)=\vb e_1$，而$2T(\vb e_1)=2\vb e_1$，数乘不保持。
+
+      快速判断：看$T(\vb 0)$是不是$\vb 0$，看$T(2\vb x)$是不是$2T(\vb x)$，看两个向量的像相加是不是等于和的像。只要有一处不对，就不是线性变换；几何上，把网格变弯、变得不等距的变换都不是线性的。
+  reference: |
+    (a) $T(\vb e_1)+T(\vb e_2)=\vb 0$，而$T(1,1)=(0,\sqrt2)$，不线性。(b) $T(2\vb e_1)=\vb e_1\ne2T(\vb e_1)$，不线性。检查$T(\vb 0)=\vb 0$、$T(c\vb x)=cT(\vb x)$、$T(\vb x+\vb y)=T(\vb x)+T(\vb y)$即可。

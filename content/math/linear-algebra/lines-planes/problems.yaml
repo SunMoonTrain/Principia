@@ -1,0 +1,131 @@
+- id: p1
+  tier: easy
+  statement: |
+    直线$\vb r=(1,2,3)+t(2,-1,1)$与平面$z=0$交于哪一点？按顺序填写三个坐标。
+  answer:
+    type: tuple
+    value: [-5, 5, 0]
+  hints:
+    - |
+      直线上的点是$(1+2t,\ 2-t,\ 3+t)$。
+    - |
+      在平面$z=0$上，就要$3+t=0$。
+    - |
+      $t=-3$，交点是$(1-6,\ 2+3,\ 0)=(-5,5,0)$。
+  solution: |
+    $3+t=0$，$t=-3$，交点$(-5,5,0)$，填 `-5, 5, 0`。
+
+- id: p2
+  tier: easy
+  statement: |
+    平面$2x+y-z=d$经过点$(1,-2,3)$，求$d$。
+  answer:
+    type: number
+    value: -3
+  hints:
+    - |
+      点在平面上，坐标就满足方程。
+    - |
+      把$x=1$、$y=-2$、$z=3$代入左边。
+    - |
+      $d=2\cdot1+(-2)-3=-3$。这个平面的:term[法向量]{id="math.linear-algebra.normal-vector"}（normal vector）是$(2,1,-1)$。
+  solution: |
+    $d=2-2-3=-3$，填 `-3`。
+
+- id: p3
+  tier: medium
+  statement: |
+    求点$(2,1,3)$到平面$x+2y-2z=4$的距离。
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      距离是$\frac{|ax_1+by_1+cz_1-d|}{\sqrt{a^2+b^2+c^2}}$。
+    - |
+      $a=1$、$b=2$、$c=-2$、$d=4$，$\sqrt{a^2+b^2+c^2}=3$。
+    - |
+      $|2+2-6-4|=|-6|=6$，距离是$\frac63=2$。
+  solution: |
+    $\frac{|2+2-6-4|}{3}=2$，填 `2`。
+
+- id: p4
+  tier: medium
+  statement: |
+    求点$(1,1,1)$到过原点、:term[方向向量]{id="math.linear-algebra.direction-vector"}（direction vector）为$(1,2,2)$的直线的距离。
+  answer:
+    type: number
+    value: sqrt(2)/3
+  hints:
+    - |
+      距离是$\frac{|(\vb q-\vb r_0)\times\vb v|}{|\vb v|}$，这里$\vb r_0=\vb 0$。
+    - |
+      $(1,1,1)\times(1,2,2)=(1\cdot2-1\cdot2,\ 1\cdot1-1\cdot2,\ 1\cdot2-1\cdot1)$。
+    - |
+      叉积是$(0,-1,1)$，长度$\sqrt2$；$|\vb v|=3$，距离是$\frac{\sqrt2}{3}\approx0.4714045$。
+  solution: |
+    $(1,1,1)\times(1,2,2)=(0,-1,1)$，距离$\frac{\sqrt2}{3}$，填 `sqrt(2)/3`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$F$是点$Q$到平面的垂足。证明对平面上任何一点$R$，都有$|\overrightarrow{QR}|^2=|\overrightarrow{QF}|^2+|\overrightarrow{FR}|^2$；由此说明$F$是平面上离$Q$最近的点，「点到平面的距离」就是这个最小的距离。
+  hints:
+    - |
+      $\overrightarrow{QR}=\overrightarrow{QF}+\overrightarrow{FR}$，用点积（dot product）展开$|\overrightarrow{QR}|^2$。
+    - |
+      $\overrightarrow{QF}$与法向量平行，$\overrightarrow{FR}$在平面里、与法向量正交。
+    - |
+      $|\overrightarrow{QR}|^2=(\overrightarrow{QF}+\overrightarrow{FR})\cdot(\overrightarrow{QF}+\overrightarrow{FR})=|\overrightarrow{QF}|^2+2\,\overrightarrow{QF}\cdot\overrightarrow{FR}+|\overrightarrow{FR}|^2$。$F$、$R$都在平面上，$\vb n\cdot\overrightarrow{FR}=0$；$\overrightarrow{QF}$是$\vb n$的倍数，所以$\overrightarrow{QF}\cdot\overrightarrow{FR}=0$，中间一项消失。
+
+      于是$|\overrightarrow{QR}|^2\ge|\overrightarrow{QF}|^2$，等号只在$R=F$时成立：平面上的点里，$F$离$Q$最近，最近的距离就是$|\overrightarrow{QF}|$，正是公式算出的值。这是空间里的勾股定理。
+  reference: |
+    $\overrightarrow{QR}=\overrightarrow{QF}+\overrightarrow{FR}$，$\overrightarrow{QF}\parallel\vb n$、$\overrightarrow{FR}\perp\vb n$，交叉项为零，$|\overrightarrow{QR}|^2=|\overrightarrow{QF}|^2+|\overrightarrow{FR}|^2\ge|\overrightarrow{QF}|^2$，等号当且仅当$R=F$。
+
+- id: p6
+  tier: hard
+  statement: |
+    两条直线$\vb r=\vb a+s\vb u$、$\vb r=\vb b+t\vb v$的方向向量不平行。证明它们之间的最短距离是$\dfrac{|(\vb b-\vb a)\cdot(\vb u\times\vb v)|}{|\vb u\times\vb v|}$，并说明两条直线相交当且仅当$(\vb b-\vb a)\cdot(\vb u\times\vb v)=0$。
+  hints:
+    - |
+      过第一条直线、平行于第二条直线的平面，法向量是什么？
+    - |
+      这个平面的法向量是$\vb n=\vb u\times\vb v$，第二条直线和它平行，直线上每一点到它的距离都一样。
+    - |
+      过第一条直线作平行于$\vb v$的平面$\vb n\cdot(\vb r-\vb a)=0$，$\vb n=\vb u\times\vb v\ne\vb 0$。第二条直线的方向$\vb v$与$\vb n$正交，所以它上面的点$\vb b+t\vb v$到这个平面的距离都是$\frac{|\vb n\cdot(\vb b-\vb a)|}{|\vb n|}$。两条直线上各取一点，连线在$\vb n$方向上的投影长度都是这个数，所以它是两条直线上点之间距离的下界。
+
+      这个下界取得到：把第二条直线沿$-\vb n$方向平移这个距离，它落进第一个平面，和第一条直线（方向不平行）交于一点，平移前后的两点就相距这个距离。所以最短距离就是这个式子；它为零当且仅当第二条直线本来就在这个平面里、与第一条直线相交，即$(\vb b-\vb a)\cdot(\vb u\times\vb v)=0$。
+  reference: |
+    取过第一条直线、法向量$\vb n=\vb u\times\vb v$的平面，第二条直线与它平行，距离处处为$\frac{|\vb n\cdot(\vb b-\vb a)|}{|\vb n|}$，这是下界；把第二条直线沿法向平移落进平面后与第一条相交，下界取到。为零当且仅当两线共面且相交。
+
+- id: p7
+  tier: thinking
+  statement: |
+    平面上的直线是一个方程$ax+by=c$，空间里的平面是一个方程$ax+by+cz=d$。为什么空间里的直线不能用一个这样的方程表示？把空间直线写成两个平面的交线，和[线性方程组与高斯消元](lesson:math.linear-algebra.linear-systems)里的解集（solution set）有什么关系？
+  hints:
+    - |
+      数一数：空间里的点有三个坐标，一个方程「用掉」一个自由度。
+    - |
+      两个方程、三个未知数的线性方程组（system of linear equations），化成行阶梯形（row echelon form）以后最多有几个主元（pivot）？没有主元的那一列对应的未知数怎样？
+    - |
+      空间里的点有三个坐标。一个线性方程把三个坐标之间的一个关系定下来，剩下两个可以自由变化，所以解出来是一个平面；要只剩一个自由的参数，得再加一个方程。
+
+      两个平面不平行时，它们的方程组成一个三个未知数、两个方程的线性方程组，化成行阶梯形有两个主元，剩下一列没有主元。由[解的三种情况](lesson:math.linear-algebra.linear-systems#thm-three-cases)，那一列对应的未知数可以任意取值，记作$t$，回代解出另外两个未知数，都是$t$的一次式，所以解写成$\vb p+t\vb v$的形式，正是直线的参数方程。两个平面平行时，方程组无解（平行而不重合）或只剩一个方程（重合），交出来的不是直线。参数方程和「两个方程」是同一条直线的两种描述：前者把直线上的点逐个造出来，后者给出检验一个点在不在直线上的条件。
+  reference: |
+    一个方程只去掉一个自由度，三维里剩下两个，是平面；直线要两个方程。两个不平行平面的方程组化成行阶梯形有两个主元，没有主元的那个未知数任意取值，记作$t$，回代得到的解$\vb p+t\vb v$就是参数方程。
+
+- id: p8
+  tier: thinking
+  statement: |
+    平面$ax+by+cz=d$里，$\vb n=(a,b,c)$。(1) 数$\frac{d}{|\vb n|}$有什么几何意义？它的正负说明什么？(2) 对空间里的点$Q$，$\vb n\cdot\vb q-d$的正负说明什么？
+  hints:
+    - |
+      (1) 用点到平面的距离公式算原点到平面的距离。
+    - |
+      (2) $\vb n\cdot\vb q-d=\vb n\cdot(\vb q-\vb r_0)$，$\vb r_0$是平面上一点。它和$\vb q-\vb r_0$与$\vb n$的夹角（angle）有什么关系？
+    - |
+      (1) 原点到平面的距离是$\frac{|d|}{|\vb n|}$。把$\vb n$换成单位向量$\uv n=\frac{\vb n}{|\vb n|}$，方程变成$\uv n\cdot\vb r=\frac{d}{|\vb n|}$：平面上每个点的位置向量在$\uv n$方向上的投影都是同一个数$\frac{d}{|\vb n|}$。它为正，平面在原点的$\vb n$那一侧；为负，在另一侧；为零，平面过原点。
+
+      (2) $\vb n\cdot\vb q-d=\vb n\cdot(\vb q-\vb r_0)=|\vb n||\vb q-\vb r_0|\cos\theta$。为正，$Q$在平面的$\vb n$所指的那一侧；为负，在另一侧；为零，$Q$在平面上。所以一个平面把空间分成$\vb n\cdot\vb r>d$和$\vb n\cdot\vb r<d$两半，代入坐标看正负，就知道点在哪一边。
+  reference: |
+    (1) $\frac{d}{|\vb n|}$是原点到平面的带符号距离：平面上每点在$\uv n$上的投影都等于它，正负表示平面在原点的哪一侧。(2) $\vb n\cdot\vb q-d=\vb n\cdot(\vb q-\vb r_0)$，正负表示$Q$在平面的哪一侧，零表示在平面上。

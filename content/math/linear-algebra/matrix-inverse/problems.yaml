@@ -1,0 +1,135 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$A=\begin{pmatrix}3&1\\5&2\end{pmatrix}$的:term[逆矩阵]{id="math.linear-algebra.inverse-matrix"}（inverse matrix），按行依次填写四个数。
+  answer:
+    type: tuple
+    value: [2, -1, -5, 3]
+  hints:
+    - |
+      二阶矩阵$\begin{pmatrix}a&b\\c&d\end{pmatrix}$的逆是$\frac1{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$。
+    - |
+      $ad-bc=3\cdot2-1\cdot5=1$。
+    - |
+      $A^{-1}=\begin{pmatrix}2&-1\\-5&3\end{pmatrix}$。验算：$A A^{-1}=\begin{pmatrix}6-5&-3+3\\10-10&-5+6\end{pmatrix}=I$。
+  solution: |
+    $ad-bc=1$，$A^{-1}=\begin{pmatrix}2&-1\\-5&3\end{pmatrix}$，填 `2, -1, -5, 3`。
+
+- id: p2
+  tier: easy
+  statement: |
+    求$\begin{pmatrix}1&2&3\\4&5&6\end{pmatrix}$的:term[转置]{id="math.linear-algebra.transpose"}（transpose），按行依次填写它的六个数。
+  answer:
+    type: tuple
+    value: [1, 4, 2, 5, 3, 6]
+  hints:
+    - |
+      转置把原来的各行依次写成各列，$2\times3$矩阵的转置是$3\times2$矩阵。
+    - |
+      原来的第一行$(1,2,3)$成了转置的第一列。
+    - |
+      转置是$\begin{pmatrix}1&4\\2&5\\3&6\end{pmatrix}$，按行依次是$1,4,2,5,3,6$。
+  solution: |
+    转置是$\begin{pmatrix}1&4\\2&5\\3&6\end{pmatrix}$，填 `1, 4, 2, 5, 3, 6`。
+
+- id: p3
+  tier: medium
+  statement: |
+    用逆矩阵解方程组$2x_1+3x_2=1$、$x_1+2x_2=4$，按顺序填写$x_1$、$x_2$。
+  answer:
+    type: tuple
+    value: [-10, 7]
+  hints:
+    - |
+      方程组是$A\vb x=\vb b$，$A=\begin{pmatrix}2&3\\1&2\end{pmatrix}$，$\vb b=(1,4)$，解是$\vb x=A^{-1}\vb b$。
+    - |
+      $ad-bc=4-3=1$，$A^{-1}=\begin{pmatrix}2&-3\\-1&2\end{pmatrix}$。
+    - |
+      $\vb x=A^{-1}\vb b=(2\cdot1-3\cdot4,\ -1\cdot1+2\cdot4)=(-10,7)$。验算：$2\cdot(-10)+3\cdot7=1$，$-10+2\cdot7=4$。
+  solution: |
+    $A^{-1}=\begin{pmatrix}2&-3\\-1&2\end{pmatrix}$，$\vb x=A^{-1}(1,4)=(-10,7)$，填 `-10, 7`。
+
+- id: p4
+  tier: medium
+  statement: |
+    $k$取多少时，方阵$\begin{pmatrix}1&2&0\\0&1&k\\1&0&2\end{pmatrix}$不:term[可逆]{id="math.linear-algebra.invertible"}（invertible）？
+  answer:
+    type: number
+    value: -1
+  hints:
+    - |
+      做初等行变换，看什么时候出现全零行。
+    - |
+      做$R_3-R_1$，第三行变成$(0,-2,2)$；再用第二行消去它的第二个数。
+    - |
+      $R_3+2R_2$得$(0,0,2+2k)$。$k\ne-1$时三列都有主元，可逆；$k=-1$时第三行全是零，不可逆。
+  solution: |
+    消元后第三行是$(0,0,2+2k)$，$k=-1$时为零行，填 `-1`。
+
+- id: p5
+  tier: hard
+  statement: |
+    (1) 设方阵$A$满足$A^2-3A+2I=O$。证明$A$可逆，并用$A$表示$A^{-1}$。(2) 设方阵$N$满足$N^k=O$（$k$是某个正整数）。证明$I-N$可逆，并求它的逆。
+  hints:
+    - |
+      (1) 把等式改写成$A\cdot(\text{某个矩阵})=I$。
+    - |
+      (2) 想想数的等比数列求和：$(1-x)(1+x+\dots+x^{k-1})=1-x^k$。
+    - |
+      (1) 由$A^2-3A=-2I$，得$A\cdot\frac12(3I-A)=\frac12(3A-A^2)=I$。由「一边成立就够」，$A$可逆，$A^{-1}=\frac12(3I-A)$。
+
+      (2) $(I-N)(I+N+N^2+\dots+N^{k-1})=I-N^k=I$，中间的项两两相消。所以$I-N$可逆，$(I-N)^{-1}=I+N+\dots+N^{k-1}$。例如$N=\begin{pmatrix}0&1\\0&0\end{pmatrix}$，$N^2=O$，$(I-N)^{-1}=I+N=\begin{pmatrix}1&1\\0&1\end{pmatrix}$。
+  reference: |
+    (1) $A\cdot\frac12(3I-A)=\frac12(3A-A^2)=I$，所以$A^{-1}=\frac12(3I-A)$。(2) $(I-N)(I+N+\dots+N^{k-1})=I-N^k=I$，所以$(I-N)^{-1}=I+N+\dots+N^{k-1}$。
+
+- id: p6
+  tier: hard
+  statement: |
+    「一边成立就够」要求$A$、$B$都是方阵。(1) 找一个$1\times2$矩阵$A$和$2\times1$矩阵$B$，使$AB=I_1$，但$BA\ne I_2$。(2) 证明：$A$是$m\times n$矩阵、$B$是$n\times m$矩阵、$m<n$时，$BA=I_n$不可能成立。
+  hints:
+    - |
+      (1) 试$A=\begin{pmatrix}1&0\end{pmatrix}$。
+    - |
+      (2) $A\vb x=\vb 0$是$m$个方程、$n$个未知数的齐次线性方程组（homogeneous linear system），$m<n$。
+    - |
+      (1) $A=\begin{pmatrix}1&0\end{pmatrix}$、$B=\begin{pmatrix}1\\0\end{pmatrix}$：$AB=(1)=I_1$，而$BA=\begin{pmatrix}1&0\\0&0\end{pmatrix}\ne I_2$。
+
+      (2) 把$A\vb x=\vb 0$化成行阶梯形（row echelon form），主元至多$m$个，少于列数$n$，总有一列没有主元；齐次线性方程组又不会出现$0=b\ne0$的行，由[解的三种情况](lesson:math.linear-algebra.linear-systems#thm-three-cases)，它有无穷多个解，除了零解还有非零解$\vb x$。若$BA=I_n$，则$\vb x=(BA)\vb x=B(A\vb x)=B\vb 0=\vb 0$，矛盾。
+
+      同样的道理，$m>n$时$AB=I_m$不可能成立。所以$AB=I$和$BA=I$同时成立只有方阵才做得到，定义逆矩阵时只谈方阵。
+  reference: |
+    (1) $A=\begin{pmatrix}1&0\end{pmatrix}$、$B=\begin{pmatrix}1\\0\end{pmatrix}$，$AB=I_1$，$BA=\begin{pmatrix}1&0\\0&0\end{pmatrix}$。(2) $m<n$时$A\vb x=\vb 0$的行阶梯形有一列没有主元，有非零解；若$BA=I_n$则$\vb x=B(A\vb x)=\vb 0$，矛盾。
+
+- id: p7
+  tier: thinking
+  statement: |
+    (1) 矩阵$R_\theta=\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}$是[线性变换及其矩阵](lesson:math.linear-algebra.linear-maps)里的旋转矩阵（rotation matrix），把平面上的向量绕原点逆时针转过角$\theta$。求它的逆矩阵，并说明为什么恰好等于它的转置。(2) 设$-1<\beta<1$，$\gamma=\frac1{\sqrt{1-\beta^2}}$，$\Lambda(\beta)=\begin{pmatrix}\gamma&-\gamma\beta\\-\gamma\beta&\gamma\end{pmatrix}$。验证$\Lambda(\beta)^{-1}=\Lambda(-\beta)$；它的逆也是它的转置吗？
+  hints:
+    - |
+      (1) 把$\theta$换成$-\theta$，$R_{-\theta}$和$R_\theta$相乘得什么？
+    - |
+      (2) 算$\Lambda(\beta)\Lambda(-\beta)$，用$\gamma^2(1-\beta^2)=1$。
+    - |
+      (1) $R_{-\theta}=\begin{pmatrix}\cos\theta&\sin\theta\\-\sin\theta&\cos\theta\end{pmatrix}$，$R_{-\theta}R_\theta=\begin{pmatrix}\cos^2\theta+\sin^2\theta&-\cos\theta\sin\theta+\sin\theta\cos\theta\\-\sin\theta\cos\theta+\cos\theta\sin\theta&\sin^2\theta+\cos^2\theta\end{pmatrix}=I$，乘一边就够，所以$R_\theta^{-1}=R_{-\theta}$，几何上就是转过去再转回来。$R_{-\theta}$正是$R_\theta\T$：$R_\theta\T R_\theta$第$i$行第$j$列是$R_\theta$第$i$列和第$j$列对应相乘再相加，每一列和自己得$\cos^2\theta+\sin^2\theta=1$，两列之间得$0$。用[点积、长度与夹角](lesson:math.linear-algebra.dot-product)的话说，两列是互相垂直的单位向量（unit vector）；以后在[正交矩阵与正交变换](lesson:math.linear-algebra.orthogonal-matrices)里会看到，各列是这样的方阵，逆都等于转置。
+
+      (2) $\Lambda(\beta)\Lambda(-\beta)=\begin{pmatrix}\gamma^2-\gamma^2\beta^2&\gamma^2\beta-\gamma^2\beta\\-\gamma^2\beta+\gamma^2\beta&\gamma^2-\gamma^2\beta^2\end{pmatrix}=\gamma^2(1-\beta^2)I=I$，乘一边就够，所以$\Lambda(\beta)^{-1}=\Lambda(-\beta)$。可$\Lambda(\beta)$是对称矩阵，转置是它自己；$\beta\ne0$时$\Lambda(\beta)\ne\Lambda(-\beta)$，所以它的逆不是它的转置。狭义相对论里的洛伦兹变换（Lorentz transformation）就是这个矩阵作用在$(ct,x)$上，$\beta=\frac vc$（见[洛伦兹变换](lesson:physics.special-relativity.lorentz-transformation)）。
+  reference: |
+    (1) $R_\theta^{-1}=R_{-\theta}=R_\theta\T$：$R_\theta\T R_\theta$的各个数是两列对应相乘再相加，每列和自己得$1$，两列之间得$0$。(2) $\Lambda(\beta)\Lambda(-\beta)=\gamma^2(1-\beta^2)I=I$；$\Lambda(\beta)$对称，$\beta\ne0$时转置不是逆。
+
+- id: p8
+  tier: thinking
+  statement: |
+    (1) 数$b\ne0$时，除法$\frac ab=ab^{-1}=b^{-1}a$。设$A$、$B$是同阶方阵，$B$可逆，$AB^{-1}$和$B^{-1}A$一般相等吗？(2) 为什么矩阵不定义「除法」$\frac AB$？(3) $A$可逆时解$A\vb x=\vb b$，先求出$A^{-1}$再算$A^{-1}\vb b$，和直接对$(A\mid\vb b)$消元相比，多做了哪些工作？
+  hints:
+    - |
+      (1) 试$A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$、$B=\begin{pmatrix}1&0\\1&1\end{pmatrix}$。
+    - |
+      (3) 求逆是对$(A\mid I)$消元，右边有几列？
+    - |
+      (1) 一般不等。$B^{-1}=\begin{pmatrix}1&0\\-1&1\end{pmatrix}$，$AB^{-1}=\begin{pmatrix}0&1\\-1&1\end{pmatrix}$，$B^{-1}A=\begin{pmatrix}1&1\\-1&0\end{pmatrix}$。
+
+      (2) 矩阵乘法（matrix multiplication）不能交换次序，「除以$B$」可以是右乘$B^{-1}$，也可以是左乘$B^{-1}$，结果不同，写成$\frac AB$分不清是哪一个；$B$不可逆时更是无从谈起。所以只写$AB^{-1}$或$B^{-1}A$，把次序交代清楚。
+
+      (3) 求$A^{-1}$是对$(A\mid I)$消元，右边的$n$列都要跟着做每一步行变换；直接解只对$(A\mid\vb b)$消元，右边只有一列。求出$A^{-1}$以后，还要再算一次矩阵乘向量。所以只解一个方程组时，直接消元省事得多；就算要对同一个$A$解很多个$\vb b$，也可以把消元时做过的行变换记下来，对每个新的$\vb b$照做一遍再回代，不必求出$A^{-1}$。
+  reference: |
+    (1) 一般不等，$A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$、$B=\begin{pmatrix}1&0\\1&1\end{pmatrix}$是例子。(2) 左除、右除不同，$B$也可能不可逆，所以不定义$\frac AB$。(3) 求逆要让$n$个右边一起参加消元，再多乘一次；只解一个方程组时直接消元更省。

@@ -19,4 +19,411 @@ macros:
     \operatorname{tr}
   \im: |
     \operatorname{im}
-glossary: []
+  \uv: |
+    \hat{\mathbf{#1}}
+glossary:
+  - id: math.linear-algebra.zero-vector
+    zh: |
+      零向量
+    en: |
+      zero vector
+    brief: |
+      大小为零的向量，记作$\vb 0$，分量全为零；它没有确定的方向。
+    definedIn: math.linear-algebra.vectors
+    anchor: def-vector
+  - id: math.linear-algebra.scalar-multiplication
+    zh: |
+      数乘
+    en: |
+      scalar multiplication
+    brief: |
+      数$c$乘向量$\vb v$：长度变为$|c|$倍，$c<0$时反向；按分量算就是每个分量都乘以$c$。
+    definedIn: math.linear-algebra.vectors
+    anchor: def-scalar-multiplication
+  - id: math.linear-algebra.parallel
+    zh: |
+      平行
+    en: |
+      parallel
+    brief: |
+      两个向量中有一个是另一个的倍数，即方向相同或相反；零向量和任何向量平行。
+    definedIn: math.linear-algebra.vectors
+    anchor: def-parallel
+  - id: math.linear-algebra.component
+    zh: |
+      分量
+    en: |
+      component
+    brief: |
+      向量的起点放在原点时，终点的各个坐标；$\vb v=(v_1,\dots,v_n)$的第$i$个分量是$v_i$。
+    definedIn: math.linear-algebra.vectors
+    anchor: def-components
+  - id: math.linear-algebra.position-vector
+    zh: |
+      位置向量
+    en: |
+      position vector
+    brief: |
+      从原点指向点$P$的向量，它的分量就是$P$的坐标。
+    definedIn: math.linear-algebra.vectors
+    anchor: def-components
+  - id: math.linear-algebra.linear-combination
+    zh: |
+      线性组合
+    en: |
+      linear combination
+    brief: |
+      形如$c_1\vb v_1+\dots+c_k\vb v_k$的向量，即只用加法和数乘由$\vb v_1,\dots,\vb v_k$得到的向量。
+    definedIn: math.linear-algebra.vectors
+    anchor: def-linear-combination
+  - id: math.linear-algebra.standard-basis-vector
+    zh: |
+      标准基向量
+    en: |
+      standard basis vector
+    brief: |
+      $\R^n$中第$i$个分量为$1$、其余为$0$的向量$\vb e_i$；任何向量都等于$v_1\vb e_1+\dots+v_n\vb e_n$。
+    definedIn: math.linear-algebra.vectors
+    anchor: def-standard-basis
+  - id: math.linear-algebra.dot-product
+    zh: |
+      点积
+    en: |
+      dot product
+    brief: |
+      $\vb u\cdot\vb v=u_1v_1+\dots+u_nv_n$，结果是数；在平面和空间里等于$|\vb u||\vb v|\cos\theta$。
+    definedIn: math.linear-algebra.dot-product
+    anchor: def-dot-product
+  - id: math.linear-algebra.length
+    zh: |
+      长度
+    en: |
+      length
+    brief: |
+      $|\vb v|=\sqrt{\vb v\cdot\vb v}=\sqrt{v_1^2+\dots+v_n^2}$，也叫模；在平面和空间里就是箭头的长。
+    definedIn: math.linear-algebra.dot-product
+    anchor: def-length
+  - id: math.linear-algebra.unit-vector
+    zh: |
+      单位向量
+    en: |
+      unit vector
+    brief: |
+      长度为$1$的向量；非零向量$\vb v$除以自己的长度，得到同方向的单位向量$\uv v$。
+    definedIn: math.linear-algebra.dot-product
+    anchor: def-length
+  - id: math.linear-algebra.angle
+    zh: |
+      夹角
+    en: |
+      angle
+    brief: |
+      两个非零向量的夹角$\theta\in[0,\pi]$由$\cos\theta=\frac{\vb u\cdot\vb v}{|\vb u||\vb v|}$确定。
+    definedIn: math.linear-algebra.dot-product
+    anchor: def-angle
+  - id: math.linear-algebra.cauchy-schwarz-inequality
+    zh: |
+      柯西-施瓦茨不等式
+    en: |
+      Cauchy-Schwarz inequality
+    brief: |
+      $|\vb u\cdot\vb v|\le|\vb u||\vb v|$，等号当且仅当两个向量平行。
+    definedIn: math.linear-algebra.dot-product
+    anchor: thm-cauchy-schwarz
+  - id: math.linear-algebra.orthogonal
+    zh: |
+      正交
+    en: |
+      orthogonal
+    brief: |
+      点积为零：$\vb u\cdot\vb v=0$；两个非零向量正交就是互相垂直，零向量和任何向量都正交。
+    definedIn: math.linear-algebra.dot-product
+    anchor: def-orthogonal
+  - id: math.linear-algebra.projection
+    zh: |
+      投影
+    en: |
+      projection
+    brief: |
+      $\vb u$在非零向量$\vb v$上的投影是$\frac{\vb u\cdot\vb v}{\vb v\cdot\vb v}\vb v$，$\vb u$减去它就与$\vb v$正交。
+    definedIn: math.linear-algebra.dot-product
+    anchor: def-projection
+  - id: math.linear-algebra.linear-system
+    zh: |
+      线性方程组
+    en: |
+      system of linear equations
+    brief: |
+      若干个形如$a_1x_1+\dots+a_nx_n=b$的方程放在一起；解是让每个方程都成立的$(x_1,\dots,x_n)$。
+    definedIn: math.linear-algebra.linear-systems
+    anchor: def-linear-system
+  - id: math.linear-algebra.solution-set
+    zh: |
+      解集
+    en: |
+      solution set
+    brief: |
+      方程组的全部解组成的集合；线性方程组的解集要么是空的，要么只有一个解，要么有无穷多个解。
+    definedIn: math.linear-algebra.linear-systems
+    anchor: def-linear-system
+  - id: math.linear-algebra.coefficient-matrix
+    zh: |
+      系数矩阵
+    en: |
+      coefficient matrix
+    brief: |
+      把线性方程组的系数按原来的位置排成的数表，第$j$列是未知数$x_j$在各个方程里的系数。
+    definedIn: math.linear-algebra.linear-systems
+    anchor: def-augmented-matrix
+  - id: math.linear-algebra.augmented-matrix
+    zh: |
+      增广矩阵
+    en: |
+      augmented matrix
+    brief: |
+      系数矩阵右边再添一列常数项（中间画一条竖线）得到的矩阵，记下了方程组的全部信息。
+    definedIn: math.linear-algebra.linear-systems
+    anchor: def-augmented-matrix
+  - id: math.linear-algebra.elementary-row-operation
+    zh: |
+      初等行变换
+    en: |
+      elementary row operation
+    brief: |
+      交换两行、把一行乘以不为零的数、把一行的倍数加到另一行；做在增广矩阵上不改变解集。
+    definedIn: math.linear-algebra.linear-systems
+    anchor: def-row-operations
+  - id: math.linear-algebra.row-echelon-form
+    zh: |
+      行阶梯形
+    en: |
+      row echelon form
+    brief: |
+      零行都在最下面，每个非零行最左边的非零数（主元）都在上一行主元右边的矩阵。
+    definedIn: math.linear-algebra.linear-systems
+    anchor: def-echelon
+  - id: math.linear-algebra.pivot
+    zh: |
+      主元
+    en: |
+      pivot
+    brief: |
+      行阶梯形里每个非零行最左边的非零数；系数部分没有主元的列，对应的未知数可以任意取值。
+    definedIn: math.linear-algebra.linear-systems
+    anchor: def-echelon
+  - id: math.linear-algebra.gaussian-elimination
+    zh: |
+      高斯消元法
+    en: |
+      Gaussian elimination
+    brief: |
+      用初等行变换把增广矩阵化成行阶梯形，再从最后一个方程起往上回代求出未知数的解法。
+    definedIn: math.linear-algebra.linear-systems
+    anchor: def-gaussian-elimination
+  - id: math.linear-algebra.reduced-row-echelon-form
+    zh: |
+      简化行阶梯形
+    en: |
+      reduced row echelon form
+    brief: |
+      主元都是$1$、主元所在列的其余数都是$0$的行阶梯形；一个矩阵化成的简化行阶梯形是唯一的。
+    definedIn: math.linear-algebra.linear-systems
+    anchor: def-rref
+  - id: math.linear-algebra.homogeneous-system
+    zh: |
+      齐次线性方程组
+    en: |
+      homogeneous linear system
+    brief: |
+      常数项全为零的线性方程组；它总有零解，问题在于还有没有别的解。
+    definedIn: math.linear-algebra.linear-systems
+    anchor: def-homogeneous
+  - id: math.linear-algebra.cross-product
+    zh: |
+      叉积
+    en: |
+      cross product
+    brief: |
+      $\R^3$中的$\vb u\times\vb v=(u_2v_3-u_3v_2,\,u_3v_1-u_1v_3,\,u_1v_2-u_2v_1)$，与两个因子都正交，长度是平行四边形的面积。
+    definedIn: math.linear-algebra.cross-product
+    anchor: def-cross-product
+  - id: math.linear-algebra.right-hand-rule
+    zh: |
+      右手定则
+    en: |
+      right-hand rule
+    brief: |
+      右手四指从$\vb u$弯向$\vb v$，拇指指向$\vb u\times\vb v$；坐标轴也按它取成右手系。
+    definedIn: math.linear-algebra.cross-product
+    anchor: def-right-hand-rule
+  - id: math.linear-algebra.scalar-triple-product
+    zh: |
+      混合积
+    en: |
+      scalar triple product
+    brief: |
+      数$(\vb u\times\vb v)\cdot\vb w$，它的绝对值是以$\vb u$、$\vb v$、$\vb w$为棱的平行六面体的体积。
+    definedIn: math.linear-algebra.cross-product
+    anchor: def-triple-product
+  - id: math.linear-algebra.zero-matrix
+    zh: |
+      零矩阵
+    en: |
+      zero matrix
+    brief: |
+      所有数都是$0$的矩阵，记作$O$；它乘任何向量都得零向量。
+    definedIn: math.linear-algebra.matrices
+    anchor: def-matrix-operations
+  - id: math.linear-algebra.square-matrix
+    zh: |
+      方阵
+    en: |
+      square matrix
+    brief: |
+      行数等于列数的矩阵；$n\times n$的方阵也叫$n$阶方阵。
+    definedIn: math.linear-algebra.matrices
+    anchor: def-matrix-operations
+  - id: math.linear-algebra.matrix-multiplication
+    zh: |
+      矩阵乘法
+    en: |
+      matrix multiplication
+    brief: |
+      $AB$的第$j$列是$A$乘$B$的第$j$列；第$i$行第$j$列是$A$的第$i$行与$B$的第$j$列对应相乘再相加。
+    definedIn: math.linear-algebra.matrices
+    anchor: def-matrix-product
+  - id: math.linear-algebra.diagonal-matrix
+    zh: |
+      对角矩阵
+    en: |
+      diagonal matrix
+    brief: |
+      主对角线以外的数都是$0$的方阵$\operatorname{diag}(d_1,\dots,d_n)$，它把第$i$个分量放大$d_i$倍。
+    definedIn: math.linear-algebra.matrices
+    anchor: def-identity
+  - id: math.linear-algebra.identity-matrix
+    zh: |
+      单位矩阵
+    en: |
+      identity matrix
+    brief: |
+      主对角线上都是$1$、其余都是$0$的方阵$I$；$I\vb x=\vb x$，在矩阵乘法里的作用像数$1$。
+    definedIn: math.linear-algebra.matrices
+    anchor: def-identity
+  - id: math.linear-algebra.free-variable
+    zh: |
+      自由变量
+    en: |
+      free variable
+    brief: |
+      化成行阶梯形后，系数部分没有主元的列对应的未知数；它可以任意取值，主变量随之确定。
+    definedIn: math.linear-algebra.solution-sets
+    anchor: def-free-variable
+  - id: math.linear-algebra.general-solution
+    zh: |
+      通解
+    en: |
+      general solution
+    brief: |
+      把主变量用自由变量表示后写成的$\vb p+t_1\vb v_1+\dots+t_k\vb v_k$，参数取遍实数时给出全部的解。
+    definedIn: math.linear-algebra.solution-sets
+    anchor: def-general-solution
+  - id: math.linear-algebra.particular-solution
+    zh: |
+      特解
+    en: |
+      particular solution
+    brief: |
+      方程组的任何一个具体的解；全部的解等于一个特解加上对应齐次方程组的全部解。
+    definedIn: math.linear-algebra.solution-sets
+    anchor: def-general-solution
+  - id: math.linear-algebra.linear-transformation
+    zh: |
+      线性变换
+    en: |
+      linear transformation
+    brief: |
+      满足$T(\vb u+\vb v)=T(\vb u)+T(\vb v)$、$T(c\vb u)=cT(\vb u)$的变换，也叫线性映射；它总能写成$\vb x\mapsto A\vb x$。
+    definedIn: math.linear-algebra.linear-maps
+    anchor: def-linear-transformation
+  - id: math.linear-algebra.standard-matrix
+    zh: |
+      标准矩阵
+    en: |
+      standard matrix
+    brief: |
+      以$T(\vb e_1),\dots,T(\vb e_n)$为各列的矩阵$A$，对每个$\vb x$都有$T(\vb x)=A\vb x$。
+    definedIn: math.linear-algebra.linear-maps
+    anchor: thm-standard-matrix
+  - id: math.linear-algebra.rotation-matrix
+    zh: |
+      旋转矩阵
+    en: |
+      rotation matrix
+    brief: |
+      绕原点逆时针转过角$\theta$的标准矩阵$\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}$。
+    definedIn: math.linear-algebra.linear-maps
+    anchor: def-rotation-shear
+  - id: math.linear-algebra.shear
+    zh: |
+      剪切
+    en: |
+      shear
+    brief: |
+      把$(x,y)$变成$(x+ky,y)$这类变换：每个点沿一个方向移动，移动量和它到某条轴的距离成正比。
+    definedIn: math.linear-algebra.linear-maps
+    anchor: def-rotation-shear
+  - id: math.linear-algebra.direction-vector
+    zh: |
+      方向向量
+    en: |
+      direction vector
+    brief: |
+      直线$\vb r=\vb r_0+t\vb v$里的非零向量$\vb v$，表示直线的方向；它的任何非零倍数也可以。
+    definedIn: math.linear-algebra.lines-planes
+    anchor: def-line
+  - id: math.linear-algebra.normal-vector
+    zh: |
+      法向量
+    en: |
+      normal vector
+    brief: |
+      与平面垂直的非零向量$\vb n$；平面$ax+by+cz=d$的法向量是$(a,b,c)$。
+    definedIn: math.linear-algebra.lines-planes
+    anchor: def-plane
+  - id: math.linear-algebra.invertible
+    zh: |
+      可逆
+    en: |
+      invertible
+    brief: |
+      方阵$A$可逆，是说有同阶方阵$B$使$AB=BA=I$；这等价于$A\vb x=\vb 0$只有零解。
+    definedIn: math.linear-algebra.matrix-inverse
+    anchor: def-inverse
+  - id: math.linear-algebra.inverse-matrix
+    zh: |
+      逆矩阵
+    en: |
+      inverse matrix
+    brief: |
+      可逆方阵$A$的逆矩阵$A^{-1}$满足$AA^{-1}=A^{-1}A=I$，只有一个；方阵只要验证一边。
+    definedIn: math.linear-algebra.matrix-inverse
+    anchor: def-inverse
+  - id: math.linear-algebra.transpose
+    zh: |
+      转置
+    en: |
+      transpose
+    brief: |
+      把矩阵的各行依次写成各列，记作$A\T$，$(A\T)_{ij}=a_{ji}$；乘积的转置$(AB)\T=B\T A\T$。
+    definedIn: math.linear-algebra.matrix-inverse
+    anchor: def-transpose
+  - id: math.linear-algebra.symmetric-matrix
+    zh: |
+      对称矩阵
+    en: |
+      symmetric matrix
+    brief: |
+      满足$A\T=A$的方阵，即$a_{ij}=a_{ji}$，关于主对角线对称。
+    definedIn: math.linear-algebra.matrix-inverse
+    anchor: def-transpose

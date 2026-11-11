@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" font-size="13">
+  <!-- 左：u = (2, 3) 在 v = (4, 1) 上的投影，px = 110 + 50x，py = 240 - 50y；右：夹角 50°、90°、130° 时点积的符号 -->
+  <line x1="110" y1="240" x2="350" y2="180" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" stroke-dasharray="3 4" />
+  <line x1="210" y1="90" x2="239.41" y2="207.65" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" />
+  <path d="M 230.68 209.83 L 228.5 201.1 L 237.23 198.92" fill="none" stroke="currentColor" stroke-width="1" />
+  <line x1="110" y1="240" x2="301.27" y2="192.18" style="stroke: var(--good, #0f8a5f)" stroke-width="2.2" />
+  <path d="M 310 190 L 302.36 196.55 L 300.18 187.82 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="110" y1="240" x2="205.01" y2="97.49" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 210 90 L 208.75 99.98 L 201.26 94.99 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="110" y1="240" x2="230.68" y2="209.83" style="stroke: var(--warn, #a8661a)" stroke-width="3" />
+  <path d="M 239.41 207.65 L 231.77 214.2 L 229.59 205.46 Z" style="fill: var(--warn, #a8661a)" />
+  <path d="M 143.95 231.51 L 143.74 230.68 L 143.5 229.85 L 143.24 229.03 L 142.96 228.22 L 142.66 227.41 L 142.34 226.61 L 142 225.82 L 141.64 225.04 L 141.26 224.26 L 140.87 223.5 L 140.45 222.75 L 140.02 222 L 139.57 221.27 L 139.1 220.55 L 138.61 219.84 L 138.11 219.14 L 137.58 218.46 L 137.05 217.78 L 136.49 217.13 L 135.92 216.48 L 135.33 215.85 L 134.73 215.24 L 134.12 214.63 L 133.49 214.05 L 132.84 213.48 L 132.18 212.93 L 131.51 212.39 L 130.82 211.87 L 130.12 211.36 L 129.41 210.88" fill="none" stroke="currentColor" stroke-width="1" />
+  <text x="148.87" y="216.2" text-anchor="middle" font-size="14" fill="currentColor"><tspan font-style="italic">θ</tspan></text>
+  <circle cx="110" cy="240" r="2.6" fill="currentColor" />
+  <text x="104" y="255" text-anchor="end" fill="currentColor"><tspan font-style="italic">O</tspan></text>
+  <text x="200" y="84" text-anchor="end" font-size="14" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-weight="bold">u</tspan></text>
+  <text x="312" y="212" font-size="14" style="fill: var(--good, #0f8a5f)" fill="currentColor"><tspan font-weight="bold">v</tspan></text>
+  <text x="185.18" y="244.21" text-anchor="middle" style="fill: var(--warn, #a8661a)" fill="currentColor">proj<tspan baseline-shift="sub" font-size="10"><tspan font-weight="bold">v</tspan></tspan> <tspan font-weight="bold">u</tspan></text>
+  <text x="234.71" y="152.82" fill="currentColor"><tspan font-weight="bold">u</tspan> − proj<tspan baseline-shift="sub" font-size="10"><tspan font-weight="bold">v</tspan></tspan> <tspan font-weight="bold">u</tspan></text>
+  <line x1="430" y1="30" x2="430" y2="285" style="stroke: var(--muted, #6b7280)" stroke-width="0.6" stroke-dasharray="2 3" opacity="0.7" />
+  <line x1="488" y1="95" x2="543" y2="95" style="stroke: var(--good, #0f8a5f)" stroke-width="1.8" />
+  <path d="M 550 95 L 543 98.5 L 543 91.5 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="488" y1="95" x2="516.93" y2="60.53" style="stroke: var(--accent, #2563eb)" stroke-width="1.8" />
+  <path d="M 521.42 55.17 L 519.61 62.78 L 514.24 58.28 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="562" y="87" fill="currentColor"><tspan font-weight="bold">u</tspan> · <tspan font-weight="bold">v</tspan> > 0</text>
+  <text x="562" y="105" font-size="12" style="fill: var(--muted, #6b7280)" fill="currentColor">锐角</text>
+  <line x1="488" y1="175" x2="543" y2="175" style="stroke: var(--good, #0f8a5f)" stroke-width="1.8" />
+  <path d="M 550 175 L 543 178.5 L 543 171.5 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="488" y1="175" x2="488" y2="130" style="stroke: var(--accent, #2563eb)" stroke-width="1.8" />
+  <path d="M 488 123 L 491.5 130 L 484.5 130 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="562" y="167" fill="currentColor"><tspan font-weight="bold">u</tspan> · <tspan font-weight="bold">v</tspan> = 0</text>
+  <text x="562" y="185" font-size="12" style="fill: var(--muted, #6b7280)" fill="currentColor">直角</text>
+  <line x1="488" y1="255" x2="543" y2="255" style="stroke: var(--good, #0f8a5f)" stroke-width="1.8" />
+  <path d="M 550 255 L 543 258.5 L 543 251.5 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="488" y1="255" x2="459.07" y2="220.53" style="stroke: var(--accent, #2563eb)" stroke-width="1.8" />
+  <path d="M 454.58 215.17 L 461.76 218.28 L 456.39 222.78 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="562" y="247" fill="currentColor"><tspan font-weight="bold">u</tspan> · <tspan font-weight="bold">v</tspan> < 0</text>
+  <text x="562" y="265" font-size="12" style="fill: var(--muted, #6b7280)" fill="currentColor">钝角</text>
+</svg>

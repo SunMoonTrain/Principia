@@ -97,18 +97,18 @@
 - id: p6
   tier: hard
   statement: |
-    对$J[y]=\int_0^1\bigl(p\,y'^2+q\,y^2-2fy\bigr)\dd x$（$p>0$、$q\ge0$连续，$y(0)=y(1)=0$），:term[里茨方法]{id="math.calculus-of-variations.ritz-method"}的基函数$\varphi_1,\dots,\varphi_N$在两端为零，并且线性无关（linearly independent），即$\sum c_i\varphi_i\equiv0$只在所有$c_i=0$时成立。证明矩阵$A_{ij}=\int_0^1\bigl(p\,\varphi_i'\varphi_j'+q\,\varphi_i\varphi_j\bigr)\dd x$对称、正定（positive definite），因此方程组$A\mathbf c=\mathbf b$有唯一解。
+    对$J[y]=\int_0^1\bigl(p\,y'^2+q\,y^2-2fy\bigr)\dd x$（$p>0$、$q\ge0$连续，$y(0)=y(1)=0$），:term[里茨方法]{id="math.calculus-of-variations.ritz-method"}的基函数$\varphi_1,\dots,\varphi_N$在两端为零，并且线性无关（linearly independent），即$\sum c_i\varphi_i\equiv0$只在所有$c_i=0$时成立。证明矩阵$A_{ij}=\int_0^1\bigl(p\,\varphi_i'\varphi_j'+q\,\varphi_i\varphi_j\bigr)\dd x$对称（$A_{ij}=A_{ji}$）、正定（positive definite），因此方程组$\sum_jA_{ij}c_j=b_i$（$i=1,\dots,N$）有唯一解。
   hints:
     - |
-      正定的意思是：对任何非零向量$\mathbf c$，$\mathbf c\cdot A\mathbf c>0$。
+      正定的意思是：对任何非零向量$\mathbf c=(c_1,\dots,c_N)$，$\sum_{i,j}c_iA_{ij}c_j>0$。
     - |
-      记$v=\sum c_i\varphi_i$，算出$\mathbf c\cdot A\mathbf c=\int_0^1\bigl(p\,v'^2+q\,v^2\bigr)\dd x\ge0$。
+      记$v=\sum c_i\varphi_i$，算出$\sum_{i,j}c_iA_{ij}c_j=\int_0^1\bigl(p\,v'^2+q\,v^2\bigr)\dd x\ge0$。
     - |
-      它等于零时$v'\equiv0$，又$v(0)=0$，所以$v\equiv0$，由线性无关得$\mathbf c=\mathbf 0$。于是$A\mathbf c=\mathbf 0$只有零解，$A$可逆。
+      它等于零时$v'\equiv0$，又$v(0)=0$，所以$v\equiv0$，由线性无关得$\mathbf c=\mathbf 0$。若$\mathbf c$是齐次线性方程组（homogeneous linear system）$\sum_jA_{ij}c_j=0$的解，两边乘$c_i$再对$i$求和，得$\sum_{i,j}c_iA_{ij}c_j=0$，只能$\mathbf c=\mathbf 0$。齐次方程组只有零解，由[方程个数等于未知数个数时](lesson:math.linear-algebra.linear-systems#thm-square)的定理，原方程组有唯一解。
   reference: |
-    对称：$A_{ij}$的式子对$i$、$j$对称。正定：对$\mathbf c\ne\mathbf 0$，记$v=\sum c_i\varphi_i$，展开得$\mathbf c\cdot A\mathbf c=\sum_{i,j}c_ic_jA_{ij}=\int_0^1\bigl(p\,v'^2+q\,v^2\bigr)\dd x\ge0$。如果它等于零，由$p>0$和被积函数连续、非负，$v'\equiv0$，$v$是常数，又$v(0)=0$，所以$v\equiv0$；由线性无关，$\mathbf c=\mathbf 0$，矛盾。所以$\mathbf c\cdot A\mathbf c>0$。
+    对称：$A_{ij}$的式子对$i$、$j$对称。正定：对$\mathbf c\ne\mathbf 0$，记$v=\sum c_i\varphi_i$，展开得$\sum_{i,j}c_iA_{ij}c_j=\int_0^1\bigl(p\,v'^2+q\,v^2\bigr)\dd x\ge0$。如果它等于零，由$p>0$和被积函数连续、非负，$v'\equiv0$，$v$是常数，又$v(0)=0$，所以$v\equiv0$；由线性无关，$\mathbf c=\mathbf 0$，矛盾。所以$\sum_{i,j}c_iA_{ij}c_j>0$。
 
-    唯一解：若$A\mathbf c=\mathbf 0$，则$\mathbf c\cdot A\mathbf c=0$，只能$\mathbf c=\mathbf 0$，所以齐次方程组只有零解，$A$可逆，$A\mathbf c=\mathbf b$有唯一解。如果$p$在某处为负，这个论证就不成立了，那时$J$可能没有下界，里茨方程组也可能无解或有无穷多解。
+    唯一解：若$\sum_jA_{ij}c_j=0$对每个$i$成立，两边乘$c_i$再求和得$\sum_{i,j}c_iA_{ij}c_j=0$，只能$\mathbf c=\mathbf 0$，所以齐次方程组只有零解；由[方程个数等于未知数个数时](lesson:math.linear-algebra.linear-systems#thm-square)的定理，$\sum_jA_{ij}c_j=b_i$有唯一解。如果$p$在某处为负，这个论证就不成立了，那时$J$可能没有下界，里茨方程组也可能无解或有无穷多解。
 
 - id: p7
   tier: thinking

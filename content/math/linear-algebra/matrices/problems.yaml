@@ -1,0 +1,135 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$A=\begin{pmatrix}2&-1&0\\1&3&2\end{pmatrix}$，$\vb x=(1,2,-1)$，求$A\vb x$，按顺序填写两个分量。
+  answer:
+    type: tuple
+    value: [0, 5]
+  hints:
+    - |
+      $A\vb x$的第$i$个分量是$A$的第$i$行与$\vb x$对应相乘再相加。
+    - |
+      第一个分量是$2\cdot1+(-1)\cdot2+0\cdot(-1)$。
+    - |
+      第一个分量$2-2+0=0$，第二个分量$1\cdot1+3\cdot2+2\cdot(-1)=5$，所以$A\vb x=(0,5)$。按列算也一样：$1\cdot(2,1)+2\cdot(-1,3)-1\cdot(0,2)=(0,5)$。
+  solution: |
+    按行：$2-2+0=0$，$1+6-2=5$，填 `0, 5`。
+
+- id: p2
+  tier: easy
+  statement: |
+    设$A=\begin{pmatrix}1&2\\0&-1\end{pmatrix}$，$B=\begin{pmatrix}3&0\\1&2\end{pmatrix}$，求$AB$，按行依次填写四个数。
+  answer:
+    type: tuple
+    value: [5, 4, -1, -2]
+  hints:
+    - |
+      $AB$第$i$行第$j$列的数是$A$的第$i$行与$B$的第$j$列对应相乘再相加。
+    - |
+      第一行：$(1,2)$分别与$(3,1)$、$(0,2)$对应相乘再相加。
+    - |
+      第一行是$1\cdot3+2\cdot1=5$、$1\cdot0+2\cdot2=4$；第二行是$0\cdot3+(-1)\cdot1=-1$、$0\cdot0+(-1)\cdot2=-2$。
+  solution: |
+    $AB=\begin{pmatrix}5&4\\-1&-2\end{pmatrix}$，填 `5, 4, -1, -2`。
+
+- id: p3
+  tier: medium
+  statement: |
+    $2\times2$矩阵$A$满足$A\vb e_1=(2,1)$、$A\vb e_2=(-1,3)$，其中$\vb e_1=(1,0)$、$\vb e_2=(0,1)$。求$A(3,-2)$，按顺序填写两个分量。
+  answer:
+    type: tuple
+    value: [8, -3]
+  hints:
+    - |
+      $A\vb e_j$就是$A$的第$j$列；$(3,-2)=3\vb e_1-2\vb e_2$。
+    - |
+      $A(3\vb e_1-2\vb e_2)=3A\vb e_1-2A\vb e_2$。
+    - |
+      $3(2,1)-2(-1,3)=(6+2,\ 3-6)=(8,-3)$。也可以先写出$A=\begin{pmatrix}2&-1\\1&3\end{pmatrix}$再乘。
+  solution: |
+    $A(3,-2)=3(2,1)-2(-1,3)=(8,-3)$，填 `8, -3`。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$A=\begin{pmatrix}1&2\\0&1\end{pmatrix}$，求$A^5$右上角的数。
+  answer:
+    type: number
+    value: 10
+  hints:
+    - |
+      先算$A^2$、$A^3$，看看有什么规律。
+    - |
+      $A^2=\begin{pmatrix}1&4\\0&1\end{pmatrix}$，$A^3=\begin{pmatrix}1&6\\0&1\end{pmatrix}$。
+    - |
+      $\begin{pmatrix}1&a\\0&1\end{pmatrix}\begin{pmatrix}1&2\\0&1\end{pmatrix}=\begin{pmatrix}1&a+2\\0&1\end{pmatrix}$，每乘一次$A$，右上角加$2$，所以$A^k=\begin{pmatrix}1&2k\\0&1\end{pmatrix}$，$A^5$右上角是$10$。
+  solution: |
+    $A^k$右上角是$2k$，$A^5$右上角是$10$，填 `10`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$A$是$n$阶:term[方阵]{id="math.linear-algebra.square-matrix"}（square matrix），对所有$n$阶方阵$B$都有$AB=BA$。证明$A$是:term[单位矩阵]{id="math.linear-algebra.identity-matrix"}（identity matrix）的倍数，即$A=cI$。
+  hints:
+    - |
+      取$B=E_{ij}$：只有第$i$行第$j$列是$1$、其余都是$0$的方阵。
+    - |
+      $AE_{ij}$只有第$j$列可能不为零，这一列是$A$的第$i$列；$E_{ij}A$只有第$i$行可能不为零，这一行是$A$的第$j$行。
+    - |
+      由$AE_{ij}=E_{ij}A$：比较第$i$行第$j$列，左边是$a_{ii}$，右边是$a_{jj}$，所以主对角线上的数都相等，记作$c$。再看第$j$列的第$k$行（$k\ne i$）：左边是$a_{ki}$，右边在第$i$行以外全是零，所以$a_{ki}=0$。
+
+      $i$、$k$可以任取，于是主对角线以外的数都是零，主对角线上都是$c$，$A=cI$。反过来$cI$确实和每个方阵可交换，所以和所有方阵可交换的恰好是单位矩阵的倍数。
+  reference: |
+    取$B=E_{ij}$。$AE_{ij}$的第$j$列是$A$的第$i$列，$E_{ij}A$的第$i$行是$A$的第$j$行。比较位置$(i,j)$得$a_{ii}=a_{jj}$；比较第$j$列的其余位置得$a_{ki}=0$（$k\ne i$）。所以$A=cI$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$。(1) 证明$A^2-(a+d)A+(ad-bc)I=O$。(2) 由此说明，对每个正整数$k$，$A^k$都能写成$xA+yI$，$x$、$y$是数。
+  hints:
+    - |
+      直接算出$A^2$和$(a+d)A$。
+    - |
+      $A^2=\begin{pmatrix}a^2+bc&ab+bd\\ca+dc&cb+d^2\end{pmatrix}$，$(a+d)A=\begin{pmatrix}a^2+ad&ab+bd\\ac+cd&ad+d^2\end{pmatrix}$。
+    - |
+      (1) 两者相减，$A^2-(a+d)A=\begin{pmatrix}bc-ad&0\\0&bc-ad\end{pmatrix}=-(ad-bc)I$，移项即得。
+
+      (2) 对$k$归纳。$k=1$时$A=1\cdot A+0\cdot I$。若$A^k=xA+yI$，则$A^{k+1}=xA^2+yA$；把 (1) 的$A^2=(a+d)A-(ad-bc)I$代进去，得$A^{k+1}=\bigl(x(a+d)+y\bigr)A-x(ad-bc)I$，仍是这种形式。所以$2\times2$矩阵的高次幂，都只是$A$和$I$的组合。
+  reference: |
+    (1) 直接算得$A^2-(a+d)A=-(ad-bc)I$。(2) 归纳：$A^k=xA+yI$时，$A^{k+1}=xA^2+yA=(x(a+d)+y)A-x(ad-bc)I$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    如果规定两个同样大小的矩阵的「乘积」是对应位置相乘，记作$A\circ B$。(1) $(A\circ B)\vb x=A(B\vb x)$还成立吗？(2) 单位矩阵在这种乘法下还像数$1$吗？(3) 为什么线性代数用「行与列对应相乘再相加」来定义:term[矩阵乘法]{id="math.linear-algebra.matrix-multiplication"}（matrix multiplication）？
+  hints:
+    - |
+      (1) 试试$A=B=\begin{pmatrix}0&1\\1&0\end{pmatrix}$，它乘向量是把两个分量对调。
+    - |
+      (2) 算$I\circ A$。
+    - |
+      (1) 一般不成立。$A=B=\begin{pmatrix}0&1\\1&0\end{pmatrix}$时，$A\circ B$对应位置相乘还是它自己，可$A(B\vb x)$把分量对调两次，回到$\vb x$；取$\vb x=(1,0)$，$(A\circ B)\vb x=(0,1)$，$A(B\vb x)=(1,0)$。
+
+      (2) 不像。$I\circ A$只留下$A$主对角线上的数，一般不等于$A$；这种乘法里起$1$的作用的，是所有数都是$1$的矩阵。这种运算叫作阿达马积（Hadamard product），也有它的用处，只是不对应「先做一个、再做一个」。
+
+      (3) 矩阵乘向量把$\vb x$变成$A\vb x$，先用$B$、再用$A$，合起来应该还是一个矩阵在作用，矩阵乘法正是为此定义的：$(AB)\vb x=A(B\vb x)$。以后在[线性变换及其矩阵](lesson:math.linear-algebra.linear-maps)里会看到，这就是「变换的复合对应矩阵的乘积」。
+  reference: |
+    (1) 不成立：$A=B$为对调分量的矩阵时，$A\circ B=A$，而$A(B\vb x)=\vb x$。(2) $I\circ A$只留主对角线，起$1$的作用的是全$1$矩阵。(3) 行与列对应相乘再相加使$(AB)\vb x=A(B\vb x)$，矩阵乘法对应先后作用的复合。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设想一个地区，每年城区人口的$90\%$留在城区、$10\%$迁往郊区，郊区人口的$80\%$留在郊区、$20\%$迁往城区：(1) 把城区、郊区的人口排成$\vb x=(x_1,x_2)$，写出矩阵$M$，使下一年的人口是$M\vb x$。(2) 两年后的人口是什么？$M^2$左下角的数是什么意思？(3) $M$每一列的两个数加起来是多少，为什么？
+  hints:
+    - |
+      下一年的城区人口$=0.9x_1+0.2x_2$，郊区人口$=0.1x_1+0.8x_2$。
+    - |
+      两年后是$M(M\vb x)=M^2\vb x$。$M^2$的第一列是$M$乘$(1,0)$再乘一次$M$。
+    - |
+      (1) $M=\begin{pmatrix}0.9&0.2\\0.1&0.8\end{pmatrix}$，第$j$列是第$j$类人口一年后的去向。
+
+      (2) 两年后是$M^2\vb x$，$M^2=\begin{pmatrix}0.83&0.34\\0.17&0.66\end{pmatrix}$。左下角$0.17$是现在住在城区的人，两年后住在郊区的比例：第一年就搬走的$0.1$里有$80\%$留在郊区，第一年留下的$0.9$里有$10\%$第二年搬走，$0.08+0.09=0.17$。
+
+      (3) 每一列加起来都是$1$：每个人第二年总在城区或郊区，总人口$x_1+x_2$不变。$M^k\vb x$描述$k$年后的人口，以后在[矩阵的幂与线性递推](lesson:math.linear-algebra.matrix-powers)里会算它长期的样子。
+  reference: |
+    $M=\begin{pmatrix}0.9&0.2\\0.1&0.8\end{pmatrix}$，两年后$M^2\vb x$，$M^2=\begin{pmatrix}0.83&0.34\\0.17&0.66\end{pmatrix}$，左下角是城区居民两年后在郊区的比例。列和为$1$，因为人只在两处之间流动，总数不变。
