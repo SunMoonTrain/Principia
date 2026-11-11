@@ -52,8 +52,14 @@ afterEach(() => {
   for (const root of roots.splice(0)) fs.rmSync(root, { recursive: true, force: true });
 });
 
+/**
+ * 编译全部真实内容的那一条：单独跑 `npm run content` 要 12 到 20 秒，和别的测试文件一起跑、或者别的会话同时在构建时，
+ * 超过了全局的 30 秒（批次 10 时三个会话都碰到过偶发超时）。内容每批都在加，给它单独放宽到 3 分钟。
+ */
+const REAL_CONTENT_TIMEOUT = 180_000;
+
 describe('真实内容', () => {
-  it('构建通过；样例的三节链 sequences-limits → completeness → bounded-monotone 层级逐节升高', () => {
+  it('构建通过；样例的三节链 sequences-limits → completeness → bounded-monotone 层级逐节升高', { timeout: REAL_CONTENT_TIMEOUT }, () => {
     // 「三节链的层级依次为 0、1、2」在 graph.test.ts 里用构造的小节测；这里的真实内容会越写越多，只查链上逐节升高
     const result = compileContent(repo);
     expect(result.report.errors).toEqual([]);
