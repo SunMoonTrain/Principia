@@ -848,7 +848,7 @@ math.analysis.completeness:
     - 电导率 $\sigma$：静电各节的 $\sigma$ 是面电荷密度，同一节两种都用时要区分（以后的趋肤效应、导体中的电磁波）。$\tau$ 在不同的节里是时间常数或德鲁德碰撞时间。电动势 $\mathcal E$、内阻 $r$；回旋半径 $R$（$R$ 也是电阻，不在同一节用），回旋频率 $f_{\mathrm c}$、角频率 $\omega_{\mathrm c}$；磁矩 $\vb m$；规范函数 $\chi$，和分析力学一致。
     - 立体角的正负：场点在右手拇指所指的一侧时 $\Omega$ 为负，$\vb B=\frac{\mu_0I}{4\pi}\nabla\Omega$，和 `vector-potential` 第 8 题的磁标势 $\Phi_{\mathrm M}=-\frac{I\Omega}{4\pi}$ 一致；以后讲磁化、磁标势照这个约定（审查提的）。
     - 「静电场」「静磁场」「地磁场」整个词标成「电场」「磁场」，已审的 `electric-potential`、`poisson-equation`、`electric-displacement` 随这一批改了（写代码的会话定的）。「匀强磁场」的「匀强」是修饰语，不算复合词，和已审的 `polarization` 一致。
-    - 「载流子」「霍尔效应」进术语表；回旋半径、螺绕环、安培回路、规范自由度、库仑规范、节点、回路只加锚点。「位移电流」等 `maxwell-equations` 写好时进表，补标 `gauss-law:47`、`ampere-law:33`；「库仑规范」等 `gauge-potentials` 也用到时进表，补标 `vector-potential:45`（审查定的）。
+    - 「载流子」「霍尔效应」进术语表；回旋半径、螺绕环、安培回路、规范自由度、库仑规范、节点、回路只加锚点。「位移电流」等 `maxwell-equations` 写好时进表，补标 `gauss-law:47`、`ampere-law:38`；「库仑规范」等 `gauge-potentials` 也用到时进表，补标 `vector-potential:46`（审查定的）。
     - `current-density` 只拿静电平衡作对照，不加 `conductors` 前置，加上会让 37 节右移（审查定的）。
   - 给以后写别的领域的会话留的话（批次 11 审查时提的）：
     - 牛顿力学 `work-energy` 要讲到力的功率 $P=\vb F\cdot\vb v$、$\dv Kt=\vb F\cdot\vb v$（电磁学 `lorentz-force`、`current-density` 用了）；`angular-momentum` 要讲到力偶的力矩和取矩点无关（`electric-dipole`、`magnetic-force-on-currents` 用了）。
@@ -856,6 +856,35 @@ math.analysis.completeness:
     - 电磁学批次 13、14 的小节要接住的：`em-waves` 接 `biot-savart:27` 的 $\mu_0\varepsilon_0=\frac1{c^2}$；`lienard-wiechert` 的低速极限要回到 `biot-savart:31` 运动点电荷的磁场；`poynting-theorem` 接 `current-density` 第 8 题，能量由导线周围的电磁场送到灯泡；`gauge-potentials` 补上 $\varphi\to\varphi-\pdv\chi t$，记号用同一个 $\chi$。批次 12 的小节要接住的，列在批次 12 那一段。
 - 批次 11 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 12（写代码的会话定的）。
 - 批次 11 之后（你定的）：搞完就发批次 12，不用停下来等。
+- 批次 12：线性代数的最后一批、电磁学的第四批，做法和批次 11 一样。
+  - 线性代数写内积空间与谱定理 9 节，按前置顺序：`inner-product-spaces`、`orthogonal-projection`、`gram-schmidt`、`least-squares`、`orthogonal-matrices`、`spectral-theorem`、`hermitian-unitary`、`quadratic-forms`、`svd`。审查报告 `docs/reviews/batch-12-linear-algebra.md`。写完这一批，线性代数 36 节全部写完。
+  - 电磁学写磁介质、电磁感应与麦克斯韦方程组 8 节，按前置顺序：`magnetization`、`magnetic-intensity`、`faraday-law`、`induced-electric-field`、`inductance`、`rl-circuits`、`ac-circuits`、`maxwell-equations`。审查报告 `docs/reviews/batch-12-electromagnetism.md`。往后两批：守恒律与电磁波 9 节；势与辐射 5 节。
+  - 已写的小节有链接或用法指向这一批，写的时候要接得住（写代码的会话查的）：
+    - 线性代数：
+      - 数学分析 `parseval:22`：「内积空间里讲过函数的积分内积」$\langle f,g\rangle=\int fg\,\dd x$、$\|f\|=\sqrt{\langle f,f\rangle}$（`inner-product-spaces`）；`:29`：傅里叶部分和是正交投影，误差和子空间正交，所以是最佳逼近（`orthogonal-projection`）。
+      - `dot-product` 第 7 题：斜坐标轴下「对应分量相乘再相加」不等于点积，要正交规范基（`gram-schmidt`）。
+      - `matrix-inverse:61` 的对称矩阵（`quadratic-forms`、`spectral-theorem`）；第 7 题的 $R_\theta^{-1}=R_\theta\T$（`orthogonal-matrices`）。
+    - 以这一批为直接前置的已写小节，按批次 9 定的规矩查了它们的用法：
+      - 数学分析 `parseval` ← `gram-schmidt`：见上面两处。
+      - 变分法 `rayleigh-quotient` ← `spectral-theorem`：实对称矩阵的特征值是实数，有一组由特征向量组成的正交规范基；属于不同特征值的特征向量互相垂直，用的是 $\vb x\cdot A\vb y=A\vb x\cdot\vb y$。
+      - 分析力学 `rigid-body-kinematics` ← `orthogonal-matrices`：$R\T R=I$ 等价于保持点积（长度、夹角）；$\det R=\pm1$，$-1$ 含镜像；$RR\T=I$，所以行也是单位向量；行列式为 $1$ 的二阶正交矩阵是旋转。
+      - 分析力学 `inertia-tensor` ← `spectral-theorem`：实对称矩阵有一组正交规范的特征向量。
+      - 分析力学 `small-oscillations` ← `quadratic-forms`：正定；由谱定理 $T=ODO\T$，$D$ 的对角元为正，取 $D^{1/2}$；正交变换不改变平方和；二次型限制到子空间仍正定（第 8 题）；黑塞矩阵正定时平衡稳定。两个二次型（其中 $T$ 正定）同时化成平方和、频率满足 $\det(V-\omega^2T)=0$，它自己证了，`quadratic-forms` 可以提到。
+      - 狭义相对论 `four-vectors` ← `quadratic-forms`：`:60` 间隔是坐标差的二次型，号差（signature）是 $(+,-,-,-)$，「无论怎样线性换元，正项、负项的个数都不变」，$\eta$ 不是正定的；`:65` 对称矩阵由它的二次型决定（极化恒等式 $x\T My=\frac14\bigl[(x+y)\T M(x+y)-(x-y)\T M(x-y)\bigr]$）。所以 `quadratic-forms` 要讲到惯性定理、正负惯性指数和极化恒等式。名字：中文线性代数通称「惯性定理」，`four-vectors:60` 写的「惯性定律」在物理里是牛顿第一定律，改成「惯性定理」，由电磁学写内容会话随这一批改、退回 `written`，电磁学审查复核（写代码的会话定的）。
+    - 电磁学：
+      - `maxwell-equations`：「位移电流」进术语表，补标 `gauss-law:47`、`ampere-law:38`（`rc-circuits` 第 7 题是题目文字，可标可不标）；接住 `ampere-law:38` 充电电容器使安培环路定理矛盾、`rc-circuits` 第 7 题的 $\varepsilon_0A\dv Et=I$；把 `electric-displacement` 的 $\vb D$ 和「位移」这个名字接上；狭义相对论 `covariant-maxwell:60` 说去掉位移电流就得不到电荷守恒，方程的写法和它一致。
+      - `faraday-law`：`dc-circuits:22` 发电机里推动电荷的是磁力；`dc-circuits:49` 有变化的磁场时回路定律要改写；`ampere-law:52` 穿过同一条闭合曲线的磁通量和曲面无关；`magnetic-force-on-currents` 第 6 题电动机的反电动势；`biot-savart` 第 8 题双绞线里感应的干扰互相抵消。
+      - `induced-electric-field`：`poisson-equation` 第 8 题，$k(-y,x,0)$ 这种绕圈的电场由变化的磁场产生。
+      - `inductance`：`rc-circuits` 第 8 题，电路的电感使两个电容器之间的电荷来回振荡。
+      - `ac-circuits`：`dc-circuits` 第 7 题，交流电用变压器升压、降压。
+      - `magnetization`：`magnetic-dipole:54` 安培的分子电流猜想、原子磁矩；立体角、磁标势的正负照批次 11 的约定。
+  - 以这一批为前置、还没写的别的小节：`spectral-theorem` ← 微分几何「主曲率、高斯曲率与平均曲率」、偏微分方程「斯图姆-刘维尔理论」；`hermitian-unitary` ← 群表示论「马施克定理」「矩阵李群」、量子力学「希尔伯特空间与狄拉克符号」；`quadratic-forms` ← 概率论「多元正态分布」。
+  - 跨领域前置（还是待写）：`inner-product-spaces` ← 微积分「微积分基本定理」（函数的积分内积）；`ac-circuits` ← 振动与波「受迫振动与共振」。
+  - 记号：
+    - 复内积对第一个变量共轭线性：$\langle\vb u,\vb v\rangle=\vb u^{\mathsf H}\vb v=\sum\bar u_iv_i$，和量子力学的狄拉克符号一致（写代码的会话定的）。
+    - 交流电路的相位差不用 $\psi$（批次 10 定的方位角）；$\varphi$ 是电势，同一节里别撞。
+  - 动画：线性代数用 LinearMap2D：`svd` 用 `steps` 依次演示 $V\T$、$\Sigma$、$U$，单位圆变成椭圆；`spectral-theorem` 打开 `eigen`，两条特征直线互相垂直，单位圆变成以它们为轴的椭圆；`orthogonal-matrices` 画旋转和反射。插值到旋转时途中会缩小，插值到反射时行列式从 $1$ 变到 $-1$、中途压成一条线，说明里都要交代（见附录）。二次型的等值线、正交投影、最小二乘画 SVG。电磁学：vector-field-2d 画绕圈的感生电场；function-plot 画法拉第定律的磁通量和电动势、RL 电路的电流、交流电路的电压电流和共振曲线；oscillator 可以类比 RLC 电路；磁化电流、位移电流、电感画 SVG（写代码的会话提的）。
+- 批次 12 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 13（写代码的会话定的）。
 - 几个领域同时写时（批次 1 定的）：每个写内容会话只改自己领域的目录（`content/<学科>/<领域>/`），审内容会话只写自己的报告和验算脚本；`docs/plan.md` 不由它们直接改，要写回的内容写进汇报，由写代码的会话统一写进去、单独提交，免得几个会话同时改一个文件。每个领域各自作为一个提交。另一个领域写到一半、全量构建报错时，写内容会话可以把那个领域换成已提交的版本，在临时副本上构建，确认自己的领域 0 个错误；看页面同理，用临时副本编译的内容另起一个服务，进度写临时仓库，不改仓库的 `dist/`（批次 2 定的）。test-serve 和 `npm run serve` 提供的是 `dist/` 里构建好的网站，不读 `generated/`：改完内容要重新 `vite build`，页面上才看得到（批次 6 时写内容会话提的）。临时副本的做法（批次 10 时写内容会话提的，写代码的会话核过）：用 `git archive HEAD` 导出已提交的版本，再拷进自己的改动；`node_modules` 不要复制，在副本里建一个指向仓库 `node_modules` 的目录联接（PowerShell 的 `New-Item -ItemType Junction`）；建网站时在副本目录里跑 `npx vite build --outDir <目录>`，或者把副本目录写成 `vite build` 的第一个参数（Vite 8 的根目录是位置参数）；删副本之前先单独删掉联接本身（PowerShell 的 `[System.IO.Directory]::Delete(<联接>, $false)`），否则删除命令会顺着联接把仓库的 `node_modules` 一起删掉。
 
 **分工**：一共三个 agent：写代码、写内容、审内容。开发台阶 8、9 由写内容 agent 和审内容 agent 执行。写内容和审内容必须是两个独立会话。
