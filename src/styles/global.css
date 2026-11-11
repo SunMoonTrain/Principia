@@ -1113,6 +1113,17 @@ code {
   text-align: right;
 }
 
+/* LinearMap2D 的进度条单独占一行；分步时画面下面写着第几步 */
+.anim-progress {
+  flex: 1 1 100%;
+}
+
+.anim-caption {
+  margin: 6px 2px 0;
+  color: var(--text-soft);
+  font-size: 14.5px;
+}
+
 .anim-bar {
   display: flex;
   flex-wrap: wrap;

@@ -117,6 +117,58 @@ export const DEMOS: Demo[] = [
       sliders: [{ name: 'c', min: 0, max: 6, step: 0.1, default: 0.4, label: '阻尼系数$c$' }],
     },
   },
+  {
+    component: 'linear-map-2d',
+    title: 'LinearMap2D · 矩阵怎样拉扯平面',
+    note: '从单位矩阵慢慢变到 [[a, b], [c, d]]。绿、红箭头是两个基向量的像，也就是矩阵的两列。拖动 c 让行列式变成负数，单位正方形翻了面，颜色跟着变；虚线是特征向量所在的直线，变换过程中这两条线上的点一直留在线上。进度条能拖到任意时刻。',
+    params: {
+      matrix: [
+        ['a', 'b'],
+        ['c', 'd'],
+      ],
+      range: { x: [-3, 3], y: [-3, 3] },
+      show: ['grid', 'square', 'basis', 'eigen', 'det'],
+      vectors: [{ x: 1, y: 2, label: '$\\mathbf v$' }],
+      sliders: [
+        { name: 'a', min: -2, max: 2, step: 0.1, default: 1.5, label: '$a$' },
+        { name: 'b', min: -2, max: 2, step: 0.1, default: 0.5, label: '$b$' },
+        { name: 'c', min: -2, max: 2, step: 0.1, default: 0.5, label: '$c$' },
+        { name: 'd', min: -2, max: 2, step: 0.1, default: 1, label: '$d$' },
+      ],
+    },
+  },
+  {
+    component: 'linear-map-2d',
+    title: 'LinearMap2D · 分步：A = PDP⁻¹',
+    note: 'A = [[2, 1], [1, 2]] 分三步作用：先顺时针转 45°，把两条特征向量的直线转到坐标轴上；再沿坐标轴伸缩 3 倍和 1 倍；最后转回来。单位圆变成长轴沿 (1, 1) 的椭圆。写 steps 时先作用第一个。',
+    params: {
+      steps: [
+        {
+          matrix: [
+            ['sqrt(1/2)', 'sqrt(1/2)'],
+            ['-sqrt(1/2)', 'sqrt(1/2)'],
+          ],
+          label: '先转到特征向量的方向上（$P^{-1}$）',
+        },
+        {
+          matrix: [
+            [3, 0],
+            [0, 1],
+          ],
+          label: '沿坐标轴伸缩（$D$）',
+        },
+        {
+          matrix: [
+            ['sqrt(1/2)', '-sqrt(1/2)'],
+            ['sqrt(1/2)', 'sqrt(1/2)'],
+          ],
+          label: '再转回来（$P$）',
+        },
+      ],
+      range: { x: [-3.5, 3.5], y: [-3.5, 3.5] },
+      show: ['grid', 'circle', 'basis', 'eigen'],
+    },
+  },
 ];
 
 function flow(v: unknown): string {

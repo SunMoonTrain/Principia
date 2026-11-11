@@ -66,10 +66,27 @@ export const OscillatorSchema = z.strictObject({
   sliders: Sliders,
 });
 
+/** 2×2 矩阵，按行写，元素可以是式子。 */
+const Matrix2 = z.tuple([z.tuple([Expr, Expr]), z.tuple([Expr, Expr])]);
+
+/** LinearMap2D 能画的东西（show 里写）：变换后的网格、单位正方形、单位圆、两个基向量的像、实特征向量所在的直线、角上的行列式。 */
+export const LINEAR_MAP_SHOW = ['grid', 'square', 'circle', 'basis', 'eigen', 'det'] as const;
+
+export const LinearMap2DSchema = z.strictObject({
+  // 只有一步写 matrix；几个矩阵依次作用写 steps（先作用第一个），两者写一个
+  matrix: Matrix2.optional(),
+  steps: z.array(z.strictObject({ matrix: Matrix2, label: Label.optional() })).min(1).max(4).optional(),
+  range: z.strictObject({ x: Range, y: Range }),
+  show: z.array(z.enum(LINEAR_MAP_SHOW)).optional(),
+  vectors: z.array(z.strictObject({ x: Expr, y: Expr, label: Label.optional() })).max(6).optional(),
+  sliders: Sliders,
+});
+
 export type FunctionPlotParams = Omit<z.infer<typeof FunctionPlotSchema>, 'sliders'> & { sliders?: SliderSpec[] };
 export type PhasePortraitParams = Omit<z.infer<typeof PhasePortraitSchema>, 'sliders'> & { sliders?: SliderSpec[] };
 export type VectorField2DParams = Omit<z.infer<typeof VectorField2DSchema>, 'sliders'> & { sliders?: SliderSpec[] };
 export type OscillatorParams = Omit<z.infer<typeof OscillatorSchema>, 'sliders'> & { sliders?: SliderSpec[] };
+export type LinearMap2DParams = Omit<z.infer<typeof LinearMap2DSchema>, 'sliders'> & { sliders?: SliderSpec[] };
 
 export interface ComponentSpec {
   schema: z.ZodType;
@@ -168,10 +185,46 @@ const oscillator: ComponentSpec = {
   labels: () => [],
 };
 
+/** LinearMap2D 依次作用的矩阵：写了 steps 就是 steps 里的，否则是 matrix 一个。 */
+export function linearMapSteps(p: LinearMap2DParams): { matrix: NonNullable<LinearMap2DParams['matrix']>; label?: string }[] {
+  return p.steps ?? (p.matrix ? [{ matrix: p.matrix }] : []);
+}
+
+const linearMap2D: ComponentSpec = {
+  schema: LinearMap2DSchema,
+  // 式子里只有滑块名，没有自己的变量
+  reserved: () => [],
+  check(p: LinearMap2DParams, sliders) {
+    const issues: ParamIssue[] = [];
+    if ((p.matrix === undefined) === (p.steps === undefined)) {
+      issues.push({ path: [], message: 'matrix 和 steps 写一个：只有一步写 matrix，几个矩阵依次作用写 steps' });
+    }
+    const matrixAt = (path: (string | number)[], m: NonNullable<LinearMap2DParams['matrix']>): void =>
+      m.forEach((row, i) => row.forEach((entry, j) => expr(issues, [...path, i, j], entry, sliders)));
+    if (p.matrix) matrixAt(['matrix'], p.matrix);
+    p.steps?.forEach((s, k) => matrixAt(['steps', k, 'matrix'], s.matrix));
+    p.vectors?.forEach((v, i) => {
+      expr(issues, ['vectors', i, 'x'], v.x, sliders);
+      expr(issues, ['vectors', i, 'y'], v.y, sliders);
+    });
+    const seen = new Set<string>();
+    p.show?.forEach((item, i) => {
+      if (seen.has(item)) issues.push({ path: ['show', i], message: `show 里「${item}」写了两次` });
+      seen.add(item);
+    });
+    return issues;
+  },
+  labels: (p: LinearMap2DParams) => [
+    ...(p.steps ?? []).flatMap((s, i) => (s.label === undefined ? [] : [{ path: ['steps', i, 'label'], key: `step:${i}` }])),
+    ...(p.vectors ?? []).flatMap((v, i) => (v.label === undefined ? [] : [{ path: ['vectors', i, 'label'], key: `vector:${i}` }])),
+  ],
+};
+
 /** 已经实现的组件（内容里写的名字 → 参数格式）。 */
 export const SPECS: Record<string, ComponentSpec> = {
   'function-plot': functionPlot,
   'phase-portrait': phasePortrait,
   'vector-field-2d': vectorField2D,
   oscillator,
+  'linear-map-2d': linearMap2D,
 };

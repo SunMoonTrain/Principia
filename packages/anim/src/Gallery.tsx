@@ -14,6 +14,8 @@ function demoLabels(params: Record<string, unknown>, render: (src: string) => Re
   for (const s of list('sliders')) if (s.label && s.name) labels[`slider:${s.name}`] = render(s.label);
   list('functions').forEach((f, i) => f.label && (labels[`function:${i}`] = render(f.label)));
   list('sequences').forEach((s, i) => s.label && (labels[`sequence:${i}`] = render(s.label)));
+  list('steps').forEach((s, i) => s.label && (labels[`step:${i}`] = render(s.label)));
+  list('vectors').forEach((v, i) => v.label && (labels[`vector:${i}`] = render(v.label)));
   return labels;
 }
 

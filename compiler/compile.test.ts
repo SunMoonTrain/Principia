@@ -330,6 +330,15 @@ describe('动画组件块（台阶 7）', () => {
     expect(errors(root)).toMatchObject([{ file: LESSON, line: at + 2, message: expect.stringContaining('2 个物块要写 3 根弹簧') }]);
   });
 
+  it('线性变换的矩阵里用了不认识的名字、matrix 和 steps 都没写，报错指出那一行', () => {
+    const root = fixture();
+    const at = edit(root, LESSON, '## 例题\n', ':::anim{component="linear-map-2d"}\nmatrix: [[1, k], [0, 1]]\nrange: { x: [-3, 3], y: [-3, 3] }\n:::\n\n:::anim{component="linear-map-2d"}\nrange: { x: [-3, 3], y: [-3, 3] }\n:::\n\n## 例题\n');
+    expect(errors(root)).toMatchObject([
+      { file: LESSON, line: at + 1, message: expect.stringContaining('不认识的名字「k」') },
+      { file: LESSON, line: at + 6, message: expect.stringContaining('matrix 和 steps 写一个') },
+    ]);
+  });
+
   it('组件画廊里每个演示的「写法」原样写进小节都能通过构建，参数和演示的一样', () => {
     const root = fixture();
     const blocks = DEMOS.map(demoSource).join('\n\n');

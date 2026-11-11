@@ -3,6 +3,7 @@
 import type { ComponentType } from 'react';
 import { FunctionPlot } from './FunctionPlot';
 import type { AnimProps } from './kit';
+import { LinearMap2D } from './LinearMap2D';
 import { Oscillator } from './Oscillator';
 import { PhasePortrait } from './PhasePortrait';
 import { VectorField2D } from './VectorField2D';
@@ -12,4 +13,5 @@ export const ANIMATIONS: Record<string, ComponentType<AnimProps<never>>> = {
   'phase-portrait': PhasePortrait,
   'vector-field-2d': VectorField2D,
   oscillator: Oscillator,
+  'linear-map-2d': LinearMap2D,
 };

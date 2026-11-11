@@ -9,7 +9,7 @@ function problems(component: string, params: Record<string, unknown>, sliders: s
   return spec.check(parsed.data as never, sliders).map((i) => `${i.path.join('.')}：${i.message}`);
 }
 
-describe('第一批组件的参数检查', () => {
+describe('组件的参数检查', () => {
   it('function-plot：至少一条曲线或数列；式子的变量是 x 或 n；n 从小写到大', () => {
     const range = { x: [0, 10], y: [0, 1] };
     expect(problems('function-plot', { range, functions: [{ expr: '1 - eps' }], sequences: [{ expr: '1/n', n: [1, 10] }] }, ['eps'])).toEqual([]);
@@ -47,6 +47,27 @@ describe('第一批组件的参数检查', () => {
     expect(problems('vector-field-2d', ok, ['a'])).toEqual([]);
     expect(problems('vector-field-2d', ok)).toEqual(['field.y：不认识的名字「a」']);
     expect(problems('vector-field-2d', { ...ok, particles: 5000 }, ['a'])[0]).toMatch(/^particles/);
+  });
+
+  it('linear-map-2d：matrix 和 steps 写一个；元素和向量的式子只能用滑块名；最多 4 步、6 个向量；show 只认几样、不重复', () => {
+    const range = { x: [-3, 3], y: [-3, 3] };
+    const ok = { matrix: [[1, 'k'], [0, 1]], range, show: ['grid', 'square', 'eigen'], vectors: [{ x: 1, y: 'k', label: '$v$' }] };
+    expect(problems('linear-map-2d', ok, ['k'])).toEqual([]);
+    expect(problems('linear-map-2d', ok)).toEqual(['matrix.0.1：不认识的名字「k」', 'vectors.0.y：不认识的名字「k」']);
+    const steps = [{ matrix: [[0, -1], [1, 0]], label: '转 90°' }, { matrix: [[2, 0], [0, 1]] }];
+    expect(problems('linear-map-2d', { steps, range })).toEqual([]);
+    expect(problems('linear-map-2d', { range })).toEqual(['：matrix 和 steps 写一个：只有一步写 matrix，几个矩阵依次作用写 steps']);
+    expect(problems('linear-map-2d', { matrix: [[1, 0], [0, 1]], steps, range })).toEqual(['：matrix 和 steps 写一个：只有一步写 matrix，几个矩阵依次作用写 steps']);
+    expect(problems('linear-map-2d', { steps: Array(5).fill(steps[1]), range })[0]).toMatch(/^steps/);
+    expect(problems('linear-map-2d', { matrix: [[1, 0, 0], [0, 1, 0]], range })[0]).toMatch(/^matrix\.0/);
+    expect(problems('linear-map-2d', { ...ok, show: ['grid', 'axes'] }, ['k'])[0]).toMatch(/^show\.1/);
+    expect(problems('linear-map-2d', { ...ok, show: ['grid', 'grid'] }, ['k'])).toEqual(['show.1：show 里「grid」写了两次']);
+    expect(problems('linear-map-2d', { ...ok, vectors: Array(7).fill({ x: 1, y: 0 }) }, ['k'])[0]).toMatch(/^vectors/);
+    expect(SPECS['linear-map-2d'].reserved(ok as never)).toEqual([]);
+    expect(SPECS['linear-map-2d'].labels({ steps, range, vectors: [{ x: 1, y: 0 }, { x: 0, y: 1, label: 'w' }] } as never)).toEqual([
+      { path: ['steps', 0, 'label'], key: 'step:0' },
+      { path: ['vectors', 1, 'label'], key: 'vector:1' },
+    ]);
   });
 
   it('oscillator：弹簧比物块多 1 根，初始位移和物块一样多；质量为正，劲度系数和阻尼不为负', () => {

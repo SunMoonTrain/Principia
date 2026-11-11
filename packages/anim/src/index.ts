@@ -4,6 +4,7 @@
 export { FunctionPlot } from './FunctionPlot';
 export { Gallery } from './Gallery';
 export type { AnimProps } from './kit';
+export { LinearMap2D } from './LinearMap2D';
 export { Oscillator } from './Oscillator';
 export { PhasePortrait } from './PhasePortrait';
 export { ANIMATIONS } from './registry';
