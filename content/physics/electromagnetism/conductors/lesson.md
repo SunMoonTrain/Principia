@@ -29,14 +29,14 @@ status: reviewed
 ::anchor{id="def-electrostatic-equilibrium"}
 导体里的电荷不再宏观地移动的状态，叫作:term[静电平衡]{id="physics.electromagnetism.electrostatic-equilibrium"}（electrostatic equilibrium）。
 
-为什么这样定义：导体放进电场，里面的自由电荷先被推动，堆积到某些地方，它们产生的电场抵消外电场，直到导体内部的电荷不再受力；对金属，这个过程极快，下面说的都是达到平衡以后的情形。边界情况：导体里一直有电流的状态，例如接在电池两极上的导线，不是静电平衡，导线里有电场（见[电流与欧姆定律](lesson:physics.electromagnetism.current-density)）。
+为什么这样定义：导体放进电场，里面的:term[自由电荷]{id="physics.electromagnetism.free-charge"}（free charge）先被推动，堆积到某些地方，它们产生的电场抵消外电场，直到导体内部的电荷不再受力；对金属，这个过程极快，下面说的都是达到平衡以后的情形。边界情况：导体里一直有电流的状态，例如接在电池两极上的导线，不是静电平衡，导线里有电场（见[电流与欧姆定律](lesson:physics.electromagnetism.current-density)）。
 
 ### 静电平衡的性质
 
 ::anchor{id="thm-conductor"}
 定理（:term[静电平衡]{id="physics.electromagnetism.electrostatic-equilibrium"}的:term[导体]{id="physics.electromagnetism.conductor"}）：静电平衡时，（1）导体内部的:term[电场]{id="physics.electromagnetism.electric-field"}处处为零；（2）导体内部没有净:term[电荷]{id="physics.electromagnetism.electric-charge"}，净电荷都分布在表面上；（3）整个导体是一个等势体，表面是:term[等势面]{id="physics.electromagnetism.equipotential-surface"}（equipotential surface）；（4）紧贴导体表面的外侧，电场垂直于表面，大小是$\frac{\sigma}{\varepsilon_0}$，$\sigma$是那里的:term[面电荷密度]{id="physics.electromagnetism.charge-density"}（surface charge density）。
 
-证明思路：（1）内部的电场不为零，自由电荷就会受力移动，那就不是平衡。（2）在导体内部任取一个闭合曲面，面上电场为零，由:term[高斯定律]{id="physics.electromagnetism.gauss-law"}（Gauss's law），面内净电荷为零；曲面可以取得任意小，所以内部处处没有净电荷。（3）内部任意两点之间的:term[电势差]{id="physics.electromagnetism.potential-difference"}（potential difference）是电场的曲线积分，电场为零，电势差也为零。（4）表面是等势面，电场垂直于它；取一个跨过表面的扁圆柱面作:term[高斯面]{id="physics.electromagnetism.gaussian-surface"}（Gaussian surface），导体里那一侧电场为零，外侧的:term[电通量]{id="physics.electromagnetism.electric-flux"}（electric flux）是$EA$，等于$\frac{\sigma A}{\varepsilon_0}$。
+证明思路：（1）内部的电场不为零，:term[自由电荷]{id="physics.electromagnetism.free-charge"}就会受力移动，那就不是平衡。（2）在导体内部任取一个闭合曲面，面上电场为零，由:term[高斯定律]{id="physics.electromagnetism.gauss-law"}（Gauss's law），面内净电荷为零；曲面可以取得任意小，所以内部处处没有净电荷。（3）内部任意两点之间的:term[电势差]{id="physics.electromagnetism.potential-difference"}（potential difference）是电场的曲线积分，电场为零，电势差也为零。（4）表面是等势面，电场垂直于它；取一个跨过表面的扁圆柱面作:term[高斯面]{id="physics.electromagnetism.gaussian-surface"}（Gaussian surface），导体里那一侧电场为零，外侧的:term[电通量]{id="physics.electromagnetism.electric-flux"}（electric flux）是$EA$，等于$\frac{\sigma A}{\varepsilon_0}$。
 
 （4）和无穷大带电平面两侧各$\frac{\sigma}{2\varepsilon_0}$并不矛盾。贴近表面的那一小块电荷，自己在两侧各产生$\frac{\sigma}{2\varepsilon_0}$；导体上其余的电荷在这一点附近又产生$\frac{\sigma}{2\varepsilon_0}$，方向向外。两者在里侧相消，在外侧相加。
 
@@ -57,7 +57,7 @@ status: reviewed
 为什么这样定义：这是导体最有用的性质之一，精密的测量仪器装在金属外壳里，就不受外面电场的干扰。1836 年，法拉第（Michael Faraday）做了一个贴满金属箔的房间，让静电起电机（electrostatic generator）在房间外面放电，用验电器（electroscope）查房间的内壁，上面没有电荷。边界情况：金属网也能屏蔽，只要网孔比要保护的东西小得多；反过来，腔里有电荷时，外面就感受得到（下面）。
 
 ::anchor{id="def-induced-charge"}
-导体在外电场或附近电荷的作用下，自由电荷重新分布，表面上出现的电荷叫作:term[感应电荷]{id="physics.electromagnetism.induced-charge"}（induced charge）。
+导体在外电场或附近电荷的作用下，:term[自由电荷]{id="physics.electromagnetism.free-charge"}重新分布，表面上出现的电荷叫作:term[感应电荷]{id="physics.electromagnetism.induced-charge"}（induced charge）。
 
 为什么这样定义：导体整体可以是中性的，表面上却有正有负，这些电荷不是外加的，而是被「感应」出来的，它们的电场正好抵消导体内部的外电场。边界情况：导体接地时，感应电荷可以和大地交换，不再只是正负相等。
 
@@ -89,7 +89,7 @@ status: reviewed
 
 ## 常见误区
 
-- 「:term[导体]{id="physics.electromagnetism.conductor"}里面:term[电场]{id="physics.electromagnetism.electric-field"}为零，是因为里面没有:term[电荷]{id="physics.electromagnetism.electric-charge"}。」导体里有大量正负电荷，只是净电荷为零；电场为零是自由电荷重新分布的结果。
+- 「:term[导体]{id="physics.electromagnetism.conductor"}里面:term[电场]{id="physics.electromagnetism.electric-field"}为零，是因为里面没有:term[电荷]{id="physics.electromagnetism.electric-charge"}。」导体里有大量正负电荷，只是净电荷为零；电场为零是:term[自由电荷]{id="physics.electromagnetism.free-charge"}重新分布的结果。
 - 「导体表面上的电荷总是均匀分布的。」只有孤立的导体球才是均匀的；尖的地方电荷更密（例 1）。
 - 「导体壳能挡住一切，腔里放电荷，外面也感觉不到。」外表面会带上等量的电荷，外面照样有电场；要挡住，得把壳接地。
 - 「导体是等势体，所以它的:term[电势]{id="physics.electromagnetism.electric-potential"}是零。」导体上各处电势相同，但这个值不一定是零。

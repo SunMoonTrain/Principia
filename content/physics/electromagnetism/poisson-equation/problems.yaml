@@ -1,0 +1,168 @@
+- id: p1
+  tier: easy
+  statement: |
+    某区域里的电势是$\varphi=k\,(x^2+2y^2-z^2)$，其中$k=30\,\mathrm{V/m^2}$，坐标以米为单位。求这个区域里的体电荷密度，保留三位有效数字。取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: number
+    value: -4*8.8541878188e-12*30
+    unit: |
+      $\mathrm{C/m^3}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      由泊松方程，$\rho=-\varepsilon_0\nabla^2\varphi$。
+    - |
+      $\pdv{^2\varphi}{x^2}=2k$，$\pdv{^2\varphi}{y^2}=4k$，$\pdv{^2\varphi}{z^2}=-2k$。
+    - |
+      $\nabla^2\varphi=4k$，$\rho=-4\varepsilon_0k\approx-1.06\times10^{-9}\,\mathrm{C/m^3}$。
+  solution: |
+    $\nabla^2\varphi=2k+4k-2k=4k$。由泊松方程，$\rho=-\varepsilon_0\nabla^2\varphi=-4\times8.8541878188\times10^{-12}\times30\,\mathrm{C/m^3}\approx-1.06\times10^{-9}\,\mathrm{C/m^3}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面这些函数，哪些在它有定义的地方满足拉普拉斯方程$\nabla^2\varphi=0$？$r=\sqrt{x^2+y^2+z^2}$。
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $x^2+y^2-2z^2$
+      - |
+        $x^2+y^2+z^2$
+      - |
+        $e^x\sin y$
+      - |
+        $\ln(x^2+y^2)$
+      - |
+        $\frac{1}{r^2}$
+    value: [1, 3, 4]
+  hints:
+    - |
+      逐项算$\pdv{^2}{x^2}+\pdv{^2}{y^2}+\pdv{^2}{z^2}$；只依赖$r$的函数可以用$\frac{1}{r^2}\dv{}{r}\Bigl(r^2\dv{\varphi}{r}\Bigr)$。
+    - |
+      A：$2+2-4$；B：$2+2+2$；C：$e^x\sin y-e^x\sin y$；D：$\pdv{^2}{x^2}\ln(x^2+y^2)=\frac{2(y^2-x^2)}{(x^2+y^2)^2}$，$y$那一项正好相反。
+    - |
+      A、C、D 满足。B 的拉普拉斯是$6$；E 的是$\frac{1}{r^2}\dv{}{r}\Bigl(r^2\cdot\frac{-2}{r^3}\Bigr)=\frac{2}{r^4}$，都不是零。
+  solution: |
+    A：$2+2-4=0$，满足。B：$2+2+2=6$，不满足。C：$\pdv{^2}{x^2}e^x\sin y=e^x\sin y$，$\pdv{^2}{y^2}e^x\sin y=-e^x\sin y$，和为零，满足。
+
+    D：$\pdv{^2}{x^2}\ln(x^2+y^2)=\frac{2(y^2-x^2)}{(x^2+y^2)^2}$，对$y$的二阶导数是$\frac{2(x^2-y^2)}{(x^2+y^2)^2}$，和为零，在$z$轴以外满足。E：$\nabla^2\frac{1}{r^2}=\frac{1}{r^2}\dv{}{r}\Bigl(r^2\cdot\frac{-2}{r^3}\Bigr)=\frac{2}{r^4}\ne0$，不满足。
+
+- id: p3
+  tier: medium
+  statement: |
+    两块接地的大导体板放在$x=0$和$x=d$，$d=2.0\,\mathrm{cm}$，中间均匀分布着体电荷密度$\rho_0=1.0\times10^{-6}\,\mathrm{C/m^3}$的电荷。求$x=0$那块板朝向电荷的那一面上的面电荷密度。
+  answer:
+    type: number
+    value: -1.0e-6*0.020/2
+    unit: |
+      $\mathrm{C/m^2}$
+  hints:
+    - |
+      先由泊松方程和两个边界条件求出两板之间的电势，再求板面上的电场；导体表面的面电荷密度是$\varepsilon_0$乘以紧贴表面、指向导体外面的电场分量。
+    - |
+      $\varphi=\frac{\rho_0}{2\varepsilon_0}x(d-x)$，$E_x=-\dv{\varphi}{x}=-\frac{\rho_0}{2\varepsilon_0}(d-2x)$，在$x=0$处是$-\frac{\rho_0d}{2\varepsilon_0}$，指向板。
+    - |
+      这块板的外法线是$+x$方向，$\sigma=\varepsilon_0E_x=-\frac{\rho_0d}{2}=-1.0\times10^{-8}\,\mathrm{C/m^2}$。
+  solution: |
+    由$\dv{^2\varphi}{x^2}=-\frac{\rho_0}{\varepsilon_0}$和$\varphi(0)=\varphi(d)=0$，$\varphi=\frac{\rho_0}{2\varepsilon_0}x(d-x)$，$E_x=-\dv{\varphi}{x}=-\frac{\rho_0}{2\varepsilon_0}(d-2x)$。在$x=0$处$E_x=-\frac{\rho_0d}{2\varepsilon_0}$，指向这块板；板的外法线是$+x$方向，所以$\sigma=\varepsilon_0E_x=-\frac{\rho_0d}{2}=-\frac{1.0\times10^{-6}\times0.020}{2}\,\mathrm{C/m^2}=-1.0\times10^{-8}\,\mathrm{C/m^2}$。两块板上一共感应出$-\rho_0d$，和中间的电荷正好抵消。
+
+- id: p4
+  tier: medium
+  statement: |
+    例 2 里被屏蔽的离子，电势是$\varphi=\frac{1}{4\pi\varepsilon_0}\frac{q\,e^{-r/\lambda}}{r}$。以离子为中心、半径为$\lambda$的球面里，总电荷（连同中心的离子）是$q$的多少倍？
+  answer:
+    type: number
+    value: 2*exp(-1)
+  hints:
+    - |
+      可以用高斯定律：先由电势求出$r=\lambda$处的电场，再乘以$4\pi\varepsilon_0\lambda^2$。
+    - |
+      $E_r=-\dv{\varphi}{r}=\frac{1}{4\pi\varepsilon_0}q\,e^{-r/\lambda}\Bigl(\frac{1}{r^2}+\frac{1}{\lambda r}\Bigr)$。
+    - |
+      $Q_{\text{内}}=4\pi\varepsilon_0r^2E_r=q\Bigl(1+\frac r\lambda\Bigr)e^{-r/\lambda}$，在$r=\lambda$处是$\frac{2q}{e}\approx0.736q$。
+  solution: |
+    $E_r=-\dv{\varphi}{r}=\frac{q}{4\pi\varepsilon_0}e^{-r/\lambda}\Bigl(\frac{1}{r^2}+\frac{1}{\lambda r}\Bigr)$。由高斯定律，半径$r$的球面里的总电荷是$4\pi\varepsilon_0r^2E_r=q\Bigl(1+\frac r\lambda\Bigr)e^{-r/\lambda}$，在$r=\lambda$处是$\frac{2q}{e}\approx0.736q$。也可以把例 2 求出的电荷密度从$0$积到$\lambda$，再加上$q$，结果一样。
+
+- id: p5
+  tier: hard
+  statement: |
+    真空二极管（vacuum diode）：阴极（cathode）在$x=0$，电势为零；阳极（anode）在$x=d$，电势为$\varphi_d>0$；两个电极都很大。电子从阴极出来时速度为零，在电场里加速飞向阳极。稳定时，单位时间穿过单位面积的电荷量$J$处处相同，电子的电荷密度$\rho$和速度$v$满足$\rho v=-J$。
+
+    （1）由能量守恒和泊松方程，证明$\dv{^2\varphi}{x^2}=\frac{J}{\varepsilon_0}\sqrt{\frac{m_e}{2e\varphi}}$。（2）电子多到阴极表面的电场正好为零时，验证$\varphi=\varphi_d\Bigl(\frac xd\Bigr)^{4/3}$是解，并求$J$。（3）为什么$J$和$\varphi_d^{3/2}$成正比，而不是和$\varphi_d$成正比？
+  hints:
+    - |
+      电子在$x$处的速度由$\frac12m_ev^2=e\varphi$定出，$\rho=-\frac Jv$，代进$\dv{^2\varphi}{x^2}=-\frac{\rho}{\varepsilon_0}$。
+    - |
+      $\varphi=Cx^{4/3}$时，$\dv{^2\varphi}{x^2}=\frac49Cx^{-2/3}$，右边也正比于$x^{-2/3}$，比较系数定出$C$；$x=0$处$\dv{\varphi}{x}=0$，电场为零。
+    - |
+      $J=\frac{4\varepsilon_0}{9}\sqrt{\frac{2e}{m_e}}\frac{\varphi_d^{3/2}}{d^2}$。电压加大，电子既更多又更快：电荷密度约和$\frac{\varepsilon_0\varphi_d}{d^2}$成正比，速度和$\sqrt{\varphi_d}$成正比。
+  reference: |
+    （1）电子从阴极静止出发，到$x$处时$\frac12m_ev^2=e\varphi(x)$，$v=\sqrt{\frac{2e\varphi}{m_e}}$。$\rho=-\frac Jv=-J\sqrt{\frac{m_e}{2e\varphi}}$，代进泊松方程$\dv{^2\varphi}{x^2}=-\frac{\rho}{\varepsilon_0}$，得$\dv{^2\varphi}{x^2}=\frac{J}{\varepsilon_0}\sqrt{\frac{m_e}{2e\varphi}}$。
+
+    （2）设$\varphi=Cx^{4/3}$，左边是$\frac49Cx^{-2/3}$，右边是$\frac{J}{\varepsilon_0}\sqrt{\frac{m_e}{2e}}C^{-1/2}x^{-2/3}$，两边对所有$x$都相等要求$\frac49C^{3/2}=\frac{J}{\varepsilon_0}\sqrt{\frac{m_e}{2e}}$。它满足$\varphi(0)=0$和$\dv{\varphi}{x}\Big|_{x=0}=0$，即阴极表面的电场为零。由$\varphi(d)=\varphi_d$，$C=\varphi_dd^{-4/3}$，所以$J=\frac{4\varepsilon_0}{9}\sqrt{\frac{2e}{m_e}}\frac{\varphi_d^{3/2}}{d^2}$。这叫蔡尔德–朗缪尔定律（Child–Langmuir law）。
+
+    （3）电子自己的电荷削弱了阴极附近的电场，电流由「空间里能容纳多少电荷」限制。粗略地看，间隙里的电荷密度要和$\frac{\varepsilon_0\varphi_d}{d^2}$同一量级才能改变电势的形状，电子的速度和$\sqrt{\varphi_d}$成正比，两者相乘，$J\propto\varphi_d^{3/2}$。所以这种电流不服从「电流和电压成正比」。
+
+- id: p6
+  tier: hard
+  statement: |
+    两个同轴的长导体圆柱面，半径为$a<b$，内圆柱面的电势为$\varphi_a$，外圆柱面接地，两者之间没有电荷。
+
+    （1）仿照[高斯定律的微分形式](lesson:physics.electromagnetism.gauss-differential)例 1 的薄球壳，用一个薄圆柱壳证明：只依赖到轴的距离$s$的电势，$\nabla^2\varphi=\frac1s\dv{}{s}\Bigl(s\dv{\varphi}{s}\Bigr)$。（2）解拉普拉斯方程，求两者之间的电势和电场。（3）求内圆柱面单位长度的电荷和这一对导体单位长度的电容（capacitance），并和[电容器](lesson:physics.electromagnetism.capacitors)一节的结果比较。
+  hints:
+    - |
+      电场沿径向、大小只和$s$有关；长为$L$、半径从$s$到$s+\dd s$的薄圆柱壳，穿出的电通量（electric flux）之差是$\dd\bigl(2\pi sLE_s\bigr)$，体积是$2\pi sL\,\dd s$。
+    - |
+      $s\dv{\varphi}{s}$是常数，$\varphi=A\ln s+B$；由$\varphi(a)=\varphi_a$、$\varphi(b)=0$定出$A$、$B$。
+    - |
+      $\varphi=\varphi_a\frac{\ln(b/s)}{\ln(b/a)}$，$E_s=\frac{\varphi_a}{s\ln(b/a)}$；单位长度的电荷$\lambda=2\pi\varepsilon_0sE_s=\frac{2\pi\varepsilon_0\varphi_a}{\ln(b/a)}$，单位长度的电容$\frac{2\pi\varepsilon_0}{\ln(b/a)}$。
+  reference: |
+    （1）电场是$E_s(s)\uv s$，取长为$L$、半径从$s$到$s+\dd s$的薄圆柱壳，两个底面上没有电通量，内外两个侧面的电通量之差是$\dd\bigl(2\pi sLE_s\bigr)$，壳的体积是$2\pi sL\,\dd s$，所以$\divg\vb E=\frac1s\dv{(sE_s)}{s}$。$E_s=-\dv{\varphi}{s}$，于是$\nabla^2\varphi=\divg\nabla\varphi=\frac1s\dv{}{s}\Bigl(s\dv{\varphi}{s}\Bigr)$。
+
+    （2）两者之间没有电荷，$\frac1s\dv{}{s}\Bigl(s\dv{\varphi}{s}\Bigr)=0$，所以$s\dv{\varphi}{s}=A$，$\varphi=A\ln s+B$。由$\varphi(b)=0$得$B=-A\ln b$，由$\varphi(a)=\varphi_a$得$A=-\frac{\varphi_a}{\ln(b/a)}$。所以$\varphi=\varphi_a\frac{\ln(b/s)}{\ln(b/a)}$，$E_s=-\dv{\varphi}{s}=\frac{\varphi_a}{s\ln(b/a)}$。
+
+    （3）在内圆柱面外取半径为$s$、长为$L$的同轴圆柱面作高斯面（Gaussian surface），$2\pi sLE_s=\frac{\lambda L}{\varepsilon_0}$，所以$\lambda=2\pi\varepsilon_0sE_s=\frac{2\pi\varepsilon_0\varphi_a}{\ln(b/a)}$。单位长度的电容$\frac{\lambda}{\varphi_a}=\frac{2\pi\varepsilon_0}{\ln(b/a)}$，和[电容器](lesson:physics.electromagnetism.capacitors)一节用对称性和高斯定律求的一样；这里没有先假定电场的形状，只用了边界上的电势。
+
+- id: p7
+  tier: thinking
+  statement: |
+    牛顿的万有引力也有势：质点受的引力是$-m\nabla\Phi$，$\Phi$是引力势，它满足$\nabla^2\Phi=4\pi G\rho_m$，$\rho_m$是质量密度。
+
+    （1）和静电学的泊松方程比较，右边的符号为什么相反？（2）没有物质的地方，引力势有没有极小值？这对用固定不动的星体「托住」一个物体意味着什么？（3）为什么能用导体壳挡住电场，却找不到挡住引力的东西？
+  hints:
+    - |
+      两个正电荷互相排斥，两个质量互相吸引；把$\rho$和$-4\pi\varepsilon_0G\rho_m$对应起来，两组方程就一样了。
+    - |
+      没有物质的地方$\nabla^2\Phi=0$，平均值性质照样成立，引力势没有极小值。
+    - |
+      导体能挡住电场，靠的是正负电荷都能移动、重新分布；质量只有正的，造不出「引力的导体」。
+  reference: |
+    （1）点电荷的电势是$\frac{q}{4\pi\varepsilon_0r}$，点质量的引力势是$-\frac{Gm}{r}$，符号相反，因为同号电荷互相排斥，而质量互相吸引。把$\frac{q}{4\pi\varepsilon_0}$换成$-Gm$，也就是把$\rho$换成$-4\pi\varepsilon_0G\rho_m$，静电学的$\nabla^2\varphi=-\frac{\rho}{\varepsilon_0}$就变成$\nabla^2\Phi=4\pi G\rho_m$。
+
+    （2）没有物质的地方$\nabla^2\Phi=0$，和静电学一样，引力势在球面上的平均值等于球心的值，没有极小值。所以只靠固定不动的星体的引力，一个物体在空无一物的地方没有稳定的静止平衡位置，这是引力版的恩肖定理。
+
+    （3）导体挡住电场，靠的是里面的正负电荷能移动，在表面上感应出异号的电荷，把外面的电场抵消。质量只有正的，也就没有「感应」出来的负质量去抵消引力，所以引力挡不住。
+
+- id: p8
+  tier: thinking
+  statement: |
+    静电场要同时满足$\divg\vb E=\frac{\rho}{\varepsilon_0}$和$\curl\vb E=\vb 0$。
+
+    （1）$\vb E=k(-y,\,x,\,0)$的散度是多少？它能不能是某组静止电荷产生的电场？
+
+    （2）只知道一个电场的散度处处为零，能不能断定这个电场是零？还需要知道什么？（3）为什么用电势写，只要一个方程就够了？
+  hints:
+    - |
+      $\divg\vb E=0$，但$\curl\vb E=2k\uv z\ne\vb 0$；静电场沿闭合曲线的积分是零，这个场沿一个圆积分不是零。
+    - |
+      散度为零的场很多，例如匀强电场、点电荷外面的电场；还要知道旋度，以及边界上或无穷远处的情况。
+    - |
+      写成$\vb E=-\nabla\varphi$，旋度为零就自动满足了，剩下的散度方程变成关于$\varphi$的泊松方程。
+  reference: |
+    （1）$\divg\vb E=0+0+0=0$，可$\curl\vb E=2k\uv z\ne\vb 0$。沿以原点为中心、半径为$R$的圆逆时针积分，$\oint\vb E\cdot\dd\vb l=2\pi kR^2\ne0$，而静电场沿任意闭合曲线的积分为零（见[电势](lesson:physics.electromagnetism.electric-potential#thm-conservative)），所以它不是静止电荷产生的电场。以后会看到，变化的磁场能产生这种绕圈的电场（见[感生电场](lesson:physics.electromagnetism.induced-electric-field)）。
+
+    （2）不能。匀强电场、点电荷外面的电场，散度都为零，旋度也为零，可都不是零。要确定一个电场，除了散度和旋度，还要知道边界上（或者无穷远处）的情况，这正是下一节唯一性定理（uniqueness theorem）要说的事。
+
+    （3）把电场写成$\vb E=-\nabla\varphi$，$\curl\vb E=-\curl\nabla\varphi=\vb 0$自动成立，只剩$\divg\vb E=\frac{\rho}{\varepsilon_0}$，变成一个标量函数$\varphi$的泊松方程。三个分量、两个方程换成一个函数、一个方程，这就是电势省事的地方。

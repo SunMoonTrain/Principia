@@ -1,0 +1,161 @@
+- id: p1
+  tier: easy
+  statement: |
+    电荷为$2.0\,\mathrm{nC}$的点电荷，离接地的大导体平面$1.0\,\mathrm{cm}$。它受到平面多大的吸引力？保留三位有效数字。取$\frac{1}{4\pi\varepsilon_0}=8.988\times10^9\,\mathrm{N\,m^2/C^2}$。
+  answer:
+    type: number
+    value: 8.988e9*(2.0e-9)^2/(2*0.010)^2
+    unit: |
+      $\mathrm N$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      在平面以上，感应电荷的电场和平面下方$1.0\,\mathrm{cm}$处的镜像电荷$-q$的电场一样。
+    - |
+      $q$和镜像电荷相距$2d=2.0\,\mathrm{cm}$。
+    - |
+      $F=\frac{1}{4\pi\varepsilon_0}\frac{q^2}{(2d)^2}=\frac{8.988\times10^9\times(2.0\times10^{-9})^2}{(0.020)^2}\,\mathrm N\approx8.99\times10^{-5}\,\mathrm N$。
+  solution: |
+    平面以上的电场等于$q$和镜像电荷$-q$的电场之和，$q$受的力就是镜像电荷对它的吸引力。两者相距$2d=0.020\,\mathrm m$，$F=\frac{1}{4\pi\varepsilon_0}\frac{q^2}{(2d)^2}=\frac{8.988\times10^9\times(2.0\times10^{-9})^2}{(0.020)^2}\,\mathrm N\approx8.99\times10^{-5}\,\mathrm N$。
+
+- id: p2
+  tier: easy
+  statement: |
+    电荷为$2.0\,\mathrm{nC}$的点电荷，离接地的大导体平面$1.0\,\mathrm{cm}$。求平面上正对着它（垂足处）的感应电荷面密度，保留三位有效数字。
+  answer:
+    type: number
+    value: -2.0e-9/(2*pi*0.010^2)
+    unit: |
+      $\mathrm{C/m^2}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      用平面上的感应电荷面密度$\sigma=-\frac{qd}{2\pi(s^2+d^2)^{3/2}}$，$s$是到垂足的距离。
+    - |
+      垂足处$s=0$，$\sigma=-\frac{q}{2\pi d^2}$。
+    - |
+      $\sigma=-\frac{2.0\times10^{-9}}{2\pi\times(0.010)^2}\,\mathrm{C/m^2}\approx-3.18\times10^{-6}\,\mathrm{C/m^2}$。
+  solution: |
+    $s=0$时$\sigma=-\frac{qd}{2\pi d^3}=-\frac{q}{2\pi d^2}=-\frac{2.0\times10^{-9}}{2\pi\times1.0\times10^{-4}}\,\mathrm{C/m^2}\approx-3.18\times10^{-6}\,\mathrm{C/m^2}$。
+
+- id: p3
+  tier: medium
+  statement: |
+    电荷为$2.0\,\mathrm{nC}$的点电荷，离接地的大导体平面$1.0\,\mathrm{cm}$。把它沿垂直于平面的方向慢慢移到无穷远，外力要做多少功？保留三位有效数字。取$\frac{1}{4\pi\varepsilon_0}=8.988\times10^9\,\mathrm{N\,m^2/C^2}$。
+  answer:
+    type: number
+    value: 8.988e9*(2.0e-9)^2/(4*0.010)
+    unit: |
+      $\mathrm J$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      电荷离平面$z$时受的吸引力是$\frac{1}{4\pi\varepsilon_0}\frac{q^2}{(2z)^2}$；电荷移动时，镜像电荷也跟着移动。
+    - |
+      外力做的功$W=\int_d^\infty\frac{1}{4\pi\varepsilon_0}\frac{q^2}{4z^2}\dd z$。
+    - |
+      $W=\frac{1}{4\pi\varepsilon_0}\frac{q^2}{4d}\approx8.99\times10^{-7}\,\mathrm J$，只有$q$和镜像电荷相互作用能的一半。
+  solution: |
+    离平面$z$时，$q$受的吸引力是$\frac{1}{4\pi\varepsilon_0}\frac{q^2}{(2z)^2}$，外力要和它平衡。$W=\int_d^\infty\frac{1}{4\pi\varepsilon_0}\frac{q^2}{4z^2}\dd z=\frac{1}{4\pi\varepsilon_0}\frac{q^2}{4d}=\frac{8.988\times10^9\times(2.0\times10^{-9})^2}{4\times0.010}\,\mathrm J\approx8.99\times10^{-7}\,\mathrm J$。注意它不是$\frac{1}{4\pi\varepsilon_0}\frac{q^2}{2d}$：拉动$q$时，镜像电荷也跟着后退，力比两个固定电荷的减小得快。
+
+- id: p4
+  tier: medium
+  statement: |
+    半径$10\,\mathrm{cm}$的接地导体球，球外离球心$30\,\mathrm{cm}$处有一个$1.0\,\mathrm{nC}$的点电荷。它受到导体球多大的吸引力？保留三位有效数字。取$\frac{1}{4\pi\varepsilon_0}=8.988\times10^9\,\mathrm{N\,m^2/C^2}$。
+  answer:
+    type: number
+    value: 8.988e9*1.0e-9*(1.0e-9*0.10/0.30)/(0.30-0.10^2/0.30)^2
+    unit: |
+      $\mathrm N$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      用例 2 的镜像电荷：$q'=-\frac Raq$，在球心到$q$的连线上、离球心$\frac{R^2}{a}$处。
+    - |
+      $q'=-\frac13\,\mathrm{nC}$，离球心$\frac{0.10^2}{0.30}\,\mathrm m\approx3.33\,\mathrm{cm}$，和$q$相距约$26.7\,\mathrm{cm}$。
+    - |
+      $F=\frac{1}{4\pi\varepsilon_0}\frac{q|q'|}{(a-R^2/a)^2}\approx4.21\times10^{-8}\,\mathrm N$。
+  solution: |
+    镜像电荷$q'=-\frac Raq=-\frac13\times1.0\,\mathrm{nC}$，离球心$b=\frac{R^2}{a}=\frac{0.010}{0.30}\,\mathrm m\approx0.0333\,\mathrm m$，和$q$相距$a-b\approx0.2667\,\mathrm m$。球外的电场等于$q$和$q'$的电场之和，所以$q$受的力就是$q'$对它的吸引力：$F=\frac{8.988\times10^9\times1.0\times10^{-9}\times0.333\times10^{-9}}{(0.2667)^2}\,\mathrm N\approx4.21\times10^{-8}\,\mathrm N$。
+
+- id: p5
+  tier: hard
+  statement: |
+    半径为$R$的导体球不接地、不带电，球外离球心$a$处有一个点电荷$q$。
+
+    （1）在例 2 的镜像电荷之外，还要在哪里放一个什么样的镜像电荷，才能满足这时的条件？说明为什么这样就对了。（2）求$q$受的力。
+
+    （3）$a\gg R$时，力怎样随$a$变化？和电偶极子（electric dipole，见[电偶极子](lesson:physics.electromagnetism.electric-dipole)）联系起来解释。
+  hints:
+    - |
+      这时导体球的电势不是零，但球面仍是等势面，总电荷为零。在球心放一个点电荷，它在球面上的电势处处相同。
+    - |
+      在球心放$q''=+\frac Raq$，镜像电荷的总和是零；由给定导体电荷时的唯一性定理，球外的电场就是$q$、$q'$、$q''$的电场之和。
+    - |
+      $F=\frac{q^2R}{4\pi\varepsilon_0}\Bigl[\frac{1}{a^3}-\frac{a}{(a^2-R^2)^2}\Bigr]$，是吸引力；$a\gg R$时约为$-\frac{2q^2R^3}{4\pi\varepsilon_0a^5}$，和$q$的电场在球上感应出的电偶极子受的力一样。
+  reference: |
+    （1）接地时，$q'=-\frac Raq$放在离球心$\frac{R^2}{a}$处，球面电势为零。现在球不接地、不带电：球面仍要是等势面，球上的总电荷要是零。在球心再放$q''=+\frac Raq$：它在球面上产生的电势处处相同，不破坏等势；镜像电荷的总和$q'+q''=0$，由高斯定律，球上的总电荷也是零。按给定导体电荷时的唯一性定理（球的总电荷给定为零，球外的电荷给定为$q$），球外的电场就是$q$、$q'$、$q''$的电场之和。
+
+    顺便，球的电势是$\frac{1}{4\pi\varepsilon_0}\frac{q''}{R}=\frac{1}{4\pi\varepsilon_0}\frac qa$，正是$q$在球心处产生的电势。
+
+    （2）沿球心到$q$的方向为正，$q''$对$q$的力是$\frac{1}{4\pi\varepsilon_0}\frac{qq''}{a^2}=\frac{q^2R}{4\pi\varepsilon_0a^3}$，$q'$对$q$的力是$-\frac{1}{4\pi\varepsilon_0}\frac{q^2R/a}{(a-R^2/a)^2}=-\frac{q^2R}{4\pi\varepsilon_0}\frac{a}{(a^2-R^2)^2}$。合力$F=\frac{q^2R}{4\pi\varepsilon_0}\Bigl[\frac{1}{a^3}-\frac{a}{(a^2-R^2)^2}\Bigr]$；因为$\frac{a}{(a^2-R^2)^2}>\frac{a}{a^4}=\frac{1}{a^3}$，它是负的，即吸引力，不管$q$是正是负。
+
+    （3）$a\gg R$时，$\frac{a}{(a^2-R^2)^2}=\frac{1}{a^3}\Bigl(1-\frac{R^2}{a^2}\Bigr)^{-2}\approx\frac{1}{a^3}\Bigl(1+\frac{2R^2}{a^2}\Bigr)$，$F\approx-\frac{2q^2R^3}{4\pi\varepsilon_0a^5}$，按$\frac{1}{a^5}$衰减。$q''$和$q'$组成一个电偶极子，$p=\frac{Rq}{a}\cdot\frac{R^2}{a}=4\pi\varepsilon_0R^3\cdot\frac{1}{4\pi\varepsilon_0}\frac{q}{a^2}$，正比于$q$在那里的电场；它的电场在$q$处按$\frac{p}{a^3}$变化，$p$又按$\frac{1}{a^2}$变化，所以力按$\frac{1}{a^5}$衰减。这正是中性物体被带电体吸引的原因（见[电偶极子](lesson:physics.electromagnetism.electric-dipole)第 7 题）。
+
+- id: p6
+  tier: hard
+  statement: |
+    不用平均值性质，换一种办法证明唯一性定理。
+
+    （1）设$\varphi_3$在区域$V$里满足拉普拉斯方程、在边界$S$上为零。由$\divg(\varphi_3\nabla\varphi_3)=|\nabla\varphi_3|^2+\varphi_3\nabla^2\varphi_3$和散度定理，证明$\varphi_3$在$V$里处处为零。（2）如果边界上给的不是电势，而是电势沿法线的导数$\pdv{\varphi}{n}$（电场的法向分量是它的相反数），解还唯一吗？差多少？
+  hints:
+    - |
+      对$V$积分，左边化成$\oint_S\varphi_3\nabla\varphi_3\cdot\dd\vb a$，在边界上为零。
+    - |
+      于是$\int_V|\nabla\varphi_3|^2\,\dd V=0$，被积函数不小于零，只能处处为零；$\varphi_3$是常数，再由边界上为零定出常数。
+    - |
+      给法向导数时，$\oint_S\varphi_3\pdv{\varphi_3}{n}\dd a$照样为零，所以电场唯一；电势可以差一个常数。
+  reference: |
+    （1）$\varphi_3$满足$\nabla^2\varphi_3=0$，对$V$积分，$\int_V|\nabla\varphi_3|^2\,\dd V=\int_V\divg(\varphi_3\nabla\varphi_3)\,\dd V=\oint_S\varphi_3\nabla\varphi_3\cdot\dd\vb a$。边界上$\varphi_3=0$，右边为零，所以$\int_V|\nabla\varphi_3|^2\,\dd V=0$。被积函数连续、不小于零，只能处处为零，$\nabla\varphi_3=\vb 0$，$\varphi_3$在（连通的）$V$里是常数；它在边界上为零，所以处处为零。区域伸到无穷远时，取一个很大的球面作边界的一部分，$\varphi_3\nabla\varphi_3$衰减得足够快，那里的面积分趋于零，结论不变。
+
+    （2）两个解的差满足$\pdv{\varphi_3}{n}=0$，右边的面积分$\oint_S\varphi_3\pdv{\varphi_3}{n}\dd a$照样为零，所以$\nabla\varphi_3=\vb 0$：电场唯一，电势可以差一个常数。这一条和导体给定总电荷时的唯一性用的是同一个办法。
+
+- id: p7
+  tier: thinking
+  statement: |
+    点电荷$q$在接地的大导体平面上方$d$处，平面以上的电场和$q$、镜像电荷$-q$两者产生的一样。
+
+    （1）平面下方（导体里）有电场吗？（2）$q$和$-q$的相互作用能是$-\frac{1}{4\pi\varepsilon_0}\frac{q^2}{2d}$，可把$q$从无穷远搬到这里，电场力做的功只有它的一半。为什么？（3）从电场能量的角度怎样理解这个「一半」？
+  hints:
+    - |
+      镜像电荷只在平面以上代替感应电荷；平面以下是导体，静电平衡时电场为零。
+    - |
+      搬运的过程中，镜像电荷随着$q$一起移动，不是一个固定的电荷。
+    - |
+      $q$和$-q$的电场关于平面对称，能量密度（energy density）上下一样；真实的电场只有上半部分，能量也只有一半。
+  reference: |
+    （1）没有。平面以下是导体（或接地的导体占据的地方），静电平衡时那里电场为零。镜像电荷只是一个计算工具：它在平面以上产生的电场和感应电荷的一样，在平面以下则完全不对。
+
+    （2）$q$离平面$z$时受的力是$\frac{1}{4\pi\varepsilon_0}\frac{q^2}{(2z)^2}$，从无穷远积到$d$，电场力做功$\frac{1}{4\pi\varepsilon_0}\frac{q^2}{4d}$。如果镜像电荷固定不动，相距从无穷远变到$2d$，做的功才是$\frac{1}{4\pi\varepsilon_0}\frac{q^2}{2d}$；可实际上「镜像」随着$q$移动，相距是$2z$而不是$z+d$，力增长得没那么快。
+
+    （3）$q$和$-q$的电场关于平面对称（方向互为镜像），能量密度上下处处相等；真实的电场只在平面以上，所以相互作用的那部分电场能量正好是$q$、$-q$体系的一半。把$q$搬近时，减少的是真实的电场能量，所以电场力做的功也是一半。
+
+- id: p8
+  tier: thinking
+  statement: |
+    镜像法看起来像是「猜」出来的答案。
+
+    （1）镜像电荷为什么必须放在求解区域以外？放到区域里会怎样？（2）点电荷放在一块有限大的接地导体板前面，还能只用一个镜像电荷吗？（3）点电荷放在两块平行的接地导体平面之间，需要多少个镜像电荷？
+  hints:
+    - |
+      唯一性定理要求区域里的电荷分布和原来的一样；镜像电荷放进区域里，就改变了那里的电荷。
+    - |
+      有限大的板，边缘和背面的边界条件和无穷大平面不同，一个点电荷凑不出来。
+    - |
+      对一块平面取镜像后，另一块平面上的电势又不为零了，要再取镜像，没完没了：无穷多个。
+  reference: |
+    （1）唯一性定理比较的是两个解：区域里的电荷相同，边界上的电势相同。镜像电荷放在区域以外，区域里的电荷没变，凑出边界条件就是答案；放进区域里，等于在那里多加了电荷，凑出来的电势满足的是另一个问题的泊松方程，不是原来的答案。
+
+    （2）不能。有限大的板，板的背面和边缘都是边界，电势也要为零；一个镜像电荷只能让无穷大平面上的电势处处为零，在板的边缘附近和背面就不对了。这类问题一般要用数值方法或别的解析办法。
+
+    （3）无穷多个。对下面一块平面取镜像，上面一块平面上的电势不为零；再对上面一块取镜像，下面一块又不对了。镜像电荷像两面平行的镜子里的像一样一串排下去，正负交替，离得越远贡献越小，加起来收敛，电势是一个无穷级数。

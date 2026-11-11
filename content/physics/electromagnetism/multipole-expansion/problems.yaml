@@ -1,0 +1,166 @@
+- id: p1
+  tier: easy
+  statement: |
+    点电荷$+2q$在$z$轴上$z=2.0\,\mathrm{cm}$处，$-q$在$z=-2.0\,\mathrm{cm}$处。在$z$轴上离原点$1.0\,\mathrm m$处，电势的偶极项和单极项之比是多少？
+  answer:
+    type: number
+    value: 3*0.020/1.0
+  hints:
+    - |
+      单极项由总电荷$Q$决定，偶极项由电偶极矩$\vb p=\sum_iq_i\vb r_i$决定；在$z$轴上$\cos\theta=1$。
+    - |
+      $Q=q$，$p=2q\times0.020+(-q)\times(-0.020)=3q\times0.020$（单位$\mathrm{C\,m}$）。
+    - |
+      两项之比是$\frac{p/r^2}{Q/r}=\frac{p}{Qr}=\frac{3\times0.020}{1.0}=0.06$。
+  solution: |
+    总电荷$Q=2q-q=q$，电偶极矩$p=2q\times0.020\,\mathrm m+(-q)\times(-0.020\,\mathrm m)=0.060q\,\mathrm m$，沿$+z$。在$z$轴上，单极项$\frac{1}{4\pi\varepsilon_0}\frac Qr$，偶极项$\frac{1}{4\pi\varepsilon_0}\frac{p}{r^2}$，之比$\frac{p}{Qr}=\frac{0.060}{1.0}=0.06$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        两个等量同号的点电荷，以它们连线的中点为原点，电偶极矩为零。
+      - |
+        一个点电荷，不管原点取在哪里，电四极矩都是零。
+      - |
+        均匀带电的球面，以球心为原点，单极项以外的各项都为零。
+      - |
+        总电荷为零的电荷分布，远处的电势一定随$\frac{1}{r^2}$衰减。
+      - |
+        一个电荷分布的电偶极矩为零，它的电四极矩也一定为零。
+    value: [1, 3]
+  hints:
+    - |
+      电偶极矩$\sum_iq_i\vb r_i$、电四极矩$\int(3x_ix_j-r^2\delta_{ij})\rho\,\dd V$都和原点有关；想想均匀带电球面外面的电势是什么样的。
+    - |
+      点电荷不在原点时，$Q_{zz}=q(3z^2-r^2)$一般不为零；总电荷和偶极矩都为零时，远处由更高阶的项决定。
+    - |
+      A、C 对。B 错（点电荷不在原点时有电四极矩）；D 错（偶极矩也为零时衰减得更快）；E 错（直线四极子就是反例）。
+  solution: |
+    A 对：$q\vb d+q(-\vb d)=\vb 0$。B 错：点电荷$q$在$z$轴上$z=d$处，$Q_{zz}=q(3d^2-d^2)=2qd^2\ne0$，只有原点取在它所在的地方才为零。C 对：均匀带电球面外的电势正好是$\frac{1}{4\pi\varepsilon_0}\frac Qr$，更高阶的项都为零。
+
+    D 错：电偶极矩也为零时，远处由四极项决定，随$\frac{1}{r^3}$衰减，甚至更快。E 错：例 1 的直线四极子，电偶极矩为零，电四极矩不为零。
+
+- id: p3
+  tier: medium
+  statement: |
+    长为$L$的细棒沿$z$轴放置，中点在原点，均匀带电$Q$。在$z$轴上离原点$2L$处，电势的四极项和单极项之比是多少？
+  answer:
+    type: number
+    value: 1/48
+  hints:
+    - |
+      细棒绕$z$轴对称，只要算$Q_{zz}=\int(3z'^2-r'^2)\,\dd q$；棒上$r'=|z'|$。
+    - |
+      $Q_{zz}=\int_{-L/2}^{L/2}2z'^2\frac QL\dd z'=\frac{QL^2}{6}$；轴上四极项是$\frac{1}{4\pi\varepsilon_0}\frac{Q_{zz}}{2r^3}$。
+    - |
+      之比是$\frac{Q_{zz}}{2Qr^2}=\frac{L^2}{12r^2}$，在$r=2L$处是$\frac{1}{48}\approx0.0208$。
+  solution: |
+    棒上$r'=|z'|$，$Q_{zz}=\int_{-L/2}^{L/2}(3z'^2-z'^2)\frac QL\dd z'=\frac{2Q}{L}\cdot\frac{2}{3}\Bigl(\frac L2\Bigr)^3=\frac{QL^2}{6}$。轴上$P_2=1$，四极项是$\frac{1}{4\pi\varepsilon_0}\frac{Q_{zz}}{2r^3}$，单极项是$\frac{1}{4\pi\varepsilon_0}\frac Qr$，之比$\frac{Q_{zz}}{2Qr^2}=\frac{L^2}{12r^2}=\frac{1}{48}\approx0.0208$。电偶极矩为零（棒关于原点对称），所以这就是第一个修正。
+
+- id: p4
+  tier: medium
+  statement: |
+    边长为$\sqrt2a$的正方形的四个顶点上，$+q$在$(\pm a,0,0)$，$-q$在$(0,\pm a,0)$，$q=1.0\,\mathrm{nC}$，$a=1.0\,\mathrm{cm}$。求$x$轴上离原点$1.0\,\mathrm m$处的电势，只保留多极展开里第一个不为零的项，保留三位有效数字。取$\frac{1}{4\pi\varepsilon_0}=8.988\times10^9\,\mathrm{N\,m^2/C^2}$。
+  answer:
+    type: number
+    value: 3*8.988e9*1.0e-9*0.010^2/1.0^3
+    unit: |
+      $\mathrm V$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      总电荷和电偶极矩都为零，第一个不为零的是四极项；$x$轴上$\uv r=\uv x$，四极项只用到$Q_{xx}$。
+    - |
+      $Q_{xx}=\sum_iq_i(3x_i^2-r_i^2)$：两个$+q$各贡献$q(3a^2-a^2)$，两个$-q$各贡献$-q(0-a^2)$。
+    - |
+      $Q_{xx}=6qa^2$，$\varphi\approx\frac{1}{4\pi\varepsilon_0}\frac{Q_{xx}}{2r^3}=\frac{1}{4\pi\varepsilon_0}\frac{3qa^2}{r^3}\approx2.70\times10^{-3}\,\mathrm V$。
+  solution: |
+    总电荷为零；电偶极矩$q(a,0,0)+q(-a,0,0)-q(0,a,0)-q(0,-a,0)=\vb 0$。四极项在$x$轴上是$\frac{1}{4\pi\varepsilon_0}\frac{Q_{xx}}{2r^3}$，$Q_{xx}=2q(3a^2-a^2)-2q(0-a^2)=6qa^2$。所以$\varphi\approx\frac{1}{4\pi\varepsilon_0}\frac{3qa^2}{r^3}=\frac{3\times8.988\times10^9\times1.0\times10^{-9}\times(0.010)^2}{1.0^3}\,\mathrm V\approx2.70\times10^{-3}\,\mathrm V$。
+
+- id: p5
+  tier: hard
+  statement: |
+    把原点从$O$挪到$\vb a$处，新的坐标是$\vb r-\vb a$。
+
+    （1）证明新的电四极矩是$Q'_{ij}=Q_{ij}-3(p_ia_j+a_ip_j)+2(\vb p\cdot\vb a)\delta_{ij}+Q\bigl(3a_ia_j-a^2\delta_{ij}\bigr)$，$Q$、$\vb p$是原来的总电荷和电偶极矩。（2）由此说明：什么条件下电四极矩和原点的选取无关？（3）一般地，为什么说「第一个不为零的那一阶矩和原点无关」？
+  hints:
+    - |
+      把$Q'_{ij}=\int\bigl[3(x_i-a_i)(x_j-a_j)-|\vb r-\vb a|^2\delta_{ij}\bigr]\rho\,\dd V$展开，逐项积分。
+    - |
+      $|\vb r-\vb a|^2=r^2-2\vb r\cdot\vb a+a^2$；含一个$x_i$的项积出来是$p_i$，不含$x$的项积出来是$Q$。
+    - |
+      $Q=0$、$\vb p=\vb 0$时$Q'_{ij}=Q_{ij}$。挪原点时，第$l$阶矩只会混进比它低的各阶矩，低阶的都为零，它就不变。
+  reference: |
+    （1）$3(x_i-a_i)(x_j-a_j)-|\vb r-\vb a|^2\delta_{ij}=3x_ix_j-3x_ia_j-3a_ix_j+3a_ia_j-\bigl(r^2-2\vb r\cdot\vb a+a^2\bigr)\delta_{ij}$。乘以$\rho$积分：$\int(3x_ix_j-r^2\delta_{ij})\rho\,\dd V=Q_{ij}$；$\int x_i\rho\,\dd V=p_i$，所以中间两项给出$-3(p_ia_j+a_ip_j)$，$\int2\vb r\cdot\vb a\,\rho\,\dd V\,\delta_{ij}=2(\vb p\cdot\vb a)\delta_{ij}$；不含$x$的项给出$Q\bigl(3a_ia_j-a^2\delta_{ij}\bigr)$。合起来就是要证的式子。
+
+    （2）总电荷和电偶极矩都为零时，$Q'_{ij}=Q_{ij}$，和原点的选取无关。否则挪原点一般会改变电四极矩：即使$Q=0$，只要$\vb p\ne\vb 0$，就多出$-3(p_ia_j+a_ip_j)+2(\vb p\cdot\vb a)\delta_{ij}$；$Q\ne0$时还多出$Q\bigl(3a_ia_j-a^2\delta_{ij}\bigr)$。
+
+    （3）$\frac{1}{|\vb r-\vb r'|}$按$r'$的幂展开，第$l$阶矩是$r'$的$l$次多项式的积分；把$\vb r'$换成$\vb r'-\vb a$，$l$次多项式展开成$\vb r'$的$l$次、$l-1$次……各项，所以新的第$l$阶矩等于原来的第$l$阶矩加上低阶矩的组合。低于它的各阶都为零时，它就不变。例如$Q=0$时$\vb p'=\vb p$（[电偶极子](lesson:physics.electromagnetism.electric-dipole)第 5 题），$Q=0$、$\vb p=\vb 0$时$Q'_{ij}=Q_{ij}$。
+
+- id: p6
+  tier: hard
+  statement: |
+    原点附近的一团电荷放在一个外电场（electric field）里，外电场的电势$\varphi_{\text{外}}$在电荷所在的地方没有源（满足$\nabla^2\varphi_{\text{外}}=0$），而且变化得很慢。
+
+    （1）把$\varphi_{\text{外}}$在原点泰勒展开到二阶，证明这团电荷在外电场里的电势能（electric potential energy）$U=\int\rho\varphi_{\text{外}}\,\dd V\approx Q\varphi_{\text{外}}(0)-\vb p\cdot\vb E_{\text{外}}(0)-\frac16\sum_{i,j}Q_{ij}\pdv{E_j}{x_i}(0)$。（2）匀强电场里，四极项起不起作用？（3）为什么二阶项可以用电四极矩，而不必用$\int x_ix_j\rho\,\dd V$？
+  hints:
+    - |
+      $\varphi_{\text{外}}(\vb r)\approx\varphi_{\text{外}}(0)+\sum_ix_i\pdv{\varphi_{\text{外}}}{x_i}+\frac12\sum_{i,j}x_ix_j\pdv{^2\varphi_{\text{外}}}{x_i\partial x_j}$，导数都在原点取值，$\pdv{\varphi_{\text{外}}}{x_i}=-E_i$。
+    - |
+      $\int x_ix_j\rho\,\dd V=\frac13\Bigl(Q_{ij}+\delta_{ij}\int r^2\rho\,\dd V\Bigr)$；含$\delta_{ij}$的那部分乘出来是$\nabla^2\varphi_{\text{外}}=0$。
+    - |
+      二阶项是$\frac16\sum Q_{ij}\pdv{^2\varphi_{\text{外}}}{x_i\partial x_j}=-\frac16\sum Q_{ij}\pdv{E_j}{x_i}$。匀强电场的导数为零，四极项不起作用，只有电场不均匀时才「看得见」电四极矩。
+  reference: |
+    （1）在原点泰勒展开，$\varphi_{\text{外}}(\vb r)\approx\varphi_{\text{外}}(0)+\sum_ix_i\pdv{\varphi_{\text{外}}}{x_i}+\frac12\sum_{i,j}x_ix_j\pdv{^2\varphi_{\text{外}}}{x_i\partial x_j}$，导数都在原点取值。乘以$\rho$积分：第一项给出$Q\varphi_{\text{外}}(0)$；第二项里$\int x_i\rho\,\dd V=p_i$，$\pdv{\varphi_{\text{外}}}{x_i}=-E_i$，给出$-\vb p\cdot\vb E_{\text{外}}(0)$。第三项里$\int x_ix_j\rho\,\dd V=\frac13\Bigl(Q_{ij}+\delta_{ij}\int r^2\rho\,\dd V\Bigr)$，含$\delta_{ij}$的部分乘出来是$\frac16\int r^2\rho\,\dd V\cdot\nabla^2\varphi_{\text{外}}=0$，剩下$\frac16\sum Q_{ij}\pdv{^2\varphi_{\text{外}}}{x_i\partial x_j}=-\frac16\sum Q_{ij}\pdv{E_j}{x_i}$。
+
+    （2）匀强电场的各个导数为零，四极项没有贡献；电势能里只有$Q\varphi$和$-\vb p\cdot\vb E$（后者就是[电偶极子](lesson:physics.electromagnetism.electric-dipole)一节的结果）。电四极矩只在电场不均匀时才和外电场有相互作用。
+
+    （3）因为外电场在电荷所在的地方没有源，$\nabla^2\varphi_{\text{外}}=0$，$\int x_ix_j\rho$里和$\delta_{ij}$成正比的部分对能量没有贡献，只剩无迹（traceless）的那部分，正是$\frac13Q_{ij}$。这也说明了电四极矩为什么定义成无迹的：多出来的那部分对远处的电势和对外电场的作用都没有贡献。
+
+- id: p7
+  tier: thinking
+  statement: |
+    万有引力也是平方反比，地球的引力势（gravitational potential）在远处也可以作多极展开。
+
+    （1）以地球的质心为原点，引力势展开里的「偶极项」是多少？
+
+    （2）地球自转，赤道略向外鼓。引力势里最先偏离$-\frac{GM}{r}$的是哪一项？它在赤道上方和两极上方的符号有什么不同？（3）这和电荷的多极展开有什么不同？
+  hints:
+    - |
+      质量的「偶极矩」是$\int\vb r'\rho_m\,\dd V'$，以质心为原点，按质心的定义它是零。
+    - |
+      扁的地球绕自转轴对称，质量更多地分布在赤道附近，像例 2 的圆环，$Q_{zz}<0$。
+    - |
+      质量没有负的，单极项永远不为零；电荷可以正负抵消，所以电荷分布可以从任何一阶开始。
+  reference: |
+    （1）质量的「偶极矩」是$\int\vb r'\rho_m\,\dd V'$，按质心的定义，以质心为原点时它是零。所以引力势里没有偶极项，取质心为原点总能做到这一点。
+
+    （2）最先的修正是四极项。扁的地球绕自转轴对称，赤道附近多出一圈质量，像例 2 的圆环，四极矩$Q_{zz}<0$。引力势是$-G\int\frac{\rho_m}{|\vb r-\vb r'|}\dd V'$，四极项是$-\frac{G}{2r^3}Q_{zz}P_2(\cos\theta)$。在同样的距离上比较，$Q_{zz}<0$时，在两极上方（$P_2=1$）它是正的，引力势比$-\frac{GM}{r}$高，引力弱一些；在赤道上方（$P_2=-\frac12$）它是负的，引力势更低，引力强一些。
+
+    （3）质量只有正的，单极项$-\frac{GM}{r}$永远是主要的一项，偶极项还能靠取质心消掉。电荷有正有负，总电荷可以为零，电偶极矩也可以为零，远处的电势可以从偶极项、四极项甚至更高阶开始；原子、分子之间的电力常常就是这样的高阶项。
+
+- id: p8
+  tier: thinking
+  statement: |
+    多极展开要求场点比所有电荷都离原点远。
+
+    （1）几何图像的动画里，场点比电荷离原点近时，为什么项数越多偏得越远？（2）一个分子大小约为$a$，在离它$r$处，$r$是$a$的$10$倍时，大致保留到哪一阶就够了？$r$只比$a$大一点呢？（3）为什么实际问题里常常只算前一两项？
+  hints:
+    - |
+      第$l$项按$\bigl(\frac{r'}{r}\bigr)^l$变化；$r'>r$时，这个比值大于$1$，越往后越大。
+    - |
+      $r=10a$时，每多一阶大约小一个数量级；$r$只比$a$大一点时，各项相差不大，要很多项。
+    - |
+      远处第一个不为零的项起主要作用，更高阶的修正按$\frac ar$的幂次变小。
+  reference: |
+    （1）第$l$项里有$\bigl(\frac{r'}{r}\bigr)^l$，场点比电荷近时这个比值大于$1$，项越往后越大，级数发散，加的项越多越离谱。这时要换一种展开，按$\frac{r}{r'}$的幂展开（电荷在场点外面）。
+
+    （2）$r=10a$时，后一阶比前一阶大约小$\frac ar=\frac{1}{10}$，要百分之一的精度，保留到第一个不为零的项再往后一两阶就够了。$r$只比$a$大一点时，各项相差不多，要很多项，多极展开就不划算了，不如直接积分。
+
+    （3）远处的场主要由第一个不为零的那一阶决定，更高阶的修正按$\frac ar$的幂次迅速变小。分子、原子核和天体的尺度都远小于我们感兴趣的距离，所以常常只用到单极、偶极，最多四极；而且这几个数就把一团复杂电荷在远处的作用说清了。

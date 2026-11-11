@@ -1,0 +1,172 @@
+- id: p1
+  tier: easy
+  statement: |
+    某区域里的电场是$\vb E=k\,(2x,\,3y,\,-z)$，其中$k=2.0\times10^3\,\mathrm{V/m^2}$，坐标以米为单位。求这个区域里的体电荷密度，保留三位有效数字。取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{C^2/(N\,m^2)}$。
+  answer:
+    type: number
+    value: 4*8.8541878188e-12*2.0e3
+    unit: |
+      $\mathrm{C/m^3}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      体电荷密度由电场的散度决定：$\rho=\varepsilon_0\divg\vb E$。
+    - |
+      $\pdv{E_x}{x}=2k$，$\pdv{E_y}{y}=3k$，$\pdv{E_z}{z}=-k$。
+    - |
+      $\divg\vb E=4k$，$\rho=4\varepsilon_0k\approx7.08\times10^{-8}\,\mathrm{C/m^3}$。
+  solution: |
+    $\divg\vb E=2k+3k-k=4k$。由高斯定律的微分形式，$\rho=\varepsilon_0\divg\vb E=4\times8.8541878188\times10^{-12}\times2.0\times10^3\,\mathrm{C/m^3}\approx7.08\times10^{-8}\,\mathrm{C/m^3}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        均匀带电球面里面（$r<R$）各点，电场的散度为零。
+      - |
+        均匀带电球体外面，电场的散度和$\frac{1}{r^3}$成正比。
+      - |
+        在电荷密度连续的地方，某点电场的散度为正，那里的电荷密度就是正的。
+      - |
+        两个电荷分布的电场在某个区域里处处相同，它们在这个区域里的电荷密度也处处相同。
+      - |
+        沿电场方向电场越来越强的地方，电场的散度一定为正。
+    value: [1, 3, 4]
+  hints:
+    - |
+      散度只由这一点的电荷密度决定：$\divg\vb E=\frac{\rho}{\varepsilon_0}$。
+    - |
+      球面里面、球体外面都没有电荷；电场处处相同，散度也处处相同。
+    - |
+      A、C、D 对。B 错：球体外面没有电荷，散度为零。E 错：负的点电荷附近没有别的电荷，沿电场方向越走越靠近它，电场越来越强，散度却是零。
+  solution: |
+    A 对：球面里面没有电荷，散度为零（那里电场本身也为零）。B 错：球体外面没有电荷，散度处处为零，虽然电场不为零。C 对：$\rho=\varepsilon_0\divg\vb E>0$。D 对：电荷密度由电场的散度决定，电场处处相同，散度也处处相同。
+
+    E 错：负的点电荷所在的点以外没有电荷，散度为零；可沿电场方向走，离它越来越近，电场越来越强。
+
+- id: p3
+  tier: medium
+  statement: |
+    某个球对称的电荷分布产生的电场沿径向，大小是$E_r=\frac{1}{4\pi\varepsilon_0}\frac{Q\bigl(1-e^{-r/b}\bigr)}{r^2}$，其中$Q=1.0\,\mathrm{nC}$，$b=1.0\,\mathrm{cm}$。求$r=b$处的体电荷密度，保留三位有效数字。
+  answer:
+    type: number
+    value: 1.0e-9*exp(-1)/(4*pi*0.010^3)
+    unit: |
+      $\mathrm{C/m^3}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      球对称的电场，散度是$\frac{1}{r^2}\dv{(r^2E_r)}{r}$（例 1）。
+    - |
+      $r^2E_r=\frac{Q}{4\pi\varepsilon_0}\bigl(1-e^{-r/b}\bigr)$，对$r$求导得$\frac{Q}{4\pi\varepsilon_0}\frac{e^{-r/b}}{b}$。
+    - |
+      $\rho=\frac{Qe^{-r/b}}{4\pi br^2}$，在$r=b$处是$\frac{Qe^{-1}}{4\pi b^3}\approx2.93\times10^{-5}\,\mathrm{C/m^3}$。
+  solution: |
+    $r^2E_r=\frac{Q}{4\pi\varepsilon_0}\bigl(1-e^{-r/b}\bigr)$，由高斯定律的微分形式，$\rho=\frac{\varepsilon_0}{r^2}\dv{(r^2E_r)}{r}=\frac{Qe^{-r/b}}{4\pi br^2}$。在$r=b$处，$\rho=\frac{Qe^{-1}}{4\pi b^3}=\frac{1.0\times10^{-9}\times0.3679}{4\pi\times(0.010)^3}\,\mathrm{C/m^3}\approx2.93\times10^{-5}\,\mathrm{C/m^3}$。远处的电场趋于$\frac{1}{4\pi\varepsilon_0}\frac{Q}{r^2}$，这些电荷加起来正好是$Q$。
+
+- id: p4
+  tier: medium
+  statement: |
+    某区域里的电场只有$x$分量，$E_x=E_0\Bigl(\frac{x}{a}\Bigr)^2$，其中$E_0=300\,\mathrm{V/m}$，$a=0.20\,\mathrm m$。求占据$0\le x\le a$、$0\le y\le a$、$0\le z\le a$的立方体里的总电荷，保留三位有效数字。取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{C^2/(N\,m^2)}$。
+  answer:
+    type: number
+    value: 8.8541878188e-12*300*0.20^2
+    unit: |
+      $\mathrm C$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      可以先求电荷密度再对立方体积分，也可以直接算穿出立方体表面的电通量。
+    - |
+      $\rho=\varepsilon_0\dv{E_x}{x}=\frac{2\varepsilon_0E_0x}{a^2}$；用电通量算的话，只有$x=0$和$x=a$两个面上有电通量。
+    - |
+      $Q=\int_0^a\frac{2\varepsilon_0E_0x}{a^2}\cdot a^2\,\dd x=\varepsilon_0E_0a^2\approx1.06\times10^{-10}\,\mathrm C$，和$\varepsilon_0$乘电通量$E_0a^2$一样。
+  solution: |
+    $\rho=\varepsilon_0\dv{E_x}{x}=\frac{2\varepsilon_0E_0x}{a^2}$，只随$x$变。按$x$把立方体切成薄片，每片的体积是$a^2\,\dd x$，$Q=\int_0^a\frac{2\varepsilon_0E_0x}{a^2}a^2\,\dd x=\varepsilon_0E_0a^2\approx8.854\times10^{-12}\times300\times0.040\,\mathrm C\approx1.06\times10^{-10}\,\mathrm C$。
+
+    用积分形式核对：$x=0$的面上电场为零，$x=a$的面上穿出$E_0a^2$，其余四个面和电场平行，所以$Q=\varepsilon_0E_0a^2$，一样。
+
+- id: p5
+  tier: hard
+  statement: |
+    一层正电荷和一层负电荷紧挨着：$0<x<w$里体电荷密度是$\rho_0>0$，$-w<x<0$里是$-\rho_0$，别处没有电荷，两层在$y$、$z$方向上都无限大。已知$|x|>w$处电场为零。
+
+    （1）由$\divg\vb E=\frac{\rho}{\varepsilon_0}$求各处的电场。（2）求$x=w$处和$x=-w$处的电势差（potential difference）。（3）如果正的一层厚$w_1$、电荷密度$\rho_1$，负的一层厚$w_2$、电荷密度$-\rho_2$，要让两侧的电场都是零，它们应满足什么关系？
+  hints:
+    - |
+      按对称性，电场只有$x$分量、只依赖于$x$，所以$\dv{E_x}{x}=\frac{\rho}{\varepsilon_0}$。从$x>w$处$E_x=0$出发往左积分。
+    - |
+      $0<x<w$时$E_x=-\frac{\rho_0}{\varepsilon_0}(w-x)$，$-w<x<0$时$E_x=-\frac{\rho_0}{\varepsilon_0}(w+x)$；电势差是$-\int E_x\,\dd x$。
+    - |
+      （2）$\varphi(w)-\varphi(-w)=\frac{\rho_0w^2}{\varepsilon_0}$，正的一层电势高。（3）往左穿过正的一层，$E_x$减少$\frac{\rho_1w_1}{\varepsilon_0}$，再穿过负的一层增加$\frac{\rho_2w_2}{\varepsilon_0}$；左侧回到零要求$\rho_1w_1=\rho_2w_2$，单位面积上的正、负电荷一样多。
+  reference: |
+    （1）按对称性，电场只有$x$分量、只依赖于$x$，散度只剩$\dv{E_x}{x}$，所以$\dv{E_x}{x}=\frac{\rho}{\varepsilon_0}$。$x>w$处$E_x=0$，往左积分：$0<x<w$时$E_x(x)=-\int_x^w\frac{\rho_0}{\varepsilon_0}\dd x'=-\frac{\rho_0}{\varepsilon_0}(w-x)$，到$x=0$是$-\frac{\rho_0w}{\varepsilon_0}$。$-w<x<0$时$E_x(x)=E_x(0)+\int_x^0\frac{\rho_0}{\varepsilon_0}\dd x'=-\frac{\rho_0}{\varepsilon_0}(w+x)$，到$x=-w$正好回到零。合起来，$|x|<w$时$E_x=-\frac{\rho_0}{\varepsilon_0}(w-|x|)$，指向$-x$，在交界处最强。
+
+    （2）$\varphi(w)-\varphi(-w)=-\int_{-w}^{w}E_x\,\dd x=\frac{\rho_0}{\varepsilon_0}\int_{-w}^{w}(w-|x|)\,\dd x=\frac{\rho_0w^2}{\varepsilon_0}$。正的一层电势高，电场从它指向负的一层。
+
+    （3）从右侧$E_x=0$往左积分：穿过正的一层，$E_x$减少$\frac{\rho_1w_1}{\varepsilon_0}$；再穿过负的一层，增加$\frac{\rho_2w_2}{\varepsilon_0}$。左侧电场为零要求$\rho_1w_1=\rho_2w_2$，即单位面积上的正、负电荷一样多。这和积分形式一致：取跨过两层的扁圆柱面作高斯面（Gaussian surface），两个底面上电场都为零，里面的净电荷就必须为零。
+
+- id: p6
+  tier: hard
+  statement: |
+    设想一个点电荷的电场不是平方反比的，而是$\vb E=\frac{k\,\uv r}{r^m}$，其中$k>0$，$m\ne2$。
+
+    （1）求$r>0$处电场的散度。按$\divg\vb E=\frac{\rho}{\varepsilon_0}$，这意味着什么样的电荷分布？（2）求穿出以点电荷为中心、半径为$R$的球面的电通量，并和（1）的电荷分布核对。（3）由此说明，高斯定律离不开库仑定律（Coulomb's law）的平方反比。
+  hints:
+    - |
+      球对称的电场，散度是$\frac{1}{r^2}\dv{(r^2E_r)}{r}$。
+    - |
+      $\divg\vb E=\frac{(2-m)k}{r^{m+1}}$；电通量是$4\pi kR^{2-m}$，随$R$变。
+    - |
+      $m\ne2$时，点电荷周围的真空里按微分形式算出处处有电荷$\rho=\frac{\varepsilon_0(2-m)k}{r^{m+1}}$，可那里其实没有电荷；电通量随$R$变，正好是这些「电荷」被球面围进来的多少在变。只有$m=2$时，原点以外散度为零。
+  reference: |
+    （1）$r^2E_r=kr^{2-m}$，$\divg\vb E=\frac{1}{r^2}\dv{(kr^{2-m})}{r}=\frac{(2-m)k}{r^{m+1}}$。按$\divg\vb E=\frac{\rho}{\varepsilon_0}$，$r>0$处到处都该有电荷，$\rho=\frac{\varepsilon_0(2-m)k}{r^{m+1}}$：$m<2$时是正的，$m>2$时是负的。可一个孤立点电荷周围的真空里没有电荷，所以电力要是不按平方反比，高斯定律的微分形式就不成立了。
+
+    （2）球面上的电通量是$E_r\cdot4\pi R^2=4\pi kR^{2-m}$，随$R$变。在半径$r_0$和$R$之间，（1）算出的电荷是$\int_{r_0}^R\rho\cdot4\pi r^2\,\dd r=4\pi\varepsilon_0k\bigl(R^{2-m}-r_0^{2-m}\bigr)$，正好是两个球面上的电通量之差乘以$\varepsilon_0$，两种算法一致。
+
+    （3）只有$m=2$时，原点以外散度为零，电通量和$R$无关，电荷全在原点一点上，高斯定律的两种形式对点电荷才成立。[电通量与高斯定律](lesson:physics.electromagnetism.gauss-law)的 p5 从积分形式看到的是同一件事：指数偏离 2，穿过球面的电通量就随球的半径变。
+
+- id: p7
+  tier: thinking
+  statement: |
+    无穷大平面$z=0$上均匀分布着面电荷，面电荷密度为$\sigma$，两侧的电场是$E_z=\pm\frac{\sigma}{2\varepsilon_0}$。
+
+    （1）$z\ne0$处电场的散度是多少？（2）穿过$z=0$时，$E_z$跳了多少？这时$\divg\vb E=\frac{\rho}{\varepsilon_0}$该怎样理解？（3）[导体与静电平衡](lesson:physics.electromagnetism.conductors)里说，紧贴导体（conductor）表面外侧的电场是$\frac{\sigma}{\varepsilon_0}$，它和这里的跳跃有什么关系？
+  hints:
+    - |
+      两侧的电场都是常量，散度为零；平面上没有体电荷，只有面电荷。
+    - |
+      $E_z$从$-\frac{\sigma}{2\varepsilon_0}$跳到$\frac{\sigma}{2\varepsilon_0}$，跳了$\frac{\sigma}{\varepsilon_0}$。面电荷写成体电荷密度是$\rho=\sigma\,\delta(z)$，而阶跃函数的导数正是$\delta$函数。
+    - |
+      导体里电场为零，外侧是$\frac{\sigma}{\varepsilon_0}$，跳的也是$\frac{\sigma}{\varepsilon_0}$：带面电荷的面两侧，电场的法向分量总是跳$\frac{\sigma}{\varepsilon_0}$，只是两侧怎样分配不同。
+  reference: |
+    （1）两侧电场都是常量，散度为零，和那里没有电荷一致。
+
+    （2）$E_z$从$-\frac{\sigma}{2\varepsilon_0}$跳到$+\frac{\sigma}{2\varepsilon_0}$，跳了$\frac{\sigma}{\varepsilon_0}$。面电荷可以写成体电荷密度$\rho=\sigma\,\delta(z)$：$z\ne0$处为零，沿$z$积分得$\sigma$。阶跃函数的导数是$\delta$函数，所以$\pdv{E_z}{z}=\frac{\sigma}{\varepsilon_0}\delta(z)$，$\divg\vb E=\frac{\rho}{\varepsilon_0}$按$\delta$函数的意思照样成立。
+
+    （3）导体里电场为零，紧贴外侧是$\frac{\sigma}{\varepsilon_0}$，跳的也是$\frac{\sigma}{\varepsilon_0}$。一般地，取跨过带电面的扁圆柱面作高斯面，就得到面两侧电场的法向分量跳$\frac{\sigma}{\varepsilon_0}$，无穷大平面和导体表面都是例子。不同的只是两侧怎样分：平面两侧各$\frac{\sigma}{2\varepsilon_0}$，导体的全在外侧，因为导体里其余的电荷在那里也有贡献。
+
+- id: p8
+  tier: thinking
+  statement: |
+    恩肖定理说，只靠静电力，点电荷在没有电荷的区域里不能稳定地平衡。
+
+    （1）这和「原子里的电子被原子核吸住」矛盾吗？（2）离子阱（ion trap）能把单个离子关在真空里的一个小区域里，其中一种叫保罗阱（Paul trap），用的是很快地来回变化的电场。为什么变化的电场能绕过这个定理？（3）这个定理对万有引力也成立吗？
+  hints:
+    - |
+      定理说的是静止的平衡；原子里的电子并不静止在某个位置上。
+    - |
+      定理的证明只用到某一时刻的静电场。电场的鞍形很快地翻转时，离子来不及跑远就被反过来推，平均下来受到指向中心的力。
+    - |
+      万有引力也是平方反比，没有质量的地方引力场的散度也为零，论证一样。
+  reference: |
+    （1）不矛盾。定理说的是点电荷静止在某个位置上的平衡；原子里的电子并不静止，经典的图像里它绕原子核转，真正的描述要用量子力学。经典电磁学里绕转的电子还会辐射能量（见[拉莫尔公式](lesson:physics.electromagnetism.larmor-formula)），原子为什么稳定本来就超出了静电学。
+
+    （2）证明只用到某一时刻的静电场。保罗阱中心附近的电场是鞍形的：某一时刻在一个方向上把离子推回中心，在另一个方向上把它推开；电场很快地翻转，推回和推开的方向不断交换。参数合适时，离子来不及在一个方向上跑远就被反过来推，平均下来受到一个指向中心的力，像落在一个碗里。保罗（Wolfgang Paul）因为发展了离子阱技术，和德默尔特（Hans Dehmelt）分享了 1989 年诺贝尔物理学奖的一半。
+
+    （3）成立。万有引力也是平方反比，没有质量的地方引力场的散度为零，同样的论证说明：只靠固定不动的质量产生的引力，一个物体在空无一物的地方没有稳定的平衡位置。

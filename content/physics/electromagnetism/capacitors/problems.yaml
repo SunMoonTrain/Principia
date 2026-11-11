@@ -1,0 +1,165 @@
+- id: p1
+  tier: easy
+  statement: |
+    平行板电容器的两块极板都是边长$10\,\mathrm{cm}$的正方形，相距$1.0\,\mathrm{mm}$，板间是真空。忽略边缘的电场，求它的电容，以皮法（picofarad，$\mathrm{pF}$，即$10^{-12}\,\mathrm F$）为单位，保留三位有效数字。取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: number
+    value: 8.8541878188e-12*0.10^2/1.0e-3*1e12
+    unit: |
+      $\mathrm{pF}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      用平行板电容器的公式$C=\frac{\varepsilon_0A}{d}$。
+    - |
+      $A=(0.10\,\mathrm m)^2=1.0\times10^{-2}\,\mathrm{m^2}$，$d=1.0\times10^{-3}\,\mathrm m$。
+    - |
+      $C=\frac{8.854\times10^{-12}\times1.0\times10^{-2}}{1.0\times10^{-3}}\,\mathrm F\approx8.85\times10^{-11}\,\mathrm F=88.5\,\mathrm{pF}$。
+  solution: |
+    $C=\frac{\varepsilon_0A}{d}=\frac{8.854\times10^{-12}\times1.0\times10^{-2}}{1.0\times10^{-3}}\,\mathrm F\approx8.85\times10^{-11}\,\mathrm F$，即$88.5\,\mathrm{pF}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    电容为$4.7\,\mu\mathrm F$的电容器，充电到两个极板的电势差为$12\,\mathrm V$。它储存了多少能量？保留三位有效数字。
+  answer:
+    type: number
+    value: 0.5*4.7e-6*12^2
+    unit: |
+      $\mathrm J$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      已知电容和电势差，用$U=\frac12C(\Delta\varphi)^2$。
+    - |
+      $C=4.7\times10^{-6}\,\mathrm F$，$(\Delta\varphi)^2=144\,\mathrm{V^2}$。
+    - |
+      $U=\frac12\times4.7\times10^{-6}\times144\,\mathrm J\approx3.38\times10^{-4}\,\mathrm J$。
+  solution: |
+    $U=\frac12C(\Delta\varphi)^2=\frac12\times4.7\times10^{-6}\times12^2\,\mathrm J\approx3.38\times10^{-4}\,\mathrm J$。
+
+- id: p3
+  tier: medium
+  statement: |
+    半径$10.0\,\mathrm{cm}$的导体球外面套着一个同心的导体球壳，球壳的内半径是$12.0\,\mathrm{cm}$，两者之间是真空。把它们充电到电势差为$1.00\,\mathrm{kV}$，储存了多少能量？保留三位有效数字。取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: number
+    value: 0.5*(4*pi*8.8541878188e-12*0.100*0.120/(0.120-0.100))*1000^2
+    unit: |
+      $\mathrm J$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先求球形电容器的电容，再用电容器的能量公式。
+    - |
+      $C=4\pi\varepsilon_0\frac{ab}{b-a}=4\pi\varepsilon_0\times\frac{0.100\times0.120}{0.020}\,\mathrm m\approx6.68\times10^{-11}\,\mathrm F$。
+    - |
+      $U=\frac12C(\Delta\varphi)^2\approx\frac12\times6.68\times10^{-11}\times(1.00\times10^3)^2\,\mathrm J\approx3.34\times10^{-5}\,\mathrm J$。
+  solution: |
+    $C=4\pi\varepsilon_0\frac{ab}{b-a}=4\pi\times8.854\times10^{-12}\times0.600\,\mathrm F\approx6.68\times10^{-11}\,\mathrm F$。$U=\frac12C(\Delta\varphi)^2\approx\frac12\times6.68\times10^{-11}\times10^6\,\mathrm J\approx3.34\times10^{-5}\,\mathrm J$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $C_1=2.0\,\mu\mathrm F$和$C_2=3.0\,\mu\mathrm F$串联，再和$C_3=4.0\,\mu\mathrm F$并联，整个组合接到电势差为$10\,\mathrm V$的电源上。充电完毕后，$C_2$储存了多少能量？保留三位有效数字。
+  answer:
+    type: number
+    value: (1.2e-6*10)^2/(2*3.0e-6)
+    unit: |
+      $\mathrm J$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $C_3$和串联的那一对并联，两边的电势差都是$10\,\mathrm V$；串联的两个电容器带的电荷相同。
+    - |
+      串联部分的电容由$\frac{1}{C_{12}}=\frac{1}{C_1}+\frac{1}{C_2}$得$C_{12}=1.2\,\mu\mathrm F$，所以$C_1$、$C_2$各带$12\,\mu\mathrm C$。
+    - |
+      $C_2$的电势差是$\frac{Q}{C_2}=4.0\,\mathrm V$，$U_2=\frac12C_2(\Delta\varphi_2)^2=2.40\times10^{-5}\,\mathrm J$。
+  solution: |
+    串联部分的电容$C_{12}=\frac{C_1C_2}{C_1+C_2}=1.2\,\mu\mathrm F$，它两端的电势差是$10\,\mathrm V$，所以$C_1$、$C_2$都带$Q=12\,\mu\mathrm C$。$C_2$的电势差是$\frac{Q}{C_2}=4.0\,\mathrm V$，储存的能量$U_2=\frac{Q^2}{2C_2}=\frac{(12\times10^{-6})^2}{2\times3.0\times10^{-6}}\,\mathrm J=2.40\times10^{-5}\,\mathrm J$。$C_3$和这一问无关。
+
+- id: p5
+  tier: hard
+  statement: |
+    极板面积为$A$、间隔为$d$的平行板电容器（电容记作$C_0=\frac{\varepsilon_0A}{d}$），一直接在电势差为$\Delta\varphi_0$的电源上。把间隔从$d$慢慢拉到$2d$。
+
+    （1）电容器储存的能量变了多少？（2）这期间电源做了多少功？电荷流回电源时，电源做的功是负的。
+
+    （3）外力做了多少功？用两板之间的吸引力积分核对。
+  hints:
+    - |
+      电势差不变，电容减半，电荷也减半；能量守恒：外力做的功加上电源做的功，等于电容器能量的增加。
+    - |
+      $\Delta U=\frac12\cdot\frac{C_0}{2}\Delta\varphi_0^2-\frac12C_0\Delta\varphi_0^2=-\frac14C_0\Delta\varphi_0^2$；电荷变化$-\frac12C_0\Delta\varphi_0$，电源做功$\Delta\varphi_0$乘以它。
+    - |
+      电源做功$-\frac12C_0\Delta\varphi_0^2$，外力做功$\frac14C_0\Delta\varphi_0^2$。间隔为$x$时吸引力是$\frac{\varepsilon_0A\Delta\varphi_0^2}{2x^2}$，从$d$积到$2d$也得$\frac14C_0\Delta\varphi_0^2$。
+  reference: |
+    （1）电势差保持$\Delta\varphi_0$，电容从$C_0$变成$\frac{C_0}{2}$，能量$U=\frac12C(\Delta\varphi_0)^2$从$\frac12C_0\Delta\varphi_0^2$变成$\frac14C_0\Delta\varphi_0^2$，减少了$\frac14C_0\Delta\varphi_0^2$。
+
+    （2）电荷从$C_0\Delta\varphi_0$变成$\frac12C_0\Delta\varphi_0$，有$\frac12C_0\Delta\varphi_0$的电荷流回电源。电源把电荷从负极搬到正极时做功$\Delta\varphi_0\,\dd Q$，现在$\dd Q$是负的，电源一共做功$-\frac12C_0\Delta\varphi_0^2$，也就是电源得到了这么多能量。
+
+    （3）能量守恒：外力做的功$W$加上电源做的功，等于电容器能量的增加，$W-\frac12C_0\Delta\varphi_0^2=-\frac14C_0\Delta\varphi_0^2$，所以$W=\frac14C_0\Delta\varphi_0^2>0$。核对：间隔为$x$时极板带电$Q=\frac{\varepsilon_0A\Delta\varphi_0}{x}$，吸引力是$\frac{Q^2}{2\varepsilon_0A}=\frac{\varepsilon_0A\Delta\varphi_0^2}{2x^2}$（见例 2），$\int_d^{2d}\frac{\varepsilon_0A\Delta\varphi_0^2}{2x^2}\dd x=\frac{\varepsilon_0A\Delta\varphi_0^2}{4d}=\frac14C_0\Delta\varphi_0^2$，一致。外力做了正功，电容器的能量却减少了：两者都进了电源。
+
+- id: p6
+  tier: hard
+  statement: |
+    半径为$R_1$和$R_2$的两个导体球相距很远，用一根细导线连起来，一共带电$Q$。
+
+    （1）两个球各带多少电荷？（2）两个球表面的电场之比是多少？（3）把这个组合看成一个孤立导体，它的电容是多少？说明你用了哪些近似。
+  hints:
+    - |
+      连起来以后是同一个导体，两个球的电势（electric potential）相等；相距很远时，每个球的电势近似只由它自己的电荷决定。
+    - |
+      $\frac{Q_1}{R_1}=\frac{Q_2}{R_2}$，$Q_1+Q_2=Q$；表面电场是$\frac{1}{4\pi\varepsilon_0}\frac{Q_i}{R_i^2}$。
+    - |
+      $Q_1=\frac{R_1}{R_1+R_2}Q$；电场之比$\frac{E_1}{E_2}=\frac{R_2}{R_1}$，小球表面的电场强；电容$4\pi\varepsilon_0(R_1+R_2)$。
+  reference: |
+    （1）用导线连起来以后是同一个导体，静电平衡时两个球的电势相等。两球相距$D\gg R_1,R_2$，一个球在另一个球处产生的电势约为$\frac{Q_j}{4\pi\varepsilon_0D}$，可以略去；导线很细，带的电荷也略去。于是$\frac{Q_1}{4\pi\varepsilon_0R_1}=\frac{Q_2}{4\pi\varepsilon_0R_2}$，加上$Q_1+Q_2=Q$，得$Q_1=\frac{R_1}{R_1+R_2}Q$，$Q_2=\frac{R_2}{R_1+R_2}Q$。
+
+    （2）略去另一个球的影响，每个球上的电荷均匀分布，表面电场是$E_i=\frac{1}{4\pi\varepsilon_0}\frac{Q_i}{R_i^2}$，所以$\frac{E_1}{E_2}=\frac{Q_1R_2^2}{Q_2R_1^2}=\frac{R_2}{R_1}$。小球带的电荷少，表面电场和面电荷密度反而大，和[导体与静电平衡](lesson:physics.electromagnetism.conductors)里「曲率大的地方面电荷密度大」是同一个趋势。
+
+    （3）组合的电势是$\varphi=\frac{Q}{4\pi\varepsilon_0(R_1+R_2)}$，电容$C=4\pi\varepsilon_0(R_1+R_2)$，正是两个孤立球的电容相加，像两个电容器并联（另一个极板都在无穷远）。用到的近似：两球相距很远（互相的影响和电荷分布的不均匀都略去），导线上的电荷略去。
+
+- id: p7
+  tier: thinking
+  statement: |
+    电容为$C$的电容器带电$Q$，再用导线和一个同样的、不带电的电容器并联起来。
+
+    （1）稳定后每个电容器带多少电荷？两个电容器的总能量变成原来的几分之几？（2）少了的能量去了哪里？导线的电阻越小，损失的能量是否越少？
+
+    （3）如果导线的电阻是零，又会怎样？
+  hints:
+    - |
+      两个电容器的电势差相同、电容相同，电荷平分；能量用$\frac{Q^2}{2C}$算。
+    - |
+      电荷流动时导线里有电流，电阻发热。电阻小，电流就大，流的时间短，发的热却不因电阻小而减少。
+    - |
+      电阻为零时，电荷会在两个电容器之间来回晃荡，能量以电磁辐射等形式散失，不会无损失地停在平分的状态。
+  reference: |
+    （1）连起来以后两个电容器的电势差相同，电容又相同，所以各带$\frac Q2$。总能量从$\frac{Q^2}{2C}$变成$2\times\frac{(Q/2)^2}{2C}=\frac{Q^2}{4C}$，只剩一半。
+
+    （2）电荷从一个电容器流到另一个时，导线里有电流，电阻把能量变成热，还有一小部分以电磁波的形式辐射出去。损失的总是一半，和电阻的大小无关：电阻小时电流大，持续的时间短，算下来发的热不变，因为终态由电荷守恒（charge conservation）和电势差相等定死了，和中间的过程无关。
+
+    （3）电阻为零时，电路里没有让能量变成热的地方，电荷不会平稳地停在平分的状态，而是在两个电容器之间来回振荡，同时向外辐射电磁波，能量最后还是损失一半。这说明「两个电容器的能量守恒」不是一个合理的假设：静电学只管平衡态，从一个平衡态到另一个平衡态的过程要用电路和电磁波的知识。
+
+- id: p8
+  tier: thinking
+  statement: |
+    两个导体分别带电$Q_1$和$Q_2$，$Q_1+Q_2\ne0$。
+
+    （1）它们的电势差还只由某一个电荷决定吗？以两个相距很远、大小不同的导体球为例想一想。（2）为什么电容器的定义要求两个导体带等量异号的电荷？
+
+    （3）球形电容器的外球壳额外带上电荷$Q'$，里面的球和外壳之间的电势差变不变？为什么？
+  hints:
+    - |
+      按叠加原理（superposition principle），每个导体的电势都是$Q_1$、$Q_2$的线性组合，系数只由几何形状决定。
+    - |
+      相距很远的两个球，$\varphi_1\approx\frac{Q_1}{4\pi\varepsilon_0R_1}$，$\varphi_2\approx\frac{Q_2}{4\pi\varepsilon_0R_2}$，电势差同时依赖$Q_1$和$Q_2$；只有$Q_1=-Q_2$时，电势差才和一个电荷成正比。
+    - |
+      外壳多出来的$Q'$都分布在外表面上，两者之间的电场只由里面的球的电荷决定（静电屏蔽，electrostatic shielding），电势差不变。
+  reference: |
+    （1）电荷都乘以同一个数，电场和电势也乘以这个数；两组电荷分布叠加，电势也叠加（静电平衡的分布是唯一的，见[唯一性定理与镜像法](lesson:physics.electromagnetism.images-uniqueness)）。所以$\varphi_1=p_{11}Q_1+p_{12}Q_2$，$\varphi_2=p_{21}Q_1+p_{22}Q_2$，系数只由几何形状决定，电势差$\varphi_1-\varphi_2$一般同时依赖$Q_1$和$Q_2$。相距很远的两个球，$\varphi_1-\varphi_2\approx\frac{1}{4\pi\varepsilon_0}\Bigl(\frac{Q_1}{R_1}-\frac{Q_2}{R_2}\Bigr)$：两个球带同样的电荷，电势差也不是零。
+
+    （2）只有$Q_1=-Q_2=Q$时，$\varphi_1-\varphi_2=(p_{11}-p_{21}-p_{12}+p_{22})Q$才和$Q$成正比，比值由几何形状唯一确定，这才能叫这一对导体的电容。
+
+    （3）不变。外壳内表面带$-Q$，多出来的$Q'$都在外表面上；外表面的电荷在壳里面不产生电场（静电屏蔽），两者之间的电场仍是$\frac{1}{4\pi\varepsilon_0}\frac{Q}{r^2}$，电势差仍是$\frac{Q}{4\pi\varepsilon_0}\Bigl(\frac1a-\frac1b\Bigr)$。所以一个导体完全包住另一个时，电势差只由里面的电荷决定，这样的电容器最「干净」。

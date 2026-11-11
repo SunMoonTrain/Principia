@@ -256,3 +256,192 @@ glossary:
       导体壳把外面的电场挡在外面，使里面的空腔不受外面电荷的影响。
     definedIn: physics.electromagnetism.conductors
     anchor: def-shielding
+  - id: physics.electromagnetism.earnshaw-theorem
+    zh: |
+      恩肖定理
+    en: |
+      Earnshaw's theorem
+    brief: |
+      在没有电荷的区域里，只受静电力作用的点电荷没有稳定的平衡位置。
+    definedIn: physics.electromagnetism.gauss-differential
+    anchor: thm-earnshaw
+  - id: physics.electromagnetism.capacitor
+    zh: |
+      电容器
+    en: |
+      capacitor
+    brief: |
+      两个彼此绝缘、带等量异号电荷的导体，用来储存电荷和电场的能量。
+    definedIn: physics.electromagnetism.capacitors
+    anchor: def-capacitor
+  - id: physics.electromagnetism.electrostatic-energy
+    zh: |
+      静电能
+    en: |
+      electrostatic energy
+    brief: |
+      把一组电荷从彼此相距无穷远搬到现在的位置，外力做的总功；电荷连续分布、密度有限时，等于$\frac{\varepsilon_0}{2}E^2$在全空间的积分。
+    definedIn: physics.electromagnetism.electrostatic-energy
+    anchor: def-electrostatic-energy
+  - id: physics.electromagnetism.energy-density
+    zh: |
+      能量密度
+    en: |
+      energy density
+    brief: |
+      单位体积的场里储存的能量；真空中静电场的能量密度是$\frac{\varepsilon_0}{2}E^2$。
+    definedIn: physics.electromagnetism.electrostatic-energy
+    anchor: def-energy-density
+  - id: physics.electromagnetism.poisson-equation
+    zh: |
+      泊松方程
+    en: |
+      Poisson's equation
+    brief: |
+      静电场的电势满足的方程$\nabla^2\varphi=-\frac{\rho}{\varepsilon_0}$，把电势和电荷密度联系起来。
+    definedIn: physics.electromagnetism.poisson-equation
+    anchor: thm-poisson
+  - id: physics.electromagnetism.laplace-equation
+    zh: |
+      拉普拉斯方程
+    en: |
+      Laplace's equation
+    brief: |
+      没有电荷的区域里电势满足的方程$\nabla^2\varphi=0$；它的解叫作调和函数。
+    definedIn: physics.electromagnetism.poisson-equation
+    anchor: def-laplace-equation
+  - id: physics.electromagnetism.uniqueness-theorem
+    zh: |
+      唯一性定理
+    en: |
+      uniqueness theorem
+    brief: |
+      区域里的电荷和边界上的电势（或各导体的总电荷）给定时，静电问题的解只有一个。
+    definedIn: physics.electromagnetism.images-uniqueness
+    anchor: thm-uniqueness
+  - id: physics.electromagnetism.image-charge
+    zh: |
+      镜像电荷
+    en: |
+      image charge
+    brief: |
+      放在求解区域以外的假想电荷，和区域里的电荷一起满足边界条件，代替导体上感应电荷的效果。
+    definedIn: physics.electromagnetism.images-uniqueness
+    anchor: def-method-of-images
+  - id: physics.electromagnetism.method-of-images
+    zh: |
+      镜像法
+    en: |
+      method of images
+    brief: |
+      用镜像电荷凑出满足边界条件的电势，再由唯一性定理断定它就是要求的解。
+    definedIn: physics.electromagnetism.images-uniqueness
+    anchor: def-method-of-images
+  - id: physics.electromagnetism.multipole-expansion
+    zh: |
+      多极展开
+    en: |
+      multipole expansion
+    brief: |
+      把电荷分布在远处的电势按$\frac1r$的幂展开，各项依次由总电荷、电偶极矩、电四极矩……决定。
+    definedIn: physics.electromagnetism.multipole-expansion
+    anchor: thm-multipole
+  - id: physics.electromagnetism.quadrupole-moment
+    zh: |
+      电四极矩
+    en: |
+      electric quadrupole moment
+    brief: |
+      电荷分布的二阶矩$Q_{ij}=\int(3x_ix_j-r^2\delta_{ij})\rho\,\dd V$，决定远处电势里随$\frac{1}{r^3}$衰减的那一项。
+    definedIn: physics.electromagnetism.multipole-expansion
+    anchor: def-quadrupole
+  - id: physics.electromagnetism.dielectric
+    zh: |
+      电介质
+    en: |
+      dielectric
+    brief: |
+      从极化的角度看的绝缘体：放进电场里，分子产生电偶极矩或者电偶极矩转向电场。
+    definedIn: physics.electromagnetism.polarization
+    anchor: def-dielectric
+  - id: physics.electromagnetism.polarizability
+    zh: |
+      极化率
+    en: |
+      polarizability
+    brief: |
+      原子或分子的电偶极矩和电场之比$\alpha$，$\vb p=\alpha\vb E$；描述电子云多容易被电场拉开。
+    definedIn: physics.electromagnetism.polarization
+    anchor: def-polarizability
+  - id: physics.electromagnetism.polarization
+    zh: |
+      极化强度
+    en: |
+      polarization density
+    brief: |
+      电介质单位体积里的电偶极矩$\vb P$，单位是$\mathrm{C/m^2}$；它的负散度是束缚电荷的体密度。
+    definedIn: physics.electromagnetism.polarization
+    anchor: def-polarization
+  - id: physics.electromagnetism.bound-charge
+    zh: |
+      束缚电荷
+    en: |
+      bound charge
+    brief: |
+      电介质极化时正负电荷错开而积累的电荷：体内$\rho_{\mathrm b}=-\divg\vb P$，表面$\sigma_{\mathrm b}=\vb P\cdot\uv n$。
+    definedIn: physics.electromagnetism.polarization
+    anchor: def-bound-charge
+  - id: physics.electromagnetism.free-charge
+    zh: |
+      自由电荷
+    en: |
+      free charge
+    brief: |
+      不是因极化而错开的电荷：导体里能移动的电荷、放到物体上的电荷，记作$\rho_{\mathrm f}$、$\sigma_{\mathrm f}$。
+    definedIn: physics.electromagnetism.polarization
+    anchor: def-bound-charge
+  - id: physics.electromagnetism.electric-displacement
+    zh: |
+      电位移
+    en: |
+      electric displacement
+    brief: |
+      $\vb D=\varepsilon_0\vb E+\vb P$；它的散度只由自由电荷决定，$\divg\vb D=\rho_{\mathrm f}$。
+    definedIn: physics.electromagnetism.electric-displacement
+    anchor: def-displacement
+  - id: physics.electromagnetism.linear-dielectric
+    zh: |
+      线性电介质
+    en: |
+      linear dielectric
+    brief: |
+      极化强度和电场成正比（$\vb P=\varepsilon_0\chi_{\mathrm e}\vb E$）的电介质，里面$\vb D=\varepsilon\vb E$。
+    definedIn: physics.electromagnetism.electric-displacement
+    anchor: def-linear-dielectric
+  - id: physics.electromagnetism.electric-susceptibility
+    zh: |
+      电极化率
+    en: |
+      electric susceptibility
+    brief: |
+      线性电介质里$\vb P=\varepsilon_0\chi_{\mathrm e}\vb E$的比例系数$\chi_{\mathrm e}$，是一个无量纲的数。
+    definedIn: physics.electromagnetism.electric-displacement
+    anchor: def-linear-dielectric
+  - id: physics.electromagnetism.relative-permittivity
+    zh: |
+      相对介电常量
+    en: |
+      relative permittivity
+    brief: |
+      $\varepsilon_{\mathrm r}=1+\chi_{\mathrm e}=\frac{\varepsilon}{\varepsilon_0}$；电容器填满这种电介质，电容变成原来的$\varepsilon_{\mathrm r}$倍。
+    definedIn: physics.electromagnetism.electric-displacement
+    anchor: def-permittivity
+  - id: physics.electromagnetism.capacitance
+    zh: |
+      电容
+    en: |
+      capacitance
+    brief: |
+      电容器一个极板的电荷与两板电势差之比$C=\frac{Q}{\Delta\varphi}$，和带电多少无关，由两个导体的形状、大小、相对位置和中间的电介质决定，单位是法拉。
+    definedIn: physics.electromagnetism.capacitors
+    anchor: def-capacitor

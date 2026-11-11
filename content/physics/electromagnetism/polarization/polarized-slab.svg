@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 236" width="540" height="236" font-size="14">
+  <!-- 示意图（不按比例）。左：向右的匀强外电场里的电介质板，小箭头是各小块的电偶极矩；右：等效的束缚电荷只在左右两个表面上（左负右正），板里的虚线箭头是它们的电场，方向向左。 -->
+  <path d="M 50.0 46.0 L 240.0 46.0 L 240.0 166.0 L 50.0 166.0 Z" style="stroke: currentColor" fill="none" stroke-width="1.4" stroke-linejoin="round" />
+  <path d="M 318.0 46.0 L 508.0 46.0 L 508.0 166.0 L 318.0 166.0 Z" style="stroke: currentColor" fill="none" stroke-width="1.4" stroke-linejoin="round" />
+  <line x1="12.0" y1="26.0" x2="263.6" y2="26.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.4" />
+  <path d="M 270.0 26.0 L 262.7 29.3 L 262.7 22.7 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="12.0" y1="188.0" x2="263.6" y2="188.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.4" />
+  <path d="M 270.0 188.0 L 262.7 191.3 L 262.7 184.7 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="56.8" y1="61.0" x2="70.0" y2="61.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 74.8 61.0 L 69.4 63.4 L 69.4 58.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="56.8" y1="91.0" x2="70.0" y2="91.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 74.8 91.0 L 69.4 93.4 L 69.4 88.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="56.8" y1="121.0" x2="70.0" y2="121.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 74.8 121.0 L 69.4 123.4 L 69.4 118.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="56.8" y1="151.0" x2="70.0" y2="151.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 74.8 151.0 L 69.4 153.4 L 69.4 148.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="88.5" y1="61.0" x2="101.7" y2="61.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 106.5 61.0 L 101.0 63.4 L 101.0 58.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="88.5" y1="91.0" x2="101.7" y2="91.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 106.5 91.0 L 101.0 93.4 L 101.0 88.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="88.5" y1="121.0" x2="101.7" y2="121.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 106.5 121.0 L 101.0 123.4 L 101.0 118.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="88.5" y1="151.0" x2="101.7" y2="151.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 106.5 151.0 L 101.0 153.4 L 101.0 148.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="120.2" y1="61.0" x2="133.4" y2="61.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 138.2 61.0 L 132.7 63.4 L 132.7 58.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="120.2" y1="91.0" x2="133.4" y2="91.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 138.2 91.0 L 132.7 93.4 L 132.7 88.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="120.2" y1="121.0" x2="133.4" y2="121.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 138.2 121.0 L 132.7 123.4 L 132.7 118.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="120.2" y1="151.0" x2="133.4" y2="151.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 138.2 151.0 L 132.7 153.4 L 132.7 148.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="151.8" y1="61.0" x2="165.0" y2="61.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 169.8 61.0 L 164.4 63.4 L 164.4 58.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="151.8" y1="91.0" x2="165.0" y2="91.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 169.8 91.0 L 164.4 93.4 L 164.4 88.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="151.8" y1="121.0" x2="165.0" y2="121.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 169.8 121.0 L 164.4 123.4 L 164.4 118.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="151.8" y1="151.0" x2="165.0" y2="151.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 169.8 151.0 L 164.4 153.4 L 164.4 148.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="183.5" y1="61.0" x2="196.7" y2="61.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 201.5 61.0 L 196.0 63.4 L 196.0 58.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="183.5" y1="91.0" x2="196.7" y2="91.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 201.5 91.0 L 196.0 93.4 L 196.0 88.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="183.5" y1="121.0" x2="196.7" y2="121.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 201.5 121.0 L 196.0 123.4 L 196.0 118.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="183.5" y1="151.0" x2="196.7" y2="151.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 201.5 151.0 L 196.0 153.4 L 196.0 148.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="215.2" y1="61.0" x2="228.4" y2="61.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 233.2 61.0 L 227.7 63.4 L 227.7 58.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="215.2" y1="91.0" x2="228.4" y2="91.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 233.2 91.0 L 227.7 93.4 L 227.7 88.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="215.2" y1="121.0" x2="228.4" y2="121.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 233.2 121.0 L 227.7 123.4 L 227.7 118.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="215.2" y1="151.0" x2="228.4" y2="151.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 233.2 151.0 L 227.7 153.4 L 227.7 148.6 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="327.0" y="61.0" style="fill: var(--accent, #2563eb)" text-anchor="middle">−</text>
+  <text x="499.0" y="61.0" style="fill: var(--accent, #2563eb)" text-anchor="middle">+</text>
+  <text x="327.0" y="81.0" style="fill: var(--accent, #2563eb)" text-anchor="middle">−</text>
+  <text x="499.0" y="81.0" style="fill: var(--accent, #2563eb)" text-anchor="middle">+</text>
+  <text x="327.0" y="101.0" style="fill: var(--accent, #2563eb)" text-anchor="middle">−</text>
+  <text x="499.0" y="101.0" style="fill: var(--accent, #2563eb)" text-anchor="middle">+</text>
+  <text x="327.0" y="121.0" style="fill: var(--accent, #2563eb)" text-anchor="middle">−</text>
+  <text x="499.0" y="121.0" style="fill: var(--accent, #2563eb)" text-anchor="middle">+</text>
+  <text x="327.0" y="141.0" style="fill: var(--accent, #2563eb)" text-anchor="middle">−</text>
+  <text x="499.0" y="141.0" style="fill: var(--accent, #2563eb)" text-anchor="middle">+</text>
+  <text x="327.0" y="161.0" style="fill: var(--accent, #2563eb)" text-anchor="middle">−</text>
+  <text x="499.0" y="161.0" style="fill: var(--accent, #2563eb)" text-anchor="middle">+</text>
+  <line x1="468.0" y1="106.0" x2="364.4" y2="106.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.4" stroke-dasharray="5 3" />
+  <path d="M 358.0 106.0 L 365.3 102.7 L 365.3 109.3 Z" style="fill: var(--muted, #6b7280)" />
+  <text x="145.0" y="224.0" fill="currentColor" text-anchor="middle">分子的电偶极矩</text>
+  <text x="413.0" y="224.0" fill="currentColor" text-anchor="middle">等效的束缚电荷</text>
+</svg>

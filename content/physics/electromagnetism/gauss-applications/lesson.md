@@ -98,7 +98,7 @@ sliders:
 
 **为什么想到这么做**：每一块平面的电场都已经知道，大小$\frac{\sigma}{2\varepsilon_0}$、和距离无关，方向由它在平面的哪一侧决定；把两块的电场叠加起来就行。
 
-**推导**：$+\sigma$的电场背离它，$-\sigma$的电场指向它。在两板之间，两个电场都从正板指向负板，大小相加，$E=\frac{\sigma}{\varepsilon_0}$；在两板外面，两个电场大小相同、方向相反，抵消为零。所以电场全部集中在两板之间，而且是匀强的，平行板电容器（capacitor）就是这样（见[电容器](lesson:physics.electromagnetism.capacitors)）。
+**推导**：$+\sigma$的电场背离它，$-\sigma$的电场指向它。在两板之间，两个电场都从正板指向负板，大小相加，$E=\frac{\sigma}{\varepsilon_0}$；在两板外面，两个电场大小相同、方向相反，抵消为零。所以电场全部集中在两板之间，而且是匀强的，:term[平行板电容器]{id="physics.electromagnetism.capacitor"}（parallel-plate capacitor）就是这样（见[电容器](lesson:physics.electromagnetism.capacitors)）。
 
 ## 常见误区
 

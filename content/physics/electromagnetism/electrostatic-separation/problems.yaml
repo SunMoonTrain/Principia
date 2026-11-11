@@ -1,0 +1,167 @@
+- id: p1
+  tier: easy
+  statement: |
+    半径$5.0\,\mathrm{cm}$、不带电的导体球放进$1.0\times10^5\,\mathrm{V/m}$的匀强电场里。球上的感应电荷相当于一个多大的电偶极矩？保留三位有效数字。取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: number
+    value: 4*pi*8.8541878188e-12*0.050^3*1.0e5
+    unit: |
+      $\mathrm{C\,m}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      球外的电势里，$\frac{E_0R^3}{r^2}\cos\theta$这一项就是一个电偶极子的电势。
+    - |
+      和$\frac{1}{4\pi\varepsilon_0}\frac{p\cos\theta}{r^2}$比较，$p=4\pi\varepsilon_0R^3E_0$。
+    - |
+      $p=4\pi\times8.854\times10^{-12}\times(0.050)^3\times1.0\times10^5\,\mathrm{C\,m}\approx1.39\times10^{-9}\,\mathrm{C\,m}$。
+  solution: |
+    感应电荷在球外的电势是$\frac{E_0R^3}{r^2}\cos\theta$，和电偶极子的$\frac{1}{4\pi\varepsilon_0}\frac{p\cos\theta}{r^2}$比较，$p=4\pi\varepsilon_0R^3E_0$。代入数值，$p=4\pi\times8.854\times10^{-12}\times1.25\times10^{-4}\times1.0\times10^5\,\mathrm{C\,m}$，约为$1.39\times10^{-9}\,\mathrm{C\,m}$，方向沿电场。
+
+- id: p2
+  tier: easy
+  statement: |
+    关于轴对称的通解$\varphi=\sum_l\Bigl(A_lr^l+\frac{B_l}{r^{l+1}}\Bigr)P_l(\cos\theta)$，下面哪些说法对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        对每个$l$都有$P_l(1)=1$，即在$z$轴正方向上，每个$P_l(\cos\theta)$都等于$1$。
+      - |
+        在包含原点、没有电荷的区域里，所有的$B_l$都是零。
+      - |
+        在球外、没有电荷、无穷远处电势趋于零的区域里，可以有$A_2r^2P_2(\cos\theta)$这一项。
+      - |
+        一个球面上电势处处相同，球外没有电荷，无穷远处电势为零，那么球外的电势只有$l=0$那一项。
+      - |
+        $P_2(\cos\theta)=\cos^2\theta$。
+    value: [1, 2, 4]
+  hints:
+    - |
+      看每一项在原点、在无穷远处的行为；勒让德多项式有确定的写法。
+    - |
+      $r^l$在无穷远处发散（$l\ge1$），$\frac{1}{r^{l+1}}$在原点发散；球面上电势是常数，只含$P_0$。
+    - |
+      A、B、D 对。C 错：$r^2$在无穷远处发散。E 错：$P_2(\cos\theta)=\frac{3\cos^2\theta-1}{2}$。
+  solution: |
+    A 对：勒让德多项式满足$P_l(1)=1$。B 对：$\frac{B_l}{r^{l+1}}$在原点发散，区域包含原点时只能取$B_l=0$。C 错：$A_2r^2$在无穷远处发散，和电势趋于零矛盾。
+
+    D 对：球面上的电势是常数，只含$P_0$；球外只能有$\frac{B_l}{r^{l+1}}$，比较球面上的系数，$l\ge1$的都是零，剩下$\frac{B_0}{r}$。E 错：$P_2(\cos\theta)=\frac{3\cos^2\theta-1}{2}$。
+
+- id: p3
+  tier: medium
+  statement: |
+    半径$10\,\mathrm{cm}$、不带电的导体球放进$2.0\times10^4\,\mathrm{V/m}$的匀强电场里。求顺着电场方向那一半球面（$\theta<\frac\pi2$）上的感应电荷，保留三位有效数字。取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: number
+    value: 3*8.8541878188e-12*2.0e4*pi*0.10^2
+    unit: |
+      $\mathrm C$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      面电荷密度是$\sigma=3\varepsilon_0E_0\cos\theta$，对半个球面积分。
+    - |
+      面元是$2\pi R^2\sin\theta\,\dd\theta$，$\int_0^{\pi/2}\cos\theta\sin\theta\,\dd\theta=\frac12$。
+    - |
+      $Q=3\pi\varepsilon_0E_0R^2\approx1.67\times10^{-8}\,\mathrm C$。
+  solution: |
+    $Q=\int_0^{\pi/2}3\varepsilon_0E_0\cos\theta\cdot2\pi R^2\sin\theta\,\dd\theta=3\pi\varepsilon_0E_0R^2$。代入数值，$Q=3\pi\times8.854\times10^{-12}\times2.0\times10^4\times0.010\,\mathrm C$，约为$1.67\times10^{-8}\,\mathrm C$。另一半球面上是等量的负电荷。
+
+- id: p4
+  tier: medium
+  statement: |
+    半径为$R$的球面上的电势是$\varphi(R,\theta)=V_0\cos^2\theta$，$V_0=30\,\mathrm V$，球外没有电荷，无穷远处电势为零。求球外$r=2R$、$\theta=0$处的电势。
+  answer:
+    type: number
+    value: 7.5
+    unit: |
+      $\mathrm V$
+  hints:
+    - |
+      先把$\cos^2\theta$写成$P_0$和$P_2(\cos\theta)$的组合。
+    - |
+      $\cos^2\theta=\frac13+\frac23P_2(\cos\theta)$；球外每一项写成$\frac{B_l}{r^{l+1}}P_l$，在$r=R$处和边界值比较。
+    - |
+      $\varphi=V_0\Bigl[\frac13\cdot\frac Rr+\frac23\Bigl(\frac Rr\Bigr)^3P_2(\cos\theta)\Bigr]$，在$r=2R$、$\theta=0$处是$V_0\Bigl(\frac16+\frac{1}{12}\Bigr)=7.5\,\mathrm V$。
+  solution: |
+    $P_2(\cos\theta)=\frac{3\cos^2\theta-1}{2}$，所以$\cos^2\theta=\frac13+\frac23P_2(\cos\theta)$。球外的电势只能含$\frac{B_l}{r^{l+1}}P_l$，在$r=R$处比较系数：$\varphi=V_0\Bigl[\frac13\cdot\frac Rr+\frac23\Bigl(\frac Rr\Bigr)^3P_2(\cos\theta)\Bigr]$。在$r=2R$、$\theta=0$处，$P_2=1$，$\varphi=30\times\Bigl(\frac16+\frac{1}{12}\Bigr)\,\mathrm V=7.5\,\mathrm V$。
+
+- id: p5
+  tier: hard
+  statement: |
+    两块接地的无穷大导体平面在$y=0$和$y=a$，在$x=0$处用一条和它们绝缘的导体片封住，导体片的电势保持为$V_0$，整个装置在$z$方向上无限长。求$x>0$、$0<y<a$里的电势（可以写成无穷级数）。
+  hints:
+    - |
+      电势不依赖$z$，满足$\pdv{^2\varphi}{x^2}+\pdv{^2\varphi}{y^2}=0$；设$\varphi=X(x)Y(y)$分离变量。边界条件：$y=0$、$y=a$上$\varphi=0$，$x\to\infty$时$\varphi\to0$，$x=0$上$\varphi=V_0$。
+    - |
+      $Y=\sin\frac{n\pi y}{a}$满足$y$方向的边界条件，对应的$X=e^{-n\pi x/a}$在远处衰减；$\varphi=\sum_nC_ne^{-n\pi x/a}\sin\frac{n\pi y}{a}$。
+    - |
+      $x=0$处要求$\sum_nC_n\sin\frac{n\pi y}{a}=V_0$，按傅里叶正弦级数（Fourier sine series），$C_n=\frac{4V_0}{n\pi}$（$n$为奇数），偶数项为零。
+  reference: |
+    电势不依赖$z$，拉普拉斯方程是$\pdv{^2\varphi}{x^2}+\pdv{^2\varphi}{y^2}=0$。设$\varphi=X(x)Y(y)$，代入得$\frac{X''}{X}=-\frac{Y''}{Y}=k^2$。$y=0$和$y=a$处$\varphi=0$，要求$Y=\sin\frac{n\pi y}{a}$，$k=\frac{n\pi}{a}$，$n=1,2,\dots$；$X$是$e^{\pm n\pi x/a}$，远处衰减只能取$e^{-n\pi x/a}$。
+
+    所以$\varphi=\sum_{n=1}^\infty C_ne^{-n\pi x/a}\sin\frac{n\pi y}{a}$。在$x=0$处它要等于$V_0$：把常数$V_0$在$(0,a)$上展开成正弦级数，$C_n=\frac2a\int_0^aV_0\sin\frac{n\pi y}{a}\dd y=\frac{2V_0}{n\pi}\bigl(1-\cos n\pi\bigr)$，$n$为奇数时是$\frac{4V_0}{n\pi}$，偶数时是零（见[矩形与圆盘上的拉普拉斯方程](lesson:math.pde.laplace-separation)）。
+
+    合起来，$\varphi=\frac{4V_0}{\pi}\sum_{n=1,3,5,\dots}\frac1ne^{-n\pi x/a}\sin\frac{n\pi y}{a}$。它满足方程和全部边界条件，按唯一性定理就是答案；离开端口远一些，第一项就占绝对优势，电势按$e^{-\pi x/a}$衰减。
+
+- id: p6
+  tier: hard
+  statement: |
+    半径为$R$的球面上分布着面电荷，面电荷密度是$\sigma=\sigma_0\cos\theta$，别处没有电荷。
+
+    （1）求球里和球外的电势。（2）证明球里的电场是匀强的，求它的大小和方向。（3）球外的电场像一个什么样的电荷分布产生的？
+  hints:
+    - |
+      球里$\varphi_{\text{内}}=A_1r\cos\theta$，球外$\varphi_{\text{外}}=\frac{B_1}{r^2}\cos\theta$；球面上电势连续，电场的径向分量跳$\frac{\sigma}{\varepsilon_0}$。
+    - |
+      $A_1R=\frac{B_1}{R^2}$，$\frac{2B_1}{R^3}+A_1=\frac{\sigma_0}{\varepsilon_0}$，解得$A_1=\frac{\sigma_0}{3\varepsilon_0}$，$B_1=\frac{\sigma_0R^3}{3\varepsilon_0}$。
+    - |
+      球里$\varphi=\frac{\sigma_0}{3\varepsilon_0}z$，$\vb E=-\frac{\sigma_0}{3\varepsilon_0}\uv z$；球外是电偶极矩为$\frac43\pi R^3\sigma_0\uv z$的电偶极子的电场。
+  reference: |
+    （1）没有别的电荷，球里、球外都满足拉普拉斯方程。球面上的电荷只含$\cos\theta$，试$\varphi_{\text{内}}=A_1r\cos\theta$、$\varphi_{\text{外}}=\frac{B_1}{r^2}\cos\theta$。球面上电势连续：$A_1R=\frac{B_1}{R^2}$；电场的径向分量从里到外跳$\frac{\sigma}{\varepsilon_0}$：$\frac{2B_1}{R^3}\cos\theta+A_1\cos\theta=\frac{\sigma_0}{\varepsilon_0}\cos\theta$。解得$A_1=\frac{\sigma_0}{3\varepsilon_0}$，$B_1=\frac{\sigma_0R^3}{3\varepsilon_0}$，满足一切条件，由唯一性定理就是答案。
+
+    （2）球里$\varphi=\frac{\sigma_0}{3\varepsilon_0}r\cos\theta=\frac{\sigma_0}{3\varepsilon_0}z$，$\vb E=-\nabla\varphi=-\frac{\sigma_0}{3\varepsilon_0}\uv z$，处处相同，从带正电的北半球指向带负电的南半球。
+
+    （3）球外$\varphi=\frac{\sigma_0R^3}{3\varepsilon_0}\frac{\cos\theta}{r^2}$，和$\frac{1}{4\pi\varepsilon_0}\frac{p\cos\theta}{r^2}$比较，$p=\frac43\pi R^3\sigma_0$：球外的电场和位于球心、电偶极矩为$\frac43\pi R^3\sigma_0\uv z$的理想电偶极子一模一样。以后会看到，一个均匀极化的球表面上正好有这样的电荷（见[电介质与极化](lesson:physics.electromagnetism.polarization)）。
+
+- id: p7
+  tier: thinking
+  statement: |
+    回头看匀强电场里的导体球。
+
+    （1）为什么解里只出现$l=1$的项？（2）为什么球的电势是零？（3）把球接地，感应电荷会不会变？如果球不接地、事先带了电荷，又会怎样？
+  hints:
+    - |
+      边界条件（远处和球面上）只含$\cos\theta$，而各个$P_l$的系数要一项一项相等。
+    - |
+      把$z$换成$-z$，外电场反向，整个问题的电势变成它的相反数；球面上的电势是一个常数，只能是零。
+    - |
+      球的电势本来就是零，接地以后没有电荷流动；带了电荷，要加上$l=0$的项（例 2）。
+  reference: |
+    （1）远处的电势$-E_0r\cos\theta$和球面上的条件（常数，按（2）就是零）都只含$P_0$、$P_1$。通解里$l\ge2$的项在两个边界上的系数都要是零，两个系数$A_l$、$B_l$只能都是零；$l=0$的项也一样（球不带电，$B_0=0$；远处的常数取零）。所以只剩$l=1$。
+
+    （2）取远处的电势为$-E_0z$，就是规定了过球心、垂直于电场的平面在远处的电势为零。把$z$换成$-z$，外电场反向，导体球不变，整个问题的电势变成原来的相反数；球的电势是一个常数$V$，于是$V=-V$，$V=0$。
+
+    （3）球的电势本来就是零，和地一样，接地以后不会有电荷流进流出，感应电荷不变。球事先带了电荷$Q$，就要在解上加上$\frac{1}{4\pi\varepsilon_0}\frac Qr$，球面上多出均匀分布的电荷（例 2）；球的电势变成$\frac{1}{4\pi\varepsilon_0}\frac QR$，感应的那部分不变。
+
+- id: p8
+  tier: thinking
+  statement: |
+    匀强电场可以看成两个离得很远的点电荷（point charge）产生的：$+Q$在$z=-D$、$-Q$在$z=+D$，$D\gg R$。
+
+    （1）在球心附近，它们产生的电场近似是多少？（2）用接地导体球的镜像电荷（image charge），求两个点电荷各自在球里的像；（3）$D\to\infty$、保持球心的电场不变时，这一对像变成什么？和分离变量的结果对得上吗？
+  hints:
+    - |
+      两个电荷在球心处的电场都沿$+z$，各为$\frac{1}{4\pi\varepsilon_0}\frac{Q}{D^2}$。
+    - |
+      $+Q$在$z=-D$的像是$-\frac RDQ$，在$z=-\frac{R^2}{D}$；$-Q$的像是$+\frac RDQ$，在$z=+\frac{R^2}{D}$。两个像的总电荷为零，所以接地与否都一样。
+    - |
+      两个像组成电偶极子，$p=\frac RDQ\cdot\frac{2R^2}{D}=4\pi\varepsilon_0R^3\cdot\frac{1}{4\pi\varepsilon_0}\frac{2Q}{D^2}=4\pi\varepsilon_0R^3E_0$，和分离变量的结果一样。
+  reference: |
+    （1）$+Q$在$z=-D$，它在球心的电场沿$+z$；$-Q$在$z=+D$，电场也沿$+z$。合起来$E_0=\frac{1}{4\pi\varepsilon_0}\frac{2Q}{D^2}$，在球的尺度上（$R\ll D$）近似是匀强的。
+
+    （2）按[唯一性定理与镜像法](lesson:physics.electromagnetism.images-uniqueness)例 2，$+Q$的像是$-\frac RDQ$，在$z=-\frac{R^2}{D}$；$-Q$的像是$+\frac RDQ$，在$z=+\frac{R^2}{D}$。两个像的总电荷为零，球不带电时也不用再加别的像。
+
+    （3）两个像等量异号，相距$\frac{2R^2}{D}$，组成电偶极子，$p=\frac RDQ\cdot\frac{2R^2}{D}=\frac{2QR^3}{D^2}=4\pi\varepsilon_0R^3E_0$，方向沿$+z$（负的像在下、正的像在上）。$D\to\infty$而$E_0$不变时，像的间距趋于零、电荷趋于零，乘积不变，正好是理想电偶极子，和分离变量求出的偶极矩一样。两种办法给出同一个答案，这也是唯一性定理的一个例子。

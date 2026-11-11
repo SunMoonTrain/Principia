@@ -1,0 +1,160 @@
+- id: p1
+  tier: easy
+  statement: |
+    一个真空平行板电容器的电容是$50\,\mathrm{pF}$。两板之间填满相对介电常量为$4.0$的电介质，电容变成多少？
+  answer:
+    type: number
+    value: 4.0*50
+    unit: |
+      $\mathrm{pF}$
+  hints:
+    - |
+      填满线性电介质，电容变成原来的$\varepsilon_{\mathrm r}$倍。
+    - |
+      $C=\varepsilon_{\mathrm r}C_0$。
+    - |
+      $C=4.0\times50\,\mathrm{pF}=200\,\mathrm{pF}$。
+  solution: |
+    同样的自由电荷，电介质里的电场变成原来的$\frac{1}{\varepsilon_{\mathrm r}}$，电势差也一样，所以$C=\varepsilon_{\mathrm r}C_0=4.0\times50\,\mathrm{pF}=200\,\mathrm{pF}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    电极化率为$1.5$的线性电介质里，电场是$2.0\times10^4\,\mathrm{V/m}$。求那里的极化强度，保留三位有效数字。取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: number
+    value: 8.8541878188e-12*1.5*2.0e4
+    unit: |
+      $\mathrm{C/m^2}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      线性电介质里$\vb P=\varepsilon_0\chi_{\mathrm e}\vb E$。
+    - |
+      $P=8.854\times10^{-12}\times1.5\times2.0\times10^4\,\mathrm{C/m^2}$。
+    - |
+      $P\approx2.66\times10^{-7}\,\mathrm{C/m^2}$。
+  solution: |
+    $P=\varepsilon_0\chi_{\mathrm e}E=8.854\times10^{-12}\times1.5\times2.0\times10^4\,\mathrm{C/m^2}\approx2.66\times10^{-7}\,\mathrm{C/m^2}$，方向和电场相同。
+
+- id: p3
+  tier: medium
+  statement: |
+    平行板电容器的极板面积$1.0\times10^{-2}\,\mathrm{m^2}$，间隔$1.0\,\mathrm{mm}$。把相对介电常量为$3.0$的电介质填进一半：电介质板的厚度等于间隔，只占极板面积的一半，另一半是真空。求电容，以$\mathrm{pF}$为单位，保留三位有效数字。取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: number
+    value: 8.8541878188e-12*1.0e-2/1.0e-3*(1+3.0)/2*1e12
+    unit: |
+      $\mathrm{pF}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      两部分的电势差相同，像两个电容器并联；忽略边缘和两部分交界处的电场弯曲。
+    - |
+      真空那一半是$\frac{\varepsilon_0A}{2d}$，电介质那一半是$\frac{\varepsilon_{\mathrm r}\varepsilon_0A}{2d}$。
+    - |
+      $C=\frac{\varepsilon_0A}{d}\cdot\frac{1+\varepsilon_{\mathrm r}}{2}\approx1.77\times10^{-10}\,\mathrm F=177\,\mathrm{pF}$。
+  solution: |
+    两部分的极板连在一起，电势差相同，整体像两个电容器并联。真空那一半$C_1=\frac{\varepsilon_0(A/2)}{d}$，电介质那一半$C_2=\frac{\varepsilon_{\mathrm r}\varepsilon_0(A/2)}{d}$，$C=C_1+C_2=\frac{\varepsilon_0A}{d}\cdot\frac{1+\varepsilon_{\mathrm r}}{2}=8.854\times10^{-11}\times2\,\mathrm F\approx177\,\mathrm{pF}$。两部分的电场都是$\frac{\Delta\varphi}{d}$，平行于交界面，切向分量连续，正好和界面条件一致。
+
+- id: p4
+  tier: medium
+  statement: |
+    球形电容器的内球半径$2.0\,\mathrm{cm}$，外球壳内半径$4.0\,\mathrm{cm}$。$2.0\,\mathrm{cm}<r<3.0\,\mathrm{cm}$之间填满相对介电常量为$2.0$的电介质，$3.0\,\mathrm{cm}<r<4.0\,\mathrm{cm}$之间填满相对介电常量为$4.0$的电介质。求电容，以$\mathrm{pF}$为单位，保留三位有效数字。取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: number
+    value: 4*pi*8.8541878188e-12/((1/0.020-1/0.030)/2.0+(1/0.030-1/0.040)/4.0)*1e12
+    unit: |
+      $\mathrm{pF}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      内球带$Q$，取同心球面作高斯面，$\vb D=\frac{Q}{4\pi r^2}\uv r$，和电介质无关；每一层里$E=\frac{D}{\varepsilon_{\mathrm r}\varepsilon_0}$。
+    - |
+      $\Delta\varphi=\frac{Q}{4\pi\varepsilon_0}\Bigl[\frac{1}{2.0}\Bigl(\frac{1}{0.020}-\frac{1}{0.030}\Bigr)+\frac{1}{4.0}\Bigl(\frac{1}{0.030}-\frac{1}{0.040}\Bigr)\Bigr]$（长度以米为单位）。
+    - |
+      方括号里是$8.333+2.083=10.42\,\mathrm{m^{-1}}$，$C=\frac{4\pi\varepsilon_0}{10.42\,\mathrm{m^{-1}}}\approx1.07\times10^{-11}\,\mathrm F=10.7\,\mathrm{pF}$。
+  solution: |
+    内球带$Q$，由有电介质时的高斯定律，$D\cdot4\pi r^2=Q$，$E=\frac{Q}{4\pi\varepsilon_{\mathrm r}\varepsilon_0r^2}$，$\varepsilon_{\mathrm r}$在两层里分别是$2.0$和$4.0$。分段积分，$\Delta\varphi=\frac{Q}{4\pi\varepsilon_0}\Bigl[\frac{1}{2.0}\Bigl(\frac{1}{0.020}-\frac{1}{0.030}\Bigr)+\frac{1}{4.0}\Bigl(\frac{1}{0.030}-\frac{1}{0.040}\Bigr)\Bigr]\approx\frac{Q}{4\pi\varepsilon_0}\times10.42\,\mathrm{m^{-1}}$。所以$C=\frac{4\pi\varepsilon_0}{10.42\,\mathrm{m^{-1}}}\approx1.07\times10^{-11}\,\mathrm F$，即$10.7\,\mathrm{pF}$，相当于两个球形电容器串联。
+
+- id: p5
+  tier: hard
+  statement: |
+    两种线性电介质的交界面是平面，介电常量分别是$\varepsilon_1$、$\varepsilon_2$，交界面上没有自由电荷。介质 1 里的电场和界面法线的夹角是$\theta_1$，穿过界面后，介质 2 里的电场和法线的夹角是$\theta_2$。
+
+    （1）证明$\frac{\tan\theta_1}{\tan\theta_2}=\frac{\varepsilon_1}{\varepsilon_2}$。（2）电场从$\varepsilon_{\mathrm r}=1$的空气斜射进$\varepsilon_{\mathrm r}=5$的电介质，电场线是更偏向法线还是更偏离法线？（3）求交界面上的束缚电荷面密度，用$E_1$、$\theta_1$表示。
+  hints:
+    - |
+      $E_1\sin\theta_1=E_2\sin\theta_2$（切向分量连续），$\varepsilon_1E_1\cos\theta_1=\varepsilon_2E_2\cos\theta_2$（$D$的法向分量连续）。
+    - |
+      两式相除得$\frac{\tan\theta_1}{\varepsilon_1}=\frac{\tan\theta_2}{\varepsilon_2}$；进入$\varepsilon$大的介质，$\tan\theta$变大，电场线更偏离法线。
+    - |
+      束缚电荷面密度是$\varepsilon_0$乘以两侧$E$的法向分量之差：$\sigma_{\mathrm b}=\varepsilon_0(E_{2n}-E_{1n})=\varepsilon_0E_1\cos\theta_1\Bigl(\frac{\varepsilon_1}{\varepsilon_2}-1\Bigr)$（法线从介质 1 指向介质 2）。
+  reference: |
+    （1）由界面上的条件，$\vb E$的切向分量连续：$E_1\sin\theta_1=E_2\sin\theta_2$；没有自由电荷，$\vb D$的法向分量连续：$\varepsilon_1E_1\cos\theta_1=\varepsilon_2E_2\cos\theta_2$。前式除以后式，$\frac{\tan\theta_1}{\varepsilon_1}=\frac{\tan\theta_2}{\varepsilon_2}$，即$\frac{\tan\theta_1}{\tan\theta_2}=\frac{\varepsilon_1}{\varepsilon_2}$。
+
+    （2）$\tan\theta_2=\frac{\varepsilon_2}{\varepsilon_1}\tan\theta_1=5\tan\theta_1$，$\theta_2>\theta_1$：电场线进入电介质后更偏离法线，向界面倒过去。电场的法向分量变成$\frac15$，切向分量不变。
+
+    （3）取法线从介质 1 指向介质 2。界面上只有束缚电荷，在跨过界面的扁圆柱面上对$\varepsilon_0\vb E$用高斯定律，$\sigma_{\mathrm b}=\varepsilon_0(E_{2n}-E_{1n})$。$E_{2n}=\frac{\varepsilon_1}{\varepsilon_2}E_1\cos\theta_1$，所以$\sigma_{\mathrm b}=\varepsilon_0E_1\cos\theta_1\Bigl(\frac{\varepsilon_1}{\varepsilon_2}-1\Bigr)$。电场从$\varepsilon$小的一边进入$\varepsilon$大的一边时它是负的，正是这一层负电荷让电场的法向分量变小。
+
+- id: p6
+  tier: hard
+  statement: |
+    平行板电容器的极板是边长$L$、宽$w$的矩形，间隔为$d$，带电$Q$后和电源断开。把一块厚$d$、宽$w$、相对介电常量为$\varepsilon_{\mathrm r}$的电介质板沿长边方向插进去一段$x$（$0<x<L$）。
+
+    （1）求电容随$x$的变化。（2）电介质板受的力朝哪个方向，多大？（3）这个力是从哪里来的？两板之间的电场是匀强的，垂直于板面，为什么还会有沿板面方向的力？
+  hints:
+    - |
+      插进去的部分和没插的部分并联：$C(x)=\frac{\varepsilon_0w}{d}\bigl[\varepsilon_{\mathrm r}x+(L-x)\bigr]$。
+    - |
+      断开电源，$Q$不变，$U=\frac{Q^2}{2C}$；电介质板受的力$F=-\dv{U}{x}=\frac{Q^2}{2C^2}\dv{C}{x}$。
+    - |
+      $F=\frac{Q^2}{2C^2}\cdot\frac{\varepsilon_0w(\varepsilon_{\mathrm r}-1)}{d}>0$，把电介质板往里拉。力来自电介质板边缘附近的边缘电场（fringing field）：那里的电场不垂直于板面，作用在束缚电荷上，有沿板面的分量。
+  reference: |
+    （1）忽略边缘的电场，插进去的那段和没插的那段电势差相同，像并联：$C(x)=\frac{\varepsilon_{\mathrm r}\varepsilon_0wx}{d}+\frac{\varepsilon_0w(L-x)}{d}=\frac{\varepsilon_0w}{d}\bigl[(\varepsilon_{\mathrm r}-1)x+L\bigr]$，随$x$线性增大。
+
+    （2）断开电源，$Q$不变，能量$U=\frac{Q^2}{2C(x)}$随$x$增大而减小。设想电介质板慢慢移动$\dd x$，电场力做的功等于能量的减少，$F\,\dd x=-\dd U$，所以$F=\frac{Q^2}{2C^2}\dv{C}{x}=\frac{Q^2}{2C^2}\cdot\frac{\varepsilon_0w(\varepsilon_{\mathrm r}-1)}{d}$。它是正的，把电介质板往电容器里面拉；如果不拦着，板会被吸进去，在里面来回晃动，直到能量通过摩擦耗掉。
+
+    （3）在电容器中间，电场垂直于板面，作用在电介质表面束缚电荷上的力也垂直于板面，没有沿板面的分量。沿板面的力来自电介质板伸进电容器那一端附近：那里有边缘电场（见[电容器](lesson:physics.electromagnetism.capacitors)的几何图像），电场线弯着从板外进来，对已极化的电介质的作用有沿板面向里的分量。用能量算，可以绕开这块难算的边缘电场，这正是能量方法的好处。
+
+- id: p7
+  tier: thinking
+  statement: |
+    有电介质时，$\divg\vb D=\rho_{\mathrm f}$。
+
+    （1）没有自由电荷的地方，$\vb D$一定为零吗？
+
+    （2）一个均匀极化的电介质球（极化强度$\vb P$，没有自由电荷，也没有外电场），球里的电场是$-\frac{\vb P}{3\varepsilon_0}$（见[电介质与极化](lesson:physics.electromagnetism.polarization)第 6 题）。球里的$\vb D$是多少？球外呢？（3）这说明$\vb D$由什么决定？
+  hints:
+    - |
+      $\vb D$的散度为零，旋度却不一定为零：$\curl\vb D=\curl\vb P$。
+    - |
+      球里$\vb D=\varepsilon_0\vb E+\vb P=\frac23\vb P$；球外$\vb P=\vb 0$，$\vb D=\varepsilon_0\vb E$，是一个电偶极子（electric dipole）的电场乘以$\varepsilon_0$。
+    - |
+      $\vb D$由它的散度和旋度一起决定；球面上$\vb P$突然变成零，$\curl\vb P$在那里不为零，就是$\vb D$的「源」。
+  reference: |
+    （1）不一定。散度为零只说明$\vb D$的「线」不在那里出发或终止，可它们可以绕着走，也可以由别处的「源」产生。
+
+    （2）球里$\vb D=\varepsilon_0\Bigl(-\frac{\vb P}{3\varepsilon_0}\Bigr)+\vb P=\frac23\vb P$，不为零。球外没有电介质，$\vb D=\varepsilon_0\vb E$，就是电偶极矩为$\frac43\pi R^3\vb P$的电偶极子的电场乘以$\varepsilon_0$，也不为零。可整个空间里一个自由电荷都没有。
+
+    （3）$\vb D$不是只由自由电荷决定的：$\curl\vb D=\varepsilon_0\curl\vb E+\curl\vb P=\curl\vb P$。在球面上，$\vb P$的切向分量从球里的值突然跳到零，$\curl\vb P$在那里不为零。只有在对称性足够好、能断定$\curl\vb D=\vb 0$或者$\vb D$的方向时（平面、球、圆柱，而且电介质的分布也有同样的对称性），才能只用自由电荷由高斯定律求出$\vb D$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    室温下水的相对介电常量约为$80$。
+
+    （1）两个离子在水里相距$r$（比水分子大得多）时，它们之间的静电力是在真空里的几分之一？（2）这对食盐溶解在水里有什么帮助？（3）两个离子靠得只有一两个水分子那么近时，还能这样算吗？
+  hints:
+    - |
+      离子周围的水分子被极化，紧贴离子的一层束缚电荷把它的电荷抵消掉大部分（例 1），电场变成真空里的$\frac{1}{\varepsilon_{\mathrm r}}$。
+    - |
+      吸引力和把两个离子分开所要的能量都变成约$\frac{1}{80}$，分子的热运动就容易把它们拆开。
+    - |
+      $\varepsilon_{\mathrm r}$是许多分子平均出来的宏观量；离子之间只有一两个水分子时，不能把水看成均匀的电介质。
+  reference: |
+    （1）每个离子周围的水分子被极化，紧贴离子出现一层异号的束缚电荷，把它的电场削弱成真空里的$\frac{1}{\varepsilon_{\mathrm r}}$（例 1）。所以两个离子之间的静电力是$\frac{1}{4\pi\varepsilon_{\mathrm r}\varepsilon_0}\frac{q_1q_2}{r^2}$，约为真空里的$\frac{1}{80}$。
+
+    （2）晶体里钠离子和氯离子靠静电力结合在一起。在水里，把一对离子拉开所要的能量也变成约$\frac{1}{80}$，水分子的热运动就容易把它们一个个拆开，离子周围再被水分子包住，食盐就溶解了。所以水是溶解离子的好溶剂，$\varepsilon_{\mathrm r}$小的油就不行。
+
+    （3）不能这样算。$\varepsilon_{\mathrm r}$是在比分子大得多的体积上平均出来的；两个离子之间只隔着一两个水分子时，具体有几个水分子、它们怎样排列都有关系，宏观的「电介质」描述就不准了。

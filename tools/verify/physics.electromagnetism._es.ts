@@ -187,3 +187,81 @@ export function ringCharges(Q: number, R: number, n: number, from = 0, to = 2 * 
   }
   return out;
 }
+
+// ---- 批次 10 加的：散度、拉普拉斯算子、小立方体的通量、勒让德多项式、三重积分 ----
+
+export type Field = (p: V3) => V3;
+
+/** 中心差分求散度。 */
+export function divergence(E: Field, p: V3, h = 1e-5): number {
+  let s = 0;
+  for (let i = 0; i < 3; i++) {
+    const a: V3 = [...p];
+    const b: V3 = [...p];
+    a[i] += h;
+    b[i] -= h;
+    s += (E(a)[i] - E(b)[i]) / (2 * h);
+  }
+  return s;
+}
+
+/** 中心差分求拉普拉斯算子。 */
+export function laplacian(f: (p: V3) => number, p: V3, h = 1e-4): number {
+  let s = 0;
+  const f0 = f(p);
+  for (let i = 0; i < 3; i++) {
+    const a: V3 = [...p];
+    const b: V3 = [...p];
+    a[i] += h;
+    b[i] -= h;
+    s += (f(a) - 2 * f0 + f(b)) / (h * h);
+  }
+  return s;
+}
+
+/** 以 c 为中心、边长 h 的立方体穿出的通量：六个面上分别数值积分。 */
+export function cubeFlux(E: Field, c: V3, h: number, panels = 4, n = 8): number {
+  let s = 0;
+  for (let i = 0; i < 3; i++) {
+    const j = (i + 1) % 3;
+    const k = (i + 2) % 3;
+    for (const sign of [1, -1]) {
+      s +=
+        sign *
+        integrate2(
+          (u, v) => {
+            const p: V3 = [0, 0, 0];
+            p[i] = c[i] + (sign * h) / 2;
+            p[j] = c[j] + u;
+            p[k] = c[k] + v;
+            return E(p)[i];
+          },
+          -h / 2,
+          h / 2,
+          -h / 2,
+          h / 2,
+          panels,
+          n,
+        );
+    }
+  }
+  return s;
+}
+
+/** 勒让德多项式 P_l(x)，用递推 (l+1)P_{l+1} = (2l+1)xP_l − lP_{l−1}。 */
+export function legendre(l: number, x: number): number {
+  let p0 = 1;
+  if (l === 0) return p0;
+  let p1 = x;
+  for (let k = 1; k < l; k++) {
+    const p2 = ((2 * k + 1) * x * p1 - k * p0) / (k + 1);
+    p0 = p1;
+    p1 = p2;
+  }
+  return p1;
+}
+
+/** 长方体上的三重积分。 */
+export function integrate3(f: (x: number, y: number, z: number) => number, a: V3, b: V3, panels = 8, n = 8): number {
+  return integrate((x) => integrate2((y, z) => f(x, y, z), a[1], b[1], a[2], b[2], panels, n), a[0], b[0], panels, n);
+}

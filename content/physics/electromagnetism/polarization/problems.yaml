@@ -1,0 +1,157 @@
+- id: p1
+  tier: easy
+  statement: |
+    一块电介质均匀极化，极化强度沿$x$方向，大小$2.0\times10^{-6}\,\mathrm{C/m^2}$。它的一个平的表面，向外的法线和$x$轴的夹角是$60^\circ$。这个表面上的束缚电荷面密度是多少？
+  answer:
+    type: number
+    value: 2.0e-6*cos(pi/3)
+    unit: |
+      $\mathrm{C/m^2}$
+  hints:
+    - |
+      表面上的束缚电荷面密度是$\sigma_{\mathrm b}=\vb P\cdot\uv n$。
+    - |
+      $\vb P\cdot\uv n=P\cos60^\circ$。
+    - |
+      $\sigma_{\mathrm b}=2.0\times10^{-6}\times\frac12\,\mathrm{C/m^2}=1.0\times10^{-6}\,\mathrm{C/m^2}$。
+  solution: |
+    $\sigma_{\mathrm b}=\vb P\cdot\uv n=P\cos60^\circ=2.0\times10^{-6}\times0.5\,\mathrm{C/m^2}=1.0\times10^{-6}\,\mathrm{C/m^2}$，是正的：这个表面朝着极化的方向。
+
+- id: p2
+  tier: easy
+  statement: |
+    一块电介质里的极化强度是$\vb P=k\,(x^2,\,0,\,0)$，$k=3.0\times10^{-5}\,\mathrm{C/m^4}$，坐标以米为单位。求$x=0.10\,\mathrm m$处的束缚电荷体密度。
+  answer:
+    type: number
+    value: -2*3.0e-5*0.10
+    unit: |
+      $\mathrm{C/m^3}$
+  hints:
+    - |
+      束缚电荷体密度是$\rho_{\mathrm b}=-\divg\vb P$。
+    - |
+      $\divg\vb P=\pdv{(kx^2)}{x}=2kx$。
+    - |
+      $\rho_{\mathrm b}=-2kx=-2\times3.0\times10^{-5}\times0.10\,\mathrm{C/m^3}=-6.0\times10^{-6}\,\mathrm{C/m^3}$。
+  solution: |
+    $\divg\vb P=\pdv{(kx^2)}{x}=2kx$，所以$\rho_{\mathrm b}=-2kx=-2\times3.0\times10^{-5}\times0.10\,\mathrm{C/m^3}=-6.0\times10^{-6}\,\mathrm{C/m^3}$。极化强度沿$x$越来越大，挪出去的正电荷比挪进来的多，留下负的束缚电荷。
+
+- id: p3
+  tier: medium
+  statement: |
+    基态氢原子的极化率是$\alpha=4.5\times4\pi\varepsilon_0a_0^3$。把它放进$1.0\times10^6\,\mathrm{V/m}$的电场里，电子云的中心相对于质子挪开了多远？以玻尔半径$a_0$为单位，保留三位有效数字。取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{F/m}$，$a_0=5.29177210544\times10^{-11}\,\mathrm m$，$e=1.602176634\times10^{-19}\,\mathrm C$。
+  answer:
+    type: number
+    value: 4.5*4*pi*8.8541878188e-12*5.29177210544e-11^2*1.0e6/1.602176634e-19
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先求感应的电偶极矩$p=\alpha E$，再由$p=ed$求挪开的距离$d$。
+    - |
+      $\frac{d}{a_0}=\frac{\alpha E}{ea_0}=\frac{4.5\times4\pi\varepsilon_0a_0^2E}{e}$。
+    - |
+      $\frac{d}{a_0}\approx8.75\times10^{-6}$：哪怕$10^6\,\mathrm{V/m}$这样的强电场，也只把电子云拉开原子大小的十万分之一左右。
+  solution: |
+    $p=\alpha E$，$d=\frac pe$，所以$\frac{d}{a_0}=\frac{4.5\times4\pi\varepsilon_0a_0^2E}{e}=\frac{4.5\times1.113\times10^{-10}\times2.800\times10^{-21}\times1.0\times10^6}{1.602\times10^{-19}}\approx8.75\times10^{-6}$。原子内部的电场约为$\frac{1}{4\pi\varepsilon_0}\frac{e}{a_0^2}\approx5\times10^{11}\,\mathrm{V/m}$，外加的电场比它弱得多，所以电子云只被拉动一点点，$\vb p$和$\vb E$成正比。
+
+- id: p4
+  tier: medium
+  statement: |
+    平行板电容器两板相距$2.0\,\mathrm{mm}$，自由电荷面密度$\pm3.0\times10^{-6}\,\mathrm{C/m^2}$。板间平行地放着一块厚$1.0\,\mathrm{mm}$的电介质板，它的极化强度均匀、垂直于板面，大小$1.0\times10^{-6}\,\mathrm{C/m^2}$，其余是真空。求两板之间的电势差（potential difference），保留三位有效数字。取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: number
+    value: (3.0e-6*1.0e-3 + (3.0e-6 - 1.0e-6)*1.0e-3)/8.8541878188e-12
+    unit: |
+      $\mathrm V$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      按例 1，真空部分的电场是$\frac{\sigma_{\mathrm f}}{\varepsilon_0}$，电介质板里是$\frac{\sigma_{\mathrm f}-P}{\varepsilon_0}$；电势差是电场乘以各自的厚度再相加。
+    - |
+      真空部分厚$1.0\,\mathrm{mm}$，电介质板厚$1.0\,\mathrm{mm}$。
+    - |
+      $\Delta\varphi=\frac{3.0\times10^{-6}\times10^{-3}+2.0\times10^{-6}\times10^{-3}}{8.854\times10^{-12}}\,\mathrm V\approx565\,\mathrm V$。
+  solution: |
+    真空部分电场$\frac{\sigma_{\mathrm f}}{\varepsilon_0}$，电介质板里$\frac{\sigma_{\mathrm f}-P}{\varepsilon_0}$，都和板面垂直。电势差是两段相加：$\Delta\varphi=\frac{\sigma_{\mathrm f}(d-t)+(\sigma_{\mathrm f}-P)t}{\varepsilon_0}=\frac{3.0\times10^{-9}+2.0\times10^{-9}}{8.854\times10^{-12}}\,\mathrm V\approx565\,\mathrm V$。没有电介质时是$\frac{\sigma_{\mathrm f}d}{\varepsilon_0}\approx678\,\mathrm V$，同样的电荷，电势差变小了。
+
+- id: p5
+  tier: hard
+  statement: |
+    极化强度为$\vb P(\vb r')$的一块电介质，占据区域$V$，表面是$S$。每一小块$\dd V'$是一个电偶极矩为$\vb P\,\dd V'$的电偶极子（electric dipole）。
+
+    （1）写出它在$\vb r$处（$V$外面）产生的电势（electric potential）的积分式。（2）利用$\nabla'\frac{1}{|\vb r-\vb r'|}=\frac{\vb r-\vb r'}{|\vb r-\vb r'|^3}$和散度定理，证明这个电势等于体密度$-\divg\vb P$和面密度$\vb P\cdot\uv n$的电荷产生的电势。（3）这说明了什么？
+  hints:
+    - |
+      电偶极子$\vb p$在$\vb r$处的电势是$\frac{1}{4\pi\varepsilon_0}\frac{\vb p\cdot(\vb r-\vb r')}{|\vb r-\vb r'|^3}$，把$\vb p$换成$\vb P\,\dd V'$再积分。
+    - |
+      $\vb P\cdot\nabla'\frac{1}{|\vb r-\vb r'|}=\nabla'\cdot\frac{\vb P}{|\vb r-\vb r'|}-\frac{\nabla'\cdot\vb P}{|\vb r-\vb r'|}$，第一项用散度定理化成$S$上的面积分。
+    - |
+      $\varphi=\frac{1}{4\pi\varepsilon_0}\Bigl[\oint_S\frac{\vb P\cdot\dd\vb a'}{|\vb r-\vb r'|}+\int_V\frac{-\nabla'\cdot\vb P}{|\vb r-\vb r'|}\dd V'\Bigr]$，正是$\sigma_{\mathrm b}$、$\rho_{\mathrm b}$的电势：极化的电介质的电场就是束缚电荷的电场。
+  reference: |
+    （1）每一小块是电偶极子，$\varphi(\vb r)=\frac{1}{4\pi\varepsilon_0}\int_V\frac{\vb P(\vb r')\cdot(\vb r-\vb r')}{|\vb r-\vb r'|^3}\dd V'$。
+
+    （2）由给出的梯度，被积函数是$\vb P\cdot\nabla'\frac{1}{|\vb r-\vb r'|}$。乘积的求导法则给出$\vb P\cdot\nabla'\frac{1}{|\vb r-\vb r'|}=\nabla'\cdot\frac{\vb P}{|\vb r-\vb r'|}-\frac{\nabla'\cdot\vb P}{|\vb r-\vb r'|}$。第一项对$V$积分，由散度定理变成$\oint_S\frac{\vb P\cdot\dd\vb a'}{|\vb r-\vb r'|}$，$\dd\vb a'=\uv n\,\dd a'$。所以$\varphi=\frac{1}{4\pi\varepsilon_0}\Bigl[\oint_S\frac{\vb P\cdot\uv n}{|\vb r-\vb r'|}\dd a'+\int_V\frac{-\nabla'\cdot\vb P}{|\vb r-\vb r'|}\dd V'\Bigr]$。
+
+    （3）方括号里正是面密度$\sigma_{\mathrm b}=\vb P\cdot\uv n$、体密度$\rho_{\mathrm b}=-\divg\vb P$的电荷按库仑定律产生的电势。所以在电介质外面，极化的电介质和这些束缚电荷产生完全一样的电场，物理上的推导（正电荷挪开一小段）和这里的数学推导给出同样的结果。在电介质里面，宏观的电场是对分子尺度平均以后的电场，同样等于束缚电荷产生的电场，这是讲电介质时的基本假定。
+
+- id: p6
+  tier: hard
+  statement: |
+    半径为$R$的电介质球均匀极化，极化强度$\vb P=P\uv z$。
+
+    （1）把它看成两个半径为$R$的均匀带电球，体电荷密度（volume charge density）为$\pm\rho$，球心沿$z$方向错开一小段$\vb\delta$，$\rho\vb\delta=\vb P$。求球里的电场。（2）求球外的电场。（3）球面上的束缚电荷面密度是多少？
+  hints:
+    - |
+      均匀带电球体里离球心$\vb r$处的电场是$\frac{\rho\vb r}{3\varepsilon_0}$；两个球的电场叠加。
+    - |
+      球里一点到正球心、负球心的矢量是$\vb r-\frac{\vb\delta}{2}$、$\vb r+\frac{\vb\delta}{2}$，合起来$\vb E=-\frac{\rho\vb\delta}{3\varepsilon_0}=-\frac{\vb P}{3\varepsilon_0}$。
+    - |
+      球外两个球都像点电荷（point charge），合起来是电偶极矩为$\frac43\pi R^3\rho\vb\delta=\frac43\pi R^3\vb P$的电偶极子；表面上$\sigma_{\mathrm b}=P\cos\theta$。
+  reference: |
+    （1）正电荷球的球心在$\frac{\vb\delta}{2}$，负电荷球的在$-\frac{\vb\delta}{2}$。球里一点同时在两个球里面，按[用高斯定律求对称电场](lesson:physics.electromagnetism.gauss-applications)例 1，$\vb E=\frac{\rho}{3\varepsilon_0}\Bigl(\vb r-\frac{\vb\delta}{2}\Bigr)-\frac{\rho}{3\varepsilon_0}\Bigl(\vb r+\frac{\vb\delta}{2}\Bigr)=-\frac{\rho\vb\delta}{3\varepsilon_0}=-\frac{\vb P}{3\varepsilon_0}$，处处相同，和$\vb P$反向。
+
+    （2）球外，每个均匀带电球的电场都和电荷集中在它的球心一样，两个等量异号的点电荷错开$\vb\delta$，就是电偶极矩为$\vb p=\frac43\pi R^3\rho\vb\delta=\frac43\pi R^3\vb P$的电偶极子。$\vb\delta\to0$时它是理想电偶极子，球外的电场就是位于球心的这个电偶极子的电场。
+
+    （3）两个球错开以后，表面上露出一层：沿$\uv n$方向，正电荷多出厚$\delta\cos\theta$的一层，面密度是$\rho\delta\cos\theta=P\cos\theta$，和$\sigma_{\mathrm b}=\vb P\cdot\uv n$一致。体内两个球重叠，$\rho_{\mathrm b}=0$。这和[分离变量法解静电问题](lesson:physics.electromagnetism.electrostatic-separation)第 6 题的球面电荷$\sigma_0\cos\theta$是同一种分布，球里的电场$-\frac{\sigma_0}{3\varepsilon_0}\uv z$也对得上。
+
+- id: p7
+  tier: thinking
+  statement: |
+    电介质的极化主要有两种：电场把原子里的电子云拉开（位移极化，electronic polarization），以及电场让本来就有电偶极矩的极性分子转向（取向极化，orientation polarization）。
+
+    （1）温度升高时，哪一种极化受的影响大？为什么？（2）电场的方向很快地来回变化时，哪一种先跟不上？（3）水的极化主要是哪一种？
+  hints:
+    - |
+      分子热运动会把转向的分子重新打乱；电子云被拉开和温度关系不大。
+    - |
+      转动一个分子要比挪动电子云慢得多。
+    - |
+      水分子是极性分子，电偶极矩约$6.2\times10^{-30}\,\mathrm{C\,m}$，取向极化很强。
+  reference: |
+    （1）取向极化受温度的影响大。电场让极性分子倾向于顺着电场，热运动却不断把它们的方向打乱，温度越高，平均下来顺着电场的程度越低。位移极化是电子云被拉开，原子内部的「弹簧」很硬，和温度几乎无关。
+
+    （2）取向极化先跟不上：要把整个分子转过来，分子还和周围的分子碰来碰去，比挪动轻得多的电子云慢得多。电场变化得足够快时，只剩电子云还能跟着变；更快时连电子云也跟不上（见[介质的色散](lesson:physics.electromagnetism.dispersion)）。
+
+    （3）水分子是极性分子，电偶极矩很大，静电场或变化慢的电场里，取向极化是主要的，所以水的极化特别强（下一节会看到它的相对介电常量（relative permittivity）约为$80$）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    束缚电荷和自由电荷都是电荷。
+
+    （1）束缚电荷是真实的电荷吗？它们的电场和自由电荷的电场有区别吗？
+
+    （2）既然都按库仑定律产生电场，为什么还要把它们分开？（3）一块中性的电介质，束缚电荷的总量是多少？为什么它照样能影响电场？
+  hints:
+    - |
+      它们是分子里的电子和原子核，只是没法离开自己的分子。
+    - |
+      自由电荷是我们放上去、能控制的；束缚电荷是电介质对电场的响应，事先不知道。
+    - |
+      总量是零，可它们分布在不同的地方（例如两个表面），电场照样不为零。
+  reference: |
+    （1）是真实的电荷：它们就是分子里的电子和原子核，只是离不开自己的分子，在宏观上表现为体内或表面上的一层电荷。它们的电场和自由电荷的电场没有任何区别，都按库仑定律算。
+
+    （2）分开是为了计算方便。自由电荷是我们放上去、能控制的，例如给电容器充多少电；束缚电荷却由电场决定，而电场又和束缚电荷有关，事先不知道。下一节会定义一个只由自由电荷决定散度的量，把束缚电荷「藏」起来（见[电位移与线性电介质](lesson:physics.electromagnetism.electric-displacement)）。
+
+    （3）总量是零。可束缚电荷分开在不同的地方，例如均匀极化的板，一面负、一面正，就像一个大电容器，电场照样不为零，而且在板里和原来的电场相反。电荷总量为零只说明远处的单极项为零，不说明电场为零。

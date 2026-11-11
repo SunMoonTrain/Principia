@@ -1,0 +1,159 @@
+- id: p1
+  tier: easy
+  statement: |
+    边长$3.0\,\mathrm{cm}$的正三角形的三个顶点上，分别放着$+2.0\,\mathrm{nC}$、$+2.0\,\mathrm{nC}$、$-2.0\,\mathrm{nC}$的点电荷。求这组电荷的静电能，保留三位有效数字。取$\frac{1}{4\pi\varepsilon_0}=8.988\times10^9\,\mathrm{N\,m^2/C^2}$。
+  answer:
+    type: number
+    value: -8.988e9*(2.0e-9)^2/0.030
+    unit: |
+      $\mathrm J$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      三对电荷各有一项相互作用能，加起来就是静电能。
+    - |
+      记$k=\frac{1}{4\pi\varepsilon_0}$，$q=2.0\,\mathrm{nC}$。两个正电荷那一对是$+\frac{kq^2}{a}$，一正一负的两对各是$-\frac{kq^2}{a}$。
+    - |
+      $U=-\frac{kq^2}{a}=-\frac{8.988\times10^9\times(2.0\times10^{-9})^2}{0.030}\,\mathrm J\approx-1.20\times10^{-6}\,\mathrm J$。
+  solution: |
+    三对电荷的距离都是$a$。记$k=\frac{1}{4\pi\varepsilon_0}$，两个正电荷那一对贡献$\frac{kq^2}{a}$，一正一负的两对各贡献$-\frac{kq^2}{a}$，合起来$U=-\frac{kq^2}{a}=-\frac{8.988\times10^9\times(2.0\times10^{-9})^2}{0.030}\,\mathrm J\approx-1.20\times10^{-6}\,\mathrm J$。负号说明把它们从无穷远搬到一起，外力总共做了负功。
+
+- id: p2
+  tier: easy
+  statement: |
+    晴天时，地面附近的大气里约有$100\,\mathrm{V/m}$的电场。$1.0\,\mathrm{m^3}$的空气里，这个电场储存了多少能量？保留三位有效数字。取$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: number
+    value: 0.5*8.8541878188e-12*100^2*1.0
+    unit: |
+      $\mathrm J$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      电场的能量密度是$u=\frac{\varepsilon_0}{2}E^2$，电场均匀时乘以体积就行。
+    - |
+      $u=\frac12\times8.854\times10^{-12}\times100^2\,\mathrm{J/m^3}$。
+    - |
+      $U=uV\approx4.43\times10^{-8}\,\mathrm J$。
+  solution: |
+    $u=\frac{\varepsilon_0}{2}E^2=\frac12\times8.854\times10^{-12}\times(100)^2\,\mathrm{J/m^3}\approx4.43\times10^{-8}\,\mathrm{J/m^3}$，乘以$1.0\,\mathrm{m^3}$，能量约为$4.43\times10^{-8}\,\mathrm J$。
+
+- id: p3
+  tier: medium
+  statement: |
+    半径$10\,\mathrm{cm}$的球面上均匀分布着$5.0\,\mathrm{nC}$的电荷。保持电荷在球面上均匀分布，把球面慢慢收缩到半径$5.0\,\mathrm{cm}$，外力要做多少功？保留三位有效数字。取$\frac{1}{4\pi\varepsilon_0}=8.988\times10^9\,\mathrm{N\,m^2/C^2}$。
+  answer:
+    type: number
+    value: 8.988e9*(5.0e-9)^2/2*(1/0.050-1/0.10)
+    unit: |
+      $\mathrm J$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      慢慢收缩，外力做的功等于静电能的增加；均匀带电球面的电场只在球面外面，和点电荷的一样。
+    - |
+      半径为$R$时静电能是$\frac{1}{8\pi\varepsilon_0}\frac{Q^2}{R}$（和例 2 的导体球一样）。
+    - |
+      $W=\frac{Q^2}{8\pi\varepsilon_0}\Bigl(\frac{1}{0.050}-\frac{1}{0.10}\Bigr)\,\mathrm J\approx1.12\times10^{-6}\,\mathrm J$。
+  solution: |
+    均匀带电球面里面没有电场，外面的电场和点电荷的一样，所以静电能是$\int_R^\infty\frac{\varepsilon_0}{2}E^2\cdot4\pi r^2\,\dd r=\frac{1}{8\pi\varepsilon_0}\frac{Q^2}{R}$。收缩时外力做的功等于静电能的增加：$W=\frac{Q^2}{8\pi\varepsilon_0}\Bigl(\frac{1}{0.050}-\frac{1}{0.10}\Bigr)=\frac{8.988\times10^9\times(5.0\times10^{-9})^2}{2}\times10\,\mathrm J\approx1.12\times10^{-6}\,\mathrm J$。这正是$5\,\mathrm{cm}$到$10\,\mathrm{cm}$之间那一层球壳里原来没有、现在有了的电场的能量。
+
+- id: p4
+  tier: medium
+  statement: |
+    边长$10\,\mathrm{cm}$的正方形的四个顶点上，各放一个$+1.0\,\mathrm{nC}$的点电荷。求这组电荷的静电能，保留三位有效数字。取$\frac{1}{4\pi\varepsilon_0}=8.988\times10^9\,\mathrm{N\,m^2/C^2}$。
+  answer:
+    type: number
+    value: 8.988e9*(1.0e-9)^2/0.10*(4+sqrt(2))
+    unit: |
+      $\mathrm J$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      四个电荷两两配对，一共$6$对：$4$对在边上，$2$对在对角线上。
+    - |
+      边上每对贡献$\frac{kq^2}{a}$，对角线上每对贡献$\frac{kq^2}{\sqrt2a}$，$k=\frac{1}{4\pi\varepsilon_0}$。
+    - |
+      $U=\bigl(4+\sqrt2\bigr)\frac{kq^2}{a}\approx4.87\times10^{-7}\,\mathrm J$。
+  solution: |
+    记$k=\frac{1}{4\pi\varepsilon_0}$。$4$对在边上，距离$a$；$2$对在对角线上，距离$\sqrt2a$。$U=4\frac{kq^2}{a}+2\frac{kq^2}{\sqrt2a}=\bigl(4+\sqrt2\bigr)\frac{kq^2}{a}=5.414\times\frac{8.988\times10^9\times(1.0\times10^{-9})^2}{0.10}\,\mathrm J\approx4.87\times10^{-7}\,\mathrm J$。
+
+- id: p5
+  tier: hard
+  statement: |
+    两个点电荷$q_1$、$q_2$相距$d$，各自的电场是$\vb E_1$、$\vb E_2$。
+
+    （1）把总电场的能量$\frac{\varepsilon_0}{2}\int(\vb E_1+\vb E_2)^2\,\dd V$拆成三项，哪两项和$d$无关？（2）证明交叉项$\varepsilon_0\int\vb E_1\cdot\vb E_2\,\dd V=\frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{d}$，积分遍及全空间。（3）这说明了什么？
+  hints:
+    - |
+      $(\vb E_1+\vb E_2)^2=E_1^2+E_2^2+2\vb E_1\cdot\vb E_2$；前两项是两个点电荷各自的自能。
+    - |
+      把$\vb E_2$写成$-\nabla\varphi_2$，用$\divg(\varphi_2\vb E_1)=\varphi_2\divg\vb E_1+\vb E_1\cdot\nabla\varphi_2$，再用散度定理和$\divg\vb E_1=\frac{q_1}{\varepsilon_0}\delta^3(\vb r-\vb r_1)$。
+    - |
+      交叉项等于$q_1\varphi_2(\vb r_1)=\frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{d}$，正是两者的相互作用能；电荷挪动时只有它在变，所以两种写法给出同样的力。
+  reference: |
+    （1）$\frac{\varepsilon_0}{2}\int(\vb E_1+\vb E_2)^2\,\dd V=\frac{\varepsilon_0}{2}\int E_1^2\,\dd V+\frac{\varepsilon_0}{2}\int E_2^2\,\dd V+\varepsilon_0\int\vb E_1\cdot\vb E_2\,\dd V$。前两项是两个点电荷各自的自能，只看各自的电场，和两者相距多远无关（对点电荷来说它们还是无穷大）。
+
+    （2）$\vb E_2=-\nabla\varphi_2$，$\vb E_1\cdot\vb E_2=-\vb E_1\cdot\nabla\varphi_2=-\divg(\varphi_2\vb E_1)+\varphi_2\divg\vb E_1$。对一个很大的球积分，第一项由散度定理化成球面积分，$\varphi_2\sim\frac1R$、$E_1\sim\frac{1}{R^2}$，球面积分随$\frac1R$趋于零。第二项里$\divg\vb E_1=\frac{q_1}{\varepsilon_0}\delta^3(\vb r-\vb r_1)$，所以$\varepsilon_0\int\vb E_1\cdot\vb E_2\,\dd V=q_1\varphi_2(\vb r_1)=\frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{d}$。被积函数在$\vb r_2$附近像$\frac{1}{|\vb r-\vb r_2|^2}$，在三维空间里可积，这一步没有问题。
+
+    （3）电场能量的写法比$\sum_{i<j}$的写法多出两个点电荷的自能，交叉项正是相互作用能。电荷挪动时自能不变，能量的变化全在交叉项里，所以用电场能量算出的力和用库仑定律（Coulomb's law）算的一样。
+
+- id: p6
+  tier: hard
+  statement: |
+    半径为$R$的导体球带电$Q$。
+
+    （1）保持$Q$不变，设想球的半径增大$\dd R$，静电能变了多少？（2）由此求面电荷受到的向外的压强（单位面积上的力），用面电荷密度$\sigma$表示。（3）和[导体与静电平衡](lesson:physics.electromagnetism.conductors)第 6 题的结果比较，并说明为什么压强正好等于紧贴表面外侧的电场能量密度。
+  hints:
+    - |
+      导体球的静电能是$\frac{1}{8\pi\varepsilon_0}\frac{Q^2}{R}$（例 2）。
+    - |
+      半径增大时电场力对面电荷做正功，做的功等于静电能的减少：$p\cdot4\pi R^2\,\dd R=-\dd U$。
+    - |
+      $p=\frac{Q^2}{32\pi^2\varepsilon_0R^4}=\frac{\sigma^2}{2\varepsilon_0}$。球胀大$\dd R$，就少了厚$\dd R$的一层球壳里的电场，少掉的能量是$u\cdot4\pi R^2\,\dd R$，所以$p=u$。
+  reference: |
+    （1）$U=\frac{1}{8\pi\varepsilon_0}\frac{Q^2}{R}$，$\dd U=-\frac{1}{8\pi\varepsilon_0}\frac{Q^2}{R^2}\dd R$，静电能减少。
+
+    （2）半径增大$\dd R$时，电场力推着面电荷向外移动，做的功等于静电能的减少：$p\cdot4\pi R^2\,\dd R=\frac{1}{8\pi\varepsilon_0}\frac{Q^2}{R^2}\dd R$，所以$p=\frac{Q^2}{32\pi^2\varepsilon_0R^4}$。用$\sigma=\frac{Q}{4\pi R^2}$，$p=\frac{\sigma^2}{2\varepsilon_0}$。
+
+    （3）[导体与静电平衡](lesson:physics.electromagnetism.conductors)第 6 题用「作用在面电荷上的是一半的电场」得到同样的$\frac{\sigma^2}{2\varepsilon_0}$，两种办法一致。紧贴表面外侧的电场是$E=\frac{\sigma}{\varepsilon_0}$，能量密度$u=\frac{\varepsilon_0}{2}E^2=\frac{\sigma^2}{2\varepsilon_0}=p$。这不是巧合：球胀大$\dd R$，就少了厚$\dd R$的一层球壳里的电场，少掉的能量正好是$u\cdot4\pi R^2\,\dd R$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    电场的能量密度$\frac{\varepsilon_0}{2}E^2$处处不小于零，所以$\frac{\varepsilon_0}{2}\int E^2\,\dd V$永远不是负的。可是$+q$和$-q$两个点电荷的静电能$-\frac{1}{4\pi\varepsilon_0}\frac{q^2}{d}$是负的。
+
+    （1）这两件事矛盾吗？（2）把两个点电荷换成半径为$a$的小均匀带电球，$d>2a$，两种算法分别给出什么？（3）两个电荷靠近时，能量是放出来还是要输入？
+  hints:
+    - |
+      $\sum_{i<j}$的写法只含相互作用能，电场能量的写法还含每个电荷的自能。
+    - |
+      小球的自能是有限的，各为$\frac35\cdot\frac{1}{4\pi\varepsilon_0}\frac{q^2}{a}$（例 1）；电场的总能量等于两份自能加上相互作用能。
+    - |
+      $d>2a$时$\frac{1}{d}<\frac{1}{2a}$，相互作用能的大小小于自能之和，总数仍为正。靠近时相互作用能变得更负，能量放出来。
+  reference: |
+    （1）不矛盾。电场能量$\frac{\varepsilon_0}{2}\int(\vb E_1+\vb E_2)^2\,\dd V$包含两个电荷各自的自能，再加上交叉项；交叉项就是相互作用能$-\frac{1}{4\pi\varepsilon_0}\frac{q^2}{d}$，它可以是负的，但总数不会是负的。点电荷的自能是无穷大，总数就是无穷大。
+
+    （2）换成半径为$a$的小均匀带电球，每个的自能是$\frac35\cdot\frac{1}{4\pi\varepsilon_0}\frac{q^2}{a}$。两个球不重叠，相互作用能仍是$-\frac{1}{4\pi\varepsilon_0}\frac{q^2}{d}$，因为球外的电场和点电荷的一样。电场的总能量是$\frac{1}{4\pi\varepsilon_0}q^2\Bigl(\frac{6}{5a}-\frac1d\Bigr)$，$d>2a$时它是正的；$\sum_{i<j}$的写法只给出负的那一项。
+
+    （3）两个电荷靠近，相互作用能变得更负，总能量减少，能量放出来（例如变成动能），自能始终不变。所以讲电荷之间的力和能量交换时，只用相互作用能就够了。
+
+- id: p8
+  tier: thinking
+  statement: |
+    经典电子半径（classical electron radius）$r_e=\frac{e^2}{4\pi\varepsilon_0m_ec^2}$，CODATA 2022 的值是$2.8179403205\times10^{-15}\,\mathrm m$。
+
+    （1）把电子想成均匀带电的球面，假设它的静止能量$m_ec^2$全是静电能，球面的半径是多少？（2）点电荷的自能是无穷大，这对经典电磁学里把电子当成点电荷意味着什么？（3）由此可以说电子真的是一个这么大的球吗？
+  hints:
+    - |
+      均匀带电球面的静电能是$\frac{1}{8\pi\varepsilon_0}\frac{e^2}{R}$。
+    - |
+      令它等于$m_ec^2$，得$R=\frac{r_e}{2}$。半径趋于零，静电能趋于无穷大，比电子的静止能量大得多。
+    - |
+      不能。这只说明经典电磁学用在这么小的尺度上会出问题；比这大得多的尺度上，量子效应就已经要考虑了。
+  reference: |
+    （1）$\frac{1}{8\pi\varepsilon_0}\frac{e^2}{R}=m_ec^2$，$R=\frac{e^2}{8\pi\varepsilon_0m_ec^2}=\frac{r_e}{2}\approx1.41\times10^{-15}\,\mathrm m$。换成均匀带电的球体，系数从$\frac12$变成$\frac35$，$R=\frac35r_e$，量级一样。
+
+    （2）把电子当成点电荷，它的电场能量是无穷大；如果这份能量对应质量，电子的质量也该是无穷大，显然不对。所以经典电磁学在电子这样的点粒子身上并不自洽：在$r_e$这样的尺度上，「电场的能量算在哪里」这个问题已经没有合理的经典答案。
+
+    （3）不能。$r_e$只是用$e$、$m_e$、$c$凑出来的一个长度，标出经典理论在哪个尺度上必然出问题。实际上，在大得多的尺度上，例如电子的康普顿波长（Compton wavelength）$\frac{h}{m_ec}$，CODATA 2022 的值约为$2.43\times10^{-12}\,\mathrm m$，就已经要用量子力学了。
