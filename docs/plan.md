@@ -735,6 +735,24 @@ math.analysis.completeness:
   - 给以后写牛顿力学 `bernoulli` 的会话留的话：狭义相对论 `stress-energy-tensor` 的「理想流体」（perfect fluid）只要求没有粘性和热传导，可以压缩；牛顿力学那一节的「理想流体」通常还假定不可压缩。两边各自定义，写的时候说清差别（批次 8 审查时提的）。
   - 给以后写量子力学「薛定谔绘景与海森伯绘景」的会话留的话：`matrix-exponential` 讲了复矩阵的指数，没讲 $(e^A)^\dagger=e^{A^\dagger}$，用到时交代一句（批次 8 审查时提的）。
 - 批次 8 之后：两个领域都写完了，照批次 5 之后的做法，提交后先停；下一批写哪个领域、什么时候发，等你说（写代码的会话定的）。
+- 批次 8 之后（你定的）：数学那一对会话接着写线性代数，力学那一对接着写电磁学。
+- 批次 9：两个都是新领域，做法和批次 6 一样：开写前读这个领域的 `_domain.yaml` 和全部小节的文件头，记号和已写的领域保持一致。分批是写代码的会话按主题和前置顺序排的，以后几批的分法写到那一批时还可以调。
+  - 线性代数（`math.linear-algebra`，36 节，`sketch`）先写向量、矩阵与方程组 9 节，按前置顺序：`vectors`、`dot-product`、`linear-systems`、`cross-product`、`matrices`、`solution-sets`、`linear-maps`、`lines-planes`、`matrix-inverse`。审查报告 `docs/reviews/batch-9-linear-algebra.md`。往后三批各 9 节：子空间、行列式与向量空间（`span-subspaces` 到 `rank-nullity`）；线性映射、特征值与对角化（`eigenvalues` 到 `matrix-powers`）；内积空间与谱定理（`inner-product-spaces` 到 `svd`）。
+  - 电磁学与电动力学（`physics.electromagnetism`，48 节，`sketch`）先写静电场 8 节，按前置顺序：`coulomb-law`、`electric-field`、`continuous-charge`、`electric-potential`、`gauss-law`、`gauss-applications`、`electric-dipole`、`conductors`。审查报告 `docs/reviews/batch-9-electromagnetism.md`。往后五批：静电学的微分形式、边值问题与电介质；电流与静磁场；磁介质、电磁感应与麦克斯韦方程组；电磁场的守恒律与电磁波；势与辐射。
+  - 已写的小节有链接或用法指向这一批，写的时候要接得住（写代码的会话查的）：
+    - 数学分析 `fourier-series:30`：两个向量垂直当且仅当 $u_1v_1+u_2v_2=0$，链接 `dot-product`。
+    - 以这一批为直接前置的已写小节：
+      - 变分法 `direct-methods` ← `linear-systems`：里茨法化成线性方程组，`:55` 说在给定条件下有唯一解（第 6 题）；
+      - 变分法 `holonomic-constraints` ← `cross-product`：用到平行向量的叉积为零、叉积对每个因子是线性的；
+      - 常微分方程 `first-order-systems` ← `matrices`：矩阵乘向量，$A\vb x$ 的第 $i$ 个分量是第 $i$ 个方程右边的线性部分；
+      - 狭义相对论 `lorentz-transformation` ← `matrix-inverse`：逆矩阵、转置，$\Lambda(\beta)^{-1}=\Lambda(-\beta)$。
+    - 电磁学这一批没有指过来的链接。分析力学 `charged-particle-lagrangian`、狭义相对论 `field-tensor`、`covariant-maxwell` 已经用了电磁学的量：国际单位制，$\varepsilon_0$、$\mu_0$；标势按批次 8 定的写 $\varphi$。批次 8 那一段给电磁学留的话，大多是给以后几批的，开写前先读一遍。
+  - 以这一批为前置、还没写的别的小节（写代码的会话查的）：线性代数这一批是很多领域的底。多变量微积分（梯度、空间曲线、散度与旋度、参数曲面、雅可比矩阵）、牛顿力学（平面运动、功、角动量、转动参考系）、微分几何、光学的光线传输矩阵都以它为直接前置，向量的坐标写法、点积和叉积的记号要能让它们直接用。电磁学的 `electric-potential` ← 量子力学「光子与光电效应」。
+  - 新增的跨领域前置（还是待写）：
+    - 电磁学：多变量微积分的「三重积分」「曲面积分与通量」，牛顿力学的「保守力与势能的梯度」；另有列过的「牛顿运动定律」「泰勒公式」。
+    - 线性代数这一批没有别的领域的前置。
+  - 几何图像：画线性变换的组件 LinearMap2D 属于台阶 10，还没做；这一批用 SVG 和附录里已有的四个组件（写代码的会话提的）。
+- 批次 9 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 10（写代码的会话定的）。
 - 几个领域同时写时（批次 1 定的）：每个写内容会话只改自己领域的目录（`content/<学科>/<领域>/`），审内容会话只写自己的报告和验算脚本；`docs/plan.md` 不由它们直接改，要写回的内容写进汇报，由写代码的会话统一写进去、单独提交，免得几个会话同时改一个文件。每个领域各自作为一个提交。另一个领域写到一半、全量构建报错时，写内容会话可以把那个领域换成已提交的版本，在临时副本上构建，确认自己的领域 0 个错误；看页面同理，用临时副本编译的内容另起一个服务，进度写临时仓库，不改仓库的 `dist/`（批次 2 定的）。test-serve 和 `npm run serve` 提供的是 `dist/` 里构建好的网站，不读 `generated/`：改完内容要重新 `vite build`，页面上才看得到（批次 6 时写内容会话提的）。
 
 **分工**：一共三个 agent：写代码、写内容、审内容。开发台阶 8、9 由写内容 agent 和审内容 agent 执行。写内容和审内容必须是两个独立会话。
