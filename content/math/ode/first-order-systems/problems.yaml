@@ -1,0 +1,133 @@
+- id: p1
+  tier: easy
+  statement: |
+    令$x_1=y$、$x_2=y'$，把$y''-3y'+2y=0$化成:term[一阶线性方程组]{id="math.ode.first-order-linear-system"}（first-order linear system）$\vb x'=A\vb x$。按行依次填写$A$的四个元素。
+  answer:
+    type: tuple
+    value: [0, 1, -2, 3]
+  hints:
+    - |
+      $x_1'=y'=x_2$；$x_2'=y''$要用方程解出来。
+    - |
+      $y''=3y'-2y$，所以$x_2'=-2x_1+3x_2$。
+    - |
+      $x_1'=0\cdot x_1+1\cdot x_2$，$x_2'=-2x_1+3x_2$，所以$A=\begin{pmatrix}0&1\\-2&3\end{pmatrix}$，按行是$0,1,-2,3$。
+  solution: |
+    $A=\begin{pmatrix}0&1\\-2&3\end{pmatrix}$，填 `0, 1, -2, 3`。
+
+- id: p2
+  tier: easy
+  statement: |
+    自治方程组$x_1'=x_1+2x_2$、$x_2'=3x_1-x_2$的一条:term[轨线]{id="math.ode.trajectory"}（trajectory）经过点$(1,1)$。求它在这一点的切线斜率$\frac{\dd x_2}{\dd x_1}$。
+  answer:
+    type: number
+    value: 2/3
+  hints:
+    - |
+      轨线在一点的切线方向，就是那里的速度$(x_1',x_2')$。
+    - |
+      在$(1,1)$处，$x_1'=1+2=3$，$x_2'=3-1=2$。
+    - |
+      速度是$(3,2)$，切线斜率$\frac{\dd x_2}{\dd x_1}=\frac{x_2'}{x_1'}=\frac23$。
+  solution: |
+    速度是$(3,2)$，斜率$\frac23$，填 `2/3`。
+
+- id: p3
+  tier: medium
+  statement: |
+    解方程组$x_1'=x_1+x_2$、$x_2'=3x_1-x_2$，初值$x_1(0)=1$、$x_2(0)=0$，求$x_1(1)$。
+  answer:
+    type: number
+    value: (3*exp(2) + exp(-2))/4
+  hints:
+    - |
+      把第一个方程再求一次导，用第二个方程和$x_2=x_1'-x_1$消去$x_2$。
+    - |
+      $x_1''=x_1'+x_2'=x_1'+3x_1-x_2=x_1'+3x_1-(x_1'-x_1)=4x_1$，并且$x_1(0)=1$、$x_1'(0)=x_1(0)+x_2(0)=1$。
+    - |
+      $x_1''-4x_1=0$的:term[特征方程]{id="math.ode.characteristic-equation"}（characteristic equation）是$r^2-4=0$，通解$C_1e^{2t}+C_2e^{-2t}$。由$C_1+C_2=1$、$2C_1-2C_2=1$得$C_1=\frac34$、$C_2=\frac14$，$x_1(1)=\frac{3e^2+e^{-2}}{4}\approx5.575626$。
+  solution: |
+    $x_1=\frac34e^{2t}+\frac14e^{-2t}$，$x_1(1)=\frac{3e^2+e^{-2}}{4}$，填 `(3*exp(2) + exp(-2))/4`。
+
+- id: p4
+  tier: medium
+  statement: |
+    已知$\vb x_1=(e^{2t},e^{2t})$和$\vb x_2=(e^{-t},-2e^{-t})$都是某个常系数方程组$\vb x'=A\vb x$的解。求$A$，按行依次填写四个元素。
+  answer:
+    type: tuple
+    value: [1, 1, 2, 0]
+  hints:
+    - |
+      在$t=0$处代入：$A\vb x_1(0)=\vb x_1'(0)$，$A\vb x_2(0)=\vb x_2'(0)$。
+    - |
+      设$A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$，则$A(1,1)=(2,2)$、$A(1,-2)=(-1,2)$。
+    - |
+      第一行：$a+b=2$、$a-2b=-1$，得$a=1$、$b=1$。第二行：$c+d=2$、$c-2d=2$，得$c=2$、$d=0$。验算：$A\vb x_1=(2e^{2t},2e^{2t})=\vb x_1'$，$A\vb x_2=(-e^{-t},2e^{-t})=\vb x_2'$。
+  solution: |
+    $A=\begin{pmatrix}1&1\\2&0\end{pmatrix}$，填 `1, 1, 2, 0`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$A(t)$在区间$I$上连续，$t_0\in I$，并承认初值问题$\vb x'=A(t)\vb x$、$\vb x(t_0)=\vb x_0$对每个$\vb x_0$都在$I$上有唯一的解。证明：(1) 全部解组成向量空间；(2) 解$\vb x_1,\dots,\vb x_k$线性无关，当且仅当$\vb x_1(t_0),\dots,\vb x_k(t_0)$线性无关；(3) 解空间是$n$维的。
+  hints:
+    - |
+      考虑把解$\vb x$对应到它在$t_0$处的值$\vb x(t_0)\in\R^n$的映射。
+    - |
+      这个映射是线性的；由存在性，每个向量都是某个解在$t_0$处的值；由唯一性，在$t_0$处为零的解只有零解。
+    - |
+      (1) $(\alpha\vb x+\beta\vb y)'=\alpha A\vb x+\beta A\vb y=A(\alpha\vb x+\beta\vb y)$，零函数也是解，所以解组成向量空间（vector space）。
+
+      (2) 若$\sum c_i\vb x_i\equiv\vb 0$，在$t_0$处取值得$\sum c_i\vb x_i(t_0)=\vb 0$。反过来，若$\sum c_i\vb x_i(t_0)=\vb 0$，则$\sum c_i\vb x_i$是在$t_0$处为零的解，由唯一性它恒为零。两组向量满足的线性关系完全相同，所以一组线性无关当且仅当另一组线性无关。
+
+      (3) 设$\vb e_1,\dots,\vb e_n$是$\R^n$的标准基（standard basis），由存在性有解$\vb x_i$满足$\vb x_i(t_0)=\vb e_i$，由 (2) 它们线性无关。任一解$\vb x$和$\sum_ix_i(t_0)\vb x_i$在$t_0$处的值相同，由唯一性两者相等，所以$\vb x_1,\dots,\vb x_n$张成（span）解空间，是一组基（basis），维数（dimension）是$n$。
+  reference: |
+    映射$\vb x\mapsto\vb x(t_0)$是线性的，由存在性是满射，由唯一性只把零解映到零向量。于是解组成向量空间，线性关系和初值的线性关系一致；以$\vb x_i(t_0)=\vb e_i$的$n$个解是一组基，维数为$n$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设自治方程组$\vb x'=\vb f(\vb x)$的初值问题的解唯一，并且解都在整个数轴上有定义。(1) 证明：若$\vb x(t)$是解，则对任意常数$c$，$\vb y(t)=\vb x(t+c)$也是解。(2) 证明：两条:term[轨线]{id="math.ode.trajectory"}（trajectory）只要有一个公共点，就完全重合。
+  hints:
+    - |
+      (1) 直接对$\vb y$求导，用链式法则（chain rule）。
+    - |
+      (2) 设$\vb x(t_1)=\vb y(t_2)=\vb p$。把其中一个解在时间上平移，让两个解在同一时刻经过$\vb p$。
+    - |
+      (1) $\vb y'(t)=\vb x'(t+c)=\vb f(\vb x(t+c))=\vb f(\vb y(t))$，右边不显含$t$，所以$\vb y$也是解。
+
+      (2) 设$\vb x(t_1)=\vb y(t_2)=\vb p$，令$\vb z(t)=\vb y(t+t_2-t_1)$。由 (1)，$\vb z$是解，并且$\vb z(t_1)=\vb y(t_2)=\vb p=\vb x(t_1)$；由唯一性，$\vb z\equiv\vb x$。于是$\vb x$走过的点就是$\vb y$走过的点，只差一个时间平移，两条轨线重合。这一步用到了自治：右边显含$t$时，$\vb x(t+c)$一般不再是解（第 7 题）。
+  reference: |
+    (1) $\vb y'(t)=\vb f(\vb x(t+c))=\vb f(\vb y(t))$。(2) 若$\vb x(t_1)=\vb y(t_2)$，$\vb z(t)=\vb y(t+t_2-t_1)$是解且$\vb z(t_1)=\vb x(t_1)$，由唯一性$\vb z\equiv\vb x$，两条轨线是同一组点。
+
+- id: p7
+  tier: thinking
+  statement: |
+    $x''+x=\cos2t$化成$x'=v$、$v'=-x+\cos2t$，右边显含$t$。求$t=0$和$t=\frac\pi2$时经过点$(0,1)$的两个解在那里的方向，它们在$(x,v)$平面上的曲线会交叉吗？这和自治方程组的「轨线不相交」矛盾吗？怎样把它改写成自治方程组？
+  hints:
+    - |
+      把$(x,v)=(0,1)$和两个时刻分别代入速度$(v,-x+\cos2t)$。
+    - |
+      「轨线不相交」的证明用到了时间平移以后仍是解（第 6 题）。右边显含$t$时，这一步还成立吗？
+    - |
+      $t=0$时速度是$(1,1)$，$t=\frac\pi2$时是$(1,-1)$：两个解经过同一点、方向不同，曲线在$(0,1)$处交叉。这不矛盾：唯一性说的是同一时刻、同一点出发的解只有一个；自治时速度只由点决定，才能平移时间、推出轨线不相交。这里速度还依赖$t$，同一点在不同时刻可以有不同的方向。
+
+      把时间也当作状态：令$\tau=t$，写成$x'=v$、$v'=-x+\cos2\tau$、$\tau'=1$，这是三维的自治方程组，它的轨线在$(x,v,\tau)$空间里不相交，$(x,v)$平面上的交叉只是投影造成的。代价是多了一维，以后[混沌初步](lesson:math.ode.chaos)会用到这一点：受周期驱动的二维系统，实际上是三维的。
+  reference: |
+    $(0,1)$处$t=0$时方向$(1,1)$，$t=\frac\pi2$时$(1,-1)$，曲线交叉。不矛盾：不相交要靠自治时速度只由点决定。令$\tau=t$、$\tau'=1$，得到三维自治方程组，轨线不相交，平面上的交叉是投影。
+
+- id: p8
+  tier: thinking
+  statement: |
+    [数值解法](lesson:math.ode.numerical-methods)里的:term[欧拉法]{id="math.ode.euler-method"}（Euler's method）、:term[四阶龙格-库塔法]{id="math.ode.rk4"}（classical fourth-order Runge-Kutta method，RK4）只对一阶方程写了公式，为什么它们足以数值求解任意高阶的方程？对$y''=-y$，用步长（step size）$h$的欧拉法走一步，$y^2+(y')^2$怎样变化？
+  hints:
+    - |
+      先把高阶方程化成一阶方程组，再看公式里的数能不能换成向量。
+    - |
+      欧拉法：$\vb x_{k+1}=\vb x_k+h\vb f(t_k,\vb x_k)$。对$y''=-y$，$\vb x=(y,v)$，$\vb f=(v,-y)$。
+    - |
+      化成一阶方程组$\vb x'=\vb f(t,\vb x)$以后，欧拉法、龙格-库塔法的公式里把数换成向量就行，推导一字不改：每一步只用到「在当前状态算出变化率，再往前走」。所以数值解法只要会解一阶方程组。
+
+      对$y''=-y$，欧拉法一步是$y_{k+1}=y_k+hv_k$、$v_{k+1}=v_k-hy_k$，于是$y_{k+1}^2+v_{k+1}^2=(1+h^2)(y_k^2+v_k^2)$。精确解在圆上转，$y^2+v^2$不变；欧拉法每步把它放大$1+h^2$倍，算出的轨线一圈圈向外盘旋。$h$越小放大得越少，可误差会一步步累积，这也是要用更精确的方法的一个原因。
+  reference: |
+    化成一阶方程组后，公式里的数换成向量即可，推导不变。对$y''=-y$，欧拉法一步使$y^2+v^2$乘以$1+h^2$，精确解保持不变，数值解向外盘旋。

@@ -27,7 +27,7 @@ status: reviewed
 ::anchor{id="thm-existence-linear"}
 **存在唯一性**　设$p$、$q$、$g$在区间$I$上连续，$x_0\in I$。对任意给定的两个数$a$、$b$，方程$y''+p(x)y'+q(x)y=g(x)$在整个$I$上有唯一的解满足$y(x_0)=a$、$y'(x_0)=b$。
 
-**证明思路**：令$u=y$、$v=y'$，方程化成一阶方程组$u'=v$、$v'=g-pv-qu$，在$I$的每个有界闭子区间上，右边对$(u,v)$满足:term[利普希茨条件]{id="math.ode.lipschitz-condition"}（Lipschitz condition），常数可以取$1+|p|+|q|$的最大值。由[方程组与高阶方程](lesson:math.ode.existence-uniqueness#thm-systems)的定理，解在$x_0$附近存在且唯一。线性方程的解不会爆破（blow-up），能一直延伸到整个$I$：右边对$(u,v)$至多线性增长，解至多指数增长，不会在$I$内跑到无穷（道理和[一阶线性方程](lesson:math.ode.linear-first-order)第 7 题一样）；只要解有界，就能一段段接下去（见[解的存在唯一性](lesson:math.ode.existence-uniqueness)），这里不细证。
+**证明思路**：令$u=y$、$v=y'$，方程化成:term[一阶方程组]{id="math.ode.first-order-system"}（system of first-order equations）$u'=v$、$v'=g-pv-qu$，在$I$的每个有界闭子区间上，右边对$(u,v)$满足:term[利普希茨条件]{id="math.ode.lipschitz-condition"}（Lipschitz condition），常数可以取$1+|p|+|q|$的最大值。由[方程组与高阶方程](lesson:math.ode.existence-uniqueness#thm-systems)的定理，解在$x_0$附近存在且唯一。线性方程的解不会爆破（blow-up），能一直延伸到整个$I$：右边对$(u,v)$至多线性增长，解至多指数增长，不会在$I$内跑到无穷（道理和[一阶线性方程](lesson:math.ode.linear-first-order)第 7 题一样）；只要解有界，就能一段段接下去（见[解的存在唯一性](lesson:math.ode.existence-uniqueness)），这里不细证。
 
 ### 叠加原理与解空间
 

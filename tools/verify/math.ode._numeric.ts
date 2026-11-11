@@ -207,3 +207,65 @@ export function attractsBothSides(f: (y: number) => number, yStar: number, d = 1
     return Number.isFinite(y) && Math.abs(y - yStar) < 0.1 * d;
   });
 }
+
+/** 矩阵乘法。 */
+export function matMul(A: number[][], B: number[][]): number[][] {
+  return A.map((row) => B[0].map((_, j) => row.reduce((s, a, k) => s + a * B[k][j], 0)));
+}
+
+/** 矩阵指数按定义的级数 Σ A^k / k! 求和，加到新的一项每个元素都小于 1e-18 倍的和为止（最多 300 项）。 */
+export function expmSeries(A: number[][]): number[][] {
+  const n = A.length;
+  let term: number[][] = A.map((_, i) => A.map((_, j) => (i === j ? 1 : 0)));
+  let sum: number[][] = term.map((r) => [...r]);
+  for (let k = 1; k <= 300; k++) {
+    term = matMul(term, A).map((r) => r.map((x) => x / k));
+    sum = sum.map((r, i) => r.map((x, j) => x + term[i][j]));
+    const big = Math.max(1, ...sum.flat().map(Math.abs));
+    if (term.flat().every((x) => Math.abs(x) < 1e-18 * big) && k > n) break;
+  }
+  return sum;
+}
+
+/** 行列式：高斯消元（列主元）。 */
+export function det(A: number[][]): number {
+  const M = A.map((r) => [...r]);
+  const n = M.length;
+  let d = 1;
+  for (let c = 0; c < n; c++) {
+    let p = c;
+    for (let r = c + 1; r < n; r++) if (Math.abs(M[r][c]) > Math.abs(M[p][c])) p = r;
+    if (M[p][c] === 0) return 0;
+    if (p !== c) {
+      [M[c], M[p]] = [M[p], M[c]];
+      d = -d;
+    }
+    d *= M[c][c];
+    for (let r = c + 1; r < n; r++) {
+      const k = M[r][c] / M[c][c];
+      for (let j = c; j < n; j++) M[r][j] -= k * M[c][j];
+    }
+  }
+  return d;
+}
+
+/** 2×2 实矩阵的两个特征值：解 det(A − λI) = λ² − (a+d)λ + (ad − bc) = 0，复数时给出实部和虚部。 */
+export function eig2(A: number[][]): { re: number; im: number }[] {
+  const T = A[0][0] + A[1][1];
+  const D = A[0][0] * A[1][1] - A[0][1] * A[1][0];
+  const disc = T * T - 4 * D;
+  if (disc >= 0) return [{ re: (T - Math.sqrt(disc)) / 2, im: 0 }, { re: (T + Math.sqrt(disc)) / 2, im: 0 }];
+  return [{ re: T / 2, im: -Math.sqrt(-disc) / 2 }, { re: T / 2, im: Math.sqrt(-disc) / 2 }];
+}
+
+/** 向量场 F 在点 x 处的雅可比矩阵，中心差分。 */
+export function jacobianFD(F: (x: number[]) => number[], x: number[], h = 1e-5): number[][] {
+  const cols = x.map((_, j) => {
+    const plus = x.map((v, k) => (k === j ? v + h : v));
+    const minus = x.map((v, k) => (k === j ? v - h : v));
+    const a = F(plus);
+    const b = F(minus);
+    return a.map((v, i) => (v - b[i]) / (2 * h));
+  });
+  return x.map((_, i) => cols.map((c) => c[i]));
+}

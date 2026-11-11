@@ -1,0 +1,147 @@
+- id: p1
+  tier: easy
+  statement: |
+    对$x'=-x+y$、$y'=-x-y$，取$V=x^2+y^2$。求$\dot V=\nabla V\cdot\vb f$在点$(1,2)$处的值。
+  answer:
+    type: number
+    value: -10
+  hints:
+    - |
+      $\nabla V=(2x,2y)$，$\vb f=(-x+y,\ -x-y)$。
+    - |
+      $\dot V=2x(-x+y)+2y(-x-y)$，化简。
+    - |
+      $\dot V=-2x^2+2xy-2xy-2y^2=-2(x^2+y^2)$，在$(1,2)$处等于$-2\cdot5=-10$。
+  solution: |
+    $\dot V=-2(x^2+y^2)$，在$(1,2)$处为$-10$，填 `-10`。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些平衡点是:term[稳定]{id="math.ode.lyapunov-stable"}（stable）而不:term[渐近稳定]{id="math.ode.asymptotically-stable"}（asymptotically stable）的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $x''+4x=0$化成的方程组$x'=v$、$v'=-4x$的原点
+      - |
+        $x''+x'+4x=0$化成的方程组$x'=v$、$v'=-4x-v$的原点
+      - |
+        方程组$x'=y$、$y'=x$的原点
+      - |
+        方程组$x'=0$、$y'=-y$的原点
+    value: [1, 4]
+  hints:
+    - |
+      稳定：附近出发的解都留在附近；渐近稳定还要求趋于它。前三个用迹（trace）和行列式分类，第 4 个直接解出来。
+    - |
+      第 1、2 个的迹分别是$0$、$-1$，行列式都是$4$；第 3 个的行列式是$-1$。第 4 个的解是$x=x_0$、$y=y_0e^{-t}$。
+    - |
+      第 1 个：$T=0$、$D=4$，原点是中心，附近的解绕着它转，留在附近却不趋于它，稳定而不渐近稳定。第 2 个：$T=-1$、$D=4$、$T^2<4D$，原点是渐近稳定的焦点（focus）。第 3 个：$D=-1<0$，原点是鞍点（saddle point），附近有离开的解，不稳定。
+
+      第 4 个：从$(x_0,y_0)$出发的解离原点的距离$\sqrt{x_0^2+y_0^2e^{-2t}}$不超过出发时的距离，所以稳定；可它趋于$(x_0,0)$，$x_0\ne0$时不趋于原点，所以不渐近稳定。整条横轴都是平衡点，原点不是孤立的。所以是第 1、4 个。
+  solution: |
+    $x''+4x=0$的原点是中心；$x'=0$、$y'=-y$的原点附近的解留在附近，可$x_0\ne0$的解趋于横轴上别的平衡点。两者都稳定而不渐近稳定，选第 1、4 个。
+
+- id: p3
+  tier: medium
+  statement: |
+    对$x'=-x+2y$、$y'=-x-y$，试$V=x^2+cy^2$（$c>0$）。$c$取多少时，$\dot V$里的$xy$项正好消掉？
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      $\dot V=2x\cdot x'+2cy\cdot y'$。
+    - |
+      $\dot V=2x(-x+2y)+2cy(-x-y)=-2x^2+(4-2c)xy-2cy^2$。
+    - |
+      $xy$项的系数是$4-2c$，$c=2$时为零，这时$\dot V=-2x^2-4y^2$，除原点外小于零，$V=x^2+2y^2$是严格的:term[李雅普诺夫函数]{id="math.ode.lyapunov-function"}（Lyapunov function），原点渐近稳定。
+  solution: |
+    $4-2c=0$，$c=2$，填 `2`。
+
+- id: p4
+  tier: medium
+  statement: |
+    $x''+bx'+x^3=0$（$b>0$）化成$x'=v$、$v'=-bv-x^3$。取$E=\frac12v^2+\frac14x^4$，求$b=\frac12$时$\dot E$在点$(x,v)=(1,2)$处的值。
+  answer:
+    type: number
+    value: -2
+  hints:
+    - |
+      $\dot E=\frac{\partial E}{\partial x}x'+\frac{\partial E}{\partial v}v'=x^3\cdot v+v\cdot v'$。
+    - |
+      代入$v'=-bv-x^3$，$x^3v$两项抵消，$\dot E=-bv^2$。
+    - |
+      $\dot E=x^3v+v(-bv-x^3)=-bv^2$，在$v=2$、$b=\frac12$处等于$-2$。原点处的线性化矩阵是$\begin{pmatrix}0&1\\0&-b\end{pmatrix}$，有一个特征值（eigenvalue）是$0$，不是双曲的；可$E$是李雅普诺夫函数，一直保持$\dot E=0$即$v\equiv0$的解要$v'=-x^3=0$，只有原点，由拉萨尔不变原理，原点渐近稳定。
+  solution: |
+    $\dot E=-bv^2=-\frac12\cdot4=-2$，填 `-2`。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明李雅普诺夫稳定性定理：设$V$是平衡点$\vb x^*$的李雅普诺夫函数。(1) 证明$\vb x^*$稳定；(2) 若$V$是严格的，证明$\vb x^*$渐近稳定。
+  hints:
+    - |
+      (1) 圆周$|\vb x-\vb x^*|=\varepsilon$上，连续函数$V$取得到最小值$m>0$（和[闭区间上连续函数的性质](lesson:math.calculus.closed-interval-properties)同一个道理）。
+    - |
+      (1) 取$\delta$使$|\vb x-\vb x^*|<\delta$时$V<m$；沿解$V$不增，解到不了那个圆周。(2) $V(\vb x(t))$单调减小，有极限$c$；假设$c>0$，找出矛盾。
+    - |
+      (1) 取$\varepsilon$足够小，使$V>0$（$\vb x\ne\vb x^*$）和$\dot V\le0$在$|\vb x-\vb x^*|\le\varepsilon$上都成立。$V$在圆周$|\vb x-\vb x^*|=\varepsilon$上的最小值$m>0$。$V$连续、$V(\vb x^*)=0$，取$\delta<\varepsilon$使$|\vb x-\vb x^*|<\delta$时$V<m$。
+
+      从这样的点出发，$V(\vb x(t))\le V(\vb x(0))<m$；如果解某时刻到达圆周，那里$V\ge m$，矛盾。所以解一直在$\varepsilon$以内。
+
+      (2) $V(\vb x(t))$单调减小，有下界$0$，有极限$c\ge0$。若$c>0$，解一直待在集合$K=\{c\le V,\ |\vb x-\vb x^*|\le\varepsilon\}$里，$K$有界闭、不含$\vb x^*$，连续函数$\dot V$在$K$上的最大值$-k<0$，于是$V(\vb x(t))\le V(\vb x(0))-kt$，$t$大时为负，矛盾。所以$c=0$。若$\vb x(t)$不趋于$\vb x^*$，就有一列时刻$t_n\to+\infty$使$|\vb x(t_n)-\vb x^*|\ge\eta>0$，那里$V$不小于$V$在$\eta\le|\vb x-\vb x^*|\le\varepsilon$上的正的最小值，和$V\to0$矛盾。
+  reference: |
+    (1) 取$V$在半径$\varepsilon$的圆周上的最小值$m$，再取$\delta$使$\delta$邻域里$V<m$；$V$沿解不增，解到不了圆周。(2) $V(\vb x(t))\to c$；若$c>0$，解留在不含$\vb x^*$的有界闭集上，$\dot V\le-k<0$，$V$会变负，矛盾；$V\to0$推出$\vb x(t)\to\vb x^*$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$y^*$是一维:term[自治方程]{id="math.ode.autonomous-equation"}（autonomous equation）$y'=f(y)$的孤立的平衡点（附近没有别的平衡点），$f$满足唯一性的条件。证明：$y^*$稳定，当且仅当它渐近稳定。再说明$y'=0$为什么不是反例。
+  hints:
+    - |
+      「渐近稳定推出稳定」由定义直接得到；要证的是反过来。
+    - |
+      [自治方程与平衡点](lesson:math.ode.autonomous-equations)里讲过，一维自治方程的解是单调的；单调有界的解趋于一个平衡点。
+    - |
+      渐近稳定按定义包含稳定。反过来，设$y^*$稳定，取$\varepsilon>0$小，使$[y^*-\varepsilon,y^*+\varepsilon]$里除$y^*$外没有平衡点；由稳定，有$\delta$使从$|y(0)-y^*|<\delta$出发的解一直在$\varepsilon$以内。
+
+      一维自治方程的解是单调的，这个解单调而有界，有极限$L$，并且$L$是平衡点（否则$y'\to f(L)\ne0$，$y$会无界）。$|L-y^*|\le\varepsilon$，而这一段里只有$y^*$一个平衡点，所以$L=y^*$，$y^*$渐近稳定。
+
+      $y'=0$的每个点都是平衡点，任何一点都不孤立，定理的条件不满足；那里每个点都稳定，却都不渐近稳定。这正是自治方程那一节可以把「渐近稳定」简称为「稳定」的原因：那一节例子里的平衡点都是孤立的。
+  reference: |
+    渐近稳定蕴含稳定。反之，取$\varepsilon$使邻域里只有$y^*$一个平衡点；由稳定，附近出发的解留在邻域里，单调有界，趋于一个平衡点，只能是$y^*$。$y'=0$的平衡点不孤立，稳定而不渐近稳定。
+
+- id: p7
+  tier: thinking
+  statement: |
+    分析力学的[小振动与简正坐标](lesson:physics.analytical-mechanics.small-oscillations)里，势能$U$取严格极小值的平衡位置叫稳定平衡点。对一个自由度的$mx''=-U'(x)$，用能量说明它在本节的意义下稳定；为什么它不是渐近稳定的？现实中的物体为什么最后会停在平衡位置？
+  hints:
+    - |
+      取$V=\frac12mv^2+U(x)-U(x^*)$，算$\dot V$。
+    - |
+      $\dot V=mv\cdot v'+U'(x)\cdot v=v(-U'(x))+U'(x)v=0$：能量守恒。
+    - |
+      $V=\frac12mv^2+U(x)-U(x^*)$在$(x^*,0)$处为零，附近为正（$U$取严格极小值），$\dot V=0$，所以$V$是李雅普诺夫函数，平衡点稳定。可$V$沿解不变：从$V=c>0$的点出发的解永远待在$V=c$上，到不了$V=0$的平衡点，所以不渐近稳定，相图（phase portrait）里平衡点是中心。
+
+      现实中总有摩擦，$mx''=-U'(x)-bx'$，$\dot V=-bv^2\le0$；只有平衡点能一直保持$v\equiv0$，由拉萨尔不变原理，平衡点渐近稳定，物体最后停下来。所以「稳定平衡点」在没有阻尼的理想模型里是稳定而不渐近稳定的，加上阻尼才渐近稳定。
+  reference: |
+    能量$V=\frac12mv^2+U-U(x^*)$正定且$\dot V=0$，平衡点稳定；能量守恒使解到不了平衡点，不渐近稳定（是中心）。有摩擦时$\dot V=-bv^2$，由拉萨尔不变原理渐近稳定，所以物体最后停下。
+
+- id: p8
+  tier: thinking
+  statement: |
+    若$V$在整个平面上有定义，$V(\vb 0)=0$，别处$V>0$，并且除原点外$\dot V<0$，能不能推出平面上所有的解都趋于原点？考虑$V=\frac{x^2}{1+x^2}+y^2$的等值线：为什么常还要求$|\vb x|\to\infty$时$V\to\infty$？
+  hints:
+    - |
+      定理只说「附近出发的解」。从远处出发的解，$V$在减小，解就一定被关住吗？
+    - |
+      $V=\frac{x^2}{1+x^2}+y^2<1+y^2$。$V=c$的等值线在$c\ge1$时是什么形状？
+    - |
+      不能直接推出。$\frac{x^2}{1+x^2}<1$，所以$V=c$的等值线在$c<1$时是围着原点的闭曲线，在$c\ge1$时却向左右伸到无穷远，不再围成一个有界的区域。解可以一边让$V$减小，一边沿着这样的等值线之间跑向无穷远，不趋于原点。
+
+      加上$|\vb x|\to\infty$时$V\to\infty$，每条等值线$V=c$都是有界的闭曲线，任何解都被它出发时的那条等值线关在里面，再用上面定理的证明，就得到所有的解都趋于原点，这叫全局渐近稳定（globally asymptotically stable）。
+  reference: |
+    不能。$V=\frac{x^2}{1+x^2}+y^2$的等值线在$c\ge1$时伸到无穷远，解可以在$V$减小的同时跑远。要求$V\to\infty$（$|\vb x|\to\infty$），等值线都有界，解被关住，才得到全局渐近稳定。

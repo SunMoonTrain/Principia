@@ -1,0 +1,131 @@
+- id: p1
+  tier: easy
+  statement: |
+    :term[洛伦茨系统]{id="math.ode.lorenz-system"}（Lorenz system）改取$\sigma=16$、$\beta=4$。求雅可比矩阵的迹$\frac{\partial f_1}{\partial x}+\frac{\partial f_2}{\partial y}+\frac{\partial f_3}{\partial z}$。
+  answer:
+    type: number
+    value: -21
+  hints:
+    - |
+      $f_1=\sigma(y-x)$、$f_2=x(\rho-z)-y$、$f_3=xy-\beta z$，各对自己的变量求偏导。
+    - |
+      $\frac{\partial f_1}{\partial x}=-\sigma$，$\frac{\partial f_2}{\partial y}=-1$，$\frac{\partial f_3}{\partial z}=-\beta$。
+    - |
+      迹是$-\sigma-1-\beta=-16-1-4=-21$，和$\rho$无关，处处相同：体积按$e^{-21t}$缩小。
+  solution: |
+    迹是$-\sigma-1-\beta=-21$，填 `-21`。
+
+- id: p2
+  tier: easy
+  statement: |
+    洛伦茨系统取$\sigma=10$、$\beta=\frac83$。$\rho$取多少时，非零平衡点$C_\pm$的$z$坐标是$20$？
+  answer:
+    type: number
+    value: 21
+  hints:
+    - |
+      平衡点要$x'=y'=z'=0$。由$x'=0$得$y=x$。
+    - |
+      代入$y'=x(\rho-z)-y=x(\rho-1-z)$，$x\ne0$时要$z=\rho-1$。
+    - |
+      $y=x$，$y'=x(\rho-1-z)=0$，$x\ne0$时$z=\rho-1$；要$z=20$，就要$\rho=21$。这时$x^2=\beta z=\frac{160}{3}$，$C_\pm$确实存在。
+  solution: |
+    $z=\rho-1=20$，$\rho=21$，填 `21`。
+
+- id: p3
+  tier: medium
+  statement: |
+    洛伦茨系统取$\sigma=10$、$\beta=\frac83$，但$\rho=10$。求平衡点$C_+$的$x$坐标（取正的那个）。
+  answer:
+    type: number
+    value: sqrt(24)
+  hints:
+    - |
+      $x'=0$给出$y=x$，$z'=0$给出$z=\frac{xy}{\beta}=\frac{x^2}{\beta}$。
+    - |
+      $x\ne0$时$z=\rho-1=9$，于是$x^2=\beta z$。
+    - |
+      $z=\rho-1=9$，$x^2=\beta z=\frac83\cdot9=24$，$x=\sqrt{24}=2\sqrt6\approx4.898979$。
+  solution: |
+    $x^2=\beta(\rho-1)=24$，填 `sqrt(24)`。
+
+- id: p4
+  tier: medium
+  statement: |
+    一个混沌系统的:term[李雅普诺夫指数]{id="math.ode.lyapunov-exponent"}（Lyapunov exponent）是$0.5$，误差长到$1$就算预报失效。初值的误差从$10^{-4}$减小到$10^{-8}$，可预报的时间增加多少？
+  answer:
+    type: number
+    value: ln(10^4)/0.5
+  hints:
+    - |
+      误差按$\delta_0e^{\lambda t}$增长，到$1$所用的时间是$\frac1\lambda\ln\frac{1}{\delta_0}$。
+    - |
+      两种初值误差下的时间分别是$\frac{\ln10^4}{0.5}$和$\frac{\ln10^8}{0.5}$。
+    - |
+      增加的时间是$\frac{\ln10^8-\ln10^4}{0.5}=\frac{\ln10^4}{0.5}\approx18.42$。初值精度提高了一万倍，可预报的时间只多了约$18$个时间单位。
+  solution: |
+    $\frac{\ln10^8-\ln10^4}{0.5}=\frac{\ln10^4}{0.5}$，填 `ln(10^4)/0.5`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$0<\rho<1$。对洛伦茨系统取$V=\frac{x^2}{\sigma}+y^2+z^2$，证明$\dot V<0$（原点除外），从而原点渐近稳定，并且（因为$|\vb x|\to\infty$时$V\to\infty$）所有的解都趋于原点。可以直接用[李雅普诺夫函数与稳定性](lesson:math.ode.lyapunov-stability)的定理和它第 8 题的结论，第 8 题讲的是平面，三维时道理一样。
+  hints:
+    - |
+      直接算$\dot V=\frac{2x}{\sigma}x'+2yy'+2zz'$，$xyz$项会抵消。
+    - |
+      $\dot V=-2x^2+2(1+\rho)xy-2y^2-2\beta z^2$，对$x$、$y$配方。
+    - |
+      $\dot V=\frac{2x}{\sigma}\sigma(y-x)+2y\bigl(x(\rho-z)-y\bigr)+2z(xy-\beta z)=-2x^2+2(1+\rho)xy-2y^2-2\beta z^2$。配方：$\dot V=-2\Bigl[\bigl(x-\frac{1+\rho}{2}y\bigr)^2+\Bigl(1-\bigl(\frac{1+\rho}{2}\bigr)^2\Bigr)y^2\Bigr]-2\beta z^2$。
+
+      $0<\rho<1$时$\frac{1+\rho}{2}<1$，方括号里两项都非负，并且只有$x=y=0$时都为零；再加上$-2\beta z^2$，$\dot V$只在原点为零，别处小于零。$V$在原点为零、别处为正，沿解严格减小，并且$|\vb x|\to\infty$时$V\to\infty$，所以原点渐近稳定，所有的解都趋于原点：$\rho<1$时没有任何复杂的运动。
+  reference: |
+    $\dot V=-2x^2+2(1+\rho)xy-2y^2-2\beta z^2=-2\bigl[(x-\frac{1+\rho}2y)^2+(1-(\frac{1+\rho}2)^2)y^2\bigr]-2\beta z^2$。$\rho<1$时除原点外为负；$|\vb x|\to\infty$时$V\to\infty$，原点渐近稳定，所有的解都趋于它。
+
+- id: p6
+  tier: hard
+  statement: |
+    对洛伦茨系统取$V=\rho x^2+\sigma y^2+\sigma(z-2\rho)^2$。(1) 证明$\dot V=-2\sigma\bigl[\rho x^2+y^2+\beta(z-\rho)^2-\beta\rho^2\bigr]$；(2) 由此说明，所有的解最后都进入并留在某个有界的区域里。
+  hints:
+    - |
+      直接求导，$xyz$项、$xy$项都会抵消。
+    - |
+      (2) 在椭球$E:\ \rho x^2+y^2+\beta(z-\rho)^2=\beta\rho^2$外面，$\dot V<0$。
+    - |
+      (1) $\dot V=2\rho x\cdot\sigma(y-x)+2\sigma y\bigl(x(\rho-z)-y\bigr)+2\sigma(z-2\rho)(xy-\beta z)$。展开后$2\sigma\rho xy+2\sigma\rho xy-4\sigma\rho xy=0$，$-2\sigma xyz+2\sigma xyz=0$，剩下$-2\sigma\rho x^2-2\sigma y^2-2\sigma\beta z^2+4\sigma\beta\rho z=-2\sigma\bigl[\rho x^2+y^2+\beta(z-\rho)^2-\beta\rho^2\bigr]$。
+
+      (2) 椭球$E$外面方括号为正，$\dot V<0$。$E$是有界的，$V$在$E$上有最大值$c$。取$V$的一条等值面（level surface）$V=C$（$C>c$），它包住$E$；在它外面$V$沿解严格减小，并且在$V\ge C$的地方$\dot V$有负的上界，所以每个解都在有限时间内进入$V\le C$，之后再也出不去：$V\le C$就是一个有界的捕获区域（trapping region）。
+  reference: |
+    展开后交叉项抵消，$\dot V=-2\sigma[\rho x^2+y^2+\beta(z-\rho)^2-\beta\rho^2]$。在有界的椭球外$\dot V<0$，取包住椭球的等值面$V=C$，解在有限时间内进入$V\le C$并留在里面。
+
+- id: p7
+  tier: thinking
+  statement: |
+    为什么平面自治系统不会出现混沌，而受周期外力驱动的二维系统（如几何图像里的杜芬振子）却可以？至少要几个变量的自治方程组，才可能有混沌？
+  hints:
+    - |
+      平面上的轨线不能相交，这限制了什么？想想庞加莱-本迪克松定理（Poincaré-Bendixson theorem）。
+    - |
+      右边显含$t$时，把$t$当作第三个状态变量，看看维数（dimension）变成多少。
+    - |
+      平面自治系统的轨线不能相交，有界的轨线转回来时会被自己走过的路挡住，只能趋于平衡点、闭轨，或平衡点和连接轨线组成的闭环（本节的定理），没有不规则来回的余地。
+
+      受周期驱动的二维系统，右边显含$t$，同一点在不同时刻的方向不同，$(x,y)$平面上的曲线可以交叉。令$\tau=t$、$\tau'=1$，它是三维的自治方程组，轨线在三维空间里不相交，却可以绕来绕去（[一阶线性方程组](lesson:math.ode.first-order-systems)第 7 题）。所以自治的方程组至少要三个变量才可能混沌，洛伦茨系统正好是三个。
+  reference: |
+    平面轨线不能相交，有界轨线只能趋于平衡点、闭轨或由平衡点连成的闭环，不会混沌。周期驱动的二维系统加上$\tau=t$是三维自治系统，可以混沌。自治系统至少三维。
+
+- id: p8
+  tier: thinking
+  statement: |
+    洛伦茨系统是耗散的，体积按$e^{-41t/3}$缩小，有吸引子。分析力学里的哈密顿系统，:term[相流]{id="physics.analytical-mechanics.phase-flow"}（phase flow）保持体积（:term[刘维尔定理]{id="physics.analytical-mechanics.liouville-theorem"}，Liouville's theorem）。为什么保持体积的系统不可能有吸引子？两种系统里的混沌看起来有什么不同？
+  hints:
+    - |
+      吸引子要把它附近一整团初值都吸过去。这一团的体积会怎样？
+    - |
+      保持体积时，一团初值的体积始终不变，不能缩到体积为零的集合上。
+    - |
+      吸引子附近的一整团初值都会被吸到吸引子上，体积要缩小到吸引子本身那么小。洛伦茨的吸引子体积为零，正是耗散让体积不断缩小的结果。保持体积的系统里，一团初值的体积永远不变，不可能缩到一个点、一条线或一个体积为零的集合上，所以没有吸引子。
+
+      所以耗散系统的混沌落在奇怪吸引子上，不论从哪里出发，最后看到的都是同一个「蝴蝶」；保守系统的混沌则散布在状态空间里一大片区域中，常和规则运动的区域交织在一起，见[哈密顿系统中的混沌](lesson:physics.analytical-mechanics.hamiltonian-chaos)。
+  reference: |
+    吸引子要把附近一团初值的体积压到零，保持体积的系统做不到，所以没有吸引子。耗散系统的混沌落在奇怪吸引子上；保守系统的混沌散布在一片区域里，与规则运动交织。

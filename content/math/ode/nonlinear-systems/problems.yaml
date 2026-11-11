@@ -1,0 +1,135 @@
+- id: p1
+  tier: easy
+  statement: |
+    方程组$x'=x-x^3$、$y'=-y$有几个:term[平衡点]{id="math.ode.equilibrium-point"}（equilibrium point）？
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      平衡点要让两个方程的右边同时为零。
+    - |
+      $y'=0$给出$y=0$；$x-x^3=x(1-x)(1+x)=0$。
+    - |
+      $x=0$、$1$、$-1$，$y=0$，平衡点是$(0,0)$、$(1,0)$、$(-1,0)$，一共$3$个。
+  solution: |
+    平衡点是$(0,0)$、$(\pm1,0)$，填 `3`。
+
+- id: p2
+  tier: easy
+  statement: |
+    求方程组$x'=x^2-y$、$y'=x-y$在平衡点$(1,1)$处的雅可比矩阵（Jacobian matrix），按行依次填写四个元素。
+  answer:
+    type: tuple
+    value: [2, -1, 1, -1]
+  hints:
+    - |
+      第一行是$f_1=x^2-y$对$x$、$y$的偏导数，第二行是$f_2=x-y$的。
+    - |
+      $J=\begin{pmatrix}2x&-1\\1&-1\end{pmatrix}$，再代入$(1,1)$。
+    - |
+      $\frac{\partial f_1}{\partial x}=2x=2$，$\frac{\partial f_1}{\partial y}=-1$，$\frac{\partial f_2}{\partial x}=1$，$\frac{\partial f_2}{\partial y}=-1$，所以$J=\begin{pmatrix}2&-1\\1&-1\end{pmatrix}$。
+  solution: |
+    $J=\begin{pmatrix}2&-1\\1&-1\end{pmatrix}$，填 `2, -1, 1, -1`。
+
+- id: p3
+  tier: medium
+  statement: |
+    求方程组$x'=x^2-y$、$y'=x-y$在平衡点$(1,1)$处:term[线性化]{id="math.ode.linearization"}（linearization）的两个特征值。
+  answer:
+    type: set
+    value: [(1+sqrt(5))/2, (1-sqrt(5))/2]
+  hints:
+    - |
+      先求$(1,1)$处的雅可比矩阵，再算它的迹和行列式。
+    - |
+      $J=\begin{pmatrix}2&-1\\1&-1\end{pmatrix}$，$T=1$，$D=-2+1=-1$。
+    - |
+      特征值满足$\lambda^2-\lambda-1=0$，$\lambda=\frac{1\pm\sqrt5}{2}\approx1.618$、$-0.618$。一正一负，$(1,1)$是双曲的:term[鞍点]{id="math.ode.saddle-point"}（saddle point），由哈特曼-格罗布曼定理，原来的方程组在$(1,1)$附近也是鞍点。
+  solution: |
+    $\lambda^2-\lambda-1=0$，填 `(1+sqrt(5))/2, (1-sqrt(5))/2`。
+
+- id: p4
+  tier: medium
+  statement: |
+    $x''=x-x^3$化成$x'=v$、$v'=x-x^3$。平衡点$(1,0)$处线性化的特征值是$\pm i\omega$（$\omega>0$），求$\omega$。
+  answer:
+    type: number
+    value: sqrt(2)
+  hints:
+    - |
+      雅可比矩阵是$\begin{pmatrix}0&1\\1-3x^2&0\end{pmatrix}$，代入$x=1$。
+    - |
+      $J=\begin{pmatrix}0&1\\-2&0\end{pmatrix}$，$\lambda^2=-2$。
+    - |
+      $\lambda=\pm i\sqrt2$，$\omega=\sqrt2\approx1.414214$。线性化是:term[中心]{id="math.ode.center"}（center），不是双曲的；可$E=\frac12v^2-\frac12x^2+\frac14x^4$是守恒量，在$(1,0)$处取严格的极小值，所以$(1,0)$确实是中心，附近的小振动角频率约为$\sqrt2$。
+  solution: |
+    $J=\begin{pmatrix}0&1\\-2&0\end{pmatrix}$，$\lambda=\pm i\sqrt2$，填 `sqrt(2)`。
+
+- id: p5
+  tier: hard
+  statement: |
+    对方程组$x'=-y+x(x^2+y^2)$、$y'=x+y(x^2+y^2)$：(1) 证明原点处的线性化是中心；(2) 换成极坐标，证明$r'=r^3$、$\theta'=1$；(3) 解出$r(t)$，说明原点其实是不稳定的焦点。
+  hints:
+    - |
+      (2) 由$r^2=x^2+y^2$得$rr'=xx'+yy'$；由$\tan\theta=\frac yx$得$r^2\theta'=xy'-yx'$。
+    - |
+      $xx'+yy'=(x^2+y^2)^2=r^4$，$xy'-yx'=x^2+y^2=r^2$。
+    - |
+      (1) 雅可比矩阵在原点是$\begin{pmatrix}0&-1\\1&0\end{pmatrix}$，特征值$\pm i$，线性化是中心。
+
+      (2) $rr'=xx'+yy'=x(-y+xr^2)+y(x+yr^2)=r^4$，所以$r'=r^3$；$r^2\theta'=xy'-yx'=x(x+yr^2)-y(-y+xr^2)=r^2$，所以$\theta'=1$。
+
+      (3) 分离变量，$\frac{\dd r}{r^3}=\dd t$，$-\frac{1}{2r^2}=t-\frac{1}{2r_0^2}$，$r(t)=\frac{r_0}{\sqrt{1-2r_0^2t}}$。$r$随$t$增大，$t\to\frac{1}{2r_0^2}$时$r\to\infty$，同时以角速度$1$转动：从原点附近任何一点出发，轨线都盘旋着离开，原点是不稳定的焦点。线性化看不出这一点，因为中心不是双曲的。
+  reference: |
+    线性化矩阵$\begin{pmatrix}0&-1\\1&0\end{pmatrix}$，是中心。极坐标下$rr'=r^4$、$r^2\theta'=r^2$，即$r'=r^3$、$\theta'=1$。$r=\frac{r_0}{\sqrt{1-2r_0^2t}}$递增，轨线盘旋离开，原点是不稳定的焦点。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$a,b,c,d>0$，$x,y>0$，$x'=x(a-by)$、$y'=y(-c+dx)$。(1) 求两个平衡点，并求它们的线性化的类型；(2) 证明$E=dx-c\ln x+by-a\ln y$是:term[守恒量]{id="math.ode.conserved-quantity"}（conserved quantity）；(3) 证明正的平衡点是中心。
+  hints:
+    - |
+      雅可比矩阵是$\begin{pmatrix}a-by&-bx\\dy&-c+dx\end{pmatrix}$。
+    - |
+      平衡点$(0,0)$和$\bigl(\frac cd,\frac ab\bigr)$。(2) 用$\frac{\dd E}{\dd t}=\frac{\partial E}{\partial x}x'+\frac{\partial E}{\partial y}y'$。
+    - |
+      (1) 在$(0,0)$处$J=\begin{pmatrix}a&0\\0&-c\end{pmatrix}$，特征值$a>0$、$-c<0$，是鞍点。在$\bigl(\frac cd,\frac ab\bigr)$处$J=\begin{pmatrix}0&-\frac{bc}{d}\\\frac{ad}{b}&0\end{pmatrix}$，$T=0$、$D=ac>0$，线性化是中心。
+
+      (2) $\frac{\dd E}{\dd t}=\bigl(d-\frac cx\bigr)x(a-by)+\bigl(b-\frac ay\bigr)y(-c+dx)=(dx-c)(a-by)+(by-a)(dx-c)=0$。
+
+      (3) $dx-c\ln x$在$x=\frac cd$处取严格的最小值（导数$d-\frac cx$由负变正），$by-a\ln y$在$y=\frac ab$处也是，所以$E$在$\bigl(\frac cd,\frac ab\bigr)$处取严格的极小值；这个平衡点是孤立的，由守恒量与中心的定理，它是中心，两种数量周期性地变化。
+  reference: |
+    平衡点$(0,0)$是鞍点；$\bigl(\frac cd,\frac ab\bigr)$处$T=0$、$D=ac$，线性化是中心。$\frac{\dd E}{\dd t}=(dx-c)(a-by)+(by-a)(dx-c)=0$。$E$在正平衡点取严格极小值，由定理它是中心。
+
+- id: p7
+  tier: thinking
+  statement: |
+    为什么特征值的实部都不为零时，线性化的结论经得起高阶小量的干扰，实部为零时却不行？用$x'=-y+\varepsilon x(x^2+y^2)$、$y'=x+\varepsilon y(x^2+y^2)$在$\varepsilon>0$、$\varepsilon<0$、$\varepsilon=0$时的样子来说明。
+  hints:
+    - |
+      这三种情形在原点的线性化都一样，是什么？
+    - |
+      照第 5 题的办法换成极坐标，$r'=\varepsilon r^3$。
+    - |
+      三种情形在原点的线性化都是$x'=-y$、$y'=x$，原点是中心。换成极坐标得$r'=\varepsilon r^3$、$\theta'=1$：$\varepsilon>0$时轨线盘旋离开，是不稳定的焦点；$\varepsilon<0$时盘旋进入，是渐近稳定的焦点；$\varepsilon=0$时是真正的中心。三次的小项，决定了线性化看不出的事。
+
+      实部不为零时，线性部分的「推力」不为零（实部为负的方向往里拉，为正的方向往外推），它和$|\vb u|$成正比，比高阶的小量大得多，小量改不了它。实部为零时，线性部分只让点转圈，在径向上不推不拉，径向的变化全由高阶的小量决定。这和[平面线性系统的相图](lesson:math.ode.phase-plane-linear)第 7 题说的一样：中心落在稳定焦点和不稳定焦点的分界线上。
+  reference: |
+    三种情形的线性化都是中心。极坐标下$r'=\varepsilon r^3$：$\varepsilon>0$不稳定焦点，$\varepsilon<0$渐近稳定焦点，$\varepsilon=0$中心。实部不为零时线性部分的径向推力主导，实部为零时径向变化全由高阶项决定。
+
+- id: p8
+  tier: thinking
+  statement: |
+    单摆$\theta''=-\sin\theta$从角度$\theta_0$处静止释放。$\theta_0$很小时周期约为$2\pi$；$\theta_0$越接近$\pi$，周期越长。在相图上解释为什么，并说明线性化能告诉我们什么、不能告诉我们什么。
+  hints:
+    - |
+      线性化在$(0,0)$处的特征值是$\pm i$，对应的周期是多少？
+    - |
+      $\theta_0$接近$\pi$时，闭曲线贴近穿过鞍点$(\pm\pi,0)$的那条轨线。在鞍点附近，点走得快还是慢？
+    - |
+      线性化在$(0,0)$处是$\theta''=-\theta$，特征值$\pm i$，周期$2\pi$：它只描述$\theta_0\to0$时的极限。$\theta_0$变大时，闭曲线离开原点附近，线性化不再适用；例如$\theta_0=\frac\pi2$时，数值算出的周期约为$7.416$，比$2\pi$长约$18\%$。
+
+      $\theta_0$接近$\pi$时，闭曲线贴着穿过鞍点$(\pm\pi,0)$的轨线走。鞍点附近速度$(\theta',\theta'')$接近零，点在那里走得很慢，所以一圈的时间越来越长；$\theta_0\to\pi$时周期趋于无穷。周期依赖于振幅，正是非线性振动的特点，以后的[非线性振动](lesson:physics.oscillations-waves.nonlinear-oscillators)会把它算出来。
+  reference: |
+    线性化给出$\theta_0\to0$时的周期$2\pi$。振幅大时闭曲线贴近穿过鞍点的轨线，在鞍点附近走得很慢，周期变长，$\theta_0\to\pi$时趋于无穷（$\theta_0=\frac\pi2$时约$7.416$）。周期依赖振幅是非线性的效应，线性化看不出。

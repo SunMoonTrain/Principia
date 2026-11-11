@@ -1,0 +1,133 @@
+- id: p1
+  tier: easy
+  statement: |
+    $A=\begin{pmatrix}1&0\\0&-2\end{pmatrix}$。求:term[矩阵指数]{id="math.ode.matrix-exponential"}（matrix exponential）$e^{tA}$在$t=\ln3$时右下角的元素。
+  answer:
+    type: number
+    value: 1/9
+  hints:
+    - |
+      对角矩阵的各次幂还是对角矩阵。
+    - |
+      $A^k=\operatorname{diag}(1,(-2)^k)$，所以$e^{tA}=\operatorname{diag}(e^t,e^{-2t})$。
+    - |
+      右下角是$\sum\frac{(-2t)^k}{k!}=e^{-2t}$，$t=\ln3$时等于$e^{-2\ln3}=3^{-2}=\frac19$。
+  solution: |
+    $e^{tA}=\operatorname{diag}(e^t,e^{-2t})$，右下角$e^{-2\ln3}=\frac19$，填 `1/9`。
+
+- id: p2
+  tier: easy
+  statement: |
+    $N=\begin{pmatrix}2&-4\\1&-2\end{pmatrix}$。求$e^N$，按行依次填写四个元素。
+  answer:
+    type: tuple
+    value: [3, -4, 1, -1]
+  hints:
+    - |
+      先算$N^2$。
+    - |
+      $N^2=\begin{pmatrix}4-4&-8+8\\2-2&-4+4\end{pmatrix}=O$，于是$N^3=N^4=\dots=O$，级数只剩前两项。
+    - |
+      $e^N=I+N+\frac{N^2}{2!}+\dots=I+N=\begin{pmatrix}3&-4\\1&-1\end{pmatrix}$。
+  solution: |
+    $N^2=O$，$e^N=I+N=\begin{pmatrix}3&-4\\1&-1\end{pmatrix}$，填 `3, -4, 1, -1`。
+
+- id: p3
+  tier: medium
+  statement: |
+    $A=\begin{pmatrix}2&1\\-1&0\end{pmatrix}$。解$\vb x'=A\vb x$、$\vb x(0)=(1,0)$，求$x_1\bigl(\frac12\bigr)$。
+  answer:
+    type: number
+    value: 3*exp(1/2)/2
+  hints:
+    - |
+      先求特征值：$(2-\lambda)(0-\lambda)+1$。
+    - |
+      特征值$1$是二重的。令$N=A-I$，算$N^2$。
+    - |
+      $(2-\lambda)(-\lambda)+1=\lambda^2-2\lambda+1=(\lambda-1)^2$。$N=A-I=\begin{pmatrix}1&1\\-1&-1\end{pmatrix}$，$N^2=O$，所以$e^{tA}=e^{t}(I+tN)=e^{t}\begin{pmatrix}1+t&t\\-t&1-t\end{pmatrix}$。解是$e^{tA}(1,0)=e^{t}(1+t,\ -t)$，$x_1\bigl(\frac12\bigr)=\frac32e^{1/2}\approx2.473082$。
+  solution: |
+    $e^{tA}=e^{t}(I+tN)$，$\vb x=e^{t}(1+t,-t)$，$x_1\bigl(\frac12\bigr)=\frac32e^{1/2}$，填 `3*exp(1/2)/2`。
+
+- id: p4
+  tier: medium
+  statement: |
+    $A=\begin{pmatrix}-1&1&0\\0&-1&1\\0&0&-1\end{pmatrix}$。求$e^{tA}$在$t=2$时右上角的元素。
+  answer:
+    type: number
+    value: 2*exp(-2)
+  hints:
+    - |
+      $A=-I+N$，$N$是主对角线上方一条斜线为$1$的矩阵。$-I$和$N$可交换。
+    - |
+      $N^2$只有右上角是$1$，$N^3=O$，所以$e^{tA}=e^{-t}\bigl(I+tN+\frac{t^2}{2}N^2\bigr)$。
+    - |
+      $e^{tA}=e^{-t}e^{tN}=e^{-t}\bigl(I+tN+\frac{t^2}{2}N^2\bigr)$。$I$、$N$的右上角是$0$，$N^2$的右上角是$1$，所以右上角的元素是$\frac{t^2}{2}e^{-t}$，$t=2$时等于$2e^{-2}\approx0.2706706$。
+  solution: |
+    右上角是$\frac{t^2}{2}e^{-t}$，$t=2$时为$2e^{-2}$，填 `2*exp(-2)`。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明对任意$n\times n$的矩阵$A$，$\det e^{tA}=e^{t\operatorname{tr}A}$，其中$\operatorname{tr}A$是$A$的迹（trace），即对角元之和。由此说明$e^{tA}$总是可逆的，并说明$\operatorname{tr}A=0$时方程组$\vb x'=A\vb x$把面积（体积）保持不变。
+  hints:
+    - |
+      先对上三角矩阵证：上三角矩阵的各次幂还是上三角的，对角元是什么？
+    - |
+      写$A=PJP^{-1}$（复特征值时$P$、$J$是复矩阵，论证照样成立）。$\det(Pe^{tJ}P^{-1})=\det e^{tJ}$，迹在相似下也不变。
+    - |
+      若尔当形$J$是上三角的，$J^k$也是上三角的，对角元是$\lambda_i^k$；所以$e^{tJ}$是上三角的，对角元是$e^{\lambda_it}$，$\det e^{tJ}=\prod_ie^{\lambda_it}=e^{t\sum\lambda_i}$。由性质 (3)，$e^{tA}=Pe^{tJ}P^{-1}$，$\det e^{tA}=\det e^{tJ}$；迹在相似下不变，$\operatorname{tr}A=\operatorname{tr}J=\sum\lambda_i$。所以$\det e^{tA}=e^{t\operatorname{tr}A}$。
+
+      指数函数不为零，所以$\det e^{tA}\ne0$，$e^{tA}$可逆。行列式是线性变换对面积（体积）的放大倍数，$e^{tA}$把$0$时刻的一块初值送到$t$时刻，$\operatorname{tr}A=0$时放大倍数恒为$1$。以后[李代数与指数映射](lesson:math.representation-theory.lie-algebras)会用到这个等式。
+  reference: |
+    若尔当形$J$上三角，$e^{tJ}$上三角，对角元$e^{\lambda_it}$，行列式$e^{t\sum\lambda_i}$。相似不改变行列式和迹，故$\det e^{tA}=e^{t\operatorname{tr}A}\ne0$；$\operatorname{tr}A=0$时行列式恒为$1$，流保持面积。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$A\vb v=\lambda\vb v$、$\vb v\ne\vb 0$，$\vb w$满足$(A-\lambda I)\vb w=\vb v$（广义特征向量，generalized eigenvector）。(1) 证明$\vb x=e^{\lambda t}(\vb w+t\vb v)$是$\vb x'=A\vb x$的解。(2) 证明它和$e^{\lambda t}\vb v$线性无关。(3) 对例 2 的$A=\begin{pmatrix}3&-1\\1&1\end{pmatrix}$，取$\vb v=(1,1)$，求一个$\vb w$，写出:term[通解]{id="math.ode.general-solution"}（general solution），并和例 2 的结果对照。
+  hints:
+    - |
+      (1) 两边分别算出来比较，用$A\vb w=\lambda\vb w+\vb v$。
+    - |
+      (2) 看两个解在$t=0$处的值$\vb w$、$\vb v$是否线性无关：若$\vb w=\alpha\vb v$，$(A-\lambda I)\vb w$是什么？
+    - |
+      (1) $\vb x'=\lambda e^{\lambda t}(\vb w+t\vb v)+e^{\lambda t}\vb v$，$A\vb x=e^{\lambda t}(A\vb w+tA\vb v)=e^{\lambda t}(\lambda\vb w+\vb v+t\lambda\vb v)$，两者相等。
+
+      (2) 若$\vb w=\alpha\vb v$，则$(A-\lambda I)\vb w=\alpha(A-\lambda I)\vb v=\vb 0\ne\vb v$，矛盾；所以$\vb v$、$\vb w$线性无关，由[解的结构](lesson:math.ode.first-order-systems#thm-linear-system-space)，两个解线性无关。
+
+      (3) $A-2I=\begin{pmatrix}1&-1\\1&-1\end{pmatrix}$，$(A-2I)\vb w=(1,1)$即$w_1-w_2=1$，取$\vb w=(1,0)$。通解$c_1e^{2t}(1,1)+c_2e^{2t}(1+t,\ t)$；$\vb x(0)=(1,0)$时$c_1=0$、$c_2=1$，得$e^{2t}(1+t,t)$，和例 2 一致。
+  reference: |
+    (1) 两边都等于$e^{\lambda t}(\lambda\vb w+\vb v+t\lambda\vb v)$。(2) $\vb w=\alpha\vb v$会使$(A-\lambda I)\vb w=\vb 0$，矛盾。(3) $\vb w=(1,0)$，通解$c_1e^{2t}(1,1)+c_2e^{2t}(1+t,t)$，初值$(1,0)$给出例 2 的解。
+
+- id: p7
+  tier: thinking
+  statement: |
+    $A=\begin{pmatrix}0&1\\0&0\end{pmatrix}$，$B=\begin{pmatrix}0&0\\1&0\end{pmatrix}$。算出$e^Ae^B$和$e^{A+B}$，比较它们。对数来说，$e^{a+b}=e^ae^b$的证明（把$(a+b)^k$用二项式定理（binomial theorem）展开）用到了什么，矩阵为什么不行？
+  hints:
+    - |
+      $A^2=B^2=O$；$(A+B)^2$是什么？
+    - |
+      $(A+B)^2=I$，所以$e^{A+B}$的级数按偶次项、奇次项分开求和。
+    - |
+      $e^A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$，$e^B=\begin{pmatrix}1&0\\1&1\end{pmatrix}$，$e^Ae^B=\begin{pmatrix}2&1\\1&1\end{pmatrix}$。$(A+B)^2=I$，$e^{A+B}=(\cosh1)I+(\sinh1)(A+B)=\begin{pmatrix}\cosh1&\sinh1\\\sinh1&\cosh1\end{pmatrix}\approx\begin{pmatrix}1.543&1.175\\1.175&1.543\end{pmatrix}$，两者不相等；连$e^Be^A=\begin{pmatrix}1&1\\1&2\end{pmatrix}$也和$e^Ae^B$不同。
+
+      二项式定理$(a+b)^k=\sum\binom kja^jb^{k-j}$要把$ab$和$ba$合并，用到了$ab=ba$。矩阵展开$(A+B)^2=A^2+AB+BA+B^2$，$AB\ne BA$时不能写成$A^2+2AB+B^2$，级数就对不上了。所以性质 (2) 必须假设$AB=BA$。
+  reference: |
+    $e^Ae^B=\begin{pmatrix}2&1\\1&1\end{pmatrix}$，$e^{A+B}=\begin{pmatrix}\cosh1&\sinh1\\\sinh1&\cosh1\end{pmatrix}$，不相等。数的证明靠二项式定理，要$ab=ba$；矩阵不可交换时$(A+B)^k$展不成二项式的样子。
+
+- id: p8
+  tier: thinking
+  statement: |
+    用「$e^{tA}$把$0$时刻的状态送到$t$时刻」解释为什么$e^{(s+t)A}=e^{sA}e^{tA}$。如果$A$随时间变化，$\vb x'=A(t)\vb x$的解还能写成$e^{B(t)}\vb x_0$吗？这里$B(t)=\int_0^tA(\tau)\dd\tau$。
+  hints:
+    - |
+      先走$t$再走$s$，和一次走$s+t$，终点为什么一样？要用到矩阵$A$不随时间变化。
+    - |
+      想对$e^{B(t)}$求导得到$A(t)e^{B(t)}$，需要$B$和它的导数$A$可交换；性质 (1) 的证明里，这一点因为$A$和自己可交换而自动成立。
+    - |
+      从$\vb x_0$出发，先走时间$t$到$e^{tA}\vb x_0$，再以它为初值走时间$s$。方程不显含$t$，后半段和从$0$时刻出发一样，终点是$e^{sA}e^{tA}\vb x_0$；一次走$s+t$的终点是$e^{(s+t)A}\vb x_0$，由唯一性两者相同。所以$\{e^{tA}\}$按时间相加的方式复合，$A$是它在$t=0$处的导数，这是以后[李代数与指数映射](lesson:math.representation-theory.lie-algebras)的出发点。
+
+      $A$随时间变化时一般不行。要$\frac{\dd}{\dd t}e^{B(t)}=A(t)e^{B(t)}$，展开级数逐项求导时得把$B'=A$挪到最前面，这要$A(t)$和$B(t)$可交换；不同时刻的$A$不可交换时就不成立。例如$A(t)=\begin{pmatrix}0&t\\1&0\end{pmatrix}$，$A(t)A(s)\ne A(s)A(t)$，从$(1,0)$出发的解在$t=1$处和$e^{B(1)}(1,0)$并不相等。
+  reference: |
+    先走$t$再走$s$，由自治和唯一性等于一次走$s+t$，故$e^{(s+t)A}=e^{sA}e^{tA}$。$A$随时间变化时，求导要$A(t)$与$B(t)$可交换，一般不成立；$A(t)=\begin{pmatrix}0&t\\1&0\end{pmatrix}$就是反例。

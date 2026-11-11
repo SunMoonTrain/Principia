@@ -104,7 +104,7 @@
     对$y'=\mu-y^2$（$\mu>0$），稳定的平衡点$\sqrt\mu$受到小扰动以后，偏差大约按什么速度衰减？$\mu$逐渐减小、接近分岔值时，这个速度怎样变化？为什么有人想用它来预报湖泊变浑、气候突变这类临界点（tipping point）？
   hints:
     - |
-      用判别法背后的线性化：偏差$w=y-\sqrt\mu$满足$w'\approx f_y(\sqrt\mu,\mu)\,w$。
+      用判别法背后的线性化（linearization）：偏差$w=y-\sqrt\mu$满足$w'\approx f_y(\sqrt\mu,\mu)\,w$。
     - |
       $f_y(\sqrt\mu,\mu)=-2\sqrt\mu$，偏差像$e^{-2\sqrt\mu\,t}$那样衰减。
     - |

@@ -1,0 +1,131 @@
+- id: p1
+  tier: easy
+  statement: |
+    已知$\vb x=e^{\lambda t}(1,1)$是$\vb x'=\begin{pmatrix}4&1\\2&3\end{pmatrix}\vb x$的解，求$\lambda$。
+  answer:
+    type: number
+    value: 5
+  hints:
+    - |
+      代入方程，$\lambda$和$(1,1)$要满足什么条件？
+    - |
+      条件是$A(1,1)=\lambda(1,1)$：$(1,1)$是特征向量（eigenvector），$\lambda$是特征值（eigenvalue）。
+    - |
+      $A(1,1)=(4+1,\ 2+3)=(5,5)=5(1,1)$，所以$\lambda=5$。
+  solution: |
+    $A(1,1)=5(1,1)$，$\lambda=5$，填 `5`。
+
+- id: p2
+  tier: easy
+  statement: |
+    方程组$\vb x'=A\vb x$的:term[通解]{id="math.ode.general-solution"}（general solution）是$c_1e^{t}(1,1)+c_2e^{-2t}(1,-2)$。求满足$\vb x(0)=(2,-1)$的解的第一个分量在$t=\ln2$处的值。
+  answer:
+    type: number
+    value: 9/4
+  hints:
+    - |
+      先由$\vb x(0)=c_1(1,1)+c_2(1,-2)=(2,-1)$定出$c_1$、$c_2$。
+    - |
+      $c_1+c_2=2$、$c_1-2c_2=-1$，得$c_1=c_2=1$。
+    - |
+      $x_1(t)=e^t+e^{-2t}$，$x_1(\ln2)=2+\frac14=\frac94$。
+  solution: |
+    $c_1=c_2=1$，$x_1=e^t+e^{-2t}$，$x_1(\ln2)=\frac94$，填 `9/4`。
+
+- id: p3
+  tier: medium
+  statement: |
+    解$\vb x'=\begin{pmatrix}-3&1\\1&-3\end{pmatrix}\vb x$、$\vb x(0)=(2,0)$，求$x_1(1)$。
+  answer:
+    type: number
+    value: exp(-2) + exp(-4)
+  hints:
+    - |
+      先求特征值：$\det(A-\lambda I)=(-3-\lambda)^2-1$。
+    - |
+      特征值$-2$对应$(1,1)$，$-4$对应$(1,-1)$。
+    - |
+      $(-3-\lambda)^2=1$，$\lambda=-2$或$-4$；$(A+2I)\vb v=\vb 0$给出$(1,1)$，$(A+4I)\vb v=\vb 0$给出$(1,-1)$。通解$c_1e^{-2t}(1,1)+c_2e^{-4t}(1,-1)$，由$c_1+c_2=2$、$c_1-c_2=0$得$c_1=c_2=1$。于是$x_1=e^{-2t}+e^{-4t}$，$x_1(1)=e^{-2}+e^{-4}\approx0.1536509$。
+  solution: |
+    $x_1=e^{-2t}+e^{-4t}$，$x_1(1)=e^{-2}+e^{-4}$，填 `exp(-2) + exp(-4)`。
+
+- id: p4
+  tier: medium
+  statement: |
+    令$x_1=y$、$x_2=y'$、$x_3=y''$，三阶方程$y'''-6y''+11y'-6y=0$化成$\vb x'=A\vb x$，$A=\begin{pmatrix}0&1&0\\0&0&1\\6&-11&6\end{pmatrix}$。求$A$的全部特征值。
+  answer:
+    type: set
+    value: [1, 2, 3]
+  hints:
+    - |
+      算$\det(A-\lambda I)$，可以按第一行展开。
+    - |
+      $\det(A-\lambda I)=-(\lambda^3-6\lambda^2+11\lambda-6)$，和三阶方程的:term[特征方程]{id="math.ode.characteristic-equation"}（characteristic equation）只差一个负号。
+    - |
+      按第一行展开：$\det(A-\lambda I)=-\lambda\bigl(-\lambda(6-\lambda)+11\bigr)-(0-6)=-(\lambda^3-6\lambda^2+11\lambda-6)$。而$\lambda^3-6\lambda^2+11\lambda-6=(\lambda-1)(\lambda-2)(\lambda-3)$，特征值是$1$、$2$、$3$。
+  solution: |
+    特征多项式是$-(\lambda-1)(\lambda-2)(\lambda-3)$，填 `1, 2, 3`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$A=PDP^{-1}$，$D=\operatorname{diag}(\lambda_1,\dots,\lambda_n)$，$\lambda_i$都是实数，$\vb v_i$是$P$的第$i$列。证明：(1) $\vb x'=A\vb x$的每个解都能写成$\sum c_ie^{\lambda_it}\vb v_i$；(2) 所有的解在$t\to+\infty$时都趋于$\vb 0$，当且仅当所有的$\lambda_i<0$。
+  hints:
+    - |
+      令$\vb y=P^{-1}\vb x$，看$\vb y$满足什么方程。
+    - |
+      (2) 的「仅当」：若某个$\lambda_j\ge0$，取$\vb x(0)=\vb v_j$。
+    - |
+      (1) $\vb y=P^{-1}\vb x$满足$\vb y'=P^{-1}A\vb x=P^{-1}AP\vb y=D\vb y$，即$y_i'=\lambda_iy_i$，所以$y_i=c_ie^{\lambda_it}$，$\vb x=P\vb y=\sum c_ie^{\lambda_it}\vb v_i$。
+
+      (2) 若所有$\lambda_i<0$，每一项$c_ie^{\lambda_it}\vb v_i\to\vb 0$，有限项之和也趋于$\vb 0$。若某个$\lambda_j\ge0$，取$\vb x(0)=\vb v_j$，解是$e^{\lambda_jt}\vb v_j$，长度$e^{\lambda_jt}|\vb v_j|\ge|\vb v_j|>0$，不趋于$\vb 0$。
+  reference: |
+    $\vb y=P^{-1}\vb x$满足$\vb y'=D\vb y$，$y_i=c_ie^{\lambda_it}$，$\vb x=\sum c_ie^{\lambda_it}\vb v_i$。全部$\lambda_i<0$时各项趋于零；某个$\lambda_j\ge0$时，从$\vb v_j$出发的解长度不小于$|\vb v_j|$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$A=\begin{pmatrix}0&1\\-q&-p\end{pmatrix}$是$y''+py'+qy=0$化成的方程组的矩阵。(1) 证明$\det(A-\lambda I)=\lambda^2+p\lambda+q$，并且$\lambda$是特征值时，$(1,\lambda)$是对应的特征向量。(2) 特征方程有两个不同的实根$r_1$、$r_2$时，用本节的定理写出方程组的通解，再由它推出$y=C_1e^{r_1t}+C_2e^{r_2t}$。
+  hints:
+    - |
+      直接算$2\times2$的行列式；再算$A(1,\lambda)$。
+    - |
+      $A(1,\lambda)=(\lambda,\ -q-p\lambda)$，而$\lambda^2+p\lambda+q=0$。
+    - |
+      (1) $\det\begin{pmatrix}-\lambda&1\\-q&-p-\lambda\end{pmatrix}=\lambda(p+\lambda)+q=\lambda^2+p\lambda+q$。$\lambda$是根时$-q-p\lambda=\lambda^2$，所以$A(1,\lambda)=(\lambda,\lambda^2)=\lambda(1,\lambda)$。
+
+      (2) $r_1\ne r_2$时$(1,r_1)$、$(1,r_2)$线性无关，通解是$\vb x=c_1e^{r_1t}(1,r_1)+c_2e^{r_2t}(1,r_2)$。由[高阶方程化成方程组](lesson:math.ode.first-order-systems#thm-reduction)，$y=x_1=c_1e^{r_1t}+c_2e^{r_2t}$，这正是[常系数齐次线性方程](lesson:math.ode.constant-coefficients#thm-constant-coefficients)的情形 (1)。
+  reference: |
+    $\det(A-\lambda I)=\lambda^2+p\lambda+q$；根$\lambda$满足$-q-p\lambda=\lambda^2$，故$A(1,\lambda)=\lambda(1,\lambda)$。两根不同时通解$c_1e^{r_1t}(1,r_1)+c_2e^{r_2t}(1,r_2)$，第一个分量就是$y=C_1e^{r_1t}+C_2e^{r_2t}$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    [一阶线性方程组](lesson:math.ode.first-order-systems)例 1 的两个物块满足$\vb y''=K\vb y$，$\vb y=(y_1,y_2)$，$K=\begin{pmatrix}-2k&k\\k&-2k\end{pmatrix}$。求$K$的特征值和特征向量。两个物块从$y_1(0)=y_2(0)=1$静止释放时怎样运动，从$y_1(0)=1$、$y_2(0)=-1$静止释放呢？这和本节的解耦有什么关系？
+  hints:
+    - |
+      算$K(1,1)$和$K(1,-1)$。
+    - |
+      $K(1,1)=-k(1,1)$，$K(1,-1)=-3k(1,-1)$。初值在特征向量上时，试$\vb y=f(t)\vb v$。
+    - |
+      特征值是$-k$（特征向量$(1,1)$）和$-3k$（特征向量$(1,-1)$）。设$\vb y=f(t)\vb v$，$K\vb v=\mu\vb v$，代入得$f''=\mu f$。初值$(1,1)$时$f''=-kf$、$f(0)=1$、$f'(0)=0$，$f=\cos\sqrt k\,t$：两个物块同向同步振动，角频率$\sqrt k$。初值$(1,-1)$时$f=\cos\sqrt{3k}\,t$：两个物块反向振动，中间的弹簧被来回拉伸，回复力更大，角频率$\sqrt{3k}$。
+
+      这正是解耦：换到特征向量的坐标$u=\frac{y_1+y_2}{2}$、$w=\frac{y_1-y_2}{2}$，方程化成$u''=-ku$、$w''=-3kw$，两个坐标各自做简谐振动（simple harmonic motion）。这两种振动方式叫作简正模（normal mode），一般的运动是两个简正模的叠加。
+  reference: |
+    特征值$-k$、$-3k$，特征向量$(1,1)$、$(1,-1)$。初值$(1,1)$时同步振动，$\cos\sqrt kt$；初值$(1,-1)$时反向振动，$\cos\sqrt{3k}t$。坐标$u=\frac{y_1+y_2}2$、$w=\frac{y_1-y_2}2$各自满足$u''=-ku$、$w''=-3kw$，这就是解耦，两种振动是简正模。
+
+- id: p8
+  tier: thinking
+  statement: |
+    $\vb x'=\begin{pmatrix}0&1\\1&0\end{pmatrix}\vb x$从$(1,-1)$出发的解趋于原点。用计算机数值求解时，算出的解能一直沿直线走到原点附近吗？这说明「落在某条直线上的解趋于$\vb 0$」这类结论，在数值计算时要注意什么？
+  hints:
+    - |
+      精确解是$e^{-t}(1,-1)$。把数值解写成两个特征向量方向上的坐标，看舍入误差（round-off error）落在哪里。
+    - |
+      设数值解是$a(t)(1,1)+b(t)(1,-1)$。精确解里$a\equiv0$；舍入误差让$a$变成一个很小的数$\varepsilon$，而$a$满足$a'=a$。
+    - |
+      特征值$1$对应$(1,1)$，$-1$对应$(1,-1)$。精确解里$(1,1)$方向的坐标$a$恒为零，可计算机每一步都有约$10^{-16}$的相对舍入误差，$a$不再是零，而$a'=a$让它按$e^t$放大，$b$却按$e^{-t}$缩小。到$t\approx\ln\frac1\varepsilon$（$\varepsilon=10^{-16}$时约$37$），$a$已长到$1$左右，算出的轨线早已离开直线，沿$(1,1)$方向跑远。
+
+      所以这类结论在数值上靠不住：落在直线上的初值是例外，任何一点扰动都会把解推离。要算这样的解，可以只积分$b'=-b$这一个方程；或者从原点附近直线上的点出发、让$t$减小着积分，这时$(1,1)$方向的误差按$e^{t}$缩小。
+  reference: |
+    精确解里$(1,1)$方向的坐标恒为零，但舍入误差使它不为零，又按$e^t$放大，约$t\approx\ln\frac1\varepsilon$后数值解离开直线跑远。直线上的初值是例外，要单独积分$b'=-b$，或从原点附近反着时间积分。

@@ -1,0 +1,143 @@
+- id: p1
+  tier: easy
+  statement: |
+    $\vb x'=\begin{pmatrix}2&3\\1&-1\end{pmatrix}\vb x$的原点是哪一种:term[平衡点]{id="math.ode.equilibrium-point"}（equilibrium point）？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        结点
+      - |
+        鞍点
+      - |
+        焦点
+      - |
+        中心
+    value: 2
+  hints:
+    - |
+      先算迹$T$和行列式$D$，再用分类定理。
+    - |
+      $D=2\cdot(-1)-3\cdot1=-5$。
+    - |
+      $D<0$，两个特征值的乘积为负，是异号的实数，原点是:term[鞍点]{id="math.ode.saddle-point"}（saddle point）。特征值是$\lambda^2-\lambda-5=0$的根$\frac{1\pm\sqrt{21}}{2}$，一正一负。
+  solution: |
+    $D=-5<0$，原点是鞍点，选「鞍点」。
+
+- id: p2
+  tier: easy
+  statement: |
+    $\vb x'=\begin{pmatrix}0&2\\-8&0\end{pmatrix}\vb x$的原点是:term[中心]{id="math.ode.center"}（center）。求解的周期。
+  answer:
+    type: number
+    value: pi/2
+  hints:
+    - |
+      特征值是$\pm i\beta$时，解以角频率$\beta$绕原点转，周期是$\frac{2\pi}{\beta}$。
+    - |
+      $T=0$、$D=0\cdot0-2\cdot(-8)=16$，特征值满足$\lambda^2+16=0$。
+    - |
+      $\lambda=\pm4i$，$\beta=4$，周期是$\frac{2\pi}{4}=\frac\pi2\approx1.570796$。
+  solution: |
+    特征值$\pm4i$，周期$\frac{2\pi}{4}=\frac\pi2$，填 `pi/2`。
+
+- id: p3
+  tier: medium
+  statement: |
+    弹簧振子$y''+cy'+4y=0$（$c\ge0$）化成方程组$y'=v$、$v'=-4y-cv$。$c$从$0$开始增大，原点从中心变成焦点，再变成结点。求原点开始成为:term[结点]{id="math.ode.node"}（node）时$c$的值。
+  answer:
+    type: number
+    value: 4
+  hints:
+    - |
+      写出矩阵$\begin{pmatrix}0&1\\-4&-c\end{pmatrix}$的迹和行列式。
+    - |
+      $T=-c$、$D=4$。结点要求$T^2\ge4D$。
+    - |
+      $D=4>0$，$T^2\ge4D$即$c^2\ge16$，$c\ge4$。$c<4$时是焦点（$c=0$时是中心），$c=4$时特征值$-2$是二重的，原点开始成为结点，这就是临界阻尼。
+  solution: |
+    $c^2\ge4\cdot4$，$c\ge4$，填 `4`。
+
+- id: p4
+  tier: medium
+  statement: |
+    $\vb x'=\begin{pmatrix}2&1\\3&0\end{pmatrix}\vb x$的原点是:term[鞍点]{id="math.ode.saddle-point"}（saddle point）。趋于原点的两条:term[轨线]{id="math.ode.trajectory"}（trajectory）在一条过原点的直线上，求这条直线的斜率。
+  answer:
+    type: number
+    value: -3
+  hints:
+    - |
+      趋于原点的轨线沿着负特征值的特征向量方向。
+    - |
+      $\det(A-\lambda I)=\lambda^2-2\lambda-3$，特征值$3$和$-1$。
+    - |
+      $\lambda=-1$时$(A+I)\vb v=\vb 0$，即$3v_1+v_2=0$，取$\vb v=(1,-3)$。沿这条直线出发的解是$ce^{-t}(1,-3)$，趋于原点，直线的斜率是$-3$。
+  solution: |
+    负特征值$-1$的特征向量是$(1,-3)$，斜率$-3$，填 `-3`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设实矩阵$A$有特征值$\lambda=\alpha+i\beta$（$\beta\ne0$），对应的特征向量是$\vb a+i\vb b$（$\vb a$、$\vb b$是实向量）。证明：(1) $\vb z=e^{\lambda t}(\vb a+i\vb b)$满足$\vb z'=A\vb z$；(2) $\vb z$的实部和虚部都是$\vb x'=A\vb x$的解；(3) $\vb a$、$\vb b$线性无关，从而这两个实解线性无关。
+  hints:
+    - |
+      (1) 和实特征值时一样代入，复指数（complex exponential）的导数是$(e^{\lambda t})'=\lambda e^{\lambda t}$。
+    - |
+      (2) $A$是实矩阵，$A(\vb u+i\vb w)=A\vb u+iA\vb w$，两边比较实部和虚部。(3) 若$\vb a$、$\vb b$线性相关，$\vb a+i\vb b$就是某个实向量的复数倍。
+    - |
+      (1) $\vb z'=\lambda e^{\lambda t}(\vb a+i\vb b)=e^{\lambda t}A(\vb a+i\vb b)=A\vb z$。
+
+      (2) 写$\vb z=\vb u+i\vb w$，$\vb u$、$\vb w$是实的。$\vb u'+i\vb w'=\vb z'=A\vb z=A\vb u+iA\vb w$，$A\vb u$、$A\vb w$都是实向量，比较实部、虚部得$\vb u'=A\vb u$、$\vb w'=A\vb w$。
+
+      (3) 若$\vb a$、$\vb b$线性相关，则$\vb a+i\vb b=c\vb u$，$\vb u$是不为零的实向量，$c$是复数。于是$A\vb u=\lambda\vb u$，左边是实向量，右边的虚部是$\beta\vb u\ne\vb 0$，矛盾。两个实解在$t=0$处的值是$\vb a$、$\vb b$，由[解的结构](lesson:math.ode.first-order-systems#thm-linear-system-space)，它们线性无关。
+  reference: |
+    $\vb z'=\lambda\vb z=A\vb z$；$A$为实矩阵，实部、虚部分别满足方程。若$\vb a$、$\vb b$相关，$\vb a+i\vb b$是实向量$\vb u$的倍数，$A\vb u=\lambda\vb u$的虚部$\beta\vb u\ne\vb 0$而左边为实，矛盾；初值$\vb a$、$\vb b$无关，两解无关。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$A$是$2\times2$的实矩阵，$\det A\ne0$。证明：$\vb x'=A\vb x$的原点:term[渐近稳定]{id="math.ode.asymptotically-stable"}（asymptotically stable），当且仅当$\operatorname{tr}A<0$并且$\det A>0$。
+  hints:
+    - |
+      用分类定理，分$D<0$、$D>0$两种情形，再看特征值的实部。
+    - |
+      所有的解都是$e^{\mu t}$乘$\cos$、$\sin$或$t$的多项式这样的项的组合，$\mu$是特征值的实部。实部都为负时，解的长度不超过$Ce^{-\delta t}|\vb x_0|$。
+    - |
+      若$T<0$、$D>0$：由分类定理，原点是结点或焦点，两个特征值的实部都为负（实特征值时都为负，复特征值时实部是$\frac T2<0$）。解是$e^{\mu t}$乘上$\cos$、$\sin$或至多一次的多项式的项的组合，$\mu<0$，所以存在$C$、$\delta>0$使$|\vb x(t)|\le Ce^{-\delta t}|\vb x_0|$：附近出发的解留在附近，并且趋于原点，原点渐近稳定。
+
+      反过来，$D<0$时原点是鞍点，从正特征值的特征向量出发的解$e^{\lambda t}\vb v$无界；$D>0$、$T>0$时两个特征值的实部都为正，除零解外的解都离开原点；$D>0$、$T=0$时原点是中心，解绕着原点转，不趋于它。这三种情形原点都不是渐近稳定的。
+  reference: |
+    $T<0$、$D>0$时两个特征值实部为负，$|\vb x(t)|\le Ce^{-\delta t}|\vb x_0|$，渐近稳定。$D<0$是鞍点，有无界的解；$T>0$时解离开原点；$T=0$、$D>0$是中心，不趋于原点。
+
+- id: p7
+  tier: thinking
+  statement: |
+    $A=\begin{pmatrix}-1&0\\0&0\end{pmatrix}$时，$\vb x'=A\vb x$的相图是什么样子？把$A$改成$\begin{pmatrix}-1&0\\0&\varepsilon\end{pmatrix}$，$\varepsilon$稍大于$0$或稍小于$0$时，原点各是哪种平衡点？这说明迹-行列式平面（trace-determinant plane）上的哪些地方要特别小心？
+  hints:
+    - |
+      $\varepsilon=0$时方程是$x'=-x$、$y'=0$，直接解出来。
+    - |
+      $\varepsilon\ne0$时$D=-\varepsilon$，$T=-1+\varepsilon$。
+    - |
+      $\varepsilon=0$时$x=c_1e^{-t}$、$y=c_2$：纵轴上的每个点都是平衡点，其余的点沿水平线走向纵轴。这不是孤立的平衡点，不属于结点、鞍点。$\varepsilon>0$时$D=-\varepsilon<0$，原点是鞍点；$\varepsilon<0$时$D>0$、$T^2-4D=(1+\varepsilon)^2>0$，原点是渐近稳定的结点。
+
+      $A$改动一点点，平衡点的类型就变了：$D=0$这条线是鞍点和结点的分界。同样，纵轴$T=0$是稳定焦点和不稳定焦点的分界，中心正好落在上面，任何一点扰动都可能把中心变成焦点；抛物线$T^2=4D$上的结点也介于焦点和结点之间。这些边界上的情形在[非线性系统与线性化](lesson:math.ode.nonlinear-systems)里要特别小心：线性化只能可靠地判断边界以外的类型。
+  reference: |
+    $\varepsilon=0$时纵轴全是平衡点，其余点水平地趋向纵轴。$\varepsilon>0$是鞍点，$\varepsilon<0$是稳定结点。$D=0$、$T=0$、$T^2=4D$这些分界线上的类型经不起扰动，线性化判断非线性系统时要小心这些情形。
+
+- id: p8
+  tier: thinking
+  statement: |
+    [常系数齐次线性方程](lesson:math.ode.constant-coefficients)里说，:term[临界阻尼]{id="math.ode.critically-damped"}（critically damped）和:term[过阻尼]{id="math.ode.overdamped"}（overdamped）时物块至多越过平衡位置一次，:term[欠阻尼]{id="math.ode.underdamped"}（underdamped）时却来回越过无穷多次。在$(y,v)$相平面上解释这件事。
+  hints:
+    - |
+      物块越过平衡位置，就是$y$经过$0$，相平面上是轨线穿过哪条线？
+    - |
+      $y=0$是纵轴。欠阻尼时原点是焦点，结点时看$y(t)$的表达式。
+    - |
+      物块越过平衡位置，就是轨线穿过纵轴$y=0$。欠阻尼时原点是焦点，轨线一圈圈盘旋，每转一圈穿过纵轴两次，所以越过平衡位置无穷多次。
+
+      过阻尼时两个特征值$\lambda_1<\lambda_2<0$，特征向量是$(1,\lambda_1)$、$(1,\lambda_2)$，所以$y(t)=c_1e^{\lambda_1t}+c_2e^{\lambda_2t}$；$y=0$即$e^{(\lambda_1-\lambda_2)t}=-\frac{c_2}{c_1}$，左边严格单调，至多一个解。临界阻尼时$y=(c_1+c_2t)e^{\lambda t}$，一次因式至多一个零点。所以结点处的轨线至多穿过纵轴一次。
+  reference: |
+    越过平衡位置即轨线穿过纵轴。焦点处轨线盘旋，无穷多次穿过纵轴。结点时$y=c_1e^{\lambda_1t}+c_2e^{\lambda_2t}$或$(c_1+c_2t)e^{\lambda t}$，至多一个零点，至多穿过一次。

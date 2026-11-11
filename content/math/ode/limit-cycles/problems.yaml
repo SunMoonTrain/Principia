@@ -1,0 +1,133 @@
+- id: p1
+  tier: easy
+  statement: |
+    极坐标下的方程组$r'=r(4-r^2)$、$\theta'=1$有一个:term[极限环]{id="math.ode.limit-cycle"}（limit cycle），它是以原点为圆心的圆。求它的半径。
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      $\theta'=1$，点一直在转；$r$不变的圆就是闭轨。
+    - |
+      $r'=0$的正根：$r(4-r^2)=0$。
+    - |
+      正根是$r=2$；$0<r<2$时$r'>0$，$r>2$时$r'<0$，两侧的轨线都趋近这个圆，它是稳定的极限环，半径$2$。
+  solution: |
+    $r'=0$的正根是$2$，填 `2`。
+
+- id: p2
+  tier: easy
+  statement: |
+    极坐标下的方程组$r'=r(1-r^2)$、$\theta'=3$有极限环$r=1$。求极限环上的解的周期。
+  answer:
+    type: number
+    value: 2*pi/3
+  hints:
+    - |
+      在极限环上$r=1$不变，点只在转。
+    - |
+      $\theta'=3$，转一圈要多长时间？
+    - |
+      角速度是$3$，转一圈$2\pi$要$\frac{2\pi}{3}\approx2.094395$。
+  solution: |
+    角速度$3$，周期$\frac{2\pi}{3}$，填 `2*pi/3`。
+
+- id: p3
+  tier: medium
+  statement: |
+    极坐标下的方程组$r'=r(r-1)(r-2)(3-r)$、$\theta'=1$。求所有稳定的极限环的半径。
+  answer:
+    type: set
+    value: [1, 3]
+  hints:
+    - |
+      先求$r'=0$的正根，再看$r'$在每个根两侧的符号。
+    - |
+      正根是$1$、$2$、$3$；把$r'$在$(0,1)$、$(1,2)$、$(2,3)$、$(3,+\infty)$上的符号列出来。
+    - |
+      $0<r<1$时$r'=r\cdot(-)\cdot(-)\cdot(+)>0$；$1<r<2$时$r'<0$；$2<r<3$时$r'>0$；$r>3$时$r'<0$。所以$r=1$、$r=3$两侧的轨线都趋近它们，是稳定的；$r=2$两侧的都离开，是不稳定的。
+  solution: |
+    稳定的极限环是$r=1$和$r=3$，填 `1, 3`。
+
+- id: p4
+  tier: medium
+  statement: |
+    范德波尔方程$x''-\mu(1-x^2)x'+x=0$化成方程组后，原点处:term[线性化]{id="math.ode.linearization"}（linearization）的矩阵是$\begin{pmatrix}0&1\\-1&\mu\end{pmatrix}$。$\mu$从$0$开始增大，原点从不稳定的焦点（focus）变成不稳定的结点（node），求这时$\mu$的值。
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      迹（trace）$T=\mu$，行列式$D=1$。焦点和结点的分界是什么？
+    - |
+      $T^2<4D$时是焦点，$T^2\ge4D$时是结点。
+    - |
+      $\mu^2\ge4$即$\mu\ge2$。$0<\mu<2$时原点是不稳定的焦点，$\mu=2$时特征值（eigenvalue）$1$是二重的，原点开始成为不稳定的结点。
+  solution: |
+    $\mu^2=4$，填 `2`。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$D$是平面上的单连通区域（simply connected region，没有「洞」），在$D$里$\frac{\partial f_1}{\partial x}+\frac{\partial f_2}{\partial y}$不变号，并且不在任何一小块区域上恒为零。证明$D$里没有$\vb x'=\vb f(\vb x)$的闭轨（这叫本迪克松判别法，Bendixson's criterion），可以直接用[格林公式](lesson:math.vector-calculus.greens-theorem)（Green's theorem）。再用它说明$y''+(1+y^2)y'+y=0$没有周期解。
+  hints:
+    - |
+      设$C$是$D$里的一条闭轨，围住区域$S$。对$S$用格林公式，把面积分化成沿$C$的曲线积分。
+    - |
+      $\iint_S\Bigl(\frac{\partial f_1}{\partial x}+\frac{\partial f_2}{\partial y}\Bigr)\dd A=\oint_C(f_1\dd y-f_2\dd x)$。沿着轨线，$\dd x=f_1\dd t$、$\dd y=f_2\dd t$。
+    - |
+      设$C$是$D$里的闭轨，围住区域$S$；$D$单连通，$S\subset D$。由格林公式，$\iint_S\bigl(\frac{\partial f_1}{\partial x}+\frac{\partial f_2}{\partial y}\bigr)\dd A=\oint_C(f_1\dd y-f_2\dd x)$。沿着轨线$\dd x=f_1\dd t$、$\dd y=f_2\dd t$，右边的被积式是$(f_1f_2-f_2f_1)\dd t=0$。可左边的被积函数不变号、又不在一小块上恒为零，积分不为零，矛盾。
+
+      对$y''+(1+y^2)y'+y=0$，令$v=y'$，$f_1=v$、$f_2=-y-(1+y^2)v$，$\frac{\partial f_1}{\partial y}+\frac{\partial f_2}{\partial v}=-(1+y^2)<0$在整个平面上成立。所以平面上没有闭轨，方程没有周期解。
+  reference: |
+    若闭轨$C$围住$S\subset D$，格林公式给出$\iint_S\bigl(\frac{\partial f_1}{\partial x}+\frac{\partial f_2}{\partial y}\bigr)\dd A=\oint_C(f_1\dd y-f_2\dd x)=0$，而左边不为零，矛盾。$y''+(1+y^2)y'+y=0$对应的散度是$-(1+y^2)<0$，没有闭轨。
+
+- id: p6
+  tier: hard
+  statement: |
+    对$r'=r(1-r^2)$、$\theta'=1$，令$u=r^2$。(1) 证明$u'=2u(1-u)$；(2) 解出$u(t)$；(3) 证明从任何$r_0>0$出发，都有$r(t)\to1$，从而$r=1$是稳定的极限环，并且吸引除原点以外的所有轨线。
+  hints:
+    - |
+      $u'=2rr'$。
+    - |
+      $u'=2u(1-u)$是:term[逻辑斯谛方程]{id="math.ode.logistic-equation"}（logistic equation），可以分离变量。
+    - |
+      (1) $u'=2rr'=2r^2(1-r^2)=2u(1-u)$。
+
+      (2) 分离变量，$\frac{\dd u}{u(1-u)}=2\dd t$，$\ln\frac{u}{1-u}=2t+C$，得$u(t)=\frac{1}{1+Ke^{-2t}}$，$K=\frac{1-u_0}{u_0}$，$u_0=r_0^2>0$。
+
+      (3) $t\to+\infty$时$Ke^{-2t}\to0$，$u\to1$，$r=\sqrt u\to1$，不论$r_0<1$还是$r_0>1$；同时$\theta=\theta_0+t$一直在转。所以除原点外，每条轨线都盘旋着趋近$r=1$。
+  reference: |
+    $u'=2rr'=2u(1-u)$，解得$u=\frac{1}{1+Ke^{-2t}}$，$K=\frac{1-r_0^2}{r_0^2}$。$t\to+\infty$时$u\to1$，$r\to1$，轨线盘旋趋近单位圆，它是吸引所有非零轨线的稳定极限环。
+
+- id: p7
+  tier: thinking
+  statement: |
+    为什么线性方程组$\vb x'=A\vb x$不可能有极限环？它有闭轨时，相图（phase portrait）是什么样子？
+  hints:
+    - |
+      若$\vb x(t)$是周期解，$2\vb x(t)$是不是解，是不是周期的？
+    - |
+      周期解乘任何常数$c$仍是周期解，轨线是原来的闭轨放大$c$倍。
+    - |
+      若$\vb x(t)$是周期解，由线性，$c\vb x(t)$也是解，并且周期相同；它的轨线是原来的闭轨放大$c$倍。$c$取接近$1$的数，就得到挨着原来的闭轨的另一条闭轨，所以闭轨不是孤立的，不是极限环。
+
+      平面线性系统有闭轨时，周期解只能来自纯虚数的特征值，原点是中心，闭轨是一圈套一圈的椭圆。极限环这种「振幅由方程决定」的振荡，只有非线性系统才有。
+  reference: |
+    线性系统的周期解乘常数仍是周期解，闭轨成片出现，不孤立。平面线性系统有闭轨时原点是中心，闭轨是一族椭圆。极限环只出现在非线性系统里。
+
+- id: p8
+  tier: thinking
+  statement: |
+    范德波尔方程的$E=\frac12(x^2+y^2)$满足$\frac{\dd E}{\dd t}=\mu(1-x^2)y^2$。为什么沿着极限环转一圈，$\int_0^T\mu(1-x^2)y^2\dd t=0$（$T$是周期）？这说明极限环上的能量是怎样收支的？这种振动和受周期外力驱动的振动有什么不同？
+  hints:
+    - |
+      转一圈回到出发点，$E$的值怎样？
+    - |
+      积分等于$E(T)-E(0)$。被积函数在$|x|<1$时为正，在$|x|>1$时为负。
+    - |
+      转一圈回到原处，$E(T)=E(0)$，所以$\int_0^T\frac{\dd E}{\dd t}\dd t=0$。极限环上，$|x|<1$的那几段$E$增加（负阻尼输入能量），$|x|>1$的那几段$E$减少（正阻尼消耗能量），一圈下来收支恰好相抵。振幅太小时输入多于消耗，振幅长大；太大时消耗多于输入，振幅变小，所以振幅停在极限环上。
+
+      受迫振动（forced oscillation）要有外加的周期力，最后的频率跟着外力，振幅由外力的幅度、频率和阻尼决定，和初值无关；范德波尔振子没有周期性的外力，频率和振幅都由方程自己决定，这叫自激振动（self-sustained oscillation）。
+  reference: |
+    转一圈$E$回到原值，积分为零：$|x|<1$时负阻尼输入能量，$|x|>1$时正阻尼消耗，一圈收支相抵，振幅大了小了都会被拉回。受迫振动的频率由外力定；自激振动的频率、振幅都由方程自己定。

@@ -40,7 +40,7 @@ $f(y,\mu)=\mu-y^2$的图像是开口向下的抛物线，$\mu$增大时整条抛
 ::anchor{id="def-saddle-node"}
 两个:term[平衡点]{id="math.ode.equilibrium-point"}随参数靠近、合并，然后一起消失，叫作:term[鞍结分岔]{id="math.ode.saddle-node-bifurcation"}（saddle-node bifurcation）。标准的例子是$y'=\mu-y^2$：$\mu<0$时没有平衡点；$\mu=0$时只有一个半稳定的平衡点$0$；$\mu>0$时有两个，$\sqrt\mu$稳定，$-\sqrt\mu$不稳定。
 
-为什么这样定义：这是最常见的:term[分岔]{id="math.ode.bifurcation"}。一般的$f$随参数变化时，图像上的一个极值点越过横轴，零点就成对地出现或消失，合并的两点总是一个稳定、一个不稳定。名字来自平面上的方程组：合并的两个平衡点在那里一个是鞍点（saddle）、一个是结点（node），见以后的[平面线性系统的相图](lesson:math.ode.phase-plane-linear)。边界情况：$y'=\mu+y^2$方向相反，$\mu<0$时有两个平衡点，$\mu>0$时一个也没有。
+为什么这样定义：这是最常见的:term[分岔]{id="math.ode.bifurcation"}。一般的$f$随参数变化时，图像上的一个极值点越过横轴，零点就成对地出现或消失，合并的两点总是一个稳定、一个不稳定。名字来自平面上的方程组：合并的两个平衡点在那里一个是:term[鞍点]{id="math.ode.saddle-point"}（saddle point）、一个是:term[结点]{id="math.ode.node"}（node），见以后的[平面线性系统的相图](lesson:math.ode.phase-plane-linear)。边界情况：$y'=\mu+y^2$方向相反，$\mu<0$时有两个平衡点，$\mu>0$时一个也没有。
 
 ### 跨临界分岔与叉式分岔
 

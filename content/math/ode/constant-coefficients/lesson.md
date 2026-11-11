@@ -38,7 +38,7 @@ $n$阶常系数方程$y^{(n)}+a_{n-1}y^{(n-1)}+\dots+a_0y=0$也一样：特征�
 弹簧振子$my''+cy'+ky=0$里，$y$是$t$时刻的位移，$m,k>0$，阻尼系数$c\ge0$。它的:term[特征方程]{id="math.ode.characteristic-equation"}$mr^2+cr+k=0$的判别式是$c^2-4mk$，按它的符号分三种情形。
 
 ::anchor{id="def-damping-cases"}
-$c^2<4mk$时特征根是一对共轭复根（complex conjugate roots）$-\frac{c}{2m}\pm\beta i$，解是振幅按$e^{-\frac{c}{2m}t}$衰减的振荡，叫作欠阻尼（underdamped）；$c^2=4mk$时是重根，叫作临界阻尼（critically damped）；$c^2>4mk$时是两个负实根，叫作过阻尼（overdamped），解不振荡。
+$c^2<4mk$时特征根是一对共轭复根（complex conjugate roots）$-\frac{c}{2m}\pm\beta i$，解是振幅按$e^{-\frac{c}{2m}t}$衰减的振荡，叫作:term[欠阻尼]{id="math.ode.underdamped"}（underdamped）；$c^2=4mk$时是重根，叫作:term[临界阻尼]{id="math.ode.critically-damped"}（critically damped）；$c^2>4mk$时是两个负实根，叫作:term[过阻尼]{id="math.ode.overdamped"}（overdamped），解不振荡。
 
 为什么这样定义：三种情形的分界是判别式为零，解的样子在那里由振荡变成不振荡。临界阻尼和过阻尼时，解至多越过平衡位置一次，然后单调地回去。边界情况：$c=0$时特征根是$\pm\sqrt{k/m}\,i$，解是振幅不变的简谐振动（simple harmonic motion），角频率是$\sqrt{k/m}$。
 
@@ -46,7 +46,7 @@ $c^2<4mk$时特征根是一对共轭复根（complex conjugate roots）$-\frac{c
 
 ![三条曲线：y″ + cy′ + y = 0 在 y(0) = 1、y′(0) = 0 时的解，横轴 t 从 0 到 12。c = 0.5 的欠阻尼解在 0 上下来回振荡、振幅逐渐变小；c = 2 的临界阻尼解和 c = 4 的过阻尼解都不越过 0，过阻尼的解回去得更慢](damping-curves.svg)
 
-三条曲线的初始位移和初速度相同，只有阻尼不同：欠阻尼的解在平衡位置两侧来回振荡，临界阻尼和过阻尼的解不越过平衡位置；阻尼过了临界值以后再加大，回去反而更慢。
+三条曲线的初始位移和初速度相同，只有阻尼不同：:term[欠阻尼]{id="math.ode.underdamped"}的解在平衡位置两侧来回振荡，:term[临界阻尼]{id="math.ode.critically-damped"}和:term[过阻尼]{id="math.ode.overdamped"}的解不越过平衡位置；阻尼过了临界值以后再加大，回去反而更慢。
 
 :::anim{component="oscillator"}
 masses: [1]
@@ -88,5 +88,5 @@ sliders:
 
 - 「:term[特征方程]{id="math.ode.characteristic-equation"}没有实根，方程就没有实数解。」一对复根$\alpha\pm\beta i$给出$e^{\alpha x}\cos\beta x$、$e^{\alpha x}\sin\beta x$两个实数解。
 - 「重根时:term[通解]{id="math.ode.general-solution"}是$C_1e^{rx}+C_2e^{rx}$。」这只是$(C_1+C_2)e^{rx}$，只用到一个解；第二个解是$xe^{rx}$。
-- 「阻尼越大，回到平衡位置越快。」过了临界阻尼，再加大阻尼反而回去得更慢（第 7 题）。
+- 「阻尼越大，回到平衡位置越快。」过了:term[临界阻尼]{id="math.ode.critically-damped"}，再加大阻尼反而回去得更慢（第 7 题）。
 - 「复根时只能写复数形式的通解。」复数形式$C_1e^{(\alpha+\beta i)x}+C_2e^{(\alpha-\beta i)x}$在$C_2=\overline{C_1}$时给出实数解，和实形式的通解是同一族函数。
