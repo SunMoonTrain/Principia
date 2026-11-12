@@ -7,4 +7,332 @@ macros:
     \mathbf{#1}
   \dd: |
     \mathop{}\!\mathrm{d}
-glossary: []
+  \dv: |
+    \frac{\mathrm{d} #1}{\mathrm{d} #2}
+glossary:
+  - id: physics.optics.refractive-index
+    zh: |
+      折射率
+    en: |
+      refractive index
+    brief: |
+      真空中的光速和光在介质里的速度之比$n=\frac cv$；光从一种介质进入另一种时偏折多少，由两边的折射率按折射定律决定。
+    definedIn: physics.optics.reflection-refraction
+    anchor: def-refractive-index
+  - id: physics.optics.law-of-reflection
+    zh: |
+      反射定律
+    en: |
+      law of reflection
+    brief: |
+      反射光线在入射面内，和入射光线分居法线两侧，反射角等于入射角。
+    definedIn: physics.optics.reflection-refraction
+    anchor: thm-reflection
+  - id: physics.optics.law-of-refraction
+    zh: |
+      折射定律
+    en: |
+      law of refraction
+    brief: |
+      折射光线在入射面内，和入射光线分居法线两侧，入射角和折射角满足$n_1\sin\theta_1=n_2\sin\theta_2$；也叫斯涅耳定律。
+    definedIn: physics.optics.reflection-refraction
+    anchor: thm-snell
+  - id: physics.optics.reversibility
+    zh: |
+      光路可逆
+    en: |
+      principle of reversibility
+    brief: |
+      光沿某条路径从一点传到另一点，从后一点沿这条路径反向射出的光，也会沿原路传回前一点。
+    definedIn: physics.optics.reflection-refraction
+    anchor: thm-reversibility
+  - id: physics.optics.dispersion
+    zh: |
+      色散
+    en: |
+      dispersion
+    brief: |
+      介质的折射率随光的波长变化的现象；玻璃、水在可见光范围里波长越短折射率越大，白光经过棱镜因此分成彩色。
+    definedIn: physics.optics.prisms-dispersion
+    anchor: def-dispersion
+  - id: physics.optics.abbe-number
+    zh: |
+      阿贝数
+    en: |
+      Abbe number
+    brief: |
+      $V=\frac{n_{\mathrm d}-1}{n_{\mathrm F}-n_{\mathrm C}}$，用玻璃对 d 线的折射率和 F、C 两条谱线的折射率之差算出；阿贝数越大，偏折同样多时颜色分得越少。
+    definedIn: physics.optics.prisms-dispersion
+    anchor: def-abbe-number
+  - id: physics.optics.thin-prism
+    zh: |
+      薄棱镜
+    en: |
+      thin prism
+    brief: |
+      顶角很小的棱镜；光接近垂直地射入时，偏向角约为$(n-1)\alpha$，和入射角无关。
+    definedIn: physics.optics.prisms-dispersion
+    anchor: def-thin-prism
+  - id: physics.optics.crown-glass
+    zh: |
+      冕牌玻璃
+    en: |
+      crown glass
+    brief: |
+      阿贝数大、色散小的光学玻璃，例如阿贝数约为$64$的 N-BK7。
+    definedIn: physics.optics.prisms-dispersion
+    anchor: def-crown-flint
+  - id: physics.optics.flint-glass
+    zh: |
+      火石玻璃
+    en: |
+      flint glass
+    brief: |
+      阿贝数小、色散大的光学玻璃，例如阿贝数约为$36$的 N-F2；折射率一般也比冕牌玻璃大。
+    definedIn: physics.optics.prisms-dispersion
+    anchor: def-crown-flint
+  - id: physics.optics.critical-angle
+    zh: |
+      临界角
+    en: |
+      critical angle
+    brief: |
+      光从折射率较大的介质射向折射率较小的介质时，折射角等于$90^\circ$的那个入射角，$\sin\theta_{\mathrm c}=\frac{n_2}{n_1}$；入射角比它大就没有折射光。
+    definedIn: physics.optics.total-internal-reflection
+    anchor: def-critical-angle
+  - id: physics.optics.total-internal-reflection
+    zh: |
+      全反射
+    en: |
+      total internal reflection
+    brief: |
+      光从折射率较大的介质射向折射率较小的介质，入射角大于临界角时，在界面上全部反射、没有折射光的现象。
+    definedIn: physics.optics.total-internal-reflection
+    anchor: def-tir
+  - id: physics.optics.numerical-aperture
+    zh: |
+      数值孔径
+    en: |
+      numerical aperture
+    abbr: |
+      NA
+    brief: |
+      能被光纤收下、靠全反射传下去的光，在端面外和轴的最大夹角的正弦；纤芯、包层的折射率为$n_1$、$n_2$时等于$\sqrt{n_1^2-n_2^2}$。
+    definedIn: physics.optics.total-internal-reflection
+    anchor: def-numerical-aperture
+  - id: physics.optics.optical-axis
+    zh: |
+      光轴
+    en: |
+      optical axis
+    brief: |
+      过球面的球心和顶点的直线；各个球面的球心都在同一条直线上时，这条直线是整个光学系统的光轴，也是它的对称轴。
+    definedIn: physics.optics.paraxial-refraction
+    anchor: def-optical-axis
+  - id: physics.optics.paraxial-approximation
+    zh: |
+      近轴近似
+    en: |
+      paraxial approximation
+    brief: |
+      只考虑和光轴夹角小、离光轴近的光线，把角度的正弦、正切换成角度本身；这时一点发出的光经过球面会聚到一点。
+    definedIn: physics.optics.paraxial-refraction
+    anchor: def-paraxial
+  - id: physics.optics.paraxial-ray
+    zh: |
+      近轴光线
+    en: |
+      paraxial ray
+    brief: |
+      和光轴的夹角很小、离光轴也很近的光线；只考虑这样的光线，就能用近轴近似处理成像。
+    definedIn: physics.optics.paraxial-refraction
+    anchor: def-paraxial
+  - id: physics.optics.real-image
+    zh: |
+      实像
+    en: |
+      real image
+    brief: |
+      从物点发出的光经过光学系统以后真正会聚而成的像，能用屏接住。
+    definedIn: physics.optics.paraxial-refraction
+    anchor: def-image
+  - id: physics.optics.virtual-image
+    zh: |
+      虚像
+    en: |
+      virtual image
+    brief: |
+      射出的光并不会聚，只是它们的反向延长线交于一点所成的像；屏接不到，眼睛看得见，平面镜里的像就是虚像。
+    definedIn: physics.optics.paraxial-refraction
+    anchor: def-image
+  - id: physics.optics.object-distance
+    zh: |
+      物距
+    en: |
+      object distance
+    brief: |
+      物点到球面顶点（或透镜中心）沿光轴的距离$s$；按符号规则，物在入射一侧时为正。
+    definedIn: physics.optics.paraxial-refraction
+    anchor: def-sign-convention
+  - id: physics.optics.image-distance
+    zh: |
+      像距
+    en: |
+      image distance
+    brief: |
+      像点到球面顶点（或透镜中心）沿光轴的距离$s'$；按符号规则，像在出射一侧时为正，是实像，为负时是虚像。
+    definedIn: physics.optics.paraxial-refraction
+    anchor: def-sign-convention
+  - id: physics.optics.sign-convention
+    zh: |
+      符号规则
+    en: |
+      sign convention
+    brief: |
+      光从左向右射来；物在入射一侧时物距为正，像在出射一侧时像距为正，球心在出射一侧时半径为正，物、像在光轴上方时高度为正。
+    definedIn: physics.optics.paraxial-refraction
+    anchor: def-sign-convention
+  - id: physics.optics.virtual-object
+    zh: |
+      虚物
+    en: |
+      virtual object
+    brief: |
+      射来的光正会聚向一点、还没会聚就遇到了球面或透镜时，这一点就是虚物；它在出射一侧，物距为负。
+    definedIn: physics.optics.paraxial-refraction
+    anchor: def-sign-convention
+  - id: physics.optics.focal-point
+    zh: |
+      焦点
+    en: |
+      focal point
+    brief: |
+      平行于光轴射来的光经过光学系统后会聚的点（像方焦点），或者发出的光经过系统后变成平行光的点（物方焦点）。
+    definedIn: physics.optics.paraxial-refraction
+    anchor: def-focal
+  - id: physics.optics.focal-length
+    zh: |
+      焦距
+    en: |
+      focal length
+    brief: |
+      焦点到球面顶点（或透镜中心）的距离；单个球面的像方焦距$f_2=\frac{n_2R}{n_2-n_1}$，物方焦距$f_1=\frac{n_1R}{n_2-n_1}$。
+    definedIn: physics.optics.paraxial-refraction
+    anchor: def-focal
+  - id: physics.optics.optical-power
+    zh: |
+      光焦度
+    en: |
+      optical power
+    brief: |
+      表示把光偏折得多厉害的量，单个球面$\Phi=\frac{n_2-n_1}{R}$；单位是$\mathrm m^{-1}$，叫作屈光度。
+    definedIn: physics.optics.paraxial-refraction
+    anchor: def-power
+  - id: physics.optics.diopter
+    zh: |
+      屈光度
+    en: |
+      diopter
+    brief: |
+      光焦度的单位，记作$\mathrm D$，等于$\mathrm m^{-1}$；光焦度越大，把光偏折得越厉害。
+    definedIn: physics.optics.paraxial-refraction
+    anchor: def-power
+  - id: physics.optics.lateral-magnification
+    zh: |
+      横向放大率
+    en: |
+      lateral magnification
+    brief: |
+      像高和物高之比$m=\frac{y'}{y}$；$m<0$时像倒立，$|m|>1$时像比物大。
+    definedIn: physics.optics.paraxial-refraction
+    anchor: thm-magnification
+  - id: physics.optics.thin-lens
+    zh: |
+      薄透镜
+    en: |
+      thin lens
+    brief: |
+      厚度比两面的半径、物距、像距都小得多的透镜，把两个折射面看作在同一个位置；成像公式是$\frac1s+\frac1{s'}=\frac1f$。
+    definedIn: physics.optics.thin-lenses
+    anchor: def-thin-lens
+  - id: physics.optics.optical-center
+    zh: |
+      光心
+    en: |
+      optical center
+    brief: |
+      薄透镜两个面和光轴交点处的那一点；过光心的光线穿过透镜时方向不变。
+    definedIn: physics.optics.thin-lenses
+    anchor: def-thin-lens
+  - id: physics.optics.lensmakers-equation
+    zh: |
+      磨镜者公式
+    en: |
+      lensmaker's equation
+    brief: |
+      空气中的薄透镜焦距$\frac1f=(n-1)\Bigl(\frac1{R_1}-\frac1{R_2}\Bigr)$，由玻璃的折射率和两面的半径决定。
+    definedIn: physics.optics.thin-lenses
+    anchor: thm-lensmaker
+  - id: physics.optics.aberration
+    zh: |
+      像差
+    en: |
+      aberration
+    brief: |
+      实际的光学系统所成的像和近轴理论预言的理想像之间的偏差，例如球差和色差。
+    definedIn: physics.optics.aberrations
+    anchor: def-aberration
+  - id: physics.optics.spherical-aberration
+    zh: |
+      球差
+    en: |
+      spherical aberration
+    brief: |
+      离光轴远近不同的平行光线经过球面后会聚到光轴上不同的点，像点拉成一段；离光轴越远的光线会聚得越靠近镜面或透镜。
+    definedIn: physics.optics.aberrations
+    anchor: def-spherical-aberration
+  - id: physics.optics.aperture-stop
+    zh: |
+      光阑
+    en: |
+      aperture stop
+    brief: |
+      光学系统里限制光束粗细的开孔，例如照相机的光圈；缩小光阑可以挡掉离光轴远的光、减小球差。
+    definedIn: physics.optics.aberrations
+    anchor: def-stop
+  - id: physics.optics.chromatic-aberration
+    zh: |
+      色差
+    en: |
+      chromatic aberration
+    brief: |
+      透镜对不同颜色的折射率不同、焦距不同，不同颜色的像成在不同位置；单透镜的 C、F 线焦距之差约为焦距除以阿贝数。
+    definedIn: physics.optics.aberrations
+    anchor: def-chromatic-aberration
+  - id: physics.optics.angular-magnification
+    zh: |
+      角放大率
+    en: |
+      angular magnification
+    brief: |
+      通过仪器看到的像对眼睛所张的角和不用仪器直接看物体时所张的角之比；像倒立时为负。
+    definedIn: physics.optics.optical-instruments
+    anchor: def-angular-magnification
+  - id: physics.optics.ray-transfer-matrix
+    zh: |
+      光线传输矩阵
+    en: |
+      ray transfer matrix
+    brief: |
+      近轴光线从一个参考面到另一个参考面时，把高度和角度变成新的高度和角度的$2\times2$矩阵，也叫 ABCD 矩阵。
+    definedIn: physics.optics.ray-transfer-matrices
+    anchor: def-ray-transfer-matrix
+  - id: physics.optics.effective-focal-length
+    zh: |
+      等效焦距
+    en: |
+      effective focal length
+    brief: |
+      光学系统对平行光的作用和一块薄透镜相同时，这块薄透镜的焦距；由系统矩阵左下角的元素算出，$f=-\frac1C$。
+    definedIn: physics.optics.ray-transfer-matrices
+    anchor: thm-read-matrix

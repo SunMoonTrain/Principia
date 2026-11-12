@@ -1068,6 +1068,15 @@ glossary:
       真空中的光速和介质中电磁波的速度之比$n=\frac cv$；线性介质里$n=\sqrt{\varepsilon_{\mathrm r}\mu_{\mathrm r}}$，随频率变。
     definedIn: physics.electromagnetism.waves-in-media
     anchor: def-refractive-index
+  - id: physics.electromagnetism.dispersion
+    zh: |
+      色散
+    en: |
+      dispersion
+    brief: |
+      介质的折射率随频率变化；束缚电子的振子模型给出正常色散，以及共振附近的反常色散和吸收。
+    definedIn: physics.electromagnetism.dispersion
+    anchor: def-dispersion
   - id: physics.electromagnetism.skin-depth
     zh: |
       趋肤深度

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 328" width="660" height="328" font-size="14">
+  <!-- 一条光线从参考面 1 出发，自由传播距离 d 到达薄透镜，被透镜偏折，再自由传播 d′ 到达参考面 2；它在参考面 1 上的高度和角度是 y1、θ1，在参考面 2 上是 y2、θ2。三段依次对应矩阵 T(d)、L(f)、T(d′)，系统矩阵 M = T(d′)L(f)T(d)，先经过的写在右边。 -->
+  <line x1="10.0" y1="175.0" x2="650.0" y2="175.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="6 4" />
+  <line x1="70.0" y1="52.0" x2="70.0" y2="187.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="3 3" />
+  <text x="70.0" y="40.0" style="fill: var(--muted, #6b7280)" text-anchor="middle">参考面 1</text>
+  <line x1="590.0" y1="52.0" x2="590.0" y2="187.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="3 3" />
+  <text x="590.0" y="40.0" style="fill: var(--muted, #6b7280)" text-anchor="middle">参考面 2</text>
+  <line x1="330.0" y1="83.0" x2="330.0" y2="267.0" style="stroke: currentColor" stroke-width="2.2" />
+  <path d="M 330.0 81.0 L 333.7 89.2 L 326.3 89.2 Z" style="fill: currentColor" />
+  <path d="M 330.0 269.0 L 326.3 260.8 L 333.7 260.8 Z" style="fill: currentColor" />
+  <text x="330.0" y="67.0" fill="currentColor" text-anchor="middle">薄透镜</text>
+  <line x1="40.0" y1="156.6" x2="330.0" y2="92.8" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <line x1="330.0" y1="92.8" x2="625.0" y2="162.6" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 200.0 121.4 L 193.6 126.2 L 192.2 119.8 Z" style="fill: var(--accent, #2563eb)" />
+  <path d="M 470.0 125.9 L 462.1 127.4 L 463.6 121.1 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="78.0" y1="175.0" x2="78.0" y2="150.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="74.0" y1="150.0" x2="82.0" y2="150.0" style="stroke: currentColor" stroke-width="1.0" />
+  <text x="84.0" y="168.0" fill="currentColor"><tspan font-style="italic">y</tspan><tspan dy="4" font-size="11">1</tspan></text>
+  <line x1="70.0" y1="150.0" x2="136.0" y2="150.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" stroke-dasharray="3 3" />
+  <path d="M 118.0 150.0 L 118.0 149.6 L 118.0 149.1 L 118.0 148.7 L 118.0 148.3 L 118.0 147.8 L 117.9 147.4 L 117.9 147.0 L 117.9 146.5 L 117.8 146.1 L 117.8 145.7 L 117.8 145.2 L 117.7 144.8 L 117.7 144.4 L 117.6 144.0 L 117.6 143.5 L 117.5 143.1 L 117.4 142.7 L 117.4 142.2 L 117.3 141.8 L 117.2 141.4 L 117.1 141.0 L 117.1 140.5 L 117.0 140.1 L 116.9 139.7" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.2" stroke-linejoin="round" />
+  <text x="122.0" y="130.6" fill="currentColor" text-anchor="middle"><tspan font-style="italic">θ</tspan><tspan dy="4" font-size="11">1</tspan></text>
+  <line x1="582.0" y1="175.0" x2="582.0" y2="154.3" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="578.0" y1="154.3" x2="586.0" y2="154.3" style="stroke: currentColor" stroke-width="1.0" />
+  <text x="576.0" y="169.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">y</tspan><tspan dy="4" font-size="11">2</tspan></text>
+  <line x1="590.0" y1="154.3" x2="524.0" y2="154.3" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" stroke-dasharray="3 3" />
+  <path d="M 542.0 154.3 L 542.0 153.9 L 542.0 153.4 L 542.0 152.9 L 542.0 152.5 L 542.1 152.0 L 542.1 151.5 L 542.1 151.1 L 542.1 150.6 L 542.2 150.2 L 542.2 149.7 L 542.3 149.2 L 542.3 148.8 L 542.4 148.3 L 542.4 147.8 L 542.5 147.4 L 542.6 146.9 L 542.6 146.5 L 542.7 146.0 L 542.8 145.6 L 542.9 145.1 L 543.0 144.6 L 543.1 144.2 L 543.2 143.7 L 543.3 143.3" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.2" stroke-linejoin="round" />
+  <text x="538.0" y="134.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">θ</tspan><tspan dy="4" font-size="11">2</tspan></text>
+  <line x1="70.0" y1="215.0" x2="330.0" y2="215.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="70.0" y1="210.0" x2="70.0" y2="220.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="330.0" y1="210.0" x2="330.0" y2="220.0" style="stroke: currentColor" stroke-width="1.0" />
+  <text x="200.0" y="233.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">d</tspan></text>
+  <line x1="330.0" y1="215.0" x2="590.0" y2="215.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="330.0" y1="210.0" x2="330.0" y2="220.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="590.0" y1="210.0" x2="590.0" y2="220.0" style="stroke: currentColor" stroke-width="1.0" />
+  <text x="460.0" y="233.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">d</tspan>′</text>
+  <text x="200.0" y="283.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">T</tspan>(<tspan font-style="italic">d</tspan>)</text>
+  <text x="330.0" y="283.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">L</tspan>(<tspan font-style="italic">f</tspan>)</text>
+  <text x="460.0" y="283.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">T</tspan>(<tspan font-style="italic">d</tspan>′)</text>
+  <text x="330.0" y="311.0" fill="currentColor" text-anchor="middle">系统矩阵 <tspan font-style="italic">M</tspan> = <tspan font-style="italic">T</tspan>(<tspan font-style="italic">d</tspan>′)<tspan font-style="italic">L</tspan>(<tspan font-style="italic">f</tspan>)<tspan font-style="italic">T</tspan>(<tspan font-style="italic">d</tspan>)</text>
+</svg>

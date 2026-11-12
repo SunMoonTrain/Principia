@@ -1,0 +1,168 @@
+- id: p1
+  tier: easy
+  statement: |
+    光线在参考面上离光轴$2.0\,\mathrm{mm}$，和光轴的夹角为$0.010\,\mathrm{rad}$（向右上），先自由传播$100\,\mathrm{mm}$，再穿过焦距为$50\,\mathrm{mm}$的薄透镜。射出时光线和光轴的夹角是多少？以$\mathrm{rad}$为单位，向右上为正，保留三位有效数字。
+  answer:
+    type: number
+    value: 0.010 - (2.0 + 100*0.010)/50
+    unit: |
+      $\mathrm{rad}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先乘$T(100\,\mathrm{mm})$，再乘$L(50\,\mathrm{mm})$。
+    - |
+      自由传播以后$y=2.0+100\times0.010=3.0\,\mathrm{mm}$，角度不变。
+    - |
+      $\theta=0.010-\frac{3.0}{50}=-0.0500\,\mathrm{rad}$。
+  solution: |
+    自由传播：$y=2.0+100\times0.010=3.0\,\mathrm{mm}$，$\theta=0.010\,\mathrm{rad}$。透镜：高度仍是$3.0\,\mathrm{mm}$，$\theta_2=0.010-\frac{3.0}{50}=-0.0500\,\mathrm{rad}$，光线向右下射，再走$\frac{3.0}{0.050}\,\mathrm{mm}=60\,\mathrm{mm}$到达光轴。验算：光线的延长线和光轴交于参考面前$\frac{2.0}{0.010}\,\mathrm{mm}=200\,\mathrm{mm}$处，即透镜前$300\,\mathrm{mm}$处，由成像公式$\frac1{s'}=\frac1{50}-\frac1{300}$，$s'=60\,\mathrm{mm}$，一致。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于光线传输矩阵的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        光依次经过几个元件，系统矩阵是把各个矩阵按光经过的先后从左往右相乘
+      - |
+        自由传播的矩阵的行列式是$1$
+      - |
+        两个参考面都在空气里时，$C=0$表示平行光射出后仍是平行光
+      - |
+        光穿过薄透镜时，高度和角度都改变
+      - |
+        $B=0$时，参考面 2 上成参考面 1 的像
+    value: [2, 3, 5]
+  hints:
+    - |
+      先经过的元件先作用在列向量上。
+    - |
+      $T(d)=\begin{pmatrix}1&d\\0&1\end{pmatrix}$，$L(f)=\begin{pmatrix}1&0\\-\frac1f&1\end{pmatrix}$；等效焦距$f=-\frac1C$。
+    - |
+      B、C、E 对；A、D 错。
+  solution: |
+    B 对：$1\times1-d\times0=1$。C 对：平行光射出时的角度是$Cy_1=0$，等效焦距为无穷大，望远镜就是这样。E 对：$y_2=Ay_1+B\theta_1$和$\theta_1$无关，一点发出的光会聚到一点。
+
+    A 错：先经过的写在右边，$M=M_k\cdots M_2M_1$。D 错：薄透镜只改变角度，高度不变。
+
+- id: p3
+  tier: medium
+  statement: |
+    两块薄透镜的焦距分别为$15\,\mathrm{cm}$和$10\,\mathrm{cm}$，相距$5.0\,\mathrm{cm}$。整个系统的等效焦距是多少？以$\mathrm{cm}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 1/(1/15 + 1/10 - 5.0/(15*10))
+    unit: |
+      $\mathrm{cm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $M=L(f_2)T(d)L(f_1)$，等效焦距$f=-\frac1C$。
+    - |
+      $\frac1f=\frac1{f_1}+\frac1{f_2}-\frac d{f_1f_2}$。
+    - |
+      $\frac1f=\frac1{15}+\frac1{10}-\frac{5.0}{150}=\frac2{15}\,\mathrm{cm^{-1}}$，$f=7.50\,\mathrm{cm}$。
+  solution: |
+    由例 1，$\frac1f=\frac1{15}+\frac1{10}-\frac{5.0}{15\times10}=\frac2{15}\,\mathrm{cm^{-1}}$，$f=7.50\,\mathrm{cm}$。像方焦点在第二块透镜后$-\frac AC$处，$A=1-\frac{5.0}{15}=\frac23$，$-\frac AC=\frac23\times7.50\,\mathrm{cm}=5.00\,\mathrm{cm}$。用逐个成像验算：第一块把平行光会聚在它后面$15\,\mathrm{cm}$处，对第二块是虚物，$s_2=5.0-15=-10\,\mathrm{cm}$，$\frac1{s_2'}=\frac1{10}+\frac1{10}$，$s_2'=5.00\,\mathrm{cm}$，一致。
+
+- id: p4
+  tier: medium
+  statement: |
+    一块平板玻璃厚$3.0\,\mathrm{cm}$，折射率为$1.50$，放在空气里。求从玻璃前表面外到后表面外的光线传输矩阵。这块玻璃对近轴光线的作用，相当于在空气里自由传播多远？以$\mathrm{cm}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 3.0/1.50
+    unit: |
+      $\mathrm{cm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      三个矩阵：平面从空气进入玻璃、在玻璃里走$3.0\,\mathrm{cm}$、平面从玻璃出到空气。
+    - |
+      $M=\begin{pmatrix}1&0\\0&1.5\end{pmatrix}\begin{pmatrix}1&3.0\\0&1\end{pmatrix}\begin{pmatrix}1&0\\0&\frac1{1.5}\end{pmatrix}$。
+    - |
+      乘出来是$\begin{pmatrix}1&2.00\\0&1\end{pmatrix}$，相当于自由传播$2.00\,\mathrm{cm}$。
+  solution: |
+    $M=\begin{pmatrix}1&0\\0&1.5\end{pmatrix}\begin{pmatrix}1&3.0\\0&1\end{pmatrix}\begin{pmatrix}1&0\\0&\frac1{1.5}\end{pmatrix}=\begin{pmatrix}1&\frac{3.0}{1.5}\\0&1\end{pmatrix}=\begin{pmatrix}1&2.00\\0&1\end{pmatrix}$，和$T(2.00\,\mathrm{cm})$一样。光在玻璃里偏折得小，同样的厚度，高度只变化在空气里的$\frac1{1.5}$，好像玻璃只有$\frac dn$厚；从上面看，池底显得比实际浅，也是这个道理（见[反射定律与折射定律](lesson:physics.optics.reflection-refraction)例 2）。
+
+- id: p5
+  tier: hard
+  statement: |
+    用折射率为$n$的玻璃做一块透镜，两面的半径依次为$R_1$、$R_2$，中心厚度为$d$，放在空气里。（1）用球面折射和自由传播的矩阵，证明它的等效焦距满足$\frac1f=(n-1)\Bigl(\frac1{R_1}-\frac1{R_2}\Bigr)+\frac{(n-1)^2d}{nR_1R_2}$。（2）$d\to0$时回到什么公式？（3）说明一面是平面的平凸透镜，等效焦距和厚度无关。
+  hints:
+    - |
+      $M=S_2T(d)S_1$，$S_1=\begin{pmatrix}1&0\\\frac{1-n}{nR_1}&\frac1n\end{pmatrix}$，$S_2=\begin{pmatrix}1&0\\\frac{n-1}{R_2}&n\end{pmatrix}$。
+    - |
+      只要求左下角的元素$C$，等效焦距$f=-\frac1C$。
+    - |
+      $C=\frac{n-1}{R_2}\Bigl(1+\frac{(1-n)d}{nR_1}\Bigr)+\frac{1-n}{R_1}$。
+  reference: |
+    （1）第一个面从空气进入玻璃，$S_1=\begin{pmatrix}1&0\\\frac{1-n}{nR_1}&\frac1n\end{pmatrix}$；第二个面从玻璃出到空气，$S_2=\begin{pmatrix}1&0\\\frac{n-1}{R_2}&n\end{pmatrix}$。$T(d)S_1=\begin{pmatrix}1+\frac{(1-n)d}{nR_1}&\frac dn\\\frac{1-n}{nR_1}&\frac1n\end{pmatrix}$，再左乘$S_2$，左下角是$C=\frac{n-1}{R_2}\Bigl(1+\frac{(1-n)d}{nR_1}\Bigr)+n\cdot\frac{1-n}{nR_1}=-(n-1)\Bigl(\frac1{R_1}-\frac1{R_2}\Bigr)-\frac{(n-1)^2d}{nR_1R_2}$。所以$\frac1f=-C=(n-1)\Bigl(\frac1{R_1}-\frac1{R_2}\Bigr)+\frac{(n-1)^2d}{nR_1R_2}$。
+
+    （2）$d\to0$时最后一项消失，就是[磨镜者公式](lesson:physics.optics.thin-lenses#thm-lensmaker)。
+
+    （3）第二面是平面，$R_2\to\infty$，含$d$的那一项是$\frac{(n-1)^2d}{nR_1R_2}\to0$，$\frac1f=\frac{n-1}{R_1}$，和厚度无关；第一面是平面时同理。厚度只改变焦点的位置（例 2），不改变等效焦距。
+
+- id: p6
+  tier: hard
+  statement: |
+    一排焦距都是$f$的薄透镜，相邻两块相距$d$，光沿着这一排透镜往前走（透镜波导，lens waveguide）。取「走过间距$d$、再穿过一块透镜」为一节，它的矩阵是$M=L(f)T(d)$。（1）求$M$。（2）$d=2f$时求$M^2$，并说明光线每经过 4 节就回到原来的高度和角度。
+
+    （3）$d=5f$时，一条平行于光轴、高为$y_0$的光线经过 2 节、4 节以后，高度各是多少？光线会怎样？
+  hints:
+    - |
+      $M=\begin{pmatrix}1&d\\-\frac1f&1-\frac df\end{pmatrix}$。
+    - |
+      $d=2f$时$M^2=-I$，$I$是单位矩阵（identity matrix）。
+    - |
+      $d=5f$时$M^2=\begin{pmatrix}-4&-15f\\\frac3f&11\end{pmatrix}$，高度依次是$-4y_0$、$-29y_0$。
+  reference: |
+    （1）$M=\begin{pmatrix}1&0\\-\frac1f&1\end{pmatrix}\begin{pmatrix}1&d\\0&1\end{pmatrix}=\begin{pmatrix}1&d\\-\frac1f&1-\frac df\end{pmatrix}$。
+
+    （2）$d=2f$时$M=\begin{pmatrix}1&2f\\-\frac1f&-1\end{pmatrix}$，$M^2=\begin{pmatrix}1-2&2f-2f\\-\frac1f+\frac1f&-2+1\end{pmatrix}=\begin{pmatrix}-1&0\\0&-1\end{pmatrix}=-I$，$I$是单位矩阵（见[矩阵与矩阵乘法](lesson:math.linear-algebra.matrices#def-identity)）。经过 2 节，高度和角度都变号，光线到了光轴另一侧的对称位置；再经过 2 节，$M^4=I$，回到原来的高度和角度。不管从哪里射入，近轴光线都一直留在光轴附近，被这一排透镜引导着往前走。
+
+    （3）$d=5f$时$M=\begin{pmatrix}1&5f\\-\frac1f&-4\end{pmatrix}$，$M^2=\begin{pmatrix}-4&-15f\\\frac3f&11\end{pmatrix}$，$M^4=(M^2)^2=\begin{pmatrix}-29&-105f\\\frac{21}f&76\end{pmatrix}$。光线$\begin{pmatrix}y_0\\0\end{pmatrix}$经过 2 节，高度是$-4y_0$；经过 4 节，高度是$-29y_0$。
+
+    高度在光轴两侧来回摆，而且越摆越大，很快就超出透镜的边缘跑掉了。透镜间距太大，每块透镜把光线拉回光轴的作用过了头，越拉越偏。可以证明，$0<d<4f$时光线一直留在光轴附近，$d>4f$时越走越远。
+
+- id: p7
+  tier: thinking
+  statement: |
+    两个参考面都在空气里，系统的光线传输矩阵为$\begin{pmatrix}A&B\\C&D\end{pmatrix}$。分别说明下面四种情况的意义，各举一个由薄透镜和自由传播组成的例子：（1）$A=0$；（2）$B=0$；（3）$C=0$；（4）$D=0$。
+  hints:
+    - |
+      看平行于光轴射入的光线$\begin{pmatrix}y_1\\0\end{pmatrix}$射出时的高度和角度。
+    - |
+      看参考面 1 上一点发出的、角度不同的光线到达参考面 2 时的高度。
+    - |
+      从参考面 1 的轴上一点射出的光线$\begin{pmatrix}0\\\theta_1\end{pmatrix}$，射出时的角度是$D\theta_1$。
+  reference: |
+    （1）$A=0$：平行光$\begin{pmatrix}y_1\\0\end{pmatrix}$射出时是$\begin{pmatrix}0\\Cy_1\end{pmatrix}$，在参考面 2 上都交于光轴上的同一点，参考面 2 过像方焦点。例如薄透镜后面接一段$f$：$T(f)L(f)=\begin{pmatrix}0&f\\-\frac1f&1\end{pmatrix}$。
+
+    （2）$B=0$：参考面 2 上成参考面 1 的像，横向放大率是$A$。例如$T(s')L(f)T(s)=\begin{pmatrix}1-\frac{s'}f&s+s'-\frac{ss'}f\\-\frac1f&1-\frac sf\end{pmatrix}$，$B=0$正是$\frac1s+\frac1{s'}=\frac1f$，这时$A=1-\frac{s'}f=-\frac{s'}s$。
+
+    （3）$C=0$：平行光射出后仍是平行光，等效焦距为无穷大。例如两块透镜相距$f_1+f_2$的望远镜：由例 1，$A=-\frac{f_2}{f_1}$，$D=-\frac{f_1}{f_2}$。射入的平行光和光轴成$\theta$，射出时的角度是$D\theta$，$D$正是[望远镜](lesson:physics.optics.optical-instruments#thm-telescope)的角放大率（angular magnification）；$A$说明光束的宽度变成原来的$\frac{f_2}{f_1}$。
+
+    （4）$D=0$：从参考面 1 的轴上一点射出的光线$\begin{pmatrix}0\\\theta_1\end{pmatrix}$，射出时是$\begin{pmatrix}B\theta_1\\0\end{pmatrix}$，都平行于光轴，参考面 1 过物方焦点。例如在薄透镜前$f$处取参考面：$L(f)T(f)=\begin{pmatrix}1&f\\-\frac1f&0\end{pmatrix}$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    一束光里的各条光线，在参考面上各有一组$(y,\theta)$，在$(y,\theta)$平面上占一块区域。（1）光经过空气里的光学系统，这块区域的面积怎样变化？（2）用凸透镜把一束很粗、几乎平行的光会聚成一个小光斑，光斑处光线的角度范围有什么特点？（3）能不能用透镜组把一束光同时变得更细、更平行？
+  hints:
+    - |
+      空气里系统矩阵的行列式是$1$；行列式的绝对值是面积放大的倍数。
+    - |
+      在焦点附近，光束的高度范围变小了，面积不变，角度的范围就大了。
+    - |
+      高度范围和角度范围此消彼长。
+  reference: |
+    （1）矩阵把$(y,\theta)$平面上的区域变成面积为原来$|\det M|$倍的区域（见[行列式：有向面积与体积](lesson:math.linear-algebra.determinant)）。空气里$\det M=1$，面积不变，区域只是变形：自由传播把它水平地推斜，透镜把它竖直地推斜。
+
+    （2）原来光束的高度范围大（粗）、角度范围小（几乎平行）。会聚到焦点附近，高度范围变得很小，面积不变，角度的范围就变得很大：会聚到光斑上的光来自一个很宽的圆锥。原来的角度范围是$\delta$时，光斑的大小约为$f\delta$，焦距越短，光斑越小，圆锥也越宽。
+
+    （3）不能。面积不变，高度范围和角度范围此消彼长：让光束变细，它就更发散；要让它更平行，就得把它扩粗。把望远镜倒过来，让光从目镜一侧射入，射出的光束粗了$\frac{f_1}{f_2}$倍，角度范围小了同样的倍数（第 7 题（3））。

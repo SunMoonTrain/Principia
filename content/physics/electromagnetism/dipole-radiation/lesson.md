@@ -49,7 +49,7 @@ status: reviewed
 
 为什么这样定义：对电源来说，天线把能量辐射出去，和:term[电阻]{id="physics.electromagnetism.resistance"}把能量变成热一样，都要消耗功率，$R_{\mathrm{rad}}$就是这个等效的电阻（例 1）。上面的模型里电流沿天线处处相同，$p_0=\frac{I_0d}{\omega}$，$R_{\mathrm{rad}}=\frac{\mu_0d^2\omega^2}{6\pi c}=\frac{2\pi}{3}\sqrt{\frac{\mu_0}{\varepsilon_0}}\Bigl(\frac d\lambda\Bigr)^2\approx789\Bigl(\frac d\lambda\Bigr)^2\,\Omega$。边界情况：真实的短天线两端电流为零，电流沿天线近似线性减小，辐射电阻约为这个值的$\frac14$；天线比波长短得多时辐射电阻很小，电源的功率大多耗在导线的电阻上，所以实用的天线常取半个波长左右的长度。
 
-阳光照到空气分子上，分子里的电子云被阳光的:term[电场]{id="physics.electromagnetism.electric-field"}（electric field）推着振动，每个分子都成了一个小的振荡:term[电偶极子]{id="physics.electromagnetism.electric-dipole"}，把一部分光向四面八方辐射出去，也就是散射（scattering）。可见光的频率远低于分子里电子的共振频率（resonance frequency），:term[电偶极矩]{id="physics.electromagnetism.dipole-moment"}的振幅和频率无关（见[介质的色散](lesson:physics.electromagnetism.dispersion)里的振子模型），散射的功率正比于$\omega^4$：蓝光（$450\,\mathrm{nm}$）的散射约是红光（$700\,\mathrm{nm}$）的$6$倍（例 2），所以晴天的天空是蓝的；太阳落山时阳光斜着穿过很厚的大气，蓝光沿途被散射掉，剩下的光偏红。瑞利（Lord Rayleigh）在 1871 年给出了这个解释。
+阳光照到空气分子上，分子里的电子云被阳光的:term[电场]{id="physics.electromagnetism.electric-field"}（electric field）推着振动，每个分子都成了一个小的振荡:term[电偶极子]{id="physics.electromagnetism.electric-dipole"}，把一部分光向四面八方辐射出去，也就是散射（scattering）。可见光的频率远低于分子里电子的共振频率（resonance frequency），:term[电偶极矩]{id="physics.electromagnetism.dipole-moment"}的振幅和频率无关，:term[色散]{id="physics.electromagnetism.dispersion"}（dispersion）很弱（见[介质的色散](lesson:physics.electromagnetism.dispersion)里的振子模型），散射的功率正比于$\omega^4$：蓝光（$450\,\mathrm{nm}$）的散射约是红光（$700\,\mathrm{nm}$）的$6$倍（例 2），所以晴天的天空是蓝的；太阳落山时阳光斜着穿过很厚的大气，蓝光沿途被散射掉，剩下的光偏红。瑞利（Lord Rayleigh）在 1871 年给出了这个解释。
 
 ## 几何图像
 

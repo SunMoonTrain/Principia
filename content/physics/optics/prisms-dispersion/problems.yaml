@@ -1,0 +1,158 @@
+- id: p1
+  tier: easy
+  statement: |
+    一块薄棱镜的顶角是$4.0^\circ$，折射率是$1.52$，放在空气里，光接近垂直地射入。按薄棱镜的近似，偏向角是多少度？保留三位有效数字。
+  answer:
+    type: number
+    value: (1.52 - 1)*4.0
+    unit: |
+      $^\circ$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      顶角和入射角都很小时，偏向角$\delta\approx(n-1)\alpha$。
+    - |
+      $\delta\approx(1.52-1)\times4.0^\circ$。
+    - |
+      $\delta\approx2.08^\circ$。
+  solution: |
+    薄棱镜的偏向角$\delta\approx(n-1)\alpha=(1.52-1)\times4.0^\circ=2.08^\circ$，和入射角无关（只要入射角也很小）。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于棱镜和色散的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        光以最小偏向角穿过棱镜时，在两个侧面上的入射角和折射角互余
+      - |
+        用顶角相同的棱镜测得的最小偏向角越大，说明棱镜材料的折射率越大
+      - |
+        在正常色散的玻璃里，红光的速度比紫光小
+      - |
+        同一块薄棱镜浸在水里，偏向角比在空气里小
+      - |
+        两种玻璃的$n_{\mathrm d}$相同时，阿贝数小的那种色散大
+    value: [2, 4, 5]
+  hints:
+    - |
+      $n=\frac{\sin\frac{\alpha+\delta_{\min}}2}{\sin\frac\alpha2}$；薄棱镜在折射率为$n_0$的液体里，偏向角约为$\Bigl(\frac{n}{n_0}-1\Bigr)\alpha$。
+    - |
+      $V=\frac{n_{\mathrm d}-1}{n_{\mathrm F}-n_{\mathrm C}}$；最小偏向角时光对称地穿过棱镜。
+    - |
+      B、D、E 对；A、C 错。
+  solution: |
+    B 对：$\alpha$不变时，$\delta_{\min}$越大，$\sin\frac{\alpha+\delta_{\min}}2$越大，$n$越大。D 对：两边的折射率之比从$n$变成$\frac{n}{n_0}$，更接近$1$，偏向角约为$\Bigl(\frac{n}{n_0}-1\Bigr)\alpha$，变小。E 对：$n_{\mathrm d}-1$相同，$V$小说明$n_{\mathrm F}-n_{\mathrm C}$大。
+
+    A 错：最小偏向角时两个侧面上的入射角相等、棱镜里的两个折射角都是$\frac\alpha2$，没有互余的关系。C 错：正常色散时红光的折射率小，$v=\frac cn$大，红光更快。
+
+- id: p3
+  tier: medium
+  statement: |
+    用顶角$60.0^\circ$的棱镜在光谱仪上测得某种单色光的最小偏向角是$48.0^\circ$。棱镜对这种光的折射率是多少？保留三位有效数字。
+  answer:
+    type: number
+    value: sin((60.0 + 48.0)/2*pi/180)/sin(30.0*pi/180)
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      最小偏向角时光对称地穿过棱镜，$n=\frac{\sin\frac{\alpha+\delta_{\min}}2}{\sin\frac\alpha2}$。
+    - |
+      $\frac{\alpha+\delta_{\min}}2=54.0^\circ$，$\frac\alpha2=30.0^\circ$。
+    - |
+      $n=\frac{\sin54.0^\circ}{\sin30.0^\circ}\approx\frac{0.8090}{0.5}\approx1.62$。
+  solution: |
+    $n=\frac{\sin\frac{60.0^\circ+48.0^\circ}{2}}{\sin30.0^\circ}=\frac{\sin54.0^\circ}{0.5}\approx\frac{0.8090}{0.5}\approx1.62$。这时光在棱镜里和两个侧面的法线都成$30^\circ$，射入、射出时的入射角和出射角都是$54.0^\circ$。
+
+- id: p4
+  tier: medium
+  statement: |
+    设某种火石玻璃对 C、d、F 三条谱线的折射率分别是$1.6150$、$1.6200$、$1.6320$。它的阿贝数是多少？保留三位有效数字。
+  answer:
+    type: number
+    value: (1.6200 - 1)/(1.6320 - 1.6150)
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $V=\frac{n_{\mathrm d}-1}{n_{\mathrm F}-n_{\mathrm C}}$。
+    - |
+      $n_{\mathrm d}-1=0.6200$，$n_{\mathrm F}-n_{\mathrm C}=0.0170$。
+    - |
+      $V=\frac{0.6200}{0.0170}\approx36.5$。
+  solution: |
+    $V=\frac{n_{\mathrm d}-1}{n_{\mathrm F}-n_{\mathrm C}}=\frac{0.6200}{0.0170}\approx36.5$，比 N-BK7 的约$64.2$小得多：用它做成薄棱镜，偏折同样多的角度，颜色会分得开将近一倍。
+
+- id: p5
+  tier: hard
+  statement: |
+    棱镜的顶角是$\alpha$、折射率是$n$（$n>1$），放在空气里。（1）把偏向角$\delta$看成入射角$\theta_1$的函数，求$\dv{\delta}{\theta_1}$。（2）证明$\dv{\delta}{\theta_1}=0$只在光对称地穿过棱镜（$\theta_1'=\theta_2'$）时成立。（3）说明这个驻点是最小值。
+  hints:
+    - |
+      $\delta=\theta_1+\theta_2-\alpha$，$\theta_2$通过$\theta_1'$、$\theta_2'=\alpha-\theta_1'$依赖于$\theta_1$；对$\sin\theta_1=n\sin\theta_1'$两边求导。
+    - |
+      $\dv{\delta}{\theta_1}=1-\frac{\cos\theta_1\cos\theta_2'}{\cos\theta_1'\cos\theta_2}$；令它为零后两边平方，把余弦的平方换成$1$减正弦的平方。
+    - |
+      化简得$(n^2-1)(\sin^2\theta_2'-\sin^2\theta_1')=0$。
+  reference: |
+    （1）对$\sin\theta_1=n\sin\theta_1'$求导得$\dv{\theta_1'}{\theta_1}=\frac{\cos\theta_1}{n\cos\theta_1'}$；$\theta_2'=\alpha-\theta_1'$，$\dv{\theta_2'}{\theta_1}=-\dv{\theta_1'}{\theta_1}$；对$\sin\theta_2=n\sin\theta_2'$求导得$\dv{\theta_2}{\theta_1}=\frac{n\cos\theta_2'}{\cos\theta_2}\dv{\theta_2'}{\theta_1}=-\frac{\cos\theta_1\cos\theta_2'}{\cos\theta_1'\cos\theta_2}$。所以$\dv{\delta}{\theta_1}=1-\frac{\cos\theta_1\cos\theta_2'}{\cos\theta_1'\cos\theta_2}$。
+
+    （2）$\dv{\delta}{\theta_1}=0$即$\cos\theta_1\cos\theta_2'=\cos\theta_1'\cos\theta_2$。两边平方，记$s_1=\sin\theta_1'$、$s_2=\sin\theta_2'$，用$\sin\theta_1=ns_1$、$\sin\theta_2=ns_2$：$(1-n^2s_1^2)(1-s_2^2)=(1-s_1^2)(1-n^2s_2^2)$，展开后$n^2s_1^2s_2^2$两边消去，剩下$s_2^2+n^2s_1^2=s_1^2+n^2s_2^2$，即$(n^2-1)(s_2^2-s_1^2)=0$。$n>1$，所以$s_1=s_2$，$\theta_1'=\theta_2'=\frac\alpha2$，$\theta_1=\theta_2$。
+
+    （3）光能穿过棱镜的入射角范围里只有这一个驻点。在范围的两端，光掠射进来或掠射出去（$\theta_1=90^\circ$或$\theta_2=90^\circ$），偏向角都是$90^\circ+\theta-\alpha$这样的较大值，比对称时大，所以中间唯一的驻点是最小值。这也补上了讲解里用光路可逆证明时「只有一个最小值」这一步。
+
+- id: p6
+  tier: hard
+  statement: |
+    把一块 N-BK7 薄棱镜（$n_{\mathrm d}=1.5168$，$n_{\mathrm F}-n_{\mathrm C}=0.008054$）和一块第 4 题的火石玻璃薄棱镜（$n_{\mathrm d}=1.6200$，$n_{\mathrm F}-n_{\mathrm C}=0.0170$）贴在一起，顶角朝相反的方向，光接近垂直地穿过，按薄棱镜的近似处理。（1）要让 F 线和 C 线射出时不分开，两块棱镜的顶角要满足什么关系？（2）冕牌玻璃棱镜的顶角是$10.0^\circ$时，火石玻璃棱镜的顶角是多少？合起来对 d 线的偏向角是多少？
+  hints:
+    - |
+      顶角相反，两块棱镜的偏向角相减：$\delta=(n_1-1)\alpha_1-(n_2-1)\alpha_2$。
+    - |
+      F 线和 C 线的偏向角之差是$(n_{\mathrm F}-n_{\mathrm C})_1\alpha_1-(n_{\mathrm F}-n_{\mathrm C})_2\alpha_2$，令它为零。
+    - |
+      $\alpha_2=\frac{0.008054}{0.0170}\times10.0^\circ\approx4.74^\circ$，$\delta_{\mathrm d}\approx5.17^\circ-2.94^\circ\approx2.23^\circ$。
+  reference: |
+    （1）两块薄棱镜顶角相反，偏向角相减，$\delta=(n_1-1)\alpha_1-(n_2-1)\alpha_2$。对 F 线和 C 线分别写出再相减，颜色不分开的条件是$(n_{\mathrm F}-n_{\mathrm C})_1\alpha_1=(n_{\mathrm F}-n_{\mathrm C})_2\alpha_2$。
+
+    （2）$\alpha_2=\frac{0.008054}{0.0170}\times10.0^\circ\approx4.74^\circ$。d 线的偏向角$\delta_{\mathrm d}=0.5168\times10.0^\circ-0.6200\times4.74^\circ\approx5.17^\circ-2.94^\circ\approx2.23^\circ$。光仍被偏折，F、C 两色却不再分开：火石玻璃的色散大，用一块较小的顶角就能把冕牌玻璃分开的颜色收回来，偏折却只抵掉一部分。用两种色散不同的玻璃组合来消除颜色的偏差，正是消色差透镜的做法（见[像差](lesson:physics.optics.aberrations)）。
+
+- id: p7
+  tier: thinking
+  statement: |
+    阳光射进一个球形的小水滴，在里面反射一次再射出来。设水对红光的折射率是$1.331$，对紫光是$1.343$。
+
+    （1）光在水滴表面的入射角为$i$、折射角为$r$，证明射出的光比射入的光一共转过$D=180^\circ+2i-4r$。（2）$D$在某个入射角时取最小值，最小值附近的光最集中，就是我们看到的彩虹；求红光和紫光的$180^\circ-D_{\min}$。（3）彩虹的外圈是什么颜色？
+  hints:
+    - |
+      进入水滴时转过$i-r$，在里面反射时转过$180^\circ-2r$，射出时又转过$i-r$。
+    - |
+      $\dv Di=0$时$\cos^2i=\frac{n^2-1}3$。
+    - |
+      红光的$180^\circ-D_{\min}$约$42.4^\circ$，紫光约$40.6^\circ$。
+  reference: |
+    （1）光射进水滴时偏折$i-r$；在水滴里射到对面的表面，入射角也是$r$（两条半径和光线围成等腰三角形），反射使方向转过$180^\circ-2r$；射出时再偏折$i-r$，转向相同。一共$D=2(i-r)+180^\circ-2r=180^\circ+2i-4r$。
+
+    （2）$\sin i=n\sin r$，$\dv ri=\frac{\cos i}{n\cos r}$，$\dv Di=2-\frac{4\cos i}{n\cos r}=0$，即$4\cos^2i=n^2\cos^2r=n^2-\sin^2i=n^2-1+\cos^2i$，$\cos^2i=\frac{n^2-1}3$。红光$n=1.331$：$i\approx59.5^\circ$，$r\approx40.4^\circ$，$D_{\min}\approx137.6^\circ$，$180^\circ-D_{\min}\approx42.4^\circ$。紫光$n=1.343$：$i\approx58.8^\circ$，$r\approx39.6^\circ$，$D_{\min}\approx139.4^\circ$，$180^\circ-D_{\min}\approx40.6^\circ$。
+
+    （3）背对太阳，从眼睛到太阳在对面的影子方向（反日点）量起，红光集中在约$42.4^\circ$的圆锥上，紫光在约$40.6^\circ$，所以彩虹外圈红、内圈紫。偏向角在最小值附近变化最慢，大量光线挤在这个角度附近，那里才最亮，和棱镜里最小偏向角最稳定是同一个道理。
+
+- id: p8
+  tier: thinking
+  statement: |
+    牛顿让阳光穿过棱镜展开成彩带，再从中挑出一种颜色，让它穿过第二块棱镜。（1）如果颜色是棱镜在白光里「造」出来的，第二块棱镜应该看到什么？（2）实际上这束光只偏折、不再分出新的颜色，这说明了什么？（3）分光用的棱镜前面为什么要放一条窄缝？
+  hints:
+    - |
+      如果棱镜会改变光的颜色，第二次穿过时它也会再改一次。
+    - |
+      偏折多少取决于折射率，折射率取决于颜色。
+    - |
+      光源有一定的大小，每种颜色在屏上成的不是一个点。
+  reference: |
+    （1）第二块棱镜应该再把这束光改变一次，分出新的颜色或者把彩带拉得更宽。
+
+    （2）挑出的那种颜色穿过第二块棱镜时只偏折，偏折的角度也和第一次一样，说明颜色是光本来就有的性质，棱镜不改变它；白光是许多颜色混合而成，棱镜只是按折射率的不同把它们分到不同的方向。
+
+    （3）光源（太阳、灯丝）有一定的大小，每种颜色在屏上形成的是光源的一个像，宽度和光源相当。光源宽时，相邻颜色的像互相重叠，彩带模糊。放一条窄缝当作光源，每种颜色只成一条细线，不同颜色的细线分得开，光谱里的暗线、亮线才看得清，夫琅禾费就是这样看到太阳光谱里的暗线的。

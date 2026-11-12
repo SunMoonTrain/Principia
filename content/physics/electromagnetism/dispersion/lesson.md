@@ -22,7 +22,7 @@ status: reviewed
 介质里的电子被原子核和别的电子拉在平衡位置附近，:term[电场]{id="physics.electromagnetism.electric-field"}（electric field）把它拉开一点，它就像弹簧上的小球一样被拉回来；:term[电磁波]{id="physics.electromagnetism.em-wave"}（electromagnetic wave）的电场来回变，电子就做受迫振动（driven oscillation，见[受迫振动与共振](lesson:physics.oscillations-waves.driven-oscillations)）。电子振动形成的:term[电偶极矩]{id="physics.electromagnetism.dipole-moment"}（electric dipole moment）加起来就是:term[极化强度]{id="physics.electromagnetism.polarization"}（polarization density），它和电场之比决定了:term[介电常量]{id="physics.electromagnetism.permittivity"}（permittivity）。复数表示的约定和[交流电路与阻抗](lesson:physics.electromagnetism.ac-circuits)一样，量都是$\operatorname{Re}\bigl(\tilde Xe^{i\omega t}\bigr)$的形式。
 
 ::anchor{id="thm-oscillator-model"}
-定理（色散的振子模型）：设介质里单位体积有$N$个电子，每个电子受到恢复力（restoring force）$-m\omega_0^2x$和阻尼力（damping force）$-m\gamma\dot x$，介质足够稀薄，电子感受到的就是电磁波的电场，:term[磁场]{id="physics.electromagnetism.magnetic-field"}（magnetic field）的力可以不计；那么对角频率为$\omega$的电磁波，介质的:term[相对介电常量]{id="physics.electromagnetism.relative-permittivity"}是复数$\tilde\varepsilon_{\mathrm r}=1+\frac{Ne^2}{m\varepsilon_0}\cdot\frac{1}{\omega_0^2-\omega^2+i\gamma\omega}$。
+定理（:term[色散]{id="physics.electromagnetism.dispersion"}的振子模型，oscillator model of dispersion）：设介质里单位体积有$N$个电子，每个电子受到恢复力（restoring force）$-m\omega_0^2x$和阻尼力（damping force）$-m\gamma\dot x$，介质足够稀薄，电子感受到的就是电磁波的电场，:term[磁场]{id="physics.electromagnetism.magnetic-field"}（magnetic field）的力可以不计；那么对角频率为$\omega$的电磁波，介质的:term[相对介电常量]{id="physics.electromagnetism.relative-permittivity"}是复数$\tilde\varepsilon_{\mathrm r}=1+\frac{Ne^2}{m\varepsilon_0}\cdot\frac{1}{\omega_0^2-\omega^2+i\gamma\omega}$。
 
 证明思路：电场是$\operatorname{Re}\bigl(\tilde Ee^{i\omega t}\bigr)$，电子的运动方程是$m\ddot x+m\gamma\dot x+m\omega_0^2x=-eE$。稳态时$x=\operatorname{Re}\bigl(\tilde xe^{i\omega t}\bigr)$，对时间求导是乘以$i\omega$，得$\tilde x=-\frac{e\tilde E}{m(\omega_0^2-\omega^2+i\gamma\omega)}$。每个电子的电偶极矩是$-e\tilde x$，极化强度$\tilde P=-Ne\tilde x$，由$\tilde\varepsilon_{\mathrm r}=1+\frac{\tilde P}{\varepsilon_0\tilde E}$即得。
 
@@ -33,7 +33,7 @@ status: reviewed
 ### 正常色散和反常色散
 
 ::anchor{id="def-dispersion"}
-介质的:term[折射率]{id="physics.electromagnetism.refractive-index"}随频率变化的现象叫作色散（dispersion）；折射率随频率增大而增大叫作正常色散（normal dispersion），随频率增大而减小叫作反常色散（anomalous dispersion）。
+介质的:term[折射率]{id="physics.electromagnetism.refractive-index"}随频率变化的现象叫作:term[色散]{id="physics.electromagnetism.dispersion"}（dispersion）；折射率随频率增大而增大叫作正常色散（normal dispersion），随频率增大而减小叫作反常色散（anomalous dispersion）。
 
 为什么这样定义：白光里各种频率的光在介质里速度不同，折射时偏折不同，色散把它们分开（见[棱镜与色散](lesson:physics.optics.prisms-dispersion)）。离共振频率远时阻尼可以不计，$\omega<\omega_0$时$\tilde\varepsilon_{\mathrm r}$随$\omega$增大而增大，是正常色散；只有在共振频率附近、宽约$\gamma$的区间里，$n$随频率增大而减小，吸收也集中在这里。边界情况：真空没有色散；可见光离玻璃、水的电子共振还远，所以是正常色散，紫光的折射率比红光的大。
 
@@ -73,7 +73,7 @@ sliders:
       阻尼和共振角频率之比$\frac{\gamma}{\omega_0}$
 :::
 
-横轴是:term[电磁波]{id="physics.electromagnetism.em-wave"}的角频率和共振角频率之比$\frac{\omega}{\omega_0}$。介质很稀薄，$n-1$和吸收都很小，纵轴的单位取$\frac{Ne^2}{2m\varepsilon_0\gamma\omega_0}$，这样吸收峰高为$1$。离共振远的地方$n$随频率增大，是正常色散；共振附近、宽约$\gamma$的区间里$n$随频率减小，是反常色散，吸收也集中在这里。阻尼越小，吸收峰越窄，$n-1$的起伏越陡。
+横轴是:term[电磁波]{id="physics.electromagnetism.em-wave"}的角频率和共振角频率之比$\frac{\omega}{\omega_0}$。介质很稀薄，$n-1$和吸收都很小，纵轴的单位取$\frac{Ne^2}{2m\varepsilon_0\gamma\omega_0}$，这样吸收峰高为$1$。离共振远的地方$n$随频率增大，是:term[正常色散]{id="physics.electromagnetism.dispersion"}；共振附近、宽约$\gamma$的区间里$n$随频率减小，是反常色散，吸收也集中在这里。阻尼越小，吸收峰越窄，$n-1$的起伏越陡。
 
 ## 例题
 
@@ -97,4 +97,4 @@ sliders:
 
 - 「:term[折射率]{id="physics.electromagnetism.refractive-index"}小于 1，光就比真空中的光速快，违反相对论。」大于$c$的是相速度（phase velocity），即波峰移动的速度，它不传递信号；等离子体里能量以群速度（group velocity）$cn$传播，比$c$小（见[波包与群速度](lesson:physics.oscillations-waves.group-velocity)和第 6 题）。相对论限制的是信号的速度，任何介质里信号的前沿都不会超过$c$。
 - 「吸收最强的频率，折射率也最大。」稀薄介质在吸收峰处$n-1$恰好是零，折射率最大和最小的地方在吸收峰两侧。
-- 「只有玻璃、水这样的物质才有色散。」有极化的介质都有色散，只有真空没有；空气的折射率只比$1$大万分之三左右，色散很小，但精密测量里照样要考虑。
+- 「只有玻璃、水这样的物质才有:term[色散]{id="physics.electromagnetism.dispersion"}。」有极化的介质都有色散，只有真空没有；空气的折射率只比$1$大万分之三左右，色散很小，但精密测量里照样要考虑。

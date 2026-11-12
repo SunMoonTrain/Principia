@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 270" width="500" height="270" font-size="14">
+  <!-- 顶角为 α 的三棱镜：白光从左侧面射入，向底边偏折；不同颜色的折射率不同，紫光偏折得多、红光偏折得少，从右侧面射出时分开成彩色；偏向角 δ 是射出光线和入射光线延长线的夹角。色散画得夸大了。 -->
+  <path d="M 230.0 34.0 L 130.0 207.2 L 330.0 207.2 Z" style="fill: var(--accent, #2563eb); stroke: currentColor" fill="var(--accent, #2563eb)" stroke-width="1.6" stroke-linejoin="round" fill-opacity="0.08" />
+  <line x1="28.9" y1="169.9" x2="184.0" y2="113.7" style="stroke: currentColor" stroke-width="2.0" />
+  <path d="M 118.2 137.5 L 112.4 143.1 L 110.2 136.9 Z" style="fill: currentColor" />
+  <text x="32.9" y="191.9" fill="currentColor">白光</text>
+  <line x1="184.0" y1="113.7" x2="419.1" y2="28.6" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="4 4" />
+  <line x1="144.2" y1="90.7" x2="218.6" y2="133.7" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="4 3" />
+  <path d="M 158.0 98.7 L 157.5 99.6 L 157.0 100.6 L 156.5 101.6 L 156.1 102.6 L 155.7 103.6 L 155.4 104.6 L 155.1 105.7 L 154.8 106.7 L 154.6 107.8 L 154.4 108.9 L 154.2 110.0 L 154.1 111.0 L 154.0 112.1 L 154.0 113.2 L 154.0 114.3 L 154.0 115.4 L 154.1 116.5 L 154.3 117.6 L 154.4 118.6 L 154.6 119.7 L 154.8 120.8 L 155.1 121.8 L 155.4 122.9 L 155.8 123.9" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.2" stroke-linejoin="round" />
+  <text x="144.0" y="117.7" fill="currentColor" text-anchor="end"><tspan font-style="italic">θ</tspan><tspan dy="4" font-size="11">1</tspan></text>
+  <line x1="184.0" y1="113.7" x2="275.4" y2="112.6" style="stroke: var(--danger, #dc2626)" stroke-width="1.6" />
+  <line x1="275.4" y1="112.6" x2="411.7" y2="155.1" style="stroke: var(--danger, #dc2626)" stroke-width="1.8" />
+  <path d="M 418.6 157.2 L 409.7 158.3 L 411.8 151.3 Z" style="fill: var(--danger, #dc2626)" />
+  <line x1="184.0" y1="113.7" x2="276.6" y2="114.7" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <line x1="276.6" y1="114.7" x2="408.4" y2="169.7" style="stroke: var(--accent, #2563eb)" stroke-width="1.8" />
+  <path d="M 415.0 172.5 L 406.0 172.7 L 408.9 165.9 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="424.6" y="155.2" style="fill: var(--danger, #dc2626)">红光</text>
+  <text x="421.0" y="184.5" style="fill: var(--accent, #2563eb)">紫光</text>
+  <path d="M 280.5 78.7 L 281.0 80.2 L 281.4 81.6 L 281.9 83.1 L 282.2 84.5 L 282.6 86.0 L 282.9 87.5 L 283.1 89.0 L 283.3 90.5 L 283.5 92.0 L 283.7 93.5 L 283.8 95.0 L 283.8 96.5 L 283.8 98.0 L 283.8 99.6 L 283.7 101.1 L 283.6 102.6 L 283.5 104.1 L 283.3 105.6 L 283.1 107.1 L 282.8 108.6 L 282.5 110.1 L 282.1 111.5 L 281.7 113.0 L 281.3 114.5" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.2" stroke-linejoin="round" />
+  <text x="293.8" y="101.3" fill="currentColor" text-anchor="middle"><tspan font-style="italic">δ</tspan></text>
+  <path d="M 244.0 58.2 L 242.9 58.8 L 241.8 59.4 L 240.7 59.9 L 239.6 60.3 L 238.4 60.7 L 237.2 61.0 L 236.1 61.3 L 234.9 61.6 L 233.7 61.8 L 232.4 61.9 L 231.2 62.0 L 230.0 62.0 L 228.8 62.0 L 227.6 61.9 L 226.3 61.8 L 225.1 61.6 L 223.9 61.3 L 222.8 61.0 L 221.6 60.7 L 220.4 60.3 L 219.3 59.9 L 218.2 59.4 L 217.1 58.8 L 216.0 58.2" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.2" stroke-linejoin="round" />
+  <text x="230.0" y="78.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">α</tspan></text>
+</svg>

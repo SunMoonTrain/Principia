@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" width="700" height="300" font-size="14">
+  <!-- 薄透镜的作图法：左边是会聚透镜，物在一倍焦距和两倍焦距之间，平行于光轴的光折射后过像方焦点，过光心的光不偏折，过物方焦点的光折射后平行于光轴，三条光线交于倒立放大的实像；右边是发散透镜，折射光发散，反向延长线交于正立缩小的虚像。 -->
+  <line x1="10.0" y1="150.0" x2="420.0" y2="150.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="6 4" />
+  <line x1="175.0" y1="58.0" x2="175.0" y2="242.0" style="stroke: currentColor" stroke-width="2.2" />
+  <path d="M 175.0 56.0 L 178.7 64.2 L 171.3 64.2 Z" style="fill: currentColor" />
+  <path d="M 175.0 244.0 L 171.3 235.8 L 178.7 235.8 Z" style="fill: currentColor" />
+  <line x1="70.0" y1="150.0" x2="70.0" y2="120.4" style="stroke: currentColor" stroke-width="2.0" />
+  <path d="M 70.0 114.0 L 73.3 121.3 L 66.7 121.3 Z" style="fill: currentColor" />
+  <line x1="385.0" y1="150.0" x2="385.0" y2="215.6" style="stroke: var(--good, #059669)" stroke-width="2.0" />
+  <path d="M 385.0 222.0 L 381.7 214.7 L 388.3 214.7 Z" style="fill: var(--good, #059669)" />
+  <line x1="70.0" y1="114.0" x2="175.0" y2="114.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.5" />
+  <path d="M 126.5 114.0 L 119.2 117.3 L 119.2 110.7 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="175.0" y1="114.0" x2="407.0" y2="233.3" style="stroke: var(--accent, #2563eb)" stroke-width="1.5" />
+  <line x1="70.0" y1="114.0" x2="407.0" y2="229.5" style="stroke: var(--accent, #2563eb)" stroke-width="1.5" />
+  <line x1="70.0" y1="114.0" x2="175.0" y2="222.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.5" />
+  <line x1="175.0" y1="222.0" x2="407.0" y2="222.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.5" />
+  <circle cx="105.0" cy="150.0" r="3.0" style="fill: currentColor" />
+  <text x="105.0" y="142.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">F</tspan></text>
+  <circle cx="245.0" cy="150.0" r="3.0" style="fill: currentColor" />
+  <text x="245.0" y="142.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">F</tspan>′</text>
+  <line x1="35.0" y1="146.0" x2="35.0" y2="154.0" style="stroke: currentColor" stroke-width="1.0" />
+  <text x="35.0" y="168.0" fill="currentColor" text-anchor="middle" font-size="12">2<tspan font-style="italic">f</tspan></text>
+  <line x1="315.0" y1="146.0" x2="315.0" y2="154.0" style="stroke: currentColor" stroke-width="1.0" />
+  <text x="315.0" y="142.0" fill="currentColor" text-anchor="middle" font-size="12">2<tspan font-style="italic">f</tspan></text>
+  <text x="70.0" y="106.0" fill="currentColor" text-anchor="middle">物</text>
+  <text x="373.0" y="246.0" style="fill: var(--good, #059669)" text-anchor="end">实像</text>
+  <text x="20.0" y="26.0" fill="currentColor">会聚透镜</text>
+  <line x1="440.0" y1="150.0" x2="694.0" y2="150.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="6 4" />
+  <line x1="600.0" y1="58.0" x2="600.0" y2="242.0" style="stroke: currentColor" stroke-width="2.2" />
+  <path d="M 600.0 66.0 L 596.3 57.8 L 603.7 57.8 Z" style="fill: currentColor" />
+  <path d="M 600.0 234.0 L 603.7 242.2 L 596.3 242.2 Z" style="fill: currentColor" />
+  <line x1="495.0" y1="150.0" x2="495.0" y2="116.4" style="stroke: currentColor" stroke-width="2.0" />
+  <path d="M 495.0 110.0 L 498.3 117.3 L 491.7 117.3 Z" style="fill: currentColor" />
+  <line x1="558.0" y1="150.0" x2="558.0" y2="140.4" style="stroke: var(--good, #059669)" stroke-width="2.0" />
+  <path d="M 558.0 134.0 L 561.3 141.3 L 554.7 141.3 Z" style="fill: var(--good, #059669)" />
+  <line x1="495.0" y1="110.0" x2="600.0" y2="110.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.5" />
+  <path d="M 551.5 110.0 L 544.2 113.3 L 544.2 106.7 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="600.0" y1="110.0" x2="692.0" y2="57.4" style="stroke: var(--accent, #2563eb)" stroke-width="1.5" />
+  <line x1="600.0" y1="110.0" x2="530.0" y2="150.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="4 3" />
+  <line x1="495.0" y1="110.0" x2="692.0" y2="185.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.5" />
+  <circle cx="530.0" cy="150.0" r="3.0" style="fill: currentColor" />
+  <text x="530.0" y="170.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">F</tspan>′</text>
+  <text x="495.0" y="102.0" fill="currentColor" text-anchor="middle">物</text>
+  <text x="562.0" y="172.0" style="fill: var(--good, #059669)" text-anchor="middle">虚像</text>
+  <text x="450.0" y="26.0" fill="currentColor">发散透镜</text>
+</svg>

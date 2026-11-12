@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 310" width="680" height="310" font-size="14">
+  <!-- 左：凹面镜的球差，平行于光轴的光射到镜面上不同高度处，反射后和光轴交于不同的点，离光轴越远的光线交点越靠近镜面，近轴光线才会聚到焦点 F；右：单透镜的色差，蓝光的折射率大、焦点近，红光的焦点远，两者之间拉开一段距离（画得夸大了）。 -->
+  <path d="M 317.7 14.0 L 320.0 17.4 L 322.3 20.8 L 324.4 24.2 L 326.4 27.6 L 328.4 31.0 L 330.3 34.4 L 332.2 37.8 L 333.9 41.2 L 335.6 44.6 L 337.2 48.0 L 338.8 51.4 L 340.3 54.8 L 341.7 58.2 L 343.1 61.6 L 344.4 65.0 L 345.7 68.4 L 346.9 71.8 L 348.0 75.2 L 349.1 78.6 L 350.2 82.0 L 351.1 85.4 L 352.1 88.8 L 352.9 92.2 L 353.8 95.6 L 354.5 99.0 L 355.2 102.4 L 355.9 105.8 L 356.5 109.2 L 357.1 112.6 L 357.6 116.0 L 358.0 119.4 L 358.5 122.8 L 358.8 126.2 L 359.1 129.6 L 359.4 133.0 L 359.6 136.4 L 359.8 139.8 L 359.9 143.2 L 360.0 146.6 L 360.0 150.0 L 360.0 153.4 L 359.9 156.8 L 359.8 160.2 L 359.6 163.6 L 359.4 167.0 L 359.1 170.4 L 358.8 173.8 L 358.5 177.2 L 358.0 180.6 L 357.6 184.0 L 357.1 187.4 L 356.5 190.8 L 355.9 194.2 L 355.2 197.6 L 354.5 201.0 L 353.8 204.4 L 352.9 207.8 L 352.1 211.2 L 351.1 214.6 L 350.2 218.0 L 349.1 221.4 L 348.0 224.8 L 346.9 228.2 L 345.7 231.6 L 344.4 235.0 L 343.1 238.4 L 341.7 241.8 L 340.3 245.2 L 338.8 248.6 L 337.2 252.0 L 335.6 255.4 L 333.9 258.8 L 332.2 262.2 L 330.3 265.6 L 328.4 269.0 L 326.4 272.4 L 324.4 275.8 L 322.3 279.2 L 320.0 282.6 L 317.7 286.0" style="stroke: currentColor" fill="none" stroke-width="2.2" stroke-linejoin="round" />
+  <line x1="317.7" y1="14.0" x2="325.7" y2="8.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="328.4" y1="31.0" x2="336.4" y2="25.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="337.2" y1="48.0" x2="345.2" y2="42.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="344.4" y1="65.0" x2="352.4" y2="59.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="350.2" y1="82.0" x2="358.2" y2="76.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="354.5" y1="99.0" x2="362.5" y2="93.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="357.6" y1="116.0" x2="365.6" y2="110.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="359.4" y1="133.0" x2="367.4" y2="127.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="360.0" y1="150.0" x2="368.0" y2="144.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="359.4" y1="167.0" x2="367.4" y2="161.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="357.6" y1="184.0" x2="365.6" y2="178.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="354.5" y1="201.0" x2="362.5" y2="195.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="350.2" y1="218.0" x2="358.2" y2="212.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="344.4" y1="235.0" x2="352.4" y2="229.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="337.2" y1="252.0" x2="345.2" y2="246.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="328.4" y1="269.0" x2="336.4" y2="263.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="317.7" y1="286.0" x2="325.7" y2="280.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="20.0" y1="150.0" x2="364.0" y2="150.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="6 4" />
+  <line x1="20.0" y1="130.0" x2="359.2" y2="130.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="359.2" y1="130.0" x2="233.3" y2="151.2" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="20.0" y1="100.0" x2="354.7" y2="100.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="354.7" y1="100.0" x2="236.0" y2="153.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="20.0" y1="70.0" x2="346.3" y2="70.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="346.3" y1="70.0" x2="241.3" y2="154.8" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="20.0" y1="45.0" x2="335.8" y2="45.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="335.8" y1="45.0" x2="248.5" y2="156.3" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="20.0" y1="22.0" x2="323.0" y2="22.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="323.0" y1="22.0" x2="258.2" y2="157.7" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="20.0" y1="170.0" x2="359.2" y2="170.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="359.2" y1="170.0" x2="233.3" y2="148.8" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="20.0" y1="200.0" x2="354.7" y2="200.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="354.7" y1="200.0" x2="236.0" y2="147.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="20.0" y1="230.0" x2="346.3" y2="230.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="346.3" y1="230.0" x2="241.3" y2="145.2" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="20.0" y1="255.0" x2="335.8" y2="255.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="335.8" y1="255.0" x2="248.5" y2="143.7" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="20.0" y1="278.0" x2="323.0" y2="278.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <line x1="323.0" y1="278.0" x2="258.2" y2="142.3" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <circle cx="240.0" cy="150.0" r="3.2" style="fill: currentColor" />
+  <text x="232.0" y="167.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">F</tspan></text>
+  <path d="M 70.0 70.0 L 62.7 73.3 L 62.7 66.7 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="20.0" y="296.0" fill="currentColor" font-size="13">凹面镜的球差</text>
+  <line x1="261.9" y1="184.0" x2="240.0" y2="184.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="261.9" y1="178.0" x2="261.9" y2="190.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="240.0" y1="178.0" x2="240.0" y2="190.0" style="stroke: currentColor" stroke-width="1.0" />
+  <text x="232.0" y="188.0" fill="currentColor" text-anchor="end" font-size="12">交点分布的范围</text>
+  <line x1="470.0" y1="70.0" x2="470.0" y2="230.0" style="stroke: currentColor" stroke-width="2.2" />
+  <path d="M 470.0 68.0 L 473.7 76.2 L 466.3 76.2 Z" style="fill: currentColor" />
+  <path d="M 470.0 232.0 L 466.3 223.8 L 473.7 223.8 Z" style="fill: currentColor" />
+  <line x1="395.0" y1="150.0" x2="674.0" y2="150.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="6 4" />
+  <line x1="400.0" y1="90.0" x2="470.0" y2="90.0" style="stroke: currentColor" stroke-width="1.4" />
+  <line x1="470.0" y1="90.0" x2="611.6" y2="160.8" style="stroke: var(--accent, #2563eb)" stroke-width="1.4" />
+  <line x1="470.0" y1="90.0" x2="670.6" y2="160.8" style="stroke: var(--danger, #dc2626)" stroke-width="1.4" />
+  <line x1="400.0" y1="210.0" x2="470.0" y2="210.0" style="stroke: currentColor" stroke-width="1.4" />
+  <line x1="470.0" y1="210.0" x2="611.6" y2="139.2" style="stroke: var(--accent, #2563eb)" stroke-width="1.4" />
+  <line x1="470.0" y1="210.0" x2="670.6" y2="139.2" style="stroke: var(--danger, #dc2626)" stroke-width="1.4" />
+  <circle cx="590.0" cy="150.0" r="3.0" style="fill: var(--accent, #2563eb)" />
+  <circle cx="640.0" cy="150.0" r="3.0" style="fill: var(--danger, #dc2626)" />
+  <line x1="590.0" y1="154.0" x2="590.0" y2="180.0" style="stroke: var(--accent, #2563eb)" stroke-width="0.8" />
+  <text x="590.0" y="198.0" style="fill: var(--accent, #2563eb)" text-anchor="middle"><tspan font-style="italic">F</tspan><tspan dy="4" font-size="11">蓝</tspan></text>
+  <line x1="640.0" y1="154.0" x2="640.0" y2="180.0" style="stroke: var(--danger, #dc2626)" stroke-width="0.8" />
+  <text x="640.0" y="198.0" style="fill: var(--danger, #dc2626)" text-anchor="middle"><tspan font-style="italic">F</tspan><tspan dy="4" font-size="11">红</tspan></text>
+  <text x="670.0" y="294.0" fill="currentColor" text-anchor="end" font-size="13">单透镜的色差</text>
+</svg>

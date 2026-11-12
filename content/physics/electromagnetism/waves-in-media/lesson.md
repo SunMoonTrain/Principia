@@ -50,7 +50,7 @@ status: reviewed
 
 水的:term[相对介电常量]{id="physics.electromagnetism.relative-permittivity"}约为$80$（见[电位移与线性电介质](lesson:physics.electromagnetism.electric-displacement#def-permittivity)），按上面的式子，水的:term[折射率]{id="physics.electromagnetism.refractive-index"}该是$\sqrt{80}\approx8.9$，可光在水里的折射率只有$1.33$，对应的相对介电常量只有约$1.8$。毛病出在频率上：$80$是:term[电场]{id="physics.electromagnetism.electric-field"}不变或变化很慢时的值，那时极性的水分子来得及跟着电场转向；可见光的频率约$5\times10^{14}\,\mathrm{Hz}$，分子转不过来，只有电子云还能跟着电场振动，极化弱得多（见[电介质与极化](lesson:physics.electromagnetism.polarization)第 7 题）。
 
-所以:term[介电常量]{id="physics.electromagnetism.permittivity"}（permittivity）和折射率都随频率变，[介质的色散](lesson:physics.electromagnetism.dispersion)专门讲这件事。对一列单一频率的波，前面波速和折射率的式子照样成立，只是$\varepsilon$、$\mu$要用这个频率下的值；说一种物质的折射率，总是对某个频率而言的。
+所以:term[介电常量]{id="physics.electromagnetism.permittivity"}（permittivity）和折射率都随频率变，即:term[色散]{id="physics.electromagnetism.dispersion"}（dispersion），[介质的色散](lesson:physics.electromagnetism.dispersion)专门讲这件事。对一列单一频率的波，前面波速和折射率的式子照样成立，只是$\varepsilon$、$\mu$要用这个频率下的值；说一种物质的折射率，总是对某个频率而言的。
 
 这一节的介质里没有:term[自由电流]{id="physics.electromagnetism.free-current"}。海水能导电，频率低于约$900\,\mathrm{MHz}$时:term[传导电流]{id="physics.electromagnetism.electric-current"}比:term[位移电流]{id="physics.electromagnetism.displacement-current"}（displacement current）大（见[位移电流与麦克斯韦方程组](lesson:physics.electromagnetism.maxwell-equations)第 4 题），这时海水更像:term[导体]{id="physics.electromagnetism.conductor"}（conductor），:term[电磁波]{id="physics.electromagnetism.em-wave"}进去很快就衰减了，要按[导体中的电磁波与趋肤效应](lesson:physics.electromagnetism.skin-effect)里的办法处理。
 
