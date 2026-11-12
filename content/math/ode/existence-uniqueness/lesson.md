@@ -60,7 +60,7 @@ $y'=3y^{2/3}$出问题的地方在$y=0$附近：$f(y)=3y^{2/3}$在那里陡得�
 ### 方程组与高阶方程
 
 ::anchor{id="thm-systems"}
-**方程组与高阶方程**　把$y$换成向量$\vb y=(y_1,\dots,y_n)$、$f$换成向量值函数$\vb f(x,\vb y)$、绝对值换成向量的长度$|\vb y|=\sqrt{y_1^2+\dots+y_n^2}$，定理和证明都不用改：$\vb f$在$(x_0,\vb y_0)$附近连续，并且满足$|\vb f(x,\vb y)-\vb f(x,\vb z)|\le L|\vb y-\vb z|$时，方程组$\vb y'=\vb f(x,\vb y)$、$\vb y(x_0)=\vb y_0$在$x_0$附近有唯一的解。$n$阶方程$y^{(n)}=g(x,y,y',\dots,y^{(n-1)})$令$y_1=y$、$y_2=y'$、…、$y_n=y^{(n-1)}$，就化成:term[一阶方程组]{id="math.ode.first-order-system"}（system of first-order equations）；所以$g$满足同样的条件时，给定$y(x_0)$、$y'(x_0)$、…、$y^{(n-1)}(x_0)$这$n$个初始条件，解唯一。
+**方程组与高阶方程**　把$y$换成向量$\vb y=(y_1,\dots,y_n)$、$f$换成:term[向量值函数]{id="math.vector-calculus.vector-valued-function"}（vector-valued function）$\vb f(x,\vb y)$、绝对值换成向量的长度$|\vb y|=\sqrt{y_1^2+\dots+y_n^2}$，定理和证明都不用改：$\vb f$在$(x_0,\vb y_0)$附近连续，并且满足$|\vb f(x,\vb y)-\vb f(x,\vb z)|\le L|\vb y-\vb z|$时，方程组$\vb y'=\vb f(x,\vb y)$、$\vb y(x_0)=\vb y_0$在$x_0$附近有唯一的解。$n$阶方程$y^{(n)}=g(x,y,y',\dots,y^{(n-1)})$令$y_1=y$、$y_2=y'$、…、$y_n=y^{(n-1)}$，就化成:term[一阶方程组]{id="math.ode.first-order-system"}（system of first-order equations）；所以$g$满足同样的条件时，给定$y(x_0)$、$y'(x_0)$、…、$y^{(n-1)}(x_0)$这$n$个初始条件，解唯一。
 
 例如$y''=-y$令$y_1=y$、$y_2=y'$，得到$y_1'=y_2$、$y_2'=-y_1$。右边$\vb f(\vb y)=(y_2,-y_1)$满足$|\vb f(\vb y)-\vb f(\vb z)|=|\vb y-\vb z|$，:term[利普希茨条件]{id="math.ode.lipschitz-condition"}成立，$L=1$。所以给定$y(0)$和$y'(0)$，解唯一：$y(0)=0$、$y'(0)=1$的解只有$\sin x$。
 

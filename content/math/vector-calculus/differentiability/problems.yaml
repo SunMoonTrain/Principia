@@ -1,0 +1,136 @@
+- id: p1
+  tier: easy
+  statement: |
+    $z=x^2y+3y$。在点$(1,2)$处取$\dd x=0.1$、$\dd y=-0.2$，求全微分$\dd z$。
+  answer:
+    type: number
+    value: -0.4
+  hints:
+    - |
+      $\dd z=z_x\dd x+z_y\dd y$，偏导数在$(1,2)$处取值。
+    - |
+      $z_x=2xy$，$z_y=x^2+3$，在$(1,2)$处都是$4$。
+    - |
+      $\dd z=4\cdot0.1+4\cdot(-0.2)=0.4-0.8=-0.4$。
+  solution: |
+    $z_x=2xy=4$，$z_y=x^2+3=4$，$\dd z=0.4-0.8=-0.4$。
+
+- id: p2
+  tier: easy
+  statement: |
+    求曲面$z=x^2+2y^2$在点$(1,1,3)$处的切平面，写成$z=Ax+By+C$，按顺序填写$A$、$B$、$C$。
+  answer:
+    type: tuple
+    value: [2, 4, -3]
+  hints:
+    - |
+      切平面是$z=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)$。
+    - |
+      $f_x=2x$，$f_y=4y$，在$(1,1)$处分别是$2$、$4$。
+    - |
+      $z=3+2(x-1)+4(y-1)=2x+4y-3$。
+  solution: |
+    $z=3+2(x-1)+4(y-1)$，即$z=2x+4y-3$，填 `2, 4, -3`。
+
+- id: p3
+  tier: medium
+  statement: |
+    用全微分估计$\sqrt{3.02^2+3.97^2}$的值（写成小数）。
+  answer:
+    type: number
+    value: 4.988
+  tolerance: { abs: 0.0005 }
+  hints:
+    - |
+      看成$f(x,y)=\sqrt{x^2+y^2}$在$(3,4)$附近的值，$\dd x=0.02$，$\dd y=-0.03$。
+    - |
+      $f_x=\frac{x}{\sqrt{x^2+y^2}}$，$f_y=\frac{y}{\sqrt{x^2+y^2}}$，在$(3,4)$处分别是$\frac35$、$\frac45$。
+    - |
+      $f(3.02,3.97)\approx5+\frac35\cdot0.02+\frac45\cdot(-0.03)=5+0.012-0.024=4.988$。
+  solution: |
+    $f(3,4)=5$，$\dd f=\frac35\cdot0.02-\frac45\cdot0.03=-0.012$，估计值$4.988$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $z=xy^2$。测得$x=2$，误差不超过$0.01$；$y=3$，误差不超过$0.02$。用全微分估计$z$的误差最多是多少。
+  answer:
+    type: number
+    value: 0.33
+  hints:
+    - |
+      $\Delta z\approx\dd z=z_x\dd x+z_y\dd y$，$|\dd x|\le0.01$，$|\dd y|\le0.02$。
+    - |
+      $z_x=y^2=9$，$z_y=2xy=12$。$|\dd z|\le|z_x||\dd x|+|z_y||\dd y|$。
+    - |
+      $|\dd z|\le9\cdot0.01+12\cdot0.02=0.09+0.24=0.33$，两个误差同号时取到。
+  solution: |
+    $|\dd z|\le y^2\cdot0.01+2xy\cdot0.02=0.09+0.24=0.33$。
+
+- id: p5
+  tier: hard
+  statement: |
+    $(x,y)\ne(0,0)$时$f(x,y)=\frac{x^2y}{x^2+y^2}$，$f(0,0)=0$。证明$f$在原点连续、两个偏导数都存在，但不可微。
+  hints:
+    - |
+      连续：$x^2\le x^2+y^2$，用它估计$|f|$。偏导数：看$f(h,0)$、$f(0,k)$。
+    - |
+      $|f|\le|y|$，所以连续；$f(h,0)=f(0,k)=0$，两个偏导数都是$0$。如果可微，$A$、$B$只能是多少？
+    - |
+      可微时$A=f_x(0,0)=0$、$B=f_y(0,0)=0$，误差$r=f$。沿$h=k=t$，$f(t,t)=\frac t2$，$\frac{r}{\sqrt{2t^2}}=\frac{t/2}{\sqrt2|t|}=\pm\frac{1}{2\sqrt2}$，不趋于$0$，所以不可微。
+  reference: |
+    $x^2\le x^2+y^2$，所以$|f(x,y)|\le|y|\le\sqrt{x^2+y^2}$，$(x,y)\to(0,0)$时$f\to0=f(0,0)$，连续。$f(h,0)=0$、$f(0,k)=0$，所以$f_x(0,0)=f_y(0,0)=0$。
+
+    假如$f$在原点可微，由可微的必要条件，$A=0$、$B=0$，于是$f(h,k)=r(h,k)$，要求$\frac{f(h,k)}{\sqrt{h^2+k^2}}\to0$。但沿$h=k=t$，$\frac{f(t,t)}{\sqrt{2t^2}}=\frac{t/2}{\sqrt2|t|}=\pm\frac{1}{2\sqrt2}$，不趋于$0$。所以$f$在原点不可微，图像在原点没有切平面。
+
+- id: p6
+  tier: hard
+  statement: |
+    $(x,y)\ne(0,0)$时$f(x,y)=(x^2+y^2)\sin\frac{1}{\sqrt{x^2+y^2}}$，$f(0,0)=0$。证明$f$在原点可微，但$f_x$在原点不连续。
+  hints:
+    - |
+      记$\rho=\sqrt{x^2+y^2}$。$|f|\le\rho^2$，这说明$f$在原点附近比位移的长度小得多。
+    - |
+      取$A=B=0$，$r=f$，$\frac{|r|}{\rho}\le\rho\to0$，所以可微，$f_x(0,0)=0$。原点以外，$f_x=2x\sin\frac1\rho-\frac x\rho\cos\frac1\rho$。
+    - |
+      沿$x$轴的正半轴（$y=0$、$x>0$），$f_x=2x\sin\frac1x-\cos\frac1x$。$x\to0^+$时第一项趋于$0$，第二项在$-1$和$1$之间来回摆动，没有极限，所以$f_x$在原点不连续。
+  reference: |
+    记$\rho=\sqrt{h^2+k^2}$。$|f(h,k)|=\rho^2\left|\sin\frac1\rho\right|\le\rho^2$。取$A=B=0$，误差$r=f$，$\frac{|r|}{\rho}\le\rho\to0$，所以$f$在原点可微，$f_x(0,0)=f_y(0,0)=0$。
+
+    在原点以外，$\pdv{\rho}{x}=\frac x\rho$，由一元的链式法则，$f_x=2x\sin\frac1\rho+\rho^2\cos\frac1\rho\cdot\left(-\frac1{\rho^2}\right)\frac x\rho=2x\sin\frac1\rho-\frac x\rho\cos\frac1\rho$。沿$x$轴的正半轴，$f_x=2x\sin\frac1x-\cos\frac1x$；取$x_n=\frac1{2n\pi}$时它是$-1$，取$x_n=\frac1{(2n+1)\pi}$时是$1$，所以$x\to0^+$时没有极限，$f_x$在原点不连续。这说明「偏导数连续」只是可微的充分条件。
+
+- id: p7
+  tier: thinking
+  statement: |
+    点在球面$x^2+y^2+z^2=R^2$上做微小的移动，改变量是$(\dd x,\dd y,\dd z)$。一阶近似下这三个改变量满足什么关系？它的几何意义是什么？为什么说是「一阶」近似？
+  hints:
+    - |
+      把$g(x,y,z)=x^2+y^2+z^2$看成三元函数（function of three variables），点在球面上移动时$g$不变，一阶近似下$\dd g=0$。
+    - |
+      $\dd g=2x\dd x+2y\dd y+2z\dd z$。精确地写，$(x+\dd x)^2+(y+\dd y)^2+(z+\dd z)^2=R^2$展开后多出哪些项？
+    - |
+      一阶近似下$x\dd x+y\dd y+z\dd z=0$：位移和从球心指向这一点的方向垂直，也就是沿球面的切平面移动。精确的关系是$2(x\dd x+y\dd y+z\dd z)+(\dd x^2+\dd y^2+\dd z^2)=0$，丢掉的二次项比位移的长度小得多，所以叫一阶近似。
+  reference: |
+    令$g(x,y,z)=x^2+y^2+z^2$，点在球面上时$g=R^2$不变。全微分$\dd g=2x\dd x+2y\dd y+2z\dd z$，一阶近似下$\dd g=0$，即$x\dd x+y\dd y+z\dd z=0$。
+
+    几何意义：这说明位移$(\dd x,\dd y,\dd z)$和半径方向$(x,y,z)$垂直（两个向量对应分量相乘再相加为$0$，见[点积、长度与夹角](lesson:math.linear-algebra.dot-product)），点沿球面在这一点的切平面移动。
+
+    精确地写，$(x+\dd x)^2+(y+\dd y)^2+(z+\dd z)^2=R^2$展开得$2(x\dd x+y\dd y+z\dd z)+(\dd x^2+\dd y^2+\dd z^2)=0$。括号里的二次项比位移的长度小得多，丢掉它，就是只保留一次项的一阶近似。分析力学里约束允许的虚位移，正是这样由约束方程的全微分为零得到的。
+
+- id: p8
+  tier: thinking
+  statement: |
+    一元函数在一点可导和可微是一回事。二元函数为什么要把「偏导数存在」和「可微」分开？如果要求沿每一个方向的变化率都存在，够不够推出可微？
+  hints:
+    - |
+      偏导数只管两条坐标轴方向。沿任意方向$(\cos\alpha,\sin\alpha)$的变化率又是什么？用第 5 题的函数在原点算一算。
+    - |
+      第 5 题的函数沿$(\cos\alpha,\sin\alpha)$的变化率是$\cos^2\alpha\sin\alpha$，处处存在。可微时，它应该等于什么？
+    - |
+      可微时，$f(a+t\cos\alpha,b+t\sin\alpha)-f(a,b)=t(A\cos\alpha+B\sin\alpha)+r$，沿每个方向的变化率都等于$A\cos\alpha+B\sin\alpha$，是方向的一次函数，而且同一个误差估计对所有方向一起成立。第 5 题的函数沿每个方向都有变化率，可$\cos^2\alpha\sin\alpha$不是$\cos\alpha$、$\sin\alpha$的一次组合，所以不可微。只看一个个方向不够。
+  reference: |
+    一元时自变量只能沿一条直线变动，「差商有极限」和「能用一次函数近似」是一回事。平面上，位移可以朝任何方向，偏导数只看两个坐标方向，所以要分开。
+
+    沿每个方向的变化率都存在也不够。第 5 题的$f$在原点沿$(\cos\alpha,\sin\alpha)$的变化率是$\lim_{t\to0}\frac{f(t\cos\alpha,t\sin\alpha)}t=\cos^2\alpha\sin\alpha$，对每个$\alpha$都存在。如果$f$可微，由$f(t\cos\alpha,t\sin\alpha)=t(A\cos\alpha+B\sin\alpha)+r$，这个变化率应该等于$A\cos\alpha+B\sin\alpha$，是方向的一次组合；可$\cos^2\alpha\sin\alpha$不是（$A=B=0$时一次组合恒为$0$），所以不可微。
+
+    可微要求的是：用同一个一次函数，误差对所有方向一起比位移的长度小得多。只在一个个方向上分别有变化率，各方向之间可以毫无关系，拼不成一张切平面。

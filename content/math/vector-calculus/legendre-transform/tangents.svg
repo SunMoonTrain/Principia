@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" width="640" height="380" font-size="13">
+  <!-- 原点 (250, 250)，一个单位 62 像素；曲线 y = e^x；三条切线斜率 1/2、1、2，切点 x = ln p，截距 -f*(p) = p - p ln p -->
+  <line x1="51.6" y1="250" x2="362.9" y2="250" stroke="currentColor" stroke-width="1.1" />
+  <path d="M 370.9 250 L 362.9 254 L 362.9 246 Z" fill="currentColor" />
+  <line x1="250" y1="305.8" x2="250" y2="22.4" stroke="currentColor" stroke-width="1.1" />
+  <path d="M 250 14.4 L 254 22.4 L 246 22.4 Z" fill="currentColor" />
+  <text x="375.9" y="255" font-size="14" fill="currentColor"><tspan font-style="italic">x</tspan></text>
+  <text x="243" y="19.4" text-anchor="end" font-size="14" fill="currentColor"><tspan font-style="italic">y</tspan></text>
+  <path d="M 51.6 247.47 L 53.92 247.38 L 56.23 247.28 L 58.55 247.17 L 60.86 247.07 L 63.18 246.95 L 65.49 246.84 L 67.81 246.72 L 70.12 246.59 L 72.44 246.46 L 74.75 246.33 L 77.07 246.19 L 79.38 246.04 L 81.7 245.89 L 84.01 245.74 L 86.33 245.58 L 88.64 245.41 L 90.96 245.23 L 93.27 245.05 L 95.59 244.86 L 97.9 244.67 L 100.22 244.46 L 102.53 244.25 L 104.85 244.03 L 107.16 243.81 L 109.48 243.57 L 111.79 243.33 L 114.11 243.07 L 116.42 242.81 L 118.74 242.54 L 121.05 242.25 L 123.37 241.96 L 125.68 241.65 L 128 241.33 L 130.32 241 L 132.63 240.66 L 134.95 240.31 L 137.26 239.94 L 139.58 239.56 L 141.89 239.16 L 144.21 238.75 L 146.52 238.32 L 148.84 237.87 L 151.15 237.41 L 153.47 236.93 L 155.78 236.44 L 158.1 235.92 L 160.41 235.38 L 162.73 234.83 L 165.04 234.25 L 167.36 233.65 L 169.67 233.03 L 171.99 232.38 L 174.3 231.71 L 176.62 231.02 L 178.93 230.29 L 181.25 229.54 L 183.56 228.77 L 185.88 227.96 L 188.19 227.12 L 190.51 226.25 L 192.82 225.35 L 195.14 224.41 L 197.45 223.43 L 199.77 222.42 L 202.08 221.37 L 204.4 220.29 L 206.71 219.15 L 209.03 217.98 L 211.35 216.76 L 213.66 215.5 L 215.98 214.19 L 218.29 212.82 L 220.61 211.41 L 222.92 209.94 L 225.24 208.42 L 227.55 206.83 L 229.87 205.19 L 232.18 203.49 L 234.5 201.72 L 236.81 199.88 L 239.13 197.97 L 241.44 195.99 L 243.76 193.94 L 246.07 191.81 L 248.39 189.59 L 250.7 187.29 L 253.02 184.91 L 255.33 182.43 L 257.65 179.86 L 259.96 177.19 L 262.28 174.42 L 264.59 171.55 L 266.91 168.56 L 269.22 165.46 L 271.54 162.25 L 273.85 158.91 L 276.17 155.44 L 278.48 151.84 L 280.8 148.11 L 283.11 144.23 L 285.43 140.21 L 287.75 136.03 L 290.06 131.69 L 292.38 127.19 L 294.69 122.52 L 297.01 117.67 L 299.32 112.64 L 301.64 107.41 L 303.95 101.98 L 306.27 96.35 L 308.58 90.51 L 310.9 84.44 L 313.21 78.14 L 315.53 71.6 L 317.84 64.81 L 320.16 57.77 L 322.47 50.45 L 324.79 42.86 L 327.1 34.98 L 329.42 26.8" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2.4" />
+  <text x="319.42" y="36.8" text-anchor="end" font-size="14" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">y</tspan> = <tspan font-style="italic">e</tspan><tspan baseline-shift="super" font-size="10"><tspan font-style="italic">x</tspan></tspan></text>
+  <path d="M 51.6 296.71 L 358.5 143.26" fill="none" style="stroke: var(--good, #0f8a5f)" stroke-width="1.6" stroke-dasharray="6 4" />
+  <circle cx="207.02" cy="219" r="3.5" style="fill: var(--good, #0f8a5f)" />
+  <circle cx="250" cy="197.51" r="3.5" style="fill: var(--good, #0f8a5f)" />
+  <path d="M 132.2 305.8 L 358.5 79.5" fill="none" style="stroke: var(--warn, #a8661a)" stroke-width="1.6" stroke-dasharray="6 4" />
+  <circle cx="250" cy="188" r="3.5" style="fill: var(--warn, #a8661a)" />
+  <circle cx="250" cy="188" r="3.5" style="fill: var(--warn, #a8661a)" />
+  <path d="M 203.08 305.8 L 342.58 26.8" fill="none" style="stroke: var(--muted, #6b7280)" stroke-width="1.6" stroke-dasharray="6 4" />
+  <circle cx="292.98" cy="126" r="3.5" style="fill: var(--muted, #6b7280)" />
+  <circle cx="250" cy="211.95" r="3.5" style="fill: var(--muted, #6b7280)" />
+  <text x="420" y="70" fill="currentColor">虚线：斜率为 <tspan font-style="italic">p</tspan> 的切线</text>
+  <text x="420" y="92" fill="currentColor"><tspan font-style="italic">y</tspan> = <tspan font-style="italic">px</tspan> − <tspan font-style="italic">f</tspan>*(<tspan font-style="italic">p</tspan>)</text>
+  <line x1="420" y1="120" x2="446" y2="120" style="stroke: var(--good, #0f8a5f)" stroke-width="1.6" stroke-dasharray="6 4" />
+  <text x="454" y="124" style="fill: var(--good, #0f8a5f)" fill="currentColor"><tspan font-style="italic">p</tspan> = 1/2，截距 −<tspan font-style="italic">f</tspan>*(<tspan font-style="italic">p</tspan>) ≈ 0.85</text>
+  <line x1="420" y1="144" x2="446" y2="144" style="stroke: var(--warn, #a8661a)" stroke-width="1.6" stroke-dasharray="6 4" />
+  <text x="454" y="148" style="fill: var(--warn, #a8661a)" fill="currentColor"><tspan font-style="italic">p</tspan> = 1，截距 −<tspan font-style="italic">f</tspan>*(<tspan font-style="italic">p</tspan>) = 1</text>
+  <line x1="420" y1="168" x2="446" y2="168" style="stroke: var(--muted, #6b7280)" stroke-width="1.6" stroke-dasharray="6 4" />
+  <text x="454" y="172" style="fill: var(--muted, #6b7280)" fill="currentColor"><tspan font-style="italic">p</tspan> = 2，截距 −<tspan font-style="italic">f</tspan>*(<tspan font-style="italic">p</tspan>) ≈ 0.61</text>
+  <text x="320" y="340" text-anchor="middle" fill="currentColor">每个斜率 <tspan font-style="italic">p</tspan> 对应一条切线，截距是 −<tspan font-style="italic">f</tspan>*(<tspan font-style="italic">p</tspan>)；知道了 <tspan font-style="italic">f</tspan>*，就能画出全部切线</text>
+  <text x="320" y="366" text-anchor="middle" fill="currentColor">曲线是这些切线的包络，所以换成以斜率为自变量，不丢信息</text>
+</svg>

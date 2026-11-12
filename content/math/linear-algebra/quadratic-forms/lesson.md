@@ -43,7 +43,7 @@ $n$个变量的二次齐次多项式$Q(\vb x)=\sum_{i,j}a_{ij}x_ix_j$叫作:term
 ::anchor{id="def-positive-definite"}
 若对所有$\vb x\ne\vb 0$都有$\vb x\T A\vb x>0$，就说:term[二次型]{id="math.linear-algebra.quadratic-form"}和:term[对称矩阵]{id="math.linear-algebra.symmetric-matrix"}$A$是:term[正定]{id="math.linear-algebra.positive-definite"}（positive definite）的；对所有$\vb x$都有$\vb x\T A\vb x\ge0$，叫作半正定（positive semidefinite）的；既能取正值又能取负值，叫作不定（indefinite）的。
 
-为什么这样定义：正定的二次型好比距离的平方，只在原点为零、别处都是正的；[内积空间](lesson:math.linear-algebra.inner-product-spaces)里的:term[内积]{id="math.linear-algebra.inner-product"}（inner product），正是要求$\langle\vb v,\vb v\rangle$正定。多元函数（function of several variables）在驻点（stationary point）附近的二阶近似就是一个二次型，它正定时那里是极小值点，力学里平衡就是稳定的（见[小振动与简正坐标](lesson:physics.analytical-mechanics.small-oscillations)）。边界情况：$x^2$作为两个变量$x$、$y$的二次型只是半正定，$(0,1)$处为零；正定的二次型限制到任何:term[子空间]{id="math.linear-algebra.subspace"}（subspace）上仍然正定。
+为什么这样定义：正定的二次型好比距离的平方，只在原点为零、别处都是正的；[内积空间](lesson:math.linear-algebra.inner-product-spaces)里的:term[内积]{id="math.linear-algebra.inner-product"}（inner product），正是要求$\langle\vb v,\vb v\rangle$正定。:term[多元函数]{id="math.vector-calculus.multivariable-function"}（function of several variables）在:term[驻点]{id="math.vector-calculus.stationary-point"}（stationary point）附近的二阶近似就是一个二次型，它正定时那里是极小值点，力学里平衡就是稳定的（见[小振动与简正坐标](lesson:physics.analytical-mechanics.small-oscillations)）。边界情况：$x^2$作为两个变量$x$、$y$的二次型只是半正定，$(0,1)$处为零；正定的二次型限制到任何:term[子空间]{id="math.linear-algebra.subspace"}（subspace）上仍然正定。
 
 ::anchor{id="thm-positive-definite-eigen"}
 **用:term[特征值]{id="math.linear-algebra.eigenvalue"}判断**　对称矩阵$A$正定，当且仅当它的特征值都是正数。

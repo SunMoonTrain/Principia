@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" width="640" height="380" font-size="13">
+  <!-- 左：z 在上，x、y 在中间，叶子 s、t、s、t；右：z 在上，x、y、t 在中间，x、y 下面各一个 t；加粗的是求导要走的路径 -->
+  <line x1="149.68" y1="74.75" x2="105.48" y2="137.88" style="stroke: var(--accent, #2563eb)" stroke-width="2.6" />
+  <path d="M 100.9 144.43 L 102.21 135.59 L 108.76 140.17 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="111.89" y="104.82" text-anchor="middle" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">x</tspan></tspan></text>
+  <line x1="170.32" y1="74.75" x2="214.52" y2="137.88" style="stroke: var(--accent, #2563eb)" stroke-width="2.6" />
+  <path d="M 219.1 144.43 L 211.24 140.17 L 217.79 135.59 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="208.11" y="104.82" text-anchor="middle" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">y</tspan></tspan></text>
+  <line x1="83.31" y1="176.71" x2="60.03" y2="234.93" style="stroke: var(--accent, #2563eb)" stroke-width="2.6" />
+  <path d="M 57.06 242.36 L 56.31 233.45 L 63.74 236.42 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="55.14" y="208.06" text-anchor="middle" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">x</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">s</tspan></tspan></text>
+  <line x1="96.69" y1="176.71" x2="119.97" y2="234.93" style="stroke: var(--muted, #6b7280)" stroke-width="1.3" />
+  <path d="M 122.94 242.36 L 116.26 236.42 L 123.69 233.45 Z" style="fill: var(--muted, #6b7280)" />
+  <text x="124.86" y="208.06" text-anchor="middle" fill="currentColor"><tspan font-style="italic">x</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">t</tspan></tspan></text>
+  <line x1="223.31" y1="176.71" x2="200.03" y2="234.93" style="stroke: var(--accent, #2563eb)" stroke-width="2.6" />
+  <path d="M 197.06 242.36 L 196.31 233.45 L 203.74 236.42 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="195.14" y="208.06" text-anchor="middle" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">y</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">s</tspan></tspan></text>
+  <line x1="236.69" y1="176.71" x2="259.97" y2="234.93" style="stroke: var(--muted, #6b7280)" stroke-width="1.3" />
+  <path d="M 262.94 242.36 L 256.26 236.42 L 263.69 233.45 Z" style="fill: var(--muted, #6b7280)" />
+  <text x="264.86" y="208.06" text-anchor="middle" fill="currentColor"><tspan font-style="italic">y</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">t</tspan></tspan></text>
+  <circle cx="160" cy="60" r="17" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <text x="160" y="65" text-anchor="middle" font-size="15" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">z</tspan></text>
+  <circle cx="90" cy="160" r="17" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <text x="90" y="165" text-anchor="middle" font-size="15" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">x</tspan></text>
+  <circle cx="230" cy="160" r="17" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <text x="230" y="165" text-anchor="middle" font-size="15" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">y</tspan></text>
+  <circle cx="50" cy="260" r="17" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <text x="50" y="265" text-anchor="middle" font-size="15" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">s</tspan></text>
+  <circle cx="130" cy="260" r="17" fill="none" stroke="currentColor" stroke-width="1.3" />
+  <text x="130" y="265" text-anchor="middle" font-size="15" fill="currentColor"><tspan font-style="italic">t</tspan></text>
+  <circle cx="190" cy="260" r="17" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <text x="190" y="265" text-anchor="middle" font-size="15" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">s</tspan></text>
+  <circle cx="270" cy="260" r="17" fill="none" stroke="currentColor" stroke-width="1.3" />
+  <text x="270" y="265" text-anchor="middle" font-size="15" fill="currentColor"><tspan font-style="italic">t</tspan></text>
+  <text x="160" y="314" text-anchor="middle" font-size="15" fill="currentColor">∂<tspan font-style="italic">z</tspan>/∂<tspan font-style="italic">s</tspan> = <tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">x</tspan></tspan> <tspan font-style="italic">x</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">s</tspan></tspan> + <tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">y</tspan></tspan> <tspan font-style="italic">y</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">s</tspan></tspan></text>
+  <text x="160" y="344" text-anchor="middle" fill="currentColor">从 <tspan font-style="italic">z</tspan> 到 <tspan font-style="italic">s</tspan> 有两条路径</text>
+  <line x1="468.76" y1="74.06" x2="416.87" y2="138.92" style="stroke: var(--accent, #2563eb)" stroke-width="2.6" />
+  <path d="M 411.87 145.16 L 413.74 136.42 L 419.99 141.42 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="427.51" y="104" text-anchor="middle" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">x</tspan></tspan></text>
+  <line x1="480" y1="78" x2="480" y2="133" style="stroke: var(--accent, #2563eb)" stroke-width="2.6" />
+  <path d="M 480 141 L 476 133 L 484 133 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="464" y="114" text-anchor="middle" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">y</tspan></tspan></text>
+  <line x1="491.24" y1="74.06" x2="543.13" y2="138.92" style="stroke: var(--accent, #2563eb)" stroke-width="2.6" />
+  <path d="M 548.13 145.16 L 540.01 141.42 L 546.26 136.42 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="532.49" y="104" text-anchor="middle" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">t</tspan></tspan></text>
+  <line x1="400" y1="178" x2="400" y2="233" style="stroke: var(--accent, #2563eb)" stroke-width="2.6" />
+  <path d="M 400 241 L 396 233 L 404 233 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="384" y="214" text-anchor="middle" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">x</tspan>′</text>
+  <line x1="480" y1="178" x2="480" y2="233" style="stroke: var(--accent, #2563eb)" stroke-width="2.6" />
+  <path d="M 480 241 L 476 233 L 484 233 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="496" y="214" text-anchor="middle" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">y</tspan>′</text>
+  <circle cx="480" cy="60" r="17" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <text x="480" y="65" text-anchor="middle" font-size="15" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">z</tspan></text>
+  <circle cx="400" cy="160" r="17" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <text x="400" y="165" text-anchor="middle" font-size="15" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">x</tspan></text>
+  <circle cx="480" cy="160" r="17" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <text x="480" y="165" text-anchor="middle" font-size="15" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">y</tspan></text>
+  <circle cx="560" cy="160" r="17" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <text x="560" y="165" text-anchor="middle" font-size="15" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">t</tspan></text>
+  <circle cx="400" cy="260" r="17" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <text x="400" y="265" text-anchor="middle" font-size="15" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">t</tspan></text>
+  <circle cx="480" cy="260" r="17" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <text x="480" y="265" text-anchor="middle" font-size="15" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">t</tspan></text>
+  <text x="480" y="314" text-anchor="middle" font-size="15" fill="currentColor">d<tspan font-style="italic">z</tspan>/d<tspan font-style="italic">t</tspan> = <tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">x</tspan></tspan> <tspan font-style="italic">x</tspan>′ + <tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">y</tspan></tspan> <tspan font-style="italic">y</tspan>′ + <tspan font-style="italic">f</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">t</tspan></tspan></text>
+  <text x="480" y="344" text-anchor="middle" fill="currentColor"><tspan font-style="italic">t</tspan> 既直接出现，又藏在 <tspan font-style="italic">x</tspan>、<tspan font-style="italic">y</tspan> 里：三条路径</text>
+</svg>

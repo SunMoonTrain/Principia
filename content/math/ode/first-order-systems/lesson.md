@@ -36,7 +36,7 @@ $n$个未知函数$x_1(t),\dots,x_n(t)$满足的一组方程$x_i'=f_i(t,x_1,\dot
 ### 矩阵形式与解的结构
 
 ::anchor{id="def-linear-system"}
-右边对$\vb x$是线性的方程组$\vb x'=A(t)\vb x+\vb g(t)$叫作:term[一阶线性方程组]{id="math.ode.first-order-linear-system"}（first-order linear system），其中$A(t)$是$n\times n$的矩阵，每个元素是$t$的函数，$\vb g(t)$是向量值函数（vector-valued function）；$\vb g\equiv\vb 0$时叫作齐次的（homogeneous）。
+右边对$\vb x$是线性的方程组$\vb x'=A(t)\vb x+\vb g(t)$叫作:term[一阶线性方程组]{id="math.ode.first-order-linear-system"}（first-order linear system），其中$A(t)$是$n\times n$的矩阵，每个元素是$t$的函数，$\vb g(t)$是:term[向量值函数]{id="math.vector-calculus.vector-valued-function"}（vector-valued function）；$\vb g\equiv\vb 0$时叫作齐次的（homogeneous）。
 
 为什么这样定义：矩阵乘法把$n$个方程压成一个式子，$A\vb x$的第$i$个分量正是第$i$个方程右边的线性部分。$y''+py'+qy=g$化成的方程组就是这样，$A=\begin{pmatrix}0&1\\-q&-p\end{pmatrix}$、$\vb g=\begin{pmatrix}0\\g\end{pmatrix}$。边界情况：$A$是常数矩阵、$\vb g\equiv\vb 0$时，方程组就是常系数的齐次方程组$\vb x'=A\vb x$，下面几节主要讨论它。
 

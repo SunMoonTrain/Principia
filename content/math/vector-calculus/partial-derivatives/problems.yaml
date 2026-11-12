@@ -1,0 +1,137 @@
+- id: p1
+  tier: easy
+  statement: |
+    $f(x,y)=x^3y-2xy^2+y$。求$f_x(1,2)$。
+  answer:
+    type: number
+    value: -2
+  hints:
+    - |
+      对$x$求偏导数时，把$y$当常数。
+    - |
+      $f_x=3x^2y-2y^2$，最后一项$y$对$x$求导是$0$。
+    - |
+      $f_x(1,2)=3\cdot1\cdot2-2\cdot4=6-8=-2$。
+  solution: |
+    $f_x=3x^2y-2y^2$，$f_x(1,2)=6-8=-2$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $f(x,y)=\ln(x^2+3y)$。按顺序填写$f_x(1,1)$和$f_y(1,1)$。
+  answer:
+    type: tuple
+    value: [1/2, 3/4]
+  hints:
+    - |
+      $\ln u$对$u$求导是$\frac1u$，再乘以$u=x^2+3y$对相应变量的偏导数（一元的链式法则）。
+    - |
+      $f_x=\frac{2x}{x^2+3y}$，$f_y=\frac{3}{x^2+3y}$。
+    - |
+      在$(1,1)$处$x^2+3y=4$，$f_x=\frac24=\frac12$，$f_y=\frac34$。
+  solution: |
+    $f_x=\frac{2x}{x^2+3y}$，$f_y=\frac{3}{x^2+3y}$，在$(1,1)$处分别是$\frac12$、$\frac34$，填 `1/2, 3/4`。
+
+- id: p3
+  tier: medium
+  statement: |
+    $f(x,y)=\sin(xy)+x^2y^3$。求$f_{xy}(\pi,1)$。
+  answer:
+    type: number
+    value: 6*pi - 1
+  hints:
+    - |
+      $f_{xy}$是先对$x$、再对$y$求偏导数。
+    - |
+      $f_x=y\cos(xy)+2xy^3$。对$y$求导时，$y\cos(xy)$要用乘积法则。
+    - |
+      $f_{xy}=\cos(xy)-xy\sin(xy)+6xy^2$。在$(\pi,1)$处是$\cos\pi-\pi\sin\pi+6\pi=6\pi-1\approx17.85$。
+  solution: |
+    $f_{xy}=\cos(xy)-xy\sin(xy)+6xy^2$，代入得$6\pi-1$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $a$取多少时，$u(x,y)=x^3+axy^2$满足$u_{xx}+u_{yy}=0$？
+  answer:
+    type: number
+    value: -3
+  hints:
+    - |
+      分别求$u_{xx}$和$u_{yy}$。
+    - |
+      $u_{xx}=6x$，$u_{yy}=2ax$。
+    - |
+      $u_{xx}+u_{yy}=(6+2a)x$对所有$x$都为$0$，所以$6+2a=0$，$a=-3$。
+  solution: |
+    $u_{xx}+u_{yy}=6x+2ax=0$对所有$x$成立，$a=-3$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$F$、$G$是二阶可导的一元函数，$c$是常数。证明$u(x,t)=F(x-ct)+G(x+ct)$满足$u_{tt}=c^2u_{xx}$。
+  hints:
+    - |
+      对$t$求偏导数时$x$是常数，$F(x-ct)$对$t$求导要用一元的链式法则，里面的函数$x-ct$对$t$的导数是$-c$。
+    - |
+      $u_t=-cF'(x-ct)+cG'(x+ct)$，$u_x=F'(x-ct)+G'(x+ct)$。
+    - |
+      再求一次：$u_{tt}=c^2F''(x-ct)+c^2G''(x+ct)$，$u_{xx}=F''(x-ct)+G''(x+ct)$，所以$u_{tt}=c^2u_{xx}$。
+  reference: |
+    固定$x$，$F(x-ct)$是$F$和一次函数$t\mapsto x-ct$的复合，由一元的链式法则，对$t$的导数是$-cF'(x-ct)$；同理$G(x+ct)$对$t$的导数是$cG'(x+ct)$。所以$u_t=-cF'(x-ct)+cG'(x+ct)$，再求一次得$u_{tt}=c^2F''(x-ct)+c^2G''(x+ct)$。
+
+    固定$t$，同样得$u_x=F'(x-ct)+G'(x+ct)$，$u_{xx}=F''(x-ct)+G''(x+ct)$。比较两式，$u_{tt}=c^2u_{xx}$。这个方程描述弦的振动，$F(x-ct)$、$G(x+ct)$分别是以速度$c$向右、向左传播的波形，以后在[偏微分方程与分类](lesson:math.pde.pde-basics)里还会遇到。
+
+- id: p6
+  tier: hard
+  statement: |
+    $(x,y)\ne(0,0)$时$f(x,y)=\frac{xy(x^2-y^2)}{x^2+y^2}$，$f(0,0)=0$。求$f_{xy}(0,0)$和$f_{yx}(0,0)$，并说明施瓦茨定理的哪个条件不满足。
+  hints:
+    - |
+      $f_{xy}(0,0)$是$f_x(0,y)$在$y=0$处对$y$的导数。先求$f_x(0,y)$：$y\ne0$时可以用求导法则，$y=0$时用定义。
+    - |
+      $f_x(0,0)=\lim_{h\to0}\frac{f(h,0)}{h}=0$；$y\ne0$时，$f_x(0,y)=\lim_{h\to0}\frac{f(h,y)-f(0,y)}{h}=\lim_{h\to0}\frac{y(h^2-y^2)}{h^2+y^2}=-y$。另外$f(x,y)=-f(y,x)$。
+    - |
+      $f_x(0,y)=-y$对所有$y$成立，所以$f_{xy}(0,0)=-1$。由$f(x,y)=-f(y,x)$，$f_y(x,0)=x$，所以$f_{yx}(0,0)=1$。两者不等，说明混合偏导数在原点不连续：例如$y\ne0$时$f_{xy}(0,y)=-1$，可沿直线$y=x$趋近原点时$f_{xy}$一直是$0$。
+  reference: |
+    $f(h,0)=0$，所以$f_x(0,0)=0$。$y\ne0$时，$f_x(0,y)=\lim_{h\to0}\frac{f(h,y)-0}{h}=\lim_{h\to0}\frac{y(h^2-y^2)}{h^2+y^2}=-y$。于是$f_x(0,y)=-y$对所有$y$成立，$f_{xy}(0,0)=\dv{}{y}(-y)\big|_{y=0}=-1$。
+
+    $f(x,y)=-f(y,x)$，所以$f_y(x,0)=\lim_{k\to0}\frac{f(x,k)}{k}=-\lim_{k\to0}\frac{f(k,x)}{k}=-f_x(0,x)=x$，于是$f_{yx}(0,0)=1$。
+
+    $f_{xy}(0,0)\ne f_{yx}(0,0)$，所以施瓦茨定理的条件不满足：混合偏导数在原点不连续。在原点以外求导可算出$f_{xy}=f_{yx}=\frac{x^2-y^2}{x^2+y^2}\cdot\frac{x^4+10x^2y^2+y^4}{(x^2+y^2)^2}$，沿$y$轴趋近原点时是$-1$，沿直线$y=x$时是$0$，在原点没有极限。
+
+- id: p7
+  tier: thinking
+  statement: |
+    $f(x,y)=x+y$。换一组自变量$u=x$、$v=x+y$，把同一个量写成$g(u,v)$。$\pdv fx$和$\pdv gu$都是「对$x$（也就是$u$）求偏导数」，它们相等吗？为什么？
+  hints:
+    - |
+      先把$g(u,v)$写出来：$f=x+y$用$u$、$v$表示是什么？
+    - |
+      $g(u,v)=v$。求偏导数时，另一个变量保持不变：$\pdv fx$里保持不变的是哪个量？$\pdv gu$里呢？
+    - |
+      $\pdv fx=1$，$\pdv gu=0$，不相等。$\pdv fx$是固定$y$、让$x$增加时$f$的变化率；$\pdv gu$是固定$v=x+y$、让$x$增加时的变化率，这时$y$跟着减少，$f$不变。偏导数的值取决于另外哪些变量保持不变。
+  reference: |
+    $g(u,v)=v$，因为$f=x+y=v$。$\pdv fx=1$，$\pdv gu=0$，不相等。
+
+    求偏导数时，其余的自变量保持不变。$\pdv fx$里保持不变的是$y$：$x$增加$1$，$f$增加$1$。$\pdv gu$里保持不变的是$v=x+y$：$x$增加$1$时$y$必须减少$1$，$f=v$不变。所以「对$x$求偏导数」这句话不完整，要说清另外哪些变量保持不变。
+
+    物理里常在记号上注明这一点，例如热学里的$\left(\pdv UT\right)_V$和$\left(\pdv UT\right)_p$。分析力学里能量函数$h$和哈密顿量$H$的值相同，偏导数却不同，也是这个原因：一个保持广义速度不变，一个保持广义动量不变。
+
+- id: p8
+  tier: thinking
+  statement: |
+    $f_x(a,b)$、$f_y(a,b)$是沿两个坐标方向的变化率。沿任意一个单位向量（unit vector）$(\cos\alpha,\sin\alpha)$的方向，变化率$\lim_{t\to0}\frac{f(a+t\cos\alpha,\,b+t\sin\alpha)-f(a,b)}{t}$能不能由这两个偏导数算出来？用$(x,y)\ne(0,0)$时$f(x,y)=\frac{x^2y}{x^2+y^2}$、$f(0,0)=0$在原点试一试。
+  hints:
+    - |
+      先求$f_x(0,0)$、$f_y(0,0)$；再沿$(\cos\alpha,\sin\alpha)$按定义算变化率。
+    - |
+      $f(h,0)=f(0,k)=0$，两个偏导数都是$0$；$f(t\cos\alpha,t\sin\alpha)=t\cos^2\alpha\sin\alpha$。
+    - |
+      沿$(\cos\alpha,\sin\alpha)$的变化率是$\cos^2\alpha\sin\alpha$，例如$\alpha=\frac\pi4$时是$\frac{\sqrt2}4\ne0$，而只用两个偏导数，无论怎样组合都只能得到$0$。所以一般不能。这个$f$在原点还是连续的（$|f|\le|y|$），可它在原点附近不像一个平面，下一节的「可微（differentiable）」正是要排除这种情形。
+  reference: |
+    $f(h,0)=0$、$f(0,k)=0$，所以$f_x(0,0)=f_y(0,0)=0$。沿$(\cos\alpha,\sin\alpha)$，$f(t\cos\alpha,t\sin\alpha)=\frac{t^3\cos^2\alpha\sin\alpha}{t^2}=t\cos^2\alpha\sin\alpha$，变化率是$\cos^2\alpha\sin\alpha$。
+
+    如果这个变化率能由偏导数算出来，最自然的猜测是$f_x\cos\alpha+f_y\sin\alpha$，这里是$0$；可$\alpha=\frac\pi4$时实际是$\frac{\sqrt2}4$。只知道沿两个坐标方向的情况，推不出别的方向。
+
+    这个$f$在原点连续（$|f|\le|y|$），沿每个方向的变化率也都存在，但它在原点附近的图像不是一张「近似平面」：沿不同方向的斜率$\cos^2\alpha\sin\alpha$不是$\alpha$的一次组合。下一节[全微分与切平面](lesson:math.vector-calculus.differentiability)用「能用一次函数近似」来定义可微，可微时沿任意方向的变化率才等于$f_x\cos\alpha+f_y\sin\alpha$。

@@ -21,7 +21,7 @@ status: reviewed
 
 先看一个例子。$J[y]=\int_0^b\bigl(y'^2-y^2\bigr)\dd x$，$y(0)=y(b)=0$，$y=0$是一条:term[极值曲线]{id="math.calculus-of-variations.extremal"}。$J$是二次的，所以$J[\varepsilon\eta]=\varepsilon^2\int_0^b\bigl(\eta'^2-\eta^2\bigr)\dd x$精确成立：:term[第一变分]{id="math.calculus-of-variations.first-variation"}为零，$y=0$是不是极小，全看这个二次项的符号。取$\eta=\sin\frac{\pi x}{b}$，二次项是$\frac b2\bigl(\frac{\pi^2}{b^2}-1\bigr)\varepsilon^2$，$b>\pi$时它是负的，$y=0$就不是极小。
 
-一般地，固定:term[容许函数]{id="math.calculus-of-variations.admissible-function"}（admissible function）$y$和两端为零的$\eta$，令$\Phi(\varepsilon)=J[y+\varepsilon\eta]$。设$F$有连续的二阶偏导数（second-order partial derivative），在积分号下对$\varepsilon$求两次导数，被积函数的二阶导数正是多元泰勒公式（Taylor's formula）里的二次项，即$F$对$(y,p)$的黑塞矩阵（Hessian matrix）作用在$(\eta,\eta')$上：
+一般地，固定:term[容许函数]{id="math.calculus-of-variations.admissible-function"}（admissible function）$y$和两端为零的$\eta$，令$\Phi(\varepsilon)=J[y+\varepsilon\eta]$。设$F$有连续的二阶偏导数（second-order partial derivative），在积分号下对$\varepsilon$求两次导数，被积函数的二阶导数正是多元泰勒公式（Taylor's formula）里二次项的两倍，即$F$对$(y,p)$的黑塞矩阵（Hessian matrix）作用在$(\eta,\eta')$上：
 
 $$
 \Phi''(0)=\int_a^b\bigl(F_{yy}\,\eta^2+2F_{yy'}\,\eta\eta'+F_{y'y'}\,\eta'^2\bigr)\dd x .

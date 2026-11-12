@@ -1,0 +1,135 @@
+- id: p1
+  tier: easy
+  statement: |
+    $f(x,y)=x^2y-3y^2$。求$\nabla f(2,1)$，按顺序填写两个分量。
+  answer:
+    type: tuple
+    value: [4, -2]
+  hints:
+    - |
+      $\nabla f=(f_x,f_y)$。
+    - |
+      $f_x=2xy$，$f_y=x^2-6y$。
+    - |
+      在$(2,1)$处，$f_x=4$，$f_y=4-6=-2$，$\nabla f=(4,-2)$。
+  solution: |
+    $\nabla f=(2xy,\ x^2-6y)$，在$(2,1)$处是$(4,-2)$，填 `4, -2`。
+
+- id: p2
+  tier: easy
+  statement: |
+    $f(x,y)=xy^2$。求$f$在$(2,1)$处沿单位向量$\vb u=\bigl(\frac35,\frac45\bigr)$的方向导数。
+  answer:
+    type: number
+    value: 19/5
+  hints:
+    - |
+      $f$可微，$D_{\vb u}f=\nabla f\cdot\vb u$。
+    - |
+      $\nabla f=(y^2,2xy)$，在$(2,1)$处是$(1,4)$。
+    - |
+      $D_{\vb u}f=1\cdot\frac35+4\cdot\frac45=\frac{19}5=3.8$。
+  solution: |
+    $\nabla f(2,1)=(1,4)$，$D_{\vb u}f=\frac35+\frac{16}5=\frac{19}5$。
+
+- id: p3
+  tier: medium
+  statement: |
+    $f(x,y)=\ln(x^2+y^2)$。求$f$在$(3,4)$处最大的方向导数。
+  answer:
+    type: number
+    value: 2/5
+  hints:
+    - |
+      最大的方向导数是梯度的长度$|\nabla f|$。
+    - |
+      $\nabla f=\Bigl(\frac{2x}{x^2+y^2},\frac{2y}{x^2+y^2}\Bigr)$，在$(3,4)$处是$\bigl(\frac6{25},\frac8{25}\bigr)$。
+    - |
+      $|\nabla f|=\frac{\sqrt{36+64}}{25}=\frac{10}{25}=\frac25$，方向是从原点指向$(3,4)$的方向。
+  solution: |
+    $\nabla f(3,4)=\frac1{25}(6,8)$，长度$\frac{10}{25}=\frac25$。
+
+- id: p4
+  tier: medium
+  statement: |
+    曲线$x^3+y^3=9$过点$(1,2)$。求它在这一点的切线，写成$y=kx+m$，按顺序填写$k$、$m$。
+  answer:
+    type: tuple
+    value: [-1/4, 9/4]
+  hints:
+    - |
+      曲线是$F(x,y)=x^3+y^3$的等值线$F=9$，梯度垂直于它。
+    - |
+      $\nabla F=(3x^2,3y^2)$，在$(1,2)$处是$(3,12)$，切线是$3(x-1)+12(y-2)=0$。
+    - |
+      化简得$x+4y=9$，即$y=-\frac14x+\frac94$。
+  solution: |
+    法向量$\nabla F(1,2)=(3,12)$，切线$x+4y=9$，即$y=-\frac14x+\frac94$，填 `-1/4, 9/4`。
+
+- id: p5
+  tier: hard
+  statement: |
+    $f(x,y)=x^2+2y^2$。一条曲线从$(1,1)$出发，每一点的切线方向都是$f$在那一点的梯度方向。求这条曲线，并说明它和每条等值线都垂直相交。
+  hints:
+    - |
+      沿梯度方向，即曲线的切向量（tangent vector）和$\nabla f=(2x,4y)$平行。取参数使$\dv xt=2x$、$\dv yt=4y$。
+    - |
+      $\dv yx=\frac{4y}{2x}=\frac{2y}x$。看看$\frac{y}{x^2}$沿曲线怎样变。
+    - |
+      $\dv{}{x}\frac y{x^2}=\frac{x^2y'-2xy}{x^4}=\frac{x^2\cdot\frac{2y}x-2xy}{x^4}=0$，所以$\frac y{x^2}$不变，$y=Cx^2$；过$(1,1)$，$C=1$，曲线是$y=x^2$。它的切向量处处和梯度平行，而梯度垂直于等值线，所以它和每条等值线都垂直相交。
+  reference: |
+    曲线的切向量处处和$\nabla f=(2x,4y)$平行，所以$\dv yx=\frac{4y}{2x}=\frac{2y}x$（在第一象限里$x,y>0$）。于是$\dv{}{x}\frac{y}{x^2}=\frac{x^2y'-2xy}{x^4}=0$，$\frac y{x^2}$沿曲线不变，即$y=Cx^2$；过$(1,1)$得$C=1$。所以曲线是$y=x^2$，从$(1,1)$沿梯度方向往外走，反过来沿$-\nabla f$往里走则趋向原点。
+
+    验证垂直：$y=x^2$的切向量是$(1,2x)$，$\nabla f=(2x,4x^2)=2x(1,2x)$，两者平行。由梯度的方向，$\nabla f$垂直于过这一点的等值线，所以曲线在每个交点处都和等值线垂直。
+
+- id: p6
+  tier: hard
+  statement: |
+    $f$在一块区域上处处可微，并且$\nabla f\equiv\vb 0$。这块区域里任意两点都能用一条落在区域里的折线连起来。证明$f$在这块区域上是常数。如果区域分成两块互不相连的部分，结论还成立吗？
+  hints:
+    - |
+      先看一条线段：$\vb r(t)=P+t(Q-P)$，$0\le t\le1$，令$g(t)=f\bigl(\vb r(t)\bigr)$。
+    - |
+      由链式法则，$g'(t)=\nabla f\bigl(\vb r(t)\bigr)\cdot(Q-P)=0$，所以$g$是常数，$f(P)=f(Q)$。
+    - |
+      折线由有限段线段组成，每一段两端的函数值相等，所以整条折线两端相等。分成两块时不成立：例如在$x<0$上$f=0$、在$x>0$上$f=1$，$\nabla f\equiv\vb0$，$f$不是常数。
+  reference: |
+    设线段$PQ$在区域里，$g(t)=f\bigl(P+t(Q-P)\bigr)$，$0\le t\le1$。由链式法则，$g'(t)=\nabla f\cdot(Q-P)=0$，一元函数导数恒为零，所以$g$是常数（微分中值定理），$f(P)=g(0)=g(1)=f(Q)$。
+
+    任意两点用折线连起来，折线是有限段线段首尾相接，每一段两端的函数值相等，所以两点的函数值相等，$f$是常数。
+
+    区域分成互不相连的两块时不成立：$f(x,y)=0$（$x<0$）、$f(x,y)=1$（$x>0$），定义域是去掉$y$轴的平面，处处$\nabla f=\vb 0$，$f$却不是常数。所以结论里「能用折线连起来」不能少。
+
+- id: p7
+  tier: thinking
+  statement: |
+    把坐标轴转一个角度，换成新的直角坐标$(x',y')$，同一个函数$f$在新坐标下的梯度分量$\bigl(\pdv f{x'},\pdv f{y'}\bigr)$和原来的$(f_x,f_y)$一般不一样。它们代表的是不是平面上同一个向量？怎样只用「方向导数」来描述梯度，说明它和坐标轴的取法无关？
+  hints:
+    - |
+      方向导数$D_{\vb u}f$只依赖于点和方向，和坐标怎么取无关。
+    - |
+      $D_{\vb u}f=\nabla f\cdot\vb u$对所有单位向量$\vb u$都成立；点积、长度、夹角在旋转后的直角坐标下都不变。
+    - |
+      梯度是这样一个向量：它和任何单位向量$\vb u$的点积，等于沿$\vb u$的方向导数。满足这个条件的向量只有一个：方向是方向导数最大的方向，长度是最大的方向导数。两组坐标算出的分量不同，却是同一个向量在不同坐标轴上的分量。
+  reference: |
+    是同一个向量。方向导数$D_{\vb u}f$只依赖于点和方向$\vb u$，和坐标轴怎么取无关。在任何一组直角坐标下都有$D_{\vb u}f=\nabla f\cdot\vb u$，而点积只依赖于两个向量的长度和夹角，旋转坐标轴不改变它们。
+
+    所以可以不用坐标来描述梯度：它是唯一满足「对所有单位向量$\vb u$，$\vb g\cdot\vb u=D_{\vb u}f$」的向量$\vb g$。分别取$\vb u$为两条坐标轴的方向，就得到它的两个分量；换一组坐标轴，取的方向变了，分量随之变，向量本身不变。几何上，它指向方向导数最大的方向，长度是最大的方向导数。
+
+    斜坐标系里情况不同：那时$\left(\pdv f{x'},\pdv f{y'}\right)$按普通的「对应分量相乘再相加」和方向相乘，一般得不到方向导数，梯度的分量要另外换算。
+
+- id: p8
+  tier: thinking
+  statement: |
+    $F(x,y,z)=c$是一张等值面，$P$在它上面，$\nabla F(P)\ne\vb 0$。为什么$\nabla F(P)$是它在$P$处的法向量？曲面$z=f(x,y)$可以看成$F(x,y,z)=z-f(x,y)$的等值面$F=0$，由此写出的切平面，和[全微分与切平面](lesson:math.vector-calculus.differentiability)里的一样吗？
+  hints:
+    - |
+      等值面上任取一条过$P$的可导曲线$\vb r(t)$，$F\bigl(\vb r(t)\bigr)=c$，求导看看。
+    - |
+      $\nabla F(P)\cdot\vb r'(0)=0$：$\nabla F(P)$和等值面上过$P$的每条曲线的切向量都垂直。$F=z-f(x,y)$时，$\nabla F=(-f_x,-f_y,1)$。
+    - |
+      $\nabla F(P)$垂直于等值面上过$P$的所有曲线的切向量，这些切向量组成切平面，所以它是法向量。$F=z-f$时，切平面$-f_x(x-a)-f_y(y-b)+(z-f(a,b))=0$，就是$z=f(a,b)+f_x(x-a)+f_y(y-b)$，和那一节的一样。
+  reference: |
+    设$\vb r(t)$是等值面上过$P$的可导曲线，$\vb r(0)=P$。$F\bigl(\vb r(t)\bigr)=c$，由链式法则，$\nabla F(P)\cdot\vb r'(0)=0$。等值面上过$P$的每条曲线，切向量都和$\nabla F(P)$垂直；这些切向量铺成等值面在$P$处的切平面，所以$\nabla F(P)$是法向量，切平面是$\nabla F(P)\cdot(\vb x-P)=0$。
+
+    $F(x,y,z)=z-f(x,y)$时，$\nabla F=(-f_x,-f_y,1)$，在$P=\bigl(a,b,f(a,b)\bigr)$处写出的切平面是$-f_x(x-a)-f_y(y-b)+\bigl(z-f(a,b)\bigr)=0$，移项正是$z=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)$，和全微分那一节由线性近似得到的切平面一致。两种看法，一个把曲面当函数的图像，一个当等值面，结果相同；等值面的看法还能处理球面这种不是单个函数图像的曲面。

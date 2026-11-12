@@ -1,0 +1,135 @@
+- id: p1
+  tier: easy
+  statement: |
+    $f(x)=x^2$。求它的勒让德变换在$p=6$处的值$f^*(6)$。
+  answer:
+    type: number
+    value: 9
+  hints:
+    - |
+      先由$f'(x)=p$解出$x(p)$，再算$f^*(p)=p\,x(p)-f\bigl(x(p)\bigr)$。
+    - |
+      $2x=p$，$x(p)=\frac p2$，$f^*(p)=\frac{p^2}2-\frac{p^2}4=\frac{p^2}4$。
+    - |
+      $f^*(6)=\frac{36}4=9$。
+  solution: |
+    $x(p)=\frac p2$，$f^*(p)=\frac{p^2}4$，$f^*(6)=9$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $f(x)=3x^2+2x$。求$f^*(8)$。
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      $p=8$时，先由$f'(x)=8$解出对应的$x$。
+    - |
+      $6x+2=8$，$x=1$，$f(1)=5$。
+    - |
+      $f^*(8)=8\cdot1-5=3$。
+  solution: |
+    $f'(x)=6x+2=8$得$x=1$，$f^*(8)=8-f(1)=3$。
+
+- id: p3
+  tier: medium
+  statement: |
+    $f(x)=\frac{x^4}4$（$x>0$）。求$f^*(8)$。
+  answer:
+    type: number
+    value: 12
+  hints:
+    - |
+      $f'(x)=x^3=p$，$x(p)=p^{1/3}$。
+    - |
+      $f^*(p)=p\cdot p^{1/3}-\frac{p^{4/3}}4=\frac34p^{4/3}$。
+    - |
+      $8^{4/3}=16$，$f^*(8)=\frac34\cdot16=12$。验算：$(f^*)'(p)=p^{1/3}$，$p=8$时是$2$，正是$x(8)$。
+  solution: |
+    $x(p)=p^{1/3}$，$f^*(p)=\frac34p^{4/3}$，$f^*(8)=12$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $f(x)=-\ln x$（$x>0$）。求$f^*\bigl(-\frac12\bigr)$。
+  answer:
+    type: number
+    value: ln(2) - 1
+  hints:
+    - |
+      $f'(x)=-\frac1x$，它的值都是负数，所以$p<0$。
+    - |
+      $-\frac1x=p$，$x(p)=-\frac1p$；$p=-\frac12$时$x=2$。
+    - |
+      $f^*\bigl(-\frac12\bigr)=-\frac12\cdot2-(-\ln2)=\ln2-1\approx-0.307$。
+  solution: |
+    $x\bigl(-\frac12\bigr)=2$，$f^*=-1+\ln2$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f''>0$。证明对定义域里的所有$x$和$f'$取得到的所有$p$，都有$px\le f(x)+f^*(p)$，并且等号当且仅当$p=f'(x)$时成立。用$f(x)=\frac{x^2}2$和$f(x)=\frac{x^a}a$（$x>0$，$a>1$）各写出得到的不等式。
+  hints:
+    - |
+      讲解里说$f^*(p)$是$px-f(x)$对$x$的最大值。
+    - |
+      所以对每个$x$，$f^*(p)\ge px-f(x)$；最大值只在$x=x(p)$处取到，那里$f'(x)=p$。
+    - |
+      $f=\frac{x^2}2$时$f^*=\frac{p^2}2$，得$px\le\frac{x^2}2+\frac{p^2}2$。$f=\frac{x^a}a$时$x(p)=p^{\frac1{a-1}}$，$f^*(p)=\frac{p^b}b$，其中$\frac1a+\frac1b=1$，得$px\le\frac{x^a}a+\frac{p^b}b$。
+  reference: |
+    $g(x)=px-f(x)$的导数$p-f'(x)$严格减少，在$x(p)$处为零，所以$g$在$x(p)$处取最大值，并且只在那里取到。于是对所有$x$，$px-f(x)\le f^*(p)$，即$px\le f(x)+f^*(p)$；等号当且仅当$x=x(p)$，即$p=f'(x)$。
+
+    $f=\frac{x^2}2$：$x(p)=p$，$f^*=\frac{p^2}2$，得$px\le\frac{x^2}2+\frac{p^2}2$，也就是$(x-p)^2\ge0$。
+
+    $f=\frac{x^a}a$（$x>0$）：$f'(x)=x^{a-1}=p$，$x(p)=p^{\frac1{a-1}}$，$f^*(p)=p^{\frac a{a-1}}-\frac1ap^{\frac a{a-1}}=\frac{a-1}ap^{\frac a{a-1}}$。令$b=\frac a{a-1}$，则$\frac1a+\frac1b=1$，$f^*(p)=\frac{p^b}b$，得$px\le\frac{x^a}a+\frac{p^b}b$（$x,p>0$），这叫杨氏不等式（Young's inequality），等号当且仅当$p=x^{a-1}$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f''>0$，并且$x(p)$可导。证明$(f^*)''(p)=\frac1{f''\bigl(x(p)\bigr)}$，从而$f^*$也严格凸。用$f=e^x$验证。
+  hints:
+    - |
+      讲解里$(f^*)'(p)=x(p)$，所以$(f^*)''(p)=x'(p)$。
+    - |
+      $x(p)$满足$f'\bigl(x(p)\bigr)=p$，两边对$p$求导。
+    - |
+      $f''\bigl(x(p)\bigr)x'(p)=1$，所以$x'(p)=\frac1{f''(x(p))}>0$。$f=e^x$时$f^*=p\ln p-p$，$(f^*)''=\frac1p$，而$f''(x(p))=e^{\ln p}=p$，一致。
+  reference: |
+    由$(f^*)'(p)=x(p)$，$(f^*)''(p)=x'(p)$。对恒等式$f'\bigl(x(p)\bigr)=p$两边求导，由一元的链式法则得$f''\bigl(x(p)\bigr)x'(p)=1$，所以$(f^*)''(p)=\frac1{f''(x(p))}$。$f''>0$，所以$(f^*)''>0$，$f^*$也严格凸，这正是能对它再做一次变换的条件。
+
+    $f=e^x$：$f^*(p)=p\ln p-p$，$(f^*)'=\ln p$，$(f^*)''=\frac1p$；$x(p)=\ln p$，$f''(x(p))=e^{\ln p}=p$，倒数是$\frac1p$，一致。几何上，$f$弯得越厉害（$f''$大），斜率变化得越快，一段斜率只对应很短一段$x$，于是$f^*$弯得越平缓。
+
+- id: p7
+  tier: thinking
+  statement: |
+    热学里常用差一个负号的变换$g(p)=f(x)-px$，其中$p=f'(x)$。用这种写法，$g'(p)$等于什么，变换两次还能回到$f$吗？例如内能$U$看成熵$S$的函数，温度$T=\dv US$，自由能$F=U-TS$。$F$以什么为自变量，$\dv FT$等于什么？
+  hints:
+    - |
+      $g(p)=-f^*(p)$，用讲解里的结论。
+    - |
+      $g'(p)=-x(p)$。用同样的写法再变换一次：新的自变量是$g'(p)$，算$g(p)-p\,g'(p)$。
+    - |
+      $g'(p)=-x$；$g(p)-p\,g'(p)=f(x)-px+px=f(x)$，函数值回到了$f$，只是新的自变量是$-x$，要把符号换回去。对内能，$F=U-TS$以温度$T$为自变量，$\dv FT=-S$，并且$U=F-T\dv FT$。
+  reference: |
+    $g(p)=f\bigl(x(p)\bigr)-px(p)=-f^*(p)$，所以$g'(p)=-(f^*)'(p)=-x(p)$。用同样的写法再变换一次：新的自变量是$s=g'(p)=-x$，得到$g(p)-p\,g'(p)=f(x)-px+px=f(x)=f(-s)$。函数值回到了$f$，只是自变量差一个符号；把$s$换回$x=-s$，就是原来的$f$，所以这种写法同样不丢信息。
+
+    热学里内能$U(S)$（体积等其他量固定）对熵的导数是温度$T$。按这种写法变换，$F(T)=U-TS$以温度为自变量，$\dv FT=-S$；反过来$U=F-T\dv FT$。这样做是因为实验里温度比熵容易控制。几个这样的函数统称热力学势，以后在[热力学势](lesson:physics.thermal-physics.thermodynamic-potentials)里讲。
+
+- id: p8
+  tier: thinking
+  statement: |
+    $f(x)=\frac{x^4}4-\frac{x^2}2$不是凸函数。$p=0$时，方程$f'(x)=p$有几个解？用讲解里的另一种看法$f^*(p)=\max_x\bigl(px-f(x)\bigr)$还能定义$f^*$吗？再对它变换一次，得到的是$f$吗？
+  hints:
+    - |
+      $f'(x)=x^3-x=x(x-1)(x+1)$，$p=0$时有三个解。用最大值定义时，看$px-f(x)$在这三个点的值。
+    - |
+      $p=0$时$\max_x\bigl(-f(x)\bigr)=-\min f=\frac14$（在$x=\pm1$处）。按最大值的定义，$f^*$对每个$p$都有定义，它总是凸的。
+    - |
+      对$f^*$再按最大值的定义变换，得到的是在$f$下方的最大的凸函数：$|x|\ge1$时等于$f$，$-1<x<1$时等于$-\frac14$（把两个凹坑之间填平）。中间那一段鼓起的部分丢掉了，所以不能变回$f$。
+  reference: |
+    $f'(x)=x^3-x$，$p=0$时有$x=-1,0,1$三个解，$x(p)$不唯一，讲解里的定义用不了。按最大值定义，$f^*(p)=\max_x\bigl(px-f(x)\bigr)$对每个$p$都有意义（$f$增长得比一次函数快），$p=0$时是$-\min f=\frac14$。
+
+    这样得到的$f^*$总是凸的：它是一族一次函数$p\mapsto px-f(x)$的最大值。对它再按最大值的定义变换，得到的是在$f$下方的最大的凸函数：$|x|\ge1$时它等于$f$，$-1<x<1$时等于常数$-\frac14$，把$f$的两个最低点之间鼓起的部分换成了一条水平线段。
+
+    所以对不凸的函数，变换会丢掉信息，变两次回不到原来的函数。只有凸函数，切线族才能还原整条曲线；这也是讲解里要求$f''>0$的原因。

@@ -11,6 +11,8 @@ macros:
     \hat{\mathbf{#1}}
   \dd: |
     \mathop{}\!\mathrm{d}
+  \dv: |
+    \frac{\mathrm{d} #1}{\mathrm{d} #2}
   \pdv: |
     \frac{\partial #1}{\partial #2}
   \divg: |
@@ -19,4 +21,202 @@ macros:
     \nabla\times
   \lap: |
     \nabla^2
-glossary: []
+glossary:
+  - id: math.vector-calculus.multivariable-function
+    zh: |
+      多元函数
+    en: |
+      function of several variables
+    brief: |
+      自变量是$\R^n$中的点（$n\ge2$）的函数，例如二元函数$z=f(x,y)$：每个点对应唯一一个实数。
+    definedIn: math.vector-calculus.functions-of-several-variables
+    anchor: def-multivariable-function
+  - id: math.vector-calculus.level-curve
+    zh: |
+      等值线
+    en: |
+      level curve
+    brief: |
+      二元函数$f$取同一个值$c$的点组成的曲线$f(x,y)=c$；地图上的等高线就是海拔的等值线。
+    definedIn: math.vector-calculus.functions-of-several-variables
+    anchor: def-level-curve
+  - id: math.vector-calculus.level-surface
+    zh: |
+      等值面
+    en: |
+      level surface
+    brief: |
+      三元函数$f$取同一个值$c$的点组成的曲面$f(x,y,z)=c$，例如空间里温度相同的点组成的面。
+    definedIn: math.vector-calculus.functions-of-several-variables
+    anchor: def-level-surface
+  - id: math.vector-calculus.double-limit
+    zh: |
+      二重极限
+    en: |
+      double limit
+    brief: |
+      点$(x,y)$不论从哪个方向、沿什么路径趋近$(a,b)$，$f(x,y)$都趋于同一个数$L$，记作$\lim_{(x,y)\to(a,b)}f(x,y)=L$。
+    definedIn: math.vector-calculus.multivariable-limits
+    anchor: def-double-limit
+  - id: math.vector-calculus.continuous
+    zh: |
+      连续
+    en: |
+      continuous
+    brief: |
+      $\lim_{(x,y)\to(a,b)}f(x,y)=f(a,b)$时，说多元函数$f$在$(a,b)$处连续：求极限可以直接代入。
+    definedIn: math.vector-calculus.multivariable-limits
+    anchor: def-continuous
+  - id: math.vector-calculus.partial-derivative
+    zh: |
+      偏导数
+    en: |
+      partial derivative
+    brief: |
+      固定其余变量、只让一个变量变动时的导数，如$f_x(a,b)=\lim_{h\to0}\frac{f(a+h,b)-f(a,b)}h$，也记作$\pdv fx$。
+    definedIn: math.vector-calculus.partial-derivatives
+    anchor: def-partial-derivative
+  - id: math.vector-calculus.second-partial-derivative
+    zh: |
+      二阶偏导数
+    en: |
+      second-order partial derivative
+    brief: |
+      对一阶偏导数再求一次偏导数，如$f_{xx}=\frac{\partial^2f}{\partial x^2}$、$f_{xy}=(f_x)_y$；下标从左往右是求导的次序。
+    definedIn: math.vector-calculus.partial-derivatives
+    anchor: def-second-partials
+  - id: math.vector-calculus.mixed-partial-derivative
+    zh: |
+      混合偏导数
+    en: |
+      mixed partial derivative
+    brief: |
+      对不同变量先后求导得到的二阶偏导数$f_{xy}$、$f_{yx}$；它们在一点附近存在并在这一点连续时相等。
+    definedIn: math.vector-calculus.partial-derivatives
+    anchor: def-second-partials
+  - id: math.vector-calculus.differentiable
+    zh: |
+      可微
+    en: |
+      differentiable
+    brief: |
+      存在常数$A$、$B$，使$f(a+h,b+k)=f(a,b)+Ah+Bk+r$，误差$r$比位移的长度$\sqrt{h^2+k^2}$小得多。
+    definedIn: math.vector-calculus.differentiability
+    anchor: def-differentiable
+  - id: math.vector-calculus.total-differential
+    zh: |
+      全微分
+    en: |
+      total differential
+    brief: |
+      可微时函数改变量的一次部分$\dd f=f_x\dd x+f_y\dd y$，是改变量的一阶近似。
+    definedIn: math.vector-calculus.differentiability
+    anchor: def-total-differential
+  - id: math.vector-calculus.tangent-plane
+    zh: |
+      切平面
+    en: |
+      tangent plane
+    brief: |
+      平面$z=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)$：可微时曲面$z=f(x,y)$在切点附近贴近它。
+    definedIn: math.vector-calculus.differentiability
+    anchor: def-tangent-plane
+  - id: math.vector-calculus.chain-rule
+    zh: |
+      链式法则
+    en: |
+      chain rule
+    brief: |
+      $f$可微时，$\dv{}{t}f\bigl(x(t),y(t)\bigr)=f_x\dv xt+f_y\dv yt$：沿依赖关系的每条路径，把偏导数相乘再相加。
+    definedIn: math.vector-calculus.multivariable-chain-rule
+    anchor: thm-chain-rule
+  - id: math.vector-calculus.total-derivative
+    zh: |
+      全导数
+    en: |
+      total derivative
+    brief: |
+      $z=f(x,y,t)$而$x$、$y$又随$t$变时，$z$对$t$的导数$f_x\dv xt+f_y\dv yt+\pdv ft$，不只是$\pdv ft$。
+    definedIn: math.vector-calculus.multivariable-chain-rule
+    anchor: def-total-derivative
+  - id: math.vector-calculus.directional-derivative
+    zh: |
+      方向导数
+    en: |
+      directional derivative
+    brief: |
+      沿单位向量$\vb u$每走单位距离函数的变化率$D_{\vb u}f$；$f$可微时等于$\nabla f\cdot\vb u$。
+    definedIn: math.vector-calculus.gradient
+    anchor: def-directional-derivative
+  - id: math.vector-calculus.gradient
+    zh: |
+      梯度
+    en: |
+      gradient
+    brief: |
+      由偏导数组成的向量$\nabla f=(f_x,f_y)$：指向函数增长最快的方向，长度是最大变化率，垂直于等值线。
+    definedIn: math.vector-calculus.gradient
+    anchor: def-gradient
+  - id: math.vector-calculus.stationary-point
+    zh: |
+      驻点
+    en: |
+      stationary point
+    brief: |
+      各个一阶偏导数都为零的点，二元时就是$f_x=f_y=0$的点。可微函数在定义域内部的局部极值点都是驻点，反过来不一定。
+    definedIn: math.vector-calculus.taylor-multivariable
+    anchor: def-stationary-point
+  - id: math.vector-calculus.saddle-point
+    zh: |
+      鞍点
+    en: |
+      saddle point
+    brief: |
+      不是局部极值点的驻点：它附近既有函数值更大的点，也有更小的点。例如$x^2-y^2$的原点，图像在那里像马鞍。
+    definedIn: math.vector-calculus.taylor-multivariable
+    anchor: def-saddle-point
+  - id: math.vector-calculus.vector-valued-function
+    zh: |
+      向量值函数
+    en: |
+      vector-valued function
+    brief: |
+      把$\R^n$中的点对应到$\R^m$中的点的函数$\vb f=(f_1,\dots,f_m)$，每个分量函数是一个多元函数。
+    definedIn: math.vector-calculus.jacobian
+    anchor: def-vector-valued-function
+  - id: math.vector-calculus.jacobian-matrix
+    zh: |
+      雅可比矩阵
+    en: |
+      Jacobian matrix
+    brief: |
+      第$i$行第$j$列是$\pdv{f_i}{x_j}$的矩阵$J_{\vb f}$；可微时$\vb f(\vb a+\vb h)\approx\vb f(\vb a)+J_{\vb f}(\vb a)\vb h$。
+    definedIn: math.vector-calculus.jacobian
+    anchor: def-jacobian-matrix
+  - id: math.vector-calculus.taylor-formula
+    zh: |
+      多元泰勒公式
+    en: |
+      Taylor's formula
+    brief: |
+      二阶时$f(a+h,b+k)\approx f(a,b)+f_xh+f_yk+\frac12\bigl(f_{xx}h^2+2f_{xy}hk+f_{yy}k^2\bigr)$，误差比$h^2+k^2$小得多；二次项由黑塞矩阵给出。
+    definedIn: math.vector-calculus.taylor-multivariable
+    anchor: thm-taylor
+  - id: math.vector-calculus.hessian-matrix
+    zh: |
+      黑塞矩阵
+    en: |
+      Hessian matrix
+    brief: |
+      第$i$行第$j$列是先对$x_i$、再对$x_j$求的二阶偏导数$f_{x_ix_j}$的矩阵$H_f$，给出泰勒公式的二次项；驻点处它决定附近的形状。
+    definedIn: math.vector-calculus.taylor-multivariable
+    anchor: def-hessian
+  - id: math.vector-calculus.legendre-transform
+    zh: |
+      勒让德变换
+    en: |
+      Legendre transform
+    brief: |
+      把严格凸的$f(x)$换成以斜率$p=f'(x)$为自变量的$f^*(p)=px-f(x)$；$(f^*)'(p)=x$，变换两次回到$f$。
+    definedIn: math.vector-calculus.legendre-transform
+    anchor: def-legendre-transform

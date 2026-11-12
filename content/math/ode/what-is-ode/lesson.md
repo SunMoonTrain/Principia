@@ -24,7 +24,7 @@ status: reviewed
 ::anchor{id="def-ode"}
 含有未知函数的导数的方程，叫作:term[微分方程]{id="math.ode.differential-equation"}（differential equation）；未知函数只有一个自变量时，叫作:term[常微分方程]{id="math.ode.ode"}（ordinary differential equation，ODE）。方程里出现的导数最高是几阶，方程就是几阶（order）的。
 
-为什么这样定义：许多规律只告诉我们「变化率由现在的状态决定」，写出来就是含导数的方程，要找的是一个函数，不是一个数。边界情况：未知函数有两个以上的自变量、方程里出现偏导数（partial derivative）时，比如热传导方程（heat equation）$\frac{\partial u}{\partial t}=\frac{\partial^2u}{\partial x^2}$，那是偏微分方程（partial differential equation），见[偏微分方程与分类](lesson:math.pde.pde-basics)。$(y')^2=y$只含一阶导数，是一阶方程，导数带了平方也不改变阶数。
+为什么这样定义：许多规律只告诉我们「变化率由现在的状态决定」，写出来就是含导数的方程，要找的是一个函数，不是一个数。边界情况：未知函数有两个以上的自变量、方程里出现:term[偏导数]{id="math.vector-calculus.partial-derivative"}（partial derivative）时，比如热传导方程（heat equation）$\frac{\partial u}{\partial t}=\frac{\partial^2u}{\partial x^2}$，那是偏微分方程（partial differential equation），见[偏微分方程与分类](lesson:math.pde.pde-basics)。$(y')^2=y$只含一阶导数，是一阶方程，导数带了平方也不改变阶数。
 
 ::anchor{id="def-solution"}
 设$I$是一个区间。如果函数$y=\varphi(x)$在$I$上可导，代进方程以后，对$I$里的每个$x$等式都成立，就说它是方程在$I$上的解（solution）。

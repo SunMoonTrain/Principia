@@ -1,0 +1,135 @@
+- id: p1
+  tier: easy
+  statement: |
+    $\vb f(x,y)=(x^2y,\ x+3y)$。求$J_{\vb f}(1,2)$，按行填写四个元素。
+  answer:
+    type: tuple
+    value: [4, 1, 1, 3]
+  hints:
+    - |
+      第$i$行是第$i$个分量函数对$x$、$y$的偏导数。
+    - |
+      第一行$\bigl(2xy,\ x^2\bigr)$，第二行$(1,\ 3)$。
+    - |
+      在$(1,2)$处是$\begin{pmatrix}4&1\\1&3\end{pmatrix}$。
+  solution: |
+    $J_{\vb f}=\begin{pmatrix}2xy&x^2\\1&3\end{pmatrix}$，在$(1,2)$处填 `4, 1, 1, 3`。
+
+- id: p2
+  tier: easy
+  statement: |
+    $\vb f(x,y,z)=(xy,\ yz)$。它的雅可比矩阵在$(1,2,3)$处第$2$行第$3$列的元素是多少？
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      $\vb f:\R^3\to\R^2$，雅可比矩阵是$2\times3$的。第$2$行对应第二个分量$yz$，第$3$列对应变量$z$。
+    - |
+      要求的是$\pdv{(yz)}{z}$。
+    - |
+      $\pdv{(yz)}{z}=y$，在$(1,2,3)$处是$2$。
+  solution: |
+    第$2$行第$3$列是$\pdv{(yz)}{z}=y=2$。
+
+- id: p3
+  tier: medium
+  statement: |
+    $\vb g(t)=(t^2,t^3)$，$\vb f(x,y)=(xy,\ x+y)$。用链式法则的矩阵形式求$(\vb f\circ\vb g)'(1)$，按顺序填写两个分量。
+  answer:
+    type: tuple
+    value: [5, 5]
+  hints:
+    - |
+      $(\vb f\circ\vb g)'(1)=J_{\vb f}\bigl(\vb g(1)\bigr)\,\vb g'(1)$，$\vb g'(1)$是一列。
+    - |
+      $\vb g(1)=(1,1)$，$\vb g'(1)=(2,3)$；$J_{\vb f}=\begin{pmatrix}y&x\\1&1\end{pmatrix}$，在$(1,1)$处是$\begin{pmatrix}1&1\\1&1\end{pmatrix}$。
+    - |
+      $\begin{pmatrix}1&1\\1&1\end{pmatrix}\begin{pmatrix}2\\3\end{pmatrix}=\begin{pmatrix}5\\5\end{pmatrix}$。验算：$\vb f\circ\vb g=(t^5,\ t^2+t^3)$，在$t=1$处的导数是$(5,5)$。
+  solution: |
+    $J_{\vb f}(1,1)\,\vb g'(1)=\begin{pmatrix}1&1\\1&1\end{pmatrix}\begin{pmatrix}2\\3\end{pmatrix}=(5,5)$，填 `5, 5`。
+
+- id: p4
+  tier: medium
+  statement: |
+    $\vb f(x,y)=(x-xy,\ -y+xy)$，$(1,1)$是使$\vb f=\vb 0$的点。求$\vb f$在$(1,1)$处的雅可比矩阵的行列式。
+  answer:
+    type: number
+    value: 1
+  hints:
+    - |
+      先写出雅可比矩阵，再代入$(1,1)$。
+    - |
+      $J_{\vb f}=\begin{pmatrix}1-y&-x\\y&-1+x\end{pmatrix}$。
+    - |
+      在$(1,1)$处是$\begin{pmatrix}0&-1\\1&0\end{pmatrix}$，行列式$0\cdot0-(-1)\cdot1=1$。
+  solution: |
+    $J_{\vb f}(1,1)=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$，行列式是$1$。
+
+- id: p5
+  tier: hard
+  statement: |
+    在$x>0$的半平面上，$r=\sqrt{x^2+y^2}$，$\theta=\arctan\frac yx$。求$(x,y)\mapsto(r,\theta)$的雅可比矩阵，并验证它和极坐标$(r,\theta)\mapsto(x,y)$的雅可比矩阵（在对应的点取值）相乘是单位矩阵（identity matrix）。为什么一定是这样？
+  hints:
+    - |
+      $\pdv rx=\frac xr$，$\pdv ry=\frac yr$；$\theta=\arctan\frac yx$对$x$、$y$求偏导数要用一元的链式法则。
+    - |
+      $\pdv\theta x=-\frac y{r^2}$，$\pdv\theta y=\frac x{r^2}$。用$x=r\cos\theta$、$y=r\sin\theta$代进去再相乘。
+    - |
+      $J_{(r,\theta)}=\begin{pmatrix}\cos\theta&\sin\theta\\-\frac{\sin\theta}r&\frac{\cos\theta}r\end{pmatrix}$，和$\begin{pmatrix}\cos\theta&-r\sin\theta\\\sin\theta&r\cos\theta\end{pmatrix}$相乘得单位矩阵。原因：两个映射互逆，复合起来是恒等映射（identity map），它的雅可比矩阵是单位矩阵；由链式法则的矩阵形式，这正是两个雅可比矩阵的乘积。
+  reference: |
+    $\pdv rx=\frac{x}{\sqrt{x^2+y^2}}=\cos\theta$，$\pdv ry=\sin\theta$；$\pdv\theta x=\frac{1}{1+y^2/x^2}\cdot\left(-\frac y{x^2}\right)=-\frac{y}{x^2+y^2}=-\frac{\sin\theta}r$，$\pdv\theta y=\frac{x}{x^2+y^2}=\frac{\cos\theta}r$。
+
+    所以$J_{(r,\theta)}=\begin{pmatrix}\cos\theta&\sin\theta\\-\frac{\sin\theta}r&\frac{\cos\theta}r\end{pmatrix}$。和$J_{(x,y)}=\begin{pmatrix}\cos\theta&-r\sin\theta\\\sin\theta&r\cos\theta\end{pmatrix}$相乘：左上$\cos^2\theta+\sin^2\theta=1$，右上$-r\sin\theta\cos\theta+r\sin\theta\cos\theta=0$，左下$-\frac{\sin\theta\cos\theta}r+\frac{\sin\theta\cos\theta}r=0$，右下$\sin^2\theta+\cos^2\theta=1$，是单位矩阵。
+
+    原因：先把$(r,\theta)$变成$(x,y)$、再变回$(r,\theta)$，复合映射是恒等映射，它的雅可比矩阵是单位矩阵。由链式法则的矩阵形式，这个雅可比矩阵等于两个雅可比矩阵的乘积，所以这个乘积一定是单位矩阵。注意$\pdv rx=\cos\theta$而$\pdv xr=\cos\theta$，两者不是倒数：相乘得单位矩阵的是整个矩阵，不是单个元素。
+
+- id: p6
+  tier: hard
+  statement: |
+    阻尼单摆满足$x'=y$、$y'=-\sin x-\frac y2$，即$\vb f(x,y)=\bigl(y,\ -\sin x-\frac y2\bigr)$。$(0,0)$和$(\pi,0)$都使$\vb f=\vb0$。分别求$\vb f$在这两点的雅可比矩阵和它的行列式，并说明两点附近$\vb f$的局部线性近似有什么不同。
+  hints:
+    - |
+      $J_{\vb f}=\begin{pmatrix}0&1\\-\cos x&-\frac12\end{pmatrix}$。
+    - |
+      $(0,0)$处$\cos x=1$，$(\pi,0)$处$\cos x=-1$。
+    - |
+      $(0,0)$处$J=\begin{pmatrix}0&1\\-1&-\frac12\end{pmatrix}$，行列式$1$；$(\pi,0)$处$J=\begin{pmatrix}0&1\\1&-\frac12\end{pmatrix}$，行列式$-1$。行列式为正，局部线性近似保持平面的朝向（orientation）；为负，则像照镜子一样把朝向翻转过来，两点附近的情形完全不同。
+  reference: |
+    $J_{\vb f}=\begin{pmatrix}0&1\\-\cos x&-\frac12\end{pmatrix}$。在$(0,0)$处是$\begin{pmatrix}0&1\\-1&-\frac12\end{pmatrix}$，行列式$0\cdot\bigl(-\frac12\bigr)-1\cdot(-1)=1$；在$(\pi,0)$处是$\begin{pmatrix}0&1\\1&-\frac12\end{pmatrix}$，行列式$-1$。
+
+    两点附近，$\vb f(\vb x^*+\vb u)\approx J\vb u$。行列式为$1$的那个保持朝向；行列式为$-1$的那个翻转朝向，它有两个异号的实特征值（特征多项式$\lambda^2+\frac12\lambda-1$的两根一正一负，见[特征值与特征向量](lesson:math.linear-algebra.eigenvalues)），沿一个方向向外推、沿另一个方向向里拉。常微分方程里用这个线性近似判断平衡点附近解的样子：下垂的位置附近是衰减的振动，倒立的位置附近解沿一个方向离开，见[非线性系统与线性化](lesson:math.ode.nonlinear-systems)。
+
+- id: p7
+  tier: thinking
+  statement: |
+    用几何图像里的$\vb F(x,y)=(x^2-y^2,\ 2xy)$在$(1,0.5)$处的局部线性近似去估计$\vb F(1+h_1,0.5+h_2)$，误差恰好是多少？取$\vb h=(0.1,-0.1)$和$\vb h=(1,1)$各算一次。为什么离得远误差就大？
+  hints:
+    - |
+      $\vb F(\vb a)+J\vb h=(0.75,1)+\begin{pmatrix}2&-1\\1&2\end{pmatrix}\begin{pmatrix}h_1\\h_2\end{pmatrix}$。把$\vb F(1+h_1,0.5+h_2)$展开比一比。
+    - |
+      $(1+h_1)^2-(0.5+h_2)^2=0.75+2h_1-h_2+(h_1^2-h_2^2)$，$2(1+h_1)(0.5+h_2)=1+h_1+2h_2+2h_1h_2$。
+    - |
+      误差恰好是$(h_1^2-h_2^2,\ 2h_1h_2)=\vb F(\vb h)$，长度是$h_1^2+h_2^2=|\vb h|^2$。$\vb h=(0.1,-0.1)$时误差$(0,-0.02)$，长度$0.02$，比$|\vb h|\approx0.14$小得多；$\vb h=(1,1)$时误差$(0,2)$，长度$2$，比$|\vb h|\approx1.41$还大。误差和$|\vb h|^2$同阶，$|\vb h|$小时可以忽略，大了就不行。
+  reference: |
+    展开：$\vb F(1+h_1,0.5+h_2)=\bigl(0.75+2h_1-h_2+(h_1^2-h_2^2),\ 1+h_1+2h_2+2h_1h_2\bigr)$。线性近似是$(0.75+2h_1-h_2,\ 1+h_1+2h_2)$，误差恰好是$(h_1^2-h_2^2,\ 2h_1h_2)$，也就是$\vb F(\vb h)$，长度$\sqrt{(h_1^2-h_2^2)^2+4h_1^2h_2^2}=h_1^2+h_2^2=|\vb h|^2$。
+
+    $\vb h=(0.1,-0.1)$：近似值$(1.05,0.9)$，实际$\vb F(1.1,0.4)=(1.05,0.88)$，误差$(0,-0.02)$，长度$0.02=|\vb h|^2$，相对于$|\vb h|\approx0.14$很小。$\vb h=(1,1)$：近似值$(1.75,4)$，实际$\vb F(2,1.5)=(1.75,6)$，误差$(0,2)$，长度$2$，比$|\vb h|\approx1.41$还大。
+
+    误差是二次的，$\frac{|\text{误差}|}{|\vb h|}=|\vb h|$：$\vb h$小时趋于$0$，这正是局部线性近似的意思；离开中心越远，二次项越不能忽略。
+
+- id: p8
+  tier: thinking
+  statement: |
+    $\vb F(x,y)=(x^2-y^2,\ 2xy)$的雅可比矩阵在每一点都是$\begin{pmatrix}p&-q\\q&p\end{pmatrix}$的形状。把$(x,y)$看成复数$z=x+iy$，$\vb F$就是$z\mapsto z^2$。这种形状的矩阵作用在$(h_1,h_2)$上，相当于把复数$h_1+ih_2$乘以哪个复数？一般的$\vb F=(u,v)$，雅可比矩阵要有这种形状，$u$、$v$的偏导数要满足什么条件？
+  hints:
+    - |
+      $(p+iq)(h_1+ih_2)=(ph_1-qh_2)+i(qh_1+ph_2)$，和$\begin{pmatrix}p&-q\\q&p\end{pmatrix}\begin{pmatrix}h_1\\h_2\end{pmatrix}$比一比。
+    - |
+      对$z^2$，$p=2x$，$q=2y$，$p+iq=2(x+iy)=2z$。
+    - |
+      相当于乘以$p+iq$，对$z^2$是$2z$，正像一元函数的导数。雅可比矩阵$\begin{pmatrix}u_x&u_y\\v_x&v_y\end{pmatrix}$有这种形状，要求$u_x=v_y$、$u_y=-v_x$。这样的$\vb F$在每一点附近都只是转一转、放大，把相交成直角的两条曲线变成仍相交成直角的曲线。
+  reference: |
+    $\begin{pmatrix}p&-q\\q&p\end{pmatrix}\begin{pmatrix}h_1\\h_2\end{pmatrix}=(ph_1-qh_2,\ qh_1+ph_2)$，而$(p+iq)(h_1+ih_2)=(ph_1-qh_2)+i(qh_1+ph_2)$，所以这个矩阵作用在$(h_1,h_2)$上，就是把$h_1+ih_2$乘以复数$p+iq$。对$z\mapsto z^2$，$J=\begin{pmatrix}2x&-2y\\2y&2x\end{pmatrix}$，$p+iq=2z$，正像$(z^2)'=2z$。乘以一个复数等于转一个角度再放大$|p+iq|$倍，所以$\vb F$在每点附近不改变角度。
+
+    一般的$\vb F=(u,v)$，雅可比矩阵$\begin{pmatrix}u_x&u_y\\v_x&v_y\end{pmatrix}$有这种形状，当且仅当$u_x=v_y$、$u_y=-v_x$。这两个方程叫柯西-黎曼方程（Cauchy-Riemann equations）；满足它们、又可微的$\vb F$，看成复变函数时在每一点「可以求导」，局部线性近似就是乘以一个复数。以后在[复可导与柯西-黎曼方程](lesson:math.complex-analysis.holomorphic)里讲。

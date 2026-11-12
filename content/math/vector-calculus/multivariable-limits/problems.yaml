@@ -1,0 +1,147 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\lim_{(x,y)\to(1,2)}\frac{x^2+xy+y}{x+y}$。
+  answer:
+    type: number
+    value: 5/3
+  hints:
+    - |
+      分子、分母都是多项式，分母在$(1,2)$处不为零。
+    - |
+      分母不为零处的有理分式连续，极限可以直接代入。
+    - |
+      $\frac{1+2+2}{1+2}=\frac53$。
+  solution: |
+    函数在$(1,2)$处连续，代入得$\frac{1+2+2}{3}=\frac53$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些函数在$(x,y)\to(0,0)$时的极限存在？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\frac{x^2y^2}{x^2+y^2}$
+      - |
+        $\frac{x^2-y^2}{x^2+y^2}$
+      - |
+        $\frac{2xy}{x^2+2y^2}$
+      - |
+        $\frac{x^3+y^3}{x^2+y^2}$
+      - |
+        $\frac{x^2}{x^2+y^2}$
+    value: [1, 4]
+  hints:
+    - |
+      先沿坐标轴、沿直线$y=kx$试一试；看起来极限存在的，找一个只依赖于到原点的距离、并且趋于$0$的上界。
+    - |
+      选项 B 沿$x$轴是$1$、沿$y$轴是$-1$；选项 C 沿$y=kx$是$\frac{2k}{1+2k^2}$；选项 E 沿两条坐标轴分别是$1$、$0$。
+    - |
+      选项 A：$\frac{x^2y^2}{x^2+y^2}\le y^2\to0$。选项 D：$|x|^3\le|x|(x^2+y^2)$，$|y|^3$同理，所以$\left|\frac{x^3+y^3}{x^2+y^2}\right|\le|x|+|y|\to0$。选项 B、C、E 沿不同直线的极限不同，极限不存在。所以选 A、D。
+  solution: |
+    选项 A、D 的极限都是$0$：$\frac{x^2y^2}{x^2+y^2}\le y^2$，$\left|\frac{x^3+y^3}{x^2+y^2}\right|\le|x|+|y|$。选项 B、C、E 沿不同的直线趋近，极限不同。
+
+- id: p3
+  tier: medium
+  statement: |
+    $f(x,y)=\frac{xy^2}{x^2+y^4}$。点$(x,y)$沿曲线$x=2y^2$（$y\ne0$）趋于原点时，$f$的极限是多少？
+  answer:
+    type: number
+    value: 2/5
+  hints:
+    - |
+      把$x=2y^2$代进去，化成$y$的一元函数。
+    - |
+      分子是$2y^2\cdot y^2=2y^4$，分母是$4y^4+y^4$。
+    - |
+      $f=\frac{2y^4}{5y^4}=\frac25$，沿这条曲线$f$恒为$\frac25$，极限是$\frac25$。
+  solution: |
+    代入得$f=\frac{2y^4}{4y^4+y^4}=\frac25$，极限是$\frac25$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $(x,y)\ne(0,0)$时$f(x,y)=\frac{x^2+y^2}{\sqrt{x^2+y^2+1}-1}$，$f(0,0)=c$。$c$取多少时，$f$在原点连续？
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      $f$在原点连续，就是$c$等于$(x,y)\to(0,0)$时$f$的极限。令$u=x^2+y^2$，$f$只依赖于$u$。
+    - |
+      分母有理化：分子、分母同乘$\sqrt{u+1}+1$。
+    - |
+      $f=\frac{u\bigl(\sqrt{u+1}+1\bigr)}{(u+1)-1}=\sqrt{u+1}+1$，$(x,y)\to(0,0)$时$u\to0$，$f\to2$，所以$c=2$。
+  solution: |
+    记$u=x^2+y^2$，有理化得$f=\sqrt{u+1}+1\to2$，所以$c=2$。
+
+- id: p5
+  tier: hard
+  statement: |
+    $y\ne0$时$f(x,y)=x\sin\frac1y$，$y=0$时$f(x,y)=0$。证明$\lim_{(x,y)\to(0,0)}f(x,y)=0$；再求两个累次极限$\lim_{y\to0}\bigl(\lim_{x\to0}f(x,y)\bigr)$和$\lim_{x\to0}\bigl(\lim_{y\to0}f(x,y)\bigr)$，它们存在吗？
+  hints:
+    - |
+      $\left|\sin\frac1y\right|\le1$，用它把$|f|$夹住。
+    - |
+      $|f(x,y)|\le|x|$。先对$x$取极限时，$y$固定；先对$y$取极限时，$x$固定，看$\sin\frac1y$在$y\to0$时的行为。
+    - |
+      $|f(x,y)|\le|x|\le\sqrt{x^2+y^2}$，由夹逼定理，二重极限是$0$。固定$y\ne0$，$\lim_{x\to0}x\sin\frac1y=0$，再让$y\to0$得$0$，这个累次极限存在。固定$x\ne0$，$y\to0$时$\sin\frac1y$在$-1$和$1$之间来回摆动，$x\sin\frac1y$没有极限，所以先对$y$取极限的那个累次极限不存在。
+  reference: |
+    $|f(x,y)|\le|x|\le\sqrt{x^2+y^2}$（$y=0$时$f=0$，也成立），由夹逼定理，$\lim_{(x,y)\to(0,0)}f(x,y)=0$。
+
+    固定$y\ne0$，$\lim_{x\to0}x\sin\frac1y=0$，所以$\lim_{y\to0}\bigl(\lim_{x\to0}f(x,y)\bigr)=0$。固定$x\ne0$，$y$沿$y_k=\frac{1}{2k\pi+\frac\pi2}$趋于$0$时$f=x$，沿$y_k=\frac{1}{2k\pi-\frac\pi2}$时$f=-x$，所以$\lim_{y\to0}f(x,y)$不存在，另一个累次极限$\lim_{x\to0}\bigl(\lim_{y\to0}f(x,y)\bigr)$也就无从谈起。二重极限存在，累次极限却可能不存在。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$在$(a,b)$处连续，$f(a,b)>0$。证明存在以$(a,b)$为圆心的圆盘，在这个圆盘里处处有$f>0$。由此说明：如果$f$在整个平面上连续，那么集合$\{(x,y):f(x,y)>0\}$里的每一点，都是某个整个落在这个集合里的小圆盘的圆心。
+  hints:
+    - |
+      连续的意思是$\lim_{(x,y)\to(a,b)}f(x,y)=f(a,b)$。在极限的定义里，「任意给定的正数」取成$\frac{f(a,b)}2$试试。
+    - |
+      点离$(a,b)$足够近时，$|f(x,y)-f(a,b)|<\frac{f(a,b)}2$，这能推出什么？
+    - |
+      存在$\delta>0$，到$(a,b)$的距离小于$\delta$时$|f(x,y)-f(a,b)|<\frac{f(a,b)}2$（距离为$0$即$(a,b)$本身，$f(a,b)>0$也成立），于是$f(x,y)>f(a,b)-\frac{f(a,b)}2=\frac{f(a,b)}2>0$，以$(a,b)$为圆心、$\delta$为半径的圆盘就是所求。集合里的每一点都满足条件，照这样各找一个圆盘即可。
+  reference: |
+    取「任意给定的正数」为$\frac{f(a,b)}2>0$。由连续性，存在$\delta>0$，使到$(a,b)$的距离小于$\delta$的点都满足$|f(x,y)-f(a,b)|<\frac{f(a,b)}2$（$(a,b)$本身显然也满足）。于是在这个圆盘里$f(x,y)>f(a,b)-\frac{f(a,b)}2=\frac{f(a,b)}2>0$。
+
+    若$f$在整个平面上连续，$\{f>0\}$里任取一点$P$，$f$在$P$处连续且$f(P)>0$，由上面的结论，有以$P$为圆心的小圆盘，其中处处$f>0$，即整个落在这个集合里。
+
+- id: p7
+  tier: thinking
+  statement: |
+    例 2 的函数用极坐标写成$f=\frac{r\cos^2\theta\sin\theta}{r^2\cos^4\theta+\sin^2\theta}$。固定$\theta$，$r\to0$时$f\to0$。为什么不能由此说二重极限是$0$？用极坐标证明二重极限是$L$，需要什么样的估计？
+  hints:
+    - |
+      二重极限要求：只要$r$足够小，不管$\theta$是多少，$f$都离$L$很近。固定$\theta$时的极限，对每个$\theta$需要的$r$一样小吗？
+    - |
+      抛物线$y=x^2$在极坐标里是$\sin\theta=r\cos^2\theta$：$r$越小，对应的$\theta$越接近$0$。把它代进$f$看看。
+    - |
+      代入$\sin\theta=r\cos^2\theta$，得$f=\frac{r^2\cos^4\theta}{2r^2\cos^4\theta}=\frac12$：对每个小的$r$，都有某个$\theta$使$f=\frac12$。所以$r$再小，$f$也不总是接近$0$。需要的估计是$|f-L|\le g(r)$，$g$和$\theta$无关，并且$r\to0$时$g(r)\to0$，像例 1 的$|f|\le r$那样。
+  reference: |
+    二重极限要求：给定任意正数，存在一个$\delta$，只要$0<r<\delta$，不论$\theta$是多少，都有$|f-L|$小于这个正数。固定$\theta$取极限，只说明对每个$\theta$各有一个$\delta$，这些$\delta$可以随$\theta$变小，没有一个对所有$\theta$都管用。
+
+    例 2 正是这样：沿抛物线$y=x^2$，极坐标里是$\sin\theta=r\cos^2\theta$，代入得$f=\frac12$。对每个$r>0$都有接近$0$的$\theta$使$f=\frac12$，所以$f$不会随$r\to0$一致地趋于$0$。
+
+    用极坐标证明二重极限是$L$，要找到和$\theta$无关的$g(r)$，使$|f-L|\le g(r)$，并且$g(r)\to0$。例 1 的$|f|\le r$就是这样的估计。
+
+- id: p8
+  tier: thinking
+  statement: |
+    固定一个变量、看另一个变量时，$f$对$x$连续、对$y$也连续，能不能推出$f$作为二元函数连续？反过来呢？如果$f$沿每一条过$(a,b)$的直线都连续（限制在直线上是连续的一元函数），能不能推出$f$在$(a,b)$处连续？
+  hints:
+    - |
+      讲解里$\frac{xy}{x^2+y^2}$（$f(0,0)=0$）对每个变量分别连续吗？在原点二元连续吗？
+    - |
+      反过来，二元连续时，限制在一条直线上，就是二元函数和一个一元函数$t\mapsto(a+tu,b+tv)$复合。最后一问，想想例 2 的函数，补定义$f(0,0)=0$。
+    - |
+      第一问不能，$\frac{xy}{x^2+y^2}$就是反例。第二问能：二元连续的函数限制在任何一条直线（甚至任何一条连续的曲线）上都连续。第三问也不能：例 2 的函数补上$f(0,0)=0$以后，沿每条过原点的直线都连续，在原点却不连续，因为沿抛物线$y=x^2$的值一直是$\frac12$。
+  reference: |
+    不能。$f(x,y)=\frac{xy}{x^2+y^2}$、$f(0,0)=0$：固定$y=0$，$f(x,0)=0$是$x$的连续函数；固定$x=0$也一样；可沿$y=x$它一直是$\frac12$，原点处的二重极限不存在，不连续。
+
+    反过来能。$f$在$(a,b)$处二元连续时，$g(t)=f(a+tu,b+tv)$是连续的二元函数和连续的一元函数复合，在$t=0$处连续；所以$f$限制在任何过$(a,b)$的直线上都连续，特别地对每个变量分别连续。
+
+    最后一问也不能。例 2 的$f(x,y)=\frac{x^2y}{x^4+y^2}$补上$f(0,0)=0$：沿每条过原点的直线，$t\to0$时$f\to0=f(0,0)$，限制在直线上都连续；可沿抛物线$y=x^2$，$f$一直是$\frac12$，二重极限不存在，$f$在原点不连续。只看直线不够，要考虑一切趋近的方式。
