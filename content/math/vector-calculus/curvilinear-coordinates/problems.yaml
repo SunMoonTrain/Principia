@@ -1,0 +1,141 @@
+- id: p1
+  tier: easy
+  statement: |
+    $f=r^2\cos\theta$（球坐标）。求$\nabla f$在$r=2$、$\theta=\frac\pi3$、$\varphi=0$处沿$\uv\theta$的分量。
+  answer:
+    type: number
+    value: -sqrt(3)
+  hints:
+    - |
+      梯度沿$\uv\theta$的分量是$\frac1r\pdv f\theta$：$\theta$是角度，要除以尺度因子$r$。
+    - |
+      $\pdv f\theta=-r^2\sin\theta$，所以这个分量是$-r\sin\theta$。
+    - |
+      代入$r=2$、$\theta=\frac\pi3$，得$-2\cdot\frac{\sqrt3}2=-\sqrt3$。
+  solution: |
+    $\frac1r\pdv f\theta=\frac1r(-r^2\sin\theta)=-r\sin\theta=-\sqrt3$。验算：$f=rz$，$\nabla f=z\nabla r+r\nabla z=z\,\uv r+r\,\uv z$，而$\uv r\cdot\uv\theta=0$，$\uv z\cdot\uv\theta=-\sin\theta$，沿$\uv\theta$的分量同样是$-r\sin\theta$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $\vb F=r^2\uv r$。求$\divg\vb F$在$r=3$处的值。
+  answer:
+    type: number
+    value: 12
+  hints:
+    - |
+      只有径向分量$F_r=r^2$，用球坐标散度公式的第一项$\frac1{r^2}\pdv{}r(r^2F_r)$。
+    - |
+      $r^2F_r=r^4$，对$r$求导得$4r^3$。
+    - |
+      除以$r^2$得$4r$，$r=3$时是$12$。
+  solution: |
+    $\divg\vb F=\frac1{r^2}\pdv{}r(r^4)=4r=12$。验算：$\vb F=r\vb r$，由乘积法则（product rule）$\divg(r\vb r)=r\,\divg\vb r+\nabla r\cdot\vb r=3r+r=4r$。
+
+- id: p3
+  tier: medium
+  statement: |
+    $\vb F=s^2\uv\varphi$（柱坐标）。求$\curl\vb F$在$s=2$处沿$\uv z$的分量。
+  answer:
+    type: number
+    value: 6
+  hints:
+    - |
+      旋度沿$\uv z$的分量是$\frac1s\Bigl[\pdv{}s(sF_\varphi)-\pdv{F_s}\varphi\Bigr]$。
+    - |
+      $sF_\varphi=s^3$，对$s$求导得$3s^2$；$F_s=0$。
+    - |
+      除以$s$得$3s$，$s=2$时是$6$。
+  solution: |
+    $\frac1s\pdv{}s(s^3)=3s=6$。验算：直角坐标里$\vb F=s(-y,x,0)$，$s=\sqrt{x^2+y^2}$，$\pdv{}x(xs)-\pdv{}y(-ys)=2s+\frac{x^2+y^2}s=3s$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $f=s^3\cos\varphi$（柱坐标）。求$\lap f$在$s=1$、$\varphi=0$处的值。
+  answer:
+    type: number
+    value: 8
+  hints:
+    - |
+      用柱坐标的拉普拉斯算子$\frac1s\pdv{}s\Bigl(s\pdv fs\Bigr)+\frac1{s^2}\pdv{^2f}{\varphi^2}+\pdv{^2f}{z^2}$，最后一项是零。
+    - |
+      $s\pdv fs=3s^3\cos\varphi$，第一项是$9s\cos\varphi$；第二项是$\frac1{s^2}(-s^3\cos\varphi)=-s\cos\varphi$。
+    - |
+      合起来$8s\cos\varphi$，$s=1$、$\varphi=0$时是$8$。
+  solution: |
+    $\lap f=9s\cos\varphi-s\cos\varphi=8s\cos\varphi=8$。验算：$f=s^2\cdot s\cos\varphi=(x^2+y^2)x=x^3+xy^2$，$\lap f=6x+2x=8x$，$x=s\cos\varphi=1$。
+
+- id: p5
+  tier: hard
+  statement: |
+    用「散度是单位体积往外流出的通量」，推出柱坐标下的散度公式$\divg\vb F=\frac1s\pdv{}s(sF_s)+\frac1s\pdv{F_\varphi}\varphi+\pdv{F_z}z$。
+  hints:
+    - |
+      取$s$到$s+\Delta s$、$\varphi$到$\varphi+\Delta\varphi$、$z$到$z+\Delta z$的小块，体积约$s\Delta s\Delta\varphi\Delta z$；它有三对相对的面。
+    - |
+      $s$不变的两个面，面积是$s\Delta\varphi\Delta z$和$(s+\Delta s)\Delta\varphi\Delta z$；$\varphi$不变的两个面，面积都是$\Delta s\Delta z$，法向量（normal vector）是$\pm\uv\varphi$。
+    - |
+      $z$不变的两个面，面积都是$s\Delta s\Delta\varphi$。分别写出每对面流出的净量，加起来再除以体积。
+  reference: |
+    $s$不变的两个面上，往外的法向量分别是$\uv s$（外面）和$-\uv s$（里面），流出的净量约$\bigl[sF_s\bigr]_s^{s+\Delta s}\Delta\varphi\Delta z\approx\pdv{}s(sF_s)\Delta s\Delta\varphi\Delta z$。外面的面比里面的大，所以$s$要和$F_s$乘在一起求导。
+
+    $\varphi$不变的两个面，面积都是$\Delta s\Delta z$，法向量是$\pm\uv\varphi$，净量约$\bigl[F_\varphi\bigr]_\varphi^{\varphi+\Delta\varphi}\Delta s\Delta z\approx\pdv{F_\varphi}\varphi\Delta\varphi\Delta s\Delta z$。$z$不变的两个面，面积都是$s\Delta s\Delta\varphi$，净量约$\pdv{F_z}z\Delta z\cdot s\Delta s\Delta\varphi$。
+
+    三项加起来，除以体积$s\Delta s\Delta\varphi\Delta z$，令各个$\Delta$趋于零，得$\divg\vb F=\frac1s\pdv{}s(sF_s)+\frac1s\pdv{F_\varphi}\varphi+\pdv{F_z}z$。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）由$\uv r$、$\uv\theta$、$\uv\varphi$的分量式，求$\pdv{\uv r}\theta$和$\pdv{\uv r}\varphi$，用这三个单位向量表示。（2）用直角坐标里的乘积法则验证$\divg\uv r=\frac2r$。（3）$\uv r$的径向分量是常数$1$，「$\pdv{F_r}r$」是零；散度为什么不是零？
+  hints:
+    - |
+      （1）$\pdv{\uv r}\theta=(\cos\theta\cos\varphi,\ \cos\theta\sin\varphi,\ -\sin\theta)$，$\pdv{\uv r}\varphi=(-\sin\theta\sin\varphi,\ \sin\theta\cos\varphi,\ 0)$。
+    - |
+      （2）$\uv r=\frac1r\vb r$，用$\divg(f\vb F)=f\,\divg\vb F+\nabla f\cdot\vb F$，$\nabla\frac1r=-\frac{\vb r}{r^3}$。
+    - |
+      （3）相邻点的$\uv r$互相散开：$\pdv{\uv r}\theta=\uv\theta\ne\vb 0$。小盒子朝外的面比朝里的面大，流出的比流进的多。
+  reference: |
+    （1）$\pdv{\uv r}\theta=(\cos\theta\cos\varphi,\cos\theta\sin\varphi,-\sin\theta)=\uv\theta$，$\pdv{\uv r}\varphi=(-\sin\theta\sin\varphi,\sin\theta\cos\varphi,0)=\sin\theta\,\uv\varphi$。$\uv r$随$\theta$、$\varphi$转动，不是常向量。
+
+    （2）$\divg\uv r=\divg\bigl(\frac1r\vb r\bigr)=\frac1r\divg\vb r+\nabla\frac1r\cdot\vb r=\frac3r-\frac{\vb r\cdot\vb r}{r^3}=\frac3r-\frac1r=\frac2r$，和球坐标公式$\frac1{r^2}\pdv{}r(r^2\cdot1)=\frac2r$一致。
+
+    （3）「$\pdv{F_r}r+\pdv{F_\theta}\theta+\pdv{F_\varphi}\varphi$」只看了分量怎样变，没看单位向量怎样变，也没看面积怎样变。$\uv r$在相邻的点上方向不同，一束径向的箭头越往外越散开；半径为$r$、张角固定的那一小块球面，面积和$r^2$成正比，从外面的面流出的比从里面流进的多，净流出为正，所以散度是$\frac2r>0$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）证明只依赖$r$的函数满足$\lap f=\frac1r\dv{^2}{r^2}(rf)$（$r>0$）。（2）求$\lap f=-1$（$0\le r<1$）的球对称解，要求$f$在原点有界、$f(1)=0$。
+
+    （3）为什么要求$f$在原点有界？物理上，均匀产热的小球里的稳态（steady state）温度满足这个方程（取适当的单位，球面保持零度），$f$就是温度分布。
+  hints:
+    - |
+      （1）球坐标的拉普拉斯算子只剩第一项$\frac1{r^2}(r^2f')'=f''+\frac2rf'$；另一边$(rf)''=rf''+2f'$。
+    - |
+      （2）$(rf)''=-r$，积两次得$rf=-\frac{r^3}6+Ar+B$，即$f=-\frac{r^2}6+A+\frac Br$。
+    - |
+      （3）$\frac Br$在原点无界，所以$B=0$；再由$f(1)=0$得$A=\frac16$。
+  reference: |
+    （1）$\frac1r(rf)''=\frac1r(rf''+2f')=f''+\frac2rf'$，而球坐标的拉普拉斯算子对只依赖$r$的函数是$\frac1{r^2}(r^2f')'=f''+\frac2rf'$，两者相等。
+
+    （2）由（1），$(rf)''=-r$，积分两次，$rf=-\frac{r^3}6+Ar+B$，$f=-\frac{r^2}6+A+\frac Br$。在原点有界要求$B=0$，$f(1)=0$给出$A=\frac16$，所以$f=\frac{1-r^2}6$。验算：$\lap\bigl(-\frac{r^2}6\bigr)=-\frac16\bigl(2+\frac2r\cdot2r\bigr)=-1$。
+
+    （3）$\frac1r$在原点以外满足$\lap\frac1r=0$，加上它仍然满足方程，所以只靠方程和球面上的条件定不出解；有界的条件把它排除掉。物理上，$\frac Br$相当于球心有一个点状的热源或热汇：在包住球心的小球面上，往外的热流$-\nabla\frac Br\cdot\uv r=\frac B{r^2}$乘面积$4\pi r^2$恒为$4\pi B$，不随小球缩小而变小。题目说的是均匀产热，没有这样的点源，所以$B=0$；点源怎样写进方程，见[三维 δ 函数与点源](lesson:math.vector-calculus.delta-3d)。温度在球心最高，是$\frac16$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    平面上的极坐标（polar coordinates）就是柱坐标去掉$z$。（1）证明$s^k\cos k\varphi$（$k$是正整数）的拉普拉斯算子为零，即它是调和函数（harmonic function）。（2）$k=2$、$3$时，它在直角坐标里是什么？（3）$k$取负整数时，它在哪里调和？
+  hints:
+    - |
+      （1）去掉$z$，$\lap f=\frac1s\pdv{}s\Bigl(s\pdv fs\Bigr)+\frac1{s^2}\pdv{^2f}{\varphi^2}$。
+    - |
+      $f=s^k\cos k\varphi$时，第一项是$k^2s^{k-2}\cos k\varphi$，第二项是$-k^2s^{k-2}\cos k\varphi$，相加为零。
+    - |
+      （2）$s^2\cos2\varphi=s^2(\cos^2\varphi-\sin^2\varphi)$；$\cos3\varphi=4\cos^3\varphi-3\cos\varphi$。（3）同样的计算对负整数也成立，但$s^k$在原点没有定义。
+  reference: |
+    （1）$s\pdv fs=ks^k\cos k\varphi$，$\frac1s\pdv{}s(ks^k\cos k\varphi)=k^2s^{k-2}\cos k\varphi$；$\frac1{s^2}\pdv{^2f}{\varphi^2}=-k^2s^{k-2}\cos k\varphi$。两项相加为零，在$s>0$处调和。原点上公式不能用，但由（2）可以看出它是$x$、$y$的多项式，原点处同样调和。
+
+    （2）$s^2\cos2\varphi=x^2-y^2$；$s^3\cos3\varphi=s^3(4\cos^3\varphi-3\cos\varphi)=4x^3-3x(x^2+y^2)=x^3-3xy^2$。直接验算：$\lap(x^2-y^2)=2-2=0$，$\lap(x^3-3xy^2)=6x-6x=0$。
+
+    （3）$k$为负整数时（1）的计算照样成立，但$s^k$在原点没有定义，所以它在去掉原点的平面上调和。圆盘上求拉普拉斯方程的解时，用的正是这些函数；在包含原点的圆盘里只能用$k\ge0$的，有洞的区域（圆环）上负的也能用。

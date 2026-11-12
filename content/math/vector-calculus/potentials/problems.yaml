@@ -1,0 +1,147 @@
+- id: p1
+  tier: easy
+  statement: |
+    $\vb F=(2x,\ 2y,\ 2z)$。求它的标量势$U$（$\vb F=-\nabla U$，$U(\vb 0)=0$）在点$(1,2,2)$处的值。
+  answer:
+    type: number
+    value: -9
+  hints:
+    - |
+      $\vb F$是$x^2+y^2+z^2$的梯度，可以直接看出来，也可以用沿线段积分的式子。
+    - |
+      $\vb F=-\nabla U$，所以$U=-(x^2+y^2+z^2)+C$。
+    - |
+      $U(\vb 0)=0$给出$C=0$，$U(1,2,2)=-(1+4+4)=-9$。
+  solution: |
+    $\vb F=\nabla(x^2+y^2+z^2)$，所以$U=-(x^2+y^2+z^2)$，$U(1,2,2)=-9$。用式子算也一样：$\vb F(t\vb r)\cdot\vb r=2t(x^2+y^2+z^2)$，$U=-\int_0^12t\,\dd t\cdot(x^2+y^2+z^2)=-(x^2+y^2+z^2)$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $\vb A=(0,\ xz,\ 0)$。求$\curl\vb A$在点$(1,2,3)$处的值，按分量填写。
+  answer:
+    type: tuple
+    value: [-1, 0, 3]
+  hints:
+    - |
+      $\curl\vb A=\Bigl(\pdv{A_3}y-\pdv{A_2}z,\ \pdv{A_1}z-\pdv{A_3}x,\ \pdv{A_2}x-\pdv{A_1}y\Bigr)$。
+    - |
+      只有$A_2=xz$不为零：$\pdv{A_2}z=x$，$\pdv{A_2}x=z$。
+    - |
+      $\curl\vb A=(-x,\ 0,\ z)$，在$(1,2,3)$处是$(-1,0,3)$。
+  solution: |
+    $\curl\vb A=(-x,\ 0,\ z)$，在$(1,2,3)$处是$(-1,0,3)$。它的散度是$-1+0+1=0$，和「旋度的散度恒为零」一致：$\vb A$是无散场$(-x,0,z)$的一个矢量势。
+
+- id: p3
+  tier: medium
+  statement: |
+    $\vb F=(y+z,\ x+z,\ x+y)$。验证它在全空间上有标量势，用沿线段积分的式子求出$U$（取$U(\vb 0)=0$），填写$U(1,2,3)$。
+  answer:
+    type: number
+    value: -11
+  hints:
+    - |
+      $\curl\vb F=(1-1,\ 1-1,\ 1-1)=\vb 0$；全空间是以原点为中心的星形区域，用$U(\vb r)=-\int_0^1\vb F(t\vb r)\cdot\vb r\,\dd t$。
+    - |
+      $\vb F(t\vb r)=t(y+z,\ x+z,\ x+y)$，和$\vb r$的点积是$t(2xy+2xz+2yz)$。
+    - |
+      $\int_0^1t\,\dd t=\frac12$，$U=-(xy+xz+yz)$，$U(1,2,3)=-(2+3+6)=-11$。
+  solution: |
+    $\curl\vb F=\vb 0$。$U(\vb r)=-\int_0^1t(2xy+2xz+2yz)\dd t=-(xy+xz+yz)$，$U(1,2,3)=-11$。验算：$-\nabla U=(y+z,\ x+z,\ x+y)=\vb F$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $\vb G=(0,0,2)$。按讲解的构造（$x_0=y_0=0$）求出它的一个矢量势$\vb A_1$；$\vb A_2=\frac12\vb G\times\vb r$是另一个。求函数$\chi$使$\vb A_1-\vb A_2=\nabla\chi$、$\chi(\vb 0)=0$，填写$\chi(2,3,1)$。
+  answer:
+    type: number
+    value: 6
+  hints:
+    - |
+      讲解的构造：$A_2=\int_0^xG_3\,\dd t=2x$，$A_3=-\int_0^xG_2\,\dd t+\int_0^yG_1(0,s,z)\dd s=0$，所以$\vb A_1=(0,\ 2x,\ 0)$。
+    - |
+      $\vb A_2=\frac12(0,0,2)\times(x,y,z)=(-y,\ x,\ 0)$；两个的旋度都是$(0,0,2)$。
+    - |
+      $\vb A_1-\vb A_2=(y,\ x,\ 0)=\nabla(xy)$，$\chi=xy$，$\chi(2,3,1)=6$。
+  solution: |
+    $\vb A_1=(0,2x,0)$，$\vb A_2=(-y,x,0)$，旋度都是$(0,0,2)$。差$(y,x,0)=\nabla(xy)$，所以$\chi=xy$，$\chi(2,3,1)=6$。两个矢量势差一个梯度，正是「矢量势不唯一」的样子。
+
+- id: p5
+  tier: hard
+  statement: |
+    以原点为中心的星形区域上，$\divg\vb G=0$时，$\vb A(\vb r)=\int_0^1t\,\vb G(t\vb r)\times\vb r\,\dd t$是$\vb G$的一个矢量势。
+
+    （1）$\vb G$是常向量$\vb B$时，用这个式子求$\vb A$，并验证$\curl\vb A=\vb B$。（2）$\vb G=(y,\ z,\ x)$时，求$\vb A$并验证$\curl\vb A=\vb G$。（3）它和例 1 求出的矢量势差一个梯度吗？
+  hints:
+    - |
+      （1）$\int_0^1t\,\dd t=\frac12$，$\vb A=\frac12\vb B\times\vb r$；用$\curl(\vb B\times\vb r)=2\vb B$，或者按分量算。
+    - |
+      （2）$\vb G(t\vb r)=t(y,z,x)$，$t\vb G(t\vb r)\times\vb r=t^2\,(y,z,x)\times(x,y,z)=t^2(z^2-xy,\ x^2-yz,\ y^2-zx)$。
+    - |
+      （3）两个矢量势的差旋度为零，全空间单连通，所以差是某个函数的梯度；可以把这个函数求出来。
+  reference: |
+    （1）$\vb A=\int_0^1t\,\dd t\cdot\vb B\times\vb r=\frac12\vb B\times\vb r$。$\vb B=(B_1,B_2,B_3)$时$\vb B\times\vb r=(B_2z-B_3y,\ B_3x-B_1z,\ B_1y-B_2x)$，它的旋度的第一个分量是$B_1-(-B_1)=2B_1$，其余同理，所以$\curl\vb A=\vb B$。
+
+    （2）$\vb A=\frac13(z^2-xy,\ x^2-yz,\ y^2-zx)$。$\curl\vb A$的三个分量是$\frac13\bigl(2y-(-y)\bigr)=y$、$\frac13\bigl(2z-(-z)\bigr)=z$、$\frac13\bigl(2x-(-x)\bigr)=x$，正是$\vb G$。
+
+    （3）例 1 的是$\bigl(0,\ \frac{x^2}2,\ \frac{y^2}2-xz\bigr)$。两者旋度相同，差的旋度为零，全空间单连通，所以差是梯度：差是$\bigl(\frac{z^2-xy}3,\ -\frac{x^2}6-\frac{yz}3,\ -\frac{y^2}6+\frac{2xz}3\bigr)=\nabla\chi$，$\chi=\frac{xz^2}3-\frac{x^2y}6-\frac{y^2z}6$。
+
+- id: p6
+  tier: hard
+  statement: |
+    $\vb F=\frac{\uv r}{r^2}$，定义在去掉原点的空间里。（1）求它的标量势$U$，要求$r\to\infty$时$U\to0$；为什么在这个区域上它一定有标量势？（2）证明它在这个区域上没有矢量势。
+  hints:
+    - |
+      （1）$\nabla\frac1r=-\frac{\uv r}{r^2}$。去掉一个点的空间是单连通的。
+    - |
+      （2）假设有$\vb A$在去掉原点的空间里有连续的偏导数，$\curl\vb A=\vb F$。算$\vb F$穿过单位球面的通量，取外法向（outward normal）。
+    - |
+      沿赤道把单位球面切成上下两半，各用斯托克斯公式（Stokes' theorem）：两半的边界都是赤道，走向相反。
+  reference: |
+    （1）$-\nabla\frac1r=\frac{\uv r}{r^2}$，所以$U=\frac1r$，它在无穷远趋于零。去掉一个点的空间是单连通的，$\curl\vb F=\vb 0$，由讲解的定理，标量势一定存在；这里直接写出来了。
+
+    （2）单位球面上$\vb F\cdot\vb n=1$，通量是$4\pi$。假设$\curl\vb A=\vb F$，沿赤道把球面切成上半球$S_1$、下半球$S_2$，都取外法向。
+
+    对$S_1$，赤道的正向从上往下看是逆时针；对$S_2$是顺时针。由斯托克斯公式，两半的通量分别是$\vb A$沿赤道逆时针、顺时针的环量，加起来是零，和$4\pi$矛盾。所以$\vb F$在去掉原点的空间里没有矢量势，尽管它的散度处处为零。
+
+- id: p7
+  tier: thinking
+  statement: |
+    去掉$z$轴的空间里，$\vb G=\frac{(-y,\ x,\ 0)}{x^2+y^2}$。（1）为什么它在这个区域上没有标量势？（2）再去掉半平面$\{y=0,\ x\le0\}$，剩下的区域上，$U=-\varphi$（$\varphi$是方位角，取值在$-\pi$到$\pi$之间）是不是它的标量势？
+
+    （3）电磁学里，无限长螺线管外的磁矢势是$\frac\Phi{2\pi}\vb G$，$\Phi$是管里的磁通量（见[磁矢势](lesson:physics.electromagnetism.vector-potential)第 6 题）。用（1）（2）说明：在不绕管一圈的区域里，它是一个梯度；在绕管一圈的区域里，它不是。
+  hints:
+    - |
+      （1）绕$z$轴一圈的环量是$2\pi$；有标量势的话，沿闭曲线的环量是零。
+    - |
+      （2）柱坐标（cylindrical coordinates）里$\nabla\varphi=\frac1s\uv\varphi$（见[柱坐标与球坐标下的梯度、散度和旋度](lesson:math.vector-calculus.curvilinear-coordinates#thm-curvilinear-gradient)），而$\vb G=\frac1s\uv\varphi$。去掉半平面以后，$\varphi$在剩下的区域上是单值、光滑的。
+    - |
+      （3）不绕管一圈的区域里，$\frac\Phi{2\pi}\vb G=\nabla\bigl(\frac\Phi{2\pi}\varphi\bigr)$；绕管一圈，环量是$\Phi\ne0$。
+  reference: |
+    （1）沿单位圆$x^2+y^2=1$、$z=0$逆时针一圈，$\vb G\cdot\dd\vb r=\dd t$，环量是$2\pi$。如果$\vb G=-\nabla U$，沿闭曲线的环量是$U(A)-U(A)=0$，矛盾。区域不单连通，旋度为零推不出有标量势。
+
+    （2）是。去掉半平面$\{y=0,x\le0\}$以后，方位角$\varphi\in(-\pi,\pi)$在剩下的区域上单值、光滑，$\nabla\varphi=\frac1s\uv\varphi=\frac{(-y,x,0)}{x^2+y^2}=\vb G$（柱坐标下的梯度公式见[柱坐标与球坐标下的梯度、散度和旋度](lesson:math.vector-calculus.curvilinear-coordinates#thm-curvilinear-gradient)），所以$\vb G=-\nabla(-\varphi)$。剩下的区域里没有绕$z$轴一圈的曲线，（1）的矛盾不出现。
+
+    （3）管外$\frac\Phi{2\pi}\vb G$的旋度为零（管外没有磁场）。在去掉半平面的区域里，它是$\nabla\bigl(\frac\Phi{2\pi}\varphi\bigr)$，是一个梯度；绕管一圈，环量是$\frac\Phi{2\pi}\cdot2\pi=\Phi\ne0$，所以在绕管一圈的区域上它不是任何单值函数的梯度。这就是电磁学那一题里规范变换只能在局部把它变成零的原因。
+
+- id: p8
+  tier: thinking
+  statement: |
+    去掉$z$轴的负半轴$\{(0,0,z):z\le0\}$（包括原点），剩下的区域上，$\vb A=\frac{1-\cos\theta}{r\sin\theta}\uv\varphi$，这里用的是球坐标（spherical coordinates）。
+
+    （1）用球坐标下的旋度公式（见[柱坐标与球坐标下的梯度、散度和旋度](lesson:math.vector-calculus.curvilinear-coordinates)）验证$\curl\vb A=\frac{\uv r}{r^2}$。（2）$\vb A$在哪里出问题？这和第 6 题矛盾吗？
+
+    （3）$\vb A'=-\frac{1+\cos\theta}{r\sin\theta}\uv\varphi$呢？$\vb A-\vb A'$是什么？
+  hints:
+    - |
+      （1）只有$A_\varphi$不为零。$\uv r$分量是$\frac1{r\sin\theta}\pdv{}\theta(\sin\theta\,A_\varphi)=\frac1{r\sin\theta}\pdv{}\theta\frac{1-\cos\theta}r$；$\uv\theta$分量是$-\frac1r\pdv{}r(rA_\varphi)$，而$rA_\varphi$不含$r$。
+    - |
+      （2）$\theta\to0$时$\frac{1-\cos\theta}{\sin\theta}\to0$，$\theta\to\pi$时它趋于无穷：$\vb A$只在负半轴上出问题。去掉负半轴以后，单位球面不在区域里。
+    - |
+      （3）$\vb A'$只在正半轴上出问题。$\vb A-\vb A'=\frac2{r\sin\theta}\uv\varphi$，球坐标里$\nabla\varphi=\frac1{r\sin\theta}\uv\varphi$。
+  reference: |
+    （1）$\sin\theta\,A_\varphi=\frac{1-\cos\theta}r$，$\uv r$分量$=\frac1{r\sin\theta}\cdot\frac{\sin\theta}r=\frac1{r^2}$；$rA_\varphi=\frac{1-\cos\theta}{\sin\theta}$不含$r$，$\uv\theta$分量为零；$\uv\varphi$分量要用$A_r$、$A_\theta$，都是零。所以$\curl\vb A=\frac{\uv r}{r^2}$。
+
+    （2）$\frac{1-\cos\theta}{\sin\theta}=\tan\frac\theta2$：$\theta\to0$时趋于零，正半轴附近$\vb A$光滑（在正半轴上补成零向量）；$\theta\to\pi$时趋于无穷，负半轴上没有定义。不矛盾：第 6 题的区域是去掉原点的空间，包含负半轴；这里的区域去掉了整条负半轴，每个包住原点的球面都碰到它，不在区域里，「穿过包住原点的球面的通量是$4\pi$」用不上。这个区域以$(0,0,1)$为中心是星形区域，和讲解的结论一致。
+
+    （3）$\vb A'$只在正半轴上出问题，在去掉正半轴（包括原点）的区域上$\curl\vb A'=\frac{\uv r}{r^2}$。两个区域都有的地方（去掉整条$z$轴），$\vb A-\vb A'=\frac{(1-\cos\theta)+(1+\cos\theta)}{r\sin\theta}\uv\varphi=2\nabla\varphi$：在不绕$z$轴一圈的地方是梯度，正好是一个规范变换。这个矢量势是狄拉克（Dirac）1931 年讨论磁单极（magnetic monopole）时用的。

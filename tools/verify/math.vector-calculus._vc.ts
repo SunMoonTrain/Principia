@@ -263,6 +263,28 @@ export function fluxDensity(F: (p: Vec) => Vec, p: Vec, eps = 1e-3, g = 20): num
   return s / (2 * eps) ** 3;
 }
 
+/** [-1, 1] 上 m 个点的高斯-勒让德求积：返回节点和权重（牛顿法求勒让德多项式的根）。 */
+export function gaussLegendre(m: number): { x: number[]; w: number[] } {
+  const xs: number[] = [];
+  const ws: number[] = [];
+  for (let i = 1; i <= m; i++) {
+    let x = Math.cos((Math.PI * (i - 0.25)) / (m + 0.5));
+    let dp = 0;
+    for (let it = 0; it < 100; it++) {
+      let p0 = 1;
+      let p1 = x;
+      for (let k = 2; k <= m; k++) [p0, p1] = [p1, ((2 * k - 1) * x * p1 - (k - 1) * p0) / k];
+      dp = (m * (x * p1 - p0)) / (x * x - 1);
+      const dx = p1 / dp;
+      x -= dx;
+      if (Math.abs(dx) < 1e-16) break;
+    }
+    xs.push(x);
+    ws.push(2 / ((1 - x * x) * dp * dp));
+  }
+  return { x: xs, w: ws };
+}
+
 /** 以 p 为中心、半径 eps 的球面上 f 的平均值（θ 方向高斯点，φ 方向等分）。f 光滑时 6(平均 − f(p))/eps² 趋于拉普拉斯算子。 */
 export function sphereMean(f: (p: Vec) => number, p: Vec, eps: number, m = 24): number {
   // [-1,1] 上 m 个高斯-勒让德点：牛顿法求勒让德多项式的根

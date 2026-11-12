@@ -20,12 +20,14 @@ status: reviewed
 ### 边界的正向
 
 ::anchor{id="def-positive-orientation"}
-自己不相交的:term[闭曲线]{id="math.vector-calculus.closed-curve"}叫作:term[简单闭曲线]{id="math.vector-calculus.simple-closed-curve"}（simple closed curve），例如圆、三角形的边界；「8」字形不是。设区域$D$的边界由有限条:term[分段光滑]{id="math.vector-calculus.piecewise-smooth"}（piecewise smooth）的简单闭曲线组成，规定边界的正向（positive orientation）是：沿着边界走，$D$总在左手边。这样的有向边界记作$\partial D$：外边界逆时针，洞的边界顺时针。
+自己不相交的:term[闭曲线]{id="math.vector-calculus.closed-curve"}叫作:term[简单闭曲线]{id="math.vector-calculus.simple-closed-curve"}（simple closed curve），例如圆、三角形的边界；「8」字形不是。设区域$D$的边界由有限条:term[分段光滑]{id="math.vector-calculus.piecewise-smooth"}（piecewise smooth）的简单闭曲线组成，规定边界的:term[正向]{id="math.vector-calculus.positive-orientation"}（positive orientation）是：沿着边界走，$D$总在左手边。这样的有向边界记作$\partial D$：外边界逆时针，洞的边界顺时针。
+
+为什么这样定义：证明下面的公式时要把区域切成小块，每一小块都按同一个规矩绕自己的边界走，相邻小块共用的边才会一来一回、互相抵消；「区域在左手边」对外边界和洞的边界给的是同一个规矩。边界情况：有洞的区域里，洞的边界按这个规矩要顺时针走，只记「逆时针」就会把它走反。
 
 ### 格林公式
 
 ::anchor{id="thm-green"}
-**:term[格林公式]{id="math.vector-calculus.greens-theorem"}（Green's theorem）**　$D$是平面上的有界区域，边界$\partial D$取正向，$P$、$Q$在$D$和它的边界上有:term[连续]{id="math.vector-calculus.continuous"}（continuous）的:term[偏导数]{id="math.vector-calculus.partial-derivative"}（partial derivative），则$\oint_{\partial D}P\,\dd x+Q\,\dd y=\iint_D\bigl(Q_x-P_y\bigr)\dd A$。
+**:term[格林公式]{id="math.vector-calculus.greens-theorem"}（Green's theorem）**　$D$是平面上的有界区域，边界$\partial D$取:term[正向]{id="math.vector-calculus.positive-orientation"}，$P$、$Q$在$D$和它的边界上有:term[连续]{id="math.vector-calculus.continuous"}（continuous）的:term[偏导数]{id="math.vector-calculus.partial-derivative"}（partial derivative），则$\oint_{\partial D}P\,\dd x+Q\,\dd y=\iint_D\bigl(Q_x-P_y\bigr)\dd A$。
 
 **证明思路**：先看$D=\{a\le x\le b,\ g_1(x)\le y\le g_2(x)\}$这样的区域。$\iint_D P_y\,\dd A=\int_a^b\bigl[P(x,g_2(x))-P(x,g_1(x))\bigr]\dd x$；而沿正向的边界，$\oint P\,\dd x$在下边界从左往右走、上边界从右往左走，竖边上$\dd x=0$，所以正好是$-\iint_DP_y\,\dd A$。区域也能写成$\{c\le y\le d,\ h_1(y)\le x\le h_2(y)\}$时，同理$\oint Q\,\dd y=\iint_DQ_x\,\dd A$；一般的区域切成这样的几块，切口上的两条边方向相反，:term[曲线积分]{id="math.vector-calculus.line-integral"}（line integral）抵消（第 5 题是矩形的情形）。
 
@@ -38,13 +40,13 @@ status: reviewed
 ::anchor{id="thm-green-flux"}
 **通量形式**　条件同上，$\oint_{\partial D}\bigl(P\,\dd y-Q\,\dd x\bigr)=\iint_D\bigl(P_x+Q_y\bigr)\dd A$。左边是$\oint_{\partial D}\vb F\cdot\vb n\,\dd s$，$\vb n$是指向区域外面的单位法向量（unit normal vector）；它量的是单位时间穿过边界往外流的量，也就是$\vb F$穿过$\partial D$的:term[通量]{id="math.vector-calculus.flux"}（flux）。
 
-**证明**：对$(-Q,P)$用:term[格林公式]{id="math.vector-calculus.greens-theorem"}：$\oint-Q\,\dd x+P\,\dd y=\iint\bigl(P_x-(-Q_y)\bigr)\dd A$，就是上式。沿正向走，:term[单位切向量]{id="math.vector-calculus.unit-tangent-vector"}（unit tangent vector）是$\vb T=\frac{(\dd x,\dd y)}{\dd s}$，把它顺时针转$90°$得到朝外的$\vb n=\frac{(\dd y,-\dd x)}{\dd s}$，所以$\vb F\cdot\vb n\,\dd s=P\,\dd y-Q\,\dd x$。
+**证明**：对$(-Q,P)$用:term[格林公式]{id="math.vector-calculus.greens-theorem"}：$\oint-Q\,\dd x+P\,\dd y=\iint\bigl(P_x-(-Q_y)\bigr)\dd A$，就是上式。沿:term[正向]{id="math.vector-calculus.positive-orientation"}走，:term[单位切向量]{id="math.vector-calculus.unit-tangent-vector"}（unit tangent vector）是$\vb T=\frac{(\dd x,\dd y)}{\dd s}$，把它顺时针转$90°$得到朝外的$\vb n=\frac{(\dd y,-\dd x)}{\dd s}$，所以$\vb F\cdot\vb n\,\dd s=P\,\dd y-Q\,\dd x$。
 
 为什么重要：$P_x+Q_y$是:term[散度]{id="math.vector-calculus.divergence"}，是当地往外冒的强度。通量形式说：从边界流出的总量，等于区域里各处冒出的量之和；没有源的地方，流进多少就流出多少。一元的分部积分（integration by parts）把导数从一个因子挪到另一个因子上，平面上靠的正是这个形式：取$P=fg_1$、$Q=fg_2$，按一元的乘积求导法则展开$P_x+Q_y$，边界上$f=0$时得$\iint_D(f_xg_1+f_yg_2)\dd A=-\iint_Df\bigl((g_1)_x+(g_2)_y\bigr)\dd A$。
 
 ### 用边界算面积
 
-取$P=0$、$Q=x$，$Q_x-P_y=1$，得$D$的面积$=\oint_{\partial D}x\,\dd y$；同样也等于$-\oint_{\partial D}y\,\dd x$和$\frac12\oint_{\partial D}(x\,\dd y-y\,\dd x)$。所以只沿边界走一圈，就能量出围住的面积；沿正向的:term[闭曲线]{id="math.vector-calculus.closed-curve"}，$\oint x\,\dd x$和$\oint y\,\dd y$都是零（它们是:term[梯度场]{id="math.vector-calculus.gradient-field"}（gradient field）的:term[曲线积分]{id="math.vector-calculus.line-integral"}）。
+取$P=0$、$Q=x$，$Q_x-P_y=1$，得$D$的面积$=\oint_{\partial D}x\,\dd y$；同样也等于$-\oint_{\partial D}y\,\dd x$和$\frac12\oint_{\partial D}(x\,\dd y-y\,\dd x)$。所以只沿边界走一圈，就能量出围住的面积；沿:term[正向]{id="math.vector-calculus.positive-orientation"}的:term[闭曲线]{id="math.vector-calculus.closed-curve"}，$\oint x\,\dd x$和$\oint y\,\dd y$都是零（它们是:term[梯度场]{id="math.vector-calculus.gradient-field"}（gradient field）的:term[曲线积分]{id="math.vector-calculus.line-integral"}）。
 
 ### 平面上的保守场判别法
 
@@ -54,7 +56,7 @@ status: reviewed
 
 ![两幅图并排。左图是一个中间挖了一个圆洞的区域 D，涂成浅蓝色；外边界画着逆时针的箭头，洞的边界画着顺时针的箭头，下面写着「外边界逆时针，洞的边界顺时针：沿边界走，D 总在左手边」。右图是一块区域被切成小方块，其中相邻的两块各画了一圈逆时针的箭头，它们共用的那条边上，两个箭头方向相反，这条边用橙色标出，下面写着「内部的边走两次，方向相反，抵消，只剩外面的边界」。](green.svg)
 
-左图是边界的正向：洞的边界要顺时针走。右图是证明的道理：小方块的:term[环量]{id="math.vector-calculus.circulation"}加起来，内部的边都抵消，只剩外面的边界，而每个小方块的环量约是:term[旋度]{id="math.vector-calculus.curl"}乘面积。
+左图是边界的:term[正向]{id="math.vector-calculus.positive-orientation"}：洞的边界要顺时针走。右图是证明的道理：小方块的:term[环量]{id="math.vector-calculus.circulation"}加起来，内部的边都抵消，只剩外面的边界，而每个小方块的环量约是:term[旋度]{id="math.vector-calculus.curl"}乘面积。
 
 ## 例题
 
@@ -76,7 +78,7 @@ status: reviewed
 
 ## 常见误区
 
-- 「有洞的区域，每条边界都逆时针走。」正向是让区域在左手边：外边界逆时针，洞的边界顺时针。
+- 「有洞的区域，每条边界都逆时针走。」:term[正向]{id="math.vector-calculus.positive-orientation"}是让区域在左手边：外边界逆时针，洞的边界顺时针。
 - 「场在区域里有一个点没定义，:term[格林公式]{id="math.vector-calculus.greens-theorem"}照样能用。」$\frac{(-y,x)}{x^2+y^2}$绕原点的单位圆就是反例：等式左边是$2\pi$，右边按原点以外的:term[旋度]{id="math.vector-calculus.curl"}算是$0$。
 - 「通量形式是$\oint(Q\,\dd x-P\,\dd y)$。」符号反了：朝外的法向量是:term[单位切向量]{id="math.vector-calculus.unit-tangent-vector"}顺时针转$90°$，$\vb F\cdot\vb n\,\dd s=P\,\dd y-Q\,\dd x$。
 - 「$\oint x\,\dd y$和$\oint y\,\dd x$都等于面积。」$\oint_{\partial D}y\,\dd x$等于面积的相反数；它们差一个负号，平均起来才是$\frac12\oint(x\,\dd y-y\,\dd x)$。

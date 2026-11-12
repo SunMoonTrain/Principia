@@ -49,7 +49,7 @@ $\vb F$在区域$D$上:term[连续]{id="math.vector-calculus.continuous"}。如�
 ::anchor{id="thm-simply-connected"}
 **单连通区域上的判别法**　$D$是单连通区域，$\vb F$在$D$上有连续的:term[偏导数]{id="math.vector-calculus.partial-derivative"}。$\vb F$是保守场，当且仅当$\curl\vb F=\vb 0$；平面上就是$Q_x=P_y$。
 
-**证明思路**：必要性见上。充分性要说明「旋度为零」能推出「沿每一条闭曲线:term[环量]{id="math.vector-calculus.circulation"}为零」：平面的情形在[格林公式](lesson:math.vector-calculus.greens-theorem)里证明，空间的情形要用斯托克斯公式（Stokes' theorem），这里不证。
+**证明思路**：必要性见上。充分性要说明「旋度为零」能推出「沿每一条闭曲线:term[环量]{id="math.vector-calculus.circulation"}为零」：平面的情形在[格林公式](lesson:math.vector-calculus.greens-theorem)里证明，空间的情形要用:term[斯托克斯公式]{id="math.vector-calculus.stokes-theorem"}（Stokes' theorem），证明见[斯托克斯公式](lesson:math.vector-calculus.stokes-theorem#thm-simply-connected-space)。
 
 为什么要单连通：例 2 的场在原点以外旋度处处为零，可绕原点一圈的环量是$2\pi$。旋度为零只说明每一小块不转；绕着洞的那一圈缩不成小圈，各处的「不转」拼不成整体的「不转」。
 

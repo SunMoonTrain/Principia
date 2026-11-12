@@ -616,6 +616,15 @@ glossary:
       自己不相交的闭曲线，例如圆、三角形的边界；「8」字形不是。
     definedIn: math.vector-calculus.greens-theorem
     anchor: def-positive-orientation
+  - id: math.vector-calculus.positive-orientation
+    zh: |
+      正向
+    en: |
+      positive orientation
+    brief: |
+      沿边界走时区域总在左手边的走向：外边界逆时针，洞的边界顺时针；曲面的边界要头朝法向量那一侧走。
+    definedIn: math.vector-calculus.greens-theorem
+    anchor: def-positive-orientation
   - id: math.vector-calculus.greens-theorem
     zh: |
       格林公式
@@ -688,3 +697,48 @@ glossary:
       也叫高斯公式：$\oint_{\partial V}\vb F\cdot\dd\vb a=\iiint_V\divg\vb F\,\dd V$（外法向）；闭曲面上净流出的量等于里面各处散度之和。
     definedIn: math.vector-calculus.divergence-theorem
     anchor: thm-divergence
+  - id: math.vector-calculus.stokes-theorem
+    zh: |
+      斯托克斯公式
+    en: |
+      Stokes' theorem
+    brief: |
+      $\oint_{\partial S}\vb F\cdot\dd\vb r=\iint_S(\curl\vb F)\cdot\dd\vb a$（边界取正向）：沿曲面边界的环量等于旋度穿过曲面的通量。
+    definedIn: math.vector-calculus.stokes-theorem
+    anchor: thm-stokes
+  - id: math.vector-calculus.delta-3d
+    zh: |
+      三维$\delta$函数
+    en: |
+      three-dimensional delta function
+    brief: |
+      $\delta^3(\vb r)=\delta(x)\delta(y)\delta(z)$：原点以外为零，在包住原点的区域上积分为$1$；$\iiint f\,\delta^3(\vb r-\vb a)\dd V=f(\vb a)$。
+    definedIn: math.vector-calculus.delta-3d
+    anchor: def-delta-3d
+  - id: math.vector-calculus.point-source
+    zh: |
+      点源
+    en: |
+      point source
+    brief: |
+      集中在一点的源，密度写成$m\,\delta^3(\vb r-\vb a)$，例如质点、点电荷。
+    definedIn: math.vector-calculus.delta-3d
+    anchor: def-point-source
+  - id: math.vector-calculus.scalar-potential
+    zh: |
+      标量势
+    en: |
+      scalar potential
+    brief: |
+      满足$\vb F=-\nabla U$的函数$U$，和势函数只差一个负号；单连通区域上，无旋场都有标量势。
+    definedIn: math.vector-calculus.potentials
+    anchor: def-scalar-potential
+  - id: math.vector-calculus.vector-potential
+    zh: |
+      矢量势
+    en: |
+      vector potential
+    brief: |
+      满足$\vb G=\curl\vb A$的向量场$\vb A$；只有无散场才有，加上任何梯度场仍然是矢量势。
+    definedIn: math.vector-calculus.potentials
+    anchor: def-vector-potential

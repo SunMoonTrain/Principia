@@ -26,7 +26,7 @@ status: reviewed
 
 为什么是这个式子：:term[散度]{id="math.vector-calculus.divergence"}是一点处往外冒的强度，$\divg\vb F\,\Delta V$是一小块每秒冒出的量。闭曲面上的通量是每秒净流出去的量，它只能来自里面各处冒出的量之和，内部小块之间的交换都相互抵消。平面上类似的结论是[格林公式](lesson:math.vector-calculus.greens-theorem)的通量形式。
 
-边界情况：$\vb F$在$V$里某一点没有定义，公式就可能不成立。$\frac{\vb r}{r^3}$在原点以外散度为零，可穿过以原点为球心的球面的通量是$4\pi$；以后会用三维$\delta$函数（three-dimensional delta function）把原点处的「源」写出来。
+边界情况：$\vb F$在$V$里某一点没有定义，公式就可能不成立。$\frac{\vb r}{r^3}$在原点以外散度为零，可穿过以原点为球心的球面的通量是$4\pi$；以后会用:term[三维$\delta$函数]{id="math.vector-calculus.delta-3d"}（three-dimensional delta function）把原点处的「源」写出来（见[三维 δ 函数与点源](lesson:math.vector-calculus.delta-3d)）。
 
 ### 散度是单位体积的通量
 
