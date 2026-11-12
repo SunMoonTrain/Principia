@@ -1,0 +1,170 @@
+- id: p1
+  tier: easy
+  statement: |
+    某处的电场是$100\,\mathrm{V/m}$，磁场是$1.0\times10^{-5}\,\mathrm T$，两者互相垂直。求这里坡印亭矢量的大小，以$\mathrm{W/m^2}$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{N/A^2}$。
+  answer:
+    type: number
+    value: 100*1.0e-5/(4*pi*1e-7)
+    unit: |
+      $\mathrm{W/m^2}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $\vb S=\frac1{\mu_0}\vb E\times\vb B$。
+    - |
+      两者垂直时$S=\frac{EB}{\mu_0}$。
+    - |
+      $S=\frac{100\times1.0\times10^{-5}}{4\pi\times10^{-7}}\,\mathrm{W/m^2}\approx796\,\mathrm{W/m^2}$。
+  solution: |
+    电场和磁场垂直，$S=\frac{EB}{\mu_0}=\frac{100\times1.0\times10^{-5}}{4\pi\times10^{-7}}\,\mathrm{W/m^2}\approx796\,\mathrm{W/m^2}$，方向垂直于两者，按$\vb E\times\vb B$的右手定则定。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        某一点电磁场的能量密度只由这一点的电场和磁场决定
+      - |
+        坡印亭矢量穿过一个闭合曲面的通量为负，曲面里电磁场的能量一定在增加
+      - |
+        磁场对运动电荷的力不做功，所以$\vb J\cdot\vb E$里没有磁场的贡献
+      - |
+        电阻为零的理想导线通有恒定电流时，紧贴导线表面的坡印亭矢量和导线平行
+      - |
+        恒定电流的电路里，电场和磁场都不随时间变，所以处处$\divg\vb S=0$
+    value: [1, 3, 4]
+  hints:
+    - |
+      对照坡印亭定理的积分形式：流进来的能量可以去两个地方。
+    - |
+      理想导线里电场为零，电场平行于表面的分量在表面两侧连续，所以表面外的电场垂直于表面；磁场绕着导线转。
+    - |
+      A、C、D 对；B、E 错。
+  solution: |
+    A 对：$u=\frac{\varepsilon_0}2E^2+\frac1{2\mu_0}B^2$只用到这一点的场。B 错：流进来的能量可以对里面的电荷做功，例如流进电阻的能量变成焦耳热，场的能量并不增加。C 对：功率$\vb J\cdot\vb E$里只有电场。
+
+    D 对：理想导线表面外的电场垂直于表面，磁场绕着导线转，$\vb E\times\vb B$沿着导线：能量顺着导线流，导线只是引导它。E 错：$\divg\vb S=-\vb J\cdot\vb E$，在电阻里不为零，能量从外面流进电阻变成热。
+
+- id: p3
+  tier: medium
+  statement: |
+    长$2.0\,\mathrm m$、半径$0.50\,\mathrm{mm}$的电阻丝，电阻是$0.10\,\Omega$，通有$5.0\,\mathrm A$的恒定电流。求电阻丝表面坡印亭矢量的大小，以$\mathrm{W/m^2}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 5.0^2*0.10/(2*pi*0.50e-3*2.0)
+    unit: |
+      $\mathrm{W/m^2}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      电阻丝里的电场$E=\frac{IR}{l}$，表面上的磁场$B=\frac{\mu_0I}{2\pi a}$，两者垂直。
+    - |
+      $S=\frac{EB}{\mu_0}=\frac{I^2R}{2\pi al}$。
+    - |
+      $S=\frac{5.0^2\times0.10}{2\pi\times0.50\times10^{-3}\times2.0}\,\mathrm{W/m^2}\approx398\,\mathrm{W/m^2}$。
+  solution: |
+    $E=\frac{IR}{l}=0.25\,\mathrm{V/m}$，$B=\frac{\mu_0I}{2\pi a}$，$S=\frac{EB}{\mu_0}=\frac{EI}{2\pi a}=\frac{0.25\times5.0}{2\pi\times0.50\times10^{-3}}\,\mathrm{W/m^2}\approx398\,\mathrm{W/m^2}$，指向中轴。乘以侧面积$2\pi al\approx6.3\times10^{-3}\,\mathrm{m^2}$得$2.5\,\mathrm W$，正是$I^2R$。
+
+- id: p4
+  tier: medium
+  statement: |
+    两块半径$5.0\,\mathrm{cm}$的圆形极板正对着放，中间是真空，正在充电。某一时刻两板之间的电场是$1.0\times10^5\,\mathrm{V/m}$，正以$1.0\times10^8\,\mathrm{V/(m\,s)}$的速率增大，边缘的电场不计。求这一时刻极板边缘处坡印亭矢量的大小，以$\mathrm{W/m^2}$为单位，保留三位有效数字。取$\varepsilon_0=8.854\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: number
+    value: 8.854e-12*0.050/2*1.0e5*1.0e8
+    unit: |
+      $\mathrm{W/m^2}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      边缘处的磁场由位移电流产生：$2\pi RB=\mu_0\varepsilon_0\pi R^2\dv Et$。
+    - |
+      $S=\frac{EB}{\mu_0}=\frac{\varepsilon_0R}{2}E\dv Et$。
+    - |
+      $S=\frac{8.854\times10^{-12}\times0.050}{2}\times1.0\times10^5\times1.0\times10^8\,\mathrm{W/m^2}\approx2.21\,\mathrm{W/m^2}$。
+  solution: |
+    边缘处$B=\frac{\mu_0\varepsilon_0R}{2}\dv Et$，和电场垂直，$S=\frac{EB}{\mu_0}=\frac{\varepsilon_0R}{2}E\dv Et=\frac{8.854\times10^{-12}\times0.050}{2}\times1.0\times10^5\times1.0\times10^8\,\mathrm{W/m^2}\approx2.21\,\mathrm{W/m^2}$，指向中轴：能量从侧面流进电容器。
+
+- id: p5
+  tier: hard
+  statement: |
+    同轴电缆的内导体半径为$a$，外导体半径为$b$，两个导体的电阻不计。电缆一端接电动势（electromotive force）为$V$的电源，另一端接一个电阻，电缆里的电流是$I$，内导体的电势（electric potential）比外导体高$V$。
+
+    （1）求两个导体之间离轴$s$处的坡印亭矢量。（2）证明单位时间穿过两个导体之间的环形截面的能量是$VI$。（3）能量是在导体里面走，还是在两个导体之间走？
+  hints:
+    - |
+      两导体之间$E=\frac{V}{s\ln(b/a)}$，沿径向向外；$B=\frac{\mu_0I}{2\pi s}$，绕着轴转。
+    - |
+      $S=\frac{EB}{\mu_0}=\frac{VI}{2\pi s^2\ln(b/a)}$，沿着电缆指向电阻。
+    - |
+      $\int_a^bS\cdot2\pi s\,\dd s=\frac{VI}{\ln(b/a)}\int_a^b\frac{\dd s}{s}=VI$；导体里电场为零，$\vb S=\vb 0$，能量全在两个导体之间走。
+  reference: |
+    （1）两个导体之间，内导体上的电荷产生径向的电场。由高斯定律，$E=\frac{\lambda}{2\pi\varepsilon_0s}$，$\lambda$是单位长度的电荷；两导体的电势差$V=\int_a^bE\,\dd s=\frac{\lambda}{2\pi\varepsilon_0}\ln\frac ba$，所以$E=\frac{V}{s\ln(b/a)}$，沿径向向外。由安培环路定理，$B=\frac{\mu_0I}{2\pi s}$，方向和内导体里的电流成右手关系。径向乘绕向，指向内导体电流的方向，也就是从电源指向电阻：$S=\frac{EB}{\mu_0}=\frac{VI}{2\pi s^2\ln(b/a)}$。
+
+    （2）$\int_a^bS\cdot2\pi s\,\dd s=\frac{VI}{\ln(b/a)}\int_a^b\frac{\dd s}{s}=VI$，正是电源输出、电阻消耗的功率。
+
+    （3）导体的电阻不计，导体里的电场为零，那里$\vb S=\vb 0$；外导体外面电场和磁场都为零（外导体上的电荷和电流和内导体的大小相等、正负相反）。所以能量全在两个导体之间的绝缘层里走，导体只是给场定出形状和方向。导体有电阻时，导体里沿轴向有一点电场，$\vb S$有一点径向分量，有少量能量流进导体变成热。
+
+- id: p6
+  tier: hard
+  statement: |
+    长螺线管（solenoid）的半径为$R$，每单位长度绕$n$匝，管里的电流$I(t)$在增大。
+
+    （1）求管内表面附近的感生电场（induced electric field）和坡印亭矢量。（2）证明单位时间从侧面流进长为$l$的一段螺线管的电磁能量，等于这一段里磁场能量的增加率。（3）能量从哪里来？
+  hints:
+    - |
+      管内磁场$B=\mu_0nI$，离轴$R$处感生电场的大小$E=\frac R2\dv Bt$，绕着轴转。
+    - |
+      $S=\frac{EB}{\mu_0}=\frac{R}{2\mu_0}B\dv Bt$，指向中轴；乘以侧面积$2\pi Rl$。
+    - |
+      流进的功率是$\pi R^2l\cdot\frac{B}{\mu_0}\dv Bt=\dv{}{t}\Bigl(\frac{B^2}{2\mu_0}\pi R^2l\Bigr)$；能量由电源克服线圈里的自感电动势送进线圈，再从导线所在的侧面流进管里。
+  reference: |
+    （1）管内$B=\mu_0nI$，沿轴；由法拉第定律，离轴$R$处的感生电场$E=\frac R2\dv Bt$，绕着轴转，方向使它产生的电流阻碍$B$的增大（见[感生电场](lesson:physics.electromagnetism.induced-electric-field)）。坡印亭矢量$S=\frac{EB}{\mu_0}=\frac{R}{2\mu_0}B\dv Bt$；电场是绕向、磁场沿轴，叉乘指向中轴，能量从侧面流进管里。
+
+    （2）流进长为$l$的一段的功率是$S\cdot2\pi Rl=\pi R^2l\cdot\frac{B}{\mu_0}\dv Bt=\dv{}{t}\Bigl(\frac{B^2}{2\mu_0}\pi R^2l\Bigr)$，正是这一段里磁场能量的增加率。
+
+    （3）电源要克服线圈里的自感电动势做功，功率是$I\cdot L\dv It$。这些能量在导线所在的地方交给电磁场，再从侧面流进管里储存起来。用坡印亭矢量看，线圈储存的能量$\frac12LI^2$（见[自感、互感与磁场的能量](lesson:physics.electromagnetism.inductance)）是从导线所在的地方流进管里的。
+
+- id: p7
+  tier: thinking
+  statement: |
+    用两根很长的导线把电池和灯泡连起来（见[电流与欧姆定律](lesson:physics.electromagnetism.current-density)第 8 题）。
+
+    （1）电流稳定以后，能量沿什么路径从电池到灯泡？（2）导线换成电阻为零的超导线，能量的路径有什么变化？（3）开关刚合上的一瞬间，能量多快到达灯泡？
+  hints:
+    - |
+      两根导线之间的电场从正极那根指向负极那根，两根导线电流相反，它们之间的磁场同向。
+    - |
+      导线电阻为零时，导线表面外的电场垂直于导线，$\vb S$和导线平行。
+    - |
+      开关合上时，场的变化以接近光速的速度沿着导线传过去。
+  reference: |
+    （1）两根导线之间，电场从接正极的导线指向接负极的导线；两根导线的电流方向相反，在它们之间产生的磁场同向。$\vb S$在两根导线之间从电池指向灯泡，到了灯泡那里从侧面流进灯丝变成热和光。导线有一点电阻，所以也有一小部分能量从侧面流进导线自己，变成导线的热。
+
+    （2）超导线里电场为零，表面外的电场垂直于导线，$\vb S$和导线平行，能量全部沿着导线外面流到灯泡，导线自己一点也不发热。导线的作用只是引导场。
+
+    （3）开关合上时，电荷在导线表面的重新分布和随之而来的场，以接近光速的速度沿导线传开，像一列被导线引导的电磁波，能量随它一起过去。两根各长$1\,\mathrm m$的导线，大约几纳秒灯泡就开始得到能量，远远快于电子沿导线漂移的速度（漂移过去要好几个小时）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    一个带电的球放在一块条形磁铁旁边，两者都静止，周围的电场和磁场都不随时间变，可在许多地方$\vb E\times\vb B\ne\vb 0$。
+
+    （1）坡印亭矢量不为零，是不是说有能量在流动？（2）这时$\divg\vb S$是多少？任何区域里的电磁能量会变吗？（3）这样不为零的$\vb E\times\vb B$有没有可以观测的后果？
+  hints:
+    - |
+      静电场$\curl\vb E=\vb 0$，静磁场在没有电流的地方$\curl\vb B=\vb 0$；用$\divg(\vb E\times\vb B)=\vb B\cdot(\curl\vb E)-\vb E\cdot(\curl\vb B)$。
+    - |
+      $\divg\vb S=0$：每个区域流进流出的能量相等，能量不在哪里积累，也不对电荷做功。
+    - |
+      电磁场还有动量，动量密度（momentum density）正比于$\vb E\times\vb B$；场里储存着动量，磁场消失时会转移给带电的球（见[电磁场的动量](lesson:physics.electromagnetism.field-momentum)）。
+  reference: |
+    （1）$\vb S$绕着某些闭合路线转圈，「流动」只是一种说法。坡印亭定理只管$\vb S$的散度：$\vb S$加上任意一个矢量场的旋度，定理照样成立，所以单看$\vb S$的方向说不清能量是不是真在流。
+
+    （2）$\divg\vb S=\frac1{\mu_0}\bigl[\vb B\cdot(\curl\vb E)-\vb E\cdot(\curl\vb B)\bigr]$。静电场无旋；球外和磁铁外没有电流，那里$\curl\vb B=\vb 0$，所以$\divg\vb S=0$，任何区域里电磁能量都不变，也没有能量被交给电荷。能量方面，这样的$\vb S$没有任何可以观测的后果。
+
+    （3）有。电磁场的动量密度是$\frac{\vb S}{c^2}$（见[电磁场的动量](lesson:physics.electromagnetism.field-momentum)），这里场储存着动量：把磁铁的磁性去掉（例如它是一个通电的线圈，把电流关掉），磁场变化产生的感生电场会推动带电的球，球得到的动量正是场里原来储存的。所以$\vb E\times\vb B$不全是「记账的方便」，它连着动量和角动量的守恒。

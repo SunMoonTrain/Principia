@@ -1,0 +1,166 @@
+- id: p1
+  tier: easy
+  statement: |
+    微波炉里电磁波的频率是$2.45\,\mathrm{GHz}$。求它在空气中的波长（空气当作真空），以$\mathrm{cm}$为单位，保留三位有效数字。取$c=3.00\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 3.00e8/2.45e9*100
+    unit: |
+      $\mathrm{cm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      真空中$\lambda f=c$。
+    - |
+      $\lambda=\frac{c}{f}=\frac{3.00\times10^8}{2.45\times10^9}\,\mathrm m$。
+    - |
+      $\lambda\approx0.122\,\mathrm m=12.2\,\mathrm{cm}$。
+  solution: |
+    $\lambda=\frac cf=\frac{3.00\times10^8}{2.45\times10^9}\,\mathrm m\approx0.122\,\mathrm m=12.2\,\mathrm{cm}$，和炉腔的大小差不多，所以炉里会形成驻波。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于真空中电磁波的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        一列平面电磁波的电场沿$x$方向、沿$z$方向传播，那么它的磁场沿$y$方向或$-y$方向
+      - |
+        频率越高的电磁波在真空中传播得越快
+      - |
+        沿$z$方向传播的平面电磁波，电场不可能有$z$分量
+      - |
+        波长$500\,\mathrm{nm}$的光，电场每秒振动大约$6\times10^{14}$次
+      - |
+        单独一列平面电磁波里，电场和磁场振动的相位差是$90^\circ$
+    value: [1, 3, 4]
+  hints:
+    - |
+      平面电磁波里$\vb E$、$\vb B$、$\vb k$两两垂直，$\vb B_0=\frac1c\uv n\times\vb E_0$。
+    - |
+      真空中所有频率的电磁波速度都是$c$；$f=\frac c\lambda$。
+    - |
+      A、C、D 对；B、E 错。
+  solution: |
+    A 对：磁场垂直于电场和传播方向，$\vb B_0=\frac1c\uv z\times E_0\uv x=\frac{E_0}{c}\uv y$，$E_0$为负时指向$-y$。B 错：真空中速度都是$c$。C 对：$\divg\vb E=0$要求$\vb k\cdot\vb E_0=0$。
+
+    D 对：$f=\frac c\lambda=\frac{3.0\times10^8}{5.0\times10^{-7}}\,\mathrm{Hz}=6.0\times10^{14}\,\mathrm{Hz}$。E 错：单独一列行波里$\vb B=\frac1c\uv n\times\vb E$，两者同相，同时达到最大、同时为零。
+
+- id: p3
+  tier: medium
+  statement: |
+    真空中一列平面电磁波的电场是$\vb E=E_0\cos(kz-\omega t)\,\uv y$，$E_0=6.0\,\mathrm{V/m}$。求$t=0$时$z=\frac\lambda8$处磁场的$x$分量，以$\mathrm{nT}$为单位，保留三位有效数字。取$c=3.00\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: -6.0/3.00e8*cos(pi/4)*1e9
+    unit: |
+      $\mathrm{nT}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $\vb B=\frac1c\uv n\times\vb E$，传播方向$\uv n=\uv z$。
+    - |
+      $\uv z\times\uv y=-\uv x$，所以$B_x=-\frac{E_0}{c}\cos(kz-\omega t)$。
+    - |
+      $kz=\frac{2\pi}{\lambda}\cdot\frac\lambda8=\frac\pi4$，$B_x=-\frac{6.0}{3.00\times10^8}\cos\frac\pi4\,\mathrm T\approx-1.41\times10^{-8}\,\mathrm T=-14.1\,\mathrm{nT}$。
+  solution: |
+    $\vb B=\frac1c\uv z\times\vb E=-\frac{E_0}{c}\cos(kz-\omega t)\,\uv x$。$t=0$、$z=\frac\lambda8$时$kz=\frac\pi4$，$B_x=-\frac{6.0}{3.00\times10^8}\times0.707\,\mathrm T\approx-14.1\,\mathrm{nT}$：磁场沿$-x$，这样$\vb E\times\vb B$才沿$+z$。
+
+- id: p4
+  tier: medium
+  statement: |
+    真空中一列平面电磁波的电场是$\vb E=E_0\cos(kz-\omega t)\,\uv x$，波数$k=5.0\,\mathrm{rad/m}$。求它的波长（以$\mathrm m$为单位）和频率（以$\mathrm{MHz}$为单位），依次填写，保留三位有效数字。取$c=3.00\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: tuple
+    value: [2*pi/5.0, 3.00e8*5.0/(2*pi)/1e6]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $\lambda=\frac{2\pi}{k}$，$\omega=ck$，$f=\frac{\omega}{2\pi}$。
+    - |
+      $\lambda=\frac{2\pi}{5.0}\,\mathrm m$，$\omega=1.5\times10^9\,\mathrm{rad/s}$。
+    - |
+      $\lambda\approx1.26\,\mathrm m$，$f=\frac{1.5\times10^9}{2\pi}\,\mathrm{Hz}\approx2.39\times10^8\,\mathrm{Hz}=239\,\mathrm{MHz}$。
+  solution: |
+    $\lambda=\frac{2\pi}{k}=\frac{2\pi}{5.0}\,\mathrm m\approx1.26\,\mathrm m$；$\omega=ck=1.5\times10^9\,\mathrm{rad/s}$，$f=\frac{\omega}{2\pi}\approx239\,\mathrm{MHz}$。核对：$\lambda f\approx1.26\times2.39\times10^8\,\mathrm{m/s}\approx3.0\times10^8\,\mathrm{m/s}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    真空中两列沿$z$方向传播、频率和振幅都相同的线偏振平面波叠加：$\vb E=E_0\cos(kz-\omega t)\,\uv x+E_0\sin(kz-\omega t)\,\uv y$。
+
+    （1）在$z=0$处看，电场的大小和方向怎样随时间变？（2）求磁场，说明它的大小和方向。（3）任一时刻、任一点，电场和磁场的夹角是多少？
+  hints:
+    - |
+      （1）$z=0$时$\vb E=E_0(\cos\omega t,-\sin\omega t,0)$。
+    - |
+      （1）大小始终是$E_0$，方向以角速度$\omega$转圈。（2）两列波各自用$\vb B=\frac1c\uv z\times\vb E$。
+    - |
+      （2）$\vb B=\frac{E_0}{c}\bigl(-\sin(kz-\omega t),\cos(kz-\omega t),0\bigr)$，大小始终是$\frac{E_0}{c}$；（3）$\vb E\cdot\vb B=0$，夹角$90^\circ$。
+  reference: |
+    （1）$z=0$时$\vb E=E_0(\cos\omega t,-\sin\omega t,0)$，大小始终是$E_0$，方向以角速度$\omega$转圈：$t=0$时沿$+x$，四分之一周期后沿$-y$。迎着波看（从$+z$往回看），电场顺时针转。这叫圆偏振（circular polarization，见[偏振](lesson:physics.optics.polarization)）；两列的相位差不是$90^\circ$或振幅不等时，电场的端点画出椭圆。
+
+    （2）每一列都满足$\vb B=\frac1c\uv z\times\vb E$，叠加也满足：$\uv z\times\uv x=\uv y$，$\uv z\times\uv y=-\uv x$，所以$\vb B=\frac{E_0}{c}\bigl(-\sin(kz-\omega t),\cos(kz-\omega t),0\bigr)$，大小始终是$\frac{E_0}{c}$，跟着电场一起转。
+
+    （3）$\vb E\cdot\vb B=\frac{E_0^2}{c}\bigl[-\cos\xi\sin\xi+\sin\xi\cos\xi\bigr]=0$（$\xi=kz-\omega t$），任一时刻、任一点两者都垂直，$\vb E\times\vb B$始终沿$+z$。和线偏振的波不同，圆偏振的波里电场和磁场的大小都不随时间变。
+
+- id: p6
+  tier: hard
+  statement: |
+    把一盘巧克力放进拆掉转盘的微波炉里加热一小会儿，巧克力只在一些点上化了。把炉腔里的场简化成两块平行的金属壁之间的驻波：电场在金属壁上为零。
+
+    （1）相邻两个化得最厉害的点相距多远？和波长有什么关系？（2）量得这个距离是$6.1\,\mathrm{cm}$，炉子标的频率是$2.45\,\mathrm{GHz}$，由此算出的光速是多少？（3）实际的炉腔里情况比这复杂，为什么？
+  hints:
+    - |
+      驻波的电场$2E_0\sin kz\sin\omega t$，加热快慢和电场振幅的平方成正比。
+    - |
+      电场振幅最大的点（波腹）相距半个波长，$\lambda=2\times6.1\,\mathrm{cm}$。
+    - |
+      $c=\lambda f=0.122\times2.45\times10^9\,\mathrm{m/s}\approx2.99\times10^8\,\mathrm{m/s}$；炉腔是三维的，驻波有好几种花样叠在一起。
+  reference: |
+    （1）驻波的电场是$2E_0\sin kz\sin\omega t$，振幅$|2E_0\sin kz|$在$kz=\frac\pi2,\frac{3\pi}2,\cdots$处最大，相邻两个最大点相距$\frac\pi k=\frac\lambda2$。巧克力吸收的功率和电场振幅的平方成正比，所以化得最厉害的点相距半个波长；中间电场为零的点几乎不热，这正是微波炉要用转盘的原因。
+
+    （2）$\lambda=2\times6.1\,\mathrm{cm}=0.122\,\mathrm m$，$c=\lambda f=0.122\times2.45\times10^9\,\mathrm{m/s}\approx2.99\times10^8\,\mathrm{m/s}$，和光速相差不到$1\%$。这是课堂上常做的演示，用棉花糖也行（Stauffer 在 1997 年的《物理教师》上介绍过）。
+
+    （3）炉腔是一个三维的金属盒子，里面的驻波在三个方向上都有花样，几种花样还叠在一起；巧克力本身也吸收、改变场的分布。所以化的点不一定排成一条整齐的直线，量的时候要找沿同一个方向相邻的点，结果也只能准到百分之几。另外，炉子的频率本身是按光速设计、标出来的，这个实验更像是用光速和频率来「看见」驻波。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）声波要靠空气振动传播，电磁波在真空里靠什么传播？（2）19 世纪的人为什么设想有「以太」？（3）如果电磁波相对于以太以$c$传播，在地球上测光速，会测出什么？实验的结果怎样？
+  hints:
+    - |
+      电磁波里振动的是电场和磁场本身，两个旋度方程让它们互相维持。
+    - |
+      当时已知的波都是某种介质的振动；麦克斯韦自己也用以太的力学模型来想位移电流（displacement current）。
+    - |
+      地球绕太阳的速度约$30\,\mathrm{km/s}$，以太里的光速对地球就该随方向变化；迈克耳孙和莫雷 1887 年的实验没有测出这种变化。
+  reference: |
+    （1）不靠任何介质。电磁波里振动的就是电场和磁场：变化的磁场产生绕圈的电场，变化的电场产生绕圈的磁场，两者在真空里互相维持、一起传播，能量和动量也由场带着走。
+
+    （2）当时已知的波，声波、水波、弦上的波，都是某种介质的振动；光的干涉、衍射又说明它是波，人们自然设想有一种充满空间的介质，叫以太。麦克斯韦自己也用以太里电荷的位移来想位移电流（见[位移电流与麦克斯韦方程组](lesson:physics.electromagnetism.maxwell-equations)）。
+
+    （3）地球绕太阳运动的速度约$30\,\mathrm{km/s}$，如果光相对于以太以$c$传播，在地球上测得的光速就该随方向变化，变化的比例约是$\frac{v^2}{c^2}\sim10^{-8}$。迈克耳孙（Albert Michelson）和莫雷（Edward Morley）1887 年用干涉仪测量，没有发现这种变化。爱因斯坦 1905 年的狭义相对论把光速在每个惯性系里都是$c$当作基本假设，以太就用不着了（见[相对性原理与光速不变](lesson:physics.special-relativity.postulates)）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    一列平面电磁波照到一个速度很小的电子上。
+
+    （1）电子受的磁力和电力之比大约是多少？（2）只看电力，电子在波的电场里来回振动，平均下来受不受沿传播方向的推力？（3）加上磁力呢？由此你猜电磁波带不带动量？
+  hints:
+    - |
+      $|q\vb v\times\vb B|\le qvB=qv\frac Ec$，和$qE$之比不超过$\frac vc$。
+    - |
+      电力沿$\vb E$方向，和传播方向垂直；电子的速度也在这个方向上来回振动。
+    - |
+      $\vb v\times\vb B$沿$\pm\vb k$方向；电子吸收能量时，速度和电场同向的时候多一些，平均下来磁力沿$+\vb k$。
+  reference: |
+    （1）磁力$|q\vb v\times\vb B|\le qvB$，$B=\frac Ec$，所以和电力$qE$之比不超过$\frac vc$。电子很慢时磁力很小，前面讨论电子在波里的运动时只看电力，这就是原因。
+
+    （2）电力沿$\vb E$的方向，和传播方向垂直，所以电力从不沿传播方向推电子：只看电力，电子只在垂直于传播方向的平面里来回振动，平均下来没有沿传播方向的推力。
+
+    （3）电子的速度在$\vb E$的方向上，$\vb B$垂直于它和传播方向，$\vb v\times\vb B$沿传播方向或它的反方向。电子不吸收能量时，速度和电场的相位差$90^\circ$，一个周期里正负抵消；电子吸收能量（例如有阻尼）时，速度和电场同向的时候多一些，平均的磁力沿传播方向，而且算出来平均推力正好是吸收的功率除以$c$。所以电磁波带着动量，被吸收时把动量交给物体，形成辐射压强（见[电磁场的动量](lesson:physics.electromagnetism.field-momentum)）。

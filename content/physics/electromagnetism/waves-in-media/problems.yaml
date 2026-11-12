@@ -1,0 +1,176 @@
+- id: p1
+  tier: easy
+  statement: |
+    钻石对黄光的折射率是$2.42$。求黄光在钻石里的速度，以$10^8\,\mathrm{m/s}$为单位，保留三位有效数字。取$c=3.00\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 3.00/2.42
+    unit: |
+      $10^8\,\mathrm{m/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      折射率是真空中的光速和介质中的光速之比。
+    - |
+      $v=\frac cn$。
+    - |
+      $v=\frac{3.00\times10^8}{2.42}\,\mathrm{m/s}\approx1.24\times10^8\,\mathrm{m/s}$。
+  solution: |
+    $v=\frac cn=\frac{3.00\times10^8}{2.42}\,\mathrm{m/s}\approx1.24\times10^8\,\mathrm{m/s}$，只有真空中光速的四成左右。钻石的折射率在常见的透明物质里算是很大的，光在里面偏折得厉害。
+
+- id: p2
+  tier: easy
+  statement: |
+    光从空气垂直射进折射率为$1.5$的玻璃，玻璃不显磁性，空气的折射率按$1$算。下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        光的频率不变
+      - |
+        光速变成空气里的$\frac23$
+      - |
+        波长变成空气里的$1.5$倍
+      - |
+        玻璃里电场的振幅和磁场的振幅之比等于玻璃里的光速
+      - |
+        这种玻璃在静电场里的相对介电常量也是$1.5^2=2.25$
+    value: [1, 2, 4]
+  hints:
+    - |
+      频率在界面两侧相同；$v=\frac cn$，$\lambda=\frac vf$。
+    - |
+      平面波里$B=\frac Ev$；$n^2=\varepsilon_{\mathrm r}$里的$\varepsilon_{\mathrm r}$要用同一频率的值。
+    - |
+      A、B、D 对；C、E 错。
+  solution: |
+    A 对：频率在界面两侧相同。B 对：$v=\frac c{1.5}=\frac23c$。C 错：频率不变、速度变小，波长变成空气里的$\frac1{1.5}$。
+
+    D 对：平面波里$B=\frac Ev$，所以$\frac EB=v$。E 错：$2.25$是这种光的频率下的相对介电常量；电场不变或变化很慢时，比电子云慢的极化也跟得上，静电的值一般更大，例如熔融石英对可见光的$n^2\approx2.1$，静电的相对介电常量约为$3.8$。
+
+- id: p3
+  tier: medium
+  statement: |
+    钠灯的黄光在真空中的波长是$589\,\mathrm{nm}$，水对它的折射率是$1.333$。求它在水里的波长（以$\mathrm{nm}$为单位）和频率（以$\mathrm{THz}$为单位），依次填写，保留三位有效数字。取$c=3.00\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: tuple
+    value: [589/1.333, 3.00e8/589e-9/1e12]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      频率在水里不变，$f=\frac c{\lambda_0}$，$\lambda_0$是真空中的波长。
+    - |
+      水里的速度$v=\frac cn$，波长$\lambda=\frac vf=\frac{\lambda_0}n$。
+    - |
+      $\lambda=\frac{589}{1.333}\,\mathrm{nm}\approx442\,\mathrm{nm}$，$f=\frac{3.00\times10^8}{589\times10^{-9}}\,\mathrm{Hz}\approx5.09\times10^{14}\,\mathrm{Hz}=509\,\mathrm{THz}$。
+  solution: |
+    频率由光源决定，进水后不变：$f=\frac{c}{\lambda_0}=\frac{3.00\times10^8}{589\times10^{-9}}\,\mathrm{Hz}\approx509\,\mathrm{THz}$。水里的波长$\lambda=\frac{\lambda_0}{n}=\frac{589}{1.333}\,\mathrm{nm}\approx442\,\mathrm{nm}$，和真空里蓝紫光的波长差不多，可潜水的人看到的仍是黄光：颜色由频率决定。
+
+- id: p4
+  tier: medium
+  statement: |
+    某种铁氧体（ferrite）在所讨论的频率下相对介电常量是$12$，相对磁导率是$1000$，电导率（electrical conductivity）可以不计。求它的折射率，以及频率为$1.0\,\mathrm{MHz}$的电磁波在其中的波长（以$\mathrm m$为单位），依次填写，保留三位有效数字。取$c=3.00\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: tuple
+    value: [sqrt(12*1000), 3.00e8/sqrt(12*1000)/1.0e6]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      铁氧体有很强的磁性，$\mu_{\mathrm r}$不能当成$1$，$n=\sqrt{\varepsilon_{\mathrm r}\mu_{\mathrm r}}$。
+    - |
+      $n=\sqrt{12\times1000}\approx110$。
+    - |
+      $\lambda=\frac{c}{nf}=\frac{3.00\times10^8}{109.5\times1.0\times10^6}\,\mathrm m\approx2.74\,\mathrm m$。
+  solution: |
+    $n=\sqrt{\varepsilon_{\mathrm r}\mu_{\mathrm r}}=\sqrt{12\times1000}\approx110$。波长$\lambda=\frac{v}{f}=\frac{c}{nf}=\frac{3.00\times10^8}{109.5\times1.0\times10^6}\,\mathrm m\approx2.74\,\mathrm m$，真空里这个频率的波长是$300\,\mathrm m$。磁性材料里$\mu_{\mathrm r}$很大，不能再用$n\approx\sqrt{\varepsilon_{\mathrm r}}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    均匀线性介质的$\varepsilon$、$\mu$不随频率变，里面没有自由电荷和自由电流。一列平面电磁波在其中传播，电场的振幅是$E_0$。
+
+    （1）证明电场的能量密度$\frac\varepsilon2E^2$和磁场的能量密度$\frac1{2\mu}B^2$时时相等。（2）证明坡印亭矢量$\vb E\times\vb H$的大小等于能量密度乘以波速$v$，并求强度。
+
+    （3）强度相同的两束光，一束在空气里，一束在玻璃里（$n=1.50$，$\mu_{\mathrm r}=1$），空气的折射率按$1$算。玻璃里那束的电场振幅和磁场振幅各是空气里那束的几倍？
+  hints:
+    - |
+      平面波里$B=\frac Ev$，$v=\frac1{\sqrt{\varepsilon\mu}}$。
+    - |
+      $|\vb E\times\vb H|=\frac{EB}\mu$；$\frac{1}{\mu v}=\varepsilon v$。
+    - |
+      $\mu_{\mathrm r}=1$时$\varepsilon v=nc\varepsilon_0$，强度$I=\frac n2c\varepsilon_0E_0^2$。
+  reference: |
+    （1）平面波里$B=\frac Ev=\sqrt{\varepsilon\mu}\,E$，所以$\frac1{2\mu}B^2=\frac{\varepsilon\mu E^2}{2\mu}=\frac\varepsilon2E^2$。
+
+    （2）$\vb E$和$\vb H$垂直，$|\vb E\times\vb H|=\frac{EB}{\mu}=\frac{E^2}{\mu v}=\varepsilon vE^2$，这里用了$v^2=\frac1{\varepsilon\mu}$，即$\frac1{\mu v}=\varepsilon v$。能量密度是两部分之和$u=\varepsilon E^2$，所以坡印亭矢量的大小是$uv$：能量以波速流动。对时间取平均，$E^2$的平均值是$\frac12E_0^2$，强度$I=\frac12\varepsilon vE_0^2=\frac12\sqrt{\frac\varepsilon\mu}\,E_0^2$。
+
+    （3）$\mu_{\mathrm r}=1$时$\varepsilon v=n^2\varepsilon_0\cdot\frac cn=nc\varepsilon_0$，$I=\frac n2c\varepsilon_0E_0^2$。强度相同，$E_0$和$\sqrt n$成反比，玻璃里的电场振幅是空气里的$\frac1{\sqrt{1.50}}\approx0.816$倍；磁场振幅$B_0=\frac{E_0}{v}=\frac{nE_0}{c}$和$\sqrt n$成正比，是空气里的$\sqrt{1.50}\approx1.22$倍。
+
+- id: p6
+  tier: hard
+  statement: |
+    平面电磁波里电场的振幅和磁场强度（magnetic field strength）的振幅之比$Z=\frac{E_0}{H_0}$叫作介质的波阻抗（wave impedance）。
+
+    （1）证明均匀线性介质里$Z=\sqrt{\frac\mu\varepsilon}$，并说明它的单位是欧姆。（2）求真空和玻璃（$n=1.50$，$\mu_{\mathrm r}=1$）的波阻抗，取$\mu_0=4\pi\times10^{-7}\,\mathrm{H/m}$，$c=3.00\times10^8\,\mathrm{m/s}$。
+
+    （3）平面波从真空垂直射到一种介质的平面上。已知界面上没有自由电流时，$\vb E$和$\vb H$平行于界面的分量在两侧相等。证明反射波和入射波的电场振幅之比是$\frac{Z-Z_0}{Z+Z_0}$，$Z_0$、$Z$分别是真空和介质的波阻抗。什么样的介质对垂直入射的波完全不反射？
+  hints:
+    - |
+      $H=\frac B\mu$，平面波里$B=\frac Ev=\sqrt{\varepsilon\mu}\,E$。
+    - |
+      $Z_0=\sqrt{\frac{\mu_0}{\varepsilon_0}}=\mu_0c$；$\mu_{\mathrm r}=1$时$Z=\frac{Z_0}n$。
+    - |
+      反射波沿反方向传播，它的$\vb H$相对$\vb E$的方向和入射波相反；列出$E_{\mathrm i}+E_{\mathrm r}=E_{\mathrm t}$和$\frac{E_{\mathrm i}-E_{\mathrm r}}{Z_0}=\frac{E_{\mathrm t}}{Z}$。
+  reference: |
+    （1）$H=\frac B\mu=\frac{\sqrt{\varepsilon\mu}\,E}{\mu}=\sqrt{\frac\varepsilon\mu}\,E$，所以$Z=\frac EH=\sqrt{\frac\mu\varepsilon}$。电场的单位是$\mathrm{V/m}$，磁场强度的单位是$\mathrm{A/m}$，比值的单位是$\mathrm{V/A}=\Omega$。
+
+    （2）真空：$Z_0=\sqrt{\frac{\mu_0}{\varepsilon_0}}=\mu_0c=4\pi\times10^{-7}\times3.00\times10^8\,\Omega\approx377\,\Omega$。玻璃：$Z=Z_0\sqrt{\frac{\mu_{\mathrm r}}{\varepsilon_{\mathrm r}}}=\frac{Z_0}{n}\approx251\,\Omega$。
+
+    （3）设界面是$z=0$，波沿$+z$入射，电场沿$x$。入射波$\vb E_{\mathrm i}=E_{\mathrm i}\uv x$，$\vb H_{\mathrm i}=\frac{E_{\mathrm i}}{Z_0}\uv y$；反射波沿$-z$传播，$\vb E\times\vb H$要指向$-z$，所以$\vb H_{\mathrm r}=-\frac{E_{\mathrm r}}{Z_0}\uv y$；透射波$\vb H_{\mathrm t}=\frac{E_{\mathrm t}}{Z}\uv y$。边界条件给出$E_{\mathrm i}+E_{\mathrm r}=E_{\mathrm t}$，$\frac{E_{\mathrm i}-E_{\mathrm r}}{Z_0}=\frac{E_{\mathrm t}}{Z}$，消去$E_{\mathrm t}$得$\frac{E_{\mathrm r}}{E_{\mathrm i}}=\frac{Z-Z_0}{Z+Z_0}$。
+
+    $\mu_{\mathrm r}=1$时$Z=\frac{Z_0}n$，比值是$\frac{1-n}{1+n}$，就是这一节动画里反射波的振幅。$Z=Z_0$时完全不反射，要求$\varepsilon_{\mathrm r}=\mu_{\mathrm r}$：这样的材料折射率可以不是$1$，波照样会变慢，却不在界面上反射。这和两根弦的阻抗相等时连接处不反射是同一个道理（见[波的反射与透射](lesson:physics.oscillations-waves.reflection-transmission)）。
+
+- id: p7
+  tier: thinking
+  statement: |
+    光在玻璃里比在真空里慢。
+
+    （1）有人说：光在玻璃里不断被原子吸收，停一会儿再发出来，所以平均起来慢了。这个说法有什么问题？
+
+    （2）玻璃里的电子在光的电场推动下振动，它们自己也发出电磁波。用这个图像说明光为什么像是变慢了。（3）原子之间的空隙里，电磁场以多大的速度传播？
+  hints:
+    - |
+      如果真是吸收以后再发出来，发出的光朝哪个方向、在什么时刻发出，会是确定的吗？
+    - |
+      两列频率相同、相位略有差别的波叠加，合成波的相位介于两者之间。
+    - |
+      电子发出的波也是在真空里传播的电磁波。
+  reference: |
+    （1）真正的吸收再发射，发出的光朝各个方向都有，发出的时刻也是随机的，和原来的光没有固定的相位关系；光束会向四面八方散开。可光穿过一块玻璃仍然是一束方向不变的光，还能和别的光干涉。而且原子只在一些特定的频率附近才强烈吸收，可见光在很宽的频率范围里都会折射。
+
+    （2）电子在光的电场里做受迫振动，频率和光相同，它们发出的电磁波频率也相同。玻璃里各处的电子一起振动，在前方，它们发出的波叠加成一列沿原方向传播的波，和入射波合起来，合成波的相位比单独的入射波落后一点；穿过的电子越多，落后得越多，看起来就是波峰前进得比$c$慢，速度是$\frac cn$。落后多少取决于电子跟着电场振动的情况，所以折射率随频率变；在共振频率以上，电子振动的相位反过来，折射率甚至可以小于$1$（见[介质的色散](lesson:physics.electromagnetism.dispersion)）。
+
+    （3）还是$c$。微观上，电子发出的波和入射波在原子之间都以$c$传播，「变慢」是它们叠加以后的宏观效果；$\vb P$、$\vb D$和$\varepsilon$描述的就是这种对很多原子的平均。费曼（Richard Feynman）的《费曼物理学讲义》第一卷第 31 章就用这个图像算出了折射率。
+
+- id: p8
+  tier: thinking
+  statement: |
+    光从空气射进水里，速度和波长变了，频率却不变。
+
+    （1）为什么界面两侧的频率必须相同？（2）从光子的角度看，频率不变意味着什么？
+
+    （3）这一节的结论建立在线性介质上。如果极化强度（polarization density）里除了和$E$成正比的项，还有和$E^2$成正比的项，频率为$\omega$的电场会产生什么频率的极化？
+  hints:
+    - |
+      边界条件要在界面上每一点、每一时刻都成立。
+    - |
+      光子的能量是$hf$。
+    - |
+      $\cos^2\omega t=\frac12(1+\cos2\omega t)$。
+  reference: |
+    （1）界面上的场在两侧要满足边界条件，例如电场平行于界面的分量相等，这对界面上每一点、每一时刻都成立。如果两侧的频率不同，一侧的场按$\cos\omega_1t$变，另一侧按$\cos\omega_2t$变，不可能时时相等。所以频率由光源决定，进入线性介质时不变；速度变了，波长$\lambda=\frac vf$跟着变。
+
+    （2）光子的能量是$hf$，频率不变就是每个光子的能量不变。光进了水，变的是传播的速度，而不是每个光子带的能量；不计反射和吸收时，每秒穿过界面的光子数也不变。
+
+    （3）$E=E_0\cos\omega t$时，$E^2=\frac12E_0^2(1+\cos2\omega t)$，极化里出现频率为$2\omega$的成分，振动的电偶极子（electric dipole）就会发出频率加倍、波长减半的光，这叫倍频（second-harmonic generation）。1961 年弗兰肯（Peter Franken）等人用红宝石激光第一次观察到它。常见的绿色激光笔通常先产生波长$1064\,\mathrm{nm}$的红外光，再用一块晶体倍频成$532\,\mathrm{nm}$的绿光。这种效应要很强的电场才明显，普通光照在玻璃上看不出来，所以平常说的折射都是线性的。

@@ -45,7 +45,7 @@ status: reviewed
 ::anchor{id="def-energy-density"}
 单位体积的:term[电场]{id="physics.electromagnetism.electric-field"}里的$u=\frac{\varepsilon_0}{2}E^2$叫作电场的:term[能量密度]{id="physics.electromagnetism.energy-density"}（energy density），单位是$\mathrm{J/m^3}$。
 
-为什么这样定义：静电学里把能量写成$\frac12\int\rho\varphi\,\dd V$还是$\int u\,\dd V$，总数一样：前者把能量算在电荷所在的地方，后者算在有电场的地方。电荷挪动以后，电磁波离开电荷照样带着能量（见[电场](lesson:physics.electromagnetism.electric-field)一节），只有后一种说法讲得通，所以说能量储存在场里。边界情况：$u$处处不小于零，可两个异号:term[点电荷]{id="physics.electromagnetism.point-charge"}的静电能是负的，原因在下一段。
+为什么这样定义：静电学里把能量写成$\frac12\int\rho\varphi\,\dd V$还是$\int u\,\dd V$，总数一样：前者把能量算在电荷所在的地方，后者算在有电场的地方。电荷挪动以后，:term[电磁波]{id="physics.electromagnetism.em-wave"}（electromagnetic wave）离开电荷照样带着能量（见[电场](lesson:physics.electromagnetism.electric-field)一节），只有后一种说法讲得通，所以说能量储存在场里。边界情况：$u$处处不小于零，可两个异号:term[点电荷]{id="physics.electromagnetism.point-charge"}的静电能是负的，原因在下一段。
 
 ::anchor{id="def-self-energy"}
 用$\int u\,\dd V$算单个点电荷，$E=\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}$，$\int_0^\infty\frac{\varepsilon_0}{2}E^2\cdot4\pi r^2\,\dd r=\frac{q^2}{8\pi\varepsilon_0}\int_0^\infty\frac{\dd r}{r^2}$，在$r\to0$处发散。它包含了把这个点电荷本身「攒」起来的能量，叫作自能（self-energy）。$\sum_{i<j}$的写法只算电荷之间的相互作用，不含自能；对体电荷密度有限的连续分布，两种写法完全一样（p5、p7）。

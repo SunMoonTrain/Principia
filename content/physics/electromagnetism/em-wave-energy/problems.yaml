@@ -1,0 +1,166 @@
+- id: p1
+  tier: easy
+  statement: |
+    一支激光笔的功率是$5.0\,\mathrm{mW}$，光束的横截面积是$2.0\,\mathrm{mm^2}$，光在截面上均匀分布。求光束里电场的振幅，以$\mathrm{kV/m}$为单位，保留三位有效数字。取$c=3.00\times10^8\,\mathrm{m/s}$，$\varepsilon_0=8.854\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: number
+    value: sqrt(2*(5.0e-3/2.0e-6)/(3.00e8*8.854e-12))/1e3
+    unit: |
+      $\mathrm{kV/m}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      强度是功率除以面积：$I=\frac{P}{A}$。
+    - |
+      $I=\frac12c\varepsilon_0E_0^2$，所以$E_0=\sqrt{\frac{2I}{c\varepsilon_0}}$。
+    - |
+      $I=2.5\times10^3\,\mathrm{W/m^2}$，$E_0=\sqrt{\frac{2\times2.5\times10^3}{3.00\times10^8\times8.854\times10^{-12}}}\,\mathrm{V/m}\approx1.37\times10^3\,\mathrm{V/m}$。
+  solution: |
+    $I=\frac{5.0\times10^{-3}}{2.0\times10^{-6}}\,\mathrm{W/m^2}=2.5\times10^3\,\mathrm{W/m^2}$，$E_0=\sqrt{\frac{2I}{c\varepsilon_0}}=\sqrt{\frac{5.0\times10^3}{2.656\times10^{-3}}}\,\mathrm{V/m}\approx1.37\times10^3\,\mathrm{V/m}=1.37\,\mathrm{kV/m}$：一支小小的激光笔，光斑里的强度比阳光还大。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        电磁波的强度和电场振幅的平方成正比
+      - |
+        平面电磁波里磁场储存的能量只有电场储存的$\frac1c$
+      - |
+        离各向同性的点源的距离加倍，电场的振幅变成原来的一半
+      - |
+        两列完全相同、相向传播的波叠加成驻波，各处的平均能流为零，所以驻波里没有能量
+      - |
+        把一列平面波的电场振幅加倍，它的强度和能量密度的时间平均都变成原来的$4$倍
+    value: [1, 3, 5]
+  hints:
+    - |
+      $I=\frac12c\varepsilon_0E_0^2$，$\langle u\rangle=\frac Ic$；平面波里$\frac{B^2}{2\mu_0}=\frac{\varepsilon_0E^2}{2}$。
+    - |
+      点源的强度和距离的平方成反比；能流平均为零不等于能量为零。
+    - |
+      A、C、E 对；B、D 错。
+  solution: |
+    A 对：$I=\frac12c\varepsilon_0E_0^2$。B 错：两者时时处处相等，各占一半；$\frac1c$是$B$和$E$之比，能量密度里还要除以$\mu_0$。C 对：$I\propto\frac1{r^2}$，$E_0\propto\sqrt I\propto\frac1r$。
+
+    D 错：驻波里能量密度不为零，能量储存着，只是平均下来不流动。E 对：$I$和$\langle u\rangle=\frac Ic$都正比于$E_0^2$。
+
+- id: p3
+  tier: medium
+  statement: |
+    晴天中午，地面上阳光垂直照射的强度约为$1.0\times10^3\,\mathrm{W/m^2}$。一块面积$1.6\,\mathrm{m^2}$、把$20\%$的光能变成电能的太阳能板正对着太阳。求阳光的等效电场振幅（以$\mathrm{V/m}$为单位）和太阳能板输出的电功率（以$\mathrm W$为单位），依次填写，保留三位有效数字。取$c=3.00\times10^8\,\mathrm{m/s}$，$\varepsilon_0=8.854\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: tuple
+    value: [sqrt(2*1.0e3/(3.00e8*8.854e-12)), 1.0e3*1.6*0.20]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $E_0=\sqrt{\frac{2I}{c\varepsilon_0}}$。
+    - |
+      照到板上的功率是$IA$，乘以$20\%$。
+    - |
+      $E_0\approx868\,\mathrm{V/m}$，输出功率$1.0\times10^3\times1.6\times0.20\,\mathrm W=320\,\mathrm W$。
+  solution: |
+    $E_0=\sqrt{\frac{2\times1.0\times10^3}{3.00\times10^8\times8.854\times10^{-12}}}\,\mathrm{V/m}\approx868\,\mathrm{V/m}$。照到板上的功率是$IA=1.6\times10^3\,\mathrm W$，变成电能的是$20\%$，即$320\,\mathrm W$。地面上的强度比大气层外的$1361\,\mathrm{W/m^2}$小，是因为大气吸收、散射了一部分。
+
+- id: p4
+  tier: medium
+  statement: |
+    一个功率为$100\,\mathrm W$的各向同性点源向四周发出电磁波，能量没有损失。在多远处电场的振幅是$1.0\,\mathrm{V/m}$？以$\mathrm m$为单位，保留三位有效数字。取$c=3.00\times10^8\,\mathrm{m/s}$，$\varepsilon_0=8.854\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: number
+    value: sqrt(100/(4*pi*0.5*3.00e8*8.854e-12*1.0^2))
+    unit: |
+      $\mathrm m$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $I=\frac{P}{4\pi r^2}$，又$I=\frac12c\varepsilon_0E_0^2$。
+    - |
+      $E_0=1.0\,\mathrm{V/m}$时$I=\frac12\times3.00\times10^8\times8.854\times10^{-12}\,\mathrm{W/m^2}\approx1.33\times10^{-3}\,\mathrm{W/m^2}$。
+    - |
+      $r=\sqrt{\frac{P}{4\pi I}}=\sqrt{\frac{100}{4\pi\times1.33\times10^{-3}}}\,\mathrm m\approx77.4\,\mathrm m$。
+  solution: |
+    $E_0=1.0\,\mathrm{V/m}$时$I=\frac12c\varepsilon_0E_0^2\approx1.328\times10^{-3}\,\mathrm{W/m^2}$。由$I=\frac{P}{4\pi r^2}$，$r=\sqrt{\frac{P}{4\pi I}}=\sqrt{\frac{100}{4\pi\times1.328\times10^{-3}}}\,\mathrm m\approx77.4\,\mathrm m$。
+
+- id: p5
+  tier: hard
+  statement: |
+    两块平行的导体（conductor）板之间形成驻波，电场$\vb E=2E_0\sin kz\sin\omega t\,\uv x$，磁场$\vb B=\frac{2E_0}{c}\cos kz\cos\omega t\,\uv y$。
+
+    （1）求电场、磁场的能量密度和坡印亭矢量。（2）坡印亭矢量的时间平均是多少？能量在怎样流动？（3）求$0\le z\le\frac{\lambda}{2}$这一段里（横截面取单位面积）的总能量，说明它不随时间变。
+  hints:
+    - |
+      $u_E=\frac{\varepsilon_0}2E^2=2\varepsilon_0E_0^2\sin^2kz\sin^2\omega t$，$u_B=\frac{B^2}{2\mu_0}=2\varepsilon_0E_0^2\cos^2kz\cos^2\omega t$。
+    - |
+      $\vb S=\frac1{\mu_0}\vb E\times\vb B=\varepsilon_0cE_0^2\sin2kz\sin2\omega t\,\uv z$，对时间平均为零。
+    - |
+      $\int_0^{\lambda/2}\sin^2kz\,\dd z=\int_0^{\lambda/2}\cos^2kz\,\dd z=\frac\lambda4$，总能量$\frac{\varepsilon_0E_0^2\lambda}{2}\bigl(\sin^2\omega t+\cos^2\omega t\bigr)$。
+  reference: |
+    （1）$u_E=\frac{\varepsilon_0}{2}E^2=2\varepsilon_0E_0^2\sin^2kz\sin^2\omega t$，$u_B=\frac{B^2}{2\mu_0}=\frac{4E_0^2}{2\mu_0c^2}\cos^2kz\cos^2\omega t=2\varepsilon_0E_0^2\cos^2kz\cos^2\omega t$。$\vb S=\frac1{\mu_0}E_xB_y\uv z=\frac{4E_0^2}{\mu_0c}\sin kz\cos kz\sin\omega t\cos\omega t\,\uv z=\varepsilon_0cE_0^2\sin2kz\sin2\omega t\,\uv z$。
+
+    （2）$\sin2\omega t$对一个周期的平均为零，所以$\langle\vb S\rangle=\vb 0$。能量不是没有流动，而是来回流：$\sin2kz$在电场的波腹（$kz=\frac\pi2$）两侧变号，前四分之一周期里能量从磁场的波腹流向电场的波腹，后四分之一周期又流回去，像 LC 电路里能量在电容器和线圈之间来回倒。
+
+    （3）单位面积的总能量$U=\int_0^{\lambda/2}(u_E+u_B)\,\dd z=2\varepsilon_0E_0^2\Bigl(\frac\lambda4\sin^2\omega t+\frac\lambda4\cos^2\omega t\Bigr)=\frac{\varepsilon_0E_0^2\lambda}{2}$，不随时间变。这和$z=0$、$z=\frac\lambda2$两处$\vb S=\vb 0$相符：没有能量从两端流出去。
+
+- id: p6
+  tier: hard
+  statement: |
+    两列频率相同、振幅都是$E_0$、电场都沿$y$方向的平面波，在$xz$平面里传播，传播方向分别和$z$轴成$+\alpha$、$-\alpha$角，叠加在一起。
+
+    （1）求合电场振幅的平方随$x$怎样变化，相邻两条亮纹相距多远？（2）把强度对$x$平均，和两列波各自的强度之和比较。（3）能量守恒是不是在亮纹处被破坏了？
+  hints:
+    - |
+      两列波的电场是$E_0\cos(kx\sin\alpha+kz\cos\alpha-\omega t)$和$E_0\cos(-kx\sin\alpha+kz\cos\alpha-\omega t)$。
+    - |
+      和差化积：合电场是$2E_0\cos(kx\sin\alpha)\cos(kz\cos\alpha-\omega t)$，振幅的平方是$4E_0^2\cos^2(kx\sin\alpha)$。
+    - |
+      条纹间距$\frac{\pi}{k\sin\alpha}=\frac{\lambda}{2\sin\alpha}$；$\cos^2$对$x$平均是$\frac12$，平均的振幅平方$2E_0^2$，正是两列波各自的之和。
+  reference: |
+    （1）两列波的电场是$E_0\cos(kx\sin\alpha+kz\cos\alpha-\omega t)$和$E_0\cos(-kx\sin\alpha+kz\cos\alpha-\omega t)$。和差化积，合电场是$2E_0\cos(kx\sin\alpha)\cos(kz\cos\alpha-\omega t)$，振幅的平方是$4E_0^2\cos^2(kx\sin\alpha)$，在$x$方向周期变化：亮纹处是一列波的四倍，暗纹处为零。相邻亮纹相距$\frac{\pi}{k\sin\alpha}=\frac{\lambda}{2\sin\alpha}$。
+
+    （2）沿$z$方向的平均能流和振幅的平方成正比（磁场的分析类似，坡印亭矢量的$z$分量平均正比于$\cos^2(kx\sin\alpha)$）。$\cos^2$对$x$平均是$\frac12$，平均起来是$2E_0^2$，正是两列波各自$E_0^2$之和，所以平均强度等于两列波的强度之和。
+
+    （3）没有。干涉只是把能量在空间里重新分配：亮纹处多出来的，正是暗纹处少掉的，总的能流不变。所以「强度相加」只在对很多条纹平均以后才成立，两列相干的波在某一点的强度并不等于各自强度之和。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）为什么不能像看交流电（alternating current）那样，用示波器直接看到光的电场随时间的变化？（2）光电池、照相底片、眼睛测到的是什么？（3）测无线电波时，天线和电路却能直接跟上电场的变化，这又是为什么？
+  hints:
+    - |
+      可见光的频率是$10^{14}\,\mathrm{Hz}$量级，一个周期约$2\times10^{-15}\,\mathrm s$。
+    - |
+      探测器的响应比这慢得多，它们吸收能量，给出的是强度，即坡印亭矢量的时间平均。
+    - |
+      无线电波的频率低，一个周期是微秒、纳秒量级，电路跟得上，天线里感应出的电动势（electromotive force）就是随时间变化的信号。
+  reference: |
+    （1）可见光的频率约$5\times10^{14}\,\mathrm{Hz}$，一个周期约$2\times10^{-15}\,\mathrm s$。电子线路里信号的变化最快也就$10^{-12}\,\mathrm s$量级，比光的一个周期慢上百倍，根本跟不上光的电场。
+
+    （2）光电池、底片、眼睛都靠吸收光的能量起作用，它们的响应要经过许多个周期，给出的是吸收的平均功率，也就是强度乘以面积，和电场振幅的平方成正比，电场本身的正负、相位都被平均掉了。
+
+    （3）无线电波的频率从千赫到吉赫，一个周期从毫秒到纳秒，电路完全跟得上：天线里的电动势随电场一起振荡，可以直接放大、解调。频率越高，电路越难跟上，到了红外和可见光，就只能测强度了；要知道光的相位，得借助干涉，把它和另一束光比较。
+
+- id: p8
+  tier: thinking
+  statement: |
+    按电磁波的理论，光的能量连续地随波流动，强度可以任意小。
+
+    （1）一支$1.0\,\mathrm{mW}$、波长$633\,\mathrm{nm}$的激光，如果光的能量一份一份地来，每份是$hf$（$h=6.63\times10^{-34}\,\mathrm{J\,s}$），每秒来多少份？（2）把它衰减到极弱，照相底片上会看到什么？（3）这和强度的概念矛盾吗？
+  hints:
+    - |
+      $f=\frac c\lambda$，每份$hf\approx3.1\times10^{-19}\,\mathrm J$。
+    - |
+      份数$\frac{P}{hf}$，大约$3\times10^{15}$份每秒，平均下来和连续的能流分不出来。
+    - |
+      极弱时底片上出现一个个分散的点，点的密度和这里的强度成正比。
+  reference: |
+    （1）$f=\frac c\lambda=\frac{3.00\times10^8}{633\times10^{-9}}\,\mathrm{Hz}\approx4.74\times10^{14}\,\mathrm{Hz}$，每份$hf\approx3.14\times10^{-19}\,\mathrm J$，每秒$\frac{1.0\times10^{-3}}{3.14\times10^{-19}}\approx3.2\times10^{15}$份。这么多份，平均下来和连续的能流分不出来。
+
+    （2）衰减到每秒只有几份时，底片上不是均匀地变暗，而是出现一个个分散的点，每个点是一份能量被吸收的地方；曝光时间长了，点越积越多，点的密度在强的地方多、弱的地方少，最后拼出连续的图像。
+
+    （3）不矛盾，但需要补充。电磁波的理论给出的强度，对应的是能量到达的平均速率，在量子理论里，它决定一份能量落在某处的可能性有多大。光很强时份数极多，看到的就是连续的强度；光极弱时，「一份一份」才显露出来，这要用光的量子理论来讲（见[黑体辐射与普朗克定律](lesson:physics.thermal-physics.blackbody-radiation)）。

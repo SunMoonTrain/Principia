@@ -62,7 +62,7 @@ functions:
       沿$z$轴（横轴是$z$）
 :::
 
-动画画的是[电场](lesson:physics.electromagnetism.electric-field)一节第 6 题里的:term[电势]{id="physics.electromagnetism.electric-potential"}：四个相同的:term[正点电荷]{id="physics.electromagnetism.point-charge"}在$(\pm a,0,0)$和$(0,\pm a,0)$，横轴以$a$为单位（图上写作$x$），电势以$\frac{1}{4\pi\varepsilon_0}\frac{Q}{a}$为单位。原点附近没有:term[电荷]{id="physics.electromagnetism.electric-charge"}，电势满足:term[拉普拉斯方程]{id="physics.electromagnetism.laplace-equation"}：沿$x$轴（$y$轴也一样）原点是电势的最低点，沿$z$轴却是最高点，原点是一个鞍点（saddle point）。所以正电荷放在原点，沿$z$方向一挪就被推走。
+动画画的是[电场](lesson:physics.electromagnetism.electric-field)一节第 6 题里的:term[电势]{id="physics.electromagnetism.electric-potential"}：四个相同的:term[正点电荷]{id="physics.electromagnetism.point-charge"}在$(\pm a,0,0)$和$(0,\pm a,0)$，横轴以$a$为单位（图上写作$x$），电势以$\frac{1}{4\pi\varepsilon_0}\frac{Q}{a}$为单位。原点附近没有:term[电荷]{id="physics.electromagnetism.electric-charge"}，电势满足:term[拉普拉斯方程]{id="physics.electromagnetism.laplace-equation"}：沿$x$轴（$y$轴也一样）原点是电势的最低点，沿$z$轴却是最高点，原点是一个:term[鞍点]{id="math.vector-calculus.saddle-point"}（saddle point）。所以正电荷放在原点，沿$z$方向一挪就被推走。
 
 ## 例题
 
@@ -88,6 +88,6 @@ functions:
 ## 常见误区
 
 - 「$\nabla^2\varphi=0$的地方，:term[电势]{id="physics.electromagnetism.electric-potential"}是常量。」只有一维时它才是线性的；三维里$x^2-y^2$、$\frac1r$都满足:term[拉普拉斯方程]{id="physics.electromagnetism.laplace-equation"}，电势照样随位置变。
-- 「:term[电场]{id="physics.electromagnetism.electric-field"}为零的点，电势一定是极大值或极小值。」几何图像里的原点电场为零，却是鞍点。
+- 「:term[电场]{id="physics.electromagnetism.electric-field"}为零的点，电势一定是极大值或极小值。」几何图像里的原点电场为零，却是:term[鞍点]{id="math.vector-calculus.saddle-point"}。
 - 「没有:term[电荷]{id="physics.electromagnetism.electric-charge"}的区域里，电势可以在中间某处最高。」电势的最高点和最低点只能在区域的边界上，或者在电荷所在的地方。
 - 「:term[泊松方程]{id="physics.electromagnetism.poisson-equation"}和:term[库仑定律]{id="physics.electromagnetism.coulomb-law"}是两套独立的规律。」库仑定律给出的电势就是泊松方程的解；泊松方程的好处在于能配合边界条件，求:term[导体]{id="physics.electromagnetism.conductor"}附近这类不知道电荷怎样分布的问题。

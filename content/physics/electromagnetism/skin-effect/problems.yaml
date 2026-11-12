@@ -1,0 +1,172 @@
+- id: p1
+  tier: easy
+  statement: |
+    铝的电导率取$3.77\times10^7\,\mathrm{S/m}$，相对磁导率（relative permeability）取$1$。求$50\,\mathrm{Hz}$的交流电在铝导线里的趋肤深度，以$\mathrm{mm}$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{H/m}$。
+  answer:
+    type: number
+    value: sqrt(2/(4*pi*1e-7*3.77e7*2*pi*50))*1e3
+    unit: |
+      $\mathrm{mm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      铝是良导体，$\delta=\sqrt{\frac{2}{\mu\sigma\omega}}$，$\omega=2\pi f$。
+    - |
+      $\mu\sigma\omega=4\pi\times10^{-7}\times3.77\times10^7\times2\pi\times50\,\mathrm{m^{-2}}\approx1.49\times10^4\,\mathrm{m^{-2}}$。
+    - |
+      $\delta=\sqrt{\frac{2}{1.49\times10^4}}\,\mathrm m\approx1.16\times10^{-2}\,\mathrm m=11.6\,\mathrm{mm}$。
+  solution: |
+    $\omega=2\pi\times50\,\mathrm{rad/s}$，$\delta=\sqrt{\frac{2}{\mu_0\sigma\omega}}=\sqrt{\frac{2}{4\pi\times10^{-7}\times3.77\times10^7\times2\pi\times50}}\,\mathrm m\approx11.6\,\mathrm{mm}$。输电线的铝导线半径一般在十毫米上下，和这个深度相当；导线再粗，中间的铝通过的电流就少了。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于良导体里的电磁波的说法，哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        频率越高，趋肤深度越小
+      - |
+        电导率越大，趋肤深度越大
+      - |
+        导体里电磁波的波长是趋肤深度的$2\pi$倍
+      - |
+        磁场和电场的相位相同
+      - |
+        电磁场的能量主要在磁场里
+    value: [1, 3, 5]
+  hints:
+    - |
+      $\delta=\sqrt{\frac{2}{\mu\sigma\omega}}$；良导体里$k\approx\kappa=\frac1\delta$。
+    - |
+      $\tilde k=\frac{1-i}{\delta}$，$\tilde{\vb B}_0=\frac{\tilde k}{\omega}\uv z\times\tilde{\vb E}_0$。
+    - |
+      A、C、E 对；B、D 错。
+  solution: |
+    A 对、B 错：$\delta=\sqrt{\frac{2}{\mu\sigma\omega}}$，$\omega$和$\sigma$越大，$\delta$越小。C 对：$k\approx\frac1\delta$，波长$\frac{2\pi}{k}=2\pi\delta$。
+
+    D 错：$\tilde k$的辐角是$-45^\circ$，磁场比电场落后$45^\circ$。E 对：磁场和电场的能量密度之比是$\frac{\sigma}{\varepsilon\omega}$，良导体里远大于$1$。
+
+- id: p3
+  tier: medium
+  statement: |
+    直径为$2.0\,\mathrm{mm}$的铜导线通着$1.0\,\mathrm{MHz}$的交流电。把电流看成均匀分布在导线表面厚为$\delta$的一层里（$\delta$是趋肤深度，远小于导线半径$a$），这一层的截面积按周长乘厚度$2\pi a\delta$算，估计导线的交流电阻是直流电阻的几倍，保留三位有效数字。铜的电导率取$5.96\times10^7\,\mathrm{S/m}$，$\mu=\mu_0=4\pi\times10^{-7}\,\mathrm{H/m}$。
+  answer:
+    type: number
+    value: 1.0e-3/(2*sqrt(2/(4*pi*1e-7*5.96e7*2*pi*1.0e6)))
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      电阻和导电的截面积成反比：直流时是整个截面$\pi a^2$，交流时约是$2\pi a\delta$。
+    - |
+      比值是$\frac{\pi a^2}{2\pi a\delta}=\frac{a}{2\delta}$。
+    - |
+      $\delta=\sqrt{\frac{2}{\mu_0\sigma\omega}}\approx6.52\times10^{-5}\,\mathrm m$，$\frac{a}{2\delta}=\frac{1.0\times10^{-3}}{2\times6.52\times10^{-5}}\approx7.67$。
+  solution: |
+    $\delta=\sqrt{\frac{2}{4\pi\times10^{-7}\times5.96\times10^7\times2\pi\times10^6}}\,\mathrm m\approx65.2\,\mu\mathrm m$，比半径$1.0\,\mathrm{mm}$小得多。电阻和截面积成反比，$\frac{R_{\text{交}}}{R_{\text{直}}}\approx\frac{\pi a^2}{2\pi a\delta}=\frac{a}{2\delta}\approx7.67$。高频时导线的电阻能比直流时大好几倍，发热也相应增多。
+
+- id: p4
+  tier: medium
+  statement: |
+    均匀导体里，由连续性方程（continuity equation）、电位移（electric displacement）的高斯定律（Gauss's law）和欧姆定律可得自由电荷密度满足$\pdv{\rho_{\mathrm f}}t=-\frac\sigma\varepsilon\rho_{\mathrm f}$。把海水看成$\sigma=4.0\,\mathrm{S/m}$、$\varepsilon=80\varepsilon_0$的导体，求海水内部的自由电荷密度衰减到原来的$\frac1{\mathrm e}$所需的时间，以$\mathrm{ns}$为单位，保留三位有效数字。取$\varepsilon_0=8.854\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: number
+    value: 80*8.854e-12/4.0*1e9
+    unit: |
+      $\mathrm{ns}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $\divg\vb J_{\mathrm f}=-\pdv{\rho_{\mathrm f}}t$，$\vb J_{\mathrm f}=\sigma\vb E$，$\divg\vb E=\frac{\rho_{\mathrm f}}{\varepsilon}$。
+    - |
+      方程的解是$\rho_{\mathrm f}(t)=\rho_{\mathrm f}(0)e^{-t/\tau}$，$\tau=\frac\varepsilon\sigma$。
+    - |
+      $\tau=\frac{80\times8.854\times10^{-12}}{4.0}\,\mathrm s\approx1.77\times10^{-10}\,\mathrm s=0.177\,\mathrm{ns}$。
+  solution: |
+    $\pdv{\rho_{\mathrm f}}t=-\divg\vb J_{\mathrm f}=-\sigma\divg\vb E=-\frac{\sigma}{\varepsilon}\rho_{\mathrm f}$，解是$\rho_{\mathrm f}(t)=\rho_{\mathrm f}(0)e^{-t/\tau}$，$\tau=\frac\varepsilon\sigma=\frac{80\times8.854\times10^{-12}}{4.0}\,\mathrm s\approx0.177\,\mathrm{ns}$。多出的自由电荷很快跑到表面上去，所以讨论导体里的电磁波时可以设内部$\rho_{\mathrm f}=0$。对铜，这个式子给出约$10^{-19}\,\mathrm s$，比电子两次碰撞之间的时间（约$2.5\times10^{-14}\,\mathrm s$，见[电流与欧姆定律](lesson:physics.electromagnetism.current-density)）还短得多，这时欧姆定律已经不适用，实际的时间由碰撞决定，但仍然极短。
+
+- id: p5
+  tier: hard
+  statement: |
+    导体中的平面电磁波的复波数$\tilde k=k-i\kappa$满足$\tilde k^2=\mu\varepsilon\omega^2-i\mu\sigma\omega$，$k>0$，$\kappa>0$。
+
+    （1）求$k$和$\kappa$。（2）$\sigma\ll\varepsilon\omega$（不良导体）时，证明$k\approx\omega\sqrt{\varepsilon\mu}$，$\kappa\approx\frac\sigma2\sqrt{\frac\mu\varepsilon}$，衰减和频率无关。
+
+    （3）把海水看成$\sigma=4.0\,\mathrm{S/m}$、$\varepsilon=80\varepsilon_0$、$\mu=\mu_0$、三个数都不随频率变的材料，$1\,\mathrm{MHz}$和$10\,\mathrm{GHz}$时各属于哪种情形？振幅衰减到$\frac1{\mathrm e}$的距离各是多少？
+  hints:
+    - |
+      比较实部和虚部：$k^2-\kappa^2=\mu\varepsilon\omega^2$，$2k\kappa=\mu\sigma\omega$。
+    - |
+      $\sigma\ll\varepsilon\omega$时$\kappa\ll k$，由第一式$k\approx\omega\sqrt{\mu\varepsilon}$，代入第二式求$\kappa$。
+    - |
+      $\frac{\sigma}{\varepsilon\omega}$在$1\,\mathrm{MHz}$时约$900$，在$10\,\mathrm{GHz}$时约$0.09$。
+  reference: |
+    （1）$\tilde k^2=k^2-\kappa^2-2ik\kappa$，所以$k^2-\kappa^2=\mu\varepsilon\omega^2$，$2k\kappa=\mu\sigma\omega$。把$\kappa=\frac{\mu\sigma\omega}{2k}$代入第一式，解出$k^2$的正根：$k=\omega\sqrt{\frac{\varepsilon\mu}{2}}\Bigl[\sqrt{1+\Bigl(\frac{\sigma}{\varepsilon\omega}\Bigr)^2}+1\Bigr]^{1/2}$，同样$\kappa=\omega\sqrt{\frac{\varepsilon\mu}{2}}\Bigl[\sqrt{1+\Bigl(\frac{\sigma}{\varepsilon\omega}\Bigr)^2}-1\Bigr]^{1/2}$。$\frac{\sigma}{\varepsilon\omega}\gg1$时两者都趋于$\sqrt{\frac{\mu\sigma\omega}2}$，就是良导体的结果。
+
+    （2）$\frac{\sigma}{\varepsilon\omega}\ll1$时$\sqrt{1+x^2}\approx1+\frac{x^2}2$，$k\approx\omega\sqrt{\varepsilon\mu}$，和绝缘体里一样；$\kappa\approx\omega\sqrt{\frac{\varepsilon\mu}2}\cdot\frac{x}{\sqrt2}=\frac{\sigma}{2}\sqrt{\frac{\mu}{\varepsilon}}$，和$\omega$无关。
+
+    （3）$1\,\mathrm{MHz}$时$\frac{\sigma}{\varepsilon\omega}=\frac{4.0}{80\times8.854\times10^{-12}\times2\pi\times10^6}\approx900$，是良导体，$\delta=\sqrt{\frac2{\mu_0\sigma\omega}}\approx0.25\,\mathrm m$。$10\,\mathrm{GHz}$时比值约$0.09$，是不良导体，$\kappa\approx\frac{\sigma}{2}\sqrt{\frac{\mu_0}{80\varepsilon_0}}=\frac{4.0}{2}\times\frac{377}{\sqrt{80}}\,\mathrm m^{-1}\approx84\,\mathrm m^{-1}$，衰减距离约$1.2\,\mathrm{cm}$。实际上水在几十吉赫兹附近还有分子转动带来的强烈吸收（见[介质的色散](lesson:physics.electromagnetism.dispersion)），微波在海水里衰减得比这还快。
+
+- id: p6
+  tier: hard
+  statement: |
+    电磁波从真空垂直射到良导体的平面上，导体的$\mu=\mu_0$。把[菲涅耳公式](lesson:physics.electromagnetism.fresnel-equations#thm-fresnel)用到复数上，反射波和入射波的电场振幅之比是$\tilde r=\frac{1-\tilde n}{1+\tilde n}$，复折射率（complex refractive index）$\tilde n=\frac{c\tilde k}{\omega}$。
+
+    （1）证明$|\tilde n|\gg1$，并且$R=|\tilde r|^2\approx1-\frac{2\omega\delta}{c}$。（2）求铜（$\sigma=5.96\times10^7\,\mathrm{S/m}$）对$10\,\mathrm{GHz}$微波的$1-R$。（3）照到铜上的微波，没有反射的那一点能量到哪里去了？
+  hints:
+    - |
+      良导体里$\tilde k=\frac{1-i}{\delta}$，$\tilde n=\frac{c}{\omega\delta}(1-i)$；$\frac{c}{\omega\delta}=\sqrt{\frac{\sigma}{2\varepsilon_0\omega}}$。
+    - |
+      $|\tilde n|\gg1$时$\tilde r=-\frac{1-1/\tilde n}{1+1/\tilde n}\approx-\Bigl(1-\frac2{\tilde n}\Bigr)$，$|\tilde r|^2\approx1-4\operatorname{Re}\frac1{\tilde n}$。
+    - |
+      $\frac{1}{\tilde n}=\frac{\omega\delta}{c}\cdot\frac{1+i}{2}$；$10\,\mathrm{GHz}$时铜的$\delta\approx0.652\,\mu\mathrm m$。
+  reference: |
+    （1）良导体里$\tilde k=\frac{1-i}{\delta}$，$\tilde n=\frac{c}{\omega\delta}(1-i)$，$|\tilde n|=\frac{\sqrt2c}{\omega\delta}=\sqrt{\frac{\sigma}{\varepsilon_0\omega}}$，良导体里远大于$1$。于是$\tilde r=-\frac{1-1/\tilde n}{1+1/\tilde n}\approx-\Bigl(1-\frac{2}{\tilde n}\Bigr)$，$|\tilde r|^2\approx1-4\operatorname{Re}\frac{1}{\tilde n}$。$\frac1{\tilde n}=\frac{\omega\delta}{c}\cdot\frac{1}{1-i}=\frac{\omega\delta}{c}\cdot\frac{1+i}{2}$，实部是$\frac{\omega\delta}{2c}$，所以$R\approx1-\frac{2\omega\delta}{c}$。
+
+    （2）$\delta=\sqrt{\frac{2}{4\pi\times10^{-7}\times5.96\times10^7\times2\pi\times10^{10}}}\,\mathrm m\approx0.652\,\mu\mathrm m$，$1-R\approx\frac{2\times2\pi\times10^{10}\times0.652\times10^{-6}}{3.00\times10^8}\approx2.7\times10^{-4}$。铜把这样的微波反射掉$99.97\%$，所以微波炉、雷达的反射面和传输微波的波导都用金属做。
+
+    （3）透进铜里的那$0.03\%$在几个趋肤深度里变成了焦耳热（Joule heating）：表面薄层里的电流$\sigma\vb E$放出的热量，正好等于坡印亭矢量（Poynting vector）带进表面的能流。
+
+- id: p7
+  tier: thinking
+  statement: |
+    [感生电场](lesson:physics.electromagnetism.induced-electric-field)第 5 题算金属圆盘里的涡电流时，忽略了涡电流自己的磁场。
+
+    （1）什么情况下这样做是合理的？（2）频率很高时，圆盘里的涡电流和磁场会怎样分布？
+
+    （3）变压器（transformer）的铁芯用彼此绝缘的薄硅钢片叠成。硅钢片的电导率约为$2\times10^6\,\mathrm{S/m}$，相对磁导率约为几千，片厚常在$0.3\,\mathrm{mm}$左右。和$50\,\mathrm{Hz}$下的趋肤深度比，这个厚度说明了什么？
+  hints:
+    - |
+      涡电流的磁场总是阻碍外加磁场的变化；它什么时候小到可以不管？
+    - |
+      比较导体的尺寸和趋肤深度。
+    - |
+      $\delta=\sqrt{\frac{2}{\mu_{\mathrm r}\mu_0\sigma\omega}}$，相对磁导率取$4000$试试。
+  reference: |
+    （1）涡电流的磁场阻碍外加磁场的变化，它的大小和涡电流成正比，频率越高、导体越大、电导率越大就越强。导体的尺寸比趋肤深度小得多时，涡电流的磁场比外加磁场小得多，可以忽略，那道题的结果才成立。
+
+    （2）频率高到趋肤深度比圆盘的厚度小时，涡电流的磁场把外加磁场的变化抵消在表面附近约$\delta$厚的一层里，导体内部的磁场和电流都很弱；涡电流集中在表面，这就是趋肤效应。这时发热也只在表面薄层里，电磁炉加热锅底、工业上的高频淬火只把零件表面加热，都利用了这一点。
+
+    （3）$\delta=\sqrt{\frac{2}{4000\times4\pi\times10^{-7}\times2\times10^6\times2\pi\times50}}\,\mathrm m\approx0.8\,\mathrm{mm}$，片厚$0.3\,\mathrm{mm}$比它小。片厚比趋肤深度小，磁场能均匀地穿透每一片，铁芯整个截面都在导磁；而每片里的涡电流只能在很薄的截面里绕圈，损耗就小。如果铁芯是一整块，磁场只能透进表面不到一毫米，涡电流又大又集中在表面，铁芯既发热又起不到作用。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）高频电路的铜导线为什么常在表面镀一层银？镀层大约要多厚才有用？（2）大功率的高频感应线圈常用空心铜管绕成，管里通冷却水，为什么不用实心的铜棒？
+
+    （3）利兹线（Litz wire）由许多根彼此绝缘的细铜丝绞成，每根细丝都轮流从外层走到里层。它为什么能在一定的频率范围里减小交流电阻？
+  hints:
+    - |
+      高频电流只在表面约一个趋肤深度的薄层里流。
+    - |
+      银的电导率约为$6.3\times10^7\,\mathrm{S/m}$，比铜稍大。
+    - |
+      每根细丝比趋肤深度细时，电流在丝里是均匀的；关键是让每根丝分到的电流一样多。
+  reference: |
+    （1）高频电流集中在表面约一个趋肤深度的薄层里，导线的电阻由这一层的电导率决定。银的电导率比铜大约$6\%$，镀银就能让高频电阻小一些。镀层要有几个趋肤深度厚，电流才基本都在银里流：$1\,\mathrm{GHz}$时银的趋肤深度约$2\,\mu\mathrm m$，镀几微米到十微米就够了；频率低的电路镀银用处不大。
+
+    （2）频率高时电流只在铜管表面的薄层里流，实心铜棒中间的铜几乎不导电，白白增加重量和成本；做成空心管，管壁比几个趋肤深度厚就够，中间还能通冷却水把大电流放出的热带走。
+
+    （3）每根细丝都比趋肤深度细，电流在丝里近似均匀；各根细丝彼此绝缘，又轮流处在外层和里层，每根受到的感应情况平均下来相同，分到的电流也就差不多，整个截面都在导电，不会像一根粗导线那样电流挤在表面。频率太高、趋肤深度比细丝还细时，这个办法就不灵了。

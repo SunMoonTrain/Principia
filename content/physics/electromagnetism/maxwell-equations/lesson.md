@@ -62,7 +62,7 @@ $$
 
 去掉:term[位移电流]{id="physics.electromagnetism.displacement-current"}，同样的推理只给出$\divg\vb J=0$，只有:term[恒定电流]{id="physics.electromagnetism.steady-current"}才满足，电荷积累的情形就和方程矛盾；加上位移电流，电荷守恒不用另外假设，已经包含在方程组里了。狭义相对论把方程组写成四维的形式，这一点看得更直接（见[麦克斯韦方程组的协变形式](lesson:physics.special-relativity.covariant-maxwell)）。
 
-两个旋度方程把电场和磁场连在一起。没有电荷和电流的地方，变化的电场产生磁场，变化的磁场又产生电场，场可以离开电荷和电流独自传播，形成电磁波（electromagnetic wave），速度是$\frac{1}{\sqrt{\mu_0\varepsilon_0}}\approx3.00\times10^8\,\mathrm{m/s}$（见[真空中的电磁波](lesson:physics.electromagnetism.em-waves)）。1862 年，麦克斯韦用韦伯（Wilhelm Weber）和科尔劳施（Rudolf Kohlrausch）的电学测量数据算出这个速度，发现它和菲佐（Hippolyte Fizeau）测出的光速非常接近，推断光就是电磁波；1887 年到 1888 年，赫兹（Heinrich Hertz）在实验室里产生并检测到了电磁波，证实了麦克斯韦的理论。麦克斯韦当年写出的方程有二十个，现在通用的四个矢量方程是亥维赛（Oliver Heaviside）在 1884 年前后整理出来的。
+两个旋度方程把电场和磁场连在一起。没有电荷和电流的地方，变化的电场产生磁场，变化的磁场又产生电场，场可以离开电荷和电流独自传播，形成:term[电磁波]{id="physics.electromagnetism.em-wave"}（electromagnetic wave），速度是$\frac{1}{\sqrt{\mu_0\varepsilon_0}}\approx3.00\times10^8\,\mathrm{m/s}$（见[真空中的电磁波](lesson:physics.electromagnetism.em-waves)）。1862 年，麦克斯韦用韦伯（Wilhelm Weber）和科尔劳施（Rudolf Kohlrausch）的电学测量数据算出这个速度，发现它和菲佐（Hippolyte Fizeau）测出的光速非常接近，推断光就是电磁波；1887 年到 1888 年，赫兹（Heinrich Hertz）在实验室里产生并检测到了电磁波，证实了麦克斯韦的理论。麦克斯韦当年写出的方程有二十个，现在通用的四个矢量方程是亥维赛（Oliver Heaviside）在 1884 年前后整理出来的。
 
 ### 位移电流和电位移
 
@@ -78,7 +78,7 @@ $$
 
 这样，:term[位移电流]{id="physics.electromagnetism.displacement-current"}在电介质里换成了$\pdv{\vb D}t$，其中$\pdv{\vb P}t$是束缚电荷真实的挪动，$\varepsilon_0\pdv{\vb E}t$不是。配上$\divg\vb D=\rho_{\mathrm f}$（见[电位移与线性电介质](lesson:physics.electromagnetism.electric-displacement#thm-gauss-d)），方程里就只出现自由电荷和它的电流，这是我们能控制、能测量的量。麦克斯韦说的位移电流是整个$\pdv{\vb D}t$：他设想真空里也充满一种介质，即以太（aether），电场使其中的电荷发生位移，$\vb D$就是这种位移，「电位移」的名字也由此而来；后来知道并没有这样的介质，名字却一直沿用下来。
 
-:term[磁介质]{id="physics.electromagnetism.magnetic-material"}（magnetic material）里还有磁化产生的:term[束缚电流]{id="physics.electromagnetism.bound-current"}（bound current），把它也算进去，可以用:term[磁场强度]{id="physics.electromagnetism.magnetic-field-strength"}（magnetic field strength）$\vb H$写成$\curl\vb H=\vb J_{\mathrm f}+\pdv{\vb D}t$（见[磁场强度与线性磁介质](lesson:physics.electromagnetism.magnetic-intensity)），讲介质中的电磁波时要用到它。
+:term[磁介质]{id="physics.electromagnetism.magnetic-material"}（magnetic material）里还有磁化产生的:term[束缚电流]{id="physics.electromagnetism.bound-current"}（bound current），把它也算进去，可以用:term[磁场强度]{id="physics.electromagnetism.magnetic-field-strength"}（magnetic field strength）$\vb H$写成$\curl\vb H=\vb J_{\mathrm f}+\pdv{\vb D}t$（见[磁场强度与线性磁介质](lesson:physics.electromagnetism.magnetic-intensity)），讲介质中的:term[电磁波]{id="physics.electromagnetism.em-wave"}时要用到它。
 
 ## 几何图像
 

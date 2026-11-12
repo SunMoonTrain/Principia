@@ -48,7 +48,7 @@ status: reviewed
 1785 年，库仑（Charles-Augustin de Coulomb）用扭秤（torsion balance）测量两个带同号:term[电荷]{id="physics.electromagnetism.electric-charge"}的小球之间的斥力：悬丝扭得越厉害，扭回来的作用越强，由扭转的角度就能读出斥力的大小。他在法国科学院（Académie Royale des Sciences）的论文集里报告，三次测量表明斥力和距离的平方成反比。在他之前，普里斯特利（Joseph Priestley）1767 年由「带电金属杯里的小球不受电力」，和万有引力（gravitation）类比，推测过这个规律；卡文迪什（Henry Cavendish）在 1770 年代初也得出了它，但没有发表。
 
 ::anchor{id="def-coulomb-law"}
-:term[库仑定律]{id="physics.electromagnetism.coulomb-law"}（Coulomb's law）：真空中两个静止的:term[点电荷]{id="physics.electromagnetism.point-charge"}，$q_1$在$\vb r_1$处，$q_2$在$\vb r_2$处，$q_1$对$q_2$的作用力是$\vb F_{1\to2}=\frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{|\vb r_2-\vb r_1|^3}(\vb r_2-\vb r_1)$；其中$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{C^2/(N\,m^2)}$是一个常量，叫作真空介电常量（vacuum permittivity）。
+:term[库仑定律]{id="physics.electromagnetism.coulomb-law"}（Coulomb's law）：真空中两个静止的:term[点电荷]{id="physics.electromagnetism.point-charge"}，$q_1$在$\vb r_1$处，$q_2$在$\vb r_2$处，$q_1$对$q_2$的作用力是$\vb F_{1\to2}=\frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{|\vb r_2-\vb r_1|^3}(\vb r_2-\vb r_1)$；其中$\varepsilon_0=8.8541878188\times10^{-12}\,\mathrm{C^2/(N\,m^2)}$是一个常量，叫作:term[真空介电常量]{id="physics.electromagnetism.permittivity"}（vacuum permittivity）。
 
 为什么写成这样：$\vb r_2-\vb r_1$除以它的长度，是从$q_1$指向$q_2$的单位矢量，所以力的大小是$F=\frac{1}{4\pi\varepsilon_0}\frac{|q_1q_2|}{r^2}$（$r$是两个电荷的距离），方向沿两者的连线：$q_1q_2>0$时是斥力，$q_1q_2<0$时是引力。交换 1 和 2，力反向、大小不变，这正是牛顿第三定律（Newton's third law）。系数写成$\frac{1}{4\pi\varepsilon_0}$而不是一个简单的常数，是为了让以后的:term[高斯定律]{id="physics.electromagnetism.gauss-law"}（Gauss's law）里不出现$4\pi$；它的值约为$8.988\times10^9\,\mathrm{N\,m^2/C^2}$。
 

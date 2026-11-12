@@ -1,0 +1,166 @@
+- id: p1
+  tier: easy
+  statement: |
+    某个区域里标势为零，矢势是$\vb A=\frac{B_0}{2}\cos\omega t\,(-y,x,0)$，$B_0=0.50\,\mathrm T$，$\omega=100\pi\,\mathrm{rad/s}$。求$t=\frac{1}{200}\,\mathrm s$时离$z$轴$0.10\,\mathrm m$处电场的大小，以$\mathrm{V/m}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 0.50*100*pi*0.10/2
+    unit: |
+      $\mathrm{V/m}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      标势为零时$\vb E=-\pdv{\vb A}t$。
+    - |
+      $-\pdv{\vb A}t=\frac{B_0\omega}{2}\sin\omega t\,(-y,x,0)$，$(-y,x,0)$的大小是离$z$轴的距离$s$。
+    - |
+      $\omega t=\frac\pi2$，$E=\frac{B_0\omega s}{2}=\frac{0.50\times100\pi\times0.10}{2}\,\mathrm{V/m}\approx7.85\,\mathrm{V/m}$。
+  solution: |
+    $\vb E=-\pdv{\vb A}t=\frac{B_0\omega}{2}\sin\omega t\,(-y,x,0)$，离$z$轴$s$处大小是$\frac{B_0\omega s}{2}|\sin\omega t|$。$t=\frac1{200}\,\mathrm s$时$\omega t=\frac\pi2$，$E=\frac{0.50\times100\pi\times0.10}{2}\,\mathrm{V/m}\approx7.85\,\mathrm{V/m}$。这组势给出的磁场是$\curl\vb A=B_0\cos\omega t\,\uv z$，正是变化的匀强磁场和它的感生电场（induced electric field）。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        标势加上一个常数、矢势不变，电场和磁场都不变
+      - |
+        两组电磁势在全空间给出同样的电场和磁场，它们一定相差一个规范变换
+      - |
+        电磁势满足库仑规范，就一定也满足洛伦茨规范
+      - |
+        在某个规范下矢势处处为零，那么磁场处处为零
+      - |
+        只要电场不随时间变，就总能取矢势处处为零
+    value: [1, 2, 4]
+  hints:
+    - |
+      规范变换取$\chi=-Ct$是什么效果？场由势唯一确定，反过来呢？
+    - |
+      两组势的差：$\curl(\vb A'-\vb A)=\vb 0$，所以$\vb A'-\vb A$是某个梯度$\nabla\chi$；再看标势的差。库仑规范和洛伦茨规范差一项$\frac1{c^2}\pdv\varphi t$。
+    - |
+      A、B、D 对；C、E 错。
+  solution: |
+    A 对：取$\chi=-Ct$，$\varphi'=\varphi+C$，$\vb A'=\vb A$。B 对：$\curl(\vb A'-\vb A)=\vb 0$，全空间里$\vb A'-\vb A=\nabla\chi$；电场相同又给出$\nabla\Bigl(\varphi'-\varphi+\pdv\chi t\Bigr)=\vb 0$，括号里只和$t$有关，把它对$t$的积分并进$\chi$，就正好是一个规范变换。
+
+    C 错：库仑规范$\divg\vb A=0$，标势随时间变时$\divg\vb A+\frac1{c^2}\pdv\varphi t\ne0$。D 对：磁场和规范无关，那个规范下$\curl\vb A=\vb 0$。E 错：恒定电流的磁场不随时间变，电场可以是零，可磁场不为零，矢势不可能处处为零。
+
+- id: p3
+  tier: medium
+  statement: |
+    一组电磁势是$\varphi=\alpha xt$、$\vb A=\vb 0$，$\alpha=5.0\,\mathrm{V/(m\,s)}$。做一个规范变换，使新的标势处处为零，并且$t=0$时新的矢势也为零。求$t=2.0\,\mathrm s$时新的矢势的大小，以$\mathrm{T\,m}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 5.0*2.0^2/2
+    unit: |
+      $\mathrm{T\,m}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      要$\varphi'=\varphi-\pdv\chi t=0$，即$\pdv\chi t=\alpha xt$。
+    - |
+      取$\chi=\frac12\alpha xt^2$（它在$t=0$时为零），新的矢势是$\nabla\chi$。
+    - |
+      $\vb A'=\frac12\alpha t^2\,\uv x$，$t=2.0\,\mathrm s$时大小是$\frac12\times5.0\times2.0^2\,\mathrm{T\,m}=10.0\,\mathrm{T\,m}$。
+  solution: |
+    要$\pdv\chi t=\alpha xt$，取$\chi=\frac12\alpha xt^2$，它在$t=0$时为零，新的矢势$\vb A'=\nabla\chi=\frac12\alpha t^2\,\uv x$在$t=0$时也为零。$t=2.0\,\mathrm s$时$A'=\frac12\times5.0\times2.0^2\,\mathrm{T\,m}=10.0\,\mathrm{T\,m}$。核对：原来的电场是$-\nabla\varphi=-\alpha t\,\uv x$，新的是$-\pdv{\vb A'}t=-\alpha t\,\uv x$，一样；两组势的旋度都是零，没有磁场。
+
+- id: p4
+  tier: medium
+  statement: |
+    矢势$\vb A=\beta t\,(x,y,z)$，$\beta=1.0\times10^{-3}\,\mathrm{T/s}$。要让电磁势满足洛伦茨规范，并且$t=0$时标势处处为零。求$t=1.0\times10^{-6}\,\mathrm s$时的标势，以$\mathrm V$为单位，保留三位有效数字。取$c=3.00\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: -1.5*1.0e-3*(3.00e8)^2*(1.0e-6)^2
+    unit: |
+      $\mathrm V$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      洛伦茨规范：$\divg\vb A+\frac1{c^2}\pdv\varphi t=0$。
+    - |
+      $\divg\vb A=3\beta t$，所以$\pdv\varphi t=-3\beta c^2t$。
+    - |
+      $\varphi=-\frac32\beta c^2t^2=-1.5\times1.0\times10^{-3}\times(3.00\times10^8)^2\times(1.0\times10^{-6})^2\,\mathrm V=-135\,\mathrm V$。
+  solution: |
+    $\divg\vb A=3\beta t$，洛伦茨规范要求$\pdv\varphi t=-3\beta c^2t$，加上$t=0$时为零，$\varphi=-\frac32\beta c^2t^2$。$t=1.0\times10^{-6}\,\mathrm s$时$\varphi=-1.5\times1.0\times10^{-3}\times9.00\times10^{16}\times1.0\times10^{-12}\,\mathrm V=-135\,\mathrm V$。这组势给出$\vb B=\curl\vb A=\vb 0$、$\vb E=-\pdv{\vb A}t=-\beta\vb r$，是均匀分布的电荷$\rho=-3\varepsilon_0\beta$产生的静电场：场不变，势却在变。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）任给一组电磁势$(\varphi,\vb A)$，证明总能找到$\chi$，使变换后的势满足洛伦茨规范。（2）满足洛伦茨规范的势还能再做哪些规范变换而不破坏这个条件？举一个例子。（3）证明：洛伦茨规范下势的两个方程和规范条件要同时成立，电荷必须守恒。
+  hints:
+    - |
+      （1）变换后$\divg\vb A'+\frac1{c^2}\pdv{\varphi'}t=\divg\vb A+\frac1{c^2}\pdv\varphi t+\lap\chi-\frac1{c^2}\frac{\partial^2\chi}{\partial t^2}$。
+    - |
+      （1）要它为零，$\chi$满足以$c$传播的有源波动方程，源是已知的$-\Bigl(\divg\vb A+\frac1{c^2}\pdv\varphi t\Bigr)$，这样的方程有解。（2）$\chi$满足没有源的波动方程时，条件不变。
+    - |
+      （3）对$\vb A$的方程取散度、对$\varphi$的方程对$t$求导乘以$\frac1{c^2}$，两式相加：左边是规范条件那个量的波动方程算子，右边是$-\mu_0\Bigl(\divg\vb J+\pdv\rho t\Bigr)$。
+  reference: |
+    （1）变换后$\divg\vb A'+\frac1{c^2}\pdv{\varphi'}t=\Lambda+\lap\chi-\frac1{c^2}\frac{\partial^2\chi}{\partial t^2}$，$\Lambda=\divg\vb A+\frac1{c^2}\pdv\varphi t$是已知的函数。要它为零，$\chi$须满足$\lap\chi-\frac1{c^2}\frac{\partial^2\chi}{\partial t^2}=-\Lambda$：这是以$c$传播的有源波动方程，和洛伦茨规范下$\varphi$的方程形式一样，总有解（推迟势一节会写出解），所以总能变到洛伦茨规范。
+
+    （2）若$\chi$满足$\lap\chi-\frac1{c^2}\frac{\partial^2\chi}{\partial t^2}=0$，$\Lambda$不变，规范条件仍成立。例如$\chi=\chi_0\cos(kx-\omega t)$，$\omega=ck$；例 1 里那个$\chi=-E_0xt$也满足（它的$\lap\chi$和$\frac{\partial^2\chi}{\partial t^2}$都是零）。所以洛伦茨规范没有把势完全定下来。
+
+    （3）记$\Lambda=\divg\vb A+\frac1{c^2}\pdv\varphi t$。对$\vb A$的方程取散度，对$\varphi$的方程求$\frac1{c^2}\pdv{}{t}$，两式相加：左边是$\lap\Lambda-\frac1{c^2}\frac{\partial^2\Lambda}{\partial t^2}$，右边是$-\mu_0\divg\vb J-\frac{1}{c^2\varepsilon_0}\pdv\rho t=-\mu_0\Bigl(\divg\vb J+\pdv\rho t\Bigr)$。规范条件$\Lambda=0$成立时左边为零，所以$\divg\vb J+\pdv\rho t=0$：电荷不守恒，就找不到同时满足这些方程的势，和麦克斯韦方程组本身蕴含电荷守恒一致。
+
+- id: p6
+  tier: hard
+  statement: |
+    匀强磁场$\vb B=B(t)\uv z$充满空间，感生电场关于$z$轴对称，就像长螺线管里那样。
+
+    （1）取$\vb A_1=\frac{B}{2}(-y,x,0)$、$\varphi_1=0$，求电场。（2）换成$\vb A_2=(-By,0,0)$，它给出同样的磁场；要描述同一个电场，标势$\varphi_2$应当是什么？（3）如果在第二种矢势下仍取$\varphi_2=0$，得到的电场是什么？它满足麦克斯韦方程组吗？
+  hints:
+    - |
+      （1）$\vb E_1=-\pdv{\vb A_1}t$。（2）先找$\chi$使$\vb A_2=\vb A_1+\nabla\chi$。
+    - |
+      （2）$\chi=-\frac12Bxy$，$\varphi_2=\varphi_1-\pdv\chi t$。（3）算$-\pdv{\vb A_2}t$的散度和旋度。
+    - |
+      （1）$\vb E_1=\frac{\dot B}{2}(y,-x,0)$；（2）$\varphi_2=\frac12\dot Bxy$；（3）$\vb E=(\dot By,0,0)$，散度为零、旋度是$-\dot B\uv z$，也满足方程组，可它和$\vb E_1$不同。
+  reference: |
+    记$\dot B=\dv Bt$。（1）$\vb E_1=-\pdv{\vb A_1}t=\frac{\dot B}{2}(y,-x,0)$：绕$z$轴转，大小$\frac{\dot B}{2}s$，和长螺线管里的感生电场一样。
+
+    （2）$\nabla\bigl(-\frac12Bxy\bigr)=\bigl(-\frac12By,-\frac12Bx,0\bigr)$，所以$\vb A_2=\vb A_1+\nabla\chi$，$\chi=-\frac12Bxy$。要电场不变，$\varphi_2=\varphi_1-\pdv\chi t=\frac12\dot Bxy$。核对：$-\nabla\varphi_2-\pdv{\vb A_2}t=-\frac{\dot B}{2}(y,x,0)+(\dot By,0,0)=\frac{\dot B}{2}(y,-x,0)=\vb E_1$。
+
+    （3）$\varphi_2=0$时$\vb E=-\pdv{\vb A_2}t=(\dot By,0,0)$。它的散度是零，旋度是$\bigl(0,0,-\pdv{(\dot By)}y\bigr)=-\dot B\uv z$，满足没有电荷时的方程组，可它不关于$z$轴对称，和$\vb E_1$差$\frac{\dot B}{2}(y,x,0)=\nabla\bigl(\frac12\dot Bxy\bigr)$。这个差的散度和旋度都是零，方程组管不着它，要由远处的条件（例如对称性、螺线管有多大、电荷怎样分布）来定：只给出磁场的变化，感生电场并没有完全确定。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）经典电磁学里，能不能直接测出电磁势？（2）长螺线管外面磁场为零，矢势却不为零（见[感生电场](lesson:physics.electromagnetism.induced-electric-field)第 8 题），管里的电流变化时管外的电荷会受力。这说明矢势「实实在在」吗？（3）量子力学里有什么不同？
+  hints:
+    - |
+      电荷受的力是$q(\vb E+\vb v\times\vb B)$，只和场有关；规范变换不改变场。
+    - |
+      管外的力来自$\vb E=-\pdv{\vb A}t$，它是电场，规范变换下不变；要测的是$\vb A$沿一圈的积分，也就是穿过的磁通量（magnetic flux）。
+    - |
+      量子力学里电子的相位和$\oint\vb A\cdot\dd\vb l$有关：电子绕着螺线管两边走，在磁场为零的地方也会感到管里的磁通量（阿哈罗诺夫-玻姆效应）。
+  reference: |
+    （1）不能。经典电磁学里，电荷的运动只由洛伦兹力$q(\vb E+\vb v\times\vb B)$决定，力只和场有关；同一组场对应无穷多组势，彼此差一个规范变换，没有哪个实验能分辨它们。能测的是和规范无关的量，例如场，或者矢势沿闭合曲线的积分$\oint\vb A\cdot\dd\vb l$（等于穿过的磁通量）。
+
+    （2）管里电流变化时，管外的电场$\vb E=-\pdv{\vb A}t$（库仑规范、取$\varphi=0$）确实推动电荷，可它是电场：换一个规范，它可以分成$-\nabla\varphi$和$-\pdv{\vb A}t$的不同组合，总和不变。所以这只说明管外有电场，不说明某一个规范下的$\vb A$可以测。电流不变时，管外的电荷不受力，经典物理感觉不到管外的矢势。
+
+    （3）量子力学里，电子的波函数在绕螺线管一圈后多出一个相位，正比于$\oint\vb A\cdot\dd\vb l$，也就是管里的磁通量。让电子分成两束从螺线管两侧绕过再汇合，干涉条纹会随管里的磁通量移动，尽管电子走过的地方磁场为零：这就是阿哈罗诺夫（Yakir Aharonov）和玻姆（David Bohm）1959 年提出的效应，1986 年外村彰（Akira Tonomura）等人用超导屏蔽的小环形磁体做实验证实了它（见[电磁势与阿哈罗诺夫-玻姆效应](lesson:physics.quantum-mechanics.aharonov-bohm)）。起作用的仍是和规范无关的$\oint\vb A\cdot\dd\vb l$，但它说明电磁势比「算场的工具」更基本。
+
+- id: p8
+  tier: thinking
+  statement: |
+    库仑规范下标势满足$\lap\varphi=-\frac{\rho}{\varepsilon_0}$，每一时刻由这一时刻的电荷分布决定。
+
+    （1）一个电荷突然挪动，远处的标势是不是立刻变化？（2）这是不是说电场的变化能比光传得快？为什么？（3）想看清变化怎样以有限的速度传开，哪一种规范更方便？
+  hints:
+    - |
+      泊松方程的解是$\varphi(\vb r,t)=\frac{1}{4\pi\varepsilon_0}\int\frac{\rho(\vb r',t)}{|\vb r-\vb r'|}\dd V'$，里面是同一时刻的$\rho$。
+    - |
+      能测的是$\vb E$和$\vb B$；$\vb E$里还有$-\pdv{\vb A}t$，库仑规范下$\vb A$的方程右边有一项$\frac1{c^2}\nabla\pdv\varphi t$，正好对付标势瞬时的变化。
+    - |
+      洛伦茨规范下四个方程都是以$c$传播的波动方程，源在哪里变，变化就从那里以$c$传开。
+  reference: |
+    （1）是的。库仑规范下$\varphi(\vb r,t)=\frac{1}{4\pi\varepsilon_0}\int\frac{\rho(\vb r',t)}{|\vb r-\vb r'|}\dd V'$，用的是同一时刻的电荷分布，电荷一挪，远处的$\varphi$立刻跟着变。
+
+    （2）不是。标势不能直接测量，能测的是电场和磁场。库仑规范下$\vb A$满足$\lap\vb A-\frac1{c^2}\frac{\partial^2\vb A}{\partial t^2}=-\mu_0\vb J+\frac1{c^2}\nabla\pdv\varphi t$，右边多出的这一项正是由标势的瞬时变化来的；解出$\vb A$以后，$-\pdv{\vb A}t$里瞬时的那部分恰好和$-\nabla\varphi$里瞬时的那部分抵消，电场的变化仍以光速传开。瞬时变化的只是一个依赖规范的辅助量，不传递任何信号。
+
+    （3）洛伦茨规范方便。那里$\varphi$和$\vb A$都满足以$c$传播的有源波动方程，解是推迟势：某处、某时刻的势只由「光从源走到这里所需的时间以前」的源决定（见[推迟势](lesson:physics.electromagnetism.retarded-potentials)），有限的传播速度一眼可见。

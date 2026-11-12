@@ -969,3 +969,120 @@ glossary:
       导线均匀地绕在一个环上做成的线圈；磁场沿环的方向、关在环里，离对称轴$s$处是$\frac{\mu_0NI}{2\pi s}$，环外为零。
     definedIn: physics.electromagnetism.ampere-law
     anchor: thm-toroid
+  - id: physics.electromagnetism.coulomb-gauge
+    zh: |
+      库仑规范
+    en: |
+      Coulomb gauge
+    brief: |
+      选磁矢势时要求$\divg\vb A=0$；任给一个磁矢势，加上合适的梯度$\nabla\chi$都能化成这样。
+    definedIn: physics.electromagnetism.vector-potential
+    anchor: def-gauge-freedom
+  - id: physics.electromagnetism.lorenz-gauge
+    zh: |
+      洛伦茨规范
+    en: |
+      Lorenz gauge
+    brief: |
+      要求电磁势满足$\divg\vb A+\frac1{c^2}\pdv\varphi t=0$；这时标势和矢势各自满足以光速传播的有源波动方程。
+    definedIn: physics.electromagnetism.gauge-potentials
+    anchor: def-lorenz-gauge
+  - id: physics.electromagnetism.poynting-theorem
+    zh: |
+      坡印亭定理
+    en: |
+      Poynting's theorem
+    brief: |
+      $\pdv ut+\divg\vb S=-\vb J\cdot\vb E$：区域里场的能量减少，等于对电荷做的功加上从边界流出去的能量。
+    definedIn: physics.electromagnetism.poynting-theorem
+    anchor: thm-poynting
+  - id: physics.electromagnetism.poynting-vector
+    zh: |
+      坡印亭矢量
+    en: |
+      Poynting vector
+    brief: |
+      $\vb S=\frac1{\mu_0}\vb E\times\vb B$，单位是$\mathrm{W/m^2}$；它穿过曲面的通量是单位时间穿过这个曲面的电磁能量。
+    definedIn: physics.electromagnetism.poynting-theorem
+    anchor: def-poynting-vector
+  - id: physics.electromagnetism.em-wave
+    zh: |
+      电磁波
+    en: |
+      electromagnetic wave
+    brief: |
+      电场和磁场互相维持、以光速在空间传播的振荡；真空中是横波，$\vb E$、$\vb B$和传播方向两两垂直，$B=\frac Ec$。
+    definedIn: physics.electromagnetism.em-waves
+    anchor: def-em-wave
+  - id: physics.electromagnetism.wave-polarization
+    zh: |
+      偏振
+    en: |
+      polarization
+    brief: |
+      电磁波里电场振动的方向特性；电场始终沿同一条直线振动的叫线偏振，这条直线的方向是偏振方向。
+    definedIn: physics.electromagnetism.em-waves
+    anchor: def-wave-polarization
+  - id: physics.electromagnetism.intensity
+    zh: |
+      强度
+    en: |
+      intensity
+    brief: |
+      坡印亭矢量大小的时间平均，即单位时间垂直穿过单位面积的平均能量；简谐平面波的强度是$\frac12c\varepsilon_0E_0^2$。
+    definedIn: physics.electromagnetism.em-wave-energy
+    anchor: def-intensity
+  - id: physics.electromagnetism.radiation-pressure
+    zh: |
+      辐射压强
+    en: |
+      radiation pressure
+    brief: |
+      电磁波照在表面上时单位面积受的力；垂直照射时，完全吸收的表面是$\frac Ic$，完全反射的是$\frac{2I}c$。
+    definedIn: physics.electromagnetism.field-momentum
+    anchor: def-radiation-pressure
+  - id: physics.electromagnetism.momentum-density
+    zh: |
+      动量密度
+    en: |
+      momentum density
+    brief: |
+      电磁场单位体积的动量$\vb g=\varepsilon_0\vb E\times\vb B=\frac{\vb S}{c^2}$；有能流的地方就有动量。
+    definedIn: physics.electromagnetism.field-momentum
+    anchor: thm-momentum-density
+  - id: physics.electromagnetism.permittivity
+    zh: |
+      介电常量
+    en: |
+      permittivity
+    brief: |
+      线性电介质里$\vb D=\varepsilon\vb E$的比例系数$\varepsilon=\varepsilon_0(1+\chi_{\mathrm e})$；真空里就是$\varepsilon_0$。
+    definedIn: physics.electromagnetism.electric-displacement
+    anchor: def-permittivity
+  - id: physics.electromagnetism.refractive-index
+    zh: |
+      折射率
+    en: |
+      refractive index
+    brief: |
+      真空中的光速和介质中电磁波的速度之比$n=\frac cv$；线性介质里$n=\sqrt{\varepsilon_{\mathrm r}\mu_{\mathrm r}}$，随频率变。
+    definedIn: physics.electromagnetism.waves-in-media
+    anchor: def-refractive-index
+  - id: physics.electromagnetism.skin-depth
+    zh: |
+      趋肤深度
+    en: |
+      skin depth
+    brief: |
+      电磁波在导体里振幅衰减到$\frac1e$所走的距离；良导体里$\delta=\sqrt{\frac{2}{\mu\sigma\omega}}$，频率越高越小。
+    definedIn: physics.electromagnetism.skin-effect
+    anchor: def-skin-depth
+  - id: physics.electromagnetism.complex-wave-number
+    zh: |
+      复波数
+    en: |
+      complex wave number
+    brief: |
+      导体或吸收介质里平面波$\operatorname{Re}\bigl(\tilde E_0e^{i(\omega t-\tilde kz)}\bigr)$的复数波数$\tilde k=k-i\kappa$：实部定波长，虚部使振幅按$e^{-\kappa z}$衰减。
+    definedIn: physics.electromagnetism.skin-effect
+    anchor: thm-conductor-wave

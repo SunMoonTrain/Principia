@@ -1,0 +1,172 @@
+- id: p1
+  tier: easy
+  statement: |
+    光从空气以$45^\circ$的入射角射到平静的水面上，水的折射率是$1.33$，空气的折射率按$1$算。求折射角，以度为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: asin(sin(pi/4)/1.33)*180/pi
+    unit: |
+      $^\circ$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      折射定律：$n_1\sin\theta_{\mathrm I}=n_2\sin\theta_{\mathrm T}$。
+    - |
+      $\sin\theta_{\mathrm T}=\frac{\sin45^\circ}{1.33}\approx0.532$。
+    - |
+      $\theta_{\mathrm T}=\arcsin0.532\approx32.1^\circ$。
+  solution: |
+    由折射定律，$\sin\theta_{\mathrm T}=\frac{n_1\sin\theta_{\mathrm I}}{n_2}=\frac{0.7071}{1.33}\approx0.532$，$\theta_{\mathrm T}\approx32.1^\circ$。光进入折射率大的水里，向法线偏折。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        反射波和透射波的频率都和入射波相同
+      - |
+        光从空气斜射进水里，折射角小于入射角
+      - |
+        垂直入射时，s 偏振和 p 偏振的反射率不同
+      - |
+        光从空气射到玻璃上，入射角越大，s 偏振的反射率越大
+      - |
+        光从空气射向水面，入射角足够大时会全部反射
+    value: [1, 2, 4]
+  hints:
+    - |
+      边界条件要时时成立；$n_1\sin\theta_{\mathrm I}=n_2\sin\theta_{\mathrm T}$。
+    - |
+      垂直入射时入射面不确定；全反射要求$\sin\theta_{\mathrm T}=\frac{n_1}{n_2}\sin\theta_{\mathrm I}$能大于$1$。
+    - |
+      A、B、D 对；C、E 错。
+  solution: |
+    A 对：边界条件要在每一时刻成立，三列波的频率相同。B 对：$n_2>n_1$，$\sin\theta_{\mathrm T}=\frac{n_1}{n_2}\sin\theta_{\mathrm I}<\sin\theta_{\mathrm I}$。C 错：垂直入射时两种偏振没有区别，$R=\Bigl(\frac{n_1-n_2}{n_1+n_2}\Bigr)^2$。
+
+    D 对：s 偏振的反射率从垂直入射时的$4\%$一直增大到掠射时的$1$。E 错：光从折射率小的一侧射来时$\sin\theta_{\mathrm T}=\frac{n_1}{n_2}\sin\theta_{\mathrm I}<1$，总有透射波；全反射只在光从折射率大的一侧射来时才会发生。
+
+- id: p3
+  tier: medium
+  statement: |
+    光从空气垂直射到钻石的表面上，钻石的折射率是$2.42$。求反射率，以百分数表示，保留三位有效数字。
+  answer:
+    type: number
+    value: ((2.42 - 1)/(2.42 + 1))^2*100
+    unit: |
+      $\%$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      垂直入射时两种偏振相同，$r=\frac{n_1-n_2}{n_1+n_2}$。
+    - |
+      $r=\frac{1-2.42}{1+2.42}\approx-0.415$。
+    - |
+      $R=r^2\approx0.172=17.2\%$。
+  solution: |
+    垂直入射，$R=\Bigl(\frac{n_1-n_2}{n_1+n_2}\Bigr)^2=\Bigl(\frac{1-2.42}{1+2.42}\Bigr)^2\approx17.2\%$，是玻璃（$4\%$）的四倍多。钻石的折射率大，表面的反光强；从里面射向表面的光又很容易发生全反射，这些都让它显得闪亮。
+
+- id: p4
+  tier: medium
+  statement: |
+    光从空气以$60^\circ$的入射角射到玻璃（$n=1.50$）上。求 s 偏振和 p 偏振的反射率（以百分数表示），依次填写，保留三位有效数字。
+  answer:
+    type: tuple
+    value: [((0.5 - 1.5*sqrt(2/3))/(0.5 + 1.5*sqrt(2/3)))^2*100, ((sqrt(2/3) - 1.5*0.5)/(sqrt(2/3) + 1.5*0.5))^2*100]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $\sin\theta_{\mathrm T}=\frac{\sin60^\circ}{1.50}=\frac{1}{\sqrt3}$，所以$\cos\theta_{\mathrm T}=\sqrt{\frac23}\approx0.8165$；p 偏振的分子是两个相近的数相减，中间结果要多留几位。
+    - |
+      $r_{\mathrm s}=\frac{0.5-1.50\times0.8165}{0.5+1.50\times0.8165}\approx-0.4202$，$r_{\mathrm p}=\frac{0.8165-1.50\times0.5}{0.8165+1.50\times0.5}\approx0.04245$。
+    - |
+      $R_{\mathrm s}=r_{\mathrm s}^2\approx17.7\%$，$R_{\mathrm p}=r_{\mathrm p}^2\approx0.180\%$。
+  solution: |
+    折射定律给出$\sin\theta_{\mathrm T}=\frac{\sin60^\circ}{1.50}=\frac1{\sqrt3}$，$\cos\theta_{\mathrm T}=\sqrt{\frac23}\approx0.8165$。代入菲涅耳公式，$r_{\mathrm s}\approx-0.4202$，$R_{\mathrm s}\approx17.7\%$；$r_{\mathrm p}\approx0.04245$，$R_{\mathrm p}\approx0.180\%$。$60^\circ$离玻璃的 p 偏振反射率为零的角度（约$56^\circ$）很近，反射光几乎全是 s 偏振。
+
+- id: p5
+  tier: hard
+  statement: |
+    两种不显磁性、不吸收光的线性介质，界面上的反射率和透射率是$R=r^2$，$T=\frac{n_2\cos\theta_{\mathrm T}}{n_1\cos\theta_{\mathrm I}}t^2$。
+
+    （1）说明透射率为什么不是$t^2$。（2）对 s 偏振证明$R+T=1$。（3）$n_2>n_1$，入射角趋于$90^\circ$（掠射）时，两种偏振的反射率、透射率各趋于多少？
+  hints:
+    - |
+      强度和$nE_0^2$成正比；界面上面积为$A$的一块，对应的入射光束截面是$A\cos\theta_{\mathrm I}$，透射光束截面是$A\cos\theta_{\mathrm T}$。
+    - |
+      记$a=n_1\cos\theta_{\mathrm I}$，$b=n_2\cos\theta_{\mathrm T}$，则$r_{\mathrm s}=\frac{a-b}{a+b}$，$t_{\mathrm s}=\frac{2a}{a+b}$，$T=\frac ba t_{\mathrm s}^2$。
+    - |
+      $\theta_{\mathrm I}\to90^\circ$时$\cos\theta_{\mathrm I}\to0$，而$n_2>n_1$时$\cos\theta_{\mathrm T}$不趋于零。
+  reference: |
+    （1）不显磁性时强度$I=\frac n2c\varepsilon_0E_0^2$。单位时间穿过界面上面积$A$的能量，入射波带来$I_{\mathrm I}A\cos\theta_{\mathrm I}$，反射波带走$I_{\mathrm R}A\cos\theta_{\mathrm I}$，透射波带走$I_{\mathrm T}A\cos\theta_{\mathrm T}$。所以$R=\frac{I_{\mathrm R}}{I_{\mathrm I}}=r^2$，$T=\frac{I_{\mathrm T}\cos\theta_{\mathrm T}}{I_{\mathrm I}\cos\theta_{\mathrm I}}=\frac{n_2\cos\theta_{\mathrm T}}{n_1\cos\theta_{\mathrm I}}t^2$。多出的因子有两个来源：介质 2 里同样的电场振幅带着$\frac{n_2}{n_1}$倍的能流；透射光束和入射光束斜着穿过界面的角度不同，同一块界面对应的光束截面不同。
+
+    （2）记$a=n_1\cos\theta_{\mathrm I}$，$b=n_2\cos\theta_{\mathrm T}$，$R+T=\frac{(a-b)^2}{(a+b)^2}+\frac ba\cdot\frac{4a^2}{(a+b)^2}=\frac{a^2-2ab+b^2+4ab}{(a+b)^2}=1$。能量守恒，菲涅耳公式和它相容。
+
+    （3）$\cos\theta_{\mathrm I}\to0$，而$\sin\theta_{\mathrm T}\to\frac{n_1}{n_2}<1$，$\cos\theta_{\mathrm T}$趋于一个正数。s 偏振：$a\to0$，$r_{\mathrm s}\to-1$，$t_{\mathrm s}\to0$；p 偏振：$r_{\mathrm p}=\frac{n_1\cos\theta_{\mathrm T}-n_2\cos\theta_{\mathrm I}}{n_1\cos\theta_{\mathrm T}+n_2\cos\theta_{\mathrm I}}\to1$，$t_{\mathrm p}\to0$。两种偏振的反射率都趋于$1$、透射率都趋于$0$：擦着表面射来的光几乎全部被反射，这就是远处的湖面像镜子的原因（第 7 题）。
+
+- id: p6
+  tier: hard
+  statement: |
+    玻璃里的光以$45^\circ$的入射角射到玻璃和空气的界面上，玻璃的折射率$n_1=1.50$，空气的折射率按$1$算，光在真空中的波长是$500\,\mathrm{nm}$。
+
+    （1）说明会发生全反射。（2）空气里的场仍然要和入射波在界面上同步变化，可以写成$f(z)\cos(k_xx-\omega t)$，$k_x=\frac{n_1\omega}{c}\sin\theta_{\mathrm I}$。由空气里的波动方程证明$f(z)\propto\mathrm e^{-\kappa z}$，求$\kappa$和场衰减到界面处的$\frac1{\mathrm e}$的距离$\frac1\kappa$。
+
+    （3）用复振幅证明 s 偏振的$|r_{\mathrm s}|=1$。
+  hints:
+    - |
+      $\sin45^\circ\approx0.707$，和$\frac{n_2}{n_1}\approx0.667$比较。
+    - |
+      波动方程$\lap\vb E=\frac1{c^2}\frac{\partial^2\vb E}{\partial t^2}$给出$f''=\Bigl(k_x^2-\frac{\omega^2}{c^2}\Bigr)f$；离开界面越远场不能越大。
+    - |
+      空气里$n_2\cos\theta_{\mathrm T}$换成纯虚数，$r_{\mathrm s}$的分子和分母互为共轭复数。
+  reference: |
+    （1）$\sin\theta_{\mathrm I}=\sin45^\circ\approx0.707$，大于$\frac{n_2}{n_1}=\frac1{1.50}\approx0.667$，折射定律要求$\sin\theta_{\mathrm T}\approx1.06>1$，没有向远处传播的透射波，发生全反射。
+
+    （2）把$f(z)\cos(k_xx-\omega t)$代入$\lap\vb E=\frac1{c^2}\frac{\partial^2\vb E}{\partial t^2}$，得$f''-k_x^2f=-\frac{\omega^2}{c^2}f$，即$f''=\kappa^2f$，$\kappa^2=k_x^2-\frac{\omega^2}{c^2}=\frac{\omega^2}{c^2}(n_1^2\sin^2\theta_{\mathrm I}-1)>0$。解是$\mathrm e^{\pm\kappa z}$，按$\mathrm e^{\kappa z}$增长的那个离开界面越来越大，不合理，所以$f\propto\mathrm e^{-\kappa z}$。$\kappa=\frac{2\pi}{\lambda_0}\sqrt{1.50^2\times0.5-1}=\frac{2\pi}{500\times10^{-9}}\times0.354\,\mathrm m^{-1}\approx4.44\times10^6\,\mathrm m^{-1}$，$\frac1\kappa\approx225\,\mathrm{nm}$，不到半个波长。
+
+    （3）和[交流电路与阻抗](lesson:physics.electromagnetism.ac-circuits)一样用复数表示，场是$\operatorname{Re}\bigl(\tilde Ee^{i(\omega t-\vb k\cdot\vb r)}\bigr)$这样的形式。空气里的电场写成复数形式（先不取实部）是$E_y=\tilde E_{\mathrm T}e^{-\kappa z}e^{i(\omega t-k_xx)}$，$\curl\vb E=-\pdv{\vb B}t$的$x$分量$-\pdv{E_y}z=-\pdv{B_x}t$给出$\kappa E_y=-i\omega B_x$，即$B_x=\frac{i\kappa}{\omega}E_y$。入射波和反射波的$B_x$照正文是$\mp\frac{n_1}{c}E\cos\theta_{\mathrm I}$，$B_x$相等给出$n_1\cos\theta_{\mathrm I}(\tilde E_{\mathrm I}-\tilde E_{\mathrm R})=-i\beta\tilde E_{\mathrm T}$，$\beta=\frac{c\kappa}{\omega}$：和正文的式子相比，只是把$n_2\cos\theta_{\mathrm T}$换成了纯虚数$-i\beta$。连同$\tilde E_{\mathrm I}+\tilde E_{\mathrm R}=\tilde E_{\mathrm T}$，解出$r_{\mathrm s}=\frac{n_1\cos\theta_{\mathrm I}+i\beta}{n_1\cos\theta_{\mathrm I}-i\beta}$，分子和分母互为共轭复数，$|r_{\mathrm s}|=1$：光全部反射，只是相位变了。
+
+    衰减的场只伸进空气几百纳米。把另一块玻璃移到离界面这么近的地方，场还没衰减完就进入第二块玻璃，又变成向远处传播的波，一部分光就穿了过去，这叫受抑全反射（frustrated total internal reflection），数学上和量子力学里粒子穿过势垒是一回事（见[势垒与隧穿](lesson:physics.quantum-mechanics.tunneling)）。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）傍晚站在湖边，远处的湖面像镜子一样映出对岸的树，脚下的湖水却能看见水底的石头。为什么？
+
+    （2）晚上屋里开着灯，窗玻璃像一面镜子；白天却几乎看不见玻璃里自己的影子。玻璃的反射率白天和晚上不一样吗？
+  hints:
+    - |
+      看远处的湖面和看脚下，光射到水面上的入射角各是多大？
+    - |
+      入射角趋于$90^\circ$时，两种偏振的反射率都趋于$1$；垂直入射时水面只反射约$2\%$。
+    - |
+      看到什么，取决于进入眼睛的反射光和透射光哪个更强。
+  reference: |
+    （1）看远处的湖面时，从对岸射来、经水面反射进入眼睛的光几乎擦着水面，入射角接近$90^\circ$。这时两种偏振的反射率都很大：入射角为$80^\circ$时，自然光约有$35\%$被反射，越接近$90^\circ$越接近全部反射，水面就像镜子。看脚下时光几乎垂直于水面，水面只反射约$2\%$，从水底射上来的光大部分能透出水面进入眼睛，所以看得见水底。
+
+    （2）反射率一样，每个表面都是约$4\%$。白天，外面的光很亮，透过玻璃的部分（约$92\%$）远比屋里的东西在玻璃上反射的光强，反射的影子被淹没了；晚上外面黑，透进来的光很弱，屋里亮处的光在玻璃上反射的那百分之几就显出来了，玻璃像镜子。反过来，晚上站在外面能把亮着灯的屋里看得清清楚楚。
+
+- id: p8
+  tier: thinking
+  statement: |
+    常听到一种说法：光从折射率小的介质射到折射率大的介质上，反射时有「半波损失」。
+
+    （1）垂直入射时，光从空气射到玻璃（$n=1.5$）上和从玻璃射到空气里，反射波电场的相位各是怎样的？（2）这和弦上的波在两根弦的连接处反射有什么对应？
+
+    （3）斜着入射时，这个说法对 s 偏振还成立吗？对 p 偏振呢？
+  hints:
+    - |
+      垂直入射时$r=\frac{n_1-n_2}{n_1+n_2}$，看它的正负。
+    - |
+      波从轻的弦传到重的弦上，反射波是倒过来的。
+    - |
+      $n_1<n_2$时$\theta_{\mathrm I}>\theta_{\mathrm T}$；p 偏振的$r_{\mathrm p}$在某个角度变号。
+  reference: |
+    （1）从空气射到玻璃上，$r=\frac{1-1.5}{1+1.5}=-0.2$，反射波的电场和入射波反向，相位突变$\pi$，相当于差了半个波长，这就是「半波损失」。从玻璃射到空气里，$r=\frac{1.5-1}{1.5+1}=+0.2$，相位不变。
+
+    （2）[波的反射与透射](lesson:physics.oscillations-waves.reflection-transmission)里，波从轻的弦传到重的弦上，反射波倒过来；从重的弦传到轻的弦上，反射波不倒。折射率大的介质里波速小，相当于重的弦。
+
+    （3）s 偏振：$n_1<n_2$且$\theta_{\mathrm I}>\theta_{\mathrm T}$，所以$n_1\cos\theta_{\mathrm I}<n_2\cos\theta_{\mathrm T}$，$r_{\mathrm s}<0$，任何入射角都有相位突变$\pi$，说法成立。p 偏振：入射波和反射波的电场斜着入射时并不平行，「同向」「反向」本身要靠约定才有意义；按正文的约定，$r_{\mathrm p}$小角度时为负，在 p 偏振反射率为零的角度变成零，再往后为正。所以对 p 偏振，「半波损失」只在接近垂直入射时才能不加说明地用；[薄膜干涉](lesson:physics.optics.thin-film-interference)里光大多接近垂直入射，这个说法够用。

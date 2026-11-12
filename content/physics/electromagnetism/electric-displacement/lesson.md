@@ -41,7 +41,7 @@ $\vb D=\varepsilon_0\vb E+\vb P$叫作:term[电位移]{id="physics.electromagnet
 为什么这样定义：每个分子的:term[电偶极矩]{id="physics.electromagnetism.dipole-moment"}（electric dipole moment）和电场成正比，比例系数是分子的:term[极化率]{id="physics.electromagnetism.polarizability"}（polarizability，见[电介质与极化](lesson:physics.electromagnetism.polarization)），单位体积的总和也就和电场成正比，$\chi_{\mathrm e}$把这个比例写成了和单个分子无关的宏观量。边界情况：$\chi_{\mathrm e}$还可以和方向有关（晶体），电场很强时$\vb P$和$\vb E$不再成正比，这一节都不讨论。
 
 ::anchor{id="def-permittivity"}
-线性电介质里$\vb D=\varepsilon_0(1+\chi_{\mathrm e})\vb E=\varepsilon\vb E$，$\varepsilon=\varepsilon_0(1+\chi_{\mathrm e})$叫作这种电介质的介电常量（permittivity），$\varepsilon_{\mathrm r}=1+\chi_{\mathrm e}=\frac{\varepsilon}{\varepsilon_0}$叫作:term[相对介电常量]{id="physics.electromagnetism.relative-permittivity"}（relative permittivity）。
+线性电介质里$\vb D=\varepsilon_0(1+\chi_{\mathrm e})\vb E=\varepsilon\vb E$，$\varepsilon=\varepsilon_0(1+\chi_{\mathrm e})$叫作这种电介质的:term[介电常量]{id="physics.electromagnetism.permittivity"}（permittivity），$\varepsilon_{\mathrm r}=1+\chi_{\mathrm e}=\frac{\varepsilon}{\varepsilon_0}$叫作:term[相对介电常量]{id="physics.electromagnetism.relative-permittivity"}（relative permittivity）。
 
 为什么这样定义：真空里$\varepsilon_{\mathrm r}=1$，$\varepsilon$就是[电荷与库仑定律](lesson:physics.electromagnetism.coulomb-law)里的$\varepsilon_0$；电介质里把$\varepsilon_0$换成$\varepsilon$，很多公式形式不变。边界情况：$\varepsilon_{\mathrm r}$总不小于$1$；室温下水的相对介电常量约为$80$，空气只比$1$大万分之几。法拉第（Michael Faraday）在 1837 年用两个同心金属球之间填进不同物质的办法测过这个比值，他叫它「比感应容量」（specific inductive capacity），例如虫胶（shellac）约为空气的两倍。
 

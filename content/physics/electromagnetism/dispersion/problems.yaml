@@ -1,0 +1,168 @@
+- id: p1
+  tier: easy
+  statement: |
+    一种玻璃在可见光范围内的折射率可以写成$n=A+\frac{B}{\lambda^2}$，$B=4.22\times10^3\,\mathrm{nm^2}$，$\lambda$是真空中的波长。求它对$400\,\mathrm{nm}$的紫光和$700\,\mathrm{nm}$的红光的折射率之差，保留三位有效数字。
+  answer:
+    type: number
+    value: 4.22e3*(1/400^2 - 1/700^2)
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $A$在相减时消掉了。
+    - |
+      $n_{400}-n_{700}=B\Bigl(\frac{1}{400^2}-\frac{1}{700^2}\Bigr)$，波长以$\mathrm{nm}$为单位。
+    - |
+      $4.22\times10^3\times(6.25\times10^{-6}-2.04\times10^{-6})\approx0.0178$。
+  solution: |
+    $n_{400}-n_{700}=B\Bigl(\frac1{400^2}-\frac1{700^2}\Bigr)=4.22\times10^3\times(6.250-2.041)\times10^{-6}\approx0.0178$。紫光的折射率比红光的大，是正常色散，经过棱镜时紫光偏折得多。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        可见光在普通玻璃里是正常色散，紫光的折射率比红光的大
+      - |
+        在振子模型里，共振频率附近介质对电磁波的吸收最强
+      - |
+        折射率小于$1$的介质里，信号能比真空中的光速传得快
+      - |
+        不计阻尼时，频率低于等离子体频率的电磁波不能在自由电子气里传播
+      - |
+        水的相对介电常量在各种频率下都约为$80$
+    value: [1, 2, 4]
+  hints:
+    - |
+      玻璃的电子共振在紫外，可见光在共振频率以下。
+    - |
+      $\omega<\omega_{\mathrm p}$时$\tilde\varepsilon_{\mathrm r}<0$；相速度不传递信号。
+    - |
+      A、B、D 对；C、E 错。
+  solution: |
+    A 对：可见光的频率低于玻璃的电子共振频率，折射率随频率增大。B 对：吸收由$\tilde\varepsilon_{\mathrm r}$的虚部决定，它在$\omega\approx\omega_0$处最大。C 错：$n<1$只说明相速度大于$c$，信号不会比$c$快。
+
+    D 对：$\omega<\omega_{\mathrm p}$时$\tilde\varepsilon_{\mathrm r}=1-\frac{\omega_{\mathrm p}^2}{\omega^2}<0$，$\tilde k$是纯虚数，场按指数衰减，波被反射。E 错：$80$是静电的值，可见光频率下水的相对介电常量只有约$1.8$。
+
+- id: p3
+  tier: medium
+  statement: |
+    用垂直向上发射的无线电波探测电离层：频率低于$7.0\,\mathrm{MHz}$的波都被反射回来，高于它的就穿了过去。把电离层里的电子看成自由的，阻尼不计，求电离层里电子密度的最大值，以$10^{11}\,\mathrm{m^{-3}}$为单位，保留三位有效数字。取$e=1.602\times10^{-19}\,\mathrm C$，$m=9.109\times10^{-31}\,\mathrm{kg}$，$\varepsilon_0=8.854\times10^{-12}\,\mathrm{F/m}$。
+  answer:
+    type: number
+    value: (2*pi*7.0e6)^2*9.109e-31*8.854e-12/(1.602e-19)^2/1e11
+    unit: |
+      $10^{11}\,\mathrm{m^{-3}}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      刚好能穿过的频率就是电子密度最大处的等离子体频率。
+    - |
+      $\omega_{\mathrm p}^2=\frac{Ne^2}{m\varepsilon_0}$，所以$N=\frac{m\varepsilon_0(2\pi f_{\mathrm p})^2}{e^2}$。
+    - |
+      $N=\frac{9.109\times10^{-31}\times8.854\times10^{-12}\times(2\pi\times7.0\times10^6)^2}{(1.602\times10^{-19})^2}\,\mathrm{m^{-3}}\approx6.08\times10^{11}\,\mathrm{m^{-3}}$。
+  solution: |
+    波往上走，遇到的电子密度越来越大，频率低于当地等离子体频率时就被反射。能穿过整个电离层的最低频率，就是电子密度最大处的等离子体频率：$f_{\mathrm p}=7.0\,\mathrm{MHz}$，$N=\frac{m\varepsilon_0(2\pi f_{\mathrm p})^2}{e^2}\approx6.08\times10^{11}\,\mathrm{m^{-3}}$。电离层测高仪就是这样，从不同频率的回波测出各高度的电子密度。
+
+- id: p4
+  tier: medium
+  statement: |
+    钠里每立方米约有$2.65\times10^{28}$个自由电子。把它们看成自由电子气，阻尼不计，求钠的等离子体频率对应的真空中的波长$\lambda_{\mathrm p}=\frac{2\pi c}{\omega_{\mathrm p}}$，以$\mathrm{nm}$为单位，保留三位有效数字。取$e=1.602\times10^{-19}\,\mathrm C$，$m=9.109\times10^{-31}\,\mathrm{kg}$，$\varepsilon_0=8.854\times10^{-12}\,\mathrm{F/m}$，$c=3.00\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 2*pi*3.00e8/sqrt(2.65e28*(1.602e-19)^2/(9.109e-31*8.854e-12))*1e9
+    unit: |
+      $\mathrm{nm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $\omega_{\mathrm p}=\sqrt{\frac{Ne^2}{m\varepsilon_0}}$。
+    - |
+      $\omega_{\mathrm p}\approx9.18\times10^{15}\,\mathrm{rad/s}$。
+    - |
+      $\lambda_{\mathrm p}=\frac{2\pi\times3.00\times10^8}{9.18\times10^{15}}\,\mathrm m\approx2.05\times10^{-7}\,\mathrm m=205\,\mathrm{nm}$。
+  solution: |
+    $\omega_{\mathrm p}=\sqrt{\frac{2.65\times10^{28}\times(1.602\times10^{-19})^2}{9.109\times10^{-31}\times8.854\times10^{-12}}}\,\mathrm{rad/s}\approx9.18\times10^{15}\,\mathrm{rad/s}$，$\lambda_{\mathrm p}=\frac{2\pi c}{\omega_{\mathrm p}}\approx205\,\mathrm{nm}$，在紫外。波长比它长的光（包括全部可见光）被钠反射，所以钠有金属光泽；波长比它短的紫外线能透过钠的薄膜。伍德在 1933 年观察到，钠膜大约从$210\,\mathrm{nm}$开始透明，和这个简单的估计很接近。
+
+- id: p5
+  tier: hard
+  statement: |
+    稀薄介质只有一个共振频率$\omega_0$，阻尼不计，$n-1\ll1$。
+
+    （1）证明$\omega\ll\omega_0$时$n\approx A+\frac{B}{\lambda^2}$，$\lambda$是真空中的波长，并用$N$、$\omega_0$等表示$A$、$B$。（2）证明$B=(A-1)\lambda_0^2$，$\lambda_0=\frac{2\pi c}{\omega_0}$是共振频率对应的真空中的波长。
+
+    （3）用这一节例 1 拟合出的$A\approx1.5045$、$B\approx4.22\times10^3\,\mathrm{nm^2}$估计玻璃的$\lambda_0$。这个估计可靠吗？
+  hints:
+    - |
+      $n-1\ll1$时$n=\sqrt{\varepsilon_{\mathrm r}}\approx1+\frac{\varepsilon_{\mathrm r}-1}{2}$。
+    - |
+      $\frac{1}{\omega_0^2-\omega^2}=\frac{1}{\omega_0^2}\cdot\frac{1}{1-\omega^2/\omega_0^2}\approx\frac{1}{\omega_0^2}\Bigl(1+\frac{\omega^2}{\omega_0^2}\Bigr)$，$\omega=\frac{2\pi c}{\lambda}$。
+    - |
+      $\lambda_0=\sqrt{\frac{B}{A-1}}$。
+  reference: |
+    （1）不计阻尼，$\varepsilon_{\mathrm r}=1+\frac{Ne^2}{m\varepsilon_0}\cdot\frac{1}{\omega_0^2-\omega^2}$。$n-1\ll1$时$n\approx1+\frac{Ne^2}{2m\varepsilon_0}\cdot\frac{1}{\omega_0^2-\omega^2}$；$\omega\ll\omega_0$时展开，$n\approx1+\frac{Ne^2}{2m\varepsilon_0\omega_0^2}\Bigl(1+\frac{\omega^2}{\omega_0^2}\Bigr)$。代入$\omega=\frac{2\pi c}{\lambda}$，$A=1+\frac{Ne^2}{2m\varepsilon_0\omega_0^2}$，$B=\frac{Ne^2}{2m\varepsilon_0\omega_0^2}\cdot\frac{(2\pi c)^2}{\omega_0^2}$。
+
+    （2）由（1），$B=(A-1)\Bigl(\frac{2\pi c}{\omega_0}\Bigr)^2=(A-1)\lambda_0^2$。
+
+    （3）$\lambda_0=\sqrt{\frac{B}{A-1}}=\sqrt{\frac{4.22\times10^3}{0.5045}}\,\mathrm{nm}\approx91\,\mathrm{nm}$，在紫外，和「玻璃的电子共振在紫外」一致。但玻璃不稀薄，$n-1\approx0.5$并不远小于$1$，又不止一个共振，这个数只能说明数量级。精确的拟合要用$n^2-1$写成几项$\frac{C_j\lambda^2}{\lambda^2-\lambda_j^2}$之和的形式（塞尔迈耶尔公式，Sellmeier equation），它正是振子模型不取稀薄近似的结果。
+
+- id: p6
+  tier: hard
+  statement: |
+    自由电子气的等离子体频率是$\omega_{\mathrm p}$，阻尼不计，$\tilde\varepsilon_{\mathrm r}=1-\frac{\omega_{\mathrm p}^2}{\omega^2}$。
+
+    （1）$\omega<\omega_{\mathrm p}$时，电磁波从真空垂直射到它的平面上，用$\tilde r=\frac{1-\tilde n}{1+\tilde n}$（$\tilde n=\frac{c\tilde k}{\omega}$）证明$|\tilde r|=1$。
+
+    （2）$\omega>\omega_{\mathrm p}$时，求相速度$v_{\mathrm p}=\frac{\omega}{k}$和群速度$v_{\mathrm g}=\dv{\omega}{k}$，证明$v_{\mathrm p}>c$，$v_{\mathrm g}<c$，$v_{\mathrm p}v_{\mathrm g}=c^2$。
+  hints:
+    - |
+      $\omega<\omega_{\mathrm p}$时$\tilde k^2=\frac{\omega^2-\omega_{\mathrm p}^2}{c^2}<0$，按约定取$\tilde k=-i\kappa$，$\kappa>0$。
+    - |
+      $\tilde n=-i\beta$，$\beta>0$；$\tilde r=\frac{1+i\beta}{1-i\beta}$。
+    - |
+      $\omega>\omega_{\mathrm p}$时$c^2k^2=\omega^2-\omega_{\mathrm p}^2$，两边对$k$求导。
+  reference: |
+    （1）$\tilde k^2=\frac{\omega^2}{c^2}\tilde\varepsilon_{\mathrm r}=\frac{\omega^2-\omega_{\mathrm p}^2}{c^2}<0$，$\tilde k=-i\kappa$，$\kappa=\frac{\sqrt{\omega_{\mathrm p}^2-\omega^2}}{c}$，场按$e^{-\kappa z}$衰减，不能传播。$\tilde n=\frac{c\tilde k}{\omega}=-i\beta$，$\beta=\frac{c\kappa}{\omega}$，$\tilde r=\frac{1+i\beta}{1-i\beta}$，分子和分母互为共轭复数，$|\tilde r|=1$：电磁波全部被反射，只是相位变了。
+
+    （2）$\omega>\omega_{\mathrm p}$时$k=\frac{\sqrt{\omega^2-\omega_{\mathrm p}^2}}{c}$，$n=\frac{ck}{\omega}=\sqrt{1-\frac{\omega_{\mathrm p}^2}{\omega^2}}<1$，$v_{\mathrm p}=\frac{\omega}{k}=\frac cn>c$。由$c^2k^2=\omega^2-\omega_{\mathrm p}^2$，两边对$k$求导得$c^2k=\omega\dv{\omega}{k}$，$v_{\mathrm g}=\frac{c^2k}{\omega}=cn<c$，$v_{\mathrm p}v_{\mathrm g}=\frac cn\cdot cn=c^2$。能量和信号以$v_{\mathrm g}$传播，不超过$c$，和相对论不矛盾。$\omega\to\omega_{\mathrm p}$时$v_{\mathrm g}\to0$，波几乎停下来；$\omega\gg\omega_{\mathrm p}$时两者都趋于$c$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）水的相对介电常量从静电的约$80$降到可见光频率下的约$1.8$，频率从低到高，中间经过了哪几个阶段？
+
+    （2）水对红外和紫外都很不透明，对可见光却很透明，为什么？（3）微波炉加热食物利用了哪一段的什么效应？
+  hints:
+    - |
+      取向极化、分子振动、电子云的极化，各在什么频率范围跟不上电场？
+    - |
+      吸收集中在共振或极化「跟不上」的频率附近。
+    - |
+      微波炉的频率是$2.45\,\mathrm{GHz}$。
+  reference: |
+    （1）频率很低时，水分子来得及跟着电场转向，取向极化很强，$\varepsilon_{\mathrm r}\approx80$。频率升到吉赫兹，水分子的转动受周围分子的牵制渐渐跟不上，在约$20\,\mathrm{GHz}$附近取向极化消失得最快，这里吸收很强；到太赫兹以上，$\varepsilon_{\mathrm r}$已经降到个位数。红外有分子振动和转动的共振，经过这些共振，到可见光只剩电子云的极化，$\varepsilon_{\mathrm r}\approx1.8$。
+
+    （2）吸收集中在共振和「跟不上」的频率附近：红外有分子振动的共振，紫外有电子的共振，所以都吸收得厉害；可见光正好落在两者之间，离各个共振都远，吸收很弱。
+
+    （3）微波炉的$2.45\,\mathrm{GHz}$落在取向极化「跟不上」的吸收带低频一侧：水分子跟着电场转动又总是落后，电场对它做的功变成分子的无规则运动，即热。这个频率的微波能进入含水的食物一到几厘米；频率再高，吸收更强，微波只能进入表面很浅的一层，加热就不均匀了。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）1672 年，牛顿发表了他用三棱镜做的实验：从白光里分出的某一种颜色的光，再经过一块棱镜就不再分色。这说明了什么？如果玻璃没有色散，这些实验会看到什么？
+
+    （2）光纤通信里，一个短的光脉冲包含一小段频率。石英光纤有色散时，脉冲在长距离传播以后会怎样？为什么早期的光纤通信选在波长$1.3\,\mu\mathrm m$附近，那里石英的色散几乎为零？
+  hints:
+    - |
+      棱镜按折射率把不同颜色的光分开。
+    - |
+      不同频率的成分速度不同，走同样的距离用时不同。
+    - |
+      脉冲变宽以后，相邻的脉冲会重叠。
+  reference: |
+    （1）白光经过棱镜分成各种颜色，是因为玻璃对不同颜色的折射率不同；某一种颜色的光再经过棱镜不再分色，说明它已经是「单纯」的，白光是各种颜色的光混合成的，颜色不是棱镜加上去的。如果玻璃没有色散，所有颜色的光偏折相同，白光经过棱镜只改变方向，不会分成彩带，牛顿也就无从发现白光的组成。
+
+    （2）脉冲里不同频率的成分在光纤里传播得快慢不同，走了很长的距离以后先后到达，脉冲就被拉宽了。拉宽到和相邻脉冲的间隔差不多时，接收端分不清一个个脉冲，每秒能传的信息量就受到限制。石英在$1.3\,\mu\mathrm m$附近色散几乎为零，各成分速度差不多，脉冲几乎不展宽，所以早期的长途光纤系统用这个波段；后来为了利用石英在$1.55\,\mu\mathrm m$附近更低的损耗，人们又设计了色散在那里为零的光纤，并用色散补偿的办法。

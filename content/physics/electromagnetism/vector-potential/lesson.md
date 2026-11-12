@@ -43,7 +43,7 @@ status: reviewed
 证明思路：$\curl\nabla\chi=0$（梯度的旋度为零），所以$\curl\vb A'=\curl\vb A$。反过来，$\curl(\vb A'-\vb A)=0$，旋度为零的场在全空间上是某个函数的梯度（见[标量势与矢量势](lesson:math.vector-calculus.potentials)）。
 
 ::anchor{id="def-gauge-freedom"}
-磁矢势由磁场决定到可以加上任意一个梯度为止，这种选择的余地叫作规范自由度（gauge freedom）。:term[电势]{id="physics.electromagnetism.electric-potential"}也有类似的余地：加上一个常数，:term[电场]{id="physics.electromagnetism.electric-field"}不变；磁矢势的余地大得多，加上的是一个任意的函数。常用的选法是让$\divg\vb A=0$，叫作库仑规范（Coulomb gauge），上面积分公式给出的磁矢势就满足它；任给一个$\vb A$，解:term[泊松方程]{id="physics.electromagnetism.poisson-equation"}$\nabla^2\chi=-\divg\vb A$，加上$\nabla\chi$就能化成库仑规范。
+磁矢势由磁场决定到可以加上任意一个梯度为止，这种选择的余地叫作规范自由度（gauge freedom）。:term[电势]{id="physics.electromagnetism.electric-potential"}也有类似的余地：加上一个常数，:term[电场]{id="physics.electromagnetism.electric-field"}不变；磁矢势的余地大得多，加上的是一个任意的函数。常用的选法是让$\divg\vb A=0$，叫作:term[库仑规范]{id="physics.electromagnetism.coulomb-gauge"}（Coulomb gauge），上面积分公式给出的磁矢势就满足它；任给一个$\vb A$，解:term[泊松方程]{id="physics.electromagnetism.poisson-equation"}$\nabla^2\chi=-\divg\vb A$，加上$\nabla\chi$就能化成库仑规范。
 
 例如匀强磁场$\vb B=B\uv z$，可以取$\vb A_1=(-By,0,0)$，也可以取对称的$\vb A_2=\frac B2(-y,x,0)=\frac12\vb B\times\vb r$，两者的旋度都是$B\uv z$，相差$\nabla\bigl(\frac B2xy\bigr)$。分析力学里带电粒子的:term[拉格朗日量]{id="physics.analytical-mechanics.lagrangian"}用的就是这两种选法（见[电磁场中带电粒子的拉格朗日量](lesson:physics.analytical-mechanics.charged-particle-lagrangian)）。
 
