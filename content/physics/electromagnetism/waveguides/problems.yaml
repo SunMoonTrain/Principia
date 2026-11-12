@@ -1,0 +1,164 @@
+- id: p1
+  tier: easy
+  statement: |
+    一根空心矩形波导，管壁当作理想导体，内截面$3.0\,\mathrm{cm}\times1.5\,\mathrm{cm}$。它最低的截止频率是多少？以$\mathrm{GHz}$为单位，保留三位有效数字。取$c=3.00\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 3.00e8/(2*0.030)/1e9
+    unit: |
+      $\mathrm{GHz}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      宽边$a$大于窄边$b$时，最低的截止频率属于$\mathrm{TE}_{10}$模。
+    - |
+      $f_{10}=\frac{\omega_{10}}{2\pi}=\frac{c}{2a}$。
+    - |
+      $f_{10}=\frac{3.00\times10^8}{2\times0.030}\,\mathrm{Hz}=5.00\times10^9\,\mathrm{Hz}$。
+  solution: |
+    宽边$a=3.0\,\mathrm{cm}$，窄边$b=1.5\,\mathrm{cm}$，最低的是$\mathrm{TE}_{10}$模：$f_{10}=\frac c{2a}=\frac{3.00\times10^8}{0.060}\,\mathrm{Hz}=5.00\,\mathrm{GHz}$。宽边正好是这个频率下真空中波长（$6.0\,\mathrm{cm}$）的一半。
+
+- id: p2
+  tier: easy
+  statement: |
+    关于管壁为理想导体的空心矩形波导，截面边长为$a$（沿$x$轴）和$b$（沿$y$轴），下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        截面的两条边都放大到$2$倍，各个模的截止频率都减半
+      - |
+        $\mathrm{TE}_{10}$模的截止频率和边长$b$无关
+      - |
+        频率高于截止频率时，频率越高，$\mathrm{TE}_{10}$模的群速度（group velocity）越接近$c$
+      - |
+        正方形截面（$a=b$）的波导里，$\mathrm{TE}_{10}$和$\mathrm{TE}_{01}$模的截止频率不同
+      - |
+        $\mathrm{TE}_{11}$模的截止频率等于$\mathrm{TE}_{10}$和$\mathrm{TE}_{01}$模的截止频率之和
+    value: [1, 2, 3]
+  hints:
+    - |
+      $\omega_{mn}=c\pi\sqrt{\frac{m^2}{a^2}+\frac{n^2}{b^2}}$。
+    - |
+      $v_{\mathrm g}=c\sqrt{1-\frac{\omega_{10}^2}{\omega^2}}$；$\omega_{11}^2=\omega_{10}^2+\omega_{01}^2$。
+    - |
+      A、B、C 对；D、E 错。
+  solution: |
+    A 对：$\omega_{mn}$反比于截面的尺寸。B 对：$\omega_{10}=\frac{c\pi}a$。C 对：$\omega\to\infty$时$v_{\mathrm g}=c\sqrt{1-\frac{\omega_{10}^2}{\omega^2}}\to c$。
+
+    D 错：$a=b$时$\omega_{10}=\omega_{01}=\frac{c\pi}a$。E 错：$\omega_{11}=\sqrt{\omega_{10}^2+\omega_{01}^2}$，比两者之和小。
+
+- id: p3
+  tier: medium
+  statement: |
+    一根空心矩形波导，管壁当作理想导体，宽边$a=2.0\,\mathrm{cm}$，管里只有$\mathrm{TE}_{10}$模在传播。把管的一端用金属板封住，测得管里驻波（standing wave）相邻两个波节相距$3.0\,\mathrm{cm}$。求微波的频率（以$\mathrm{GHz}$为单位）和群速度（以$10^8\,\mathrm{m/s}$为单位），依次填写，保留三位有效数字。取$c=3.00\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: tuple
+    value: [3.00e8*sqrt(1/0.060^2 + 1/0.040^2)/1e9, 3.00/(0.060*sqrt(1/0.060^2 + 1/0.040^2))]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      驻波相邻两个波节相距半个管内波长，$\lambda_{\mathrm g}=6.0\,\mathrm{cm}$。
+    - |
+      $k=\frac{2\pi}{\lambda_{\mathrm g}}$，$\frac{\omega^2}{c^2}=k^2+\frac{\pi^2}{a^2}$，即$\frac1{\lambda^2}=\frac1{\lambda_{\mathrm g}^2}+\frac1{(2a)^2}$，$\lambda$是真空中的波长；$v_{\mathrm g}=\frac{c^2k}\omega=c\frac{\lambda}{\lambda_{\mathrm g}}$。
+    - |
+      $\frac1\lambda=\sqrt{\frac1{0.060^2}+\frac1{0.040^2}}\,\mathrm m^{-1}\approx30.05\,\mathrm m^{-1}$，$f\approx9.01\,\mathrm{GHz}$，$v_{\mathrm g}\approx1.66\times10^8\,\mathrm{m/s}$。
+  solution: |
+    相邻两个波节相距$\frac{\lambda_{\mathrm g}}2$，所以$\lambda_{\mathrm g}=6.0\,\mathrm{cm}$。由$\frac{\omega^2}{c^2}=k^2+\frac{\pi^2}{a^2}$得$\frac1{\lambda^2}=\frac1{\lambda_{\mathrm g}^2}+\frac1{(2a)^2}=\Bigl(\frac1{0.060^2}+\frac1{0.040^2}\Bigr)\,\mathrm m^{-2}$，$\frac1\lambda\approx30.05\,\mathrm m^{-1}$，$f=\frac c\lambda\approx9.01\,\mathrm{GHz}$。群速度$v_{\mathrm g}=\frac{c^2k}{\omega}=c\frac{\lambda}{\lambda_{\mathrm g}}=3.00\times10^8\times\frac{0.03328}{0.060}\,\mathrm{m/s}\approx1.66\times10^8\,\mathrm{m/s}$。核对：$f_{10}=\frac c{2a}=7.5\,\mathrm{GHz}$，$9.01\,\mathrm{GHz}$在它上面，又低于$f_{20}=15\,\mathrm{GHz}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    一根空心矩形波导，管壁当作理想导体，内截面$2.4\,\mathrm{cm}\times1.5\,\mathrm{cm}$。要让管里只有$\mathrm{TE}_{10}$一个模能传播，频率最高不能超过多少？以$\mathrm{GHz}$为单位，保留三位有效数字。取$c=3.00\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 3.00e8/(2*0.015)/1e9
+    unit: |
+      $\mathrm{GHz}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      第二个出现的模可能是$\mathrm{TE}_{20}$，也可能是$\mathrm{TE}_{01}$，要看窄边$b$和$\frac a2$哪个大。
+    - |
+      $f_{20}=\frac ca$，$f_{01}=\frac c{2b}$；$\mathrm{TE}_{11}$和横磁模的截止频率不低于$f_{11}=\frac c2\sqrt{\frac1{a^2}+\frac1{b^2}}$。
+    - |
+      $f_{20}=12.5\,\mathrm{GHz}$，$f_{01}=10.0\,\mathrm{GHz}$，$f_{11}\approx11.8\,\mathrm{GHz}$，最低的是$f_{01}$。
+  solution: |
+    $f_{10}=\frac c{2a}=6.25\,\mathrm{GHz}$。往上依次是$f_{01}=\frac c{2b}=10.0\,\mathrm{GHz}$，$f_{11}=\frac c2\sqrt{\frac1{a^2}+\frac1{b^2}}\approx11.8\,\mathrm{GHz}$（$\mathrm{TE}_{11}$和横磁模里最低的$\mathrm{TM}_{11}$，见第 5 题），$f_{20}=\frac ca=12.5\,\mathrm{GHz}$。窄边$b=1.5\,\mathrm{cm}$大于$\frac a2=1.2\,\mathrm{cm}$，第二个模是$\mathrm{TE}_{01}$而不是$\mathrm{TE}_{20}$，频率不能超过$10.0\,\mathrm{GHz}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    横磁模（$B_z=0$）。（1）仿照讲解里横电模的推导，把$\tilde E_x$、$\tilde E_y$、$\tilde B_x$、$\tilde B_y$用$\tilde E_z$的偏导数表示出来。（2）证明矩形波导里$\tilde E_z=E_0\sin\frac{m\pi x}a\sin\frac{n\pi y}b$，$m$、$n$都是正整数，截止频率的公式和横电模相同，这样的波叫作$\mathrm{TM}_{mn}$模。（3）$a\ge b$时，说明每个横磁模的截止频率都至少是$\mathrm{TE}_{10}$的$\sqrt2$倍。
+  hints:
+    - |
+      $B_z=0$时，安培-麦克斯韦定律的$x$、$y$分量给出$\tilde B_x=-\frac{\omega}{c^2k}\tilde E_y$，$\tilde B_y=\frac{\omega}{c^2k}\tilde E_x$，再代入法拉第定律的$x$、$y$分量。
+    - |
+      $E_z$平行于每一面管壁，所以边界条件是$\tilde E_z$在管壁上为零，而不是法向导数为零。
+    - |
+      $X''=-k_x^2X$，$X(0)=X(a)=0$，只能$X=\sin\frac{m\pi x}a$，$m\ge1$；$m=0$时$X\equiv0$。
+  reference: |
+    （1）$B_z=0$，安培-麦克斯韦定律的$x$、$y$分量是$ik\tilde B_y=\frac{i\omega}{c^2}\tilde E_x$、$-ik\tilde B_x=\frac{i\omega}{c^2}\tilde E_y$，即$\tilde B_y=\frac{\omega}{c^2k}\tilde E_x$，$\tilde B_x=-\frac{\omega}{c^2k}\tilde E_y$。代入法拉第定律的$y$分量$-ik\tilde E_x-\pdv{\tilde E_z}x=-i\omega\tilde B_y$，得$\tilde E_x=-\frac{ik}{\omega^2/c^2-k^2}\pdv{\tilde E_z}x$；同样由$x$分量得$\tilde E_y=-\frac{ik}{\omega^2/c^2-k^2}\pdv{\tilde E_z}y$。于是$\tilde B_x=\frac{i\omega}{c^2(\omega^2/c^2-k^2)}\pdv{\tilde E_z}y$，$\tilde B_y=-\frac{i\omega}{c^2(\omega^2/c^2-k^2)}\pdv{\tilde E_z}x$。
+
+    （2）$\tilde E_z$满足$\frac{\partial^2\tilde E_z}{\partial x^2}+\frac{\partial^2\tilde E_z}{\partial y^2}+\Bigl(\frac{\omega^2}{c^2}-k^2\Bigr)\tilde E_z=0$，在四面管壁上为零。分离变量，$X(0)=X(a)=0$只允许$X=\sin\frac{m\pi x}a$，$m\ge1$；$Y=\sin\frac{n\pi y}b$，$n\ge1$；$m$或$n$为零时$\tilde E_z\equiv0$，场全为零。$\frac{\omega^2}{c^2}-k^2=\frac{m^2\pi^2}{a^2}+\frac{n^2\pi^2}{b^2}=\frac{\omega_{mn}^2}{c^2}$，截止频率的公式和横电模相同。核对其余的边界条件：$\tilde E_x\propto\cos\frac{m\pi x}a\sin\frac{n\pi y}b$在$y=0$、$y=b$上为零，$\tilde E_y\propto\sin\frac{m\pi x}a\cos\frac{n\pi y}b$在$x=0$、$x=a$上为零；$\tilde B_x$正比于$\tilde E_y$，在$x=0$、$x=a$上为零，$\tilde B_y$正比于$\tilde E_x$，在$y=0$、$y=b$上为零，都满足。
+
+    （3）最低的横磁模是$\mathrm{TM}_{11}$，$\omega_{11}=c\pi\sqrt{\frac1{a^2}+\frac1{b^2}}\ge c\pi\sqrt{\frac2{a^2}}=\sqrt2\,\omega_{10}$（用了$b\le a$）。所以在只有$\mathrm{TE}_{10}$能传播的频率范围里，横磁模都传不起来。
+
+- id: p6
+  tier: hard
+  statement: |
+    矩形波导里的$\mathrm{TE}_{10}$模。（1）求平均:term[坡印亭矢量]{id="physics.electromagnetism.poynting-vector"}（Poynting vector）的$z$分量对截面的积分$\bar P$（沿管平均输送的功率），以及单位管长里的平均电磁能量$\bar U'$，证明$\frac{\bar P}{\bar U'}=v_{\mathrm g}$。（2）频率低于截止频率时，$k=-i\kappa$，证明平均坡印亭矢量的$z$分量为零。
+  hints:
+    - |
+      $S_z=-\frac1{\mu_0}E_yB_x$；$\sin^2(\omega t-kz)$对时间的平均是$\frac12$，$\int_0^a\sin^2\frac{\pi x}a\,\dd x=\frac a2$。
+    - |
+      能量密度（energy density）是$\frac{\varepsilon_0}2E^2+\frac1{2\mu_0}B^2$；用$\frac{\omega^2}{c^2}=k^2+\frac{\pi^2}{a^2}$化简，$\bar U'=\frac{\omega^2a^3b}{4\mu_0c^2\pi^2}B_0^2$。
+    - |
+      截止频率以下，$E_y$正比于$e^{-\kappa z}\sin\omega t$，$B_x$正比于$e^{-\kappa z}\cos\omega t$，两者相差四分之一周期。
+  reference: |
+    （1）$\vb S=\frac1{\mu_0}\vb E\times\vb B$，$\vb E$只有$y$分量，$S_z=-\frac1{\mu_0}E_yB_x=\frac{\omega ka^2}{\mu_0\pi^2}B_0^2\sin^2\frac{\pi x}a\sin^2(\omega t-kz)$。对时间平均、对截面积分：$\bar P=\frac{\omega ka^2}{2\mu_0\pi^2}B_0^2\cdot\frac a2\cdot b=\frac{\omega ka^3b}{4\mu_0\pi^2}B_0^2$。
+
+    能量：$E_y^2$、$B_x^2$含$\sin^2\frac{\pi x}a$，$B_z^2$含$\cos^2\frac{\pi x}a$，对截面积分都是$\frac{ab}2$，对时间平均再乘$\frac12$，所以$\bar U'=\frac{ab}{8}B_0^2\Bigl[\varepsilon_0\frac{\omega^2a^2}{\pi^2}+\frac1{\mu_0}\Bigl(\frac{k^2a^2}{\pi^2}+1\Bigr)\Bigr]$。由$\frac{\omega^2}{c^2}=k^2+\frac{\pi^2}{a^2}$，$\frac{k^2a^2}{\pi^2}+1=\frac{\omega^2a^2}{c^2\pi^2}$，而$\varepsilon_0=\frac1{\mu_0c^2}$，方括号里两项相等，$\bar U'=\frac{\omega^2a^3b}{4\mu_0c^2\pi^2}B_0^2$。所以$\frac{\bar P}{\bar U'}=\frac{c^2k}{\omega}=v_{\mathrm g}$：能量沿管前进的速度正是群速度。
+
+    （2）$k=-i\kappa$时$e^{-ikz}=e^{-\kappa z}$，$\tilde E_y=-\frac{i\omega a}{\pi}B_0\sin\frac{\pi x}a$，$\tilde B_x=-\frac k\omega\tilde E_y=\frac{\kappa a}{\pi}B_0\sin\frac{\pi x}a$（这时$\frac{\omega^2}{c^2}-k^2=\frac{\omega^2}{c^2}+\kappa^2=\frac{\pi^2}{a^2}$，定理里的式子照样成立）。取实部，$E_y=\frac{\omega a}{\pi}B_0\sin\frac{\pi x}ae^{-\kappa z}\sin\omega t$，$B_x=\frac{\kappa a}{\pi}B_0\sin\frac{\pi x}ae^{-\kappa z}\cos\omega t$，$S_z=-\frac1{\mu_0}E_yB_x$正比于$\sin\omega t\cos\omega t$，平均为零。场的能量只在入口附近来回倒，平均下来不向前输送，送进来的能量全被反射回去。
+
+- id: p7
+  tier: thinking
+  statement: |
+    电磁屏蔽室要通风，通风口常装截止波导通风窗（waveguide-below-cutoff vent）：许多并排的细金属管组成蜂窝状的板，空气能从管里流过，电磁波却过不去。设每根是内边长$a=5.0\,\mathrm{mm}$的方管，长$l=20\,\mathrm{mm}$，管壁当作理想导体。
+
+    （1）多高频率以下的电磁波不能在管里传播？（2）频率为$1.0\,\mathrm{GHz}$的电磁波，场的振幅经过一根管子变成原来的多少？（3）为什么管长要比管宽大好几倍？管子做粗一些行不行？
+  hints:
+    - |
+      方管里$\mathrm{TE}_{10}$和$\mathrm{TE}_{01}$的截止频率相同，都是$\frac c{2a}$。
+    - |
+      频率远低于截止频率时$\kappa=\frac1c\sqrt{\omega_{10}^2-\omega^2}\approx\frac\pi a$，振幅变成$e^{-\kappa l}$倍。
+    - |
+      $\kappa l\approx\frac{\pi l}{a}=4\pi$；衰减的指数正比于$\frac la$。
+  reference: |
+    （1）$f_{10}=\frac c{2a}=\frac{3.00\times10^8}{0.010}\,\mathrm{Hz}=30\,\mathrm{GHz}$，比它低的电磁波在管里一个模也传不起来。
+
+    （2）$\kappa=\frac{2\pi}{c}\sqrt{f_{10}^2-f^2}=\frac{2\pi\times\sqrt{30^2-1^2}\times10^9}{3.00\times10^8}\,\mathrm m^{-1}\approx628\,\mathrm m^{-1}$，几乎就是$\frac\pi a$。$\kappa l\approx12.6$，振幅变成$e^{-12.6}\approx3.5\times10^{-6}$，能量密度变成它的平方，约$10^{-11}$。
+
+    （3）振幅的衰减是$e^{-\pi l/a}$：每走过一个管宽只衰减到$e^{-\pi}\approx\frac1{23}$，管子太短挡不住，所以管长取管宽的好几倍，指数成比例增大。管子做粗，截止频率降低，能挡住的频率范围变窄；同样的长度，$\frac la$变小，衰减也变弱。通风好和屏蔽好要折中：要挡的频率越高，管子就得越细、越长。
+
+- id: p8
+  tier: thinking
+  statement: |
+    汽车开进较长的隧道，调幅广播（频率约$1\,\mathrm{MHz}$）很快就听不见了，调频广播（约$100\,\mathrm{MHz}$）却还能收听一段。把隧道粗略地看成截面宽$10\,\mathrm m$、高$6\,\mathrm m$的矩形波导，管壁当作理想导体（实际是岩石和混凝土，这只是粗略的估计）。
+
+    （1）估算最低的截止频率，用它解释上面的现象。（2）估算$1\,\mathrm{MHz}$的波每深入$100\,\mathrm m$，振幅变成原来的多少。（3）实际隧道里，调频信号走远了也会减弱，说出一个原因。
+  hints:
+    - |
+      $f_{10}=\frac c{2a}$，$a$取宽度$10\,\mathrm m$。
+    - |
+      $1\,\mathrm{MHz}$远低于截止频率，$\kappa\approx\frac\pi a$；$100\,\mathrm{MHz}$比好几个模的截止频率都高。
+    - |
+      $\kappa\approx0.31\,\mathrm m^{-1}$，$e^{-31}$约为$10^{-14}$量级；岩石和混凝土不是良导体。
+  reference: |
+    （1）$f_{10}=\frac c{2a}=\frac{3.00\times10^8}{20}\,\mathrm{Hz}=15\,\mathrm{MHz}$，往上是$f_{01}=\frac{c}{2\times6}=25\,\mathrm{MHz}$、$f_{20}=30\,\mathrm{MHz}$。调幅广播约$1\,\mathrm{MHz}$，远低于最低的截止频率，在隧道里一个模也传不起来，只能从洞口往里衰减；调频广播约$100\,\mathrm{MHz}$，高于好几个模的截止频率，能像在波导里一样沿隧道传进去。
+
+    （2）$\kappa=\frac{2\pi}{c}\sqrt{f_{10}^2-f^2}=\frac{2\pi\times\sqrt{15^2-1^2}\times10^6}{3.00\times10^8}\,\mathrm m^{-1}\approx0.313\,\mathrm m^{-1}$，深入$100\,\mathrm m$，振幅变成$e^{-31.3}\approx2\times10^{-14}$。所以进洞几十米，调幅信号就弱到收不到了。
+
+    （3）隧道的墙不是理想导体：电磁波每次打到墙上，都有一部分进入岩石和混凝土被吸收，沿隧道传播的波慢慢衰减。隧道拐弯、车辆遮挡也会造成损耗。理想导体的模型只能说明哪些频率根本进不去，说明不了能进去的波衰减得多快。

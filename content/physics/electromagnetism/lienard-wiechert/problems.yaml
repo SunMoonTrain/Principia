@@ -1,0 +1,160 @@
+- id: p1
+  tier: easy
+  statement: |
+    一个点电荷以$0.60c$匀速运动。在垂直于运动方向、离电荷此刻的位置为$r$处，电场是同样距离上静止电荷的电场的几倍？保留三位有效数字。
+  answer:
+    type: number
+    value: 1/sqrt(1 - 0.60^2)
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      用匀速运动的点电荷的场，$\theta=90^\circ$。
+    - |
+      $\frac{1-\beta^2}{(1-\beta^2\sin^2\theta)^{3/2}}$在$\theta=90^\circ$时等于$\frac{1}{\sqrt{1-\beta^2}}$。
+    - |
+      $\frac{1}{\sqrt{1-0.36}}=\frac{1}{0.8}=1.25$。
+  solution: |
+    $\theta=90^\circ$时$\sin\theta=1$，因子$\frac{1-\beta^2}{(1-\beta^2)^{3/2}}=\frac{1}{\sqrt{1-\beta^2}}=\frac{1}{0.8}=1.25$。沿运动方向（$\theta=0$）却只是$1-\beta^2=0.64$倍：电场向垂直于运动的方向聚拢。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于运动点电荷的场的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        电荷的速度小于光速时，对每个场点和时刻，推迟时间只有一个
+      - |
+        匀速运动的点电荷，电场从它的推迟位置沿径向向外
+      - |
+        远处的辐射场按$\frac1R$减小
+      - |
+        匀速运动时磁场$\vb B=\frac{1}{c^2}\vb v\times\vb E$
+      - |
+        匀速运动时，同样距离上，沿运动方向的电场比垂直方向的强
+    value: [1, 3, 4]
+  hints:
+    - |
+      $g(t')=c(t-t')-|\vb r-\vb w(t')|$严格减小。
+    - |
+      匀速时$R\vb u=c\vb R_{\mathrm p}$，电场沿$\vb R_{\mathrm p}$；$\theta=0$时因子是$1-\beta^2$。
+    - |
+      A、C、D 对；B、E 错。
+  solution: |
+    A 对：$g(t')$严格减小，只有一个零点。B 错：匀速时电场从此刻的位置出发。C 对：辐射场正比于加速度，按$\frac1R$减小，速度场按$\frac1{R^2}$减小。
+
+    D 对：这是匀速运动的定理。E 错：沿运动方向是静止时的$1-\beta^2$倍，垂直方向是$\frac1{\sqrt{1-\beta^2}}$倍，垂直方向强。
+
+- id: p3
+  tier: medium
+  statement: |
+    一个电荷以$0.60c$沿$x$轴匀速运动，$t=0$时经过原点。场点在$(0,6.0\,\mathrm m,0)$。求场点在$t=0$时刻对应的推迟时间（以$\mathrm{ns}$为单位）和推迟位置的$x$坐标（以$\mathrm m$为单位），依次填写，保留三位有效数字。取$c=3.00\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: tuple
+    value: [-6.0/(3.00e8*sqrt(1 - 0.60^2))*1e9, -0.60*6.0/sqrt(1 - 0.60^2)]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      推迟时间满足$\sqrt{(vt_{\mathrm r})^2+d^2}=c(0-t_{\mathrm r})$，$t_{\mathrm r}<0$。
+    - |
+      平方得$t_{\mathrm r}^2(c^2-v^2)=d^2$，$t_{\mathrm r}=-\frac{d}{c\sqrt{1-\beta^2}}=-\frac{6.0}{3.00\times10^8\times0.80}\,\mathrm s$。
+    - |
+      $t_{\mathrm r}=-2.50\times10^{-8}\,\mathrm s=-25.0\,\mathrm{ns}$，$x=vt_{\mathrm r}=-4.50\,\mathrm m$。
+  solution: |
+    $\sqrt{(vt_{\mathrm r})^2+d^2}=-ct_{\mathrm r}$，平方后$t_{\mathrm r}^2(c^2-v^2)=d^2$，取负根，$t_{\mathrm r}=-\frac{d}{c\sqrt{1-\beta^2}}=-\frac{6.0}{3.00\times10^8\times0.80}\,\mathrm s=-25.0\,\mathrm{ns}$。推迟位置$x=vt_{\mathrm r}=0.60\times3.00\times10^8\times(-2.50\times10^{-8})\,\mathrm m=-4.50\,\mathrm m$。核对：推迟位置到场点的距离是$\sqrt{4.50^2+6.0^2}\,\mathrm m=7.50\,\mathrm m$，正是光在$25.0\,\mathrm{ns}$里走过的距离。
+
+- id: p4
+  tier: medium
+  statement: |
+    点电荷以$0.50c$运动。某一时刻，它的推迟位置离场点$R$，速度在推迟时间（1）正对着场点、（2）正背着场点。两种情形下，标势分别是同样距离上静止电荷的电势（electric potential）$\frac{q}{4\pi\varepsilon_0R}$的几倍？依次填写，保留三位有效数字。
+  answer:
+    type: tuple
+    value: [1/(1 - 0.50), 1/(1 + 0.50)]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      李纳-维谢尔势$\varphi=\frac{q}{4\pi\varepsilon_0}\cdot\frac{1}{R(1-\uv R\cdot\vb v/c)}$。
+    - |
+      $\uv R$从推迟位置指向场点。正对着场点时$\uv R\cdot\vb v=v$，背着时$\uv R\cdot\vb v=-v$。
+    - |
+      $\frac{1}{1-0.5}=2.00$，$\frac{1}{1+0.5}\approx0.667$。
+  solution: |
+    $\varphi=\frac{q}{4\pi\varepsilon_0R}\cdot\frac{1}{1-\uv R\cdot\vb v/c}$。正对着场点运动时$\uv R\cdot\vb v=0.50c$，倍数是$2.00$；背着运动时$\uv R\cdot\vb v=-0.50c$，倍数是$\frac{1}{1.5}\approx0.667$。电荷朝场点运动时，信号「扫过」它所花的时间里它在前进，扫过的范围比它大，势就大。
+
+- id: p5
+  tier: hard
+  statement: |
+    一根很细的均匀带电棒，长$L$（在$P$所在的参考系里量）、带电$q$，沿自身方向以速度$v$朝远处的场点$P$运动，棒的长度远小于到$P$的距离。
+
+    （1）$t$时刻$P$处的推迟势要用棒上各点在各自推迟时间的电荷。这些推迟时间里，棒上「被用到」的那一段有多长？（2）由此说明推迟势里$\int\rho(\vb r',t_{\mathrm r})\dd V'=\frac{q}{1-v/c}$，并推广到速度方向和$\uv R$不平行的情形。
+  hints:
+    - |
+      离$P$远的一端要比近的一端早$\frac{\ell}{c}$发出信号，$\ell$是被用到的那一段的长度。
+    - |
+      这段时间里棒前进了$v\frac{\ell}{c}$，所以$\ell=L+\frac vc\ell$。
+    - |
+      方向不平行时，只有沿$\uv R$的速度分量$\uv R\cdot\vb v$起作用。
+  reference: |
+    （1）设被用到的那一段长$\ell$，也就是棒的后端（远端）在它的推迟时间的位置，到前端（近端）在它的推迟时间的位置的距离。后端离$P$远$\ell$，信号要早$\frac{\ell}{c}$发出；这段时间里棒向$P$前进了$\frac{v\ell}{c}$。所以$\ell=L+\frac{v\ell}{c}$，$\ell=\frac{L}{1-v/c}$，比棒长。
+
+    （2）推迟势的积分把电荷密度$\frac qL$乘上被用到的长度$\ell$，得$\int\rho(\vb r',t_{\mathrm r})\dd V'=\frac qL\cdot\frac{L}{1-v/c}=\frac{q}{1-v/c}$。棒很小，各点到$P$的距离都可以换成$R$，所以$\varphi=\frac{1}{4\pi\varepsilon_0}\frac{q}{R(1-v/c)}$。
+
+    速度和$\uv R$不平行时，信号扫过的方向沿$\uv R$，只有沿这个方向的速度分量让被扫过的范围变长，因子变成$\frac{1}{1-\uv R\cdot\vb v/c}$；这就是李纳-维谢尔势里的因子。它和棒的形状无关，取棒很短的极限就是点电荷。这个效应和火车迎面开来时，同一时刻收到的车头、车尾的光来自不同时刻是一回事。
+
+- id: p6
+  tier: hard
+  statement: |
+    电荷以速度$\vb v$匀速运动，$\vb R$是从推迟位置指向场点的矢量，$\vb R_{\mathrm p}$是从此刻的位置指向场点的矢量，$\theta$是$\vb R_{\mathrm p}$和$\vb v$的夹角，$\beta=\frac vc$，$\vb u=c\uv R-\vb v$。
+
+    （1）证明$R=\frac{R_{\mathrm p}}{1-\beta^2}\bigl(\beta\cos\theta+\sqrt{1-\beta^2\sin^2\theta}\bigr)$。（2）证明$\vb R\cdot\vb u=cR_{\mathrm p}\sqrt{1-\beta^2\sin^2\theta}$。（3）由运动点电荷的场的定理推出匀速运动的点电荷的电场。
+  hints:
+    - |
+      $\vb R=\vb R_{\mathrm p}+\frac Rc\vb v$，两边平方，得到$R$的二次方程。
+    - |
+      $\vb R\cdot\vb u=cR-\vb R\cdot\vb v$，$\vb R\cdot\vb v=R_{\mathrm p}v\cos\theta+\frac Rc v^2$。
+    - |
+      $R\vb u=c\vb R_{\mathrm p}$，代入$\vb E=\frac{q}{4\pi\varepsilon_0}\frac{R}{(\vb R\cdot\vb u)^3}(c^2-v^2)\vb u$。
+  reference: |
+    （1）$\vb R=\vb R_{\mathrm p}+\frac Rc\vb v$，平方得$R^2=R_{\mathrm p}^2+2\frac Rc R_{\mathrm p}v\cos\theta+\frac{R^2}{c^2}v^2$，即$(1-\beta^2)R^2-2\beta R_{\mathrm p}\cos\theta\,R-R_{\mathrm p}^2=0$。取正根，$R=\frac{R_{\mathrm p}}{1-\beta^2}\bigl(\beta\cos\theta+\sqrt{1-\beta^2\sin^2\theta}\bigr)$。
+
+    （2）$\vb R\cdot\vb u=cR-\vb R\cdot\vb v=cR-R_{\mathrm p}v\cos\theta-\frac Rc v^2=cR(1-\beta^2)-cR_{\mathrm p}\beta\cos\theta$。代入（1），$\vb R\cdot\vb u=cR_{\mathrm p}\bigl(\beta\cos\theta+\sqrt{1-\beta^2\sin^2\theta}\bigr)-cR_{\mathrm p}\beta\cos\theta=cR_{\mathrm p}\sqrt{1-\beta^2\sin^2\theta}$。
+
+    （3）$\vb a=\vb 0$，$\vb E=\frac{q}{4\pi\varepsilon_0}\frac{(c^2-v^2)R\vb u}{(\vb R\cdot\vb u)^3}=\frac{q}{4\pi\varepsilon_0}\frac{c^2(1-\beta^2)c\vb R_{\mathrm p}}{c^3R_{\mathrm p}^3(1-\beta^2\sin^2\theta)^{3/2}}=\frac{q}{4\pi\varepsilon_0}\cdot\frac{1-\beta^2}{(1-\beta^2\sin^2\theta)^{3/2}}\cdot\frac{\uv R_{\mathrm p}}{R_{\mathrm p}^2}$。$\beta\to0$时回到库仑定律；$\theta=0$时是库仑场的$1-\beta^2$倍，$\theta=90^\circ$时是$\frac{1}{\sqrt{1-\beta^2}}$倍。
+
+- id: p7
+  tier: thinking
+  statement: |
+    匀速运动的点电荷，电场从它此刻的位置出发，可远处的场点只能收到它在推迟位置时发出的消息。
+
+    （1）场点怎么「知道」电荷此刻在哪里？（2）电荷在$t=0$时突然停下，$t>0$时离它$ct$以外和以内的电场线（electric field line）各指向哪里？连接两部分的电场有什么特点？
+  hints:
+    - |
+      推迟时间的位置和速度合起来，可以按匀速外推出「此刻应该在哪里」。
+    - |
+      $ct$以外的地方还没收到「停下」的消息。
+    - |
+      两部分的电场线在半径$ct$附近要连起来，那里的电场有很大的横向分量。
+  reference: |
+    （1）场点并不知道。速度场只用到推迟时间的位置和速度，按匀速外推，正好指向「如果一直匀速运动，此刻应该在的位置」。电荷真的一直匀速运动，这个外推就是它真正的位置；电荷中途改变了运动，外推就错了。
+
+    （2）离电荷$ct$以外的地方还没收到「停下」的消息，电场线仍从外推的位置（电荷要是没停、此刻该在的地方）出发；$ct$以内收到了消息，电场线从电荷停下的位置出发。电场线不会中断，两部分在半径约为$ct$的薄球壳里拐弯连起来，那里的电场几乎垂直于半径方向，以光速向外传播，就是辐射场。球壳的半径越大，横向的电场衰减得越慢，按$\frac1R$减小，能把能量带到远处。拉莫尔公式就可以用这个图像推出来（见[拉莫尔公式](lesson:physics.electromagnetism.larmor-formula)）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）匀速运动的点电荷，电场向垂直于运动的方向聚拢。在和电荷一起运动的惯性系里看，电场是什么样子？两种看法怎样联系起来？
+
+    （2）李纳和维谢尔的结果比狭义相对论早，为什么它们对接近光速的电荷仍然成立？
+  hints:
+    - |
+      在电荷静止的惯性系里只有库仑场。
+    - |
+      电场和磁场在换参考系时按一定的规则变换（见[电磁场张量](lesson:physics.special-relativity.field-tensor)）。
+    - |
+      李纳-维谢尔势只用到推迟势，推迟势只用到麦克斯韦方程组。
+  reference: |
+    （1）在电荷静止的惯性系里只有球对称的库仑场，没有磁场。换到电荷以$\vb v$运动的参考系，电场和磁场按狭义相对论的规则一起变换，正好得到这一节的匀速运动的结果：垂直于运动方向的电场变成$\frac1{\sqrt{1-\beta^2}}$倍，同时出现磁场$\frac{1}{c^2}\vb v\times\vb E$（见[电磁场张量](lesson:physics.special-relativity.field-tensor)例 1）。电场线向垂直于运动的方向聚拢，和沿运动方向的长度收缩相配。
+
+    （2）它们只用到推迟势，推迟势只用到麦克斯韦方程组。麦克斯韦方程组本身在洛伦兹变换下形式不变，只是这一点在 1905 年以前没有被认识到；爱因斯坦提出狭义相对论的论文，题目就是《论动体的电动力学》。所以从麦克斯韦方程组严格推出来的结果，对接近光速的电荷自然成立；要修正的是牛顿力学，不是电磁学。

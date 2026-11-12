@@ -1,0 +1,168 @@
+- id: p1
+  tier: easy
+  statement: |
+    月球表面的一个电荷在某一时刻突然挪动了一下。月地距离取$3.84\times10^8\,\mathrm m$，地球上的电场要过多久才开始受到影响？以$\mathrm s$为单位，保留三位有效数字。取$c=3.00\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 3.84e8/3.00e8
+    unit: |
+      $\mathrm s$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      电荷变化的消息以光速传开。
+    - |
+      要等的时间是距离除以光速，$t-t_{\mathrm r}=\frac{|\vb r-\vb r'|}{c}$。
+    - |
+      $\frac{3.84\times10^8}{3.00\times10^8}\,\mathrm s=1.28\,\mathrm s$。
+  solution: |
+    地球上$t$时刻的场只由月球上推迟时间$t_{\mathrm r}=t-\frac{|\vb r-\vb r'|}{c}$以前的电荷决定，所以要等$\frac{3.84\times10^8}{3.00\times10^8}\,\mathrm s=1.28\,\mathrm s$。在此之前，地球上的场还是电荷挪动以前的样子。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于推迟势的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        同一场点、同一时刻，离场点越远的源点，推迟时间越早
+      - |
+        源不随时间变时，推迟势就是静电学的电势和恒定电流的矢势
+      - |
+        把库仑定律里的电荷密度换成推迟时间的值，就能求出随时间变化的电荷产生的电场
+      - |
+        推迟势满足库仑规范条件$\divg\vb A=0$
+      - |
+        源的尺寸远小于波长时，同一场点对各个源点的推迟时间之差远小于源变化的周期
+    value: [1, 2, 5]
+  hints:
+    - |
+      $t_{\mathrm r}=t-\frac{|\vb r-\vb r'|}{c}$。
+    - |
+      推迟势是洛伦茨规范下的解；电场要由$-\nabla\varphi-\pdv{\vb A}t$求，求导时推迟时间也随场点变。
+    - |
+      A、B、E 对；C、D 错。
+  solution: |
+    A 对：距离越大，$t_{\mathrm r}=t-\frac{|\vb r-\vb r'|}{c}$越早。B 对：$\rho$、$\vb J$不随时间变时，取哪个时刻的值都一样，推迟势就是静电势和恒定电流的矢势。C 错：电场由$-\nabla\varphi-\pdv{\vb A}t$求，推迟时间随场点变，会多出含$\pdv\rho t$、$\pdv{\vb J}t$的项。
+
+    D 错：推迟势满足的是洛伦茨规范条件$\divg\vb A+\frac1{c^2}\pdv\varphi t=0$。E 对：各源点到场点的距离之差不超过源的尺寸$l$，推迟时间之差不超过$\frac lc$，$l\ll\lambda$时它远小于周期$\frac\lambda c$。
+
+- id: p3
+  tier: medium
+  statement: |
+    一根很长的直导线，$t<0$时没有电流，$t\ge0$时电流是恒定的$10\,\mathrm A$。离导线$3.0\,\mathrm m$处，接通以后$20\,\mathrm{ns}$时的磁场是多少？以$\mu\mathrm T$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{H/m}$，$c=3.00\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 2e-7*10/3.0*(3.00e8*20e-9)/sqrt((3.00e8*20e-9)^2 - 3.0^2)*1e6
+    unit: |
+      $\mu\mathrm T$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $ct=6.0\,\mathrm m>s$，消息已经到达；用例 1 的结果$B=\frac{\mu_0I_0}{2\pi s}\cdot\frac{ct}{\sqrt{c^2t^2-s^2}}$。
+    - |
+      $\frac{\mu_0I_0}{2\pi s}=\frac{2\times10^{-7}\times10}{3.0}\,\mathrm T\approx6.67\times10^{-7}\,\mathrm T$，$\frac{ct}{\sqrt{c^2t^2-s^2}}=\frac{6.0}{\sqrt{36-9}}\approx1.155$。
+    - |
+      $B\approx6.67\times10^{-7}\times1.155\,\mathrm T\approx7.70\times10^{-7}\,\mathrm T=0.770\,\mu\mathrm T$。
+  solution: |
+    $ct=3.00\times10^8\times20\times10^{-9}\,\mathrm m=6.0\,\mathrm m$，比$s=3.0\,\mathrm m$大，消息已经到达。由例 1，$B=\frac{\mu_0I_0}{2\pi s}\cdot\frac{ct}{\sqrt{c^2t^2-s^2}}=6.67\times10^{-7}\times\frac{6.0}{\sqrt{27}}\,\mathrm T\approx0.770\,\mu\mathrm T$，比恒定电流的$0.667\,\mu\mathrm T$大约$15\%$。
+
+- id: p4
+  tier: medium
+  statement: |
+    一个边长$15\,\mathrm{cm}$的线圈天线，频率多高时，光走过它的一条边所用的时间等于源变化周期的$\frac1{10}$？以$\mathrm{MHz}$为单位，保留三位有效数字。取$c=3.00\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 3.00e8/(10*0.15)/1e6
+    unit: |
+      $\mathrm{MHz}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      光走过一条边的时间是$\frac lc$。
+    - |
+      令$\frac lc=\frac{1}{10}\cdot\frac1f$，得$f=\frac{c}{10l}$。
+    - |
+      $f=\frac{3.00\times10^8}{10\times0.15}\,\mathrm{Hz}=2.00\times10^8\,\mathrm{Hz}=200\,\mathrm{MHz}$。
+  solution: |
+    $\frac lc=\frac{1}{10f}$，$f=\frac{c}{10l}=\frac{3.00\times10^8}{1.5}\,\mathrm{Hz}=200\,\mathrm{MHz}$，这时波长$\lambda=\frac cf=1.5\,\mathrm m$，正好是边长的$10$倍。频率比这低得多时，线圈上各处的电流可以当作同时变化；频率接近或超过它，就要考虑推迟。
+
+- id: p5
+  tier: hard
+  statement: |
+    电荷和电流满足连续性方程（continuity equation）$\divg\vb J+\pdv\rho t=0$，分布在有限的区域里。证明推迟势满足洛伦茨规范条件$\divg\vb A+\frac{1}{c^2}\pdv\varphi t=0$。
+  hints:
+    - |
+      记$R=|\vb r-\vb r'|$。$\vb J(\vb r',t_{\mathrm r})$通过$t_{\mathrm r}$依赖场点$\vb r$，对$\vb r$求散度时$\nabla t_{\mathrm r}=-\frac1c\nabla R$。
+    - |
+      再把它和对源点$\vb r'$求导比较：$\nabla'\cdot\vb J(\vb r',t_{\mathrm r})$既有对$\vb r'$的显式依赖，也有通过$t_{\mathrm r}$的依赖，$\nabla'R=-\nabla R$。
+    - |
+      整理成$\nabla'\cdot\Bigl(\frac{\vb J}{R}\Bigr)$加上含$\frac{1}{R}\pdv\rho t$的项；前者积分后变成面积分，区域外没有电流，为零。
+  reference: |
+    记$R=|\vb r-\vb r'|$，$t_{\mathrm r}=t-\frac Rc$，$\dot{\vb J}$表示$\pdv{\vb J}t$在$t_{\mathrm r}$的值。对场点求散度：$\nabla\cdot\frac{\vb J(\vb r',t_{\mathrm r})}{R}=\frac{1}{R}\dot{\vb J}\cdot\nabla t_{\mathrm r}+\vb J\cdot\nabla\frac1R=-\frac{1}{cR}\dot{\vb J}\cdot\nabla R+\vb J\cdot\nabla\frac1R$。
+
+    对源点求散度：$\nabla'\cdot\vb J(\vb r',t_{\mathrm r})=(\nabla'\cdot\vb J)_{t_{\mathrm r}}+\dot{\vb J}\cdot\nabla't_{\mathrm r}=-\dot\rho+\frac1c\dot{\vb J}\cdot\nabla R$，第一项用了连续性方程，$(\nabla'\cdot\vb J)_{t_{\mathrm r}}$是把时间固定在$t_{\mathrm r}$再求散度，$\nabla't_{\mathrm r}=\frac1c\nabla R$。又$\nabla'\frac1R=-\nabla\frac1R$，所以$\nabla'\cdot\frac{\vb J}{R}=\frac1R\Bigl(-\dot\rho+\frac1c\dot{\vb J}\cdot\nabla R\Bigr)-\vb J\cdot\nabla\frac1R$。
+
+    两式相加，$\nabla\cdot\frac{\vb J}{R}=-\nabla'\cdot\frac{\vb J}{R}-\frac{\dot\rho}{R}$。对源点积分，$\int\nabla'\cdot\frac{\vb J}{R}\,\dd V'$化成包住全部电流的曲面上的积分，为零，于是$\divg\vb A=\frac{\mu_0}{4\pi}\int\nabla\cdot\frac{\vb J}{R}\,\dd V'=-\frac{\mu_0}{4\pi}\int\frac{\dot\rho(\vb r',t_{\mathrm r})}{R}\dd V'$。而$\pdv\varphi t=\frac{1}{4\pi\varepsilon_0}\int\frac{\dot\rho(\vb r',t_{\mathrm r})}{R}\dd V'$，$\frac{\mu_0}{4\pi}=\frac{1}{c^2}\cdot\frac{1}{4\pi\varepsilon_0}$，两者相加为零。连续性方程（电荷守恒）是这里的关键：电荷不守恒，推迟势就不满足洛伦茨条件，也就不是麦克斯韦方程组的解。
+
+- id: p6
+  tier: hard
+  statement: |
+    例 1 的长直导线在$t=0$时突然通上恒定的电流$I_0$。
+
+    （1）有人把毕奥-萨伐尔定律直接「推迟」：只对已经收到消息的那一段导线（$|z|\le\sqrt{c^2t^2-s^2}$）积分，用的仍是恒定电流的公式。求这样算出的离导线$s$处的磁场。
+
+    （2）和例 1 的结果比较。哪一个对？怎样检验？
+  hints:
+    - |
+      $B=\frac{\mu_0I_0}{4\pi}\int_{-z_0}^{z_0}\frac{s\,\dd z}{(s^2+z^2)^{3/2}}$，$z_0=\sqrt{c^2t^2-s^2}$。
+    - |
+      $\int_{-z_0}^{z_0}\frac{s\,\dd z}{(s^2+z^2)^{3/2}}=\frac{2z_0}{s\sqrt{s^2+z_0^2}}=\frac{2z_0}{s\,ct}$。
+    - |
+      检验法拉第定律$\curl\vb E=-\pdv{\vb B}t$：例 1 的电场只有$z$分量，$(\curl\vb E)_\psi=-\pdv{E_z}s$。
+  reference: |
+    （1）$B_{\text{推}}=\frac{\mu_0I_0}{4\pi}\cdot\frac{2z_0}{s\,ct}=\frac{\mu_0I_0}{2\pi s}\cdot\frac{\sqrt{c^2t^2-s^2}}{ct}$，消息到达时为零，以后单调增大到$\frac{\mu_0I_0}{2\pi s}$。
+
+    （2）例 1 的结果是$\frac{\mu_0I_0}{2\pi s}\cdot\frac{ct}{\sqrt{c^2t^2-s^2}}$，两者之比是$\frac{c^2t^2}{c^2t^2-s^2}$，只在$t\to\infty$时一致。例 1 的对：它由推迟势求导得来，满足麦克斯韦方程组。检验法拉第定律：例 1 的$E_z=-\frac{\mu_0I_0c}{2\pi\sqrt{c^2t^2-s^2}}$，$(\curl\vb E)_\psi=-\pdv{E_z}s=\frac{\mu_0I_0cs}{2\pi(c^2t^2-s^2)^{3/2}}$；而$-\pdv{B}t$对例 1 的$B$正好等于它，对直接推迟的$B_{\text{推}}$却不等。
+
+    直接推迟的算法漏掉了含$\pdv{\vb J}t$的项：电流在$t=0$时突变，这一项集中在恰好此刻收到「接通」消息的那两点上，它在前沿附近把磁场推得很大。这说明不能把静电、静磁的场的公式简单地推迟，要推迟的是势，场由势求导得到。
+
+- id: p7
+  tier: thinking
+  statement: |
+    把推迟时间$t-\frac{|\vb r-\vb r'|}{c}$换成$t+\frac{|\vb r-\vb r'|}{c}$，得到的超前势也满足同样的有源波动方程。
+
+    （1）超前势描述的是什么样的波？（2）为什么物理上只用推迟势？（3）推迟势定理里的哪个条件把超前势排除了？
+  hints:
+    - |
+      看点源的情形：$\frac{q(t+r/c)}{4\pi\varepsilon_0r}$随时间怎样传播？
+    - |
+      超前势在$t$时刻的值由源在将来的状态决定。
+    - |
+      想一想：远处要有什么样的波，才会正好汇聚到源上？
+  reference: |
+    （1）点源的超前势$\frac{q(t+r/c)}{4\pi\varepsilon_0r}$是一个向内收缩的球面波：它从远处出发，以光速向源汇聚，在源变化的那一刻恰好到达。$t$时刻$\vb r$处的值，由源在将来的$t+\frac rc$时刻的状态决定。
+
+    （2）原因是因果性：结果不能先于原因。用超前势，场要「预先知道」源将来怎样变化；实际看到的总是源先变、远处后变，例如电台先发射、收音机后收到。要让超前势成立，远处必须恰好有一列精心安排的向内汇聚的波，这在自然界里不会自发出现。
+
+    （3）条件是「除了它们自己发出的波，没有从远处射来的电磁波」。超前势里的场是从远处来的；推迟势里，源变化以前远处的场是静止的，变化只从源向外传开。数学上波动方程两种解都有，选哪一种由这类「初始条件」决定，而不是由方程本身决定。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）一根很长的直导线里，电流只在很短的一段时间里通一下，形成一个脉冲。离导线$s$处的磁场是不是也只在$t\approx\frac sc$附近闪一下就恢复为零？
+
+    （2）换成一小段导线里通一个同样的电流脉冲，远处的矢势又怎样？两者为什么不同？
+  hints:
+    - |
+      长导线上离场点越远的部分，信号到得越晚。
+    - |
+      一小段导线的矢势$\vb A=\frac{\mu_0}{4\pi}\frac{I(t-r/c)\,\vb l}{r}$。
+    - |
+      长直导线相当于二维的问题，一小段导线相当于三维的点源。
+  reference: |
+    （1）不是。导线上$z$处的部分，信号在$t=\frac{\sqrt{s^2+z^2}}{c}$才到；$t\approx\frac sc$时到达的只是离场点最近的那一部分的贡献，更远的部分接着陆续到达，所以磁场在前沿过后不会立刻回到零，而是拖着一条慢慢变弱的「尾巴」。
+
+    （2）一小段导线的矢势是$\frac{\mu_0}{4\pi}\frac{I(t-r/c)\,\vb l}{r}$，电流脉冲过去以后，远处的矢势跟着回到零，脉冲干干净净地传过去。区别在于维数：无限长的直导线让问题变成二维的，二维的波在前沿过后会留下尾巴；一小段导线是三维的点源，波前过后什么也不留。这正是[三维波动方程与惠更斯原理](lesson:math.pde.wave-3d)里说的，惠更斯原理在三维成立、在二维不成立。我们能听清别人说话、看清闪光，靠的正是三维空间里波的这个性质。

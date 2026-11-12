@@ -58,7 +58,7 @@ $$
 ::anchor{id="def-lorenz-gauge"}
 满足$\divg\vb A+\frac{1}{c^2}\pdv\varphi t=0$的电磁势叫作处在:term[洛伦茨规范]{id="physics.electromagnetism.lorenz-gauge"}（Lorenz gauge）下；这时上面两个方程分开，成为$\lap\varphi-\frac{1}{c^2}\frac{\partial^2\varphi}{\partial t^2}=-\frac{\rho}{\varepsilon_0}$、$\lap\vb A-\frac{1}{c^2}\frac{\partial^2\vb A}{\partial t^2}=-\mu_0\vb J$。
 
-为什么这样定义：四个方程形式完全一样，都是以速度$c$传播的有源波动方程（wave equation），源分别是$\rho$和$\vb J$，下一步求推迟势就从它们出发（见[推迟势](lesson:physics.electromagnetism.retarded-potentials)）。任给一组电磁势，解一个以$c$传播的有源波动方程求出$\chi$，就能变到洛伦茨规范（第 5 题）。边界情况：场不随时间变时，洛伦茨规范就是库仑规范。
+为什么这样定义：四个方程形式完全一样，都是以速度$c$传播的有源波动方程（wave equation），源分别是$\rho$和$\vb J$，下一步求:term[推迟势]{id="physics.electromagnetism.retarded-potentials"}（retarded potentials）就从它们出发（见[推迟势](lesson:physics.electromagnetism.retarded-potentials)）。任给一组电磁势，解一个以$c$传播的有源波动方程求出$\chi$，就能变到洛伦茨规范（第 5 题）。边界情况：场不随时间变时，洛伦茨规范就是库仑规范。
 
 名字来自丹麦物理学家洛伦茨（Ludvig Lorenz）：他在 1867 年写出了带推迟效应的势，这个条件在他的结果里成立。它常被误写成荷兰物理学家洛伦兹（Hendrik Lorentz）的名字，后者后来也用这个条件来选定势。洛伦茨规范在狭义相对论里写成$\partial_\mu A^\mu=0$，在每个惯性系里形式相同（见[麦克斯韦方程组的协变形式](lesson:physics.special-relativity.covariant-maxwell)）。
 

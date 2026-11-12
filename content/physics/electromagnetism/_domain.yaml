@@ -1086,3 +1086,75 @@ glossary:
       导体或吸收介质里平面波$\operatorname{Re}\bigl(\tilde E_0e^{i(\omega t-\tilde kz)}\bigr)$的复数波数$\tilde k=k-i\kappa$：实部定波长，虚部使振幅按$e^{-\kappa z}$衰减。
     definedIn: physics.electromagnetism.skin-effect
     anchor: thm-conductor-wave
+  - id: physics.electromagnetism.retarded-time
+    zh: |
+      推迟时间
+    en: |
+      retarded time
+    brief: |
+      光从源点走到场点所需时间以前的时刻$t_{\mathrm r}=t-\frac{|\vb r-\vb r'|}{c}$；场点$t$时刻的势由各个源点在各自推迟时间的状态决定。
+    definedIn: physics.electromagnetism.retarded-potentials
+    anchor: def-retarded-time
+  - id: physics.electromagnetism.retarded-potentials
+    zh: |
+      推迟势
+    en: |
+      retarded potentials
+    brief: |
+      洛伦茨规范下由推迟时间的电荷、电流求出的电磁势：$\varphi=\frac{1}{4\pi\varepsilon_0}\int\frac{\rho(\vb r',t_{\mathrm r})}{|\vb r-\vb r'|}\dd V'$，$\vb A$同理。
+    definedIn: physics.electromagnetism.retarded-potentials
+    anchor: thm-retarded-potentials
+  - id: physics.electromagnetism.lienard-wiechert-potentials
+    zh: |
+      李纳-维谢尔势
+    en: |
+      Liénard–Wiechert potentials
+    brief: |
+      运动点电荷的推迟势：$\varphi=\frac{q}{4\pi\varepsilon_0}\cdot\frac{1}{R-\vb R\cdot\vb v/c}$，$\vb A=\frac{\vb v}{c^2}\varphi$，各量取推迟时间的值。
+    definedIn: physics.electromagnetism.lienard-wiechert
+    anchor: thm-lienard-wiechert
+  - id: physics.electromagnetism.radiation-field
+    zh: |
+      辐射场
+    en: |
+      radiation field
+    brief: |
+      运动点电荷的电场里正比于加速度的部分；在远处按$\frac1R$减小，能把能量带到无穷远。
+    definedIn: physics.electromagnetism.lienard-wiechert
+    anchor: def-radiation-field
+  - id: physics.electromagnetism.larmor-formula
+    zh: |
+      拉莫尔公式
+    en: |
+      Larmor formula
+    brief: |
+      速度远小于光速的点电荷加速时辐射的总功率$P=\frac{q^2a^2}{6\pi\varepsilon_0c^3}$；单位立体角的功率正比于$\sin^2\theta$，$\theta$是辐射方向和加速度的夹角。
+    definedIn: physics.electromagnetism.larmor-formula
+    anchor: thm-larmor
+  - id: physics.electromagnetism.velocity-field
+    zh: |
+      速度场
+    en: |
+      velocity field
+    brief: |
+      运动点电荷的电场里和加速度无关的部分；在远处按$\frac1{R^2}$减小，匀速运动的电荷只有这一部分。
+    definedIn: physics.electromagnetism.lienard-wiechert
+    anchor: def-radiation-field
+  - id: physics.electromagnetism.quasi-static
+    zh: |
+      准静态
+    en: |
+      quasi-static
+    brief: |
+      源的尺寸和到场点的距离都远小于波长、推迟可以不计时的近似：各处的场由此刻的电荷、电流决定，静电学、静磁学的结果照样适用。
+    definedIn: physics.electromagnetism.retarded-potentials
+    anchor: def-quasi-static
+  - id: physics.electromagnetism.complex-amplitude
+    zh: |
+      复振幅
+    en: |
+      complex amplitude
+    brief: |
+      正弦量写成$\operatorname{Re}\bigl(\tilde Xe^{i\omega t}\bigr)$时的复数$\tilde X$：模是振幅，辐角是初相位，对时间求导就是乘以$i\omega$。
+    definedIn: physics.electromagnetism.ac-circuits
+    anchor: def-complex-amplitude

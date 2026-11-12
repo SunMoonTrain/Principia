@@ -1,0 +1,162 @@
+- id: p1
+  tier: easy
+  statement: |
+    一个振荡电偶极子，电偶极矩的振幅不变，频率从$100\,\mathrm{MHz}$提高到$300\,\mathrm{MHz}$。平均辐射功率变成原来的几倍？
+  answer:
+    type: number
+    value: 3^4
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $\langle P\rangle=\frac{\mu_0p_0^2\omega^4}{12\pi c}$。
+    - |
+      $p_0$不变时$\langle P\rangle$正比于$\omega^4$，频率变成$3$倍。
+    - |
+      $3^4=81$。
+  solution: |
+    $\langle P\rangle=\frac{\mu_0p_0^2\omega^4}{12\pi c}$，$p_0$不变时正比于$\omega^4$，频率变成$3$倍，功率变成$3^4=81$倍。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于大小远小于波长的振荡电偶极子的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        沿偶极子的轴线方向没有辐射
+      - |
+        辐射区的电场按$\frac1r$减小
+      - |
+        辐射区里电场和磁场（magnetic field）互相垂直，相位相同
+      - |
+        电偶极矩的振幅不变时，辐射功率正比于频率的平方
+      - |
+        近区的电场主要是按$\frac1r$减小的辐射场
+    value: [1, 2, 3]
+  hints:
+    - |
+      辐射区的电场正比于$\frac{\sin\theta}{r}$，$\vb B=\frac{E_\theta}{c}\uv\psi$。
+    - |
+      $\langle P\rangle$正比于$p_0^2\omega^4$；近区里按$\frac1{r^3}$变化的项最大。
+    - |
+      A、B、C 对；D、E 错。
+  solution: |
+    A 对：$\sin\theta=0$的方向上辐射场为零。B 对：$E$正比于$\frac{\sin\theta}{r}$。C 对：$\vb B=\frac{E_\theta}{c}\uv\psi$，和$\vb E$垂直，同时达到最大。
+
+    D 错：$p_0$不变时正比于$\omega^4$；电流振幅不变时才正比于$\omega^2$。E 错：近区里按$\frac1{r^3}$变化的准静态项最大，就是静电偶极子的场。
+
+- id: p3
+  tier: medium
+  statement: |
+    一根长$1.0\,\mathrm m$的天线，频率$30\,\mathrm{MHz}$，电流沿天线处处相同。要平均辐射$1.0\,\mathrm{kW}$，电流的振幅要多大？以$\mathrm A$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{H/m}$，$c=3.00\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: sqrt(2*1.0e3/(4*pi*1e-7*1.0^2*(2*pi*30e6)^2/(6*pi*3.00e8)))
+    unit: |
+      $\mathrm A$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $\langle P\rangle=\frac12R_{\mathrm{rad}}I_0^2$，$R_{\mathrm{rad}}=\frac{\mu_0d^2\omega^2}{6\pi c}$。
+    - |
+      $R_{\mathrm{rad}}=\frac{4\pi\times10^{-7}\times1.0^2\times(2\pi\times3.0\times10^7)^2}{6\pi\times3.00\times10^8}\,\Omega\approx7.90\,\Omega$。
+    - |
+      $I_0=\sqrt{\frac{2\times1.0\times10^3}{7.90}}\,\mathrm A\approx15.9\,\mathrm A$。
+  solution: |
+    $\lambda=10\,\mathrm m$，比天线长得多，按振荡电偶极子算。$R_{\mathrm{rad}}=\frac{\mu_0d^2\omega^2}{6\pi c}\approx7.90\,\Omega$，由$\langle P\rangle=\frac12R_{\mathrm{rad}}I_0^2$，$I_0=\sqrt{\frac{2\langle P\rangle}{R_{\mathrm{rad}}}}\approx15.9\,\mathrm A$。辐射电阻小，要辐射一千瓦就得通十几安的电流。
+
+- id: p4
+  tier: medium
+  statement: |
+    一根长$1.0\,\mathrm m$的天线竖直放置，频率$30\,\mathrm{MHz}$，电流的振幅是$10\,\mathrm A$，沿天线处处相同。离天线$10\,\mathrm{km}$、在水平方向上（$\theta=90^\circ$），辐射电场的振幅是多少？以$\mathrm{mV/m}$为单位，保留三位有效数字。取$\mu_0=4\pi\times10^{-7}\,\mathrm{H/m}$。
+  answer:
+    type: number
+    value: 1e-7*10*1.0*2*pi*30e6/1.0e4*1e3
+    unit: |
+      $\mathrm{mV/m}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      辐射区电场的振幅是$\frac{\mu_0p_0\omega^2}{4\pi}\cdot\frac{\sin\theta}{r}$，$p_0=\frac{I_0d}{\omega}$。
+    - |
+      代入得$E_0=\frac{\mu_0I_0d\omega\sin\theta}{4\pi r}$。
+    - |
+      $E_0=10^{-7}\times\frac{10\times1.0\times2\pi\times3.0\times10^7}{1.0\times10^4}\,\mathrm{V/m}\approx1.88\times10^{-2}\,\mathrm{V/m}=18.8\,\mathrm{mV/m}$。
+  solution: |
+    $10\,\mathrm{km}$远大于波长$10\,\mathrm m$，在辐射区。$p_0=\frac{I_0d}{\omega}$，$E_0=\frac{\mu_0p_0\omega^2}{4\pi r}=\frac{\mu_0I_0d\omega}{4\pi r}=10^{-7}\times\frac{10\times1.0\times1.885\times10^8}{1.0\times10^4}\,\mathrm{V/m}\approx18.8\,\mathrm{mV/m}$。辐射场按$\frac1r$减小，距离加倍，电场的振幅减半。
+
+- id: p5
+  tier: hard
+  statement: |
+    不做$r\gg\lambda$的近似。点偶极子$\vb p(t)=p_0\cos\omega t\,\uv z$的推迟势是$\vb A=\frac{\mu_0}{4\pi r}\dot{\vb p}\bigl(t-\frac rc\bigr)$，$\varphi=\frac{\cos\theta}{4\pi\varepsilon_0}\Bigl[\frac{p(t_{\mathrm r})}{r^2}+\frac{\dot p(t_{\mathrm r})}{cr}\Bigr]$，$t_{\mathrm r}=t-\frac rc$。
+
+    （1）验证它们满足洛伦茨规范条件。（2）求赤道面（$\theta=90^\circ$）上的电场。（3）说明近区和辐射区里分别是哪一项起主要作用。
+  hints:
+    - |
+      $\divg\vb A=\pdv{A_z}z=\cos\theta\,\pdv{A_z}r$；$A_z$通过$t_{\mathrm r}$依赖$r$。
+    - |
+      赤道面上$\cos\theta=0$，$\varphi$对$r$的导数为零，只剩$-\frac1r\pdv\varphi\theta$和$-\pdv{\vb A}t$。
+    - |
+      记$k=\frac\omega c$，结果是$E_z=\frac{p_0}{4\pi\varepsilon_0}\Bigl[\Bigl(\frac{k^2}{r}-\frac1{r^3}\Bigr)\cos(\omega t-kr)+\frac{k}{r^2}\sin(\omega t-kr)\Bigr]$。
+  reference: |
+    （1）$\divg\vb A=\cos\theta\,\pdv{}{r}\Bigl[\frac{\mu_0\dot p(t_{\mathrm r})}{4\pi r}\Bigr]=-\frac{\mu_0\cos\theta}{4\pi}\Bigl[\frac{\dot p}{r^2}+\frac{\ddot p}{cr}\Bigr]$，而$\frac1{c^2}\pdv\varphi t=\frac{\mu_0\cos\theta}{4\pi}\Bigl[\frac{\dot p}{r^2}+\frac{\ddot p}{cr}\Bigr]$（用了$\frac1{\varepsilon_0c^2}=\mu_0$），两者相加为零。
+
+    （2）赤道面上$\cos\theta=0$，$\pdv\varphi r=0$；$-\frac1r\pdv\varphi\theta\,\uv\theta=\frac{1}{4\pi\varepsilon_0}\Bigl[\frac{p}{r^3}+\frac{\dot p}{cr^2}\Bigr]\uv\theta$，赤道面上$\uv\theta=-\uv z$。$-\pdv{\vb A}t=-\frac{\mu_0\ddot p}{4\pi r}\uv z=-\frac{\ddot p}{4\pi\varepsilon_0c^2r}\uv z$。所以$E_z=-\frac{1}{4\pi\varepsilon_0}\Bigl[\frac{p}{r^3}+\frac{\dot p}{cr^2}+\frac{\ddot p}{c^2r}\Bigr]$，都取$t_{\mathrm r}$的值。代入$p=p_0\cos(\omega t-kr)$，得$E_z=\frac{p_0}{4\pi\varepsilon_0}\Bigl[\Bigl(\frac{k^2}{r}-\frac1{r^3}\Bigr)\cos(\omega t-kr)+\frac{k}{r^2}\sin(\omega t-kr)\Bigr]$。
+
+    （3）三项之比约为$1:kr:(kr)^2$。近区$kr\ll1$，$\frac{1}{r^3}$项最大，$E_z\approx-\frac{p(t)}{4\pi\varepsilon_0r^3}$，正是静电偶极子在赤道面上的场，跟着偶极矩同步变化。辐射区$kr\gg1$，$\frac{k^2}r$项最大，$E_z\approx\frac{\mu_0p_0\omega^2}{4\pi r}\cos(\omega t-kr)$，和定理一致（赤道面上$\uv\theta=-\uv z$）。$kr$在$1$附近时三项一样大，就是近区和辐射区之间的过渡区。
+
+- id: p6
+  tier: hard
+  statement: |
+    两个互相垂直的振荡电偶极子，振幅相同、相位差$\frac\pi2$，合成$\vb p(t)=p_0(\cos\omega t\,\uv x+\sin\omega t\,\uv y)$，即一个在$xy$平面里匀速转动的电偶极矩。
+
+    （1）求单位立体角的平均辐射功率随$\theta$（和$z$轴的夹角）的变化。（2）求总的平均辐射功率，和单个振荡电偶极子比较。（3）沿$z$轴方向的辐射是什么偏振（polarization）？
+  hints:
+    - |
+      辐射场正比于$\ddot{\vb p}$垂直于$\uv r$的分量，单位立体角的功率正比于这个分量的平方。
+    - |
+      $|\ddot{\vb p}_\perp|^2=|\ddot{\vb p}|^2-(\uv r\cdot\ddot{\vb p})^2$，对时间平均，$(\uv r\cdot\ddot{\vb p})^2$的平均是$\frac12\omega^4p_0^2\sin^2\theta$。
+    - |
+      沿$z$轴看，电场跟着$\ddot{\vb p}$在$xy$平面里匀速转动。
+  reference: |
+    （1）辐射场$\vb E=\frac{\mu_0}{4\pi r}\uv r\times(\uv r\times\ddot{\vb p})$，单位立体角的功率是$\frac{\mu_0}{16\pi^2c}|\ddot{\vb p}_\perp|^2$。$|\ddot{\vb p}|^2=\omega^4p_0^2$不变；$\uv r\cdot\ddot{\vb p}=-\omega^2p_0\sin\theta\cos(\omega t-\psi)$，平方的平均是$\frac12\omega^4p_0^2\sin^2\theta$。所以平均值是$\frac{\mu_0\omega^4p_0^2}{16\pi^2c}\Bigl(1-\frac12\sin^2\theta\Bigr)=\frac{\mu_0\omega^4p_0^2}{32\pi^2c}(1+\cos^2\theta)$，沿$z$轴最强，在$xy$平面里是沿轴方向的一半，各个方向都有辐射。
+
+    （2）对球面积分，$\int(1+\cos^2\theta)\,\dd\Omega=4\pi+\frac{4\pi}{3}=\frac{16\pi}{3}$，$\langle P\rangle=\frac{\mu_0\omega^4p_0^2}{6\pi c}$，是单个振荡电偶极子的$2$倍：它相当于两个互相垂直的偶极子，两者的辐射功率直接相加（交叉项平均为零）。
+
+    （3）沿$z$轴，$\ddot{\vb p}$整个垂直于传播方向，电场大小不变、在$xy$平面里匀速转动，是圆偏振；在$xy$平面里看是线偏振，斜着看是椭圆偏振。转动的电偶极矩可以看作一个绕圈的电荷，经典的图像里绕核运动的电子辐射的就是这样的波。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）太阳在你的正东方时，看头顶正上方的天空，散射光是什么偏振？（2）为什么摄影师在镜头前加一片偏振片，转到合适的角度，蓝天会变得更暗？（3）对着太阳附近的天空，加偏振片还有这个效果吗？
+  hints:
+    - |
+      阳光从东边射来，它的电场垂直于传播方向，只有南北和上下两个方向；分子里的电子云沿这两个方向振动。
+    - |
+      往正上方看时，沿竖直方向振动的那个偶极子正对着你，沿它的轴线不辐射。
+    - |
+      散射方向和阳光方向夹角越接近$90^\circ$，散射光的偏振越接近线偏振。
+  reference: |
+    （1）阳光自东向西传播，它的电场只有南北方向和上下方向的分量，分子里的电子云也只沿这两个方向振动。往正上方看时，沿上下方向振动的偶极子正对着你，沿它的轴线不辐射；只有沿南北方向振动的偶极子把光散射过来。所以头顶的散射光是电场沿南北方向的线偏振光。
+
+    （2）散射方向和阳光方向成$90^\circ$左右的那一圈天空，散射光接近线偏振。偏振片的透振方向转到和这个电场垂直时，这部分天光被挡掉大半，天空变暗，白云（云里的水滴大，散射光不偏振）就显得更白。
+
+    （3）太阳附近的天空，散射方向和阳光方向几乎相同，两个方向振动的偶极子都能把光散射过来，散射光几乎不偏振，偏振片就没有这个效果（关于偏振的更多内容见[偏振](lesson:physics.optics.polarization)）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）中波广播的频率约为$1\,\mathrm{MHz}$，它的发射天线往往是几十米到上百米高的铁塔；手机的频率在吉赫兹，天线藏在机身里。为什么？（2）如果中波电台用一根$1\,\mathrm m$长的天线，会怎样？
+  hints:
+    - |
+      $1\,\mathrm{MHz}$的波长是$300\,\mathrm m$。
+    - |
+      辐射电阻正比于$\Bigl(\frac d\lambda\Bigr)^2$。
+    - |
+      和天线导线自身的电阻、接地的电阻比一比。
+  reference: |
+    （1）天线的长度要和波长可比，辐射电阻才够大，功率才主要辐射出去。$1\,\mathrm{MHz}$的波长是$300\,\mathrm m$，四分之一波长就有$75\,\mathrm m$，所以中波电台的天线是高大的铁塔；手机的频率在吉赫兹，波长在几厘米到几十厘米之间，几厘米长的天线就够了。
+
+    （2）$\frac d\lambda=\frac{1}{300}$，按处处相同的电流，$R_{\mathrm{rad}}\approx789\times\Bigl(\frac1{300}\Bigr)^2\,\Omega\approx0.009\,\Omega$，真实天线的电流两端为零，还要再小。导线和接地的电阻至少也有零点几欧，电源的功率几乎全变成了热，辐射出去的极少；要辐射同样的功率，电流得非常大。所以低频的发射天线只能做得很大。

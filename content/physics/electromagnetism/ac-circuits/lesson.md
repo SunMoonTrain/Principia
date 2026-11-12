@@ -31,7 +31,10 @@ status: reviewed
 
 ### 复数表示和阻抗
 
-线性的电路接上正弦电源，过了开头几个:term[时间常数]{id="physics.electromagnetism.time-constant"}（time constant）的暂态（transient）以后，各处的:term[电流]{id="physics.electromagnetism.electric-current"}、:term[电势差]{id="physics.electromagnetism.potential-difference"}都按电源的角频率$\omega$做正弦变化，只是振幅和相位各不相同，和受迫振动（driven oscillation）的稳态（steady state）一样。用复数表示（见[复数表示与旋转矢量](lesson:physics.oscillations-waves.phasors)）：电流$I(t)=\operatorname{Re}\bigl(\tilde Ie^{i\omega t}\bigr)$，复振幅（complex amplitude）$\tilde I$的模是振幅、辐角是初相位，对时间求导就是乘以$i\omega$。
+::anchor{id="def-complex-amplitude"}
+线性的电路接上正弦电源，过了开头几个:term[时间常数]{id="physics.electromagnetism.time-constant"}（time constant）的暂态（transient）以后，各处的:term[电流]{id="physics.electromagnetism.electric-current"}、:term[电势差]{id="physics.electromagnetism.potential-difference"}都按电源的角频率$\omega$做正弦变化，只是振幅和相位各不相同，和受迫振动（driven oscillation）的稳态（steady state）一样。用复数表示（见[复数表示与旋转矢量](lesson:physics.oscillations-waves.phasors)）：电流$I(t)=\operatorname{Re}\bigl(\tilde Ie^{i\omega t}\bigr)$，:term[复振幅]{id="physics.electromagnetism.complex-amplitude"}（complex amplitude）$\tilde I$的模是振幅、辐角是初相位，对时间求导就是乘以$i\omega$。
+
+为什么这样定义：正弦量要用振幅和初相位两个数描述，复振幅把它们装进一个复数，对时间求导变成乘以$i\omega$，电路的微分方程就变成代数方程。边界情况：只有频率相同的量才能这样合在一起算；电源里含几个频率时，要对每个频率分别用复振幅。
 
 元件两端的电势差$V$取电流流入的一端减去流出的一端，它和电流的关系：:term[电阻]{id="physics.electromagnetism.resistance"}上$V=IR$；线圈上$V=L\dv It$（见[RL 电路](lesson:physics.electromagnetism.rl-circuits)）；:term[电容器]{id="physics.electromagnetism.capacitor"}上$I=C\dv Vt$。换成复数，分别是$\tilde V=R\tilde I$、$\tilde V=i\omega L\tilde I$、$\tilde V=\frac{\tilde I}{i\omega C}$。
 
