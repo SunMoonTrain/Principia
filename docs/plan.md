@@ -910,6 +910,42 @@ math.analysis.completeness:
       - `skin-effect`：`induced-electric-field` 第 5 题假定涡电流自己的磁场可以忽略，频率高时不成立；
       - `poynting-theorem`：`inductance` 的 $u=\frac{B^2}{2\mu_0}$、$U=\frac12\int\vb A\cdot\vb J\,\dd V$，`electrostatic-energy` 的 $\frac{\varepsilon_0}2E^2$。
 - 批次 12 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 13（写代码的会话定的）。
+- 批次 12 之后（你定的）：发批次 13。线性代数写完了，数学那一对接着写多变量微积分（你选的；写代码的会话推荐它，因为电磁学正在用的散度、旋度、高斯公式、斯托克斯公式、矢量势都在这里，已写小节里有 20 节把它当前置，可它还是大纲）。
+- 批次 13：多变量微积分的第一批、电磁学的第五批，做法和批次 12 一样。
+  - 多变量微积分写多元函数的微分 9 节，按前置顺序：`functions-of-several-variables`、`multivariable-limits`、`partial-derivatives`、`differentiability`、`multivariable-chain-rule`、`gradient`、`jacobian`、`taylor-multivariable`、`legendre-transform`。审查报告 `docs/reviews/batch-13-vector-calculus.md`。这个领域 31 节，往后三批：
+    - 重积分与极值 9 节：`double-integrals`、`triple-integrals`、`polar-double-integrals`、`cylindrical-spherical`、`change-of-variables`、`extrema`、`inverse-implicit`、`lagrange-multipliers`、`vector-fields`；
+    - 曲线曲面积分与积分定理 9 节；
+    - 斯托克斯公式、曲线坐标、三维 δ 函数和势 4 节。
+  - 电磁学写守恒律与电磁波 9 节，按前置顺序：`gauge-potentials`、`poynting-theorem`、`em-waves`、`em-wave-energy`、`field-momentum`、`waves-in-media`、`fresnel-equations`、`skin-effect`、`dispersion`。审查报告 `docs/reviews/batch-13-electromagnetism.md`。最后一批是势与辐射 5 节。
+  - 已写的小节有链接或用法指向这一批（写代码的会话查的）：
+    - 多变量微积分是别的领域欠得最多的地方，以这一批为直接前置的已写小节有 11 节，按批次 9 定的规矩查了它们的用法：
+      - 常微分方程 `exact-equations:22`、`:32`：$\dv{}{x}F(x,y(x))=F_x+F_yy'$；两个混合偏导数连续时相等，`partial-derivatives` 要讲到并写明条件。分析力学 `lagrange-equations:45` 的「交换」也用这条。
+      - 常微分方程 `nonlinear-systems:22`、`:25`：$\vb f$ 的分量有连续偏导数；雅可比矩阵；平衡点附近的线性化（`jacobian`）。
+      - 常微分方程 `lyapunov-stability:31`、`:36`：$\dv{}{t}V(\vb x(t))=\nabla V\cdot\vb f$；梯度垂直于等值线、指向 $V$ 增大的一侧（`gradient`）。
+      - 常微分方程 `numerical-methods` 第 6 题：偏导数的下标写法 $f_x$、$f_y$，$y''=f_x+f_yf$，$f(x+h,y+hf)$ 的一阶近似（`partial-derivatives`、`differentiability`、`multivariable-chain-rule`）。
+      - 变分法 `functions:56`、`euler-lagrange:22`–`:37`：三个变量的函数 $F(x,y,p)$ 对第二、第三个变量的偏导数记作 $F_y$、$F_{y'}$；有连续的二阶偏导数；对 $\varepsilon$ 求导用多元链式法则。`euler-lagrange` 第 8 题：多元函数沿过一点的曲线求导，一阶变化只由速度决定（`gradient`）。
+      - 变分法 `second-variation:24`、分析力学 `small-oscillations:26`、`:111`：二阶泰勒展开、黑塞矩阵；黑塞矩阵正定时是极小、平衡稳定（`taylor-multivariable`）。
+      - 分析力学 `virtual-work`：无穷小改变的一阶近似，约束 $f=0$ 时 $\nabla f\cdot\delta\vb r=0$（`differentiability`）。
+      - 分析力学 `hamiltons-equations:33`–`:37`：$H=\sum p\dot q-L$，$p=\frac{\partial L}{\partial\dot q}$；换掉自变量而不丢信息，变换两次回到原来的函数；$\frac{\partial H}{\partial p}=\dot q$；$L$ 对 $\dot q$ 是一次的时候做不了（`legendre-transform`）。
+      - 数学分析 `parameter-integrals:35`、`:52`：二元函数在闭矩形上连续（`multivariable-limits`）；偏导数连续时在积分号下求导。
+      - 前向链接还有：数学分析 `differentiability` 第 7 题，多元时「可导」用线性近似来定义（`differentiability`）；常微分方程 `what-is-ode` 第 2 题（`partial-derivatives`）；电磁学 `electric-potential:58`，$\dd\varphi=\nabla\varphi\cdot\dd\vb r$（`gradient`）。
+      - 偏导数的两种写法 $\frac{\partial f}{\partial x}$ 和下标 $f_x$ 都要讲，下游都在用。
+    - 电磁学：
+      - `gauge-potentials`：
+        - $\vb E=-\nabla\varphi-\pdv{\vb A}t$、$\vb B=\curl\vb A$（狭义相对论 `field-tensor:79`，电磁学 `induced-electric-field` 第 8 题）。
+        - 规范变换 $\varphi\to\varphi-\pdv\chi t$、$\vb A\to\vb A+\nabla\chi$，用同一个 $\chi$，正负号和分析力学 `charged-particle-lagrangian:68`、狭义相对论 `field-tensor:82`（$A^\mu\to A^\mu-\partial^\mu\chi$）一致。
+        - 狭义相对论 `covariant-maxwell:46`：由 $\divg\vb B=0$、$\curl\vb E=-\pdv{\vb B}t$ 可以求出势。
+        - 「库仑规范」进术语表，补标 `vector-potential:46`。下一批的推迟势要用洛伦茨规范，这一节可以先讲。
+      - `poynting-theorem`：`current-density` 第 8 题，能量由导线周围的电磁场从电池送到灯泡；`electrostatic-energy:99`；`inductance` 的 $u=\frac{B^2}{2\mu_0}$、$U=\frac12\int\vb A\cdot\vb J\,\dd V$；狭义相对论 `covariant-maxwell` 第 8 题，能量密度和能流密度是 $T^{\mu\nu}_{\text{场}}$ 的分量。
+      - `em-waves`：`maxwell-equations:65` 的 $\frac1{\sqrt{\mu_0\varepsilon_0}}\approx3.00\times10^8\,\mathrm{m/s}$，第 7 题无源时 $\vb E\to c\vb B$、$\vb B\to-\frac{\vb E}c$ 方程组不变；`biot-savart:27` 的 $\mu_0\varepsilon_0=\frac1{c^2}$；`electric-field:29`、第 7 题；狭义相对论 `postulates:56`。
+      - `field-momentum`：`electric-field` 第 7 题，守恒的是电荷和电磁场合起来的能量和动量。
+      - `waves-in-media`：`maxwell-equations:81` 的 $\curl\vb H=\vb J_{\mathrm f}+\pdv{\vb D}t$，第 4 题海水里传导电流和位移电流在约 900 MHz 相等；`polarization` 第 7 题，水的 $\varepsilon_{\mathrm r}\approx80$ 是静电的值，讲折射率时说明光频下小得多；「介电常量」进术语表，整个词补标 `coulomb-law:51` 的「真空介电常量」。
+      - `skin-effect`：`induced-electric-field` 第 5 题假定涡电流自己的磁场可以忽略，频率高时不成立；`conductors` 第 7 题，电磁波能透进导体多深；$\sigma$ 是电导率，同一节要用面电荷密度时分开写。
+      - `dispersion`：`polarization` 第 7 题，取向极化先跟不上，再快电子云也跟不上。
+  - 以这一批为前置、还没写的别的小节：`partial-derivatives` ← 偏微分方程「偏微分方程与分类」、振动与波「弦的波动方程」；`differentiability` ← 复分析「复可导与柯西-黎曼方程」；`multivariable-chain-rule` ← 偏微分方程「输运方程与特征线法」；`legendre-transform` ← 热学「热力学势」；`gauge-potentials` ← 量子力学「电磁势与阿哈罗诺夫-玻姆效应」；`em-waves` ← 光学「偏振」、热学「黑体辐射与普朗克定律」；`fresnel-equations` ← 光学「反射偏振与布儒斯特角」。
+  - 跨领域前置（还是待写，按它们的 goal 假定读者学过）：多变量微积分的 `multivariable-limits`、`partial-derivatives`、`taylor-multivariable`、`legendre-transform` 分别要微积分的「连续与间断」「初等函数的导数」「泰勒公式」「凹凸性与拐点」；电磁学的 `em-waves`、`fresnel-equations`、`dispersion` 要振动与波的「平面波与球面波」「波的反射与透射」「受迫振动与共振」。
+  - 动画：多变量微积分用 function-plot 画截线，vector-field-2d 画梯度场，`jacobian` 可以用 LinearMap2D 画局部的线性近似；二元函数的曲面和等值线画 SVG，现在还没有画曲面的组件。电磁学用 function-plot 画平面波的 $E$、$B$ 和衰减、反射率随入射角的曲线、色散曲线；电磁波的空间图像画 SVG（写代码的会话提的）。
+- 批次 13 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 14（写代码的会话定的）。
 - 几个领域同时写时（批次 1 定的）：每个写内容会话只改自己领域的目录（`content/<学科>/<领域>/`），审内容会话只写自己的报告和验算脚本；`docs/plan.md` 不由它们直接改，要写回的内容写进汇报，由写代码的会话统一写进去、单独提交，免得几个会话同时改一个文件。每个领域各自作为一个提交。另一个领域写到一半、全量构建报错时，写内容会话可以把那个领域换成已提交的版本，在临时副本上构建，确认自己的领域 0 个错误；看页面同理，用临时副本编译的内容另起一个服务，进度写临时仓库，不改仓库的 `dist/`（批次 2 定的）。test-serve 和 `npm run serve` 提供的是 `dist/` 里构建好的网站，不读 `generated/`：改完内容要重新 `vite build`，页面上才看得到（批次 6 时写内容会话提的）。临时副本的做法（批次 10 时写内容会话提的，写代码的会话核过）：用 `git archive HEAD` 导出已提交的版本，再拷进自己的改动；`node_modules` 不要复制，在副本里建一个指向仓库 `node_modules` 的目录联接（PowerShell 的 `New-Item -ItemType Junction`）；建网站时在副本目录里跑 `npx vite build --outDir <目录>`，或者把副本目录写成 `vite build` 的第一个参数（Vite 8 的根目录是位置参数）；删副本之前先单独删掉联接本身（PowerShell 的 `[System.IO.Directory]::Delete(<联接>, $false)`），否则删除命令会顺着联接把仓库的 `node_modules` 一起删掉。
 
 **分工**：一共三个 agent：写代码、写内容、审内容。开发台阶 8、9 由写内容 agent 和审内容 agent 执行。写内容和审内容必须是两个独立会话。
