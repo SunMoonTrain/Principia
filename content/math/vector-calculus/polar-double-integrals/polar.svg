@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 350" width="640" height="350" font-size="13">
+  <!-- 左：极坐标网格，原点 (60, 270)，34 像素/单位；右：中心 (470, 160)，R = 72 像素 -->
+  <line x1="50" y1="270" x2="291.2" y2="270" stroke="currentColor" stroke-width="1.1" />
+  <path d="M 299.2 270 L 291.2 274 L 291.2 266 Z" fill="currentColor" />
+  <line x1="60" y1="280" x2="60" y2="38.8" stroke="currentColor" stroke-width="1.1" />
+  <path d="M 60 30.8 L 64 38.8 L 56 38.8 Z" fill="currentColor" />
+  <text x="305.2" y="275" font-size="14" fill="currentColor"><tspan font-style="italic">x</tspan></text>
+  <text x="52" y="34.8" text-anchor="end" font-size="14" fill="currentColor"><tspan font-style="italic">y</tspan></text>
+  <path d="M 112 270 A 52 52 0 0 0 60 218" fill="none" style="stroke: var(--muted, #6b7280)" stroke-width="1" />
+  <path d="M 164 270 A 104 104 0 0 0 60 166" fill="none" style="stroke: var(--muted, #6b7280)" stroke-width="1" />
+  <path d="M 216 270 A 156 156 0 0 0 60 114" fill="none" style="stroke: var(--muted, #6b7280)" stroke-width="1" />
+  <path d="M 268 270 A 208 208 0 0 0 60 62" fill="none" style="stroke: var(--muted, #6b7280)" stroke-width="1" />
+  <line x1="60" y1="270" x2="273.47" y2="212.8" style="stroke: var(--muted, #6b7280)" stroke-width="1" />
+  <line x1="60" y1="270" x2="251.39" y2="159.5" style="stroke: var(--muted, #6b7280)" stroke-width="1" />
+  <line x1="60" y1="270" x2="216.27" y2="113.73" style="stroke: var(--muted, #6b7280)" stroke-width="1" />
+  <line x1="60" y1="270" x2="170.5" y2="78.61" style="stroke: var(--muted, #6b7280)" stroke-width="1" />
+  <line x1="60" y1="270" x2="117.2" y2="56.53" style="stroke: var(--muted, #6b7280)" stroke-width="1" />
+  <path d="M 195.1 192 L 240.13 166 A 208 208 0 0 0 207.08 122.92 L 170.31 159.69 A 156 156 0 0 1 195.1 192 Z" style="stroke: var(--accent, #2563eb); fill: var(--accent, #2563eb)" stroke-width="1.8" fill-opacity="0.3" />
+  <path d="M 105.03 244 L 150.07 218 A 104 104 0 0 0 133.54 196.46 L 96.77 233.23 A 52 52 0 0 1 105.03 244 Z" style="stroke: var(--accent, #2563eb); fill: var(--accent, #2563eb)" stroke-width="1.2" fill-opacity="0.15" />
+  <text x="226.79" y="200.62" text-anchor="middle" style="fill: var(--accent, #2563eb)" fill="currentColor">Δ<tspan font-style="italic">r</tspan></text>
+  <text x="235.97" y="143.58" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">r</tspan>Δ<tspan font-style="italic">θ</tspan></text>
+  <text x="112" y="286" text-anchor="middle" font-size="12" style="fill: var(--muted, #6b7280)" fill="currentColor">1</text>
+  <text x="164" y="286" text-anchor="middle" font-size="12" style="fill: var(--muted, #6b7280)" fill="currentColor">2</text>
+  <text x="216" y="286" text-anchor="middle" font-size="12" style="fill: var(--muted, #6b7280)" fill="currentColor">3</text>
+  <text x="268" y="286" text-anchor="middle" font-size="12" style="fill: var(--muted, #6b7280)" fill="currentColor">4</text>
+  <path d="M 368.17662350913713 160 A 101.82337649086286 101.82337649086286 0 1 0 571.8233764908629 160 A 101.82337649086286 101.82337649086286 0 1 0 368.17662350913713 160 Z" style="stroke: var(--warn, #a8661a); fill: var(--warn, #a8661a)" stroke-width="1.6" fill-opacity="0.08" />
+  <path d="M 398 88 L 542 88 L 542 232 L 398 232 Z" style="stroke: var(--good, #0f8a5f); fill: var(--good, #0f8a5f)" stroke-width="1.6" fill-opacity="0.14" />
+  <path d="M 398 160 A 72 72 0 1 0 542 160 A 72 72 0 1 0 398 160 Z" style="stroke: var(--accent, #2563eb); fill: var(--accent, #2563eb)" stroke-width="1.6" fill-opacity="0.16" />
+  <circle cx="470" cy="160" r="2.5" fill="currentColor" />
+  <line x1="470" y1="160" x2="407.65" y2="124" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <text x="436" y="130" text-anchor="middle" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">R</tspan></text>
+  <line x1="470" y1="160" x2="542" y2="88" style="stroke: var(--warn, #a8661a)" stroke-width="1.2" stroke-dasharray="4 3" />
+  <text x="492" y="120" text-anchor="middle" style="fill: var(--warn, #a8661a)" fill="currentColor">√2<tspan font-style="italic">R</tspan></text>
+  <text x="470" y="50.18" text-anchor="middle" style="fill: var(--warn, #a8661a)" fill="currentColor"><tspan font-style="italic">D</tspan><tspan font-size="10" dy="3">√2<tspan font-style="italic">R</tspan></tspan></text>
+  <text x="520" y="224" style="fill: var(--good, #0f8a5f)" fill="currentColor"><tspan font-style="italic">S</tspan><tspan font-size="10" dy="3"><tspan font-style="italic">R</tspan></tspan></text>
+  <text x="430" y="200" style="fill: var(--accent, #2563eb)" fill="currentColor"><tspan font-style="italic">D</tspan><tspan font-size="10" dy="3"><tspan font-style="italic">R</tspan></tspan></text>
+  <text x="320" y="316" text-anchor="middle" fill="currentColor">左：同样的 Δ<tspan font-style="italic">r</tspan>、Δ<tspan font-style="italic">θ</tspan>，外圈的小块大；沿圆周方向的边长是 <tspan font-style="italic">r</tspan>Δ<tspan font-style="italic">θ</tspan>，面积约 <tspan font-style="italic">r</tspan>Δ<tspan font-style="italic">r</tspan>Δ<tspan font-style="italic">θ</tspan></text>
+  <text x="320" y="340" text-anchor="middle" fill="currentColor">右：正方形被两个圆盘夹住，正方形上的积分也被两个圆盘上的积分夹住</text>
+</svg>

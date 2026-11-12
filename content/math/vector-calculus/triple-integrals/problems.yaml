@@ -1,0 +1,133 @@
+- id: p1
+  tier: easy
+  statement: |
+    $B$是长方体$0\le x\le1$、$0\le y\le2$、$0\le z\le3$。求$\iiint_Bxyz\,\dd V$。
+  answer:
+    type: number
+    value: 9/2
+  hints:
+    - |
+      长方体上，被积函数是三个一元函数的乘积，可以拆成三个一元积分相乘。
+    - |
+      $\int_0^1x\dd x=\frac12$，$\int_0^2y\dd y=2$，$\int_0^3z\dd z=\frac92$。
+    - |
+      $\frac12\cdot2\cdot\frac92=\frac92$。
+  solution: |
+    $\iiint_Bxyz\,\dd V=\int_0^1x\dd x\int_0^2y\dd y\int_0^3z\dd z=\frac12\cdot2\cdot\frac92=\frac92$。
+
+- id: p2
+  tier: easy
+  statement: |
+    用三重积分求立体$0\le x\le1$、$0\le y\le2$、$0\le z\le xy$的体积。
+  answer:
+    type: number
+    value: 1
+  hints:
+    - |
+      体积是$\iiint_\Omega1\,\dd V$。先穿线：每一点$(x,y)$上方，$z$从$0$到$xy$。
+    - |
+      里层$\int_0^{xy}\dd z=xy$，剩下矩形上的二重积分$\iint xy\,\dd A$。
+    - |
+      $\int_0^1x\dd x\cdot\int_0^2y\dd y=\frac12\cdot2=1$。
+  solution: |
+    $V=\int_0^1\int_0^2\int_0^{xy}\dd z\dd y\dd x=\int_0^1\int_0^2xy\dd y\dd x=\frac12\cdot2=1$。
+
+- id: p3
+  tier: medium
+  statement: |
+    正方体$0\le x,y,z\le1$的密度是$\rho=x+y^2+z^3$。求它的质量。
+  answer:
+    type: number
+    value: 13/12
+  hints:
+    - |
+      质量是$\iiint\rho\,\dd V$，把三项分开积。
+    - |
+      $\iiint x\,\dd V=\int_0^1x\dd x\cdot1\cdot1=\frac12$；同样$\iiint y^2\,\dd V=\frac13$，$\iiint z^3\,\dd V=\frac14$。
+    - |
+      $\frac12+\frac13+\frac14=\frac{13}{12}\approx1.083$。
+  solution: |
+    $m=\iiint(x+y^2+z^3)\,\dd V=\frac12+\frac13+\frac14=\frac{13}{12}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $\Omega$是第一卦限里平面$x+\frac y2+\frac z3=1$和三个坐标平面围成的四面体。求$\iiint_\Omega x\,\dd V$。
+  answer:
+    type: number
+    value: 1/4
+  hints:
+    - |
+      被积函数只和$x$有关，用平面$x=$常数切片，先求截面面积。
+    - |
+      $x$处的截面是$\frac y2+\frac z3\le1-x$（$y,z\ge0$），是直角边为$2(1-x)$、$3(1-x)$的直角三角形，面积$3(1-x)^2$。
+    - |
+      $\int_0^1x\cdot3(1-x)^2\dd x=3\Bigl(\frac12-\frac23+\frac14\Bigr)=\frac14$。
+  solution: |
+    切片：$x$处截面面积$3(1-x)^2$，所以$\iiint_\Omega x\,\dd V=\int_0^13x(1-x)^2\dd x=\frac14$。
+
+- id: p5
+  tier: hard
+  statement: |
+    把例 1 四面体上的累次积分$\int_0^1\int_0^{1-x}\int_0^{1-x-y}f\,\dd z\dd y\dd x$改写成先对$x$、再对$y$、最后对$z$积的次序，并取$f=x$，用两种次序各算一次。
+  hints:
+    - |
+      最外层是$z$：四面体里$z$从$0$到$1$。固定$z$，截面是什么？
+    - |
+      截面是$x\ge0$、$y\ge0$、$x+y\le1-z$。在截面里$y$从$0$到$1-z$，固定$y$后$x$从$0$到$1-y-z$。
+    - |
+      新次序是$\int_0^1\int_0^{1-z}\int_0^{1-y-z}f\,\dd x\dd y\dd z$。$f=x$时两种次序都得$\frac1{24}$：原次序里层积出$x(1-x-y)$，再积出$\frac{x(1-x)^2}2$；新次序里层积出$\frac{(1-y-z)^2}2$，再积出$\frac{(1-z)^3}6$。
+  reference: |
+    四面体是$x,y,z\ge0$、$x+y+z\le1$。最外层对$z$：$z$从$0$到$1$。固定$z$，截面是三角形$x,y\ge0$、$x+y\le1-z$；在它上面$y$从$0$到$1-z$，固定$y$后$x$从$0$到$1-y-z$。所以原积分$=\int_0^1\int_0^{1-z}\int_0^{1-y-z}f\,\dd x\dd y\dd z$。
+
+    $f=x$。原次序：$\int_0^{1-x-y}x\dd z=x(1-x-y)$，$\int_0^{1-x}x(1-x-y)\dd y=\frac{x(1-x)^2}2$，$\int_0^1\frac{x(1-x)^2}2\dd x=\frac12\cdot\frac1{12}=\frac1{24}$。新次序：$\int_0^{1-y-z}x\dd x=\frac{(1-y-z)^2}2$，$\int_0^{1-z}\frac{(1-y-z)^2}2\dd y=\frac{(1-z)^3}6$，$\int_0^1\frac{(1-z)^3}6\dd z=\frac1{24}$。两者相等。
+
+- id: p6
+  tier: hard
+  statement: |
+    密度均匀的立体，质心（center of mass）的坐标是$\bar x=\frac1V\iiint_\Omega x\,\dd V$，$\bar y$、$\bar z$同样。证明例 1 的四面体的质心在$\bigl(\frac14,\frac14,\frac14\bigr)$，并说明三个坐标为什么一定相等。
+  hints:
+    - |
+      体积在例 1 里算过，是$\frac16$；只需算$\iiint_\Omega x\,\dd V$。
+    - |
+      先穿线：$\iiint_\Omega x\,\dd V=\int_0^1\int_0^{1-x}x(1-x-y)\dd y\dd x=\int_0^1\frac{x(1-x)^2}2\dd x$。
+    - |
+      $\int_0^1\frac{x(1-x)^2}2\dd x=\frac1{24}$，$\bar x=\frac{1/24}{1/6}=\frac14$。把$x$、$y$、$z$任意交换，四面体不变，所以$\bar y=\bar z=\bar x$。
+  reference: |
+    $V=\frac16$（例 1）。$\iiint_\Omega x\,\dd V=\int_0^1\int_0^{1-x}x(1-x-y)\dd y\dd x=\int_0^1\frac{x(1-x)^2}2\dd x=\frac12\Bigl(\frac12-\frac23+\frac14\Bigr)=\frac1{24}$，所以$\bar x=\frac{1/24}{1/6}=\frac14$。
+
+    四面体$x,y,z\ge0$、$x+y+z\le1$在交换任意两个坐标时不变。交换$x$、$y$，$\iiint_\Omega x\,\dd V$就变成$\iiint_\Omega y\,\dd V$，而立体没变，所以两者相等；$z$同理。于是质心在$\bigl(\frac14,\frac14,\frac14\bigr)$，在顶点$O$到对面中心的连线上，离$O$是这条线段的$\frac34$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    不算积分，说明$\iiint_{[-1,1]^3}\bigl(x+y^2z+\sin(xyz)\bigr)\dd V=0$。再用对称性求$\iiint_{[-1,1]^3}(x^2+y^2+z^2)\,\dd V$。积分区域（region of integration）换成$[0,1]^3$，前一个结论还成立吗？
+  hints:
+    - |
+      把$x$换成$-x$，立方体$[-1,1]^3$不变；哪些项变号？
+    - |
+      $x$、$\sin(xyz)$对$x$是奇的，$y^2z$对$z$是奇的。立方体关于$x=0$对称，奇的部分正负抵消。
+    - |
+      $\iiint x^2\,\dd V=\iiint y^2\,\dd V=\iiint z^2\,\dd V=\frac23\cdot2\cdot2=\frac83$，所以第二个积分是$8$。$[0,1]^3$不关于坐标平面对称，正负不再抵消，第一个积分是正的。
+  reference: |
+    把每个小长方体和它关于平面$x=0$的镜像配对：被积函数里关于$x$是奇函数的部分（$x$和$\sin(xyz)$）在这一对上的值相反，黎曼和里两两抵消，积分为$0$；$y^2z$关于$z$是奇的，用平面$z=0$配对同样抵消。所以第一个积分是$0$。
+
+    交换坐标不改变立方体，所以$\iiint x^2\,\dd V=\iiint y^2\,\dd V=\iiint z^2\,\dd V$，而$\iiint x^2\,\dd V=\int_{-1}^1x^2\dd x\cdot2\cdot2=\frac83$，第二个积分是$3\cdot\frac83=8$。
+
+    对称性要区域和被积函数一起配合：$[0,1]^3$不关于坐标平面对称，$x$在上面处处非负，$\iiint_{[0,1]^3}x\,\dd V=\frac12$，第一个积分就不为$0$了。分析力学算惯性张量时，对称的刚体许多积分不用算就是$0$，用的正是这个道理。
+
+- id: p8
+  tier: thinking
+  statement: |
+    锥体的底面积为$S$、高为$h$，底面可以是任何形状。用先切片的办法说明它的体积总是$\frac13Sh$。例 1 的四面体符合这个公式吗？
+  hints:
+    - |
+      把顶点放在上方、底面放在$z=0$，高度$z$处的截面和底面是什么关系？
+    - |
+      截面和底面相似，相似比是$\frac{h-z}h$，面积是$S\Bigl(1-\frac zh\Bigr)^2$。
+    - |
+      $V=\int_0^hS\Bigl(1-\frac zh\Bigr)^2\dd z=\frac13Sh$。例 1 的四面体以直角三角形为底，$S=\frac12$，$h=1$，$V=\frac16$，相符。
+  reference: |
+    底面在$z=0$，顶点在高度$h$。高度$z$处的截面是底面以顶点为中心缩小得到的，相似比$\frac{h-z}h$，面积是$S\Bigl(1-\frac zh\Bigr)^2$。由先切片的办法，$V=\int_0^hS\Bigl(1-\frac zh\Bigr)^2\dd z=S\cdot\frac h3$。
+
+    结果只依赖截面面积怎样随高度变化，和底面的形状无关：圆锥、棱锥、斜的锥体都是$\frac13Sh$。例 1 的四面体可以看成以$xy$平面上的三角形（$S=\frac12$）为底、高为$1$的锥体，$\frac13\cdot\frac12\cdot1=\frac16$，和例 1 一致。

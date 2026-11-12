@@ -1,0 +1,135 @@
+- id: p1
+  tier: easy
+  statement: |
+    用柱坐标下的三重积分求圆柱$x^2+y^2\le4$、$0\le z\le3$的体积。
+  answer:
+    type: number
+    value: 12*pi
+  hints:
+    - |
+      柱坐标下圆柱是$0\le s\le2$、$0\le\varphi<2\pi$、$0\le z\le3$，体积元$s\,\dd s\dd\varphi\dd z$。
+    - |
+      $V=\int_0^3\int_0^{2\pi}\int_0^2s\,\dd s\dd\varphi\dd z$，三层各自独立。
+    - |
+      $\int_0^2s\,\dd s=2$，乘以$2\pi$、再乘以$3$，$V=12\pi\approx37.70$。
+  solution: |
+    $V=\int_0^3\int_0^{2\pi}\int_0^2s\,\dd s\dd\varphi\dd z=2\cdot2\pi\cdot3=12\pi$，和底面积乘高$4\pi\cdot3$一致。
+
+- id: p2
+  tier: easy
+  statement: |
+    $\Omega$是单位球$x^2+y^2+z^2\le1$。求$\iiint_\Omega(x^2+y^2+z^2)\,\dd V$。
+  answer:
+    type: number
+    value: 4*pi/5
+  hints:
+    - |
+      换成球坐标：$x^2+y^2+z^2=r^2$，$\dd V=r^2\sin\theta\,\dd r\dd\theta\dd\varphi$。
+    - |
+      $\int_0^{2\pi}\int_0^\pi\int_0^1r^2\cdot r^2\sin\theta\,\dd r\dd\theta\dd\varphi$，三层各自独立：$\int_0^1r^4\dd r=\frac15$，$\int_0^\pi\sin\theta\dd\theta=2$。
+    - |
+      $2\pi\cdot2\cdot\frac15=\frac{4\pi}5\approx2.513$。
+  solution: |
+    $\iiint_\Omega r^2\,\dd V=\int_0^{2\pi}\dd\varphi\int_0^\pi\sin\theta\dd\theta\int_0^1r^4\dd r=2\pi\cdot2\cdot\frac15=\frac{4\pi}5$。
+
+- id: p3
+  tier: medium
+  statement: |
+    半径为$1$的球，离球心距离为$r$处的密度是$1+r$。求它的质量。
+  answer:
+    type: number
+    value: 7*pi/3
+  hints:
+    - |
+      密度只和$r$有关，用球坐标，角度部分积出$\int_0^{2\pi}\int_0^\pi\sin\theta\,\dd\theta\dd\varphi=4\pi$。
+    - |
+      质量$=4\pi\int_0^1(1+r)r^2\dd r$。
+    - |
+      $4\pi\Bigl(\frac13+\frac14\Bigr)=4\pi\cdot\frac7{12}=\frac{7\pi}3\approx7.330$。
+  solution: |
+    $m=\int_0^{2\pi}\int_0^\pi\int_0^1(1+r)r^2\sin\theta\,\dd r\dd\theta\dd\varphi=4\pi\Bigl(\frac13+\frac14\Bigr)=\frac{7\pi}3$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求圆柱$x^2+y^2\le1$里、平面$z=0$和曲面$z=2-x^2-y^2$之间的立体的体积。
+  answer:
+    type: number
+    value: 3*pi/2
+  hints:
+    - |
+      柱坐标下曲面是$z=2-s^2$；立体是$0\le s\le1$、$0\le\varphi<2\pi$、$0\le z\le2-s^2$。
+    - |
+      先对$z$积：$V=\int_0^{2\pi}\int_0^1(2-s^2)\,s\,\dd s\dd\varphi$。
+    - |
+      $\int_0^1(2s-s^3)\dd s=1-\frac14=\frac34$，$V=2\pi\cdot\frac34=\frac{3\pi}2\approx4.712$。
+  solution: |
+    $V=\int_0^{2\pi}\int_0^1\int_0^{2-s^2}s\,\dd z\dd s\dd\varphi=2\pi\int_0^1(2s-s^3)\dd s=\frac{3\pi}2$。
+
+- id: p5
+  tier: hard
+  statement: |
+    密度均匀的实心球，半径$R$、质量$M$。证明它绕一条直径的转动惯量（moment of inertia）是$\frac25MR^2$。
+  hints:
+    - |
+      取这条直径为$z$轴，$I=\iiint\rho\,(x^2+y^2)\,\dd V$，$x^2+y^2$是到$z$轴距离的平方，球坐标下是$r^2\sin^2\theta$。
+    - |
+      $I=\rho\int_0^{2\pi}\int_0^\pi\int_0^Rr^2\sin^2\theta\cdot r^2\sin\theta\,\dd r\dd\theta\dd\varphi=\rho\cdot2\pi\cdot\int_0^\pi\sin^3\theta\dd\theta\cdot\frac{R^5}5$。
+    - |
+      $\int_0^\pi\sin^3\theta\dd\theta=\frac43$（令$u=\cos\theta$，$\sin^3\theta=(1-u^2)\sin\theta$），所以$I=\frac{8\pi}{15}\rho R^5$；再用$M=\frac43\pi R^3\rho$，$I=\frac25MR^2$。
+  reference: |
+    取直径为$z$轴。到$z$轴的距离是$s=r\sin\theta$，所以$I=\rho\iiint(x^2+y^2)\,\dd V=\rho\int_0^{2\pi}\int_0^\pi\int_0^Rr^4\sin^3\theta\,\dd r\dd\theta\dd\varphi=\rho\cdot2\pi\cdot\frac43\cdot\frac{R^5}5=\frac{8\pi}{15}\rho R^5$，其中$\int_0^\pi\sin^3\theta\dd\theta=\int_{-1}^1(1-u^2)\dd u=\frac43$。
+
+    $M=\rho\cdot\frac43\pi R^3$，所以$I=\frac{8\pi}{15}\rho R^5=\frac25\cdot\frac43\pi R^3\rho\cdot R^2=\frac25MR^2$。
+
+    另一个算法：由对称性$\iiint x^2=\iiint y^2=\iiint z^2=\frac13\iiint r^2\,\dd V$，$I=\frac23\rho\iiint r^2\,\dd V=\frac23\rho\cdot4\pi\frac{R^5}5$，结果一样，还省掉了$\sin^3\theta$的积分。
+
+- id: p6
+  tier: hard
+  statement: |
+    球心在$(0,0,1)$、半径为$1$的球，在球坐标下怎样描述？用球坐标下的三重积分算出它的体积，验证是$\frac43\pi$。
+  hints:
+    - |
+      球面方程$x^2+y^2+(z-1)^2=1$展开是$x^2+y^2+z^2=2z$，代入球坐标。
+    - |
+      $r^2=2r\cos\theta$，即$r=2\cos\theta$；球在$z\ge0$一侧，$\theta$从$0$到$\frac\pi2$，每个方向上$r$从$0$到$2\cos\theta$。
+    - |
+      $V=\int_0^{2\pi}\int_0^{\pi/2}\int_0^{2\cos\theta}r^2\sin\theta\,\dd r\dd\theta\dd\varphi=2\pi\int_0^{\pi/2}\frac{8\cos^3\theta}3\sin\theta\dd\theta=2\pi\cdot\frac83\cdot\frac14=\frac43\pi$。
+  reference: |
+    球面$x^2+y^2+(z-1)^2=1$即$x^2+y^2+z^2=2z$，球坐标下$r^2=2r\cos\theta$，除去原点就是$r=2\cos\theta$。球整个在$z\ge0$一侧，和原点相切，所以$0\le\theta\le\frac\pi2$，方向$\theta$上$r$从$0$到$2\cos\theta$，$\varphi$绕一圈。
+
+    $V=\int_0^{2\pi}\int_0^{\pi/2}\int_0^{2\cos\theta}r^2\sin\theta\,\dd r\dd\theta\dd\varphi=2\pi\int_0^{\pi/2}\frac{8\cos^3\theta}3\sin\theta\dd\theta$。令$u=\cos\theta$，$\int_0^{\pi/2}\cos^3\theta\sin\theta\dd\theta=\int_0^1u^3\dd u=\frac14$，所以$V=2\pi\cdot\frac83\cdot\frac14=\frac43\pi$，正是半径$1$的球的体积。这和[极坐标下的二重积分](lesson:math.vector-calculus.polar-double-integrals)例 2 的圆$r=2\cos\theta$是同一个道理。
+
+- id: p7
+  tier: thinking
+  statement: |
+    半径为$R$的球体积是$\frac43\pi R^3$，它对$R$求导得$4\pi R^2$，正是球面的面积。为什么？用球坐标的体积元解释，再说说圆的面积$\pi R^2$对$R$求导为什么是周长。
+  hints:
+    - |
+      半径从$R$增加到$R+\Delta R$，体积增加的是一层薄球壳。
+    - |
+      球坐标下这层壳的体积是$\int_0^{2\pi}\int_0^\pi\int_R^{R+\Delta R}r^2\sin\theta\,\dd r\dd\theta\dd\varphi\approx4\pi R^2\Delta R$。
+    - |
+      薄壳的体积约等于面积乘厚度，所以体积的变化率是面积。平面上同理：圆半径增加$\Delta R$，多出一圈细环，面积约周长乘$\Delta R$，这正是极坐标的面积元（area element）$r\,\dd r\dd\theta$对$\theta$积一圈。
+  reference: |
+    $V(R+\Delta R)-V(R)$是半径在$R$和$R+\Delta R$之间的球壳，球坐标下$=4\pi\int_R^{R+\Delta R}r^2\dd r$。$\Delta R\to0$时除以$\Delta R$趋于$4\pi R^2$，所以$V'(R)=4\pi R^2$。几何上，薄壳近似一张厚度$\Delta R$的球面，体积约面积乘厚度；球坐标体积元里的$r^2\sin\theta\,\dd\theta\dd\varphi$，对角度积满就是半径$r$的球面面积$4\pi r^2$。
+
+    平面上一样：面积元$r\,\dd r\dd\theta$对$\theta$积满是$2\pi r\,\dd r$，即周长乘宽度，所以$(\pi R^2)'=2\pi R$。反过来，知道每一层球面的面积，就能把球的体积写成$\int_0^R4\pi r^2\dd r$，这正是把球切成一层层同心球壳。
+
+- id: p8
+  tier: thinking
+  statement: |
+    分别用直角坐标和球坐标计算$\iiint_{\R^3}e^{-(x^2+y^2+z^2)}\dd V$（整个空间上，像平面上的反常二重积分（improper double integral）那样用越来越大的球或立方体去逼近）。只和$r$有关的函数，三重积分可以化成怎样的一元积分？
+  hints:
+    - |
+      直角坐标下被积函数是$e^{-x^2}e^{-y^2}e^{-z^2}$，立方体$[-R,R]^3$上拆成三个一元积分的乘积。
+    - |
+      球坐标下角度部分积出$4\pi$，剩下$4\pi\int_0^\infty r^2e^{-r^2}\dd r$；$\int_0^\infty r^2e^{-r^2}\dd r=\frac{\sqrt\pi}4$（见[极坐标下的二重积分](lesson:math.vector-calculus.polar-double-integrals)第 5 题）。
+    - |
+      两种算法都得$\pi^{3/2}\approx5.568$。一般地，$f$只依赖$r$时，$\iiint f\,\dd V=\int_0^\infty4\pi r^2f(r)\dd r$：把空间切成同心球壳，半径$r$的壳面积是$4\pi r^2$。
+  reference: |
+    直角坐标：立方体$[-R,R]^3$上积分是$\Bigl(\int_{-R}^Re^{-x^2}\dd x\Bigr)^3$，由[高斯积分](lesson:math.vector-calculus.polar-double-integrals)，$R\to\infty$时趋于$(\sqrt\pi)^3=\pi^{3/2}$。
+
+    球坐标：半径$R$的球上积分是$\int_0^{2\pi}\int_0^\pi\int_0^Re^{-r^2}r^2\sin\theta\,\dd r\dd\theta\dd\varphi=4\pi\int_0^Rr^2e^{-r^2}\dd r$，$R\to\infty$时趋于$4\pi\cdot\frac{\sqrt\pi}4=\pi^{3/2}$。被积函数为正，球和立方体互相夹住，两种逼近的极限一样，结果一致。
+
+    $f$只依赖到原点的距离时，角度部分总是积出$4\pi$，$\iiint f(r)\,\dd V=\int_0^\infty4\pi r^2f(r)\dd r$：把空间切成同心球壳，半径$r$、厚$\dd r$的壳体积是$4\pi r^2\dd r$。热学里的麦克斯韦速率分布就是这样把速度空间里的三重积分化成对速率的一元积分，多出的$4\pi v^2$正是这个因子。

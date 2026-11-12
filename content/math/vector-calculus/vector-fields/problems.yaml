@@ -1,0 +1,133 @@
+- id: p1
+  tier: easy
+  statement: |
+    向量场$\vb F(x,y)=(x+y,\ xy)$。求它在点$(2,3)$处的向量，按分量填写。
+  answer:
+    type: tuple
+    value: [5, 6]
+  hints:
+    - |
+      把$x=2$、$y=3$代入两个分量。
+    - |
+      第一个分量$2+3$，第二个分量$2\cdot3$。
+    - |
+      $\vb F(2,3)=(5,6)$，填 `5, 6`。
+  solution: |
+    $\vb F(2,3)=(2+3,\ 2\cdot3)=(5,6)$。
+
+- id: p2
+  tier: easy
+  statement: |
+    求$f(x,y)=x^2y$的梯度场在点$(1,2)$处的向量，按分量填写。
+  answer:
+    type: tuple
+    value: [4, 1]
+  hints:
+    - |
+      梯度场是$\nabla f=(f_x,f_y)$。
+    - |
+      $f_x=2xy$，$f_y=x^2$。
+    - |
+      在$(1,2)$处是$(4,1)$，填 `4, 1`。
+  solution: |
+    $\nabla f=(2xy,\ x^2)$，在$(1,2)$处是$(4,1)$。
+
+- id: p3
+  tier: medium
+  statement: |
+    向量场$\vb F=(x,-y)$过点$(2,1)$的流线落在哪条曲线$xy=c$上？填写$c$。
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      流线满足$x'=x$、$y'=-y$，两个坐标各自猜一个指数函数。
+    - |
+      $x=2e^t$、$y=e^{-t}$满足这两个方程，$t=0$时过$(2,1)$。
+    - |
+      $xy=2e^t\cdot e^{-t}=2$，所以流线落在$xy=2$上，$c=2$。
+  solution: |
+    $\vb r(t)=(2e^t,e^{-t})$满足$\vb r'=(2e^t,-e^{-t})=\vb F(\vb r)$，$xy=2$，$c=2$。
+
+- id: p4
+  tier: medium
+  statement: |
+    向量场$\vb F=(x,3y)$过点$(1,1)$的流线可以写成$y=x^k$。求$k$。
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      流线满足$x'=x$、$y'=3y$。
+    - |
+      $x=e^t$、$y=e^{3t}$，$t=0$时过$(1,1)$。
+    - |
+      $y=e^{3t}=(e^t)^3=x^3$，$k=3$。
+  solution: |
+    $\vb r(t)=(e^t,e^{3t})$满足$\vb r'=(e^t,3e^{3t})=\vb F(\vb r)$，消去$t$得$y=x^3$，$k=3$。
+
+- id: p5
+  tier: hard
+  statement: |
+    $f$可微（differentiable），$\vb r(t)$是梯度场$\nabla f$的流线，并且流线上$\nabla f\ne\vb0$。证明：沿流线$f$严格增大，增大的速率是$|\nabla f|^2$；流线在每一点和过这一点的$f$的等值线垂直。
+  hints:
+    - |
+      对$f\bigl(\vb r(t)\bigr)$求导，用链式法则（chain rule）。
+    - |
+      $\dv{}{t}f\bigl(\vb r(t)\bigr)=\nabla f\cdot\vb r'(t)$，而流线满足$\vb r'(t)=\nabla f\bigl(\vb r(t)\bigr)$。
+    - |
+      所以导数是$|\nabla f|^2>0$，$f$严格增大。流线的速度就是$\nabla f$，而梯度和等值线垂直，所以流线和等值线垂直。
+  reference: |
+    由链式法则，$\dv{}{t}f\bigl(\vb r(t)\bigr)=\nabla f\bigl(\vb r(t)\bigr)\cdot\vb r'(t)$。流线满足$\vb r'(t)=\nabla f\bigl(\vb r(t)\bigr)$，所以导数等于$\bigl|\nabla f\bigl(\vb r(t)\bigr)\bigr|^2>0$，$f$沿流线严格增大，速率是$|\nabla f|^2$。
+
+    流线在$\vb r(t)$处的切向量是$\vb r'(t)=\nabla f$，由[方向导数与梯度](lesson:math.vector-calculus.gradient)，梯度和过这一点的等值线垂直，所以流线和等值线垂直。沿梯度场的流线走，就是一直沿最陡的方向往上爬；沿$-\nabla f$的流线走，就是一直沿最陡的方向往下走。
+
+- id: p6
+  tier: hard
+  statement: |
+    平面上的向量场$\vb F=-\frac{(x,y)}{(x^2+y^2)^{3/2}}$（原点除外）。记$r=\sqrt{x^2+y^2}$。证明$|\vb F|=\frac1{r^2}$，$\vb F$是函数$g=\frac1r$的梯度场，并说明它的流线是什么样子。
+  hints:
+    - |
+      $|(x,y)|=r$，所以$|\vb F|=\frac r{r^3}$。
+    - |
+      $g=(x^2+y^2)^{-1/2}$，$g_x=-\frac12(x^2+y^2)^{-3/2}\cdot2x=-\frac x{r^3}$，$g_y$同理。
+    - |
+      所以$\nabla g=\vb F$。$\vb F$处处指向原点，流线是指向原点的射线；它和$g$的等值线（以原点为圆心的圆）垂直。
+  reference: |
+    $|\vb F|=\frac{|(x,y)|}{r^3}=\frac r{r^3}=\frac1{r^2}$，大小和距离的平方成反比，方向处处指向原点。
+
+    $g=(x^2+y^2)^{-1/2}$，由一元的链式法则$g_x=-\frac12(x^2+y^2)^{-3/2}\cdot2x=-\frac x{r^3}$，$g_y=-\frac y{r^3}$，所以$\nabla g=\vb F$，$\vb F$是梯度场。$g$的等值线是以原点为圆心的圆，$\vb F$和它们垂直、指向$g$增大的一侧（靠近原点$g$越大）。流线沿着$-(x,y)$的方向，是指向原点的射线。
+
+    物理里质点的引力正是这样的场乘以常数；引力等于势能的梯度取负号，势能和$-\frac1r$成正比。空间里的形状一样，只是$r=\sqrt{x^2+y^2+z^2}$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    在引力场$\vb F=-\frac{(x,y)}{r^3}$里，质点可以绕原点做匀速圆周运动，可这个场的场线是指向原点的射线。质点为什么不沿场线走？如果把同一个$\vb F$当成速度场，一片被它带着走的落叶会怎样运动？
+  hints:
+    - |
+      力场给出的是加速度的方向：$m\vb r''=\vb F$；速度场给出的是速度：$\vb r'=\vb F$。
+    - |
+      圆周运动的加速度指向圆心，和引力的方向一致，速度却沿切线，和场线垂直。
+    - |
+      当速度场时，落叶的速度处处指向原点，它沿射线一直走向原点，走的正是流线。
+  reference: |
+    力决定加速度，不决定速度。匀速圆周运动$\vb r(t)=(R\cos\omega t,R\sin\omega t)$的加速度是$-\omega^2\vb r$，指向圆心，和引力的方向一致；选$\omega$使$m\omega^2R=\frac1{R^2}$，牛顿第二定律就满足了。速度沿切线、和场线垂直，所以质点的轨道不是场线：场线只告诉我们每一点受力的方向。
+
+    同一个$\vb F$当速度场时，$\vb r'(t)=\vb F\bigl(\vb r(t)\bigr)$，落叶的速度处处指向原点，它沿射线奔向原点，越近越快，这时的轨迹正是流线。所以「流线是被带着走的轨迹」只对速度场成立；对力场、电场，画场线是为了看力的方向，不是为了看物体怎样运动。
+
+- id: p8
+  tier: thinking
+  statement: |
+    假设$\vb F=(-y,x)$是某个函数$f$的梯度场。沿它过$(1,0)$的流线（单位圆）走一圈，$f$的值会怎样变？由此说明$\vb F$不是梯度场。
+  hints:
+    - |
+      由第 5 题，沿梯度场的流线，$f$增大的速率是$|\nabla f|^2$。
+    - |
+      流线是$\vb r(t)=(\cos t,\sin t)$，上面$|\vb F|=1$，所以$\dv{}{t}f\bigl(\vb r(t)\bigr)=1$。
+    - |
+      $t$从$0$到$2\pi$，$f$增大了$2\pi$，可$\vb r(2\pi)=\vb r(0)$是同一个点，$f$在同一点不能有两个值。矛盾，所以$\vb F$不是梯度场。
+  reference: |
+    若$\vb F=\nabla f$，沿流线$\vb r(t)=(\cos t,\sin t)$，由第 5 题，$\dv{}{t}f\bigl(\vb r(t)\bigr)=|\vb F|^2=1$，所以$f\bigl(\vb r(2\pi)\bigr)-f\bigl(\vb r(0)\bigr)=2\pi$。可$\vb r(2\pi)=\vb r(0)=(1,0)$，同一点的函数值不能相差$2\pi$，矛盾。所以$\vb F$不是梯度场。
+
+    道理是：梯度场的流线一直「往高处走」，永远不会绕回原处；闭合的流线说明场在转圈。讲解里用施瓦茨定理给了另一个证明。以后在[曲线积分](lesson:math.vector-calculus.line-integrals)里，「沿闭曲线走一圈，场做的功是否为零」会成为判断梯度场的办法。

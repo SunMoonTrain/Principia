@@ -32,7 +32,7 @@ status: reviewed
 为什么这样定义：第$i$行是分量$f_i$的各个偏导数，合起来就是$f_i$的:term[梯度]{id="math.vector-calculus.gradient"}（gradient），见[方向导数与梯度](lesson:math.vector-calculus.gradient)；第$j$列$\pdv{\vb f}{x_j}$是只让$x_j$变动时像点移动的速度。例如极坐标$(r,\theta)\mapsto(r\cos\theta,r\sin\theta)$的雅可比矩阵是$\begin{pmatrix}\cos\theta&-r\sin\theta\\\sin\theta&r\cos\theta\end{pmatrix}$。边界情况：$m=1$时它是一行，就是各个偏导数排成的行；$n=1$时它是一列，就是曲线的速度$\vb r'(t)$。
 
 ::anchor{id="thm-local-linear"}
-**局部线性近似（local linear approximation）**　设$\vb f$的各分量函数在$\vb a$处都:term[可微]{id="math.vector-calculus.differentiable"}，则$\vb f(\vb a+\vb h)=\vb f(\vb a)+J_{\vb f}(\vb a)\vb h+\vb r(\vb h)$，其中$\vb h\to\vb 0$时$\frac{|\vb r(\vb h)|}{|\vb h|}\to0$。
+**:term[局部线性近似]{id="math.vector-calculus.local-linear-approximation"}（local linear approximation）**　设$\vb f$的各分量函数在$\vb a$处都:term[可微]{id="math.vector-calculus.differentiable"}，则$\vb f(\vb a+\vb h)=\vb f(\vb a)+J_{\vb f}(\vb a)\vb h+\vb r(\vb h)$，其中$\vb h\to\vb 0$时$\frac{|\vb r(\vb h)|}{|\vb h|}\to0$。
 
 **证明思路**：每个分量可微，$f_i(\vb a+\vb h)=f_i(\vb a)+\sum_j\pdv{f_i}{x_j}(\vb a)h_j+r_i$，$\frac{r_i}{|\vb h|}\to0$。把$m$个式子竖着排起来，$\sum_j\pdv{f_i}{x_j}h_j$正是$J_{\vb f}\vb h$的第$i$个分量；$|\vb r|\le|r_1|+\dots+|r_m|$，所以$\frac{|\vb r|}{|\vb h|}\to0$。
 
@@ -43,7 +43,7 @@ status: reviewed
 ::anchor{id="thm-chain-rule-matrix"}
 **:term[链式法则]{id="math.vector-calculus.chain-rule"}的矩阵形式**　设$\vb g:\R^n\to\R^m$在$\vb a$处:term[可微]{id="math.vector-calculus.differentiable"}，$\vb f:\R^m\to\R^p$在$\vb g(\vb a)$处可微，则复合函数$\vb f\circ\vb g$在$\vb a$处可微，并且$J_{\vb f\circ\vb g}(\vb a)=J_{\vb f}\bigl(\vb g(\vb a)\bigr)J_{\vb g}(\vb a)$。
 
-**证明思路**：记$\vb u=\vb g(\vb x)$。由多个自变量的链式法则，$\pdv{(f_i\circ\vb g)}{x_j}=\sum_k\pdv{f_i}{u_k}\pdv{g_k}{x_j}$，正是$J_{\vb f}$的第$i$行乘以$J_{\vb g}$的第$j$列。复合函数可微，道理是两个局部线性近似复合起来，误差仍比$|\vb h|$小得多。
+**证明思路**：记$\vb u=\vb g(\vb x)$。由多个自变量的链式法则，$\pdv{(f_i\circ\vb g)}{x_j}=\sum_k\pdv{f_i}{u_k}\pdv{g_k}{x_j}$，正是$J_{\vb f}$的第$i$行乘以$J_{\vb g}$的第$j$列。复合函数可微，道理是两个:term[局部线性近似]{id="math.vector-calculus.local-linear-approximation"}复合起来，误差仍比$|\vb h|$小得多。
 
 为什么是乘积：$\vb g$在$\vb a$附近近似于线性变换$J_{\vb g}$，$\vb f$在$\vb g(\vb a)$附近近似于$J_{\vb f}$，先作用$J_{\vb g}$、再作用$J_{\vb f}$，就是乘以矩阵$J_{\vb f}J_{\vb g}$。次序不能颠倒：外层函数的:term[雅可比矩阵]{id="math.vector-calculus.jacobian-matrix"}写在左边。上一节依赖关系图（dependency diagram）上「每条路径相乘再相加」，写成矩阵就是这一个乘法。
 
@@ -84,7 +84,7 @@ sliders:
 
 **为什么想到这么做**：两个分量函数$x=r\cos\theta$、$y=r\sin\theta$分别对$r$、$\theta$求:term[偏导数]{id="math.vector-calculus.partial-derivative"}，按「行是分量、列是变量」排好。
 
-**推导**：$J=\begin{pmatrix}\cos\theta&-r\sin\theta\\\sin\theta&r\cos\theta\end{pmatrix}$，在$\bigl(2,\frac\pi3\bigr)$处是$\begin{pmatrix}\frac12&-\sqrt3\\\frac{\sqrt3}2&1\end{pmatrix}$。行列式是$r\cos^2\theta+r\sin^2\theta=r=2$。由局部线性近似，$(r,\theta)$平面上边长$\Delta r$、$\Delta\theta$的小矩形，被变成面积约为$2\,\Delta r\Delta\theta$的小块；以后在[重积分的换元与雅可比行列式](lesson:math.vector-calculus.change-of-variables)里，这个面积的比例就是雅可比行列式（Jacobian determinant）。
+**推导**：$J=\begin{pmatrix}\cos\theta&-r\sin\theta\\\sin\theta&r\cos\theta\end{pmatrix}$，在$\bigl(2,\frac\pi3\bigr)$处是$\begin{pmatrix}\frac12&-\sqrt3\\\frac{\sqrt3}2&1\end{pmatrix}$。行列式是$r\cos^2\theta+r\sin^2\theta=r=2$。由:term[局部线性近似]{id="math.vector-calculus.local-linear-approximation"}，$(r,\theta)$平面上边长$\Delta r$、$\Delta\theta$的小矩形，被变成面积约为$2\,\Delta r\Delta\theta$的小块；以后在[重积分的换元与雅可比行列式](lesson:math.vector-calculus.change-of-variables)里，这个面积的比例就是:term[雅可比行列式]{id="math.vector-calculus.jacobian-determinant"}（Jacobian determinant）。
 
 ### 例 2　用矩阵乘积求复合函数的偏导数
 
@@ -99,4 +99,4 @@ $\vb g(s,t)=(s+t,\ st)$，$\vb f(u,v)=(u^2-v,\ e^v)$。用:term[链式法则]{id
 - 「:term[雅可比矩阵]{id="math.vector-calculus.jacobian-matrix"}的第$i$行是对$x_i$的:term[偏导数]{id="math.vector-calculus.partial-derivative"}。」行对应分量函数，列对应自变量；$\R^n\to\R^m$的雅可比矩阵是$m\times n$的。
 - 「$J_{\vb f\circ\vb g}=J_{\vb g}J_{\vb f}$。」先作用的写在右边，外层的$J_{\vb f}$在左，而且要在$\vb g(\vb a)$处取值；例 2 里换了次序，结果就不对。
 - 「雅可比矩阵给出的线性变换，在整个定义域上都代替得了原来的函数。」它只是一点附近的近似，离开这一点越远误差越大（第 7 题）。
-- 「:term[偏导数]{id="math.vector-calculus.partial-derivative"}都存在，就有局部线性近似。」要各分量函数:term[可微]{id="math.vector-calculus.differentiable"}；只有偏导数时，雅可比矩阵写得出来，却未必近似得了原来的函数。
+- 「:term[偏导数]{id="math.vector-calculus.partial-derivative"}都存在，就有:term[局部线性近似]{id="math.vector-calculus.local-linear-approximation"}。」要各分量函数:term[可微]{id="math.vector-calculus.differentiable"}；只有偏导数时，雅可比矩阵写得出来，却未必近似得了原来的函数。

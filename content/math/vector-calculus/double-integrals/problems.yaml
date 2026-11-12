@@ -1,0 +1,139 @@
+- id: p1
+  tier: easy
+  statement: |
+    $R$是矩形$0\le x\le1$、$0\le y\le2$。求$\iint_R6xy^2\,\dd A$。
+  answer:
+    type: number
+    value: 8
+  hints:
+    - |
+      被积函数是$x$的函数乘以$y$的函数，可以拆成两个一元积分的乘积。
+    - |
+      $\int_0^16x\dd x=3$，$\int_0^2y^2\dd y=\frac83$。
+    - |
+      $3\cdot\frac83=8$。
+  solution: |
+    $\iint_R6xy^2\,\dd A=\int_0^16x\dd x\cdot\int_0^2y^2\dd y=3\cdot\frac83=8$。
+
+- id: p2
+  tier: easy
+  statement: |
+    用二重积分求抛物线$y=x^2$和直线$y=2x$围成的区域的面积。
+  answer:
+    type: number
+    value: 4/3
+  hints:
+    - |
+      面积是$\iint_D1\,\dd A$。先求两条线的交点，再看哪条在上面。
+    - |
+      交点在$x=0$和$x=2$；$0\le x\le2$时$x^2\le y\le2x$。
+    - |
+      $\int_0^2\int_{x^2}^{2x}\dd y\dd x=\int_0^2(2x-x^2)\dd x=4-\frac83=\frac43$。
+  solution: |
+    区域是$0\le x\le2$、$x^2\le y\le2x$，面积$=\int_0^2(2x-x^2)\dd x=\frac43$。
+
+- id: p3
+  tier: medium
+  statement: |
+    $D$是抛物线$y=x^2$和直线$y=1$围成的区域。求$\iint_Dx^2y\,\dd A$。
+  answer:
+    type: number
+    value: 4/21
+  hints:
+    - |
+      先画出区域：$-1\le x\le1$，$x^2\le y\le1$。
+    - |
+      里层$\int_{x^2}^1x^2y\dd y=\frac{x^2(1-x^4)}2$。
+    - |
+      $\int_{-1}^1\frac{x^2-x^6}2\dd x=\frac13-\frac17=\frac4{21}\approx0.190$。
+  solution: |
+    $\iint_Dx^2y\,\dd A=\int_{-1}^1\int_{x^2}^1x^2y\dd y\dd x=\int_{-1}^1\frac{x^2-x^6}2\dd x=\frac4{21}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\int_0^1\int_{\sqrt x}^1e^{y^3}\dd y\dd x$。
+  answer:
+    type: number
+    value: (e - 1)/3
+  hints:
+    - |
+      $e^{y^3}$对$y$积不出来。把积分区域画出来，换成先对$x$积。
+    - |
+      区域是$0\le x\le1$、$\sqrt x\le y\le1$，也就是$0\le y\le1$、$0\le x\le y^2$。
+    - |
+      $\int_0^1\int_0^{y^2}e^{y^3}\dd x\dd y=\int_0^1y^2e^{y^3}\dd y=\frac13(e-1)\approx0.573$。
+  solution: |
+    换次序：$\int_0^1\int_0^{y^2}e^{y^3}\dd x\dd y=\int_0^1y^2e^{y^3}\dd y=\frac{e-1}3\approx0.573$。
+
+- id: p5
+  tier: hard
+  statement: |
+    $f$在$[0,+\infty)$上连续。证明对$x>0$，$\int_0^x\Bigl(\int_0^tf(s)\dd s\Bigr)\dd t=\int_0^x(x-s)f(s)\dd s$，并用$f(s)=s$验证。
+  hints:
+    - |
+      左边是一个累次积分：$t$从$0$到$x$，$s$从$0$到$t$。它对应哪个区域上$f(s)$的二重积分？
+    - |
+      区域是三角形$0\le s\le t\le x$。换成先对$t$积：$s$从$0$到$x$，$t$从$s$到$x$。
+    - |
+      $\int_0^x\int_s^xf(s)\dd t\dd s=\int_0^x(x-s)f(s)\dd s$。$f(s)=s$时，左边$\int_0^x\frac{t^2}2\dd t=\frac{x^3}6$，右边$\int_0^x(xs-s^2)\dd s=\frac{x^3}2-\frac{x^3}3=\frac{x^3}6$。
+  reference: |
+    左边的积分区域是三角形$T=\{(t,s):0\le t\le x,\ 0\le s\le t\}$，被积函数$f(s)$在$T$上连续，由一般区域上化成累次积分的定理，左边等于$\iint_Tf(s)\,\dd A$。$T$也可以写成$0\le s\le x$、$s\le t\le x$，换成先对$t$积：$\iint_Tf(s)\,\dd A=\int_0^x\Bigl(\int_s^xf(s)\dd t\Bigr)\dd s=\int_0^x(x-s)f(s)\dd s$。
+
+    验证：$f(s)=s$时，左边$\int_0^x\frac{t^2}2\dd t=\frac{x^3}6$，右边$\int_0^x(x-s)s\dd s=\frac{x^3}2-\frac{x^3}3=\frac{x^3}6$，相等。
+
+    这个公式把「积两次」换成「积一次、乘一个权重」：$s$处的值在后面每一个$t\in[s,x]$上都被累加一次，一共累加了长为$x-s$的一段。
+
+- id: p6
+  tier: hard
+  statement: |
+    $f$在$[a,b]$上连续，$R=[a,b]\times[a,b]$。由$\iint_R\bigl(f(x)-f(y)\bigr)^2\dd A\ge0$证明$\Bigl(\int_a^bf(x)\dd x\Bigr)^2\le(b-a)\int_a^bf(x)^2\dd x$，并说明等号什么时候成立。
+  hints:
+    - |
+      把$\bigl(f(x)-f(y)\bigr)^2$展开成三项，每一项都是$x$的函数乘以$y$的函数。
+    - |
+      $\iint_Rf(x)^2\dd A=(b-a)\int_a^bf^2$，$\iint_Rf(y)^2\dd A$也一样，$\iint_Rf(x)f(y)\dd A=\Bigl(\int_a^bf\Bigr)^2$。
+    - |
+      所以$0\le2(b-a)\int_a^bf^2-2\Bigl(\int_a^bf\Bigr)^2$。等号成立时，连续、非负的$\bigl(f(x)-f(y)\bigr)^2$积分为$0$，只能处处为$0$，即$f$是常数。
+  reference: |
+    展开：$\bigl(f(x)-f(y)\bigr)^2=f(x)^2-2f(x)f(y)+f(y)^2$。每一项都是$x$的函数乘以$y$的函数，在矩形上积分可以拆成乘积：$\iint_Rf(x)^2\dd A=\int_a^bf(x)^2\dd x\cdot\int_a^b\dd y=(b-a)\int_a^bf^2$，$\iint_Rf(y)^2\dd A$同样；$\iint_Rf(x)f(y)\dd A=\Bigl(\int_a^bf\Bigr)^2$。所以$0\le2(b-a)\int_a^bf^2-2\Bigl(\int_a^bf\Bigr)^2$，即要证的不等式。
+
+    等号成立当且仅当$\iint_R\bigl(f(x)-f(y)\bigr)^2\dd A=0$。被积函数$g(x,y)=\bigl(f(x)-f(y)\bigr)^2$连续、非负；如果它在某点为正，由连续性它在这点附近一个小矩形上大于某个正数，积分就大于$0$。所以$g$处处为$0$，$f(x)=f(y)$对所有$x$、$y$成立，$f$是常数；反过来$f$是常数时等号显然成立。
+
+    这是柯西-施瓦茨不等式（Cauchy-Schwarz inequality）的一个特例：$\Bigl(\int_a^b1\cdot f\Bigr)^2\le\int_a^b1^2\cdot\int_a^bf^2$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    两个立体夹在同样两个平行平面之间，被每一个和它们平行的平面截出的截面面积都相等，体积一定相等吗？用「把截面面积沿高度积起来」解释。再用它求半径为$R$的半球的体积：拿来比较的是底面半径为$R$、高为$R$的圆柱，挖去一个圆锥，圆锥的顶点在圆柱下底的中心，底面就是圆柱的上底。
+  hints:
+    - |
+      体积是截面面积$A(z)$沿高度$z$的积分；两个立体的$A(z)$处处相等，积分就相等。
+    - |
+      高度$z$处（$0\le z\le R$），半球的截面是半径$\sqrt{R^2-z^2}$的圆；圆柱挖去圆锥后的截面是圆环，外半径$R$，内半径$z$。
+    - |
+      两个截面的面积都是$\pi(R^2-z^2)$，所以半球的体积$=\pi R^2\cdot R-\frac13\pi R^2\cdot R=\frac23\pi R^3$。
+  reference: |
+    一定相等。把公共的方向取作$z$轴，体积是截面面积沿高度的积分$\int A(z)\dd z$，这正是讲解里「先积出截面面积、再积起来」的做法；两个立体的$A(z)$处处相等，积分就相等。截面的形状、位置都可以不一样。
+
+    半球$x^2+y^2+z^2\le R^2$、$0\le z\le R$在高度$z$处的截面是半径$\sqrt{R^2-z^2}$的圆，面积$\pi(R^2-z^2)$。圆柱挖去圆锥后，高度$z$处的截面是外半径$R$、内半径$z$的圆环，面积$\pi R^2-\pi z^2$，两者相等。所以半球的体积等于圆柱体积减去圆锥体积：$\pi R^3-\frac13\pi R^3=\frac23\pi R^3$。
+
+    这个原理在西方叫卡瓦列里原理（Cavalieri's principle），卡瓦列里 1635 年在《不可分量几何学》里提出；中国南北朝时祖暅求球的体积时已经用了同样的道理，叫祖暅原理。
+
+- id: p8
+  tier: thinking
+  statement: |
+    $g$在$[0,1]$上连续，$D$是三角形$0\le y\le x\le1$。证明$\iint_Dg(x-y)\,\dd A=\int_0^1(1-u)g(u)\dd u$。左边是二元的积分，右边却只剩一个变量，还多出一个权重$1-u$，这个权重是从哪里来的？
+  hints:
+    - |
+      先对$x$积：$\int_0^1\Bigl(\int_y^1g(x-y)\dd x\Bigr)\dd y$。里层令$u=x-y$（平移换元，见[换元积分法](lesson:math.calculus.substitution)）。
+    - |
+      里层变成$\int_0^{1-y}g(u)\dd u$。再把$(y,u)$看成新的两个变量，区域是$0\le y\le1$、$0\le u\le1-y$，换一次次序。
+    - |
+      换次序后$u$从$0$到$1$，$y$从$0$到$1-u$，得$\int_0^1(1-u)g(u)\dd u$。三角形里$x-y=u$的点，$y$可以从$0$取到$1-u$；权重就是这一段的长短。
+  reference: |
+    先对$x$积，里层令$u=x-y$：$\int_y^1g(x-y)\dd x=\int_0^{1-y}g(u)\dd u$。于是左边$=\int_0^1\int_0^{1-y}g(u)\dd u\dd y$，这是三角形$\{(y,u):0\le y\le1,\ 0\le u\le1-y\}$上$g(u)$的累次积分；换成先对$y$积，$u$从$0$到$1$、$y$从$0$到$1-u$，得$\int_0^1(1-u)g(u)\dd u$。
+
+    权重的来历：$g(x-y)$只依赖差$u=x-y$，三角形里差等于$u$的点排成一条斜线段，$y$从$0$变到$1-u$。差接近$0$的点很多（对角线附近的长线段），差接近$1$的点很少（只有角上一小段），所以把二元积分压成一元积分时，每个$u$要按「有多少点差等于$u$」来加权。
+
+    概率论里两个独立的、在$[0,1]$上均匀分布的随机变量，它们的差的分布正是这样算出来的；常微分方程里的[卷积](lesson:math.ode.convolution-impulse)$\int_0^tf(\tau)g(t-\tau)\dd\tau$也是在三角形区域上换次序得到的。

@@ -44,7 +44,7 @@ status: reviewed
 为什么这样定义：和一元函数一样，连续就是「求极限可以直接代入」。由极限的运算法则，多项式、分母不为零处的有理分式都连续；连续的一元函数和连续的:term[二元函数]{id="math.vector-calculus.multivariable-function"}复合起来仍然连续，例如$e^{x^2+y^2}$、$\sin(xy)$处处连续，$\sqrt{1-x^2-y^2}$在闭圆盘（closed disk）$x^2+y^2\le1$上连续。边界情况：$f(x,y)=\frac{xy}{x^2+y^2}$、$f(0,0)=0$，固定$y=0$看是$x$的连续函数，固定$x=0$看也是，可它在原点处的:term[二重极限]{id="math.vector-calculus.double-limit"}不存在，所以在原点不连续。
 
 ::anchor{id="thm-extreme-value"}
-**最值定理（extreme value theorem）**　设$D$是有界闭区域（bounded closed region），即包括边界在内、又能放进某个圆盘里的区域，例如闭矩形、闭圆盘。$D$上的连续函数在$D$上有界，并且能取到最大值和最小值。
+**:term[最值定理]{id="math.vector-calculus.extreme-value-theorem"}（extreme value theorem）**　设$D$是有界闭区域（bounded closed region），即包括边界在内、又能放进某个圆盘里的区域，例如闭矩形、闭圆盘。$D$上的连续函数在$D$上有界，并且能取到最大值和最小值。
 
 这里不证，道理和闭区间上的连续函数一样（见[闭区间上连续函数的性质](lesson:math.calculus.closed-interval-properties)）。两个条件缺一不可：$\frac{1}{1+x^2+y^2}$在整个平面上连续，却取不到最小值；$\frac{1}{x^2+y^2}$在挖掉原点的圆盘$0<x^2+y^2\le1$上连续，却无界。
 

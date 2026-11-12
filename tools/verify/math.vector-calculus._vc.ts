@@ -1,4 +1,5 @@
-// 多变量微积分验算脚本共用的小工具：数值偏导数、梯度、黑塞矩阵、雅可比矩阵，一元求根、求最值。
+// 多变量微积分验算脚本共用的小工具：数值偏导数、梯度、黑塞矩阵、雅可比矩阵，一元求根、求最值，
+// 双指数求积和嵌套的二重积分，牛顿法解方程组，龙格-库塔解 x' = F(x)。
 // 都只做数值计算，不含任何一道题的答案。
 
 export type Vec = number[];
@@ -92,3 +93,79 @@ export function rng(seed: number): () => number {
 }
 
 export const det2 = (A: Vec[]): number => A[0][0] * A[1][1] - A[0][1] * A[1][0];
+
+/**
+ * 双指数（tanh-sinh）求积：∫_a^b g(x) dx。端点处的根号、导数无界都不影响精度；
+ * 区间内部有折点时，调用方在折点处拆开。
+ */
+export function integrate(g: (x: number) => number, a: number, b: number, h = 1 / 32, tMax = 3.2): number {
+  if (a === b) return 0;
+  const c = (a + b) / 2;
+  const r = (b - a) / 2;
+  let sum = 0;
+  for (let k = -Math.round(tMax / h); k <= Math.round(tMax / h); k++) {
+    const t = k * h;
+    const u = (Math.PI / 2) * Math.sinh(t);
+    const x = c + r * Math.tanh(u);
+    if (x <= Math.min(a, b) || x >= Math.max(a, b)) continue;
+    const w = (Math.PI / 2) * Math.cosh(t) / Math.cosh(u) ** 2;
+    sum += w * g(x);
+  }
+  return r * h * sum;
+}
+
+/** 在折点处拆开再求积：points 是 [a, …, b] 里从小到大的分点。 */
+export const integratePieces = (g: (x: number) => number, points: number[]): number =>
+  points.slice(1).reduce((s, b, i) => s + integrate(g, points[i], b), 0);
+
+/** 二重积分 ∫_a^b ∫_{lo(x)}^{hi(x)} g(x, y) dy dx（内层也用双指数求积）。 */
+export const integrate2 = (g: (x: number, y: number) => number, a: number, b: number, lo: (x: number) => number, hi: (x: number) => number, h = 1 / 16): number =>
+  integrate((x) => integrate((y) => g(x, y), lo(x), hi(x), h), a, b, h);
+
+/** 解 n 元方程组 F(x) = 0：牛顿法，雅可比矩阵用中心差分。 */
+export function newton(F: (x: Vec) => Vec, x0: Vec, iterations = 50): Vec {
+  let x = [...x0];
+  for (let it = 0; it < iterations; it++) {
+    const Fx = F(x);
+    if (Math.max(...Fx.map(Math.abs)) < 1e-14) break;
+    const d = solve(jacobian(F, x, 1e-6), Fx);
+    x = x.map((xi, i) => xi - d[i]);
+  }
+  return x;
+}
+
+/** 高斯消元解 A x = b（列主元）。 */
+export function solve(A: Vec[], b: Vec): Vec {
+  const n = b.length;
+  const M = A.map((row, i) => [...row, b[i]]);
+  for (let col = 0; col < n; col++) {
+    let p = col;
+    for (let r = col + 1; r < n; r++) if (Math.abs(M[r][col]) > Math.abs(M[p][col])) p = r;
+    [M[col], M[p]] = [M[p], M[col]];
+    for (let r = col + 1; r < n; r++) {
+      const f = M[r][col] / M[col][col];
+      for (let c = col; c <= n; c++) M[r][c] -= f * M[col][c];
+    }
+  }
+  const x = new Array(n).fill(0);
+  for (let r = n - 1; r >= 0; r--) {
+    let s = M[r][n];
+    for (let c = r + 1; c < n; c++) s -= M[r][c] * x[c];
+    x[r] = s / M[r][r];
+  }
+  return x;
+}
+
+/** 四阶龙格-库塔：沿 x' = F(x) 从 x0 走 steps 步、每步 dt，返回终点。 */
+export function rk4(F: (x: Vec) => Vec, x0: Vec, dt: number, steps: number): Vec {
+  let x = [...x0];
+  const add = (u: Vec, v: Vec, s: number): Vec => u.map((ui, i) => ui + s * v[i]);
+  for (let k = 0; k < steps; k++) {
+    const k1 = F(x);
+    const k2 = F(add(x, k1, dt / 2));
+    const k3 = F(add(x, k2, dt / 2));
+    const k4 = F(add(x, k3, dt));
+    x = x.map((xi, i) => xi + (dt / 6) * (k1[i] + 2 * k2[i] + 2 * k3[i] + k4[i]));
+  }
+  return x;
+}

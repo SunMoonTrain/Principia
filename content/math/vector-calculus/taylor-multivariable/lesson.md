@@ -22,7 +22,7 @@ status: reviewed
 ::anchor{id="thm-taylor"}
 **二阶的:term[多元泰勒公式]{id="math.vector-calculus.taylor-formula"}（Taylor's formula）**　设$f$在$(a,b)$附近有:term[连续]{id="math.vector-calculus.continuous"}（continuous）的:term[二阶偏导数]{id="math.vector-calculus.second-partial-derivative"}（second-order partial derivative），则$f(a+h,b+k)=f(a,b)+f_xh+f_yk+\frac12\bigl(f_{xx}h^2+2f_{xy}hk+f_{yy}k^2\bigr)+r(h,k)$，其中各:term[偏导数]{id="math.vector-calculus.partial-derivative"}都在$(a,b)$处取值，并且$(h,k)\to(0,0)$时$\frac{r(h,k)}{h^2+k^2}\to0$。
 
-**证明思路**：把$f$限制在线段上，令$g(t)=f(a+th,b+tk)$。由:term[链式法则]{id="math.vector-calculus.chain-rule"}（chain rule），$g'(t)=f_xh+f_yk$，再用一次得$g''(t)=f_{xx}h^2+2f_{xy}hk+f_{yy}k^2$，偏导数在$(a+th,b+tk)$处取值，两个混合项由施瓦茨定理（Schwarz's theorem）合并成$2f_{xy}hk$。令$\varphi(t)=g(t)-g(0)-g'(0)t-\frac12g''(0)t^2$，$\varphi(0)=\varphi'(0)=0$，对$\varphi$、$\varphi'$各用一次微分中值定理（mean value theorem，见[微分中值定理](lesson:math.calculus.mean-value-theorem)），得$r=\varphi(1)=\varphi''(\theta)\theta_1$，$0<\theta<\theta_1<1$；而$\varphi''(\theta)=g''(\theta)-g''(0)$，二阶偏导数连续，它比$h^2+k^2$小得多。
+**证明思路**：把$f$限制在线段上，令$g(t)=f(a+th,b+tk)$。由:term[链式法则]{id="math.vector-calculus.chain-rule"}（chain rule），$g'(t)=f_xh+f_yk$，再用一次得$g''(t)=f_{xx}h^2+2f_{xy}hk+f_{yy}k^2$，偏导数在$(a+th,b+tk)$处取值，两个混合项由:term[施瓦茨定理]{id="math.vector-calculus.schwarz-theorem"}（Schwarz's theorem）合并成$2f_{xy}hk$。令$\varphi(t)=g(t)-g(0)-g'(0)t-\frac12g''(0)t^2$，$\varphi(0)=\varphi'(0)=0$，对$\varphi$、$\varphi'$各用一次微分中值定理（mean value theorem，见[微分中值定理](lesson:math.calculus.mean-value-theorem)），得$r=\varphi(1)=\varphi''(\theta)\theta_1$，$0<\theta<\theta_1<1$；而$\varphi''(\theta)=g''(\theta)-g''(0)$，二阶偏导数连续，它比$h^2+k^2$小得多。
 
 为什么是这个样子：沿线段看，就是一元的泰勒公式$g(1)\approx g(0)+g'(0)+\frac12g''(0)$（见[泰勒公式](lesson:math.calculus.taylor-polynomial)）。一次项是:term[全微分]{id="math.vector-calculus.total-differential"}（total differential），二次项是$h$、$k$的二次式，三个系数是三个二阶偏导数。$n$元函数同样有$f(\vb a+\vb h)=f(\vb a)+\sum_i\pdv{f}{x_i}(\vb a)h_i+\frac12\sum_{i,j}\frac{\partial^2f}{\partial x_i\,\partial x_j}(\vb a)h_ih_j+r$，$\frac{r}{|\vb h|^2}\to0$。
 
@@ -31,7 +31,7 @@ status: reviewed
 ::anchor{id="def-hessian"}
 $f$的:term[二阶偏导数]{id="math.vector-calculus.second-partial-derivative"}在$\vb a$处都存在时，$n\times n$矩阵$H_f(\vb a)$，第$i$行第$j$列是先对$x_i$、再对$x_j$求的二阶偏导数$f_{x_ix_j}(\vb a)=\frac{\partial^2f}{\partial x_j\,\partial x_i}(\vb a)$，叫作$f$在$\vb a$处的:term[黑塞矩阵]{id="math.vector-calculus.hessian-matrix"}（Hessian matrix）。二元时$H_f=\begin{pmatrix}f_{xx}&f_{xy}\\f_{yx}&f_{yy}\end{pmatrix}$。
 
-为什么这样定义：记$H_{ij}$为第$i$行第$j$列的元素，:term[二阶泰勒公式]{id="math.vector-calculus.taylor-formula"}的二次项正是$\frac12\sum_{i,j}H_{ij}h_ih_j$，和一元的$f(a)+f'(a)h+\frac12f''(a)h^2$一一对应，黑塞矩阵扮演二阶导数的角色。二阶偏导数:term[连续]{id="math.vector-calculus.continuous"}时，由施瓦茨定理，$H_{ij}=H_{ji}$，黑塞矩阵关于主对角线（main diagonal）对称。边界情况：一元时它就是只有一个元素$f''(a)$的矩阵。
+为什么这样定义：记$H_{ij}$为第$i$行第$j$列的元素，:term[二阶泰勒公式]{id="math.vector-calculus.taylor-formula"}的二次项正是$\frac12\sum_{i,j}H_{ij}h_ih_j$，和一元的$f(a)+f'(a)h+\frac12f''(a)h^2$一一对应，黑塞矩阵扮演二阶导数的角色。二阶偏导数:term[连续]{id="math.vector-calculus.continuous"}时，由:term[施瓦茨定理]{id="math.vector-calculus.schwarz-theorem"}，$H_{ij}=H_{ji}$，黑塞矩阵关于主对角线（main diagonal）对称。边界情况：一元时它就是只有一个元素$f''(a)$的矩阵。
 
 ### 驻点附近的形状
 

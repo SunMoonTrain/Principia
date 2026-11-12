@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 396" width="640" height="396" font-size="13">
+  <!-- 原点 (300, 186)，130 像素/单位；单位圆，两个小方框各边长 0.36 个单位 -->
+  <line x1="124.5" y1="186" x2="500" y2="186" style="stroke: var(--muted, #6b7280)" stroke-width="1" />
+  <path d="M 508 186 L 500 190 L 500 182 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="300" y1="331.6" x2="300" y2="25" style="stroke: var(--muted, #6b7280)" stroke-width="1" />
+  <path d="M 300 17 L 304 25 L 296 25 Z" style="fill: var(--muted, #6b7280)" />
+  <text x="514" y="191" font-size="14" fill="currentColor"><tspan font-style="italic">x</tspan></text>
+  <text x="292" y="21" text-anchor="end" font-size="14" fill="currentColor"><tspan font-style="italic">y</tspan></text>
+  <path d="M 170 186 A 130 130 0 1 0 430 186 A 130 130 0 1 0 170 186 Z" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <rect x="354.6" y="58.6" width="46.8" height="46.8" style="stroke: var(--good, #0f8a5f); fill: var(--good, #0f8a5f)" fill-opacity="0.12" stroke-width="1.6" />
+  <circle cx="378" cy="82" r="3.5" style="fill: var(--good, #0f8a5f)" />
+  <rect x="406.6" y="162.6" width="46.8" height="46.8" style="stroke: var(--warn, #a8661a); fill: var(--warn, #a8661a)" fill-opacity="0.12" stroke-width="1.6" />
+  <circle cx="430" cy="186" r="3.5" style="fill: var(--warn, #a8661a)" />
+  <line x1="323.4" y1="41.05" x2="432.6" y2="122.95" style="stroke: var(--good, #0f8a5f)" stroke-width="1.2" stroke-dasharray="5 3" />
+  <line x1="430" y1="240.6" x2="430" y2="131.4" style="stroke: var(--warn, #a8661a)" stroke-width="1.2" stroke-dasharray="5 3" />
+  <text x="348.6" y="50.6" text-anchor="end" font-size="14" style="fill: var(--good, #0f8a5f)" fill="currentColor"><tspan font-style="italic">A</tspan></text>
+  <text x="411.4" y="62.6" style="fill: var(--good, #0f8a5f)" fill="currentColor"><tspan font-style="italic">F</tspan><tspan font-size="10" dy="3"><tspan font-style="italic">y</tspan></tspan><tspan dy="-3"> = 1.6 ≠ 0</tspan></text>
+  <text x="414.6" y="156.6" text-anchor="end" font-size="14" style="fill: var(--warn, #a8661a)" fill="currentColor"><tspan font-style="italic">B</tspan></text>
+  <text x="463.4" y="211.4" style="fill: var(--warn, #a8661a)" fill="currentColor"><tspan font-style="italic">F</tspan><tspan font-size="10" dy="3"><tspan font-style="italic">y</tspan></tspan><tspan dy="-3"> = 0，切线竖直</tspan></text>
+  <text x="320" y="356" text-anchor="middle" fill="currentColor"><tspan font-style="italic">F</tspan><tspan font-size="10" dy="3"><tspan font-style="italic">y</tspan></tspan><tspan dy="-3"> ≠ 0：附近的圆弧是某个函数 <tspan font-style="italic">y</tspan>(<tspan font-style="italic">x</tspan>) 的图像</tspan></text>
+  <text x="320" y="380" text-anchor="middle" fill="currentColor"><tspan font-style="italic">F</tspan><tspan font-size="10" dy="3"><tspan font-style="italic">y</tspan></tspan><tspan dy="-3"> = 0：切线竖直，附近的圆弧写不成 <tspan font-style="italic">y</tspan>(<tspan font-style="italic">x</tspan>)，但能写成 <tspan font-style="italic">x</tspan>(<tspan font-style="italic">y</tspan>)</tspan></text>
+</svg>

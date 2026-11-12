@@ -1,0 +1,139 @@
+- id: p1
+  tier: easy
+  statement: |
+    曲线$x^2+xy+y^2=3$过点$(1,1)$。由隐函数定理，求这一点处的$\dv yx$。
+  answer:
+    type: number
+    value: -1
+  hints:
+    - |
+      令$F(x,y)=x^2+xy+y^2-3$，$\dv yx=-\frac{F_x}{F_y}$。
+    - |
+      $F_x=2x+y$，$F_y=x+2y$，在$(1,1)$处都是$3$。
+    - |
+      $F_y=3\ne0$，$\dv yx=-\frac33=-1$。
+  solution: |
+    $F_x=2x+y=3$，$F_y=x+2y=3\ne0$，$\dv yx=-\frac{F_x}{F_y}=-1$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $\vb f(u,v)=(u+v,\ uv)$。求它的雅可比矩阵在点$(2,1)$处的行列式。
+  answer:
+    type: number
+    value: 1
+  hints:
+    - |
+      雅可比矩阵的第一行是$u+v$对$u$、$v$的偏导数，第二行是$uv$的。
+    - |
+      $J=\begin{pmatrix}1&1\\v&u\end{pmatrix}$，行列式$u-v$。
+    - |
+      在$(2,1)$处是$2-1=1\ne0$，所以$\vb f$在$(2,1)$附近局部可逆。
+  solution: |
+    $\det\begin{pmatrix}1&1\\v&u\end{pmatrix}=u-v$，在$(2,1)$处是$1$。它在$u=v$的点为$0$：那里交换$u$、$v$得到同一个像，附近不可逆。
+
+- id: p3
+  tier: medium
+  statement: |
+    方程$xyz+z^3=2$在点$(1,1,1)$附近确定了函数$z=z(x,y)$。求这一点处的$z_x$和$z_y$，按顺序填写。
+  answer:
+    type: tuple
+    value: [-1/4, -1/4]
+  hints:
+    - |
+      令$F=xyz+z^3-2$，$z_x=-\frac{F_x}{F_z}$，$z_y=-\frac{F_y}{F_z}$。
+    - |
+      $F_x=yz$，$F_y=xz$，$F_z=xy+3z^2$，在$(1,1,1)$处分别是$1$、$1$、$4$。
+    - |
+      $F_z=4\ne0$，$z_x=-\frac14$，$z_y=-\frac14$，填 `-1/4, -1/4`。
+  solution: |
+    $F_z=xy+3z^2=4\ne0$，$z_x=-\frac{yz}{4}=-\frac14$，$z_y=-\frac{xz}4=-\frac14$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $\vb f(u,v)=(u^2-v^2,\ 2uv)$，$\vb f(1,1)=(0,2)$。不解出反函数，求$\vb f^{-1}$在点$(0,2)$处的雅可比矩阵，按行填写四个元素。
+  answer:
+    type: tuple
+    value: [1/4, 1/4, -1/4, 1/4]
+  hints:
+    - |
+      由反函数定理，$J_{\vb f^{-1}}(0,2)=\bigl(J_{\vb f}(1,1)\bigr)^{-1}$。
+    - |
+      $J_{\vb f}=\begin{pmatrix}2u&-2v\\2v&2u\end{pmatrix}$，在$(1,1)$处是$\begin{pmatrix}2&-2\\2&2\end{pmatrix}$，行列式$8$。
+    - |
+      逆矩阵是$\frac18\begin{pmatrix}2&2\\-2&2\end{pmatrix}=\begin{pmatrix}\frac14&\frac14\\-\frac14&\frac14\end{pmatrix}$，填 `1/4, 1/4, -1/4, 1/4`。
+  solution: |
+    $J_{\vb f}(1,1)=\begin{pmatrix}2&-2\\2&2\end{pmatrix}$，它的逆矩阵$\begin{pmatrix}\frac14&\frac14\\-\frac14&\frac14\end{pmatrix}$就是$J_{\vb f^{-1}}(0,2)$。
+
+- id: p5
+  tier: hard
+  statement: |
+    $F$有连续的偏导数，$F(a,b)=c$，并且$(F_x,F_y)$在$(a,b)$处不是零向量。用隐函数定理证明：$(a,b)$附近的等值线$F=c$是一条光滑曲线，它在$(a,b)$处的切线和$(F_x,F_y)$垂直。
+  hints:
+    - |
+      分两种情形：$F_y(a,b)\ne0$，或$F_y(a,b)=0$而$F_x(a,b)\ne0$。
+    - |
+      $F_y\ne0$时，对$F(x,y)-c$用隐函数定理，附近的等值线是$y=\varphi(x)$的图像，$\varphi'=-\frac{F_x}{F_y}$。
+    - |
+      曲线写成$\vb r(x)=\bigl(x,\varphi(x)\bigr)$，切向量（tangent vector）$(1,\varphi')=\Bigl(1,-\frac{F_x}{F_y}\Bigr)$，和$(F_x,F_y)$的点积（dot product）是$F_x-F_x=0$。另一种情形交换$x$、$y$的地位。
+  reference: |
+    若$F_y(a,b)\ne0$：对$G(x,y)=F(x,y)-c$用隐函数定理，$(a,b)$附近的等值线恰是一个有连续导数的函数$y=\varphi(x)$的图像，所以是一条光滑曲线。它的切向量是$(1,\varphi'(a))=\Bigl(1,-\frac{F_x}{F_y}\Bigr)$，和$(F_x,F_y)$的点积为$F_x-\frac{F_x}{F_y}F_y=0$，两者垂直。
+
+    若$F_y(a,b)=0$，则$F_x(a,b)\ne0$。把$x$、$y$的地位交换，由隐函数定理，附近的等值线是$x=\psi(y)$的图像，切向量$\Bigl(-\frac{F_y}{F_x},1\Bigr)$，同样和$(F_x,F_y)$垂直。
+
+    $(F_x,F_y)$就是$F$的梯度。这补上了[方向导数与梯度](lesson:math.vector-calculus.gradient)里「梯度不为零时，过这一点的等值线确实是一条光滑曲线」那一步。
+
+- id: p6
+  tier: hard
+  statement: |
+    $x=u+v$，$y=u^2+v^2$。在点$(u,v)=(1,2)$附近能不能把$u$、$v$解成$x$、$y$的函数？能的话，求$\pdv ux$、$\pdv uy$、$\pdv vx$、$\pdv vy$在这一点的值。为什么在$u=v$的点附近不行？
+  hints:
+    - |
+      映射$(u,v)\mapsto(x,y)$的雅可比矩阵是$\begin{pmatrix}1&1\\2u&2v\end{pmatrix}$，行列式$2v-2u$。
+    - |
+      在$(1,2)$处行列式是$2\ne0$，可以解出。$u$、$v$对$x$、$y$的偏导数组成的矩阵是$\begin{pmatrix}1&1\\2&4\end{pmatrix}$的逆矩阵。
+    - |
+      逆矩阵$\frac12\begin{pmatrix}4&-1\\-2&1\end{pmatrix}$：$\pdv ux=2$，$\pdv uy=-\frac12$，$\pdv vx=-1$，$\pdv vy=\frac12$。$u=v$时行列式为$0$；交换$u$、$v$不改变$x$、$y$，附近的两个点$(u,v)$、$(v,u)$映到同一处，没法唯一地解。
+  reference: |
+    雅可比矩阵$\begin{pmatrix}1&1\\2u&2v\end{pmatrix}$的行列式是$2(v-u)$，在$(1,2)$处为$2\ne0$。由反函数定理，在$(x,y)=(3,5)$附近可以把$u$、$v$唯一地解成$x$、$y$的有连续偏导数的函数，并且它们的雅可比矩阵是$\begin{pmatrix}1&1\\2&4\end{pmatrix}^{-1}=\frac12\begin{pmatrix}4&-1\\-2&1\end{pmatrix}$。所以$\pdv ux=2$，$\pdv uy=-\frac12$，$\pdv vx=-1$，$\pdv vy=\frac12$。
+
+    验算：由$x=u+v$、$y=u^2+v^2$得$uv=\frac{x^2-y}2$，$u$、$v$是$t^2-xt+\frac{x^2-y}2=0$的两根，在$(1,2)$附近$u=\frac{x-\sqrt{2y-x^2}}2$，$\pdv ux=\frac12+\frac{x}{2\sqrt{2y-x^2}}=\frac12+\frac32=2$，一致。
+
+    $u=v$时行列式为$0$，对应$2y-x^2=0$，两根重合。附近的$(u,v)$和$(v,u)$给出同一个$(x,y)$，在$u=v$的任何一点附近都不是一一对应，所以解不出来。
+
+- id: p7
+  tier: thinking
+  statement: |
+    隐函数定理的条件$F_y\ne0$是不是必要的？分别看三个例子在原点附近：$F=y^3-x$，$F=x^2-y^2$，$F=(x-y)^2$。哪些能写成$y=y(x)$，$F_y$又是多少？
+  hints:
+    - |
+      三个例子在原点都有$F=0$，$F_y$分别是$3y^2$、$-2y$、$-2(x-y)$，在原点都是$0$。
+    - |
+      $y^3=x$能解出$y=\sqrt[3]x$；$x^2-y^2=0$是两条直线$y=\pm x$；$(x-y)^2=0$就是$y=x$。
+    - |
+      第一个和第三个都能写成$y(x)$，第二个不能，可三个的$F_y$都是$0$。所以$F_y\ne0$只是充分条件：它保证能解出、而且解出的函数可导；$F_y=0$时什么情况都可能发生。
+  reference: |
+    三个函数在原点都有$F=0$、$F_y=0$，隐函数定理都用不上，结果却各不相同。
+
+    $F=y^3-x$：$F=0$即$y=\sqrt[3]x$，原点附近是一个函数的图像，只是在$0$处不可导（切线竖直），这和$F_y=0$相符：可导的话$y'=-\frac{F_x}{F_y}$会是$\frac10$。$F=x^2-y^2$：$F=0$是两条直线$y=x$、$y=-x$，在原点交叉，任何一个$x\ne0$都对应两个$y$，写不成函数。$F=(x-y)^2$：$F=0$就是$y=x$，是一个可导函数的图像，可$F$在这条直线上处处$F_x=F_y=0$，因为$F$在那里取极小值$0$，等值线退化了。
+
+    所以条件$F_y\ne0$是充分的，不是必要的：它一检查就能保证结论；不满足时要另外分析。实际用时，$F_y=0$的点常常正是曲线的切线竖直、自相交或退化的地方。
+
+- id: p8
+  tier: thinking
+  statement: |
+    一元时，$f'$在一个区间上处处不为零，$f$在这个区间上就是一一对应的。二元时，例 1 的映射的雅可比矩阵的行列式处处不为零，却不是一一对应。一元的论证用到了什么，为什么搬不到平面上？
+  hints:
+    - |
+      一元的论证：$f'$不变号（导数有介值性），$f$严格单调（见[单调性与极值的判别](lesson:math.calculus.monotonicity)），所以一一对应。
+    - |
+      平面上没有「单调」：从一点出发可以沿不同的路线走到同一个像。例 1 里$v$增加$2\pi$，像点绕原点转一圈回到原处。
+    - |
+      行列式不为零只保证每一点附近一一对应（局部可逆）；整体上像点可以绕圈回来。所以多元时要判断整体是否可逆，还得用别的办法，例如直接解方程。
+  reference: |
+    一元时：$f'$在区间上处处不为零，由导数的介值性它不变号，$f$严格单调，所以一一对应。这个论证靠的是数轴的顺序：$x_1<x_2$推出$f(x_1)<f(x_2)$。
+
+    平面上没有这样的顺序。例 1 的映射$(u,v)\mapsto(e^u\cos v,e^u\sin v)$在每一点附近都把小块一一对应地变过去，可是沿$v$方向走$2\pi$，像点绕原点一圈回到原处，$(u,v)$和$(u,v+2\pi)$的像相同。局部的「不折叠」拼不出整体的一一对应。
+
+    所以反函数定理只是局部的。要知道整体是否可逆，得另外论证，例如直接解出反函数，或者限制定义域（例 1 限制$0\le v<2\pi$就整体一一对应了，这正是极坐标）。

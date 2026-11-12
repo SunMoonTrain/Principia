@@ -36,7 +36,7 @@ $f_x$、$f_y$仍是$x$、$y$的函数，对它们再求:term[偏导数]{id="math
 ### 混合偏导数相等的条件
 
 ::anchor{id="thm-schwarz"}
-**施瓦茨定理（Schwarz's theorem）**　设$f$的:term[混合偏导数]{id="math.vector-calculus.mixed-partial-derivative"}$f_{xy}$、$f_{yx}$在$(a,b)$附近都存在，并且在$(a,b)$处:term[连续]{id="math.vector-calculus.continuous"}，则$f_{xy}(a,b)=f_{yx}(a,b)$。这个定理也叫克莱罗定理（Clairaut's theorem）。
+**:term[施瓦茨定理]{id="math.vector-calculus.schwarz-theorem"}（Schwarz's theorem）**　设$f$的:term[混合偏导数]{id="math.vector-calculus.mixed-partial-derivative"}$f_{xy}$、$f_{yx}$在$(a,b)$附近都存在，并且在$(a,b)$处:term[连续]{id="math.vector-calculus.continuous"}，则$f_{xy}(a,b)=f_{yx}(a,b)$。这个定理也叫克莱罗定理（Clairaut's theorem）。
 
 **证明思路**：考虑$\Delta=f(a+h,b+k)-f(a+h,b)-f(a,b+k)+f(a,b)$。令$\varphi(x)=f(x,b+k)-f(x,b)$，则$\Delta=\varphi(a+h)-\varphi(a)$；对$\varphi$用一次微分中值定理（mean value theorem，见[微分中值定理](lesson:math.calculus.mean-value-theorem)），再对$f_x(\xi,\cdot)$用一次，得$\Delta=f_{xy}(\xi,\eta)hk$，$(\xi,\eta)$在以$(a,b)$、$(a+h,b+k)$为对角的矩形里。换个次序，令$\psi(y)=f(a+h,y)-f(a,y)$，同样得$\Delta=f_{yx}(\xi',\eta')hk$。两式相等，约去$hk$后让$h,k\to0$，由连续性得$f_{xy}(a,b)=f_{yx}(a,b)$。
 
@@ -83,7 +83,7 @@ $f(x,y)=\ln(x^2+y^2)$。求四个:term[二阶偏导数]{id="math.vector-calculus
 
 **为什么想到这么做**：先求:term[一阶偏导数]{id="math.vector-calculus.partial-derivative"}，再分别对$x$、$y$求导；分母相同的分式，用商的求导法则。
 
-**推导**：$f_x=\frac{2x}{x^2+y^2}$，$f_y=\frac{2y}{x^2+y^2}$。$f_{xx}=\frac{2(x^2+y^2)-2x\cdot2x}{(x^2+y^2)^2}=\frac{2(y^2-x^2)}{(x^2+y^2)^2}$，同理$f_{yy}=\frac{2(x^2-y^2)}{(x^2+y^2)^2}$，两者相加为$0$。$f_{xy}=\frac{-2x\cdot2y}{(x^2+y^2)^2}=-\frac{4xy}{(x^2+y^2)^2}$，$f_{yx}$也算得同样的结果，和施瓦茨定理一致（除原点外二阶偏导数都:term[连续]{id="math.vector-calculus.continuous"}）。
+**推导**：$f_x=\frac{2x}{x^2+y^2}$，$f_y=\frac{2y}{x^2+y^2}$。$f_{xx}=\frac{2(x^2+y^2)-2x\cdot2x}{(x^2+y^2)^2}=\frac{2(y^2-x^2)}{(x^2+y^2)^2}$，同理$f_{yy}=\frac{2(x^2-y^2)}{(x^2+y^2)^2}$，两者相加为$0$。$f_{xy}=\frac{-2x\cdot2y}{(x^2+y^2)^2}=-\frac{4xy}{(x^2+y^2)^2}$，$f_{yx}$也算得同样的结果，和:term[施瓦茨定理]{id="math.vector-calculus.schwarz-theorem"}一致（除原点外二阶偏导数都:term[连续]{id="math.vector-calculus.continuous"}）。
 
 ## 常见误区
 

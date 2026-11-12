@@ -67,6 +67,15 @@ glossary:
       $\lim_{(x,y)\to(a,b)}f(x,y)=f(a,b)$时，说多元函数$f$在$(a,b)$处连续：求极限可以直接代入。
     definedIn: math.vector-calculus.multivariable-limits
     anchor: def-continuous
+  - id: math.vector-calculus.extreme-value-theorem
+    zh: |
+      最值定理
+    en: |
+      extreme value theorem
+    brief: |
+      多元函数在有界闭区域上连续时，一定能取到最大值和最小值；有界、闭两个条件少一个都可能取不到。
+    definedIn: math.vector-calculus.multivariable-limits
+    anchor: thm-extreme-value
   - id: math.vector-calculus.partial-derivative
     zh: |
       偏导数
@@ -94,6 +103,15 @@ glossary:
       对不同变量先后求导得到的二阶偏导数$f_{xy}$、$f_{yx}$；它们在一点附近存在并在这一点连续时相等。
     definedIn: math.vector-calculus.partial-derivatives
     anchor: def-second-partials
+  - id: math.vector-calculus.schwarz-theorem
+    zh: |
+      施瓦茨定理
+    en: |
+      Schwarz's theorem
+    brief: |
+      混合偏导数$f_{xy}$、$f_{yx}$在一点附近都存在、在这一点连续时，两者在这一点相等：求导的先后可以交换。
+    definedIn: math.vector-calculus.partial-derivatives
+    anchor: thm-schwarz
   - id: math.vector-calculus.differentiable
     zh: |
       可微
@@ -193,6 +211,15 @@ glossary:
       第$i$行第$j$列是$\pdv{f_i}{x_j}$的矩阵$J_{\vb f}$；可微时$\vb f(\vb a+\vb h)\approx\vb f(\vb a)+J_{\vb f}(\vb a)\vb h$。
     definedIn: math.vector-calculus.jacobian
     anchor: def-jacobian-matrix
+  - id: math.vector-calculus.local-linear-approximation
+    zh: |
+      局部线性近似
+    en: |
+      local linear approximation
+    brief: |
+      各分量函数在$\vb a$处可微时，$\vb f(\vb a+\vb h)\approx\vb f(\vb a)+J_{\vb f}(\vb a)\vb h$，误差比$|\vb h|$小得多：映射在一点附近像一个线性变换。
+    definedIn: math.vector-calculus.jacobian
+    anchor: thm-local-linear
   - id: math.vector-calculus.taylor-formula
     zh: |
       多元泰勒公式
@@ -220,3 +247,156 @@ glossary:
       把严格凸的$f(x)$换成以斜率$p=f'(x)$为自变量的$f^*(p)=px-f(x)$；$(f^*)'(p)=x$，变换两次回到$f$。
     definedIn: math.vector-calculus.legendre-transform
     anchor: def-legendre-transform
+  - id: math.vector-calculus.double-integral
+    zh: |
+      二重积分
+    en: |
+      double integral
+    brief: |
+      把区域分成小块、作黎曼和$\sum f(x_k^*,y_k^*)\Delta A_k$，小块越分越细时的极限，记作$\iint_Df\,\dd A$；$f\ge0$时是曲面下的体积。
+    definedIn: math.vector-calculus.double-integrals
+    anchor: def-double-integral
+  - id: math.vector-calculus.area-element
+    zh: |
+      面积元
+    en: |
+      area element
+    brief: |
+      二重积分$\iint_Df\,\dd A$里的$\dd A$，表示分出的小块的面积；直角坐标下也写成$\dd x\dd y$。
+    definedIn: math.vector-calculus.double-integrals
+    anchor: def-double-integral
+  - id: math.vector-calculus.iterated-integral
+    zh: |
+      累次积分
+    en: |
+      iterated integral
+    brief: |
+      先对一个变量积、再对另一个变量积，如$\int_a^b\int_c^df(x,y)\dd y\dd x$，里层的积分号和最靠里的$\dd y$配对；$f$连续时它等于二重积分。
+    definedIn: math.vector-calculus.double-integrals
+    anchor: def-iterated-integral
+  - id: math.vector-calculus.fubini-theorem
+    zh: |
+      富比尼定理
+    en: |
+      Fubini's theorem
+    brief: |
+      $f$在闭矩形$[a,b]\times[c,d]$上连续时，二重积分可以化成累次积分，先对$x$还是先对$y$积结果一样。
+    definedIn: math.vector-calculus.double-integrals
+    anchor: thm-fubini
+  - id: math.vector-calculus.triple-integral
+    zh: |
+      三重积分
+    en: |
+      triple integral
+    brief: |
+      把立体分成小块、作黎曼和$\sum f\,\Delta V_k$，小块越分越细时的极限，记作$\iiint_\Omega f\,\dd V$；$f$是密度时是质量，$f\equiv1$时是体积。
+    definedIn: math.vector-calculus.triple-integrals
+    anchor: def-triple-integral
+  - id: math.vector-calculus.volume-element
+    zh: |
+      体积元
+    en: |
+      volume element
+    brief: |
+      三重积分$\iiint_\Omega f\,\dd V$里的$\dd V$，表示分出的小块的体积；直角坐标下也写成$\dd x\dd y\dd z$。
+    definedIn: math.vector-calculus.triple-integrals
+    anchor: def-triple-integral
+  - id: math.vector-calculus.improper-double-integral
+    zh: |
+      反常二重积分
+    en: |
+      improper double integral
+    brief: |
+      $f\ge0$在整个平面上连续时，圆盘$x^2+y^2\le R^2$上的二重积分在$R\to\infty$时的极限；换成正方形去逼近，极限也一样。
+    definedIn: math.vector-calculus.polar-double-integrals
+    anchor: def-improper-double
+  - id: math.vector-calculus.gaussian-integral
+    zh: |
+      高斯积分
+    en: |
+      Gaussian integral
+    brief: |
+      $\int_{-\infty}^{\infty}e^{-x^2}\dd x=\sqrt\pi$：平方成平面上$e^{-x^2-y^2}$的积分，换到极坐标就积得出来。
+    definedIn: math.vector-calculus.polar-double-integrals
+    anchor: thm-gaussian
+  - id: math.vector-calculus.cylindrical-coordinates
+    zh: |
+      柱坐标
+    en: |
+      cylindrical coordinates
+    brief: |
+      用$(s,\varphi,z)$表示空间的点：$x=s\cos\varphi$，$y=s\sin\varphi$，$s$是到$z$轴的距离；体积元$\dd V=s\,\dd s\dd\varphi\dd z$。
+    definedIn: math.vector-calculus.cylindrical-spherical
+    anchor: def-cylindrical
+  - id: math.vector-calculus.spherical-coordinates
+    zh: |
+      球坐标
+    en: |
+      spherical coordinates
+    brief: |
+      用$(r,\theta,\varphi)$表示空间的点：$z=r\cos\theta$，$x=r\sin\theta\cos\varphi$，$y=r\sin\theta\sin\varphi$，$\theta$是从$z$轴正向量起的角；体积元$r^2\sin\theta\,\dd r\dd\theta\dd\varphi$。
+    definedIn: math.vector-calculus.cylindrical-spherical
+    anchor: def-spherical
+  - id: math.vector-calculus.jacobian-determinant
+    zh: |
+      雅可比行列式
+    en: |
+      Jacobian determinant
+    brief: |
+      变换$x(u,v)$、$y(u,v)$的雅可比矩阵的行列式$\frac{\partial(x,y)}{\partial(u,v)}$；它的绝对值是这一点附近面积放大的倍数，换元时乘在$\dd u\dd v$上。
+    definedIn: math.vector-calculus.change-of-variables
+    anchor: def-jacobian-determinant
+  - id: math.vector-calculus.inverse-function-theorem
+    zh: |
+      反函数定理
+    en: |
+      inverse function theorem
+    brief: |
+      $\vb f$有连续的偏导数、在$\vb a$处雅可比矩阵的行列式不为$0$时，$\vb f$在$\vb a$附近一一对应，反过来的映射的雅可比矩阵是原来的逆矩阵。
+    definedIn: math.vector-calculus.inverse-implicit
+    anchor: thm-inverse-function
+  - id: math.vector-calculus.implicit-function-theorem
+    zh: |
+      隐函数定理
+    en: |
+      implicit function theorem
+    brief: |
+      $F(a,b)=0$、$F_y(a,b)\ne0$、偏导数连续时，$a$附近由$F(x,y)=0$能唯一地解出有连续导数的$y(x)$，并且$y'=-\frac{F_x}{F_y}$。
+    definedIn: math.vector-calculus.inverse-implicit
+    anchor: thm-implicit-function
+  - id: math.vector-calculus.lagrange-multipliers
+    zh: |
+      拉格朗日乘数法
+    en: |
+      method of Lagrange multipliers
+    brief: |
+      求$f$在条件$g=c$下的极值：$\nabla g\ne\vb0$时，极值点满足$\nabla f=\lambda\nabla g$，即两个梯度平行；$\lambda$叫作拉格朗日乘子。
+    definedIn: math.vector-calculus.lagrange-multipliers
+    anchor: thm-lagrange
+  - id: math.vector-calculus.vector-field
+    zh: |
+      向量场
+    en: |
+      vector field
+    brief: |
+      给区域里每一点配一个向量$\vb F(x,y)=(P,Q)$，例如流体的速度场、力场；画成格点上的箭头。
+    definedIn: math.vector-calculus.vector-fields
+    anchor: def-vector-field
+  - id: math.vector-calculus.gradient-field
+    zh: |
+      梯度场
+    en: |
+      gradient field
+    brief: |
+      某个函数的梯度$\nabla f$组成的向量场；箭头处处和$f$的等值线垂直，指向$f$增大的一侧。
+    definedIn: math.vector-calculus.vector-fields
+    anchor: def-gradient-field
+  - id: math.vector-calculus.flow-line
+    zh: |
+      流线
+    en: |
+      flow line
+    brief: |
+      速度处处等于场的曲线：$\vb r'(t)=\vb F\bigl(\vb r(t)\bigr)$，处处和场的箭头相切；速度场里被带着走的点走出的就是流线。
+    definedIn: math.vector-calculus.vector-fields
+    anchor: def-flow-line
