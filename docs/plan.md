@@ -1010,7 +1010,35 @@ math.analysis.completeness:
     - 振动与波：`phasors` 是 `ac-circuits` 的前置，写它时要定「复振幅」各自定义、各标各的 id，还是把 `definedIn` 挪过去；约定和 `ac-circuits:34` 的 $\operatorname{Re}(\tilde Xe^{i\omega t})$ 一致。
     - 热学：「准静态过程」是热学自己的概念，和电磁学的「准静态」（推迟可以不计的近似）意思不同，不要标电磁学的 id。
 - 批次 14 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 15；电磁学写完了，物理那一对下一个领域到时候问你（写代码的会话定的）。
-- 批次 14 之后（你定的）：物理那一对接着写光学；批次 14 做完直接发批次 15，不用停下来等。批次 14 提交时 C 盘只剩十几 MB，最终检查和发批次 15 等你腾出空间再做（写代码的会话定的）。
+- 批次 14 之后（你定的）：物理那一对接着写光学；批次 14 做完直接发批次 15，不用停下来等。批次 14 提交时 C 盘只剩十几 MB，最终检查和发批次 15 等你腾出空间再做（写代码的会话定的）；你清出空间后接着发了批次 15。
+- 批次 15：多变量微积分的第三批、光学的第一批，做法和批次 14 一样。写内容会话照旧：数学那一对写多变量微积分；物理那一对电磁学写完了，接着写光学。
+  - 多变量微积分写曲线曲面积分与积分定理 9 节，按前置顺序：`curl-divergence`、`vector-identities`、`space-curves`、`line-integrals`、`conservative-fields`、`parametric-surfaces`、`greens-theorem`、`surface-integrals`、`divergence-theorem`。审查报告 `docs/reviews/batch-15-vector-calculus.md`。最后一批剩 4 节：`stokes-theorem`、`curvilinear-coordinates`、`delta-3d`、`potentials`。
+  - 光学写几何光学 9 节，按前置顺序：`reflection-refraction`、`prisms-dispersion`、`total-internal-reflection`、`paraxial-refraction`、`spherical-mirrors`、`thin-lenses`、`aberrations`、`optical-instruments`、`ray-transfer-matrices`。审查报告 `docs/reviews/batch-15-optics.md`。光学 27 节，往后两批：
+    - 费马原理与波动光学 9 节：`fermat-principle`、`graded-index`、`huygens-principle`、`two-beam-interference`、`coherence`、`single-slit-diffraction`、`thin-film-interference`、`diffraction-gratings`、`fabry-perot`；
+    - 衍射、偏振与激光 9 节：`fresnel-diffraction`、`michelson-interferometer`、`resolving-power`、`fourier-optics`、`polarization`、`birefringence`、`brewster-angle`、`jones-calculus`、`lasers`。
+  - 已写的小节有链接或用法指向这一批（写代码的会话查的）：
+    - 多变量微积分：以这一批为直接前置的已写小节有 6 节，按批次 9 定的规矩查了它们的用法：
+      - 变分法 `multivariable-functionals:28`、`:70`：图像曲面 $z=u(x,y)$ 的面积元 $\sqrt{1+u_x^2+u_y^2}\,\dd x\,\dd y$（`parametric-surfaces`）；`:36`、`:66`：格林公式的散度形式 $\iint_D(P_x+Q_y)\,\dd x\,\dd y=\oint_{\partial D}(P\,\dd y-Q\,\dd x)$，用来代替分部积分（`greens-theorem`）。
+      - 分析力学 `phase-space-liouville:46`–`:54`：速度场的散度；散度是「源的强度」，等于一小块区域随流动时体积的相对变化率（`curl-divergence`）。
+      - 电磁学 `gauss-law`：通量 $\oint\vb E\cdot\dd\vb a$，闭合曲面取外法向（`surface-integrals`）。
+      - 电磁学 `current-density:50`、狭义相对论 `stress-energy-tensor:67`：由散度定理得连续性方程，「区域里的量只因边界上的流动而变」（`divergence-theorem`）。
+      - 电磁学 `poisson-equation`：见下面的恒等式（`vector-identities`）。
+    - 多变量微积分的前向链接：
+      - `vector-identities`：拉普拉斯算子 $\nabla^2\varphi$（`poisson-equation:22`）；$\curl\nabla\varphi=\vb 0$（`poisson-equation:34`）；$\divg(\curl\vb B)=0$（`ampere-law:47`、`maxwell-equations:24`）；$\curl(f\vb J)=f\curl\vb J+\nabla f\times\vb J$ 和 $\nabla\frac1{|\vb r-\vb r'|}=-\frac{\vb r-\vb r'}{|\vb r-\vb r'|^3}$，以及对 $\vb r'$ 求导的 $\nabla'$ 版本（`vector-potential:32`、`magnetization:46`）；$\divg(\vb A\times\vb B)=\vb B\cdot(\curl\vb A)-\vb A\cdot(\curl\vb B)$（`inductance:58`、`poynting-theorem:29`）。
+      - `greens-theorem`：电磁学 `magnetic-dipole:29` 用 $\oint x'\,\dd y'$ 求面积；常微分方程 `limit-cycles` 第 5 题的本迪克松判别法用通量形式。
+      - `divergence-theorem`：电磁学 `gauss-differential:22` 的 $\oint_S\vb E\cdot\dd\vb a=\int_V\divg\vb E\,\dd V$。
+      - `conservative-fields`、`line-integrals`：上一批 `vector-fields:34`（怎样找出势函数）、第 8 题（沿闭曲线的积分）。
+      - 记号：面积元 $\dd a$、有向面积元 $\dd\vb a=\uv n\,\dd a$、体积元 $\dd V$，和电磁学一致。
+    - 光学：
+      - 以这一批为直接前置的已写小节：没有。
+      - 电磁学 `dispersion:38`：色散把不同颜色分开（`prisms-dispersion`）；`fresnel-equations:70` 的全反射（`total-internal-reflection`），那一节第 6 题已经有衰减长度、$|r_{\mathrm s}|=1$ 和受抑全反射；光学若用 $e^{-i\omega t}$、$\tilde n=n+i\kappa$，要说明和电磁学的约定差一个共轭（批次 13 写回的）。
+      - 「折射率」：电磁学 `waves-in-media` 定义了（$n=\sqrt{\varepsilon_{\mathrm r}\mu_{\mathrm r}}$），可光学 `reflection-refraction` 没有前置、学得早。照「同一个概念两个领域都要讲时各自定义、各标各的 id」，光学自己定义「折射率」（$n=\frac cv$、折射定律），电磁学的不动（写代码的会话定的）。
+      - 「色散」：电磁学 `dispersion` 只加了锚点。光学 `prisms-dispersion` 把「色散」进术语表的话，电磁学 `dispersion` 正文里的「色散」按规矩 C 补标光学的 id，由写代码的会话扫完告诉写内容会话。
+      - 批次 14 写回的：光纤是介质里的波导，「模」「截止」的说法和电磁学 `waveguides` 对齐。
+  - 以这一批为前置、还没写的别的小节：`vector-identities` ← 微分几何「外微分」、偏微分方程「拉普拉斯方程与调和函数」、广义相对论「牛顿极限」等；`space-curves` ← 微分几何「正则曲线与弧长参数」；`line-integrals` ← 复分析「复积分」；`conservative-fields` ← 牛顿力学「保守力与势能的梯度」；`parametric-surfaces` ← 微分几何「正则曲面与切平面」；`greens-theorem` ← 复分析「柯西积分定理」；`divergence-theorem` ← 微分几何「流形上的积分与斯托克斯定理」、偏微分方程「热方程的推导」「拉普拉斯方程与调和函数」。
+  - 跨领域前置（还是待写，按它们的 goal 假定读者学过）：`space-curves` ← 微积分「参数曲线」；光学 `paraxial-refraction` ← 微积分「微分与线性近似」。`ray-transfer-matrices` ← 线性代数「矩阵与矩阵乘法」已审。
+  - 动画：多变量微积分用 vector-field-2d 画散度、旋度不同的向量场和流线，function-plot 画曲线；曲面、通量、积分定理的区域画 SVG。光学用 function-plot 画折射角随入射角、色散曲线 $n(\lambda)$、成像公式的曲线；LinearMap2D 可以画 $2\times2$ 的光线传输矩阵；光路图画 SVG（写代码的会话提的）。
+- 批次 15 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 16（写代码的会话定的）。
 - 几个领域同时写时（批次 1 定的）：每个写内容会话只改自己领域的目录（`content/<学科>/<领域>/`），审内容会话只写自己的报告和验算脚本；`docs/plan.md` 不由它们直接改，要写回的内容写进汇报，由写代码的会话统一写进去、单独提交，免得几个会话同时改一个文件。每个领域各自作为一个提交。另一个领域写到一半、全量构建报错时，写内容会话可以把那个领域换成已提交的版本，在临时副本上构建，确认自己的领域 0 个错误；看页面同理，用临时副本编译的内容另起一个服务，进度写临时仓库，不改仓库的 `dist/`（批次 2 定的）。test-serve 和 `npm run serve` 提供的是 `dist/` 里构建好的网站，不读 `generated/`：改完内容要重新 `vite build`，页面上才看得到（批次 6 时写内容会话提的）。临时副本的做法（批次 10 时写内容会话提的，写代码的会话核过）：用 `git archive HEAD` 导出已提交的版本，再拷进自己的改动；`node_modules` 不要复制，在副本里建一个指向仓库 `node_modules` 的目录联接（PowerShell 的 `New-Item -ItemType Junction`）；建网站时在副本目录里跑 `npx vite build --outDir <目录>`，或者把副本目录写成 `vite build` 的第一个参数（Vite 8 的根目录是位置参数）；删副本之前先单独删掉联接本身（PowerShell 的 `[System.IO.Directory]::Delete(<联接>, $false)`），否则删除命令会顺着联接把仓库的 `node_modules` 一起删掉。各会话的 scratchpad 都在 C 盘，C 盘空间紧（批次 14 时一度只剩十几 MB，`vite build` 报 ENOSPC）：页面检查能读仓库 D 盘的 `dist/` 就不另建网站副本；要建，看完就删，同一时间只留一份；以前批次的副本、快照复核完就删（批次 14 时定的）。
 
 **分工**：一共三个 agent：写代码、写内容、审内容。开发台阶 8、9 由写内容 agent 和审内容 agent 执行。写内容和审内容必须是两个独立会话。
