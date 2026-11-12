@@ -1056,6 +1056,25 @@ math.analysis.completeness:
     - 光学以后的各节：成像照实正规则；`single-slit-diffraction` 接 `reflection-refraction:27`（小孔和波长相当时光线的说法失效）和 `aberrations` 第 6 题（3）；`resolving-power` 接 `optical-instruments` 第 8 题（3）（无效放大）；`graded-index` 接 `total-internal-reflection` 第 6 题（3）（渐变折射率补回时间差）；`huygens-principle`、`fermat-principle` 接 `reflection-refraction:59` 用波阵面推的折射定律、第 5 题推的反射定律，「波阵面」第二节用到时进表，`spherical-mirrors` 第 6 题的抛物面可以用「光程相等」再看；`lasers` 讲谐振腔稳定性时接 `ray-transfer-matrices` 第 6 题的透镜波导（$0<d<4f$）；波动光学若用 $e^{-i\omega t}$、$\tilde n=n+i\kappa$，要说明和电磁学差一个共轭。
     - 振动与波 `dispersion-relations`、`group-velocity`：光学、电磁学都已经有「色散」，写的时候定下标哪个 id，简介写清和这两个的关系。
 - 批次 15 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 16（写代码的会话定的）。
+- 批次 15 之后（你定的）：发批次 16。
+- 批次 16：多变量微积分的最后一批、光学的第二批，做法和批次 15 一样。
+  - 多变量微积分写最后 4 节，按前置顺序：`stokes-theorem`、`curvilinear-coordinates`、`delta-3d`、`potentials`。审查报告 `docs/reviews/batch-16-vector-calculus.md`。写完这一批，多变量微积分 31 节全部写完。
+  - 光学写费马原理与波动光学 9 节，按前置顺序：`fermat-principle`、`graded-index`、`huygens-principle`、`two-beam-interference`、`coherence`、`single-slit-diffraction`、`thin-film-interference`、`diffraction-gratings`、`fabry-perot`。审查报告 `docs/reviews/batch-16-optics.md`。最后一批是衍射、偏振与激光 9 节。
+  - 已写的小节有链接或用法指向这一批（写代码的会话查的）：
+    - 多变量微积分：以这一批为直接前置的已写小节有 3 节，都在电磁学，按批次 9 定的规矩查了它们的用法：
+      - `ampere-law` ← `stokes-theorem`：积分形式和微分形式互推；`ampere-law:52` 穿过同一条闭合曲线的磁通量和曲面无关。另外补上 `conservative-fields:52` 留下的空间情形（单连通区域上旋度为零，场就是保守场），三维旋度是单位面积上的环量（平面情形在 `greens-theorem` 第 7 题）。
+      - `gauss-differential` ← `delta-3d`：`:37` 的 $\delta^3(\vb r)$ 在原点以外为零、在包含原点的区域上积分等于 $1$；`poisson-equation:29` 的 $\nabla\frac1r=-\frac{\vb r}{r^3}$、$\divg\frac{\vb r}{r^3}=4\pi\delta^3(\vb r)$、$\nabla^2\frac1{|\vb r-\vb r'|}=-4\pi\delta^3(\vb r-\vb r')$。
+      - `vector-potential` ← `potentials`：`:22` 全空间（或足够简单的区域）上散度为零的场是某个场的旋度；`:43` 全空间上旋度为零的场是梯度；第 6 题「旋度为零的场是梯度」只在单连通区域上成立，螺线管外的 $\frac{\Phi}{2\pi s}\uv\psi$ 是反例（批次 11 写回的）；`gauge-potentials:22` 也链过来。
+      - `curvilinear-coordinates`：电磁学 `poisson-equation:43` 的球坐标拉普拉斯算子链过来；多变量微积分的方位角写 $\varphi$，电磁学写 $\psi$（$\varphi$ 是电势），推导时交代一句。
+    - 光学：
+      - 变分法 `beltrami-identity` 第 7 题、电磁学 `fresnel-equations:43`：费马原理推出折射定律、折射率随高度变化时光走用时最短的路（`fermat-principle`）。
+      - 电磁学 `fresnel-equations:109`（镜片的减反膜）、第 8 题（p 偏振的「半波损失」只在接近垂直入射时能不加说明地用）（`thin-film-interference`）；若用 $e^{-i\omega t}$、$\tilde n=n+i\kappa$，要说明和电磁学差一个共轭（批次 13 写回的）。
+      - 光学 `reflection-refraction:27`（小孔、狭缝和波长相当时光线的说法失效）、`aberrations` 第 6 题（光阑太小时衍射让像变模糊）（`single-slit-diffraction`）。
+      - 批次 15 写回的：`graded-index` 接 `total-internal-reflection` 第 6 题（3）；`huygens-principle`、`fermat-principle` 接 `reflection-refraction:59` 的波阵面和第 5 题，「波阵面」第二节用到时进表；`spherical-mirrors` 第 6 题的抛物面可以用「光程相等」再看；成像照实正规则。
+  - 以这一批为前置、还没写的别的小节：`stokes-theorem` ← 微分几何「流形上的积分与斯托克斯定理」；`curvilinear-coordinates` ← 偏微分方程「三维波动方程与惠更斯原理」「矩形与圆盘上的拉普拉斯方程」；`delta-3d` ← 偏微分方程「格林函数」；`two-beam-interference` ← 量子力学「物质波」。
+  - 跨领域前置（还是待写，按它们的 goal 假定读者学过）：`delta-3d` ← 微积分「狄拉克 δ 函数」；`fermat-principle` ← 微积分「最值问题」；`huygens-principle` ← 振动与波「平面波与球面波」；`thin-film-interference` ← 振动与波「波的反射与透射」。`graded-index` ← 变分法「第一变分与欧拉-拉格朗日方程」已审。
+  - 动画：多变量微积分用 vector-field-2d 画旋度和环量、势存在与否的反例，function-plot 画 δ 函数的近似序列；曲面和边界曲线画 SVG。光学用 function-plot 画干涉、衍射的强度分布、法布里-珀罗的透射峰（滑块调缝宽、波长、反射率），光程画 SVG（写代码的会话提的）。
+- 批次 16 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 17；多变量微积分写完了，数学那一对下一个领域到时候问你（写代码的会话定的）。
 - 几个领域同时写时（批次 1 定的）：每个写内容会话只改自己领域的目录（`content/<学科>/<领域>/`），审内容会话只写自己的报告和验算脚本；`docs/plan.md` 不由它们直接改，要写回的内容写进汇报，由写代码的会话统一写进去、单独提交，免得几个会话同时改一个文件。每个领域各自作为一个提交。另一个领域写到一半、全量构建报错时，写内容会话可以把那个领域换成已提交的版本，在临时副本上构建，确认自己的领域 0 个错误；看页面同理，用临时副本编译的内容另起一个服务，进度写临时仓库，不改仓库的 `dist/`（批次 2 定的）。test-serve 和 `npm run serve` 提供的是 `dist/` 里构建好的网站，不读 `generated/`：改完内容要重新 `vite build`，页面上才看得到（批次 6 时写内容会话提的）。临时副本的做法（批次 10 时写内容会话提的，写代码的会话核过）：用 `git archive HEAD` 导出已提交的版本，再拷进自己的改动；`node_modules` 不要复制，在副本里建一个指向仓库 `node_modules` 的目录联接（PowerShell 的 `New-Item -ItemType Junction`）；建网站时在副本目录里跑 `npx vite build --outDir <目录>`，或者把副本目录写成 `vite build` 的第一个参数（Vite 8 的根目录是位置参数）；删副本之前先单独删掉联接本身（PowerShell 的 `[System.IO.Directory]::Delete(<联接>, $false)`），否则删除命令会顺着联接把仓库的 `node_modules` 一起删掉。各会话的 scratchpad 都在 C 盘，C 盘空间紧（批次 14 时一度只剩十几 MB，`vite build` 报 ENOSPC）：页面检查能用 test-serve 读仓库 D 盘的 `dist/` 就不另建网站副本；要建，看完就删，同一时间只留一份；以前批次的副本、快照复核完就删（批次 14 时定的）。页面检查只用进度写临时目录的 test-serve；`npm run dev`、`npm run serve` 写的是你真实的 `progress/`，点「看提示」「放弃」都会留下记录，绝不用来做页面检查（批次 15 时写内容会话用 `npm run dev` 往 `progress/` 写进了光学 9 节的假记录，你同意后写代码的会话删掉了）。
 
 **分工**：一共三个 agent：写代码、写内容、审内容。开发台阶 8、9 由写内容 agent 和审内容 agent 执行。写内容和审内容必须是两个独立会话。
