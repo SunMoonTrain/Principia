@@ -2,9 +2,10 @@
 // 一是二维精确光线追迹：光线和球面、平面求交，用向量形式的折射定律、反射定律算出射方向，不做近轴近似；
 // 取很小的倾角或高度，再用理查森外推消去像差的平方项，得到近轴极限，和讲解里的近轴公式互相核对。
 // 二是理想薄透镜和自由传播对光线 (y, θ) 的作用，用来按光路一步步追两条光线、求交点，和成像公式核对。
-// agree、check、chosen、bisect、argmax 借用电磁学的辅助文件。
+// 三是波的叠加（批次 16 加的）：把许多个次波的振幅、相位直接相加，再取模平方，不用讲解里求和以后的式子。
+// agree、check、chosen、bisect、argmax、rk4 借用电磁学的辅助文件。
 
-export { agree, argmax, bisect, check, chosen, solveLinear } from './physics.electromagnetism._es.ts';
+export { agree, argmax, bisect, check, chosen, rk4, rk4Step, solveLinear } from './physics.electromagnetism._es.ts';
 
 export const deg = Math.PI / 180;
 
@@ -114,4 +115,51 @@ export const crossAhead = (r: PRay): number => -r.y / r.th;
 export function meet(a: PRay, b: PRay): [number, number] {
   const z = (b.y - a.y) / (a.th - b.th);
   return [z, a.y + a.th * z];
+}
+
+// ---------- 波的叠加（批次 16） ----------
+
+/** 一组次波（振幅 a、相位 φ）直接相加以后的光强 |Σ a e^{iφ}|²。 */
+export function phasorIntensity(terms: Iterable<[number, number]>): number {
+  let re = 0;
+  let im = 0;
+  for (const [a, ph] of terms) {
+    re += a * Math.cos(ph);
+    im += a * Math.sin(ph);
+  }
+  return re * re + im * im;
+}
+
+/**
+ * 关于中心对称地排开的 n 个等强次波，相邻两个的相位差为 phi：振幅之和（实数，会变号），
+ * Σ_j cos(phi·(j − (n−1)/2))。用来在暗纹处二分（光强只碰到零、不变号，振幅才变号）。
+ */
+export function symmetricSum(n: number, phi: number): number {
+  let s = 0;
+  const c = (n - 1) / 2;
+  for (let j = 0; j < n; j++) s += Math.cos(phi * (j - c));
+  return s;
+}
+
+/** 宽为 a 的单缝在方向 sinθ = s 上的相对光强 I/I(0)：把缝分成 n 段，各段的次波直接相加（夫琅禾费，垂直入射）。 */
+export function slitRelIntensity(a: number, lambda: number, s: number, n = 4000): number {
+  const amp = symmetricSum(n, (2 * Math.PI * (a / n) * s) / lambda);
+  return (amp / n) ** 2;
+}
+
+/**
+ * 法布里-珀罗：两面振幅反射率都是 r（反射率 R = r²）、不吸收，往返相位差 delta。
+ * 透射的各束光振幅依次是 t²·(r²e^{iδ})^k，直接相加 K 项后取模平方（t² = 1 − R）。
+ */
+export function multiBeamT(R: number, delta: number, K = 4000): number {
+  let re = 0;
+  let im = 0;
+  let amp = 1 - R;
+  for (let k = 0; k < K; k++) {
+    re += amp * Math.cos(k * delta);
+    im += amp * Math.sin(k * delta);
+    amp *= R;
+    if (amp < 1e-18) break;
+  }
+  return re * re + im * im;
 }

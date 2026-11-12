@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 290" width="660" height="290" font-size="14">
+  <!-- 杨氏双缝：单色平面波照到间距为 d 的两条缝 S1、S2 上，两条缝发出的光到达距离为 L 的屏上一点 P；从 S1 向 S2P 作垂线，垂足为 N，S2N 就是两条路径之差，屏离得远时约为 d sinθ，θ 是 P 偏离中央的角度。角度画得夸大了。 -->
+  <line x1="40.0" y1="62.0" x2="160.0" y2="62.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.3" />
+  <path d="M 136.0 62.0 L 128.7 65.3 L 128.7 58.7 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="40.0" y1="98.0" x2="160.0" y2="98.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.3" />
+  <path d="M 136.0 98.0 L 128.7 101.3 L 128.7 94.7 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="40.0" y1="182.0" x2="160.0" y2="182.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.3" />
+  <path d="M 136.0 182.0 L 128.7 185.3 L 128.7 178.7 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="40.0" y1="218.0" x2="160.0" y2="218.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.3" />
+  <path d="M 136.0 218.0 L 128.7 221.3 L 128.7 214.7 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="70.0" y1="50.0" x2="70.0" y2="230.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" stroke-dasharray="3 3" />
+  <line x1="105.0" y1="50.0" x2="105.0" y2="230.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" stroke-dasharray="3 3" />
+  <line x1="140.0" y1="50.0" x2="140.0" y2="230.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" stroke-dasharray="3 3" />
+  <text x="40.0" y="36.0" style="fill: var(--muted, #6b7280)">单色平面波</text>
+  <line x1="200.0" y1="40.0" x2="200.0" y2="104.0" style="stroke: currentColor" stroke-width="3.0" />
+  <line x1="200.0" y1="116.0" x2="200.0" y2="164.0" style="stroke: currentColor" stroke-width="3.0" />
+  <line x1="200.0" y1="176.0" x2="200.0" y2="240.0" style="stroke: currentColor" stroke-width="3.0" />
+  <line x1="590.0" y1="30.0" x2="590.0" y2="250.0" style="stroke: currentColor" stroke-width="2.2" />
+  <text x="598.0" y="246.0" style="fill: var(--muted, #6b7280)">屏</text>
+  <line x1="200.0" y1="110.0" x2="590.0" y2="56.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.4" />
+  <line x1="200.0" y1="170.0" x2="590.0" y2="56.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.4" />
+  <line x1="200.0" y1="140.0" x2="590.0" y2="140.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" stroke-dasharray="6 4" />
+  <line x1="200.0" y1="140.0" x2="590.0" y2="56.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" stroke-dasharray="2 3" />
+  <line x1="200.0" y1="110.0" x2="216.2" y2="165.3" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="3 2" />
+  <line x1="200.0" y1="170.0" x2="216.2" y2="165.3" style="stroke: var(--good, #059669)" stroke-width="3.0" />
+  <path d="M 370.0 140.0 L 370.0 138.5 L 370.0 137.0 L 369.9 135.5 L 369.9 134.0 L 369.8 132.5 L 369.8 131.0 L 369.7 129.5 L 369.6 128.0 L 369.5 126.5 L 369.3 125.0 L 369.2 123.5 L 369.0 122.0 L 368.9 120.5 L 368.7 119.0 L 368.5 117.5 L 368.3 116.0 L 368.1 114.6 L 367.9 113.1 L 367.6 111.6 L 367.4 110.1 L 367.1 108.6 L 366.8 107.1 L 366.5 105.7 L 366.2 104.2" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.1" stroke-linejoin="round" />
+  <text x="378.0" y="135.0" fill="currentColor"><tspan font-style="italic">θ</tspan></text>
+  <circle cx="200.0" cy="110.0" r="2.8" style="fill: currentColor" />
+  <circle cx="200.0" cy="170.0" r="2.8" style="fill: currentColor" />
+  <circle cx="590.0" cy="56.0" r="2.8" style="fill: currentColor" />
+  <circle cx="590.0" cy="140.0" r="2.8" style="fill: currentColor" />
+  <text x="190.0" y="104.0" fill="currentColor" text-anchor="end">S<tspan dy="4" font-size="11">1</tspan></text>
+  <text x="190.0" y="186.0" fill="currentColor" text-anchor="end">S<tspan dy="4" font-size="11">2</tspan></text>
+  <text x="598.0" y="60.0" fill="currentColor">P</text>
+  <text x="598.0" y="156.0" fill="currentColor">O</text>
+  <text x="222.1" y="189.6" style="fill: var(--good, #059669)"><tspan font-style="italic">d</tspan> sin<tspan font-style="italic">θ</tspan></text>
+  <line x1="178.0" y1="110.0" x2="178.0" y2="170.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="174.0" y1="110.0" x2="182.0" y2="110.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="174.0" y1="170.0" x2="182.0" y2="170.0" style="stroke: currentColor" stroke-width="1.0" />
+  <text x="170.0" y="145.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">d</tspan></text>
+  <line x1="624.0" y1="56.0" x2="624.0" y2="140.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="620.0" y1="56.0" x2="628.0" y2="56.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="620.0" y1="140.0" x2="628.0" y2="140.0" style="stroke: currentColor" stroke-width="1.0" />
+  <text x="632.0" y="103.0" fill="currentColor"><tspan font-style="italic">y</tspan></text>
+  <line x1="200.0" y1="258.0" x2="590.0" y2="258.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="200.0" y1="253.0" x2="200.0" y2="263.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="590.0" y1="253.0" x2="590.0" y2="263.0" style="stroke: currentColor" stroke-width="1.0" />
+  <text x="395.0" y="276.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">L</tspan></text>
+</svg>

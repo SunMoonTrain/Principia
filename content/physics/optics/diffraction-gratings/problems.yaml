@@ -1,0 +1,166 @@
+- id: p1
+  tier: easy
+  statement: |
+    用波长$633\,\mathrm{nm}$的激光垂直照射每毫米$600$条线的光栅。第一级主极大偏离原方向多少度？保留三位有效数字。
+  answer:
+    type: number
+    value: asin(633e-9*600e3)*180/pi
+    unit: |
+      $^\circ$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      光栅常量$d=\frac1{600}\,\mathrm{mm}$。
+    - |
+      $\sin\theta=\frac\lambda d=633\times10^{-9}\times6.00\times10^5$。
+    - |
+      $\sin\theta\approx0.380$，$\theta\approx22.3^\circ$。
+  solution: |
+    $d=\frac1{600}\,\mathrm{mm}\approx1.667\,\mu\mathrm m$，$\sin\theta=\frac\lambda d=\frac{0.633}{1.667}\approx0.380$，$\theta\approx22.3^\circ$。第二级$\sin\theta\approx0.760$，在$49.4^\circ$；第三级$\sin\theta>1$，看不到。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于光栅的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        用同一种单色光照射时，每毫米刻线越多的光栅，能看到的最高级次越高
+      - |
+        用同一种单色光照射时，光栅常量越大，同一级主极大偏离原方向越远
+      - |
+        照亮的缝数相同时，第二级的色分辨本领是第一级的$2$倍
+      - |
+        其他条件不变，缝数越多，主极大越细
+      - |
+        光栅常量是缝宽的$4$倍时，第$\pm4$级主极大看不到
+    value: [3, 4, 5]
+  hints:
+    - |
+      $\sin\theta=\frac{m\lambda}d$，$|m|\le\frac d\lambda$。
+    - |
+      $R=mN$；主极大到旁边第一个暗处的角度约$\frac\lambda{Nd\cos\theta}$。
+    - |
+      C、D、E 对；A、B 错。
+  solution: |
+    C 对：$R=mN$，$N$相同时和级次成正比。D 对：主极大的角宽度约$\frac\lambda{Nd\cos\theta}$，和$N$成反比。E 对：缺级在$m=k\frac da=4k$，即第$\pm4$、$\pm8$……级。
+
+    A 错：刻线越多，$d$越小，$|m|\le\frac d\lambda$，能看到的级次反而越少。B 错：$\sin\theta=\frac{m\lambda}d$，$d$越大，偏离越小。
+
+- id: p3
+  tier: medium
+  statement: |
+    每毫米$500$条线的光栅，缝宽是光栅常量的三分之一，用波长$589\,\mathrm{nm}$的钠黄光垂直照射，屏足够大。一共能看到几条主极大（包括零级）？
+  answer:
+    type: number
+    value: 5
+  tolerance: { abs: 0.1 }
+  hints:
+    - |
+      $d=2.0\,\mu\mathrm m$，$|m|\le\frac d\lambda\approx3.4$。
+    - |
+      $d=3a$，第$\pm3$级缺级。
+    - |
+      剩下$m=0,\pm1,\pm2$，共$5$条。
+  solution: |
+    $d=\frac1{500}\,\mathrm{mm}=2.0\,\mu\mathrm m$，$|m|\le\frac d\lambda=\frac{2.0}{0.589}\approx3.4$，$m$可取$0,\pm1,\pm2,\pm3$。$d=3a$，第$\pm3$级正落在单缝衍射的第一条暗纹上，缺级。能看到的是$m=0,\pm1,\pm2$，共$5$条。
+
+- id: p4
+  tier: medium
+  statement: |
+    一块宽$5.0\,\mathrm{cm}$、每毫米$1200$条线的光栅，整块被照亮。在第一级、$500\,\mathrm{nm}$附近，它能分开的最小波长差是多少？以$\mathrm{pm}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 500e-9/(50*1200)*1e12
+    unit: |
+      $\mathrm{pm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      照亮的缝数$N=50\times1200$。
+    - |
+      $R=mN$，$\Delta\lambda=\frac\lambda R$。
+    - |
+      $\Delta\lambda=\frac{500\,\mathrm{nm}}{6.0\times10^4}\approx8.33\times10^{-3}\,\mathrm{nm}=8.33\,\mathrm{pm}$。
+  solution: |
+    $N=50\times1200=6.0\times10^4$，第一级$R=mN=6.0\times10^4$，$\Delta\lambda=\frac\lambda R=\frac{500\,\mathrm{nm}}{6.0\times10^4}\approx8.33\,\mathrm{pm}$。钠的两条黄线相差约$600\,\mathrm{pm}$，这块光栅分开它们绰绰有余。
+
+- id: p5
+  tier: hard
+  statement: |
+    $N$条缝的光栅，光强里多缝的因子是$\Bigl(\frac{\sin N\gamma}{N\sin\gamma}\Bigr)^2$。
+
+    （1）证明相邻两个主极大之间有$N-1$个暗处、$N-2$个小亮纹。（2）$N$很大时，紧挨着主极大的那个小亮纹，光强约是主极大的百分之几？（3）$N=2$时这个因子是什么？和双缝干涉（interference）的结果比较。
+  hints:
+    - |
+      暗处在$\sin N\gamma=0$而$\sin\gamma\neq0$的地方。
+    - |
+      主极大附近令$\gamma=m\pi+\varepsilon$，$\sin\gamma\approx\pm\varepsilon$。
+    - |
+      $\frac{\sin2\gamma}{2\sin\gamma}=\cos\gamma$。
+  reference: |
+    （1）主极大在$\gamma=m\pi$和$(m+1)\pi$。两者之间$\sin N\gamma=0$的点是$\gamma=m\pi+\frac{j\pi}N$，$j=1,2,\dots,N-1$，这些点上$\sin\gamma\neq0$，光强为零，共$N-1$个暗处。相邻两个暗处之间光强先增后减，各有一个小亮纹，共$N-2$个。
+
+    （2）令$\gamma=m\pi+\varepsilon$，$|\varepsilon|$很小时$|\sin\gamma|\approx|\varepsilon|$，$|\sin N\gamma|=|\sin N\varepsilon|$，因子约为$\Bigl(\frac{\sin N\varepsilon}{N\varepsilon}\Bigr)^2$，和单缝衍射的$\Bigl(\frac{\sin\beta}\beta\Bigr)^2$形式相同。紧挨着的小亮纹在$N\varepsilon\approx1.43\pi$，光强约为主极大的$4.7\%$（见[单缝衍射](lesson:physics.optics.single-slit-diffraction)第 5 题）。
+
+    （3）$N=2$时$\frac{\sin2\gamma}{2\sin\gamma}=\cos\gamma$，因子是$\cos^2\gamma=\cos^2\frac{\pi d\sin\theta}\lambda$，正是[双光束干涉](lesson:physics.optics.two-beam-interference)里双缝的$\cos^2\frac\delta2$，$\delta=\frac{2\pi d\sin\theta}\lambda$。双缝没有小亮纹，$N-2=0$，两个相邻亮纹之间只有一个暗处。
+
+- id: p6
+  tier: hard
+  statement: |
+    平行光斜着照到光栅上，入射方向和光栅法线成$i$角，衍射光和法线成$\theta$角，两者都从法线量起，光不偏折地穿过时$\theta=i$。
+
+    （1）证明主极大满足$d(\sin\theta-\sin i)=m\lambda$。（2）$d=2.0\,\mu\mathrm m$、$\lambda=589\,\mathrm{nm}$，垂直入射时最高能看到第几级？$i=30^\circ$时呢？（3）斜入射能看到更高的级次，这对分辨两条靠得很近的谱线有什么好处？
+  hints:
+    - |
+      入射光到达相邻两条缝时已经有光程差$d\sin i$。
+    - |
+      $\sin\theta=\sin i+\frac{m\lambda}d$必须在$-1$和$1$之间。
+    - |
+      $R=mN$。
+  reference: |
+    （1）入射光到达相邻两条缝时已经有光程差$d\sin i$，两缝到远处$\theta$方向又差$d\sin\theta$，总光程差$d(\sin\theta-\sin i)$（和[单缝衍射](lesson:physics.optics.single-slit-diffraction)第 6 题的斜入射一样）。它等于$m\lambda$时所有缝的光同相，是主极大。
+
+    （2）垂直入射：$|m|\le\frac d\lambda\approx3.4$，最高第$3$级。$i=30^\circ$：$\sin\theta=0.5+0.2945m$在$-1$和$1$之间，$m$从$-5$到$1$，最高到第$5$级（在入射光偏离的另一侧），能看到的主极大仍是$7$条，只是整体向一侧挪了。
+
+    （3）照亮的缝数相同时，色分辨本领$R=mN$和级次成正比，用第$5$级比第$3$级高出约$\frac23$。光谱仪里的光栅常斜着用，就是为了用上更高的级次。
+
+- id: p7
+  tier: thinking
+  statement: |
+    DVD 光盘的信息轨道间距约$0.74\,\mu\mathrm m$，比 CD 的约$1.6\,\mu\mathrm m$小得多。
+
+    （1）白光垂直照射，DVD 的第一级光谱在什么角度范围？能看到第二级吗？（2）为什么 DVD 上的彩色要倾斜得更厉害才看得到，而且颜色铺得更开？（3）转动光盘或换个角度看，看到的颜色为什么会变？
+  hints:
+    - |
+      $\sin\theta=\frac{m\lambda}d$，代入$400\,\mathrm{nm}$和$700\,\mathrm{nm}$。
+    - |
+      第二级要求$\frac{2\lambda}d\le1$。
+    - |
+      眼睛只接收某一个方向的光，那个方向对应一定的波长。
+  reference: |
+    （1）第一级：$\sin\theta=\frac{0.40}{0.74}\approx0.54$到$\frac{0.70}{0.74}\approx0.95$，$\theta$从约$33^\circ$到$71^\circ$。第二级要求$\lambda\le\frac d2=370\,\mathrm{nm}$，可见光都不满足，看不到。
+
+    （2）光栅常量小，偏离的角度大，第一级就从$33^\circ$开始，要倾斜得更厉害；同一级里$\dd\theta=\frac{\dd\lambda}{d\cos\theta}$，$d$小、$\theta$大时$\cos\theta$也小，两种原因都让颜色铺得更开（例 1 里 CD 的第一级只铺了约$11^\circ$，DVD 铺了约$38^\circ$）。
+
+    （3）光盘上各处的轨道方向不同，眼睛和光源的位置一定时，从光盘上某一点射进眼睛的只有某一个方向的光，对应一定的波长和级次。转动光盘或换个角度看，这个方向变了，看到的颜色也跟着变。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）光栅的主极大和双缝的亮纹满足同样的条件$d\sin\theta=m\lambda$，为什么光栅的主极大细得多？（2）主极大的角宽度$\frac\lambda{Nd\cos\theta}$，为什么恰好和宽为$Nd$的单缝的中央亮纹一样？（3）只照亮光栅的一小部分，主极大会怎样变？
+  hints:
+    - |
+      偏离主极大一点点，相邻两缝的光程差就不再是整数个波长，偏差沿着光栅一条条累加。
+    - |
+      从第一条缝到最后一条缝的距离约为$Nd$。
+    - |
+      照亮的缝数$N$变小。
+  reference: |
+    （1）偏离主极大一点，相邻两缝的光程差比$m\lambda$多出一个小量$\varepsilon$，这个偏差沿着光栅一条条累加，第$k$条缝累计$(k-1)\varepsilon$。缝很多时，只要$N\varepsilon$达到一个波长，各缝的相位就均匀铺满一圈，光完全抵消；双缝只有两条缝，要偏差达到半个波长才抵消，所以亮纹宽得多。
+
+    （2）光栅从头到尾长约$Nd$。离开主极大的方向，首尾两条缝之间多出的光程差达到一个波长时完全抵消，这和宽为$Nd$的单缝在第一条暗纹处的情形一样：整块光栅照亮的部分像一条宽$Nd$的缝，决定了主极大能有多窄。
+
+    （3）照亮的缝数$N$变小，主极大变宽、变暗，位置不变；色分辨本领$R=mN$也随之下降。所以用光栅分光时，要让光照满整块光栅。

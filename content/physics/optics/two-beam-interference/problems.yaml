@@ -1,0 +1,164 @@
+- id: p1
+  tier: easy
+  statement: |
+    用波长$589\,\mathrm{nm}$的钠黄光照射间距$0.50\,\mathrm{mm}$的双缝，屏离双缝$2.0\,\mathrm m$。相邻亮纹的间距是多少？以$\mathrm{mm}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 2.0*589e-9/0.50e-3*1000
+    unit: |
+      $\mathrm{mm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      条纹间距$\Delta y=\frac{L\lambda}d$。
+    - |
+      $\frac{2.0\times589\times10^{-9}}{0.50\times10^{-3}}\,\mathrm m$。
+    - |
+      $\Delta y\approx2.36\times10^{-3}\,\mathrm m=2.36\,\mathrm{mm}$。
+  solution: |
+    $\Delta y=\frac{L\lambda}d=\frac{2.0\times589\times10^{-9}}{0.50\times10^{-3}}\,\mathrm m\approx2.36\times10^{-3}\,\mathrm m=2.36\,\mathrm{mm}$。缝间距是波长的约$850$倍，条纹间距却比波长大了约$4000$倍，用直尺就能量。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于双缝干涉的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        两条缝发出的光一样强时，亮纹中心的光强是单独一束光的$4$倍
+      - |
+        其他条件不变，把双缝间距增大，条纹变疏
+      - |
+        屏上某点到两条缝的光程差是半波长的奇数倍，那里是暗纹
+      - |
+        其他条件不变，换用波长更长的光，条纹间距变大
+      - |
+        用两个独立的灯泡分别照亮两条缝，屏上也会有稳定的条纹
+    value: [1, 3, 4]
+  hints:
+    - |
+      $I=4I_0\cos^2\frac\delta2$。
+    - |
+      $\Delta y=\frac{L\lambda}d$；两个独立光源的相位差乱变。
+    - |
+      A、C、D 对；B、E 错。
+  solution: |
+    A 对：$\delta=0$时$I=4I_0$。C 对：光程差$\Bigl(m+\frac12\Bigr)\lambda$时相位差是$\pi$的奇数倍，两束光抵消。D 对：$\Delta y=\frac{L\lambda}d$正比于$\lambda$。
+
+    B 错：$\Delta y$和$d$成反比，$d$增大条纹变密。E 错：两个独立灯泡发出的光不相干，交叉项平均为零，屏上只是均匀地亮。
+
+- id: p3
+  tier: medium
+  statement: |
+    双缝间距$0.40\,\mathrm{mm}$，屏离双缝$0.80\,\mathrm m$，测得屏上$11$条亮纹从第一条到最后一条共$12.0\,\mathrm{mm}$。光的波长是多少？以$\mathrm{nm}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: (12.0e-3/10)*0.40e-3/0.80*1e9
+    unit: |
+      $\mathrm{nm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $11$条亮纹之间有$10$个间距。
+    - |
+      $\Delta y=1.20\,\mathrm{mm}$，$\lambda=\frac{d\,\Delta y}{L}$。
+    - |
+      $\lambda=\frac{0.40\times10^{-3}\times1.20\times10^{-3}}{0.80}\,\mathrm m=6.00\times10^{-7}\,\mathrm m=600\,\mathrm{nm}$。
+  solution: |
+    $11$条亮纹之间有$10$个间距，$\Delta y=1.20\,\mathrm{mm}$。$\lambda=\frac{d\,\Delta y}{L}=\frac{0.40\times10^{-3}\times1.20\times10^{-3}}{0.80}\,\mathrm m=6.00\times10^{-7}\,\mathrm m=600\,\mathrm{nm}$，是橙色的光。量许多个间距再除，比只量一个间距准。
+
+- id: p4
+  tier: medium
+  statement: |
+    双缝的一条缝比另一条宽，屏上来自宽缝的光强是来自窄缝的$4$倍。干涉条纹最亮处和最暗处的光强之比是多少？保留三位有效数字。
+  answer:
+    type: number
+    value: (1 + 2)^2/(2 - 1)^2
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $I=I_1+I_2+2\sqrt{I_1I_2}\cos\delta$，最亮时$\cos\delta=1$，最暗时$\cos\delta=-1$。
+    - |
+      $I_{\max}=(\sqrt{I_1}+\sqrt{I_2})^2$，$I_{\min}=(\sqrt{I_1}-\sqrt{I_2})^2$。
+    - |
+      取$I_1=1$、$I_2=4$：$\frac{(1+2)^2}{(2-1)^2}=9.00$。
+  solution: |
+    $I_{\max}=I_1+I_2+2\sqrt{I_1I_2}=(\sqrt{I_1}+\sqrt{I_2})^2$，$I_{\min}=(\sqrt{I_1}-\sqrt{I_2})^2$。取$I_1=1$、$I_2=4$，$\frac{I_{\max}}{I_{\min}}=\frac{(1+2)^2}{(2-1)^2}=9.00$。暗纹不再全黑，条纹没有两束光一样强时清楚。
+
+- id: p5
+  tier: hard
+  statement: |
+    双缝间距为$d$，屏到双缝的距离为$L$，屏上$P$点离中央$y$。（1）不做近似，证明$P$到两条缝的距离之差$r_2-r_1=\frac{2dy}{r_1+r_2}$。（2）说明$L\gg y$、$L\gg d$时它化为$\frac{dy}L$。
+
+    （3）不要求角度小时，亮纹满足$d\sin\theta=m\lambda$。屏无限大时，最多能看到多少条亮纹？$d=3.2\lambda$时是多少条？
+  hints:
+    - |
+      $r_1^2=L^2+\bigl(y-\frac d2\bigr)^2$，$r_2^2=L^2+\bigl(y+\frac d2\bigr)^2$。
+    - |
+      $r_2^2-r_1^2=(r_2-r_1)(r_2+r_1)=2dy$。
+    - |
+      $|\sin\theta|<1$，$|m|<\frac d\lambda$。
+  reference: |
+    （1）以双缝的中点为原点，两条缝在$\pm\frac d2$处。$r_1^2=L^2+\bigl(y-\frac d2\bigr)^2$，$r_2^2=L^2+\bigl(y+\frac d2\bigr)^2$，相减得$r_2^2-r_1^2=2dy$，而$r_2^2-r_1^2=(r_2-r_1)(r_2+r_1)$，所以$r_2-r_1=\frac{2dy}{r_1+r_2}$，没有用任何近似。
+
+    （2）$L\gg y$、$L\gg d$时$r_1\approx r_2\approx L$，$r_1+r_2\approx2L$，$r_2-r_1\approx\frac{dy}L$。条纹因此等间距；$y$和$L$可比时，$r_1+r_2$随$y$增大，条纹越往外越疏。
+
+    （3）$|\sin\theta|<1$，所以$|m|<\frac d\lambda$，$m$只能取$-\bigl\lfloor\frac d\lambda\bigr\rfloor$到$\bigl\lfloor\frac d\lambda\bigr\rfloor$（$\frac d\lambda$不是整数时），一共$2\bigl\lfloor\frac d\lambda\bigr\rfloor+1$条。$d=3.2\lambda$时$m=0,\pm1,\pm2,\pm3$，共$7$条。缝间距比波长小时只剩中央一条，看不到干涉条纹。
+
+- id: p6
+  tier: hard
+  statement: |
+    做双缝实验时，照射双缝的那条单缝离双缝$D$。
+
+    （1）把单缝向上移动一小段$s$（$s\ll D$），屏上的中央亮纹（总光程差为零的地方）移到哪里？屏到双缝的距离是$L$，缝间距是$d$。（2）如果单缝换成上下两条互不相干的细缝，相距$s$，两套条纹叠在一起。$s$多大时条纹第一次完全看不清？
+  hints:
+    - |
+      从单缝到$S_1$、$S_2$的路程也不同，差约$\frac{sd}D$。
+    - |
+      总光程差$\frac{sd}D+\frac{dy}L=0$。
+    - |
+      两套条纹错开半个条纹间距时，一套的亮纹落在另一套的暗纹上。
+  reference: |
+    （1）单缝上移$s$后，它到上面那条缝$S_1$近、到$S_2$远，路程差约$\frac{sd}D$。到屏上$y$处的总光程差是$\frac{sd}D+\frac{dy}L$（$y$向上为正）。中央亮纹在总光程差为零处：$y=-\frac{sL}D$，单缝向上移，条纹整体向下移，移动的距离和单缝的移动成比例，比例是$\frac LD$。
+
+    （2）两条互不相干的细缝各自产生一套条纹，光强直接相加。两套条纹错开$\frac{sL}D$。错开半个条纹间距$\frac{L\lambda}{2d}$时，一套的亮纹正好落在另一套的暗纹上，叠加后均匀，条纹看不清：$s=\frac{\lambda D}{2d}$。光源越宽，条纹越模糊，所以要先用一条细缝限制光源的大小（见[相干性](lesson:physics.optics.coherence)）。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）两只同样的手电筒照在墙上同一处，为什么看不到干涉条纹？（2）杨氏实验里，为什么要先让光穿过一条细缝，再照到双缝上？（3）用激光照射双缝，为什么不需要前面那条细缝？
+  hints:
+    - |
+      两个独立光源的相位差随时间乱变。
+    - |
+      光源上不同的点各自产生一套条纹，它们互不相干，光强相加。
+    - |
+      激光器发出的光，整个截面上各点的相位关系是固定的。
+  reference: |
+    （1）两只手电筒里的灯丝由大量原子各自发光，两束光的相位差每时每刻都在随机变化，干涉项$2\sqrt{I_1I_2}\cos\delta$在极短的时间里就平均成零，墙上只看到两束光强相加。
+
+    （2）双缝的两束光必须来自同一个光源，相位差才固定。可是普通光源有一定大小，光源上不同的点各自在屏上产生一套条纹，位置互相错开（第 6 题），光源大了，条纹就糊在一起。前面那条细缝把光源限制成很窄的一条，两条缝才是相干的。
+
+    （3）激光器发出的光，同一个截面上各点的振动保持固定的相位关系，整个光束就像来自一个点光源，直接照到双缝上，两条缝发出的光就是相干的（见[相干性](lesson:physics.optics.coherence)）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    用白光做双缝实验。
+
+    （1）屏中央的亮纹是什么颜色？为什么？（2）往两边，条纹为什么带颜色，而且每一条的内侧偏蓝、外侧偏红？（3）为什么只能看到中央附近几条彩色条纹，再往外就是一片均匀的白光？
+  hints:
+    - |
+      $y=0$处各种颜色的光程差都是零。
+    - |
+      第$m$条亮纹在$\frac{mL\lambda}d$，波长越长离中央越远。
+    - |
+      离中央远到某种颜色的亮纹落在另一种颜色的暗纹上，各种颜色就混在一起了。
+  reference: |
+    （1）中央$y=0$处，两束光的光程差对所有颜色都是零，每种颜色都最亮，合起来还是白色。
+
+    （2）第$m$条亮纹在$y_m=\frac{mL\lambda}d$，波长越长离中央越远。同一级里，蓝光的亮纹靠内、红光的亮纹靠外，所以每条彩色条纹内侧偏蓝、外侧偏红。
+
+    （3）离中央越远，不同颜色的亮纹错开得越多。蓝光（约$450\,\mathrm{nm}$）的第$m$条亮纹和红光（约$650\,\mathrm{nm}$）的第$m$条亮纹差$\frac{mL(650-450)\,\mathrm{nm}}{d}$，$m$约为$2$时，这个差就超过了半个条纹间距，一种颜色的亮纹落在另一种的暗纹上。再往外，各种颜色的明暗错落交叠，混成均匀的白光，所以只能看到中央附近两三条彩色条纹。光的颜色越杂，能看清的条纹越少，这正是[相干性](lesson:physics.optics.coherence)要讲的。

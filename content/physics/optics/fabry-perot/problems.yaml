@@ -1,0 +1,166 @@
+- id: p1
+  tier: easy
+  statement: |
+    法布里-珀罗干涉仪两块板之间是空气，间距$1.0\,\mathrm{cm}$，垂直入射。它的自由光谱范围是多少？光速取$3.00\times10^8\,\mathrm{m/s}$，以$\mathrm{GHz}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 3.00e8/(2*1.0e-2)/1e9
+    unit: |
+      $\mathrm{GHz}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      自由光谱范围$\Delta\nu=\frac c{2nd}$，空气$n\approx1$。
+    - |
+      $\Delta\nu=\frac{3.00\times10^8}{2\times1.0\times10^{-2}}\,\mathrm{Hz}$。
+    - |
+      $\Delta\nu=1.50\times10^{10}\,\mathrm{Hz}=15.0\,\mathrm{GHz}$。
+  solution: |
+    $\Delta\nu=\frac c{2nd}=\frac{3.00\times10^8}{2\times1.0\times10^{-2}}\,\mathrm{Hz}=1.50\times10^{10}\,\mathrm{Hz}=15.0\,\mathrm{GHz}$。在$600\,\mathrm{nm}$附近，换成波长约$\frac{\lambda^2}{2d}=0.018\,\mathrm{nm}$：频率差比这大的两条谱线，峰会和别的级混在一起。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于法布里-珀罗干涉仪的说法哪些对？两个表面不吸收光。
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        反射率不变时，两块板的间距越大，透射峰按频率算越宽
+      - |
+        反射率越高，透射峰越窄
+      - |
+        两块板的间距越大，相邻透射峰的频率间隔越小
+      - |
+        垂直入射时，透射率最大处两个表面之间的往返光程（optical path length）是波长的整数倍
+      - |
+        反射率很低时，透射率随$\delta$的变化和双光束干涉差别很大
+    value: [2, 3, 4]
+  hints:
+    - |
+      自由光谱范围$\frac c{2nd}$，峰宽约为它除以精细度。
+    - |
+      峰在$\delta=\frac{4\pi nd}\lambda=2\pi m$，即$2nd=m\lambda$。
+    - |
+      B、C、D 对；A、E 错。
+  solution: |
+    B 对：精细度$\frac{\pi\sqrt R}{1-R}$随$R$增大，峰宽是间隔的$\frac1{\mathcal F}$。C 对：$\Delta\nu=\frac c{2nd}$和$d$成反比。D 对：峰在$\delta=2\pi m$，即往返光程$2nd=m\lambda$。
+
+    A 错：峰宽约为$\frac{c}{2nd\,\mathcal F}$，间距越大越窄。E 错：反射率低时第三束以后的光很弱，$T\approx1-2R(1-\cos\delta)$，和双光束干涉一样按余弦起伏（第 5 题）。
+
+- id: p3
+  tier: medium
+  statement: |
+    法布里-珀罗干涉仪两个表面的反射率都是$0.95$，不吸收光。精细度是多少？保留三位有效数字。
+  answer:
+    type: number
+    value: pi*sqrt(0.95)/(1 - 0.95)
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $\mathcal F=\frac{\pi\sqrt R}{1-R}$。
+    - |
+      $\sqrt{0.95}\approx0.975$。
+    - |
+      $\mathcal F\approx\frac{\pi\times0.975}{0.05}\approx61.2$。
+  solution: |
+    $\mathcal F=\frac{\pi\sqrt R}{1-R}=\frac{\pi\times0.9747}{0.05}\approx61.2$：透射峰的宽度只有相邻两峰间隔的约$\frac1{61}$。反射率从$0.90$提高到$0.95$，$1-R$减半，精细度约翻一番。
+
+- id: p4
+  tier: medium
+  statement: |
+    两个表面的反射率都是$0.90$、不吸收光的法布里-珀罗干涉仪，两个透射峰正中间的透射率是多少？保留三位有效数字。
+  answer:
+    type: number
+    value: (1 - 0.90)^2/(1 + 0.90)^2
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      正中间$\delta=(2m+1)\pi$，$\sin^2\frac\delta2=1$。
+    - |
+      $T_{\min}=\frac1{1+F}$，$F=\frac{4R}{(1-R)^2}=360$。
+    - |
+      $T_{\min}=\frac1{361}\approx2.77\times10^{-3}$。
+  solution: |
+    $F=\frac{4\times0.90}{0.10^2}=360$，正中间$\sin^2\frac\delta2=1$，$T_{\min}=\frac1{1+F}=\Bigl(\frac{1-R}{1+R}\Bigr)^2=\frac{0.01}{3.61}\approx2.77\times10^{-3}$。峰顶是$1$，峰和谷相差约$360$倍，透射光几乎只在峰上。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）证明反射率$R$很小时，透射率$T\approx1-2R(1-\cos\delta)$，和双光束干涉一样按$\cos\delta$起伏。（2）不镀膜的玻璃表面$R=0.04$，$T$的最大值和最小值各是多少？近似式给出的最小值是多少？（3）为什么这时第三束以后的透射光可以不计？
+  hints:
+    - |
+      $T=\frac{(1-R)^2}{1-2R\cos\delta+R^2}$，只保留$R$的一次项。
+    - |
+      $\frac1{1-x}\approx1+x$，$x$很小。
+    - |
+      相邻两束透射光的振幅之比是$R$。
+  reference: |
+    （1）$T=\frac{(1-R)^2}{1-2R\cos\delta+R^2}$。只保留$R$的一次项：分子$\approx1-2R$，分母$\approx1-2R\cos\delta$，$T\approx(1-2R)(1+2R\cos\delta)\approx1-2R(1-\cos\delta)$。这正是两束光叠加的形式：振幅为$1-R$的第一束和振幅约为$R$的第二束，交叉项正比于$\cos\delta$。
+
+    （2）最大值$\delta=2\pi m$时$T=1$；最小值$\delta=(2m+1)\pi$时$T=\Bigl(\frac{0.96}{1.04}\Bigr)^2\approx0.852$。近似式给出$1-4R=0.84$，相差约$1\%$。
+
+    （3）透射光的振幅依次是第一束的$1$、$R$、$R^2$……倍。$R=0.04$时第三束只有第一束的$0.0016$，对光强的贡献比第二束的交叉项小一个量级以上，可以不计；这也是[薄膜干涉](lesson:physics.optics.thin-film-interference)只算两束光的理由。
+
+- id: p6
+  tier: hard
+  statement: |
+    两条频率相近的谱线，若它们的透射峰相隔一个峰宽（一半高度处的宽度），就认为刚好能分开。
+
+    （1）证明能分开的最小频率差约为$\frac{\Delta\nu}{\mathcal F}$，$\Delta\nu$是自由光谱范围，分辨本领（resolving power）$\frac\nu{\delta\nu}\approx m\mathcal F$，$m=\frac{2nd}\lambda$是峰的级次。
+
+    （2）空气间隔$1.0\,\mathrm{cm}$、反射率$0.95$，在$600\,\mathrm{nm}$附近垂直入射，分辨本领约是多少？和照亮$6.0\times10^4$条缝的光栅在第一级比较。（3）它的自由光谱范围换成波长是多少？实际使用时要注意什么？
+  hints:
+    - |
+      按$\delta$算，峰宽是$\frac{2\pi}{\mathcal F}$，相邻两峰相隔$2\pi$。
+    - |
+      $\nu=m\Delta\nu$。
+    - |
+      $m=\frac{2d}\lambda\approx3.3\times10^4$，$\mathcal F\approx61$（第 3 题）。
+  reference: |
+    （1）垂直入射时$\delta=\frac{4\pi nd\nu}c$和频率成正比。相邻两峰的$\delta$相差$2\pi$，对应频率差$\Delta\nu$；峰宽是$\frac{2\pi}{\mathcal F}$，对应频率差$\frac{\Delta\nu}{\mathcal F}$，这就是能分开的最小频率差$\delta\nu$。峰在$\nu=m\Delta\nu$，所以$\frac\nu{\delta\nu}\approx m\mathcal F$，和光栅的$R=mN$形式相同：精细度相当于参与叠加的光束数。
+
+    （2）$m=\frac{2\times1.0\times10^{-2}}{600\times10^{-9}}\approx3.3\times10^4$，$\mathcal F\approx61.2$，分辨本领约$2.0\times10^6$。那块光栅在第一级是$6.0\times10^4$，法布里-珀罗干涉仪高出约$34$倍：它的级次极高。
+
+    （3）$\frac{\lambda^2}{2d}=\frac{(600\times10^{-9})^2}{2\times1.0\times10^{-2}}\,\mathrm m=1.8\times10^{-11}\,\mathrm m=0.018\,\mathrm{nm}$。两条谱线相差超过$0.018\,\mathrm{nm}$，峰就会和别的级混在一起，所以先要用光栅或棱镜把要测的那一小段光谱挑出来，再用它细看。
+
+- id: p7
+  tier: thinking
+  statement: |
+    激光器的两面反射镜相距$L$，光在其间来回反射，构成一个法布里-珀罗腔（见[激光](lesson:physics.optics.lasers)）。
+
+    （1）为什么腔里只有一些分立频率的光能稳定地来回加强？相邻两个频率相差多少？（2）$L=30\,\mathrm{cm}$时相差多少？（3）为什么激光的谱线可以比普通光源窄得多？
+  hints:
+    - |
+      往返一趟的光程是波长的整数倍，光才和自己同相叠加。
+    - |
+      $\nu_m=\frac{mc}{2L}$。
+    - |
+      反射镜的反射率很高，峰的宽度只有间隔的$\frac1{\mathcal F}$。
+  reference: |
+    （1）光在腔里来回一趟回到原处，只有往返光程$2L$是波长整数倍的光，才和前一趟的自己同相，一趟趟叠加起来；其他频率的光一趟趟错开，相互抵消。允许的频率$\nu_m=\frac{mc}{2L}$，相邻两个相差$\frac c{2L}$，就是这个腔的自由光谱范围。
+
+    （2）$\frac c{2L}=\frac{3.0\times10^8}{2\times0.30}\,\mathrm{Hz}=5.0\times10^8\,\mathrm{Hz}=500\,\mathrm{MHz}$。
+
+    （3）反射镜的反射率很高时，每个允许频率的峰宽只有$\frac c{2L\mathcal F}$，比相邻两个频率的间隔还窄得多，光只能在这些很窄的频率范围里来回加强，所以输出的谱线很窄，相干长度（coherence length）很长（见[相干性](lesson:physics.optics.coherence)）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    用镀银的膜做反射面，每个面除了反射$R$，还吸收入射光的一部分$A$，透过的只有$1-R-A$。
+
+    （1）这时透射峰的峰顶是多少？（2）$R=0.90$、$A=0.05$时峰顶是多少？（3）为什么实际的法布里-珀罗干涉仪多用吸收极小的多层介质膜，而不用金属膜？
+  hints:
+    - |
+      第一束透射光的振幅变成$1-R-A$倍，后面每一束仍比前一束乘$Re^{-i\delta}$。
+    - |
+      峰顶$T_{\max}=\Bigl(\frac{1-R-A}{1-R}\Bigr)^2$。
+    - |
+      $R$越接近$1$，$1-R$越小，同样的$A$影响越大。
+  reference: |
+    （1）透射光的振幅之和正比于$(1-R-A)\bigl(1+Re^{-i\delta}+R^2e^{-2i\delta}+\cdots\bigr)=\frac{1-R-A}{1-Re^{-i\delta}}$，峰顶$\delta=2\pi m$时$T_{\max}=\Bigl(\frac{1-R-A}{1-R}\Bigr)^2=\Bigl(1-\frac A{1-R}\Bigr)^2$。
+
+    （2）$T_{\max}=\Bigl(1-\frac{0.05}{0.10}\Bigr)^2=0.25$，峰顶只剩四分之一。
+
+    （3）要峰尖锐，$R$就要接近$1$，$1-R$很小；吸收率$A$只要和$1-R$相当，峰顶就大幅下降，光在两面之间来回的次数越多，被吸收得越多。多层介质膜几乎不吸收，又能做到很高的反射率，峰既尖又亮。

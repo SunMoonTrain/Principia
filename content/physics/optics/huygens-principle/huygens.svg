@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 318" width="660" height="318" font-size="14">
+  <!-- 惠更斯作图推折射定律：平面波的波阵面 AB 斜射到界面上，A 先到达界面，B 再走 v1t 到达 B′；这段时间里界面上依次被照到的各点向下面的介质发出次波，速度是 v2，A 发出的次波半径是 v2t；从 B′ 作这些次波的公切线，得到新的波阵面 A′B′，折射光线和它垂直，比入射光线更靠近法线。 -->
+  <path d="M 20.0 168.0 L 640.0 168.0 L 640.0 308.0 L 20.0 308.0 Z" style="fill: var(--accent, #2563eb); stroke: none" fill="var(--accent, #2563eb)" stroke-width="0.0" stroke-linejoin="round" fill-opacity="0.07" />
+  <line x1="20.0" y1="168.0" x2="640.0" y2="168.0" style="stroke: currentColor" stroke-width="1.4" />
+  <text x="636.0" y="158.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">n</tspan><tspan dy="4" font-size="11">1</tspan></text>
+  <text x="636.0" y="192.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">n</tspan><tspan dy="4" font-size="11">2</tspan></text>
+  <line x1="116.4" y1="123.0" x2="170.0" y2="168.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.5" />
+  <path d="M 143.2 145.5 L 135.5 143.3 L 139.7 138.3 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="170.0" y1="168.0" x2="260.8" y2="320.8" style="stroke: var(--accent, #2563eb)" stroke-width="1.5" />
+  <path d="M 253.1 308.0 L 246.6 303.3 L 252.2 300.0 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="170.1" y1="59.0" x2="300.0" y2="168.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.5" />
+  <path d="M 196.9 81.5 L 189.2 79.3 L 193.4 74.3 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="300.0" y1="168.0" x2="356.9" y2="263.8" style="stroke: var(--accent, #2563eb)" stroke-width="1.5" />
+  <path d="M 349.2 250.9 L 342.7 246.3 L 348.3 242.9 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="239.3" y1="8.0" x2="430.0" y2="168.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.5" />
+  <path d="M 258.4 24.0 L 250.7 21.8 L 254.9 16.8 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="430.0" y1="168.0" x2="453.0" y2="206.7" style="stroke: var(--accent, #2563eb)" stroke-width="1.5" />
+  <path d="M 445.3 193.8 L 438.8 189.2 L 444.4 185.8 Z" style="fill: var(--accent, #2563eb)" />
+  <path d="M 302.8 168.0 L 302.5 176.7 L 301.6 185.3 L 300.2 193.9 L 298.3 202.4 L 295.7 210.7 L 292.7 218.8 L 289.1 226.7 L 285.0 234.4 L 280.4 241.8 L 275.3 248.8 L 269.8 255.5 L 263.9 261.9 L 257.5 267.8 L 250.8 273.3 L 243.8 278.4 L 236.4 283.0 L 228.7 287.1 L 220.8 290.7 L 212.7 293.7 L 204.4 296.3 L 195.9 298.2 L 187.3 299.6 L 178.7 300.5 L 170.0 300.8 L 161.3 300.5 L 152.7 299.6 L 144.1 298.2 L 135.6 296.3 L 127.3 293.7 L 119.2 290.7 L 111.3 287.1 L 103.6 283.0 L 96.2 278.4 L 89.2 273.3 L 82.5 267.8 L 76.1 261.9 L 70.2 255.5 L 64.7 248.8 L 59.6 241.8 L 55.0 234.4 L 50.9 226.7 L 47.3 218.8 L 44.3 210.7 L 41.7 202.4 L 39.8 193.9 L 38.4 185.3 L 37.5 176.7 L 37.2 168.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" stroke-linejoin="round" stroke-dasharray="3 3" />
+  <circle cx="170.0" cy="168.0" r="2.4" style="fill: var(--muted, #6b7280)" />
+  <path d="M 345.2 168.0 L 345.0 173.8 L 344.4 179.6 L 343.5 185.3 L 342.2 190.9 L 340.5 196.5 L 338.4 201.9 L 336.1 207.2 L 333.3 212.3 L 330.3 217.2 L 326.9 221.9 L 323.2 226.4 L 319.3 230.6 L 315.0 234.6 L 310.6 238.2 L 305.8 241.6 L 300.9 244.7 L 295.8 247.4 L 290.5 249.8 L 285.1 251.8 L 279.6 253.5 L 273.9 254.8 L 268.2 255.8 L 262.5 256.3 L 256.7 256.5 L 250.9 256.3 L 245.1 255.8 L 239.4 254.8 L 233.8 253.5 L 228.2 251.8 L 222.8 249.8 L 217.5 247.4 L 212.4 244.7 L 207.5 241.6 L 202.8 238.2 L 198.3 234.6 L 194.1 230.6 L 190.1 226.4 L 186.4 221.9 L 183.1 217.2 L 180.0 212.3 L 177.3 207.2 L 174.9 201.9 L 172.8 196.5 L 171.2 190.9 L 169.8 185.3 L 168.9 179.6 L 168.3 173.8 L 168.1 168.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" stroke-linejoin="round" stroke-dasharray="3 3" />
+  <circle cx="256.7" cy="168.0" r="2.4" style="fill: var(--muted, #6b7280)" />
+  <path d="M 387.6 168.0 L 387.5 170.9 L 387.2 173.8 L 386.7 176.6 L 386.1 179.5 L 385.2 182.2 L 384.2 184.9 L 383.0 187.6 L 381.7 190.1 L 380.1 192.6 L 378.4 194.9 L 376.6 197.2 L 374.6 199.3 L 372.5 201.3 L 370.3 203.1 L 367.9 204.8 L 365.5 206.3 L 362.9 207.7 L 360.3 208.9 L 357.6 209.9 L 354.8 210.8 L 352.0 211.4 L 349.1 211.9 L 346.2 212.2 L 343.3 212.3 L 340.4 212.2 L 337.6 211.9 L 334.7 211.4 L 331.9 210.8 L 329.1 209.9 L 326.4 208.9 L 323.8 207.7 L 321.2 206.3 L 318.7 204.8 L 316.4 203.1 L 314.2 201.3 L 312.0 199.3 L 310.1 197.2 L 308.2 194.9 L 306.5 192.6 L 305.0 190.1 L 303.6 187.6 L 302.4 184.9 L 301.4 182.2 L 300.6 179.5 L 299.9 176.6 L 299.5 173.8 L 299.2 170.9 L 299.1 168.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" stroke-linejoin="round" stroke-dasharray="3 3" />
+  <circle cx="343.3" cy="168.0" r="2.4" style="fill: var(--muted, #6b7280)" />
+  <line x1="170.0" y1="168.0" x2="277.4" y2="40.0" style="stroke: var(--good, #059669)" stroke-width="1.8" />
+  <line x1="237.8" y1="282.2" x2="430.0" y2="168.0" style="stroke: var(--good, #059669)" stroke-width="1.8" />
+  <circle cx="170.0" cy="168.0" r="3.0" style="fill: currentColor" />
+  <circle cx="277.4" cy="40.0" r="3.0" style="fill: currentColor" />
+  <circle cx="430.0" cy="168.0" r="3.0" style="fill: currentColor" />
+  <circle cx="237.8" cy="282.2" r="3.0" style="fill: currentColor" />
+  <text x="160.0" y="188.0" fill="currentColor" text-anchor="end">A</text>
+  <text x="287.4" y="34.0" fill="currentColor">B</text>
+  <text x="436.0" y="160.0" fill="currentColor">B′</text>
+  <text x="223.8" y="288.2" fill="currentColor" text-anchor="end">A′</text>
+  <text x="365.7" y="100.0" fill="currentColor"><tspan font-style="italic">v</tspan><tspan dy="4" font-size="11">1</tspan><tspan dy="-4"><tspan font-style="italic">t</tspan></tspan></text>
+  <text x="217.9" y="229.1" fill="currentColor"><tspan font-style="italic">v</tspan><tspan dy="4" font-size="11">2</tspan><tspan dy="-4"><tspan font-style="italic">t</tspan></tspan></text>
+  <text x="90.0" y="300.0" style="fill: var(--muted, #6b7280)" text-anchor="end">次波</text>
+</svg>

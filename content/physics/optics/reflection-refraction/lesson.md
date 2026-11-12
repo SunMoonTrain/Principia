@@ -38,7 +38,7 @@ status: reviewed
 ::anchor{id="thm-reflection"}
 定理（:term[反射定律]{id="physics.optics.law-of-reflection"}，law of reflection）：反射光线在入射面内，和入射光线分居法线两侧，反射角等于入射角，$\theta_1'=\theta_1$。
 
-证明思路：这是实验总结出的定律。把光看成波，用和下面右图一样的波阵面（wavefront）作图，只是反射光和入射光在同一种介质里、速度相同，两个直角三角形全等，就得到反射角等于入射角（第 5 题）。
+证明思路：这是实验总结出的定律。把光看成波，用和下面右图一样的:term[波阵面]{id="physics.optics.wavefront"}（wavefront）作图，只是反射光和入射光在同一种介质里、速度相同，两个直角三角形全等，就得到反射角等于入射角（第 5 题）。
 
 平面镜前一点$S$发出的光，经镜面反射后，每条反射光线反向延长都经过镜后和$S$对称的一点$S'$（第 5 题）。眼睛收到这些反射光，就觉得光是从$S'$发出的，「镜子里的像」就在那里；镜子后面其实没有光，这样的像是:term[虚像]{id="physics.optics.virtual-image"}（virtual image，见[球面折射与近轴近似](lesson:physics.optics.paraxial-refraction)）。所以像和物体关于镜面对称：大小相同，离镜面一样远；你举起右手，镜中的像举起的看上去是左手。
 
@@ -56,7 +56,7 @@ status: reviewed
 ::anchor{id="thm-snell"}
 定理（:term[折射定律]{id="physics.optics.law-of-refraction"}，law of refraction）：折射光线在入射面内，和入射光线分居法线两侧，入射角$\theta_1$和折射角$\theta_2$满足$n_1\sin\theta_1=n_2\sin\theta_2$，$n_1$、$n_2$分别是入射一侧和折射一侧介质的折射率；这个关系也叫斯涅耳定律（Snell's law）。
 
-证明思路：把光看成波。平行光同一时刻振动步调相同的点连成的面是波阵面；波阵面$AB$斜着射到界面上（下面的图），$B$点的光再走$v_1t$到达界面上的$B'$时，$A$点的光在介质 2 里走了$v_2t$到$A'$，新的波阵面是$A'B'$。直角三角形$ABB'$和$AA'B'$共用斜边$AB'$，$v_1t=AB'\sin\theta_1$，$v_2t=AB'\sin\theta_2$，两式相除得$\frac{\sin\theta_1}{\sin\theta_2}=\frac{v_1}{v_2}=\frac{n_2}{n_1}$。
+证明思路：把光看成波。平行光同一时刻振动步调相同的点连成的面是:term[波阵面]{id="physics.optics.wavefront"}；波阵面$AB$斜着射到界面上（下面的图），$B$点的光再走$v_1t$到达界面上的$B'$时，$A$点的光在介质 2 里走了$v_2t$到$A'$，新的波阵面是$A'B'$。直角三角形$ABB'$和$AA'B'$共用斜边$AB'$，$v_1t=AB'\sin\theta_1$，$v_2t=AB'\sin\theta_2$，两式相除得$\frac{\sin\theta_1}{\sin\theta_2}=\frac{v_1}{v_2}=\frac{n_2}{n_1}$。
 
 由折射定律，光从折射率小的介质射进折射率大的介质时，$\sin\theta_2<\sin\theta_1$，折射光线偏向法线；反过来就偏离法线。光从水、玻璃射向空气，入射角大到$\sin\theta_1>\frac{n_2}{n_1}$时，折射定律给不出折射角，光全部反射回来（见[全反射与光纤](lesson:physics.optics.total-internal-reflection)）。
 
@@ -77,7 +77,7 @@ status: reviewed
 
 ![左边是光线射到两种介质的界面上，一部分反射、一部分折射，入射角、反射角、折射角都从法线量起；右边是用波阵面推折射定律：B 走到界面上的 B′ 时，A 发出的光在下面的介质里只走了较短的 AA′，新的波阵面 A′B′ 偏向法线](reflection-refraction.svg)
 
-左图里下面的介质:term[折射率]{id="physics.optics.refractive-index"}较大（$n_2=1.5n_1$），入射角是$50^\circ$，反射角也是$50^\circ$，折射角约$30.7^\circ$。右图画的是同一束光的两条光线和两个时刻的波阵面（虚线）：$BB'$和$AA'$是同一段时间里光在两种介质里走过的路程，后者短，波阵面就转向法线。
+左图里下面的介质:term[折射率]{id="physics.optics.refractive-index"}较大（$n_2=1.5n_1$），入射角是$50^\circ$，反射角也是$50^\circ$，折射角约$30.7^\circ$。右图画的是同一束光的两条光线和两个时刻的:term[波阵面]{id="physics.optics.wavefront"}（虚线）：$BB'$和$AA'$是同一段时间里光在两种介质里走过的路程，后者短，波阵面就转向法线。
 
 :::anim{component="function-plot"}
 range: { x: [0, 90], y: [0, 90] }

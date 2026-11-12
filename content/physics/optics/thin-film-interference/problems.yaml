@@ -1,0 +1,166 @@
+- id: p1
+  tier: easy
+  statement: |
+    在玻璃镜片上镀一层氟化镁（折射率$1.38$）增透膜，使波长$550\,\mathrm{nm}$的光垂直入射时反射最少。膜最薄要多厚？以$\mathrm{nm}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 550/(4*1.38)
+    unit: |
+      $\mathrm{nm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      两次反射都有半波损失，互相抵掉。
+    - |
+      要求$2nt=\frac\lambda2$，即$t=\frac\lambda{4n}$。
+    - |
+      $t=\frac{550}{4\times1.38}\,\mathrm{nm}\approx99.6\,\mathrm{nm}$。
+  solution: |
+    空气射向氟化镁、氟化镁射向玻璃（$1.38<1.52$），两次反射都有半波损失，互相抵掉。两束反射光反相要求$2nt=\frac\lambda2$，最薄$t=\frac\lambda{4n}=\frac{550}{4\times1.38}\,\mathrm{nm}\approx99.6\,\mathrm{nm}$，不到$0.1\,\mu\mathrm m$。厚度再加$\frac\lambda{2n}$的整数倍也满足条件，但其他波长的反射会增加得更快（第 6 题）。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于薄膜干涉的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        光从空气垂直射到水面上反射时，有半波损失
+      - |
+        空气中的肥皂膜，上下两个表面反射的光只有一束有半波损失
+      - |
+        增透膜的折射率越大，减少反射的效果越好
+      - |
+        从反射光看，牛顿环的中心是亮斑
+      - |
+        两块平板玻璃之间楔形空气层的夹角变小，等厚条纹变疏
+    value: [1, 2, 5]
+  hints:
+    - |
+      光从折射率小的介质射向折射率大的介质反射时，才有半波损失。
+    - |
+      增透膜的理想折射率是$\sqrt{n_s}$；楔形空气层的条纹间距是$\frac\lambda{2\alpha}$。
+    - |
+      A、B、E 对；C、D 错。
+  solution: |
+    A 对：空气的折射率比水小。B 对：上表面是空气射向肥皂膜，有半波损失；下表面是肥皂膜射向空气，没有。E 对：条纹间距$\frac\lambda{2\alpha}$，夹角越小越疏。
+
+    C 错：要两束反射光一样强才能完全抵消，理想的折射率是$\sqrt{n_s}$，比它大或比它小都不好。D 错：接触点处空气层厚度为零，只有下表面的反射有半波损失，两束光反相，中心是暗斑。
+
+- id: p3
+  tier: medium
+  statement: |
+    两块平板玻璃一端接触，离接触边$6.00\,\mathrm{cm}$处夹一根细丝，用波长$589\,\mathrm{nm}$的光垂直照射，从反射光看到平行于接触边的暗纹，量得相邻$11$条暗纹之间共$2.50\,\mathrm{mm}$。细丝的直径是多少？以$\mu\mathrm m$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 0.0600*589e-9/(2*0.250e-3)*1e6
+    unit: |
+      $\mu\mathrm m$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $11$条暗纹之间有$10$个间距，条纹间距$0.250\,\mathrm{mm}$。
+    - |
+      相邻暗纹处空气层厚度相差$\frac\lambda2$，所以间距$\frac\lambda{2\alpha}$，$\alpha=\frac DL$。
+    - |
+      $D=\frac{L\lambda}{2\times0.250\,\mathrm{mm}}=\frac{0.0600\times589\times10^{-9}}{5.00\times10^{-4}}\,\mathrm m\approx70.7\,\mu\mathrm m$。
+  solution: |
+    条纹间距$\Delta x=\frac{2.50}{10}\,\mathrm{mm}=0.250\,\mathrm{mm}$。相邻暗纹处空气层厚度相差$\frac\lambda2$，$\Delta x=\frac\lambda{2\alpha}$，$\alpha=\frac\lambda{2\Delta x}\approx1.18\times10^{-3}$。细丝直径$D=\alpha L=\frac{0.0600\times589\times10^{-9}}{2\times0.250\times10^{-3}}\,\mathrm m\approx7.07\times10^{-5}\,\mathrm m=70.7\,\mu\mathrm m$。不到一根头发粗的细丝，在$6\,\mathrm{cm}$长的距离上就撑出了两百多条暗纹。
+
+- id: p4
+  tier: medium
+  statement: |
+    做牛顿环实验时，把透镜和平板玻璃之间的空气换成水（折射率$1.33$，玻璃的折射率$1.52$），从反射光看，同一个暗环的半径变为原来的多少倍？保留三位有效数字。
+  answer:
+    type: number
+    value: 1/sqrt(1.33)
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      玻璃射向水不损失，水射向玻璃有半波损失，仍然恰有一次。
+    - |
+      暗环条件变为$2nt=m\lambda$，$t=\frac{r^2}{2R}$。
+    - |
+      $r_m=\sqrt{\frac{mR\lambda}n}$，变为原来的$\frac1{\sqrt{1.33}}\approx0.867$倍。
+  solution: |
+    透镜（$1.52$）射向水（$1.33$）的反射没有半波损失，水射向平板玻璃的有，仍然恰有一次，暗环条件变为$2nt+\frac\lambda2=\Bigl(m+\frac12\Bigr)\lambda$，即$2n\frac{r^2}{2R}=m\lambda$，$r_m=\sqrt{\frac{mR\lambda}n}$。同一个暗环的半径变为原来的$\frac1{\sqrt{1.33}}\approx0.867$倍：水里的波长短，厚度只要原来的$\frac1n$就够一个周期。
+
+- id: p5
+  tier: hard
+  statement: |
+    例 1 那片肥皂膜（折射率$1.33$，厚$500\,\mathrm{nm}$）。
+
+    （1）斜着看时，光以入射角$i$射到膜上。写出反射光加强的波长$\lambda_m$随$i$变化的式子，说明$i$增大时这些波长怎样变。（2）$i=45^\circ$时，$400\,\mathrm{nm}$到$700\,\mathrm{nm}$之间哪种光最强？（3）水面上的油膜，为什么换个角度看颜色会变？
+  hints:
+    - |
+      光程差$2nt\cos\theta_t+\frac\lambda2$，$n\sin\theta_t=\sin i$。
+    - |
+      $\lambda_m=\frac{2nt\cos\theta_t}{m-1/2}$，$\cos\theta_t=\sqrt{1-\frac{\sin^2i}{n^2}}$。
+    - |
+      $i=45^\circ$时$2nt\cos\theta_t\approx1126\,\mathrm{nm}$。
+  reference: |
+    （1）加强条件$2nt\cos\theta_t+\frac\lambda2=m\lambda$，$\lambda_m=\frac{2nt\cos\theta_t}{m-1/2}=\frac{2t\sqrt{n^2-\sin^2i}}{m-1/2}$。$i$增大时$\sqrt{n^2-\sin^2i}$变小，每个$\lambda_m$都变短，颜色向波长短的一端移动。
+
+    （2）$\sin\theta_t=\frac{\sin45^\circ}{1.33}\approx0.532$，$\cos\theta_t\approx0.847$，$2nt\cos\theta_t\approx1330\times0.847\,\mathrm{nm}\approx1126\,\mathrm{nm}$。$m=2$得$751\,\mathrm{nm}$，已在红光之外；$m=3$得$451\,\mathrm{nm}$，是蓝光。垂直看偏绿（例 1）的地方，斜着看偏蓝。
+
+    （3）同一处的膜厚不变，看的角度变了，$\cos\theta_t$跟着变，加强的波长也变，所以颜色随角度移动；膜厚各处不同，整片彩色的花纹也会跟着变。
+
+- id: p6
+  tier: hard
+  statement: |
+    玻璃（$n_s=1.52$）上镀一层按$550\,\mathrm{nm}$设计的氟化镁（$n=1.38$）增透膜，厚$t=\frac{550\,\mathrm{nm}}{4n}$。只考虑两束反射光，垂直入射。
+
+    （1）证明反射率$R=r_1^2+r_2^2+2r_1r_2\cos\delta$，$\delta=\frac{4\pi nt}{\lambda}$，$r_1$、$r_2$是两个界面的反射系数。（2）求$450\,\mathrm{nm}$、$550\,\mathrm{nm}$、$650\,\mathrm{nm}$处的反射率，说明镀膜镜头的反光为什么带紫色。（3）把膜加厚到$\frac{3\times550\,\mathrm{nm}}{4n}$，$550\,\mathrm{nm}$处同样抵消。为什么一般不这样做？
+  hints:
+    - |
+      两束反射光的振幅约为$r_1$和$r_2$，第二束多走的光程（optical path length）是$2nt$，相位差$\delta=\frac{2\pi\cdot2nt}\lambda$。
+    - |
+      $r_1=\frac{1-1.38}{1+1.38}\approx-0.160$，$r_2=\frac{1.38-1.52}{1.38+1.52}\approx-0.048$；$\delta=\pi\cdot\frac{550\,\mathrm{nm}}\lambda$。
+    - |
+      膜加厚到$3$倍，$\delta$随$\lambda$变化也快$3$倍。
+  reference: |
+    （1）两束反射光的振动可以写成$r_1\cos\omega t$和$r_2\cos(\omega t-\delta)$（透过上表面时振幅的微小损失不计），半波损失已经包含在$r_1$、$r_2$的正负号里。按[双光束干涉](lesson:physics.optics.two-beam-interference)的光强公式，$R=r_1^2+r_2^2+2r_1r_2\cos\delta$，$\delta=\frac{2\pi\cdot2nt}\lambda=\frac{4\pi nt}\lambda$。
+
+    （2）$r_1^2+r_2^2\approx0.0278$，$2r_1r_2\approx0.0154$，$\delta=\pi\cdot\frac{550}{\lambda/\mathrm{nm}}$。$550\,\mathrm{nm}$：$\cos\delta=-1$，$R\approx1.24\%$；$450\,\mathrm{nm}$：$\cos\delta=\cos220^\circ\approx-0.766$，$R\approx1.60\%$；$650\,\mathrm{nm}$：$\cos\delta=\cos152.3^\circ\approx-0.885$，$R\approx1.42\%$。反射光里绿光最少，蓝光和红光相对多，混起来偏紫。
+
+    （3）膜厚是原来的$3$倍时$\delta=3\pi\cdot\frac{550}{\lambda/\mathrm{nm}}$，偏离$550\,\mathrm{nm}$后变化快$3$倍。例如$450\,\mathrm{nm}$处$\delta\approx3.67\pi$，$\cos\delta=0.5$，$R\approx0.0278+0.0154\times0.5\approx3.6\%$，几乎和没镀膜一样。膜越厚，增透的波长范围越窄，所以只用最薄的那一层。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）用白光做牛顿环实验，为什么只能在中央附近看到几圈彩色的环？（2）从反射光看中心是暗斑，可是如果透镜和平板玻璃之间夹了一粒灰尘，中心可能变亮，为什么？（3）从透射光看，牛顿环的明暗为什么和反射光的正好相反？
+  hints:
+    - |
+      第$m$个暗环的半径$\sqrt{mR\lambda}$，不同颜色的环随$m$增大错开得越来越多。
+    - |
+      灰尘把透镜垫高，接触点处的空气层厚度不再是零。
+    - |
+      膜不吸收光时，反射加透射等于入射。
+  reference: |
+    （1）第$m$个暗环的半径$\sqrt{mR\lambda}$，波长越长，环越大。中央附近$m$小，不同颜色的环错开得不多，看得出一圈圈彩色；往外$m$增大，某种颜色的亮环落到另一种颜色的暗环上，各种颜色混在一起，成了均匀的白光。
+
+    （2）灰尘把透镜垫高$t_0$，中心处的光程差是$2t_0+\frac\lambda2$，不再是半个波长，$2t_0$恰好是半个波长的奇数倍时，中心就是亮的。这也是例 2 要用两个环的半径平方相减的原因。
+
+    （3）不吸收光时，反射的光和透过的光之和等于入射的光。反射光相互加强的地方，透过的光就少；反射光相互抵消的地方，光都透了过去。所以透射光的亮环正好在反射光的暗环处，中心是亮斑；不过透射的两束光强弱相差很大，条纹没有反射光的清楚。
+
+- id: p8
+  tier: thinking
+  statement: |
+    检查一块玻璃板的表面平不平：把一块很平的标准平板压在它上面，两者一端接触，另一端垫一张薄纸，形成楔形空气层。用单色光垂直照射，从反射光看到等厚条纹。
+
+    （1）表面完全平时，条纹是什么样？（2）某条暗纹在中间一段弯向接触边，这一段下面的表面是凸起还是凹陷？（3）这种检查能看出多大的高低差？用波长$589\,\mathrm{nm}$的光估计。
+  hints:
+    - |
+      每条暗纹沿空气层厚度相同的地方走。
+    - |
+      暗纹弯向接触边，说明那里在离接触边更近的位置就达到了同样的厚度。
+    - |
+      条纹偏离一个间距，对应厚度差$\frac\lambda2$。
+  reference: |
+    （1）空气层的厚度随离接触边的距离均匀增加，条纹是平行于接触边的等间距直线。
+
+    （2）每条暗纹沿厚度相同的地方走。这条暗纹在中间一段弯向接触边，说明那一段在离接触边更近的地方就达到了这条暗纹对应的厚度，空气层比别处厚，下面的表面比周围低，是凹陷。反过来，暗纹背着接触边弯，表面是凸起。
+
+    （3）条纹偏离一整个间距，对应空气层厚度差$\frac\lambda2\approx0.29\,\mu\mathrm m$；能看出偏离间距的几分之一，就能发现几十纳米的高低差。

@@ -1,0 +1,162 @@
+- id: p1
+  tier: easy
+  statement: |
+    一种分层介质的折射率只随高度变化。光在折射率$1.50$的一层里和竖直方向成$30^\circ$，向折射率较小的方向走，到了折射率$1.20$的一层，和竖直方向成多少度？保留三位有效数字。
+  answer:
+    type: number
+    value: asin(1.50*sin(30*pi/180)/1.20)*180/pi
+    unit: |
+      $^\circ$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $n\sin\theta$沿光线不变。
+    - |
+      $\sin\theta=\frac{1.50\sin30^\circ}{1.20}$。
+    - |
+      $\sin\theta=0.625$，$\theta\approx38.7^\circ$。
+  solution: |
+    $1.50\sin30^\circ=1.20\sin\theta$，$\sin\theta=\frac{0.750}{1.20}=0.625$，$\theta\approx38.7^\circ$。光线走向折射率小的一层，变得更斜，也就是在向折射率大的一侧弯。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        折射率只随高度变化时，光线和竖直方向的夹角$\theta$满足$n\sin\theta$沿光线不变
+      - |
+        光线在渐变折射率介质里向折射率小的一侧弯
+      - |
+        路面上的海市蜃楼是光在路面上反射形成的
+      - |
+        渐变折射率光纤里，近轴光线沿正弦曲线前进
+      - |
+        一束光沿水平方向射进折射率随高度增大的空气，它会向上弯
+    value: [1, 4, 5]
+  hints:
+    - |
+      把介质切成薄层，每个界面上用折射定律。
+    - |
+      $y''\approx\frac1n\dv ny$；抛物线分布的纤芯里$r''\approx-\alpha r$。
+    - |
+      A、D、E 对；B、C 错。
+  solution: |
+    A 对：切成薄层，每个界面上$n_1\sin\theta_1=n_2\sin\theta_2$，同一个量一层层传下去。D 对：$r''\approx-\alpha r$是简谐振动的方程。E 对：$y''\approx\frac1n\dv ny>0$，光线向上弯。
+
+    B 错：方向相反，光线向折射率大的一侧弯。C 错：光没有碰到路面，是在路面上方的热空气里弯回去的。
+
+- id: p3
+  tier: medium
+  statement: |
+    晒热的路面上方，贴近路面处的空气和高处的空气折射率相差$3.0\times10^{-5}$，高处空气的折射率取$1.00026$。从高处射下来的光和水平方向的夹角小于多少度时，会在到达路面之前被弯回去？保留三位有效数字。
+  answer:
+    type: number
+    value: acos((1.00026 - 3.0e-5)/1.00026)*180/pi
+    unit: |
+      $^\circ$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      用和水平方向的夹角$\alpha$，$n\cos\alpha$沿光线不变。
+    - |
+      光线到贴近路面处恰好水平：$1.00026\cos\alpha=1.00026-3.0\times10^{-5}$。
+    - |
+      $\alpha\approx\sqrt{\frac{2\times3.0\times10^{-5}}{1.00026}}\,\mathrm{rad}\approx7.74\times10^{-3}\,\mathrm{rad}\approx0.444^\circ$。
+  solution: |
+    $n\cos\alpha$沿光线不变，$\alpha$是和水平方向的夹角。光线在贴近路面处变成水平（$\cos\alpha=1$），要求高处的$\cos\alpha=\frac{1.00026-3.0\times10^{-5}}{1.00026}$。小角度时$\cos\alpha\approx1-\frac{\alpha^2}2$，$\alpha\approx\sqrt{\frac{2\times3.0\times10^{-5}}{1.00026}}\approx7.74\times10^{-3}\,\mathrm{rad}\approx0.444^\circ$。夹角比这小的光会被弯回去，夹角更大的光一直射到路面上。
+
+- id: p4
+  tier: medium
+  statement: |
+    一根渐变折射率光纤的纤芯半径$25\,\mu\mathrm m$，中心折射率$1.47$，纤芯边缘降到$1.46$，折射率按$n_0\Bigl(1-\frac{\alpha r^2}2\Bigr)$分布。近轴光线的周期是多少？以$\mathrm{mm}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 2*pi/sqrt(2*(1 - 1.46/1.47)/(25e-6)^2)*1000
+    unit: |
+      $\mathrm{mm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      由边缘的折射率求$\alpha$：$1.46=1.47\Bigl(1-\frac{\alpha a^2}{2}\Bigr)$。
+    - |
+      $\alpha=\frac{2}{a^2}\Bigl(1-\frac{1.46}{1.47}\Bigr)\approx2.18\times10^7\,\mathrm{m^{-2}}$，周期$\Lambda=\frac{2\pi}{\sqrt\alpha}$。
+    - |
+      $\sqrt\alpha\approx4.67\times10^3\,\mathrm{m^{-1}}$，$\Lambda\approx1.35\,\mathrm{mm}$。
+  solution: |
+    $\alpha=\frac{2}{(25\times10^{-6}\,\mathrm m)^2}\Bigl(1-\frac{1.46}{1.47}\Bigr)=\frac{2\times0.006803}{6.25\times10^{-10}}\,\mathrm{m^{-2}}\approx2.18\times10^7\,\mathrm{m^{-2}}$，$\sqrt\alpha\approx4.67\times10^3\,\mathrm{m^{-1}}$，$\Lambda=\frac{2\pi}{\sqrt\alpha}\approx1.35\times10^{-3}\,\mathrm m=1.35\,\mathrm{mm}$。和例 2 相比，相对的折射率差小了约一半，光线弯得慢，周期长了约$\sqrt2$倍。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）光线$y(x)$在折射率$n(y)$的介质里，光程$L=\int n(y)\sqrt{1+y'^2}\,\dd x$。写出欧拉-拉格朗日方程，并证明光线接近水平时$y''\approx\frac{n'(y)}{n(y)}$。（2）纤芯的折射率$n=n_0\Bigl(1-\frac{\alpha y^2}2\Bigr)$，$\alpha y^2\ll1$，证明近轴光线是正弦曲线，周期$\frac{2\pi}{\sqrt\alpha}$和光线射入的角度、位置都无关。
+  hints:
+    - |
+      $F=n(y)\sqrt{1+y'^2}$，$\frac{\partial F}{\partial y'}=\frac{ny'}{\sqrt{1+y'^2}}$，$\frac{\partial F}{\partial y}=n'\sqrt{1+y'^2}$。
+    - |
+      $|y'|\ll1$时根号近似为$1$，$\dv{}{x}(ny')\approx n'$，而$\dv{}{x}(ny')=ny''+n'y'^2$。
+    - |
+      $\frac{n'}n=\frac{-n_0\alpha y}{n_0(1-\alpha y^2/2)}\approx-\alpha y$。
+  reference: |
+    （1）$F=n(y)\sqrt{1+y'^2}$，欧拉-拉格朗日方程$\dv{}{x}\frac{\partial F}{\partial y'}=\frac{\partial F}{\partial y}$，即$\dv{}{x}\frac{n(y)y'}{\sqrt{1+y'^2}}=n'(y)\sqrt{1+y'^2}$。$|y'|\ll1$时两边的根号都近似为$1$：$\dv{}{x}(ny')=ny''+n'y'^2\approx n'$，$y'^2$是二阶小量，略去得$y''\approx\frac{n'}{n}$。
+
+    （2）$n'=-n_0\alpha y$，$\frac{n'}{n}=\frac{-\alpha y}{1-\alpha y^2/2}\approx-\alpha y$，于是$y''\approx-\alpha y$。这是简谐振动的方程，通解$y=A\cos\sqrt\alpha x+B\sin\sqrt\alpha x$，$A$、$B$由射入的位置和角度决定（$A=y(0)$，$B=\frac{y'(0)}{\sqrt\alpha}$），周期$\frac{2\pi}{\sqrt\alpha}$只由$\alpha$决定。所以从同一点射入的近轴光线，每走半个周期又会聚到一起。
+
+- id: p6
+  tier: hard
+  statement: |
+    一种介质的折射率满足$n(y)^2=n_0^2+\beta y$，$\beta>0$，只随高度$y$变化。
+
+    （1）用分层介质里的折射定律，写出光线和水平方向的夹角$\alpha$满足的关系，并由此求出$\left(\dv yx\right)^2$。（2）证明光线是抛物线。（3）光线在哪里变成水平？说明它向哪一侧弯。
+  hints:
+    - |
+      和水平方向的夹角$\alpha$：$n\cos\alpha=C$，$C$是常数；$\dv yx=\tan\alpha$。
+    - |
+      $\tan^2\alpha=\frac1{\cos^2\alpha}-1=\frac{n^2}{C^2}-1=\frac{n_0^2+\beta y}{C^2}-1$。
+    - |
+      对$x$求导：$2y'y''=\frac{\beta}{C^2}y'$，$y''=\frac{\beta}{2C^2}$是常数。
+  reference: |
+    （1）$\theta$是和竖直方向的夹角，$\alpha=90^\circ-\theta$，$n\sin\theta=n\cos\alpha=C$。$\dv yx=\tan\alpha$，$\Bigl(\dv yx\Bigr)^2=\frac{1}{\cos^2\alpha}-1=\frac{n^2}{C^2}-1=\frac{n_0^2+\beta y}{C^2}-1$。
+
+    （2）两边对$x$求导：$2y'y''=\frac{\beta}{C^2}y'$。在$y'\ne0$处$y''=\frac{\beta}{2C^2}$，是常数，$y$是$x$的二次函数，光线是开口向上的抛物线。
+
+    （3）光线水平时$y'=0$，即$n_0^2+\beta y=C^2$，$y=\frac{C^2-n_0^2}{\beta}$，这里折射率等于$C$，是这条光线经过的最低点。$y''>0$，光线向上弯，正是折射率增大的方向（$\beta>0$时$n$随$y$增大）。这和抛射体的轨迹很像：$y''$是常数，好比恒定的重力，只是方向朝着折射率大的一侧。
+
+- id: p7
+  tier: thinking
+  statement: |
+    大气越往上越稀薄，折射率越往上越小。（1）从太空射来、斜着穿过大气的星光，会向哪一侧弯？我们看到的星星，比它真实的方向高还是低？
+
+    （2）在地平线附近，大气使天体看上去抬高约$34'$，而太阳的视直径约为$0.5^\circ$。太阳下边缘看上去刚碰到地平线时，按直线计算，太阳实际在哪里？
+  hints:
+    - |
+      光线向折射率大的一侧弯，也就是向下弯。
+    - |
+      眼睛沿光线射来的方向看，光线向下弯，射进眼睛的方向比原来的方向陡。
+    - |
+      $34'$比太阳的视直径$30'$左右还大。
+  reference: |
+    （1）光线向折射率大的一侧弯，也就是向下、向地面弯，凸起的一面朝上。眼睛沿光线射进来的方向往回看，那个方向比光线原来的方向高，所以看到的星星比它真实的方向高。越靠近地平线，光线在大气里斜着走得越远，抬高得越多。
+
+    （2）下边缘看上去刚碰到地平线时，它实际在地平线下约$34'$；太阳的视直径约$30'$，整个太阳按直线算已经全部在地平线以下了。也就是说，看到太阳「正在落下」时，它其实已经落下去了；日出时情况相反，太阳还没升起，我们已经看到了它。
+
+- id: p8
+  tier: thinking
+  statement: |
+    [全反射与光纤](lesson:physics.optics.total-internal-reflection)第 6 题算过，阶跃折射率的光纤里，沿轴走的光和走锯齿形路线的光到达时间不同。（1）在渐变折射率光纤里，离轴远的光线也走了更长的路，为什么它不一定晚到？（2）为什么要让折射率按抛物线分布，而不是随便怎样减小都行？（3）这和第 7 题里太阳「提前升起」有什么相同之处？
+  hints:
+    - |
+      光速$\frac cn$，离轴远的地方折射率小。
+    - |
+      抛物线分布让近轴光线的周期都相同，每过半个周期又会聚到一起。
+    - |
+      两者都是折射率连续变化让光线弯曲，光走的不是几何上的直线。
+  reference: |
+    （1）光在介质里的速度是$\frac cn$。离轴远的光线摆动的幅度大，几何路程长，可它有更多时间在纤芯外层，那里折射率小、光速快，多走的路被跑得快抵消了。按费马原理，从一点到另一点的实际光路光程取极值，几条光线如果都从轴上一点出发、又会聚到轴上同一点，光程（也就是用时）近似相等。
+
+    （2）只有抛物线分布，近轴光线的方程才是$r''\approx-\alpha r$，所有光线的周期相同，从一点出发的光线每过半个周期都在同一点会聚，用时也几乎相同。别的分布周期随射入的角度变，不同光线到达的时间就又不一样了。
+
+    （3）两者都是折射率连续变化、光线连续弯曲：大气让星光向下弯，光纤让光线弯回轴；在两种情形里，光走的都不是几何上的直线，而是光程取极值的曲线。

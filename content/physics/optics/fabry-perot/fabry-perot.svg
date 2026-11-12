@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 345" width="660" height="345" font-size="14">
+  <!-- 法布里-珀罗干涉仪：两块平行放置的玻璃板，相对的两个表面反射率都是 R，相距 d。光斜着射入后在两个表面之间来回反射，每碰到右边的表面一次，就漏出一束透射光；这些透射光互相平行，后一束比前一束多来回一趟，振幅乘上 R，相位落后 δ。它们叠加起来，δ 是 2π 的整数倍时透射最强。 -->
+  <path d="M 220.0 52.0 L 250.0 52.0 L 250.0 312.0 L 220.0 312.0 Z" style="fill: var(--muted, #6b7280); stroke: none" fill="var(--muted, #6b7280)" stroke-width="0.0" stroke-linejoin="round" fill-opacity="0.18" />
+  <path d="M 370.0 52.0 L 400.0 52.0 L 400.0 312.0 L 370.0 312.0 Z" style="fill: var(--muted, #6b7280); stroke: none" fill="var(--muted, #6b7280)" stroke-width="0.0" stroke-linejoin="round" fill-opacity="0.18" />
+  <line x1="250.0" y1="52.0" x2="250.0" y2="312.0" style="stroke: currentColor" stroke-width="3.0" />
+  <line x1="370.0" y1="52.0" x2="370.0" y2="312.0" style="stroke: currentColor" stroke-width="3.0" />
+  <text x="235.0" y="42.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">R</tspan></text>
+  <text x="385.0" y="42.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">R</tspan></text>
+  <line x1="80.0" y1="324.4" x2="211.0" y2="291.7" style="stroke: currentColor" stroke-width="1.5" />
+  <path d="M 218.0 290.0 L 210.9 295.5 L 209.1 288.4 Z" style="fill: currentColor" />
+  <line x1="218.0" y1="290.0" x2="250.0" y2="282.0" style="stroke: currentColor" stroke-width="1.5" />
+  <text x="80.0" y="300.4" fill="currentColor">入射光</text>
+  <line x1="250.0" y1="282.0" x2="370.0" y2="252.1" style="stroke: currentColor" stroke-width="1.2" stroke-opacity="1.00" />
+  <line x1="400.0" y1="244.6" x2="543.0" y2="208.9" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 550.0 207.2 L 542.9 212.8 L 541.1 205.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="370.0" y1="252.1" x2="400.0" y2="244.6" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <text x="560.0" y="212.2" style="fill: var(--accent, #2563eb)">1</text>
+  <line x1="370.0" y1="252.1" x2="250.0" y2="222.2" style="stroke: currentColor" stroke-width="1.2" stroke-opacity="0.82" />
+  <line x1="250.0" y1="222.2" x2="370.0" y2="192.2" style="stroke: currentColor" stroke-width="1.2" stroke-opacity="0.82" />
+  <line x1="400.0" y1="184.8" x2="543.0" y2="149.1" style="stroke: var(--good, #059669)" stroke-width="1.8" />
+  <path d="M 550.0 147.4 L 542.9 152.9 L 541.1 145.8 Z" style="fill: var(--good, #059669)" />
+  <line x1="370.0" y1="192.2" x2="400.0" y2="184.8" style="stroke: var(--good, #059669)" stroke-width="1.8" />
+  <text x="560.0" y="152.4" style="fill: var(--good, #059669)">2</text>
+  <line x1="370.0" y1="192.2" x2="250.0" y2="162.3" style="stroke: currentColor" stroke-width="1.2" stroke-opacity="0.64" />
+  <line x1="250.0" y1="162.3" x2="370.0" y2="132.4" style="stroke: currentColor" stroke-width="1.2" stroke-opacity="0.64" />
+  <line x1="400.0" y1="124.9" x2="543.0" y2="89.3" style="stroke: var(--muted, #6b7280)" stroke-width="1.4" />
+  <path d="M 550.0 87.5 L 542.9 93.1 L 541.1 86.0 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="370.0" y1="132.4" x2="400.0" y2="124.9" style="stroke: var(--muted, #6b7280)" stroke-width="1.4" />
+  <text x="560.0" y="92.5" style="fill: var(--muted, #6b7280)">3</text>
+  <line x1="370.0" y1="132.4" x2="250.0" y2="102.5" style="stroke: currentColor" stroke-width="1.2" stroke-opacity="0.46" />
+  <line x1="250.0" y1="102.5" x2="370.0" y2="72.6" style="stroke: currentColor" stroke-width="1.2" stroke-opacity="0.46" />
+  <line x1="400.0" y1="65.1" x2="543.0" y2="29.4" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 550.0 27.7 L 542.9 33.2 L 541.1 26.1 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="370.0" y1="72.6" x2="400.0" y2="65.1" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <text x="560.0" y="32.7" style="fill: var(--muted, #6b7280)">4</text>
+  <line x1="250.0" y1="330.0" x2="370.0" y2="330.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="250.0" y1="325.0" x2="250.0" y2="335.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="370.0" y1="325.0" x2="370.0" y2="335.0" style="stroke: currentColor" stroke-width="1.0" />
+  <text x="310.0" y="326.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">d</tspan></text>
+  <text x="40.0" y="92.0" fill="currentColor">后一束比前一束：</text>
+  <text x="40.0" y="117.0" fill="currentColor">振幅乘 <tspan font-style="italic">R</tspan></text>
+  <text x="40.0" y="142.0" fill="currentColor">相位落后 <tspan font-style="italic">δ</tspan></text>
+</svg>

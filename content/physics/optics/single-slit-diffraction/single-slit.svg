@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 350" width="660" height="350" font-size="14">
+  <!-- 单缝暗纹：宽为 a 的缝被平行光照射，看偏离原方向 θ 的光。缝分成上下两半，上沿 A 和中点 O 的光到远处同一点，O 的光多走 (a/2) sinθ；下沿 B 的光多走 a sinθ。a sinθ = λ 时，上半部分每一点都和向下相距 a/2 的点相差半个波长，两两抵消，这个方向是暗纹。 -->
+  <line x1="230.0" y1="40.0" x2="230.0" y2="150.0" style="stroke: currentColor" stroke-width="5.0" />
+  <line x1="230.0" y1="310.0" x2="230.0" y2="335.0" style="stroke: currentColor" stroke-width="5.0" />
+  <line x1="230.0" y1="150.0" x2="230.0" y2="230.0" style="stroke: var(--accent, #2563eb)" stroke-width="3.0" />
+  <line x1="230.0" y1="230.0" x2="230.0" y2="310.0" style="stroke: var(--good, #059669)" stroke-width="3.0" />
+  <line x1="30.0" y1="178.0" x2="132.8" y2="178.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.4" />
+  <path d="M 140.0 178.0 L 131.8 181.7 L 131.8 174.3 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="30.0" y1="230.0" x2="132.8" y2="230.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.4" />
+  <path d="M 140.0 230.0 L 131.8 233.7 L 131.8 226.3 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="30.0" y1="282.0" x2="132.8" y2="282.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.4" />
+  <path d="M 140.0 282.0 L 131.8 285.7 L 131.8 278.3 Z" style="fill: var(--muted, #6b7280)" />
+  <text x="30.0" y="158.0" fill="currentColor">平行光</text>
+  <line x1="180.0" y1="150.0" x2="180.0" y2="310.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="176.0" y1="150.0" x2="184.0" y2="150.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="176.0" y1="310.0" x2="184.0" y2="310.0" style="stroke: currentColor" stroke-width="1.0" />
+  <text x="172.0" y="235.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">a</tspan></text>
+  <line x1="230.0" y1="150.0" x2="429.2" y2="35.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.4" />
+  <line x1="230.0" y1="230.0" x2="429.2" y2="115.0" style="stroke: var(--good, #059669)" stroke-width="1.4" />
+  <line x1="230.0" y1="310.0" x2="429.2" y2="195.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.4" />
+  <text x="443.2" y="120.0" fill="currentColor">到远处屏上同一点</text>
+  <text x="222.0" y="144.0" fill="currentColor" text-anchor="end">A</text>
+  <text x="222.0" y="235.0" fill="currentColor" text-anchor="end">O</text>
+  <text x="222.0" y="326.0" fill="currentColor" text-anchor="end">B</text>
+  <line x1="230.0" y1="150.0" x2="299.3" y2="270.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="4 3" />
+  <line x1="230.0" y1="230.0" x2="264.6" y2="210.0" style="stroke: var(--good, #059669)" stroke-width="3.4" />
+  <line x1="230.0" y1="310.0" x2="299.3" y2="270.0" style="stroke: var(--muted, #6b7280)" stroke-width="3.4" />
+  <text x="250.0" y="246.0" style="fill: var(--good, #059669)"><tspan font-style="italic">λ</tspan>/2</text>
+  <text x="291.3" y="312.0" fill="currentColor"><tspan font-style="italic">a</tspan> sin<tspan font-style="italic">θ</tspan> = <tspan font-style="italic">λ</tspan></text>
+  <line x1="230.0" y1="150.0" x2="340.0" y2="150.0" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" stroke-dasharray="2 3" />
+  <path d="M 300.0 150.0 L 300.0 147.7 L 299.9 145.4 L 299.7 143.1 L 299.4 140.9 L 299.1 138.6 L 298.7 136.3 L 298.2 134.1 L 297.6 131.9 L 297.0 129.7 L 296.3 127.5 L 295.5 125.3 L 294.7 123.2 L 293.8 121.1 L 292.8 119.0 L 291.7 117.0 L 290.6 115.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" stroke-linejoin="round" />
+  <text x="311.1" y="133.3" fill="currentColor"><tspan font-style="italic">θ</tspan></text>
+</svg>

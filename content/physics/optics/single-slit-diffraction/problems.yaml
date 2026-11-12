@@ -1,0 +1,164 @@
+- id: p1
+  tier: easy
+  statement: |
+    用波长$589\,\mathrm{nm}$的钠黄光垂直照射宽$0.30\,\mathrm{mm}$的单缝，屏离缝$1.5\,\mathrm m$。中央亮纹的宽度是多少？以$\mathrm{mm}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 2*1.5*589e-9/0.30e-3*1000
+    unit: |
+      $\mathrm{mm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      中央亮纹夹在两侧第一条暗纹之间，第一条暗纹满足$a\sin\theta_1=\lambda$。
+    - |
+      角度小时，第一条暗纹离中央$\frac{L\lambda}a$，中央亮纹宽$\frac{2L\lambda}a$。
+    - |
+      $\frac{2\times1.5\times589\times10^{-9}}{0.30\times10^{-3}}\,\mathrm m=5.89\times10^{-3}\,\mathrm m=5.89\,\mathrm{mm}$。
+  solution: |
+    $\frac{a^2}\lambda\approx0.15\,\mathrm m$，比$1.5\,\mathrm m$小得多，是夫琅禾费衍射。第一条暗纹偏离$\theta_1\approx\frac\lambda a\approx1.96\times10^{-3}\,\mathrm{rad}$，离中央$L\theta_1$；中央亮纹宽$\frac{2L\lambda}a=\frac{2\times1.5\times589\times10^{-9}}{0.30\times10^{-3}}\,\mathrm m=5.89\,\mathrm{mm}$，约是缝宽的$20$倍。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于单缝夫琅禾费衍射的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        其他条件不变，缝宽变为原来的一半，中央亮纹的宽度也变为原来的一半
+      - |
+        角度很小时，中央亮纹的宽度是两侧亮纹的$2$倍
+      - |
+        屏离缝越远，中央亮纹对缝张的角越大
+      - |
+        其他条件不变，换用波长更长的光，中央亮纹变宽
+      - |
+        缝宽比波长还小时，缝前方看不到暗纹
+    value: [2, 4, 5]
+  hints:
+    - |
+      第一条暗纹满足$a\sin\theta_1=\lambda$，角度只由$\frac\lambda a$决定。
+    - |
+      暗纹之间的间隔：中央亮纹两侧是$\pm\frac{L\lambda}a$，其余相邻暗纹相距$\frac{L\lambda}a$。
+    - |
+      B、D、E 对；A、C 错。
+  solution: |
+    B 对：中央亮纹宽$\frac{2L\lambda}a$，两侧亮纹宽$\frac{L\lambda}a$。D 对：$\sin\theta_1=\frac\lambda a$，$\lambda$越大，$\theta_1$越大。E 对：$a<\lambda$时$\sin\theta=\frac{m\lambda}a$的绝对值大于$1$，没有暗纹。
+
+    A 错：中央亮纹宽$\frac{2L\lambda}a$和$a$成反比，缝宽减半，宽度加倍。C 错：中央亮纹对缝张的角只由$\frac\lambda a$决定，和屏的远近无关；屏远了，变宽的是它在屏上的宽度。
+
+- id: p3
+  tier: medium
+  statement: |
+    用波长$600\,\mathrm{nm}$的光垂直照射一条单缝，屏离缝$1.2\,\mathrm m$，测得中央亮纹两侧第二条暗纹相距$18.0\,\mathrm{mm}$。缝宽是多少？以$\mathrm{mm}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 4*600e-9*1.2/18.0e-3*1000
+    unit: |
+      $\mathrm{mm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      第二条暗纹满足$a\sin\theta_2=2\lambda$，角度小时离中央$\frac{2L\lambda}a$。
+    - |
+      两侧第二条暗纹相距$\frac{4L\lambda}a$。
+    - |
+      $a=\frac{4\times1.2\times600\times10^{-9}}{18.0\times10^{-3}}\,\mathrm m=1.60\times10^{-4}\,\mathrm m=0.160\,\mathrm{mm}$。
+  solution: |
+    两侧第二条暗纹各离中央$\frac{2L\lambda}a$，相距$\frac{4L\lambda}a=18.0\,\mathrm{mm}$，所以$a=\frac{4\times1.2\times600\times10^{-9}}{18.0\times10^{-3}}\,\mathrm m=0.160\,\mathrm{mm}$。量两侧对称的暗纹之间的距离，不必找准中央亮纹的中心。
+
+- id: p4
+  tier: medium
+  statement: |
+    单缝夫琅禾费衍射中，角度很小。屏上中央亮纹中心和第一条暗纹的正中间，光强是中央亮纹中心的多少倍？保留三位有效数字。
+  answer:
+    type: number
+    value: (sin(pi/2)/(pi/2))^2
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      第一条暗纹处$\beta=\pi$。
+    - |
+      角度小时$\beta$和离中央的距离成正比，正中间$\beta=\frac\pi2$。
+    - |
+      $\Bigl(\frac{\sin(\pi/2)}{\pi/2}\Bigr)^2=\frac4{\pi^2}\approx0.405$。
+  solution: |
+    $\beta=\frac{\pi a\sin\theta}\lambda$，第一条暗纹处$\beta=\pi$；角度小时$\sin\theta\approx\frac yL$，$\beta$和$y$成正比，正中间$\beta=\frac\pi2$。$\frac I{I_0}=\Bigl(\frac{\sin(\pi/2)}{\pi/2}\Bigr)^2=\frac4{\pi^2}\approx0.405$。中央亮纹从中心往外逐渐变暗，并不是一块均匀的亮区。
+
+- id: p5
+  tier: hard
+  statement: |
+    单缝衍射的光强$I=I_0\Bigl(\frac{\sin\beta}\beta\Bigr)^2$。
+
+    （1）证明中央两侧各条亮纹的中心满足$\tan\beta=\beta$。（2）用作图或数值的办法求前两个正根，和$\frac32\pi$、$\frac52\pi$比较。（3）这两条亮纹中心的光强各是中央的百分之几？
+  hints:
+    - |
+      对$\beta$求导，令导数为零，$\beta\neq0$。
+    - |
+      画出$y=\tan\beta$和$y=\beta$的图像，看它们在$\pi$到$2\pi$、$2\pi$到$3\pi$之间的交点。
+    - |
+      在根上$\tan\beta=\beta$，$\sin^2\beta=\frac{\tan^2\beta}{1+\tan^2\beta}=\frac{\beta^2}{1+\beta^2}$。
+  reference: |
+    （1）$\frac{\mathrm d}{\mathrm d\beta}\frac{\sin\beta}\beta=\frac{\beta\cos\beta-\sin\beta}{\beta^2}$，令它为零，$\beta\neq0$时得$\tan\beta=\beta$。$\frac{\sin\beta}\beta$的极值点也就是光强的极大点。
+
+    （2）$\tan\beta$在每个$\Bigl(m+\frac12\Bigr)\pi$附近趋于无穷，直线$y=\beta$和它的交点落在$\Bigl(m+\frac12\Bigr)\pi$稍前面。数值求得$\beta_1\approx4.493\approx1.430\pi$，$\beta_2\approx7.725\approx2.459\pi$，比$\frac32\pi$、$\frac52\pi$略小，越往外越接近。
+
+    （3）在根上$\sin^2\beta=\frac{\beta^2}{1+\beta^2}$，所以$\frac I{I_0}=\frac{\sin^2\beta}{\beta^2}=\frac1{1+\beta^2}$：$\frac1{1+4.493^2}\approx4.72\%$，$\frac1{1+7.725^2}\approx1.65\%$。用近似值$\beta\approx\Bigl(m+\frac12\Bigr)\pi$算，是$\frac4{9\pi^2}\approx4.50\%$和$\frac4{25\pi^2}\approx1.62\%$，相差不大。
+
+- id: p6
+  tier: hard
+  statement: |
+    平行光斜着照到宽为$a$的单缝上，入射方向和缝所在平面的法线成$i$角。衍射光的方向和法线成$\theta$角，$\theta$和$i$都从法线量起，光不偏折地穿过时$\theta=i$。
+
+    （1）证明暗纹满足$a(\sin\theta-\sin i)=m\lambda$（$m=\pm1,\pm2,\dots$）。（2）中央亮纹的中心在哪个方向？（3）$a=2.0\,\mu\mathrm m$、$\lambda=500\,\mathrm{nm}$、$i=30^\circ$时，中央亮纹两侧的暗纹各在什么方向？中央亮纹两边对称吗？
+  hints:
+    - |
+      入射光到达缝的两端时，已经有光程差$a\sin i$。
+    - |
+      两端到远处$\theta$方向的总光程差是$a(\sin\theta-\sin i)$，照搬垂直入射时的配对论证。
+    - |
+      $\sin\theta=\sin i\pm\frac\lambda a$。
+  reference: |
+    （1）沿缝取坐标$x$。入射光到达$x$处时的相位比到达中点时多$kx\sin i$，从$x$处到远处$\theta$方向，光程比从中点出发的少$x\sin\theta$。总起来，$x$处的次波比中点的相位差$-kx(\sin\theta-\sin i)$，和垂直入射时的$-kx\sin\theta$相比，只是把$\sin\theta$换成了$\sin\theta-\sin i$。于是缝两端的总光程差是$a(\sin\theta-\sin i)$，等于$m\lambda$（$m\neq0$）时，把缝分成$2|m|$份两两抵消，是暗纹。
+
+    （2）$\sin\theta=\sin i$，即$\theta=i$：中央亮纹的中心在入射光原来的方向上，和几何光学一致。
+
+    （3）$\sin\theta=0.5\pm0.25$，两侧的暗纹在$\theta\approx48.6^\circ$和$14.5^\circ$。中央亮纹在$30^\circ$一侧张$18.6^\circ$，另一侧张$15.5^\circ$，两边不对称；按$\sin\theta$量却是对称的，各差$0.25$。这一结果在[衍射光栅](lesson:physics.optics.diffraction-gratings)里斜入射时还要用到。
+
+- id: p7
+  tier: thinking
+  statement: |
+    平行光垂直照射宽为$a$的缝，屏离缝$L$。按几何光学，屏上的亮带宽$a$；衍射又让光展开，中央亮纹宽约$\frac{2L\lambda}a$。
+
+    （1）两者哪个大，由什么决定？（2）$a=1.0\,\mathrm{cm}$、$\lambda=500\,\mathrm{nm}$时，屏大约要放多远，衍射的展开才赶得上缝本身的宽度？（3）为什么说几何光学是波长趋于零时的近似？
+  hints:
+    - |
+      比较$a$和$\frac{2L\lambda}a$，也就是比较$a^2$和$2L\lambda$。
+    - |
+      $L\approx\frac{a^2}{2\lambda}$。
+    - |
+      $\lambda\to0$时，衍射偏离的角度$\frac\lambda a\to0$。
+  reference: |
+    （1）两者之比$\frac{2L\lambda/a}{a}=\frac{2L\lambda}{a^2}$。$a^2\gg2L\lambda$（缝宽、屏近）时，几何的亮带为主，光看起来沿直线走；$a^2\ll2L\lambda$（缝窄、屏远）时，衍射的展开为主。
+
+    （2）$L\approx\frac{a^2}{2\lambda}=\frac{(1.0\times10^{-2})^2}{2\times500\times10^{-9}}\,\mathrm m=100\,\mathrm m$。一厘米宽的缝，要到百米外衍射的展开才和缝宽相当，日常距离上「光沿直线走」非常准确。这只是估计：这样的距离正在夫琅禾费衍射适用的边缘。
+
+    （3）缝宽一定时，衍射偏离的角度约为$\frac\lambda a$，波长越短越小；$\lambda\to0$时它趋于零，光严格沿直线走，就是几何光学。所以几何光学适用的条件是：障碍物、孔和缝都比波长大得多。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）用激光照射一根头发，远处屏上的图样和照射同样宽的单缝几乎一样，只有正中央附近不同。为什么？（2）屏离头发$2.0\,\mathrm m$，激光的波长$633\,\mathrm{nm}$，测得中央亮纹两侧第一条暗纹相距$30\,\mathrm{mm}$。头发的直径约是多少？
+  hints:
+    - |
+      一块开了单缝的挡板，和一根同样宽的细丝，拼在一起正好什么也没挡住。
+    - |
+      没有遮挡的平行光只射到屏的正中央附近，别处没有光。
+    - |
+      第一条暗纹离中央$\frac{L\lambda}a$。
+  reference: |
+    （1）按惠更斯-菲涅耳原理，屏上某点的光振动是所有没被挡住的次波之和。单缝放过的是一条宽$a$的带，细丝挡住的正是这条带，两者放过的部分拼起来就是整个波阵面，所以$E_{\text{缝}}+E_{\text{丝}}=E_{\text{无遮挡}}$。没有遮挡的平行光只照到屏的正中央附近，别处$E_{\text{无遮挡}}=0$，于是$E_{\text{丝}}=-E_{\text{缝}}$，光强相同，暗纹的位置也相同。正中央附近还有直接照过来的激光，两者不同。
+
+    （2）两侧第一条暗纹相距$\frac{2L\lambda}a=30\,\mathrm{mm}$，$a=\frac{2\times2.0\times633\times10^{-9}}{30\times10^{-3}}\,\mathrm m\approx8.4\times10^{-5}\,\mathrm m=84\,\mu\mathrm m$。不用接触头发，量一下条纹就能得到它的粗细。

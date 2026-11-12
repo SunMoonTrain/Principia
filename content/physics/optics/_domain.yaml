@@ -336,3 +336,347 @@ glossary:
       光学系统对平行光的作用和一块薄透镜相同时，这块薄透镜的焦距；由系统矩阵左下角的元素算出，$f=-\frac1C$。
     definedIn: physics.optics.ray-transfer-matrices
     anchor: thm-read-matrix
+  - id: physics.optics.optical-path-length
+    zh: |
+      光程
+    en: |
+      optical path length
+    brief: |
+      折射率和几何路程的乘积$ns$，几段相加；等于同样时间里光在真空中走的路程，比较光程就是比较用时。
+    definedIn: physics.optics.fermat-principle
+    anchor: def-optical-path
+  - id: physics.optics.fermat-principle
+    zh: |
+      费马原理
+    en: |
+      Fermat's principle
+    brief: |
+      光从一点传到另一点，沿光程取极值的路径传播；多数情况下是最小值，即光走用时最短的路径。
+    definedIn: physics.optics.fermat-principle
+    anchor: def-fermat
+  - id: physics.optics.graded-index
+    zh: |
+      渐变折射率
+    en: |
+      graded index
+    abbr: |
+      GRIN
+    brief: |
+      折射率在介质里连续变化，而不是只在界面上突变；这样的介质里光线不走直线，向折射率大的一侧连续弯曲。
+    definedIn: physics.optics.graded-index
+    anchor: def-grin
+  - id: physics.optics.wavefront
+    zh: |
+      波阵面
+    en: |
+      wavefront
+    brief: |
+      波传播时，同一时刻振动相位相同的各点连成的面；在各向同性的介质里，光线和波阵面处处垂直。
+    definedIn: physics.optics.huygens-principle
+    anchor: def-wavefront
+  - id: physics.optics.huygens-principle
+    zh: |
+      惠更斯原理
+    en: |
+      Huygens' principle
+    brief: |
+      波阵面上每一点都可以看作发出次波的波源，过一段时间，这些次波的包络就是新的波阵面。
+    definedIn: physics.optics.huygens-principle
+    anchor: def-huygens
+  - id: physics.optics.secondary-wavelet
+    zh: |
+      次波
+    en: |
+      secondary wavelet
+    brief: |
+      惠更斯原理里，从波阵面上每一点发出、以波在那里的速度向外传播的球面波。
+    definedIn: physics.optics.huygens-principle
+    anchor: def-huygens
+  - id: physics.optics.interference
+    zh: |
+      干涉
+    en: |
+      interference
+    brief: |
+      两列相干光叠加时，有的地方加强、有的地方减弱，叠加后的光强不等于两列光强之和。
+    definedIn: physics.optics.two-beam-interference
+    anchor: def-interference
+  - id: physics.optics.coherent-light
+    zh: |
+      相干光
+    en: |
+      coherent light
+    brief: |
+      频率相同、相位差保持不变、能产生干涉的光；两个独立的普通光源发出的光不相干。
+    definedIn: physics.optics.two-beam-interference
+    anchor: def-interference
+  - id: physics.optics.optical-path-difference
+    zh: |
+      光程差
+    en: |
+      optical path difference
+    brief: |
+      两条路径的光程之差$\Delta$，对应的相位差是$\frac{2\pi\Delta}{\lambda}$，$\lambda$是真空中的波长。
+    definedIn: physics.optics.two-beam-interference
+    anchor: def-opd
+  - id: physics.optics.young-double-slit
+    zh: |
+      杨氏双缝干涉
+    en: |
+      Young's double-slit interference
+    brief: |
+      光穿过两条靠得很近的平行细缝，在远处的屏上叠加成等间距的明暗条纹，条纹间距$\frac{L\lambda}d$。
+    definedIn: physics.optics.two-beam-interference
+    anchor: thm-young
+  - id: physics.optics.fringe-visibility
+    zh: |
+      条纹可见度
+    en: |
+      fringe visibility
+    brief: |
+      干涉条纹最亮处和最暗处光强之差与两者之和的比$V=\frac{I_{\max}-I_{\min}}{I_{\max}+I_{\min}}$，在$0$到$1$之间，越大条纹越清楚。
+    definedIn: physics.optics.coherence
+    anchor: def-visibility
+  - id: physics.optics.coherence-length
+    zh: |
+      相干长度
+    en: |
+      coherence length
+    brief: |
+      一束光分成两束再会合，光程差增大到条纹基本看不见时的光程差，约为$\frac{\lambda^2}{\Delta\lambda}$；光的波长范围越窄，相干长度越长。
+    definedIn: physics.optics.coherence
+    anchor: def-coherence-length
+  - id: physics.optics.coherence-time
+    zh: |
+      相干时间
+    en: |
+      coherence time
+    brief: |
+      光在真空中走过相干长度所用的时间$\tau_c=\frac{l_c}c$，约为光的频率范围的倒数$\frac1{\Delta\nu}$。
+    definedIn: physics.optics.coherence
+    anchor: def-coherence-length
+  - id: physics.optics.temporal-coherence
+    zh: |
+      时间相干性
+    en: |
+      temporal coherence
+    brief: |
+      一束光和它自己延迟一段时间后的光能够干涉的性质，由光的波长范围决定，用相干长度或相干时间衡量。
+    definedIn: physics.optics.coherence
+    anchor: def-coherence-length
+  - id: physics.optics.coherence-width
+    zh: |
+      相干宽度
+    en: |
+      coherence width
+    brief: |
+      光源不动，把双缝间距增大到条纹基本看不见时的缝间距，约为$\frac{\lambda}{\theta_s}$，$\theta_s$是光源对双缝张的角。
+    definedIn: physics.optics.coherence
+    anchor: def-spatial-coherence
+  - id: physics.optics.spatial-coherence
+    zh: |
+      空间相干性
+    en: |
+      spatial coherence
+    brief: |
+      同一波阵面上横向分开的两点的光振动能够干涉的性质，由光源对观察处张的角决定，用相干宽度衡量。
+    definedIn: physics.optics.coherence
+    anchor: def-spatial-coherence
+  - id: physics.optics.diffraction
+    zh: |
+      衍射
+    en: |
+      diffraction
+    brief: |
+      光遇到障碍物，或穿过小孔、窄缝时，偏离直线传播、进入几何阴影的现象；缝宽为$a$时，光偏离的角度约为$\frac\lambda a$。
+    definedIn: physics.optics.single-slit-diffraction
+    anchor: def-diffraction
+  - id: physics.optics.huygens-fresnel-principle
+    zh: |
+      惠更斯-菲涅耳原理
+    en: |
+      Huygens–Fresnel principle
+    brief: |
+      波阵面上各点发出的次波按到达时的相位叠加，叠加的结果就是空间各点的光振动；由它可以算出衍射图样。
+    definedIn: physics.optics.single-slit-diffraction
+    anchor: def-huygens-fresnel
+  - id: physics.optics.fraunhofer-diffraction
+    zh: |
+      夫琅禾费衍射
+    en: |
+      Fraunhofer diffraction
+    brief: |
+      平行光照到障碍物上、在足够远处观察（对宽为$a$的缝，距离远大于$\frac{a^2}\lambda$）的衍射；到达观察点的各条光线可以看成互相平行。
+    definedIn: physics.optics.single-slit-diffraction
+    anchor: def-fraunhofer
+  - id: physics.optics.half-wave-loss
+    zh: |
+      半波损失
+    en: |
+      half-wave loss
+    brief: |
+      光接近垂直入射、从折射率小的介质射向折射率大的介质反射时，相位突变$\pi$，相当于多走了半个波长；反过来反射时没有。
+    definedIn: physics.optics.thin-film-interference
+    anchor: def-half-wave-loss
+  - id: physics.optics.thin-film-interference
+    zh: |
+      薄膜干涉
+    en: |
+      thin-film interference
+    brief: |
+      薄膜上下两个表面反射（或透射）的光相互干涉；光程差$2nt\cos\theta_t$，两次反射里恰有一次半波损失时再加半个波长。
+    definedIn: physics.optics.thin-film-interference
+    anchor: def-thin-film
+  - id: physics.optics.antireflection-coating
+    zh: |
+      增透膜
+    en: |
+      antireflection coating
+    brief: |
+      镀在玻璃表面、折射率介于空气和玻璃之间、厚度为$\frac\lambda{4n}$的膜，上下两个表面的反射光相互抵消，反射减少、透射增加。
+    definedIn: physics.optics.thin-film-interference
+    anchor: def-ar-coating
+  - id: physics.optics.equal-thickness-fringes
+    zh: |
+      等厚条纹
+    en: |
+      fringes of equal thickness
+    brief: |
+      膜厚各处不同、光接近垂直入射时，沿膜厚相同的地方分布的干涉条纹；相邻两条亮纹处膜厚相差$\frac\lambda{2n}$。
+    definedIn: physics.optics.thin-film-interference
+    anchor: def-equal-thickness
+  - id: physics.optics.newtons-rings
+    zh: |
+      牛顿环
+    en: |
+      Newton's rings
+    brief: |
+      平凸透镜放在平板玻璃上，两者之间的空气层产生的同心圆环形等厚条纹；从反射光看，第$m$个暗环的半径为$\sqrt{mR\lambda}$。
+    definedIn: physics.optics.thin-film-interference
+    anchor: def-newtons-rings
+  - id: physics.optics.diffraction-grating
+    zh: |
+      衍射光栅
+    en: |
+      diffraction grating
+    brief: |
+      刻有大量等宽、等间距平行狭缝（或反射刻痕）的平板；各缝的光叠加，在少数几个方向上形成又细又亮的亮纹，用来分光。
+    definedIn: physics.optics.diffraction-gratings
+    anchor: def-grating
+  - id: physics.optics.grating-constant
+    zh: |
+      光栅常量
+    en: |
+      grating constant
+    brief: |
+      光栅上相邻两条缝对应点之间的距离$d$，常见的光栅在微米量级。
+    definedIn: physics.optics.diffraction-gratings
+    anchor: def-grating
+  - id: physics.optics.grating-equation
+    zh: |
+      光栅方程
+    en: |
+      grating equation
+    brief: |
+      平行光垂直照射时，光栅各缝的光相互加强的方向满足$d\sin\theta=m\lambda$，$m$是整数。
+    definedIn: physics.optics.diffraction-gratings
+    anchor: thm-grating-equation
+  - id: physics.optics.principal-maximum
+    zh: |
+      主极大
+    en: |
+      principal maximum
+    brief: |
+      光栅衍射中满足光栅方程的方向上，所有缝的光同相，形成的又细又亮的亮纹；整数$m$是它的级次。
+    definedIn: physics.optics.diffraction-gratings
+    anchor: def-principal-maximum
+  - id: physics.optics.missing-order
+    zh: |
+      缺级
+    en: |
+      missing order
+    brief: |
+      某一级主极大的方向正好落在单缝衍射的暗纹上，这一级看不到；光栅常量是缝宽的$k$倍时，第$k$、$2k$……级缺级。
+    definedIn: physics.optics.diffraction-gratings
+    anchor: def-missing-order
+  - id: physics.optics.chromatic-resolving-power
+    zh: |
+      色分辨本领
+    en: |
+      chromatic resolving power
+    brief: |
+      光栅刚好能分开的两条谱线，波长与波长差之比$R=\frac\lambda{\Delta\lambda}$；在第$m$级、照亮$N$条缝时$R=mN$。
+    definedIn: physics.optics.diffraction-gratings
+    anchor: def-chromatic-resolving-power
+  - id: physics.optics.multiple-beam-interference
+    zh: |
+      多光束干涉
+    en: |
+      multiple-beam interference
+    brief: |
+      光在两个平行表面之间多次反射，分出的许多束光相互叠加产生的干涉；表面反射率高时，透射峰变得又细又尖。
+    definedIn: physics.optics.fabry-perot
+    anchor: def-multiple-beam
+  - id: physics.optics.fabry-perot-interferometer
+    zh: |
+      法布里-珀罗干涉仪
+    en: |
+      Fabry–Pérot interferometer
+    brief: |
+      两块平行玻璃板相对的表面镀上高反射膜，利用透射光的多光束干涉精密测量波长的装置。
+    definedIn: physics.optics.fabry-perot
+    anchor: def-fabry-perot
+  - id: physics.optics.finesse
+    zh: |
+      精细度
+    en: |
+      finesse
+    brief: |
+      相邻两个透射峰的间隔和一个峰在一半高度处的宽度之比；反射率$R$接近$1$时为$\frac{\pi\sqrt R}{1-R}$。
+    definedIn: physics.optics.fabry-perot
+    anchor: def-finesse
+  - id: physics.optics.free-spectral-range
+    zh: |
+      自由光谱范围
+    en: |
+      free spectral range
+    brief: |
+      相邻两个透射峰对应的频率差，垂直入射时为$\frac c{2nd}$；谱线的频率差超过它，不同级的峰会混在一起。
+    definedIn: physics.optics.fabry-perot
+    anchor: def-fsr
+  - id: physics.optics.fiber-core
+    zh: |
+      纤芯
+    en: |
+      core
+    brief: |
+      光纤中心传光的部分，折射率比外面的包层稍大，光在它和包层的界面上全反射，一路传下去。
+    definedIn: physics.optics.total-internal-reflection
+    anchor: def-core-cladding
+  - id: physics.optics.cladding
+    zh: |
+      包层
+    en: |
+      cladding
+    brief: |
+      包在光纤纤芯外面、折射率稍小的一层玻璃，把发生全反射的界面保护在玻璃里面。
+    definedIn: physics.optics.total-internal-reflection
+    anchor: def-core-cladding
+  - id: physics.optics.interference-order
+    zh: |
+      级次
+    en: |
+      order
+    brief: |
+      两束光的光程差含有的整波长数$m$，用来给干涉条纹编号：光程差为$m\lambda$的亮纹是第$m$级，光程差为零的是零级。
+    definedIn: physics.optics.two-beam-interference
+    anchor: def-order
+  - id: physics.optics.reflectance
+    zh: |
+      反射率
+    en: |
+      reflectance
+    brief: |
+      反射光强和入射光强之比；垂直入射时等于$\Bigl(\frac{n_1-n_2}{n_1+n_2}\Bigr)^2$，空气中的玻璃每个表面约$4\%$。
+    definedIn: physics.optics.thin-film-interference
+    anchor: def-reflectance

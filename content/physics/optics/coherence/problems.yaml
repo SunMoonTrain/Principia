@@ -1,0 +1,168 @@
+- id: p1
+  tier: easy
+  statement: |
+    用波长$500\,\mathrm{nm}$的光均匀照亮宽$0.20\,\mathrm{mm}$的单缝，把单缝当作各处一样亮的光源；双缝离单缝$1.0\,\mathrm m$。双缝间距增大到多少时条纹消失？以$\mathrm{mm}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 500e-9*1.0/0.20e-3*1000
+    unit: |
+      $\mathrm{mm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      单缝对双缝张的角$\theta_s\approx\frac bD$。
+    - |
+      相干宽度$w\approx\frac\lambda{\theta_s}=\frac{\lambda D}b$。
+    - |
+      $w=\frac{500\times10^{-9}\times1.0}{0.20\times10^{-3}}\,\mathrm m=2.50\times10^{-3}\,\mathrm m=2.50\,\mathrm{mm}$。
+  solution: |
+    单缝对双缝张的角$\theta_s\approx\frac{0.20\times10^{-3}}{1.0}=2.0\times10^{-4}\,\mathrm{rad}$，相干宽度$w\approx\frac\lambda{\theta_s}=\frac{500\times10^{-9}}{2.0\times10^{-4}}\,\mathrm m=2.50\,\mathrm{mm}$。双缝间距取它的几分之一，比如$0.5\,\mathrm{mm}$，条纹就很清楚（可见度约$0.94$，见第 6 题的公式）。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于相干性的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        光的波长范围越宽，相干长度越长
+      - |
+        两束完全相干的光一样强时，条纹可见度是$1$
+      - |
+        让白光先穿过只透过$540\sim560\,\mathrm{nm}$的滤光片，双缝实验里能看清的条纹会变多
+      - |
+        光源越亮，条纹可见度越高
+      - |
+        光源宽度不变，把双缝间距从很小逐渐加大，条纹越来越模糊，直到看不见
+    value: [2, 3, 5]
+  hints:
+    - |
+      $l_c\approx\frac{\lambda^2}{\Delta\lambda}$；可见度是明暗之差和明暗之和的比。
+    - |
+      滤光片让$\Delta\lambda$变窄；缝间距增大到$\frac\lambda{\theta_s}$时条纹消失。
+    - |
+      B、C、E 对；A、D 错。
+  solution: |
+    B 对：两束光一样强时暗纹全黑，$I_{\min}=0$，$V=1$。C 对：$\Delta\lambda$从约$300\,\mathrm{nm}$变成$20\,\mathrm{nm}$，相干长度从约$1\,\mu\mathrm m$变成约$15\,\mu\mathrm m$，能看清的亮纹从中央两侧各两三条变成二十多条。E 对：缝间距加大，光源上各点的条纹错开得越来越多，增大到$\frac\lambda{\theta_s}$时条纹消失。
+
+    A 错：$l_c\approx\frac{\lambda^2}{\Delta\lambda}$和$\Delta\lambda$成反比，波长范围越宽，相干长度越短。D 错：光源亮一倍，$I_{\max}$、$I_{\min}$都加倍，$V$不变。
+
+- id: p3
+  tier: medium
+  statement: |
+    一台激光器发出波长$632.8\,\mathrm{nm}$的光，波长范围约$2.0\times10^{-6}\,\mathrm{nm}$。它的相干长度约是多少？以$\mathrm m$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: (632.8e-9)^2/2.0e-15
+    unit: |
+      $\mathrm m$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $l_c\approx\frac{\lambda^2}{\Delta\lambda}$，先把单位都换成米。
+    - |
+      $\Delta\lambda=2.0\times10^{-15}\,\mathrm m$，$l_c\approx\frac{(632.8\times10^{-9})^2}{2.0\times10^{-15}}\,\mathrm m$。
+    - |
+      $l_c\approx200\,\mathrm m$。
+  solution: |
+    $\Delta\lambda=2.0\times10^{-6}\,\mathrm{nm}=2.0\times10^{-15}\,\mathrm m$，$l_c\approx\frac{(632.8\times10^{-9})^2}{2.0\times10^{-15}}\,\mathrm m\approx200\,\mathrm m$。相干时间$\tau_c=\frac{l_c}c\approx6.7\times10^{-7}\,\mathrm s$，对应的频率范围$\Delta\nu\approx\frac1{\tau_c}\approx1.5\times10^6\,\mathrm{Hz}$。它比例 1 里发光二极管的相干长度（约$20\,\mu\mathrm m$）长约一千万倍：两束光的光程差有几十米，条纹仍然清楚。
+
+- id: p4
+  tier: medium
+  statement: |
+    两束完全相干的光，单独照射时的光强之比是$9:1$。叠加后干涉条纹的可见度是多少？保留三位有效数字。
+  answer:
+    type: number
+    value: 2*sqrt(9*1)/(9 + 1)
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $I_{\max}=(\sqrt{I_1}+\sqrt{I_2})^2$，$I_{\min}=(\sqrt{I_1}-\sqrt{I_2})^2$。
+    - |
+      $V=\frac{I_{\max}-I_{\min}}{I_{\max}+I_{\min}}=\frac{2\sqrt{I_1I_2}}{I_1+I_2}$。
+    - |
+      取$I_1=9$、$I_2=1$：$V=\frac{2\times3}{10}=0.600$。
+  solution: |
+    取$I_1=9$、$I_2=1$：$I_{\max}=(3+1)^2=16$，$I_{\min}=(3-1)^2=4$，$V=\frac{16-4}{16+4}=0.600$。光强差了$9$倍，可见度仍有$0.6$，条纹照样看得清；条纹糊成一片，多半是几套条纹互相错开，而不是两束光不一样强。
+
+- id: p5
+  tier: hard
+  statement: |
+    钠灯的黄光主要是两条靠得很近的谱线，波长约为$\lambda_1=589.0\,\mathrm{nm}$和$\lambda_2=589.6\,\mathrm{nm}$，一样亮，每条谱线本身都很窄。用一种能连续改变两束光光程差$\Delta$的干涉装置观察（例如[迈克耳孙干涉仪](lesson:physics.optics.michelson-interferometer)），$\Delta$从零开始增大，条纹时而清楚、时而模糊。
+
+    （1）证明条纹可见度$V=\Bigl|\cos\Bigl[\pi\Delta\Bigl(\frac1{\lambda_1}-\frac1{\lambda_2}\Bigr)\Bigr]\Bigr|$。（2）光程差多大时条纹第一次消失？（3）光程差每增大多少，条纹就重复一次由清楚到消失再变清楚的变化？
+  hints:
+    - |
+      两条谱线互不相干，各自产生的条纹光强相加。
+    - |
+      $\cos\varphi_1+\cos\varphi_2=2\cos\frac{\varphi_1-\varphi_2}2\cos\frac{\varphi_1+\varphi_2}2$。
+    - |
+      条纹消失时$\cos\frac{\varphi_1-\varphi_2}2=0$。
+  reference: |
+    （1）两条谱线互不相干，各自的条纹光强相加。一样亮时，光强正比于$2+\cos\varphi_1+\cos\varphi_2=2+2\cos\frac{\varphi_1-\varphi_2}2\cos\frac{\varphi_1+\varphi_2}2$，$\varphi_k=\frac{2\pi\Delta}{\lambda_k}$。$\frac{\varphi_1+\varphi_2}2$随光程差变得很快，给出一条条明暗；$\frac{\varphi_1-\varphi_2}2=\pi\Delta\Bigl(\frac1{\lambda_1}-\frac1{\lambda_2}\Bigr)$变得很慢，决定明暗起伏的幅度。最亮处和最暗处的光强正比于$2\pm2\Bigl|\cos\frac{\varphi_1-\varphi_2}2\Bigr|$，所以$V=\Bigl|\cos\frac{\varphi_1-\varphi_2}2\Bigr|$。
+
+    （2）第一次消失时$\pi\Delta\Bigl(\frac1{\lambda_1}-\frac1{\lambda_2}\Bigr)=\frac\pi2$，$\Delta=\frac{\lambda_1\lambda_2}{2(\lambda_2-\lambda_1)}=\frac{589.0\times589.6}{2\times0.6}\,\mathrm{nm}\approx2.9\times10^5\,\mathrm{nm}=0.29\,\mathrm{mm}$。
+
+    （3）余弦的绝对值以$\pi$为周期，光程差每增大$\frac{\lambda_1\lambda_2}{\lambda_2-\lambda_1}\approx0.58\,\mathrm{mm}$，可见度就重复一次。每条谱线本身也有一定宽度，重新变清楚时的可见度会一次比一次低一些。反过来，量出这个周期，就能算出两条谱线的波长差。
+
+- id: p6
+  tier: hard
+  statement: |
+    宽为$b$的光源各处一样亮，各点互不相干，离双缝$D$；双缝间距为$d$，屏离双缝$L$，波长为$\lambda$，角度都很小。
+
+    （1）光源上偏离中轴$s$处的一小段$\dd s$，在屏上$y$处产生的光强正比于$\Bigl[1+\cos\Bigl(\frac{2\pi d}{\lambda}\Bigl(\frac yL+\frac sD\Bigr)\Bigr)\Bigr]\dd s$。把整个光源的贡献加起来，证明条纹可见度$V=\Bigl|\frac{\sin u}u\Bigr|$，$u=\frac{\pi bd}{\lambda D}$。
+
+    （2）$b$多大时条纹第一次消失？（3）$b$再增大，条纹会重新出现吗？和原来有什么不同？
+  hints:
+    - |
+      各点互不相干，把各点产生的光强对$s$从$-\frac b2$积分到$\frac b2$。
+    - |
+      $\int_{-b/2}^{b/2}\cos(a+\kappa s)\dd s=\frac2\kappa\sin\frac{\kappa b}2\cos a$。
+    - |
+      $\pi<u<2\pi$时$\frac{\sin u}u<0$。
+  reference: |
+    （1）记$a=\frac{2\pi dy}{\lambda L}$，$\kappa=\frac{2\pi d}{\lambda D}$。整个光源在$y$处的光强正比于$\int_{-b/2}^{b/2}[1+\cos(a+\kappa s)]\dd s=b+\frac1\kappa\Bigl[\sin\Bigl(a+\frac{\kappa b}2\Bigr)-\sin\Bigl(a-\frac{\kappa b}2\Bigr)\Bigr]=b\Bigl(1+\frac{\sin u}u\cos a\Bigr)$，$u=\frac{\kappa b}2=\frac{\pi bd}{\lambda D}$。$\cos a$随$y$在$-1$和$1$之间变，最亮处和最暗处的光强正比于$1\pm\Bigl|\frac{\sin u}u\Bigr|$，所以$V=\Bigl|\frac{\sin u}u\Bigr|$。
+
+    （2）$u=\pi$，即$b=\frac{\lambda D}d$时第一次$V=0$。写成$d=\frac{\lambda D}b=\frac\lambda{\theta_s}$，和相干宽度的估计一致。
+
+    （3）$\pi<u<2\pi$时$\frac{\sin u}u<0$，条纹重新出现，但原来亮纹的地方变成暗纹，中央$y=0$处是暗的；可见度最大只有约$0.22$（在$u\approx4.49$处），$u=2\pi$时又消失。所以讲相干宽度时，只看条纹第一次消失。
+
+- id: p7
+  tier: thinking
+  statement: |
+    1920 年，迈克耳孙（Albert Michelson）和皮斯（Francis Pease）在威尔逊山天文台口径 100 英寸（约$2.5\,\mathrm m$）的胡克望远镜前面装了一根约$6\,\mathrm m$长的横梁。梁上两面可以移动的反射镜把同一颗星的光送进望远镜，在焦面上叠加，相当于一对间距可调的双缝。对准参宿四（猎户座$\alpha$星），把两面反射镜的间距加大到约$3.07\,\mathrm m$时，条纹消失了。
+
+    （1）为什么间距加大到一定程度，条纹会消失？（2）星光的有效波长取$575\,\mathrm{nm}$，用$w\approx\frac\lambda{\theta_s}$估计参宿四的角直径，以角秒为单位。他们把星面看作亮度均匀的圆盘，条纹消失时的间距是$1.22\frac\lambda\theta$，$\theta$是圆盘的角直径；按这个算又是多少？（3）为什么要在望远镜前面加一根比口径还长的横梁？
+  hints:
+    - |
+      恒星不是点光源，星面上各点的光互不相干。
+    - |
+      $\theta\approx\frac\lambda d$，$1\,\mathrm{rad}\approx2.06\times10^5$角秒。
+    - |
+      比较参宿四的相干宽度和望远镜的口径。
+  reference: |
+    （1）星面上各点的光互不相干，各自产生一套条纹，位置随该点的方向错开。两面反射镜的间距增大到星光的相干宽度时，这些条纹均匀铺满一个明暗周期，叠加后均匀，条纹消失。
+
+    （2）$\theta\approx\frac\lambda d=\frac{575\times10^{-9}}{3.07}\,\mathrm{rad}\approx1.87\times10^{-7}\,\mathrm{rad}\approx0.039''$。按圆盘算，$\theta=1.22\frac\lambda d\approx2.29\times10^{-7}\,\mathrm{rad}\approx0.047''$，这正是他们 1921 年发表的结果，也是人们第一次量出太阳以外的恒星的角直径。
+
+    （3）条纹消失时，两面反射镜的间距约等于星光的相干宽度。参宿四的相干宽度约$3\,\mathrm m$，比望远镜的口径还大，只在口径范围内移动反射镜，间距到不了$3\,\mathrm m$，条纹不会消失，也就量不出来。横梁越长，能量出的角越小。
+
+- id: p8
+  tier: thinking
+  statement: |
+    薄膜上下两个表面反射的两束光，光近似垂直入射时，光程差约为$2nt$，$n$是膜的折射率（refractive index），$t$是膜厚。
+
+    （1）阳光下，肥皂泡和水面上的油膜呈现彩色，$3\,\mathrm{mm}$厚的窗玻璃却看不到彩色，为什么？（2）要让$3\,\mathrm{mm}$厚、折射率$1.5$的玻璃板两个表面反射的光产生看得清的条纹，光的波长范围至多约多宽？中心波长取$550\,\mathrm{nm}$。
+  hints:
+    - |
+      窗玻璃两个表面反射的光，光程差约$2\times1.5\times3\,\mathrm{mm}$。
+    - |
+      阳光的相干长度约$1\,\mu\mathrm m$。
+    - |
+      要求$l_c\approx\frac{\lambda^2}{\Delta\lambda}$不小于光程差。
+  reference: |
+    （1）窗玻璃$t=3\,\mathrm{mm}$、$n\approx1.5$，两束反射光的光程差约$9\,\mathrm{mm}$，是阳光相干长度（约$1\,\mu\mathrm m$）的约一万倍。两束光的相位差乱变，光强简单相加，看不到条纹，也就没有颜色。肥皂膜、油膜能显出颜色，说明它们薄到光程差和阳光的相干长度相当，也就是膜厚在微米以下；这时哪种颜色加强、哪种减弱随膜厚而变，膜就是彩色的（见[薄膜干涉](lesson:physics.optics.thin-film-interference)）。
+
+    （2）要求$\frac{\lambda^2}{\Delta\lambda}\gtrsim9\,\mathrm{mm}$，$\Delta\lambda\lesssim\frac{(550\times10^{-9})^2}{9\times10^{-3}}\,\mathrm m\approx3\times10^{-11}\,\mathrm m=0.03\,\mathrm{nm}$，只有白光波长范围的约万分之一。第 3 题那样的窄带激光完全够用。

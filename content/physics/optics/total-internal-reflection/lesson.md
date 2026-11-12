@@ -39,7 +39,10 @@ status: reviewed
 
 1842 年，瑞士的科拉东（Jean-Daniel Colladon）发表了一个实验：让光从水箱侧面射进流出的水柱，光在水柱的表面上一次次:term[全反射]{id="physics.optics.total-internal-reflection"}，跟着弯曲的水柱一路走，水流落到哪里，哪里就亮。光纤（optical fiber）用的是同一个道理，只是把水柱换成了比头发还细的玻璃丝。
 
-光纤的中心是纤芯（core），外面包着一层:term[折射率]{id="physics.optics.refractive-index"}稍小的包层（cladding）。光在纤芯和包层的界面上全反射：裸露的玻璃表面一旦沾上灰尘、水汽或者碰到别的东西，那里就不再满足全反射的条件，光会漏出去，包层把这个界面保护在里面。纤芯和包层的折射率通常只差百分之一左右，:term[临界角]{id="physics.optics.critical-angle"}接近$90^\circ$，所以只有和光纤的轴夹角很小的光才能传下去。
+::anchor{id="def-core-cladding"}
+光纤中心传光的部分叫作:term[纤芯]{id="physics.optics.fiber-core"}（core），外面包着的一层:term[折射率]{id="physics.optics.refractive-index"}稍小的玻璃叫作:term[包层]{id="physics.optics.cladding"}（cladding）。
+
+为什么这样定义：光在纤芯和包层的界面上全反射，这个界面藏在玻璃里面；裸露的玻璃表面一旦沾上灰尘、水汽或者碰到别的东西，那里就不再满足全反射的条件，光会漏出去，包层把界面保护了起来。边界情况：纤芯和包层的折射率通常只差百分之一左右，:term[临界角]{id="physics.optics.critical-angle"}接近$90^\circ$，所以只有和光纤的轴夹角很小的光才能传下去；纤芯直接接触空气也能全反射，只是怕脏（第 8 题）。
 
 ::anchor{id="def-numerical-aperture"}
 光从空气射到光纤的端面上，能在纤芯里靠全反射一直传下去的最大入射角$\theta_{\max}$叫作光纤的接收角（acceptance angle），$\sin\theta_{\max}$叫作光纤的:term[数值孔径]{id="physics.optics.numerical-aperture"}（numerical aperture，NA）。
@@ -59,7 +62,7 @@ status: reviewed
 
 ![左：水下一点 S 发出的光射到水面上，入射角小于临界角的光折射到空气里，等于临界角的贴着水面射出，大于临界角的全部反射回水里；右：光纤的纤芯外面包着折射率较小的包层，从端面射入、在接收角以内的光，在纤芯和包层的界面上一次次全反射，沿光纤传下去](tir-fiber.svg)
 
-左图的点光源在水下，从它发出的光里，竖直向上和斜得不太厉害的几条折射到空气里，越斜折射得越厉害；沿:term[临界角]{id="physics.optics.critical-angle"}射出的那条贴着水面；更斜的发生:term[全反射]{id="physics.optics.total-internal-reflection"}，回到水里。右图的光纤为了看清，纤芯和包层的:term[折射率]{id="physics.optics.refractive-index"}差画得夸大了（按$1.50$和$1.30$画），光线和轴的夹角也画得偏大；真实光纤里的光线几乎平行于轴。
+左图的点光源在水下，从它发出的光里，竖直向上和斜得不太厉害的几条折射到空气里，越斜折射得越厉害；沿:term[临界角]{id="physics.optics.critical-angle"}射出的那条贴着水面；更斜的发生:term[全反射]{id="physics.optics.total-internal-reflection"}，回到水里。右图的光纤为了看清，:term[纤芯]{id="physics.optics.fiber-core"}和:term[包层]{id="physics.optics.cladding"}的:term[折射率]{id="physics.optics.refractive-index"}差画得夸大了（按$1.50$和$1.30$画），光线和轴的夹角也画得偏大；真实光纤里的光线几乎平行于轴。
 
 :::anim{component="function-plot"}
 range: { x: [1.30, 1.70], y: [0, 90] }
@@ -91,7 +94,7 @@ sliders:
 
 ### 例 2　光纤的接收角
 
-一种光纤的纤芯:term[折射率]{id="physics.optics.refractive-index"}$1.48$，包层折射率$1.46$。求它的:term[数值孔径]{id="physics.optics.numerical-aperture"}和接收角。
+一种光纤的:term[纤芯]{id="physics.optics.fiber-core"}:term[折射率]{id="physics.optics.refractive-index"}$1.48$，:term[包层]{id="physics.optics.cladding"}折射率$1.46$。求它的:term[数值孔径]{id="physics.optics.numerical-aperture"}和接收角。
 
 **为什么想到这么做**：直接用$\mathrm{NA}=\sqrt{n_1^2-n_2^2}$，再取反正弦。
 
@@ -101,5 +104,5 @@ sliders:
 
 - 「光从空气射向水，入射角足够大时也会:term[全反射]{id="physics.optics.total-internal-reflection"}。」只有光从:term[折射率]{id="physics.optics.refractive-index"}较大的介质射向折射率较小的介质时才可能发生全反射；从空气射向水，总有折射光。
 - 「全反射时光一点也不进入第二种介质。」界面另一侧有一层深度和波长相当的场，只是不把能量带走；另一块玻璃靠得足够近时，光能穿过去。
-- 「光纤外面要镀银，光才能被管壁反射着传过去。」光纤靠的是纤芯和包层界面上的:term[全反射]{id="physics.optics.total-internal-reflection"}，不用金属，全反射也不损失能量；光纤的损耗来自玻璃本身的吸收和散射。
+- 「光纤外面要镀银，光才能被管壁反射着传过去。」光纤靠的是:term[纤芯]{id="physics.optics.fiber-core"}和:term[包层]{id="physics.optics.cladding"}界面上的:term[全反射]{id="physics.optics.total-internal-reflection"}，不用金属，全反射也不损失能量；光纤的损耗来自玻璃本身的吸收和散射。
 - 「纤芯和包层的折射率差越大越好。」差大了:term[数值孔径]{id="physics.optics.numerical-aperture"}大、收光多，可不同路程的光到达的时间也差得更多，长途通信反而要用纤芯很细、折射率差很小的单模光纤。
