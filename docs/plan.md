@@ -972,6 +972,29 @@ math.analysis.completeness:
       - 「色散」「驻波」「相速度」「群速度」进振动与波的术语表，写完后补标电磁学（同批次 12 的「受迫振动」「共振」）。
     - 量子力学 `aharonov-bohm`：`gauge-potentials` 第 7 题链过去（外村彰 1986 年的实验）；规范变换写成 $\varphi\to\varphi-\pdv\chi t$、$\vb A\to\vb A+\nabla\chi$，波函数的相位变换要和这个正负号配套。
 - 批次 13 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 14（写代码的会话定的）。
+- 批次 13 之后（你定的）：发批次 14。
+- 批次 14：多变量微积分的第二批、电磁学的最后一批，做法和批次 13 一样。
+  - 多变量微积分写重积分与极值 9 节，按前置顺序：`double-integrals`、`triple-integrals`、`polar-double-integrals`、`cylindrical-spherical`、`change-of-variables`、`extrema`、`inverse-implicit`、`lagrange-multipliers`、`vector-fields`。审查报告 `docs/reviews/batch-14-vector-calculus.md`。往后两批：曲线曲面积分与积分定理 9 节；斯托克斯公式、曲线坐标、三维 δ 函数和势 4 节。
+  - 电磁学写势与辐射 5 节，按前置顺序：`retarded-potentials`、`lienard-wiechert`、`larmor-formula`、`dipole-radiation`、`waveguides`。审查报告 `docs/reviews/batch-14-electromagnetism.md`。写完这一批，电磁学 48 节全部写完；物理那一对下一个领域写什么，等你定。
+  - 已写的小节有链接或用法指向这一批（写代码的会话查的）：
+    - 以这一批为直接前置的已写小节有 6 节，按批次 9 定的规矩查了它们的用法：
+      - 数学分析 `parameter-integrals:16`、`gamma-function:48` 和第 6 题：$\int_{-\infty}^{\infty}e^{-x^2}\dd x=\sqrt\pi$ 由极坐标下的二重积分得到，`polar-double-integrals` 要讲到（含反常的二重积分）。`parameter-integrals:67`：二重积分化成累次积分的条件（`double-integrals`）。
+      - 常微分方程 `convolution-impulse:51`：卷积定理的证明里换元 $t=\tau+\sigma$、交换反常二重积分的次序（`double-integrals`；批次 7 定过，交换二重积分次序要列它为前置）。
+      - 变分法 `isoperimetric-problems`、分析力学 `constraint-forces`：拉格朗日乘子，$\nabla f=\lambda\nabla g$、约束的梯度不为零的条件，几个约束时 $\nabla f=\sum\lambda_k\nabla g_k$；变分法里积分约束配一个乘子是它的推广（`lagrange-multipliers`）。
+      - 分析力学 `inertia-tensor`（例题直接对立方体做三重积分）、电磁学 `continuous-charge`（电荷 $\int\rho\,\dd V$、电场的体积分）：三重积分的写法和累次积分（`triple-integrals`）。电磁学的体积元一律写 $\dd V$。
+    - 前向链接：
+      - 线性代数 `determinant:59`：$|\det A|$ 是面积、体积的缩放倍数，换元公式里也这样用（`change-of-variables`）；
+      - 数学分析 `extreme-value` 第 8 题：求最值先要确认区域有界、闭（`extrema`）；
+      - 常微分方程 `exact-equations` 第 8 题：隐函数定理要求 $\frac{\partial F}{\partial y}\ne0$（`inverse-implicit`）；
+      - 多变量微积分自己的：`multivariable-chain-rule:27`、`gradient:44` → `inverse-implicit`，`jacobian:87` → `change-of-variables`，`taylor-multivariable:53` → `extrema`。
+    - 电磁学：
+      - `retarded-potentials`：从 `gauge-potentials:61` 洛伦茨规范下的两个有源波动方程出发；`gauge-potentials` 第 8 题（3）已经说了势只由光从源走到这里所需时间以前的源决定；洛伦茨 1867 年写出推迟势（`gauge-potentials:63`），史实要一致；`induced-electric-field` 第 8 题（3）离螺线管 $s$ 处要过约 $\frac sc$ 才感到变化；`maxwell-equations` 第 6 题（3）频率高时两板之间的场不均匀。
+      - `lienard-wiechert`：低速极限要回到 `biot-savart:31` 运动点电荷的磁场 $\frac{\mu_0}{4\pi}\frac{q\vb v\times(\vb r-\vb r')}{|\vb r-\vb r'|^3}$。
+      - `larmor-formula`：`gauss-differential` 第 8 题，绕核运动的电子会辐射能量。
+  - 以这一批为前置、还没写的别的小节：`double-integrals` ← 概率论「联合分布与边缘分布」；`polar-double-integrals` ← 概率论「正态分布」、热学「理想气体的配分函数」；`cylindrical-spherical` ← 牛顿力学「球壳定理」、热学「麦克斯韦速率分布」；`change-of-variables` ← 概率论「多元正态分布」；`inverse-implicit` ← 微分几何「正则曲面与切平面」。
+  - 跨领域前置（还是待写，按它们的 goal 假定读者学过）：多变量微积分的 `double-integrals`、`polar-double-integrals` 要微积分的「微积分基本定理」「极坐标与极坐标下的面积」「反常积分」；电磁学的 `retarded-potentials`、`waveguides` 要偏微分方程的「三维波动方程与惠更斯原理」「矩形与圆盘上的拉普拉斯方程」。
+  - 动画：多变量微积分用 function-plot 画截面和积分区域的边界，vector-field-2d 画向量场，`change-of-variables` 可以用 LinearMap2D 画小块的面积怎样缩放；积分区域、柱坐标和球坐标画 SVG。电磁学用 function-plot 画辐射的角分布、推迟时间，波导的截止频率；辐射的场线画 SVG（写代码的会话提的）。
+- 批次 14 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 15；电磁学写完了，物理那一对下一个领域到时候问你（写代码的会话定的）。
 - 几个领域同时写时（批次 1 定的）：每个写内容会话只改自己领域的目录（`content/<学科>/<领域>/`），审内容会话只写自己的报告和验算脚本；`docs/plan.md` 不由它们直接改，要写回的内容写进汇报，由写代码的会话统一写进去、单独提交，免得几个会话同时改一个文件。每个领域各自作为一个提交。另一个领域写到一半、全量构建报错时，写内容会话可以把那个领域换成已提交的版本，在临时副本上构建，确认自己的领域 0 个错误；看页面同理，用临时副本编译的内容另起一个服务，进度写临时仓库，不改仓库的 `dist/`（批次 2 定的）。test-serve 和 `npm run serve` 提供的是 `dist/` 里构建好的网站，不读 `generated/`：改完内容要重新 `vite build`，页面上才看得到（批次 6 时写内容会话提的）。临时副本的做法（批次 10 时写内容会话提的，写代码的会话核过）：用 `git archive HEAD` 导出已提交的版本，再拷进自己的改动；`node_modules` 不要复制，在副本里建一个指向仓库 `node_modules` 的目录联接（PowerShell 的 `New-Item -ItemType Junction`）；建网站时在副本目录里跑 `npx vite build --outDir <目录>`，或者把副本目录写成 `vite build` 的第一个参数（Vite 8 的根目录是位置参数）；删副本之前先单独删掉联接本身（PowerShell 的 `[System.IO.Directory]::Delete(<联接>, $false)`），否则删除命令会顺着联接把仓库的 `node_modules` 一起删掉。
 
 **分工**：一共三个 agent：写代码、写内容、审内容。开发台阶 8、9 由写内容 agent 和审内容 agent 执行。写内容和审内容必须是两个独立会话。
