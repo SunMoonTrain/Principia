@@ -46,7 +46,7 @@ $$
 ::anchor{id="def-geodesic"}
 曲面上以弧长为参数、满足$\mathbf r''=\lambda\nabla G$的曲线，叫作这张曲面的测地线（geodesic）。
 
-为什么这样定义：$\nabla G$是曲面的法向量（normal vector），方程说曲线的「弯曲」全都朝着曲面的法向，在曲面里看没有左右拐弯，是曲面上的「直线」。两点间最短的光滑曲线一定是测地线，因为它是长度在约束下的局部极值。边界情况：反过来，测地线不一定最短，圆柱面（cylinder）上两点之间可以绕不同的圈数连出许多条测地线（几何图像），球面上超过半个大圆（great circle）的弧也不是最短的（见[雅可比条件与共轭点](lesson:math.calculus-of-variations.jacobi-condition)）。微分几何（differential geometry）会从曲面本身的角度再讲测地线，见[测地线](lesson:math.differential-geometry.geodesics)。
+为什么这样定义：$\nabla G$是曲面的法向量（normal vector），方程说曲线的「弯曲」全都朝着曲面的法向，在曲面里看没有左右拐弯，是曲面上的「直线」。两点间最短的:term[光滑曲线]{id="math.vector-calculus.smooth-curve"}（smooth curve）一定是测地线，因为它是长度在约束下的局部极值。边界情况：反过来，测地线不一定最短，圆柱面（cylinder）上两点之间可以绕不同的圈数连出许多条测地线（几何图像），球面上超过半个大圆（great circle）的弧也不是最短的（见[雅可比条件与共轭点](lesson:math.calculus-of-variations.jacobi-condition)）。微分几何（differential geometry）会从曲面本身的角度再讲测地线，见[测地线](lesson:math.differential-geometry.geodesics)。
 
 ## 几何图像
 
@@ -75,6 +75,6 @@ $$
 ## 常见误区
 
 - 「:term[完整约束]{id="math.calculus-of-variations.holonomic-constraint"}也只配一个常数乘子。」每一点各有一个约束，乘子是函数$\lambda(t)$；只有积分约束才配常数乘子。
-- 「测地线就是两点之间最短的路。」最短的光滑曲线是测地线，反过来不一定：圆柱面上绕更多圈的螺旋线、球面上超过半个大圆的弧，都是测地线却不是最短的。
+- 「测地线就是两点之间最短的路。」最短的:term[光滑曲线]{id="math.vector-calculus.smooth-curve"}是测地线，反过来不一定：圆柱面上绕更多圈的螺旋线、球面上超过半个大圆的弧，都是测地线却不是最短的。
 - 「测地线都像球面的大圆那样，落在一个平面里。」圆柱面上的螺旋线（例 2）就不在任何平面里；球面上能用平面来描述，靠的是例 1 里$\mathbf r\times\mathbf r'$守恒这个特殊的性质。
 - 「乘子$\lambda$总是常数。」球面上用弧长作参数时恰好是常数（例 1），一般它随位置变化。

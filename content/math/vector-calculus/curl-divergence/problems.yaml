@@ -1,0 +1,135 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\vb F=(x^2y,\ yz^2,\ xz)$在点$(1,2,3)$处的散度。
+  answer:
+    type: number
+    value: 14
+  hints:
+    - |
+      散度是三个偏导数之和：$P_x+Q_y+R_z$。
+    - |
+      $P_x=2xy$，$Q_y=z^2$，$R_z=x$。
+    - |
+      在$(1,2,3)$处是$4+9+1=14$。
+  solution: |
+    $\divg\vb F=2xy+z^2+x$，在$(1,2,3)$处是$4+9+1=14$。
+
+- id: p2
+  tier: easy
+  statement: |
+    求$\vb F=(y^2,\ z^2,\ x^2)$在点$(1,2,3)$处的旋度，按分量填写。
+  answer:
+    type: tuple
+    value: [-6, -2, -4]
+  hints:
+    - |
+      旋度是$(R_y-Q_z,\ P_z-R_x,\ Q_x-P_y)$。
+    - |
+      $R_y=0$，$Q_z=2z$；$P_z=0$，$R_x=2x$；$Q_x=0$，$P_y=2y$。
+    - |
+      $\curl\vb F=(-2z,-2x,-2y)$，在$(1,2,3)$处是$(-6,-2,-4)$，填 `-6, -2, -4`。
+  solution: |
+    $\curl\vb F=(0-2z,\ 0-2x,\ 0-2y)=(-2z,-2x,-2y)$，在$(1,2,3)$处是$(-6,-2,-4)$。
+
+- id: p3
+  tier: medium
+  statement: |
+    常数$a$取多少时，$\vb F=(ax+3y,\ 2x-4y+z,\ y+5z)$是无散场？
+  answer:
+    type: number
+    value: -1
+  hints:
+    - |
+      无散场的散度处处为零。
+    - |
+      $\divg\vb F=a-4+5$，和$x$、$y$、$z$无关。
+    - |
+      $a+1=0$，所以$a=-1$。
+  solution: |
+    $\divg\vb F=\pdv{}x(ax+3y)+\pdv{}y(2x-4y+z)+\pdv{}z(y+5z)=a-4+5=a+1$，要处处为零，$a=-1$。
+
+- id: p4
+  tier: medium
+  statement: |
+    常数$k$取多少时，$\vb F=(yz,\ kxz,\ xy)$是无旋场？
+  answer:
+    type: number
+    value: 1
+  hints:
+    - |
+      无旋场的旋度三个分量都要处处为零。
+    - |
+      $R_y-Q_z=x-kx$，$P_z-R_x=y-y$，$Q_x-P_y=kz-z$。
+    - |
+      $\curl\vb F=\bigl((1-k)x,\ 0,\ (k-1)z\bigr)$，对所有$x$、$z$都为零要$k=1$。
+  solution: |
+    $\curl\vb F=\bigl((1-k)x,\ 0,\ (k-1)z\bigr)$，处处为零当且仅当$k=1$。这时$\vb F=(yz,xz,xy)$正是$xyz$的梯度（gradient）。
+
+- id: p5
+  tier: hard
+  statement: |
+    速度场$\vb F=(P,Q)$的分量有连续（continuous）的偏导数。点$(x,y)$处边长为$\Delta x$、$\Delta y$的小矩形随流动，经过很短的时间$\Delta t$，每个顶点$\vb p$移到$\vb p+\vb F(\vb p)\Delta t$。只保留$\Delta x$、$\Delta y$的一次项，证明新的四边形是平行四边形，面积是$\Delta x\Delta y\bigl[1+(P_x+Q_y)\Delta t\bigr]$加上含$\Delta t^2$的项；由此说明面积的相对变化率是$\divg\vb F$。
+  hints:
+    - |
+      以$(x,y)$为原点看另外两个顶点：它们相对于$(x,y)$的位移，分别是$(\Delta x,0)$和$(0,\Delta y)$各自加上两端速度之差乘$\Delta t$。
+    - |
+      两条边变成$\vb u=\bigl(\Delta x(1+P_x\Delta t),\ \Delta x\,Q_x\Delta t\bigr)$和$\vb v=\bigl(\Delta y\,P_y\Delta t,\ \Delta y(1+Q_y\Delta t)\bigr)$；对面的顶点同理，所以是平行四边形，面积是$|\vb u\times\vb v|$。
+    - |
+      $|\vb u\times\vb v|=\Delta x\Delta y\bigl[(1+P_x\Delta t)(1+Q_y\Delta t)-P_yQ_x\Delta t^2\bigr]$，展开是$\Delta x\Delta y\bigl[1+(P_x+Q_y)\Delta t+(P_xQ_y-P_yQ_x)\Delta t^2\bigr]$。面积的改变量除以$A\Delta t$，令$\Delta t\to0$，得$P_x+Q_y$。
+  reference: |
+    顶点$(x+\Delta x,y)$的速度约为$\vb F+\Delta x(P_x,Q_x)$，所以它相对于$(x,y)$的位移从$(\Delta x,0)$变成$\vb u=(\Delta x,0)+\Delta x(P_x,Q_x)\Delta t$。同理第三个顶点给出$\vb v=(0,\Delta y)+\Delta y(P_y,Q_y)\Delta t$，第四个顶点给出$\vb u+\vb v$，所以四边形是以$\vb u$、$\vb v$为边的平行四边形。
+
+    把$\vb u$、$\vb v$看成$z$分量为零的空间向量，面积是$|\vb u\times\vb v|=\Delta x\Delta y\bigl[1+(P_x+Q_y)\Delta t+(P_xQ_y-P_yQ_x)\Delta t^2\bigr]$。于是$\frac{A(\Delta t)-A(0)}{A(0)\,\Delta t}=P_x+Q_y+(P_xQ_y-P_yQ_x)\Delta t\to P_x+Q_y=\divg\vb F$。
+
+    剪切项$P_y$、$Q_x$只让矩形变歪、转动，对面积的影响是$\Delta t^2$量级。空间里，小长方体的三条棱同样变成$\vb u$、$\vb v$、$\vb w$，体积是混合积$(\vb u\times\vb v)\cdot\vb w$，一次项给出$P_x+Q_y+R_z$。
+
+- id: p6
+  tier: hard
+  statement: |
+    在原点以外，设$\vb F=\frac{(x,y)}{x^2+y^2}$，$\vb G=\frac{(-y,x)}{x^2+y^2}$。证明$\vb F$、$\vb G$都既是无散场又是无旋场；再说明它们的流线各是什么样子。
+  hints:
+    - |
+      记$\rho=x^2+y^2$。对$\frac x\rho$求$x$的偏导数要用商的求导法则，$\rho_x=2x$。
+    - |
+      $\pdv{}x\frac x\rho=\frac{y^2-x^2}{\rho^2}$，$\pdv{}y\frac y\rho=\frac{x^2-y^2}{\rho^2}$，$\pdv{}x\frac y\rho=\pdv{}y\frac x\rho=-\frac{2xy}{\rho^2}$。
+    - |
+      $\vb F$：散度$\frac{y^2-x^2}{\rho^2}+\frac{x^2-y^2}{\rho^2}=0$，平面旋度$-\frac{2xy}{\rho^2}+\frac{2xy}{\rho^2}=0$。$\vb G$的两个分量就是$\vb F$的分量换位、变号，同样算得两个都是零。$\vb F$的流线是从原点出发的射线，$\vb G$的流线是以原点为圆心的圆。
+  reference: |
+    记$\rho=x^2+y^2$。由商的求导法则，$\pdv{}x\frac x\rho=\frac{\rho-2x^2}{\rho^2}=\frac{y^2-x^2}{\rho^2}$，$\pdv{}y\frac y\rho=\frac{x^2-y^2}{\rho^2}$，$\pdv{}y\frac x\rho=\pdv{}x\frac y\rho=-\frac{2xy}{\rho^2}$。
+
+    $\vb F=\bigl(\frac x\rho,\frac y\rho\bigr)$：$\divg\vb F=\frac{y^2-x^2}{\rho^2}+\frac{x^2-y^2}{\rho^2}=0$，平面旋度$\pdv{}x\frac y\rho-\pdv{}y\frac x\rho=0$。$\vb G=\bigl(-\frac y\rho,\frac x\rho\bigr)$：$\divg\vb G=\frac{2xy}{\rho^2}-\frac{2xy}{\rho^2}=0$，平面旋度$\pdv{}x\frac x\rho+\pdv{}y\frac y\rho=0$。
+
+    $\vb F$处处沿半径向外，流线是从原点出发的射线；$\vb G$处处沿圆周逆时针，流线是以原点为圆心的圆。两个场的箭头长度都是$\frac1r$：$\vb F$里一小块沿半径被拉长，沿圆周正好被压扁同样的比例；$\vb G$里外圈比内圈慢，小十字一根要逆时针转、一根要顺时针转，正好抵消。
+
+- id: p7
+  tier: thinking
+  statement: |
+    一条直河宽$2w$，河岸是$y=\pm w$。设水的速度是$\vb v=\Bigl(v_0\bigl(1-\frac{y^2}{w^2}\bigr),\ 0\Bigr)$：中间最快，岸边为零，流线都是平行于河岸的直线。在$y=\frac w2$、$y=0$、$y=-\frac w2$处各放一片小树叶，它们怎样转？流线是直的，为什么树叶会转？
+  hints:
+    - |
+      树叶转动的角速度是平面旋度的一半，平面旋度是$Q_x-P_y$。
+    - |
+      $Q=0$，$P_y=-\frac{2v_0y}{w^2}$，所以平面旋度是$\frac{2v_0y}{w^2}$。
+    - |
+      $y=\frac w2$处平面旋度为正，树叶逆时针转；$y=0$处不转；$y=-\frac w2$处顺时针转。树叶靠岸的一边比靠中间的一边慢，两边被水推着走的快慢不同，就转起来了。
+  reference: |
+    平面旋度$Q_x-P_y=0-\pdv{}y\Bigl(v_0\bigl(1-\frac{y^2}{w^2}\bigr)\Bigr)=\frac{2v_0y}{w^2}$，树叶转动的角速度是它的一半$\frac{v_0y}{w^2}$。$y=\frac w2$处是$\frac{v_0}{2w}>0$，逆时针转；$y=0$处为零，不转；$y=-\frac w2$处是$-\frac{v_0}{2w}$，顺时针转。
+
+    流线是直的只说明每一点的水都往同一个方向流，旋度看的却是一点附近的快慢之差。上半边的树叶，靠岸那一侧（上方）比靠中间那一侧（下方）流得慢，下方被推得更快，树叶就逆时针转起来。这和讲解里$(y,0)$的剪切是同一个道理，也说明了旋度和流线弯不弯无关。
+
+- id: p8
+  tier: thinking
+  statement: |
+    在空间里，记$\vb r=(x,y,z)$，$r=|\vb r|$。常数$n$取多少时，$\frac{\vb r}{r^n}$在原点以外是无散场？质点的引力场、点电荷的电场都和距离的平方成反比，这和你求出的$n$有什么关系？
+  hints:
+    - |
+      $\pdv rx=\frac xr$，所以$\pdv{}x\frac{x}{r^n}=\frac1{r^n}-\frac{nx^2}{r^{n+2}}$。
+    - |
+      三项加起来，$\divg\frac{\vb r}{r^n}=\frac3{r^n}-\frac{n(x^2+y^2+z^2)}{r^{n+2}}=\frac{3-n}{r^n}$。
+    - |
+      $n=3$时在原点以外处处无散，这时$\frac{\vb r}{r^3}$的大小是$\frac1{r^2}$，正是平方反比。平方反比的场在空着的地方不冒也不吸，「源」只在质点、点电荷所在的那一点。
+  reference: |
+    由$\pdv rx=\frac xr$，$\pdv{}x\frac x{r^n}=\frac1{r^n}-\frac{nx^2}{r^{n+2}}$，$y$、$z$同理，相加得$\divg\frac{\vb r}{r^n}=\frac{3-n}{r^n}$。所以只有$n=3$时它在原点以外处处无散。
+
+    $\frac{\vb r}{r^3}$沿半径方向，大小是$\frac1{r^2}$，和距离的平方成反比；质点的引力场、点电荷的电场都是它乘一个常数。散度处处为零说明：在没有质量、没有电荷的地方，场线既不冒出来也不消失，只从源头出发。平面上对应的是第 6 题的$\frac{(x,y)}{x^2+y^2}$，那里是一次方反比；空间里多一个方向可以散开，所以要平方反比。

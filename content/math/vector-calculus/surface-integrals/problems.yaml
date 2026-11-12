@@ -1,0 +1,137 @@
+- id: p1
+  tier: easy
+  statement: |
+    $S$是平面$x+y+z=1$在第一卦限（first octant）里的那个三角形。求$\iint_Sz\,\dd a$。
+  answer:
+    type: number
+    value: sqrt(3)/6
+  hints:
+    - |
+      $S$是$z=1-x-y$的图像，$(x,y)$在三角形$x,y\ge0$、$x+y\le1$上。图像的面积元是$\sqrt{1+z_x^2+z_y^2}\,\dd x\dd y$。
+    - |
+      $z_x=z_y=-1$，$\dd a=\sqrt3\,\dd x\dd y$。积分是$\sqrt3\iint(1-x-y)\dd x\dd y$。
+    - |
+      $\iint(1-x-y)\dd x\dd y=\frac16$（底面三角形上高为$1-x-y$的四面体体积），结果是$\frac{\sqrt3}6$。
+  solution: |
+    $\dd a=\sqrt3\,\dd x\dd y$，$\iint_Sz\,\dd a=\sqrt3\int_0^1\int_0^{1-x}(1-x-y)\dd y\dd x=\frac{\sqrt3}6$。
+
+- id: p2
+  tier: easy
+  statement: |
+    求$\vb F=(0,0,3)$穿过平面$z=1$上的圆盘$x^2+y^2\le4$（法向量朝上）的通量。
+  answer:
+    type: number
+    value: 12*pi
+  hints:
+    - |
+      圆盘上朝上的单位法向量是$\vb n=(0,0,1)$。
+    - |
+      $\vb F\cdot\vb n=3$，是常数。
+    - |
+      通量$=3\times$圆盘面积$=3\cdot4\pi=12\pi$。
+  solution: |
+    $\vb F\cdot\vb n=3$，通量$=\iint3\,\dd a=3\cdot4\pi=12\pi$。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\vb F=(x,y,0)$穿过圆柱面$x^2+y^2=1$、$0\le z\le2$的侧面（法向量朝外，不含上下底）的通量。
+  answer:
+    type: number
+    value: 4*pi
+  hints:
+    - |
+      圆柱侧面上朝外的单位法向量是$\vb n=(x,y,0)$。
+    - |
+      $\vb F\cdot\vb n=x^2+y^2=1$。
+    - |
+      通量$=\iint1\,\dd a=$侧面积$=2\pi\cdot2=4\pi$。
+  solution: |
+    侧面上$\vb n=(x,y,0)$，$\vb F\cdot\vb n=x^2+y^2=1$，通量等于侧面积$2\pi\cdot1\cdot2=4\pi$。
+
+- id: p4
+  tier: medium
+  statement: |
+    水以均匀的速度$\vb F=(0,0,1)$向上流。求它穿过上半球面$x^2+y^2+z^2=9$（$z\ge0$，法向量朝外）的通量。
+  answer:
+    type: number
+    value: 9*pi
+  hints:
+    - |
+      把半球面写成$z=f(x,y)=\sqrt{9-x^2-y^2}$的图像，朝上的有向面积元是$(-f_x,-f_y,1)\dd x\dd y$。
+    - |
+      $\vb F\cdot(-f_x,-f_y,1)=1$，通量就是投影圆盘$x^2+y^2\le9$的面积。
+    - |
+      通量$=9\pi$，和穿过底面圆盘的一样。
+  solution: |
+    朝上（朝外）的$\dd\vb a=(-f_x,-f_y,1)\dd x\dd y$，$\vb F\cdot\dd\vb a=\dd x\dd y$，通量等于投影圆盘的面积$9\pi$。
+
+- id: p5
+  tier: hard
+  statement: |
+    $S$是函数$z=f(x,y)$（$(x,y)\in D$，$f$有连续的偏导数（partial derivative））的图像，法向量取朝上的那一侧。证明$\vb F=(P,Q,R)$穿过$S$的通量是$\iint_D\bigl(-Pf_x-Qf_y+R\bigr)\dd x\dd y$，其中$P$、$Q$、$R$在$\bigl(x,y,f(x,y)\bigr)$处取值。
+  hints:
+    - |
+      用$x$、$y$作参数：$\vb r(x,y)=\bigl(x,y,f(x,y)\bigr)$。
+    - |
+      $\vb r_x\times\vb r_y=(-f_x,-f_y,1)$，$z$分量为正，朝上，所以$\dd\vb a=(-f_x,-f_y,1)\dd x\dd y$。
+    - |
+      $\vb F\cdot\dd\vb a=(-Pf_x-Qf_y+R)\dd x\dd y$，在$D$上积分即得。
+  reference: |
+    参数$\vb r(x,y)=\bigl(x,y,f(x,y)\bigr)$，$\vb r_x=(1,0,f_x)$，$\vb r_y=(0,1,f_y)$，$\vb r_x\times\vb r_y=(-f_x,-f_y,1)$。它的$z$分量是$1>0$，指向朝上的一侧，和选定的法向同向，所以$\dd\vb a=(-f_x,-f_y,1)\dd x\dd y$。
+
+    通量$=\iint_D\vb F\bigl(x,y,f(x,y)\bigr)\cdot(-f_x,-f_y,1)\dd x\dd y=\iint_D(-Pf_x-Qf_y+R)\dd x\dd y$。
+
+    特别地，$\vb F=(0,0,R)$竖直时通量是$\iint_DR\,\dd x\dd y$，和曲面的形状无关：竖直的流穿过一张曲面，和穿过它在$xy$平面上的投影一样多。第 4 题正是这种情形。
+
+- id: p6
+  tier: hard
+  statement: |
+    $\vb F=\frac{\vb r}{r^3}$（$r=|\vb r|\ne0$）。证明它穿过以原点为球心、半径为$R$的球面（外法向）的通量是$4\pi$，和$R$无关。点电荷的电场就是这个场乘一个常数，这个结论在物理上说明什么？
+  hints:
+    - |
+      球面上外法向$\vb n=\frac{\vb r}R$，$|\vb r|=R$。
+    - |
+      $\vb F\cdot\vb n=\frac{\vb r}{R^3}\cdot\frac{\vb r}R=\frac{R^2}{R^4}=\frac1{R^2}$，在球面上是常数。
+    - |
+      通量$=\frac1{R^2}\cdot4\pi R^2=4\pi$。场减弱的$\frac1{R^2}$正好被球面积增大的$R^2$抵消，所以从点电荷发出的「场线（field line）条数」不随半径变。
+  reference: |
+    球面上$\vb n=\frac{\vb r}R$，$\vb F\cdot\vb n=\frac{|\vb r|^2}{R^4}=\frac1{R^2}$，处处相同。通量$=\frac1{R^2}\cdot4\pi R^2=4\pi$，和$R$无关。
+
+    平方反比的场强随距离减弱，球面积随距离的平方增大，两者恰好抵消。点电荷$q$的电场是$\frac q{4\pi\varepsilon_0}\frac{\vb r}{r^3}$，穿过任何以它为中心的球面的电通量都是$\frac q{\varepsilon_0}$，这正是高斯定律的一个特例。
+
+    换成别的幂次，例如$\frac{\vb r}{r^4}$，通量$=\frac{4\pi}R$，随半径变化：只有平方反比的场，穿过大球面、小球面的通量才一样。
+
+- id: p7
+  tier: thinking
+  statement: |
+    把一条长纸带扭半圈、两端粘起来，得到莫比乌斯带。为什么不能给它选一个处处连续的单位法向量？在它上面，「穿过曲面的通量」为什么没有意义？
+  hints:
+    - |
+      在纸带中线上某一点选一个法向量，沿中线移动并让它连续变化。
+    - |
+      绕中线走一圈回到出发点，因为扭过半圈，法向量变成了原来的反方向。
+    - |
+      连续的法向量场要求回到原处时等于原来的值，可这里回来时是相反的值，矛盾；所以选不出连续的$\vb n$。没有统一的「正面」，穿过的水算正还是算负就说不清，通量没法定义。
+  reference: |
+    在中线上一点取单位法向量$\vb n_0$，沿中线走，要求$\vb n$连续变化。纸带扭了半圈，绕一圈回到出发点时，法向量指向纸的另一面，变成$-\vb n_0$。可连续的法向量场在同一点只能有一个值，$\vb n_0=-\vb n_0$不可能，所以莫比乌斯带上不存在连续的单位法向量，它不是有向曲面。
+
+    通量要求说清「从哪一面穿到哪一面算正」，靠的正是一个连续选定的法向量。莫比乌斯带只有一面：一只蚂蚁沿着它爬，不翻过边缘就能到达「背面」的每一点。所以在它上面谈不上穿过的方向，通量没有意义；对面积的曲面积分不用法向量，仍然可以算。
+
+- id: p8
+  tier: thinking
+  statement: |
+    水以均匀的速度$\vb F=(1,0,0)$流过一个半径为$1$的球形网兜。分别求流进来（$\vb F\cdot\vb n<0$的半个球面）和流出去（另外半个）的水量，以及外法向下的净通量。净通量为零，是不是说明没有水穿过网兜？
+  hints:
+    - |
+      外法向$\vb n=(x,y,z)$，$\vb F\cdot\vb n=x$。右半球$x>0$流出，左半球$x<0$流进。
+    - |
+      右半球上的通量$\iint x\,\dd a$：用以$x$轴为轴的球坐标，$x=\cos\theta$，$\dd a=\sin\theta\,\dd\theta\dd\varphi$，$\theta$从$0$到$\frac\pi2$。
+    - |
+      右半球流出$\pi$，左半球流进$\pi$（通量$-\pi$），净通量为零。每秒有$\pi$的水穿过网兜，只是进出相等；这和一个半径为$1$的圆截面每秒流过的水量$\pi\cdot1$一样。
+  reference: |
+    外法向$\vb n=(x,y,z)$，$\vb F\cdot\vb n=x$。右半球（$x\ge0$）上，以$x$轴为极轴取球坐标，$x=\cos\theta$，$\dd a=\sin\theta\,\dd\theta\dd\varphi$：$\int_0^{2\pi}\int_0^{\pi/2}\cos\theta\sin\theta\,\dd\theta\dd\varphi=\pi$。左半球同理是$-\pi$。
+
+    净通量$=\pi-\pi=0$，可每秒确实有$\pi$的水流进、$\pi$的水流出，等于穿过球的大圆截面（面积$\pi$）的流量。
+
+    所以净通量为零只说明网兜里的水不增不减：没有源，流进多少就流出多少。它不说明没有水穿过；要看穿过了多少，得把进、出分开算。

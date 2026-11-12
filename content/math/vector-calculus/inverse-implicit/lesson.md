@@ -33,7 +33,7 @@ status: reviewed
 
 **证明思路**：令$G(x,y)=\bigl(x,F(x,y)\bigr)$，它的:term[雅可比矩阵]{id="math.vector-calculus.jacobian-matrix"}（Jacobian matrix）$\begin{pmatrix}1&0\\F_x&F_y\end{pmatrix}$的行列式是$F_y\ne0$，由:term[反函数定理]{id="math.vector-calculus.inverse-function-theorem"}，$G$在$(a,b)$附近可逆。曲线$F=0$上的点被$G$映成$(x,0)$，反过来$G^{-1}(x,0)$的第二个坐标就是要找的$\varphi(x)$。对$F\bigl(x,\varphi(x)\bigr)=0$求导，由:term[链式法则]{id="math.vector-calculus.chain-rule"}得$F_x+F_y\varphi'=0$。
 
-为什么要$F_y\ne0$：$F_y=0$的地方，曲线在那里的切线往往是竖直的，$y$没法写成$x$的可导函数（differentiable function），例如圆$x^2+y^2=1$在$(\pm1,0)$处。由它还得到：$F(a,b)=c$、$(F_x,F_y)\ne\vb0$时，:term[等值线]{id="math.vector-calculus.level-curve"}（level curve）$F=c$在$(a,b)$附近是一条光滑曲线（$F_y\ne0$时写成$y(x)$，$F_x\ne0$时写成$x(y)$），这正是[方向导数与梯度](lesson:math.vector-calculus.gradient)里留下没证的那一步。边界情况：条件只是充分的，$F=y^3-x$在原点$F_y=0$，却仍能解出$y=\sqrt[3]x$，只是它在$0$处不可导。
+为什么要$F_y\ne0$：$F_y=0$的地方，曲线在那里的切线往往是竖直的，$y$没法写成$x$的可导函数（differentiable function），例如圆$x^2+y^2=1$在$(\pm1,0)$处。由它还得到：$F(a,b)=c$、$(F_x,F_y)\ne\vb0$时，:term[等值线]{id="math.vector-calculus.level-curve"}（level curve）$F=c$在$(a,b)$附近是一条:term[光滑曲线]{id="math.vector-calculus.smooth-curve"}（smooth curve）（$F_y\ne0$时写成$y(x)$，$F_x\ne0$时写成$x(y)$），这正是[方向导数与梯度](lesson:math.vector-calculus.gradient)里留下没证的那一步。边界情况：条件只是充分的，$F=y^3-x$在原点$F_y=0$，却仍能解出$y=\sqrt[3]x$，只是它在$0$处不可导。
 
 ## 几何图像
 

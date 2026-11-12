@@ -1,0 +1,139 @@
+- id: p1
+  tier: easy
+  statement: |
+    $\vb F=(2xy,\ x^2+3y^2)$是$f=x^2y+y^3$的梯度。求$\vb F$沿任意一条从$(0,0)$到$(2,-1)$的分段光滑曲线做的功。
+  answer:
+    type: number
+    value: -5
+  hints:
+    - |
+      用曲线积分基本定理：梯度场的曲线积分等于势函数在终点和起点的差。
+    - |
+      功是$f(2,-1)-f(0,0)$。
+    - |
+      $f(2,-1)=4\cdot(-1)+(-1)^3=-5$，$f(0,0)=0$，功是$-5$。
+  solution: |
+    由曲线积分基本定理，功$=f(2,-1)-f(0,0)=(-4-1)-0=-5$，和曲线无关。功是负的，说明这个力总体上和走的方向相反。
+
+- id: p2
+  tier: easy
+  statement: |
+    常数$k$取多少时，$\vb F=(3x^2+ky,\ 2x+4y)$在整个平面上是保守场？
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      整个平面是单连通区域，保守当且仅当$Q_x=P_y$。
+    - |
+      $Q_x=2$，$P_y=k$。
+    - |
+      $k=2$。
+  solution: |
+    平面是单连通区域，保守场的条件是$Q_x=P_y$，即$2=k$，所以$k=2$。这时势函数是$x^3+2xy+2y^2$。
+
+- id: p3
+  tier: medium
+  statement: |
+    $\vb F=(yz,\ xz,\ xy+2z)$。求它的势函数$f$，取$f(0,0,0)=0$，填写$f(1,1,2)$。
+  answer:
+    type: number
+    value: 6
+  hints:
+    - |
+      先对$x$积分$P$：$f=xyz+g(y,z)$。
+    - |
+      $f_y=xz+g_y=xz$，所以$g$只和$z$有关；$f_z=xy+g'(z)=xy+2z$，$g=z^2+C$。
+    - |
+      $f=xyz+z^2$（$C=0$），$f(1,1,2)=2+4=6$。
+  solution: |
+    $f=xyz+z^2$，验算$\nabla f=(yz,xz,xy+2z)$。$f(1,1,2)=2+4=6$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $\vb F=(1,\ z,\ y)$，$C$是曲线$\vb r(t)=\bigl(t\cos\pi t,\ t^2,\ e^t-1\bigr)$，$0\le t\le1$。求$\int_C\vb F\cdot\dd\vb r$。
+  answer:
+    type: number
+    value: exp(1) - 2
+  hints:
+    - |
+      直接代参数很麻烦。先看$\vb F$是不是梯度场。
+    - |
+      $\vb F=\nabla(x+yz)$，所以积分只看两端；起点$\vb r(0)=(0,0,0)$，终点$\vb r(1)=(-1,1,e-1)$。
+    - |
+      $f=x+yz$，积分是$f(-1,1,e-1)-f(0,0,0)=-1+(e-1)=e-2$。
+  solution: |
+    $\vb F=\nabla(x+yz)$。由曲线积分基本定理，积分$=f\bigl(\vb r(1)\bigr)-f\bigl(\vb r(0)\bigr)=\bigl(-1+1\cdot(e-1)\bigr)-0=e-2$。
+
+- id: p5
+  tier: hard
+  statement: |
+    $\vb F$在区域$D$上连续。证明：「$D$里任意两点之间的曲线积分和路径无关」与「沿$D$里每一条分段光滑的闭曲线，环量都为零」等价。
+  hints:
+    - |
+      两条从$A$到$B$的路$C_1$、$C_2$，接成闭曲线$L$：先走$C_1$，再反着走$C_2$。
+    - |
+      $\oint_L\vb F\cdot\dd\vb r=\int_{C_1}\vb F\cdot\dd\vb r-\int_{C_2}\vb F\cdot\dd\vb r$。
+    - |
+      路径无关时两项相等，环量为零。反过来，任一条闭曲线$L$在上面取两点$A$、$B$，把$L$拆成从$A$到$B$的两段，环量为零就说明这两段的积分相等。
+  reference: |
+    设路径无关。任取闭曲线$L$，在上面取两点$A$、$B$，把$L$拆成从$A$到$B$的$C_1$和从$B$回到$A$的$C_3$。记$C_2=-C_3$，它也从$A$到$B$。$\oint_L=\int_{C_1}+\int_{C_3}=\int_{C_1}-\int_{C_2}=0$。
+
+    反过来，设每条闭曲线的环量为零。任取两条从$A$到$B$的路$C_1$、$C_2$，$C_1$接上$-C_2$是一条闭曲线$L$，$0=\oint_L=\int_{C_1}-\int_{C_2}$，所以两条路的积分相等。
+
+    两个说法说的是同一件事：一个场「看不看路」，就看它沿闭曲线兜一圈之后有没有净的贡献。
+
+- id: p6
+  tier: hard
+  statement: |
+    $P$、$Q$在整个平面上有连续的偏导数，且$Q_x=P_y$。令$f(x,y)=\int_0^xP(s,0)\dd s+\int_0^yQ(x,s)\dd s$。证明$\nabla f=(P,Q)$。这个$f$是沿哪条路积分得到的？
+  hints:
+    - |
+      $f$是先沿$x$轴从$(0,0)$走到$(x,0)$，再竖直走到$(x,y)$的曲线积分。$f_y$可以直接求。
+    - |
+      $f_y=Q(x,y)$。求$f_x$要对第二项在积分号下求导（见[含参变量积分](lesson:math.analysis.parameter-integrals#thm-leibniz-rule)）：$f_x=P(x,0)+\int_0^yQ_x(x,s)\dd s$。
+    - |
+      把$Q_x$换成$P_y$：$\int_0^yP_y(x,s)\dd s=P(x,y)-P(x,0)$，所以$f_x=P(x,y)$。
+  reference: |
+    $f$是沿折线$(0,0)\to(x,0)\to(x,y)$的曲线积分：第一段上$\dd y=0$，被积式是$P(s,0)\dd s$；第二段上$\dd x=0$，被积式是$Q(x,s)\dd s$。
+
+    第一项和$y$无关，所以$f_y=Q(x,y)$。对$x$求偏导数，第一项给出$P(x,0)$；第二项的被积函数和它的偏导数都连续，可以在积分号下求导（见[含参变量积分](lesson:math.analysis.parameter-integrals#thm-leibniz-rule)），得$\int_0^yQ_x(x,s)\dd s$。
+
+    由$Q_x=P_y$，$\int_0^yP_y(x,s)\dd s=P(x,y)-P(x,0)$，所以$f_x=P(x,0)+P(x,y)-P(x,0)=P(x,y)$。整个平面没有洞，这个构造处处有效；这就是单连通区域上判别法的一种证法（区域换成矩形同样成立）。
+
+- id: p7
+  tier: thinking
+  statement: |
+    质量为$M$的质点放在原点，它对质量为$m$的物体的引力是$\vb F=-GMm\frac{\vb r}{r^3}$（$r=|\vb r|$）。在去掉原点的空间里，它是不是保守场？势函数和势能各是什么？例 2 里平面上去掉一点，场就不保守了，这里为什么不一样？
+  hints:
+    - |
+      回忆$\nabla\frac1r$：$\pdv{}x\frac1r=-\frac x{r^3}$。
+    - |
+      $\vb F=\nabla\frac{GMm}r$，直接找到了势函数，所以是保守场；势能$U=-\frac{GMm}r$。
+    - |
+      空间里去掉一点仍是单连通的：绕原点的圆可以从旁边绕过去、缩成一点。平面上去掉一点，绕原点的圈缩不过去，例 2 的场正是利用了这个洞。
+  reference: |
+    由$\pdv{}x\frac1r=-\frac x{r^3}$，$\nabla\frac1r=-\frac{\vb r}{r^3}$，所以$\vb F=\nabla\frac{GMm}r$：势函数是$f=\frac{GMm}r$，势能$U=-f=-\frac{GMm}r$，$\vb F$是保守场。物体从无穷远落到距离$r$处，引力做功$\frac{GMm}r$。
+
+    这里直接写出了势函数，不必用判别法。也可以从判别法看：去掉一点的空间是单连通的，空间里绕原点的闭曲线可以「从旁边绕过去」缩成一点，所以无旋就保守。
+
+    平面上去掉一点不是单连通的，例 2 的场旋度为零，绕原点一圈却有环量$2\pi$。空间里要构造类似的反例，得挖掉一整条直线，例如绕$z$轴转的$\frac{(-y,x,0)}{x^2+y^2}$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    例 2 的场$\vb G$在去掉原点的平面上不是保守场，可在任何不绕原点的区域上，$\nabla\theta=\vb G$（$\theta$是极角）。沿一条绕原点逆时针两圈的闭曲线，$\vb G$的环量是多少？沿一条不绕原点的闭曲线呢？环量在这里数的是什么？
+  hints:
+    - |
+      $\vb G\cdot\dd\vb r$在局部就是$\dd\theta$：环量是走一圈下来极角总共增加了多少。
+    - |
+      绕原点逆时针一圈，极角增加$2\pi$；两圈增加$4\pi$。不绕原点的闭曲线，走回原处时极角也回到原来的值。
+    - |
+      两圈的环量是$4\pi$，不绕原点的是$0$。环量除以$2\pi$，数的是曲线绕原点转了几圈（逆时针为正）。
+  reference: |
+    在不绕原点的小区域上$\vb G=\nabla\theta$，所以沿一小段曲线$\int\vb G\cdot\dd\vb r$等于极角的增量。把闭曲线切成很多小段，每一段都在这样的区域里，环量就是极角沿整条曲线的总增量。
+
+    不绕原点的闭曲线，可以在一个不含原点的区域（例如去掉一条射线的平面）里取单值的$\theta$，走回原处时$\theta$复原，环量为$0$。绕原点逆时针两圈，极角总共增加$4\pi$，环量是$4\pi$；顺时针一圈是$-2\pi$。
+
+    $\frac1{2\pi}\oint_L\vb G\cdot\dd\vb r$是一个整数，数的是$L$绕原点转了几圈。以后在复分析里，复积分$\oint\frac{\dd z}z$算的正是这个数乘$2\pi i$。

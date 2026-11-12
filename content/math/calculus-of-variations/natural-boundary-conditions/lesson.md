@@ -120,7 +120,7 @@ $$
 
 **为什么想到这么做**：长度的:term[极值曲线]{id="math.calculus-of-variations.extremal"}是直线，终点在曲线上滑动，用:term[横截条件]{id="math.calculus-of-variations.transversality-condition"}，它对长度就是「垂直」。
 
-**推导**：极值曲线是$y=kx$，终点$(t,\varphi(t))$，$k=\frac{\varphi(t)}{t}$。垂直的条件$\varphi'(t)\,k=-1$即$t+\varphi(t)\varphi'(t)=0$，也就是向量$(t,\varphi(t))$和切向量$(1,\varphi'(t))$的点积为零。代入$\varphi$，用二分法解得$t\approx1.152$，最短距离$\sqrt{t^2+\varphi(t)^2}\approx2.640$。这个方程和直接对$t^2+\varphi(t)^2$求导所得的一样：终点只有一个:term[自由度]{id="physics.analytical-mechanics.degrees-of-freedom"}（degree of freedom）时，变分法的条件退化成了一元函数的极值条件。
+**推导**：极值曲线是$y=kx$，终点$(t,\varphi(t))$，$k=\frac{\varphi(t)}{t}$。垂直的条件$\varphi'(t)\,k=-1$即$t+\varphi(t)\varphi'(t)=0$，也就是向量$(t,\varphi(t))$和:term[切向量]{id="math.vector-calculus.tangent-vector"}（tangent vector）$(1,\varphi'(t))$的点积为零。代入$\varphi$，用二分法解得$t\approx1.152$，最短距离$\sqrt{t^2+\varphi(t)^2}\approx2.640$。这个方程和直接对$t^2+\varphi(t)^2$求导所得的一样：终点只有一个:term[自由度]{id="physics.analytical-mechanics.degrees-of-freedom"}（degree of freedom）时，变分法的条件退化成了一元函数的极值条件。
 
 ## 常见误区
 

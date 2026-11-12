@@ -1,0 +1,139 @@
+- id: p1
+  tier: easy
+  statement: |
+    质点的位置是$\vb r(t)=(t^2,\ 2t,\ \ln t)$（$t>0$）。求$t=1$时的速率。
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      速率是速度向量$\vb r'(t)$的长度。
+    - |
+      $\vb r'(t)=\bigl(2t,\ 2,\ \frac1t\bigr)$，$t=1$时是$(2,2,1)$。
+    - |
+      $|(2,2,1)|=\sqrt{4+4+1}=3$。
+  solution: |
+    $\vb r'(1)=(2,2,1)$，速率$\sqrt{4+4+1}=3$。
+
+- id: p2
+  tier: easy
+  statement: |
+    求曲线$\vb r(t)=\bigl(t,\ t^2,\ \frac23t^3\bigr)$从$t=0$到$t=1$的弧长。
+  answer:
+    type: number
+    value: 5/3
+  hints:
+    - |
+      弧长是$\int_0^1|\vb r'(t)|\dd t$。
+    - |
+      $\vb r'(t)=(1,2t,2t^2)$，$|\vb r'(t)|^2=1+4t^2+4t^4=(1+2t^2)^2$。
+    - |
+      $\int_0^1(1+2t^2)\dd t=1+\frac23=\frac53$。
+  solution: |
+    $|\vb r'(t)|=\sqrt{(1+2t^2)^2}=1+2t^2$，弧长$\int_0^1(1+2t^2)\dd t=\frac53$。
+
+- id: p3
+  tier: medium
+  statement: |
+    求曲线$\vb r(t)=(t,\ t^2,\ t^3)$在$t=1$处的单位切向量，按分量填写。
+  answer:
+    type: tuple
+    value: [1/sqrt(14), 2/sqrt(14), 3/sqrt(14)]
+  hints:
+    - |
+      单位切向量是$\frac{\vb r'(t)}{|\vb r'(t)|}$。
+    - |
+      $\vb r'(1)=(1,2,3)$，长度$\sqrt{14}$。
+    - |
+      $\vb T=\bigl(\frac1{\sqrt{14}},\frac2{\sqrt{14}},\frac3{\sqrt{14}}\bigr)$，填 `1/sqrt(14), 2/sqrt(14), 3/sqrt(14)`。
+  solution: |
+    $\vb r'(t)=(1,2t,3t^2)$，$\vb r'(1)=(1,2,3)$，$|\vb r'(1)|=\sqrt{14}$，单位切向量是$\frac1{\sqrt{14}}(1,2,3)$。
+
+- id: p4
+  tier: medium
+  statement: |
+    质点的位置是$\vb r(t)=(t,\ t^2,\ 1)$。求$t=1$时它到原点的距离$|\vb r(t)|$的变化率。
+  answer:
+    type: number
+    value: sqrt(3)
+  hints:
+    - |
+      对$|\vb r|^2=\vb r\cdot\vb r$求导：$2|\vb r|\,\frac{\dd}{\dd t}|\vb r|=2\,\vb r\cdot\vb r'$。
+    - |
+      $t=1$时$\vb r=(1,1,1)$，$\vb r'=(1,2t,0)=(1,2,0)$，$|\vb r|=\sqrt3$。
+    - |
+      $\frac{\dd}{\dd t}|\vb r|=\frac{\vb r\cdot\vb r'}{|\vb r|}=\frac{3}{\sqrt3}=\sqrt3$。
+  solution: |
+    $\frac{\dd}{\dd t}|\vb r|=\frac{\vb r\cdot\vb r'}{|\vb r|}$。$t=1$时$\vb r\cdot\vb r'=(1,1,1)\cdot(1,2,0)=3$，$|\vb r|=\sqrt3$，变化率是$\sqrt3$。
+
+- id: p5
+  tier: hard
+  statement: |
+    曲线$\vb r(t)$（$a\le t\le b$）的导数连续。换一个参数$t=\varphi(u)$（$c\le u\le d$），$\varphi$有连续的导数且$\varphi'(u)>0$，$\varphi(c)=a$，$\varphi(d)=b$，记$\vb q(u)=\vb r\bigl(\varphi(u)\bigr)$。证明两种参数算出的弧长相等。如果$\varphi'<0$，结论还对吗？
+  hints:
+    - |
+      按新参数算的弧长是$\int_c^d|\vb q'(u)|\dd u$。由链式法则（chain rule），$\vb q'(u)=\vb r'\bigl(\varphi(u)\bigr)\varphi'(u)$。
+    - |
+      $\varphi'>0$时$|\vb q'(u)|=\bigl|\vb r'\bigl(\varphi(u)\bigr)\bigr|\varphi'(u)$，再对$\int_c^d$作换元$t=\varphi(u)$。
+    - |
+      $\int_c^d|\vb r'(\varphi(u))|\varphi'(u)\dd u=\int_a^b|\vb r'(t)|\dd t$，两者相等。$\varphi'<0$时曲线反着走一遍，$|\vb q'|=|\vb r'|\cdot(-\varphi')$，换元后上下限对调，弧长仍然相等：弧长只看走过的路，不看方向。
+  reference: |
+    $\vb q'(u)=\vb r'\bigl(\varphi(u)\bigr)\varphi'(u)$，$\varphi'>0$时$|\vb q'(u)|=|\vb r'(\varphi(u))|\,\varphi'(u)$。由换元积分法，令$t=\varphi(u)$，$\int_c^d|\vb r'(\varphi(u))|\varphi'(u)\dd u=\int_a^b|\vb r'(t)|\dd t$，两种参数算出的弧长相等。
+
+    $\varphi'<0$时$\varphi(c)=b$、$\varphi(d)=a$，曲线从$\vb r(b)$走到$\vb r(a)$，反着走一遍。$|\vb q'(u)|=|\vb r'(\varphi(u))|\,(-\varphi'(u))$，换元后$\int_c^d=-\int_b^a=\int_a^b$，弧长仍然相等。
+
+    要紧的是$\varphi$单调：每一点只走一遍。若$\varphi$先增后减，曲线被来回走了两遍，算出的就是来回的路程，比曲线本身长。
+
+- id: p6
+  tier: hard
+  statement: |
+    曲线$\vb r(t)=(e^t\cos t,\ e^t\sin t,\ e^t)$（$t\ge0$）在一个圆锥面上盘旋。从$t=0$开始量路程$s$，把曲线改写成按弧长取参数的形式$\vb r(s)$，并验证$\bigl|\dv{\vb r}s\bigr|=1$。
+  hints:
+    - |
+      先求速率：$\vb r'(t)=e^t(\cos t-\sin t,\ \sin t+\cos t,\ 1)$。
+    - |
+      $|\vb r'(t)|^2=e^{2t}\bigl[(\cos t-\sin t)^2+(\sin t+\cos t)^2+1\bigr]=3e^{2t}$，所以$s(t)=\int_0^t\sqrt3e^u\dd u=\sqrt3(e^t-1)$。
+    - |
+      反解得$e^t=1+\frac s{\sqrt3}$，$t=\ln\bigl(1+\frac s{\sqrt3}\bigr)$，$\vb r(s)=\bigl(1+\frac s{\sqrt3}\bigr)\bigl(\cos t,\ \sin t,\ 1\bigr)$。由链式法则$\dv{\vb r}s=\vb r'(t)\dv ts=\frac{\vb r'(t)}{|\vb r'(t)|}$，长度是$1$。
+  reference: |
+    $\vb r'(t)=e^t(\cos t-\sin t,\ \sin t+\cos t,\ 1)$，$|\vb r'(t)|=\sqrt3e^t$，$s(t)=\int_0^t\sqrt3e^u\dd u=\sqrt3(e^t-1)$。
+
+    反解：$e^t=1+\frac s{\sqrt3}$，$t=\ln\bigl(1+\frac s{\sqrt3}\bigr)$。于是$\vb r(s)=\bigl(1+\frac s{\sqrt3}\bigr)\Bigl(\cos\ln\bigl(1+\frac s{\sqrt3}\bigr),\ \sin\ln\bigl(1+\frac s{\sqrt3}\bigr),\ 1\Bigr)$，$s\ge0$。
+
+    验证：$\dv ts=\frac1{s'(t)}=\frac1{\sqrt3e^t}$，由链式法则$\dv{\vb r}s=\vb r'(t)\dv ts=\frac{\vb r'(t)}{|\vb r'(t)|}$，正是单位切向量，长度为$1$。这条曲线的$z$坐标等于它到$z$轴的距离，所以在圆锥面$z=\sqrt{x^2+y^2}$上。
+
+- id: p7
+  tier: thinking
+  statement: |
+    $\vb r(t)=(t^3,\ t^2,\ 0)$处处可导。它描出的曲线在原点附近是什么样子？为什么光滑曲线要求$\vb r'(t)$处处不为零？换一个参数能不能把原点处的尖角消掉？
+  hints:
+    - |
+      消去$t$：$y=x^{2/3}$。看$t=0$时的速度。
+    - |
+      $\vb r'(t)=(3t^2,2t,0)$，$t=0$时是零向量；$t<0$时曲线从左上方来，$t>0$时往右上方去。
+    - |
+      曲线在原点有一个朝下的尖角，两边的切线方向都竖直向上。参数$t$在这里「停了一下」才拐过去，所以可导的参数化也能描出尖角；要求$\vb r'\ne\vb 0$，正是排除这种停下来再拐弯的情形。尖角是曲线的形状决定的，换参数消不掉。
+  reference: |
+    消去$t$得$y=x^{2/3}$：$t<0$时$x<0$，曲线从左上方下来；$t>0$时往右上方去，在原点形成一个尖角，两边的切线都竖直。
+
+    $\vb r'(t)=(3t^2,2t,0)$在$t=0$时为零：质点到原点时停了一下，掉头后沿另一个方向出去，所以分量都可导，曲线却不光滑。光滑曲线要求$\vb r'$处处不为零，这样每一点都有确定的切线方向，单位切向量连续变化，不会突然拐弯。
+
+    尖角是这条曲线本身的形状。任何参数化在原点处，单位切向量从「竖直向下」跳到「竖直向上」，不可能连续，所以换参数也消不掉；反过来，速度为零也不一定有尖角，例如$(t^3,t^3,0)$只是在原点停了一下的直线。
+
+- id: p8
+  tier: thinking
+  statement: |
+    质点做匀速圆周运动，$\vb r(t)=R(\cos\omega t,\ \sin\omega t,\ 0)$。不展开计算，用「长度不变的向量和它的导数垂直」说明：速度和半径垂直，加速度和速度垂直；再算出加速度，说明做匀速圆周运动的物体为什么要受指向圆心的力。
+  hints:
+    - |
+      $|\vb r|=R$不变，$|\vb r'|=R\omega$也不变，两次用例 2 的结论。
+    - |
+      $\vb r\cdot\vb r'=0$：速度和半径垂直；$\vb r'\cdot\vb r''=0$：加速度和速度垂直。
+    - |
+      $\vb r''(t)=-R\omega^2(\cos\omega t,\sin\omega t,0)=-\omega^2\vb r$，指向圆心，大小$R\omega^2$。由牛顿第二定律，要有大小$mR\omega^2$、指向圆心的力。
+  reference: |
+    $|\vb r(t)|=R$是常数，由例 2，$\vb r\cdot\vb r'=0$，速度和半径垂直。速率$|\vb r'(t)|=R\omega$也是常数，对$\vb r'$用同一个结论，$\vb r'\cdot\vb r''=0$，加速度和速度垂直。
+
+    平面上和速度垂直的方向只有沿半径的两个，所以加速度沿半径。具体算：$\vb r''(t)=-R\omega^2(\cos\omega t,\sin\omega t,0)=-\omega^2\vb r$，指向圆心，大小$R\omega^2$。
+
+    由牛顿第二定律，质量为$m$的物体要有$mR\omega^2$的力指向圆心，这就是向心力：它不改变速率，只不断改变速度的方向。

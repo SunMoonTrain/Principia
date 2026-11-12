@@ -44,7 +44,7 @@ status: reviewed
 
 ![方框里是 −1.8 ≤ x, y ≤ 1.8 的范围，坐标轴画成方框的边和刻度。函数 f(x, y) = x⁴ + y⁴ − 4xy 的等值线，取值 −1.8、−1.2、−0.4（绿色）、0（棕色）、1、3、6（蓝色）。(1, 1) 和 (−1, −1) 两点附近各有一组一圈套一圈的绿色闭曲线，中心各画一个绿点，用虚线引到框外，标着「极小 f = −2」。原点画一个棕色的点，标着「鞍点」，f = 0 的等值线在原点交叉成十字形。下方两行字：绿色闭曲线围着两个极小点；棕色是 f = 0 的等值线，在原点交叉成十字形；蓝色等值线 f = 1、3、6 把两组闭曲线一起包在里面。](critical.svg)
 
-图里是例 1 的函数。极小点周围的:term[等值线]{id="math.vector-calculus.level-curve"}（level curve）是一圈套一圈的闭曲线，越往里值越小；:term[鞍点]{id="math.vector-calculus.saddle-point"}处，经过它的那条等值线交叉成十字形，把附近分成四块，两块比$f(0,0)$大、两块比它小。:term[驻点]{id="math.vector-calculus.stationary-point"}处两个:term[一阶偏导数]{id="math.vector-calculus.partial-derivative"}都是$0$，等值线才可能在那里交叉。
+图里是例 1 的函数。极小点周围的:term[等值线]{id="math.vector-calculus.level-curve"}（level curve）是一圈套一圈的:term[闭曲线]{id="math.vector-calculus.closed-curve"}（closed curve），越往里值越小；:term[鞍点]{id="math.vector-calculus.saddle-point"}处，经过它的那条等值线交叉成十字形，把附近分成四块，两块比$f(0,0)$大、两块比它小。:term[驻点]{id="math.vector-calculus.stationary-point"}处两个:term[一阶偏导数]{id="math.vector-calculus.partial-derivative"}都是$0$，等值线才可能在那里交叉。
 
 ## 例题
 

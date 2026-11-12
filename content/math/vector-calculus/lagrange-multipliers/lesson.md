@@ -29,7 +29,7 @@ status: reviewed
 ::anchor{id="thm-lagrange"}
 **:term[拉格朗日乘数法]{id="math.vector-calculus.lagrange-multipliers"}（method of Lagrange multipliers）**　设$f$、$g$有:term[连续]{id="math.vector-calculus.continuous"}（continuous）的:term[偏导数]{id="math.vector-calculus.partial-derivative"}（partial derivative），$f$在约束$g=c$下于$P$取条件极值，并且$\nabla g(P)\ne\vb0$。则有一个数$\lambda$，使$\nabla f(P)=\lambda\nabla g(P)$，$\lambda$叫作拉格朗日乘子（Lagrange multiplier）。所以候选点从方程组$f_x=\lambda g_x$、$f_y=\lambda g_y$、$g=c$里解出来：三个方程，三个未知数$x$、$y$、$\lambda$。
 
-**证明思路**：$\nabla g(P)\ne\vb0$，由:term[隐函数定理]{id="math.vector-calculus.implicit-function-theorem"}（implicit function theorem），$P$附近的约束曲线是一条光滑曲线$\vb r(t)$，$\vb r(0)=P$，速度$\vb r'(0)\ne\vb0$（见[反函数定理与隐函数定理](lesson:math.vector-calculus.inverse-implicit)第 5 题）。$f\bigl(\vb r(t)\bigr)$在$t=0$取极值，导数为零，由:term[链式法则]{id="math.vector-calculus.chain-rule"}（chain rule）得$\nabla f\cdot\vb r'(0)=0$；$g\bigl(\vb r(t)\bigr)=c$是常数，同样$\nabla g\cdot\vb r'(0)=0$。平面上和同一个非零向量$\vb r'(0)$垂直的两个向量互相平行，而$\nabla g\ne\vb0$，所以$\nabla f=\lambda\nabla g$。
+**证明思路**：$\nabla g(P)\ne\vb0$，由:term[隐函数定理]{id="math.vector-calculus.implicit-function-theorem"}（implicit function theorem），$P$附近的约束曲线是一条:term[光滑曲线]{id="math.vector-calculus.smooth-curve"}（smooth curve）$\vb r(t)$，$\vb r(0)=P$，速度$\vb r'(0)\ne\vb0$（见[反函数定理与隐函数定理](lesson:math.vector-calculus.inverse-implicit)第 5 题）。$f\bigl(\vb r(t)\bigr)$在$t=0$取极值，导数为零，由:term[链式法则]{id="math.vector-calculus.chain-rule"}（chain rule）得$\nabla f\cdot\vb r'(0)=0$；$g\bigl(\vb r(t)\bigr)=c$是常数，同样$\nabla g\cdot\vb r'(0)=0$。平面上和同一个非零向量$\vb r'(0)$垂直的两个向量互相平行，而$\nabla g\ne\vb0$，所以$\nabla f=\lambda\nabla g$。
 
 为什么是「两个:term[梯度]{id="math.vector-calculus.gradient"}（gradient）平行」：梯度和:term[等值线]{id="math.vector-calculus.level-curve"}（level curve）垂直。沿约束曲线走，$f$的值只要还能增大，约束曲线就斜着穿过$f$的等值线；走到极值点，约束曲线恰好和$f$的一条等值线相切，两者的法向一致，就是两个梯度平行。边界情况：$\nabla g(P)=\vb0$的点不满足定理的条件，可能是极值点却解不出来，要单独检查（第 7 题）。
 
@@ -38,7 +38,7 @@ status: reviewed
 ::anchor{id="thm-lagrange-several"}
 **几个约束**　:term[三元函数]{id="math.vector-calculus.multivariable-function"}（function of three variables）$f(x,y,z)$在两个约束$g_1=c_1$、$g_2=c_2$下于$P$取条件极值，$f$、$g_1$、$g_2$有:term[连续]{id="math.vector-calculus.continuous"}的:term[偏导数]{id="math.vector-calculus.partial-derivative"}，并且$\nabla g_1(P)$、$\nabla g_2(P)$不平行（都不为零）。则有两个数$\lambda_1$、$\lambda_2$，使$\nabla f(P)=\lambda_1\nabla g_1(P)+\lambda_2\nabla g_2(P)$。一般地，$n$个变量、$m$个约束时，只要这一点上没有哪个约束的:term[梯度]{id="math.vector-calculus.gradient"}是其余几个梯度的线性组合（linear combination），每个约束就配一个乘子：$\nabla f=\sum_k\lambda_k\nabla g_k$。
 
-**证明思路**：两张曲面$g_1=c_1$、$g_2=c_2$在$P$附近交成一条光滑曲线（这要用到方程组形式的:term[隐函数定理]{id="math.vector-calculus.implicit-function-theorem"}，这里不证），它的速度$\vb r'(0)$和$\nabla g_1$、$\nabla g_2$都垂直。和上面一样，$\nabla f\cdot\vb r'(0)=0$。和一个非零向量垂直的向量组成一个平面，$\nabla g_1$、$\nabla g_2$不平行，平面里的向量都能写成它们的组合，所以$\nabla f=\lambda_1\nabla g_1+\lambda_2\nabla g_2$。
+**证明思路**：两张曲面$g_1=c_1$、$g_2=c_2$在$P$附近交成一条:term[光滑曲线]{id="math.vector-calculus.smooth-curve"}（这要用到方程组形式的:term[隐函数定理]{id="math.vector-calculus.implicit-function-theorem"}，这里不证），它的速度$\vb r'(0)$和$\nabla g_1$、$\nabla g_2$都垂直。和上面一样，$\nabla f\cdot\vb r'(0)=0$。和一个非零向量垂直的向量组成一个平面，$\nabla g_1$、$\nabla g_2$不平行，平面里的向量都能写成它们的组合，所以$\nabla f=\lambda_1\nabla g_1+\lambda_2\nabla g_2$。
 
 为什么要这样推广：力学里质点同时受几个:term[约束]{id="physics.analytical-mechanics.constraint"}，每个约束配一个乘子，乘子给出相应的:term[约束力]{id="physics.analytical-mechanics.constraint-force"}（constraint force），见[拉格朗日乘子与约束力](lesson:physics.analytical-mechanics.constraint-forces)。约束本身是一个积分时，变分法里同样配一个乘子，见[等周问题](lesson:math.calculus-of-variations.isoperimetric-problems)。
 

@@ -27,7 +27,7 @@ status: reviewed
 ### 换元公式
 
 ::anchor{id="thm-change-of-variables"}
-**重积分的换元公式（change of variables formula）**　设$T$把$uv$平面的区域$E$一对一地变成$xy$平面的区域$D$，$x(u,v)$、$y(u,v)$有:term[连续]{id="math.vector-calculus.continuous"}（continuous）的:term[偏导数]{id="math.vector-calculus.partial-derivative"}，$f$在$D$上连续，则$\iint_Df(x,y)\,\dd x\dd y=\iint_Ef\bigl(x(u,v),y(u,v)\bigr)\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\dd u\dd v$。在$E$的边界上可以不一一对应、:term[雅可比行列式]{id="math.vector-calculus.jacobian-determinant"}可以为$0$。三个变量时把$\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right|$乘在$\dd u\dd v\dd w$上，公式一样。
+**:term[重积分的换元公式]{id="math.vector-calculus.change-of-variables-formula"}（change of variables formula）**　设$T$把$uv$平面的区域$E$一对一地变成$xy$平面的区域$D$，$x(u,v)$、$y(u,v)$有:term[连续]{id="math.vector-calculus.continuous"}（continuous）的:term[偏导数]{id="math.vector-calculus.partial-derivative"}，$f$在$D$上连续，则$\iint_Df(x,y)\,\dd x\dd y=\iint_Ef\bigl(x(u,v),y(u,v)\bigr)\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\dd u\dd v$。在$E$的边界上可以不一一对应、:term[雅可比行列式]{id="math.vector-calculus.jacobian-determinant"}可以为$0$。三个变量时把$\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right|$乘在$\dd u\dd v\dd w$上，公式一样。
 
 **证明思路**：把$E$分成小矩形，每一块被$T$变成$D$里近似的平行四边形，面积约$\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\Delta u\Delta v$。这些像拼成$D$，于是$\sum f\bigl(T(u_i,v_j)\bigr)\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\Delta u\Delta v$既是右边的黎曼和（Riemann sum），又近似$D$上的:term[二重积分]{id="math.vector-calculus.double-integral"}（double integral）。要说明「近似平行四边形」带来的误差在取极限时消失，严格的证明这里不给。
 
@@ -73,7 +73,7 @@ sliders:
 
 用三阶行列式算出$\frac{\partial(x,y,z)}{\partial(r,\theta,\varphi)}$，其中$x=r\sin\theta\cos\varphi$，$y=r\sin\theta\sin\varphi$，$z=r\cos\theta$。
 
-**为什么想到这么做**：[柱坐标与球坐标下的三重积分](lesson:math.vector-calculus.cylindrical-spherical)里量小盒子的三条棱得到$r^2\sin\theta$，这里用换元公式的统一算法再算一次。先写出$3\times3$的:term[雅可比矩阵]{id="math.vector-calculus.jacobian-matrix"}，再用三阶行列式的六项公式；第三行有一个$0$，只剩四项。
+**为什么想到这么做**：[柱坐标与球坐标下的三重积分](lesson:math.vector-calculus.cylindrical-spherical)里量小盒子的三条棱得到$r^2\sin\theta$，这里用:term[换元公式]{id="math.vector-calculus.change-of-variables-formula"}的统一算法再算一次。先写出$3\times3$的:term[雅可比矩阵]{id="math.vector-calculus.jacobian-matrix"}，再用三阶行列式的六项公式；第三行有一个$0$，只剩四项。
 
 **推导**：雅可比矩阵是$\begin{pmatrix}\sin\theta\cos\varphi&r\cos\theta\cos\varphi&-r\sin\theta\sin\varphi\\\sin\theta\sin\varphi&r\cos\theta\sin\varphi&r\sin\theta\cos\varphi\\\cos\theta&-r\sin\theta&0\end{pmatrix}$。六项里含$a_{33}=0$的两项为$0$，其余四项是$r^2\sin\theta\cos^2\theta\cos^2\varphi$、$r^2\sin^3\theta\sin^2\varphi$、$r^2\sin\theta\cos^2\theta\sin^2\varphi$、$r^2\sin^3\theta\cos^2\varphi$。相加得$r^2\sin\theta\cos^2\theta+r^2\sin^3\theta=r^2\sin\theta$，和那里的结果一致。
 

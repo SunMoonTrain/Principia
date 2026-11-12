@@ -1,0 +1,139 @@
+- id: p1
+  tier: easy
+  statement: |
+    求参数曲面$\vb r(u,v)=(u+v,\ u-v,\ 2u)$，$0\le u\le1$，$0\le v\le1$的面积。
+  answer:
+    type: number
+    value: 2*sqrt(3)
+  hints:
+    - |
+      面积是$\iint|\vb r_u\times\vb r_v|\,\dd u\dd v$。
+    - |
+      $\vb r_u=(1,1,2)$，$\vb r_v=(1,-1,0)$，$\vb r_u\times\vb r_v=(2,2,-2)$。
+    - |
+      $|\vb r_u\times\vb r_v|=2\sqrt3$是常数，参数区域面积是$1$，曲面面积是$2\sqrt3$。
+  solution: |
+    $\vb r_u\times\vb r_v=(1,1,2)\times(1,-1,0)=(2,2,-2)$，长度$2\sqrt3$，面积$\int_0^1\int_0^12\sqrt3\,\dd u\dd v=2\sqrt3$。
+
+- id: p2
+  tier: easy
+  statement: |
+    求圆柱面$\vb r(\varphi,z)=(2\cos\varphi,\ 2\sin\varphi,\ z)$，$0\le\varphi\le2\pi$，$0\le z\le3$的面积。
+  answer:
+    type: number
+    value: 12*pi
+  hints:
+    - |
+      求$\vb r_\varphi\times\vb r_z$的长度。
+    - |
+      $\vb r_\varphi=(-2\sin\varphi,2\cos\varphi,0)$，$\vb r_z=(0,0,1)$，叉积是$(2\cos\varphi,2\sin\varphi,0)$，长度$2$。
+    - |
+      面积$\int_0^3\int_0^{2\pi}2\,\dd\varphi\dd z=12\pi$。
+  solution: |
+    $|\vb r_\varphi\times\vb r_z|=|(2\cos\varphi,2\sin\varphi,0)|=2$，面积$\int_0^3\int_0^{2\pi}2\,\dd\varphi\dd z=12\pi$，正是周长$4\pi$乘高$3$。
+
+- id: p3
+  tier: medium
+  statement: |
+    圆锥面$\vb r(s,\varphi)=(s\cos\varphi,\ s\sin\varphi,\ s)$。求它在$s=2$、$\varphi=0$处的法向量$\vb r_s\times\vb r_\varphi$，按分量填写。
+  answer:
+    type: tuple
+    value: [-2, 0, 2]
+  hints:
+    - |
+      $\vb r_s=(\cos\varphi,\sin\varphi,1)$，$\vb r_\varphi=(-s\sin\varphi,\ s\cos\varphi,\ 0)$。
+    - |
+      在$s=2$、$\varphi=0$处，$\vb r_s=(1,0,1)$，$\vb r_\varphi=(0,2,0)$。
+    - |
+      $(1,0,1)\times(0,2,0)=(0\cdot0-1\cdot2,\ 1\cdot0-1\cdot0,\ 1\cdot2-0\cdot0)=(-2,0,2)$，填 `-2, 0, 2`。
+  solution: |
+    $\vb r_s\times\vb r_\varphi=(-s\cos\varphi,\ -s\sin\varphi,\ s)$，在$s=2$、$\varphi=0$处是$(-2,0,2)$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求圆锥面$z=\sqrt{x^2+y^2}$在$z\le2$的那一部分的面积。
+  answer:
+    type: number
+    value: 4*sqrt(2)*pi
+  hints:
+    - |
+      用参数$\vb r(s,\varphi)=(s\cos\varphi,\ s\sin\varphi,\ s)$，$0\le s\le2$，$0\le\varphi\le2\pi$。
+    - |
+      $|\vb r_s\times\vb r_\varphi|=|(-s\cos\varphi,-s\sin\varphi,s)|=\sqrt2\,s$。
+    - |
+      面积$\int_0^{2\pi}\int_0^2\sqrt2\,s\,\dd s\dd\varphi=2\pi\cdot\sqrt2\cdot2=4\sqrt2\pi$。
+  solution: |
+    $|\vb r_s\times\vb r_\varphi|=\sqrt2\,s$，面积$\int_0^{2\pi}\int_0^2\sqrt2\,s\,\dd s\dd\varphi=4\sqrt2\pi$。也可以把圆锥面剪开铺平成扇形：母线长$2\sqrt2$，弧长$4\pi$，面积$\frac12\cdot2\sqrt2\cdot4\pi$，一致。
+
+- id: p5
+  tier: hard
+  statement: |
+    $f(x,y)$在区域$D$上有连续的偏导数（partial derivative）。证明它的图像的面积是$\iint_D\sqrt{1+f_x^2+f_y^2}\,\dd x\dd y$；再证明图像的面积不小于$D$的面积，并说明什么时候相等。
+  hints:
+    - |
+      用$x$、$y$作参数：$\vb r(x,y)=\bigl(x,y,f(x,y)\bigr)$。
+    - |
+      $\vb r_x=(1,0,f_x)$，$\vb r_y=(0,1,f_y)$，$\vb r_x\times\vb r_y=(-f_x,-f_y,1)$，长度$\sqrt{1+f_x^2+f_y^2}$。
+    - |
+      被积函数$\ge1$，所以图像的面积$\ge\iint_D1\,\dd x\dd y$。相等要求$f_x=f_y=0$处处成立，也就是图像是一块水平的平面。
+  reference: |
+    $\vb r(x,y)=\bigl(x,y,f(x,y)\bigr)$，$\vb r_x=(1,0,f_x)$，$\vb r_y=(0,1,f_y)$，$\vb r_x\times\vb r_y=(0\cdot f_y-f_x\cdot1,\ f_x\cdot0-1\cdot f_y,\ 1\cdot1-0\cdot0)=(-f_x,-f_y,1)$。它从不为零，所以图像是光滑曲面，面积$\iint_D\sqrt{1+f_x^2+f_y^2}\,\dd x\dd y$。
+
+    $\sqrt{1+f_x^2+f_y^2}\ge1$，所以面积$\ge\iint_D\dd x\dd y$，即$D$的面积。被积函数连续，相等时它必须处处等于$1$，即$f_x=f_y=0$，$f$在（连通的）$D$上是常数，图像是水平的平面。
+
+    几何上，$\frac1{\sqrt{1+f_x^2+f_y^2}}$是法向量$(-f_x,-f_y,1)$和$z$轴夹角的余弦：一小块斜面投影到$xy$平面上，面积要乘这个余弦，反过来就要除以它。
+
+- id: p6
+  tier: hard
+  statement: |
+    把半径为$a$的圆绕$z$轴转一圈（圆心到$z$轴的距离是$R>a$），得到游泳圈形的环面$\vb r(\theta,\varphi)=\bigl((R+a\cos\theta)\cos\varphi,\ (R+a\cos\theta)\sin\varphi,\ a\sin\theta\bigr)$，$0\le\theta,\varphi\le2\pi$。求它的面积。
+  hints:
+    - |
+      先算$\vb r_\theta$、$\vb r_\varphi$。$\vb r_\varphi=(R+a\cos\theta)(-\sin\varphi,\cos\varphi,0)$。
+    - |
+      $\vb r_\theta=a(-\sin\theta\cos\varphi,-\sin\theta\sin\varphi,\cos\theta)$，它和$\vb r_\varphi$垂直，两个长度分别是$a$和$R+a\cos\theta$，所以$|\vb r_\theta\times\vb r_\varphi|=a(R+a\cos\theta)$。
+    - |
+      面积$\int_0^{2\pi}\int_0^{2\pi}a(R+a\cos\theta)\,\dd\theta\dd\varphi=2\pi\cdot2\pi aR=4\pi^2aR$，正是管子的周长$2\pi a$乘中心线的长度$2\pi R$。
+  reference: |
+    $\vb r_\theta=a(-\sin\theta\cos\varphi,\ -\sin\theta\sin\varphi,\ \cos\theta)$，$\vb r_\varphi=(R+a\cos\theta)(-\sin\varphi,\ \cos\varphi,\ 0)$。两者的点积是$a(R+a\cos\theta)(\sin\theta\cos\varphi\sin\varphi-\sin\theta\sin\varphi\cos\varphi)=0$，互相垂直，所以叉积的长度等于两个长度之积$a(R+a\cos\theta)$；$R>a$保证它是正的。
+
+    面积$\int_0^{2\pi}\int_0^{2\pi}a(R+a\cos\theta)\,\dd\theta\dd\varphi=2\pi\bigl(2\pi aR+a^2\cdot0\bigr)=4\pi^2aR$。
+
+    外圈（$\cos\theta>0$）的面积元比内圈大，正负两部分相互抵消后，结果和「把管子剪开拉直成长$2\pi R$、周长$2\pi a$的圆柱面」一样。
+
+- id: p7
+  tier: thinking
+  statement: |
+    半径为$a$的球面，被两个水平平面$z=z_1$、$z=z_2$（$-a\le z_1<z_2\le a$）截出一条带子。证明这条带子的面积只和两个平面的距离$h=z_2-z_1$有关，和它们在什么高度无关。地球上同样宽（按高度差算）的两条纬线带，靠近赤道的那一条为什么不比靠近两极的大？
+  hints:
+    - |
+      用例 1 的参数，$\dd a=a^2\sin\theta\,\dd\theta\dd\varphi$；$z=a\cos\theta$，带子对应$\theta$的一段区间。
+    - |
+      面积$=2\pi a^2\int\sin\theta\,\dd\theta$，而$\dd z=-a\sin\theta\,\dd\theta$，所以$a^2\sin\theta\,\dd\theta$换成$a\,\dd z$（取正号）。
+    - |
+      面积$=2\pi a\int_{z_1}^{z_2}\dd z=2\pi ah$。靠近赤道的带子窄而长（周长大），靠近两极的带子短而宽（球面在那里倾斜，同样的高度差对应更长的经线弧），两种效果正好抵消。
+  reference: |
+    带子对应$\theta_2\le\theta\le\theta_1$，其中$a\cos\theta_1=z_1$、$a\cos\theta_2=z_2$。面积$\int_0^{2\pi}\int_{\theta_2}^{\theta_1}a^2\sin\theta\,\dd\theta\dd\varphi=2\pi a^2(\cos\theta_2-\cos\theta_1)=2\pi a(z_2-z_1)=2\pi ah$，只和$h$有关。
+
+    取$h=2a$得整个球面$4\pi a^2$，和例 1 一致。它也等于半径$a$、高$h$的圆柱面的侧面积$2\pi ah$：把球面上的点沿水平方向投到外接圆柱上，面积不变。
+
+    直观上，赤道附近的带子周长大，但球面几乎竖直，同样的高度差只对应很短的一段经线；靠近两极，周长变小，球面变平，同样的高度差对应长得多的经线弧。两者的乘积处处一样，所以面积只看高度差。
+
+- id: p8
+  tier: thinking
+  statement: |
+    同一张曲面换一组参数，面积会不会变？设$(u,v)=T(s,t)$是参数区域之间的一一对应，有连续的偏导数，雅可比行列式不为零。用链式法则（chain rule）把$\vb r_s\times\vb r_t$写成$\vb r_u\times\vb r_v$乘一个因子，再说明面积不变。
+  hints:
+    - |
+      $\vb r_s=\vb r_uu_s+\vb r_vv_s$，$\vb r_t=\vb r_uu_t+\vb r_vv_t$。
+    - |
+      展开叉积，$\vb r_u\times\vb r_u=\vb r_v\times\vb r_v=\vb 0$，$\vb r_v\times\vb r_u=-\vb r_u\times\vb r_v$，得$\vb r_s\times\vb r_t=(u_sv_t-u_tv_s)(\vb r_u\times\vb r_v)$。
+    - |
+      $u_sv_t-u_tv_s$正是$T$的雅可比行列式，所以$|\vb r_s\times\vb r_t|\,\dd s\dd t=|\vb r_u\times\vb r_v|\,\Bigl|\frac{\partial(u,v)}{\partial(s,t)}\Bigr|\dd s\dd t$。由重积分的换元公式，它的积分等于$\iint|\vb r_u\times\vb r_v|\,\dd u\dd v$。
+  reference: |
+    由链式法则，$\vb r_s=\vb r_uu_s+\vb r_vv_s$，$\vb r_t=\vb r_uu_t+\vb r_vv_t$。叉积对两个因子都是线性的，$\vb r_u\times\vb r_u=\vb 0$，$\vb r_v\times\vb r_u=-\vb r_u\times\vb r_v$，所以$\vb r_s\times\vb r_t=(u_sv_t-v_su_t)\,\vb r_u\times\vb r_v=\frac{\partial(u,v)}{\partial(s,t)}\,\vb r_u\times\vb r_v$。
+
+    按$(s,t)$算的面积是$\iint|\vb r_u\times\vb r_v|\circ T\cdot\Bigl|\frac{\partial(u,v)}{\partial(s,t)}\Bigr|\dd s\dd t$。由[重积分的换元与雅可比行列式](lesson:math.vector-calculus.change-of-variables)，它等于$\iint|\vb r_u\times\vb r_v|\,\dd u\dd v$，面积不变。
+
+    雅可比行列式为负时，叉积反向：参数的取法决定法向量指向曲面的哪一侧，可面积只用叉积的长度，和这个选择无关。以后求通量（flux，见[曲面积分与通量](lesson:math.vector-calculus.surface-integrals)）时，这个方向就要紧了。

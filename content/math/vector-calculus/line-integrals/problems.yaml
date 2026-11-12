@@ -1,0 +1,137 @@
+- id: p1
+  tier: easy
+  statement: |
+    $C$是从$(0,0)$到$(3,4)$的线段。求$\int_C(x+y)\dd s$。
+  answer:
+    type: number
+    value: 35/2
+  hints:
+    - |
+      取参数$\vb r(t)=(3t,4t)$，$0\le t\le1$，$\dd s=|\vb r'(t)|\dd t$。
+    - |
+      $|\vb r'(t)|=|(3,4)|=5$，被积函数$x+y=7t$。
+    - |
+      $\int_0^17t\cdot5\dd t=\frac{35}2$。
+  solution: |
+    $\vb r(t)=(3t,4t)$，$|\vb r'|=5$，$\int_C(x+y)\dd s=\int_0^1 7t\cdot5\dd t=\frac{35}2$。
+
+- id: p2
+  tier: easy
+  statement: |
+    力$\vb F=(y^2,\ x)$。求它沿曲线$\vb r(t)=(t,t^2)$从$t=0$到$t=1$做的功。
+  answer:
+    type: number
+    value: 13/15
+  hints:
+    - |
+      功是$\int_0^1\vb F\bigl(\vb r(t)\bigr)\cdot\vb r'(t)\dd t$。
+    - |
+      $\vb F\bigl(\vb r(t)\bigr)=(t^4,t)$，$\vb r'(t)=(1,2t)$，点积（dot product）是$t^4+2t^2$。
+    - |
+      $\int_0^1(t^4+2t^2)\dd t=\frac15+\frac23=\frac{13}{15}$。
+  solution: |
+    $\vb F\bigl(\vb r(t)\bigr)\cdot\vb r'(t)=(t^4,t)\cdot(1,2t)=t^4+2t^2$，功$\int_0^1(t^4+2t^2)\dd t=\frac{13}{15}$。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\vb F=(-3y,\ x^2)$沿单位圆逆时针一圈的环量。
+  answer:
+    type: number
+    value: 3*pi
+  hints:
+    - |
+      取$\vb r(t)=(\cos t,\sin t)$，$0\le t\le2\pi$。
+    - |
+      $\vb F\cdot\vb r'=(-3\sin t,\cos^2t)\cdot(-\sin t,\cos t)=3\sin^2t+\cos^3t$。
+    - |
+      $\int_0^{2\pi}3\sin^2t\dd t=3\pi$，$\int_0^{2\pi}\cos^3t\dd t=0$，环量是$3\pi$。
+  solution: |
+    $\oint\vb F\cdot\dd\vb r=\int_0^{2\pi}(3\sin^2t+\cos^3t)\dd t=3\pi+0=3\pi$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $C$是曲线$y=x^3$上从$(0,0)$到$(1,1)$的一段。求$\int_Cy\,\dd x+x^2\,\dd y$。
+  answer:
+    type: number
+    value: 17/20
+  hints:
+    - |
+      取$x=t$作参数，$y=t^3$，$\dd x=\dd t$，$\dd y=3t^2\dd t$。
+    - |
+      被积式变成$t^3\dd t+t^2\cdot3t^2\dd t=(t^3+3t^4)\dd t$。
+    - |
+      $\int_0^1(t^3+3t^4)\dd t=\frac14+\frac35=\frac{17}{20}$。
+  solution: |
+    令$x=t$、$y=t^3$，$\int_C y\,\dd x+x^2\,\dd y=\int_0^1(t^3+3t^4)\dd t=\frac14+\frac35=\frac{17}{20}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    $C$是光滑曲线$\vb r(t)$（$a\le t\le b$），$\vb F$在$C$上连续。换参数$t=\varphi(u)$（$c\le u\le d$），$\varphi$有连续的导数。证明：$\varphi'>0$（走向不变）时$\int_C\vb F\cdot\dd\vb r$不变；$\varphi'<0$（走向反了）时变号。和对弧长的曲线积分比较。
+  hints:
+    - |
+      记$\vb q(u)=\vb r\bigl(\varphi(u)\bigr)$，由链式法则（chain rule），$\vb q'(u)=\vb r'\bigl(\varphi(u)\bigr)\varphi'(u)$。
+    - |
+      $\int_c^d\vb F(\vb q(u))\cdot\vb q'(u)\dd u=\int_c^d\vb F\bigl(\vb r(\varphi(u))\bigr)\cdot\vb r'\bigl(\varphi(u)\bigr)\varphi'(u)\dd u$，作换元$t=\varphi(u)$。
+    - |
+      $\varphi'>0$时$\varphi(c)=a$、$\varphi(d)=b$，换元后正是$\int_a^b\vb F\cdot\vb r'\dd t$；$\varphi'<0$时上下限对调，多一个负号。对弧长的积分里是$|\vb q'|=|\vb r'|\,|\varphi'|$，绝对值吃掉了符号，所以两种走向结果一样。
+  reference: |
+    $\vb q'(u)=\vb r'(\varphi(u))\varphi'(u)$，所以$\int_c^d\vb F(\vb q)\cdot\vb q'\dd u=\int_c^d\vb F\bigl(\vb r(\varphi(u))\bigr)\cdot\vb r'\bigl(\varphi(u)\bigr)\varphi'(u)\dd u$。令$t=\varphi(u)$，由换元积分法，它等于$\int_{\varphi(c)}^{\varphi(d)}\vb F(\vb r(t))\cdot\vb r'(t)\dd t$。
+
+    $\varphi'>0$时$\varphi(c)=a$、$\varphi(d)=b$，结果就是$\int_C\vb F\cdot\dd\vb r$；$\varphi'<0$时$\varphi(c)=b$、$\varphi(d)=a$，结果是$\int_b^a=-\int_a^b$，变号。
+
+    对弧长的曲线积分：$\int f(\vb q(u))|\vb q'(u)|\dd u=\int f\bigl(\vb r(\varphi(u))\bigr)|\vb r'(\varphi(u))|\,|\varphi'(u)|\dd u$。$\varphi'<0$时$|\varphi'|=-\varphi'$，负号和上下限对调抵消，结果不变：它只看长度，不看方向。
+
+- id: p6
+  tier: hard
+  statement: |
+    质量为$m$的小球在重力$\vb F=(0,0,-mg)$下，沿螺旋滑道$\vb r(t)=\bigl(R\cos t,\ R\sin t,\ h(1-\frac t{2\pi n})\bigr)$（$0\le t\le2\pi n$）从高$h$处滑到地面，绕了$n$圈。求重力做的功；再说明，沿任何一条从高$h$处到地面的光滑曲线，重力做的功都是这个数。
+  hints:
+    - |
+      $\vb F\cdot\vb r'(t)$只剩$z$分量的乘积：$-mg\cdot z'(t)$。
+    - |
+      $z'(t)=-\frac h{2\pi n}$，$\vb F\cdot\vb r'=\frac{mgh}{2\pi n}$，积分得$mgh$，和$R$、$n$都无关。
+    - |
+      任何曲线$\vb r(t)$（$a\le t\le b$）：$\int_a^b\vb F\cdot\vb r'\dd t=\int_a^b-mg\,z'(t)\dd t=-mg\bigl(z(b)-z(a)\bigr)=mgh$，只看起点和终点的高度。
+  reference: |
+    $\vb r'(t)=\bigl(-R\sin t,\ R\cos t,\ -\frac h{2\pi n}\bigr)$，$\vb F\cdot\vb r'=-mg\cdot\bigl(-\frac h{2\pi n}\bigr)=\frac{mgh}{2\pi n}$，功$\int_0^{2\pi n}\frac{mgh}{2\pi n}\dd t=mgh$。
+
+    一般地，对任何从$z=h$到$z=0$的光滑曲线，$\vb F\cdot\vb r'(t)=-mg\,z'(t)$，由牛顿-莱布尼茨公式，$\int_a^b-mg\,z'(t)\dd t=-mg\bigl(z(b)-z(a)\bigr)=mgh$。
+
+    功只由起点、终点的高度决定，和走哪条路、绕几圈都无关。原因是$\vb F=\nabla(-mgz)$是一个梯度场；以后在[保守场与路径无关](lesson:math.vector-calculus.conservative-fields)里会看到，梯度场的曲线积分都是这样。
+
+- id: p7
+  tier: thinking
+  statement: |
+    例 2 里，$(-y,x)$从$(1,0)$到$(-1,0)$沿上、下半圆的积分不同。换成$\vb F=(x,y)$，沿这两条路的积分各是多少？为什么一个场「看路」、一个场「不看路」？
+  hints:
+    - |
+      上半圆$\vb r=(\cos t,\sin t)$，下半圆$\vb r=(\cos t,-\sin t)$，$t$都从$0$到$\pi$。
+    - |
+      $(x,y)$在圆上和$\vb r'$垂直，两条路的积分都是$0$；而$(-y,x)$处处顺着逆时针方向，上半圆顺着走、下半圆逆着走。
+    - |
+      两条路合起来是一条闭曲线：「看不看路」等价于「沿这条闭曲线的环量是不是零」。$(-y,x)$绕着原点转，环量是$2\pi$；$(x,y)=\nabla\frac{x^2+y^2}2$是梯度场（gradient field），沿任何闭曲线环量都是零。
+  reference: |
+    $\vb F=(x,y)$：上半圆$\vb F\cdot\vb r'=(\cos t,\sin t)\cdot(-\sin t,\cos t)=0$，下半圆同样为零，两条路的积分都是$0$。
+
+    设两条路是$C_1$、$C_2$，都从$A$到$B$。$C_1$接上反着走的$C_2$是一条闭曲线$L$，$\oint_L=\int_{C_1}-\int_{C_2}$。所以两条路的积分相等，当且仅当沿$L$的环量为零。
+
+    $(-y,x)$沿单位圆的环量是$2\pi$，正是例 2 里两条路的差；它的旋度处处是$(0,0,2)$，场在打转。$(x,y)$是函数$\frac{x^2+y^2}2$的梯度，沿任何闭曲线环量都是零，所以「不看路」。什么样的场「不看路」，就是[保守场与路径无关](lesson:math.vector-calculus.conservative-fields)要回答的问题。
+
+- id: p8
+  tier: thinking
+  statement: |
+    带电粒子在磁场里受的力$\vb F=q\vb v\times\vb B$总是和速度$\vb v$垂直。沿粒子的轨迹，这个力做的功是多少？由此说明只有磁场时，粒子的速率（speed）不变。
+  hints:
+    - |
+      沿轨迹$\vb r(t)$，$\dd\vb r=\vb v\dd t$，功是$\int\vb F\cdot\vb v\dd t$。
+    - |
+      $\vb F\cdot\vb v=q(\vb v\times\vb B)\cdot\vb v=0$：叉积（cross product）和它的每个因子都垂直，见[叉积](lesson:math.linear-algebra.cross-product)。
+    - |
+      功处处为零。由动能定理，动能$\frac12m|\vb v|^2$不变，所以速率不变；磁场只能改变速度的方向。
+  reference: |
+    沿轨迹，$\dd\vb r=\vb r'(t)\dd t=\vb v\dd t$，功$W=\int\vb F\cdot\vb v\dd t=\int q(\vb v\times\vb B)\cdot\vb v\dd t$。$\vb v\times\vb B$和$\vb v$垂直，被积函数处处为零，$W=0$。
+
+    这正是「只有切向分量做功」：磁场力处处和运动方向垂直，没有切向分量。由动能定理，动能的改变等于合力做的功，所以只有磁场时动能$\frac12m|\vb v|^2$保持不变，速率不变；磁场只拐弯，不加速。

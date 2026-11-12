@@ -1,0 +1,139 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$f=x^2y^2+z^4$在点$(1,1,1)$处的$\lap f$。
+  answer:
+    type: number
+    value: 16
+  hints:
+    - |
+      $\lap f=f_{xx}+f_{yy}+f_{zz}$。
+    - |
+      $f_{xx}=2y^2$，$f_{yy}=2x^2$，$f_{zz}=12z^2$。
+    - |
+      在$(1,1,1)$处是$2+2+12=16$。
+  solution: |
+    $\lap f=2y^2+2x^2+12z^2$，在$(1,1,1)$处是$16$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $f=xyz$，$\vb F=(x,y,z)$。求$\divg(f\vb F)$在点$(1,1,2)$处的值。
+  answer:
+    type: number
+    value: 12
+  hints:
+    - |
+      用乘积法则$\divg(f\vb F)=f\,\divg\vb F+\nabla f\cdot\vb F$，或者直接写出$f\vb F$再求散度。
+    - |
+      $\divg\vb F=3$，$\nabla f=(yz,xz,xy)$，$\nabla f\cdot\vb F=3xyz$。
+    - |
+      $\divg(f\vb F)=3xyz+3xyz=6xyz$，在$(1,1,2)$处是$12$。
+  solution: |
+    $\divg(f\vb F)=f\,\divg\vb F+\nabla f\cdot\vb F=3xyz+(yz\cdot x+xz\cdot y+xy\cdot z)=6xyz$，在$(1,1,2)$处是$12$。
+
+- id: p3
+  tier: medium
+  statement: |
+    常数$a$取多少时，$f=x^3+axy^2$是平面上的调和函数？
+  answer:
+    type: number
+    value: -3
+  hints:
+    - |
+      调和函数满足$\lap f=f_{xx}+f_{yy}=0$。
+    - |
+      $f_{xx}=6x$，$f_{yy}=2ax$。
+    - |
+      $(6+2a)x=0$对所有$x$成立，$a=-3$。
+  solution: |
+    $\lap f=6x+2ax=(6+2a)x$，处处为零当且仅当$a=-3$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $\vb F=(z,x,y)$，$\vb G=(x,y,z)$。求$\divg(\vb F\times\vb G)$在点$(1,2,3)$处的值。
+  answer:
+    type: number
+    value: 6
+  hints:
+    - |
+      可以用乘积法则$\divg(\vb F\times\vb G)=\vb G\cdot(\curl\vb F)-\vb F\cdot(\curl\vb G)$，也可以先求叉积再求散度。
+    - |
+      $\curl\vb F=(1,1,1)$，$\curl\vb G=\vb 0$。
+    - |
+      $\divg(\vb F\times\vb G)=x+y+z$，在$(1,2,3)$处是$6$。
+  solution: |
+    $\curl\vb F=(1,1,1)$，$\curl\vb G=\vb 0$，所以$\divg(\vb F\times\vb G)=(x,y,z)\cdot(1,1,1)-0=x+y+z=6$。直接算：$\vb F\times\vb G=(xz-y^2,\ xy-z^2,\ yz-x^2)$，散度是$z+x+y$，一致。
+
+- id: p5
+  tier: hard
+  statement: |
+    $f$在点$\vb p$附近有连续的二阶偏导数。用二阶泰勒公式（Taylor's formula，见[多元泰勒公式与黑塞矩阵](lesson:math.vector-calculus.taylor-multivariable)）证明：以$\vb p$为圆心、$r$为半径的圆上$f$的平均值$\frac1{2\pi}\int_0^{2\pi}f\bigl(\vb p+r(\cos\theta,\sin\theta)\bigr)\dd\theta$等于$f(\vb p)+\frac{r^2}4\lap f(\vb p)$，误差比$r^2$小得多。
+  hints:
+    - |
+      记$h=r\cos\theta$、$k=r\sin\theta$，在$\vb p$处展开：$f\approx f+f_xh+f_yk+\frac12(f_{xx}h^2+2f_{xy}hk+f_{yy}k^2)$。
+    - |
+      对$\theta$平均：$\cos\theta$、$\sin\theta$、$\cos\theta\sin\theta$的平均值都是$0$，$\cos^2\theta$、$\sin^2\theta$的平均值都是$\frac12$。
+    - |
+      平均值是$f(\vb p)+\frac12\bigl(f_{xx}\frac{r^2}2+f_{yy}\frac{r^2}2\bigr)=f(\vb p)+\frac{r^2}4(f_{xx}+f_{yy})$。泰勒公式的余项比$h^2+k^2=r^2$小得多，平均以后仍然比$r^2$小得多。
+  reference: |
+    由二阶泰勒公式，$f(\vb p+(h,k))=f+f_xh+f_yk+\frac12(f_{xx}h^2+2f_{xy}hk+f_{yy}k^2)+o(h^2+k^2)$，各导数在$\vb p$处取值。代入$h=r\cos\theta$、$k=r\sin\theta$，对$\theta$从$0$到$2\pi$积分再除以$2\pi$。
+
+    $\int_0^{2\pi}\cos\theta\dd\theta=\int_0^{2\pi}\sin\theta\dd\theta=\int_0^{2\pi}\cos\theta\sin\theta\dd\theta=0$，$\int_0^{2\pi}\cos^2\theta\dd\theta=\int_0^{2\pi}\sin^2\theta\dd\theta=\pi$。所以一次项和交叉项平均后消失，平均值是$f(\vb p)+\frac12\bigl(f_{xx}\frac{r^2}2+f_{yy}\frac{r^2}2\bigr)=f(\vb p)+\frac{r^2}4\lap f(\vb p)$。
+
+    余项对每个$\theta$都比$r^2$小得多（而且一致地小），平均以后也是。由此，$\lap f(\vb p)=\lim_{r\to0}\frac4{r^2}\bigl(\text{圆上的平均值}-f(\vb p)\bigr)$：拉普拉斯算子比较的正是周围的平均和中心。
+
+- id: p6
+  tier: hard
+  statement: |
+    向量场$\vb F$的各分量有连续的二阶偏导数。证明$\curl(\curl\vb F)=\nabla(\divg\vb F)-\lap\vb F$；由此说明，无散场的旋度的旋度等于$-\lap\vb F$。
+  hints:
+    - |
+      两边的三个分量地位相同，只证第一个分量。$\curl\vb F=(R_y-Q_z,\ P_z-R_x,\ Q_x-P_y)$。
+    - |
+      $\curl(\curl\vb F)$的第一个分量是$\pdv{}y(Q_x-P_y)-\pdv{}z(P_z-R_x)=Q_{xy}+R_{xz}-P_{yy}-P_{zz}$。
+    - |
+      右边第一个分量是$\pdv{}x(P_x+Q_y+R_z)-(P_{xx}+P_{yy}+P_{zz})=Q_{yx}+R_{zx}-P_{yy}-P_{zz}$，由施瓦茨定理和左边相等。$\divg\vb F=0$时第一项消失，只剩$-\lap\vb F$。
+  reference: |
+    记$\vb G=\curl\vb F=(R_y-Q_z,\ P_z-R_x,\ Q_x-P_y)$。$\curl\vb G$的第一个分量是$\pdv{}y G_3-\pdv{}z G_2=(Q_x-P_y)_y-(P_z-R_x)_z=Q_{xy}-P_{yy}-P_{zz}+R_{xz}$。
+
+    右边的第一个分量是$\pdv{}x(P_x+Q_y+R_z)-(P_{xx}+P_{yy}+P_{zz})=Q_{yx}+R_{zx}-P_{yy}-P_{zz}$。由施瓦茨定理，$Q_{xy}=Q_{yx}$、$R_{xz}=R_{zx}$，两边相等；另两个分量把字母轮换一位，证法相同。
+
+    $\divg\vb F=0$时$\nabla(\divg\vb F)=\vb 0$，于是$\curl(\curl\vb F)=-\lap\vb F$。电磁学里由麦克斯韦方程组推出电磁波满足波动方程，用的就是这一条。
+
+- id: p7
+  tier: thinking
+  statement: |
+    不去硬找，先判断：(1) 有没有函数$f$使$\nabla f=(y,-x,0)$？(2) 有没有向量场$\vb G$使$\curl\vb G=(x,y,z)$？(3) 有没有向量场$\vb G$使$\curl\vb G=(y,z,x)$？能判断的说出理由；判断不了的，试着找一个。
+  hints:
+    - |
+      梯度场一定是无旋场，旋度场一定是无散场：先算旋度、散度，看必要条件满不满足。
+    - |
+      $(y,-x,0)$的旋度是$(0,0,-2)\ne\vb 0$；$(x,y,z)$的散度是$3\ne0$；$(y,z,x)$的散度是$0$，必要条件满足，但还要找出$\vb G$才能下结论。
+    - |
+      (1)、(2) 都没有。(3) 试$\vb G=(0,\ Q,\ R)$：要$Q_x-0=x$、$0-R_x=z$、$R_y-Q_z=y$，可以取$Q=\frac{x^2}2$、$R=\frac{y^2}2-xz$。
+  reference: |
+    (1) 没有：梯度场是无旋场，而$(y,-x,0)$的旋度是$(0,0,-1-1)=(0,0,-2)\ne\vb 0$。(2) 没有：旋度场是无散场，而$\divg(x,y,z)=3\ne0$。
+
+    (3) $\divg(y,z,x)=0$，必要条件满足，可这只是必要条件，要找出来才算数。试$\vb G=(0,Q,R)$：$\curl\vb G=(R_y-Q_z,\ -R_x,\ Q_x)$，要它等于$(y,z,x)$，就要$Q_x=x$、$R_x=-z$、$R_y-Q_z=y$。取$Q=\frac{x^2}2$、$R=\frac{y^2}2-xz$，验算$R_y-Q_z=y$，成立，所以$\vb G=\bigl(0,\frac{x^2}2,\frac{y^2}2-xz\bigr)$满足要求。
+
+    恒等式给出的是「不可能」的判据，判断「可能」要么构造出来，要么用以后讲的定理（在合适的区域上，无旋场是梯度场，无散场是旋度场）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    只依赖到原点距离$r$的函数$f(r)$，在原点以外什么时候是调和函数？分别在平面上和空间里回答，并说说$\frac1r$和平方反比的引力有什么关系。
+  hints:
+    - |
+      由链式法则（chain rule），$\pdv{}xf(r)=f'(r)\frac xr$；再对$x$求一次导，三个（或两个）方向加起来。
+    - |
+      空间里$\lap f=f''+\frac2rf'$，平面上$\lap f=f''+\frac1rf'$。
+    - |
+      空间里$f''+\frac2rf'=0$，即$(r^2f')'=0$，解是$f=a+\frac br$；平面上$(rf')'=0$，解是$f=a+b\ln r$。$\nabla\frac1r=-\frac{\vb r}{r^3}$正是平方反比的场，它在原点以外无散，所以$\frac1r$在那里调和。
+  reference: |
+    $\pdv{}x f(r)=f'\frac xr$，$\pdv{^2}{x^2}f(r)=f''\frac{x^2}{r^2}+f'\bigl(\frac1r-\frac{x^2}{r^3}\bigr)$。空间里三个方向相加，$\lap f=f''+f'\bigl(\frac3r-\frac1r\bigr)=f''+\frac2rf'$；平面上两个方向相加，$\lap f=f''+\frac1rf'$。
+
+    空间里$\lap f=\frac1{r^2}(r^2f')'$，为零即$r^2f'$是常数$-b$，$f=a+\frac br$。平面上$\lap f=\frac1r(rf')'$，为零即$rf'$是常数$b$，$f=a+b\ln r$。
+
+    $\nabla\frac1r=-\frac{\vb r}{r^3}$，大小$\frac1{r^2}$，方向指向原点：质点引力场的形状。$\lap\frac1r=\divg\bigl(\nabla\frac1r\bigr)=0$，正是说这个场在原点以外无散；原点处$\frac1r$没有定义，那里是「源」。

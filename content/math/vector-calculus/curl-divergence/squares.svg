@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 244" width="640" height="244" font-size="13">
+  <!-- 三幅小图，中心 (110, 112)、(320, 112)、(530, 112)，每单位 38 像素，范围 ±2.2；方块用线性场的精确流动算出 -->
+  <line x1="22.6" y1="112" x2="197.4" y2="112" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="110" y1="199.4" x2="110" y2="24.6" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="34" y1="188" x2="20.24" y2="201.76" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 16 206 L 18.12 199.64 L 22.36 203.88 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="34" y1="150" x2="21.37" y2="156.32" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 16 159 L 20.02 153.63 L 22.71 159 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="34" y1="112" x2="22" y2="112" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 16 112 L 22 109 L 22 115 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="34" y1="74" x2="21.37" y2="67.68" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 16 65 L 22.71 65 L 20.02 70.37 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="34" y1="36" x2="20.24" y2="22.24" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 16 18 L 22.36 20.12 L 18.12 24.36 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="72" y1="188" x2="65.68" y2="200.63" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 63 206 L 63 199.29 L 68.37 201.98 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="72" y1="150" x2="67.24" y2="154.76" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 63 159 L 65.12 152.64 L 69.36 156.88 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="72" y1="112" x2="69" y2="112" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 63 112 L 69 109 L 69 115 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="72" y1="74" x2="67.24" y2="69.24" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 63 65 L 69.36 67.12 L 65.12 71.36 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="72" y1="36" x2="65.68" y2="23.37" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 63 18 L 68.37 22.02 L 63 24.71 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="110" y1="188" x2="110" y2="200" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 110 206 L 107 200 L 113 200 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="110" y1="150" x2="110" y2="153" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 110 159 L 107 153 L 113 153 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="110" y1="74" x2="110" y2="71" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 110 65 L 113 71 L 107 71 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="110" y1="36" x2="110" y2="24" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 110 18 L 113 24 L 107 24 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="148" y1="188" x2="154.32" y2="200.63" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 157 206 L 151.63 201.98 L 157 199.29 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="148" y1="150" x2="152.76" y2="154.76" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 157 159 L 150.64 156.88 L 154.88 152.64 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="148" y1="112" x2="151" y2="112" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 157 112 L 151 115 L 151 109 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="148" y1="74" x2="152.76" y2="69.24" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 157 65 L 154.88 71.36 L 150.64 67.12 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="148" y1="36" x2="154.32" y2="23.37" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 157 18 L 157 24.71 L 151.63 22.02 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="186" y1="188" x2="199.76" y2="201.76" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 204 206 L 197.64 203.88 L 201.88 199.64 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="186" y1="150" x2="198.63" y2="156.32" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 204 159 L 197.29 159 L 199.98 153.63 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="186" y1="112" x2="198" y2="112" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 204 112 L 198 115 L 198 109 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="186" y1="74" x2="198.63" y2="67.68" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 204 65 L 199.98 70.37 L 197.29 65 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="186" y1="36" x2="199.76" y2="22.24" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 204 18 L 201.88 24.36 L 197.64 20.12 Z" style="fill: var(--muted, #6b7280)" />
+  <path d="M 129 100.6 L 151.8 100.6 L 151.8 77.8 L 129 77.8 Z" style="stroke: var(--accent, #2563eb); fill: var(--accent, #2563eb)" fill-opacity="0.16" stroke-width="1.6" />
+  <path d="M 138.34 94.99 L 172.36 94.99 L 172.36 60.98 L 138.34 60.98 Z" style="stroke: var(--warn, #a8661a)" fill="none" stroke-width="1.8" stroke-dasharray="5 3" />
+  <text x="110" y="223.4" text-anchor="middle" fill="currentColor">往外冒：散度 2，旋度 0</text>
+  <line x1="232.6" y1="112" x2="407.4" y2="112" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="320" y1="199.4" x2="320" y2="24.6" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="244" y1="188" x2="257.76" y2="201.76" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 262 206 L 255.64 203.88 L 259.88 199.64 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="244" y1="150" x2="250.32" y2="162.63" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 253 168 L 247.63 163.98 L 253 161.29 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="244" y1="112" x2="244" y2="124" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 244 130 L 241 124 L 247 124 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="244" y1="74" x2="237.68" y2="86.63" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 235 92 L 235 85.29 L 240.37 87.98 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="244" y1="36" x2="230.24" y2="49.76" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 226 54 L 228.12 47.64 L 232.36 51.88 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="282" y1="188" x2="294.63" y2="194.32" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 300 197 L 293.29 197 L 295.98 191.63 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="282" y1="150" x2="286.76" y2="154.76" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 291 159 L 284.64 156.88 L 288.88 152.64 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="282" y1="112" x2="282" y2="115" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 282 121 L 279 115 L 285 115 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="282" y1="74" x2="277.24" y2="78.76" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 273 83 L 275.12 76.64 L 279.36 80.88 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="282" y1="36" x2="269.37" y2="42.32" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 264 45 L 268.02 39.63 L 270.71 45 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="320" y1="188" x2="332" y2="188" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 338 188 L 332 191 L 332 185 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="320" y1="150" x2="323" y2="150" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 329 150 L 323 153 L 323 147 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="320" y1="74" x2="317" y2="74" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 311 74 L 317 71 L 317 77 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="320" y1="36" x2="308" y2="36" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 302 36 L 308 33 L 308 39 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="358" y1="188" x2="370.63" y2="181.68" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 376 179 L 371.98 184.37 L 369.29 179 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="358" y1="150" x2="362.76" y2="145.24" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 367 141 L 364.88 147.36 L 360.64 143.12 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="358" y1="112" x2="358" y2="109" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 358 103 L 361 109 L 355 109 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="358" y1="74" x2="353.24" y2="69.24" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 349 65 L 355.36 67.12 L 351.12 71.36 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="358" y1="36" x2="345.37" y2="29.68" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 340 27 L 346.71 27 L 344.02 32.37 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="396" y1="188" x2="409.76" y2="174.24" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 414 170 L 411.88 176.36 L 407.64 172.12 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="396" y1="150" x2="402.32" y2="137.37" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 405 132 L 405 138.71 L 399.63 136.02 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="396" y1="112" x2="396" y2="100" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 396 94 L 399 100 L 393 100 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="396" y1="74" x2="389.68" y2="61.37" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 387 56 L 392.37 60.02 L 387 62.71 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="396" y1="36" x2="382.24" y2="22.24" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 378 18 L 384.36 20.12 L 380.12 24.36 Z" style="fill: var(--muted, #6b7280)" />
+  <path d="M 350.4 104.4 L 373.2 104.4 L 373.2 81.6 L 350.4 81.6 Z" style="stroke: var(--accent, #2563eb); fill: var(--accent, #2563eb)" fill-opacity="0.16" stroke-width="1.6" />
+  <path d="M 338.36 86.6 L 355.79 71.91 L 341.11 54.48 L 323.67 69.16 Z" style="stroke: var(--warn, #a8661a)" fill="none" stroke-width="1.8" stroke-dasharray="5 3" />
+  <text x="320" y="223.4" text-anchor="middle" fill="currentColor">转动：散度 0，旋度 2</text>
+  <line x1="442.6" y1="112" x2="617.4" y2="112" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="530" y1="199.4" x2="530" y2="24.6" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="454" y1="188" x2="436" y2="188" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 430 188 L 436 185 L 436 191 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="454" y1="150" x2="448" y2="150" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 442 150 L 448 147 L 448 153 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="454" y1="74" x2="460" y2="74" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 466 74 L 460 77 L 460 71 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="454" y1="36" x2="472" y2="36" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 478 36 L 472 39 L 472 33 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="492" y1="188" x2="474" y2="188" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 468 188 L 474 185 L 474 191 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="492" y1="150" x2="486" y2="150" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 480 150 L 486 147 L 486 153 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="492" y1="74" x2="498" y2="74" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 504 74 L 498 77 L 498 71 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="492" y1="36" x2="510" y2="36" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 516 36 L 510 39 L 510 33 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="530" y1="188" x2="512" y2="188" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 506 188 L 512 185 L 512 191 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="530" y1="150" x2="524" y2="150" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 518 150 L 524 147 L 524 153 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="530" y1="74" x2="536" y2="74" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 542 74 L 536 77 L 536 71 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="530" y1="36" x2="548" y2="36" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 554 36 L 548 39 L 548 33 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="568" y1="188" x2="550" y2="188" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 544 188 L 550 185 L 550 191 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="568" y1="150" x2="562" y2="150" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 556 150 L 562 147 L 562 153 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="568" y1="74" x2="574" y2="74" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 580 74 L 574 77 L 574 71 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="568" y1="36" x2="586" y2="36" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 592 36 L 586 39 L 586 33 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="606" y1="188" x2="588" y2="188" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 582 188 L 588 185 L 588 191 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="606" y1="150" x2="600" y2="150" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 594 150 L 600 147 L 600 153 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="606" y1="74" x2="612" y2="74" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 618 74 L 612 77 L 612 71 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="606" y1="36" x2="624" y2="36" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 630 36 L 624 39 L 624 33 Z" style="fill: var(--muted, #6b7280)" />
+  <path d="M 492 96.8 L 514.8 96.8 L 514.8 74 L 492 74 Z" style="stroke: var(--accent, #2563eb); fill: var(--accent, #2563eb)" fill-opacity="0.16" stroke-width="1.6" />
+  <path d="M 507.2 96.8 L 530 96.8 L 552.8 74 L 530 74 Z" style="stroke: var(--warn, #a8661a)" fill="none" stroke-width="1.8" stroke-dasharray="5 3" />
+  <text x="530" y="223.4" text-anchor="middle" fill="currentColor">剪切：散度 0，旋度 −1</text>
+</svg>

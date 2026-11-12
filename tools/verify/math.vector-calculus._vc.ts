@@ -1,5 +1,6 @@
 // 多变量微积分验算脚本共用的小工具：数值偏导数、梯度、黑塞矩阵、雅可比矩阵，一元求根、求最值，
-// 双指数求积和嵌套的二重积分，牛顿法解方程组，龙格-库塔解 x' = F(x)。
+// 双指数求积和嵌套的二重积分，牛顿法解方程组，龙格-库塔解 x' = F(x)，
+// 折线、三角剖分上的直接求和（配理查森外推），小圆环量、小立方体通量、小球面平均，参数曲面的通量积分。
 // 都只做数值计算，不含任何一道题的答案。
 
 export type Vec = number[];
@@ -168,4 +169,123 @@ export function rk4(F: (x: Vec) => Vec, x0: Vec, dt: number, steps: number): Vec
     x = x.map((xi, i) => xi + (dt / 6) * (k1[i] + 2 * k2[i] + 2 * k3[i] + k4[i]));
   }
   return x;
+}
+
+export const dot = (a: Vec, b: Vec): number => a.reduce((s, ai, i) => s + ai * b[i], 0);
+export const cross = (a: Vec, b: Vec): Vec => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+export const norm = (a: Vec): number => Math.sqrt(dot(a, a));
+const sub = (a: Vec, b: Vec): Vec => a.map((ai, i) => ai - b[i]);
+
+/** 理查森外推：g(n) 的误差按 1/n² 走时，用 n 和 2n 两次的结果消掉主项。 */
+export const richardson = (g: (n: number) => number, n: number): number => (4 * g(2 * n) - g(n)) / 3;
+
+/** 折线上的和：曲线 r 在 [t0, t1] 上分成 n 段，每段取中点，累加 h(中点, 这一段的位移向量)。 */
+export function polylineSum(r: (t: number) => Vec, t0: number, t1: number, n: number, h: (p: Vec, d: Vec) => number): number {
+  let s = 0;
+  for (let k = 0; k < n; k++) {
+    const a = r(t0 + ((t1 - t0) * k) / n);
+    const b = r(t0 + ((t1 - t0) * (k + 1)) / n);
+    s += h(r(t0 + ((t1 - t0) * (k + 0.5)) / n), sub(b, a));
+  }
+  return s;
+}
+
+/**
+ * 三角剖分上的和：参数曲面 r 在 [u0,u1]×[v0,v1] 上分成 n×n 格，每格切成两个三角形，
+ * 累加 h(三角形重心, 三角形的有向面积向量 ½(b−a)×(c−a))。
+ */
+export function triangleSum(r: (u: number, v: number) => Vec, u0: number, u1: number, v0: number, v1: number, n: number, h: (p: Vec, area: Vec) => number): number {
+  const P = (i: number, j: number): Vec => r(u0 + ((u1 - u0) * i) / n, v0 + ((v1 - v0) * j) / n);
+  let s = 0;
+  for (let i = 0; i < n; i++)
+    for (let j = 0; j < n; j++) {
+      const a = P(i, j);
+      const b = P(i + 1, j);
+      const c = P(i + 1, j + 1);
+      const d = P(i, j + 1);
+      for (const [x, y, z] of [[a, b, c], [a, c, d]]) {
+        const centroid = x.map((xi, k) => (xi + y[k] + z[k]) / 3);
+        s += h(centroid, cross(sub(y, x), sub(z, x)).map((v) => v / 2));
+      }
+    }
+  return s;
+}
+
+/** 参数曲面上的通量 ∬ F(r)·(r_u × r_v) du dv：偏导数用中心差分，积分用嵌套的双指数求积。 */
+export function surfaceFlux(F: (p: Vec) => Vec, r: (u: number, v: number) => Vec, u0: number, u1: number, v0: number, v1: number): number {
+  return integrate2(
+    (u, v) => {
+      const h = 1e-6;
+      const ru = sub(r(u + h, v), r(u - h, v)).map((x) => x / (2 * h));
+      const rv = sub(r(u, v + h), r(u, v - h)).map((x) => x / (2 * h));
+      return dot(F(r(u, v)), cross(ru, rv));
+    },
+    u0,
+    u1,
+    () => v0,
+    () => v1,
+  );
+}
+
+/**
+ * 沿以 p 为圆心、半径 eps、垂直于单位向量 n 的小圆（绕 n 逆时针）的环量除以面积：趋于旋度在 n 上的分量。
+ * 圆用内接 m 边形代替，除以的是这个多边形的面积，场是一次式时正好相等。
+ */
+export function circulationDensity(F: (p: Vec) => Vec, p: Vec, n: Vec, eps = 1e-3, m = 720): number {
+  const e1 = norm(cross(n, [1, 0, 0])) > 0.5 ? cross(n, [1, 0, 0]) : cross(n, [0, 1, 0]);
+  const a = e1.map((x) => x / norm(e1));
+  const b = cross(n, a);
+  const at = (k: number): Vec => p.map((pi, i) => pi + eps * (Math.cos((2 * Math.PI * k) / m) * a[i] + Math.sin((2 * Math.PI * k) / m) * b[i]));
+  let s = 0;
+  for (let k = 0; k < m; k++) {
+    const u = at(k);
+    const w = at(k + 1);
+    s += dot(F(u.map((ui, i) => (ui + w[i]) / 2)), sub(w, u));
+  }
+  return s / ((m / 2) * eps * eps * Math.sin((2 * Math.PI) / m));
+}
+
+/** 穿过以 p 为中心、边长 2·eps 的小立方体表面往外的通量除以体积：趋于散度。每个面上用 g×g 个格点的中点和。 */
+export function fluxDensity(F: (p: Vec) => Vec, p: Vec, eps = 1e-3, g = 20): number {
+  let s = 0;
+  for (let axis = 0; axis < 3; axis++)
+    for (const side of [-1, 1]) {
+      const [i1, i2] = [0, 1, 2].filter((k) => k !== axis);
+      for (let a = 0; a < g; a++)
+        for (let b = 0; b < g; b++) {
+          const q = [...p];
+          q[axis] += side * eps;
+          q[i1] += eps * (-1 + (2 * (a + 0.5)) / g);
+          q[i2] += eps * (-1 + (2 * (b + 0.5)) / g);
+          s += side * F(q)[axis] * ((2 * eps) / g) ** 2;
+        }
+    }
+  return s / (2 * eps) ** 3;
+}
+
+/** 以 p 为中心、半径 eps 的球面上 f 的平均值（θ 方向高斯点，φ 方向等分）。f 光滑时 6(平均 − f(p))/eps² 趋于拉普拉斯算子。 */
+export function sphereMean(f: (p: Vec) => number, p: Vec, eps: number, m = 24): number {
+  // [-1,1] 上 m 个高斯-勒让德点：牛顿法求勒让德多项式的根
+  let s = 0;
+  for (let i = 1; i <= m; i++) {
+    let x = Math.cos((Math.PI * (i - 0.25)) / (m + 0.5));
+    let dp = 0;
+    for (let it = 0; it < 100; it++) {
+      let p0 = 1;
+      let p1 = x;
+      for (let k = 2; k <= m; k++) [p0, p1] = [p1, ((2 * k - 1) * x * p1 - (k - 1) * p0) / k];
+      dp = (m * (x * p1 - p0)) / (x * x - 1);
+      const dx = p1 / dp;
+      x -= dx;
+      if (Math.abs(dx) < 1e-16) break;
+    }
+    const w = 2 / ((1 - x * x) * dp * dp);
+    const ring = 2 * m;
+    for (let k = 0; k < ring; k++) {
+      const phi = (2 * Math.PI * k) / ring;
+      const st = Math.sqrt(1 - x * x);
+      s += (w / ring) * f([p[0] + eps * st * Math.cos(phi), p[1] + eps * st * Math.sin(phi), p[2] + eps * x]);
+    }
+  }
+  return s / 2;
 }

@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 272" width="640" height="272" font-size="13">
+  <!-- 两幅图，中心 (165, 112)、(475, 112)，每单位 40 像素，范围 ±2.2 -->
+  <line x1="73" y1="112" x2="257" y2="112" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="165" y1="204" x2="165" y2="20" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="85" y1="192" x2="73.24" y2="203.76" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 69 208 L 71.12 201.64 L 75.36 205.88 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="85" y1="152" x2="79.68" y2="162.63" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 77 168 L 77 161.29 L 82.37 163.98 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="85" y1="112" x2="85" y2="122" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 85 128 L 82 122 L 88 122 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="85" y1="72" x2="90.32" y2="82.63" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 93 88 L 87.63 83.98 L 93 81.29 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="85" y1="32" x2="96.76" y2="43.76" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 101 48 L 94.64 45.88 L 98.88 41.64 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="125" y1="192" x2="114.37" y2="197.32" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 109 200 L 113.02 194.63 L 115.71 200 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="125" y1="152" x2="121.24" y2="155.76" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 117 160 L 119.12 153.64 L 123.36 157.88 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="125" y1="112" x2="125" y2="114" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 125 120 L 122 114 L 128 114 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="125" y1="72" x2="128.76" y2="75.76" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 133 80 L 126.64 77.88 L 130.88 73.64 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="125" y1="32" x2="135.63" y2="37.32" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 141 40 L 134.29 40 L 136.98 34.63 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="165" y1="192" x2="155" y2="192" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 149 192 L 155 189 L 155 195 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="165" y1="152" x2="163" y2="152" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 157 152 L 163 149 L 163 155 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="165" y1="72" x2="167" y2="72" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 173 72 L 167 75 L 167 69 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="165" y1="32" x2="175" y2="32" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 181 32 L 175 35 L 175 29 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="205" y1="192" x2="194.37" y2="186.68" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 189 184 L 195.71 184 L 193.02 189.37 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="205" y1="152" x2="201.24" y2="148.24" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 197 144 L 203.36 146.12 L 199.12 150.36 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="205" y1="112" x2="205" y2="110" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 205 104 L 208 110 L 202 110 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="205" y1="72" x2="208.76" y2="68.24" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 213 64 L 210.88 70.36 L 206.64 66.12 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="205" y1="32" x2="215.63" y2="26.68" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 221 24 L 216.98 29.37 L 214.29 24 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="245" y1="192" x2="233.24" y2="180.24" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 229 176 L 235.36 178.12 L 231.12 182.36 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="245" y1="152" x2="239.68" y2="141.37" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 237 136 L 242.37 140.02 L 237 142.71 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="245" y1="112" x2="245" y2="102" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 245 96 L 248 102 L 242 102 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="245" y1="72" x2="250.32" y2="61.37" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 253 56 L 253 62.71 L 247.63 60.02 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="245" y1="32" x2="256.76" y2="20.24" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 261 16 L 258.88 22.36 L 254.64 18.12 Z" style="fill: var(--muted, #6b7280)" />
+  <path d="M 109 144 L 111.6 141.8 L 114.2 139.6 L 116.8 137.4 L 119.4 135.2 L 122 133 L 124.6 130.8 L 127.2 128.6 L 129.8 126.4 L 132.4 124.2 L 135 122 L 137.6 119.8 L 140.2 117.6 L 142.8 115.4 L 145.4 113.2 L 148 111 L 150.6 108.8 L 153.2 106.6 L 155.8 104.4 L 158.4 102.2 L 161 100 L 163.6 97.8 L 166.2 95.6 L 168.8 93.4 L 171.4 91.2 L 174 89 L 176.6 86.8 L 179.2 84.6 L 181.8 82.4 L 184.4 80.2 L 187 78 L 189.6 75.8 L 192.2 73.6 L 194.8 71.4 L 197.4 69.2 L 200 67 L 202.6 64.8 L 205.2 62.6 L 207.8 60.4 L 210.4 58.2 L 213 56" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <path d="M 109 144 L 112.83 144.63 L 116.65 145.25 L 120.46 145.86 L 124.25 146.45 L 128.02 147.02 L 131.76 147.56 L 135.47 148.07 L 139.14 148.54 L 142.76 148.96 L 146.33 149.33 L 149.85 149.65 L 153.31 149.91 L 156.71 150.11 L 160.03 150.23 L 163.28 150.28 L 166.46 150.26 L 169.55 150.15 L 172.56 149.96 L 175.48 149.68 L 178.31 149.31 L 181.04 148.84 L 183.68 148.28 L 186.21 147.61 L 188.64 146.84 L 190.97 145.97 L 193.19 144.99 L 195.31 143.91 L 197.31 142.71 L 199.21 141.41 L 201 140 L 202.68 138.48 L 204.25 136.85 L 205.71 135.11 L 207.06 133.26 L 208.3 131.3 L 209.44 129.24 L 210.48 127.08 L 211.41 124.81 L 212.24 122.44 L 212.97 119.97 L 213.61 117.41 L 214.16 114.76 L 214.62 112.02 L 214.99 109.19 L 215.28 106.28 L 215.5 103.3 L 215.64 100.24 L 215.71 97.11 L 215.72 93.92 L 215.67 90.67 L 215.56 87.36 L 215.4 84 L 215.2 80.6 L 214.96 77.16 L 214.69 73.69 L 214.38 70.18 L 214.06 66.66 L 213.71 63.11 L 213.36 59.56 L 213 56" fill="none" style="stroke: var(--good, #0f8a5f)" stroke-width="2" />
+  <circle cx="109" cy="144" r="3.2" fill="currentColor" />
+  <circle cx="213" cy="56" r="3.2" fill="currentColor" />
+  <text x="99" y="148" text-anchor="end" font-size="14" fill="currentColor"><tspan font-style="italic">A</tspan></text>
+  <text x="205" y="50" text-anchor="end" font-size="14" fill="currentColor"><tspan font-style="italic">B</tspan></text>
+  <text x="165" y="226" text-anchor="middle" fill="currentColor">两条路做的功一样：</text>
+  <text x="165" y="244" text-anchor="middle" fill="currentColor"><tspan font-style="italic">f</tspan>(<tspan font-style="italic">B</tspan>) − <tspan font-style="italic">f</tspan>(<tspan font-style="italic">A</tspan>)</text>
+  <line x1="383" y1="112" x2="567" y2="112" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="475" y1="204" x2="475" y2="20" style="stroke: var(--muted, #6b7280)" stroke-width="0.8" />
+  <line x1="395" y1="192" x2="396.26" y2="193.26" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 400.5 197.5 L 394.14 195.38 L 398.38 191.14 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="395" y1="152" x2="396.72" y2="155.43" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 399.4 160.8 L 394.03 156.78 L 399.4 154.09 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="395" y1="112" x2="395" y2="117" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 395 123 L 392 117 L 398 117 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="395" y1="72" x2="393.28" y2="75.43" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 390.6 80.8 L 390.6 74.09 L 395.97 76.78 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="395" y1="32" x2="393.74" y2="33.26" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 389.5 37.5 L 391.62 31.14 L 395.86 35.38 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="435" y1="192" x2="438.43" y2="193.72" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 443.8 196.4 L 437.09 196.4 L 439.78 191.03 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="435" y1="152" x2="441.76" y2="158.76" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 446 163 L 439.64 160.88 L 443.88 156.64 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="435" y1="112" x2="435" y2="128" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 435 134 L 432 128 L 438 128 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="435" y1="72" x2="428.24" y2="78.76" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 424 83 L 426.12 76.64 L 430.36 80.88 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="435" y1="32" x2="431.57" y2="33.72" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 426.2 36.4 L 430.22 31.03 L 432.91 36.4 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="475" y1="192" x2="480" y2="192" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 486 192 L 480 195 L 480 189 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="475" y1="152" x2="491" y2="152" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 497 152 L 491 155 L 491 149 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="475" y1="72" x2="459" y2="72" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 453 72 L 459 69 L 459 75 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="475" y1="32" x2="470" y2="32" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 464 32 L 470 29 L 470 35 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="515" y1="192" x2="518.43" y2="190.28" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 523.8 187.6 L 519.78 192.97 L 517.09 187.6 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="515" y1="152" x2="521.76" y2="145.24" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 526 141 L 523.88 147.36 L 519.64 143.12 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="515" y1="112" x2="515" y2="96" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 515 90 L 518 96 L 512 96 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="515" y1="72" x2="508.24" y2="65.24" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 504 61 L 510.36 63.12 L 506.12 67.36 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="515" y1="32" x2="511.57" y2="30.28" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 506.2 27.6 L 512.91 27.6 L 510.22 32.97 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="555" y1="192" x2="556.26" y2="190.74" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 560.5 186.5 L 558.38 192.86 L 554.14 188.62 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="555" y1="152" x2="556.72" y2="148.57" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 559.4 143.2 L 559.4 149.91 L 554.03 147.22 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="555" y1="112" x2="555" y2="107" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 555 101 L 558 107 L 552 107 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="555" y1="72" x2="553.28" y2="68.57" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 550.6 63.2 L 555.97 67.22 L 550.6 69.91 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="555" y1="32" x2="553.74" y2="30.74" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 549.5 26.5 L 555.86 28.62 L 551.62 32.86 Z" style="fill: var(--muted, #6b7280)" />
+  <circle cx="475" cy="112" r="4" style="fill: var(--bg, #ffffff); stroke: currentColor" stroke-width="1.4" />
+  <path d="M 525 112 L 524.93 109.38 L 524.73 106.77 L 524.38 104.18 L 523.91 101.6 L 523.3 99.06 L 522.55 96.55 L 521.68 94.08 L 520.68 91.66 L 519.55 89.3 L 518.3 87 L 516.93 84.77 L 515.45 82.61 L 513.86 80.53 L 512.16 78.54 L 510.36 76.64 L 508.46 74.84 L 506.47 73.14 L 504.39 71.55 L 502.23 70.07 L 500 68.7 L 497.7 67.45 L 495.34 66.32 L 492.92 65.32 L 490.45 64.45 L 487.94 63.7 L 485.4 63.09 L 482.82 62.62 L 480.23 62.27 L 477.62 62.07 L 475 62 L 472.38 62.07 L 469.77 62.27 L 467.18 62.62 L 464.6 63.09 L 462.06 63.7 L 459.55 64.45 L 457.08 65.32 L 454.66 66.32 L 452.3 67.45 L 450 68.7 L 447.77 70.07 L 445.61 71.55 L 443.53 73.14 L 441.54 74.84 L 439.64 76.64 L 437.84 78.54 L 436.14 80.53 L 434.55 82.61 L 433.07 84.77 L 431.7 87 L 430.45 89.3 L 429.32 91.66 L 428.32 94.08 L 427.45 96.55 L 426.7 99.06 L 426.09 101.6 L 425.62 104.18 L 425.27 106.77 L 425.07 109.38 L 425 112 L 425.07 114.62 L 425.27 117.23 L 425.62 119.82 L 426.09 122.4 L 426.7 124.94 L 427.45 127.45 L 428.32 129.92 L 429.32 132.34 L 430.45 134.7 L 431.7 137 L 433.07 139.23 L 434.55 141.39 L 436.14 143.47 L 437.84 145.46 L 439.64 147.36 L 441.54 149.16 L 443.53 150.86 L 445.61 152.45 L 447.77 153.93 L 450 155.3 L 452.3 156.55 L 454.66 157.68 L 457.08 158.68 L 459.55 159.55 L 462.06 160.3 L 464.6 160.91 L 467.18 161.38 L 469.77 161.73 L 472.38 161.93 L 475 162 L 477.62 161.93 L 480.23 161.73 L 482.82 161.38 L 485.4 160.91 L 487.94 160.3 L 490.45 159.55 L 492.92 158.68 L 495.34 157.68 L 497.7 156.55 L 500 155.3 L 502.23 153.93 L 504.39 152.45 L 506.47 150.86 L 508.46 149.16 L 510.36 147.36 L 512.16 145.46 L 513.86 143.47 L 515.45 141.39 L 516.93 139.23 L 518.3 137 L 519.55 134.7 L 520.68 132.34 L 521.68 129.92 L 522.55 127.45 L 523.3 124.94 L 523.91 122.4 L 524.38 119.82 L 524.73 117.23 L 524.93 114.62 L 525 112" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <line x1="510.36" y1="76.64" x2="507.62" y2="74.52" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <path d="M 500.51 69 L 510.38 70.96 L 504.86 78.07 Z" style="fill: var(--accent, #2563eb)" />
+  <path d="M 545.8 160 L 545.75 158.68 L 545.59 157.37 L 545.34 156.08 L 544.98 154.81 L 544.52 153.57 L 543.97 152.37 L 543.32 151.22 L 542.59 150.13 L 541.77 149.09 L 540.88 148.12 L 539.91 147.23 L 538.87 146.41 L 537.78 145.68 L 536.63 145.03 L 535.43 144.48 L 534.19 144.02 L 532.92 143.66 L 531.63 143.41 L 530.32 143.25 L 529 143.2 L 527.68 143.25 L 526.37 143.41 L 525.08 143.66 L 523.81 144.02 L 522.57 144.48 L 521.37 145.03 L 520.22 145.68 L 519.13 146.41 L 518.09 147.23 L 517.12 148.12 L 516.23 149.09 L 515.41 150.13 L 514.68 151.22 L 514.03 152.37 L 513.48 153.57 L 513.02 154.81 L 512.66 156.08 L 512.41 157.37 L 512.25 158.68 L 512.2 160 L 512.25 161.32 L 512.41 162.63 L 512.66 163.92 L 513.02 165.19 L 513.48 166.43 L 514.03 167.63 L 514.68 168.78 L 515.41 169.87 L 516.23 170.91 L 517.12 171.88 L 518.09 172.77 L 519.13 173.59 L 520.22 174.32 L 521.37 174.97 L 522.57 175.52 L 523.81 175.98 L 525.08 176.34 L 526.37 176.59 L 527.68 176.75 L 529 176.8 L 530.32 176.75 L 531.63 176.59 L 532.92 176.34 L 534.19 175.98 L 535.43 175.52 L 536.63 174.97 L 537.78 174.32 L 538.87 173.59 L 539.91 172.77 L 540.88 171.88 L 541.77 170.91 L 542.59 169.87 L 543.32 168.78 L 543.97 167.63 L 544.52 166.43 L 544.98 165.19 L 545.34 163.92 L 545.59 162.63 L 545.75 161.32 L 545.8 160" fill="none" style="stroke: var(--good, #0f8a5f)" stroke-width="2" />
+  <text x="475" y="226" text-anchor="middle" style="fill: var(--accent, #2563eb)" fill="currentColor">绕洞一圈：环量 2π</text>
+  <text x="475" y="244" text-anchor="middle" style="fill: var(--good, #0f8a5f)" fill="currentColor">不绕洞：环量 0</text>
+</svg>

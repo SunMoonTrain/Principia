@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 284" width="640" height="284" font-size="13">
+  <!-- 左图 2×2 小方块；右图球形区域，中心 (480, 112) -->
+  <line x1="90" y1="34" x2="90" y2="186" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="90" y1="34" x2="242" y2="34" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="166" y1="34" x2="166" y2="186" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="90" y1="110" x2="242" y2="110" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="242" y1="34" x2="242" y2="186" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="90" y1="186" x2="242" y2="186" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <rect x="90" y="34" width="152" height="152" fill="none" stroke="currentColor" stroke-width="1.8" />
+  <line x1="155" y1="80" x2="168" y2="80" style="stroke: var(--warn, #a8661a)" stroke-width="1.8" />
+  <path d="M 175 80 L 168 83.5 L 168 76.5 Z" style="fill: var(--warn, #a8661a)" />
+  <line x1="92" y1="80" x2="79" y2="80" style="stroke: var(--good, #0f8a5f)" stroke-width="1.8" />
+  <path d="M 72 80 L 79 76.5 L 79 83.5 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="136" y1="99" x2="136" y2="112" style="stroke: var(--warn, #a8661a)" stroke-width="1.8" />
+  <path d="M 136 119 L 132.5 112 L 139.5 112 Z" style="fill: var(--warn, #a8661a)" />
+  <line x1="136" y1="36" x2="136" y2="23" style="stroke: var(--good, #0f8a5f)" stroke-width="1.8" />
+  <path d="M 136 16 L 139.5 23 L 132.5 23 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="155" y1="156" x2="168" y2="156" style="stroke: var(--warn, #a8661a)" stroke-width="1.8" />
+  <path d="M 175 156 L 168 159.5 L 168 152.5 Z" style="fill: var(--warn, #a8661a)" />
+  <line x1="92" y1="156" x2="79" y2="156" style="stroke: var(--good, #0f8a5f)" stroke-width="1.8" />
+  <path d="M 72 156 L 79 152.5 L 79 159.5 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="120" y1="184" x2="120" y2="197" style="stroke: var(--good, #0f8a5f)" stroke-width="1.8" />
+  <path d="M 120 204 L 116.5 197 L 123.5 197 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="120" y1="121" x2="120" y2="108" style="stroke: var(--warn, #a8661a)" stroke-width="1.8" />
+  <path d="M 120 101 L 123.5 108 L 116.5 108 Z" style="fill: var(--warn, #a8661a)" />
+  <line x1="240" y1="64" x2="253" y2="64" style="stroke: var(--good, #0f8a5f)" stroke-width="1.8" />
+  <path d="M 260 64 L 253 67.5 L 253 60.5 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="177" y1="64" x2="164" y2="64" style="stroke: var(--warn, #a8661a)" stroke-width="1.8" />
+  <path d="M 157 64 L 164 60.5 L 164 67.5 Z" style="fill: var(--warn, #a8661a)" />
+  <line x1="212" y1="99" x2="212" y2="112" style="stroke: var(--warn, #a8661a)" stroke-width="1.8" />
+  <path d="M 212 119 L 208.5 112 L 215.5 112 Z" style="fill: var(--warn, #a8661a)" />
+  <line x1="212" y1="36" x2="212" y2="23" style="stroke: var(--good, #0f8a5f)" stroke-width="1.8" />
+  <path d="M 212 16 L 215.5 23 L 208.5 23 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="240" y1="140" x2="253" y2="140" style="stroke: var(--good, #0f8a5f)" stroke-width="1.8" />
+  <path d="M 260 140 L 253 143.5 L 253 136.5 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="177" y1="140" x2="164" y2="140" style="stroke: var(--warn, #a8661a)" stroke-width="1.8" />
+  <path d="M 157 140 L 164 136.5 L 164 143.5 Z" style="fill: var(--warn, #a8661a)" />
+  <line x1="196" y1="184" x2="196" y2="197" style="stroke: var(--good, #0f8a5f)" stroke-width="1.8" />
+  <path d="M 196 204 L 192.5 197 L 199.5 197 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="196" y1="121" x2="196" y2="108" style="stroke: var(--warn, #a8661a)" stroke-width="1.8" />
+  <path d="M 196 101 L 199.5 108 L 192.5 108 Z" style="fill: var(--warn, #a8661a)" />
+  <text x="166" y="222" text-anchor="middle" fill="currentColor">相邻两块共用的面：</text>
+  <text x="166" y="242" text-anchor="middle" fill="currentColor">外法向相反，通量抵消</text>
+  <circle cx="480" cy="112" r="72" style="fill: var(--accent, #2563eb)" fill-opacity="0.12" stroke="currentColor" stroke-width="1.8" />
+  <line x1="480" y1="40" x2="480" y2="19" style="stroke: var(--good, #0f8a5f)" stroke-width="2" />
+  <path d="M 480 10 L 484.5 19 L 475.5 19 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="542.35" y1="76" x2="560.54" y2="65.5" style="stroke: var(--good, #0f8a5f)" stroke-width="2" />
+  <path d="M 568.33 61 L 562.79 69.4 L 558.29 61.6 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="417.65" y1="76" x2="399.46" y2="65.5" style="stroke: var(--good, #0f8a5f)" stroke-width="2" />
+  <path d="M 391.67 61 L 401.71 61.6 L 397.21 69.4 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="417.65" y1="148" x2="399.46" y2="158.5" style="stroke: var(--good, #0f8a5f)" stroke-width="2" />
+  <path d="M 391.67 163 L 397.21 154.6 L 401.71 162.4 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="542.35" y1="148" x2="560.54" y2="158.5" style="stroke: var(--good, #0f8a5f)" stroke-width="2" />
+  <path d="M 568.33 163 L 558.29 162.4 L 562.79 154.6 Z" style="fill: var(--good, #0f8a5f)" />
+  <line x1="480" y1="184" x2="480" y2="205" style="stroke: var(--good, #0f8a5f)" stroke-width="2" />
+  <path d="M 480 214 L 475.5 205 L 484.5 205 Z" style="fill: var(--good, #0f8a5f)" />
+  <circle cx="452" cy="94" r="3" style="fill: var(--accent, #2563eb)" />
+  <circle cx="502" cy="86" r="3" style="fill: var(--accent, #2563eb)" />
+  <circle cx="486" cy="132" r="3" style="fill: var(--accent, #2563eb)" />
+  <circle cx="460" cy="142" r="3" style="fill: var(--accent, #2563eb)" />
+  <circle cx="514" cy="126" r="3" style="fill: var(--accent, #2563eb)" />
+  <text x="436" y="118" text-anchor="middle" font-size="15" fill="currentColor"><tspan font-style="italic">V</tspan></text>
+  <text x="480" y="242" text-anchor="middle" fill="currentColor">净流出 = 里面冒出的总和</text>
+</svg>

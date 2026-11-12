@@ -1,0 +1,139 @@
+- id: p1
+  tier: easy
+  statement: |
+    $C$是矩形$[0,2]\times[0,3]$的边界，逆时针。求$\oint_Cx\,\dd y$。
+  answer:
+    type: number
+    value: 6
+  hints:
+    - |
+      用格林公式，$P=0$，$Q=x$。
+    - |
+      $Q_x-P_y=1$，积分等于矩形的面积。
+    - |
+      面积是$2\times3=6$。
+  solution: |
+    由格林公式，$\oint_Cx\,\dd y=\iint_D1\,\dd A=6$。直接算：只有右边$x=2$、$y$从$0$到$3$有贡献，$2\times3=6$，一致。
+
+- id: p2
+  tier: easy
+  statement: |
+    $C$是以原点为圆心、半径为$2$的圆，逆时针。求$\oint_C(-y\,\dd x+3x\,\dd y)$。
+  answer:
+    type: number
+    value: 16*pi
+  hints:
+    - |
+      用格林公式，$P=-y$，$Q=3x$。
+    - |
+      $Q_x-P_y=3-(-1)=4$，是常数。
+    - |
+      积分$=4\times$圆盘面积$=4\cdot4\pi=16\pi$。
+  solution: |
+    $Q_x-P_y=3+1=4$，由格林公式，积分$=\iint_D4\,\dd A=4\cdot\pi\cdot2^2=16\pi$。
+
+- id: p3
+  tier: medium
+  statement: |
+    $C$是以$(0,0)$、$(1,0)$、$(0,1)$为顶点的三角形的边界，逆时针。求$\oint_Cxy\,\dd x+x^2\,\dd y$。
+  answer:
+    type: number
+    value: 1/6
+  hints:
+    - |
+      用格林公式：$P=xy$，$Q=x^2$，$Q_x-P_y=2x-x=x$。
+    - |
+      积分$=\iint_Tx\,\dd A$，$T$是$0\le x\le1$、$0\le y\le1-x$。
+    - |
+      $\int_0^1x(1-x)\dd x=\frac12-\frac13=\frac16$。
+  solution: |
+    $Q_x-P_y=2x-x=x$，积分$=\int_0^1\int_0^{1-x}x\,\dd y\dd x=\int_0^1x(1-x)\dd x=\frac16$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\vb F=(xy^2,\ x^2y)$穿过单位正方形$[0,1]\times[0,1]$的边界、往外的通量$\oint\vb F\cdot\vb n\,\dd s$。
+  answer:
+    type: number
+    value: 2/3
+  hints:
+    - |
+      用通量形式：往外的通量等于$\iint_D(P_x+Q_y)\dd A$。
+    - |
+      $P_x+Q_y=y^2+x^2$。
+    - |
+      $\int_0^1\int_0^1(x^2+y^2)\dd y\dd x=\frac13+\frac13=\frac23$。
+  solution: |
+    由通量形式，通量$=\iint_D(y^2+x^2)\dd A=\frac13+\frac13=\frac23$。
+
+- id: p5
+  tier: hard
+  statement: |
+    $D$是矩形$[a,b]\times[c,d]$，$P$、$Q$在$D$上有连续的偏导数。不用一般的定理，直接证明$\oint_{\partial D}P\,\dd x+Q\,\dd y=\iint_D(Q_x-P_y)\dd A$（边界逆时针）。
+  hints:
+    - |
+      分开证$\oint P\,\dd x=-\iint P_y\,\dd A$和$\oint Q\,\dd y=\iint Q_x\,\dd A$。
+    - |
+      逆时针走：下边从$(a,c)$到$(b,c)$，上边从$(b,d)$到$(a,d)$；左右两条竖边上$\dd x=0$。所以$\oint P\,\dd x=\int_a^bP(x,c)\dd x-\int_a^bP(x,d)\dd x$。
+    - |
+      由牛顿-莱布尼茨公式（Newton–Leibniz formula），$P(x,d)-P(x,c)=\int_c^dP_y(x,y)\dd y$，所以$\oint P\,\dd x=-\int_a^b\int_c^dP_y\,\dd y\dd x$；$Q$的那一半同理，竖边上$\dd y\ne0$、横边上$\dd y=0$。
+  reference: |
+    横边上$\dd y=0$，竖边上$\dd x=0$。逆时针走，$\oint P\,\dd x$只有下边（$y=c$，$x$从$a$到$b$）和上边（$y=d$，$x$从$b$到$a$）有贡献：$\int_a^bP(x,c)\dd x-\int_a^bP(x,d)\dd x=-\int_a^b\int_c^dP_y\,\dd y\dd x$。
+
+    同理，$\oint Q\,\dd y$只有右边（$x=b$，$y$从$c$到$d$）和左边（$x=a$，$y$从$d$到$c$）：$\int_c^d\bigl[Q(b,y)-Q(a,y)\bigr]\dd y=\int_c^d\int_a^bQ_x\,\dd x\dd y$。
+
+    两式相加，并把二重积分写成同一个次序（偏导数连续，由富比尼定理可以交换），得$\oint_{\partial D}P\,\dd x+Q\,\dd y=\iint_D(Q_x-P_y)\dd A$。
+
+- id: p6
+  tier: hard
+  statement: |
+    $\vb G=\frac{(-y,x)}{x^2+y^2}$。$D$是圆环$1\le x^2+y^2\le4$。对$D$用格林公式，说明沿半径为$2$和半径为$1$的圆（都逆时针）的环量相等；再说明：沿任何一条绕原点逆时针一圈、不经过原点的简单闭曲线，环量都是$2\pi$。
+  hints:
+    - |
+      圆环不含原点，$\vb G$在上面有连续的偏导数，平面旋度处处为零。圆环的正向边界是：外圆逆时针，内圆顺时针。
+    - |
+      $0=\iint_D0\,\dd A=\oint_{\text{外圆，逆时针}}-\oint_{\text{内圆，逆时针}}$，所以两个环量相等，都等于单位圆上的$2\pi$。
+    - |
+      任意一条绕原点的简单闭曲线$C$，取一个很小的圆把原点圈在$C$里面，对$C$和小圆之间的区域用同样的论证，得$\oint_C=\oint_{\text{小圆}}=2\pi$。
+  reference: |
+    圆环$D$不含原点，$\vb G$在$D$上有连续的偏导数，$Q_x-P_y=0$。$D$的正向边界是外圆逆时针加上内圆顺时针，由格林公式$\oint_{\text{外}}-\oint_{\text{内}}=\iint_D0\,\dd A=0$（两个都按逆时针算）。内圆上$\vb G\cdot\dd\vb r=\dd t$，环量是$2\pi$，所以外圆上也是$2\pi$。
+
+    一般地，$C$是绕原点逆时针一圈的简单闭曲线，取半径$\varepsilon$足够小的圆$C_\varepsilon$，使它整个落在$C$围住的区域里。$C$和$C_\varepsilon$之间的区域不含原点，同样得$\oint_C=\oint_{C_\varepsilon}=2\pi$。
+
+    这说明$\vb G$的环量只看曲线绕不绕原点：旋度为零的地方，曲线可以随便变形而环量不变，只有绕过「洞」时才有贡献。
+
+- id: p7
+  tier: thinking
+  statement: |
+    $\vb F=(P,Q)$有连续的偏导数，$D_\varepsilon$是以点$\vb p$为圆心、半径为$\varepsilon$的圆盘。证明$\lim_{\varepsilon\to0}\frac1{\pi\varepsilon^2}\oint_{\partial D_\varepsilon}\vb F\cdot\dd\vb r=(Q_x-P_y)(\vb p)$。这和「旋度是小块转动角速度（angular velocity）的两倍」有什么关系？
+  hints:
+    - |
+      用格林公式把环量写成$\iint_{D_\varepsilon}(Q_x-P_y)\dd A$。
+    - |
+      记$g=Q_x-P_y$，它连续，在小圆盘上和$g(\vb p)$相差很小：$\bigl|\iint_{D_\varepsilon}g\,\dd A-g(\vb p)\pi\varepsilon^2\bigr|\le\max_{D_\varepsilon}|g-g(\vb p)|\cdot\pi\varepsilon^2$。
+    - |
+      除以$\pi\varepsilon^2$，右边趋于零。所以平面旋度是单位面积上的环量。速度场（velocity field）$\vb v$绕小圆的平均切向速度是$\frac{\oint\vb v\cdot\dd\vb r}{2\pi\varepsilon}$，除以半径$\varepsilon$得平均角速度，正好是旋度的一半。
+  reference: |
+    由格林公式，$\oint_{\partial D_\varepsilon}\vb F\cdot\dd\vb r=\iint_{D_\varepsilon}g\,\dd A$，$g=Q_x-P_y$连续。$\Bigl|\frac1{\pi\varepsilon^2}\iint_{D_\varepsilon}g\,\dd A-g(\vb p)\Bigr|\le\max_{D_\varepsilon}|g-g(\vb p)|\to0$，所以极限是$g(\vb p)$。
+
+    这给了平面旋度一个不依赖坐标的说法：单位面积上的环量。速度场里，小圆周上的平均切向速度是$\frac1{2\pi\varepsilon}\oint\vb v\cdot\dd\vb r\approx\frac{\pi\varepsilon^2g}{2\pi\varepsilon}=\frac{\varepsilon g}2$，平均角速度是它除以$\varepsilon$，即$\frac g2$。
+
+    这和[散度与旋度](lesson:math.vector-calculus.curl-divergence)里小十字的说法一致：旋度是当地小块转动角速度的两倍。
+
+- id: p8
+  tier: thinking
+  statement: |
+    多边形的顶点按逆时针依次是$(x_1,y_1),(x_2,y_2),\dots,(x_n,y_n)$。用面积公式$\frac12\oint(x\,\dd y-y\,\dd x)$证明它的面积是$\frac12\sum_{k=1}^n(x_ky_{k+1}-x_{k+1}y_k)$（$x_{n+1}=x_1$，$y_{n+1}=y_1$）。为什么只要知道顶点的坐标就够了？
+  hints:
+    - |
+      边界由$n$条线段组成，积分按段相加。第$k$段从$(x_k,y_k)$到$(x_{k+1},y_{k+1})$。
+    - |
+      在第$k$段上取$x=x_k+t(x_{k+1}-x_k)$、$y=y_k+t(y_{k+1}-y_k)$，$0\le t\le1$，算$x\,\dd y-y\,\dd x$。
+    - |
+      $x\,\dd y-y\,\dd x=\bigl[x_k(y_{k+1}-y_k)-y_k(x_{k+1}-x_k)\bigr]\dd t=(x_ky_{k+1}-x_{k+1}y_k)\dd t$，含$t$的项相消，积分就是这个常数。相加再乘$\frac12$得面积公式。
+  reference: |
+    第$k$段参数化为$\bigl(x_k+t\Delta x_k,\ y_k+t\Delta y_k\bigr)$，$\Delta x_k=x_{k+1}-x_k$，$\Delta y_k=y_{k+1}-y_k$。$x\,\dd y-y\,\dd x=\bigl[(x_k+t\Delta x_k)\Delta y_k-(y_k+t\Delta y_k)\Delta x_k\bigr]\dd t=(x_k\Delta y_k-y_k\Delta x_k)\dd t$，含$t$的项相消。
+
+    $x_k\Delta y_k-y_k\Delta x_k=x_ky_{k+1}-x_{k+1}y_k$，在$[0,1]$上积分不变。各段相加，面积$=\frac12\sum_{k=1}^n(x_ky_{k+1}-x_{k+1}y_k)$。
+
+    每一项是原点和第$k$条边组成的三角形的有向面积的两倍：沿边界走一圈，把这些三角形按正负加起来，多出的部分正好抵消，只剩多边形本身。所以只要顶点坐标，测量员绕地块走一圈记下拐点，就能算出面积。

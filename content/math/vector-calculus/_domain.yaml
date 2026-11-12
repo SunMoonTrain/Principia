@@ -136,7 +136,7 @@ glossary:
     en: |
       tangent plane
     brief: |
-      平面$z=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)$：可微时曲面$z=f(x,y)$在切点附近贴近它。
+      平面$z=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)$：可微时曲面$z=f(x,y)$在切点附近贴近它。别的曲面在一点的切平面同理，是在这一点附近贴近曲面的平面。
     definedIn: math.vector-calculus.differentiability
     anchor: def-tangent-plane
   - id: math.vector-calculus.chain-rule
@@ -262,7 +262,7 @@ glossary:
     en: |
       area element
     brief: |
-      二重积分$\iint_Df\,\dd A$里的$\dd A$，表示分出的小块的面积；直角坐标下也写成$\dd x\dd y$。
+      二重积分$\iint_Df\,\dd A$里的$\dd A$，表示分出的小块的面积；直角坐标下也写成$\dd x\dd y$。曲面上一小块的面积也叫面积元，记作$\dd a$。
     definedIn: math.vector-calculus.double-integrals
     anchor: def-double-integral
   - id: math.vector-calculus.iterated-integral
@@ -346,6 +346,15 @@ glossary:
       变换$x(u,v)$、$y(u,v)$的雅可比矩阵的行列式$\frac{\partial(x,y)}{\partial(u,v)}$；它的绝对值是这一点附近面积放大的倍数，换元时乘在$\dd u\dd v$上。
     definedIn: math.vector-calculus.change-of-variables
     anchor: def-jacobian-determinant
+  - id: math.vector-calculus.change-of-variables-formula
+    zh: |
+      重积分的换元公式
+    en: |
+      change of variables formula
+    brief: |
+      $\iint_Df\,\dd x\dd y=\iint_Ef\bigl(x(u,v),y(u,v)\bigr)\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\dd u\dd v$：换元时乘上雅可比行列式的绝对值。
+    definedIn: math.vector-calculus.change-of-variables
+    anchor: thm-change-of-variables
   - id: math.vector-calculus.inverse-function-theorem
     zh: |
       反函数定理
@@ -400,3 +409,282 @@ glossary:
       速度处处等于场的曲线：$\vb r'(t)=\vb F\bigl(\vb r(t)\bigr)$，处处和场的箭头相切；速度场里被带着走的点走出的就是流线。
     definedIn: math.vector-calculus.vector-fields
     anchor: def-flow-line
+  - id: math.vector-calculus.divergence
+    zh: |
+      散度
+    en: |
+      divergence
+    brief: |
+      向量场$\vb F=(P,Q,R)$的$\divg\vb F=P_x+Q_y+R_z$：一点处往外冒的强度，等于随流动的一小块体积的相对变化率。平面上是$P_x+Q_y$，量的是面积的相对变化率。
+    definedIn: math.vector-calculus.curl-divergence
+    anchor: def-divergence
+  - id: math.vector-calculus.divergence-free-field
+    zh: |
+      无散场
+    en: |
+      divergence-free field
+    brief: |
+      散度处处为零的向量场；当成速度场时，随流动的每一小块体积都不变。
+    definedIn: math.vector-calculus.curl-divergence
+    anchor: def-divergence-free
+  - id: math.vector-calculus.curl
+    zh: |
+      旋度
+    en: |
+      curl
+    brief: |
+      $\curl\vb F=(R_y-Q_z,\ P_z-R_x,\ Q_x-P_y)$：一点处打转的强度；速度场的旋度是当地小块转动角速度的两倍。平面上只看$Q_x-P_y$，叫平面旋度。
+    definedIn: math.vector-calculus.curl-divergence
+    anchor: def-curl
+  - id: math.vector-calculus.irrotational-field
+    zh: |
+      无旋场
+    en: |
+      irrotational field
+    brief: |
+      旋度处处为零的向量场；当成速度场时，每一小块都只被拉伸、不转动。
+    definedIn: math.vector-calculus.curl-divergence
+    anchor: def-irrotational
+  - id: math.vector-calculus.laplacian
+    zh: |
+      拉普拉斯算子
+    en: |
+      Laplacian
+    brief: |
+      梯度的散度$\lap f=\divg(\nabla f)=f_{xx}+f_{yy}+f_{zz}$；量的是$f$在一点和周围的平均值差多少。
+    definedIn: math.vector-calculus.vector-identities
+    anchor: def-laplacian
+  - id: math.vector-calculus.velocity-vector
+    zh: |
+      速度向量
+    en: |
+      velocity vector
+    brief: |
+      $\vb r'(t)=\bigl(x'(t),y'(t),z'(t)\bigr)$：位移除以时间、时间趋于零的极限；方向沿曲线的走向，长度是速率。
+    definedIn: math.vector-calculus.space-curves
+    anchor: def-velocity-vector
+  - id: math.vector-calculus.tangent-vector
+    zh: |
+      切向量
+    en: |
+      tangent vector
+    brief: |
+      曲线$\vb r(t)$在一点不为零的导数$\vb r'(t)$，方向沿曲线在这一点的走向。
+    definedIn: math.vector-calculus.space-curves
+    anchor: def-tangent-vector
+  - id: math.vector-calculus.unit-tangent-vector
+    zh: |
+      单位切向量
+    en: |
+      unit tangent vector
+    brief: |
+      $\vb T=\frac{\vb r'(t)}{|\vb r'(t)|}$：长度为$1$、沿曲线走向的向量。
+    definedIn: math.vector-calculus.space-curves
+    anchor: def-tangent-vector
+  - id: math.vector-calculus.smooth-curve
+    zh: |
+      光滑曲线
+    en: |
+      smooth curve
+    brief: |
+      参数化$\vb r(t)$的导数连续且处处不为零的曲线：每一点都有确定的切线方向，没有尖角。
+    definedIn: math.vector-calculus.space-curves
+    anchor: def-tangent-vector
+  - id: math.vector-calculus.piecewise-smooth
+    zh: |
+      分段光滑
+    en: |
+      piecewise smooth
+    brief: |
+      由有限段光滑曲线首尾相接组成，例如三角形、正方形的边界。
+    definedIn: math.vector-calculus.space-curves
+    anchor: def-tangent-vector
+  - id: math.vector-calculus.arc-length-line-integral
+    zh: |
+      对弧长的曲线积分
+    en: |
+      line integral with respect to arc length
+    brief: |
+      $\int_Cf\,\dd s=\int_a^bf\bigl(\vb r(t)\bigr)|\vb r'(t)|\dd t$：沿曲线一小段一小段地累加$f\Delta s$；$f$是线密度时得到质量，和走向无关。
+    definedIn: math.vector-calculus.line-integrals
+    anchor: def-arc-length-integral
+  - id: math.vector-calculus.line-integral
+    zh: |
+      曲线积分
+    en: |
+      line integral
+    brief: |
+      向量场沿有向曲线的积分$\int_C\vb F\cdot\dd\vb r=\int_a^b\vb F\bigl(\vb r(t)\bigr)\cdot\vb r'(t)\dd t$；$\vb F$是力时就是做的功，反着走变号。
+    definedIn: math.vector-calculus.line-integrals
+    anchor: def-line-integral
+  - id: math.vector-calculus.oriented-curve
+    zh: |
+      有向曲线
+    en: |
+      oriented curve
+    brief: |
+      规定了从哪一端走到哪一端的曲线；反着走记作$-C$，向量场沿它的积分变号。
+    definedIn: math.vector-calculus.line-integrals
+    anchor: def-oriented-curve
+  - id: math.vector-calculus.closed-curve
+    zh: |
+      闭曲线
+    en: |
+      closed curve
+    brief: |
+      起点和终点重合的曲线，例如圆、三角形的边界。
+    definedIn: math.vector-calculus.line-integrals
+    anchor: def-circulation
+  - id: math.vector-calculus.circulation
+    zh: |
+      环量
+    en: |
+      circulation
+    brief: |
+      向量场沿有向闭曲线的曲线积分$\oint_C\vb F\cdot\dd\vb r$：速度场沿这一圈总体上转了多少。
+    definedIn: math.vector-calculus.line-integrals
+    anchor: def-circulation
+  - id: math.vector-calculus.fundamental-theorem-line-integrals
+    zh: |
+      曲线积分基本定理
+    en: |
+      fundamental theorem for line integrals
+    brief: |
+      $\int_C\nabla f\cdot\dd\vb r=f(B)-f(A)$：梯度场的曲线积分只由起点$A$和终点$B$决定，沿闭曲线为零。
+    definedIn: math.vector-calculus.conservative-fields
+    anchor: thm-fundamental
+  - id: math.vector-calculus.conservative-field
+    zh: |
+      保守场
+    en: |
+      conservative field
+    brief: |
+      曲线积分只由起点、终点决定（路径无关）的向量场；等价地，沿每条闭曲线环量为零，也等价于是某个函数的梯度。
+    definedIn: math.vector-calculus.conservative-fields
+    anchor: def-conservative
+  - id: math.vector-calculus.potential-function
+    zh: |
+      势函数
+    en: |
+      potential function
+    brief: |
+      满足$\nabla f=\vb F$的函数$f$；有势函数的场就是保守场，在一个区域上势函数最多差一个常数。
+    definedIn: math.vector-calculus.conservative-fields
+    anchor: thm-potential
+  - id: math.vector-calculus.simply-connected-region
+    zh: |
+      单连通区域
+    en: |
+      simply connected region
+    brief: |
+      每一条闭曲线都能在区域里连续缩成一点的区域；平面上就是没有洞的区域，在它上面无旋场都是保守场。
+    definedIn: math.vector-calculus.conservative-fields
+    anchor: def-simply-connected
+  - id: math.vector-calculus.parametric-surface
+    zh: |
+      参数曲面
+    en: |
+      parametric surface
+    brief: |
+      两个参数描出的曲面$\vb r(u,v)=\bigl(x(u,v),y(u,v),z(u,v)\bigr)$，例如用两个角描出的球面。
+    definedIn: math.vector-calculus.parametric-surfaces
+    anchor: def-parametric-surface
+  - id: math.vector-calculus.smooth-surface
+    zh: |
+      光滑曲面
+    en: |
+      smooth surface
+    brief: |
+      $\vb r_u$、$\vb r_v$连续且$\vb r_u\times\vb r_v\ne\vb 0$的参数曲面：每一点都有切平面，法向量是$\vb r_u\times\vb r_v$。
+    definedIn: math.vector-calculus.parametric-surfaces
+    anchor: def-smooth-surface
+  - id: math.vector-calculus.piecewise-smooth-surface
+    zh: |
+      分片光滑
+    en: |
+      piecewise smooth
+    brief: |
+      曲面由有限块光滑曲面拼成，例如立方体的表面。
+    definedIn: math.vector-calculus.parametric-surfaces
+    anchor: def-smooth-surface
+  - id: math.vector-calculus.simple-closed-curve
+    zh: |
+      简单闭曲线
+    en: |
+      simple closed curve
+    brief: |
+      自己不相交的闭曲线，例如圆、三角形的边界；「8」字形不是。
+    definedIn: math.vector-calculus.greens-theorem
+    anchor: def-positive-orientation
+  - id: math.vector-calculus.greens-theorem
+    zh: |
+      格林公式
+    en: |
+      Green's theorem
+    brief: |
+      $\oint_{\partial D}P\,\dd x+Q\,\dd y=\iint_D(Q_x-P_y)\dd A$（边界取正向）：沿边界的环量等于区域里平面旋度之和。
+    definedIn: math.vector-calculus.greens-theorem
+    anchor: thm-green
+  - id: math.vector-calculus.surface-integral-area
+    zh: |
+      对面积的曲面积分
+    en: |
+      surface integral with respect to area
+    brief: |
+      $\iint_Sf\,\dd a=\iint_Df\bigl(\vb r(u,v)\bigr)|\vb r_u\times\vb r_v|\,\dd u\dd v$：在曲面上一小块一小块地累加$f\Delta a$，例如由面密度求质量。
+    definedIn: math.vector-calculus.surface-integrals
+    anchor: def-surface-integral-area
+  - id: math.vector-calculus.oriented-surface
+    zh: |
+      有向曲面
+    en: |
+      oriented surface
+    brief: |
+      处处选定一个随点连续变化的单位法向量$\vb n$的曲面，说清了哪一面是「正面」；莫比乌斯带选不出来。
+    definedIn: math.vector-calculus.surface-integrals
+    anchor: def-oriented-surface
+  - id: math.vector-calculus.closed-surface
+    zh: |
+      闭曲面
+    en: |
+      closed surface
+    brief: |
+      包住一块空间的曲面，例如球面、立方体的表面；上面的单位法向量默认指向外面，叫外法向。
+    definedIn: math.vector-calculus.surface-integrals
+    anchor: def-oriented-surface
+  - id: math.vector-calculus.outward-normal
+    zh: |
+      外法向
+    en: |
+      outward normal
+    brief: |
+      闭曲面（如球面）上指向外面的单位法向量；闭曲面上的通量默认取它，算的是净流出的量。
+    definedIn: math.vector-calculus.surface-integrals
+    anchor: def-oriented-surface
+  - id: math.vector-calculus.vector-area-element
+    zh: |
+      有向面积元
+    en: |
+      vector area element
+    brief: |
+      $\dd\vb a=\vb n\,\dd a$：方向是曲面的法向量，长度是一小块的面积；参数曲面上是$\pm(\vb r_u\times\vb r_v)\dd u\dd v$。
+    definedIn: math.vector-calculus.surface-integrals
+    anchor: def-vector-area-element
+  - id: math.vector-calculus.flux
+    zh: |
+      通量
+    en: |
+      flux
+    brief: |
+      向量场穿过有向曲面的$\iint_S\vb F\cdot\vb n\,\dd a$：速度场时是每秒穿过曲面的流体，只有沿法向的分量起作用。平面上穿过一条曲线的通量同理。
+    definedIn: math.vector-calculus.surface-integrals
+    anchor: def-flux
+  - id: math.vector-calculus.divergence-theorem
+    zh: |
+      散度定理
+    en: |
+      divergence theorem
+    brief: |
+      也叫高斯公式：$\oint_{\partial V}\vb F\cdot\dd\vb a=\iiint_V\divg\vb F\,\dd V$（外法向）；闭曲面上净流出的量等于里面各处散度之和。
+    definedIn: math.vector-calculus.divergence-theorem
+    anchor: thm-divergence
