@@ -1114,6 +1114,32 @@ math.analysis.completeness:
       - `fourier-optics`：`diffraction-gratings` 的多缝光强等于单缝因子乘多缝因子，正好是卷积定理的例子；`single-slit-diffraction` 第 8 题（头发和单缝互补）没起名「巴比涅原理」。
       - `polarization`、`brewster-angle`：`thin-film-interference` 写的是「电场在入射面内振动的光」，没用「偏振」二字，「偏振」进表后回头补标。
 - 批次 16 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 17；多变量微积分写完了，数学那一对下一个领域到时候问你（写代码的会话定的）。
+- 批次 16 之后（你定的）：发批次 17，数学那一对写单变量微积分。
+- 批次 17：单变量微积分的第一批、光学的最后一批，做法和批次 16 一样。
+  - 单变量微积分（新领域，46 节）写极限、连续和导数开头的 9 节，按前置顺序：`limits-intuition`、`limit-laws`、`continuity`、`limits-at-infinity`、`special-limits`、`closed-interval-properties`、`infinitesimal-orders`、`derivative`、`derivative-rules`。审查报告 `docs/reviews/batch-17-calculus.md`。以后几批大致是求导与导数的应用、积分、积分的应用、级数，约 5 批写完。
+  - 光学写偏振、衍射与激光最后 9 节，按前置顺序：`polarization`、`birefringence`、`brewster-angle`、`jones-calculus`、`fresnel-diffraction`、`resolving-power`、`fourier-optics`、`michelson-interferometer`、`lasers`。审查报告 `docs/reviews/batch-17-optics.md`。写完这一批，光学 27 节全部写完。
+  - 单变量微积分是新领域，开写前要知道的（写代码的会话定的）：
+    - 这个领域没有跨领域前置，层级从 0 开始，读者只有中学数学。用到别的领域的词都在链外，只能当旁白，按规矩 C 标；中学学过的基础词（函数、数列、三角函数、指数与对数这类）不标。
+    - 「极限」「连续」「间断点」「导数」「夹逼定理」这些概念数学分析也讲，那里是严格的版本，而数学分析以单变量微积分为前置。照「同一个概念两个领域都要讲时各自定义、各标各的 id」，单变量微积分在自己的术语表里定义直观的版本，数学分析的不动。旁白里提到数学分析的严格定义时，按规矩 C 标数学分析的 id，或者加链接。
+    - 证明深度 `sketch`（`_domain.yaml` 已定）：讲直观和计算；要严格证明的定理（如介值定理、最值定理）写明「这里不证」，链到数学分析里证明它的那一节。宏现有 `\R`、`\dd`、`\dv`，加宏时同名的要和别的领域定义一致（构建会查）。
+  - 已写的小节有链接或用法指向这一批（写代码的会话查的）：
+    - 单变量微积分：以这一批为直接前置的已写小节有 5 节，按批次 9 定的规矩查了它们的用法：
+      - 数学分析 `sequences-limits` ← `limits-at-infinity`：`:16`「数列 $1,\frac12,\frac13,\dots$ 趋于 $0$，这话在微积分里说过很多次」，要讲到数列在 $n\to\infty$ 时的极限的直观说法。
+      - 数学分析 `continuity` ← `continuity`：`:16`「微积分里说 $f$ 在 $a$ 处连续，指的是 $\lim_{x\to a}f(x)=f(a)$，图像在那里不断开」；`:31`「不连续的点，就是微积分里说的间断点」。连续按这个式子定义，「间断点」要起名。
+      - 数学分析 `intermediate-value` ← `closed-interval-properties`：`:16` 用「$f$ 在 $[a,b]$ 上连续、$f(a)<0<f(b)$，图像从横轴下方走到上方，中间总得穿过横轴」找方程的根。
+      - 数学分析 `extreme-value` ← `closed-interval-properties`：`:16`「在闭区间上，微积分里求最值时从来不担心最值存不存在」，要讲闭区间上的连续函数取得到最大值、最小值，开区间上可以取不到；那里用的反例是 $(0,1]$ 上的 $\frac1x$、$[0,1)$ 上的 $x$，举例时别撞。
+      - 多变量微积分 `multivariable-limits` ← `continuity`；`:49` 链到 `closed-interval-properties`：有界闭集上的连续函数有界、取得到最值，「道理和闭区间上的连续函数一样」。
+      - 另外链过来的：常微分方程 `lyapunov-stability` 第 5 题（连续函数在圆周上取得到最小值，「和闭区间上连续函数的性质同一个道理」）；数学分析 `function-limits:16`「微积分里，$x\to a$ 时 $f(x)\to L$ 是从图像和数值表看出来的：$\frac{x^2-1}{x-1}$ 在 $x=1$ 处没有定义，$x\to1$ 时却趋于 $2$」（`limits-intuition`）。
+    - 光学：
+      - 电磁学 `em-waves:52`（太阳光、灯光的偏振方向快速而杂乱地变化，平均下来各方向一样）、第 5 题（圆偏振；相位差不是 $90^\circ$ 或振幅不等时是椭圆）、`dipole-radiation` 第 7 题（散射光几乎不偏振、偏振片）→ `polarization`。
+      - 电磁学 `fresnel-equations:66`（p 偏振反射率为零的那个角度，偏振太阳镜挡掉路面、湖面的反光）→ `brewster-angle`。
+      - 光学 `huygens-principle:27`（方解石里光线可以不和波阵面垂直）→ `birefringence`；`single-slit-diffraction:41`（夫琅禾费衍射的条件 $L\gg\frac{a^2}\lambda$）→ `fresnel-diffraction`；`single-slit-diffraction:110`（圆孔的系数）、`diffraction-gratings:64`（色分辨本领用的判据）、`optical-instruments` 第 8 题（无效放大）→ `resolving-power`；`coherence:63`、`fabry-perot` 第 7 题（谐振腔的纵模间隔）→ `lasers`；`coherence` 第 5 题（钠双线的可见度）→ `michelson-interferometer`。
+      - 批次 16 写回的「光学最后一批」那几条照用：`michelson-interferometer` 的等倾条纹，`lasers` 加 `fabry-perot` 前置的建议，`resolving-power` 给判据起名「瑞利判据」，`fresnel-diffraction` 的泊松亮斑，`fourier-optics` 的卷积定理和巴比涅原理，`thin-film-interference:28` 的偏振。
+      - 「偏振」：电磁学 `em-waves` 已经定义（`physics.electromagnetism.wave-polarization`，含线偏振），它是 `polarization` 的前置，在链上。光学沿用电磁学的这个词，链上只括注、不另进光学的表；圆偏振、椭圆偏振、偏振片、马吕斯定律这类新词进光学的表（写代码的会话定的）。`brewster-angle` 链上的「反射率」是电磁学 `fresnel-equations:62` 讲的，光学的「反射率」（`thin-film-interference`）不在它的链上，只括注。
+  - 跨领域前置：`polarization` ← 电磁学「真空中的电磁波」、`brewster-angle` ← 电磁学「界面上的反射与折射：菲涅耳公式」都已审；`fourier-optics` ← 偏微分方程「傅里叶变换」、`lasers` ← 量子力学「原子的辐射跃迁与选择定则」还是待写，按它们的 goal 假定读者学过。
+  - 以这一批为前置、还没写的别的小节：没有。
+  - 动画：单变量微积分用 function-plot 画函数图像、数列逼近极限（数列画点）、割线趋于切线、无穷小的阶；光学用 function-plot 画马吕斯定律、菲涅耳衍射和艾里斑的光强、迈克耳孙条纹的可见度，LinearMap2D 可以画偏振片对电场方向的投影；偏振椭圆、波带片、双折射的光路画 SVG（写代码的会话提的）。
+- 批次 17 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 18；光学写完了，物理那一对下一个领域到时候问你（写代码的会话定的）。
 - 几个领域同时写时（批次 1 定的）：每个写内容会话只改自己领域的目录（`content/<学科>/<领域>/`），审内容会话只写自己的报告和验算脚本；`docs/plan.md` 不由它们直接改，要写回的内容写进汇报，由写代码的会话统一写进去、单独提交，免得几个会话同时改一个文件。每个领域各自作为一个提交。另一个领域写到一半、全量构建报错时，写内容会话可以把那个领域换成已提交的版本，在临时副本上构建，确认自己的领域 0 个错误；看页面同理，用临时副本编译的内容另起一个服务，进度写临时仓库，不改仓库的 `dist/`（批次 2 定的）。test-serve 和 `npm run serve` 提供的是 `dist/` 里构建好的网站，不读 `generated/`：改完内容要重新 `vite build`，页面上才看得到（批次 6 时写内容会话提的）。临时副本的做法（批次 10 时写内容会话提的，写代码的会话核过）：用 `git archive HEAD` 导出已提交的版本，再拷进自己的改动；`node_modules` 不要复制，在副本里建一个指向仓库 `node_modules` 的目录联接（PowerShell 的 `New-Item -ItemType Junction`）；建网站时在副本目录里跑 `npx vite build --outDir <目录>`，或者把副本目录写成 `vite build` 的第一个参数（Vite 8 的根目录是位置参数）；删副本之前先单独删掉联接本身（PowerShell 的 `[System.IO.Directory]::Delete(<联接>, $false)`），否则删除命令会顺着联接把仓库的 `node_modules` 一起删掉。各会话的 scratchpad 都在 C 盘，C 盘空间紧（批次 14 时一度只剩十几 MB，`vite build` 报 ENOSPC）：页面检查能用 test-serve 读仓库 D 盘的 `dist/` 就不另建网站副本；要建，看完就删，同一时间只留一份；以前批次的副本、快照复核完就删（批次 14 时定的）。页面检查只用进度写临时目录的 test-serve；`npm run dev`、`npm run serve` 写的是你真实的 `progress/`，点「看提示」「放弃」都会留下记录，绝不用来做页面检查（批次 15 时写内容会话用 `npm run dev` 往 `progress/` 写进了光学 9 节的假记录，你同意后写代码的会话删掉了）。
 
 **分工**：一共三个 agent：写代码、写内容、审内容。开发台阶 8、9 由写内容 agent 和审内容 agent 执行。写内容和审内容必须是两个独立会话。
@@ -1132,7 +1158,7 @@ math.analysis.completeness:
    - 前置：讲解里用到的概念是否都在前置链上（沿整条前置链查）；`prerequisites` 是否只列了最少的直接前置。讲解、例题和题目文字都查；题目文字里用到前置链外的结论时，加链接注明出处即可（批次 2 审查时定的）；题目文字可以不标术语，只看术语标记的检查查不出题目里用到的链外结论，要按文字查（批次 16 写内容时提的：多变量微积分 `stokes-theorem` 第 6 题、`potentials` 第 7 题因此补了链接）；链接要指向真正定义这个词、证明这个结论的那一节，用术语表的 `definedIn` 核对，不要按名字猜（批次 9 审查时提的）。以这一批为直接前置的已写小节，也顺带查一遍：它们用到的这一批的概念，要在它们自己的链上（批次 9 审查时提的：变分法 `direct-methods` 写的时候前置还是大纲，用了链上没有的对称矩阵、可逆）。讲解里为了列出例子的式子而用到别的学科的结论（例如变分法里由机械能守恒得到的 $v=\sqrt{2gy}$），写明是什么结论、链接出处即可，不列为前置；这一节要讲解或推导这个结论本身时才列。`sketch` 的小节，推导里引用的分析定理（例如积分号下求导），写明条件、说明这里满足，并链接到严格证明所在的小节，可以不列为前置；读者要先懂才看得懂这一段的概念，仍要列为前置（这两条是批次 4 审查时定的）。`sketch` 的小节用到一元结论的直接推广（二元函数的连续性、有界闭矩形上的连续函数有界），或者把另一个变量固定、对 $y$ 求导（写作 $f_y$）时，说清意思、链接一元的那一节即可，不列多变量微积分为前置；要用多元复合函数的链式法则、多元泰勒公式时仍要列（批次 6 审查时定的）；交换二重积分（包括反常二重积分）的次序也要列 `math.vector-calculus.double-integrals`（批次 7 审查时定的）。本领域后面小节的术语可以提前提到（加标记、括注英文，浮窗会注明是第几层讲的），讲解和例题的推理不能用到它（批次 7 写内容时提的，审查认可）。
    - 格式：固定结构、排版规范。
 4. 写内容的 agent 按报告修订：重要的必须改，小问题改掉或写一句不改的理由，逐条写进报告里「复核」前面的「修订说明」一节（批次 1 定的）；审内容的 agent 复核修订，通过后把 `status` 改为 `reviewed`（几何图像只有占位框的不能标）。内容要等复核通过才提交，复核时 `git diff` 比不出这一轮改了什么：审内容的 agent 初审时先把要审的文件拷一份快照到自己的 scratchpad，复核时和快照比（批次 7 审查会话提的）。
-5. 写内容的 agent 把这一批作为一个 Git 提交提交上去；审查报告、审内容 agent 改的 `status`、`content/issues.yaml` 里新增的标记也并进这个提交。
+5. 写内容的 agent 把这一批作为一个 Git 提交提交上去；审查报告、审内容 agent 改的 `status`、`content/issues.yaml` 里新增的标记也并进这个提交。写代码的会话把这一批定下的规矩写回 plan.md 时，顺带更新根目录 `README.md` 里「现在写到哪了」的数字和日期，并进写回的提交（写代码的会话定的：2026-11-13 加了 README，那一段每批都会过时）。
 6. 你学的时候点「内容有误」，写进 `content/issues.yaml`。下一批开始前，写内容的 agent 先处理其中未解决的条目，处理完一条就在 `content/issues-resolved.yaml` 里记一条，不改 `issues.yaml`。改到已经 `reviewed` 的小节时，把它的 `status` 退回 `written`，由审内容 agent 复核。
 
 ## 常见坑
