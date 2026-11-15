@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 400" width="660" height="400" font-size="14">
+  <!-- 布儒斯特角：自然光以布儒斯特角 θB 从空气射到玻璃上（n2/n1 = 1.5），纸面是入射面。反射光和折射光互相垂直。入射光里电场垂直纸面的 s 偏振（点）和在纸面内的 p 偏振（短线）都有；折射光里两种都有；p 偏振的折射光推着玻璃里的电子沿垂直于折射光的方向振动，这个方向正好沿着反射光，振荡的偶极子沿轴线不辐射，所以反射光里没有 p 偏振，只剩 s 偏振。 -->
+  <line x1="40.0" y1="190.0" x2="620.0" y2="190.0" style="stroke: currentColor" stroke-width="1.4" />
+  <line x1="300.0" y1="40.0" x2="300.0" y2="355.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="5 4" />
+  <text x="50.0" y="178.0" fill="currentColor">空气 <tspan font-style="italic">n</tspan><tspan dy="4" font-size="11">1</tspan></text>
+  <text x="50.0" y="214.0" fill="currentColor">玻璃 <tspan font-style="italic">n</tspan><tspan dy="4" font-size="11">2</tspan></text>
+  <line x1="162.7" y1="98.5" x2="225.5" y2="140.4" style="stroke: currentColor" stroke-width="1.6" />
+  <path d="M 231.4 144.2 L 222.6 142.9 L 226.8 136.7 Z" style="fill: currentColor" />
+  <line x1="231.4" y1="144.2" x2="300.0" y2="190.0" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="300.0" y1="190.0" x2="368.6" y2="144.2" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="368.6" y1="144.2" x2="431.5" y2="102.4" style="stroke: currentColor" stroke-width="1.6" />
+  <path d="M 437.3 98.5 L 432.7 106.0 L 428.6 99.8 Z" style="fill: currentColor" />
+  <line x1="300.0" y1="190.0" x2="397.1" y2="335.6" style="stroke: currentColor" stroke-width="1.6" />
+  <path d="M 397.1 335.6 L 389.6 331.0 L 395.7 326.9 Z" style="fill: currentColor" />
+  <circle cx="187.4" cy="114.9" r="2.6" style="fill: currentColor" />
+  <line x1="208.3" y1="119.3" x2="199.5" y2="132.6" style="stroke: var(--accent, #2563eb)" stroke-width="1.8" />
+  <circle cx="253.3" cy="158.9" r="2.6" style="fill: currentColor" />
+  <line x1="274.2" y1="163.2" x2="265.4" y2="176.5" style="stroke: var(--accent, #2563eb)" stroke-width="1.8" />
+  <circle cx="330.2" cy="169.9" r="2.6" style="fill: currentColor" />
+  <circle cx="354.9" cy="153.4" r="2.6" style="fill: currentColor" />
+  <circle cx="396.1" cy="125.9" r="2.6" style="fill: currentColor" />
+  <circle cx="360.2" cy="280.3" r="2.6" style="fill: currentColor" />
+  <line x1="378.5" y1="293.3" x2="365.2" y2="302.2" style="stroke: var(--accent, #2563eb)" stroke-width="1.8" />
+  <circle cx="385.4" cy="318.1" r="2.6" style="fill: currentColor" />
+  <path d="M 261.7 164.5 L 262.6 163.2 L 263.5 162.0 L 264.4 160.9 L 265.4 159.7 L 266.4 158.6 L 267.4 157.5 L 268.5 156.5 L 269.6 155.4 L 270.8 154.5 L 272.0 153.5 L 273.2 152.6 L 274.4 151.8 L 275.7 151.0 L 277.0 150.2 L 278.3 149.4 L 279.6 148.8 L 281.0 148.1 L 282.4 147.5 L 283.8 147.0 L 285.2 146.4 L 286.6 146.0 L 288.1 145.6 L 289.5 145.2 L 291.0 144.9 L 292.5 144.6 L 294.0 144.4 L 295.5 144.2 L 297.0 144.1 L 298.5 144.0 L 300.0 144.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" stroke-linejoin="round" />
+  <text x="266.0" y="138.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">θ</tspan><tspan dy="4" font-size="11">B</tspan></text>
+  <path d="M 328.8 233.3 L 328.0 233.8 L 327.1 234.4 L 326.3 234.9 L 325.4 235.4 L 324.5 235.9 L 323.6 236.4 L 322.7 236.8 L 321.7 237.2 L 320.8 237.7 L 319.9 238.1 L 318.9 238.4 L 318.0 238.8 L 317.0 239.1 L 316.0 239.5 L 315.1 239.8 L 314.1 240.1 L 313.1 240.3 L 312.1 240.6 L 311.1 240.8 L 310.1 241.0 L 309.1 241.2 L 308.1 241.4 L 307.1 241.5 L 306.1 241.6 L 305.1 241.8 L 304.1 241.8 L 303.1 241.9 L 302.0 242.0 L 301.0 242.0 L 300.0 242.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" stroke-linejoin="round" />
+  <text x="315.0" y="260.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">θ</tspan><tspan dy="4" font-size="11">T</tspan></text>
+  <path d="M 313.3 181.1 L 322.2 194.4 L 308.9 203.3" style="stroke: currentColor" fill="none" stroke-width="1.0" stroke-linejoin="round" />
+  <line x1="353.4" y1="270.1" x2="360.9" y2="265.1" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 365.9 261.8 L 361.9 268.5 L 358.2 262.8 Z" style="fill: var(--good, #059669)" />
+  <line x1="353.4" y1="270.1" x2="345.9" y2="275.1" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 340.9 278.4 L 344.8 271.7 L 348.6 277.4 Z" style="fill: var(--good, #059669)" />
+  <line x1="338.4" y1="280.1" x2="241.1" y2="345.0" style="stroke: var(--good, #059669)" stroke-width="1.0" stroke-dasharray="4 3" />
+  <text x="156.7" y="88.5" fill="currentColor" text-anchor="start">入射光（自然光）</text>
+  <text x="445.3" y="102.5" fill="currentColor">反射光：只有 s 偏振</text>
+  <text x="387.1" y="357.6" fill="currentColor" text-anchor="middle">折射光：部分偏振</text>
+  <text x="235.1" y="327.0" style="fill: var(--good, #059669)" text-anchor="end">电子沿虚线方向振动，</text>
+  <text x="235.1" y="349.0" style="fill: var(--good, #059669)" text-anchor="end">虚线和反射光平行，</text>
+  <text x="235.1" y="371.0" style="fill: var(--good, #059669)" text-anchor="end">偶极子沿轴线不辐射</text>
+  <circle cx="478.0" cy="30.0" r="2.6" style="fill: currentColor" />
+  <text x="490.0" y="35.0" fill="currentColor">s 偏振：电场垂直纸面</text>
+  <line x1="470.0" y1="52.0" x2="486.0" y2="52.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.8" />
+  <text x="490.0" y="57.0" fill="currentColor">p 偏振：电场在纸面内</text>
+</svg>

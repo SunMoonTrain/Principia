@@ -1,0 +1,174 @@
+- id: p1
+  tier: easy
+  statement: |
+    用迈克耳孙干涉仪测一种单色光的波长：把一面反射镜移动$0.250\,\mathrm{mm}$，视场中心冒出了$820$个圆环。光的波长是多少？以$\mathrm{nm}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 2*0.250e-3/820*1e9
+    unit: |
+      $\mathrm{nm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      光来回走两次，反射镜移动$\Delta d$，中心的光程差改变$2\Delta d$。
+    - |
+      每冒出一个圆环，光程差改变一个波长：$2\Delta d=N\lambda$。
+    - |
+      $\lambda=\frac{2\times0.250\times10^{-3}}{820}\,\mathrm m\approx6.10\times10^{-7}\,\mathrm m=610\,\mathrm{nm}$。
+  solution: |
+    $2\Delta d=N\lambda$，$\lambda=\frac{2\times0.250\,\mathrm{mm}}{820}\approx6.10\times10^{-4}\,\mathrm{mm}=610\,\mathrm{nm}$，是橙红色的光。反射镜每移动约$0.3\,\mu\mathrm m$就冒出一个圆环，用肉眼数圆环，量的是比光学显微镜能分辨的还小的位移。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于迈克耳孙干涉仪的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        一面反射镜沿法线移动一个波长，视场中心冒出或缩进两个圆环
+      - |
+        $M_1$和$M_2'$略微倾斜时，看到的仍是同心圆环
+      - |
+        两臂光程相等（$d=0$）时用单色光照明，视场里的圆环最多
+      - |
+        去掉补偿板，用单色的激光照明，就看不到条纹了
+      - |
+        用钠灯照明，从两臂光程相等的位置开始移动反射镜，条纹会周期性地变清楚、变模糊
+    value: [1, 5]
+  hints:
+    - |
+      反射镜移动$\frac\lambda2$，中心变化一个圆环；$M_1$和$M_2'$倾斜时空气膜是楔形的。
+    - |
+      $d=0$时各个方向光程差相同；补偿板只影响各种颜色的光程差是否一样。
+    - |
+      A、E 对；B、C、D 错。
+  solution: |
+    A 对：光程差改变$2\Delta d=2\lambda$，中心变化两个圆环。E 对：钠的两条黄线波长差约$0.6\,\mathrm{nm}$，两套条纹时而对齐、时而错开，可见度周期性地起伏。
+
+    B 错：两者倾斜时空气膜是楔形的，看到的是直的等厚条纹。C 错：$d=0$时各个方向的光程差都一样，整个视场一样亮或一样暗，一个圆环也没有；$d$越大，圆环越多、越密。D 错：用单色光时，缺了补偿板只是多了一个固定的光程差，条纹照样有，只是挪了位置；白光才需要它。
+
+- id: p3
+  tier: medium
+  statement: |
+    汞灯的黄光主要是两条亮度相近、波长为$577.0\,\mathrm{nm}$和$579.1\,\mathrm{nm}$的谱线，设它们一样亮。用它照明迈克耳孙干涉仪，从两臂光程相等的位置开始移动反射镜，条纹每隔一段距离就模糊到看不见一次。相邻两次看不见时，反射镜移动了多少？以$\mathrm{mm}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 577.0*579.1/(2*(579.1 - 577.0))*1e-6
+    unit: |
+      $\mathrm{mm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      两条谱线各成一套条纹，光程差为$\Delta$时两者的相位差之差是$2\pi\Delta\Bigl(\frac1{\lambda_1}-\frac1{\lambda_2}\Bigr)$。
+    - |
+      可见度是$\Bigl|\cos\Bigl[\pi\Delta\Bigl(\frac1{\lambda_1}-\frac1{\lambda_2}\Bigr)\Bigr]\Bigr|$，相邻两个零点的光程差相差$\frac{\lambda_1\lambda_2}{\lambda_2-\lambda_1}$。
+    - |
+      反射镜移动的距离是光程差的一半：$\frac{577.0\times579.1}{2\times2.1}\,\mathrm{nm}\approx7.96\times10^4\,\mathrm{nm}$。
+  solution: |
+    可见度$\Bigl|\cos\Bigl[\pi\Delta\Bigl(\frac1{\lambda_1}-\frac1{\lambda_2}\Bigr)\Bigr]\Bigr|$（见[相干性](lesson:physics.optics.coherence)第 5 题），相邻两个零点的光程差相差$\frac{\lambda_1\lambda_2}{\lambda_2-\lambda_1}=\frac{577.0\times579.1}{2.1}\,\mathrm{nm}\approx1.59\times10^5\,\mathrm{nm}$。光程差是反射镜移动距离的$2$倍，所以反射镜每移动约$7.96\times10^4\,\mathrm{nm}\approx0.0796\,\mathrm{mm}$，条纹看不见一次。两条谱线的波长差是钠的三倍多，起伏的周期也就短得多。
+
+- id: p4
+  tier: medium
+  statement: |
+    迈克耳孙干涉仪的$M_1$和$M_2'$平行，相距$0.400\,\mathrm{mm}$，用波长$500\,\mathrm{nm}$的扩展光源照明，视场中心恰好是亮点。从中心往外数，第$5$个亮环对应的光和反射镜法线的夹角是多少度？保留三位有效数字。
+  answer:
+    type: number
+    value: acos(1 - 5/1600)*180/pi
+    unit: |
+      $^\circ$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      亮环满足$2d\cos\theta=m\lambda$；中心$\theta=0$，级次$m_0=\frac{2d}\lambda$。
+    - |
+      $m_0=\frac{2\times0.400\times10^{-3}}{500\times10^{-9}}=1600$，往外第$k$个亮环的级次是$m_0-k$。
+    - |
+      $\cos\theta_5=\frac{1595}{1600}$，$\theta_5\approx4.53^\circ$。
+  solution: |
+    中心级次$m_0=\frac{2d}\lambda=1600$，是整数，中心亮。往外第$5$个亮环的级次是$1595$，$\cos\theta_5=\frac{1595}{1600}\approx0.99688$，$\theta_5\approx4.53^\circ$。角度小时也可以用$1-\cos\theta\approx\frac{\theta^2}2$，$\theta_5\approx\sqrt{\frac{2\times5}{1600}}\,\mathrm{rad}\approx0.0791\,\mathrm{rad}$，结果相同。第$k$个环的倾角和$\sqrt k$成正比，越往外越密。
+
+- id: p5
+  tier: hard
+  statement: |
+    1887 年的迈克耳孙-莫雷实验，两臂的有效长度都约是$L=11\,\mathrm m$（光来回反射多次）。设想地球以$v=3.0\times10^4\,\mathrm{m/s}$相对以太运动，光相对以太的速度是$c$，速度按通常的方式相加。
+
+    （1）一臂沿运动方向，证明光来回一趟用时$\frac{2L/c}{1-v^2/c^2}$；另一臂垂直于运动方向，用时$\frac{2L/c}{\sqrt{1-v^2/c^2}}$。
+
+    （2）两者之差约为$\frac Lc\cdot\frac{v^2}{c^2}$。把整台仪器转过$90^\circ$，两臂对调，光程差改变约$\frac{2Lv^2}{c^2}$。
+
+    （3）用$500\,\mathrm{nm}$的光，转动时条纹应该移动多少条？他们观测到的不到它的二十分之一，说明了什么？
+  hints:
+    - |
+      沿运动方向：去时光相对仪器的速度是$c-v$，回来时是$c+v$。
+    - |
+      垂直方向：光相对以太斜着走，相对仪器的速度是$\sqrt{c^2-v^2}$；$\frac{v^2}{c^2}$很小时用$\frac1{1-x}\approx1+x$、$\frac1{\sqrt{1-x}}\approx1+\frac x2$。
+    - |
+      $\frac{2Lv^2}{c^2\lambda}=\frac{2\times11\times10^{-8}}{5.0\times10^{-7}}\approx0.44$。
+  reference: |
+    （1）沿运动方向：$\frac L{c-v}+\frac L{c+v}=\frac{2Lc}{c^2-v^2}=\frac{2L/c}{1-v^2/c^2}$。垂直方向：要让光回到运动着的反射镜，光相对以太要斜着走，相对仪器的速度是$\sqrt{c^2-v^2}$，来回$\frac{2L}{\sqrt{c^2-v^2}}=\frac{2L/c}{\sqrt{1-v^2/c^2}}$。
+
+    （2）$\frac{v^2}{c^2}=10^{-8}$很小，两者约为$\frac{2L}c\Bigl(1+\frac{v^2}{c^2}\Bigr)$和$\frac{2L}c\Bigl(1+\frac{v^2}{2c^2}\Bigr)$，之差$\frac{L}c\cdot\frac{v^2}{c^2}$，对应的光程差$\frac{Lv^2}{c^2}$。转过$90^\circ$，两臂的角色对调，光程差变成$-\frac{Lv^2}{c^2}$，改变了$\frac{2Lv^2}{c^2}$。
+
+    （3）条纹移动$\frac{2Lv^2}{c^2\lambda}=\frac{2\times11\times10^{-8}}{5.0\times10^{-7}}\approx0.44$条，仪器足以看出百分之几条的移动，实际看到的不到预期的二十分之一，而且一年里不同时候、地球朝不同方向运动时都是这样。这说明光在两个方向上来回的时间一样，光相对地球的速度并不随方向变：「光相对以太以$c$运动，速度按通常方式相加」这个设想不对。后来爱因斯坦以光速不变为出发点建立了狭义相对论（见[相对性原理与光速不变](lesson:physics.special-relativity.postulates)）。
+
+- id: p6
+  tier: hard
+  statement: |
+    傅里叶变换光谱仪就是一台迈克耳孙干涉仪：匀速移动一面反射镜，记下视场中心的光强随光程差$\Delta$的变化（干涉图），再算出光源的光谱。
+
+    （1）光源发出光强为$I_1$、$I_2$、波长为$\lambda_1$、$\lambda_2$的两条谱线（谱线本身很窄），写出中心光强随$\Delta$变化的式子，说明它为什么时强时弱。（2）一般地，光源的光谱由许多波长组成，说明干涉图里随$\Delta$起伏的部分怎样记下了各个波长的光强。（3）要分开中心波长$500\,\mathrm{nm}$附近相差$0.010\,\mathrm{nm}$的两条谱线，反射镜至少要移动多远？
+  hints:
+    - |
+      两条谱线互不相干，各自的条纹光强相加，每条的光强按$1+\cos\frac{2\pi\Delta}{\lambda_j}$变化。
+    - |
+      波长为$\lambda$的成分在干涉图里贡献一个「频率」为$\frac1\lambda$的余弦，光强越大，余弦的振幅越大。
+    - |
+      至少要让两个余弦的相位差拉开一整周，即$\Delta\Bigl(\frac1{\lambda_1}-\frac1{\lambda_2}\Bigr)\ge1$。
+  reference: |
+    （1）$I(\Delta)=I_1\Bigl(1+\cos\frac{2\pi\Delta}{\lambda_1}\Bigr)+I_2\Bigl(1+\cos\frac{2\pi\Delta}{\lambda_2}\Bigr)$（比例系数取$1$）。两个余弦的「频率」$\frac1{\lambda_1}$、$\frac1{\lambda_2}$相差很小，它们时而同相、时而反相，干涉图像拍频一样时强时弱，强弱起伏一个周期，$\Delta$变化$\frac{\lambda_1\lambda_2}{|\lambda_2-\lambda_1|}$。
+
+    （2）各个波长互不相干，$I(\Delta)=\int S(\sigma)[1+\cos(2\pi\sigma\Delta)]\,\dd\sigma$，$\sigma=\frac1\lambda$，$S(\sigma)$是单位$\sigma$间隔里的光强。起伏的部分$\int S(\sigma)\cos(2\pi\sigma\Delta)\,\dd\sigma$是$S$的余弦变换，每个$\sigma$的光强变成干涉图里一个频率为$\sigma$的余弦的振幅；对干涉图做傅里叶分析，就把各个$\sigma$的振幅也就是光谱一个个算了出来。
+
+    （3）两条谱线要在干涉图里分得开，至少要测到两个余弦的相位差拉开一整周的地方：$\Delta_{\max}\Bigl|\frac1{\lambda_1}-\frac1{\lambda_2}\Bigr|\ge1$，$\Delta_{\max}\ge\frac{\lambda^2}{\delta\lambda}=\frac{(500\,\mathrm{nm})^2}{0.010\,\mathrm{nm}}=2.5\times10^7\,\mathrm{nm}=25\,\mathrm{mm}$，反射镜至少移动它的一半，约$12.5\,\mathrm{mm}$。反射镜走得越远，分辨本领越高，这和光栅照亮的缝越多、分辨本领越高是同一个道理。
+
+- id: p7
+  tier: thinking
+  statement: |
+    激光干涉引力波天文台（LIGO）是两臂各长$4\,\mathrm{km}$的迈克耳孙干涉仪，2015 年测到引力波时，两臂长度的相对变化只有约$10^{-21}$。
+
+    （1）为什么要把臂做得这么长？（2）每条臂里还各装了一对反射镜，光在里面来回反射约三百次才出来。这起什么作用？
+
+    （3）臂长变化约$4\times10^{-18}\,\mathrm m$，比光的波长（约$1\,\mu\mathrm m$）小得多，远不到一个条纹。这样小的变化怎么可能测出来？
+  hints:
+    - |
+      引力波使臂长按比例变化，$\Delta L=hL$，$h$是那个相对变化。
+    - |
+      光在臂里多走几趟，光程差就放大几倍。
+    - |
+      不必数整个条纹，测的是中心光强的微小变化；光子越多，光强测得越准。
+  reference: |
+    （1）引力波让两臂的长度按比例变化，一臂伸长、另一臂缩短，$\Delta L=hL$。$h$只有$10^{-21}$，$L$越长，$\Delta L$越大，越容易测；$4\,\mathrm{km}$的臂长变化约$4\times10^{-18}\,\mathrm m$。
+
+    （2）光在两面反射镜之间来回约三百次，像[多光束干涉与法布里-珀罗干涉仪](lesson:physics.optics.fabry-perot)里的谐振腔一样，相当于把臂长延长了约三百倍，两路光的光程差也放大了约三百倍。
+
+    （3）条纹的位置可以测到远小于一个条纹的程度：让干涉仪工作在接近暗纹的地方，光程差一点点变化就让输出的光强变化。光强测得多准，取决于收到多少光子：用几十瓦的激光，再让光在干涉仪里循环放大，每秒有极多的光子，光子数的随机起伏相对很小，光程差的微小变化就显现出来。此外，还得把反射镜和地面的震动、热起伏隔绝到同样的水平，这才是最难的地方。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）用白光照明迈克耳孙干涉仪，为什么只有两臂光程几乎相等时才看得到条纹，而且条纹是彩色的，中间有一条黑色（或白色）的条纹？（2）为什么用白光时一定要有补偿板，用激光时却可以不要？（3）迈克耳孙用白光条纹把米原器的长度和光的波长联系起来。为什么白光条纹适合用来找「两臂光程完全相等」的位置？
+  hints:
+    - |
+      白光的相干长度约$1\,\mu\mathrm m$；各种颜色的条纹间距不同。
+    - |
+      玻璃的折射率随颜色变，没有补偿板时，各种颜色的光程差不一样。
+    - |
+      光程差为零的位置对所有颜色都一样。
+  reference: |
+    （1）白光包含各种波长，每种颜色各成一套条纹，间距和波长成正比。光程差为零处各种颜色都同相，是一条没有颜色的条纹（分束器的相位差使它可能是黑的或白的）；离开它，各种颜色错开，每处叠加出不同的颜色；光程差超过约$1\,\mu\mathrm m$（白光的相干长度）以后，各色条纹完全错乱，混成均匀的白光，只能看到中间几条彩色条纹。
+
+    （2）没有补偿板时，一路比另一路多穿过两次玻璃，玻璃对各种颜色的折射率不同，各种颜色多出的光程不一样，找不到对所有颜色光程差都为零的位置，彩色条纹就模糊甚至看不见。激光是单色的，多出的玻璃只带来一个固定的光程差，挪一挪反射镜就补回来了。
+
+    （3）单色光的条纹一条和一条一模一样，看到某条亮纹，分不清它是第几级；白光条纹只在光程差为零附近出现，中间那条又和别的不同，一眼就能认出零级的位置，误差小到一个波长以内。迈克耳孙就是用它来确定两臂严格相等，再数单色光的条纹，把长度和波长一级级地联系起来。

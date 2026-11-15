@@ -60,7 +60,7 @@ status: reviewed
 
 ### 例 2　以太参考系里重算迈克耳孙-莫雷实验
 
-迈克耳孙干涉仪（interferometer）的两臂在仪器静止时都长$L$，仪器相对某个:term[惯性系]{id="physics.special-relativity.inertial-frame"}（以前设想的以太系）以$v$运动，臂 1 沿运动方向，臂 2 垂直于运动方向。在这个惯性系里计入:term[长度收缩]{id="physics.special-relativity.length-contraction"}，两束光往返的时间还有差别吗？
+:term[迈克耳孙干涉仪]{id="physics.optics.michelson-interferometer"}（Michelson interferometer）的两臂在仪器静止时都长$L$，仪器相对某个:term[惯性系]{id="physics.special-relativity.inertial-frame"}（以前设想的以太系）以$v$运动，臂 1 沿运动方向，臂 2 垂直于运动方向。在这个惯性系里计入:term[长度收缩]{id="physics.special-relativity.length-contraction"}，两束光往返的时间还有差别吗？
 
 **为什么想到这么做**：[相对性原理与光速不变](lesson:physics.special-relativity.postulates)的例 1 在以太系里算过往返时间，那时没有考虑臂 1 会缩短。在任何惯性系里光速都是$c$，只要把臂 1 的长度换成$\frac{L}{\gamma}$。
 

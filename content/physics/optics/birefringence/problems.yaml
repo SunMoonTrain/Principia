@@ -1,0 +1,169 @@
+- id: p1
+  tier: easy
+  statement: |
+    用方解石（$n_{\mathrm o}=1.658$，$n_{\mathrm e}=1.486$）做波长$633\,\mathrm{nm}$的零级四分之一波片，即相位差恰为$\frac\pi2$。晶片要多厚？以$\mu\mathrm m$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 633e-9/(4*(1.658 - 1.486))*1e6
+    unit: |
+      $\mu\mathrm m$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      波片的相位差$\delta=\frac{2\pi}\lambda|n_{\mathrm e}-n_{\mathrm o}|d$。
+    - |
+      令$\delta=\frac\pi2$，$d=\frac{\lambda}{4|n_{\mathrm e}-n_{\mathrm o}|}$。
+    - |
+      $d=\frac{633\,\mathrm{nm}}{4\times0.172}\approx920\,\mathrm{nm}=0.920\,\mu\mathrm m$。
+  solution: |
+    $|n_{\mathrm e}-n_{\mathrm o}|=0.172$，$d=\frac{\lambda}{4\times0.172}=\frac{633\,\mathrm{nm}}{0.688}\approx920\,\mathrm{nm}=0.920\,\mu\mathrm m$，不到一微米，根本没法加工。方解石两个主折射率相差太大，所以波片多用相差小得多的石英、云母来做。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        光沿光轴方向射进方解石，不分成两束
+      - |
+        双折射产生的 o 光和 e 光，偏振方向互相平行
+      - |
+        右旋圆偏振光通过二分之一波片，变成左旋圆偏振光
+      - |
+        e 光在晶体里总是不满足折射定律
+      - |
+        一片晶片对波长$600\,\mathrm{nm}$的光是零级四分之一波片，不计主折射率随波长的变化，它对$300\,\mathrm{nm}$的光是二分之一波片
+    value: [1, 3, 5]
+  hints:
+    - |
+      光轴的定义；o 光的电场垂直于光轴和传播方向所在的平面，e 光的电场在这个平面里。
+    - |
+      二分之一波片让$\delta$增加$\pi$；波片的相位差和波长成反比。想一想波片里 e 光是怎样走的。
+    - |
+      A、C、E 对；B、D 错。
+  solution: |
+    A 对：这正是光轴的定义。C 对：右旋圆偏振的$\delta=-\frac\pi2$，加上$\pi$变成$\frac\pi2$，是左旋。E 对：$\delta=\frac{2\pi}\lambda|n_{\mathrm e}-n_{\mathrm o}|d$，波长减半，相位差从$\frac\pi2$变成$\pi$。
+
+    B 错：两束光的偏振方向互相垂直。D 错：在波片里，光轴平行于表面、光垂直射入，e 光沿法线笔直穿过，入射角和折射角都是零，满足折射定律；e 光只是一般不满足。
+
+- id: p3
+  tier: medium
+  statement: |
+    线偏振光的偏振方向和四分之一波片的快轴成$30^\circ$，通过波片后再通过一片理想的偏振片。转动偏振片，透过的光强的最大值是最小值的多少倍？
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      沿快轴取$x$轴、慢轴取$y$轴：$A_x=A\cos30^\circ$，$A_y=A\sin30^\circ$，波片让$\delta$从$0$变成$\frac\pi2$。
+    - |
+      $\delta=\frac\pi2$时椭圆的两轴沿$x$、$y$轴，透振方向和$x$轴成$\theta$时，光强正比于$A_x^2\cos^2\theta+A_y^2\sin^2\theta$。
+    - |
+      最大值和最小值之比$\frac{A_x^2}{A_y^2}=\cot^230^\circ=3$。
+  solution: |
+    沿快轴取$x$轴，入射光$A_x=A\cos30^\circ$、$A_y=A\sin30^\circ$、$\delta=0$；通过四分之一波片后$\delta=\frac\pi2$，端点画出两轴沿$x$、$y$的椭圆，半轴是$A\cos30^\circ$和$A\sin30^\circ$。透振方向和$x$轴成$\theta$时，$\cos\omega t\sin\omega t$的平均为零，透过的光强正比于$A_x^2\cos^2\theta+A_y^2\sin^2\theta$，最大在$\theta=0$，最小在$\theta=90^\circ$，比值$\cot^230^\circ=3$。偏振方向和快轴成$45^\circ$时比值是$1$，即圆偏振光。
+
+- id: p4
+  tier: medium
+  statement: |
+    厚$42.0\,\mu\mathrm m$的石英片（$n_{\mathrm o}=1.544$，$n_{\mathrm e}=1.553$），光轴平行于表面，夹在两片透振方向互相垂直的理想偏振片之间，光轴和第一片的透振方向成$45^\circ$。波长$600\,\mathrm{nm}$的光透过第一片后光强为$I_1$，透过第二片后的光强是$I_1$的多少倍？保留三位有效数字。
+  answer:
+    type: number
+    value: sin(0.63*pi)^2
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      把透过第一片的线偏振光沿快轴、慢轴分解，两个分量振幅相等，石英片让它们相差$\delta=\frac{2\pi}\lambda|n_{\mathrm e}-n_{\mathrm o}|d$。
+    - |
+      两个分量投影到第二片的透振方向上，一个是$\frac A2\cos\omega t$，另一个是$-\frac A2\cos(\omega t-\delta)$，合起来的振幅是$A\sin\frac\delta2$。
+    - |
+      $\delta=2\pi\times\frac{0.009\times42.0}{0.600}=1.26\pi$，$\frac{I}{I_1}=\sin^2(0.63\pi)\approx0.842$。
+  solution: |
+    透过第一片的电场振幅为$A$，沿快轴、慢轴的分量各为$\frac A{\sqrt2}$，其中一个分量带负号（两轴和透振方向的夹角是$45^\circ$和$-45^\circ$）。穿过石英片，两者相差$\delta=\frac{2\pi}{600\,\mathrm{nm}}\times0.009\times42.0\,\mu\mathrm m=1.26\pi$。第二片的透振方向和两轴也都成$45^\circ$，投影后是$\frac A2[\cos\omega t-\cos(\omega t-\delta)]=-A\sin\frac\delta2\sin\Bigl(\omega t-\frac\delta2\Bigr)$，振幅$A\sin\frac\delta2$，所以$\frac I{I_1}=\sin^2\frac\delta2=\sin^2(0.63\pi)\approx0.842$。没有石英片时这里全黑。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）证明：两片快轴互相平行的四分之一波片叠在一起，相当于一片二分之一波片；快轴互相垂直时，相当于什么也没放。（2）证明：线偏振光通过二分之一波片，射出的偏振方向和原来的偏振方向关于快轴对称；把波片绕光的传播方向转过$\beta$，射出光的偏振方向转过$2\beta$。（3）要把沿水平方向线偏振的激光变成沿竖直方向线偏振，二分之一波片的快轴该怎样放？有几种放法？
+  hints:
+    - |
+      沿快轴取$x$轴，波片的作用是让$E_y$多落后它的相位差；两片叠在一起，相位差相加。
+    - |
+      $\delta$增加$\pi$，$E_y$反号。设快轴和水平方向成$\beta$、入射偏振方向和水平方向成$\theta$。
+    - |
+      射出的偏振方向和水平方向成$2\beta-\theta$。
+  reference: |
+    （1）沿第一片的快轴取$x$轴。快轴平行时，两片都让$E_y$多落后$\frac\pi2$，一共$\pi$，和一片二分之一波片一样。快轴垂直时，第一片让$E_y$多落后$\frac\pi2$，第二片让$E_x$多落后$\frac\pi2$，两个分量各落后$\frac\pi2$，相对的相位差不变；两个分量一起落后同样的相位，只是整束光晚到一点，偏振态不变，相当于什么也没放。
+
+    （2）在快轴、慢轴的坐标里，偏振方向和快轴成$\theta'$的线偏振光，$E_y$和$E_x$同号或异号；二分之一波片让$\delta$增加$\pi$，$E_y$反号，$E_x$不变，偏振方向变成和快轴成$-\theta'$，也就是关于快轴的镜像。用水平方向量角度，快轴在$\beta$，入射偏振方向在$\theta$，$\theta'=\theta-\beta$，射出的在$\beta-(\theta-\beta)=2\beta-\theta$。$\beta$增加，射出的方向增加$2\beta$。
+
+    （3）$\theta=0$，要$2\beta=\pm90^\circ$（相差$180^\circ$的方向是同一个偏振方向），$\beta=45^\circ$或$-45^\circ$：快轴和水平方向成$45^\circ$，向左斜、向右斜都行。这两种放法其实就是快轴、慢轴互换，所以也可以说：让入射偏振方向和快轴、慢轴都成$45^\circ$。
+
+- id: p6
+  tier: hard
+  statement: |
+    两片理想偏振片的透振方向互相垂直，中间夹一片相位差为$\delta$的波片，它的快轴和第一片的透振方向成$\theta$角。透过第一片的光强为$I_1$。
+
+    （1）证明透过第二片的光强$I=I_1\sin^22\theta\sin^2\frac\delta2$。（2）$\theta$取哪些值时全黑？取多少时最亮？
+
+    （3）把一把受过力的透明塑料尺夹在两片正交的偏振片之间，用白光照射，会看到彩色的条纹：塑料受力后变成双折射的，各处的$\delta$和快轴方向随受力情况变化。为什么把塑料尺相对于偏振片转一个角度，条纹的亮暗会变，颜色却基本不变？
+  hints:
+    - |
+      把透过第一片的电场沿快轴、慢轴分解，振幅是$A\cos\theta$和$A\sin\theta$；再把两个分量投影到第二片的透振方向上。
+    - |
+      投影后是$A\sin\theta\cos\theta[\cos\omega t-\cos(\omega t-\delta)]$。
+    - |
+      $\sin^22\theta$和波长无关，$\sin^2\frac\delta2$随波长变。
+  reference: |
+    （1）第一片沿$x$轴，快轴沿$(\cos\theta,\sin\theta)$，慢轴沿$(-\sin\theta,\cos\theta)$。透过第一片的电场$A\cos\omega t$沿$x$，沿快轴的分量是$A\cos\theta$，沿慢轴的是$-A\sin\theta$，穿过波片后慢轴分量多落后$\delta$。第二片沿$y$轴，快轴、慢轴在$y$方向上的分量是$\sin\theta$和$\cos\theta$，所以透过的电场是$A\sin\theta\cos\theta[\cos\omega t-\cos(\omega t-\delta)]$，振幅$2A\sin\theta\cos\theta\sin\frac\delta2=A\sin2\theta\sin\frac\delta2$，$I=I_1\sin^22\theta\sin^2\frac\delta2$。
+
+    （2）$\theta=0^\circ$、$90^\circ$（快轴或慢轴沿第一片的透振方向）时全黑：光只有一个分量，偏振态不变，被第二片挡住。$\theta=45^\circ$时$\sin^22\theta=1$最大，这时$I=I_1\sin^2\frac\delta2$，$\delta=\pi$（二分之一波片）时全部透过。
+
+    （3）颜色来自$\sin^2\frac\delta2$：$\delta$和波长成反比，各处的$\delta$不同，哪些波长透过得多也不同，所以各处颜色不同，$\delta$相同的地方连成一条条彩色条纹。转动塑料尺只改变各处快轴和偏振片的夹角，影响的是因子$\sin^22\theta$，它对所有波长一样，只让亮暗变化，不改变颜色；快轴恰好沿透振方向的地方变成黑线。工程上就用这个办法看透明模型里的应力分布。
+
+- id: p7
+  tier: thinking
+  statement: |
+    例 1 里的两片石英四分之一波片，一片是厚$16.4\,\mu\mathrm m$的零级波片，一片是厚约$0.67\,\mathrm{mm}$、相位差多出$10$个$2\pi$的多级波片，对$589\,\mathrm{nm}$的光都恰好是四分之一波片。
+
+    （1）用它们去处理$600\,\mathrm{nm}$的光（不计主折射率随波长的变化），两片的相位差各变成多少？哪一片还大致是四分之一波片？
+
+    （2）温度变化让$n_{\mathrm e}-n_{\mathrm o}$变了一点，哪一片受的影响大？（3）既然这样，为什么还要做多级波片？能不能想个办法兼顾两头？
+  hints:
+    - |
+      $\delta=\frac{2\pi}\lambda|n_{\mathrm e}-n_{\mathrm o}|d$，波长变化时$\delta$按$\frac{589}{600}$缩小。
+    - |
+      零级波片的$\delta=\frac\pi2\times\frac{589}{600}$，多级波片的$\delta=\Bigl(20+\frac12\Bigr)\pi\times\frac{589}{600}$，只看除去$2\pi$整数倍后剩下的部分。
+    - |
+      两片多级波片快轴互相垂直地叠在一起，起作用的是两者相位差之差。
+  reference: |
+    （1）零级波片：$\delta=\frac\pi2\times\frac{589}{600}\approx0.491\pi$，和$\frac\pi2$只差约$2\%$，仍然大致是四分之一波片。多级波片：$\delta=20.5\pi\times\frac{589}{600}\approx20.12\pi$，去掉$10$个$2\pi$只剩约$0.12\pi$，接近$\frac\pi8$，已经完全不是四分之一波片。
+
+    （2）$\delta$正比于$(n_{\mathrm e}-n_{\mathrm o})d$，同样相对变化的折射率差，厚的那片$\delta$的变化大约是薄的那片的$41$倍，多级波片对温度也敏感得多。
+
+    （3）零级的石英片只有十几微米，太薄、太脆，几乎没法加工和安装；多级波片厚实好做，只适合在设计的那个波长、稳定的温度下用。兼顾的办法之一是把两片厚度相差一个零级波片的多级波片，快轴互相垂直地叠在一起：两片的相位差相互抵掉，起作用的只是它们的差，效果和零级波片一样，又足够厚实（复合零级波片）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    把一块方解石压在写了字的纸上，透过它垂直地往下看，每个字都有两个像。
+
+    （1）转动方解石时，一个像不动，另一个绕着它转。不动的是哪个像？为什么？
+
+    （2）在方解石上面放一片偏振片并转动它，会看到什么？（3）如果照亮纸的是一束线偏振光，两个像的亮度怎样随它的偏振方向变化？
+  hints:
+    - |
+      光从纸上的字近乎垂直地射进方解石，o 光满足折射定律。
+    - |
+      o 光和 e 光都是线偏振的，偏振方向互相垂直。
+    - |
+      把入射光的电场沿 o 光、e 光的两个偏振方向分解。
+  reference: |
+    （1）不动的是 o 光的像。o 光满足折射定律，垂直射入时笔直穿过，和晶体怎样转无关；e 光偏的方向由光轴决定，晶体一转，光轴跟着转，e 光的像就绕着 o 光的像转。
+
+    （2）两个像的偏振方向互相垂直。偏振片转到透振方向和 o 光的偏振方向平行时，e 光的像消失、o 光的像最亮；再转$90^\circ$，反过来。中间的角度两个像都看得见，亮度此消彼长，每转$90^\circ$交换一次。
+
+    （3）纸上反射的普通光是自然光，两个像一样亮，各占一半。若照亮的是线偏振光，设它的偏振方向和 o 光的偏振方向成$\varphi$角，入射电场沿两个方向的分量是$A\cos\varphi$和$A\sin\varphi$，o 像的亮度正比于$\cos^2\varphi$，e 像正比于$\sin^2\varphi$，两者之和不变；$\varphi=0$或$90^\circ$时只剩一个像。方解石就这样把一束光按偏振分成了两束，可以用来做偏振器。

@@ -1,0 +1,166 @@
+- id: p1
+  tier: easy
+  statement: |
+    光强为$I_0$的自然光依次通过两片理想的偏振片，两片的透振方向夹角为$50^\circ$。透过的光强是$I_0$的多少倍？保留三位有效数字。
+  answer:
+    type: number
+    value: 0.5*cos(50*pi/180)^2
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      自然光透过第一片，光强减半，成为沿第一片透振方向的线偏振光。
+    - |
+      第二片用马吕斯定律，$\theta=50^\circ$。
+    - |
+      $\frac12\cos^250^\circ\approx\frac12\times0.4132\approx0.207$。
+  solution: |
+    自然光透过第一片后光强为$\frac{I_0}2$，沿第一片的透振方向线偏振。它和第二片的透振方向成$50^\circ$，由马吕斯定律，透过$\frac{I_0}2\cos^250^\circ\approx0.207I_0$，大约是入射光的五分之一。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        两个振幅相等、相位差为零、互相垂直的线偏振分量，合起来是线偏振光，偏振方向和两个分量都成$45^\circ$
+      - |
+        部分偏振光透过转动的偏振片，透过的光强最小可以是零
+      - |
+        光强为$I_0$的自然光透过两片透振方向相同的理想偏振片，透过的光强是$\frac{I_0}2$
+      - |
+        椭圆偏振光透过偏振片，把偏振片转到合适的角度，可以一点光也不透过
+      - |
+        电场为$E_x=A\cos(\omega t-kz)$、$E_y=2A\cos\bigl(\omega t-kz+\frac\pi3\bigr)$的光，迎着光看电场逆时针转，是左旋椭圆偏振光
+    value: [1, 3]
+  hints:
+    - |
+      线偏振要求$E_y$总是$E_x$的固定倍数；部分偏振光里有一部分是自然光。
+    - |
+      第一片之后的光已经沿透振方向线偏振；把$E_y$写成$2A\cos(\omega t-kz-\delta)$的样子，看$\delta$是正是负。
+    - |
+      A、C 对；B、D、E 错。
+  solution: |
+    A 对：相位差为零时$E_y=E_x$，电场沿$x$、$y$两轴的角平分线来回振动。C 对：第一片透过$\frac{I_0}2$，透过的光沿透振方向线偏振，第二片透振方向相同，$\cos^20=1$，全部透过。
+
+    B 错：部分偏振光里的自然光不管偏振片转到哪里都透过一半，光强降不到零。D 错：椭圆偏振光的电场在每个方向上都有不为零的分量，透过的光强有最小值，但不是零。E 错：$E_y=2A\cos\bigl(\omega t-kz+\frac\pi3\bigr)$，$\delta=-\frac\pi3$，$E_y$比$E_x$超前。在$z=0$处，$\omega t=0$时电场是$(A,A)$，$\omega t=\frac\pi6$时是$\bigl(\frac{\sqrt3}2A,0\bigr)$，迎着光看从第一象限转到$x$轴上，是顺时针，为右旋椭圆偏振光。
+
+- id: p3
+  tier: medium
+  statement: |
+    沿竖直方向线偏振的光依次通过$6$片理想的偏振片，第$k$片的透振方向和竖直方向成$15^\circ\times k$（$k=1,2,\dots,6$），最后一片的透振方向是水平的。透过的光强是入射光强的多少倍？保留三位有效数字。
+  answer:
+    type: number
+    value: cos(pi/12)^12
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      每经过一片，偏振方向就转到这一片的透振方向，相邻两片的夹角都是$15^\circ$。
+    - |
+      每片都用一次马吕斯定律，透过的比例都是$\cos^215^\circ$，$6$片相乘。
+    - |
+      $(\cos^215^\circ)^6=\cos^{12}15^\circ\approx0.660$。
+  solution: |
+    入射光和第一片成$15^\circ$，以后相邻两片也都成$15^\circ$，每片透过$\cos^215^\circ\approx0.9330$，透过的光沿这一片的透振方向线偏振。$6$片之后光强是入射光的$\cos^{12}15^\circ\approx0.660$倍，偏振方向从竖直转到了水平。只放一片水平的偏振片，光会被完全挡住；分成许多小步，大部分光都能转过去，片数越多、每步越小，透过得越多。
+
+- id: p4
+  tier: medium
+  statement: |
+    一束光的电场是$E_x=A\cos(\omega t-kz)$，$E_y=2A\cos\bigl(\omega t-kz-\frac\pi3\bigr)$。让它透过一片理想的偏振片，转动偏振片，透过的光强的最大值是最小值的多少倍？保留三位有效数字。
+  answer:
+    type: number
+    value: (5 + sqrt(13))/(5 - sqrt(13))
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      透振方向和$x$轴成$\theta$时，透过的是$E_\theta=E_x\cos\theta+E_y\sin\theta$，光强正比于$E_\theta^2$的时间平均。
+    - |
+      $\cos\varphi\cos\bigl(\varphi-\frac\pi3\bigr)$的时间平均是$\frac12\cos\frac\pi3=\frac14$，所以平均值正比于$\cos^2\theta+4\sin^2\theta+\sin2\theta=\frac52-\frac32\cos2\theta+\sin2\theta$。
+    - |
+      最大、最小值是$\frac52\pm\frac{\sqrt{13}}2$，比值$\frac{5+\sqrt{13}}{5-\sqrt{13}}\approx6.17$。
+  solution: |
+    记$\varphi=\omega t-kz$。$\overline{E_\theta^2}=A^2\Bigl[\frac12\cos^2\theta+2\sin^2\theta+4\sin\theta\cos\theta\cdot\frac14\Bigr]$，即正比于$\cos^2\theta+4\sin^2\theta+\sin2\theta=\frac52-\frac32\cos2\theta+\sin2\theta$。后两项合起来是振幅为$\sqrt{\frac94+1}=\frac{\sqrt{13}}2$的正弦函数，所以最大值是$\frac{5+\sqrt{13}}2$，最小值是$\frac{5-\sqrt{13}}2$，比值$\frac{5+\sqrt{13}}{5-\sqrt{13}}\approx6.17$。最小值不为零：这是一束椭圆偏振光，长轴不沿坐标轴，所以光强最大的方向不在$\theta=90^\circ$，而在$\tan2\theta=-\frac23$、$\theta\approx73.2^\circ$处。
+
+- id: p5
+  tier: hard
+  statement: |
+    在固定的位置上，电场的两个分量是$E_x=A_x\cos\varphi$、$E_y=A_y\cos(\varphi-\delta)$，$\varphi=\omega t-kz$，$A_x,A_y>0$，$\sin\delta\ne0$。
+
+    （1）消去时间，证明端点满足$\frac{E_x^2}{A_x^2}+\frac{E_y^2}{A_y^2}-\frac{2E_xE_y}{A_xA_y}\cos\delta=\sin^2\delta$，并说明这是一个椭圆。（2）证明迎着光看，$0<\delta<\pi$时端点逆时针转。（3）证明椭圆的长轴、短轴和$x$轴的夹角$\psi$都满足$\tan2\psi=\frac{2A_xA_y\cos\delta}{A_x^2-A_y^2}$；$\delta=\pm\frac\pi2$时两轴沿什么方向？
+  hints:
+    - |
+      把$\cos(\varphi-\delta)$展开，用$\frac{E_x}{A_x}=\cos\varphi$解出$\sin\varphi$，再用$\sin^2\varphi+\cos^2\varphi=1$。
+    - |
+      形如$ax^2+2bxy+cy^2=1$的曲线，$a>0$且$ac-b^2>0$时是椭圆；转向看$E_x\dot E_y-E_y\dot E_x$的正负。
+    - |
+      $E_x\dot E_y-E_y\dot E_x=\omega A_xA_y\sin\delta$；把坐标轴转过$\psi$，让交叉项的系数为零。
+  reference: |
+    （1）$\frac{E_y}{A_y}=\cos\varphi\cos\delta+\sin\varphi\sin\delta$，代入$\cos\varphi=\frac{E_x}{A_x}$，得$\sin\varphi\sin\delta=\frac{E_y}{A_y}-\frac{E_x}{A_x}\cos\delta$。两边平方，再加上$\cos^2\varphi\sin^2\delta=\frac{E_x^2}{A_x^2}\sin^2\delta$，左边是$\sin^2\delta$，右边整理后就是题中的式子。写成$ax^2+2bxy+cy^2=1$，$a=\frac1{A_x^2\sin^2\delta}>0$，$c=\frac1{A_y^2\sin^2\delta}$，$b=-\frac{\cos\delta}{A_xA_y\sin^2\delta}$，$ac-b^2=\frac{1-\cos^2\delta}{A_x^2A_y^2\sin^4\delta}>0$，所以是椭圆。
+
+    （2）$\dot E_x=-\omega A_x\sin\varphi$，$\dot E_y=-\omega A_y\sin(\varphi-\delta)$，$E_x\dot E_y-E_y\dot E_x=-\omega A_xA_y[\cos\varphi\sin(\varphi-\delta)-\sin\varphi\cos(\varphi-\delta)]=\omega A_xA_y\sin\delta$。它是端点对原点的角速度乘以到原点距离的平方，$0<\delta<\pi$时为正，在$x$轴向右、$y$轴向上的平面里就是逆时针；迎着光看正是这样摆放的坐标轴，所以是左旋。
+
+    （3）令$x=u\cos\psi-v\sin\psi$，$y=u\sin\psi+v\cos\psi$，$uv$项的系数是$(c-a)\sin2\psi+2b\cos2\psi$，为零时$\tan2\psi=\frac{2b}{a-c}=\frac{-2\cos\delta/(A_xA_y)}{1/A_x^2-1/A_y^2}=\frac{2A_xA_y\cos\delta}{A_x^2-A_y^2}$。这时$u$、$v$轴就是椭圆的两条主轴，$\psi$和$\psi+90^\circ$都满足这个式子。$\delta=\pm\frac\pi2$时$\cos\delta=0$，$\tan2\psi=0$（$A_x\ne A_y$），两轴沿$x$、$y$轴，长轴沿振幅大的那个方向；$A_x=A_y$时式子是$\frac00$，椭圆成了圆，哪个方向都是主轴。
+
+- id: p6
+  tier: hard
+  statement: |
+    两片理想偏振片的透振方向互相垂直，中间夹一片理想偏振片，它绕光的传播方向以角速度$\Omega$匀速转动，$t=0$时它的透振方向和第一片相同。光强为$I_0$的自然光射到第一片上。
+
+    （1）求透过的光强随时间的变化，它以什么角频率起伏？时间平均是多少？（2）去掉第一片，自然光直接射到转动的那一片上，透过的光强怎样变化？（3）为什么（1）的起伏比（2）快一倍？
+  hints:
+    - |
+      $t$时刻中间那片和第一片成$\Omega t$，和最后一片成$90^\circ-\Omega t$，连用两次马吕斯定律。
+    - |
+      $\cos^2\theta\sin^2\theta=\frac14\sin^22\theta=\frac18(1-\cos4\theta)$。
+    - |
+      （1）$\frac{I_0}{16}(1-\cos4\Omega t)$，平均$\frac{I_0}{16}$；（2）$\frac{I_0}4(1-\cos2\Omega t)$，平均$\frac{I_0}4$。
+  reference: |
+    （1）透过第一片，光强$\frac{I_0}2$，沿第一片的透振方向。中间那片和它成$\Omega t$，透过$\frac{I_0}2\cos^2\Omega t$；最后一片和中间那片成$90^\circ-\Omega t$，透过$I=\frac{I_0}2\cos^2\Omega t\sin^2\Omega t=\frac{I_0}8\sin^22\Omega t=\frac{I_0}{16}(1-\cos4\Omega t)$。光强以角频率$4\Omega$起伏，在$0$和$\frac{I_0}8$之间，时间平均$\frac{I_0}{16}$。
+
+    （2）自然光透过转动的那一片，光强总是$\frac{I_0}2$，偏振方向跟着它转，和最后一片成$90^\circ-\Omega t$，透过$\frac{I_0}2\sin^2\Omega t=\frac{I_0}4(1-\cos2\Omega t)$，以角频率$2\Omega$起伏，在$0$和$\frac{I_0}2$之间，平均$\frac{I_0}4$。
+
+    （3）偏振片的透振方向转过$180^\circ$就回到原样，所以透过的光强随中间那片的转角至少以$180^\circ$为周期，角频率至少是$2\Omega$，（2）正是这样。（1）里两头各有一片固定的偏振片，中间那片转到和两者都成$45^\circ$时最亮，和任何一片平行或垂直时全黑，每转$90^\circ$就重复一次，所以快一倍。
+
+- id: p7
+  tier: thinking
+  statement: |
+    一束自然光和一束圆偏振光，光强相同。
+
+    （1）只用一片偏振片，能把它们分辨出来吗？（2）有人说「圆偏振光不过是偏振方向转得极快的自然光」，这话对吗？两者真正的区别在哪里？（3）设想一种办法把它们分辨出来（可以先读[双折射与波片](lesson:physics.optics.birefringence)）。
+  hints:
+    - |
+      两种光透过转动的偏振片时，光强各是多少？
+    - |
+      把两种光都拆成$x$、$y$两个线偏振分量，比较两个分量之间的相位差。
+    - |
+      如果能让其中一个分量的相位再落后$\frac\pi2$，圆偏振光会变成什么？
+  reference: |
+    （1）不能。自然光各个方向平均下来一样，透过一半；圆偏振光的电场大小不变、各个方向都转到，沿任何方向的分量的平方平均下来也是一半。两者透过转动的偏振片时光强都不变，都是一半。
+
+    （2）不对。圆偏振光的两个分量振幅相等、相位差固定为$\pm\frac\pi2$，电场以光的角频率$\omega$规规矩矩地转圈，偏振态是确定的；自然光的两个分量相位差无规则地乱变，偏振态不确定。区别不在转得快慢，而在两个分量之间有没有固定的相位关系。
+
+    （3）先让光穿过一片能使一个分量相对另一个多落后$\frac\pi2$的晶片（四分之一波片，quarter-wave plate），再用偏振片检查。圆偏振光两个分量的相位差变成$0$或$\pi$，成为线偏振光，转动偏振片能找到全黑的方向；自然光两个分量的相位差仍然乱变，还是自然光，光强不随偏振片转动而变。
+
+- id: p8
+  tier: thinking
+  statement: |
+    微波实验里常用一排平行的细金属丝做偏振器，丝的间距比微波的波长小得多（wire-grid polarizer）。
+
+    （1）微波的电场平行于金属丝时，丝里会发生什么？这部分微波到哪里去了？（2）这种偏振器的透振方向平行于还是垂直于金属丝？
+
+    （3）为什么丝的间距要比波长小得多？把同样一排间距约$1\,\mathrm{mm}$的金属丝放在可见光里，它还能当偏振片用吗？
+  hints:
+    - |
+      金属是导体（conductor），里面的电子能沿着丝自由移动，却不能跑出细丝的横截面。
+    - |
+      被电场推着来回跑的电子本身也会辐射电磁波，它和入射波在丝的后面相互抵消。
+    - |
+      间距和波长相当或更大时，光能从丝和丝之间的空隙穿过去。
+  reference: |
+    （1）电场平行于金属丝时，推着丝里的电子沿丝来回跑，形成交变电流。这些电流向前辐射的波和入射波相互抵消，向后辐射的就是反射波，再加上一点电阻造成的吸收，这部分微波基本透不过去。
+
+    （2）电场垂直于金属丝时，电子只能在细丝很窄的横截面里稍稍移动，几乎不产生电流，这部分微波照样透过。所以透振方向垂直于金属丝，和直觉上「顺着缝漏过去」正好相反；1888 年赫兹（Heinrich Hertz）就是用这样的金属栅证明了他产生的电磁波是偏振的。偏振片里吸附了碘的长链分子起的是同样的作用，透振方向垂直于长链。
+
+    （3）丝的间距比波长小得多时，对平行于丝的电场来说，这排丝就像一整片金属，波从空隙里漏不过去。可见光的波长只有约$0.5\,\mu\mathrm m$，间距$1\,\mathrm{mm}$的金属丝之间的空隙比波长大得多，两个方向的光都能从空隙穿过，起不了偏振的作用。要偏振可见光，丝的间距得做到一百多纳米，现在用微细加工确实能做出这样的金属栅偏振片。

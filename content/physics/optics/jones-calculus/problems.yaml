@@ -1,0 +1,168 @@
+- id: p1
+  tier: easy
+  statement: |
+    一束光的琼斯矢量是$\begin{pmatrix}3\\4i\end{pmatrix}$（没有归一化），让它透过透振方向沿$x$轴的理想偏振片。透过的光强是入射光强的多少倍？
+  answer:
+    type: number
+    value: 9/25
+  hints:
+    - |
+      光强正比于$|\tilde E_x|^2+|\tilde E_y|^2$。
+    - |
+      偏振片的琼斯矩阵是$\begin{pmatrix}1&0\\0&0\end{pmatrix}$，只留下$\tilde E_x$。
+    - |
+      $\frac{|3|^2}{|3|^2+|4i|^2}=\frac9{25}$。
+  solution: |
+    入射光强正比于$|3|^2+|4i|^2=25$。偏振片只留下$x$分量，射出的琼斯矢量是$\begin{pmatrix}3\\0\end{pmatrix}$，光强正比于$9$，所以透过$\frac9{25}=0.36$。这束光$\tilde E_y=4i$，$E_y$比$E_x$超前四分之一周期，是两轴沿$x$、$y$的右旋椭圆偏振光，沿$x$的半轴是$3$，沿$y$的是$4$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        琼斯矢量$\begin{pmatrix}1\\i\end{pmatrix}$和$\begin{pmatrix}-i\\1\end{pmatrix}$表示同一个偏振态
+      - |
+        琼斯矢量$\begin{pmatrix}1\\1\end{pmatrix}$表示圆偏振光
+      - |
+        沿$x$方向线偏振的光，先过快轴沿$x$轴的四分之一波片、再过透振方向和$x$轴成$45^\circ$的偏振片，和把这两个元件的顺序对调，射出光的偏振态相同
+      - |
+        琼斯矢量为$\begin{pmatrix}1\\e^{-i\pi/4}\end{pmatrix}$的光，迎着光看电场的端点逆时针转
+      - |
+        理想偏振片的琼斯矩阵是可逆矩阵
+    value: [1, 4]
+  hints:
+    - |
+      两个琼斯矢量差一个复数因子时偏振态相同；$\tilde E_y=A_ye^{-i\delta}$，$0<\delta<\pi$时迎着光看逆时针转。
+    - |
+      把两种顺序的矩阵乘积分别作用在$\begin{pmatrix}1\\0\end{pmatrix}$上；偏振片的琼斯矩阵的行列式是多少？
+    - |
+      A、D 对；B、C、E 错。
+  solution: |
+    A 对：$\begin{pmatrix}-i\\1\end{pmatrix}=-i\begin{pmatrix}1\\i\end{pmatrix}$，只差一个复数因子。D 对：$\tilde E_y=e^{-i\pi/4}$，$\delta=\frac\pi4$，在$0$和$\pi$之间，迎着光看逆时针转，是左旋椭圆偏振光。
+
+    B 错：两个分量同相，是沿$45^\circ$方向的线偏振光。C 错：先过波片，$\begin{pmatrix}1\\0\end{pmatrix}$不变，再过偏振片得$\frac12\begin{pmatrix}1\\1\end{pmatrix}$，沿$45^\circ$线偏振；对调以后，偏振片先给出$\frac12\begin{pmatrix}1\\1\end{pmatrix}$，波片再把它变成$\frac12\begin{pmatrix}1\\-i\end{pmatrix}$，是圆偏振光，两者光强相同，偏振态不同。E 错：偏振片的琼斯矩阵行列式为零，被挡掉的分量找不回来，不可逆。
+
+- id: p3
+  tier: medium
+  statement: |
+    沿$x$方向线偏振的光，通过一片相位差为$\frac\pi3$的波片，波片的快轴和$x$轴成$30^\circ$，再通过透振方向沿$y$轴的理想偏振片。透过的光强是入射光强的多少倍？
+  answer:
+    type: number
+    value: 3/16
+  hints:
+    - |
+      快轴转过$\theta$的波片，琼斯矩阵是$R(\theta)\begin{pmatrix}1&0\\0&e^{-i\delta}\end{pmatrix}R(-\theta)$。
+    - |
+      射出光的$y$分量是$(1-e^{-i\delta})\sin\theta\cos\theta$，偏振片只留下它。
+    - |
+      $|1-e^{-i\delta}|^2\sin^2\theta\cos^2\theta=\sin^2\frac\delta2\sin^22\theta=\frac14\times\frac34=\frac3{16}$。
+  solution: |
+    $R(\theta)\begin{pmatrix}1&0\\0&e^{-i\delta}\end{pmatrix}R(-\theta)$作用在$\begin{pmatrix}1\\0\end{pmatrix}$上：先换到波片的坐标里，得$\begin{pmatrix}\cos\theta\\-\sin\theta\end{pmatrix}$；乘上波片矩阵得$\begin{pmatrix}\cos\theta\\-e^{-i\delta}\sin\theta\end{pmatrix}$；再换回来，$y$分量是$\sin\theta\cos\theta-e^{-i\delta}\sin\theta\cos\theta=(1-e^{-i\delta})\sin\theta\cos\theta$。$|1-e^{-i\delta}|^2=2-2\cos\delta=4\sin^2\frac\delta2$，透过的比例是$\sin^2\frac\delta2\sin^22\theta$，$\delta=\frac\pi3$、$\theta=30^\circ$时为$\frac14\times\frac34=\frac3{16}\approx0.19$。
+
+- id: p4
+  tier: medium
+  statement: |
+    琼斯矢量为$\begin{pmatrix}2\\i\end{pmatrix}$的光，通过快轴沿$x$轴的四分之一波片，再通过一片理想偏振片。转动偏振片，透过的光强为零时，透振方向和$x$轴的夹角是多少度？取$0^\circ$到$180^\circ$之间的值，保留四位有效数字。
+  answer:
+    type: number
+    value: 90 + atan(0.5)*180/pi
+    unit: |
+      $^\circ$
+  tolerance: { rel: 5.0e-4 }
+  hints:
+    - |
+      四分之一波片的琼斯矩阵是$\begin{pmatrix}1&0\\0&-i\end{pmatrix}$。
+    - |
+      射出波片的琼斯矢量是$\begin{pmatrix}2\\1\end{pmatrix}$，两个分量同相，是线偏振光。
+    - |
+      偏振方向和$x$轴成$\arctan\frac12\approx26.57^\circ$，透振方向和它垂直时全黑：$90^\circ+26.57^\circ\approx116.6^\circ$。
+  solution: |
+    $\begin{pmatrix}1&0\\0&-i\end{pmatrix}\begin{pmatrix}2\\i\end{pmatrix}=\begin{pmatrix}2\\-i\cdot i\end{pmatrix}=\begin{pmatrix}2\\1\end{pmatrix}$，两个分量同相，射出的是沿$\arctan\frac12\approx26.57^\circ$方向的线偏振光。原来那束是两轴沿$x$、$y$的右旋椭圆偏振光，四分之一波片把$y$分量的相位拉回四分之一周期，它就变成了线偏振光。偏振片的透振方向和它垂直时全黑，即$116.6^\circ$。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）证明：快轴和$x$轴成$\theta$的二分之一波片，琼斯矩阵是$H(\theta)=\begin{pmatrix}\cos2\theta&\sin2\theta\\\sin2\theta&-\cos2\theta\end{pmatrix}$。（2）光先后通过快轴成$\theta_1$、$\theta_2$的两片二分之一波片，证明总的琼斯矩阵是旋转矩阵$R\bigl(2(\theta_2-\theta_1)\bigr)$，对任何偏振态都一样。（3）这样的两片波片对线偏振光、对圆偏振光各起什么作用？
+  hints:
+    - |
+      （1）照例 2 计算$R(\theta)\begin{pmatrix}1&0\\0&-1\end{pmatrix}R(-\theta)$。
+    - |
+      （2）后通过的乘在左边，算$H(\theta_2)H(\theta_1)$，用两角差的余弦、正弦公式。
+    - |
+      （3）$R(\beta)\begin{pmatrix}1\\\pm i\end{pmatrix}=e^{\mp i\beta}\begin{pmatrix}1\\\pm i\end{pmatrix}$。
+  reference: |
+    （1）$R(\theta)\begin{pmatrix}1&0\\0&-1\end{pmatrix}=\begin{pmatrix}\cos\theta&\sin\theta\\\sin\theta&-\cos\theta\end{pmatrix}$，再右乘$R(-\theta)=\begin{pmatrix}\cos\theta&\sin\theta\\-\sin\theta&\cos\theta\end{pmatrix}$，得$\begin{pmatrix}\cos^2\theta-\sin^2\theta&2\sin\theta\cos\theta\\2\sin\theta\cos\theta&\sin^2\theta-\cos^2\theta\end{pmatrix}=H(\theta)$。
+
+    （2）记$c_k=\cos2\theta_k$，$s_k=\sin2\theta_k$。$H(\theta_2)H(\theta_1)=\begin{pmatrix}c_2c_1+s_2s_1&c_2s_1-s_2c_1\\s_2c_1-c_2s_1&s_2s_1+c_2c_1\end{pmatrix}=\begin{pmatrix}\cos2(\theta_2-\theta_1)&-\sin2(\theta_2-\theta_1)\\\sin2(\theta_2-\theta_1)&\cos2(\theta_2-\theta_1)\end{pmatrix}$，正是$R\bigl(2(\theta_2-\theta_1)\bigr)$。这是两个矩阵的乘积，作用在任何琼斯矢量上都成立。
+
+    （3）记$\beta=2(\theta_2-\theta_1)$。线偏振光$\begin{pmatrix}\cos\varphi\\\sin\varphi\end{pmatrix}$变成$\begin{pmatrix}\cos(\varphi+\beta)\\\sin(\varphi+\beta)\end{pmatrix}$，偏振方向转过$\beta$，不管原来沿哪个方向；单独一片二分之一波片转动的角度却和入射方向有关。圆偏振光：$R(\beta)\begin{pmatrix}1\\i\end{pmatrix}=\begin{pmatrix}\cos\beta-i\sin\beta\\\sin\beta+i\cos\beta\end{pmatrix}=e^{-i\beta}\begin{pmatrix}1\\i\end{pmatrix}$，左旋的同理乘$e^{i\beta}$，偏振态不变，只多了一个相位。所以这两片波片合起来是一个「旋转器」，把每个偏振态的图形整个转过$\beta$；圆偏振的图形转了还是那个圆。
+
+- id: p6
+  tier: hard
+  statement: |
+    一束光的琼斯矢量是$\begin{pmatrix}A_x\\A_ye^{-i\delta}\end{pmatrix}$，$A_x,A_y\ge0$。用理想偏振片测光强，透振方向沿$0^\circ$、$90^\circ$、$45^\circ$、$135^\circ$时分别记作$I_0$、$I_{90}$、$I_{45}$、$I_{135}$（光强就取$|\tilde E_x|^2+|\tilde E_y|^2$，不计比例系数）。
+
+    （1）证明$I_0=A_x^2$，$I_{90}=A_y^2$，$I_{45}-I_{135}=2A_xA_y\cos\delta$。（2）在偏振片前加一片快轴沿$x$轴的四分之一波片，再测$45^\circ$、$135^\circ$，记作$I'_{45}$、$I'_{135}$。证明$I'_{45}-I'_{135}=-2A_xA_y\sin\delta$。
+
+    （3）测得$I_0=1$，$I_{90}=4$，$I_{45}-I_{135}=2$，$I'_{45}-I'_{135}=-2\sqrt3$。求$\delta$，并说明迎着光看，电场的端点往哪边转。
+  hints:
+    - |
+      透振方向沿单位向量$\vb u$时，透过的光强是$|u_x\tilde E_x+u_y\tilde E_y|^2$。
+    - |
+      $|a+b|^2-|-a+b|^2=4\operatorname{Re}(\bar ab)$；四分之一波片把$\delta$变成$\delta+\frac\pi2$。
+    - |
+      $2A_xA_y=4$，$\cos\delta=\frac12$，$\sin\delta=\frac{\sqrt3}2$。
+  reference: |
+    （1）沿$0^\circ$只留下$\tilde E_x$，$I_0=A_x^2$；沿$90^\circ$，$I_{90}=A_y^2$。沿$45^\circ$，$I_{45}=\frac12|A_x+A_ye^{-i\delta}|^2=\frac12(A_x^2+A_y^2+2A_xA_y\cos\delta)$；沿$135^\circ$，$\vb u=\frac1{\sqrt2}(-1,1)$，$I_{135}=\frac12|-A_x+A_ye^{-i\delta}|^2=\frac12(A_x^2+A_y^2-2A_xA_y\cos\delta)$。相减得$2A_xA_y\cos\delta$。
+
+    （2）四分之一波片把$\tilde E_y$乘$-i=e^{-i\pi/2}$，相当于把$\delta$换成$\delta+\frac\pi2$。代入（1），$I'_{45}-I'_{135}=2A_xA_y\cos\Bigl(\delta+\frac\pi2\Bigr)=-2A_xA_y\sin\delta$。
+
+    （3）$A_x=1$，$A_y=2$，$2A_xA_y=4$。$\cos\delta=\frac24=\frac12$，$\sin\delta=\frac{2\sqrt3}4=\frac{\sqrt3}2$，所以$\delta=60^\circ$。$0<\delta<\pi$，迎着光看电场逆时针转，是左旋椭圆偏振光。
+
+    只测$I_{45}-I_{135}$只能知道$\cos\delta$，分不清$\delta$和$-\delta$，也就分不清左旋、右旋；加上四分之一波片测出$\sin\delta$的正负，转向才确定。这几次测量合起来就测出了琼斯矢量（差一个整体相位）。
+
+- id: p7
+  tier: thinking
+  statement: |
+    激光器怕被反射回来的光干扰。常在激光器前面放一片透振方向沿$x$轴的偏振片，后面再放一片快轴和$x$轴成$45^\circ$的四分之一波片。激光（沿$x$线偏振）穿过它们射到前方的反射面上，有一部分被垂直地反射回来，再次穿过波片和偏振片。
+
+    （1）射向反射面的光是什么偏振态？（2）光来回两次穿过同一片四分之一波片，可以看作穿过一片快轴方向相同的二分之一波片（这里不细究反射对坐标方向的影响）。返回的光到达偏振片时是什么偏振态？能不能透过？
+
+    （3）为什么这个装置挡得住反射回来的光，对射出去的光却几乎没有损失？
+  hints:
+    - |
+      沿$x$的线偏振和快轴成$45^\circ$。
+    - |
+      快轴成$45^\circ$的二分之一波片把沿$x$的偏振方向翻到关于快轴对称的方向。
+    - |
+      射出去的光只穿过一次波片；回来的光在偏振片看来，偏振方向转过了$90^\circ$。
+  reference: |
+    （1）沿$x$的线偏振光和快轴成$45^\circ$，四分之一波片把它变成圆偏振光。
+
+    （2）两次穿过相当于一片快轴成$45^\circ$的二分之一波片，$H(45^\circ)\begin{pmatrix}1\\0\end{pmatrix}=\begin{pmatrix}\cos90^\circ\\\sin90^\circ\end{pmatrix}=\begin{pmatrix}0\\1\end{pmatrix}$：返回的光沿$y$方向线偏振，和偏振片的透振方向垂直，被完全挡住。仔细算的话，反射会把圆偏振光迎着光看的转向反过来，返回的光再穿过波片，结论一样：沿$y$方向线偏振。
+
+    （3）射出去的光本来就沿$x$线偏振，偏振片放过它，波片不吸收光，只改变偏振态，所以几乎没有损失，射出的是圆偏振光。只有走了一个来回的光，偏振方向才转过$90^\circ$，被偏振片挡住。代价是射出的光变成了圆偏振光；而且只有垂直反射回来、偏振态没被反射面打乱的光才挡得住。
+
+- id: p8
+  tier: thinking
+  statement: |
+    线偏振光穿过糖水，偏振方向会转过一个角度$\beta$，$\beta$和糖水的浓度、走过的长度成正比，这叫旋光（optical activity）。糖水的琼斯矩阵就是旋转矩阵$R(\beta)$。
+
+    （1）求$R(\beta)$的特征值和特征向量，哪两种偏振态穿过糖水后偏振态不变？（2）菲涅耳认为旋光的原因是右旋、左旋两种圆偏振光在糖水里速度不同。用（1）的结果说说为什么，哪一种走得慢？（3）把线偏振光拆成右旋和左旋两部分，解释它的偏振方向为什么会转。
+  hints:
+    - |
+      特征多项式$(\cos\beta-\lambda)^2+\sin^2\beta=0$。
+    - |
+      特征向量$\begin{pmatrix}1\\i\end{pmatrix}$的特征值是$e^{-i\beta}$，乘$e^{-i\beta}$就是相位落后$\beta$。
+    - |
+      $\begin{pmatrix}1\\0\end{pmatrix}=\frac12\begin{pmatrix}1\\i\end{pmatrix}+\frac12\begin{pmatrix}1\\-i\end{pmatrix}$。
+  reference: |
+    （1）$\det(R-\lambda I)=\lambda^2-2\lambda\cos\beta+1=0$，$\lambda=\cos\beta\pm i\sin\beta=e^{\pm i\beta}$。$\lambda=e^{-i\beta}$时，$(R-\lambda I)$的第一行是$(i\sin\beta,-\sin\beta)$，特征向量$\begin{pmatrix}1\\i\end{pmatrix}$，即右旋圆偏振；$\lambda=e^{i\beta}$时是$\begin{pmatrix}1\\-i\end{pmatrix}$，左旋圆偏振。两种圆偏振光穿过糖水后仍是原来的圆偏振，旋转矩阵没有实的特征向量，所以没有哪个方向的线偏振光能保持不变。
+
+    （2）右旋的乘$e^{-i\beta}$，比左旋的（乘$e^{i\beta}$）多落后$2\beta$。相位落后得多，说明它在糖水里走得慢、折射率大。两种圆偏振光速度不同，糖水对它们就像对两种线偏振光速度不同的晶体，可以叫「圆双折射」；按这里$\beta>0$的转向（迎着光看逆时针），右旋的走得慢。
+
+    （3）沿$x$的线偏振光是振幅相等的右旋、左旋两部分之和。穿过糖水后，它们分别乘$e^{-i\beta}$和$e^{i\beta}$，相加得$\frac12e^{-i\beta}\begin{pmatrix}1\\i\end{pmatrix}+\frac12e^{i\beta}\begin{pmatrix}1\\-i\end{pmatrix}=\begin{pmatrix}\cos\beta\\\sin\beta\end{pmatrix}$，仍是线偏振光，方向转过了$\beta$。直观地看：两个反向转圈的电场合成一条直线，直线的方向由两者的相位决定，一个落后、一个超前，合成的直线就转了过去。

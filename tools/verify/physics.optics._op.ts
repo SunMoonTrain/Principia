@@ -163,3 +163,129 @@ export function multiBeamT(R: number, delta: number, K = 4000): number {
   }
   return re * re + im * im;
 }
+
+// ---------- 偏振（批次 17） ----------
+// 不用琼斯矩阵：在一个固定位置上把电场写成时间的函数 E(t) = (Ex(t), Ey(t))，取 ω = 1，一个周期 2π；
+// 元件按物理作用逐个改写这个函数：偏振片取瞬时电场沿透振方向的投影，波片让慢轴分量在时间上推迟 δ（ω = 1 时推迟 δ 就是相位落后 δ）。
+// 坐标约定和讲解一样：迎着光看，x 向右、y 向上、z 指向看的人。
+
+/** 固定位置上的电场随时间的变化（ω = 1）。 */
+export type Field = (t: number) => V2;
+/** Ex = Ax cos t，Ey = Ay cos(t − δ)：δ 是 Ey 比 Ex 落后的相位。 */
+export const fieldOf = (Ax: number, Ay: number, delta: number): Field => (t) => [Ax * Math.cos(t), Ay * Math.cos(t - delta)];
+/** 一个周期上 n 个等距时刻的平均 ⟨|E|²⟩；|E|² 是次数不超过 2 的三角多项式，n ≥ 3 时这个平均是精确的。 */
+export function meanSq(E: Field, n = 360): number {
+  let s = 0;
+  for (let j = 0; j < n; j++) {
+    const e = E((2 * Math.PI * j) / n);
+    s += e[0] * e[0] + e[1] * e[1];
+  }
+  return s / n;
+}
+/** 理想偏振片，透振方向和 x 轴成 theta（弧度）：只留下瞬时电场沿透振方向的分量。 */
+export const polarizer = (theta: number) => (E: Field): Field => {
+  const u = dirOf(theta);
+  return (t) => scale2(dot2(E(t), u), u);
+};
+/** 波片：快轴和 x 轴成 theta，慢轴方向的分量在时间上推迟 delta（相位落后 delta），快轴分量不变。 */
+export const wavePlate = (theta: number, delta: number) => (E: Field): Field => {
+  const f = dirOf(theta);
+  const s = dirOf(theta + Math.PI / 2);
+  return (t) => add2(scale2(dot2(E(t), f), f), scale2(dot2(E(t - delta), s), s));
+};
+/** 迎着光看电场端点的转向：Ex·dEy/dt − Ey·dEx/dt 在一个周期上的平均（数值求导）；正为逆时针（左旋），负为顺时针（右旋），线偏振为 0。 */
+export function spin(E: Field, n = 720): number {
+  const h = 1e-5;
+  let s = 0;
+  for (let j = 0; j < n; j++) {
+    const t = (2 * Math.PI * j) / n;
+    const e = E(t);
+    const a = E(t + h);
+    const b = E(t - h);
+    s += e[0] * (a[1] - b[1]) / (2 * h) - e[1] * (a[0] - b[0]) / (2 * h);
+  }
+  return s / n;
+}
+/** 电场端点轨迹到原点的最大、最小距离（在一个周期上取 n 个时刻，再在最小处附近用黄金分割细化）。 */
+export function radii(E: Field, n = 3600): [number, number] {
+  const r = (t: number) => Math.hypot(...E(t));
+  let max = 0;
+  let min = Infinity;
+  let tMin = 0;
+  for (let j = 0; j < n; j++) {
+    const t = (2 * Math.PI * j) / n;
+    const v = r(t);
+    if (v > max) max = v;
+    if (v < min) {
+      min = v;
+      tMin = t;
+    }
+  }
+  const h = (2 * Math.PI) / n;
+  const tBest = argmaxLocal((t) => -r(t), tMin - h, tMin + h);
+  return [max, Math.min(min, r(tBest))];
+}
+/** 区间上的黄金分割求最大（只在这个文件里用，避免和借来的 argmax 互相依赖）。 */
+function argmaxLocal(f: (x: number) => number, lo: number, hi: number): number {
+  const g = (Math.sqrt(5) - 1) / 2;
+  let a = lo;
+  let b = hi;
+  let c = b - g * (b - a);
+  let d = a + g * (b - a);
+  for (let k = 0; k < 200; k++) {
+    if (f(c) > f(d)) b = d;
+    else a = c;
+    c = b - g * (b - a);
+    d = a + g * (b - a);
+  }
+  return (a + b) / 2;
+}
+/**
+ * 用转动的理想偏振片检查一束光（可以是几束互不相干的光，光强直接相加）：透振方向 θ 在 [0, π) 上粗扫 n 格，
+ * 再在最大、最小的格点附近用黄金分割细化。返回最大、最小光强和对应的 θ（弧度）。
+ */
+export function analyze(beams: Field[], n = 720): { max: number; min: number; thMax: number; thMin: number } {
+  const I = (th: number) => beams.reduce((s, E) => s + meanSq(polarizer(th)(E), 12), 0);
+  let iMax = 0;
+  let iMin = 0;
+  let vMax = -Infinity;
+  let vMin = Infinity;
+  for (let j = 0; j < n; j++) {
+    const v = I((Math.PI * j) / n);
+    if (v > vMax) {
+      vMax = v;
+      iMax = j;
+    }
+    if (v < vMin) {
+      vMin = v;
+      iMin = j;
+    }
+  }
+  const h = Math.PI / n;
+  const thMax = argmaxLocal(I, (iMax - 1) * h, (iMax + 1) * h);
+  const thMin = argmaxLocal((t) => -I(t), (iMin - 1) * h, (iMin + 1) * h);
+  return { max: Math.max(vMax, I(thMax)), min: Math.min(vMin, I(thMin)), thMax, thMin };
+}
+/** 归一化的斯托克斯参量 (s1, s2, s3)：⟨Ex² − Ey²⟩、⟨2ExEy⟩ 和转向（spin）各除以 ⟨Ex² + Ey²⟩；两束完全偏振的光偏振态相同，当且仅当三者都相等。 */
+export function stokes(E: Field, n = 360): [number, number, number] {
+  let s0 = 0;
+  let s1 = 0;
+  let s2 = 0;
+  for (let j = 0; j < n; j++) {
+    const e = E((2 * Math.PI * j) / n);
+    s0 += e[0] * e[0] + e[1] * e[1];
+    s1 += e[0] * e[0] - e[1] * e[1];
+    s2 += 2 * e[0] * e[1];
+  }
+  return [s1 / s0, s2 / s0, spin(E, n) / (s0 / n)];
+}
+/** 自然光：偏振方向在 [0, π) 上均匀分布的 m 束线偏振光，强度各 1/m，互不相干（光强直接相加）。返回每一束的电场。 */
+export function naturalLight(m = 720): Field[] {
+  const out: Field[] = [];
+  const a = Math.sqrt(2 / m); // ⟨|E|²⟩ = a²/2 = 1/m
+  for (let j = 0; j < m; j++) {
+    const phi = (Math.PI * (j + 0.5)) / m;
+    out.push((t) => scale2(a * Math.cos(t), dirOf(phi)));
+  }
+  return out;
+}

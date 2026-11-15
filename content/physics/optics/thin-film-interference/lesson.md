@@ -31,7 +31,7 @@ status: reviewed
 ::anchor{id="def-half-wave-loss"}
 光从折射率小的介质射向折射率大的介质、在界面上反射时，反射光的振动和入射光相反，相位突变$\pi$，相当于多走了半个波长，这叫作:term[半波损失]{id="physics.optics.half-wave-loss"}（half-wave loss）；从折射率大的介质射向折射率小的介质反射时，没有半波损失。
 
-为什么这样定义：相位突变$\pi$和多走（或少走）半个波长效果一样，把它记成半个波长，就能和几何路径造成的:term[光程差]{id="physics.optics.optical-path-difference"}（optical path difference）放在一起算，:term[干涉]{id="physics.optics.interference"}（interference）条件写起来最简单。边界情况：垂直入射时，$n_1<n_2$则$r<0$，正是半波损失；$n_1>n_2$则$r>0$，相位不变。斜着入射时，电场在入射面（plane of incidence）内振动的光，反射时的相位变化随入射角改变，这个说法只在接近垂直入射时才可靠（见[界面上的反射与折射：菲涅耳公式](lesson:physics.electromagnetism.fresnel-equations)第 8 题）；下面讲的薄膜，光大多接近垂直入射，可以放心用。
+为什么这样定义：相位突变$\pi$和多走（或少走）半个波长效果一样，把它记成半个波长，就能和几何路径造成的:term[光程差]{id="physics.optics.optical-path-difference"}（optical path difference）放在一起算，:term[干涉]{id="physics.optics.interference"}（interference）条件写起来最简单。边界情况：垂直入射时，$n_1<n_2$则$r<0$，正是半波损失；$n_1>n_2$则$r>0$，相位不变。斜着入射时，电场在入射面（plane of incidence）内振动的光，即 :term[p 偏振]{id="physics.electromagnetism.wave-polarization"}（p polarization）的光，反射时的相位变化随入射角改变，这个说法只在接近垂直入射时才可靠（见[界面上的反射与折射：菲涅耳公式](lesson:physics.electromagnetism.fresnel-equations)第 8 题）；下面讲的薄膜，光大多接近垂直入射，可以放心用。
 
 ### 薄膜两个表面反射的光
 

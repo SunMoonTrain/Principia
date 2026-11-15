@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 344" width="660" height="344" font-size="14">
+  <!-- 菲涅耳半波带：左边是侧视图，平行光照到圆孔所在的平面上，轴上的观察点 P 离这个平面 L；从孔的中心 O 到 P 的距离是 L，从第 1、2、3 圈边界到 P 依次是 L + λ/2、L + λ、L + 3λ/2，相邻两圈之间就是一个半波带，图里标出了编号（波长夸大了）。右边是波带片的正视图：各圈半径和 √m 成正比，越往外越密，偶数号的半波带被挡住（灰色），留下的奇数号半波带到 P 的光同相，相互加强。 -->
+  <line x1="40.0" y1="55.0" x2="135.0" y2="55.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <path d="M 142.0 55.0 L 134.0 58.7 L 134.0 51.3 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="40.0" y1="110.0" x2="135.0" y2="110.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <path d="M 142.0 110.0 L 134.0 113.7 L 134.0 106.3 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="40.0" y1="220.0" x2="135.0" y2="220.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <path d="M 142.0 220.0 L 134.0 223.7 L 134.0 216.3 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="40.0" y1="275.0" x2="135.0" y2="275.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <path d="M 142.0 275.0 L 134.0 278.7 L 134.0 271.3 Z" style="fill: var(--muted, #6b7280)" />
+  <text x="40.0" y="45.0" fill="currentColor">平行光</text>
+  <line x1="150.0" y1="20.7" x2="150.0" y2="309.3" style="stroke: currentColor" stroke-width="1.2" stroke-dasharray="5 3" />
+  <line x1="150.0" y1="165.0" x2="484.0" y2="165.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="2 3" />
+  <circle cx="450.0" cy="165.0" r="3.2" style="fill: currentColor" />
+  <text x="458.0" y="157.0" fill="currentColor"><tspan font-style="italic">P</tspan></text>
+  <circle cx="150.0" cy="165.0" r="2.6" style="fill: currentColor" />
+  <text x="142.0" y="170.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">O</tspan></text>
+  <line x1="150.0" y1="97.5" x2="450.0" y2="165.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <circle cx="150.0" cy="97.5" r="2.4" style="fill: var(--accent, #2563eb)" />
+  <circle cx="150.0" cy="232.5" r="2.4" style="fill: var(--accent, #2563eb)" />
+  <line x1="150.0" y1="69.0" x2="450.0" y2="165.0" style="stroke: var(--good, #059669)" stroke-width="1.2" />
+  <circle cx="150.0" cy="69.0" r="2.4" style="fill: var(--good, #059669)" />
+  <circle cx="150.0" cy="261.0" r="2.4" style="fill: var(--good, #059669)" />
+  <line x1="150.0" y1="46.7" x2="450.0" y2="165.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" />
+  <circle cx="150.0" cy="46.7" r="2.4" style="fill: var(--accent, #2563eb)" />
+  <circle cx="150.0" cy="283.3" r="2.4" style="fill: var(--accent, #2563eb)" />
+  <text x="300.0" y="185.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">L</tspan></text>
+  <text x="157.0" y="137.0" fill="currentColor" text-anchor="start" font-size="11">1</text>
+  <text x="157.0" y="90.4" fill="currentColor" text-anchor="start" font-size="11">2</text>
+  <text x="157.0" y="65.8" fill="currentColor" text-anchor="start" font-size="11">3</text>
+  <text x="300.0" y="329.3" fill="currentColor" text-anchor="middle">第 <tspan font-style="italic">m</tspan> 圈边界到 <tspan font-style="italic">P</tspan> 的距离：<tspan font-style="italic">L</tspan> + <tspan font-style="italic">mλ</tspan>/2</text>
+  <circle cx="575.0" cy="165.0" r="67.9" style="stroke: currentColor; fill: var(--muted, #6b7280)" stroke-width="0.8" />
+  <circle cx="575.0" cy="165.0" r="63.5" style="stroke: currentColor; fill: var(--bg, #ffffff)" stroke-width="0.8" />
+  <circle cx="575.0" cy="165.0" r="58.8" style="stroke: currentColor; fill: var(--muted, #6b7280)" stroke-width="0.8" />
+  <circle cx="575.0" cy="165.0" r="53.7" style="stroke: currentColor; fill: var(--bg, #ffffff)" stroke-width="0.8" />
+  <circle cx="575.0" cy="165.0" r="48.0" style="stroke: currentColor; fill: var(--muted, #6b7280)" stroke-width="0.8" />
+  <circle cx="575.0" cy="165.0" r="41.6" style="stroke: currentColor; fill: var(--bg, #ffffff)" stroke-width="0.8" />
+  <circle cx="575.0" cy="165.0" r="33.9" style="stroke: currentColor; fill: var(--muted, #6b7280)" stroke-width="0.8" />
+  <circle cx="575.0" cy="165.0" r="24.0" style="stroke: currentColor; fill: var(--bg, #ffffff)" stroke-width="0.8" />
+  <text x="575.0" y="260.9" fill="currentColor" text-anchor="middle">波带片（正视）</text>
+  <text x="575.0" y="81.1" fill="currentColor" text-anchor="middle">灰色的半波带被挡住</text>
+</svg>

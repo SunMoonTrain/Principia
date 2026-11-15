@@ -680,3 +680,322 @@ glossary:
       反射光强和入射光强之比；垂直入射时等于$\Bigl(\frac{n_1-n_2}{n_1+n_2}\Bigr)^2$，空气中的玻璃每个表面约$4\%$。
     definedIn: physics.optics.thin-film-interference
     anchor: def-reflectance
+  - id: physics.optics.circular-polarization
+    zh: |
+      圆偏振
+    en: |
+      circular polarization
+    brief: |
+      电场大小不变、方向绕传播方向匀速转圈的偏振态；迎着光看，顺时针转的叫右旋，逆时针转的叫左旋。
+    definedIn: physics.optics.polarization
+    anchor: def-circular
+  - id: physics.optics.elliptical-polarization
+    zh: |
+      椭圆偏振
+    en: |
+      elliptical polarization
+    brief: |
+      电场的端点在垂直于传播方向的平面里画出椭圆的偏振态；线偏振和圆偏振都是它的特殊情形。
+    definedIn: physics.optics.polarization
+    anchor: def-elliptical
+  - id: physics.optics.natural-light
+    zh: |
+      自然光
+    en: |
+      natural light
+    brief: |
+      偏振态快速而无规则地变化、各个方向平均下来一样的光，也叫非偏振光；太阳光、灯光都是自然光。
+    definedIn: physics.optics.polarization
+    anchor: def-natural-light
+  - id: physics.optics.partially-polarized-light
+    zh: |
+      部分偏振光
+    en: |
+      partially polarized light
+    brief: |
+      自然光和偏振光混在一起的光；转动偏振片看它，光强时强时弱，但降不到零。
+    definedIn: physics.optics.polarization
+    anchor: def-partial
+  - id: physics.optics.polarizer
+    zh: |
+      偏振片
+    en: |
+      polarizer
+    brief: |
+      只让电场沿透振方向的分量通过、把垂直的分量吸收掉的光学元件；自然光透过后光强减半，成为线偏振光。
+    definedIn: physics.optics.polarization
+    anchor: def-polarizer
+  - id: physics.optics.transmission-axis
+    zh: |
+      透振方向
+    en: |
+      transmission axis
+    brief: |
+      偏振片能让电场通过的那个方向；电场沿它的分量透过，垂直于它的分量被吸收。
+    definedIn: physics.optics.polarization
+    anchor: def-polarizer
+  - id: physics.optics.malus-law
+    zh: |
+      马吕斯定律
+    en: |
+      Malus's law
+    brief: |
+      线偏振光的偏振方向和偏振片的透振方向成$\theta$角时，透过的光强是入射光强的$\cos^2\theta$倍。
+    definedIn: physics.optics.polarization
+    anchor: thm-malus
+  - id: physics.optics.birefringence
+    zh: |
+      双折射
+    en: |
+      birefringence
+    brief: |
+      一束光射进某些晶体后分成两束折射光的现象；两束光都是线偏振光，偏振方向互相垂直，在晶体里速度不同。
+    definedIn: physics.optics.birefringence
+    anchor: def-birefringence
+  - id: physics.optics.ordinary-ray
+    zh: |
+      寻常光
+    en: |
+      ordinary ray
+    abbr: |
+      o 光
+    brief: |
+      单轴晶体里电场垂直于光轴和传播方向所在平面的那束光；沿各个方向速度相同，满足折射定律。
+    definedIn: physics.optics.birefringence
+    anchor: def-o-e
+  - id: physics.optics.extraordinary-ray
+    zh: |
+      非常光
+    en: |
+      extraordinary ray
+    abbr: |
+      e 光
+    brief: |
+      单轴晶体里电场在光轴和传播方向所在平面内的那束光；速度随传播方向变，一般不满足折射定律。
+    definedIn: physics.optics.birefringence
+    anchor: def-o-e
+  - id: physics.optics.wave-plate
+    zh: |
+      波片
+    en: |
+      wave plate
+    brief: |
+      表面平行于光轴的晶片；光垂直射入时，沿快轴、慢轴振动的两个分量射出后有相位差$\frac{2\pi}\lambda|n_{\mathrm e}-n_{\mathrm o}|d$。
+    definedIn: physics.optics.birefringence
+    anchor: def-wave-plate
+  - id: physics.optics.fast-axis
+    zh: |
+      快轴
+    en: |
+      fast axis
+    brief: |
+      波片里两个振动方向中光传播得快的那一个；沿和它垂直的慢轴振动的分量射出时相位落后。
+    definedIn: physics.optics.birefringence
+    anchor: def-wave-plate
+  - id: physics.optics.slow-axis
+    zh: |
+      慢轴
+    en: |
+      slow axis
+    brief: |
+      波片里两个振动方向中光传播得慢的那一个，和快轴垂直；沿它振动的分量射出时相位落后。
+    definedIn: physics.optics.birefringence
+    anchor: def-wave-plate
+  - id: physics.optics.quarter-wave-plate
+    zh: |
+      四分之一波片
+    en: |
+      quarter-wave plate
+    brief: |
+      相位差为$\frac\pi2$的波片；偏振方向和快轴成$45^\circ$的线偏振光通过它，变成圆偏振光。
+    definedIn: physics.optics.birefringence
+    anchor: def-qwp-hwp
+  - id: physics.optics.half-wave-plate
+    zh: |
+      二分之一波片
+    en: |
+      half-wave plate
+    brief: |
+      相位差为$\pi$的波片，也叫半波片；线偏振光通过它，偏振方向变成原来关于快轴的镜像。
+    definedIn: physics.optics.birefringence
+    anchor: def-qwp-hwp
+  - id: physics.optics.brewster-angle
+    zh: |
+      布儒斯特角
+    en: |
+      Brewster's angle
+    brief: |
+      p 偏振的反射光为零的入射角，$\tan\theta_{\mathrm B}=\frac{n_2}{n_1}$；这时反射光是线偏振光，和折射光互相垂直。
+    definedIn: physics.optics.brewster-angle
+    anchor: thm-brewster
+  - id: physics.optics.degree-of-polarization
+    zh: |
+      偏振度
+    en: |
+      degree of polarization
+    brief: |
+      转动偏振片时透过光强的最大值与最小值之差和两者之和的比；自然光为$0$，线偏振光为$1$。
+    definedIn: physics.optics.brewster-angle
+    anchor: def-degree
+  - id: physics.optics.jones-vector
+    zh: |
+      琼斯矢量
+    en: |
+      Jones vector
+    brief: |
+      把光的电场两个互相垂直的分量的复振幅排成的列向量；它确定光的偏振态，乘一个复数偏振态不变。
+    definedIn: physics.optics.jones-calculus
+    anchor: def-jones-vector
+  - id: physics.optics.jones-matrix
+    zh: |
+      琼斯矩阵
+    en: |
+      Jones matrix
+    brief: |
+      把偏振光通过元件前后的琼斯矢量联系起来的$2\times2$复矩阵；光依次通过几个元件，总矩阵是它们的乘积。
+    definedIn: physics.optics.jones-calculus
+    anchor: def-jones-matrix
+  - id: physics.optics.fresnel-diffraction
+    zh: |
+      菲涅耳衍射
+    en: |
+      Fresnel diffraction
+    brief: |
+      光源或观察点离障碍物不够远、到达观察点的各条光线不能看成平行时的衍射；离得越远，越接近夫琅禾费衍射。
+    definedIn: physics.optics.fresnel-diffraction
+    anchor: def-fresnel-diffraction
+  - id: physics.optics.half-period-zone
+    zh: |
+      菲涅耳半波带
+    en: |
+      Fresnel half-period zone
+    brief: |
+      以轴上的观察点为中心把波阵面分成的一圈圈圆环，相邻两圈边界到观察点的距离差半个波长，简称半波带。
+    definedIn: physics.optics.fresnel-diffraction
+    anchor: def-zones
+  - id: physics.optics.zone-plate
+    zh: |
+      波带片
+    en: |
+      zone plate
+    brief: |
+      把奇数号或偶数号半波带挡住的屏；留下的半波带到轴上一点同相，光在那里会聚，焦距和波长成反比。
+    definedIn: physics.optics.fresnel-diffraction
+    anchor: def-zone-plate
+  - id: physics.optics.poisson-spot
+    zh: |
+      泊松亮斑
+    en: |
+      Poisson spot
+    brief: |
+      点光源或平行光照射不透光的小圆屏时，几何阴影中心出现的亮点，亮度和不放圆屏时差不多；也叫阿拉戈亮斑。
+    definedIn: physics.optics.fresnel-diffraction
+    anchor: def-poisson-spot
+  - id: physics.optics.airy-disk
+    zh: |
+      艾里斑
+    en: |
+      Airy disk
+    brief: |
+      圆孔的夫琅禾费衍射图样里第一个暗环以内的中央亮斑，角半径约$1.22\frac\lambda D$，集中了约$84\%$的光能。
+    definedIn: physics.optics.resolving-power
+    anchor: def-airy-disk
+  - id: physics.optics.rayleigh-criterion
+    zh: |
+      瑞利判据
+    en: |
+      Rayleigh criterion
+    brief: |
+      一个点光源的像的中心正好落在另一个点光源的像的第一个暗处时，认为两者刚好能分辨。
+    definedIn: physics.optics.resolving-power
+    anchor: def-rayleigh
+  - id: physics.optics.angular-resolution
+    zh: |
+      最小分辨角
+    en: |
+      angular resolution limit
+    brief: |
+      按瑞利判据刚好能分辨的两点对仪器张的角；口径为$D$的圆孔是$1.22\frac\lambda D$，越小分辨得越清。
+    definedIn: physics.optics.resolving-power
+    anchor: def-rayleigh
+  - id: physics.optics.aperture-function
+    zh: |
+      孔径函数
+    en: |
+      aperture function
+    brief: |
+      孔所在平面上各处透过的光的振幅和入射光振幅之比；夫琅禾费衍射的振幅正比于它的傅里叶变换。
+    definedIn: physics.optics.fourier-optics
+    anchor: def-aperture-function
+  - id: physics.optics.spatial-frequency
+    zh: |
+      空间频率
+    en: |
+      spatial frequency
+    brief: |
+      孔径函数里按$e^{iqx}$变化的成分每单位长度重复的次数$\frac q{2\pi}$；它把光衍射到$\sin\theta=\lambda\frac q{2\pi}$的方向。
+    definedIn: physics.optics.fourier-optics
+    anchor: def-spatial-frequency
+  - id: physics.optics.babinet-principle
+    zh: |
+      巴比涅原理
+    en: |
+      Babinet's principle
+    brief: |
+      两个互补的屏（一个透光处正好是另一个不透光处）的夫琅禾费衍射图样，除了原方向附近以外完全相同。
+    definedIn: physics.optics.fourier-optics
+    anchor: thm-babinet
+  - id: physics.optics.michelson-interferometer
+    zh: |
+      迈克耳孙干涉仪
+    en: |
+      Michelson interferometer
+    brief: |
+      用分束器把光分成两路、各由一面反射镜反射回来再会合叠加的干涉装置；移动反射镜就能精密地改变光程差。
+    definedIn: physics.optics.michelson-interferometer
+    anchor: def-michelson
+  - id: physics.optics.equal-inclination-fringes
+    zh: |
+      等倾条纹
+    en: |
+      fringes of equal inclination
+    brief: |
+      膜厚处处相同、光从各个方向射来时，沿倾角相同的方向分布的干涉条纹，成同心圆环，中心的级次最高。
+    definedIn: physics.optics.michelson-interferometer
+    anchor: def-equal-inclination
+  - id: physics.optics.population-inversion
+    zh: |
+      粒子数反转
+    en: |
+      population inversion
+    brief: |
+      高能级上的原子数多于低能级上的原子数；这时受激辐射多于吸收，光穿过介质被放大，热平衡时不可能出现。
+    definedIn: physics.optics.lasers
+    anchor: def-population-inversion
+  - id: physics.optics.pumping
+    zh: |
+      泵浦
+    en: |
+      pumping
+    brief: |
+      不断从外界输入能量、把原子送到高能级以实现粒子数反转的过程，例如用强光照射、气体放电或通电流。
+    definedIn: physics.optics.lasers
+    anchor: def-population-inversion
+  - id: physics.optics.optical-resonator
+    zh: |
+      光学谐振腔
+    en: |
+      optical resonator
+    brief: |
+      两面相对的反射镜构成、让光在其间来回反射的装置；它让沿轴线的光一次次回到增益介质里放大。
+    definedIn: physics.optics.lasers
+    anchor: def-resonator
+  - id: physics.optics.longitudinal-mode
+    zh: |
+      纵模
+    en: |
+      longitudinal mode
+    brief: |
+      光学谐振腔里能来回加强的频率$\nu_m=\frac{mc}{2L}$，$L$是两镜的距离；相邻两个纵模相差$\frac c{2L}$。
+    definedIn: physics.optics.lasers
+    anchor: def-longitudinal-mode
