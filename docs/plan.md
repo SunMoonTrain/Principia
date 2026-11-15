@@ -45,7 +45,7 @@ Nov 8, 2026 · @MoonTrain Sun
 
 **为什么用 Markdown 加 YAML（一种缩进式的配置文本格式）**：agent 写起来自然，公式直接写在正文里；Git 对比差异时人能看懂；你自己也能顺手改错字。
 
-**一级台阶 = 一个小节**：读完讲解和例题要 20 到 30 分钟（不含做题时间，文件头的 `minutes` 也是这个口径），只引入 1 到 2 个新概念。太大的小节必须拆开。
+**一级台阶 = 一个小节**：读完讲解和例题要 20 到 30 分钟（不含做题时间，文件头的 `minutes` 也是这个口径），只引入 1 到 2 个新概念。太大的小节必须拆开。开写一批之前，写内容会话按这个口径查一遍这一批小节的 goal，估计超过 30 分钟的，趁还是 outline 时拆开：还没 written 的小节改 id 不用写迁移脚本，但引用它的前置和链接要一起改；拆法先发给写代码的会话，确认后再动。审查把 `minutes` 超过 30 的小节报出来（批次 17 之后你定的：光学 27 节平均 47.6 分钟，已写的不拆）。
 
 **前置只列最少的直接前置**：能通过别的前置间接推出的不列。审查「是否缺前置」时，沿整条前置链查。构建发现能由别的前置推出的前置时给警告。把别的领域里讲过的内容严格化的小节（例如数学分析里证明单变量微积分里用过的定理），把讲过它的那一节也列为前置（批次 0 定的）；物理里换一种方法重讲别的领域讲过的结论（例如循环坐标那一节用拉格朗日量重讲有心力的降阶），同样把讲过它的那一节列为前置（批次 1 审查时定的）；那一节已经能由别的前置推出时不再重复列，免得构建警告（批次 0 审查时定的）。写正文时发现讲解要用的概念不在前置链上，写内容 agent 可以给本领域的小节补前置或换前置（id 不变，层级可能跟着变），在汇报里列出，由审内容 agent 核对（批次 1 定的）。
 
@@ -1159,7 +1159,7 @@ math.analysis.completeness:
     - 写成「这里不证」的：圆孔的 $1.22$ 和 84%，e 光的次波是旋转椭球面。`brewster-angle` 的偶极子解释写明是「帮助理解的图像」，严格的结果来自菲涅耳公式。动画滑块的步长避开简单题、中等题用的参数。
   - 跨领域补标（批次 11 的规矩）：这一批 76 个新术语（单变量微积分 41、光学 35）。补了狭义相对论 `length-contraction:63` 的「迈克耳孙干涉仪」，括注改成 Michelson interferometer，`status` 不动：这句在例 2 里，可例题用到的只有两臂长度、方向和光的往返，例题自己写全了，干涉仪只是场景，按规矩 C 只补标记、不加前置（写代码的会话定的，审查同意）。不补的：线性代数 `kernel-image`、`similarity` 的「导数」按中学基础词（见规矩 C 的例子；数学分析 `extreme-value`、`uniform-continuity` 的是批次 2 写的）；线性代数 `determinant:86` 的「连续地变到」是日常说法，`matrix-powers:82` 的「连续作用三次」是接连的意思；多变量微积分 `differentiability:39` 的「物理里说的『无穷小改变的一阶近似』」是引号里转述的说法；电磁学 `fresnel-equations:66` 的「布儒斯特角」只在标题链接里；光学 `huygens-principle:84` 的「双折射晶体」是长词。题目文字、图注里的（电磁学 `em-waves` 第 5 题、`dipole-radiation` 第 6、7 题、`fresnel-equations` 第 8 题，狭义相对论 `postulates` 的图注和第 8 题）照「可标可不标」不补。
   - 原有问题，这一批不改：
-    - 光学 27 节的 `minutes` 都在 45–55，超出「20 到 30 分钟」（光学审查提的）。写代码的会话量了正文：光学每节平均约 2400 个汉字、47.6 分钟，别的物理领域约 1950 个汉字、30–36 分钟，折算的阅读速度各领域差不多，所以不是虚标，是正文长；别的领域的平均也多在 30 分钟上下。处理办法等你定。
+    - 光学 27 节的 `minutes` 都在 45–55，超出「20 到 30 分钟」（光学审查提的）。写代码的会话量了正文：光学每节平均约 2400 个汉字、47.6 分钟，别的物理领域约 1950 个汉字、30–36 分钟，折算的阅读速度各领域差不多，所以不是虚标，是正文长；别的领域的平均也多在 30 分钟上下。你定了：已写的不拆，从批次 18 起开写前查大纲、审查报超过 30 分钟的（见「一级台阶 = 一个小节」）。
     - 批次 16 的光学 `coherence`、`single-slit-diffraction` 的动画还用「分子、分母同加 1e-9」避开 0/0，`coherence` 第 5 题还说钠双线「一样亮」；以后改到时照附录 FunctionPlot 的 0/0 一条和 `michelson-interferometer` 的写法改（写内容会话提的）。
     - `birefringence` 例 1、`lasers` 例 2 同一块里同一个术语标了两次（修订时在前面补了标记，后面原有的没删），以后改到时顺手统一（审查提的）。
   - 给以后写别的领域的会话留的话（批次 17 写内容、审查时提的）：
@@ -1173,6 +1173,38 @@ math.analysis.completeness:
       - `mean-value-theorem`：`derivative` 第 6 题的参考解答说唯一性要用「导数处处相同的两个函数只差一个常数」，这一节要讲到这个推论。
       - `optimization`：闭区间上求最值的依据是 `closed-interval-properties#thm-extreme-value`。
 - 批次 17 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 18；光学写完了，物理那一对下一个领域到时候问你（写代码的会话定的）。
+- 批次 17 之后（你定的）：发批次 18，数学那一对写单变量微积分的第二批，物理那一对写牛顿力学；光学的 `minutes` 偏长，已写的不拆，从这一批起照「一级台阶 = 一个小节」开写前查大纲、审查报超过 30 分钟的。
+- 批次 18：单变量微积分的第二批、牛顿力学的第一批，做法和批次 17 一样。
+  - 单变量微积分写求导和中值定理 9 节，按前置顺序：`differentials`、`chain-rule`、`elementary-derivatives`、`local-extrema`、`higher-derivatives`、`hyperbolic-functions`、`implicit-differentiation`、`mean-value-theorem`、`antiderivatives`。审查报告 `docs/reviews/batch-18-calculus.md`。`antiderivatives` 提前放进这一批，因为牛顿力学的第一节 `kinematics-1d` 以它为前置；导数的其余应用（`lhopital`、`monotonicity`、`concavity`、`optimization`、`taylor-polynomial`、`curve-sketching`）和定积分、微积分基本定理留给以后几批（写代码的会话定的）。
+  - 牛顿力学（新领域，34 节）写运动学和牛顿定律开头的 9 节，按前置顺序：`kinematics-1d`、`kinematics-vectors`、`circular-motion`、`relative-motion`、`newtons-laws`、`angular-momentum`、`common-forces`、`circular-dynamics`、`free-body-diagrams`。审查报告 `docs/reviews/batch-18-newtonian-mechanics.md`。以 `fundamental-theorem` 为前置的 `momentum-impulse`、`work-energy`、`fluid-statics` 等到单变量微积分写出定积分以后再写；这个领域约 4 批写完，以后几批大致是动量与能量、引力与有心力、刚体与转动参考系（写代码的会话定的）。
+  - 两个领域开写前都照「一级台阶 = 一个小节」查一遍这 9 节的 goal（批次 17 之后你定的）：估计超过 30 分钟的，先把拆法（新 id、标题、goal、前置，以及哪些已写小节以它为前置或链接到它）发给写代码的会话，确认后再拆、再写。
+  - 牛顿力学是新领域，开写前要知道的（写代码的会话定的）：
+    - 跨领域前置：`kinematics-1d` ← 单变量微积分 `antiderivatives`（这一批由另一对同时写，按它的 goal 假定读者学过，审查时对一下两边的记号）；`kinematics-vectors` ← 线性代数 `vectors`、`angular-momentum` ← 线性代数 `cross-product` 都已审。读者会求导、求原函数，懂向量和叉积。
+    - 证明深度 `sketch`（`_domain.yaml` 已定）；宏现有 `\vb`、`\uv`、`\dd`、`\dv`，加宏时同名的要和别的领域定义一致（构建会查）；术语表还是空的。
+    - 中学物理学过的词（速度、加速度、力、质量、重力、弹力、摩擦力这类）本领域照样定义、进表；别的领域借用时按中学基础词，不按规矩 C 补标（照单变量微积分「导数」的先例）。
+    - 「惯性系」狭义相对论自己定义了（`physics.special-relativity.inertial-frame`），照「同一个概念两个领域都要讲时各自定义、各标各的 id」，牛顿力学定义自己的。「约束」「约束力」是分析力学的术语：受力分析里用支持力、拉力这些词，提到约束力当旁白，按规矩 C 标分析力学的 id。
+  - 已写的小节有链接或用法指向这一批（写代码的会话查的）：
+    - 单变量微积分：以这一批为直接前置的已写小节，按批次 9 定的规矩查了它们的用法：
+      - `differentials`：光学 `paraxial-refraction:32`（$\sin\theta$、$\tan\theta$ 在 $\theta=0$ 附近的线性近似），它以本节为前置；数学分析 `differentiability:51`（「微积分里的微分 $\dd y=f'(x)\dd x$ 说的也是这件事」）。
+      - `chain-rule`：数学分析 `differentiability:16` 说「常见的推导把差商拆成两个差商相乘」，接着指出 $g(x)=g(a)$ 时这一步不成立、给出严格证明。这里的道理照那个拆法写，说明 $g(x)\ne g(a)$ 的假定，链到数学分析。常微分方程 `what-is-ode`、多变量微积分 `partial-derivatives` 以本节为前置，求 $e^{2x}$、$e^{xy}$ 这类导数要用它。
+      - `elementary-derivatives`：数学分析 `differentiability` 第 8 题、`ftc-proof` 第 7 题用 $\sin$、$\cos$ 的导数；多变量微积分 `partial-derivatives` 以本节为前置。批次 17 写回的「单变量微积分以后几批」那几条（`special-limits` 的两个极限、实数次幂、角度制）照用。
+      - `local-extrema`：多变量微积分 `extrema:25`（「和一元时一样」）、`taylor-multivariable:41`（定义域内部的极值点导数为 $0$，即驻点）。多变量微积分已有多元的「驻点」，一元的同名术语按意思选 id。
+      - `higher-derivatives`：常微分方程 `second-order-linear` 以本节为前置（$y''$）。
+      - `hyperbolic-functions`：变分法 `beltrami-identity:69`（$\cosh$、$\sinh$、$\cosh^2u-\sinh^2u=1$、$(\cosh u)'=\sinh u$，悬链线）、狭义相对论 `four-force:74`（双曲运动的 $\cosh$、$\sinh$、$\tanh$）都以本节为前置；数学分析 `trig-construction` 第 8 题（$\frac{e^x+e^{-x}}2$、$\frac{e^x-e^{-x}}2$ 叫双曲余弦、双曲正弦）。
+      - `mean-value-theorem`：数学分析 `mean-value-proofs:16` 以本节为前置（「微积分里的拉格朗日中值定理说：$f$ 在 $[a,b]$ 上连续、在 $(a,b)$ 内可导……」，那边有自己的术语 `math.analysis.mean-value-theorem`）；多变量微积分 `partial-derivatives:41`、`differentiability:46`、`taylor-multivariable:25` 对辅助函数各用一次中值定理；批次 17 写回的「导数处处相同的两个函数只差一个常数」在这里讲。
+      - `antiderivatives`：常微分方程 `what-is-ode` 以本节为前置，`linear-first-order:41` 用「同一个函数在区间上的原函数只差常数」；牛顿力学 `kinematics-1d` 由加速度求速度、位置。
+      - `implicit-differentiation`：没有已写的小节指向它。
+    - 牛顿力学：
+      - `relative-motion`：电磁学 `lorentz-force:68`（换到以 $\vb u$ 匀速运动的参考系里，$\vb v'=\vb v-\vb u$，加速度不变）。
+      - `newtons-laws`：狭义相对论 `postulates:27`（第一定律只在惯性系里成立；相对惯性系做匀速直线运动的参考系也是惯性系，加速或转动的不是），电磁学 `coulomb-law`（两个电荷受的力大小相等、方向相反）都以本节为前置。
+      - `angular-momentum`：电磁学 `electric-dipole:54`（$\vb p\times\vb E$）、`magnetic-force-on-currents:48`（力偶的力矩和对哪一点取无关）以本节为前置；线性代数 `cross-product:46`（力矩是 $\vb r\times\vb F$）。
+      - `common-forces`：电磁学 `coulomb-law` 第 4 题（重力、线的拉力和库仑力三个力平衡）。
+      - `circular-dynamics`：电磁学 `lorentz-force:57` 以本节为前置（磁力正好提供圆周运动的向心力）。
+      - `free-body-diagrams`：分析力学 `constraints:16`–`:27` 以本节为前置（单摆的绳子拉力、斜面上的滑块；受力分析里约束力是多出来的未知数）。
+      - `kinematics-1d`、`kinematics-vectors`、`circular-motion`：没有别的领域的已写小节指向它们。
+  - 以这一批为前置、还没写的别的小节：`hyperbolic-functions` ← 偏微分方程「矩形与圆盘上的拉普拉斯方程」、牛顿力学「与速度有关的阻力」、量子力学「势垒与隧穿」、热力学与统计力学「两能级系统与顺磁性」。
+  - 动画：单变量微积分用 function-plot 画切线和线性近似、双曲函数、中值定理（切线平行于弦）、原函数族（滑块调常数）；牛顿力学用 function-plot 画位置、速度随时间的图像和抛体的轨迹（滑块调初速度、抛射角），向量合成、圆周运动、受力图画 SVG（写代码的会话提的）。
+- 批次 18 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 19（写代码的会话定的）。
 - 几个领域同时写时（批次 1 定的）：每个写内容会话只改自己领域的目录（`content/<学科>/<领域>/`），审内容会话只写自己的报告和验算脚本；`docs/plan.md` 不由它们直接改，要写回的内容写进汇报，由写代码的会话统一写进去、单独提交，免得几个会话同时改一个文件。每个领域各自作为一个提交。另一个领域写到一半、全量构建报错时，写内容会话可以把那个领域换成已提交的版本，在临时副本上构建，确认自己的领域 0 个错误；看页面同理，用临时副本编译的内容另起一个服务，进度写临时仓库，不改仓库的 `dist/`（批次 2 定的）。test-serve 和 `npm run serve` 提供的是 `dist/` 里构建好的网站，不读 `generated/`：改完内容要重新 `vite build`，页面上才看得到（批次 6 时写内容会话提的）。临时副本的做法（批次 10 时写内容会话提的，写代码的会话核过）：用 `git archive HEAD` 导出已提交的版本，再拷进自己的改动；`node_modules` 不要复制，在副本里建一个指向仓库 `node_modules` 的目录联接（PowerShell 的 `New-Item -ItemType Junction`）；建网站时在副本目录里跑 `npx vite build --outDir <目录>`，或者把副本目录写成 `vite build` 的第一个参数（Vite 8 的根目录是位置参数）；删副本之前先单独删掉联接本身（PowerShell 的 `[System.IO.Directory]::Delete(<联接>, $false)`），否则删除命令会顺着联接把仓库的 `node_modules` 一起删掉。各会话的 scratchpad 都在 C 盘，C 盘空间紧（批次 14 时一度只剩十几 MB，`vite build` 报 ENOSPC）：页面检查能用 test-serve 读仓库 D 盘的 `dist/` 就不另建网站副本；要建，看完就删，同一时间只留一份；以前批次的副本、快照复核完就删（批次 14 时定的）。页面检查只用进度写临时目录的 test-serve；`npm run dev`、`npm run serve` 写的是你真实的 `progress/`，点「看提示」「放弃」都会留下记录，绝不用来做页面检查（批次 15 时写内容会话用 `npm run dev` 往 `progress/` 写进了光学 9 节的假记录，你同意后写代码的会话删掉了）。两个写内容会话共用一个暂存区，提交要一个接一个：只 `git add` 自己的路径，提交前用 `git diff --cached --stat` 确认暂存区里没有别人的文件（批次 17 写代码的会话定的）。
 
 **分工**：一共三个 agent：写代码、写内容、审内容。开发台阶 8、9 由写内容 agent 和审内容 agent 执行。写内容和审内容必须是两个独立会话。
@@ -1190,6 +1222,7 @@ math.analysis.completeness:
    - 术语：每节第一次出现是否写了全称（有通用中文译名的也括注英文全称）；每个三级标题下（没有三级标题的部分按整个部分算）第一次出现是否都做了标记；符号是否符合领域约定；术语表的简介是否准确，锚点是否落在真正下定义的那一段。
    - 前置：讲解里用到的概念是否都在前置链上（沿整条前置链查）；`prerequisites` 是否只列了最少的直接前置。讲解、例题和题目文字都查；题目文字里用到前置链外的结论时，加链接注明出处即可（批次 2 审查时定的）；题目文字可以不标术语，只看术语标记的检查查不出题目里用到的链外结论，要按文字查（批次 16 写内容时提的：多变量微积分 `stokes-theorem` 第 6 题、`potentials` 第 7 题因此补了链接）；链接要指向真正定义这个词、证明这个结论的那一节，用术语表的 `definedIn` 核对，不要按名字猜（批次 9 审查时提的）。以这一批为直接前置的已写小节，也顺带查一遍：它们用到的这一批的概念，要在它们自己的链上（批次 9 审查时提的：变分法 `direct-methods` 写的时候前置还是大纲，用了链上没有的对称矩阵、可逆）。讲解里为了列出例子的式子而用到别的学科的结论（例如变分法里由机械能守恒得到的 $v=\sqrt{2gy}$），写明是什么结论、链接出处即可，不列为前置；这一节要讲解或推导这个结论本身时才列。`sketch` 的小节，推导里引用的分析定理（例如积分号下求导），写明条件、说明这里满足，并链接到严格证明所在的小节，可以不列为前置；读者要先懂才看得懂这一段的概念，仍要列为前置（这两条是批次 4 审查时定的）。`sketch` 的小节用到一元结论的直接推广（二元函数的连续性、有界闭矩形上的连续函数有界），或者把另一个变量固定、对 $y$ 求导（写作 $f_y$）时，说清意思、链接一元的那一节即可，不列多变量微积分为前置；要用多元复合函数的链式法则、多元泰勒公式时仍要列（批次 6 审查时定的）；交换二重积分（包括反常二重积分）的次序也要列 `math.vector-calculus.double-integrals`（批次 7 审查时定的）。本领域后面小节的术语可以提前提到（加标记、括注英文，浮窗会注明是第几层讲的），讲解和例题的推理不能用到它（批次 7 写内容时提的，审查认可）。
    - 格式：固定结构、排版规范。
+   - 篇幅：文件头的 `minutes` 按实际读讲解和例题的时间估，不超过 30；超了报出来，建议压缩或者拆开（批次 17 之后你定的）。
 4. 写内容的 agent 按报告修订：重要的必须改，小问题改掉或写一句不改的理由，逐条写进报告里「复核」前面的「修订说明」一节（批次 1 定的）；审内容的 agent 复核修订，通过后把 `status` 改为 `reviewed`（几何图像只有占位框的不能标）。内容要等复核通过才提交，复核时 `git diff` 比不出这一轮改了什么：审内容的 agent 初审时先把要审的文件拷一份快照到自己的 scratchpad，复核时和快照比（批次 7 审查会话提的）。
 5. 写内容的 agent 把这一批作为一个 Git 提交提交上去；审查报告、审内容 agent 改的 `status`、`content/issues.yaml` 里新增的标记也并进这个提交。写代码的会话把这一批定下的规矩写回 plan.md 时，顺带更新根目录 `README.md` 里「现在写到哪了」的数字和日期，并进写回的提交（写代码的会话定的：2026-11-13 加了 README，那一段每批都会过时）。
 6. 你学的时候点「内容有误」，写进 `content/issues.yaml`。下一批开始前，写内容的 agent 先处理其中未解决的条目，处理完一条就在 `content/issues-resolved.yaml` 里记一条，不改 `issues.yaml`。改到已经 `reviewed` 的小节时，把它的 `status` 退回 `written`，由审内容 agent 复核。
