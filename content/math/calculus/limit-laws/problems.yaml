@@ -1,0 +1,151 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\lim_{x\to-1}\frac{x^2+3x}{2x-5}$。
+  answer:
+    type: number
+    value: 2/7
+  hints:
+    - |
+      分母在$x=-1$处等于多少？是零的话才要另想办法。
+    - |
+      分母在$-1$处是$-7\ne0$，可以用代入法。
+    - |
+      $\frac{(-1)^2+3\cdot(-1)}{2\cdot(-1)-5}=\frac{-2}{-7}=\frac27$。
+  solution: |
+    分母在$-1$处等于$-7\ne0$，由代入法，极限是$\frac{1-3}{-2-5}=\frac{-2}{-7}=\frac27$。
+
+- id: p2
+  tier: easy
+  statement: |
+    已知$\lim_{x\to a}f(x)=3$，$\lim_{x\to a}g(x)=-2$。求$\lim_{x\to a}\frac{f(x)^2-g(x)}{f(x)+2g(x)}$。
+  answer:
+    type: number
+    value: -11
+  hints:
+    - |
+      分子、分母各自的极限用四则运算法则算。
+    - |
+      分子趋于$3^2-(-2)=11$，分母趋于$3+2\cdot(-2)=-1$。分母的极限不是零，商的法则能用吗？
+    - |
+      分母的极限$-1\ne0$，所求的极限是$\frac{11}{-1}=-11$。
+  solution: |
+    分子$\to9+2=11$，分母$\to3-4=-1\ne0$，由商的法则，极限是$\frac{11}{-1}=-11$。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\lim_{x\to5}\frac{\sqrt{x+4}-3}{x-5}$。
+  answer:
+    type: number
+    value: 1/6
+  hints:
+    - |
+      $x=5$时分子、分母都是$0$，是$\frac00$型。分子有根式，试试有理化。
+    - |
+      分子、分母同乘$\sqrt{x+4}+3$，分子变成$(x+4)-9=x-5$。
+    - |
+      $x\ne5$时原式等于$\frac1{\sqrt{x+4}+3}$，$x\to5$时趋于$\frac1{3+3}=\frac16$。
+  solution: |
+    $x\ne5$时，$\frac{\sqrt{x+4}-3}{x-5}=\frac{(x+4)-9}{(x-5)(\sqrt{x+4}+3)}=\frac{1}{\sqrt{x+4}+3}$。由代入法（含开方），$x\to5$时它趋于$\frac1{3+3}=\frac16$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\lim_{x\to1}\left(\frac{1}{x-1}-\frac{2}{x^2-1}\right)$。
+  answer:
+    type: number
+    value: 1/2
+  hints:
+    - |
+      两项各自都没有极限，不能分开求。先通分。
+    - |
+      通分后是$\frac{(x+1)-2}{x^2-1}=\frac{x-1}{(x-1)(x+1)}$。
+    - |
+      $x\ne1$时原式等于$\frac1{x+1}$，$x\to1$时趋于$\frac12$。
+  solution: |
+    通分：$\frac1{x-1}-\frac2{x^2-1}=\frac{x+1-2}{(x-1)(x+1)}=\frac{x-1}{(x-1)(x+1)}$。$x\ne\pm1$时它等于$\frac1{x+1}$，$x\to1$时趋于$\frac12$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$\lim_{x\to a}f(x)=A$，$\lim_{x\to a}g(x)=B$。按「无限接近就是要多近有多近」的意思，说明$\lim_{x\to a}f(x)g(x)=AB$。
+  hints:
+    - |
+      把要估计的差拆开：$f(x)g(x)-AB=\bigl(f(x)-A\bigr)g(x)+A\bigl(g(x)-B\bigr)$。
+    - |
+      $x$离$a$足够近时$|g(x)-B|<1$，于是$|g(x)|<|B|+1$。两项各怎样估计？
+    - |
+      任给正数$d$。$x$离$a$足够近（$x\ne a$）时，$|f(x)-A|<d$，$|g(x)-B|<d$，并且$|g(x)-B|<1$，所以$|g(x)|<|B|+1$。于是
+
+      $$
+      |f(x)g(x)-AB|\le|f(x)-A|\,|g(x)|+|A|\,|g(x)-B|<(|A|+|B|+1)d .
+      $$
+
+      $d$可以任意小，右边也就任意小：要它小于给定的正数$c$，取$d=\frac{c}{|A|+|B|+1}$即可。所以$f(x)g(x)$无限接近$AB$。
+  reference: |
+    $f(x)g(x)-AB=(f(x)-A)g(x)+A(g(x)-B)$。
+
+    任给正数$d$，$x$离$a$足够近（$x\ne a$）时同时有$|f(x)-A|<d$、$|g(x)-B|<d$、$|g(x)-B|<1$。后者给出$|g(x)|<|B|+1$，所以$|f(x)g(x)-AB|<(|B|+1)d+|A|d=(|A|+|B|+1)d$。
+
+    要$|f(x)g(x)-AB|$小于任意给定的正数$c$，取$d=\frac{c}{|A|+|B|+1}$即可，所以$\lim_{x\to a}f(x)g(x)=AB$。关键是$g$在$a$附近有界：不然$(f-A)g$就算$f-A$很小也可能不小。
+
+- id: p6
+  tier: hard
+  statement: |
+    $\lfloor t\rfloor$表示不超过$t$的最大整数。求$\lim_{x\to0}x\left\lfloor\frac1x\right\rfloor$，并说明理由。
+  hints:
+    - |
+      对任何实数$t$，都有$t-1<\lfloor t\rfloor\le t$。取$t=\frac1x$。
+    - |
+      $x>0$时两边乘$x$，不等号方向不变；$x<0$时两边乘$x$，不等号反向。分别看两侧。
+    - |
+      $x>0$时，$\frac1x-1<\left\lfloor\frac1x\right\rfloor\le\frac1x$，乘$x$得$1-x<x\left\lfloor\frac1x\right\rfloor\le1$；$x\to0^+$时两边都趋于$1$，右极限是$1$。
+
+      $x<0$时乘$x$不等号反向，得$1\le x\left\lfloor\frac1x\right\rfloor<1-x$；$x\to0^-$时两边都趋于$1$，左极限也是$1$。两侧都是$1$，所以极限是$1$。
+  reference: |
+    由$t-1<\lfloor t\rfloor\le t$，取$t=\frac1x$。
+
+    $x>0$：$1-x<x\lfloor\frac1x\rfloor\le1$，由单侧的夹逼定理，右极限是$1$。$x<0$：乘负数，不等号反向，$1\le x\lfloor\frac1x\rfloor<1-x$，左极限也是$1$。
+
+    左、右极限都是$1$，所以$\lim_{x\to0}x\lfloor\frac1x\rfloor=1$。这里不能用乘积的法则：$\lfloor\frac1x\rfloor$在$x\to0$时是无穷大，没有极限。
+
+- id: p7
+  tier: thinking
+  statement: |
+    设$\lim_{x\to0}f(x)=\lim_{x\to0}g(x)=0$。
+
+    （1）分别举出例子，使$\lim_{x\to0}\frac{f(x)}{g(x)}$等于$5$、等于$0$、是$+\infty$、不存在也不是无穷大。（2）为什么$\frac00$型要先变形才能求，而分子趋于$1$、分母趋于$0$的分式不用变形，就知道它是无穷大？
+  hints:
+    - |
+      （1）先试试$f=cx$、$g=x$，以及$x$的不同次幂。
+    - |
+      （1）最后一种可以借$\sin\frac1x$：它有界，乘上$x$就趋于$0$。
+    - |
+      （1）$f=5x$，$g=x$，比值是$5$；$f=x^2$，$g=x$，比值$x\to0$；$f=x^2$，$g=x^4$，比值$\frac1{x^2}\to+\infty$；$f=x\sin\frac1x$，$g=x$，比值$\sin\frac1x$来回摆动，没有极限也不是无穷大，而$x\sin\frac1x\to0$（夹逼定理）。
+
+      （2）$\frac00$型的结果取决于分子、分母趋于零的快慢，上面四个例子什么都可能。分子趋于$1$、分母趋于$0$时，比值的绝对值一定无限增大，结果是确定的。
+  reference: |
+    （1）$\frac{5x}{x}=5$；$\frac{x^2}{x}=x\to0$；$\frac{x^2}{x^4}=\frac1{x^2}\to+\infty$；$\frac{x\sin(1/x)}{x}=\sin\frac1x$在$-1$和$1$之间摆动，没有极限，也不是无穷大，而$|x\sin\frac1x|\le|x|$，所以$f\to0$。
+
+    （2）$\frac00$型里四则运算法则失效，结果由「谁趋于零更快」决定，可以是任何数，也可以不存在，所以要先约分、有理化，把真正的快慢比出来。分子趋于$A\ne0$、分母趋于$0$时，$x$足够近时分子离$0$有一段距离，分母却任意小，比值的绝对值无限增大，一定是无穷大。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）若$\lim_{x\to a}[f(x)+g(x)]$和$\lim_{x\to a}f(x)$都存在，$\lim_{x\to a}g(x)$一定存在吗？（2）若$\lim_{x\to a}f(x)g(x)$和$\lim_{x\to a}f(x)$都存在，$\lim_{x\to a}g(x)$一定存在吗？不一定的话，补上什么条件就一定存在？
+  hints:
+    - |
+      （1）把$g$写成两个有极限的函数的组合。
+    - |
+      （2）想用商的法则把$g$写成$\frac{fg}{f}$，需要分母的极限不为零。$\lim f=0$时，试试$f=x$、$g=\frac1x$，$a=0$。
+    - |
+      （1）一定存在：$g=(f+g)-f$，两项都有极限，由差的法则，$\lim g=\lim(f+g)-\lim f$。
+
+      （2）不一定：$a=0$，$f=x$，$g=\frac1x$，$fg=1$有极限，$f\to0$，$g$却没有极限。补上$\lim_{x\to a}f(x)\ne0$就一定存在：$g=\frac{fg}{f}$，由商的法则，$\lim g=\frac{\lim fg}{\lim f}$。
+  reference: |
+    （1）存在。$g=(f+g)-f$，由差的法则，$\lim g=\lim(f+g)-\lim f$。
+
+    （2）不一定。反例：$a=0$，$f(x)=x$，$g(x)=\frac1x$，$f(x)g(x)=1$（$x\ne0$），极限是$1$，$\lim f=0$，而$g$在$0$处是无穷大，没有极限。
+
+    条件：$\lim_{x\to a}f(x)=A\ne0$。这时在$a$附近$f\ne0$，$g=\frac{fg}{f}$，由商的法则$\lim g=\frac{\lim fg}{A}$。两问的差别在于：减法总能「倒回去」，除法要分母的极限不为零才能倒回去。

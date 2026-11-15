@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" width="560" height="300" font-size="14">
+  <!-- 单位圆半径 220 像素，圆心 O = (60, 268)，角 x = 0.8；P = (cos x, sin x)，T = (1, tan x) -->
+  <path d="M60 268 L280 268 L280 41.48 Z" style="fill: var(--accent, #2563eb)" fill-opacity="0.10" stroke="none"/>
+  <path d="M60 268 L280 268 A220 220 0 0 0 213.28 110.18 Z" style="fill: var(--good, #059669)" fill-opacity="0.22" stroke="none"/>
+  <path d="M60 268 L280 268 L213.28 110.18 Z" style="fill: var(--accent, #2563eb)" fill-opacity="0.22" stroke="none"/>
+  <path d="M280 268 A220 220 0 0 0 108.18 53.34" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" opacity="0.6"/>
+  <path d="M280 268 A220 220 0 0 0 213.28 110.18" fill="none" stroke="currentColor" stroke-width="1.8"/>
+  <line x1="50" y1="268" x2="310" y2="268" stroke="currentColor" stroke-width="1.2" />
+  <line x1="60" y1="268" x2="280" y2="41.48" stroke="currentColor" stroke-width="1.4" />
+  <line x1="280" y1="268" x2="280" y2="41.48" stroke="currentColor" stroke-width="1.8" />
+  <line x1="280" y1="268" x2="213.28" y2="110.18" stroke="currentColor" stroke-width="1.2" />
+  <line x1="213.28" y1="110.18" x2="213.28" y2="268" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.6" />
+  <path d="M94 268 A34 34 0 0 0 83.69 243.61" fill="none" stroke="currentColor" stroke-width="1.1"/>
+  <text x="100" y="256" font-size="13" text-anchor="start" fill="currentColor" ><tspan font-style="italic">x</tspan></text>
+  <circle cx="60" cy="268" r="3" fill="currentColor"/>
+  <circle cx="280" cy="268" r="3" fill="currentColor"/>
+  <circle cx="213.28" cy="110.18" r="3" fill="currentColor"/>
+  <circle cx="280" cy="41.48" r="3" fill="currentColor"/>
+  <text x="52" y="286" font-size="13" text-anchor="middle" fill="currentColor" ><tspan font-style="italic">O</tspan></text>
+  <text x="282" y="286" font-size="13" text-anchor="middle" fill="currentColor" ><tspan font-style="italic">A</tspan></text>
+  <text x="209.28" y="95.18" font-size="13" text-anchor="middle" fill="currentColor" ><tspan font-style="italic">P</tspan></text>
+  <text x="289" y="46.48" font-size="13" text-anchor="start" fill="currentColor" ><tspan font-style="italic">T</tspan></text>
+  <text x="146.64" y="286" font-size="13" text-anchor="middle" fill="currentColor" >1</text>
+  <text x="207.28" y="219.09" font-size="13" text-anchor="end" fill="currentColor" >sin <tspan font-style="italic">x</tspan></text>
+  <text x="288" y="154.74" font-size="13" text-anchor="start" fill="currentColor" >tan <tspan font-style="italic">x</tspan></text>
+  <rect x="340" y="119" width="16" height="12" style="fill: var(--accent, #2563eb)" fill-opacity="0.22" stroke="currentColor" stroke-width="0.6"/>
+  <text x="364" y="130" font-size="13" text-anchor="start" fill="currentColor" >△<tspan font-style="italic">OAP</tspan> 的面积 ½ sin <tspan font-style="italic">x</tspan></text>
+  <rect x="340" y="147" width="16" height="12" style="fill: var(--good, #059669)" fill-opacity="0.22" stroke="currentColor" stroke-width="0.6"/>
+  <text x="364" y="158" font-size="13" text-anchor="start" fill="currentColor" >扇形 <tspan font-style="italic">OAP</tspan> 的面积 ½ <tspan font-style="italic">x</tspan></text>
+  <rect x="340" y="175" width="16" height="12" style="fill: var(--accent, #2563eb)" fill-opacity="0.10" stroke="currentColor" stroke-width="0.6"/>
+  <text x="364" y="186" font-size="13" text-anchor="start" fill="currentColor" >△<tspan font-style="italic">OAT</tspan> 的面积 ½ tan <tspan font-style="italic">x</tspan></text>
+  <text x="340" y="220" font-size="13" text-anchor="start" fill="currentColor" >三块一块比一块大，所以</text>
+  <text x="340" y="242" font-size="13" text-anchor="start" fill="currentColor" >sin <tspan font-style="italic">x</tspan> &lt; <tspan font-style="italic">x</tspan> &lt; tan <tspan font-style="italic">x</tspan></text>
+</svg>

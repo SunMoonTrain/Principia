@@ -1,0 +1,163 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\lim_{x\to0}\frac{\ln(1+4x)}{\sin3x}$。
+  answer:
+    type: number
+    value: 4/3
+  hints:
+    - |
+      分子、分母都是无穷小，各自换成等价的简单式子。
+    - |
+      $x\to0$时$\ln(1+4x)\sim4x$，$\sin3x\sim3x$。
+    - |
+      原式$=\lim_{x\to0}\frac{4x}{3x}=\frac43$。
+  solution: |
+    $\ln(1+4x)\sim4x$，$\sin3x\sim3x$，由等价无穷小替换，极限是$\frac{4x}{3x}=\frac43$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $x\to0$时，下面哪些是比$x$高阶的无穷小？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $x\sin x$
+      - |
+        $\sqrt{1+x^2}-1$
+      - |
+        $\tan2x$
+      - |
+        $\sqrt{|x|}$
+      - |
+        $\ln(1+x^2)$
+      - |
+        $x+x^2$
+    value: [1, 2, 5]
+  hints:
+    - |
+      逐个看它和$x$的比值在$x\to0$时趋于什么：趋于$0$才是高阶。
+    - |
+      先换成等价的幂：$x\sin x\sim x^2$，$\sqrt{1+x^2}-1\sim\frac12x^2$，$\tan2x\sim2x$，$\ln(1+x^2)\sim x^2$。
+    - |
+      和$x$的比值趋于$0$的是 A、B、E。C 与$x$同阶（比值趋于$2$），F 与$x$等价，D 的比值$\frac{\sqrt{|x|}}{x}$是无穷大，比$x$低阶。
+  solution: |
+    A：$\frac{x\sin x}{x}=\sin x\to0$。B：$\sqrt{1+x^2}-1\sim\frac12x^2$，比值趋于$0$。E：$\ln(1+x^2)\sim x^2$，比值趋于$0$。这三个比$x$高阶。
+
+    C：$\frac{\tan2x}{x}\to2$，同阶。D：$\frac{\sqrt{|x|}}{|x|}=\frac1{\sqrt{|x|}}$是无穷大，比$x$低阶。F：$\frac{x+x^2}{x}=1+x\to1$，等价。所以选 A、B、E。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\lim_{x\to0}\frac{(e^{2x}-1)\tan^2x}{x(1-\cos x)}$。
+  answer:
+    type: number
+    value: 4
+  hints:
+    - |
+      分子、分母都是乘积，每个因子都可以换成等价的幂。
+    - |
+      $e^{2x}-1\sim2x$，$\tan^2x\sim x^2$，$1-\cos x\sim\frac12x^2$。
+    - |
+      原式$=\lim_{x\to0}\frac{2x\cdot x^2}{x\cdot\frac12x^2}=4$。
+  solution: |
+    $e^{2x}-1\sim2x$，$\tan^2x\sim x^2$，$1-\cos x\sim\frac12x^2$。乘除里替换：$\frac{2x\cdot x^2}{x\cdot\frac12x^2}=4$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $x\to0$时，$1-\cos x\cos2x$与$cx^k$是等价无穷小（$c\ne0$）。求$c$和$k$，依次填写。
+  answer:
+    type: tuple
+    value: [5/2, 2]
+  hints:
+    - |
+      和差里不能直接替换。把$1-\cos x\cos2x$拆成两个容易估计的部分。
+    - |
+      $1-\cos x\cos2x=(1-\cos x)+\cos x\,(1-\cos2x)$，两部分各自和$x^2$同阶。
+    - |
+      $\frac{1-\cos x}{x^2}\to\frac12$，$\frac{\cos x(1-\cos2x)}{x^2}\to1\cdot2=2$，相加得$\frac{1-\cos x\cos2x}{x^2}\to\frac52$。所以$c=\frac52$，$k=2$。
+  solution: |
+    $1-\cos x\cos2x=(1-\cos x)+\cos x(1-\cos2x)$。除以$x^2$：$\frac{1-\cos x}{x^2}\to\frac12$，$\cos x\cdot\frac{1-\cos2x}{x^2}\to1\cdot\frac{(2x)^2/2}{x^2}=2$，用和的法则得$\frac{1-\cos x\cos2x}{x^2}\to\frac52$。所以$1-\cos x\cos2x\sim\frac52x^2$，$c=\frac52$，$k=2$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$x\to a$时$\alpha\sim\alpha'$，$\beta\sim\beta'$，都是无穷小。
+
+    （1）若$\lim\frac{\alpha'}{\beta'}=c$，$c\ne-1$，证明$\alpha+\beta\sim\alpha'+\beta'$。（2）举例说明$c=-1$时结论可能不成立。
+  hints:
+    - |
+      （1）把$\frac{\alpha+\beta}{\alpha'+\beta'}$的分子、分母同除以$\beta'$。
+    - |
+      （1）得$\frac{\frac{\alpha}{\alpha'}\cdot\frac{\alpha'}{\beta'}+\frac{\beta}{\beta'}}{\frac{\alpha'}{\beta'}+1}$。（2）让$\alpha'+\beta'$比$\alpha+\beta$小得多，比如$\alpha'+\beta'=x^3$、$\alpha+\beta=x^2$。
+    - |
+      （1）$\frac{\alpha'}{\beta'}\to c\ne-1$，所以$a$附近$\frac{\alpha'}{\beta'}+1\ne0$，$\alpha'+\beta'\ne0$，可以相除。同除以$\beta'$后，分子趋于$1\cdot c+1$，分母趋于$c+1\ne0$，比值趋于$1$。
+
+      （2）$a=0$，$\alpha=x+x^2$，$\alpha'=x$，$\beta=-x$，$\beta'=-x+x^3$。$\alpha\sim\alpha'$，$\beta\sim\beta'$，$\frac{\alpha'}{\beta'}\to-1$；可$\alpha+\beta=x^2$，$\alpha'+\beta'=x^3$，比值$\frac1x$是无穷大，不等价。
+  reference: |
+    （1）$\beta'\ne0$，且$\frac{\alpha'}{\beta'}\to c\ne-1$，所以$a$附近$\alpha'+\beta'=\beta'\bigl(\frac{\alpha'}{\beta'}+1\bigr)\ne0$。$\frac{\alpha+\beta}{\alpha'+\beta'}=\frac{\frac{\alpha}{\alpha'}\cdot\frac{\alpha'}{\beta'}+\frac{\beta}{\beta'}}{\frac{\alpha'}{\beta'}+1}\to\frac{c+1}{c+1}=1$。
+
+    （2）$x\to0$，$\alpha=x+x^2\sim x=\alpha'$，$\beta=-x\sim-x+x^3=\beta'$，$\frac{\alpha'}{\beta'}=\frac{1}{-1+x^2}\to-1$。$\alpha+\beta=x^2$与$\alpha'+\beta'=x^3$不等价。$c=-1$时两项几乎抵消，剩下的正是替换时忽略的误差，[两个重要极限](lesson:math.calculus.special-limits)例 1 的$\tan x-\sin x$就是这种情形。
+
+- id: p6
+  tier: hard
+  statement: |
+    求$\lim_{x\to0}\left(\frac{1+\tan x}{1+\sin x}\right)^{\frac1{x^3}}$，并说明每一步的理由。
+  hints:
+    - |
+      底数趋于$1$、指数趋于无穷大。取对数，先求$\frac1{x^3}\ln\frac{1+\tan x}{1+\sin x}$的极限。
+    - |
+      $\frac{1+\tan x}{1+\sin x}=1+u$，$u=\frac{\tan x-\sin x}{1+\sin x}\to0$，于是$\ln(1+u)\sim u$。
+    - |
+      $\frac1{x^3}\ln(1+u)$与$\frac{u}{x^3}=\frac{\tan x-\sin x}{x^3}\cdot\frac1{1+\sin x}$极限相同，后者趋于$\frac12\cdot1=\frac12$（[两个重要极限](lesson:math.calculus.special-limits)例 1）。所以原式的对数趋于$\frac12$，由$e^t$的连续性，原式趋于$e^{\frac12}=\sqrt e$。
+  reference: |
+    设$y=\left(\frac{1+\tan x}{1+\sin x}\right)^{1/x^3}$，$\ln y=\frac{\ln(1+u)}{x^3}$，$u=\frac{\tan x-\sin x}{1+\sin x}$。$x\to0$时$u\to0$，且$0<|x|<\frac\pi2$时$\tan x\ne\sin x$，$u\ne0$，所以$\ln(1+u)\sim u$。
+
+    $\lim\ln y=\lim\frac{u}{x^3}=\lim\frac{\tan x-\sin x}{x^3}\cdot\lim\frac1{1+\sin x}=\frac12$。$e^t$在$t=\frac12$处连续，$y=e^{\ln y}\to e^{1/2}=\sqrt e\approx1.6487$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）$x\to0$时，$x^2$和$x\sin\frac1x$能不能比较阶？（2）无穷小的阶一定是整数吗？$x\to0^+$时$\sqrt x$是$x$的几阶无穷小？（3）由（1）（2）想一想：所有无穷小能不能按「趋于零的快慢」排成一列？
+  hints:
+    - |
+      （1）算比值$\frac{x\sin(1/x)}{x^2}=\frac{\sin(1/x)}{x}$，它有没有极限？反过来的比值在$x\to0$时有没有意义？
+    - |
+      （2）阶的定义里$k$只要求大于$0$。$\frac{\sqrt x}{x^k}$在$k$取多少时趋于不为零的数？
+    - |
+      （1）不能。$\frac{\sin(1/x)}{x}$在$0$附近来回摆动，幅度越来越大，没有极限；反过来$\frac{x^2}{x\sin(1/x)}$里，$x\sin\frac1x$在$x=\frac1{k\pi}$处为零，比值在$0$附近根本没有定义，定义里「$\beta\ne0$」这条不满足。
+
+      （2）不一定。$\frac{\sqrt x}{x^{1/2}}=1$，$\sqrt x$是$x$的$\frac12$阶无穷小。
+
+      （3）不能。（1）说明有的无穷小之间无法比较，「高阶、同阶」只能给一部分无穷小排序；即使都能比较，阶也可以取任意正数，不只是整数。
+  reference: |
+    （1）$\frac{x\sin(1/x)}{x^2}=\frac1x\sin\frac1x$没有极限，也不是无穷大（在$x=\frac1{k\pi}$处等于$0$）；以$x\sin\frac1x$作分母时它在$0$附近有无穷多个零点，不满足「$\beta\ne0$」。两者不可比较。
+
+    （2）阶可以是任意正数：$x\to0^+$时$\sqrt x$与$x^{1/2}$同阶（比值为$1$），是$\frac12$阶；$x^{3/2}$是$\frac32$阶。
+
+    （3）比较阶依赖比值的极限，极限不存在时就没有结论，所以无穷小不能都排成一列。$x\sin\frac1x$这样摆动的无穷小，夹在$0$和$|x|$之间，却忽大忽小，没有固定的「快慢」。
+
+- id: p8
+  tier: thinking
+  statement: |
+    关于$o$记号（都指$x\to0$），判断下面各条对不对，说明理由：（1）由$x^2=o(x)$、$x^3=o(x)$得$x^2=x^3$；（2）$o(x)+o(x)=o(x)$；（3）$o(x)\cdot o(x)=o(x^2)$；（4）$x\cdot o(x)=o(x^2)$；（5）$\frac{o(x^2)}{x}=o(x)$。
+  hints:
+    - |
+      $o(x)$是「比$x$高阶的某个无穷小」，同一个记号在不同地方可以是不同的函数。等号表示「左边是右边说的那一类」。
+    - |
+      （2）设$\alpha=o(x)$，$\beta=o(x)$，看$\frac{\alpha+\beta}{x}$；（3）看$\frac{\alpha\beta}{x^2}=\frac\alpha x\cdot\frac\beta x$。
+    - |
+      （1）错：两个$o(x)$可以是不同的函数，等号只能从左往右读。
+
+      （2）对：$\frac{\alpha+\beta}{x}=\frac\alpha x+\frac\beta x\to0$。注意两个$o(x)$不一定相等，所以$o(x)-o(x)$也是$o(x)$，不是$0$。
+
+      （3）对：$\frac{\alpha\beta}{x^2}=\frac\alpha x\cdot\frac\beta x\to0$。（4）对：$\frac{x\alpha}{x^2}=\frac\alpha x\to0$。（5）对：$\gamma=o(x^2)$时$\frac{\gamma/x}{x}=\frac{\gamma}{x^2}\to0$。
+  reference: |
+    把$o(\beta)$理解成「某个满足$\frac{\gamma}{\beta}\to0$的$\gamma$」，带$o$的等式表示「左边属于右边这一类」。
+
+    （1）错，「属于同一类」推不出相等。（2）对，而且$o(x)-o(x)=o(x)$，两个$o(x)$可以是不同的函数，不会抵消成$0$。（3）（4）（5）都对，各自除一下就看出比值趋于$0$。
+
+    这套写法让$\sin x=x+o(x)$这样的式子可以像普通算式一样加减乘除，以后泰勒公式里会大量这样用，读的时候记住等号是单向的。
