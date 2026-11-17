@@ -1239,6 +1239,42 @@ math.analysis.completeness:
       - `fundamental-theorem`：`antiderivatives` 第 8 题说「区间上的连续函数都有原函数」由基本定理保证（常微分方程 `linear-first-order:41` 也这么用）。
       - 验算辅助：高阶导数、泰勒系数用 `tools/verify/math.calculus._jet.ts`（泰勒展开式算术，$k$ 阶导数取系数乘 $k!$），定积分、原函数在某点的值用 `_calc.ts` 的 `integrate`（双指数求积）；`taylor-polynomial`、`power-series` 可以直接用（审查提的）。
 - 批次 18 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 19（写代码的会话定的）。
+- 批次 18 之后（你定的）：发批次 19，数学那一对写单变量微积分的第三批，物理那一对写牛顿力学的第二批；题目卡片里行间公式把页面撑宽的问题，由写代码的会话改样式。
+- 批次 19：单变量微积分的第三批、牛顿力学的第二批，做法和批次 18 一样。
+  - 单变量微积分写定积分、导数的其余应用和泰勒公式 9 节：`definite-integral`、`fundamental-theorem`、`lhopital`、`monotonicity`、`concavity`、`optimization`、`curve-sketching`、`taylor-polynomial`、`taylor-remainder`。审查报告 `docs/reviews/batch-19-calculus.md`。定积分两节先写：牛顿力学的 `momentum-impulse`、`work-energy` 以 `fundamental-theorem` 为前置，先写出来，物理那一对好对记号。积分法、定积分的应用、反常积分和级数留给以后两批（写代码的会话定的）。
+  - 牛顿力学写动量与能量 9 节：`momentum-impulse`、`momentum-conservation`、`work-energy`、`collisions`、`rockets`、`potential-energy`、`conservative-forces`、`energy-diagrams`、`drag`。审查报告 `docs/reviews/batch-19-newtonian-mechanics.md`。以后两批大致是引力、有心力与加速参考系，流体与刚体；`fixed-axis-rotation` 以单变量微积分 `area-between-curves` 为前置，等那一节写出来（写代码的会话定的）。
+  - 两个领域开写前都照「一级台阶 = 一个小节」查一遍这 9 节的 goal，拆法先发给写代码的会话，同批次 18。
+  - 跨领域前置：`momentum-impulse`、`work-energy` ← 单变量微积分 `fundamental-theorem`，这一批由另一对同时写：按它的 goal 假定读者会求变上限积分的导数、会用牛顿-莱布尼茨公式，审查时对一下两边的记号。别的跨领域前置都已审：`work-energy` ← 线性代数 `dot-product`，`rockets`、`drag` ← 常微分方程 `separable`，`drag` ← 单变量微积分 `hyperbolic-functions`，`conservative-forces` ← 多变量微积分 `conservative-fields`。
+  - 牛顿力学这一批的词和记号（写代码的会话定的）：
+    - 动量、冲量、动量定理、动量守恒、功、功率、动能、动能定理、重力势能、弹性势能、机械能守恒、弹性碰撞、非弹性碰撞、反冲是中学物理学过的，照批次 18 的「力」「速度」办：本领域照样定义、进表，别的领域借用时不按规矩 C 补标。质心、保守力、势能曲线、稳定平衡这类中学没有系统讲过的，照规矩 C 补标，扫的时候逐处看。
+    - 势能写 $U$（电磁学的电势能也写 $U$，见批次 9），分析力学写 $V$。多变量微积分的势函数满足 $\vb F=\nabla f$，物理的势能差一个负号，$\vb F=-\nabla U$，`conservative-forces` 要写明。
+    - 「保守力」在 `potential-energy` 就要定义：分析力学 `virtual-work:76` 只以 `potential-energy` 为前置，用了「主动力都是保守力时，它们做的功等于势能的减少」。`conservative-forces` 再讲怎样判断一个力保守，以及 $\vb F=-\nabla U$。
+    - 这一批都不加 `friction` 前置：`work-energy` 加了从第 13 层变第 15 层，全图 197 节层级跟着变，其中已写 80 节；`potential-energy` 加了从第 14 层变第 15 层，159 节跟着变，其中已写 68 节（批次 18 记的「以后的前置」）。讲摩擦力做功、机械能不守恒时，当中学学过的滑动摩擦力用，链到 `friction`，不进推理主线。
+    - `energy-diagrams` 判断平衡稳不稳，要用二阶导数判别极值（$U''>0$ 是极小），它的链上现在没有。单变量微积分把二阶导数判别法放在 `concavity`，`energy-diagrams` 加 `concavity` 为前置；平衡点附近要把 $U$ 展开到二次项时，再加 `taylor-polynomial`。两个都在第 8 层，加了层级都不变。
+  - 单变量微积分这一批的约定（写代码的会话定的）：
+    - 凹凸的叫法各书相反，有的书把 $f''>0$ 叫「凹」。多变量微积分 `legendre-transform:22` 已经写了「$f''>0$，于是 $f$ 严格凸（strictly convex），图像向上弯」，`concavity` 照它：凸就是 convex、图像向上弯，再提一句另一种叫法。
+    - 二阶导数判别极值放在 `concavity`（它以 `higher-derivatives` 为前置），牛顿力学 `energy-diagrams` 要用。
+  - 已写的小节有链接或用法指向这一批（写代码的会话查的）：
+    - 单变量微积分：
+      - `definite-integral`：数学分析 `riemann-integral:16` 以本节为前置：「微积分里，定积分是黎曼和 $\sum f(\xi_i)\Delta x_i$ 在分割越来越细时的极限」，接着说明这个「极限」不是数列极限。线性代数 `inner-product-spaces:38` 用「连续函数非负、在某点为正，积分就为正」。
+      - `fundamental-theorem`：数学分析 `ftc-proof:16` 以本节为前置，把本节概括成两句话：变上限积分 $\int_a^xf(t)\dd t$ 的导数是 $f(x)$；若 $F'=f$，则 $\int_a^bf(x)\dd x=F(b)-F(a)$。那边有自己的术语（`math.analysis.variable-upper-limit-integral`、`newton-leibniz-formula`、`fundamental-theorem-of-calculus`），同名的各标各的。常微分方程 `linear-first-order:41`、`exact-equations` 第 5 题用「连续函数一定有原函数」；多变量微积分 `double-integrals:32` 用牛顿-莱布尼茨公式算累次积分；数学分析 `fourier-series`、线性代数 `inner-product-spaces`、狭义相对论 `spacetime-interval` 也以本节为前置。本领域 `antiderivatives:41` 说积分号和求和的关系「要到微积分基本定理才看得到」，第 8 题（2）说区间上的连续函数都有原函数，这两处都要接住。
+      - `lhopital`：数学分析 `mean-value-proofs:63` 链到本节（柯西中值定理「最常见的用处是证明洛必达法则」）。
+      - `monotonicity`：多变量微积分 `inverse-implicit` 第 8 题（「$f'$不变号，$f$严格单调」）；本领域 `local-extrema:45`（「以后也可以看导数在两侧的正负」）。
+      - `concavity`：多变量微积分 `legendre-transform:22` 以本节为前置（见上面的约定）；本领域 `higher-derivatives:27`。
+      - `optimization`：光学 `fermat-principle` 以本节为前置（光程取极值）。它第 34 行把「驻点」链到本节，是批次 18 记的原有问题，这一批改成标 `math.calculus.stationary-point`，算跨领域补标，并进单变量微积分的提交。
+      - `taylor-polynomial`：常微分方程 `numerical-methods`（`:27` 一阶泰勒近似，`:89` $N\ln\bigl(1+\frac1N\bigr)$ 的展开）、多变量微积分 `taylor-multivariable:27`（$g(1)\approx g(0)+g'(0)+\frac12g''(0)$）、电磁学 `electric-dipole:36`（$(1+x)^{-1/2}\approx1-\frac x2$）以本节为前置；多变量微积分 `extrema:32` 经 `taylor-multivariable` 用到一元的二阶展开；数学分析 `weierstrass-approximation:16` 链到本节（泰勒多项式只在一点附近好用）。
+      - `taylor-remainder`：常微分方程 `numerical-methods:39` 的证明思路和第 5 题用拉格朗日余项 $\frac{h^2}2y''(\xi)$，现在链到 `taylor-polynomial`。照 goal，拉格朗日余项在本节讲，那里的链接改指本节。前置要不要从 `taylor-polynomial` 换成本节，审查提出来，写代码的会话定：换了 `numerical-methods` 从第 9 层变第 10 层，它没有下游。
+      - `curve-sketching`：没有已写的小节指向它，批次 17 记的斜渐近线照用。
+    - 牛顿力学：
+      - `momentum-conservation`：狭义相对论 `postulates` 第 5 题（总动量守恒在两个惯性系里同时成立）。
+      - `collisions`：狭义相对论 `four-momentum:16` 以本节为前置：「牛顿力学里，碰撞前后各物体的 $m\vb u$ 之和不变，而且换一个惯性系仍然不变」。那边的例题算完全非弹性碰撞后静质量变大，牛顿力学这边对应的是动能的损失。
+      - `work-energy`：电磁学 `lorentz-force:48` 以本节为前置（动能的变化率等于合力的功率，$\dv{}{t}\bigl(\frac12mv^2\bigr)=\vb F\cdot\vb v$），要讲到功率 $P=\vb F\cdot\vb v$（批次 11 写回的）。本领域 `angular-momentum:79` 说拉绳收短半径时动能怎么增加「到功与动能定理再算」，这一节要接住。
+      - `potential-energy`：分析力学 `virtual-work` 以本节为前置（见上面的「保守力」），它第 8 题的提示用「稳定平衡对应势能的极小」，`energy-diagrams` 写好后给那里补链接；变分法 `functionals:30` 链到本节（由机械能守恒得 $v=\sqrt{2gy}$）。
+      - `conservative-forces`：电磁学 `electric-potential` 以本节为前置：`:34` 说 $q\varphi$ 就是电荷在电场力作用下的势能，`:58` 说 $\vb E=-\nabla\varphi$ 的道理和力学里的 $\vb F=-\nabla U$ 一样。
+      - `drag`：单变量微积分 `hyperbolic-functions:57` 链到本节（$\dv vt=g\bigl(1-\frac{v^2}{v_T^2}\bigr)$「这个方程从受力怎样得到」；终端速度两边各自定义，见批次 18）；本领域 `kinematics-vectors` 第 8 题（有空气阻力时最佳抛射角比 45° 小，只定性说了）。
+      - `momentum-impulse`、`rockets`、`energy-diagrams`：没有别的领域的已写小节指向它们。
+  - 以这一批为前置、还没写的别的小节：`fundamental-theorem` ← 牛顿力学「流体静力学」、热力学与统计力学「斯特林公式与大数统计」；`taylor-polynomial` ← 振动与波「简谐运动」、热学「斯特林公式与大数统计」；`momentum-impulse` ← 热学「气体动理论」；`work-energy` ← 热学「热力学第一定律」；`potential-energy` ← 振动与波「简谐运动」；`drag` ← 热学「布朗运动与扩散」。
+  - 动画：单变量微积分用 function-plot 画黎曼和逼近曲边梯形的面积（台阶可以用 `floor` 写，滑块调分成几段）、变上限积分、单调与凹凸、泰勒多项式逐阶逼近（滑块调阶数）；牛顿力学用 function-plot 画力随时间的曲线和它下面的冲量、势能曲线上的转折点（滑块调总能量）、阻力下速度趋于终端速度（滑块调阻力系数），碰撞、质心、火箭画 SVG（写代码的会话提的）。
 - 几个领域同时写时（批次 1 定的）：每个写内容会话只改自己领域的目录（`content/<学科>/<领域>/`），审内容会话只写自己的报告和验算脚本；`docs/plan.md` 不由它们直接改，要写回的内容写进汇报，由写代码的会话统一写进去、单独提交，免得几个会话同时改一个文件。每个领域各自作为一个提交。另一个领域写到一半、全量构建报错时，写内容会话可以把那个领域换成已提交的版本，在临时副本上构建，确认自己的领域 0 个错误；看页面同理，用临时副本编译的内容另起一个服务，进度写临时仓库，不改仓库的 `dist/`（批次 2 定的）。test-serve 和 `npm run serve` 提供的是 `dist/` 里构建好的网站，不读 `generated/`：改完内容要重新 `vite build`，页面上才看得到（批次 6 时写内容会话提的）。临时副本的做法（批次 10 时写内容会话提的，写代码的会话核过）：用 `git archive HEAD` 导出已提交的版本，再拷进自己的改动；`node_modules` 不要复制，在副本里建一个指向仓库 `node_modules` 的目录联接（PowerShell 的 `New-Item -ItemType Junction`）；建网站时在副本目录里跑 `npx vite build --outDir <目录>`，或者把副本目录写成 `vite build` 的第一个参数（Vite 8 的根目录是位置参数）；删副本之前先单独删掉联接本身（PowerShell 的 `[System.IO.Directory]::Delete(<联接>, $false)`），否则删除命令会顺着联接把仓库的 `node_modules` 一起删掉。各会话的 scratchpad 都在 C 盘，C 盘空间紧（批次 14 时一度只剩十几 MB，`vite build` 报 ENOSPC）：页面检查能用 test-serve 读仓库 D 盘的 `dist/` 就不另建网站副本；要建，看完就删，同一时间只留一份；以前批次的副本、快照复核完就删（批次 14 时定的）。页面检查只用进度写临时目录的 test-serve；`npm run dev`、`npm run serve` 写的是你真实的 `progress/`，点「看提示」「放弃」都会留下记录，绝不用来做页面检查（批次 15 时写内容会话用 `npm run dev` 往 `progress/` 写进了光学 9 节的假记录，你同意后写代码的会话删掉了）。两个写内容会话共用一个暂存区，提交要一个接一个：只 `git add` 自己的路径，提交前用 `git diff --cached --stat` 确认暂存区里没有别人的文件（批次 17 写代码的会话定的）。仓库 `node_modules` 里工作区包的联接坏了时（批次 18 审查时 `node_modules/@principia/anim` 成了空目录），告诉写代码的会话重建；临时副本里可以在 `node_modules/@principia/anim` 另建一个指向副本 `packages/anim` 的联接照常构建，删副本前一样先删联接（批次 18 审查时提的）。
 
 **分工**：一共三个 agent：写代码、写内容、审内容。开发台阶 8、9 由写内容 agent 和审内容 agent 执行。写内容和审内容必须是两个独立会话。
