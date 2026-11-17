@@ -80,7 +80,7 @@ functions:
       势能，以$mB$为单位
 :::
 
-动画的横轴是$\vb m$和$\vb B$的夹角$\theta$（以度为单位，图上写作$x$）。力矩总是指向势能降低的方向：$\theta>0$时力矩为负，使$\theta$减小。$\theta=0$处势能最低，偏开一点，力矩把它拉回来，是稳定平衡；$\theta=\pm180^\circ$处势能最高，偏开一点，力矩使它越偏越远，是不稳定平衡。
+动画的横轴是$\vb m$和$\vb B$的夹角$\theta$（以度为单位，图上写作$x$）。力矩总是指向势能降低的方向：$\theta>0$时力矩为负，使$\theta$减小。$\theta=0$处势能最低，偏开一点，力矩把它拉回来，是:term[稳定平衡]{id="physics.newtonian-mechanics.stable-equilibrium"}（stable equilibrium）；$\theta=\pm180^\circ$处势能最高，偏开一点，力矩使它越偏越远，是:term[不稳定平衡]{id="physics.newtonian-mechanics.unstable-equilibrium"}（unstable equilibrium）。
 
 ## 例题
 

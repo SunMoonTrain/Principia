@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" width="640" height="260" font-size="14">
+  <!-- 重力做的功和路径无关：质点从高处的 A 点移到较低的 B 点，画了三条路径。第一条是直的斜线；第二条是弯曲的路径，先降到比 B 还低的地方再升上来；第三条是台阶状的折线，由水平段和竖直段交替组成。上方偏右画着竖直向下的重力 mg，它在各处都一样。左边标出 A 离地面的高度 hA，右边标出 B 离地面的高度 hB。 -->
+  <line x1="24.0" y1="236.0" x2="616.0" y2="236.0" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="110.0" y1="60.0" x2="500.0" y2="170.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 110.0 60.0 L 111.6 66.0 L 113.4 71.9 L 115.3 77.6 L 117.4 83.2 L 119.7 88.6 L 122.1 93.9 L 124.7 99.1 L 127.4 104.1 L 130.3 109.0 L 133.3 113.8 L 136.5 118.4 L 139.8 122.9 L 143.3 127.3 L 146.8 131.5 L 150.6 135.6 L 154.4 139.6 L 158.4 143.5 L 162.4 147.2 L 166.6 150.8 L 170.9 154.2 L 175.4 157.6 L 179.9 160.8 L 184.5 163.9 L 189.2 166.9 L 194.0 169.8 L 198.9 172.5 L 203.9 175.2 L 209.0 177.7 L 214.1 180.1 L 219.3 182.3 L 224.6 184.5 L 230.0 186.6 L 235.4 188.5 L 240.9 190.3 L 246.5 192.0 L 252.1 193.7 L 257.7 195.1 L 263.5 196.5 L 269.2 197.8 L 275.0 199.0 L 280.8 200.1 L 286.7 201.0 L 292.6 201.9 L 298.5 202.7 L 304.5 203.3 L 310.4 203.9 L 316.4 204.4 L 322.4 204.7 L 328.4 205.0 L 334.4 205.2 L 340.4 205.2 L 346.4 205.2 L 352.4 205.1 L 358.4 204.9 L 364.4 204.6 L 370.4 204.2 L 376.4 203.7 L 382.3 203.2 L 388.2 202.5 L 394.1 201.8 L 399.9 200.9 L 405.7 200.0 L 411.5 199.0 L 417.2 197.9 L 422.9 196.8 L 428.5 195.5 L 434.1 194.2 L 439.6 192.8 L 445.0 191.3 L 450.4 189.7 L 455.8 188.1 L 461.0 186.4 L 466.2 184.6 L 471.3 182.7 L 476.3 180.8 L 481.2 178.8 L 486.1 176.7 L 490.8 174.5 L 495.4 172.3 L 500.0 170.0" style="stroke: var(--good, #059669)" fill="none" stroke-width="2.0" stroke-linejoin="round" />
+  <path d="M 110.0 60.0 L 188.0 60.0 L 188.0 82.0 L 266.0 82.0 L 266.0 104.0 L 344.0 104.0 L 344.0 126.0 L 422.0 126.0 L 422.0 148.0 L 500.0 148.0 L 500.0 170.0" style="stroke: currentColor" fill="none" stroke-width="1.6" stroke-linejoin="round" />
+  <circle cx="110.0" cy="60.0" r="3.6" style="fill: currentColor" />
+  <circle cx="500.0" cy="170.0" r="3.6" style="fill: currentColor" />
+  <text x="102.0" y="52.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">A</tspan></text>
+  <text x="510.0" y="188.0" fill="currentColor"><tspan font-style="italic">B</tspan></text>
+  <text x="275.0" y="143.0" style="fill: var(--accent, #2563eb)">直线</text>
+  <text x="340.4" y="193.2" style="fill: var(--good, #059669)" text-anchor="middle">曲线</text>
+  <text x="278.0" y="96.0" fill="currentColor">台阶</text>
+  <line x1="430.0" y1="36.0" x2="430.0" y2="79.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 430.0 86.0 L 426.3 78.0 L 433.7 78.0 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="438.0" y="62.0" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">m</tspan><tspan font-weight="bold">g</tspan></text>
+  <line x1="70.0" y1="236.0" x2="70.0" y2="60.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="65.0" y1="60.0" x2="75.0" y2="60.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="75.0" y1="60.0" x2="104.0" y2="60.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="3 3" />
+  <text x="62.0" y="153.0" style="fill: var(--muted, #6b7280)" text-anchor="end"><tspan font-style="italic">h</tspan><tspan dy="4" font-size="11">A</tspan></text>
+  <line x1="548.0" y1="236.0" x2="548.0" y2="170.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="543.0" y1="170.0" x2="553.0" y2="170.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="506.0" y1="170.0" x2="543.0" y2="170.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="3 3" />
+  <text x="556.0" y="208.0" style="fill: var(--muted, #6b7280)"><tspan font-style="italic">h</tspan><tspan dy="4" font-size="11">B</tspan></text>
+</svg>

@@ -167,7 +167,7 @@
     请讨论：$K=\kappa/(mgl)$大于$1$和小于$1$时，$\theta=0$的平衡是稳定还是不稳定？为什么$K$降到$1$以下时会冒出两个新的平衡位置？这和竖直的弹性细杆顶端压上重物后会突然弯向一边有什么联系？
   hints:
     - |
-      稳定平衡对应势能的极小，不稳定平衡对应极大。看$V$在$\theta=0$附近的近似。
+      稳定平衡对应势能的极小，不稳定平衡对应极大（见[势能曲线与平衡](lesson:physics.newtonian-mechanics.energy-diagrams#thm-stability)）。看$V$在$\theta=0$附近的近似。
     - |
       $\cos\theta\approx1-\frac{\theta^2}{2}$，所以$V\approx mgl+\frac12(\kappa-mgl)\theta^2$。新的平衡位置满足$\sin\theta=K\theta$：比较直线$y=K\theta$和曲线$y=\sin\theta$。
     - |

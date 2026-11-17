@@ -22,7 +22,7 @@ status: reviewed
 ::anchor{id="def-lyapunov-stable"}
 设$\vb x^*$是$\vb x'=\vb f(\vb x)$的:term[平衡点]{id="math.ode.equilibrium-point"}（equilibrium point）。如果对任意$\varepsilon>0$，都有$\delta>0$，使从$|\vb x(0)-\vb x^*|<\delta$出发的解对所有$t\ge0$都满足$|\vb x(t)-\vb x^*|<\varepsilon$，就说$\vb x^*$是:term[稳定]{id="math.ode.lyapunov-stable"}的（stable，也叫李雅普诺夫稳定，Lyapunov stable），否则说它不稳定（unstable）；如果$\vb x^*$稳定，并且附近出发的解在$t\to+\infty$时都趋于$\vb x^*$，就说它:term[渐近稳定]{id="math.ode.asymptotically-stable"}（asymptotically stable）。
 
-为什么这样定义：「附近出发的解都留在附近」要说清楚多近：要求解一直待在$\varepsilon$以内，只要出发时足够近，$\varepsilon$再小也做得到。稳定只要求留在附近，渐近稳定还要求趋于它。边界情况：平面上的:term[中心]{id="math.ode.center"}是稳定而不渐近稳定的：附近的解绕着它转，不跑远，也不靠近；分析力学[小振动与简正坐标](lesson:physics.analytical-mechanics.small-oscillations)里没有阻尼时的稳定平衡点也是这样。
+为什么这样定义：「附近出发的解都留在附近」要说清楚多近：要求解一直待在$\varepsilon$以内，只要出发时足够近，$\varepsilon$再小也做得到。稳定只要求留在附近，渐近稳定还要求趋于它。边界情况：平面上的:term[中心]{id="math.ode.center"}是稳定而不渐近稳定的：附近的解绕着它转，不跑远，也不靠近；分析力学[小振动与简正坐标](lesson:physics.analytical-mechanics.small-oscillations)里没有阻尼时的:term[稳定平衡点]{id="physics.newtonian-mechanics.stable-equilibrium"}（stable equilibrium point）也是这样。
 
 [自治方程与平衡点](lesson:math.ode.autonomous-equations)里把渐近稳定简称为稳定，在一维、平衡点孤立（附近没有别的平衡点）时，两者确实一样。因为一维的解是单调的：从孤立的稳定平衡点$y^*$附近出发的解单调而有界，只能趋于一个平衡点，又待在$y^*$附近，只能趋于$y^*$（第 6 题）。平衡点不孤立时就不一样，例如$y'=0$的每个点都稳定，却都不渐近稳定。
 

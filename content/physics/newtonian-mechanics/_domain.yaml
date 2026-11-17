@@ -444,3 +444,345 @@ glossary:
       角速度对时间的导数$\alpha=\dv\omega t$；圆周运动的切向加速度是$r\alpha$。
     definedIn: physics.newtonian-mechanics.circular-motion
     anchor: thm-tangential
+  - id: physics.newtonian-mechanics.momentum
+    zh: |
+      动量
+    en: |
+      momentum
+    brief: |
+      质点的质量和速度的乘积$\vb p=m\vb v$，是矢量；质量不变时，合力等于它的变化率$\dv{\vb p}t$。
+    definedIn: physics.newtonian-mechanics.momentum-impulse
+    anchor: def-momentum
+  - id: physics.newtonian-mechanics.impulse
+    zh: |
+      冲量
+    en: |
+      impulse
+    brief: |
+      力对时间的积分$\vb J=\int_{t_1}^{t_2}\vb F\,\dd t$；力不变时是$\vb F\Delta t$。
+    definedIn: physics.newtonian-mechanics.momentum-impulse
+    anchor: def-impulse
+  - id: physics.newtonian-mechanics.impulse-momentum-theorem
+    zh: |
+      动量定理
+    en: |
+      impulse–momentum theorem
+    brief: |
+      质点受的合力在一段时间里的冲量，等于这段时间里质点动量的改变。
+    definedIn: physics.newtonian-mechanics.momentum-impulse
+    anchor: thm-impulse-momentum
+  - id: physics.newtonian-mechanics.average-force
+    zh: |
+      平均力
+    en: |
+      average force
+    brief: |
+      一段时间里力的冲量除以这段时间，$\bar{\vb F}=\frac{\vb J}{\Delta t}$，即同样时间里给出同样冲量的恒力。
+    definedIn: physics.newtonian-mechanics.momentum-impulse
+    anchor: def-average-force
+  - id: physics.newtonian-mechanics.system-of-particles
+    zh: |
+      质点系
+    en: |
+      system of particles
+    brief: |
+      合在一起研究的几个质点；系统内质点之间的力是内力，系统外的物体给的力是外力。
+    definedIn: physics.newtonian-mechanics.momentum-conservation
+    anchor: def-system
+  - id: physics.newtonian-mechanics.internal-force
+    zh: |
+      内力
+    en: |
+      internal force
+    brief: |
+      质点系里各质点之间的力；由牛顿第三定律成对出现、等大反向，加起来为零。
+    definedIn: physics.newtonian-mechanics.momentum-conservation
+    anchor: def-system
+  - id: physics.newtonian-mechanics.external-force
+    zh: |
+      外力
+    en: |
+      external force
+    brief: |
+      质点系以外的物体对系统里质点的力；外力之和决定系统总动量的变化。
+    definedIn: physics.newtonian-mechanics.momentum-conservation
+    anchor: def-system
+  - id: physics.newtonian-mechanics.center-of-mass
+    zh: |
+      质心
+    en: |
+      center of mass
+    brief: |
+      质点系各质点位置按质量加权的平均$\vb r_{\mathrm C}=\frac1M\sum m_i\vb r_i$；总动量等于$M\vb v_{\mathrm C}$。
+    definedIn: physics.newtonian-mechanics.momentum-conservation
+    anchor: def-center-of-mass
+  - id: physics.newtonian-mechanics.center-of-mass-theorem
+    zh: |
+      质心运动定理
+    en: |
+      center-of-mass theorem
+    brief: |
+      惯性系里，质点系受的外力之和等于总质量乘质心的加速度，内力不影响质心的运动。
+    definedIn: physics.newtonian-mechanics.momentum-conservation
+    anchor: thm-cm-motion
+  - id: physics.newtonian-mechanics.conservation-of-momentum
+    zh: |
+      动量守恒
+    en: |
+      conservation of momentum
+    brief: |
+      质点系受的外力之和为零时，总动量保持不变，质心静止或做匀速直线运动。
+    definedIn: physics.newtonian-mechanics.momentum-conservation
+    anchor: thm-momentum-conservation
+  - id: physics.newtonian-mechanics.work
+    zh: |
+      功
+    en: |
+      work
+    brief: |
+      恒力沿直线时是$\vb F\cdot\Delta\vb r$；一般是功率对时间的积分$\int\vb F\cdot\vb v\,\dd t$，单位焦耳。
+    definedIn: physics.newtonian-mechanics.work-energy
+    anchor: def-work
+  - id: physics.newtonian-mechanics.power
+    zh: |
+      功率
+    en: |
+      power
+    brief: |
+      力做功的快慢$P=\vb F\cdot\vb v$，单位瓦特；力和速度垂直时为零。
+    definedIn: physics.newtonian-mechanics.work-energy
+    anchor: def-power
+  - id: physics.newtonian-mechanics.kinetic-energy
+    zh: |
+      动能
+    en: |
+      kinetic energy
+    brief: |
+      质点的$K=\frac12mv^2$，是标量，只和速率有关。
+    definedIn: physics.newtonian-mechanics.work-energy
+    anchor: def-kinetic-energy
+  - id: physics.newtonian-mechanics.work-energy-theorem
+    zh: |
+      动能定理
+    en: |
+      work-energy theorem
+    brief: |
+      合力做的功等于质点动能的改变；动能的变化率等于合力的功率$\vb F\cdot\vb v$。
+    definedIn: physics.newtonian-mechanics.work-energy
+    anchor: thm-work-energy
+  - id: physics.newtonian-mechanics.recoil
+    zh: |
+      反冲
+    en: |
+      recoil
+    brief: |
+      原来静止的物体在内力作用下分成两部分，总动量仍为零，两部分朝相反方向运动，速度和质量成反比。
+    definedIn: physics.newtonian-mechanics.rockets
+    anchor: def-recoil
+  - id: physics.newtonian-mechanics.variable-mass-system
+    zh: |
+      变质量系统
+    en: |
+      variable-mass system
+    brief: |
+      不断有质量离开或并入的物体；要把离开、并入的部分算进系统，再用动量守恒。
+    definedIn: physics.newtonian-mechanics.rockets
+    anchor: def-variable-mass
+  - id: physics.newtonian-mechanics.exhaust-velocity
+    zh: |
+      排气速度
+    en: |
+      exhaust velocity
+    brief: |
+      火箭喷出的燃气相对火箭的速度大小$u$。
+    definedIn: physics.newtonian-mechanics.rockets
+    anchor: def-thrust
+  - id: physics.newtonian-mechanics.elastic-collision
+    zh: |
+      弹性碰撞
+    en: |
+      elastic collision
+    brief: |
+      碰撞前后系统的总动能不变的碰撞；一维时碰后的相对速度和碰前大小相等、方向相反。
+    definedIn: physics.newtonian-mechanics.collisions
+    anchor: def-collision
+  - id: physics.newtonian-mechanics.inelastic-collision
+    zh: |
+      非弹性碰撞
+    en: |
+      inelastic collision
+    brief: |
+      碰撞前后总动量守恒、总动能减少的碰撞，少了的动能变成内能、声音等。
+    definedIn: physics.newtonian-mechanics.collisions
+    anchor: def-collision
+  - id: physics.newtonian-mechanics.perfectly-inelastic-collision
+    zh: |
+      完全非弹性碰撞
+    en: |
+      perfectly inelastic collision
+    brief: |
+      碰后两个物体粘在一起、速度相同的碰撞；同样的质量和相对速度下损失的动能最多。
+    definedIn: physics.newtonian-mechanics.collisions
+    anchor: def-collision
+  - id: physics.newtonian-mechanics.center-of-mass-frame
+    zh: |
+      质心系
+    en: |
+      center-of-mass frame
+    brief: |
+      原点随质心运动、坐标轴方向不变的参考系；质点系在其中的总动量为零。
+    definedIn: physics.newtonian-mechanics.center-of-mass-frame
+    anchor: def-cm-frame
+  - id: physics.newtonian-mechanics.koenigs-theorem
+    zh: |
+      柯尼希定理
+    en: |
+      König's theorem
+    brief: |
+      质点系的总动能等于质心的动能$\frac12Mv_{\mathrm C}^2$加上它在质心系里的动能。
+    definedIn: physics.newtonian-mechanics.center-of-mass-frame
+    anchor: thm-koenig
+  - id: physics.newtonian-mechanics.thrust
+    zh: |
+      推力
+    en: |
+      thrust
+    brief: |
+      燃气对火箭向前的反作用力，大小是排气速度乘每秒喷出的质量$u\bigl|\dv mt\bigr|$。
+    definedIn: physics.newtonian-mechanics.rockets
+    anchor: def-thrust
+  - id: physics.newtonian-mechanics.conservative-force
+    zh: |
+      保守力
+    en: |
+      conservative force
+    brief: |
+      做的功只取决于起点和终点、和路径无关的力，例如重力、弹簧的弹力；它有势能。
+    definedIn: physics.newtonian-mechanics.potential-energy
+    anchor: def-conservative-force
+  - id: physics.newtonian-mechanics.nonconservative-force
+    zh: |
+      非保守力
+    en: |
+      nonconservative force
+    brief: |
+      做的功和路径有关的力，例如滑动摩擦力；它没有势能。
+    definedIn: physics.newtonian-mechanics.potential-energy
+    anchor: def-conservative-force
+  - id: physics.newtonian-mechanics.potential-energy
+    zh: |
+      势能
+    en: |
+      potential energy
+    brief: |
+      保守力的位置函数$U$，保守力从$A$到$B$做的功$W_{AB}=U(A)-U(B)$；参考点处取零。
+    definedIn: physics.newtonian-mechanics.potential-energy
+    anchor: def-potential-energy
+  - id: physics.newtonian-mechanics.gravitational-potential-energy
+    zh: |
+      重力势能
+    en: |
+      gravitational potential energy
+    brief: |
+      重力的势能$U=mgh$，$h$是比参考点高出的高度，可正可负。
+    definedIn: physics.newtonian-mechanics.potential-energy
+    anchor: def-gravitational-pe
+  - id: physics.newtonian-mechanics.elastic-potential-energy
+    zh: |
+      弹性势能
+    en: |
+      elastic potential energy
+    brief: |
+      弹簧弹力的势能$U=\frac12kx^2$，$x$是伸长量或压缩量，原长时为零。
+    definedIn: physics.newtonian-mechanics.potential-energy
+    anchor: def-gravitational-pe
+  - id: physics.newtonian-mechanics.mechanical-energy
+    zh: |
+      机械能
+    en: |
+      mechanical energy
+    brief: |
+      质点的动能和势能之和$E=K+U$。
+    definedIn: physics.newtonian-mechanics.potential-energy
+    anchor: def-mechanical-energy
+  - id: physics.newtonian-mechanics.conservation-of-mechanical-energy
+    zh: |
+      机械能守恒
+    en: |
+      conservation of mechanical energy
+    brief: |
+      只有保守力做功、别的力不做功时，质点的机械能保持不变。
+    definedIn: physics.newtonian-mechanics.potential-energy
+    anchor: thm-mechanical-energy
+  - id: physics.newtonian-mechanics.potential-energy-curve
+    zh: |
+      势能曲线
+    en: |
+      potential energy curve
+    brief: |
+      势能$U$随位置$x$变化的曲线；画上高度为机械能$E$的水平线，两者的距离是动能，质点只能在$U\le E$处。
+    definedIn: physics.newtonian-mechanics.energy-diagrams
+    anchor: def-potential-curve
+  - id: physics.newtonian-mechanics.turning-point
+    zh: |
+      转折点
+    en: |
+      turning point
+    brief: |
+      势能等于机械能$E$、力不为零的点；质点到那里速度为零，随即掉头。
+    definedIn: physics.newtonian-mechanics.energy-diagrams
+    anchor: def-turning-point
+  - id: physics.newtonian-mechanics.stable-equilibrium
+    zh: |
+      稳定平衡
+    en: |
+      stable equilibrium
+    brief: |
+      质点稍稍离开后力把它推回来的平衡位置，在势能的极小值点；$U'=0$、$U''>0$处一定是。
+    definedIn: physics.newtonian-mechanics.energy-diagrams
+    anchor: def-equilibrium
+  - id: physics.newtonian-mechanics.unstable-equilibrium
+    zh: |
+      不稳定平衡
+    en: |
+      unstable equilibrium
+    brief: |
+      质点稍稍离开后力把它推得更远的平衡位置，例如势能的极大值点；$U'=0$、$U''<0$处一定是。
+    definedIn: physics.newtonian-mechanics.energy-diagrams
+    anchor: def-equilibrium
+  - id: physics.newtonian-mechanics.drag
+    zh: |
+      阻力
+    en: |
+      drag
+    brief: |
+      物体在空气、水里运动时，流体对它的、和它相对流体的速度方向相反的力，速率越大阻力越大。
+    definedIn: physics.newtonian-mechanics.drag
+    anchor: def-drag
+  - id: physics.newtonian-mechanics.linear-drag
+    zh: |
+      线性阻力
+    en: |
+      linear drag
+    brief: |
+      大小和速率成正比的阻力$bv$，适用于黏稠流体里很小、很慢的物体。
+    definedIn: physics.newtonian-mechanics.drag
+    anchor: def-drag
+  - id: physics.newtonian-mechanics.quadratic-drag
+    zh: |
+      平方阻力
+    en: |
+      quadratic drag
+    brief: |
+      大小和速率的平方成正比的阻力$cv^2$，适用于空气里较大、较快的物体，如雨滴、跳伞的人。
+    definedIn: physics.newtonian-mechanics.drag
+    anchor: def-drag
+  - id: physics.newtonian-mechanics.terminal-velocity
+    zh: |
+      终端速度
+    en: |
+      terminal velocity
+    brief: |
+      阻力和重力相等时的下落速度，线性阻力时$\frac{mg}b$，平方阻力时$\sqrt{\frac{mg}c}$；从静止下落的物体越来越接近它。
+    definedIn: physics.newtonian-mechanics.drag
+    anchor: def-terminal-velocity

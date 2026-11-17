@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" width="640" height="250" font-size="14">
+  <!-- 火箭喷气前后的速度。上面一行是 t 时刻：质量为 m 的火箭以速度 v 向右飞。下面一行是 t 加 Δt 时刻：火箭的质量少了 Δm′，速度增大到 v 加 Δv；它后面的一团燃气 Δm′ 相对地面以较小的速度向左运动。右边是两条相对地面的速度数轴：上面一条只有火箭的速度；下面一条上火箭的速度向右、燃气的速度向左，两个箭头末端之间的距离标为 u，就是燃气相对火箭的速度。速度箭头按同一比例画，Δm′ 取 m 的十分之一。 -->
+  <text x="18.0" y="44.0" fill="currentColor"><tspan font-style="italic">t</tspan> 时刻</text>
+  <path d="M 110.0 56.0 L 206.0 56.0 L 232.0 70.0 L 206.0 84.0 L 110.0 84.0 Z" style="stroke: currentColor" fill="none" stroke-width="1.6" stroke-linejoin="round" />
+  <path d="M 110.0 62.0 L 102.0 58.0 L 102.0 82.0 L 110.0 78.0 Z" style="stroke: currentColor" fill="none" stroke-width="1.2" stroke-linejoin="round" />
+  <text x="150.0" y="75.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">m</tspan></text>
+  <line x1="126.0" y1="40.0" x2="189.0" y2="40.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 196.0 40.0 L 188.0 43.7 L 188.0 36.3 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="161.0" y="32.0" style="fill: var(--accent, #2563eb)" text-anchor="middle"><tspan font-weight="bold">v</tspan></text>
+  <text x="18.0" y="156.0" fill="currentColor"><tspan font-style="italic">t</tspan> + Δ<tspan font-style="italic">t</tspan> 时刻</text>
+  <path d="M 150.0 168.0 L 236.0 168.0 L 262.0 182.0 L 236.0 196.0 L 150.0 196.0 Z" style="stroke: currentColor" fill="none" stroke-width="1.6" stroke-linejoin="round" />
+  <path d="M 150.0 174.0 L 142.0 170.0 L 142.0 194.0 L 150.0 190.0 Z" style="stroke: currentColor" fill="none" stroke-width="1.2" stroke-linejoin="round" />
+  <text x="193.0" y="187.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">m</tspan> − Δ<tspan font-style="italic">m</tspan>′</text>
+  <line x1="166.0" y1="152.0" x2="239.0" y2="152.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 246.0 152.0 L 238.0 155.7 L 238.0 148.3 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="206.0" y="144.0" style="fill: var(--accent, #2563eb)" text-anchor="middle"><tspan font-weight="bold">v</tspan> + Δ<tspan font-weight="bold">v</tspan></text>
+  <circle cx="116.0" cy="182.0" r="9.0" style="stroke: var(--good, #059669)" fill="none" stroke-width="1.6" stroke-dasharray="3 2" />
+  <line x1="105.0" y1="182.0" x2="91.0" y2="182.0" style="stroke: var(--good, #059669)" stroke-width="2.0" />
+  <path d="M 85.0 182.0 L 92.0 178.8 L 92.0 185.2 Z" style="fill: var(--good, #059669)" />
+  <text x="116.0" y="212.0" style="fill: var(--good, #059669)" text-anchor="middle">Δ<tspan font-style="italic">m</tspan>′</text>
+  <line x1="360.0" y1="70.0" x2="620.0" y2="70.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="452.0" y1="65.0" x2="452.0" y2="75.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="360.0" y1="182.0" x2="620.0" y2="182.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="452.0" y1="177.0" x2="452.0" y2="187.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <text x="452.0" y="92.0" style="fill: var(--muted, #6b7280)" text-anchor="middle">0</text>
+  <text x="452.0" y="204.0" style="fill: var(--muted, #6b7280)" text-anchor="middle">0</text>
+  <line x1="452.0" y1="70.0" x2="515.0" y2="70.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 522.0 70.0 L 514.0 73.7 L 514.0 66.3 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="487.0" y="60.0" style="fill: var(--accent, #2563eb)" text-anchor="middle">火箭</text>
+  <line x1="452.0" y1="182.0" x2="525.0" y2="182.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 532.0 182.0 L 524.0 185.7 L 524.0 178.3 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="492.0" y="174.0" style="fill: var(--accent, #2563eb)" text-anchor="middle">火箭</text>
+  <line x1="452.0" y1="182.0" x2="438.0" y2="182.0" style="stroke: var(--good, #059669)" stroke-width="2.0" />
+  <path d="M 432.0 182.0 L 439.0 178.8 L 439.0 185.2 Z" style="fill: var(--good, #059669)" />
+  <text x="428.0" y="204.0" style="fill: var(--good, #059669)" text-anchor="end">燃气</text>
+  <line x1="432.0" y1="152.0" x2="532.0" y2="152.0" style="stroke: currentColor" stroke-width="1.2" />
+  <line x1="432.0" y1="147.0" x2="432.0" y2="157.0" style="stroke: currentColor" stroke-width="1.2" />
+  <line x1="532.0" y1="147.0" x2="532.0" y2="157.0" style="stroke: currentColor" stroke-width="1.2" />
+  <text x="482.0" y="137.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">u</tspan>（燃气相对火箭）</text>
+  <text x="490.0" y="24.0" style="fill: var(--muted, #6b7280)" text-anchor="middle">速度（相对地面）</text>
+</svg>

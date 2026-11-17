@@ -1,0 +1,185 @@
+- id: p1
+  tier: easy
+  statement: |
+    质量$75\,\mathrm{kg}$的跳伞运动员张开四肢下落，受的阻力近似是$cv^2$，$c=0.25\,\mathrm{kg/m}$，$g$取$9.8\,\mathrm{m/s^2}$。他的终端速度是多少？以$\mathrm{m/s}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: sqrt(75*9.8/0.25)
+    unit: |
+      $\mathrm{m/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      终端速度时阻力和重力大小相等。
+    - |
+      $cv_T^2=mg$，$v_T=\sqrt{\frac{mg}c}$。
+    - |
+      $v_T=\sqrt{\frac{75\times9.8}{0.25}}=\sqrt{2940}\approx54.2\,\mathrm{m/s}$。
+  solution: |
+    终端速度时合力为零，$cv_T^2=mg$，$v_T=\sqrt{\frac{mg}c}=\sqrt{2940}\approx54.2\,\mathrm{m/s}$，约$195\,\mathrm{km/h}$。头朝下收拢身体时横截面积变小，$c$变小，终端速度可以超过$80\,\mathrm{m/s}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $\tau$是线性阻力的时间常数。下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        平方阻力下，形状、大小相同而质量是$4$倍的物体，终端速度是$2$倍
+      - |
+        线性阻力下，阻力系数$b$不变而质量加倍，终端速度变为原来的$\sqrt2$倍
+      - |
+        线性阻力下从静止开始下落，经过$2\tau$，速度约是终端速度的$86\%$
+      - |
+        有阻力时，竖直上抛的物体上升用的时间比落回抛出点用的时间长
+      - |
+        线性阻力下从静止开始下落，速度达到终端速度的一半用的时间是$\tau\ln2$
+    value: [1, 3, 5]
+  hints:
+    - |
+      线性阻力时$v_T=\frac{mg}b$，平方阻力时$v_T=\sqrt{\frac{mg}c}$；$v=v_T\bigl(1-e^{-t/\tau}\bigr)$。
+    - |
+      上升时阻力和重力都向下，下落时阻力向上。
+    - |
+      A、C、E 对；B、D 错。
+  solution: |
+    A 对：$v_T=\sqrt{\frac{mg}c}$，$m$变为$4$倍，$v_T$变为$2$倍。B 错：$v_T=\frac{mg}b$，质量加倍，终端速度也加倍。C 对：$1-e^{-2}\approx0.865$。
+
+    D 错：上升时重力和阻力都使它减速，下落时阻力抵消一部分重力，加速慢；而且同一高度处下落的速度比上升时小，所以下落用的时间更长。E 对：$1-e^{-t/\tau}=\frac12$，$t=\tau\ln2$。
+
+- id: p3
+  tier: medium
+  statement: |
+    质量$2.0\,\mathrm g$的小球在黏稠的液体里从静止开始下沉，液体的阻力是$bv$，$b=0.020\,\mathrm{kg/s}$，液体对小球别的作用可以忽略，$g$取$9.8\,\mathrm{m/s^2}$。$0.20\,\mathrm s$末小球的速度是多少？以$\mathrm{m/s}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: (0.002*9.8/0.02)*(1 - exp(-0.2/(0.002/0.02)))
+    unit: |
+      $\mathrm{m/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先求终端速度$v_T=\frac{mg}b$和时间常数$\tau=\frac mb$。
+    - |
+      $v_T=\frac{0.0020\times9.8}{0.020}=0.98\,\mathrm{m/s}$，$\tau=0.10\,\mathrm s$。
+    - |
+      $v=0.98\bigl(1-e^{-2}\bigr)\approx0.847\,\mathrm{m/s}$。
+  solution: |
+    $v_T=\frac{mg}b=0.98\,\mathrm{m/s}$，$\tau=\frac mb=0.10\,\mathrm s$。由$v=v_T\bigl(1-e^{-t/\tau}\bigr)$，$0.20\,\mathrm s$末$v=0.98\times\bigl(1-e^{-2}\bigr)\approx0.847\,\mathrm{m/s}$，已经是终端速度的$86\%$。
+
+- id: p4
+  tier: medium
+  statement: |
+    质量$500\,\mathrm{kg}$的快艇以$10\,\mathrm{m/s}$关掉发动机，在静水里滑行，水的阻力近似是$cv^2$，$c=25\,\mathrm{kg/m}$。速度减到一半要多长时间？以$\mathrm s$为单位。
+  answer:
+    type: number
+    value: 500/(25*10)
+    unit: |
+      $\mathrm s$
+  hints:
+    - |
+      运动方程是$m\dv vt=-cv^2$，可以分离变量。
+    - |
+      两边除以$-mv^2$：$\frac{\dd}{\dd t}\Bigl(\frac1v\Bigr)=-\frac1{v^2}\dv vt=\frac cm$。
+    - |
+      $\frac1v=\frac1{v_0}+\frac cmt$，$v=\frac{v_0}2$时$t=\frac m{cv_0}=2.0\,\mathrm s$。
+  solution: |
+    $m\dv vt=-cv^2$，即$\frac{\dd}{\dd t}\Bigl(\frac1v\Bigr)=-\frac1{v^2}\dv vt=\frac cm$，所以$\frac1v=\frac1{v_0}+\frac cmt$。$v=\frac{v_0}2$时$\frac1{v_0}=\frac cmt$，$t=\frac m{cv_0}=\frac{500}{25\times10}=2.0\,\mathrm s$。再过$2.0\,\mathrm s$才减到原来的$\frac13$，又过$2.0\,\mathrm s$只减到$\frac14$：每过$2.0\,\mathrm s$，$\frac1v$增加同样多，速度减得越来越慢，船越来越难停下。
+
+- id: p5
+  tier: hard
+  statement: |
+    质量为$m$的小球以速率$v_0$、抛射角$\theta$抛出，受线性阻力$-b\vb v$，记$\tau=\frac mb$，$v_T=g\tau$。
+
+    （1）写出水平、竖直两个方向的运动方程，说明它们互不影响。平方阻力时还是这样吗？
+
+    （2）求水平速度和水平位移随时间的变化，并说明不管飞多久，水平位移都不超过$v_0\tau\cos\theta$。
+
+    （3）求竖直速度随时间的变化，并说明为什么有阻力时最佳抛射角比$45^\circ$小。
+  hints:
+    - |
+      线性阻力$-b\vb v$的两个分量是$-bv_x$、$-bv_y$。
+    - |
+      水平：$\dv{v_x}t=-\frac{v_x}\tau$；竖直：$\dv{v_y}t=-g-\frac{v_y}\tau$。
+    - |
+      竖直方向的解法和讲解里线性阻力下的下落一样，只是初速度不是零。
+  reference: |
+    （1）取$x$轴水平、$y$轴竖直向上：$m\dv{v_x}t=-bv_x$，$m\dv{v_y}t=-mg-bv_y$，每个方程只含一个分量，可以分开解。平方阻力的分量是$-cvv_x$、$-cvv_y$，其中$v=\sqrt{v_x^2+v_y^2}$同时含两个分量，两个方向互相牵连，不能分开解。
+
+    （2）$v_x=v_0\cos\theta\,e^{-t/\tau}$。$x$是$v_x$的原函数，$x=-v_0\tau\cos\theta\,e^{-t/\tau}+C$，由$x(0)=0$得$x=v_0\tau\cos\theta\bigl(1-e^{-t/\tau}\bigr)$，随$t$增大而增大，却始终小于$v_0\tau\cos\theta$。
+
+    （3）$\dv{v_y}t=-\frac1\tau(v_y+v_T)$，和讲解里一样分离变量，得$v_y=(v_0\sin\theta+v_T)e^{-t/\tau}-v_T$。抛射角越大，在空中停留越久，水平速度按$e^{-t/\tau}$衰减得越多，所以把角度压低一些、换取更大的水平速度更合算，最佳抛射角比$45^\circ$小，这正是[平面运动与抛体](lesson:physics.newtonian-mechanics.kinematics-vectors)第 8 题定性说过的。
+
+- id: p6
+  tier: hard
+  statement: |
+    质量为$m$的小球以$v_0$竖直上抛，受平方阻力$cv^2$，它的终端速度是$v_T=\sqrt{\frac{mg}c}$。
+
+    （1）设$y$是高度，说明上升时$\dv vt=v\dv vy$。
+
+    （2）求小球能上升的最大高度$h$。
+
+    （3）和没有阻力时的$\frac{v_0^2}{2g}$比较。$v_0$远小于$v_T$时，两者有什么关系？
+  hints:
+    - |
+      上升时速度可以看作高度的函数，用链式法则。
+    - |
+      上升时重力和阻力都向下：$v\dv vy=-g\Bigl(1+\frac{v^2}{v_T^2}\Bigr)$，分离变量。
+    - |
+      由链式法则，$\frac{v_T^2}2\ln\Bigl(1+\frac{v^2}{v_T^2}\Bigr)$对$v$的导数是$\frac v{1+v^2/v_T^2}$。
+  reference: |
+    （1）上升时$y$随时间增大，$v$可以看作$y$的函数，由链式法则，$\dv vt=\dv vy\dv yt=v\dv vy$。
+
+    （2）上升时重力和阻力都向下，$m\dv vt=-mg-cv^2$，即$v\dv vy=-g\Bigl(1+\frac{v^2}{v_T^2}\Bigr)$。分离变量，$\frac v{1+v^2/v_T^2}\dv vy=-g$，左边是$\frac{v_T^2}2\ln\Bigl(1+\frac{v^2}{v_T^2}\Bigr)$对$y$的导数，所以$\frac{v_T^2}2\ln\Bigl(1+\frac{v^2}{v_T^2}\Bigr)+gy$不随$y$变化。比较$y=0$、$v=v_0$和$y=h$、$v=0$两处，得$h=\frac{v_T^2}{2g}\ln\Bigl(1+\frac{v_0^2}{v_T^2}\Bigr)$。
+
+    （3）记$u=\frac{v_0^2}{v_T^2}$，$h=\frac{v_0^2}{2g}\cdot\frac{\ln(1+u)}u$。$u>0$时$\ln(1+u)<u$（$u-\ln(1+u)$在$u=0$处为零，导数$\frac u{1+u}>0$），所以有阻力时升得低。$v_0$远小于$v_T$时$u$很小，由$\lim_{u\to0}\frac{\ln(1+u)}u=1$，$h$很接近$\frac{v_0^2}{2g}$，阻力几乎不起作用。
+
+- id: p7
+  tier: thinking
+  statement: |
+    雾里的小水滴几乎悬在空中，毛毛雨落得很慢，大雨点落得快，冰雹砸下来更快。
+
+    （1）形状相似的球，半径变为原来的$2$倍，质量和平方阻力的系数$c$各变为原来的几倍？
+
+    （2）平方阻力下，终端速度怎样随半径变化？
+
+    （3）很小的水滴受的是线性阻力，阻力系数$b$和半径成正比。这时终端速度怎样随半径变化？
+  hints:
+    - |
+      质量和体积成正比；$c$和横截面积成正比。
+    - |
+      $v_T=\sqrt{\frac{mg}c}$。
+    - |
+      $v_T=\frac{mg}b$。
+  reference: |
+    （1）质量和体积成正比，变为$8$倍；$c$和横截面积成正比，变为$4$倍。
+
+    （2）$v_T=\sqrt{\frac{mg}c}$和$\sqrt{\frac{R^3}{R^2}}=\sqrt R$成正比，半径变为$2$倍，终端速度变为约$1.41$倍。大的雨点、冰雹落得快。
+
+    （3）$v_T=\frac{mg}b$和$\frac{R^3}R=R^2$成正比，半径越小，终端速度减小得越快。雾里的小水滴半径只有约$0.005\,\mathrm{mm}$，终端速度不到$1\,\mathrm{cm/s}$，稍有上升的气流就托住了它，看起来像悬在空中。
+
+- id: p8
+  tier: thinking
+  statement: |
+    跳伞运动员离开飞机后，很快就以约$55\,\mathrm{m/s}$的终端速度下落；打开降落伞后，终端速度变成约$5\,\mathrm{m/s}$。
+
+    （1）开伞的一瞬间，阻力和重力哪个大？运动员的加速度朝哪个方向？
+
+    （2）为什么开伞时运动员会感到被猛地向上一拉？
+
+    （3）开伞后速度怎样变化？以$5\,\mathrm{m/s}$落地，相当于从多高处跳下？
+  hints:
+    - |
+      开伞后的阻力系数$c'$满足$c'\times5^2=mg$，而这时的速度还是$55\,\mathrm{m/s}$。
+    - |
+      合力向上，运动员在减速。
+    - |
+      以$5\,\mathrm{m/s}$落地，和自由下落多高时的速度相同？
+  reference: |
+    （1）开伞后$c'v_T'^2=mg$，刚开伞时$v=55\,\mathrm{m/s}$，阻力$c'v^2=mg\bigl(\frac{55}5\bigr)^2=121\,mg$，远大于重力；合力向上，加速度向上，运动员在减速。
+
+    （2）按这个模型，减速的加速度会达到一百多个$g$，人受不了。实际的降落伞要花一两秒才完全张开，阻力是逐渐增大的，减速的加速度只有几个$g$，可还是像被猛地向上一拉。
+
+    （3）速度迅速减小，趋于新的终端速度$5\,\mathrm{m/s}$，以后几乎匀速下落。以$5\,\mathrm{m/s}$落地，相当于从$\frac{v^2}{2g}=\frac{25}{19.6}\approx1.3\,\mathrm m$高处跳下，落地时屈膝就能缓冲。

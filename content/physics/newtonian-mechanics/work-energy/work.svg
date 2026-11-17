@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 270" width="640" height="270" font-size="14">
+  <!-- 两幅图说明功的算法。左图：水平地面上的木块受一个斜向上的拉力 F，和水平方向成 θ 角；虚线把 F 分成沿地面的分量 F cos θ 和竖直的分量 F sin θ，三个箭头的长短按同一比例画。木块从左边的虚线位置移到右边，位移 Δr 沿地面向右，只有沿位移的分量 F cos θ 做功。右图：横轴是位置 x，纵轴是力 F，一条弯曲的 F(x) 曲线；从 x1 到 x2，曲线下面涂了颜色的面积就是变力做的功，面积里画了几个细长的矩形，表示把位移分成小段，每段的功近似是 F 乘 Δx。 -->
+  <line x1="16.0" y1="190.0" x2="312.0" y2="190.0" style="stroke: currentColor" stroke-width="1.6" />
+  <rect x="24.0" y="150.0" width="56.0" height="40.0" style="stroke: currentColor" fill="none" stroke-width="1.2" stroke-dasharray="4 3" />
+  <rect x="144.0" y="150.0" width="56.0" height="40.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <line x1="52.0" y1="210.0" x2="165.0" y2="210.0" style="stroke: currentColor" stroke-width="1.6" />
+  <path d="M 172.0 210.0 L 164.0 213.7 L 164.0 206.3 Z" style="fill: currentColor" />
+  <text x="112.0" y="232.0" fill="currentColor" text-anchor="middle">Δ<tspan font-weight="bold">r</tspan></text>
+  <line x1="200.0" y1="162.0" x2="263.8" y2="162.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.4" stroke-dasharray="4 3" />
+  <path d="M 269.3 162.0 L 262.8 165.0 L 262.8 159.0 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="269.3" y1="162.0" x2="269.3" y2="127.5" style="stroke: var(--muted, #6b7280)" stroke-width="1.4" stroke-dasharray="4 3" />
+  <path d="M 269.3 122.0 L 272.3 128.5 L 266.3 128.5 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="200.0" y1="162.0" x2="263.2" y2="125.5" style="stroke: currentColor" stroke-width="2.2" />
+  <path d="M 269.3 122.0 L 264.2 129.2 L 260.5 122.8 Z" style="fill: currentColor" />
+  <circle cx="200.0" cy="162.0" r="2.4" style="fill: currentColor" />
+  <path d="M 222.0 162.0 L 222.0 161.3 L 222.0 160.6 L 221.9 159.8 L 221.8 159.1 L 221.7 158.4 L 221.6 157.7 L 221.4 157.0 L 221.3 156.3 L 221.1 155.6 L 220.8 154.9 L 220.6 154.3 L 220.3 153.6 L 220.0 152.9 L 219.7 152.3 L 219.4 151.6 L 219.1 151.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" stroke-linejoin="round" />
+  <text x="240.0" y="155.0" style="fill: var(--muted, #6b7280)" font-size="13"><tspan font-style="italic">θ</tspan></text>
+  <text x="210.0" y="136.0" fill="currentColor"><tspan font-weight="bold"><tspan font-style="italic">F</tspan></tspan></text>
+  <text x="231.6" y="180.0" style="fill: var(--accent, #2563eb)" text-anchor="middle"><tspan font-style="italic">F</tspan> cos <tspan font-style="italic">θ</tspan></text>
+  <text x="275.3" y="147.0" style="fill: var(--muted, #6b7280)"><tspan font-style="italic">F</tspan> sin <tspan font-style="italic">θ</tspan></text>
+  <text x="164.0" y="258.0" fill="currentColor" text-anchor="middle">只有沿位移的分力做功</text>
+  <line x1="372.0" y1="214.0" x2="619.0" y2="214.0" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 626.0 214.0 L 618.0 217.7 L 618.0 210.3 Z" style="fill: currentColor" />
+  <line x1="372.0" y1="214.0" x2="372.0" y2="39.0" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 372.0 32.0 L 375.7 40.0 L 368.3 40.0 Z" style="fill: currentColor" />
+  <text x="626.0" y="234.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">x</tspan></text>
+  <text x="360.0" y="44.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">F</tspan></text>
+  <path d="M 418.4 214.0 L 418.4 148.8 L 421.2 147.4 L 424.0 146.0 L 426.8 144.6 L 429.5 143.3 L 432.3 142.0 L 435.1 140.8 L 437.9 139.6 L 440.7 138.4 L 443.5 137.3 L 446.3 136.2 L 449.1 135.1 L 451.8 134.1 L 454.6 133.1 L 457.4 132.1 L 460.2 131.2 L 463.0 130.3 L 465.8 129.4 L 468.6 128.6 L 471.3 127.8 L 474.1 127.1 L 476.9 126.3 L 479.7 125.7 L 482.5 125.0 L 485.3 124.4 L 488.1 123.8 L 490.9 123.3 L 493.6 122.8 L 496.4 122.3 L 499.2 121.9 L 502.0 121.5 L 504.8 121.1 L 507.6 120.8 L 510.4 120.5 L 513.1 120.3 L 515.9 120.0 L 518.7 119.9 L 521.5 119.7 L 524.3 119.6 L 527.1 119.5 L 529.9 119.5 L 532.7 119.5 L 535.4 119.5 L 538.2 119.5 L 541.0 119.6 L 543.8 119.8 L 546.6 119.9 L 549.4 120.1 L 552.2 120.4 L 554.9 120.7 L 557.7 121.0 L 560.5 121.3 L 563.3 121.7 L 566.1 122.1 L 568.9 122.5 L 571.7 123.0 L 574.5 123.6 L 577.2 124.1 L 580.0 124.7 L 582.8 125.3 L 585.6 126.0 L 585.6 214.0 Z" style="fill: var(--accent, #2563eb)" fill-opacity="0.15" />
+  <rect x="418.4" y="142.0" width="27.9" height="72.0" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="1.0" />
+  <rect x="446.3" y="131.2" width="27.9" height="82.8" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="1.0" />
+  <rect x="474.1" y="123.8" width="27.9" height="90.2" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="1.0" />
+  <rect x="502.0" y="120.0" width="27.9" height="94.0" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="1.0" />
+  <rect x="529.9" y="119.8" width="27.9" height="94.2" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="1.0" />
+  <rect x="557.7" y="123.0" width="27.9" height="91.0" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="1.0" />
+  <path d="M 392.0 164.0 L 394.8 162.3 L 397.5 160.6 L 400.2 158.9 L 403.0 157.3 L 405.8 155.7 L 408.5 154.1 L 411.2 152.6 L 414.0 151.1 L 416.8 149.6 L 419.5 148.2 L 422.2 146.8 L 425.0 145.5 L 427.8 144.2 L 430.5 142.9 L 433.2 141.6 L 436.0 140.4 L 438.8 139.2 L 441.5 138.1 L 444.2 137.0 L 447.0 135.9 L 449.8 134.8 L 452.5 133.8 L 455.2 132.8 L 458.0 131.9 L 460.8 131.0 L 463.5 130.1 L 466.2 129.3 L 469.0 128.5 L 471.8 127.7 L 474.5 127.0 L 477.2 126.3 L 480.0 125.6 L 482.8 125.0 L 485.5 124.4 L 488.2 123.8 L 491.0 123.3 L 493.8 122.8 L 496.5 122.3 L 499.2 121.9 L 502.0 121.5 L 504.8 121.1 L 507.5 120.8 L 510.2 120.5 L 513.0 120.3 L 515.8 120.1 L 518.5 119.9 L 521.2 119.7 L 524.0 119.6 L 526.8 119.5 L 529.5 119.5 L 532.2 119.5 L 535.0 119.5 L 537.8 119.5 L 540.5 119.6 L 543.2 119.7 L 546.0 119.9 L 548.8 120.1 L 551.5 120.3 L 554.2 120.6 L 557.0 120.9 L 559.8 121.2 L 562.5 121.6 L 565.2 122.0 L 568.0 122.4 L 570.8 122.9 L 573.5 123.4 L 576.2 123.9 L 579.0 124.5 L 581.8 125.1 L 584.5 125.7 L 587.2 126.4 L 590.0 127.1 L 592.8 127.8 L 595.5 128.6 L 598.2 129.4 L 601.0 130.3 L 603.8 131.2 L 606.5 132.1 L 609.2 133.0 L 612.0 134.0" style="stroke: currentColor" fill="none" stroke-width="2.0" stroke-linejoin="round" />
+  <line x1="418.4" y1="214.0" x2="418.4" y2="148.8" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="3 3" />
+  <line x1="585.6" y1="214.0" x2="585.6" y2="126.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="3 3" />
+  <text x="418.4" y="234.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">x</tspan><tspan dy="4" font-size="11">1</tspan></text>
+  <text x="585.6" y="234.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">x</tspan><tspan dy="4" font-size="11">2</tspan></text>
+  <text x="616.0" y="126.0" fill="currentColor"><tspan font-style="italic">F</tspan>(<tspan font-style="italic">x</tspan>)</text>
+  <text x="502.0" y="72.0" fill="currentColor" text-anchor="middle">曲线下的面积就是功</text>
+  <text x="500.0" y="258.0" fill="currentColor" text-anchor="middle">力随位置变化时</text>
+</svg>

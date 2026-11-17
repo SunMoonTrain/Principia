@@ -1,0 +1,176 @@
+- id: p1
+  tier: easy
+  statement: |
+    质点沿$x$轴运动，受的保守力的势能是$U(x)=3x^2-2x^3$（$U$以$\mathrm J$为单位，$x$以$\mathrm m$为单位）。质点在$x=2.0\,\mathrm m$处受的力是多少？以$\mathrm N$为单位，沿$x$轴正方向为正。
+  answer:
+    type: number
+    value: -(6*2 - 6*2^2)
+    unit: |
+      $\mathrm N$
+  hints:
+    - |
+      沿直线运动时$F=-\dv Ux$。
+    - |
+      $\dv Ux=6x-6x^2$，在$x=2.0$处是$-12$。
+    - |
+      $F=-(-12)=12\,\mathrm N$，沿$x$轴正方向。
+  solution: |
+    $F=-\dv Ux=-(6x-6x^2)$，在$x=2.0\,\mathrm m$处$F=-(12-24)=12\,\mathrm N$，沿$x$轴正方向。$U$在这里随$x$增大而减小，力指向势能降低的方向，所以朝$+x$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面这些定义在整个平面上的力场，哪些是保守力？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\vb F=(y,\ x)$
+      - |
+        $\vb F=(y,\ -x)$
+      - |
+        $\vb F=(x^2,\ y^2)$
+      - |
+        $\vb F=(xy,\ xy)$
+      - |
+        $\vb F=(2x+y,\ x+2y)$
+    value: [1, 3, 5]
+  hints:
+    - |
+      整个平面是单连通的，比较$\frac{\partial F_y}{\partial x}$和$\frac{\partial F_x}{\partial y}$。
+    - |
+      A：$1$和$1$；B：$-1$和$1$；C：$0$和$0$；D：$y$和$x$；E：$1$和$1$。
+    - |
+      A、C、E 对；B、D 错。
+  solution: |
+    平面是单连通的，保守就是$\frac{\partial F_y}{\partial x}=\frac{\partial F_x}{\partial y}$。A 对，$U=-xy$。B 错：$-1\ne1$，它绕原点转，沿逆时针的圆走一圈做负功。C 对，$U=-\frac{x^3+y^3}3$。
+
+    D 错：$y$和$x$只在直线$y=x$上相等，不是处处相等。E 对，$U=-(x^2+xy+y^2)$。
+
+- id: p3
+  tier: medium
+  statement: |
+    力场$\vb F=(3x^2y,\ x^3+2y)$，力以$\mathrm N$为单位，坐标以$\mathrm m$为单位。质点从$(1,0)$沿任意路径移到$(2,1)$，这个力做的功是多少？以$\mathrm J$为单位。
+  answer:
+    type: number
+    value: 2^3*1 + 1^2 - 0
+    unit: |
+      $\mathrm J$
+  hints:
+    - |
+      先验证它是保守力：$\frac{\partial F_y}{\partial x}=3x^2=\frac{\partial F_x}{\partial y}$。
+    - |
+      由$-\frac{\partial U}{\partial x}=3x^2y$，$U=-x^3y+g(y)$；再由$F_y$定出$g(y)=-y^2$。
+    - |
+      $W=U(1,0)-U(2,1)=0-(-8-1)=9\,\mathrm J$。
+  solution: |
+    $\frac{\partial F_y}{\partial x}=3x^2=\frac{\partial F_x}{\partial y}$，平面单连通，是保守力。由$-\frac{\partial U}{\partial x}=3x^2y$，$U=-x^3y+g(y)$；$-\frac{\partial U}{\partial y}=x^3-g'(y)=x^3+2y$，$g(y)=-y^2$，取$U=-x^3y-y^2$。做的功$W=U(1,0)-U(2,1)=0-(-9)=9\,\mathrm J$，和路径无关。
+
+- id: p4
+  tier: medium
+  statement: |
+    质点在平面上运动，受的保守力的势能是$U=3x^2+2xy+y^2$（$U$以$\mathrm J$为单位，坐标以$\mathrm m$为单位）。质点在$(1,1)$处受的力有多大？以$\mathrm N$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: sqrt(8^2 + 4^2)
+    unit: |
+      $\mathrm N$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $\vb F=-\nabla U=\Bigl(-\frac{\partial U}{\partial x},\ -\frac{\partial U}{\partial y}\Bigr)$。
+    - |
+      $\frac{\partial U}{\partial x}=6x+2y$，$\frac{\partial U}{\partial y}=2x+2y$，在$(1,1)$处是$8$和$4$。
+    - |
+      $\vb F=(-8,-4)\,\mathrm N$，大小$\sqrt{80}\approx8.94\,\mathrm N$。
+  solution: |
+    $\vb F=-\nabla U=\bigl(-(6x+2y),\ -(2x+2y)\bigr)$，在$(1,1)$处是$(-8,-4)\,\mathrm N$，大小$\sqrt{64+16}=\sqrt{80}\approx8.94\,\mathrm N$。它指向左下方，那是$U$降低最快的方向。
+
+- id: p5
+  tier: hard
+  statement: |
+    力场$\vb F=k(-y,\ x)$，$k>0$。
+
+    （1）质点沿以原点为圆心、半径为$R$的圆逆时针走一圈，这个力做的功是多少？
+
+    （2）由此说明它不是保守力，并验证它的旋度不为零。
+
+    （3）质点从$(R,0)$走到$(-R,0)$，沿上半圆和沿下半圆，这个力做的功各是多少？
+  hints:
+    - |
+      在这个圆上，$\vb F$沿什么方向、有多大？
+    - |
+      $\vb F$和圆相切，大小是$kR$，逆时针时和运动方向相同。
+    - |
+      上半圆从$(R,0)$到$(-R,0)$是逆时针，下半圆是顺时针。
+  reference: |
+    （1）在圆上一点$(R\cos\varphi,\ R\sin\varphi)$，$\vb F=kR(-\sin\varphi,\ \cos\varphi)$，正好沿逆时针的切线方向，大小是$kR$。所以每一刻力都和速度同向，走一圈做的功是$kR\cdot2\pi R=2\pi kR^2$。
+
+    （2）沿闭曲线走一圈做的功不为零，所以不是保守力。$\frac{\partial F_y}{\partial x}-\frac{\partial F_x}{\partial y}=k-(-k)=2k\ne0$，旋度不为零，和判别法一致。
+
+    （3）上半圆是逆时针走半圈，功是$\pi kR^2$；下半圆是顺时针走半圈，力和运动方向相反，功是$-\pi kR^2$。起点、终点相同，功却不同，正好说明它和路径有关。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）证明：指向或背离原点、大小只和离原点的距离$r$有关的力$\vb F=f(r)\uv r$（$\uv r=\frac{\vb r}r$）是保守力，它的势能可以取$U(r)=-\int_{r_0}^rf(s)\,\dd s$。
+
+    （2）质点受的力是$\vb F=-k\vb r$，像一根把它拉向原点的弹簧。求它的势能（原点处为零），以及质点从$(1,0,0)$移到$(0,2,0)$时这个力做的功，用$k$表示，坐标以$\mathrm m$为单位。
+  hints:
+    - |
+      只和$r$有关的函数$U(r)$，梯度是$U'(r)\uv r$（例 2 用过）。
+    - |
+      $U(r)=-\int_{r_0}^rf(s)\,\dd s$时$U'(r)=-f(r)$。
+    - |
+      $\vb F=-k\vb r=-kr\,\uv r$，$f(r)=-kr$。
+  reference: |
+    （1）由链式法则，$\frac{\partial r}{\partial x}=\frac xr$，所以只和$r$有关的函数满足$\nabla U(r)=U'(r)\uv r$。取$U(r)=-\int_{r_0}^rf(s)\,\dd s$，由微积分基本定理，$U'(r)=-f(r)$，所以$-\nabla U=f(r)\uv r=\vb F$，$\vb F$是势能$U$的负梯度，是保守力。
+
+    （2）$f(r)=-kr$，取$r_0=0$，$U=-\int_0^r(-ks)\,\dd s=\frac12kr^2=\frac12k(x^2+y^2+z^2)$。从$(1,0,0)$到$(0,2,0)$，力做的功是$U(A)-U(B)=\frac12k\times1-\frac12k\times4=-\frac32k$（以$\mathrm J$为单位），质点离原点远了，力做负功。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）滑动摩擦力为什么不能写成某个$U$的负梯度？
+
+    （2）有的力和速度有关，却始终和速度垂直，例如磁场对运动电荷的力（见[磁场与洛伦兹力](lesson:physics.electromagnetism.lorentz-force)）。它做功吗？能给它定义势能吗？
+
+    （3）离地面很远时，物体受的重力随高度增加而变小，不再是恒力。它还是保守力吗？
+  hints:
+    - |
+      同一个位置上，滑动摩擦力的方向一样吗？
+    - |
+      力始终和速度垂直时，功率是多少？
+    - |
+      这时的重力指向地心，大小只和离地心的距离有关。
+  reference: |
+    （1）滑动摩擦力的方向由速度决定，同一个位置上，物体往不同方向滑，摩擦力的方向就不同，它不是只随位置变化的力场；它做的功又和路径有关，写不成任何$U$的负梯度。
+
+    （2）它的功率$\vb F\cdot\vb v$始终为零，不做功，不改变动能。它和速度有关，不是力场，谈不上势能；但它不做功，所以别的力都是保守力时，机械能照样守恒。
+
+    （3）还是。这时的重力指向地心，大小和离地心距离的平方成反比，正是例 2 那样的力，是保守力，势能和$-\frac1r$成正比，见[引力势能与逃逸速度](lesson:physics.newtonian-mechanics.gravitational-potential)。
+
+- id: p8
+  tier: thinking
+  statement: |
+    把势能$U(x,y)$画成地图上等高线那样的等值线。
+
+    （1）力的方向和等值线是什么关系？指向哪一边？
+
+    （2）等值线密的地方，力大还是小？
+
+    （3）质点沿一条等值线运动，力做功吗？
+  hints:
+    - |
+      梯度和等值线垂直，指向函数增加的一边。
+    - |
+      等值线越密，函数变化得越快。
+    - |
+      沿等值线走，$U$的值变不变？
+  reference: |
+    （1）$\vb F=-\nabla U$，梯度和等值线垂直，指向$U$增加的一边，所以力和等值线垂直，指向$U$减小的一边，就像水总是垂直于等高线往低处流。
+
+    （2）相邻两条等值线的$U$差一定时，挨得越近，$U$变化得越快，梯度越大，力也越大，好比等高线密的地方山坡陡。
+
+    （3）不做功。沿等值线走，$U$不变，功$U(A)-U(B)=0$；也可以这样看：力和等值线垂直，也就和速度垂直，每一刻的功率都是零。

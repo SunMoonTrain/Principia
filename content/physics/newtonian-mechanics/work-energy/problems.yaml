@@ -1,0 +1,182 @@
+- id: p1
+  tier: easy
+  statement: |
+    用$80\,\mathrm N$的力拉着雪橇在水平雪地上前进$10\,\mathrm m$，拉力和水平方向成$30^\circ$。拉力做了多少功？以$\mathrm J$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 80*10*cos(30*pi/180)
+    unit: |
+      $\mathrm J$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      功等于力和位移的点积，只算沿位移方向的分力。
+    - |
+      沿位移的分力是$80\cos30^\circ\approx69.3\,\mathrm N$。
+    - |
+      $W\approx69.3\times10\approx693\,\mathrm J$。
+  solution: |
+    位移沿水平方向，拉力和它的夹角是$30^\circ$，$W=F|\Delta\vb r|\cos30^\circ=80\times10\times0.866\approx693\,\mathrm J$。竖直的分力$80\sin30^\circ=40\,\mathrm N$和位移垂直，不做功，它只是减小了雪地对雪橇的支持力。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        一个力对物体做了负功，物体的动能一定减少
+      - |
+        合力对物体做的功为零，物体的速度一定不变
+      - |
+        物体在一段时间开始和结束时动能相同，这段时间里合力做的功为零
+      - |
+        汽车以不变的功率加速时，沿运动方向推动汽车的力越来越小
+      - |
+        大小、方向都不变的力$\vb F$对物体做的功，等于$F$乘物体走过的路程
+    value: [3, 4]
+  hints:
+    - |
+      动能的改变等于合力做的功，不是某一个力做的功。
+    - |
+      动能只和速率有关；功率$P=\vb F\cdot\vb v$。
+    - |
+      C、D 对；A、B、E 错。
+  solution: |
+    A 错：别的力可能做了更多的正功，例如被钢索拉着加速上升的货物，重力做负功，动能却在增加。B 错：合力的功为零只说明始末的速率相同，方向可以变，例如竖直上抛又落回抛出点的小球。C 对：这就是动能定理。
+
+    D 对：$P=Fv$，功率不变、速度增大，力就减小。E 错：只算沿位移方向的分力，而且乘的是位移，不是路程；物体沿直线走过去再走回来，路程是来回的总长，位移却是零，这个力做的功也是零。
+
+- id: p3
+  tier: medium
+  statement: |
+    光滑水平面上，质量$2.0\,\mathrm{kg}$的物块静止在$x=1.0\,\mathrm m$处。从某一时刻起，它受到沿$x$轴正方向的力$F=3x^2\,\mathrm N$（$x$以$\mathrm m$为单位）。物块到达$x=3.0\,\mathrm m$时的速率是多少？以$\mathrm{m/s}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: sqrt(2*(3^3 - 1^3)/2)
+    unit: |
+      $\mathrm{m/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      力只随位置变化，它做的功是$\int_1^3F\,\dd x$。
+    - |
+      $3x^2$的一个原函数是$x^3$，$W=x^3\Big|_1^3=26\,\mathrm J$。
+    - |
+      $\frac12\times2.0\times v^2=26$，$v=\sqrt{26}\approx5.10\,\mathrm{m/s}$。
+  solution: |
+    竖直方向的力不做功，水平方向只有$F$。$W=\int_1^33x^2\,\dd x=x^3\Big|_1^3=27-1=26\,\mathrm J$。由动能定理，$\frac12\times2.0\times v^2=26$，$v=\sqrt{26}\approx5.10\,\mathrm{m/s}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    起重机用钢索把质量$500\,\mathrm{kg}$的货物从静止开始竖直向上提起，加速度是$0.50\,\mathrm{m/s^2}$，$g$取$9.8\,\mathrm{m/s^2}$。$3.0\,\mathrm s$末钢索拉力的功率是多少？以$\mathrm W$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 500*(9.8 + 0.5)*0.5*3
+    unit: |
+      $\mathrm W$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先由牛顿第二定律求钢索的拉力，再求$3.0\,\mathrm s$末的速度。
+    - |
+      $T-mg=ma$，$T=500\times(9.8+0.50)=5150\,\mathrm N$；$v=at=1.5\,\mathrm{m/s}$。
+    - |
+      拉力和速度同向，$P=Tv=5150\times1.5\approx7.73\times10^3\,\mathrm W$。
+  solution: |
+    由牛顿第二定律，$T-mg=ma$，$T=5150\,\mathrm N$。$3.0\,\mathrm s$末速度$v=0.50\times3.0=1.5\,\mathrm{m/s}$，竖直向上，和拉力同向。功率$P=\vb T\cdot\vb v=5150\times1.5\approx7.73\times10^3\,\mathrm W$。
+
+    这一刻重力的功率是$-mgv\approx-7.35\times10^3\,\mathrm W$，两者相加是$mav=375\,\mathrm W$，正是动能的变化率$\dv{}t\bigl(\frac12mv^2\bigr)=mva$。
+
+- id: p5
+  tier: hard
+  statement: |
+    [力矩与角动量](lesson:physics.newtonian-mechanics.angular-momentum)例 2 里的小球质量为$m$，在桌下慢慢拉绳，半径从$r_1$变到$r_2$，速率从$v_1$变到$v_2$。拉绳很慢，小球一直近似做圆周运动，绳子的拉力近似是$T=\frac{mv^2}r$（见[圆周运动的动力学](lesson:physics.newtonian-mechanics.circular-dynamics)）；由那里的角动量守恒，$rv$保持等于$r_1v_1$。
+
+    （1）证明：拉力做的功等于$\int_{r_2}^{r_1}T\,\dd r$。
+
+    （2）算出这个积分，验证它等于动能的改变$\frac12mv_2^2-\frac12mv_1^2$。
+  hints:
+    - |
+      拉力沿半径指向小孔，功率是拉力乘速度沿半径向内的分量$-\dv rt$。
+    - |
+      设$G'(r)=T(r)$，仿照讲解里一维的情形，用链式法则和牛顿-莱布尼茨公式。
+    - |
+      $T=\frac{m(r_1v_1)^2}{r^3}$，$\int_{r_2}^{r_1}\frac{\dd r}{r^3}=\frac12\Bigl(\frac1{r_2^2}-\frac1{r_1^2}\Bigr)$。
+  reference: |
+    （1）拉力沿绳指向小孔，大小是$T$；小球的速度沿半径向外的分量是$\dv rt$，所以拉力的功率是$-T\dv rt$，半径变短时为正。设$G'(r)=T(r)$，由链式法则，$G\bigl(r(t)\bigr)$对$t$的导数是$T\dv rt$，所以$W=\int-T\dv rt\,\dd t=-\bigl[G(r_2)-G(r_1)\bigr]=\int_{r_2}^{r_1}T\,\dd r$。
+
+    （2）$v=\frac{r_1v_1}r$，$T=\frac{mv^2}r=\frac{m(r_1v_1)^2}{r^3}$。积分得$W=\frac{m(r_1v_1)^2}2\Bigl(\frac1{r_2^2}-\frac1{r_1^2}\Bigr)=\frac12mv_2^2-\frac12mv_1^2$，因为$\frac{r_1v_1}{r_2}=v_2$。代入[功与动能定理](lesson:physics.newtonian-mechanics.work-energy)例 2 的数，$\frac{0.20\times1.0^2}2\times(16-4)=1.2\,\mathrm J$，和用动能定理算的一样。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）证明：大小、方向都不变的力$\vb F$作用在沿任意曲线运动的质点上，从$t_1$到$t_2$做的功是$\vb F\cdot(\vb r_2-\vb r_1)$，只和起点、终点的位置有关。
+
+    （2）滑雪的人从高$h$的光滑雪坡顶由静止滑下，雪坡的形状任意，空气的影响可以忽略，求他到坡底时的速率。
+
+    （3）为什么雪坡的支持力不做功？
+  hints:
+    - |
+      在$W=\int_{t_1}^{t_2}\vb F\cdot\vb v\,\dd t$里，$\vb F$的分量是常数，可以提到积分号外面。
+    - |
+      $\int_{t_1}^{t_2}\vb v\,\dd t$按分量用牛顿-莱布尼茨公式，等于$\vb r_2-\vb r_1$。
+    - |
+      支持力垂直于雪坡，而人的速度沿着雪坡。
+  reference: |
+    （1）$\vb F\cdot\vb v=F_xv_x+F_yv_y+F_zv_z$，$F_x$等是常数，所以$W=F_x\int v_x\,\dd t+F_y\int v_y\,\dd t+F_z\int v_z\,\dd t$。$x$是$v_x$的原函数，由牛顿-莱布尼茨公式，$\int_{t_1}^{t_2}v_x\,\dd t=x_2-x_1$，另两个分量同样，所以$W=\vb F\cdot(\vb r_2-\vb r_1)$，和中间走了什么路无关。
+
+    （2）重力$m\vb g$是恒力，竖直向下，人下降了$h$，由（1），重力做功$mgh$。支持力不做功，由动能定理，$\frac12mv^2=mgh$，$v=\sqrt{2gh}$，和雪坡的形状无关。
+
+    （3）人贴着雪坡滑，速度沿雪坡的切线方向，支持力垂直于雪坡，两者垂直，每一刻的功率$\vb N\cdot\vb v$都是零，所以支持力一直不做功。
+
+- id: p7
+  tier: thinking
+  statement: |
+    汽车发动机能输出的功率有一个最大值。
+
+    （1）汽车在平路上能开得很快，爬陡坡时却常常只能慢慢开，为什么？
+
+    （2）司机爬坡时换低速挡，是为了什么？
+
+    （3）同一辆车满载和空载时，爬同一个坡的最大速度有什么不同？
+  hints:
+    - |
+      功率$P=Fv$，$F$是推动汽车前进的力。
+    - |
+      爬坡时还要克服重力沿坡向下的分量，需要的力大。
+    - |
+      匀速爬坡时，推动汽车的力至少要等于$mg\sin\theta$。
+  reference: |
+    （1）匀速行驶时，推动汽车前进的力要和阻碍它的力平衡。平路上需要的力小，由$P=Fv$，功率一定时速度可以很大；爬坡时还要克服重力沿坡向下的分量$mg\sin\theta$，需要的力大，速度就只能小。
+
+    （2）发动机在一定的转速附近才能输出最大的功率。低速挡让车轮转得慢、发动机照样转得快，用较小的速度换来较大的推动汽车的力，功率不变。
+
+    （3）匀速爬坡时，推动汽车的力至少是$mg\sin\theta$，再加上其他阻碍运动的力，所以最大速度不超过$\frac{P_{\max}}{mg\sin\theta}$。满载时$m$大，最大速度变小。
+
+- id: p8
+  tier: thinking
+  statement: |
+    火车以$10\,\mathrm{m/s}$匀速行驶，车厢里的人用水平的力推一个$1.0\,\mathrm{kg}$的小球，使它相对车厢从静止加速到$2.0\,\mathrm{m/s}$，方向和火车前进的方向相同。
+
+    （1）在车厢里看和在地面上看，小球的动能各增加了多少？
+
+    （2）两个参考系里，推力做的功一样吗？哪里不同？
+
+    （3）动能定理在两个参考系里都成立吗？
+  hints:
+    - |
+      在地面上看，小球的速度从$10\,\mathrm{m/s}$变成$12\,\mathrm{m/s}$。
+    - |
+      推力本身一样大，可是在推的这段时间里，小球在地面上走的距离比在车厢里走的远。
+    - |
+      设推力$F$作用了时间$\tau$，分别算两个参考系里小球的位移。
+  reference: |
+    （1）车厢里：$\frac12\times1.0\times2.0^2=2.0\,\mathrm J$。地面上：$\frac12\times1.0\times(12^2-10^2)=22\,\mathrm J$。
+
+    （2）不一样。推力$F$在两个参考系里相同，设推了时间$\tau$，$a=\frac Fm$，$a\tau=2.0\,\mathrm{m/s}$。车厢里小球的位移是$\frac12a\tau^2$，推力做功$F\cdot\frac12a\tau^2=\frac12m(a\tau)^2=2.0\,\mathrm J$。地面上位移还要加上火车走的$10\tau$，推力多做了$F\times10\tau=10\,ma\tau=20\,\mathrm J$，一共$22\,\mathrm J$。
+
+    （3）都成立。火车匀速行驶，车厢和地面都是惯性系，在各自的参考系里，推力做的功都等于小球动能的改变。功和动能都随参考系变，动能定理却在每个惯性系里都成立。

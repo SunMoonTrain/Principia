@@ -87,7 +87,7 @@
 - id: p5
   tier: hard
   statement: |
-    质量为$m$的粒子以速度$u$打在静止的、同样质量的粒子上，发生弹性碰撞（碰撞后仍是这两个粒子）。证明碰撞后两个粒子运动方向的夹角$\theta$小于$90^\circ$（两者都运动时）；速度很小时$\theta$趋于$90^\circ$，这是牛顿力学的结果。
+    质量为$m$的粒子以速度$u$打在静止的、同样质量的粒子上，发生弹性碰撞（碰撞后仍是这两个粒子）。证明碰撞后两个粒子运动方向的夹角$\theta$小于$90^\circ$（两者都运动时）；速度很小时$\theta$趋于$90^\circ$，这是牛顿力学的结果（见[质心系](lesson:physics.newtonian-mechanics.center-of-mass-frame)）。
   hints:
     - |
       记碰撞前、后的四维动量为$P_1+P_2=P_3+P_4$，两边平方，比较交叉项。
@@ -100,7 +100,7 @@
 
     所以$|\vb p_3||\vb p_4|\cos\theta=m^2c^2(\gamma_3\gamma_4-\gamma_1)$。能量守恒给出$\gamma_3+\gamma_4=\gamma_1+1$，于是$\gamma_3\gamma_4-\gamma_1=\gamma_3\gamma_4-\gamma_3-\gamma_4+1=(\gamma_3-1)(\gamma_4-1)$。两个粒子都运动时$\gamma_3,\gamma_4>1$，右边为正，$\cos\theta>0$，$\theta<90^\circ$。
 
-    低速时$\gamma-1\approx\frac{u^2}{2c^2}$，$(\gamma_3-1)(\gamma_4-1)$是$u^4$量级，而$|\vb p_3||\vb p_4|$是$u^2$量级，$\cos\theta\to0$，回到牛顿力学「等质量弹性斜碰后两球互相垂直」的结论。在气泡室照片里，高能质子打质子后两条径迹的夹角明显小于$90^\circ$，就是这个效应。
+    低速时$\gamma-1\approx\frac{u^2}{2c^2}$，$(\gamma_3-1)(\gamma_4-1)$是$u^4$量级，而$|\vb p_3||\vb p_4|$是$u^2$量级，$\cos\theta\to0$，回到牛顿力学「等质量弹性斜碰后两球互相垂直」的结论（见[质心系](lesson:physics.newtonian-mechanics.center-of-mass-frame)例 2）。在气泡室照片里，高能质子打质子后两条径迹的夹角明显小于$90^\circ$，就是这个效应。
 
 - id: p6
   tier: hard

@@ -47,7 +47,7 @@ status: reviewed
 
 证明思路：球面上电势的平均值$\bar\varphi(r)=\frac{1}{4\pi}\oint\varphi\,\dd\Omega$对半径求导，得$-\frac{1}{4\pi r^2}\oint\vb E\cdot\dd\vb a$，球里没有电荷，由:term[高斯定律]{id="physics.electromagnetism.gauss-law"}它是零；半径趋于零时平均值趋于球心的电势。如果球心是极大值点，附近球面上的电势都不超过它，平均值却等于它，只能处处相等，不是真正的极大值；极小值同理（[导体与静电平衡](lesson:physics.electromagnetism.conductors)第 5 题用的就是这个论证）。
 
-这就把:term[恩肖定理]{id="physics.electromagnetism.earnshaw-theorem"}（Earnshaw's theorem，见[高斯定律的微分形式](lesson:physics.electromagnetism.gauss-differential#thm-earnshaw)）补全了：正的:term[点电荷]{id="physics.electromagnetism.point-charge"}（point charge）在电势为$\varphi$处的势能是$q\varphi$，要稳定平衡，就得在电势的极小值处，可没有电荷的地方电势没有极小值。电势的最高点和最低点总在区域的边界上，或者在电荷所在的地方。
+这就把:term[恩肖定理]{id="physics.electromagnetism.earnshaw-theorem"}（Earnshaw's theorem，见[高斯定律的微分形式](lesson:physics.electromagnetism.gauss-differential#thm-earnshaw)）补全了：正的:term[点电荷]{id="physics.electromagnetism.point-charge"}（point charge）在电势为$\varphi$处的势能是$q\varphi$，要:term[稳定平衡]{id="physics.newtonian-mechanics.stable-equilibrium"}（stable equilibrium），就得在电势的极小值处，可没有电荷的地方电势没有极小值。电势的最高点和最低点总在区域的边界上，或者在电荷所在的地方。
 
 ## 几何图像
 

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="640" height="340" font-size="14">
+  <!-- 礼花弹在最高点炸成两块。实线是礼花弹炸开前的轨迹，从左下的发射点到最高点；虚线是它原来要走的抛物线，从最高点画到右下的落地点。炸开后，质量为 m 的碎片 A 几乎竖直地向上飞出、再落下，质量为 2m 的碎片 B 向右下方飞出，两条彩色实线是它们的轨迹。每隔相同的时间标出两块碎片的位置并用细线连起来，细线上离 B 较近、把 A 到 B 的距离分成 2 比 1 的那一点是质心，画成空心圆，这些空心圆都落在虚线上，直到 B 落地。右上角的小图是炸开前后的动量：A 的动量和 B 的动量首尾相接，合起来正好是炸开前礼花弹的动量。 -->
+  <line x1="20.5" y1="300.0" x2="579.5" y2="300.0" style="stroke: currentColor" stroke-width="1.6" />
+  <path d="M 40.0 300.0 L 45.7 290.2 L 51.5 280.6 L 57.2 271.3 L 63.0 262.2 L 68.7 253.4 L 74.5 244.8 L 80.2 236.5 L 86.0 228.4 L 91.7 220.5 L 97.4 212.9 L 103.2 205.6 L 108.9 198.5 L 114.7 191.7 L 120.4 185.1 L 126.2 178.7 L 131.9 172.7 L 137.6 166.8 L 143.4 161.2 L 149.1 155.9 L 154.9 150.8 L 160.6 145.9 L 166.4 141.3 L 172.1 137.0 L 177.9 132.9 L 183.6 129.0 L 189.3 125.4 L 195.1 122.0 L 200.8 118.9 L 206.6 116.1 L 212.3 113.5 L 218.1 111.1 L 223.8 109.0 L 229.6 107.1 L 235.3 105.5 L 241.0 104.1 L 246.8 103.0 L 252.5 102.1 L 258.3 101.5 L 264.0 101.1 L 269.8 101.0" style="stroke: currentColor" fill="none" stroke-width="1.6" stroke-linejoin="round" />
+  <path d="M 269.8 101.0 L 275.5 101.1 L 281.2 101.5 L 287.0 102.1 L 292.7 103.0 L 298.5 104.1 L 304.2 105.5 L 310.0 107.1 L 315.7 109.0 L 321.5 111.1 L 327.2 113.5 L 332.9 116.1 L 338.7 118.9 L 344.4 122.0 L 350.2 125.4 L 355.9 129.0 L 361.7 132.9 L 367.4 137.0 L 373.2 141.3 L 378.9 145.9 L 384.6 150.8 L 390.4 155.9 L 396.1 161.2 L 401.9 166.8 L 407.6 172.7 L 413.4 178.7 L 419.1 185.1 L 424.9 191.7 L 430.6 198.5 L 436.3 205.6 L 442.1 212.9 L 447.8 220.5 L 453.6 228.4 L 459.3 236.5 L 465.1 244.8 L 470.8 253.4 L 476.5 262.2 L 482.3 271.3 L 488.0 280.6 L 493.8 290.2 L 499.5 300.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.4" stroke-dasharray="5 4" stroke-linejoin="round" />
+  <path d="M 269.8 101.0 L 270.8 97.9 L 271.9 95.0 L 273.0 92.3 L 274.1 89.9 L 275.1 87.6 L 276.2 85.6 L 277.3 83.8 L 278.4 82.2 L 279.4 80.8 L 280.5 79.7 L 281.6 78.7 L 282.7 78.0 L 283.7 77.5 L 284.8 77.2 L 285.9 77.1 L 287.0 77.3 L 288.1 77.7 L 289.1 78.3 L 290.2 79.1 L 291.3 80.1 L 292.4 81.3 L 293.4 82.8 L 294.5 84.5 L 295.6 86.4 L 296.7 88.5 L 297.7 90.8 L 298.8 93.4 L 299.9 96.2 L 301.0 99.1 L 302.0 102.4 L 303.1 105.8 L 304.2 109.4 L 305.3 113.3 L 306.3 117.4 L 307.4 121.7 L 308.5 126.2 L 309.6 130.9 L 310.6 135.9 L 311.7 141.0 L 312.8 146.4 L 313.9 152.0 L 314.9 157.9 L 316.0 163.9 L 317.1 170.2 L 318.2 176.6 L 319.3 183.3 L 320.3 190.2 L 321.4 197.4 L 322.5 204.7 L 323.6 212.3 L 324.6 220.1 L 325.7 228.1 L 326.8 236.3 L 327.9 244.8 L 328.9 253.4 L 330.0 262.3 L 331.1 271.4 L 332.2 280.7 L 333.2 290.2 L 334.3 300.0" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="2.0" stroke-linejoin="round" />
+  <path d="M 269.8 101.0 L 274.3 102.0 L 278.8 103.1 L 283.3 104.3 L 287.8 105.5 L 292.3 106.8 L 296.8 108.2 L 301.3 109.7 L 305.9 111.3 L 310.4 112.9 L 314.9 114.6 L 319.4 116.4 L 323.9 118.3 L 328.4 120.2 L 332.9 122.2 L 337.4 124.3 L 342.0 126.5 L 346.5 128.8 L 351.0 131.1 L 355.5 133.5 L 360.0 136.0 L 364.5 138.6 L 369.0 141.2 L 373.5 144.0 L 378.1 146.8 L 382.6 149.7 L 387.1 152.6 L 391.6 155.7 L 396.1 158.8 L 400.6 162.0 L 405.1 165.3 L 409.6 168.6 L 414.2 172.1 L 418.7 175.6 L 423.2 179.2 L 427.7 182.8 L 432.2 186.6 L 436.7 190.4 L 441.2 194.3 L 445.7 198.3 L 450.3 202.3 L 454.8 206.5 L 459.3 210.7 L 463.8 215.0 L 468.3 219.4 L 472.8 223.8 L 477.3 228.4 L 481.8 233.0 L 486.4 237.6 L 490.9 242.4 L 495.4 247.3 L 499.9 252.2 L 504.4 257.2 L 508.9 262.3 L 513.4 267.4 L 517.9 272.7 L 522.5 278.0 L 527.0 283.4 L 531.5 288.8 L 536.0 294.4 L 540.5 300.0" style="stroke: var(--good, #059669)" fill="none" stroke-width="2.0" stroke-linejoin="round" />
+  <line x1="282.8" y1="77.9" x2="360.8" y2="136.4" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <circle cx="282.8" cy="77.9" r="3.2" style="fill: var(--accent, #2563eb)" />
+  <circle cx="360.8" cy="136.4" r="3.2" style="fill: var(--good, #059669)" />
+  <circle cx="334.8" cy="116.9" r="4.5" style="stroke: currentColor; fill: var(--bg, #ffffff)" stroke-width="1.6" />
+  <line x1="295.8" y1="86.7" x2="451.8" y2="203.7" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <circle cx="295.8" cy="86.7" r="3.2" style="fill: var(--accent, #2563eb)" />
+  <circle cx="451.8" cy="203.7" r="3.2" style="fill: var(--good, #059669)" />
+  <circle cx="399.8" cy="164.7" r="4.5" style="stroke: currentColor; fill: var(--bg, #ffffff)" stroke-width="1.6" />
+  <line x1="308.4" y1="126.0" x2="540.5" y2="300.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <circle cx="308.4" cy="126.0" r="3.2" style="fill: var(--accent, #2563eb)" />
+  <circle cx="540.5" cy="300.0" r="3.2" style="fill: var(--good, #059669)" />
+  <circle cx="463.1" cy="242.0" r="4.5" style="stroke: currentColor; fill: var(--bg, #ffffff)" stroke-width="1.6" />
+  <circle cx="269.8" cy="101.0" r="4.5" style="stroke: currentColor; fill: currentColor" stroke-width="1.0" />
+  <text x="261.8" y="89.0" fill="currentColor" text-anchor="end">炸开</text>
+  <text x="40.0" y="324.0" fill="currentColor" text-anchor="middle">发射点</text>
+  <text x="314.4" y="218.1" style="fill: var(--accent, #2563eb)" text-anchor="end"><tspan font-style="italic">A</tspan>（<tspan font-style="italic">m</tspan>）</text>
+  <text x="507.3" y="247.3" style="fill: var(--good, #059669)"><tspan font-style="italic">B</tspan>（2<tspan font-style="italic">m</tspan>）</text>
+  <text x="336.8" y="104.9" fill="currentColor">质心</text>
+  <text x="499.5" y="324.0" style="fill: var(--muted, #6b7280)" text-anchor="middle">原来的落地点</text>
+  <line x1="499.5" y1="296.0" x2="499.5" y2="304.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.4" />
+  <line x1="474.0" y1="70.0" x2="587.0" y2="70.0" style="stroke: currentColor" stroke-width="2.0" />
+  <path d="M 594.0 70.0 L 586.0 73.7 L 586.0 66.3 Z" style="fill: currentColor" />
+  <line x1="474.0" y1="70.0" x2="480.1" y2="51.7" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 482.0 46.0 L 482.8 53.7 L 476.8 51.6 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="482.0" y1="46.0" x2="587.2" y2="68.5" style="stroke: var(--good, #059669)" stroke-width="2.0" />
+  <path d="M 594.0 70.0 L 585.4 71.9 L 587.0 64.7 Z" style="fill: var(--good, #059669)" />
+  <text x="470.0" y="58.0" style="fill: var(--accent, #2563eb)" text-anchor="end"><tspan font-weight="bold">p</tspan><tspan dy="4" font-size="11">A</tspan></text>
+  <text x="544.0" y="50.0" style="fill: var(--good, #059669)"><tspan font-weight="bold">p</tspan><tspan dy="4" font-size="11">B</tspan></text>
+  <text x="534.0" y="92.0" fill="currentColor" text-anchor="middle"><tspan font-weight="bold">P</tspan></text>
+  <text x="534.0" y="22.0" fill="currentColor" text-anchor="middle">炸开前后的动量</text>
+</svg>

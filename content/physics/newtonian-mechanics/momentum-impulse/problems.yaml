@@ -1,0 +1,186 @@
+- id: p1
+  tier: easy
+  statement: |
+    质量$0.15\,\mathrm{kg}$的棒球以$30\,\mathrm{m/s}$水平飞来，被球棒击中后以$40\,\mathrm{m/s}$沿相反的方向水平飞出。击球的时间很短，别的力的影响可以忽略。球棒对球的冲量有多大？以$\mathrm{N\cdot s}$为单位。
+  answer:
+    type: number
+    value: 0.15*(40 + 30)
+    unit: |
+      $\mathrm{N\cdot s}$
+  hints:
+    - |
+      动量是矢量，先规定一个正方向。
+    - |
+      取球飞出的方向为正，击球前动量是$0.15\times(-30)=-4.5\,\mathrm{N\cdot s}$，击球后是$0.15\times40=6.0\,\mathrm{N\cdot s}$。
+    - |
+      冲量等于动量的改变，$6.0-(-4.5)=10.5\,\mathrm{N\cdot s}$。
+  solution: |
+    取球飞出的方向为正。击球前动量是$-4.5\,\mathrm{N\cdot s}$，击球后是$6.0\,\mathrm{N\cdot s}$，由动量定理，球棒的冲量$J=6.0-(-4.5)=10.5\,\mathrm{N\cdot s}$，方向和球飞出的方向相同。用速率相减得到$1.5\,\mathrm{N\cdot s}$是错的：速度反向时，动量改变的大小是前后两个动量的大小相加。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        质量不变的物体，动量改变了，速度一定改变了
+      - |
+        做匀速圆周运动的物体转过一整周，合力的冲量为零
+      - |
+        物体的速率不变、只是速度的方向变了，合力的冲量就为零
+      - |
+        物体受的合力的冲量越大，它的动量就越大
+      - |
+        沿直线运动的物体，合力的冲量和初速度方向相反时，末速率一定比初速率小
+    value: [1, 2]
+  hints:
+    - |
+      冲量等于动量的改变，不等于动量本身。
+    - |
+      动量是矢量，只是方向变了也是变；沿直线运动的物体，速度可能反向。
+    - |
+      A、B 对；C、D、E 错。
+  solution: |
+    A 对：$\vb p=m\vb v$，$m$不变，$\vb p$变了，$\vb v$就变了。B 对：转一整周回到原来的速度，动量的改变为零，由动量定理，合力的冲量为零。C 错：动量是矢量，方向变了动量就变了，冲量不为零；例如以原来的速率弹回的球，冲量的大小是$2mv$。
+
+    D 错：冲量等于动量的改变，不是动量本身；例如接住飞来的球，手给球的冲量很大，球的动量却变成了零。E 错：冲量足够大时，物体先减速到零、再反向加速，末速率可以比初速率大，例如速度从$1\,\mathrm{m/s}$变成$-3\,\mathrm{m/s}$。
+
+- id: p3
+  tier: medium
+  statement: |
+    网球拍击球时，球拍对球的力近似是$F=F_0\sin\frac{\pi t}T$（$0\le t\le T$），$F_0=900\,\mathrm N$，$T=4.0\,\mathrm{ms}$，方向和球飞来的方向相反。质量$58\,\mathrm g$的网球以$15\,\mathrm{m/s}$水平飞来，击球的时间很短，别的力的影响可以忽略。球被击回的速率是多少？以$\mathrm{m/s}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 2*900*0.004/pi/0.058 - 15
+    unit: |
+      $\mathrm{m/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先求球拍的力的冲量$J=\int_0^TF_0\sin\frac{\pi t}T\,\dd t$。
+    - |
+      由链式法则，$-\frac T\pi\cos\frac{\pi t}T$的导数是$\sin\frac{\pi t}T$，所以$J=\frac{2F_0T}\pi\approx2.29\,\mathrm{N\cdot s}$。
+    - |
+      取球被击回的方向为正：$mv-m\times(-15)=J$，$v=\frac Jm-15\approx24.5\,\mathrm{m/s}$。
+  solution: |
+    由链式法则，$-\frac T\pi\cos\frac{\pi t}T$的导数是$\sin\frac{\pi t}T$。由牛顿-莱布尼茨公式，$J=\frac{F_0T}\pi(\cos0-\cos\pi)=\frac{2F_0T}\pi$，代入数值约是$2.29\,\mathrm{N\cdot s}$。
+
+    取球被击回的方向为正，由动量定理，$mv-m\times(-15)=J$，$v=\frac{2.29}{0.058}-15\approx39.5-15\approx24.5\,\mathrm{m/s}$。这段时间里的平均力是$\frac JT=\frac{2F_0}\pi\approx573\,\mathrm N$，约是最大值的$64\%$。
+
+- id: p4
+  tier: medium
+  statement: |
+    消防水枪每秒喷出$12\,\mathrm{kg}$的水，水流以$25\,\mathrm{m/s}$的速度垂直射到墙上，然后沿墙面散开，不再有垂直于墙的速度。别的力的影响可以忽略，水流对墙的平均作用力有多大？以$\mathrm N$为单位。
+  answer:
+    type: number
+    value: 12*25
+    unit: |
+      $\mathrm N$
+  hints:
+    - |
+      取一小段时间$\Delta t$，看这段时间里撞到墙上的那一部分水。
+    - |
+      这部分水的质量是$12\Delta t\,\mathrm{kg}$，垂直于墙的动量从$12\Delta t\times25$变成零。
+    - |
+      墙对水的力是$\frac{12\Delta t\times25}{\Delta t}=300\,\mathrm N$，由牛顿第三定律，水对墙的力也是$300\,\mathrm N$。
+  solution: |
+    在$\Delta t$里撞到墙上的水，质量是$\Delta m=12\Delta t$，垂直于墙的动量从$25\Delta m$变成零。由动量定理，墙对这部分水的平均力是$\frac{25\Delta m}{\Delta t}=12\times25=300\,\mathrm N$，方向离开墙面。由牛顿第三定律，水流对墙的力也是$300\,\mathrm N$，压向墙面；水流稳定时，这个力不随时间变化。
+
+- id: p5
+  tier: hard
+  statement: |
+    光滑水平冰面上，质量为$m$的冰球原来静止。从$t=0$起，它受到一个水平的力$\vb F=F_0(\cos\omega t,\ \sin\omega t)$：大小不变，方向在水平面内匀速转动。竖直方向的力互相抵消。
+
+    （1）求$t$时刻冰球的速度。
+
+    （2）力转过一整圈时，冰球的速度是多少？在这之前，冰球停下过吗？
+
+    （3）冰球的速率最大是多少，出现在什么时刻？
+  hints:
+    - |
+      按分量用动量定理：$m\vb v(t)=\int_0^t\vb F(s)\,\dd s$。
+    - |
+      由链式法则，$\frac{\sin\omega s}\omega$的导数是$\cos\omega s$，$-\frac{\cos\omega s}\omega$的导数是$\sin\omega s$。
+    - |
+      $\vb v(t)=\frac{F_0}{m\omega}(\sin\omega t,\ 1-\cos\omega t)$，它的大小可以化成$\frac{2F_0}{m\omega}\bigl|\sin\frac{\omega t}2\bigr|$。
+  reference: |
+    （1）由动量定理，按分量积分：$mv_x=\int_0^tF_0\cos\omega s\,\dd s=\frac{F_0}\omega\sin\omega t$，$mv_y=\int_0^tF_0\sin\omega s\,\dd s=\frac{F_0}\omega(1-\cos\omega t)$。所以$\vb v(t)=\frac{F_0}{m\omega}(\sin\omega t,\ 1-\cos\omega t)$。
+
+    （2）转一整圈时$\omega t=2\pi$，$\vb v=\vb 0$：力的方向转了一圈，各个方向的冲量互相抵消，总冲量为零。速率是$\frac{F_0}{m\omega}\sqrt{\sin^2\omega t+(1-\cos\omega t)^2}=\frac{F_0}{m\omega}\sqrt{2-2\cos\omega t}=\frac{2F_0}{m\omega}\bigl|\sin\frac{\omega t}2\bigr|$，在$0<\omega t<2\pi$时不为零，所以中途没有停过。
+
+    （3）$\omega t=\pi$，即$t=\frac\pi\omega$时，速率最大，是$\frac{2F_0}{m\omega}$，速度沿$+y$方向。这时力转到了$-x$方向，和速度垂直；在这以前力有和速度同向的分量，冰球越来越快，在这以后力有和速度反向的分量，冰球越来越慢。
+
+- id: p6
+  tier: hard
+  statement: |
+    光滑水平面上，两堵平行的墙相距$L$，质量为$m$的小球以速率$v$垂直于墙来回运动，每次撞墙都以原来的速率弹回。
+
+    （1）小球每撞一次右墙，墙给它的冲量多大？
+
+    （2）在很长的一段时间里，小球对右墙的平均力多大？
+
+    （3）如果有$N$个这样的小球在两墙之间各自来回运动，彼此不相碰，速率分别是$v_1,\dots,v_N$，右墙受到的平均力是多少？
+  hints:
+    - |
+      撞墙前后速度反向，动量改变了多少？
+    - |
+      小球相邻两次撞右墙，中间要走多远、用多长时间？
+    - |
+      一次撞墙的冲量是$2mv$，每隔$\frac{2L}v$撞一次，平均力是冲量的总和除以总的时间。
+  reference: |
+    （1）取离开右墙的方向为正，撞墙前动量是$-mv$，撞墙后是$mv$，墙给小球的冲量是$2mv$，方向离开墙面。
+
+    （2）小球从右墙出发，到左墙再回到右墙，走$2L$，用时$\frac{2L}v$。每隔这样一段时间，墙给小球冲量$2mv$，由牛顿第三定律，小球也给墙同样大小、指向墙里的冲量。很长的时间$T$里大约撞了$\frac{vT}{2L}$次，平均力是$\frac1T\cdot2mv\cdot\frac{vT}{2L}=\frac{mv^2}L$。
+
+    （3）各个小球的平均力相加，是$\frac mL(v_1^2+\cdots+v_N^2)=\frac{Nm\overline{v^2}}L$，$\overline{v^2}$是速率平方的平均值。气体分子不停地撞击容器壁，就是这样对器壁产生了稳定的压力，见[气体动理论](lesson:physics.thermal-physics.kinetic-theory)。
+
+- id: p7
+  tier: thinking
+  statement: |
+    用铁锤钉钉子，锤头砸到钉子上几乎立刻停下；橡皮锤砸下去，要「陷进去」一点才停下。
+
+    （1）两把锤子的质量和砸下的速度都相同时，哪一把对钉子的平均力大？为什么？
+
+    （2）铺木地板时，工人常用橡皮锤敲打木板，为什么？
+
+    （3）如果锤头砸到钉子以后向上弹起，钉子受到的冲量比锤头停在钉子上时大还是小？
+  hints:
+    - |
+      锤头的动量改变一样时，比较作用的时间。
+    - |
+      平均力大，钉子容易钉进去，木板也容易被砸坏。
+    - |
+      锤头弹起时，它的动量从向下变成了向上。
+  reference: |
+    （1）铁锤。两把锤头的动量都从$mv$变成零，冲量一样；铁锤和钉子都很硬，作用的时间极短，平均力$\frac{mv}{\Delta t}$很大，能把钉子砸进木头。橡皮锤自己会形变，作用的时间长得多，平均力就小得多。
+
+    （2）铺地板要把木板敲到位，又不能把木板砸裂、砸出印子。橡皮锤给的冲量足够推动木板，平均力却小。
+
+    （3）大。锤头弹起时，动量从向下的$mv$变成向上的$mv'$，改变的大小是$m(v+v')$，比停下时的$mv$大。锤头给钉子的力和钉子给锤头的力等大反向，作用时间相同，所以钉子受的冲量也更大。
+
+- id: p8
+  tier: thinking
+  statement: |
+    飞机以$200\,\mathrm{m/s}$的速度匀速飞行，迎面撞上一只质量约$1\,\mathrm{kg}$、身长约$0.2\,\mathrm m$的鸟，鸟本来的速度可以忽略。
+
+    （1）在飞机上看，鸟以多大的速度撞过来？撞击大约持续多长时间？
+
+    （2）估算撞击时鸟对飞机的平均力。
+
+    （3）鸟这么轻，为什么撞上飞机这样危险？
+  hints:
+    - |
+      在地面上看和在飞机上看，鸟的动量的改变一样吗？在飞机上看更直观。
+    - |
+      鸟被撞后跟着飞机一起运动；撞击持续的时间，约是鸟以撞来的速度「走过」自己身长所用的时间。
+    - |
+      平均力约是$\frac{mv}{\Delta t}$，其中$\Delta t\approx\frac{0.2}{200}\,\mathrm s$。
+  reference: |
+    （1）匀速飞行的飞机近似是惯性系。在飞机上看，鸟以约$200\,\mathrm{m/s}$迎面撞来，撞后被压扁、几乎停在机身上。撞击持续的时间约是$\frac{0.2}{200}=1\times10^{-3}\,\mathrm s$。
+
+    （2）鸟的动量改变约$1\times200=200\,\mathrm{N\cdot s}$，在地面上看也一样（速度从零变成$200\,\mathrm{m/s}$）。平均力约$\frac{200}{1\times10^{-3}}=2\times10^5\,\mathrm N$，由牛顿第三定律，鸟对飞机的力也是这么大。
+
+    （3）冲量并不大，可是作用的时间极短，平均力就极大，而且集中在很小的一块面积上，足以打碎风挡、打坏发动机的叶片。所以机场要想办法驱鸟。

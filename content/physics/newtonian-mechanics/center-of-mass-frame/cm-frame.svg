@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 290" width="640" height="290" font-size="14">
+  <!-- 两幅图看两个质量相等的球的弹性碰撞。左图是质心系：碰前两个球以大小相等的速度 u 沿水平线相向而行；碰后两个球仍以速率 u 背向飞开，速度方向转过了同一个角度，仍在一条直线上。右图是原来的参考系里的速度图：从原点 O 画出撞上去的球原来的速度 v1，它的中点是质心速度 vC 的末端；以这一点为圆心、u 为半径画一个圆，它经过 O 和 v1 的末端；碰后两个球的速度 v1′、v2′ 从 O 指向圆上一条直径的两端，两者互相垂直。 -->
+  <text x="165.0" y="24.0" fill="currentColor" text-anchor="middle">质心系</text>
+  <text x="18.0" y="87.0" fill="currentColor">碰前</text>
+  <circle cx="100.0" cy="82.0" r="11.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <circle cx="230.0" cy="82.0" r="11.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <line x1="100.0" y1="56.0" x2="143.0" y2="56.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 150.0 56.0 L 142.0 59.7 L 142.0 52.3 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="230.0" y1="56.0" x2="187.0" y2="56.0" style="stroke: var(--good, #059669)" stroke-width="2.0" />
+  <path d="M 180.0 56.0 L 188.0 52.3 L 188.0 59.7 Z" style="fill: var(--good, #059669)" />
+  <text x="125.0" y="48.0" style="fill: var(--accent, #2563eb)" text-anchor="middle"><tspan font-style="italic">u</tspan></text>
+  <text x="205.0" y="48.0" style="fill: var(--good, #059669)" text-anchor="middle"><tspan font-style="italic">u</tspan></text>
+  <text x="18.0" y="197.0" fill="currentColor">碰后</text>
+  <line x1="95.0" y1="196.0" x2="235.0" y2="196.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="3 3" />
+  <line x1="134.0" y1="249.7" x2="196.0" y2="142.3" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="3 3" />
+  <circle cx="187.0" cy="157.9" r="11.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <circle cx="143.0" cy="234.1" r="11.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <line x1="202.6" y1="166.9" x2="224.1" y2="129.7" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 227.6 123.6 L 226.8 132.4 L 220.4 128.7 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="127.4" y1="225.1" x2="105.9" y2="262.3" style="stroke: var(--good, #059669)" stroke-width="2.0" />
+  <path d="M 102.4 268.4 L 103.2 259.6 L 109.6 263.3 Z" style="fill: var(--good, #059669)" />
+  <text x="227.1" y="151.2" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">u</tspan></text>
+  <text x="102.9" y="252.8" style="fill: var(--good, #059669)" text-anchor="end"><tspan font-style="italic">u</tspan></text>
+  <text x="490.0" y="24.0" fill="currentColor" text-anchor="middle">原来的参考系里的速度</text>
+  <path d="M 584.0 150.0 L 583.9 155.7 L 583.4 161.3 L 582.7 166.9 L 581.6 172.5 L 580.3 178.0 L 578.7 183.4 L 576.8 188.7 L 574.7 193.9 L 572.2 199.0 L 569.5 204.0 L 566.6 208.8 L 563.4 213.5 L 559.9 218.0 L 556.3 222.3 L 552.4 226.4 L 548.3 230.3 L 544.0 233.9 L 539.5 237.4 L 534.8 240.6 L 530.0 243.5 L 525.0 246.2 L 519.9 248.7 L 514.7 250.8 L 509.4 252.7 L 504.0 254.3 L 498.5 255.6 L 492.9 256.7 L 487.3 257.4 L 481.7 257.9 L 476.0 258.0 L 470.3 257.9 L 464.7 257.4 L 459.1 256.7 L 453.5 255.6 L 448.0 254.3 L 442.6 252.7 L 437.3 250.8 L 432.1 248.7 L 427.0 246.2 L 422.0 243.5 L 417.2 240.6 L 412.5 237.4 L 408.0 233.9 L 403.7 230.3 L 399.6 226.4 L 395.7 222.3 L 392.1 218.0 L 388.6 213.5 L 385.4 208.8 L 382.5 204.0 L 379.8 199.0 L 377.3 193.9 L 375.2 188.7 L 373.3 183.4 L 371.7 178.0 L 370.4 172.5 L 369.3 166.9 L 368.6 161.3 L 368.1 155.7 L 368.0 150.0 L 368.1 144.3 L 368.6 138.7 L 369.3 133.1 L 370.4 127.5 L 371.7 122.0 L 373.3 116.6 L 375.2 111.3 L 377.3 106.1 L 379.8 101.0 L 382.5 96.0 L 385.4 91.2 L 388.6 86.5 L 392.1 82.0 L 395.7 77.7 L 399.6 73.6 L 403.7 69.7 L 408.0 66.1 L 412.5 62.6 L 417.2 59.4 L 422.0 56.5 L 427.0 53.8 L 432.1 51.3 L 437.3 49.2 L 442.6 47.3 L 448.0 45.7 L 453.5 44.4 L 459.1 43.3 L 464.7 42.6 L 470.3 42.1 L 476.0 42.0 L 481.7 42.1 L 487.3 42.6 L 492.9 43.3 L 498.5 44.4 L 504.0 45.7 L 509.4 47.3 L 514.7 49.2 L 519.9 51.3 L 525.0 53.8 L 530.0 56.5 L 534.8 59.4 L 539.5 62.6 L 544.0 66.1 L 548.3 69.7 L 552.4 73.6 L 556.3 77.7 L 559.9 82.0 L 563.4 86.5 L 566.6 91.2 L 569.5 96.0 L 572.2 101.0 L 574.7 106.1 L 576.8 111.3 L 578.7 116.6 L 580.3 122.0 L 581.6 127.5 L 582.7 133.1 L 583.4 138.7 L 583.9 144.3 L 584.0 150.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" stroke-dasharray="4 3" stroke-linejoin="round" />
+  <line x1="530.0" y1="56.5" x2="422.0" y2="243.5" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="368.0" y1="150.0" x2="577.0" y2="150.0" style="stroke: currentColor" stroke-width="1.8" />
+  <path d="M 584.0 150.0 L 576.0 153.7 L 576.0 146.3 Z" style="fill: currentColor" />
+  <line x1="368.0" y1="150.0" x2="523.9" y2="60.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 530.0 56.5 L 524.9 63.7 L 521.2 57.3 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="368.0" y1="150.0" x2="418.5" y2="237.5" style="stroke: var(--good, #059669)" stroke-width="2.0" />
+  <path d="M 422.0 243.5 L 414.8 238.5 L 421.2 234.8 Z" style="fill: var(--good, #059669)" />
+  <circle cx="368.0" cy="150.0" r="2.6" style="fill: currentColor" />
+  <circle cx="476.0" cy="150.0" r="2.6" style="fill: currentColor" />
+  <path d="M 377.5 144.5 L 383.0 154.0 L 373.5 159.5" style="stroke: currentColor" fill="none" stroke-width="1.0" stroke-linejoin="round" />
+  <text x="360.0" y="155.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">O</tspan></text>
+  <text x="588.0" y="140.0" fill="currentColor"><tspan font-weight="bold">v</tspan><tspan dy="4" font-size="11">1</tspan></text>
+  <text x="486.0" y="170.0" fill="currentColor"><tspan font-weight="bold">v</tspan><tspan dy="4" font-size="11">C</tspan></text>
+  <text x="441.0" y="93.2" style="fill: var(--accent, #2563eb)" text-anchor="end"><tspan font-weight="bold">v</tspan><tspan dy="4" font-size="11">1</tspan><tspan dy="-4">′</tspan></text>
+  <text x="407.0" y="198.8" style="fill: var(--good, #059669)"><tspan font-weight="bold">v</tspan><tspan dy="4" font-size="11">2</tspan><tspan dy="-4">′</tspan></text>
+</svg>
