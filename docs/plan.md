@@ -1324,6 +1324,51 @@ math.analysis.completeness:
       - 补改 `momentum-impulse`、`momentum-conservation` 时别用重力、支持力、拉力（见上面「没加的前置」）。
       - 验算辅助：`tools/verify/physics.newtonian-mechanics._nm.ts` 加了 `integrate`（转出电磁学 `_es.ts` 的）、一维碰撞模拟 `collide1D`（两个物体之间夹一根很硬的弹簧）、二维光滑圆盘的碰撞模拟 `disks2D`（审查提的）。
 - 批次 19 之后：照批次 4 之后的做法，提交后先停，等你说了再发批次 20（写代码的会话定的）。
+- 批次 19 之后（你定的）：发批次 20，数学那一对写单变量微积分的第四批，物理那一对写牛顿力学的第三批。
+- 批次 20：单变量微积分的第四批、牛顿力学的第三批，做法和批次 19 一样。
+  - 单变量微积分写积分法和定积分的应用 10 节：`improper-integrals`、`area-between-curves`、`substitution`、`integration-by-parts`、`partial-fractions`、`trig-substitution`、`volumes`、`arc-length`、`polar-area`、`physical-applications`。审查报告 `docs/reviews/batch-20-calculus.md`。`improper-integrals`、`area-between-curves` 先写：牛顿力学这一批的 `gravitational-potential` 要反常积分，`kepler-orbits` 要椭圆的面积，下一批的 `fixed-axis-rotation` 以 `area-between-curves` 为前置。剩下的 9 节（`series`、`comparison-tests`、`alternating-series`、`ratio-root-tests`、`power-series`、`taylor-series`、`power-series-calculus`、`dirac-delta`、`parametric-curves`）留给批次 21，这个领域就写完了（写代码的会话定的）。
+  - 牛顿力学写引力、有心力和非惯性系 9 节：`gravitation`、`gravitational-potential`、`central-forces`、`shell-theorem`、`kepler-orbits`、`two-body-problem`、`accelerating-frames`、`rotating-frames`、`angular-momentum-systems`。审查报告 `docs/reviews/batch-20-newtonian-mechanics.md`。剩下的流体与刚体 7 节（`fluid-statics`、`bernoulli`、`statics`、`fixed-axis-rotation`、`rotational-energy`、`gyroscopes`、`rolling`）留给批次 21，这个领域就写完了（写代码的会话定的）。
+  - 两个领域开写前都照「一级台阶 = 一个小节」查一遍 goal；拆法和下面「要先定的前置」，写内容会话一起发给写代码的会话，确认后再写，同批次 18、19。
+  - 跨领域前置：已审的有 `shell-theorem` ← 多变量微积分 `cylindrical-spherical`，`kepler-orbits` ← 常微分方程 `undetermined-coefficients`（比奈方程是常系数的非齐次方程），`rotating-frames` ← 线性代数 `cross-product`。这一批两对同时写的：`gravitational-potential` 由 $r$ 积到无穷远要反常积分，加 `math.calculus.improper-integrals` 为前置；按它的 goal 假定读者会算无穷区间上的反常积分，审查时对一下两边的记号。
+  - 要先定的前置（层级都是写代码的会话按整张图算的）：
+    - 单变量微积分 `substitution`、`integration-by-parts` 的 goal 只说不定积分，可已写的下游都在定积分里用它们：数学分析 `gamma-function:41`（$\Gamma(x+1)=x\Gamma(x)$ 用分部积分）、`:48`（在 $[\varepsilon,A]$ 上换元再取极限），`fourier-series:96`（$x\sin nx$ 分部积分），变分法 `euler-lagrange:39`（分部积分，端点项为零），常微分方程 `laplace-transform:47`、`:57`（$\int_0^Te^{-st}f'(t)\,\dd t$ 分部积分）；数学分析 `parameter-integrals` 第 6 题、多变量微积分 `double-integrals` 第 8 题、`polar-double-integrals` 第 7 题、变分法 `beltrami-identity` 第 5 题也都是在定积分里换元或分部积分。定积分的换元公式、分部积分公式要用牛顿-莱布尼茨公式，这两节的链上没有 `fundamental-theorem`。推荐两节各加 `fundamental-theorem`，讲完不定积分再写定积分的形式：全图 9 节层级加 1，其中已写 5 节（常微分方程 `separable`、`autonomous-equations`、`bifurcations`，数学分析 `fourier-series`、`fourier-convergence`）。上面这些下游的链上本来都有 `fundamental-theorem`，`separable` 只用不定积分。别的放法：拆出一节「定积分的换元法与分部积分法」（第 9 层，层级都不变，可下游的链上没有它）；或者放进 `improper-integrals`（加这两节为前置，层级不变，可 `fourier-series`、`double-integrals` 的链上没有 `improper-integrals`）。
+    - 牛顿力学：`central-forces` 要用平面极坐标（这个领域还没有出现过），可以加 `math.calculus.polar-area`；`kepler-orbits` 推开普勒第三定律要椭圆的面积 $\pi ab$，加 `math.calculus.area-between-curves`（单变量那边在这一节里由圆的面积和定积分的线性推出椭圆的面积，算作例题或习题），写轨道的极坐标方程可以加 `polar-area`；`two-body-problem` 加 `center-of-mass-frame`（批次 19 记的）。这几条都不改变层级。
+    - `angular-momentum-systems` 不加 `center-of-mass-frame`（批次 19 记的：全图 11 节跟着变，其中分析力学已审 4 节）：质心部分和相对质心部分的分解，用 `momentum-conservation` 的质心直接推，`center-of-mass-frame` 的柯尼希定理只当旁白提。
+  - 牛顿力学这一批的词和记号（写代码的会话定的）：
+    - 万有引力、万有引力定律、引力常量、宇宙速度（环绕速度、逃逸速度）、开普勒三定律、离心现象是中学物理学过的，照批次 18、19 的办：本领域照样定义、进表，别的领域借用时不按规矩 C 补标。引力势能、有效势、约化质量、惯性力、离心力、科里奥利力、球壳定理这类中学没有系统讲过的，照规矩 C 补标，扫的时候逐处看。椭圆、双曲线、抛物线、偏心率是中学数学，当基础词。
+    - 引力常量 $G=6.674\,30\times10^{-11}\,\mathrm{N\,m^2/kg^2}$，和电磁学 `coulomb-law` 第 1 题一致。引力势能写 $U=-\frac{GMm}r$，取无穷远处为零，和 `potential-energy` 的 $U$ 配套；分析力学写 $V=-\frac kr$。有效势写 $U_{\text{eff}}$，角动量照 `angular-momentum` 的记号；分析力学 `cyclic-coordinates` 写的是 $V(r)+\frac{p_\varphi^2}{2mr^2}$。偏心率照分析力学 `hamilton-jacobi:97` 写 $e$；约化质量写 $\mu$。
+    - 非惯性系里测的量加撇（$\vb r'$、$\vb v'$、$\vb a'$），照 `relative-motion` 和电磁学 `lorentz-force:68`。`rotating-frames` 要写出同一个矢量在惯性系和转动系里的时间导数差 $\boldsymbol\omega\times\vb A$，分析力学 `euler-equations:24` 链过来用的就是这个。
+    - 「惯性力」：分析力学 `virtual-work:83` 把质点的 $-m\ddot{\vb r}$ 叫作达朗贝尔惯性力、简称惯性力（批次 1 写的，规矩 C 不补）；`accelerating-frames` 的惯性力是参考系加速带来的 $-m\vb a_0$，两者的关系可以当旁白提，链到分析力学。
+    - 「离心力」：本领域 `circular-dynamics:60` 的常见误区已经用了「离心力（centrifugal force）」，说惯性系里没有这个力。`rotating-frames` 照这个说法写，进表后照「本领域已写的小节也要补标」补 `circular-dynamics:60`，那一节退回 `written`，随这一批复核。
+  - 单变量微积分这一批的约定（写代码的会话定的）：
+    - 定积分的写法照批次 19：牛顿-莱布尼茨公式的右边写 $F(x)\Big|_a^b$，分部积分写 $uv\Big|_a^b$。
+    - 「比较判别法」：数学分析的术语表已经有同名术语（级数的），批次 21 的 `comparison-tests` 还要讲级数的比较判别法。`improper-integrals` 讲的是反常积分的比较判别法，按意思选 id，给级数那条留出名字。常微分方程 `laplace-transform:35` 链到 `improper-integrals`，链接文字就是「比较判别法」。
+    - 部分分式要用「实系数多项式能分解成一次因式和不可约的二次因式的乘积」，写成「这里不证」（代数基本定理在复分析、抽象代数，都还是大纲）；常微分方程 `laplace-ivp:36` 用的正是这个说法。
+    - 「微元法」在 `area-between-curves` 起名，这一批后面几节和下一批牛顿力学 `fixed-axis-rotation`（转动惯量）照用。
+    - `physical-applications` 的变力做功、细杆的质心，牛顿力学 `work-energy`、`momentum-conservation` 也讲；记号照它们：功 $W$，质心 $x_{\mathrm C}$（牛顿力学写 $\vb r_{\mathrm C}$）。它的链上没有牛顿力学，功、压强、密度按中学物理的意思用，不靠牛顿力学的定义。
+    - `arc-length` 推弧长时写 $\dd s=\sqrt{\dd x^2+\dd y^2}$。数学分析 `trig-construction` 第 7 题链到本节，算的是参数曲线 $(\cos s,\sin s)$ 的长度；参数形式的弧长公式在批次 21 的 `parametric-curves`，这里可以提一句，或者让第 7 题用 $y=\sqrt{1-x^2}$ 也接得住。
+  - 已写的小节有链接或用法指向这一批（写代码的会话查的）：
+    - 单变量微积分：
+      - `substitution`：本领域 `antiderivatives:56` 把 $\cos2x$、$e^{3x}$ 这类留给本节；数学分析 `gamma-function:48`、变分法 `beltrami-identity` 第 5 题、多变量微积分 `double-integrals` 第 8 题和 `polar-double-integrals` 第 7 题链到本节，都在定积分里换元（见上面「要先定的前置」）。
+      - `integration-by-parts`：数学分析 `fourier-series`、变分法 `euler-lagrange`、常微分方程 `laplace-transform` 以本节为前置；数学分析 `gamma-function:41`、`parameter-integrals` 第 6 题链到本节。
+      - `partial-fractions`：常微分方程 `separable`（`:95` 积 $\frac K{y(K-y)}$）、`laplace-ivp`（`:36` 先把分母分解成一次因式和不可约的二次因式，再拆成部分分式）以本节为前置。
+      - `area-between-curves`：牛顿力学 `fixed-axis-rotation` 以本节为前置（下一批）。
+      - `arc-length`：变分法 `functionals` 以本节为前置（`:22` 弧长公式，`:30` $\dd s=\sqrt{1+y'^2}\,\dd x$）；数学分析 `trig-construction` 第 7 题链到本节（见上面的约定）。
+      - `polar-area`：多变量微积分 `polar-double-integrals` 以本节为前置（`:25` 扇形面积 $\frac12r^2\theta$）；变分法 `several-functions` 第 7 题链到本节（平面上的极坐标）。
+      - `improper-integrals`：变分法 `functionals`（`:36` 被积函数在端点无界）、常微分方程 `laplace-transform`（`:23`–`:30` 无穷区间上的反常积分和比较判别法）、多变量微积分 `polar-double-integrals`（$\int_{-\infty}^{\infty}e^{-x^2}\dd x=\sqrt\pi$，两端都是无穷）以本节为前置；数学分析 `riemann-integral` 第 8 题、`ftc-proof` 第 7 题链到本节（在 $(0,1]$ 上取 $\delta\to0^+$）。
+      - `trig-substitution`、`volumes`、`physical-applications`：没有已写的小节指向它们。
+    - 牛顿力学：
+      - `gravitation`：电磁学 `coulomb-law` 第 1 题（氢原子里库仑力和万有引力之比，用了 $G$ 的值），本领域 `rockets:62` 和第 5 题（绕地球表面附近做圆周运动约要 $7.9\,\mathrm{km/s}$）链到本节。
+      - `gravitational-potential`：本领域 `conservative-forces` 第 7 题（指向地心、大小和距离平方成反比的重力是保守力，势能和 $-\frac1r$ 成正比）链到本节。
+      - `central-forces`：分析力学 `cyclic-coordinates` 以本节为前置（`:38`–`:54` 有心力场里轨道在一个平面内、角动量守恒、扫过面积的速率，径向运动看成在有效势里的一维运动，`:86` 有效势靠近力心处的「墙」和最低点的圆轨道）；`heavy-symmetric-top:51` 链到本节（两个守恒的动量消掉角度，只剩一维运动，能量决定能到达的范围）。
+      - `shell-theorem`：电磁学 `coulomb-law` 第 6 题（球壳里面没有力，正好检验平方反比）、`gauss-law` 第 8 题（均匀球体外的引力像质量集中在球心）链到本节。
+      - `kepler-orbits`：分析力学 `hamilton-jacobi` 以本节为前置（`:97` 轨道是焦点在力心的圆锥曲线，$E<0$ 时 $e<1$，是椭圆）；本领域 `angular-momentum` 第 8 题（扫过面积的快慢不变；要得到椭圆还要知道力和距离的关系）链到本节。
+      - `accelerating-frames`：本领域 `newtons-laws` 第 8 题（在加速的车厢里给每个物体加上和车厢加速度方向相反、大小等于质量乘加速度的「力」）、`center-of-mass-frame:25`（外力之和不为零时，质心系不是惯性系）链到本节。
+      - `rotating-frames`：分析力学 `euler-equations` 以本节为前置（见上面的记号）。
+      - `angular-momentum-systems`：分析力学 `cyclic-coordinates` 以本节为前置；本领域 `angular-momentum` 第 7 题（溜冰的人收拢手臂，整个人的总角动量）链到本节。
+      - `two-body-problem`：没有已写的小节指向它。
+  - 以这一批为前置、还没写的别的小节：`substitution` ← 概率论「随机变量的函数的分布」；`improper-integrals` ← 概率论「连续型随机变量与概率密度」、振动与波「单摆与复摆」；`gravitation`、`accelerating-frames` ← 广义相对论「等效原理」；`central-forces` ← 广义相对论「史瓦西时空中的轨道」、量子力学「原子光谱与玻尔模型」；`kepler-orbits` ← 广义相对论「水星近日点的进动」。
+  - 动画：单变量微积分用 function-plot 画两条曲线之间的面积（滑块调右端点）、反常积分 $\int_1^b\frac{\dd x}{x^2}$ 和 $\int_1^b\frac{\dd x}x$ 随 $b$ 的变化、折线逼近弧长（台阶可以用 `floor` 写，滑块调分成几段）、有理函数和它的部分分式；旋转体、柱壳画 SVG。牛顿力学用 function-plot 画圆轨道的速率随半径的变化、有效势（滑块调角动量，同分析力学 `cyclic-coordinates` 的动画）、均匀球体内外的引力大小随 $r$ 的变化；球壳的切片、加速车厢里的单摆、科里奥利力的偏转画 SVG。轨道的形状要画极坐标曲线时，先查 FunctionPlot 支持什么，不行就画 SVG（写代码的会话提的）。
 - 几个领域同时写时（批次 1 定的）：每个写内容会话只改自己领域的目录（`content/<学科>/<领域>/`），审内容会话只写自己的报告和验算脚本；`docs/plan.md` 不由它们直接改，要写回的内容写进汇报，由写代码的会话统一写进去、单独提交，免得几个会话同时改一个文件。每个领域各自作为一个提交。另一个领域写到一半、全量构建报错时，写内容会话可以把那个领域换成已提交的版本，在临时副本上构建，确认自己的领域 0 个错误；看页面同理，用临时副本编译的内容另起一个服务，进度写临时仓库，不改仓库的 `dist/`（批次 2 定的）。test-serve 和 `npm run serve` 提供的是 `dist/` 里构建好的网站，不读 `generated/`：改完内容要重新 `vite build`，页面上才看得到（批次 6 时写内容会话提的）。临时副本的做法（批次 10 时写内容会话提的，写代码的会话核过）：用 `git archive HEAD` 导出已提交的版本，再拷进自己的改动；`node_modules` 不要复制，在副本里建一个指向仓库 `node_modules` 的目录联接（PowerShell 的 `New-Item -ItemType Junction`）；建网站时在副本目录里跑 `npx vite build --outDir <目录>`，或者把副本目录写成 `vite build` 的第一个参数（Vite 8 的根目录是位置参数）；删副本之前先单独删掉联接本身（PowerShell 的 `[System.IO.Directory]::Delete(<联接>, $false)`），否则删除命令会顺着联接把仓库的 `node_modules` 一起删掉。各会话的 scratchpad 都在 C 盘，C 盘空间紧（批次 14 时一度只剩十几 MB，`vite build` 报 ENOSPC）：页面检查能用 test-serve 读仓库 D 盘的 `dist/` 就不另建网站副本；要建，看完就删，同一时间只留一份；以前批次的副本、快照复核完就删（批次 14 时定的）。页面检查只用进度写临时目录的 test-serve；`npm run dev`、`npm run serve` 写的是你真实的 `progress/`，点「看提示」「放弃」都会留下记录，绝不用来做页面检查（批次 15 时写内容会话用 `npm run dev` 往 `progress/` 写进了光学 9 节的假记录，你同意后写代码的会话删掉了）。两个写内容会话共用一个暂存区，提交要一个接一个：只 `git add` 自己的路径，提交前用 `git diff --cached --stat` 确认暂存区里没有别人的文件（批次 17 写代码的会话定的）。仓库 `node_modules` 里工作区包的联接坏了时（批次 18 审查时 `node_modules/@principia/anim` 成了空目录），告诉写代码的会话重建；临时副本里可以在 `node_modules/@principia/anim` 另建一个指向副本 `packages/anim` 的联接照常构建，删副本前一样先删联接（批次 18 审查时提的）。
 
 **分工**：一共三个 agent：写代码、写内容、审内容。开发台阶 8、9 由写内容 agent 和审内容 agent 执行。写内容和审内容必须是两个独立会话。
