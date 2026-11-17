@@ -1,0 +1,186 @@
+- id: p1
+  tier: easy
+  statement: |
+    一个圆环形的空间站半径$50\,\mathrm m$，绕中心轴转动，要让站在环最外侧地板上的人感到和地面上一样的「重力」，$g$取$9.8\,\mathrm{m/s^2}$。空间站转一圈要多少秒？保留三位有效数字。
+  answer:
+    type: number
+    value: 2*pi*sqrt(50/9.8)
+    unit: |
+      $\mathrm s$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      在随空间站转动的参考系里，人静止，地板的支持力和离心力平衡。
+    - |
+      离心力$m\omega^2R$要等于$mg$，$\omega=\sqrt{\frac gR}$。
+    - |
+      周期$\frac{2\pi}\omega=2\pi\sqrt{\frac Rg}\approx14.2\,\mathrm s$。
+  solution: |
+    在随空间站转动的参考系里，人静止，受地板的支持力和离心力，离心力$m\omega^2R$起着重力的作用。要$\omega^2R=g$，$\omega=\sqrt{\frac gR}\approx0.443\,\mathrm{rad/s}$，周期$\frac{2\pi}\omega=2\pi\sqrt{\frac{50}{9.8}}\approx14.2\,\mathrm s$。半径越小，要转得越快。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法都是在转动参考系里说的，哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        物体离转轴越远，受的科里奥利力越大
+      - |
+        从上往下看逆时针转动的转盘上，沿半径向中心运动的物体，科里奥利力指向它前进方向的右边
+      - |
+        物体到转轴的距离变为原来的$2$倍，受的离心力也变为原来的$2$倍
+      - |
+        转动的角速度变为原来的$2$倍，物体受的离心力也变为原来的$2$倍
+      - |
+        物体的速度垂直于转轴时，科里奥利力的大小和它相对转动参考系的速率成正比
+    value: [2, 3, 5]
+  hints:
+    - |
+      离心力是$m\omega^2\rho$，科里奥利力是$-2m\boldsymbol\omega\times\vb v'$。
+    - |
+      科里奥利力只和相对速度有关，和位置无关；逆时针转动时，$\boldsymbol\omega$向上。
+    - |
+      B、C、E 对；A、D 错。
+  solution: |
+    A 错：科里奥利力$-2m\boldsymbol\omega\times\vb v'$和物体在哪里无关。B 对：$\boldsymbol\omega$向上，不管物体沿盘面朝哪个方向运动，$-\boldsymbol\omega\times\vb v'$都指向它前进方向的右边。C 对：离心力$m\omega^2\rho$和$\rho$成正比。
+
+    D 错：离心力和$\omega^2$成正比，变为原来的$4$倍。E 对：$\vb v'$垂直于$\boldsymbol\omega$时，$|\boldsymbol\omega\times\vb v'|=\omega v'$。
+
+- id: p3
+  tier: medium
+  statement: |
+    水平转盘以$3.0\,\mathrm{rad/s}$绕竖直轴转动，盘面上沿半径刻着一条光滑的直槽，质量$0.20\,\mathrm{kg}$的小珠在槽里，相对转盘以$0.40\,\mathrm{m/s}$沿槽向外运动。槽壁对小珠的水平作用力多大？以$\mathrm N$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 2*0.20*3.0*0.40
+    unit: |
+      $\mathrm N$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      在转盘上看，小珠只沿槽运动，垂直于槽的方向合力为零。
+    - |
+      垂直于槽的方向上，只有槽壁的力和科里奥利力。
+    - |
+      槽壁的力等于科里奥利力的大小$2m\omega v'=2\times0.20\times3.0\times0.40=0.480\,\mathrm N$。
+  solution: |
+    在转盘上看，小珠沿槽运动，垂直于槽的方向没有加速度。这个方向上有科里奥利力$2m\omega v'$，槽壁的力要和它抵消；离心力沿槽，不影响这个方向。所以槽壁的力是$2\times0.20\times3.0\times0.40=0.480\,\mathrm N$，和小珠离轴多远无关。
+
+- id: p4
+  tier: medium
+  statement: |
+    光滑水平转盘以$4.0\,\mathrm{rad/s}$绕竖直轴转动。原长$0.20\,\mathrm m$、劲度系数$50\,\mathrm{N/m}$的轻弹簧一端固定在转轴上，另一端拴着质量$0.50\,\mathrm{kg}$的小球，弹簧沿半径方向，小球相对转盘静止。这时弹簧的长度是多少？以$\mathrm m$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 50*0.20/(50 - 0.50*4.0^2)
+    unit: |
+      $\mathrm m$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      在转盘上看，小球静止，弹力和离心力平衡。
+    - |
+      $k(r-L_0)=m\omega^2r$。
+    - |
+      $r=\frac{kL_0}{k-m\omega^2}=\frac{50\times0.20}{50-8.0}\approx0.238\,\mathrm m$。
+  solution: |
+    在转盘上看，小球静止，沿半径方向弹簧的弹力$k(r-L_0)$指向轴，离心力$m\omega^2r$背离轴，两者平衡：$k(r-L_0)=m\omega^2r$，$r=\frac{kL_0}{k-m\omega^2}=\frac{50\times0.20}{50-0.50\times16}\approx0.238\,\mathrm m$。在地面上看，弹力提供小球做圆周运动的向心力，方程一样。$m\omega^2$接近$k$时$r$会变得很大，弹簧拉不住小球。
+
+- id: p5
+  tier: hard
+  statement: |
+    长为$L$的细绳一端拴在竖直转轴上的$O$点，另一端拴着质量为$m$的小球，转轴带着绳子和小球以不变的角速度$\omega$转动。在随它们一起转动的参考系里分析：
+
+    （1）小球能相对这个参考系静止在绳子和竖直方向成$\theta$角（$\theta\ne0$）的地方，$\theta$满足什么条件？
+
+    （2）$\omega$至少多大，才可能有$\theta\ne0$的位置？$\omega$比这小时，小球在哪里？
+
+    （3）和在惯性系里用向心力算的结果比较。
+  hints:
+    - |
+      在转动的参考系里小球静止，受重力、绳子的拉力和离心力，三个力平衡。
+    - |
+      离心力水平背离转轴，大小$m\omega^2L\sin\theta$；水平方向$T\sin\theta=m\omega^2L\sin\theta$。
+    - |
+      $\theta\ne0$时$T=m\omega^2L$，$\cos\theta=\frac g{\omega^2L}$，要求它不大于$1$。
+  reference: |
+    （1）在转动的参考系里小球静止，受重力$mg$、沿绳子指向$O$的拉力$T$和水平背离转轴的离心力$m\omega^2L\sin\theta$。水平方向$T\sin\theta=m\omega^2L\sin\theta$，$\theta\ne0$时$T=m\omega^2L$；竖直方向$T\cos\theta=mg$，所以$\cos\theta=\frac g{\omega^2L}$。
+
+    （2）$\cos\theta<1$要求$\omega^2L>g$，即$\omega>\sqrt{\frac gL}$。$\omega$比这小时，只有$\theta=0$一个平衡位置，小球竖直挂在$O$的正下方，跟着转轴原地转，离心力为零。
+
+    （3）在惯性系里，小球做半径$L\sin\theta$的匀速圆周运动，拉力和重力的合力就是向心力，结果是$\omega^2=\frac g{L\cos\theta}$，和（1）相同（见[圆周运动的动力学](lesson:physics.newtonian-mechanics.circular-dynamics)的例 1）。两种参考系列出的方程一样，只是在转动的参考系里，$m\omega^2L\sin\theta$被看成一个力，在惯性系里被看成质量乘加速度。
+
+- id: p6
+  tier: hard
+  statement: |
+    从上往下看逆时针转动的光滑转盘，角速度为$\omega$。冰球从转盘中心沿半径方向滑出，相对地面的速率是$v$。
+
+    （1）在地面上看，经过一段很短的时间$t$，冰球离中心多远？转盘上原来和冰球在同一条半径上的那条线，在冰球所在的地方转过了多长的一段弧？
+
+    （2）在转盘上看，冰球偏离那条半径多远？和用科里奥利力算出的$\frac12\cdot2\omega v\cdot t^2$比较。
+
+    （3）$\omega=0.50\,\mathrm{rad/s}$、$v=5.0\,\mathrm{m/s}$、$t=0.50\,\mathrm s$时，偏离多少？
+  hints:
+    - |
+      地面上看，冰球沿直线匀速滑出；转盘转过的角度是$\omega t$。
+    - |
+      半径$vt$处、转过角度$\omega t$的弧长是$vt\cdot\omega t$。
+    - |
+      $t$很短时，科里奥利力的方向和大小几乎不变，冰球侧向的位移约为$\frac12\cdot2\omega v\cdot t^2$。
+  reference: |
+    （1）冰球沿直线匀速滑出，离中心$vt$。这段时间里转盘转过$\omega t$，那条半径在离中心$vt$处走过的弧长是$vt\cdot\omega t=\omega vt^2$。
+
+    （2）在转盘上看，那条半径不动，冰球落在它的后面（顺时针一侧），偏离约$\omega vt^2$。冰球在转盘上的速度起初沿半径向外，大小$v$，科里奥利力垂直于它，产生的侧向加速度是$2\omega v$；$t$很短时，侧向的位移是$\frac12\cdot2\omega v\cdot t^2=\omega vt^2$，两种算法一致。离心力沿半径，不影响侧向的偏离。
+
+    （3）$\omega vt^2=0.50\times5.0\times0.50^2\approx0.63\,\mathrm m$。这时$\omega t=0.25\,\mathrm{rad}$，还不算太大，估计大致可用。
+
+- id: p7
+  tier: thinking
+  statement: |
+    转动的伞的边上挂着水滴，伞转得快了，水滴就被甩出去。
+
+    （1）在随伞一起转的参考系里，水滴离开伞边之前受哪些力？为什么转快了它会被甩出去？
+
+    （2）水滴离开伞边以后，在地面上看沿什么方向飞出？
+
+    （3）离开以后，在伞上看，水滴的轨迹是什么样的？
+  hints:
+    - |
+      在伞上看水滴静止，伞对水滴的附着作用要平衡什么？
+    - |
+      离开伞边的一瞬间，水滴在地面上看的速度沿哪个方向？以后水平方向受力吗？
+    - |
+      想一想几何图像里转盘上看到的冰球。
+  reference: |
+    （1）受重力、伞面对它的附着作用和离心力$m\omega^2r$。在伞上看水滴静止，附着作用要平衡离心力；离心力随$\omega^2$增大，附着作用有一个最大值，转得太快就平衡不了，水滴被甩出去。
+
+    （2）离开时水滴的速度沿伞边的切线，以后水平方向不受力，在地面上看沿切线方向直线飞出（同时在重力作用下下落），并不是沿半径向外飞。
+
+    （3）在伞上看，水滴一面离伞的中心越来越远，一面相对伞向后转，轨迹是一条向后弯的螺线，就像几何图像里转盘上看到的冰球：离心力把它推离中心，科里奥利力使它的轨迹弯曲。「离心力把水滴甩出去」这个说法，只在随伞转动的参考系里才对。
+
+- id: p8
+  tier: thinking
+  statement: |
+    从上往下看逆时针转动的旋转木马上，A 站在边上，B 站在中心。
+
+    （1）A 把球沿半径朝 B 直直地扔过去（相对木马），在木马上看，球会偏向哪边？
+
+    （2）在地面上看，球为什么会偏？
+
+    （3）A 想让球正好飞到 B 的手里，应该朝哪边瞄？
+  hints:
+    - |
+      逆时针转动时，科里奥利力指向物体前进方向的哪一边？
+    - |
+      球离手时，除了 A 扔出的速度，还带着 A 随木马转动的速度。
+    - |
+      要让球在地面上看的速度正好指向中心。
+  reference: |
+    （1）偏向右边（从 A 看，朝 B 扔出的方向的右边）：木马逆时针转，科里奥利力指向运动方向的右边。
+
+    （2）在地面上看，A 随木马转动，有沿切线、顺着转动方向的速度$\omega R$。球离手时带着这个速度，加上扔出的速度，合速度斜着偏向转动的方向，球沿这条直线飞出，从中心的一侧掠过，而 B 一直待在中心转，接不到。从 A 看，这一侧正是右边。
+
+    （3）朝 B 的左边瞄，让扔出的速度有一个逆着转动方向、大小为$\omega R$的分量，正好抵消 A 随木马转动的速度，球在地面上看就直直飞向中心。

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 262" width="640" height="262" font-size="14">
+  <!-- 向右加速的车厢里，车顶吊着的小球相对车厢静止，绳子向后偏。左图在地面上看：拉力 T 和重力 mg 的合力水平向右，大小是 ma。右图在车厢里看：再加上水平向左、大小为 ma 的惯性力 F惯，三个力平衡。箭头的长短按同一比例画。 -->
+  <path d="M 40.0 50.0 L 280.0 50.0 L 280.0 200.0 L 40.0 200.0 Z" style="stroke: currentColor" fill="none" stroke-width="1.6" stroke-linejoin="round" />
+  <circle cx="90.0" cy="210.0" r="10.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <circle cx="230.0" cy="210.0" r="10.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <line x1="20.0" y1="220.0" x2="300.0" y2="220.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <text x="160.0" y="252.0" fill="currentColor" text-anchor="middle">地面上看</text>
+  <line x1="180.0" y1="32.0" x2="243.0" y2="32.0" style="stroke: currentColor" stroke-width="1.6" />
+  <path d="M 250.0 32.0 L 242.0 35.7 L 242.0 28.3 Z" style="fill: currentColor" />
+  <text x="260.0" y="37.0" fill="currentColor"><tspan font-weight="bold"><tspan font-style="italic">a</tspan></tspan><tspan dy="4" font-size="11">0</tspan></text>
+  <line x1="160.0" y1="50.0" x2="115.0" y2="127.9" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="115.0" y1="127.9" x2="143.8" y2="78.0" style="stroke: currentColor" stroke-width="2.0" />
+  <path d="M 147.3 71.9 L 146.5 80.7 L 140.1 77.0 Z" style="fill: currentColor" />
+  <line x1="115.0" y1="127.9" x2="115.0" y2="176.9" style="stroke: currentColor" stroke-width="2.0" />
+  <path d="M 115.0 183.9 L 111.3 175.9 L 118.7 175.9 Z" style="fill: currentColor" />
+  <line x1="115.0" y1="127.9" x2="140.3" y2="127.9" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" stroke-dasharray="4 3" />
+  <path d="M 147.3 127.9 L 139.3 131.6 L 139.3 124.2 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="153.3" y="132.9" style="fill: var(--accent, #2563eb)">合力 <tspan font-style="italic">m</tspan><tspan font-weight="bold"><tspan font-style="italic">a</tspan></tspan><tspan dy="4" font-size="11">0</tspan></text>
+  <circle cx="115.0" cy="127.9" r="6.0" style="stroke: currentColor; fill: var(--bg, #ffffff)" stroke-width="1.6" />
+  <text x="143.2" y="107.9" fill="currentColor"><tspan font-weight="bold"><tspan font-style="italic">T</tspan></tspan></text>
+  <text x="123.0" y="179.9" fill="currentColor"><tspan font-style="italic">m</tspan><tspan font-weight="bold"><tspan font-style="italic">g</tspan></tspan></text>
+  <path d="M 360.0 50.0 L 600.0 50.0 L 600.0 200.0 L 360.0 200.0 Z" style="stroke: currentColor" fill="none" stroke-width="1.6" stroke-linejoin="round" />
+  <circle cx="410.0" cy="210.0" r="10.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <circle cx="550.0" cy="210.0" r="10.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <line x1="340.0" y1="220.0" x2="620.0" y2="220.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <text x="480.0" y="252.0" fill="currentColor" text-anchor="middle">车厢里看</text>
+  <line x1="500.0" y1="32.0" x2="563.0" y2="32.0" style="stroke: currentColor" stroke-width="1.6" />
+  <path d="M 570.0 32.0 L 562.0 35.7 L 562.0 28.3 Z" style="fill: currentColor" />
+  <text x="580.0" y="37.0" fill="currentColor"><tspan font-weight="bold"><tspan font-style="italic">a</tspan></tspan><tspan dy="4" font-size="11">0</tspan></text>
+  <line x1="480.0" y1="50.0" x2="435.0" y2="127.9" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="435.0" y1="127.9" x2="463.8" y2="78.0" style="stroke: currentColor" stroke-width="2.0" />
+  <path d="M 467.3 71.9 L 466.5 80.7 L 460.1 77.0 Z" style="fill: currentColor" />
+  <line x1="435.0" y1="127.9" x2="435.0" y2="176.9" style="stroke: currentColor" stroke-width="2.0" />
+  <path d="M 435.0 183.9 L 431.3 175.9 L 438.7 175.9 Z" style="fill: currentColor" />
+  <line x1="435.0" y1="127.9" x2="409.7" y2="127.9" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 402.7 127.9 L 410.7 124.2 L 410.7 131.6 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="418.8" y="112.9" style="fill: var(--accent, #2563eb)" text-anchor="middle"><tspan font-weight="bold"><tspan font-style="italic">F</tspan></tspan><tspan dy="4" font-size="11">惯</tspan></text>
+  <circle cx="435.0" cy="127.9" r="6.0" style="stroke: currentColor; fill: var(--bg, #ffffff)" stroke-width="1.6" />
+  <text x="463.2" y="107.9" fill="currentColor"><tspan font-weight="bold"><tspan font-style="italic">T</tspan></tspan></text>
+  <text x="443.0" y="179.9" fill="currentColor"><tspan font-style="italic">m</tspan><tspan font-weight="bold"><tspan font-style="italic">g</tspan></tspan></text>
+</svg>

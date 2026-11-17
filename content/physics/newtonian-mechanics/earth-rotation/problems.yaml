@@ -1,0 +1,186 @@
+- id: p1
+  tier: easy
+  statement: |
+    北京在北纬$39.9^\circ$，地球自转一周取$86164\,\mathrm s$。北京的傅科摆，摆动平面转一圈要多少小时？保留三位有效数字。
+  answer:
+    type: number
+    value: 86164/sin(39.9*pi/180)/3600
+    unit: |
+      小时
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      摆动平面转动的角速度是$\omega\sin\lambda$。
+    - |
+      转一圈的时间是自转一周的时间除以$\sin\lambda$。
+    - |
+      $\frac{86164}{\sin39.9^\circ}\approx1.34\times10^5\,\mathrm s$，约$37.3$小时。
+  solution: |
+    摆动平面以$\omega\sin\lambda$转动，转一圈要$\frac{2\pi}{\omega\sin\lambda}=\frac{86164\,\mathrm s}{\sin39.9^\circ}\approx1.34\times10^5\,\mathrm s$，约$37.3$小时，比巴黎的慢：北京的纬度低一些。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于地球自转的效应的说法，哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        在南半球，沿水平方向运动的物体受的科里奥利力指向它前进方向的左边
+      - |
+        纬度越高的地方，傅科摆的摆动平面转得越快
+      - |
+        地面上量到的重力加速度，赤道上比两极的大
+      - |
+        北半球的台风从上往下看顺时针旋转
+      - |
+        在北极，傅科摆的摆动平面大约一天转一圈
+    value: [1, 2, 5]
+  hints:
+    - |
+      水平方向的偏转只来自$\boldsymbol\omega$的竖直分量$\omega\sin\lambda$，南半球它朝下。
+    - |
+      赤道上离心力最大，而且整个都沿半径向外。
+    - |
+      A、B、E 对；C、D 错。
+  solution: |
+    A 对：南半球$\sin\lambda<0$，偏转反过来，指向左边。B 对：转动的角速度$\omega|\sin\lambda|$随纬度升高而增大。C 错：赤道上离心力最大，又整个沿半径向外，加上赤道离地心远，那里的重力加速度最小。
+
+    D 错：北半球流向低气压中心的空气向右偏，绕中心逆时针旋转。E 对：在北极$\sin\lambda=1$，平面转一圈的时间就是地球自转一周的时间，约一天。
+
+- id: p3
+  tier: medium
+  statement: |
+    质量$4.0\times10^5\,\mathrm{kg}$的高速列车在北纬$40^\circ$沿水平直轨道以$300\,\mathrm{km/h}$行驶，地球自转的角速度取$7.29\times10^{-5}\,\mathrm{rad/s}$。列车受的科里奥利力的水平分量多大？以$\mathrm N$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 2*4.0e5*7.29e-5*(300/3.6)*sin(40*pi/180)
+    unit: |
+      $\mathrm N$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      水平分量的大小是$2m\omega v'\sin\lambda$；速率先换成$\mathrm{m/s}$。
+    - |
+      $v'=\frac{300}{3.6}\approx83.3\,\mathrm{m/s}$。
+    - |
+      $2\times4.0\times10^5\times7.29\times10^{-5}\times83.3\times\sin40^\circ\approx3.12\times10^3\,\mathrm N$。
+  solution: |
+    水平分量的大小是$2m\omega v'\sin\lambda=2\times4.0\times10^5\times7.29\times10^{-5}\times83.3\times\sin40^\circ\approx3.12\times10^3\,\mathrm N$，指向列车前进方向的右边，由右侧的钢轨顶住。它只有列车重力的$\frac{3.12\times10^3}{4.0\times10^5\times9.8}\approx8\times10^{-4}$，平常完全察觉不到。
+
+- id: p4
+  tier: medium
+  statement: |
+    把地球当作半径$6.37\times10^6\,\mathrm m$、质量球对称分布的球，只由地球的吸引产生的加速度$g_0$取$9.8\,\mathrm{m/s^2}$，自转的角速度取$7.29\times10^{-5}\,\mathrm{rad/s}$。北纬$45^\circ$处，铅垂线和指向地心的方向成多大的角？以度为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: atan((7.29e-5)^2*6.37e6*sin(pi/4)*cos(pi/4)/(9.8-(7.29e-5)^2*6.37e6*cos(pi/4)^2))*180/pi
+    unit: |
+      度
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      离心力$m\omega^2R\cos\lambda$分成沿半径向外的$m\omega^2R\cos^2\lambda$和沿地面指向赤道的$m\omega^2R\cos\lambda\sin\lambda$，后者让重力偏离半径方向。
+    - |
+      偏角$\theta$满足$\tan\theta=\frac{\omega^2R\sin\lambda\cos\lambda}{g_0-\omega^2R\cos^2\lambda}$。
+    - |
+      $\tan\theta\approx1.730\times10^{-3}$，$\theta\approx0.0991^\circ$。
+  solution: |
+    离心力$m\omega^2R\cos\lambda$沿半径向外的分量是$m\omega^2R\cos^2\lambda$，沿地面指向赤道的分量是$m\omega^2R\sin\lambda\cos\lambda$。它和指向地心的吸引$mg_0$按矢量相加，偏角$\theta$满足$\tan\theta=\frac{\omega^2R\sin\lambda\cos\lambda}{g_0-\omega^2R\cos^2\lambda}$。$\omega^2R=(7.29\times10^{-5})^2\times6.37\times10^6\approx3.385\times10^{-2}\,\mathrm{m/s^2}$，北纬$45^\circ$处$\sin\lambda\cos\lambda=\cos^2\lambda=\frac12$，$\tan\theta\approx\frac{1.693\times10^{-2}}{9.783}\approx1.730\times10^{-3}$，$\theta\approx0.0991^\circ$，铅垂线偏向赤道那一边。
+
+    讲解里的近似式$\frac{\omega^2R}{g_0}\sin\lambda\cos\lambda$给$0.0990^\circ$，相差不到千分之二。$45^\circ$附近偏角最大，所以平常把铅垂线当作指向地心，误差不到$0.1^\circ$。
+
+- id: p5
+  tier: hard
+  statement: |
+    在北纬$\lambda$处，从高$h$处由静止释放一个小球，不计空气。
+
+    （1）证明小球落地时偏东约$\frac13\omega gt^3\cos\lambda$，$t$是下落的时间。
+
+    （2）北纬$40^\circ$，从$200\,\mathrm m$高的楼顶释放，偏东多少？$g$取$9.8\,\mathrm{m/s^2}$，$\omega$取$7.29\times10^{-5}\,\mathrm{rad/s}$。
+
+    （3）偏东的结论在南半球还成立吗？
+  hints:
+    - |
+      下落时科里奥利力指向东，大小$2m\omega v'\cos\lambda$；先按自由落体取$v'=gt$。
+    - |
+      向东的加速度$2\omega gt\cos\lambda$，从静止开始求两次原函数。
+    - |
+      南半球$\cos\lambda$仍是正的，可$\boldsymbol\omega$的水平分量仍指向北。
+  reference: |
+    （1）科里奥利力比重力小得多，可以先按自由落体，取$v'=gt$，向下。由本节的定理，向东的加速度是$2\omega gt\cos\lambda$。从静止开始求原函数，向东的速度$\omega gt^2\cos\lambda$，再求一次，位移$\frac13\omega gt^3\cos\lambda$。（向东的速度又会带来很小的竖直、南北方向的科里奥利力，影响更小，不计。）
+
+    （2）$t=\sqrt{\frac{2h}g}=\sqrt{\frac{400}{9.8}}\approx6.39\,\mathrm s$，偏东$\frac13\times7.29\times10^{-5}\times9.8\times6.39^3\times\cos40^\circ\approx4.8\times10^{-2}\,\mathrm m$，约$5\,\mathrm{cm}$。
+
+    （3）成立。在南半球，$\boldsymbol\omega$的水平分量仍然指向北，下落的速度朝下，叉积的方向和北半球一样，仍偏东。在惯性系里看也一样：楼顶比楼底离地轴远，向东的速度大，这和在哪个半球无关。
+
+- id: p6
+  tier: hard
+  statement: |
+    在赤道上，一艘船沿水平方向以$10\,\mathrm{m/s}$航行，地球自转的角速度取$7.29\times10^{-5}\,\mathrm{rad/s}$，$g$取$9.8\,\mathrm{m/s^2}$。
+
+    （1）船向东航行和向西航行时，受的科里奥利力各沿什么方向？
+
+    （2）船上量到的「重力」改变了多少？用重力的百分之几表示。
+
+    （3）在惯性系里解释（2）的结果。
+  hints:
+    - |
+      赤道上$\boldsymbol\omega$是水平的，指向北。
+    - |
+      $-2m\boldsymbol\omega\times\vb v'$：指向北的矢量叉乘指向东的矢量，结果朝下，再加负号。
+    - |
+      在惯性系里，向东航行的船绕地轴转得更快，需要的向心力更大。
+  reference: |
+    （1）赤道上$\boldsymbol\omega$水平指向北。向东航行时，$\boldsymbol\omega\times\vb v'$朝下，科里奥利力$-2m\boldsymbol\omega\times\vb v'$竖直向上；向西航行时竖直向下。两种情形都没有水平分量，船不左右偏。
+
+    （2）科里奥利力的大小$2m\omega v'$，和重力之比$\frac{2\omega v'}g=\frac{2\times7.29\times10^{-5}\times10}{9.8}\approx1.5\times10^{-4}$，约万分之一点五：向东航行时量到的重力小这么多，向西时大这么多。精密的重力测量要做这一项修正。
+
+    （3）在惯性系里，船和地面一起绕地轴转，向东航行时它的速率是$\omega R+v'$，比地面快，做圆周运动需要的向心力$\frac{m(\omega R+v')^2}R$更大，地球的吸引里留给支持力的就少了，量到的重力变小；多出来的部分约为$2m\omega v'$。向西航行正好相反。
+
+- id: p7
+  tier: thinking
+  statement: |
+    航天发射场多建在纬度低的地方，卫星多向东发射。
+
+    （1）为什么要向东发射？在赤道上，地球自转能「白送」火箭多大的速度？
+
+    （2）在北纬$40^\circ$呢？
+
+    （3）发射场纬度低，还有什么好处？
+  hints:
+    - |
+      地面上的点随地球自转，向东运动，速率是$\omega R\cos\lambda$。
+    - |
+      赤道上$R=6.37\times10^6\,\mathrm m$，$\omega=7.29\times10^{-5}\,\mathrm{rad/s}$。
+    - |
+      想一想地面上量到的重力随纬度怎样变。
+  reference: |
+    （1）发射前火箭就随地面向东运动，速率$\omega R\cos\lambda$。向东发射，这个速度就算在火箭的速度里；向西发射反而要先抵消它。赤道上是$7.29\times10^{-5}\times6.37\times10^6\approx464\,\mathrm{m/s}$，约是绕地球表面附近做圆周运动所需的$7.9\,\mathrm{km/s}$（见[万有引力定律](lesson:physics.newtonian-mechanics.gravitation)）的$6\%$，能省下不少燃料。
+
+    （2）乘上$\cos40^\circ$，约$356\,\mathrm{m/s}$，少了约$110\,\mathrm{m/s}$。
+
+    （3）低纬度处离心力大，量到的重力小一点。更重要的是，地球同步卫星要在赤道上空运行（见[万有引力定律](lesson:physics.newtonian-mechanics.gravitation)的例 1），从低纬度发射，卫星轨道转到赤道平面所需的调整小，省燃料。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）用科里奥利力说明：北半球的台风为什么从上往下看逆时针旋转？
+
+    （2）台风很少在赤道附近南北$5^\circ$以内生成，为什么？
+
+    （3）南半球的台风怎样旋转？
+  hints:
+    - |
+      台风中心气压低，四周的空气流向中心。
+    - |
+      水平方向的偏转和$\sin\lambda$成正比。
+    - |
+      南半球的偏转方向和北半球相反。
+  reference: |
+    （1）台风中心气压低，四周的空气向中心流去。北半球流动的空气都向右偏：从北边南下的偏向西，从南边北上的偏向东，从东边西流的偏向北，从西边东流的偏向南，合起来就绕着中心逆时针旋转。
+
+    （2）水平方向的偏转和$\sin\lambda$成正比，赤道附近$\sin\lambda$接近零，流向低气压中心的空气几乎不偏，直接把中心填满，转不起来，形不成台风。
+
+    （3）南半球的空气向左偏，台风顺时针旋转。

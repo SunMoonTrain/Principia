@@ -1,0 +1,186 @@
+- id: p1
+  tier: easy
+  statement: |
+    月球的质量是$7.35\times10^{22}\,\mathrm{kg}$，半径是$1.74\times10^6\,\mathrm m$，引力常量取$6.67\times10^{-11}\,\mathrm{N\,m^2/kg^2}$。月球的逃逸速度是多少？以$\mathrm{km/s}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: sqrt(2*6.67e-11*7.35e22/1.74e6)/1000
+    unit: |
+      $\mathrm{km/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      只有月球的引力做功，机械能守恒；刚好能逃到无穷远时，机械能为零。
+    - |
+      $\frac12mv^2-\frac{GMm}R=0$，$v=\sqrt{\frac{2GM}R}$。
+    - |
+      $v=\sqrt{\frac{2\times6.67\times10^{-11}\times7.35\times10^{22}}{1.74\times10^6}}\approx2.37\times10^3\,\mathrm{m/s}$，即$2.37\,\mathrm{km/s}$。
+  solution: |
+    刚好能逃到无穷远时，机械能为零：$\frac12mv^2-\frac{GMm}R=0$，$v=\sqrt{\frac{2GM}R}=\sqrt{\frac{2\times6.67\times10^{-11}\times7.35\times10^{22}}{1.74\times10^6}}\approx2.37\,\mathrm{km/s}$，只有地球的五分之一左右。气体分子容易达到这样的速率，这是月球几乎没有大气的原因之一。
+
+- id: p2
+  tier: easy
+  statement: |
+    引力势能都取无穷远处为参考点，不计空气。下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        地球的质量不变、半径缩小一半，逃逸速度变为原来的$2$倍
+      - |
+        两个质点之间的距离变为原来的$2$倍，引力势能变为原来的一半
+      - |
+        逃逸速度和被发射的物体的质量无关
+      - |
+        从地面以$10\,\mathrm{km/s}$竖直向上发射的物体，最后会落回地面
+      - |
+        物体从远处向地球靠近，引力势能增大
+    value: [2, 3, 4]
+  hints:
+    - |
+      引力势能是$-\frac{GMm}r$，注意负号。
+    - |
+      逃逸速度是$\sqrt{\frac{2GM}R}$。
+    - |
+      B、C、D 对；A、E 错。
+  solution: |
+    A 错：$R$减半，$\sqrt{\frac{2GM}R}$变为原来的$\sqrt2$倍。B 对：$-\frac{GMm}{2r}$是$-\frac{GMm}r$的一半。C 对：$\sqrt{\frac{2GM}R}$里没有物体的质量。
+
+    D 对：$10\,\mathrm{km/s}$小于地球的逃逸速度$11.2\,\mathrm{km/s}$，机械能是负的，物体飞到一定高度就会落回来。E 错：$r$减小时$-\frac{GMm}r$更负，引力势能减小，减少的部分变成了动能。
+
+- id: p3
+  tier: medium
+  statement: |
+    从地面竖直向上发射一个物体，不计空气，要让它到达离地面$1000\,\mathrm{km}$的高度，发射的速率至少多大？$g$取$9.8\,\mathrm{m/s^2}$，地球半径取$6.37\times10^6\,\mathrm m$。以$\mathrm{km/s}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: sqrt(2*9.8*6.37e6*1.0e6/(6.37e6 + 1.0e6))/1000
+    unit: |
+      $\mathrm{km/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      机械能守恒，到最高处时速度为零；用$GM=gR^2$代掉$GM$。
+    - |
+      $\frac12v_0^2-\frac{gR^2}R=-\frac{gR^2}{R+h}$，所以$v_0^2=\frac{2gRh}{R+h}$。
+    - |
+      $v_0=\sqrt{\frac{2\times9.8\times6.37\times10^6\times1.0\times10^6}{7.37\times10^6}}\approx4.12\times10^3\,\mathrm{m/s}$。
+  solution: |
+    只有引力做功，机械能守恒，最高处速度为零：$\frac12mv_0^2-\frac{GMm}R=-\frac{GMm}{R+h}$。代入$GM=gR^2$，$v_0^2=2gR^2\Bigl(\frac1R-\frac1{R+h}\Bigr)=\frac{2gRh}{R+h}$，$v_0=\sqrt{\frac{2\times9.8\times6.37\times10^6\times1.0\times10^6}{7.37\times10^6}}\approx4.12\,\mathrm{km/s}$。按$mgh$算是$\sqrt{2gh}\approx4.43\,\mathrm{km/s}$，偏大了：越往上$g$越小，用不着那么大的速率。
+
+- id: p4
+  tier: medium
+  statement: |
+    卫星在离地面$400\,\mathrm{km}$的圆轨道上运行。它沿运动方向加速，速率至少要增加多少，才能逃离地球？$g$取$9.8\,\mathrm{m/s^2}$，地球半径取$6.37\times10^6\,\mathrm m$，不计空气。以$\mathrm{km/s}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: (sqrt(2) - 1)*sqrt(9.8*(6.37e6)^2/6.77e6)/1000
+    unit: |
+      $\mathrm{km/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先求圆轨道上的速率；再求在这个高度上刚好能逃走的速率，机械能为零。
+    - |
+      圆轨道上$v=\sqrt{\frac{GM}r}$；刚好逃走时$\frac12v_{\mathrm e}^2=\frac{GM}r$，$v_{\mathrm e}=\sqrt2v$。
+    - |
+      $r=6.77\times10^6\,\mathrm m$，$v=\sqrt{\frac{gR^2}r}\approx7.66\,\mathrm{km/s}$，要增加$(\sqrt2-1)v\approx3.17\,\mathrm{km/s}$。
+  solution: |
+    $r=R+h=6.77\times10^6\,\mathrm m$。圆轨道上$\frac{GMm}{r^2}=\frac{mv^2}r$，$v=\sqrt{\frac{GM}r}=\sqrt{\frac{gR^2}r}\approx7.66\,\mathrm{km/s}$。在这个高度上刚好能逃到无穷远，要$\frac12mv_{\mathrm e}^2-\frac{GMm}r=0$，$v_{\mathrm e}=\sqrt{\frac{2GM}r}=\sqrt2v\approx10.84\,\mathrm{km/s}$。所以至少要增加$(\sqrt2-1)v\approx3.17\,\mathrm{km/s}$，比从地面出发省得多：卫星已经有了很大的速率，又已经在高处。
+
+- id: p5
+  tier: hard
+  statement: |
+    不计空气和地球的自转，把天体都当作质点。太阳的质量取$1.99\times10^{30}\,\mathrm{kg}$，日地距离取$1.50\times10^{11}\,\mathrm m$，地球绕太阳公转的速率取$29.8\,\mathrm{km/s}$，地球的逃逸速度取$11.2\,\mathrm{km/s}$，引力常量取$6.67\times10^{-11}\,\mathrm{N\,m^2/kg^2}$。
+
+    （1）在地球轨道附近，物体相对太阳的速率至少多大，才能逃离太阳？
+
+    （2）顺着地球公转的方向发射最省力。物体逃出地球的引力范围以后，相对地球的速率至少还要多大？
+
+    （3）粗略地把过程分成先逃离地球、再逃离太阳两段，在地面上发射的速率至少要多大？这个速率叫作第三宇宙速度。
+  hints:
+    - |
+      逃离太阳的条件和逃离地球一样：物体和太阳组成的机械能不小于零。
+    - |
+      相对太阳的速度等于相对地球的速度加上地球相对太阳的速度，方向相同时直接相加。
+    - |
+      逃离地球这一段，机械能守恒：$\frac12v_3^2-\frac{GM_{\text{地}}}R=\frac12v_\infty^2$，而$\frac{2GM_{\text{地}}}R=v_2^2$。
+  reference: |
+    （1）和逃离地球同样的道理，$\frac12v^2-\frac{GM_{\text{日}}}r\ge0$，$v\ge\sqrt{\frac{2GM_{\text{日}}}r}=\sqrt{\frac{2\times6.67\times10^{-11}\times1.99\times10^{30}}{1.50\times10^{11}}}\approx42.1\,\mathrm{km/s}$。
+
+    （2）物体逃出地球的引力范围时，还在地球轨道附近，和地球一起以$29.8\,\mathrm{km/s}$绕太阳运动。顺着公转方向射出，相对太阳的速率是相对地球的速率加上$29.8\,\mathrm{km/s}$，所以相对地球至少还要$42.1-29.8=12.3\,\mathrm{km/s}$。
+
+    （3）在逃离地球的这一段里，只看地球的引力，机械能守恒：$\frac12v_3^2-\frac{GM_{\text{地}}}R=\frac12v_\infty^2$，$v_\infty=12.3\,\mathrm{km/s}$是逃出地球的引力范围以后剩下的速率。由$\frac{2GM_{\text{地}}}R=v_2^2$，$v_3=\sqrt{v_2^2+v_\infty^2}=\sqrt{11.2^2+12.3^2}\approx16.6\,\mathrm{km/s}$。注意不是$11.2+12.3$：动能才能这样相加。
+
+- id: p6
+  tier: hard
+  statement: |
+    光的速率是$3.00\times10^8\,\mathrm{m/s}$，引力常量取$6.67\times10^{-11}\,\mathrm{N\,m^2/kg^2}$。
+
+    （1）按牛顿力学估计，质量为$M$的星体，半径小于多少时，逃逸速度会超过光速？
+
+    （2）太阳的质量是$1.99\times10^{30}\,\mathrm{kg}$，要压缩到多大的半径，才会这样？
+
+    （3）地球的质量是$5.97\times10^{24}\,\mathrm{kg}$，又要压缩到多大？
+  hints:
+    - |
+      逃逸速度$\sqrt{\frac{2GM}R}$随$R$减小而增大。
+    - |
+      令$\sqrt{\frac{2GM}R}=c$，解出$R$。
+    - |
+      $R=\frac{2GM}{c^2}$，太阳约$3\,\mathrm{km}$。
+  reference: |
+    （1）$\sqrt{\frac{2GM}R}>c$，即$R<\frac{2GM}{c^2}$。
+
+    （2）$\frac{2\times6.67\times10^{-11}\times1.99\times10^{30}}{(3.00\times10^8)^2}\approx2.95\times10^3\,\mathrm m$，约$3\,\mathrm{km}$，而太阳现在的半径约$7\times10^5\,\mathrm{km}$。
+
+    （3）$\frac{2\times6.67\times10^{-11}\times5.97\times10^{24}}{(3.00\times10^8)^2}\approx8.85\times10^{-3}\,\mathrm m$，不到$1\,\mathrm{cm}$。
+
+    1783 年，米切尔（Michell）就这样设想过连光也跑不出来的「暗星」。光的运动要用相对论处理，这里的估计并不严格；按广义相对论算，黑洞（black hole）的临界半径恰好也是$\frac{2GM}{c^2}$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    低轨道上的卫星受到极稀薄的空气的阻碍，轨道会一圈一圈慢慢降低，每一圈都近似是圆。
+
+    （1）空气对卫星做负功，卫星的机械能怎样变？
+
+    （2）轨道降低以后，卫星的速率是变大了还是变小了？
+
+    （3）空气明明在阻碍卫星，怎样从能量上理解（2）的结果？
+  hints:
+    - |
+      圆轨道的机械能是$-\frac{GMm}{2r}$，速率是$\sqrt{\frac{GM}r}$。
+    - |
+      机械能减少，$-\frac{GMm}{2r}$要更负，$r$怎样变？
+    - |
+      卫星降低时，引力做正功；比较引力做的正功和空气做的负功。
+  reference: |
+    （1）空气做负功，机械能减少。
+
+    （2）圆轨道的机械能$-\frac{GMm}{2r}$减少，$r$就减小；速率$\sqrt{\frac{GM}r}$随$r$减小而增大，所以速率变大了。
+
+    （3）卫星螺旋着往下降，引力做正功。圆轨道上动能是$\frac{GMm}{2r}$，引力势能是$-\frac{GMm}r$：机械能每减少$\Delta$，引力势能就减少$2\Delta$、动能增加$\Delta$。也就是说，引力做的正功是空气做的负功的两倍，动能净增加。空气让卫星「变慢」，只是让它掉进了更低、更快的轨道。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）以地面为参考点，离地心$r$处的物体的引力势能是多少？它和取无穷远处为参考点的结果相差多少？
+
+    （2）两种取法算出的两处之间的势能差一样吗？
+
+    （3）为什么通常取无穷远处为参考点？
+  hints:
+    - |
+      势能等于从这里移到参考点时引力做的功。
+    - |
+      两种取法相差一个常数。
+    - |
+      取无穷远处为参考点时，机械能的正负说明什么？
+  reference: |
+    （1）从$r$移到地面，引力做的功是$\int_r^R\Bigl(-\frac{GMm}{s^2}\Bigr)\dd s=GMm\Bigl(\frac1R-\frac1r\Bigr)$，这就是以地面为参考点的势能，比$-\frac{GMm}r$多了常数$\frac{GMm}R$。
+
+    （2）一样。两种取法处处相差同一个常数，相减时消掉了，有意义的只是势能的差。
+
+    （3）无穷远处引力为零，和天体的半径无关，式子最简单；而且机械能的正负直接说明物体能不能逃走：$E<0$的被天体束缚住，$E\ge0$的能飞到无穷远。势能是负的，并不表示「欠了能量」，只表示要把物体送到无穷远，得给它能量。

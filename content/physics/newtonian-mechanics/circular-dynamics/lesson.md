@@ -57,5 +57,5 @@ status: reviewed
 ## 常见误区
 
 - 「做圆周运动的物体，除了:term[重力]{id="physics.newtonian-mechanics.weight"}、:term[拉力]{id="physics.newtonian-mechanics.tension"}等，还受一个:term[向心力]{id="physics.newtonian-mechanics.centripetal-force"}。」向心力是这些:term[力]{id="physics.newtonian-mechanics.force"}的:term[合力]{id="physics.newtonian-mechanics.net-force"}的一个分量，受力分析时不能另外再画一个。
-- 「物体做圆周运动，是因为向心力和离心力（centrifugal force）平衡了。」在:term[惯性系]{id="physics.newtonian-mechanics.inertial-frame"}里没有离心力；指向圆心的合力不为零，正是它提供了:term[向心加速度]{id="physics.newtonian-mechanics.centripetal-acceleration"}。
+- 「物体做圆周运动，是因为向心力和:term[离心力]{id="physics.newtonian-mechanics.centrifugal-force"}（centrifugal force）平衡了。」在:term[惯性系]{id="physics.newtonian-mechanics.inertial-frame"}里没有离心力；指向圆心的合力不为零，正是它提供了:term[向心加速度]{id="physics.newtonian-mechanics.centripetal-acceleration"}。
 - 「圆锥摆转得越快，绳子越接近竖直。」恰好相反，例 1 里转得越快，绳子越接近水平。

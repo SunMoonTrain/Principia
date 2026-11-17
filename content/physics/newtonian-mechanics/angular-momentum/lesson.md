@@ -4,7 +4,7 @@ title: |
   力矩与角动量
 goal: |
   会计算质点的角动量和力矩，并用$\dv{\vb{L}}{t}=\boldsymbol{\tau}$分析转动。
-prerequisites: [physics.newtonian-mechanics.newtons-laws, math.linear-algebra.cross-product]
+prerequisites: [physics.newtonian-mechanics.newtons-laws, physics.newtonian-mechanics.circular-motion, math.linear-algebra.cross-product]
 minutes: 28
 summary: |
   力矩是角动量的变化率；力矩为零时，角动量守恒。
@@ -46,7 +46,7 @@ status: reviewed
 ::anchor{id="thm-conservation"}
 推论（:term[角动量守恒]{id="physics.newtonian-mechanics.conservation-of-angular-momentum"}，conservation of angular momentum）：合力对$O$的力矩一直为零时，质点对$O$的角动量不变。合力总沿着质点和$O$的连线时就是这样，这样的:term[力]{id="physics.newtonian-mechanics.force"}叫作:term[有心力]{id="physics.newtonian-mechanics.central-force"}（central force），$O$叫作力心（center of force）。
 
-角动量守恒有两个直接的后果。$\vb L$的方向不变，而$\vb r$总垂直于$\vb L$，所以质点始终在过$O$、垂直于$\vb L$的平面里运动。$\vb L$的大小不变，而$\vb r$在$\Delta t$里扫过的面积约为$\frac12|\vb r\times\vb v\Delta t|$，所以扫过面积的快慢$\frac L{2m}$不变：相等的时间扫过相等的面积，这正是开普勒第二定律（Kepler's second law）。
+角动量守恒有两个直接的后果。$\vb L$的方向不变，而$\vb r$总垂直于$\vb L$，所以质点始终在过$O$、垂直于$\vb L$的平面里运动。$\vb L$的大小不变，而$\vb r$在$\Delta t$里扫过的面积约为$\frac12|\vb r\times\vb v\Delta t|$，所以扫过面积的快慢$\frac L{2m}$不变：相等的时间扫过相等的面积，这正是:term[开普勒第二定律]{id="physics.newtonian-mechanics.keplers-second-law"}（Kepler's second law）。
 
 ## 几何图像
 
@@ -74,7 +74,7 @@ $$
 
 光滑水平桌面中央有一个小孔，细绳穿过小孔，一端拴着小球。小球在桌面上以$2.0\,\mathrm{m/s}$绕小孔做半径$0.50\,\mathrm m$的圆周运动，在桌下慢慢拉绳，把半径拉到$0.25\,\mathrm m$。这时小球的:term[速率]{id="physics.newtonian-mechanics.speed"}（speed）多大，:term[角速度]{id="physics.newtonian-mechanics.angular-velocity"}（angular velocity）变成原来的几倍？
 
-**为什么想到这么做**：在水平方向，小球只受绳子沿绳指向小孔的:term[拉力]{id="physics.newtonian-mechanics.tension"}（tension），这是以小孔为力心的:term[有心力]{id="physics.newtonian-mechanics.central-force"}，所以小球对小孔的:term[角动量守恒]{id="physics.newtonian-mechanics.conservation-of-angular-momentum"}。
+**为什么想到这么做**：在水平方向，小球只受绳子对它沿绳指向小孔的:term[力]{id="physics.newtonian-mechanics.force"}，这是以小孔为力心的:term[有心力]{id="physics.newtonian-mechanics.central-force"}，所以小球对小孔的:term[角动量守恒]{id="physics.newtonian-mechanics.conservation-of-angular-momentum"}。
 
 **推导**：拉绳很慢，小球一直近似做圆周运动，$\vb v$和$\vb r$垂直，:term[角动量]{id="physics.newtonian-mechanics.angular-momentum"}$L=mrv$不变：$0.50\times2.0=0.25\,v$，$v=4.0\,\mathrm{m/s}$。角速度$\frac vr$从$4.0\,\mathrm{rad/s}$变成$16\,\mathrm{rad/s}$，是原来的$4$倍。速率翻了一倍，增加的那部分来自拉绳的人，到[功与动能定理](lesson:physics.newtonian-mechanics.work-energy)再算。
 

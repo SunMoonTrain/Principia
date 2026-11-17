@@ -71,7 +71,7 @@ sliders:
       机械能$E$
 :::
 
-蓝色曲线是一条有两个谷的:term[势能曲线]{id="physics.newtonian-mechanics.potential-energy-curve"}，单位是$\mathrm J$和$\mathrm m$；橙色水平线是:term[机械能]{id="physics.newtonian-mechanics.mechanical-energy"}$E$，黑点是:term[转折点]{id="physics.newtonian-mechanics.turning-point"}。$x=\pm1$是谷底，是:term[稳定平衡]{id="physics.newtonian-mechanics.stable-equilibrium"}；$x=0$是峰顶，是:term[不稳定平衡]{id="physics.newtonian-mechanics.unstable-equilibrium"}。$E<1\,\mathrm J$时有四个转折点，质点被关在其中一个谷里，在两个黑点之间来回运动；把$E$拖到$1\,\mathrm J$以上，中间的两个黑点消失，质点越过峰顶，在最外面的两个黑点之间来回运动。
+蓝色曲线是一条有两个谷的:term[势能曲线]{id="physics.newtonian-mechanics.potential-energy-curve"}，单位是$\mathrm J$和$\mathrm m$；橙色水平线是:term[机械能]{id="physics.newtonian-mechanics.mechanical-energy"}$E$，圆点是:term[转折点]{id="physics.newtonian-mechanics.turning-point"}。$x=\pm1$是谷底，是:term[稳定平衡]{id="physics.newtonian-mechanics.stable-equilibrium"}；$x=0$是峰顶，是:term[不稳定平衡]{id="physics.newtonian-mechanics.unstable-equilibrium"}。$E<1\,\mathrm J$时有四个转折点，质点被关在其中一个谷里，在两个圆点之间来回运动；把$E$拖到$1\,\mathrm J$以上，中间的两个圆点消失，质点越过峰顶，在最外面的两个圆点之间来回运动。
 
 ## 例题
 

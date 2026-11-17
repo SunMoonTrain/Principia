@@ -786,3 +786,183 @@ glossary:
       阻力和重力相等时的下落速度，线性阻力时$\frac{mg}b$，平方阻力时$\sqrt{\frac{mg}c}$；从静止下落的物体越来越接近它。
     definedIn: physics.newtonian-mechanics.drag
     anchor: def-terminal-velocity
+  - id: physics.newtonian-mechanics.gravitation
+    zh: |
+      万有引力
+    en: |
+      gravitation
+    brief: |
+      任意两个有质量的物体之间的相互吸引；两个质点之间的大小是$\frac{Gm_1m_2}{r^2}$，方向沿连线。简称引力。
+    definedIn: physics.newtonian-mechanics.gravitation
+    anchor: def-gravitation
+  - id: physics.newtonian-mechanics.law-of-gravitation
+    zh: |
+      万有引力定律
+    en: |
+      law of universal gravitation
+    brief: |
+      任意两个质点相互吸引，引力沿连线，大小$F=\frac{Gm_1m_2}{r^2}$，和质量之积成正比、和距离的平方成反比。
+    definedIn: physics.newtonian-mechanics.gravitation
+    anchor: def-gravitation
+  - id: physics.newtonian-mechanics.gravitational-constant
+    zh: |
+      引力常量
+    en: |
+      gravitational constant
+    brief: |
+      万有引力定律里的比例系数$G=6.674\,30\times10^{-11}\,\mathrm{N\,m^2/kg^2}$；它极小，日常物体之间的引力察觉不到。
+    definedIn: physics.newtonian-mechanics.gravitation
+    anchor: def-gravitation
+  - id: physics.newtonian-mechanics.first-cosmic-velocity
+    zh: |
+      第一宇宙速度
+    en: |
+      first cosmic velocity
+    brief: |
+      贴着地面绕地球做圆周运动的速率$\sqrt{gR}\approx7.9\,\mathrm{km/s}$，也叫环绕速度，是绕地球的圆轨道上最大的速率。
+    definedIn: physics.newtonian-mechanics.gravitation
+    anchor: def-first-cosmic-velocity
+  - id: physics.newtonian-mechanics.gravitational-potential-energy-universal
+    zh: |
+      引力势能
+    en: |
+      gravitational potential energy
+    brief: |
+      两个质点之间万有引力的势能，取无穷远处为参考点时是$-\frac{GMm}r$；离地面不高时，它的差就是$mgh$。
+    definedIn: physics.newtonian-mechanics.gravitational-potential
+    anchor: def-gravitational-potential
+  - id: physics.newtonian-mechanics.escape-velocity
+    zh: |
+      逃逸速度
+    en: |
+      escape velocity
+    brief: |
+      从天体表面出发、只受它的引力，能飞到无穷远的最小速率$\sqrt{\frac{2GM}R}$；地球的约$11.2\,\mathrm{km/s}$，也叫第二宇宙速度。
+    definedIn: physics.newtonian-mechanics.gravitational-potential
+    anchor: def-escape-velocity
+  - id: physics.newtonian-mechanics.effective-potential
+    zh: |
+      有效势
+    en: |
+      effective potential
+    brief: |
+      有心力问题里$U_{\text{eff}}=U(r)+\frac{L^2}{2mr^2}$；角动量守恒时，$r$的变化就像在它里面做一维运动。
+    definedIn: physics.newtonian-mechanics.central-forces
+    anchor: def-effective-potential
+  - id: physics.newtonian-mechanics.pericenter
+    zh: |
+      近心点
+    en: |
+      pericenter
+    brief: |
+      有心力作用下轨道上离力心最近的点，那里速度垂直于半径；绕太阳的叫近日点，绕地球的叫近地点。
+    definedIn: physics.newtonian-mechanics.central-forces
+    anchor: def-apsides
+  - id: physics.newtonian-mechanics.shell-theorem
+    zh: |
+      球壳定理
+    en: |
+      shell theorem
+    brief: |
+      均匀球壳对外面的质点的引力如同质量集中在球心，对里面的质点没有引力；引力和距离的平方成反比是关键。
+    definedIn: physics.newtonian-mechanics.shell-theorem
+    anchor: thm-shell
+  - id: physics.newtonian-mechanics.reduced-mass
+    zh: |
+      约化质量
+    en: |
+      reduced mass
+    brief: |
+      两个质点的$\mu=\frac{m_1m_2}{m_1+m_2}$；只有相互作用时，相对位置的运动就像质量为$\mu$的质点受这个力。
+    definedIn: physics.newtonian-mechanics.two-body-problem
+    anchor: def-reduced-mass
+  - id: physics.newtonian-mechanics.noninertial-frame
+    zh: |
+      非惯性系
+    en: |
+      non-inertial frame
+    brief: |
+      相对惯性系做加速运动的参考系；在它里面不受力的质点也有加速度，要加上惯性力才能用牛顿第二定律。
+    definedIn: physics.newtonian-mechanics.accelerating-frames
+    anchor: def-noninertial-frame
+  - id: physics.newtonian-mechanics.inertial-force
+    zh: |
+      惯性力
+    en: |
+      inertial force
+    brief: |
+      在非惯性系里为了照用牛顿第二定律而加上的力，加速度为$\vb a_0$的平动参考系里是$-m\vb a_0$；没有施力物体，也没有反作用力。
+    definedIn: physics.newtonian-mechanics.accelerating-frames
+    anchor: def-inertial-force
+  - id: physics.newtonian-mechanics.angular-velocity-vector
+    zh: |
+      角速度矢量
+    en: |
+      angular velocity vector
+    brief: |
+      大小是角速度的大小、方向沿转轴按右手定则定的矢量$\boldsymbol\omega$；转动参考系里固定的点的速度是$\boldsymbol\omega\times\vb r$。
+    definedIn: physics.newtonian-mechanics.rotating-frames
+    anchor: def-angular-velocity-vector
+  - id: physics.newtonian-mechanics.rotating-frame
+    zh: |
+      转动参考系
+    en: |
+      rotating frame
+    brief: |
+      相对惯性系绕一根轴转动的参考系，是非惯性系；在里面要加上离心力和科里奥利力，才能照用牛顿第二定律。
+    definedIn: physics.newtonian-mechanics.rotating-frames
+    anchor: def-rotating-frame
+  - id: physics.newtonian-mechanics.centrifugal-force
+    zh: |
+      离心力
+    en: |
+      centrifugal force
+    brief: |
+      转动参考系里加在质点上的惯性力$-m\boldsymbol\omega\times(\boldsymbol\omega\times\vb r')$，背离转轴，大小$m\omega^2\rho$；惯性系里没有它。
+    definedIn: physics.newtonian-mechanics.rotating-frames
+    anchor: def-centrifugal-force
+  - id: physics.newtonian-mechanics.coriolis-force
+    zh: |
+      科里奥利力
+    en: |
+      Coriolis force
+    brief: |
+      转动参考系里加在相对它运动的质点上的惯性力$-2m\boldsymbol\omega\times\vb v'$；垂直于相对速度，不做功，只改变运动方向。
+    definedIn: physics.newtonian-mechanics.rotating-frames
+    anchor: def-coriolis-force
+  - id: physics.newtonian-mechanics.apocenter
+    zh: |
+      远心点
+    en: |
+      apocenter
+    brief: |
+      有心力作用下有界的轨道上离力心最远的点，那里速度垂直于半径；绕太阳的叫远日点，绕地球的叫远地点。
+    definedIn: physics.newtonian-mechanics.central-forces
+    anchor: def-apsides
+  - id: physics.newtonian-mechanics.keplers-first-law
+    zh: |
+      开普勒第一定律
+    en: |
+      Kepler's first law
+    brief: |
+      行星绕太阳的轨道是椭圆，太阳在椭圆的一个焦点上；平方反比的引力下，有界的轨道都是这样的椭圆或圆。
+    definedIn: physics.newtonian-mechanics.kepler-orbits
+    anchor: thm-kepler
+  - id: physics.newtonian-mechanics.keplers-second-law
+    zh: |
+      开普勒第二定律
+    en: |
+      Kepler's second law
+    brief: |
+      行星和太阳的连线在相等的时间里扫过相等的面积；它是角动量守恒的结果，任何有心力下都成立。
+    definedIn: physics.newtonian-mechanics.kepler-orbits
+    anchor: thm-kepler
+  - id: physics.newtonian-mechanics.keplers-third-law
+    zh: |
+      开普勒第三定律
+    en: |
+      Kepler's third law
+    brief: |
+      绕同一个天体的各条椭圆轨道，周期的平方和半长轴的立方之比相同：$\frac{T^2}{a^3}=\frac{4\pi^2}{GM}$。
+    definedIn: physics.newtonian-mechanics.kepler-orbits
+    anchor: thm-kepler

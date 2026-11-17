@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" width="640" height="260" font-size="14">
+  <!-- 太空里一边前进一边转动的哑铃，大球的质量是小球的两倍。图里是相等时间间隔的四个位置：质心 C 沿直线匀速前进，哑铃绕 C 匀速转动。第三个位置上标出了从固定点 O 到质心的 rC、质心的速度 vC 和大球相对质心的位置 r1′。 -->
+  <line x1="100.0" y1="211.0" x2="615.0" y2="69.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="4 3" />
+  <line x1="156.9" y1="214.1" x2="106.3" y2="171.7" style="stroke: var(--muted, #6b7280)" stroke-width="1.6" />
+  <circle cx="156.9" cy="214.1" r="8.0" style="stroke: var(--muted, #6b7280); fill: var(--bg, #ffffff)" stroke-width="1.6" />
+  <circle cx="106.3" cy="171.7" r="5.5" style="stroke: var(--muted, #6b7280); fill: var(--bg, #ffffff)" stroke-width="1.6" />
+  <circle cx="140.0" cy="200.0" r="2.6" style="fill: var(--muted, #6b7280)" />
+  <line x1="305.7" y1="152.5" x2="243.7" y2="175.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.6" />
+  <circle cx="305.7" cy="152.5" r="8.0" style="stroke: var(--muted, #6b7280); fill: var(--bg, #ffffff)" stroke-width="1.6" />
+  <circle cx="243.7" cy="175.0" r="5.5" style="stroke: var(--muted, #6b7280); fill: var(--bg, #ffffff)" stroke-width="1.6" />
+  <circle cx="285.0" cy="160.0" r="2.6" style="fill: var(--muted, #6b7280)" />
+  <line x1="433.8" y1="98.3" x2="422.4" y2="163.3" style="stroke: currentColor" stroke-width="1.6" />
+  <circle cx="433.8" cy="98.3" r="8.0" style="stroke: var(--accent, #2563eb); fill: var(--bg, #ffffff)" stroke-width="1.6" />
+  <circle cx="422.4" cy="163.3" r="5.5" style="stroke: var(--good, #059669); fill: var(--bg, #ffffff)" stroke-width="1.6" />
+  <circle cx="430.0" cy="120.0" r="2.6" style="fill: currentColor" />
+  <line x1="558.1" y1="65.9" x2="608.7" y2="108.3" style="stroke: var(--muted, #6b7280)" stroke-width="1.6" />
+  <circle cx="558.1" cy="65.9" r="8.0" style="stroke: var(--muted, #6b7280); fill: var(--bg, #ffffff)" stroke-width="1.6" />
+  <circle cx="608.7" cy="108.3" r="5.5" style="stroke: var(--muted, #6b7280); fill: var(--bg, #ffffff)" stroke-width="1.6" />
+  <circle cx="575.0" cy="80.0" r="2.6" style="fill: var(--muted, #6b7280)" />
+  <circle cx="40.0" cy="60.0" r="3.0" style="fill: currentColor" />
+  <text x="28.0" y="50.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">O</tspan></text>
+  <line x1="40.0" y1="60.0" x2="420.1" y2="118.4" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 427.0 119.5 L 418.5 121.9 L 419.7 114.6 Z" style="fill: currentColor" />
+  <text x="235.0" y="80.0" fill="currentColor" text-anchor="middle"><tspan font-weight="bold"><tspan font-style="italic">r</tspan></tspan><tspan dy="4" font-size="11">C</tspan></text>
+  <line x1="430.0" y1="120.0" x2="479.2" y2="106.4" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 485.9 104.6 L 479.2 110.3 L 477.2 103.1 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="493.8" y="121.5" style="fill: var(--accent, #2563eb)"><tspan font-weight="bold"><tspan font-style="italic">v</tspan></tspan><tspan dy="4" font-size="11">C</tspan></text>
+  <text x="442.0" y="140.0" fill="currentColor"><tspan font-style="italic">C</tspan></text>
+  <line x1="430.0" y1="120.0" x2="431.4" y2="112.1" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 432.3 107.2 L 434.2 113.6 L 428.3 112.6 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="446.8" y="100.3" fill="currentColor"><tspan font-weight="bold"><tspan font-style="italic">r</tspan></tspan><tspan dy="4" font-size="11">1</tspan><tspan dy="-4">′</tspan></text>
+</svg>
