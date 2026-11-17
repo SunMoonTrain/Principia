@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 260" width="660" height="260" font-size="14">
+  <!-- 牛顿定律的两个图：左边是两辆小车夹着压缩的弹簧，放开后向两边加速，质量 m2 是 m1 的两倍，加速度 a1 的长度是 a2 的两倍，方向相反。右边是光滑水平面上并排的两个木块，推力 F 作用在木块 1 上；木块 1 推木块 2 的力 N 向右，作用在木块 2 上；木块 2 推木块 1 的力 N′ 向左，作用在木块 1 上，两者大小相等、方向相反，作用在不同的物体上。 -->
+  <line x1="28.0" y1="196.0" x2="316.0" y2="196.0" style="stroke: currentColor" stroke-width="1.6" />
+  <rect x="70.0" y="146.0" width="56.0" height="40.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <circle cx="82.0" cy="191.0" r="5.0" style="stroke: currentColor" fill="none" stroke-width="1.4" />
+  <circle cx="114.0" cy="191.0" r="5.0" style="stroke: currentColor" fill="none" stroke-width="1.4" />
+  <text x="98.0" y="171.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">m</tspan><tspan dy="4" font-size="11">1</tspan></text>
+  <rect x="176.0" y="130.0" width="92.0" height="56.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <circle cx="188.0" cy="191.0" r="5.0" style="stroke: currentColor" fill="none" stroke-width="1.4" />
+  <circle cx="256.0" cy="191.0" r="5.0" style="stroke: currentColor" fill="none" stroke-width="1.4" />
+  <text x="222.0" y="163.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">m</tspan><tspan dy="4" font-size="11">2</tspan></text>
+  <path d="M 126.0 166.0 L 132.2 173.0 L 138.5 159.0 L 144.8 173.0 L 151.0 159.0 L 157.2 173.0 L 163.5 159.0 L 169.8 173.0 L 176.0 166.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.4" stroke-linejoin="round" />
+  <line x1="98.0" y1="110.0" x2="41.0" y2="110.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 34.0 110.0 L 42.0 106.3 L 42.0 113.7 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="66.0" y="96.0" style="fill: var(--accent, #2563eb)" text-anchor="middle"><tspan font-style="italic">a</tspan><tspan dy="4" font-size="11">1</tspan></text>
+  <line x1="222.0" y1="110.0" x2="247.0" y2="110.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 254.0 110.0 L 246.0 113.7 L 246.0 106.3 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="238.0" y="96.0" style="fill: var(--accent, #2563eb)" text-anchor="middle"><tspan font-style="italic">a</tspan><tspan dy="4" font-size="11">2</tspan></text>
+  <text x="172.0" y="236.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">m</tspan><tspan dy="4" font-size="11">2</tspan><tspan dy="-4">=</tspan> 2<tspan font-style="italic">m</tspan><tspan dy="4" font-size="11">1</tspan>，<tspan font-style="italic">a</tspan><tspan dy="4" font-size="11">1</tspan><tspan dy="-4">=</tspan> 2<tspan font-style="italic">a</tspan><tspan dy="4" font-size="11">2</tspan>，方向相反</text>
+  <line x1="352.0" y1="196.0" x2="640.0" y2="196.0" style="stroke: currentColor" stroke-width="1.6" />
+  <rect x="450.0" y="136.0" width="60.0" height="60.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <rect x="510.0" y="120.0" width="80.0" height="76.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <text x="480.0" y="127.0" fill="currentColor" text-anchor="middle">1</text>
+  <text x="550.0" y="111.0" fill="currentColor" text-anchor="middle">2</text>
+  <line x1="392.0" y1="166.0" x2="441.0" y2="166.0" style="stroke: currentColor" stroke-width="2.2" />
+  <path d="M 448.0 166.0 L 440.0 169.7 L 440.0 162.3 Z" style="fill: currentColor" />
+  <text x="420.0" y="156.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">F</tspan></text>
+  <line x1="514.0" y1="168.0" x2="549.0" y2="168.0" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 556.0 168.0 L 548.0 171.7 L 548.0 164.3 Z" style="fill: var(--good, #059669)" />
+  <text x="536.0" y="158.0" style="fill: var(--good, #059669)" text-anchor="middle"><tspan font-style="italic">N</tspan></text>
+  <line x1="506.0" y1="168.0" x2="471.0" y2="168.0" style="stroke: var(--good, #059669)" stroke-width="2.2" stroke-dasharray="5 3" />
+  <path d="M 464.0 168.0 L 472.0 164.3 L 472.0 171.7 Z" style="fill: var(--good, #059669)" />
+  <text x="484.0" y="158.0" style="fill: var(--good, #059669)" text-anchor="middle"><tspan font-style="italic">N</tspan>′</text>
+  <text x="496.0" y="236.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">N</tspan>′ = −<tspan font-style="italic">N</tspan>，分别作用在两个木块上</text>
+</svg>

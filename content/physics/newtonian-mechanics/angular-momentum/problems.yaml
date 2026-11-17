@@ -1,0 +1,176 @@
+- id: p1
+  tier: easy
+  statement: |
+    扳手长$0.30\,\mathrm m$，在柄的末端用$60\,\mathrm N$的力拧螺母，力和扳手成$30^\circ$角。这个力对螺母中心的力矩有多大？以$\mathrm{N\cdot m}$为单位。
+  answer:
+    type: number
+    value: 0.3*60*sin(30*pi/180)
+    unit: |
+      $\mathrm{N\cdot m}$
+  hints:
+    - |
+      力矩的大小是$rF\sin\varphi$，$\varphi$是位置矢量和力的夹角。
+    - |
+      这里$r=0.30\,\mathrm m$，$F=60\,\mathrm N$，$\varphi=30^\circ$。
+    - |
+      $0.30\times60\times\sin30^\circ=9.0\,\mathrm{N\cdot m}$。
+  solution: |
+    从螺母中心指向用力点的位置矢量沿扳手，长$0.30\,\mathrm m$，和力成$30^\circ$。力矩大小$\tau=rF\sin\varphi=0.30\times60\times0.5=9.0\,\mathrm{N\cdot m}$。力臂只有$0.15\,\mathrm m$，同样的力垂直于扳手用，力矩能翻一倍。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        质点对$O$点的角动量为零，它一定是静止的
+      - |
+        一个力对某一点的力矩为零，这个力一定为零
+      - |
+        做匀速圆周运动的质点，对圆心的角动量不变
+      - |
+        同一个力对不同参考点的力矩一定相同
+      - |
+        合力为零的一组力，对不同参考点的力矩之和相同
+    value: [3, 5]
+  hints:
+    - |
+      $\vb r\times m\vb v=0$只要求$\vb r$和$\vb v$平行；$\vb r\times\vb F=0$只要求$\vb r$和$\vb F$平行。
+    - |
+      换参考点就是把$\vb r$换成$\vb r-\vb r_0$，看力矩怎样变。
+    - |
+      C、E 对；A、B、D 错。
+  solution: |
+    A 错：质点沿过$O$的直线运动时，$\vb r$和$\vb v$平行，角动量是零，可它在动。B 错：力的作用线过这一点时力矩为零，力本身可以很大。C 对：$\vb r\perp\vb v$，$L=mrv$大小不变，方向一直垂直于圆所在的平面。
+
+    D 错：参考点从$O$换到$\vb r_0$处，力矩变成$(\vb r-\vb r_0)\times\vb F$，多出$-\vb r_0\times\vb F$。E 对：参考点换到$\vb r_0$处，力矩之和变成$\sum(\vb r_i-\vb r_0)\times\vb F_i=\sum\vb r_i\times\vb F_i-\vb r_0\times\sum\vb F_i$，合力为零，多出的一项也是零。力偶就是这样的一组力。
+
+- id: p3
+  tier: medium
+  statement: |
+    一颗彗星绕太阳运动，太阳对它的引力总指向太阳。彗星在离太阳最近的点离太阳$0.60\,\mathrm{AU}$，速率是$50\,\mathrm{km/s}$；在离太阳最远的点离太阳$30\,\mathrm{AU}$。它在最远点的速率是多少？以$\mathrm{km/s}$为单位。
+  answer:
+    type: number
+    value: 50*0.6/30
+    unit: |
+      $\mathrm{km/s}$
+  hints:
+    - |
+      引力是以太阳为力心的有心力，彗星对太阳的角动量守恒。
+    - |
+      在最近点和最远点，彗星离太阳的距离取极值，速度和它到太阳的连线垂直，角动量大小是$mrv$。
+    - |
+      $0.60\times50=30\,v$，$v=1.0\,\mathrm{km/s}$。
+  solution: |
+    引力总指向太阳，对太阳的力矩为零，彗星对太阳的角动量守恒。在最近点和最远点，距离取极值，速度没有沿连线的分量，和连线垂直，角动量大小是$mrv$。所以$0.60\times50=30\,v$，$v=1.0\,\mathrm{km/s}$：离太阳远五十倍，速率就慢五十倍。
+
+- id: p4
+  tier: medium
+  statement: |
+    在一个惯性系里，力$\vb F=(0,0,5.0)\,\mathrm N$作用在位于$\vb r=(3.0,0,0)\,\mathrm m$处的质点上。这个力对点$Q(1.0,2.0,0)$（单位$\mathrm m$）的力矩有多大？以$\mathrm{N\cdot m}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 10*sqrt(2)
+    unit: |
+      $\mathrm{N\cdot m}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      对$Q$点的力矩用的是从$Q$指向质点的矢量$\vb r-\vb r_Q$。
+    - |
+      $\vb r-\vb r_Q=(2.0,-2.0,0)$，再和$\vb F$做叉积。
+    - |
+      $(2.0,-2.0,0)\times(0,0,5.0)=(-10,-10,0)$，大小$10\sqrt2\approx14.1\,\mathrm{N\cdot m}$。
+  solution: |
+    从$Q$指向质点的矢量是$(2.0,-2.0,0)\,\mathrm m$。和$(0,0,5.0)$按分量算叉积：$x$分量$(-2.0)\times5.0-0=-10$，$y$分量$0-2.0\times5.0=-10$，$z$分量是$0$，所以力矩是$(-10,-10,0)\,\mathrm{N\cdot m}$，大小$10\sqrt2\approx14.1\,\mathrm{N\cdot m}$。对原点的力矩是$(0,-15,0)\,\mathrm{N\cdot m}$，可见换一个参考点，力矩的大小和方向都变了。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）证明：质点受有心力作用时，它的位置矢量在相等的时间里扫过相等的面积。（2）反过来，质点在一个平面里运动，它对平面上一点$O$的位置矢量在相等的时间里扫过相等的面积。证明它受的合力的作用线总通过$O$，或者合力为零。（3）质点做匀速直线运动时，（2）的条件对哪些点$O$成立？
+  hints:
+    - |
+      $\Delta t$里扫过的面积近似是$\frac12|\vb r\times\vb v|\Delta t$，所以面积增长的快慢是$\frac L{2m}$。
+    - |
+      （2）里，平面运动保证$\vb L$的方向不变，面积增长得均匀又保证大小不变，于是$\vb L$不变。
+    - |
+      $\dv{\vb L}t=\vb r\times\vb F=0$说明$\vb F$和$\vb r$平行或者$\vb F=0$。
+  reference: |
+    （1）力心记作$O$。有心力对$O$的力矩为零，$\vb L=\vb r\times m\vb v$不变。$\Delta t$里位置矢量扫过的面积近似是$\vb r$和$\vb v\Delta t$张成的三角形，面积$\frac12|\vb r\times\vb v|\Delta t=\frac L{2m}\Delta t$，所以扫过面积的快慢是常数$\frac L{2m}$，相等的时间扫过相等的面积。
+
+    （2）运动在过$O$的平面里，$\vb r$、$\vb v$都在这个平面里，$\vb L$垂直于平面，方向只能朝上或朝下；面积增长的快慢$\frac L{2m}$不变，说明$\vb L$的大小不变，又随时间连续变化，方向不会翻转，所以$\vb L$不变。由角动量定理$\vb r\times\vb F=\dv{\vb L}t=0$，所以$\vb F$平行于$\vb r$或者$\vb F=0$，作用线通过$O$。
+
+    （3）合力为零，所以对任意一点$O$力矩都为零，角动量都不变，扫过面积的快慢都是常数$\frac{vd}2$（$d$是$O$到运动直线的距离），对平面上所有的点都成立。这说明从「等面积」只能推出力矩为零，不能断定一定有力。
+
+- id: p6
+  tier: hard
+  statement: |
+    质量为$m$的质点在水平面上以速率$v$做半径为$R$的匀速圆周运动，圆心是$C$，$P$是$C$正上方高$h$处的一点。
+
+    （1）求质点对$C$的角动量，它随时间变不变？（2）求质点对$P$的角动量的大小和方向，它随时间变不变？（3）用角动量定理验证：合力对$P$的力矩等于质点对$P$的角动量的变化率。
+  hints:
+    - |
+      取$C$为原点、竖直向上为$z$轴，质点位置$\vb r=R(\cos\omega t,\sin\omega t,0)$，$\omega=\frac vR$。
+    - |
+      对$P$的位置矢量是$\vb r-h\uv z$；合力等于质量乘向心加速度，指向$C$，大小$\frac{mv^2}R$。
+    - |
+      $\vb L_P$的竖直分量不变，水平分量跟着质点转；它的导数和$(\vb r-h\uv z)\times\vb F$比较。
+  reference: |
+    以$C$为原点、竖直向上为$z$轴，$\vb r=R(\cos\omega t,\sin\omega t,0)$，$\vb v=v(-\sin\omega t,\cos\omega t,0)$，$\omega=\frac vR$。
+
+    （1）$\vb L_C=\vb r\times m\vb v=(0,0,mRv)$，竖直向上，不随时间变。合力指向$C$，是以$C$为力心的有心力，正好对得上。
+
+    （2）$\vb L_P=(\vb r-h\uv z)\times m\vb v=\vb L_C-h\,\uv z\times m\vb v$。$\uv z\times\vb v=v(-\cos\omega t,-\sin\omega t,0)$，所以$\vb L_P=(mhv\cos\omega t,\;mhv\sin\omega t,\;mRv)$，大小$mv\sqrt{R^2+h^2}$不变，方向却绕竖直轴转动，$\vb L_P$在变。
+
+    （3）$\dv{\vb L_P}t=mhv\omega(-\sin\omega t,\cos\omega t,0)$。合力$\vb F=-\frac{mv^2}R(\cos\omega t,\sin\omega t,0)$，对$P$的力矩$(\vb r-h\uv z)\times\vb F$：$\vb r\times\vb F=0$，$-h\,\uv z\times\vb F=\frac{hmv^2}R(-\sin\omega t,\cos\omega t,0)$。由$\omega=\frac vR$，两者相等。同一个运动，对$C$角动量守恒，对$P$不守恒，因为合力对$P$有力矩。
+
+- id: p7
+  tier: thinking
+  statement: |
+    溜冰的人转动时收拢手臂，就会越转越快。把人粗略地看成一根竖直的转轴，加上两只手里各拿着的一个哑铃（当作质点）。
+
+    （1）收拢手臂时，哑铃受的力大致沿什么方向？对转轴的力矩是多少？
+
+    （2）用这一节的结论解释为什么会越转越快。手臂收到一半长时，角速度大约变成原来的几倍？
+
+    （3）这里把人身体本身的转动忽略了，这会让估计偏大还是偏小？
+  hints:
+    - |
+      手臂把哑铃往里拉，力沿着哑铃和转轴的连线。
+    - |
+      哑铃对转轴的角动量$mr^2\omega$不变。
+    - |
+      人的身体本身也在转动，它的角动量在收臂时几乎不变，会「拖住」角速度的增加。
+  reference: |
+    （1）手臂拉哑铃的力沿着哑铃指向转轴的方向（在水平面里），对转轴的力矩为零，所以每个哑铃对转轴的角动量不变。
+
+    （2）角动量$mr^2\omega$不变，$r$减半时$\omega$变成$4$倍；$r$越小，转得越快。真实的溜冰者转速大约提高到原来的两三倍，没有$4$倍那么多。
+
+    （3）会偏大。人的身体本身也在转动，并且离转轴的距离在收臂时几乎不变，这部分角动量要求的角速度不随$r$变化；整个人的总角动量是两部分之和，总的效果是角速度增加得比只看哑铃时少。严格的处理要用质点系的角动量（见[质点系的角动量守恒](lesson:physics.newtonian-mechanics.angular-momentum-systems)）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    行星绕太阳运动，太阳对它的引力总指向太阳。
+
+    （1）为什么行星的轨道一定在一个平面里？这个平面由什么决定？
+
+    （2）如果某一时刻行星的速度正好指向太阳，或者正好背离太阳，它以后会怎样运动？
+
+    （3）只知道「引力总指向太阳」，能不能推出轨道的形状？还需要知道什么？
+  hints:
+    - |
+      对太阳的角动量守恒，它的方向不变。
+    - |
+      速度和位置矢量平行时，角动量是多少？
+    - |
+      角动量守恒只给出扫过面积的快慢，没有说明力的大小怎样随距离变化。
+  reference: |
+    （1）引力对太阳的力矩为零，角动量$\vb L=\vb r\times m\vb v$不变；$\vb r$总垂直于$\vb L$，所以行星始终在过太阳、垂直于$\vb L$的平面里。这个平面由某一时刻的位置和速度决定，也就是由初始条件决定。
+
+    （2）这时$\vb r$和$\vb v$平行，$\vb L=0$，并且以后一直为零；引力也沿着这条直线，所以行星只能沿着它和太阳的连线做直线运动：朝太阳落去，或者背离太阳飞出去再落回来，或者一去不返。
+
+    （3）不能。角动量守恒只说明轨道在一个平面里、扫过面积的快慢不变，不管力的大小怎样随距离变化都成立。要得到椭圆这样的具体形状，还要知道力的大小和距离的关系，例如和距离的平方成反比，这要到[开普勒定律与轨道方程](lesson:physics.newtonian-mechanics.kepler-orbits)才能推出。

@@ -1,0 +1,174 @@
+- id: p1
+  tier: easy
+  statement: |
+    电风扇以每分钟$1200$转的转速匀速转动，叶片尖端离转轴$0.20\,\mathrm m$。叶尖的向心加速度是多少？以$\mathrm{m/s^2}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: (1200*2*pi/60)^2*0.2
+    unit: |
+      $\mathrm{m/s^2}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先把转速换成角速度：每转一圈转过$2\pi$。
+    - |
+      $\omega=\frac{1200\times2\pi}{60}\approx125.7\,\mathrm{rad/s}$，再用$a=\omega^2r$。
+    - |
+      $a\approx125.7^2\times0.20\approx3.16\times10^3\,\mathrm{m/s^2}$。
+  solution: |
+    $\omega=\frac{1200\times2\pi}{60}=40\pi\approx125.7\,\mathrm{rad/s}$，向心加速度$a=\omega^2r\approx125.7^2\times0.20\approx3.16\times10^3\,\mathrm{m/s^2}$，约是$g$的$320$倍，所以叶片要做得很结实。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于圆周运动的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        匀速圆周运动的加速度不变
+      - |
+        圆周运动中，速度的方向总是沿半径向外
+      - |
+        角速度不变的圆周运动，切向加速度为零
+      - |
+        质点沿圆周运动、速率在减小时，加速度可能恰好沿半径指向圆心
+      - |
+        变速圆周运动中，加速度的法向分量为零的那一刻，质点的速率为零
+    value: [3, 5]
+  hints:
+    - |
+      加速度是矢量，大小不变、方向在变，也算在变。
+    - |
+      切向加速度是$r\alpha$，法向加速度是$\frac{v^2}r$。
+    - |
+      C、E 对；A、B、D 错。
+  solution: |
+    A 错：匀速圆周运动的加速度大小不变，方向始终指向圆心、跟着质点转，矢量在变。B 错：速度沿切线，和半径垂直。C 对：$\omega$不变，$\alpha=0$，切向加速度$r\alpha=0$。
+
+    D 错：速率在减小，切向加速度不为零，合加速度偏向后方，不会正好指向圆心。E 对：法向分量$\frac{v^2}r=0$只能是$v=0$。
+
+- id: p3
+  tier: medium
+  statement: |
+    飞轮从静止开始，以$2.0\,\mathrm{rad/s^2}$的角加速度匀加速转动。飞轮边缘上一点的加速度和速度成$45^\circ$角时，飞轮已经转了多长时间？以$\mathrm s$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 1/sqrt(2)
+    unit: |
+      $\mathrm s$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      加速度和速度成$45^\circ$，就是切向加速度和向心加速度一样大。
+    - |
+      切向加速度$r\alpha$不变，向心加速度$r\omega^2=r\alpha^2t^2$随时间增大。
+    - |
+      令$r\alpha=r\alpha^2t^2$，$t=\frac1{\sqrt\alpha}\approx0.707\,\mathrm s$，和半径无关。
+  solution: |
+    边缘上一点的速度沿切线，切向加速度$a_{\mathrm t}=r\alpha$，向心加速度$a_{\mathrm n}=r\omega^2=r(\alpha t)^2$。夹角为$45^\circ$时两者相等：$r\alpha=r\alpha^2t^2$，$t=\frac1{\sqrt\alpha}=\frac1{\sqrt{2.0}}\approx0.707\,\mathrm s$。半径约掉了，所以飞轮上各点在同一时刻达到$45^\circ$。
+
+- id: p4
+  tier: medium
+  statement: |
+    汽车在半径$80\,\mathrm m$的圆弧弯道上减速，某一时刻的速率是$20\,\mathrm{m/s}$，速率每秒减小$3.0\,\mathrm{m/s}$。这一时刻汽车的加速度和速度之间的夹角是多少？以度为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 180 - atan(5/3)*180/pi
+    unit: |
+      $^\circ$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      向心加速度$\frac{v^2}r$指向圆心，和速度垂直；切向加速度沿切线，减速时和速度反向。
+    - |
+      $a_{\mathrm n}=\frac{20^2}{80}=5.0\,\mathrm{m/s^2}$，$a_{\mathrm t}=3.0\,\mathrm{m/s^2}$，指向后方。
+    - |
+      合加速度和速度反方向的夹角是$\arctan\frac53\approx59.0^\circ$，和速度的夹角是$180^\circ-59.0^\circ=121^\circ$。
+  solution: |
+    向心加速度$a_{\mathrm n}=\frac{20^2}{80}=5.0\,\mathrm{m/s^2}$，和速度垂直；切向加速度大小$3.0\,\mathrm{m/s^2}$，因为在减速，方向和速度相反。合加速度和速度反方向的夹角满足$\tan\beta=\frac{5.0}{3.0}$，$\beta\approx59.0^\circ$，所以和速度的夹角是$180^\circ-59.0^\circ\approx121^\circ$，大于$90^\circ$，偏向后方。
+
+- id: p5
+  tier: hard
+  statement: |
+    质点在平面上运动，用极坐标$r(t)$、$\theta(t)$描述，用点表示对时间求导，如$\dot r=\dv rt$、$\ddot r=\frac{\dd^2r}{\dd t^2}$。记$\vb e_r=(\cos\theta,\sin\theta)$，$\vb e_\theta=(-\sin\theta,\cos\theta)$，于是$\vb r=r\vb e_r$。
+
+    （1）证明$\dv{\vb e_r}t=\dot\theta\vb e_\theta$，$\dv{\vb e_\theta}t=-\dot\theta\vb e_r$。（2）证明$\vb v=\dot r\vb e_r+r\dot\theta\vb e_\theta$，$\vb a=(\ddot r-r\dot\theta^2)\vb e_r+(r\ddot\theta+2\dot r\dot\theta)\vb e_\theta$。（3）$r$不变时，这个结果回到这一节的哪两个定理？
+  hints:
+    - |
+      $\vb e_r$、$\vb e_\theta$的分量是$\theta(t)$的函数，用链式法则逐个分量求导。
+    - |
+      $\vb r=r\vb e_r$是两个随时间变化的量相乘，用乘积法则，再把（1）代进去。
+    - |
+      $r$不变时$\dot r=\ddot r=0$；$\dot\theta=\omega$，$\ddot\theta=\alpha$。
+  reference: |
+    （1）$\dv{\vb e_r}t=(-\sin\theta\cdot\dot\theta,\cos\theta\cdot\dot\theta)=\dot\theta\vb e_\theta$，$\dv{\vb e_\theta}t=(-\cos\theta\cdot\dot\theta,-\sin\theta\cdot\dot\theta)=-\dot\theta\vb e_r$。
+
+    （2）$\vb v=\dv{(r\vb e_r)}t=\dot r\vb e_r+r\dot\theta\vb e_\theta$。再求导：$\vb a=\ddot r\vb e_r+\dot r\dot\theta\vb e_\theta+\dot r\dot\theta\vb e_\theta+r\ddot\theta\vb e_\theta+r\dot\theta(-\dot\theta\vb e_r)=(\ddot r-r\dot\theta^2)\vb e_r+(r\ddot\theta+2\dot r\dot\theta)\vb e_\theta$。
+
+    （3）$r$不变时，$\vb v=r\omega\vb e_\theta$沿切线，$\vb a=-r\omega^2\vb e_r+r\alpha\vb e_\theta$：第一项指向圆心、大小$\omega^2r$，是向心加速度；第二项沿切线、大小$r\alpha$，是切向加速度。$\alpha=0$时就是匀速圆周运动的加速度定理，一般情形就是变速圆周运动的加速度定理。多出来的$2\dot r\dot\theta$说明：半径和角度同时变化时，横向加速度不只是$r\ddot\theta$。
+
+- id: p6
+  tier: hard
+  statement: |
+    两个质点从圆周上同一点同时出发，都逆时针运动：A 以角速度$\omega_0$匀速转动，B 从静止开始以角加速度$\alpha$匀加速转动。
+
+    （1）设$\omega_0^2<4\pi\alpha$，证明出发后 B 第一次和 A 相遇是在$t=\frac{2\omega_0}\alpha$。（2）这时 B 的加速度大小是 A 的多少倍？（3）$\omega_0^2>4\pi\alpha$时，第一次相遇在什么时刻，是谁追上谁？
+  hints:
+    - |
+      写出两者转过的角$\theta_A=\omega_0t$、$\theta_B=\frac12\alpha t^2$，相遇是两者相差$2\pi$的整数倍。
+    - |
+      $d(t)=\theta_B-\theta_A=\frac12\alpha t^2-\omega_0t$先减小后增大，最小值是$-\frac{\omega_0^2}{2\alpha}$。
+    - |
+      相遇时 B 的角速度是$\alpha t=2\omega_0$；B 的加速度有切向和法向两个分量，A 只有法向分量。
+  reference: |
+    （1）$d(t)=\frac12\alpha t^2-\omega_0t$，相遇就是$d(t)=2\pi k$（$k$为整数）。$0<t<\frac{2\omega_0}\alpha$时$d(t)<0$，它的最小值$-\frac{\omega_0^2}{2\alpha}>-2\pi$，所以$d$碰不到$-2\pi$，这段时间里不会相遇；$t=\frac{2\omega_0}\alpha$时$d=0$，B 追上 A。
+
+    （2）这时 B 的角速度是$2\omega_0$，切向加速度$r\alpha$，向心加速度$r(2\omega_0)^2=4r\omega_0^2$，合加速度$r\sqrt{\alpha^2+16\omega_0^4}$；A 只有向心加速度$r\omega_0^2$。B 是 A 的$\sqrt{16+\frac{\alpha^2}{\omega_0^4}}$倍，总大于$4$。
+
+    （3）$\omega_0^2>4\pi\alpha$时，$d(t)$在减到最小值之前先到达$-2\pi$，也就是 A 领先整整一圈，从后面追上了 B。时刻是$\frac12\alpha t^2-\omega_0t=-2\pi$较小的根，$t=\frac{\omega_0-\sqrt{\omega_0^2-4\pi\alpha}}\alpha$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    有人说：「$a=\omega^2r$说明半径越大，向心加速度越大；$a=\frac{v^2}r$却说明半径越大，向心加速度越小，两个式子矛盾。」
+
+    （1）两个说法各在什么条件下才对？（2）转动的唱片上，靠外的一点和靠里的一点，哪个向心加速度大？两辆车以同样的速率通过半径不同的弯道，哪辆车的向心加速度大？（3）用$a=v\omega$再把这件事说一遍。
+  hints:
+    - |
+      比较的时候，什么量保持不变？
+    - |
+      唱片上各点的角速度相同；两辆车的速率相同。
+    - |
+      $a=v\omega$里，半径变大时$v$和$\omega$中哪个在变？
+  reference: |
+    （1）两个式子都对，矛盾来自比较时固定的量不同。「半径越大，向心加速度越大」要在角速度相同时才成立；「半径越大，向心加速度越小」要在速率相同时才成立。
+
+    （2）唱片上各点角速度相同，靠外的点向心加速度大。两辆车速率相同，半径大的弯道上向心加速度小。
+
+    （3）$a=v\omega$：速度矢量的长度是$v$，以角速度$\omega$转动，改变的快慢就是$v\omega$。角速度相同、半径变大时$v=r\omega$变大，$a$变大；速率相同、半径变大时$\omega=\frac vr$变小，$a$变小。
+
+- id: p8
+  tier: thinking
+  statement: |
+    质点在半径为$r$的圆上以角速度$\omega$匀速转动，从$x$轴上出发。用点表示对时间求导：$\dot x=\dv xt$，$\ddot x=\frac{\dd^2x}{\dd t^2}$。
+
+    （1）它在$x$轴上的投影点做什么样的直线运动？写出投影点的位置、速度和加速度随时间的变化。
+
+    （2）投影点的加速度和它的位置有什么关系？这和「向心加速度指向圆心」有什么联系？
+
+    （3）弹簧上的小球、小角度摆动的钟摆也在来回运动。你觉得它们和这个投影点可能有什么共同之处？
+  hints:
+    - |
+      投影点的坐标就是质点的$x$坐标$r\cos\omega t$。
+    - |
+      $\ddot x$和$x$之间差一个什么样的因子？
+    - |
+      比较投影点的加速度和位置，再想想弹簧拉得越长，小球被拉回的趋势怎样变。
+  reference: |
+    （1）投影点的位置$x=r\cos\omega t$，在$-r$和$r$之间来回运动，周期是$\frac{2\pi}\omega$；速度$\dot x=-r\omega\sin\omega t$，在两端为零、经过中点时最大；加速度$\ddot x=-r\omega^2\cos\omega t$。
+
+    （2）$\ddot x=-\omega^2x$：加速度和离中点的位移成正比、方向相反，总指向中点。这正是向心加速度$-\omega^2\vb r$的$x$分量：$\vb a$指向圆心，它在$x$轴上的分量就指向投影的中点。
+
+    （3）弹簧上的小球、小角度的钟摆，加速度看上去也总指向平衡的位置，而且偏得越远加速度越大。如果它们的加速度也和位移成正比、方向相反，运动就和这个投影点完全一样，是同一种往复运动。这一点要到[简谐运动](lesson:physics.oscillations-waves.simple-harmonic-motion)才能说清楚，这里只是猜测。

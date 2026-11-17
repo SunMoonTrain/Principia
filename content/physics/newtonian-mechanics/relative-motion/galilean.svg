@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 300" width="660" height="300" font-size="14">
+  <!-- 伽利略变换的两个三角形：左边是位置，参考系 S 的原点 O，参考系 S′ 的原点 O′ 相对 O 移动了 ut，S′ 的坐标轴和 S 的平行；同一点 P 在两个参考系里的位置矢量满足 r = ut + r′。右边是速度，船从河岸出发正对岸过河：船相对水的速度 v′ 偏向上游，加上水流速度 u，得到船相对河岸的速度 v，正好垂直于河岸。 -->
+  <line x1="52.0" y1="236.0" x2="294.0" y2="236.0" style="stroke: currentColor" stroke-width="1.2" />
+  <path d="M 300.0 236.0 L 293.0 239.0 L 293.0 233.0 Z" style="fill: currentColor" />
+  <line x1="52.0" y1="236.0" x2="52.0" y2="50.0" style="stroke: currentColor" stroke-width="1.2" />
+  <path d="M 52.0 44.0 L 55.0 51.0 L 49.0 51.0 Z" style="fill: currentColor" />
+  <text x="300.0" y="256.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">x</tspan></text>
+  <text x="42.0" y="56.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">y</tspan></text>
+  <text x="44.0" y="254.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">O</tspan></text>
+  <line x1="150.0" y1="178.0" x2="294.0" y2="178.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.1" stroke-dasharray="5 3" />
+  <path d="M 300.0 178.0 L 293.0 181.0 L 293.0 175.0 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="150.0" y1="178.0" x2="150.0" y2="46.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.1" stroke-dasharray="5 3" />
+  <path d="M 150.0 40.0 L 153.0 47.0 L 147.0 47.0 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="300.0" y="198.0" style="fill: var(--accent, #2563eb)" text-anchor="end"><tspan font-style="italic">x</tspan>′</text>
+  <text x="142.0" y="54.0" style="fill: var(--accent, #2563eb)" text-anchor="end"><tspan font-style="italic">y</tspan>′</text>
+  <text x="156.0" y="198.0" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">O</tspan>′</text>
+  <line x1="52.0" y1="236.0" x2="144.0" y2="181.6" style="stroke: var(--good, #059669)" stroke-width="2.0" />
+  <path d="M 150.0 178.0 L 145.0 185.3 L 141.2 178.9 Z" style="fill: var(--good, #059669)" />
+  <line x1="52.0" y1="236.0" x2="256.4" y2="86.1" style="stroke: currentColor" stroke-width="2.0" />
+  <path d="M 262.0 82.0 L 257.7 89.7 L 253.4 83.7 Z" style="fill: currentColor" />
+  <line x1="150.0" y1="178.0" x2="256.7" y2="86.6" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 262.0 82.0 L 258.3 90.0 L 253.5 84.4 Z" style="fill: var(--accent, #2563eb)" />
+  <circle cx="262.0" cy="82.0" r="3.0" style="fill: currentColor" />
+  <text x="270.0" y="78.0" fill="currentColor"><tspan font-style="italic">P</tspan></text>
+  <text x="107.0" y="229.0" style="fill: var(--good, #059669)"><tspan font-style="italic">u</tspan><tspan font-style="italic">t</tspan></text>
+  <text x="141.0" y="151.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">r</tspan></text>
+  <text x="216.0" y="144.0" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">r</tspan>′</text>
+  <text x="176.0" y="288.0" fill="currentColor" text-anchor="middle">位置：<tspan font-style="italic">r</tspan> = <tspan font-style="italic">u</tspan><tspan font-style="italic">t</tspan> + <tspan font-style="italic">r</tspan>′</text>
+  <line x1="372.0" y1="52.0" x2="640.0" y2="52.0" style="stroke: var(--muted, #6b7280)" stroke-width="2.0" />
+  <line x1="372.0" y1="248.0" x2="640.0" y2="248.0" style="stroke: var(--muted, #6b7280)" stroke-width="2.0" />
+  <text x="640.0" y="42.0" style="fill: var(--muted, #6b7280)" text-anchor="end">对岸</text>
+  <text x="640.0" y="270.0" style="fill: var(--muted, #6b7280)" text-anchor="end">此岸</text>
+  <line x1="588.0" y1="110.0" x2="627.0" y2="110.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 632.0 110.0 L 626.0 112.8 L 626.0 107.2 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="588.0" y1="190.0" x2="627.0" y2="190.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 632.0 190.0 L 626.0 192.8 L 626.0 187.2 Z" style="fill: var(--muted, #6b7280)" />
+  <text x="610.0" y="150.0" style="fill: var(--muted, #6b7280)" text-anchor="middle">水流</text>
+  <line x1="500.0" y1="236.0" x2="428.5" y2="112.2" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 425.0 106.1 L 432.2 111.2 L 425.8 114.9 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="425.0" y1="106.1" x2="493.0" y2="106.1" style="stroke: var(--good, #059669)" stroke-width="2.0" />
+  <path d="M 500.0 106.1 L 492.0 109.8 L 492.0 102.4 Z" style="fill: var(--good, #059669)" />
+  <line x1="500.0" y1="236.0" x2="500.0" y2="113.1" style="stroke: currentColor" stroke-width="2.2" />
+  <path d="M 500.0 106.1 L 503.7 114.1 L 496.3 114.1 Z" style="fill: currentColor" />
+  <circle cx="500.0" cy="236.0" r="3.0" style="fill: currentColor" />
+  <text x="452.5" y="175.0" style="fill: var(--accent, #2563eb)" text-anchor="end"><tspan font-style="italic">v</tspan>′</text>
+  <text x="462.5" y="97.1" style="fill: var(--good, #059669)" text-anchor="middle"><tspan font-style="italic">u</tspan></text>
+  <text x="510.0" y="175.0" fill="currentColor"><tspan font-style="italic">v</tspan></text>
+  <text x="506.0" y="288.0" fill="currentColor" text-anchor="middle">速度：<tspan font-style="italic">v</tspan> = <tspan font-style="italic">v</tspan>′ + <tspan font-style="italic">u</tspan></text>
+</svg>

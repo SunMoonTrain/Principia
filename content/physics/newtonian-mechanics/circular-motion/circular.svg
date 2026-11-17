@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 300" width="660" height="300" font-size="14">
+  <!-- 圆周运动的速度和加速度：左边是匀速圆周运动，圆上三个位置的速度 v 都沿切线，加速度 a 都指向圆心 O，大小相同。右边是加速转动的圆周运动，在点 P，速度 v 沿切线；加速度分成沿切线、和速度同向的切向分量 at，以及指向圆心的法向分量 an，合加速度 a 偏向前方，不再指向圆心。 -->
+  <circle cx="170.0" cy="138.0" r="92.0" style="stroke: currentColor" fill="none" stroke-width="1.4" />
+  <circle cx="170.0" cy="138.0" r="2.6" style="fill: currentColor" />
+  <text x="164.0" y="156.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">O</tspan></text>
+  <line x1="253.4" y1="99.1" x2="232.7" y2="54.7" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 229.7 48.4 L 236.4 54.1 L 229.7 57.2 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="253.4" y1="99.1" x2="223.5" y2="113.1" style="stroke: var(--good, #059669)" stroke-width="2.0" />
+  <path d="M 217.1 116.0 L 222.8 109.3 L 225.9 116.0 Z" style="fill: var(--good, #059669)" />
+  <circle cx="253.4" cy="99.1" r="3.0" style="fill: currentColor" />
+  <text x="240.7" y="43.4" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">v</tspan></text>
+  <text x="213.1" y="134.0" style="fill: var(--good, #059669)"><tspan font-style="italic">a</tspan></text>
+  <line x1="94.6" y1="85.2" x2="66.5" y2="125.4" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 62.5 131.1 L 64.1 122.4 L 70.1 126.7 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="94.6" y1="85.2" x2="121.7" y2="104.2" style="stroke: var(--good, #059669)" stroke-width="2.0" />
+  <path d="M 127.4 108.2 L 118.7 106.6 L 123.0 100.6 Z" style="fill: var(--good, #059669)" />
+  <circle cx="94.6" cy="85.2" r="3.0" style="fill: currentColor" />
+  <line x1="162.0" y1="229.6" x2="210.8" y2="233.9" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 217.8 234.5 L 209.5 237.5 L 210.1 230.1 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="162.0" y1="229.6" x2="164.9" y2="196.8" style="stroke: var(--good, #059669)" stroke-width="2.0" />
+  <path d="M 165.5 189.8 L 168.5 198.1 L 161.1 197.4 Z" style="fill: var(--good, #059669)" />
+  <circle cx="162.0" cy="229.6" r="3.0" style="fill: currentColor" />
+  <text x="170.0" y="286.0" fill="currentColor" text-anchor="middle">匀速：<tspan font-style="italic">a</tspan> 指向圆心</text>
+  <circle cx="492.0" cy="138.0" r="92.0" style="stroke: currentColor" fill="none" stroke-width="1.4" />
+  <circle cx="492.0" cy="138.0" r="2.6" style="fill: currentColor" />
+  <text x="486.0" y="156.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">O</tspan></text>
+  <line x1="492.0" y1="138.0" x2="570.0" y2="89.2" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" stroke-dasharray="4 3" />
+  <line x1="570.0" y1="89.2" x2="534.5" y2="32.4" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 530.8 26.5 L 538.2 31.3 L 531.9 35.2 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="570.0" y1="89.2" x2="557.3" y2="68.9" style="stroke: var(--muted, #6b7280)" stroke-width="1.6" />
+  <path d="M 554.1 63.8 L 560.5 68.0 L 555.1 71.4 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="570.0" y1="89.2" x2="534.4" y2="111.5" style="stroke: var(--muted, #6b7280)" stroke-width="1.6" />
+  <path d="M 529.3 114.7 L 533.6 108.3 L 536.9 113.7 Z" style="fill: var(--muted, #6b7280)" />
+  <line x1="554.1" y1="63.8" x2="513.4" y2="89.2" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="2 3" />
+  <line x1="529.3" y1="114.7" x2="513.4" y2="89.2" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="2 3" />
+  <line x1="570.0" y1="89.2" x2="520.4" y2="89.2" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 513.4 89.2 L 521.4 85.5 L 521.4 92.9 Z" style="fill: var(--good, #059669)" />
+  <circle cx="570.0" cy="89.2" r="3.0" style="fill: currentColor" />
+  <text x="580.0" y="93.2" fill="currentColor"><tspan font-style="italic">P</tspan></text>
+  <text x="521.8" y="34.5" style="fill: var(--accent, #2563eb)" text-anchor="end"><tspan font-style="italic">v</tspan></text>
+  <text x="563.1" y="60.8" style="fill: var(--muted, #6b7280)"><tspan font-style="italic">a</tspan><tspan dy="4" font-size="11">t</tspan></text>
+  <text x="531.3" y="134.7" style="fill: var(--muted, #6b7280)"><tspan font-style="italic">a</tspan><tspan dy="4" font-size="11">n</tspan></text>
+  <text x="503.4" y="82.2" style="fill: var(--good, #059669)" text-anchor="end"><tspan font-style="italic">a</tspan></text>
+  <text x="492.0" y="286.0" fill="currentColor" text-anchor="middle">加速：<tspan font-style="italic">a</tspan> 偏向前方</text>
+</svg>

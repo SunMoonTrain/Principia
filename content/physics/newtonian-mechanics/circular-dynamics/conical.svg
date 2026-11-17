@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 280" width="660" height="280" font-size="14">
+  <!-- 两种由几个力合成向心力的情形：左边是圆锥摆，小球拴在细绳下端，在水平面内绕竖直轴转圈，绳子和竖直方向成 θ 角；小球受竖直向下的重力 G 和沿绳指向悬点的拉力 T，两者的合力水平指向圆心，就是向心力 Fn。右边是倾斜路面上转弯的汽车的横截面，路面向弯道外侧抬高，倾角为 θ；汽车受竖直向下的重力 G 和垂直于路面的支持力 N，两者的合力水平指向弯道的圆心，就是向心力 Fn。 -->
+  <line x1="88.0" y1="36.0" x2="168.0" y2="36.0" style="stroke: currentColor" stroke-width="2.0" />
+  <line x1="94.0" y1="36.0" x2="87.0" y2="29.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="111.0" y1="36.0" x2="104.0" y2="29.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="128.0" y1="36.0" x2="121.0" y2="29.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="145.0" y1="36.0" x2="138.0" y2="29.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="162.0" y1="36.0" x2="155.0" y2="29.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="128.0" y1="36.0" x2="128.0" y2="188.9" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="4 3" />
+  <ellipse cx="128.0" cy="158.9" rx="86.0" ry="18.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.1" stroke-dasharray="5 3" />
+  <line x1="128.0" y1="36.0" x2="214.0" y2="158.9" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 128.0 66.0 L 128.9 66.0 L 129.8 65.9 L 130.7 65.9 L 131.7 65.8 L 132.6 65.7 L 133.5 65.5 L 134.4 65.3 L 135.3 65.1 L 136.1 64.9 L 137.0 64.6 L 137.9 64.3 L 138.8 64.0 L 139.6 63.7 L 140.4 63.3 L 141.3 62.9 L 142.1 62.5 L 142.9 62.0 L 143.7 61.6 L 144.4 61.1 L 145.2 60.6" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" stroke-linejoin="round" />
+  <text x="134.0" y="88.0" style="fill: var(--muted, #6b7280)"><tspan font-style="italic">θ</tspan></text>
+  <line x1="214.0" y1="158.9" x2="214.0" y2="213.9" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 214.0 220.9 L 210.3 212.9 L 217.7 212.9 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="222.0" y="218.9" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">G</tspan></text>
+  <line x1="214.0" y1="158.9" x2="174.6" y2="102.6" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 170.6 96.9 L 178.2 101.3 L 172.2 105.5 Z" style="fill: var(--good, #059669)" />
+  <text x="158.6" y="116.9" style="fill: var(--good, #059669)" text-anchor="end"><tspan font-style="italic">T</tspan></text>
+  <line x1="214.0" y1="158.9" x2="177.6" y2="158.9" style="stroke: currentColor" stroke-width="2.6" />
+  <path d="M 170.6 158.9 L 178.6 155.2 L 178.6 162.6 Z" style="fill: currentColor" />
+  <text x="162.6" y="163.9" fill="currentColor" text-anchor="end"><tspan font-style="italic">F</tspan><tspan dy="4" font-size="11">n</tspan></text>
+  <circle cx="214.0" cy="158.9" r="7.0" style="stroke: currentColor; fill: var(--bg, #ffffff)" stroke-width="1.6" />
+  <circle cx="128.0" cy="158.9" r="2.6" style="fill: currentColor" />
+  <text x="150.0" y="268.0" fill="currentColor" text-anchor="middle">圆锥摆</text>
+  <line x1="402.0" y1="226.0" x2="640.0" y2="115.0" style="stroke: currentColor" stroke-width="2.0" />
+  <line x1="402.0" y1="226.0" x2="500.0" y2="226.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="4 3" />
+  <path d="M 442.0 226.0 L 442.0 225.1 L 442.0 224.3 L 441.9 223.4 L 441.8 222.5 L 441.8 221.6 L 441.7 220.8 L 441.5 219.9 L 441.4 219.1 L 441.2 218.2 L 441.1 217.3 L 440.9 216.5 L 440.6 215.6 L 440.4 214.8 L 440.1 214.0 L 439.9 213.1 L 439.6 212.3 L 439.3 211.5 L 439.0 210.7 L 438.6 209.9 L 438.3 209.1" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" stroke-linejoin="round" />
+  <text x="472.0" y="216.0" style="fill: var(--muted, #6b7280)"><tspan font-style="italic">θ</tspan></text>
+  <rect x="490.7" y="136.8" width="70.0" height="30.0" transform="rotate(-25.0 525.7 151.8)" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <line x1="525.7" y1="151.8" x2="525.7" y2="234.8" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 525.7 241.8 L 522.0 233.8 L 529.4 233.8 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="533.7" y="239.8" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">G</tspan></text>
+  <line x1="525.7" y1="151.8" x2="486.7" y2="68.1" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 483.7 61.8 L 490.4 67.5 L 483.7 70.6 Z" style="fill: var(--good, #059669)" />
+  <text x="475.7" y="65.8" style="fill: var(--good, #059669)" text-anchor="end"><tspan font-style="italic">N</tspan></text>
+  <line x1="525.7" y1="151.8" x2="490.7" y2="151.8" style="stroke: currentColor" stroke-width="2.6" />
+  <path d="M 483.7 151.8 L 491.7 148.1 L 491.7 155.5 Z" style="fill: currentColor" />
+  <text x="475.7" y="156.8" fill="currentColor" text-anchor="end"><tspan font-style="italic">F</tspan><tspan dy="4" font-size="11">n</tspan></text>
+  <circle cx="525.7" cy="151.8" r="2.6" style="fill: currentColor" />
+  <line x1="470.0" y1="264.0" x2="425.0" y2="264.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.1" />
+  <path d="M 420.0 264.0 L 426.0 261.2 L 426.0 266.8 Z" style="fill: var(--muted, #6b7280)" />
+  <text x="476.0" y="269.0" style="fill: var(--muted, #6b7280)">弯道圆心在这一侧</text>
+  <text x="520.0" y="32.0" fill="currentColor" text-anchor="middle">倾斜的弯道（横截面）</text>
+</svg>

@@ -11,4 +11,436 @@ macros:
     \mathop{}\!\mathrm{d}
   \dv: |
     \frac{\mathrm{d} #1}{\mathrm{d} #2}
-glossary: []
+glossary:
+  - id: physics.newtonian-mechanics.displacement
+    zh: |
+      位移
+    en: |
+      displacement
+    brief: |
+      质点从一个时刻到另一个时刻位置坐标的改变$\Delta x=x(t_2)-x(t_1)$；只看起点和终点，正负表示方向。
+    definedIn: physics.newtonian-mechanics.kinematics-1d
+    anchor: def-displacement
+  - id: physics.newtonian-mechanics.velocity
+    zh: |
+      速度
+    en: |
+      velocity
+    brief: |
+      位置对时间的导数$v=\dv xt$，即时间段趋于零时平均速度的极限；正负表示运动方向。
+    definedIn: physics.newtonian-mechanics.kinematics-1d
+    anchor: def-velocity
+  - id: physics.newtonian-mechanics.acceleration
+    zh: |
+      加速度
+    en: |
+      acceleration
+    brief: |
+      速度对时间的导数$a=\dv vt$；和速度同号时速度的绝对值增大，异号时减小。
+    definedIn: physics.newtonian-mechanics.kinematics-1d
+    anchor: def-acceleration
+  - id: physics.newtonian-mechanics.initial-conditions
+    zh: |
+      初始条件
+    en: |
+      initial conditions
+    brief: |
+      某一时刻质点的位置和速度；知道加速度和初始条件，求两次原函数就确定了运动。
+    definedIn: physics.newtonian-mechanics.kinematics-1d
+    anchor: thm-motion
+  - id: physics.newtonian-mechanics.uniformly-accelerated-motion
+    zh: |
+      匀变速直线运动
+    en: |
+      uniformly accelerated motion
+    brief: |
+      加速度不变的直线运动：$v=v_0+at$，$x=x_0+v_0t+\frac12at^2$，$v^2-v_0^2=2a(x-x_0)$。
+    definedIn: physics.newtonian-mechanics.kinematics-1d
+    anchor: def-uniform
+  - id: physics.newtonian-mechanics.gravitational-acceleration
+    zh: |
+      重力加速度
+    en: |
+      gravitational acceleration
+    brief: |
+      地面附近不计空气阻力时物体下落的加速度，竖直向下，各种物体都相同，约$9.8\,\mathrm{m/s^2}$，记作$g$。
+    definedIn: physics.newtonian-mechanics.kinematics-1d
+    anchor: def-g
+  - id: physics.newtonian-mechanics.speed
+    zh: |
+      速率
+    en: |
+      speed
+    brief: |
+      速度矢量的大小$v=|\vb v|$；速率不变时速度的方向仍可以变。
+    definedIn: physics.newtonian-mechanics.kinematics-vectors
+    anchor: def-velocity-vector
+  - id: physics.newtonian-mechanics.projectile-motion
+    zh: |
+      抛体运动
+    en: |
+      projectile motion
+    brief: |
+      不计空气阻力、加速度始终为$g$的运动：水平方向匀速，竖直方向匀变速，轨迹是抛物线。
+    definedIn: physics.newtonian-mechanics.kinematics-vectors
+    anchor: def-projectile
+  - id: physics.newtonian-mechanics.angular-velocity
+    zh: |
+      角速度
+    en: |
+      angular velocity
+    brief: |
+      圆周运动中转过的角对时间的导数$\omega=\dv\theta t$，单位$\mathrm{rad/s}$，逆时针为正；速率$v=r|\omega|$。
+    definedIn: physics.newtonian-mechanics.circular-motion
+    anchor: def-angular-velocity
+  - id: physics.newtonian-mechanics.uniform-circular-motion
+    zh: |
+      匀速圆周运动
+    en: |
+      uniform circular motion
+    brief: |
+      角速度不变的圆周运动；速率不变，速度的方向一直在变，加速度指向圆心。
+    definedIn: physics.newtonian-mechanics.circular-motion
+    anchor: def-angular-velocity
+  - id: physics.newtonian-mechanics.centripetal-acceleration
+    zh: |
+      向心加速度
+    en: |
+      centripetal acceleration
+    brief: |
+      圆周运动的加速度中指向圆心的分量，大小$\frac{v^2}r=\omega^2r$；它只改变速度的方向。
+    definedIn: physics.newtonian-mechanics.circular-motion
+    anchor: thm-centripetal
+  - id: physics.newtonian-mechanics.tangential-acceleration
+    zh: |
+      切向加速度
+    en: |
+      tangential acceleration
+    brief: |
+      圆周运动的加速度中沿切线的分量$\dv vt=r\alpha$；它只改变速率，速率不变时为零。
+    definedIn: physics.newtonian-mechanics.circular-motion
+    anchor: thm-tangential
+  - id: physics.newtonian-mechanics.reference-frame
+    zh: |
+      参考系
+    en: |
+      reference frame
+    brief: |
+      描述运动时选作标准的物体，连同固定在它上面的坐标系和钟；位置、速度都是相对参考系说的。
+    definedIn: physics.newtonian-mechanics.relative-motion
+    anchor: def-frame
+  - id: physics.newtonian-mechanics.galilean-transformation
+    zh: |
+      伽利略变换
+    en: |
+      Galilean transformation
+    brief: |
+      参考系$S'$相对$S$以不变的$\vb u$运动时，$\vb r'=\vb r-\vb ut$，$\vb v'=\vb v-\vb u$，$\vb a'=\vb a$。
+    definedIn: physics.newtonian-mechanics.relative-motion
+    anchor: thm-galilean
+  - id: physics.newtonian-mechanics.inertial-frame
+    zh: |
+      惯性系
+    en: |
+      inertial frame
+    brief: |
+      不受其他物体作用的质点在其中保持静止或匀速直线运动的参考系；相对它匀速运动的参考系也是惯性系。
+    definedIn: physics.newtonian-mechanics.newtons-laws
+    anchor: def-inertial-frame
+  - id: physics.newtonian-mechanics.newtons-first-law
+    zh: |
+      牛顿第一定律
+    en: |
+      Newton's first law
+    brief: |
+      惯性系存在；在惯性系里，不受其他物体作用的质点保持静止或匀速直线运动。
+    definedIn: physics.newtonian-mechanics.newtons-laws
+    anchor: thm-first-law
+  - id: physics.newtonian-mechanics.inertia
+    zh: |
+      惯性
+    en: |
+      inertia
+    brief: |
+      物体保持原有速度的性质；不受作用时速度不变，质量越大，速度越难改变。
+    definedIn: physics.newtonian-mechanics.newtons-laws
+    anchor: thm-first-law
+  - id: physics.newtonian-mechanics.mass
+    zh: |
+      质量
+    en: |
+      mass
+    brief: |
+      两个质点只相互作用时，在惯性系里加速度大小之比的反比给出质量之比；它量的是惯性的大小，单位$\mathrm{kg}$。
+    definedIn: physics.newtonian-mechanics.newtons-laws
+    anchor: def-mass
+  - id: physics.newtonian-mechanics.force
+    zh: |
+      力
+    en: |
+      force
+    brief: |
+      其他物体对质点的作用，用它在惯性系里使质点产生的加速度量：$\vb F=m\vb a$，是矢量，单位$\mathrm N$。
+    definedIn: physics.newtonian-mechanics.newtons-laws
+    anchor: def-force
+  - id: physics.newtonian-mechanics.net-force
+    zh: |
+      合力
+    en: |
+      net force
+    brief: |
+      同时作用于质点的各个力的矢量和；在惯性系里它等于质量乘加速度。
+    definedIn: physics.newtonian-mechanics.newtons-laws
+    anchor: thm-second-law
+  - id: physics.newtonian-mechanics.newtons-second-law
+    zh: |
+      牛顿第二定律
+    en: |
+      Newton's second law
+    brief: |
+      在惯性系里，作用于质点的各个力按矢量相加，合力等于质量乘加速度：$m\vb a=\vb F$。
+    definedIn: physics.newtonian-mechanics.newtons-laws
+    anchor: thm-second-law
+  - id: physics.newtonian-mechanics.newtons-third-law
+    zh: |
+      牛顿第三定律
+    en: |
+      Newton's third law
+    brief: |
+      两个质点相互作用时，彼此施加的力大小相等、方向相反，在同一条直线上，分别作用在两个质点上。
+    definedIn: physics.newtonian-mechanics.newtons-laws
+    anchor: thm-third-law
+  - id: physics.newtonian-mechanics.equation-of-motion
+    zh: |
+      运动方程
+    en: |
+      equation of motion
+    brief: |
+      把合力写成位置、速度和时间的函数后的第二定律$m\frac{\dd^2\vb r}{\dd t^2}=\vb F$；加上初始条件就确定了运动。
+    definedIn: physics.newtonian-mechanics.newtons-laws
+    anchor: def-equation-of-motion
+  - id: physics.newtonian-mechanics.torque
+    zh: |
+      力矩
+    en: |
+      torque
+    brief: |
+      力对参考点$O$的力矩$\boldsymbol\tau=\vb r\times\vb F$，$\vb r$从$O$指向受力的质点；大小等于力乘力臂。
+    definedIn: physics.newtonian-mechanics.angular-momentum
+    anchor: def-torque
+  - id: physics.newtonian-mechanics.moment-arm
+    zh: |
+      力臂
+    en: |
+      moment arm
+    brief: |
+      参考点到力的作用线的距离$d=r\sin\varphi$；力矩的大小是$Fd$。
+    definedIn: physics.newtonian-mechanics.angular-momentum
+    anchor: def-torque
+  - id: physics.newtonian-mechanics.couple
+    zh: |
+      力偶
+    en: |
+      couple
+    brief: |
+      大小相等、方向相反、作用线不重合的两个力；合力为零，力矩之和$(\vb r_1-\vb r_2)\times\vb F$和参考点无关。
+    definedIn: physics.newtonian-mechanics.angular-momentum
+    anchor: def-couple
+  - id: physics.newtonian-mechanics.angular-momentum
+    zh: |
+      角动量
+    en: |
+      angular momentum
+    brief: |
+      质点对参考点$O$的角动量$\vb L=\vb r\times m\vb v$；绕$O$做圆周运动时大小是$mr^2\omega$。
+    definedIn: physics.newtonian-mechanics.angular-momentum
+    anchor: def-angular-momentum
+  - id: physics.newtonian-mechanics.conservation-of-angular-momentum
+    zh: |
+      角动量守恒
+    en: |
+      conservation of angular momentum
+    brief: |
+      在惯性系里，合力对固定点$O$的力矩一直为零时，质点对$O$的角动量不变。
+    definedIn: physics.newtonian-mechanics.angular-momentum
+    anchor: thm-conservation
+  - id: physics.newtonian-mechanics.weight
+    zh: |
+      重力
+    en: |
+      weight
+    brief: |
+      地面附近地球对物体的吸引力$\vb G=m\vb g$，竖直向下，和质量成正比。
+    definedIn: physics.newtonian-mechanics.common-forces
+    anchor: def-weight
+  - id: physics.newtonian-mechanics.elastic-force
+    zh: |
+      弹力
+    en: |
+      elastic force
+    brief: |
+      物体发生形变后，要恢复原状而对和它接触的物体施加的力；支持力、拉力、弹簧的力都是弹力。
+    definedIn: physics.newtonian-mechanics.common-forces
+    anchor: def-elastic
+  - id: physics.newtonian-mechanics.hookes-law
+    zh: |
+      胡克定律
+    en: |
+      Hooke's law
+    brief: |
+      弹簧伸长或压缩$x$时弹力的大小是$kx$，方向指向恢复原长的一侧；形变不太大时成立。
+    definedIn: physics.newtonian-mechanics.common-forces
+    anchor: def-hooke
+  - id: physics.newtonian-mechanics.spring-constant
+    zh: |
+      劲度系数
+    en: |
+      spring constant
+    brief: |
+      胡克定律$F=kx$里的比例系数$k$，单位$\mathrm{N/m}$，由弹簧本身决定，越硬越大。
+    definedIn: physics.newtonian-mechanics.common-forces
+    anchor: def-hooke
+  - id: physics.newtonian-mechanics.normal-force
+    zh: |
+      支持力
+    en: |
+      normal force
+    brief: |
+      支持面对压在它上面的物体的弹力，垂直于接触面、指向物体；大小要由运动和其他力算出。
+    definedIn: physics.newtonian-mechanics.common-forces
+    anchor: def-normal
+  - id: physics.newtonian-mechanics.tension
+    zh: |
+      拉力
+    en: |
+      tension
+    brief: |
+      拉紧的绳子对两端物体的弹力，沿着绳子、指向绳子中间；轻绳各处的拉力一样大。
+    definedIn: physics.newtonian-mechanics.common-forces
+    anchor: def-tension
+  - id: physics.newtonian-mechanics.light-string
+    zh: |
+      轻绳
+    en: |
+      light string
+    brief: |
+      质量可以不计的绳子；它的每一段合力都是零，所以拉力处处相同。
+    definedIn: physics.newtonian-mechanics.common-forces
+    anchor: def-tension
+  - id: physics.newtonian-mechanics.centripetal-force
+    zh: |
+      向心力
+    en: |
+      centripetal force
+    brief: |
+      做圆周运动的物体所受合力指向圆心的分量$\frac{mv^2}r$；它不是新的一种力，而是各个力的合力的分量。
+    definedIn: physics.newtonian-mechanics.circular-dynamics
+    anchor: def-centripetal-force
+  - id: physics.newtonian-mechanics.free-body-diagram
+    zh: |
+      受力图
+    en: |
+      free-body diagram
+    brief: |
+      把研究的物体单独画出来，标出其他物体对它施加的每一个力的图；物体对别人的力、合力都不画。
+    definedIn: physics.newtonian-mechanics.free-body-diagrams
+    anchor: def-fbd
+  - id: physics.newtonian-mechanics.connected-bodies
+    zh: |
+      连接体
+    en: |
+      connected bodies
+    brief: |
+      用绳、杆连着或互相挤压、一起运动的几个物体；常用整体法求共同的加速度，用隔离法求它们之间的力。
+    definedIn: physics.newtonian-mechanics.free-body-diagrams
+    anchor: def-connected
+  - id: physics.newtonian-mechanics.whole-system-method
+    zh: |
+      整体法
+    en: |
+      whole-system method
+    brief: |
+      把加速度相同的几个物体当作一个整体，只考虑外界对整体的力；物体之间的相互作用成对抵消。
+    definedIn: physics.newtonian-mechanics.free-body-diagrams
+    anchor: def-connected
+  - id: physics.newtonian-mechanics.friction
+    zh: |
+      摩擦力
+    en: |
+      friction
+    brief: |
+      互相接触的两个物体之间，沿接触面、阻碍它们相对滑动的力；分静摩擦力和滑动摩擦力。
+    definedIn: physics.newtonian-mechanics.friction
+    anchor: def-friction
+  - id: physics.newtonian-mechanics.static-friction
+    zh: |
+      静摩擦力
+    en: |
+      static friction
+    brief: |
+      两个物体相对静止时的摩擦力；大小等于保持相对静止所需的值，不超过最大静摩擦力$\mu_{\mathrm s}N$。
+    definedIn: physics.newtonian-mechanics.friction
+    anchor: def-friction
+  - id: physics.newtonian-mechanics.kinetic-friction
+    zh: |
+      滑动摩擦力
+    en: |
+      kinetic friction
+    brief: |
+      两个物体相对滑动时的摩擦力，大小$\mu_{\mathrm k}N$，方向和物体相对接触面的速度相反。
+    definedIn: physics.newtonian-mechanics.friction
+    anchor: def-friction
+  - id: physics.newtonian-mechanics.maximum-static-friction
+    zh: |
+      最大静摩擦力
+    en: |
+      maximum static friction
+    brief: |
+      静摩擦力能达到的上限$\mu_{\mathrm s}N$；需要的静摩擦力超过它，两个物体就开始相对滑动。
+    definedIn: physics.newtonian-mechanics.friction
+    anchor: def-max-static
+  - id: physics.newtonian-mechanics.coefficient-of-static-friction
+    zh: |
+      静摩擦因数
+    en: |
+      coefficient of static friction
+    brief: |
+      最大静摩擦力和支持力之比$\mu_{\mathrm s}$，由两个接触面的材料和状况决定。
+    definedIn: physics.newtonian-mechanics.friction
+    anchor: def-max-static
+  - id: physics.newtonian-mechanics.coefficient-of-kinetic-friction
+    zh: |
+      动摩擦因数
+    en: |
+      coefficient of kinetic friction
+    brief: |
+      滑动摩擦力和支持力之比$\mu_{\mathrm k}$，一般比静摩擦因数略小。
+    definedIn: physics.newtonian-mechanics.friction
+    anchor: def-kinetic
+  - id: physics.newtonian-mechanics.isolation-method
+    zh: |
+      隔离法
+    en: |
+      isolation method
+    brief: |
+      把连接体中的一个物体单独隔离出来，对它画受力图、列牛顿第二定律；求物体之间的力要用它。
+    definedIn: physics.newtonian-mechanics.free-body-diagrams
+    anchor: def-connected
+  - id: physics.newtonian-mechanics.central-force
+    zh: |
+      有心力
+    en: |
+      central force
+    brief: |
+      作用线总通过一个固定点（力心）的力；它对力心的力矩为零，质点对力心的角动量守恒。
+    definedIn: physics.newtonian-mechanics.angular-momentum
+    anchor: thm-conservation
+  - id: physics.newtonian-mechanics.angular-acceleration
+    zh: |
+      角加速度
+    en: |
+      angular acceleration
+    brief: |
+      角速度对时间的导数$\alpha=\dv\omega t$；圆周运动的切向加速度是$r\alpha$。
+    definedIn: physics.newtonian-mechanics.circular-motion
+    anchor: thm-tangential

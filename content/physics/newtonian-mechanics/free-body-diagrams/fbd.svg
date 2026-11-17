@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 280" width="660" height="280" font-size="14">
+  <!-- 两个受力图，箭头的长短和力的大小成正比：左边，光滑斜面的倾角为 θ，木块用平行于斜面的细绳拴在斜面顶端的桩上；木块受竖直向下的重力 G、垂直于斜面的支持力 N 和沿斜面向上的拉力 T，虚线是重力沿斜面和垂直于斜面的两个分量，T 和沿斜面的分量一样长，N 和垂直于斜面的分量一样长。右边按例 2 的数画，木块 A 放在光滑的水平桌面上，用轻绳跨过桌边的定滑轮和下面悬挂的木块 B 相连；A 受重力 GA、支持力 N 和水平向右的拉力 T，N 和 GA 一样长；B 受重力 GB 和竖直向上的拉力 T，两个拉力一样长，都比 GB 短，B 加速下落。 -->
+  <path d="M 36.0 236.0 L 276.0 236.0 L 276.0 97.4 Z" style="stroke: currentColor" fill="none" stroke-width="1.6" stroke-linejoin="round" />
+  <path d="M 72.0 236.0 L 72.0 235.1 L 72.0 234.1 L 71.9 233.2 L 71.8 232.2 L 71.7 231.3 L 71.6 230.4 L 71.4 229.4 L 71.2 228.5 L 71.0 227.6 L 70.8 226.7 L 70.5 225.8 L 70.2 224.9 L 69.9 224.0 L 69.6 223.1 L 69.3 222.2 L 68.9 221.4 L 68.5 220.5 L 68.1 219.7 L 67.6 218.8 L 67.2 218.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.0" stroke-linejoin="round" />
+  <text x="84.0" y="226.0" style="fill: var(--muted, #6b7280)"><tspan font-style="italic">θ</tspan></text>
+  <rect x="108.2" y="150.9" width="46.0" height="28.0" transform="rotate(-30.0 131.2 164.9)" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <line x1="276.0" y1="97.4" x2="276.0" y2="73.3" style="stroke: currentColor" stroke-width="2.4" />
+  <line x1="151.1" y1="153.4" x2="276.0" y2="81.3" style="stroke: currentColor" stroke-width="1.2" />
+  <circle cx="276.0" cy="81.3" r="2.2" style="fill: currentColor" />
+  <line x1="131.2" y1="164.9" x2="131.2" y2="215.9" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 131.2 222.9 L 127.5 214.9 L 134.9 214.9 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="121.2" y="213.9" style="fill: var(--accent, #2563eb)" text-anchor="end"><tspan font-style="italic">G</tspan></text>
+  <line x1="131.2" y1="164.9" x2="110.4" y2="176.9" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" stroke-dasharray="4 3" />
+  <path d="M 106.1 179.4 L 109.9 174.0 L 112.7 178.8 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="131.2" y1="164.9" x2="153.8" y2="204.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.2" stroke-dasharray="4 3" />
+  <path d="M 156.3 208.4 L 150.9 204.6 L 155.7 201.8 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="131.2" y1="164.9" x2="109.6" y2="127.4" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 106.1 121.4 L 113.3 126.5 L 106.9 130.2 Z" style="fill: var(--good, #059669)" />
+  <text x="100.1" y="117.4" style="fill: var(--good, #059669)" text-anchor="end"><tspan font-style="italic">N</tspan></text>
+  <line x1="147.1" y1="146.4" x2="166.2" y2="135.4" style="stroke: currentColor" stroke-width="2.2" />
+  <path d="M 172.2 131.9 L 167.1 139.2 L 163.4 132.7 Z" style="fill: currentColor" />
+  <text x="168.2" y="121.9" fill="currentColor" text-anchor="middle"><tspan font-style="italic">T</tspan></text>
+  <circle cx="131.2" cy="164.9" r="2.4" style="fill: currentColor" />
+  <text x="156.0" y="268.0" fill="currentColor" text-anchor="middle">光滑斜面上拴住的木块</text>
+  <line x1="330.0" y1="132.0" x2="562.0" y2="132.0" style="stroke: currentColor" stroke-width="2.0" />
+  <line x1="562.0" y1="132.0" x2="562.0" y2="250.0" style="stroke: currentColor" stroke-width="1.6" />
+  <circle cx="573.0" cy="121.0" r="11.0" style="stroke: currentColor" fill="none" stroke-width="1.4" />
+  <line x1="562.0" y1="130.0" x2="573.0" y2="121.0" style="stroke: currentColor" stroke-width="1.2" />
+  <rect x="392.0" y="96.0" width="58.0" height="36.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <text x="421.0" y="119.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">A</tspan></text>
+  <line x1="450.0" y1="110.0" x2="573.0" y2="110.0" style="stroke: currentColor" stroke-width="1.2" />
+  <line x1="584.0" y1="121.0" x2="584.0" y2="196.0" style="stroke: currentColor" stroke-width="1.2" />
+  <rect x="567.0" y="196.0" width="34.0" height="34.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <text x="584.0" y="218.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">B</tspan></text>
+  <line x1="411.0" y1="114.0" x2="411.0" y2="180.5" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 411.0 187.5 L 407.3 179.5 L 414.7 179.5 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="403.0" y="185.5" style="fill: var(--accent, #2563eb)" text-anchor="end"><tspan font-style="italic">G</tspan><tspan dy="4" font-size="11">A</tspan></text>
+  <line x1="411.0" y1="96.0" x2="411.0" y2="29.5" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 411.0 22.5 L 414.7 30.5 L 407.3 30.5 Z" style="fill: var(--good, #059669)" />
+  <text x="401.0" y="63.2" style="fill: var(--good, #059669)" text-anchor="end"><tspan font-style="italic">N</tspan></text>
+  <line x1="450.0" y1="121.0" x2="461.4" y2="121.0" style="stroke: currentColor" stroke-width="2.2" />
+  <path d="M 468.4 121.0 L 460.4 124.7 L 460.4 117.3 Z" style="fill: currentColor" />
+  <text x="459.2" y="102.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">T</tspan></text>
+  <line x1="592.0" y1="230.0" x2="592.0" y2="247.5" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 592.0 254.5 L 588.3 246.5 L 595.7 246.5 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="600.0" y="252.5" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">G</tspan><tspan dy="4" font-size="11">B</tspan></text>
+  <line x1="592.0" y1="196.0" x2="592.0" y2="184.6" style="stroke: currentColor" stroke-width="2.2" />
+  <path d="M 592.0 177.6 L 595.7 185.6 L 588.3 185.6 Z" style="fill: currentColor" />
+  <text x="600.0" y="187.0" fill="currentColor"><tspan font-style="italic">T</tspan></text>
+  <text x="446.0" y="268.0" fill="currentColor" text-anchor="middle">桌面上的 A 和挂着的 B</text>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 270" width="660" height="270" font-size="14">
+  <!-- 三种常见的力：左边，书静止在桌面上，受竖直向下的重力 G 和桌面竖直向上的支持力 N，两者大小相等。中间，小球用细绳挂着静止，受竖直向下的重力 G 和绳子沿绳向上的拉力 T。右边，弹簧左端固定，右端连着木块，弹簧被拉长了 x，对木块的弹力 F 指向左边，也就是弹簧恢复原长的方向，大小是 kx。 -->
+  <line x1="30.0" y1="172.0" x2="190.0" y2="172.0" style="stroke: currentColor" stroke-width="2.0" />
+  <line x1="46.0" y1="172.0" x2="46.0" y2="230.0" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="174.0" y1="172.0" x2="174.0" y2="230.0" style="stroke: currentColor" stroke-width="1.6" />
+  <rect x="82.0" y="148.0" width="56.0" height="24.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <line x1="110.0" y1="160.0" x2="110.0" y2="209.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 110.0 216.0 L 106.3 208.0 L 113.7 208.0 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="118.0" y="214.0" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">G</tspan></text>
+  <line x1="110.0" y1="148.0" x2="110.0" y2="99.0" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 110.0 92.0 L 113.7 100.0 L 106.3 100.0 Z" style="fill: var(--good, #059669)" />
+  <text x="118.0" y="102.0" style="fill: var(--good, #059669)"><tspan font-style="italic">N</tspan></text>
+  <text x="110.0" y="258.0" fill="currentColor" text-anchor="middle">桌面上的书</text>
+  <line x1="268.0" y1="40.0" x2="392.0" y2="40.0" style="stroke: currentColor" stroke-width="2.0" />
+  <line x1="274.0" y1="40.0" x2="266.0" y2="32.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="292.0" y1="40.0" x2="284.0" y2="32.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="310.0" y1="40.0" x2="302.0" y2="32.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="328.0" y1="40.0" x2="320.0" y2="32.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="346.0" y1="40.0" x2="338.0" y2="32.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="364.0" y1="40.0" x2="356.0" y2="32.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="382.0" y1="40.0" x2="374.0" y2="32.0" style="stroke: currentColor" stroke-width="1.0" />
+  <line x1="330.0" y1="40.0" x2="330.0" y2="154.0" style="stroke: currentColor" stroke-width="1.4" />
+  <circle cx="330.0" cy="168.0" r="14.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <line x1="330.0" y1="182.0" x2="330.0" y2="231.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 330.0 238.0 L 326.3 230.0 L 333.7 230.0 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="338.0" y="234.0" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">G</tspan></text>
+  <line x1="328.0" y1="154.0" x2="328.0" y2="105.0" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 328.0 98.0 L 331.7 106.0 L 324.3 106.0 Z" style="fill: var(--good, #059669)" />
+  <text x="316.0" y="112.0" style="fill: var(--good, #059669)" text-anchor="end"><tspan font-style="italic">T</tspan></text>
+  <text x="330.0" y="258.0" fill="currentColor" text-anchor="middle">绳子挂着的小球</text>
+  <line x1="440.0" y1="190.0" x2="640.0" y2="190.0" style="stroke: currentColor" stroke-width="2.0" />
+  <line x1="448.0" y1="110.0" x2="448.0" y2="190.0" style="stroke: currentColor" stroke-width="2.0" />
+  <path d="M 448.0 150.0 L 458.8 159.0 L 469.6 141.0 L 480.4 159.0 L 491.2 141.0 L 502.0 159.0 L 512.8 141.0 L 523.6 159.0 L 534.4 141.0 L 545.2 159.0 L 556.0 150.0" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.5" stroke-linejoin="round" />
+  <rect x="556.0" y="128.0" width="44.0" height="40.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <line x1="560.0" y1="148.0" x2="513.0" y2="148.0" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 506.0 148.0 L 514.0 144.3 L 514.0 151.7 Z" style="fill: var(--good, #059669)" />
+  <text x="530.0" y="132.0" style="fill: var(--good, #059669)" text-anchor="middle"><tspan font-style="italic">F</tspan></text>
+  <line x1="512.0" y1="196.0" x2="512.0" y2="214.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="556.0" y1="196.0" x2="556.0" y2="214.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="512.0" y1="208.0" x2="551.0" y2="208.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <path d="M 556.0 208.0 L 550.0 210.6 L 550.0 205.4 Z" style="fill: var(--muted, #6b7280)" />
+  <text x="534.0" y="230.0" style="fill: var(--muted, #6b7280)" text-anchor="middle"><tspan font-style="italic">x</tspan></text>
+  <text x="540.0" y="258.0" fill="currentColor" text-anchor="middle">弹簧：<tspan font-style="italic">F</tspan> = <tspan font-style="italic">k</tspan><tspan font-style="italic">x</tspan>，指向原长</text>
+</svg>

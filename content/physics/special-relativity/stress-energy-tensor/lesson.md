@@ -81,7 +81,7 @@ $$
 ::anchor{id="def-stress-energy-tensor"}
 描述连续分布的物质的一个对称:term[四维张量]{id="physics.special-relativity.four-tensor"}$T^{\mu\nu}$，如果在每个惯性系里，$T^{00}$是能量密度，$cT^{0i}$是能流密度（energy flux density）的第$i$个分量，$\frac1cT^{i0}$是动量密度（momentum density）的第$i$个分量，$T^{ij}$是第$i$个动量分量沿$x^j$方向的流密度（也叫应力，stress），就叫作这团物质的:term[能量-动量张量]{id="physics.special-relativity.stress-energy-tensor"}（stress–energy tensor，也叫应力-能量张量）。
 
-为什么这样定义：两个指标各管一件事，第一个说是四维动量的哪个分量（$0$是能量除以$c$，$i$是第$i$个动量分量）；第二个是$0$时，$\frac1cT^{\mu0}$是这个分量的密度，是$j$时，$T^{\mu j}$是它沿$x^j$方向的流密度。对称性$T^{0i}=T^{i0}$说的是能流密度除以$c^2$等于动量密度：能量流到哪里，就把动量带到哪里，尘埃里这正是每个粒子的$\vb p=\frac{E\vb u}{c^2}$；$T^{ij}=T^{ji}$和角动量守恒有关，这里不证。静止的物质里，第$i$个动量分量沿$x^j$方向的流密度，就是垂直于$x^j$轴的单位面积受的力的第$i$个分量，所以叫应力。边界情况：粒子的速度各不相同时，把速度相近的粒子分成一组，每组像尘埃那样算出张量再相加，静止系里$T^{ij}$就会有对角元（见 p5）。
+为什么这样定义：两个指标各管一件事，第一个说是四维动量的哪个分量（$0$是能量除以$c$，$i$是第$i$个动量分量）；第二个是$0$时，$\frac1cT^{\mu0}$是这个分量的密度，是$j$时，$T^{\mu j}$是它沿$x^j$方向的流密度。对称性$T^{0i}=T^{i0}$说的是能流密度除以$c^2$等于动量密度：能量流到哪里，就把动量带到哪里，尘埃里这正是每个粒子的$\vb p=\frac{E\vb u}{c^2}$；$T^{ij}=T^{ji}$和:term[角动量守恒]{id="physics.newtonian-mechanics.conservation-of-angular-momentum"}（conservation of angular momentum）有关，这里不证。静止的物质里，第$i$个动量分量沿$x^j$方向的流密度，就是垂直于$x^j$轴的单位面积受的力的第$i$个分量，所以叫应力。边界情况：粒子的速度各不相同时，把速度相近的粒子分成一组，每组像尘埃那样算出张量再相加，静止系里$T^{ij}$就会有对角元（见 p5）。
 
 ### 理想流体
 

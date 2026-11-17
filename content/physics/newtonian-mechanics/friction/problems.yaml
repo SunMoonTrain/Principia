@@ -1,0 +1,169 @@
+- id: p1
+  tier: easy
+  statement: |
+    质量$20\,\mathrm{kg}$的箱子放在水平地面上，箱子和地面之间$\mu_{\mathrm s}=0.40$、$\mu_{\mathrm k}=0.30$。用$60\,\mathrm N$的水平力推箱子，箱子受到的摩擦力有多大？$g$取$9.8\,\mathrm{m/s^2}$，以$\mathrm N$为单位。
+  answer:
+    type: number
+    value: 60
+    unit: |
+      $\mathrm N$
+  hints:
+    - |
+      先判断箱子动不动：最大静摩擦力是多少？
+    - |
+      $f_{\max}=\mu_{\mathrm s}mg=0.40\times20\times9.8=78.4\,\mathrm N$，比推力大。
+    - |
+      箱子不动，静摩擦力和推力平衡，是$60\,\mathrm N$。
+  solution: |
+    最大静摩擦力$\mu_{\mathrm s}mg=0.40\times196=78.4\,\mathrm N$，推力$60\,\mathrm N$没有超过它，箱子保持静止。水平方向合力为零，静摩擦力和推力等大反向，是$60\,\mathrm N$。用$\mu_{\mathrm k}mg=58.8\,\mathrm N$或$78.4\,\mathrm N$都不对：静摩擦力需要多少给多少。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        静摩擦力的方向一定和物体运动的方向相反
+      - |
+        同一个长方体木块，平放和侧放在同一个水平面上滑动，按这一节的经验规律，受到的滑动摩擦力一样大
+      - |
+        木块静止在斜面上；在木块保持静止的范围内，斜面倾角越大，它受的静摩擦力越大
+      - |
+        水平传送带匀速运动，货物和它一起匀速前进，货物受到向前的静摩擦力
+      - |
+        物体在水平面上只受摩擦力而减速滑行，动摩擦因数越大，速度减小得越快
+    value: [2, 3, 5]
+  hints:
+    - |
+      静摩擦力阻碍的是相对运动的趋势；匀速运动时合力为零。
+    - |
+      滑动摩擦力$\mu_{\mathrm k}N$和接触面积无关；斜面上静止的木块，静摩擦力等于$mg\sin\theta$。
+    - |
+      B、C、E 对；A、D 错。
+  solution: |
+    A 错：静摩擦力阻碍的是相对运动的趋势，可以和物体对地的运动同向，例如传送带带着货物加速。B 对：两种放法支持力都等于重力，$\mu_{\mathrm k}N$相同。C 对：静止时静摩擦力等于$mg\sin\theta$，倾角越大越大，直到超过最大静摩擦力。
+
+    D 错：货物匀速，合力为零，水平方向不需要摩擦力，静摩擦力是零。E 对：加速度大小是$\frac{\mu_{\mathrm k}mg}m=\mu_{\mathrm k}g$，动摩擦因数越大，减速越快。
+
+- id: p3
+  tier: medium
+  statement: |
+    质量$5.0\,\mathrm{kg}$的木块放在水平地面上，用$30\,\mathrm N$的拉力斜向上拉它，拉力和水平方向成$30^\circ$，木块和地面之间的动摩擦因数是$0.25$，木块正在滑动。木块的加速度有多大？$g$取$9.8\,\mathrm{m/s^2}$，以$\mathrm{m/s^2}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: (30*cos(30*pi/180) - 0.25*(5*9.8 - 30*sin(30*pi/180)))/5
+    unit: |
+      $\mathrm{m/s^2}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      拉力有向上的分量，支持力不再等于重力。
+    - |
+      竖直方向$N+30\sin30^\circ=mg$，$N=49-15=34\,\mathrm N$，滑动摩擦力$0.25\times34=8.5\,\mathrm N$。
+    - |
+      水平方向$30\cos30^\circ-8.5=5.0a$，$a\approx3.50\,\mathrm{m/s^2}$。
+  solution: |
+    竖直方向没有加速度：$N+F\sin30^\circ=mg$，$N=49-15=34\,\mathrm N$。滑动摩擦力$f=\mu_{\mathrm k}N=8.5\,\mathrm N$，方向向后。水平方向$F\cos30^\circ-f=ma$，$a=\frac{25.98-8.5}{5.0}\approx3.50\,\mathrm{m/s^2}$。斜着向上拉，一方面浪费了一点水平分力，一方面减小了支持力，摩擦力也跟着变小。
+
+- id: p4
+  tier: medium
+  statement: |
+    木块以$6.0\,\mathrm{m/s}$的速度冲上倾角为$30^\circ$的斜面，木块和斜面之间的动摩擦因数是$0.20$。木块沿斜面最多能冲多远？$g$取$9.8\,\mathrm{m/s^2}$，以$\mathrm m$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 6^2/(2*9.8*(sin(30*pi/180) + 0.2*cos(30*pi/180)))
+    unit: |
+      $\mathrm m$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      木块向上滑，滑动摩擦力沿斜面向下，和重力的分量方向相同。
+    - |
+      沿斜面的加速度大小$a=g(\sin30^\circ+0.20\cos30^\circ)$。
+    - |
+      $a\approx6.60\,\mathrm{m/s^2}$，冲上的距离$\frac{6.0^2}{2a}\approx2.73\,\mathrm m$。
+  solution: |
+    木块向上滑时，重力沿斜面的分量$mg\sin30^\circ$和滑动摩擦力$\mu_{\mathrm k}mg\cos30^\circ$都沿斜面向下，加速度大小$a=g(\sin30^\circ+0.20\cos30^\circ)\approx9.8\times0.673\approx6.60\,\mathrm{m/s^2}$。由$v^2-v_0^2=-2as$，$s=\frac{36}{2\times6.60}\approx2.73\,\mathrm m$。到最高点后，$\tan30^\circ\approx0.58$大于静摩擦因数时木块会滑回来，下滑时摩擦力反向，加速度变小。
+
+- id: p5
+  tier: hard
+  statement: |
+    质量为$m$的箱子放在水平地面上，静摩擦因数为$\mu_{\mathrm s}$。用一根绳子斜向上拉箱子，绳子和水平方向成$\varphi$角（$0\le\varphi<90^\circ$）。
+
+    （1）求刚好能拉动箱子的拉力$F(\varphi)$。（2）证明$\tan\varphi=\mu_{\mathrm s}$时这个拉力最小，最小值是$\frac{\mu_{\mathrm s}mg}{\sqrt{1+\mu_{\mathrm s}^2}}$。（3）为什么斜着拉比水平拉省力？
+  hints:
+    - |
+      刚好拉动时，静摩擦力达到最大值$\mu_{\mathrm s}N$，而$N=mg-F\sin\varphi$。
+    - |
+      $F(\varphi)=\frac{\mu_{\mathrm s}mg}{\cos\varphi+\mu_{\mathrm s}\sin\varphi}$，求分母的最大值。
+    - |
+      把$\cos\varphi+\mu_{\mathrm s}\sin\varphi$写成$\sqrt{1+\mu_{\mathrm s}^2}\cos(\varphi-\beta)$，$\tan\beta=\mu_{\mathrm s}$。
+  reference: |
+    （1）竖直方向$N=mg-F\sin\varphi$。刚好拉动时，水平分力等于最大静摩擦力：$F\cos\varphi=\mu_{\mathrm s}(mg-F\sin\varphi)$，所以$F(\varphi)=\frac{\mu_{\mathrm s}mg}{\cos\varphi+\mu_{\mathrm s}\sin\varphi}$。
+
+    （2）取$\beta$使$\cos\beta=\frac1{\sqrt{1+\mu_{\mathrm s}^2}}$、$\sin\beta=\frac{\mu_{\mathrm s}}{\sqrt{1+\mu_{\mathrm s}^2}}$，分母$=\sqrt{1+\mu_{\mathrm s}^2}\cos(\varphi-\beta)$，在$\varphi=\beta$即$\tan\varphi=\mu_{\mathrm s}$时最大，等于$\sqrt{1+\mu_{\mathrm s}^2}$。所以$F_{\min}=\frac{\mu_{\mathrm s}mg}{\sqrt{1+\mu_{\mathrm s}^2}}$。
+
+    （3）水平拉要$\mu_{\mathrm s}mg$。斜着拉时，向上的分力减小了支持力，最大静摩擦力跟着减小；代价是水平分力只是拉力的一部分。两者权衡，在$\tan\varphi=\mu_{\mathrm s}$时最省力，例如$\mu_{\mathrm s}=0.5$时约省$11\%$。
+
+- id: p6
+  tier: hard
+  statement: |
+    半径为$R$的弯道路面向外侧抬高，倾角为$\theta$，轮胎和路面之间的静摩擦因数为$\mu_{\mathrm s}$。
+
+    （1）汽车以多大的速率转弯时，不需要摩擦力？（2）证明汽车不打滑的速率范围是$gR\frac{\tan\theta-\mu_{\mathrm s}}{1+\mu_{\mathrm s}\tan\theta}\le v^2\le gR\frac{\tan\theta+\mu_{\mathrm s}}{1-\mu_{\mathrm s}\tan\theta}$（设$\mu_{\mathrm s}\tan\theta<1$；左边小于零时下限取零）。（3）$\theta=0$时回到什么结果？
+  hints:
+    - |
+      （1）就是倾斜弯道的设计速率$v^2=gR\tan\theta$。
+    - |
+      速率最大时汽车有向外滑的趋势，静摩擦力沿路面向内（向下），大小达到$\mu_{\mathrm s}N$；最小时反过来。
+    - |
+      把支持力和摩擦力都分解成水平、竖直两个分量，竖直方向合力为零，水平方向合力等于$\frac{mv^2}R$。
+  reference: |
+    （1）不需要摩擦力时，支持力的水平分量提供向心力，$v^2=gR\tan\theta$（见[圆周运动的动力学](lesson:physics.newtonian-mechanics.circular-dynamics)例 2）。
+
+    （2）速率最大时，静摩擦力$\mu_{\mathrm s}N$沿路面向下。竖直方向：$N\cos\theta-\mu_{\mathrm s}N\sin\theta=mg$；水平方向：$N\sin\theta+\mu_{\mathrm s}N\cos\theta=\frac{mv^2}R$。两式相除，$v^2=gR\frac{\sin\theta+\mu_{\mathrm s}\cos\theta}{\cos\theta-\mu_{\mathrm s}\sin\theta}=gR\frac{\tan\theta+\mu_{\mathrm s}}{1-\mu_{\mathrm s}\tan\theta}$。速率最小时摩擦力沿路面向上，把$\mu_{\mathrm s}$换成$-\mu_{\mathrm s}$，得到下限$gR\frac{\tan\theta-\mu_{\mathrm s}}{1+\mu_{\mathrm s}\tan\theta}$；$\tan\theta\le\mu_{\mathrm s}$时它不大于零，停在弯道上也不会滑下来，下限取零。
+
+    （3）$\theta=0$时上限是$\mu_{\mathrm s}gR$，正是例 2 的平路转弯；下限是零。
+
+- id: p7
+  tier: thinking
+  statement: |
+    汽车紧急刹车时，如果车轮被刹死、在路面上滑行，反而比车轮刚好不打滑时停得慢，汽车的防抱死系统（ABS）就是为了避免车轮刹死。
+
+    （1）车轮没有刹死时，轮胎和路面之间是静摩擦还是滑动摩擦？刹死以后呢？（2）为什么不刹死时减速可以更快？（3）车轮刹死时为什么还容易失去方向控制？
+  hints:
+    - |
+      车轮滚动而不打滑时，轮胎和路面接触的那一点相对路面是否滑动？
+    - |
+      比较最大静摩擦力$\mu_{\mathrm s}N$和滑动摩擦力$\mu_{\mathrm k}N$。
+    - |
+      转弯需要侧向的力，滑动摩擦力的方向由什么决定？
+  reference: |
+    （1）车轮滚动而不打滑时，轮胎和路面接触的那一点相对路面静止，是静摩擦；刹死后轮胎在路面上滑，是滑动摩擦。
+
+    （2）不打滑时，地面能给的减速的力最大可达$\mu_{\mathrm s}N$；刹死后只有$\mu_{\mathrm k}N$。$\mu_{\mathrm s}>\mu_{\mathrm k}$，所以刚好不打滑时减速最快。ABS 让车轮在将要刹死时松一下，保持在静摩擦的状态。
+
+    （3）滑动摩擦力的方向和轮胎相对路面的滑动方向相反，车往前滑，摩擦力就向后，没有侧向的分量；打方向盘也给不出转弯需要的侧向力，车只能顺着原方向滑出去。
+
+- id: p8
+  tier: thinking
+  statement: |
+    光滑水平桌面上，木块 A 叠放在木板 B 上，A 和 B 之间的静摩擦因数为$\mu_{\mathrm s}$。用水平力$F$拉下面的木板 B。
+
+    （1）A 和 B 一起加速时，A 受到的摩擦力朝哪边？是谁给它的？（2）拉力增大到多少，A 会相对 B 滑动？（3）如果改为拉上面的 A，A、B 一起运动的最大拉力会一样吗？
+  hints:
+    - |
+      A 能加速，必须有一个水平方向的力作用在它身上；它只和 B 接触。
+    - |
+      A 的最大加速度是$\frac{\mu_{\mathrm s}m_Ag}{m_A}=\mu_{\mathrm s}g$，整体的加速度不能超过它。
+    - |
+      拉 A 时，能带动 B 的只有 A、B 之间的静摩擦力，B 的最大加速度是多少？
+  reference: |
+    （1）A 跟着 B 向前加速，需要向前的力，而 A 在水平方向只和 B 接触，所以 B 给 A 的静摩擦力向前。反过来，A 给 B 的静摩擦力向后。
+
+    （2）A 的加速度最大是$\mu_{\mathrm s}g$。一起运动时整体的加速度$\frac F{m_A+m_B}$不能超过它，所以$F\le\mu_{\mathrm s}g(m_A+m_B)$；再大，A 就相对 B 向后滑。
+
+    （3）不一样。拉 A 时，带动 B 的只有 A、B 之间的静摩擦力，B 的加速度最大是$\frac{\mu_{\mathrm s}m_Ag}{m_B}$，所以一起运动的最大拉力是$\mu_{\mathrm s}m_Ag\frac{m_A+m_B}{m_B}$。只有$m_A=m_B$时两种拉法的最大拉力相同。

@@ -43,7 +43,7 @@ $\vb u$、$\vb v$不平行时，$\vb u\times\vb v$的方向由:term[右手定则
 
 为什么这样定义：:term[长度]{id="math.linear-algebra.length"}和「同时垂直于$\vb u$、$\vb v$」只确定了一条直线上相反的两个方向，还得说清是哪一个。$\vb e_1\times\vb e_2=\vb e_3$：四指从$x$轴弯向$y$轴，拇指指向$z$轴，和右手系的约定一致；可以证明（这里不证），对一般的$\vb u$、$\vb v$也是这样。边界情况：$\vb v\times\vb u=-(\vb u\times\vb v)$，四指反过来弯，拇指也反过来。
 
-开头的扳手：从转轴指向用力点的向量是$\vb r$，力是$\vb F$，物理里的力矩（torque）就是$\vb r\times\vb F$（见以后的[力矩与角动量](lesson:physics.newtonian-mechanics.angular-momentum)）。它的长度$|\vb r||\vb F|\sin\theta$说的正是「扳手越长、力越垂直，越容易拧动」，它的方向就是螺丝前进的方向。
+开头的扳手：从转轴指向用力点的向量是$\vb r$，力是$\vb F$，物理里的:term[力矩]{id="physics.newtonian-mechanics.torque"}（torque）就是$\vb r\times\vb F$（见以后的[力矩与角动量](lesson:physics.newtonian-mechanics.angular-momentum)）。它的长度$|\vb r||\vb F|\sin\theta$说的正是「扳手越长、力越垂直，越容易拧动」，它的方向就是螺丝前进的方向。
 
 ### 混合积
 
