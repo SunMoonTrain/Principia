@@ -142,7 +142,7 @@
     - |
       任取分割$P$，第一段是$[0,x_1]$。在$(0,x_1]$里挑$\xi_1$足够靠近$0$，使$\frac{1}{\sqrt{\xi_1}}>\frac{N}{x_1}$，黎曼和就大于$N$。所以对每个分割，黎曼和都可以要多大有多大，上和不存在，两种定义都给不出积分。
 
-      $\int_0^1\frac{\dd x}{\sqrt x}=2$说的是反常积分（improper integral）：$f$在每个$[\delta,1]$上连续（continuous），因而可积（见[哪些函数可积](lesson:math.analysis.integrable-functions)），用牛顿-莱布尼茨公式（Newton-Leibniz formula）算得$\int_\delta^1\frac{\dd x}{\sqrt x}=2-2\sqrt\delta$（见[微积分基本定理的证明](lesson:math.analysis.ftc-proof)），再令$\delta\to0^+$，极限是$2$。这是在黎曼积分之外多取一次极限，见[反常积分](lesson:math.calculus.improper-integrals)。
+      $\int_0^1\frac{\dd x}{\sqrt x}=2$说的是反常积分（improper integral）：$f$在每个$[\delta,1]$上连续（continuous），因而可积（见[哪些函数可积](lesson:math.analysis.integrable-functions)），用牛顿-莱布尼茨公式（Newton-Leibniz formula）算得$\int_\delta^1\frac{\dd x}{\sqrt x}=2-2\sqrt\delta$（见[微积分基本定理的证明](lesson:math.analysis.ftc-proof)），再令$\delta\to0^+$，极限是$2$。这是在黎曼积分之外多取一次极限，见[无界函数的反常积分](lesson:math.calculus.improper-unbounded)。
 
       所以「有界」是黎曼积分定义的一部分，不是可以省略的细节；无界函数要先截掉坏点附近的一小段，再看截掉的部分缩小时积分有没有极限。
   reference: |

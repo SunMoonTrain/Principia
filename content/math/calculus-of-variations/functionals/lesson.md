@@ -4,7 +4,7 @@ title: |
   泛函与变分问题
 goal: |
   会把最短路径、最速降线等问题写成求泛函极值的形式。
-prerequisites: [math.calculus.arc-length, math.vector-calculus.partial-derivatives, math.calculus.improper-integrals]
+prerequisites: [math.calculus.arc-length, math.vector-calculus.partial-derivatives, math.calculus.improper-unbounded]
 minutes: 25
 summary: |
   把函数对应到数的规则叫泛函，求它的极值是变分问题。

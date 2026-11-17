@@ -693,6 +693,33 @@ glossary:
       $\int_a^bf(x)\,\dd x$里的$x$；它只是一个记号，换成别的字母，积分的值不变。
     definedIn: math.calculus.definite-integral
     anchor: def-definite-integral
+  - id: math.calculus.lower-limit-of-integration
+    zh: |
+      积分下限
+    en: |
+      lower limit of integration
+    brief: |
+      定积分$\int_a^bf(x)\,\dd x$里的$a$；积分区间是$[a,b]$。
+    definedIn: math.calculus.definite-integral
+    anchor: def-definite-integral
+  - id: math.calculus.upper-limit-of-integration
+    zh: |
+      积分上限
+    en: |
+      upper limit of integration
+    brief: |
+      定积分$\int_a^bf(x)\,\dd x$里的$b$；积分区间是$[a,b]$。
+    definedIn: math.calculus.definite-integral
+    anchor: def-definite-integral
+  - id: math.calculus.interval-of-integration
+    zh: |
+      积分区间
+    en: |
+      interval of integration
+    brief: |
+      定积分$\int_a^bf(x)\,\dd x$里的区间$[a,b]$，$a$、$b$分别叫作积分下限、积分上限。
+    definedIn: math.calculus.definite-integral
+    anchor: def-definite-integral
   - id: math.calculus.additivity-over-intervals
     zh: |
       区间可加性
@@ -702,6 +729,15 @@ glossary:
       $\int_a^bf(x)\,\dd x=\int_a^cf(x)\,\dd x+\int_c^bf(x)\,\dd x$，对$a$、$b$、$c$的任何顺序都成立。
     definedIn: math.calculus.integral-properties
     anchor: thm-additivity
+  - id: math.calculus.integral-monotonicity
+    zh: |
+      保序性
+    en: |
+      monotonicity of the integral
+    brief: |
+      $a<b$、处处$f\le g$时，$\int_a^bf(x)\,\dd x\le\int_a^bg(x)\,\dd x$；由它得到估值$m(b-a)\le\int_a^bf(x)\,\dd x\le M(b-a)$。
+    definedIn: math.calculus.integral-properties
+    anchor: thm-monotone-integral
   - id: math.calculus.integral-mean-value-theorem
     zh: |
       积分中值定理
@@ -891,3 +927,120 @@ glossary:
       余项写成$\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-a)^{n+1}$，$\xi$在$a$和$x$之间；$|f^{(n+1)}|\le M$时可以估计误差。
     definedIn: math.calculus.taylor-remainder
     anchor: thm-lagrange-remainder
+  - id: math.calculus.differential-element
+    zh: |
+      微元
+    en: |
+      differential element
+    brief: |
+      所求的量在$[x,x+\dd x]$上那一部分的近似$f(x)\,\dd x$，误差和$\dd x$相比趋于$0$；它是这个量的微分。
+    definedIn: math.calculus.area-between-curves
+    anchor: def-element-method
+  - id: math.calculus.improper-integral
+    zh: |
+      反常积分
+    en: |
+      improper integral
+    brief: |
+      积分区间无穷或被积函数无界时，先在不出问题的有限闭区间上积分再取极限，如$\int_a^{+\infty}f\,\dd x=\lim_{b\to+\infty}\int_a^bf\,\dd x$。
+    definedIn: math.calculus.improper-integrals
+    anchor: def-improper-integral
+  - id: math.calculus.improper-comparison-test
+    zh: |
+      反常积分的比较判别法
+    en: |
+      comparison test for improper integrals
+    brief: |
+      $0\le f\le g$时，$\int_a^{+\infty}g\,\dd x$收敛则$\int_a^{+\infty}f\,\dd x$收敛，$\int_a^{+\infty}f\,\dd x$发散则$\int_a^{+\infty}g\,\dd x$发散。
+    definedIn: math.calculus.improper-integrals
+    anchor: thm-improper-comparison
+  - id: math.calculus.absolutely-convergent-integral
+    zh: |
+      反常积分的绝对收敛
+    en: |
+      absolute convergence of improper integrals
+    brief: |
+      $\int_a^{+\infty}|f(x)|\,\dd x$收敛时，说$\int_a^{+\infty}f(x)\,\dd x$绝对收敛；绝对收敛的反常积分一定收敛。
+    definedIn: math.calculus.improper-integrals
+    anchor: def-absolute-convergence
+  - id: math.calculus.integration-by-substitution
+    zh: |
+      换元积分法
+    en: |
+      integration by substitution
+    brief: |
+      把积分变量换成新的变量来求积分的方法，依据是链式法则；分第一类换元法和第二类换元法。
+    definedIn: math.calculus.substitution
+    anchor: def-integration-by-substitution
+  - id: math.calculus.substitution-first-kind
+    zh: |
+      第一类换元法
+    en: |
+      substitution of the first kind
+    brief: |
+      $F'=f$时，$\int f(\varphi(x))\varphi'(x)\,\dd x=F(\varphi(x))+C$；把$\varphi'(x)\,\dd x$凑成$\dd u$，也叫凑微分法。
+    definedIn: math.calculus.substitution
+    anchor: thm-substitution-first
+  - id: math.calculus.substitution-second-kind
+    zh: |
+      第二类换元法
+    en: |
+      substitution of the second kind
+    brief: |
+      令$x=\psi(t)$，$\psi$严格单调、导数连续，先求$\int f(\psi(t))\psi'(t)\,\dd t$，再用$t=\psi^{-1}(x)$代回。
+    definedIn: math.calculus.substitution
+    anchor: thm-substitution-second
+  - id: math.calculus.integration-by-parts
+    zh: |
+      分部积分法
+    en: |
+      integration by parts
+    brief: |
+      $u$、$v$有连续的导数时，$\int uv'\,\dd x=uv-\int u'v\,\dd x$，由乘积法则得到；定积分里端点项写成$uv\Big|_a^b$。
+    definedIn: math.calculus.integration-by-parts
+    anchor: thm-integration-by-parts
+  - id: math.calculus.partial-fraction
+    zh: |
+      部分分式
+    en: |
+      partial fractions
+    brief: |
+      真分式按分母的因式拆成的简单分式，形如$\frac A{(x-a)^k}$、$\frac{Bx+C}{(x^2+px+q)^m}$，其中$x^2+px+q$没有实根。
+    definedIn: math.calculus.partial-fractions
+    anchor: def-partial-fractions
+  - id: math.calculus.trig-substitution
+    zh: |
+      三角代换
+    en: |
+      trigonometric substitution
+    brief: |
+      含$\sqrt{a^2-x^2}$、$\sqrt{a^2+x^2}$、$\sqrt{x^2-a^2}$时分别令$x=a\sin t$、$a\tan t$、$\frac a{\cos t}$，用平方关系去掉根号。
+    definedIn: math.calculus.trig-substitution
+    anchor: def-trig-substitution
+  - id: math.calculus.arc-length
+    zh: |
+      弧长
+    en: |
+      arc length
+    brief: |
+      曲线上内接折线的长度在分点越来越密时的极限；曲线$y=f(x)$的弧长是$\int_a^b\sqrt{1+f'(x)^2}\,\dd x$。
+    definedIn: math.calculus.arc-length
+    anchor: def-arc-length
+  - id: math.calculus.polar-coordinates
+    zh: |
+      极坐标
+    en: |
+      polar coordinates
+    brief: |
+      用到极点的距离$r$和从极轴转过的角$\theta$表示平面上的点；极轴沿$x$轴正方向时$x=r\cos\theta$，$y=r\sin\theta$。
+    definedIn: math.calculus.polar-area
+    anchor: def-polar-coordinates
+  - id: math.calculus.element-method
+    zh: |
+      微元法
+    en: |
+      method of differential elements
+    brief: |
+      在$[x,x+\dd x]$上写出微元$\dd Q=f(x)\,\dd x$，再从$a$积到$b$，得到总量$Q=\int_a^bf(x)\,\dd x$。
+    definedIn: math.calculus.area-between-curves
+    anchor: def-element-method

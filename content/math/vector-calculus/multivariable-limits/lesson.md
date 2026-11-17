@@ -62,7 +62,7 @@ status: reviewed
 
 **为什么想到这么做**：分子是三次式、分母是二次式，猜极限是$0$；要证明它，就把$|f(x,y)-0|$用一个只依赖于到原点的距离、并且趋于$0$的量夹住。
 
-**推导**：$(x,y)\ne(0,0)$时$x^2\le x^2+y^2$，所以$\left|\frac{x^2y}{x^2+y^2}\right|\le|y|\le\sqrt{x^2+y^2}$。点到原点的距离趋于$0$时右边趋于$0$，由夹逼定理，所求的:term[二重极限]{id="math.vector-calculus.double-limit"}是$0$。用极坐标$x=r\cos\theta$、$y=r\sin\theta$看也一样：$f=r\cos^2\theta\sin\theta$，$|f|\le r$，这个上界和$\theta$无关。
+**推导**：$(x,y)\ne(0,0)$时$x^2\le x^2+y^2$，所以$\left|\frac{x^2y}{x^2+y^2}\right|\le|y|\le\sqrt{x^2+y^2}$。点到原点的距离趋于$0$时右边趋于$0$，由夹逼定理，所求的:term[二重极限]{id="math.vector-calculus.double-limit"}是$0$。用:term[极坐标]{id="math.calculus.polar-coordinates"}（polar coordinates）$x=r\cos\theta$、$y=r\sin\theta$看也一样：$f=r\cos^2\theta\sin\theta$，$|f|\le r$，这个上界和$\theta$无关。
 
 ### 例 2　沿所有直线的极限都是 0
 
@@ -77,4 +77,4 @@ $f(x,y)=\frac{x^2y}{x^4+y^2}$（$(x,y)\ne(0,0)$）。证明$(x,y)$沿每条过�
 - 「沿所有直线趋近时极限都是$L$，:term[二重极限]{id="math.vector-calculus.double-limit"}就是$L$。」例 2 沿每条直线都是$0$，沿抛物线$y=x^2$却是$\frac12$。
 - 「两个累次极限相等，二重极限就存在。」$\frac{xy}{x^2+y^2}$的两个累次极限都是$0$，原点处的二重极限却不存在；反过来，二重极限存在时，累次极限也可能不存在（第 5 题）。
 - 「对$x$、对$y$分别:term[连续]{id="math.vector-calculus.continuous"}，就是二元连续。」讲解里的$\frac{xy}{x^2+y^2}$（$f(0,0)=0$）就是反例。
-- 「用极坐标算出：对每个固定的$\theta$，$r\to0$时$f\to L$，所以二重极限是$L$。」例 2 里固定$\theta$时$f\to0$，可$\theta$越接近$0$，$f$趋于$0$得越慢；要像例 1 那样找一个和$\theta$无关的上界（第 7 题）。
+- 「用:term[极坐标]{id="math.calculus.polar-coordinates"}算出：对每个固定的$\theta$，$r\to0$时$f\to L$，所以二重极限是$L$。」例 2 里固定$\theta$时$f\to0$，可$\theta$越接近$0$，$f$趋于$0$得越慢；要像例 1 那样找一个和$\theta$无关的上界（第 7 题）。

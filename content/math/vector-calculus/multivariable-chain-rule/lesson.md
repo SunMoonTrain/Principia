@@ -13,7 +13,7 @@ status: reviewed
 
 ## 这一节要回答的问题
 
-一架无人机沿曲线$\bigl(x(t),y(t)\bigr)$飞过一块铁板上空，测到的温度是$T\bigl(x(t),y(t)\bigr)$。它测到的温度随时间变化得多快？如果$x$、$y$又是极坐标$r$、$\theta$的函数，温度对$r$、对$\theta$的:term[偏导数]{id="math.vector-calculus.partial-derivative"}（partial derivative）怎样从$T_x$、$T_y$算出来？一元函数的链式法则（chain rule）说「外层的导数乘以内层的导数」，多元的时候是什么样子？
+一架无人机沿曲线$\bigl(x(t),y(t)\bigr)$飞过一块铁板上空，测到的温度是$T\bigl(x(t),y(t)\bigr)$。它测到的温度随时间变化得多快？如果$x$、$y$又是:term[极坐标]{id="math.calculus.polar-coordinates"}（polar coordinates）$r$、$\theta$的函数，温度对$r$、对$\theta$的:term[偏导数]{id="math.vector-calculus.partial-derivative"}（partial derivative）怎样从$T_x$、$T_y$算出来？一元函数的链式法则（chain rule）说「外层的导数乘以内层的导数」，多元的时候是什么样子？
 
 ## 讲解
 

@@ -1,0 +1,169 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\int_0^{+\infty}e^{-2x}\,\dd x$。
+  answer:
+    type: number
+    value: 1/2
+  hints:
+    - |
+      先找$e^{-2x}$的一个原函数（antiderivative），可以求导验证。
+    - |
+      $\Bigl(-\frac12e^{-2x}\Bigr)'=e^{-2x}$。
+    - |
+      $\int_0^be^{-2x}\,\dd x=\frac12\bigl(1-e^{-2b}\bigr)$，再令$b\to+\infty$。
+  solution: |
+    $\int_0^be^{-2x}\,\dd x=-\frac12e^{-2x}\Big|_0^b=\frac12\bigl(1-e^{-2b}\bigr)$。$b\to+\infty$时$e^{-2b}\to0$，所以这个反常积分（improper integral）收敛（converge），值是$\frac12$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列反常积分中，收敛的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\int_1^{+\infty}\frac{\dd x}{\sqrt x}$
+      - |
+        $\int_1^{+\infty}\frac{\dd x}{x\sqrt x}$
+      - |
+        $\int_1^{+\infty}\frac{\ln x}x\,\dd x$
+      - |
+        $\int_1^{+\infty}\frac{\dd x}{x^2+x}$
+    value: [2, 4]
+  hints:
+    - |
+      前两个是$\int_1^{+\infty}\frac{\dd x}{x^p}$，看$p$是否大于$1$。
+    - |
+      C：$x\ge e$时$\ln x\ge1$，被积函数和$\frac1x$比一比。
+    - |
+      D：$x\ge1$时$0<\frac1{x^2+x}\le\frac1{x^2}$，用比较判别法（comparison test）。
+  solution: |
+    A 是$p=\frac12$，发散（diverge）；B 是$p=\frac32>1$，收敛。C：$x\ge e$时$\frac{\ln x}x\ge\frac1x$，$\int_e^{+\infty}\frac{\dd x}x$发散，所以 C 发散（也可以直接算：$\int_1^b\frac{\ln x}x\,\dd x=\frac{(\ln b)^2}2$没有上界）。D 的被积函数不超过$\frac1{x^2}$，由比较判别法收敛。选 B、D。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\int_0^{+\infty}xe^{-x^2}\,\dd x$。
+  answer:
+    type: number
+    value: 1/2
+  hints:
+    - |
+      找一个函数，它的导数是$xe^{-x^2}$。想想$e^{-x^2}$的导数是什么。
+    - |
+      由链式法则（chain rule），$\bigl(e^{-x^2}\bigr)'=-2xe^{-x^2}$，所以$-\frac12e^{-x^2}$是一个原函数。
+    - |
+      $\int_0^bxe^{-x^2}\,\dd x=\frac12\bigl(1-e^{-b^2}\bigr)$。
+  solution: |
+    $\Bigl(-\frac12e^{-x^2}\Bigr)'=xe^{-x^2}$，所以$\int_0^{+\infty}xe^{-x^2}\,\dd x=-\frac12e^{-x^2}\Big|_0^{+\infty}$，即$0-\Bigl(-\frac12\Bigr)=\frac12$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\int_1^{+\infty}\frac{\dd x}{x(x+1)}$。
+  answer:
+    type: number
+    value: ln(2)
+  hints:
+    - |
+      把$\frac1{x(x+1)}$拆成两个简单分式的差。
+    - |
+      $\frac1{x(x+1)}=\frac1x-\frac1{x+1}$，一个原函数是$\ln x-\ln(x+1)=\ln\frac x{x+1}$。
+    - |
+      $b\to+\infty$时$\frac b{b+1}\to1$。
+  solution: |
+    $\int_1^b\frac{\dd x}{x(x+1)}=\ln\frac x{x+1}\Big|_1^b=\ln\frac b{b+1}+\ln2$，$b\to+\infty$时趋于$\ln2\approx0.693$。注意不能拆成$\int_1^{+\infty}\frac{\dd x}x-\int_1^{+\infty}\frac{\dd x}{x+1}$：这两个反常积分都发散，要先在$[1,b]$上合起来算，再取极限。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）设$f$、$g$在$[a,+\infty)$上连续（continuous）并且为正，$x\to+\infty$时$\frac{f(x)}{g(x)}\to L$，$0<L<+\infty$。证明$\int_a^{+\infty}f(x)\,\dd x$和$\int_a^{+\infty}g(x)\,\dd x$同时收敛或同时发散。
+
+    （2）判断$\int_1^{+\infty}\frac{x+1}{\sqrt{x^5+3}}\,\dd x$是否收敛。
+  hints:
+    - |
+      （1）$x$足够大时，$\frac{f(x)}{g(x)}$夹在$\frac L2$和$2L$之间。
+    - |
+      （1）有$X$，使$x\ge X$时$\frac L2g(x)\le f(x)\le2Lg(x)$；$[a,X]$上是普通的定积分，不影响收敛与否。（2）$x$很大时，被积函数像$\frac x{x^{5/2}}=\frac1{x^{3/2}}$。
+    - |
+      （1）$\int_a^bf=\int_a^Xf+\int_X^bf$，第一项是固定的数，所以只要看$[X,+\infty)$。在那里$f\le2Lg$：$\int g$收敛则$\int f$收敛；$g\le\frac2Lf$：$\int f$收敛则$\int g$收敛。
+
+      （2）和$\frac1{x^{3/2}}$相比，$\frac{(x+1)x^{3/2}}{\sqrt{x^5+3}}=\frac{1+\frac1x}{\sqrt{1+\frac3{x^5}}}\to1$，而$\int_1^{+\infty}\frac{\dd x}{x^{3/2}}$收敛，所以原积分收敛。
+  reference: |
+    （1）$x\ge X$时$\frac L2g\le f\le2Lg$，用两次比较判别法。
+
+    （2）收敛：被积函数和$\frac1{x^{3/2}}$之比趋于$1$。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）验证$\Bigl(-\frac{\cos x}x\Bigr)'=\frac{\sin x}x+\frac{\cos x}{x^2}$，由此证明$\int_1^{+\infty}\frac{\sin x}x\,\dd x$收敛。
+
+    （2）证明$\int_1^{+\infty}\frac{|\sin x|}x\,\dd x$发散。
+  hints:
+    - |
+      （1）两边从$1$积到$b$；右边第二项的积分绝对收敛（absolutely convergent）。
+    - |
+      （1）$\int_1^b\frac{\sin x}x\,\dd x=\cos1-\frac{\cos b}b-\int_1^b\frac{\cos x}{x^2}\,\dd x$。（2）在每个$[k\pi,(k+1)\pi]$上，$\frac{|\sin x|}x\ge\frac{|\sin x|}{(k+1)\pi}$，而$\int_{k\pi}^{(k+1)\pi}|\sin x|\,\dd x=2$。
+    - |
+      （1）由商的求导法则验证。$b\to+\infty$时$\frac{\cos b}b\to0$；$\Bigl|\frac{\cos x}{x^2}\Bigr|\le\frac1{x^2}$，$\int_1^{+\infty}\frac{\cos x}{x^2}\,\dd x$绝对收敛，因而收敛。所以左边有极限。
+
+      （2）$\int_{k\pi}^{(k+1)\pi}\frac{|\sin x|}x\,\dd x\ge\frac2{(k+1)\pi}$。对$k=1,\dots,n$相加，$\int_\pi^{(n+1)\pi}\frac{|\sin x|}x\,\dd x\ge\frac2\pi\Bigl(\frac12+\frac13+\cdots+\frac1{n+1}\Bigr)$。$x\in[k+1,k+2]$时$\frac1x\le\frac1{k+1}$，所以括号里的和不小于$\int_2^{n+2}\frac{\dd x}x=\ln\frac{n+2}2$，没有上界。
+  reference: |
+    （1）$\int_1^b\frac{\sin x}x\,\dd x=\cos1-\frac{\cos b}b-\int_1^b\frac{\cos x}{x^2}\,\dd x$，最后一项绝对收敛。
+
+    （2）每个$[k\pi,(k+1)\pi]$上至少积出$\frac2{(k+1)\pi}$，和不小于$\frac2\pi\ln\frac{n+2}2$。收敛而不绝对收敛的反常积分叫作条件收敛（conditionally convergent）。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）$\lim_{b\to+\infty}\int_{-b}^bx\,\dd x$是多少？$\lim_{b\to+\infty}\int_{-b}^{2b}x\,\dd x$呢？
+
+    （2）由此说明：为什么规定$\int_{-\infty}^{+\infty}f(x)\,\dd x$收敛要$\int_{-\infty}^cf(x)\,\dd x$、$\int_c^{+\infty}f(x)\,\dd x$各自收敛，而不是看$\int_{-b}^bf(x)\,\dd x$的极限？
+
+    （3）$\int_{-\infty}^{+\infty}f(x)\,\dd x$收敛时，$\lim_{b\to+\infty}\int_{-b}^bf(x)\,\dd x$一定等于它吗？
+  hints:
+    - |
+      （1）$\int_{-b}^{2b}x\,\dd x=\frac{(2b)^2-b^2}2$。
+    - |
+      （2）两端都伸向无穷远，伸的快慢不同，结果就不同。
+    - |
+      （1）第一个对每个$b$都是$0$，极限是$0$；第二个是$\frac32b^2$，没有上界。
+
+      （2）同一个函数，两端按不同的快慢伸出去，「极限」可以是$0$，也可以没有，这样的值没有意义。要求两端各自收敛，值就不依赖两端怎样伸出去。
+
+      （3）一定：$\int_{-b}^bf=\int_{-b}^0f+\int_0^bf$，两项各自趋于$\int_{-\infty}^0f$和$\int_0^{+\infty}f$。反过来不成立，$f(x)=x$就是例子。
+  reference: |
+    （1）$0$；没有极限（$\frac32b^2$）。
+
+    （2）两端伸出去的快慢不同，结果不同；各自收敛，值才确定。
+
+    （3）一定；反过来不成立。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）举例说明：$x\to+\infty$时$f(x)\to0$，$\int_a^{+\infty}f(x)\,\dd x$也不一定收敛。
+
+    （2）$f$在$[0,+\infty)$上连续、$f\ge0$，$\int_0^{+\infty}f(x)\,\dd x$收敛，$f(x)$一定趋于$0$吗？想一想这样的函数：在每个正整数$n$处立一个高为$1$、底宽为$\frac1{2^n}$的三角形，别处都是$0$。
+
+    （3）如果再要求$f$递减呢？
+  hints:
+    - |
+      （1）讲解里的幂函数。（2）第$n$个三角形的面积是多少？加起来呢？
+    - |
+      （2）第$n$个三角形的面积是$\frac1{2^{n+1}}$，所以$\int_0^bf(x)\,\dd x$不超过$\frac14+\frac18+\cdots=\frac12$。（3）递减并且$f\ge0$，$f(x)$有极限$L\ge0$，$L$能不能大于$0$？
+    - |
+      （1）$\frac1x\to0$，$\int_1^{+\infty}\frac{\dd x}x$发散。
+
+      （2）不一定。这个函数连续、非负，$\int_0^bf(x)\,\dd x$随$b$增大而增大，又不超过$\frac12$，所以收敛；可$f(n)=1$，$f$不趋于$0$。三角形越来越窄，面积越来越小，加起来有限。
+
+      （3）这时一定趋于$0$。若$L>0$，则处处$f\ge L$，$\int_0^bf(x)\,\dd x\ge Lb$没有上界，和收敛矛盾。
+  reference: |
+    （1）$\frac1x$。
+
+    （2）不一定：三角形的面积之和是$\frac12$，可$f(n)=1$。
+
+    （3）一定趋于$0$，否则$\int_0^bf\ge Lb$。

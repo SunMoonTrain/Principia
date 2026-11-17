@@ -134,7 +134,7 @@
     - |
       $F$处处可导：$0$处$\bigl|\frac{F(h)}{h}\bigr|\le|h|\to0$，$F'(0)=0$；别处由求导法则，$F'(x)=2x\sin\frac{1}{x^2}-\frac2x\cos\frac{1}{x^2}$。在$x=\frac{1}{\sqrt{2k\pi}}$处它等于$-2\sqrt{2k\pi}$，要多小有多小，$F'$在$[0,1]$上无界，不:term[可积]{id="math.analysis.riemann-integral"}。所以等式左边在黎曼积分的意义下没有意义，:term[牛顿-莱布尼茨公式]{id="math.analysis.newton-leibniz-formula"}的条件「$F'$可积」不满足。
 
-      退一步，在每个$[\delta,1]$上$F'$连续，公式成立：$\int_\delta^1F'=F(1)-F(\delta)$，$\delta\to0^+$时趋于$F(1)=\sin1$。这是反常积分（improper integral）的说法，见[反常积分](lesson:math.calculus.improper-integrals)。
+      退一步，在每个$[\delta,1]$上$F'$连续，公式成立：$\int_\delta^1F'=F(1)-F(\delta)$，$\delta\to0^+$时趋于$F(1)=\sin1$。这是反常积分（improper integral）的说法，见[无界函数的反常积分](lesson:math.calculus.improper-unbounded)。
 
       更麻烦的是，导函数有界也不一定黎曼可积，沃尔泰拉函数（Volterra's function）就是例子。在勒贝格积分（Lebesgue integral）里，「$F$处处可导、$F'$有界」就保证$\int_a^bF'=F(b)-F(a)$。这是黎曼积分不够用、要发展新积分的原因之一，这一版的课程没有收。
   reference: |

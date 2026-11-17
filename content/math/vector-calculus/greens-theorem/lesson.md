@@ -4,7 +4,7 @@ title: |
   格林公式
 goal: |
   会用格林公式把平面闭曲线上的积分化成二重积分，并用它求面积。
-prerequisites: [math.vector-calculus.conservative-fields, math.vector-calculus.double-integrals]
+prerequisites: [math.vector-calculus.conservative-fields, math.vector-calculus.polar-double-integrals]
 minutes: 35
 summary: |
   沿边界的环量等于区域里旋度之和，向外的通量等于散度之和。
@@ -42,7 +42,7 @@ status: reviewed
 
 **证明**：对$(-Q,P)$用:term[格林公式]{id="math.vector-calculus.greens-theorem"}：$\oint-Q\,\dd x+P\,\dd y=\iint\bigl(P_x-(-Q_y)\bigr)\dd A$，就是上式。沿:term[正向]{id="math.vector-calculus.positive-orientation"}走，:term[单位切向量]{id="math.vector-calculus.unit-tangent-vector"}（unit tangent vector）是$\vb T=\frac{(\dd x,\dd y)}{\dd s}$，把它顺时针转$90°$得到朝外的$\vb n=\frac{(\dd y,-\dd x)}{\dd s}$，所以$\vb F\cdot\vb n\,\dd s=P\,\dd y-Q\,\dd x$。
 
-为什么重要：$P_x+Q_y$是:term[散度]{id="math.vector-calculus.divergence"}，是当地往外冒的强度。通量形式说：从边界流出的总量，等于区域里各处冒出的量之和；没有源的地方，流进多少就流出多少。一元的分部积分（integration by parts）把导数从一个因子挪到另一个因子上，平面上靠的正是这个形式：取$P=fg_1$、$Q=fg_2$，按一元的乘积求导法则展开$P_x+Q_y$，边界上$f=0$时得$\iint_D(f_xg_1+f_yg_2)\dd A=-\iint_Df\bigl((g_1)_x+(g_2)_y\bigr)\dd A$。
+为什么重要：$P_x+Q_y$是:term[散度]{id="math.vector-calculus.divergence"}，是当地往外冒的强度。通量形式说：从边界流出的总量，等于区域里各处冒出的量之和；没有源的地方，流进多少就流出多少。一元的:term[分部积分]{id="math.calculus.integration-by-parts"}（integration by parts）把导数从一个因子挪到另一个因子上，平面上靠的正是这个形式：取$P=fg_1$、$Q=fg_2$，按一元的乘积求导法则展开$P_x+Q_y$，边界上$f=0$时得$\iint_D(f_xg_1+f_yg_2)\dd A=-\iint_Df\bigl((g_1)_x+(g_2)_y\bigr)\dd A$。
 
 ### 用边界算面积
 

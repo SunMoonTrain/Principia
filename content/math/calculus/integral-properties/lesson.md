@@ -41,7 +41,7 @@ $\int_0^1e^{-x^2}\,\dd x$用:term[黎曼和]{id="math.calculus.riemann-sum"}（R
 ### 保序性与估值
 
 ::anchor{id="thm-monotone-integral"}
-**定理（保序性，monotonicity）**　设$a<b$，$f$、$g$在$[a,b]$上:term[可积]{id="math.calculus.integrable"}，并且处处$f(x)\le g(x)$，则$\int_a^bf(x)\,\dd x\le\int_a^bg(x)\,\dd x$。
+**定理（:term[保序性]{id="math.calculus.integral-monotonicity"}，monotonicity）**　设$a<b$，$f$、$g$在$[a,b]$上:term[可积]{id="math.calculus.integrable"}，并且处处$f(x)\le g(x)$，则$\int_a^bf(x)\,\dd x\le\int_a^bg(x)\,\dd x$。
 
 道理：每个:term[黎曼和]{id="math.calculus.riemann-sum"}里都逐项有$f(\xi_i)\Delta x_i\le g(\xi_i)\Delta x_i$，取极限时不等号保持。取$g$为常数，得到估值（estimation）：如果在$[a,b]$上$m\le f(x)\le M$，那么$m(b-a)\le\int_a^bf(x)\,\dd x\le M(b-a)$。由$-|f|\le f\le|f|$，还有$\Bigl|\int_a^bf(x)\,\dd x\Bigr|\le\int_a^b|f(x)|\,\dd x$（$f$:term[连续]{id="math.calculus.continuous"}（continuous）时$|f|$也连续，可积）。
 
@@ -116,5 +116,5 @@ $$
 ## 常见误区
 
 - 「$\int_a^bf(x)g(x)\,\dd x=\int_a^bf(x)\,\dd x\cdot\int_a^bg(x)\,\dd x$。」在$[0,2]$上取$f=g=1$：左边是$2$，右边是$4$。
-- 「$\int_a^bf(x)\,\dd x\ge0$，所以$f\ge0$。」$\int_{-1}^2x\,\dd x=\frac32>0$，可$x$在$[-1,0)$上是负的；保序性只能从函数推到积分，不能反过来。
+- 「$\int_a^bf(x)\,\dd x\ge0$，所以$f\ge0$。」$\int_{-1}^2x\,\dd x=\frac32>0$，可$x$在$[-1,0)$上是负的；:term[保序性]{id="math.calculus.integral-monotonicity"}只能从函数推到积分，不能反过来。
 - 「:term[平均值]{id="math.calculus.average-value"}就是两端函数值的平均数。」$x^2$在$[0,1]$上的平均值是$\frac13$，不是$\frac{0+1}2$。

@@ -1,0 +1,183 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\int_0^{\sqrt2}\sqrt{4-x^2}\,\dd x$。
+  answer:
+    type: number
+    value: pi/2 + 1
+  hints:
+    - |
+      令$x=2\sin t$；$x$从$0$到$\sqrt2$时，$t$从$0$到$\frac\pi4$。
+    - |
+      $\sqrt{4-x^2}=2\cos t$，$\dd x=2\cos t\,\dd t$，原式等于$4\int_0^{\pi/4}\cos^2t\,\dd t$。
+    - |
+      $4\int\cos^2t\,\dd t=2\bigl(t+\sin t\cos t\bigr)+C$。
+  solution: |
+    原式等于$2\bigl(t+\sin t\cos t\bigr)\Big|_0^{\pi/4}=2\Bigl(\frac\pi4+\frac12\Bigr)=\frac\pi2+1\approx2.571$：圆心角$\frac\pi4$的扇形面积是$\frac\pi2$，直角边都是$\sqrt2$的三角形面积是$1$。
+
+- id: p2
+  tier: easy
+  statement: |
+    求$\int\frac{\dd x}{x^2\sqrt{x^2+9}}$，用下面哪个代换最合适？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        $x=3\sin t$
+      - |
+        $x=3\tan t$
+      - |
+        $x=\frac3{\cos t}$
+      - |
+        $u=x^2+9$
+    value: 2
+  hints:
+    - |
+      看根号里是哪一种二次式。
+    - |
+      $\sqrt{x^2+9}$是平方和，要用$1+\tan^2t=\frac1{\cos^2t}$。
+    - |
+      $u=x^2+9$要配上因子$x\,\dd x$，被积函数（integrand）里没有。
+  solution: |
+    根号里是$x^2+9$，令$x=3\tan t$，根号变成$\frac3{\cos t}$，选 B。A 管的是$\sqrt{9-x^2}$，C 管的是$\sqrt{x^2-9}$；D 要求被积函数里有因子$x$，这里只有$\frac1{x^2}$。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\int_0^1\frac{x^2}{\sqrt{4-x^2}}\,\dd x$。
+  answer:
+    type: number
+    value: pi/3 - sqrt(3)/2
+  hints:
+    - |
+      令$x=2\sin t$；$x$从$0$到$1$时，$t$从$0$到$\frac\pi6$。
+    - |
+      被积式化成$\frac{4\sin^2t}{2\cos t}\cdot2\cos t\,\dd t=4\sin^2t\,\dd t$。
+    - |
+      降幂：$4\sin^2t=2(1-\cos2t)$，一个原函数（antiderivative）是$2t-\sin2t$。
+  solution: |
+    原式等于$\int_0^{\pi/6}4\sin^2t\,\dd t=\bigl(2t-\sin2t\bigr)\Big|_0^{\pi/6}=\frac\pi3-\frac{\sqrt3}2\approx0.181$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\int_0^4\frac{\dd x}{\sqrt{x^2+9}}$。
+  answer:
+    type: number
+    value: ln(3)
+  hints:
+    - |
+      根号里是$x^2+9$，用讲解里$\int\frac{\dd x}{\sqrt{x^2+a^2}}$的结果，$a=3$。
+    - |
+      原函数是$\ln\bigl(x+\sqrt{x^2+9}\bigr)$。
+    - |
+      $x=4$时$\sqrt{x^2+9}=5$。
+  solution: |
+    原式等于$\ln\bigl(x+\sqrt{x^2+9}\bigr)\Big|_0^4=\ln9-\ln3=\ln3\approx1.099$。
+
+- id: p5
+  tier: hard
+  statement: |
+    圆$x^2+y^2\le a^2$被直线$x=h$（$0<h<a$）截下右边的一块弓形。
+
+    （1）证明弓形的面积是$a^2\arccos\frac ha-h\sqrt{a^2-h^2}$。
+
+    （2）$h\to0^+$和$h\to a^-$时，这个式子各趋于多少？和几何对得上吗？
+
+    （3）用扇形减三角形的办法，重新得到（1）。
+  hints:
+    - |
+      （1）上下对称，面积是$2\int_h^a\sqrt{a^2-x^2}\,\dd x$，用讲解里的原函数。
+    - |
+      （1）$\arcsin\frac ha+\arccos\frac ha=\frac\pi2$。（3）设$\cos\theta=\frac ha$，扇形的圆心角是$2\theta$。
+    - |
+      （1）原函数$F(x)=\frac{a^2}2\arcsin\frac xa+\frac x2\sqrt{a^2-x^2}$，面积$2\bigl[F(a)-F(h)\bigr]=\frac{\pi a^2}2-a^2\arcsin\frac ha-h\sqrt{a^2-h^2}$，再用$\frac\pi2-\arcsin\frac ha=\arccos\frac ha$。
+
+      （2）$h\to0^+$时趋于$a^2\cdot\frac\pi2=\frac{\pi a^2}2$，是半个圆；$h\to a^-$时趋于$0$。
+
+      （3）扇形面积$\frac12a^2\cdot2\theta=a^2\theta$；三角形以弦为底、高为$h$，弦长$2\sqrt{a^2-h^2}$，面积$h\sqrt{a^2-h^2}$。相减就是（1）。
+  reference: |
+    （1）$2\bigl[F(a)-F(h)\bigr]$，再用$\arcsin+\arccos=\frac\pi2$。
+
+    （2）$\frac{\pi a^2}2$和$0$。
+
+    （3）扇形$a^2\theta$减三角形$h\sqrt{a^2-h^2}$，$\cos\theta=\frac ha$。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）设$d>0$，求$\int_{-b}^b\frac{\dd x}{(x^2+d^2)^{3/2}}$。
+
+    （2）$b\to+\infty$时，这个值趋于多少？
+
+    （3）在电磁学里，均匀带电的直线段对它中垂线上距离$d$的一点产生的电场，正比于$d$乘上（1）的积分（直线段长$2b$）。直线越来越长时，电场和$d$是什么关系？
+  hints:
+    - |
+      （1）令$x=d\tan t$。
+    - |
+      （1）$\dd x=\frac{d\,\dd t}{\cos^2t}$，$(x^2+d^2)^{3/2}=\frac{d^3}{\cos^3t}$，被积式化成$\frac{\cos t}{d^2}\,\dd t$，原函数是$\frac{\sin t}{d^2}$，而$\sin t=\frac x{\sqrt{x^2+d^2}}$。
+    - |
+      （1）原式等于$\frac1{d^2}\cdot\frac x{\sqrt{x^2+d^2}}\Big|_{-b}^b=\frac{2b}{d^2\sqrt{b^2+d^2}}$。
+
+      （2）$\frac{2b}{\sqrt{b^2+d^2}}\to2$，所以趋于$\frac2{d^2}$。
+
+      （3）电场正比于$d\cdot\frac2{d^2}=\frac2d$，和$d$成反比。
+  reference: |
+    （1）$\frac{2b}{d^2\sqrt{b^2+d^2}}$。
+
+    （2）$\frac2{d^2}$。
+
+    （3）和$d$成反比。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）令$x=a\sin t$时，如果$t$取在$\bigl[\frac\pi2,\frac{3\pi}2\bigr]$上，$\sqrt{a^2-x^2}$等于什么？照这样算出的$\int\sqrt{a^2-x^2}\,\dd x$还对吗？
+
+    （2）$x<-a$时求$\int\frac{\dd x}{\sqrt{x^2-a^2}}$：令$x=\frac a{\cos t}$，$t$该取在哪个范围？结果是什么？
+
+    （3）$x=a\tan t$时，怎样借一个直角三角形写出$\sin t$、$\cos t$？
+  hints:
+    - |
+      （1）这时$\cos t\le0$。（2）要$\frac a{\cos t}<-a$，$\cos t$得是负的。
+    - |
+      （1）换回$x$时，$t=\pi-\arcsin\frac xa$。（2）在$\bigl(\frac\pi2,\pi\bigr]$上$\tan t\le0$，$\sqrt{x^2-a^2}=-a\tan t$。
+    - |
+      （1）$\sqrt{a^2-x^2}=-a\cos t$。算下去得$-\frac{a^2}2(t+\sin t\cos t)+C$，换回$x$（$t=\pi-\arcsin\frac xa$，$\cos t=-\frac{\sqrt{a^2-x^2}}a$），得$\frac{a^2}2\arcsin\frac xa+\frac x2\sqrt{a^2-x^2}-\frac{\pi a^2}2+C$，和讲解的结果只差常数，仍然对。规定范围，是为了省掉这些符号的麻烦。
+
+      （2）$t\in\bigl(\frac\pi2,\pi\bigr]$，被积式化成$-\frac{\dd t}{\cos t}$，换回$x$后得$\ln\bigl|x+\sqrt{x^2-a^2}\bigr|+C$，和$x>a$时的式子合成一个。
+
+      （3）对边是$x$，邻边是$a$，斜边是$\sqrt{x^2+a^2}$，所以$\sin t=\frac x{\sqrt{x^2+a^2}}$，$\cos t=\frac a{\sqrt{x^2+a^2}}$。
+  reference: |
+    （1）$-a\cos t$；处处用对符号，结果只差常数。
+
+    （2）$t\in\bigl(\frac\pi2,\pi\bigr]$；$\ln\bigl|x+\sqrt{x^2-a^2}\bigr|+C$。
+
+    （3）对边$x$、邻边$a$、斜边$\sqrt{x^2+a^2}$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）$\int x^3\sqrt{1-x^2}\,\dd x$分别用$u=1-x^2$和$x=\sin t$做，哪个省事？
+
+    （2）$\int\sqrt{1-x^2}\,\dd x$能不能用$u=1-x^2$？为什么？
+
+    （3）根号里是$x$的二次式时，什么时候用凑微分，什么时候用三角代换？
+  hints:
+    - |
+      （1）$x^3\,\dd x=x^2\cdot x\,\dd x$，$x^2=1-u$。
+    - |
+      （2）$u=1-x^2$要配上$x\,\dd x$。
+    - |
+      （1）$u=1-x^2$：$\int-\frac12(1-u)\sqrt u\,\dd u=-\frac13\bigl(1-x^2\bigr)^{3/2}+\frac15\bigl(1-x^2\bigr)^{5/2}+C$。$x=\sin t$：化成$\int\sin^3t\cos^2t\,\dd t$，还要再分出一个$\sin t$凑微分。两种都行，前者少一步。
+
+      （2）不能：被积函数里没有因子$x$，$\dd x=-\frac{\dd u}{2\sqrt{1-u}}$，换完是$-\int\frac{\sqrt u}{2\sqrt{1-u}}\,\dd u$，并没有变简单。
+
+      （3）被积函数里有根号里那个二次式的导数（差常数倍）作因子时，凑微分；没有时，用三角代换。
+  reference: |
+    （1）$u=1-x^2$少一步。
+
+    （2）不能，缺因子$x$。
+
+    （3）有二次式的导数作因子就凑微分，否则三角代换。

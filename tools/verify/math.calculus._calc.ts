@@ -236,3 +236,151 @@ export function maxOn(f: (x: number) => number, a: number, b: number, n = 20000)
   candidates.sort((p, q) => q[1] - p[1]);
   return { x: candidates[0][0], value: candidates[0][1] };
 }
+
+/**
+ * 和 integrate 一样的 tanh-sinh 积分（批次 20 加的），只是被积函数多收两个参数：到左、右端点的距离 dl、dr。
+ * 离端点极近的取样点上，x 本身已经舍入到端点，而 dl、dr 是直接算出来的、不丢精度，所以端点处的奇点
+ * （如 ∫₀¹dx/√(1 − x²) 写成 1/√(dr·(2 − dr))）可以用距离来写，算到 10⁻¹⁵ 的精度。
+ */
+export function integrateEndpoints(g: (x: number, dl: number, dr: number) => number, a: number, b: number): number {
+  const half = (b - a) / 2;
+  let prev = Number.NaN;
+  for (let level = 1; level <= 9; level++) {
+    const h = 2 ** -level;
+    const K = Math.ceil(4 / h);
+    let sum = 0;
+    for (let k = -K; k <= K; k++) {
+      const t = k * h;
+      const u = (Math.PI / 2) * Math.sinh(t);
+      const w = ((Math.PI / 2) * Math.cosh(t)) / Math.cosh(u) ** 2;
+      if (!(w > 0) || !Number.isFinite(w)) continue;
+      const delta = (b - a) / (1 + Math.exp(2 * Math.abs(u)));
+      if (!(delta > 0)) continue;
+      const v = t >= 0 ? g(b - delta, b - a - delta, delta) : g(a + delta, delta, b - a - delta);
+      if (Number.isFinite(v)) sum += w * v;
+    }
+    const est = half * h * sum;
+    if (Math.abs(est - prev) <= 1e-13 * Math.max(1, Math.abs(est))) return est;
+    prev = est;
+  }
+  return prev;
+}
+
+/**
+ * 反常积分 ∫_a^{+∞} f(x) dx（批次 20 加的）：换元 x = a + t/(1 − t)，dx = dt/(1 − t)²，把 [a, +∞) 变成 [0, 1)，
+ * 用 integrateEndpoints 积分（1 − t 直接取到右端点的距离，x 可以大到 10³⁷）。只管算值：被积函数要在远处单调地
+ * 趋于 0，并且至少像 x^{−1−ε} 那样衰减；像 1/(x ln²x) 这样只按对数衰减的，10³⁷ 以外的尾巴还有百分之一，
+ * 要另外处理。收敛不收敛先用 partialIntegrals 看。
+ */
+export function integrateToInfinity(f: (x: number) => number, a: number): number {
+  return integrateEndpoints((_x, t, s) => f(a + t / s) / (s * s), 0, 1);
+}
+
+/** ∫_{−∞}^b f(x) dx（批次 20 加的）：令 x = −y，化成 ∫_{−b}^{+∞} f(−y) dy。 */
+export function integrateFromMinusInfinity(f: (x: number) => number, b: number): number {
+  return integrateToInfinity((y) => f(-y), -b);
+}
+
+/** ∫_{−∞}^{+∞} f(x) dx（批次 20 加的）：在 c 处拆成两个反常积分相加，两个都收敛才有意义。 */
+export function integrateWholeLine(f: (x: number) => number, c = 0): number {
+  return integrateFromMinusInfinity(f, c) + integrateToInfinity(f, c);
+}
+
+/** 把 [lo, hi]（0 < lo < hi）按几何级数分成 pieces 段，逐段 tanh-sinh 积分再相加，长区间上也稳。 */
+function integrateGeometric(f: (x: number) => number, lo: number, hi: number, pieces = 20): number {
+  let s = 0;
+  const r = (hi / lo) ** (1 / pieces);
+  let a = lo;
+  for (let i = 1; i <= pieces; i++) {
+    const b = i === pieces ? hi : a * r;
+    s += integrate(f, a, b);
+    a = b;
+  }
+  return s;
+}
+
+/**
+ * 部分积分 ∫_a^b f(x) dx 在 b = 10, 10², …, 10⁶ 处的值（批次 20 加的），用来看 x → +∞ 的反常积分收敛还是发散：
+ * 收敛时这串数越来越稳定，发散时一直变大（如 ∫dx/x 每次约加 ln10）。要求 a < 10。
+ */
+export function partialIntegrals(f: (x: number) => number, a: number, bs = [1e1, 1e2, 1e3, 1e4, 1e5, 1e6]): number[] {
+  const out: number[] = [];
+  let acc = integrate(f, a, bs[0]);
+  out.push(acc);
+  for (let k = 1; k < bs.length; k++) {
+    acc += integrateGeometric(f, bs[k - 1], bs[k]);
+    out.push(acc);
+  }
+  return out;
+}
+
+/**
+ * 被积函数在左端点 a 附近无界时，部分积分 ∫_{a+δ}^b f(x) dx 在 δ = 10⁻², 10⁻⁴, …, 10⁻¹² 处的值（批次 20 加的）：
+ * 收敛时越来越稳定，发散时一直变大。右端点无界时，把 f(x) 换成 f(a + b − x) 再用。要求 a + 10⁻² < b。
+ */
+export function partialIntegralsNearLeft(f: (x: number) => number, a: number, b: number, deltas = [1e-2, 1e-4, 1e-6, 1e-8, 1e-10, 1e-12]): number[] {
+  const g = (u: number) => f(a + u);
+  const out: number[] = [];
+  let acc = integrate(g, deltas[0], b - a);
+  out.push(acc);
+  for (let k = 1; k < deltas.length; k++) {
+    acc += integrateGeometric(g, deltas[k], deltas[k - 1]);
+    out.push(acc);
+  }
+  return out;
+}
+
+/** 按 t 把 [t0, t1] 等分成 n 段，依次取曲线上的点，交给 visit 处理相邻两点。 */
+function walkCurve(x: (t: number) => number, y: (t: number) => number, t0: number, t1: number, n: number, visit: (px: number, py: number, qx: number, qy: number) => number): number {
+  let s = 0;
+  let px = x(t0);
+  let py = y(t0);
+  for (let i = 1; i <= n; i++) {
+    const t = t0 + ((t1 - t0) * i) / n;
+    const qx = x(t);
+    const qy = y(t);
+    s += visit(px, py, qx, qy);
+    px = qx;
+    py = qy;
+  }
+  return s;
+}
+
+/**
+ * 参数曲线 (x(t), y(t))，t ∈ [t0, t1] 的长度（批次 20 加的）：按 t 等分成 n 段的内接折线长，n = 32·2^k，
+ * 再按 h = 1/n 理查森外推。不用导数，就是「折线逼近」的定义。端点处切线竖直的曲线（如 y = √x 在 0 处）
+ * 误差不按 h 的幂展开、外推不收敛，换一个参数（如 x = t²）再算。图像 y = f(x) 用 x(t) = t、y(t) = f(t)。
+ */
+export function curveLength(x: (t: number) => number, y: (t: number) => number, t0: number, t1: number): { value: number; converged: boolean } {
+  return extrapolate((h) => walkCurve(x, y, t0, t1, Math.round(1 / h), (px, py, qx, qy) => Math.hypot(qx - px, qy - py)));
+}
+
+/**
+ * 曲线 (x(t), y(t))（y ≥ 0）绕 x 轴旋转所得曲面的面积（批次 20 加的）：每一段折线转成一个圆台，侧面积是
+ * π(y₁ + y₂)·段长，求和后按 h = 1/n 外推。绕 y 轴转时，把 x、y 两个函数对调着传进来。
+ */
+export function revolvedSurfaceArea(x: (t: number) => number, y: (t: number) => number, t0: number, t1: number): { value: number; converged: boolean } {
+  return extrapolate((h) => walkCurve(x, y, t0, t1, Math.round(1 / h), (px, py, qx, qy) => Math.PI * (py + qy) * Math.hypot(qx - px, qy - py)));
+}
+
+/**
+ * 从原点出发的向径沿曲线 (x(t), y(t))，t ∈ [t0, t1] 扫过的有向面积（批次 20 加的）：内接折线和原点连成的
+ * 一串三角形，面积 ½(x₁y₂ − x₂y₁) 相加，再外推；逆时针为正。极坐标曲线 r = r(θ) 取 x = r cos θ、y = r sin θ，
+ * 得到的就是 ½∫r² dθ；绕原点一圈的闭曲线，得到的是它围成的面积。
+ */
+export function sweptArea(x: (t: number) => number, y: (t: number) => number, t0: number, t1: number): { value: number; converged: boolean } {
+  return extrapolate((h) => walkCurve(x, y, t0, t1, Math.round(1 / h), (px, py, qx, qy) => (px * qy - qx * py) / 2));
+}
+
+/**
+ * 由一串部分积分（partialIntegrals 或 partialIntegralsNearLeft 的结果）判断反常积分收敛还是发散（批次 20 加的）。
+ * 相邻两项的增量 d₁, …, d₅ 里，取 r = (|d₅|/|d₁|)^{1/4}，即每一步增量平均缩成原来的几分之一：
+ * r < 0.6 判为收敛，否则判为发散。按 x^{−p} 型估：partialIntegrals 每步跨一个数量级，p > 1 时 r = 10^{1−p}
+ * （p = 3/2 时约 0.32）；partialIntegralsNearLeft 每步 δ 缩小 100 倍，p < 1 时 r = 100^{p−1}（p = 2/3 时约 0.22）；
+ * 1/x 型增量不变，r = 1。p 离 1 太近（如 p = 0.9 的瑕积分，r ≈ 0.63）时这个判法不可靠，用之前先看 p。
+ */
+export function convergesByIncrements(partials: number[]): { converges: boolean; ratio: number } {
+  const d = partials.slice(1).map((v, i) => Math.abs(v - partials[i]));
+  const ratio = (d[d.length - 1] / d[0]) ** (1 / (d.length - 1));
+  return { converges: ratio < 0.6, ratio };
+}

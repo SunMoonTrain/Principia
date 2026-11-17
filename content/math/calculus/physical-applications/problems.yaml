@@ -1,0 +1,169 @@
+- id: p1
+  tier: easy
+  statement: |
+    弹簧的劲度系数是$200\,\mathrm{N/m}$，把它从伸长$0.1\,\mathrm m$拉到伸长$0.3\,\mathrm m$，拉力做多少功？以$\mathrm J$为单位。
+  answer:
+    type: number
+    value: 8
+    unit: |
+      $\mathrm J$
+  hints:
+    - |
+      伸长$x$时拉力是$200x$，功是它对$x$的积分。
+    - |
+      $W=\int_{0.1}^{0.3}200x\,\dd x$。
+    - |
+      $\int200x\,\dd x=100x^2+C$。
+  solution: |
+    $W=\int_{0.1}^{0.3}200x\,\dd x=100\bigl(0.3^2-0.1^2\bigr)$，即$8\,\mathrm J$。
+
+- id: p2
+  tier: easy
+  statement: |
+    细杆放在$x$轴上的$[0,2]$处（单位：$\mathrm m$），$x$处的线密度（linear density）是$1+x$（单位：$\mathrm{kg/m}$）。依次填杆的质量（$\mathrm{kg}$）和质心（center of mass）的坐标（$\mathrm m$）。
+  answer:
+    type: tuple
+    value: [4, 7/6]
+  hints:
+    - |
+      质量$m=\int_0^2(1+x)\,\dd x$。
+    - |
+      质心$x_{\mathrm C}=\frac1m\int_0^2x(1+x)\,\dd x$。
+    - |
+      $\int_0^2(x+x^2)\,\dd x=2+\frac83$。
+  solution: |
+    $m=\int_0^2(1+x)\,\dd x=4\,\mathrm{kg}$；$\int_0^2x(1+x)\,\dd x=\frac{14}3$，所以$x_{\mathrm C}=\frac{14}3\div4=\frac76\approx1.17\,\mathrm m$，比中点$1$偏向重的一端。
+
+- id: p3
+  tier: medium
+  statement: |
+    半球形的碗，半径$1\,\mathrm m$，装满了水。把水全部抽到碗口，要做多少功？取$g=9.8\,\mathrm{m/s^2}$，水的密度$1000\,\mathrm{kg/m^3}$，以$\mathrm J$为单位。
+  answer:
+    type: number
+    value: 2450*pi
+    unit: |
+      $\mathrm J$
+  hints:
+    - |
+      按深度分层：离碗口深$y$的一层水，截面是半径多大的圆？
+    - |
+      半径是$\sqrt{1-y^2}$，这一层的体积约为$\pi\bigl(1-y^2\bigr)\dd y$，被提升$y$。
+    - |
+      $W=1000\times9.8\times\pi\int_0^1y\bigl(1-y^2\bigr)\dd y$。
+  solution: |
+    $W=9800\pi\int_0^1\bigl(y-y^3\bigr)\dd y=9800\pi\Bigl(\frac12-\frac14\Bigr)$，即$2450\pi\,\mathrm J\approx7.70\times10^3\,\mathrm J$。
+
+- id: p4
+  tier: medium
+  statement: |
+    一扇矩形闸门竖直放在水里，宽$2\,\mathrm m$，上边在水下$1\,\mathrm m$，下边在水下$3\,\mathrm m$。求水对闸门的压力。取$g=9.8\,\mathrm{m/s^2}$，水的密度$1000\,\mathrm{kg/m^3}$，以$\mathrm N$为单位。
+  answer:
+    type: number
+    value: 78400
+    unit: |
+      $\mathrm N$
+  hints:
+    - |
+      深$h$处的窄带宽$2\,\mathrm m$，压强$1000\times9.8\times h$。
+    - |
+      $F=\int_1^3 9800h\cdot2\,\dd h$。
+    - |
+      $\int_1^3h\,\dd h=4$。
+  solution: |
+    $F=19600\int_1^3h\,\dd h=19600\times4$，即$78400\,\mathrm N$。它等于闸门中心（深$2\,\mathrm m$）处的压强乘面积$4\,\mathrm{m^2}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    曲线$y=x^2$、$x$轴和直线$x=1$围成的图形，看成一块均匀的薄板。
+
+    （1）竖着切成窄条，说明薄板质心的横坐标是$\bar x=\frac{\int_0^1x\cdot x^2\,\dd x}{\int_0^1x^2\,\dd x}$，并算出来。
+
+    （2）每一窄条的质心在它的中点，高$\frac{x^2}2$。由此写出质心的纵坐标$\bar y$并算出来。
+  hints:
+    - |
+      （1）薄板均匀，每一窄条的质量和它的面积$x^2\,\dd x$成正比，位置在$x$处。
+    - |
+      （2）把每一窄条看成集中在它中点$\bigl(x,\frac{x^2}2\bigr)$的质点，质量和$x^2\,\dd x$成正比，纵坐标按质量加权平均。
+    - |
+      （1）和细杆一样按质量加权：分子$\int_0^1x^3\,\dd x=\frac14$，分母$\int_0^1x^2\,\dd x=\frac13$，所以$\bar x=\frac34$。
+
+      （2）$\bar y=\frac{\int_0^1\frac{x^2}2\cdot x^2\,\dd x}{\int_0^1x^2\,\dd x}$，分子是$\frac1{10}$，所以$\bar y=\frac3{10}$。
+  reference: |
+    （1）$\bar x=\frac34$。
+
+    （2）$\bar y=\frac{\int_0^1\frac12x^4\,\dd x}{1/3}=\frac3{10}$。
+
+- id: p6
+  tier: hard
+  statement: |
+    一条长$L$、线密度$\lambda$的均匀链条从楼顶垂下，下端挂着质量$M$的桶。
+
+    （1）把链条连同桶慢慢拉上楼顶，要做多少功？
+
+    （2）桶里原来装着质量$m_0$的水，拉的过程中水从桶底匀速漏出，到楼顶时正好漏完。这时要做多少功？
+  hints:
+    - |
+      （1）链条离楼顶深$y$处的一小段，质量$\lambda\,\dd y$，被提升$y$；桶被提升$L$。
+    - |
+      （2）桶升高了$s$时，水还剩$m_0\Bigl(1-\frac sL\Bigr)$。提水的功按桶走过的路程分：$\dd W=m_0g\Bigl(1-\frac sL\Bigr)\dd s$。
+    - |
+      （1）链条：$\int_0^L\lambda gy\,\dd y=\frac12\lambda gL^2$；桶：$MgL$。共$\frac12\lambda gL^2+MgL$。
+
+      （2）水：$\int_0^Lm_0g\Bigl(1-\frac sL\Bigr)\dd s=\frac12m_0gL$。共$\frac12\lambda gL^2+MgL+\frac12m_0gL$。
+  reference: |
+    （1）$\frac12\lambda gL^2+MgL$。
+
+    （2）再加$\frac12m_0gL$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）竖直放在水里的平板，面积$S$，质心（把平板看成均匀薄板）在水下$\bar h$处。证明水对它的压力是$\rho g\bar hS$。
+
+    （2）矩形闸门、三角形闸门（例 2）各验证一下。
+
+    （3）这说明压力等于哪一点的压强乘面积？
+  hints:
+    - |
+      （1）$F=\rho g\int h\,w(h)\,\dd h$，而平板质心的深度是$\bar h=\frac1S\int h\,w(h)\,\dd h$。
+    - |
+      （2）三角形（顶点朝下、底边在水面）的质心在离底边$\frac13$高处。
+    - |
+      （1）两式一比，$F=\rho g\bar hS$。
+
+      （2）矩形：$\bar h=\frac H2$，$F=\frac12\rho gH\cdot LH$，和讲解一致。三角形：$\bar h=\frac H3$，$S=bH$，$F=\frac13\rho gbH^2$，和例 2 一致。
+
+      （3）压力等于平板质心处的压强乘面积。
+  reference: |
+    （1）$\bar h=\frac1S\int h\,w\,\dd h$，代入即得。
+
+    （2）都对得上。
+
+    （3）质心处的压强乘面积。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）把容器里的水全部抽到高度$H_0$处（高于水面），证明做的功等于水的总重乘上水的质心被提升的高度。
+
+    （2）用（1）验证例 1：锥形容器里水的质心在哪里？
+
+    （3）抽水时为什么按深度分层，而不是按水被搬运的路程来分？
+  hints:
+    - |
+      （1）高$z$处厚$\dd z$的一层水，重$\rho gA(z)\,\dd z$，被提升$H_0-z$。
+    - |
+      （1）水的质心高度是$\bar z=\frac{\int zA(z)\,\dd z}{\int A(z)\,\dd z}$。（2）例 1 里功等于总重乘$\frac H4$。
+    - |
+      （1）记$V$为水的体积，$W=\int\rho gA(z)(H_0-z)\,\dd z=\rho g\bigl(H_0V-\bar zV\bigr)$，即$\rho gV\bigl(H_0-\bar z\bigr)$。
+
+      （2）抽到容器口，提升的高度是$\frac H4$，所以水的质心在口下$\frac H4$处，即离顶点$\frac34H$。
+
+      （3）同一层的水被提升的高度相同，功的微元才写得出来；按路程分，同一段路上搬的是不同的水。
+  reference: |
+    （1）$W=\rho gV\bigl(H_0-\bar z\bigr)$。
+
+    （2）离顶点$\frac34H$。
+
+    （3）同一层提升的高度相同。

@@ -1,0 +1,169 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\int_0^1xe^{2x}\,\dd x$。
+  answer:
+    type: number
+    value: (e^2 + 1)/4
+  hints:
+    - |
+      用分部积分法（integration by parts），取$u=x$、$v'=e^{2x}$。
+    - |
+      $v=\frac12e^{2x}$（求导验证）。
+    - |
+      原式等于$\frac x2e^{2x}\Big|_0^1-\frac12\int_0^1e^{2x}\,\dd x$。
+  solution: |
+    $\int_0^1xe^{2x}\,\dd x=\frac x2e^{2x}\Big|_0^1-\frac12\int_0^1e^{2x}\,\dd x$，前一项是$\frac{e^2}2$，后一项是$\frac{e^2-1}4$，所以积分是$\frac{e^2+1}4\approx2.097$。
+
+- id: p2
+  tier: easy
+  statement: |
+    求$\int_1^e\frac{\ln x}{x^2}\,\dd x$。
+  answer:
+    type: number
+    value: 1 - 2/e
+  hints:
+    - |
+      $\ln x$求导以后变简单，取$u=\ln x$、$v'=\frac1{x^2}$。
+    - |
+      $v=-\frac1x$，$u'=\frac1x$。
+    - |
+      原式等于$-\frac{\ln x}x\Big|_1^e+\int_1^e\frac{\dd x}{x^2}$。
+  solution: |
+    $\int_1^e\frac{\ln x}{x^2}\,\dd x=-\frac{\ln x}x\Big|_1^e+\int_1^e\frac{\dd x}{x^2}$，前一项是$-\frac1e$，后一项是$1-\frac1e$，所以积分是$1-\frac2e\approx0.264$。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\int_0^{\pi/2}x^2\cos x\,\dd x$。
+  answer:
+    type: number
+    value: pi^2/4 - 2
+  hints:
+    - |
+      多项式是二次的，要分部积分两次，每次都取多项式为$u$。
+    - |
+      第一次：$\int x^2\cos x\,\dd x=x^2\sin x-2\int x\sin x\,\dd x$。
+    - |
+      第二次：$\int x\sin x\,\dd x=-x\cos x+\sin x+C$，所以一个原函数（antiderivative）是$x^2\sin x+2x\cos x-2\sin x$。
+  solution: |
+    原函数是$x^2\sin x+2x\cos x-2\sin x$，代上下限：$x=\frac\pi2$时是$\frac{\pi^2}4-2$，$x=0$时是$0$，所以积分是$\frac{\pi^2}4-2\approx0.467$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\int_0^1\ln(1+x)\,\dd x$。
+  answer:
+    type: number
+    value: 2*ln(2) - 1
+  hints:
+    - |
+      把被积函数（integrand）看成$\ln(1+x)\cdot1$，取$u=\ln(1+x)$、$v'=1$。
+    - |
+      $v=x$，$u'=\frac1{1+x}$，原式等于$x\ln(1+x)\Big|_0^1-\int_0^1\frac x{1+x}\,\dd x$。
+    - |
+      $\frac x{1+x}=1-\frac1{1+x}$。
+  solution: |
+    $\int_0^1\ln(1+x)\,\dd x=\ln2-\int_0^1\Bigl(1-\frac1{1+x}\Bigr)\dd x=\ln2-(1-\ln2)$，即$2\ln2-1\approx0.386$。
+
+- id: p5
+  tier: hard
+  statement: |
+    记$B(m,n)=\int_0^1x^m(1-x)^n\,\dd x$，$m$、$n$是非负整数。
+
+    （1）证明：$n\ge1$时$B(m,n)=\frac n{m+1}B(m+1,n-1)$。
+
+    （2）证明$B(m,n)=\frac{m!\,n!}{(m+n+1)!}$。
+  hints:
+    - |
+      （1）取$u=(1-x)^n$、$v'=x^m$。
+    - |
+      （1）$v=\frac{x^{m+1}}{m+1}$，$u'=-n(1-x)^{n-1}$；端点项在$x=0$、$x=1$处都是$0$。（2）反复用（1），直到$n$降成$0$。
+    - |
+      （1）$B(m,n)=\frac{x^{m+1}(1-x)^n}{m+1}\Big|_0^1+\frac n{m+1}\int_0^1x^{m+1}(1-x)^{n-1}\,\dd x=\frac n{m+1}B(m+1,n-1)$。
+
+      （2）用$n$次，$B(m,n)=\frac n{m+1}\cdot\frac{n-1}{m+2}\cdots\frac1{m+n}\,B(m+n,0)$，而$B(m+n,0)=\frac1{m+n+1}$，所以$B(m,n)=\frac{n!\,m!}{(m+n+1)!}$。
+  reference: |
+    （1）取$u=(1-x)^n$、$v'=x^m$，端点项为$0$。
+
+    （2）用$n$次（1），再用$B(m+n,0)=\frac1{m+n+1}$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$在含$a$、$x$的区间上有连续的二阶导数。
+
+    （1）证明$f(x)=f(a)+f'(a)(x-a)+\int_a^x(x-t)f''(t)\,\dd t$。
+
+    （2）设在这个区间上$|f''|\le M$，证明$\bigl|f(x)-f(a)-f'(a)(x-a)\bigr|\le\frac M2(x-a)^2$。
+
+    （3）用（2）估计$e^{0.1}$和$1.1$相差多少。
+  hints:
+    - |
+      （1）从$f(x)-f(a)=\int_a^xf'(t)\,\dd t$出发，对它分部积分，积分变量（variable of integration）是$t$。
+    - |
+      （1）取$u=f'(t)$、$v'=1$，但$v$不取$t$，取$v=t-x$，这样$t=x$处的端点项是$0$。（2）设$x>a$，$x-t\ge0$。
+    - |
+      （1）$\int_a^xf'(t)\,\dd t=f'(t)(t-x)\Big|_a^x-\int_a^x(t-x)f''(t)\,\dd t=f'(a)(x-a)+\int_a^x(x-t)f''(t)\,\dd t$。
+
+      （2）$x>a$时，$\Bigl|\int_a^x(x-t)f''(t)\,\dd t\Bigr|\le M\int_a^x(x-t)\,\dd t=\frac M2(x-a)^2$；$x<a$时同理。
+
+      （3）$f=e^x$，$a=0$，$x=0.1$，在$[0,0.1]$上$|f''|\le e^{0.1}<1.11$，所以$\bigl|e^{0.1}-1.1\bigr|\le\frac{1.11}2\times0.01\approx0.0056$。实际相差约$0.0052$。
+  reference: |
+    （1）对$\int_a^xf'(t)\,\dd t$分部积分，取$v=t-x$。
+
+    （2）$\Bigl|\int_a^x(x-t)f''(t)\,\dd t\Bigr|\le M\Bigl|\int_a^x(x-t)\,\dd t\Bigr|$。
+
+    （3）不超过约$0.0056$。这是泰勒公式（Taylor's formula）余项的另一种写法。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）$u$、$v$都随$x$递增时，借几何图像说明：$\int_a^bu(x)v'(x)\,\dd x$和$\int_a^bv(x)u'(x)\,\dd x$各是哪一块的面积，为什么两者之和是$uv\Big|_a^b$？
+
+    （2）在$[1,e]$上取$u=\ln x$、$v=x$。图里的两块各是什么积分？算出容易算的那一块，求另一块$\int_1^e\ln x\,\dd x$。
+
+    （3）$v$有一段递减时，这个面积的解释还成立吗？公式还成立吗？
+  hints:
+    - |
+      （1）以$v$为横轴、$u$为纵轴，点$\bigl(v(x),u(x)\bigr)$画出一条曲线。
+    - |
+      （2）点从$(1,0)$走到$(e,1)$。绿色那一块是$\int_1^ex\cdot\frac1x\,\dd x$。
+    - |
+      （1）竖着切的那一块（曲线和横轴之间）面积是$\int u\,\dd v$，由定积分的换元，它等于$\int_a^buv'\,\dd x$，横着切的那一块（曲线和纵轴之间）是$\int v\,\dd u=\int_a^bvu'\,\dd x$；两块加上左下角的小长方形，拼成大长方形，所以两者之和是$u_2v_2-u_1v_1$。
+
+      （2）$\int_1^ex\cdot\frac1x\,\dd x=e-1$，$uv\Big|_1^e=e\cdot1-1\cdot0=e$，所以$\int_1^e\ln x\,\dd x=e-(e-1)=1$。
+
+      （3）$v$递减时竖条的宽$\dd v$是负的，那一段的面积要算成负的；公式是由乘积法则推出的，不依赖图形，照样成立。
+  reference: |
+    （1）一块竖着切、一块横着切，两块和小长方形拼成大长方形。
+
+    （2）$e-(e-1)=1$。
+
+    （3）面积要带符号；公式照样成立。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）$n$是正整数，求$\int x^ne^x\,\dd x$时，取$u=x^n$和取$u=e^x$，各会怎样？
+
+    （2）求$\int x^n\ln x\,\dd x$时，为什么反过来取$u=\ln x$？
+
+    （3）$\int e^{ax}\sin bx\,\dd x$（$a$、$b$不为$0$）里，两个因子求导都不变简单，分部积分为什么仍然管用？求出结果。
+  hints:
+    - |
+      （1）看剩下的积分里$x$的次数是升了还是降了。
+    - |
+      （2）$\ln x$不好积分，求导却变成$\frac1x$，能和$x^{n+1}$合并。（3）用两次，会回到原来的积分，系数不是$1$。
+    - |
+      （1）取$u=x^n$，每用一次次数降一，$n$次以后只剩$e^x$；取$u=e^x$，$v=\frac{x^{n+1}}{n+1}$，次数反而升高。
+
+      （2）取$u=\ln x$，$v=\frac{x^{n+1}}{n+1}$，剩下的是$\int\frac{x^{n+1}}{n+1}\cdot\frac1x\,\dd x=\frac1{n+1}\int x^n\,\dd x$，一步就积出来了。
+
+      （3）记$I=\int e^{ax}\sin bx\,\dd x$，两次都取三角函数为$u$，得$I=\frac{e^{ax}\sin bx}a-\frac b{a^2}e^{ax}\cos bx-\frac{b^2}{a^2}I$，解出$I=\frac{e^{ax}(a\sin bx-b\cos bx)}{a^2+b^2}+C$。
+  reference: |
+    （1）取$u=x^n$次数逐次降低；取$u=e^x$次数升高。
+
+    （2）$\ln x$求导以后和幂函数合并。
+
+    （3）回到原式、系数不是$1$，可以解出$I=\frac{e^{ax}(a\sin bx-b\cos bx)}{a^2+b^2}+C$。

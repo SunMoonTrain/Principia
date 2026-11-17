@@ -1,0 +1,169 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\int_0^{\pi/2}\sin^3x\cos^2x\,\dd x$。
+  answer:
+    type: number
+    value: 2/15
+  hints:
+    - |
+      $\sin x$的次数是奇数，分出一个$\sin x$，令$u=\cos x$。
+    - |
+      $\sin^3x\cos^2x=\bigl(1-\cos^2x\bigr)\cos^2x\sin x$，$\dd u=-\sin x\,\dd x$。
+    - |
+      $x$从$0$到$\frac\pi2$时，$u$从$1$到$0$，原式等于$\int_0^1\bigl(u^2-u^4\bigr)\dd u$。
+  solution: |
+    令$u=\cos x$，原式等于$\int_0^1\bigl(u^2-u^4\bigr)\dd u=\frac13-\frac15=\frac2{15}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    求$\int_0^{\pi/3}\cos^2x\,\dd x$。
+  answer:
+    type: number
+    value: pi/6 + sqrt(3)/8
+  hints:
+    - |
+      偶次幂，先降幂。
+    - |
+      $\cos^2x=\frac{1+\cos2x}2$。
+    - |
+      一个原函数（antiderivative）是$\frac x2+\frac{\sin2x}4$。
+  solution: |
+    $\int_0^{\pi/3}\frac{1+\cos2x}2\,\dd x=\Bigl(\frac x2+\frac{\sin2x}4\Bigr)\Big|_0^{\pi/3}=\frac\pi6+\frac{\sqrt3}8\approx0.740$。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\int_0^{\pi/2}\sin3x\cos x\,\dd x$。
+  answer:
+    type: number
+    value: 1/2
+  hints:
+    - |
+      用积化和差把乘积写成和。
+    - |
+      $\sin3x\cos x=\frac{\sin4x+\sin2x}2$。
+    - |
+      一个原函数是$-\frac{\cos4x}8-\frac{\cos2x}4$。
+  solution: |
+    原函数$-\frac{\cos4x}8-\frac{\cos2x}4$在$\frac\pi2$处是$-\frac18+\frac14=\frac18$，在$0$处是$-\frac38$，所以积分是$\frac18+\frac38=\frac12$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\int_0^{\pi/2}\frac{\dd x}{2+\sin x}$。
+  answer:
+    type: number
+    value: pi/(3*sqrt(3))
+  hints:
+    - |
+      用万能代换（universal substitution）$t=\tan\frac x2$；$x$从$0$到$\frac\pi2$时，$t$从$0$到$1$。
+    - |
+      $2+\sin x=\frac{2(t^2+t+1)}{1+t^2}$，被积函数（integrand）化成$\frac1{t^2+t+1}$。
+    - |
+      配方：$t^2+t+1=\bigl(t+\frac12\bigr)^2+\frac34$。
+  solution: |
+    原式等于$\int_0^1\frac{\dd t}{t^2+t+1}=\frac2{\sqrt3}\arctan\frac{2t+1}{\sqrt3}\Big|_0^1=\frac2{\sqrt3}\Bigl(\frac\pi3-\frac\pi6\Bigr)$，即$\frac\pi{3\sqrt3}\approx0.605$。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）验证：$n\ge2$时，$\bigl(\sin^{n-1}x\cos x\bigr)'=(n-1)\sin^{n-2}x-n\sin^nx$。
+
+    （2）记$I_n=\int_0^{\pi/2}\sin^nx\,\dd x$，证明$n\ge2$时$I_n=\frac{n-1}nI_{n-2}$。
+
+    （3）求$I_4$和$I_5$。
+  hints:
+    - |
+      （1）用乘积法则（product rule），再把$\cos^2x$换成$1-\sin^2x$。
+    - |
+      （2）把（1）的两边从$0$积到$\frac\pi2$；$\sin^{n-1}x\cos x$在两端都是$0$。（3）$I_0=\frac\pi2$，$I_1=1$。
+    - |
+      （1）$\bigl(\sin^{n-1}x\cos x\bigr)'=(n-1)\sin^{n-2}x\cos^2x-\sin^nx$，把$\cos^2x$换成$1-\sin^2x$，整理即得。
+
+      （2）左边积分是$\sin^{n-1}x\cos x\Big|_0^{\pi/2}=0$，所以$0=(n-1)I_{n-2}-nI_n$。
+
+      （3）$I_2=\frac12\cdot\frac\pi2=\frac\pi4$，$I_4=\frac34I_2=\frac{3\pi}{16}$；$I_3=\frac23I_1=\frac23$，$I_5=\frac45I_3=\frac8{15}$。
+  reference: |
+    （1）乘积法则，$\cos^2x=1-\sin^2x$。
+
+    （2）积分后端点项为$0$。
+
+    （3）$I_4=\frac{3\pi}{16}$，$I_5=\frac8{15}$。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）用万能代换求$\frac1{2+\cos x}$在$(-\pi,\pi)$上的一个原函数$F(x)$。
+
+    （2）$x\to\pi^-$时$F(x)$趋于多少？在$(\pi,3\pi)$上，$F(x-2\pi)$也是$\frac1{2+\cos x}$的原函数。怎样把两段接成$[0,2\pi]$上一个连续的原函数？
+
+    （3）求$\int_0^{2\pi}\frac{\dd x}{2+\cos x}$，并说明直接把上下限换成$t=0$、$t=0$为什么错。
+  hints:
+    - |
+      （1）$2+\cos x=\frac{3+t^2}{1+t^2}$，被积函数化成$\frac2{3+t^2}$。
+    - |
+      （1）$F(x)=\frac2{\sqrt3}\arctan\Bigl(\frac1{\sqrt3}\tan\frac x2\Bigr)$。（2）$x\to\pi^-$时$\tan\frac x2\to+\infty$；$x\to\pi^+$时$F(x-2\pi)$里的$\tan\frac{x-2\pi}2\to-\infty$。
+    - |
+      （2）$x\to\pi^-$时$F(x)\to\frac2{\sqrt3}\cdot\frac\pi2=\frac\pi{\sqrt3}$；$x\to\pi^+$时$F(x-2\pi)\to-\frac\pi{\sqrt3}$。令$G=F$（$0\le x<\pi$），$G(\pi)=\frac\pi{\sqrt3}$，$G(x)=F(x-2\pi)+\frac{2\pi}{\sqrt3}$（$\pi<x\le2\pi$），$G$在$\pi$处连续，两侧的导数都趋于$\frac1{2+\cos\pi}=1$，是$[0,2\pi]$上的原函数。
+
+      （3）$\int_0^{2\pi}\frac{\dd x}{2+\cos x}=G(2\pi)-G(0)=\frac{2\pi}{\sqrt3}\approx3.628$。$t=\tan\frac x2$在$x=\pi$处从$+\infty$跳到$-\infty$，$F$在那里跳下$\frac{2\pi}{\sqrt3}$；直接换限得到$F(2\pi)-F(0)=0$，正好漏掉了这一跳。
+  reference: |
+    （1）$F(x)=\frac2{\sqrt3}\arctan\Bigl(\frac1{\sqrt3}\tan\frac x2\Bigr)$。
+
+    （2）$\frac\pi{\sqrt3}$；$\pi$右边那一段加上$\frac{2\pi}{\sqrt3}$。
+
+    （3）$\frac{2\pi}{\sqrt3}$；$t$在$x=\pi$处跳过了整条数轴。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）$m$、$n$是不同的正整数，证明$\int_{-\pi}^\pi\sin mx\sin nx\,\dd x=0$。$m=n$时这个积分是多少？
+
+    （2）对任何正整数$m$、$n$，$\int_{-\pi}^\pi\sin mx\cos nx\,\dd x$是多少？为什么不用积化和差也知道？
+
+    （3）设$f(x)=b_1\sin x+b_2\sin2x+b_3\sin3x$，怎样用一个积分求出$b_2$？
+  hints:
+    - |
+      （1）积化和差，再用：$k$是不为$0$的整数时$\int_{-\pi}^\pi\cos kx\,\dd x=0$。
+    - |
+      （2）$\sin mx\cos nx$是奇函数（odd function）。（3）两边乘以$\sin2x$，在$[-\pi,\pi]$上积分。
+    - |
+      （1）$\sin mx\sin nx=\frac{\cos(m-n)x-\cos(m+n)x}2$，$m-n$、$m+n$都不为$0$，积分是$0$。$m=n$时被积函数是$\sin^2mx=\frac{1-\cos2mx}2$，积分是$\pi$。
+
+      （2）是$0$：被积函数是奇函数，区间关于$0$对称。
+
+      （3）由（1），$\int_{-\pi}^\pi f(x)\sin2x\,\dd x=b_2\pi$，别的项都积成$0$，所以$b_2=\frac1\pi\int_{-\pi}^\pi f(x)\sin2x\,\dd x$。
+  reference: |
+    （1）$0$；$m=n$时是$\pi$。
+
+    （2）$0$，奇函数。
+
+    （3）$b_2=\frac1\pi\int_{-\pi}^\pi f(x)\sin2x\,\dd x$。这正是傅里叶系数（Fourier coefficient）的算法，见[傅里叶级数](lesson:math.analysis.fourier-series)。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）分别令$u=\sin x$、令$u=\cos x$、用$\sin x\cos x=\frac12\sin2x$，求$\int\sin x\cos x\,\dd x$。三个结果一样吗？
+
+    （2）它们为什么都对？
+
+    （3）用万能代换求$\int\frac{\dd x}{\sin x}$（$0<x<\pi$），再说明结果和$\frac12\ln\frac{1-\cos x}{1+\cos x}$是同一个函数。
+  hints:
+    - |
+      （1）三个结果是$\frac{\sin^2x}2$、$-\frac{\cos^2x}2$、$-\frac{\cos2x}4$，各加$C$。
+    - |
+      （2）两两相减看看。（3）$\frac1{\sin x}$化成$\frac1t$；再用$\tan^2\frac x2=\frac{1-\cos x}{1+\cos x}$。
+    - |
+      （1）三个式子看上去不同。
+
+      （2）$\frac{\sin^2x}2-\Bigl(-\frac{\cos^2x}2\Bigr)=\frac12$，$\frac{\sin^2x}2-\Bigl(-\frac{\cos2x}4\Bigr)=\frac14$，都是常数。同一个函数的原函数只差常数，三个都对，差别被$C$吸收了。
+
+      （3）$\sin x=\frac{2t}{1+t^2}$，$\dd x=\frac{2\,\dd t}{1+t^2}$，原式等于$\int\frac{\dd t}t=\ln\tan\frac x2+C$（$0<x<\pi$时$t>0$）。由$\tan^2\frac x2=\frac{\sin^2\frac x2}{\cos^2\frac x2}=\frac{1-\cos x}{1+\cos x}$，$\ln\tan\frac x2=\frac12\ln\frac{1-\cos x}{1+\cos x}$。
+  reference: |
+    （1）$\frac{\sin^2x}2$、$-\frac{\cos^2x}2$、$-\frac{\cos2x}4$，各加$C$。
+
+    （2）两两只差常数。
+
+    （3）$\ln\tan\frac x2+C$，和$\frac12\ln\frac{1-\cos x}{1+\cos x}$相等。

@@ -53,7 +53,7 @@ $f$在区间$I$上的全体:term[原函数]{id="math.calculus.antiderivative"}�
 | $\int\cos x\,\dd x$ | $\sin x+C$ | $\int\sin x\,\dd x$ | $-\cos x+C$ |
 | $\int\frac1{\cos^2x}\,\dd x$ | $\tan x+C$ | | |
 
-$a$不是整数时，第一条要求$x>0$；$a^x$那一条要求$a>0$、$a\ne1$。幂函数的公式在$a=-1$时分母为零，正好缺了$\frac1x$这一项，由$\ln|x|$补上。$\frac1{1+x^2}$这类:term[被积函数]{id="math.calculus.integrand"}的:term[原函数]{id="math.calculus.antiderivative"}是:term[反三角函数]{id="math.calculus.inverse-trigonometric-functions"}（inverse trigonometric functions），要用到[隐函数与反函数的求导](lesson:math.calculus.implicit-differentiation)里的:term[导数]{id="math.calculus.derivative"}；$\cos2x$、$e^{3x}$这类复合的被积函数，要用以后的[换元积分法](lesson:math.calculus.substitution)（integration by substitution）。
+$a$不是整数时，第一条要求$x>0$；$a^x$那一条要求$a>0$、$a\ne1$。幂函数的公式在$a=-1$时分母为零，正好缺了$\frac1x$这一项，由$\ln|x|$补上。$\frac1{1+x^2}$这类:term[被积函数]{id="math.calculus.integrand"}的:term[原函数]{id="math.calculus.antiderivative"}是:term[反三角函数]{id="math.calculus.inverse-trigonometric-functions"}（inverse trigonometric functions），要用到[隐函数与反函数的求导](lesson:math.calculus.implicit-differentiation)里的:term[导数]{id="math.calculus.derivative"}；$\cos2x$、$e^{3x}$这类复合的被积函数，要用以后的:term[换元积分法]{id="math.calculus.integration-by-substitution"}（integration by substitution，见[换元积分法](lesson:math.calculus.substitution)）。
 
 ## 几何图像
 

@@ -13,7 +13,7 @@ status: reviewed
 
 ## 这一节要回答的问题
 
-极坐标$(r,\theta)\mapsto(r\cos\theta,r\sin\theta)$把一对数变成另一对数；平面上的速度场（velocity field）$\vb f(x,y)=(f_1,f_2)$也是这样，每个点对应一个向量。这种「点对应到点」的函数在一点附近怎样变化？一个小正方形被它变成近似的平行四边形，这个近似是哪个线性变换（linear transformation）？几个这样的函数复合起来，:term[链式法则]{id="math.vector-calculus.chain-rule"}（chain rule）又该怎样写才简洁？
+:term[极坐标]{id="math.calculus.polar-coordinates"}（polar coordinates）$(r,\theta)\mapsto(r\cos\theta,r\sin\theta)$把一对数变成另一对数；平面上的速度场（velocity field）$\vb f(x,y)=(f_1,f_2)$也是这样，每个点对应一个向量。这种「点对应到点」的函数在一点附近怎样变化？一个小正方形被它变成近似的平行四边形，这个近似是哪个线性变换（linear transformation）？几个这样的函数复合起来，:term[链式法则]{id="math.vector-calculus.chain-rule"}（chain rule）又该怎样写才简洁？
 
 ## 讲解
 
@@ -22,14 +22,14 @@ status: reviewed
 ::anchor{id="def-vector-valued-function"}
 把$\R^n$中的点对应到$\R^m$中的点的函数$\vb f(\vb x)=\bigl(f_1(\vb x),\dots,f_m(\vb x)\bigr)$叫作:term[向量值函数]{id="math.vector-calculus.vector-valued-function"}（vector-valued function），$f_1,\dots,f_m$叫作它的分量函数（component function）。
 
-为什么这样定义：每个分量函数都是一个:term[多元函数]{id="math.vector-calculus.multivariable-function"}（function of several variables），合起来描述一个点怎样变到另一个点。极坐标是$n=m=2$的例子，空间曲线$\vb r(t)$是$n=1$的例子，速度场是$n=m$的例子。:term[连续]{id="math.vector-calculus.continuous"}（continuous）、:term[可微]{id="math.vector-calculus.differentiable"}（differentiable）都按分量来说：每个分量函数都可微，就说$\vb f$可微。边界情况：$m=1$时就是普通的多元函数。
+为什么这样定义：每个分量函数都是一个:term[多元函数]{id="math.vector-calculus.multivariable-function"}（function of several variables），合起来描述一个点怎样变到另一个点。:term[极坐标]{id="math.calculus.polar-coordinates"}是$n=m=2$的例子，空间曲线$\vb r(t)$是$n=1$的例子，速度场是$n=m$的例子。:term[连续]{id="math.vector-calculus.continuous"}（continuous）、:term[可微]{id="math.vector-calculus.differentiable"}（differentiable）都按分量来说：每个分量函数都可微，就说$\vb f$可微。边界情况：$m=1$时就是普通的多元函数。
 
 ### 雅可比矩阵
 
 ::anchor{id="def-jacobian-matrix"}
 设$\vb f$的各分量函数在$\vb a$处的:term[偏导数]{id="math.vector-calculus.partial-derivative"}（partial derivative）都存在。$m\times n$矩阵$J_{\vb f}(\vb a)$，第$i$行第$j$列是$\pdv{f_i}{x_j}(\vb a)$，叫作$\vb f$在$\vb a$处的:term[雅可比矩阵]{id="math.vector-calculus.jacobian-matrix"}（Jacobian matrix）。
 
-为什么这样定义：第$i$行是分量$f_i$的各个偏导数，合起来就是$f_i$的:term[梯度]{id="math.vector-calculus.gradient"}（gradient），见[方向导数与梯度](lesson:math.vector-calculus.gradient)；第$j$列$\pdv{\vb f}{x_j}$是只让$x_j$变动时像点移动的速度。例如极坐标$(r,\theta)\mapsto(r\cos\theta,r\sin\theta)$的雅可比矩阵是$\begin{pmatrix}\cos\theta&-r\sin\theta\\\sin\theta&r\cos\theta\end{pmatrix}$。边界情况：$m=1$时它是一行，就是各个偏导数排成的行；$n=1$时它是一列，就是曲线的速度$\vb r'(t)$。
+为什么这样定义：第$i$行是分量$f_i$的各个偏导数，合起来就是$f_i$的:term[梯度]{id="math.vector-calculus.gradient"}（gradient），见[方向导数与梯度](lesson:math.vector-calculus.gradient)；第$j$列$\pdv{\vb f}{x_j}$是只让$x_j$变动时像点移动的速度。例如:term[极坐标]{id="math.calculus.polar-coordinates"}$(r,\theta)\mapsto(r\cos\theta,r\sin\theta)$的雅可比矩阵是$\begin{pmatrix}\cos\theta&-r\sin\theta\\\sin\theta&r\cos\theta\end{pmatrix}$。边界情况：$m=1$时它是一行，就是各个偏导数排成的行；$n=1$时它是一列，就是曲线的速度$\vb r'(t)$。
 
 ::anchor{id="thm-local-linear"}
 **:term[局部线性近似]{id="math.vector-calculus.local-linear-approximation"}（local linear approximation）**　设$\vb f$的各分量函数在$\vb a$处都:term[可微]{id="math.vector-calculus.differentiable"}，则$\vb f(\vb a+\vb h)=\vb f(\vb a)+J_{\vb f}(\vb a)\vb h+\vb r(\vb h)$，其中$\vb h\to\vb 0$时$\frac{|\vb r(\vb h)|}{|\vb h|}\to0$。

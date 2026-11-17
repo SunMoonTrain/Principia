@@ -28,7 +28,7 @@ $\frac{\sin x}{x}$在$x\to0$时是:term[$\frac00$型]{id="math.calculus.zero-ove
 ::anchor{id="thm-sin-limit"}
 **:term[第一个重要极限]{id="math.calculus.first-special-limit"}（limit of $\frac{\sin x}{x}$）**　$\lim_{x\to0}\frac{\sin x}{x}=1$，这里$x$用弧度。
 
-为什么要用弧度：扇形面积是$\frac12x$，靠的是弧度制下「弧长等于半径乘角度」。用角度量的话，这个:term[极限]{id="math.calculus.limit"}不是$1$（第 7 题）。它说的是$x$很小时$\sin x$和$x$几乎相等，相对误差趋于零。
+为什么要用弧度：扇形面积是$\frac12x$，靠的是弧度制下「:term[弧长]{id="math.calculus.arc-length"}（arc length）等于半径乘角度」。用角度量的话，这个:term[极限]{id="math.calculus.limit"}不是$1$（第 7 题）。它说的是$x$很小时$\sin x$和$x$几乎相等，相对误差趋于零。
 
 换元以后能派生出一串结论。$\frac{\tan x}{x}=\frac{\sin x}{x}\cdot\frac1{\cos x}\to1$。$1-\cos x=2\sin^2\frac x2$，所以$\frac{1-\cos x}{x^2}=\frac12\left(\frac{\sin(x/2)}{x/2}\right)^2\to\frac12$，这里令$u=\frac x2$，用了[连续与间断](lesson:math.calculus.continuity)里换元的定理。令$u=\arcsin x$（$\arcsin x$是$\sin x$在$\bigl[-\frac\pi2,\frac\pi2\bigr]$上的反函数），$x=\sin u$，又得$\frac{\arcsin x}{x}=\frac{u}{\sin u}\to1$。
 

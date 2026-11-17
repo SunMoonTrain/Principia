@@ -87,7 +87,7 @@ $f(x,y)=\ln(x^2+y^2)$。求四个:term[二阶偏导数]{id="math.vector-calculus
 
 ## 常见误区
 
-- 「$\pdv{x}{r}$和$\pdv{r}{x}$互为倒数。」极坐标里$x=r\cos\theta$，固定$\theta$得$\pdv{x}{r}=\cos\theta$；$r=\sqrt{x^2+y^2}$，固定$y$得$\pdv{r}{x}=\frac xr=\cos\theta$，乘积是$\cos^2\theta$。两个:term[偏导数]{id="math.vector-calculus.partial-derivative"}保持不变的变量不同（一个是$\theta$，一个是$y$），不能像分数一样约分（第 7 题）。
+- 「$\pdv{x}{r}$和$\pdv{r}{x}$互为倒数。」:term[极坐标]{id="math.calculus.polar-coordinates"}（polar coordinates）里$x=r\cos\theta$，固定$\theta$得$\pdv{x}{r}=\cos\theta$；$r=\sqrt{x^2+y^2}$，固定$y$得$\pdv{r}{x}=\frac xr=\cos\theta$，乘积是$\cos^2\theta$。两个:term[偏导数]{id="math.vector-calculus.partial-derivative"}保持不变的变量不同（一个是$\theta$，一个是$y$），不能像分数一样约分（第 7 题）。
 - 「偏导数都存在，函数就:term[连续]{id="math.vector-calculus.continuous"}。」讲解里的$\frac{xy}{x^2+y^2}$就是反例。
 - 「:term[混合偏导数]{id="math.vector-calculus.mixed-partial-derivative"}总是相等。」要它们在这一点连续；第 6 题的函数两个混合偏导数在原点分别是$-1$和$1$。
 - 「$f_{xy}$是先对$y$、再对$x$求导。」下标从左往右是求导的次序，$f_{xy}=(f_x)_y$；分式记号$\frac{\partial^2f}{\partial y\,\partial x}$从右往左读。

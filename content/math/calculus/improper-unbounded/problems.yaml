@@ -1,0 +1,175 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\int_0^1\frac{\dd x}{\sqrt[3]x}$。
+  answer:
+    type: number
+    value: 3/2
+  hints:
+    - |
+      被积函数是$x^{-1/3}$，$x=0$是瑕点（singular point），指数$\frac13<1$，应当收敛（converge）。
+    - |
+      $x^{-1/3}$的一个原函数（antiderivative）是$\frac32x^{2/3}$。
+    - |
+      $\frac32x^{2/3}$在$0$处连续（continuous），可以照常代入。
+  solution: |
+    $\int_\varepsilon^1x^{-1/3}\,\dd x=\frac32\bigl(1-\varepsilon^{2/3}\bigr)\to\frac32$，所以这个反常积分（improper integral）收敛，值是$\frac32$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列反常积分中，收敛的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\int_0^1\frac{\dd x}{x\sqrt x}$
+      - |
+        $\int_0^1\frac{\dd x}{\sqrt{1-x}}$
+      - |
+        $\int_0^3\frac{\dd x}{\sqrt[3]{(x-1)^2}}$
+      - |
+        $\int_0^1\frac{\dd x}{\sqrt x+x^2}$
+    value: [2, 3, 4]
+  hints:
+    - |
+      先找出每个积分的瑕点，看它在端点还是在区间内部。
+    - |
+      B 的瑕点是$1$，$-2\sqrt{1-x}$是一个原函数；C 的瑕点$1$在区间内部，要拆成两段，$3\sqrt[3]{x-1}$是一个原函数。
+    - |
+      A 是$\int_0^1\frac{\dd x}{x^p}$，看$p$是否小于$1$；D 和$\frac1{\sqrt x}$比较。
+  solution: |
+    A 是$p=\frac32\ge1$，发散（diverge）。B 的原函数$-2\sqrt{1-x}$在$1$处连续，$\int_0^1\frac{\dd x}{\sqrt{1-x}}=2$，收敛；C 的原函数$3\sqrt[3]{x-1}$在$1$处连续，两段都收敛，积分是$3\sqrt[3]2+3$。D：$0<\frac1{\sqrt x+x^2}\le\frac1{\sqrt x}$，由比较判别法收敛。选 B、C、D。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\int_0^{+\infty}\frac{e^{-3\sqrt x}}{\sqrt x}\,\dd x$。
+  answer:
+    type: number
+    value: 2/3
+  hints:
+    - |
+      这个积分既有瑕点$x=0$，又是无穷区间。先找原函数，想想$e^{-3\sqrt x}$的导数。
+    - |
+      由链式法则（chain rule），$\bigl(e^{-3\sqrt x}\bigr)'=-\frac{3e^{-3\sqrt x}}{2\sqrt x}$，所以$-\frac23e^{-3\sqrt x}$是一个原函数。
+    - |
+      $-\frac23e^{-3\sqrt x}$在$0$处连续，值是$-\frac23$；$x\to+\infty$时它趋于$0$。
+  solution: |
+    $-\frac23e^{-3\sqrt x}$是原函数，在$0$处连续，所以$\int_0^{+\infty}\frac{e^{-3\sqrt x}}{\sqrt x}\,\dd x=-\frac23e^{-3\sqrt x}\Big|_0^{+\infty}=\frac23$。在$x=1$处拆开看，两段都收敛，结果一样。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\int_1^2\frac{x\,\dd x}{\sqrt{x-1}}$。
+  answer:
+    type: number
+    value: 8/3
+  hints:
+    - |
+      $x=1$是瑕点。把分子写成$x=(x-1)+1$，拆成两项。
+    - |
+      $\frac x{\sqrt{x-1}}=\sqrt{x-1}+\frac1{\sqrt{x-1}}$，两项的原函数分别是$\frac23(x-1)^{3/2}$和$2(x-1)^{1/2}$（求导验证）。
+    - |
+      原函数在$x=1$处连续，值是$0$。
+  solution: |
+    $\frac x{\sqrt{x-1}}=\sqrt{x-1}+\frac1{\sqrt{x-1}}$，原函数$\frac23(x-1)^{3/2}+2(x-1)^{1/2}$在$1$处连续，所以积分是$\frac23+2=\frac83$。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）设$f$、$g$在$(a,b]$上连续并且为正，$x\to a^+$时$\frac{f(x)}{g(x)}\to L$，$0<L<+\infty$。证明$\int_a^bf(x)\,\dd x$和$\int_a^bg(x)\,\dd x$同时收敛或同时发散。
+
+    （2）判断$\int_0^1\frac{\dd x}{\sqrt{\sin x}}$和$\int_0^1\frac{\dd x}{1-\cos x}$是否收敛。
+  hints:
+    - |
+      （1）靠近$a$的一小段上，$\frac{f(x)}{g(x)}$夹在$\frac L2$和$2L$之间。
+    - |
+      （1）有$\delta>0$，使$a<x\le a+\delta$时$\frac L2g(x)\le f(x)\le2Lg(x)$；$[a+\delta,b]$上是普通的定积分。（2）$\frac{\sin x}x\to1$；$1-\cos x=2\sin^2\frac x2$。
+    - |
+      （1）在$(a,a+\delta]$上用两次比较判别法（comparison test）：$f\le2Lg$，$\int g$收敛则$\int f$收敛；$g\le\frac2Lf$，$\int f$收敛则$\int g$收敛。
+
+      （2）$\frac{1/\sqrt{\sin x}}{1/\sqrt x}=\sqrt{\frac x{\sin x}}\to1$，$\int_0^1\frac{\dd x}{\sqrt x}$收敛，所以第一个收敛。$\frac{1-\cos x}{x^2/2}=\Bigl(\frac{\sin(x/2)}{x/2}\Bigr)^2\to1$，所以$\frac1{1-\cos x}$和$\frac2{x^2}$之比趋于$1$，$\int_0^1\frac{2\,\dd x}{x^2}$发散，所以第二个发散。
+  reference: |
+    （1）$(a,a+\delta]$上$\frac L2g\le f\le2Lg$，用两次比较判别法。
+
+    （2）第一个收敛（像$\frac1{\sqrt x}$），第二个发散（像$\frac2{x^2}$）。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）由$e^u\ge1+u$（[微分中值定理](lesson:math.calculus.mean-value-theorem)第 5 题）证明：$0<x\le1$时$|\ln x|<\frac2{\sqrt x}$。
+
+    （2）由此说明$\int_0^1\ln x\,\dd x$收敛，并且$x\to0^+$时$x\ln x\to0$。
+
+    （3）验证$x\ln x-x$是$\ln x$的一个原函数，求$\int_0^1\ln x\,\dd x$。
+  hints:
+    - |
+      （1）取$u=-\frac12\ln x$，这时$e^u=\frac1{\sqrt x}$。
+    - |
+      （1）$\frac1{\sqrt x}\ge1-\frac12\ln x>\frac12|\ln x|$。（2）$|\ln x|<2x^{-1/2}$，指数$\frac12<1$；$|x\ln x|=x|\ln x|<2\sqrt x$。
+    - |
+      （1）$0<x\le1$时$u=-\frac12\ln x\ge0$，$e^u=\frac1{\sqrt x}\ge1+u>u=\frac12|\ln x|$，即$|\ln x|<\frac2{\sqrt x}$。
+
+      （2）由比较判别法，$\int_0^1|\ln x|\,\dd x$收敛，$\int_0^1\ln x\,\dd x$绝对收敛（absolutely convergent），因而收敛。$|x\ln x|<2\sqrt x\to0$。
+
+      （3）$(x\ln x-x)'=\ln x+1-1=\ln x$。$\int_\varepsilon^1\ln x\,\dd x=-1-(\varepsilon\ln\varepsilon-\varepsilon)\to-1$。
+  reference: |
+    （1）$u=-\frac12\ln x$，$\frac1{\sqrt x}\ge1+u>\frac12|\ln x|$。
+
+    （2）$|\ln x|<2x^{-1/2}$；$|x\ln x|<2\sqrt x$。
+
+    （3）$-1$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）曲线$y=\frac1{\sqrt x}$（$0<x\le1$）和曲线$y=\frac1{x^2}$（$x\ge1$）有什么关系？
+
+    （2）把$\int_0^1\frac{\dd x}{\sqrt x}$表示的那块图形沿直线$y=x$翻折，得到什么图形？由此用$\int_1^{+\infty}\frac{\dd x}{x^2}=1$说明$\int_0^1\frac{\dd x}{\sqrt x}=2$。
+
+    （3）一般地，$0<p<1$时，说明$\int_0^1\frac{\dd x}{x^p}$收敛和$\int_1^{+\infty}\frac{\dd x}{x^{1/p}}$收敛是一回事，并验证两个值之间的关系。
+  hints:
+    - |
+      （1）从$y=\frac1{\sqrt x}$解出$x$。沿直线$y=x$翻折，就是把每个点的横、纵坐标对调。
+    - |
+      （1）$x=\frac1{y^2}$，$0<x\le1$时$y\ge1$。（2）翻折后，图形由正方形$0\le x\le1$、$0<y\le1$和曲线$y=\frac1{x^2}$（$x\ge1$）下面的部分拼成。
+    - |
+      （1）两条曲线关于直线$y=x$对称：$y=\frac1{\sqrt x}$上的点$(x,y)$翻过去是$(y,x)$，满足$x=\frac1{y^2}$，横坐标$y\ge1$。
+
+      （2）翻折不改变面积，所以$\int_0^1\frac{\dd x}{\sqrt x}=1+\int_1^{+\infty}\frac{\dd x}{x^2}=2$。
+
+      （3）同样，$\int_0^1\frac{\dd x}{x^p}=1+\int_1^{+\infty}\frac{\dd x}{x^{1/p}}$，一个收敛另一个就收敛。$p<1$正是$\frac1p>1$。验证：$1+\frac1{1/p-1}=1+\frac p{1-p}=\frac1{1-p}$。
+  reference: |
+    （1）关于直线$y=x$对称。
+
+    （2）翻过去是单位正方形加上$y=\frac1{x^2}$（$x\ge1$）下面的部分，面积$1+1=2$。
+
+    （3）$\int_0^1\frac{\dd x}{x^p}=1+\int_1^{+\infty}\frac{\dd x}{x^{1/p}}$，$p<1$即$\frac1p>1$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）算$\int_{-1}^{-\varepsilon}\frac{\dd x}x+\int_\varepsilon^1\frac{\dd x}x$，$\varepsilon\to0^+$时极限是多少？
+
+    （2）两侧挖掉的长度不同，算$\int_{-1}^{-\varepsilon}\frac{\dd x}x+\int_{2\varepsilon}^1\frac{\dd x}x$，$\varepsilon\to0^+$时极限是多少？
+
+    （3）由此说明：瑕点在区间内部时，为什么要求两侧各自收敛？
+  hints:
+    - |
+      $\frac1x$在$x<0$时的原函数是$\ln|x|$。
+    - |
+      （1）两项是$\ln\varepsilon$和$-\ln\varepsilon$。（2）第二项是$-\ln(2\varepsilon)$。
+    - |
+      （1）和对每个$\varepsilon$都是$0$，极限是$0$。
+
+      （2）和是$\ln\varepsilon-\ln2-\ln\varepsilon=-\ln2$，极限是$-\ln2$。
+
+      （3）两侧按不同的比例挖，「极限」就不同；右侧挖掉$k\varepsilon$时得到$-\ln k$，什么数都可能。两侧各自收敛时，值才不依赖怎么挖。
+  reference: |
+    （1）$0$。
+
+    （2）$-\ln2$。
+
+    （3）结果依赖两侧挖法，值不确定；对称地挖得到的数叫柯西主值（Cauchy principal value），是另一个概念。

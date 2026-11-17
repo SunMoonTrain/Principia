@@ -1,0 +1,157 @@
+- id: p1
+  tier: easy
+  statement: |
+    求抛物线$y=x^2$和直线$y=x+2$围成的图形的面积。
+  answer:
+    type: number
+    value: 9/2
+  hints:
+    - |
+      先求两条线的交点，确定积分区间（interval of integration）。
+    - |
+      由$x^2=x+2$得$x=-1$或$x=2$；在$[-1,2]$上直线在抛物线上方，比如$x=0$时$2>0$。
+    - |
+      面积是$\int_{-1}^2(x+2-x^2)\,\dd x$，用牛顿-莱布尼茨公式（Newton-Leibniz formula）计算。
+  solution: |
+    交点的横坐标是$-1$和$2$，在$[-1,2]$上$x+2\ge x^2$，所以面积是$\int_{-1}^2(x+2-x^2)\,\dd x=\Bigl(\frac{x^2}2+2x-\frac{x^3}3\Bigr)\Big|_{-1}^2=\frac92$。
+
+- id: p2
+  tier: easy
+  statement: |
+    求曲线$y=\sin x$（$0\le x\le2\pi$）和$x$轴围成的图形的面积。
+  answer:
+    type: number
+    value: 4
+  hints:
+    - |
+      $\sin x$在$[\pi,2\pi]$上是负的，那一块在$x$轴下方。
+    - |
+      面积是$\int_0^{2\pi}|\sin x|\,\dd x$，在$x=\pi$处分成两段。
+    - |
+      $\int_0^\pi\sin x\,\dd x=2$，$\int_\pi^{2\pi}(-\sin x)\,\dd x=\cos x\Big|_\pi^{2\pi}=2$。
+  solution: |
+    在$[0,\pi]$上曲线在$x$轴上方，面积是$\int_0^\pi\sin x\,\dd x=2$；在$[\pi,2\pi]$上曲线在下方，面积是$\int_\pi^{2\pi}(0-\sin x)\,\dd x=2$。共$4$。$\int_0^{2\pi}\sin x\,\dd x=0$是带符号的面积，不是所求的面积。
+
+- id: p3
+  tier: medium
+  statement: |
+    求曲线$y=\frac1x$、直线$y=x$和直线$y=2$围成的图形的面积。
+  answer:
+    type: number
+    value: 3/2 - ln(2)
+  hints:
+    - |
+      先画图，求出三条线两两的交点。
+    - |
+      交点是$(1,1)$、$\bigl(\frac12,2\bigr)$、$(2,2)$。横着切：$1\le y\le2$时，每一条的左端在曲线$x=\frac1y$上，右端在直线$x=y$上。
+    - |
+      面积是$\int_1^2\Bigl(y-\frac1y\Bigr)\dd y$。
+  solution: |
+    横着切，$1\le y\le2$时每一条从$x=\frac1y$到$x=y$，面积是$\int_1^2\Bigl(y-\frac1y\Bigr)\dd y=\Bigl(\frac{y^2}2-\ln y\Bigr)\Big|_1^2=\frac32-\ln2\approx0.807$。竖着切也可以，但要在$x=1$处分成两段：$\int_{1/2}^1\Bigl(2-\frac1x\Bigr)\dd x+\int_1^2(2-x)\,\dd x$，结果一样。
+
+- id: p4
+  tier: medium
+  statement: |
+    求曲线$y=\sin x$、$y=\cos x$和直线$x=0$、$x=\pi$围成的图形的面积。
+  answer:
+    type: number
+    value: 2*sqrt(2)
+  hints:
+    - |
+      两条曲线在$[0,\pi]$里相交，上下会互换，先求交点。
+    - |
+      $\sin x=\cos x$在$[0,\pi]$里只有$x=\frac\pi4$；$x<\frac\pi4$时$\cos x$在上方，$x>\frac\pi4$时$\sin x$在上方。
+    - |
+      面积是$\int_0^{\pi/4}(\cos x-\sin x)\,\dd x+\int_{\pi/4}^\pi(\sin x-\cos x)\,\dd x$。
+  solution: |
+    两段分别是$(\sin x+\cos x)\Big|_0^{\pi/4}=\sqrt2-1$和$(-\cos x-\sin x)\Big|_{\pi/4}^\pi=1+\sqrt2$，面积是$2\sqrt2\approx2.83$。直接算$\int_0^\pi(\sin x-\cos x)\,\dd x$得$2$，那是两块面积之差。
+
+- id: p5
+  tier: hard
+  statement: |
+    抛物线$y=x-x^2$和$x$轴围成一块图形。过原点的直线$y=kx$把它分成面积相等的两块，求$k$。
+  hints:
+    - |
+      先求整块的面积。抛物线在原点处的切线（tangent line）斜率是$1$，直线要穿过这块图形，$0<k<1$。
+    - |
+      直线和抛物线交于$x=0$和$x=1-k$。直线上方、抛物线下方那一块，面积是$\int_0^{1-k}\bigl(x-x^2-kx\bigr)\dd x$。
+    - |
+      整块的面积是$\int_0^1(x-x^2)\,\dd x=\frac16$。上面那一块是$\int_0^{1-k}\bigl[(1-k)x-x^2\bigr]\dd x=\frac{(1-k)^3}6$。令它等于$\frac1{12}$，得$(1-k)^3=\frac12$，$k=1-\frac1{\sqrt[3]2}\approx0.206$。
+  reference: |
+    $\frac{(1-k)^3}6=\frac1{12}$，$k=1-\frac1{\sqrt[3]2}\approx0.206$。
+
+- id: p6
+  tier: hard
+  statement: |
+    在抛物线$y=x^2$上取两点$A(\alpha,\alpha^2)$、$B(\beta,\beta^2)$，$\alpha<\beta$。
+
+    （1）证明：弦$AB$和抛物线围成的图形，面积是$\frac{(\beta-\alpha)^3}6$。
+
+    （2）抛物线上$A$、$B$之间有一点$C$，那里的切线和$AB$平行。证明三角形$ABC$的面积是$\frac{(\beta-\alpha)^3}8$，从而（1）里那块图形的面积是三角形$ABC$的$\frac43$倍。
+  hints:
+    - |
+      （1）直线$AB$是$y=(\alpha+\beta)x-\alpha\beta$，它减去$x^2$可以分解因式。
+    - |
+      （1）$(\alpha+\beta)x-\alpha\beta-x^2=(x-\alpha)(\beta-x)$。（2）切线的斜率是$2x$，$C$的横坐标是$\frac{\alpha+\beta}2$；过$C$作竖直线和$AB$交于$D$，$CD$把三角形$ABC$分成两个三角形。
+    - |
+      （1）面积是$\int_\alpha^\beta(x-\alpha)(\beta-x)\,\dd x$。把图形向左平移$\alpha$，面积不变；记$h=\beta-\alpha$，它等于$\int_0^ht(h-t)\,\dd t=\frac{h^3}6$。
+
+      （2）$D$、$C$的纵坐标之差是$\frac{(\alpha+\beta)^2}2-\alpha\beta-\frac{(\alpha+\beta)^2}4=\frac{(\beta-\alpha)^2}4$。两个三角形以$CD$为公共底，高分别是$\frac{\alpha+\beta}2-\alpha$和$\beta-\frac{\alpha+\beta}2$，面积之和是$\frac12\cdot\frac{(\beta-\alpha)^2}4\cdot(\beta-\alpha)=\frac{(\beta-\alpha)^3}8$。$\frac16\div\frac18=\frac43$。
+  reference: |
+    （1）$\int_\alpha^\beta(x-\alpha)(\beta-x)\,\dd x=\frac{(\beta-\alpha)^3}6$。
+
+    （2）$CD=\frac{(\beta-\alpha)^2}4$，三角形的面积是$\frac12CD\cdot(\beta-\alpha)$。这是阿基米德（Archimedes）的结果。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）半径从$r$到$r+\Delta r$的细圆环，面积是多少？说明$\dd A=2\pi r\,\dd r$可以作为圆面积的微元（differential element），并由此求半径为$R$的圆的面积。
+
+    （2）有人取$\dd A=2\pi(r+\dd r)\,\dd r$，有人取$\dd A=\pi r\,\dd r$。哪个可以用，哪个不行？
+
+    （3）由（1），圆的面积$\pi r^2$对$r$的导数正是周长$2\pi r$。球的体积$\frac43\pi r^3$对$r$的导数是什么？怎样解释？
+  hints:
+    - |
+      （1）两个圆的面积相减。（2）看每一种和真实面积的差，和$\dd r$相比是否趋于$0$。
+    - |
+      （1）$\pi(r+\Delta r)^2-\pi r^2=2\pi r\Delta r+\pi(\Delta r)^2$。（3）想一层很薄的球壳。
+    - |
+      （1）多出的$\pi(\Delta r)^2$和$\Delta r$相比趋于$0$，所以$\dd A=2\pi r\,\dd r$是微元，$A=\int_0^R2\pi r\,\dd r=\pi R^2$。
+
+      （2）第一种和真实面积只差$\pi(\dd r)^2$，也和$\dd r$相比趋于$0$，可以用，去掉这一项就是$2\pi r\,\dd r$，积出来一样。第二种差了约$\pi r\,\dd r$，和$\dd r$相比不趋于$0$，积出来是$\frac12\pi R^2$，少了一半。
+
+      （3）导数是$4\pi r^2$，正是球的表面积：厚$\dd r$的薄球壳，体积约为表面积乘厚度，这就是体积的微元。
+  reference: |
+    （1）$2\pi r\Delta r+\pi(\Delta r)^2$；$\pi R^2$。
+
+    （2）第一种可以，第二种不行：它的误差和$\dd r$相比不趋于$0$。
+
+    （3）$4\pi r^2$，球的表面积；薄球壳的体积约为表面积乘厚度。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$f$在$[0,a]$上连续（continuous）、严格递增，$f(0)=0$，$b=f(a)$；它的反函数（inverse function）记作$f^{-1}$。
+
+    （1）画图说明$\int_0^af(x)\,\dd x+\int_0^bf^{-1}(y)\,\dd y=ab$。
+
+    （2）用横着切的办法求$\int_1^e\ln x\,\dd x$，不用找$\ln x$的原函数（antiderivative）。
+
+    （3）验证$x\ln x-x$是$\ln x$的一个原函数，用它再算一遍（2）。
+  hints:
+    - |
+      （1）两个积分各是哪一块的面积？一块在曲线和$x$轴之间，一块在曲线和$y$轴之间。
+    - |
+      （1）$\int_0^bf^{-1}(y)\,\dd y$是横着切出来的：高度为$y$的那一条，从$y$轴到曲线，长$f^{-1}(y)$。（2）$y=\ln x$在$[1,e]$上从$0$升到$1$；高度为$y$的那一条，从曲线上的$x=e^y$到直线$x=e$。
+    - |
+      （1）两块拼起来正好是长方形$0\le x\le a$、$0\le y\le b$，以曲线为界，不重叠。
+
+      （2）$\int_0^1(e-e^y)\,\dd y=e-(e-1)=1$。
+
+      （3）$(x\ln x-x)'=\ln x+1-1=\ln x$，所以$\int_1^e\ln x\,\dd x=(x\ln x-x)\Big|_1^e=1$，一致。
+  reference: |
+    （1）两块拼成长方形。
+
+    （2）$1$。
+
+    （3）$(x\ln x-x)\Big|_1^e=1$。

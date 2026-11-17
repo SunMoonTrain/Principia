@@ -1,0 +1,169 @@
+- id: p1
+  tier: easy
+  statement: |
+    曲线$y=\sqrt x$（$0\le x\le4$）、$x$轴和直线$x=4$围成的图形绕$x$轴旋转一周。求旋转体（solid of revolution）的体积。
+  answer:
+    type: number
+    value: 8*pi
+  hints:
+    - |
+      用圆盘法（disk method），$x$处截面的半径是$\sqrt x$。
+    - |
+      截面面积是$\pi\bigl(\sqrt x\bigr)^2=\pi x$。
+    - |
+      $V=\pi\int_0^4x\,\dd x$。
+  solution: |
+    $V=\pi\int_0^4x\,\dd x=\pi\cdot\frac{x^2}2\Big|_0^4$，即$8\pi\approx25.1$。
+
+- id: p2
+  tier: easy
+  statement: |
+    曲线$y=x^2$（$0\le x\le1$）、$x$轴和直线$x=1$围成的图形绕$y$轴旋转一周。求旋转体的体积。
+  answer:
+    type: number
+    value: pi/2
+  hints:
+    - |
+      绕$y$轴旋转，用柱壳法（shell method）。
+    - |
+      $x$处的柱壳半径是$x$，高是$x^2$。
+    - |
+      $V=2\pi\int_0^1x\cdot x^2\,\dd x$。
+  solution: |
+    $V=2\pi\int_0^1x^3\,\dd x=2\pi\cdot\frac14$，即$\frac\pi2\approx1.571$。
+
+- id: p3
+  tier: medium
+  statement: |
+    直线$y=x$和抛物线$y=x^2$围成的图形绕$x$轴旋转一周。求旋转体的体积。
+  answer:
+    type: number
+    value: 2*pi/15
+  hints:
+    - |
+      两条线交于$x=0$和$x=1$，在$[0,1]$上$x\ge x^2$。
+    - |
+      截面是圆环，外半径$x$，内半径$x^2$。
+    - |
+      $V=\pi\int_0^1\bigl(x^2-x^4\bigr)\dd x$。
+  solution: |
+    $V=\pi\int_0^1\bigl(x^2-x^4\bigr)\dd x=\pi\Bigl(\frac13-\frac15\Bigr)$，即$\frac{2\pi}{15}\approx0.419$。
+
+- id: p4
+  tier: medium
+  statement: |
+    一个立体的底面是抛物线$y=x^2$和直线$y=1$围成的图形，垂直于$x$轴的截面都是正方形，正方形的一边落在底面上。求它的体积。
+  answer:
+    type: number
+    value: 16/15
+  hints:
+    - |
+      $x$处底面的宽是多少？
+    - |
+      $x$处底面从$y=x^2$到$y=1$，宽$1-x^2$，$-1\le x\le1$。
+    - |
+      $V=\int_{-1}^1\bigl(1-x^2\bigr)^2\dd x$，被积函数（integrand）是偶函数（even function）。
+  solution: |
+    $V=2\int_0^1\bigl(1-2x^2+x^4\bigr)\dd x=2\Bigl(1-\frac23+\frac15\Bigr)$，即$\frac{16}{15}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    半径为$r$的半球放在平面上，旁边放一个底面半径$r$、高$r$的圆柱，圆柱里挖去一个圆锥：圆锥的顶点在圆柱底面的圆心，底面就是圆柱的上底面。
+
+    （1）证明：在离平面高$z$处，半球的截面面积等于挖空后的圆柱的截面面积。
+
+    （2）由此求半球的体积。
+  hints:
+    - |
+      （1）半球在高$z$处的截面是圆，半径$\sqrt{r^2-z^2}$。
+    - |
+      （1）挖空后的圆柱在高$z$处的截面是圆环，外半径$r$，内半径是圆锥在这里的半径$z$。（2）用祖暅原理（Cavalieri's principle）。
+    - |
+      （1）半球的截面面积是$\pi\bigl(r^2-z^2\bigr)$，圆环的面积是$\pi r^2-\pi z^2$，两者相等。
+
+      （2）两个立体在每个高度的截面面积都相等，体积相等。半球的体积是圆柱减圆锥：$\pi r^3-\frac13\pi r^3=\frac23\pi r^3$，整个球是$\frac43\pi r^3$。
+  reference: |
+    （1）都是$\pi\bigl(r^2-z^2\bigr)$。
+
+    （2）$\pi r^3-\frac13\pi r^3=\frac23\pi r^3$。这是祖暅求球体积的办法。
+
+- id: p6
+  tier: hard
+  statement: |
+    抛物线$y=x^2$（$0\le x\le a$）绕$y$轴旋转得到一个碗，把碗装满到高度$a^2$。
+
+    （1）用垂直于$y$轴的圆盘求碗里水的体积。
+
+    （2）用柱壳法再求一遍。
+
+    （3）它和同底等高的圆柱的体积是什么关系？
+  hints:
+    - |
+      （1）高$y$处的截面是圆，半径$\sqrt y$。（2）水所占的图形是$x^2\le y\le a^2$，绕$y$轴旋转。
+    - |
+      （1）$V=\pi\int_0^{a^2}y\,\dd y$。（2）$x$处柱壳的高是$a^2-x^2$，$V=2\pi\int_0^ax\bigl(a^2-x^2\bigr)\dd x$。
+    - |
+      （1）$\pi\cdot\frac{a^4}2$。
+
+      （2）$2\pi\Bigl(\frac{a^4}2-\frac{a^4}4\Bigr)=\frac{\pi a^4}2$，一样。
+
+      （3）圆柱底面半径$a$、高$a^2$，体积$\pi a^4$，碗里的水正好是它的一半。
+  reference: |
+    （1）$\frac{\pi a^4}2$。
+
+    （2）同样是$\frac{\pi a^4}2$。
+
+    （3）是圆柱的一半。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）例 2 的结果$2\pi^2R\rho^2$等于圆盘的面积乘上圆心绕轴走过的路程。柱壳法的公式$V=2\pi\int_a^bxf(x)\,\dd x$能不能也写成「面积乘路程」？记$S=\int_a^bf(x)\,\dd x$，$\bar x=\frac1S\int_a^bxf(x)\,\dd x$。
+
+    （2）$\bar x$是什么意思？
+
+    （3）以$(1,0)$、$(2,0)$、$(1,1)$为顶点的三角形绕$y$轴旋转，用（1）求体积，再用柱壳法验证。
+  hints:
+    - |
+      （1）$V=2\pi\bar xS$。（2）把图形看成一块均匀的薄板，$\bar x$是什么点的横坐标？
+    - |
+      （3）三角形的面积是$\frac12$，它的重心的横坐标是三个顶点横坐标的平均数。
+    - |
+      （1）$V=2\pi\int_a^bxf(x)\,\dd x=2\pi\bar xS$：面积$S$乘上$\bar x$绕轴走过的路程$2\pi\bar x$。
+
+      （2）$\bar x$是各竖条横坐标按面积加权的平均，即图形（均匀薄板）的重心（centroid）的横坐标。
+
+      （3）$\bar x=\frac{1+2+1}3=\frac43$，$V=2\pi\cdot\frac43\cdot\frac12=\frac{4\pi}3$。柱壳法：$x\in[1,2]$处的高是$2-x$，$V=2\pi\int_1^2x(2-x)\,\dd x=\frac{4\pi}3$，一致。
+  reference: |
+    （1）$V=2\pi\bar xS$。
+
+    （2）图形重心的横坐标。
+
+    （3）$\frac{4\pi}3$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）一个直圆柱和一个斜圆柱，底面相同、高相同。它们的体积相等吗？侧面积呢？
+
+    （2）为什么体积只由截面面积决定，侧面积却不是？
+
+    （3）照「截面周长乘$\dd x$」去求旋转体的侧面积，比如把圆锥的侧面切成高$\dd x$的窄带，结果对吗？
+  hints:
+    - |
+      （1）每个高度的截面都是同样大的圆。
+    - |
+      （2）薄片的体积约为截面面积乘厚度；侧面那一圈窄带是斜的，宽度不是厚度。
+    - |
+      （1）体积相等（祖暅原理）；侧面积不等，斜圆柱的侧面更大。
+
+      （2）薄片的体积和柱体之差，和厚度相比趋于$0$；侧面的窄带是斜的，宽度是厚度的若干倍，这个倍数不趋于$1$，差别不会消失。
+
+      （3）不对。底面半径$R$、高$H$的圆锥，照这样积出$\int_0^H2\pi R\Bigl(1-\frac xH\Bigr)\dd x=\pi RH$，侧面积却是$\pi R\sqrt{R^2+H^2}$。要用沿曲线的长度，见[弧长与旋转曲面的面积](lesson:math.calculus.arc-length)。
+  reference: |
+    （1）体积相等，侧面积不等。
+
+    （2）窄带是斜的，宽度不是厚度。
+
+    （3）不对：得到$\pi RH$，侧面积是$\pi R\sqrt{R^2+H^2}$。

@@ -42,7 +42,7 @@ $n\to\infty$时$S_n\to\frac13$。改用左端点的函数值作高，和是$\fra
 ### 定积分
 
 ::anchor{id="def-definite-integral"}
-记$\lambda$为最长的小区间的长度。如果不管:term[分割]{id="math.calculus.partition"}和$\xi_i$怎样取，只要$\lambda\to0$，:term[黎曼和]{id="math.calculus.riemann-sum"}都无限接近同一个数$I$，就说$f$在$[a,b]$上:term[可积]{id="math.calculus.integrable"}（integrable），$I$叫作$f$在$[a,b]$上的:term[定积分]{id="math.calculus.definite-integral"}（definite integral），记作$\int_a^bf(x)\,\dd x$。$a$、$b$分别叫作积分下限（lower limit of integration）、积分上限（upper limit of integration），$[a,b]$叫作积分区间（interval of integration），$f(x)$是:term[被积函数]{id="math.calculus.integrand"}（integrand），$x$叫作:term[积分变量]{id="math.calculus.integration-variable"}（variable of integration）。
+记$\lambda$为最长的小区间的长度。如果不管:term[分割]{id="math.calculus.partition"}和$\xi_i$怎样取，只要$\lambda\to0$，:term[黎曼和]{id="math.calculus.riemann-sum"}都无限接近同一个数$I$，就说$f$在$[a,b]$上:term[可积]{id="math.calculus.integrable"}（integrable），$I$叫作$f$在$[a,b]$上的:term[定积分]{id="math.calculus.definite-integral"}（definite integral），记作$\int_a^bf(x)\,\dd x$。$a$、$b$分别叫作:term[积分下限]{id="math.calculus.lower-limit-of-integration"}（lower limit of integration）、:term[积分上限]{id="math.calculus.upper-limit-of-integration"}（upper limit of integration），$[a,b]$叫作:term[积分区间]{id="math.calculus.interval-of-integration"}（interval of integration），$f(x)$是:term[被积函数]{id="math.calculus.integrand"}（integrand），$x$叫作:term[积分变量]{id="math.calculus.integration-variable"}（variable of integration）。
 
 为什么这样定义：分割越来越细，长方形拼成的台阶就越来越贴近曲线；要求所有的分割和取点都趋于同一个数，面积才确定。这个极限和:term[数列的极限]{id="math.calculus.sequence-limit"}（limit of a sequence）不一样，黎曼和不只随段数变，严格的说法见数学分析的[黎曼积分与达布和](lesson:math.analysis.riemann-integral)。记号里，$\int$是拉长的 S，取自「求和」，$f(x)\,\dd x$对应$f(\xi_i)\Delta x_i$；积分变量只是一个记号，$\int_a^bf(x)\,\dd x=\int_a^bf(t)\,\dd t$。
 

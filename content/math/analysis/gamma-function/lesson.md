@@ -4,7 +4,7 @@ title: |
   伽马函数
 goal: |
   会用积分定义伽马函数，推出$\Gamma(x+1)=x\Gamma(x)$和$\Gamma(\frac{1}{2})=\sqrt{\pi}$，并用它计算$\int_0^{\infty}x^ne^{-x}\dd x$这类积分。
-prerequisites: [math.analysis.parameter-integrals]
+prerequisites: [math.analysis.parameter-integrals, math.calculus.improper-unbounded]
 minutes: 25
 summary: |
   $\Gamma(x)=\int_0^\infty t^{x-1}e^{-t}\dd t$把阶乘推广到正实数：$\Gamma(n+1)=n!$。
@@ -13,7 +13,7 @@ status: reviewed
 
 ## 这一节要回答的问题
 
-$n!$只对自然数有定义。微积分里，分部积分（integration by parts）$n$次可以算出$\int_0^\infty t^ne^{-t}\dd t=n!$；把$n$换成任意正实数，这个积分还有意义吗？这样得到的函数有没有$n!$那样的递推关系，在$\frac12$处又等于多少？
+$n!$只对自然数有定义。微积分里，:term[分部积分]{id="math.calculus.integration-by-parts"}（integration by parts）$n$次可以算出$\int_0^\infty t^ne^{-t}\dd t=n!$；把$n$换成任意正实数，这个积分还有意义吗？这样得到的函数有没有$n!$那样的递推关系，在$\frac12$处又等于多少？
 
 ## 讲解
 
@@ -38,7 +38,7 @@ $\int_0^\infty e^{-t}\dd t=1$，$\int_0^\infty te^{-t}\dd t=1$，$\int_0^\infty 
 
 **证明**：由乘积的求导法则，$\bigl(t^xe^{-t}\bigr)'=xt^{x-1}e^{-t}-t^xe^{-t}$。在$[\varepsilon,A]$上用:term[牛顿-莱布尼茨公式]{id="math.analysis.newton-leibniz-formula"}（Newton-Leibniz formula），得$A^xe^{-A}-\varepsilon^xe^{-\varepsilon}=x\int_\varepsilon^At^{x-1}e^{-t}\dd t-\int_\varepsilon^At^xe^{-t}\dd t$。令$\varepsilon\to0^+$、$A\to+\infty$，左边趋于$0$（$x>0$），得$0=x\Gamma(x)-\Gamma(x+1)$。又$\Gamma(1)=\int_0^\infty e^{-t}\dd t=1$，由数学归纳法（mathematical induction），$\Gamma(n+1)=n\Gamma(n)=\cdots=n!$。
 
-为什么想到这么做：这就是分部积分（见[分部积分法](lesson:math.calculus.integration-by-parts)）：把$t^x$求导、降一次幂，把$e^{-t}$积分。微积分里算$\int_0^\infty t^ne^{-t}\dd t$用的就是这一步，现在$x$不必是整数。反复用定理 2，任何$\Gamma(x)$都能化成某个$\Gamma(x')$乘一串因子，$0<x'\le1$。
+为什么想到这么做：这就是:term[分部积分]{id="math.calculus.integration-by-parts"}（见[分部积分法](lesson:math.calculus.integration-by-parts)）：把$t^x$求导、降一次幂，把$e^{-t}$积分。微积分里算$\int_0^\infty t^ne^{-t}\dd t$用的就是这一步，现在$x$不必是整数。反复用定理 2，任何$\Gamma(x)$都能化成某个$\Gamma(x')$乘一串因子，$0<x'\le1$。
 
 ### $\Gamma(\frac12)$
 

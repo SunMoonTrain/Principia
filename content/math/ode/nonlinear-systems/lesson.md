@@ -4,7 +4,7 @@ title: |
   非线性系统与线性化
 goal: |
   会求非线性系统的平衡点，并用雅可比矩阵线性化，判断平衡点附近的相图。
-prerequisites: [math.ode.phase-plane-linear, math.vector-calculus.jacobian]
+prerequisites: [math.ode.phase-plane-linear, math.vector-calculus.jacobian, math.calculus.polar-area]
 minutes: 35
 summary: |
   在平衡点用雅可比矩阵线性化；双曲时可信，中心要另想办法。
@@ -38,7 +38,7 @@ status: reviewed
 
 **证明思路**：这里不证。直观上，离$\vb x^*$越近，高阶的小量越小，而双曲时线性部分的「推力」处处不为零（实部为负的方向往里拉，为正的方向往外推），小量改变不了它。进一步还可以证明（$\vb f$足够光滑时），线性化是鞍点、两个特征值不同的结点、焦点时，原来的系统在$\vb x^*$附近也分别是鞍点、结点、焦点。
 
-中心不是双曲的，线性化判断不了。例如$x'=-y+x(x^2+y^2)$、$y'=x+y(x^2+y^2)$，在原点的线性化是$x'=-y$、$y'=x$，原点是中心；可换成极坐标，$r'=r^3>0$、$\theta'=1$，轨线盘旋着离开原点，原点其实是不稳定的焦点（第 5 题）。
+中心不是双曲的，线性化判断不了。例如$x'=-y+x(x^2+y^2)$、$y'=x+y(x^2+y^2)$，在原点的线性化是$x'=-y$、$y'=x$，原点是中心；可换成极坐标（polar coordinates），$r'=r^3>0$、$\theta'=1$，轨线盘旋着离开原点，原点其实是不稳定的焦点（第 5 题）。
 
 ### 守恒量与中心
 

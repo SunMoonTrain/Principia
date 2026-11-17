@@ -1,0 +1,169 @@
+- id: p1
+  tier: easy
+  statement: |
+    求曲线$y=\frac23x^{3/2}$（$0\le x\le3$）的弧长（arc length）。
+  answer:
+    type: number
+    value: 14/3
+  hints:
+    - |
+      先求$y'$，再写出$\sqrt{1+y'^2}$。
+    - |
+      $y'=\sqrt x$，$\sqrt{1+y'^2}=\sqrt{1+x}$。
+    - |
+      $\frac23(1+x)^{3/2}$是$\sqrt{1+x}$的一个原函数（antiderivative），求导验证。
+  solution: |
+    $s=\int_0^3\sqrt{1+x}\,\dd x=\frac23(1+x)^{3/2}\Big|_0^3$，即$\frac23(8-1)=\frac{14}3$。
+
+- id: p2
+  tier: easy
+  statement: |
+    线段$y=x$（$0\le x\le1$）绕$x$轴旋转一周，得到一个圆锥的侧面。用旋转曲面的面积公式求它的面积。
+  answer:
+    type: number
+    value: sqrt(2)*pi
+  hints:
+    - |
+      $f(x)=x$，$f'(x)=1$。
+    - |
+      $S=2\pi\int_0^1x\sqrt{1+1}\,\dd x$。
+    - |
+      可以用中学的圆锥侧面积公式$\pi Rl$验算，$R=1$，母线$l=\sqrt2$。
+  solution: |
+    $S=2\sqrt2\pi\int_0^1x\,\dd x=\sqrt2\pi\approx4.443$，和$\pi Rl=\pi\cdot1\cdot\sqrt2$一致。
+
+- id: p3
+  tier: medium
+  statement: |
+    求曲线$y=\frac{x^2}8-\ln x$（$1\le x\le e$）的弧长。
+  answer:
+    type: number
+    value: (e^2 - 1)/8 + 1
+  hints:
+    - |
+      $y'=\frac x4-\frac1x$，把$1+y'^2$展开看看。
+    - |
+      $1+y'^2=\frac{x^2}{16}+\frac12+\frac1{x^2}=\Bigl(\frac x4+\frac1x\Bigr)^2$。
+    - |
+      $s=\int_1^e\Bigl(\frac x4+\frac1x\Bigr)\dd x$。
+  solution: |
+    $s=\int_1^e\Bigl(\frac x4+\frac1x\Bigr)\dd x=\Bigl(\frac{x^2}8+\ln x\Bigr)\Big|_1^e$，即$\frac{e^2-1}8+1\approx1.799$。
+
+- id: p4
+  tier: medium
+  statement: |
+    曲线$y=\sqrt x$（$0\le x\le2$）绕$x$轴旋转一周，求所得旋转曲面（surface of revolution）的面积。
+  answer:
+    type: number
+    value: 13*pi/3
+  hints:
+    - |
+      $f(x)=\sqrt x$，$f'(x)=\frac1{2\sqrt x}$，先化简$f\sqrt{1+f'^2}$。
+    - |
+      $f\sqrt{1+f'^2}=\sqrt x\cdot\sqrt{1+\frac1{4x}}=\sqrt{x+\frac14}$，在$x=0$处也没有问题。
+    - |
+      $S=2\pi\int_0^2\sqrt{x+\frac14}\,\dd x$，$\frac23\bigl(x+\frac14\bigr)^{3/2}$是原函数（求导验证）。
+  solution: |
+    $S=2\pi\cdot\frac23\Bigl(x+\frac14\Bigr)^{3/2}\Big|_0^2=\frac{4\pi}3\Bigl(\frac{27}8-\frac18\Bigr)$，即$\frac{13\pi}3\approx13.61$。
+
+- id: p5
+  tier: hard
+  statement: |
+    椭圆$\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$（$a>b>0$）写成$x=a\cos t$、$y=b\sin t$，$0\le t\le2\pi$。
+
+    （1）用$\dd s=\sqrt{x'(t)^2+y'(t)^2}\,\dd t$写出椭圆周长的积分。
+
+    （2）证明周长在$2\pi b$和$2\pi a$之间。
+
+    （3）$a=b$时它等于多少？
+  hints:
+    - |
+      （1）$x'(t)=-a\sin t$，$y'(t)=b\cos t$。
+    - |
+      （2）$b^2\le a^2\sin^2t+b^2\cos^2t\le a^2$。
+    - |
+      （1）周长$L=\int_0^{2\pi}\sqrt{a^2\sin^2t+b^2\cos^2t}\,\dd t$。
+
+      （2）被积函数夹在$b$和$a$之间，由定积分的保序性（monotonicity），$2\pi b\le L\le2\pi a$；被积函数不恒等于两端，所以不等号是严格的。
+
+      （3）$a=b$时被积函数是$a$，$L=2\pi a$，正是圆的周长。$a\ne b$时这个积分写不成初等函数。
+  reference: |
+    （1）$\int_0^{2\pi}\sqrt{a^2\sin^2t+b^2\cos^2t}\,\dd t$。
+
+    （2）被积函数在$b$和$a$之间。
+
+    （3）$2\pi a$。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）验证$\Bigl[\ln\Bigl(\frac1{\cos x}+\tan x\Bigr)\Bigr]'=\frac1{\cos x}$（$|x|<\frac\pi2$）。
+
+    （2）求曲线$y=\ln\cos x$（$0\le x\le\frac\pi4$）的弧长。
+  hints:
+    - |
+      （1）$\frac1{\cos x}+\tan x=\frac{1+\sin x}{\cos x}$，用链式法则（chain rule）和商的求导法则。
+    - |
+      （2）$y'=-\tan x$，$1+\tan^2x=\frac1{\cos^2x}$。
+    - |
+      （1）$\Bigl(\frac{1+\sin x}{\cos x}\Bigr)'=\frac{\cos^2x+(1+\sin x)\sin x}{\cos^2x}=\frac{1+\sin x}{\cos^2x}$，除以$\frac{1+\sin x}{\cos x}$得$\frac1{\cos x}$。
+
+      （2）$\sqrt{1+y'^2}=\frac1{\cos x}$，$s=\ln\Bigl(\frac1{\cos x}+\tan x\Bigr)\Big|_0^{\pi/4}=\ln\bigl(\sqrt2+1\bigr)\approx0.881$。
+  reference: |
+    （1）$\Bigl(\frac{1+\sin x}{\cos x}\Bigr)'=\frac{1+\sin x}{\cos^2x}$。
+
+    （2）$\ln\bigl(\sqrt2+1\bigr)$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    从$(0,0)$到$(1,1)$，沿横、竖交替走$n$级台阶，每级横走$\frac1n$、竖走$\frac1n$。
+
+    （1）台阶的总长是多少？$n\to\infty$时，台阶和对角线$y=x$的距离怎样变化？
+
+    （2）对角线长$\sqrt2$，台阶却始终长$2$。这和弧长的定义矛盾吗？
+
+    （3）由此说明：弧长公式里为什么是$\sqrt{\dd x^2+\dd y^2}$，而不能用$|\dd x|+|\dd y|$？
+  hints:
+    - |
+      （1）横着的各段加起来是$1$，竖着的也是$1$。
+    - |
+      （2）弧长的定义里，折线的分点要在曲线上。台阶的拐角在不在对角线上？
+    - |
+      （1）总长$2$；台阶上的点离对角线不超过$\frac1{\sqrt2n}$，趋于$0$。
+
+      （2）不矛盾。台阶贴近对角线，但它的拐角不在对角线上，不是对角线的内接折线；长度不跟着位置一起收敛。
+
+      （3）一小段斜线的长是$\sqrt{\dd x^2+\dd y^2}$，$|\dd x|+|\dd y|$是走台阶的长，两者之比不趋于$1$，差别不会随分细而消失。
+  reference: |
+    （1）$2$；距离趋于$0$。
+
+    （2）不矛盾：台阶的拐角不在对角线上。
+
+    （3）$|\dd x|+|\dd y|$和$\sqrt{\dd x^2+\dd y^2}$之比不趋于$1$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）单位圆的内接正$n$边形，周长是多少？
+
+    （2）$n\to\infty$时周长趋于多少？用到了哪个极限？
+
+    （3）为什么内接多边形的周长总比圆周短？阿基米德用正$96$边形估计$\pi$，他还用了外切的正多边形，为什么要两个都用？
+  hints:
+    - |
+      （1）每条边所对的圆心角是$\frac{2\pi}n$，边长是$2\sin\frac\pi n$。
+    - |
+      （2）周长$2n\sin\frac\pi n=2\pi\cdot\frac{\sin(\pi/n)}{\pi/n}$。
+    - |
+      （1）$2n\sin\frac\pi n$。
+
+      （2）$\frac{\sin x}x\to1$（$x=\frac\pi n\to0$），所以周长趋于$2\pi$。
+
+      （3）每条边是它所对的弧的弦，弦比弧短，所以内接多边形的周长不超过圆周，只给出$\pi$的下界。外切多边形的周长比圆周长，给出上界；两个夹住$\pi$，才知道误差有多大。
+  reference: |
+    （1）$2n\sin\frac\pi n$。
+
+    （2）$2\pi$，用$\frac{\sin x}x\to1$。
+
+    （3）弦比弧短，只给下界；外切的给上界，合起来夹住$\pi$。
