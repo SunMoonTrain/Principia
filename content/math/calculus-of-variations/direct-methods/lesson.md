@@ -101,7 +101,7 @@ sliders:
 
 用:term[里茨方法]{id="math.calculus-of-variations.ritz-method"}求$J[y]=\int_0^1\bigl(y'^2+y^2-2xy\bigr)\dd x$、$y(0)=y(1)=0$的近似极小值点，基函数只取$\varphi_1=x(1-x)$，并和精确解比较。
 
-**为什么想到这么做**：这是二次:term[泛函]{id="math.calculus-of-variations.functional"}，$p=q=1$、$f=x$，只有一个基函数时方程组只有一个方程$A_{11}c_1=b_1$。它的:term[欧拉-拉格朗日方程]{id="math.calculus-of-variations.euler-lagrange-equation"}$-y''+y=x$有用双曲函数（hyperbolic function）$\sinh x=\frac{e^x-e^{-x}}{2}$写出的精确解，正好用来检验。
+**为什么想到这么做**：这是二次:term[泛函]{id="math.calculus-of-variations.functional"}，$p=q=1$、$f=x$，只有一个基函数时方程组只有一个方程$A_{11}c_1=b_1$。它的:term[欧拉-拉格朗日方程]{id="math.calculus-of-variations.euler-lagrange-equation"}$-y''+y=x$有用:term[双曲函数]{id="math.calculus.hyperbolic-functions"}（hyperbolic function）$\sinh x=\frac{e^x-e^{-x}}{2}$写出的精确解，正好用来检验。
 
 **推导**：$A_{11}=\int_0^1\bigl((1-2x)^2+x^2(1-x)^2\bigr)\dd x=\frac13+\frac1{30}=\frac{11}{30}$，$b_1=\int_0^1x^2(1-x)\,\dd x=\frac1{12}$，所以$c_1=\frac{5}{22}$，近似解是$\frac{5}{22}x(1-x)$。代回去，$J$的近似最小值是$-\frac{b_1^2}{A_{11}}=-\frac{5}{264}\approx-0.01894$。可以验证$y=x-\frac{\sinh x}{\sinh1}$满足方程和边界条件，它在$x=\frac12$处约是$0.05659$，近似解是$\frac5{88}\approx0.05682$；精确的最小值是$\coth1-\frac43\approx-0.02030$，比近似值小，和「里茨方法给出上界」一致。
 

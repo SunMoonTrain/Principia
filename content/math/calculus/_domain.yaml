@@ -381,3 +381,261 @@ glossary:
       $(x^n)'=nx^{n-1}$，这里$n$是整数，$n\le0$时要求$x\ne0$。
     definedIn: math.calculus.derivative-rules
     anchor: thm-power-rule
+  - id: math.calculus.linear-approximation
+    zh: |
+      线性近似
+    en: |
+      linear approximation
+    brief: |
+      一次函数$L(x)=f(a)+f'(a)(x-a)$，图像是$a$处的切线；$x$靠近$a$时用它近似$f(x)$，误差比$x-a$小得多。
+    definedIn: math.calculus.differentials
+    anchor: def-linear-approximation
+  - id: math.calculus.differential
+    zh: |
+      微分
+    en: |
+      differential
+    brief: |
+      $f$可导时$\dd y=f'(x)\dd x$，自变量的微分$\dd x$就是增量$\Delta x$；它是沿切线的增量，$\Delta x$很小时近似等于$\Delta y$。
+    definedIn: math.calculus.differentials
+    anchor: def-differential
+  - id: math.calculus.chain-rule
+    zh: |
+      链式法则
+    en: |
+      chain rule
+    brief: |
+      $\bigl(f(g(x))\bigr)'=f'(g(x))\,g'(x)$：复合函数的导数是外层导数（在$g(x)$处取值）乘里层导数。
+    definedIn: math.calculus.chain-rule
+    anchor: thm-chain-rule
+  - id: math.calculus.local-maximum
+    zh: |
+      极大值
+    en: |
+      local maximum
+    brief: |
+      有$\delta>0$，使$|x-x_0|<\delta$时都有$f(x)\le f(x_0)$，就说$f(x_0)$是极大值；只和附近的点比。
+    definedIn: math.calculus.local-extrema
+    anchor: def-local-extremum
+  - id: math.calculus.local-minimum
+    zh: |
+      极小值
+    en: |
+      local minimum
+    brief: |
+      有$\delta>0$，使$|x-x_0|<\delta$时都有$f(x)\ge f(x_0)$，就说$f(x_0)$是极小值；只和附近的点比。
+    definedIn: math.calculus.local-extrema
+    anchor: def-local-extremum
+  - id: math.calculus.local-extremum
+    zh: |
+      极值
+    en: |
+      local extremum
+    brief: |
+      极大值和极小值的统称；只和附近的点比，不同于和整个定义域比的最大值、最小值。
+    definedIn: math.calculus.local-extrema
+    anchor: def-local-extremum
+  - id: math.calculus.extremum-point
+    zh: |
+      极值点
+    en: |
+      extremum point
+    brief: |
+      取到极值的点，即极大值点、极小值点的统称；它两侧都要有定义，区间的端点不算。
+    definedIn: math.calculus.local-extrema
+    anchor: def-local-extremum
+  - id: math.calculus.fermat-theorem
+    zh: |
+      费马定理
+    en: |
+      Fermat's theorem
+    brief: |
+      $x_0$是$f$的极值点、$f$在$x_0$处可导时，$f'(x_0)=0$：可导函数的极值点都是驻点。
+    definedIn: math.calculus.local-extrema
+    anchor: thm-fermat
+  - id: math.calculus.stationary-point
+    zh: |
+      驻点
+    en: |
+      stationary point
+    brief: |
+      使$f'(x_0)=0$的点。可导函数的极值点都是驻点，反过来不对，驻点不一定是极值点。
+    definedIn: math.calculus.local-extrema
+    anchor: def-stationary-point
+  - id: math.calculus.second-derivative
+    zh: |
+      二阶导数
+    en: |
+      second derivative
+    brief: |
+      导函数$f'$的导数，记作$f''$或$\dv{^2y}{x^2}$；位置的二阶导数是加速度。
+    definedIn: math.calculus.higher-derivatives
+    anchor: def-second-derivative
+  - id: math.calculus.higher-derivative
+    zh: |
+      高阶导数
+    en: |
+      higher-order derivative
+    brief: |
+      二阶和二阶以上的导数；$n-1$阶导数的导数叫$n$阶导数，记作$f^{(n)}$。
+    definedIn: math.calculus.higher-derivatives
+    anchor: def-higher-derivative
+  - id: math.calculus.leibniz-formula
+    zh: |
+      莱布尼茨公式
+    en: |
+      Leibniz rule
+    brief: |
+      乘积的$n$阶导数$(uv)^{(n)}=\sum_{k=0}^n\binom nku^{(n-k)}v^{(k)}$，系数是二项式系数。
+    definedIn: math.calculus.higher-derivatives
+    anchor: thm-leibniz
+  - id: math.calculus.hyperbolic-sine
+    zh: |
+      双曲正弦
+    en: |
+      hyperbolic sine
+    abbr: |
+      sinh
+    brief: |
+      $\sinh x=\frac{e^x-e^{-x}}2$，是$e^x$的奇的部分；$(\sinh x)'=\cosh x$。
+    definedIn: math.calculus.hyperbolic-functions
+    anchor: def-hyperbolic
+  - id: math.calculus.hyperbolic-cosine
+    zh: |
+      双曲余弦
+    en: |
+      hyperbolic cosine
+    abbr: |
+      cosh
+    brief: |
+      $\cosh x=\frac{e^x+e^{-x}}2$，是$e^x$的偶的部分，$\cosh x\ge1$；$(\cosh x)'=\sinh x$。
+    definedIn: math.calculus.hyperbolic-functions
+    anchor: def-hyperbolic
+  - id: math.calculus.hyperbolic-tangent
+    zh: |
+      双曲正切
+    en: |
+      hyperbolic tangent
+    abbr: |
+      tanh
+    brief: |
+      $\tanh x=\frac{\sinh x}{\cosh x}$，值在$-1$和$1$之间；$(\tanh x)'=1-\tanh^2x$。
+    definedIn: math.calculus.hyperbolic-functions
+    anchor: def-hyperbolic
+  - id: math.calculus.implicit-function
+    zh: |
+      隐函数
+    en: |
+      implicit function
+    brief: |
+      在$(x_0,y_0)$附近，方程对每个$x$恰有一个解$y$时所确定的函数$y(x)$；不要求写得出式子。
+    definedIn: math.calculus.implicit-differentiation
+    anchor: def-implicit-function
+  - id: math.calculus.inverse-function-rule
+    zh: |
+      反函数的求导法则
+    en: |
+      inverse function rule
+    brief: |
+      $f$在区间上连续、严格单调，在$x_0$处可导且$f'(x_0)\ne0$时，$(f^{-1})'(f(x_0))=\frac1{f'(x_0)}$。
+    definedIn: math.calculus.implicit-differentiation
+    anchor: thm-inverse-derivative
+  - id: math.calculus.rolle-theorem
+    zh: |
+      罗尔定理
+    en: |
+      Rolle's theorem
+    brief: |
+      $f$在$[a,b]$上连续、在$(a,b)$内可导、$f(a)=f(b)$时，有$\xi\in(a,b)$使$f'(\xi)=0$。
+    definedIn: math.calculus.mean-value-theorem
+    anchor: thm-rolle
+  - id: math.calculus.mean-value-theorem
+    zh: |
+      拉格朗日中值定理
+    en: |
+      mean value theorem
+    brief: |
+      $f$在$[a,b]$上连续、在$(a,b)$内可导时，有$\xi\in(a,b)$使$f(b)-f(a)=f'(\xi)(b-a)$：某处切线平行于弦。
+    definedIn: math.calculus.mean-value-theorem
+    anchor: thm-mean-value
+  - id: math.calculus.antiderivative
+    zh: |
+      原函数
+    en: |
+      antiderivative
+    brief: |
+      区间上满足$F'=f$的可导函数$F$；同一个函数在区间上的原函数只差一个常数。
+    definedIn: math.calculus.antiderivatives
+    anchor: def-antiderivative
+  - id: math.calculus.indefinite-integral
+    zh: |
+      不定积分
+    en: |
+      indefinite integral
+    brief: |
+      $f$在区间上的全体原函数，记作$\int f(x)\,\dd x=F(x)+C$，$F$是其中任一个。
+    definedIn: math.calculus.antiderivatives
+    anchor: def-indefinite-integral
+  - id: math.calculus.integrand
+    zh: |
+      被积函数
+    en: |
+      integrand
+    brief: |
+      $\int f(x)\,\dd x$里积分号后面的函数$f(x)$，即要求原函数的那个函数。
+    definedIn: math.calculus.antiderivatives
+    anchor: def-indefinite-integral
+  - id: math.calculus.constant-of-integration
+    zh: |
+      积分常数
+    en: |
+      constant of integration
+    brief: |
+      $\int f(x)\,\dd x=F(x)+C$里的任意常数$C$；给定一点处的函数值，就能把它定下来。
+    definedIn: math.calculus.antiderivatives
+    anchor: def-indefinite-integral
+  - id: math.calculus.arcsine
+    zh: |
+      反正弦函数
+    en: |
+      arcsine
+    brief: |
+      $\sin x$在$\bigl[-\frac\pi2,\frac\pi2\bigr]$上的反函数$\arcsin x$，定义在$[-1,1]$上；导数是$\frac1{\sqrt{1-x^2}}$。
+    definedIn: math.calculus.implicit-differentiation
+    anchor: def-inverse-trig
+  - id: math.calculus.arccosine
+    zh: |
+      反余弦函数
+    en: |
+      arccosine
+    brief: |
+      $\cos x$在$[0,\pi]$上的反函数$\arccos x$，定义在$[-1,1]$上；导数是$-\frac1{\sqrt{1-x^2}}$。
+    definedIn: math.calculus.implicit-differentiation
+    anchor: def-inverse-trig
+  - id: math.calculus.arctangent
+    zh: |
+      反正切函数
+    en: |
+      arctangent
+    brief: |
+      $\tan x$在$\bigl(-\frac\pi2,\frac\pi2\bigr)$上的反函数$\arctan x$，定义在整条数轴上；导数是$\frac1{1+x^2}$。
+    definedIn: math.calculus.implicit-differentiation
+    anchor: def-inverse-trig
+  - id: math.calculus.inverse-trigonometric-functions
+    zh: |
+      反三角函数
+    en: |
+      inverse trigonometric functions
+    brief: |
+      $\arcsin x$、$\arccos x$、$\arctan x$等的统称：三角函数截取严格单调的一段后得到的反函数。
+    definedIn: math.calculus.implicit-differentiation
+    anchor: def-inverse-trig
+  - id: math.calculus.hyperbolic-functions
+    zh: |
+      双曲函数
+    en: |
+      hyperbolic functions
+    brief: |
+      $\sinh x$、$\cosh x$、$\tanh x$等的统称；$\cosh^2x-\sinh^2x=1$，点$(\cosh t,\sinh t)$在双曲线上。
+    definedIn: math.calculus.hyperbolic-functions
+    anchor: def-hyperbolic

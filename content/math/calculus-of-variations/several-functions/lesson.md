@@ -13,7 +13,7 @@ status: reviewed
 
 ## 这一节要回答的问题
 
-空间里的曲线要用两个函数$y(x)$、$z(x)$来描述；弹性梁（elastic beam）弯曲的能量里出现二阶导数$y''$。:term[泛函]{id="math.calculus-of-variations.functional"}（functional）含几个未知函数或高阶导数时，:term[欧拉-拉格朗日方程]{id="math.calculus-of-variations.euler-lagrange-equation"}（Euler–Lagrange equation）变成什么样？端点上又要给几个条件？
+空间里的曲线要用两个函数$y(x)$、$z(x)$来描述；弹性梁（elastic beam）弯曲的能量里出现:term[二阶导数]{id="math.calculus.second-derivative"}（second derivative）$y''$。:term[泛函]{id="math.calculus-of-variations.functional"}（functional）含几个未知函数或:term[高阶导数]{id="math.calculus.higher-derivative"}（higher-order derivative）时，:term[欧拉-拉格朗日方程]{id="math.calculus-of-variations.euler-lagrange-equation"}（Euler–Lagrange equation）变成什么样？端点上又要给几个条件？
 
 ## 讲解
 
@@ -28,7 +28,7 @@ $$
 每个$y_k$的两端都给定。
 
 ::anchor{id="thm-el-system"}
-定理（:term[欧拉-拉格朗日方程组]{id="math.calculus-of-variations.euler-lagrange-equation"}）：设$F$有连续的二阶偏导数（partial derivative），$y_1,\dots,y_n$有连续的二阶导数。如果$J$在$(y_1,\dots,y_n)$处取局部极值，那么$F_{y_k}-\dv{}{x}F_{y_k'}=0$，$k=1,\dots,n$。
+定理（:term[欧拉-拉格朗日方程组]{id="math.calculus-of-variations.euler-lagrange-equation"}）：设$F$有连续的二阶偏导数（partial derivative），$y_1,\dots,y_n$有连续的:term[二阶导数]{id="math.calculus.second-derivative"}。如果$J$在$(y_1,\dots,y_n)$处取局部极值，那么$F_{y_k}-\dv{}{x}F_{y_k'}=0$，$k=1,\dots,n$。
 
 证明思路：只把第$k$个函数换成$y_k+\varepsilon\eta$，其余不动，$J$就成了只含一个未知函数的:term[泛函]{id="math.calculus-of-variations.functional"}，照[第一变分与欧拉-拉格朗日方程](lesson:math.calculus-of-variations.euler-lagrange)的推导得到第$k$个方程。这里要求各个$y_k$能各自独立地变动；如果它们之间有:term[完整约束]{id="math.calculus-of-variations.holonomic-constraint"}（holonomic constraint，例如曲线必须落在一张曲面上），就不能这样做，那要用乘子（multiplier），见[约束在曲面上的变分问题](lesson:math.calculus-of-variations.holonomic-constraints)。
 
@@ -49,7 +49,7 @@ $$
 ::anchor{id="thm-euler-poisson"}
 定理（:term[欧拉-泊松方程]{id="math.calculus-of-variations.euler-poisson-equation"}，Euler–Poisson equation）：设$F$足够光滑，$y$有连续的四阶导数，两端的$y$、$y'$都给定。如果$J[y]=\int_a^bF(x,y,y',y'')\,\dd x$在$y$处取局部极值，那么$F_y-\dv{}{x}F_{y'}+\frac{\dd^2}{\dd x^2}F_{y''}=0$。
 
-$F_{y''y''}\ne0$时这是四阶方程，通解有四个常数，正好由两端的$y$、$y'$四个条件定出。如果只给定两端的$y$、不给$y'$，上面方括号里的$F_{y''}\eta'$不再消失，两端要另外满足$F_{y''}=0$（p5）。含更高阶导数时规律相同：$y^{(m)}$的那一项带$(-1)^m\frac{\dd^m}{\dd x^m}$。
+$F_{y''y''}\ne0$时这是四阶方程，通解有四个常数，正好由两端的$y$、$y'$四个条件定出。如果只给定两端的$y$、不给$y'$，上面方括号里的$F_{y''}\eta'$不再消失，两端要另外满足$F_{y''}=0$（p5）。含更:term[高阶导数]{id="math.calculus.higher-derivative"}时规律相同：$y^{(m)}$的那一项带$(-1)^m\frac{\dd^m}{\dd x^m}$。
 
 ## 几何图像
 

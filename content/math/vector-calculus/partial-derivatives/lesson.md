@@ -31,7 +31,7 @@ status: reviewed
 ::anchor{id="def-second-partials"}
 $f_x$、$f_y$仍是$x$、$y$的函数，对它们再求:term[偏导数]{id="math.vector-calculus.partial-derivative"}，得到四个:term[二阶偏导数]{id="math.vector-calculus.second-partial-derivative"}（second-order partial derivative）：$f_{xx}=\frac{\partial^2f}{\partial x^2}$，$f_{xy}=(f_x)_y=\frac{\partial^2f}{\partial y\,\partial x}$，$f_{yx}=(f_y)_x=\frac{\partial^2f}{\partial x\,\partial y}$，$f_{yy}=\frac{\partial^2f}{\partial y^2}$。其中$f_{xy}$、$f_{yx}$叫作:term[混合偏导数]{id="math.vector-calculus.mixed-partial-derivative"}（mixed partial derivative）。
 
-为什么这样定义：一元函数的二阶导数说的是变化率本身变化得多快，这里每个一阶偏导数又能沿两个方向变化，所以有四个。下标从左往右是求导的次序，$f_{xy}$先对$x$、再对$y$；分式记号里的次序从右往左读，$\frac{\partial^2f}{\partial y\,\partial x}$也是先对$x$。例如$f=x^3y^2+ye^{2x}$，$f_x=3x^2y^2+2ye^{2x}$，$f_{xy}=6x^2y+2e^{2x}$；$f_y=2x^3y+e^{2x}$，$f_{yx}=6x^2y+2e^{2x}$，两者相等。三阶以上的偏导数同样定义，像$u_{tt}=c^2u_{xx}$这样含未知函数偏导数的方程是偏微分方程（partial differential equation），以后在[偏微分方程与分类](lesson:math.pde.pde-basics)里讲。
+为什么这样定义：一元函数的:term[二阶导数]{id="math.calculus.second-derivative"}（second derivative）说的是变化率本身变化得多快，这里每个一阶偏导数又能沿两个方向变化，所以有四个。下标从左往右是求导的次序，$f_{xy}$先对$x$、再对$y$；分式记号里的次序从右往左读，$\frac{\partial^2f}{\partial y\,\partial x}$也是先对$x$。例如$f=x^3y^2+ye^{2x}$，$f_x=3x^2y^2+2ye^{2x}$，$f_{xy}=6x^2y+2e^{2x}$；$f_y=2x^3y+e^{2x}$，$f_{yx}=6x^2y+2e^{2x}$，两者相等。三阶以上的偏导数同样定义，像$u_{tt}=c^2u_{xx}$这样含未知函数偏导数的方程是偏微分方程（partial differential equation），以后在[偏微分方程与分类](lesson:math.pde.pde-basics)里讲。
 
 ### 混合偏导数相等的条件
 

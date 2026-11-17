@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 330" width="520" height="330" font-size="14">
+  <!-- 曲线 y = 0.32x² + 0.5（数学坐标 x∈[0,4.2]、y∈[0,6] 映到像素 [50,490]×[290,20]），P 在 x = 1.4，Q 在 x = 3.2 -->
+  <line x1="40" y1="290" x2="505" y2="290" stroke="currentColor" stroke-width="1.2" /><path d="M505 290 L498.76 293.18 M505 290 L498.76 286.82" fill="none" stroke="currentColor" stroke-width="1.2"/>
+  <line x1="50" y1="302" x2="50" y2="12" stroke="currentColor" stroke-width="1.2" /><path d="M50 12 L53.18 18.24 M50 12 L46.82 18.24" fill="none" stroke="currentColor" stroke-width="1.2"/>
+  <text x="500" y="310" font-size="13" text-anchor="middle" fill="currentColor" ><tspan font-style="italic">x</tspan></text>
+  <text x="36" y="22" font-size="13" text-anchor="middle" fill="currentColor" ><tspan font-style="italic">y</tspan></text>
+  <text x="38" y="308" font-size="13" text-anchor="middle" fill="currentColor" >O</text>
+  <path d="M55.24 267.46 L57.73 267.42 L60.23 267.36 L62.72 267.29 L65.22 267.2 L67.71 267.09 L70.21 266.96 L72.7 266.82 L75.2 266.67 L77.69 266.49 L80.18 266.3 L82.68 266.1 L85.17 265.88 L87.67 265.64 L90.16 265.38 L92.66 265.11 L95.15 264.83 L97.65 264.52 L100.14 264.2 L102.64 263.86 L105.13 263.51 L107.63 263.14 L110.12 262.76 L112.61 262.36 L115.11 261.94 L117.6 261.5 L120.1 261.05 L122.59 260.59 L125.09 260.1 L127.58 259.6 L130.08 259.09 L132.57 258.55 L135.07 258.01 L137.56 257.44 L140.06 256.86 L142.55 256.26 L145.05 255.65 L147.54 255.02 L150.03 254.37 L152.53 253.71 L155.02 253.03 L157.52 252.33 L160.01 251.62 L162.51 250.89 L165 250.15 L167.5 249.39 L169.99 248.61 L172.49 247.82 L174.98 247.01 L177.48 246.18 L179.97 245.34 L182.46 244.48 L184.96 243.6 L187.45 242.71 L189.95 241.8 L192.44 240.88 L194.94 239.94 L197.43 238.98 L199.93 238.01 L202.42 237.02 L204.92 236.01 L207.41 234.99 L209.91 233.95 L212.4 232.9 L214.9 231.82 L217.39 230.74 L219.88 229.63 L222.38 228.51 L224.87 227.38 L227.37 226.22 L229.86 225.05 L232.36 223.87 L234.85 222.67 L237.35 221.45 L239.84 220.21 L242.34 218.96 L244.83 217.7 L247.33 216.41 L249.82 215.11 L252.31 213.8 L254.81 212.46 L257.3 211.11 L259.8 209.75 L262.29 208.37 L264.79 206.97 L267.28 205.56 L269.78 204.12 L272.27 202.68 L274.77 201.21 L277.26 199.73 L279.76 198.24 L282.25 196.73 L284.75 195.2 L287.24 193.65 L289.73 192.09 L292.23 190.51 L294.72 188.92 L297.22 187.31 L299.71 185.68 L302.21 184.04 L304.7 182.38 L307.2 180.71 L309.69 179.01 L312.19 177.31 L314.68 175.58 L317.18 173.84 L319.67 172.08 L322.16 170.31 L324.66 168.52 L327.15 166.71 L329.65 164.89 L332.14 163.05 L334.64 161.2 L337.13 159.33 L339.63 157.44 L342.12 155.53 L344.62 153.61 L347.11 151.68 L349.61 149.72 L352.1 147.75 L354.6 145.77 L357.09 143.77 L359.58 141.75 L362.08 139.71 L364.57 137.66 L367.07 135.59 L369.56 133.51 L372.06 131.41 L374.55 129.29 L377.05 127.16 L379.54 125.01 L382.04 122.85 L384.53 120.67 L387.03 118.47 L389.52 116.25 L392.01 114.02 L394.51 111.78 L397 109.51 L399.5 107.23 L401.99 104.94 L404.49 102.62 L406.98 100.29 L409.48 97.95 L411.97 95.59 L414.47 93.21 L416.96 90.82 L419.46 88.41 L421.95 85.98 L424.45 83.54 L426.94 81.08 L429.43 78.6 L431.93 76.11 L434.42 73.6 L436.92 71.08 L439.41 68.53 L441.91 65.98 L444.4 63.4 L446.9 60.81 L449.39 58.21 L451.89 55.58 L454.38 52.95" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <path d="M86.66666666666666 281.612 L390.4761904761904 164.68400000000003" fill="none" style="stroke: var(--good, #059669)" stroke-width="1.6" />
+  <line x1="196.67" y1="239.28" x2="452" y2="239.28" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.6" />
+  <line x1="385.24" y1="120.04" x2="452" y2="120.04" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.6" />
+  <line x1="385.24" y1="239.28" x2="385.24" y2="166.7" stroke="currentColor" stroke-width="1.6" />
+  <line x1="385.24" y1="166.7" x2="385.24" y2="120.04" stroke="currentColor" stroke-width="1.6" stroke-dasharray="2 3" />
+  <line x1="452" y1="120.04" x2="452" y2="239.28" stroke="currentColor" stroke-width="1.2" />
+  <line x1="447" y1="120.04" x2="457" y2="120.04" stroke="currentColor" stroke-width="1.2" />
+  <line x1="447" y1="239.28" x2="457" y2="239.28" stroke="currentColor" stroke-width="1.2" />
+  <circle cx="196.67" cy="239.28" r="4" fill="currentColor"/>
+  <circle cx="385.24" cy="120.04" r="4" fill="currentColor"/>
+  <circle cx="385.24" cy="166.7" r="3" fill="currentColor"/>
+  <text x="196.67" y="226.28" font-size="13" text-anchor="middle" fill="currentColor" ><tspan font-style="italic">P</tspan></text>
+  <text x="373.24" y="112.04" font-size="13" text-anchor="end" fill="currentColor" ><tspan font-style="italic">Q</tspan></text>
+  <text x="290.95" y="259.28" font-size="13" text-anchor="middle" fill="currentColor" >Δ<tspan font-style="italic">x</tspan> = d<tspan font-style="italic">x</tspan></text>
+  <text x="375.24" y="207.99" font-size="13" text-anchor="end" fill="currentColor" >d<tspan font-style="italic">y</tspan></text>
+  <text x="395.24" y="148.37" font-size="12" text-anchor="start" fill="currentColor" >Δ<tspan font-style="italic">y</tspan> − d<tspan font-style="italic">y</tspan></text>
+  <text x="461" y="184.66" font-size="13" text-anchor="start" fill="currentColor" >Δ<tspan font-style="italic">y</tspan></text>
+  <text x="289.71" y="227" font-size="13" text-anchor="start" fill="currentColor" >切线</text>
+  <text x="439.24" y="92.8" font-size="13" text-anchor="start" fill="currentColor" ><tspan font-style="italic">y</tspan> = <tspan font-style="italic">f</tspan>(<tspan font-style="italic">x</tspan>)</text>
+</svg>

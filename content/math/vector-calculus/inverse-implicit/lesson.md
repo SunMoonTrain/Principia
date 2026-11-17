@@ -63,5 +63,5 @@ $\vb f(u,v)=(e^u\cos v,e^u\sin v)$。说明它在每一点附近都可逆，并�
 
 - 「:term[雅可比矩阵]{id="math.vector-calculus.jacobian-matrix"}的行列式处处不为零，映射就整体可逆。」:term[反函数定理]{id="math.vector-calculus.inverse-function-theorem"}只说每一点附近可逆；例 1 的映射处处满足条件，整体却不是一一对应。
 - 「$F_y=0$的点，曲线一定写不成$y(x)$。」条件只是充分的：$y^3-x=0$在原点$F_y=0$，仍有$y=\sqrt[3]x$，只是不可导。
-- 「求隐函数（implicit function）的导数，要先把$y$解出来。」直接用$y'=-\frac{F_x}{F_y}$，例 2 的叶形线根本解不出简单的$y(x)$。
+- 「求:term[隐函数]{id="math.calculus.implicit-function"}（implicit function）的导数，要先把$y$解出来。」直接用$y'=-\frac{F_x}{F_y}$，例 2 的叶形线根本解不出简单的$y(x)$。
 - 「反函数的:term[偏导数]{id="math.vector-calculus.partial-derivative"}是原来偏导数的倒数。」是整个雅可比矩阵求逆，不是每个元素取倒数：例 1 在$(0,1)$处$\pdv ux=0$，而对应的点$\bigl(0,\frac\pi2\bigr)$处$\pdv xu=e^u\cos v$也是$0$，$0$没有倒数。

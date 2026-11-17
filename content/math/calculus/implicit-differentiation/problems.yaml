@@ -1,0 +1,167 @@
+- id: p1
+  tier: easy
+  statement: |
+    求曲线$x^2+xy+y^2=7$在点$(1,2)$处的切线斜率。
+  answer:
+    type: number
+    value: -4/5
+  hints:
+    - |
+      把$y$看成$x$的函数，两边对$x$求导（implicit differentiation）；$xy$用乘积法则（product rule），$y^2$用链式法则。
+    - |
+      $2x+y+xy'+2yy'=0$，所以$y'=-\frac{2x+y}{x+2y}$。
+    - |
+      在$(1,2)$处，$y'=-\frac{2+2}{1+4}=-\frac45$。
+  solution: |
+    两边对$x$求导：$2x+(y+xy')+2yy'=0$，解得$y'=-\frac{2x+y}{x+2y}$。代入$(1,2)$得$y'=-\frac45$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $f(x)=x\arctan x$，求$f'(1)$。
+  answer:
+    type: number
+    value: pi/4 + 1/2
+  hints:
+    - |
+      用乘积法则，$(\arctan x)'=\frac1{1+x^2}$。
+    - |
+      $f'(x)=\arctan x+\frac{x}{1+x^2}$。
+    - |
+      $f'(1)=\arctan1+\frac12=\frac\pi4+\frac12$。
+  solution: |
+    $f'(x)=\arctan x+x\cdot\frac1{1+x^2}$，所以$f'(1)=\frac\pi4+\frac12\approx1.285$。
+
+- id: p3
+  tier: medium
+  statement: |
+    $f(x)=x^x$（$x>0$），求$f'(2)$。
+  answer:
+    type: number
+    value: 4*(1 + ln(2))
+  hints:
+    - |
+      幂法则（power rule）和指数函数的公式都用不上：底数、指数都在变。令$y=x^x$，两边取对数，再用隐函数求导法。
+    - |
+      $\ln y=x\ln x$，两边对$x$求导：$\frac{y'}{y}=\ln x+1$。
+    - |
+      $y'=x^x(\ln x+1)$，$f'(2)=4(\ln2+1)\approx6.773$。
+  solution: |
+    令$y=x^x$，则$\ln y=x\ln x$。两边对$x$求导，左边由链式法则是$\frac{y'}y$，右边是$\ln x+1$，所以$y'=x^x(\ln x+1)$，$f'(2)=4(1+\ln2)\approx6.773$。
+
+    也可以写成$x^x=e^{x\ln x}$，直接用链式法则，结果一样。
+
+- id: p4
+  tier: medium
+  statement: |
+    $f(x)=x^3+x+1$在整条数轴上严格递增，$g$是它的反函数。求$g(3)$和$g'(3)$，依次填写。
+  answer:
+    type: tuple
+    value: [1, 1/4]
+  hints:
+    - |
+      $g(3)$是方程$f(x)=3$的解；再用反函数的求导法则$g'(3)=\frac1{f'(g(3))}$。
+    - |
+      $f(1)=3$，所以$g(3)=1$；$f'(x)=3x^2+1$。
+    - |
+      $g'(3)=\frac1{f'(1)}=\frac14$。
+  solution: |
+    $f(1)=1+1+1=3$，所以$g(3)=1$。$f'(x)=3x^2+1$，$f'(1)=4\ne0$，由反函数的求导法则，$g'(3)=\frac1{f'(1)}=\frac14$。注意是在$x=g(3)=1$处取$f'$，不是在$x=3$处。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）不用导数，直接由定义证明：$-1\le x\le1$时$\arcsin x+\arccos x=\frac\pi2$。（2）由（1）和$(\arcsin x)'$求出$(\arccos x)'$，和讲解的结果对照。（3）证明$x>0$时$\arctan x+\arctan\frac1x=\frac\pi2$，并用求导验证左边的导数是$0$。
+  hints:
+    - |
+      （1）令$\theta=\arcsin x$，看$\frac\pi2-\theta$在不在$\arccos$的值域$[0,\pi]$里、它的余弦是多少。
+    - |
+      （1）$\cos\bigl(\frac\pi2-\theta\bigr)=\sin\theta=x$。（3）令$\theta=\arctan x\in\bigl(0,\frac\pi2\bigr)$，$\tan\bigl(\frac\pi2-\theta\bigr)=\frac1{\tan\theta}$。
+    - |
+      （1）$\theta=\arcsin x\in\bigl[-\frac\pi2,\frac\pi2\bigr]$，所以$\frac\pi2-\theta\in[0,\pi]$，并且$\cos\bigl(\frac\pi2-\theta\bigr)=\sin\theta=x$。$\arccos x$是$[0,\pi]$里余弦等于$x$的唯一的数，所以$\arccos x=\frac\pi2-\arcsin x$。
+
+      （2）$(\arccos x)'=-(\arcsin x)'=-\frac1{\sqrt{1-x^2}}$，和讲解一致。
+
+      （3）$x>0$时$\theta=\arctan x\in\bigl(0,\frac\pi2\bigr)$，$\frac\pi2-\theta$也在$\bigl(0,\frac\pi2\bigr)$里，$\tan\bigl(\frac\pi2-\theta\bigr)=\frac{\cos\theta}{\sin\theta}=\frac1x$，所以$\arctan\frac1x=\frac\pi2-\arctan x$。验证：$\bigl(\arctan\frac1x\bigr)'=\frac1{1+x^{-2}}\cdot\Bigl(-\frac1{x^2}\Bigr)=-\frac1{x^2+1}$，和$(\arctan x)'$相加为$0$。
+  reference: |
+    （1）$\frac\pi2-\arcsin x\in[0,\pi]$且余弦为$x$。
+
+    （2）$-\frac1{\sqrt{1-x^2}}$。
+
+    （3）同理；$x<0$时和为$-\frac\pi2$，导数为零只能说明在每个区间上是常数。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）用隐函数求导法证明：椭圆$\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$在其上一点$(x_0,y_0)$处的切线方程是$\frac{x_0x}{a^2}+\frac{y_0y}{b^2}=1$（$y_0=0$的两点另外说明）。（2）由此说明圆的切线垂直于过切点的半径。（3）写出双曲线$\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$上一点处切线方程的类似公式。
+  hints:
+    - |
+      两边对$x$求导，解出$y'$；切线是$y-y_0=y'(x_0)(x-x_0)$，整理时用上$(x_0,y_0)$在椭圆上。
+    - |
+      $\frac{2x}{a^2}+\frac{2yy'}{b^2}=0$，$y'=-\frac{b^2x}{a^2y}$。
+    - |
+      （1）$y_0\ne0$时，$y'(x_0)=-\frac{b^2x_0}{a^2y_0}$，切线$y-y_0=-\frac{b^2x_0}{a^2y_0}(x-x_0)$。两边乘$\frac{y_0}{b^2}$，移项得$\frac{x_0x}{a^2}+\frac{y_0y}{b^2}=\frac{x_0^2}{a^2}+\frac{y_0^2}{b^2}=1$。$y_0=0$时$x_0=\pm a$，切线是竖直线$x=\pm a$，公式给出$\frac{\pm ax}{a^2}=1$，即$x=\pm a$，同样成立。
+
+      （2）$a=b=r$时切线是$x_0x+y_0y=r^2$，它的法向量$(x_0,y_0)$正是过切点的半径的方向，所以切线垂直于半径。
+
+      （3）同样求导得$y'=\frac{b^2x}{a^2y}$，切线是$\frac{x_0x}{a^2}-\frac{y_0y}{b^2}=1$。
+  reference: |
+    （1）$y'=-\frac{b^2x_0}{a^2y_0}$，整理用$\frac{x_0^2}{a^2}+\frac{y_0^2}{b^2}=1$；$y_0=0$时为$x=\pm a$。
+
+    （2）$x_0x+y_0y=r^2$，法向量是半径方向。
+
+    （3）$\frac{x_0x}{a^2}-\frac{y_0y}{b^2}=1$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    方程什么时候确定隐函数？
+
+    （1）$x^2+y^2=0$、$x^2+y^2=-1$各确定什么样的「曲线」？
+
+    （2）圆$x^2+y^2=25$在$(5,0)$附近为什么确定不了$y(x)$？能不能确定一个$x(y)$？
+
+    （3）$y^5+y=x$：说明对每个$x$恰有一个$y$，再求$y'$。为什么说「隐函数不一定能写出式子」？
+  hints:
+    - |
+      （1）平方和什么时候等于$0$、能不能是负数？（2）在$(5,0)$附近，换一个变量当自变量：$x=\sqrt{25-y^2}$。
+    - |
+      （3）$y^5+y$随$y$严格递增（两个递增函数之和），取遍所有实数；求导时把$y$看成$x$的函数。
+    - |
+      （1）$x^2+y^2=0$只有一点$(0,0)$，哪个$x$附近都谈不上函数；$x^2+y^2=-1$一个点也没有。方程不一定是一条曲线。
+
+      （2）$x$略小于$5$时有$y=\pm\sqrt{25-x^2}$两个值，大于$5$时一个也没有，所以确定不了$y(x)$；可在$(5,0)$附近，每个$y$恰好对应一个$x=\sqrt{25-y^2}$，确定了隐函数$x(y)$。切线竖直，正是「$y$对$x$」不行、「$x$对$y$」可以的原因。
+
+      （3）$y^5+y$严格递增、取遍所有实数，所以每个$x$恰有一个$y$。两边求导：$5y^4y'+y'=1$，$y'=\frac1{5y^4+1}$。五次方程一般没有求根公式，$y$写不出式子，可它的导数照样能求。
+  reference: |
+    （1）一个点；空集。
+
+    （2）两侧解的个数是 2 和 0；能确定$x(y)$。
+
+    （3）$y'=\frac1{5y^4+1}$；隐函数存在不等于能写出公式。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）反正弦为什么取$\sin x$在$\bigl[-\frac\pi2,\frac\pi2\bigr]$上的反函数？换成$\bigl[\frac\pi2,\frac{3\pi}2\bigr]$那一段行不行？导数公式会变成什么？
+
+    （2）画一画$y=\arcsin(\sin x)$的图像大致是什么样。
+
+    （3）$\arcsin x$在$x=\pm1$处可导吗？从$\sin x$在$\pm\frac\pi2$处的切线说明。
+  hints:
+    - |
+      （1）在$\bigl[\frac\pi2,\frac{3\pi}2\bigr]$上$\sin x$严格递减，也取遍$[-1,1]$；那里$\cos y$是负的。
+    - |
+      （2）在$\bigl[-\frac\pi2,\frac\pi2\bigr]$上它就是$x$；在$\bigl[\frac\pi2,\frac{3\pi}2\bigr]$上$\sin x=\sin(\pi-x)$。（3）反函数的求导法则要求$f'(x_0)\ne0$。
+    - |
+      （1）行，只是约定不同：那一段上$\sin x$严格递减、取遍$[-1,1]$，也有反函数，它的导数是$\frac1{\cos y}$，而那里$\cos y<0$，所以导数变成$-\frac1{\sqrt{1-x^2}}$。选包含$0$的一段，值域最简单，导数也是正的，所以成了通用的约定。
+
+      （2）在$\bigl[-\frac\pi2,\frac\pi2\bigr]$上是$y=x$，在$\bigl[\frac\pi2,\frac{3\pi}2\bigr]$上是$y=\pi-x$，如此往复，是一条在$-\frac\pi2$和$\frac\pi2$之间来回的锯齿折线。
+
+      （3）不可导。$\sin x$在$\pm\frac\pi2$处导数为$0$，切线水平；翻到反函数那边，在$x=\pm1$处切线变成竖直的，差商是无穷大（infinity），$\frac1{\sqrt{1-x^2}}$在$x\to\pm1$时也趋于$+\infty$。
+  reference: |
+    （1）可以，导数变号；约定取包含 0 的递增段。
+
+    （2）锯齿折线，斜率$\pm1$交替。
+
+    （3）不可导，竖直切线，对应$\sin$在$\pm\frac\pi2$的水平切线。

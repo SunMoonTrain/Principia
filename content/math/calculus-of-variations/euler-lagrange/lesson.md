@@ -19,7 +19,7 @@ status: reviewed
 
 ### 第一变分
 
-下面总设$J[y]=\int_a^bF(x,y,y')\,\dd x$，$F(x,y,p)$有连续的二阶偏导数（partial derivative），:term[容许函数]{id="math.calculus-of-variations.admissible-function"}（admissible function）$y$有连续的二阶导数。$\eta$取在$[a,b]$上有连续导数、两端为零的函数，这样$y+\varepsilon\eta$满足同样的端点条件。
+下面总设$J[y]=\int_a^bF(x,y,y')\,\dd x$，$F(x,y,p)$有连续的二阶偏导数（partial derivative），:term[容许函数]{id="math.calculus-of-variations.admissible-function"}（admissible function）$y$有连续的:term[二阶导数]{id="math.calculus.second-derivative"}（second derivative）。$\eta$取在$[a,b]$上有连续导数、两端为零的函数，这样$y+\varepsilon\eta$满足同样的端点条件。
 
 ::anchor{id="def-first-variation"}
 $\delta J[y;\eta]=\dv{}{\varepsilon}J[y+\varepsilon\eta]\Big|_{\varepsilon=0}$叫作$J$在$y$处沿$\eta$的:term[第一变分]{id="math.calculus-of-variations.first-variation"}（first variation），不必写明$\eta$时简写成$\delta J$。
@@ -36,7 +36,7 @@ $$
 
 这里$F_y$、$F_{y'}$是$F(x,y,p)$对第二、第三个变量的偏导数，再代入$y=y(x)$、$p=y'(x)$，它们都是$x$的函数。交换求导和积分的次序要求被积函数对$\varepsilon$的偏导数连续，这里满足；严格的证明见数学分析的[含参变量积分](lesson:math.analysis.parameter-integrals)。
 
-$y$有连续的二阶导数，$F_{y'}\bigl(x,y(x),y'(x)\bigr)$就有连续导数，第二项可以分部积分（integration by parts）：$\int_a^bF_{y'}\eta'\,\dd x=\bigl[F_{y'}\eta\bigr]_a^b-\int_a^b\dv{}{x}F_{y'}\,\eta\,\dd x$，而$\eta(a)=\eta(b)=0$，方括号为零。于是
+$y$有连续的:term[二阶导数]{id="math.calculus.second-derivative"}，$F_{y'}\bigl(x,y(x),y'(x)\bigr)$就有连续导数，第二项可以分部积分（integration by parts）：$\int_a^bF_{y'}\eta'\,\dd x=\bigl[F_{y'}\eta\bigr]_a^b-\int_a^b\dv{}{x}F_{y'}\,\eta\,\dd x$，而$\eta(a)=\eta(b)=0$，方括号为零。于是
 
 $$
 \delta J=\int_a^b\Bigl(F_y-\dv{}{x}F_{y'}\Bigr)\eta\,\dd x .
@@ -59,7 +59,7 @@ $$
 用链式法则展开，$\dv{}{x}F_{y'}=F_{y'x}+F_{y'y}\,y'+F_{y'y'}\,y''$，所以$F_{y'y'}\ne0$时方程是关于$y$的二阶微分方程（differential equation）。它的通解含两个任意常数，正好由两个端点条件定下来。
 
 ::anchor{id="def-extremal"}
-有连续二阶导数、满足欧拉-拉格朗日方程的函数，叫作$J$的:term[极值曲线]{id="math.calculus-of-variations.extremal"}（extremal）。
+有连续:term[二阶导数]{id="math.calculus.second-derivative"}、满足欧拉-拉格朗日方程的函数，叫作$J$的:term[极值曲线]{id="math.calculus-of-variations.extremal"}（extremal）。
 
 为什么这样定义：定理说足够光滑的局部极值一定是极值曲线，所以先解方程找出极值曲线，再从中挑出满足端点条件、真正取极值的那一条。名字是历史沿用的，极值曲线只保证$\delta J=0$，相当于函数的:term[驻点]{id="math.vector-calculus.stationary-point"}（stationary point），不一定取极值。边界情况：$F$不含$y'$时，方程$F_y=0$里没有导数，一般满足不了端点条件。例如$J[y]=\int_0^1(y-x)^2\,\dd x$、$y(0)=1$、$y(1)=0$，方程给出$y=x$，两个端点条件都不满足，这个问题没有极值曲线。
 

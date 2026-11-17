@@ -106,3 +106,48 @@ export function roundTo(x: number, digits: number): number {
   const s = 10 ** digits;
   return Math.round(x * s) / s;
 }
+
+/** 二分法求 f 在 [lo, hi] 里的零点，要求两端异号（批次 18 加的）。 */
+export function bisect(f: (x: number) => number, lo: number, hi: number, iters = 200): number {
+  let a = lo;
+  let b = hi;
+  let fa = f(a);
+  if (fa === 0) return a;
+  if (fa * f(b) > 0) throw new Error(`[${lo}, ${hi}] 两端同号，二分法用不上`);
+  for (let k = 0; k < iters; k++) {
+    const m = (a + b) / 2;
+    const fm = f(m);
+    if (fm === 0) return m;
+    if (fa * fm < 0) b = m;
+    else [a, fa] = [m, fm];
+  }
+  return (a + b) / 2;
+}
+
+/**
+ * 数值积分 ∫_a^b f(x) dx（批次 18 加的）：双指数（tanh-sinh）求积，端点处导数无界（如 √x 在 0 处）也收敛得快。
+ * x = (a+b)/2 + (b−a)/2·tanh(π/2·sinh t)，步长每次减半直到相邻两次相差不到 1e-13。端点附近用到端点的距离直接算 x，免得舍入。
+ */
+export function integrate(f: (x: number) => number, a: number, b: number): number {
+  const half = (b - a) / 2;
+  let prev = Number.NaN;
+  for (let level = 1; level <= 9; level++) {
+    const h = 2 ** -level;
+    const K = Math.ceil(4 / h);
+    let sum = 0;
+    for (let k = -K; k <= K; k++) {
+      const t = k * h;
+      const u = (Math.PI / 2) * Math.sinh(t);
+      const w = ((Math.PI / 2) * Math.cosh(t)) / Math.cosh(u) ** 2;
+      if (!(w > 0) || !Number.isFinite(w)) continue;
+      const delta = (b - a) / (1 + Math.exp(2 * Math.abs(u)));
+      if (!(delta > 0)) continue;
+      const v = f(t >= 0 ? b - delta : a + delta);
+      if (Number.isFinite(v)) sum += w * v;
+    }
+    const est = half * h * sum;
+    if (Math.abs(est - prev) <= 1e-13 * Math.max(1, Math.abs(est))) return est;
+    prev = est;
+  }
+  return prev;
+}

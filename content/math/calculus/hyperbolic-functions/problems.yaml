@@ -1,0 +1,167 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\cosh(\ln2)$。
+  answer:
+    type: number
+    value: 5/4
+  hints:
+    - |
+      按定义$\cosh x=\frac{e^x+e^{-x}}2$。
+    - |
+      $e^{\ln2}=2$，$e^{-\ln2}=\frac12$。
+    - |
+      $\cosh(\ln2)=\frac{2+\frac12}2=\frac54$。
+  solution: |
+    $\cosh(\ln2)=\frac{e^{\ln2}+e^{-\ln2}}2=\frac{2+\frac12}2=\frac54$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $f(x)=\tanh x$，求$f'(\ln3)$。
+  answer:
+    type: number
+    value: 9/25
+  hints:
+    - |
+      $(\tanh x)'=1-\tanh^2x$。
+    - |
+      $\tanh(\ln3)=\frac{3-\frac13}{3+\frac13}$。
+    - |
+      $\tanh(\ln3)=\frac45$，$f'(\ln3)=1-\frac{16}{25}=\frac9{25}$。
+  solution: |
+    $\tanh(\ln3)=\frac{e^{\ln3}-e^{-\ln3}}{e^{\ln3}+e^{-\ln3}}=\frac{3-\frac13}{3+\frac13}=\frac45$，所以$f'(\ln3)=1-\tanh^2(\ln3)=\frac9{25}$。
+
+- id: p3
+  tier: medium
+  statement: |
+    已知$\sinh x=\frac43$。求$x$和$\cosh x$，依次填写。
+  answer:
+    type: tuple
+    value: [ln(3), 5/3]
+  hints:
+    - |
+      $\cosh x$可以由$\cosh^2x-\sinh^2x=1$求，注意$\cosh x\ge1$；再用$\cosh x+\sinh x=e^x$求$x$。
+    - |
+      $\cosh x=\sqrt{1+\frac{16}9}$。
+    - |
+      $\cosh x=\frac53$，$e^x=\frac53+\frac43=3$，$x=\ln3$。
+  solution: |
+    $\cosh x=\sqrt{1+\sinh^2x}=\sqrt{1+\frac{16}9}=\frac53$（$\cosh x\ge1$，取正号）。$e^x=\cosh x+\sinh x=3$，所以$x=\ln3$。
+
+- id: p4
+  tier: medium
+  statement: |
+    悬链线（catenary）$y=2\cosh\frac x2$上，哪一点的切线斜率是$\frac{12}5$？依次填写这一点的横坐标和纵坐标。
+  answer:
+    type: tuple
+    value: [2*ln(5), 26/5]
+  hints:
+    - |
+      由链式法则，$y'=\sinh\frac x2$。令$u=\frac x2$，解$\sinh u=\frac{12}5$。
+    - |
+      $\cosh u=\sqrt{1+\frac{144}{25}}=\frac{13}5$，$e^u=\cosh u+\sinh u$。
+    - |
+      $e^u=5$，$u=\ln5$，$x=2\ln5$；$y=2\cosh u=\frac{26}5$。
+  solution: |
+    $y'=2\cdot\frac12\sinh\frac x2=\sinh\frac x2$。令$u=\frac x2$，$\sinh u=\frac{12}5$，则$\cosh u=\frac{13}5$，$e^u=\cosh u+\sinh u=5$，$u=\ln5$。所以$x=2\ln5$，$y=2\cosh u=\frac{26}5$。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）证明$\sinh(x+y)=\sinh x\cosh y+\cosh x\sinh y$，$\cosh(x+y)=\cosh x\cosh y+\sinh x\sinh y$。（2）由此证明$\tanh(x+y)=\frac{\tanh x+\tanh y}{1+\tanh x\tanh y}$。（3）狭义相对论里，沿同一直线的速度不是直接相加的：速度$u_1$、$u_2$合成为$\frac{u_1+u_2}{1+u_1u_2/c^2}$（见[速度变换](lesson:physics.special-relativity.velocity-transformation)）。用（2）说明：把速度写成$u=c\tanh\varphi$，$\varphi$就直接相加。
+  hints:
+    - |
+      （1）把右边按定义展开成指数函数。（2）$\tanh(x+y)=\frac{\sinh(x+y)}{\cosh(x+y)}$，分子分母同除以$\cosh x\cosh y$。
+    - |
+      （1）$\sinh x\cosh y=\frac{e^{x+y}-e^{-x-y}+e^{x-y}-e^{-x+y}}4$，$\cosh x\sinh y$只把$e^{x-y}$、$e^{-x+y}$两项的符号反过来。
+    - |
+      （1）按定义展开再相加：
+
+      $$
+      \begin{aligned}
+      &\sinh x\cosh y+\cosh x\sinh y\\
+      &=\frac{(e^{x+y}-e^{-x-y}+e^{x-y}-e^{-x+y})+(e^{x+y}-e^{-x-y}-e^{x-y}+e^{-x+y})}4\\
+      &=\frac{e^{x+y}-e^{-(x+y)}}2=\sinh(x+y).
+      \end{aligned}
+      $$
+
+      第二式同理，交叉项抵消后剩下$\frac{e^{x+y}+e^{-(x+y)}}2$。
+
+      （2）$\tanh(x+y)=\frac{\sinh x\cosh y+\cosh x\sinh y}{\cosh x\cosh y+\sinh x\sinh y}$，分子分母同除以$\cosh x\cosh y$，即得。
+
+      （3）设$u_1=c\tanh\varphi_1$、$u_2=c\tanh\varphi_2$，则$\frac{u_1+u_2}{1+u_1u_2/c^2}=c\cdot\frac{\tanh\varphi_1+\tanh\varphi_2}{1+\tanh\varphi_1\tanh\varphi_2}=c\tanh(\varphi_1+\varphi_2)$。所以速度合成对应$\varphi$相加；$\tanh$的值永远小于$1$，合成的速度也永远小于$c$。这里的$\varphi$在相对论里叫快度（rapidity）。
+  reference: |
+    （1）按定义展开，交叉项$e^{\pm(x-y)}$抵消。
+
+    （2）同除$\cosh x\cosh y$。
+
+    （3）$u=c\tanh\varphi$ 把相对论速度合成变成快度相加，$|\tanh|<1$保证不超光速。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）$\sinh$是从$\R$到$\R$的单调递增函数，它的反函数记作$\operatorname{arsinh}x$。解方程$x=\sinh t$，证明$\operatorname{arsinh}x=\ln\bigl(x+\sqrt{x^2+1}\bigr)$。（2）由（1）的式子求$\bigl(\operatorname{arsinh}x\bigr)'$。（3）同样求出$\tanh$在$(-1,1)$上的反函数$\operatorname{artanh}x$的对数表达式和导数。
+  hints:
+    - |
+      （1）令$w=e^t$，$x=\frac{w-w^{-1}}2$化成关于$w$的二次方程，注意$w>0$。（2）用链式法则。
+    - |
+      （1）$w^2-2xw-1=0$，$w=x+\sqrt{x^2+1}$（另一个根是负的）。（3）$x=\frac{w-w^{-1}}{w+w^{-1}}=\frac{w^2-1}{w^2+1}$，解出$w^2$。
+    - |
+      （1）$w^2-2xw-1=0$的两根之积是$-1$，正根是$w=x+\sqrt{x^2+1}$，所以$t=\ln\bigl(x+\sqrt{x^2+1}\bigr)$。
+
+      （2）$\bigl(\ln(x+\sqrt{x^2+1})\bigr)'=\frac{1+\frac{x}{\sqrt{x^2+1}}}{x+\sqrt{x^2+1}}=\frac{\frac{\sqrt{x^2+1}+x}{\sqrt{x^2+1}}}{x+\sqrt{x^2+1}}=\frac1{\sqrt{x^2+1}}$。
+
+      （3）$x=\frac{w^2-1}{w^2+1}$，$w^2=\frac{1+x}{1-x}$，$\operatorname{artanh}x=\ln w=\frac12\ln\frac{1+x}{1-x}$。导数是$\frac12\Bigl(\frac1{1+x}+\frac1{1-x}\Bigr)=\frac1{1-x^2}$。
+  reference: |
+    （1）$w=e^t$，$w^2-2xw-1=0$，$w=x+\sqrt{x^2+1}$。
+
+    （2）$\frac1{\sqrt{x^2+1}}$。
+
+    （3）$\frac12\ln\frac{1+x}{1-x}$，导数$\frac1{1-x^2}$。这两个导数以后求$\int\frac{\dd x}{\sqrt{x^2+1}}$、$\int\frac{\dd x}{1-x^2}$时要用。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）点$(\cos t,\sin t)$里的$t$是转过的角度。点$(\cosh t,\sinh t)$里的$t$是什么？它不是转角，那它量的是什么？
+
+    （2）三角函数的公式换成双曲函数，常常只是改几个符号：$\cos^2+\sin^2=1$变成$\cosh^2-\sinh^2=1$，$(\cos x)'=-\sin x$变成$(\cosh x)'=\sinh x$。你能找出改符号的规律吗？举一两个公式验证。
+  hints:
+    - |
+      （1）单位圆上，角$t$的扇形面积是$\frac t2$。试着猜：双曲线上从$(1,0)$到$(\cosh t,\sinh t)$的「扇形」面积是多少？
+    - |
+      （2）比较$\cos2x=\cos^2x-\sin^2x$和$\cosh2x=\cosh^2x+\sinh^2x$：变号的项里都有两个$\sin$相乘。
+    - |
+      （1）单位圆上$t$是扇形面积的$2$倍；双曲线上，原点、$(1,0)$和$(\cosh t,\sinh t)$围成的「双曲扇形」（hyperbolic sector）面积正好是$\frac t2$，所以$t$也是面积的$2$倍。这要用积分验证，以后学了定积分可以算一算。
+
+      （2）把三角公式里的$\cos$换成$\cosh$、$\sin$换成$\sinh$，凡是出现两个$\sin$相乘（$\sin^2$、$\sin x\sin y$）的项，变一次号。例如$\cos(x+y)=\cos x\cos y-\sin x\sin y$变成$\cosh(x+y)=\cosh x\cosh y+\sinh x\sinh y$（第 5 题）。求导公式的符号差别另有来历：$(e^{-x})'=-e^{-x}$里的负号，正好把$\sinh$、$\cosh$互换而不带负号。
+  reference: |
+    （1）$t$是双曲扇形面积的 2 倍（和圆一样）。
+
+    （2）奥斯本规则：含两个$\sin$相乘的项变号。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）伽利略猜过悬挂的链条是抛物线。比较$y=\cosh x-1$和$y=\frac{x^2}2$：在$x=0$处它们的值、导数分别是多少？$x=1$、$x=3$时差多少？
+
+    （2）悬索桥的主缆挂的是均匀分布在水平方向的桥面，形状接近抛物线；自由悬挂的链条却是悬链线。直观上差别从哪里来？
+
+    （3）雨滴的速度是$v_T\tanh\frac{gt}{v_T}$。刚开始下落时速度大约是多少？大约多久以后速度达到$v_T$的$99\%$？
+  hints:
+    - |
+      （1）直接代入算；（3）$\tanh s$在$0$附近约等于$s$。
+    - |
+      （2）想一想：链条单位长度的重量是均匀的，桥面的重量是按水平距离均匀的；链条越陡，同样的水平距离上链条越长。（3）解$\tanh s=0.99$。
+    - |
+      （1）两者在$0$处都是$0$，导数$\sinh0=0$、$x=0$也相同，最低点附近几乎重合。$x=1$时$\cosh1-1\approx0.543$，$\frac12=0.5$；$x=3$时$\cosh3-1\approx9.07$，$\frac92=4.5$，前者约是后者的$2$倍。
+
+      （2）重量按水平距离均匀分布时，形状是抛物线；链条的重量按自身的长度均匀分布，两边越陡，单位水平距离上的重量越大，所以越往两边弯得越厉害，长成按指数增长的悬链线。
+
+      （3）$t$很小时$\tanh\frac{gt}{v_T}\approx\frac{gt}{v_T}$，$v\approx gt$，和不计阻力的自由下落一样。$\tanh s=0.99$即$e^{2s}=\frac{1.99}{0.01}=199$，$s=\frac12\ln199\approx2.65$，所以大约$t\approx2.65\frac{v_T}{g}$以后达到$99\%$。
+  reference: |
+    （1）$0$处值和导数相同；$x=1$差约$0.043$，$x=3$差约$4.57$。
+
+    （2）重量按长度均匀 vs 按水平距离均匀。
+
+    （3）$v\approx gt$；$t\approx\frac12\ln199\cdot\frac{v_T}{g}\approx2.65\frac{v_T}{g}$。

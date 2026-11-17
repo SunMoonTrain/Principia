@@ -48,7 +48,7 @@ status: reviewed
 ### 初等函数的连续性
 
 ::anchor{id="def-elementary-function"}
-幂函数、指数函数、对数函数、三角函数和反三角函数（比如$\arcsin x$，即$\sin x$在$\bigl[-\frac\pi2,\frac\pi2\bigr]$上的反函数）叫作基本初等函数（basic elementary function）。由常数和基本初等函数经过有限次四则运算和复合得到、能用一个式子表示的函数，叫作:term[初等函数]{id="math.calculus.elementary-function"}（elementary function）。
+幂函数、指数函数、对数函数、三角函数和:term[反三角函数]{id="math.calculus.inverse-trigonometric-functions"}（inverse trigonometric functions，比如$\arcsin x$，即$\sin x$在$\bigl[-\frac\pi2,\frac\pi2\bigr]$上的反函数）叫作基本初等函数（basic elementary function）。由常数和基本初等函数经过有限次四则运算和复合得到、能用一个式子表示的函数，叫作:term[初等函数]{id="math.calculus.elementary-function"}（elementary function）。
 
 为什么起这个名字：中学里见过的函数几乎都是初等函数，比如$\frac{\sqrt{1+x^2}}{\ln x}$、$e^{\sin x}$，它们有一个共同的好性质，就是下面的定理 3。分段函数一般不是初等函数，因为要用几个式子表示；可$|x|=\sqrt{x^2}$是，它写得成一个式子。$\lfloor x\rfloor$不是初等函数。
 

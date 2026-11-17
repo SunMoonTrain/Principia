@@ -1,0 +1,167 @@
+- id: p1
+  tier: easy
+  statement: |
+    用$\sqrt x$在$x=9$处的线性近似（linear approximation），估计$\sqrt{9.06}$。
+  answer:
+    type: number
+    value: 3.01
+  hints:
+    - |
+      线性近似是$L(x)=f(9)+f'(9)(x-9)$，其中$f(x)=\sqrt x$，$f'(x)=\frac1{2\sqrt x}$。
+    - |
+      $f(9)=3$，$f'(9)=\frac16$，所以$L(x)=3+\frac{x-9}6$。
+    - |
+      $L(9.06)=3+\frac{0.06}6=3.01$。
+  solution: |
+    $f(9)=3$，$f'(9)=\frac1{2\cdot3}=\frac16$，线性近似是$L(x)=3+\frac{x-9}6$。所以$\sqrt{9.06}\approx3+0.01=3.01$；真值是$3.00998\cdots$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $y=x^3$在$x=2$处，自变量的增量是$\Delta x=0.1$。求微分（differential）$\dd y$和函数的增量$\Delta y$，依次填写。
+  answer:
+    type: tuple
+    value: [1.2, 1.261]
+  hints:
+    - |
+      $\dd y=f'(x)\Delta x$，$\Delta y=f(x+\Delta x)-f(x)$。
+    - |
+      $f'(x)=3x^2$，$f'(2)=12$；$\Delta y=2.1^3-2^3$。
+    - |
+      $\dd y=12\cdot0.1=1.2$，$\Delta y=9.261-8=1.261$。
+  solution: |
+    $\dd y=3x^2\Delta x=3\cdot4\cdot0.1=1.2$。$\Delta y=2.1^3-8=9.261-8=1.261$。两者之差$0.061$来自$3x(\Delta x)^2+(\Delta x)^3=0.06+0.001$。
+
+- id: p3
+  tier: medium
+  statement: |
+    正方体的棱长量得$5\,\mathrm{cm}$，误差不超过$0.02\,\mathrm{cm}$。用微分估计：体积的绝对误差（absolute error）最多约是多少$\mathrm{cm}^3$？相对误差（relative error）最多约是多少（写成小数）？依次填写。
+  answer:
+    type: tuple
+    value: [1.5, 0.012]
+  hints:
+    - |
+      体积$V=x^3$，用$|\dd V|=|V'(x)|\,|\dd x|$估计绝对误差，再除以$V$得相对误差。
+    - |
+      $V'(5)=3\cdot25=75$，$|\dd x|\le0.02$；$V=125$。
+    - |
+      绝对误差约为$75\cdot0.02=1.5\,\mathrm{cm}^3$，相对误差约为$\frac{1.5}{125}=0.012$。
+  solution: |
+    $|\dd V|=3x^2|\dd x|\le3\cdot25\cdot0.02=1.5\,\mathrm{cm}^3$。$V=125\,\mathrm{cm}^3$，相对误差约为$\frac{1.5}{125}=0.012$，即$1.2\%$。棱长的相对误差是$\frac{0.02}5=0.4\%$，体积的是它的$3$倍，和$y=x^n$的结论一致。
+
+- id: p4
+  tier: medium
+  statement: |
+    用$\frac1x$在$x=1$处的线性近似，分别估计$\frac1{1.1}$和$\frac1{1.01}$。两次的误差（近似值减去真值）各是多少？依次填写。
+  answer:
+    type: tuple
+    value: [-1/110, -1/10100]
+  hints:
+    - |
+      先写出$\frac1x$在$x=1$处的线性近似$L(x)$，误差是$L(x)-\frac1x$。
+    - |
+      $\bigl(\frac1x\bigr)'=-\frac1{x^2}$，所以$L(x)=1-(x-1)=2-x$；误差$2-x-\frac1x=\frac{2x-x^2-1}{x}=-\frac{(x-1)^2}{x}$。
+    - |
+      $x=1.1$时误差是$-\frac{0.01}{1.1}=-\frac1{110}$；$x=1.01$时是$-\frac{0.0001}{1.01}=-\frac1{10100}$。
+  solution: |
+    $L(x)=1-(x-1)=2-x$。误差$L(x)-\frac1x=\frac{2x-x^2-1}{x}=-\frac{(x-1)^2}{x}$，所以两次的误差是$-\frac{0.01}{1.1}=-\frac1{110}\approx-0.00909$和$-\frac{0.0001}{1.01}=-\frac1{10100}\approx-0.000099$。
+
+    $x-1$缩小到$\frac1{10}$，误差缩小到约$\frac1{100}$：误差里带着因子$(x-1)^2$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$在$a$附近有定义。（1）证明：如果有常数$A$，使$f(a+\Delta x)-f(a)=A\Delta x+r(\Delta x)$，并且$\Delta x\to0$时$\frac{r(\Delta x)}{\Delta x}\to0$，那么$f$在$a$处可导，并且$A=f'(a)$。（2）反过来，$f$在$a$处可导时，这样的$A$一定存在。（3）求$f(x)=x|x|$在$0$处的微分$\dd y$，并写出$\Delta y$。
+  hints:
+    - |
+      （1）两边除以$\Delta x$，看差商的极限。（2）取$A=f'(a)$，令$r(\Delta x)=f(a+\Delta x)-f(a)-f'(a)\Delta x$。
+    - |
+      （1）$\frac{f(a+\Delta x)-f(a)}{\Delta x}=A+\frac{r(\Delta x)}{\Delta x}\to A$。（2）$\frac{r(\Delta x)}{\Delta x}=\frac{f(a+\Delta x)-f(a)}{\Delta x}-f'(a)\to0$。（3）先用定义求$f'(0)$。
+    - |
+      （1）差商$=A+\frac{r}{\Delta x}$，$\Delta x\to0$时趋于$A$，所以$f$在$a$处可导，$f'(a)=A$。
+
+      （2）取$A=f'(a)$、$r(\Delta x)=f(a+\Delta x)-f(a)-f'(a)\Delta x$，由导数的定义，$\frac{r}{\Delta x}\to0$。所以「可导」和「增量能写成$A\Delta x$加上比$\Delta x$小得多的项」是一回事，$A$就是导数。
+
+      （3）$\frac{f(h)-f(0)}{h}=\frac{h|h|}{h}=|h|\to0$，$f'(0)=0$，所以$\dd y=0\cdot\dd x=0$；而$\Delta y=\Delta x\,|\Delta x|$，不是$0$，但和$\Delta x$相比趋于$0$。
+  reference: |
+    （1）$\frac{f(a+\Delta x)-f(a)}{\Delta x}=A+\frac{r(\Delta x)}{\Delta x}\to A$，可导且$f'(a)=A$。
+
+    （2）$A=f'(a)$，$r=f(a+\Delta x)-f(a)-f'(a)\Delta x$，$\frac r{\Delta x}\to0$ 由定义。合起来：一元函数「可导」等价于「增量有线性主部」，线性主部就是微分。
+
+    （3）$f'(0)=\lim|h|=0$，$\dd y=0$，$\Delta y=\Delta x|\Delta x|$，$\frac{\Delta y}{\Delta x}=|\Delta x|\to0$。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）证明：$0\le x\le1$时，$1+\frac x2-\frac{x^2}8\le\sqrt{1+x}\le1+\frac x2$。（2）由此说明，用$1+\frac x2$近似$\sqrt{1+x}$，误差不超过$\frac{x^2}8$。（3）用（2）给讲解里$\sqrt{4.1}\approx2.025$的误差找一个上限，并和真实的误差比较。
+  hints:
+    - |
+      （1）两边都非负时，比较平方。（3）$\sqrt{4.1}=2\sqrt{1+0.025}$。
+    - |
+      $\bigl(1+\frac x2\bigr)^2=1+x+\frac{x^2}4$；$\bigl(1+\frac x2-\frac{x^2}8\bigr)^2=1+x-\frac{x^3}8+\frac{x^4}{64}$。
+    - |
+      （1）右边：$\bigl(1+\frac x2\bigr)^2=1+x+\frac{x^2}4\ge1+x$，两边非负，开方即得。左边：$0\le x\le1$时$1+\frac x2-\frac{x^2}8>0$，它的平方是$1+x-\frac{x^3}8+\frac{x^4}{64}=1+x-\frac{x^3}{64}(8-x)\le1+x$，开方即得。
+
+      （2）$\sqrt{1+x}$夹在$1+\frac x2-\frac{x^2}8$和$1+\frac x2$之间，所以$0\le1+\frac x2-\sqrt{1+x}\le\frac{x^2}8$。
+
+      （3）$\sqrt{4.1}=2\sqrt{1.025}\approx2\bigl(1+\frac{0.025}2\bigr)=2.025$，误差不超过$2\cdot\frac{0.025^2}8\approx0.000156$；真实的误差是$2.025-2.024846\cdots\approx0.000154$，上限很紧。
+  reference: |
+    （1）右：$(1+\frac x2)^2=1+x+\frac{x^2}4\ge1+x$。左：$1+\frac x2-\frac{x^2}8\ge1>0$（$0\le x\le1$），平方为$1+x-\frac{x^3}{64}(8-x)\le1+x$。
+
+    （2）$0\le(1+\frac x2)-\sqrt{1+x}\le\frac{x^2}8$。
+
+    （3）$2\cdot\frac{0.025^2}{8}=0.00015625$，真实误差$0.0001543$。误差和$x^2$同量级，正是「$x$缩小到$\frac1{10}$，误差缩小到约$\frac1{100}$」的原因。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）在[导数的定义](lesson:math.calculus.derivative)里，$\dv yx$只是$f'(x)$的另一种记号；有了微分以后，它可以看成两个数$\dd y$、$\dd x$的商。这两种说法矛盾吗？
+
+    （2）$\frac{\Delta y}{\Delta x}$和$\frac{\dd y}{\dd x}$在图上各是什么直线的斜率？
+
+    （3）如果$x$本身又是$t$的函数，$x=g(t)$，$\dd y=f'(x)\dd x$还成立吗？这里$\dd x$应该理解成什么？
+  hints:
+    - |
+      （1）按微分的定义算一算$\frac{\dd y}{\dd x}$等于什么。
+    - |
+      （2）一个是过两点的直线，一个是过一点的直线。（3）把$y$看成$t$的函数，它的微分是$\dd y=\bigl(f(g(t))\bigr)'\dd t$；复合函数的导数要用[链式法则](lesson:math.calculus.chain-rule)（chain rule）。
+    - |
+      （1）不矛盾：$\dd y=f'(x)\dd x$，$\dd x\ne0$时两边除以$\dd x$，商正好是$f'(x)$。记号是先有的，微分的定义让它变得名副其实。
+
+      （2）$\frac{\Delta y}{\Delta x}$是割线（secant line）的斜率，$\frac{\dd y}{\dd x}$是切线的斜率。
+
+      （3）成立。由链式法则$\bigl(f(g(t))\bigr)'=f'(g(t))g'(t)$，所以$\dd y=f'(x)g'(t)\dd t=f'(x)\dd x$，这里$\dd x=g'(t)\dd t$是$x$作为$t$的函数的微分，不再是自变量的增量。不论$x$是不是自变量，写法都一样，这叫一阶微分的形式不变性（invariance of the first differential）。
+  reference: |
+    （1）不矛盾：$\dd y=f'(x)\dd x$，所以$\frac{\dd y}{\dd x}=f'(x)$。
+
+    （2）割线、切线。
+
+    （3）成立，$\dd x=g'(t)\dd t$。一阶微分形式不变：这正是换元积分里「$\dd x$可以跟着换」的根据。
+
+- id: p8
+  tier: thinking
+  statement: |
+    线性近似什么时候靠不住？
+
+    （1）$\cos x$在$0$处的线性近似是什么？它的误差和$x$之比、和$x^2$之比各趋于多少？
+
+    （2）用$\sqrt x$在$x=0.01$处的线性近似估计$\sqrt{0.0001}$，误差有多大？为什么这么差？
+
+    （3）物理里常说「角度小时$\sin\theta\approx\theta$」。要让相对误差不超过$1\%$，$\theta$大约要小于多少度？可以用计算器试。
+  hints:
+    - |
+      （1）$\cos x$在$0$处的差商是$\frac{\cos h-1}h$，[两个重要极限](lesson:math.calculus.special-limits)里求过$\frac{1-\cos x}{x^2}\to\frac12$。
+    - |
+      （2）线性近似是$0.1+5(x-0.01)$；$x=0.0001$离$0.01$不算近，而且$\sqrt x$在$0$处的切线是竖直的。（3）算$\frac{\theta-\sin\theta}{\sin\theta}$，试$\theta=0.1,0.2,0.25$。
+    - |
+      （1）$\frac{\cos h-1}h=-h\cdot\frac{1-\cos h}{h^2}\to0$，所以线性近似是常数$1$。误差$1-\cos x$和$x$之比趋于$0$，和$x^2$之比趋于$\frac12$：误差大约是$\frac{x^2}2$。切线是水平的，线性近似只说「$\cos x$在$0$附近几乎不变」，它变多少要看$x^2$那一项。
+
+      （2）$L(x)=0.1+\frac{x-0.01}{0.2}$，$L(0.0001)=0.1-0.0495=0.0505$，真值是$0.01$，近似值是真值的$5$倍。$x-0.01$和$0.01$本身一样大，谈不上「靠近」；越靠近$0$，$\sqrt x$的切线越陡，曲线弯得越厉害，线性近似管用的范围越窄。
+
+      （3）$\theta=0.1$时相对误差约$0.17\%$，$\theta=0.25$时约$1.05\%$，$\theta\approx0.244$时约$1\%$，约为$14^\circ$。所以「小」大约指$10^\circ$上下以内。
+  reference: |
+    （1）$\cos'(0)=\lim\frac{\cos h-1}{h}=0$，$L=1$；误差$/x\to0$，误差$/x^2\to\frac12$。
+
+    （2）$L(0.0001)=0.0505$，真值$0.01$。离$a$的距离和$a$本身同量级；$\sqrt x$在$0$处切线竖直，二阶的弯曲很大。
+
+    （3）$\frac{\theta-\sin\theta}{\sin\theta}\approx\frac{\theta^2}6$，$1\%$对应$\theta\approx0.245$，约$14^\circ$。

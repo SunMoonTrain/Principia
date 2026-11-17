@@ -1,0 +1,163 @@
+- id: p1
+  tier: easy
+  statement: |
+    $f(x)=3^x$，求$f'(2)$。
+  answer:
+    type: number
+    value: 9*ln(3)
+  hints:
+    - |
+      $(a^x)'=a^x\ln a$。
+    - |
+      $f'(x)=3^x\ln3$。
+    - |
+      $f'(2)=9\ln3\approx9.888$。
+  solution: |
+    $f'(x)=3^x\ln3$，所以$f'(2)=9\ln3\approx9.888$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $f(x)=\sqrt[3]{x^2}$（$x>0$），求$f'(8)$。
+  answer:
+    type: number
+    value: 1/3
+  hints:
+    - |
+      把$f$写成实数次幂$x^{\frac23}$，用$(x^a)'=ax^{a-1}$。
+    - |
+      $f'(x)=\frac23x^{-\frac13}$。
+    - |
+      $8^{-\frac13}=\frac12$，所以$f'(8)=\frac23\cdot\frac12=\frac13$。
+  solution: |
+    $f(x)=x^{\frac23}$，$f'(x)=\frac23x^{-\frac13}$，所以$f'(8)=\frac23\cdot\frac12=\frac13$。
+
+- id: p3
+  tier: medium
+  statement: |
+    $f(x)=\frac{\sin x}{1+\cos x}$，求$f'\bigl(\frac\pi3\bigr)$。
+  answer:
+    type: number
+    value: 2/3
+  hints:
+    - |
+      用商法则（quotient rule），分子里用$\sin^2x+\cos^2x=1$化简。
+    - |
+      $f'(x)=\frac{\cos x(1+\cos x)+\sin^2x}{(1+\cos x)^2}=\frac{1+\cos x}{(1+\cos x)^2}$。
+    - |
+      $f'(x)=\frac1{1+\cos x}$，$f'\bigl(\frac\pi3\bigr)=\frac1{1+\frac12}=\frac23$。
+  solution: |
+    $f'(x)=\frac{\cos x(1+\cos x)-\sin x\cdot(-\sin x)}{(1+\cos x)^2}=\frac{\cos x+1}{(1+\cos x)^2}=\frac1{1+\cos x}$，所以$f'\bigl(\frac\pi3\bigr)=\frac23$。
+
+- id: p4
+  tier: medium
+  statement: |
+    常数$a>1$取什么值时，曲线$y=a^x$和直线$y=x$相切？
+  answer:
+    type: number
+    value: e^(1/e)
+  hints:
+    - |
+      设切点的横坐标是$t$：切点在直线上，并且曲线在那里的切线斜率是$1$。
+    - |
+      $a^t=t$，$a^t\ln a=1$。两式相除得$t\ln a=1$。
+    - |
+      $a^t=e^{t\ln a}=e$，所以$t=e$，$\ln a=\frac1e$，$a=e^{\frac1e}\approx1.4447$。
+  solution: |
+    设切点为$(t,t)$，则$a^t=t$，并且$(a^x)'=a^x\ln a$在$t$处等于$1$：$a^t\ln a=1$。所以$t\ln a=1$，$a^t=e^{t\ln a}=e$，于是$t=e$，$\ln a=\frac1e$，$a=e^{\frac1e}\approx1.4447$。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）用和差化积公式$\sin(x+h)-\sin x=2\cos\bigl(x+\frac h2\bigr)\sin\frac h2$，重新推导$(\sin x)'=\cos x$。（2）用类似的公式推导$(\cos x)'=-\sin x$。（3）求$(\cot x)'$，这里$\cot x=\frac{\cos x}{\sin x}$。
+  hints:
+    - |
+      （1）差商是$\cos\bigl(x+\frac h2\bigr)\cdot\frac{\sin(h/2)}{h/2}$，两个因子分别求极限。（2）$\cos(x+h)-\cos x=-2\sin\bigl(x+\frac h2\bigr)\sin\frac h2$。
+    - |
+      $\cos$连续，$\cos\bigl(x+\frac h2\bigr)\to\cos x$；令$u=\frac h2$，$\frac{\sin u}u\to1$。（3）用商法则。
+    - |
+      （1）$\frac{\sin(x+h)-\sin x}h=\cos\bigl(x+\frac h2\bigr)\cdot\frac{\sin(h/2)}{h/2}$。$h\to0$时第一个因子趋于$\cos x$（$\cos$连续），第二个因子由第一个重要极限和换元趋于$1$，所以导数是$\cos x$。
+
+      （2）$\frac{\cos(x+h)-\cos x}h=-\sin\bigl(x+\frac h2\bigr)\cdot\frac{\sin(h/2)}{h/2}\to-\sin x$。
+
+      （3）$(\cot x)'=\frac{-\sin x\cdot\sin x-\cos x\cdot\cos x}{\sin^2x}=-\frac1{\sin^2x}$，在$\sin x\ne0$的点成立。
+  reference: |
+    （1）差商$=\cos(x+\frac h2)\frac{\sin(h/2)}{h/2}\to\cos x$。这样不用$\frac{1-\cos h}{h}\to0$。
+
+    （2）$-\sin(x+\frac h2)\frac{\sin(h/2)}{h/2}\to-\sin x$。
+
+    （3）$-\frac1{\sin^2x}$。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）找一个多项式$P(x)$，使$\bigl(P(x)e^x\bigr)'=x^2e^x$。（2）证明满足（1）的多项式只有一个。（3）再找一个多项式$Q(x)$，使$\bigl(Q(x)e^x\bigr)'=x^3e^x$。
+  hints:
+    - |
+      由乘积法则，$\bigl(Pe^x\bigr)'=(P'+P)e^x$，所以要求$P'+P=x^2$。$P$应当是几次多项式？
+    - |
+      设$P=ax^2+bx+c$，比较$P'+P$和$x^2$的系数。（2）两个解之差$R$满足$R'+R=0$；$R\ne0$时比较最高次项。
+    - |
+      （1）$P'+P=ax^2+(2a+b)x+(b+c)=x^2$，得$a=1$，$b=-2$，$c=2$，$P=x^2-2x+2$。
+
+      （2）若$P_1$、$P_2$都满足，$R=P_1-P_2$满足$R'+R=0$。$R$不是零多项式时，$R'$的次数比$R$低（常数的导数是$0$），$R'+R$的最高次项就是$R$的最高次项，不为零，矛盾。所以$R=0$。
+
+      （3）$Q'+Q=x^3$，同样比较系数得$Q=x^3-3x^2+6x-6$。验证：$Q'=3x^2-6x+6$，$Q'+Q=x^3$。
+  reference: |
+    （1）$P=x^2-2x+2$。
+
+    （2）$R'+R=0$、$R$为非零多项式时，最高次项不能被$R'$抵消，矛盾。
+
+    （3）$Q=x^3-3x^2+6x-6$。一般地$P=\sum_{k=0}^n(-1)^k\frac{n!}{(n-k)!}x^{n-k}$。这是以后求$\int x^ne^x\,\dd x$的一种办法。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）$x$用角度时，$\sin x$的导数是什么？为什么微积分宁愿用弧度？
+
+    （2）在所有底数$a>0$里，为什么偏偏挑$e$当作「自然」的底？从$(a^x)'$和曲线$y=a^x$在$x=0$处的切线斜率说明。
+
+    （3）自然对数的「自然」又体现在哪里？看看$(\log_ax)'$。
+  hints:
+    - |
+      （1）角度制下第一个重要极限变成$\frac{\sin h^\circ}{h}\to\frac\pi{180}$。（2）$(a^x)'=a^x\ln a$，什么时候这个系数是$1$？
+    - |
+      （3）$(\log_ax)'=\frac1{x\ln a}$，什么时候没有多余的常数？
+    - |
+      （1）角度制下$(\sin x^\circ)'=\frac\pi{180}\cos x^\circ$，每求一次导就多一个$\frac\pi{180}$，求两次导就是$\bigl(\frac\pi{180}\bigr)^2$。弧度制让这个因子变成$1$，「弧长等于半径乘角」本身就是弧度制最自然的地方。
+
+      （2）$(a^x)'=a^x\ln a$，只有$a=e$时系数$\ln a=1$，函数等于自己的导数；几何上，只有$y=e^x$在$x=0$处的切线斜率是$1$（和$y=x+1$相切）。别的底数都可以写成$a^x=e^{x\ln a}$，归到$e$。
+
+      （3）$(\log_ax)'=\frac1{x\ln a}$，只有以$e$为底时导数是干净的$\frac1x$。$\ln x$也是$\frac1x$「从$1$开始累积」的结果，这一点以后讲定积分时会看到。
+  reference: |
+    （1）多出$\frac\pi{180}$，高阶导数里越积越多。
+
+    （2）$\ln a=1\iff a=e$；$e^x$是自己的导数，在$0$处斜率为$1$。
+
+    （3）$(\ln x)'=\frac1x$，没有常数；$\ln x=\int_1^x\frac{\dd t}{t}$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）表里每个初等函数（elementary function）的导数都还是初等函数。由它们加减乘除得到的函数呢？
+
+    （2）初等函数在定义域里每一点都可导（differentiable）吗？举个例子。
+
+    （3）反过来，是不是每个初等函数都是某个初等函数的导数？说说你的猜测。
+  hints:
+    - |
+      （1）乘积法则、商法则把导数写成了原来的函数和它们的导数的加减乘除。（2）看看$\sqrt x$在$0$处、$\sqrt[3]x$在$0$处。
+    - |
+      （3）试着找一个函数，它的导数是$\frac1x$；再试试$e^{-x^2}$，好找吗？
+    - |
+      （1）还是初等函数：乘积法则、商法则给出的式子只用到原来的函数、它们的导数和加减乘除。
+
+      （2）不一定。$\sqrt x$的定义域是$[0,+\infty)$，在$0$处差商是$\frac1{\sqrt h}$，不可导；$|x|=\sqrt{x^2}$在$0$处也不可导。初等函数在定义区间的内部大多可导，但可以有个别不可导的点。
+
+      （3）不是。$\frac1x$的原函数$\ln|x|$还是初等函数，可$e^{-x^2}$、$\frac{\sin x}{x}$找不到初等的原函数（这个事实的证明超出了微积分，这里不证）。求导把初等函数变成初等函数，倒过来就不一定。
+  reference: |
+    （1）是。
+
+    （2）否：$\sqrt x$、$|x|$在$0$处。
+
+    （3）否：$e^{-x^2}$没有初等原函数（刘维尔定理，不要求证明）。求导封闭，求原函数不封闭。

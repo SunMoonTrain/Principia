@@ -24,7 +24,7 @@ status: reviewed
 
 **证明思路**：记$\Delta x=x(t+\Delta t)-x(t)$、$\Delta y=y(t+\Delta t)-y(t)$，$\rho=\sqrt{\Delta x^2+\Delta y^2}$。由可微，$\Delta z=f_x\Delta x+f_y\Delta y+r$，两边除以$\Delta t$得$\frac{\Delta z}{\Delta t}=f_x\frac{\Delta x}{\Delta t}+f_y\frac{\Delta y}{\Delta t}+\frac{r}{\Delta t}$。$\Delta t\to0$时前两项趋于$f_xx'+f_yy'$；$\rho=0$时$r=0$，否则$\left|\frac r{\Delta t}\right|=\frac{|r|}{\rho}\cdot\frac{\rho}{|\Delta t|}$，第一个因子趋于$0$，第二个趋于$\sqrt{x'^2+y'^2}$，有界，所以最后一项趋于$0$。
 
-为什么是这个样子：把:term[全微分]{id="math.vector-calculus.total-differential"}（total differential）$\dd z=f_x\dd x+f_y\dd y$两边「除以$\dd t$」就是它：$t$变一点，$x$、$y$各变一点，各自通过:term[偏导数]{id="math.vector-calculus.partial-derivative"}影响$z$，再加起来。$n$个变量时$\dv{z}{t}=\sum_i\pdv{f}{x_i}\dv{x_i}{t}$。常用的特殊情形是$y$是$x$的函数：$\dv{}{x}F\bigl(x,y(x)\bigr)=F_x+F_yy'$；如果沿曲线$F\bigl(x,y(x)\bigr)=0$，就得到隐函数的求导公式$y'=-\frac{F_x}{F_y}$（$F_y\ne0$），什么时候$y(x)$存在留到[反函数定理与隐函数定理](lesson:math.vector-calculus.inverse-implicit)。
+为什么是这个样子：把:term[全微分]{id="math.vector-calculus.total-differential"}（total differential）$\dd z=f_x\dd x+f_y\dd y$两边「除以$\dd t$」就是它：$t$变一点，$x$、$y$各变一点，各自通过:term[偏导数]{id="math.vector-calculus.partial-derivative"}影响$z$，再加起来。$n$个变量时$\dv{z}{t}=\sum_i\pdv{f}{x_i}\dv{x_i}{t}$。常用的特殊情形是$y$是$x$的函数：$\dv{}{x}F\bigl(x,y(x)\bigr)=F_x+F_yy'$；如果沿曲线$F\bigl(x,y(x)\bigr)=0$，就得到:term[隐函数]{id="math.calculus.implicit-function"}（implicit function）的求导公式$y'=-\frac{F_x}{F_y}$（$F_y\ne0$），什么时候$y(x)$存在留到[反函数定理与隐函数定理](lesson:math.vector-calculus.inverse-implicit)。
 
 ### 全导数
 

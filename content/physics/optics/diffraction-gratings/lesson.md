@@ -56,7 +56,7 @@ status: reviewed
 
 ### 用光栅分光
 
-对:term[光栅方程]{id="physics.optics.grating-equation"}两边求微分，$d\cos\theta\,\dd\theta=m\,\dd\lambda$，同一级里波长差$\dd\lambda$的两种光分开的角度是$\dd\theta=\frac{m\,\dd\lambda}{d\cos\theta}$：:term[级次]{id="physics.optics.interference-order"}越高、:term[光栅常量]{id="physics.optics.grating-constant"}越小，分得越开。白光照射时，零级仍是白色，其余每一级都展开成一条光谱，紫光在内侧、红光在外侧，和棱镜把紫光偏折得更多正好相反。级次高时，相邻两级的光谱会重叠（例 1）。
+对:term[光栅方程]{id="physics.optics.grating-equation"}两边求:term[微分]{id="math.calculus.differential"}（differential），$d\cos\theta\,\dd\theta=m\,\dd\lambda$，同一级里波长差$\dd\lambda$的两种光分开的角度是$\dd\theta=\frac{m\,\dd\lambda}{d\cos\theta}$：:term[级次]{id="physics.optics.interference-order"}越高、:term[光栅常量]{id="physics.optics.grating-constant"}越小，分得越开。白光照射时，零级仍是白色，其余每一级都展开成一条光谱，紫光在内侧、红光在外侧，和棱镜把紫光偏折得更多正好相反。级次高时，相邻两级的光谱会重叠（例 1）。
 
 ::anchor{id="def-chromatic-resolving-power"}
 两条波长相近的谱线，一条的:term[主极大]{id="physics.optics.principal-maximum"}正好落在另一条同一级主极大旁边的第一个暗处时，认为它们刚好能分开；这时的波长差记作$\Delta\lambda$，$R=\frac\lambda{\Delta\lambda}$叫作:term[光栅]{id="physics.optics.diffraction-grating"}的:term[色分辨本领]{id="physics.optics.chromatic-resolving-power"}（chromatic resolving power）。
