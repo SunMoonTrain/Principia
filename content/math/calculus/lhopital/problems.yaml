@@ -1,0 +1,165 @@
+- id: p1
+  tier: easy
+  statement: |
+    用洛必达法则（L'Hôpital's rule）求$\lim_{x\to0}\frac{e^x-1-x}{x^2}$。
+  answer:
+    type: number
+    value: 1/2
+  hints:
+    - |
+      $x\to0$时分子、分母都趋于$0$，是$\frac00$型（indeterminate form 0/0）。
+    - |
+      分子、分母各自求导，得$\frac{e^x-1}{2x}$，它还是$\frac00$型。
+    - |
+      再求一次导得$\frac{e^x}2$，分母不再趋于$0$，直接代入$x=0$。
+  solution: |
+    $\frac{e^x-1-x}{x^2}$是$\frac00$型，分子、分母各自求导得$\frac{e^x-1}{2x}$，仍是$\frac00$型；再求一次导得$\frac{e^x}2\to\frac12$。所以极限是$\frac12$。
+
+- id: p2
+  tier: easy
+  statement: |
+    求$\lim_{x\to1}\frac{x^3-1}{\ln x}$。
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      $x\to1$时$x^3-1\to0$，$\ln x\to0$，是$\frac00$型。
+    - |
+      分子的导数（derivative）是$3x^2$，分母的导数是$\frac1x$。
+    - |
+      $\frac{3x^2}{1/x}=3x^3$，$x\to1$时趋于$3$。
+  solution: |
+    是$\frac00$型。由洛必达法则，极限等于$\lim_{x\to1}\frac{3x^2}{1/x}=\lim_{x\to1}3x^3=3$。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\lim_{x\to0}\Bigl(\frac1{e^x-1}-\frac1x\Bigr)$。
+  answer:
+    type: number
+    value: -1/2
+  hints:
+    - |
+      这是$\infty-\infty$型，先通分：$\frac{x-e^x+1}{x(e^x-1)}$，变成$\frac00$型。
+    - |
+      分子、分母各自求导，得$\frac{1-e^x}{e^x-1+xe^x}$，还是$\frac00$型。
+    - |
+      再求一次导，得$\frac{-e^x}{2e^x+xe^x}$，$x\to0$时趋于$-\frac12$。
+  solution: |
+    通分后是$\frac00$型：
+
+    $$
+    \lim_{x\to0}\frac{x-e^x+1}{x(e^x-1)}=\lim_{x\to0}\frac{1-e^x}{e^x-1+xe^x}=\lim_{x\to0}\frac{-e^x}{2e^x+xe^x}=-\frac12.
+    $$
+
+    第二个分式仍是$\frac00$型，所以用了两次洛必达法则。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\lim_{x\to0}(\cos x)^{\frac1{x^2}}$。
+  answer:
+    type: number
+    value: e^(-1/2)
+  hints:
+    - |
+      这是$1^\infty$型。写成$(\cos x)^{\frac1{x^2}}=e^{\frac{\ln\cos x}{x^2}}$，先求指数的极限。
+    - |
+      $\frac{\ln\cos x}{x^2}$是$\frac00$型，分子的导数是$\frac{-\sin x}{\cos x}$（链式法则，chain rule）。
+    - |
+      $\lim_{x\to0}\frac{-\sin x/\cos x}{2x}=-\frac12\lim_{x\to0}\frac{\sin x}{x}\cdot\frac1{\cos x}=-\frac12$。
+  solution: |
+    $(\cos x)^{\frac1{x^2}}=e^{\frac{\ln\cos x}{x^2}}$。指数是$\frac00$型，由洛必达法则，$\lim_{x\to0}\frac{\ln\cos x}{x^2}=\lim_{x\to0}\frac{-\sin x}{2x\cos x}=-\frac12$。由$e^x$的连续性，原式等于$e^{-\frac12}\approx0.607$。
+
+- id: p5
+  tier: hard
+  statement: |
+    求$\lim_{x\to0}\frac{(1+x)^{\frac1x}-e}{x}$。
+  hints:
+    - |
+      $(1+x)^{\frac1x}\to e$（见[两个重要极限](lesson:math.calculus.special-limits)），所以是$\frac00$型。分子的导数要先把$(1+x)^{\frac1x}$写成$e^{\frac{\ln(1+x)}x}$。
+    - |
+      记$u(x)=(1+x)^{\frac1x}$。由链式法则和商法则（quotient rule），$u'(x)=u(x)\cdot\frac{\frac x{1+x}-\ln(1+x)}{x^2}$，所以原式等于$e\cdot\lim_{x\to0}\frac{\frac x{1+x}-\ln(1+x)}{x^2}$。
+    - |
+      后一个极限还是$\frac00$型。分子的导数是$\frac1{(1+x)^2}-\frac1{1+x}=-\frac{x}{(1+x)^2}$，分母的导数是$2x$，比值是$-\frac1{2(1+x)^2}\to-\frac12$。所以原式等于$-\frac e2\approx-1.359$。
+  reference: |
+    $-\frac e2$。用一次洛必达法则，分子的导数是$u(x)\cdot\frac{x/(1+x)-\ln(1+x)}{x^2}$；后一个因子再用一次，趋于$-\frac12$。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）对$\lim_{x\to+\infty}\frac{e^x+e^{-x}}{e^x-e^{-x}}$用洛必达法则，会发生什么？
+
+    （2）换一个办法求出这个极限。
+
+    （3）$\lim_{x\to+\infty}\frac{\sqrt{x^2+1}}{x}$呢？
+  hints:
+    - |
+      （1）两个都是$\frac\infty\infty$型（indeterminate form ∞/∞）。$(e^{-x})'=-e^{-x}$，看看求一次导、求两次导各得到什么。
+    - |
+      （2）分子、分母同除以$e^x$。（3）先对它用一次洛必达法则，再用一次。
+    - |
+      （1）求一次导得$\frac{e^x-e^{-x}}{e^x+e^{-x}}$，分子、分母正好对调；再求一次又回到原式，永远转圈，什么也求不出来。
+
+      （2）$\frac{e^x+e^{-x}}{e^x-e^{-x}}=\frac{1+e^{-2x}}{1-e^{-2x}}\to\frac{1+0}{1-0}=1$。
+
+      （3）求一次导得$\frac{x/\sqrt{x^2+1}}{1}=\frac{x}{\sqrt{x^2+1}}$，再求一次又得$\frac{\sqrt{x^2+1}}x$，也转圈。直接化简：$x>0$时$\frac{\sqrt{x^2+1}}x=\sqrt{1+\frac1{x^2}}\to1$。
+  reference: |
+    （1）分子、分母来回对调，法则用不出结果。
+
+    （2）$1$。
+
+    （3）$1$，同样转圈，直接化简。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）求$\lim_{x\to0}\frac{x^2\sin\frac1x}{\sin x}$。
+
+    （2）分子、分母各自求导后的比，在$x\to0$时有极限吗？
+
+    （3）这和洛必达法则矛盾吗？
+  hints:
+    - |
+      （1）拆成$\frac{x}{\sin x}\cdot x\sin\frac1x$，后一个因子用夹逼定理（squeeze theorem）。
+    - |
+      （2）分子的导数是$2x\sin\frac1x-\cos\frac1x$，分母的导数是$\cos x$。
+    - |
+      （1）$\frac{x}{\sin x}\to1$，$\bigl|x\sin\frac1x\bigr|\le|x|\to0$，所以极限是$0$。
+
+      （2）$\frac{2x\sin\frac1x-\cos\frac1x}{\cos x}$里$2x\sin\frac1x\to0$，$\cos x\to1$，可$\cos\frac1x$在$-1$和$1$之间来回摆动，所以这个比没有极限。
+
+      （3）不矛盾。法则说的是「求导后的比有极限，原来的比就有同样的极限」，没有说反过来也成立；求导后的比没有极限时，要换别的办法，原来的比仍可能有极限。
+  reference: |
+    （1）$0$。
+
+    （2）没有，$\cos\frac1x$摆动。
+
+    （3）不矛盾：法则只有一个方向。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）用洛必达法则「求」$\lim_{x\to0}\frac{\sin x}x$，要用到哪个导数？
+
+    （2）这个「求法」有什么问题？
+
+    （3）$\lim_{x\to0}\frac{e^x-1}x$也这样「求」，有同样的问题吗？
+  hints:
+    - |
+      （1）分子、分母各自求导得$\frac{\cos x}1$。
+    - |
+      （2）回忆$(\sin x)'=\cos x$是怎样推出来的（见[初等函数的导数](lesson:math.calculus.elementary-derivatives)）。
+    - |
+      （1）要用$(\sin x)'=\cos x$，于是$\frac{\cos x}1\to1$。
+
+      （2）推$(\sin x)'=\cos x$时，正要用$\frac{\sin x}x\to1$，这样「求」是循环论证。其实$\lim_{x\to0}\frac{\sin x}x$就是$\sin x$在$0$处的导数，法则只是把定义换了个说法。
+
+      （3）有。$(e^x)'=e^x$是由$\frac{e^h-1}h\to1$推出来的，同样循环。这两个极限只能像[两个重要极限](lesson:math.calculus.special-limits)那样，从定义出发直接求。
+  reference: |
+    （1）$(\sin x)'=\cos x$。
+
+    （2）循环论证：那个导数正是由这个极限推出的。
+
+    （3）一样循环。

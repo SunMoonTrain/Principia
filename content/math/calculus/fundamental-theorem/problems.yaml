@@ -1,0 +1,169 @@
+- id: p1
+  tier: easy
+  statement: |
+    用牛顿-莱布尼茨公式（Newton-Leibniz formula）求$\int_1^4\Bigl(\sqrt x+\frac1x\Bigr)\dd x$。
+  answer:
+    type: number
+    value: 14/3 + 2*ln(2)
+  hints:
+    - |
+      先找$\sqrt x+\frac1x$的一个原函数（antiderivative），两项分开找。
+    - |
+      $\sqrt x=x^{\frac12}$的原函数是$\frac23x^{\frac32}$，$\frac1x$在$x>0$时的原函数是$\ln x$。
+    - |
+      $\Bigl(\frac23x^{\frac32}+\ln x\Bigr)\Big|_1^4=\frac{16}3+\ln4-\frac23$。
+  solution: |
+    $F(x)=\frac23x^{\frac32}+\ln x$是被积函数在$[1,4]$上的一个原函数，所以积分等于$F(4)-F(1)=\frac{16}3+\ln4-\frac23$，即$\frac{14}3+2\ln2\approx6.053$。
+
+- id: p2
+  tier: easy
+  statement: |
+    设$G(x)=\int_0^x\sqrt{1+t^3}\,\dd t$（$x\ge0$）。求$G'(2)$。
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      $G$是$\sqrt{1+t^3}$的变上限积分（integral with variable upper limit），被积函数连续。
+    - |
+      由微积分基本定理（fundamental theorem of calculus），$G'(x)=\sqrt{1+x^3}$，不用求出$G$。
+    - |
+      $G'(2)=\sqrt{1+8}=3$。
+  solution: |
+    $\sqrt{1+t^3}$在$[0,+\infty)$上连续，由微积分基本定理，$G'(x)=\sqrt{1+x^3}$，所以$G'(2)=\sqrt9=3$。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$H(x)=\int_x^{x^2}\ln t\,\dd t$（$x>0$）。求$H'(2)$。
+  answer:
+    type: number
+    value: 7*ln(2)
+  hints:
+    - |
+      取一个固定的下限，比如$1$，把$H$拆成两个变上限积分：$H(x)=\int_1^{x^2}\ln t\,\dd t-\int_1^x\ln t\,\dd t$。
+    - |
+      第一项是$\Phi(u)=\int_1^u\ln t\,\dd t$和$u=x^2$的复合，由链式法则（chain rule），导数是$\ln(x^2)\cdot2x$。
+    - |
+      $H'(x)=2x\ln(x^2)-\ln x=(4x-1)\ln x$。
+  solution: |
+    由区间可加性（additivity over intervals），$H(x)=\int_1^{x^2}\ln t\,\dd t-\int_1^x\ln t\,\dd t$。由微积分基本定理和链式法则，$H'(x)=\ln(x^2)\cdot2x-\ln x=(4x-1)\ln x$，所以$H'(2)=7\ln2\approx4.852$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求正数$c$，使$\int_0^c(x^2-2x)\,\dd x=0$。
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      用牛顿-莱布尼茨公式把积分写成$c$的式子。
+    - |
+      $\int_0^c(x^2-2x)\,\dd x=\Bigl(\frac{x^3}3-x^2\Bigr)\Big|_0^c=\frac{c^3}3-c^2$。
+    - |
+      $\frac{c^3}3-c^2=c^2\Bigl(\frac c3-1\Bigr)=0$，$c>0$。
+  solution: |
+    $\int_0^c(x^2-2x)\,\dd x=\frac{c^3}3-c^2=c^2\Bigl(\frac c3-1\Bigr)$，$c>0$时它为$0$只有$c=3$。几何上，$x^2-2x$在$(0,2)$上为负、在$(2,3)$上为正，两块带符号的面积正好抵消。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$在$\R$上连续（continuous），$F(x)=\int_0^x(x-t)f(t)\,\dd t$。
+
+    （1）证明$F'(x)=\int_0^xf(t)\,\dd t$。
+
+    （2）由此说明$F''=f$，并且$F(0)=F'(0)=0$。
+
+    （3）取$f(t)=t$，直接算出$F(x)$，验证（2）。
+  hints:
+    - |
+      （1）积分变量（variable of integration）是$t$，$x$对积分来说是常数，可以按线性（linearity）提出来：$F(x)=x\int_0^xf(t)\,\dd t-\int_0^xtf(t)\,\dd t$。
+    - |
+      （1）第一项用乘积法则（product rule），两个变上限积分都用微积分基本定理。
+    - |
+      （1）$F'(x)=\int_0^xf(t)\,\dd t+xf(x)-xf(x)=\int_0^xf(t)\,\dd t$。
+
+      （2）再用一次基本定理，$F''(x)=f(x)$；$F(0)$、$F'(0)$都是上下限相同的积分，等于$0$。
+
+      （3）$F(x)=\int_0^x(xt-t^2)\,\dd t=\frac{x^3}2-\frac{x^3}3$，即$F(x)=\frac{x^3}6$。于是$F''(x)=x=f(x)$，$F(0)=F'(0)=0$。
+  reference: |
+    （1）$F(x)=x\int_0^xf-\int_0^xtf(t)\,\dd t$，求导后$xf(x)$两项抵消。
+
+    （2）$F''=f$，$F(0)=F'(0)=0$：$F$是把$f$从$0$起积分两次的结果。
+
+    （3）$F(x)=\frac{x^3}6$。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）把$\frac1{n+1}+\frac1{n+2}+\cdots+\frac1{2n}$写成某个函数在$[0,1]$上的黎曼和（Riemann sum）。
+
+    （2）求它在$n\to\infty$时的极限。
+  hints:
+    - |
+      每一项提出$\frac1n$：$\frac1{n+k}=\frac1n\cdot\frac1{1+k/n}$。
+    - |
+      把$[0,1]$等分成$n$段，每段长$\frac1n$，第$k$段取右端点$\frac kn$，函数取$f(x)=\frac1{1+x}$。
+    - |
+      $f$在$[0,1]$上连续，可积，分得越来越细时黎曼和趋于$\int_0^1\frac{\dd x}{1+x}=\ln(1+x)\Big|_0^1$。
+  reference: |
+    （1）$\sum_{k=1}^n\frac1{n+k}=\sum_{k=1}^n\frac1{1+k/n}\cdot\frac1n$，是$f(x)=\frac1{1+x}$在等分$[0,1]$、取右端点时的黎曼和。
+
+    （2）$\ln2\approx0.693$。$\bigl(\ln(1+x)\bigr)'=\frac1{1+x}$由链式法则验证。
+
+- id: p7
+  tier: thinking
+  statement: |
+    $f$是$x<0$时取$0$、$x\ge0$时取$1$的台阶函数（step function），$\Phi(x)=\int_0^xf(t)\,\dd t$，$\Psi(x)=\int_0^x\Phi(t)\,\dd t$。
+
+    （1）写出$\Phi$、$\Psi$，说说它们的图像各有什么「毛病」：跳跃、尖角，还是更细微的？
+
+    （2）每积分一次，函数变得更「光滑」还是更「粗糙」？每求一次导呢？
+
+    （3）为什么连续函数的变上限积分一定可导，可导函数的导数却不一定连续？
+  hints:
+    - |
+      （1）分$x<0$、$x\ge0$两段算，用基本定理检查每一段的导数。
+    - |
+      （1）$\Phi(x)$在$x\ge0$时是$x$，在$x<0$时是$0$；$\Psi(x)$在$x\ge0$时是$\frac{x^2}2$，在$x<0$时是$0$。
+    - |
+      （1）$f$有跳跃；$\Phi$连续，在$0$处有尖角；$\Psi$处处可导，$\Psi'=\Phi$，可$\Psi''=f$在$0$处跳跃，弯曲的程度突然变了。
+
+      （2）积分一次，「毛病」退到高一阶的导数上，函数更光滑；求导正好相反，尖角变成跳跃。
+
+      （3）由基本定理，连续函数积分后，导数就是原来的连续函数。反过来，可导只保证导数存在，导数本身可以不连续，[高阶导数](lesson:math.calculus.higher-derivatives)里的$x|x|$求一次导得$2|x|$，就又多了一个尖角。
+  reference: |
+    （1）$\Phi$连续有尖角，$\Psi$可导但二阶导数跳跃。
+
+    （2）积分使函数更光滑，求导使它更粗糙。
+
+    （3）积分把「毛病」推到更高阶的导数上，求导把它拉回来。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$f$在$\R$上连续，并且对所有$x$都有$f(x)=1+\int_0^xf(t)\,\dd t$。
+
+    （1）为什么$f$一定可导？$f'$和$f(0)$各是什么？
+
+    （2）证明$f(x)=e^x$。
+
+    （3）一个含积分的等式，为什么能定出一个函数？如果把右边的$1$换成$0$呢？
+  hints:
+    - |
+      （1）右边是$1$加上一个连续函数的变上限积分，用微积分基本定理。
+    - |
+      （2）看$g(x)=e^{-x}f(x)$的导数，再用「导数处处为零的函数是常数」（见[微分中值定理](lesson:math.calculus.mean-value-theorem#thm-zero-derivative)）。
+    - |
+      （1）右边可导，所以$f$可导，$f'(x)=f(x)$；令$x=0$，积分为$0$，$f(0)=1$。
+
+      （2）$g'(x)=e^{-x}\bigl(f'(x)-f(x)\bigr)=0$，所以$g$是常数，$g(0)=f(0)=1$，于是$f(x)=e^x$。
+
+      （3）求导以后，等式变成「$f'=f$」加上「$f(0)=1$」：变化率由等式本身给出，起点由积分为零的那一点给出，两者合起来就定下了$f$。换成$0$时，同样的论证给出$f(0)=0$，$g$恒为$0$，$f$只能是零函数。
+  reference: |
+    （1）右边可导；$f'=f$，$f(0)=1$。
+
+    （2）$\bigl(e^{-x}f\bigr)'=0$，所以$e^{-x}f\equiv1$。
+
+    （3）等式里同时含有变化率和起点；右边换成$0$，只有$f\equiv0$。

@@ -38,7 +38,7 @@ status: reviewed
 ::anchor{id="def-indefinite-integral"}
 $f$在区间$I$上的全体:term[原函数]{id="math.calculus.antiderivative"}叫作$f$的:term[不定积分]{id="math.calculus.indefinite-integral"}（indefinite integral），记作$\int f(x)\,\dd x$；由上面的定理，$F$是一个原函数时，$\int f(x)\,\dd x=F(x)+C$。其中$\int$叫作积分号（integral sign），$f(x)$叫作:term[被积函数]{id="math.calculus.integrand"}（integrand），任意常数$C$叫作:term[积分常数]{id="math.calculus.constant-of-integration"}（constant of integration）。
 
-为什么这样记：$\dd x$指出把谁当自变量；$\int$是拉长的字母 S，取自「求和」，这个记号和求和的关系要到[微积分基本定理](lesson:math.calculus.fundamental-theorem)（fundamental theorem of calculus）才看得到。边界情况：$\int f(x)\,\dd x$是一族函数，不是一个函数；检验一个不定积分算得对不对，只要对右边求导，看是不是等于被积函数。
+为什么这样记：$\dd x$指出把谁当自变量；$\int$是拉长的字母 S，取自「求和」，这个记号和求和的关系要到:term[微积分基本定理]{id="math.calculus.fundamental-theorem-of-calculus"}（fundamental theorem of calculus，见[微积分基本定理](lesson:math.calculus.fundamental-theorem)）才看得到。边界情况：$\int f(x)\,\dd x$是一族函数，不是一个函数；检验一个不定积分算得对不对，只要对右边求导，看是不是等于被积函数。
 
 求导的线性给出积分的线性：常数$a$、$b$不全为零时，$\int[af(x)+bg(x)]\,\dd x=a\int f(x)\,\dd x+b\int g(x)\,\dd x$，因为右边求导正好得$af+bg$。所以多项式这类和式可以逐项求原函数，最后只写一个$C$。
 

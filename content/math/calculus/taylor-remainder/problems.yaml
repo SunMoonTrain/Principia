@@ -1,0 +1,181 @@
+- id: p1
+  tier: easy
+  statement: |
+    $\cos x$在$0$处的$2$阶泰勒多项式是$T_2(x)=1-\frac{x^2}2$。它的拉格朗日余项（Lagrange remainder）$R_2(x)$是下面哪一个（$\xi$在$0$和$x$之间）？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        $\frac{\sin\xi}6x^3$
+      - |
+        $-\frac{\sin\xi}6x^3$
+      - |
+        $-\frac{\cos\xi}2x^2$
+      - |
+        $\frac{\sin x}6x^3$
+    value: 1
+  hints:
+    - |
+      $R_2(x)=\frac{f'''(\xi)}{3!}x^3$，求$\cos x$的三阶导数。
+    - |
+      $(\cos x)'=-\sin x$，$(\cos x)''=-\cos x$，$(\cos x)'''=\sin x$。
+    - |
+      三阶导数要在$\xi$处取值，不是在$x$处。
+  solution: |
+    $f'''(x)=\sin x$，所以$R_2(x)=\frac{f'''(\xi)}{3!}x^3=\frac{\sin\xi}6x^3$，选 A。B 的符号反了；C 是$R_1$的写法，它是$\cos x$和$T_1(x)=1$的差；D 把导数放在$x$处取值，不对。
+
+- id: p2
+  tier: easy
+  statement: |
+    用$e^x$在$0$处的$n$阶泰勒多项式$T_n(0.5)$近似$\sqrt e=e^{0.5}$。$0<\xi<0.5$时$e^\xi<2$，所以误差$|R_n(0.5)|<\frac{2\cdot0.5^{n+1}}{(n+1)!}$。要使这个上界小于$10^{-3}$，$n$最小取几？
+  answer:
+    type: number
+    value: 4
+  hints:
+    - |
+      从小到大试$n$，算$\frac{2\cdot0.5^{n+1}}{(n+1)!}$。
+    - |
+      $n=3$时上界是$\frac{2\cdot0.0625}{24}\approx0.0052$。
+    - |
+      $n=4$时上界是$\frac{2\cdot0.03125}{120}\approx0.00052$。
+  solution: |
+    $n=3$时上界约为$0.0052$，不够；$n=4$时上界约为$0.00052<10^{-3}$。所以$n$最小取$4$，这时$T_4(0.5)\approx1.64844$，而$\sqrt e\approx1.64872$。
+
+- id: p3
+  tier: medium
+  statement: |
+    用$1+\frac x2-\frac{x^2}8$近似$\sqrt{1+x}$（$0\le x\le0.1$）。写出拉格朗日余项$R_2(x)$，并由$\xi\ge0$得到误差的上界$Cx^3$。求$C$。
+  answer:
+    type: number
+    value: 1/16
+  hints:
+    - |
+      $1+\frac x2-\frac{x^2}8$是$\sqrt{1+x}$在$0$处的$2$阶泰勒多项式，$R_2(x)=\frac{f'''(\xi)}{3!}x^3$。
+    - |
+      $f'(x)=\frac12(1+x)^{-\frac12}$，$f''(x)=-\frac14(1+x)^{-\frac32}$，$f'''(x)=\frac38(1+x)^{-\frac52}$。
+    - |
+      $R_2(x)=\frac{1}{16}(1+\xi)^{-\frac52}x^3$，$\xi\ge0$时$(1+\xi)^{-\frac52}\le1$。
+  solution: |
+    $f'''(x)=\frac38(1+x)^{-\frac52}$，所以$R_2(x)=\frac{f'''(\xi)}6x^3=\frac{x^3}{16(1+\xi)^{5/2}}$。$0\le\xi\le x$，$(1+\xi)^{\frac52}\ge1$，误差不超过$\frac{x^3}{16}$，$C=\frac1{16}$；$x=0.1$时不超过$6.25\times10^{-5}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $\sin x$的$T_1=T_2=x$，所以用$x$近似$\sin x$的误差满足$|R_2(x)|\le\frac{|x|^3}6$。$|x|$不超过多少时，这个上界不超过$0.001$？
+  answer:
+    type: number
+    value: 0.006^(1/3)
+  hints:
+    - |
+      解不等式$\frac{|x|^3}6\le0.001$。
+    - |
+      $|x|^3\le0.006$。
+    - |
+      $|x|\le\sqrt[3]{0.006}\approx0.18$。
+  solution: |
+    $\frac{|x|^3}6\le0.001$即$|x|^3\le0.006$，所以$|x|\le\sqrt[3]{0.006}\approx0.1817$。用弧度量，这大约是$10.4^\circ$：小于十度左右的角，$\sin x\approx x$的误差不超过千分之一。
+
+- id: p5
+  tier: hard
+  statement: |
+    证明$e$是无理数。
+
+    （1）由带拉格朗日余项的泰勒公式，说明对每个正整数$n$，$e=1+1+\frac1{2!}+\cdots+\frac1{n!}+\frac{e^\xi}{(n+1)!}$，$0<\xi<1$。
+
+    （2）假设$e=\frac pq$，$p$、$q$是正整数。取$n\ge q$并且$n\ge2$，两边乘以$n!$，推出矛盾。
+  hints:
+    - |
+      （1）对$e^x$在$0$处用定理，取$x=1$。
+    - |
+      （2）$n!\,e$和$n!\bigl(1+1+\frac1{2!}+\cdots+\frac1{n!}\bigr)$都是整数，所以$\frac{e^\xi}{n+1}$也是整数。
+    - |
+      （1）$e^x$的各阶导数都是$e^x$，在$0$处都是$1$，$T_n(1)=\sum_{k=0}^n\frac1{k!}$，余项是$\frac{e^\xi}{(n+1)!}$，$0<\xi<1$。
+
+      （2）$n\ge q$时$n!\,e=n!\cdot\frac pq$是整数；$\frac{n!}{k!}$（$k\le n$）也都是整数。于是$n!\cdot\frac{e^\xi}{(n+1)!}=\frac{e^\xi}{n+1}$是整数。可$1<e^\xi<e<3$，$n\ge2$时$0<\frac{e^\xi}{n+1}<1$，不是整数，矛盾。
+  reference: |
+    （1）$e^x$在$0$处展开到$n$阶，$x=1$。
+
+    （2）$\frac{e^\xi}{n+1}$必须是整数，但$0<\frac{e^\xi}{n+1}<\frac3{n+1}\le1$。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）证明：对每个固定的$x$，$n\to\infty$时$\frac{|x|^{n+1}}{(n+1)!}\to0$。
+
+    （2）由此说明：对每个$x$，$e^x$在$0$处的泰勒多项式$T_n(x)\to e^x$。
+
+    （3）常微分方程的欧拉法用$y(x+h)\approx y(x)+hy'(x)$。如果$|y''|\le M_2$，一步的误差不超过多少？
+  hints:
+    - |
+      （1）取正整数$N>2|x|$。$k>N$时，从第$k-1$项到第$k$项乘上的因子$\frac{|x|}{k}<\frac12$。
+    - |
+      （2）$|R_n(x)|\le e^{|x|}\frac{|x|^{n+1}}{(n+1)!}$。（3）这是$n=1$的拉格朗日余项。
+    - |
+      （1）记$c_k=\frac{|x|^k}{k!}$，$c_k=c_{k-1}\cdot\frac{|x|}{k}$。$k>N$时因子小于$\frac12$，所以$0\le c_k\le c_N\bigl(\frac12\bigr)^{k-N}\to0$。
+
+      （2）$\xi$在$0$和$x$之间，$e^\xi\le e^{|x|}$，所以$|e^x-T_n(x)|\le e^{|x|}c_{n+1}\to0$。
+
+      （3）$y(x+h)=y(x)+hy'(x)+\frac{y''(\xi)}2h^2$，误差$\bigl|\frac{y''(\xi)}2h^2\bigr|\le\frac{M_2h^2}2$。这就是[数值解法](lesson:math.ode.numerical-methods)里的局部截断误差（local truncation error）。
+  reference: |
+    （1）$k>2|x|$后每项至少减半。
+
+    （2）$|R_n(x)|\le e^{|x|}\frac{|x|^{n+1}}{(n+1)!}\to0$。
+
+    （3）$\frac{M_2h^2}2$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    取$f(x)=e^x$，$a=0$，$n=2$。
+
+    （1）佩亚诺余项（Peano remainder）和拉格朗日余项各说了误差的什么？
+
+    （2）要知道$e^{0.1}\approx1.105$准到哪一位，用哪一个？
+
+    （3）求$\lim_{x\to0}\frac{e^x-1-x}{x^2}$，用哪一个就够了？
+  hints:
+    - |
+      （1）一个说$x\to0$时误差和$x^2$比的结果，一个给出误差在一个具体的$x$处的式子。
+    - |
+      （2）$R_2(0.1)=\frac{e^\xi}6\cdot0.1^3$，$0<\xi<0.1$。
+    - |
+      （1）佩亚诺余项：$e^x-\bigl(1+x+\frac{x^2}2\bigr)=o(x^2)$，只说$x\to0$时误差比$x^2$小得多，不说某个$x$处有多大。拉格朗日余项：误差恰好是$\frac{e^\xi}6x^3$，$\xi$在$0$和$x$之间，可以用来估计具体的大小。
+
+      （2）用拉格朗日余项：$0<R_2(0.1)<\frac{1.2}6\times0.001=0.0002$，所以$e^{0.1}$在$1.105$和$1.1052$之间，准到小数点后三位（实际是$1.10517\cdots$）。
+
+      （3）佩亚诺余项就够了：$\frac{e^x-1-x}{x^2}=\frac{\frac{x^2}2+o(x^2)}{x^2}\to\frac12$。求极限只关心$x\to0$时的主要部分。
+  reference: |
+    （1）佩亚诺：$o(x^2)$，只管$x\to0$；拉格朗日：误差等于$\frac{e^\xi}6x^3$。
+
+    （2）拉格朗日，误差$<0.0002$。
+
+    （3）佩亚诺。
+
+- id: p8
+  tier: thinking
+  statement: |
+    $\ln(1+x)$在$0$处的$n$阶泰勒多项式是$T_n(x)=x-\frac{x^2}2+\frac{x^3}3-\cdots+(-1)^{n-1}\frac{x^n}n$。
+
+    （1）算出$T_1(2)$到$T_5(2)$，和$\ln3\approx1.0986$比一比。
+
+    （2）$T_n(2)$会越来越接近$\ln3$吗？看相邻两个$T_n(2)$的差。
+
+    （3）从拉格朗日余项看，为什么这里估计不出误差趋于$0$？和$e^x$有什么不同？
+  hints:
+    - |
+      （1）$T_n(2)$每多一项，加上或减去$\frac{2^n}n$。
+    - |
+      （3）$\ln(1+x)$的$n+1$阶导数是$\frac{(-1)^nn!}{(1+x)^{n+1}}$，所以$R_n(2)=\frac{(-1)^n}{n+1}\Bigl(\frac2{1+\xi}\Bigr)^{n+1}$。
+    - |
+      （1）$T_1(2)=2$，$T_2(2)=0$，$T_3(2)\approx2.667$，$T_4(2)\approx-1.333$，$T_5(2)\approx5.067$，越摆越远。
+
+      （2）不会。$|T_n(2)-T_{n-1}(2)|=\frac{2^n}n\to\infty$，相邻两项的差都不趋于$0$，$T_n(2)$不可能趋于任何数。
+
+      （3）$\xi$在$0$和$2$之间，$\frac2{1+\xi}$可能大于$1$，它的$n+1$次方可以很大，分母只有$n+1$，压不住。$e^x$的余项分母是$(n+1)!$，导数又有和$n$无关的上界，所以总能压到$0$。$\ln(1+x)$的导数里有$n!$，正好把$(n+1)!$抵消了大半。以后的[泰勒级数](lesson:math.calculus.taylor-series)会说明，它的泰勒多项式只在$-1<x\le1$时收敛到$\ln(1+x)$。
+  reference: |
+    （1）$2$，$0$，$2.667$，$-1.333$，$5.067$。
+
+    （2）不会，相邻差$\frac{2^n}n\to\infty$。
+
+    （3）余项里的$n!$和$(n+1)!$抵消，只剩$\frac1{n+1}$，压不住$\bigl(\frac2{1+\xi}\bigr)^{n+1}$。

@@ -13,7 +13,7 @@ status: reviewed
 
 ## 这一节要回答的问题
 
-多项式是最简单的函数，只用加法和乘法就能算。泰勒多项式（Taylor polynomial，见[泰勒公式](lesson:math.calculus.taylor-polynomial)）能在一点附近近似一个光滑的函数，可$|x-\frac12|$在$\frac12$处有尖角，在那里不:term[可导]{id="math.analysis.differentiable-function"}（differentiable），泰勒多项式无从谈起。
+多项式是最简单的函数，只用加法和乘法就能算。:term[泰勒多项式]{id="math.calculus.taylor-polynomial"}（Taylor polynomial，见[泰勒公式](lesson:math.calculus.taylor-polynomial)）能在一点附近近似一个光滑的函数，可$|x-\frac12|$在$\frac12$处有尖角，在那里不:term[可导]{id="math.analysis.differentiable-function"}（differentiable），泰勒多项式无从谈起。
 
 能不能找一个多项式，在整个$[0,1]$上同时离$|x-\frac12|$不超过$0.01$？一般地，闭区间上的:term[连续函数]{id="math.analysis.continuous-function"}（continuous function），是不是都有一列多项式:term[一致收敛]{id="math.analysis.uniform-convergence"}（uniform convergence）于它？
 
@@ -81,7 +81,7 @@ sliders:
 
 ![|x − 1/2| 和它的伯恩斯坦多项式（n = 4, 16, 64）：整条曲线一起贴向 |x − 1/2|，尖角处贴得最慢](bernstein-kink.svg)
 
-$|x-\frac12|$在$\frac12$处有尖角，没有泰勒多项式可用，伯恩斯坦多项式照样整条地贴上去。尖角处贴得最慢：$n=64$时那里还差约$0.05$。
+$|x-\frac12|$在$\frac12$处有尖角，没有:term[泰勒多项式]{id="math.calculus.taylor-polynomial"}可用，伯恩斯坦多项式照样整条地贴上去。尖角处贴得最慢：$n=64$时那里还差约$0.05$。
 
 ## 例题
 
@@ -107,7 +107,7 @@ $|x-\frac12|$在$\frac12$处有尖角，没有泰勒多项式可用，伯恩斯�
 
 ## 常见误区
 
-- 「用多项式逼近，就是泰勒展开。」不对：$|x-\frac12|$在$\frac12$处不:term[可导]{id="math.analysis.differentiable-function"}，没有泰勒多项式，却能被多项式一致逼近。泰勒多项式只在一点附近好；:term[伯恩斯坦多项式]{id="math.analysis.bernstein-polynomial"}在整个区间上同时好。
+- 「用多项式逼近，就是泰勒展开。」不对：$|x-\frac12|$在$\frac12$处不:term[可导]{id="math.analysis.differentiable-function"}，没有:term[泰勒多项式]{id="math.calculus.taylor-polynomial"}，却能被多项式一致逼近。泰勒多项式只在一点附近好；:term[伯恩斯坦多项式]{id="math.analysis.bernstein-polynomial"}在整个区间上同时好。
 - 「伯恩斯坦多项式在节点$\frac kn$处等于$f\bigl(\frac kn\bigr)$。」不对：一般只在$0$和$1$两端相等，$x^2$的$B_2$在$\frac12$处是$\frac38$，不是$\frac14$。
 - 「开区间上的:term[连续函数]{id="math.analysis.continuous-function"}也都能用多项式:term[一致收敛]{id="math.analysis.uniform-convergence"}地逼近。」不对：例 2 的$\frac1x$。
 - 「伯恩斯坦多项式逼近得很快。」不对：光滑的$x^2$，误差也有$\frac{1}{4n}$；有尖角的$|x-\frac12|$，$n=64$时尖角处还差约$0.05$。定理只保证能逼近，不保证快。

@@ -1,0 +1,161 @@
+- id: p1
+  tier: easy
+  statement: |
+    已知$\int_0^2f(x)\,\dd x=3$，$\int_0^5f(x)\,\dd x=7$。求$\int_2^5\bigl[2f(x)+1\bigr]\dd x$。
+  answer:
+    type: number
+    value: 11
+  hints:
+    - |
+      先用区间可加性（additivity over intervals）求$\int_2^5f(x)\,\dd x$。
+    - |
+      $\int_0^5f=\int_0^2f+\int_2^5f$，所以$\int_2^5f=4$。
+    - |
+      由线性（linearity），$\int_2^5\bigl[2f(x)+1\bigr]\dd x=2\int_2^5f(x)\,\dd x+\int_2^51\,\dd x$，后一项是区间的长度。
+  solution: |
+    由区间可加性，$\int_2^5f(x)\,\dd x=7-3=4$。由线性，所求积分是$2\times4+\int_2^51\,\dd x=8+3=11$。
+
+- id: p2
+  tier: easy
+  statement: |
+    求$f(x)=2x+1$在$[0,4]$上的平均值（average value）。
+  answer:
+    type: number
+    value: 5
+  hints:
+    - |
+      平均值是$\frac1{4-0}\int_0^4(2x+1)\,\dd x$。
+    - |
+      $y=2x+1$在$[0,4]$上和$x$轴围成梯形，上下底是$f(0)=1$和$f(4)=9$，高是$4$。
+    - |
+      梯形面积是$\frac{(1+9)\cdot4}2=20$。
+  solution: |
+    积分是梯形的面积$\frac{(1+9)\times4}2=20$，平均值是$\frac{20}4=5$。它正好是$f(2)$：一次函数在区间中点取到平均值。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\int_{-3}^3\bigl(x^3+\sqrt{9-x^2}\bigr)\dd x$。
+  answer:
+    type: number
+    value: 9*pi/2
+  hints:
+    - |
+      用线性拆成两个积分，分别看它们的几何意义。
+    - |
+      $x^3$是奇函数（odd function）；$y=\sqrt{9-x^2}$是半径为$3$的上半圆。
+    - |
+      $\int_{-3}^3x^3\,\dd x=0$，$\int_{-3}^3\sqrt{9-x^2}\,\dd x=\frac12\pi\cdot3^2$。
+  solution: |
+    由线性拆开。$x^3$是奇函数，在$[-3,3]$上左右两块带符号的面积抵消，积分是$0$；$\sqrt{9-x^2}$的图像是半径为$3$的上半圆，积分是$\frac{9\pi}2$。所以原式等于$\frac{9\pi}2\approx14.14$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$f(x)=x^2$在$[0,3]$上的平均值，以及积分中值定理（mean value theorem for integrals）里的$\xi$。依次填平均值和$\xi$。
+  answer:
+    type: tuple
+    value: [3, sqrt(3)]
+  hints:
+    - |
+      先用等分、取右端点的黎曼和求$\int_0^3x^2\,\dd x$。
+    - |
+      $\sum_{k=1}^n\Bigl(\frac{3k}n\Bigr)^2\frac3n=\frac{27}{n^3}\cdot\frac{n(n+1)(2n+1)}6\to9$。
+    - |
+      平均值是$\frac93=3$；解$\xi^2=3$，$\xi$要在$[0,3]$里。
+  solution: |
+    $\int_0^3x^2\,\dd x=9$，平均值是$3$。由$\xi^2=3$、$0\le\xi\le3$，得$\xi=\sqrt3\approx1.732$。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）设$f$在$[a,b]$上连续，$f\ge0$，并且$\int_a^bf(x)\,\dd x=0$。证明$f$在$[a,b]$上恒为$0$。
+
+    （2）设$f$、$g$在$[a,b]$上连续，$\int_a^b\bigl(f(x)-g(x)\bigr)^2\dd x=0$。证明$f=g$。
+
+    （3）去掉（1）里「连续」的条件，结论还成立吗？
+  hints:
+    - |
+      （1）反过来想：如果有一点$f(x_0)>0$，积分会怎样？
+    - |
+      （2）对$(f-g)^2$用（1）。（3）只在一个点不为$0$的函数。
+    - |
+      （1）若有$x_0$使$f(x_0)>0$，由讲解里的定理，$f$连续、非负、在一点为正，积分大于$0$，和条件矛盾。所以$f$恒为$0$。
+
+      （2）$(f-g)^2$连续、非负、积分为$0$，由（1）恒为$0$，即$f=g$。
+
+      （3）不成立。$[0,1]$上$f(\frac12)=1$、别处为$0$的函数非负，积分是$0$（改一个点不影响积分），可它不恒为$0$。
+  reference: |
+    （1）否则积分大于$0$。
+
+    （2）对$(f-g)^2$用（1）。
+
+    （3）不成立，只在一点不为$0$的函数。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）设$f$在$[a,b]$上连续，$g$在$[a,b]$上连续并且$g\ge0$。证明：有$\xi\in[a,b]$，使$\int_a^bf(x)g(x)\,\dd x=f(\xi)\int_a^bg(x)\,\dd x$。
+
+    （2）由此说明$\frac13\le\int_0^1x^2e^x\,\dd x\le\frac e3$。
+  hints:
+    - |
+      （1）设$f$的最小值、最大值是$m$、$M$。$g\ge0$，所以$mg\le fg\le Mg$，再用保序性（monotonicity）。
+    - |
+      （1）$\int_a^bg=0$和$\int_a^bg>0$分开讨论；后一种情形，$\frac{\int fg}{\int g}$在$m$和$M$之间，用介值定理。
+    - |
+      （1）由$mg\le fg\le Mg$和保序性，$m\int_a^bg\le\int_a^bfg\le M\int_a^bg$。若$\int_a^bg=0$，则$\int_a^bfg=0$，任取$\xi$都行；若$\int_a^bg>0$，则$\frac{\int_a^bfg}{\int_a^bg}$在$m$和$M$之间，由介值定理，它等于某个$f(\xi)$。
+
+      （2）取$f=e^x$、$g=x^2$，$\int_0^1x^2\,\dd x=\frac13$，所以$\int_0^1x^2e^x\,\dd x=\frac{e^\xi}3$，$0\le\xi\le1$，在$\frac13$和$\frac e3$之间。
+  reference: |
+    （1）$m\int g\le\int fg\le M\int g$，再用介值定理（$\int g=0$时另说）。
+
+    （2）$\frac{e^\xi}3$，$\xi\in[0,1]$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）为什么要规定$\int_b^af(x)\,\dd x=-\int_a^bf(x)\,\dd x$？如果规定成$\int_b^af(x)\,\dd x=\int_a^bf(x)\,\dd x$，区间可加性还对任何顺序都成立吗？
+
+    （2）从黎曼和看，「从右往左积」时$\Delta x_i$是什么符号？
+  hints:
+    - |
+      （1）试试$f=1$，$\int_0^2=\int_0^3+\int_3^2$。
+    - |
+      （2）分点从$b$排到$a$，$x_i<x_{i-1}$。
+    - |
+      （1）$f=1$时，$\int_0^2=2$，$\int_0^3=3$。要让可加性成立，$\int_3^2$必须是$-1$；规定成正的$1$，就得到$2=4$，矛盾。所以约定是为了让可加性对任何顺序都成立，计算时不用管谁大谁小。
+
+      （2）从$b$往$a$排分点，每个$\Delta x_i=x_i-x_{i-1}$都是负的，黎曼和整体变号，极限是$-\int_a^bf$：约定正是黎曼和本来的样子。
+  reference: |
+    （1）不成立：$f=1$时会得到$2=4$。
+
+    （2）$\Delta x_i<0$，黎曼和变号。
+
+- id: p8
+  tier: thinking
+  statement: |
+    一辆车先以$30\,\mathrm{km/h}$开了$60\,\mathrm{km}$，再以$60\,\mathrm{km/h}$开了$60\,\mathrm{km}$。
+
+    （1）全程的平均速度是多少？是$45\,\mathrm{km/h}$吗？
+
+    （2）把速度看成时间的函数，算它在整段时间上的平均值；再把速度看成路程的函数，算它在整段路程上的平均值。两者一样吗？
+
+    （3）「平均速度」是哪一种平均？
+  hints:
+    - |
+      （1）两段各用了多少时间？
+    - |
+      （2）时间的函数：前$2$小时是$30$，后$1$小时是$60$。路程的函数：前$60\,\mathrm{km}$是$30$，后$60\,\mathrm{km}$是$60$。
+    - |
+      （1）两段用了$2$小时和$1$小时，平均速度是$\frac{120}3=40\,\mathrm{km/h}$，不是$45$。
+
+      （2）对时间平均：$\frac{30\times2+60\times1}{3}=40$，等于总路程除以总时间。对路程平均：$\frac{30\times60+60\times60}{120}=45$。两者不同：慢的那一段用的时间长，在对时间的平均里占的分量大。
+
+      （3）平均速度是速度对时间的平均值，$\frac1{T}\int_0^Tv\,\dd t$，正是位移除以时间。说「平均值」时，要说清对哪个变量平均。
+  reference: |
+    （1）$40\,\mathrm{km/h}$。
+
+    （2）对时间平均是$40$，对路程平均是$45$。
+
+    （3）对时间平均。

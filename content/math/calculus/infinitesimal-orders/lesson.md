@@ -73,7 +73,7 @@ $x\to0$时，$x$、$x^2$、$\sin x$、$1-\cos x$都趋于$0$，快慢却不一�
 ::anchor{id="thm-equivalent-o"}
 **定理**　$\alpha\sim\beta$当且仅当$\alpha-\beta=o(\beta)$，也就是$\alpha=\beta+o(\beta)$。
 
-道理：$\frac{\alpha-\beta}{\beta}=\frac{\alpha}{\beta}-1$，前者趋于$0$和后者趋于$0$是一回事。于是上表可以读成$\sin x=x+o(x)$、$\ln(1+x)=x+o(x)$、$1-\cos x=\frac12x^2+o(x^2)$：主要部分加上一个更高阶的误差。以后[泰勒公式](lesson:math.calculus.taylor-polynomial)（Taylor's formula）会把误差里的主要部分也一项项写出来。
+道理：$\frac{\alpha-\beta}{\beta}=\frac{\alpha}{\beta}-1$，前者趋于$0$和后者趋于$0$是一回事。于是上表可以读成$\sin x=x+o(x)$、$\ln(1+x)=x+o(x)$、$1-\cos x=\frac12x^2+o(x^2)$：主要部分加上一个更高阶的误差。以后:term[泰勒公式]{id="math.calculus.taylor-formula"}（Taylor's formula，见[泰勒公式](lesson:math.calculus.taylor-polynomial)）会把误差里的主要部分也一项项写出来。
 
 ## 几何图像
 

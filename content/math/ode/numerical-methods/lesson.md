@@ -4,7 +4,7 @@ title: |
   数值解法：欧拉法与龙格-库塔法
 goal: |
   会用欧拉法和四阶龙格-库塔法求数值解，并比较两种方法的误差随步长缩小得有多快。
-prerequisites: [math.ode.what-is-ode, math.calculus.taylor-polynomial]
+prerequisites: [math.ode.what-is-ode, math.calculus.taylor-remainder]
 minutes: 30
 summary: |
   欧拉法误差正比于步长，四阶龙格-库塔法正比于步长的四次方。
@@ -36,7 +36,7 @@ status: reviewed
 ::anchor{id="thm-euler-order"}
 **:term[欧拉法]{id="math.ode.euler-method"}是一阶方法**　设$f$对$y$满足$|f(x,y)-f(x,z)|\le L|y-z|$（$L$是常数），解$y$有连续的二阶导数，则欧拉法的局部截断误差是$\frac{h^2}{2}y''(\xi)$，在有界区间上，整体误差是$h$的量级。
 
-**证明思路**：由带拉格朗日余项的[泰勒公式](lesson:math.calculus.taylor-polynomial)（Taylor's formula），$y(x_n+h)=y(x_n)+hy'(x_n)+\frac{h^2}{2}y''(\xi)$，后一项就是局部截断误差。$N\sim\frac1h$步、每步$h^2$量级的误差加起来是$h$量级；前面的误差每走一步至多放大到$1+hL$倍，这正是定理里对$f$的条件保证的，累积起来仍是$h$的量级，严格的估计见第 5 题。
+**证明思路**：由带拉格朗日余项（Lagrange remainder）的[泰勒公式](lesson:math.calculus.taylor-remainder#thm-lagrange-remainder)（Taylor's formula），$y(x_n+h)=y(x_n)+hy'(x_n)+\frac{h^2}{2}y''(\xi)$，后一项就是局部截断误差。$N\sim\frac1h$步、每步$h^2$量级的误差加起来是$h$量级；前面的误差每走一步至多放大到$1+hL$倍，这正是定理里对$f$的条件保证的，累积起来仍是$h$的量级，严格的估计见第 5 题。
 
 ### 改进的欧拉法与龙格-库塔法
 
@@ -86,7 +86,7 @@ sliders:
 
 **为什么想到这么做**：对$y'=y$，欧拉法每一步是$y_{n+1}=(1+h)y_n$，可以写出$y_N$的公式，再和$e$比较。
 
-**推导**：$y_N=(1+h)^N=\bigl(1+\frac1N\bigr)^N$。由泰勒公式，$N\ln\bigl(1+\frac1N\bigr)=1-\frac{1}{2N}+O\bigl(\frac{1}{N^2}\bigr)$，所以$y_N=e\cdot e^{-\frac{1}{2N}+O(N^{-2})}=e-\frac{e}{2N}+O\bigl(\frac{1}{N^2}\bigr)$。整体误差约为$\frac{e}{2}h$，和$h$成正比：步长减半，误差减半，欧拉法是一阶的。
+**推导**：$y_N=(1+h)^N=\bigl(1+\frac1N\bigr)^N$。由泰勒公式，$N\ln\bigl(1+\frac1N\bigr)=1-\frac{1}{2N}+o\bigl(\frac1N\bigr)$，所以$y_N=e\cdot e^{-\frac{1}{2N}+o(\frac1N)}=e-\frac{e}{2N}+o\bigl(\frac1N\bigr)$。整体误差约为$\frac{e}{2}h$，和$h$成正比：步长减半，误差减半，欧拉法是一阶的。
 
 ### 例 2　三种方法比一比
 

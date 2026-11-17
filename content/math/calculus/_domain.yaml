@@ -639,3 +639,255 @@ glossary:
       $\sinh x$、$\cosh x$、$\tanh x$等的统称；$\cosh^2x-\sinh^2x=1$，点$(\cosh t,\sinh t)$在双曲线上。
     definedIn: math.calculus.hyperbolic-functions
     anchor: def-hyperbolic
+  - id: math.calculus.curvilinear-trapezoid
+    zh: |
+      曲边梯形
+    en: |
+      curvilinear trapezoid
+    brief: |
+      由直线$x=a$、$x=b$、$x$轴和曲线$y=f(x)$（$f\ge0$）围成的图形；它的面积是$\int_a^bf(x)\,\dd x$。
+    definedIn: math.calculus.definite-integral
+    anchor: def-curvilinear-trapezoid
+  - id: math.calculus.partition
+    zh: |
+      分割
+    en: |
+      partition
+    brief: |
+      在$[a,b]$里取分点$a=x_0<x_1<\cdots<x_n=b$，把区间分成$n$个小区间。
+    definedIn: math.calculus.definite-integral
+    anchor: def-riemann-sum
+  - id: math.calculus.riemann-sum
+    zh: |
+      黎曼和
+    en: |
+      Riemann sum
+    brief: |
+      分割$[a,b]$，在每个小区间里取一点$\xi_i$，作和$\sum f(\xi_i)\Delta x_i$；每一项是一个细长方形的面积。
+    definedIn: math.calculus.definite-integral
+    anchor: def-riemann-sum
+  - id: math.calculus.definite-integral
+    zh: |
+      定积分
+    en: |
+      definite integral
+    brief: |
+      分割越来越细时黎曼和趋于的数，记作$\int_a^bf(x)\,\dd x$；它是$x$轴上方的面积减去下方的面积。
+    definedIn: math.calculus.definite-integral
+    anchor: def-definite-integral
+  - id: math.calculus.integrable
+    zh: |
+      可积
+    en: |
+      integrable
+    brief: |
+      不管怎样分割、取点，分割越来越细时黎曼和都趋于同一个数；闭区间上的连续函数都可积。
+    definedIn: math.calculus.definite-integral
+    anchor: def-definite-integral
+  - id: math.calculus.integration-variable
+    zh: |
+      积分变量
+    en: |
+      variable of integration
+    brief: |
+      $\int_a^bf(x)\,\dd x$里的$x$；它只是一个记号，换成别的字母，积分的值不变。
+    definedIn: math.calculus.definite-integral
+    anchor: def-definite-integral
+  - id: math.calculus.additivity-over-intervals
+    zh: |
+      区间可加性
+    en: |
+      additivity over intervals
+    brief: |
+      $\int_a^bf(x)\,\dd x=\int_a^cf(x)\,\dd x+\int_c^bf(x)\,\dd x$，对$a$、$b$、$c$的任何顺序都成立。
+    definedIn: math.calculus.integral-properties
+    anchor: thm-additivity
+  - id: math.calculus.integral-mean-value-theorem
+    zh: |
+      积分中值定理
+    en: |
+      mean value theorem for integrals
+    brief: |
+      $f$在$[a,b]$上连续时，有$\xi\in[a,b]$，使$\int_a^bf(x)\,\dd x=f(\xi)(b-a)$。
+    definedIn: math.calculus.integral-properties
+    anchor: thm-integral-mean-value
+  - id: math.calculus.average-value
+    zh: |
+      平均值
+    en: |
+      average value
+    brief: |
+      $f$在$[a,b]$上的平均值是$\frac1{b-a}\int_a^bf(x)\,\dd x$；连续函数在区间上取得到它。
+    definedIn: math.calculus.integral-properties
+    anchor: def-average-value
+  - id: math.calculus.variable-upper-limit-integral
+    zh: |
+      变上限积分
+    en: |
+      integral with variable upper limit
+    brief: |
+      $f$连续时，$\Phi(x)=\int_a^xf(t)\,\dd t$随上限$x$变化得到的函数；它的导数是$f(x)$。
+    definedIn: math.calculus.fundamental-theorem
+    anchor: def-variable-upper-limit-integral
+  - id: math.calculus.fundamental-theorem-of-calculus
+    zh: |
+      微积分基本定理
+    en: |
+      fundamental theorem of calculus
+    brief: |
+      $f$在区间上连续时，变上限积分$\int_a^xf(t)\,\dd t$可导，导数等于$f(x)$。
+    definedIn: math.calculus.fundamental-theorem
+    anchor: thm-ftc
+  - id: math.calculus.newton-leibniz-formula
+    zh: |
+      牛顿-莱布尼茨公式
+    en: |
+      Newton-Leibniz formula
+    brief: |
+      $f$在$[a,b]$上连续、$F'=f$时，$\int_a^bf(x)\,\dd x=F(b)-F(a)$，右边记作$F(x)\Big|_a^b$。
+    definedIn: math.calculus.fundamental-theorem
+    anchor: thm-newton-leibniz
+  - id: math.calculus.indeterminate-form
+    zh: |
+      不定式
+    en: |
+      indeterminate form
+    brief: |
+      只知道各部分的极限、定不出整体极限的式子，如$\frac00$、$\frac\infty\infty$、$0\cdot\infty$、$\infty-\infty$、$1^\infty$型。
+    definedIn: math.calculus.lhopital
+    anchor: def-indeterminate-form
+  - id: math.calculus.infinity-over-infinity
+    zh: |
+      $\frac\infty\infty$型
+    en: |
+      indeterminate form ∞/∞
+    brief: |
+      分子、分母都趋于无穷大的分式；极限要看谁增长得快，常用洛必达法则求。
+    definedIn: math.calculus.lhopital
+    anchor: def-indeterminate-form
+  - id: math.calculus.cauchy-mean-value-theorem
+    zh: |
+      柯西中值定理
+    en: |
+      Cauchy's mean value theorem
+    brief: |
+      $f$、$g$在$[a,b]$上连续、在$(a,b)$内可导且$g'\ne0$，则有$\xi$使$\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f'(\xi)}{g'(\xi)}$。
+    definedIn: math.calculus.lhopital
+    anchor: thm-cauchy-mean-value
+  - id: math.calculus.lhopital-rule
+    zh: |
+      洛必达法则
+    en: |
+      L'Hôpital's rule
+    brief: |
+      $\frac fg$是$\frac00$型或$\frac\infty\infty$型，$\frac{f'}{g'}$的极限是$L$时，$\frac fg$的极限也是$L$。
+    definedIn: math.calculus.lhopital
+    anchor: thm-lhopital
+  - id: math.calculus.first-derivative-test
+    zh: |
+      一阶导数判别法
+    en: |
+      first derivative test
+    brief: |
+      $f$在$x_0$处连续，$f'$在两侧左正右负，$x_0$是极大值点；左负右正是极小值点；两侧同号不是极值点。
+    definedIn: math.calculus.monotonicity
+    anchor: thm-first-derivative-test
+  - id: math.calculus.convex-function
+    zh: |
+      凸函数
+    en: |
+      convex function
+    brief: |
+      区间上任两点之间的曲线都不高于连接这两点的弦，图像向上弯；$f''\ge0$时是凸的。有的书叫它凹。
+    definedIn: math.calculus.concavity
+    anchor: def-convex
+  - id: math.calculus.concave-function
+    zh: |
+      凹函数
+    en: |
+      concave function
+    brief: |
+      区间上任两点之间的曲线都不低于连接这两点的弦，图像向下弯；$f''\le0$时是凹的。
+    definedIn: math.calculus.concavity
+    anchor: def-convex
+  - id: math.calculus.inflection-point
+    zh: |
+      拐点
+    en: |
+      inflection point
+    brief: |
+      曲线上一侧严格凸、另一侧严格凹的点$\bigl(x_0,f(x_0)\bigr)$；在$f''=0$或$f''$不存在、两侧$f''$变号的地方找。
+    definedIn: math.calculus.concavity
+    anchor: def-inflection-point
+  - id: math.calculus.second-derivative-test
+    zh: |
+      二阶导数判别法
+    en: |
+      second derivative test
+    brief: |
+      $f'(x_0)=0$时，$f''(x_0)>0$则$f(x_0)$是极小值，$f''(x_0)<0$则是极大值，$f''(x_0)=0$时不能判断。
+    definedIn: math.calculus.concavity
+    anchor: thm-second-derivative-test
+  - id: math.calculus.oblique-asymptote
+    zh: |
+      斜渐近线
+    en: |
+      oblique asymptote
+    brief: |
+      $x\to+\infty$（或$-\infty$）时$f(x)-(kx+b)\to0$、$k\ne0$，直线$y=kx+b$叫斜渐近线；$k=\lim\frac{f(x)}x$。
+    definedIn: math.calculus.curve-sketching
+    anchor: def-oblique-asymptote
+  - id: math.calculus.taylor-polynomial
+    zh: |
+      泰勒多项式
+    en: |
+      Taylor polynomial
+    brief: |
+      $T_n(x)=\sum_{k=0}^n\frac{f^{(k)}(a)}{k!}(x-a)^k$，它在$a$处的值和前$n$阶导数都和$f$的相同。
+    definedIn: math.calculus.taylor-polynomial
+    anchor: def-taylor-polynomial
+  - id: math.calculus.maclaurin-polynomial
+    zh: |
+      麦克劳林多项式
+    en: |
+      Maclaurin polynomial
+    brief: |
+      在$0$处的泰勒多项式，比如$e^x$的是$1+x+\frac{x^2}{2!}+\cdots+\frac{x^n}{n!}$。
+    definedIn: math.calculus.taylor-polynomial
+    anchor: def-taylor-polynomial
+  - id: math.calculus.remainder
+    zh: |
+      余项
+    en: |
+      remainder
+    brief: |
+      $R_n(x)=f(x)-T_n(x)$，用泰勒多项式近似$f$的误差。
+    definedIn: math.calculus.taylor-polynomial
+    anchor: def-remainder
+  - id: math.calculus.peano-remainder
+    zh: |
+      佩亚诺余项
+    en: |
+      Peano remainder
+    brief: |
+      余项写成$o\bigl((x-a)^n\bigr)$：$f$在$a$处$n$阶可导时，$x\to a$时误差比$(x-a)^n$高阶。
+    definedIn: math.calculus.taylor-polynomial
+    anchor: thm-peano
+  - id: math.calculus.taylor-formula
+    zh: |
+      泰勒公式
+    en: |
+      Taylor's formula
+    brief: |
+      $f(x)=T_n(x)+R_n(x)$；带佩亚诺余项时，$x\to a$时$R_n(x)=o\bigl((x-a)^n\bigr)$。
+    definedIn: math.calculus.taylor-polynomial
+    anchor: thm-peano
+  - id: math.calculus.lagrange-remainder
+    zh: |
+      拉格朗日余项
+    en: |
+      Lagrange remainder
+    brief: |
+      余项写成$\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-a)^{n+1}$，$\xi$在$a$和$x$之间；$|f^{(n+1)}|\le M$时可以估计误差。
+    definedIn: math.calculus.taylor-remainder
+    anchor: thm-lagrange-remainder

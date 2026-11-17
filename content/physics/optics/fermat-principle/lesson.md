@@ -31,7 +31,7 @@ status: reviewed
 ::anchor{id="def-fermat"}
 光从一点传到另一点，沿:term[光程]{id="physics.optics.optical-path-length"}取极值的路径传播：把实际的路径稍微改动一点，用一个参数描述这种改动，光程对这个参数的导数为零。这叫作:term[费马原理]{id="physics.optics.fermat-principle"}（Fermat's principle）；多数情况下这个极值是最小值，所以也常说成「光走用时最短的路径」。
 
-为什么这样定义：在均匀介质里，两点之间光程最小的路径是直线，光沿直线传播就是它的特例；:term[反射定律]{id="physics.optics.law-of-reflection"}（law of reflection）和:term[折射定律]{id="physics.optics.law-of-refraction"}（law of refraction）也都能由它推出（下面两个定理）。约 1 世纪，亚历山大城的希罗（Hero of Alexandria）用「光走最短的路」解释了反射；1662 年，费马（Pierre de Fermat）假定光在越密的介质里越慢，由「用时最短」推出了折射定律。边界情况：「最短」并不总对，凹面镜里的实际光路可以是光程的极大值（第 6 题），所以原理只要求导数为零，即驻点（stationary point，见[最值问题](lesson:math.calculus.optimization)）。
+为什么这样定义：在均匀介质里，两点之间光程最小的路径是直线，光沿直线传播就是它的特例；:term[反射定律]{id="physics.optics.law-of-reflection"}（law of reflection）和:term[折射定律]{id="physics.optics.law-of-refraction"}（law of refraction）也都能由它推出（下面两个定理）。约 1 世纪，亚历山大城的希罗（Hero of Alexandria）用「光走最短的路」解释了反射；1662 年，费马（Pierre de Fermat）假定光在越密的介质里越慢，由「用时最短」推出了折射定律。边界情况：「最短」并不总对，凹面镜里的实际光路可以是光程的极大值（第 6 题），所以原理只要求导数为零，即驻点（stationary point）。
 
 ### 由费马原理推出反射定律和折射定律
 

@@ -38,7 +38,7 @@ status: reviewed
 ::anchor{id="thm-linear-solution"}
 **定理 1**　设$p$、$q$在区间$I$上连续，$\mu$是积分因子，$F$是$\mu q$的一个原函数。则方程$y'+p(x)y=q(x)$在$I$上的:term[通解]{id="math.ode.general-solution"}（general solution）是$y=\frac{F(x)+C}{\mu(x)}$；对$x_0\in I$和任意$y_0$，:term[初值问题]{id="math.ode.initial-value-problem"}（initial value problem）$y(x_0)=y_0$在整个$I$上有唯一的解，其中$C=\mu(x_0)y_0-F(x_0)$。
 
-**证明思路**：$y$是解，当且仅当$(\mu y)'=\mu q$，当且仅当$\mu y$是$\mu q$的原函数。同一个函数在区间上的原函数只差常数（见[原函数与不定积分](lesson:math.calculus.antiderivatives)），所以$\mu y=F+C$；连续函数$\mu q$一定有原函数，这由[微积分基本定理](lesson:math.calculus.fundamental-theorem)（fundamental theorem of calculus）保证。初始条件定出唯一的$C$。
+**证明思路**：$y$是解，当且仅当$(\mu y)'=\mu q$，当且仅当$\mu y$是$\mu q$的原函数。同一个函数在区间上的原函数只差常数（见[原函数与不定积分](lesson:math.calculus.antiderivatives)），所以$\mu y=F+C$；连续函数$\mu q$一定有原函数，这由:term[微积分基本定理]{id="math.calculus.fundamental-theorem-of-calculus"}（fundamental theorem of calculus，见[微积分基本定理](lesson:math.calculus.fundamental-theorem)）保证。初始条件定出唯一的$C$。
 
 为什么想到这么做：左边$y'+py$差一点就是乘积的导数，缺的是一个因子$\mu$，它要满足$\mu'=p\mu$，指数函数正好有这个性质。和$y'=y^2$不同，线性方程的解在$p$、$q$连续的整个区间上都存在，不会中途跑到无穷（第 7 题）。
 

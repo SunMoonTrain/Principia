@@ -151,3 +151,88 @@ export function integrate(f: (x: number) => number, a: number, b: number): numbe
   }
   return prev;
 }
+
+/**
+ * 按不严格不等式的极值定义判断 x0 是极大值点还是极小值点（批次 19 加的，和 local-extrema 脚本里的办法相同）：
+ * δ 取 10⁻¹ … 10⁻⁶，在 0 < |x − x0| < δ 里两侧各取 1 万个点；有一个 δ 使这些点上都 f(x) ≤ f(x0)（或都 ≥）就算。
+ */
+export function extremumKind(f: (x: number) => number, x0: number): 'max' | 'min' | null {
+  const v = f(x0);
+  for (let k = 1; k <= 6; k++) {
+    const delta = 10 ** -k;
+    let allLe = true;
+    let allGe = true;
+    for (let i = 0; i < 10000; i++) {
+      const d = (delta * (i + 0.37)) / 10000;
+      for (const x of [x0 - d, x0 + d]) {
+        const w = f(x);
+        if (w > v) allLe = false;
+        if (w < v) allGe = false;
+      }
+    }
+    if (allLe) return 'max';
+    if (allGe) return 'min';
+  }
+  return null;
+}
+
+/**
+ * 找 f 在 [a, b] 上不凸的反例（批次 19 加的）：在 n + 1 个等距点里任取两点 x1 < x2，检查中点处
+ * f((x1 + x2)/2) ≤ (f(x1) + f(x2))/2（连续函数中点凸和凸是一回事），容差取函数值的 1e-12 倍。
+ * 返回第一对不满足的 (x1, x2)，都满足就返回 null。
+ */
+export function convexityCounterexample(f: (x: number) => number, a: number, b: number, n = 400): [number, number] | null {
+  const xs = Array.from({ length: n + 1 }, (_, i) => a + ((b - a) * i) / n);
+  const ys = xs.map(f);
+  for (let i = 0; i <= n; i++) {
+    for (let j = i + 2; j <= n; j += 2) {
+      const mid = ys[(i + j) / 2];
+      const chord = (ys[i] + ys[j]) / 2;
+      if (mid > chord + 1e-12 * Math.max(1, Math.abs(chord))) return [xs[i], xs[j]];
+    }
+  }
+  return null;
+}
+
+/**
+ * f 在 [a, b] 上的最大值（批次 19 加的）：先在 n 等分的格点上找函数值最大的格点，
+ * 再在它左右各一格的范围里用黄金分割细化（最大值点在端点时会停在端点）。
+ */
+export function maxOn(f: (x: number) => number, a: number, b: number, n = 20000): { x: number; value: number } {
+  const h = (b - a) / n;
+  let best = a;
+  let bestV = f(a);
+  for (let i = 1; i <= n; i++) {
+    const x = a + i * h;
+    const v = f(x);
+    if (v > bestV) {
+      best = x;
+      bestV = v;
+    }
+  }
+  let lo = Math.max(a, best - h);
+  let hi = Math.min(b, best + h);
+  const r = (Math.sqrt(5) - 1) / 2;
+  let x1 = hi - r * (hi - lo);
+  let x2 = lo + r * (hi - lo);
+  let f1 = f(x1);
+  let f2 = f(x2);
+  for (let k = 0; k < 200; k++) {
+    if (f1 < f2) {
+      lo = x1;
+      x1 = x2;
+      f1 = f2;
+      x2 = lo + r * (hi - lo);
+      f2 = f(x2);
+    } else {
+      hi = x2;
+      x2 = x1;
+      f2 = f1;
+      x1 = hi - r * (hi - lo);
+      f1 = f(x1);
+    }
+  }
+  const candidates: [number, number][] = [[best, bestV], [x1, f1], [x2, f2], [a, f(a)], [b, f(b)]];
+  candidates.sort((p, q) => q[1] - p[1]);
+  return { x: candidates[0][0], value: candidates[0][1] };
+}
