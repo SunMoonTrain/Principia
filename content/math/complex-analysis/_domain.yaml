@@ -19,6 +19,8 @@ macros:
     \operatorname{Log}
   \dd: |
     \mathop{}\!\mathrm{d}
+  \lap: |
+    \nabla^2
 glossary:
   - id: math.complex-analysis.complex-number
     zh: |
@@ -326,3 +328,183 @@ glossary:
       在整个复平面上全纯的函数，如多项式、$e^z$、$\sin z$、$\cos z$。
     definedIn: math.complex-analysis.holomorphic
     anchor: def-holomorphic
+  - id: math.complex-analysis.complex-logarithm
+    zh: |
+      复对数
+    en: |
+      complex logarithm
+    brief: |
+      满足$e^w=z$的复数$w$（$z\ne0$），记作$\log z$；$\log z=\ln|z|+i\arg z$，有无穷多个值，两两相差$2\pi i$的整数倍。
+    definedIn: math.complex-analysis.complex-logarithm
+    anchor: def-complex-log
+  - id: math.complex-analysis.principal-logarithm
+    zh: |
+      对数主值
+    en: |
+      principal logarithm
+    brief: |
+      取辐角主值的那个复对数$\Log z=\ln|z|+i\Arg z$，虚部在$(-\pi,\pi]$里；在去掉负实轴的平面上全纯，导数是$\frac1z$。
+    definedIn: math.complex-analysis.complex-logarithm
+    anchor: def-principal-log
+  - id: math.complex-analysis.branch
+    zh: |
+      分支
+    en: |
+      branch
+    brief: |
+      区域$G$上满足$e^{F(z)}=z$的连续函数$F$，即从多值的$\log z$里连续地挑出的一个值，例如去掉负实轴的平面上的$\Log z$。
+    definedIn: math.complex-analysis.complex-logarithm
+    anchor: def-branch
+  - id: math.complex-analysis.branch-cut
+    zh: |
+      支割线
+    en: |
+      branch cut
+    brief: |
+      为了得到分支而从平面上去掉的曲线，例如$\Log z$的支割线是负实轴；从它的两侧趋近，分支的值不同。
+    definedIn: math.complex-analysis.complex-logarithm
+    anchor: def-branch
+  - id: math.complex-analysis.power-function
+    zh: |
+      幂函数
+    en: |
+      power function
+    brief: |
+      $z\mapsto z^a=e^{a\log z}$（$z\ne0$）；$a$是整数时只有一个值，$a=\frac pq$时有$q$个，$a$是无理数或不是实数时有无穷多个；主值是$e^{a\Log z}$。
+    definedIn: math.complex-analysis.complex-logarithm
+    anchor: def-power
+  - id: math.complex-analysis.conformal-map
+    zh: |
+      共形映射
+    en: |
+      conformal map
+    brief: |
+      区域上全纯、导数处处不为$0$的函数，也叫保角映射；它在每一点保持曲线夹角的大小和转向，小处的形状不变。
+    definedIn: math.complex-analysis.conformal-maps
+    anchor: def-conformal
+  - id: math.complex-analysis.disc-of-convergence
+    zh: |
+      收敛圆盘
+    en: |
+      disc of convergence
+    brief: |
+      复幂级数$\sum a_n(z-a)^n$在圆盘$|z-a|<R$里绝对收敛、在圆盘外发散，这个圆盘叫收敛圆盘，$R=\frac1{\limsup\sqrt[n]{|a_n|}}$；圆周上收敛不收敛要逐点看。
+    definedIn: math.complex-analysis.complex-power-series
+    anchor: def-disc-of-convergence
+  - id: math.complex-analysis.extended-complex-plane
+    zh: |
+      扩充复平面
+    en: |
+      extended complex plane
+    brief: |
+      复平面添上一个点$\infty$得到的$\C\cup\{\infty\}$；$z\to\infty$指$|z|\to+\infty$，直线可以看成经过$\infty$的圆。
+    definedIn: math.complex-analysis.mobius
+    anchor: def-extended-plane
+  - id: math.complex-analysis.mobius-transformation
+    zh: |
+      分式线性变换
+    en: |
+      Möbius transformation
+    brief: |
+      $T(z)=\frac{az+b}{cz+d}$，$ad-bc\ne0$，也叫默比乌斯变换；它是扩充复平面上的一一映射，把圆或直线映成圆或直线，由三个点的像唯一确定。
+    definedIn: math.complex-analysis.mobius
+    anchor: def-mobius
+  - id: math.complex-analysis.cross-ratio
+    zh: |
+      交比
+    en: |
+      cross-ratio
+    brief: |
+      $(z,z_1,z_2,z_3)=\frac{(z-z_1)(z_2-z_3)}{(z-z_3)(z_2-z_1)}$；作为$z$的函数，它是把$z_1$、$z_2$、$z_3$映成$0$、$1$、$\infty$的分式线性变换。
+    definedIn: math.complex-analysis.mobius
+    anchor: def-cross-ratio
+  - id: math.complex-analysis.cauchy-integral-formula
+    zh: |
+      柯西积分公式
+    en: |
+      Cauchy's integral formula
+    brief: |
+      $f$在以$a$为圆心的开圆盘上全纯，$C_r$是其中的圆周$|\zeta-a|=r$，则对圆内的$z$，$f(z)=\frac1{2\pi i}\oint_{C_r}\frac{f(\zeta)}{\zeta-z}\dd\zeta$：圆内的值由圆周上的值决定。
+    definedIn: math.complex-analysis.cauchy-integral-formula
+    anchor: thm-cauchy-formula
+  - id: math.complex-analysis.morera-theorem
+    zh: |
+      莫雷拉定理
+    en: |
+      Morera's theorem
+    brief: |
+      $f$在开集$D$上连续，并且沿$D$里每个三角形（连同内部在$D$里）的边界积分为$0$，则$f$在$D$上全纯；它是古尔萨定理倒过来的说法。
+    definedIn: math.complex-analysis.higher-derivatives
+    anchor: thm-morera
+  - id: math.complex-analysis.higher-derivative-formula
+    zh: |
+      高阶导数公式
+    en: |
+      Cauchy's integral formula for derivatives
+    brief: |
+      $f$在以$a$为圆心的开圆盘上全纯，$C_r$是其中的圆周$|\zeta-a|=r$，则对圆内的$z$，$f^{(n)}(z)=\frac{n!}{2\pi i}\oint_{C_r}\frac{f(\zeta)}{(\zeta-z)^{n+1}}\dd\zeta$；全纯函数因此无穷次可导。
+    definedIn: math.complex-analysis.higher-derivatives
+    anchor: thm-higher-derivatives
+  - id: math.complex-analysis.analytic-function
+    zh: |
+      解析函数
+    en: |
+      analytic function
+    brief: |
+      在开集$D$的每一点附近都等于一个幂级数的和的函数；在开集上，解析和全纯是一回事。
+    definedIn: math.complex-analysis.power-series
+    anchor: def-analytic
+  - id: math.complex-analysis.harmonic-conjugate
+    zh: |
+      共轭调和函数
+    en: |
+      harmonic conjugate
+    brief: |
+      实值调和函数$u$在开集$D$上的共轭调和函数，是使$u+iv$在$D$上全纯的实函数$v$；在开圆盘上一定存在，在区域上只能差一个常数。
+    definedIn: math.complex-analysis.harmonic-functions
+    anchor: def-harmonic-conjugate
+  - id: math.complex-analysis.cauchy-estimate
+    zh: |
+      柯西估计
+    en: |
+      Cauchy's estimate
+    brief: |
+      $f$在以$a$为圆心的开圆盘上全纯，在其中的圆周$|z-a|=r$上$|f|\le M$，则$|f^{(n)}(a)|\le\frac{n!\,M}{r^n}$。
+    definedIn: math.complex-analysis.liouville
+    anchor: thm-cauchy-estimate
+  - id: math.complex-analysis.liouville-theorem
+    zh: |
+      刘维尔定理
+    en: |
+      Liouville's theorem
+    brief: |
+      有界的整函数一定是常数；由柯西估计让圆的半径趋于无穷得到。
+    definedIn: math.complex-analysis.liouville
+    anchor: thm-liouville
+  - id: math.complex-analysis.fundamental-theorem-of-algebra
+    zh: |
+      代数基本定理
+    en: |
+      fundamental theorem of algebra
+    brief: |
+      次数不小于$1$的复系数多项式在复数里至少有一个根；因而$n$次多项式恰好有$n$个根（重根按重数计），能分解成一次因式的乘积。
+    definedIn: math.complex-analysis.liouville
+    anchor: thm-fundamental-algebra
+  - id: math.complex-analysis.mean-value-property
+    zh: |
+      平均值性质
+    en: |
+      mean value property
+    brief: |
+      函数在每一点的值都等于它在以这一点为圆心、连同圆盘都含在定义域里的圆周上的平均值；全纯函数和调和函数都有这个性质。
+    definedIn: math.complex-analysis.maximum-modulus
+    anchor: def-mean-value-property
+  - id: math.complex-analysis.maximum-modulus-principle
+    zh: |
+      最大模原理
+    en: |
+      maximum modulus principle
+    brief: |
+      $f$在区域上全纯、$|f|$在区域里某点取到最大值，则$f$是常数；所以有界区域上$|f|$的最大值在边界上取到。
+    definedIn: math.complex-analysis.maximum-modulus
+    anchor: thm-maximum-modulus

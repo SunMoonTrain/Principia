@@ -454,6 +454,15 @@ glossary:
       梯度的散度$\lap f=\divg(\nabla f)=f_{xx}+f_{yy}+f_{zz}$；量的是$f$在一点和周围的平均值差多少。
     definedIn: math.vector-calculus.vector-identities
     anchor: def-laplacian
+  - id: math.vector-calculus.harmonic-function
+    zh: |
+      调和函数
+    en: |
+      harmonic function
+    brief: |
+      满足$\lap f=0$的函数：它在每一点都等于周围的平均值，没有比周围都低的坑，也没有比周围都高的包。
+    definedIn: math.vector-calculus.vector-identities
+    anchor: def-harmonic
   - id: math.vector-calculus.velocity-vector
     zh: |
       速度向量

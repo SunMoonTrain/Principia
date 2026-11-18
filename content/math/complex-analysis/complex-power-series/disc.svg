@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" width="420" height="300" font-family="serif" fill="currentColor">
+<circle cx="210" cy="150" r="100" fill="var(--accent, #2563eb)" fill-opacity="0.12" stroke="var(--accent, #2563eb)" stroke-width="2"/>
+<path d="M30 150H390" stroke="currentColor" stroke-opacity="0.45" stroke-width="1"/>
+<path d="M160 20V280" stroke="currentColor" stroke-opacity="0.45" stroke-width="1"/>
+<circle cx="210" cy="150" r="3.5"/>
+<circle cx="310" cy="150" r="3.5"/>
+<circle cx="110" cy="150" r="3.5"/>
+<text x="216" y="170" text-anchor="start" font-size="15">1</text>
+<text x="318" y="170" text-anchor="start" font-size="15">3</text>
+<text x="318" y="142" text-anchor="start" font-size="15">发散</text>
+<text x="102" y="170" text-anchor="end" font-size="15">−1</text>
+<text x="102" y="142" text-anchor="end" font-size="15">收敛</text>
+<text x="295" y="45" text-anchor="start" font-size="15">|<tspan font-style="italic">z</tspan> − 1| = 2</text>
+</svg>

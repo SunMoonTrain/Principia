@@ -1,0 +1,163 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$C$是单位圆周$|z|=1$，取逆时针方向。求$\frac1{2\pi i}\oint_C\frac{\cos z}{z^3}\,\dd z$。
+  answer:
+    type: number
+    value: -1/2
+  hints:
+    - |
+      分母是$z^3$，对应高阶导数公式里的$n=2$。
+    - |
+      $\oint_C\frac{f(z)}{z^3}\dd z=\frac{2\pi i}{2!}f''(0)$。
+    - |
+      $(\cos z)''=-\cos z$。
+  solution: |
+    $f(z)=\cos z$是整函数，由高阶导数公式，$\oint_C\frac{\cos z}{z^3}\dd z=\frac{2\pi i}{2!}f''(0)$，所以要求的值是$\frac{f''(0)}2$。$f''(0)=-\cos0$，即$-1$，所以结果是$-\frac12$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列函数中，在整个复平面上全纯的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $z\ne0$时为$\frac{e^z-1}z$，$z=0$时为$1$
+      - |
+        $\bar z$
+      - |
+        $z\ne0$时为$\frac1z$，$z=0$时为$0$
+      - |
+        $z\ne1$时为$\frac{z^2-1}{z-1}$，$z=1$时为$2$
+    value: [1, 4]
+  hints:
+    - |
+      连续、除一点外全纯的函数，由莫雷拉定理在整个开集上全纯。
+    - |
+      $\frac{e^z-1}z$在$z\to0$时趋于$e^z$在$0$处的导数。
+    - |
+      $\frac1z$在$0$附近无界，补什么值都不连续。
+  solution: |
+    A：$z\to0$时$\frac{e^z-1}{z-0}$趋于$(e^z)'$在$0$处的值$1$，所以函数连续，又除$0$外全纯，由允许一个例外点的定理和莫雷拉定理，它是整函数；B：$\bar z$不满足柯西-黎曼方程，处处不复可导；C：在$0$处不连续，不全纯；D：$z\ne1$时它等于$z+1$，$z=1$时的值$2$也是$z+1$的值，所以它就是$z+1$，是整函数。选 A、D。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$C$是圆周$|z|=2$，取逆时针方向。求$\frac1{2\pi i}\oint_C\frac{e^z}{z^2(z-1)}\,\dd z$。
+  answer:
+    type: number
+    value: e - 2
+  hints:
+    - |
+      写成$\frac Az+\frac B{z^2}+\frac C{z-1}$，通分以后比较分子：$\frac1{z^2(z-1)}=\frac1{z-1}-\frac1z-\frac1{z^2}$。
+    - |
+      $\oint_C\frac{e^z}{z^2}\dd z$用高阶导数公式，$n=1$。
+    - |
+      三项分别是$2\pi ie$、$2\pi i$、$2\pi i$。
+  solution: |
+    $\frac1{z^2(z-1)}=\frac1{z-1}-\frac1z-\frac1{z^2}$，通分即可验证。$0$、$1$都在$C$里面，$e^z$是整函数：$\oint_C\frac{e^z}{z-1}\dd z=2\pi ie$，$\oint_C\frac{e^z}z\dd z=2\pi i$，由高阶导数公式$\oint_C\frac{e^z}{z^2}\dd z=2\pi i\cdot(e^z)'|_{z=0}$，即$2\pi i$。所以结果是$e-1-1$，即$e-2$。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$z\ne0$时$f(z)=\frac{\sin z}z$，$f(0)=1$。由例 2，$f$是整函数。求$f''(0)$。
+  answer:
+    type: number
+    value: -1/3
+  hints:
+    - |
+      $f''(0)=\frac{2!}{2\pi i}\oint_{|\zeta|=1}\frac{f(\zeta)}{\zeta^3}\dd\zeta$。
+    - |
+      圆周上$f(\zeta)=\frac{\sin\zeta}\zeta$，被积函数是$\frac{\sin\zeta}{\zeta^4}$。
+    - |
+      对$\sin\zeta$用高阶导数公式，$n=3$，$\sin'''(0)=-1$。
+  solution: |
+    由高阶导数公式，$f''(0)=\frac{2}{2\pi i}\oint_{|\zeta|=1}\frac{\sin\zeta}{\zeta^4}\dd\zeta$。再对$\sin\zeta$用公式（$n=3$），$\oint_{|\zeta|=1}\frac{\sin\zeta}{\zeta^4}\dd\zeta=\frac{2\pi i}{3!}\sin'''(0)$，而$\sin'''(0)=-\cos0$，即$-1$。所以$f''(0)=2\cdot\frac{-1}6$，即$-\frac13$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$\Delta$是开圆盘，每个$f_n$都在$\Delta$上全纯；函数$f$定义在$\Delta$上，并且有趋于$0$的正数列$\varepsilon_n$，使$\Delta$上处处$|f_n(z)-f(z)|\le\varepsilon_n$。
+
+    （1）证明$f$在$\Delta$上连续。
+
+    （2）证明：对每个连同内部都在$\Delta$里的三角形$T$，$\oint_{\partial T}f\,\dd z=0$。
+
+    （3）证明$f$在$\Delta$上全纯。实函数有没有类似的结论？
+  hints:
+    - |
+      （1）$|f(z)-f(w)|\le|f(z)-f_n(z)|+|f_n(z)-f_n(w)|+|f_n(w)-f(w)|$。
+    - |
+      （2）$\oint_{\partial T}f_n\,\dd z=0$，用 ML 不等式估计$\oint_{\partial T}(f-f_n)\,\dd z$。
+    - |
+      （3）莫雷拉定理；实函数看$\sqrt{x^2+\frac1{n^2}}$和$|x|$。
+  reference: |
+    （1）任给$\eta>0$，取$n$使$\varepsilon_n<\eta$。$f_n$在$w$处连续，$z$离$w$足够近时$|f_n(z)-f_n(w)|<\eta$，于是由提示里的不等式，$|f(z)-f(w)|<3\eta$。
+
+    （2）由古尔萨定理，$\oint_{\partial T}f_n\,\dd z=0$。设$\partial T$长$L$，由 ML 不等式，$\bigl|\oint_{\partial T}f\,\dd z\bigr|=\bigl|\oint_{\partial T}(f-f_n)\,\dd z\bigr|\le\varepsilon_nL$。$n\to\infty$，右边趋于$0$，所以$\oint_{\partial T}f\,\dd z=0$。
+
+    （3）由（1）（2）和莫雷拉定理，$f$在$\Delta$上全纯。实函数没有：$g_n(x)=\sqrt{x^2+\frac1{n^2}}$处处可导，$0\le g_n(x)-|x|\le\frac1n$，可极限$|x|$在$0$处不可导。全纯函数的极限仍全纯，靠的是全纯性能用积分来刻画，而积分在这种极限下保持得住。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）设$C$是分段光滑的简单闭曲线，取逆时针方向，$f$在一个包含$C$和它围成的部分的开集上全纯，$z$在$C$围成的部分里面，$n$是正整数。证明$\oint_C\frac{f(\zeta)}{(\zeta-z)^{n+1}}\,\dd\zeta=\frac{2\pi i}{n!}f^{(n)}(z)$。
+
+    （2）设$C$是以$\pm2\pm2i$为顶点的正方形的边界，取逆时针方向。求$\oint_C\frac{\sin z}{z^4}\,\dd z$。
+  hints:
+    - |
+      （1）$\frac{f(\zeta)}{(\zeta-z)^{n+1}}$的导数在去掉$z$的开集上连续，用变形积分路径换成以$z$为圆心的小圆周。
+    - |
+      （1）小圆周上用高阶导数公式。
+    - |
+      （2）$n=3$，$\sin'''(0)=-1$。
+  reference: |
+    （1）由导数自动连续，$f'$连续，所以$\frac{f(\zeta)}{(\zeta-z)^{n+1}}$在开集去掉$z$以后全纯，导数$\frac{f'(\zeta)}{(\zeta-z)^{n+1}}-\frac{(n+1)f(\zeta)}{(\zeta-z)^{n+2}}$连续。取以$z$为圆心的小圆周$C_\rho$，落在$C$围成的部分里面，并且以$z$为圆心、比$\rho$稍大的开圆盘含在开集里。由变形积分路径，沿$C$的积分等于沿$C_\rho$的积分；再由高阶导数公式（$a$取$z$），它等于$\frac{2\pi i}{n!}f^{(n)}(z)$。
+
+    （2）$0$在正方形里面，$\sin z$是整函数。由（1），$n=3$，积分是$\frac{2\pi i}{3!}\sin'''(0)=\frac{2\pi i}6\cdot(-1)$，即$-\frac{\pi i}3$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）实函数$x|x|$在$\R$上可导几次？
+
+    （2）设$f=u+iv$在开集$D$上全纯。证明$u$、$v$的一阶偏导数都是某个全纯函数的实部或虚部，由此说明$u$、$v$的各阶偏导数都存在并且连续。
+
+    （3）实函数没有柯西积分公式这样的式子。从这个角度说说：为什么全纯函数能无穷次求导，实函数可导一次却不一定能导第二次？
+  hints:
+    - |
+      （1）$x\ge0$时是$x^2$，$x<0$时是$-x^2$。
+    - |
+      （2）由柯西-黎曼方程，$f'=u_x+iv_x$，又$u_y=-v_x$、$v_y=u_x$。
+    - |
+      （3）柯西积分公式里，$z$只出现在$\frac1{\zeta-z}$里。
+  reference: |
+    （1）导数是$2|x|$，在$0$处不可导，所以只可导一次。
+
+    （2）$f'=u_x+iv_x$，所以$u_x=\Re f'$、$v_x=\Im f'$；由柯西-黎曼方程，$u_y=-\Im f'$、$v_y=\Re f'$。$f'$全纯，同样的道理用在$f'$上，二阶偏导数是$\pm\Re f''$、$\pm\Im f''$；一直下去，各阶偏导数都是某个$\pm f^{(k)}$的实部或虚部。全纯函数连续，它的实部、虚部也连续，所以各阶偏导数都存在并且连续。
+
+    （3）柯西积分公式把$f(z)$写成圆周上的值和$\frac1{\zeta-z}$乘起来再积分，$z$只出现在$\frac1{\zeta-z}$里，而它对$z$可以无穷次求导，求导都落在它身上，所以$f$也无穷次可导。实函数在圆内的值不由圆周上的值决定（[柯西积分公式](lesson:math.complex-analysis.cauchy-integral-formula)第 8 题），没有这样的积分表示，一阶导数存在推不出它还能再求导。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）设$f$在开集$D$上连续，在$D$里除一点$p$外全纯。证明$f$在$D$上全纯。
+
+    （2）$\frac{1-\cos z}{z^2}$（$z\ne0$）在$z=0$处补上什么值，就成为整函数？
+
+    （3）$\frac{\sin z}{z^2}$（$z\ne0$）能不能在$z=0$处补上一个值，成为整函数？
+  hints:
+    - |
+      （1）允许一个例外点的定理加上莫雷拉定理。
+    - |
+      （2）$1-\cos z=2\sin^2\frac z2$，再用$\frac{\sin w}w\to1$。
+    - |
+      （3）$\frac{\sin z}{z^2}=\frac{\sin z}z\cdot\frac1z$，看$z\to0$时它的模。
+  reference: |
+    （1）由允许一个例外点的定理，$f$沿每个连同内部都在$D$里的三角形的边界积分为$0$；$f$又连续，由莫雷拉定理，$f$在$D$上全纯。
+
+    （2）$\frac{1-\cos z}{z^2}=\frac12\Bigl(\frac{\sin(z/2)}{z/2}\Bigr)^2$，$z\to0$时趋于$\frac12$。补上$\frac12$以后函数连续，除$0$外全纯，由（1）是整函数。
+
+    （3）不能。$\frac{\sin z}z\to1$，所以$z\to0$时$\Bigl|\frac{\sin z}{z^2}\Bigr|=\Bigl|\frac{\sin z}z\Bigr|\cdot\frac1{|z|}\to+\infty$，补什么值都不连续，更不全纯。

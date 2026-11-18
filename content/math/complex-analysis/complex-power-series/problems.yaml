@@ -1,0 +1,163 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\sum_{n=0}^\infty\frac{(z-2i)^n}{3^n}$的收敛半径。
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      收敛半径只看$|a_n|=\frac1{3^n}$。
+    - |
+      $\sqrt[n]{|a_n|}=\frac13$。
+    - |
+      也可以看成公比为$\frac{z-2i}3$的等比级数。
+  solution: |
+    $\sqrt[n]{|a_n|}=\frac13$，所以$R=3$，收敛圆盘是$|z-2i|<3$。也可以看成公比为$\frac{z-2i}3$的等比级数，公比的模小于$1$时收敛。
+
+- id: p2
+  tier: easy
+  statement: |
+    幂级数$\sum_{n\ge1}\frac{z^n}{n^2}$在单位圆周$|z|=1$上收敛的情况是哪一种？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        处处发散
+      - |
+        只在$z=1$处收敛
+      - |
+        处处绝对收敛
+      - |
+        只在$z=-1$处收敛
+    value: 3
+  hints:
+    - |
+      $|z|=1$时通项的模是$\frac1{n^2}$。
+    - |
+      $\sum\frac1{n^2}$收敛。
+    - |
+      各项取模以后收敛的复数项级数一定收敛。
+  solution: |
+    $|z|=1$时$\bigl|\frac{z^n}{n^2}\bigr|=\frac1{n^2}$，而$\sum\frac1{n^2}$收敛，所以圆周上每一点都绝对收敛。选 C。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\sum_{n=1}^\infty nz^n$在$z=\frac i2$处的和，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [-8/25, 6/25]
+  hints:
+    - |
+      由例 2，$|z|<1$时和是$\frac z{(1-z)^2}$。
+    - |
+      $\bigl(1-\frac i2\bigr)^2=\frac34-i$。
+    - |
+      分母实数化：分子分母同乘$\frac34+i$。
+  solution: |
+    $\bigl|\frac i2\bigr|<1$，由例 2，和是$\frac{i/2}{(1-i/2)^2}=\frac{i/2}{\frac34-i}$。分子分母同乘$\frac34+i$：分子是$\frac i2\bigl(\frac34+i\bigr)=-\frac12+\frac{3i}8$，分母是$\frac{25}{16}$，所以和是$-\frac8{25}+\frac6{25}i$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\sum_{n=1}^\infty\frac{n!}{n^n}z^n$的收敛半径。
+  answer:
+    type: number
+    value: e
+  hints:
+    - |
+      对实级数$\sum|a_n|x^n$用比值判别法，看$\frac{|a_{n+1}|}{|a_n|}$。
+    - |
+      $\frac{(n+1)!}{(n+1)^{n+1}}\cdot\frac{n^n}{n!}=\bigl(\frac n{n+1}\bigr)^n$。
+    - |
+      $\bigl(1+\frac1n\bigr)^n\to e$。
+  solution: |
+    $\frac{|a_{n+1}|}{|a_n|}=\bigl(\frac n{n+1}\bigr)^n=\frac1{(1+\frac1n)^n}\to\frac1e$。对$\sum|a_n|x^n$用比值判别法，$|x|<e$时收敛、$|x|>e$时发散，所以收敛半径是$e$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f(z)=\sum_{n=0}^\infty a_n(z-a)^n$的收敛半径$R>0$。
+
+    （1）证明$F(z)=\sum_{n=0}^\infty\frac{a_n}{n+1}(z-a)^{n+1}$的收敛半径也是$R$，并且在收敛圆盘里$F'=f$。
+
+    （2）求$\sum_{n=0}^\infty\frac{(-1)^nz^{2n+1}}{2n+1}$的收敛半径，并说明它在收敛圆盘里的导数是$\frac1{1+z^2}$。
+  hints:
+    - |
+      （1）收敛半径看实级数$\sum\frac{|a_n|}{n+1}x^{n+1}$，用[逐项求导的定理](lesson:math.analysis.power-series-theory#thm-termwise)的（1）。
+    - |
+      （1）对$F$用本节逐项求导的定理。
+    - |
+      （2）它是$\sum(-1)^nz^{2n}$逐项积分得到的，后者是公比为$-z^2$的等比级数。
+  reference: |
+    （1）实级数$\sum\frac{|a_n|}{n+1}x^{n+1}$是$\sum|a_n|x^n$逐项积分得到的，由数学分析那一节逐项求导的定理的（1），收敛半径是$R$，所以$F$的收敛半径是$R$。对$F$用本节逐项求导的定理，$F'(z)=\sum_{n\ge0}\frac{a_n}{n+1}(n+1)(z-a)^n=f(z)$。
+
+    （2）$\sum_{n\ge0}(-1)^nz^{2n}$是公比为$-z^2$的等比级数，$|z|<1$时收敛到$\frac1{1+z^2}$，$|z|>1$时通项不趋于$0$、发散，收敛半径是$1$。题中的级数是它逐项积分得到的，由（1），收敛半径也是$1$，在$|z|<1$里导数是$\frac1{1+z^2}$。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）求$\sum_{n=0}^\infty(-1)^nz^{2n}$的收敛圆盘和它的和函数。
+
+    （2）证明：没有收敛半径大于$1$、并且在$|z|<1$里和等于$\frac1{1+z^2}$的以$0$为中心的幂级数。
+
+    （3）实数上$\frac1{1+x^2}$处处可导，它在$0$处的展开式收敛半径却只有$1$。用（2）说说原因。
+  hints:
+    - |
+      （1）公比是$-z^2$。
+    - |
+      （2）幂级数在收敛圆盘里全纯，所以连续；$z\to i$时$\frac1{1+z^2}$怎样？
+    - |
+      （3）$\pm i$离$0$的距离是$1$。
+  reference: |
+    （1）它是公比为$-z^2$的等比级数，$|z|<1$时收敛到$\frac1{1+z^2}$，$|z|\ge1$时通项的模不小于$1$、发散。收敛圆盘是$|z|<1$。
+
+    （2）假如$g(z)=\sum b_nz^n$的收敛半径$R'>1$，并且$|z|<1$时$g(z)=\frac1{1+z^2}$。$i$在$g$的收敛圆盘里，$g$在那里全纯、连续，所以$z$沿虚轴从$0$趋于$i$时$g(z)\to g(i)$，有界；可这时$\frac1{1+z^2}=\frac1{1-t^2}$（$z=it$，$t\to1^-$）趋于$+\infty$，矛盾。
+
+    （3）实轴上看不出毛病，问题出在复平面上：$\frac1{1+z^2}$在$\pm i$处没有定义、附近无界，而以$0$为中心的收敛圆盘只要半径超过$1$就会把$\pm i$包进去，由（2）这不可能。以后在[全纯函数的幂级数展开](lesson:math.complex-analysis.power-series)会看到，收敛半径正好是到最近的「坏点」的距离。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）为什么实幂级数的收敛范围是以中心为中点的区间，复幂级数的却是圆盘？两者是什么关系？
+
+    （2）能不能找到以$0$为中心的幂级数，在$z=2$处收敛，在$z=-1$处发散？
+
+    （3）举出两个收敛半径都是$1$的幂级数，一个在单位圆周上处处收敛，一个处处发散。
+  hints:
+    - |
+      （1）收敛不收敛只和$|z-a|$有关吗？看本节的两个定理。
+    - |
+      （2）用复数版的阿贝尔引理。
+    - |
+      （3）正文的边界情况里有。
+  reference: |
+    （1）由本节的定理，$|z-a|<R$时绝对收敛、$|z-a|>R$时发散，判断只看$|z-a|$和$R$的大小，所以是圆盘（圆周上另说）。实幂级数是同一个级数只取实数$z$，收敛区间$(a-R,a+R)$就是圆盘和实轴相交的那一段。
+
+    （2）不能。$|-1|<|2|$，在$2$处收敛，由复数版的阿贝尔引理，在$-1$处绝对收敛。
+
+    （3）$\sum\frac{z^n}{n^2}$在$|z|=1$上处处绝对收敛；$\sum z^n$在$|z|=1$上通项的模恒为$1$，不趋于$0$，处处发散。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）设$\sum a_nz^n$在$|z|<r$里的和恒为$0$。证明所有$a_n=0$。
+
+    （2）两个以$0$为中心的幂级数，只知道它们的和在实轴的一段$(-\delta,\delta)$上相等，系数一定相同吗？
+
+    （3）只知道它们的和在点$\frac1k$（$k$是足够大的正整数）处相等呢？
+  hints:
+    - |
+      （1）$a_k=\frac{f^{(k)}(0)}{k!}$。
+    - |
+      （2）复导数可以只沿实轴方向求。
+    - |
+      （3）设差的级数系数不全为$0$，第一个不为$0$的是$c_m$，把它写成$z^m(c_m+c_{m+1}z+\cdots)$。
+  reference: |
+    （1）由逐项求导，$a_k=\frac{f^{(k)}(0)}{k!}$，$f$恒为$0$，各阶导数都是$0$，所以$a_k=0$。
+
+    （2）一定相同。差$g(z)=\sum c_nz^n$在$(-\delta,\delta)$上为$0$。$g$在$0$处复可导，复导数可以只让$h$取实数来算，所以$g'(0)=\lim_{x\to0}\frac{g(x)-g(0)}x=0$；$g'$也是幂级数，在$(-\delta,\delta)$上同样为$0$（实轴上的导数沿实轴算），照样推下去，$g^{(k)}(0)=0$，所以$c_k=0$。
+
+    （3）也相同。设$c_n$不全为$0$，第一个不为$0$的是$c_m$，$g(z)=z^mh(z)$，$h(z)=c_m+c_{m+1}z+\cdots$也是收敛半径不变的幂级数，$h(0)=c_m\ne0$，由连续性在$0$附近$h\ne0$。可$g\bigl(\frac1k\bigr)=0$、$\frac1k\ne0$，推出$h\bigl(\frac1k\bigr)=0$，$k\to\infty$时与$h(0)\ne0$矛盾。这正是以后[零点的孤立性与唯一性定理](lesson:math.complex-analysis.identity-theorem)一节的想法。

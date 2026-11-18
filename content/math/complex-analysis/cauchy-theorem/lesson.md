@@ -33,7 +33,7 @@ $$
 
 两个被积函数（integrand）都由柯西-黎曼方程变成了$0$。而$\oint_Cf\,\dd z$正是第一个积分加上$i$乘第二个积分，所以为$0$。
 
-为什么有用：定理里要求$f'$连续，只是为了能用格林公式；[古尔萨定理](lesson:math.complex-analysis.goursat)和[柯西积分公式](lesson:math.complex-analysis.cauchy-integral-formula)两节会证明全纯函数的导数自动连续，那时这个条件就去掉了。它说明了[复积分](lesson:math.complex-analysis.contour-integrals)一节例 1 里的现象：$z^2$是:term[整函数]{id="math.complex-analysis.entire-function"}（entire function），沿两条路积分之差是沿一条闭曲线的积分，为$0$；$\bar z$不满足柯西-黎曼方程，定理管不到它。边界情况：$f$在$C$上全纯还不够，$C$围成的部分里也要处处全纯：$\frac1z$在单位圆周上全纯，可原点在圆内，$\oint_{|z|=1}\frac{\dd z}z=2\pi i$。
+为什么有用：定理里要求$f'$连续，只是为了能用格林公式；[古尔萨定理](lesson:math.complex-analysis.goursat)、[柯西积分公式](lesson:math.complex-analysis.cauchy-integral-formula)和[高阶导数与莫雷拉定理](lesson:math.complex-analysis.higher-derivatives)三节会证明全纯函数的导数自动连续，那时这个条件就去掉了。它说明了[复积分](lesson:math.complex-analysis.contour-integrals)一节例 1 里的现象：$z^2$是:term[整函数]{id="math.complex-analysis.entire-function"}（entire function），沿两条路积分之差是沿一条闭曲线的积分，为$0$；$\bar z$不满足柯西-黎曼方程，定理管不到它。边界情况：$f$在$C$上全纯还不够，$C$围成的部分里也要处处全纯：$\frac1z$在单位圆周上全纯，可原点在圆内，$\oint_{|z|=1}\frac{\dd z}z=2\pi i$。
 
 ### 变形积分路径
 
@@ -56,7 +56,7 @@ $$
 
 **证明**：设$C$是$z(t)$，$a\le t\le b$。由沿曲线的[求导法则](lesson:math.complex-analysis.complex-derivative#thm-derivative-rules)，$\frac{\dd}{\dd t}F(z(t))=F'(z(t))z'(t)=f(z(t))z'(t)$。对:term[复值函数]{id="math.complex-analysis.complex-valued-function"}（complex-valued function）用牛顿-莱布尼茨公式（Newton-Leibniz formula），$\int_Cf\,\dd z=\int_a^b\frac{\dd}{\dd t}F(z(t))\,\dd t=F(z(b))-F(z(a))$。分段光滑时各段相加，中间的端点抵消。
 
-为什么有用：有了原函数，:term[复积分]{id="math.complex-analysis.contour-integral"}就像定积分（definite integral）一样算，而且只看起点和终点，这里不要求$C$围成的部分都在$D$里。$\frac1{z^2}$在去掉原点的平面上有原函数$-\frac1z$，所以沿任何不过原点的闭曲线，$\oint\frac{\dd z}{z^2}=0$。边界情况：$\oint_{|z|=1}\frac{\dd z}z=2\pi i\ne0$，所以$\frac1z$在去掉原点的平面上没有原函数，那里找不到一个处处全纯、导数是$\frac1z$的「对数」，以后讲复对数（complex logarithm）时还会碰到这件事。
+为什么有用：有了原函数，:term[复积分]{id="math.complex-analysis.contour-integral"}就像定积分（definite integral）一样算，而且只看起点和终点，这里不要求$C$围成的部分都在$D$里。$\frac1{z^2}$在去掉原点的平面上有原函数$-\frac1z$，所以沿任何不过原点的闭曲线，$\oint\frac{\dd z}{z^2}=0$。边界情况：$\oint_{|z|=1}\frac{\dd z}z=2\pi i\ne0$，所以$\frac1z$在去掉原点的平面上没有原函数，那里找不到一个处处全纯、导数是$\frac1z$的「对数」，以后讲:term[复对数]{id="math.complex-analysis.complex-logarithm"}（complex logarithm）时还会碰到这件事。
 
 ## 几何图像
 

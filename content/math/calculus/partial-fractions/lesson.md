@@ -29,7 +29,7 @@ $\frac1{x^2-1}$、$\frac{x+1}{x(x^2+1)}$这样两个多项式之比，:term[原�
 ::anchor{id="thm-real-factorization"}
 **定理**　实系数多项式能分解成一次因式和不可约的二次因式的乘积，二次因式$x^2+px+q$不可约（irreducible）是说$p^2-4q<0$，它没有实根。
 
-这里不证。它来自代数基本定理（fundamental theorem of algebra）：复系数的多项式总有复数根；实系数多项式的虚根成对出现，一对共轭的虚根合起来，就是一个不可约的二次因式。
+这里不证。它来自:term[代数基本定理]{id="math.complex-analysis.fundamental-theorem-of-algebra"}（fundamental theorem of algebra）：复系数的多项式总有复数根；实系数多项式的虚根成对出现，一对共轭的虚根合起来，就是一个不可约的二次因式。
 
 ::anchor{id="def-partial-fractions"}
 设$\frac{P(x)}{Q(x)}$是真分式。$Q$的每个因式$(x-a)^k$对应$\frac{A_1}{x-a}+\frac{A_2}{(x-a)^2}+\cdots+\frac{A_k}{(x-a)^k}$，每个因式$(x^2+px+q)^m$对应$\frac{B_1x+C_1}{x^2+px+q}+\cdots+\frac{B_mx+C_m}{(x^2+px+q)^m}$，$\frac PQ$等于所有这些项的和，其中的常数唯一确定。这些项叫作$\frac PQ$的:term[部分分式]{id="math.calculus.partial-fraction"}（partial fractions）。

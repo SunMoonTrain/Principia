@@ -1,0 +1,171 @@
+- id: p1
+  tier: easy
+  statement: |
+    上半平面里的温度$u=\frac{100}\pi\Arg z$在负实轴上趋于$100$、正实轴上趋于$0$。求$z=1+i$处的温度。
+  answer:
+    type: number
+    value: 25
+  hints:
+    - |
+      $1+i$的辐角主值是多少？
+    - |
+      $\Arg(1+i)=\frac\pi4$。
+    - |
+      代入$u=\frac{100}\pi\Arg z$。
+  solution: |
+    $\Arg(1+i)=\frac\pi4$，所以$u(1+i)=\frac{100}\pi\cdot\frac\pi4$，即$25$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列映射中，把带形$\{0<\Im z<\pi\}$一一地映成上半平面的是哪一个？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        $z^2$
+      - |
+        $\frac{z-i}{z+i}$
+      - |
+        $e^z$
+      - |
+        $\Log z$
+    value: 3
+  hints:
+    - |
+      $e^{x+iy}=e^xe^{iy}$，辐角是$y$。
+    - |
+      $0<y<\pi$时$e^{iy}$在上半平面。
+    - |
+      $x$从$-\infty$到$+\infty$，$e^x$取遍正数。
+  solution: |
+    $e^{x+iy}=e^xe^{iy}$的模是$e^x$、辐角是$y$；$0<y<\pi$、$x$取遍实数时，它取遍上半平面里的每一点恰好一次（共形映射一节带形的结论），选 C。$z^2$把带形里$\Re z<0$的点（如$-1+i$）映到下半平面；$\frac{z-i}{z+i}$把上半平面映成单位圆盘，带形在上半平面里，像落在单位圆盘里；$\Log z$的像在带形$-\pi<\Im w\le\pi$里，同样不是上半平面。
+
+- id: p3
+  tier: medium
+  statement: |
+    实轴上$|x|<1$处温度为$100$，$|x|>1$处为$0$。求上半平面里有界的温度分布在$z=\sqrt3i$处的值。
+  answer:
+    type: number
+    value: 100/3
+  hints:
+    - |
+      解是$\frac{100}\pi\bigl(\Arg(z-1)-\Arg(z+1)\bigr)$。
+    - |
+      $\Arg(\sqrt3i-1)=\frac{2\pi}3$，$\Arg(\sqrt3i+1)=\frac\pi3$。
+    - |
+      线段$[-1,1]$在$\sqrt3i$处张开的角是$\frac\pi3$。
+  solution: |
+    台阶相加：$100s_1-100s_{-1}$在$x<-1$处趋于$100-100$，即$0$；在$-1<x<1$处趋于$100$；在$x>1$处趋于$0$。所以$u=\frac{100}\pi\bigl(\Arg(z-1)-\Arg(z+1)\bigr)$。$z=\sqrt3i$时两个辐角分别是$\frac{2\pi}3$、$\frac\pi3$，差$\frac\pi3$，$u=\frac{100}3$。
+
+- id: p4
+  tier: medium
+  statement: |
+    例 2 的圆盘里，求$z=\frac i2$处的温度。
+  answer:
+    type: number
+    value: 100 - 100*atan(3/4)/pi
+  hints:
+    - |
+      先算$w=i\frac{1+z}{1-z}$在$z=\frac i2$处的值。
+    - |
+      $\frac{1+i/2}{1-i/2}=\frac35+\frac45i$，所以$w=-\frac45+\frac35i$。
+    - |
+      $\Arg\bigl(-\frac45+\frac35i\bigr)=\pi-\arctan\frac34$。
+  solution: |
+    $\frac{1+i/2}{1-i/2}=\frac{(1+i/2)^2}{5/4}=\frac35+\frac45i$，乘以$i$得$w=-\frac45+\frac35i$，在第二象限，$\Arg w=\pi-\arctan\frac34$。所以$u=\frac{100}\pi\bigl(\pi-\arctan\frac34\bigr)=100-\frac{100}\pi\arctan\frac34$，约$79.5$。
+
+- id: p5
+  tier: hard
+  statement: |
+    电磁学[分离变量法解静电问题](lesson:physics.electromagnetism.electrostatic-separation)第 5 题：半带形$\{x>0,\ 0<y<a\}$里，$y=0$、$y=a$两条边上电势为$0$，$x=0$那条边上电势为$V_0$，求里面的电势$\varphi$。已知$w=\cosh\frac{\pi z}a$把这个半带形一一地映成上半平面。
+
+    （1）三条边分别映成实轴上的哪一段？
+
+    （2）写出$\varphi$。
+
+    （3）沿$y=\frac a2$看，$x\to+\infty$时$\varphi$怎样？
+  hints:
+    - |
+      （1）$\cosh(iu)=\cos u$，$\cosh(t+i\pi)=-\cosh t$。
+    - |
+      （2）上半平面里，$-1<\Re w<1$那一段为$V_0$、其余为$0$。
+    - |
+      （3）$\Arg(w-1)-\Arg(w+1)$是线段$[-1,1]$在$w$处张开的角。
+  reference: |
+    （1）$x=0$、$0<y<a$时$w=\cos\frac{\pi y}a$，取遍$(-1,1)$；$y=0$、$x>0$时$w=\cosh\frac{\pi x}a$，取遍$(1,+\infty)$；$y=a$时$w=\cosh\bigl(\frac{\pi x}a+i\pi\bigr)=-\cosh\frac{\pi x}a$，取遍$(-\infty,-1)$。
+
+    （2）上半平面里，在$(-1,1)$上为$V_0$、其余为$0$的有界解是$\frac{V_0}\pi\bigl(\Arg(w-1)-\Arg(w+1)\bigr)$（第 3 题的做法）。复合以后，$\varphi(z)=\frac{V_0}\pi\Bigl(\Arg\bigl(\cosh\tfrac{\pi z}a-1\bigr)-\Arg\bigl(\cosh\tfrac{\pi z}a+1\bigr)\Bigr)$，它调和、有界，在三条边上取给定的值。
+
+    （3）$y=\frac a2$时$w=\cosh\bigl(\frac{\pi x}a+\frac{i\pi}2\bigr)=i\sinh\frac{\pi x}a$，在正虚轴上趋于$\infty$，线段$[-1,1]$在那里张开的角趋于$0$，所以$\varphi\to0$：离开那块导体片越远，电势越接近两块接地平面的电势。这和分离变量法得到的级数在远处按$e^{-\pi x/a}$衰减一致。
+
+- id: p6
+  tier: hard
+  statement: |
+    上半圆盘$\{|z|<1,\ \Im z>0\}$的边界上，半圆周温度为$100$，直径$(-1,1)$上温度为$0$。
+
+    （1）证明$\zeta=\frac{1+z}{1-z}$把上半圆盘映成第一象限，直径映成正实轴，半圆周映成正虚轴。
+
+    （2）再用$w=\zeta^2$映成上半平面，写出温度分布$u$。
+
+    （3）求$z=\frac i2$处的温度。
+  hints:
+    - |
+      （1）$\zeta$是分式线性变换，实轴映成实轴；$z=e^{it}$时$\zeta=i\cot\frac t2$。
+    - |
+      （2）正虚轴在$\zeta^2$下映成负实轴；$u=\frac{100}\pi\Arg w$。
+    - |
+      （3）$\frac{1+i/2}{1-i/2}=\frac35+\frac45i$。
+  reference: |
+    （1）$\zeta$是分式线性变换，系数是实数，把实轴映成实轴；$-1<x<1$时$\zeta=\frac{1+x}{1-x}$取遍正数。$z=e^{it}$时$\zeta=\frac{e^{-it/2}+e^{it/2}}{e^{-it/2}-e^{it/2}}=i\cot\frac t2$，$0<t<\pi$时取遍正虚轴。$\frac i2$映成$\frac35+\frac45i$，在第一象限，所以上半圆盘映成第一象限这一块。
+
+    （2）由共形映射一节扇形的结论，$\zeta^2$把第一象限一一地映成上半平面，正实轴映成正实轴，正虚轴映成负实轴。上半平面里负实轴上为$100$、正实轴上为$0$的有界解是$\frac{100}\pi\Arg w$，所以$u=\frac{100}\pi\Arg\Bigl(\bigl(\frac{1+z}{1-z}\bigr)^2\Bigr)=\frac{200}\pi\Arg\frac{1+z}{1-z}$（第一象限里辐角在$0$和$\frac\pi2$之间，平方后辐角加倍）。
+
+    （3）$\Arg\bigl(\frac35+\frac45i\bigr)=\arctan\frac43$，$u=\frac{200}\pi\arctan\frac43$，约$59.0$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）$U=x$调和。$\varphi(x,y)=(x^2,y)$在右半平面上光滑、一一，$U\circ\varphi$调和吗？
+
+    （2）这一节的定理要求$\varphi$全纯。证明里哪一步用到了它？
+
+    （3）$\varphi(z)=\bar z$不全纯，可$U$调和时$U(\bar z)$也调和。这和定理矛盾吗？
+  hints:
+    - |
+      （1）$U\circ\varphi=x^2$。
+    - |
+      （2）局部地$U=\Re F$，要$F\circ\varphi$全纯。
+    - |
+      （3）$U(x,-y)$的二阶偏导数和$U$的有什么关系？
+  reference: |
+    （1）$U\circ\varphi=x^2$，$\lap(x^2)=2\ne0$，不调和。
+
+    （2）证明里把$U$局部写成$\Re F$，再说$F\circ\varphi$全纯、所以实部调和；$\varphi$只是光滑时，$F\circ\varphi$一般不全纯，这一步就断了。
+
+    （3）不矛盾：定理只说全纯是够用的条件，没说是必要的。$V(x,y)=U(x,-y)$满足$V_{xx}=U_{xx}$、$V_{yy}=U_{yy}$（各在$(x,-y)$处取值），所以$\lap V=0$。换个说法：$U(\bar z)=\Re\overline{F(\bar z)}$，而$\overline{F(\bar z)}$是全纯的。
+
+- id: p8
+  tier: thinking
+  statement: |
+    圆盘里的温度$u$在闭圆盘上连续（边界上温度跳变的地方除外），在圆盘里调和。
+
+    （1）例 2 的$u(0)=50$，和边界温度的平均值一致。为什么会这样？
+
+    （2）如果边界上有$\frac34$的圆周温度为$100$，其余为$0$，圆心的温度是多少？
+
+    （3）用平均值的办法，能不能直接求出圆盘里别的点的温度？
+  hints:
+    - |
+      （1）平均值性质对圆周$|z|=r$（$r<1$）成立，再让$r\to1$。
+    - |
+      （2）边界温度的平均值。
+    - |
+      （3）平均值性质只说圆心。
+  reference: |
+    （1）由平均值性质，$u(0)$等于$u$在圆周$|z|=r$上的平均值，对每个$r<1$都成立。$r\to1$时，这些平均值趋于边界温度的平均值（这里不细证：除了跳变的两点，圆周上的值趋于边界值，而且都在$0$和$100$之间），所以$u(0)$就是边界温度的平均值，例 2 里是$50$。
+
+    （2）照同样的道理，圆心的温度是边界温度的平均值，$\frac34\cdot100+\frac14\cdot0$，即$75$。
+
+    （3）不能。平均值性质只给圆心的值；别的点的温度是边界温度的加权平均，权重不均匀，离那一点近的边界权重大：例 2 里$\frac i2$离热的上半圆周近，温度约$79.5$（第 4 题），高于$50$。要求出它，还得像例 2 那样用映射。

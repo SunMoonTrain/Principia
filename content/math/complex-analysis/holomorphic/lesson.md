@@ -40,7 +40,7 @@ $$
 ::anchor{id="def-holomorphic"}
 设$D$是:term[开集]{id="math.complex-analysis.open-set"}（open set）。如果$f$在$D$的每一点都:term[复可导]{id="math.complex-analysis.complex-derivative"}，就说$f$在$D$上全纯（holomorphic），这样的$f$叫作$D$上的:term[全纯函数]{id="math.complex-analysis.holomorphic-function"}（holomorphic function）。在整个:term[复平面]{id="math.complex-analysis.complex-plane"}（complex plane）上全纯的函数叫作:term[整函数]{id="math.complex-analysis.entire-function"}（entire function）；$f$在一点$z_0$处全纯，指它在以$z_0$为圆心的某个:term[开圆盘]{id="math.complex-analysis.open-disc"}（open disc）里全纯。
 
-为什么这样定义：要求在一整块开集上复可导，而不是只在零星的点上，就会得到一连串强得惊人的结论：以后会证明，全纯函数可以无穷次求导，沿闭曲线的积分为$0$，还能展开成幂级数（power series）。只在一点复可导没有这些后果，所以不叫全纯；很多书把全纯函数叫作解析函数（analytic function），两者等价要到[全纯函数的幂级数展开](lesson:math.complex-analysis.power-series)一节才证明。边界情况：$|z|^2$只在$0$处复可导，所以在任何地方都不全纯；$\frac1z$在去掉原点的平面上全纯，但不是整函数。
+为什么这样定义：要求在一整块开集上复可导，而不是只在零星的点上，就会得到一连串强得惊人的结论：以后会证明，全纯函数可以无穷次求导，沿闭曲线的积分为$0$，还能展开成幂级数（power series）。只在一点复可导没有这些后果，所以不叫全纯；很多书把全纯函数叫作:term[解析函数]{id="math.complex-analysis.analytic-function"}（analytic function），两者等价要到[全纯函数的幂级数展开](lesson:math.complex-analysis.power-series)一节才证明。边界情况：$|z|^2$只在$0$处复可导，所以在任何地方都不全纯；$\frac1z$在去掉原点的平面上全纯，但不是整函数。
 
 ### $e^z$、$\sin z$、$\cos z$的导数
 

@@ -164,4 +164,4 @@
 
     （2）沿三角形边界的积分为$0$，不需要$f'$连续；由此在圆盘里，沿任何闭曲线的积分都为$0$。
 
-    （3）只要证明全纯函数的导数总是连续的，格林公式版的柯西积分定理就对所有全纯函数成立。[柯西积分公式](lesson:math.complex-analysis.cauchy-integral-formula)一节正是这样做的：先在圆周上用本节的结论证出积分公式，由它推出全纯函数可以无穷次求导，导数当然连续。
+    （3）只要证明全纯函数的导数总是连续的，格林公式版的柯西积分定理就对所有全纯函数成立。[柯西积分公式](lesson:math.complex-analysis.cauchy-integral-formula)和[高阶导数与莫雷拉定理](lesson:math.complex-analysis.higher-derivatives)两节正是这样做的：先在圆周上用本节的结论证出积分公式，再由它推出全纯函数可以无穷次求导，导数当然连续。

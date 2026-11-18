@@ -56,7 +56,7 @@ $$
 ::anchor{id="def-argument"}
 设$z\ne0$。从:term[正实轴]{id="math.complex-analysis.real-axis"}转到$z$所在的射线，转过的角$\theta$（逆时针为正）叫作$z$的:term[辐角]{id="math.complex-analysis.argument"}（argument），记作$\arg z$；它可以差$2\pi$的整数倍，其中落在$(-\pi,\pi]$里的那一个叫作$z$的:term[辐角主值]{id="math.complex-analysis.principal-argument"}（principal argument），记作$\Arg z$。记$r=|z|$，则$z=r(\cos\theta+i\sin\theta)$，这叫作$z$的:term[三角形式]{id="math.complex-analysis.trigonometric-form"}（trigonometric form）。
 
-为什么这样定义：点的位置也可以由到原点的距离和方向决定，$a=r\cos\theta$、$b=r\sin\theta$，这和:term[极坐标]{id="math.calculus.polar-coordinates"}（polar coordinates）是一回事。转一整圈回到原处，所以辐角只能确定到$2\pi$的整数倍，要选一个代表时取主值；高中课本取$[0,2\pi)$里的那个作主值，这里照复分析的习惯取$(-\pi,\pi]$，以后[复对数](lesson:math.complex-analysis.complex-logarithm)（complex logarithm）的主值和它配套。边界情况：$0$没有辐角，它的方向无从说起；$\Arg(-1)=\pi$，$\Arg(-i)=-\frac\pi2$。
+为什么这样定义：点的位置也可以由到原点的距离和方向决定，$a=r\cos\theta$、$b=r\sin\theta$，这和:term[极坐标]{id="math.calculus.polar-coordinates"}（polar coordinates）是一回事。转一整圈回到原处，所以辐角只能确定到$2\pi$的整数倍，要选一个代表时取主值；高中课本取$[0,2\pi)$里的那个作主值，这里照复分析的习惯取$(-\pi,\pi]$，以后:term[复对数]{id="math.complex-analysis.complex-logarithm"}（complex logarithm）的主值和它配套（见[复对数与幂函数](lesson:math.complex-analysis.complex-logarithm)一节）。边界情况：$0$没有辐角，它的方向无从说起；$\Arg(-1)=\pi$，$\Arg(-i)=-\frac\pi2$。
 
 ### 乘法是旋转加伸缩
 

@@ -1,0 +1,165 @@
+- id: p1
+  tier: easy
+  statement: |
+    $u=e^x\cos y$在整个平面上调和。它的共轭调和函数$v$满足$v(0,0)=0$，求$v\bigl(1,\frac\pi2\bigr)$。
+  answer:
+    type: number
+    value: e
+  hints:
+    - |
+      $e^x\cos y$是哪个全纯函数的实部？
+    - |
+      $e^z=e^x\cos y+ie^x\sin y$。
+    - |
+      共轭调和函数只能差一个常数，$v(0,0)=0$定出这个常数。
+  solution: |
+    $e^z=e^x\cos y+ie^x\sin y$全纯，所以$e^x\sin y$是$u$的共轭调和函数；平面是区域，共轭调和函数只差常数，而$e^0\sin0=0$，所以$v=e^x\sin y$。$v\bigl(1,\frac\pi2\bigr)=e\sin\frac\pi2$，即$e$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列函数中，在各自有定义的地方调和的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $x^2+y^2$
+      - |
+        $e^x\sin y$
+      - |
+        $\ln(x^2+y^2)$（去掉原点）
+      - |
+        $x^3-y^3$
+    value: [2, 3]
+  hints:
+    - |
+      逐个算$u_{xx}+u_{yy}$。
+    - |
+      $e^x\sin y$是$e^z$的虚部。
+    - |
+      $\ln(x^2+y^2)=2\ln|z|$。
+  solution: |
+    A：$u_{xx}+u_{yy}=2+2$，即$4$，不调和；B：它是$e^z$的虚部，调和；C：它是$2\ln|z|$，由例 2 在去掉原点的平面上调和；D：$u_{xx}+u_{yy}=6x-6y$，不恒为$0$，不调和。选 B、C。
+
+- id: p3
+  tier: medium
+  statement: |
+    $u=x^2-y^2+3y$在整个平面上调和。它的共轭调和函数$v$满足$v(0,0)=0$，求$v(1,1)$。
+  answer:
+    type: number
+    value: -1
+  hints:
+    - |
+      算$g=u_x-iu_y$，把它写成$z$的函数。
+    - |
+      $g=2x-i(3-2y)$，即$2z-3i$。
+    - |
+      $z^2-3iz$的实部是$u$，取虚部。
+  solution: |
+    $u_x=2x$，$u_y=3-2y$，$g=u_x-iu_y=2x+2iy-3i$，即$2z-3i$。它的原函数$z^2-3iz$的实部是$x^2-y^2+3y$，正是$u$；虚部是$2xy-3x$，在原点为$0$。所以$v=2xy-3x$，$v(1,1)=2-3$，即$-1$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $u=x^3-3xy^2$、$v=3x^2y-y^3$是$z^3$的实部和虚部。经过原点的等值线$u=0$由三条直线组成，$v=0$也是。$u=0$的一条直线和$v=0$的一条直线在原点所成的角，最小是多少（弧度）？
+  answer:
+    type: number
+    value: pi/6
+  hints:
+    - |
+      用极坐标：$z^3=r^3e^{3i\theta}$。
+    - |
+      $u=r^3\cos3\theta$，$v=r^3\sin3\theta$。
+    - |
+      $u=0$的方向是$\theta=\frac\pi6+\frac{k\pi}3$，$v=0$的方向是$\theta=\frac{k\pi}3$。
+  solution: |
+    $z^3=r^3e^{3i\theta}$，$u=r^3\cos3\theta$，$v=r^3\sin3\theta$。$u=0$即$\cos3\theta=0$，方向是$\theta=\frac\pi6+\frac{k\pi}3$；$v=0$即$\sin3\theta=0$，方向是$\theta=\frac{k\pi}3$。两组方向相差至少$\frac\pi6$，所以最小的角是$\frac\pi6$。原点处$(z^3)'=0$，等值线不正交。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f=u+iv$在开圆盘$\Delta$上全纯。
+
+    （1）证明$\lap(u^2)=2|\nabla u|^2$。
+
+    （2）证明：如果$u^2$在$\Delta$上调和，$u$就是常数。
+
+    （3）证明$uv$在$\Delta$上调和。
+  hints:
+    - |
+      （1）$(u^2)_{xx}=2u_x^2+2uu_{xx}$，$y$方向同样，再用$\lap u=0$。
+    - |
+      （2）梯度处处为$0$，沿圆盘里的线段看。
+    - |
+      （3）$f^2=u^2-v^2+2iuv$。
+  reference: |
+    （1）$(u^2)_{xx}=2u_x^2+2uu_{xx}$，$(u^2)_{yy}=2u_y^2+2uu_{yy}$。相加，$u$调和，所以$\lap(u^2)=2(u_x^2+u_y^2)+2u\lap u$，即$2|\nabla u|^2$。
+
+    （2）$u^2$调和时$|\nabla u|^2=0$，$\Delta$上处处$\nabla u=0$。圆盘里任两点$p$、$q$由线段$p+t(q-p)$（$0\le t\le1$）连接，由链式法则，$u$沿线段对$t$的导数是$u_x\cdot(q-p)_x+u_y\cdot(q-p)_y$，为$0$，所以$u$在两点的值相同，$u$是常数。
+
+    （3）$f^2$全纯，它的虚部是$2uv$，由这一节的定理调和，所以$uv$调和。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）证明$u=\frac x{x^2+y^2}$是$\frac1z$的实部，并写出它在去掉原点的平面上的一个共轭调和函数。
+
+    （2）分别对$u=\frac x{x^2+y^2}$和$u=\ln|z|$，求$\oint_{|z|=1}(u_x-iu_y)\,\dd z$，圆周取逆时针方向。
+
+    （3）说明：去掉原点的平面上的调和函数$u$有共轭调和函数时，（2）里的积分一定是$0$。
+  hints:
+    - |
+      （1）$\frac1z=\frac{\bar z}{|z|^2}$。
+    - |
+      （2）有共轭调和函数$v$时，$u_x-iu_y$就是$(u+iv)'$。
+    - |
+      （3）$u+iv$是$u_x-iu_y$的原函数。
+  reference: |
+    （1）$\frac1z=\frac{x-iy}{x^2+y^2}$，实部是$u$，虚部$-\frac y{x^2+y^2}$就是共轭调和函数，因为$\frac1z$在去掉原点的平面上全纯。
+
+    （2）对$u=\Re\frac1z$，$u_x-iu_y=\bigl(\frac1z\bigr)'=-\frac1{z^2}$，它有原函数$\frac1z$，沿闭曲线积分为$0$。对$u=\ln|z|$，由例 2，$u_x-iu_y=\frac1z$，积分是$2\pi i$。
+
+    （3）有共轭调和函数$v$时，$f=u+iv$全纯，$f'=u_x-iu_y$，所以$u_x-iu_y$在去掉原点的平面上有原函数$f$，沿任何闭曲线的积分为$0$。$\ln|z|$的积分不是$0$，所以它没有；$\Re\frac1z$的积分是$0$，和它有共轭调和函数对得上。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）设$u$在开圆盘上有连续的二阶偏导数并且调和。为什么$u$其实有各阶连续的偏导数？
+
+    （2）调和函数的偏导数$u_x$也调和吗？
+
+    （3）一个变量时，「$u''=0$」的函数是什么样的？它和圆盘上的调和函数比，有什么相似的地方？
+  hints:
+    - |
+      （1）圆盘上$u$是某个全纯函数的实部。
+    - |
+      （2）$u_x=\Re f'$。
+    - |
+      （3）$u''=0$的解是一次函数；区间中点的值和两端点的值有什么关系？
+  reference: |
+    （1）由圆盘里一定有共轭调和函数，$u=\Re f$，$f$在圆盘上全纯；由这一节的第一个定理，$u$有各阶连续的偏导数。只假设二阶偏导数连续，就自动得到了任意阶。
+
+    （2）调和。$f=u+iv$时$u_x=\Re f'$，而$f'$全纯，所以$u_x$调和；$u_y=-\Im f'$也调和。
+
+    （3）$u''=0$的解是一次函数$ax+b$，它在区间中点的值等于两端点的值的平均。圆盘上的调和函数在圆心的值也等于圆周上的平均值（[平均值性质与最大模原理](lesson:math.complex-analysis.maximum-modulus)一节），一次函数正是一维的「调和函数」。不同的是，二维的调和函数要多得多：每个全纯函数的实部都是。
+
+- id: p8
+  tier: thinking
+  statement: |
+    平板上不再随时间变化的温度分布$u(x,y)$调和，热沿$-\nabla u$的方向流动。设$u$有共轭调和函数$v$。
+
+    （1）为什么热沿着$v$的等值线流动？
+
+    （2）$u=x^2-y^2$时，从点$(1,0)$出发的热沿什么路线流动？朝哪个方向？
+  hints:
+    - |
+      （1）$\nabla v$和$\nabla u$垂直。
+    - |
+      （1）$v$的等值线和$\nabla v$垂直，所以和$\nabla u$平行。
+    - |
+      （2）$v=2xy$；$(1,0)$处$v=0$。
+  reference: |
+    （1）由柯西-黎曼方程，$\nabla v=(-u_y,u_x)$和$\nabla u$垂直。$v$的等值线的切线和$\nabla v$垂直，所以和$\nabla u$平行，热流的方向$-\nabla u$正沿着$v$的等值线。
+
+    （2）$v=2xy$，$(1,0)$处$v=0$，所以热沿等值线$2xy=0$，即实轴流动。$(1,0)$处$-\nabla u=(-2x,2y)$，即$(-2,0)$，热朝原点流去。

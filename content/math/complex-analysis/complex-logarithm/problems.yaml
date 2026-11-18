@@ -1,0 +1,165 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\Log(-2i)$，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [log(2), -pi/2]
+  hints:
+    - |
+      先求模：$|-2i|=2$。
+    - |
+      $-2i$在负虚轴上，辐角主值是$-\frac\pi2$。
+    - |
+      $\Log z=\ln|z|+i\Arg z$。
+  solution: |
+    $|-2i|=2$，$\Arg(-2i)=-\frac\pi2$，所以$\Log(-2i)=\ln2-\frac{\pi i}2$。实部$\ln2$，虚部$-\frac\pi2$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列等式中，成立的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\Log(-1)=-\pi i$
+      - |
+        对一切$z\ne0$，$e^{\Log z}=z$
+      - |
+        $\Log e^{3\pi i}=3\pi i$
+      - |
+        $\log1$的全部值是$2k\pi i$（$k$是整数）
+    value: [2, 4]
+  hints:
+    - |
+      辐角主值在$(-\pi,\pi]$里。
+    - |
+      $e^{\Log z}=z$由复对数的定义；$\Log e^w=w$要$w$落在带形$-\pi<\Im w\le\pi$里。
+    - |
+      $e^w=1$当且仅当$w$是$2\pi i$的整数倍。
+  solution: |
+    A：$\Arg(-1)=\pi$，$\Log(-1)=\pi i$，不对；B：$\Log z$是$z$的一个复对数，所以$e^{\Log z}=z$，对；C：$e^{3\pi i}=-1$，$\Log(-1)=\pi i\ne3\pi i$，不对；D：$e^w=1$当且仅当$w=2k\pi i$，对。选 B、D。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$i^i$的主值。
+  answer:
+    type: number
+    value: exp(-pi/2)
+  hints:
+    - |
+      主值是$e^{i\Log i}$。
+    - |
+      $\Log i=\frac{\pi i}2$。
+    - |
+      $i\cdot\frac{\pi i}2=-\frac\pi2$。
+  solution: |
+    $\Log i=\ln1+i\cdot\frac\pi2=\frac{\pi i}2$，所以主值$i^i=e^{i\Log i}=e^{-\pi/2}\approx0.2079$，是正实数。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$2^i$的主值，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [cos(log(2)), sin(log(2))]
+  hints:
+    - |
+      主值是$e^{i\Log2}$。
+    - |
+      $\Log2=\ln2$，是实数。
+    - |
+      用欧拉公式$e^{i\theta}=\cos\theta+i\sin\theta$。
+  solution: |
+    $2^i=e^{i\Log2}=e^{i\ln2}$，由欧拉公式，它等于$\cos(\ln2)+i\sin(\ln2)\approx0.769+0.639i$。实部$\cos(\ln2)$，虚部$\sin(\ln2)$。
+
+- id: p5
+  tier: hard
+  statement: |
+    求所有满足$\cos z=i$的复数$z$。
+  hints:
+    - |
+      记$t=e^{iz}$，则$\cos z=\frac{t+t^{-1}}2$。
+    - |
+      $t^2-2it+1=0$，$t=i(1\pm\sqrt2)$。
+    - |
+      $e^{iz}=t$即$iz=\log t$，也就是$z=-i\log t$。
+  reference: |
+    记$t=e^{iz}$，方程化成$t+\frac1t=2i$，即$t^2-2it+1=0$。判别式是$-4-4=-8$，所以$t=\frac{2i\pm2\sqrt2i}2$，即$t=i(1\pm\sqrt2)$。
+
+    $t_1=(1+\sqrt2)i=(1+\sqrt2)e^{i\pi/2}$，$\log t_1=\ln(1+\sqrt2)+i\bigl(\frac\pi2+2k\pi\bigr)$。$t_2=(1-\sqrt2)i=(\sqrt2-1)e^{-i\pi/2}$，$\log t_2=\ln(\sqrt2-1)+i\bigl(-\frac\pi2+2k\pi\bigr)$，而$(\sqrt2-1)(\sqrt2+1)=1$，$\ln(\sqrt2-1)=-\ln(1+\sqrt2)$。由$z=-i\log t$，解是
+
+    $$
+    z=\frac\pi2+2k\pi-i\ln(1+\sqrt2),\qquad z=-\frac\pi2+2k\pi+i\ln(1+\sqrt2),
+    $$
+
+    $k$是整数。验算第一组的$k=0$：$x=\frac\pi2$，$y=-\ln(1+\sqrt2)$，$\cos z=\cos x\cosh y-i\sin x\sinh y=-i\sinh y$；$\sinh\ln(1+\sqrt2)=\frac{(1+\sqrt2)-(\sqrt2-1)}2=1$，所以$\cos z=i$。
+
+- id: p6
+  tier: hard
+  statement: |
+    主值$z^{1/2}=e^{\frac12\Log z}$。
+
+    （1）证明它在去掉原点和负实轴的平面$D$上全纯，平方等于$z$，导数是$\frac1{2z^{1/2}}$。
+
+    （2）设$a>0$。$\varepsilon\to0^+$时，$(-a+i\varepsilon)^{1/2}$和$(-a-i\varepsilon)^{1/2}$（都取主值）分别趋于什么？
+
+    （3）证明：去掉原点的整个平面上，没有连续函数$s$满足$s(z)^2=z$。
+  hints:
+    - |
+      （1）$\Log$在$D$上全纯，$e^w$处处全纯，用复合函数的求导法则；$\bigl(e^{\frac12\Log z}\bigr)^2=e^{\Log z}$。
+    - |
+      （2）$\Arg(-a\pm i\varepsilon)$分别趋于$\pm\pi$。
+    - |
+      （3）仿照「去掉原点的平面上没有$\log z$的分支」的证法，看$h(t)=s(e^{it})e^{-it/2}$。
+  reference: |
+    （1）$\Log$在$D$上全纯，$e^w$处处全纯，复合以后仍全纯，导数是$e^{\frac12\Log z}\cdot\frac1{2z}=\frac{z^{1/2}}{2z}$，即$\frac1{2z^{1/2}}$。又$\bigl(e^{\frac12\Log z}\bigr)^2=e^{\Log z}=z$。
+
+    （2）$|-a\pm i\varepsilon|\to a$，$\Arg(-a\pm i\varepsilon)\to\pm\pi$，所以主值$e^{\frac12(\ln|z|+i\Arg z)}$分别趋于$\sqrt ae^{\pm i\pi/2}$，即$\pm i\sqrt a$。从负实轴两侧趋近，极限差一个符号。
+
+    （3）设有这样的$s$，令$h(t)=s(e^{it})e^{-it/2}$，$0\le t\le2\pi$。$h(t)^2=e^{it}e^{-it}=1$，所以$h(t)$只取$\pm1$；$h$连续，由介值定理，$h$是常数。可$h(0)=s(1)$，$h(2\pi)=s(1)e^{-i\pi}=-s(1)$，而$s(1)\ne0$，矛盾。
+
+- id: p7
+  tier: thinking
+  statement: |
+    沿单位圆$z(t)=e^{it}$（$0\le t\le2\pi$）从$1$出发走一圈，让$\log z$的值随$t$连续地变，从$\log1=0$开始。
+
+    （1）走到$t$时，这个值是多少？回到$1$时变成了多少？
+
+    （2）这和$\oint_{|z|=1}\frac{\dd z}z=2\pi i$（见[复积分](lesson:math.complex-analysis.contour-integrals#thm-power-integral)）有什么关系？
+
+    （3）为什么说「去掉原点的平面上没有$\log z$的分支」和这件事是一回事？
+  hints:
+    - |
+      （1）$e^{it}$的模是$1$，连续地取的辐角是$t$。
+    - |
+      （2）$\frac{\dd}{\dd t}(it)=i$，而$\frac{z'(t)}{z(t)}$也是$i$。
+    - |
+      （3）分支在每一点只取一个值，沿圆走一圈回到原处，值不变。
+  reference: |
+    （1）$|e^{it}|=1$，$\ln1=0$，辐角连续地取$t$，所以值是$it$；回到$1$时变成$2\pi i$，而不是出发时的$0$。
+
+    （2）沿这条曲线$\frac{z'(t)}{z(t)}=\frac{ie^{it}}{e^{it}}=i$，正是$it$对$t$的导数，所以$\oint\frac{\dd z}z=\int_0^{2\pi}\frac{z'(t)}{z(t)}\dd t$等于对数的值走完一圈的增量$2\pi i$。
+
+    （3）沿单位圆连续地取的对数，两两只差一个常数（理由同正文：差除以$2\pi i$连续、只取整数），所以走一圈的增量总是$2\pi i$。要是有分支$F$，沿圆取$F$的值也是一种连续的取法，可它回到$1$时增量是$0$，矛盾。所以「没有分支」和「增量是$2\pi i$、$\oint\frac{\dd z}z\ne0$」是同一件事。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）设$F$、$G$都是$\log z$在同一个区域$U$上的分支。证明$F-G$在$U$上是常数，而且是$2\pi i$的整数倍。
+
+    （2）在有分支的区域上，$\log z$有多少个分支？满足$s(z)^2=z$的连续函数$s$有多少个？
+  hints:
+    - |
+      （1）$e^{F-G}=1$，所以$\frac{F-G}{2\pi i}$只取整数值。
+    - |
+      （1）区域里任意两点能用落在里面的折线连起来，在折线上用介值定理。
+    - |
+      （2）看$s(z)e^{-F(z)/2}$的平方。
+  reference: |
+    （1）$e^{F(z)}=e^{G(z)}=z$，所以$e^{F(z)-G(z)}=1$，$F(z)-G(z)=2\pi in(z)$，$n(z)$是整数。$n$在$U$上连续。任取$U$里两点$p$、$q$，用落在$U$里的折线$\gamma(t)$（$0\le t\le1$）连起来，$n(\gamma(t))$连续、只取整数，由介值定理是常数，所以$n(p)=n(q)$。
+
+    （2）设$F$是一个分支。$F+2k\pi i$都是分支，由（1），分支恰好是这些，有无穷多个。满足$s^2=z$的连续$s$：$\bigl(s(z)e^{-F(z)/2}\bigr)^2=ze^{-F(z)}=1$，所以$s(z)e^{-F(z)/2}$只取$\pm1$，同（1）的道理是常数，$s=\pm e^{F/2}$，恰有两个。

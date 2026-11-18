@@ -1,0 +1,171 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\frac1{z^2+4}$在$0$处的泰勒级数的收敛半径。
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      找离$0$最近的、函数不全纯的点。
+    - |
+      $z^2+4=0$的根是$\pm2i$。
+    - |
+      $z\to\pm2i$时函数的模趋于$+\infty$。
+  solution: |
+    $z^2+4=0$只在$z=\pm2i$处成立，函数在别处全纯，$z\to\pm2i$时它的模趋于$+\infty$。$\pm2i$到$0$的距离是$2$，所以收敛半径是$2$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $\frac{e^z}{z-3}$在$z=1$处的泰勒级数的收敛半径是多少？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        $1$
+      - |
+        $2$
+      - |
+        $3$
+      - |
+        $+\infty$
+    value: 2
+  hints:
+    - |
+      $e^z$是整函数，只有分母可能出问题。
+    - |
+      函数只在$z=3$处不全纯。
+    - |
+      $3$到$1$的距离是多少？
+  solution: |
+    $\frac{e^z}{z-3}$只在$z=3$处不全纯，$z\to3$时分子趋于$e^3\ne0$，分母趋于$0$，函数的模趋于$+\infty$。$3$到$1$的距离是$2$，所以收敛半径是$2$，选 B。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\frac1{2\pi i}\oint_{|z|=1}\frac{e^{2z}}{z^4}\,\dd z$，圆周取逆时针方向。
+  answer:
+    type: number
+    value: 4/3
+  hints:
+    - |
+      它是$e^{2z}$在$0$处的泰勒级数的哪一个系数？
+    - |
+      $a_n=\frac1{2\pi i}\oint\frac{f(\zeta)}{\zeta^{n+1}}\dd\zeta$，这里$n=3$。
+    - |
+      $e^{2z}=\sum\frac{(2z)^n}{n!}$。
+  solution: |
+    由系数的积分表示，所求的值是$e^{2z}$在$0$处的泰勒级数里$z^3$的系数$a_3$。$e^{2z}=\sum_{n=0}^\infty\frac{2^nz^n}{n!}$，所以$a_3=\frac{2^3}{3!}$，即$\frac43$。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$z\ne0$时$f(z)=\frac z{\sin z}$，$f(0)=1$。求$f$在$0$处的泰勒级数的收敛半径。
+  answer:
+    type: number
+    value: pi
+  hints:
+    - |
+      $f=\frac1s$，$s(z)=\frac{\sin z}z$（$s(0)=1$）是整函数。
+    - |
+      $\sin z$的零点只有$k\pi$。
+    - |
+      $s$在$|z|<\pi$里没有零点；$z\to\pm\pi$时$|f(z)|\to+\infty$。
+  solution: |
+    补上$s(0)=1$以后$s(z)=\frac{\sin z}z$是整函数（这一节「收敛半径和最近的不全纯点」一块的边界情况）。$\sin z$的零点只有$k\pi$，所以$s$在$|z|<\pi$里没有零点，$f=\frac1s$在$|z|<\pi$上全纯，收敛半径至少是$\pi$。$z\to\pi$时$\sin z\to0$，$|f(z)|\to+\infty$，所以收敛半径恰好是$\pi$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$z\ne0$时$f(z)=\frac z{e^z-1}$，$f(0)=1$。
+
+    （1）证明$e^z-1=zh(z)$，其中$h$是整函数，$h(0)=1$。
+
+    （2）求$e^z-1$的全部零点。
+
+    （3）证明$f$在$0$附近全纯，并求它在$0$处的泰勒级数的收敛半径。
+  hints:
+    - |
+      （1）$e^z-1=\sum_{n\ge1}\frac{z^n}{n!}$，提出一个$z$。
+    - |
+      （2）$e^z=1$当且仅当$z=2k\pi i$。
+    - |
+      （3）$f=\frac1h$，$h$的零点是$2k\pi i$（$k\ne0$），离$0$最近的是$\pm2\pi i$。
+  reference: |
+    （1）$e^z-1=\sum_{n\ge1}\frac{z^n}{n!}=z\sum_{n\ge0}\frac{z^n}{(n+1)!}$。右边的级数对一切$z$收敛，记它的和为$h(z)$，由逐项求导的定理，$h$是整函数，$h(0)=1$。
+
+    （2）$e^z=1$当且仅当$z=2k\pi i$，$k$是整数，见[欧拉公式与复指数](lesson:math.complex-analysis.complex-exponential#thm-exp-addition)。
+
+    （3）$z\ne0$时$f(z)=\frac1{h(z)}$，$z=0$时两边都是$1$，所以$f=\frac1h$。$h$的零点就是$e^z-1$除$0$以外的零点$2k\pi i$（$k\ne0$），离$0$最近的是$\pm2\pi i$，距离$2\pi$，所以$f$在$|z|<2\pi$上全纯，收敛半径至少是$2\pi$。$z\to2\pi i$时$h(z)\to0$，$|f(z)|\to+\infty$，所以收敛半径恰好是$2\pi$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f(z)=\cos z$，$z_0=0$。
+
+    （1）求使$f^{(n)}(0)\ne0$的最小正整数$n$，并求$\cos z-1=z^ng(z)$里的$g(0)$。
+
+    （2）从$0$出发的正实轴、正虚轴夹角为$\frac\pi2$。它们在$\cos z$下的像都从$1$出发，各朝哪个方向？两个像在$1$处的夹角是多少？
+  hints:
+    - |
+      （1）$\cos z=\sum\frac{(-1)^kz^{2k}}{(2k)!}$。
+    - |
+      （2）正实轴上$\cos t-1\le0$；正虚轴上$\cos(it)=\cosh t$。
+    - |
+      （2）和这一节「导数为零的点附近」的结论对照：夹角应当放大成$n$倍。
+  reference: |
+    （1）$f'(0)=-\sin0=0$，$f''(0)=-\cos0=-1\ne0$，所以$n=2$，$g(0)=\frac{f''(0)}{2!}=-\frac12$。
+
+    （2）正实轴上$\cos t-1\le0$，$t$从$0$增大时像从$1$出发沿实轴向左走，方向的辐角是$\pi$。正虚轴上$\cos(it)=\cosh t\ge1$，像从$1$出发沿实轴向右走，辐角是$0$。两个像在$1$处的夹角是$\pi$，正好是原来的$\frac\pi2$的$2$倍；由公式，像的辐角是$2\arg z'(0)+\arg g(0)$，两条射线分别给出$0+\pi$和$\pi+\pi$，差$\pi$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    设$x\ne0$时$\varphi(x)=e^{-1/x^2}$，$\varphi(0)=0$。已知$\varphi$在$0$处任意阶可导，各阶导数都是$0$。
+
+    （1）$\varphi$在$0$处的泰勒级数是什么？它在哪些点等于$\varphi(x)$？
+
+    （2）把$x$换成复数$z$：$z\ne0$时令$F(z)=e^{-1/z^2}$，$F(0)=0$。沿虚轴$z=iy$看，$z\to0$时$F(z)$怎样？
+
+    （3）这和「全纯函数在圆盘里等于它的泰勒级数」矛盾吗？
+  hints:
+    - |
+      （1）系数都是$0$。
+    - |
+      （2）$z=iy$时$z^2=-y^2$。
+    - |
+      （3）定理要求函数在以$0$为圆心的某个圆盘上全纯。
+  reference: |
+    （1）系数$\frac{\varphi^{(n)}(0)}{n!}$都是$0$，泰勒级数是$0$，只在$x=0$处等于$\varphi(x)$。
+
+    （2）$z=iy$时$-\frac1{z^2}=\frac1{y^2}$，$F(iy)=e^{1/y^2}\to+\infty$。所以$F$在$0$处不连续，在以$0$为圆心的任何圆盘上都不全纯。
+
+    （3）不矛盾。定理要的是在一个圆盘上处处复可导，只沿实轴无穷次可导远远不够；$\varphi$在实轴上看起来很光滑，可一离开实轴，$F$在$0$附近就变得无界。
+
+- id: p8
+  tier: thinking
+  statement: |
+    考虑$\Log z$在$z_0=-1+i$处的泰勒级数。
+
+    （1）$\Log z$在去掉负实轴（连同原点）的平面上全纯。由这一节的定理，收敛半径至少是多少？
+
+    （2）圆盘$|z-z_0|<\sqrt2$不含原点，原点在它的边界上。说明这个圆盘上有一个全纯函数$F$，$F'=\frac1z$，并且在$z_0$附近$F=\Log z$；由此说明收敛半径恰好是$\sqrt2$。
+
+    （3）在这个圆盘里、负实轴下方的点处，泰勒级数的和与$\Log z$差多少？
+  hints:
+    - |
+      （1）$z_0$到负实轴的距离。
+    - |
+      （2）试试$F(z)=\Log\bigl(ze^{-3\pi i/4}\bigr)+\frac{3\pi i}4$：它的支割线是从原点出发、朝$e^{-i\pi/4}$方向的射线，不碰这个圆盘。
+    - |
+      （2）$|F(z)|\ge|\Re F(z)|$，即$|F(z)|\ge|\ln|z||$。
+  reference: |
+    （1）$z_0$到负实轴的距离是$1$（最近点是$-1$），所以以$z_0$为圆心、半径$1$的圆盘在$\Log z$全纯的范围里，收敛半径至少是$1$。
+
+    （2）$\Log w$在去掉负实轴的平面上全纯、导数$\frac1w$。$ze^{-3\pi i/4}$落在负实轴上，当且仅当$z$在从原点出发、朝$e^{-i\pi/4}$方向的射线上；这条射线和圆盘$|z-z_0|<\sqrt2$不相交（圆盘落在半平面$\Re\bigl(ze^{-3\pi i/4}\bigr)>0$里）。所以$F(z)=\Log\bigl(ze^{-3\pi i/4}\bigr)+\frac{3\pi i}4$在这个圆盘上全纯，$F'(z)=\frac{e^{-3\pi i/4}}{ze^{-3\pi i/4}}$，即$\frac1z$。
+
+    $e^F=z$，所以$F$和$\Log z$在$z_0$附近都连续、只差$2\pi i$的整数倍；而$F(z_0)=\ln\sqrt2+\frac{3\pi i}4=\Log z_0$，所以在$z_0$附近$F=\Log z$，两者在$z_0$处的泰勒级数相同。由这一节的定理，这个级数的收敛半径至少是$\sqrt2$。$z$在圆盘里趋于原点时$|F(z)|\ge|\ln|z||\to+\infty$，所以恰好是$\sqrt2$。
+
+    （3）级数的和就是$F$。在负实轴下方的点，$\Log z$的虚部在$-\pi$附近，$F$的虚部从上半平面连续地越过负实轴，在$\pi$附近；两者都满足$e^w=z$，所以差$2\pi i$的整数倍，就是$2\pi i$：级数的和比$\Log z$大$2\pi i$。

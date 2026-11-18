@@ -1,0 +1,165 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$C$是圆周$|z|=2$，取逆时针方向。求$\frac1{2\pi i}\oint_C\frac{e^z}{z-1}\,\dd z$。
+  answer:
+    type: number
+    value: e
+  hints:
+    - |
+      被积函数是$\frac{f(z)}{z-1}$的形状，$f(z)=e^z$。
+    - |
+      $f$是整函数，$1$在$C$里面。
+    - |
+      由柯西积分公式，结果是$f(1)$。
+  solution: |
+    $f(z)=e^z$在整个平面上全纯，$|1|<2$，所以$1$在$C$里面。由柯西积分公式，$\frac1{2\pi i}\oint_C\frac{e^z}{z-1}\dd z=f(1)$，即$e$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列积分中，等于$2\pi i$的是哪一个？各圆周都取逆时针方向。
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        $\oint_{|z|=1}\frac{e^z}{z-2}\,\dd z$
+      - |
+        $\oint_{|z|=3}\frac{\sin z}{z-\pi}\,\dd z$
+      - |
+        $\oint_{|z|=1}\frac{z^2}{z-\frac12}\,\dd z$
+      - |
+        $\oint_{|z|=2}\frac{\cos z}z\,\dd z$
+    value: 4
+  hints:
+    - |
+      每个积分都写成$\frac{f(z)}{z-z_0}$的形状，先看$z_0$在不在圆周里面。
+    - |
+      在里面时积分是$2\pi if(z_0)$，在外面时是$0$。
+    - |
+      $\sin\pi=0$。
+  solution: |
+    A：$2$在$|z|=1$外面，被积函数在$|z|<2$上全纯，积分是$0$；B：$\pi$在$|z|=3$里面，积分是$2\pi i\sin\pi$，即$0$；C：积分是$2\pi i\cdot\frac14$，即$\frac{\pi i}2$；D：积分是$2\pi i\cos0$，即$2\pi i$。选 D。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$C$是圆周$|z|=2$，取逆时针方向。求$\frac1{2\pi i}\oint_C\frac{e^z}{z(z-1)}\,\dd z$。
+  answer:
+    type: number
+    value: e - 1
+  hints:
+    - |
+      $0$、$1$都在$C$里面，不能直接把一个因子当分母用公式。
+    - |
+      $\frac1{z(z-1)}=\frac1{z-1}-\frac1z$。
+    - |
+      拆开以后两项分别用柯西积分公式。
+  solution: |
+    $\frac1{z(z-1)}=\frac1{z-1}-\frac1z$，所以积分拆成$\oint_C\frac{e^z}{z-1}\dd z-\oint_C\frac{e^z}z\dd z$。$0$、$1$都在$C$里面，$e^z$是整函数，由柯西积分公式，两项分别是$2\pi ie$和$2\pi i$。除以$2\pi i$，结果是$e-1$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\int_0^{2\pi}e^{1+\cos t}\cos(\sin t)\,\dd t$。
+  answer:
+    type: number
+    value: 2*pi*e
+  hints:
+    - |
+      $e^{1+\cos t}\cos(\sin t)$是$e^{1+e^{it}}$的实部。
+    - |
+      $t$从$0$到$2\pi$时，$1+e^{it}$走遍以$1$为圆心、半径为$1$的圆周。
+    - |
+      圆心处的值是圆周上的平均值，$e^z$在$1$处的值是$e$。
+  solution: |
+    $e^{1+e^{it}}=e^{1+\cos t}e^{i\sin t}$，实部是$e^{1+\cos t}\cos(\sin t)$。$e^z$是整函数，由圆心处的平均值公式（$a=1$，$r=1$），$\frac1{2\pi}\int_0^{2\pi}e^{1+e^{it}}\dd t=e$。取实部，积分是$2\pi e$。
+
+- id: p5
+  tier: hard
+  statement: |
+    两个圆周都取逆时针方向。
+
+    （1）设$C_1$是圆周$|z-i|=1$，求$\oint_{C_1}\frac{e^z}{z^2+1}\,\dd z$。
+
+    （2）设$C_2$是圆周$|z|=2$，求$\oint_{C_2}\frac{e^z}{z^2+1}\,\dd z$。
+  hints:
+    - |
+      （1）只有$i$在$C_1$里面，把$\frac{e^z}{z+i}$当分子。
+    - |
+      （2）$\pm i$都在$C_2$里面，$\frac1{z^2+1}=\frac1{2i}\Bigl(\frac1{z-i}-\frac1{z+i}\Bigr)$。
+    - |
+      （2）$e^i-e^{-i}=2i\sin1$。
+  reference: |
+    （1）$-i$到$i$的距离是$2$，$f(z)=\frac{e^z}{z+i}$在开圆盘$|z-i|<2$上全纯。由柯西积分公式，积分是$2\pi if(i)=2\pi i\cdot\frac{e^i}{2i}$，即$\pi e^i=\pi\cos1+i\pi\sin1$。
+
+    （2）拆开得$\frac1{2i}\Bigl(\oint_{C_2}\frac{e^z}{z-i}\dd z-\oint_{C_2}\frac{e^z}{z+i}\dd z\Bigr)$。$\pm i$都在$C_2$里面，$e^z$是整函数，两项分别是$2\pi ie^i$和$2\pi ie^{-i}$。所以积分是$\pi(e^i-e^{-i})$，即$2\pi i\sin1$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$在开圆盘$|z|<2$上全纯，在单位圆周$|z|=1$上处处$|f(z)|\le M$。
+
+    （1）证明：$|z|<1$时$|f(z)|\le\frac M{1-|z|}$。
+
+    （2）证明$|f(0)|\le M$。
+
+    （3）$f(z)=z^n$（$n\ge1$），$M$取$1$。（1）给出的$\bigl|f\bigl(\frac12\bigr)\bigr|$的界是多少？$\bigl|f\bigl(\frac12\bigr)\bigr|$实际是多少？
+  hints:
+    - |
+      （1）用柯西积分公式写出$f(z)$，再用 ML 不等式。
+    - |
+      （1）单位圆周上$|\zeta-z|\ge|\zeta|-|z|$，即$|\zeta-z|\ge1-|z|$。
+    - |
+      （2）在（1）里取$z=0$。
+  reference: |
+    （1）由柯西积分公式，$f(z)=\frac1{2\pi i}\oint_{|\zeta|=1}\frac{f(\zeta)}{\zeta-z}\dd\zeta$。圆周上$|\zeta-z|\ge1-|z|>0$，被积函数的模不超过$\frac M{1-|z|}$；圆周长$2\pi$，由 ML 不等式，$|f(z)|\le\frac1{2\pi}\cdot\frac M{1-|z|}\cdot2\pi$，即$|f(z)|\le\frac M{1-|z|}$。
+
+    （2）在（1）里取$z=0$即得；也可以由圆心处的平均值公式直接看出。
+
+    （3）界是$\frac1{1-\frac12}$，即$2$；实际$\bigl|f\bigl(\frac12\bigr)\bigr|=2^{-n}$，小得多。这个界很粗：[平均值性质与最大模原理](lesson:math.complex-analysis.maximum-modulus)一节会证明，圆内处处$|f(z)|\le M$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）设$f$在开圆盘$|z|<2$上全纯，并且在单位圆周上$f(\zeta)=\bar\zeta$。用柯西积分公式求$f$在$|z|<1$里的值。
+
+    （2）由此说明：这样的$f$不存在。
+
+    （3）这说明全纯函数在圆周上的值有什么限制？
+  hints:
+    - |
+      （1）单位圆周上$\bar\zeta=\frac1\zeta$。
+    - |
+      （1）$z\ne0$时$\frac1{\zeta(\zeta-z)}=\frac1z\Bigl(\frac1{\zeta-z}-\frac1\zeta\Bigr)$；$z=0$时被积函数是$\frac1{\zeta^2}$。
+    - |
+      （2）$f$在圆周上的点处也连续。
+  reference: |
+    （1）单位圆周上$\bar\zeta=\frac1\zeta$，所以$|z|<1$时$f(z)=\frac1{2\pi i}\oint_{|\zeta|=1}\frac{\dd\zeta}{\zeta(\zeta-z)}$。$z\ne0$时把被积函数拆成$\frac1z\Bigl(\frac1{\zeta-z}-\frac1\zeta\Bigr)$，$z$和$0$都在圆内，两项的积分都是$2\pi i$，相减为$0$；$z=0$时$\oint_{|\zeta|=1}\frac{\dd\zeta}{\zeta^2}=0$。所以$f$在$|z|<1$里恒为$0$。
+
+    （2）$f$在$1$处连续，沿实轴从圆内趋于$1$，得$f(1)=0$；可按假设$f(1)=\bar1$，即$1$，矛盾。
+
+    （3）圆周上的值不能随便给：柯西积分公式由它们算出圆内的值，圆内的值又要连续地接上圆周上的值。$\bar\zeta$在圆周上连续，却不是任何在包含单位圆周的开圆盘上全纯的函数在圆周上的值。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）实函数$u=0$和$v=1-x^2-y^2$在单位圆周上的值相同吗？在原点呢？
+
+    （2）设$f$、$g$在开圆盘$|z|<2$上全纯，并且在单位圆周上$f=g$。证明$|z|<1$时$f(z)=g(z)$。
+
+    （3）把（1）里的$v$看成$z$的函数，柯西积分公式对它为什么不成立？
+  hints:
+    - |
+      （1）单位圆周上$x^2+y^2=1$。
+    - |
+      （2）对$f-g$用柯西积分公式。
+    - |
+      （3）$v=1-z\bar z$，看它是不是全纯。
+  reference: |
+    （1）单位圆周上$x^2+y^2=1$，所以$v=0$，和$u$相同；原点处$u=0$，$v=1$，不同。实函数在圆内的值不由圆周上的值决定，即使它们可以任意次求偏导数。
+
+    （2）$h=f-g$在$|z|<2$上全纯，在单位圆周上为$0$。由柯西积分公式，$|z|<1$时$h(z)=\frac1{2\pi i}\oint_{|\zeta|=1}\frac{h(\zeta)}{\zeta-z}\dd\zeta$，被积函数在圆周上处处为$0$，所以$h(z)=0$，即$f(z)=g(z)$。
+
+    （3）$v=1-z\bar z$的实部$1-x^2-y^2$、虚部$0$只在原点满足柯西-黎曼方程，所以$v$只在原点复可导，在任何开集上都不全纯。证明的第一步要$\frac{v(\zeta)-v(z)}{\zeta-z}$除一点外全纯，才能用古尔萨定理那一节的两个定理，这一步对$v$不成立。结论也确实不成立：$v$在圆周上为$0$，公式右边对圆内每一点都是$0$，而$v(0)=1$。

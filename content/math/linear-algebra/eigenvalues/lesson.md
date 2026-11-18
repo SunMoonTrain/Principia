@@ -49,7 +49,7 @@ $\det(A-\lambda I)$是$\lambda$的$n$次多项式，叫作$A$的:term[特征多�
 ::anchor{id="thm-trace-det"}
 **:term[特征值]{id="math.linear-algebra.eigenvalue"}之和与积**　二阶方阵的特征多项式是$\lambda^2-(\tr A)\lambda+\det A$。一般地，若$n$阶方阵$A$的特征多项式能写成$(-1)^n(\lambda-\lambda_1)\cdots(\lambda-\lambda_n)$（$\lambda_i$可以相同，也可以是复数），则$\lambda_1+\dots+\lambda_n=\tr A$，$\lambda_1\lambda_2\cdots\lambda_n=\det A$。
 
-**证明思路**：常数项是$\lambda=0$时的值$\det A$；另一边，$\lambda=0$时$(-1)^n(0-\lambda_1)\cdots(0-\lambda_n)=\lambda_1\cdots\lambda_n$，所以积等于$\det A$。$\lambda^{n-1}$只能来自主对角元之积$(a_{11}-\lambda)\cdots(a_{nn}-\lambda)$，系数是$(-1)^{n-1}(a_{11}+\dots+a_{nn})$；而$(-1)^n(\lambda-\lambda_1)\cdots(\lambda-\lambda_n)$里这个系数是$(-1)^{n-1}(\lambda_1+\dots+\lambda_n)$，比较即得。在复数范围内，特征多项式总能这样分解（这是代数基本定理，fundamental theorem of algebra，这里不证）。
+**证明思路**：常数项是$\lambda=0$时的值$\det A$；另一边，$\lambda=0$时$(-1)^n(0-\lambda_1)\cdots(0-\lambda_n)=\lambda_1\cdots\lambda_n$，所以积等于$\det A$。$\lambda^{n-1}$只能来自主对角元之积$(a_{11}-\lambda)\cdots(a_{nn}-\lambda)$，系数是$(-1)^{n-1}(a_{11}+\dots+a_{nn})$；而$(-1)^n(\lambda-\lambda_1)\cdots(\lambda-\lambda_n)$里这个系数是$(-1)^{n-1}(\lambda_1+\dots+\lambda_n)$，比较即得。在复数范围内，特征多项式总能这样分解（这是:term[代数基本定理]{id="math.complex-analysis.fundamental-theorem-of-algebra"}，fundamental theorem of algebra，这里不证）。
 
 二阶时，它正是一元二次方程根与系数的关系：两个特征值之和是$\tr A$，积是$\det A$。所以只看迹和行列式，就能写出二阶矩阵的特征多项式，判断它有没有实数的特征值、有没有重根。
 
