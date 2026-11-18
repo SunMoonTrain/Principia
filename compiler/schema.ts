@@ -4,6 +4,7 @@
 
 import { z } from 'zod';
 import type { Diagnostics } from './diagnostics.ts';
+import { TOKEN } from '../shared/sequence.ts';
 import { lineOf, type YamlFile } from './yaml-text.ts';
 
 z.config(z.locales.zhCN());
@@ -41,12 +42,19 @@ export type DomainFile = z.infer<typeof DomainFile>;
 
 const NumberOrExpression = z.union([z.number(), z.string()]);
 
+const Token = z.union([z.string(), z.number()]).transform(String).pipe(z.string().regex(TOKEN, '记号只能含英文字母、数字、_ + - .'));
+const NumericFields = { unit: z.string().optional(), exact: z.literal(true).optional() };
+
 export const AnswerSchema = z.discriminatedUnion(
   'type',
   [
-    z.strictObject({ type: z.literal('number'), value: NumberOrExpression, unit: z.string().optional() }),
-    z.strictObject({ type: z.literal('tuple'), value: z.array(NumberOrExpression).min(1), unit: z.string().optional() }),
-    z.strictObject({ type: z.literal('set'), value: z.array(NumberOrExpression).min(1), unit: z.string().optional() }),
+    z.strictObject({ type: z.literal('number'), value: NumberOrExpression, ...NumericFields }),
+    z.strictObject({ type: z.literal('tuple'), value: z.array(NumberOrExpression).min(1), ...NumericFields }),
+    z.strictObject({ type: z.literal('set'), value: z.array(NumberOrExpression).min(1), ...NumericFields }),
+    z.strictObject({
+      type: z.literal('sequence'), value: z.array(Token).min(1), alphabet: z.array(Token).min(1).optional(),
+      caseSensitive: z.boolean().optional(),
+    }),
     z.strictObject({
       type: z.literal('choice'),
       multiple: z.boolean(),
@@ -54,7 +62,7 @@ export const AnswerSchema = z.discriminatedUnion(
       value: z.union([z.number().int(), z.array(z.number().int()).min(1)]),
     }),
   ],
-  { error: 'answer.type 只能是 number、tuple、set、choice 之一' },
+  { error: 'answer.type 只能是 number、tuple、set、choice、sequence 之一' },
 );
 
 export const ProblemSchema = z.strictObject({

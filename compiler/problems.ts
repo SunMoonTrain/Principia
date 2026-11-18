@@ -2,6 +2,7 @@
 
 import type { Answer, Problem, Rich, Tier, Tolerance } from '../shared/content-types.ts';
 import { evaluateValue } from '../shared/expr.ts';
+import { normalizeToken } from '../shared/sequence.ts';
 import { PROBLEM_IDS, TIER_ORDER } from '../shared/ids.ts';
 import { readText } from './fsutil.ts';
 import { renderField, sourceText, type MdContext } from './markdown.ts';
@@ -73,20 +74,33 @@ function processProblem(y: YamlFile, raw: unknown, i: number, ctx: FieldCtx): Pr
     const a = p.answer;
     const evaluate = (v: number | string, path: PropertyKey[]): number => {
       const r = evaluateValue(v);
-      if (r.ok) return r.value;
+      if (r.ok) {
+        if ('exact' in a && a.exact && !Number.isSafeInteger(r.value)) {
+          diags.error(y.file, at('answer', ...path), p.id + '：exact 的标准答案必须是安全整数（绝对值 ≤ 2⁵³ − 1）');
+        }
+        return r.value;
+      }
       const message = r.code === 'infinite' ? '答案不能是 ∞' : r.message;
       diags.error(y.file, at('answer', ...path), `${p.id}：标准答案 ${String(v)} 求不出有限实数值：${message}`);
       return Number.NaN;
     };
     if (a.type === 'number') {
-      answer = { type: 'number', value: evaluate(a.value, ['value']), source: String(a.value), unit: render(y, unit, ctx, 'plain') };
+      answer = { type: 'number', exact: a.exact, value: evaluate(a.value, ['value']), source: String(a.value), unit: render(y, unit, ctx, 'plain') };
     } else if (a.type === 'tuple' || a.type === 'set') {
       answer = {
-        type: a.type,
+        type: a.type, exact: a.exact,
         value: a.value.map((v, j) => evaluate(v, ['value', j])),
         source: a.value.map(String),
         unit: render(y, unit, ctx, 'plain'),
       };
+    } else if (a.type === 'sequence') {
+      if (a.alphabet) {
+        const allowed = new Set(a.alphabet.map((v) => normalizeToken(v, a.caseSensitive)));
+        a.value.forEach((v, j) => {
+          if (!allowed.has(normalizeToken(v, a.caseSensitive))) diags.error(y.file, at('answer', 'value', j), p.id + '：标准答案含 alphabet 以外的记号 ' + v);
+        });
+      }
+      answer = a;
     } else {
       const values = Array.isArray(a.value) ? a.value : [a.value];
       if (!a.multiple && values.length !== 1) diags.error(y.file, at('answer', 'value'), `${p.id}：单选题的 value 只写一个选项序号`);
@@ -104,7 +118,9 @@ function processProblem(y: YamlFile, raw: unknown, i: number, ctx: FieldCtx): Pr
       };
     }
 
-    if (a.type === 'choice') {
+    if (a.type === 'sequence' || ('exact' in a && a.exact)) {
+      if (p.tolerance) diags.error(y.file, at('tolerance'), p.id + '：sequence 或 exact 不能同时写 tolerance');
+    } else if (a.type === 'choice') {
       if (p.tolerance) diags.error(y.file, at('tolerance'), `${p.id}：选择题不用 tolerance`);
     } else {
       if (p.tolerance && p.tolerance.rel === undefined && p.tolerance.abs === undefined) {

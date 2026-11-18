@@ -1,0 +1,119 @@
+- id: p1
+  tier: easy
+  statement: |
+    下面的函数返回什么？
+
+    ```rust
+    fn result() -> u8 { 127 }
+    ```
+  answer: { type: number, value: 0x7F, exact: true }
+  hints:
+    - |
+      先观察。
+    - |
+      比较两步。
+    - |
+      核对结果。
+  solution: |
+    逐步核对。
+
+- id: p2
+  tier: easy
+  statement: |
+    按顺序输入访问记号。
+  answer: { type: sequence, value: [A, B, D], alphabet: [A, B, C, D] }
+  hints:
+    - |
+      先观察。
+    - |
+      比较两步。
+    - |
+      核对结果。
+  solution: |
+    逐步核对。
+
+- id: p3
+  tier: medium
+  statement: |
+    写出有序数对。
+  answer: { type: tuple, exact: true, value: [1, 2] }
+  hints:
+    - |
+      先观察。
+    - |
+      比较两步。
+    - |
+      核对结果。
+  solution: |
+    逐步核对。
+
+- id: p4
+  tier: medium
+  statement: |
+    写出集合。
+  answer: { type: set, exact: true, value: [1, 2] }
+  hints:
+    - |
+      先观察。
+    - |
+      比较两步。
+    - |
+      核对结果。
+  solution: |
+    逐步核对。
+
+- id: p5
+  tier: hard
+  statement: |
+    说明理由。
+  hints:
+    - |
+      先观察。
+    - |
+      比较两步。
+    - |
+      核对结果。
+  reference: |
+    逐步核对。
+
+- id: p6
+  tier: hard
+  statement: |
+    说明理由。
+  hints:
+    - |
+      先观察。
+    - |
+      比较两步。
+    - |
+      核对结果。
+  reference: |
+    逐步核对。
+
+- id: p7
+  tier: thinking
+  statement: |
+    说明理由。
+  hints:
+    - |
+      先观察。
+    - |
+      比较两步。
+    - |
+      核对结果。
+  reference: |
+    逐步核对。
+
+- id: p8
+  tier: thinking
+  statement: |
+    说明理由。
+  hints:
+    - |
+      先观察。
+    - |
+      比较两步。
+    - |
+      核对结果。
+  reference: |
+    逐步核对。

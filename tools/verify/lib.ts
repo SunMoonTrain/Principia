@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'yaml';
+import { sameSequence } from '../../shared/sequence.ts';
 import { evaluateValue } from '../../shared/expr.ts';
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -13,7 +14,8 @@ export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 export type Computed =
   | { type: 'number'; value: number }
   | { type: 'tuple' | 'set'; value: number[] }
-  | { type: 'choice'; value: number[] };
+  | { type: 'choice'; value: number[] }
+  | { type: 'sequence'; value: string[] };
 
 export interface Verification {
   lesson: string;
@@ -85,25 +87,28 @@ function close(x: number, a: number): boolean {
   return Math.abs(x - a) <= Math.max(1e-9, 1e-6 * Math.abs(a));
 }
 
-interface StandardAnswer {
-  type: string;
-  value: number[];
-}
+type StandardAnswer =
+  | { type: 'sequence'; value: string[]; caseSensitive?: boolean }
+  | { type: 'number' | 'tuple' | 'set' | 'choice'; value: number[]; exact?: boolean };
 
 function loadStandardAnswers(lesson: string): Map<string, StandardAnswer> | null {
   const [subject, domain, name] = lesson.split('.');
   const file = path.join(ROOT, 'content', subject, domain, name, 'problems.yaml');
   if (!fs.existsSync(file)) return null;
-  const problems = parse(fs.readFileSync(file, 'utf8')) as { id: string; answer?: { type: string; value: unknown } }[];
+  const problems = parse(fs.readFileSync(file, 'utf8')) as { id: string; answer?: { type: Computed['type']; value: unknown; exact?: boolean; caseSensitive?: boolean } }[];
   const result = new Map<string, StandardAnswer>();
   for (const p of problems) {
     if (!p.answer) continue;
     const raw = Array.isArray(p.answer.value) ? p.answer.value : [p.answer.value];
+    if (p.answer.type === 'sequence') {
+      result.set(p.id, { type: 'sequence', value: raw.map(String), caseSensitive: p.answer.caseSensitive });
+      continue;
+    }
     const value = raw.map((v) => {
       const r = evaluateValue(v);
       return r.ok ? r.value : Number.NaN;
     });
-    result.set(p.id, { type: p.answer.type, value });
+    result.set(p.id, { type: p.answer.type, value, exact: p.answer.exact });
   }
   return result;
 }
@@ -112,6 +117,7 @@ function format(c: Computed): string {
   const v = c.value;
   const show = (x: number): string => (Number.isInteger(x) ? String(x) : x.toPrecision(12));
   if (c.type === 'number') return show(c.value as number);
+  if (c.type === 'sequence') return c.value.join(' → ');
   if (c.type === 'tuple') return `(${(v as number[]).map(show).join(', ')})`;
   if (c.type === 'set') return `{${(v as number[]).map(show).join(', ')}}`;
   return `选项 ${(v as number[]).join('、')}`;
@@ -130,10 +136,14 @@ export function runVerification(v: Verification): boolean {
       if (!s) {
         verdict = '✗ problems.yaml 里没有这道题的标准答案';
         ok = false;
+      } else if (s.type === 'sequence' || c.type === 'sequence') {
+        const same = s.type === 'sequence' && c.type === 'sequence' && sameSequence(s.value, c.value, s.caseSensitive);
+        verdict = (same ? '✓ 与标准答案一致' : '✗ 与标准答案不一致') + '（' + s.value.join(', ') + '）';
+        if (!same) ok = false;
       } else {
         const mine = c.type === 'set' || c.type === 'choice' ? [...(c.value as number[])].sort((a, b) => a - b) : c.type === 'number' ? [c.value as number] : (c.value as number[]);
         const theirs = s.type === 'set' || s.type === 'choice' ? [...s.value].sort((a, b) => a - b) : s.value;
-        const same = s.type === c.type && mine.length === theirs.length && mine.every((x, i) => close(x, theirs[i]));
+        const same = s.type === c.type && mine.length === theirs.length && mine.every((x, i) => (s.exact ? x === theirs[i] : close(x, theirs[i])));
         verdict = same ? `✓ 与标准答案一致（${s.type}：${theirs.join(', ')}）` : `✗ 与标准答案不一致（${s.type}：${theirs.join(', ')}）`;
         if (!same) ok = false;
       }

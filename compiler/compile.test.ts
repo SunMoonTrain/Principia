@@ -72,6 +72,12 @@ describe('真实内容', () => {
 });
 
 describe('样例内容', () => {
+  it('数学的几何图像不能改写成动手模拟', () => {
+    const root = fixture();
+    edit(root, LESSON, '## 几何图像', '## 动手模拟');
+    expect(errors(root)).toContainEqual(expect.objectContaining({ message: '缺少二级标题「几何图像」' }));
+  });
+
   it('样例构建通过，只有「定义小节还是 outline」这一条警告', () => {
     const { report } = compileContent(SAMPLE);
     expect(report.errors).toEqual([]);

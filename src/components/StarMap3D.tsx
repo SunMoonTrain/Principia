@@ -1,5 +1,5 @@
 // 立体星图（three.js + react-three-fiber），见 docs/plan.md「立体知识图谱与动态效果」：
-// 一个横放的圆筒，沿轴往右越深；每个领域是圆筒上的一条（数学那半圈正对镜头，物理在背面），节点在一个圆筒壳里，坐标在构建时算好。
+// 一个横放的圆筒，沿轴往右越深；每个领域是圆筒上的一条（三个学科各占 120°），节点在一个圆筒壳里，坐标在构建时算好。
 // 节点用实例化渲染（每种状态一个 InstancedMesh）；只在需要时重画，有动画时最多每秒 30 帧。
 // 左右拖动沿着层级走，上下拖动转动圆筒，滚轮缩放（以鼠标所在处为准）；悬停显示卡片，点击时镜头飞向那颗星再进入小节。
 // 系统设置了「减少动态效果」时：光晕不呼吸、没有点亮动画和镜头飞行。
@@ -340,7 +340,7 @@ function DrumControls({
   return null;
 }
 
-/** 圆筒上的东西（跟着圆筒转）：每个领域一条，沿着这一条隔一段写一次领域名；两个学科的分界线；右端写学科名。 */
+/** 圆筒上的东西（跟着圆筒转）：每个领域一条，沿着这一条隔一段写一次领域名；学科的分界线；右端写学科名。 */
 function DrumFrame({ graph, palette, domainColor, maxLevel }: { graph: Graph; palette: Palette; domainColor: (hue: number) => THREE.Color; maxLevel: number }) {
   const group = useDisposable(() => {
     const g = new THREE.Group();
@@ -364,7 +364,7 @@ function DrumFrame({ graph, palette, domainColor, maxLevel }: { graph: Graph; pa
       right.position.set(...position3d((start + end) / 2, SHELL + 1.2, maxLevel + 1.4));
       g.add(label, right);
     }
-    // 两个学科的分界线（沿着圆筒），学科名写在右端
+    // 学科的分界线（沿着圆筒），学科名写在右端
     const border = new THREE.LineBasicMaterial({ color: palette.border, transparent: true, opacity: 0.9 });
     graph.subjects.forEach((s) => {
       const line = new THREE.Line(
@@ -634,7 +634,7 @@ function Scene({
   const all = useMemo(() => [...items.values()], [items]);
   const maxLevel = Math.max(0, ...graph.lessons.map((l) => l.level));
 
-  // 全景：镜头正对数学那半圈，整个圆筒横着占满画面（按画布的宽高比算）
+  // 全景：镜头朝向数学扇区，整个圆筒横着占满画面（按画布的宽高比算）
   const aspect = canvas.width / Math.max(1, canvas.height) || 1.8;
   const tan = Math.tan((FOV / 2) * RAD);
   const homeView = useMemo<DrumView>(() => {

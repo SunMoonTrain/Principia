@@ -2,6 +2,7 @@
 // 格式错误（看不懂、个数不对、带单位、算出复数……）只提示，不算一次作答。
 
 import type { Answer, Tolerance } from './content-types.ts';
+import { normalizeToken, sameSequence, TOKEN } from './sequence.ts';
 import { evaluateExpression, normalizeExpression } from './expr.ts';
 
 export type Verdict = { kind: 'format'; message: string } | { kind: 'graded'; correct: boolean };
@@ -79,7 +80,7 @@ function evaluateParts(parts: string[]): number[] | { message: string } {
 }
 
 /** 判一道数值题（number、tuple、set）。 */
-export function judgeNumeric(answer: Extract<Answer, { type: 'number' | 'tuple' | 'set' }>, tolerance: Tolerance, input: string): Verdict {
+export function judgeNumeric(answer: Extract<Answer, { type: 'number' | 'tuple' | 'set' }>, tolerance: Tolerance | null, input: string): Verdict {
   if (normalizeExpression(input) === '') return { kind: 'format', message: '请先填写答案' };
   const parts = splitList(input);
   const expected = answer.type === 'number' ? 1 : answer.value.length;
@@ -92,6 +93,13 @@ export function judgeNumeric(answer: Extract<Answer, { type: 'number' | 'tuple' 
   }
   const values = evaluateParts(parts);
   if (!Array.isArray(values)) return { kind: 'format', message: values.message };
+  if (answer.exact) {
+    const expected = answer.type === 'number' ? [answer.value] : answer.value;
+    const sorted = answer.type === 'set' ? [...expected].sort((a, b) => a - b) : expected;
+    if (answer.type === 'set') values.sort((a, b) => a - b);
+    return { kind: 'graded', correct: values.every((x, i) => x === sorted[i]) };
+  }
+  if (!tolerance) throw new Error('数值题缺少容差');
   if (answer.type === 'number') return { kind: 'graded', correct: withinTolerance(values[0], answer.value, tolerance) };
   if (answer.type === 'tuple') return { kind: 'graded', correct: values.every((x, i) => withinTolerance(x, answer.value[i], tolerance)) };
   return { kind: 'graded', correct: matchesAsMultiset(values, answer.value, tolerance) };
@@ -104,4 +112,16 @@ export function judgeChoice(answer: Extract<Answer, { type: 'choice' }>, selecte
   const picked = [...new Set(selected)].sort((a, b) => a - b);
   const correct = picked.length === answer.value.length && picked.every((v, i) => v === answer.value[i]);
   return { kind: 'graded', correct };
+}
+
+export function judgeSequence(answer: Extract<Answer, { type: 'sequence' }>, input: string): Verdict {
+  const tokens = input.trim().split(/(?:->|[\s,，、→])+/).filter(Boolean);
+  if (!tokens.length) return { kind: 'format', message: '请先填写记号' };
+  const allowed = answer.alphabet?.map((v) => normalizeToken(v, answer.caseSensitive));
+  for (const token of tokens) {
+    if (!TOKEN.test(token) || (allowed && !allowed.includes(normalizeToken(token, answer.caseSensitive)))) {
+      return { kind: 'format', message: '不能填写记号「' + token + '」' };
+    }
+  }
+  return { kind: 'graded', correct: sameSequence(answer.value, tokens, answer.caseSensitive) };
 }

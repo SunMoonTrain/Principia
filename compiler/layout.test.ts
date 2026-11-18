@@ -14,21 +14,22 @@ function input(domains: Record<string, string>, entries: Record<string, string[]
 }
 
 describe('星图横向展开图的布局', () => {
-  it('数学占上半、物理占下半；领域带的宽度按节点最多的那一层的个数再多一行分学科那一段', () => {
+  it('三学科各占 120°；领域带的宽度按节点最多的那一层的个数再多一行分学科那一段', () => {
     const layout = layoutMap(
       input(
         { 'math.a': 'math', 'math.b': 'math', 'physics.c': 'physics' },
         { 'math.a.x': [], 'math.a.y': [], 'math.a.z': [], 'math.b.x': [], 'physics.c.x': [] },
       ),
     );
-    // math.a 同一层 3 个 → 4 行，math.b 1 个 → 2 行：数学那半圈一行 30°
+    // math.a 同一层 3 个 → 4 行，math.b 1 个 → 2 行：数学一行 20°
     expect(layout.subjects).toEqual([
-      { id: 'math', start: 0, end: 180, row: 30 },
-      { id: 'physics', start: 180, end: 360, row: 90 },
+      { id: 'math', start: 0, end: 120, row: 20 },
+      { id: 'physics', start: 120, end: 240, row: 60 },
+      { id: 'cs', start: 240, end: 360, row: 120 },
     ]);
-    expect(layout.domains.get('math.a')).toMatchObject({ start: 0, end: 120 });
-    expect(layout.domains.get('math.b')).toMatchObject({ start: 120, end: 180 });
-    expect(layout.domains.get('physics.c')).toMatchObject({ start: 180, end: 360 });
+    expect(layout.domains.get('math.a')).toMatchObject({ start: 0, end: 80 });
+    expect(layout.domains.get('math.b')).toMatchObject({ start: 80, end: 120 });
+    expect(layout.domains.get('physics.c')).toMatchObject({ start: 120, end: 240 });
     // 每个节点都在自己的领域带里
     for (const [id, y] of layout.y2d) {
       const band = layout.domains.get(id.split('.').slice(0, 2).join('.'))!;
@@ -39,7 +40,7 @@ describe('星图横向展开图的布局', () => {
 
   it('一条链 A → B → C 横着排成一行，在领域带正中', () => {
     const layout = layoutMap(input({ 'math.a': 'math' }, { 'math.a.a': [], 'math.a.b': ['math.a.a'], 'math.a.c': ['math.a.b'] }));
-    expect([...layout.y2d.values()]).toEqual([90, 90, 90]);
+    expect([...layout.y2d.values()]).toEqual([60, 60, 60]);
   });
 
   it('同一层的节点按前置的位置排，相邻至少隔一行', () => {
@@ -72,7 +73,7 @@ describe('星图横向展开图的布局', () => {
   it('跨领域的前置不把节点拉出自己的领域带；同样的输入每次结果一样', () => {
     const data = input({ 'math.a': 'math', 'physics.c': 'physics' }, { 'math.a.x': [], 'physics.c.y': ['math.a.x'] });
     const layout = layoutMap(data);
-    expect(layout.y2d.get('physics.c.y')).toBeGreaterThan(180);
+    expect(layout.y2d.get('physics.c.y')).toBeGreaterThan(120);
     expect(layoutMap(data).y2d).toEqual(layout.y2d);
     expect(layoutMap(data).polar).toEqual(layout.polar);
   });

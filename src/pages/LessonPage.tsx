@@ -5,6 +5,7 @@
 import { useEffect, useLayoutEffect, type ReactNode } from 'react';
 import { Link, useLocation, useParams } from 'react-router';
 import type { GraphLesson, LessonContent, Rich as RichValue } from '../../shared/content-types';
+import { pictureTitle } from '../../shared/lesson-sections';
 import { lessonPath } from '../../shared/ids';
 import { missingPrereqs, nodeState } from '../../shared/node-state';
 import { TIER_LABELS } from '../../shared/problem-text';
@@ -90,7 +91,7 @@ function buildOutline(lesson: GraphLesson, content: LessonContent | null): Outli
     ...part('question', '这一节要回答的问题', sections.question),
     ...(lesson.prerequisites.length ? part('prerequisites', '前置回顾') : []),
     ...part('explanation', '讲解', sections.explanation),
-    ...part('picture', '几何图像', sections.picture),
+    ...part('picture', pictureTitle(lesson.subject), sections.picture),
     ...part('examples', '例题', sections.examples),
     ...part('summary', '一句话总结'),
     ...(sections.misconceptions ? part('misconceptions', '常见误区', sections.misconceptions) : []),
@@ -195,7 +196,7 @@ function WrittenLesson({ lesson, content }: { lesson: GraphLesson; content: Less
           </SectionKindContext.Provider>
         </div>
       </Section>
-      <Section id="picture" title="几何图像">
+      <Section id="picture" title={pictureTitle(lesson.subject)}>
         <div className="prose">
           <Rich value={sections.picture} />
         </div>

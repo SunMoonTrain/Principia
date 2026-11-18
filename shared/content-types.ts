@@ -53,7 +53,7 @@ export interface GraphDomain {
 
 export interface GraphSubject {
   id: string;
-  /** 在星图圆周上占的那一段（度）：数学前半圈，物理后半圈。 */
+  /** 在星图圆周上占的那一段（度）：数学、物理、计算机各占 120°。 */
   start: number;
   end: number;
   /** 这个学科里一行占多少度：同一层相邻两个节点至少隔一行。 */
@@ -94,8 +94,9 @@ export interface Tolerance {
 }
 
 export type Answer =
-  | { type: 'number'; value: number; source: string; unit: Rich | null }
-  | { type: 'tuple' | 'set'; value: number[]; source: string[]; unit: Rich | null }
+  | { type: 'number'; value: number; source: string; unit: Rich | null; exact?: true }
+  | { type: 'tuple' | 'set'; value: number[]; source: string[]; unit: Rich | null; exact?: true }
+  | { type: 'sequence'; value: string[]; alphabet?: string[]; caseSensitive?: boolean }
   | { type: 'choice'; multiple: boolean; options: Rich[]; value: number[] };
 
 export interface Problem {

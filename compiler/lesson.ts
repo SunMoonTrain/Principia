@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { toString } from 'mdast-util-to-string';
 import type { LessonContent, LessonSections, LessonStatus, ProofPolicy, Rich } from '../shared/content-types.ts';
+import { pictureTitle } from '../shared/lesson-sections.ts';
 import { LESSON_ID_RE } from '../shared/ids.ts';
 import type { AnimUse } from './anim.ts';
 import type { Diagnostics } from './diagnostics.ts';
@@ -156,7 +157,7 @@ export function processLesson(
     svgCount,
   };
   transformBody(root, ctx);
-  const sections = splitSections(root.children ?? [], reportFile, source.split('\n').length, diags);
+  const sections = splitSections(domain.subject, root.children ?? [], reportFile, source.split('\n').length, diags);
 
   // 几何图像：至少一张图或一个动画组件；只有占位框的不能标 reviewed。
   const picture = sections.picture;
@@ -164,7 +165,10 @@ export function processLesson(
     const hasSvg = contains(picture, (n) => n.type === 'svgFigure');
     const hasAnim = contains(picture, (n) => n.type === 'animBlock');
     const hasRealAnim = contains(picture, (n) => n.type === 'animBlock' && n.data?.hProperties !== undefined && (n.data.hProperties as Record<string, string>).dataImplemented === 'true');
-    if (!hasSvg && !hasAnim) diags.error(reportFile, sections.lines.picture, '「几何图像」里至少要有一张图（SVG）或一个动画组件');
+    if (domain.subject === 'cs') {
+      if (!hasAnim) diags.error(reportFile, sections.lines.picture, '「动手模拟」至少要有一个动画组件');
+      else if (fm.status === 'reviewed' && !hasRealAnim) diags.error(reportFile, sections.lines.picture, '「动手模拟」至少要有一个已实现的组件才能标 reviewed');
+    } else if (!hasSvg && !hasAnim) diags.error(reportFile, sections.lines.picture, '「几何图像」里至少要有一张图（SVG）或一个动画组件');
     else if (fm.status === 'reviewed' && !hasSvg && !hasRealAnim) {
       diags.error(reportFile, sections.lines.picture, '「几何图像」里只有尚未实现的动画组件（占位框），不能标 reviewed');
     }
@@ -198,7 +202,8 @@ export function processLesson(
 type SplitResult = Partial<Record<keyof LessonSections, MdNode[]>> & { lines: Partial<Record<keyof LessonSections, number>> };
 
 /** 按二级标题切分正文，检查标题文字、顺序、有没有缺。 */
-function splitSections(nodes: MdNode[], file: string, lastLine: number, diags: Diagnostics): SplitResult {
+function splitSections(subject: string, nodes: MdNode[], file: string, lastLine: number, diags: Diagnostics): SplitResult {
+  const headings = SECTIONS.map((s) => s.key === 'picture' ? { ...s, title: pictureTitle(subject) } : s);
   const result: SplitResult = { lines: {} };
   let current: keyof LessonSections | null = null;
   let lastIndex = -1;
@@ -206,19 +211,19 @@ function splitSections(nodes: MdNode[], file: string, lastLine: number, diags: D
     if (node.type === 'heading' && node.depth === 2) {
       const line = node.position?.start.line;
       const text = toString(node as never).trim();
-      const index = SECTIONS.findIndex((s) => s.title === text);
+      const index = headings.findIndex((s) => s.title === text);
       if (index < 0) {
-        diags.error(file, line, `不允许的二级标题「${text}」：只能用 ${SECTIONS.map((s) => `「${s.title}」`).join('')}；讲解内部分段用三级标题`);
+        diags.error(file, line, `不允许的二级标题「${text}」：只能用 ${headings.map((s) => `「${s.title}」`).join('')}；讲解内部分段用三级标题`);
         current = null;
         continue;
       }
       if (index <= lastIndex) {
-        diags.error(file, line, `二级标题「${text}」重复或顺序不对：顺序是 ${SECTIONS.map((s) => s.title).join(' → ')}`);
+        diags.error(file, line, `二级标题「${text}」重复或顺序不对：顺序是 ${headings.map((s) => s.title).join(' → ')}`);
         current = null;
         continue;
       }
       lastIndex = index;
-      current = SECTIONS[index].key;
+      current = headings[index].key;
       result[current] = [];
       result.lines[current] = line;
       continue;
@@ -229,7 +234,7 @@ function splitSections(nodes: MdNode[], file: string, lastLine: number, diags: D
     }
     result[current]!.push(node);
   }
-  for (const s of SECTIONS) {
+  for (const s of headings) {
     const content = result[s.key];
     if (!content) {
       if (s.required) diags.error(file, lastLine, `缺少二级标题「${s.title}」`);

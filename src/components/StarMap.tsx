@@ -214,7 +214,7 @@ function StarMap2D({
   const [active, setActive] = useState<string | null>(null);
 
   // 内容坐标：横轴是层级；纵轴是领域带，按行算，每个学科里一行都是 ROW 像素
-  // （立体图里两个学科各占半圈、行宽不同；展开成平面时各学科按自己的行数伸缩，不浪费地方）
+  // （立体图里三个学科各占 120°、行宽不同；展开成平面时各学科按自己的行数伸缩，不浪费地方）
   const geo = useMemo(() => {
     const maxLevel = Math.max(0, ...graph.lessons.map((l) => l.level));
     let rows = 0;

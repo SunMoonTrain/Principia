@@ -2919,3 +2919,19 @@ code {
     animation: none;
   }
 }
+
+.listing {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 0.8em 1em;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.listing code { padding: 0; border: 0; background: transparent; white-space: pre; }
+.listing .hljs-keyword, .listing .hljs-meta, .listing .hljs-selector-tag { color: var(--tier-thinking); }
+.listing .hljs-title, .listing .hljs-built_in, .listing .hljs-name { color: var(--accent-strong); }
+.listing .hljs-string, .listing .hljs-attr { color: var(--good); }
+.listing .hljs-number, .listing .hljs-literal { color: var(--warn); }
+.listing .hljs-comment { color: var(--muted); }

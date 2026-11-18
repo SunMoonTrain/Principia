@@ -7,7 +7,7 @@ import path from 'node:path';
 import { parse } from 'yaml';
 import { sourceText } from '../../compiler/markdown.ts';
 import type { Tier } from '../../shared/content-types.ts';
-import { answerKind, OPTION_LABELS, TIER_LABELS } from '../../shared/problem-text.ts';
+import { answerKind, EXACT_HELP, OPTION_LABELS, TIER_LABELS } from '../../shared/problem-text.ts';
 
 export const TIERS: Tier[] = ['easy', 'medium', 'hard', 'thinking'];
 
@@ -98,7 +98,7 @@ interface ProblemSource {
   id?: unknown;
   tier?: unknown;
   statement?: unknown;
-  answer?: { type?: unknown; value?: unknown; multiple?: unknown; options?: unknown; unit?: unknown } | null;
+  answer?: { type?: unknown; value?: unknown; multiple?: unknown; exact?: boolean; alphabet?: unknown; options?: unknown; unit?: unknown } | null;
 }
 
 /** 一道题：只取题干、选项、作答方式、单位，别的字段一律不碰。 */
@@ -110,10 +110,12 @@ function problemLines(p: ProblemSource): string[] {
     a.options.forEach((option, i) => lines.push(`${OPTION_LABELS[i] ?? '?'}. ${indent(text(option), '   ')}`));
     lines.push('');
   }
-  const kind = a && ['number', 'tuple', 'set', 'choice'].includes(a.type as string)
-    ? answerKind({ type: a.type as 'number' | 'tuple' | 'set' | 'choice', value: a.value, multiple: a.multiple === true })
+  const kind = a && ['number', 'tuple', 'set', 'choice', 'sequence'].includes(a.type as string)
+    ? answerKind({ type: a.type as 'number' | 'tuple' | 'set' | 'choice' | 'sequence', value: a.value, multiple: a.multiple === true })
     : answerKind(null);
   lines.push(`作答：${kind}`);
+  if (a?.exact) lines.push(EXACT_HELP);
+  if (a?.type === 'sequence' && Array.isArray(a.alphabet)) lines.push('可用记号：' + a.alphabet.join('、'));
   if (a && typeof a.unit === 'string') lines.push(`单位：${text(a.unit)}`);
   lines.push('');
   return lines;

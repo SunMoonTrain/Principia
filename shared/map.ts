@@ -10,7 +10,7 @@ const RAD = Math.PI / 180;
 
 /**
  * 立体星图里的位置：圆筒横放，沿 x 轴往右越深；绕轴的角度 0° 在正上方，往镜头这边转（90° 正对镜头），
- * 和横向展开图的纵轴同一个方向：数学那半圈（0–180°）正对初始镜头，物理在背面。
+ * 和横向展开图的纵轴同一个方向：初始镜头朝向数学扇区内的 90°。
  */
 export function position3d(angle: number, radius: number, level: number): [number, number, number] {
   return [level * LEVEL_GAP, radius * Math.cos(angle * RAD), radius * Math.sin(angle * RAD)];

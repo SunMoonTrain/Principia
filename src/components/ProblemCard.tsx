@@ -4,8 +4,8 @@
 
 import { useState, type FormEvent } from 'react';
 import type { Answer, Problem } from '../../shared/content-types';
-import { judgeChoice, judgeNumeric, type Verdict } from '../../shared/judge';
-import { answerKind, OPTION_LABELS, TIER_LABELS } from '../../shared/problem-text';
+import { judgeChoice, judgeNumeric, judgeSequence, type Verdict } from '../../shared/judge';
+import { answerKind, EXACT_HELP, OPTION_LABELS, TIER_LABELS } from '../../shared/problem-text';
 import {
   firstResult,
   hintsBeforeFirstCorrect,
@@ -67,11 +67,11 @@ function FeedbackLine({ feedback }: { feedback: Feedback | null }) {
   );
 }
 
-function NumericForm({ answer, problem, onSubmit }: { answer: NumericAnswer; problem: Problem; onSubmit: (input: string, v: Verdict) => void }) {
+function TextAnswerForm({ answer, problem, onSubmit }: { answer: Exclude<Answer, ChoiceAnswer>; problem: Problem; onSubmit: (input: string, v: Verdict) => void }) {
   const [input, setInput] = useState('');
   const submit = (e: FormEvent): void => {
     e.preventDefault();
-    onSubmit(input, judgeNumeric(answer, problem.tolerance!, input));
+    onSubmit(input, answer.type === 'sequence' ? judgeSequence(answer, input) : judgeNumeric(answer, problem.tolerance, input));
   };
   return (
     <form className="answer-form" onSubmit={submit}>
@@ -80,14 +80,14 @@ function NumericForm({ answer, problem, onSubmit }: { answer: NumericAnswer; pro
           className="answer-input"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder={answer.type === 'number' ? '输入答案' : '用逗号隔开'}
+          placeholder={answer.type === 'tuple' || answer.type === 'set' ? '用逗号隔开' : '输入答案'}
           aria-label={`第 ${problem.id.slice(1)} 题的答案`}
           autoComplete="off"
           autoCapitalize="off"
           autoCorrect="off"
           spellCheck={false}
         />
-        {answer.unit && (
+        {answer.type !== 'sequence' && answer.unit && (
           <span className="answer-unit">
             <Rich value={answer.unit} />
           </span>
@@ -96,7 +96,7 @@ function NumericForm({ answer, problem, onSubmit }: { answer: NumericAnswer; pro
           提交
         </button>
       </div>
-      <p className="answer-help">{HELP[answer.type]}</p>
+      <p className="answer-help">{answer.type === 'sequence' ? (answer.alphabet ? '可用记号：' + answer.alphabet.join('、') : answerKind(answer)) : answer.exact ? EXACT_HELP : HELP[answer.type]}</p>
     </form>
   );
 }
@@ -193,7 +193,7 @@ export function ProblemCard({ problem, index }: { problem: Problem; index: numbe
       </div>
 
       {a?.type === 'choice' && <ChoiceForm answer={a} onSubmit={submit} />}
-      {a && a.type !== 'choice' && <NumericForm answer={a} problem={problem} onSubmit={submit} />}
+      {a && a.type !== 'choice' && <TextAnswerForm answer={a} problem={problem} onSubmit={submit} />}
       <FeedbackLine feedback={feedback} />
       {!a && <ProblemWork problem={problem} index={index} record={record} />}
 

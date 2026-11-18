@@ -51,7 +51,7 @@ export function lineOf(y: YamlFile, path: readonly PropertyKey[]): number {
 const CONTROL_RE = /[\u0000-\u0009\u000B-\u001F\u007F-\u009F]/;
 
 const CONTROL_NAMES: Record<string, string> = {
-  '\t': '制表符，多半是 \\t（如 \\theta、\\tau）被双引号、sed 或脚本当成了转义',
+  '\t': '制表符，代码缩进用空格；多半是 \\t（如 \\theta、\\tau）被双引号、sed 或脚本当成了转义',
   '\b': '退格符，多半是 \\b（如 \\beta）被双引号、sed 或脚本当成了转义',
   '\f': '换页符，多半是 \\f（如 \\frac）被双引号、sed 或脚本当成了转义',
   '\r': '回车符，多半是 \\r（如 \\rho）被双引号、sed 或脚本当成了转义',

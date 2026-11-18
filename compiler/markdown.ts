@@ -17,6 +17,7 @@ import type { Rich } from '../shared/content-types.ts';
 import { ANCHOR_RE, lessonPath } from '../shared/ids.ts';
 import { processAnim, type AnimUse } from './anim.ts';
 import type { Diagnostics } from './diagnostics.ts';
+import { highlightCode } from './highlight.ts';
 import { loadSvg } from './svg.ts';
 import { keepPunctuationWithMath, spaceAroundMath } from '../shared/cjk-spacing.ts';
 import { compileTex, suspectTex } from './tex.ts';
@@ -31,6 +32,7 @@ export interface MdNode {
   attributes?: Record<string, string | null | undefined> | null;
   url?: string;
   alt?: string | null;
+  lang?: string | null;
   depth?: number;
   position?: { start: { line: number; column: number; offset?: number }; end: { line: number; column: number; offset?: number } };
   data?: Record<string, unknown>;
@@ -311,9 +313,20 @@ function transformNode(node: MdNode, ctx: MdContext, mode: Mode, para: Seen, top
     case 'inlineMath':
       renderMath(node, ctx);
       return [node];
+    case 'code': {
+      if (mode === 'plain') {
+        ctx.diags.error(ctx.file, line, '这个字段里不能写代码块');
+        return [];
+      }
+      const code = highlightCode(node.lang ?? '', node.value ?? '');
+      if (!code) {
+        ctx.diags.error(ctx.file, line, '代码块必须写支持的语言（p8asm、python、rust、typescript、glsl、html、css、sql、text）');
+        return [];
+      }
+      return [{ type: 'highlightedCode', data: { hName: 'pre', hProperties: { className: ['listing'] }, hChildren: [code] } }];
+    }
     case 'list':
     case 'listItem':
-    case 'code':
     case 'blockquote':
     case 'table':
     case 'tableRow':
