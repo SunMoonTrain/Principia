@@ -7,8 +7,8 @@
 工作流：Claude 出方案 → 你拍板 → GPT 按台阶执行 → Claude 审 → GPT 修 → 审过合并 → 下一级。
 
 1. 要你拍板的事先列在文末，你定了以后由 Claude 改进这份方案的正文，文末只留一条记录（2026-11-18 定的 11 条已经这样处理，见「已定的决定」）。
-2. 把「给 GPT 的提示词（台阶 C0）」连同仓库交给 GPT。一次只发一级台阶；GPT 做完停下汇报，不往下做。
-3. 你把 GPT 的汇报转给 Claude，说「审 C0」。Claude 的审查报告写进 `docs/reviews/cs-c0.md`；你把报告转给 GPT 修；Claude 只复审新改动。
+2. 把「给 GPT 的提示词」里当前这一级的开工提示词交给 GPT。一次只发一级台阶；GPT 做完停下汇报，不往下做。
+3. 你把 GPT 的汇报转给 Claude，说「审 C1」这样的话。Claude 的审查报告写进 `docs/reviews/cs-c1.md` 这样的文件；你把报告转给 GPT 修；Claude 只复审新改动。
 4. 审过以后合并进 main，再发下一级。
 5. 这份方案管路线、架构、台阶和验收。会影响写内容、审内容的规矩，由 GPT 在每一级写回 `docs/plan.md` 对应的小节：`plan.md` 仍是写内容、审内容的唯一依据。全部台阶做完以后，这份方案留作记录。
 
@@ -19,7 +19,7 @@
 | 台阶 | 内容 | 状态 | 分支 | 审查报告 |
 | --- | --- | --- | --- | --- |
 | C0 | 地基 | 已合并进 main（2026-11-18，`98c4177`；审了两轮，第一轮重要 1、小问题 3） | `cs/c0` | `docs/reviews/cs-c0.md` |
-| C1 | 数据的表示 | 下一级 | `cs/c1` | `docs/reviews/cs-c1.md` |
+| C1 | 数据的表示 | 可以发给 GPT：工作区已切到 `cs/c1`，提示词见「给 GPT 的提示词」 | `cs/c1` | `docs/reviews/cs-c1.md` |
 
 ## 目标
 
@@ -387,6 +387,24 @@ answer:
 
 1. 三个组件的内核、界面、规格、画廊演示，写回 `plan.md` 附录。参数写法见附录 B。
 2. 代码清单检查工具 `npm run listings -- [范围…]`（范围写学科、领域或小节的 id，同 `npm run statements`）：`rust` 代码块逐个用 `rustc --edition 2024` 编译，有 `fn main` 的再运行，没有的按库编译；`typescript` 代码块用 `tsc --strict --noEmit` 检查；`python` 代码块用 `python -I` 运行，用了 NumPy 而当前环境没装时标「缺 NumPy，没有检查」。报错带文件和代码块里的行号；临时文件放系统临时目录，跑完删掉；没装 rustc 或 Python 时说明原因，跳过那一种。数据的表示是第一个用 Rust 清单的领域，开写之前要有这个工具。写回 `plan.md`「每批的流程」的审查清单。
+3. 画廊演示，每个组件至少一个：bits 的 8 位 `127 + 1`（目标 `OF == 1`「让两个正数相加得出负数」，暂停点停在处理最高位之前）；float32 的 `16777216 + 1`（`add`）和 `0.1` 累加 10 次（`accumulate`）；text-encoding 的 `A中😀`。
+
+**组件怎么动**（C0 之后补的细节；参数写法见附录 B，实现时定稿写进 `plan.md`）
+
+- 内核放 `packages/sim/src/core/`（如 `bits.ts`、`float32.ts`、`utf.ts`），界面用 C0 的 `useMachine`、`StepperBar`；`options` 传稳定的引用（模块常量或 `useMemo`）。三个组件的规格登记进 `SIM_SPECS`。
+- 参数里的整数可以写数，也可以写字符串（`"0b01111111"`、`"0x3DCCCCCD"`、`"-128"`）：YAML 不认 `0b` 前缀，本来就会读成字符串。字符串按 `shared/expr.ts` 的 `evaluateExpression` 求值，bits 的数和 float32 的 `bits` 必须是整数。
+- **bits**：
+  - 不写 `op`：只有比特行和各种读法，点比特翻转，没有步进条。
+  - 写了 `op`：带步进条。`add` 在 w 位上共 w + 1 步：第 1 到 w 步从最低位起每步处理一位，说明里写这一位的两个输入、进位进、和、进位出；第 w + 1 步给出 CF、OF、ZF、SF。处理最高位那一步就说明溢出的原因。`sub` 前面多一步「把 b 取反、进位进置 1」（显示 a − b = a + ~b + 1），共 w + 2 步，最后一步说明借位 = 1 − 进位输出。其余运算一步完成，说明里写清每一位从哪来（移位标出移出、补进的位）。
+  - 读者点 a 或 b 的比特：从第 0 步重新算。
+  - `wheel`（位数不超过 8）：2^w 个刻度排成一圈，当前值在无符号、有符号两种读法下各标一次；无符号的回绕点（全 1 → 全 0）和有符号的断点（0111… → 1000…）画在不同位置。
+  - 观测量：`a`、`b`、`result`、`signed`（result 的有符号值）、`CF`、`OF`、`ZF`、`SF`、`step`（第几步）。
+- **float32**：
+  - `inspect`：32 个比特分符号、阶码、尾数三段，点着翻；显示阶码字段、减 127 以后的指数、尾数（隐含位是 1，次正规数是 0）、值的式子、精确的十进制展开（用 BigInt 算，不靠浮点打印）、前一个和后一个能表示的数、ULP；数轴以当前值为中心，标出附近能表示的数，可以放大缩小一个 2 的幂量级。没有步进条。
+  - `add`：6 步：拆开（符号、指数、带隐含位的尾数）→ 对齐（小的那个右移，显示保护位、舍入位、粘滞位）→ 相加或相减 → 规格化 → 舍入（说明落在哪两个数之间、为什么选这一个）→ 装回 32 位。只收有限数。
+  - `accumulate`：每加一次 `delta` 是一步，共 `count` 步（不超过 1000）；一张小图画精确的累加和、单精度的累加和两条线（横轴是步数）；某一步加了以后值没变，`stuck` 为 1，说明里写「加的数不到半个 ULP，被舍掉了」。
+  - 观测量：`bits`、`value`、`exponent`（去掉偏置以后的指数）、`ulp`、`step`（第几步）、`stuck`、`error`（和精确值之差的绝对值）。
+- **text-encoding**：不是步进组件，没有步进条，不能写 `goals`、`pauses`。读者在输入框里改字，下面逐个码位显示：字符、U+XXXX、UTF-8 的每个字节（8 个比特，前缀位和载荷位分色，并标出载荷位来自码位的哪几位）、UTF-16 的码元（代理对标出高、低代理）。按码位拆，不处理字素簇：带 ZWJ 的组合表情会拆成几个码位，界面上交代一句。
 
 **验收**
 
@@ -408,7 +426,10 @@ answer:
   - 加法单步：对齐、相加、规格化、舍入四步都有说明，保护位、舍入位、粘滞位显示出来。
   - 性质测试：随机 10000 对单精度数（固定种子，含次正规数、大小悬殊的），逐步加法的结果和 `Math.fround(a + b)` 逐位一致（双精度算完再舍入到单精度，对加法是精确的，可以当真值）。
 - text-encoding：「A」→ U+0041 → `41`；「é」→ U+00E9 → `C3 A9`；「中」→ U+4E2D → `E4 B8 AD`；「😀」→ U+1F600 → `F0 9F 98 80`（UTF-16 是 `D83D DE00`）；和 `TextEncoder` 逐字节一致。
-- 构建：参数写错（位数写 12、初值超出位数、`op` 写了不认识的运算）报错并指出行号。
+- 构建：参数写错（位数写 12、初值超出位数、`op` 写了不认识的运算）报错并指出行号；bits 的 `when` 里用了观测量以外的名字报错并指出行号；text-encoding 写了 `goals` 报错。
+- 步数：8 位 `add` 共 9 步，`sub` 共 10 步；float32 `add` 共 6 步；`accumulate` 的步数等于 `count`。
+- 参数写字符串：`value: "0b01111111"` 和 `value: 127` 结果一样。
+- 画廊里三个组件的演示都能点；离开屏幕暂停、键盘、减少动态效果都用 C0 的步进条，不另写。
 - `npm run listings`（用测试自己摆的小内容）：一段正确的 Rust 清单编译、运行通过，输出照登；一段有类型错误的 Rust 清单报错，指出文件和代码块里的行号；一段有类型错误的 TypeScript 清单报错；一段正确的 Python 清单运行通过，一段抛异常的报错并给出行号；用了 NumPy 而没装时标「缺 NumPy，没有检查」；把 rustc 从 PATH 里拿掉时说明原因、跳过 Rust 清单；跑完临时目录里不留文件。
 
 上面的浮点数都已在 Node 上用 `Math.fround`、`DataView` 核对过。
@@ -522,7 +543,9 @@ answer:
 
 ## 审核流程（GPT 做，Claude 审）
 
-**在哪干活**：GPT 在单独的分支上做，一级一个分支（`cs/c0`、`cs/c1`……）。在这台电脑上做时用单独的 git worktree（例如 `git worktree add ../Principia-cs -b cs/c0`，在里面 `npm ci`）：主工作区里常有正在写的内容批次（现在批次 22 就没提交），在同一个工作区改编译器会互相干扰。分支上可以提交，不合并、不推送；审过以后你说了再合并进 main。
+**在哪干活**：GPT 在单独的分支上做，一级一个分支（`cs/c0`、`cs/c1`……），工作区固定用 `D:\Work\Principia-cs`（主仓库的 git worktree）：主工作区里常有正在写的内容批次，在同一个工作区改编译器会互相干扰。上一级合并进 main 以后，Claude 在这个工作区里从 main 新开下一级的分支；`package.json` 变了才重新 `npm ci`。分支上可以提交，不合并、不推送；审过以后你说了再合并进 main（能快进就快进），合并后主仓库跑一次 `npm install`。
+
+**汇报和审查报告放哪**：GPT 的汇报写成 `docs/reviews/cs-cN-report.md`，截图放 `docs/reviews/cs-cN/`（压缩过的 PNG 或 JPEG，一级合计尽量不超过 1 MB）；Claude 的审查报告写成 `docs/reviews/cs-cN.md`，GPT 修完在它末尾写「修订说明」，Claude 复核后写「复核」。都跟着分支提交，聊天里只传一句话。
 
 **GPT 的汇报**，按这个顺序：
 
@@ -543,35 +566,49 @@ answer:
 6. 报告写进 `docs/reviews/cs-cN.md`：开头写数量（重要几条、小问题几条），每条带文件和行号，标类别（重要 / 小问题 / 原有问题）；同一类问题合成一条。
 7. 往返：GPT 修完只复审新改动；第三轮仍有重要问题，就不再逐条报，建议退一步重新考虑方案。
 
-## 给 GPT 的提示词（台阶 C0）
+## 给 GPT 的提示词
+
+每一级发两种话：开工的提示词（下面是 C1 的），和审出问题后让它修的那一段。下一级的提示词由 Claude 在上一级合并后照这一份改好，换掉台阶名、「先读」和「规矩」里这一级特有的几条。C0 用过的版本在 Git 历史里（`21769dc` 及以前）。
+
+**C1 开工**
 
 ```text
-你是这个仓库（Principia）的写代码 agent。它是一个只给我自己用的本地学习网站，原来只有数学和物理，现在要扩展到计算机。
+你是这个仓库（Principia）的写代码 agent。它是一个只给我自己用的本地学习网站，原来只有数学和物理，现在在扩展计算机；台阶 C0（地基）已经做完并合并进 main。
+
+工作目录：D:\Work\Principia-cs。它是 D:\Work\Principia 的 git worktree，现在在分支 cs/c1（从 main 拉出，依赖已装好）。只在这个目录里干活，不要动 D:\Work\Principia。
 
 先读：
-1. docs/cs-plan.md 全文：这次扩展的方案，是你这次工作的依据。
-2. docs/plan.md 的这些节：总览、内容模型、每节固定结构与写作规范、题目与判题、可复用动画组件库、进度存储（为了不碰坏）、架构与技术栈、常见坑、测试用例与验收、附录：动画组件参数、实现记录。「内容生产与审查流水线」只读「分工」「每批的流程」和「几个领域同时写时」那一段，前面每一批的记录不用读。
-3. README.md 的「在这个仓库里干活的 agent 请注意」。
+1. docs/cs-plan.md：重点读「C1：数据的表示」（含「组件怎么动」）、「附录 B」里 bits、float32、text-encoding 的写法、「附录 C」、「审核流程」。
+2. docs/plan.md：C0 写进去的「计算机小节的写作与审查」「可复用动画组件库」开头三段、「附录：动画组件参数」里的计算机部分；「题目与判题」「常见坑」照 C0 时读过的。
+3. docs/reviews/cs-c0.md：C0 的审查意见和复核，别再犯同一类问题（离开屏幕要暂停、按钮上的键盘行为、输入要先规范化）。
+4. C0 的底座：packages/sim/src/core/machine.ts、kit/useMachine.ts、kit/StepperBar.tsx、GalleryDemo.tsx。
 
-本次只做 docs/cs-plan.md 的「台阶 C0：地基」。做完立刻停下汇报，不要做 C1。
+本次只做 docs/cs-plan.md 的「台阶 C1：数据的表示」。做完立刻停下汇报，不要做 C2。
 
 规矩：
-- 方案没说清的地方：猜错后撤不回或撤回成本高的（影响内容文件格式、进度文件、id 的），停下来问我；能撤回的，按你的推荐定下来，写进汇报的「我替你定的」。
-- 在分支 cs/c0 上做；在这台电脑上做时用单独的 git worktree（见 cs-plan.md「审核流程」）。可以提交到这个分支，分两个提交（内容侧、模拟器底座，见 C0「做什么」）；不要合并到 main，不要推送。
-- 不碰 progress/；不改 content/ 下的任何文件；编译器的测试用 compiler/fixtures/ 或测试自己摆的小内容。
-- 新依赖只加 lowlight 和 highlight.js（构建时高亮用），别的先问我。
+- 方案没说清的地方：猜错后撤不回或撤回成本高的（影响内容文件格式、进度文件、id 的），停下来问我；能撤回的，按你的推荐定下来，写进汇报的「我替你定的」，不用停下来问。
+- 提交到分支 cs/c1，分两个提交：三个组件（内核、界面、规格、演示、写回）一个，npm run listings 一个；不要合并到 main，不要推送。
+- 不碰 progress/；不改 content/ 下的任何文件；测试用 compiler/fixtures/ 或测试自己摆的小内容。
+- 页面检查照 README：先 npm run build，再用进度写临时目录的服务 node --import tsx server/main.ts --port 3150 --data <临时目录>；不用 npm run dev、npm start、npm run serve（它们会写 progress/）。查完用 git status progress/ 确认没动过。
+- 不加新依赖，要加先问我。
 - 我的电脑是 Windows：npm 脚本跨平台，不用 bash 专用语法；路径用 path 模块拼；统一 LF 换行；含反斜杠的文件用编辑工具写，不经过 shell。
 - 现有的测试一条都不能改坏；改了现有行为的，汇报里说明。
-- 内核（packages/sim/src/core）不碰 DOM 和 React，不用 Math.random、Date.now、performance.now。
+- 内核（packages/sim/src/core）不碰 DOM 和 React，不用 Math.random、Date.now、performance.now；精确的十进制展开用 BigInt 算，不靠浮点打印。
+- 界面用 C0 的 useMachine 和 StepperBar；options 传稳定的引用（模块常量或 useMemo）。
 
-验收：逐条做 cs-plan.md「C0 / 验收」，每条写清楚怎么验的、结果是什么。能截图就截图放进汇报；截不了写明，审查时会在浏览器里看。
+验收：逐条做 cs-plan.md「C1 / 验收」，每条写清楚怎么验的、结果是什么。能截图就截图（压缩过的 PNG 或 JPEG，合计尽量不超过 1 MB）；截不了写明，审查时会在浏览器里看。
 
 写回：
-- 定下来的规矩写进 docs/plan.md 正文对应的小节（cs-plan.md「C0 / 做什么」第 8 条列了哪些），不要只记在文末。
-- docs/plan.md 末尾「实现记录」加「计算机台阶 C0」：做了什么、和方案有什么出入。
-- README.md 里学科、代码放在哪的段落跟着改。
+- 三个组件的参数写法、观测量和行为写进 docs/plan.md「附录：动画组件参数」的计算机部分（预留表里 C1 那一行换成写法）；npm run listings 写进「每批的流程」的审查清单和 README 的常用命令。
+- docs/plan.md 末尾「实现记录」加「计算机台阶 C1」：做了什么、和方案有什么出入。
 
-汇报按 cs-plan.md「审核流程」里 GPT 汇报的六段写。
+汇报：按 docs/cs-plan.md「审核流程」里 GPT 汇报的六段，写成 docs/reviews/cs-c1-report.md，截图放 docs/reviews/cs-c1/，一起提交到 cs/c1。聊天里只回一句做完了没有、汇报文件在哪；有要我拍板的事，也在聊天里列出来。
+```
+
+**审出问题后让它修**（把 N 换成这一级的号）
+
+```text
+按 docs/reviews/cs-cN.md 修：「重要」的必须修；「小问题」修掉，或者写一句为什么不修。同一类问题在整个改动里都找一遍，不要只修被指出的那一处。每条怎么处理的写进那份报告末尾的「修订说明」，修完连同这份报告一起提交到 cs/cN。聊天里只回一句修完没有。
 ```
 
 ## 风险与对策
@@ -724,7 +761,7 @@ GPT 实现时定稿，写进 `plan.md` 的「附录：动画组件参数」；�
 ```yaml
 :::anim{component="bits"}
 width: 8                          # 4、8、16、32
-value: 0b01111111                 # 初值：十进制、0x、0b 都行；负数按补码
+value: "0b01111111"               # 初值：数，或十进制、0x、0b 写的字符串；负数按补码
 show: [unsigned, signed, hex]     # 还可以有 octal、char、wheel（数轮，位数不超过 8）
 op:                               # 可省略：做一次运算，单步看过程
   kind: add                       # add | sub | neg | not | and | or | xor | shl | shr | sar | extend | truncate
@@ -735,23 +772,23 @@ editable: true                    # 读者能点比特翻转，默认 true
 :::
 ```
 
-能用在 `when` 里的量：`a`、`b`、`result`、`signed`、`CF`、`OF`、`ZF`、`SF`。
+能用在 `when` 里的量：`a`、`b`、`result`、`signed`、`CF`、`OF`、`ZF`、`SF`、`step`。不写 `op` 时没有步进条，也不能写 `goals`、`pauses`。
 
 **float32**
 
 ```yaml
 :::anim{component="float32"}
 mode: accumulate                  # inspect 拆解 | add 加法的每一步 | accumulate 反复加
-value: 0.1                        # inspect 的初值；也可以写 bits: 0x3DCCCCCD
-a: 16777216                       # add 的两个加数
+value: 0.1                        # inspect 的初值；也可以写 bits: "0x3DCCCCCD"（两者写一个）
+a: 16777216                       # add 的两个加数，只收有限数
 b: 1
-step: 0.1                         # accumulate：每次加多少
-count: 10                         # accumulate：加几次
+delta: 0.1                        # accumulate：每次加多少
+count: 10                         # accumulate：加几次，不超过 1000
 compare64: true                   # 同时显示双精度的结果
 :::
 ```
 
-能用的量：`bits`、`value`、`exponent`、`ulp`、`step`、`stuck`（上一次加了以后值没变时为 1）、`error`。
+能用的量：`bits`、`value`、`exponent`、`ulp`、`step`（第几步）、`stuck`（上一次加了以后值没变时为 1）、`error`。`inspect` 没有步进条，不能写 `goals`、`pauses`。
 
 **text-encoding**
 
@@ -763,7 +800,7 @@ show: [utf8, utf16]
 :::
 ```
 
-`text` 末尾的换行不算进去（用 `|` 写也一样）。
+`text` 末尾的换行不算进去（用 `|` 写也一样）。不是步进组件，不能写 `goals`、`pauses`。
 
 **logic-circuit**
 
