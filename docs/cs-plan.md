@@ -1,12 +1,12 @@
 # 计算机学科扩展方案（草案）
 
-2026-11-18 · Claude 起草；同一天你拍板了 10 条决定，已改进正文（记录见文末「已定的决定」）
+2026-11-18 · Claude 起草；同一天你拍板了 11 条决定，已改进正文（记录见文末「已定的决定」）
 
 ## 怎么用这份方案
 
 工作流：Claude 出方案 → 你拍板 → GPT 按台阶执行 → Claude 审 → GPT 修 → 审过合并 → 下一级。
 
-1. 要你拍板的事先列在文末，你定了以后由 Claude 改进这份方案的正文，文末只留一条记录（2026-11-18 的 10 条已经这样处理，见「已定的决定」）。
+1. 要你拍板的事先列在文末，你定了以后由 Claude 改进这份方案的正文，文末只留一条记录（2026-11-18 定的 11 条已经这样处理，见「已定的决定」）。
 2. 把「给 GPT 的提示词（台阶 C0）」连同仓库交给 GPT。一次只发一级台阶；GPT 做完停下汇报，不往下做。
 3. 你把 GPT 的汇报转给 Claude，说「审 C0」。Claude 的审查报告写进 `docs/reviews/cs-c0.md`；你把报告转给 GPT 修；Claude 只复审新改动。
 4. 审过以后合并进 main，再发下一级。
@@ -18,7 +18,7 @@
 
 | 台阶 | 内容 | 状态 | 分支 | 审查报告 |
 | --- | --- | --- | --- | --- |
-| C0 | 地基 | 可以发给 GPT（先把这份方案提交到 main，GPT 的分支里才有它） | `cs/c0` | `docs/reviews/cs-c0.md` |
+| C0 | 地基 | 可以发给 GPT（这份方案已在 main 上） | `cs/c0` | `docs/reviews/cs-c0.md` |
 
 ## 目标
 
@@ -53,10 +53,25 @@
 | 星图（立体、平面） | `compiler/layout.ts`、`src/components/StarMap.tsx`、`StarMap3D.tsx` | 第三个学科自动分到一段圆周 | 圆周三等分（你定的），改写 `plan.md` 里「别的学科不挪位置」那句 |
 | 动画组件框架：`:::anim` 块、构建时校验参数、标签排版、占位框、按需加载、画廊 | `compiler/anim.ts`、`packages/anim/src/specs.ts`、`registry.ts`、`demos.ts`、`Gallery.tsx`、`src/components/AnimBlock.tsx` | 模拟器沿用同一种写法和校验 | 加新包，两个包合并登记，按组件拆块 |
 | 动画公用件：主题色、画布、坐标、滑块、播放条、图例、`useInView`、减少动态效果 | `packages/anim/src/kit.tsx` | 模拟器直接用 | 加步进条 |
-| 表达式引擎 | `packages/anim/src/expr.ts` | 目标、暂停条件、像素着色器的式子 | 加比较、逻辑运算 |
+| 表达式引擎 | `packages/anim/src/expr.ts` | 目标、暂停条件的式子 | 加比较、逻辑运算 |
 | 已有组件 function-plot、linear-map-2d、vector-field-2d、phase-portrait | `packages/anim/src/` | 复杂度曲线、损失曲线、拥塞窗口、二维变换、梯度场、梯度下降的轨迹 | 不改 |
 | 只导出题干、验算脚本 | `tools/statements/`、`tools/verify/` | 计算机的答案能直接用代码独立验（`DataView`、`Math.fround`、`BigInt`、`TextEncoder`） | 加新题型的比对 |
 | 三方流水线：写内容、审内容、写代码 | `plan.md`「内容生产与审查流水线」 | cs 的内容批次照这个走 | 不改 |
+
+### ShaderMind 里能搬过来的（C11 用）
+
+ShaderMind（`D:\Work\ShaderMind`）是你的另一个项目，MIT 许可，里面有一套 8 级、36 节的 2D 片元着色器课程（`course/`）。图形学的着色器部分照它的写法，代码能搬的就搬：
+
+| 部件 | 位置 | 计算机怎么用 |
+| --- | --- | --- |
+| WebGL2 渲染器：类 Shadertoy 的 `mainImage`，`iResolution`、`iTime`、`iTimeDelta`、`iFrame`、`iMouse`、`iDate`、4 个 `iChannel` 纹理 | `src/renderer.ts` | `shader` 组件的底子 |
+| 逐像素比对：16 × 16 分块，看单像素阈值、每块平均差、超阈值像素个数；从零挑战先缩小再模糊 | `src/course/metric.ts`、`src/course/judge.ts` | 着色器题当场判（要不要加这种题型，C11 细化时请你定） |
+| 只许改 TODO 区域的填空 | `src/course/regions.ts`、`src/editor/locks.ts` | 填空式的着色器题 |
+| 探针：点着色器里任意一个量，预览画出它在整幅图上的分布（改写成探针版着色器） | `src/formula/`（用 `@shaderfrog/glsl-parser`） | `shader` 组件的「看变量」，着色器的「透明」就靠它 |
+| 公共函数库：`sdCircle`、`sdBox`、`hash12`、`hash22`、`valueNoise`…… | `course/common.glsl` | 同名同实现，两边的代码读起来一样；`hash12`、`hash22` 出自 Dave Hoskins 的 Hash without Sine（MIT），搬的时候连同许可说明一起搬（见 `course/THIRD-PARTY.md`） |
+| 讲解里用 GLSL 画的插图 | `src/course/markdown.ts`（语言写成 `figure 宽x高` 的代码块） | `shader` 组件的静态插图模式 |
+
+ShaderMind 的编辑器是 CodeMirror 6（数字上点一下就能拖的内联滑块在 `src/editor/sliders.ts`）。Principia 现在打算不加依赖、用 textarea；C11 细化时再看要不要把它搬过来（会加依赖，到时候问你）。
 
 ## 要新做的
 
@@ -175,7 +190,7 @@ pauses:
 
 ### 代码块
 
-- 围栏代码块必须写语言，只能是：`p8asm`、`python`、`rust`、`typescript`、`html`、`css`、`sql`、`text`。没写、写了别的，构建报错。各领域用哪种见「写作规范补充」；图形学的着色器语言到 C11 时再定，加进白名单。
+- 围栏代码块必须写语言，只能是：`p8asm`、`python`、`rust`、`typescript`、`glsl`、`html`、`css`、`sql`、`text`。没写、写了别的，构建报错。各领域用哪种见「写作规范补充」。
 - 构建时高亮（lowlight：highlight.js 的语法表，输出 hast），网页不多带运行时；`p8asm` 自己写一份语法表。亮暗两套颜色用主题变量。
 - 代码块在自己的框里左右滚动，不撑宽页面（768 像素宽的规矩照旧）。
 - 缩进用空格：正文里出现制表符本来就报错（「反斜杠被吃掉」那一条的检查），代码块也一样；报错说明里加一句「代码缩进用空格」。
@@ -225,7 +240,8 @@ answer:
 | 语言 | 领域 |
 | --- | --- |
 | Python | 数据结构、算法、程序设计基础（教学用子集）、计算理论、机器学习、深度学习、人工智能、信息论与编码 |
-| Rust | 数据的表示、操作系统、计算机网络、编译原理、数据库系统、分布式系统、信息安全、计算机图形学 |
+| Rust | 数据的表示、操作系统、计算机网络、编译原理、数据库系统、分布式系统、信息安全、计算机图形学（CPU 一侧的算法） |
+| GLSL | 计算机图形学的着色器（你定的） |
 | TypeScript（加 HTML、CSS） | Web 前端 |
 | P8 汇编 | 计算机组成与体系结构；信息安全的栈溢出、编译原理的「编译到 P8」也用 |
 | SQL | 数据库系统里的查询 |
@@ -234,7 +250,8 @@ answer:
 - **清单写完整、能跑**，不写省略号式的伪代码：
   - Rust：只用标准库，按 2024 版写，能用 `rustc --edition 2024` 直接编译；要运行的写 `fn main`。清单里第一次出现的 Rust 写法加一行注释（`let mut`、`u8`、`as`、`&` 这类）；要先懂所有权、生命周期才看得懂的例子不放，交给模拟器讲。数据的表示正好用得上 `u8`、`i8`、`wrapping_add`、`overflowing_add`、`f32::to_bits` 这些把位数和溢出写在明面上的写法。
   - TypeScript：能通过 `tsc --strict`；浏览器里的例子按 DOM 的类型写。
-  - Python：只用标准库；机器学习、深度学习可以用 NumPy。
+  - Python：Python 3（这台电脑上是 3.13），只用标准库；机器学习、深度学习可以用 NumPy（这台电脑还没装，见「审查补充」）。
+  - GLSL：照 ShaderMind 课程的写法：类 Shadertoy 的 `void mainImage(out vec4 fragColor, in vec2 fragCoord)`；居中、按短边归一化的坐标 `vec2 p = (fragCoord * 2.0 - iResolution.xy) / min(iResolution.x, iResolution.y);`；抗锯齿写 `smoothstep(px, -px, d)`；公共函数和 ShaderMind 的 `common.glsl` 同名同实现。清单要能在 `shader` 组件里编译运行。
 - **题目**：简单题、中等题可以写「先算，再用上面的模拟器验证」。考的是知道怎么设、为什么，不出照着默认参数读一个数就能答的题（「图和动画不要画出简单题、中等题正好要算的那组数」的推广）。
 - **证明深度**：cs 的领域一般取 `sketch`（正确性证明放进难题），计算理论取 `full`。批次 0 时由写内容会话提，审目录时定。
 
@@ -242,7 +259,7 @@ answer:
 
 - 答案有外部真值的（浮点数的位、补码、UTF-8 编码），验算脚本（TypeScript）用运行时自带的 `DataView`、`Math.fround`、`BigInt`、`TextEncoder` 独立算，不用模拟器的内核。
 - 答案由模拟器的模型定义的（P8 的周期、缓存的命中缺失、A* 扩展了几个结点），验算脚本可以调内核（模型就是定义），但每节至少手算一个小例子，核对内核和附录 C 的约定一致。
-- 代码清单：Rust 清单用 `rustc` 编译、运行，TypeScript 清单用 `tsc --strict` 检查，都走 `npm run listings`（C1 做；这台电脑上有 rustc 1.95，仓库里有 tsc 5.9）。这台电脑上的 Python 现在跑不起来（`python --version` 报 `uv trampoline failed to spawn Python child process`），Python 清单先靠读，修好以后让 `npm run listings` 把它也跑上。
+- 代码清单都走 `npm run listings`（C1 做）：Rust 用 `rustc` 编译、运行（这台电脑上有 rustc 1.95）；TypeScript 用 `tsc --strict` 检查（仓库里有 tsc 5.9）；Python 用 `python -I` 运行（这台电脑上有 Python 3.13）。NumPy 还没装：用了 NumPy 的清单标「缺 NumPy，没有检查」，第三阶段（机器学习）开写之前装上。GLSL 清单怎么查，C11 细化时定（打算构建时用 `@shaderfrog/glsl-parser` 查语法，浏览器里用 `shader` 组件真编译）。
 
 ### 星图
 
@@ -265,7 +282,7 @@ answer:
 | 二 | `programming` | 程序设计基础 | 16 | 变量与赋值 → 表达式求值 → 条件与循环 → 函数与调用栈 → 递归 → 作用域与闭包 → 引用与可变性 → 调试 | trace |
 | 二 | `compilers` | 编译原理 | 22 | 词法分析 → 语法分析与语法树 → 求值 → 栈式虚拟机 → 编译到 P8 → 寄存器分配初步 → 优化 → 运行时与垃圾回收 | parse、stack-vm、gc-heap、trace |
 | 二 | `theory-of-computation` | 计算理论 | 18 | 有限自动机 → 正则表达式 → 非确定性 → 上下文无关文法 → 下推自动机 → 图灵机 → 可判定性与停机问题 → P 与 NP → 归约 | automaton、turing-machine |
-| 三 | `computer-graphics` | 计算机图形学 | 24 | 像素与颜色 → 画线 → 三角形光栅化与重心坐标 → 齐次坐标与变换 → 投影与相机 → 深度缓冲 → 着色 → 纹理与采样（走样、mipmap）→ 光线追踪 → 贝塞尔曲线 → GPU 管线与着色器 | raster、transform-3d、ray-trace、shading、bezier、pixel-shader |
+| 三 | `computer-graphics` | 计算机图形学 | 24 | 像素与颜色 → 画线 → 三角形光栅化与重心坐标 → 齐次坐标与变换 → 投影与相机 → 深度缓冲 → 着色 → 纹理与采样（走样、mipmap）→ 光线追踪 → 贝塞尔曲线 → GPU 管线与着色器（GLSL） | raster、transform-3d、ray-trace、shading、bezier、shader |
 | 三 | `web-frontend` | Web 前端 | 18 | 浏览器怎样渲染 → DOM → CSS 层叠与优先级 → 盒模型与布局（流式、弹性）→ 绘制与合成 → 事件循环 → 事件与冒泡 → 状态驱动界面与虚拟 DOM 比对 → 无障碍 | event-loop、css-cascade、flex-layout、vdom-diff |
 | 三 | `machine-learning` | 机器学习 | 24 | 数据与特征 → 线性回归 → 梯度下降 → 逻辑回归 → 过拟合与正则化 → 训练集与验证 → k 近邻 → 决策树 → 支持向量机的想法 → k 均值 → 主成分分析 → 朴素贝叶斯 → 评估指标 | optimizer、classifier-2d、kmeans、decision-tree；已有的 function-plot、vector-field-2d |
 | 三 | `deep-learning` | 深度学习 | 26 | 感知机 → 多层网络 → 计算图与反向传播 → 激活函数 → 优化器 → 卷积 → 池化 → 循环网络 → 注意力 → Transformer → 词元化 → 嵌入 → 采样与温度 → 训练动态 | neural-net、comp-graph、convolution、attention、tokenizer、sampling |
@@ -291,6 +308,7 @@ answer:
 - 信息熵已经在概率论（`math.probability.entropy`），信息论与编码以它为前置，不重讲。
 - 模运算、有限域、多项式在抽象代数（`math.abstract-algebra.modular-arithmetic`、`finite-fields`、`polynomial-rings`），CRC、RSA 以它们为前置。
 - 线性代数、微积分、概率都用数学领域的，计算机里不重讲。
+- 片元着色器的各种效果（噪声图案、溶解、描边、游戏里的屏幕特效）在 ShaderMind 课程里练；Principia 的图形学只讲机制（管线、插值、采样、距离场与光线步进），不重做那些课。提到时写「在 ShaderMind 课程第 N 级」，纯文字，不做链接。
 
 **跨学科前置**（批次 0 写进 `prerequisites`）：数字逻辑的布尔代数 ← `math.logic-sets.propositions`；算法的正确性 ← `math.logic-sets.induction`；停机问题 ← `math.logic-sets.uncountable-sets`（对角线论证）；机器学习 ← 线性代数、多变量微积分（梯度）、概率论；图形学 ← 线性代数、光学（反射、折射）；信息论 ← 概率论；信息安全 ← 抽象代数。概率论（29 节）、逻辑与集合（21 节）、抽象代数（33 节）现在都只有目录：到时候在那几页标「已会」，或者先排它们的批次。
 
@@ -317,7 +335,7 @@ answer:
 | 二 | `packet-timeline`、`routing` | 报文时序图（停等、回退 N、选择重传、TCP 握手、拥塞窗口）；距离向量表一轮轮交换、链路状态 |
 | 二 | `trace`、`parse`、`stack-vm`、`gc-heap` | 教学用 Python 子集的逐行执行（变量表、调用栈）；词法、递归下降、语法树；字节码执行；标记-清除、复制回收、引用计数的环 |
 | 二 | `automaton`、`turing-machine` | 状态图上读输入；纸带单步 |
-| 三 | `raster`、`transform-3d`、`ray-trace`、`shading`、`bezier`、`pixel-shader` | 像素网格上的画线、三角形覆盖、深度缓冲；模型-视图-投影；逐条光线；着色分量；德卡斯特里奥作图；每像素一个式子的着色器 |
+| 三 | `raster`、`transform-3d`、`ray-trace`、`shading`、`bezier`、`shader` | 像素网格上的画线、三角形覆盖、深度缓冲；模型-视图-投影；逐条光线；着色分量；德卡斯特里奥作图；真的 GLSL：滑块接 uniform，时间能单步、能拖，点像素看坐标和颜色，探针看任一个量在整幅图上的分布 |
 | 三 | `event-loop`、`css-cascade`、`flex-layout`、`vdom-diff` | 调用栈、任务队列、微任务队列单步；层叠和优先级；弹性布局（用浏览器真算）；带键的列表比对 |
 | 三 | `optimizer`、`classifier-2d`、`neural-net`、`comp-graph`、`kmeans`、`decision-tree`、`convolution`、`attention`、`tokenizer`、`sampling` | 等高线上的优化轨迹；平面上的分类边界边训练边变；小网络现场训练；计算图前向、反向；卷积核滑动；注意力热图；BPE 合并；温度、top-k 采样 |
 | 三 | `state-search`、`game-tree`、`csp`、`gridworld` | 八数码与启发式；极小化极大与剪枝；地图着色回溯；价值迭代、Q 学习 |
@@ -367,7 +385,7 @@ answer:
 **做什么**
 
 1. 三个组件的内核、界面、规格、画廊演示，写回 `plan.md` 附录。参数写法见附录 B。
-2. 代码清单检查工具 `npm run listings -- [范围…]`（范围写学科、领域或小节的 id，同 `npm run statements`）：`rust` 代码块逐个用 `rustc --edition 2024` 编译，有 `fn main` 的再运行，没有的按库编译；`typescript` 代码块用 `tsc --strict --noEmit` 检查；`python` 代码块列出来，标「没有检查」。报错带文件和代码块里的行号；临时文件放系统临时目录，跑完删掉；没装 rustc 时说明原因，跳过 Rust 清单。数据的表示是第一个用 Rust 清单的领域，开写之前要有这个工具。写回 `plan.md`「每批的流程」的审查清单。
+2. 代码清单检查工具 `npm run listings -- [范围…]`（范围写学科、领域或小节的 id，同 `npm run statements`）：`rust` 代码块逐个用 `rustc --edition 2024` 编译，有 `fn main` 的再运行，没有的按库编译；`typescript` 代码块用 `tsc --strict --noEmit` 检查；`python` 代码块用 `python -I` 运行，用了 NumPy 而这台电脑没装时标「缺 NumPy，没有检查」。报错带文件和代码块里的行号；临时文件放系统临时目录，跑完删掉；没装 rustc 或 Python 时说明原因，跳过那一种。数据的表示是第一个用 Rust 清单的领域，开写之前要有这个工具。写回 `plan.md`「每批的流程」的审查清单。
 
 **验收**
 
@@ -390,7 +408,7 @@ answer:
   - 性质测试：随机 10000 对单精度数（固定种子，含次正规数、大小悬殊的），逐步加法的结果和 `Math.fround(a + b)` 逐位一致（双精度算完再舍入到单精度，对加法是精确的，可以当真值）。
 - text-encoding：「A」→ U+0041 → `41`；「é」→ U+00E9 → `C3 A9`；「中」→ U+4E2D → `E4 B8 AD`；「😀」→ U+1F600 → `F0 9F 98 80`（UTF-16 是 `D83D DE00`）；和 `TextEncoder` 逐字节一致。
 - 构建：参数写错（位数写 12、初值超出位数、`op` 写了不认识的运算）报错并指出行号。
-- `npm run listings`（用测试自己摆的小内容）：一段正确的 Rust 清单编译、运行通过，输出照登；一段有类型错误的 Rust 清单报错，指出文件和代码块里的行号；一段有类型错误的 TypeScript 清单报错；Python 清单列为「没有检查」；把 rustc 从 PATH 里拿掉时说明原因、跳过 Rust 清单；跑完临时目录里不留文件。
+- `npm run listings`（用测试自己摆的小内容）：一段正确的 Rust 清单编译、运行通过，输出照登；一段有类型错误的 Rust 清单报错，指出文件和代码块里的行号；一段有类型错误的 TypeScript 清单报错；一段正确的 Python 清单运行通过，一段抛异常的报错并给出行号；用了 NumPy 而没装时标「缺 NumPy，没有检查」；把 rustc 从 PATH 里拿掉时说明原因、跳过 Rust 清单；跑完临时目录里不留文件。
 
 上面的浮点数都已在 Node 上用 `Math.fround`、`DataView` 核对过。
 
@@ -420,7 +438,7 @@ answer:
 - 改内存里某条指令的字节，反汇编跟着变，接着执行的是新指令（代码就是数据）。
 - 栈：SP 降到程序最后一个字节以下时，说明里提示「栈进入了程序区」。
 - 输出面板把每个数按无符号、有符号、十六进制和 ASCII 字符同时显示。
-- lesson.md 里的 ` ```p8asm ` 代码块汇编出错，构建报错并指出代码块里的行号。
+- lesson.md 里语言写 `p8asm` 的代码块汇编出错，构建报错并指出代码块里的行号。
 - program 题型：夹具里一道「输入两个数，输出它们的和」：标准程序通过全部测试用例；错的程序判错，卡片上列出哪个用例错了、期望什么、得到什么；有汇编错误只提示格式、不算作答；超过周期上限判错；`npm run statements` 输出题干、起始代码和测试用例。
 
 ### C4：存储层次与流水线（cache、cpu 接缓存、pipeline）
@@ -486,7 +504,7 @@ answer:
 | C8 | 计算机网络：packet-timeline、routing；bits 加 IPv4 子网模式 |
 | C9 | 程序与编译：trace（教学用 Python 子集的解释器）、parse、stack-vm、gc-heap；编译到 P8 |
 | C10 | 计算理论：automaton、turing-machine |
-| C11 | 图形学：raster、transform-3d、ray-trace、shading、bezier、pixel-shader |
+| C11 | 图形学：raster、transform-3d、ray-trace、shading、bezier、shader（渲染器、探针、公共函数从 ShaderMind 搬；着色器题要不要按像素比对判、要不要换 CodeMirror 编辑器，细化时请你定） |
 | C12 | Web 前端：event-loop、css-cascade、flex-layout、vdom-diff |
 | C13 | 机器学习与深度学习：optimizer、classifier-2d、neural-net、comp-graph、kmeans、decision-tree、convolution、attention、tokenizer、sampling；surface-3d、distribution |
 | C14 | 人工智能：state-search、game-tree、csp、gridworld |
@@ -565,12 +583,12 @@ answer:
 | 和正在写的内容批次互相干扰 | GPT 在单独的 worktree 和分支上做 |
 | GPT 不熟悉这个仓库的潜规则 | 提示词里列阅读清单和红线；验收数字写死；Claude 审 |
 | `plan.md` 越来越长 | 规矩按「写回方案的规则」写进对应小节；组件的约定集中在附录里一节 |
-| 这台电脑的 Python 跑不起来 | 验算全用 TypeScript；Rust、TypeScript 清单用 `npm run listings` 编译检查；Python 清单先靠读，第二阶段的 trace 解释器做好以后，教学用 Python 子集的清单能在 TypeScript 里跑 |
+| 清单写了却跑不通 | `npm run listings` 编译、运行 Rust、TypeScript、Python 清单；NumPy 在第三阶段之前装上；GLSL 在 `shader` 组件里真编译 |
 | 没有哪一节教 Rust，系统领域的清单却用它 | 清单里第一次出现的写法就地加注释；要先懂所有权、生命周期的例子不放，交给模拟器讲；你想系统学 Rust 时，再加一个讲 Rust 的领域 |
 
 ## 已定的决定
 
-2026-11-18 你拍板的 10 条，都已改进正文；这里只留记录。以后再有要你拍板的事，先列在这一节下面，定了再改进正文。
+2026-11-18 你拍板的 11 条，都已改进正文；这里只留记录。以后再有要你拍板的事，先列在这一节下面，定了再改进正文。
 
 1. P8 指令集照附录 A：8 位、256 字节内存、4 个通用寄存器、每条指令 2 字节、27 个助记符分 6 类，每一处可以只开放其中几条。
 2. 新题型：C0 加 `exact`、`sequence`，C3 加 `program`。
@@ -582,6 +600,7 @@ answer:
 8. 内容里不写组件的速度，各组件 1× 的快慢见附录 C。
 9. 按「领域目录」的四个阶段走。
 10. 规矩随每一级写回 `plan.md`，它仍是写内容、审内容的唯一依据；这份方案只管路线和台阶，全部做完后留作记录。
+11. 着色器用 GLSL，写法照本机的 ShaderMind 课程；它的渲染器、逐像素比对、探针、公共函数在 C11 时搬过来（第 10 条之后另外定的）。
 
 ## 附录 A：P8 教学处理器
 
