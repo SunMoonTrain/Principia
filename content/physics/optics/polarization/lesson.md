@@ -66,7 +66,7 @@ status: reviewed
 ::anchor{id="thm-malus"}
 定理（:term[马吕斯定律]{id="physics.optics.malus-law"}，Malus's law）：光强为$I_0$的线偏振光射到理想的偏振片上，偏振方向和:term[透振方向]{id="physics.optics.transmission-axis"}成$\theta$角时，透过的光强$I=I_0\cos^2\theta$，透过的光沿透振方向线偏振。
 
-证明思路：把振幅为$A$的电场分解成沿透振方向和垂直于它的两个分量，振幅分别是$A\cos\theta$和$A\sin\theta$，只有前一个透过。光强正比于电场平方的时间平均，也就是正比于振幅的平方（波的能流和振幅的平方成正比，见[平面波与球面波](lesson:physics.oscillations-waves.waves-in-3d)），所以透过的光强是原来的$\cos^2\theta$倍。
+证明思路：把振幅为$A$的电场分解成沿透振方向和垂直于它的两个分量，振幅分别是$A\cos\theta$和$A\sin\theta$，只有前一个透过。光强正比于电场平方的时间平均，也就是正比于振幅的平方（波的:term[能流]{id="physics.oscillations-waves.energy-flux"}（energy flux）和振幅的平方成正比，见[平面波与球面波](lesson:physics.oscillations-waves.waves-in-3d)），所以透过的光强是原来的$\cos^2\theta$倍。
 
 马吕斯（Étienne-Louis Malus）在 1808 年发现窗玻璃反射的阳光是偏振的，随后给出了这条定律。:term[自然光]{id="physics.optics.natural-light"}射到偏振片上，各个方向的偏振都有，$\cos^2\theta$对所有方向的平均是$\frac12$，所以透过一半，透过的光是线偏振光。两片偏振片的透振方向互相垂直时，第一片放过的线偏振光被第二片完全挡住，叠在一起就是全黑。
 

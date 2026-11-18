@@ -302,3 +302,264 @@ glossary:
       $Q=\frac{\omega_0}\gamma$，也等于固有角频率除以平均功率的共振峰的半高宽；$Q$越大，共振峰越高越窄。
     definedIn: physics.oscillations-waves.driven-oscillations
     anchor: def-resonance
+  - id: physics.oscillations-waves.harmonic-wave
+    zh: |
+      简谐波
+    en: |
+      harmonic wave
+    brief: |
+      形如$A\cos(\omega t-kx+\varphi)$的波，每一点都以同一个角频率做简谐运动，相位沿传播方向依次落后；满足波动方程时以$v=\frac\omega k$传播。
+    definedIn: physics.oscillations-waves.harmonic-waves
+    anchor: def-harmonic-wave
+  - id: physics.oscillations-waves.wave-number
+    zh: |
+      波数
+    en: |
+      wave number
+    brief: |
+      简谐波$A\cos(\omega t-kx+\varphi)$里的$k=\frac{2\pi}\lambda$，沿传播方向每单位长度相位变化的弧度数，单位$\mathrm{rad/m}$。
+    definedIn: physics.oscillations-waves.harmonic-waves
+    anchor: def-harmonic-wave
+  - id: physics.oscillations-waves.wavelength
+    zh: |
+      波长
+    en: |
+      wavelength
+    brief: |
+      简谐波在同一时刻沿传播方向重复一次的距离$\lambda=\frac{2\pi}k$；和频率、波速满足$\lambda f=v$。
+    definedIn: physics.oscillations-waves.harmonic-waves
+    anchor: def-harmonic-wave
+  - id: physics.oscillations-waves.transverse-wave
+    zh: |
+      横波
+    en: |
+      transverse wave
+    brief: |
+      介质里各点振动的方向和波传播的方向垂直的波，例如弦的横向振动。
+    definedIn: physics.oscillations-waves.harmonic-waves
+    anchor: def-transverse-longitudinal
+  - id: physics.oscillations-waves.longitudinal-wave
+    zh: |
+      纵波
+    en: |
+      longitudinal wave
+    brief: |
+      介质里各点振动的方向和波传播的方向平行的波，例如空气里的声波。
+    definedIn: physics.oscillations-waves.harmonic-waves
+    anchor: def-transverse-longitudinal
+  - id: physics.oscillations-waves.dispersion-relation
+    zh: |
+      色散关系
+    en: |
+      dispersion relation
+    brief: |
+      线性、均匀的系统里，简谐波$e^{i(\omega t-kx)}$能存在时角频率和波数必须满足的关系$\omega(k)$；弦是$\omega=vk$。
+    definedIn: physics.oscillations-waves.dispersion-relations
+    anchor: def-dispersion-relation
+  - id: physics.oscillations-waves.phase-velocity
+    zh: |
+      相速度
+    en: |
+      phase velocity
+    brief: |
+      简谐波的相位（波峰）前进的速度$v_{\mathrm p}=\frac\omega k$。
+    definedIn: physics.oscillations-waves.dispersion-relations
+    anchor: def-phase-velocity
+  - id: physics.oscillations-waves.dispersion
+    zh: |
+      色散
+    en: |
+      dispersion
+    brief: |
+      相速度随波数（频率）变化，波形边走边变；光的相速度是$\frac cn$，折射率随频率变化就是光的色散。
+    definedIn: physics.oscillations-waves.dispersion-relations
+    anchor: def-phase-velocity
+  - id: physics.oscillations-waves.doppler-effect
+    zh: |
+      多普勒效应
+    en: |
+      Doppler effect
+    brief: |
+      波源或观察者相对介质运动时，接收到的频率和发出的频率不同的现象；波源运动改变波长，观察者运动改变遇到波峰的快慢。
+    definedIn: physics.oscillations-waves.doppler-effect
+    anchor: def-doppler
+  - id: physics.oscillations-waves.frequency-shift
+    zh: |
+      频移
+    en: |
+      frequency shift
+    brief: |
+      接收到的频率相对发出的频率的变化，例如多普勒效应造成的变化。
+    definedIn: physics.oscillations-waves.doppler-effect
+    anchor: def-doppler
+  - id: physics.oscillations-waves.redshift
+    zh: |
+      红移
+    en: |
+      redshift
+    brief: |
+      接收到的频率比发出的低；名字来自光谱，红光在可见光里频率最低。
+    definedIn: physics.oscillations-waves.doppler-effect
+    anchor: def-doppler
+  - id: physics.oscillations-waves.blueshift
+    zh: |
+      蓝移
+    en: |
+      blueshift
+    brief: |
+      接收到的频率比发出的高，和红移相对。
+    definedIn: physics.oscillations-waves.doppler-effect
+    anchor: def-doppler
+  - id: physics.oscillations-waves.mach-cone
+    zh: |
+      马赫锥
+    en: |
+      Mach cone
+    brief: |
+      波源比波跑得快时，它各个时刻发出的波扩展成的球面的包络，是以波源为顶点、向后张开的圆锥面，半顶角满足$\sin\alpha=\frac v{u_{\mathrm s}}$。
+    definedIn: physics.oscillations-waves.doppler-effect
+    anchor: def-mach-cone
+  - id: physics.oscillations-waves.nonlinear-oscillation
+    zh: |
+      非线性振动
+    en: |
+      nonlinear oscillation
+    brief: |
+      回复力不和位移成正比时的振动；周期一般随振幅变化，振幅很小、回复力的一次项不为零时近似是简谐运动。
+    definedIn: physics.oscillations-waves.nonlinear-oscillators
+    anchor: def-nonlinear-oscillation
+  - id: physics.oscillations-waves.duffing-oscillator
+    zh: |
+      杜芬振子
+    en: |
+      Duffing oscillator
+    brief: |
+      最简单的形式是$\ddot x+\omega_0^2x+\varepsilon x^3=0$，$\varepsilon>0$是硬弹簧、$\varepsilon<0$是软弹簧；振幅$A$小时角频率约为$\omega_0+\frac{3\varepsilon A^2}{8\omega_0}$。
+    definedIn: physics.oscillations-waves.nonlinear-oscillators
+    anchor: def-duffing
+  - id: physics.oscillations-waves.impedance
+    zh: |
+      阻抗
+    en: |
+      impedance
+    brief: |
+      张力为$T$、线密度为$\mu$的弦的$Z=\sqrt{T\mu}=\frac Tv$；向右的行波里横向拉力等于$Z$乘横向速度，两根弦阻抗相等时连接处不反射。
+    definedIn: physics.oscillations-waves.reflection-transmission
+    anchor: def-impedance
+  - id: physics.oscillations-waves.reflection-coefficient
+    zh: |
+      反射系数
+    en: |
+      reflection coefficient
+    brief: |
+      反射波和入射波在界面上的位移之比；两根张力相同的弦的连接处$r=\frac{Z_1-Z_2}{Z_1+Z_2}$，为负时反射波倒过来。
+    definedIn: physics.oscillations-waves.reflection-transmission
+    anchor: def-coefficients
+  - id: physics.oscillations-waves.transmission-coefficient
+    zh: |
+      透射系数
+    en: |
+      transmission coefficient
+    brief: |
+      透射波和入射波在界面上的位移之比；两根张力相同的弦的连接处$\tau=\frac{2Z_1}{Z_1+Z_2}$。
+    definedIn: physics.oscillations-waves.reflection-transmission
+    anchor: def-coefficients
+  - id: physics.oscillations-waves.energy-flux
+    zh: |
+      能流
+    en: |
+      energy flux
+    brief: |
+      单位时间传过某处（三维时是穿过单位面积）的能量；弦上是$j=-Ty_xy_t$，即左边的弦对右边的弦做功的功率，行波里等于波速乘能量密度。
+    definedIn: physics.oscillations-waves.wave-energy
+    anchor: def-energy-flux
+  - id: physics.oscillations-waves.wavefront
+    zh: |
+      波阵面
+    en: |
+      wavefront
+    brief: |
+      同一时刻振动状态（相位）相同的各点连成的面；平面波的是垂直于波矢的平面，点波源的球面波的是同心球面。
+    definedIn: physics.oscillations-waves.waves-in-3d
+    anchor: def-wavefront
+  - id: physics.oscillations-waves.plane-wave
+    zh: |
+      平面波
+    en: |
+      plane wave
+    brief: |
+      波阵面是一族平行平面的波，只随沿传播方向的坐标和时间变化；简谐的写成$A\cos(\omega t-\vb k\cdot\vb r+\varphi)$。
+    definedIn: physics.oscillations-waves.waves-in-3d
+    anchor: def-wavefront
+  - id: physics.oscillations-waves.spherical-wave
+    zh: |
+      球面波
+    en: |
+      spherical wave
+    brief: |
+      波阵面是一族同心球面的波；向外传播的$\frac{f(r-vt)}r$振幅和到中心的距离成反比。
+    definedIn: physics.oscillations-waves.waves-in-3d
+    anchor: def-wavefront
+  - id: physics.oscillations-waves.wave-vector
+    zh: |
+      波矢
+    en: |
+      wave vector
+    brief: |
+      简谐平面波$A\cos(\omega t-\vb k\cdot\vb r+\varphi)$里的矢量$\vb k$，沿传播方向，大小是波数$\frac{2\pi}\lambda$。
+    definedIn: physics.oscillations-waves.waves-in-3d
+    anchor: def-wave-vector
+  - id: physics.oscillations-waves.standing-wave
+    zh: |
+      驻波
+    en: |
+      standing wave
+    brief: |
+      两列振幅、频率相同，反向传播的简谐波叠成的波$2A\cos kx\cos\omega t$，波形在原地伸缩、不平移。
+    definedIn: physics.oscillations-waves.standing-waves
+    anchor: def-standing-wave
+  - id: physics.oscillations-waves.node
+    zh: |
+      波节
+    en: |
+      node
+    brief: |
+      驻波里始终不动的点；相邻两个相距半个波长。
+    definedIn: physics.oscillations-waves.standing-waves
+    anchor: def-standing-wave
+  - id: physics.oscillations-waves.antinode
+    zh: |
+      波腹
+    en: |
+      antinode
+    brief: |
+      驻波里振幅最大的点，在相邻两个波节的正中间。
+    definedIn: physics.oscillations-waves.standing-waves
+    anchor: def-standing-wave
+  - id: physics.oscillations-waves.natural-frequency
+    zh: |
+      固有频率
+    en: |
+      natural frequency
+    brief: |
+      物体自由振动时的频率，由物体本身决定；两端固定的弦有无穷多个，$f_n=\frac{nv}{2\ell}$。
+    definedIn: physics.oscillations-waves.standing-waves
+    anchor: def-harmonics
+  - id: physics.oscillations-waves.fundamental-frequency
+    zh: |
+      基频
+    en: |
+      fundamental frequency
+    brief: |
+      最低的固有频率；两端固定的弦的基频是$f_1=\frac v{2\ell}$。
+    definedIn: physics.oscillations-waves.standing-waves
+    anchor: def-harmonics
+  - id: physics.oscillations-waves.harmonic
+    zh: |
+      谐波
+    en: |
+      harmonic
+    brief: |
+      频率是基频整数倍的振动；两端固定的弦的固有频率$f_n=nf_1$叫作第$n$次谐波。
+    definedIn: physics.oscillations-waves.standing-waves
+    anchor: def-harmonics

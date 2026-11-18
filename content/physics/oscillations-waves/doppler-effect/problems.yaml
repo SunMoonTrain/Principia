@@ -1,0 +1,182 @@
+- id: p1
+  tier: easy
+  statement: |
+    火车鸣笛，笛声的频率是$500\,\mathrm{Hz}$，火车以$30\,\mathrm{m/s}$驶离站台，声速取$340\,\mathrm{m/s}$。站台上静止的人听到的频率是多少？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 500*340/370
+    unit: |
+      $\mathrm{Hz}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      观察者静止、波源运动；火车背着人开走，$\theta=\pi$。
+    - |
+      $f=\frac{f_0}{1-(u_{\mathrm s}/v)\cos\pi}=\frac{f_0}{1+u_{\mathrm s}/v}$。
+    - |
+      $f=\frac{500\times340}{340+30}\,\mathrm{Hz}\approx459\,\mathrm{Hz}$。
+  solution: |
+    火车驶离，$\theta=\pi$，$f=\frac{f_0}{1+u_{\mathrm s}/v}=\frac{500\times340}{370}\,\mathrm{Hz}\approx459\,\mathrm{Hz}$，比发出的低，是红移。火车后方的波长被拉长成$\frac{v+u_{\mathrm s}}{f_0}=0.74\,\mathrm m$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法正确？（$v$是波速，速度都相对介质。）
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        波源静止、观察者运动时，观察者附近的波长不变
+      - |
+        波源运动时，它前方和后方的波长相同
+      - |
+        声源远离静止的观察者时，观察者听到的频率比声源发出的低，这是红移
+      - |
+        马赫锥的半顶角随飞机速率的增大而增大
+      - |
+        波源以$u<v$朝静止的观察者运动，观察者听到的频率高于$f_0\bigl(1+\frac uv\bigr)$
+    value: [1, 3, 5]
+  hints:
+    - |
+      波长由波源怎样发出波峰决定；观察者运动只改变他遇到波峰的快慢。
+    - |
+      $\sin\alpha=\frac v{u_{\mathrm s}}$；比较$\frac1{1-\beta}$和$1+\beta$，$\beta=\frac uv$。
+    - |
+      A 对；B 错，前方被压缩成$\frac{v-u_{\mathrm s}}{f_0}$，后方拉长成$\frac{v+u_{\mathrm s}}{f_0}$；C 对。D 错，速率越大$\sin\alpha$越小，锥越尖；E 对，$\frac1{1-\beta}-(1+\beta)=\frac{\beta^2}{1-\beta}>0$。
+  solution: |
+    选 A、C、E。A：波源不动，波峰的间距仍是$\frac v{f_0}$；B 错，波源前方的波长短、后方的长；C 对，频率变低叫红移。D 错，$\sin\alpha=\frac v{u_{\mathrm s}}$，飞得越快锥越尖；E 对，$\frac{f_0}{1-\beta}=f_0(1+\beta+\beta^2+\cdots)$比$f_0(1+\beta)$大。
+
+- id: p3
+  tier: medium
+  statement: |
+    汽车以$20\,\mathrm{m/s}$鸣着笛（频率$400\,\mathrm{Hz}$）朝迎面骑来的自行车驶去，自行车的速度是$5.0\,\mathrm{m/s}$，两者在同一条直线上，空气静止，声速取$340\,\mathrm{m/s}$。骑车人听到的频率是多少？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 400*345/320
+    unit: |
+      $\mathrm{Hz}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      分两步：汽车运动决定前方的波长，骑车人运动决定他遇到波峰的快慢。
+    - |
+      汽车前方的波长$\lambda'=\frac{v-u_{\mathrm s}}{f_0}$，波峰相对骑车人的速度是$v+u_{\mathrm o}$。
+    - |
+      $f=\frac{v+u_{\mathrm o}}{\lambda'}=f_0\frac{v+u_{\mathrm o}}{v-u_{\mathrm s}}=400\times\frac{345}{320}\,\mathrm{Hz}\approx431\,\mathrm{Hz}$。
+  solution: |
+    汽车前方的波长被压缩成$\lambda'=\frac{v-u_{\mathrm s}}{f_0}=\frac{320}{400}\,\mathrm m=0.80\,\mathrm m$；骑车人迎着波走，波峰相对他的速度是$345\,\mathrm{m/s}$，每秒遇到$\frac{345}{0.80}\approx431$个波峰，听到约$431\,\mathrm{Hz}$。一般地，两者在一条直线上相向运动时$f=f_0\frac{v+u_{\mathrm o}}{v-u_{\mathrm s}}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    超音速飞机在高空水平飞行。地面上的人听到音爆的那一刻，抬头看到飞机在前方、仰角为$40^\circ$（光传到眼里的时间不计）。声速当作处处相同，飞机的马赫数是多少？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 1/sin(40*pi/180)
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      听到音爆的那一刻，马赫锥的锥面正好经过这个人。
+    - |
+      锥面上的点和锥顶（飞机）的连线跟飞行方向成半顶角$\alpha$；飞行方向是水平的，所以仰角就是$\alpha$。
+    - |
+      $\alpha=40^\circ$，$M=\frac1{\sin\alpha}=\frac1{\sin40^\circ}\approx1.56$。
+  solution: |
+    锥面经过人时，人在锥面上，人到飞机的连线和飞行方向的夹角就是马赫锥的半顶角；飞行方向水平，这个夹角就是看飞机的仰角，$\alpha=40^\circ$。由$\sin\alpha=\frac1M$，$M=\frac1{\sin40^\circ}\approx1.56$。
+
+- id: p5
+  tier: hard
+  statement: |
+    蝙蝠以速率$u$朝一面墙飞去，发出频率为$f_0$的超声波，再听墙反射回来的回声。空气静止，声速为$v$。
+
+    （1）证明蝙蝠听到的回声频率是$f=f_0\frac{v+u}{v-u}$。
+
+    （2）$u\ll v$时，证明频移约为$\frac{2u}vf_0$。
+
+    （3）$u=5.0\,\mathrm{m/s}$，$f_0=40\,\mathrm{kHz}$，$v=340\,\mathrm{m/s}$，回声的频率是多少？近似式差多少？
+  hints:
+    - |
+      分两步：墙先当观察者收到声音，再当波源把这个频率发回来；墙不动，蝙蝠在动。
+    - |
+      第一步，墙静止、波源（蝙蝠）以$u$靠近：墙收到$\frac{f_0}{1-u/v}$。第二步，墙静止地发出这个频率，观察者（蝙蝠）以$u$靠近。
+    - |
+      （1）$f=\frac{f_0}{1-u/v}\Bigl(1+\frac uv\Bigr)=f_0\frac{v+u}{v-u}$。（2）$\frac{v+u}{v-u}=\frac{1+\beta}{1-\beta}\approx1+2\beta$。（3）$f=40\times\frac{345}{335}\,\mathrm{kHz}\approx41.19\,\mathrm{kHz}$，近似式给$41.18\,\mathrm{kHz}$，差约$0.02\,\mathrm{kHz}$。
+  reference: |
+    （1）墙相对空气静止。蝙蝠是向墙运动的波源，墙收到$f_1=\frac{f_0}{1-u/v}$（定理的（1），$\theta=0$）。墙把声音反射回去，相当于一个静止的、频率为$f_1$的波源；蝙蝠迎着回声飞，是运动的观察者，听到$f=f_1\bigl(1+\frac uv\bigr)$（定理的（2），$\theta'=0$）。所以$f=f_0\frac{1+u/v}{1-u/v}=f_0\frac{v+u}{v-u}$。
+
+    （2）记$\beta=\frac uv$，$\frac{1+\beta}{1-\beta}=(1+\beta)(1+\beta+\beta^2+\cdots)=1+2\beta+2\beta^2+\cdots$，$\beta\ll1$时$f-f_0\approx2\beta f_0=\frac{2u}vf_0$。频移是单程的两倍：墙「听到」一次，蝙蝠又「听到」一次。
+
+    （3）$f=40\times\frac{345}{335}\,\mathrm{kHz}\approx41.19\,\mathrm{kHz}$，频移约$1.19\,\mathrm{kHz}$；近似式给$40\times\bigl(1+\frac{10}{340}\bigr)\,\mathrm{kHz}\approx41.18\,\mathrm{kHz}$，只差约$0.02\,\mathrm{kHz}$。蝙蝠由频移就能判断自己靠近障碍物有多快。
+
+- id: p6
+  tier: hard
+  statement: |
+    记$\beta=\frac uv<1$。情形甲：波源以$u$正对着静止的观察者运动；情形乙：观察者以$u$正对着静止的波源运动。两种情形的接收频率分别记为$f_{\text{甲}}$、$f_{\text{乙}}$。
+
+    （1）求$\frac{f_{\text{甲}}}{f_{\text{乙}}}$，说明两者在$\beta$的一阶上相同、二阶上不同。
+
+    （2）证明它们的几何平均$\sqrt{f_{\text{甲}}f_{\text{乙}}}=f_0\sqrt{\frac{1+\beta}{1-\beta}}$。
+
+    （3）$\beta=0.10$时，$f_{\text{甲}}$、$f_{\text{乙}}$和几何平均各是$f_0$的多少倍？
+  hints:
+    - |
+      $f_{\text{甲}}=\frac{f_0}{1-\beta}$，$f_{\text{乙}}=f_0(1+\beta)$。
+    - |
+      $\frac1{1-\beta}=1+\beta+\beta^2+\cdots$。
+    - |
+      （1）比值$\frac1{(1-\beta)(1+\beta)}=\frac1{1-\beta^2}$，和$1$只差$\beta^2$的量级。（2）$f_{\text{甲}}f_{\text{乙}}=f_0^2\frac{1+\beta}{1-\beta}$。（3）$1.111$、$1.100$、$1.106$。
+  reference: |
+    （1）$f_{\text{甲}}=\frac{f_0}{1-\beta}=f_0(1+\beta+\beta^2+\cdots)$，$f_{\text{乙}}=f_0(1+\beta)$。比值$\frac{f_{\text{甲}}}{f_{\text{乙}}}=\frac1{(1-\beta)(1+\beta)}=\frac1{1-\beta^2}\approx1+\beta^2$：一阶项相同，差别从$\beta^2$开始。所以速度很小时只凭频移分不出是谁在动，速度大了才分得出。
+
+    （2）$f_{\text{甲}}f_{\text{乙}}=f_0^2\frac{1+\beta}{1-\beta}$，开方即得。这个几何平均正是光源正对观察者飞来时的相对论多普勒因子（见[相对论多普勒效应](lesson:physics.special-relativity.relativistic-doppler#def-doppler-types)）：光没有介质，「谁在动」没有意义，结果恰好落在两者之间。
+
+    （3）$\frac1{0.90}\approx1.111$，$1.10$，$\sqrt{\frac{1.10}{0.90}}\approx1.106$。三者只在第三位有效数字上不同。
+
+- id: p7
+  tier: thinking
+  statement: |
+    交通测速仪向驶来的汽车发出波，由反射波的频移算出车速；医院里的超声仪也用多普勒效应测血流的速度。
+
+    （1）由带角度的公式说明，频移反映的是速度的哪一部分。
+
+    （2）测速仪如果从路边斜着对准汽车，测出的车速偏大还是偏小？
+
+    （3）汽车横着从测速仪正前方经过时，能测出车速吗？
+  hints:
+    - |
+      公式里速度总是和$\cos\theta$一起出现。
+    - |
+      $u\cos\theta$比$u$小。
+    - |
+      $\theta=90^\circ$时一阶的频移是零。
+  reference: |
+    （1）$\frac{f_0}{1-(u/v)\cos\theta}$和$f_0\bigl(1+\frac uv\cos\theta'\bigr)$里，速度都以$u\cos\theta$的形式出现，即沿连线（视线）方向的分量；垂直于视线的分量不改变波源和观察者之间的距离，不产生一阶的频移。
+
+    （2）偏小。仪器按正对着算，得到的其实是$u\cos\theta$，所以测速仪要尽量顺着车道方向对准汽车，斜得不多时误差很小，例如$10^\circ$时只差$1.5\%$。
+
+    （3）测不出：正横着经过时$\cos\theta=0$，没有一阶的频移。超声测血流时探头也要斜着贴在皮肤上，让声束和血管成一个已知的、不是直角的角度。
+
+- id: p8
+  tier: thinking
+  statement: |
+    刮着稳定的风，空气以$w$相对地面流动。波源和观察者都静止在地面上。
+
+    （1）观察者接收到的频率变不变？
+
+    （2）顺风和逆风两个方向上，波长一样吗？
+
+    （3）由此说说，多普勒效应真正取决于什么。
+  hints:
+    - |
+      两者之间的距离变不变？路上的波峰个数变不变？
+    - |
+      在跟着空气走的参考系里，波源和观察者以同样的速度运动；波相对地面的速度顺风是$v+w$，逆风是$v-w$。
+    - |
+      频率由每秒到达的波峰数决定，波长由波峰的间距决定。
+  reference: |
+    （1）不变。波源每秒发出$f_0$个波峰，两者距离不变，路上的波峰数不变，观察者每秒收到的也是$f_0$个。用公式在空气的参考系里算也一样：两者都以$w$运动，波源「追」或「离开」观察者带来的因子和观察者「迎着」或「背着」波带来的因子正好抵消。
+
+    （2）不一样。顺风时波相对地面以$v+w$传播，波长$\frac{v+w}{f_0}$；逆风时是$\frac{v-w}{f_0}$。只是频率不变。
+
+    （3）接收频率变不变，取决于波源和观察者之间的距离变不变；具体变多少，还要看两者各自相对介质的速度。只有介质动、两者都不动，距离不变，就没有频移。

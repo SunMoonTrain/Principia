@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 250" width="620" height="250" font-size="14">
+  <!-- 左图：平面波的波阵面是一族平行的直线（平面的截面），相邻两条相距一个波长，波矢 k 垂直于它们、指向传播方向。右图：点源的球面波，波阵面是一族同心圆（球面的截面），相邻两个也相距一个波长；右边虚线框里的一小段，两条圆弧几乎是平行的直线。 -->
+  <line x1="62.0" y1="79.6" x2="134.0" y2="204.4" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <line x1="88.0" y1="64.6" x2="160.0" y2="189.4" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <line x1="114.0" y1="49.6" x2="186.0" y2="174.4" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <line x1="140.0" y1="34.6" x2="212.0" y2="159.4" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <line x1="166.0" y1="19.6" x2="238.0" y2="144.4" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <line x1="79.0" y1="153.0" x2="232.3" y2="64.5" style="stroke: var(--good, #059669)" stroke-width="1.8" />
+  <path d="M 238.3 61.0 L 233.3 68.2 L 229.6 61.8 Z" style="fill: var(--good, #059669)" />
+  <text x="244.3" y="57.0" style="fill: var(--good, #059669)"><tspan font-weight="bold" font-style="italic">k</tspan></text>
+  <text x="150.0" y="238.0" fill="currentColor" text-anchor="middle">平面波</text>
+  <circle cx="440.0" cy="112.0" r="20.0" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="1.6" />
+  <circle cx="440.0" cy="112.0" r="40.0" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="1.6" />
+  <circle cx="440.0" cy="112.0" r="60.0" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="1.6" />
+  <circle cx="440.0" cy="112.0" r="80.0" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="1.6" />
+  <circle cx="440.0" cy="112.0" r="100.0" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="1.6" />
+  <circle cx="440.0" cy="112.0" r="3.2" style="fill: currentColor" />
+  <path d="M 508.0 96.0 L 552.0 96.0 L 552.0 128.0 L 508.0 128.0 Z" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.2" stroke-dasharray="4 3" stroke-linejoin="round" />
+  <text x="440.0" y="238.0" fill="currentColor" text-anchor="middle">球面波</text>
+</svg>

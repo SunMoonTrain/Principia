@@ -76,7 +76,7 @@
     - |
       $\dot V=-2x^2+2(1+\rho)xy-2y^2-2\beta z^2$，对$x$、$y$配方。
     - |
-      $\dot V=\frac{2x}{\sigma}\sigma(y-x)+2y\bigl(x(\rho-z)-y\bigr)+2z(xy-\beta z)=-2x^2+2(1+\rho)xy-2y^2-2\beta z^2$。配方：$\dot V=-2\Bigl[\bigl(x-\frac{1+\rho}{2}y\bigr)^2+\Bigl(1-\bigl(\frac{1+\rho}{2}\bigr)^2\Bigr)y^2\Bigr]-2\beta z^2$。
+      $\dot V=\frac{2x}{\sigma}\sigma(y-x)+2y\bigl(x(\rho-z)-y\bigr)+2z(xy-\beta z)$，$xyz$项抵消，得$\dot V=-2x^2+2(1+\rho)xy-2y^2-2\beta z^2$。配方：$\dot V=-2\Bigl[\bigl(x-\frac{1+\rho}{2}y\bigr)^2+\Bigl(1-\bigl(\frac{1+\rho}{2}\bigr)^2\Bigr)y^2\Bigr]-2\beta z^2$。
 
       $0<\rho<1$时$\frac{1+\rho}{2}<1$，方括号里两项都非负，并且只有$x=y=0$时都为零；再加上$-2\beta z^2$，$\dot V$只在原点为零，别处小于零。$V$在原点为零、别处为正，沿解严格减小，并且$|\vb x|\to\infty$时$V\to\infty$，所以原点渐近稳定，所有的解都趋于原点：$\rho<1$时没有任何复杂的运动。
   reference: |

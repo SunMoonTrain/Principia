@@ -13,7 +13,7 @@ status: reviewed
 
 ## 这一节要回答的问题
 
-两端固定的弦（string）振动时，最低的频率，即基频（fundamental frequency），由这样一个问题决定：求最小的$\lambda$，使$-y''=\lambda y$有两端为零、不恒为零的解（见[驻波](lesson:physics.oscillations-waves.standing-waves)）。弦的粗细不均匀时，方程的系数随$x$变化，一般解不出来。能不能不解方程，直接估计这个最小的$\lambda$？
+两端固定的弦（string）振动时，最低的频率，即:term[基频]{id="physics.oscillations-waves.fundamental-frequency"}（fundamental frequency），由这样一个问题决定：求最小的$\lambda$，使$-y''=\lambda y$有两端为零、不恒为零的解（见[驻波](lesson:physics.oscillations-waves.standing-waves)）。弦的粗细不均匀时，方程的系数随$x$变化，一般解不出来。能不能不解方程，直接估计这个最小的$\lambda$？
 
 ## 讲解
 
@@ -117,7 +117,7 @@ sliders:
 
 **为什么想到这么做**：这时$p=1$、$q=0$、$w=1+x$，:term[瑞利商]{id="math.calculus-of-variations.rayleigh-quotient"}是$R[y]=\frac{\int_0^1y'^2\,\dd x}{\int_0^1(1+x)y^2\,\dd x}$，方程的解不是初等函数。上界用:term[试探函数]{id="math.calculus-of-variations.trial-function"}；下界用$1\le1+x\le2$，和密度为常数的情形比较。
 
-**推导**：试探函数取$\sin\pi x$，分子是$\frac{\pi^2}{2}$。分母里$\int_0^1x\sin^2\pi x\,\dd x=\frac14$（把$x$换成$1-x$，可知它等于$\int_0^1(1-x)\sin^2\pi x\,\dd x$，两者之和是$\frac12$），所以分母是$\frac34$，$\lambda_1\le\frac{2\pi^2}{3}\approx6.580$。另一方面，分母不超过$2\int_0^1y^2\,\dd x$，由定理，$R[y]\ge\frac12\cdot\pi^2\approx4.935$。数值解方程得$\lambda_1\approx6.548$，上界只大了约$0.5\%$；上界已经小于$\pi^2$，弦变重了，基频变低。
+**推导**：试探函数取$\sin\pi x$，分子是$\frac{\pi^2}{2}$。分母里$\int_0^1x\sin^2\pi x\,\dd x=\frac14$（把$x$换成$1-x$，可知它等于$\int_0^1(1-x)\sin^2\pi x\,\dd x$，两者之和是$\frac12$），所以分母是$\frac34$，$\lambda_1\le\frac{2\pi^2}{3}\approx6.580$。另一方面，分母不超过$2\int_0^1y^2\,\dd x$，由定理，$R[y]\ge\frac12\cdot\pi^2\approx4.935$。数值解方程得$\lambda_1\approx6.548$，上界只大了约$0.5\%$；上界已经小于$\pi^2$，弦变重了，:term[基频]{id="physics.oscillations-waves.fundamental-frequency"}变低。
 
 ## 常见误区
 

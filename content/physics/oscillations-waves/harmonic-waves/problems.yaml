@@ -1,0 +1,172 @@
+- id: p1
+  tier: easy
+  statement: |
+    音叉发出频率为$440\,\mathrm{Hz}$的声波，声音在空气里的波速是$343\,\mathrm{m/s}$。求它的波长，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 343/440
+    unit: |
+      $\mathrm m$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      波速、波长和频率之间是什么关系？
+    - |
+      $\lambda f=v$，所以$\lambda=\frac vf$。
+    - |
+      $\lambda=\frac{343}{440}\,\mathrm m\approx0.780\,\mathrm m$。
+  solution: |
+    由$\lambda f=v$，$\lambda=\frac{343}{440}\,\mathrm m\approx0.780\,\mathrm m$。每过$\frac1{440}\,\mathrm s$，波形前进这样一段距离。
+
+- id: p2
+  tier: easy
+  statement: |
+    关于简谐波$y=A\cos(\omega t-kx+\varphi)$（$A$、$\omega$、$k$都是正的），下面哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        同一时刻，相距一个波长的两点位移相同
+      - |
+        波数$k$等于每米里波长的个数
+      - |
+        同一时刻，相距半个波长的两点位移大小相等、方向相反
+      - |
+        $y=A\cos(kx-\omega t)$表示沿$x$轴负方向传播的波
+      - |
+        弦上各点横向运动的最大速率等于波速
+    value: [1, 3]
+  hints:
+    - |
+      相距$\Delta x$的两点相位差是$k\Delta x$；一个波长对应的相位差是多少？
+    - |
+      $\cos$是偶函数；横向速度是$y_t$，波速是$\frac\omega k$。
+    - |
+      A：相位差$2\pi$，位移相同；B：每米里的波长个数是$\frac1\lambda=\frac k{2\pi}$；C：相位差$\pi$，$\cos(\theta-\pi)=-\cos\theta$。D：$\cos(kx-\omega t)=\cos(\omega t-kx)$，向右传播；E：最大横向速率是$A\omega$，波速是$\frac\omega k$，一般不相等。
+  solution: |
+    选 A、C。A、C 分别对应相位差$2\pi$和$\pi$。B 错，$k=\frac{2\pi}\lambda$是每米里相位变化的弧度数；D 错，$\cos(kx-\omega t)$和$\cos(\omega t-kx)$相等，都向右传播；E 错，最大横向速率$A\omega$和波速$\frac\omega k$之比是$kA$，斜率很小时远小于$1$。
+
+- id: p3
+  tier: medium
+  statement: |
+    沿弦传播的简谐波频率是$25\,\mathrm{Hz}$，波速是$30\,\mathrm{m/s}$。弦上沿传播方向相距$0.40\,\mathrm m$的两点，振动的相位差是多少？以弧度为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 2*pi*25*0.4/30
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      相距$\Delta x$的两点相位差是$k\Delta x$，先求波数。
+    - |
+      $k=\frac\omega v=\frac{2\pi f}v$。
+    - |
+      $k=\frac{2\pi\times25}{30}\,\mathrm{rad/m}\approx5.24\,\mathrm{rad/m}$，相位差$k\Delta x\approx5.24\times0.40\approx2.09$，即$\frac{2\pi}3$。
+  solution: |
+    $k=\frac{2\pi f}v=\frac{5\pi}3\,\mathrm{rad/m}$，相位差$k\Delta x=\frac{5\pi}3\times0.40=\frac{2\pi}3\approx2.09$。也可以先求波长$\lambda=\frac vf=1.2\,\mathrm m$，两点相距三分之一个波长，相位差是$2\pi$的三分之一。
+
+- id: p4
+  tier: medium
+  statement: |
+    沿$x$轴正方向传播的简谐波$y=A\cos(\omega t-kx+\varphi)$，$t=0$时$x=0$处的点的位移是$\frac A2$，正在向下运动。求初相$\varphi$，取$(-\pi,\pi]$里的值，以弧度为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: pi/3
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $x=0$处的点在做$y=A\cos(\omega t+\varphi)$的简谐运动，由位移和速度的正负定$\varphi$。
+    - |
+      $A\cos\varphi=\frac A2$，所以$\varphi=\pm\frac\pi3$；速度$y_t=-A\omega\sin(\omega t+\varphi)$在$t=0$时为负。
+    - |
+      $-A\omega\sin\varphi<0$，即$\sin\varphi>0$，取$\varphi=\frac\pi3\approx1.05$。
+  solution: |
+    $x=0$处$y=A\cos(\omega t+\varphi)$。$t=0$时$A\cos\varphi=\frac A2$，$\varphi=\pm\frac\pi3$；向下运动要求$y_t=-A\omega\sin\varphi<0$，即$\sin\varphi>0$，所以$\varphi=\frac\pi3\approx1.05$。$\varphi=-\frac\pi3$对应的是同一位置、向上运动。
+
+- id: p5
+  tier: hard
+  statement: |
+    弦上传播着行波$y=f(x-vt)$，$f$二阶可导、不恒为零。已知弦上每一点都以同一个角频率$\omega$做简谐运动。证明$f(u)=A\cos(ku+c)$（$A$、$c$是常数），其中$k=\frac\omega v$，也就是说这列波是简谐波。
+  hints:
+    - |
+      固定$x$，$y(t)=f(x-vt)$满足简谐运动的方程$\ddot y=-\omega^2y$。
+    - |
+      $\ddot y=v^2f''(x-vt)$，所以对所有$u$有$f''(u)=-k^2f(u)$。
+    - |
+      $f''=-k^2f$和简谐运动的方程形式相同，只是自变量换成了$u$，由简谐运动那一节的定理，$f(u)=A\cos(ku+c)$。代回去，$y=A\cos\bigl(k(x-vt)+c\bigr)=A\cos(\omega t-kx-c)$，取$A>0$即是简谐波。
+  reference: |
+    固定$x$，这一点的位移$y(t)=f(x-vt)$做角频率为$\omega$的简谐运动，满足$\ddot y=-\omega^2y$。由链式法则，$\ddot y=v^2f''(x-vt)$，所以$v^2f''(x-vt)=-\omega^2f(x-vt)$。$x$、$t$任取时$u=x-vt$取遍全体实数，于是对所有$u$有$f''(u)=-k^2f(u)$，$k=\frac\omega v$。
+
+    这正是简谐运动的方程，只是自变量是$u$。由[简谐运动](lesson:physics.oscillations-waves.simple-harmonic-motion#thm-shm-solution)，它的解要么恒为零，要么是$A\cos(ku+c)$（$A>0$）。$f$不恒为零，所以$y=A\cos\bigl(k(x-vt)+c\bigr)=A\cos(\omega t-kx-c)$，是波数为$k$、初相为$-c$的简谐波，而且$\omega=vk$，和讲解的定理一致。
+
+- id: p6
+  tier: hard
+  statement: |
+    弦上传播着一列简谐波，$x_1=0$、$x_2=0.30\,\mathrm m$两点的振动分别是$y_1=A\cos\omega t$、$y_2=A\cos\bigl(\omega t-\frac\pi2\bigr)$，$\omega=20\pi\,\mathrm{rad/s}$。
+
+    （1）若波沿$x$轴正方向传播，求波长所有可能的值。
+
+    （2）若还知道波长大于$0.30\,\mathrm m$，求波速。
+
+    （3）若不知道传播方向，只知道波长大于$0.30\,\mathrm m$，波速可能是多少？
+  hints:
+    - |
+      向右传播时，$x_2$处的相位比$x_1$处落后$k\Delta x$；相位只能确定到相差$2\pi$的整数倍。
+    - |
+      向右：$0.30k=\frac\pi2+2n\pi$；向左：$x_2$处的相位超前$0.30k$，要$0.30k=-\frac\pi2+2n\pi$。
+    - |
+      （1）$\lambda=\frac{2\pi}k=\frac{1.2}{1+4n}\,\mathrm m$，$n=0,1,2,\dots$。（2）只有$n=0$，$\lambda=1.2\,\mathrm m$，$v=\lambda f=12\,\mathrm{m/s}$。（3）向左时$0.30k=\frac{3\pi}2,\frac{7\pi}2,\dots$，波长大于$0.30\,\mathrm m$的只有$0.40\,\mathrm m$，$v=4.0\,\mathrm{m/s}$；所以是$12\,\mathrm{m/s}$或$4.0\,\mathrm{m/s}$。
+  reference: |
+    频率$f=\frac\omega{2\pi}=10\,\mathrm{Hz}$。
+
+    （1）向右传播时$y_2=A\cos(\omega t-0.30k)$，它要等于$A\cos\bigl(\omega t-\frac\pi2\bigr)$，所以$0.30k=\frac\pi2+2n\pi$，$n=0,1,2,\dots$（$k>0$）。$\lambda=\frac{2\pi}k=\frac{2\pi\times0.30}{\frac\pi2+2n\pi}\,\mathrm m=\frac{1.2}{1+4n}\,\mathrm m$，即$1.2\,\mathrm m$、$0.24\,\mathrm m$、$0.133\,\mathrm m$……
+
+    （2）$\frac{1.2}{1+4n}>0.30$只有$n=0$，$\lambda=1.2\,\mathrm m$，$v=\lambda f=12\,\mathrm{m/s}$。
+
+    （3）向左传播时$y_2=A\cos(\omega t+0.30k)$，要$0.30k=-\frac\pi2+2n\pi$，$n=1,2,\dots$，$\lambda=\frac{1.2}{4n-1}\,\mathrm m$，即$0.40\,\mathrm m$、$0.171\,\mathrm m$……，大于$0.30\,\mathrm m$的只有$0.40\,\mathrm m$，$v=4.0\,\mathrm{m/s}$。所以波速是$12\,\mathrm{m/s}$（向右）或$4.0\,\mathrm{m/s}$（向左）。只看两个点的振动，波长有无穷多种可能，要靠别的条件挑出来。
+
+- id: p7
+  tier: thinking
+  statement: |
+    同一个音叉先在空气里、再在水里发声（声音在空气里约$343\,\mathrm{m/s}$，在水里约$1480\,\mathrm{m/s}$）。
+
+    （1）频率、波速、波长三个量，哪些变了、哪些没变？
+
+    （2）为什么说频率由波源决定、波速由介质决定？
+
+    （3）声音从空气传进水里时，在水面两侧频率为什么必须相同？
+  hints:
+    - |
+      介质里每一点都是被旁边的点带着动的，它振动的快慢从哪里来？
+    - |
+      波速由介质的性质决定（弦上是张力和线密度）；$\lambda=\frac vf$。
+    - |
+      水面上的点同时属于两侧，它只能有一种振动。
+  reference: |
+    （1）频率不变，仍是音叉的频率；波速变成水里的约$1480\,\mathrm{m/s}$；波长$\lambda=\frac vf$变为原来的约$4.3$倍。
+
+    （2）介质里每一点都被相邻的点带着振动，一点接一点，最终都是被波源带动的，所以振动的快慢和波源一样。波形向前传播的快慢，取决于介质被扰动后多快把扰动传给下一部分，弦上就是$v=\sqrt{T/\mu}$，和波源怎样振动无关。
+
+    （3）水面上的点同时属于空气一侧和水一侧，它的位移只有一个，两侧在那里的振动必须步调相同，频率当然相同；变的是波长。这一点在[波的反射与透射](lesson:physics.oscillations-waves.reflection-transmission)里会用到：波从一根弦传到另一根弦上，频率不变，波长跟着波速变。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）为什么空气里的声波只有纵波，没有横波？
+
+    （2）一根绷紧的长弹簧既能传横波也能传纵波，两种波的波速一般相同吗？
+
+    （3）地震波有横波也有纵波。地球深处有一层，纵波能穿过，横波穿不过去。由此能推断那一层是什么状态？
+  hints:
+    - |
+      横波要求介质在被横向错开时有力把它拉回来；纵波要求被压缩、拉伸时有力拉回来。
+    - |
+      两种波靠的回复力不同，波速由各自的回复力和惯性决定。
+    - |
+      液体和气体一样，被错开时没有拉回来的力。
+  reference: |
+    （1）空气被压缩、拉伸时压强会变，有力把它推回去，所以能传纵波；一层空气相对另一层横着错开时，没有力把它拉回原位，所以传不了横波。
+
+    （2）一般不同。纵波靠弹簧被压缩、拉伸时的弹力，横波靠弹簧的张力在横向的分力，两者的「劲度」不同，波速也不同，只有特殊的情形才相等。
+
+    （3）那一层被错开时没有回复力，是液态的。地震波的这种观测，正是人们认识到地球外核是液态的主要证据；固体既能传纵波也能传横波，而且纵波更快，所以地震时先感到上下颠簸，后感到左右摇晃。

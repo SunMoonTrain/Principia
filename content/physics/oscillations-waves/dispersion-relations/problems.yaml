@@ -1,0 +1,180 @@
+- id: p1
+  tier: easy
+  statement: |
+    一维链上的小球质量$2.0\,\mathrm g$，间距$1.0\,\mathrm{cm}$，绳的张力$100\,\mathrm N$。这条链上能传的简谐波，频率最高是多少？以赫兹为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 2*sqrt(100/(0.002*0.01))/(2*pi)
+    unit: |
+      $\mathrm{Hz}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      由色散关系，$\omega$最大是多少？
+    - |
+      $\omega_{\max}=2\sqrt{\frac T{ma}}$，频率$f=\frac\omega{2\pi}$。
+    - |
+      $\sqrt{\frac{100}{2.0\times10^{-3}\times1.0\times10^{-2}}}\approx2236\,\mathrm{rad/s}$，$\omega_{\max}\approx4472\,\mathrm{rad/s}$，$f_{\max}\approx712\,\mathrm{Hz}$。
+  solution: |
+    $\omega_{\max}=2\sqrt{\frac T{ma}}=2\sqrt{\frac{100}{2.0\times10^{-5}}}\,\mathrm{rad/s}\approx4472\,\mathrm{rad/s}$，$f_{\max}=\frac{\omega_{\max}}{2\pi}\approx712\,\mathrm{Hz}$。这时相邻小球反向振动，频率再高就传不出去。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些色散关系描述的是没有色散的波？（$v$、$c$、$g$、$\omega_{\mathrm c}$、$T$、$m$、$a$都是正的常数，$n$是不随频率变化的常数。）
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        深水里的水波：$\omega=\sqrt{gk}$
+      - |
+        弦：$\omega=vk$
+      - |
+        弹性基底上的弦：$\omega^2=v^2k^2+\omega_{\mathrm c}^2$
+      - |
+        一维链：$\omega=2\sqrt{\frac T{ma}}\,\bigl\lvert\sin\frac{ka}2\bigr\rvert$
+      - |
+        折射率为常数$n$的介质里的光：$\omega=\frac{ck}n$
+    value: [2, 5]
+  hints:
+    - |
+      没有色散，就是相速度$\frac\omega k$不随$k$变化。
+    - |
+      逐个算$\frac\omega k$。
+    - |
+      A：$\sqrt{g/k}$，随$k$变；B：$v$；C：$\sqrt{v^2+\omega_{\mathrm c}^2/k^2}$，随$k$变。D：$v\frac{\lvert\sin(ka/2)\rvert}{ka/2}$，随$k$变；E：$\frac cn$，不变。
+  solution: |
+    选 B、E。没有色散就是$\omega$和$k$成正比，相速度是常数：B 的相速度是$v$，E 的是$\frac cn$。A 的相速度$\sqrt{g/k}$，长的水波跑得快；C 的相速度随$k$变小而变大；D 只在$ka\ll1$时近似不变。
+
+- id: p3
+  tier: medium
+  statement: |
+    一维链上波长为$10a$的简谐波，相速度比长波极限$v$小百分之几？结果保留三位有效数字。
+  answer:
+    type: number
+    value: (1 - sin(pi/10)/(pi/10))*100
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $\frac{v_{\mathrm p}}v=\frac{\sin(ka/2)}{ka/2}$。
+    - |
+      $k=\frac{2\pi}{10a}$，$\frac{ka}2=\frac\pi{10}$。
+    - |
+      $\frac{\sin(\pi/10)}{\pi/10}\approx\frac{0.30902}{0.31416}\approx0.98363$，小约$1.64\%$。
+  solution: |
+    $\frac{ka}2=\frac\pi{10}$，$\frac{v_{\mathrm p}}v=\frac{\sin(\pi/10)}{\pi/10}\approx0.9836$，比$v$小约$1.64\%$。一个波长里有十个小球时，链已经很像弦了。
+
+- id: p4
+  tier: medium
+  statement: |
+    弹性基底上的弦，$\mu=0.010\,\mathrm{kg/m}$，$T=4.0\,\mathrm N$，基底每单位长度的回复力是$-\kappa y$，$\kappa=40\,\mathrm{N/m^2}$。角频率是能传的最低角频率$\omega_{\mathrm c}$的 2 倍时，波长是多少？以米为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 2*pi/(sqrt(3)*sqrt(40/0.01)/sqrt(4/0.01))
+    unit: |
+      $\mathrm m$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      色散关系是$\omega^2=v^2k^2+\omega_{\mathrm c}^2$，$v=\sqrt{\frac T\mu}$，$\omega_{\mathrm c}=\sqrt{\frac\kappa\mu}$。
+    - |
+      $\omega=2\omega_{\mathrm c}$时$v^2k^2=3\omega_{\mathrm c}^2$，$k=\frac{\sqrt3\,\omega_{\mathrm c}}v$。
+    - |
+      $v=20\,\mathrm{m/s}$，$\omega_{\mathrm c}\approx63.2\,\mathrm{rad/s}$，$k\approx5.48\,\mathrm{rad/m}$，$\lambda=\frac{2\pi}k\approx1.15\,\mathrm m$。
+  solution: |
+    $v=\sqrt{\frac{4.0}{0.010}}=20\,\mathrm{m/s}$，$\omega_{\mathrm c}=\sqrt{\frac{40}{0.010}}\approx63.2\,\mathrm{rad/s}$。$\omega=2\omega_{\mathrm c}$时$k=\frac{\sqrt{\omega^2-\omega_{\mathrm c}^2}}v=\frac{\sqrt3\,\omega_{\mathrm c}}v\approx5.48\,\mathrm{rad/m}$，$\lambda=\frac{2\pi}k\approx1.15\,\mathrm m$。同样的角频率在没有基底的弦上，波长是$\frac{2\pi v}{2\omega_{\mathrm c}}\approx0.99\,\mathrm m$。
+
+- id: p5
+  tier: hard
+  statement: |
+    用角频率$\omega$大于$\omega_{\max}=2\sqrt{\frac T{ma}}$的振动去推一维链。
+
+    （1）设$y_j=B(-1)^je^{-\kappa j}\cos\omega t$（$\kappa>0$），证明它满足链的运动方程，当且仅当$\Bigl(\frac{e^{\kappa/2}+e^{-\kappa/2}}2\Bigr)^2=\frac{\omega^2}{\omega_{\max}^2}$。
+
+    （2）说明这个运动：扰动能不能沿链传出去？
+
+    （3）$\omega=2\omega_{\max}$时，每往前一个小球，振幅变为原来的几分之一？
+  hints:
+    - |
+      代入$m\ddot y_j=\frac Ta(y_{j+1}-2y_j+y_{j-1})$，算$y_{j+1}+y_{j-1}$。
+    - |
+      $y_{j+1}+y_{j-1}=-(e^{-\kappa}+e^{\kappa})y_j$，所以$-m\omega^2=-\frac Ta(2+e^\kappa+e^{-\kappa})$。
+    - |
+      （1）$2+e^\kappa+e^{-\kappa}=(e^{\kappa/2}+e^{-\kappa/2})^2$，整理得所证。（2）所有小球同步振动、相邻反向，振幅按$e^{-\kappa j}$衰减，没有波传出去。（3）$\frac{e^{\kappa/2}+e^{-\kappa/2}}2=2$，$e^{\kappa/2}=2+\sqrt3$，$e^{\kappa}=7+4\sqrt3\approx13.9$，每个小球振幅约为前一个的$\frac1{13.9}$。
+  reference: |
+    （1）$y_{j\pm1}=B(-1)^{j\pm1}e^{-\kappa(j\pm1)}\cos\omega t=-e^{\mp\kappa}y_j$，所以$y_{j+1}-2y_j+y_{j-1}=-(2+e^\kappa+e^{-\kappa})y_j=-(e^{\kappa/2}+e^{-\kappa/2})^2y_j$。$\ddot y_j=-\omega^2y_j$，方程成为$m\omega^2=\frac Ta(e^{\kappa/2}+e^{-\kappa/2})^2$，即$\Bigl(\frac{e^{\kappa/2}+e^{-\kappa/2}}2\Bigr)^2=\frac{ma\omega^2}{4T}=\frac{\omega^2}{\omega_{\max}^2}$。左边在$\kappa>0$时大于$1$，所以只有$\omega>\omega_{\max}$时有这样的解。
+
+    （2）各个小球的相位都相同（或差$\pi$），没有沿链前进的相位，振幅一个比一个小，扰动只在被推的那一端附近，能量传不出去。这和[色散关系](lesson:physics.oscillations-waves.dispersion-relations#thm-chain-dispersion)说的「频率高于$\omega_{\max}$传不出去」一致。
+
+    （3）$\frac{e^{\kappa/2}+e^{-\kappa/2}}2=2$，令$s=e^{\kappa/2}$，$s+\frac1s=4$，$s=2+\sqrt3$，$e^\kappa=s^2=7+4\sqrt3\approx13.9$：每往前一个小球，振幅变为约$\frac1{13.9}$，两三个小球以后就几乎不动了。
+
+- id: p6
+  tier: hard
+  statement: |
+    钢琴的弦有一定的硬度，弯曲时自己也要反抗，横向小振动的方程近似是$\mu y_{tt}=Ty_{xx}-By_{xxxx}$，$B>0$是常数。
+
+    （1）求色散关系。
+
+    （2）求相速度，说明它随波长怎样变，这种弦有没有色散。
+
+    （3）$B$很小时，波长多短才需要考虑硬度的影响？用$\mu$、$T$、$B$写出一个长度标准。
+  hints:
+    - |
+      代入$e^{i(\omega t-kx)}$，对$x$求四次导数就是乘$(-ik)^4=k^4$。
+    - |
+      $-\mu\omega^2=-Tk^2-Bk^4$。
+    - |
+      （1）$\omega^2=v^2k^2+\frac B\mu k^4$。（2）$v_{\mathrm p}=v\sqrt{1+\frac B{T}k^2}$，波长越短越快，有色散。（3）$\frac BTk^2$不小时才要考虑，即波长和$2\pi\sqrt{B/T}$差不多或更短。
+  reference: |
+    （1）代入$y=\Re\bigl(\tilde Ae^{i(\omega t-kx)}\bigr)$，$y_{tt}\to-\omega^2$，$y_{xx}\to-k^2$，$y_{xxxx}\to k^4$：$-\mu\omega^2=-Tk^2-Bk^4$，$\omega^2=v^2k^2+\frac B\mu k^4$，$v=\sqrt{T/\mu}$。
+
+    （2）$v_{\mathrm p}=\frac\omega k=v\sqrt{1+\frac BTk^2}$，$k$越大越快：短波跑得比长波快，有色散。
+
+    （3）$\frac BTk^2\ll1$时$v_{\mathrm p}\approx v$，硬度可以不计；长度标准是$\ell_B=\sqrt{B/T}$，波长和$2\pi\ell_B$相当或更短时，相速度明显大于$v$。钢琴的低音弦又粗又硬，高次的振动方式（波长短）频率比整数倍略高，这是钢琴音色的特点之一。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）在远处听一支乐队演奏，高音和低音同时到达，旋律不走样。这说明空气里的声波色散强不强？
+
+    （2）往平静的深水里扔一块石头，向外扩散的一圈圈水波里，长的波在外面还是短的波在外面？为什么？
+
+    （3）为什么说「色散」这个名字来自光？
+  hints:
+    - |
+      如果高音、低音跑得不一样快，远处听到的会是什么样？
+    - |
+      深水波$\omega=\sqrt{gk}$，相速度$\sqrt{g/k}$。
+    - |
+      棱镜把白光分开，靠的是什么？
+  reference: |
+    （1）几乎没有色散。如果不同频率的声音速度不同，走了几百米以后，同时奏出的高音、低音会一前一后到达，和弦就散开了；实际听不出这种差别，可见空气里声速几乎和频率无关。
+
+    （2）长的波在外面。深水波的相速度$\sqrt{g/k}=\sqrt{\frac{g\lambda}{2\pi}}$，波长越长跑得越快，跑在前面；石头激起的扰动里各种波长都有，传开以后按波长排开。（一圈波整体向外扩的速度和波峰的速度并不相同，见[波包与群速度](lesson:physics.oscillations-waves.group-velocity)，但排列的先后照样是长的在外。）
+
+    （3）白光是各种颜色的光混在一起，玻璃里不同颜色的光相速度不同，折射时偏折的角度不同，于是分成一条彩带，「色」被「散」开了。后来凡是相速度随频率变化的波，都借用这个名字。
+
+- id: p8
+  tier: thinking
+  statement: |
+    一维链上，波数$k$和$k+\frac{2\pi}a$描述的是同一种运动。
+
+    （1）用$e^{-ikja}$说明为什么。
+
+    （2）电影里飞驰的马车，车轮有时看上去在慢慢倒转。这和链上的情形有什么相似？
+
+    （3）这件事说明链上的「波长」最短能说到多少？
+  hints:
+    - |
+      小球只在$x=ja$处有，$e^{-i(k+2\pi/a)ja}$和$e^{-ikja}$差一个什么因子？
+    - |
+      电影每秒只拍二十几张，只在一个个时刻「取样」；链只在一个个位置上有小球。
+    - |
+      $\lvert k\rvert\le\frac\pi a$就够了。
+  reference: |
+    （1）$e^{-i(k+2\pi/a)ja}=e^{-ikja}e^{-i2\pi j}=e^{-ikja}$，$j$是整数。小球只在$x=ja$处，所以两个波数给出的每个小球的运动完全相同；两条波形曲线只在小球之间不同，那里根本没有东西。
+
+    （2）电影只在一个个时刻拍下画面，车轮每两张之间转过的角度，加上或减去辐条之间的夹角，画面完全一样；转得快时，看上去可能是慢慢倒转。链是在空间上「取样」，电影是在时间上「取样」，都分不清相差一个「取样间隔对应的整周」的两种运动。
+
+    （3）只看$\lvert k\rvert\le\frac\pi a$，对应的波长$\lambda=\frac{2\pi}{\lvert k\rvert}\ge2a$。最短的是$2a$：相邻小球反向，这正是频率最高的那种运动。

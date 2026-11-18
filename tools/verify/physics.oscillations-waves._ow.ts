@@ -3,9 +3,11 @@
 // 周期（向上过零的时刻）、振幅和衰减（相邻的极大值）、稳态的振幅和相位（在整数个周期上投影到 cos、sin）；
 // 简正频率和简正模用雅可比方法直接求对称矩阵的本征值，连续弦的最低频率用斯图姆序列求细分的链、再做理查森外推；
 // 单摆的精确周期用算术-几何平均，再和直接积分的周期核对。
+// 批次 23 加的：弦用一串小球近似、蛙跳法积分（量反射、透射的脉冲和能量）；数波峰求多普勒频率；斯图姆序列求驻波第 k 个模
+// （右端可自由）；对称势能里的周期用换元后的高斯积分；三维波动方程的差分残差；链的色散关系和它的模拟核对。
 // agree、argmax、check、chosen、bisect、rk4、rk4Step、rk4Until、solveLinear、integrate 借用电磁学的辅助文件。
 
-import { bisect, integrate, rk4Step } from './physics.electromagnetism._es.ts';
+import { argmax, bisect, integrate, rk4Step } from './physics.electromagnetism._es.ts';
 
 export { agree, argmax, bisect, check, chosen, integrate, rk4, rk4Step, rk4Until, solveLinear } from './physics.electromagnetism._es.ts';
 
@@ -307,4 +309,235 @@ export function waveResidual(u: (x: number, t: number) => number, v: number, x: 
   const utt = (u(x, t + h) - 2 * u(x, t) + u(x, t - h)) / (h * h);
   const uxx = (u(x + h, t) - 2 * u(x, t) + u(x - h, t)) / (h * h);
   return utt - v * v * uxx;
+}
+
+// ---------- 批次 23：简谐波、色散、多普勒、非线性振动、反射透射、能量、三维、驻波 ----------
+
+/** 三维的 u_tt − v²∇²u（中心差分，步长 h），验证球面波这类函数满足三维波动方程。 */
+export function waveResidual3D(u: (x: number, y: number, z: number, t: number) => number, v: number, p: [number, number, number], t: number, h = 1e-3): number {
+  const [x, y, z] = p;
+  const c = u(x, y, z, t);
+  const utt = (u(x, y, z, t + h) - 2 * c + u(x, y, z, t - h)) / (h * h);
+  const lap = (u(x + h, y, z, t) + u(x - h, y, z, t) + u(x, y + h, z, t) + u(x, y - h, z, t) + u(x, y, z + h, t) + u(x, y, z - h, t) - 6 * c) / (h * h);
+  return utt - v * v * lap;
+}
+
+/** g 在 [t0, t0 + T] 上的时间平均（高斯-勒让德积分）。 */
+export const timeAverage = (g: (t: number) => number, T: number, t0 = 0, panels = 64): number => integrate(g, t0, t0 + T, panels) / T;
+
+/** 弦的阻抗 Z = √(Tμ)（等于 T/v，也等于 μv）。 */
+export const impedance = (T: number, mu: number): number => Math.sqrt(T * mu);
+
+/** 一维链（质量 m、间距 a、张力 T）的色散关系 ω(k) = 2√(T/(ma))·|sin(ka/2)|。 */
+export const chainDispersion = (k: number, T: number, m: number, a: number): number => 2 * Math.sqrt(T / (m * a)) * Math.abs(Math.sin((k * a) / 2));
+
+/**
+ * 色散关系的第二套算法：N 个小球连成一圈（周期边界），以波数 k = 2πp/(Na) 的余弦形状由静止放开，
+ * RK4 积分、量第 0 个小球的周期，换算成角频率。不用色散关系的式子。
+ * k0 是每个小球另连到地面的弹簧（弹性基底），连续极限下给出 ω² = v²k² + k0/m。
+ */
+export function ringModeOmega(N: number, T: number, m: number, a: number, p: number, periods = 4, k0 = 0): number {
+  const k = (2 * Math.PI * p) / (N * a);
+  const ks = T / a;
+  const rhs: Rhs = (_t, s) => {
+    const out = new Array<number>(2 * N);
+    for (let j = 0; j < N; j++) {
+      out[j] = s[N + j];
+      out[N + j] = (ks * (s[(j + 1) % N] - 2 * s[j] + s[(j + N - 1) % N]) - k0 * s[j]) / m;
+    }
+    return out;
+  };
+  const y0 = [...Array.from({ length: N }, (_, j) => Math.cos(k * j * a)), ...new Array<number>(N).fill(0)];
+  const wMax = Math.sqrt((4 * ks + k0) / m);
+  return (2 * Math.PI) / periodOf(rhs, y0, 0, (2 * Math.PI) / wMax / 400, periods);
+}
+
+/** 第一类完全椭圆积分 K(q) = ∫_0^{π/2} du/√(1 − q² sin²u)，用算术-几何平均：K = π/(2·AGM(1, √(1 − q²)))。 */
+export const ellipticK = (q: number): number => Math.PI / (2 * agm(1, Math.sqrt(1 - q * q)));
+
+/**
+ * 静止的观察者在 xo，波源沿 xs(t) 运动、一直在发声：t_e 时刻发出的声音在 t_e + |xo − xs(t_e)|/v 到达。
+ * 返回 [tLo, tHi] 里最早到达的时刻和对应的发声时刻（先粗扫，再黄金分割）。波源超音速时，这就是激波（音爆）到达的时刻。
+ */
+export function earliestArrival(v: number, xs: (t: number) => number[], xo: number[], tLo: number, tHi: number, scan = 2000): { tArrive: number; tEmit: number } {
+  const ta = (te: number) => te + Math.hypot(...xs(te).map((pi, i) => pi - xo[i])) / v;
+  let best = tLo;
+  for (let i = 0; i <= scan; i++) {
+    const te = tLo + ((tHi - tLo) * i) / scan;
+    if (ta(te) < ta(best)) best = te;
+  }
+  const h = (tHi - tLo) / scan;
+  const te = argmax((s) => -ta(s), Math.max(tLo, best - h), Math.min(tHi, best + h));
+  return { tArrive: ta(te), tEmit: te };
+}
+
+/**
+ * 一串小球近似的弦：节点 x_j = jL/n（j = 0..n），张力 T 处处相同，每个节点的质量取它那一格（端点半格）的线密度积分，
+ * 所以线密度在某个节点处跳变时，那个节点正好分到两边各半格。两端可以固定或自由（自由端只连一边）。
+ * 用速度 Verlet（蛙跳法）积分；dtMax 是半个 a/v_max，稳定、能量误差小。
+ */
+export interface StringSim {
+  x: number[];
+  y: Float64Array;
+  v: Float64Array;
+  t: number;
+  dtMax: number;
+  step(dt: number): void;
+  /** 总能量：各节点的动能加上每一段的弹性势能 ½(T/a)(Δy)²。 */
+  energy(): number;
+}
+
+export function stringSim(o: { L: number; n: number; T: number; mu: (x: number) => number; y0: (x: number) => number; v0?: (x: number) => number; left?: 'fixed' | 'free'; right?: 'fixed' | 'free' }): StringSim {
+  const { L, n, T } = o;
+  const a = L / n;
+  const ks = T / a;
+  const left = o.left ?? 'fixed';
+  const right = o.right ?? 'fixed';
+  const x = Array.from({ length: n + 1 }, (_, j) => j * a);
+  const cell = (j: number) => integrate(o.mu, j === 0 ? 0 : x[j] - a / 2, j === n ? L : x[j] + a / 2, 2, 8);
+  const m = Float64Array.from({ length: n + 1 }, (_, j) => cell(j));
+  const y = Float64Array.from(x, (xx) => o.y0(xx));
+  const v = Float64Array.from(x, (xx) => (o.v0 ? o.v0(xx) : 0));
+  const pinned = (j: number) => (j === 0 && left === 'fixed') || (j === n && right === 'fixed');
+  for (const j of [0, n]) if (pinned(j)) y[j] = v[j] = 0;
+  const acc = new Float64Array(n + 1);
+  const computeAcc = () => {
+    for (let j = 0; j <= n; j++) {
+      if (pinned(j)) {
+        acc[j] = 0;
+        continue;
+      }
+      let f = 0;
+      if (j > 0) f += ks * (y[j - 1] - y[j]);
+      if (j < n) f += ks * (y[j + 1] - y[j]);
+      acc[j] = f / m[j];
+    }
+  };
+  computeAcc();
+  const vMax = Math.max(...x.map((xx) => Math.sqrt(T / o.mu(xx))));
+  const sim: StringSim = {
+    x,
+    y,
+    v,
+    t: 0,
+    dtMax: (0.5 * a) / vMax,
+    step(dt: number) {
+      for (let j = 0; j <= n; j++) v[j] += 0.5 * dt * acc[j];
+      for (let j = 0; j <= n; j++) y[j] += dt * v[j];
+      computeAcc();
+      for (let j = 0; j <= n; j++) v[j] += 0.5 * dt * acc[j];
+      sim.t += dt;
+    },
+    energy() {
+      let e = 0;
+      for (let j = 0; j <= n; j++) e += 0.5 * m[j] * v[j] * v[j];
+      for (let j = 0; j < n; j++) e += 0.5 * ks * (y[j + 1] - y[j]) ** 2;
+      return e;
+    },
+  };
+  return sim;
+}
+
+/**
+ * 张力 T 的两根弦在 x = X 处相接（左边线密度 mu1、右边 mu2），从左边射来高 1、宽 s 的高斯脉冲（t = 0 时中心在 x0），
+ * 用 stringSim 积分到 tEnd（默认是入射脉冲中心到达连接处以后再过 5s/v1：反射、透射的脉冲都已离开连接处，又都没碰到两端）。
+ * 返回弦 1、弦 2 上位移绝对值最大处的带符号的值和位置，两边各自的能量（不含连接处那个节点的动能分界误差），以及开始时的总能量。
+ */
+export function pulseAtJunction(o: { mu1: number; mu2: number; T?: number; L?: number; X?: number; x0?: number; s?: number; n?: number; tEnd?: number }): { left: number; right: number; xLeft: number; xRight: number; eLeft: number; eRight: number; e0: number; sim: StringSim } {
+  const T = o.T ?? 1;
+  const L = o.L ?? 2;
+  const X = o.X ?? 1;
+  const x0 = o.x0 ?? 0.5;
+  const s = o.s ?? 0.04;
+  const v1 = Math.sqrt(T / o.mu1);
+  const mu = (x: number) => (x < X ? o.mu1 : o.mu2);
+  const f = (x: number) => Math.exp(-(((x - x0) / s) ** 2));
+  const sim = stringSim({ L, n: o.n ?? 8000, T, mu, y0: f, v0: (x) => ((2 * v1 * (x - x0)) / (s * s)) * f(x) });
+  const e0 = sim.energy();
+  runString(sim, o.tEnd ?? (X - x0 + 5 * s) / v1);
+  const n = sim.x.length - 1;
+  const a = L / n;
+  let left = 0;
+  let right = 0;
+  let xLeft = 0;
+  let xRight = 0;
+  for (let j = 0; j <= n; j++) {
+    const xj = sim.x[j];
+    if (xj < X - 1e-12 && Math.abs(sim.y[j]) > Math.abs(left)) [left, xLeft] = [sim.y[j], xj];
+    if (xj > X + 1e-12 && Math.abs(sim.y[j]) > Math.abs(right)) [right, xRight] = [sim.y[j], xj];
+  }
+  let eLeft = 0;
+  let eRight = 0;
+  for (let j = 0; j < n; j++) {
+    const mid = (sim.x[j] + sim.x[j + 1]) / 2;
+    const de = 0.5 * mu(mid) * a * ((sim.v[j] + sim.v[j + 1]) / 2) ** 2 + ((0.5 * T) / a) * (sim.y[j + 1] - sim.y[j]) ** 2;
+    if (mid < X) eLeft += de;
+    else eRight += de;
+  }
+  return { left, right, xLeft, xRight, eLeft, eRight, e0, sim };
+}
+
+/** 把弦的模拟推进到 tEnd（步长不超过 dtMax，最后一步正好落在 tEnd）。 */
+export function runString(sim: StringSim, tEnd: number): StringSim {
+  const steps = Math.ceil((tEnd - sim.t) / sim.dtMax);
+  const dt = (tEnd - sim.t) / steps;
+  for (let i = 0; i < steps; i++) sim.step(dt);
+  return sim;
+}
+
+/**
+ * 数波峰：介质静止、波速 v。波源在 te_i = t0 + i/f 时刻位于 xs(te_i)，发出第 i 个波峰；观察者的位置是 xo(t)。
+ * 第 i 个波峰到达观察者的时刻 t 满足 |xo(t) − xs(te_i)| = v(t − te_i)，二分求出。位置是任意维数的数组。
+ * 要求波源、观察者都比波慢（每个波峰只追上观察者一次）。
+ */
+export function crestArrivals(v: number, f: number, xs: (t: number) => number[], xo: (t: number) => number[], count: number, t0 = 0): number[] {
+  const dist = (p: number[], q: number[]) => Math.hypot(...p.map((pi, i) => pi - q[i]));
+  const out: number[] = [];
+  for (let i = 0; i < count; i++) {
+    const te = t0 + i / f;
+    const src = xs(te);
+    const g = (t: number) => dist(xo(t), src) - v * (t - te);
+    if (g(te) <= 0) {
+      out.push(te);
+      continue;
+    }
+    let hi = te + 1 / f;
+    for (let k = 0; k < 200 && g(hi) > 0; k++) hi = te + 2 * (hi - te);
+    out.push(bisect(g, te, hi));
+  }
+  return out;
+}
+
+/** 由相邻波峰的到达时刻求接收到的频率：第一个到最后一个之间的平均。 */
+export const receivedFrequency = (arrivals: number[]): number => (arrivals.length - 1) / (arrivals[arrivals.length - 1] - arrivals[0]);
+
+/**
+ * 张力 T、线密度 μ、长 L 的弦分成 n 段，左端固定、右端固定或自由，第 k 个简正角频率（k 从 1 起），斯图姆序列二分。
+ * 自由端的小球取半格的质量、只连左边一段：这样离散的模正好是长 2L、两端固定的链里关于中点对称的那些，误差仍是 1/n² 的幂级数。
+ */
+export function chainOmega(n: number, T: number, mu: number, L: number, k: number, right: 'fixed' | 'free' = 'fixed'): number {
+  const a = L / n;
+  const ks = T / a;
+  const m = mu * a;
+  const N = right === 'fixed' ? n - 1 : n;
+  const d = Array.from({ length: N }, () => (2 * ks) / m);
+  const e = Array.from({ length: N - 1 }, () => -ks / m);
+  if (right === 'free') e[N - 2] = (-Math.SQRT2 * ks) / m; // 末端质量 m/2、只连一根：K/M 的对角仍是 2ks/m，次对角是 −ks/√(m·m/2)
+  return Math.sqrt(bisect((x) => sturmCount(d, e, x) - (k - 0.5), 0, (5 * ks) / m));
+}
+
+/** 连续弦的第 k 个简正角频率（左端固定，右端固定或自由）：n = 100、200、400 段的链做两次理查森外推。 */
+export function stringOmega(T: number, mu: number, L: number, k: number, right: 'fixed' | 'free' = 'fixed'): number {
+  const w = [100, 200, 400].map((n) => chainOmega(n, T, mu, L, k, right));
+  const r = [(4 * w[1] - w[0]) / 3, (4 * w[2] - w[1]) / 3];
+  return (16 * r[1] - r[0]) / 15;
+}
+
+/**
+ * 对称势能 U（U(−x) = U(x)，x = 0 处极小）里振幅为 A 的周期 T = 4∫_0^A dx/√(2(U(A) − U(x))/m)。
+ * 换元 x = A sin u 去掉端点的奇异性，再做高斯-勒让德积分；不用椭圆积分、不用级数。
+ */
+export function periodFromPotential(U: (x: number) => number, A: number, m = 1, panels = 64): number {
+  const UA = U(A);
+  return 4 * integrate((u) => (A * Math.cos(u)) / Math.sqrt((2 * (UA - U(A * Math.sin(u)))) / m), 0, Math.PI / 2, panels);
 }

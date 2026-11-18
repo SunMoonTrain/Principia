@@ -1,0 +1,179 @@
+- id: p1
+  tier: easy
+  statement: |
+    一根两端固定的弦长$0.80\,\mathrm m$，弦上的波速是$240\,\mathrm{m/s}$。求它的基频。
+  answer:
+    type: number
+    value: 150
+    unit: |
+      $\mathrm{Hz}$
+  hints:
+    - |
+      基频对应的驻波，两端是波节，中间没有别的波节。
+    - |
+      $\lambda_1=2\ell$，$f_1=\frac v{\lambda_1}$。
+    - |
+      $f_1=\frac{240}{2\times0.80}\,\mathrm{Hz}=150\,\mathrm{Hz}$。
+  solution: |
+    基频的波长$\lambda_1=2\ell=1.6\,\mathrm m$，$f_1=\frac v{2\ell}=\frac{240}{1.6}\,\mathrm{Hz}=150\,\mathrm{Hz}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        驻波的波形沿弦以波速平移
+      - |
+        驻波里相邻两个波节相距半个波长
+      - |
+        两端固定的弦，基频对应的波长是弦长的 2 倍
+      - |
+        驻波里所有的点都同相振动
+      - |
+        弦长和线密度不变，张力变为原来的 4 倍，基频变为原来的 2 倍
+    value: [2, 3, 5]
+  hints:
+    - |
+      $2A\cos kx\cos\omega t$里，位置和时间分在两个因子里。
+    - |
+      $\cos kx$在波节两侧变号；$f_1=\frac v{2\ell}$，$v=\sqrt{T/\mu}$。
+    - |
+      A 错，驻波不平移；B 对；C 对，$\lambda_1=2\ell$。D 错，波节两侧反相；E 对，$v$变为 2 倍，$f_1$也变为 2 倍。
+  solution: |
+    选 B、C、E。A 错：驻波的波形在原地伸缩，不平移；B 对：$\cos kx=0$的相邻两点相距$\frac\lambda2$；C 对：$\lambda_1=2\ell$。D 错：相邻波节之间同相，波节两侧反相；E 对：$f_1=\frac1{2\ell}\sqrt{T/\mu}$和$\sqrt T$成正比。
+
+- id: p3
+  tier: medium
+  statement: |
+    一根两端固定的弦，测得它的两个相邻的固有频率是$420\,\mathrm{Hz}$和$490\,\mathrm{Hz}$。它的基频是多少？
+  answer:
+    type: number
+    value: 70
+    unit: |
+      $\mathrm{Hz}$
+  hints:
+    - |
+      两端固定的弦的固有频率是$f_n=nf_1$。
+    - |
+      相邻两个固有频率之差是多少？
+    - |
+      $f_{n+1}-f_n=f_1=70\,\mathrm{Hz}$；检验：$420=6\times70$，$490=7\times70$。
+  solution: |
+    $f_n=nf_1$，相邻两个之差就是$f_1=490-420=70\,\mathrm{Hz}$。两个频率分别是第 6、7 次谐波，都是$70\,\mathrm{Hz}$的整数倍，和假设一致。
+
+- id: p4
+  tier: medium
+  statement: |
+    一根两端固定、长$1.2\,\mathrm m$的弦被一端的振子带着以$120\,\mathrm{Hz}$振动，形成的驻波把弦分成 4 段（算上两端，共 5 个波节）。求弦上的波速。
+  answer:
+    type: number
+    value: 72
+    unit: |
+      $\mathrm{m/s}$
+  hints:
+    - |
+      相邻两个波节之间是半个波长。
+    - |
+      4 段就是 4 个半波长，$4\times\frac\lambda2=1.2\,\mathrm m$。
+    - |
+      $\lambda=0.60\,\mathrm m$，$v=\lambda f=0.60\times120\,\mathrm{m/s}=72\,\mathrm{m/s}$。
+  solution: |
+    4 段对应$n=4$，$\lambda_4=\frac{2\ell}4=0.60\,\mathrm m$，$v=\lambda f=72\,\mathrm{m/s}$。频率由振子定，弦的张力合适时，才会正好形成整数段的驻波。
+
+- id: p5
+  tier: hard
+  statement: |
+    长为$\ell$的弦，左端$x=0$固定，右端系一个能沿光滑竖杆自由上下滑动的轻环，张力为$T$，波速为$v$。
+
+    （1）右端的条件是什么？
+
+    （2）求固有频率，说明为什么只有$\frac v{4\ell}$的奇数倍。
+
+    （3）这根弦的基频是同样长、两端固定的弦的几分之几？
+  hints:
+    - |
+      轻环没有质量，竖直方向只受弦的拉力；它能不能受竖直方向的力？
+    - |
+      右端$y_x(\ell,t)=0$；驻波写成$B\sin kx\cos(\omega t+\varphi)$。
+    - |
+      （2）$\cos k\ell=0$，$k\ell=\bigl(n-\frac12\bigr)\pi$，$f=\frac{(2n-1)v}{4\ell}$。（3）$\frac v{4\ell}$对$\frac v{2\ell}$，是一半。
+  reference: |
+    （1）竖杆光滑，不给环竖直方向的力；环没有质量，弦对它的竖直拉力$-Ty_x$必须为零，所以$y_x(\ell,t)=0$：右端的弦是水平的，那里是波腹。
+
+    （2）左端是波节，驻波是$B\sin kx\cos(\omega t+\varphi)$；右端$y_x=Bk\cos k\ell\cos(\omega t+\varphi)=0$，要$\cos k\ell=0$，$k\ell=\frac\pi2,\frac{3\pi}2,\frac{5\pi}2,\dots$。$f=\frac{vk}{2\pi}=\frac{(2n-1)v}{4\ell}$，$n=1,2,\dots$：一端是波节、一端是波腹，弦长只能是$\frac\lambda4$的奇数倍，所以只有奇数倍。
+
+    （3）基频$\frac v{4\ell}$，是两端固定时$\frac v{2\ell}$的一半。一端封闭、一端开口的管子里的空气柱，固有频率也只有基频的奇数倍，道理相同。
+
+- id: p6
+  tier: hard
+  statement: |
+    长为$\ell$、两端固定的均匀弦。
+
+    （1）证明$y=\sin\frac{n\pi x}\ell$满足$-y''=\kappa y$、$y(0)=y(\ell)=0$，求$\kappa$。
+
+    （2）$-y''=\kappa y$、$y(0)=y(\ell)=0$、$y$不恒为零，证明$\kappa$只能是这些值（设$\kappa>0$）。
+
+    （3）在弦的中点粘一颗小珠子，哪些固有频率不变？为什么？
+  hints:
+    - |
+      $\kappa>0$时，$-y''=\kappa y$的解是$C_1\sin\sqrt\kappa\,x+C_2\cos\sqrt\kappa\,x$。
+    - |
+      $y(0)=0$给出$C_2=0$；$y(\ell)=0$而$C_1\ne0$，要$\sin\sqrt\kappa\,\ell=0$。
+    - |
+      （1）$\kappa=\bigl(\frac{n\pi}\ell\bigr)^2$。（2）$\sqrt\kappa\,\ell=n\pi$。（3）中点是波节的那些（$n$为偶数）：珠子在那里不动，它的质量不起作用。
+  reference: |
+    （1）$y''=-\bigl(\frac{n\pi}\ell\bigr)^2y$，两端$\sin0=\sin n\pi=0$，所以$\kappa=\bigl(\frac{n\pi}\ell\bigr)^2$，正是$k_n^2$。
+
+    （2）$-y''=\kappa y$和简谐运动的方程同形，由[简谐运动](lesson:physics.oscillations-waves.simple-harmonic-motion#thm-shm-solution)，解是$C_1\sin\sqrt\kappa\,x+C_2\cos\sqrt\kappa\,x$。$y(0)=0$得$C_2=0$；$y$不恒为零，$C_1\ne0$，$y(\ell)=0$要求$\sin\sqrt\kappa\,\ell=0$，$\sqrt\kappa\,\ell=n\pi$，$\kappa=\bigl(\frac{n\pi}\ell\bigr)^2$，$n=1,2,\dots$。这就是变分法里说的「两端为零的特征值」，最小的那个对应基频。
+
+    （3）$n$为偶数的驻波在中点是波节，珠子在那里始终不动，粘不粘它都一样，这些固有频率不变。$n$为奇数的驻波在中点振动，珠子增加了那里的惯性，这些频率变低，基频也在其中，和[瑞利商与特征值的变分刻画](lesson:math.calculus-of-variations.rayleigh-quotient)第 7 题的结论一致。
+
+- id: p7
+  tier: thinking
+  statement: |
+    吉他的指板上嵌着一根根品丝，手指按在两根品丝之间，弦的有效长度就缩短到从那根品丝到琴桥。
+
+    （1）按在正中间（第 12 品）时，频率变为原来的几倍？
+
+    （2）相邻两品之间差一个半音，频率之比是$2^{1/12}$。相邻品丝之间的距离是越往琴身越大，还是越小？
+
+    （3）为什么吉他、小提琴的弦长、张力、粗细不同，却能发出同样音高的音？
+  hints:
+    - |
+      $f_1=\frac v{2\ell}$，$\ell$减半。
+    - |
+      每升高一个半音，弦长乘$2^{-1/12}$。
+    - |
+      音高由基频定，$f_1=\frac1{2\ell}\sqrt{T/\mu}$里有三个量。
+  reference: |
+    （1）弦长减半，基频变为原来的 2 倍，高一个八度。
+
+    （2）每升高一个半音，有效弦长乘$2^{-1/12}\approx0.944$，每一品缩短的长度是当时弦长的约$5.6\%$；越往琴身，有效弦长越短，相邻品丝之间的距离也越小。
+
+    （3）基频$\frac1{2\ell}\sqrt{T/\mu}$由弦长、张力、线密度一起决定，不同的组合可以给出同样的$f_1$。可它们的谐波的强弱不同，所以同样的音高，两件乐器的音色不同。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）驻波的波形不平移，它还有没有能量？能量在哪里？
+
+    （2）组成驻波的两列行波各自都在传递能量，为什么驻波总的看不传递能量？
+
+    （3）驻波在一个周期里，动能和势能怎样交替？
+  hints:
+    - |
+      弦在动、也被拉长了，就有能量。
+    - |
+      两列波传递能量的方向相反、大小相等。
+    - |
+      位移最大时弦静止；位移为零时弦是直的。
+  reference: |
+    （1）有。弦在振动，有动能；弦弯曲时被拉长，有势能。能量就存在弦上，只是不向哪一边跑。
+
+    （2）两列行波振幅、频率相同、方向相反，各自每秒传递的能量一样多，一个向右、一个向左，平均下来抵消，驻波整体不传递能量；能量只在相邻的波节和波腹之间来回流动（见[波的能量与能流](lesson:physics.oscillations-waves.wave-energy)第 5 题）。
+
+    （3）各点位移最大的时刻，整根弦静止，能量全是势能，集中在波节附近（那里弦最斜）；四分之一周期以后弦拉直，能量全是动能，集中在波腹附近（那里振得最快）。两种能量在空间里也换了地方。

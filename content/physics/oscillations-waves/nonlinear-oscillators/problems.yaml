@@ -1,0 +1,182 @@
+- id: p1
+  tier: easy
+  statement: |
+    杜芬振子$\ddot x+\omega_0^2x+\varepsilon x^3=0$，$\omega_0=10\,\mathrm{rad/s}$，$\varepsilon=50\,\mathrm{m^{-2}\,s^{-2}}$，振幅$A=0.20\,\mathrm m$。用讲解里的近似式，它的角频率比$\omega_0$大百分之几？
+  answer:
+    type: number
+    value: 0.75
+  hints:
+    - |
+      $\omega\approx\omega_0+\frac{3\varepsilon A^2}{8\omega_0}$，相对变化是$\frac{3\varepsilon A^2}{8\omega_0^2}$。
+    - |
+      $\varepsilon A^2=50\times0.040=2.0\,\mathrm{s^{-2}}$，$\omega_0^2=100\,\mathrm{s^{-2}}$。
+    - |
+      $\frac{3\times2.0}{8\times100}=0.0075$，即大$0.75\%$。
+  solution: |
+    $\frac{\omega-\omega_0}{\omega_0}\approx\frac{3\varepsilon A^2}{8\omega_0^2}=\frac{3\times50\times0.20^2}{8\times10^2}=0.0075$，大$0.75\%$。$\varepsilon A^2$只有$\omega_0^2$的$2\%$，近似式适用；$\varepsilon>0$是硬弹簧，振幅越大振得越快。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        硬弹簧的杜芬振子，振幅越大，频率越低
+      - |
+        单摆的振幅越大，周期越长
+      - |
+        线性振子的初位移变为原来的 2 倍（由静止放开），周期也变为原来的 2 倍
+      - |
+        在势能$U=cx^4$（$c>0$）中振动的质点，振幅变为原来的 2 倍，周期变为原来的一半
+      - |
+        振幅趋于零时，杜芬振子的角频率趋于$\omega_0$
+    value: [2, 4, 5]
+  hints:
+    - |
+      硬弹簧$\varepsilon>0$，$\omega\approx\omega_0+\frac{3\varepsilon A^2}{8\omega_0}$；单摆是软弹簧。
+    - |
+      $U=c\lvert x\rvert^n$时周期和$A^{1-n/2}$成正比。
+    - |
+      A 错，频率随振幅变高；B 对；C 错，线性振子的周期和振幅无关。D 对，$n=4$时周期和$A^{-1}$成正比；E 对。
+  solution: |
+    选 B、D、E。A 错：硬弹簧振幅越大频率越高；B 对：单摆是软弹簧，周期随振幅变长；C 错：线性振子把解放大，周期不变。D 对：$U=cx^4$时周期和振幅成反比；E 对：振幅很小时$x^3$项可以不计，回到角频率为$\omega_0$的简谐运动。
+
+- id: p3
+  tier: medium
+  statement: |
+    质点在势能$U=c\lvert x\rvert^3$（$c>0$）中振动，振幅为$1.0\,\mathrm{cm}$时周期是$2.0\,\mathrm s$。振幅为$4.0\,\mathrm{cm}$时，周期是多少秒？
+  answer:
+    type: number
+    value: 1
+    unit: |
+      $\mathrm s$
+  hints:
+    - |
+      用周期公式，换元$x=Au$，看周期和$A$的哪次方成正比。
+    - |
+      $U=c\lvert x\rvert^n$时周期和$A^{1-n/2}$成正比，这里$n=3$。
+    - |
+      周期和$A^{-1/2}$成正比，振幅变为原来的 4 倍，周期变为原来的$\frac12$，即$1.0\,\mathrm s$。
+  solution: |
+    由$T=\sqrt{\frac{2m}c}\,A^{1-n/2}\int_{-1}^1\frac{\dd u}{\sqrt{1-\lvert u\rvert^n}}$，$n=3$时周期和$A^{-1/2}$成正比。振幅变为原来的 4 倍，周期变为$2.0\times4^{-1/2}\,\mathrm s=1.0\,\mathrm s$。
+
+- id: p4
+  tier: medium
+  statement: |
+    质量$0.10\,\mathrm{kg}$的小物块在势能$U=F_0\lvert x\rvert$中来回运动（像在两面对称的光滑斜坡之间滑动），$F_0=0.50\,\mathrm N$，振幅$0.20\,\mathrm m$。求周期，以秒为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 4*sqrt(2*0.1*0.2/0.5)
+    unit: |
+      $\mathrm s$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      两侧受的力大小都是$F_0$，加速度大小不变；也可以直接用周期公式。
+    - |
+      从$x=A$由静止滑到$x=0$用四分之一周期，$A=\frac12\frac{F_0}mt^2$。
+    - |
+      $t=\sqrt{\frac{2mA}{F_0}}=\sqrt{0.08}\,\mathrm s\approx0.283\,\mathrm s$，周期$4t\approx1.13\,\mathrm s$。
+  solution: |
+    物块受的力大小总是$F_0$、指向$x=0$，加速度大小$\frac{F_0}m=5.0\,\mathrm{m/s^2}$。从$x=A$由静止滑到$x=0$用时$t=\sqrt{\frac{2A}{F_0/m}}=\sqrt{0.08}\,\mathrm s\approx0.283\,\mathrm s$，是四分之一周期，周期约$1.13\,\mathrm s$。用周期公式算也一样：$T=\sqrt{2m}\int_{-A}^A\frac{\dd x}{\sqrt{F_0(A-\lvert x\rvert)}}=4\sqrt{\frac{2mA}{F_0}}$，和$A^{1/2}$成正比，振幅越大周期越长。
+
+- id: p5
+  tier: hard
+  statement: |
+    单摆的振幅$\theta_0$接近$\pi$，记$\varphi_0=\pi-\theta_0$，它很小。
+
+    （1）令$\theta=\pi-\varphi$，证明$\varphi$很小时$\ddot\varphi\approx\frac gl\varphi$。
+
+    （2）摆从$\varphi=\varphi_0$处由静止出发，证明它在接近倒立的位置附近，$\varphi(t)\approx\frac{\varphi_0}2\bigl(e^{st}+e^{-st}\bigr)$，$s=\sqrt{g/l}$；走到$\varphi=\varphi_1$（$\varphi_0\ll\varphi_1\ll1$）大约要多久？
+
+    （3）由此说明$\theta_0\to\pi$时周期像$\ln\frac1{\pi-\theta_0}$那样趋于无穷。
+  hints:
+    - |
+      $\ddot\theta=-\frac gl\sin\theta$，$\sin(\pi-\varphi)=\sin\varphi$。
+    - |
+      $\ddot\varphi=s^2\varphi$的解是$e^{st}$、$e^{-st}$的组合，初始条件是$\varphi(0)=\varphi_0$、$\dot\varphi(0)=0$。
+    - |
+      （2）$\frac{\varphi_0}2e^{st}\approx\varphi_1$，$t\approx\frac1s\ln\frac{2\varphi_1}{\varphi_0}$。（3）一个周期里摆两次接近倒立（$\theta=\pm\theta_0$），每次来回约$2t$，周期约$4\sqrt{\frac lg}\ln\frac1{\varphi_0}$加上一个有限的量。
+  reference: |
+    （1）$\ddot\theta=-\ddot\varphi$，$\sin\theta=\sin(\pi-\varphi)=\sin\varphi$，所以$-\ddot\varphi=-\frac gl\sin\varphi$，即$\ddot\varphi=\frac gl\sin\varphi\approx\frac gl\varphi$：在倒立的位置附近，偏离越大加速越快，偏离按指数增长。
+
+    （2）$\ddot\varphi=s^2\varphi$，代入可验证$\varphi=\frac{\varphi_0}2\bigl(e^{st}+e^{-st}\bigr)$满足方程，且$\varphi(0)=\varphi_0$、$\dot\varphi(0)=0$。$\varphi_1\gg\varphi_0$时$e^{-st}$可以不计，$\frac{\varphi_0}2e^{st}\approx\varphi_1$，所以$t\approx\sqrt{\frac lg}\ln\frac{2\varphi_1}{\varphi_0}$。$\varphi_0$越小，这段时间越长，只是增长得很慢。
+
+    （3）一个周期里，摆在$\theta=\theta_0$和$\theta=-\theta_0$各接近倒立一次，每次从$\varphi_1$处慢下来、停住、再回到$\varphi_1$处，用时约$2\sqrt{\frac lg}\ln\frac{2\varphi_1}{\varphi_0}$；其余的路上摆走得快，用时有限，和$\varphi_0$关系不大。所以$T\approx4\sqrt{\frac lg}\ln\frac1{\varphi_0}+$（有限的量），$\theta_0\to\pi$时像$\ln\frac1{\pi-\theta_0}$一样趋于无穷。精确的结果是$T\approx4\sqrt{\frac lg}\ln\frac8{\pi-\theta_0}$，对数前的系数正是$4\sqrt{l/g}$。
+
+- id: p6
+  tier: hard
+  statement: |
+    杜芬振子$\ddot x+\omega_0^2x+\varepsilon x^3=0$，$\lvert\varepsilon\rvert A^2\ll\omega_0^2$。试用$x\approx A\cos\omega t+B\cos3\omega t$（$\lvert B\rvert\ll A$）近似地代入方程。
+
+    （1）只保留$\varepsilon$的一次项，比较$\cos\omega t$的系数，求$\omega$，并和讲解的结果比较。
+
+    （2）比较$\cos3\omega t$的系数，求$B$。
+
+    （3）这说明非线性振子的运动有什么特点？
+  hints:
+    - |
+      $\cos^3\theta=\frac34\cos\theta+\frac14\cos3\theta$；$B$本身是$\varepsilon$的一次量，$\varepsilon x^3$里只保留$\varepsilon A^3\cos^3\omega t$。
+    - |
+      $\cos\omega t$：$-\omega^2A+\omega_0^2A+\frac34\varepsilon A^3=0$；$\cos3\omega t$：$-9\omega^2B+\omega_0^2B+\frac14\varepsilon A^3=0$。
+    - |
+      （1）$\omega^2=\omega_0^2+\frac34\varepsilon A^2$，$\omega\approx\omega_0+\frac{3\varepsilon A^2}{8\omega_0}$，和讲解一致。（2）$B\approx\frac{\varepsilon A^3}{32\omega_0^2}$。（3）运动里多了角频率为$3\omega$的成分，不再是单一的余弦。
+  reference: |
+    $\ddot x=-\omega^2A\cos\omega t-9\omega^2B\cos3\omega t$。$\varepsilon x^3$已经是一阶小量，里面的$B$再带来的是二阶量，所以只保留$\varepsilon A^3\cos^3\omega t=\varepsilon A^3\bigl(\frac34\cos\omega t+\frac14\cos3\omega t\bigr)$。
+
+    （1）$\cos\omega t$的系数：$-\omega^2A+\omega_0^2A+\frac34\varepsilon A^3=0$，$\omega^2=\omega_0^2+\frac34\varepsilon A^2$，$\omega\approx\omega_0\bigl(1+\frac{3\varepsilon A^2}{8\omega_0^2}\bigr)$，和讲解里用周期公式得到的相同。
+
+    （2）$\cos3\omega t$的系数：$(\omega_0^2-9\omega^2)B+\frac14\varepsilon A^3=0$，$B=\frac{\varepsilon A^3}{4(9\omega^2-\omega_0^2)}\approx\frac{\varepsilon A^3}{32\omega_0^2}$，$\frac BA\approx\frac{\varepsilon A^2}{32\omega_0^2}$，是小量。
+
+    （3）非线性项把$\cos^3$变出了$\cos3\omega t$，振子的运动里出现了三倍的频率；振幅越大，这个成分越重，同时频率也跟着变。线性振子不会这样：$\cos\omega t$代进线性方程，出来的还是$\cos\omega t$。乐器、扬声器振幅过大时声音「发毛」，部分原因就是这种多出来的频率。
+
+- id: p7
+  tier: thinking
+  statement: |
+    摆钟的摆长不变，可摆的振幅会因为发条松紧、空气阻力等原因变化。
+
+    （1）振幅从$4^\circ$变成$5^\circ$，摆钟一天会慢多少秒？
+
+    （2）为什么摆钟要保持小而稳定的振幅？
+
+    （3）惠更斯想过让摆不走圆弧、走摆线，好处是什么？
+  hints:
+    - |
+      $T\approx T_0\bigl(1+\frac{\theta_0^2}{16}\bigr)$，一天里的「慢」等于周期的相对变化乘一天的秒数。
+    - |
+      $4^\circ\approx0.0698$，$5^\circ\approx0.0873$。
+    - |
+      摆线上的单摆周期和振幅完全无关（见单摆与复摆那一节第 7 题）。
+  reference: |
+    （1）周期的相对变化约$\frac{0.0873^2-0.0698^2}{16}\approx1.71\times10^{-4}$，一天$86400\,\mathrm s$，慢约$15\,\mathrm s$。
+
+    （2）振幅越小，周期对振幅越不敏感（相对变化和$\theta_0^2$成正比，变化量和$\theta_0\,\Delta\theta_0$成正比），振幅再保持稳定，周期就几乎不变。摆钟用擒纵机构每次给摆补一点能量，让振幅稳定在一个小的值上。
+
+    （3）摆线上的摆，沿路径的回复力正好和走过的路程成正比，是严格的简谐运动，周期和振幅无关，振幅变了也不影响走时（见[单摆与复摆](lesson:physics.oscillations-waves.pendulums)第 7 题）。可惜做起来麻烦，摩擦也大，实际的摆钟还是靠小振幅。
+
+- id: p8
+  tier: thinking
+  statement: |
+    讲解里说，振幅很小、回复力的一次项不为零时，非线性振动近似是简谐运动。
+
+    （1）对杜芬振子，「振幅很小」具体是和什么比？
+
+    （2）单摆的振幅多大时，周期比$T_0$长$1\%$？长$0.1\%$呢？
+
+    （3）为什么平衡位置附近的回复力一般近似是线性的？一次项为零时会怎样？举一个例子。
+  hints:
+    - |
+      频率的相对变化是$\frac{3\varepsilon A^2}{8\omega_0^2}$。
+    - |
+      $\frac{\theta_0^2}{16}=0.01$。
+    - |
+      光滑的回复力在平衡位置展开，常数项是零，下一项是一次项；一次项的系数为零时呢？
+  reference: |
+    （1）要$\lvert\varepsilon\rvert A^2\ll\omega_0^2$：非线性项$\varepsilon x^3$和线性项$\omega_0^2x$之比约为$\frac{\varepsilon A^2}{\omega_0^2}$，它小，频率的相对变化$\frac{3\varepsilon A^2}{8\omega_0^2}$就小。
+
+    （2）$\frac{\theta_0^2}{16}=0.01$，$\theta_0=0.40\,\mathrm{rad}\approx23^\circ$；$\frac{\theta_0^2}{16}=0.001$，$\theta_0\approx0.126\,\mathrm{rad}\approx7^\circ$。「小角度」够不够小，要看要求多准。
+
+    （3）回复力在平衡位置为零，光滑时可以展开成$-kx+\cdots$，振幅小时高次项比一次项小得多。一次项的系数为零时就不是这样，比如$U=cx^4$、$F=-4cx^3$：多小的振幅都不是简谐运动，周期和振幅成反比（[简谐运动的能量与小振动](lesson:physics.oscillations-waves.oscillation-energy)第 8 题的小球就是这样）。

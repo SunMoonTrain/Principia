@@ -1,0 +1,180 @@
+- id: p1
+  tier: easy
+  statement: |
+    平面波$\psi=A\cos(1700t-3x-4y)$（国际单位制，$x$、$y$以米为单位）。求它的波长，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 2*pi/5
+    unit: |
+      $\mathrm m$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      和$A\cos(\omega t-\vb k\cdot\vb r+\varphi)$对照，读出波矢。
+    - |
+      $\vb k=(3,4,0)\,\mathrm{rad/m}$，$\lambda=\frac{2\pi}{\lvert\vb k\rvert}$。
+    - |
+      $\lvert\vb k\rvert=5\,\mathrm{rad/m}$，$\lambda=\frac{2\pi}5\,\mathrm m\approx1.26\,\mathrm m$。
+  solution: |
+    $\vb k=(3,4,0)\,\mathrm{rad/m}$，$\lvert\vb k\rvert=5\,\mathrm{rad/m}$，$\lambda=\frac{2\pi}5\,\mathrm m\approx1.26\,\mathrm m$。波速$\frac\omega{\lvert\vb k\rvert}=340\,\mathrm{m/s}$，正是空气里的声速。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        平面波的波阵面和波矢垂直
+      - |
+        点波源发出的球面波，振幅和距离的平方成反比
+      - |
+        $\psi=A\cos(\omega t-3x-4y)$的传播方向和$z$轴平行
+      - |
+        波的能流和振幅的平方成正比
+      - |
+        离点波源越远，球面波的振幅随距离减小得越快
+    value: [1, 4]
+  hints:
+    - |
+      相位$\omega t-\vb k\cdot\vb r$在垂直于$\vb k$的平面上相同。
+    - |
+      球面波的振幅按$\frac1r$；$\frac1r$的导数是$-\frac1{r^2}$。
+    - |
+      A 对；B 错，振幅和$r$成反比；C 错，波矢是$(3,4,0)$，在$xy$平面里。D 对；E 错，$\frac1r$的变化率$\frac1{r^2}$随$r$变小，越远减小得越慢。
+  solution: |
+    选 A、D。A：垂直于$\vb k$的平面上相位相同，就是波阵面；B 错：和距离的平方成反比的是能流；C 错：传播方向沿$\vb k=(3,4,0)$，和$z$轴垂直。D 对；E 错：振幅$\propto\frac1r$，每走单位距离约减小$\frac1{r^2}$，越远减小得越慢。
+
+- id: p3
+  tier: medium
+  statement: |
+    平面波$\psi=A\cos(\omega t-\vb k\cdot\vb r)$，$\vb k=(2.0,2.0,1.0)\,\mathrm{rad/m}$。求它的波长（以米为单位）和传播方向与$z$轴的夹角（以度为单位），按这个顺序填写，结果都保留三位有效数字。
+  answer:
+    type: tuple
+    value: [2*pi/3, acos(1/3)*180/pi]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $\lambda=\frac{2\pi}{\lvert\vb k\rvert}$；传播方向就是$\vb k$的方向。
+    - |
+      $\lvert\vb k\rvert=\sqrt{4+4+1}=3\,\mathrm{rad/m}$，和$z$轴的夹角$\gamma$满足$\cos\gamma=\frac{k_z}{\lvert\vb k\rvert}$。
+    - |
+      $\lambda=\frac{2\pi}3\,\mathrm m\approx2.09\,\mathrm m$，$\cos\gamma=\frac13$，$\gamma\approx70.5^\circ$。
+  solution: |
+    $\lvert\vb k\rvert=3\,\mathrm{rad/m}$，$\lambda=\frac{2\pi}3\,\mathrm m\approx2.09\,\mathrm m$。传播方向$\hat{\vb n}=\frac13(2,2,1)$，和$z$轴的夹角$\arccos\frac13\approx70.5^\circ$。填`2.09, 70.5`。
+
+- id: p4
+  tier: medium
+  statement: |
+    点声源以$0.50\,\mathrm W$的功率向四周均匀地发声，能量没有损失。离它$5.0\,\mathrm m$处，单位时间穿过单位面积（垂直于传播方向）的能量是多少？以$\mathrm{mW/m^2}$为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 0.5/(4*pi*25)*1000
+    unit: |
+      $\mathrm{mW/m^2}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      每秒发出的能量全部穿过以声源为球心的任何一个球面。
+    - |
+      半径为$r$的球面面积是$4\pi r^2$。
+    - |
+      $\frac{0.50}{4\pi\times5.0^2}\,\mathrm{W/m^2}\approx1.59\times10^{-3}\,\mathrm{W/m^2}$，即$1.59\,\mathrm{mW/m^2}$。
+  solution: |
+    $0.50\,\mathrm W$的功率均匀地分布在面积为$4\pi r^2$的球面上，$r=5.0\,\mathrm m$时每平方米$\frac{0.50}{4\pi\times25}\,\mathrm W\approx1.59\,\mathrm{mW}$。距离加倍，它变为原来的四分之一，振幅变为原来的一半。
+
+- id: p5
+  tier: hard
+  statement: |
+    一根很长的直线波源（比如一长排同步发声的扬声器）向周围发出柱面波，波阵面是以它为轴的圆柱面。记$\rho$为到轴的距离。
+
+    （1）用能量论证：能流和振幅各按$\rho$的什么规律变化？
+
+    （2）$\psi$只和$\rho$有关时，$\nabla^2\psi=\psi''+\frac1\rho\psi'$（撇号表示对$\rho$求导）。证明$\psi=\frac{f(\rho-vt)}{\sqrt\rho}$不是波动方程的精确解，但$\rho$很大时近似满足。
+
+    （3）为什么球面波有像$\frac{f(r-vt)}r$这样形状不变的精确解，柱面波却没有？
+  hints:
+    - |
+      单位长度的线源每秒发出的能量，全部穿过半径为$\rho$、长为$1$的圆柱面，面积$2\pi\rho$。
+    - |
+      算$\psi_{tt}-v^2\bigl(\psi''+\frac1\rho\psi'\bigr)$，看剩下什么。
+    - |
+      （1）能流$\propto\frac1\rho$，振幅$\propto\frac1{\sqrt\rho}$。（2）剩下$-\frac{v^2}4\rho^{-5/2}f$，和$\psi_{tt}$之比约为$\frac1{\rho^2}$量级，$\rho$大时可以不计。（3）球对称时$\nabla^2\psi=\frac1r(r\psi)''$，$r\psi$满足一维的方程；柱对称时没有这样的乘法因子。
+  reference: |
+    （1）单位长度的线源每秒发出的能量$P_1$一定，全部穿过半径为$\rho$、单位长度的圆柱面，面积$2\pi\rho$，所以能流$\frac{P_1}{2\pi\rho}\propto\frac1\rho$；能流和振幅的平方成正比，振幅$\propto\frac1{\sqrt\rho}$。
+
+    （2）$\psi=\rho^{-1/2}f$，$f$的自变量是$\rho-vt$。$\psi'=-\frac12\rho^{-3/2}f+\rho^{-1/2}f'$，$\psi''=\frac34\rho^{-5/2}f-\rho^{-3/2}f'+\rho^{-1/2}f''$，$\frac1\rho\psi'=-\frac12\rho^{-5/2}f+\rho^{-3/2}f'$，所以$\nabla^2\psi=\rho^{-1/2}f''+\frac14\rho^{-5/2}f$。$\psi_{tt}=v^2\rho^{-1/2}f''$，于是$\psi_{tt}-v^2\nabla^2\psi=-\frac{v^2}4\rho^{-5/2}f\ne0$，不是精确解。和$\psi_{tt}$的每一项比，多出的这一项小了一个$\frac1{\rho^2}$乘$\frac{f}{f''}$的因子，$\rho$比波长大得多时可以不计。
+
+    （3）球对称时$\nabla^2\psi=\frac1r\frac{\partial^2(r\psi)}{\partial r^2}$，乘上$r$就变成一维的波动方程，于是有形状不变的解。柱对称时找不到这样的因子，严格的柱面波在传播中形状会变，后面拖着一条「尾巴」；只有离轴很远时，才近似是振幅按$\frac1{\sqrt\rho}$减小、形状不变的波。
+
+- id: p6
+  tier: hard
+  statement: |
+    两列频率、振幅都相同的平面波，波矢都在$xz$平面里，和$z$轴的夹角都是$\alpha$，一列偏向$+x$，一列偏向$-x$：$\psi=A\cos(\omega t-kx\sin\alpha-kz\cos\alpha)+A\cos(\omega t+kx\sin\alpha-kz\cos\alpha)$，$k=\frac\omega v$。
+
+    （1）把$\psi$化成乘积的形式。
+
+    （2）沿$z$方向，相位以多快的速度前进？它为什么可以比$v$大？
+
+    （3）哪些平面上始终没有振动？
+  hints:
+    - |
+      和差化积：$\cos a+\cos b=2\cos\frac{a-b}2\cos\frac{a+b}2$。
+    - |
+      $\psi=2A\cos(kx\sin\alpha)\cos(\omega t-kz\cos\alpha)$。
+    - |
+      （2）$\frac\omega{k\cos\alpha}=\frac v{\cos\alpha}$。（3）$\cos(kx\sin\alpha)=0$，即$x=\frac{(2m+1)\pi}{2k\sin\alpha}$，$m$为整数。
+  reference: |
+    （1）$\psi=2A\cos(kx\sin\alpha)\cos(\omega t-kz\cos\alpha)$：沿$x$方向是不动的分布，沿$z$方向是传播的波。
+
+    （2）相位$\omega t-kz\cos\alpha$等于常数的平面以$\frac\omega{k\cos\alpha}=\frac v{\cos\alpha}$沿$z$方向移动，比$v$大。每列波的波阵面都以$v$沿各自的波矢前进，波阵面和$z$轴的交线斜着扫过去，沿$z$方向走得比$v$快，就像海浪斜着拍向海岸时，浪头和岸的交点跑得比浪本身快；这个速度不是能量传播的速度，不违反什么。电磁学里波导中的波正是这样两列斜着走的平面波。
+
+    （3）$\cos(kx\sin\alpha)=0$的平面$x=\frac{(2m+1)\pi}{2k\sin\alpha}$上始终没有振动，相邻两个相距$\frac\pi{k\sin\alpha}=\frac\lambda{2\sin\alpha}$；在这样两个平面之间放上两块挡板，这个波照样存在。
+
+- id: p7
+  tier: thinking
+  statement: |
+    星光来自离我们极远的点光源，教室里的灯泡离我们只有几米。
+
+    （1）为什么说星光到达地面时可以当成平面波，灯泡发的光对一台仪器来说未必可以？
+
+    （2）设仪器的口径是$a$，离点源$r$。口径边缘和中心到点源的距离差约是多少？用它说明「够远」的标准。
+
+    （3）振幅随距离的变化在什么条件下也可以不计？
+  hints:
+    - |
+      看的是仪器那么大的一小块球面平不平。
+    - |
+      $\sqrt{r^2+a^2/4}-r\approx\frac{a^2}{8r}$；和波长比。
+    - |
+      在仪器那么大的范围里，$\frac1r$变化多少？
+  reference: |
+    （1）当不当平面波，要看在仪器那么大的范围里，球面偏离平面多少。星星极远，地面上任何仪器那么大的一块球面都极平；灯泡近，大口径的仪器上球面的弯曲就可能显出来。
+
+    （2）口径边缘到点源的距离比中心远$\sqrt{r^2+\frac{a^2}4}-r\approx\frac{a^2}{8r}$。它比波长小得多时，各处的相位几乎一样，可以当平面波：$r\gg\frac{a^2}{8\lambda}$。例如可见光$\lambda=0.5\,\mu\mathrm m$、口径$1\,\mathrm{cm}$，要$r\gg25\,\mathrm m$。
+
+    （3）在仪器的范围里，到点源的距离只变了$\frac{a^2}{8r}$这样的小量（沿传播方向放置时，变化约为仪器的厚度），$\frac1r$的相对变化是它除以$r$，比相位的条件宽松得多，通常一并可以不计。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）为什么说「球面波的振幅按$\frac1r$减小」和「能流按$\frac1{r^2}$减小」是同一件事？
+
+    （2）如果介质还会吸收能量，每走单位距离能流减少一个固定的比例，振幅随距离怎样变化？
+
+    （3）在空旷处听远方的声音，常常比按$\frac1r$估计的更弱。可能的原因有哪些？
+  hints:
+    - |
+      能流和振幅的平方成正比。
+    - |
+      能流里再乘一个$e^{-\beta r}$。
+    - |
+      想想声音传播途中能量去了哪里、方向有没有变。
+  reference: |
+    （1）能流和振幅的平方成正比，振幅$\propto\frac1r$等价于能流$\propto\frac1{r^2}$，后者正是「每秒穿过各个球面的能量相同」。
+
+    （2）能流$\propto\frac{e^{-\beta r}}{r^2}$，振幅$\propto\frac{e^{-\beta r/2}}r$：近处主要是球面扩展造成的$\frac1r$，远处指数衰减占了上风。
+
+    （3）空气吸收（高频声吸收得更多，所以远处的声音听起来更「闷」）；地面、树木吸收和散射；风和温度随高度变化让声音的传播方向弯曲，可能从人头顶上方绕过去。这些都让远处的声音比只按球面扩展估计的弱。

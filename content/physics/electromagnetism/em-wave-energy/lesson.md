@@ -22,7 +22,7 @@ status: reviewed
 ::anchor{id="thm-wave-energy"}
 定理（:term[平面电磁波]{id="physics.electromagnetism.em-wave"}的能量）：真空中的平面电磁波里，:term[电场]{id="physics.electromagnetism.electric-field"}（electric field）和:term[磁场]{id="physics.electromagnetism.magnetic-field"}（magnetic field）的:term[能量密度]{id="physics.electromagnetism.energy-density"}（energy density）时时处处相等，$\frac{\varepsilon_0}{2}E^2=\frac{1}{2\mu_0}B^2$，总能量密度$u=\varepsilon_0E^2$；:term[坡印亭矢量]{id="physics.electromagnetism.poynting-vector"}（Poynting vector）沿传播方向，$\vb S=cu\,\uv n$。
 
-证明思路：平面波里$B=\frac Ec$，$\frac{B^2}{2\mu_0}=\frac{E^2}{2\mu_0c^2}=\frac{\varepsilon_0}{2}E^2$，用了$\mu_0\varepsilon_0c^2=1$。$\vb E\perp\vb B$，$\vb E\times\vb B$沿$\uv n$，$S=\frac{EB}{\mu_0}=\frac{E^2}{\mu_0c}=c\varepsilon_0E^2=cu$。
+证明思路：平面波（plane wave）里$B=\frac Ec$，$\frac{B^2}{2\mu_0}=\frac{E^2}{2\mu_0c^2}=\frac{\varepsilon_0}{2}E^2$，用了$\mu_0\varepsilon_0c^2=1$。$\vb E\perp\vb B$，$\vb E\times\vb B$沿$\uv n$，$S=\frac{EB}{\mu_0}=\frac{E^2}{\mu_0c}=c\varepsilon_0E^2=cu$。
 
 $\vb S=cu\,\uv n$说的是：能量密度为$u$的一层场以速度$c$沿传播方向平移，单位时间穿过单位面积的能量正是$cu$，能量随波一起以光速流动。这和弦上的波一样，能量跟着波形走（见[波的能量与能流](lesson:physics.oscillations-waves.wave-energy)）。
 
@@ -33,13 +33,13 @@ $\vb S=cu\,\uv n$说的是：能量密度为$u$的一层场以速度$c$沿传播
 ::anchor{id="def-intensity"}
 :term[坡印亭矢量]{id="physics.electromagnetism.poynting-vector"}的大小对一个周期的平均$I=\langle S\rangle$叫作:term[电磁波]{id="physics.electromagnetism.em-wave"}的:term[强度]{id="physics.electromagnetism.intensity"}（intensity），单位是$\mathrm{W/m^2}$；对振幅为$E_0$的简谐平面波，$I=\frac12c\varepsilon_0E_0^2=\frac{E_0B_0}{2\mu_0}=c\langle u\rangle$。
 
-为什么这样定义：强度就是单位时间垂直穿过单位面积的平均能量，探测器吸收的功率等于强度乘以面积；$\cos^2$对一个周期的平均是$\frac12$，所以有那个$\frac12$。强度和:term[电场]{id="physics.electromagnetism.electric-field"}振幅的平方成正比，振幅加倍，强度变成四倍。边界情况：两列相向传播的波形成驻波（standing wave）时，坡印亭矢量来回变号，平均为零，可:term[能量密度]{id="physics.electromagnetism.energy-density"}不为零：能量储存在那里，平均下来并不流动（第 5 题）。
+为什么这样定义：强度就是单位时间垂直穿过单位面积的平均能量，探测器吸收的功率等于强度乘以面积；$\cos^2$对一个周期的平均是$\frac12$，所以有那个$\frac12$。强度和:term[电场]{id="physics.electromagnetism.electric-field"}振幅的平方成正比，振幅加倍，强度变成四倍。边界情况：两列相向传播的波形成:term[驻波]{id="physics.oscillations-waves.standing-wave"}（standing wave）时，坡印亭矢量来回变号，平均为零，可:term[能量密度]{id="physics.electromagnetism.energy-density"}不为零：能量储存在那里，平均下来并不流动（第 5 题）。
 
 阳光在地球大气层外垂直照射时的强度约为$1361\,\mathrm{W/m^2}$，这是卫星测得的平均值，会随太阳活动有千分之一左右的起伏，以前叫「太阳常数」（例 1）。
 
 ### 点源的强度和距离
 
-各向同性的点源以功率$P$向四周发出:term[电磁波]{id="physics.electromagnetism.em-wave"}，能量没有损失时，单位时间穿过以它为球心、半径为$r$的球面的能量都是$P$，所以$I=\frac{P}{4\pi r^2}$：:term[强度]{id="physics.electromagnetism.intensity"}和距离的平方成反比，:term[电场]{id="physics.electromagnetism.electric-field"}振幅和距离成反比，正是球面波的振幅按$\frac1r$衰减（见[平面波与球面波](lesson:physics.oscillations-waves.waves-in-3d)）。离源很远时，一小块地方的波面几乎是平的，可以当平面波算。
+各向同性的点源以功率$P$向四周发出:term[电磁波]{id="physics.electromagnetism.em-wave"}，能量没有损失时，单位时间穿过以它为球心、半径为$r$的球面的能量都是$P$，所以$I=\frac{P}{4\pi r^2}$：:term[强度]{id="physics.electromagnetism.intensity"}和距离的平方成反比，:term[电场]{id="physics.electromagnetism.electric-field"}振幅和距离成反比，正是球面波（spherical wave）的振幅按$\frac1r$衰减（见[平面波与球面波](lesson:physics.oscillations-waves.waves-in-3d)）。离源很远时，一小块地方的波面几乎是平的，可以当平面波算。
 
 ## 几何图像
 
@@ -72,7 +72,7 @@ sliders:
       反向传播的那列波的振幅，以$E_0$为单位
 :::
 
-动画画的是沿$z$轴（图上写作$x$，以波长为单位）的:term[能量密度]{id="physics.electromagnetism.energy-density"}和:term[坡印亭矢量]{id="physics.electromagnetism.poynting-vector"}，场和[真空中的电磁波](lesson:physics.electromagnetism.em-waves)里的动画一样。$r=0$时只有一列行波：:term[电场]{id="physics.electromagnetism.electric-field"}和:term[磁场]{id="physics.electromagnetism.magnetic-field"}的能量密度两条曲线重合，坡印亭矢量（以$c\varepsilon_0E_0^2$为单位）正好等于两者之和，处处为正，一起向右移，平均值是$\frac12$。$r=1$时成了驻波：电场的能量和磁场的能量在空间上错开四分之一波长、在时间上此消彼长，坡印亭矢量正负交替，能量只在相邻的两处之间来回倒，平均下来不流动。
+动画画的是沿$z$轴（图上写作$x$，以波长为单位）的:term[能量密度]{id="physics.electromagnetism.energy-density"}和:term[坡印亭矢量]{id="physics.electromagnetism.poynting-vector"}，场和[真空中的电磁波](lesson:physics.electromagnetism.em-waves)里的动画一样。$r=0$时只有一列行波（traveling wave）：:term[电场]{id="physics.electromagnetism.electric-field"}和:term[磁场]{id="physics.electromagnetism.magnetic-field"}的能量密度两条曲线重合，坡印亭矢量（以$c\varepsilon_0E_0^2$为单位）正好等于两者之和，处处为正，一起向右移，平均值是$\frac12$。$r=1$时成了:term[驻波]{id="physics.oscillations-waves.standing-wave"}：电场的能量和磁场的能量在空间上错开四分之一波长、在时间上此消彼长，坡印亭矢量正负交替，能量只在相邻的两处之间来回倒，平均下来不流动。
 
 ## 例题
 
@@ -96,4 +96,4 @@ sliders:
 
 - 「:term[电磁波]{id="physics.electromagnetism.em-wave"}的:term[强度]{id="physics.electromagnetism.intensity"}和:term[电场]{id="physics.electromagnetism.electric-field"}的振幅成正比。」和振幅的平方成正比。
 - 「平面波里:term[磁场]{id="physics.electromagnetism.magnetic-field"}是电场的$\frac1c$，磁场的能量可以忽略。」磁场的:term[能量密度]{id="physics.electromagnetism.energy-density"}时时处处和电场的相等，各占一半。
-- 「驻波里:term[坡印亭矢量]{id="physics.electromagnetism.poynting-vector"}平均为零，所以里面没有能量。」能量密度不为零，能量储存在驻波里，只是平均下来不流动。
+- 「:term[驻波]{id="physics.oscillations-waves.standing-wave"}里:term[坡印亭矢量]{id="physics.electromagnetism.poynting-vector"}平均为零，所以里面没有能量。」能量密度不为零，能量储存在驻波里，只是平均下来不流动。

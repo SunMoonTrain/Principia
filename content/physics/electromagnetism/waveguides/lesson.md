@@ -53,7 +53,7 @@ $\vb B$的每个分量都满足[真空中的电磁波](lesson:physics.electromag
 ::anchor{id="def-cutoff-frequency"}
 $\omega_{mn}$叫作$\mathrm{TE}_{mn}$模的截止频率（cutoff frequency）：$\omega>\omega_{mn}$时$k$是实数，这个模沿管传播；$\omega<\omega_{mn}$时$k^2<0$，取$k=-i\kappa$，$\kappa=\frac1c\sqrt{\omega_{mn}^2-\omega^2}$，场按$e^{-\kappa z}$沿管衰减，传不出去。
 
-为什么这样定义：$\omega_{mn}$是这个模能不能传播的分界。$a\ge b$时最低的截止频率属于$\mathrm{TE}_{10}$，换成频率是$f_{10}=\frac{\omega_{10}}{2\pi}=\frac c{2a}$，管宽正好是真空中半个波长；频率比它低，什么模都传不过去（横磁模的截止频率更高，见第 5 题）。频率远低于$\omega_{10}$时$\kappa\approx\frac{\omega_{10}}c=\frac\pi a$，每深入一个管宽，振幅就只剩$e^{-\pi}\approx\frac1{23}$。边界情况：$\omega=\omega_{mn}$时$k=0$，场沿管不变，波只在管壁之间来回反射，不向前走（见下面的两列平面波）。
+为什么这样定义：$\omega_{mn}$是这个模能不能传播的分界。$a\ge b$时最低的截止频率属于$\mathrm{TE}_{10}$，换成频率是$f_{10}=\frac{\omega_{10}}{2\pi}=\frac c{2a}$，管宽正好是真空中半个波长；频率比它低，什么模都传不过去（横磁模的截止频率更高，见第 5 题）。频率远低于$\omega_{10}$时$\kappa\approx\frac{\omega_{10}}c=\frac\pi a$，每深入一个管宽，振幅就只剩$e^{-\pi}\approx\frac1{23}$。边界情况：$\omega=\omega_{mn}$时$k=0$，场沿管不变，波只在管壁之间来回反射，不向前走，见下面的两列平面波（plane wave）。
 
 微波炉门上的小孔可以看成一段段很短的管子。孔的直径比微波的波长（约$12\,\mathrm{cm}$，对应微波炉所用的约$2.45\,\mathrm{GHz}$）小得多，截止频率比微波的频率高得多，微波在孔里迅速衰减，金属板把它反射回炉内；可见光的频率比截止频率高得多，照样从孔里穿过（第 7 题是类似的例子）。
 
@@ -78,7 +78,7 @@ $$
 由$\cos\frac{\pi x}a\cos(\omega t-kz)=\frac12\bigl[\cos(\omega t-kz-\frac{\pi x}a)+\cos(\omega t-kz+\frac{\pi x}a)\bigr]$，$\mathrm{TE}_{10}$模是两列:term[平面电磁波]{id="physics.electromagnetism.em-wave"}的叠加，波矢（wave vector）分别是$\bigl(\frac\pi a,0,k\bigr)$和$\bigl(-\frac\pi a,0,k\bigr)$，大小都是$\frac\omega c$。两列波在两侧窄壁之间来回反射，沿锯齿形的路线前进，传播方向和管轴的夹角$\alpha$满足$\cos\alpha=\frac{ck}\omega$。频率降到截止频率时$k=0$，$\alpha=90^\circ$，波垂直于窄壁来回反射，不再沿管前进；频率越高，$\alpha$越小，波越接近沿管直走。
 
 ::anchor{id="thm-guide-velocities"}
-定理（波导中的相速度和群速度）：$\mathrm{TE}_{mn}$模的相速度（phase velocity）$v_{\mathrm p}=\frac\omega k=\frac{c}{\sqrt{1-\omega_{mn}^2/\omega^2}}$大于$c$，群速度（group velocity）$v_{\mathrm g}=\dv\omega k=c\sqrt{1-\frac{\omega_{mn}^2}{\omega^2}}$小于$c$，$v_{\mathrm p}v_{\mathrm g}=c^2$；管内波长（guide wavelength）$\lambda_{\mathrm g}=\frac{2\pi}k$比真空中同一频率的波长长。
+定理（波导中的:term[相速度]{id="physics.oscillations-waves.phase-velocity"}和群速度）：$\mathrm{TE}_{mn}$模的相速度（phase velocity）$v_{\mathrm p}=\frac\omega k=\frac{c}{\sqrt{1-\omega_{mn}^2/\omega^2}}$大于$c$，群速度（group velocity）$v_{\mathrm g}=\dv\omega k=c\sqrt{1-\frac{\omega_{mn}^2}{\omega^2}}$小于$c$，$v_{\mathrm p}v_{\mathrm g}=c^2$；管内波长（guide wavelength）$\lambda_{\mathrm g}=\frac{2\pi}k$比真空中同一频率的波长长。
 
 证明思路：$\omega^2=c^2k^2+\omega_{mn}^2$两边对$k$求导，得$\omega\dv\omega k=c^2k$，所以$v_{\mathrm g}=\frac{c^2k}\omega=\frac{c^2}{v_{\mathrm p}}$，再代入$ck=\sqrt{\omega^2-\omega_{mn}^2}$。用两列平面波看更直观：每列波以$c$沿锯齿形路线走，沿管前进的速度是$c\cos\alpha=\frac{c^2k}\omega$，正是群速度；波峰和管轴的交点移动得比$c$快，速度是$\frac c{\cos\alpha}$，正是相速度。
 
@@ -88,7 +88,7 @@ $$
 
 ![矩形波导里 TE10 模某一时刻的场：左边是横截面，电场竖直向上，中间最强，两侧窄壁处为零；右边是从上往下看的同一时刻的场，磁场线在管内绕成闭合的圈，电场垂直纸面，朝外、朝里交替](te10-mode.svg)
 
-图里是$t=0$时的$\mathrm{TE}_{10}$模。左边是:term[电场]{id="physics.electromagnetism.electric-field"}最强的那个横截面，电场沿$y$方向，中间最强，两侧窄壁处为零。右边从$+y$方向往下看，画出一个管内波长的范围：闭合的曲线是:term[磁场线]{id="physics.electromagnetism.magnetic-field-line"}，相邻两圈转向相反；小圆圈是垂直纸面的电场，⊙ 朝外，⊗ 朝里，在两圈之间最强。整个图样以相速度沿$z$方向移动。
+图里是$t=0$时的$\mathrm{TE}_{10}$模。左边是:term[电场]{id="physics.electromagnetism.electric-field"}最强的那个横截面，电场沿$y$方向，中间最强，两侧窄壁处为零。右边从$+y$方向往下看，画出一个管内波长的范围：闭合的曲线是:term[磁场线]{id="physics.electromagnetism.magnetic-field-line"}，相邻两圈转向相反；小圆圈是垂直纸面的电场，⊙ 朝外，⊗ 朝里，在两圈之间最强。整个图样以:term[相速度]{id="physics.oscillations-waves.phase-velocity"}沿$z$方向移动。
 
 :::anim{component="function-plot"}
 range: { x: [0, 4], y: [0, 4.5] }
@@ -132,15 +132,15 @@ WR-90 是 X 波段（约$8$到$12\,\mathrm{GHz}$）常用的标准矩形波导�
 
 ### 例 2　管内波长和群速度
 
-上面的 WR-90 传送频率为$10.0\,\mathrm{GHz}$的微波，求管内波长、相速度和群速度。
+上面的 WR-90 传送频率为$10.0\,\mathrm{GHz}$的微波，求管内波长、:term[相速度]{id="physics.oscillations-waves.phase-velocity"}和群速度。
 
 解：$\frac{f_{10}}f\approx0.6562$，$\sqrt{1-0.6562^2}\approx0.7546$。真空中的波长$\lambda=\frac cf=30.0\,\mathrm{mm}$，管内波长$\lambda_{\mathrm g}=\frac{\lambda}{0.7546}\approx39.8\,\mathrm{mm}$；相速度$v_{\mathrm p}=\frac{c}{0.7546}\approx3.98\times10^8\,\mathrm{m/s}$，群速度$v_{\mathrm g}=0.7546c\approx2.26\times10^8\,\mathrm{m/s}$，两者的乘积正是$c^2$。
 
-管内波长比真空中的长，因为两列平面波的波矢斜着走，沿管轴的分量$k$比$\frac\omega c$小。把管的一端用金属板封住，管里形成驻波（standing wave），相邻两个波节（node）相距$\frac{\lambda_{\mathrm g}}2$，不是$\frac\lambda2$。
+管内波长比真空中的长，因为两列平面波的波矢斜着走，沿管轴的分量$k$比$\frac\omega c$小。把管的一端用金属板封住，管里形成:term[驻波]{id="physics.oscillations-waves.standing-wave"}（standing wave），相邻两个:term[波节]{id="physics.oscillations-waves.node"}（node）相距$\frac{\lambda_{\mathrm g}}2$，不是$\frac\lambda2$。
 
 ## 常见误区
 
-- 「波导里的相速度大于$c$，违反相对论。」相速度是波峰沿管移动的速度，不输送能量，也不传递信号；能量和信号以群速度沿管前进，群速度小于$c$（第 6 题）。
+- 「波导里的:term[相速度]{id="physics.oscillations-waves.phase-velocity"}大于$c$，违反相对论。」相速度是波峰沿管移动的速度，不输送能量，也不传递信号；能量和信号以群速度沿管前进，群速度小于$c$（第 6 题）。
 - 「频率低于截止频率的微波进入波导，能量被管壁吸收了。」理想管壁不吸收能量。这时场沿管按指数衰减，平均起来不向前输送能量（第 6 题），送进来的能量被反射回去。
 - 「管子越粗，截止频率越低，越好用。」粗了，同一频率下能传播的模也多了；几个模的群速度不同，同一个信号分成几路先后到达，波形就变了。所以一般选尺寸，让工作频率只高于$\mathrm{TE}_{10}$的截止频率（例 1）。
 - 「横电波里:term[电场]{id="physics.electromagnetism.electric-field"}和:term[磁场]{id="physics.electromagnetism.magnetic-field"}都垂直于管轴，和平面波一样。」横电波只是电场没有沿管的分量，磁场有$B_z$；空心管里电场、磁场都垂直于管轴的:term[横电磁波]{id="physics.electromagnetism.em-wave"}根本不存在。

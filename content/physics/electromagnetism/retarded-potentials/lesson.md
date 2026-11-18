@@ -19,7 +19,7 @@ status: reviewed
 
 ### 推迟时间
 
-:term[洛伦茨规范]{id="physics.electromagnetism.lorenz-gauge"}（Lorenz gauge）下，标势（scalar potential）和矢势（vector potential）满足$\lap\varphi-\frac1{c^2}\frac{\partial^2\varphi}{\partial t^2}=-\frac\rho{\varepsilon_0}$、$\lap\vb A-\frac1{c^2}\frac{\partial^2\vb A}{\partial t^2}=-\mu_0\vb J$（见[电磁势与规范变换](lesson:physics.electromagnetism.gauge-potentials#def-lorenz-gauge)），四个方程形式一样，都是以$c$传播的有源波动方程（inhomogeneous wave equation）。没有源的地方，三维波动方程有球对称的解$\frac{f(t-r/c)}{r}$，它是以$c$从原点向外传播的球面波（spherical wave）：$r$处$t$时刻的值，是原点在$t-\frac rc$时刻「发出」的（见[三维波动方程与惠更斯原理](lesson:math.pde.wave-3d)）。
+:term[洛伦茨规范]{id="physics.electromagnetism.lorenz-gauge"}（Lorenz gauge）下，标势（scalar potential）和矢势（vector potential）满足$\lap\varphi-\frac1{c^2}\frac{\partial^2\varphi}{\partial t^2}=-\frac\rho{\varepsilon_0}$、$\lap\vb A-\frac1{c^2}\frac{\partial^2\vb A}{\partial t^2}=-\mu_0\vb J$（见[电磁势与规范变换](lesson:physics.electromagnetism.gauge-potentials#def-lorenz-gauge)），四个方程形式一样，都是以$c$传播的有源波动方程（inhomogeneous wave equation）。没有源的地方，三维波动方程有球对称的解$\frac{f(t-r/c)}{r}$，它是以$c$从原点向外传播的:term[球面波]{id="physics.oscillations-waves.spherical-wave"}（spherical wave）：$r$处$t$时刻的值，是原点在$t-\frac rc$时刻「发出」的（见[三维波动方程与惠更斯原理](lesson:math.pde.wave-3d)）。
 
 ::anchor{id="def-retarded-time"}
 光从源点$\vb r'$走到场点$\vb r$要用时间$\frac{|\vb r-\vb r'|}{c}$；$t_{\mathrm r}=t-\frac{|\vb r-\vb r'|}{c}$叫作源点$\vb r'$对于场点$\vb r$、时刻$t$的:term[推迟时间]{id="physics.electromagnetism.retarded-time"}（retarded time）。

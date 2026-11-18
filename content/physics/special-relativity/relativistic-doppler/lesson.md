@@ -4,7 +4,7 @@ title: |
   相对论多普勒效应
 goal: |
   会用四维波矢推出相对论的多普勒公式，并区分纵向和横向多普勒效应。
-prerequisites: [physics.special-relativity.four-vectors, physics.oscillations-waves.doppler-effect]
+prerequisites: [physics.special-relativity.four-vectors, physics.oscillations-waves.doppler-effect, physics.oscillations-waves.waves-in-3d]
 minutes: 35
 summary: |
   波的相位在各惯性系相同，由此得到四维波矢和相对论多普勒公式。
@@ -13,7 +13,7 @@ status: reviewed
 
 ## 这一节要回答的问题
 
-声波的多普勒效应（Doppler effect）要分清是波源在动还是观察者在动：两者相对空气的速度不同，频移就不同。光传播不需要介质，只有光源和观察者的相对速度有意义，光的多普勒公式该是什么样？光源从观察者面前横着飞过时，频率变不变？
+声波的多普勒效应（Doppler effect）要分清是波源在动还是观察者在动：两者相对空气的速度不同，频移（frequency shift）就不同。光传播不需要介质，只有光源和观察者的相对速度有意义，光的多普勒公式该是什么样？光源从观察者面前横着飞过时，频率变不变？
 
 ## 讲解
 
@@ -41,7 +41,7 @@ status: reviewed
 ::anchor{id="def-doppler-types"}
 $\theta=0$或$\pi$，即光源正对着观察者飞来或背着他飞走时的频移，叫作:term[纵向多普勒效应]{id="physics.special-relativity.longitudinal-doppler"}（longitudinal Doppler effect）：飞来时$\omega=\omega_0\sqrt{\frac{1+\beta}{1-\beta}}$，飞走时$\omega=\omega_0\sqrt{\frac{1-\beta}{1+\beta}}$；在观察者的惯性系里$\theta=\frac\pi2$时的频移$\omega=\frac{\omega_0}{\gamma}$，叫作:term[横向多普勒效应]{id="physics.special-relativity.transverse-doppler"}（transverse Doppler effect）。
 
-为什么这样分：纵向的频移是一阶的，$\omega\approx\omega_0(1\pm\beta)$，声波也有；横向的频移是二阶的，$\frac1\gamma\approx1-\frac{\beta^2}2$，是光源的钟走慢了（:term[时间延缓]{id="physics.special-relativity.time-dilation"}，time dilation），声波的公式里没有。纵向的因子$\sqrt{\frac{1+\beta}{1-\beta}}$恰好是声波两个公式的几何平均：波源运动时是$\frac{1}{1-\beta}$，观察者运动时是$1+\beta$，三者在一阶上相同，二阶上不同。边界情况：「横向」要说清是哪个惯性系里的直角，在光源的静止系里沿$90^\circ$发出的光，观察者测到的反而是蓝移$\gamma\omega_0$（见 p4）。
+为什么这样分：纵向的频移是一阶的，$\omega\approx\omega_0(1\pm\beta)$，声波也有；横向的频移是二阶的，$\frac1\gamma\approx1-\frac{\beta^2}2$，是光源的钟走慢了（:term[时间延缓]{id="physics.special-relativity.time-dilation"}，time dilation），声波的公式里没有。纵向的因子$\sqrt{\frac{1+\beta}{1-\beta}}$恰好是声波两个公式的几何平均：波源运动时是$\frac{1}{1-\beta}$，观察者运动时是$1+\beta$，三者在一阶上相同，二阶上不同。边界情况：「横向」要说清是哪个惯性系里的直角，在光源的静止系里沿$90^\circ$发出的光，观察者测到的反而是蓝移（blueshift）$\gamma\omega_0$（见 p4）。
 
 ### 实验检验
 
@@ -73,7 +73,7 @@ sliders:
       光源的速度$\beta=v/c$
 :::
 
-横轴是观察者:term[惯性系]{id="physics.special-relativity.inertial-frame"}里的夹角$\theta$（弧度，从$0$到$\pi$），纵轴是频率比$\frac{\omega}{\omega_0}$。相对论的曲线处处是声波式公式（波源在介质里运动）的$\frac1\gamma$倍：$\theta=0$附近两者都是蓝移，$\theta=\pi$附近都是红移。标出的点在$\theta=\frac\pi2$，声波式的公式在那里没有频移，相对论给出红移$\frac1\gamma$；不发生频移的方向因此偏向前方。
+横轴是观察者:term[惯性系]{id="physics.special-relativity.inertial-frame"}里的夹角$\theta$（弧度，从$0$到$\pi$），纵轴是频率比$\frac{\omega}{\omega_0}$。相对论的曲线处处是声波式公式（波源在介质里运动）的$\frac1\gamma$倍：$\theta=0$附近两者都是蓝移，$\theta=\pi$附近都是红移（redshift）。标出的点在$\theta=\frac\pi2$，声波式的公式在那里没有频移，相对论给出红移$\frac1\gamma$；不发生频移的方向因此偏向前方。
 
 ## 例题
 

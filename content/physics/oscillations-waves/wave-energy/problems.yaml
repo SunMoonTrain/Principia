@@ -1,0 +1,179 @@
+- id: p1
+  tier: easy
+  statement: |
+    一根弦的线密度是$4.0\,\mathrm{g/m}$，张力是$40\,\mathrm N$，弦上有频率$50\,\mathrm{Hz}$、振幅$3.0\,\mathrm{mm}$的简谐波。求它的平均功率，以瓦为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 0.5*sqrt(40*0.004)*(2*pi*50)^2*0.003^2
+    unit: |
+      $\mathrm W$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      平均功率$\bar P=\frac12Z\omega^2A^2$，阻抗$Z=\sqrt{T\mu}$。
+    - |
+      $Z=\sqrt{40\times4.0\times10^{-3}}=0.40\,\mathrm{kg/s}$，$\omega=100\pi\,\mathrm{rad/s}$。
+    - |
+      $\bar P=\frac12\times0.40\times(100\pi)^2\times(3.0\times10^{-3})^2\,\mathrm W\approx0.178\,\mathrm W$。
+  solution: |
+    $Z=\sqrt{T\mu}=0.40\,\mathrm{kg/s}$，$\omega=2\pi f=100\pi\,\mathrm{rad/s}$，$\bar P=\frac12Z\omega^2A^2=\frac12\times0.40\times(100\pi)^2\times(3.0\times10^{-3})^2\,\mathrm W\approx0.178\,\mathrm W$。
+
+- id: p2
+  tier: easy
+  statement: |
+    关于弦上的波的能量，下面哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        行波里，弦上一小段的动能和势能此消彼长，总和不变
+      - |
+        简谐波的平均功率和振幅成正比
+      - |
+        行波的能流等于波速乘能量密度
+      - |
+        弦的末端固定时，末端处的能流为零
+      - |
+        在波峰处，弦的能量密度最大
+    value: [3, 4]
+  hints:
+    - |
+      行波里$\frac12\mu y_t^2=\frac12Ty_x^2$；$\bar P=\frac12Z\omega^2A^2$。
+    - |
+      $j=-Ty_xy_t$；波峰处$y_t$、$y_x$各是多少？
+    - |
+      A 错，两者相等、同时变大变小；B 错，和$A^2$成正比；C 对，$j=vu$。D 对，末端$y_t=0$；E 错，波峰处$y_t=y_x=0$，能量密度为零。
+  solution: |
+    选 C、D。A 错：行波里动能密度和势能密度时时相等，同时最大、同时为零；B 错：平均功率和振幅的平方成正比；C 对：$j=vu$。D 对：固定端$y_t=0$，$j=-Ty_xy_t=0$；E 错：波峰处弦不动（$y_t=0$）、也是平的（$y_x=0$），能量密度为零，最大的地方在平衡位置。
+
+- id: p3
+  tier: medium
+  statement: |
+    两根张力相同的弦连在一起，弦 2 的线密度是弦 1 的 81 倍。简谐波从弦 1 射到连接处，透射波的平均功率占入射波的百分之几？
+  answer:
+    type: number
+    value: 36
+  hints:
+    - |
+      $\frac{Z_2}{Z_1}=\sqrt{\frac{\mu_2}{\mu_1}}$，透射的功率占$\frac{Z_2}{Z_1}\tau^2$。
+    - |
+      $\frac{Z_2}{Z_1}=9$，$\tau=\frac{2}{1+9}=0.2$。
+    - |
+      $9\times0.2^2=0.36$，即$36\%$；反射的$r^2=0.64$，加起来是$1$。
+  solution: |
+    $\frac{Z_2}{Z_1}=9$，$r=\frac{1-9}{1+9}=-0.8$，$\tau=\frac2{10}=0.2$。透射的功率占$\frac{Z_2}{Z_1}\tau^2=9\times0.04=0.36$，即$36\%$；反射的占$r^2=0.64$。透射波的振幅只有入射波的$0.2$倍，可功率还有三分之一多，因为弦 2 的阻抗大。
+
+- id: p4
+  tier: medium
+  statement: |
+    一根弦的线密度是$5.0\,\mathrm{g/m}$，张力是$50\,\mathrm N$，弦上有频率$200\,\mathrm{Hz}$、振幅$1.0\,\mathrm{mm}$的简谐波。一个波长长的一段弦上平均有多少能量？以毫焦为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 0.5*0.005*(2*pi*200)^2*0.001^2*(sqrt(50/0.005)/200)*1000
+    unit: |
+      $\mathrm{mJ}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      平均能量密度$\bar u$和平均功率的关系是$\bar P=v\bar u$。
+    - |
+      $\bar u=\frac{\bar P}v=\frac{Z\omega^2A^2}{2v}=\frac12\mu\omega^2A^2$，波长$\lambda=\frac vf$。
+    - |
+      $\bar u=\frac12\times5.0\times10^{-3}\times(400\pi)^2\times(1.0\times10^{-3})^2\,\mathrm{J/m}\approx3.95\times10^{-3}\,\mathrm{J/m}$，$v=100\,\mathrm{m/s}$，$\lambda=0.50\,\mathrm m$，能量约$1.97\,\mathrm{mJ}$。
+  solution: |
+    由$j=vu$，平均能量密度$\bar u=\frac{\bar P}v=\frac12\mu\omega^2A^2\approx3.95\times10^{-3}\,\mathrm{J/m}$（$\frac Zv=\mu$）。$v=\sqrt{\frac{50}{5.0\times10^{-3}}}=100\,\mathrm{m/s}$，$\lambda=\frac vf=0.50\,\mathrm m$，一个波长上的能量$\bar u\lambda\approx1.97\times10^{-3}\,\mathrm J$，即约$1.97\,\mathrm{mJ}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    弦上有两列振幅、频率都相同，传播方向相反的简谐波：$y=A\cos(\omega t-kx)+A\cos(\omega t+kx)$，$\omega=vk$。
+
+    （1）把$y$化成乘积的形式，求能流$j(x,t)$。
+
+    （2）求一个周期里的平均能流。
+
+    （3）能量在哪里、怎样来回流动？
+  hints:
+    - |
+      和差化积：$y=2A\cos kx\cos\omega t$。
+    - |
+      $y_x=-2Ak\sin kx\cos\omega t$，$y_t=-2A\omega\cos kx\sin\omega t$，$j=-Ty_xy_t$。
+    - |
+      （1）$j=-TA^2k\omega\sin2kx\sin2\omega t$。（2）$\sin2\omega t$的平均为零，平均能流处处为零。（3）$\cos kx=0$的点始终不动，能流在那里时时为零，能量只在相邻两个这样的点之间来回流。
+  reference: |
+    （1）$y=2A\cos kx\cos\omega t$，$y_x=-2Ak\sin kx\cos\omega t$，$y_t=-2A\omega\cos kx\sin\omega t$，$j=-Ty_xy_t=-4TA^2k\omega\sin kx\cos kx\sin\omega t\cos\omega t=-TA^2k\omega\sin2kx\sin2\omega t$。
+
+    （2）$\sin2\omega t$在一个周期里正负抵消，平均能流处处为零：两列波各自带的能流大小相等、方向相反，抵消了。
+
+    （3）$\cos kx=0$的点（相邻两个相距$\frac\lambda2$）始终不动，$\sin kx\cos kx=0$，那里的能流时时为零；$\sin kx=0$的点能流也时时为零。能量就在它们之间来回流动：位移最大的时刻，弦静止，能量全是势能，集中在不动的点附近（那里斜率最大）；过了四分之一周期，弦拉直，能量全是动能，集中在振动最大的点附近。这种波叫驻波，见[驻波](lesson:physics.oscillations-waves.standing-waves)。
+
+- id: p6
+  tier: hard
+  statement: |
+    有人想不用斜率相等的条件，只用「连接处位移连续」和「能量守恒」求反射系数、透射系数（两根弦张力相同，阻抗之比$z=\frac{Z_2}{Z_1}$）。
+
+    （1）由$1+r=\tau$和$r^2+z\tau^2=1$解出$r$。
+
+    （2）会得到两组解。哪一组是对的？另一组错在哪里？
+
+    （3）由此说说，能量守恒能不能代替连接处的受力条件。
+  hints:
+    - |
+      把$\tau=1+r$代入，得到$r$的一元二次方程。
+    - |
+      $(1+z)r^2+2zr+z-1=0$，两个根是$\frac{1-z}{1+z}$和$-1$。
+    - |
+      $r=-1$、$\tau=0$满足这两个条件，可不满足斜率相等（$z$有限时）。
+  reference: |
+    （1）$r^2+z(1+r)^2=1$，整理得$(1+z)r^2+2zr+(z-1)=0$。判别式$4z^2-4(1+z)(z-1)=4$，$r=\frac{-z\pm1}{1+z}$，即$r=\frac{1-z}{1+z}$或$r=-1$。
+
+    （2）$r=\frac{1-z}{1+z}$、$\tau=\frac2{1+z}$是讲解里的结果，对。$r=-1$、$\tau=0$表示全部反射、一点不透射，像遇到固定端；这时连接处的位移恒为零，可入射波和反射波在那里的斜率$-\frac{F'}{v_1}+\frac{G'}{v_1}=-\frac{2F'}{v_1}$不为零，弦 2 静止、斜率为零，斜率相等的条件不满足，结受的横向合力不为零，而它没有质量。
+
+    （3）不能。能量守恒是一个条件，它是由运动方程和连接处的两个条件推出来的结果，比两个条件「弱」，单靠它和位移连续定不出唯一的解。用它来检验算出的系数很好，要求出系数还得用受力条件。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）简谐波的波峰处，弦弯得最厉害，为什么那里的能量密度反而是零？
+
+    （2）弦上势能密度最大的地方在哪里？
+
+    （3）这和弹簧被拉长的势能有什么相同、有什么不同？
+  hints:
+    - |
+      势能来自弦被拉长；拉长多少，看的是斜率还是弯曲？
+    - |
+      $\frac12Ty_x^2$，斜率最大的地方。
+    - |
+      弹簧的势能看伸长量；弦的一小段的「伸长量」是$\frac12y_x^2\Delta x$。
+  reference: |
+    （1）一小段弦的伸长量是$\frac12y_x^2\Delta x$，只和斜率有关；波峰处虽然弯得最厉害，可切线是水平的，那一小段几乎没有被拉长，势能为零；它又正好停住，动能也为零。
+
+    （2）斜率最大的地方，即位移为零的地方；行波里那里横向速度也最大，动能密度同样最大。
+
+    （3）相同的是：势能都等于张力（弹力）对伸长做的功，和伸长成二次关系。不同的是：弹簧的伸长由端点的位移决定，弦的一小段的伸长由它的倾斜决定；整根弦被拉长的总量要把各段加起来，弯曲本身不直接储存能量（这是理想的、没有硬度的弦；有硬度的钢琴弦，弯曲也会储存能量）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    用手上下抖动一根长绳的一端，在绳上产生简谐波。
+
+    （1）振幅不变，抖得越快越累。为什么？
+
+    （2）换一根更重的绳，同样的频率和振幅，手的平均功率怎样变？
+
+    （3）如果绳子的另一端固定在墙上，手开始时一直在做功，过一会儿还要不要一直做功？
+  hints:
+    - |
+      $\bar P=\frac12Z\omega^2A^2$。
+    - |
+      阻抗$Z=\sqrt{T\mu}$。
+    - |
+      波到了墙那里会反射回来；墙那一端的能流是多少？
+  reference: |
+    （1）$\bar P$和$\omega^2$成正比：频率变为原来的 2 倍，手的平均功率变为原来的 4 倍。
+
+    （2）张力不变时，$Z=\sqrt{T\mu}$随线密度增大，平均功率和$\sqrt\mu$成正比，重绳更费力。
+
+    （3）墙那一端$y_t=0$，能流为零，能量流不出去。反射波回到手那里以后，绳上逐渐形成来回的波，手送进去的能量又会被送回来。没有损耗、频率又不是绳子的固有频率时，绳上最后形成稳定的振动，手在一个周期里时而送出、时而收回能量，平均下来不再做功；频率正好是固有频率时，送进去的能量越积越多，振幅不断变大（见[驻波](lesson:physics.oscillations-waves.standing-waves)）。实际的绳子有摩擦和空气阻力，手要一直补上这部分损耗。
