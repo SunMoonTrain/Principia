@@ -7,17 +7,33 @@ export interface DiagramNode {
 }
 interface Terminal { node: DiagramNode; pin: number }
 export interface Wire { from: Terminal; to: Terminal; signal: string; path: string }
+const trackSpacing = 8;
+interface Occupied { from: Terminal; lo: number; hi: number }
+type Channel = Occupied[][];
+
+/** 通道两端也要留出转弯位置；同一输出脚扇出的线可以共享。 */
+function reserve(channel: Channel, from: Terminal, start: number, end: number) {
+  const lo = Math.min(start, end), hi = Math.max(start, end);
+  let lane = channel.findIndex(track => track.every(s => s.from === from || s.hi < lo || hi < s.lo));
+  if (lane === -1) lane = channel.push([]) - 1;
+  channel[lane].push({ from, lo, hi });
+  return lane;
+}
+
 export function pinPoint(node: DiagramNode, index: number, output: boolean) {
   const count = output ? node.outs.length : node.ins.length;
   const header = node.kind === 'module' || node.type === 'dff' ? 32 : 0;
-  return { x: output ? node.x + node.w : node.x, y: node.y + header + (node.h - header) * (index + 1) / (count + 1) };
+  const center = node.y + header + (node.h - header) * (index + 1) / (count + 1);
+  // 输入和输出脚分别占偶数道和奇数道，相邻列伸向通道的短横线也能分开。
+  const offset = output ? trackSpacing : 0, pitch = 2 * trackSpacing;
+  return { x: output ? node.x + node.w : node.x, y: Math.round((center - offset) / pitch) * pitch + offset };
 }
 export function layoutCircuit(p: Netlist) {
   const nodes: DiagramNode[] = [], sources = new Map<string, Terminal>();
   function add(name: string, kind: DiagramNode['kind'], type: string, ins: Pin[], outs: Pin[], at?: [number, number]) {
     const key = kind + ':' + name;
     const h = kind === 'module' || type === 'dff' ? 32 + 22 * (1 + Math.max(ins.length, outs.length)) :
-      kind === 'gate' ? Math.max(48, 14 * (ins.length + 1)) : 36;
+      kind === 'gate' ? Math.max(48, 2 * trackSpacing * (ins.length + 1)) : 36;
     const titleWidth = Math.max(name.length, type.length) * 8 + 34;
     const pinsWidth = kind === 'module' ? 8 * (Math.max(0, ...ins.map(i => i.name.length)) + Math.max(0, ...outs.map(i => i.name.length))) + 44 : 0;
     const node = { key, name, kind, type, ins, outs, at, column: 0, row: 0, x: 0, y: 0, w: Math.max(90, titleWidth, pinsWidth), h };
@@ -54,7 +70,6 @@ export function layoutCircuit(p: Netlist) {
     if (n.kind === 'output') n.column = right;
   });
   const columns = [...new Set(nodes.map(n => n.column))].sort((a,b) => a-b);
-  let x = 24;
   for (const col of columns) {
     const group = nodes.filter(n => n.column === col);
     const used = new Set<number>();
@@ -66,25 +81,49 @@ export function layoutCircuit(p: Netlist) {
         while (requested.has(free)) free++;
         n.row = free++;
       }
-      used.add(n.row); n.x = x;
+      used.add(n.row);
     }
-    x += Math.max(...group.map(n => n.w)) + 70;
   }
-  let y = 20;
-  const lanes = new Map<number, number>();
-  for (const row of [...new Set(nodes.map(n => n.row))].sort((a,b) => a-b)) {
-    const group = nodes.filter(n => n.row === row), height = Math.max(...group.map(n => n.h));
-    for (const n of group) n.y = y + (height - n.h) / 2;
-    lanes.set(row, y + height + 9); y += height + 34;
-  }
-  const wires: Wire[] = [];
-  for (const n of nodes) n.ins.forEach(({ signal }, i) => {
-    const from = driver(signal), a = pinPoint(from.node, from.pin, true), b = pinPoint(n, i, false);
-    const lane = (wires.length % 5) * 4;
-    const near = columns.indexOf(n.column) === columns.indexOf(from.node.column) + 1;
-    const route = near ? 'H' + (b.x - 22 - lane) + 'V' + b.y :
-      'H' + (from.node.x + from.node.w + 14 + lane) + 'V' + (lanes.get(from.node.row)! + lane) + 'H' + (b.x - 16 - lane) + 'V' + b.y;
-    wires.push({ from, to: { node: n, pin: i }, signal, path: 'M' + a.x + ' ' + a.y + route + 'H' + b.x });
+  const rows = [...new Set(nodes.map(n => n.row))].sort((a,b) => a-b);
+  const vertical: Channel[] = Array.from({ length: columns.length + 1 }, () => []);
+  const horizontal: Channel[] = rows.map(() => []);
+  const routes = nodes.flatMap(n => n.ins.map(({ signal }, pin) => {
+    const from = driver(signal), to = { node: n, pin };
+    const exit = columns.indexOf(from.node.column) + 1, entry = columns.indexOf(n.column);
+    const row = rows.indexOf(from.node.row), target = rows.indexOf(n.row);
+    // 偶数表示元件行，奇数表示行下方的通道。先按区间分道，随后按道数定间距。
+    const adjacent = exit === entry;
+    const startLane = reserve(vertical[exit], from, 2 * row, adjacent ? 2 * target : 2 * row + 1);
+    const endLane = adjacent ? startLane : reserve(vertical[entry], from, 2 * row + 1, 2 * target);
+    const across = adjacent ? -1 : reserve(horizontal[row], from, exit, entry);
+    return { from, to, signal, exit, entry, row, startLane, endLane, across };
+  }));
+
+  let width = 0;
+  const channelX = vertical.map((lanes, i) => {
+    const first = width + 20;
+    width += Math.max(i > 0 && i < columns.length ? 56 : 24, lanes.length ? 40 + (lanes.length - 1) * trackSpacing : 0);
+    if (i < columns.length) {
+      const group = nodes.filter(n => n.column === columns[i]);
+      for (const n of group) n.x = width;
+      width += Math.max(...group.map(n => n.w));
+    }
+    return first;
   });
-  return { nodes, wires, width: x - 46, height: y };
+  let height = 20;
+  const channelY = rows.map((row, i) => {
+    const group = nodes.filter(n => n.row === row), tallest = Math.max(...group.map(n => n.h));
+    for (const n of group) n.y = height + (tallest - n.h) / 2;
+    height += tallest;
+    const first = height + 16;
+    height += 32 + Math.max(0, horizontal[i].length - 1) * trackSpacing;
+    return first;
+  });
+  const wires: Wire[] = routes.map(({ from, to, signal, exit, entry, row, startLane, endLane, across }) => {
+    const a = pinPoint(from.node, from.pin, true), b = pinPoint(to.node, to.pin, false);
+    let path = 'M' + a.x + ' ' + a.y + 'H' + (channelX[exit] + startLane * trackSpacing);
+    if (across >= 0) path += 'V' + (channelY[row] + across * trackSpacing) + 'H' + (channelX[entry] + endLane * trackSpacing);
+    return { from, to, signal, path: path + 'V' + b.y + 'H' + b.x };
+  });
+  return { nodes, wires, width, height };
 }

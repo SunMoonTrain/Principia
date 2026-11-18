@@ -107,3 +107,52 @@ it('到稳定粒度也能找到周期超过 256 拍的组合反馈', () => {
   h.step('到稳定');
   expect([h.state.tick, h.state.period, h.state.trace.length]).toEqual([323, 323, 64]);
 });
+
+it.each(['到稳定','半个周期'])('%s 限制实际运算量，预览、继续和重放都保留逐拍结果', grain => {
+  const clocked = grain === '半个周期';
+  const gates = [gate('ring', 'not', 'ring')];
+  for (let i = 0; i < 11; i++) gates.push(gate('n'+i, 'not', 'q'+i),
+    gate('q'+i, 'dff', 'n'+i, i ? 'q'+(i-1) : 'ring'));
+  const p: Netlist = { inputs: {}, gates, outputs: { Y: 'q10' }, clock: clocked ? { every: 3000 } : undefined };
+  const h = hist(p), ref = hist(p);
+  h.preview(200, grain);
+  expect(h.end).toBe(1); expect(h.state.tick).toBe(0);
+  h.step(grain);
+  const first = h.state.tick;
+  expect(first).toBe(1024); expect(h.pause || h.done).toBe(false);
+  expect(h.events[0].text).toContain(clocked ? '还没到下一次 CLK 翻转' : '还没稳定，也没发现重复');
+  expect(machine.observe(h.state)).toMatchObject({ stable: 0, osc: 0 });
+  const expectedEnd = clocked ? 3000 : 4097;
+  for (let from = first; from < expectedEnd; from += 1024) {
+    h.step(grain);
+    expect(h.state.tick).toBe(Math.min(from + 1024, expectedEnd));
+    ref.seek(h.state.tick);
+    expect(h.state.trace).toEqual(ref.state.trace); expect(h.state.period).toBe(ref.state.period);
+  }
+  expect(clocked ? h.state.tick : h.state.period).toBe(clocked ? 3000 : 4096);
+  const end = h.state, last = h.index;
+  h.seek(1); h.truncate(); h.seek(last, grain);
+  expect(h.state.trace).toEqual(end.trace); expect(h.state.period).toBe(end.period);
+});
+
+it('第 0 拍时钟输入已高时不采样，第一次实际的上升沿才采样', () => {
+  const h = hist({ inputs: { D: 1, C: 1 }, init: { buf: 1 }, outputs: { Q: 'q', Qb: 'qb' },
+    gates: [gate('buf','buffer','C'), gate('q','dff','D','C'), gate('qb','dff','D','buf')] });
+  h.step(); expect(machine.observe(h.state)).toMatchObject({ Q: 0, Qb: 0 });
+  h.edit({ C: 0 }); h.step(); h.edit({ C: 1 }); h.step();
+  expect(machine.observe(h.state)).toMatchObject({ Q: 1, Qb: 0 });
+  h.step(); expect(machine.observe(h.state)).toMatchObject({ Q: 1, Qb: 1 });
+});
+
+it('半周期仅剩少量计算预算时发现重复，仍返回连续 64 拍的波形', () => {
+  const ring = (size: number): Module => ({ inputs: [], outputs: { out: 'b0' },
+    gates: Array.from({ length: size }, (_, i) => gate('b'+i, 'buffer', 'b'+((i+1) % size))) });
+  const p: Netlist = { inputs: {}, modules: { r31: ring(31), r32: ring(32) },
+    gates: [gate('p','r31'), gate('q','r32')], outputs: { P: 'p.out', Q: 'q.out' },
+    init: { 'p.b0': 1, 'q.b0': 1 }, clock: { every: 50000 } };
+  const h = hist(p), ref = hist(p);
+  h.step('半个周期'); // 第 992 拍首次重复，本步只余 32 次实际计算。
+  expect(h.state.tick).toBe(1024);
+  ref.seek(1024);
+  expect(h.state.trace).toEqual(ref.state.trace);
+});

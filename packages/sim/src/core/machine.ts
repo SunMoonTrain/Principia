@@ -10,6 +10,8 @@ export interface StepResult<S> {
   done?: boolean;
   /** 停止连续播放，仍允许读者单步（例如电路检测到振荡）。 */
   pause?: boolean;
+  /** 本步实际执行的基本步数，供进度条限制一次预计算的工作量。 */
+  previewCost?: number;
 }
 
 export interface Machine<P, S> {
@@ -67,7 +69,7 @@ export class History<P, S> {
     this.current = result.state;
     this.cursor++;
     this.grains.push(granularity);
-    this.log.push({ events: result.events, done: result.done, pause: result.pause });
+    this.log.push({ events: result.events, done: result.done, pause: result.pause, previewCost: result.previewCost });
     this.snapshots.set(this.cursor, this.current);
     const expired = this.cursor - this.limit;
     if (expired > 0 && expired % this.interval !== 0 && !this.edits.has(expired)) this.snapshots.delete(expired);
@@ -90,7 +92,11 @@ export class History<P, S> {
   preview(count: number, granularity?: string): void {
     const current = this.cursor;
     this.seek(this.end);
-    for (let i = 0; i < count && !this.done && !this.pause; i++) this.step(granularity);
+    let budget = count;
+    while (budget > 0 && !this.done && !this.pause) {
+      this.step(granularity);
+      budget -= Math.max(1, this.log[this.cursor].previewCost ?? 1);
+    }
     this.seek(current);
   }
 
