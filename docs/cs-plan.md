@@ -18,7 +18,8 @@
 
 | 台阶 | 内容 | 状态 | 分支 | 审查报告 |
 | --- | --- | --- | --- | --- |
-| C0 | 地基 | 可以发给 GPT（这份方案已在 main 上） | `cs/c0` | `docs/reviews/cs-c0.md` |
+| C0 | 地基 | 已合并进 main（2026-11-18，`98c4177`；审了两轮，第一轮重要 1、小问题 3） | `cs/c0` | `docs/reviews/cs-c0.md` |
+| C1 | 数据的表示 | 下一级 | `cs/c1` | `docs/reviews/cs-c1.md` |
 
 ## 目标
 
@@ -250,7 +251,7 @@ answer:
 - **清单写完整、能跑**，不写省略号式的伪代码：
   - Rust：只用标准库，按 2024 版写，能用 `rustc --edition 2024` 直接编译；要运行的写 `fn main`。清单里第一次出现的 Rust 写法加一行注释（`let mut`、`u8`、`as`、`&` 这类）；要先懂所有权、生命周期才看得懂的例子不放，交给模拟器讲。数据的表示正好用得上 `u8`、`i8`、`wrapping_add`、`overflowing_add`、`f32::to_bits` 这些把位数和溢出写在明面上的写法。
   - TypeScript：能通过 `tsc --strict`；浏览器里的例子按 DOM 的类型写。
-  - Python：Python 3（这台电脑上是 3.13），只用标准库；机器学习、深度学习可以用 NumPy（这台电脑还没装，见「审查补充」）。
+  - Python：Python 3（这台电脑上是 3.13），只用标准库；机器学习、深度学习可以用 NumPy（这台电脑上是 2.5.5）。
   - GLSL：照 ShaderMind 课程的写法：类 Shadertoy 的 `void mainImage(out vec4 fragColor, in vec2 fragCoord)`；居中、按短边归一化的坐标 `vec2 p = (fragCoord * 2.0 - iResolution.xy) / min(iResolution.x, iResolution.y);`；抗锯齿写 `smoothstep(px, -px, d)`；公共函数和 ShaderMind 的 `common.glsl` 同名同实现。清单要能在 `shader` 组件里编译运行。
 - **题目**：简单题、中等题可以写「先算，再用上面的模拟器验证」。考的是知道怎么设、为什么，不出照着默认参数读一个数就能答的题（「图和动画不要画出简单题、中等题正好要算的那组数」的推广）。
 - **证明深度**：cs 的领域一般取 `sketch`（正确性证明放进难题），计算理论取 `full`。批次 0 时由写内容会话提，审目录时定。
@@ -259,7 +260,7 @@ answer:
 
 - 答案有外部真值的（浮点数的位、补码、UTF-8 编码），验算脚本（TypeScript）用运行时自带的 `DataView`、`Math.fround`、`BigInt`、`TextEncoder` 独立算，不用模拟器的内核。
 - 答案由模拟器的模型定义的（P8 的周期、缓存的命中缺失、A* 扩展了几个结点），验算脚本可以调内核（模型就是定义），但每节至少手算一个小例子，核对内核和附录 C 的约定一致。
-- 代码清单都走 `npm run listings`（C1 做）：Rust 用 `rustc` 编译、运行（这台电脑上有 rustc 1.95）；TypeScript 用 `tsc --strict` 检查（仓库里有 tsc 5.9）；Python 用 `python -I` 运行（这台电脑上有 Python 3.13）。NumPy 还没装：用了 NumPy 的清单标「缺 NumPy，没有检查」，第三阶段（机器学习）开写之前装上。GLSL 清单怎么查，C11 细化时定（打算构建时用 `@shaderfrog/glsl-parser` 查语法，浏览器里用 `shader` 组件真编译）。
+- 代码清单都走 `npm run listings`（C1 做）：Rust 用 `rustc` 编译、运行（这台电脑上有 rustc 1.95）；TypeScript 用 `tsc --strict` 检查（仓库里有 tsc 5.9）；Python 用 `python -I` 运行（这台电脑上有 Python 3.13）。NumPy 已经装好（2.5.5）；换到没装 NumPy 的环境时，用了它的清单标「缺 NumPy，没有检查」。GLSL 清单怎么查，C11 细化时定（打算构建时用 `@shaderfrog/glsl-parser` 查语法，浏览器里用 `shader` 组件真编译）。
 
 ### 星图
 
@@ -385,7 +386,7 @@ answer:
 **做什么**
 
 1. 三个组件的内核、界面、规格、画廊演示，写回 `plan.md` 附录。参数写法见附录 B。
-2. 代码清单检查工具 `npm run listings -- [范围…]`（范围写学科、领域或小节的 id，同 `npm run statements`）：`rust` 代码块逐个用 `rustc --edition 2024` 编译，有 `fn main` 的再运行，没有的按库编译；`typescript` 代码块用 `tsc --strict --noEmit` 检查；`python` 代码块用 `python -I` 运行，用了 NumPy 而这台电脑没装时标「缺 NumPy，没有检查」。报错带文件和代码块里的行号；临时文件放系统临时目录，跑完删掉；没装 rustc 或 Python 时说明原因，跳过那一种。数据的表示是第一个用 Rust 清单的领域，开写之前要有这个工具。写回 `plan.md`「每批的流程」的审查清单。
+2. 代码清单检查工具 `npm run listings -- [范围…]`（范围写学科、领域或小节的 id，同 `npm run statements`）：`rust` 代码块逐个用 `rustc --edition 2024` 编译，有 `fn main` 的再运行，没有的按库编译；`typescript` 代码块用 `tsc --strict --noEmit` 检查；`python` 代码块用 `python -I` 运行，用了 NumPy 而当前环境没装时标「缺 NumPy，没有检查」。报错带文件和代码块里的行号；临时文件放系统临时目录，跑完删掉；没装 rustc 或 Python 时说明原因，跳过那一种。数据的表示是第一个用 Rust 清单的领域，开写之前要有这个工具。写回 `plan.md`「每批的流程」的审查清单。
 
 **验收**
 
@@ -583,7 +584,7 @@ answer:
 | 和正在写的内容批次互相干扰 | GPT 在单独的 worktree 和分支上做 |
 | GPT 不熟悉这个仓库的潜规则 | 提示词里列阅读清单和红线；验收数字写死；Claude 审 |
 | `plan.md` 越来越长 | 规矩按「写回方案的规则」写进对应小节；组件的约定集中在附录里一节 |
-| 清单写了却跑不通 | `npm run listings` 编译、运行 Rust、TypeScript、Python 清单；NumPy 在第三阶段之前装上；GLSL 在 `shader` 组件里真编译 |
+| 清单写了却跑不通 | `npm run listings` 编译、运行 Rust、TypeScript、Python（含 NumPy）清单；GLSL 在 `shader` 组件里真编译 |
 | 没有哪一节教 Rust，系统领域的清单却用它 | 清单里第一次出现的写法就地加注释；要先懂所有权、生命周期的例子不放，交给模拟器讲；你想系统学 Rust 时，再加一个讲 Rust 的领域 |
 
 ## 已定的决定
