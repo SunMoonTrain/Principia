@@ -1,0 +1,159 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$(1-i)^6$，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [0, 8]
+  hints:
+    - |
+      写成指数形式：$1-i=\sqrt2e^{-i\pi/4}$。
+    - |
+      由棣莫弗公式（de Moivre's formula），模变成$(\sqrt2)^6$，辐角变成$6\cdot\bigl(-\frac\pi4\bigr)$。
+    - |
+      $-\frac{3\pi}2$和$\frac\pi2$相差$2\pi$。
+  solution: |
+    $(1-i)^6=8e^{-3\pi i/2}$，而$e^{-3\pi i/2}=i$，所以$(1-i)^6=8i$。也可以先算$(1-i)^2=-2i$，再立方：$(-2i)^3=8i$。实部$0$，虚部$8$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列复数中，满足$z^4=16$的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $2i$
+      - |
+        $1+i$
+      - |
+        $-2$
+      - |
+        $\sqrt2+\sqrt2i$
+    value: [1, 3]
+  hints:
+    - |
+      $16$的四次方根有四个，模都是$2$。
+    - |
+      它们的辐角是$\frac{2k\pi}4$，$k=0,1,2,3$。
+    - |
+      四个根是$\pm2$、$\pm2i$。
+  solution: |
+    $16=16e^{0i}$，四次方根是$2e^{ik\pi/2}$（$k=0,1,2,3$），即$2$、$2i$、$-2$、$-2i$。B 的模是$\sqrt2$，$(1+i)^4=-4$；D 的辐角是$\frac\pi4$，四次方以后辐角是$\pi$，$(\sqrt2+\sqrt2i)^4=-16$。选 A、C。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$-3+4i$的平方根中实部为正的那一个，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [1, 2]
+  hints:
+    - |
+      $-3+4i$的辐角不是常见的角，改设平方根为$p+qi$，$p$、$q$是实数。
+    - |
+      $(p+qi)^2=-3+4i$给出$p^2-q^2=-3$，$2pq=4$。
+    - |
+      再用模：$|p+qi|^2=|-3+4i|$，即$p^2+q^2=5$。
+  solution: |
+    由$p^2-q^2=-3$、$p^2+q^2=5$得$p^2=1$、$q^2=4$；$2pq=4>0$，$p$、$q$同号。实部为正的平方根是$1+2i$，另一个是$-1-2i$。验算：$(1+2i)^2=1+4i-4=-3+4i$。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$\omega=e^{2\pi i/3}$，求$\omega^{100}+\omega^{200}$，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [-1, 0]
+  hints:
+    - |
+      $\omega^3=1$，所以$\omega$的乘方只看指数除以$3$的余数。
+    - |
+      $100=3\cdot33+1$，$200=3\cdot66+2$。
+    - |
+      $1+\omega+\omega^2=0$。
+  solution: |
+    $\omega^{100}=\omega$，$\omega^{200}=\omega^2$，而$1+\omega+\omega^2=0$，所以和是$-1$：实部$-1$，虚部$0$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$n\ge2$，$\omega=e^{2\pi i/n}$。
+
+    （1）证明$z^n-1=\prod_{k=0}^{n-1}(z-\omega^k)$。
+
+    （2）由此证明$\prod_{k=1}^{n-1}(1-\omega^k)=n$。
+  hints:
+    - |
+      （1）两边都是$z^n$的系数为$1$的$n$次多项式，$1,\omega,\dots,\omega^{n-1}$都是左边的根。
+    - |
+      （1）多项式$p(z)$在$c$处为$0$时，$p(z)=(z-c)q(z)$，这是因式定理（factor theorem）。对$n$个不同的根依次用。
+    - |
+      （2）$\frac{z^n-1}{z-1}=1+z+\dots+z^{n-1}$，再令$z=1$。
+  reference: |
+    （1）$1,\omega,\dots,\omega^{n-1}$是$z^n-1$的$n$个不同的根。由因式定理依次除掉$z-1$、$z-\omega$、……：每次剩下的多项式在其余的根处仍为$0$，因为乘积为$0$，而已经除掉的因子在那里不为$0$。最后得$z^n-1=c\prod_{k=0}^{n-1}(z-\omega^k)$，比较$z^n$的系数，$c=1$。
+
+    （2）两边除以$z-1$：$z\ne1$时$1+z+\dots+z^{n-1}=\prod_{k=1}^{n-1}(z-\omega^k)$。两边都是多项式，对一切$z\ne1$相等，令$z\to1$，得$n=\prod_{k=1}^{n-1}(1-\omega^k)$。
+
+- id: p6
+  tier: hard
+  statement: |
+    用五次单位根（root of unity）求$\cos\frac{2\pi}5$的值。
+  hints:
+    - |
+      记$\omega=e^{2\pi i/5}$，则$1+\omega+\omega^2+\omega^3+\omega^4=0$。
+    - |
+      两边除以$\omega^2$，注意$\omega^{-1}=\bar\omega$，$\omega^{-2}=\bar\omega^2$。
+    - |
+      令$t=\omega+\omega^{-1}=2\cos\frac{2\pi}5$，写出$t$满足的二次方程。
+  reference: |
+    两边除以$\omega^2$：$\omega^2+\omega+1+\omega^{-1}+\omega^{-2}=0$。$t=\omega+\omega^{-1}$满足$t^2=\omega^2+2+\omega^{-2}$，代入得$t^2+t-1=0$，$t=\frac{-1\pm\sqrt5}2$。
+
+    又$\omega^{-1}=\bar\omega$，所以$t=2\Re\omega=2\cos\frac{2\pi}5>0$，取正号：$\cos\frac{2\pi}5=\frac{\sqrt5-1}4\approx0.309$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）$w$沿圆$|w|=1$逆时针转一圈回到原处，它的$n$个$n$次方根怎样运动？
+
+    （2）由此说说：能不能对所有$w\ne0$连续地「挑出」一个$n$次方根？
+
+    （3）把复平面沿负实轴剪开，只让$w$在剩下的部分里动，结论有什么不同？
+  hints:
+    - |
+      （1）对照几何图像的动画：$w$的辐角增加$2\pi$，每个根的辐角增加多少？
+    - |
+      （2）连续地挑，转一圈回来时挑出的会是哪一个根？
+    - |
+      （3）剪开以后，$w$不能绕原点转圈，辐角主值在剩下的部分里连续。
+  reference: |
+    （1）每个根的辐角增加$\frac{2\pi}n$，各自挪到相邻的根原来的位置上，整体回到原样。
+
+    （2）不能。要是挑出的$g(w)$连续，让$w$沿单位圆转一圈，$g(w)$跟着连续地动，按（1）回来时变成了相邻的根，和出发时的值矛盾。
+
+    （3）剪开以后，辐角主值在剩下的部分里连续变化，取值在$(-\pi,\pi)$里，$\sqrt[n]{|w|}\,e^{i\Arg w/n}$就是一种连续的挑法。以后复对数一节的「分支」就是这个意思。
+
+- id: p8
+  tier: thinking
+  statement: |
+    代数基本定理（fundamental theorem of algebra）说：复系数的$n$次多项式（$n\ge1$）在复数里一定有根，因而按重数计恰有$n$个根。
+
+    （1）本节对哪两类多项式直接验证了它？
+
+    （2）实系数多项式的非实根为什么成对出现？
+
+    （3）添上$i$以后，$x^2+1=0$有了根。会不会又冒出新的、在复数里没有根的多项式方程？
+  hints:
+    - |
+      （1）看$z^n-w$和二次多项式。
+    - |
+      （2）对实系数多项式$p$，比较$p(\bar z)$和$\overline{p(z)}$。
+    - |
+      （3）代数基本定理回答的正是这个问题。
+  reference: |
+    （1）$z^n-w$：$w\ne0$时恰有$n$个不同的根，$w=0$时$0$是$n$重根；二次多项式由求根公式有两个根，判别式为$0$时重合。
+
+    （2）共轭保持加法和乘法，实数的共轭是它自己，所以实系数时$p(\bar z)=\overline{p(z)}$；$p(z)=0$推出$p(\bar z)=0$，非实根和它的共轭成对出现。
+
+    （3）不会。代数基本定理保证复系数的多项式方程在复数里都有根，不必再扩充数系；它的证明以后在[刘维尔定理与代数基本定理](lesson:math.complex-analysis.liouville)一节给出。

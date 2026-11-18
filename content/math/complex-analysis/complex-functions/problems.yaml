@@ -1,0 +1,159 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$f(z)=z^2$。求$f(1+2i)$，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [-3, 4]
+  hints:
+    - |
+      写成$u+iv$：$u=x^2-y^2$，$v=2xy$。
+    - |
+      这里$x=1$，$y=2$。
+    - |
+      $u=1-4$，$v=2\cdot1\cdot2$。
+  solution: |
+    $(1+2i)^2=1+4i+4i^2=-3+4i$，实部$-3$，虚部$4$。用$u=x^2-y^2$、$v=2xy$算也一样。
+
+- id: p2
+  tier: easy
+  statement: |
+    $f(z)=\frac1z$把单位圆$|z|=1$映成什么？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        直线$\Re w=1$
+      - |
+        圆$|w|=2$
+      - |
+        单位圆$|w|=1$
+      - |
+        只有一个点$w=1$
+    value: 3
+  hints:
+    - |
+      $\frac1z$的模是$\frac1{|z|}$。
+    - |
+      $|z|=1$时，$\bigl|\frac1z\bigr|$是多少？
+    - |
+      反过来，单位圆上的每个$w$是不是都有原像？
+  solution: |
+    $|z|=1$时$\bigl|\frac1z\bigr|=1$，像在单位圆上；单位圆上的每个$w$都是单位圆上$z=\frac1w$的像。所以像是整个单位圆，选 C。在单位圆上$\frac1z=\bar z$，这个映射就是关于实轴的反射。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\cos(i\ln2)$。
+  answer:
+    type: number
+    value: 5/4
+  hints:
+    - |
+      $\cos(iy)=\cosh y$。
+    - |
+      $\cosh y=\frac{e^y+e^{-y}}2$。
+    - |
+      $e^{\ln2}=2$，$e^{-\ln2}=\frac12$。
+  solution: |
+    $\cos(i\ln2)=\cosh(\ln2)=\frac{2+\frac12}2$，即$\frac54$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\bigl|\sin\bigl(\frac\pi2+i\bigr)\bigr|$。
+  answer:
+    type: number
+    value: (exp(1)+exp(-1))/2
+  hints:
+    - |
+      用$|\sin z|^2=\sin^2x+\sinh^2y$。
+    - |
+      这里$x=\frac\pi2$，$y=1$。
+    - |
+      $1+\sinh^2 1=\cosh^2 1$。
+  solution: |
+    $\bigl|\sin\bigl(\frac\pi2+i\bigr)\bigr|^2=1+\sinh^21=\cosh^21$，所以所求的模是$\cosh1=\frac{e+e^{-1}}2\approx1.543$，比$1$大。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）由定义证明$\cos(z+w)=\cos z\cos w-\sin z\sin w$。
+
+    （2）写出$\cos(x+iy)$的实部和虚部，并证明$|\cos z|^2=\cos^2x+\sinh^2y$。
+
+    （3）求$\cos z$的全部零点。
+  hints:
+    - |
+      （1）把定义代进去，分别展开$\cos z\cos w$和$\sin z\sin w$，再相减。
+    - |
+      （2）$\cos(x+iy)=\cos x\cos(iy)-\sin x\sin(iy)$，再用$\cos(iy)=\cosh y$、$\sin(iy)=i\sinh y$。
+    - |
+      （3）$|\cos z|^2=0$迫使$\cos x=0$且$\sinh y=0$。
+  reference: |
+    （1）$\cos z\cos w=\frac14\bigl(e^{i(z+w)}+e^{i(z-w)}+e^{-i(z-w)}+e^{-i(z+w)}\bigr)$，$\sin z\sin w=-\frac14\bigl(e^{i(z+w)}-e^{i(z-w)}-e^{-i(z-w)}+e^{-i(z+w)}\bigr)$。相减，含$z-w$的项抵消，得$\frac12\bigl(e^{i(z+w)}+e^{-i(z+w)}\bigr)$，正是$\cos(z+w)$。
+
+    （2）$\cos(x+iy)=\cos x\cosh y-i\sin x\sinh y$，实部$\cos x\cosh y$，虚部$-\sin x\sinh y$。于是$|\cos z|^2=\cos^2x\cosh^2y+\sin^2x\sinh^2y$，用$\cosh^2y=1+\sinh^2y$得$\cos^2x+\sinh^2y$。
+
+    （3）$\cos^2x+\sinh^2y=0$当且仅当$\cos x=0$且$y=0$，所以零点是$\frac\pi2+k\pi$，$k$是整数，和实数里一样。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f(z)=\frac1z$。证明：$f$把圆$|z-1|=1$去掉原点以后的部分，映成整条直线$\Re w=\frac12$。
+  hints:
+    - |
+      圆上除原点外的点可以写成$z=1+e^{i\theta}$，$-\pi<\theta<\pi$。
+    - |
+      $1+e^{i\theta}=e^{i\theta/2}\bigl(e^{-i\theta/2}+e^{i\theta/2}\bigr)=2\cos\frac\theta2\,e^{i\theta/2}$。
+    - |
+      $\frac1z=\frac{e^{-i\theta/2}}{2\cos\frac\theta2}$，看它的实部和虚部。
+  reference: |
+    圆上除原点外的点是$z=1+e^{i\theta}$，$-\pi<\theta<\pi$。$1+e^{i\theta}=2\cos\frac\theta2\,e^{i\theta/2}$，其中$\cos\frac\theta2>0$，所以$\frac1z=\frac{\cos\frac\theta2-i\sin\frac\theta2}{2\cos\frac\theta2}=\frac12-\frac i2\tan\frac\theta2$。
+
+    实部恒为$\frac12$；$\frac\theta2$取遍$\bigl(-\frac\pi2,\frac\pi2\bigr)$时，虚部$-\frac12\tan\frac\theta2$取遍一切实数。所以像是整条直线$\Re w=\frac12$：过原点的圆映成了不过原点的直线，和讲解里直线映成圆正好反过来。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）为什么说复变函数的图像要四维空间才放得下？
+
+    （2）除了看网格的像，还有什么办法在平面上或三维空间里看出复变函数的一部分信息？举两种。
+
+    （3）$f(z)=z$和$f(z)=\bar z$把方格网变成的图样一模一样。在图上怎样才看得出它们的区别？
+  hints:
+    - |
+      （1）自变量$z$要两个实数，函数值$w$也要两个实数。
+    - |
+      （2）$|f(z)|$是$x$、$y$的实函数；也可以给$z$平面上每一点按$f(z)$的辐角涂颜色。
+    - |
+      （3）给横线、竖线标上方向，看转向。
+  reference: |
+    （1）图像是点$(x,y,u,v)$的集合，每个点要四个实数坐标。
+
+    （2）画$|f(z)|$在$z$平面上方的曲面，是三维的图；分别画$u$、$v$的等高线；或者按$\arg f(z)$给每一点涂颜色、按$|f(z)|$调亮度，这叫作定义域着色（domain coloring）。
+
+    （3）两者都把方格变成方格，可$\bar z$把逆时针排列的点变成顺时针排列。给横线、竖线标上方向：$f(z)=z$保持「横线的方向逆时针转$90^\circ$是竖线的方向」，$\bar z$把它变成顺时针。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）$\sin z$在整个复平面上无界。它在哪些集合上有界？
+
+    （2）$e^z$、$z^2$、$\sin z$里，有没有在整个复平面上有界的？
+
+    （3）你能不能举出一个不是常数、又在整个复平面上有界的函数？要求它能像$e^z$、$z^2$那样求导呢？
+  hints:
+    - |
+      （1）$|\sin z|^2=\sin^2x+\sinh^2y$，$y$受控制时会怎样？
+    - |
+      （2）分别沿实轴、虚轴往外走。
+    - |
+      （3）$\frac1{1+|z|^2}$有界，可它能像$z^2$那样求导吗？
+  reference: |
+    （1）在水平带形$|\Im z|\le M$里$|\sin z|^2\le1+\sinh^2M$，有界；离实轴越来越远时才无界。
+
+    （2）都没有：$e^z$沿正实轴无界，$z^2$随$|z|$无界，$\sin z$沿虚轴无界。
+
+    （3）$\frac1{1+|z|^2}$、只依赖实部的$\sin x$都有界、不是常数，可它们不能像$z^2$那样对$z$求导。以后的[刘维尔定理](lesson:math.complex-analysis.liouville)（Liouville's theorem）说：在整个复平面上处处能求导、又有界的函数只能是常数，所以这样的例子找不到。

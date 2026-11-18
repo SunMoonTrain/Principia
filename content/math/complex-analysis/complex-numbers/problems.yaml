@@ -1,0 +1,165 @@
+- id: p1
+  tier: easy
+  statement: |
+    计算$(2+i)(3-2i)$，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [8, -1]
+  hints:
+    - |
+      照多项式展开，再把$i^2$换成$-1$。
+    - |
+      $(2+i)(3-2i)=6-4i+3i-2i^2$。
+    - |
+      $-2i^2=2$，合并实部和虚部。
+  solution: |
+    $(2+i)(3-2i)=6-4i+3i-2i^2=8-i$，实部是$8$，虚部是$-1$（不是$-i$）。
+
+- id: p2
+  tier: easy
+  statement: |
+    $z=-\sqrt3+i$的辐角主值（principal argument）是哪一个？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        $-\frac\pi6$
+      - |
+        $\frac\pi6$
+      - |
+        $\frac{2\pi}3$
+      - |
+        $\frac{5\pi}6$
+    value: 4
+  hints:
+    - |
+      先看$z$在哪个象限。
+    - |
+      $|z|=2$，把$z$写成$2(\cos\theta+i\sin\theta)$。
+    - |
+      $\cos\theta=-\frac{\sqrt3}2$，$\sin\theta=\frac12$，$\theta$要在$(-\pi,\pi]$里。
+  solution: |
+    $|z|=2$，$z=2\Bigl(-\frac{\sqrt3}2+\frac12i\Bigr)$，所以$\cos\theta=-\frac{\sqrt3}2$、$\sin\theta=\frac12$。$z$在第二象限，在$(-\pi,\pi]$里$\theta=\frac{5\pi}6$，选 D。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\left|\frac{(3+4i)(1-i)}{2+i}\right|$。
+  answer:
+    type: number
+    value: sqrt(10)
+  hints:
+    - |
+      不必先把这个数算出来，用模的乘除法则。
+    - |
+      $|3+4i|=5$，$|1-i|=\sqrt2$，$|2+i|=\sqrt5$。
+    - |
+      结果是$\frac{5\sqrt2}{\sqrt5}$，化简。
+  solution: |
+    由$|zw|=|z||w|$和$\bigl|\frac zw\bigr|=\frac{|z|}{|w|}$，所求的模是$\frac{5\sqrt2}{\sqrt5}=\sqrt{10}\approx3.162$。
+
+- id: p4
+  tier: medium
+  statement: |
+    把复平面上的点$4+2i$绕点$1+i$逆时针转$90^\circ$，得到哪个点？答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [0, 4]
+  hints:
+    - |
+      先平移，把旋转中心挪到原点：看$(4+2i)-(1+i)$。
+    - |
+      绕原点逆时针转$90^\circ$就是乘$i$。
+    - |
+      转完再平移回去：$(1+i)+i\bigl((4+2i)-(1+i)\bigr)$。
+  solution: |
+    $(4+2i)-(1+i)=3+i$，乘$i$得$-1+3i$，再加回$1+i$得$4i$。所以得到的点是$4i$，实部$0$，虚部$4$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$z$、$w$是复数。
+
+    （1）证明$|z+w|^2+|z-w|^2=2(|z|^2+|w|^2)$，并说出它的几何意义。
+
+    （2）证明$\bigl||z|-|w|\bigr|\le|z-w|$。
+  hints:
+    - |
+      （1）$|z\pm w|^2=(z\pm w)(\bar z\pm\bar w)$，展开。
+    - |
+      （1）两式相加，含$z\bar w+\bar zw$的项抵消。（2）把$z$写成$(z-w)+w$，用三角不等式（triangle inequality）。
+    - |
+      （1）以$z$、$w$为两边作平行四边形，两条对角线是$z+w$、$z-w$。（2）把$z$、$w$对调，再用一次。
+  reference: |
+    （1）$|z\pm w|^2=|z|^2+|w|^2\pm(z\bar w+\bar zw)$，两式相加得$2(|z|^2+|w|^2)$。以$z$、$w$为两边作平行四边形，两条对角线是$z+w$和$z-w$：平行四边形两条对角线长的平方和，等于四条边长的平方和。
+
+    （2）$|z|=|(z-w)+w|\le|z-w|+|w|$，所以$|z|-|w|\le|z-w|$。对调$z$、$w$，得$|w|-|z|\le|w-z|$，而$|w-z|=|z-w|$。两式合起来就是要证的不等式。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$|z|=1$，$z\ne\pm1$。
+
+    （1）证明$\frac{z+1}{z-1}$是纯虚数（purely imaginary number）。
+
+    （2）说明它的几何意义。
+  hints:
+    - |
+      （1）$|z|=1$就是$z\bar z=1$，即$\bar z=\frac1z$。
+    - |
+      （1）非零复数$u$是纯虚数，当且仅当$\bar u=-u$。
+    - |
+      （1）$\overline{\Bigl(\frac{z+1}{z-1}\Bigr)}=\frac{\bar z+1}{\bar z-1}$，代入$\bar z=\frac1z$，分子、分母同乘$z$。（2）从$z$看$-1$和$1$，两条视线的方向是$-1-z$和$1-z$。
+  reference: |
+    （1）记$u=\frac{z+1}{z-1}$；$z\ne-1$，所以$u\ne0$。$\bar u=\frac{\bar z+1}{\bar z-1}$，代入$\bar z=\frac1z$、分子分母同乘$z$，得$\bar u=\frac{1+z}{1-z}=-u$。于是$\Re u=\frac{u+\bar u}2=0$，$u$是纯虚数。
+
+    （2）从$z$看$-1$和$1$，两条视线的方向是$-1-z$和$1-z$，它们的商$\frac{-1-z}{1-z}=u$的辐角是$\pm\frac\pi2$，所以两条视线互相垂直：单位圆上的点看直径的两端，张角是直角，就是「直径所对的圆周角是直角」。
+
+- id: p7
+  tier: thinking
+  statement: |
+    乘以复数$w$（$w\ne0$）是把平面绕原点转一个角、再伸缩。
+
+    （1）取共轭$z\mapsto\bar z$能不能写成「乘以某个复数」？
+
+    （2）逆时针排列的三个点，乘以$w$以后是什么转向？取共轭以后呢？
+
+    （3）由此说说：为什么「乘以一个复数」永远不是关于直线的反射？
+  hints:
+    - |
+      （1）要是对所有$z$都有$\bar z=wz$，取$z=1$看看$w$是多少，再取$z=i$。
+    - |
+      （2）转动、伸缩不改变三个点的排列转向；关于实轴的反射呢？
+    - |
+      （3）关于任何直线的反射，都把逆时针变成顺时针。
+  reference: |
+    （1）不能。取$z=1$得$w=1$，可是$\bar i=-i$，而$1\cdot i=i$，两者不等。
+
+    （2）乘以$w$是绕原点的转动加伸缩，三个点仍按逆时针排列；取共轭是关于实轴的反射，把逆时针排列变成顺时针排列。
+
+    （3）关于任何直线的反射都把逆时针变成顺时针，乘以$w\ne0$却保持转向，所以不是反射；乘以$0$把整个平面压成一点，也不是反射。
+
+- id: p8
+  tier: thinking
+  statement: |
+    辐角主值取在$(-\pi,\pi]$里。
+
+    （1）点$z$沿单位圆逆时针走一圈，$\Arg z$在哪里不连续？跳了多少？
+
+    （2）要是像高中课本那样取$[0,2\pi)$，不连续的地方在哪里？
+
+    （3）能不能选定一种「主值」，让它沿整个单位圆连续地变化？
+  hints:
+    - |
+      （1）$z$从上半平面靠近$-1$时，$\Arg z$趋于多少？从下半平面靠近时呢？
+    - |
+      （2）这时$z$从下半平面靠近$1$，主值趋于多少？
+    - |
+      （3）沿着圆连续地跟踪辐角，走完一圈增加了多少？
+  reference: |
+    （1）在$-1$处：从上半平面靠近$-1$时$\Arg z\to\pi$，从下半平面靠近时$\Arg z\to-\pi$，跳了$2\pi$。
+
+    （2）不连续的地方挪到正实轴上的$1$处：从下半平面靠近$1$时主值趋于$2\pi$，到了$1$却是$0$。
+
+    （3）不能。沿圆连续地跟踪辐角，走完一圈正好增加$2\pi$，可回到出发点时又该回到原来的值，二者矛盾；所以不管怎样选，总有一处要跳。以后选复对数的分支，碰到的就是这件事。

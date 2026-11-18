@@ -1,0 +1,161 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$f(z)=z^3-2z$。求$f'(i)$，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [-5, 0]
+  hints:
+    - |
+      用求导法则，$(z^n)'=nz^{n-1}$。
+    - |
+      $f'(z)=3z^2-2$。
+    - |
+      $i^2=-1$。
+  solution: |
+    $f'(z)=3z^2-2$，所以$f'(i)=3i^2-2=-5$：实部$-5$，虚部$0$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列集合中，是区域（domain）的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\{z:1<|z|<2\}$
+      - |
+        $\{z:\Re z>0\}$
+      - |
+        $\{z:\Im z\ge0\}$
+      - |
+        $\{z:|z|\ne1\}$
+    value: [1, 2]
+  hints:
+    - |
+      区域要是开集，还要连成一片。
+    - |
+      C 含有实轴上的点，这些点周围的圆盘有一部分在下半平面。
+    - |
+      D 是开集，可单位圆里的点和单位圆外的点之间，有没有不穿过单位圆的折线？
+  solution: |
+    A 是圆环，是开集，也连成一片；B 是右半平面，是区域。C 不是开集，实轴上的点周围总有不在 C 里的点。D 是开集，但单位圆里、外两部分连不起来，不是区域。选 A、B。
+
+- id: p3
+  tier: medium
+  statement: |
+    用定义求$f(z)=z^2+3z$在$z_0=1-i$处的导数，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [5, -2]
+  hints:
+    - |
+      差商是$\frac{(z_0+h)^2+3(z_0+h)-z_0^2-3z_0}h$。
+    - |
+      分子化简为$2z_0h+h^2+3h$。
+    - |
+      除以$h$得$2z_0+3+h$，再令$h\to0$。
+  solution: |
+    差商是$2z_0+3+h$，$h\to0$时趋于$2z_0+3$。代入$z_0=1-i$得$5-2i$：实部$5$，虚部$-2$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$f(z)=\frac{z+1}{z-1}$在$z=i$处的导数，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [0, -1]
+  hints:
+    - |
+      用商的求导法则。
+    - |
+      $f'(z)=\frac{(z-1)-(z+1)}{(z-1)^2}=-\frac2{(z-1)^2}$。
+    - |
+      $(i-1)^2=-2i$。
+  solution: |
+    $f'(z)=-\frac2{(z-1)^2}$，而$(i-1)^2=-2i$，所以$f'(i)=\frac1i=-i$：实部$0$，虚部$-1$。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）证明$f(z)=\Re z$在任何点都不复可导。
+
+    （2）证明$g(z)=z\,\Re z$只在$z=0$处复可导，并求$g'(0)$。
+  hints:
+    - |
+      （1）差商是$\frac{\Re h}h$，分别让$h$取实数和纯虚数。
+    - |
+      （2）$g(z_0+h)-g(z_0)=z_0\Re h+h\Re z_0+h\Re h$。
+    - |
+      （2）差商是$\Re z_0+\Re h+z_0\frac{\Re h}h$，分$z_0\ne0$和$z_0=0$两种情况。
+  reference: |
+    （1）$f(z_0+h)-f(z_0)=\Re h$，差商$\frac{\Re h}h$在$h$取实数时是$1$，取纯虚数时是$0$，$h\to0$时没有极限，所以$f$处处不复可导。
+
+    （2）差商是$\Re z_0+\Re h+z_0\frac{\Re h}h$。$z_0\ne0$时，$h$沿实轴趋于$0$，差商趋于$\Re z_0+z_0$；沿虚轴趋于$0$，差商趋于$\Re z_0$，两者不等，不可导。$z_0=0$时差商就是$\Re h$，趋于$0$，所以$g'(0)=0$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$在$z_0$处复可导，$g(z)=\overline{f(\bar z)}$。
+
+    （1）证明$g$在$\bar z_0$处复可导，并且$g'(\bar z_0)=\overline{f'(z_0)}$。
+
+    （2）$f(z)=z^2+iz$时，$g$是什么函数？验证（1）的结论。
+  hints:
+    - |
+      （1）$g(\bar z_0+h)-g(\bar z_0)=\overline{f(z_0+\bar h)-f(z_0)}$。
+    - |
+      （1）除以$h$，结果是$\overline{\Bigl(\frac{f(z_0+\bar h)-f(z_0)}{\bar h}\Bigr)}$。
+    - |
+      （1）$h\to0$时$\bar h\to0$，而$|\bar w_1-\bar w_2|=|w_1-w_2|$，取共轭不改变距离。
+  reference: |
+    （1）$g(\bar z_0+h)-g(\bar z_0)=\overline{f(z_0+\bar h)-f(z_0)}$，除以$h$，因为$\frac{\bar a}h=\overline{\bigl(\frac a{\bar h}\bigr)}$，差商等于$\overline{\Bigl(\frac{f(z_0+\bar h)-f(z_0)}{\bar h}\Bigr)}$。$h\to0$时$\bar h\to0$，括号里趋于$f'(z_0)$；取共轭不改变距离，所以差商趋于$\overline{f'(z_0)}$。
+
+    （2）$g(z)=\overline{\bar z^2+i\bar z}=z^2-iz$，$g'(z)=2z-i$。在$\bar z_0$处是$2\bar z_0-i$，正是$f'(z_0)=2z_0+i$的共轭。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）设$h=te^{i\alpha}$，$t>0$。$\bar z$在$0$处的差商$\frac{\bar h}h$是多少？它随$\alpha$怎样变？
+
+    （2）设$f(z)=\frac{\bar z^2}z$（$z\ne0$），$f(0)=0$。在$0$处，沿正实轴、正虚轴的差商各趋于多少？沿$\alpha=\frac\pi4$的方向呢？
+
+    （3）判断复可导时，只检查实轴、虚轴两个方向够不够？
+  hints:
+    - |
+      （1）$\frac{\bar h}h=e^{-2i\alpha}$。
+    - |
+      （2）$\frac{f(h)}h=\frac{\bar h^2}{h^2}=e^{-4i\alpha}$。
+    - |
+      （3）$\alpha=0$和$\alpha=\frac\pi2$时$e^{-4i\alpha}$都是$1$。
+  reference: |
+    （1）$\frac{\bar h}h=e^{-2i\alpha}$，和$t$无关，只随方向变：$\alpha=0$时是$1$，$\alpha=\frac\pi2$时是$-1$，$\alpha=\frac\pi4$时是$-i$，所以没有极限。
+
+    （2）$\frac{f(h)}h=e^{-4i\alpha}$。沿正实轴是$1$，沿正虚轴是$e^{-2\pi i}=1$，沿$\alpha=\frac\pi4$却是$e^{-\pi i}=-1$。
+
+    （3）不够。（2）里的$f$沿两条坐标轴的差商极限都是$1$，可它在$0$处不复可导。复可导要求$h$不管怎样趋于$0$，差商的极限都存在并且相同，不只是沿直线。
+
+- id: p8
+  tier: thinking
+  statement: |
+    复可导的点附近，$f(z_0+h)\approx f(z_0)+f'(z_0)h$。
+
+    （1）设$f'(z_0)=2i$。$z_0$附近一个边长为$0.01$的小正方形，大约变成什么图形？
+
+    （2）一般的可微（differentiable）映射$(x,y)\mapsto(u,v)$，把很小的正方形变成近似的什么图形？复可导多了什么限制？
+
+    （3）$f'(z_0)=0$时，这个近似告诉了我们什么，没告诉什么？
+  hints:
+    - |
+      （1）乘以$2i$是转$90^\circ$、放大为$2$倍。
+    - |
+      （2）线性近似把正方形变成平行四边形。
+    - |
+      （3）线性部分是$0$。
+  reference: |
+    （1）大约变成边长$0.02$的正方形，转了$90^\circ$，面积约是原来的$4$倍。
+
+    （2）一般的可微映射，线性近似把正方形变成平行四边形，形状可以随便；复可导要求线性近似是旋转加伸缩，变出来的仍是正方形：两邻边一样长、互相垂直，而且转向不变。
+
+    （3）它只告诉我们$f(z_0+h)-f(z_0)$比$h$小得多，即$\frac{f(z_0+h)-f(z_0)}h\to0$；至于小正方形具体变成什么样，要看更高次的项，比如$z^2$在$0$处把夹角加倍。

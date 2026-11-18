@@ -1,0 +1,165 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\oint_{|z-2|=1}\frac{\dd z}z$，圆周取逆时针方向，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [0, 0]
+  hints:
+    - |
+      被积函数在哪里不全纯？
+    - |
+      $0$到$2$的距离是$2$，$0$在不在圆盘$|z-2|\le1$里？
+    - |
+      用柯西积分定理（Cauchy's integral theorem）。
+  solution: |
+    $\frac1z$只在$0$处不全纯，而$0$不在闭圆盘$|z-2|\le1$里，$\frac1z$在包含这个闭圆盘的一个开集上全纯、导数连续。由柯西积分定理，积分为$0$：实部、虚部都是$0$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列积分中，等于$0$的有哪些？圆周都取逆时针方向。
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\oint_{|z|=2}\frac{\dd z}{z-1}$
+      - |
+        $\oint_{|z|=2}\frac{\dd z}{z-3}$
+      - |
+        $\oint_{|z|=1}\frac{\cos z}{z^2+4}\,\dd z$
+      - |
+        $\oint_{|z|=1}\bar z\,\dd z$
+    value: [2, 3]
+  hints:
+    - |
+      看被积函数不全纯的点在不在圆里面。
+    - |
+      C：$z^2+4=0$的根是$\pm2i$。
+    - |
+      D：在单位圆上$\bar z=\frac1z$。
+  solution: |
+    A：$1$在圆里，积分是$2\pi i$；B：$3$在圆外，由柯西积分定理为$0$；C：$\pm2i$都在单位圆外，被积函数在闭圆盘$|z|\le1$附近全纯，积分为$0$。D：$\bar z$不全纯，可在单位圆上$\bar z=\frac1z$，积分等于$\oint\frac{\dd z}z=2\pi i$。选 B、C。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\oint_{|z|=3}\frac{2z+1}{z(z-2)}\,\dd z$，圆周取逆时针方向，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [0, 4*pi]
+  hints:
+    - |
+      写成$\frac Az+\frac B{z-2}$，通分以后比较分子，定出$A$、$B$。
+    - |
+      $A=-\frac12$，$B=\frac52$。
+    - |
+      $0$和$2$都在圆$|z|=3$里面。
+  solution: |
+    $\frac{2z+1}{z(z-2)}=-\frac1{2z}+\frac5{2(z-2)}$。$0$、$2$都在圆里，每个$\oint\frac{\dd z}{z-a}$都是$2\pi i$，所以积分是$2\pi i\bigl(-\frac12+\frac52\bigr)=4\pi i$：实部$0$，虚部$4\pi$。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$C$是从$0$到$\frac i2$的任意一条分段光滑曲线。求$\int_Ce^{\pi z}\,\dd z$，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [-1/pi, 1/pi]
+  hints:
+    - |
+      找原函数：什么函数的导数是$e^{\pi z}$？
+    - |
+      积分等于$\frac1\pi\bigl(e^{\pi i/2}-1\bigr)$。
+    - |
+      $e^{\pi i/2}=i$。
+  solution: |
+    $\frac1\pi e^{\pi z}$是整函数，导数是$e^{\pi z}$，所以积分是$\frac1\pi(e^{\pi i/2}-1)=\frac{i-1}\pi$，和走哪条路无关：实部$-\frac1\pi\approx-0.318$，虚部$\frac1\pi\approx0.318$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$在去掉原点的平面上全纯，并且$f'$连续。
+
+    （1）设$0<r_1<r_2$，圆周都取逆时针方向。证明$\oint_{|z|=r_1}f\,\dd z$和$\oint_{|z|=r_2}f\,\dd z$相等。
+
+    （2）证明$\frac1z$在去掉原点的平面上没有原函数。
+
+    （3）$\frac1{z^2}$在去掉原点的平面上有没有原函数？
+  hints:
+    - |
+      （1）两个圆周之间是一个圆环，用变形积分路径的定理。
+    - |
+      （2）要是有原函数$F$，沿单位圆的积分应该是多少？
+    - |
+      （3）$\bigl(-\frac1z\bigr)'=\frac1{z^2}$。
+  reference: |
+    （1）$f$在去掉原点的平面上全纯、$f'$连续，这个开集包含两个圆周和它们之间的圆环，由变形积分路径的定理，两个积分相等。所以$\oint_{|z|=r}f\,\dd z$和$r$无关。
+
+    （2）要是$F'=\frac1z$在去掉原点的平面上成立，由原函数的定理，沿单位圆的积分应该是$0$，可它是$2\pi i$，矛盾。
+
+    （3）有，$-\frac1z$就是。所以沿任何不过原点的闭曲线，$\oint\frac{\dd z}{z^2}=0$；同是「在原点不全纯」，$\frac1z$和$\frac1{z^2}$的积分完全不同。
+
+- id: p6
+  tier: hard
+  statement: |
+    用柯西积分定理证明：$\int_0^{2\pi}e^{\cos\theta}\cos(\theta+\sin\theta)\,\dd\theta=0$。
+  hints:
+    - |
+      考虑$\oint_{|z|=1}e^z\,\dd z$。
+    - |
+      取$z=e^{i\theta}$，则$\dd z=ie^{i\theta}\,\dd\theta$，$e^z=e^{\cos\theta}e^{i\sin\theta}$。
+    - |
+      被积式是$ie^{\cos\theta}e^{i(\theta+\sin\theta)}$，看实部和虚部。
+  reference: |
+    $e^z$是整函数，由柯西积分定理，$\oint_{|z|=1}e^z\,\dd z=0$。取$z=e^{i\theta}$，$0\le\theta\le2\pi$，积分变成$i\int_0^{2\pi}e^{\cos\theta}e^{i(\theta+\sin\theta)}\,\dd\theta$，所以
+
+    $$\int_0^{2\pi}e^{\cos\theta}\cos(\theta+\sin\theta)\,\dd\theta=0,\qquad\int_0^{2\pi}e^{\cos\theta}\sin(\theta+\sin\theta)\,\dd\theta=0.$$
+
+    直接对实变量$\theta$积分，很难看出结果是$0$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）柯西积分定理的证明里，格林公式要求什么条件？「$f'$连续」用在了哪里？
+
+    （2）$\bar z$和$\frac1z$沿单位圆的积分都不是$0$。它们各是哪个条件不满足？
+
+    （3）如果$f$在$C$围成的部分里只有一个点不全纯，$\oint_Cf\,\dd z$一定不为$0$吗？
+  hints:
+    - |
+      （1）格林公式要被积的两个函数在包含$\bar D$的开集上有连续的偏导数。
+    - |
+      （2）$\bar z$满足柯西-黎曼方程吗？$\frac1z$在哪里不全纯？
+    - |
+      （3）试试$\frac1{z^2}$。
+  reference: |
+    （1）格林公式要$u$、$v$在包含$\bar D$的开集上有连续的偏导数。由柯西-黎曼方程，这四个偏导数是$\Re f'$、$\Im f'$和它们的相反数，$f'$连续正好保证它们连续。
+
+    （2）$\bar z$处处不满足柯西-黎曼方程，在哪里都不全纯；$\frac1z$在单位圆周上全纯，可在圆内的原点处没有定义，不在一个包含闭圆盘的开集上全纯。
+
+    （3）不一定。$\frac1{z^2}$在原点不全纯，可它有原函数$-\frac1z$，沿单位圆的积分是$0$。柯西积分定理只说条件满足时积分为$0$，条件不满足时，积分可能是$0$，也可能不是。
+
+- id: p8
+  tier: thinking
+  statement: |
+    沿不过原点的闭曲线$C$，$\oint_C\frac{\dd z}z$等于$2\pi i$乘$C$绕原点的圈数。
+
+    （1）沿逆时针绕原点两圈的圆周$z=e^{it}$（$0\le t\le4\pi$），积分是多少？
+
+    （2）沿顺时针绕一圈的圆周呢？沿不绕原点的闭曲线呢？
+
+    （3）为什么说「$\frac1z$在去掉原点的平面上没有原函数」和「$\oint\frac{\dd z}z$能数圈数」说的是同一件事？
+  hints:
+    - |
+      （1）直接写参数，被积式是常数$i$。
+    - |
+      （2）方向反过来，积分变号；不绕原点时，原点在$C$围成的部分外面。
+    - |
+      （3）有原函数的话，沿闭曲线的积分全是$0$。
+  reference: |
+    （1）$\int_0^{4\pi}i\,\dd t=4\pi i$，绕了两圈。
+
+    （2）顺时针一圈是$-2\pi i$，圈数是$-1$；不绕原点的简单闭曲线，原点在外面，由柯西积分定理积分是$0$。
+
+    （3）要是$\frac1z$有原函数，沿任何不过原点的闭曲线积分都是$0$，就数不出圈数来；积分能取$2\pi i$的各种倍数，正说明找不到原函数。这个原函数本该是「$\ln|z|+i\arg z$」，可辐角绕一圈要增加$2\pi$，没法在去掉原点的平面上连续地取值。

@@ -4,6 +4,6 @@ title: |
   复对数与幂函数
 goal: |
   会处理复对数的多值性，选取分支并计算$z^a$。
-prerequisites: [math.complex-analysis.holomorphic]
+prerequisites: [math.complex-analysis.holomorphic, math.calculus.implicit-differentiation, math.complex-analysis.complex-roots]
 status: outline
 ---

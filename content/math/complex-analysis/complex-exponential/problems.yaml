@@ -1,0 +1,154 @@
+- id: p1
+  tier: easy
+  statement: |
+    把$e^{2+i\pi/3}$写成$a+bi$的形式，答案依次写$a$、$b$。
+  answer:
+    type: tuple
+    value: ["exp(2)/2", "exp(2)*sqrt(3)/2"]
+  hints:
+    - |
+      按定义，$e^{x+iy}=e^x(\cos y+i\sin y)$。
+    - |
+      $\cos\frac\pi3=\frac12$，$\sin\frac\pi3=\frac{\sqrt3}2$。
+    - |
+      所以$e^{2+i\pi/3}=e^2\bigl(\frac12+\frac{\sqrt3}2i\bigr)$。
+  solution: |
+    $e^{2+i\pi/3}=e^2\bigl(\cos\frac\pi3+i\sin\frac\pi3\bigr)=\frac{e^2}2+\frac{\sqrt3e^2}2i$，所以$a=\frac{e^2}2\approx3.695$，$b=\frac{\sqrt3e^2}2\approx6.399$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列等式中，成立的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $e^{1+2\pi i}=e+1$
+      - |
+        $e^{i\pi/2}=i$
+      - |
+        对一切复数$z$，$\overline{e^z}=e^{-z}$
+      - |
+        $e^{\ln2+i\pi}=-2$
+    value: [2, 4]
+  hints:
+    - |
+      用$e^{x+iy}=e^x(\cos y+i\sin y)$逐个算。
+    - |
+      A：$e^{2\pi i}$等于多少？C：取$z=1$试一试。
+    - |
+      D：$e^{\ln2}=2$，$e^{i\pi}=-1$。
+  solution: |
+    A：$e^{1+2\pi i}=e\cdot e^{2\pi i}=e$，不成立；B：$\cos\frac\pi2+i\sin\frac\pi2=i$，成立；C：$z=1$时左边是$e$，右边是$e^{-1}$，不成立，对的是$\overline{e^z}=e^{\bar z}$；D：$e^{\ln2}e^{i\pi}=2\cdot(-1)=-2$，成立。选 B、D。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\int_0^{\pi/2}e^{it}\,\dd t$，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [1, 1]
+  hints:
+    - |
+      用积分公式$\int_a^be^{\lambda t}\dd t=\frac{e^{\lambda b}-e^{\lambda a}}\lambda$，这里$\lambda=i$。
+    - |
+      $e^{i\pi/2}=i$。
+    - |
+      $\frac{i-1}i$的分子、分母同乘$-i$。
+  solution: |
+    $\int_0^{\pi/2}e^{it}\dd t=\frac{e^{i\pi/2}-1}i$，而$\frac{i-1}i=1+i$。也可以分开算：$\int_0^{\pi/2}\cos t\,\dd t+i\int_0^{\pi/2}\sin t\,\dd t=1+i$。实部、虚部都是$1$。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$a$、$b$是实数，$y=e^{(-1+2i)t}$满足$y''+ay'+by=0$。求$a$、$b$（依次填写）。
+  answer:
+    type: tuple
+    value: [2, 5]
+  hints:
+    - |
+      记$\lambda=-1+2i$。由$(e^{\lambda t})'=\lambda e^{\lambda t}$，代入方程得$(\lambda^2+a\lambda+b)e^{\lambda t}=0$。
+    - |
+      $e^{\lambda t}$永不为$0$，所以$\lambda^2+a\lambda+b=0$。
+    - |
+      $\lambda^2=-3-4i$；把实部、虚部分别令为$0$。
+  solution: |
+    $e^{\lambda t}$永不为$0$，所以$\lambda^2+a\lambda+b=0$，即$(-3-4i)+a(-1+2i)+b=0$。虚部$-4+2a=0$，得$a=2$；实部$-3-a+b=0$，得$b=5$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$\theta$不是$2\pi$的整数倍，$n$是正整数。用$e^{ik\theta}$的等比数列求和，证明
+    $$\sum_{k=0}^{n}\cos k\theta=\frac{\sin\frac{(n+1)\theta}2\cos\frac{n\theta}2}{\sin\frac\theta2}.$$
+  hints:
+    - |
+      公比$e^{i\theta}\ne1$，所以$\sum_{k=0}^ne^{ik\theta}=\frac{e^{i(n+1)\theta}-1}{e^{i\theta}-1}$。
+    - |
+      分子提出$e^{i(n+1)\theta/2}$，分母提出$e^{i\theta/2}$，再用$e^{i\varphi}-e^{-i\varphi}=2i\sin\varphi$。
+    - |
+      化简得$\sum_{k=0}^ne^{ik\theta}=e^{in\theta/2}\frac{\sin\frac{(n+1)\theta}2}{\sin\frac\theta2}$，两边取实部。
+  reference: |
+    公比$e^{i\theta}\ne1$，所以$\sum_{k=0}^ne^{ik\theta}=\frac{e^{i(n+1)\theta}-1}{e^{i\theta}-1}$。由$e^{i\varphi}-e^{-i\varphi}=2i\sin\varphi$，分子是$e^{i(n+1)\theta/2}\cdot2i\sin\frac{(n+1)\theta}2$，分母是$e^{i\theta/2}\cdot2i\sin\frac\theta2$，相除得$e^{in\theta/2}\frac{\sin\frac{(n+1)\theta}2}{\sin\frac\theta2}$。
+
+    左边的实部是$\sum_{k=0}^n\cos k\theta$，右边的实部是$\cos\frac{n\theta}2\cdot\frac{\sin\frac{(n+1)\theta}2}{\sin\frac\theta2}$，得证。取虚部，还得到$\sum_{k=0}^n\sin k\theta$的公式。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）求所有满足$e^z=-2$的复数$z$。
+
+    （2）证明$|e^z|\le e^{|z|}$，并说明等号什么时候成立。
+  hints:
+    - |
+      （1）设$z=x+iy$，比较两边的模和辐角：$e^x=2$，$e^{iy}=-1$。
+    - |
+      （1）$e^{iy}=-1$当且仅当$y$是$\pi$的奇数倍。（2）$|e^z|=e^x$，而$x\le|z|$。
+    - |
+      （2）$x=|z|$当且仅当$y=0$且$x\ge0$。
+  reference: |
+    （1）$|e^z|=e^x=2$，所以$x=\ln2$；$e^{iy}=-1$，所以$y=(2k+1)\pi$。于是$z=\ln2+(2k+1)\pi i$，$k$取一切整数。
+
+    （2）$|e^z|=e^x$，而$x\le\sqrt{x^2+y^2}=|z|$，$e^t$递增，所以$|e^z|\le e^{|z|}$。等号成立当且仅当$x=|z|$，即$y=0$且$x\ge0$：$z$是非负实数。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）对实数$x$，$e^x=\sum\frac{x^n}{n!}$是证过的定理。把$x$换成$i\theta$以后，等式右边是什么意思？左边的$e^{i\theta}$在这之前有意思吗？
+
+    （2）本节是怎样避免「用$e^{i\theta}$来证明关于$e^{i\theta}$的等式」的？
+  hints:
+    - |
+      （1）右边是复数项级数，按实部、虚部分别收敛来理解。
+    - |
+      （1）「$e$的$i\theta$次方」能不能理解成$e$自乘若干次？
+    - |
+      （2）先有记号$\cos\theta+i\sin\theta$，再证级数的和等于它。
+  reference: |
+    （1）右边是复数项级数，它的和按实部、虚部分别取极限来定义，本节证了它收敛。左边原来没有意思：实数的乘方从正整数次方推到有理数、实数次方，「$e$自乘$i\theta$次」说不通。
+
+    （2）复数与复平面一节先把$e^{i\theta}$定义成$\cos\theta+i\sin\theta$的简写；本节证明$\sum\frac{(i\theta)^n}{n!}$收敛到同一个数；然后再用$e^xe^{iy}$定义一般的$e^z$。每一步都只用前面已经有意思的东西，所以不循环。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$g(t)=e^{it}$，$0\le t\le2\pi$。
+
+    （1）$g(0)=g(2\pi)$，可是$g'(t)$处处不为$0$。这和罗尔定理（Rolle's theorem）矛盾吗？
+
+    （2）$\Re g$、$\Im g$的导数分别在哪里为$0$？
+
+    （3）不等式$|g(b)-g(a)|\le(b-a)\max|g'|$对复值函数还对不对？用$g(t)=e^{it}$在$[0,\pi]$上试一试。
+  hints:
+    - |
+      （1）罗尔定理说的是什么样的函数？
+    - |
+      （2）$\Re g=\cos t$，$\Im g=\sin t$。
+    - |
+      （3）$|g(\pi)-g(0)|=2$，$\max|g'|=1$。
+  reference: |
+    （1）不矛盾。罗尔定理只管实函数；对实部、虚部分别用，得到的导数零点可以不在同一处，凑不成$g'=0$的一点。
+
+    （2）$\Re g=\cos t$的导数在$t=\pi$处为$0$；$\Im g=\sin t$的导数在$t=\frac\pi2$、$\frac{3\pi}2$处为$0$，地方不同。
+
+    （3）$|g(\pi)-g(0)|=|-1-1|=2$，而$(b-a)\max|g'|=\pi$，不等式成立。它对复值函数一般也成立：$g(b)-g(a)=\int_a^bg'(t)\dd t$，再用以后在[复积分](lesson:math.complex-analysis.contour-integrals#thm-integral-modulus)一节证明的$\bigl|\int_a^bh\bigr|\le\int_a^b|h|$。
