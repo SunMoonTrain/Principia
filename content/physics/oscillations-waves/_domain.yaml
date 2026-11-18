@@ -13,4 +13,292 @@ macros:
     \frac{\partial #1}{\partial #2}
   \Re: |
     \operatorname{Re}
-glossary: []
+glossary:
+  - id: physics.oscillations-waves.restoring-force
+    zh: |
+      回复力
+    en: |
+      restoring force
+    brief: |
+      质点离开平衡位置时受到的、指向平衡位置的合力；和位移成正比时写成$F=-kx$。
+    definedIn: physics.oscillations-waves.simple-harmonic-motion
+    anchor: def-restoring-force
+  - id: physics.oscillations-waves.simple-harmonic-motion
+    zh: |
+      简谐运动
+    en: |
+      simple harmonic motion
+    brief: |
+      位移随时间按$x=A\cos(\omega t+\varphi)$变化的运动；只受线性回复力的质点就做这种运动。
+    definedIn: physics.oscillations-waves.simple-harmonic-motion
+    anchor: def-shm
+  - id: physics.oscillations-waves.amplitude
+    zh: |
+      振幅
+    en: |
+      amplitude
+    brief: |
+      简谐运动$x=A\cos(\omega t+\varphi)$里的$A>0$，是离开平衡位置的最大距离。
+    definedIn: physics.oscillations-waves.simple-harmonic-motion
+    anchor: def-shm
+  - id: physics.oscillations-waves.angular-frequency
+    zh: |
+      角频率
+    en: |
+      angular frequency
+    brief: |
+      简谐运动$x=A\cos(\omega t+\varphi)$里的$\omega>0$，等于$2\pi$乘频率，单位$\mathrm{rad/s}$。
+    definedIn: physics.oscillations-waves.simple-harmonic-motion
+    anchor: def-shm
+  - id: physics.oscillations-waves.phase
+    zh: |
+      相位
+    en: |
+      phase
+    brief: |
+      简谐运动$x=A\cos(\omega t+\varphi)$里的$\omega t+\varphi$，说明振到了一个周期里的哪一步。
+    definedIn: physics.oscillations-waves.simple-harmonic-motion
+    anchor: def-shm
+  - id: physics.oscillations-waves.initial-phase
+    zh: |
+      初相
+    en: |
+      initial phase
+    brief: |
+      $t=0$时的相位，即$x=A\cos(\omega t+\varphi)$里的$\varphi$，通常取在$(-\pi,\pi]$里。
+    definedIn: physics.oscillations-waves.simple-harmonic-motion
+    anchor: def-shm
+  - id: physics.oscillations-waves.period
+    zh: |
+      周期
+    en: |
+      period
+    brief: |
+      振动重复一次所用的时间；简谐运动的周期是$T=\frac{2\pi}\omega$。
+    definedIn: physics.oscillations-waves.simple-harmonic-motion
+    anchor: def-shm
+  - id: physics.oscillations-waves.frequency
+    zh: |
+      频率
+    en: |
+      frequency
+    brief: |
+      单位时间里振动重复的次数$f=\frac1T$，单位是赫兹（Hz）；简谐运动的$f=\frac\omega{2\pi}$。
+    definedIn: physics.oscillations-waves.simple-harmonic-motion
+    anchor: def-shm
+  - id: physics.oscillations-waves.reference-circle
+    zh: |
+      参考圆
+    en: |
+      reference circle
+    brief: |
+      半径等于振幅的圆，圆上一点以角频率逆时针匀速转动，它在$x$轴上的投影做简谐运动。
+    definedIn: physics.oscillations-waves.simple-harmonic-motion
+    anchor: def-reference-circle
+  - id: physics.oscillations-waves.damping-force
+    zh: |
+      阻尼力
+    en: |
+      damping force
+    brief: |
+      和速度成正比、方向相反的力$-b\dot x$，$b>0$叫作阻尼系数；它不断消耗机械能。
+    definedIn: physics.oscillations-waves.damped-oscillations
+    anchor: def-damped-oscillation
+  - id: physics.oscillations-waves.damped-oscillation
+    zh: |
+      阻尼振动
+    en: |
+      damped oscillation
+    brief: |
+      振子同时受线性回复力和阻尼力时的运动，方程是$\ddot x+\gamma\dot x+\omega_0^2x=0$，$\gamma=\frac bm$。
+    definedIn: physics.oscillations-waves.damped-oscillations
+    anchor: def-damped-oscillation
+  - id: physics.oscillations-waves.natural-angular-frequency
+    zh: |
+      固有角频率
+    en: |
+      natural angular frequency
+    brief: |
+      振子没有阻尼、也不受外力时振动的角频率，由振子本身决定；弹簧振子的是$\omega_0=\sqrt{k/m}$。
+    definedIn: physics.oscillations-waves.damped-oscillations
+    anchor: def-damped-oscillation
+  - id: physics.oscillations-waves.underdamped
+    zh: |
+      欠阻尼
+    en: |
+      underdamped
+    brief: |
+      $\gamma<2\omega_0$的阻尼振动：在平衡位置两边来回振动，振幅按$e^{-\gamma t/2}$衰减。
+    definedIn: physics.oscillations-waves.damped-oscillations
+    anchor: def-damping-cases
+  - id: physics.oscillations-waves.critically-damped
+    zh: |
+      临界阻尼
+    en: |
+      critically damped
+    brief: |
+      $\gamma=2\omega_0$的阻尼振动：不来回振动，长时间后偏离减小得最快。
+    definedIn: physics.oscillations-waves.damped-oscillations
+    anchor: def-damping-cases
+  - id: physics.oscillations-waves.overdamped
+    zh: |
+      过阻尼
+    en: |
+      overdamped
+    brief: |
+      $\gamma>2\omega_0$的阻尼振动：不来回振动，阻尼越大，回到平衡位置越慢。
+    definedIn: physics.oscillations-waves.damped-oscillations
+    anchor: def-damping-cases
+  - id: physics.oscillations-waves.coupled-oscillators
+    zh: |
+      耦合振子
+    en: |
+      coupled oscillators
+    brief: |
+      用弹簧之类连在一起的几个振子，一个的位移会改变另一个受的力，运动方程要一起解。
+    definedIn: physics.oscillations-waves.normal-modes
+    anchor: def-coupled-oscillators
+  - id: physics.oscillations-waves.normal-mode
+    zh: |
+      简正模
+    en: |
+      normal mode
+    brief: |
+      各振子以同一个角频率、同一个$\cos(\omega t+\varphi)$振动的运动$\vb x=\vb a\cos(\omega t+\varphi)$，位移之比不变。
+    definedIn: physics.oscillations-waves.normal-modes
+    anchor: def-normal-mode
+  - id: physics.oscillations-waves.normal-frequency
+    zh: |
+      简正频率
+    en: |
+      normal frequency
+    brief: |
+      简正模的角频率；由$K\vb a=m\omega^2\vb a$，$m\omega^2$是矩阵$K$的特征值。
+    definedIn: physics.oscillations-waves.normal-modes
+    anchor: def-normal-mode
+  - id: physics.oscillations-waves.complex-amplitude
+    zh: |
+      复振幅
+    en: |
+      complex amplitude
+    brief: |
+      简谐运动$A\cos(\omega t+\varphi)$对应的复数$\tilde x=Ae^{i\varphi}$，模是振幅、辐角是初相，$x=\Re(\tilde xe^{i\omega t})$。
+    definedIn: physics.oscillations-waves.phasors
+    anchor: def-complex-amplitude
+  - id: physics.oscillations-waves.phasor
+    zh: |
+      旋转矢量
+    en: |
+      phasor
+    brief: |
+      复平面上从原点指向$\tilde xe^{i\omega t}$的矢量，以角速度$\omega$逆时针转，在实轴上的投影就是振动的位移。
+    definedIn: physics.oscillations-waves.phasors
+    anchor: def-phasor
+  - id: physics.oscillations-waves.driven-oscillation
+    zh: |
+      受迫振动
+    en: |
+      driven oscillation
+    brief: |
+      振子在周期性外力（驱动力）作用下的振动；暂态衰减以后，以驱动力的频率振动。
+    definedIn: physics.oscillations-waves.driven-oscillations
+    anchor: def-driven-oscillation
+  - id: physics.oscillations-waves.resonance
+    zh: |
+      共振
+    en: |
+      resonance
+    brief: |
+      驱动角频率接近固有角频率时，受迫振动的稳态振幅变得很大的现象。
+    definedIn: physics.oscillations-waves.driven-oscillations
+    anchor: def-resonance
+  - id: physics.oscillations-waves.simple-pendulum
+    zh: |
+      单摆
+    en: |
+      simple pendulum
+    brief: |
+      不能伸长、质量不计的细线下挂一个质点构成的摆；摆角很小时周期是$2\pi\sqrt{l/g}$。
+    definedIn: physics.oscillations-waves.pendulums
+    anchor: def-simple-pendulum
+  - id: physics.oscillations-waves.compound-pendulum
+    zh: |
+      复摆
+    en: |
+      compound pendulum
+    brief: |
+      绕水平固定轴摆动的刚体，也叫物理摆；摆角很小时周期是$2\pi\sqrt{\frac I{mgd}}$，$d$是转轴到质心的距离。
+    definedIn: physics.oscillations-waves.pendulums
+    anchor: def-compound-pendulum
+  - id: physics.oscillations-waves.beats
+    zh: |
+      拍
+    en: |
+      beats
+    brief: |
+      两个同方向、频率相近的振动叠加时，合振动的振幅周期性地时大时小的现象。
+    definedIn: physics.oscillations-waves.superposition-beats
+    anchor: def-beats
+  - id: physics.oscillations-waves.beat-frequency
+    zh: |
+      拍频
+    en: |
+      beat frequency
+    brief: |
+      拍的强弱变化的频率，等于两个振动的频率之差$|f_1-f_2|$。
+    definedIn: physics.oscillations-waves.superposition-beats
+    anchor: def-beats
+  - id: physics.oscillations-waves.lissajous-figure
+    zh: |
+      李萨如图形
+    en: |
+      Lissajous figure
+    brief: |
+      两个互相垂直的振动$x=A\cos\omega_1t$、$y=B\cos(\omega_2t+\varphi)$合成的轨迹，频率比是有理数时闭合。
+    definedIn: physics.oscillations-waves.superposition-beats
+    anchor: def-lissajous
+  - id: physics.oscillations-waves.beaded-string
+    zh: |
+      一维链
+    en: |
+      beaded string
+    brief: |
+      等间距串在绷紧的绳上、两端固定、只做横向小振动的一串小球，也叫小球链；$N$个小球有$N$个简正模。
+    definedIn: physics.oscillations-waves.beaded-string
+    anchor: def-beaded-string
+  - id: physics.oscillations-waves.wave-equation
+    zh: |
+      波动方程
+    en: |
+      wave equation
+    brief: |
+      方程$y_{tt}=v^2y_{xx}$；弦的横向小振动满足它，$v=\sqrt{T/\mu}$。
+    definedIn: physics.oscillations-waves.wave-equation
+    anchor: def-wave-equation
+  - id: physics.oscillations-waves.wave-speed
+    zh: |
+      波速
+    en: |
+      wave speed
+    brief: |
+      波形沿弦平移的速度；弦上$v=\sqrt{T/\mu}$，只由张力和线密度决定。
+    definedIn: physics.oscillations-waves.wave-equation
+    anchor: def-wave-equation
+  - id: physics.oscillations-waves.traveling-wave
+    zh: |
+      行波
+    en: |
+      traveling wave
+    brief: |
+      形状不变、以一定速度平移的波，例如向右传播的$f(x-vt)$、向左传播的$g(x+vt)$。
+    definedIn: physics.oscillations-waves.wave-equation
+    anchor: def-traveling-wave
+  - id: physics.oscillations-waves.quality-factor
+    zh: |
+      品质因数
+    en: |
+      quality factor
+    brief: |
+      $Q=\frac{\omega_0}\gamma$，也等于固有角频率除以平均功率的共振峰的半高宽；$Q$越大，共振峰越高越窄。
+    definedIn: physics.oscillations-waves.driven-oscillations
+    anchor: def-resonance

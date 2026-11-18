@@ -76,7 +76,7 @@
     - |
       $(ue^{kx})''=(u''+2ku'+k^2u)e^{kx}$，代入后按$u''$、$u'$、$u$整理。
     - |
-      (1) $L[ue^{kx}]=(u''+2ku'+k^2u)e^{kx}+a(u'+ku)e^{kx}+bue^{kx}=\bigl(u''+(2k+a)u'+(k^2+ak+b)u\bigr)e^{kx}$，而$p'(k)=2k+a$，$p(k)=k^2+ak+b$。
+      (1) $L[ue^{kx}]=(u''+2ku'+k^2u)e^{kx}+a(u'+ku)e^{kx}+bue^{kx}$，按$u''$、$u'$、$u$整理得$L[ue^{kx}]=\bigl(u''+(2k+a)u'+(k^2+ak+b)u\bigr)e^{kx}$，而$p'(k)=2k+a$，$p(k)=k^2+ak+b$。
 
       (2) 二重根时$p(k)=p'(k)=0$，$L[ue^{kx}]=u''e^{kx}$。取$u=\frac{x^2}{2}$，$u''=1$，所以$L\bigl[\frac{x^2}{2}e^{kx}\bigr]=e^{kx}$。例如$y''-2y'+y=e^x$的一个特解是$\frac{x^2}{2}e^x$。
   reference: |

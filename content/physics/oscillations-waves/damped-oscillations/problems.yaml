@@ -1,0 +1,181 @@
+- id: p1
+  tier: easy
+  statement: |
+    阻尼振子的固有角频率是$5.0\,\mathrm{rad/s}$，$\gamma=6.0\,\mathrm{s^{-1}}$。求它来回振动的角频率$\omega_{\mathrm d}$。
+  answer:
+    type: number
+    value: 4
+    unit: |
+      $\mathrm{rad/s}$
+  hints:
+    - |
+      先判断是哪种情形。欠阻尼时，来回振动的角频率和$\omega_0$、$\gamma$有什么关系？
+    - |
+      $\omega_{\mathrm d}=\sqrt{\omega_0^2-\frac{\gamma^2}4}$。
+    - |
+      $\gamma=6.0\,\mathrm{s^{-1}}<2\omega_0=10\,\mathrm{s^{-1}}$，是欠阻尼；$\omega_{\mathrm d}=\sqrt{25-9}=4.0\,\mathrm{rad/s}$。
+  solution: |
+    $\gamma=6.0\,\mathrm{s^{-1}}$小于$2\omega_0=10\,\mathrm{s^{-1}}$，是欠阻尼，$\omega_{\mathrm d}=\sqrt{\omega_0^2-\frac{\gamma^2}4}=\sqrt{25-9}=4.0\,\mathrm{rad/s}$，是固有角频率的$\frac45$。这里阻尼不算弱，振幅每过$\frac2\gamma\approx0.33\,\mathrm s$就变为原来的$\frac1e$，而一个来回要$\frac{2\pi}{4.0}\approx1.6\,\mathrm s$。
+
+- id: p2
+  tier: easy
+  statement: |
+    弹簧振子的质量$m$、劲度系数$k$、阻尼系数$b$如下（单位依次是$\mathrm{kg}$、$\mathrm{N/m}$、$\mathrm{kg/s}$）。哪些是欠阻尼？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $m=2$，$k=8$，$b=8$
+      - |
+        $m=0.5$，$k=2$，$b=3$
+      - |
+        $m=1$，$k=4$，$b=3$
+      - |
+        $m=1$，$k=9$，$b=7$
+      - |
+        $m=4$，$k=1$，$b=1.5$
+    value: [3, 5]
+  hints:
+    - |
+      欠阻尼的条件是$\gamma<2\omega_0$，换成$m$、$k$、$b$是什么？
+    - |
+      $\gamma<2\omega_0$即$\frac bm<2\sqrt{\frac km}$，也就是$b<2\sqrt{mk}$。逐组算$2\sqrt{mk}$。
+    - |
+      $2\sqrt{mk}$依次是$8$、$2$、$4$、$6$、$4$。C 的$3<4$、E 的$1.5<4$是欠阻尼；A 的$8=8$是临界阻尼；B 的$3>2$、D 的$7>6$是过阻尼。
+  solution: |
+    选 C、E。欠阻尼要$b<2\sqrt{mk}$。各组的$2\sqrt{mk}$是$8$、$2$、$4$、$6$、$4$：C（$3<4$）、E（$1.5<4$）是欠阻尼，A 正好是临界阻尼，B、D 是过阻尼。注意 B 的$b$比 A 的小，却是过阻尼：判断时看的是$b$和$2\sqrt{mk}$的比，不是$b$本身。
+
+- id: p3
+  tier: medium
+  statement: |
+    质量$0.10\,\mathrm{kg}$的物块连在劲度系数$10\,\mathrm{N/m}$的弹簧上，阻尼系数是$0.020\,\mathrm{kg/s}$。从某一时刻起，它来回振动 10 次（每次用时$\frac{2\pi}{\omega_{\mathrm d}}$）以后，振幅是原来的多少倍？结果保留三位有效数字。
+  answer:
+    type: number
+    value: exp(-0.1*10*2*pi/sqrt(100-0.01))
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      振幅按$e^{-\gamma t/2}$衰减。来回 10 次用了多长时间？
+    - |
+      $\gamma=\frac bm=0.20\,\mathrm{s^{-1}}$，$\omega_0=10\,\mathrm{rad/s}$，$\omega_{\mathrm d}=\sqrt{\omega_0^2-\frac{\gamma^2}4}$；10 次用时$t=\frac{20\pi}{\omega_{\mathrm d}}$。
+    - |
+      $\omega_{\mathrm d}=\sqrt{100-0.01}\approx10.0\,\mathrm{rad/s}$，$t\approx6.28\,\mathrm s$，振幅之比$e^{-0.10\times6.28}\approx0.534$。
+  solution: |
+    $\gamma=\frac{0.020}{0.10}=0.20\,\mathrm{s^{-1}}$，远小于$2\omega_0=20\,\mathrm{s^{-1}}$，是欠阻尼，$\omega_{\mathrm d}=\sqrt{100-0.01}\approx9.9995\,\mathrm{rad/s}$。来回 10 次用时$\frac{20\pi}{\omega_{\mathrm d}}\approx6.28\,\mathrm s$，振幅变为$e^{-\frac\gamma2t}=e^{-0.628}\approx0.534$倍。每来回一次，振幅都乘同一个因子$e^{-\pi\gamma/\omega_{\mathrm d}}\approx0.939$。
+
+- id: p4
+  tier: medium
+  statement: |
+    质量$0.50\,\mathrm{kg}$的物块连在劲度系数$50\,\mathrm{N/m}$的弹簧上，阻尼系数取临界阻尼时的一半。求它相邻两次向同一方向经过平衡位置的时间间隔，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 2*pi/sqrt(75)
+    unit: |
+      $\mathrm s$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      临界阻尼时$\gamma$是多少？取一半呢？
+    - |
+      临界阻尼时$\gamma=2\omega_0$，取一半就是$\gamma=\omega_0$。相邻两次同向经过平衡位置相隔$\frac{2\pi}{\omega_{\mathrm d}}$。
+    - |
+      $\omega_0=\sqrt{\frac{50}{0.50}}=10\,\mathrm{rad/s}$，$\gamma=10\,\mathrm{s^{-1}}$，$\omega_{\mathrm d}=\sqrt{100-25}=\sqrt{75}\approx8.66\,\mathrm{rad/s}$，间隔$\frac{2\pi}{\omega_{\mathrm d}}\approx0.726\,\mathrm s$。
+  solution: |
+    $\omega_0=10\,\mathrm{rad/s}$，临界阻尼时$\gamma=2\omega_0=20\,\mathrm{s^{-1}}$（$b=10\,\mathrm{kg/s}$），取一半$\gamma=10\,\mathrm{s^{-1}}$。$\omega_{\mathrm d}=\sqrt{\omega_0^2-\frac{\gamma^2}4}=\sqrt{75}\approx8.66\,\mathrm{rad/s}$，相邻两次同向经过平衡位置相隔$\frac{2\pi}{\omega_{\mathrm d}}\approx0.726\,\mathrm s$，比没有阻尼时的$0.628\,\mathrm s$长。不过一次来回里振幅要乘$e^{-\pi\gamma/\omega_{\mathrm d}}\approx0.027$，第二次经过时已经几乎看不出摆动了。
+
+- id: p5
+  tier: hard
+  statement: |
+    阻尼振子的机械能是$E=\frac12m\dot x^2+\frac12kx^2$。
+
+    （1）由运动方程证明$\dv Et=-b\dot x^2$。
+
+    （2）阻尼弱时，一个来回里的运动近似是振幅为$A$的简谐运动。求一个来回里$\dot x^2$的平均值，并由此说明$E$近似按$e^{-\gamma t}$衰减。
+
+    （3）每来回一次，损失的机械能约占机械能的多少？
+  hints:
+    - |
+      对$E$求导，用$m\ddot x=-kx-b\dot x$。
+    - |
+      近似取$\dot x=-A\omega_0\sin(\omega_0t+\varphi)$，$\sin^2$在一个周期里的平均是$\frac12$；再用$E\approx\frac12m\omega_0^2A^2$（振到最远处时速度为零，机械能就是那时的弹性势能$\frac12kA^2$）把平均的$\dv Et$写成$E$的倍数。
+    - |
+      （1）$\dot E=m\dot x\ddot x+kx\dot x=\dot x(m\ddot x+kx)=-b\dot x^2$。（2）$\overline{\dot x^2}=\frac12A^2\omega_0^2=\frac Em$，所以一个来回里平均$\dot E\approx-\frac bmE=-\gamma E$；阻尼弱时$E$在一个来回里变化很小，可以把这当成$E$的微分方程，$E\approx E_0e^{-\gamma t}$。（3）一个来回用时$\frac{2\pi}{\omega_0}$，损失的比例约为$\gamma\cdot\frac{2\pi}{\omega_0}=\frac{2\pi\gamma}{\omega_0}$。
+  reference: |
+    （1）$\dot E=m\dot x\ddot x+kx\dot x=\dot x(m\ddot x+kx)$，由运动方程$m\ddot x+kx=-b\dot x$，得$\dot E=-b\dot x^2\le0$：阻尼力的功率总不为正。
+
+    （2）阻尼弱时，一个来回里$x\approx A\cos(\omega_0t+\varphi)$，$\dot x\approx-A\omega_0\sin(\omega_0t+\varphi)$，$\overline{\dot x^2}=\frac12A^2\omega_0^2$。而$E\approx\frac12kA^2=\frac12m\omega_0^2A^2$，所以$\overline{\dot x^2}\approx\frac Em$，一个来回里$E$的平均变化率$\approx-\frac bmE=-\gamma E$。$E$在一个来回里只变很小的比例，用这个平均变化率描述$E$随时间的缓慢变化，$\dv Et=-\gamma E$，$E\approx E_0e^{-\gamma t}$，和讲解里由振幅$A_0e^{-\gamma t/2}$平方得到的一致。
+
+    （3）一个来回用时$\frac{2\pi}{\omega_0}$，损失的比例约为$\frac{2\pi\gamma}{\omega_0}$；例如$\gamma=0.01\omega_0$时约为$6\%$。
+
+- id: p6
+  tier: hard
+  statement: |
+    临界阻尼的振子，固有角频率为$\omega_0$，$t=0$时位移为$x_0>0$、速度为$v_0$。
+
+    （1）写出$x(t)$。
+
+    （2）证明它至多经过平衡位置一次，并求它越过平衡位置的条件。
+
+    （3）闭门器调成临界阻尼，把门的转角看成$x$，满足同样的方程。门开着时，有人猛地往关的方向推了一下，门会冲过关闭的位置吗？轻轻放手呢？
+  hints:
+    - |
+      临界阻尼时$x=(C_1+C_2t)e^{-\omega_0t}$，由$x(0)$、$\dot x(0)$定$C_1$、$C_2$。
+    - |
+      $e^{-\omega_0t}$总是正的，$x$的零点就是一次函数$C_1+C_2t$的零点。它在$t>0$时有零点，要什么条件？
+    - |
+      （1）$C_1=x_0$，$\dot x(0)=C_2-\omega_0C_1=v_0$，$x=\bigl(x_0+(v_0+\omega_0x_0)t\bigr)e^{-\omega_0t}$。（2）一次函数至多一个零点；$t^*=-\frac{x_0}{v_0+\omega_0x_0}>0$要求$v_0+\omega_0x_0<0$，即$v_0<-\omega_0x_0$：朝平衡位置运动，速度大于$\omega_0x_0$。（3）推得够猛（往关的方向的角速度超过$\omega_0$乘开着的角度）时，门会冲过关闭的位置一次，实际上就是撞到门框；轻轻放手时$v_0=0$，不会越过，门慢慢合上。
+  reference: |
+    （1）$x=(C_1+C_2t)e^{-\omega_0t}$，$x(0)=C_1=x_0$；$\dot x=\bigl(C_2-\omega_0(C_1+C_2t)\bigr)e^{-\omega_0t}$，$\dot x(0)=C_2-\omega_0x_0=v_0$，所以$x=\bigl(x_0+(v_0+\omega_0x_0)t\bigr)e^{-\omega_0t}$。
+
+    （2）$e^{-\omega_0t}>0$，$x=0$当且仅当$x_0+(v_0+\omega_0x_0)t=0$；一次函数（不恒为零，因为$x_0\ne0$）至多一个零点，所以至多经过平衡位置一次。零点$t^*=-\frac{x_0}{v_0+\omega_0x_0}$为正，当且仅当$v_0+\omega_0x_0<0$，即$v_0<-\omega_0x_0$：朝平衡位置运动、速度大小超过$\omega_0x_0$时才越过平衡位置，越过以后从另一侧慢慢回来，不再越过。
+
+    （3）门开着的角度相当于$x_0>0$，往关的方向推相当于$v_0<0$。往关的方向的角速度超过$\omega_0x_0$时，门越过关闭的位置（实际上就是撞到门框）；轻轻放手$v_0=0$，$v_0+\omega_0x_0>0$，门不会越过，单调地合上。所以闭门器调到临界阻尼，也只保证门「自己合上时」不撞框。
+
+- id: p7
+  tier: thinking
+  statement: |
+    欠阻尼时$x=A_0e^{-\gamma t/2}\cos(\omega_{\mathrm d}t+\varphi)$。
+
+    （1）相邻两个极大值相隔多久？
+
+    （2）极大值是不是正好在两次经过平衡位置的正中间？
+
+    （3）这样的运动还能说「周期是$\frac{2\pi}{\omega_{\mathrm d}}$」吗？哪些东西每隔$\frac{2\pi}{\omega_{\mathrm d}}$重复，哪些不重复？
+  hints:
+    - |
+      求$\dot x$，令它为零。记$\theta=\omega_{\mathrm d}t+\varphi$。
+    - |
+      $\dot x=A_0e^{-\gamma t/2}\bigl(-\frac\gamma2\cos\theta-\omega_{\mathrm d}\sin\theta\bigr)$，为零时$\tan\theta=-\frac\gamma{2\omega_{\mathrm d}}$。$\theta=0$（两个零点$\theta=\pm\frac\pi2$的正中间）处$\dot x$是正是负？
+    - |
+      （1）$\tan\theta=-\frac\gamma{2\omega_{\mathrm d}}$的解每隔$\pi$一个，极大、极小交替，相邻极大值相隔$\frac{2\pi}{\omega_{\mathrm d}}$。（2）不是：$\theta=0$时$\dot x=-\frac\gamma2A_0e^{-\gamma t/2}<0$，已经在下降，极大值提前了$\frac1{\omega_{\mathrm d}}\arctan\frac\gamma{2\omega_{\mathrm d}}$。（3）过零的时刻、极值的时刻每隔$\frac{2\pi}{\omega_{\mathrm d}}$重复，位移的大小却每次乘$e^{-\pi\gamma/\omega_{\mathrm d}}$，所以运动不是周期的；说「周期」只是借用，指相邻两次同向过零的间隔。
+  reference: |
+    （1）记$\theta=\omega_{\mathrm d}t+\varphi$，$\dot x=A_0e^{-\gamma t/2}\bigl(-\frac\gamma2\cos\theta-\omega_{\mathrm d}\sin\theta\bigr)$。$\dot x=0$即$\tan\theta=-\frac\gamma{2\omega_{\mathrm d}}$，解是$\theta=-\arctan\frac\gamma{2\omega_{\mathrm d}}+n\pi$，极大、极小交替出现，相邻两个极大值相隔$\Delta\theta=2\pi$，即$\frac{2\pi}{\omega_{\mathrm d}}$，间隔是相等的。
+
+    （2）零点在$\theta=\frac\pi2+n\pi$，相邻两个零点$-\frac\pi2$、$\frac\pi2$的正中间是$\theta=0$，那里$\dot x=-\frac\gamma2A_0e^{-\gamma t/2}<0$，已经在减小；极大值在$\theta=-\arctan\frac\gamma{2\omega_{\mathrm d}}$，比正中间早$\frac1{\omega_{\mathrm d}}\arctan\frac\gamma{2\omega_{\mathrm d}}$。直观地说，振幅一直在变小，往外走的那半程比往回走的那半程短。
+
+    （3）$x(t+\frac{2\pi}{\omega_{\mathrm d}})=e^{-\pi\gamma/\omega_{\mathrm d}}x(t)$：过零、极值的时刻每隔$\frac{2\pi}{\omega_{\mathrm d}}$重复，大小却按同一比例缩小，严格地说不是周期运动。说「周期是$\frac{2\pi}{\omega_{\mathrm d}}$」是借用，指相邻两次同向过零（或相邻两个极大值）的时间间隔；阻尼弱时它和真正周期运动的差别很小。
+
+- id: p8
+  tier: thinking
+  statement: |
+    阻尼力取成$-b\dot x$。
+
+    （1）如果在运动方程里加的是$-b'x$或$-b''\ddot x$（$b'$、$b''$是正的常量），运动会怎样变？会衰减吗？
+
+    （2）这三种力里，为什么只有和速度有关的那种能让振动衰减？可以从功率去想，也可以想想把运动的录像倒着放。
+
+    （3）真实的阻力常常更接近大小和速率平方成正比的平方阻力，这时振幅还按指数衰减吗？
+  hints:
+    - |
+      把$-b'x$并进回复力、把$-b''\ddot x$移到方程左边，各相当于改了什么？
+    - |
+      只和位置有关的力做的功只看起点和终点，来回一圈做功为零；倒着放录像时，$x$、$\ddot x$不变，$\dot x$变号。平方阻力每个来回损失的能量和$A$的几次方成正比？
+    - |
+      （1）$-b'x$让劲度系数变成$k+b'$，$-b''\ddot x$让质量变成$m+b''$，都只改变$\omega_0$，不衰减。（2）只和位置有关的力是保守力，来回一圈做功为零；和加速度成正比的力相当于加了质量；只有$-b\dot x$的功率$-b\dot x^2$始终不为正，一直消耗能量。倒着放时$-b\dot x$变号，它让方程在时间反向下不再成立，运动才会有「越来越小」这个方向。（3）不按指数：每个来回损失的能量约和$A^3$成正比，机械能和$A^2$成正比，于是$\dv At\propto-A^2$，$A$约按$\frac1{t+t_0}$衰减，振幅大时衰减得快，振幅小时慢得多。
+  reference: |
+    （1）$m\ddot x=-kx-b'x$相当于劲度系数$k+b'$；$m\ddot x=-kx-b''\ddot x$即$(m+b'')\ddot x=-kx$，相当于质量$m+b''$。两种都还是简谐运动，只是$\omega_0$变了，机械能（相应地重新定义）守恒，不衰减。
+
+    （2）只和位置有关的力（一维）总有势能，来回一圈做功为零，不能持续消耗能量；和$\ddot x$成正比的项就是改了惯性。和$\dot x$成正比、方向相反的力，功率$-b\dot x^2\le0$，只要在动就消耗能量。从时间反演看：把$t$换成$-t$，$x$、$\ddot x$不变、$\dot x$变号，没有$\dot x$项的方程在倒放下仍然成立，运动可以原样倒回去，不会有「衰减」这个方向；有了$-b\dot x$，倒放的运动不再满足方程（倒放看起来是振幅越来越大）。
+
+    （3）平方阻力$-c|\dot x|\dot x$的功率是$-c|\dot x|^3$。阻尼弱时一个来回近似是振幅$A$的简谐运动，平均功率约和$A^3\omega_0^3$成正比，而$E=\frac12kA^2$，所以$A\dv At\propto-A^3$，$\dv At\propto-A^2$，$A\approx\frac{A_1}{1+\alpha A_1t}$（$\alpha$是常量）：不是指数衰减，振幅越小衰减得越慢，不像线性阻尼那样每个来回按同一比例缩小。

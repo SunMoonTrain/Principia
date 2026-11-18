@@ -1,0 +1,181 @@
+- id: p1
+  tier: easy
+  statement: |
+    简谐运动$x=5\sin\omega t$（单位$\mathrm{cm}$）的复振幅是多少？按「实部, 虚部」的顺序写出两个数。
+  answer:
+    type: tuple
+    value: [0, -5]
+  hints:
+    - |
+      先把正弦写成余弦，读出振幅和初相。
+    - |
+      $\sin\omega t=\cos\bigl(\omega t-\frac\pi2\bigr)$，复振幅是$Ae^{i\varphi}$。
+    - |
+      $A=5$，$\varphi=-\frac\pi2$，$\tilde x=5e^{-i\pi/2}=-5i$，实部$0$、虚部$-5$。
+  solution: |
+    $x=5\cos\bigl(\omega t-\frac\pi2\bigr)$，振幅$5\,\mathrm{cm}$、初相$-\frac\pi2$，复振幅$\tilde x=5e^{-i\pi/2}=-5i$。验算：$\Re\bigl(-5ie^{i\omega t}\bigr)=\Re\bigl(-5i\cos\omega t+5\sin\omega t\bigr)=5\sin\omega t$。正弦比同频率的余弦落后$\frac\pi2$，所以复振幅指向负虚轴方向。
+
+- id: p2
+  tier: easy
+  statement: |
+    用$e^{i\omega t}$的约定，下面哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        复振幅乘$e^{-i\pi/3}$，表示振动提前了$\frac\pi3$
+      - |
+        速度的复振幅比位移的复振幅的辐角大$\frac\pi2$
+      - |
+        振幅都是$A$、初相相差$\frac\pi2$的两个同频率振动，合振动的振幅是$2A$
+      - |
+        两个频率不同的振动，把复振幅相加就得到合振动的复振幅
+      - |
+        加速度的复振幅和位移的复振幅方向相反
+    value: [2, 5]
+  hints:
+    - |
+      求导乘$i\omega$，$i=e^{i\pi/2}$；乘$e^{-i\delta}$让辐角减小$\delta$。
+    - |
+      初相差$\frac\pi2$的两个等长旋转矢量首尾相接，组成什么三角形？复振幅相加的前提是什么？
+    - |
+      A 错：乘$e^{-i\pi/3}$是落后$\frac\pi3$；B 对：速度的复振幅是$i\omega\tilde x$，辐角大$\frac\pi2$。C 错：两条直角边都是$A$，斜边是$\sqrt2A$；D 错：复振幅只对同一个角频率有意义，频率不同的振动之和一般不是简谐运动。E 对：加速度的复振幅是$-\omega^2\tilde x$。
+  solution: |
+    选 B、E。乘$e^{-i\pi/3}$让初相减小$\frac\pi3$，是落后，A 错；速度的复振幅$i\omega\tilde x$比位移超前$\frac\pi2$，B 对；初相差$\frac\pi2$时合振幅的平方是$A^2+A^2+0=2A^2$，合振幅$\sqrt2A$，C 错；复振幅都默认乘同一个$e^{i\omega t}$，频率不同就不能只加复振幅，D 错；加速度的复振幅$-\omega^2\tilde x$和位移反相，E 对。
+
+- id: p3
+  tier: medium
+  statement: |
+    $x_1=4\cos\omega t$，$x_2=3\cos\bigl(\omega t+\frac\pi3\bigr)$（单位$\mathrm{cm}$）。求合振动的振幅，结果保留三位有效数字。
+  answer:
+    type: number
+    value: sqrt(37)
+    unit: |
+      $\mathrm{cm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      同频率，合振幅由$A_1$、$A_2$和初相差决定。
+    - |
+      $A^2=A_1^2+A_2^2+2A_1A_2\cos(\varphi_2-\varphi_1)$，这里$\varphi_2-\varphi_1=\frac\pi3$。
+    - |
+      $A^2=16+9+2\times4\times3\times\frac12=37$，$A=\sqrt{37}\approx6.08\,\mathrm{cm}$。
+  solution: |
+    $A^2=4^2+3^2+2\times4\times3\cos\frac\pi3=37$，$A=\sqrt{37}\approx6.08\,\mathrm{cm}$。也可以直接加复振幅：$\tilde x=4+3e^{i\pi/3}=5.5+\frac{3\sqrt3}2i$，模的平方是$30.25+6.75=37$；它的辐角$\arctan\frac{3\sqrt3}{11}\approx0.441$就是合振动的初相。
+
+- id: p4
+  tier: medium
+  statement: |
+    振动$x_1=4\cos\omega t$和另一个同频率的振动$x_2$叠加，合振动是$x=6\cos\bigl(\omega t+\frac\pi3\bigr)$（单位$\mathrm{cm}$）。求$x_2$的振幅，结果保留三位有效数字。
+  answer:
+    type: number
+    value: sqrt(28)
+    unit: |
+      $\mathrm{cm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $\tilde x_2=\tilde x-\tilde x_1$。
+    - |
+      $\tilde x=6e^{i\pi/3}=3+3\sqrt3\,i$，$\tilde x_1=4$，相减后求模。
+    - |
+      $\tilde x_2=-1+3\sqrt3\,i$，模$\sqrt{1+27}=\sqrt{28}\approx5.29\,\mathrm{cm}$；辐角$\pi-\arctan3\sqrt3\approx1.76$，所以$x_2\approx5.29\cos(\omega t+1.76)\,\mathrm{cm}$。
+  solution: |
+    $\tilde x_2=\tilde x-\tilde x_1=6e^{i\pi/3}-4=-1+3\sqrt3\,i$，振幅$|\tilde x_2|=\sqrt{28}=2\sqrt7\approx5.29\,\mathrm{cm}$，初相$\pi-\arctan3\sqrt3\approx1.76$。在图上，$\tilde x_1$和$\tilde x$的夹角是$60^\circ$，$\tilde x_2$是从$\tilde x_1$的终点指向$\tilde x$的终点的那一边，由余弦定理，$|\tilde x_2|^2=6^2+4^2-2\times6\times4\cos60^\circ=28$。
+
+- id: p5
+  tier: hard
+  statement: |
+    两个同频率的量$x=\Re\bigl(\tilde xe^{i\omega t}\bigr)$、$y=\Re\bigl(\tilde ye^{i\omega t}\bigr)$。
+
+    （1）证明$xy$在一个周期里的平均值是$\frac12\Re\bigl(\tilde x\tilde y^*\bigr)$。
+
+    （2）用它求$x^2$的平均值和$x\dot x$的平均值，并检查是否合理。
+
+    （3）力$F=F_0\cos\omega t$作用在速度为$v=v_0\cos(\omega t-\alpha)$的物体上，求一个周期里的平均功率。
+  hints:
+    - |
+      $\Re z=\frac12(z+z^*)$。把$xy$写成四项，看哪些项含$e^{\pm2i\omega t}$。
+    - |
+      $xy=\frac14\bigl(\tilde x\tilde ye^{2i\omega t}+\tilde x^*\tilde y^*e^{-2i\omega t}+\tilde x\tilde y^*+\tilde x^*\tilde y\bigr)$，含$e^{\pm2i\omega t}$的项在一个周期里平均为零。
+    - |
+      （1）剩下$\frac14(\tilde x\tilde y^*+\tilde x^*\tilde y)=\frac12\Re(\tilde x\tilde y^*)$。（2）$\overline{x^2}=\frac12|\tilde x|^2=\frac{A^2}2$；$\dot x$的复振幅是$i\omega\tilde x$，$\overline{x\dot x}=\frac12\Re\bigl(\tilde x(i\omega\tilde x)^*\bigr)=\frac12\Re\bigl(-i\omega|\tilde x|^2\bigr)=0$，合理：$x\dot x=\frac12\dv{}t(x^2)$，周期函数导数的平均是零。（3）$\bar P=\frac12\Re\bigl(F_0\,v_0e^{i\alpha}\bigr)=\frac12F_0v_0\cos\alpha$。
+  reference: |
+    （1）$x=\frac12\bigl(\tilde xe^{i\omega t}+\tilde x^*e^{-i\omega t}\bigr)$，$y$同样。$xy=\frac14\bigl(\tilde x\tilde ye^{2i\omega t}+\tilde x^*\tilde y^*e^{-2i\omega t}\bigr)+\frac14\bigl(\tilde x\tilde y^*+\tilde x^*\tilde y\bigr)$。$e^{\pm2i\omega t}$在一个周期$\frac{2\pi}\omega$里转两整圈，实部、虚部的平均都是零；后一项不随时间变，等于$\frac12\Re(\tilde x\tilde y^*)$，因为$\tilde x^*\tilde y=(\tilde x\tilde y^*)^*$。
+
+    （2）$\overline{x^2}=\frac12\tilde x\tilde x^*=\frac{A^2}2$，和$\cos^2$的平均是$\frac12$一致。$\dot x$的复振幅是$i\omega\tilde x$，$\overline{x\dot x}=\frac12\Re\bigl(\tilde x\cdot(-i\omega)\tilde x^*\bigr)=\frac12\Re(-i\omega A^2)=0$；直接看，$x\dot x=\frac12\dv{}t(x^2)$，周期函数的导数在一个周期里平均为零。
+
+    （3）$\tilde F=F_0$，$\tilde v=v_0e^{-i\alpha}$，$\bar P=\overline{Fv}=\frac12\Re\bigl(F_0v_0e^{i\alpha}\bigr)=\frac12F_0v_0\cos\alpha$。力和速度同相时平均功率最大；相差$\frac\pi2$时为零，力在一个周期里做的功正负抵消。注意不能先把两个复数相乘再取实部：$\Re\bigl(\tilde F\tilde ve^{2i\omega t}\bigr)$的平均是零，算错了。
+
+- id: p6
+  tier: hard
+  statement: |
+    例 2 的$N$个旋转矢量，长度都是$a$，每个比前一个多转$\delta$（$0<\delta<\frac{2\pi}N$）。
+
+    （1）证明它们的顶点都在同一个圆上，求这个圆的半径。
+
+    （2）用这个圆求合振幅，和例 2 的结果对照。
+
+    （3）合振动的初相是多少？
+  hints:
+    - |
+      首尾相接的等长矢量，每一段都比前一段转过同一个角度：它们是一个正多边形的边。正多边形的每条边对外接圆的圆心张多大的角？
+    - |
+      边长$a$、圆心角$\delta$的弦，所在圆的半径$R$满足$a=2R\sin\frac\delta2$。合成矢量是从第一段起点到最后一段终点的弦，圆心角是多少？
+    - |
+      （1）$N$段都是同一个圆里圆心角为$\delta$的弦，$R=\frac a{2\sin(\delta/2)}$。（2）合成矢量是圆心角$N\delta$的弦，长$2R\sin\frac{N\delta}2=a\frac{\sin(N\delta/2)}{\sin(\delta/2)}$，和例 2 一致。（3）合成矢量的方向是第一段和最后一段方向的平均：第一段的辐角是$0$，最后一段是$(N-1)\delta$，所以初相是$\frac{(N-1)\delta}2$。
+  reference: |
+    （1）相邻两段等长、方向转过$\delta$，过每段的两个端点作垂直平分线，相邻两条交于同一点$C$（把整个图形绕$C$转$\delta$，第$j$段就变成第$j+1$段）。所以所有顶点到$C$的距离相同，都在以$C$为圆心的圆上，每段是圆心角$\delta$的弦，$a=2R\sin\frac\delta2$，$R=\frac a{2\sin(\delta/2)}$。
+
+    （2）从第一段的起点到最后一段的终点，绕$C$转过$N\delta$（$<2\pi$），合成矢量是圆心角$N\delta$的弦，长$2R\sin\frac{N\delta}2=a\frac{\sin(N\delta/2)}{\sin(\delta/2)}$，和例 2 用等比数列求出的相同（这里两个正弦都是正的）。
+
+    （3）弦的方向是两端切线方向的平均；按复数算，$\tilde x=a\frac{e^{iN\delta}-1}{e^{i\delta}-1}=a\frac{e^{iN\delta/2}\sin(N\delta/2)}{e^{i\delta/2}\sin(\delta/2)}$，辐角$\frac{(N-1)\delta}2$。合振动的初相是各分振动初相的平均。
+
+- id: p7
+  tier: thinking
+  statement: |
+    有的书约定$x=\Re\bigl(\tilde xe^{-i\omega t}\bigr)$。
+
+    （1）这时$A\cos(\omega t+\varphi)$的复振幅是什么？
+
+    （2）求导乘什么？振动落后$\delta$乘什么？旋转矢量朝哪边转？
+
+    （3）两种约定算出的位移、振幅、初相会不会不同？换书看的时候要注意什么？
+  hints:
+    - |
+      $A\cos(\omega t+\varphi)=\Re\bigl(Ae^{-i(\omega t+\varphi)}\bigr)$。
+    - |
+      $\bigl(e^{-i\omega t}\bigr)'=-i\omega e^{-i\omega t}$；在复平面上，$e^{-i\omega t}$随时间往哪边转？
+    - |
+      （1）$\tilde x=Ae^{-i\varphi}$，是我们的约定下复振幅的共轭。（2）求导乘$-i\omega$，落后$\delta$乘$e^{i\delta}$，旋转矢量顺时针转。（3）实际的位移、振幅、初相都一样，因为$\Re z=\Re z^*$；只是中间的复数互为共轭。换书时先看它用哪个约定，公式里所有的$i$都要换成$-i$，复数结果的虚部符号、「乘$e^{\pm i\delta}$是超前还是落后」都会反过来。
+  reference: |
+    （1）$A\cos(\omega t+\varphi)=\Re\bigl(Ae^{-i\varphi}e^{-i\omega t}\bigr)$，复振幅$Ae^{-i\varphi}$，正好是$e^{i\omega t}$约定下的共轭。
+
+    （2）求导乘$-i\omega$；落后$\delta$即初相减$\delta$，复振幅$Ae^{-i(\varphi-\delta)}=Ae^{-i\varphi}e^{i\delta}$，乘$e^{i\delta}$；$e^{-i\omega t}$在复平面上顺时针转。
+
+    （3）$\Re z=\Re z^*$，所以两种约定给出的实际运动完全一样，振幅、初相都相同；所有复数中间量互为共轭，公式里的$i$全部换成$-i$。物理、光学里常用$e^{-i\omega t}$，电路、工程里常用$e^{i\omega t}$（写成$e^{j\omega t}$）。看别的书时要先认约定，否则「相位超前还是落后」「阻抗的虚部是正是负」都会读反。本领域和电磁学的交流电路一样用$e^{i\omega t}$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    同一点上叠加两个同频率的振动，振幅$A_1$、$A_2$，可是它们的初相差$\Delta\varphi$不固定，在$0$到$2\pi$之间随时间毫无规律地变化（变得比振动本身慢得多）。
+
+    （1）合振动的振幅平方$A^2$在长时间里的平均是多少？
+
+    （2）两个独立的人同时哼同一个音，和同一个喇叭发出、分成两路的同一个音，叠加起来的效果有什么不同？
+
+    （3）这说明「能量相加」和「振幅相加」各在什么情况下成立？
+  hints:
+    - |
+      $A^2=A_1^2+A_2^2+2A_1A_2\cos\Delta\varphi$。$\Delta\varphi$在$0$到$2\pi$里均匀乱变时，$\cos\Delta\varphi$的平均是多少？
+    - |
+      两个人哼的音，初相差固定吗？同一个喇叭分出的两路呢？
+    - |
+      （1）$\overline{\cos\Delta\varphi}=0$，$\overline{A^2}=A_1^2+A_2^2$。（2）两个人的初相差乱变，叠加后平均起来只是能量相加，听不出时强时弱的花样；同一个音源分成两路，初相差固定，有的地方同相加强、有的地方反相减弱。（3）初相差固定时复振幅相加，$A^2$里有交叉项；初相差乱变时交叉项平均掉，$A^2$（正比于能量）直接相加。
+  reference: |
+    （1）$A^2=A_1^2+A_2^2+2A_1A_2\cos\Delta\varphi$。$\Delta\varphi$在$[0,2\pi)$里均匀乱变，$\cos\Delta\varphi$平均为零，$\overline{A^2}=A_1^2+A_2^2$。$A_1=A_2$时，固定同相是$4A_1^2$，固定反相是$0$，乱变的平均是$2A_1^2$。
+
+    （2）两个人的声带各自振动，初相差随时间乱变，叠加的效果只是能量相加，处处差不多一样响。同一个喇叭的声音分成两路，初相差由两路的路程差决定、不随时间变，在路程差合适的地方同相加强、在别的地方反相减弱。
+
+    （3）初相差固定时，按复振幅相加（振幅相加，有交叉项，能产生加强和抵消）；初相差乱变时，交叉项平均为零，振幅的平方（能量）相加。这就是以后讲干涉时的「相干」与「不相干」。

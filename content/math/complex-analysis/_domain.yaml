@@ -13,6 +13,316 @@ macros:
     \operatorname{Im}
   \Res: |
     \operatorname*{Res}
+  \Arg: |
+    \operatorname{Arg}
+  \Log: |
+    \operatorname{Log}
   \dd: |
     \mathop{}\!\mathrm{d}
-glossary: []
+glossary:
+  - id: math.complex-analysis.complex-number
+    zh: |
+      复数
+    en: |
+      complex number
+    brief: |
+      形如$a+bi$的数，$a$、$b$是实数，$i^2=-1$；按多项式的规矩运算，遇到$i^2$就换成$-1$。
+    definedIn: math.complex-analysis.complex-numbers
+    anchor: def-complex-number
+  - id: math.complex-analysis.real-part
+    zh: |
+      实部
+    en: |
+      real part
+    brief: |
+      复数$z=a+bi$里的实数$a$，记作$\Re z$；$\Re z=\frac{z+\bar z}2$。
+    definedIn: math.complex-analysis.complex-numbers
+    anchor: def-complex-number
+  - id: math.complex-analysis.imaginary-part
+    zh: |
+      虚部
+    en: |
+      imaginary part
+    brief: |
+      复数$z=a+bi$里的实数$b$（不带$i$），记作$\Im z$；$\Im z=\frac{z-\bar z}{2i}$。
+    definedIn: math.complex-analysis.complex-numbers
+    anchor: def-complex-number
+  - id: math.complex-analysis.purely-imaginary
+    zh: |
+      纯虚数
+    en: |
+      purely imaginary number
+    brief: |
+      实部为$0$、虚部不为$0$的复数，如$2i$、$-i$；$0$不算纯虚数。
+    definedIn: math.complex-analysis.complex-numbers
+    anchor: def-complex-number
+  - id: math.complex-analysis.conjugate
+    zh: |
+      共轭复数
+    en: |
+      complex conjugate
+    brief: |
+      $z=a+bi$的共轭复数是$\bar z=a-bi$，即$z$关于实轴的对称点；$z\bar z=|z|^2$。
+    definedIn: math.complex-analysis.complex-numbers
+    anchor: def-conjugate
+  - id: math.complex-analysis.complex-plane
+    zh: |
+      复平面
+    en: |
+      complex plane
+    brief: |
+      把复数$a+bi$画成点$(a,b)$的平面，横轴是实轴，纵轴是虚轴；复数相加就是向量相加。
+    definedIn: math.complex-analysis.complex-numbers
+    anchor: def-complex-plane
+  - id: math.complex-analysis.real-axis
+    zh: |
+      实轴
+    en: |
+      real axis
+    brief: |
+      复平面的横轴，上面的点就是实数；正实轴、负实轴是它在原点两侧的两半。
+    definedIn: math.complex-analysis.complex-numbers
+    anchor: def-complex-plane
+  - id: math.complex-analysis.imaginary-axis
+    zh: |
+      虚轴
+    en: |
+      imaginary axis
+    brief: |
+      复平面的纵轴，上面的点是$yi$（$y$是实数），也就是$0$和纯虚数。
+    definedIn: math.complex-analysis.complex-numbers
+    anchor: def-complex-plane
+  - id: math.complex-analysis.modulus
+    zh: |
+      模
+    en: |
+      modulus
+    brief: |
+      复数$z=a+bi$到原点的距离$|z|=\sqrt{a^2+b^2}$；$|z|^2=z\bar z$，$|zw|=|z||w|$。
+    definedIn: math.complex-analysis.complex-numbers
+    anchor: def-complex-plane
+  - id: math.complex-analysis.triangle-inequality
+    zh: |
+      三角不等式
+    en: |
+      triangle inequality
+    brief: |
+      对复数$z$、$w$，$|z+w|\le|z|+|w|$：三角形的一边不超过另两边之和。
+    definedIn: math.complex-analysis.complex-numbers
+    anchor: thm-triangle-inequality
+  - id: math.complex-analysis.argument
+    zh: |
+      辐角
+    en: |
+      argument
+    brief: |
+      从正实轴转到非零复数$z$所在射线的角（逆时针为正），记作$\arg z$，可以差$2\pi$的整数倍。
+    definedIn: math.complex-analysis.complex-numbers
+    anchor: def-argument
+  - id: math.complex-analysis.principal-argument
+    zh: |
+      辐角主值
+    en: |
+      principal argument
+    brief: |
+      落在$(-\pi,\pi]$里的那个辐角，记作$\Arg z$，如$\Arg(-1)=\pi$；高中课本取的是$[0,2\pi)$。
+    definedIn: math.complex-analysis.complex-numbers
+    anchor: def-argument
+  - id: math.complex-analysis.trigonometric-form
+    zh: |
+      三角形式
+    en: |
+      trigonometric form
+    brief: |
+      把非零复数写成$r(\cos\theta+i\sin\theta)$，$r$是模，$\theta$是辐角；两数相乘时模相乘、辐角相加。
+    definedIn: math.complex-analysis.complex-numbers
+    anchor: def-argument
+  - id: math.complex-analysis.exponential-form
+    zh: |
+      指数形式
+    en: |
+      exponential form
+    brief: |
+      记$e^{i\theta}=\cos\theta+i\sin\theta$，把非零复数写成$re^{i\theta}$；$e^{i\alpha}e^{i\beta}=e^{i(\alpha+\beta)}$。
+    definedIn: math.complex-analysis.complex-numbers
+    anchor: def-exponential-form
+  - id: math.complex-analysis.complex-series
+    zh: |
+      复数项级数
+    en: |
+      series of complex numbers
+    brief: |
+      各项是复数的级数$\sum z_n$；实部、虚部组成的两个级数都收敛才算收敛，$\sum|z_n|$收敛时它一定收敛。
+    definedIn: math.complex-analysis.complex-exponential
+    anchor: def-complex-series
+  - id: math.complex-analysis.euler-formula
+    zh: |
+      欧拉公式
+    en: |
+      Euler's formula
+    brief: |
+      对实数$\theta$，$e^{i\theta}=\cos\theta+i\sin\theta$：$e^x$的泰勒级数在$x=i\theta$处的和；如$e^{i\pi}=-1$。
+    definedIn: math.complex-analysis.complex-exponential
+    anchor: thm-euler
+  - id: math.complex-analysis.complex-exponential
+    zh: |
+      复指数函数
+    en: |
+      complex exponential function
+    brief: |
+      $e^{x+iy}=e^x(\cos y+i\sin y)$；满足$e^{z+w}=e^ze^w$，永不为$0$，以$2\pi i$为周期。
+    definedIn: math.complex-analysis.complex-exponential
+    anchor: def-complex-exp
+  - id: math.complex-analysis.complex-valued-function
+    zh: |
+      复值函数
+    en: |
+      complex-valued function
+    brief: |
+      实变量$t$的函数$g(t)=u(t)+iv(t)$；求导、积分对实部、虚部分别做，如$(e^{\lambda t})'=\lambda e^{\lambda t}$。
+    definedIn: math.complex-analysis.complex-exponential
+    anchor: def-complex-valued-function
+  - id: math.complex-analysis.de-moivre-formula
+    zh: |
+      棣莫弗公式
+    en: |
+      de Moivre's formula
+    brief: |
+      对整数$n$，$(\cos\theta+i\sin\theta)^n=\cos n\theta+i\sin n\theta$，即$(e^{i\theta})^n=e^{in\theta}$。
+    definedIn: math.complex-analysis.complex-roots
+    anchor: thm-de-moivre
+  - id: math.complex-analysis.nth-root
+    zh: |
+      $n$次方根
+    en: |
+      nth root
+    brief: |
+      满足$z^n=w$的复数$z$；$w\ne0$时恰有$n$个，排成以原点为圆心的圆的内接正$n$边形。
+    definedIn: math.complex-analysis.complex-roots
+    anchor: def-nth-root
+  - id: math.complex-analysis.root-of-unity
+    zh: |
+      单位根
+    en: |
+      root of unity
+    brief: |
+      $1$的$n$次方根$e^{2k\pi i/n}$，$k=0,1,\dots,n-1$；在单位圆上均匀分布，$n\ge2$时和为$0$。
+    definedIn: math.complex-analysis.complex-roots
+    anchor: def-root-of-unity
+  - id: math.complex-analysis.complex-function
+    zh: |
+      复变函数
+    en: |
+      function of a complex variable
+    brief: |
+      对复数集合$D$里的每个$z$，有唯一的复数$w=f(z)$和它对应；写成$u(x,y)+iv(x,y)$，是平面到平面的映射。
+    definedIn: math.complex-analysis.complex-functions
+    anchor: def-complex-function
+  - id: math.complex-analysis.open-set
+    zh: |
+      开集
+    en: |
+      open set
+    brief: |
+      复平面上的集合$D$，其中每一点都有一个以它为圆心的开圆盘整个含在$D$里，例如$\{z:|z|<1\}$。
+    definedIn: math.complex-analysis.complex-derivative
+    anchor: def-open-set
+  - id: math.complex-analysis.open-disc
+    zh: |
+      开圆盘
+    en: |
+      open disc
+    brief: |
+      以$z_0$为圆心、$r$为半径的开圆盘是$\{z:|z-z_0|<r\}$，不含边上的圆周。
+    definedIn: math.complex-analysis.complex-derivative
+    anchor: def-open-set
+  - id: math.complex-analysis.domain
+    zh: |
+      区域
+    en: |
+      domain
+    brief: |
+      连成一片的开集：其中任意两点都能用一条落在里面的折线连起来，例如去掉原点的平面。
+    definedIn: math.complex-analysis.complex-derivative
+    anchor: def-open-set
+  - id: math.complex-analysis.complex-derivative
+    zh: |
+      复导数
+    en: |
+      complex derivative
+    brief: |
+      $f'(z_0)=\lim_{h\to0}\frac{f(z_0+h)-f(z_0)}h$，$h$取复数，不管怎样趋于$0$，差商都趋于这个数；有这个极限就说复可导。
+    definedIn: math.complex-analysis.complex-derivative
+    anchor: def-complex-derivative
+  - id: math.complex-analysis.contour-integral
+    zh: |
+      复积分
+    en: |
+      contour integral
+    brief: |
+      沿曲线$C$：$z(t)$（$a\le t\le b$）的积分$\int_Cf(z)\dd z=\int_a^bf(z(t))z'(t)\dd t$；方向反过来，积分变号。
+    definedIn: math.complex-analysis.contour-integrals
+    anchor: def-contour-integral
+  - id: math.complex-analysis.ml-inequality
+    zh: |
+      ML 不等式
+    en: |
+      ML inequality
+    brief: |
+      在长为$L$的曲线$C$上处处$|f|\le M$时，$\bigl|\int_Cf(z)\dd z\bigr|\le ML$：最大模乘长度。
+    definedIn: math.complex-analysis.contour-integrals
+    anchor: thm-ml-inequality
+  - id: math.complex-analysis.cauchy-riemann-equations
+    zh: |
+      柯西-黎曼方程
+    en: |
+      Cauchy-Riemann equations
+    brief: |
+      $u_x=v_y$，$u_y=-v_x$；$f=u+iv$复可导当且仅当$u$、$v$可微并满足它们，这时$f'=u_x+iv_x$。
+    definedIn: math.complex-analysis.holomorphic
+    anchor: thm-cauchy-riemann
+  - id: math.complex-analysis.holomorphic-function
+    zh: |
+      全纯函数
+    en: |
+      holomorphic function
+    brief: |
+      在开集的每一点都复可导的函数，如多项式、$e^z$；只在零星的点上复可导（如$|z|^2$在$0$处）不算全纯。
+    definedIn: math.complex-analysis.holomorphic
+    anchor: def-holomorphic
+  - id: math.complex-analysis.cauchy-theorem
+    zh: |
+      柯西积分定理
+    en: |
+      Cauchy's integral theorem
+    brief: |
+      $f$在简单闭曲线$C$和它围成的部分上全纯时（这里要求$f'$连续，以后去掉），$\oint_Cf(z)\dd z=0$；由它，积分路径可以在全纯的范围里变形。
+    definedIn: math.complex-analysis.cauchy-theorem
+    anchor: thm-cauchy
+  - id: math.complex-analysis.goursat-theorem
+    zh: |
+      古尔萨定理
+    en: |
+      Goursat's theorem
+    brief: |
+      $f$在开集上全纯时，沿其中任何三角形（连同内部在开集里）的边界积分为$0$，不必假设$f'$连续。
+    definedIn: math.complex-analysis.goursat
+    anchor: thm-goursat
+  - id: math.complex-analysis.antiderivative
+    zh: |
+      原函数
+    en: |
+      antiderivative
+    brief: |
+      开集上满足$F'=f$的全纯函数$F$；有了它，$\int_Cf\dd z$等于$F$在终点的值减去在起点的值。$\frac1z$在去掉原点的平面上没有原函数。
+    definedIn: math.complex-analysis.cauchy-theorem
+    anchor: def-antiderivative
+  - id: math.complex-analysis.entire-function
+    zh: |
+      整函数
+    en: |
+      entire function
+    brief: |
+      在整个复平面上全纯的函数，如多项式、$e^z$、$\sin z$、$\cos z$。
+    definedIn: math.complex-analysis.holomorphic
+    anchor: def-holomorphic

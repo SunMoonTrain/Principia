@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" width="420" height="300" font-family="serif" fill="currentColor">
+<path d="M210 260L360 260L275 150Z" fill="var(--accent, #2563eb)" fill-opacity="0.15" stroke="none"/>
+<path d="M242.5 205L317.5 205L275 150Z" fill="var(--accent, #2563eb)" fill-opacity="0.35" stroke="none"/>
+<path d="M60 260L360 260L190 40Z" fill="none" stroke="var(--accent, #2563eb)" stroke-width="2"/>
+<path d="M210 260L275 150L125 150Z" fill="none" stroke="var(--accent, #2563eb)" stroke-width="1.5"/>
+<path d="M285 260L317.5 205L242.5 205Z" fill="none" stroke="var(--good, #059669)" stroke-width="1.5"/>
+<text x="130.3" y="98.8" text-anchor="middle" font-size="16" font-style="italic">T<tspan font-size="11" dy="4">0</tspan></text>
+<text x="320.8" y="246.7" text-anchor="middle" font-size="16" font-style="italic">T<tspan font-size="11" dy="4">1</tspan></text>
+<text x="278.3" y="191.7" text-anchor="middle" font-size="16" font-style="italic">T<tspan font-size="11" dy="4">2</tspan></text>
+</svg>

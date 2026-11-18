@@ -1,0 +1,157 @@
+- id: p1
+  tier: easy
+  statement: |
+    沿从$0$到$1+2i$的线段$C$，求$\int_Cz\,\dd z$，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [-3/2, 2]
+  hints:
+    - |
+      线段写成$z(t)=t(1+2i)$，$0\le t\le1$，$z'(t)=1+2i$。
+    - |
+      被积式是$t(1+2i)\cdot(1+2i)$。
+    - |
+      $\int_0^1t\,\dd t=\frac12$，$(1+2i)^2=-3+4i$。
+  solution: |
+    $\int_Cz\,\dd z=(1+2i)^2\int_0^1t\,\dd t=\frac{-3+4i}2$：实部$-\frac32$，虚部$2$。
+
+- id: p2
+  tier: easy
+  statement: |
+    沿圆周$|z|=2$顺时针走一圈，$\oint\frac{\dd z}z$等于多少？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        $2\pi i$
+      - |
+        $-2\pi i$
+      - |
+        $0$
+      - |
+        $4\pi i$
+    value: 2
+  hints:
+    - |
+      逆时针走一圈时积分是$2\pi i$，和半径无关。
+    - |
+      顺时针走，就是把逆时针的圆周反过来走。
+    - |
+      $\int_{-C}f\,\dd z=-\int_Cf\,\dd z$。
+  solution: |
+    逆时针走一圈的积分是$2\pi i$；顺时针是反方向，积分变号，得$-2\pi i$，选 B。半径是$2$不影响结果。
+
+- id: p3
+  tier: medium
+  statement: |
+    沿上半单位圆从$1$逆时针走到$-1$，求$\int_C\bar z\,\dd z$，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [0, pi]
+  hints:
+    - |
+      $z(t)=e^{it}$，$0\le t\le\pi$。
+    - |
+      在单位圆上$\bar z=e^{-it}$，$z'(t)=ie^{it}$。
+    - |
+      被积式化成常数。
+  solution: |
+    $\int_C\bar z\,\dd z=\int_0^\pi e^{-it}\cdot ie^{it}\,\dd t$，被积式是常数$i$，积分是$\pi i$：实部$0$，虚部$\pi$。
+
+- id: p4
+  tier: medium
+  statement: |
+    沿抛物线$y=x^2$从$0$走到$2+4i$，求$\int_Cz^2\,\dd z$，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [-88/3, -16/3]
+  hints:
+    - |
+      $z(t)=t+it^2$，$0\le t\le2$，$z'(t)=1+2it$。
+    - |
+      $(t+it^2)^2(1+2it)=(t^2-5t^4)+i(4t^3-2t^5)$。
+    - |
+      实部、虚部分别在$[0,2]$上积分。
+  solution: |
+    $\int_0^2(t^2-5t^4)\,\dd t=\frac83-32=-\frac{88}3$，$\int_0^2(4t^3-2t^5)\,\dd t=16-\frac{64}3=-\frac{16}3$。所以积分是$-\frac{88}3-\frac{16}3i$。它恰好等于$\frac{(2+4i)^3}3$，以后会看到这不是巧合。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$R>1$，$C_R$是上半圆周$z=Re^{it}$，$0\le t\le\pi$。证明$R\to\infty$时$\int_{C_R}\frac{e^{iz}}{z^2+1}\,\dd z\to0$。
+  hints:
+    - |
+      在$C_R$上写$z=x+iy$，这时$y\ge0$。
+    - |
+      $|e^{iz}|=|e^{ix}e^{-y}|=e^{-y}\le1$。
+    - |
+      $|z^2+1|\ge R^2-1$，再用 ML 不等式（ML inequality）。
+  reference: |
+    在$C_R$上$y\ge0$，$|e^{iz}|=e^{-y}\le1$；又$|z^2+1|\ge|z|^2-1=R^2-1$，所以被积函数的模不超过$\frac1{R^2-1}$。$C_R$长$\pi R$，由 ML 不等式，积分的模不超过$\frac{\pi R}{R^2-1}$，$R\to\infty$时趋于$0$。
+
+    在下半圆周上$|e^{iz}|=e^{-y}$可以非常大，这个估计就不成立了，所以要选上半圆。以后用复积分算$\int_{-\infty}^{+\infty}\frac{\cos x}{x^2+1}\,\dd x$，正是靠这个估计。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$在$a$附近连续，$C_r$是圆周$|z-a|=r$，逆时针走一圈。证明$\lim_{r\to0^+}\oint_{C_r}\frac{f(z)}{z-a}\,\dd z=2\pi if(a)$。
+  hints:
+    - |
+      $2\pi if(a)=\oint_{C_r}\frac{f(a)}{z-a}\,\dd z$。
+    - |
+      所以要估计$\oint_{C_r}\frac{f(z)-f(a)}{z-a}\,\dd z$。
+    - |
+      在$C_r$上$|z-a|=r$。用 ML 不等式，再用$f$在$a$处连续。
+  reference: |
+    由$\oint_{C_r}\frac{\dd z}{z-a}=2\pi i$，
+
+    $$\oint_{C_r}\frac{f(z)}{z-a}\,\dd z-2\pi if(a)=\oint_{C_r}\frac{f(z)-f(a)}{z-a}\,\dd z.$$
+
+    任给$\varepsilon>0$，由连续性，$r$足够小时$C_r$上处处$|f(z)-f(a)|<\varepsilon$，被积函数的模小于$\frac\varepsilon r$。$C_r$长$2\pi r$，由 ML 不等式，上式右边的模不超过$2\pi\varepsilon$。$\varepsilon$可以任意小，所以极限是$2\pi if(a)$。以后证明柯西积分公式时要用这一步。
+
+- id: p7
+  tier: thinking
+  statement: |
+    设$f=u+iv$。
+
+    （1）把$\int_Cf(z)\,\dd z$写成两个实的曲线积分。
+
+    （2）这两个曲线积分分别是哪两个向量场的曲线积分？
+
+    （3）在某个区域里，复积分和路径无关，相当于这两个向量场怎样？
+  hints:
+    - |
+      （1）$f\,\dd z=(u+iv)(\dd x+i\,\dd y)$。
+    - |
+      （2）$\int_C(P\,\dd x+Q\,\dd y)$是向量场$(P,Q)$的曲线积分。
+    - |
+      （3）复积分的实部、虚部都要和路径无关。
+  reference: |
+    （1）$\int_Cf\,\dd z=\int_C(u\,\dd x-v\,\dd y)+i\int_C(v\,\dd x+u\,\dd y)$。
+
+    （2）分别是向量场$(u,-v)$和$(v,u)$的曲线积分。
+
+    （3）两个向量场的曲线积分在这个区域里都和路径无关，即两个场都是保守场（conservative field，见[保守场与路径无关](lesson:math.vector-calculus.conservative-fields#def-conservative)）。[柯西积分定理](lesson:math.complex-analysis.cauchy-theorem)一节会看到，$f$复可导时正是这样：两个场的「旋度」为零，恰好就是柯西-黎曼方程。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）$\oint_{|z|=r}\frac{\dd z}z=2\pi i$。ML 不等式给出的界是多少？为什么正好取到等号？
+
+    （2）$\oint_{|z|=r}\frac{\dd z}{z^2}=0$，ML 不等式的界却是$\frac{2\pi}r$。这个界什么时候会很不准？
+
+    （3）ML 不等式什么时候取等号？
+  hints:
+    - |
+      （1）界是$\frac1r\cdot2\pi r$。
+    - |
+      （2）看$f(z(t))z'(t)$的辐角沿曲线变不变。
+    - |
+      （3）引理的证明里，等号要求$\Re\bigl(e^{-i\theta}g(t)\bigr)=|g(t)|$处处成立。
+  reference: |
+    （1）界是$2\pi$，正是$|2\pi i|$。因为$f(z(t))z'(t)=\frac1{re^{it}}\cdot ire^{it}=i$是常数，各小段的贡献方向相同，没有抵消。
+
+    （2）对$\frac1{z^2}$，$f(z(t))z'(t)=\frac ire^{-it}$，方向转了一整圈，各段互相抵消，积分为$0$；ML 不等式只量大小，不管方向，所以抵消越厉害，界越不准。
+
+    （3）要两件事同时成立：沿曲线$|f(z(t))|$处处等于$M$，而且$f(z(t))z'(t)$的辐角不变，所有小段的贡献都指向同一个方向。
