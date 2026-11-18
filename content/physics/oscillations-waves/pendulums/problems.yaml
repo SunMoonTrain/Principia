@@ -1,0 +1,180 @@
+- id: p1
+  tier: easy
+  statement: |
+    要让单摆小角度摆动的周期是$2.00\,\mathrm s$（每摆向一边用$1\,\mathrm s$），$g$取$9.80\,\mathrm{m/s^2}$，摆长应是多少？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 9.8*2^2/(4*pi^2)
+    unit: |
+      $\mathrm m$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      由$T_0=2\pi\sqrt{\frac lg}$反解$l$。
+    - |
+      $l=\frac{gT_0^2}{4\pi^2}$。
+    - |
+      $l=\frac{9.80\times2.00^2}{4\pi^2}\approx0.993\,\mathrm m$。
+  solution: |
+    $T_0=2\pi\sqrt{\frac lg}$，所以$l=\frac{gT_0^2}{4\pi^2}=\frac{9.80\times4.00}{39.48}\approx0.993\,\mathrm m$，差不多一米。周期和$\sqrt l$成正比，摆长测差$1\%$，周期差约$0.5\%$。
+
+- id: p2
+  tier: easy
+  statement: |
+    一台摆钟的摆可以看成单摆。下面哪些做法会让摆的周期变长？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        把摆锤换成同样大小、质量是原来 2 倍的
+      - |
+        把摆杆调长一些
+      - |
+        把钟搬到重力加速度只有地面六分之一的月球上
+      - |
+        把钟放进匀速上升的电梯里
+      - |
+        让摆的振幅从$5^\circ$增大到$60^\circ$
+    value: [2, 3, 5]
+  hints:
+    - |
+      小角度时$T_0=2\pi\sqrt{\frac lg}$，看各个做法改变了哪个量；振幅大时还有修正。
+    - |
+      匀速运动的电梯里，摆受的力和静止时有没有区别？$60^\circ$还算小角度吗？
+    - |
+      A 不变：周期和质量无关；B 变长：$l$大。C 变长：$g$小，周期变为$\sqrt6$倍；D 不变：匀速运动不改变摆的受力。E 变长：振幅大时周期按$1+\frac{\theta_0^2}{16}$左右变长，$60^\circ$时约长$7\%$。
+  solution: |
+    选 B、C、E。周期$2\pi\sqrt{l/g}$和摆锤的质量无关，A 不变；摆长变长、$g$变小都使周期变长，B、C 对；匀速上升的电梯和地面一样，D 不变；振幅从$5^\circ$加到$60^\circ$，周期约长$7\%$，E 对。
+
+- id: p3
+  tier: medium
+  statement: |
+    长$1.00\,\mathrm m$的均匀细杆，一端穿在光滑的水平轴上，在竖直平面里小幅摆动，$g$取$9.80\,\mathrm{m/s^2}$。求周期，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 2*pi*sqrt(2/(3*9.8))
+    unit: |
+      $\mathrm s$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      这是复摆。转轴到质心的距离$d$是多少？对端点的转动惯量是多少？
+    - |
+      $d=\frac L2$，$I=\frac13mL^2$，代入$T=2\pi\sqrt{\frac I{mgd}}$。
+    - |
+      $T=2\pi\sqrt{\frac{mL^2/3}{mgL/2}}=2\pi\sqrt{\frac{2L}{3g}}=2\pi\sqrt{\frac{2}{29.4}}\approx1.64\,\mathrm s$。
+  solution: |
+    细杆对端点的转动惯量$I=\frac13mL^2$，质心在中点，$d=\frac L2$。$T=2\pi\sqrt{\frac I{mgd}}=2\pi\sqrt{\frac{2L}{3g}}\approx1.64\,\mathrm s$，和摆长$\frac23L\approx0.667\,\mathrm m$的单摆一样，比摆长$0.50\,\mathrm m$（到质心的距离）的单摆慢。
+
+- id: p4
+  tier: medium
+  statement: |
+    摆长$2.00\,\mathrm m$的单摆，$g$取$9.80\,\mathrm{m/s^2}$，振幅$20^\circ$。按$T\approx T_0\bigl(1+\frac{\theta_0^2}{16}\bigr)$估计，它的周期比小角度的周期$T_0$长多少毫秒？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 2*pi*sqrt(2/9.8)*(pi/9)^2/16*1000
+    unit: |
+      $\mathrm{ms}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      多出的部分是$T_0\cdot\frac{\theta_0^2}{16}$，$\theta_0$要用弧度。
+    - |
+      $T_0=2\pi\sqrt{\frac{2.00}{9.80}}$，$\theta_0=20^\circ=\frac\pi9$。
+    - |
+      $T_0\approx2.838\,\mathrm s$，$\frac{\theta_0^2}{16}=\frac{0.3491^2}{16}\approx0.00762$，多出约$2.838\times0.00762\,\mathrm s\approx21.6\,\mathrm{ms}$。
+  solution: |
+    $T_0=2\pi\sqrt{\frac{2.00}{9.80}}\approx2.838\,\mathrm s$，$\theta_0=\frac\pi9\approx0.349$，$T-T_0\approx T_0\frac{\theta_0^2}{16}\approx21.6\,\mathrm{ms}$。一天约$3.0\times10^4$个周期，这样的钟若按小角度的周期校准，一天会慢约$11$分钟：振幅不能随便变。
+
+- id: p5
+  tier: hard
+  statement: |
+    由讲解里的周期公式推出$T\approx T_0\bigl(1+\frac{\theta_0^2}{16}\bigr)$。
+
+    （1）把$\cos\theta-\cos\theta_0$展开到四次项，证明$\frac1{\sqrt{\cos\theta-\cos\theta_0}}\approx\frac{\sqrt2}{\sqrt{\theta_0^2-\theta^2}}\Bigl(1+\frac{\theta_0^2+\theta^2}{24}\Bigr)$。
+
+    （2）用求导验证$\int_0^{\theta_0}\frac{\dd\theta}{\sqrt{\theta_0^2-\theta^2}}=\frac\pi2$，$\int_0^{\theta_0}\frac{\theta^2\,\dd\theta}{\sqrt{\theta_0^2-\theta^2}}=\frac{\pi\theta_0^2}4$。
+
+    （3）代入周期公式，得出$\frac1{16}$。
+  hints:
+    - |
+      $\cos x=1-\frac{x^2}2+\frac{x^4}{24}+o(x^4)$。$\cos\theta-\cos\theta_0=\frac{\theta_0^2-\theta^2}2-\frac{\theta_0^4-\theta^4}{24}+\cdots$，提出$\frac{\theta_0^2-\theta^2}2$。
+    - |
+      $\theta_0^4-\theta^4=(\theta_0^2-\theta^2)(\theta_0^2+\theta^2)$；$(1-u)^{-1/2}\approx1+\frac u2$。两个原函数是$\arcsin\frac\theta{\theta_0}$和$\frac{\theta_0^2}2\arcsin\frac\theta{\theta_0}-\frac\theta2\sqrt{\theta_0^2-\theta^2}$。
+    - |
+      （1）$\cos\theta-\cos\theta_0\approx\frac{\theta_0^2-\theta^2}2\bigl(1-\frac{\theta_0^2+\theta^2}{12}\bigr)$，取$-\frac12$次方得结论。（2）对两个原函数求导，分别得$\frac1{\sqrt{\theta_0^2-\theta^2}}$和$\frac{\theta^2}{\sqrt{\theta_0^2-\theta^2}}$，代上下限得$\frac\pi2$和$\frac{\pi\theta_0^2}4$。（3）$T\approx4\sqrt{\frac l{2g}}\cdot\sqrt2\Bigl[\frac\pi2+\frac1{24}\bigl(\theta_0^2\cdot\frac\pi2+\frac{\pi\theta_0^2}4\bigr)\Bigr]=2\pi\sqrt{\frac lg}\Bigl(1+\frac{\theta_0^2}{16}\Bigr)$。
+  reference: |
+    （1）$\cos\theta-\cos\theta_0=\frac{\theta_0^2-\theta^2}2-\frac{\theta_0^4-\theta^4}{24}+\cdots=\frac{\theta_0^2-\theta^2}2\Bigl(1-\frac{\theta_0^2+\theta^2}{12}+\cdots\Bigr)$。取$-\frac12$次方，$(1-u)^{-1/2}\approx1+\frac u2$，得$\frac{\sqrt2}{\sqrt{\theta_0^2-\theta^2}}\bigl(1+\frac{\theta_0^2+\theta^2}{24}\bigr)$。略去的是$\theta_0^4$量级的相对修正。
+
+    （2）$\bigl(\arcsin\frac\theta{\theta_0}\bigr)'=\frac1{\sqrt{\theta_0^2-\theta^2}}$；$\bigl(\frac{\theta_0^2}2\arcsin\frac\theta{\theta_0}-\frac\theta2\sqrt{\theta_0^2-\theta^2}\bigr)'=\frac{\theta_0^2}{2\sqrt{\theta_0^2-\theta^2}}-\frac12\sqrt{\theta_0^2-\theta^2}+\frac{\theta^2}{2\sqrt{\theta_0^2-\theta^2}}=\frac{\theta^2}{\sqrt{\theta_0^2-\theta^2}}$。两个反常积分在$\theta_0$处收敛，原函数在$\theta_0$处连续，代上下限得$\frac\pi2$、$\frac{\theta_0^2}2\cdot\frac\pi2=\frac{\pi\theta_0^2}4$。
+
+    （3）$T\approx4\sqrt{\frac l{2g}}\cdot\sqrt2\int_0^{\theta_0}\frac{1+\frac{\theta_0^2+\theta^2}{24}}{\sqrt{\theta_0^2-\theta^2}}\dd\theta=4\sqrt{\frac lg}\Bigl[\frac\pi2\bigl(1+\frac{\theta_0^2}{24}\bigr)+\frac1{24}\cdot\frac{\pi\theta_0^2}4\Bigr]=2\pi\sqrt{\frac lg}\Bigl(1+\frac{\theta_0^2}{24}+\frac{\theta_0^2}{48}\Bigr)=T_0\Bigl(1+\frac{\theta_0^2}{16}\Bigr)$。
+
+- id: p6
+  tier: hard
+  statement: |
+    复摆的周期$T(d)=2\pi\sqrt{\frac{I_{\mathrm C}+md^2}{mgd}}$随转轴到质心的距离$d$变化。记$I_{\mathrm C}=mk^2$。
+
+    （1）证明$d=k$时周期最短，并求最短周期。
+
+    （2）证明质心两侧距离为$d_1$、$d_2$的两根转轴，只要$d_1d_2=k^2$，周期就相同，而且这个周期等于摆长为$d_1+d_2$的单摆的周期。
+  hints:
+    - |
+      $T^2\propto\frac{k^2}d+d$，求它的最小值。
+    - |
+      $d_1d_2=k^2$时，$\frac{k^2}{d_1}+d_1=d_2+d_1=\frac{k^2}{d_2}+d_2$。
+    - |
+      （1）$f(d)=\frac{k^2}d+d\ge2k$，$d=k$时取等号，$T_{\min}=2\pi\sqrt{\frac{2k}g}$。（2）$T(d)^2=\frac{4\pi^2}g\bigl(\frac{k^2}d+d\bigr)$；$d_1d_2=k^2$时$\frac{k^2}{d_1}+d_1=d_1+d_2=\frac{k^2}{d_2}+d_2$，两个周期都是$2\pi\sqrt{\frac{d_1+d_2}g}$，正是摆长$d_1+d_2$的单摆。
+  reference: |
+    （1）$T^2=\frac{4\pi^2}g\Bigl(\frac{k^2}d+d\Bigr)$。$f(d)=\frac{k^2}d+d$，$f'(d)=1-\frac{k^2}{d^2}$，$d=k$时为零，$f''>0$，取最小值$2k$（也可由均值不等式）。所以$d=k$时周期最短，$T_{\min}=2\pi\sqrt{\frac{2k}g}$；$d\to0$或$d\to\infty$时周期都趋于无穷。
+
+    （2）$d_1d_2=k^2$时$\frac{k^2}{d_1}=d_2$，$f(d_1)=d_1+d_2$；同样$f(d_2)=d_2+d_1$。所以两根轴的周期相等，都是$2\pi\sqrt{\frac{d_1+d_2}g}$，和摆长$d_1+d_2$（两根轴之间的距离）的单摆相同。这就是可倒摆测$g$的原理：调到两根轴的周期相同，量出两轴的距离和周期，就得到$g$，不必知道$I_{\mathrm C}$和质心的准确位置。
+
+- id: p7
+  tier: thinking
+  statement: |
+    单摆的振幅变大，周期变长；而简谐运动那一节第 7 题里受$F=-cx^3$的质点，振幅变大，周期变短。
+
+    （1）从回复力看，为什么单摆的周期随振幅变长？
+
+    （2）什么样的回复力会让周期随振幅变短？
+
+    （3）有没有可能设计一个摆，让它的周期在大振幅时也不变？
+  hints:
+    - |
+      单摆的回复力矩是$-mgl\sin\theta$，和线性的$-mgl\theta$比，大角度时谁大？
+    - |
+      回复力比线性的弱，振子偏得远时被拉回得慢；比线性的强呢？
+    - |
+      （1）$\sin\theta<\theta$，大角度时回复力矩比线性的弱，拉回得慢，周期变长。（2）回复力随偏离增长得比线性快（变「硬」），像$-kx-cx^3$，周期就随振幅变短。（3）可以：让摆球不走圆弧，而走一条特别的曲线，即摆线（cycloid），使沿曲线的回复力正好和沿曲线走过的路程成正比，周期就和振幅完全无关。
+  reference: |
+    （1）$\ddot\theta=-\frac gl\sin\theta$，$\sin\theta<\theta$（$0<\theta<\pi$），偏得越远，回复力矩比线性近似弱得越多，摆在两端附近被拉回得慢，周期变长；$\theta_0\to\pi$时周期趋于无穷。
+
+    （2）回复力随偏离增长得比一次方快（「变硬」的弹簧，如$F=-kx-cx^3$，$c>0$）时，大振幅下拉回得更猛，周期变短；比一次方慢（「变软」）时周期变长，单摆属于后者。
+
+    （3）可以。周期与振幅无关，要求沿运动路径的回复力和路径上的位移严格成正比。让摆球沿摆线运动（惠更斯的摆线摆，在摆线形的挡板之间摆动），沿弧长$s$的方程正好是$\ddot s=-\frac g{4a}s$，不论振幅都是简谐运动。这叫等时摆；实际的摆钟更常用的办法是把振幅控制得小而稳定。
+
+- id: p8
+  tier: thinking
+  statement: |
+    讲解里的周期公式在$\theta_0\to\pi$时会怎样？
+
+    （1）$\theta_0=\pi$时，被积函数在$\theta\to\pi$附近像$(\pi-\theta)$的几次方？积分还收敛吗？
+
+    （2）这在物理上对应什么运动？
+
+    （3）为什么$0<\theta_0<\pi$时积分收敛，到了$\theta_0=\pi$就不行了？
+  hints:
+    - |
+      $\theta_0=\pi$时$\cos\theta-\cos\theta_0=1+\cos\theta$。$\theta$接近$\pi$时，$1+\cos\theta$约等于什么？
+    - |
+      $1+\cos\theta=2\cos^2\frac\theta2\approx\frac{(\pi-\theta)^2}2$，被积函数约为$\frac{\sqrt2}{\pi-\theta}$，和$\frac1x$同阶。
+    - |
+      （1）被积函数和$(\pi-\theta)^{-1}$同阶，由无界函数反常积分的结论（$p\ge1$发散），积分发散，周期趋于无穷。（2）摆正好有能量到达正上方，在那里速度趋于零，要用无穷长的时间才爬上去；正上方也是一个平衡位置，只是稍一偏离就会倒下来。（3）$\theta_0<\pi$时折回点不是平衡位置，$\cos\theta-\cos\theta_0$在那里一阶为零，被积函数像$(\theta_0-\theta)^{-1/2}$；$\theta_0=\pi$时折回点是平衡位置，力也为零，差变成二阶小量，被积函数像$(\pi-\theta)^{-1}$。
+  reference: |
+    （1）$\theta_0=\pi$时$\cos\theta-\cos\theta_0=1+\cos\theta=2\cos^2\frac\theta2$。$\theta=\pi-u$时$\cos\frac\theta2=\sin\frac u2\approx\frac u2$，所以$1+\cos\theta\approx\frac{u^2}2$，被积函数约为$\frac{\sqrt2}u$。由$\int_0^1\frac{\dd x}{x^p}$在$p\ge1$时发散，周期积分发散，$T\to\infty$。
+
+    （2）摆的机械能正好够它到达正上方；越接近顶点越慢，速度趋于零，永远到不了（要无穷长的时间），这是摆在不稳定平衡点上的极限运动。$\theta_0$略小于$\pi$时周期很长，按$\ln\frac1{\pi-\theta_0}$增长。
+
+    （3）$\theta_0<\pi$时，折回点$\theta_0$处回复力矩$mgl\sin\theta_0\ne0$，$\cos\theta-\cos\theta_0$在那里一阶为零，被积函数像$(\theta_0-\theta)^{-1/2}$，$p=\frac12<1$，收敛：质点在折回点停一下就被拉回。$\theta_0=\pi$时折回点也是平衡点，力为零，$\cos\theta-\cos\theta_0$变成二阶小量，被积函数像$(\pi-\theta)^{-1}$，发散。

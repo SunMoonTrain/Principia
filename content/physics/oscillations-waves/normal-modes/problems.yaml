@@ -1,0 +1,177 @@
+- id: p1
+  tier: easy
+  statement: |
+    两个质量都是$0.50\,\mathrm{kg}$的物块串在两面墙之间，两边的弹簧劲度系数都是$20\,\mathrm{N/m}$，中间的弹簧是$15\,\mathrm{N/m}$。求两个物块反向振动的那个简正模的简正频率。
+  answer:
+    type: number
+    value: 10
+    unit: |
+      $\mathrm{rad/s}$
+  hints:
+    - |
+      反向振动时，中间的弹簧伸缩了多少？
+    - |
+      反向的简正模$\omega_2=\sqrt{\frac{k+2\kappa}m}$。
+    - |
+      $\omega_2=\sqrt{\frac{20+2\times15}{0.50}}=\sqrt{100}=10\,\mathrm{rad/s}$。
+  solution: |
+    反向振动时两个物块的位移是$x$和$-x$，中间的弹簧伸缩$2x$，每个物块受的力是$-kx-2\kappa x$，所以$\omega_2=\sqrt{\frac{k+2\kappa}m}=\sqrt{\frac{50}{0.50}}=10\,\mathrm{rad/s}$。同向的那个简正模不受中间弹簧的影响，$\omega_1=\sqrt{\frac{20}{0.50}}\approx6.32\,\mathrm{rad/s}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    两个等质量的物块串在两面墙之间，两边的弹簧一样硬，中间是另一根弹簧。下面哪些开始状态，接下来的运动是一个简正模？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        两个物块都向右拉开$2\,\mathrm{cm}$，同时由静止放开
+      - |
+        物块 1 向右拉开$1\,\mathrm{cm}$、物块 2 向右拉开$2\,\mathrm{cm}$，同时由静止放开
+      - |
+        物块 1 向左拉开$3\,\mathrm{cm}$、物块 2 向右拉开$3\,\mathrm{cm}$，同时由静止放开
+      - |
+        两个物块都在平衡位置，物块 1 以速度$v$向右、物块 2 以同样大小的速度向左出发
+      - |
+        两个物块都向右拉开$1\,\mathrm{cm}$，物块 1 静止，物块 2 以速度$v$向右出发
+    value: [1, 3, 4]
+  hints:
+    - |
+      简正模里，位移和速度都要正比于同一个向量$(1,1)$或$(1,-1)$。
+    - |
+      把每个选项的初位移和初速度都写成向量，看它们是不是都正比于$(1,1)$，或者都正比于$(1,-1)$（零向量也算）。
+    - |
+      A：位移$(2,2)$、速度零，同向的模；B：$(1,2)$不正比于任何一个，两个模都有。C：$(-3,3)$正比于$(1,-1)$，反向的模；D：位移零、速度$(v,-v)$，反向的模，$\vb x=\frac v{\omega_2}(1,-1)\sin\omega_2t$。E：位移正比于$(1,1)$，速度$(0,v)$却不是，混进了反向的模。
+  solution: |
+    选 A、C、D。简正模$\vb x=\vb a\cos(\omega t+\varphi)$的初位移$\vb a\cos\varphi$和初速度$-\omega\vb a\sin\varphi$都正比于同一个$\vb a$。A 的位移$(2,2)$、C 的位移$(-3,3)$、D 的速度$(v,-v)$都满足，速度或位移为零也不碍事；B 的$(1,2)=\frac32(1,1)-\frac12(1,-1)$，E 的速度$(0,v)=\frac v2(1,1)-\frac v2(1,-1)$，都同时含两个简正模。
+
+- id: p3
+  tier: medium
+  statement: |
+    两个等质量的物块串在两面墙之间，两边的弹簧劲度系数都是$k$，中间的是$\kappa$。测得两个简正频率对应的频率是$2.0\,\mathrm{Hz}$和$2.5\,\mathrm{Hz}$，求$\frac\kappa k$。
+  answer:
+    type: number
+    value: 9/32
+  hints:
+    - |
+      哪个简正模和中间的弹簧无关？两个角频率的平方之比等于什么？
+    - |
+      $\omega_1^2=\frac km$，$\omega_2^2=\frac{k+2\kappa}m$，所以$\frac{\omega_2^2}{\omega_1^2}=1+\frac{2\kappa}k$；频率之比和角频率之比相同。
+    - |
+      $1+\frac{2\kappa}k=\bigl(\frac{2.5}{2.0}\bigr)^2=1.5625$，$\frac\kappa k=\frac{0.5625}2=\frac9{32}\approx0.281$。
+  solution: |
+    同向的模频率低，$\omega_1^2=\frac km$；反向的模$\omega_2^2=\frac{k+2\kappa}m$。$\frac{\omega_2^2}{\omega_1^2}=1+\frac{2\kappa}k=\bigl(\frac{2.5}{2.0}\bigr)^2=\frac{25}{16}$，所以$\frac\kappa k=\frac9{32}\approx0.281$。不知道$m$和$k$各是多少也能求出这个比。
+
+- id: p4
+  tier: medium
+  statement: |
+    光滑水平面上，两个质量都是$0.20\,\mathrm{kg}$的物块用一根劲度系数$40\,\mathrm{N/m}$的轻弹簧连着，不连墙，开始时弹簧处在原长、两个物块都静止。让左边的物块突然获得向右$1.0\,\mathrm{m/s}$的速度。求弹簧的最大压缩量（以厘米为单位）。
+  answer:
+    type: number
+    value: 5
+    unit: |
+      $\mathrm{cm}$
+  hints:
+    - |
+      这里$K=\begin{pmatrix}\kappa&-\kappa\\-\kappa&\kappa\end{pmatrix}$，它的两个特征值是多少？特征值为零的那个「模」是什么运动？
+    - |
+      令$y_1=\frac{x_1+x_2}2$、$y_2=\frac{x_1-x_2}2$，则$\ddot y_1=0$，$\ddot y_2=-\frac{2\kappa}my_2$。弹簧的压缩量是$x_1-x_2=2y_2$。
+    - |
+      $y_1$匀速运动；$y_2$做角频率$\omega=\sqrt{\frac{2\kappa}m}=20\,\mathrm{rad/s}$的简谐运动，$y_2(0)=0$，$\dot y_2(0)=0.50\,\mathrm{m/s}$，振幅$\frac{0.50}{20}=0.025\,\mathrm m$。最大压缩量$2\times0.025\,\mathrm m=5.0\,\mathrm{cm}$。
+  solution: |
+    $K$的特征值是$0$（特征向量$(1,1)$）和$2\kappa$（特征向量$(1,-1)$）。$y_1=\frac{x_1+x_2}2$满足$\ddot y_1=0$，两个物块一起以$0.50\,\mathrm{m/s}$匀速前进，这个「模」不振动；$y_2=\frac{x_1-x_2}2$以$\omega=\sqrt{\frac{2\kappa}m}=20\,\mathrm{rad/s}$振动，$\dot y_2(0)=0.50\,\mathrm{m/s}$，振幅$0.025\,\mathrm m$。压缩量$x_1-x_2=2y_2$，最大$5.0\,\mathrm{cm}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    两面墙之间串着两个物块和三根劲度系数都是$k$的弹簧，左边物块质量为$m$，右边为$2m$。
+
+    （1）写出运动方程，求两个简正频率。
+
+    （2）求两个简正模里两个物块的位移之比，并说明哪个物块在哪个模里振得厉害。
+  hints:
+    - |
+      方程是$m\ddot x_1=-2kx_1+kx_2$、$2m\ddot x_2=kx_1-2kx_2$。设$\vb x=\vb a\cos(\omega t+\varphi)$代进去，记$\lambda=\frac{m\omega^2}k$。
+    - |
+      得$(2-\lambda)a_1=a_2$、$a_1=(2-2\lambda)a_2$，有不全为零的解要求$(2-\lambda)(2-2\lambda)=1$，即$2\lambda^2-6\lambda+3=0$。
+    - |
+      （1）$\lambda=\frac{3\mp\sqrt3}2$，$\omega_1=\sqrt{\frac{(3-\sqrt3)k}{2m}}\approx0.796\sqrt{\frac km}$，$\omega_2=\sqrt{\frac{(3+\sqrt3)k}{2m}}\approx1.538\sqrt{\frac km}$。（2）$\frac{a_2}{a_1}=2-\lambda$：慢的模是$\frac{1+\sqrt3}2\approx1.37$，两个物块同向，重的那个振得厉害；快的模是$\frac{1-\sqrt3}2\approx-0.37$，反向，轻的那个振得厉害。
+  reference: |
+    （1）$m\ddot x_1=-kx_1-k(x_1-x_2)=-2kx_1+kx_2$，$2m\ddot x_2=-k(x_2-x_1)-kx_2=kx_1-2kx_2$。代入$\vb x=\vb a\cos(\omega t+\varphi)$，记$\lambda=\frac{m\omega^2}k$：$(2-\lambda)a_1-a_2=0$，$-a_1+(2-2\lambda)a_2=0$。有非零解要系数行列式为零：$(2-\lambda)(2-2\lambda)-1=0$，即$2\lambda^2-6\lambda+3=0$，$\lambda=\frac{3\mp\sqrt3}2\approx0.634$、$2.366$，所以$\omega_1=\sqrt{\frac{(3-\sqrt3)k}{2m}}$，$\omega_2=\sqrt{\frac{(3+\sqrt3)k}{2m}}$。
+
+    （2）由第一式$\frac{a_2}{a_1}=2-\lambda$。慢的模$\frac{a_2}{a_1}=\frac{1+\sqrt3}2\approx1.37$，同向，重的物块振幅更大；快的模$\frac{a_2}{a_1}=\frac{1-\sqrt3}2\approx-0.37$，反向，轻的物块振幅更大。这时两个简正模的形状不再是$(1,1)$、$(1,-1)$，也不互相垂直（$1\times1+1.37\times(-0.37)\ne0$），但按质量加权正交：$m\cdot1\cdot1+2m\cdot1.37\cdot(-0.37)\approx0$。
+
+    说明：方程写成$\ddot{\vb x}=-M^{-1}K\vb x$，$M^{-1}K$不对称，但特征值仍是两个不同的正数，能对角化，叠加的结论照样成立。
+
+- id: p6
+  tier: hard
+  statement: |
+    讲解里的两个物块（质量$m$，两边弹簧$k$，中间弹簧$\kappa$），机械能是$E=\frac12m\dot x_1^2+\frac12m\dot x_2^2+\frac12kx_1^2+\frac12\kappa(x_2-x_1)^2+\frac12kx_2^2$。
+
+    （1）用$y_1=\frac{x_1+x_2}2$、$y_2=\frac{x_1-x_2}2$把$E$写成$E_1+E_2$，$E_1$只含$y_1$、$\dot y_1$，$E_2$只含$y_2$、$\dot y_2$。
+
+    （2）证明$E_1$、$E_2$各自守恒。
+
+    （3）例 2 里振动从物块 1 全部转到物块 2，和（2）矛盾吗？
+  hints:
+    - |
+      $x_1=y_1+y_2$，$x_2=y_1-y_2$，$x_2-x_1=-2y_2$，代进去展开，交叉项会消掉。
+    - |
+      $E_1=m\dot y_1^2+ky_1^2$，$E_2=m\dot y_2^2+(k+2\kappa)y_2^2$。用$\ddot y_1=-\omega_1^2y_1$、$\ddot y_2=-\omega_2^2y_2$求它们的导数。
+    - |
+      （1）动能$\frac12m\bigl[(\dot y_1+\dot y_2)^2+(\dot y_1-\dot y_2)^2\bigr]=m(\dot y_1^2+\dot y_2^2)$，势能$\frac12k\bigl[(y_1+y_2)^2+(y_1-y_2)^2\bigr]+\frac12\kappa(2y_2)^2=ky_1^2+(k+2\kappa)y_2^2$。（2）$\dot E_1=2\dot y_1(m\ddot y_1+ky_1)=0$，$\dot E_2=2\dot y_2\bigl(m\ddot y_2+(k+2\kappa)y_2\bigr)=0$。（3）不矛盾：守恒的是每个简正模的能量，转移的是每个物块的能量；两个模的能量各自不变，它们的叠加在两个物块之间来回分配。
+  reference: |
+    （1）$x_1=y_1+y_2$，$x_2=y_1-y_2$。动能$\frac12m\bigl[(\dot y_1+\dot y_2)^2+(\dot y_1-\dot y_2)^2\bigr]=m\dot y_1^2+m\dot y_2^2$；势能$\frac12k\bigl[(y_1+y_2)^2+(y_1-y_2)^2\bigr]+\frac12\kappa(2y_2)^2=ky_1^2+(k+2\kappa)y_2^2$，交叉项$\pm y_1y_2$抵消。所以$E_1=m\dot y_1^2+ky_1^2$，$E_2=m\dot y_2^2+(k+2\kappa)y_2^2$。
+
+    （2）由讲解，$\ddot y_1=-\frac kmy_1$，$\ddot y_2=-\frac{k+2\kappa}my_2$。$\dot E_1=2\dot y_1(m\ddot y_1+ky_1)=0$，$\dot E_2=2\dot y_2\bigl(m\ddot y_2+(k+2\kappa)y_2\bigr)=0$。每个简正模像一个独立的振子，能量各自守恒，模和模之间不交换能量。
+
+    （3）不矛盾。例 2 里$E_1$、$E_2$各自一直不变；可「物块 1 的能量」$\frac12m\dot x_1^2+\frac12kx_1^2$含有交叉项$m\dot y_1\dot y_2+ky_1y_2$，两个模频率略有不同，相位差慢慢变化，交叉项时正时负，能量就在两个物块之间来回分配。转移的是物块之间的能量，不是模之间的能量。
+
+- id: p7
+  tier: thinking
+  statement: |
+    讲解里的两个物块，把中间弹簧的劲度系数$\kappa$从很小一直调到很大。
+
+    （1）两个简正频率各怎样变？哪个不变，为什么？
+
+    （2）$\kappa\to\infty$相当于把两个物块用一根硬杆连起来。这时还剩几种振动？和「一个质量为$2m$、两边各连一根弹簧的物块」对得上吗？
+
+    （3）$\kappa\to0$时，两个简正模还有意义吗？
+  hints:
+    - |
+      看$\omega_1=\sqrt{k/m}$、$\omega_2=\sqrt{(k+2\kappa)/m}$。
+    - |
+      硬杆连着时两个物块只能一起动。质量$2m$、两边各一根$k$的物块，角频率是多少？
+    - |
+      （1）$\omega_1$不变：同向振动时中间的弹簧不伸缩，$\kappa$多大都无所谓；$\omega_2$随$\kappa$增大而增大。（2）$\kappa\to\infty$时$\omega_2\to\infty$，反向的振动被「冻住」，只剩同向的模，$\omega_1=\sqrt{\frac{2k}{2m}}=\sqrt{\frac km}$，正好就是质量$2m$、两边各一根弹簧的物块。（3）$\kappa\to0$时$\omega_1$、$\omega_2$趋于相等，任何$(a_1,a_2)$都近似是简正模的形状；可只要$\kappa\ne0$，简正模仍是$(1,1)$、$(1,-1)$，只是两个频率很近，转移要等很久（例 2）。
+  reference: |
+    （1）$\omega_1=\sqrt{k/m}$和$\kappa$无关：同向的模里中间弹簧不伸不缩，等于不存在。$\omega_2=\sqrt{(k+2\kappa)/m}$随$\kappa$单调增大，$\kappa=0$时两者相等。
+
+    （2）$\kappa\to\infty$时$\omega_2\to\infty$：反向振动所需的回复力无穷大，振不起来（任何有限的能量只给出无穷小的振幅），相当于这个自由度被约束掉了。剩下同向的模，$\omega_1=\sqrt{k/m}=\sqrt{2k/(2m)}$，和质量$2m$、两边各一根$k$的物块一致。
+
+    （3）$\kappa=0$时$K$是$k$乘单位矩阵，每个向量都是特征向量，「简正模的形状」不再唯一，任何开始状态都是一个简正模（两个物块各自振动）。$\kappa$很小但不为零时，简正模仍唯一地是$(1,1)$、$(1,-1)$，可两个频率几乎相等，开始状态是别的形状时，要等$\frac\pi{\Delta\omega}$这么久才看得出它们的差别。所以「耦合再弱也算耦合」，只是作用慢。
+
+- id: p8
+  tier: thinking
+  statement: |
+    两个等质量的物块串在两面墙之间，中间是很软的弹簧，可左右两根弹簧不一样硬（$k_1\ne k_2$）。把物块 1 拉开放手。
+
+    （1）振动还能像例 2 那样全部转到物块 2 上吗？
+
+    （2）$k_1$和$k_2$差多少时，几乎转不过去？
+
+    （3）这和「推秋千要合着秋千的节奏」有什么相像的地方？
+  hints:
+    - |
+      两个简正模的形状还是$(1,1)$、$(1,-1)$吗？
+    - |
+      不连中间弹簧时，两个物块各自的角频率是$\sqrt{k_1/m}$、$\sqrt{k_2/m}$。比较它们的差和耦合的强弱$\frac\kappa m$。
+    - |
+      （1）不能：$K=\begin{pmatrix}k_1+\kappa&-\kappa\\-\kappa&k_2+\kappa\end{pmatrix}$不再对称地分成同向、反向，物块 1 的开始状态主要落在一个模里，只有一小部分转到物块 2。（2）两个物块各自的角频率之差远大于耦合造成的频率变化（大约是$\frac{\kappa}{m\omega}$）时，几乎转不过去。（3）都要「合拍」：物块 2 受物块 1 通过弱弹簧施加的周期性推拉，只有两者节奏相同，推力才能一直做正功、把能量攒起来。
+  reference: |
+    （1）$k_1\ne k_2$时$K$的特征向量不再是$(1,1)$、$(1,-1)$。$|k_1-k_2|\gg\kappa$时，两个特征向量接近$(1,0)$和$(0,1)$：物块 1 的开始状态几乎就是一个简正模，只有很少一部分落在另一个模里，转到物块 2 的能量很少。只有$k_1=k_2$（两个物块单独振动的角频率相同）时，开始状态在两个模里各占一半，才能全部转过去。
+
+    （2）记两个物块单独振动的角频率$\Omega_{1,2}=\sqrt{(k_{1,2}+\kappa)/m}$，耦合的强弱用$\frac\kappa{m\bar\Omega}$（$\bar\Omega$是平均角频率）衡量。$|\Omega_1-\Omega_2|\gg\frac\kappa{m\bar\Omega}$时几乎不转移；两者可比时转移一部分。
+
+    （3）物块 1 的振动通过弱弹簧对物块 2 施加周期性的推拉，频率是物块 1 的频率。频率和物块 2 自己的相同时，推拉的时机总是一致，一次次累积；不同时，一会儿推得对、一会儿推得反，攒不起来。这正是以后受迫振动、共振要讲的事。

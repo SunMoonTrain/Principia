@@ -1,0 +1,179 @@
+- id: p1
+  tier: easy
+  statement: |
+    质量$0.50\,\mathrm{kg}$的物块连在劲度系数$200\,\mathrm{N/m}$的弹簧上，阻尼系数是$0.40\,\mathrm{kg/s}$。求这个振子的品质因数。
+  answer:
+    type: number
+    value: 25
+  hints:
+    - |
+      $Q=\frac{\omega_0}\gamma$，先分别求$\omega_0$和$\gamma$。
+    - |
+      $\omega_0=\sqrt{\frac km}$，$\gamma=\frac bm$。
+    - |
+      $\omega_0=\sqrt{\frac{200}{0.50}}=20\,\mathrm{rad/s}$，$\gamma=\frac{0.40}{0.50}=0.80\,\mathrm{s^{-1}}$，$Q=\frac{20}{0.80}=25$。
+  solution: |
+    $\omega_0=20\,\mathrm{rad/s}$，$\gamma=0.80\,\mathrm{s^{-1}}$，$Q=\frac{\omega_0}\gamma=25$。也可以写成$Q=\frac{\sqrt{mk}}b$。共振时的振幅是静态位移的 25 倍，平均功率的共振峰宽$\Delta\omega=0.80\,\mathrm{rad/s}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    阻尼振子受驱动力$F_0\cos\omega t$，已经到了稳态。下面哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        驱动力变化得很慢（$\omega\ll\omega_0$）时，位移几乎就是$\frac Fk$，跟着驱动力同步变化
+      - |
+        阻尼越小，平均功率的共振峰越宽
+      - |
+        $\omega$都远大于$\omega_0$时，驱动角频率加倍，稳态振幅约变为原来的$\frac14$
+      - |
+        稳态的角频率介于驱动角频率和振子的固有角频率之间
+      - |
+        $\omega=\omega_0$时，速度和驱动力同相
+    value: [1, 3, 5]
+  hints:
+    - |
+      看稳态振幅、相位在$\omega\ll\omega_0$、$\omega\gg\omega_0$、$\omega=\omega_0$时的极限，以及半功率宽度$\Delta\omega=\gamma$。
+    - |
+      $\omega\gg\omega_0$时$A\approx\frac{F_0}{m\omega^2}$；$\omega=\omega_0$时位移落后$\frac\pi2$，速度又比位移超前$\frac\pi2$。
+    - |
+      A 对：$A\approx\frac{F_0}k$、$\delta\approx0$；B 错：$\Delta\omega=\gamma$，阻尼越小越窄。C 对：$A\propto\frac1{\omega^2}$；D 错：稳态的角频率就是驱动角频率。E 对：速度的相位是$-\frac\pi2+\frac\pi2=0$。
+  solution: |
+    选 A、C、E。$\omega\ll\omega_0$时弹簧的力和驱动力平衡，$x\approx\frac Fk$，同相；$\Delta\omega=\gamma$，阻尼小，峰窄；$\omega\gg\omega_0$时惯性为主，$A\approx\frac{F_0}{m\omega^2}$，$\omega$加倍振幅约变$\frac14$；$\omega=\omega_0$时位移落后$\frac\pi2$，速度超前位移$\frac\pi2$，正好和驱动力同相，这时吸收的功率最大。稳态的频率总等于驱动力的频率。
+
+- id: p3
+  tier: medium
+  statement: |
+    质量$0.10\,\mathrm{kg}$的物块连在劲度系数$40\,\mathrm{N/m}$的弹簧上，阻尼系数$0.20\,\mathrm{kg/s}$，受驱动力$0.20\cos25t$（单位$\mathrm N$，$t$以秒计）。求稳态振幅（以厘米为单位），结果保留三位有效数字。
+  answer:
+    type: number
+    value: 200/sqrt(53125)
+    unit: |
+      $\mathrm{cm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先求$\omega_0$、$\gamma$、$\frac{F_0}m$，再代进稳态振幅的式子。
+    - |
+      $\omega_0=20\,\mathrm{rad/s}$，$\gamma=2.0\,\mathrm{s^{-1}}$，$\frac{F_0}m=2.0\,\mathrm{m/s^2}$，$\omega=25\,\mathrm{rad/s}$。
+    - |
+      $\omega_0^2-\omega^2=-225$，$\gamma\omega=50$，$\sqrt{225^2+50^2}=\sqrt{53125}\approx230.5$，$A=\frac{2.0}{230.5}\,\mathrm m\approx0.868\,\mathrm{cm}$。
+  solution: |
+    $\omega_0=\sqrt{\frac{40}{0.10}}=20\,\mathrm{rad/s}$，$\gamma=2.0\,\mathrm{s^{-1}}$，$\frac{F_0}m=2.0\,\mathrm{m/s^2}$。$A=\frac{2.0}{\sqrt{(400-625)^2+(2.0\times25)^2}}=\frac{2.0}{\sqrt{53125}}\,\mathrm m\approx0.868\,\mathrm{cm}$。驱动角频率高于固有角频率，位移落后驱动力$\delta=\pi-\arctan\frac{50}{225}\approx2.92$，接近反相。
+
+- id: p4
+  tier: medium
+  statement: |
+    敲响频率为$440\,\mathrm{Hz}$的音叉，声音的振幅过$2.0\,\mathrm s$降为原来的$\frac1e$。把音叉看成阻尼很弱的振子，求它的品质因数，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 2*pi*440
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      振幅按$e^{-\gamma t/2}$衰减，先由衰减求$\gamma$。
+    - |
+      $\frac\gamma2\times2.0\,\mathrm s=1$，$\gamma=1.0\,\mathrm{s^{-1}}$；$\omega_0=2\pi\times440\,\mathrm{rad/s}$。
+    - |
+      $Q=\frac{\omega_0}\gamma=\frac{2\pi\times440}{1.0}\approx2.76\times10^3$。
+  solution: |
+    $e^{-\gamma t/2}=e^{-1}$在$t=2.0\,\mathrm s$时成立，$\gamma=1.0\,\mathrm{s^{-1}}$。阻尼很弱，$\omega_0\approx2\pi\times440\,\mathrm{rad/s}$，$Q=\frac{\omega_0}\gamma\approx2.76\times10^3$。共振峰的半高宽只有$\Delta f=\frac\gamma{2\pi}\approx0.16\,\mathrm{Hz}$：频率偏差一两赫兹的声音就几乎激不起它的共振。
+
+- id: p5
+  tier: hard
+  statement: |
+    受迫振动的振子在$\omega=\omega_0$时处于稳态，振幅为$A$。
+
+    （1）证明这时振子的机械能$U=\frac12kx^2+\frac12m\dot x^2$不随时间变化，并求它。
+
+    （2）求驱动力的平均功率$\bar P$，证明$Q=\frac{\omega_0U}{\bar P}$。
+
+    （3）由此说明：撤去驱动力后，阻尼弱的振子每振动一次，损失的机械能约占$\frac{2\pi}Q$。
+  hints:
+    - |
+      $\omega=\omega_0$时$x=A\cos(\omega_0t-\frac\pi2)=A\sin\omega_0t$。
+    - |
+      $U=\frac12kA^2\sin^2\omega_0t+\frac12mA^2\omega_0^2\cos^2\omega_0t$，$k=m\omega_0^2$。平均功率用$\bar P=\frac12F_0\omega A\sin\delta$，再用$A=\frac{F_0}{m\gamma\omega_0}$消去$F_0$。
+    - |
+      （1）$U=\frac12m\omega_0^2A^2$，不随时间变。（2）$\bar P=\frac12F_0\omega_0A=\frac12m\gamma\omega_0^2A^2$，$\frac{\omega_0U}{\bar P}=\frac{\omega_0}\gamma=Q$。（3）稳态时驱动力补上的正是阻尼消耗的；撤去驱动力后，阻尼弱时能量损失率仍约为$\bar P$，一个周期$\frac{2\pi}{\omega_0}$里损失$\frac{2\pi}{\omega_0}\bar P=\frac{2\pi}QU$。
+  reference: |
+    （1）$\omega=\omega_0$时$\delta=\frac\pi2$，$x=A\sin\omega_0t$，$\dot x=A\omega_0\cos\omega_0t$。$U=\frac12m\omega_0^2A^2(\sin^2\omega_0t+\cos^2\omega_0t)=\frac12m\omega_0^2A^2$，不随时间变（只有$\omega=\omega_0$时才严格如此，别的频率下动能、势能的最大值不相等，$U$会在一个周期里起伏）。
+
+    （2）$\bar P=\frac12F_0\omega_0A\sin\frac\pi2=\frac12F_0\omega_0A$；由$A=\frac{F_0/m}{\gamma\omega_0}$，$F_0=m\gamma\omega_0A$，所以$\bar P=\frac12m\gamma\omega_0^2A^2$。$\frac{\omega_0U}{\bar P}=\frac{\omega_0\cdot\frac12m\omega_0^2A^2}{\frac12m\gamma\omega_0^2A^2}=\frac{\omega_0}\gamma=Q$。
+
+    （3）稳态时机械能不变，驱动力输入的平均功率正好等于阻尼力消耗的平均功率$\overline{b\dot x^2}=\frac12b\omega_0^2A^2=\bar P$。撤去驱动力后，阻尼弱时一个周期里振幅几乎不变，消耗的功率仍约为$\frac12b\omega_0^2A^2=\gamma U$，一个周期损失$\frac{2\pi}{\omega_0}\gamma U=\frac{2\pi}QU$，即$\frac{\Delta U}U\approx\frac{2\pi}Q$。这给$Q$一个能量的意思：储存的能量除以每弧度损失的能量。
+
+- id: p6
+  tier: hard
+  statement: |
+    受迫振动的稳态振幅$A(\omega)=\frac{F_0/m}{\sqrt{(\omega_0^2-\omega^2)^2+\gamma^2\omega^2}}$。
+
+    （1）证明$\gamma<\sqrt2\,\omega_0$时，$A$在$\omega_{\mathrm r}=\sqrt{\omega_0^2-\gamma^2/2}$处取最大值，并求最大值。
+
+    （2）$Q\gg1$时，证明最大值约为$Q\frac{F_0}k$，$\omega_{\mathrm r}$和$\omega_0$只差$\frac{\omega_0}{4Q^2}$左右。
+
+    （3）$\gamma\ge\sqrt2\,\omega_0$时会怎样？
+  hints:
+    - |
+      $A$最大就是根号里的$g(u)=(\omega_0^2-u)^2+\gamma^2u$最小，$u=\omega^2\ge0$。
+    - |
+      $g'(u)=-2(\omega_0^2-u)+\gamma^2$，零点$u=\omega_0^2-\frac{\gamma^2}2$，要它为正。
+    - |
+      （1）$u_{\mathrm r}=\omega_0^2-\frac{\gamma^2}2>0$时$g$在那里最小，$g_{\min}=\frac{\gamma^4}4+\gamma^2\omega_0^2-\frac{\gamma^4}2=\gamma^2\bigl(\omega_0^2-\frac{\gamma^2}4\bigr)$，$A_{\max}=\frac{F_0/m}{\gamma\sqrt{\omega_0^2-\gamma^2/4}}$。（2）$Q\gg1$时$A_{\max}\approx\frac{F_0}{m\gamma\omega_0}=Q\frac{F_0}k$；$\omega_{\mathrm r}=\omega_0\sqrt{1-\frac1{2Q^2}}\approx\omega_0\bigl(1-\frac1{4Q^2}\bigr)$。（3）$u_{\mathrm r}\le0$，$g$在$u\ge0$上递增，$A$随$\omega$一路减小，最大的是$\omega=0$时的静态位移$\frac{F_0}k$。
+  reference: |
+    （1）令$u=\omega^2$，$g(u)=(\omega_0^2-u)^2+\gamma^2u$，$g'(u)=2(u-\omega_0^2)+\gamma^2$，$g''=2>0$。$g'=0$在$u_{\mathrm r}=\omega_0^2-\frac{\gamma^2}2$，$\gamma<\sqrt2\,\omega_0$时它为正，$g$在那里取最小，$A$取最大。$g(u_{\mathrm r})=\frac{\gamma^4}4+\gamma^2\omega_0^2-\frac{\gamma^4}2=\gamma^2\bigl(\omega_0^2-\frac{\gamma^2}4\bigr)$，$A_{\max}=\frac{F_0/m}{\gamma\sqrt{\omega_0^2-\gamma^2/4}}$；注意$\sqrt{\omega_0^2-\gamma^2/4}$正好是阻尼振动的$\omega_{\mathrm d}$。
+
+    （2）$\gamma=\frac{\omega_0}Q$，$A_{\max}=\frac{F_0}{m\gamma\omega_0}\bigl(1-\frac1{4Q^2}\bigr)^{-1/2}\approx Q\frac{F_0}{m\omega_0^2}=Q\frac{F_0}k$；$\omega_{\mathrm r}=\omega_0\bigl(1-\frac1{2Q^2}\bigr)^{1/2}\approx\omega_0-\frac{\omega_0}{4Q^2}$。例如$Q=10$时只差$0.25\%$。
+
+    （3）$\gamma\ge\sqrt2\,\omega_0$时$u_{\mathrm r}\le0$，$g'(u)>0$对$u>0$成立（$\gamma=\sqrt2\omega_0$时只在$u=0$处为零），$g$递增，$A$随$\omega$单调减小，没有共振峰；最大的是$\omega\to0$时的$\frac{F_0}k$。但速度振幅$\omega A$仍在$\omega_0$处最大，平均功率的峰也还在$\omega_0$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    常微分方程里，没有阻尼的振子受频率恰好等于$\omega_0$的外力，振幅随时间线性增长；这一节说有阻尼时共振的振幅是有限的$Q\frac{F_0}k$。
+
+    （1）振子从静止开始受$F_0\cos\omega_0t$驱动，阻尼很弱。振幅怎样随时间增长？要多久才接近稳态？
+
+    （2）$\gamma\to0$时，你的答案怎样过渡到常微分方程里的线性增长？
+
+    （3）由此说说：「稳态」要多久才建立，和$Q$有什么关系？
+  hints:
+    - |
+      解是稳态加暂态；从静止开始，暂态在$t=0$时要把稳态的位移、速度抵消掉。
+    - |
+      阻尼弱时，近似有$x\approx\frac{F_0}{m\gamma\omega_0}\bigl(1-e^{-\gamma t/2}\bigr)\sin\omega_0t$。$t\ll\frac2\gamma$时把指数展开。
+    - |
+      （1）振幅$\frac{F_0}{m\gamma\omega_0}\bigl(1-e^{-\gamma t/2}\bigr)$从零开始增长，过几个$\frac2\gamma$接近稳态。（2）$t\ll\frac2\gamma$时$1-e^{-\gamma t/2}\approx\frac{\gamma t}2$，振幅约$\frac{F_0t}{2m\omega_0}$，和$\gamma$无关，正是没有阻尼时的线性增长；$\gamma\to0$时这一段越来越长，稳态振幅越来越大。（3）建立稳态要几个$\frac2\gamma=\frac{2Q}{\omega_0}$，约是$\frac Q\pi$个周期：$Q$越大，共振越强，也越慢才振起来。
+  reference: |
+    （1）稳态$x_{\mathrm s}=\frac{F_0}{m\gamma\omega_0}\sin\omega_0t$。暂态要使$x(0)=0$、$\dot x(0)=0$；阻尼弱时$\omega_{\mathrm d}\approx\omega_0$，暂态近似是$-\frac{F_0}{m\gamma\omega_0}e^{-\gamma t/2}\sin\omega_0t$（速度条件只差$\gamma$的高阶量）。合起来$x\approx\frac{F_0}{m\gamma\omega_0}\bigl(1-e^{-\gamma t/2}\bigr)\sin\omega_0t$：振幅从零增长，过几个$\frac2\gamma$接近稳态值$Q\frac{F_0}k$。
+
+    （2）$t\ll\frac2\gamma$时$1-e^{-\gamma t/2}\approx\frac{\gamma t}2$，$x\approx\frac{F_0t}{2m\omega_0}\sin\omega_0t$，和$\gamma$无关，正是常微分方程里没有阻尼时的特解$\frac{t\sin\omega_0t}{2\omega_0}$乘$\frac{F_0}m$。$\gamma\to0$时线性增长持续的时间$\sim\frac2\gamma\to\infty$，饱和的振幅$\to\infty$，两种说法在$\gamma\to0$的极限下一致。
+
+    （3）建立稳态的时间约$\frac2\gamma=\frac{2Q}{\omega_0}$，即约$\frac Q\pi$个周期。品质因数高的振子（音叉、石英晶体）共振很尖，可要较长时间才能「振起来」，也要较长时间才停下。
+
+- id: p8
+  tier: thinking
+  statement: |
+    推秋千时，人在什么时刻推、往哪个方向推，秋千荡得最快？
+
+    （1）用驱动力的平均功率$\bar P=\frac12F_0\omega A\sin\delta$说明，驱动力和位移相差多少时推得最有效。
+
+    （2）这时力和速度是什么关系？
+
+    （3）总是在秋千经过最低点时往前推一下，和在最高点时推一下，哪个更有效？
+  hints:
+    - |
+      $\sin\delta$在什么时候最大？
+    - |
+      $\delta=\frac\pi2$时，速度比位移超前$\frac\pi2$，力也比位移超前$\frac\pi2$。
+    - |
+      （1）$\delta=\frac\pi2$时$\sin\delta=1$最大，力比位移超前（位移落后力）$\frac\pi2$。（2）力和速度同相：秋千往哪边走就往哪边推，每一推都做正功。（3）在最低点速度最大，顺着运动方向推，同样的力做的功最多；在最高点速度为零，同样的一推做的功少得多。
+  reference: |
+    （1）$\bar P\propto\sin\delta$，$\delta=\frac\pi2$时最大：位移落后驱动力$\frac\pi2$，这正是$\omega=\omega_0$时稳态的相位。
+
+    （2）速度比位移超前$\frac\pi2$，所以力和速度同相，功率$Fv$时时刻刻都不为负，驱动力一直在做正功。$\delta$偏离$\frac\pi2$时，一个周期里有一段力和速度反向，做负功，平均功率减小。
+
+    （3）在最低点速度最大、方向沿前进方向，这时顺着运动方向推，功率$Fv$最大；在最高点速度为零，短促地推一下做的功几乎为零。实际推秋千的人常在秋千刚从最高点往回荡、速度开始变大时推，和「力与速度同相」的要求一致。

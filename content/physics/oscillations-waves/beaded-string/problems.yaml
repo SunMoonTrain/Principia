@@ -1,0 +1,180 @@
+- id: p1
+  tier: easy
+  statement: |
+    一维链有 4 个小球，每个质量$0.010\,\mathrm{kg}$，间距$0.10\,\mathrm m$，绳的张力$10\,\mathrm N$。求最低的简正频率（角频率），结果保留三位有效数字。
+  answer:
+    type: number
+    value: 2*100*sin(pi/10)
+    unit: |
+      $\mathrm{rad/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      最低的是$n=1$的简正模。
+    - |
+      $\omega_1=2\sqrt{\frac T{ma}}\sin\frac\pi{2(N+1)}$，$N=4$。
+    - |
+      $\sqrt{\frac T{ma}}=\sqrt{\frac{10}{0.010\times0.10}}=100\,\mathrm{rad/s}$，$\omega_1=200\sin\frac\pi{10}\approx61.8\,\mathrm{rad/s}$。
+  solution: |
+    $\sqrt{\frac T{ma}}=100\,\mathrm{rad/s}$，$\omega_1=2\times100\times\sin\frac\pi{10}\approx61.8\,\mathrm{rad/s}$。这时 4 个小球都在同一侧，振幅之比是$\sin\frac\pi5:\sin\frac{2\pi}5:\sin\frac{3\pi}5:\sin\frac{4\pi}5$，中间两个大、两边两个小。
+
+- id: p2
+  tier: easy
+  statement: |
+    关于$N=5$的一维链，下面哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        一共有 5 个简正模
+      - |
+        第 2 个简正模里，中间（第 3 个）小球不动
+      - |
+        频率最高的简正模里，相邻两个小球总是反向运动
+      - |
+        小球的质量、间距和绳的张力不变，再多串几个小球，最低的简正频率变高
+      - |
+        每个简正模里，两端的小球振幅都最小
+    value: [1, 2, 3]
+  hints:
+    - |
+      第$n$个简正模里第$j$个小球的振幅正比于$\sin\frac{jn\pi}6$。
+    - |
+      逐个代入$j$看正负和零；$\omega_1=2\sqrt{\frac T{ma}}\sin\frac\pi{2(N+1)}$随$N$怎样变？
+    - |
+      A 对；B 对：$n=2$、$j=3$时$\sin\pi=0$。C 对：$n=5$时振幅依次正比于$\sin\frac{5j\pi}6$，正负交替；D 错：$N$变大，$\frac\pi{2(N+1)}$变小，$\omega_1$变低。E 错：例如$n=3$时振幅正比于$1,0,-1,0,1$，两端的振幅最大。
+  solution: |
+    选 A、B、C。小球有几个，简正模就有几个；$n=2$时振幅正比于$\sin\frac{j\pi}3$，$j=3$时为零；$n=5$时$\sin\frac{5j\pi}6$的符号依次是正、负、正、负、正；$N$增大时$\omega_1$变低（链变长了）；$n=3$时两端的振幅反而最大。
+
+- id: p3
+  tier: medium
+  statement: |
+    $N=5$的一维链，最高的简正频率是最低的多少倍？结果保留三位有效数字。
+  answer:
+    type: number
+    value: sin(5*pi/12)/sin(pi/12)
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $\frac{\omega_5}{\omega_1}=\frac{\sin\frac{5\pi}{12}}{\sin\frac\pi{12}}$。
+    - |
+      $\sin\frac{5\pi}{12}=\cos\frac\pi{12}$，比值是$\cot\frac\pi{12}$。
+    - |
+      $\cot\frac\pi{12}=2+\sqrt3\approx3.73$。
+  solution: |
+    $\frac{\omega_5}{\omega_1}=\frac{\sin(5\pi/12)}{\sin(\pi/12)}=\cot\frac\pi{12}=2+\sqrt3\approx3.73$。连续的弦的第 5 个模是第 1 个的 5 倍，链的最高模远没有那么高。
+
+- id: p4
+  tier: medium
+  statement: |
+    一根弦长$0.60\,\mathrm m$，线密度$3.0\,\mathrm{g/m}$，张力$60\,\mathrm N$，两端固定。把它看成小球数很多的一维链取连续极限，求它最低的振动频率（以赫兹为单位），结果保留三位有效数字。
+  answer:
+    type: number
+    value: sqrt(60/0.003)/(2*0.6)
+    unit: |
+      $\mathrm{Hz}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      连续极限下$\omega_n=\frac{n\pi v}\ell$，$v=\sqrt{\frac T\mu}$。
+    - |
+      最低的是$n=1$，频率$f_1=\frac{\omega_1}{2\pi}=\frac v{2\ell}$。注意线密度要换成$\mathrm{kg/m}$。
+    - |
+      $v=\sqrt{\frac{60}{0.0030}}\approx141.4\,\mathrm{m/s}$，$f_1=\frac{141.4}{1.20}\approx118\,\mathrm{Hz}$。
+  solution: |
+    $v=\sqrt{\frac T\mu}=\sqrt{\frac{60}{3.0\times10^{-3}}}\approx141.4\,\mathrm{m/s}$，$\omega_1=\frac{\pi v}\ell$，$f_1=\frac v{2\ell}\approx118\,\mathrm{Hz}$。频率和$\sqrt T$成正比，拧紧弦，音调变高。
+
+- id: p5
+  tier: hard
+  statement: |
+    记$s_n=\Bigl(\sin\frac{n\pi}{N+1},\sin\frac{2n\pi}{N+1},\dots,\sin\frac{Nn\pi}{N+1}\Bigr)$是一维链第$n$个简正模的形状。
+
+    （1）证明$n\ne n'$（$1\le n,n'\le N$）时$s_n\cdot s_{n'}=0$，并求$s_n\cdot s_n$。
+
+    （2）小球从静止放开，初位移是$(y_1(0),\dots,y_N(0))$。证明每个简正模的振幅是$c_n=\frac2{N+1}\sum_{j=1}^Ny_j(0)\sin\frac{jn\pi}{N+1}$，并写出运动。
+  hints:
+    - |
+      积化和差：$\sin A\sin B=\frac12\bigl(\cos(A-B)-\cos(A+B)\bigr)$。$\sum_{j=0}^{N}\cos\frac{jm\pi}{N+1}$在$m$是不被$2(N+1)$整除的整数时等于多少？
+    - |
+      把$\cos$写成$e^{i\cdot}$的实部，等比数列求和：$m$不被$2(N+1)$整除时，$\sum_{j=0}^{2N+1}\cos\frac{jm\pi}{N+1}=0$，再利用对称性得$\sum_{j=0}^{N}$。
+    - |
+      （1）$s_n\cdot s_{n'}=\frac12\sum_j\bigl(\cos\frac{j(n-n')\pi}{N+1}-\cos\frac{j(n+n')\pi}{N+1}\bigr)$；$m$为偶数、$0<m<2(N+1)$时$\sum_{j=1}^N\cos\frac{jm\pi}{N+1}=-1$，奇数时为$0$，$n-n'$和$n+n'$奇偶相同，所以两项相消；$n=n'$时得$\frac{N+1}2$。（2）设$y_j(0)=\sum_nc_n\sin\frac{jn\pi}{N+1}$，两边点乘$s_{n'}$，由正交性只剩$c_{n'}\frac{N+1}2$；运动是$y_j(t)=\sum_nc_n\sin\frac{jn\pi}{N+1}\cos\omega_nt$。
+  reference: |
+    （1）$\sin A\sin B=\frac12\bigl(\cos(A-B)-\cos(A+B)\bigr)$，所以$s_n\cdot s_{n'}=\frac12\bigl(C_{n-n'}-C_{n+n'}\bigr)$，$C_m=\sum_{j=1}^N\cos\frac{jm\pi}{N+1}$。对$0<|m|<2(N+1)$：$\sum_{j=0}^{2N+1}e^{ijm\pi/(N+1)}=0$（等比数列，公比不为 1，$2(N+1)$项正好绕整数圈）。
+
+    又$j$和$2(N+1)-j$的项相同，$j=N+1$的项是$(-1)^m$，所以$2C_m+1+(-1)^m=0$，$C_m=-\frac{1+(-1)^m}2$：$m$偶数时$-1$，奇数时$0$。$n\ne n'$时$n-n'$与$n+n'$同奇偶，$C_{n-n'}=C_{n+n'}$，点积为零。$n=n'$时$C_0=N$，$C_{2n}=-1$，$s_n\cdot s_n=\frac{N+1}2$。
+
+    （2）$N$个$s_n$两两正交、都不为零，线性无关，构成一组基，初位移可以唯一地写成$\sum_nc_ns_n$。点乘$s_{n'}$，得$\sum_jy_j(0)\sin\frac{jn'\pi}{N+1}=c_{n'}\frac{N+1}2$，即题中的式子。各简正模由静止放开，初相为零，$y_j(t)=\sum_{n=1}^Nc_n\sin\frac{jn\pi}{N+1}\cos\omega_nt$。这是离散的「傅里叶正弦级数」；连续极限下变成弦的初位移按$\sin\frac{n\pi x}\ell$展开。
+
+- id: p6
+  tier: hard
+  statement: |
+    $N=3$的一维链，三个小球都静止在平衡位置，把中间的小球拉开$h$（两边的小球按住不动），然后同时放开三个小球。
+
+    （1）把初位移$(0,h,0)$写成三个简正模形状的组合。
+
+    （2）写出三个小球的运动，$\omega_*=\sqrt{\frac T{ma}}$。
+
+    （3）哪个简正模没有被激发？为什么从对称性一眼就能看出来？
+  hints:
+    - |
+      三个形状是$(1,\sqrt2,1)$、$(1,0,-1)$、$(1,-\sqrt2,1)$（例 1）。
+    - |
+      设$(0,h,0)=c_1(1,\sqrt2,1)+c_2(1,0,-1)+c_3(1,-\sqrt2,1)$，解三个一次方程。
+    - |
+      （1）$c_2=0$，$c_1=-c_3=\frac h{2\sqrt2}$。（2）$y_1=y_3=\frac h{2\sqrt2}(\cos\omega_1t-\cos\omega_3t)$，$y_2=\frac h2(\cos\omega_1t+\cos\omega_3t)$，$\omega_1=2\omega_*\sin\frac\pi8$，$\omega_3=2\omega_*\sin\frac{3\pi}8$。（3）$n=2$的模关于中点反对称，初位移关于中点对称，反对称的成分是零。
+  reference: |
+    （1）第一、三个分量：$c_1+c_2+c_3=0$，$c_1-c_2+c_3=0$，得$c_2=0$、$c_3=-c_1$；第二个分量：$\sqrt2(c_1-c_3)=h$，$c_1=\frac h{2\sqrt2}$。所以$(0,h,0)=\frac h{2\sqrt2}\bigl[(1,\sqrt2,1)-(1,-\sqrt2,1)\bigr]$。
+
+    （2）从静止放开，各模的初相为零：$y_1=y_3=\frac h{2\sqrt2}(\cos\omega_1t-\cos\omega_3t)$，$y_2=\frac h2(\cos\omega_1t+\cos\omega_3t)$，$\omega_1=2\omega_*\sin\frac\pi8\approx0.765\omega_*$，$\omega_3=2\omega_*\sin\frac{3\pi}8\approx1.848\omega_*$。$t=0$时$y_1=y_3=0$、$y_2=h$，验算无误。两个频率之比$\frac{\sin(3\pi/8)}{\sin(\pi/8)}=1+\sqrt2$不是有理数，运动不会精确重复。
+
+    （3）$n=2$的形状$(1,0,-1)$关于中间小球反对称，初位移$(0,h,0)$对称，方程本身左右对称，对称的初始状态永远保持对称，所以反对称的模不会出现。
+
+- id: p7
+  tier: thinking
+  statement: |
+    一维链有$N$个小球，就正好有$N$个简正模。
+
+    （1）把$n=N+1$、$n=N+2$、$n=2N+2$代进$\sin\frac{jn\pi}{N+1}$，得到什么？
+
+    （2）为什么简正模的个数应该等于小球的个数？从矩阵的角度说一说。
+
+    （3）连续的弦有无穷多个简正模。从一维链的角度看，这无穷多个是从哪里来的？
+  hints:
+    - |
+      $\sin\frac{j(N+1)\pi}{N+1}=\sin j\pi$；$\sin\frac{j(2N+2-n)\pi}{N+1}$和$\sin\frac{jn\pi}{N+1}$是什么关系？
+    - |
+      $N$个小球的运动方程写成$\ddot{\vb y}=-\frac1mK\vb y$，$K$是几行几列的矩阵？它最多有几个线性无关的特征向量？
+    - |
+      （1）$n=N+1$、$2N+2$时全为零（不动）；$n=N+2$给出$n=N$的形状乘$-1$。（2）$K$是$N\times N$的对称矩阵，$N$个特征值各不相同，正好$N$个线性无关的特征向量，每个对应一个简正模；也可以说，$N$个小球的位移可以各自独立地取值，就有$N$种独立的振动方式。（3）$N\to\infty$时小球无穷多，简正模也无穷多；对固定的$n$，链的第$n$个简正模趋于弦的第$n$个。
+  reference: |
+    （1）$n=N+1$：$\sin j\pi=0$，所有小球不动，不是简正模。$n=N+2$：$\sin\frac{j(N+2)\pi}{N+1}=\sin\bigl(j\pi+\frac{j\pi}{N+1}\bigr)=(-1)^j\sin\frac{j\pi}{N+1}$，而$n=N$给出$\sin\bigl(j\pi-\frac{j\pi}{N+1}\bigr)=-(-1)^j\sin\frac{j\pi}{N+1}$，两者只差负号，是同一个模。$n=2N+2$：$\sin2j\pi=0$。一般地$n$和$2(N+1)\pm n$给出同一个模（差符号），新的只有$1,\dots,N$。
+
+    （2）$K$是$N\times N$的矩阵，特征向量最多$N$个线性无关；这里$N$个$\omega_n$各不相同，$N$个形状两两正交，正好张成全部可能的位移。物理上，$N$个小球有$N$个自由度，每个自由度贡献一种独立的振动方式。
+
+    （3）弦可以看成$N\to\infty$的链，自由度无穷多，简正模也就无穷多；对固定的$n$，链的第$n$个模（形状和频率）趋于弦的第$n$个模。可链的高阶模（$n$接近$N$）在极限里跑到无穷高的频率，弦没有和它们对应的东西：连续描述只对波长远大于小球间距的运动可靠。
+
+- id: p8
+  tier: thinking
+  statement: |
+    「几何图像」里的动画画的是物块沿链的方向振动（纵向），讲解里是小球垂直于绳振动（横向）。
+
+    （1）写出纵向振动时第$j$个物块的方程，说明它和横向的一维链形式相同。
+
+    （2）两种情况里，起「劲度系数」作用的各是什么？
+
+    （3）一根真实的、绷紧的金属弦，纵向的振动和横向的振动，哪个频率高得多？为什么？
+  hints:
+    - |
+      纵向时第$j$个物块受左右两根弹簧的力，弹簧的伸长是相邻位移之差。
+    - |
+      横向时回复力来自张力的横向分量$\frac Ta(y_{j+1}-y_j)$；纵向时来自弹簧（或绳子本身）被拉长、压缩。
+    - |
+      （1）$m\ddot x_j=k(x_{j+1}-x_j)-k(x_j-x_{j-1})=k(x_{j+1}-2x_j+x_{j-1})$，和横向方程一样，$\frac Ta$换成$k$。（2）横向是$\frac Ta$，由张力决定，和绳本身硬不硬无关；纵向是每一小段绳被拉长时的劲度系数，由材料决定。（3）纵向的频率高得多：把一段金属丝拉长一点点要很大的力，相应的「劲度系数」远大于$\frac Ta$。
+  reference: |
+    （1）纵向时$m\ddot x_j=k(x_{j+1}-x_j)-k(x_j-x_{j-1})=k(x_{j+1}-2x_j+x_{j-1})$，两端连墙时$x_0=x_{N+1}=0$，和横向的一维链完全同形，简正模和简正频率的结论都照搬，$\frac Ta\to k$。
+
+    （2）横向：$\frac Ta$，回复力来自已有的张力在倾斜后产生的横向分量，与绳的材料无关；张力越大越「硬」。纵向：一小段绳（或弹簧）被拉伸时的劲度系数，由材料和粗细决定。
+
+    （3）对金属弦，把一段长$a$的丝拉长一点点所需的力，比张力倾斜产生的横向分量大得多（金属很难被拉长），纵向的等效劲度系数远大于$\frac Ta$，频率高得多。乐器的音调来自横向振动，正因为张力可以调；纵向振动的频率太高，又很难激发，通常听不到。

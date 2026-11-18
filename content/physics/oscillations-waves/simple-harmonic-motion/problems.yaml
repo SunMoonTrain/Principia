@@ -1,0 +1,176 @@
+- id: p1
+  tier: easy
+  statement: |
+    质量$0.20\,\mathrm{kg}$的物块连在劲度系数$80\,\mathrm{N/m}$的弹簧上，在光滑水平面上振动。求振动的周期，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 2*pi*sqrt(0.2/80)
+    unit: |
+      $\mathrm s$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      只受线性回复力的振动，周期由哪些量决定？
+    - |
+      $\omega_0=\sqrt{k/m}$，周期$T=\frac{2\pi}{\omega_0}$。
+    - |
+      $\omega_0=\sqrt{\frac{80}{0.20}}=20\,\mathrm{rad/s}$，$T=\frac{2\pi}{20}\approx0.314\,\mathrm s$。
+  solution: |
+    物块只受弹簧的线性回复力，$\omega_0=\sqrt{\frac km}=\sqrt{\frac{80}{0.20}}=20\,\mathrm{rad/s}$，周期$T=\frac{2\pi}{\omega_0}\approx0.314\,\mathrm s$。周期和振幅无关，所以题目不必给出拉开了多远。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些$x(t)$表示简谐运动？（$t$以秒计，$x$以米计。）
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $x=\cos t+\cos2t$
+      - |
+        $x=\sin t\cos t$
+      - |
+        $x=e^{-0.1t}\cos t$
+      - |
+        $x=\cos t-\sqrt3\sin t$
+    value: [2, 4]
+  hints:
+    - |
+      简谐运动要能写成$A\cos(\omega t+\varphi)$，$A>0$、$\omega>0$都是常量。
+    - |
+      用二倍角公式、两角和的公式把式子化成一个余弦；化不成的，看它缺了什么。
+    - |
+      B 是$\frac12\sin2t$，D 是$2\cos\bigl(t+\frac\pi3\bigr)$，都是简谐运动；A 是两个频率不同的振动之和，C 的「振幅」随时间变小，都不是。
+  solution: |
+    选 B、D。$\sin t\cos t=\frac12\sin2t=\frac12\cos\bigl(2t-\frac\pi2\bigr)$，振幅$0.5\,\mathrm m$、角频率$2\,\mathrm{rad/s}$；$\cos t-\sqrt3\sin t=2\bigl(\frac12\cos t-\frac{\sqrt3}2\sin t\bigr)=2\cos\bigl(t+\frac\pi3\bigr)$。$\cos t+\cos2t$虽然每隔$2\pi$重复一次，却不是一个余弦，不是简谐运动；$e^{-0.1t}\cos t$前面的因子随时间变小，也不是$A\cos(\omega t+\varphi)$的形式。
+
+- id: p3
+  tier: medium
+  statement: |
+    质量$1.0\,\mathrm{kg}$的物块连在劲度系数$16\,\mathrm{N/m}$的弹簧上，在光滑水平面上振动。$t=0$时它在平衡位置右边$3.0\,\mathrm{cm}$处，以$16\,\mathrm{cm/s}$的速度向右运动。它在什么时刻第一次到达离平衡位置最远的地方？结果保留三位有效数字。
+  answer:
+    type: number
+    value: atan(4/3)/4
+    unit: |
+      $\mathrm s$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先由初位置和初速度定出初相。离平衡位置最远时，相位是多少？
+    - |
+      $\omega_0=4\,\mathrm{rad/s}$，$\cos\varphi=\frac{x_0}A$，$\sin\varphi=-\frac{v_0}{\omega_0A}$。物块正向右走，先到右端，那时相位$4t+\varphi=0$。
+    - |
+      $\frac{v_0}{\omega_0}=4.0\,\mathrm{cm}$，$A=\sqrt{3.0^2+4.0^2}=5.0\,\mathrm{cm}$，$\cos\varphi=0.6$，$\sin\varphi=-0.8$，$\varphi=-\arctan\frac43\approx-0.927$。由$4t+\varphi=0$得$t=\frac14\arctan\frac43\approx0.232\,\mathrm s$。
+  solution: |
+    $\omega_0=\sqrt{\frac{16}{1.0}}=4\,\mathrm{rad/s}$，$A=\sqrt{3.0^2+4.0^2}=5.0\,\mathrm{cm}$，$\cos\varphi=0.6$、$\sin\varphi=-0.8$，所以$\varphi=-\arctan\frac43\approx-0.927$。物块在右边、正向右走，先到右端$x=A$，这时$4t+\varphi=0$，$t=\frac14\arctan\frac43\approx0.232\,\mathrm s$。在参考圆上，点从$-53.1^\circ$出发逆时针转到$0^\circ$，转过$53.1^\circ$。
+
+- id: p4
+  tier: medium
+  statement: |
+    轻弹簧竖直悬挂，下端挂一个物块，静止时弹簧比原长伸长了$2.0\,\mathrm{cm}$。把物块再向下拉$1.0\,\mathrm{cm}$后放手，$g$取$9.8\,\mathrm{m/s^2}$，求振动的周期，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 2*pi*sqrt(0.02/9.8)
+    unit: |
+      $\mathrm s$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      重力是恒力，它对振动有什么影响？从哪里量位移，合力才和位移成正比？
+    - |
+      设弹簧的劲度系数为$k$、物块的质量为$m$，静止时$k\Delta l=mg$。以静止的位置为原点、向下为正，物块在$x$处时合力是多少？
+    - |
+      合力$mg-k(\Delta l+x)=-kx$，物块绕静止的位置做简谐运动，$\omega_0=\sqrt{\frac km}=\sqrt{\frac g{\Delta l}}$，$T=2\pi\sqrt{\frac{\Delta l}g}=2\pi\sqrt{\frac{0.020}{9.8}}\approx0.284\,\mathrm s$。
+  solution: |
+    静止时$k\Delta l=mg$。以静止的位置为原点、向下为正，物块在$x$处时弹簧伸长$\Delta l+x$，合力$mg-k(\Delta l+x)=-kx$，是劲度系数仍为$k$的线性回复力：重力只把平衡位置往下挪了$\Delta l$。所以$\omega_0=\sqrt{\frac km}=\sqrt{\frac g{\Delta l}}$，$T=2\pi\sqrt{\frac{\Delta l}g}\approx0.284\,\mathrm s$，不必知道$k$和$m$各是多少。再拉下的$1.0\,\mathrm{cm}$只决定振幅，和周期无关。
+
+- id: p5
+  tier: hard
+  statement: |
+    水平的平台在竖直方向做简谐运动，振幅为$A$、角频率为$\omega$，平台上放着一个物块。证明：物块始终不离开平台的条件是$A\le\frac g{\omega^2}$；$A>\frac g{\omega^2}$时，物块在什么位置、平台朝哪个方向运动时开始离开平台？
+  hints:
+    - |
+      物块不离开平台时，它和平台的加速度一样。平台对它的支持力怎样随位置变化？
+    - |
+      取竖直向上为正、原点在平台的平衡位置，平台的加速度是$-\omega^2x$。对物块用牛顿第二定律求支持力$N$，要始终有$N\ge0$。
+    - |
+      物块和平台一起运动时，$N-mg=-m\omega^2x$，$N=m(g-\omega^2x)$。$N\ge0$要求$x\le\frac g{\omega^2}$；平台最高到$x=A$，所以始终不离开的条件是$A\le\frac g{\omega^2}$。$A>\frac g{\omega^2}$时，平台向上经过$x=\frac g{\omega^2}$（平衡位置上方）时$N$减到零，再往上平台的加速度向下、比$g$还大，物块跟不上，就在这里离开平台，这时平台正向上运动、在减速。
+  reference: |
+    取竖直向上为$x$轴正方向，原点在平台的平衡位置，平台的位移$x=A\cos(\omega t+\varphi)$，加速度$\ddot x=-\omega^2x$。物块和平台一起运动时加速度相同，物块受重力$mg$和支持力$N$，$N-mg=-m\omega^2x$，所以$N=m(g-\omega^2x)$。
+
+    支持力不能是负的，物块要一直跟着平台，就要在平台到过的每个位置上$N\ge0$，即$x\le\frac g{\omega^2}$；平台最高到$x=A$，所以条件是$A\le\frac g{\omega^2}$。反过来，这个条件成立时$N$处处不为负，物块确实可以一直跟着平台。
+
+    $A>\frac g{\omega^2}$时，平台从下往上经过$x=\frac g{\omega^2}$处，$N$减到零；再往上，平台的加速度向下、大小$\omega^2x>g$，物块只受重力，加速度只有$g$，跟不上平台的减速，于是在$x=\frac g{\omega^2}$处离开平台。离开时平台在平衡位置上方、正向上运动（速度不为零，否则$x$已是最高点$A$）。
+
+- id: p6
+  tier: hard
+  statement: |
+    光滑的水平桌面上，一根细绳的两端固定在相距$2L$的两点，绳的中点系着质量为$m$的小球，绳的张力是$T_0$。让小球沿垂直于绳的方向偏离$y$（在桌面上），设张力始终是$T_0$。
+
+    （1）求小球受的合力。
+
+    （2）用泰勒公式说明$|y|\ll L$时小球做简谐运动，并求角频率。
+
+    （3）$y=0.1L$时，线性近似（linear approximation）给出的力和准确的力相差约百分之几？
+  hints:
+    - |
+      两段绳各沿自己的方向拉小球，沿绳原来方向的分力互相抵消。
+    - |
+      每段绳和原来的方向成$\alpha$角，$\sin\alpha=\frac y{\sqrt{L^2+y^2}}$；把合力$F(y)$在$y=0$处展开到一次项。
+    - |
+      （1）$F=-\frac{2T_0y}{\sqrt{L^2+y^2}}$，指向平衡位置。（2）$F(0)=0$，$F'(0)=-\frac{2T_0}L$，由泰勒公式$F=-\frac{2T_0}Ly+o(y)$，是$k=\frac{2T_0}L$的线性回复力加高阶小量，小球近似做简谐运动，$\omega_0=\sqrt{\frac{2T_0}{mL}}$。（3）准确的力是线性近似的$\frac1{\sqrt{1+y^2/L^2}}=\frac1{\sqrt{1.01}}\approx0.995$倍，相差约$0.5\%$。
+  reference: |
+    （1）两段绳和原来的方向成同样的角$\alpha$，$\sin\alpha=\frac y{\sqrt{L^2+y^2}}$。沿原来方向的分力抵消，垂直方向的分力相加，合力$F=-2T_0\sin\alpha=-\frac{2T_0y}{\sqrt{L^2+y^2}}$，负号表示指向平衡位置，是回复力。
+
+    （2）$F(y)=-\frac{2T_0}L\,y\Bigl(1+\frac{y^2}{L^2}\Bigr)^{-1/2}$，$F(0)=0$，$F'(0)=-\frac{2T_0}L$。由泰勒公式，$F(y)=-\frac{2T_0}Ly+o(y)$，$|y|\ll L$时近似是劲度系数$k=\frac{2T_0}L$的线性回复力，小球做简谐运动，$\omega_0=\sqrt{\frac k m}=\sqrt{\frac{2T_0}{mL}}$。
+
+    （3）准确的力和线性近似之比是$\bigl(1+\frac{y^2}{L^2}\bigr)^{-1/2}=1.01^{-1/2}\approx0.99504$，线性近似把力多算了约$0.5\%$（按二阶泰勒公式，比值约为$1-\frac{y^2}{2L^2}=0.995$）。偏离是$L$的十分之一时，线性近似已经相当准。
+
+- id: p7
+  tier: thinking
+  statement: |
+    质点只受回复力$F=-cx^3$（$c>0$），从$x=A$处由静止放开，运动记作$x(t)$。
+
+    （1）对正数$\lambda$，验证$y(t)=\lambda x(\lambda t)$满足同一个运动方程。$y$是从哪里放开的运动？
+
+    （2）由此说明周期和$A$成反比。振幅变大时，振动变快还是变慢？
+
+    （3）对线性回复力$F=-kx$做类似的变换，为什么得不出周期随振幅变化？
+  hints:
+    - |
+      把$y(t)=\lambda x(\lambda t)$对$t$求两次导数，用链式法则。
+    - |
+      $\ddot y(t)=\lambda^3\ddot x(\lambda t)$。代入方程看两边是否相等；$y(0)$、$\dot y(0)$各是多少？$x$走完一个周期用时$T$，$y$呢？
+    - |
+      （1）$m\ddot y=\lambda^3m\ddot x(\lambda t)=-c\lambda^3x(\lambda t)^3=-cy^3$，满足同一个方程；$y(0)=\lambda A$、$\dot y(0)=\lambda^2\dot x(0)=0$，是从$\lambda A$处由静止放开的运动。（2）$y(t)$在$t$走过$\frac T\lambda$时就重复，振幅为$\lambda A$时周期是$\frac T\lambda$，所以周期和振幅成反比，振幅越大振动越快。（3）对$F=-kx$，$\lambda x(t)$本身就满足方程，不用压缩时间：振幅放大$\lambda$倍，周期不变；硬要用$\lambda x(\mu t)$，方程要求$\mu^2=1$。
+  reference: |
+    （1）$\dot y(t)=\lambda^2\dot x(\lambda t)$，$\ddot y(t)=\lambda^3\ddot x(\lambda t)$，所以$m\ddot y=\lambda^3\bigl(-c\,x(\lambda t)^3\bigr)=-c\bigl(\lambda x(\lambda t)\bigr)^3=-cy^3$。$y(0)=\lambda A$，$\dot y(0)=0$，所以$y$是从$\lambda A$处由静止放开的运动。
+
+    （2）设$x$的周期是$T$，$y(t+\frac T\lambda)=\lambda x(\lambda t+T)=y(t)$，$y$的周期是$\frac T\lambda$。从$\lambda A$处放开的周期是从$A$处放开的$\frac1\lambda$，即$T\propto\frac1A$：振幅越大，振动越快。直观地说，偏得越远，力比位移增长得快得多。
+
+    （3）对$F=-kx$，$\lambda x(t)$本身就满足$m\ddot y=-ky$，振幅放大、时间不用压缩，周期不变；试$\lambda x(\mu t)$，方程要求$\mu^2=1$。所以「周期和振幅无关」是线性回复力的特点。一般地，对$F=-c|x|^{n-1}x$（$n>0$），同样的变换给出$T\propto A^{(1-n)/2}$：$n>1$时振幅越大越快，$n<1$时越慢。
+
+- id: p8
+  tier: thinking
+  statement: |
+    已知一个质点做角频率为$\omega$的简谐运动。
+
+    （1）只知道某一时刻的位置和加速度，能不能定出振幅？
+
+    （2）知道两个不同时刻$t_1$、$t_2$的位置$x_1$、$x_2$，什么情况下能定出振幅和初相，什么情况下不能？
+
+    （3）为什么说「初位置和初速度」是定出运动最自然的一对条件？
+  hints:
+    - |
+      已知$\omega$时，加速度和位置之间有什么固定的关系？
+    - |
+      把$x=A\cos(\omega t+\varphi)$写成$p\cos\omega t-q\sin\omega t$，$p=A\cos\varphi$，$q=A\sin\varphi$；两个时刻的位置给出$p$、$q$的两个一次方程。
+    - |
+      （1）不能：$a=-\omega^2x$由位置就能算出，没有新的信息，例如$x=0$、$a=0$对任何振幅都成立。（2）方程组的系数行列式是$-\sin\omega(t_2-t_1)$，不为零时$p$、$q$唯一，$A=\sqrt{p^2+q^2}$、$\varphi$随之定出；$t_2-t_1$是半个周期的整数倍时它为零，这时总有$x_2=\pm x_1$，第二个位置没有新信息。（3）初位置和初速度对任何振动都能定出$A$、$\varphi$，不会碰到上面的例外；它们也是我们开始一次运动时能直接给定的：拉到哪里、推得多快。
+  reference: |
+    （1）不能。已知$\omega$时$a=-\omega^2x$，加速度由位置算得出来，不带新的信息；例如某一时刻$x=0$、$a=0$，振幅可以是任何值。
+
+    （2）$x=p\cos\omega t-q\sin\omega t$，$p=A\cos\varphi$，$q=A\sin\varphi$。两个时刻给出$p\cos\omega t_1-q\sin\omega t_1=x_1$、$p\cos\omega t_2-q\sin\omega t_2=x_2$，系数行列式是$-\cos\omega t_1\sin\omega t_2+\sin\omega t_1\cos\omega t_2=-\sin\omega(t_2-t_1)$。$t_2-t_1$不是半个周期$\frac\pi\omega$的整数倍时行列式不为零，$p$、$q$唯一，$A=\sqrt{p^2+q^2}$、$\cos\varphi=\frac pA$、$\sin\varphi=\frac qA$定出初相。$t_2-t_1$是半个周期的整数倍时，任何简谐运动都有$x_2=\pm x_1$（偶数倍取正、奇数倍取负），第二个位置是多余的，定不出来。
+
+    （3）初位置和初速度对任何振动都唯一地定出$A$、$\varphi$（讲解里的定理），没有例外；运动方程是二阶的，正好需要这两个数；它们也是开始一次运动时能直接给定的量。知道两个时刻的位置也常能定出，可要排除间隔是半周期整数倍的情形。

@@ -40,7 +40,7 @@ status: reviewed
 ::anchor{id="def-resonance"}
 外力的频率等于方程自己的频率时，右边$\cos\omega_0t$对应的$\pm i\omega_0$恰好是特征根，特解要乘上$t$：$y''+\omega_0^2y=\cos\omega_0t$有特解$\frac{t\sin\omega_0t}{2\omega_0}$，振幅随时间线性增长，这种现象叫作:term[共振]{id="math.ode.resonance"}（resonance）。
 
-为什么这样定义：外力每个周期都恰好在振子往同一个方向运动时推它，能量越积越多。实际的振子有阻尼，振幅不会无限增长，但外力的频率接近$\omega_0$时，振幅会大得多（第 6 题）。边界情况：$\omega$接近但不等于$\omega_0$时，满足$y(0)=y'(0)=0$的解是$\frac{\cos\omega t-\cos\omega_0t}{\omega_0^2-\omega^2}$，振幅时大时小，形成拍（beats）。
+为什么这样定义：外力每个周期都恰好在振子往同一个方向运动时推它，能量越积越多。实际的振子有阻尼，振幅不会无限增长，但外力的频率接近$\omega_0$时，振幅会大得多（第 6 题）。边界情况：$\omega$接近但不等于$\omega_0$时，满足$y(0)=y'(0)=0$的解是$\frac{\cos\omega t-\cos\omega_0t}{\omega_0^2-\omega^2}$，振幅时大时小，形成:term[拍]{id="physics.oscillations-waves.beats"}（beats）。
 
 ## 几何图像
 
@@ -66,7 +66,7 @@ sliders:
       外力的频率$\omega$
 :::
 
-这是$y''+y=\cos\omega x$满足$y(0)=y'(0)=0$的解，横轴可以看成时间。拖动$\omega$：解的振幅在包络（envelope）里时大时小，形成拍；$\omega$越接近$1$，拍越慢，最大振幅$\frac{2}{|1-\omega^2|}$越大。$\omega=1$时没有拍，是:term[共振]{id="math.ode.resonance"}，解是振幅线性增长的$\frac{x\sin x}{2}$，很快跑出画面。
+这是$y''+y=\cos\omega x$满足$y(0)=y'(0)=0$的解，横轴可以看成时间。拖动$\omega$：解的振幅在包络（envelope）里时大时小，形成:term[拍]{id="physics.oscillations-waves.beats"}；$\omega$越接近$1$，拍越慢，最大振幅$\frac{2}{|1-\omega^2|}$越大。$\omega=1$时没有拍，是:term[共振]{id="math.ode.resonance"}，解是振幅线性增长的$\frac{x\sin x}{2}$，很快跑出画面。
 
 ## 例题
 

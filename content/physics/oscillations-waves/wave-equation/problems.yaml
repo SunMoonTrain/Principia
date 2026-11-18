@@ -1,0 +1,185 @@
+- id: p1
+  tier: easy
+  statement: |
+    一根弦的张力是$50\,\mathrm N$，线密度是$2.0\,\mathrm{g/m}$。求弦上的波速，结果保留三位有效数字。
+  answer:
+    type: number
+    value: sqrt(50/0.002)
+    unit: |
+      $\mathrm{m/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      弦上的波速只由张力和线密度决定。
+    - |
+      $v=\sqrt{\frac T\mu}$，线密度要换成$\mathrm{kg/m}$。
+    - |
+      $\mu=2.0\times10^{-3}\,\mathrm{kg/m}$，$v=\sqrt{\frac{50}{2.0\times10^{-3}}}=\sqrt{2.5\times10^4}\approx158\,\mathrm{m/s}$。
+  solution: |
+    $v=\sqrt{\frac T\mu}=\sqrt{\frac{50}{2.0\times10^{-3}}}\approx158\,\mathrm{m/s}$。和脉冲的形状、大小都无关；张力加倍，波速变为$\sqrt2$倍。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些函数满足波动方程$y_{tt}=4y_{xx}$？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $y=\sin(x-2t)$
+      - |
+        $y=e^{-(x-t)^2}$
+      - |
+        $y=x^2-4t^2$
+      - |
+        $y=\cos(3x+6t)$
+      - |
+        $y=(x+2t)^3$
+    value: [1, 4, 5]
+  hints:
+    - |
+      $v=2$。形如$f(x-2t)$或$g(x+2t)$的都满足；不是这种形式的，直接求导检验。
+    - |
+      $\cos(3x+6t)=\cos3(x+2t)$；$e^{-(x-t)^2}$以速度$1$平移；$x^2-4t^2$直接算$y_{tt}$和$4y_{xx}$。
+    - |
+      A 是$f(x-2t)$，D 是$\cos3(x+2t)$，E 是$g(x+2t)$，都满足。B 的$y_{tt}=y_{xx}\ne4y_{xx}$。C 的$y_{tt}=-8$，$4y_{xx}=8$，不满足。
+  solution: |
+    选 A、D、E。A、D、E 分别是$f(x-2t)$、$g(x+2t)$、$g(x+2t)$的形式，是以速度$2$平移的行波；B 以速度$1$平移，满足的是$y_{tt}=y_{xx}$；C 的$y_{tt}=-8$而$4y_{xx}=8$。注意$x^2+4t^2=\frac12\bigl((x+2t)^2+(x-2t)^2\bigr)$倒是满足的，差一个符号就不行了。
+
+- id: p3
+  tier: medium
+  statement: |
+    一根长$2.5\,\mathrm m$、质量$10\,\mathrm g$的均匀弦，两端用$64\,\mathrm N$的张力拉紧。一个脉冲从一端跑到另一端要多久？以毫秒为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 2.5/sqrt(64/0.004)*1000
+    unit: |
+      $\mathrm{ms}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先由质量和长度求线密度，再求波速。
+    - |
+      $\mu=\frac{0.010}{2.5}\,\mathrm{kg/m}$，$v=\sqrt{\frac T\mu}$，用时$\frac Lv$。
+    - |
+      $\mu=4.0\times10^{-3}\,\mathrm{kg/m}$，$v=\sqrt{\frac{64}{4.0\times10^{-3}}}\approx126.5\,\mathrm{m/s}$，用时$\frac{2.5}{126.5}\,\mathrm s\approx19.8\,\mathrm{ms}$。
+  solution: |
+    $\mu=\frac{0.010\,\mathrm{kg}}{2.5\,\mathrm m}=4.0\times10^{-3}\,\mathrm{kg/m}$，$v=\sqrt{\frac{64}{4.0\times10^{-3}}}\approx126.5\,\mathrm{m/s}$。脉冲形状不变、匀速前进，用时$\frac{2.5}{126.5}\,\mathrm s\approx19.8\,\mathrm{ms}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    弦上的波是$y=0.02\sin(5x-100t)$（国际单位制）。弦上的点横向运动的最大速率是波速的多少倍？
+  answer:
+    type: number
+    value: 0.1
+  hints:
+    - |
+      把$y$写成$f(x-vt)$的形式读出波速；横向速度是$y_t$。
+    - |
+      $5x-100t=5(x-20t)$，所以$v=20\,\mathrm{m/s}$；$y_t=-2\cos(5x-100t)$。
+    - |
+      横向速率最大是$0.02\times100=2\,\mathrm{m/s}$，波速$20\,\mathrm{m/s}$，比值$0.1$。
+  solution: |
+    $y=0.02\sin5(x-20t)$，是向右传播、波速$v=20\,\mathrm{m/s}$的行波。$y_t=-0.02\times100\cos(5x-100t)$，横向速率最大$2\,\mathrm{m/s}$，是波速的$0.1$倍。一般地，$y_t=-vy_x$，横向速度和波速之比就是弦的斜率，斜率小，横向的运动就比波形的移动慢得多。
+
+- id: p5
+  tier: hard
+  statement: |
+    水平拉紧的弦（两端在$x=0$、$x=\ell$处，同样高），把重力也考虑进去，$y$轴竖直向上。
+
+    （1）证明运动方程是$\mu y_{tt}=Ty_{xx}-\mu g$。
+
+    （2）求静止时弦的形状$y_{\mathrm s}(x)$和中点下垂的距离。
+
+    （3）证明$u=y-y_{\mathrm s}$满足原来的波动方程。
+
+    （4）$\mu=5.0\times10^{-3}\,\mathrm{kg/m}$、$T=80\,\mathrm N$、$\ell=0.65\,\mathrm m$时，中点下垂多少？讲解里不计重力是否合理？
+  hints:
+    - |
+      在讲解的受力分析里，给那一小段弦再加上重力$-\mu\Delta x\,g$。
+    - |
+      静止时$Ty_{\mathrm s}''=\mu g$，$y_{\mathrm s}(0)=y_{\mathrm s}(\ell)=0$，积分两次。
+    - |
+      （1）$\mu\Delta x\,y_{tt}=T\bigl(y_x(x+\Delta x)-y_x(x)\bigr)-\mu\Delta x\,g$，除以$\Delta x$取极限。（2）$y_{\mathrm s}=\frac{\mu g}{2T}x(x-\ell)$，中点下垂$\frac{\mu g\ell^2}{8T}$。（3）$\mu u_{tt}=\mu y_{tt}=Ty_{xx}-\mu g=T(u_{xx}+y_{\mathrm s}'')-\mu g=Tu_{xx}$。（4）$\frac{5.0\times10^{-3}\times9.8\times0.65^2}{8\times80}\,\mathrm m\approx3.2\times10^{-5}\,\mathrm m$，只有$0.03\,\mathrm{mm}$，不计重力很合理。
+  reference: |
+    （1）$x$到$x+\Delta x$的一小段，竖直方向受两端张力的竖直分量和重力$\mu\Delta x\,g$（向下）：$\mu\Delta x\,y_{tt}=T\bigl(y_x(x+\Delta x,t)-y_x(x,t)\bigr)-\mu\Delta x\,g$，除以$\Delta x$、令$\Delta x\to0$得$\mu y_{tt}=Ty_{xx}-\mu g$（斜率仍很小，张力仍近似为$T$）。
+
+    （2）静止时$y_{tt}=0$，$Ty_{\mathrm s}''=\mu g$，$y_{\mathrm s}=\frac{\mu g}{2T}x^2+C_1x+C_2$；由$y_{\mathrm s}(0)=y_{\mathrm s}(\ell)=0$，$y_{\mathrm s}=\frac{\mu g}{2T}x(x-\ell)$，是一段开口向上的抛物线，在$0<x<\ell$里为负；中点$y_{\mathrm s}(\frac\ell2)=-\frac{\mu g\ell^2}{8T}$。
+
+    （3）$u=y-y_{\mathrm s}$，$u_{tt}=y_{tt}$，$u_{xx}=y_{xx}-\frac{\mu g}T$，所以$\mu u_{tt}=Ty_{xx}-\mu g=Tu_{xx}$：重力只把平衡的形状变成了下垂的抛物线，绕这个形状的振动仍满足同一个波动方程，和竖直悬挂的弹簧振子一样。
+
+    （4）$\frac{\mu g\ell^2}{8T}=\frac{5.0\times10^{-3}\times9.8\times0.4225}{640}\,\mathrm m\approx3.2\times10^{-5}\,\mathrm m$，比弦的振幅小得多；而且由（3），即使不小，它也不改变振动的方程，所以讲解里不计重力是合理的。
+
+- id: p6
+  tier: hard
+  statement: |
+    无限长的弦，$t=0$时形状是$y(x,0)=\varphi(x)$，各点都静止（$y_t(x,0)=0$），$\varphi$二阶可导。
+
+    （1）证明$y=\frac12\bigl(\varphi(x-vt)+\varphi(x+vt)\bigr)$满足波动方程和这两个初始条件。
+
+    （2）描述这个运动：开始时的一个鼓包后来怎样？
+
+    （3）如果想让同样的鼓包$\varphi$整个向右跑、不分开，开始时各点的速度应该是多少？
+  hints:
+    - |
+      两项分别是向右、向左的行波；初始条件直接代$t=0$。
+    - |
+      $y_t=\frac v2\bigl(-\varphi'(x-vt)+\varphi'(x+vt)\bigr)$，$t=0$时为零。
+    - |
+      （1）两项都满足方程，和也满足；$y(x,0)=\varphi(x)$，$y_t(x,0)=\frac v2(-\varphi'+\varphi')=0$。（2）鼓包分成两个形状相同、高度减半的鼓包，以$v$分别向左右跑开，分开后各自保持形状。（3）要$y=\varphi(x-vt)$，$y_t(x,0)=-v\varphi'(x)$：鼓包的前沿（右侧下降处）向上动，后沿向下动。
+  reference: |
+    （1）$\varphi(x-vt)$、$\varphi(x+vt)$各满足波动方程，方程是线性的，它们的一半之和也满足。$t=0$时$y=\frac12(\varphi+\varphi)=\varphi(x)$；$y_t=\frac v2\bigl(-\varphi'(x-vt)+\varphi'(x+vt)\bigr)$，$t=0$时为零。
+
+    （2）开始时的鼓包分成两个形状相同、高度都是一半的鼓包，分别以$v$向右、向左跑；跑开以后，中间的弦恢复平直。比如拨一下长弦的中间放手，会看到两个小鼓包向两端跑去。
+
+    （3）要$y=\varphi(x-vt)$，需要$y(x,0)=\varphi(x)$且$y_t(x,0)=-v\varphi'(x)$：在$\varphi$下降的地方（鼓包右侧，$\varphi'<0$）各点向上动，在$\varphi$上升的地方（左侧）向下动，鼓包整体右移。只给形状、不给速度，运动就定不下来：波动方程对$t$是二阶的，和振子要初位置、初速度一样。
+
+- id: p7
+  tier: thinking
+  statement: |
+    弦上的波速$v=\sqrt{T/\mu}$。
+
+    （1）只用量纲（单位）说明：如果波速只可能和张力$T$、线密度$\mu$有关，它只能是$\sqrt{T/\mu}$乘一个纯数。
+
+    （2）波速和脉冲的高度、宽度、弦的长度有没有关系？在什么条件下才这样？
+
+    （3）想让一根弦上的波速变为原来的 2 倍，有哪几种办法？
+  hints:
+    - |
+      $T$的单位是$\mathrm{kg\cdot m/s^2}$，$\mu$的单位是$\mathrm{kg/m}$。设$v=CT^a\mu^b$，比较$\mathrm{kg}$、$\mathrm m$、$\mathrm s$的次数。
+    - |
+      推导波动方程时用到了哪些近似？斜率不小时会怎样？
+    - |
+      （1）$\mathrm{kg}^{a+b}\mathrm m^{a-b}\mathrm s^{-2a}=\mathrm{m\,s^{-1}}$，得$a=\frac12$、$b=-\frac12$。（2）在斜率很小、方程线性的条件下无关；脉冲很高很陡时，弦被拉长、张力变化，波速和形状有关。（3）张力变为 4 倍，或线密度变为$\frac14$（换更细或更轻的弦）。
+  reference: |
+    （1）$v=CT^a\mu^b$，单位$\mathrm{kg}^a\mathrm m^a\mathrm s^{-2a}\cdot\mathrm{kg}^b\mathrm m^{-b}=\mathrm m\,\mathrm s^{-1}$：$a+b=0$，$a-b=1$，$-2a=-1$，得$a=\frac12$、$b=-\frac12$，$v=C\sqrt{T/\mu}$。推导给出$C=1$。
+
+    （2）推导时假定斜率很小，方程是线性的，这时任何形状、任何大小的脉冲都以同一个$v$前进，和弦长也无关（弦长只影响脉冲多久跑到头）。脉冲很高、很陡时，弦被明显拉长，张力随形状变化，方程不再是线性的，波速会和振幅有关，形状也会变。
+
+    （3）波速和$\sqrt T$成正比、和$\sqrt\mu$成反比：张力变为 4 倍，或线密度变为原来的$\frac14$。乐器调音是调张力，低音弦做得粗重，是为了在不太松的张力下得到较低的波速和音调。
+
+- id: p8
+  tier: thinking
+  statement: |
+    一根很重的长链子竖直地挂着，上端固定、下端自由，线密度为$\mu$，长$L$。在下端附近给它一个小小的横向扰动。
+
+    （1）链子各处的张力怎样随高度变化？
+
+    （2）在距下端$z$处，按局部的张力算，波速是多少？它和$\mu$有关吗？
+
+    （3）脉冲从下端跑到上端，越跑越快还是越来越慢？大约要多久？
+  hints:
+    - |
+      距下端$z$处的张力要拉住它下面那一段链子的重量。
+    - |
+      $T(z)=\mu gz$，局部波速$v=\sqrt{T/\mu}$。
+    - |
+      （1）$T=\mu gz$，越往上越大。（2）$v=\sqrt{gz}$，和$\mu$无关。（3）越往上越快；用时$\int_0^L\frac{\dd z}{\sqrt{gz}}=2\sqrt{\frac Lg}$。
+  reference: |
+    （1）距下端$z$处要拉住下面长$z$的链子，$T(z)=\mu gz$，下端为零、上端最大。
+
+    （2）张力沿链子缓慢变化时，可以按局部的张力估计波速：$v(z)=\sqrt{T(z)/\mu}=\sqrt{gz}$，和$\mu$无关，因为张力和惯性都和$\mu$成正比。
+
+    （3）越往上张力越大，波速越大，脉冲越跑越快；从下到上用时$\int_0^L\frac{\dd z}{\sqrt{gz}}=2\sqrt{\frac Lg}$，例如$L=2\,\mathrm m$时约$0.9\,\mathrm s$。这只是估计：张力不均匀时方程变成$\mu y_{tt}=\frac{\partial}{\partial z}\bigl(T(z)y_z\bigr)$，波形在传播中还会变形（越往上越长、越矮）。

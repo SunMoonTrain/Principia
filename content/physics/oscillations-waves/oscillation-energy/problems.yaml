@@ -1,0 +1,180 @@
+- id: p1
+  tier: easy
+  statement: |
+    劲度系数$200\,\mathrm{N/m}$的弹簧连着物块做简谐运动，振幅是$3.0\,\mathrm{cm}$。求振动的机械能。
+  answer:
+    type: number
+    value: 0.5*200*0.03^2
+    unit: |
+      $\mathrm J$
+  hints:
+    - |
+      机械能和振幅有什么关系？要不要知道物块的质量？
+    - |
+      在离平衡位置最远的地方，动能为零，机械能全是弹性势能$\frac12kA^2$。
+    - |
+      $E=\frac12kA^2=\frac12\times200\times0.030^2=0.090\,\mathrm J$。
+  solution: |
+    在两端速度为零，机械能全是弹性势能，$E=\frac12kA^2=\frac12\times200\times0.030^2=0.090\,\mathrm J$。机械能守恒，这也是任何时刻的机械能；它和物块的质量无关，质量只影响振动的快慢。
+
+- id: p2
+  tier: easy
+  statement: |
+    水平放置的弹簧振子做简谐运动，弹性势能以弹簧原长为零点。下面哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        动能最大时，弹性势能为零
+      - |
+        动能随时间变化的周期等于振动的周期
+      - |
+        动能等于弹性势能时，位移的大小是振幅的一半
+      - |
+        速率是最大速率的一半时，位移的大小是振幅的$\frac{\sqrt3}2$
+      - |
+        振幅不变时，换一根劲度系数是原来 2 倍的弹簧，机械能也变成原来的 2 倍
+    value: [1, 4, 5]
+  hints:
+    - |
+      把动能、弹性势能写成时间的函数，或者用$E=\frac12kA^2$、$v=\omega_0\sqrt{A^2-x^2}$逐条算。
+    - |
+      $K=\frac12kA^2\sin^2(\omega_0t+\varphi)=\frac14kA^2\bigl(1-\cos(2\omega_0t+2\varphi)\bigr)$，它多久重复一次？$K=U$时，$U$是$E$的几分之几？
+    - |
+      A 对：动能最大在平衡位置，那里弹簧是原长；B 错：动能的周期是振动周期的一半。C 错：$K=U=\frac E2$时$\frac12kx^2=\frac14kA^2$，$|x|=\frac A{\sqrt2}$；D 对：$\omega_0\sqrt{A^2-x^2}=\frac12\omega_0A$给出$|x|=\frac{\sqrt3}2A$。E 对：$E=\frac12kA^2$，$A$不变时和$k$成正比。
+  solution: |
+    选 A、D、E。动能在平衡位置最大，那里弹簧是原长，弹性势能为零。$K=\frac14kA^2\bigl(1-\cos(2\omega_0t+2\varphi)\bigr)$，每半个周期就重复一次，B 错。$K=U$时$U=\frac E2$，$|x|=\frac A{\sqrt2}\approx0.71A$，C 错；速率减半时$A^2-x^2=\frac{A^2}4$，$|x|=\frac{\sqrt3}2A$，D 对；$E=\frac12kA^2$，振幅不变时机械能和$k$成正比，E 对。
+
+- id: p3
+  tier: medium
+  statement: |
+    做简谐运动的物块经过$x=3.0\,\mathrm{cm}$时速率是$0.40\,\mathrm{m/s}$，经过$x=4.0\,\mathrm{cm}$时速率是$0.30\,\mathrm{m/s}$。求振幅（以厘米为单位）。
+  answer:
+    type: number
+    value: 5
+    unit: |
+      $\mathrm{cm}$
+  hints:
+    - |
+      速率和位置的关系$v=\omega_0\sqrt{A^2-x^2}$里有两个未知数$\omega_0$、$A$，两组数据正好定出它们。
+    - |
+      写成$v^2=\omega_0^2(A^2-x^2)$，两式相减消去$A$，先求$\omega_0$。
+    - |
+      $0.40^2=\omega_0^2(A^2-0.030^2)$，$0.30^2=\omega_0^2(A^2-0.040^2)$，相减得$0.07=\omega_0^2\times0.0007$，$\omega_0=10\,\mathrm{rad/s}$。代回得$A^2=0.0016+\frac{0.09}{100}=0.0025\,\mathrm{m^2}$，$A=5.0\,\mathrm{cm}$。
+  solution: |
+    由$v^2=\omega_0^2(A^2-x^2)$，$0.16=\omega_0^2(A^2-0.0009)$，$0.09=\omega_0^2(A^2-0.0016)$（单位都用米）。相减得$0.07=0.0007\,\omega_0^2$，$\omega_0=10\,\mathrm{rad/s}$；代回第二式，$A^2=0.0016+0.0009=0.0025\,\mathrm{m^2}$，$A=5.0\,\mathrm{cm}$。这其实就是机械能守恒：两处的$\frac12mv^2+\frac12kx^2$相等。
+
+- id: p4
+  tier: medium
+  statement: |
+    光滑的水平桌面上，两根相同的轻弹簧（劲度系数$50\,\mathrm{N/m}$，原长$0.20\,\mathrm m$）各有一端固定在相距$0.50\,\mathrm m$的两点上，另一端都系在质量$0.10\,\mathrm{kg}$的小球上，小球静止在两点连线的中点。让小球在桌面上沿垂直于连线的方向稍稍偏离再放开，求小振动的周期，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 2*pi/sqrt(200)
+    unit: |
+      $\mathrm s$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      写出小球偏离$y$时的势能$U(y)$，再求$U''(0)$。
+    - |
+      记$L=0.25\,\mathrm m$、$l_0=0.20\,\mathrm m$。每根弹簧长$s=\sqrt{L^2+y^2}$，$U=2\times\frac12k(s-l_0)^2$；$y=0$处$s'=0$、$s''=\frac1L$。
+    - |
+      $U'=2k(s-l_0)s'$，$U''=2ks'^2+2k(s-l_0)s''$，$U''(0)=\frac{2k(L-l_0)}L=\frac{2\times50\times0.05}{0.25}=20\,\mathrm{N/m}$。$\omega=\sqrt{\frac{20}{0.10}}=\sqrt{200}\approx14.1\,\mathrm{rad/s}$，$T=\frac{2\pi}\omega\approx0.444\,\mathrm s$。
+  solution: |
+    小球偏离$y$时每根弹簧长$s=\sqrt{L^2+y^2}$（$L=0.25\,\mathrm m$），$U(y)=k(s-l_0)^2$。$U'=2k(s-l_0)s'$，$U''=2ks'^2+2k(s-l_0)s''$；$y=0$处$s'=0$、$s''=\frac1L$，所以$U''(0)=\frac{2k(L-l_0)}L=20\,\mathrm{N/m}$。小振动的角频率$\omega=\sqrt{\frac{U''(0)}m}=\sqrt{200}\,\mathrm{rad/s}$，周期$T\approx0.444\,\mathrm s$。$2k(L-l_0)$是两根弹簧的拉力之和，弹簧拉得越紧，横向振动越快。
+
+- id: p5
+  tier: hard
+  statement: |
+    质点在势能$U(x)=c|x|^n$（$c>0$，$n\ge1$）中做周期运动，动能记作$K$。
+
+    （1）设$G=mx\dot x$，证明$\dv Gt=2K-xU'(x)$。
+
+    （2）证明一个周期里动能的平均值$\bar K$和势能的平均值$\bar U$满足$2\bar K=n\bar U$。
+
+    （3）求$\bar K$、$\bar U$各是机械能的几分之几，并和讲解里$n=2$的结果对一下。
+  hints:
+    - |
+      对$G$求导用乘积法则，再用$m\ddot x=-U'(x)$。
+    - |
+      $\dv Gt$在一个周期里的平均值是$\frac{G(T)-G(0)}T$，而运动是周期的。对$U=c|x|^n$，$xU'(x)$等于什么？
+    - |
+      （1）$\dot G=m\dot x^2+mx\ddot x=2K-xU'(x)$。（2）$G$是周期函数，$\dot G$在一个周期里的平均为零，所以$2\bar K=\overline{xU'}$；$x\ne0$时$xU'(x)=nc|x|^n=nU$，所以$2\bar K=n\bar U$。（3）由$\bar K+\bar U=E$得$\bar U=\frac2{n+2}E$，$\bar K=\frac n{n+2}E$；$n=2$时都是$\frac E2$，和讲解一致。
+  reference: |
+    （1）$\dot G=m\dot x\dot x+mx\ddot x=2K+x\bigl(-U'(x)\bigr)=2K-xU'(x)$。
+
+    （2）设周期是$T$，$\frac1T\int_0^T\dot G\,\dd t=\frac{G(T)-G(0)}T=0$，所以$2\bar K=\overline{xU'(x)}$。$x>0$时$U=cx^n$，$xU'=ncx^n=nU$；$x<0$时$U=c(-x)^n$，$xU'=x\cdot\bigl(-nc(-x)^{n-1}\bigr)=nc(-x)^n=nU$。所以$2\bar K=n\bar U$（$n=1$时$x=0$处$U'$没有定义，只是孤立的时刻，不影响平均）。
+
+    （3）机械能守恒，$\bar K+\bar U=E$，解得$\bar U=\frac2{n+2}E$，$\bar K=\frac n{n+2}E$。$n=2$时都是$\frac E2$，和讲解的定理一致；$n$越大，势能壁越陡，质点在两端停留得越短，动能占的份额越大。
+
+- id: p6
+  tier: hard
+  statement: |
+    劲度系数为$k$、质量为$M$的均匀弹簧一端固定，另一端连着质量为$m$的物块，在光滑水平面上振动，物块的位移是$x$。设弹簧各处伸长得一样均匀：弹簧长$L$时，离固定端为$s$的那一小段的速度是物块速度的$\frac sL$倍。
+
+    （1）证明物块和弹簧的总动能是$\frac12\bigl(m+\frac M3\bigr)\dot x^2$。
+
+    （2）由机械能守恒证明物块做简谐运动，角频率是$\sqrt{\frac k{m+M/3}}$。
+  hints:
+    - |
+      把弹簧分成很多小段，长$\dd s$的一小段质量是$\frac ML\dd s$。
+    - |
+      这一小段的动能是$\frac12\cdot\frac ML\dd s\cdot\bigl(\frac sL\dot x\bigr)^2$，从$0$积到$L$。机械能$\frac12\bigl(m+\frac M3\bigr)\dot x^2+\frac12kx^2$守恒时，对时间求导会得到什么方程？
+    - |
+      （1）弹簧的动能$\int_0^L\frac M{2L}\frac{s^2}{L^2}\dot x^2\,\dd s=\frac12\cdot\frac M3\dot x^2$，加上物块的$\frac12m\dot x^2$。（2）弹簧的势能仍是$\frac12kx^2$，$E=\frac12\bigl(m+\frac M3\bigr)\dot x^2+\frac12kx^2$不变；求导得$\dot x\bigl[\bigl(m+\frac M3\bigr)\ddot x+kx\bigr]=0$，$\dot x\ne0$时方括号为零，由连续性处处为零，于是$\ddot x=-\frac k{m+M/3}x$，做简谐运动，角频率如题。
+  reference: |
+    （1）离固定端$s$到$s+\dd s$的一小段质量$\frac ML\dd s$、速度$\frac sL\dot x$，动能$\frac{M\dot x^2}{2L^3}s^2\dd s$。从$0$积到$L$得$\frac{M\dot x^2}{2L^3}\cdot\frac{L^3}3=\frac12\cdot\frac M3\dot x^2$，加上物块的$\frac12m\dot x^2$，总动能$\frac12\bigl(m+\frac M3\bigr)\dot x^2$。
+
+    （2）弹簧均匀伸长时弹性势能是$\frac12kx^2$。机械能守恒：$\frac12\bigl(m+\frac M3\bigr)\dot x^2+\frac12kx^2=E$。对时间求导，$\dot x\bigl[\bigl(m+\frac M3\bigr)\ddot x+kx\bigr]=0$；$\dot x\ne0$的时刻方括号为零，$\dot x=0$只在孤立的时刻发生，由$\ddot x$、$x$的连续性那里也为零。所以$\ddot x=-\frac k{m+M/3}x$，物块做简谐运动，$\omega=\sqrt{\frac k{m+M/3}}$：弹簧的质量相当于在物块上加了它的三分之一。
+
+    说明：「均匀伸长」只在弹簧比物块轻得多时近似成立；这个结果是$M\ll m$时的近似。
+
+- id: p7
+  tier: thinking
+  statement: |
+    「几何图像」里的势能在极小点两边不对称：右边平缓，左边陡。
+
+    （1）机械能变大时，振动的平均位置往哪边移？
+
+    （2）固体里相邻原子之间的势能也是这个样子，温度越高，原子振动的能量越大。这能解释什么现象？
+
+    （3）如果势能在极小点两边对称，比如$U=\frac12kx^2+cx^4$，平均位置还会移吗？
+  hints:
+    - |
+      拖动滑块，看两个圆点：能量变大时，左边的圆点和右边的圆点各移了多远？
+    - |
+      在势能平缓的一边，回复力小，质点走得远、折回得慢。把势能写成$\frac12ku^2-\alpha u^3$（$u=x-x_0$，$\alpha>0$），三次项让力在哪一边变弱？
+    - |
+      （1）右边的折回点移得比左边远得多，质点在右边走得更远、停留得也更久，平均位置往右（远离原子的一侧）移，能量越大移得越多。（2）温度升高，原子间的平均距离变大，固体受热膨胀。（3）对称的势能里，$x(t)$和$-x(t)$满足同一个方程，运动关于极小点对称，平均位置不动；这时振动虽然也不是简谐运动，却不会让物体膨胀。
+  reference: |
+    （1）$E$变大时，左边的折回点只往左移一点，右边的折回点往右移得多（$E=0.9$时，图里分别在$x\approx0.33$和$x\approx3.97$，离极小点$x=1$的距离差得很远）。在势能平缓的一侧，回复力小，质点走得远、减速和折回都慢，停留的时间也更长，所以一个周期里的平均位置在极小点右边，能量越大越偏右。把势能写成$\frac12ku^2-\alpha u^3$（$\alpha>0$）时，可以算出振幅$A$不大时平均位置约偏右$\frac{3\alpha A^2}{2k}$，和$A^2$即能量成正比。
+
+    （2）固体里原子在平衡位置附近振动，温度越高能量越大；原子间的势能在拉开的一侧更平缓，平均距离随温度升高而变大，这就是热膨胀。只用抛物线近似（简谐运动），平均位置永远在极小点，解释不了热膨胀。
+
+    （3）$U(x)=U(-x)$时，若$x(t)$是解，$-x(t)$也是解；从$x=A$静止放开的运动在左边的折回点是$-A$，两半周期互为镜像，平均位置就在$x=0$。所以热膨胀来自势能的不对称，不是来自「振动不是简谐的」本身。
+
+- id: p8
+  tier: thinking
+  statement: |
+    第 4 题的装置里，如果两个固定点之间的距离正好是两根弹簧的原长之和，小球静止时弹簧都不伸长。
+
+    （1）小球沿垂直于连线的方向偏离时，小振动还是简谐运动吗？周期怎样随振幅变化？
+
+    （2）沿连线方向的小振动呢？
+
+    （3）由此说说：为什么第 4 题的横向振动要靠弹簧「拉紧」？
+  hints:
+    - |
+      在第 4 题的$U''(0)=\frac{2k(L-l_0)}L$里令$L=l_0$。
+    - |
+      $L=l_0$时把$U(y)=k\bigl(\sqrt{L^2+y^2}-L\bigr)^2$展开到$y$的最低次项。沿连线偏离$x$时，一根伸长$x$、一根压缩$x$。
+    - |
+      （1）$U''(0)=0$；$\sqrt{L^2+y^2}-L\approx\frac{y^2}{2L}$，$U\approx\frac{ky^4}{4L^2}$，力约为$-\frac k{L^2}y^3$，不是简谐运动，周期和振幅成反比（[简谐运动](lesson:physics.oscillations-waves.simple-harmonic-motion)第 7 题）。（2）沿连线$U=kx^2$，是简谐运动，$\omega=\sqrt{\frac{2k}m}$，和弹簧拉没拉紧无关。（3）横向偏离时，弹簧的拉力有横向分量才能把小球拉回；拉力和偏离成正比的那一部分来自原有的拉力$k(L-l_0)$，没有原有的拉力，横向的回复力只来自弹簧被拉长的那一点点，是三次方的小量。
+  reference: |
+    （1）$L=l_0$时$U''(0)=0$，定理不适用。展开$\sqrt{L^2+y^2}-L=\frac{y^2}{2L}+\dotsb$，$U=k\bigl(\frac{y^2}{2L}\bigr)^2+\dotsb=\frac{ky^4}{4L^2}+\dotsb$，力约为$-\frac{k}{L^2}y^3$。偏离再小也不是简谐运动；照[简谐运动](lesson:physics.oscillations-waves.simple-harmonic-motion)第 7 题的尺度变换，周期和振幅成反比，振幅越小越慢。
+
+    （2）沿连线偏离$x$时，一根伸长$x$、一根压缩$x$，$U=2\times\frac12kx^2=kx^2$，是劲度系数$2k$的线性回复力，$\omega=\sqrt{\frac{2k}m}$，不管$L$和$l_0$是什么关系都一样。
+
+    （3）横向偏离$y$时，每根弹簧的拉力$T$的横向分量是$T\frac y{\sqrt{L^2+y^2}}$。和$y$成正比的那部分要求$T$在$y=0$时不为零，即弹簧原来就被拉长、有拉力$k(L-l_0)$；这时$U''(0)=\frac{2k(L-l_0)}L$正是「两倍拉力除以$L$」，和第 4 题、简谐运动那一节第 6 题的$\frac{2T_0}L$一致。没有原有的拉力时，拉力本身也随$y^2$才出现，回复力成了$y^3$的量级。
