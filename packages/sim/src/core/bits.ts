@@ -16,7 +16,7 @@ export const binary = (n: number, w: number) => n.toString(2).padStart(w, '0');
 function initial({ width, value, op }: BitParams) {
   const a = unsigned(value, width);
   return { width, op, a, b: op && 'b' in op ? unsigned(op.b, width) : 0, result: a, resultWidth: width,
-    step: 0, carry: 0, CF: 0, OF: 0, ZF: Number(a === 0), SF: bit(a, width - 1) };
+    step: 0, carry: 0, carries: op?.kind === 'add' ? [0] : [], CF: 0, OF: 0, ZF: Number(a === 0), SF: bit(a, width - 1) };
 }
 type State = ReturnType<typeof initial>;
 
@@ -33,6 +33,7 @@ function advance(s: State): StepResult<State> {
     const i = step - 1 - Number(sub);
     if (i < 0) {
       next.carry = 1;
+      next.carries = [1];
       next.result = 0;
       text = 'a − b = a + ~b + 1。把 b 的每一位取反，进位进置 1。';
       done = false;
@@ -40,6 +41,7 @@ function advance(s: State): StepResult<State> {
       const x = bit(a, i), y = bit(b, i) ^ Number(sub);
       const sum = x + y + s.carry;
       next.carry = sum >> 1;
+      next.carries = [...s.carries, next.carry];
       next.result = (i === 0 ? 0 : s.result) + (sum % 2) * 2 ** i;
       touched = ['bit' + i];
       text = '第 ' + i + ' 位：输入 ' + x + ' 和 ' + y + '，进位进 ' + s.carry + '，和 ' + (sum % 2) + '，进位出 ' + next.carry + '。';

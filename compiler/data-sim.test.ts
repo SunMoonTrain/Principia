@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest';
+import { compileSimDemos } from './sim-demos';
 import { Diagnostics } from './diagnostics';
 import { parseLessonMarkdown, transformBody } from './markdown';
 
@@ -16,6 +17,7 @@ it.each([
   ['float32', 'mode: inspect\nbits: -1', 3], ['float32', 'mode: inspect\nvalue: 1\npauses: []', 4],
   ['float32', 'mode: add\na: 1e39\nb: 0', 3], ['float32', 'mode: accumulate\ndelta: 1\ncount: 1001', 4],
   ['text-encoding', 'text: A中😀', 2],
+  ['float32', 'mode: accumulate\ndelta: 1\ncount: 3\nstart: 1e40', 5],
 ])('不合法的 %s 参数定位到源文件', (name, body, line) => {
   expect(compile(String(name), String(body)).errors).toContainEqual(expect.objectContaining({ file: 'sample.md', line }));
 });
@@ -27,4 +29,17 @@ it('小节实际收到规范化的数字和文字', () => {
   };
   expect(parse('bits', 'width: 8\nvalue: "0b01111111"')).toEqual(parse('bits', 'width: 8\nvalue: 127'));
   expect(parse('text-encoding', 'text: |\n  A中😀')).toEqual(parse('text-encoding', 'text: |-\n  A中😀'));
+});
+
+it.each([['bits', 'width: 8\nvalue: 0'], ['float32', 'mode: inspect\nvalue: 1'], ['text-encoding', 'text: |-\n  A'], ['cpu', '']])(
+  '%s 的通用滑块会在 sliders 行得到明确诊断', (name, fields) => {
+    const { errors } = compile(name, fields + '\nsliders: []');
+    expect(errors).toContainEqual(expect.objectContaining({ message: expect.stringContaining('计算机组件暂不支持 sliders'), line: fields.split('\n').length + 2 }));
+  });
+it('所有计算机画廊内容演示通过小节规格，使用解析后的表达式、默认值与目标', () => {
+  const demos = compileSimDemos();
+  expect(demos[0].params).toMatchObject({ value: 127, editable: true, goals: [{ when: 'OF == 1' }] });
+  expect(demos.find((d) => d.params.mode === 'inspect')?.params.bits).toBe(0x3dcccccd);
+  expect(demos.filter((d) => d.params.mode === 'accumulate').map((d) => d.params.start)).toEqual([0, 16777216]);
+  expect(demos.find((d) => d.name === 'text-encoding')?.params.show).toEqual(['utf8', 'utf16']);
 });

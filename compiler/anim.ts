@@ -1,6 +1,6 @@
 // :::anim 动画组件块，见 docs/plan.md「可复用动画组件库」和「附录：动画组件参数」。
 // 已实现的组件（packages/anim 的 SPECS）查全部参数：结构、式子能不能编译、个数对不对；
-// 附录里列了但还没实现的组件只查通用参数（sliders），构建警告、页面显示占位框；附录里没有的名字直接报错。
+// 附录里的占位组件仍查适用的通用参数；合法时给警告并显示占位框。附录里没有的名字直接报错。
 // 滑块标签和图例在这里排好版，作为 x-anim-label 子元素交给网站。
 
 import type { ElementContent } from 'hast';
@@ -93,6 +93,11 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
   }
 
   // 专有参数的结构；结构对了才知道这个组件的变量名（滑块不能和它们重名）
+  const computerComponent = SIM_COMPONENTS.some((name) => name === component);
+  if (computerComponent && params.sliders !== undefined) {
+    ctx.diags.error(ctx.file, lineOf(y, ['sliders']), '计算机组件暂不支持 sliders 参数滑块');
+    return null;
+  }
   const spec = SPECS[component];
   let checked: unknown = null;
   let reserved: string[] = [];
@@ -163,7 +168,7 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
     }
   }
 
-  if ((spec?.observables && checked) || (!spec && SIM_COMPONENTS.some((name) => name === component))) {
+  if ((spec?.observables && checked) || (!spec && computerComponent)) {
     const names = spec?.observables?.(checked as never);
     for (const group of ['goals', 'pauses'] as const) {
       if (params[group] === undefined) continue;

@@ -53,3 +53,12 @@
 .sim-bytes code, .sim-bytes small { display: block; }
 .sim-bytes em { color: var(--accent-strong); font-style: normal; background: var(--accent-soft); }
 .sim-bytes span { color: var(--good); }
+
+.sim-adder { max-width: 100%; overflow-x: auto; }
+.sim-adder .sim-bit-row { display: grid; grid-template-columns: 2.5em max-content; width: max-content; }
+.sim-adder .sim-digits { flex-wrap: nowrap; }
+.sim-adder .sim-digits > * { box-sizing: border-box; width: 1.5em; text-align: center; }
+
+.sim-add-work > div { display: contents; }
+.sim-add-work em { color: var(--accent-strong); background: var(--accent-soft); font-weight: 700; font-style: normal; }
+.sim-grs { display: block; color: var(--text-soft); }

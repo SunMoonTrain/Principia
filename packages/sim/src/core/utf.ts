@@ -1,3 +1,13 @@
+/** Unicode 码位单独显示时，给不可见字符一个可以读出的名字。 */
+export function characterLabel(character: string) {
+  if (character === '\u200d') return '零宽连接符';
+  if (character === '\n') return '换行';
+  if (character === '\t') return '制表符';
+  if (/[\p{Cc}\p{Cf}\p{Default_Ignorable_Code_Point}]/u.test(character)) return '不可见字符';
+  if (!character.trim()) return '空白';
+  return /^\p{M}$/u.test(character) ? '◌' + character : character;
+}
+
 export function encodeCodePoint(character: string) {
   const raw = character.codePointAt(0)!;
   const point = raw >= 0xd800 && raw <= 0xdfff ? 0xfffd : raw;

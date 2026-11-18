@@ -1,8 +1,8 @@
 import { expect, it } from 'vitest';
 import { bitsMachine, widths, type BitOp, type Width } from './bits';
-import { exactDecimal, floatMachine, fromBits, inspect, neighbor, toBits, type FloatSteps } from './float32';
+import { accumulationPlot, alignment, binarySum, exactDecimal, floatMachine, fromBits, inspect, neighbor, toBits, type FloatSteps } from './float32';
 import { History } from './machine';
-import { encodeCodePoint } from './utf';
+import { characterLabel, encodeCodePoint } from './utf';
 
 function runBits(a: number, op: BitOp, width: Width = 8) {
   const h = new History(bitsMachine, { value: a, op, width }, 0);
@@ -84,4 +84,53 @@ it('UTF-8 和 TextEncoder 逐字节相同，代理对分为高、低码元', () 
     expect(encoded.utf16).toEqual(encoded.character.split('').map((u) => u.charCodeAt(0)));
   }
   expect(encodeCodePoint('😀').utf16).toEqual([0xd83d, 0xde00]);
+});
+
+it('进位按列保留，回退、编辑和 32 位的最高进位独立于结果', () => {
+  const h = runBits(127, { kind: 'add', b: 1 });
+  for (let i = 0; i <= 7; i++) {
+    h.seek(i);
+    expect(h.state.carries).toEqual([0, ...Array(i).fill(1)]);
+  }
+  h.seek(8); expect(h.state.carries.slice(-2)).toEqual([1, 0]);
+  h.seek(0); h.edit({ operand: 'a', index: 0 }); h.seek(1);
+  expect(h.state.carries).toEqual([0, 0]);
+  const sub = runBits(5, { kind: 'sub', b: 7 });
+  sub.seek(1); expect(sub.state.carries).toEqual([1]);
+  sub.seek(10); expect(sub.state.carries[8]).toBe(0);
+  expect(runBits(0xffffffff, { kind: 'add', b: 1 }, 32).state.carries[32]).toBe(1);
+});
+it('从大数累加，寄存器、参考和、误差、曲线与回退一致', () => {
+  for (const [start, delta, message] of [[16777216, 1, '正好半个 ULP'], [1, 2 ** -25, '不到半个 ULP']] as const) {
+    const h = runFloat({ mode: 'accumulate', start, delta, count: 3 });
+    for (let k = 1; k <= 3; k++) {
+      h.seek(k);
+      expect(h.state).toMatchObject({ bits: toBits(start), stuck: 1, error: k * delta });
+      expect(h.events[0].text).toContain(message);
+    }
+  }
+  const p = { mode: 'accumulate', start: 16777216, delta: 3, count: 3 } as const;
+  const h = runFloat(p);
+  for (let i = 0; i <= 3; i++) {
+    h.seek(i);
+    expect(h.state).toMatchObject({ bits: toBits(p.start + 4 * i), double: p.start + 3 * i, exact: String(p.start + 3 * i), error: i });
+  }
+  expect(accumulationPlot(p)).toEqual([0, 1, 2, 3].map(i => ({ single: 4 * i, exact: 3 * i })));
+  const decimal = runFloat({ mode: 'accumulate', start: -0.1, delta: 0.025, count: 4 });
+  decimal.seek(0); expect(decimal.state.exact).toBe('−0.1'); expect(decimal.state.error).toBeGreaterThan(0);
+  decimal.seek(3); expect(decimal.state.exact).toBe('−0.025');
+  decimal.seek(4); expect(decimal.state.exact).toBe('0');
+});
+it('对齐行、保护位、舍入位、粘滞位和未舍入的二进制低位', () => {
+  const large = toBits(2 ** 24);
+  expect(alignment(large, toBits(1))).toMatchObject({ operand: 'b', shift: 24, guard: 1, round: 0, sticky: 0 });
+  expect(alignment(toBits(1.75), large)).toMatchObject({ operand: 'a', guard: 1, round: 1, sticky: 1 });
+  const h = runFloat({ mode: 'add', a: 2 ** 24, b: 1 });
+  h.seek(3);
+  expect(binarySum(h.state.total)).toEqual({ main: '1.' + '0'.repeat(23), low: '1', exponent: 24 });
+  expect(binarySum(-1n)).toEqual({ main: '−0.' + '0'.repeat(22) + '1', low: '', exponent: -126 });
+});
+it('独立展示格式、控制、空白和组合字符时有可读标签', () => {
+  expect(Array.from('‍​\u0000\t\n \u0301\ufe0f中', characterLabel)).toEqual(
+    ['零宽连接符', '不可见字符', '不可见字符', '制表符', '换行', '空白', '◌́', '不可见字符', '中']);
 });

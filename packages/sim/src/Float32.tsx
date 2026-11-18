@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useCanvas, useTheme } from '@principia/anim/kit';
 import type { AnimProps } from '@principia/anim';
 import { BitRow } from './BitRow';
-import { exactDecimal, floatMachine, floatNames, fromBits, hex32, inspect, neighbor, type AccParams } from './core/float32';
+import { accumulationPlot, alignment, binarySum, exactDecimal, floatMachine, floatNames, fromBits, hex32, inspect, neighbor, type AccParams } from './core/float32';
 import type { Condition } from './core/predicate';
 import { StepperBar, touchKind } from './kit/StepperBar';
 import { useMachine } from './kit/useMachine';
@@ -58,18 +58,15 @@ function Inspect({ params }: { params: Extract<Params, { mode: 'inspect' }> }) {
 function SumPlot({ params, step }: { params: AccParams; step: number }) {
   const { box, canvas, size, context } = useCanvas(.5, 145);
   const theme = useTheme();
-  const values = useMemo(() => {
-    const points = [0], delta = Math.fround(params.delta);
-    for (let i = 0; i < params.count; i++) points.push(Math.fround(points[i] + delta));
-    return points;
-  }, [params]);
+  const values = useMemo(() => accumulationPlot(params), [params]);
   useEffect(() => {
     const ctx = context();
     if (!ctx) return;
     const { width: w, height: h } = size;
-    const scale = Math.max(Math.abs(params.delta * params.count), ...values.filter(Number.isFinite).map(Math.abs)) || 1;
+    const finite = values.flatMap(({ single, exact }) => [single, exact]).filter(Number.isFinite);
+    const low = Math.min(...finite), high = Math.max(...finite);
     const x = (i: number) => 14 + (w - 32) * i / params.count;
-    const y = (v: number) => params.delta < 0 ? 14 - v / scale * (h - 38) : h - 24 - v / scale * (h - 38);
+    const y = (v: number) => low === high ? h / 2 : 14 + (high - v) / (high - low) * (h - 38);
     ctx.clearRect(0, 0, w, h);
     ctx.setLineDash([]); ctx.lineWidth = 1; ctx.strokeStyle = theme.border;
     ctx.strokeRect(14, 14, w - 32, h - 38);
@@ -77,7 +74,7 @@ function SumPlot({ params, step }: { params: AccParams; step: number }) {
       ctx.beginPath(); ctx.strokeStyle = theme.series[reference ? 0 : 2];
       ctx.lineWidth = reference ? 2 : 4; ctx.setLineDash(reference ? [5, 4] : []);
       for (let i = 0; i <= step; i++) {
-        const v = reference ? params.delta * i : values[i];
+        const v = reference ? values[i].exact : values[i].single;
         if (!Number.isFinite(v)) break;
         if (i) ctx.lineTo(x(i), y(v)); else ctx.moveTo(x(i), y(v));
       }
@@ -85,19 +82,34 @@ function SumPlot({ params, step }: { params: AccParams; step: number }) {
     }
     ctx.fillStyle = theme.text;
     ctx.fillText('0', 10, h - 6); ctx.fillText('步数 ' + params.count, w - 65, h - 6);
-    ctx.fillText('和 ' + (params.delta < 0 ? -scale : scale).toPrecision(5), 17, params.delta < 0 ? h - 28 : 10);
+    ctx.fillText(String(high), 17, 10);
+    if (high !== low) ctx.fillText(String(low), 17, h - 28);
   }, [context, size, theme, params, values, step]);
-  return <figure className="sim-plot"><figcaption>累加和随步数变化 · <span>单精度实线</span> / 精确值虚线</figcaption>
+  return <figure className="sim-plot"><figcaption>相对单精度起点的变化 · <span>单精度实线</span> / 精确值虚线</figcaption>
     <div ref={box}><canvas ref={canvas} style={{ height: size.height }} aria-label="单精度和精确累加和曲线，当前值见上方读数"/></div></figure>;
 }
+function AddWork({ a, b, total, step }: { a: number; b: number; total: bigint; step: number }) {
+  const aligned = alignment(a, b), sum = binarySum(total);
+  return <dl className="sim-details sim-add-work">
+    {[a, b].map((bits, i) => {
+      const f = inspect(bits);
+      return <div key={i}><dt>加数 {i ? 'b' : 'a'}</dt><dd>{f.sign ? '−' : '+'}{Number(f.field !== 0)}.{f.fraction.toString(2).padStart(23, '0')}₂ × 2<sup>{f.exponent}</sup></dd></div>;
+    })}
+    {step >= 2 && <div><dt>对齐后的 {aligned.operand}</dt><dd>{aligned.sign ? '−' : '+'}{aligned.mantissa}₂ × 2<sup>{aligned.exponent}</sup>
+      <span className="sim-grs">保护位 G={aligned.guard} · 舍入位 R={aligned.round} · 粘滞位 S={aligned.sticky}</span></dd></div>}
+    {step >= 3 && <div><dt>精确和（二进制）</dt><dd>{sum.main}<em title="超出 24 位精度的低位">{sum.low}</em>₂ × 2<sup>{sum.exponent}</sup>
+      {sum.low && <small>　着色部分为舍入前的低位</small>}</dd></div>}
+  </dl>;
+}
+
 function FloatPlayer({ params, labels }: AnimProps<Exclude<Params, { mode: 'inspect' }>>) {
   const options = useMemo(() => ({ names: floatNames, stepsPerSecond: 1, goals: params.goals, pauses: params.pauses }), [params]);
   const player = useMachine(floatMachine, params, 0, options), s = player.history.state;
   return <StepperBar player={player} labels={labels}>
     <p className="sim-stage" data-touch={touchKind(player.history.events, 'stage')}>{params.mode === 'add' ?
       (['准备', '拆开', '对齐', '相加或相减', '规格化', '舍入', '装回'][s.step]) + ' · ' + params.a + ' + ' + params.b :
-      '从 0 开始，每次加 ' + params.delta}</p>
-    <FloatRow bits={s.bits}/>
+      '从 ' + (params.start ?? 0) + ' 开始，每次加 ' + params.delta}</p>
+    {params.mode === 'add' && s.step >= 1 && s.step <= 5 ? <AddWork a={s.a} b={s.b} total={s.total} step={s.step}/> : <FloatRow bits={s.bits}/>}
     <dl className="sim-details"><dt>单精度寄存器</dt><dd data-touch={touchKind(player.history.events, 'bits')}>{hex32(s.bits)} · {exactDecimal(s.bits)}</dd>
       <dt>精确和</dt><dd>{params.mode === 'add' && s.step < 3 ? '待相加' : s.exact}</dd>
       {params.compare64 && <><dt>双精度</dt><dd>{s.double}</dd></>}

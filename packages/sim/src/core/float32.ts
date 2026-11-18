@@ -64,11 +64,11 @@ function roundSum(total: bigint, negativeZero: boolean) {
   const up = 2n * rest > unit || (tie && (floor & 1n) === 1n);
   const sign = negative ? SIGN : 0;
   return { bits: sign + Math.min(INF, lower + Number(up)), lower: sign + Math.min(INF, lower),
-    upper: sign + Math.min(INF, lower + 1), shift, floor, rest, tie, up };
+    upper: sign + Math.min(INF, lower + 1), shift, rest, tie };
 }
 
 export interface AddParams { mode: 'add'; a: number; b: number }
-export interface AccParams { mode: 'accumulate'; delta: number; count: number }
+export interface AccParams { mode: 'accumulate'; start?: number; delta: number; count: number }
 export type FloatSteps = AddParams | AccParams;
 
 /** 以输入十进制数为基准；十进制位数和乘法在整数域保留。 */
@@ -78,22 +78,58 @@ export function decimalInput(value: number) {
   const numerator = BigInt(digits.replace('.', ''));
   return { numerator: numerator * 10n ** BigInt(Math.max(0, -places)), places: Math.max(0, places) };
 }
+/** 用同一十进制小数位数保存起点、步长和一个 binary32 最低单位。 */
+function reference(p: AccParams) {
+  const start = decimalInput(Number(p.start ?? 0)), delta = decimalInput(Number(p.delta));
+  const places = Math.max(149, start.places, delta.places);
+  return { places, start: start.numerator * 10n ** BigInt(places - start.places),
+    delta: delta.numerator * 10n ** BigInt(places - delta.places), unit32: five149 * 10n ** BigInt(places - 149) };
+}
+const decimalNumber = (n: bigint, places: number) => Number(n.toString() + 'e-' + places);
+
+function referenceReading(ref: ReturnType<typeof reference>, step: number, bits: number) {
+  const n = ref.start + BigInt(step) * ref.delta;
+  const error = bits % SIGN === INF ? Infinity : Math.abs(decimalNumber(units(bits) * ref.unit32 - n, ref.places));
+  return { exact: decimal(n, ref.places), error };
+}
+
+export function accumulationPlot(p: AccParams) {
+  const ref = reference(p), start = Math.fround(Number(p.start ?? 0)), delta = Math.fround(Number(p.delta));
+  // 两条线共用单精度起点作纵轴原点。先用整数相减再投影，保住大起点旁的小差值。
+  const offset = ref.start - units(toBits(start)) * ref.unit32;
+  let value = start;
+  return Array.from({ length: p.count + 1 }, (_, i) => {
+    if (i > 0) value = Math.fround(value + delta);
+    return { single: value - start, exact: decimalNumber(offset + BigInt(i) * ref.delta, ref.places) };
+  });
+}
 function initial(p: FloatSteps) {
-  const a = p.mode === 'add' ? toBits(Number(p.a)) : 0;
-  const b = toBits(Number(p.mode === 'add' ? p.b : p.delta));
-  return { p, a, b, bits: a, step: 0, total: 0n, double: fromBits(a), exact: exactDecimal(a), error: 0, stuck: 0 };
+  const start = Number(p.mode === 'add' ? p.a : p.start ?? 0);
+  const a = toBits(start), b = toBits(Number(p.mode === 'add' ? p.b : p.delta));
+  const ref = p.mode === 'accumulate' ? reference(p) : undefined;
+  const reading = ref ? referenceReading(ref, 0, a) : { exact: exactDecimal(a), error: 0 };
+  return { p, a, b, ref, bits: a, step: 0, total: 0n, double: start, ...reading, stuck: 0 };
 }
 type State = ReturnType<typeof initial>;
 
-function alignment(a: number, b: number) {
+export function alignment(a: number, b: number) {
   const x = fields(a), y = fields(b);
   const small = x.exponent <= y.exponent ? x : y;
   const shift = Math.abs(x.exponent - y.exponent);
   const mantissa = BigInt(small.mantissa);
   const at = (i: number) => i < 0 ? 0 : Number((mantissa >> BigInt(i)) & 1n);
   const sticky = shift > 2 && (mantissa % (1n << BigInt(shift - 2))) !== 0n;
-  return '较小阶码的尾数右移 ' + shift + ' 位，对齐后为 ' + (mantissa >> BigInt(shift)).toString(2)
-    + '，保护位 G=' + at(shift - 1) + '，舍入位 R=' + at(shift - 2) + '，粘滞位 S=' + Number(sticky) + '。';
+  const digits = (mantissa >> BigInt(shift)).toString(2).padStart(24, '0');
+  return { operand: small === x ? 'a' : 'b', exponent: small.exponent + shift, shift, sign: small.sign,
+    mantissa: digits[0] + '.' + digits.slice(1), guard: at(shift - 1), round: at(shift - 2), sticky: Number(sticky) };
+}
+
+/** 按实际结果的指数写出未舍入的精确和。低于单精度有效尾数的位单独保留。 */
+export function binarySum(total: bigint) {
+  const magnitude = total < 0n ? -total : total;
+  const digits = magnitude.toString(2).padStart(24, '0');
+  return { main: (total < 0n ? '−' : '') + digits[0] + '.' + digits.slice(1, 24),
+    low: digits.slice(24).replace(/0+$/, ''), exponent: digits.length - 150 };
 }
 function unpack(bits: number) {
   const f = fields(bits);
@@ -104,15 +140,19 @@ function addStep(s: State) {
   let text: string;
   switch (next.step) {
     case 1: text = '拆开两个加数。a：' + unpack(s.a) + '；b：' + unpack(s.b) + '。'; break;
-    case 2: text = '对齐。' + alignment(s.a, s.b); break;
+    case 2: {
+      const v = alignment(s.a, s.b);
+      text = '对齐。' + v.operand + ' 的尾数右移 ' + v.shift + ' 位，保护位 G=' + v.guard + '，舍入位 R=' + v.round + '，粘滞位 S=' + v.sticky + '。';
+      break;
+    }
     case 3:
       next.total = units(s.a) + units(s.b);
       text = (s.a >>> 31) === (s.b >>> 31) ? '同号，尾数相加。' : '异号，尾数相减。';
-      text += '保留所有低位，精确和为 ' + next.total + ' × 2⁻¹⁴⁹。'; break;
+      text += '保留低位，精确和见上方二进制展开。'; break;
     default: {
       const r = roundSum(s.total, s.a === SIGN && s.b === SIGN);
       if (next.step === 4) text = '规格化。' + (s.total === 0n ? '精确和为零。' :
-        '保留的尾数为 ' + r.floor.toString(2) + '，以 2^(' + (r.shift - 149) + ') 为单位，余下 ' + r.rest + ' 个 2⁻¹⁴⁹。');
+        '有效指数为 ' + (r.shift - 126) + '，保留隐含位和 23 个小数位，再检查右侧的低位。');
       else if (next.step === 5) {
         const chosen = exactDecimal(r.bits);
         if (r.lower % SIGN === INF) text = '舍入。精确和的绝对值达到 2¹²⁸，溢出为 ' + chosen + '。';
@@ -143,11 +183,7 @@ export const floatMachine: Machine<FloatSteps, State> = {
     if (s.p.mode === 'add') return addStep(s);
     const step = s.step + 1, delta = Number(s.p.delta);
     const bits = toBits(fromBits(s.bits) + fromBits(s.b));
-    const { numerator, places } = decimalInput(delta);
-    const exact = decimal(numerator * BigInt(step), places);
-    const alignedPlaces = Math.max(149, places);
-    const error = bits % SIGN === INF ? Infinity : Number(decimal(
-      units(bits) * five149 * 10n ** BigInt(alignedPlaces - 149) - numerator * BigInt(step) * 10n ** BigInt(alignedPlaces - places), alignedPlaces).replace('−', '-'));
+    const { exact, error } = referenceReading(s.ref!, step, bits);
     const stuck = Number(fromBits(bits) === fromBits(s.bits));
     let text = '第 ' + step + ' 次，单精度结果 ' + exactDecimal(bits) + '，精确累加和 ' + exact + '。';
     if (stuck) {
@@ -156,7 +192,7 @@ export const floatMachine: Machine<FloatSteps, State> = {
       else if (Math.abs(fromBits(s.b)) === gap / 2) text += '正好半个 ULP，取尾数为偶的原值。';
       else text += '加的数不到半个 ULP，被舍掉了。';
     }
-    return { state: { ...s, bits, step, double: s.double + delta, exact, error: Math.abs(error), stuck },
+    return { state: { ...s, bits, step, double: s.double + delta, exact, error, stuck },
       events: [{ kind: 'write', touched: ['bits'], text }], done: step === s.p.count };
   },
   observe(s) {
