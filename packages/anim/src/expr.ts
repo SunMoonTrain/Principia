@@ -6,7 +6,7 @@
 import { parse, type MathNode } from 'mathjs';
 
 /** 编译好的式子：按 names 的顺序传入变量的值。 */
-export type CompiledExpr = (values: ArrayLike<number>) => number;
+export type CompiledExpr = (values: ArrayLike<number>, readMemory?: (address: number) => number) => number;
 
 const FUNCTIONS: Record<string, string> = {
   sin: 'Math.sin',
@@ -58,40 +58,49 @@ export class ExprError extends Error {}
  * sum(k, a, b, 式子)、prod(k, a, b, 式子)：k 取 a 到 b 之间的整数（上下限可以是式子、带滑块，取整时容许一点舍入误差）。
  * k 是新起的名字，只在第四个参数里有效；上限小于下限时和是 0、积是 1。
  */
-function translateLoop(name: 'sum' | 'prod', args: MathNode[], index: Map<string, string>): string {
+function translateLoop(name: 'sum' | 'prod', args: MathNode[], index: Map<string, string>, predicate: boolean): string {
   const [variable, from, to, body] = args;
   if (args.length !== 4 || variable.type !== 'SymbolNode') throw new ExprError(`${name} 要写成 ${name}(k, 下限, 上限, 式子)`);
   const k = (variable as unknown as { name: string }).name;
   if (index.has(k) || Object.hasOwn(CONSTANTS, k)) throw new ExprError(`${name} 的变量「${k}」和已有的名字重名，换一个名字`);
   // 嵌套时每层用不同的 JavaScript 变量名
   const local = `k${index.size}`;
-  const term = translate(body, new Map(index).set(k, local));
+  const term = translate(body, new Map(index).set(k, local), predicate);
   const [empty, op] = name === 'sum' ? ['0', '+='] : ['1', '*='];
   return (
     `((a,b)=>{a=Math.ceil(a-1e-9);b=Math.floor(b+1e-9);if(b<a)return ${empty};if(!(b-a<${MAX_TERMS}))return NaN;` +
-    `let s=${empty};for(let ${local}=a;${local}<=b;${local}++)s${op}${term};return s;})(${translate(from, index)},${translate(to, index)})`
+    `let s=${empty};for(let ${local}=a;${local}<=b;${local}++)s${op}${term};return s;})(${translate(from, index, predicate)},${translate(to, index, predicate)})`
   );
 }
 
-function translate(node: MathNode, index: Map<string, string>): string {
+function translate(node: MathNode, index: Map<string, string>, predicate: boolean): string {
   switch (node.type) {
     case 'ConstantNode': {
       const value = (node as unknown as { value: unknown }).value;
+      if (predicate && typeof value === 'boolean') return value ? '1' : '0';
       if (typeof value !== 'number') throw new ExprError(`不认识的常量 ${String(value)}`);
       return `(${value})`;
     }
     case 'SymbolNode': {
       const name = (node as unknown as { name: string }).name;
       const ref = index.get(name);
+      if (predicate && name === 'mem') throw new ExprError('mem 要写成 mem(地址)');
       if (ref !== undefined) return ref;
       if (Object.hasOwn(CONSTANTS, name)) return CONSTANTS[name];
       throw new ExprError(`不认识的名字「${name}」`);
     }
     case 'ParenthesisNode':
-      return `(${translate((node as unknown as { content: MathNode }).content, index)})`;
+      return `(${translate((node as unknown as { content: MathNode }).content, index, predicate)})`;
     case 'OperatorNode': {
       const op = node as unknown as { fn: string; args: MathNode[] };
-      const [a, b] = op.args.map((arg) => translate(arg, index));
+      const [a, b] = op.args.map((arg) => translate(arg, index, predicate));
+      if (predicate) {
+        const operators: Record<string, string> = { equal: '===', unequal: '!==', smaller: '<', smallerEq: '<=', larger: '>', largerEq: '>=' };
+        if (Object.hasOwn(operators, op.fn)) return `Number(${a}${operators[op.fn]}${b})`;
+        if (op.fn === 'and') return `Number(Boolean(${a}) && Boolean(${b}))`;
+        if (op.fn === 'or') return `Number(Boolean(${a}) || Boolean(${b}))`;
+        if (op.fn === 'not') return `Number(!(${a}))`;
+      }
       switch (op.fn) {
         case 'add':
           return `(${a}+${b})`;
@@ -116,8 +125,9 @@ function translate(node: MathNode, index: Map<string, string>): string {
     case 'FunctionNode': {
       const call = node as unknown as { fn: { name?: string }; args: MathNode[] };
       const name = call.fn.name ?? '';
-      if (name === 'sum' || name === 'prod') return translateLoop(name, call.args, index);
-      const args = call.args.map((arg) => translate(arg, index));
+      if (name === 'sum' || name === 'prod') return translateLoop(name, call.args, index, predicate);
+      const args = call.args.map((arg) => translate(arg, index, predicate));
+      if (predicate && name === 'mem' && index.has('mem') && args.length === 1) return `readMemory(${args[0]})`;
       if (name === 'log') {
         // math.js 的 log(x) 是自然对数，log(x, b) 以 b 为底
         if (args.length === 1) return `Math.log(${args[0]})`;
@@ -136,7 +146,7 @@ function translate(node: MathNode, index: Map<string, string>): string {
  * 把式子编译成函数；names 是式子里能用的变量（状态变量、时间 t、滑块名……），调用时按这个顺序传值。
  * 式子也可以直接是数字。写错时抛 ExprError，消息可以直接给人看。
  */
-export function compileExpr(src: string | number, names: readonly string[]): CompiledExpr {
+export function compileExpr(src: string | number, names: readonly string[], predicate = false): CompiledExpr {
   if (typeof src === 'number') {
     if (!Number.isFinite(src)) throw new ExprError('数值必须是有限的数');
     return () => src;
@@ -149,8 +159,8 @@ export function compileExpr(src: string | number, names: readonly string[]): Com
   }
   // 名字 → 生成的 JavaScript 里怎么取它的值
   const index = new Map(names.map((name, i) => [name, `v[${i}]`]));
-  const body = translate(node, index);
-  return new Function('v', `"use strict"; return ${body};`) as CompiledExpr;
+  const body = translate(node, index, predicate);
+  return new Function('v', 'readMemory', `"use strict"; return ${body};`) as CompiledExpr;
 }
 
 /** 只检查能不能编译（构建时用）；能就返回 null，不能就返回原因。 */

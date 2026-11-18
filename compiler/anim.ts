@@ -7,7 +7,9 @@ import type { ElementContent } from 'hast';
 import { z } from 'zod';
 // 用相对路径而不是 @principia/anim/specs：vite.config.ts 加载内容插件时只打包相对路径引入的文件，
 // 包名引入的交给 Node 直接加载，而 Node 22 不认 .ts 文件
-import { SPECS } from '../packages/anim/src/specs.ts';
+import { compilePredicate } from '../packages/sim/src/core/predicate.ts';
+import { ConditionList, SIM_COMPONENTS, SIM_SPECS } from '../packages/sim/src/specs.ts';
+import { SPECS as ANIM_SPECS } from '../packages/anim/src/specs.ts';
 import type { Rich } from '../shared/content-types.ts';
 import type { MdContext, MdNode } from './markdown.ts';
 import { renderField } from './markdown.ts';
@@ -15,7 +17,9 @@ import { reportIssues } from './schema.ts';
 import { lineOf, parseYaml, textAt } from './yaml-text.ts';
 
 /** 附录「各组件」表里的组件。 */
+const SPECS = { ...ANIM_SPECS, ...SIM_SPECS };
 export const ANIM_COMPONENTS = new Set([
+  ...SIM_COMPONENTS,
   'phase-portrait',
   'function-plot',
   'vector-field-2d',
@@ -93,7 +97,12 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
   let checked: unknown = null;
   let reserved: string[] = [];
   if (spec) {
-    const parsed = spec.schema.safeParse(params);
+    const specific = { ...params };
+    if (spec.observables) {
+      delete specific.goals;
+      delete specific.pauses;
+    }
+    const parsed = spec.schema.safeParse(specific);
     if (parsed.success) {
       checked = parsed.data;
       reserved = spec.reserved(checked as never);
@@ -151,6 +160,26 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
     for (const { path, key } of spec.labels(checked as never)) {
       const field = textAt(y, path, ctx.diags);
       if (field) labels.push(labelElement(key, renderField(field, ctx, 'plain')));
+    }
+  }
+
+  if ((spec?.observables && checked) || (!spec && SIM_COMPONENTS.some((name) => name === component))) {
+    const names = spec?.observables?.(checked as never);
+    for (const group of ['goals', 'pauses'] as const) {
+      if (params[group] === undefined) continue;
+      const rules = ConditionList.safeParse(params[group]);
+      if (!rules.success) {
+        reportIssues(y, rules.error.issues, ctx.diags, [group]);
+        continue;
+      }
+      rules.data.forEach((rule, i) => {
+        const field = textAt(y, [group, i, 'text'], ctx.diags);
+        if (field) labels.push(labelElement(group + ':' + i, renderField(field, ctx, 'plain')));
+        if (names) {
+          try { compilePredicate(rule.when, names); }
+          catch (error) { ctx.diags.error(ctx.file, lineOf(y, [group, i, 'when']), (error as Error).message); }
+        }
+      });
     }
   }
 

@@ -27,6 +27,7 @@
   "include": [
     "src",
     "shared",
-    "packages/anim/src"
+    "packages/anim/src",
+    "packages/sim/src"
   ]
 }

@@ -1,0 +1,29 @@
+.sim-demo { max-width: 50rem; }
+.sim-demo > h3 { margin-bottom: 0; }
+.sim-demo > p { color: var(--text-soft); margin-top: 0.25rem; }
+.sim-player { border: 1px solid var(--border); border-radius: 10px; padding: clamp(14px, 3vw, 26px); background: var(--surface); }
+.sim-state { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 0; }
+.sim-state > div { background: var(--surface-2); padding: 8px 12px; border-radius: 6px; border-inline-start: 3px solid transparent; }
+.sim-state dt, .sim-seek span { color: var(--muted); font-size: 0.85em; }
+.sim-state dd { margin: 0; font: 600 1.55em var(--font-mono); overflow-wrap: anywhere; }
+.sim-player [data-touch="read"] { border-color: var(--accent); }
+.sim-player [data-touch="write"] { border-color: var(--good); }
+.sim-player [data-touch="other"] { border-color: var(--warn); }
+.sim-controls, .sim-edit { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.sim-edit { margin-top: 12px; font-size: 0.9em; }
+.sim-edit input { width: 7em; }
+.sim-player button, .sim-player select, .sim-edit input { color: var(--text); background: var(--surface-2); border: 1px solid var(--border); border-radius: 5px; padding: 3px 10px; font: inherit; }
+.sim-player button { cursor: pointer; }
+.sim-player button:disabled { opacity: 0.5; cursor: default; }
+.sim-player .sim-run { color: var(--accent-strong); background: var(--accent-soft); }
+.sim-event { margin: 16px 0 8px; min-height: 1.9em; }
+.sim-pause { padding: 6px 12px; border-inline-start: 3px solid var(--warn); margin-bottom: 10px; }
+.sim-seek { display: grid; gap: 3px; margin: 12px 0; }
+.sim-seek input { width: 100%; margin: 0; accent-color: var(--accent); }
+.sim-goals { list-style: none; padding: 0; }
+.sim-goals [data-reached="true"] { color: var(--good); }
+.sim-log { border-top: 1px solid var(--border); padding-top: 6px; }
+.sim-log summary { cursor: pointer; }
+.sim-log ol { max-height: 16rem; overflow: auto; }
+.sim-log li button { text-align: left; border: 0; background: transparent; }
+.sim-log [aria-current="step"] { color: var(--accent-strong); }

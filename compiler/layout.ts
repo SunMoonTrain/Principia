@@ -5,6 +5,7 @@
 // 立体星图（3D）：横轴是层级，绕轴的角度从展开图的纵坐标出发，离轴的距离在一个圆筒壳里（固定种子的随机数），
 // 同一层离得太近的互相推开（力导向微调），角度不出自己领域的那一段。
 
+import { mulberry32 } from '../packages/sim/src/core/rng.ts';
 import { RADIUS_INNER, RADIUS_OUTER } from '../shared/map.ts';
 import type { PrereqMap } from './graph.ts';
 
@@ -45,14 +46,7 @@ export interface MapLayout {
 function seeded(id: string): () => number {
   let h = 2166136261;
   for (const ch of id) h = Math.imul(h ^ ch.codePointAt(0)!, 16777619);
-  let a = h >>> 0;
-  return () => {
-    a = (a + 0x6d2b79f5) >>> 0;
-    let t = a;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
+  return mulberry32(h);
 }
 
 const RAD = Math.PI / 180;

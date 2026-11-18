@@ -6,6 +6,9 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
+    "./kit": "./src/kit.tsx",
+    "./registry": "./src/registry.ts",
+    "./gallery": "./src/Gallery.tsx",
     "./specs": "./src/specs.ts"
   },
   "dependencies": {

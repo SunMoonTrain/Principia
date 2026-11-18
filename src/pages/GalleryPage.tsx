@@ -1,10 +1,12 @@
 // 动画组件画廊（/gallery）：packages/anim 的演示页，也是测试页。按需加载。
 // 演示里滑块标签、图例的公式用笔记预览的那一套（KaTeX）在浏览器里排版，交给画廊的 renderLabel。
 
-import { Gallery } from '@principia/anim';
-import { useEffect, type ReactNode } from 'react';
+import { Gallery } from '@principia/anim/gallery';
+import { lazy, Suspense, useEffect, type ReactNode } from 'react';
 import { Rich } from '../content/Rich';
 import { renderNote } from '../notes/renderNote';
+
+const GalleryDemo = lazy(() => import('@principia/sim/gallery'));
 
 function renderLabel(src: string): ReactNode {
   const root = renderNote(src, {});
@@ -23,10 +25,14 @@ export default function GalleryPage() {
     <div className="gallery-page">
       <h1>动画组件画廊</h1>
       <p className="gallery-lead">
-        packages/anim 里已经实现的组件，每个一个演示，也是测试页。参数和小节里 :::anim 块的写法一样，展开「写法」可以看到；完整说明见
+        展开动画下方的「写法」可以看到小节里的参数；计算机模拟器一栏可以试步进与回退。完整说明见
         docs/plan.md「附录：动画组件参数」。
       </p>
       <Gallery renderLabel={renderLabel} />
+      <section className="anim-demo" aria-labelledby="cs-simulators">
+        <h2 id="cs-simulators">计算机模拟器</h2>
+        <Suspense fallback={<p>正在加载模拟器…</p>}><GalleryDemo /></Suspense>
+      </section>
     </div>
   );
 }

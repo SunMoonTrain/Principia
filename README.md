@@ -88,6 +88,7 @@ docs/
 | `shared/` | 编译器和网站共用的代码，如判题用的表达式求值 |
 | `server/` | 进度服务（Fastify）：读写 `progress/`，「存档」时调用 `git` 提交 |
 | `packages/anim/` | 动画组件：函数图像、向量场、相图、振子、线性变换 |
+| `packages/sim/` | 计算机步进模拟器：确定性内核在 `src/core/`，步进条、历史导航和目标界面在 `src/kit/`。`/gallery` 有辗转相除演示。 |
 
 ## 内容是怎么写出来的
 

@@ -1,0 +1,20 @@
+{
+  "name": "@principia/sim",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./registry": "./src/registry.ts",
+    "./gallery": "./src/GalleryDemo.tsx",
+    "./specs": "./src/specs.ts",
+    "./core": "./src/core/machine.ts"
+  },
+  "dependencies": {
+    "@principia/anim": "0.0.0",
+    "mathjs": "^15.2.0",
+    "zod": "^4.6.7"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  }
+}

@@ -90,6 +90,8 @@ export type LinearMap2DParams = Omit<z.infer<typeof LinearMap2DSchema>, 'sliders
 
 export interface ComponentSpec {
   schema: z.ZodType;
+  /** 步进组件可在条件里使用的名字；mem 表示支持 mem(地址)。 */
+  observables?(params: never): string[];
   /** 滑块不能用的名字（变量名）；t 和 e、pi 这些常数由编译器另查。 */
   reserved(params: never): string[];
   /** 结构对了以后再查：式子能不能编译、个数对不对。sliders 是滑块名。 */

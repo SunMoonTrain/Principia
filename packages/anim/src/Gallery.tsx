@@ -2,7 +2,7 @@
 // 演示见 demos.ts，展开「写法」能看到小节里的原文；标签里的公式由网站排版后通过 renderLabel 传进来，不传就显示原文。
 // 页面最下面在浏览器里再跑一遍台阶 7 的两条物理检查。
 
-import { useMemo, type ReactNode } from 'react';
+import { Suspense, useMemo, type ReactNode } from 'react';
 import { pendulumPeriodError, springEnergyDrift } from './checks';
 import { demoSource, DEMOS } from './demos';
 import { ANIMATIONS } from './registry';
@@ -66,7 +66,9 @@ export function Gallery({ renderLabel }: { renderLabel?: (src: string) => ReactN
           <section key={demo.title} className="anim-demo">
             <h2>{demo.title}</h2>
             <p className="anim-demo-note">{demo.note}</p>
-            <Component params={demo.params as never} labels={demoLabels(demo.params, render)} />
+            <Suspense fallback={<p>正在加载动画…</p>}>
+              <Component params={demo.params as never} labels={demoLabels(demo.params, render)} />
+            </Suspense>
             <details className="anim-demo-source">
               <summary>写法</summary>
               <pre>
