@@ -203,17 +203,25 @@ function wall(ctx: CanvasRenderingContext2D, x: number, top: number, bottom: num
   }
 }
 
+/**
+ * 物块和弹簧那一行的尺寸。参考振幅对应偏离平衡位置 0.25 个间距，方块宽不超过 0.45 个间距：
+ * 相邻两个物块反向、都偏到参考振幅时，中心还隔 0.5 个间距，比方块宽，不会叠在一起。
+ */
+export function mechanismLayout(width: number, n: number, amplitude: number): { left: number; right: number; gap: number; bw: number; bh: number; scale: number } {
+  const left = 22;
+  const right = width - 22;
+  const gap = (right - left) / (n + 1);
+  const bw = Math.min(46, gap * 0.45);
+  const bh = Math.min(36, bw * 0.85);
+  const scale = (gap * 0.25) / amplitude;
+  return { left, right, gap, bw, bh, scale };
+}
+
 function drawMechanism(ctx: CanvasRenderingContext2D, width: number, theme: Theme, sim: OscSim, amplitude: number): void {
   const v = sim.values!;
   const n = sim.n;
-  const left = 22;
-  const right = width - 22;
+  const { left, right, gap, bw, bh, scale } = mechanismLayout(width, n, amplitude);
   const floor = MECH_HEIGHT - 18;
-  const gap = (right - left) / (n + 1);
-  const bw = Math.min(46, gap * 0.5);
-  const bh = Math.min(36, bw * 0.85);
-  // 参考振幅对应偏离平衡位置 0.3 个间距
-  const scale = (gap * 0.3) / amplitude;
   const centers = Array.from({ length: n }, (_, i) => left + (i + 1) * gap + sim.y[i] * scale);
   const springY = floor - bh / 2;
 

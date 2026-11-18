@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { compile, referenceAmplitude } from './Oscillator.tsx';
+import { compile, mechanismLayout, referenceAmplitude } from './Oscillator.tsx';
 
 describe('Oscillator 的画面比例', () => {
   const slider = (name: string, min: number, max: number, value: number) => ({ name, min, max, step: 0.1, default: value, label: name });
@@ -16,5 +16,17 @@ describe('Oscillator 的画面比例', () => {
     const compiled = compile(params);
     if (typeof compiled === 'string') throw new Error(compiled);
     expect(referenceAmplitude(compiled, [])).toBe(1);
+  });
+
+  it('相邻两个物块反向、都偏到参考振幅时不叠在一起（手机到宽屏，1 到 8 个物块）', () => {
+    for (const width of [320, 375, 560, 768, 1100]) {
+      for (let n = 1; n <= 8; n++) {
+        const amplitude = 1.7;
+        const { gap, bw, scale } = mechanismLayout(width, n, amplitude);
+        // 左边的往右偏、右边的往左偏，各偏一个参考振幅
+        const closest = gap - 2 * amplitude * scale;
+        expect(closest).toBeGreaterThan(bw);
+      }
+    }
   });
 });
