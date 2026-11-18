@@ -1,6 +1,57 @@
 import { z } from 'zod';
 import type { ComponentSpec } from '../../anim/src/specs.ts';
 
+import { evaluateValue } from '../../../shared/expr.ts';
+import { binaryOps, unaryOps, bitNames, widths, type BitParams } from './core/bits.ts';
+import { floatNames, toBits } from './core/float32.ts';
+
 export const SIM_COMPONENTS = ['bits', 'float32', 'text-encoding', 'logic-circuit', 'cpu', 'cache', 'pipeline', 'memory', 'tree', 'sort', 'grid-search', 'graph', 'dp-table'] as const;
 export const ConditionList = z.array(z.strictObject({ when: z.string().min(1), text: z.string().min(1) }));
-export const SIM_SPECS: Record<string, ComponentSpec> = {};
+const numeric = z.union([z.number(), z.string()]).transform((raw, ctx) => {
+  const result = evaluateValue(raw);
+  if (result.ok) return result.value;
+  ctx.addIssue({ code: 'custom', message: result.message });
+  return z.NEVER;
+});
+const integer = numeric.pipe(z.int());
+const width = integer.pipe(z.literal(widths));
+const sliders = z.array(z.unknown()).optional();
+const bitOp = z.discriminatedUnion('kind', [
+  z.strictObject({ kind: z.enum(binaryOps), b: integer }),
+  z.strictObject({ kind: z.enum(unaryOps) }),
+  z.strictObject({ kind: z.literal('extend'), to: width, signed: z.boolean().optional() }),
+  z.strictObject({ kind: z.literal('truncate'), to: width }),
+]);
+const bits = z.strictObject({ width, value: integer, op: bitOp.optional(), editable: z.boolean().default(true),
+  show: z.array(z.enum(['unsigned', 'signed', 'hex', 'octal', 'char', 'wheel'])).default(['unsigned', 'signed', 'hex']), sliders,
+}).superRefine((p, ctx) => {
+  const fits = (n: number) => -(2 ** (p.width - 1)) <= n && n < 2 ** p.width;
+  if (!fits(p.value)) ctx.addIssue({ code: 'custom', path: ['value'], message: '初值超出所选位宽' });
+  if (p.op && 'b' in p.op && !fits(p.op.b)) ctx.addIssue({ code: 'custom', path: ['op', 'b'], message: '第二个数超出所选位宽' });
+  if (p.op && 'to' in p.op && (p.op.kind === 'extend' ? p.op.to <= p.width : p.op.to >= p.width))
+    ctx.addIssue({ code: 'custom', path: ['op', 'to'], message: '扩展要增加位宽，截断要减少位宽' });
+  if (p.show.includes('wheel') && (p.width > 8 || (p.op && 'to' in p.op && p.op.to > 8)))
+    ctx.addIssue({ code: 'custom', path: ['show'], message: '数轮只能显示至多 8 位的数' });
+});
+const finite32 = numeric.refine((n) => Number.isFinite(Math.fround(n)), '转成单精度后必须是有限数');
+const shared = { compare64: z.boolean().optional(), sliders };
+const float = z.discriminatedUnion('mode', [
+  z.strictObject({ mode: z.literal('inspect'), value: numeric.optional(), bits: integer.pipe(z.number().min(0).max(0xffffffff)).optional(), ...shared }),
+  z.strictObject({ mode: z.literal('add'), a: finite32, b: finite32, ...shared }),
+  z.strictObject({ mode: z.literal('accumulate'), delta: finite32, count: integer.pipe(z.number().min(1).max(1000)), ...shared }),
+]).superRefine((p, ctx) => {
+  if (p.mode === 'inspect' && (p.value === undefined) === (p.bits === undefined))
+    ctx.addIssue({ code: 'custom', path: ['value'], message: 'inspect 的 value 和 bits 要写其中一个' });
+}).transform((p) => p.mode === 'inspect' ? { ...p, bits: p.bits ?? toBits(p.value!) } : p);
+const utf = z.strictObject({ text: z.string().transform((s) => s.replace(/\n$/, '')),
+  show: z.array(z.enum(['utf8', 'utf16'])).default(['utf8', 'utf16']), sliders });
+export type BitsDisplay = z.output<typeof bits>;
+export type FloatDisplay = z.output<typeof float>;
+export type TextDisplay = z.output<typeof utf>;
+
+const common = { labels: () => [], check: () => [], reserved: () => [] };
+export const SIM_SPECS: Record<string, ComponentSpec> = {
+  bits: { ...common, schema: bits, reserved: () => bitNames, observables: (p: BitParams) => p.op ? bitNames : [] },
+  float32: { ...common, schema: float, reserved: () => floatNames, observables: (p: FloatDisplay) => p.mode === 'inspect' ? [] : floatNames },
+  'text-encoding': { ...common, schema: utf, observables: () => [] },
+};

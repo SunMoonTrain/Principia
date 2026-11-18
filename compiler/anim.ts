@@ -167,6 +167,10 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
     const names = spec?.observables?.(checked as never);
     for (const group of ['goals', 'pauses'] as const) {
       if (params[group] === undefined) continue;
+      if (names?.length === 0) {
+        ctx.diags.error(ctx.file, lineOf(y, [group]), component + ' 的这个模式没有步进，不能写 ' + group);
+        continue;
+      }
       const rules = ConditionList.safeParse(params[group]);
       if (!rules.success) {
         reportIssues(y, rules.error.issues, ctx.diags, [group]);
@@ -183,6 +187,10 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
     }
   }
 
+  if (component === 'text-encoding') textAt(y, ['text'], ctx.diags);
+  // 计算机规格在构建时已经把表达式、位型和默认值规范化，浏览器直接消费结果。
+  const normalized = Object.hasOwn(SIM_SPECS, component) && checked ? { ...params, ...checked as object } : params;
+  const dataParams = JSON.stringify(normalized, component === 'float32' ? (_, v) => Object.is(v, -0) ? '-0' : v : undefined);
   const implemented = IMPLEMENTED_COMPONENTS.has(component);
   ctx.anims?.push({ component, implemented, line });
   if (!implemented) ctx.diags.warn(ctx.file, line, `动画组件「${component}」还没实现，页面上先显示占位框`);
@@ -190,7 +198,7 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
     type: 'animBlock',
     data: {
       hName: 'x-anim',
-      hProperties: { dataComponent: component, dataParams: JSON.stringify(params), dataImplemented: String(implemented) },
+      hProperties: { dataComponent: component, dataParams, dataImplemented: String(implemented) },
       hChildren: labels,
     },
   };
