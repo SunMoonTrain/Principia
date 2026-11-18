@@ -47,7 +47,7 @@ function subdirs(dir: string): string[] {
 }
 
 /** content/<学科>/<领域>/<小节>：有 _domain.yaml 的才算领域，有 lesson.md 的才算小节（和编译器一样）。 */
-function listDomains(root: string): DomainDir[] {
+export function listDomains(root: string): DomainDir[] {
   const content = path.join(root, 'content');
   const domains: DomainDir[] = [];
   for (const subject of subdirs(content)) {
@@ -63,7 +63,7 @@ function listDomains(root: string): DomainDir[] {
   return domains;
 }
 
-const inScope = (id: string, scope: string): boolean => id === scope || id.startsWith(`${scope}.`);
+export const inScope = (id: string, scope: string): boolean => id === scope || id.startsWith(`${scope}.`);
 
 const text = (value: unknown): string => (typeof value === 'string' ? sourceText(value) : '');
 

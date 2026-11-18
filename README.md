@@ -68,6 +68,7 @@ progress/               你的学习进度：网站写入，「存档」时提�
 tools/
   verify/               审查写的验算脚本，每节一个，改题后可以重跑
   statements/           只导出题干的小工具
+  listings/             逐段检查正文和题目里的代码清单
   migrate/              改了小节 id 或题号时的进度迁移脚本，由你运行
 docs/
   plan.md               方案：规矩、流程、每批记录、给各 agent 的提示词
@@ -111,6 +112,7 @@ docs/
 | `npm run dev` | 开发服务器，端口 5173，改了代码或内容自动刷新 |
 | `npm run build` | 编译内容，构建网站到 `dist/` |
 | `npm run content` | 只编译、校验内容；`npm run content:watch` 监听 `content/` 自动重编 |
+| `npm run listings -- [范围…]` | 检查 Rust、TypeScript、Python 清单，显示输出和出错行；范围写学科、领域或小节 id，省略时检查全部 |
 | `npm run verify` | 跑 `tools/verify/` 下的全部验算脚本，和标准答案比对 |
 | `npm run statements -- [范围…] [--tier easy,medium]` | 只导出题干；范围写学科、领域或小节的 id，不写就是全部 |
 | `npm test` | 单元测试（Vitest） |
