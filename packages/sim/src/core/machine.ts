@@ -8,6 +8,8 @@ export interface StepResult<S> {
   state: S;
   events: SimEvent[];
   done?: boolean;
+  /** 停止连续播放，仍允许读者单步（例如电路检测到振荡）。 */
+  pause?: boolean;
 }
 
 export interface Machine<P, S> {
@@ -40,6 +42,7 @@ export class History<P, S> {
   get state() { return this.current; }
   get events() { return this.log[this.cursor].events; }
   get done() { return !!this.log[this.cursor].done; }
+  get pause() { return !!this.log[this.cursor].pause; }
   get finished() { return !!this.log[this.end].done; }
   eventsAt(index: number) { return this.log[index].events; }
 
@@ -64,7 +67,7 @@ export class History<P, S> {
     this.current = result.state;
     this.cursor++;
     this.grains.push(granularity);
-    this.log.push({ events: result.events, done: result.done });
+    this.log.push({ events: result.events, done: result.done, pause: result.pause });
     this.snapshots.set(this.cursor, this.current);
     const expired = this.cursor - this.limit;
     if (expired > 0 && expired % this.interval !== 0 && !this.edits.has(expired)) this.snapshots.delete(expired);
@@ -86,7 +89,8 @@ export class History<P, S> {
   /** 进度条按一小段向前计算，读者仍停在原来的状态。 */
   preview(count: number, granularity?: string): void {
     const current = this.cursor;
-    this.seek(this.end + count, granularity);
+    this.seek(this.end);
+    for (let i = 0; i < count && !this.done && !this.pause; i++) this.step(granularity);
     this.seek(current);
   }
 

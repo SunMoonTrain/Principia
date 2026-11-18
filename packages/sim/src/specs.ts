@@ -3,6 +3,7 @@ import type { ComponentSpec } from '../../anim/src/specs.ts';
 
 import { evaluateValue } from '../../../shared/expr.ts';
 import { binaryOps, unaryOps, bitNames, widths, type BitParams } from './core/bits.ts';
+import { compileCircuit, WiringError, type Netlist } from './core/netlist.ts';
 import { floatNames, toBits } from './core/float32.ts';
 
 export const SIM_COMPONENTS = ['bits', 'float32', 'text-encoding', 'logic-circuit', 'cpu', 'cache', 'pipeline', 'memory', 'tree', 'sort', 'grid-search', 'graph', 'dp-table'] as const;
@@ -48,8 +49,26 @@ export type BitsDisplay = z.output<typeof bits>;
 export type FloatDisplay = z.output<typeof float>;
 export type TextDisplay = z.output<typeof utf>;
 
+const wire = z.string().min(1);
+const bitLevel = integer.pipe(z.literal([0, 1]));
+const gate = z.strictObject({ id: wire, type: wire, in: z.array(wire), at: z.tuple([integer, integer]).optional() });
+const outputs = z.record(wire, wire);
+const moduleSchema = z.strictObject({ inputs: z.array(wire), gates: z.array(gate), outputs });
+const circuit = z.strictObject({
+  inputs: z.record(wire, bitLevel), gates: z.array(gate), outputs,
+  modules: z.record(wire, moduleSchema).optional(), init: z.record(wire, bitLevel).optional(),
+  clock: z.strictObject({ every: integer.pipe(z.number().positive()) }).optional(),
+  probes: z.array(wire).optional(), show: z.array(z.enum(['circuit', 'truth-table', 'timing'])).min(1).default(['circuit']),
+}).superRefine((params, ctx) => {
+  try { compileCircuit(params); }
+  catch (error) {
+    if (!(error instanceof WiringError)) throw error;
+    ctx.addIssue({ code: 'custom', path: error.path, message: error.message });
+  }
+});
 const common = { labels: () => [], check: () => [], reserved: () => [] };
 export const SIM_SPECS: Record<string, ComponentSpec> = {
+  'logic-circuit': { ...common, schema: circuit, observables: (p: Netlist) => [...compileCircuit(p).observed, 'tick', 'stable', 'osc'] },
   bits: { ...common, schema: bits, reserved: () => bitNames, observables: (p: BitParams) => p.op ? bitNames : [] },
   float32: { ...common, schema: float, reserved: () => floatNames, observables: (p: FloatDisplay) => p.mode === 'inspect' ? [] : floatNames },
   'text-encoding': { ...common, schema: utf, observables: () => [] },
