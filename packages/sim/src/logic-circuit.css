@@ -1,0 +1,28 @@
+.logic-status { display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem 1.1rem; margin-bottom: .55rem; }
+.logic-status span, .logic-timing figcaption, .logic-table caption { color: var(--text-soft); font-size: .88rem; }
+.logic-scroll, .logic-table-wrap { max-width: 100%; overflow-x: auto; }
+.logic-scroll { background: var(--surface-2); border-radius: 6px; }
+.logic-scroll svg { display: block; max-width: none; }
+.logic-box { stroke: var(--border); fill: var(--surface); }
+[data-changed="true"] > .logic-box { stroke: var(--good); stroke-width: 2.5; }
+.logic-label, .logic-pin-name, .logic-wire text, .logic-axis, .logic-secondary { fill: var(--text); font: 12px var(--font-mono); }
+.logic-pin-name, .logic-secondary, .logic-axis { fill: var(--text-soft); font-size: 10px; }
+.logic-level { fill: var(--muted); }
+.logic-level[data-level="1"] { fill: var(--good); }
+.logic-wire path, .logic-grid, .logic-wave { fill: none; stroke: var(--muted); stroke-width: 1.5; }
+.logic-wire[data-level="1"] path, .logic-wave { stroke: var(--good); stroke-width: 2; }
+.logic-wire text { font-size: 10px; paint-order: stroke; stroke: var(--surface-2); stroke-width: 3px; }
+.sim-player .logic-switch { display: inline-flex; align-items: center; justify-content: space-between; gap: .4em; font: 600 .85rem var(--font-mono); }
+.logic-switch b { padding: 1px 5px; border-radius: 4px; background: var(--surface); }
+.logic-switch[aria-pressed="true"] { color: var(--good); }
+.logic-scroll .logic-switch { width: 100%; height: 100%; border: 0; }
+.logic-scroll .logic-switch:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
+.logic-table { border-collapse: collapse; margin-top: .75rem; min-width: 12rem; font-variant-numeric: tabular-nums; }
+.logic-table caption { text-align: left; padding-bottom: .35rem; }
+.logic-table td, .logic-table th { padding: .18rem .55rem; text-align: center; border-bottom: 1px solid var(--border); }
+.logic-table tr[aria-current="true"] { background: var(--accent-soft); }
+.logic-table tbody tr { cursor: pointer; }
+.logic-table tbody button { font: inherit; }
+.logic-timing { margin: .8rem 0; }
+.logic-timing figcaption { margin-bottom: .3rem; }
+.logic-grid { stroke: var(--border); stroke-width: 1; }

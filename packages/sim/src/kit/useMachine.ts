@@ -57,7 +57,7 @@ export function useMachine<P, S>(machine: Machine<P, S>, params: P, seed: number
     collect(history.state);
     const pause = matches(rules.pauses, history.state).findIndex((hit, i) => hit && !before[i]);
     setPauseIndex(pause);
-    if (history.done || pause >= 0) setRunning(false);
+    if (history.done || history.pause || pause >= 0) setRunning(false);
     extend();
     refresh();
   }, [history, grain, rules, matches, collect, extend]);
