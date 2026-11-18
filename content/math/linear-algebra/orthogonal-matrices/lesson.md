@@ -52,7 +52,7 @@ $Q$是正交矩阵时，:term[线性变换]{id="math.linear-algebra.linear-trans
 
 **证明思路**：第一列是:term[单位向量]{id="math.linear-algebra.unit-vector"}（unit vector），写成$(\cos\theta,\sin\theta)$；第二列是和它:term[正交]{id="math.linear-algebra.orthogonal"}的单位向量，只能是$(-\sin\theta,\cos\theta)$或$(\sin\theta,-\cos\theta)$，行列式分别是$1$、$-1$。记$\varphi=\frac\theta2$，由和角公式，$S_\theta(\cos\varphi,\sin\varphi)=(\cos\varphi,\sin\varphi)$，$S_\theta(-\sin\varphi,\cos\varphi)=-(-\sin\varphi,\cos\varphi)$：沿这条直线的向量不动，垂直于它的向量反向，正是关于这条直线的反射。
 
-所以[逆矩阵与转置](lesson:math.linear-algebra.matrix-inverse)第 7 题里$R_\theta^{-1}=R_\theta\T$，正是因为旋转矩阵是正交矩阵。空间里也一样：转动用行列式为$1$的三阶正交矩阵描述，刚体（rigid body）的取向就是这样一个矩阵（见[刚体的角速度与欧拉角](lesson:physics.analytical-mechanics.rigid-body-kinematics)）。
+所以[逆矩阵与转置](lesson:math.linear-algebra.matrix-inverse)第 7 题里$R_\theta^{-1}=R_\theta\T$，正是因为旋转矩阵是正交矩阵。空间里也一样：转动用行列式为$1$的三阶正交矩阵描述，:term[刚体]{id="physics.newtonian-mechanics.rigid-body"}（rigid body）的取向就是这样一个矩阵（见[刚体的角速度与欧拉角](lesson:physics.analytical-mechanics.rigid-body-kinematics)）。
 
 ## 几何图像
 

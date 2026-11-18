@@ -53,7 +53,7 @@ status: reviewed
 
 ### 例 1　圆柱绕轴的转动惯量
 
-密度均匀（密度$\rho$）的圆柱$x^2+y^2\le a^2$、$0\le z\le h$，绕$z$轴的转动惯量（moment of inertia）是$I=\iiint\rho\,(x^2+y^2)\,\dd V$。用质量$M$表示$I$。
+密度均匀（密度$\rho$）的圆柱$x^2+y^2\le a^2$、$0\le z\le h$，绕$z$轴的:term[转动惯量]{id="physics.newtonian-mechanics.moment-of-inertia"}（moment of inertia）是$I=\iiint\rho\,(x^2+y^2)\,\dd V$。用质量$M$表示$I$。
 
 **为什么想到这么做**：圆柱在:term[柱坐标]{id="math.vector-calculus.cylindrical-coordinates"}下是长方体$0\le s\le a$、$0\le\varphi<2\pi$、$0\le z\le h$，被积函数$x^2+y^2=s^2$只和$s$有关，三层积分各自独立。
 

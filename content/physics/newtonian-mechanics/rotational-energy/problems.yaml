@@ -1,0 +1,182 @@
+- id: p1
+  tier: easy
+  statement: |
+    飞轮对转轴的转动惯量是$0.80\,\mathrm{kg\cdot m^2}$，以$50\,\mathrm{rad/s}$的角速度转动。它的转动动能是多少？以$\mathrm J$为单位，保留两位有效数字。
+  answer:
+    type: number
+    value: 0.5*0.80*50^2
+    unit: |
+      $\mathrm J$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      转动动能和$\frac12mv^2$对应，质量换成转动惯量，速度换成角速度。
+    - |
+      $K=\frac12I\omega^2$。
+    - |
+      $K=\frac12\times0.80\times50^2=1.0\times10^3\,\mathrm J$。
+  solution: |
+    $K=\frac12I\omega^2=\frac12\times0.80\times50^2=1.0\times10^3\,\mathrm J$。这些能量能把$10\,\mathrm{kg}$的东西举高约$10\,\mathrm m$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法哪些对？题中的刚体都绕固定轴转动。
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        两个刚体对各自转轴的转动惯量相同、角速度相同，转动动能就相同
+      - |
+        两个飞轮的转动动能相同，它们对转轴的角动量也一定相同
+      - |
+        质量为$M$、半径为$R$的均匀圆盘，对过盘边上一点、垂直于盘面的轴的转动惯量是$\frac32MR^2$
+      - |
+        角速度变成原来的两倍，转动动能也变成原来的两倍
+      - |
+        同一根均匀细杆以同样的角速度转动，绕一端转时的转动动能是绕中点转时的$4$倍
+    value: [1, 3, 5]
+  hints:
+    - |
+      $K=\frac12I\omega^2$，$L_z=I\omega$，所以$K=\frac{L_z^2}{2I}$。
+    - |
+      用平行轴定理：圆盘对过圆心的轴是$\frac12MR^2$，两轴相距$R$；细杆对中点是$\frac1{12}Ml^2$。
+    - |
+      A、C、E 对；B、D 错。
+  solution: |
+    A 对：$K=\frac12I\omega^2$只由$I$和$\omega$决定。B 错：$K=\frac{L_z^2}{2I}$，动能相同时，转动惯量大的飞轮角动量大。C 对：$I=\frac12MR^2+MR^2=\frac32MR^2$。
+
+    D 错：$K$和$\omega^2$成正比，角速度加倍，动能变成四倍。E 对：对一端$I=\frac1{12}Ml^2+M\Bigl(\frac l2\Bigr)^2=\frac13Ml^2$，是对中点的$4$倍，角速度相同时动能也是$4$倍。
+
+- id: p3
+  tier: medium
+  statement: |
+    质量$0.50\,\mathrm{kg}$、半径$0.20\,\mathrm m$的均匀细圆环挂在墙上的钉子上，钉子穿过环上的一点，圆环可以在竖直平面里绕钉子摆动。圆环对过钉子、垂直于环面的轴的转动惯量是多少？以$\mathrm{kg\cdot m^2}$为单位，保留两位有效数字。
+  answer:
+    type: number
+    value: 0.50*0.20^2 + 0.50*0.20^2
+    unit: |
+      $\mathrm{kg\cdot m^2}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      圆环的质心在圆心，对过圆心、垂直于环面的轴，转动惯量是$MR^2$。
+    - |
+      钉子离圆心$R$，用平行轴定理。
+    - |
+      $I=MR^2+MR^2=2MR^2=2\times0.50\times0.20^2=0.040\,\mathrm{kg\cdot m^2}$。
+  solution: |
+    圆环对过圆心、垂直于环面的轴的转动惯量是$MR^2$，钉子到圆心的距离是$R$，由平行轴定理，$I=MR^2+MR^2=2MR^2=2\times0.50\times0.20^2=0.040\,\mathrm{kg\cdot m^2}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    质量$3.0\,\mathrm{kg}$和$1.0\,\mathrm{kg}$的两个重物用轻绳连着，跨过一个装在光滑水平轴上的定滑轮。滑轮是质量$2.0\,\mathrm{kg}$、半径$0.10\,\mathrm m$的均匀圆盘，绳子不打滑，$g$取$9.8\,\mathrm{m/s^2}$。从静止放开，重的那个下降$1.0\,\mathrm m$时，速率是多少？以$\mathrm{m/s}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: sqrt(2*(3.0 - 1.0)*9.8*1.0/(3.0 + 1.0 + 0.5*2.0))
+    unit: |
+      $\mathrm{m/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      两个重物、绳子和滑轮看成一个整体，只有重力做功，机械能守恒。
+    - |
+      重物的速率都是$v$，滑轮的角速度是$\frac vR$，转动惯量是$\frac12MR^2$。
+    - |
+      $(m_1-m_2)gh=\frac12(m_1+m_2)v^2+\frac12\cdot\frac12MR^2\cdot\frac{v^2}{R^2}$，$v=\sqrt{\frac{2\times2.0\times9.8\times1.0}{5.0}}=2.80\,\mathrm{m/s}$。
+  solution: |
+    转轴的力不做功，轻绳对整体做的功之和为零，只有重力做功，机械能守恒。重的下降$h$、轻的上升$h$，势能减少$(m_1-m_2)gh$，变成两个重物的动能和滑轮的转动动能：$(m_1-m_2)gh=\frac12(m_1+m_2)v^2+\frac14Mv^2$。所以$v=\sqrt{\frac{2\times2.0\times9.8\times1.0}{3.0+1.0+1.0}}=2.80\,\mathrm{m/s}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    质量为$M$、长为$l$的均匀细杆，装在一根光滑的水平转轴上，转轴垂直于杆，离杆的中点$x$（$0<x\le\frac l2$）。杆水平时从静止放开。
+
+    （1）杆的质心转到转轴正下方时，杆的角速度是多少？用$x$表示。
+
+    （2）$x$取多少时，这个角速度最大？最大是多少？
+
+    （3）和转轴装在杆端时比较。
+  hints:
+    - |
+      由平行轴定理，对转轴的转动惯量是$\frac1{12}Ml^2+Mx^2$；质心下降$x$。
+    - |
+      $\omega^2=\frac{2gx}{\frac{l^2}{12}+x^2}$；求它对$x$的极大值。
+    - |
+      $\frac{x}{a^2+x^2}$在$x=a$处最大，这里$a=\frac l{\sqrt{12}}$。
+  reference: |
+    （1）对转轴的转动惯量$I=\frac1{12}Ml^2+Mx^2$，质心下降$x$。机械能守恒：$Mgx=\frac12I\omega^2$，$\omega^2=\frac{2gx}{\frac{l^2}{12}+x^2}$。
+
+    （2）记$a=\frac l{\sqrt{12}}$，$f(x)=\frac x{a^2+x^2}$，$f'(x)=\frac{a^2-x^2}{(a^2+x^2)^2}$，在$x=a$处由正变负，$f$取极大值$\frac1{2a}$。所以$x=\frac l{\sqrt{12}}\approx0.289l$时，$\omega^2=\frac ga=\frac{\sqrt{12}g}l$，$\omega=12^{1/4}\sqrt{\frac gl}\approx1.86\sqrt{\frac gl}$。
+
+    （3）转轴装在杆端，$x=\frac l2$，$\omega=\sqrt{\frac{3g}l}\approx1.73\sqrt{\frac gl}$，比最大值小。转轴离质心太近，重力势能减少得少；离得太远，转动惯量又太大。两者折中，最好的位置在离中点约$0.29l$处。
+
+- id: p6
+  tier: hard
+  statement: |
+    一扇门可以看成均匀的长方形薄板，质量$30\,\mathrm{kg}$，宽$0.90\,\mathrm m$，绕一条竖直的边转动，门轴光滑。门上装着闭门器，门开到角度$\theta$时，闭门器对门轴的力矩是$-k\theta$，$k=20\,\mathrm{N\cdot m/rad}$。把门开到$90^\circ$，从静止放开。
+
+    （1）门对门轴的转动惯量是多少？和门的高度有没有关系？
+
+    （2）门关上（$\theta=0$）时，闭门器做了多少功？
+
+    （3）这时门的角速度是多少？
+  hints:
+    - |
+      把门竖着切成许多细条，每一条离门轴一样远，和细杆对一端的算法完全一样。
+    - |
+      $W=\int_{\pi/2}^0(-k\theta)\,\dd\theta=\frac12k\Bigl(\frac\pi2\Bigr)^2$。
+    - |
+      $\frac12I\omega^2=W$，$I=\frac13Mw^2$。
+  reference: |
+    （1）把门竖着切成许多细条，离门轴$x$处宽$\dd x$的一条质量是$\frac Mw\dd x$，各处离门轴都是$x$，所以$I=\int_0^wx^2\frac Mw\,\dd x=\frac13Mw^2=\frac13\times30\times0.90^2=8.1\,\mathrm{kg\cdot m^2}$，和细杆对一端的结果一样，和门的高度无关。
+
+    （2）$W=\int_{\pi/2}^0(-k\theta)\,\dd\theta=\frac12k\Bigl(\frac\pi2\Bigr)^2=\frac12\times20\times2.47\approx24.7\,\mathrm J$。
+
+    （3）外力做功之和等于转动动能的改变：$\frac12I\omega^2=24.7\,\mathrm J$，$\omega=\sqrt{\frac{2\times24.7}{8.1}}\approx2.47\,\mathrm{rad/s}$，门边的速率约$2.2\,\mathrm{m/s}$，所以闭门器还要有阻尼，让门慢慢关上。
+
+- id: p7
+  tier: thinking
+  statement: |
+    质量为$M$、长为$l$的均匀细杆，有两条都垂直于杆的轴：一条离中点$\frac l4$，一条在杆的一端，两轴相距$\frac l4$。
+
+    （1）有人说：对端点的转动惯量等于对第一条轴的转动惯量加上$M\Bigl(\frac l4\Bigr)^2$。这对吗？
+
+    （2）平行轴定理的证明里，哪一步要求有一条轴过质心？
+  hints:
+    - |
+      两条轴的转动惯量都用平行轴定理从过质心的轴算出来，再相减。
+    - |
+      $\frac13Ml^2-\Bigl(\frac1{12}+\frac1{16}\Bigr)Ml^2$等于多少？
+    - |
+      证明里哪两项被消掉了？靠的是什么？
+  reference: |
+    （1）不对。对第一条轴，$I_1=\frac1{12}Ml^2+M\Bigl(\frac l4\Bigr)^2=\frac7{48}Ml^2$；对端点，$I_2=\frac13Ml^2=\frac{16}{48}Ml^2$。两者之差是$\frac9{48}Ml^2=\frac3{16}Ml^2$，是$M\Bigl(\frac l4\Bigr)^2=\frac1{16}Ml^2$的三倍。
+
+    （2）证明里展开$(x_i-a)^2+(y_i-b)^2$，交叉项是$-2a\sum m_ix_i-2b\sum m_iy_i=-2M(ax_{\mathrm C}+by_{\mathrm C})$，坐标原点在质心时它一定是零。从一条不过质心的轴出发，交叉项一般留下来，就不能只加$Md^2$；只有$(a,b)$碰巧垂直于$(x_{\mathrm C},y_{\mathrm C})$时，它才也是零，本题不是这样。正确的做法是先换算到过质心的轴：$I_2=I_1-Md_1^2+Md_2^2$，$d_1$、$d_2$是两条轴到质心的距离。
+
+- id: p8
+  tier: thinking
+  statement: |
+    溜冰的人原地旋转时把手臂收拢，转得更快了：对转轴的角动量不变，转动惯量变小，角速度变大。
+
+    （1）这时人的动能怎样变化？用$L$和$I$表示动能。
+
+    （2）增加的能量从哪里来？
+
+    （3）讲解里说刚体的内力不做功，这里为什么能做功？
+  hints:
+    - |
+      $K=\frac12I\omega^2$，$L=I\omega$。
+    - |
+      手臂往里收时，肌肉的力沿着手臂指向转轴，手臂也在往里移动。
+    - |
+      人不是刚体，各部分之间的距离在变。
+  reference: |
+    （1）$K=\frac12I\omega^2=\frac{L^2}{2I}$，$L$不变、$I$变小，动能变大。转动惯量减半，动能加倍。
+
+    （2）来自人的肌肉。手臂随身体转动时有向心加速度，要靠肌肉把手臂往里拉；收拢手臂时，手臂沿着这个拉力的方向往里移动，肌肉做正功，体内的化学能变成了转动动能。
+
+    （3）刚体的内力不做功，靠的是各质点之间的距离不变。收拢手臂时，手和身体之间的距离在变，人不是刚体，内力的功率$\vb f\cdot(\vb v_i-\vb v_j)$不再是零。把手臂再伸开，转慢了，动能减少，肌肉做负功。

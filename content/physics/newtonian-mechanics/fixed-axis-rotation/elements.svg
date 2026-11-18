@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" width="640" height="280" font-size="14">
+  <!-- 用微元法求转动惯量：左边，细杆长 l，竖直的转轴过杆的中点 O；离 O 为 x 处取长 dx 的一小段，它到转轴的距离是 x。右边，圆盘半径 R，转轴过圆心 O、垂直于纸面；取半径为 r、宽为 dr 的一个细圆环，环上各处到转轴的距离都是 r。 -->
+  <line x1="160.0" y1="50.0" x2="160.0" y2="240.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" stroke-dasharray="6 4" />
+  <text x="168.0" y="62.0" style="fill: var(--muted, #6b7280)" font-size="13">转轴</text>
+  <line x1="40.0" y1="150.0" x2="280.0" y2="150.0" style="stroke: currentColor" stroke-width="5.0" stroke-linecap="round" />
+  <line x1="222.0" y1="150.0" x2="236.0" y2="150.0" style="stroke: var(--accent, #2563eb)" stroke-width="9.0" />
+  <circle cx="160.0" cy="150.0" r="3.0" style="fill: var(--bg, #ffffff)" />
+  <text x="154.0" y="172.0" fill="currentColor" text-anchor="end"><tspan font-style="italic">O</tspan></text>
+  <line x1="164.0" y1="128.0" x2="225.0" y2="128.0" style="stroke: currentColor" stroke-width="1.2" />
+  <path d="M 229.0 128.0 L 224.0 130.4 L 224.0 125.6 Z" style="fill: currentColor" />
+  <line x1="225.0" y1="128.0" x2="164.0" y2="128.0" style="stroke: currentColor" stroke-width="1.2" />
+  <path d="M 160.0 128.0 L 165.0 125.6 L 165.0 130.4 Z" style="fill: currentColor" />
+  <text x="194.5" y="120.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">x</tspan></text>
+  <line x1="229.0" y1="122.0" x2="229.0" y2="142.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <text x="229.0" y="176.0" style="fill: var(--accent, #2563eb)" text-anchor="middle">d<tspan font-style="italic">x</tspan></text>
+  <line x1="40.0" y1="160.0" x2="40.0" y2="206.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="280.0" y1="160.0" x2="280.0" y2="206.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="140.0" y1="200.0" x2="45.0" y2="200.0" style="stroke: currentColor" stroke-width="1.2" />
+  <path d="M 41.0 200.0 L 46.0 197.6 L 46.0 202.4 Z" style="fill: currentColor" />
+  <line x1="180.0" y1="200.0" x2="275.0" y2="200.0" style="stroke: currentColor" stroke-width="1.2" />
+  <path d="M 279.0 200.0 L 274.0 202.4 L 274.0 197.6 Z" style="fill: currentColor" />
+  <text x="105.0" y="193.0" fill="currentColor" text-anchor="middle"><tspan font-style="italic">l</tspan></text>
+  <text x="160.0" y="268.0" fill="currentColor" text-anchor="middle">细杆：竖直的转轴过中点</text>
+  <circle cx="470.0" cy="140.0" r="95.0" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <path d="M 534.0 140.0 A 64.0 64.0 0 1 0 406.0 140.0 A 64.0 64.0 0 1 0 534.0 140.0 Z M 525.0 140.0 A 55.0 55.0 0 1 0 415.0 140.0 A 55.0 55.0 0 1 0 525.0 140.0 Z" style="fill: var(--accent, #2563eb)" fill-opacity="0.35" fill-rule="evenodd" />
+  <circle cx="470.0" cy="140.0" r="55.0" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="1.0" />
+  <circle cx="470.0" cy="140.0" r="64.0" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="1.0" />
+  <circle cx="470.0" cy="140.0" r="5.0" style="stroke: currentColor; fill: var(--bg, #ffffff)" stroke-width="1.2" />
+  <circle cx="470.0" cy="140.0" r="1.6" style="fill: currentColor" />
+  <text x="479.0" y="160.0" fill="currentColor"><tspan font-style="italic">O</tspan></text>
+  <line x1="475.6" y1="137.9" x2="559.3" y2="107.5" style="stroke: currentColor" stroke-width="1.2" />
+  <text x="539.3" y="104.3" fill="currentColor" text-anchor="middle"><tspan font-style="italic">R</tspan></text>
+  <line x1="465.1" y1="143.4" x2="424.9" y2="171.5" style="stroke: currentColor" stroke-width="1.2" />
+  <text x="454.0" y="174.5" fill="currentColor" text-anchor="middle"><tspan font-style="italic">r</tspan></text>
+  <text x="408.7" y="93.8" style="fill: var(--accent, #2563eb)" text-anchor="middle">d<tspan font-style="italic">r</tspan></text>
+  <text x="470.0" y="268.0" fill="currentColor" text-anchor="middle">圆盘：转轴垂直于纸面</text>
+</svg>

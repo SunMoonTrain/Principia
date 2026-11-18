@@ -73,7 +73,7 @@ sliders:
 
 **为什么想到这么做**：箭头和$(x,y)$垂直，猜流线是绕原点的圆$\vb r(t)=(R\cos t,R\sin t)$，再验证它的速度等于场。
 
-**推导**：$\vb r'(t)=(-R\sin t,R\cos t)$，而$\vb F\bigl(\vb r(t)\bigr)=(-R\sin t,R\cos t)$，两者相等，$\vb r(0)=(R,0)$，所以过$(R,0)$的流线是半径$R$的圆。转一圈要$t$从$0$走到$2\pi$，和$R$无关：外圈的速度$|\vb F|=R$也大，正好补上更长的路程，整个平面像刚体（rigid body）一样匀速转动。
+**推导**：$\vb r'(t)=(-R\sin t,R\cos t)$，而$\vb F\bigl(\vb r(t)\bigr)=(-R\sin t,R\cos t)$，两者相等，$\vb r(0)=(R,0)$，所以过$(R,0)$的流线是半径$R$的圆。转一圈要$t$从$0$走到$2\pi$，和$R$无关：外圈的速度$|\vb F|=R$也大，正好补上更长的路程，整个平面像:term[刚体]{id="physics.newtonian-mechanics.rigid-body"}（rigid body）一样匀速转动。
 
 ### 例 2　梯度场的流线
 

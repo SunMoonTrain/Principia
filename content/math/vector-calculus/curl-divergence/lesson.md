@@ -92,7 +92,7 @@ sliders:
 
 ### 例 2　刚体转动的速度场
 
-刚体（rigid body）绕过原点的轴转动，角速度向量是$\boldsymbol\omega=(\omega_1,\omega_2,\omega_3)$，点$\vb r=(x,y,z)$的速度是$\vb v=\boldsymbol\omega\times\vb r$。求$\divg\vb v$和$\curl\vb v$。
+:term[刚体]{id="physics.newtonian-mechanics.rigid-body"}（rigid body）绕过原点的轴转动，:term[角速度向量]{id="physics.newtonian-mechanics.angular-velocity-vector"}（angular velocity vector）是$\boldsymbol\omega=(\omega_1,\omega_2,\omega_3)$，点$\vb r=(x,y,z)$的速度是$\vb v=\boldsymbol\omega\times\vb r$。求$\divg\vb v$和$\curl\vb v$。
 
 **为什么想到这么做**：先把叉积按分量写出来，再套定义；结果应当和讲解里「小十字的平均角速度」对得上。
 

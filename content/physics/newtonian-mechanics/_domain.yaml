@@ -966,3 +966,174 @@ glossary:
       绕同一个天体的各条椭圆轨道，周期的平方和半长轴的立方之比相同：$\frac{T^2}{a^3}=\frac{4\pi^2}{GM}$。
     definedIn: physics.newtonian-mechanics.kepler-orbits
     anchor: thm-kepler
+  - id: physics.newtonian-mechanics.pressure
+    zh: |
+      压强
+    en: |
+      pressure
+    brief: |
+      垂直作用在面上的压力除以面积，$p=\frac FS$，单位是帕斯卡；静止流体里一点的压强各个方向一样大。
+    definedIn: physics.newtonian-mechanics.fluid-statics
+    anchor: def-pressure
+  - id: physics.newtonian-mechanics.communicating-vessels
+    zh: |
+      连通器
+    en: |
+      communicating vessels
+    brief: |
+      上端开口、底部互相连通的几个容器；只装一种液体、液体静止时，各部分的液面一样高。
+    definedIn: physics.newtonian-mechanics.fluid-statics
+    anchor: def-communicating-vessels
+  - id: physics.newtonian-mechanics.pascals-principle
+    zh: |
+      帕斯卡原理
+    en: |
+      Pascal's principle
+    brief: |
+      加在密闭容器里静止液体上的压强，大小不变地传到液体各处，液压机就靠它用小力得到大力；也叫帕斯卡定律。
+    definedIn: physics.newtonian-mechanics.fluid-statics
+    anchor: thm-pascal
+  - id: physics.newtonian-mechanics.atmospheric-pressure
+    zh: |
+      大气压
+    en: |
+      atmospheric pressure
+    brief: |
+      大气的压强；海平面附近约为$1.013\times10^5\,\mathrm{Pa}$（标准大气压），能托住约$760\,\mathrm{mm}$高的水银柱。
+    definedIn: physics.newtonian-mechanics.fluid-statics
+    anchor: def-atmospheric-pressure
+  - id: physics.newtonian-mechanics.buoyant-force
+    zh: |
+      浮力
+    en: |
+      buoyant force
+    brief: |
+      浸在流体里的物体表面受到的流体压力的合力，竖直向上；下表面比上表面深、压强大，合起来就向上。
+    definedIn: physics.newtonian-mechanics.buoyancy
+    anchor: def-buoyant-force
+  - id: physics.newtonian-mechanics.archimedes-principle
+    zh: |
+      阿基米德原理
+    en: |
+      Archimedes' principle
+    brief: |
+      浸在静止流体里的物体受到的浮力竖直向上，等于它排开的那部分流体受到的重力：$F_{\text{浮}}=\rho gV_{\text{排}}$。
+    definedIn: physics.newtonian-mechanics.buoyancy
+    anchor: thm-archimedes
+  - id: physics.newtonian-mechanics.ideal-fluid
+    zh: |
+      理想流体
+    en: |
+      ideal fluid
+    brief: |
+      不可压缩、没有黏性的流体；它的运动只由压强和重力决定，流动时没有因拖拽损失的能量。
+    definedIn: physics.newtonian-mechanics.bernoulli
+    anchor: def-ideal-fluid
+  - id: physics.newtonian-mechanics.continuity-equation
+    zh: |
+      连续性方程
+    en: |
+      continuity equation
+    brief: |
+      理想流体在管子里定常流动时，单位时间流过各个截面的体积相同：$S_1v_1=S_2v_2$，管子细处流得快。
+    definedIn: physics.newtonian-mechanics.bernoulli
+    anchor: thm-continuity
+  - id: physics.newtonian-mechanics.bernoullis-equation
+    zh: |
+      伯努利方程
+    en: |
+      Bernoulli's equation
+    brief: |
+      理想流体定常流动时，沿同一条流线$p+\frac12\rho v^2+\rho gz$处处相等；同样高度上流速大的地方压强小。
+    definedIn: physics.newtonian-mechanics.bernoulli
+    anchor: thm-bernoulli
+  - id: physics.newtonian-mechanics.rigid-body
+    zh: |
+      刚体
+    en: |
+      rigid body
+    brief: |
+      各个质点之间的距离始终保持不变的质点系；它的运动只要几个量就能描述。
+    definedIn: physics.newtonian-mechanics.fixed-axis-rotation
+    anchor: def-rigid-body
+  - id: physics.newtonian-mechanics.fixed-axis-rotation
+    zh: |
+      定轴转动
+    en: |
+      rotation about a fixed axis
+    brief: |
+      刚体上一条直线（转轴）始终不动、其余各点都绕它做圆周运动的转动；一个转角就确定了刚体的位置。
+    definedIn: physics.newtonian-mechanics.fixed-axis-rotation
+    anchor: def-fixed-axis-rotation
+  - id: physics.newtonian-mechanics.moment-of-inertia
+    zh: |
+      转动惯量
+    en: |
+      moment of inertia
+    brief: |
+      刚体对一条转轴的$I=\sum m_id_i^2$，$d_i$是各质点到转轴的距离；定轴转动时$L_z=I\omega$。
+    definedIn: physics.newtonian-mechanics.fixed-axis-rotation
+    anchor: def-moment-of-inertia
+  - id: physics.newtonian-mechanics.law-of-rotation
+    zh: |
+      转动定律
+    en: |
+      law of rotation
+    brief: |
+      刚体绕固定轴转动时，外力对转轴的力矩之和等于转动惯量乘角加速度：$\tau_z=I\alpha$，和$F=ma$相对应。
+    definedIn: physics.newtonian-mechanics.rotation-law
+    anchor: thm-rotation-law
+  - id: physics.newtonian-mechanics.rotational-kinetic-energy
+    zh: |
+      转动动能
+    en: |
+      rotational kinetic energy
+    brief: |
+      刚体绕固定轴以角速度$\omega$转动时的总动能$\frac12I\omega^2$，和$\frac12mv^2$相对应。
+    definedIn: physics.newtonian-mechanics.rotational-energy
+    anchor: thm-rotational-ke
+  - id: physics.newtonian-mechanics.parallel-axis-theorem
+    zh: |
+      平行轴定理
+    en: |
+      parallel axis theorem
+    brief: |
+      刚体对任一轴的转动惯量$I=I_{\mathrm C}+Md^2$，$I_{\mathrm C}$是对过质心的平行轴的转动惯量，$d$是两轴的距离。
+    definedIn: physics.newtonian-mechanics.rotational-energy
+    anchor: thm-parallel-axis
+  - id: physics.newtonian-mechanics.precession
+    zh: |
+      进动
+    en: |
+      precession
+    brief: |
+      自转的刚体在外力矩作用下，自转轴绕另一个方向转动；快速自转的陀螺的对称轴绕竖直线慢慢转动就是进动。
+    definedIn: physics.newtonian-mechanics.gyroscopes
+    anchor: def-precession
+  - id: physics.newtonian-mechanics.center-of-gravity
+    zh: |
+      重心
+    en: |
+      center of gravity
+    brief: |
+      重力对刚体各部分的力矩之和，等于总重力作用在这一点上的力矩；重力加速度处处相同时，重心就是质心。
+    definedIn: physics.newtonian-mechanics.statics
+    anchor: def-center-of-gravity
+  - id: physics.newtonian-mechanics.lever
+    zh: |
+      杠杆
+    en: |
+      lever
+    brief: |
+      能绕一个固定点（支点）转动的硬棒；不计自身的重力时，平衡条件是$F_1l_1=F_2l_2$，$l_1$、$l_2$是两个力的力臂。
+    definedIn: physics.newtonian-mechanics.statics
+    anchor: def-lever
+  - id: physics.newtonian-mechanics.rolling-without-slipping
+    zh: |
+      纯滚动
+    en: |
+      rolling without slipping
+    brief: |
+      圆形物体在平面上滚动时，和平面接触的那一点相对平面静止；这时质心的速率$v_{\mathrm C}=R\omega$，接触点要是受摩擦力，就是静摩擦力。
+    definedIn: physics.newtonian-mechanics.rolling
+    anchor: def-rolling

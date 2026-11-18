@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" width="640" height="320" font-size="14">
+  <!-- 靠在光滑竖直墙上的梯子，和墙成 θ 角。梯子受四个力：重力 G 作用在梯子中点，竖直向下；地面的支持力 N2 作用在下端，竖直向上，和 G 一样长；地面的静摩擦力 f 作用在下端，水平指向墙；墙的支持力 N1 作用在上端，水平离开墙，和 f 一样长，比 G 短得多。 -->
+  <line x1="430.0" y1="280.0" x2="430.0" y2="24.0" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="430.0" y1="34.0" x2="438.0" y2="26.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="430.0" y1="52.0" x2="438.0" y2="44.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="430.0" y1="70.0" x2="438.0" y2="62.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="430.0" y1="88.0" x2="438.0" y2="80.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="430.0" y1="106.0" x2="438.0" y2="98.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="430.0" y1="124.0" x2="438.0" y2="116.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="430.0" y1="142.0" x2="438.0" y2="134.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="430.0" y1="160.0" x2="438.0" y2="152.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="430.0" y1="178.0" x2="438.0" y2="170.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="430.0" y1="196.0" x2="438.0" y2="188.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="430.0" y1="214.0" x2="438.0" y2="206.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="430.0" y1="232.0" x2="438.0" y2="224.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="430.0" y1="250.0" x2="438.0" y2="242.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="430.0" y1="268.0" x2="438.0" y2="260.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="150.0" y1="280.0" x2="430.0" y2="280.0" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="160.0" y1="280.0" x2="152.0" y2="288.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="178.0" y1="280.0" x2="170.0" y2="288.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="196.0" y1="280.0" x2="188.0" y2="288.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="214.0" y1="280.0" x2="206.0" y2="288.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="232.0" y1="280.0" x2="224.0" y2="288.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="250.0" y1="280.0" x2="242.0" y2="288.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="268.0" y1="280.0" x2="260.0" y2="288.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="286.0" y1="280.0" x2="278.0" y2="288.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="304.0" y1="280.0" x2="296.0" y2="288.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="322.0" y1="280.0" x2="314.0" y2="288.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="340.0" y1="280.0" x2="332.0" y2="288.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="358.0" y1="280.0" x2="350.0" y2="288.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="376.0" y1="280.0" x2="368.0" y2="288.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="394.0" y1="280.0" x2="386.0" y2="288.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="412.0" y1="280.0" x2="404.0" y2="288.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" />
+  <line x1="303.9" y1="280.0" x2="430.0" y2="61.6" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="320.1" y1="280.0" x2="430.0" y2="89.6" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="319.0" y1="253.8" x2="331.2" y2="260.8" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="332.2" y1="231.1" x2="344.3" y2="238.1" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="345.3" y1="208.4" x2="357.4" y2="215.4" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="358.4" y1="185.7" x2="370.5" y2="192.7" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="371.5" y1="163.0" x2="383.6" y2="170.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="384.6" y1="140.2" x2="396.7" y2="147.2" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="397.7" y1="117.5" x2="409.8" y2="124.5" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <line x1="410.8" y1="94.8" x2="423.0" y2="101.8" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" />
+  <circle cx="371.0" cy="177.8" r="3.0" style="fill: currentColor" />
+  <line x1="371.0" y1="177.8" x2="371.0" y2="260.8" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 371.0 267.8 L 367.3 259.8 L 374.7 259.8 Z" style="fill: var(--good, #059669)" />
+  <text x="381.0" y="265.8" style="fill: var(--good, #059669)"><tspan font-style="italic">G</tspan></text>
+  <line x1="312.0" y1="280.0" x2="312.0" y2="197.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 312.0 190.0 L 315.7 198.0 L 308.3 198.0 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="302.0" y="202.0" style="fill: var(--accent, #2563eb)" text-anchor="end"><tspan font-style="italic">N</tspan><tspan dy="4" font-size="11">2</tspan></text>
+  <line x1="312.0" y1="274.0" x2="332.0" y2="274.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 338.0 274.0 L 331.0 277.2 L 331.0 270.8 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="298.0" y="270.0" style="fill: var(--accent, #2563eb)" text-anchor="end"><tspan font-style="italic">f</tspan></text>
+  <line x1="430.0" y1="75.6" x2="410.0" y2="75.6" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 404.0 75.6 L 411.0 72.4 L 411.0 78.8 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="396.0" y="80.6" style="fill: var(--accent, #2563eb)" text-anchor="end"><tspan font-style="italic">N</tspan><tspan dy="4" font-size="11">1</tspan></text>
+  <path d="M 430.0 135.6 L 428.4 135.6 L 426.9 135.5 L 425.3 135.4 L 423.7 135.3 L 422.2 135.1 L 420.6 134.9 L 419.1 134.6 L 417.5 134.3 L 416.0 134.0 L 414.5 133.6 L 413.0 133.1 L 411.5 132.7 L 410.0 132.2 L 408.5 131.6 L 407.0 131.1 L 405.6 130.4 L 404.2 129.8 L 402.8 129.1 L 401.4 128.3 L 400.0 127.6" style="stroke: currentColor" fill="none" stroke-width="1.1" stroke-linejoin="round" />
+  <text x="409.3" y="158.1" fill="currentColor" text-anchor="middle"><tspan font-style="italic">θ</tspan></text>
+</svg>

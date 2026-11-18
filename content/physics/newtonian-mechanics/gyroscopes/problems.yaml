@@ -1,0 +1,176 @@
+- id: p1
+  tier: easy
+  statement: |
+    陀螺仪的转子对对称轴的转动惯量是$5.0\times10^{-4}\,\mathrm{kg\cdot m^2}$，以$400\,\mathrm{rad/s}$自转；整个陀螺仪的质量是$0.20\,\mathrm{kg}$，质心离支点$5.0\,\mathrm{cm}$，$g$取$9.8\,\mathrm{m/s^2}$。用陀螺仪近似，进动的角速度是多少？以$\mathrm{rad/s}$为单位，保留两位有效数字。
+  answer:
+    type: number
+    value: 0.20*9.8*0.050/(5.0e-4*400)
+    unit: |
+      $\mathrm{rad/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      进动角速度只由重力矩和自转的角动量决定。
+    - |
+      $\dot\varphi=\frac{Mgl}{I_3\omega_3}$。
+    - |
+      $\dot\varphi=\frac{0.20\times9.8\times0.050}{5.0\times10^{-4}\times400}=\frac{0.098}{0.20}=0.49\,\mathrm{rad/s}$。
+  solution: |
+    $Mgl=0.20\times9.8\times0.050=0.098\,\mathrm{N\cdot m}$，$I_3\omega_3=5.0\times10^{-4}\times400=0.20\,\mathrm{kg\cdot m^2/s}$，所以$\dot\varphi=\frac{Mgl}{I_3\omega_3}=0.49\,\mathrm{rad/s}$。它比自转的$400\,\mathrm{rad/s}$小得多，陀螺仪近似成立。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于快速自转的陀螺的说法，哪些对？都用陀螺仪近似。
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        陀螺匀速进动时，重力对它做功
+      - |
+        陀螺自转的方向反过来，进动的方向也反过来
+      - |
+        换一个形状相同、各部分密度都加倍的陀螺，以同样的角速度自转，进动的角速度不变
+      - |
+        在月球上让同一个陀螺以同样的角速度自转，进动比在地球上慢
+      - |
+        在陀螺的质心处、对称轴上嵌一个小重物，使质量加倍，对对称轴的转动惯量和质心的位置都不变，进动的角速度减半
+    value: [2, 3, 4]
+  hints:
+    - |
+      $\dot\varphi=\frac{Mgl}{I_3\omega_3}$；进动的方向由$\frac{Mgl}{I_3\omega_3}\vb e_z$给出。
+    - |
+      匀速进动时质心的高度变不变？密度加倍时，$M$和$I_3$各变成多少倍？
+    - |
+      B、C、D 对；A、E 错。
+  solution: |
+    A 错：匀速进动时倾角不变，质心的高度$l\cos\theta$不变，重力不做功。B 对：$\omega_3$变号，$\frac{Mgl}{I_3\omega_3}\vb e_z$也变号。C 对：密度加倍，$M$和$I_3$都加倍，$l$不变，比值不变。
+
+    D 对：月球表面的$g$约是地球上的$\frac16$，重力矩小，进动慢。E 错：$M$加倍、$I_3$不变，$\dot\varphi$加倍，不是减半。
+
+- id: p3
+  tier: medium
+  statement: |
+    飞轮看成质量$1.5\,\mathrm{kg}$、半径$0.10\,\mathrm m$的均匀圆盘，以$100\,\mathrm{rad/s}$绕自己的轴自转。轴保持水平，一端架在支点上，飞轮的中心离支点$0.15\,\mathrm m$，轴的质量不计，$g$取$9.8\,\mathrm{m/s^2}$。轴绕竖直线进动一圈要多长时间？以$\mathrm s$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 2*pi*0.5*1.5*0.10^2*100/(1.5*9.8*0.15)
+    unit: |
+      $\mathrm s$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      圆盘对自己的轴的转动惯量是$\frac12MR^2$；轴水平时公式照样用。
+    - |
+      $\dot\varphi=\frac{Mgl}{I_3\omega_3}$，周期$T=\frac{2\pi}{\dot\varphi}$。
+    - |
+      $I_3\omega_3=0.75\,\mathrm{kg\cdot m^2/s}$，$Mgl\approx2.21\,\mathrm{N\cdot m}$，$\dot\varphi\approx2.94\,\mathrm{rad/s}$，$T\approx2.14\,\mathrm s$。
+  solution: |
+    $I_3=\frac12\times1.5\times0.10^2=7.5\times10^{-3}\,\mathrm{kg\cdot m^2}$，$I_3\omega_3=0.75\,\mathrm{kg\cdot m^2/s}$；$Mgl=1.5\times9.8\times0.15\approx2.21\,\mathrm{N\cdot m}$。所以$\dot\varphi\approx2.94\,\mathrm{rad/s}$，周期$T=\frac{2\pi}{\dot\varphi}\approx2.14\,\mathrm s$。$\frac{\dot\varphi}{\omega_3}\approx0.03$，近似还算成立。
+
+- id: p4
+  tier: medium
+  statement: |
+    玩具陀螺的质量是$0.10\,\mathrm{kg}$，质心离尖端$3.0\,\mathrm{cm}$，对对称轴的转动惯量是$1.2\times10^{-4}\,\mathrm{kg\cdot m^2}$，$g$取$9.8\,\mathrm{m/s^2}$。要使它的轴进动一圈用$5.0\,\mathrm s$，自转的角速度要多大？以$\mathrm{rad/s}$为单位，保留三位有效数字。
+  answer:
+    type: number
+    value: 0.10*9.8*0.030/(1.2e-4*2*pi/5.0)
+    unit: |
+      $\mathrm{rad/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先由周期求进动的角速度。
+    - |
+      $\dot\varphi=\frac{2\pi}T$，$\omega_3=\frac{Mgl}{I_3\dot\varphi}$。
+    - |
+      $\dot\varphi\approx1.257\,\mathrm{rad/s}$，$\omega_3=\frac{0.10\times9.8\times0.030}{1.2\times10^{-4}\times1.257}\approx195\,\mathrm{rad/s}$。
+  solution: |
+    $\dot\varphi=\frac{2\pi}{5.0}\approx1.257\,\mathrm{rad/s}$。由$\dot\varphi=\frac{Mgl}{I_3\omega_3}$，$\omega_3=\frac{Mgl}{I_3\dot\varphi}=\frac{0.10\times9.8\times0.030}{1.2\times10^{-4}\times1.257}\approx195\,\mathrm{rad/s}$，约每秒$31$圈。陀螺越转越慢，进动就越来越快。
+
+- id: p5
+  tier: hard
+  statement: |
+    快速自转的陀螺以$\dot\varphi$匀速进动，对称轴和竖直方向成$\theta$角，陀螺的质量是$M$，质心离尖端$l$。
+
+    （1）质心做什么运动？
+
+    （2）桌面对尖端的力的竖直分量和水平分量各是多少？水平分量指向哪里？
+
+    （3）用例 1 的数估计，水平分量最多是重力的几分之一？
+  hints:
+    - |
+      质心在对称轴上，跟着对称轴绕竖直线转。
+    - |
+      质心在高$l\cos\theta$处做半径$l\sin\theta$的匀速圆周运动，由质心运动定理求外力之和。
+    - |
+      水平分量$M\dot\varphi^2l\sin\theta$，$\sin\theta\le1$。
+  reference: |
+    （1）质心在对称轴上，高度$l\cos\theta$不变，绕竖直线做半径$l\sin\theta$、角速度$\dot\varphi$的匀速圆周运动。
+
+    （2）由质心运动定理，外力之和等于$M$乘质心的加速度。竖直方向没有加速度，桌面的力的竖直分量等于$Mg$。水平方向，质心的向心加速度是$\dot\varphi^2l\sin\theta$，指向过尖端的那条竖直线，这只能由桌面的力提供：水平分量是$M\dot\varphi^2l\sin\theta$，方向从质心的水平投影指向尖端，也就是在尖端处背向质心那一侧。
+
+    （3）例 1 里$\dot\varphi\approx0.936\,\mathrm{rad/s}$，$l=0.040\,\mathrm m$，水平分量和重力之比$\frac{\dot\varphi^2l\sin\theta}g\le\frac{0.936^2\times0.040}{9.8}\approx3.6\times10^{-3}$，约是重力的三百分之一，桌面只要能拦住尖端、不让它横着滑开就够了。
+
+- id: p6
+  tier: hard
+  statement: |
+    地球的自转轴和黄道面的法线成约$23.4^\circ$，每约$2.6\times10^4$年绕这根法线进动一圈。地球对自转轴的转动惯量约为$8.0\times10^{37}\,\mathrm{kg\cdot m^2}$，自转角速度约为$7.29\times10^{-5}\,\mathrm{rad/s}$，一年约$3.16\times10^7\,\mathrm s$。
+
+    （1）地球自转的角动量是多少？
+
+    （2）照陀螺的道理，太阳和月亮的引力对地球的平均力矩是多少？
+
+    （3）为什么这么大的力矩，却要两万多年才让自转轴转一圈？
+  hints:
+    - |
+      $L=I\omega$。
+    - |
+      $\vb L$绕法线以$\Omega=\frac{2\pi}T$匀速转动，变化率的大小是$\Omega L\sin23.4^\circ$。
+    - |
+      和角动量比较：力矩除以$L\sin23.4^\circ$才是进动的角速度。
+  reference: |
+    （1）$L=I\omega=8.0\times10^{37}\times7.29\times10^{-5}\approx5.8\times10^{33}\,\mathrm{kg\cdot m^2/s}$。
+
+    （2）$\Omega=\frac{2\pi}{2.6\times10^4\times3.16\times10^7}\approx7.6\times10^{-12}\,\mathrm{rad/s}$。$\vb L$绕法线转动，变化率的大小是$\Omega L\sin23.4^\circ\approx7.6\times10^{-12}\times5.8\times10^{33}\times0.397\approx1.8\times10^{22}\,\mathrm{N\cdot m}$，这就是平均力矩。
+
+    （3）进动的角速度是力矩除以$L\sin23.4^\circ$，地球的角动量太大了，$10^{22}\,\mathrm{N\cdot m}$的力矩也只能让它的方向每秒改变约$10^{-11}\,\mathrm{rad}$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）陀螺仪近似忽略了什么？
+
+    （2）把快速自转的陀螺的轴摆到某个倾角，按住轴让它不动，然后轻轻放开。放开的瞬间，轴会不会立刻以$\dot\varphi$匀速进动？会怎样运动？
+  hints:
+    - |
+      进动时对称轴本身也在转，这会带来一部分角动量。
+    - |
+      放开的瞬间轴不动，角动量正好沿对称轴，没有进动所需要的那一部分。
+    - |
+      重力矩先让轴稍稍往下倒，轴才开始侧向移动。
+  reference: |
+    （1）忽略了对称轴本身转动带来的角动量：进动时陀螺整体还绕竖直线以$\dot\varphi$转，这一部分大约和$\dot\varphi$乘垂直于对称轴的转动惯量成正比，$\dot\varphi$比$\omega_3$小得多时才能略去。
+
+    （2）不会立刻匀速进动。放开的瞬间轴不动，角动量正好沿对称轴，重力矩先让轴稍稍往下倒，同时把它推向侧面；轴越过匀速进动需要的状态后又被拉回，于是一边进动、一边上下点头。这种点头叫章动（nutation），分析力学里会详细讲；陀螺转得越快，章动越小越快；尖端和桌面之间的各种损耗会让它慢慢消失，最后剩下匀速进动。
+
+- id: p8
+  tier: thinking
+  statement: |
+    把陀螺倒过来挂：对称轴的上端用细绳挂在天花板上，质心在吊点下面，陀螺快速自转，对称轴偏离竖直线一个角度。
+
+    （1）它还会进动吗？
+
+    （2）从上往下看，陀螺逆时针自转。它的进动方向和质心在支点上方、同样从上往下看逆时针自转的陀螺相比，是相同还是相反？
+  hints:
+    - |
+      重力对吊点的力矩还是水平的，还是垂直于角动量。
+    - |
+      $\vb e_3$从吊点指向质心，现在是斜向下的；从上往下看逆时针自转，角速度沿竖直向上的一侧。
+    - |
+      这时$\omega_3$按$\vb e_3$规定是负的，$\frac{Mgl}{I_3\omega_3}\vb e_z$指向下方。
+  reference: |
+    （1）会。重力对吊点的力矩$Mgl\,\vb e_z\times\vb e_3$还是水平的，垂直于角动量，推导和讲解完全一样，进动角速度仍是$\frac{Mgl}{I_3\omega_3}\vb e_z$，大小和倾角无关。
+
+    （2）相反。$\vb e_3$从吊点指向质心，现在斜向下；从上往下看逆时针自转，角动量指向上方，和$\vb e_3$大致相反，所以$\omega_3<0$。$\frac{Mgl}{I_3\omega_3}\vb e_z$指向下方，从上往下看，对称轴顺时针进动。质心在支点上方时$\omega_3>0$，进动是逆时针的，所以两者相反。
