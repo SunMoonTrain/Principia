@@ -1,0 +1,163 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\int_{-\infty}^{+\infty}(x^2+3x+1)\,\delta(x+1)\,\dd x$。
+  answer:
+    type: number
+    value: -1
+  hints:
+    - |
+      $\delta(x+1)$就是$\delta\bigl(x-(-1)\bigr)$，尖峰在哪里？
+    - |
+      用筛选性质（sifting property）：积分等于被乘的函数在尖峰处的值。
+    - |
+      算$(-1)^2+3\cdot(-1)+1$。
+  solution: |
+    $x^2+3x+1$处处连续，尖峰在$x=-1$，由筛选性质，积分等于$(-1)^2+3\cdot(-1)+1=-1$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列积分中，值为$0$的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\int_1^5x^3\,\delta(x+2)\,\dd x$
+      - |
+        $\int_{-\infty}^{+\infty}x\,\delta(x)\,\dd x$
+      - |
+        $\int_{-\infty}^{+\infty}e^x\,\delta(x)\,\dd x$
+      - |
+        $\int_0^5\sqrt x\,\delta(x-4)\,\dd x$
+    value: [1, 2]
+  hints:
+    - |
+      先看尖峰在不在积分区间里面。
+    - |
+      在里面就用筛选性质，算被乘的函数在尖峰处的值。
+    - |
+      A 的尖峰在$-2$，不在$[1,5]$上；B、C、D 分别是$0$、$e^0$、$\sqrt4$。
+  solution: |
+    A：尖峰在$-2$，不在$[1,5]$上，积分为$0$；B：被乘的函数是$x$，在$0$处的值是$0$；C：$e^0=1$；D：$4$在$[0,5]$里面，积分是$\sqrt4=2$。值为$0$的是 A、B。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\int_{-\infty}^{+\infty}(x^3+1)\,\delta(3x-6)\,\dd x$。
+  answer:
+    type: number
+    value: 3
+  hints:
+    - |
+      把$3x-6$写成$\lambda(x-a)$的样子。
+    - |
+      $\lambda=3$，$a=2$。在积分里$\delta\bigl(\lambda(x-a)\bigr)$可以换成$\frac1{|\lambda|}\delta(x-a)$。
+    - |
+      算$\frac{2^3+1}3$。
+  solution: |
+    $3x-6=3(x-2)$，$\lambda=3$，$a=2$，积分等于$\frac{2^3+1}{3}=3$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $\delta_\varepsilon$是讲解里高$\frac1\varepsilon$、宽$\varepsilon$的矩形尖峰。取定$\varepsilon=0.6$，不取极限，求$\int_{-\infty}^{+\infty}x^2\,\delta_{0.6}(x-1)\,\dd x$。
+  answer:
+    type: number
+    value: 1.03
+  hints:
+    - |
+      $\delta_{0.6}(x-1)$只在$[0.7,1.3]$上不为$0$，在那里等于$\frac1{0.6}$。
+    - |
+      积分等于$\frac1{0.6}\int_{0.7}^{1.3}x^2\,\dd x$。
+    - |
+      $\int_{0.7}^{1.3}x^2\,\dd x=\frac{1.3^3-0.7^3}3$，等于$0.618$。
+  solution: |
+    积分等于$\frac1{0.6}\int_{0.7}^{1.3}x^2\,\dd x=\frac{0.618}{0.6}=1.03$，比筛选性质给的极限值$1^2=1$大$0.03$。一般地，这个积分等于$1+\frac{\varepsilon^2}{12}$，$\varepsilon\to0^+$时趋于$1$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$处处连续。仿照讲解，把$\int_{-\infty}^{+\infty}f(x)\,\delta(x^2-1)\,\dd x$规定为$\int_{-\infty}^{+\infty}f(x)\,\delta_\varepsilon(x^2-1)\,\dd x$在$\varepsilon\to0^+$时的极限。
+
+    （1）$\delta_\varepsilon(x^2-1)$在哪些$x$处不为$0$？证明上面的极限等于$\frac{f(1)+f(-1)}2$。
+
+    （2）求$\int_{-\infty}^{+\infty}e^x\,\delta(x^2-1)\,\dd x$。
+  hints:
+    - |
+      $|x^2-1|\le\frac\varepsilon2$即$1-\frac\varepsilon2\le x^2\le1+\frac\varepsilon2$，是$x=1$和$x=-1$附近的两小段。
+    - |
+      每段的长是$w=\sqrt{1+\frac\varepsilon2}-\sqrt{1-\frac\varepsilon2}$，分子有理化得$w=\frac{\varepsilon}{\sqrt{1+\varepsilon/2}+\sqrt{1-\varepsilon/2}}$，所以$\frac w\varepsilon\to\frac12$。
+    - |
+      在每一段上用积分中值定理（mean value theorem for integrals）：积分等于$\frac w\varepsilon\bigl[f(\xi_1)+f(\xi_2)\bigr]$，其中$\xi_1\to1$，$\xi_2\to-1$。
+  reference: |
+    （1）$\varepsilon<2$时，$\delta_\varepsilon(x^2-1)$只在$\sqrt{1-\frac\varepsilon2}\le|x|\le\sqrt{1+\frac\varepsilon2}$的两段上不为$0$，在那里等于$\frac1\varepsilon$。每段长$w$，$\frac w\varepsilon=\frac1{\sqrt{1+\varepsilon/2}+\sqrt{1-\varepsilon/2}}\to\frac12$。由积分中值定理，积分等于$\frac w\varepsilon\bigl[f(\xi_1)+f(\xi_2)\bigr]\to\frac{f(1)+f(-1)}2$。所以在积分里$\delta(x^2-1)$可以换成$\frac12\bigl[\delta(x-1)+\delta(x+1)\bigr]$：$x=\pm1$附近$x^2-1$分别像$2(x-1)$和$-2(x+1)$，和伸缩的定理一致。
+
+    （2）$\frac{e+e^{-1}}2\approx1.543$。
+
+- id: p6
+  tier: hard
+  statement: |
+    三角形尖峰$\tau_\varepsilon(x)$在$|x|\le\varepsilon$时等于$\frac{\varepsilon-|x|}{\varepsilon^2}$，在$|x|>\varepsilon$时等于$0$。
+
+    （1）证明$\tau_\varepsilon\ge0$，并且$\int_{-\infty}^{+\infty}\tau_\varepsilon(x)\,\dd x=1$。
+
+    （2）设$f$在包含$0$的一个开区间上连续。证明$\varepsilon\to0^+$时$\int_{-\infty}^{+\infty}f(x)\,\tau_\varepsilon(x)\,\dd x\to f(0)$：换成三角形尖峰，得到的还是同一个$\delta$函数。
+  hints:
+    - |
+      （1）图像是底宽$2\varepsilon$、高$\frac1\varepsilon$的三角形。
+    - |
+      （2）由（1），$\int_{-\infty}^{+\infty}f(x)\,\tau_\varepsilon(x)\,\dd x-f(0)$等于$\int_{-\varepsilon}^{\varepsilon}\bigl(f(x)-f(0)\bigr)\tau_\varepsilon(x)\,\dd x$。
+    - |
+      （2）记$M_\varepsilon$为$|f(x)-f(0)|$在$[-\varepsilon,\varepsilon]$上的最大值：由最值定理（extreme value theorem）它存在，由$f$在$0$处连续，$\varepsilon\to0^+$时它趋于$0$。再用保序性（monotonicity）。
+  reference: |
+    （1）$\tau_\varepsilon$的图像是底宽$2\varepsilon$、高$\frac1\varepsilon$的三角形，面积$\frac12\cdot2\varepsilon\cdot\frac1\varepsilon=1$。
+
+    （2）由保序性，$\Bigl|\int_{-\infty}^{+\infty}f(x)\,\tau_\varepsilon(x)\,\dd x-f(0)\Bigr|\le\int_{-\varepsilon}^{\varepsilon}\bigl|f(x)-f(0)\bigr|\tau_\varepsilon(x)\,\dd x\le M_\varepsilon$，而$M_\varepsilon\to0$。证明只用到尖峰不小于$0$、面积为$1$、落在$[-\varepsilon,\varepsilon]$里，所以对任何这样的尖峰都成立。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）求$\int_{-\infty}^{+\infty}\delta_\varepsilon(x)^2\,\dd x$。$\varepsilon\to0^+$时它怎样变化？「$\delta(x)^2$」能不能像$\delta(x)$那样规定意思？
+
+    （2）$\varepsilon<1$时，$\int_{-\infty}^{+\infty}\delta_\varepsilon(x)\,\delta_\varepsilon(x-1)\,\dd x$是多少？
+
+    （3）筛选性质要求和$\delta$相乘的是一个连续函数。从（1）看，为什么这个条件少不了？
+  hints:
+    - |
+      （1）$\delta_\varepsilon(x)^2$在$|x|\le\frac\varepsilon2$时等于$\frac1{\varepsilon^2}$，别处是$0$。
+    - |
+      （2）两个矩形分别在$0$和$1$附近，宽都是$\varepsilon$。它们重叠吗？
+    - |
+      （3）（1）里和$\delta_\varepsilon$相乘的是$\delta_\varepsilon$本身，它不是一个固定的函数，随$\varepsilon$变小越来越高。
+  reference: |
+    （1）积分是$\frac1\varepsilon$，趋于无穷大（infinity），没有有限的极限，所以「$\delta(x)^2$」没法规定意思：两个$\delta$函数一般不能相乘。
+
+    （2）$0$：$\varepsilon<1$时两个矩形不重叠，乘积处处为$0$。
+
+    （3）筛选性质靠的是另一个因子在尖峰那一小段上近似等于常数$f(a)$。把它换成同样随$\varepsilon$变高的$\delta_\varepsilon$，这一点不成立，积分就不再趋于一个数。
+
+- id: p8
+  tier: thinking
+  statement: |
+    记$H_\varepsilon(x)=\int_{-\infty}^{x}\delta_\varepsilon(t)\,\dd t$。
+
+    （1）写出$H_\varepsilon(x)$，画出它的图像。
+
+    （2）$\varepsilon\to0^+$时，$H_\varepsilon(x)$趋于什么函数$H(x)$？$H(0)$是多少？
+
+    （3）在$|x|\ne\frac\varepsilon2$处，$H_\varepsilon'(x)$等于什么？由此怎样理解「$\delta$是$H$的导数」？
+  hints:
+    - |
+      （1）分$x\le-\frac\varepsilon2$、$|x|<\frac\varepsilon2$、$x\ge\frac\varepsilon2$三段算积分。
+    - |
+      （3）$\delta_\varepsilon$在$|x|\ne\frac\varepsilon2$处连续，用微积分基本定理（fundamental theorem of calculus）。
+    - |
+      （1）$x\le-\frac\varepsilon2$时为$0$，$|x|<\frac\varepsilon2$时为$\frac x\varepsilon+\frac12$，$x\ge\frac\varepsilon2$时为$1$。
+  reference: |
+    （1）$0$、$\frac x\varepsilon+\frac12$、$1$三段，中间一段是从$0$升到$1$、斜率为$\frac1\varepsilon$的斜坡。
+
+    （2）$H(x)$在$x<0$时为$0$、$x>0$时为$1$；$H_\varepsilon(0)=\frac12$，所以$H(0)=\frac12$（用的是对称的尖峰）。
+
+    （3）$H_\varepsilon'(x)=\delta_\varepsilon(x)$。$\varepsilon\to0^+$时斜坡变成高为$1$的台阶，斜率变成尖峰：在积分的意义下，跳一下的函数的导数是$\delta$，跳多高，$\delta$前面就乘多少。

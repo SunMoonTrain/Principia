@@ -19,7 +19,7 @@ status: reviewed
 
 ### 一维的 δ 函数
 
-一维的狄拉克$\delta$函数（Dirac delta function）可以看成越来越窄、和横轴围成的面积始终为$1$的尖峰的极限：$\delta(x)$在$x\ne0$处为零，$\int_{-\infty}^{\infty}\delta(x)\dd x=1$；$f$在$a$处连续（continuous）时，$\int_{-\infty}^{\infty}f(x)\delta(x-a)\dd x=f(a)$（见[狄拉克 δ 函数](lesson:math.calculus.dirac-delta)）。它不是普通的函数，意思由积分规定。空间里集中在一点的源要的是同样的东西，只是积分换成体积分。
+一维的狄拉克$\delta$函数（Dirac delta function）可以看成越来越窄、和横轴围成的面积始终为$1$的尖峰的极限：$\delta(x)$在$x\ne0$处为零，$\int_{-\infty}^{\infty}\delta(x)\dd x=1$；$f$在$a$处连续（continuous）时，$\int_{-\infty}^{\infty}f(x)\delta(x-a)\dd x=f(a)$（见[狄拉克 δ 函数](lesson:math.calculus.dirac-delta#thm-sifting)）。它不是普通的函数，意思由积分规定。空间里集中在一点的源要的是同样的东西，只是积分换成体积分。
 
 ### 三维 δ 函数
 

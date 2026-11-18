@@ -31,7 +31,7 @@ status: reviewed
 
 ### 冲激
 
-锤子在$t=c$时刻敲一下：力很大，作用的时间很短，冲量是$1$。用狄拉克$\delta$函数（Dirac delta function）$\delta(t-c)$描述它：它是高$\frac1\varepsilon$、宽$\varepsilon$的矩形在$\varepsilon\to0$时的极限，满足筛选性质（sifting property）$\int_0^{+\infty}f(t)\delta(t-c)\dd t=f(c)$，见[狄拉克$\delta$函数](lesson:math.calculus.dirac-delta)。所以$c>0$时$\mathcal L\{\delta(t-c)\}=e^{-cs}$，并约定$\mathcal L\{\delta(t)\}=1$。
+锤子在$t=c$时刻敲一下：力很大，作用的时间很短，冲量是$1$。用狄拉克$\delta$函数（Dirac delta function）$\delta(t-c)$描述它：它是高$\frac1\varepsilon$、宽$\varepsilon$的矩形在$\varepsilon\to0$时的极限，满足筛选性质（sifting property）$\int_0^{+\infty}f(t)\delta(t-c)\dd t=f(c)$，见[狄拉克$\delta$函数](lesson:math.calculus.dirac-delta#thm-sifting)。所以$c>0$时$\mathcal L\{\delta(t-c)\}=e^{-cs}$，并约定$\mathcal L\{\delta(t)\}=1$。
 
 ::anchor{id="def-impulse-response"}
 初值都为零时，方程$y''+ay'+by=\delta(t)$的解$h(t)$叫作这个方程的:term[冲激响应]{id="math.ode.impulse-response"}（impulse response）；它的变换就是:term[传递函数]{id="math.ode.transfer-function"}（transfer function）$H(s)=\frac{1}{s^2+as+b}$。

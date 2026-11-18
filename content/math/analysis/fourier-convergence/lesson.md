@@ -118,7 +118,7 @@ sliders:
 
 用方波的:term[傅里叶级数]{id="math.analysis.fourier-series"}求$1-\frac13+\frac15-\frac17+\cdots$。
 
-**为什么想到这么做**：方波的:term[级数]{id="math.analysis.series"}里有$\frac{\sin(2k-1)x}{2k-1}$，在$x=\frac{\pi}{2}$处$\sin(2k-1)\frac{\pi}{2}=(-1)^{k+1}$，正好给出这个交错级数；方波在$\frac{\pi}{2}$处:term[连续]{id="math.analysis.continuous-function"}，由:term[狄利克雷定理]{id="math.analysis.dirichlet-theorem"}，级数的和就是$f\bigl(\frac{\pi}{2}\bigr)=1$。
+**为什么想到这么做**：方波的:term[级数]{id="math.analysis.series"}里有$\frac{\sin(2k-1)x}{2k-1}$，在$x=\frac{\pi}{2}$处$\sin(2k-1)\frac{\pi}{2}=(-1)^{k+1}$，正好给出这个:term[交错级数]{id="math.calculus.alternating-series"}（alternating series）；方波在$\frac{\pi}{2}$处:term[连续]{id="math.analysis.continuous-function"}，由:term[狄利克雷定理]{id="math.analysis.dirichlet-theorem"}，级数的和就是$f\bigl(\frac{\pi}{2}\bigr)=1$。
 
 **推导**：方波在$[-\pi,\pi]$上:term[分段光滑]{id="math.analysis.piecewise-smooth"}，在$x=\frac{\pi}{2}$处连续，所以$1=\frac4\pi\sum_{k=1}^\infty\frac{\sin(2k-1)\frac{\pi}{2}}{2k-1}=\frac4\pi\Bigl(1-\frac13+\frac15-\cdots\Bigr)$，即$1-\frac13+\frac15-\cdots=\frac{\pi}{4}$。
 

@@ -1,0 +1,143 @@
+- id: p1
+  tier: easy
+  statement: |
+    曲线的参数方程（parametric equations）是$x=t^2+1$、$y=t^3-t$。求它在$t=2$对应的点处的切线斜率。
+  answer:
+    type: number
+    value: 11/4
+  hints:
+    - |
+      斜率是$\dv yx=\frac{y'(t)}{x'(t)}$。
+    - |
+      $x'(t)=2t$，$y'(t)=3t^2-1$。
+    - |
+      $t=2$时$x'=4$，$y'=11$。
+  solution: |
+    $x'(2)=4\ne0$，$y'(2)=3\cdot4-1=11$，斜率是$\frac{11}4$。
+
+- id: p2
+  tier: easy
+  statement: |
+    求曲线$x=2\cos t$、$y=2\sin t$（$0\le t\le\frac\pi2$）的弧长（arc length）。
+  answer:
+    type: number
+    value: pi
+  hints:
+    - |
+      用$s=\int_\alpha^\beta\sqrt{x'(t)^2+y'(t)^2}\,\dd t$。
+    - |
+      $x'^2+y'^2=4\sin^2t+4\cos^2t$。
+    - |
+      被积函数是常数$2$。
+  solution: |
+    $\sqrt{x'^2+y'^2}=\sqrt{4\sin^2t+4\cos^2t}=2$，弧长是$\int_0^{\pi/2}2\,\dd t=\pi$，正是半径为$2$的圆周长的四分之一。
+
+- id: p3
+  tier: medium
+  statement: |
+    求曲线$x=\frac{t^3}3$、$y=\frac{t^2}2$（$0\le t\le\sqrt3$）的弧长。
+  answer:
+    type: number
+    value: 7/3
+  hints:
+    - |
+      $x'=t^2$，$y'=t$，$\sqrt{x'^2+y'^2}=\sqrt{t^4+t^2}$。
+    - |
+      $t\ge0$时$\sqrt{t^4+t^2}=t\sqrt{t^2+1}$。
+    - |
+      求导验证：$\frac13(t^2+1)^{3/2}$的导数是$t\sqrt{t^2+1}$。
+  solution: |
+    $\sqrt{x'^2+y'^2}=t\sqrt{t^2+1}$，它的一个原函数是$\frac13(t^2+1)^{3/2}$，弧长是$\frac13\bigl(4^{3/2}-1\bigr)=\frac73$。
+
+- id: p4
+  tier: medium
+  statement: |
+    曲线$x=t^2-1$、$y=t^3-3t$经过点$(2,0)$两次。求它在这一点的两条切线的斜率的乘积。
+  answer:
+    type: number
+    value: -3
+  hints:
+    - |
+      先找出哪两个$t$对应点$(2,0)$：$t^2-1=2$，并且$t^3-3t=0$。
+    - |
+      $t=\sqrt3$和$t=-\sqrt3$。斜率是$\frac{3t^2-3}{2t}$。
+    - |
+      两个斜率是$\sqrt3$和$-\sqrt3$。
+  solution: |
+    $t^2-1=2$得$t=\pm\sqrt3$，这时$t^3-3t=t(t^2-3)=0$，两个$t$都对应$(2,0)$。斜率$\frac{3t^2-3}{2t}$在$t=\pm\sqrt3$时是$\frac6{\pm2\sqrt3}=\pm\sqrt3$，乘积是$-3$。
+
+- id: p5
+  tier: hard
+  statement: |
+    求摆线$x=r(\theta-\sin\theta)$、$y=r(1-\cos\theta)$的一拱（$0\le\theta\le2\pi$）和$x$轴围成的面积。
+  hints:
+    - |
+      用微元法（method of differential elements）：$x$从$x$变到$x+\dd x$时，面积的微元是$y\,\dd x$；$x$随$\theta$单调增加，$\dd x=x'(\theta)\,\dd\theta$。
+    - |
+      面积是$\int_0^{2\pi}y(\theta)x'(\theta)\,\dd\theta=r^2\int_0^{2\pi}(1-\cos\theta)^2\,\dd\theta$。
+    - |
+      展开得$1-2\cos\theta+\cos^2\theta$，$\cos^2\theta=\frac{1+\cos2\theta}2$；$\cos\theta$、$\cos2\theta$在$[0,2\pi]$上的积分都是$0$。
+  reference: |
+    $x'(\theta)=r(1-\cos\theta)\ge0$，面积的微元是$y\,\dd x=r^2(1-\cos\theta)^2\,\dd\theta$。面积是$r^2\int_0^{2\pi}\Bigl(1-2\cos\theta+\frac{1+\cos2\theta}2\Bigr)\dd\theta=r^2(2\pi+\pi)=3\pi r^2$，恰好是滚动圆面积的$3$倍。
+
+- id: p6
+  tier: hard
+  statement: |
+    滚动的圆转过$\theta$角（$0<\theta<2\pi$）时，圆心是$C=(r\theta,r)$，最高点是$A=(r\theta,2r)$，和$x$轴的接触点是$T=(r\theta,0)$，摆线上的点是$P=\bigl(r(\theta-\sin\theta),r(1-\cos\theta)\bigr)$。
+
+    （1）证明摆线在$P$处的切线经过$A$。
+
+    （2）证明$PT$和这条切线垂直。
+  hints:
+    - |
+      摆线在$P$处的切线斜率是$\cot\frac\theta2$（讲解的例 1）。
+    - |
+      直线$PA$的斜率是$\frac{2r-r(1-\cos\theta)}{r\theta-r(\theta-\sin\theta)}=\frac{1+\cos\theta}{\sin\theta}$，用$1+\cos\theta=2\cos^2\frac\theta2$。
+    - |
+      直线$PT$的斜率是$\frac{-(1-\cos\theta)}{\sin\theta}=-\tan\frac\theta2$。
+  reference: |
+    （1）$\theta\ne\pi$时，$PA$的斜率$\frac{1+\cos\theta}{\sin\theta}=\frac{2\cos^2\frac\theta2}{2\sin\frac\theta2\cos\frac\theta2}=\cot\frac\theta2$，和切线斜率相同，又都过$P$，所以切线就是直线$PA$；$\theta=\pi$时$P$就是$A$，切线是水平的，也经过$A$。
+
+    （2）$PT$的斜率是$-\tan\frac\theta2$，和$\cot\frac\theta2$的乘积是$-1$（$\theta=\pi$时$PT$竖直、切线水平），所以垂直。这也可以从「$TA$是直径，直径所对的圆周角是直角」看出。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）$x=t^2$、$y=t^4$（$-1\le t\le1$）画出什么曲线？用参数形式的弧长公式算出的积分，是这段曲线长度的几倍？
+
+    （2）$x=t^3$、$y=t^6$（$-1\le t\le1$）呢？在$t=0$处$x'$、$y'$都是$0$，曲线在原点有尖角吗？
+
+    （3）和讲解里的$x=t^3$、$y=t^2$比较：$x'$、$y'$同时为$0$说明了什么，没说明什么？
+  hints:
+    - |
+      （1）消去$t$：$y=x^2$，$x=t^2$只取$[0,1]$里的值。$t$从$-1$到$0$时点往哪边走，从$0$到$1$时呢？
+    - |
+      （2）消去$t$：$y=x^2$，$x$取遍$[-1,1]$，点一直向右走。
+    - |
+      （3）$x'=y'=0$只说明这一刻点停住了；停下以后往哪个方向走，决定有没有尖角。
+  reference: |
+    （1）抛物线$y=x^2$在$0\le x\le1$的一段，$t$从$-1$到$0$时点从$(1,1)$走到原点，再从$0$到$1$时原路走回去。积分是这段长度的$2$倍，算的是路程。
+
+    （2）整段抛物线$y=x^2$（$-1\le x\le1$），每点只走一遍，原点处光滑，没有尖角，积分就是这段的长度。
+
+    （3）$x'=y'=0$说明点在这一刻速度为零，曲线可能在这里出现尖角（$x=t^3$、$y=t^2$停下后掉头），也可能仍然光滑（$x=t^3$、$y=t^6$停下后沿原方向继续走）。它只是「可能出问题」的信号。
+
+- id: p8
+  tier: thinking
+  statement: |
+    把参数$t$看成时间，$\bigl(x'(t),y'(t)\bigr)$就是点运动的速度，$\sqrt{x'(t)^2+y'(t)^2}$是速率，弧长公式说路程是速率的积分。车轮以角速度$\omega$匀速转动，轮边上的点画出摆线，$\theta=\omega t$。
+
+    （1）这个点的速率随$\theta$怎样变化？最大、最小各是多少，在什么位置？
+
+    （2）车（圆心）的速率是$r\omega$。轮边上的点转一圈的平均速率是车速的几倍？
+  hints:
+    - |
+      （1）由例 1，$\dv s\theta=2r\sin\frac\theta2$，再乘$\dv\theta t=\omega$。
+    - |
+      （1）$\theta=\pi$时点在最高处，$\theta=0$、$2\pi$时点贴着地面。
+    - |
+      （2）转一圈用时$\frac{2\pi}\omega$，走过的路程是一拱的长$8r$。
+  reference: |
+    （1）速率是$2r\omega\sin\frac\theta2$：在最高处（$\theta=\pi$）最大，是$2r\omega$，车速的$2$倍；在接触地面时（$\theta=0$、$2\pi$）是$0$，那一刻轮边上贴地的点不动，正是「不打滑」。
+
+    （2）平均速率是$\frac{8r}{2\pi/\omega}=\frac{4r\omega}\pi$，是车速的$\frac4\pi\approx1.27$倍。

@@ -104,7 +104,7 @@ sliders:
 
 ![左：1 − 1/2 + 1/3 − ⋯ 的部分和来回跳，越跳越小，趋于一个数；右：1 + 1/2 + 1/3 + ⋯ 的部分和一直增大，没有上界](abs-vs-cond.svg)
 
-左边是交错调和级数的部分和，它:term[收敛]{id="math.analysis.convergent-series"}，和是$\ln2$（见[泰勒级数](lesson:math.calculus.taylor-series)）。右边把各项换成绝对值，得到调和级数，部分和单调递增、没有:term[上界]{id="math.analysis.upper-bound"}（upper bound），所以交错调和级数条件收敛。:term[绝对收敛]{id="math.analysis.absolute-convergence"}要求右边那种部分和也收敛，这比左边的收敛强得多。
+左边是交错调和级数的部分和，它:term[收敛]{id="math.analysis.convergent-series"}，和是$\ln2$（见[泰勒级数](lesson:math.calculus.taylor-series#thm-log-series)）。右边把各项换成绝对值，得到调和级数，部分和单调递增、没有:term[上界]{id="math.analysis.upper-bound"}（upper bound），所以交错调和级数条件收敛。:term[绝对收敛]{id="math.analysis.absolute-convergence"}要求右边那种部分和也收敛，这比左边的收敛强得多。
 
 ## 例题
 

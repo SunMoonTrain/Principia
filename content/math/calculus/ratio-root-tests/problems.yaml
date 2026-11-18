@@ -1,0 +1,155 @@
+- id: p1
+  tier: easy
+  statement: |
+    下列正项级数（series of nonnegative terms）中，收敛的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\sum_{n=1}^\infty\frac{2^n}{(2n)!}$
+      - |
+        $\sum_{n=1}^\infty\frac{n^3}{3^n}$
+      - |
+        $\sum_{n=1}^\infty\frac{2^n}{n^2}$
+      - |
+        $\sum_{n=1}^\infty\Bigl(\frac n{n+1}\Bigr)^n$
+    value: [1, 2]
+  hints:
+    - |
+      A、B、C 用比值判别法（ratio test），算$\frac{a_{n+1}}{a_n}$的极限。
+    - |
+      D 用根值判别法（root test）得到的极限是$1$，判断不了，看通项趋于几。
+    - |
+      $\Bigl(\frac n{n+1}\Bigr)^n=\frac1{(1+\frac1n)^n}$。
+  solution: |
+    A：比值$\frac{2}{(2n+1)(2n+2)}\to0$，收敛；B：比值$\frac{(n+1)^3}{3n^3}\to\frac13$，收敛；C：比值$\frac{2n^2}{(n+1)^2}\to2$，发散。D：$\sqrt[n]{a_n}=\frac n{n+1}\to1$，判别法不能下结论，可通项$\frac1{(1+1/n)^n}\to\frac1e\ne0$，发散。选 A、B。
+
+- id: p2
+  tier: easy
+  statement: |
+    对$\sum_{n=1}^\infty\Bigl(\frac{2n+1}{3n-1}\Bigr)^n$用根值判别法，$\sqrt[n]{a_n}$的极限$\rho$是多少？
+  answer:
+    type: number
+    value: 2/3
+  hints:
+    - |
+      $a_n$是一个式子的$n$次方，开$n$次方就去掉了指数。
+    - |
+      $\sqrt[n]{a_n}=\frac{2n+1}{3n-1}$。
+    - |
+      分子分母同除以$n$，再令$n\to\infty$。
+  solution: |
+    $\sqrt[n]{a_n}=\frac{2n+1}{3n-1}=\frac{2+1/n}{3-1/n}\to\frac23$。$\rho<1$，级数收敛。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$c>0$。$\sum_{n=1}^\infty\frac{n!\,c^n}{n^n}$在$0<c<c_0$时收敛，在$c>c_0$时发散。求$c_0$。
+  answer:
+    type: number
+    value: e
+  hints:
+    - |
+      通项有阶乘，用比值判别法。
+    - |
+      $\frac{a_{n+1}}{a_n}=c\Bigl(\frac n{n+1}\Bigr)^n$。
+    - |
+      $\Bigl(\frac n{n+1}\Bigr)^n=\frac1{(1+\frac1n)^n}\to\frac1e$，用第二个重要极限（limit defining $e$）。
+  solution: |
+    $\frac{a_{n+1}}{a_n}=\frac{(n+1)!\,c^{n+1}}{(n+1)^{n+1}}\cdot\frac{n^n}{n!\,c^n}$，化简得$c\Bigl(\frac n{n+1}\Bigr)^n$，它趋于$\frac ce$。$c<e$时收敛，$c>e$时发散，所以$c_0=e$。
+
+- id: p4
+  tier: medium
+  statement: |
+    对$\sum_{n=1}^\infty\frac n{2^n}$，记$q$为$n\ge2$时比值$\frac{a_{n+1}}{a_n}$的最大值。照比值判别法的证明，$n\ge2$时$a_n\le a_2q^{n-2}$，由此得到级数的和的一个上界$a_1+\frac{a_2}{1-q}$。这个上界是多少？
+  answer:
+    type: number
+    value: 5/2
+  hints:
+    - |
+      $\frac{a_{n+1}}{a_n}=\frac{n+1}{2n}=\frac12+\frac1{2n}$，随$n$增大而减小。
+    - |
+      $n\ge2$时最大值在$n=2$取到，$q=\frac34$。
+    - |
+      $a_1=\frac12$，$a_2=\frac12$。
+  solution: |
+    比值$\frac12+\frac1{2n}$递减，$n\ge2$时最大是$q=\frac34$。$a_1=a_2=\frac12$，上界是$\frac12+\frac{1/2}{1-3/4}=\frac52$。实际的和是$2$，这个上界不算太松。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$a_n>0$，$\frac{a_{n+1}}{a_n}\to\rho$，$0<\rho<+\infty$。证明$\sqrt[n]{a_n}\to\rho$。
+  hints:
+    - |
+      任给$\varepsilon$（$0<\varepsilon<\rho$），从某一项$N$起$(\rho-\varepsilon)a_n\le a_{n+1}\le(\rho+\varepsilon)a_n$。
+    - |
+      一项一项推下去，$n\ge N$时$a_N(\rho-\varepsilon)^{n-N}\le a_n\le a_N(\rho+\varepsilon)^{n-N}$，再开$n$次方。
+    - |
+      常数$c>0$时$\sqrt[n]c=e^{\frac{\ln c}n}\to1$。
+  reference: |
+    记$c_1=a_N(\rho-\varepsilon)^{-N}$，$c_2=a_N(\rho+\varepsilon)^{-N}$，则$n\ge N$时$(\rho-\varepsilon)\sqrt[n]{c_1}\le\sqrt[n]{a_n}\le(\rho+\varepsilon)\sqrt[n]{c_2}$。左右两边分别趋于$\rho-\varepsilon$和$\rho+\varepsilon$，所以$n$足够大时$\rho-2\varepsilon<\sqrt[n]{a_n}<\rho+2\varepsilon$。$\varepsilon$可以任意小，所以$\sqrt[n]{a_n}\to\rho$。
+
+- id: p6
+  tier: hard
+  statement: |
+    级数$\frac12+\frac13+\frac14+\frac19+\frac18+\frac1{27}+\cdots$的第$2k-1$项是$\frac1{2^k}$，第$2k$项是$\frac1{3^k}$。
+
+    （1）相邻两项之比有极限吗？$\sqrt[n]{a_n}$有极限吗？
+
+    （2）证明这个级数收敛，并求它的和。
+  hints:
+    - |
+      （1）分「偶数项比前一项」和「奇数项比前一项」两种情形算比值；开方也分奇偶。
+    - |
+      （2）各项为正，前$2K$项的和是$\sum_{k=1}^K\bigl(\frac1{2^k}+\frac1{3^k}\bigr)$。
+    - |
+      （2）两个几何级数（geometric series）的和分别是$1$和$\frac12$；前$2K-1$项的和只比前$2K$项的和少$\frac1{3^K}$。
+  reference: |
+    （1）$\frac{a_{2k}}{a_{2k-1}}=\bigl(\frac23\bigr)^k\to0$，$\frac{a_{2k+1}}{a_{2k}}=\frac{3^k}{2^{k+1}}\to+\infty$，比值没有极限；奇数项的$\sqrt[n]{a_n}=2^{-\frac k{2k-1}}\to\frac1{\sqrt2}$，偶数项的趋于$\frac1{\sqrt3}$，也没有极限。两个判别法都用不上。
+
+    （2）前$2K$项的和$\sum_{k=1}^K\bigl(\frac1{2^k}+\frac1{3^k}\bigr)\to1+\frac12=\frac32$，前$2K-1$项的和再减去趋于$0$的$\frac1{3^K}$，也趋于$\frac32$。所以级数收敛，和是$\frac32$。也可以看出$\sqrt[n]{a_n}$从某项起都不超过$0.75$，照根值判别法的证明和几何级数比较，同样得到收敛。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）对$\sum\frac1{n^p}$，比值$\frac{a_{n+1}}{a_n}$和根值$\sqrt[n]{a_n}$的极限各是多少？和$p$有关吗？
+
+    （2）比值判别法在$\rho<1$时，实际上证明了通项最终至少像哪一类数列那样变小？
+
+    （3）为什么$\sum\frac1{n^2}$收敛，比值判别法却判断不了？
+  hints:
+    - |
+      （1）$\Bigl(\frac n{n+1}\Bigr)^p\to1$；$\sqrt[n]{n^{-p}}=\bigl(\sqrt[n]n\bigr)^{-p}$。
+    - |
+      （2）证明里得到了$a_n\le a_Nq^{n-N}$。
+    - |
+      （3）对任意$0<q<1$，$n^2q^n\to0$（对$\sum n^2q^n$用比值判别法），所以从某项起$\frac1{n^2}>q^n$。
+  reference: |
+    （1）都是$1$，和$p$无关，所以两个判别法对所有$p$都判断不了。
+
+    （2）至少像公比小于$1$的等比数列那样变小：$a_n\le Cq^n$。
+
+    （3）$\frac1{n^2}$变小得比任何$q^n$（$0<q<1$）都慢，从某项起$\frac1{n^2}>q^n$。比值判别法只认得出「至少按几何级数的速度收敛」的级数，$\sum\frac1{n^2}$要靠积分判别法（integral test）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）用比值判别法说明：对任意正整数$k$和$a>1$，$\frac{n^k}{a^n}\to0$，$\frac{a^n}{n!}\to0$，$\frac{n!}{n^n}\to0$。
+
+    （2）$\frac{n^{10}}{1.1^n}$在$n=100$时大约是多少？它「最终」趋于$0$，这个「最终」大约要等到$n$多大？
+
+    （3）由此说说「判别法只看最终」是什么意思。
+  hints:
+    - |
+      （1）三个级数$\sum\frac{n^k}{a^n}$、$\sum\frac{a^n}{n!}$、$\sum\frac{n!}{n^n}$的比值分别趋于$\frac1a$、$0$、$\frac1e$。
+    - |
+      （2）取对数：$\ln\frac{n^{10}}{1.1^n}=10\ln n-n\ln1.1$。
+    - |
+      （2）它先增后减，在$n=\frac{10}{\ln1.1}\approx105$附近最大；对数变成负数，要到$n=686$。
+  reference: |
+    （1）三个级数的比值的极限都小于$1$，级数收敛，通项趋于$0$。
+
+    （2）约$7.3\times10^{15}$。它在$n\approx105$附近最大，到$n=686$才小于$1$。
+
+    （3）判别法和收敛与否只管$n$足够大以后的项，前面有限项多大都不影响收敛；可真要用部分和去算级数的和，那些很大的项就得老老实实加进去。

@@ -121,7 +121,7 @@ sliders:
 
 **推导**：比值都是正数；它们的上极限小于$1$，说明比值数列有:term[上界]{id="math.analysis.upper-bound"}（没有上界时，按约定上极限是$+\infty$），所以比值数列:term[有界]{id="math.analysis.bounded-sequence"}，可以用定理 1。记$L^*=\limsup_{n\to\infty}\frac{a_{n+1}}{a_n}<1$，取$q=\frac{L^*+1}{2}$，则$L^*<q<1$。由定理 1 的 (1)（取$\varepsilon=q-L^*$），只有有限个比值大于$q$，所以有$N$使$n\ge N$时$\frac{a_{n+1}}{a_n}\le q$。由归纳法，$n\ge N$时$a_n\le a_Nq^{n-N}$。
 
-于是$0<a_n\le\frac{a_N}{q^N}\,q^n$。由[数列的极限](lesson:math.analysis.sequences-limits)的例 2，$q^n\to0$，再由:term[夹逼定理]{id="math.analysis.squeeze-theorem"}，$a_n\to0$。以后判断级数（series）收敛的比值判别法（ratio test），用的就是这个想法，见[比值判别法与根值判别法](lesson:math.calculus.ratio-root-tests)。
+于是$0<a_n\le\frac{a_N}{q^N}\,q^n$。由[数列的极限](lesson:math.analysis.sequences-limits)的例 2，$q^n\to0$，再由:term[夹逼定理]{id="math.analysis.squeeze-theorem"}，$a_n\to0$。以后判断级数（series）收敛的比值判别法（ratio test），用的就是这个想法，见[比值判别法与根值判别法](lesson:math.calculus.ratio-root-tests#thm-ratio-test)。
 
 ## 常见误区
 

@@ -384,3 +384,156 @@ export function convergesByIncrements(partials: number[]): { converges: boolean;
   const ratio = (d[d.length - 1] / d[0]) ** (1 / (d.length - 1));
   return { converges: ratio < 0.6, ratio };
 }
+
+// ---- 以下是批次 21（级数、δ 函数、参数曲线）加的 ----
+
+/** ln Γ(x)（x > 0）：x < 10 时先用 Γ(x + 1) = xΓ(x) 升到 10 以上，再用斯特林级数，相对误差约 10⁻¹⁵。ln n! = lgamma(n + 1)。 */
+export function lgamma(x: number): number {
+  let shift = 0;
+  while (x < 10) {
+    shift -= Math.log(x);
+    x += 1;
+  }
+  const x2 = 1 / (x * x);
+  const series = (1 / 12 - x2 * (1 / 360 - x2 * (1 / 1260 - x2 * (1 / 1680 - x2 / 1188)))) / x;
+  return shift + (x - 0.5) * Math.log(x) - x + 0.5 * Math.log(2 * Math.PI) + series;
+}
+
+/** 部分和 S_N = ∑_{n=n0}^{N} a(n)，在升序的各个 N 处各返回一个值（Kahan 补偿求和，加到 10⁶ 项也不丢精度）。 */
+export function partialSums(a: (n: number) => number, Ns: number[], n0 = 1): number[] {
+  const out: number[] = [];
+  let s = 0;
+  let comp = 0;
+  let n = n0;
+  for (const N of Ns) {
+    for (; n <= N; n++) {
+      const y = a(n) - comp;
+      const t = s + y;
+      comp = t - s - y;
+      s = t;
+    }
+    out.push(s);
+  }
+  return out;
+}
+
+/**
+ * 级数 ∑_{n=n0}^∞ a(n) 的和：部分和 S_N 在 N = 2¹³·2^k（k = 0..7，最多约 10⁶ 项）处取值，按 h = 1/N 理查森外推。
+ * 尾巴能按 1/N 的整数次幂展开时（1/n²、1/n³、1/(n(n + 1)) 这类有理式）外推到 10⁻¹² 左右；项按几何级数衰减时部分和
+ * 早已稳定，外推不改变它。尾巴按 N^{−1/2}、1/ln N 衰减的（1/n^{3/2}、1/(n ln²n)）外推不收敛，converged 为 false，要另想办法。
+ */
+export function seriesSum(a: (n: number) => number, n0 = 1): { value: number; converged: boolean } {
+  const Ns = Array.from({ length: 8 }, (_, k) => 2 ** (13 + k));
+  const S = partialSums(a, Ns, n0);
+  const byN = new Map(Ns.map((N, i) => [N, S[i]]));
+  return extrapolate((h) => byN.get(Math.round(1 / h)) ?? Number.NaN, 2 ** -13, 8);
+}
+
+/**
+ * 交错级数 ∑_{k=0}^∞ (−1)^k b(k) 的和（b(k) > 0 单调趋于 0）：Cohen–Villegas–Zagier 加速（他们论文里的算法 1），
+ * 只用前 n 项。b(k) 是「完全单调」的（1/(k + 1)、1/(2k + 1)、1/(k + 1)²、1/√(k + 1) 这类）时误差约 5.8^{−n}，n = 40 到机器精度。
+ * 下标从 1 起、首项为正的 ∑(−1)^{n+1}a_n，传 b(k) = a(k + 1)。
+ */
+export function alternatingSum(b: (k: number) => number, n = 40): number {
+  let d = (3 + Math.sqrt(8)) ** n;
+  d = (d + 1 / d) / 2;
+  let bb = -1;
+  let c = -d;
+  let s = 0;
+  for (let k = 0; k < n; k++) {
+    c = bb - c;
+    s += c * b(k);
+    bb = ((k + n) * (k - n) * bb) / ((k + 0.5) * (k + 1));
+  }
+  return s / d;
+}
+
+/**
+ * 正项级数收敛还是发散：N = 10, 10², …, 10⁶ 处的部分和交给 convergesByIncrements（每过一个数量级增量平均缩成几分之一）。
+ * 项按 n^{−p} 衰减时 r = 10^{1−p}：p 大于约 1.22 判收敛，p ≤ 1 判发散；p 很接近 1 的（1/n^{1.1}、1/(n ln²n)）判不准，用之前先看项的阶。
+ */
+export function positiveSeriesConverges(a: (n: number) => number, n0 = 1): { converges: boolean; ratio: number } {
+  return convergesByIncrements(partialSums(a, [10, 100, 1e3, 1e4, 1e5, 1e6], n0));
+}
+
+/**
+ * 比值 |a(n + 1)/a(n)| 在 n → ∞ 时的极限（比值判别法用）：传 ln|a(n)|，免得 n!、xⁿ 这类项上溢、下溢。
+ * 先用 sequenceLimit（振幅缩小再外推）；不收敛时在 n = 10⁸、10⁹、10¹⁰ 处直接取值，三者相差不到 10⁻⁷ 才返回，否则返回 null。
+ */
+export function ratioLimit(logAbs: (n: number) => number): number | null {
+  const r = (n: number) => Math.exp(logAbs(n + 1) - logAbs(n));
+  return sequenceLimit(r) ?? largeNLimit(r);
+}
+
+/** 根值 |a(n)|^{1/n} 的极限（根值判别法用），同样传 ln|a(n)|；ln n/n 这类慢收敛外推不了时，取 n = 10⁸、10⁹、10¹⁰ 处的值。 */
+export function rootLimit(logAbs: (n: number) => number): number | null {
+  const r = (n: number) => Math.exp(logAbs(n) / n);
+  return sequenceLimit(r) ?? largeNLimit(r);
+}
+
+function largeNLimit(r: (n: number) => number): number | null {
+  const v = [1e8, 1e9, 1e10].map(r);
+  if (!v.every(Number.isFinite)) return null;
+  return Math.abs(v[2] - v[1]) <= 1e-7 * Math.max(1, Math.abs(v[2])) && Math.abs(v[1] - v[0]) <= 1e-6 * Math.max(1, Math.abs(v[2])) ? v[2] : null;
+}
+
+/**
+ * 幂级数 ∑ a_n (x − x0)ⁿ 的收敛半径 R = 1/lim |a_n|^{1/n}（柯西-阿达马公式的意思，只在 a_n ≠ 0 的 n 上取）。
+ * 传 ln|a_n|；隔项为零的级数（sin 的展开只有奇数次项）用 index 把第 k 个非零项映到它的次数 n，如 k ↦ 2k + 1。
+ * ln|a_n|/n → −∞（如 1/n!）时 R = +∞，返回 Infinity；→ +∞（如 n!）时 R = 0。
+ */
+export function radiusOfConvergence(logAbs: (n: number) => number, index: (k: number) => number = (k) => k): number | null {
+  const v = (k: number) => logAbs(index(k)) / index(k);
+  const big = [1e3, 1e5, 1e7].map(v);
+  if (big[0] > big[1] && big[1] > big[2] && big[2] < -10) return Infinity;
+  if (big[0] < big[1] && big[1] < big[2] && big[2] > 10) return 0;
+  const root = rootLimit((k) => (logAbs(index(k)) * k) / index(k));
+  return root === null ? null : 1 / root;
+}
+
+/**
+ * 越来越窄、面积始终为 1 的尖峰 φ_ε 逼近 δ(t − c)：∫ f(t)φ_ε(t − c) dt 在 ε = 2^{−5−k} 上算，再对 ε → 0 外推。
+ * shape：'box' 宽 ε、高 1/ε、以 c 为中心的矩形；'box-right' 放在 [c, c + ε] 上；'tri' 底宽 2ε 的三角形；'gauss' 标准差 ε 的高斯。
+ * f 在 c 附近光滑时极限是 f(c)（筛选性质）；验算 δ(λt) 这类式子时，把 f 换成 t ↦ f(t/λ)/|λ| 这类形式自己写。
+ */
+export function peakLimit(f: (t: number) => number, c: number, shape: 'box' | 'box-right' | 'tri' | 'gauss' = 'box'): { value: number; converged: boolean } {
+  const g = (eps: number) => {
+    switch (shape) {
+      case 'box':
+        return integrate(f, c - eps / 2, c + eps / 2) / eps;
+      case 'box-right':
+        return integrate(f, c, c + eps) / eps;
+      case 'tri':
+        return integrate((t) => f(t) * (1 - Math.abs(t - c) / eps), c - eps, c) / eps + integrate((t) => f(t) * (1 - Math.abs(t - c) / eps), c, c + eps) / eps;
+      case 'gauss':
+        return integrate((t) => (f(t) * Math.exp(-((t - c) ** 2) / (2 * eps * eps))) / (eps * Math.sqrt(2 * Math.PI)), c - 12 * eps, c + 12 * eps);
+    }
+  };
+  return extrapolate(g, 1 / 32, 8);
+}
+
+/**
+ * 把参数曲线 (x(t), y(t)) 在 t0 附近写成 y 关于 x 的函数 F(X) = y(t(X))：在 [t0 − w, t0 + w] 上二分解 x(t) = X（要求 x 在这一段严格单调）。
+ * 用来独立验算 dy/dx、d²y/dx²，不套 y′(t)/x′(t) 的公式。
+ */
+export function asFunctionOfX(x: (t: number) => number, y: (t: number) => number, t0: number, w = 0.1): (X: number) => number {
+  return (X) => y(bisect((t) => x(t) - X, t0 - w, t0 + w, 200));
+}
+
+/** f 在 x0 处的二阶导数：中心二阶差商 (f(x0 + h) − 2f(x0) + f(x0 − h))/h² 在 h = 2^{−6−k} 上外推（误差按 h² 展开）。 */
+export function secondDerivativeAt(f: (x: number) => number, x0: number): number {
+  const r = extrapolate((h) => {
+    const s = Math.sqrt(h);
+    return (f(x0 + s) - 2 * f(x0) + f(x0 - s)) / h;
+  }, 2 ** -12, 6);
+  if (!r.converged) throw new Error(`x = ${x0} 处二阶差商外推不收敛`);
+  return r.value;
+}
+
+/**
+ * 参数曲线 (x(t), y(t))，t ∈ [t0, t1] 下的有向面积 ∫ y dx：按 t 等分，梯形 ½(y₁ + y₂)(x₂ − x₁) 求和，再按 h = 1/n 外推。
+ * 不用导数；x 随 t 减小的那一段面积算负的（如沿上半圆从 (1, 0) 走到 (−1, 0) 得 −π/2）。
+ */
+export function parametricArea(x: (t: number) => number, y: (t: number) => number, t0: number, t1: number): { value: number; converged: boolean } {
+  return extrapolate((h) => walkCurve(x, y, t0, t1, Math.round(1 / h), (px, py, qx, qy) => ((py + qy) / 2) * (qx - px)));
+}

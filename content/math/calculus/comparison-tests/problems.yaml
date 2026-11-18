@@ -1,0 +1,167 @@
+- id: p1
+  tier: easy
+  statement: |
+    下列正项级数（series of nonnegative terms）中，收敛的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\sum_{n=1}^\infty\frac1{n^{1.1}}$
+      - |
+        $\sum_{n=1}^\infty\frac1{n^{0.9}}$
+      - |
+        $\sum_{n=1}^\infty\frac1{3^n+n}$
+      - |
+        $\sum_{n=1}^\infty\frac n{n^2+1}$
+    value: [1, 3]
+  hints:
+    - |
+      A、B 是$\sum\frac1{n^p}$，看$p$是否大于$1$。
+    - |
+      C 和几何级数（geometric series）$\sum\frac1{3^n}$比较。
+    - |
+      D 的通项$n$很大时像$\frac1n$，用比较判别法（comparison test）的极限形式。
+  solution: |
+    A 是$p=1.1>1$，收敛；B 是$p=0.9\le1$，发散。C：$0<\frac1{3^n+n}<\frac1{3^n}$，后者的级数收敛，所以 C 收敛。D：$\frac n{n^2+1}\Big/\frac1n\to1$，调和级数发散，所以 D 发散。选 A、C。
+
+- id: p2
+  tier: easy
+  statement: |
+    积分判别法（integral test）的证明里有$S_N\le a_1+\int_1^{+\infty}f(x)\,\dd x$。对$\sum_{n=1}^\infty\frac1{n^3}$取$f(x)=\frac1{x^3}$，这给出级数的和的一个上界，是多少？
+  answer:
+    type: number
+    value: 3/2
+  hints:
+    - |
+      $a_1=1$。
+    - |
+      $\int_1^{+\infty}\frac{\dd x}{x^3}=-\frac1{2x^2}\Big|_1^{+\infty}$。
+    - |
+      积分等于$\frac12$。
+  solution: |
+    $a_1=1$，$\int_1^{+\infty}\frac{\dd x}{x^3}=\frac12$，所以每个部分和都不超过$1+\frac12=\frac32$，级数的和也不超过$\frac32$。实际的和约是$1.202$。
+
+- id: p3
+  tier: medium
+  statement: |
+    求使$\sum_{n=1}^\infty\frac{n^2}{n^a+1}$收敛的最小的正整数$a$。
+  answer:
+    type: number
+    value: 4
+  hints:
+    - |
+      $n$很大时，通项像$n$的哪个幂？
+    - |
+      $\frac{n^2}{n^a+1}$和$\frac1{n^{a-2}}$之比趋于$1$。
+    - |
+      $\sum\frac1{n^{a-2}}$在$a-2>1$时收敛。
+  solution: |
+    由比较判别法的极限形式，$\frac{n^2}{n^a+1}\Big/\frac1{n^{a-2}}=\frac{n^a}{n^a+1}\to1$，所以原级数和$\sum\frac1{n^{a-2}}$同时收敛，要$a-2>1$，即$a>3$，最小的正整数是$4$。
+
+- id: p4
+  tier: medium
+  statement: |
+    积分判别法给出调和级数的部分和$S_N\ge\ln(N+1)$。只用这个不等式，$N$至少取多大，就能保证$S_N>5$？
+  answer:
+    type: number
+    value: 148
+  hints:
+    - |
+      要$\ln(N+1)>5$。
+    - |
+      即$N+1>e^5$。
+    - |
+      $e^5\approx148.41$。
+  solution: |
+    $\ln(N+1)>5$即$N>e^5-1\approx147.41$，所以取$N=148$就能保证。实际上$S_{83}$就已经超过$5$，这个不等式给的是一个保险的数。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$q$是实数。证明$\sum_{n=2}^\infty\frac1{n(\ln n)^q}$在$q>1$时收敛，在$q\le1$时发散。
+  hints:
+    - |
+      用积分判别法（下限从$2$开始）。$q\le0$时可以直接和调和级数比较。
+    - |
+      $q\ne1$时，$\frac{(\ln x)^{1-q}}{1-q}$是$\frac1{x(\ln x)^q}$的一个原函数（求导验证）；$q=1$时原函数是$\ln\ln x$。
+    - |
+      $0<q$时$f(x)=\frac1{x(\ln x)^q}$在$[2,+\infty)$上连续、为正、递减。$q>1$时$\int_2^b\frac{\dd x}{x(\ln x)^q}=\frac{(\ln2)^{1-q}-(\ln b)^{1-q}}{q-1}\to\frac{(\ln2)^{1-q}}{q-1}$，收敛；$0<q<1$时$(\ln b)^{1-q}$没有上界，$q=1$时$\ln\ln b$没有上界，都发散。$q\le0$时$\frac1{n(\ln n)^q}\ge\frac1n$（$n\ge3$），由比较判别法发散。
+  reference: |
+    积分判别法：$q\ne1$时原函数是$\frac{(\ln x)^{1-q}}{1-q}$，$q=1$时是$\ln\ln x$；$q\le0$时直接和$\frac1n$比。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$在$[1,+\infty)$上连续、为正、递减，$\sum f(n)$收敛，和为$S$，记余项（remainder）$R_n=S-S_n$，即$\sum_{k=n+1}^\infty f(k)$。
+
+    （1）证明$\int_{n+1}^{+\infty}f(x)\,\dd x\le R_n\le\int_n^{+\infty}f(x)\,\dd x$。
+
+    （2）用前$n$项的和近似$\sum\frac1{n^2}$，要保证误差不超过$0.01$，$n$至少取多大？
+  hints:
+    - |
+      （1）照积分判别法的证明，比较每一段$[k-1,k]$上的积分和$f(k)$。
+    - |
+      （1）$\int_k^{k+1}f\le f(k)\le\int_{k-1}^kf$，对$k=n+1,n+2,\dots$加起来。
+    - |
+      （1）左边的不等式对$k\ge n+1$加起来得$\int_{n+1}^{+\infty}f\le R_n$，右边的得$R_n\le\int_n^{+\infty}f$。
+
+      （2）$f(x)=\frac1{x^2}$时，$\frac1{n+1}\le R_n\le\frac1n$。$n=100$时$R_n\le0.01$；$n\le99$时$R_n\ge\frac1{n+1}\ge0.01$，而且严格大于（$f$严格递减），所以$n$至少取$100$。
+  reference: |
+    （1）$\int_k^{k+1}f\le f(k)\le\int_{k-1}^kf$，对$k\ge n+1$求和。
+
+    （2）$\frac1{n+1}\le R_n\le\frac1n$，$n$至少取$100$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）$\sum_{n=1}^\infty\frac1{n!}$收敛吗？拿它和哪个级数比？
+
+    （2）$\sum_{n=1}^\infty\frac1{n^{1+1/n}}$的指数总大于$1$，它收敛吗？
+
+    （3）从（2）看，「$\sum\frac1{n^p}$在$p>1$时收敛」该怎样理解？
+  hints:
+    - |
+      （1）$n!$和$2^{n-1}$哪个大？（2）和$\frac1n$比，要知道$n^{1/n}$趋于几。
+    - |
+      （2）$n^{1/n}=e^{\frac{\ln n}n}$。由$e^u\ge1+u$得$\ln y\le y-1$，取$y=\sqrt n$，得$\ln n\le2\sqrt n$。
+    - |
+      （1）收敛：$n\ge1$时$n!\ge2^{n-1}$，$\frac1{n!}\le\frac1{2^{n-1}}$，几何级数$\sum\frac1{2^{n-1}}$收敛。
+
+      （2）$0<\frac{\ln n}n\le\frac2{\sqrt n}\to0$，所以$n^{1/n}\to1$，$\frac1{n^{1+1/n}}\Big/\frac1n=\frac1{n^{1/n}}\to1$，由比较判别法的极限形式，和调和级数一样发散。
+
+      （3）指数要是一个大于$1$的固定的数；指数大于$1$却越来越接近$1$，可能发散。
+  reference: |
+    （1）收敛，和$\sum\frac1{2^{n-1}}$比。
+
+    （2）发散：$n^{1/n}\to1$，和$\frac1n$之比趋于$1$。
+
+    （3）$p$要是固定的数，不能随$n$趋于$1$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    记调和级数的部分和为$H_n$。
+
+    （1）积分判别法的图里，$\ln(n+1)\le H_n\le1+\ln n$是怎样看出来的？
+
+    （2）证明$d_n=H_n-\ln n$递减并且大于$0$，因而收敛。
+
+    （3）$d_n$的极限约是$0.5772$（叫作欧拉常数，Euler's constant）。用它估计$H_{1000}$。
+  hints:
+    - |
+      （2）$d_n-d_{n+1}=\ln(n+1)-\ln n-\frac1{n+1}$，写成一个积分。
+    - |
+      （2）$\ln(n+1)-\ln n=\int_n^{n+1}\frac{\dd x}x$，在$[n,n+1]$上$\frac1x\ge\frac1{n+1}$。
+    - |
+      （1）曲线$y=\frac1x$下从$1$到$n+1$的面积是$\ln(n+1)$，它不超过上方长方形的面积$H_n$；从$1$到$n$的面积$\ln n$不小于下方长方形的面积$H_n-1$。
+
+      （2）$d_n-d_{n+1}=\int_n^{n+1}\Bigl(\frac1x-\frac1{n+1}\Bigr)\dd x\ge0$，所以递减；$d_n\ge\ln(n+1)-\ln n>0$。递减、有下界，由单调有界原理（monotone convergence theorem）收敛。
+
+      （3）$H_{1000}\approx\ln1000+0.5772\approx7.485$。
+  reference: |
+    （1）曲线下的面积夹在两组长方形的面积之间。
+
+    （2）$d_n-d_{n+1}=\int_n^{n+1}\bigl(\frac1x-\frac1{n+1}\bigr)\dd x\ge0$，$d_n>0$。
+
+    （3）约$7.485$。

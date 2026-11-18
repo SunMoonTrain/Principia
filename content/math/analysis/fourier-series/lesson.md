@@ -13,7 +13,7 @@ status: reviewed
 
 ## 这一节要回答的问题
 
-弦的振动、交流电、方波信号，都是周期函数。泰勒级数（Taylor series）用$x$的幂去逼近函数；对周期函数，更自然的做法是用同样以$2\pi$为周期的$\cos nx$、$\sin nx$去拼。能不能把一个周期函数写成$\frac{a_0}{2}+\sum_{n=1}^\infty(a_n\cos nx+b_n\sin nx)$？如果能，系数该怎么求？
+弦的振动、交流电、方波信号，都是周期函数。:term[泰勒级数]{id="math.calculus.taylor-series"}（Taylor series）用$x$的幂去逼近函数；对周期函数，更自然的做法是用同样以$2\pi$为周期的$\cos nx$、$\sin nx$去拼。能不能把一个周期函数写成$\frac{a_0}{2}+\sum_{n=1}^\infty(a_n\cos nx+b_n\sin nx)$？如果能，系数该怎么求？
 
 ## 讲解
 

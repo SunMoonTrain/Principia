@@ -1,0 +1,175 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\sum_{n=1}^\infty\frac2{3^n}$。
+  answer:
+    type: number
+    value: 1
+  hints:
+    - |
+      这是几何级数（geometric series），先找首项和公比。
+    - |
+      首项是$\frac23$，公比是$\frac13$。
+    - |
+      $|q|<1$时，和是首项除以$1-q$。
+  solution: |
+    首项$\frac23$、公比$\frac13$的几何级数，和是$\frac{2/3}{1-1/3}=1$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列级数（series）中，收敛的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\sum_{n=1}^\infty(1.01)^n$
+      - |
+        $\sum_{n=1}^\infty\Bigl(\frac23\Bigr)^n$
+      - |
+        $\sum_{n=1}^\infty\frac n{2n+1}$
+      - |
+        $\sum_{n=1}^\infty\Bigl(\frac1{2^n}+\frac1{3^n}\Bigr)$
+    value: [2, 4]
+  hints:
+    - |
+      先看通项是不是趋于$0$。
+    - |
+      A 的通项$(1.01)^n$越来越大，C 的通项趋于$\frac12$。
+    - |
+      A 是公比$1.01$的几何级数，B 是公比$\frac23$的几何级数；D 是两个收敛的几何级数逐项相加。
+  solution: |
+    A 是公比$1.01$的几何级数，$|q|\ge1$，通项不趋于$0$，发散；C 的通项趋于$\frac12$，也发散。B 是公比$\frac23$的几何级数，收敛。D 的两部分分别收敛于$1$和$\frac12$，逐项相加也收敛，和是$\frac32$。选 B、D。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\sum_{n=1}^\infty\frac1{n^2+3n+2}$。
+  answer:
+    type: number
+    value: 1/2
+  hints:
+    - |
+      分母可以分解因式。
+    - |
+      $n^2+3n+2=(n+1)(n+2)$，$\frac1{(n+1)(n+2)}=\frac1{n+1}-\frac1{n+2}$。
+    - |
+      写出部分和（partial sum），中间的项一正一负抵消。
+  solution: |
+    $S_n=\Bigl(\frac12-\frac13\Bigr)+\Bigl(\frac13-\frac14\Bigr)+\cdots+\Bigl(\frac1{n+1}-\frac1{n+2}\Bigr)=\frac12-\frac1{n+2}$，$n\to\infty$时趋于$\frac12$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\sum_{n=1}^\infty\frac{2^n+5^n}{10^n}$。
+  answer:
+    type: number
+    value: 5/4
+  hints:
+    - |
+      把通项拆成两项。
+    - |
+      $\frac{2^n+5^n}{10^n}=\Bigl(\frac15\Bigr)^n+\Bigl(\frac12\Bigr)^n$。
+    - |
+      两个几何级数都收敛，可以逐项相加。
+  solution: |
+    $\sum_{n=1}^\infty\Bigl(\frac15\Bigr)^n=\frac14$，$\sum_{n=1}^\infty\Bigl(\frac12\Bigr)^n=1$，两个级数都收敛，所以原级数收敛，和是$\frac14+1=\frac54$。
+
+- id: p5
+  tier: hard
+  statement: |
+    记调和级数（harmonic series）的部分和为$S_n$。
+
+    （1）仿照讲解里分组的办法，证明$S_{2^k}\le1+k$。
+
+    （2）由此和讲解里的$S_{2^k}\ge1+\frac k2$，至少要加多少项、加多少项一定够，部分和才能超过$10$？给出一个范围。
+  hints:
+    - |
+      （1）这回把每一组的项都放大：第$k$组的项都不超过这一组的第一项。
+    - |
+      （1）第$k$组从$\frac1{2^{k-1}+1}$到$\frac1{2^k}$，共$2^{k-1}$项，每项小于$\frac1{2^{k-1}}$，和小于$1$。（2）$S_n$随$n$增大。
+    - |
+      （1）$S_{2^k}$是$1$加上第$1$组到第$k$组：第$1$组就是$\frac12$，以后每组的和都小于$1$，所以$S_{2^k}\le1+k$。
+
+      （2）$n\le2^9=512$时$S_n\le S_{512}\le10$，所以至少要加$513$项；$S_{2^{18}}\ge1+9=10$，再加一项就超过$10$，所以$2^{18}+1=262145$项一定够。实际上要加$12367$项。
+  reference: |
+    （1）第$k$组的$2^{k-1}$项都小于$\frac1{2^{k-1}}$，和小于$1$。
+
+    （2）至少$513$项，$262145$项一定够；实际是$12367$项。
+
+- id: p6
+  tier: hard
+  statement: |
+    边长为$1$的正三角形，每条边三等分，在中间一段上向外接一个小正三角形，再去掉这一段；对得到的图形的每条边重复这样做，一直做下去，得到科赫雪花（Koch snowflake）。
+
+    （1）做了$k$次以后，周长是多少？$k\to\infty$时呢？
+
+    （2）求雪花围成的面积。
+  hints:
+    - |
+      （1）每做一次，每条边变成$4$条，每条长度是原来的$\frac13$。
+    - |
+      （2）第$k$次新添$3\cdot4^{k-1}$个小三角形，边长$\frac1{3^k}$，每个面积$\frac{\sqrt3}4\cdot\frac1{9^k}$。
+    - |
+      （1）周长每次乘$\frac43$，做了$k$次以后是$3\bigl(\frac43\bigr)^k$，没有上界。
+
+      （2）第$k$次添的面积是$3\cdot4^{k-1}\cdot\frac{\sqrt3}4\cdot\frac1{9^k}=\frac{\sqrt3}{12}\bigl(\frac49\bigr)^{k-1}$。对$k$求和是公比$\frac49$的几何级数，和是$\frac{\sqrt3}{12}\cdot\frac95=\frac{3\sqrt3}{20}$，加上原来的$\frac{\sqrt3}4$，面积是$\frac{2\sqrt3}5\approx0.693$。
+  reference: |
+    （1）$3\bigl(\frac43\bigr)^k$，趋于无穷大。
+
+    （2）$\frac{\sqrt3}4+\frac{3\sqrt3}{20}=\frac{2\sqrt3}5$：周长无穷大，面积却有限。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）$0.999\cdots=1$是一个约定，还是可以证明的事实？
+
+    （2）有人说$1-1+1-1+\cdots=\frac12$，理由是部分和一半时候是$1$、一半时候是$0$。照本节的定义，这个级数的和是多少？
+
+    （3）如果级数$\sum a_n$收敛，那么$\sum(a_n+a_{n+1})$收敛吗？反过来呢？
+  hints:
+    - |
+      （1）$0.999\cdots$本身就是一个级数，它的值按什么规定？
+    - |
+      （2）部分和组成的数列有没有极限？（3）$\sum(a_n+a_{n+1})$的部分和和$\sum a_n$的部分和有什么关系？
+    - |
+      （1）照本节的定义，$0.999\cdots$是级数$\sum\frac9{10^n}$，它的值是部分和的极限，部分和是$1-\frac1{10^n}$，极限是$1$。约定的只是「无限小数的值是部分和的极限」，承认了这一点，等于$1$是证出来的。
+
+      （2）部分和在$1$和$0$之间跳，没有极限，级数发散，没有和。$\frac12$是部分和的平均值的极限，那是另一种求和的规定，不是本节的和。
+
+      （3）收敛：$\sum_{k=1}^n(a_k+a_{k+1})=S_n+(S_{n+1}-a_1)\to2S-a_1$。反过来不对：$a_n=(-1)^n$时$a_n+a_{n+1}=0$，后者收敛，前者发散。
+  reference: |
+    （1）可以证明：值规定为部分和的极限，极限是$1$。
+
+    （2）发散，没有和；$\frac12$是另一种求和的规定。
+
+    （3）收敛，和是$2S-a_1$；反过来不成立，如$a_n=(-1)^n$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    阿基里斯（Achilles）每秒跑$10\,\mathrm m$，乌龟每秒爬$1\,\mathrm m$，乌龟先出发、领先$100\,\mathrm m$。芝诺（Zeno）说：阿基里斯跑到乌龟原来的位置时，乌龟又向前爬了一段；他再跑到那里，乌龟又向前了……所以永远追不上。
+
+    （1）把芝诺说的每一段追赶用的时间写出来，它们组成什么级数？和是多少？
+
+    （2）芝诺的论证错在哪里？
+
+    （3）不用级数，直接算追上的时间，对得上吗？
+  hints:
+    - |
+      （1）第一段要跑$100\,\mathrm m$，用$10\,\mathrm s$，这段时间里乌龟爬了$10\,\mathrm m$。
+    - |
+      （1）各段时间是$10$、$1$、$0.1$……（3）两者的距离每秒缩短多少？
+    - |
+      （1）时间组成首项$10$、公比$\frac1{10}$的几何级数，和是$\frac{10}{1-1/10}=\frac{100}9\,\mathrm s$。
+
+      （2）芝诺默认无穷多段时间加起来一定是无穷长；其实这些时间越来越短，和是有限的$\frac{100}9\,\mathrm s$，到那一刻就追上了。
+
+      （3）距离每秒缩短$9\,\mathrm m$，$100\,\mathrm m$要$\frac{100}9\,\mathrm s$，一致。
+  reference: |
+    （1）公比$\frac1{10}$的几何级数，和$\frac{100}9\,\mathrm s$。
+
+    （2）无穷多段时间的和可以是有限的。
+
+    （3）$\frac{100}9\,\mathrm s$，一致。

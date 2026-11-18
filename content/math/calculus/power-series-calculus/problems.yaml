@@ -1,0 +1,161 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\sum_{n=1}^\infty\frac n{4^{n-1}}$。
+  answer:
+    type: number
+    value: 16/9
+  hints:
+    - |
+      $|x|<1$时$\sum_{n=1}^\infty nx^{n-1}=\frac1{(1-x)^2}$。
+    - |
+      $\frac n{4^{n-1}}=n\bigl(\frac14\bigr)^{n-1}$，取$x=\frac14$。
+    - |
+      $\frac1{(1-1/4)^2}=\frac1{(3/4)^2}$。
+  solution: |
+    $\frac14$在收敛区间$(-1,1)$里，所以和是$\frac1{(1-1/4)^2}=\frac{16}9$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $\sum_{n=1}^\infty\frac{x^n}n$的收敛域（domain of convergence）是$[-1,1)$。把它逐项求导，得到的级数的收敛域是哪一个？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        $(-1,1)$
+      - |
+        $[-1,1)$
+      - |
+        $(-1,1]$
+      - |
+        $[-1,1]$
+    value: 1
+  hints:
+    - |
+      逐项求导得$\sum_{n=1}^\infty x^{n-1}$，这是什么级数？
+    - |
+      收敛半径（radius of convergence）不变，还是$1$；端点要重新判断。
+    - |
+      $x=\pm1$时，$\sum x^{n-1}$的通项趋于$0$吗？
+  solution: |
+    逐项求导得$\sum_{n=1}^\infty x^{n-1}=1+x+x^2+\cdots$，几何级数，$|x|<1$时收敛；$x=\pm1$时通项的绝对值是$1$，发散。收敛域是$(-1,1)$，选 A：原来的级数在$x=-1$处收敛，求导以后丢掉了这个端点。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\sum_{n=1}^\infty\frac{(-1)^{n+1}n}{2^n}$。
+  answer:
+    type: number
+    value: 2/9
+  hints:
+    - |
+      先由$\sum nx^{n-1}=\frac1{(1-x)^2}$写出$\sum_{n=1}^\infty nx^n$。
+    - |
+      $\sum_{n=1}^\infty nx^n=\frac x{(1-x)^2}$。$\frac{(-1)^{n+1}}{2^n}$和$\bigl(-\frac12\bigr)^n$差一个负号。
+    - |
+      取$x=-\frac12$：$\frac{-1/2}{(3/2)^2}=-\frac29$。
+  solution: |
+    $\sum_{n=1}^\infty nx^n=\frac x{(1-x)^2}$（$|x|<1$）。$\frac{(-1)^{n+1}n}{2^n}=-n\bigl(-\frac12\bigr)^n$，所以和是$-\frac{-1/2}{(1+1/2)^2}=\frac29$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\sum_{n=0}^\infty\frac{(-1)^n}{(2n+1)\,3^n}$。
+  answer:
+    type: number
+    value: pi/(2*sqrt(3))
+  hints:
+    - |
+      和$\arctan x=\sum_{n=0}^\infty\frac{(-1)^nx^{2n+1}}{2n+1}$比一比。
+    - |
+      $x^{2n+1}=\frac{x}{3^n}$要求$x^2=\frac13$，取$x=\frac1{\sqrt3}$。
+    - |
+      $\arctan\frac1{\sqrt3}=\frac\pi6$，而$\arctan\frac1{\sqrt3}=\frac1{\sqrt3}\sum\frac{(-1)^n}{(2n+1)3^n}$。
+  solution: |
+    $x=\frac1{\sqrt3}$时$x^{2n+1}=\frac1{\sqrt3}\cdot\frac1{3^n}$，所以$\arctan\frac1{\sqrt3}=\frac1{\sqrt3}\sum_{n=0}^\infty\frac{(-1)^n}{(2n+1)3^n}$。左边是$\frac\pi6$，所求的和是$\frac{\sqrt3\,\pi}6=\frac\pi{2\sqrt3}\approx0.9069$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f(x)=\frac{\ln(1+x)}x$（$x\ne0$），$f(0)=1$。
+
+    （1）写出$f$在$(-1,1)$上的幂级数，说明它可以在$\bigl[0,\frac12\bigr]$上逐项积分。
+
+    （2）用它算$\int_0^{1/2}f(x)\,\dd x$，要误差不超过$0.001$。
+  hints:
+    - |
+      （1）把$\ln(1+x)$的展开式除以$x$，得$\sum_{n=1}^\infty\frac{(-1)^{n+1}x^{n-1}}n$；$x=0$时它等于$1$。
+    - |
+      （1）这个幂级数的收敛半径是$1$，$\bigl[0,\frac12\bigr]$在收敛区间里。（2）逐项积分得$\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^2\,2^n}$。
+    - |
+      （2）各项是$0.5$、$-0.0625$、$0.01389$、$-0.00391$、$0.00125$、$-0.00043$、……，用交错级数判别法估计误差。
+  reference: |
+    （1）$-1<x<1$、$x\ne0$时$f(x)=\sum_{n=1}^\infty\frac{(-1)^{n+1}x^{n-1}}n$，$x=0$时右边是$1=f(0)$，所以在整个$(-1,1)$上都相等。收敛半径是$1$，在收敛区间里可以逐项积分。
+
+    （2）$\int_0^{1/2}f(x)\,\dd x=\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^2\,2^n}$，各项绝对值递减趋于$0$。第$6$项的绝对值约$0.00043$，不超过$0.001$，所以取前$5$项：$0.5-0.0625+0.01389-0.00391+0.00125\approx0.4487$，误差不超过$0.00043$（实际值约$0.4484$）。
+
+- id: p6
+  tier: hard
+  statement: |
+    不用泰勒公式，换一条路证明$e^x=\sum_{n=0}^\infty\frac{x^n}{n!}$：记右边为$y(x)$。
+
+    （1）证明$y$对一切$x$有定义，$y'=y$，$y(0)=1$。
+
+    （2）对$g(x)=y(x)e^{-x}$求导，由此证明$y(x)=e^x$。
+  hints:
+    - |
+      （1）收敛半径是$+\infty$，可以在任何$x$处逐项求导。
+    - |
+      （1）$\bigl(\frac{x^n}{n!}\bigr)'=\frac{x^{n-1}}{(n-1)!}$，逐项求导后的级数就是原来的级数。
+    - |
+      （2）$g'=(y'-y)e^{-x}=0$，导数处处为零的函数是常数（由拉格朗日中值定理）。
+  reference: |
+    （1）由比值判别法，收敛半径是$+\infty$。逐项求导，$y'(x)=\sum_{n=1}^\infty\frac{x^{n-1}}{(n-1)!}$，这正是$y(x)$，又$y(0)=1$。
+
+    （2）$g'(x)=y'(x)e^{-x}-y(x)e^{-x}=0$，所以$g$是常数，$g(x)=g(0)=1$，即$y(x)=e^x$。这正是常微分方程$y'=y$、$y(0)=1$的幂级数解。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）写出$\sum_{n=1}^\infty\frac{x^n}{n^2}$、它逐项求导一次、逐项求导两次得到的三个级数的收敛域。
+
+    （2）几何级数$\sum_{n=0}^\infty x^n$的收敛域是$(-1,1)$。从$0$到$x$逐项积分以后，收敛域是什么？
+
+    （3）为什么逐项求导、逐项积分不改变收敛半径，却会改变端点处的收敛？
+  hints:
+    - |
+      （1）三个级数的通项分别是$\frac{x^n}{n^2}$、$\frac{x^{n-1}}n$、$\frac{(n-1)x^{n-2}}n$，在$x=\pm1$处分别判断。
+    - |
+      （2）积分得$\sum_{n=1}^\infty\frac{x^n}n$。
+    - |
+      （3）求导、积分只是给通项乘上$n$或除以$n+1$；$\sqrt[n]n\to1$。
+  reference: |
+    （1）$[-1,1]$、$[-1,1)$、$(-1,1)$：第三个级数在$x=\pm1$处通项的绝对值趋于$1$。
+
+    （2）$[-1,1)$，在$x=-1$处多了一个收敛的端点。
+
+    （3）乘上$n$或除以$n+1$，开$n$次方以后都趋于$1$，不改变收敛半径；可在$|x|=R$处，通项多一个因子$n$或$\frac1{n+1}$，会决定它趋不趋于$0$、级数收敛得够不够快，所以端点的情况可能改变。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）设$\sum_{n=0}^\infty a_nx^n$在$(-r,r)$上处处等于$0$（$r>0$）。证明所有$a_n=0$。
+
+    （2）由（1），两个幂级数在$(-r,r)$上处处相等时，系数有什么关系？
+
+    （3）设$f(x)=x^2e^x$。不求导，求$f^{(10)}(0)$。
+  hints:
+    - |
+      （1）和函数$S$恒为$0$，由$a_n=\frac{S^{(n)}(0)}{n!}$。
+    - |
+      （2）两式相减。
+    - |
+      （3）$x^2e^x=\sum_{n=0}^\infty\frac{x^{n+2}}{n!}$，看$x^{10}$的系数，它等于$\frac{f^{(10)}(0)}{10!}$。
+  reference: |
+    （1）$S\equiv0$，各阶导数都是$0$，$a_n=\frac{S^{(n)}(0)}{n!}=0$。
+
+    （2）相减后由（1），对应的系数都相等：一个函数在一点附近的幂级数展开式是唯一的。
+
+    （3）$x^2e^x=\sum_{n=0}^\infty\frac{x^{n+2}}{n!}$，$x^{10}$的系数是$\frac1{8!}$。由唯一性它等于$\frac{f^{(10)}(0)}{10!}$，所以$f^{(10)}(0)=\frac{10!}{8!}=90$。

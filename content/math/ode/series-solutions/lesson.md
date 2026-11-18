@@ -29,7 +29,7 @@ $y''-xy=0$的系数不是常数，:term[特征方程]{id="math.ode.characteristi
 ::anchor{id="thm-series-solution"}
 **常点附近的幂级数解**　设$x_0$是$y''+P(x)y'+Q(x)y=0$的常点，$P$、$Q$的幂级数在$|x-x_0|<R$里收敛。则方程有两个线性无关的解，都是幂级数$\sum_{n=0}^{\infty}a_n(x-x_0)^n$，在$|x-x_0|<R$里收敛；其中$a_0=y(x_0)$、$a_1=y'(x_0)$可以任意给定，其余的系数由方程确定。
 
-**证明思路**：把级数代入方程，在收敛的范围里可以[逐项求导](lesson:math.calculus.power-series-calculus)（term-by-term differentiation），合并同次幂以后，每个$(x-x_0)^n$的系数都要为零，这给出用前面的系数表示$a_{n+2}$的式子。由它算出的级数确实收敛、收敛半径（radius of convergence）不小于$R$，要用一个处处更大的级数来控制，这里不证。系数是多项式时，$R$可以取$x_0$到$a(x)$最近的零点的距离，复数的零点（见[复数](lesson:math.complex-analysis.complex-numbers)）也要算上（第 7 题）。
+**证明思路**：把级数代入方程，在收敛的范围里可以[逐项求导](lesson:math.calculus.power-series-calculus#thm-termwise)（term-by-term differentiation），合并同次幂以后，每个$(x-x_0)^n$的系数都要为零，这给出用前面的系数表示$a_{n+2}$的式子。由它算出的级数确实收敛、收敛半径（radius of convergence）不小于$R$，要用一个处处更大的级数来控制，这里不证。系数是多项式时，$R$可以取$x_0$到$a(x)$最近的零点的距离，复数的零点（见[复数](lesson:math.complex-analysis.complex-numbers)）也要算上（第 7 题）。
 
 ### 递推公式
 

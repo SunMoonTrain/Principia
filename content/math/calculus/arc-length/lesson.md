@@ -29,7 +29,7 @@ status: reviewed
 
 道理：取分点$a=x_0<x_1<\cdots<x_n=b$，第$i$段折线长$\sqrt{(\Delta x_i)^2+(\Delta y_i)^2}$。由:term[中值定理]{id="math.calculus.mean-value-theorem"}（mean value theorem），$\Delta y_i=f'(\xi_i)\Delta x_i$，这一段长$\sqrt{1+f'(\xi_i)^2}\,\Delta x_i$，所以折线的总长正好是$\sqrt{1+f'^2}$的一个:term[黎曼和]{id="math.calculus.riemann-sum"}（Riemann sum），分得越细越趋于这个积分。用:term[微元法]{id="math.calculus.element-method"}（method of differential elements）说，$[x,x+\dd x]$上的一小段弧近似是直角边为$\dd x$、$\dd y$的斜边，弧长的:term[微元]{id="math.calculus.differential-element"}（differential element）是$\dd s=\sqrt{\dd x^2+\dd y^2}=\sqrt{1+f'(x)^2}\,\dd x$。
 
-写成$\dd s=\sqrt{\dd x^2+\dd y^2}$的好处是不依赖用哪个变量。曲线写成$x=x(t)$、$y=y(t)$时，同样有$\dd s=\sqrt{x'(t)^2+y'(t)^2}\,\dd t$；单位圆$x=\cos t$、$y=\sin t$从$t=0$到$t=\theta$的长度是$\int_0^\theta\sqrt{\sin^2t+\cos^2t}\,\dd t=\theta$，弧度正是单位圆上的弧长。参数形式的完整讲法见[参数曲线](lesson:math.calculus.parametric-curves)。边界情况：公式要求$f'$在闭区间上连续，半圆$y=\sqrt{r^2-x^2}$在$x=\pm r$处的:term[切线]{id="math.calculus.tangent-line"}（tangent line）是竖直的，$f'$无界，这时改用参数形式。
+写成$\dd s=\sqrt{\dd x^2+\dd y^2}$的好处是不依赖用哪个变量。曲线写成$x=x(t)$、$y=y(t)$时，同样有$\dd s=\sqrt{x'(t)^2+y'(t)^2}\,\dd t$；单位圆$x=\cos t$、$y=\sin t$从$t=0$到$t=\theta$的长度是$\int_0^\theta\sqrt{\sin^2t+\cos^2t}\,\dd t=\theta$，弧度正是单位圆上的弧长。参数形式的完整讲法见[参数曲线](lesson:math.calculus.parametric-curves#thm-parametric-arc-length)。边界情况：公式要求$f'$在闭区间上连续，半圆$y=\sqrt{r^2-x^2}$在$x=\pm r$处的:term[切线]{id="math.calculus.tangent-line"}（tangent line）是竖直的，$f'$无界，这时改用参数形式。
 
 ### 旋转曲面的面积
 

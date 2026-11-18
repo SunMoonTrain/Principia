@@ -1044,3 +1044,219 @@ glossary:
       在$[x,x+\dd x]$上写出微元$\dd Q=f(x)\,\dd x$，再从$a$积到$b$，得到总量$Q=\int_a^bf(x)\,\dd x$。
     definedIn: math.calculus.area-between-curves
     anchor: def-element-method
+  - id: math.calculus.series
+    zh: |
+      级数
+    en: |
+      series
+    brief: |
+      把数列的项依次相加写成的$\sum_{n=1}^\infty a_n$；它的和规定为部分和的极限，极限存在叫收敛，不存在叫发散。
+    definedIn: math.calculus.series
+    anchor: def-series
+  - id: math.calculus.partial-sum
+    zh: |
+      部分和
+    en: |
+      partial sum
+    brief: |
+      级数前$n$项的和$S_n=a_1+a_2+\cdots+a_n$；级数收敛就是数列$\{S_n\}$收敛。
+    definedIn: math.calculus.series
+    anchor: def-series
+  - id: math.calculus.geometric-series
+    zh: |
+      几何级数
+    en: |
+      geometric series
+    brief: |
+      $\sum_{n=0}^\infty aq^n$（$a\ne0$），也叫等比级数；$|q|<1$时收敛于$\frac a{1-q}$，$|q|\ge1$时发散。
+    definedIn: math.calculus.series
+    anchor: def-geometric-series
+  - id: math.calculus.harmonic-series
+    zh: |
+      调和级数
+    en: |
+      harmonic series
+    brief: |
+      $\sum_{n=1}^\infty\frac1n=1+\frac12+\frac13+\cdots$；通项趋于$0$，部分和却没有上界，所以发散。
+    definedIn: math.calculus.series
+    anchor: def-harmonic-series
+  - id: math.calculus.nonnegative-series
+    zh: |
+      正项级数
+    en: |
+      series of nonnegative terms
+    brief: |
+      各项都不小于$0$的级数；它的部分和递增，所以收敛当且仅当部分和有上界。
+    definedIn: math.calculus.comparison-tests
+    anchor: def-nonnegative-series
+  - id: math.calculus.comparison-test
+    zh: |
+      比较判别法
+    en: |
+      comparison test
+    brief: |
+      从某项起$0\le a_n\le b_n$时，$\sum b_n$收敛则$\sum a_n$收敛，$\sum a_n$发散则$\sum b_n$发散。
+    definedIn: math.calculus.comparison-tests
+    anchor: thm-comparison-test
+  - id: math.calculus.integral-test
+    zh: |
+      积分判别法
+    en: |
+      integral test
+    brief: |
+      $f$在$[1,+\infty)$上连续、为正、递减时，$\sum f(n)$和$\int_1^{+\infty}f(x)\,\dd x$同时收敛或同时发散。
+    definedIn: math.calculus.comparison-tests
+    anchor: thm-integral-test
+  - id: math.calculus.dirac-delta
+    zh: |
+      狄拉克$\delta$函数
+    en: |
+      Dirac delta function
+    brief: |
+      高$\frac1\varepsilon$、宽$\varepsilon$的尖峰在$\varepsilon\to0^+$时的极限；不是普通函数，只在积分里有意义，$\int f(x)\delta(x-a)\,\dd x$规定为把$\delta$换成尖峰后积分的极限。
+    definedIn: math.calculus.dirac-delta
+    anchor: def-dirac-delta
+  - id: math.calculus.sifting-property
+    zh: |
+      筛选性质
+    en: |
+      sifting property
+    brief: |
+      $f$在$a$附近连续时，$\int_{-\infty}^{+\infty}f(x)\delta(x-a)\,\dd x=f(a)$：积分只筛出$f$在$a$处的值。
+    definedIn: math.calculus.dirac-delta
+    anchor: thm-sifting
+  - id: math.calculus.alternating-series
+    zh: |
+      交错级数
+    en: |
+      alternating series
+    brief: |
+      各项正负相间的级数$\sum_{n=1}^\infty(-1)^{n+1}a_n$（$a_n>0$），如交错调和级数$1-\frac12+\frac13-\cdots$。
+    definedIn: math.calculus.alternating-series
+    anchor: def-alternating-series
+  - id: math.calculus.alternating-harmonic-series
+    zh: |
+      交错调和级数
+    en: |
+      alternating harmonic series
+    brief: |
+      $1-\frac12+\frac13-\frac14+\cdots$；由交错级数判别法收敛，和是$\ln2$，取绝对值后是发散的调和级数，所以条件收敛。
+    definedIn: math.calculus.alternating-series
+    anchor: def-alternating-series
+  - id: math.calculus.alternating-series-test
+    zh: |
+      交错级数判别法
+    en: |
+      alternating series test
+    brief: |
+      也叫莱布尼茨判别法：$a_n$单调递减趋于$0$时$\sum(-1)^{n+1}a_n$收敛，和$S$与部分和$S_m$相差不超过$a_{m+1}$。
+    definedIn: math.calculus.alternating-series
+    anchor: thm-alternating-series-test
+  - id: math.calculus.absolute-convergence
+    zh: |
+      绝对收敛
+    en: |
+      absolute convergence
+    brief: |
+      $\sum|a_n|$收敛时说$\sum a_n$绝对收敛；绝对收敛的级数一定收敛，重排后和不变。
+    definedIn: math.calculus.alternating-series
+    anchor: def-absolute-convergence
+  - id: math.calculus.conditional-convergence
+    zh: |
+      条件收敛
+    en: |
+      conditional convergence
+    brief: |
+      $\sum a_n$收敛而$\sum|a_n|$发散，如交错调和级数；这样的级数换了项的次序，和可能改变。
+    definedIn: math.calculus.alternating-series
+    anchor: def-absolute-convergence
+  - id: math.calculus.ratio-test
+    zh: |
+      比值判别法
+    en: |
+      ratio test
+    brief: |
+      $a_n>0$、$\frac{a_{n+1}}{a_n}\to\rho$时，$\rho<1$则$\sum a_n$收敛，$\rho>1$则发散，$\rho=1$不能下结论。
+    definedIn: math.calculus.ratio-root-tests
+    anchor: thm-ratio-test
+  - id: math.calculus.root-test
+    zh: |
+      根值判别法
+    en: |
+      root test
+    brief: |
+      $a_n\ge0$、$\sqrt[n]{a_n}\to\rho$时，$\rho<1$则$\sum a_n$收敛，$\rho>1$则发散，$\rho=1$不能下结论。
+    definedIn: math.calculus.ratio-root-tests
+    anchor: thm-root-test
+  - id: math.calculus.parametric-equations
+    zh: |
+      参数方程
+    en: |
+      parametric equations
+    brief: |
+      用一个参数$t$写出曲线上点的坐标：$x=x(t)$、$y=y(t)$；切线斜率是$\frac{y'(t)}{x'(t)}$，弧长是$\int\sqrt{x'(t)^2+y'(t)^2}\,\dd t$。
+    definedIn: math.calculus.parametric-curves
+    anchor: def-parametric-equations
+  - id: math.calculus.power-series
+    zh: |
+      幂级数
+    en: |
+      power series
+    brief: |
+      形如$\sum_{n=0}^\infty a_n(x-x_0)^n$的级数，像无穷次的多项式；在离中心$x_0$小于收敛半径的地方绝对收敛。
+    definedIn: math.calculus.power-series
+    anchor: def-power-series
+  - id: math.calculus.sum-function
+    zh: |
+      和函数
+    en: |
+      sum function
+    brief: |
+      幂级数在每个收敛点$x$处的和，记作$S(x)$，是$x$的函数；如$\sum_{n=0}^\infty x^n$的和函数是$\frac1{1-x}$（$|x|<1$）。
+    definedIn: math.calculus.power-series
+    anchor: def-power-series
+  - id: math.calculus.radius-of-convergence
+    zh: |
+      收敛半径
+    en: |
+      radius of convergence
+    brief: |
+      幂级数在$|x-x_0|<R$时绝对收敛、$|x-x_0|>R$时发散的那个$R$（$0\le R\le+\infty$）；$\bigl|\frac{a_n}{a_{n+1}}\bigr|$有极限时就等于这个极限。
+    definedIn: math.calculus.power-series
+    anchor: def-radius-of-convergence
+  - id: math.calculus.interval-of-convergence
+    zh: |
+      收敛区间
+    en: |
+      interval of convergence
+    brief: |
+      以幂级数的中心为中点、收敛半径为半径的开区间$(x_0-R,x_0+R)$；端点不算在内。
+    definedIn: math.calculus.power-series
+    anchor: def-radius-of-convergence
+  - id: math.calculus.domain-of-convergence
+    zh: |
+      收敛域
+    en: |
+      domain of convergence
+    brief: |
+      幂级数全部收敛点组成的集合：收敛区间加上收敛的端点，可能是开区间、闭区间或半开半闭区间。
+    definedIn: math.calculus.power-series
+    anchor: def-radius-of-convergence
+  - id: math.calculus.taylor-series
+    zh: |
+      泰勒级数
+    en: |
+      Taylor series
+    brief: |
+      以$\frac{f^{(n)}(a)}{n!}$为系数的幂级数$\sum\frac{f^{(n)}(a)}{n!}(x-a)^n$；部分和是泰勒多项式，余项趋于$0$的地方它收敛到$f(x)$。
+    definedIn: math.calculus.taylor-series
+    anchor: def-taylor-series
+  - id: math.calculus.maclaurin-series
+    zh: |
+      麦克劳林级数
+    en: |
+      Maclaurin series
+    brief: |
+      在$0$处的泰勒级数$\sum\frac{f^{(n)}(0)}{n!}x^n$，如$e^x=\sum\frac{x^n}{n!}$，对一切$x$成立。
+    definedIn: math.calculus.taylor-series
+    anchor: def-taylor-series

@@ -47,7 +47,7 @@ status: reviewed
 
 **证明思路**：$\vb v-\vb w=(\vb v-\vb p)+(\vb p-\vb w)$，后一项在$W$里，和前一项:term[正交]{id="math.linear-algebra.orthogonal"}。由[勾股定理](lesson:math.linear-algebra.inner-product-spaces#thm-pythagorean)，$\|\vb v-\vb w\|^2=\|\vb v-\vb p\|^2+\|\vb p-\vb w\|^2\ge\|\vb v-\vb p\|^2$，等号只在$\vb p-\vb w=\vb 0$时成立。
 
-所以$\|\vb v-\operatorname{proj}_W\vb v\|$就是$\vb v$到$W$的距离。在$C[a,b]$里，:term[范数]{id="math.linear-algebra.norm"}（norm）的平方是$\int_a^b(f-g)^2\dd x$，正交投影是在$W$里找平方误差的积分最小的函数（例 2）。[贝塞尔不等式与帕塞瓦尔等式](lesson:math.analysis.parseval)里，:term[傅里叶级数]{id="math.analysis.fourier-series"}（Fourier series）的部分和是平方平均意义下最好的三角多项式（trigonometric polynomial），用的正是这个定理。
+所以$\|\vb v-\operatorname{proj}_W\vb v\|$就是$\vb v$到$W$的距离。在$C[a,b]$里，:term[范数]{id="math.linear-algebra.norm"}（norm）的平方是$\int_a^b(f-g)^2\dd x$，正交投影是在$W$里找平方误差的积分最小的函数（例 2）。[贝塞尔不等式与帕塞瓦尔等式](lesson:math.analysis.parseval)里，:term[傅里叶级数]{id="math.analysis.fourier-series"}（Fourier series）的:term[部分和]{id="math.calculus.partial-sum"}（partial sum）是平方平均意义下最好的三角多项式（trigonometric polynomial），用的正是这个定理。
 
 ### 直和
 

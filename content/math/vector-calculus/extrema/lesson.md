@@ -38,7 +38,7 @@ status: reviewed
 ::anchor{id="thm-global-extremum"}
 **求最值的办法**　设$D$是有界闭区域（bounded closed region），$f$在$D$上:term[连续]{id="math.vector-calculus.continuous"}、在$D$的内部:term[可微]{id="math.vector-calculus.differentiable"}。由:term[最值定理]{id="math.vector-calculus.extreme-value-theorem"}（extreme value theorem），$f$在$D$上取到最大值和最小值，而它们只可能在两类点取到：$D$内部的:term[驻点]{id="math.vector-calculus.stationary-point"}，或$D$的边界。所以分别求出内部的驻点处的值和边界上的最大值、最小值，放在一起比较，最大的就是最大值，最小的就是最小值。
 
-为什么要有界、闭：少了哪一个，最值都可能不存在。开圆盘（open disk）$x^2+y^2<1$上，$x^2+y^2$越靠近边界越大，却取不到$1$，没有最大值；整个平面上，$\frac1{1+x^2+y^2}$越往远处越小，却取不到$0$，没有最小值。边界上的最值，通常把边界写成参数方程（parametric equation），变成一元函数的最值（例 2）。
+为什么要有界、闭：少了哪一个，最值都可能不存在。开圆盘（open disk）$x^2+y^2<1$上，$x^2+y^2$越靠近边界越大，却取不到$1$，没有最大值；整个平面上，$\frac1{1+x^2+y^2}$越往远处越小，却取不到$0$，没有最小值。边界上的最值，通常把边界写成:term[参数方程]{id="math.calculus.parametric-equations"}（parametric equation），变成一元函数的最值（例 2）。
 
 ## 几何图像
 

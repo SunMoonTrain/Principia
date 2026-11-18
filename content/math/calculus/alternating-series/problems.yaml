@@ -1,0 +1,161 @@
+- id: p1
+  tier: easy
+  statement: |
+    下列级数（series）中，条件收敛（conditional convergence）的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^{0.8}}$
+      - |
+        $\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^{1.5}}$
+      - |
+        $\sum_{n=1}^\infty(-1)^{n+1}\frac n{n+1}$
+      - |
+        $\sum_{n=1}^\infty\frac{(-1)^{n+1}}{\ln(n+1)}$
+    value: [1, 4]
+  hints:
+    - |
+      先看各项取绝对值后收不收敛，再看原级数收不收敛。
+    - |
+      C 的通项趋于$0$吗？D 取绝对值后，和$\frac1{n+1}$比一比。
+    - |
+      A、D 的$a_n$都单调递减趋于$0$，可以用交错级数判别法（alternating series test）。
+  solution: |
+    A：$\sum\frac1{n^{0.8}}$发散，$\frac1{n^{0.8}}$单调递减趋于$0$，原级数收敛，条件收敛；B：$\sum\frac1{n^{1.5}}$收敛，绝对收敛；C：通项的绝对值趋于$1$，发散。D：$\ln(n+1)<n+1$，$\frac1{\ln(n+1)}>\frac1{n+1}$，取绝对值后发散；$\frac1{\ln(n+1)}$单调递减趋于$0$，原级数收敛，条件收敛。选 A、D。
+
+- id: p2
+  tier: easy
+  statement: |
+    求交错级数（alternating series）$\sum_{n=1}^\infty\frac{(-1)^{n+1}}{3^n}=\frac13-\frac19+\frac1{27}-\cdots$的和。
+  answer:
+    type: number
+    value: 1/4
+  hints:
+    - |
+      这是一个几何级数（geometric series）。首项和公比各是多少？
+    - |
+      首项$\frac13$，公比$-\frac13$。
+    - |
+      和是$\frac{1/3}{1-(-1/3)}$。
+  solution: |
+    首项$\frac13$、公比$-\frac13$的几何级数，$|q|<1$，和是$\frac{1/3}{1+1/3}=\frac14$。它也绝对收敛：取绝对值后是公比$\frac13$的几何级数。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\sum_{n=1}^\infty(-1)^{n+1}\frac{2n+1}{n(n+1)}$。
+  answer:
+    type: number
+    value: 1
+  hints:
+    - |
+      把$\frac{2n+1}{n(n+1)}$拆成两个分式之和。
+    - |
+      $\frac{2n+1}{n(n+1)}=\frac1n+\frac1{n+1}$。写出前几项，看部分和（partial sum）。
+    - |
+      $\Bigl(1+\frac12\Bigr)-\Bigl(\frac12+\frac13\Bigr)+\Bigl(\frac13+\frac14\Bigr)-\cdots$，中间的项两两抵消。
+  solution: |
+    $\frac{2n+1}{n(n+1)}=\frac1n+\frac1{n+1}$，前$m$项相加，中间的项两两抵消，$S_m=1+\frac{(-1)^{m+1}}{m+1}\to1$，所以和是$1$。这个级数条件收敛：取绝对值后通项和$\frac2n$之比趋于$1$，发散。
+
+- id: p4
+  tier: medium
+  statement: |
+    交错级数$1-\frac13+\frac15-\frac17+\cdots$的和$S$等于$\frac\pi4$（证明见[幂级数的逐项求导与逐项积分](lesson:math.calculus.power-series-calculus)）。用前$m$项的和$S_m$乘$4$近似$\pi$，按交错级数判别法的误差估计，$m$至少取多大，才能保证误差不超过$0.01$？
+  answer:
+    type: number
+    value: 200
+  hints:
+    - |
+      第$n$项的绝对值是$a_n=\frac1{2n-1}$，用前$m$项时，$|S-S_m|\le a_{m+1}$。
+    - |
+      $a_{m+1}=\frac1{2m+1}$，乘$4$以后误差不超过$\frac4{2m+1}$。
+    - |
+      要$\frac4{2m+1}\le0.01$，即$2m+1\ge400$。
+  solution: |
+    $|4S-4S_m|\le4a_{m+1}=\frac4{2m+1}$。要它不超过$0.01$，得$2m+1\ge400$，$m\ge199.5$，所以$m$至少取$200$。这个级数收敛得很慢，取$200$项才保证两位小数。
+
+- id: p5
+  tier: hard
+  statement: |
+    记交错调和级数（alternating harmonic series）的和为$S=1-\frac12+\frac13-\frac14+\cdots$。把它的项换个次序，每两个正项后面跟一个负项：
+    $$1+\frac13-\frac12+\frac15+\frac17-\frac14+\frac19+\frac1{11}-\frac16+\cdots$$
+    证明这个级数收敛，和是$\frac32S$。
+  hints:
+    - |
+      $\frac12S=\frac12-\frac14+\frac16-\frac18+\cdots$。在它的每一项前面插一个$0$：$0+\frac12+0-\frac14+0+\frac16+\cdots$。部分和只是多重复了一些，和不变。
+    - |
+      把插了$0$的级数和$S=1-\frac12+\frac13-\frac14+\cdots$逐项相加：两个收敛的级数可以逐项相加。
+    - |
+      相加得$1+0+\frac13-\frac12+\frac15+0+\frac17-\frac14+\cdots$。去掉$0$，正好是题里的级数；去掉$0$只是从部分和里挑出一部分，极限不变。
+  reference: |
+    插了$0$的$\frac12S$和$S$逐项相加，第$4j-2$项是$-\frac1{4j-2}+\frac1{4j-2}=0$，第$4j$项是$-\frac1{4j}-\frac1{4j}=-\frac1{2j}$，奇数项是$\frac1{2k-1}$。所以和为$\frac32S$的级数$1+0+\frac13-\frac12+\frac15+0+\frac17-\frac14+\cdots$去掉$0$就是题里的级数，它的部分和是前者部分和的一部分，所以也收敛到$\frac32S$（数值是$\frac32\ln2\approx1.040$）。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）设$\sum a_n$绝对收敛（absolute convergence）。证明$\sum a_n^2$收敛。
+
+    （2）举一个条件收敛的$\sum a_n$，使$\sum a_n^2$发散。
+
+    （3）$\sum a_n^2$收敛时，$\sum a_n$一定收敛吗？
+  hints:
+    - |
+      （1）$\sum|a_n|$收敛，所以$|a_n|\to0$，从某一项起$|a_n|\le1$。
+    - |
+      （1）从那一项起$0\le a_n^2\le|a_n|$，用比较判别法（comparison test）。
+    - |
+      （2）试试$a_n=\frac{(-1)^{n+1}}{\sqrt n}$；（3）试试$a_n=\frac1n$。
+  reference: |
+    （1）$\sum|a_n|$收敛，通项$|a_n|\to0$，从某一项起$|a_n|\le1$，于是$a_n^2\le|a_n|$，由比较判别法$\sum a_n^2$收敛。
+
+    （2）$a_n=\frac{(-1)^{n+1}}{\sqrt n}$：由交错级数判别法收敛，$\sum\frac1{\sqrt n}$发散，所以条件收敛；而$a_n^2=\frac1n$，$\sum a_n^2$是发散的调和级数（harmonic series）。
+
+    （3）不一定：$a_n=\frac1n$时$\sum a_n^2$收敛，$\sum a_n$发散。
+
+- id: p7
+  tier: thinking
+  statement: |
+    记交错调和级数的部分和为$S_m$，和为$S$。
+
+    （1）为什么$S_2<S_4<S_6<\cdots<S<\cdots<S_5<S_3<S_1$？在数轴上，部分和是怎样移动的？
+
+    （2）只知道$S_{10}$和$S_{11}$，能把$S$确定到什么范围？
+
+    （3）把$S_{10}$和$S_{11}$的平均值当作$S$的近似，误差不超过多少？为什么这通常比只用$S_{10}$或$S_{11}$准？
+  hints:
+    - |
+      （1）$S_{2k+2}-S_{2k}=\frac1{2k+1}-\frac1{2k+2}$，$S_{2k+1}-S_{2k-1}=-\frac1{2k}+\frac1{2k+1}$，各是正的还是负的？
+    - |
+      （2）$S$夹在相邻的两个部分和之间，$S_{11}-S_{10}=\frac1{11}$。
+    - |
+      （3）区间的中点到区间里任何一点的距离，不超过区间长度的一半。
+  reference: |
+    （1）偶数项的部分和递增，奇数项的部分和递减，两串都趋于$S$。部分和在数轴上左右来回跳，每跳一次距离缩短，从两边夹住$S$。
+
+    （2）$S$在$S_{10}$和$S_{11}=S_{10}+\frac1{11}$之间，长$\frac1{11}$的区间里。
+
+    （3）平均值的误差不超过$\frac1{22}$，只有$S_{10}$、$S_{11}$的误差上界$\frac1{11}$的一半。$S$在两者之间，中点离$S$最远也只有区间长的一半。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）证明交错调和级数的正项$1+\frac13+\frac15+\cdots$和负项$\frac12+\frac14+\frac16+\cdots$各自发散。
+
+    （2）想把交错调和级数重排（rearrangement）成和为$2$：先依次取正项，直到部分和刚超过$2$；再依次取负项，直到刚低于$2$；再取正项……这个办法为什么能一直做下去？为什么得到的级数收敛到$2$？
+
+    （3）同样的办法，能不能用在一个绝对收敛的级数上？
+  hints:
+    - |
+      （1）负项的和是调和级数的一半；正项的每一项都比相应的负项大。
+    - |
+      （2）正项、负项都还剩无穷多个，而且剩下的部分仍然发散，所以总能越过$2$。越过时多出来的部分，不超过最后加的那一项。
+    - |
+      （3）绝对收敛时，正项的和、负项的和都是有限的。
+  reference: |
+    （1）$\frac12+\frac14+\cdots$是调和级数的一半，发散；$\frac1{2k-1}>\frac1{2k}$，由比较判别法正项也发散。
+
+    （2）去掉有限项不改变发散，所以剩下的正项总能把部分和推过$2$，剩下的负项总能把它拉回$2$以下，每种都要用无穷多次。每次越过$2$，部分和和$2$的距离不超过最后加上的那一项，而通项趋于$0$，所以部分和趋于$2$。这正是数学分析里的:term[黎曼重排定理]{id="math.analysis.riemann-rearrangement-theorem"}（Riemann rearrangement theorem）的想法。
+
+    （3）不能：绝对收敛时正项的和、负项的和都有限，没法把部分和推到任意远，事实上怎样重排和都不变。

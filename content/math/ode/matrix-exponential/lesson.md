@@ -29,7 +29,7 @@ status: reviewed
 ::anchor{id="thm-matrix-exponential"}
 **:term[矩阵指数]{id="math.ode.matrix-exponential"}的性质**　(1) $\frac{\dd}{\dd t}e^{tA}=Ae^{tA}=e^{tA}A$；(2) 若$AB=BA$，则$e^{A+B}=e^Ae^B$，特别地$e^{(s+t)A}=e^{sA}e^{tA}$，并且$e^{tA}$可逆，逆矩阵是$e^{-tA}$；(3) $P$可逆时$e^{PBP^{-1}}=Pe^BP^{-1}$。
 
-**证明思路**：(1) $e^{tA}$的每个元素都是$t$的幂级数（power series），处处收敛，可以[逐项求导](lesson:math.calculus.power-series-calculus)（term-by-term differentiation）：$\sum_{k\ge1}\frac{kt^{k-1}A^k}{k!}=A\sum_{k\ge1}\frac{t^{k-1}A^{k-1}}{(k-1)!}=Ae^{tA}$，$A$也可以提到右边。(2) 令$X(t)=e^{t(A+B)}$、$Y(t)=e^{tA}e^{tB}$；$B$和每个$A^k$可交换，所以和$e^{tA}$可交换，于是$Y'=Ae^{tA}e^{tB}+e^{tA}Be^{tB}=(A+B)Y$。$X$也满足$X'=(A+B)X$，并且$X(0)=Y(0)=I$，对每一列用[解的结构](lesson:math.ode.first-order-systems#thm-linear-system-space)里的唯一性，$X\equiv Y$，取$t=1$即得；(3) 由$(PBP^{-1})^k=PB^kP^{-1}$逐项得到。
+**证明思路**：(1) $e^{tA}$的每个元素都是$t$的幂级数（power series），处处收敛，可以[逐项求导](lesson:math.calculus.power-series-calculus#thm-termwise)（term-by-term differentiation）：$\sum_{k\ge1}\frac{kt^{k-1}A^k}{k!}=A\sum_{k\ge1}\frac{t^{k-1}A^{k-1}}{(k-1)!}=Ae^{tA}$，$A$也可以提到右边。(2) 令$X(t)=e^{t(A+B)}$、$Y(t)=e^{tA}e^{tB}$；$B$和每个$A^k$可交换，所以和$e^{tA}$可交换，于是$Y'=Ae^{tA}e^{tB}+e^{tA}Be^{tB}=(A+B)Y$。$X$也满足$X'=(A+B)X$，并且$X(0)=Y(0)=I$，对每一列用[解的结构](lesson:math.ode.first-order-systems#thm-linear-system-space)里的唯一性，$X\equiv Y$，取$t=1$即得；(3) 由$(PBP^{-1})^k=PB^kP^{-1}$逐项得到。
 
 数$a$、$b$总能交换，$e^{a+b}=e^ae^b$不需要条件；矩阵不可交换时，$e^{A+B}$一般不等于$e^Ae^B$（第 7 题）。
 
