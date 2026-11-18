@@ -115,7 +115,7 @@ export function judgeChoice(answer: Extract<Answer, { type: 'choice' }>, selecte
 }
 
 export function judgeSequence(answer: Extract<Answer, { type: 'sequence' }>, input: string): Verdict {
-  const tokens = input.trim().split(/(?:->|[\s,，、→])+/).filter(Boolean);
+  const tokens = input.normalize('NFKC').trim().split(/(?:->|[\s,、→])+/).filter(Boolean);
   if (!tokens.length) return { kind: 'format', message: '请先填写记号' };
   const allowed = answer.alphabet?.map((v) => normalizeToken(v, answer.caseSensitive));
   for (const token of tokens) {

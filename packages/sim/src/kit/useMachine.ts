@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useMemo, useReducer, useState } from 'react';
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import { useInView } from '@principia/anim/kit';
 import { History, type Machine } from '../core/machine';
 import { compilePredicate, type Condition } from '../core/predicate';
 
@@ -14,6 +15,8 @@ const PREVIEW = 200;
 
 /** 参数变动时由小节的 AnimBlock 按参数重新挂载；画廊使用固定参数。 */
 export function useMachine<P, S>(machine: Machine<P, S>, params: P, seed: number, options: PlaybackOptions) {
+  const playerRef = useRef<HTMLElement>(null);
+  const inView = useInView(playerRef, '0px');
   const initialGrain = options.granularities?.[0];
   const fresh = () => {
     const history = new History(machine, params, seed);
@@ -59,10 +62,23 @@ export function useMachine<P, S>(machine: Machine<P, S>, params: P, seed: number
     refresh();
   }, [history, grain, rules, matches, collect, extend]);
   useEffect(() => {
-    if (!running) return;
-    const timer = window.setTimeout(advance, 1000 / (speed * options.stepsPerSecond));
-    return () => window.clearTimeout(timer);
-  }, [running, speed, options.stepsPerSecond, advance, version]);
+    if (!running || !inView) return;
+    let timer: number | undefined;
+    const schedule = () => {
+      window.clearTimeout(timer);
+      if (!document.hidden) {
+        timer = window.setTimeout(() => {
+          if (!document.hidden) advance();
+        }, 1000 / (speed * options.stepsPerSecond));
+      }
+    };
+    document.addEventListener('visibilitychange', schedule);
+    schedule();
+    return () => {
+      document.removeEventListener('visibilitychange', schedule);
+      window.clearTimeout(timer);
+    };
+  }, [running, inView, speed, options.stepsPerSecond, advance, version]);
 
   const seek = (target: number) => {
     stop();
@@ -101,6 +117,6 @@ export function useMachine<P, S>(machine: Machine<P, S>, params: P, seed: number
     setPauseIndex(-1);
     if (!history.done) setRunning((was) => !was);
   };
-  return { history, visited, running, speed, grain, pauseIndex, reached, setSpeed, seek, reset, edit, changeGrain, toggle,
+  return { playerRef, history, visited, running, speed, grain, pauseIndex, reached, setSpeed, seek, reset, edit, changeGrain, toggle,
     step: () => { stop(); advance(); }, options };
 }

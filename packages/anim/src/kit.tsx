@@ -410,15 +410,15 @@ export function formatNumber(value: number): string {
 }
 
 /** 元素在不在屏幕上：不在的时候动画不跑。 */
-export function useInView(ref: RefObject<Element | null>): boolean {
+export function useInView(ref: RefObject<Element | null>, rootMargin = '100px'): boolean {
   const [inView, setInView] = useState(true);
   useEffect(() => {
     const el = ref.current;
     if (!el || typeof IntersectionObserver === 'undefined') return;
-    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { rootMargin: '100px' });
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { rootMargin });
     observer.observe(el);
     return () => observer.disconnect();
-  }, [ref]);
+  }, [ref, rootMargin]);
   return inView;
 }
 

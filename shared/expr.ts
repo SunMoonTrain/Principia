@@ -73,6 +73,7 @@ export type EvalResult =
 export function normalizeExpression(input: string): string {
   return input
     .normalize('NFKC')
+    .replace(/\b0[XBO]/g, (prefix) => prefix.toLowerCase())
     .replace(/[−–]/g, '-')
     .replace(/[×·⋅]/g, '*')
     .replace(/÷/g, '/')

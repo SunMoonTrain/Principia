@@ -44,18 +44,22 @@ export function StepperBar<P, S>({ player, children, labels = {} }: {
 }) {
   const { history, options, pauseIndex } = player;
   const onKey = (event: KeyboardEvent<HTMLElement>) => {
-    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey ||
-      (event.target as HTMLElement).closest('input, select, textarea, [contenteditable="true"]')) return;
+    const target = event.target as HTMLElement;
+    if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey ||
+      target.isContentEditable || target.closest('input, select, textarea')) return;
     switch (event.key) {
       case 'ArrowRight': player.step(); break;
       case 'ArrowLeft': player.seek(Math.max(0, history.index - 1)); break;
-      case ' ': player.toggle(); break;
+      case ' ':
+        if (target.closest('button, summary, a')) return;
+        player.toggle();
+        break;
       case 'Home': player.reset(); break;
       default: return;
     }
     event.preventDefault();
   };
-  return <section className="sim-player" aria-label="步进模拟器" tabIndex={0} onKeyDown={onKey}>
+  return <section ref={player.playerRef} className="sim-player" aria-label="步进模拟器" tabIndex={0} onKeyDown={onKey}>
     {children}
     <p className="sim-event" aria-live="polite">{history.events.map((event) => event.text).join(' ') || '初始状态'}</p>
     {pauseIndex >= 0 && <div className="sim-pause" role="status">{labels['pauses:' + pauseIndex] ?? options.pauses?.[pauseIndex].text}</div>}
