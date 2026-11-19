@@ -508,3 +508,210 @@ glossary:
       $f$在区域上全纯、$|f|$在区域里某点取到最大值，则$f$是常数；所以有界区域上$|f|$的最大值在边界上取到。
     definedIn: math.complex-analysis.maximum-modulus
     anchor: thm-maximum-modulus
+  - id: math.complex-analysis.order-of-zero
+    zh: |
+      $m$阶零点
+    en: |
+      zero of order m
+    brief: |
+      $f$在$a$附近全纯、不恒为$0$，$f(a)=\dots=f^{(m-1)}(a)=0$、$f^{(m)}(a)\ne0$时，$a$叫$f$的$m$阶零点，这时$f(z)=(z-a)^mg(z)$、$g(a)\ne0$；$m=1$时叫单零点。
+    definedIn: math.complex-analysis.identity-theorem
+    anchor: def-zero-order
+  - id: math.complex-analysis.isolated-zeros
+    zh: |
+      零点的孤立性
+    en: |
+      principle of isolated zeros
+    brief: |
+      区域上不恒为$0$的全纯函数，每个零点的阶都有限，并且这个零点附近没有别的零点。
+    definedIn: math.complex-analysis.identity-theorem
+    anchor: thm-isolated-zeros
+  - id: math.complex-analysis.identity-theorem
+    zh: |
+      唯一性定理
+    en: |
+      identity theorem
+    brief: |
+      区域$D$上的两个全纯函数，在一列收敛到$D$中一点的互不相同的点上相等，或在一点处函数值和各阶导数都相等，就在整个$D$上相等。
+    definedIn: math.complex-analysis.identity-theorem
+    anchor: thm-identity
+  - id: math.complex-analysis.annulus
+    zh: |
+      圆环
+    en: |
+      annulus
+    brief: |
+      以$a$为中心的区域$r<|z-a|<R$（$0\le r<R\le+\infty$）；$r>0$、$R$有限时夹在两个同心圆周之间，$r=0$时就是去心圆盘。
+    definedIn: math.complex-analysis.laurent-series
+    anchor: def-annulus
+  - id: math.complex-analysis.punctured-disc
+    zh: |
+      去心圆盘
+    en: |
+      punctured disc
+    brief: |
+      以$a$为中心的$0<|z-a|<R$（$0<R\le+\infty$）：$R$有限时是开圆盘去掉圆心，$R=+\infty$时是去掉$a$的整个平面。
+    definedIn: math.complex-analysis.laurent-series
+    anchor: def-annulus
+  - id: math.complex-analysis.laurent-series
+    zh: |
+      洛朗级数
+    en: |
+      Laurent series
+    brief: |
+      形如$\sum_{n=-\infty}^{\infty}a_n(z-a)^n$的级数，非负次幂、负次幂两部分都收敛才算收敛；圆环里全纯的函数都能唯一地这样展开。
+    definedIn: math.complex-analysis.laurent-series
+    anchor: def-laurent-series
+  - id: math.complex-analysis.principal-part
+    zh: |
+      主部
+    en: |
+      principal part
+    brief: |
+      $f$在去心圆盘$0<|z-a|<R$上全纯时，它的洛朗级数里负次幂各项的和$\sum_{n\ge1}a_{-n}(z-a)^{-n}$。
+    definedIn: math.complex-analysis.laurent-series
+    anchor: def-principal-part
+  - id: math.complex-analysis.isolated-singularity
+    zh: |
+      孤立奇点
+    en: |
+      isolated singularity
+    brief: |
+      $f$在某个去心圆盘$0<|z-a|<R$上全纯，在$a$处没有定义或不全纯，$a$就叫$f$的孤立奇点。
+    definedIn: math.complex-analysis.singularities
+    anchor: def-isolated-singularity
+  - id: math.complex-analysis.removable-singularity
+    zh: |
+      可去奇点
+    en: |
+      removable singularity
+    brief: |
+      主部为$0$的孤立奇点：补上（或改成）一个值，函数在那里就全纯；等价于函数在它的某个去心圆盘里有界。
+    definedIn: math.complex-analysis.singularities
+    anchor: def-singularity-types
+  - id: math.complex-analysis.pole
+    zh: |
+      极点
+    en: |
+      pole
+    brief: |
+      主部不为$0$、只有有限项的孤立奇点，最低次的一项是$(z-a)^{-m}$的倍数时叫$m$阶极点；$z\to a$时$|f(z)|\to+\infty$。
+    definedIn: math.complex-analysis.singularities
+    anchor: def-singularity-types
+  - id: math.complex-analysis.essential-singularity
+    zh: |
+      本性奇点
+    en: |
+      essential singularity
+    brief: |
+      主部有无穷多项的孤立奇点，如$e^{1/z}$的$0$；$f$在它附近无界，$|f|$又不趋于$+\infty$。
+    definedIn: math.complex-analysis.singularities
+    anchor: def-singularity-types
+  - id: math.complex-analysis.analytic-continuation
+    zh: |
+      解析延拓
+    en: |
+      analytic continuation
+    brief: |
+      区域$D_1\subset D_2$，$f$在$D_1$上全纯；在$D_2$上全纯、在$D_1$上等于$f$的函数叫$f$的解析延拓，有的话只有一个。
+    definedIn: math.complex-analysis.analytic-continuation
+    anchor: def-continuation
+  - id: math.complex-analysis.residue
+    zh: |
+      留数
+    en: |
+      residue
+    brief: |
+      $f$在孤立奇点$a$处的洛朗级数里$(z-a)^{-1}$的系数，记作$\Res_{z=a}f(z)$；它等于$f$沿绕着$a$的逆时针小圆周的积分除以$2\pi i$。
+    definedIn: math.complex-analysis.residue-theorem
+    anchor: def-residue
+  - id: math.complex-analysis.residue-theorem
+    zh: |
+      留数定理
+    en: |
+      residue theorem
+    brief: |
+      $C$是逆时针的简单闭曲线，$f$在$C$上全纯，在$C$里面除有限个孤立奇点外全纯，则$\oint_Cf\,\dd z$等于$2\pi i$乘这些点处的留数之和。
+    definedIn: math.complex-analysis.residue-theorem
+    anchor: thm-residue
+  - id: math.complex-analysis.meromorphic-function
+    zh: |
+      亚纯函数
+    en: |
+      meromorphic function
+    brief: |
+      开集上除去一些极点以外处处全纯的函数，如有理函数、$\frac1{\sin z}$。
+    definedIn: math.complex-analysis.residue-theorem
+    anchor: def-meromorphic
+  - id: math.complex-analysis.contour
+    zh: |
+      围道
+    en: |
+      contour
+    brief: |
+      用留数定理算积分时选的分段光滑简单闭曲线，常由实轴上的线段和圆弧拼成。
+    definedIn: math.complex-analysis.real-integrals
+    anchor: def-contour
+  - id: math.complex-analysis.logarithmic-derivative
+    zh: |
+      对数导数
+    en: |
+      logarithmic derivative
+    brief: |
+      $f$的对数导数是$\frac{f'}f$；它在$f$的$m$阶零点处的留数是$m$，在$m$阶极点处的留数是$-m$。
+    definedIn: math.complex-analysis.argument-principle
+    anchor: def-log-derivative
+  - id: math.complex-analysis.continuous-argument
+    zh: |
+      连续辐角
+    en: |
+      continuous argument
+    brief: |
+      $w(t)$在$[\alpha,\beta]$上连续、处处不为$0$时，对每个$t$都是$w(t)$的一个辐角的连续实函数$\theta(t)$；两个连续辐角只差一个常数（$2\pi$的整数倍）。
+    definedIn: math.complex-analysis.argument-principle
+    anchor: def-continuous-arg
+  - id: math.complex-analysis.winding-number
+    zh: |
+      绕数
+    en: |
+      winding number
+    brief: |
+      闭曲线$C$绕不在它上面的点$a$转的圈数（逆时针为正），记作$\operatorname{Ind}_C(a)$，等于$\frac1{2\pi i}\oint_C\frac{\dd z}{z-a}$。
+    definedIn: math.complex-analysis.argument-principle
+    anchor: def-winding-number
+  - id: math.complex-analysis.argument-principle
+    zh: |
+      辐角原理
+    en: |
+      argument principle
+    brief: |
+      $f$在逆时针的简单闭曲线$C$上全纯、不为$0$，里面除有限个极点外全纯时，$\frac1{2\pi i}\oint_C\frac{f'}f\dd z$是$C$里零点数减极点数（按阶计），也是$f(C)$绕原点的圈数。
+    definedIn: math.complex-analysis.argument-principle
+    anchor: thm-argument-principle
+  - id: math.complex-analysis.jordan-lemma
+    zh: |
+      若尔当引理
+    en: |
+      Jordan's lemma
+    brief: |
+      $\lambda>0$，$g$在上半圆周$C_R$上连续、处处$|g|\le M(R)$，则$\bigl|\int_{C_R}ge^{i\lambda z}\dd z\bigr|\le\frac{\pi M(R)}\lambda$；所以$M(R)\to0$时这个积分趋于$0$。
+    definedIn: math.complex-analysis.jordan-lemma
+    anchor: thm-jordan-lemma
+  - id: math.complex-analysis.rouche-theorem
+    zh: |
+      儒歇定理
+    en: |
+      Rouché's theorem
+    brief: |
+      $f$、$g$在简单闭曲线$C$上和$C$里面全纯，$C$上$|g|<|f|$，则$f+g$和$f$在$C$里面的零点个数相同（按阶计）。
+    definedIn: math.complex-analysis.rouche-theorem
+    anchor: thm-rouche
+  - id: math.complex-analysis.cauchy-principal-value
+    zh: |
+      柯西主值
+    en: |
+      Cauchy principal value
+    brief: |
+      被积函数在$x_0$附近无界时，两侧各挖去$\varepsilon$、令$\varepsilon\to0^+$得到的极限；积分限是$\pm\infty$时取$\int_{-R}^R$、令$R\to+\infty$。记作$\operatorname{P.V.}\int$。
+    definedIn: math.complex-analysis.cauchy-principal-value
+    anchor: def-cauchy-pv

@@ -1,0 +1,170 @@
+- id: p1
+  tier: easy
+  statement: |
+    $0$是$\frac{1-e^z}{z^4}$的极点。求这个极点的阶。
+  answer:
+    type: number
+    value: 3
+    exact: true
+  hints:
+    - |
+      比较分子、分母在$0$处零点的阶。
+    - |
+      $1-e^z=-z-\frac{z^2}{2!}-\frac{z^3}{3!}-\cdots$，$0$是分子的几阶零点？
+    - |
+      写成$\frac{g(z)}{z^m}$，$g$在$0$附近全纯、$g(0)\ne0$，这个$m$就是极点的阶。
+  solution: |
+    $1-e^z=-\sum_{n\ge1}\frac{z^n}{n!}=zg(z)$，其中$g(z)=-\sum_{n\ge1}\frac{z^{n-1}}{n!}$是整函数，$g(0)=-1\ne0$，所以$0$是分子的单零点，是分母的$4$阶零点。$z\ne0$时$\frac{1-e^z}{z^4}=\frac{g(z)}{z^3}$，由讲解里极点的阶的定理，$0$是$3$阶极点。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列函数中，以$0$为可去奇点的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $z\sin\frac1z$
+      - |
+        $\frac{e^z-e^{-z}}z$
+      - |
+        $\frac{\Log(1+z)}z$
+      - |
+        $\frac z{1-\cos z}$
+    value: [2, 3]
+  hints:
+    - |
+      可去奇点等价于在$0$的某个去心圆盘里有界；分子、分母都在$0$附近全纯时，也可以比较它们零点的阶。
+    - |
+      A 在实轴上有界，沿虚轴呢？$\sin(iy)=i\sinh y$。
+    - |
+      $e^z-e^{-z}$、$\Log(1+z)$在$0$处的值都是$0$，导数分别是$2$、$1$；$1-\cos z=\frac{z^2}2-\frac{z^4}{24}+\cdots$。
+  solution: |
+    A：$z=iy$（$y>0$）时$\sin\frac1z=\sin\bigl(-\frac iy\bigr)=-i\sinh\frac1y$，$z\sin\frac1z=y\sinh\frac1y$，$y\to0^+$时趋于$+\infty$，所以它在$0$附近无界，不是可去奇点；它的洛朗级数$\sum_{k\ge0}\frac{(-1)^kz^{-2k}}{(2k+1)!}$有无穷多个负次幂，$0$是本性奇点。
+
+    B：$e^z-e^{-z}$在$0$处为$0$、导数为$2$，$z\to0$时$\frac{e^z-e^{-z}}z\to2$，有界，是可去奇点。C：$|z|<1$时$\Re(1+z)>0$，$\Log(1+z)$全纯，在$0$处为$0$、导数为$1$，$\frac{\Log(1+z)}z\to1$，是可去奇点。D：$0$是分母的二阶零点、分子的单零点，是一阶极点。选 B、C。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$f(z)=\frac1{1-\cos z}-\frac2{z^2}$。在$0$处补上适当的值以后，$f$在$0$附近全纯。求$f$在$0$处的泰勒级数的收敛半径。
+  answer:
+    type: number
+    value: 2*pi
+  hints:
+    - |
+      先看$\frac1{1-\cos z}$在$0$处的主部：$1-\cos z=\frac{z^2}2\bigl(1-\frac{z^2}{12}+\cdots\bigr)$。
+    - |
+      $1-\cos z=2\sin^2\frac z2$，它的零点是$2k\pi$，$k$是整数。$0$以外的这些点处，$|f|$怎样？
+    - |
+      $\frac2{z^2}$正好消掉了$0$处的主部；再用全纯函数的幂级数展开一节判断收敛半径的定理。
+  solution: |
+    令$h(z)=\frac{2(1-\cos z)}{z^2}=1-\frac{z^2}{12}+\frac{z^4}{360}-\cdots$，$h(0)=1$，它是只含偶次幂的整函数。$1-\cos z=2\sin^2\frac z2$只在$z=2k\pi$处为$0$，所以$h$在$|z|<2\pi$里不为$0$，$\frac1h$在那里全纯，$\frac1h=1+c_1z+c_2z^2+\cdots$，其中$c_1=-\frac{h'(0)}{h(0)^2}=0$，再求一次导数得$c_2=\frac1{12}$。于是$0<|z|<2\pi$里$f(z)=\frac2{z^2}\Bigl(\frac1{h(z)}-1\Bigr)=2c_2+2c_3z+\cdots$，主部为$0$，补上值$\frac16$以后$f$在$|z|<2\pi$上全纯。
+
+    $z\to2\pi$时$1-\cos z\to0$，$\bigl|\frac1{1-\cos z}\bigr|\to+\infty$，而$\frac2{z^2}$有界，所以$|f(z)|\to+\infty$。由[收敛半径的定理](lesson:math.complex-analysis.power-series#thm-radius-nearest)，收敛半径是$2\pi$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\frac1{z(e^z-1)}$在$0$处的主部中$z^{-2}$和$z^{-1}$的系数，答案依次写这两个系数。
+  answer:
+    type: tuple
+    value: [1, -1/2]
+  hints:
+    - |
+      $e^z-1=zh(z)$，$h(z)=1+\frac z2+\frac{z^2}6+\cdots$是整函数。$0$是几阶极点？
+    - |
+      $\frac1{z(e^z-1)}=\frac1{z^2}\cdot\frac1{h(z)}$，只要$\frac1h$在$0$处泰勒级数的前两项。
+    - |
+      $\frac1h$在$0$处的值是$\frac1{h(0)}$，导数是$-\frac{h'(0)}{h(0)^2}$。
+  solution: |
+    $e^z-1=\sum_{n\ge1}\frac{z^n}{n!}=zh(z)$，$h(z)=\sum_{n\ge0}\frac{z^n}{(n+1)!}$是整函数，$h(0)=1$，$h'(0)=\frac12$。$h$在$0$附近不为$0$，$u=\frac1h$在那里全纯，$u(0)=1$，$u'(0)=-\frac{h'(0)}{h(0)^2}=-\frac12$，所以$u(z)=1-\frac z2+\cdots$。于是$\frac1{z(e^z-1)}=\frac{u(z)}{z^2}=\frac1{z^2}-\frac1{2z}+\cdots$，$0$是二阶极点，主部是$\frac1{z^2}-\frac1{2z}$，$z^{-2}$、$z^{-1}$的系数依次是$1$、$-\frac12$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$在去心圆盘$0<|z-a|<R$上全纯，$a$是$f$的本性奇点。证明卡索拉蒂-魏尔斯特拉斯定理：对任何复数$w_0$、任何$\varepsilon>0$和任何$0<\delta\le R$，去心圆盘$0<|z-a|<\delta$里都有$z$使$|f(z)-w_0|<\varepsilon$。
+  hints:
+    - |
+      反证：设$0<|z-a|<\delta$里处处$|f(z)-w_0|\ge\varepsilon$，看$g(z)=\frac1{f(z)-w_0}$。
+    - |
+      $g$在这个去心圆盘里全纯，$|g|\le\frac1\varepsilon$；由可去奇点定理，补上值以后$g$在$a$处全纯。
+    - |
+      分$g(a)\ne0$、$g(a)=0$两种情形：$f=w_0+\frac1g$在$a$处分别是可去奇点、极点，都和本性奇点矛盾。
+  reference: |
+    反证。设有$w_0$、$\varepsilon$、$\delta$，使$0<|z-a|<\delta$里处处$|f(z)-w_0|\ge\varepsilon$。那里$f-w_0\ne0$，$g=\frac1{f-w_0}$全纯，$|g|\le\frac1\varepsilon$；由可去奇点定理，$a$是$g$的可去奇点，补上值以后$g$在$|z-a|<\delta$上全纯。
+
+    若$g(a)\ne0$，$g$在$a$附近不为$0$，$f=w_0+\frac1g$在$a$附近有界，$a$是$f$的可去奇点。若$g(a)=0$，$g$在去心圆盘里不为$0$，不恒为$0$，$a$是$g$的某个$m$阶零点；由极点的阶的定理（第（3）条，用在$f-w_0$上），$a$是$f-w_0$的$m$阶极点，而$f$和$f-w_0$的主部相同（只差常数项），$a$也是$f$的$m$阶极点。两种情形都和$a$是本性奇点矛盾。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$在去心圆盘$0<|z-a|<R$上全纯，并且有常数$C$，使那里$|f(z)|\le\frac C{|z-a|^{3/2}}$。
+
+    （1）证明$a$是$f$的可去奇点或一阶极点，并各举一个例子，说明两种情形都可能出现。
+
+    （2）把条件换成$|f(z)|\le\frac C{|z-a|^{1/2}}$，$a$是哪一类？
+  hints:
+    - |
+      用洛朗系数的公式和 ML 不等式估计主部的系数$a_{-n}$，沿圆周$|\zeta-a|=\rho$（$0<\rho<R$）积分。
+    - |
+      $|a_{-n}|\le\frac1{2\pi}\cdot\frac C{\rho^{3/2}}\cdot\rho^{n-1}\cdot2\pi\rho=C\rho^{n-\frac32}$。
+    - |
+      $n\ge2$时令$\rho\to0^+$；（2）里同样的估计是$C\rho^{n-\frac12}$。
+  reference: |
+    （1）设$C_\rho$是逆时针的圆周$|\zeta-a|=\rho$，$0<\rho<R$。由系数公式，$a_{-n}=\frac1{2\pi i}\oint_{C_\rho}f(\zeta)(\zeta-a)^{n-1}\,\dd\zeta$；$C_\rho$上$|f(\zeta)(\zeta-a)^{n-1}|\le C\rho^{n-\frac52}$，长度是$2\pi\rho$，由 ML 不等式，$|a_{-n}|\le C\rho^{n-\frac32}$。$n\ge2$时指数$n-\frac32>0$，令$\rho\to0^+$得$a_{-n}=0$，主部至多是$\frac{a_{-1}}{z-a}$：$a_{-1}=0$时$a$是可去奇点，否则是一阶极点。例子（取$R=1$）：$f=1$满足条件（取$C=1$），$a$是可去奇点；$f=\frac1{z-a}$满足条件（$|f|=\frac{|z-a|^{1/2}}{|z-a|^{3/2}}\le\frac1{|z-a|^{3/2}}$，取$C=1$），$a$是一阶极点。
+
+    （2）同样得$|a_{-n}|\le C\rho^{n-\frac12}$，$n\ge1$时都趋于$0$，主部为$0$，$a$是可去奇点。条件本身允许$f$在$a$附近无界，结论却说$f$其实有界：比可去奇点定理的「有界」宽，靠的是指数$\frac12<1$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    设$f$在去心圆盘$0<|z-a|<R$上全纯、不恒为$0$，$a$是$f$的孤立奇点。
+
+    （1）$a$是$f$的$m$阶极点时，$a$是$\frac1f$的什么点？
+
+    （2）$a$是$f$的可去奇点。在$a$处补上值以后，分$f(a)\ne0$和$a$是$f$的$m$阶零点两种情形，$a$各是$\frac1f$的什么点？
+
+    （3）$a$是$f$的本性奇点，并且$f$在$a$的某个去心圆盘里没有零点。$a$能不能是$\frac1f$的可去奇点或极点？
+
+    （4）$f(z)=e^{1/z}-1$在$0$处是哪一类孤立奇点？$0$是不是$\frac1f$的孤立奇点？
+  hints:
+    - |
+      （1）（2）用极点的阶的定理里的第（3）条，把$f$、$\frac1f$的位置对调。
+    - |
+      （3）$\frac1f$要是可去奇点，就看补上的值是不是$0$；要是极点，$|f|$会怎样？
+    - |
+      （4）$e^{1/z}=1$的解是哪些点？它们挤向哪里？
+  reference: |
+    （1）由极点的阶的定理，$f$在$a$的某个去心圆盘里不为$0$，$\frac1f$补上值$0$以后以$a$为$m$阶零点，所以$a$是$\frac1f$的可去奇点（补$0$）。
+
+    （2）$f(a)\ne0$时，$f$在$a$附近不为$0$，$\frac1f$在$a$附近全纯（补上$\frac1{f(a)}$），$a$是$\frac1f$的可去奇点。$a$是$f$的$m$阶零点时，$f=(z-a)^mh$，$h(a)\ne0$，$a$附近$z\ne a$时$f\ne0$，$\frac1f=\frac{1/h}{(z-a)^m}$，$a$是$\frac1f$的$m$阶极点。
+
+    （3）都不能，$a$是$\frac1f$的本性奇点。设$a$是$\frac1f$的可去奇点，补上的值是$c$：$c\ne0$时$f=\frac1{1/f}$在$a$附近有界，$a$是$f$的可去奇点；$c=0$时补好的$\frac1f$在去心圆盘里不为$0$，$a$是它的某个$m$阶零点，由极点的阶的定理，$a$是$f$的$m$阶极点，都矛盾。设$a$是$\frac1f$的极点，则$\bigl|\frac1f\bigr|\to+\infty$，$f\to0$，$f$在$a$附近有界，也矛盾；例子是$e^{1/z}$和$e^{-1/z}$。
+
+    （4）$e^{1/z}-1=\sum_{n\ge1}\frac{z^{-n}}{n!}$，主部有无穷多项，$0$是本性奇点。$f$的零点是$\frac1z=2k\pi i$的点$z_k=\frac1{2k\pi i}$（$k$是非零整数），它们挤向$0$；$\frac1f$在这些点处没有定义，$0$的每个去心圆盘里都有它们，所以$0$不是$\frac1f$的孤立奇点。（1）到（3）里$f$和$\frac1f$对照的说法，要先保证$f$在$a$的某个去心圆盘里没有零点。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$f(z)=e^{1/(z-2)}$。
+
+    （1）证明$|z|<2$时$|f(z)|<1$。全纯函数的幂级数展开一节里，由「$|f(z)|\to+\infty$」判断收敛半径的定理，在这里还能用吗？
+
+    （2）证明$f$在$0$处的泰勒级数的收敛半径恰好是$2$。
+
+    （3）一般地，设$f$在$|z|<R$上全纯，圆周$|z|=R$上的点$p$是$f$的孤立奇点，并且不是可去奇点。$f$在$0$处的泰勒级数的收敛半径能比$R$大吗？$p$是可去奇点时呢？
+  hints:
+    - |
+      （1）$|e^w|=e^{\Re w}$；$|z|<2$时$\Re(z-2)<0$。
+    - |
+      （2）假如收敛半径$\rho>2$，和$S$在$|z|<\rho$里全纯，在$|z|<2$里等于$f$。用:term[唯一性定理]{id="math.complex-analysis.identity-theorem"}（identity theorem）比较$S$和$f$在$|z|<\rho$去掉点$2$以后的:term[区域]{id="math.complex-analysis.domain"}（domain）上的值。
+    - |
+      （2）于是$f$在$2$附近有界，由可去奇点定理会推出什么？$2$其实是$f$的哪一类奇点？
+  reference: |
+    （1）$|f(z)|=e^{\Re\frac1{z-2}}$，$\Re\frac1{z-2}=\frac{\Re(z-2)}{|z-2|^2}$。$|z|<2$时$\Re z<2$，所以$\Re\frac1{z-2}<0$，$|f(z)|<1$。从圆盘里趋于圆周上的点$2$时$|f|$不趋于$+\infty$，那条定理的条件不满足，它只说明收敛半径至少是$2$。
+
+    （2）$f$在$|z|<2$上全纯，收敛半径至少是$2$。假如收敛半径$\rho>2$，和$S$在$|z|<\rho$上全纯，在$|z|<2$里等于$f$。$D=\{z:|z|<\rho,\ z\ne2\}$是区域，$S$、$f$都在$D$上全纯，在$D$里的开圆盘$|z|<2$上相等，由唯一性定理在$D$上处处相等；于是$f$在$2$的某个去心圆盘里等于在$2$处连续的$S$，有界，由可去奇点定理，$2$是$f$的可去奇点。可$f$在$2$处的洛朗级数$\sum_{n\ge0}\frac{(z-2)^{-n}}{n!}$有无穷多个负次幂，$2$是本性奇点，矛盾。
+
+    （3）不能，论证同（2）。收敛半径$\rho>R$时，和$S$在$|z|<\rho$上全纯；取以$p$为圆心、落在$|z|<\rho$里的小圆盘$\Delta$，使$f$在$\Delta$去掉$p$以后全纯。$|z|<R$和$\Delta$都是凸的（convex）、互相有交，它们的并去掉$p$是区域，$S$和$f$在上面都全纯、在$|z|<R$上相等，所以在$\Delta$去掉$p$的部分也相等，$f$在$p$附近有界，$p$是可去奇点，矛盾。所以圆周上只要有一个不可去的孤立奇点，收敛半径就恰好是$R$，不管它是极点还是本性奇点；$p$是可去奇点时收敛半径可以更大，例如$\frac{\sin(z-R)}{z-R}$补上值以后是整函数，收敛半径是$+\infty$。

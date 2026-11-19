@@ -1,0 +1,199 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\int_{-\infty}^{+\infty}\frac{x\sin x}{x^2+4}\,\dd x$。
+  answer:
+    type: number
+    value: pi*exp(-2)
+  hints:
+    - |
+      分母只比分子高一次，没有实根。用讲解里傅里叶型积分的定理，先求$\int_{-\infty}^{+\infty}\frac{xe^{ix}}{x^2+4}\,\dd x$，再取虚部。
+    - |
+      $\frac{ze^{iz}}{z^2+4}$在上半平面里只有一阶极点$2i$，留数可以用$\frac{p(a)}{q'(a)}$算。
+    - |
+      留数是$\frac{2ie^{i\cdot2i}}{2\cdot2i}=\frac{e^{-2}}2$，所以$\int_{-\infty}^{+\infty}\frac{xe^{ix}}{x^2+4}\,\dd x=2\pi i\cdot\frac{e^{-2}}2=\pi ie^{-2}$，虚部是$\pi e^{-2}$。
+  solution: |
+    分母$x^2+4$没有实根，次数比分子高一次；$\sin x$是$e^{ix}$的虚部，取$\lambda=1$。由讲解里傅里叶型积分的定理，$\int_{-\infty}^{+\infty}\frac{xe^{ix}}{x^2+4}\,\dd x$收敛，等于$2\pi i$乘上半平面里的留数之和。
+
+    上半平面里分母只有根$2i$，是单零点，由极点处留数的定理，$\frac{ze^{iz}}{z^2+4}$在$2i$处的留数是$\frac{2ie^{i\cdot2i}}{2\cdot2i}=\frac{e^{-2}}2$。所以$\int_{-\infty}^{+\infty}\frac{xe^{ix}}{x^2+4}\,\dd x=\pi ie^{-2}$，它的虚部就是所求的积分，等于$\pi e^{-2}\approx0.425$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列积分都可以用线段$[-R,R]$和上半圆周$C_R$拼成的围道来算（把$\cos\lambda x$、$\sin\lambda x$换成$e^{i\lambda x}$，$\lambda>0$）。说明$C_R$上的积分趋于$0$时，哪些在整个$C_R$上用 ML 不等式（把$|e^{i\lambda z}|$按最大值$1$估计）不够，要用若尔当引理？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\int_{-\infty}^{+\infty}\frac{x\cos3x}{x^2+2}\,\dd x$
+      - |
+        $\int_{-\infty}^{+\infty}\frac{x^3\sin2x}{x^4+5}\,\dd x$
+      - |
+        $\int_{-\infty}^{+\infty}\frac{\sin x}{x^2+x+1}\,\dd x$
+      - |
+        $\int_{-\infty}^{+\infty}\frac{xe^{ix}}{x^4+1}\,\dd x$
+    value: [1, 2]
+  hints:
+    - |
+      在$C_R$上$|e^{i\lambda z}|\le1$。ML 不等式给的界是$C_R$的长度$\pi R$乘有理函数那部分在$C_R$上的模的上界。
+    - |
+      分母比分子高$k$次时，$R$足够大以后有理函数在$C_R$上的模不超过$\frac K{R^k}$，ML 不等式的界是$\frac{\pi K}{R^{k-1}}$。逐个看$k$是几。
+    - |
+      A、B 的$k=1$，ML 不等式的界不趋于$0$，要用若尔当引理；C 的$k=2$，D 的$k=3$，ML 不等式就够了。
+  solution: |
+    在$C_R$上$|e^{i\lambda z}|=e^{-\lambda y}\le1$，被积函数的模不超过有理函数那部分的模。分母比分子高$k$次时，有理函数在$C_R$上的模不超过$\frac K{R^k}$，ML 不等式的界是$\pi R\cdot\frac K{R^k}$，只有$k\ge2$时才趋于$0$。
+
+    A：$\frac x{x^2+2}$只高一次，$C_R$上$\bigl|\frac z{z^2+2}\bigr|\le\frac R{R^2-2}$，ML 的界$\frac{\pi R^2}{R^2-2}$趋于$\pi$，要用若尔当引理（$\lambda=3$）。B：$\frac{x^3}{x^4+5}$也只高一次，同样要用若尔当引理（$\lambda=2$）。
+
+    C：$\frac1{x^2+x+1}$高两次，$|z^2+z+1|\ge R^2-R-1$，ML 的界$\frac{\pi R}{R^2-R-1}\to0$。D：$\frac x{x^4+1}$高三次，ML 的界$\frac{\pi R^2}{R^4-1}\to0$。选 A、B。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\int_{-\infty}^{+\infty}\frac{x^3\sin x}{x^4+1}\,\dd x$。
+  answer:
+    type: number
+    value: pi*cos(1/sqrt(2))*exp(-1/sqrt(2))
+  hints:
+    - |
+      分母比分子高一次，没有实根，用讲解里傅里叶型积分的定理。$z^4+1$在上半平面里的根是哪几个？
+    - |
+      上半平面里的根是$z_1=\frac{1+i}{\sqrt2}$、$z_2=\frac{-1+i}{\sqrt2}$，都是单零点。$\frac{z^3e^{iz}}{z^4+1}$在根$z_k$处的留数是$\frac{z_k^3e^{iz_k}}{4z_k^3}=\frac{e^{iz_k}}4$。
+    - |
+      $e^{iz_1}+e^{iz_2}=e^{-1/\sqrt2}\bigl(e^{i/\sqrt2}+e^{-i/\sqrt2}\bigr)=2e^{-1/\sqrt2}\cos\frac1{\sqrt2}$，所以$\int_{-\infty}^{+\infty}\frac{x^3e^{ix}}{x^4+1}\,\dd x=\pi ie^{-1/\sqrt2}\cos\frac1{\sqrt2}$。它的虚部$\pi e^{-1/\sqrt2}\cos\frac1{\sqrt2}\approx1.178$就是所求。
+  solution: |
+    分母$x^4+1$没有实根，次数比分子高一次，由讲解里傅里叶型积分的定理（$\lambda=1$），所求的积分是$\int_{-\infty}^{+\infty}\frac{x^3e^{ix}}{x^4+1}\,\dd x$的虚部。$z^4=-1$的根是$e^{i\pi/4}$、$e^{3i\pi/4}$、$e^{5i\pi/4}$、$e^{7i\pi/4}$，上半平面里的是$z_1=\frac{1+i}{\sqrt2}$、$z_2=\frac{-1+i}{\sqrt2}$。它们都是分母的单零点，由极点处留数的定理，在根$z_k$处的留数是$\frac{z_k^3e^{iz_k}}{4z_k^3}=\frac{e^{iz_k}}4$。
+
+    $iz_1=\frac{-1+i}{\sqrt2}$，$iz_2=\frac{-1-i}{\sqrt2}$，所以$e^{iz_1}+e^{iz_2}=e^{-1/\sqrt2}\bigl(e^{i/\sqrt2}+e^{-i/\sqrt2}\bigr)=2e^{-1/\sqrt2}\cos\frac1{\sqrt2}$。积分是$2\pi i\cdot\frac{2e^{-1/\sqrt2}\cos\frac1{\sqrt2}}4=\pi ie^{-1/\sqrt2}\cos\frac1{\sqrt2}$，虚部是$\pi e^{-1/\sqrt2}\cos\frac1{\sqrt2}\approx1.178$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\int_0^{+\infty}\frac{x^3\sin x}{(x^2+1)^2}\,\dd x$。
+  answer:
+    type: number
+    value: pi/4*exp(-1)
+  hints:
+    - |
+      被积函数是偶函数（even function），所求的积分是整条实轴上的积分的一半。分母比分子高一次，没有实根，用讲解里傅里叶型积分的定理。
+    - |
+      上半平面里$i$是$\frac{z^3e^{iz}}{(z^2+1)^2}$的二阶极点。令$g(z)=\frac{z^3e^{iz}}{(z+i)^2}$，留数是$g'(i)$。
+    - |
+      $g'(z)=e^{iz}\frac{(3z^2+iz^3)(z+i)-2z^3}{(z+i)^3}$，$g'(i)=e^{-1}\cdot\frac{-2i}{-8i}=\frac1{4e}$。整条实轴上的积分是$2\pi i\cdot\frac1{4e}=\frac{\pi i}{2e}$的虚部$\frac\pi{2e}$，所求的是它的一半$\frac\pi{4e}$。
+  solution: |
+    $x^3$、$\sin x$都是奇函数（odd function），被积函数是偶函数（even function）。分母比分子高一次，没有实根，由讲解里傅里叶型积分的定理和它的证明，$\int_0^{+\infty}$和整条实轴上的积分都收敛，所求的是后者的一半；后者是$\int_{-\infty}^{+\infty}\frac{x^3e^{ix}}{(x^2+1)^2}\,\dd x$的虚部。
+
+    上半平面里只有$i$，$(z^2+1)^2=(z-i)^2(z+i)^2$，分子在$i$处是$-ie^{-1}\ne0$，所以$i$是二阶极点。令$g(z)=\frac{z^3e^{iz}}{(z+i)^2}$，由极点处留数的定理，留数是$g'(i)$。由$g'(z)=e^{iz}\frac{(3z^2+iz^3)(z+i)-2z^3}{(z+i)^3}$，代入$z=i$：$3z^2+iz^3=-3+1=-2$，分子是$-2\cdot2i+2i=-2i$，分母是$(2i)^3=-8i$，所以$g'(i)=\frac1{4e}$。
+
+    整条实轴上$\int_{-\infty}^{+\infty}\frac{x^3e^{ix}}{(x^2+1)^2}\,\dd x=2\pi i\cdot\frac1{4e}=\frac{\pi i}{2e}$，虚部是$\frac\pi{2e}$，所求的积分是$\frac\pi{4e}\approx0.289$。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）设$\lambda<0$，$C_R^-$是下半圆周$z=Re^{-it}$（$0\le t\le\pi$），$g$在$C_R^-$上连续，并且$C_R^-$上处处$|g(z)|\le M$。证明$\Bigl|\int_{C_R^-}g(z)e^{i\lambda z}\,\dd z\Bigr|\le\frac{\pi M}{|\lambda|}$，并由此写出$\lambda<0$时的若尔当引理。
+
+    （2）设$\lambda$是不为$0$的实数，求$\int_{-\infty}^{+\infty}\frac{e^{i\lambda x}}{x-i}\,\dd x$（实部、虚部分别积分）。$\lambda>0$和$\lambda<0$时的结果为什么差这么多？
+  hints:
+    - |
+      （1）在$C_R^-$上$z=R\cos t-iR\sin t$，$|e^{i\lambda z}|=e^{-\lambda y}$等于多少？（2）$\frac1{x-i}=\frac{x+i}{x^2+1}$，实部、虚部都由傅里叶型积分组成，先说明收敛。$\lambda>0$时照讲解里定理的证明；$\lambda<0$时用线段$[-R,R]$和$C_R^-$拼成的闭曲线。
+    - |
+      （1）$y=-R\sin t$，$|e^{i\lambda z}|=e^{\lambda R\sin t}=e^{-|\lambda|R\sin t}$，以下和若尔当引理的证明一样。（2）从$-R$沿实轴到$R$、再沿$C_R^-$回到$-R$是顺时针，围着下半圆盘；$\frac{e^{i\lambda z}}{z-i}$只在$i$处不全纯，而$i$在上半平面。
+    - |
+      （1）积分的模不超过$\int_0^\pi Me^{-|\lambda|R\sin t}R\,\dd t\le\frac{\pi M}{|\lambda|}$。所以$\lambda<0$、$C_R^-$上处处$|g(z)|\le M(R)$、$R\to+\infty$时$M(R)\to0$，就有$\int_{C_R^-}g(z)e^{i\lambda z}\,\dd z\to0$。
+
+      （2）$\lambda>0$时用上半圆周，$i$处的留数是$e^{i\lambda\cdot i}=e^{-\lambda}$，积分是$2\pi ie^{-\lambda}$。$\lambda<0$时下半圆盘里没有奇点，由柯西积分定理（Cauchy's integral theorem），$\int_{-R}^R\frac{e^{i\lambda x}}{x-i}\,\dd x=-\int_{C_R^-}\frac{e^{i\lambda z}}{z-i}\,\dd z$，由（1）趋于$0$，积分是$0$。唯一的极点$i$在上半平面：$\lambda>0$时只能往上合，正好把它围进来；$\lambda<0$时只能往下合，里面什么也没有。
+  reference: |
+    （1）在$C_R^-$上$z=R\cos t-iR\sin t$，$y=-R\sin t$，$|e^{i\lambda z}|=e^{-\lambda y}=e^{\lambda R\sin t}=e^{-|\lambda|R\sin t}$，$|z'(t)|=R$。由积分的模不超过模的积分，积分的模不超过$\int_0^\pi Me^{-|\lambda|R\sin t}R\,\dd t$；照若尔当引理的证明（两半对称，再用若尔当不等式），它不超过$\frac{\pi M}{|\lambda|}\bigl(1-e^{-|\lambda|R}\bigr)\le\frac{\pi M}{|\lambda|}$。$\lambda<0$时的若尔当引理：$R$足够大时$g$在$C_R^-$上连续，$C_R^-$上处处$|g(z)|\le M(R)$，$R\to+\infty$时$M(R)\to0$，则$\int_{C_R^-}g(z)e^{i\lambda z}\,\dd z\to0$。
+
+    （2）收敛：$\frac{e^{i\lambda x}}{x-i}=\frac{(x+i)(\cos\lambda x+i\sin\lambda x)}{x^2+1}$，实部是$\frac{x\cos\lambda x-\sin\lambda x}{x^2+1}$，虚部是$\frac{x\sin\lambda x+\cos\lambda x}{x^2+1}$。$\cos\lambda x=\cos|\lambda|x$，$\sin\lambda x=\pm\sin|\lambda|x$，由讲解里傅里叶型积分的定理，$\frac x{x^2+1}$、$\frac1{x^2+1}$乘$\cos|\lambda|x$或$\sin|\lambda|x$的积分都收敛。所以实部、虚部的积分都收敛，等于$\lim_{R\to+\infty}\int_{-R}^R$。
+
+    $\lambda>0$：取$R>1$，线段$[-R,R]$加上半圆周$C_R$围着$i$，$\frac{e^{i\lambda z}}{z-i}$在$i$处的留数是$e^{-\lambda}$。由留数定理，$\int_{-R}^R\frac{e^{i\lambda x}}{x-i}\,\dd x+\int_{C_R}\frac{e^{i\lambda z}}{z-i}\,\dd z=2\pi ie^{-\lambda}$；$C_R$上$\bigl|\frac1{z-i}\bigr|\le\frac1{R-1}\to0$，由若尔当引理第二项趋于$0$，所以积分是$2\pi ie^{-\lambda}$。
+
+    $\lambda<0$：线段$[-R,R]$加$C_R^-$是顺时针的闭曲线，$\frac{e^{i\lambda z}}{z-i}$在它上面和它围成的下半圆盘里全纯，由柯西积分定理，$\int_{-R}^R\frac{e^{i\lambda x}}{x-i}\,\dd x+\int_{C_R^-}\frac{e^{i\lambda z}}{z-i}\,\dd z=0$。$C_R^-$上$\bigl|\frac1{z-i}\bigr|\le\frac1{R-1}$，由（1）第二项趋于$0$，所以积分是$0$。
+
+    核对：实部里$\frac{x\cos\lambda x}{x^2+1}$、$\frac{\sin\lambda x}{x^2+1}$都是奇函数，积分是$0$；虚部是$\int\frac{x\sin\lambda x}{x^2+1}\,\dd x+\int\frac{\cos\lambda x}{x^2+1}\,\dd x=\pm\pi e^{-|\lambda|}+\pi e^{-|\lambda|}$（正负号取$\lambda$的符号），$\lambda>0$时是$2\pi e^{-\lambda}$，$\lambda<0$时是$0$，和上面一致。差这么多是因为唯一的极点$i$在上半平面：$\lambda>0$时只能往上合，把它围进来；$\lambda<0$时只能往下合，下半平面里没有奇点。
+
+- id: p6
+  tier: hard
+  statement: |
+    $\int_0^{+\infty}\cos x^2\,\dd x$和$\int_0^{+\infty}\sin x^2\,\dd x$叫作菲涅耳积分（Fresnel integrals）。沿这样的闭曲线积分$e^{iz^2}$：从$0$沿实轴走到$R$，沿圆弧$\Gamma_R$：$z=Re^{it}$（$0\le t\le\frac\pi4$）走到$Re^{i\pi/4}$，再沿线段回到$0$。
+
+    （1）证明$R\to+\infty$时$\int_{\Gamma_R}e^{iz^2}\,\dd z\to0$。
+
+    （2）证明两个菲涅耳积分都收敛，并且都等于$\frac{\sqrt{2\pi}}4$。
+
+    （3）证明：用正方形$[-R,R]\times[-R,R]$上的积分去逼近时，$\iint\sin(x^2+y^2)\,\dd A\to\pi$。对照[极坐标下的二重积分](lesson:math.vector-calculus.polar-double-integrals)一节第 8 题：用圆盘去逼近时，它没有极限。
+  hints:
+    - |
+      （1）在$\Gamma_R$上$z^2=R^2e^{2it}$，$|e^{iz^2}|=e^{-R^2\sin2t}$；$0\le t\le\frac\pi4$时$2t\in\bigl[0,\frac\pi2\bigr]$，可以用若尔当不等式。（2）在回到$0$的线段上$z=re^{i\pi/4}$，$z^2=ir^2$。（3）$\sin(x^2+y^2)=\sin x^2\cos y^2+\cos x^2\sin y^2$。
+    - |
+      （1）$\sin2t\ge\frac{4t}\pi$，积分的模不超过$\int_0^{\pi/4}e^{-4R^2t/\pi}R\,\dd t$。（2）$e^{iz^2}$是整函数，由柯西积分定理（Cauchy's integral theorem），$\int_0^Re^{ix^2}\,\dd x+\int_{\Gamma_R}e^{iz^2}\,\dd z-e^{i\pi/4}\int_0^Re^{-r^2}\,\dd r=0$。（3）正方形上的积分是$2\int_{-R}^R\cos x^2\,\dd x\cdot\int_{-R}^R\sin y^2\,\dd y$。
+    - |
+      （1）$\int_0^{\pi/4}e^{-4R^2t/\pi}R\,\dd t=\frac\pi{4R}\bigl(1-e^{-R^2}\bigr)<\frac\pi{4R}$，趋于$0$。
+
+      （2）由高斯积分（Gaussian integral），$\int_0^{+\infty}e^{-r^2}\,\dd r=\frac{\sqrt\pi}2$，所以$\int_0^Re^{ix^2}\,\dd x\to\frac{\sqrt\pi}2e^{i\pi/4}=\frac{\sqrt{2\pi}}4(1+i)$。它的实部、虚部正是$\int_0^R\cos x^2\,\dd x$、$\int_0^R\sin x^2\,\dd x$，都有极限$\frac{\sqrt{2\pi}}4$。
+
+      （3）$\cos x^2$、$\sin x^2$是偶函数，$\int_{-R}^R\cos x^2\,\dd x$、$\int_{-R}^R\sin y^2\,\dd y$都趋于$\frac{\sqrt{2\pi}}2=\sqrt{\frac\pi2}$，所以正方形上的积分趋于$2\cdot\frac\pi2=\pi$。
+  reference: |
+    （1）在$\Gamma_R$上$z=Re^{it}$，$z^2=R^2e^{2it}$，$|e^{iz^2}|=e^{-R^2\sin2t}$，$|z'(t)|=R$。$0\le t\le\frac\pi4$时$2t\in\bigl[0,\frac\pi2\bigr]$，由若尔当不等式$\sin2t\ge\frac{4t}\pi$，所以积分的模不超过$\int_0^{\pi/4}e^{-4R^2t/\pi}R\,\dd t=\frac\pi{4R}\bigl(1-e^{-R^2}\bigr)<\frac\pi{4R}$，趋于$0$。
+
+    （2）$e^{iz^2}$是整函数，闭曲线分段光滑、简单，由柯西积分定理，三段上的积分之和是$0$。回到$0$的线段写成$z=re^{i\pi/4}$，$r$从$R$减到$0$，$z^2=ir^2$，$e^{iz^2}=e^{-r^2}$，这一段的积分是$-e^{i\pi/4}\int_0^Re^{-r^2}\,\dd r$。所以$\int_0^Re^{ix^2}\,\dd x=e^{i\pi/4}\int_0^Re^{-r^2}\,\dd r-\int_{\Gamma_R}e^{iz^2}\,\dd z$，由（1）和高斯积分，它趋于$\frac{\sqrt\pi}2e^{i\pi/4}=\frac{\sqrt{2\pi}}4(1+i)$。左边的实部、虚部是$\int_0^R\cos x^2\,\dd x$、$\int_0^R\sin x^2\,\dd x$，都有极限$\frac{\sqrt{2\pi}}4$，即两个积分都收敛，都等于$\frac{\sqrt{2\pi}}4$。
+
+    （3）$\sin(x^2+y^2)=\sin x^2\cos y^2+\cos x^2\sin y^2$，在正方形上每一项都拆成两个一元积分之积，所以正方形上的积分是$2C_RS_R$，$C_R=\int_{-R}^R\cos x^2\,\dd x$，$S_R=\int_{-R}^R\sin x^2\,\dd x$。由（2）和偶函数，$C_R$、$S_R$都趋于$\sqrt{\frac\pi2}$，积分趋于$\pi$。用圆盘去逼近得到的$\pi\bigl(1-\cos R^2\bigr)$却来回摆动：被积函数变号时，整个平面上的积分和用什么区域去逼近有关。
+
+- id: p7
+  tier: thinking
+  statement: |
+    设$\lambda>0$。
+
+    （1）分母只比分子高一次时，有理函数在$C_R$上的模不超过$\frac KR$。ML 不等式给的界是$\pi R\cdot\frac KR=\pi K$，若尔当引理给的界是$\frac{\pi K}{\lambda R}$，多出来的那个因子$\frac1R$是从哪里来的？$C_R$上哪些地方$|e^{i\lambda z}|$不小，这些地方的弧大约有多长？
+
+    （2）若尔当引理里「$M(R)\to0$」这个条件能不能去掉？算一算$\int_{C_R}e^{i\lambda z}\,\dd z$。
+
+    （3）只用被积函数的模来估计，若尔当引理的界能不能再改进，使$M$不变时界也随$R\to+\infty$趋于$0$？用$\sin t\le t$估计$R\int_0^\pi e^{-\lambda R\sin t}\,\dd t$的下界。
+  hints:
+    - |
+      （1）$|e^{i\lambda z}|=e^{-\lambda y}$只和高度$y$有关。（2）$e^{i\lambda z}$有原函数$\frac{e^{i\lambda z}}{i\lambda}$。（3）$0\le t\le\frac\pi2$时$e^{-\lambda R\sin t}\ge e^{-\lambda Rt}$。
+    - |
+      （1）$e^{-\lambda y}$大于$e^{-3}\approx0.05$的地方是$y<\frac3\lambda$。$R$很大时，$C_R$上这样的地方只有两端的两小段，各长约$\frac3\lambda$，和$R$无关。（2）$\int_{C_R}e^{i\lambda z}\,\dd z=\frac{e^{-i\lambda R}-e^{i\lambda R}}{i\lambda}$。
+    - |
+      （1）ML 不等式把整个长为$\pi R$的半圆周都按最大值$1$算了。实际上$|e^{i\lambda z}|$只在两端长度和$\frac1\lambda$同一量级的弧上不小，其余地方小得可以不计，有效长度是$\frac1\lambda$的常数倍，不是$\pi R$。省下的正是这个$R$，代价是多了一个$\frac1\lambda$：$\lambda$越小，衰减越慢，界越大。
+
+      （2）不能。$\int_{C_R}e^{i\lambda z}\,\dd z=-\frac{2\sin\lambda R}\lambda$，$R\to+\infty$时在$-\frac2\lambda$和$\frac2\lambda$之间来回摆动，没有极限；它的模不超过$\frac2\lambda<\frac\pi\lambda$，和引理的界相符。
+
+      （3）不能。由$\sin t\le t$，$R\int_0^\pi e^{-\lambda R\sin t}\,\dd t\ge2R\int_0^{\pi/2}e^{-\lambda Rt}\,\dd t=\frac2\lambda\bigl(1-e^{-\pi\lambda R/2}\bigr)$，上面又有若尔当引理的$\frac\pi\lambda$，它夹在两者之间，不趋于$0$。（2）的例子说明，$|g|$是常数时积分的模确实能达到$\frac2\lambda$。
+  reference: |
+    （1）$|e^{i\lambda z}|=e^{-\lambda y}$，在$C_R$上$y=R\sin t$。$e^{-\lambda y}$不小的地方是$y$不超过几个$\frac1\lambda$的地方，$R$很大时在$C_R$上只有$t$接近$0$或$\pi$的两小段，比如$y<\frac3\lambda$对应$t<\arcsin\frac3{\lambda R}\approx\frac3{\lambda R}$，弧长约$\frac3\lambda$，和$R$无关。ML 不等式按最大值$1$乘整个长度$\pi R$，若尔当引理只算了这两小段的「有效长度」（不超过$\frac\pi\lambda$），省掉了$R$，换来一个$\frac1\lambda$。
+
+    （2）不能去掉。$e^{i\lambda z}$有原函数$\frac{e^{i\lambda z}}{i\lambda}$，$\int_{C_R}e^{i\lambda z}\,\dd z=\frac{e^{-i\lambda R}-e^{i\lambda R}}{i\lambda}=-\frac{2\sin\lambda R}\lambda$，没有极限。它的模不超过$\frac2\lambda$，符合引理的界$\frac\pi\lambda$（$M=1$），所以界本身没错，只是$M$不趋于$0$时推不出积分趋于$0$。
+
+    （3）不能。$0\le t\le\frac\pi2$时$\sin t\le t$，$R\int_0^\pi e^{-\lambda R\sin t}\,\dd t=2R\int_0^{\pi/2}e^{-\lambda R\sin t}\,\dd t\ge2R\int_0^{\pi/2}e^{-\lambda Rt}\,\dd t=\frac2\lambda\bigl(1-e^{-\pi\lambda R/2}\bigr)$。所以只用模来估计，得到的界是$\frac M\lambda$的量级，不会随$R$趋于$0$；（2）里积分的模在$\sin\lambda R=\pm1$时等于$\frac2\lambda$，正好是这个下界的极限，说明这个量级确实会达到。
+
+- id: p8
+  tier: thinking
+  statement: |
+    对实数$\lambda$，设$I(\lambda)=\int_{-\infty}^{+\infty}\frac{x\sin\lambda x}{x^2+1}\,\dd x$，$J(\lambda)=\int_{-\infty}^{+\infty}\frac{\cos\lambda x}{x^2+1}\,\dd x$。
+
+    （1）分别求$\lambda>0$、$\lambda<0$、$\lambda=0$时的$I(\lambda)$。$I$在$\lambda=0$处连续吗？
+
+    （2）照[用留数计算实积分](lesson:math.complex-analysis.real-integrals)一节例 2 的办法可以算出，对一切实数$\lambda$，$J(\lambda)=\pi e^{-|\lambda|}$，它在$\lambda=0$处连续。从被积函数在$x\to\pm\infty$时衰减的快慢想一想：$I$和$J$为什么不一样？
+
+    （3）$\lambda>0$时在$I(\lambda)$里令$x=\frac u\lambda$。$\lambda\to0^+$时新的被积函数趋于什么？由此猜$\int_{-\infty}^{+\infty}\frac{\sin u}u\,\dd u$的值。
+  hints:
+    - |
+      （1）$\lambda>0$时照例 1 算；$\sin\lambda x$是$\lambda$的奇函数；$\lambda=0$时被积函数恒为$0$。（2）$\bigl|\frac{\cos\lambda x}{x^2+1}\bigr|\le\frac1{x^2+1}$对每个$\lambda$都成立；$\frac x{x^2+1}$却只像$\frac1x$那样衰减。
+    - |
+      （1）$\lambda>0$时$I(\lambda)=\pi e^{-\lambda}$，$\lambda<0$时$I(\lambda)=-\pi e^{\lambda}$，$I(0)=0$。（2）$J$的积分在$|x|\ge A$的部分，模不超过一个和$\lambda$无关、$A$大时很小的数；$I$的积分靠正负抵消才收敛，$\lambda$很小时，抵消要在$x$跑过几个$\frac1\lambda$以后才起作用。（3）$I(\lambda)=\int_{-\infty}^{+\infty}\frac{u\sin u}{u^2+\lambda^2}\,\dd u$。
+    - |
+      （1）$\lambda\to0^+$时$I(\lambda)\to\pi$，$\lambda\to0^-$时$I(\lambda)\to-\pi$，而$I(0)=0$：$I$在$0$处跳了一下，不连续，$I(0)$恰好是两侧极限的平均。
+
+      （2）$J$的被积函数被一个和$\lambda$无关、积分有限的函数$\frac1{x^2+1}$管住，$\lambda$变一点，$[-A,A]$上的积分变一点，$|x|>A$的部分始终很小，所以$J$连续；$J$在$0$处有个尖角，但没有跳。$I$的被积函数只像$\frac1x$那样衰减，$\int_A^{+\infty}\frac{x\sin\lambda x}{x^2+1}\,\dd x$换元以后大约是$\int_{\lambda A}^{+\infty}\frac{\sin u}u\,\dd u$，$\lambda\to0^+$时它不趋于$0$。跳跃正来自$x$约为$\frac1\lambda$的远处，$\lambda$越小，这部分离原点越远。
+
+      （3）$u\ne0$时$\frac{u\sin u}{u^2+\lambda^2}\to\frac{\sin u}u$，所以猜$\int_{-\infty}^{+\infty}\frac{\sin u}u\,\dd u=\lim_{\lambda\to0^+}I(\lambda)=\pi$，即$\int_0^{+\infty}\frac{\sin u}u\,\dd u=\frac\pi2$。这里交换了极限和积分，要另外说明；[柯西主值与实轴上的极点](lesson:math.complex-analysis.cauchy-principal-value)一节会直接算出这个积分。
+  reference: |
+    （1）$\lambda>0$时，$\frac{ze^{i\lambda z}}{z^2+1}$在$i$处的留数是$\frac{ie^{-\lambda}}{2i}=\frac{e^{-\lambda}}2$，由傅里叶型积分的定理，$\int\frac{xe^{i\lambda x}}{x^2+1}\,\dd x=\pi ie^{-\lambda}$，$I(\lambda)=\pi e^{-\lambda}$。$\sin\lambda x$是$\lambda$的奇函数，$\lambda<0$时$I(\lambda)=-I(-\lambda)=-\pi e^{\lambda}$；$I(0)=0$。两侧极限是$\pm\pi$，$I$在$0$处不连续，$I(0)$是两侧极限的平均。
+
+    （2）$\bigl|\frac{\cos\lambda x}{x^2+1}\bigr|\le\frac1{x^2+1}$：给定$\varepsilon$，取$A$使$|x|>A$部分的积分对一切$\lambda$都小于$\varepsilon$，再在$[-A,A]$上利用$\cos\lambda x$随$\lambda$连续（在$[-A,A]$上一致），就得到$J$连续。$I$的积分只条件收敛，尾巴$\int_A^{+\infty}\frac{x\sin\lambda x}{x^2+1}\,\dd x$令$x=\frac u\lambda$后是$\int_{\lambda A}^{+\infty}\frac{u\sin u}{u^2+\lambda^2}\,\dd u$，$\lambda\to0^+$时接近$\int_0^{+\infty}\frac{\sin u}u\,\dd u=\frac\pi2$，不管$A$多大都不小。和傅里叶变换的联系：函数在无穷远衰减得越慢，变换在$0$附近越不光滑，$\frac1{x^2+1}$对应尖角，只像$\frac1x$衰减的$\frac x{x^2+1}$对应跳跃。
+
+    （3）$I(\lambda)=\int_{-\infty}^{+\infty}\frac{u\sin u}{u^2+\lambda^2}\,\dd u$，$\lambda\to0^+$时被积函数趋于$\frac{\sin u}u$（$u=0$处补$1$），猜$\int_{-\infty}^{+\infty}\frac{\sin u}u\,\dd u=\pi$，即$\int_0^{+\infty}\frac{\sin u}u\,\dd u=\frac\pi2$。猜得对：在$u$的写法里尾巴对$\lambda$一致地小（照讲解里证收敛的办法估计，$\int_A^{+\infty}$的模不超过$\frac2A$），中间一段两个被积函数之差的积分不超过$\int\frac{\lambda^2\,\dd u}{u^2+\lambda^2}=\pi\lambda$，所以交换是可以补出理由的。柯西主值与实轴上的极点一节会用围道直接算出它。

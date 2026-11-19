@@ -1260,3 +1260,12 @@ glossary:
       在$0$处的泰勒级数$\sum\frac{f^{(n)}(0)}{n!}x^n$，如$e^x=\sum\frac{x^n}{n!}$，对一切$x$成立。
     definedIn: math.calculus.taylor-series
     anchor: def-taylor-series
+  - id: math.calculus.rational-trig-function
+    zh: |
+      三角函数有理式
+    en: |
+      rational function of sine and cosine
+    brief: |
+      由$\sin x$、$\cos x$和常数经过有限次四则运算得到的函数，记作$R(\sin x,\cos x)$，如$\frac1{2+\cos x}$。
+    definedIn: math.calculus.trig-integrals
+    anchor: def-rational-trig
