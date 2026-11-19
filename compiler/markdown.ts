@@ -17,6 +17,7 @@ import type { Rich } from '../shared/content-types.ts';
 import { ANCHOR_RE, lessonPath } from '../shared/ids.ts';
 import { processAnim, type AnimUse } from './anim.ts';
 import type { Diagnostics } from './diagnostics.ts';
+import { assemble, AssemblyError } from '../packages/sim/src/core/p8-asm.ts';
 import { highlightCode } from './highlight.ts';
 import { loadSvg } from './svg.ts';
 import { keepPunctuationWithMath, spaceAroundMath } from '../shared/cjk-spacing.ts';
@@ -317,6 +318,13 @@ function transformNode(node: MdNode, ctx: MdContext, mode: Mode, para: Seen, top
       if (mode === 'plain') {
         ctx.diags.error(ctx.file, line, '这个字段里不能写代码块');
         return [];
+      }
+      if (node.lang === 'p8asm') {
+        try { assemble(node.value ?? ''); }
+        catch (error) {
+          if (!(error instanceof AssemblyError)) throw error;
+          ctx.diags.error(ctx.file, line + error.line, error.message);
+        }
       }
       const code = highlightCode(node.lang ?? '', node.value ?? '');
       if (!code) {
