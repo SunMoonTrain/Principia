@@ -203,7 +203,7 @@
     - |
       功率$P=Fu_0=\eta A\frac{u_0^2}h$。撞几次以后，这点有方向的速度就被打乱成各个方向的杂乱运动，有序的流动变成了无序的热运动；气体变热以后，黏度怎样随温度变？
     - |
-      （1）$P=Fu_0=\eta A\frac{u_0^2}h$。流动稳定，每一层的流速不变，流动的动能也不变，这些功变成了气体的:term[内能]{id="physics.thermal-physics.internal-energy"}（internal energy，见[热力学第一定律](lesson:physics.thermal-physics.first-law#def-internal-energy)）：两板之间的气体被慢慢加热，就像摩擦生热一样。
+      （1）$P=Fu_0=\eta A\frac{u_0^2}h$。流动稳定，每一层的流速不变，流动的动能也不变，这些功变成了气体的:term[内能]{id="physics.thermal-physics.internal-energy"}（internal energy，见[内能与热量](lesson:physics.thermal-physics.internal-energy#def-internal-energy)）：两板之间的气体被慢慢加热，就像摩擦生热一样。
 
       （2）从上面一层下来的分子，比周围的分子多带着一点向前的速度；撞几次以后，这点有方向的速度就被分散成各个方向的杂乱运动。一层层地这样传下去，上板得到的动量最后交给了不动的下板，拉力做的功则留在气体里，成了分子热运动的能量：有序的流动变成了无序的热运动。[理想流体与伯努利方程](lesson:physics.newtonian-mechanics.bernoulli)第 8 题的水管里，压强差做的功也是这样被黏性耗掉的。
 

@@ -170,7 +170,7 @@
     - |
       （1）平均自由程远小于夹层的厚度时，热导率和压强有没有关系？抽到百分之一，平均自由程变为多少？（3）比较氩原子和空气分子的$mc_V$、$v_{\mathrm{rms}}$。
     - |
-      （1）温度不变时平均自由程和压强成反比，[平均自由程](lesson:physics.thermal-physics.mean-free-path)例 1 的$\lambda\approx6.7\times10^{-8}\,\mathrm m$；要平均自由程比夹层还厚，热量才不再靠分子一层层地传。（2）想想[热力学第一定律](lesson:physics.thermal-physics.first-law#def-heat)里说的另外两种传热方式。（3）$\kappa\approx\frac{mc_Vv_{\mathrm{rms}}}{3\sqrt2\,\sigma}$；空气主要是双原子分子（diatomic molecule），由[热容与焓](lesson:physics.thermal-physics.heat-capacity)的表，$mc_V=\frac{C_{V,\mathrm m}}{N_{\mathrm A}}\approx\frac52\kB$，氩是$\frac32\kB$。夹层厚了，里面的气体会怎样？
+      （1）温度不变时平均自由程和压强成反比，[平均自由程](lesson:physics.thermal-physics.mean-free-path)例 1 的$\lambda\approx6.7\times10^{-8}\,\mathrm m$；要平均自由程比夹层还厚，热量才不再靠分子一层层地传。（2）想想[内能与热量](lesson:physics.thermal-physics.internal-energy#def-heat)里说的另外两种传热方式。（3）$\kappa\approx\frac{mc_Vv_{\mathrm{rms}}}{3\sqrt2\,\sigma}$；空气主要是双原子分子（diatomic molecule），由[热容与焓](lesson:physics.thermal-physics.heat-capacity)的表，$mc_V=\frac{C_{V,\mathrm m}}{N_{\mathrm A}}\approx\frac52\kB$，氩是$\frac32\kB$。夹层厚了，里面的气体会怎样？
     - |
       （1）只要平均自由程远小于夹层的厚度，热导率就和压强无关：分子少了，每个分子却从更远的地方带来更大的能量差。抽到百分之一，平均自由程约$6.7\times10^{-6}\,\mathrm m$，仍只有夹层厚度的约千分之一，导热几乎不变。要让平均自由程和夹层一样厚，压强要降到约$1.013\times10^5\times\frac{6.7\times10^{-8}}{5\times10^{-3}}\,\mathrm{Pa}\approx1.4\,\mathrm{Pa}$；再抽稀，分子几乎直接从一层玻璃飞到另一层，导热才随压强一起变差（道理和[气体的黏性](lesson:physics.thermal-physics.viscosity)第 6 题一样），所以保温瓶要抽到$0.1\,\mathrm{Pa}$甚至更低。
 

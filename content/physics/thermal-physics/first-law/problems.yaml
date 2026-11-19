@@ -183,7 +183,7 @@
 - id: p8
   tier: thinking
   statement: |
-    第一定律$Q=\Delta U+W$对始末都是平衡态的任何过程都成立（不必是准静态的），$\delta Q=\dd U+p\,\dd V$却要求过程是准静态的。
+    第一定律$Q=\Delta U+W$对系统整体不动、始末都是平衡态的任何过程都成立（不必是准静态的），$\delta Q=\dd U+p\,\dd V$却要求过程是准静态的。
 
     （1）[准静态过程与气体的功](lesson:physics.thermal-physics.quasi-static-processes)第 6 题里，物质的量为$n$的理想气体在温度为$T$的热库里，压强从$p_1$变为$p_2$（$p_2<p_1$）：一次是一粒一粒地拿走细沙，准静态地膨胀；一次是外压（external pressure）突然降到$p_2$。两次从热库吸收的热量各是多少？哪次多？
 

@@ -302,7 +302,7 @@ glossary:
       adiabatic process
     brief: |
       系统和外界之间没有热量交换、只靠做功交换能量的过程，$Q=0$；不要求进行得缓慢。
-    definedIn: physics.thermal-physics.first-law
+    definedIn: physics.thermal-physics.internal-energy
     anchor: def-adiabatic-process
   - id: physics.thermal-physics.internal-energy
     zh: |
@@ -310,8 +310,8 @@ glossary:
     en: |
       internal energy
     brief: |
-      系统里所有分子无规则运动的动能和分子之间、分子内部的势能的总和，记作$U$；绝热过程中它的增加等于外界做的功。
-    definedIn: physics.thermal-physics.first-law
+      系统里所有分子无规则运动的动能和分子之间、分子内部的势能的总和，记作$U$；整体不动时，绝热过程中它的增加等于外界做的功。
+    definedIn: physics.thermal-physics.internal-energy
     anchor: def-internal-energy
   - id: physics.thermal-physics.state-function
     zh: |
@@ -320,7 +320,7 @@ glossary:
       state function
     brief: |
       由平衡态的状态参量唯一确定的量，如$p$、$V$、$T$、$U$；它的改变量只由初、末状态决定。
-    definedIn: physics.thermal-physics.first-law
+    definedIn: physics.thermal-physics.internal-energy
     anchor: def-state-function
   - id: physics.thermal-physics.heat
     zh: |
@@ -329,7 +329,7 @@ glossary:
       heat
     brief: |
       系统和外界之间因温度不同而传递的能量，记作$Q$，吸热为正；不是物体含有的量。
-    definedIn: physics.thermal-physics.first-law
+    definedIn: physics.thermal-physics.internal-energy
     anchor: def-heat
   - id: physics.thermal-physics.heat-conduction
     zh: |
@@ -337,8 +337,8 @@ glossary:
     en: |
       heat conduction
     brief: |
-      热量在直接接触的物体之间、或在物体内部，从温度高的地方传到温度低的地方的方式。
-    definedIn: physics.thermal-physics.first-law
+      物质本身不流动，热量在直接接触的物体之间、或在物体内部，从温度高的地方传到温度低的地方的方式。
+    definedIn: physics.thermal-physics.internal-energy
     anchor: def-heat
   - id: physics.thermal-physics.first-law
     zh: |
@@ -346,7 +346,7 @@ glossary:
     en: |
       first law of thermodynamics
     brief: |
-      系统吸收的热量等于内能的增加加上对外做的功，$Q=\Delta U+W$；实质是能量守恒。
+      系统整体不动、从一个平衡态变到另一个平衡态时，吸收的热量等于内能的增加加上对外做的功，$Q=\Delta U+W$；实质是能量守恒。
     definedIn: physics.thermal-physics.first-law
     anchor: thm-first-law
   - id: physics.thermal-physics.free-expansion

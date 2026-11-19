@@ -123,4 +123,4 @@ $$
 
 ## 常见误区
 
-- 「:term[焓]{id="physics.thermal-physics.enthalpy"}就是物体含有的:term[热量]{id="physics.thermal-physics.heat"}。」物体并不「含有」热量，热量是过程中传递的能量（见[热力学第一定律](lesson:physics.thermal-physics.first-law#def-heat)）；焓是:term[状态函数]{id="physics.thermal-physics.state-function"}$U+pV$。
+- 「:term[焓]{id="physics.thermal-physics.enthalpy"}就是物体含有的:term[热量]{id="physics.thermal-physics.heat"}。」物体并不「含有」热量，热量是过程中传递的能量（见[内能与热量](lesson:physics.thermal-physics.internal-energy#def-heat)）；焓是:term[状态函数]{id="physics.thermal-physics.state-function"}$U+pV$。

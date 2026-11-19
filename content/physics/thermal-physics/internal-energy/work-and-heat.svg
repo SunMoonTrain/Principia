@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" font-size="14">
+  <!-- 左右两幅图，水都涂浅灰色，两边水的多少一样。左：隔热容器（外面一层厚的半透明框是隔热层，盖子也隔热）里装着水；容器外的重物下落，绳子绕过滑轮、绕在竖直轴上端的绳轴上，带动轴转动，轴下端的叶轮在水里搅拌；绿色箭头沿着轴指向容器，表示外界做功，水温从 T1 升到 T2。右：同样多的水装在盖着盖子的锅里，锅放在火焰上，蓝色箭头从火焰指向锅底，表示传热，水温也从 T1 升到 T2。绿色是功，蓝色是热量，和能量账那张图一样；两支箭头一样长（都是 40 像素），因为两边内能的增加相同，外界做的功和水吸收的热量一样多。 -->
+  <line x1="320" y1="8" x2="320" y2="292" style="stroke: currentColor" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4 3" />
+
+  <!-- 左：搅拌，只做功 -->
+  <text x="20" y="28" fill="currentColor">搅拌：只做功</text>
+  <path d="M 61 112 V 259 H 219 V 112" style="stroke: currentColor" stroke-opacity="0.3" fill="none" stroke-width="10" />
+  <rect x="71" y="137" width="138" height="112" style="fill: currentColor" fill-opacity="0.08" />
+  <path d="M 70 112 V 250 H 210 V 112" style="stroke: currentColor" fill="none" stroke-width="2" />
+  <rect x="56" y="102" width="168" height="10" style="fill: currentColor" fill-opacity="0.3" />
+  <line x1="140" y1="56" x2="140" y2="228" style="stroke: currentColor" stroke-width="2" />
+  <rect x="114" y="202" width="25" height="24" style="fill: currentColor; stroke: currentColor" fill-opacity="0.35" stroke-width="1.2" />
+  <rect x="141" y="202" width="25" height="24" style="fill: currentColor; stroke: currentColor" fill-opacity="0.35" stroke-width="1.2" />
+  <rect x="132" y="66" width="16" height="20" style="fill: currentColor" fill-opacity="0.55" />
+  <line x1="148" y1="70" x2="262" y2="70" style="stroke: currentColor" stroke-width="1.2" />
+  <circle cx="262" cy="78" r="8" fill="none" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="262" y1="78" x2="262" y2="48" style="stroke: currentColor" stroke-width="1.2" />
+  <line x1="250" y1="48" x2="274" y2="48" style="stroke: currentColor" stroke-width="2" />
+  <line x1="270" y1="78" x2="270" y2="150" style="stroke: currentColor" stroke-width="1.2" />
+  <rect x="256" y="150" width="28" height="34" style="fill: currentColor" fill-opacity="0.55" />
+  <line x1="296" y1="152" x2="296" y2="180" style="stroke: currentColor" stroke-width="1.6" />
+  <path d="M 296 190 L 290.5 179 L 301.5 179 Z" style="fill: currentColor" />
+  <text x="270" y="206" fill="currentColor" text-anchor="middle">重物</text>
+  <line x1="124" y1="58" x2="124" y2="88" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 124 98 L 118.5 87 L 129.5 87 Z" style="fill: var(--good, #059669)" />
+  <text x="114" y="84" fill="currentColor" text-anchor="end">做功</text>
+  <text x="172" y="220" fill="currentColor">叶轮</text>
+  <text x="52" y="200" fill="currentColor" text-anchor="end">隔热层</text>
+  <text x="104" y="176" fill="currentColor" text-anchor="middle"><tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="10">1</tspan> → <tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="10">2</tspan></text>
+
+  <!-- 右：加热，只传热 -->
+  <text x="340" y="28" fill="currentColor">加热：只传热</text>
+  <rect x="401" y="97" width="138" height="112" style="fill: currentColor" fill-opacity="0.08" />
+  <path d="M 400 84 V 210 H 540 V 84" style="stroke: currentColor" fill="none" stroke-width="2" />
+  <rect x="394" y="74" width="152" height="10" style="fill: currentColor; stroke: currentColor" fill-opacity="0.35" stroke-width="1.2" />
+  <rect x="462" y="66" width="16" height="8" style="fill: currentColor" fill-opacity="0.55" />
+  <text x="470" y="158" fill="currentColor" text-anchor="middle"><tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="10">1</tspan> → <tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="10">2</tspan></text>
+  <line x1="470" y1="252" x2="470" y2="222" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 470 212 L 464.5 223 L 475.5 223 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="482" y="238" fill="currentColor">传热</text>
+  <path d="M 452 292 C 449 284 454 276 458 266 C 460 272 462 276 464 279 C 465 271 467 264 470 258 C 473 264 475 271 476 279 C 478 276 480 272 482 266 C 486 276 491 284 488 292 Z" style="fill: var(--accent, #2563eb); stroke: currentColor" fill-opacity="0.2" stroke-width="1.2" />
+  <text x="440" y="284" fill="currentColor" text-anchor="end">火焰</text>
+</svg>
