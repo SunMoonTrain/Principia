@@ -19,3 +19,9 @@ it('笔记预览和正文同一套空格规则：链接、强调的边上是公�
   const root = renderNote('见[$f$](https://example.com)的图，设   *$x$*   是，[积分 $I$](https://example.com) 。', {});
   expect(outline(root.children)).toBe('见 ⟨$⟩ 的图，设 *$* 是，⟨积分 $⟩。');
 });
+
+it('笔记预览里全角空格也原样保留，公式挨着它不另加空格', () => {
+  const FW = '　'; // 全角空格（U+3000）
+  const root = renderNote(`**定理**${FW}$x$ 是，*设 $y$*${FW}则`, {});
+  expect(outline(root.children)).toBe(`定理${FW}$ 是，*设 $*${FW}则`);
+});
