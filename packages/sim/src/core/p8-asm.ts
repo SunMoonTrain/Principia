@@ -44,6 +44,18 @@ export function disassemble(first: number, b: number): string {
   }
 }
 
+export function inputByte(value: unknown): number | undefined {
+  const s = String(value).normalize('NFKC').trim().replace('−','-');
+  if (!/^[+-]?(?:0x[\da-f]+|0b[01]+|\d+)$/i.test(s)) return undefined;
+  const n = literal(s);
+  return Number.isInteger(n) && n >= -128 && n <= 255 ? n & 255 : undefined;
+}
+
+export function breakpointAddress(image: Assembly, mark: string | number) {
+  const address = typeof mark === 'number' ? image.lineAddresses.get(mark) : image.labels.get(mark);
+  return address !== undefined && image.instructions.has(address) ? address : undefined;
+}
+
 export class AssemblyError extends Error {
   constructor(readonly line: number, message: string) { super(message); }
 }

@@ -1,3 +1,5 @@
+import { cpuSchema } from './p8-schema.ts';
+import { cpuNames } from './core/p8.ts';
 import { z } from 'zod';
 import type { ComponentSpec } from '../../anim/src/specs.ts';
 
@@ -68,6 +70,7 @@ const circuit = z.strictObject({
 });
 const common = { labels: () => [], check: () => [], reserved: () => [] };
 export const SIM_SPECS: Record<string, ComponentSpec> = {
+  cpu: { ...common, schema:cpuSchema, observables:() => cpuNames },
   'logic-circuit': { ...common, schema: circuit, observables: (p: Netlist) => [...compileCircuit(p).observed, 'tick', 'stable', 'osc'] },
   bits: { ...common, schema: bits, reserved: () => bitNames, observables: (p: BitParams) => p.op ? bitNames : [] },
   float32: { ...common, schema: float, reserved: () => floatNames, observables: (p: FloatDisplay) => p.mode === 'inspect' ? [] : floatNames },

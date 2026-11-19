@@ -101,4 +101,46 @@ gates:
   - { id: Q2, type: dff, in: [x2, CLK] }
 outputs: { C2: Q2, C1: Q1, C0: Q0 }
 show: [circuit, timing]` },
+  { name: 'cpu', title: '累加 1 到 10 · 跟踪 R1', yaml: `program: |
+  LDI R0, 10
+  LDI R1, 0
+  loop: ADD R1, R0
+  SUB R0, 1
+  JNZ loop
+  OUT R1
+  HLT
+pauses:
+  - when: PC == 0x0A
+    text: |-
+      先猜 R1 现在是多少。
+goals:
+  - when: outCount == 1
+    text: |-
+      将累加结果送到输出。` },
+  { name: 'cpu', title: '栈 · 保存再取回', yaml: `program: |
+  LDI R0, 7
+  PUSH R0
+  LDI R0, 9
+  POP R1
+  HLT` },
+  { name: 'cpu', title: '子程序 · 返回地址', yaml: `program: |
+  LDI R0, 21
+  CALL double
+  OUT R0
+  HLT
+  double: ADD R0, R0
+  RET` },
+  { name: 'cpu', title: '栈进入程序区', yaml: `program: |
+  loop: PUSH R0
+  JMP loop
+pauses:
+  - when: SP == 3
+    text: |-
+      下一次压栈将写到哪条指令？` },
+  { name: 'cpu', title: '只用四条指令 · 输出 255', yaml: `program: |
+  LDI R0, 254
+  ADD R0, 1
+  OUT R0
+  HLT
+isa: [LDI, ADD, OUT, HLT]` },
 ];

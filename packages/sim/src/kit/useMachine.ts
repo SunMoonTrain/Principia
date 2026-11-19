@@ -3,18 +3,20 @@ import { useInView } from '@principia/anim/kit';
 import { History, type Machine } from '../core/machine';
 import { compilePredicate, type Condition } from '../core/predicate';
 
-export interface PlaybackOptions {
+export interface PlaybackOptions<S = unknown> {
   names: readonly string[];
   goals?: readonly Condition[];
   pauses?: readonly Condition[];
-  stepsPerSecond: number;
+  stepsPerSecond: number | ((grain?: string) => number);
+  boundary?: (state: S) => boolean;
+  breakpoint?: (state: S) => boolean;
   granularities?: readonly string[];
 }
 
 const PREVIEW = 200;
 
 /** 参数变动时由小节的 AnimBlock 按参数重新挂载；画廊使用固定参数。 */
-export function useMachine<P, S>(machine: Machine<P, S>, params: P, seed: number, options: PlaybackOptions) {
+export function useMachine<P, S>(machine: Machine<P, S>, params: P, seed: number, options: PlaybackOptions<S>) {
   const playerRef = useRef<HTMLElement>(null);
   const inView = useInView(playerRef, '0px');
   const initialGrain = options.granularities?.[0];
@@ -36,10 +38,11 @@ export function useMachine<P, S>(machine: Machine<P, S>, params: P, seed: number
   }, [options.goals, options.pauses, options.names]);
 
   const matches = useCallback((tests: typeof rules.goals, state: S) => {
+    if (options.boundary && !options.boundary(state)) return tests.map(() => false);
     const values = machine.observe(state);
     const read = machine.readMemory;
     return tests.map((test) => test(values, read && ((addr) => read(state, addr))));
-  }, [machine]);
+  }, [machine, options.boundary]);
   const [reached, setReached] = useState(() => matches(rules.goals, history.state));
   const collect = useCallback((state: S) => {
     const now = matches(rules.goals, state);
@@ -51,16 +54,22 @@ export function useMachine<P, S>(machine: Machine<P, S>, params: P, seed: number
     if (!history.finished && history.end - history.index < 2) history.preview(PREVIEW, grain);
   }, [history, grain]);
   const advance = useCallback(() => {
+    // 中途切粒度或拖进度后仍比较相邻两个指令边界。
+    const start = history.index;
+    if (rules.pauses.length && options.boundary)
+      while (history.index && !options.boundary(history.state)) history.seek(history.index - 1);
     const before = matches(rules.pauses, history.state);
+    if (history.index !== start) history.seek(start);
     history.step(grain);
     setVisited((last) => Math.max(last, history.index));
     collect(history.state);
     const pause = matches(rules.pauses, history.state).findIndex((hit, i) => hit && !before[i]);
     setPauseIndex(pause);
-    if (history.done || history.pause || pause >= 0) setRunning(false);
+    if (history.done || history.pause || pause >= 0 || options.breakpoint?.(history.state)) setRunning(false);
     extend();
     refresh();
-  }, [history, grain, rules, matches, collect, extend]);
+  }, [history, grain, rules, matches, collect, extend, options.boundary, options.breakpoint]);
+  const rate = typeof options.stepsPerSecond === 'number' ? options.stepsPerSecond : options.stepsPerSecond(grain);
   useEffect(() => {
     if (!running || !inView) return;
     let timer: number | undefined;
@@ -69,7 +78,7 @@ export function useMachine<P, S>(machine: Machine<P, S>, params: P, seed: number
       if (!document.hidden) {
         timer = window.setTimeout(() => {
           if (!document.hidden) advance();
-        }, 1000 / (speed * options.stepsPerSecond));
+        }, 1000 / (speed * rate));
       }
     };
     document.addEventListener('visibilitychange', schedule);
@@ -78,7 +87,7 @@ export function useMachine<P, S>(machine: Machine<P, S>, params: P, seed: number
       document.removeEventListener('visibilitychange', schedule);
       window.clearTimeout(timer);
     };
-  }, [running, inView, speed, options.stepsPerSecond, advance, version]);
+  }, [running, inView, speed, rate, advance, version]);
 
   const seek = (target: number) => {
     stop();

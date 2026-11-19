@@ -3,6 +3,8 @@
 // 附录里的占位组件仍查适用的通用参数；合法时给警告并显示占位框。附录里没有的名字直接报错。
 // 滑块标签和图例在这里排好版，作为 x-anim-label 子元素交给网站。
 
+import { assemble, AssemblyError, breakpointAddress } from '../packages/sim/src/core/p8-asm.ts';
+import type { CpuParams } from '../packages/sim/src/p8-schema.ts';
 import type { ElementContent } from 'hast';
 import { z } from 'zod';
 // 用相对路径而不是 @principia/anim/specs：vite.config.ts 加载内容插件时只打包相对路径引入的文件，
@@ -192,6 +194,21 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
     }
   }
 
+  if (component === 'cpu' && checked) {
+    const p = checked as CpuParams, field = textAt(y, ['program'], ctx.diags);
+    if (field) {
+      try {
+        const image = assemble(field.value, p.isa);
+        p.breakpoints.forEach((mark, i) => {
+          if (breakpointAddress(image,mark) === undefined)
+            ctx.diags.error(ctx.file,lineOf(y,['breakpoints',i]),'断点没有对应的指令：'+mark);
+        });
+      } catch (error) {
+        if (!(error instanceof AssemblyError)) throw error;
+        ctx.diags.error(ctx.file,field.contentLine+error.line-1,error.message);
+      }
+    }
+  }
   if (component === 'text-encoding') textAt(y, ['text'], ctx.diags);
   // 计算机规格在构建时已经把表达式、位型和默认值规范化，浏览器直接消费结果。
   const normalized = Object.hasOwn(SIM_SPECS, component) && checked ? { ...params, ...checked as object } : params;
