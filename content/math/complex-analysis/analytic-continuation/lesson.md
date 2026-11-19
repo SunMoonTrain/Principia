@@ -31,7 +31,7 @@ $f(z)=\sum_{n=0}^\infty z^n$在:term[开圆盘]{id="math.complex-analysis.open-d
 
 **证明**：$F$、$G$都在$D_2$上全纯，在:term[开集]{id="math.complex-analysis.open-set"}（open set）$D_1$上都等于$f$，所以在其中一点处，两者的函数值、各阶导数都分别相等。由:term[唯一性定理]{id="math.complex-analysis.identity-theorem"}（identity theorem），$F$、$G$在$D_2$上处处相等。
 
-为什么有用：于是可以说「$f$到$D_2$的那个解析延拓」，用什么办法找到它都一样；[伽马函数的解析延拓](lesson:math.complex-analysis.gamma-continuation)一节就靠这一点。边界情况：$D_2$要连成一片，是两个不相交的开圆盘时延拓就不唯一，例子见[唯一性定理](lesson:math.complex-analysis.identity-theorem#thm-identity)后面的边界情况。
+为什么有用：于是可以说「$f$到$D_2$的那个解析延拓」，用什么办法找到它都一样；[伽马函数的解析延拓](lesson:math.complex-analysis.gamma-continuation)一节就靠这一点。边界情况：$D_2$要连成一片，是两个:term[不相交]{id="math.logic-sets.disjoint"}（disjoint）的开圆盘时延拓就不唯一，例子见[唯一性定理](lesson:math.complex-analysis.identity-theorem#thm-identity)后面的边界情况。
 
 ### 越过收敛圆周
 

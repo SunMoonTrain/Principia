@@ -1,0 +1,213 @@
+- id: p1
+  tier: easy
+  statement: |
+    $\bigcap_{n=1}^{\infty}\bigl[1,\,1+\frac1n\bigr)$等于下面哪一个？可以用数学分析里的[阿基米德性质](lesson:math.analysis.completeness#def-archimedean)（Archimedean property）：对任意实数$y$，都有正整数$n>y$，所以对每个正数$x$，都有正整数$n$使$\frac1n<x$。
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        $\varnothing$
+      - |
+        $[1,2)$
+      - |
+        $(1,2)$
+      - |
+        $\{1\}$
+    value: 4
+  hints:
+    - |
+      $x$属于这个交，就是$x$属于每一个$\bigl[1,1+\frac1n\bigr)$。分$x=1$、$x<1$、$x>1$三种情形看。
+    - |
+      $1\le1<1+\frac1n$对每个$n$都成立。$x>1$时，由阿基米德性质，有正整数$n$使$\frac1n<x-1$，这时$x$还在$\bigl[1,1+\frac1n\bigr)$里吗？
+    - |
+      $1$属于每一个区间，在交里。$x<1$时，$x$不属于任何一个区间。$x>1$时，取正整数$n$使$\frac1n<x-1$，则$x>1+\frac1n$，$x$不属于$\bigl[1,1+\frac1n\bigr)$，也就不在交里。所以交是$\{1\}$，选 D。
+  solution: |
+    $x$属于交，就是$x$属于每一个$\bigl[1,1+\frac1n\bigr)$。$1$满足$1\le1<1+\frac1n$，属于每一个区间，在交里；$x<1$时，$x$不属于任何一个区间。
+
+    $x>1$时，由阿基米德性质，有正整数$n$使$\frac1n<x-1$，即$x>1+\frac1n$，所以$x$不属于这个区间，不在交里。交是$\{1\}$，选 D。每个区间都含左端点$1$，所以交不是空集；$[1,2)$是这些区间的并，不是交。
+
+- id: p2
+  tier: easy
+  statement: |
+    对$k=1,2,\dots,10$，令$A_k=\{k,k+1,\dots,2k\}$。$\bigcup_{k=1}^{10}A_k$和$\bigcap_{k=1}^{10}A_k$各有几个元素？按（并的元素个数，交的元素个数）的顺序填。
+  answer:
+    type: tuple
+    value: [20, 0]
+    exact: true
+  hints:
+    - |
+      并由属于某一个$A_k$的数组成，交由属于每一个$A_k$的数组成。先写出两头的$A_1=\{1,2\}$和$A_{10}=\{10,11,\dots,20\}$。
+    - |
+      每个$A_k$里的数都在$1$到$20$之间。$1$到$10$之间的数$m$属于$A_m$；$11$到$20$之间的数属于哪一个？交里的数要同时属于$A_1$和$A_{10}$。
+    - |
+      $1\le m\le10$时$m\in A_m$，$11\le m\le20$时$m\in A_{10}$，所以并是$\{1,2,\dots,20\}$，有$20$个元素。交里的数要属于每一个$A_k$，当然也属于$A_1$和$A_{10}$，可$A_1\cap A_{10}=\varnothing$，所以交是空集，有$0$个元素。填$(20,0)$。
+  solution: |
+    每个$A_k$都含于$\{1,2,\dots,20\}$。反过来，$1\le m\le10$时$m\in A_m$，$11\le m\le20$时$m\in A_{10}$，所以$\bigcup_{k=1}^{10}A_k=\{1,2,\dots,20\}$，有$20$个元素。
+
+    交里的数要属于每一个$A_k$，特别地要属于$A_1=\{1,2\}$和$A_{10}=\{10,\dots,20\}$，而这两个集合没有公共元素，所以$\bigcap_{k=1}^{10}A_k=\varnothing$，有$0$个元素。答案是$(20,0)$。
+
+- id: p3
+  tier: medium
+  statement: |
+    下面哪些集族:term[两两不相交]{id="math.logic-sets.pairwise-disjoint"}？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\{[n,n+1)\}_{n\in\Z}$
+      - |
+        $\{[n,n+1]\}_{n\in\Z}$
+      - |
+        $\bigl\{\{2n,2n+1\}\bigr\}_{n\in\N}$
+      - |
+        $\bigl\{\{n,n+1\}\bigr\}_{n\in\N}$
+      - |
+        $\bigl\{\{n,-n\}\bigr\}_{n\in\Z}$
+    value: [1, 3]
+  hints:
+    - |
+      按定义逐个查：任取两个不同的指标，看它们对应的两个集合有没有公共元素。只要找到一对不同的指标，对应的集合相交，这个集族就不是两两不相交的。
+    - |
+      注意端点：$[n,n+1)$不含右端点，$[n,n+1]$含。D 里相邻的两个指标对应的集合各是什么？E 里指标$1$和$-1$对应的集合各是什么？
+    - |
+      A：两个不同的整数$m<n$，$[m,m+1)$里的数都小于$m+1\le n$，$[n,n+1)$里的数都不小于$n$，两者不相交，是两两不相交的。B：$[0,1]\cap[1,2]=\{1\}$，不是。C：$m<n$时，$\{2m,2m+1\}$里的数都不超过$2m+1$，$\{2n,2n+1\}$里的数都不小于$2n\ge2m+2$，两者不相交，是。
+
+      D：$\{0,1\}\cap\{1,2\}=\{1\}$，不是。E：指标$1$和$-1$不同，对应的集合却都是$\{1,-1\}$，交不是空集，不是。所以选 A、C。
+  solution: |
+    A：$m<n$时，$[m,m+1)$里的数都小于$m+1\le n$，而$[n,n+1)$里的数都不小于$n$，所以不相交，A 两两不相交。B：相邻的两个闭区间共用端点，如$[0,1]\cap[1,2]=\{1\}$，不是。C：$m<n$时，$\{2m,2m+1\}$里的数都不超过$2m+1$，$\{2n,2n+1\}$里的数都不小于$2n\ge2m+2$，所以不相交，C 两两不相交。
+
+    D：$\{0,1\}\cap\{1,2\}=\{1\}$，不是。E：两两不相交说的是任意两个不同的指标，指标$1$和$-1$不同，对应的集合却都是$\{1,-1\}$，交不是空集，所以不是。不带指标、只看这些集合组成的集合$\bigl\{\{n,-n\}:n\in\Z\bigr\}$时，拿它自己当指标集，$\{1,-1\}$只算一个，其中任意两个不同的集合都不相交，是两两不相交的。选 A、C。
+
+- id: p4
+  tier: medium
+  statement: |
+    对每个实数$t\in[0,1]$，令$A_t=\{x\in\Z:x^2\le20t(1-t)\}$。$\bigcup_{t\in[0,1]}A_t$有几个元素？
+  answer:
+    type: number
+    value: 5
+    exact: true
+  hints:
+    - |
+      整数$x$属于这个并，就是存在$t\in[0,1]$使$x\in A_t$，即$x^2\le20t(1-t)$。对一个取定的$x$，什么时候能找到这样的$t$？
+    - |
+      能找到这样的$t$，当且仅当$x^2$不超过$20t(1-t)$在$[0,1]$上的最大值。注意$A_0$、$A_1$都只有$0$，中间的$t$给的范围更大。
+    - |
+      $20t(1-t)=5-20\bigl(t-\frac12\bigr)^2$，在$[0,1]$上的最大值是$t=\frac12$时的$5$。$x^2\le5$的整数是$-2,-1,0,1,2$，它们都属于$A_{1/2}$，在并里；其他整数的平方至少是$9$，大于每个$20t(1-t)$，不属于任何一个$A_t$。所以并是$\{-2,-1,0,1,2\}$，共$5$个元素。
+  solution: |
+    $x\in\bigcup_{t\in[0,1]}A_t$就是存在$t\in[0,1]$，使$x^2\le20t(1-t)$。配方得$20t(1-t)=5-20\bigl(t-\frac12\bigr)^2$，它在$[0,1]$上的最大值是$t=\frac12$时的$5$。
+
+    所以满足$x^2\le5$的整数$x$都属于$A_{1/2}$，即$-2,-1,0,1,2$都在并里；其他整数的平方至少是$9$，对每个$t$都大于$20t(1-t)$，不在任何一个$A_t$里。并是$\{-2,-1,0,1,2\}$，共$5$个元素。只看两端的$t=0$、$t=1$，会以为并只有$0$一个元素。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$A$是集合，$\{B_i\}_{i\in I}$是:term[集族]{id="math.logic-sets.family-of-sets"}，$I$不是空集。
+
+    （1）证明$A\cap\bigcup_{i\in I}B_i=\bigcup_{i\in I}(A\cap B_i)$。
+
+    （2）证明$A\cup\bigcap_{i\in I}B_i=\bigcap_{i\in I}(A\cup B_i)$。
+  hints:
+    - |
+      逐个元素看，把两边翻译成带量词（quantifier）的话：$x\in\bigcup_{i\in I}B_i$就是「存在$i\in I$使$x\in B_i$」，$x\in\bigcap_{i\in I}B_i$就是「对每个$i\in I$都有$x\in B_i$」。两边互相包含，就相等。
+    - |
+      （1）「$x\in A$」和$i$无关，「$x\in A$，且存在$i$使$x\in B_i$」能不能说成「存在$i$，使$x\in A$且$x\in B_i$」？（2）由右边推左边时，分$x\in A$和$x\notin A$两种情形。
+    - |
+      （1）设$x$属于左边，则$x\in A$，且有$i_0\in I$使$x\in B_{i_0}$，于是$x\in A\cap B_{i_0}$，$x$属于右边。反过来，设$x$属于右边，即有$i_0\in I$使$x\in A\cap B_{i_0}$，则$x\in A$，且$x\in B_{i_0}$，所以$x$属于$\bigcup_{i\in I}B_i$，也属于左边。两边互相包含，所以相等。
+
+      （2）设$x$属于左边。若$x\in A$，则对每个$i$都有$x\in A\cup B_i$；若$x\in\bigcap_{i\in I}B_i$，则对每个$i$都有$x\in B_i$，也就有$x\in A\cup B_i$。两种情形下$x$都属于右边。
+
+      反过来，设$x$属于右边，即对每个$i\in I$，都有$x\in A$或$x\in B_i$。若$x\in A$，$x$属于左边；若$x\notin A$，则对每个$i$，由$x\in A\cup B_i$得$x\in B_i$，所以$x\in\bigcap_{i\in I}B_i$，$x$也属于左边。两边互相包含，所以相等。
+  reference: |
+    （1）$x\in A\cap\bigcup_iB_i\iff x\in A\land\exists i\in I,\ x\in B_i\iff\exists i\in I,\ (x\in A\land x\in B_i)\iff x\in\bigcup_i(A\cap B_i)$。中间一步因为「$x\in A$」不含$i$：左推右时用同一个$i_0$，右推左时由$x\in A\cap B_{i_0}$拆出两半。两边元素相同，故相等。
+
+    （2）（⊆）$x\in A$时对每个$i$有$x\in A\cup B_i$；$x\in\bigcap_iB_i$时对每个$i$有$x\in B_i\subseteq A\cup B_i$。（⊇）设对每个$i$，$x\in A$或$x\in B_i$。$x\in A$时显然；$x\notin A$时对每个$i$都有$x\in B_i$，故$x\in\bigcap_iB_i$。这里用的是「证或：设一个不成立，推出另一个」。
+
+    $I$不是空集保证两边的交有定义。也可以由（1）和集族形式的德摩根律推出（2）：在全集$U=A\cup\bigcup_iB_i$里取补集，$A\cup\bigcap_iB_i$的补集是$A^{\mathrm c}\cap\bigcup_iB_i^{\mathrm c}=\bigcup_i(A^{\mathrm c}\cap B_i^{\mathrm c})$，再取补集即得。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）证明$\bigcup_{n=1}^{\infty}\bigl[\frac1n,1\bigr]=(0,1]$，其中$n=1$的那一个是$[1,1]=\{1\}$。
+
+    （2）证明$\bigcap_{n=1}^{\infty}\bigl(0,\frac1n\bigr)=\varnothing$。
+
+    （3）讲解里的$\bigcup_{r>0}[r,1]=(0,1]$、$\bigcap_{r>0}(-r,r)=\{0\}$不用[阿基米德性质](lesson:math.analysis.completeness#def-archimedean)（Archimedean property）就能证，（1）（2）却要用它。差别在哪里？
+  hints:
+    - |
+      （1）证互相包含：左边的元素属于某一个$\bigl[\frac1n,1\bigr]$；对右边的$x$，要找一个$n$使$\frac1n\le x$。（2）任取$x$，说明它不属于某一个$\bigl(0,\frac1n\bigr)$。
+    - |
+      阿基米德性质说，对任意实数$y$，都有正整数$n>y$；$x>0$时取$y=\frac1x$，就得到$\frac1n<x$。（3）讲解里的指标$r$是任意正实数，可以直接取成和$x$有关的数，比如$r=x$；这里的指标只能是$1,2,3,\dots$。
+    - |
+      （1）若$x$属于左边，则有$n$使$\frac1n\le x\le1$，所以$0<x\le1$。反过来，设$0<x\le1$，由阿基米德性质，有正整数$n>\frac1x$，即$\frac1n<x$，于是$x\in\bigl[\frac1n,1\bigr]$，属于左边。两边互相包含，所以相等。
+
+      （2）$x\le0$时，$x$不属于任何一个$\bigl(0,\frac1n\bigr)$。$x>0$时，由阿基米德性质，有正整数$n>\frac1x$，即$\frac1n<x$，于是$x\notin\bigl(0,\frac1n\bigr)$。没有$x$属于每一个区间，所以交是空集。
+
+      （3）讲解里要把一个$x$收进并、或者挤出交，直接取$r=x$或$r=|x|$，指标集是全体正实数，这样的$r$一定在里面。这里的区间只有$\bigl[\frac1n,1\bigr]$、$\bigl(0,\frac1n\bigr)$这些，要找一个比给定的正数$x$还小的$\frac1n$，就得知道对每个正数，都有比它还小的$\frac1n$，这正是阿基米德性质说的事。它不能由并、交的定义推出来，要用实数本身的性质。
+  reference: |
+    （1）⊆：$x\in[\frac1n,1]$推出$0<\frac1n\le x\le1$。⊇：$0<x\le1$时由阿基米德性质取$n>\frac1x$，则$\frac1n<x\le1$，$x\in[\frac1n,1]$。
+
+    （2）$x\le0$不在任何$(0,\frac1n)$里；$x>0$时取$n>\frac1x$，则$x>\frac1n$，$x\notin(0,\frac1n)$。故交为空。
+
+    （3）指标集是全体正实数时，证明里需要的指标可以直接取成$x$（或$|x|$），总在指标集里；指标集是$\{\frac1n:n\in\N^+\}$（等价地$\N^+$）时，需要「对每个正数$x$，都有正整数$n$使$\frac1n<x$」，即阿基米德性质。关键是指标集的不同：并、交的定义只告诉我们「属于某一个」「属于每一个」，哪些集合在族里由指标集决定，能不能找到合适的那一个，要靠实数的性质。
+
+- id: p7
+  tier: thinking
+  statement: |
+    讲解里，集族的交只对非空的:term[指标集]{id="math.logic-sets.index-set"}取。设指标集$I$是:term[空集]{id="math.logic-sets.empty-set"}。
+
+    （1）按定义，$\bigcup_{i\in I}A_i$是什么？
+
+    （2）照搬交的定义，「属于每一个$A_i$」的对象有哪些？用[集合与子集](lesson:math.logic-sets.sets)第 7 题（2）的结论说明，它们不能组成一个集合。
+
+    （3）若只在一个:term[全集]{id="math.logic-sets.universal-set"}$U$里谈，把交定义成$\{x\in U:\forall i\in I,\ x\in A_i\}$，$I$是空集时它是什么？这时集族形式的德摩根律还成立吗？
+  hints:
+    - |
+      （1）$I$里没有元素，「存在$i\in I$使$x\in A_i$」对哪个$x$成立？（2）「对每个$i\in I$都有$x\in A_i$」呢？回想取值范围是空集时，:term[全称量词命题]{id="math.logic-sets.universal-statement"}（universal statement）是真是假。
+    - |
+      （2）取值范围是空集时，全称量词命题总是真的，所以每个对象都满足条件，每个集合也都满足。[集合与子集](lesson:math.logic-sets.sets)第 7 题（2）说：对任何集合$S$，$\{x\in S:x\notin x\}$不属于$S$。（3）把$I=\varnothing$代进德摩根律的两条，两边各是什么？
+    - |
+      （1）$I$里没有元素，「存在$i\in I$使$x\in A_i$」对每个$x$都是假的，所以并是空集$\varnothing$。
+
+      （2）「对每个$i\in I$都有$x\in A_i$」的取值范围是空集，对每个对象都为真，所以照搬定义，「交」会包含所有的对象，每个集合都是它的元素。若它是一个集合$T$，由集合与子集第 7 题（2），$\{x\in T:x\notin x\}$是一个不属于$T$的集合，可每个集合都属于$T$，矛盾。所以它不能组成集合，交只能对非空的指标集取。$I$不是空集时就没有这个问题：任取$i_0\in I$，交是从已有的集合$A_{i_0}$里挑出来的。
+
+      至于并，它一般不是从哪一个已有的集合里挑出来的；一族集合的并仍是集合，这要当作基本事实承认，公理化集合论里由并集公理（axiom of union）保证，本站不细讲。上面（2）的推理和[集合的运算](lesson:math.logic-sets.set-operations)第 8 题（1）说明「所有不属于$\varnothing$的对象」不能组成集合，是同一个道理：两者都会把每个集合当作元素，再由集合与子集第 7 题（2）推出矛盾。
+
+      （3）在$U$里谈时，$U$的每个元素都满足条件，交是$U$。这时$\bigl(\bigcup_{i\in I}A_i\bigr)^{\mathrm c}=\varnothing^{\mathrm c}=U$，$\bigcap_{i\in I}A_i^{\mathrm c}=U$，第一条成立；$\bigl(\bigcap_{i\in I}A_i\bigr)^{\mathrm c}=U^{\mathrm c}=\varnothing$，$\bigcup_{i\in I}A_i^{\mathrm c}=\varnothing$，第二条也成立。所以先说好全集，空指标集的交就取作$U$，德摩根律照样成立，正像补集要先说好全集。
+  reference: |
+    （1）$\exists i\in\varnothing,\ x\in A_i$恒假，故$\bigcup_{i\in\varnothing}A_i=\varnothing$。
+
+    （2）$\forall i\in\varnothing,\ x\in A_i$恒真（取值范围是空集），按定义「交」包含一切对象。若它是集合$T$，则每个集合都属于$T$；但由集合与子集第 7 题（2），$R_T=\{x\in T:x\notin x\}\notin T$，而$R_T$是集合，矛盾。所以空族的交不是集合，这就是交要求$I$非空的原因（这和集合的运算第 8 题（1）里「绝对补集」不能当作集合是同一回事）。$I$非空时取$i_0\in I$，交$=\{x\in A_{i_0}:\forall i\in I,\ x\in A_i\}$，是用描述法从已有的集合里挑的，没有问题。
+
+    并一般不能从某个已有的集合里挑出来：一族集合的并是集合，在公理化集合论里由并集公理（axiom of union）保证，本站当作基本事实承认。
+
+    （3）相对全集$U$，$\bigcap_{i\in\varnothing}A_i=U$。德摩根律：$(\bigcup_{\varnothing})^{\mathrm c}=\varnothing^{\mathrm c}=U=\bigcap_{\varnothing}A_i^{\mathrm c}$；$(\bigcap_{\varnothing})^{\mathrm c}=U^{\mathrm c}=\varnothing=\bigcup_{\varnothing}A_i^{\mathrm c}$，两条都成立。所以约定「空族的交是全集」和德摩根律相容，也说明空族的交和补集一样，要相对一个全集才谈得上。
+
+- id: p8
+  tier: thinking
+  statement: |
+    这里开区间指$(a,b)$，$a$、$b$是实数，$a<b$。
+
+    （1）求$\bigcap_{r>0}(-r,1+r)$和$\bigcap_{r>0}(0,r)$。无穷多个开区间的交还一定是开区间吗？
+
+    （2）有限个开区间的交一定是开区间或空集吗？证明你的结论。
+
+    （3）开区间里的每个点$x$，都有一个$\varepsilon>0$使$(x-\varepsilon,x+\varepsilon)$整个在这个区间里。把每个点都有这种性质的实数集合暂且叫作「好集合」：好集合的有限交、任意交、任意并，各是不是好集合？
+  hints:
+    - |
+      （1）照讲解里$\bigcap_{r>0}(-r,r)$的办法，逐个看$x$在不在每一个区间里。（2）$x$属于$(a_1,b_1),\dots,(a_m,b_m)$中的每一个，就是$x$比每个$a_k$都大、比每个$b_k$都小。
+    - |
+      （2）有限个数（至少一个）里有最大的、也有最小的：记$a$为$a_1,\dots,a_m$中最大的，$b$为$b_1,\dots,b_m$中最小的。（3）有限交时，每个集合给$x$一个$\varepsilon_k$，取其中最小的；无穷多个时，这些$\varepsilon$里可能没有最小的正数。
+    - |
+      （1）$0\le x\le1$时，$x$属于每个$(-r,1+r)$；$x<0$时，$x$不属于$r=-x$的那一个；$x>1$时，$x$不属于$r=x-1$的那一个。所以第一个交是闭区间$[0,1]$。第二个：$x\le0$时$x$不属于任何一个$(0,r)$，$x>0$时$x\notin(0,x)$，交是空集。所以无穷多个开区间的交不一定是开区间。
+
+      （2）一定。设开区间是$(a_1,b_1),\dots,(a_m,b_m)$，$a$是$a_k$中最大的，$b$是$b_k$中最小的。$x$属于每一个，就是对每个$k$都有$a_k<x<b_k$，也就是$a<x<b$。所以$a<b$时交是开区间$(a,b)$，$a\ge b$时没有这样的$x$，交是空集。
+
+      （3）有限交是好集合：$x$属于$G_1,\dots,G_m$中的每一个时，各有$\varepsilon_k>0$使$(x-\varepsilon_k,x+\varepsilon_k)$在$G_k$里，取$\varepsilon$为其中最小的，它仍大于$0$，$(x-\varepsilon,x+\varepsilon)$在每个$G_k$里。任意交不一定：每个$(-r,r)$都是好集合，交$\{0\}$却不是。任意并是好集合：$x$属于某一个$G_i$，$G_i$给它的那一小段$(x-\varepsilon,x+\varepsilon)$在$G_i$里，也就在并里。以后在[开集与闭集](lesson:math.topology.open-closed-sets)里，这样的集合叫作开集（open set）。
+  reference: |
+    （1）$\bigcap_{r>0}(-r,1+r)=[0,1]$：$[0,1]$中的点属于每一个；$x<0$不属于$r=-x$的那一个，$x>1$不属于$r=x-1$的那一个。$\bigcap_{r>0}(0,r)=\varnothing$：$x\le0$不在任何一个里，$x>0$不在$(0,x)$里。无穷交可以是闭区间、单点（讲解的$\{0\}$）或空集，不一定是开区间。
+
+    （2）是：$\max a_k<\min b_k$时$\bigcap_{k=1}^m(a_k,b_k)=(\max a_k,\min b_k)$，否则为空。关键是有限个数（至少一个）有最大、最小值；无穷多个时只有上确界、下确界，可能取不到（端点被收进来）或相等（只剩一点）。
+
+    （3）好集合（每点都有一个$\varepsilon$邻域含于其中）在有限交、任意并下封闭：有限交取$\min_k\varepsilon_k>0$；任意并用$x$所在的那一个给的$\varepsilon$。任意交不封闭：$\bigcap_{r>0}(-r,r)=\{0\}$。这正是拓扑里开集的公理：任意并、有限交仍是开集；「有限」二字的原因就在于有限个正数的最小值仍为正。

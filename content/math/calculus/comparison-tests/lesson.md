@@ -36,7 +36,7 @@ $\sum\frac1{n^2}$收敛吗？$\sum\frac1{\sqrt n}$呢？$\sum\frac{2n+1}{n^3+n}$
 ::anchor{id="thm-comparison-test"}
 **定理（:term[比较判别法]{id="math.calculus.comparison-test"}，comparison test）**　设从某一项起$0\le a_n\le b_n$。如果$\sum b_n$收敛，那么$\sum a_n$也收敛；如果$\sum a_n$发散，那么$\sum b_n$也发散。
 
-道理：去掉前面有限项不影响收敛与否，不妨设处处$0\le a_n\le b_n$。$\sum a_n$的:term[部分和]{id="math.calculus.partial-sum"}不超过$\sum b_n$的部分和，后者不超过$\sum b_n$的和，所以有上界，由上面的定理，$\sum a_n$收敛。后一半是前一半的逆否命题（contrapositive）。
+道理：去掉前面有限项不影响收敛与否，不妨设处处$0\le a_n\le b_n$。$\sum a_n$的:term[部分和]{id="math.calculus.partial-sum"}不超过$\sum b_n$的部分和，后者不超过$\sum b_n$的和，所以有上界，由上面的定理，$\sum a_n$收敛。后一半是前一半的:term[逆否命题]{id="math.logic-sets.contrapositive"}（contrapositive）。
 
 为什么有用：拿:term[几何级数]{id="math.calculus.geometric-series"}和:term[调和级数]{id="math.calculus.harmonic-series"}（harmonic series）作尺子量。$0<\frac1{2^n+1}<\frac1{2^n}$，$\sum\frac1{2^n}$收敛，所以$\sum\frac1{2^n+1}$收敛；$\frac1{\sqrt n}\ge\frac1n$，调和级数发散，所以$\sum\frac1{\sqrt n}$发散。边界情况：比收敛的大、比发散的小，都什么也推不出来，$\frac1{n^2}\le\frac1n$，可$\sum\frac1{n^2}$收敛，见下面。
 

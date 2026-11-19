@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" width="520" height="300" font-size="14">
+  <!-- 整数里，「4 的倍数」（P 成立）的小椭圆套在「偶数」（Q 成立）的大椭圆里面；数字摆在三个区域里 -->
+  <!-- 涂色（先画，边线压在上面） -->
+  <ellipse cx="215" cy="160" rx="185" ry="118" style="fill: var(--accent, #2563eb); opacity: 0.12" />
+  <ellipse cx="200" cy="182" rx="105" ry="68" style="fill: var(--accent, #2563eb); opacity: 0.3" />
+  <!-- 边线 -->
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <rect x="6" y="6" width="508" height="288" rx="4" />
+    <ellipse cx="215" cy="160" rx="185" ry="118" />
+    <ellipse cx="200" cy="182" rx="105" ry="68" />
+  </g>
+  <!-- 区域的名字 -->
+  <g fill="currentColor">
+    <text x="22" y="30">整数</text>
+    <text x="215" y="76" text-anchor="middle">偶数（<tspan font-style="italic">Q</tspan> 成立）</text>
+    <text x="200" y="150" text-anchor="middle">4 的倍数（<tspan font-style="italic">P</tspan> 成立）</text>
+  </g>
+  <!-- 小椭圆里：4 的倍数 -->
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="148" y="190">4</text>
+    <text x="252" y="190">8</text>
+    <text x="170" y="228">0</text>
+    <text x="232" y="228">−12</text>
+  </g>
+  <!-- 只在大椭圆里：偶数而不是 4 的倍数 -->
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="75" y="170">2</text>
+    <text x="345" y="124">6</text>
+    <text x="340" y="220">−10</text>
+  </g>
+  <!-- 两个椭圆外面：奇数 -->
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="450" y="84">1</text>
+    <text x="470" y="164">3</text>
+    <text x="445" y="244">−5</text>
+  </g>
+</svg>

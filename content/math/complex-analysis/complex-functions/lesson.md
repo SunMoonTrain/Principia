@@ -22,13 +22,13 @@ status: reviewed
 ::anchor{id="def-complex-function"}
 设$D$是:term[复数]{id="math.complex-analysis.complex-number"}组成的集合。如果对$D$里的每个$z$，都有唯一的复数$w$和它对应，就说$w=f(z)$是定义在$D$上的:term[复变函数]{id="math.complex-analysis.complex-function"}。记$z=x+iy$、$w=u+iv$，则$u$、$v$都随$x$、$y$而定，$f(z)=u(x,y)+iv(x,y)$。
 
-为什么这样定义：它和实函数的定义一字不差，只是把数换成了复数；写成$u+iv$以后，一个复变函数就是一对实函数$u(x,y)$、$v(x,y)$，例如$f(z)=z^2$时$u=x^2-y^2$，$v=2xy$。$f$把$z$平面上的点送到$w$平面上的点，是平面到平面的映射（mapping）：图像画不出来，就看它把一组曲线，比如方格网，变成什么。边界情况：$f(z)=\bar z$也是复变函数，$u=x$、$v=-y$，它把平面关于:term[实轴]{id="math.complex-analysis.real-axis"}（real axis）翻过来；$f(z)=|z|$只取实数值，同样是复变函数。
+为什么这样定义：它和实函数的定义一字不差，只是把数换成了复数；写成$u+iv$以后，一个复变函数就是一对实函数$u(x,y)$、$v(x,y)$，例如$f(z)=z^2$时$u=x^2-y^2$，$v=2xy$。$f$把$z$平面上的点送到$w$平面上的点，是平面到平面的:term[映射]{id="math.logic-sets.map"}（mapping）：图像画不出来，就看它把一组曲线，比如方格网，变成什么。边界情况：$f(z)=\bar z$也是复变函数，$u=x$、$v=-y$，它把平面关于:term[实轴]{id="math.complex-analysis.real-axis"}（real axis）翻过来；$f(z)=|z|$只取实数值，同样是复变函数。
 
 ### $z^2$和$\frac1z$
 
 用:term[指数形式]{id="math.complex-analysis.exponential-form"}（exponential form）看最清楚：$z=re^{i\theta}$时$z^2=r^2e^{2i\theta}$，:term[模]{id="math.complex-analysis.modulus"}（modulus）平方，:term[辐角]{id="math.complex-analysis.argument"}（argument）加倍。所以$z^2$把第一象限映成上半平面，把上半平面映成去掉射线$[0,+\infty)$以后的整个平面。竖线$x=c$（$c>0$）上的点$c+it$映成$(c^2-t^2)+2ct\,i$，消去$t$得$u=c^2-\frac{v^2}{4c^2}$，是开口向左的抛物线；横线$y=c$同样映成开口向右的抛物线$u=\frac{v^2}{4c^2}-c^2$。
 
-$\frac1z=\frac1re^{-i\theta}$：模取倒数，辐角变号，单位圆的里外对调。竖线$x=c$（$c\ne0$）上的点映成$\frac1{c+it}=\frac{c-it}{c^2+t^2}$，于是$u^2+v^2=\frac1{c^2+t^2}=\frac uc$，即$\bigl(u-\frac1{2c}\bigr)^2+v^2=\frac1{4c^2}$：直线映成了过原点的圆，只是去掉了原点；横线同理。两族直线变成两族曲线，可像曲线交成的角看上去仍是直角，[共形映射](lesson:math.complex-analysis.conformal-maps)一节会解释为什么。
+$\frac1z=\frac1re^{-i\theta}$：模取倒数，辐角变号，单位圆的里外对调。竖线$x=c$（$c\ne0$）上的点映成$\frac1{c+it}=\frac{c-it}{c^2+t^2}$，于是$u^2+v^2=\frac1{c^2+t^2}=\frac uc$，即$\bigl(u-\frac1{2c}\bigr)^2+v^2=\frac1{4c^2}$：直线映成了过原点的圆，只是去掉了原点；横线同理。两族直线变成两族曲线，可像曲线（image curve）交成的角看上去仍是直角，[共形映射](lesson:math.complex-analysis.conformal-maps)一节会解释为什么。
 
 ### $e^z$
 

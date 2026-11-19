@@ -49,7 +49,7 @@ $$
 ::anchor{id="def-antiderivative"}
 设$f$在:term[开集]{id="math.complex-analysis.open-set"}$D$上连续。如果$D$上有:term[全纯函数]{id="math.complex-analysis.holomorphic-function"}（holomorphic function）$F$，使$F'=f$，就说$F$是$f$在$D$上的:term[原函数]{id="math.complex-analysis.antiderivative"}（antiderivative）。
 
-为什么这样定义：和实函数一样，$f$的原函数就是求导以后得到$f$的函数；要求$F$在开集上全纯，是因为在一点求导要用到它周围一整圈的值，下面的定理还要沿$D$里的曲线对$F(z(t))$求导。边界情况：原函数加上任何常数仍是原函数；$D$不连成一片时，还可以在每一块上加不同的常数，例如$D$是两个不相交的圆盘、$f=0$时，在一个圆盘上取$F=0$、另一个圆盘上取$F=1$，这个$F$也是原函数。
+为什么这样定义：和实函数一样，$f$的原函数就是求导以后得到$f$的函数；要求$F$在开集上全纯，是因为在一点求导要用到它周围一整圈的值，下面的定理还要沿$D$里的曲线对$F(z(t))$求导。边界情况：原函数加上任何常数仍是原函数；$D$不连成一片时，还可以在每一块上加不同的常数，例如$D$是两个:term[不相交]{id="math.logic-sets.disjoint"}（disjoint）的圆盘、$f=0$时，在一个圆盘上取$F=0$、另一个圆盘上取$F=1$，这个$F$也是原函数。
 
 ::anchor{id="thm-antiderivative-integral"}
 **定理**　设$F$是$f$在开集$D$上的原函数，$C$是$D$里从$A$到$B$的分段光滑曲线，则$\int_Cf(z)\,\dd z=F(B)-F(A)$；特别地，沿$D$里任何闭曲线的积分为$0$。

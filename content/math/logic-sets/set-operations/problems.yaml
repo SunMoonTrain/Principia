@@ -1,0 +1,215 @@
+- id: p1
+  tier: easy
+  statement: |
+    :term[全集]{id="math.logic-sets.universal-set"}$U=\{1,2,\dots,20\}$，$A$是$U$中$2$的倍数组成的集合，$B$是$U$中$3$的倍数组成的集合。$(A\cup B)^{\mathrm c}$有几个元素？
+  answer:
+    type: number
+    value: 7
+    exact: true
+  hints:
+    - |
+      $(A\cup B)^{\mathrm c}$由$U$中不属于$A\cup B$的数组成。由:term[德摩根律]{id="math.logic-sets.de-morgan-laws"}，不属于$A\cup B$就是既不属于$A$，也不属于$B$。
+    - |
+      要数的是$1$到$20$里既不是$2$的倍数、也不是$3$的倍数的数。不是$2$的倍数的，是$1$到$19$的$10$个奇数；再去掉其中$3$的倍数。
+    - |
+      $1$到$19$的奇数里，$3$的倍数是$3$、$9$、$15$。去掉它们，剩下$1,5,7,11,13,17,19$，所以$(A\cup B)^{\mathrm c}$有$7$个元素。
+  solution: |
+    由德摩根律，$(A\cup B)^{\mathrm c}=A^{\mathrm c}\cap B^{\mathrm c}$，它由$U$中既不是$2$的倍数、也不是$3$的倍数的数组成。$A^{\mathrm c}$是$1$到$19$的$10$个奇数，其中$3$、$9$、$15$是$3$的倍数，去掉后剩下$1,5,7,11,13,17,19$，共$7$个。
+
+    也可以先数$A\cup B$：$A$有$10$个元素，$B$有$6$个，$6$、$12$、$18$两边都有，只算一次，所以$A\cup B$有$10+6-3=13$个元素，它的补集有$20-13=7$个元素。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些等式对任何:term[全集]{id="math.logic-sets.universal-set"}$U$和$U$的任何子集$A$都成立？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $A\setminus\varnothing=\varnothing$
+      - |
+        $A\cup A^{\mathrm c}=U$
+      - |
+        $A\cap\varnothing=A$
+      - |
+        $A\setminus A=\{\varnothing\}$
+      - |
+        $(A^{\mathrm c})^{\mathrm c}=A$
+    value: [2, 5]
+  hints:
+    - |
+      逐个元素看：对每个等式，问一问$x$属于左边是什么意思，属于右边又是什么意思。拿不准时，先用$U=\{1,2\}$、$A=\{1\}$试一试。
+    - |
+      $\varnothing$没有元素：从$A$里去掉$\varnothing$的元素，等于什么也没去掉；$A$和$\varnothing$也没有公共元素。$A\setminus A$一个元素也没有，它是$\varnothing$还是$\{\varnothing\}$？
+    - |
+      选项 A：$A\setminus\varnothing=A$，只在$A=\varnothing$时等于$\varnothing$，不成立。选项 B：$U$中的$x$不属于$A$，就属于$A^{\mathrm c}$，所以$A\cup A^{\mathrm c}=U$，成立。选项 C：$A\cap\varnothing=\varnothing$，只在$A=\varnothing$时等于$A$，不成立。
+
+      选项 D：$A\setminus A=\varnothing$，而$\{\varnothing\}$有一个元素$\varnothing$，两者不同，不成立。选项 E：对$U$中的$x$，$x\in(A^{\mathrm c})^{\mathrm c}$就是$x\notin A^{\mathrm c}$，即$x\in A$，成立。所以选 B、E。
+  solution: |
+    选项 A：$\varnothing$没有元素，从$A$里去掉它的元素，$A$不变，$A\setminus\varnothing=A$，只在$A=\varnothing$时等于$\varnothing$。选项 B：$A$、$A^{\mathrm c}$都是$U$的子集；$U$中的$x$属于$A$，或者不属于$A$、属于$A^{\mathrm c}$，所以$A\cup A^{\mathrm c}=U$。选项 C：$A\cap\varnothing=\varnothing$，只在$A=\varnothing$时等于$A$。
+
+    选项 D：$A\setminus A$没有元素，是$\varnothing$；$\{\varnothing\}$却有一个元素$\varnothing$，两者不相等。选项 E：两边都是$U$的子集，对$U$中的$x$，$x\in(A^{\mathrm c})^{\mathrm c}$就是$x\notin A^{\mathrm c}$，也就是$x\in A$，所以$(A^{\mathrm c})^{\mathrm c}=A$。选 B、E。
+
+- id: p3
+  tier: medium
+  statement: |
+    下面哪些等式对任何集合$A$、$B$、$C$都成立？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $A\setminus(B\cup C)=(A\setminus B)\cap(A\setminus C)$
+      - |
+        $A\setminus(A\setminus B)=A\cap B$
+      - |
+        $(A\setminus B)\cup B=A$
+      - |
+        $A\cap(B\setminus C)=(A\cap B)\setminus C$
+      - |
+        $A\cup(B\setminus C)=(A\cup B)\setminus C$
+    value: [1, 2, 4]
+  hints:
+    - |
+      成立的，逐个元素把两边翻译成命题来比；不成立的，举一个反例（counterexample），用只有一两个元素的集合试。
+    - |
+      选项 C 的左边一定包含$B$，右边却不一定；选项 E 的右边一定和$C$:term[不相交]{id="math.logic-sets.disjoint"}，左边却包含整个$A$。选项 B：$x\in A\setminus(A\setminus B)$就是$x\in A$，而且「$x\in A$且$x\notin B$」不成立。
+    - |
+      选项 A：左边是$x\in A$且$x\notin B\cup C$，即$x\in A$、$x\notin B$、$x\notin C$，正是$x$同时属于$A\setminus B$和$A\setminus C$，成立。选项 B：由德摩根律，「$x\in A$且$x\notin B$」不成立，就是$x\notin A$或$x\in B$；再和$x\in A$合起来，前一种不可能，只剩$x\in A$且$x\in B$，成立。
+
+      选项 C：$A=\varnothing$，$B=\{1\}$时，左边是$\{1\}$，右边是$\varnothing$，不成立。选项 D：两边都是「$x\in A$、$x\in B$且$x\notin C$」，成立。选项 E：$A=C=\{1\}$，$B=\varnothing$时，左边是$\{1\}$，右边是$\varnothing$，不成立。所以选 A、B、D。
+  solution: |
+    选项 A：$x\in A\setminus(B\cup C)$就是$x\in A$且$\neg(x\in B\lor x\in C)$，由德摩根律即$x\in A$、$x\notin B$且$x\notin C$，也就是$x\in A\setminus B$且$x\in A\setminus C$，成立。选项 B：$x\in A\setminus(A\setminus B)$就是$x\in A$且$\neg(x\in A\land x\notin B)$，后一半即$x\notin A$或$x\in B$；能和$x\in A$同时成立的只有$x\in B$，所以左边是$A\cap B$，成立。
+
+    选项 C：左边其实是$A\cup B$；$A=\varnothing$、$B=\{1\}$时左边是$\{1\}$，右边是$\varnothing$，不成立。选项 D：两边都由同时满足$x\in A$、$x\in B$、$x\notin C$的$x$组成，成立。选项 E：右边和$C$不相交，左边却包含$A$；$A=C=\{1\}$、$B=\varnothing$时左边是$\{1\}$，右边是$\varnothing$，不成立。选 A、B、D。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$A=[-3,2)$，$B=(0,5]$。集合$(A\setminus B)\cup(B\setminus A)$叫作$A$与$B$的对称差（symmetric difference）。它里面有几个整数？
+  answer:
+    type: number
+    value: 8
+    exact: true
+  hints:
+    - |
+      在数轴上画出$A$、$B$，分别求出:term[差集]{id="math.logic-sets.set-difference"}$A\setminus B$和$B\setminus A$；端点要逐个看，它属不属于$A$，属不属于$B$。
+    - |
+      $A\setminus B$是$A$里不大于$0$的部分，$B\setminus A$是$B$里不小于$2$的部分。$0$属于$B$吗？$2$属于$A$吗？
+    - |
+      $0\notin B$，所以$0$留在$A\setminus B$里，$A\setminus B=[-3,0]$；$2\notin A$，所以$2$留在$B\setminus A$里，$B\setminus A=[2,5]$。前者里的整数是$-3,-2,-1,0$，后者里的是$2,3,4,5$，共$8$个。
+  solution: |
+    $A$、$B$在$(0,2)$上重叠。$A\setminus B$由$A$中不属于$(0,5]$的数组成，即$[-3,0]$，$0\notin B$，所以$0$留下；$B\setminus A$由$B$中不属于$[-3,2)$的数组成，即$[2,5]$，$2\notin A$，所以$2$也留下。
+
+    所以对称差是$[-3,0]\cup[2,5]$，其中的整数是$-3,-2,-1,0,2,3,4,5$，共$8$个。漏掉$0$或$2$，就会少数一个。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$A$、$B$、$C$是集合。
+
+    （1）证明$A\cup(B\cap C)=(A\cup B)\cap(A\cup C)$。
+
+    （2）证明：$(A\cup B)\cap C=A\cup(B\cap C)$当且仅当$A\subseteq C$。
+  hints:
+    - |
+      （1）照讲解里分配律（集合形式）的证法逐个元素看，换用命题的分配律 (2)。（2）两个方向分开证；$A$一定是$A\cup(B\cap C)$的子集，$(A\cup B)\cap C$一定是$C$的子集。
+    - |
+      （2）设等式成立，把$A\subseteq A\cup(B\cap C)$和$(A\cup B)\cap C\subseteq C$接起来。反过来，$A\subseteq C$时，$A\cup C$等于什么？再用（1）。
+    - |
+      （1）对任何$x$，$x\in A\cup(B\cap C)$就是$x\in A\lor(x\in B\land x\in C)$。由[命题与逻辑联结词](lesson:math.logic-sets.propositions#thm-distributive)里的分配律 (2)，它和$(x\in A\lor x\in B)\land(x\in A\lor x\in C)$同真同假，后者就是$x\in(A\cup B)\cap(A\cup C)$。两边的元素完全相同，所以相等。
+
+      （2）设$(A\cup B)\cap C=A\cup(B\cap C)$。任取$x\in A$，则$x\in A\cup(B\cap C)$，即$x\in(A\cup B)\cap C$，所以$x\in C$；故$A\subseteq C$。
+
+      反过来，设$A\subseteq C$。先看$A\cup C=C$：$C\subseteq A\cup C$；$x\in A\cup C$时，$x\in A$或$x\in C$，前一种由$A\subseteq C$也有$x\in C$，所以$A\cup C\subseteq C$。再由（1），$A\cup(B\cap C)=(A\cup B)\cap(A\cup C)=(A\cup B)\cap C$。
+  reference: |
+    （1）$x\in A\cup(B\cap C)$即$x\in A\lor(x\in B\land x\in C)$，由命题的分配律 (2)（「或」对「且」分配）等价于$(x\in A\lor x\in B)\land(x\in A\lor x\in C)$，即$x\in(A\cup B)\cap(A\cup C)$。两边元素相同，故相等。
+
+    （2）（⇒）$A\subseteq A\cup(B\cap C)=(A\cup B)\cap C\subseteq C$。
+
+    （⇐）$A\subseteq C$时$A\cup C=C$：$x\in A\cup C$则$x\in A\subseteq C$或$x\in C$，反向包含显然。于是由（1），$A\cup(B\cap C)=(A\cup B)\cap(A\cup C)=(A\cup B)\cap C$。关键是用（1）把右边写成$(A\cup B)\cap(A\cup C)$，再看$A\cup C$什么时候等于$C$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$A$、$B$都是:term[全集]{id="math.logic-sets.universal-set"}$U$的子集。
+
+    （1）证明$(A\cap B)^{\mathrm c}=A^{\mathrm c}\cup B^{\mathrm c}$。
+
+    （2）证明：$A\subseteq B$当且仅当$B^{\mathrm c}\subseteq A^{\mathrm c}$。
+  hints:
+    - |
+      （1）照讲解里德摩根律（集合形式）的证法，只看$U$中的$x$，换用命题的德摩根律的另一条。（2）把$A\subseteq B$写成「对$U$中每个$x$，若$x\in A$，则$x\in B$」，想想它的:term[逆否命题]{id="math.logic-sets.contrapositive"}（contrapositive）。
+    - |
+      （1）对$U$中的$x$，$x\in(A\cap B)^{\mathrm c}$就是$\neg(x\in A\land x\in B)$。（2）对$U$中的$x$，$x\notin B$就是$x\in B^{\mathrm c}$，$x\notin A$就是$x\in A^{\mathrm c}$。
+    - |
+      （1）两边都是$U$的子集，只需看$U$中的$x$。$x\in(A\cap B)^{\mathrm c}$就是$\neg(x\in A\land x\in B)$，由[命题与逻辑联结词](lesson:math.logic-sets.propositions#thm-de-morgan)里的德摩根律，它和$x\notin A\lor x\notin B$同真同假，即$x\in A^{\mathrm c}\lor x\in B^{\mathrm c}$，也就是$x\in A^{\mathrm c}\cup B^{\mathrm c}$。两边的元素完全相同，所以相等。
+
+      （2）$U$以外的$x$不属于$A$，「若$x\in A$，则$x\in B$」对它自动成立，所以$A\subseteq B$就是：对$U$中每个$x$，$x\in A\Rightarrow x\in B$。由[蕴含与充要条件](lesson:math.logic-sets.implication#thm-contrapositive)里的定理，对每个$x$，它和逆否命题$x\notin B\Rightarrow x\notin A$同真同假；对$U$中的$x$，这就是$x\in B^{\mathrm c}\Rightarrow x\in A^{\mathrm c}$。
+
+      同理，$B^{\mathrm c}\subseteq A^{\mathrm c}$就是：对$U$中每个$x$，$x\in B^{\mathrm c}\Rightarrow x\in A^{\mathrm c}$。所以$A\subseteq B$和$B^{\mathrm c}\subseteq A^{\mathrm c}$同真同假，即$A\subseteq B$当且仅当$B^{\mathrm c}\subseteq A^{\mathrm c}$；这是逆否命题换成集合的说法。
+  reference: |
+    （1）两边都是$U$的子集。对$x\in U$：$x\in(A\cap B)^{\mathrm c}$即$\neg(x\in A\land x\in B)$，由命题的德摩根律等价于$x\notin A\lor x\notin B$，即$x\in A^{\mathrm c}\cup B^{\mathrm c}$。
+
+    （2）因为$A$、$B^{\mathrm c}$都是$U$的子集，$A\subseteq B$等价于「对所有$x\in U$，$x\in A\Rightarrow x\in B$」，$B^{\mathrm c}\subseteq A^{\mathrm c}$等价于「对所有$x\in U$，$x\in B^{\mathrm c}\Rightarrow x\in A^{\mathrm c}$」。对$x\in U$，后者的条件、结论就是$x\notin B$、$x\notin A$，它是前者的逆否命题，两者逻辑等价，所以两个包含同真同假。
+
+    也可以直接证：设$A\subseteq B$，任取$x\in B^{\mathrm c}$，若$x\in A$，则$x\in B$，和$x\in B^{\mathrm c}$矛盾，故$x\in A^{\mathrm c}$；反方向设$B^{\mathrm c}\subseteq A^{\mathrm c}$，任取$x\in A$，若$x\notin B$，则$x\in B^{\mathrm c}\subseteq A^{\mathrm c}$，和$x\in A$矛盾，故$x\in B$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    设$A$、$B$是集合，$A\mathbin{\triangle}B=(A\setminus B)\cup(B\setminus A)$叫作$A$与$B$的对称差（symmetric difference）。
+
+    （1）$x\in A\mathbin{\triangle}B$用「$x\in A$」「$x\in B$」怎样说？它对应命题的哪一种「或」？
+
+    （2）对称差满足交换律吗？满足结合律，即$(A\mathbin{\triangle}B)\mathbin{\triangle}C=A\mathbin{\triangle}(B\mathbin{\triangle}C)$吗？
+
+    （3）$A\mathbin{\triangle}A$、$A\mathbin{\triangle}\varnothing$各是什么？由$A\mathbin{\triangle}B=A\mathbin{\triangle}C$能推出$B=C$吗？和并集比一比。
+  hints:
+    - |
+      （1）分别说出$x\in A\setminus B$、$x\in B\setminus A$是什么意思，再合起来，对照[命题与逻辑联结词](lesson:math.logic-sets.propositions)的例 1。（3）先算$A\mathbin{\triangle}A$，再试着在$A\mathbin{\triangle}B=A\mathbin{\triangle}C$两边都和$A$取对称差。
+    - |
+      （1）$x\in A\mathbin{\triangle}B$恰在$x$属于$A$、$B$中的一个时成立。（2）数一数$x$属于$A$、$B$、$C$中的几个：$x$在什么时候属于$(A\mathbin{\triangle}B)\mathbin{\triangle}C$？（3）用结合律化简$A\mathbin{\triangle}(A\mathbin{\triangle}B)$。
+    - |
+      （1）$x\in A\mathbin{\triangle}B$就是「$x\in A$且$x\notin B$」或「$x\in B$且$x\notin A$」，也就是$x$恰好属于$A$、$B$中的一个。记$P$为「$x\in A$」，$Q$为「$x\in B$」，它和[命题与逻辑联结词](lesson:math.logic-sets.propositions)例 1 里的式子$(P\lor Q)\land\neg(P\land Q)$同真同假，是日常说的「要么$P$，要么$Q$」，两个都成立时不算，和$P\lor Q$不同。所以$A\mathbin{\triangle}B=(A\cup B)\setminus(A\cap B)$，在韦恩图上是两个圆去掉重叠的部分。
+
+      （2）定义里$A$、$B$的地位一样，所以$A\mathbin{\triangle}B=B\mathbin{\triangle}A$。由（1），$x\in(A\mathbin{\triangle}B)\mathbin{\triangle}C$就是「$x\in A\mathbin{\triangle}B$」和「$x\in C$」恰有一个成立。$x\in C$时，这要$x$属于$A$、$B$中的$0$个或$2$个，即属于$A$、$B$、$C$中的$1$个或$3$个；$x\notin C$时，这要$x$恰属于$A$、$B$中的$1$个，即属于三个中的$1$个。
+
+      两种情形都是说：$x$属于$A$、$B$、$C$中的奇数个。同样，$x\in A\mathbin{\triangle}(B\mathbin{\triangle}C)$也是说$x$属于三个中的奇数个，所以两边的元素相同，结合律成立。
+
+      （3）没有元素恰属于$A$、$A$中的一个，所以$A\mathbin{\triangle}A=\varnothing$；$A\mathbin{\triangle}\varnothing=A$。若$A\mathbin{\triangle}B=A\mathbin{\triangle}C$，两边都和$A$取对称差，由结合律，左边是$(A\mathbin{\triangle}A)\mathbin{\triangle}B=\varnothing\mathbin{\triangle}B=B$，右边同样是$C$，所以$B=C$。并集却不能这样消去，讲解的常见误区里有反例；对称差像数的加法，$\varnothing$像$0$，每个集合和自己的对称差是$\varnothing$。
+  reference: |
+    （1）$x\in A\mathbin{\triangle}B\iff(x\in A\land x\notin B)\lor(x\in B\land x\notin A)$，即$x$恰属于$A$、$B$之一，对应命题与逻辑联结词例 1 的$(P\lor Q)\land\neg(P\land Q)$：日常说的「要么……要么……」，两个都真时为假，和$P\lor Q$不同。等价地$A\mathbin{\triangle}B=(A\cup B)\setminus(A\cap B)$。
+
+    （2）交换律由定义的对称性。结合律：$x\in(A\mathbin{\triangle}B)\mathbin{\triangle}C$当且仅当$x$属于$A$、$B$、$C$中的奇数个（对$x\in C$、$x\notin C$分情况，见第 3 级提示），右边同理（先用交换律写成$(B\mathbin{\triangle}C)\mathbin{\triangle}A$），故相等。也可以列三个字母的 8 行真值表，验证$(P\oplus Q)\oplus R$和$P\oplus(Q\oplus R)$逐行相同，这里$P\oplus Q$表示$(P\lor Q)\land\neg(P\land Q)$。
+
+    （3）$A\mathbin{\triangle}A=\varnothing$，$A\mathbin{\triangle}\varnothing=A$。消去律成立：$B=\varnothing\mathbin{\triangle}B=(A\mathbin{\triangle}A)\mathbin{\triangle}B=A\mathbin{\triangle}(A\mathbin{\triangle}B)=A\mathbin{\triangle}(A\mathbin{\triangle}C)=C$。并集不行：$A=\{1,2\}$，$B=\{1\}$，$C=\{2\}$时$A\cup B=A\cup C$而$B\ne C$。集合在对称差下像数的加法：$\varnothing$像$0$，每个集合是自己的「相反数」。
+
+- id: p8
+  tier: thinking
+  statement: |
+    :term[补集]{id="math.logic-sets.complement"}要先说好:term[全集]{id="math.logic-sets.universal-set"}，:term[差集]{id="math.logic-sets.set-difference"}却不用。
+
+    （1）假如不说全集，允许「所有不属于$A$的对象」组成一个集合，记作$A^*$。取$A=\varnothing$，$\varnothing^*$里有哪些对象？用[集合与子集](lesson:math.logic-sets.sets)第 7 题（2）的结论说明，$\varnothing^*$不可能是集合。
+
+    （2）设$A$、$B$既是集合$U$的子集，又是集合$V$的子集。讲解里说过，全集换了，补集也跟着变；分别以$U$、$V$为全集，$A\cap B^{\mathrm c}$会不会也跟着变？
+
+    （3）若$A$不是$U$的子集，$A\cap(U\setminus B)$还一定等于$A\setminus B$吗？
+  hints:
+    - |
+      （1）没有对象属于$\varnothing$。（2）$A\cap B^{\mathrm c}$只含$A$中的元素，而$A$中的元素既在$U$里，也在$V$里。（3）$A$中不在$U$里的元素，会不会留在$A\cap(U\setminus B)$里？
+    - |
+      （1）$\varnothing^*$会把每个集合都当作元素。[集合与子集](lesson:math.logic-sets.sets)第 7 题（2）的结论是：对任何集合$S$，集合$\{x\in S:x\notin x\}$不属于$S$。（2）对$A$中的$x$，「$x$属于$U\setminus B$」和「$x$属于$V\setminus B$」各是什么意思？
+    - |
+      （1）没有对象属于$\varnothing$，所以按假设，$\varnothing^*$由所有对象组成，每个集合都是它的元素。若$\varnothing^*$是集合，由集合与子集第 7 题（2），$R=\{x\in\varnothing^*:x\notin x\}$是一个不属于$\varnothing^*$的集合，可每个集合都属于$\varnothing^*$，矛盾。所以「所有不属于$A$的对象」不能随便当作集合，补集要从一个说好的全集里挑。
+
+      （2）不会。$A\cap(U\setminus B)$和$A\cap(V\setminus B)$里的元素都在$A$里；$A$中的$x$既在$U$里，也在$V$里，所以「$x\in U\setminus B$」「$x\in V\setminus B$」都只是说$x\notin B$。两者都等于$A\setminus B$：补集随全集变，$A\cap B^{\mathrm c}$却不变，所以差集用不着全集。
+
+      （3）不一定。$A\cap(U\setminus B)$的元素都在$U$里，$A$中不在$U$里的元素被丢掉了。例如$A=\{1,2\}$，$B=\varnothing$，$U=\{1\}$时，$A\setminus B=\{1,2\}$，$A\cap(U\setminus B)=\{1\}$；所以讲解里$A\setminus B=A\cap B^{\mathrm c}$那条定理要求$A\subseteq U$。
+  reference: |
+    （1）$\varnothing^*$由所有对象组成，含所有集合。若它是集合，令$R=\{x\in\varnothing^*:x\notin x\}$，由集合与子集第 7 题（2），$R\notin\varnothing^*$；但$R$是集合，按$\varnothing^*$的定义$R\in\varnothing^*$，矛盾。所以「绝对补集」不能当作集合，补集必须相对一个全集，$A^{\mathrm c}=\{x\in U:x\notin A\}$是从已有的集合$U$里挑。
+
+    （2）不会变：$A\subseteq U\cap V$，对$x\in A$，$x\in U\setminus B$和$x\in V\setminus B$都化为$x\notin B$，所以$A\cap(U\setminus B)=A\setminus B=A\cap(V\setminus B)$。$U\ne V$时两个补集本身不同（取$x\in U\setminus V$或$x\in V\setminus U$，它不属于$B$，只在其中一个补集里），可和$A$相交以后一样。所以差集与全集无关。
+
+    （3）一般不成立：$A\cap(U\setminus B)=(A\cap U)\setminus B$，只有$A\setminus B\subseteq U$时才等于$A\setminus B$。反例$A=\{1,2\}$，$B=\varnothing$，$U=\{1\}$：$A\setminus B=\{1,2\}$，$A\cap(U\setminus B)=\{1\}$。这说明定理$A\setminus B=A\cap B^{\mathrm c}$里$A\subseteq U$这个条件不能省。

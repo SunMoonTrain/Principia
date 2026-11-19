@@ -38,7 +38,7 @@ status: reviewed
 ::anchor{id="def-similar"}
 设$A$、$B$是$n$阶:term[方阵]{id="math.linear-algebra.square-matrix"}（square matrix）。如果有:term[可逆]{id="math.linear-algebra.invertible"}（invertible）矩阵$P$使$B=P^{-1}AP$，就说$A$与$B$:term[相似]{id="math.linear-algebra.similar"}（similar）。
 
-为什么这样定义：任何可逆的$P$，它的各列都是$\R^n$的一组基，所以$A$与$B$相似，正是说它们是同一个算子在两组基下的矩阵。相似是对称的，因为$A=(P^{-1})^{-1}BP^{-1}$；$A$与$B$相似、$B$与$C$相似时，$A$与$C$也相似。边界情况：$cI$只和它自己相似，因为$P^{-1}(cI)P=cI$；把每个向量都变成$c$倍的算子，在哪组基下都是$cI$。
+为什么这样定义：任何可逆的$P$，它的各列都是$\R^n$的一组基，所以$A$与$B$相似，正是说它们是同一个算子在两组基下的矩阵。相似是:term[对称的]{id="math.logic-sets.symmetric"}（symmetric），因为$A=(P^{-1})^{-1}BP^{-1}$；$A$与$B$相似、$B$与$C$相似时，$A$与$C$也相似。边界情况：$cI$只和它自己相似，因为$P^{-1}(cI)P=cI$；把每个向量都变成$c$倍的算子，在哪组基下都是$cI$。
 
 ### 相似的矩阵有什么相同
 

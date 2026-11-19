@@ -51,7 +51,7 @@ $$
 
 令$h\to0$，右边趋于$F'(w_0)f'(z_0)$。沿曲线的法则同理，把$h$换成实数$t-t_0$，把$f(z_0+h)$换成$f(z(t))$。
 
-为什么有用：于是多项式、分式在有定义的地方都复可导，求导公式和实数时一样，例如$\bigl(\frac1z\bigr)'=-\frac1{z^2}$（例 1）。沿曲线的法则，以后用:term[原函数]{id="math.complex-analysis.antiderivative"}（antiderivative）算:term[复积分]{id="math.complex-analysis.contour-integral"}（contour integral）、看映射是否保持角度时都要用。边界情况：$e^z$、$\sin z$也复可导，可它们不是由$z$做有限次加减乘除得来的，这些法则管不到，要等[柯西-黎曼方程与全纯函数](lesson:math.complex-analysis.holomorphic)一节。
+为什么有用：于是多项式、分式在有定义的地方都复可导，求导公式和实数时一样，例如$\bigl(\frac1z\bigr)'=-\frac1{z^2}$（例 1）。沿曲线的法则，以后用:term[原函数]{id="math.complex-analysis.antiderivative"}（antiderivative）算:term[复积分]{id="math.complex-analysis.contour-integral"}（contour integral）、看:term[映射]{id="math.logic-sets.map"}（map）是否保持角度时都要用。边界情况：$e^z$、$\sin z$也复可导，可它们不是由$z$做有限次加减乘除得来的，这些法则管不到，要等[柯西-黎曼方程与全纯函数](lesson:math.complex-analysis.holomorphic)一节。
 
 ### 复导数的几何意义
 
@@ -66,7 +66,7 @@ $$
 
 ![左右两个刻度相同的面板。左边 z 平面上，以点 z₀ = 1 + 0.5i 为中心的小方格，由蓝色竖线和绿色横线组成；右边 w 平面上是它在 w = z² 下的像，蓝线、绿线微微弯曲，仍然近似地相交成直角。右边的虚线正方形是线性近似下大方格的像，比左边的方格转了约 27 度、放大约 2.24 倍，和弯曲的像几乎重合。两个圆点分别是 z₀ 和它的像。](local-square.svg)
 
-左边是$z_0=1+0.5i$附近边长$0.4$的小方格，蓝色的是竖线，绿色的是横线；右边是它在$w=z^2$下的像，两边刻度相同。$f'(z_0)=2z_0=2+i$，:term[模]{id="math.complex-analysis.modulus"}是$\sqrt5\approx2.24$，:term[辐角]{id="math.complex-analysis.argument"}（argument）约是$26.6^\circ$。虚线正方形是线性近似$w=f(z_0)+f'(z_0)(z-z_0)$下大方格的像，弯曲的网格和它几乎重合；方格越小，重合得越好。
+左边是$z_0=1+0.5i$附近边长$0.4$的小方格，蓝色的是竖线，绿色的是横线；右边是它在$w=z^2$下的像（image），两边刻度相同。$f'(z_0)=2z_0=2+i$，:term[模]{id="math.complex-analysis.modulus"}是$\sqrt5\approx2.24$，:term[辐角]{id="math.complex-analysis.argument"}（argument）约是$26.6^\circ$。虚线正方形是线性近似$w=f(z_0)+f'(z_0)(z-z_0)$下大方格的像，弯曲的网格和它几乎重合；方格越小，重合得越好。
 
 ## 例题
 

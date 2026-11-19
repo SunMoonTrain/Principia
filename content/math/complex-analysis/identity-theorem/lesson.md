@@ -55,7 +55,7 @@ status: reviewed
 
 为什么有用：在一条线段、一段圆弧上相等就够了，[柯西积分公式](lesson:math.complex-analysis.cauchy-integral-formula)一节还要整个圆周。[复变函数与映射](lesson:math.complex-analysis.complex-functions)一节展开验证的$\sin^2z+\cos^2z=1$，两边都是整函数，在实轴上成立就处处成立；那一节说「不等式却不一定」，原因见本节第 7 题。
 
-边界情况：「区域」和「$z^*\in D$」都不能少。在两个不相交的开圆盘上，一个取$0$、另一个取$1$的函数全纯（[柯西积分定理](lesson:math.complex-analysis.cauchy-theorem#def-antiderivative)一节讲:term[原函数]{id="math.complex-analysis.antiderivative"}时用过），在第一个圆盘上和$0$相等，却不恒为$0$。$\sin\frac\pi z$在去掉原点的平面上全纯、不恒为$0$，零点$\frac1k$（$k$是非零整数）却收敛到不在定义域里的$0$。
+边界情况：「区域」和「$z^*\in D$」都不能少。在两个:term[不相交]{id="math.logic-sets.disjoint"}（disjoint）的开圆盘上，一个取$0$、另一个取$1$的函数全纯（[柯西积分定理](lesson:math.complex-analysis.cauchy-theorem#def-antiderivative)一节讲:term[原函数]{id="math.complex-analysis.antiderivative"}时用过），在第一个圆盘上和$0$相等，却不恒为$0$。$\sin\frac\pi z$在去掉原点的平面上全纯、不恒为$0$，零点$\frac1k$（$k$是非零整数）却收敛到不在定义域里的$0$。
 
 ### 两个推论
 
@@ -113,5 +113,5 @@ functions:
 ## 常见误区
 
 - 「两个:term[全纯函数]{id="math.complex-analysis.holomorphic-function"}在无穷多个点上相等，就处处相等。」$\sin z$和$0$在一切$k\pi$处相等，却不是同一个函数：:term[唯一性定理]{id="math.complex-analysis.identity-theorem"}的条件（1）要一列互不相同、收敛到定义域中一点的点，这些$k\pi$里取不出来。
-- 「唯一性定理对任何:term[开集]{id="math.complex-analysis.open-set"}都成立。」开集还要连成一片，是:term[区域]{id="math.complex-analysis.domain"}：在两个不相交的:term[开圆盘]{id="math.complex-analysis.open-disc"}上，一个取$0$、另一个取$1$的函数，在第一个圆盘上和常数$0$相等，在整个开集上却不相等。
+- 「唯一性定理对任何:term[开集]{id="math.complex-analysis.open-set"}都成立。」开集还要连成一片，是:term[区域]{id="math.complex-analysis.domain"}：在两个:term[不相交]{id="math.logic-sets.disjoint"}的:term[开圆盘]{id="math.complex-analysis.open-disc"}上，一个取$0$、另一个取$1$的函数，在第一个圆盘上和常数$0$相等，在整个开集上却不相等。
 - 「不恒为$0$的全纯函数只有有限个零点。」$\sin z$有无穷多个零点$k\pi$；定义域是区域时，保证有限的是含在定义域里的有界闭区域里的零点（上面的第二个推论）。
