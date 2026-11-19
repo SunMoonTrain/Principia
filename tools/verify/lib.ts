@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'yaml';
+import { inputByte } from '../../packages/sim/src/core/p8-asm.ts';
 import { sameSequence } from '../../shared/sequence.ts';
 import { evaluateValue } from '../../shared/expr.ts';
 
@@ -12,6 +13,7 @@ export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 
 /** 一道题独立算出的答案：数、有序的一组数、无序的一组数、选择题的选项序号。 */
 export type Computed =
+  | { type: 'program'; value: number[][] }
   | { type: 'number'; value: number }
   | { type: 'tuple' | 'set'; value: number[] }
   | { type: 'choice'; value: number[] }
@@ -88,17 +90,23 @@ function close(x: number, a: number): boolean {
 }
 
 type StandardAnswer =
+  | { type: 'program'; value: number[][] }
   | { type: 'sequence'; value: string[]; caseSensitive?: boolean }
   | { type: 'number' | 'tuple' | 'set' | 'choice'; value: number[]; exact?: boolean };
 
-function loadStandardAnswers(lesson: string): Map<string, StandardAnswer> | null {
+function loadStandardAnswers(lesson: string, root: string): Map<string, StandardAnswer> | null {
   const [subject, domain, name] = lesson.split('.');
-  const file = path.join(ROOT, 'content', subject, domain, name, 'problems.yaml');
+  const file = path.join(root, 'content', subject, domain, name, 'problems.yaml');
   if (!fs.existsSync(file)) return null;
-  const problems = parse(fs.readFileSync(file, 'utf8')) as { id: string; answer?: { type: Computed['type']; value: unknown; exact?: boolean; caseSensitive?: boolean } }[];
+  const problems = parse(fs.readFileSync(file, 'utf8')) as { id: string; answer?: { type: Computed['type']; value?: unknown; tests?: {out: unknown[]}[]; exact?: boolean; caseSensitive?: boolean } }[];
   const result = new Map<string, StandardAnswer>();
   for (const p of problems) {
     if (!p.answer) continue;
+    if (p.answer.type === 'program') {
+      const value = (p.answer.tests ?? []).map(test => test.out.map(v => inputByte(v) ?? NaN));
+      result.set(p.id, {type:'program', value});
+      continue;
+    }
     const raw = Array.isArray(p.answer.value) ? p.answer.value : [p.answer.value];
     if (p.answer.type === 'sequence') {
       result.set(p.id, { type: 'sequence', value: raw.map(String), caseSensitive: p.answer.caseSensitive });
@@ -117,6 +125,7 @@ function format(c: Computed): string {
   const v = c.value;
   const show = (x: number): string => (Number.isInteger(x) ? String(x) : x.toPrecision(12));
   if (c.type === 'number') return show(c.value as number);
+  if (c.type === 'program') return JSON.stringify(c.value);
   if (c.type === 'sequence') return c.value.join(' → ');
   if (c.type === 'tuple') return `(${(v as number[]).map(show).join(', ')})`;
   if (c.type === 'set') return `{${(v as number[]).map(show).join(', ')}}`;
@@ -124,10 +133,10 @@ function format(c: Computed): string {
 }
 
 /** 跑一个验算：打印独立算出的答案；problems.yaml 存在时和标准答案比对。返回是否全部一致。 */
-export function runVerification(v: Verification): boolean {
+export function runVerification(v: Verification, root = ROOT): boolean {
   console.log(`\n# ${v.lesson}`);
   const computed = v.compute();
-  const standard = loadStandardAnswers(v.lesson);
+  const standard = loadStandardAnswers(v.lesson, root);
   let ok = true;
   for (const [id, c] of Object.entries(computed)) {
     let verdict = '（还没有 problems.yaml，只输出算出的值）';
@@ -136,6 +145,11 @@ export function runVerification(v: Verification): boolean {
       if (!s) {
         verdict = '✗ problems.yaml 里没有这道题的标准答案';
         ok = false;
+      } else if (s.type === 'program' || c.type === 'program') {
+        const same = s.type === 'program' && c.type === 'program' && s.value.length === c.value.length &&
+          s.value.every((row, i) => row.length === c.value[i].length && row.every((byte, j) => byte === inputByte(c.value[i][j])));
+        verdict = (same ? '✓ 各用例输出一致' : '✗ 用例输出不一致') + '（标准 '+JSON.stringify(s.value)+'）';
+        if (!same) ok = false;
       } else if (s.type === 'sequence' || c.type === 'sequence') {
         const same = s.type === 'sequence' && c.type === 'sequence' && sameSequence(s.value, c.value, s.caseSensitive);
         verdict = (same ? '✓ 与标准答案一致' : '✗ 与标准答案不一致') + '（' + s.value.join(', ') + '）';

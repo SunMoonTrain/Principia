@@ -98,7 +98,7 @@ interface ProblemSource {
   id?: unknown;
   tier?: unknown;
   statement?: unknown;
-  answer?: { type?: unknown; value?: unknown; multiple?: unknown; exact?: boolean; alphabet?: unknown; options?: unknown; unit?: unknown } | null;
+  answer?: { type?: unknown; value?: unknown; multiple?: unknown; exact?: boolean; alphabet?: unknown; options?: unknown; unit?: unknown; starter?: string; tests?: { in?: unknown[]; out: unknown[] }[]; maxCycles?: number; isa?: string[] } | null;
 }
 
 /** 一道题：只取题干、选项、作答方式、单位，别的字段一律不碰。 */
@@ -110,10 +110,15 @@ function problemLines(p: ProblemSource): string[] {
     a.options.forEach((option, i) => lines.push(`${OPTION_LABELS[i] ?? '?'}. ${indent(text(option), '   ')}`));
     lines.push('');
   }
-  const kind = a && ['number', 'tuple', 'set', 'choice', 'sequence'].includes(a.type as string)
-    ? answerKind({ type: a.type as 'number' | 'tuple' | 'set' | 'choice' | 'sequence', value: a.value, multiple: a.multiple === true })
+  const kind = a && ['number', 'tuple', 'set', 'choice', 'sequence', 'program'].includes(a.type as string)
+    ? answerKind({ type: a.type as 'number' | 'tuple' | 'set' | 'choice' | 'sequence' | 'program', value: a.value, multiple: a.multiple === true })
     : answerKind(null);
   lines.push(`作答：${kind}`);
+  if (a?.type === 'program') {
+    lines.push('', '起始代码', '```p8asm', (a.starter ?? '').trimEnd(), '```', '');
+    a.tests?.forEach((test, i) => lines.push('用例 '+(i+1)+'　输入 ['+(test.in ?? []).join(', ')+']，期望输出 ['+test.out.join(', ')+']'));
+    lines.push('周期上限 '+(a.maxCycles ?? 10000), '开放指令 '+(a.isa?.join('、') ?? '全部 P8 指令'));
+  }
   if (a?.exact) lines.push(EXACT_HELP);
   if (a?.type === 'sequence' && Array.isArray(a.alphabet)) lines.push('可用记号：' + a.alphabet.join('、'));
   if (a && typeof a.unit === 'string') lines.push(`单位：${text(a.unit)}`);

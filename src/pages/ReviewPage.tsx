@@ -8,6 +8,7 @@ import { domainOf, lessonPath, PROBLEM_IDS, TIER_ORDER } from '../../shared/ids'
 import { TIER_LABELS } from '../../shared/problem-text';
 import { lastActivity, localTimestamp, reviewReasons, type ReviewReason } from '../../shared/progress';
 import { useContent } from '../content/ContentContext';
+import { ProgramAttempts } from '../components/ProgramAttempts';
 import { Rich } from '../content/Rich';
 import { useProgress } from '../progress/ProgressContext';
 
@@ -111,6 +112,7 @@ export function ReviewPage() {
                         <Rich value={problem.statement} inert />
                       </div>
                     )}
+                    {problem?.answer?.type === 'program' && <ProgramAttempts record={progress.state.problems[lesson]?.[item.problem]}/>}
                     <div className="problem-actions">
                       <Link className="hint-button" to={lessonPath(lesson, `problem-${item.problem}`)}>
                         去做这道题

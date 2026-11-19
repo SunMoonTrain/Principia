@@ -1,0 +1,138 @@
+- id: p1
+  tier: easy
+  statement: |
+    下面的函数返回什么？
+
+    ```rust
+    fn result() -> u8 { 127 }
+    ```
+  answer: { type: number, value: 0x7F, exact: true }
+  hints:
+    - |
+      先观察。
+    - |
+      比较两步。
+    - |
+      核对结果。
+  solution: |
+    逐步核对。
+
+- id: p2
+  tier: easy
+  statement: |
+    按顺序输入访问记号。
+  answer: { type: sequence, value: [A, B, D], alphabet: [A, B, C, D] }
+  hints:
+    - |
+      先观察。
+    - |
+      比较两步。
+    - |
+      核对结果。
+  solution: |
+    逐步核对。
+
+- id: p3
+  tier: medium
+  statement: |
+    用 IN 读两个数 $a$、$b$（都在 0 到 100 之间），用 OUT 输出 $a+b$。
+  answer:
+    type: program
+    language: p8asm
+    starter: |
+      ; 在这里写程序
+      HLT
+    tests:
+      - in: [3, 4]
+        out: [7]
+      - in: [100, 27]
+        out: [127]
+    maxCycles: 1000
+  hints:
+    - |
+      每次 IN 读取一个字节。
+    - |
+      分别读到 R0 和 R1，再把两数相加。
+    - |
+      把 R0 和 R1 的和写回 R0，输出 R0，最后停机。
+  solution: |
+    ADD 将两个输入字节的和写回 R0，OUT 输出这个字节。
+
+    ```p8asm
+    IN R0
+    IN R1
+    ADD R0, R1
+    OUT R0
+    HLT
+    ```
+
+- id: p4
+  tier: medium
+  statement: |
+    写出集合。
+  answer: { type: set, exact: true, value: [1, 2] }
+  hints:
+    - |
+      先观察。
+    - |
+      比较两步。
+    - |
+      核对结果。
+  solution: |
+    逐步核对。
+
+- id: p5
+  tier: hard
+  statement: |
+    说明理由。
+  hints:
+    - |
+      先观察。
+    - |
+      比较两步。
+    - |
+      核对结果。
+  reference: |
+    逐步核对。
+
+- id: p6
+  tier: hard
+  statement: |
+    说明理由。
+  hints:
+    - |
+      先观察。
+    - |
+      比较两步。
+    - |
+      核对结果。
+  reference: |
+    逐步核对。
+
+- id: p7
+  tier: thinking
+  statement: |
+    说明理由。
+  hints:
+    - |
+      先观察。
+    - |
+      比较两步。
+    - |
+      核对结果。
+  reference: |
+    逐步核对。
+
+- id: p8
+  tier: thinking
+  statement: |
+    说明理由。
+  hints:
+    - |
+      先观察。
+    - |
+      比较两步。
+    - |
+      核对结果。
+  reference: |
+    逐步核对。

@@ -17,6 +17,17 @@ async function server() {
 }
 
 describe('进度接口', () => {
+  it('程序作答原文保留换行，4000 字和 8000 字可读回，8001 字单独拒收', async () => {
+    const app = await server();
+    try {
+      const inputs = [4000,8000,8001].map(n => '; 原文\n'.repeat(1601).slice(0,n));
+      const ops = inputs.map((input, i) => ({type:'attempt', lesson:L, problem:'p3', attempt:{
+        id:'program-0'+i, at:'2026-11-08T15:41:02+08:00', input, result:'wrong' }}));
+      expect((await app.inject({method:'POST',url:'/api/progress/ops',payload:{ops}})).json()).toEqual({ok:true,applied:2,rejected:[2]});
+      const state = (await app.inject({method:'GET',url:'/api/progress'})).json();
+      expect(state.problems[L].p3.attempts.map((a: {input:string}) => a.input)).toEqual(inputs.slice(0,2));
+    } finally { await app.close(); }
+  });
   it('一批里格式不对的操作单独丢掉，别的照常写入', async () => {
     const app = await server();
     const res = await app.inject({

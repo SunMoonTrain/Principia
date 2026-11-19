@@ -5,7 +5,8 @@ import { evaluateValue } from '../shared/expr.ts';
 import { normalizeToken } from '../shared/sequence.ts';
 import { PROBLEM_IDS, TIER_ORDER } from '../shared/ids.ts';
 import { readText } from './fsutil.ts';
-import { renderField, sourceText, type MdContext } from './markdown.ts';
+import { gradeProgram } from '../packages/sim/src/core/p8-program.ts';
+import { parseFragment, type MdNode, renderField, sourceText, type MdContext } from './markdown.ts';
 import { ProblemSchema, reportIssues } from './schema.ts';
 import { PRECISION_RE } from './text-rules.ts';
 import { lineOf, parseYaml, textAt, type TextField, type YamlFile } from './yaml-text.ts';
@@ -18,6 +19,14 @@ type FieldCtx = Omit<MdContext, 'lineOffset' | 'file'>;
 
 function render(y: YamlFile, field: TextField | null, ctx: FieldCtx, mode: 'rich' | 'plain'): Rich | null {
   return field ? renderField(field, { ...ctx, file: y.file }, mode) : null;
+}
+
+function firstAssembly(node: MdNode): MdNode | undefined {
+  if (node.type === 'code' && node.lang === 'p8asm') return node;
+  for (const child of node.children ?? []) {
+    const code = firstAssembly(child);
+    if (code) return code;
+  }
 }
 
 /** 检查并渲染一道题；结构不对时返回 null（错误已记下）。 */
@@ -84,7 +93,27 @@ function processProblem(y: YamlFile, raw: unknown, i: number, ctx: FieldCtx): Pr
       diags.error(y.file, at('answer', ...path), `${p.id}：标准答案 ${String(v)} 求不出有限实数值：${message}`);
       return Number.NaN;
     };
-    if (a.type === 'number') {
+    if (a.type === 'program') {
+      answer = a;
+      const starter = text('answer', 'starter');
+      if (starter) {
+        const trial = gradeProgram(starter.value, a);
+        if ('error' in trial) diags.error(y.file, starter.contentLine + trial.error.line - 1, p.id + ' starter：' + trial.error.message);
+        else if (trial.results.every(r => r.passed)) diags.error(y.file, starter.line, p.id + '：starter 已经通过全部用例');
+      }
+      if (solution) {
+        const code = firstAssembly(parseFragment(solution.value));
+        if (!code) diags.error(y.file, solution.line, p.id + '：解答须包含 p8asm 标准程序');
+        else {
+          const firstLine = solution.contentLine + code.position!.start.line;
+          const trial = gradeProgram(code.value ?? '', a);
+          if ('error' in trial) diags.error(y.file, firstLine + trial.error.line - 1, p.id + ' 标准程序：' + trial.error.message);
+          else trial.results.forEach((r, j) => {
+            if (!r.passed) diags.error(y.file, firstLine, p.id + ' 标准程序第 ' + (j + 1) + ' 个用例：' + r.reason + '；实际输出 [' + r.actual + ']');
+          });
+        }
+      }
+    } else if (a.type === 'number') {
       answer = { type: 'number', exact: a.exact, value: evaluate(a.value, ['value']), source: String(a.value), unit: render(y, unit, ctx, 'plain') };
     } else if (a.type === 'tuple' || a.type === 'set') {
       answer = {
@@ -120,8 +149,8 @@ function processProblem(y: YamlFile, raw: unknown, i: number, ctx: FieldCtx): Pr
 
     if (a.type === 'sequence' || ('exact' in a && a.exact)) {
       if (p.tolerance) diags.error(y.file, at('tolerance'), p.id + '：sequence 或 exact 不能同时写 tolerance');
-    } else if (a.type === 'choice') {
-      if (p.tolerance) diags.error(y.file, at('tolerance'), `${p.id}：选择题不用 tolerance`);
+    } else if (a.type === 'choice' || a.type === 'program') {
+      if (p.tolerance) diags.error(y.file, at('tolerance'), `${p.id}：${a.type === 'choice' ? '选择题' : '程序题'}不用 tolerance`);
     } else {
       if (p.tolerance && p.tolerance.rel === undefined && p.tolerance.abs === undefined) {
         diags.error(y.file, at('tolerance'), `${p.id}：tolerance 至少写 rel 或 abs`);

@@ -3,9 +3,12 @@
 
 import { Gallery } from '@principia/anim/gallery';
 import { lazy, Suspense, useEffect, type ReactNode } from 'react';
+import type { Problem } from '../../shared/content-types';
+import { ProblemCard } from '../components/ProblemCard';
 import { Rich } from '../content/Rich';
 import { renderNote } from '../notes/renderNote';
 
+declare const __P8_DEMO_PROBLEM__: Problem;
 const GalleryDemo = lazy(() => import('@principia/sim/gallery'));
 
 function renderLabel(src: string): ReactNode {
@@ -32,6 +35,8 @@ export default function GalleryPage() {
       <section className="anim-demo" aria-labelledby="cs-simulators">
         <h2 id="cs-simulators">计算机模拟器</h2>
         <Suspense fallback={<p>正在加载模拟器…</p>}><GalleryDemo /></Suspense>
+        <h3>编程练习 · 两个输入相加</h3>
+        <ProblemCard problem={__P8_DEMO_PROBLEM__} index={2} practice />
       </section>
     </div>
   );

@@ -93,7 +93,17 @@ export interface Tolerance {
   abs: number;
 }
 
+export interface ProgramAnswer {
+  type: 'program';
+  language: 'p8asm';
+  starter: string;
+  tests: { in: number[]; out: number[] }[];
+  maxCycles: number;
+  isa?: string[];
+}
+
 export type Answer =
+  | ProgramAnswer
   | { type: 'number'; value: number; source: string; unit: Rich | null; exact?: true }
   | { type: 'tuple' | 'set'; value: number[]; source: string[]; unit: Rich | null; exact?: true }
   | { type: 'sequence'; value: string[]; alphabet?: string[]; caseSensitive?: boolean }

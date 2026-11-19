@@ -36,7 +36,7 @@ const Op = z.discriminatedUnion('type', [
     attempt: z.strictObject({
       id: RecordId,
       at: Timestamp,
-      input: z.string().max(500),
+      input: z.string().max(8000),
       result: z.enum(['correct', 'wrong', 'gave-up']),
     }),
   }),

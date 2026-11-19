@@ -11,7 +11,7 @@ export const TIER_LABELS: Record<Tier, string> = { easy: '简单', medium: '中�
 export const OPTION_LABELS = 'ABCDEFGHIJ';
 
 /** 作答方式（题目卡片右上角那一行）：只看题型和个数，不涉及答案本身。没有 answer 的是难题、思考题。 */
-export function answerKind(answer: { type: 'number' | 'tuple' | 'set' | 'choice' | 'sequence'; value?: unknown; multiple?: boolean } | null | undefined): string {
+export function answerKind(answer: { type: 'number' | 'tuple' | 'set' | 'choice' | 'sequence' | 'program'; value?: unknown; multiple?: boolean } | null | undefined): string {
   if (!answer) return '写思路笔记，找 Claude 批改';
   const count = Array.isArray(answer.value) ? answer.value.length : 1;
   switch (answer.type) {
@@ -21,6 +21,8 @@ export function answerKind(answer: { type: 'number' | 'tuple' | 'set' | 'choice'
       return `按顺序填 ${count} 个数`;
     case 'set':
       return `填 ${count} 个数，不分顺序`;
+    case 'program':
+      return '编写 P8 汇编程序';
     case 'sequence':
       return '按顺序填记号，用空格、逗号或箭头隔开';
     case 'choice':

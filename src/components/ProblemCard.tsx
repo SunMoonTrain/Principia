@@ -2,11 +2,12 @@
 // 难题、思考题写思路笔记、复制给 Claude 批改、录入批改结果（ProblemWork）。提示点开一级才出现下一级的按钮。
 // 每道题底下都有「没把握」「内容有误」（ProblemMarks）。data-problem、data-subpart 给「内容有误」定位用。
 
-import { useState, type FormEvent } from 'react';
-import type { Answer, Problem } from '../../shared/content-types';
+import { lazy, Suspense, useState, type FormEvent } from 'react';
+import type { Answer, Problem, ProgramAnswer } from '../../shared/content-types';
 import { judgeChoice, judgeNumeric, judgeSequence, type Verdict } from '../../shared/judge';
 import { answerKind, EXACT_HELP, OPTION_LABELS, TIER_LABELS } from '../../shared/problem-text';
 import {
+  applyOp, EMPTY_PROGRESS, type ProgressOp,
   firstResult,
   hintsBeforeFirstCorrect,
   hintsShown,
@@ -21,6 +22,9 @@ import { newId, useProgress } from '../progress/ProgressContext';
 import { ProblemMarks } from './ProblemMarks';
 import { ProblemWork, WorkBadge } from './ProblemWork';
 
+import { ProgramAttempts } from './ProgramAttempts';
+
+const ProgramForm = lazy(() => import('./ProgramForm'));
 const HINT_NAMES = ['方向', '关键步骤', '完整解答'];
 
 type NumericAnswer = Extract<Answer, { type: 'number' | 'tuple' | 'set' }>;
@@ -67,7 +71,7 @@ function FeedbackLine({ feedback }: { feedback: Feedback | null }) {
   );
 }
 
-function TextAnswerForm({ answer, problem, onSubmit }: { answer: Exclude<Answer, ChoiceAnswer>; problem: Problem; onSubmit: (input: string, v: Verdict) => void }) {
+function TextAnswerForm({ answer, problem, onSubmit }: { answer: Exclude<Answer, ChoiceAnswer | ProgramAnswer>; problem: Problem; onSubmit: (input: string, v: Verdict) => void }) {
   const [input, setInput] = useState('');
   const submit = (e: FormEvent): void => {
     e.preventDefault();
@@ -151,16 +155,18 @@ function FirstResultBadge({ result }: { result: ReturnType<typeof firstResult> }
   return <span className={`first-result first-result-${result}`}>{text}</span>;
 }
 
-export function ProblemCard({ problem, index }: { problem: Problem; index: number }) {
+export function ProblemCard({ problem, index, practice = false }: { problem: Problem; index: number; practice?: boolean }) {
   const { lessonId } = useLessonContext();
   const lesson = lessonId ?? '';
   const progress = useProgress();
-  const record = progress.state.problems[lesson]?.[problem.id];
+  const [local, setLocal] = useState(EMPTY_PROGRESS);
+  const dispatch = (op: ProgressOp) => practice ? setLocal(state => applyOp(state, op)) : progress.dispatch(op);
+  const record = (practice ? local : progress.state).problems[lesson]?.[problem.id];
   const shown = hintsShown(record);
   const recordAttempt = (input: string, result: AttemptResult): void =>
-    progress.dispatch({ type: 'attempt', lesson, problem: problem.id, attempt: { id: newId(), at: localTimestamp(), input, result } });
+    dispatch({ type: 'attempt', lesson, problem: problem.id, attempt: { id: newId(), at: localTimestamp(), input, result } });
   const revealHint = (): void => {
-    if (shown < 3) progress.dispatch({ type: 'hint', lesson, problem: problem.id, level: (shown + 1) as 1 | 2 | 3, at: localTimestamp() });
+    if (shown < 3) dispatch({ type: 'hint', lesson, problem: problem.id, level: (shown + 1) as 1 | 2 | 3, at: localTimestamp() });
   };
   const [feedback, submit, setFeedback] = useSubmit(recordAttempt);
   const [confirmGiveUp, setConfirmGiveUp] = useState(false);
@@ -193,7 +199,8 @@ export function ProblemCard({ problem, index }: { problem: Problem; index: numbe
       </div>
 
       {a?.type === 'choice' && <ChoiceForm answer={a} onSubmit={submit} />}
-      {a && a.type !== 'choice' && <TextAnswerForm answer={a} problem={problem} onSubmit={submit} />}
+      {a?.type === 'program' && <Suspense fallback={<p>正在加载编辑器…</p>}><ProgramForm answer={a} onSubmit={submit} /></Suspense>}
+      {a && a.type !== 'choice' && a.type !== 'program' && <TextAnswerForm answer={a} problem={problem} onSubmit={submit} />}
       <FeedbackLine feedback={feedback} />
       {!a && <ProblemWork problem={problem} index={index} record={record} />}
 
@@ -246,7 +253,8 @@ export function ProblemCard({ problem, index }: { problem: Problem; index: numbe
           <Rich value={problem.solution} />
         </section>
       )}
-      <ProblemMarks problem={problem.id} record={record} />
+      {a?.type === 'program' && <ProgramAttempts record={record}/>}
+      {!practice && <ProblemMarks problem={problem.id} record={record} />}
     </article>
   );
 }

@@ -4,6 +4,7 @@
 
 import { z } from 'zod';
 import type { Diagnostics } from './diagnostics.ts';
+import { p8Bytes, p8Isa } from '../packages/sim/src/p8-schema.ts';
 import { TOKEN } from '../shared/sequence.ts';
 import { lineOf, type YamlFile } from './yaml-text.ts';
 
@@ -48,6 +49,11 @@ const NumericFields = { unit: z.string().optional(), exact: z.literal(true).opti
 export const AnswerSchema = z.discriminatedUnion(
   'type',
   [
+    z.strictObject({
+      type: z.literal('program'), language: z.literal('p8asm'), starter: z.string(),
+      tests: z.array(z.strictObject({ in: p8Bytes.default([]), out: p8Bytes })).min(1).max(20),
+      maxCycles: z.int().positive().max(100000).default(10000), isa: p8Isa.optional(),
+    }),
     z.strictObject({ type: z.literal('number'), value: NumberOrExpression, ...NumericFields }),
     z.strictObject({ type: z.literal('tuple'), value: z.array(NumberOrExpression).min(1), ...NumericFields }),
     z.strictObject({ type: z.literal('set'), value: z.array(NumberOrExpression).min(1), ...NumericFields }),
@@ -62,7 +68,7 @@ export const AnswerSchema = z.discriminatedUnion(
       value: z.union([z.number().int(), z.array(z.number().int()).min(1)]),
     }),
   ],
-  { error: 'answer.type 只能是 number、tuple、set、choice、sequence 之一' },
+  { error: 'answer.type 只能是 number、tuple、set、choice、sequence、program 之一' },
 );
 
 export const ProblemSchema = z.strictObject({
