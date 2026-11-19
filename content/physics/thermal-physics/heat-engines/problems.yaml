@@ -1,0 +1,210 @@
+- id: p1
+  tier: easy
+  statement: |
+    一台热机每个循环从高温热库吸收$3.2\,\mathrm{kJ}$的热量，向低温热库放出$2.4\,\mathrm{kJ}$的热量。它的热机效率是多少？答案写成小数。
+  answer:
+    type: number
+    value: 1 - 2.4/3.2
+  hints:
+    - |
+      一个循环里工作物质回到原来的状态，它对外做的净功和吸、放的热量有什么关系？热机效率是哪两个量之比？
+    - |
+      $W=Q_{\mathrm H}-Q_{\mathrm L}$，$\eta=\frac W{Q_{\mathrm H}}=1-\frac{Q_{\mathrm L}}{Q_{\mathrm H}}$。
+    - |
+      $W=3.2\,\mathrm{kJ}-2.4\,\mathrm{kJ}=0.8\,\mathrm{kJ}$，$\eta=\frac{0.8}{3.2}=0.25$。
+  solution: |
+    一个循环里工作物质回到原来的状态，内能不变，由热力学第一定律，对外做的净功$W=Q_{\mathrm H}-Q_{\mathrm L}=0.8\,\mathrm{kJ}$。热机效率$\eta=\frac W{Q_{\mathrm H}}=\frac{0.8}{3.2}=0.25$，即 25%：吸收的热量只有四分之一变成了功，其余四分之三放给了低温热库。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        两台热机比较，热机效率高的那一台，每个循环对外做的净功一定多
+      - |
+        高温热库$500\,\mathrm K$、低温热库$300\,\mathrm K$的卡诺热机，只把高温热库的温度升高$100\,\mathrm K$，和只把低温热库的温度降低$100\,\mathrm K$，热机效率提高得一样多
+      - |
+        工作在同样两个热库之间时，卡诺制冷机的制冷系数等于卡诺热机的热机效率的倒数
+      - |
+        在$450\,\mathrm K$和$300\,\mathrm K$之间工作的卡诺热机，和在$900\,\mathrm K$和$600\,\mathrm K$之间工作的卡诺热机，热机效率相同
+      - |
+        冷藏室的温度不变，厨房的温度降低（仍高于冷藏室）时，冰箱（看成卡诺制冷机）从冷藏室取走同样多的热量，要做的功变少
+    value: [4, 5]
+  hints:
+    - |
+      A 想想热机效率的定义里还有哪个量；B 分别算出两种改法以后的热机效率；C 把两个量都用$T_{\mathrm H}$、$T_{\mathrm L}$写出来比较；D 卡诺热机的热机效率由什么决定；E 卡诺制冷机的制冷系数随高温热库的温度怎样变。
+    - |
+      $W=\eta Q_{\mathrm H}$；卡诺热机$\eta=1-\frac{T_{\mathrm L}}{T_{\mathrm H}}$，卡诺制冷机的制冷系数$\frac{Q_{\mathrm L}}{|W|}=\frac{T_{\mathrm L}}{T_{\mathrm H}-T_{\mathrm L}}$。
+    - |
+      A 错：$W=\eta Q_{\mathrm H}$，还要看每个循环吸收多少热量，热机效率高、吸热少的热机做的功可以更少。B 错：原来$\eta=1-\frac{300}{500}=0.4$；高温热库升到$600\,\mathrm K$时$\eta=0.5$，低温热库降到$200\,\mathrm K$时$\eta=0.6$。C 错：$\frac1\eta=\frac{T_{\mathrm H}}{T_{\mathrm H}-T_{\mathrm L}}$，比制冷系数$\frac{T_{\mathrm L}}{T_{\mathrm H}-T_{\mathrm L}}$大 1。
+
+      D 对：两台的$\frac{T_{\mathrm L}}{T_{\mathrm H}}$都是$\frac23$，热机效率都是$\frac13$。E 对：$T_{\mathrm L}$不变、$T_{\mathrm H}$降低时，$T_{\mathrm H}-T_{\mathrm L}$变小，制冷系数变大，取走同样多的热量要做的功$|W|=Q_{\mathrm L}\cdot\frac{T_{\mathrm H}-T_{\mathrm L}}{T_{\mathrm L}}$变少。
+  solution: |
+    选 D、E。A 错：$W=\eta Q_{\mathrm H}$，还要看每个循环吸收多少热量；热机效率高、吸热少的热机，做的功可以更少。B 错：原来$\eta=1-\frac{300}{500}=0.4$，只把高温热库升到$600\,\mathrm K$时$\eta=0.5$，只把低温热库降到$200\,\mathrm K$时$\eta=0.6$，降低低温热库的温度提高得更多。C 错：$\frac1\eta=\frac{T_{\mathrm H}}{T_{\mathrm H}-T_{\mathrm L}}$，比制冷系数$\frac{T_{\mathrm L}}{T_{\mathrm H}-T_{\mathrm L}}$大 1。
+
+    D 对：卡诺热机的热机效率只由$\frac{T_{\mathrm L}}{T_{\mathrm H}}$决定，两台都是$\frac23$，热机效率都是$\frac13$；只看温度差是不对的。E 对：$T_{\mathrm L}$不变、$T_{\mathrm H}$降低，$T_{\mathrm H}-T_{\mathrm L}$变小，制冷系数$\frac{T_{\mathrm L}}{T_{\mathrm H}-T_{\mathrm L}}$变大，取走同样多的热量要做的功就变少。
+
+- id: p3
+  tier: medium
+  statement: |
+    一台卡诺热机工作在$427\,^\circ\mathrm C$的高温热库和$27\,^\circ\mathrm C$的低温热库之间，每个循环对外做功$1.2\,\mathrm{kJ}$；摄氏温度换算成热力学温度时加$273\,\mathrm K$。依次求每个循环它从高温热库吸收的热量$Q_{\mathrm H}$和向低温热库放出的热量$Q_{\mathrm L}$。
+  answer:
+    type: tuple
+    value: [1.2/(1 - 300/700), 1.2/(1 - 300/700) - 1.2]
+    unit: |
+      $\mathrm{kJ}$
+  hints:
+    - |
+      卡诺热机的热机效率由两个热库的什么温度决定？知道了热机效率和功，怎样求吸收的热量？
+    - |
+      $T_{\mathrm H}=700\,\mathrm K$，$T_{\mathrm L}=300\,\mathrm K$，$\eta=1-\frac{T_{\mathrm L}}{T_{\mathrm H}}=\frac47$；$Q_{\mathrm H}=\frac W\eta$，$Q_{\mathrm L}=Q_{\mathrm H}-W$。
+    - |
+      $Q_{\mathrm H}=1.2\times\frac74\,\mathrm{kJ}=2.1\,\mathrm{kJ}$，$Q_{\mathrm L}=2.1\,\mathrm{kJ}-1.2\,\mathrm{kJ}=0.9\,\mathrm{kJ}$。
+  solution: |
+    换算成热力学温度，$T_{\mathrm H}=700\,\mathrm K$，$T_{\mathrm L}=300\,\mathrm K$，热机效率$\eta=1-\frac{300}{700}=\frac47$。所以$Q_{\mathrm H}=\frac W\eta=1.2\times\frac74\,\mathrm{kJ}=2.1\,\mathrm{kJ}$，$Q_{\mathrm L}=Q_{\mathrm H}-W=0.9\,\mathrm{kJ}$，也可以用$\frac{Q_{\mathrm L}}{Q_{\mathrm H}}=\frac{T_{\mathrm L}}{T_{\mathrm H}}=\frac37$核对。直接代摄氏温度会得到$1-\frac{27}{427}\approx0.94$，这是错的：卡诺热机的式子里只能用热力学温度。
+
+- id: p4
+  tier: medium
+  statement: |
+    冰箱的冷冻室里放着$1.0\,\mathrm{kg}$、$0\,^\circ\mathrm C$的水，要让它全部结成$0\,^\circ\mathrm C$的冰，需要从水里取走$3.34\times10^5\,\mathrm J$的热量。厨房的温度是$27\,^\circ\mathrm C$。把冰箱看成在这些水和厨房之间工作的卡诺制冷机，摄氏温度换算成热力学温度时加$273\,\mathrm K$，压缩机要对工作物质做多少功？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 3.34e5*27/273
+    unit: |
+      $\mathrm J$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      水结冰的整个过程中温度一直是$0\,^\circ\mathrm C$，它在这里相当于什么？卡诺制冷机的制冷系数是多少？
+    - |
+      低温热库是$273\,\mathrm K$的水，高温热库是$300\,\mathrm K$的厨房，制冷系数$\frac{Q_{\mathrm L}}{|W|}=\frac{T_{\mathrm L}}{T_{\mathrm H}-T_{\mathrm L}}=\frac{273}{27}$，所以$|W|=Q_{\mathrm L}\cdot\frac{27}{273}$。
+    - |
+      $|W|=3.34\times10^5\times\frac{27}{273}\,\mathrm J\approx3.30\times10^4\,\mathrm J$。
+  solution: |
+    水结冰时温度一直是$273\,\mathrm K$，冰箱从它这里取走热量，它就是低温热库；厨房是$300\,\mathrm K$的高温热库。卡诺制冷机的制冷系数$\frac{T_{\mathrm L}}{T_{\mathrm H}-T_{\mathrm L}}=\frac{273}{27}\approx10.1$，所以压缩机做的功$|W|=3.34\times10^5\times\frac{27}{273}\,\mathrm J\approx3.30\times10^4\,\mathrm J$。同时向厨房放出$Q_{\mathrm H}=Q_{\mathrm L}+|W|\approx3.67\times10^5\,\mathrm J$的热量，比从水里取走的还多。
+
+- id: p5
+  tier: hard
+  statement: |
+    汽油机的工作过程可以理想化成奥托循环（Otto cycle）：气缸里一定量的空气依次经历准静态的绝热压缩，体积从$V_{\max}$减小到$V_{\min}$；等容过程（isochoric process）中吸热，相当于燃料燃烧；准静态的绝热膨胀，体积回到$V_{\max}$；等容过程中放热，相当于排出废气、吸进新鲜空气，回到原来的状态。空气看成$C_{V,\mathrm m}$不随温度变、只做体积变化的功的理想气体，比热容比（heat capacity ratio）为$\gamma$；$r=\frac{V_{\max}}{V_{\min}}$叫作压缩比（compression ratio）。
+
+    （1）证明它的热机效率$\eta=1-r^{1-\gamma}$，并求$r=8$、$\gamma=1.40$时的值。
+
+    （2）证明它比工作在同样的最高、最低温度之间的卡诺热机低，并说明为什么会低。
+  hints:
+    - |
+      （1）热机效率由$Q_{\mathrm H}$、$Q_{\mathrm L}$定出。吸热、放热都在等容过程里，用定容摩尔热容写出它们；四个状态的温度怎样由两段绝热过程连起来？（2）循环的最高、最低温度各在哪个状态？
+    - |
+      把四个状态依次记作 1（$V_{\max}$，$T_1$）、2（$V_{\min}$，$T_2$）、3（$V_{\min}$，$T_3$）、4（$V_{\max}$，$T_4$）。（1）$Q_{\mathrm H}=nC_{V,\mathrm m}(T_3-T_2)$，$Q_{\mathrm L}=nC_{V,\mathrm m}(T_4-T_1)$；绝热过程中$TV^{\gamma-1}$不变，$T_2=T_1r^{\gamma-1}$，$T_3=T_4r^{\gamma-1}$。（2）最低温度是$T_1$，最高温度是$T_3$，拿$1-\frac{T_1}{T_3}$和（1）的结果比。
+    - |
+      （1）四个状态依次记作 1（$V_{\max}$，$T_1$）、2（$V_{\min}$，$T_2$）、3（$V_{\min}$，$T_3$）、4（$V_{\max}$，$T_4$）。等容过程不做功，吸收的热量等于内能的增加（见[热容与焓](lesson:physics.thermal-physics.heat-capacity#thm-cv)），
+
+      $$
+      Q_{\mathrm H}=nC_{V,\mathrm m}(T_3-T_2) ,\qquad Q_{\mathrm L}=nC_{V,\mathrm m}(T_4-T_1) .
+      $$
+
+      两段绝热过程中$TV^{\gamma-1}$不变，$T_2=T_1r^{\gamma-1}$，$T_3=T_4r^{\gamma-1}$，相减得$T_3-T_2=r^{\gamma-1}(T_4-T_1)$。所以
+
+      $$
+      \eta=1-\frac{Q_{\mathrm L}}{Q_{\mathrm H}}=1-\frac{T_4-T_1}{T_3-T_2}=1-r^{1-\gamma}=1-\frac{T_1}{T_2} .
+      $$
+
+      $r=8$、$\gamma=1.40$时，$\eta=1-8^{-0.40}\approx0.565$。
+
+      （2）循环里最低的温度是$T_1$，最高的是$T_3$，而$T_2<T_3$，所以$\eta=1-\frac{T_1}{T_2}<1-\frac{T_1}{T_3}$，比工作在$T_3$、$T_1$之间的卡诺热机低。原因是吸热时工作物质的温度从$T_2$升到$T_3$，并不都在最高温度上；放热时从$T_4$降到$T_1$，也不都在最低温度上。实际的汽油机还有摩擦、漏热，过程也远不是准静态的，热机效率只有 25% 到 35%。
+  reference: |
+    （1）1→2 绝热压缩，2→3 等容吸热，3→4 绝热膨胀，4→1 等容放热。$Q_{\mathrm H}=nC_{V,\mathrm m}(T_3-T_2)$，$Q_{\mathrm L}=nC_{V,\mathrm m}(T_4-T_1)$；$T_2=T_1r^{\gamma-1}$，$T_3=T_4r^{\gamma-1}$，所以$T_3-T_2=r^{\gamma-1}(T_4-T_1)$，$\eta=1-r^{1-\gamma}=1-\frac{T_1}{T_2}$。$r=8$、$\gamma=1.40$时$\eta=1-8^{-0.4}\approx0.5647$。
+
+    （2）$T_{\min}=T_1$，$T_{\max}=T_3>T_2$，$\eta=1-\frac{T_1}{T_2}<1-\frac{T_1}{T_3}$。吸热在$T_2$到$T_3$之间、放热在$T_4$到$T_1$之间进行，不都在两个极端温度上；实际的汽油机约 25% 到 35%。
+
+- id: p6
+  tier: hard
+  statement: |
+    两个相同的物体 A、B，热容（heat capacity）都是$C$，不随温度变，体积的变化不计；开始时 A 的温度是$T_1$，B 的温度是$T_2$（$T_1>T_2$）。让一台卡诺热机以 A 为高温热库、B 为低温热库工作，它的工作物质是理想气体（$C_{V,\mathrm m}$不随温度变，只做体积变化的功）。每个循环吸、放的热量都很少，一个循环里可以把 A、B 的温度看成不变；一个个循环下来，A 渐渐变冷，B 渐渐变热，直到两者温度相同。
+
+    （1）某个循环开始时 A、B 的温度分别是$T_{\mathrm A}$、$T_{\mathrm B}$，这个循环里两者的温度分别改变了$\dd T_{\mathrm A}$、$\dd T_{\mathrm B}$。证明$\frac{\dd T_{\mathrm A}}{T_{\mathrm A}}+\frac{\dd T_{\mathrm B}}{T_{\mathrm B}}=0$，并由此证明最后的温度是$\sqrt{T_1T_2}$。
+
+    （2）证明这台热机一共对外做的功是$C\bigl(\sqrt{T_1}-\sqrt{T_2}\bigr)^2$。
+
+    （3）如果不用热机，直接让 A、B 接触，最后的温度是多少？比（1）的高还是低？A、B 最后的内能之和两种情况差多少，和（2）的功有什么关系？
+  hints:
+    - |
+      一个循环里 A 放出的热量、B 吸收的热量各用$C$和温度的改变量怎样写？卡诺热机吸、放的热量之比是多少？
+    - |
+      A 放出$-C\,\dd T_{\mathrm A}$，B 吸收$C\,\dd T_{\mathrm B}$，它们之比是$\frac{T_{\mathrm B}}{T_{\mathrm A}}$。由此$\ln T_{\mathrm A}+\ln T_{\mathrm B}$在整个过程中不变。总功等于 A 放出的总热量减去 B 吸收的总热量。
+    - |
+      （1）这个循环里卡诺热机从 A 吸收热量$-C\,\dd T_{\mathrm A}$（$\dd T_{\mathrm A}<0$），向 B 放出热量$C\,\dd T_{\mathrm B}$，由讲解里的定理，$\frac{C\,\dd T_{\mathrm B}}{-C\,\dd T_{\mathrm A}}=\frac{T_{\mathrm B}}{T_{\mathrm A}}$，整理得$\frac{\dd T_{\mathrm A}}{T_{\mathrm A}}+\frac{\dd T_{\mathrm B}}{T_{\mathrm B}}=0$。这就是$\dd(\ln T_{\mathrm A}+\ln T_{\mathrm B})=0$，所以整个过程中$T_{\mathrm A}T_{\mathrm B}$不变，始终等于$T_1T_2$。最后两者温度都是$T_{\mathrm f}$，$T_{\mathrm f}^2=T_1T_2$，$T_{\mathrm f}=\sqrt{T_1T_2}$。
+
+      （2）每个循环做的功是吸、放热量之差，加起来，总功等于 A 一共放出的热量减去 B 一共吸收的热量：
+
+      $$
+      W=C(T_1-T_{\mathrm f})-C(T_{\mathrm f}-T_2)=C\bigl(T_1+T_2-2\sqrt{T_1T_2}\bigr)=C\bigl(\sqrt{T_1}-\sqrt{T_2}\bigr)^2 .
+      $$
+
+      （3）直接接触时 A 放出的热量全部给了 B，$C(T_1-T')=C(T'-T_2)$，$T'=\frac{T_1+T_2}2$。$T'-\sqrt{T_1T_2}=\frac12\bigl(\sqrt{T_1}-\sqrt{T_2}\bigr)^2>0$，直接接触的最后温度更高。两种情况下 A、B 的内能之和差$2C\bigl(T'-T_{\mathrm f}\bigr)=C\bigl(\sqrt{T_1}-\sqrt{T_2}\bigr)^2$，正好是（2）的功：用热机时这一份能量变成了功，直接接触时它留在 A、B 里，再也做不出功来。例如$T_1=400\,\mathrm K$、$T_2=100\,\mathrm K$、$C=1.0\,\mathrm{kJ/K}$，用热机最后是$200\,\mathrm K$，做功$1.0\times10^5\,\mathrm J$；直接接触最后是$250\,\mathrm K$。
+  reference: |
+    （1）A 放热$\delta Q_{\mathrm H}=-C\,\dd T_{\mathrm A}$，B 吸热$\delta Q_{\mathrm L}=C\,\dd T_{\mathrm B}$；卡诺热机$\frac{\delta Q_{\mathrm L}}{\delta Q_{\mathrm H}}=\frac{T_{\mathrm B}}{T_{\mathrm A}}$，得$\frac{\dd T_{\mathrm A}}{T_{\mathrm A}}+\frac{\dd T_{\mathrm B}}{T_{\mathrm B}}=0$，$T_{\mathrm A}T_{\mathrm B}=T_1T_2$不变，末温$T_{\mathrm f}=\sqrt{T_1T_2}$。
+
+    （2）$W=\sum(\delta Q_{\mathrm H}-\delta Q_{\mathrm L})=C(T_1-T_{\mathrm f})-C(T_{\mathrm f}-T_2)=C\bigl(\sqrt{T_1}-\sqrt{T_2}\bigr)^2$。
+
+    （3）直接接触末温$\frac{T_1+T_2}2\ge\sqrt{T_1T_2}$（等号只在$T_1=T_2$时），内能之和多出$2C\bigl(\frac{T_1+T_2}2-\sqrt{T_1T_2}\bigr)=C\bigl(\sqrt{T_1}-\sqrt{T_2}\bigr)^2=W$，由能量守恒本该如此。数值核对（$400\,\mathrm K$、$100\,\mathrm K$、$C=1.0\,\mathrm{kJ/K}$）：$T_{\mathrm f}=200\,\mathrm K$，$W=1.0\times10^5\,\mathrm J$，直接接触$250\,\mathrm K$；把过程分成很多小循环数值模拟，末温和总功与此一致。
+
+- id: p7
+  tier: thinking
+  statement: |
+    海水的内能多得惊人：海水的比热容（specific heat capacity）约为$3.9\times10^3\,\mathrm{J/(kg\cdot K)}$，一吨海水降温$1\,\mathrm K$，就放出约$3.9\times10^6\,\mathrm J$的热量。
+
+    （1）有人设计了一种船用发动机：只从周围的海水吸热，把吸的热全部变成功，推着船前进。这违反热力学第一定律吗？为什么从来没有人造出这样的发动机，轮船还得带着燃料？
+
+    （2）海洋温差发电（ocean thermal energy conversion）用表层约$25\,^\circ\mathrm C$的海水当高温热库，几百米深处约$5\,^\circ\mathrm C$的海水当低温热库。按卡诺热机算，热机效率最多约是多少？为什么这种电站要抽送大量的海水？
+
+    （3）木块在桌面上滑行，滑动摩擦力把它的动能变成了木块和桌面的内能，木块、桌面比周围的空气稍热一点。这些内能能不能全部变回木块的动能？要变回一部分，需要什么条件？
+  hints:
+    - |
+      （1）只从海水吸热、全部变成功，相当于热机效率是多少，$Q_{\mathrm L}$是多少？（2）卡诺热机的热机效率只看两个热力学温度。（3）木块、桌面能当高温热库，低温热库在哪里？
+    - |
+      （1）能量是守恒的，可这台发动机的$Q_{\mathrm L}=0$、$\eta=1$，讲解里说过，从来没有人造出过这样的热机。（2）$1-\frac{278}{298}$；热机效率低，要得到同样的功，就要吸收很多热量。（3）木块、桌面只比空气热一点，用它们和空气之间的热机，看$1-\frac{T_{\mathrm L}}{T_{\mathrm H}}$有多大。
+    - |
+      （1）不违反：发动机做的功来自海水的内能，海水变冷了，能量照样守恒。可它只有一个热库，每个循环把吸的热全部变成功，$Q_{\mathrm L}=0$、$\eta=1$；第一定律不禁止这样的热机，可从来没有人造出来过，热力学第二定律说它根本造不成（见[热力学第二定律](lesson:physics.thermal-physics.second-law)）。轮船烧燃料，就是为了造出一个温度高得多的「高温热库」，海水和空气当低温热库。
+
+      （2）$T_{\mathrm H}\approx298\,\mathrm K$，$T_{\mathrm L}\approx278\,\mathrm K$，热机效率最多约$1-\frac{278}{298}\approx0.067$，实际的电站只有约 3%。要发$1\,\mathrm{MW}$的电，按 3% 算，每秒要从表层海水吸收约$3\times10^7\,\mathrm J$的热量；表层海水流过时只降温约$3\,\mathrm K$，每秒就要抽送约 3 吨温海水，冷海水也要抽这么多，抽水本身又要消耗一部分功。
+
+      （3）不能全部变回去。木块、桌面的温度只比空气高一点，用它们当高温热库、空气当低温热库开一台热机，最多只能把$1-\frac{T_{\mathrm L}}{T_{\mathrm H}}$那一份热量变成功，温差很小时几乎是零；其余的热量最后都散进了空气。要变回一部分，就得有温度比它们低的物体，再用热机在两者之间工作；温差越大，能变回的越多。
+  reference: |
+    （1）不违反第一定律：功来自海水的内能，海水变冷，能量守恒。但这是只有一个热库、$Q_{\mathrm L}=0$、$\eta=1$的热机，从没造出过，热力学第二定律（开尔文表述）断言它不可能。和绝热过程一节第 8 题「两条绝热线不能相交」是同一个原因。轮船烧燃料造出高温热库，海水、空气作低温热库。
+
+    （2）$\eta_{\max}=1-\frac{278}{298}\approx0.067$（实际约 3%）。效率低，同样的电功率需要很大的吸热功率：$1\,\mathrm{MW}$、3% 时吸热约$33\,\mathrm{MW}$，温海水降温约$3\,\mathrm K$，流量约$\frac{3.3\times10^7}{3.9\times10^3\times3}\,\mathrm{kg/s}\approx2.8\times10^3\,\mathrm{kg/s}$，冷海水也相当，泵功又吃掉一部分。
+
+    （3）不能。内能处在比环境略高的温度上，以它为高温热库、环境为低温热库，最多只有$1-\frac{T_{\mathrm L}}{T_{\mathrm H}}$的热量能变成功，温差趋于零时趋于零；其余散入环境。要变回一部分，需要更冷的物体（温差）和一台热机。动能变内能容易，反过来只能做到一部分，这是第二定律的内容（只当旁白）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    以后会证明，工作在两个热库之间的热机里，卡诺热机的热机效率最高（见[热力学第二定律](lesson:physics.thermal-physics.second-law)）。可是没有哪台实际的发动机照卡诺循环造。
+
+    （1）卡诺循环的每一段都是准静态过程。真照它造一台热机，每秒能做多少功？要让热量较快地流进工作物质，吸热时工作物质的温度和高温热库的温度相比要怎样？这对热机效率有什么影响？
+
+    （2）用空气当工作物质（看成理想气体，比热容比取$1.40$），在$1500\,\mathrm K$和$300\,\mathrm K$两个热库之间做卡诺循环。两段绝热过程各要让体积、压强变为原来的多少倍？这对造发动机意味着什么？
+
+    （3）第 5 题的奥托循环热机效率比同样最高、最低温度之间的卡诺热机低，为什么汽油机还是大致按它工作？
+  hints:
+    - |
+      （1）准静态过程要进行得多快？热量要较快地流过去，两边得有温差。（2）绝热过程中$TV^{\gamma-1}$、$p^{1-\gamma}T^\gamma$不变。（3）比较两种循环每个循环做的功、需要的压强和体积变化，以及吸热的快慢。
+    - |
+      （1）准静态过程无限缓慢，每秒做的功趋于零；要较快地吸热，工作物质的温度要低于$T_{\mathrm H}$，放热时要高于$T_{\mathrm L}$，热机效率就比$1-\frac{T_{\mathrm L}}{T_{\mathrm H}}$低。（2）绝热膨胀使温度变为原来的$\frac15$时，体积变为原来的$5^{2.5}$倍，压强变为原来的$5^{-3.5}$倍；绝热压缩反过来。（3）奥托循环靠燃料在气缸里迅速燃烧吸热，压缩比只要 8 到 12。
+    - |
+      （1）准静态过程要进行得无限缓慢，真照卡诺循环造的热机，每秒做的功趋于零，什么也带不动。要让热量较快地流进去，工作物质吸热时的温度必须比$T_{\mathrm H}$低一些，放热时比$T_{\mathrm L}$高一些；这相当于在更窄的温度范围里做卡诺循环，热机效率比$1-\frac{T_{\mathrm L}}{T_{\mathrm H}}$低。跑得快一些，每秒做的功可以多一些，代价是热机效率降低；跑得太快、温差太大时，每秒做的功反而又变少，实际的热机都在两者之间取舍。
+
+      （2）$TV^{\gamma-1}$不变，温度从$1500\,\mathrm K$降到$300\,\mathrm K$，体积要变为原来的$5^{1/0.40}=5^{2.5}\approx56$倍；$p^{1-\gamma}T^\gamma$不变，压强变为原来的$5^{-3.5}\approx\frac1{280}$。绝热压缩那一段反过来，体积压到约$\frac1{56}$，压强升高约 280 倍。再算上等温段的变化，气缸的最大体积是最小体积的 56 倍还多，最高压强是最低压强的 280 倍还多；可一个循环做的净功，和这么大的体积、这么高的压强相比很小，摩擦就会吃掉相当大的一部分，发动机又大又重。
+
+      （3）奥托循环用不着那么大的压缩比，压缩比 8 到 12 就行；燃料在气缸里一下子烧完，吸热很快，同样大小的发动机每秒能做的功多得多。热机效率低一些，换来的是体积小、功率（power）大，汽车更需要后者。
+  reference: |
+    （1）准静态→无限缓慢→功率为零。有限的传热速率要有温差：吸热时工作物质温度$T_{\mathrm H}'<T_{\mathrm H}$，放热时$T_{\mathrm L}'>T_{\mathrm L}$，效率$1-\frac{T_{\mathrm L}'}{T_{\mathrm H}'}<1-\frac{T_{\mathrm L}}{T_{\mathrm H}}$。功率与效率要折中（简单的模型里最大功率时效率约为$1-\sqrt{T_{\mathrm L}/T_{\mathrm H}}$，可不要求）。
+
+    （2）温度比 5：绝热段体积比$5^{1/(\gamma-1)}=5^{2.5}\approx55.9$，压强比$5^{\gamma/(\gamma-1)}=5^{3.5}\approx279.5$。等温段取体积加倍时，最大、最小体积之比约 112，平均有效压强（净功除以扫过的体积）只有最高压强的约 0.5%（奥托循环$r=8$、最高$1500\,\mathrm K$时约 11%），机器笨重、摩擦损失相对大。
+
+    （3）奥托循环压缩比小（8 到 12）、燃烧吸热快、单位体积功率大；牺牲一些效率换功率和紧凑。另：$r=8$、$\gamma=1.40$的奥托效率约 0.565，同样$300\,\mathrm K$、$1500\,\mathrm K$的卡诺效率 0.8。

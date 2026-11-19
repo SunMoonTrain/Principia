@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 370" width="640" height="370" font-size="14">
+  <!-- 两个一样的气缸各装 1 mol 同种单原子理想气体，都升温 ΔT。左：活塞被挡块卡住，体积不变，吸热 Q_V 全部用来增加内能 ΔU。右：活塞上压着砝码，可以上升，压强不变；吸热 Q_p 一部分使内能增加 ΔU（和左边一样多），一部分对外做功 W = pΔV = RΔT（举高活塞和砝码、推开上方的大气）。箭头按比例画：Q_V、W、Q_p 依次长 36、24、60 像素（3 ∶ 2 ∶ 5）。下面的长条另按一个比例画（ΔU 是 1.5 RΔT，W 是 RΔT）。蓝色箭头是热量，绿色箭头是功。 -->
+  <line x1="320" y1="8" x2="320" y2="362" style="stroke: currentColor" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4 3" />
+
+  <!-- 左：定容 -->
+  <text x="20" y="28" fill="currentColor">定容：<tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10" font-style="italic">V</tspan> = Δ<tspan font-style="italic">U</tspan></text>
+  <rect x="111" y="136" width="98" height="77" style="fill: currentColor" fill-opacity="0.08" />
+  <path d="M 110 64 V 214 H 210 V 64" style="stroke: currentColor" fill="none" stroke-width="2" />
+  <rect x="111" y="124" width="98" height="12" style="fill: currentColor; stroke: currentColor" fill-opacity="0.35" stroke-width="1.2" />
+  <rect x="111" y="116" width="10" height="8" style="fill: currentColor" />
+  <rect x="199" y="116" width="10" height="8" style="fill: currentColor" />
+  <text x="102" y="129" fill="currentColor" text-anchor="end">活塞固定</text>
+  <text x="160" y="170" fill="currentColor" text-anchor="middle">1 mol</text>
+  <text x="160" y="194" fill="currentColor" text-anchor="middle">升温 Δ<tspan font-style="italic">T</tspan></text>
+  <line x1="160" y1="255" x2="160" y2="230" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 160 219 L 154.5 230 L 165.5 230 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="172" y="251" fill="currentColor"><tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10" font-style="italic">V</tspan></text>
+  <rect x="90" y="300" width="90" height="26" style="fill: currentColor; stroke: currentColor" fill-opacity="0.15" stroke-width="1.2" />
+  <text x="135" y="318" fill="currentColor" text-anchor="middle">Δ<tspan font-style="italic">U</tspan></text>
+  <text x="190" y="318" fill="currentColor">= <tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10" font-style="italic">V</tspan></text>
+
+  <!-- 右：定压 -->
+  <text x="340" y="28" fill="currentColor">定压：<tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10" font-style="italic">p</tspan> = Δ<tspan font-style="italic">U</tspan> + <tspan font-style="italic">W</tspan></text>
+  <rect x="431" y="108" width="98" height="105" style="fill: currentColor" fill-opacity="0.08" />
+  <path d="M 430 64 V 214 H 530 V 64" style="stroke: currentColor" fill="none" stroke-width="2" />
+  <rect x="431" y="124" width="98" height="12" fill="none" style="stroke: currentColor" stroke-opacity="0.6" stroke-width="1" stroke-dasharray="4 3" />
+  <text x="538" y="135" fill="currentColor">原来的位置</text>
+  <rect x="431" y="96" width="98" height="12" style="fill: currentColor; stroke: currentColor" fill-opacity="0.35" stroke-width="1.2" />
+  <rect x="455" y="76" width="50" height="20" style="fill: currentColor" fill-opacity="0.55" />
+  <text x="422" y="91" fill="currentColor" text-anchor="end">砝码</text>
+  <line x1="480" y1="72" x2="480" y2="59" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 480 48 L 474.5 59 L 485.5 59 Z" style="fill: var(--good, #059669)" />
+  <text x="492" y="64" fill="currentColor" font-style="italic">W</text>
+  <text x="480" y="170" fill="currentColor" text-anchor="middle">1 mol</text>
+  <text x="480" y="194" fill="currentColor" text-anchor="middle">升温 Δ<tspan font-style="italic">T</tspan></text>
+  <line x1="480" y1="279" x2="480" y2="230" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 480 219 L 474.5 230 L 485.5 230 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="492" y="258" fill="currentColor"><tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10" font-style="italic">p</tspan></text>
+  <rect x="410" y="300" width="90" height="26" style="fill: currentColor; stroke: currentColor" fill-opacity="0.15" stroke-width="1.2" />
+  <rect x="500" y="300" width="60" height="26" style="fill: var(--good, #059669); stroke: currentColor" fill-opacity="0.3" stroke-width="1.2" />
+  <text x="455" y="318" fill="currentColor" text-anchor="middle">Δ<tspan font-style="italic">U</tspan></text>
+  <text x="530" y="318" fill="currentColor" text-anchor="middle" font-style="italic">W</text>
+  <text x="570" y="318" fill="currentColor">= <tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10" font-style="italic">p</tspan></text>
+  <text x="530" y="350" fill="currentColor" text-anchor="middle"><tspan font-style="italic">p</tspan>Δ<tspan font-style="italic">V</tspan> = <tspan font-style="italic">R</tspan>Δ<tspan font-style="italic">T</tspan></text>
+</svg>

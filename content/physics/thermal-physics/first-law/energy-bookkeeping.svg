@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" font-size="14">
+  <!-- 四幅图，每幅一个带活塞的气缸，气体涂浅灰色。左上等容：活塞被挡块卡住，吸热 Q 全部用来增加内能。右上等压：活塞上压着砝码，吸热 Q 一部分使内能增加，一部分推活塞上升、对外做功 W。左下理想气体等温：气缸放在热库上，吸热 Q 全部变成功 W，内能不变。右下绝热：气缸和活塞都包着绝热层，Q 为 0，膨胀做的功 W 来自内能的减少。蓝色箭头是热量，绿色箭头是功；箭头只表示能量的去向，长短不按比例（只有等温图里 Q、W 两支一样长，因为两者相等）。 -->
+  <line x1="320" y1="8" x2="320" y2="472" style="stroke: currentColor" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4 3" />
+  <line x1="8" y1="240" x2="632" y2="240" style="stroke: currentColor" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4 3" />
+
+  <!-- 左上：等容 -->
+  <text x="20" y="28" fill="currentColor">等容：<tspan font-style="italic">Q</tspan> = Δ<tspan font-style="italic">U</tspan></text>
+  <rect x="121" y="124" width="98" height="71" style="fill: currentColor" fill-opacity="0.08" />
+  <path d="M 120 76 V 196 H 220 V 76" style="stroke: currentColor" fill="none" stroke-width="2" />
+  <rect x="121" y="112" width="98" height="12" style="fill: currentColor; stroke: currentColor" fill-opacity="0.35" stroke-width="1.2" />
+  <rect x="121" y="104" width="10" height="8" style="fill: currentColor" />
+  <rect x="209" y="104" width="10" height="8" style="fill: currentColor" />
+  <line x1="170" y1="112" x2="170" y2="88" style="stroke: currentColor" stroke-width="2" />
+  <text x="112" y="113" fill="currentColor" text-anchor="end">活塞固定</text>
+  <text x="234" y="101" fill="currentColor"><tspan font-style="italic">W</tspan> = 0</text>
+  <text x="170" y="166" fill="currentColor" text-anchor="middle">Δ<tspan font-style="italic">U</tspan> &gt; 0</text>
+  <line x1="170" y1="232" x2="170" y2="198" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 170 188 L 164.5 199 L 175.5 199 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="182" y="226" fill="currentColor" font-style="italic">Q</text>
+
+  <!-- 右上：等压 -->
+  <text x="340" y="28" fill="currentColor">等压：<tspan font-style="italic">Q</tspan> = Δ<tspan font-style="italic">U</tspan> + <tspan font-style="italic">W</tspan></text>
+  <rect x="441" y="124" width="98" height="71" style="fill: currentColor" fill-opacity="0.08" />
+  <path d="M 440 76 V 196 H 540 V 76" style="stroke: currentColor" fill="none" stroke-width="2" />
+  <rect x="441" y="112" width="98" height="12" style="fill: currentColor; stroke: currentColor" fill-opacity="0.35" stroke-width="1.2" />
+  <rect x="448" y="94" width="34" height="18" style="fill: currentColor" fill-opacity="0.55" />
+  <rect x="498" y="94" width="34" height="18" style="fill: currentColor" fill-opacity="0.55" />
+  <line x1="490" y1="112" x2="490" y2="88" style="stroke: currentColor" stroke-width="2" />
+  <text x="432" y="109" fill="currentColor" text-anchor="end">砝码</text>
+  <line x1="490" y1="84" x2="490" y2="58" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 490 48 L 484.5 59 L 495.5 59 Z" style="fill: var(--good, #059669)" />
+  <text x="502" y="70" fill="currentColor" font-style="italic">W</text>
+  <text x="490" y="166" fill="currentColor" text-anchor="middle">Δ<tspan font-style="italic">U</tspan> &gt; 0</text>
+  <line x1="490" y1="232" x2="490" y2="198" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 490 188 L 484.5 199 L 495.5 199 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="502" y="226" fill="currentColor" font-style="italic">Q</text>
+
+  <!-- 左下：理想气体等温 -->
+  <text x="20" y="268" fill="currentColor">理想气体等温：<tspan font-style="italic">Q</tspan> = <tspan font-style="italic">W</tspan></text>
+  <rect x="121" y="364" width="98" height="71" style="fill: currentColor" fill-opacity="0.08" />
+  <rect x="90" y="438" width="160" height="36" style="fill: var(--accent, #2563eb); stroke: currentColor" fill-opacity="0.12" stroke-width="1.2" />
+  <path d="M 120 316 V 436 H 220 V 316" style="stroke: currentColor" fill="none" stroke-width="2" />
+  <rect x="121" y="352" width="98" height="12" style="fill: currentColor; stroke: currentColor" fill-opacity="0.35" stroke-width="1.2" />
+  <line x1="170" y1="352" x2="170" y2="328" style="stroke: currentColor" stroke-width="2" />
+  <line x1="170" y1="324" x2="170" y2="298" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 170 288 L 164.5 299 L 175.5 299 Z" style="fill: var(--good, #059669)" />
+  <text x="182" y="310" fill="currentColor" font-style="italic">W</text>
+  <text x="170" y="406" fill="currentColor" text-anchor="middle">Δ<tspan font-style="italic">U</tspan> = 0</text>
+  <text x="104" y="462" fill="currentColor">热库</text>
+  <line x1="170" y1="464" x2="170" y2="438" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 170 428 L 164.5 439 L 175.5 439 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="182" y="464" fill="currentColor" font-style="italic">Q</text>
+
+  <!-- 右下：绝热 -->
+  <text x="340" y="268" fill="currentColor">绝热：<tspan font-style="italic">W</tspan> = −Δ<tspan font-style="italic">U</tspan></text>
+  <path d="M 431 316 V 445 H 549 V 316" style="stroke: currentColor" stroke-opacity="0.3" fill="none" stroke-width="10" />
+  <rect x="441" y="364" width="98" height="71" style="fill: currentColor" fill-opacity="0.08" />
+  <path d="M 440 316 V 436 H 540 V 316" style="stroke: currentColor" fill="none" stroke-width="2" />
+  <rect x="441" y="352" width="98" height="12" style="fill: currentColor; stroke: currentColor" fill-opacity="0.35" stroke-width="1.2" />
+  <rect x="441" y="342" width="98" height="10" style="fill: currentColor" fill-opacity="0.3" />
+  <line x1="490" y1="352" x2="490" y2="328" style="stroke: currentColor" stroke-width="2" />
+  <line x1="490" y1="324" x2="490" y2="298" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 490 288 L 484.5 299 L 495.5 299 Z" style="fill: var(--good, #059669)" />
+  <text x="502" y="310" fill="currentColor" font-style="italic">W</text>
+  <text x="490" y="406" fill="currentColor" text-anchor="middle">Δ<tspan font-style="italic">U</tspan> &lt; 0</text>
+  <text x="418" y="400" fill="currentColor" text-anchor="end">绝热层</text>
+  <text x="490" y="472" fill="currentColor" text-anchor="middle"><tspan font-style="italic">Q</tspan> = 0</text>
+</svg>
