@@ -18,3 +18,11 @@ it('正文和 YAML 题干、提示、解答的汇编错误都定位到实际文�
     expect(diags.errors).toContainEqual(expect.objectContaining({file,line:7}));
   }
 });
+
+it('同时有未定义的标号和后续语法错误，围栏诊断指向前一处的文件行', () => {
+  const source = 'solution: |\n  计算过程\n\n  ```p8asm\n  JMP missing\n  NOP\n  MUL R0, R1\n  ```';
+  const diags = new Diagnostics(), file = 'problems.yaml';
+  const yaml = parseYaml(source,file,0,diags)!;
+  renderField(textAt(yaml,['solution'],diags)!, {file,diags,macros:{},refs:{lessons:[],terms:[]}},'rich');
+  expect(diags.errors).toEqual([expect.objectContaining({file,line:5,message:expect.stringContaining('missing')})]);
+});

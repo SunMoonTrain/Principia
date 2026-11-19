@@ -105,9 +105,9 @@ export function useMachine<P, S>(machine: Machine<P, S>, params: P, seed: number
     setVisited(0);
     setHistory(next);
   };
-  const edit = (action: unknown) => {
+  const edit = (action: unknown, written?: string[]) => {
     stop();
-    history.edit(action);
+    history.edit(action, written);
     setVisited(history.index);
     collect(history.state);
     // 被截去的步骤从新状态重新算，供进度条拖动。

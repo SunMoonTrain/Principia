@@ -102,3 +102,43 @@ it('访存和周期出现在对应微步，写回才改变输出、寄存器和�
   expect(go(15).output).toEqual([]); expect(go(16).output).toEqual([7]);
   expect(go(19).halted).toBe(false); expect(go(20).halted).toBe(true);
 });
+
+it.each([
+  ['JMP nowhere\nNOP\nMUL R0, R1',1,'未定义'],
+  ['LDI R0, 300\nNOP\nMOV R0, 5',1,'255'],
+  ['.byte 1, -129\n.org missing',1,'-128'],
+  ['LD R0, [missing]\n.org 0\nHLT',1,'未定义'],
+  ['JMP valid\nMOV R4, R0\nvalid: HLT',2,'寄存器'],
+  ['.org here\nMUL R0, R0\n.org 10\nhere:\n.byte 1,',2,'助记符'],
+  ['JMP target\n.org nowhere\ntarget: HLT',2,'未定义'],
+  ['JMP target\n.org target\ntarget: HLT',2,'循环依赖'],
+  ['JMP end\n.zero 254\nend:\nBAD',1,'255'],
+] as const)('多个错误时按源码顺序诊断 %s', (source,line,message) => {
+  expect(() => assemble(source)).toThrowError(expect.objectContaining({line,message:expect.stringContaining(message)}));
+});
+
+it('微步的读写随历史回放，整条指令保留所有阶段的读写', () => {
+  const h = history(a1);
+  const touched = (kind:'read'|'write') => h.events.filter(e => e.kind===kind).flatMap(e => e.touched ?? []);
+  h.seek(8,'微步');
+  h.step('微步'); expect(touched('write')).toEqual(['PC','IR']);
+  h.step('微步'); expect(touched('read')).toEqual(['IR','R1','R0']);
+  h.step('微步'); expect(touched('write')).toEqual(['cycles']);
+  h.step('微步'); expect(touched('write')).toEqual(expect.arrayContaining(['R1','Z','N','C','V','steps','lastCycles']));
+  h.seek(10); expect(touched('read')).toContain('R0'); expect(touched('write')).toEqual([]);
+  h.seek(8); h.step(); expect(touched('read')).toContain('R0'); expect(touched('write')).not.toContain('R0');
+  expect(touched('write')).toEqual(expect.arrayContaining(['R1','PC','Z','N','C','V','cycles','steps']));
+  const stack = history(a2); stack.seek(2);
+  expect(stack.events.filter(e => e.kind==='write').flatMap(e=>e.touched)).toEqual(expect.arrayContaining(['SP','M255']));
+  expect(stack.events.filter(e => e.kind==='read').flatMap(e=>e.touched)).toEqual(expect.arrayContaining(['R0','SP']));
+});
+
+it('改写内存后按实际指令检查 ISA，出错时仍能回看修改', () => {
+  const h = new History(cpu,{...boot('NOP\nHLT'),isa:['NOP','HLT']},0);
+  h.edit({key:'memory',address:0,value:0x44},['M0']);
+  h.step('微步');
+  h.step('微步');
+  expect(h.state).toMatchObject({halted:true,cycles:0,steps:0,error:expect.stringContaining('只开放 NOP、HLT')});
+  h.seek(0);
+  expect(h.events[0]).toMatchObject({kind:'write',touched:['M0']});
+});

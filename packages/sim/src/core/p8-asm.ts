@@ -98,10 +98,10 @@ function sourceLine(raw: string) {
   return { label: label?.[1], word, rest };
 }
 
-/** .org 或 .zero 前向引用时求每行的地址。已知起点向依赖它的行传播，每条边只访问一次。 */
+/** 前向引用按布局依赖求地址。预扫描只计算位置，语法和范围错误由编码遍按源行报告。 */
 function layoutLabels(lines: ReturnType<typeof sourceLine>[]) {
   const definitions = new Map<string, number>();
-  lines.forEach(({label}, i) => { if (label) definitions.set(label, i); });
+  lines.forEach(({label}, i) => { if (label && !definitions.has(label)) definitions.set(label, i); });
   const sum = new Float64Array(lines.length + 1);
   const missing = new Uint8Array(lines.length + 1);
   const consumers = Array.from({length: lines.length + 1}, () => [] as number[]);
@@ -114,10 +114,19 @@ function layoutLabels(lines: ReturnType<typeof sourceLine>[]) {
       const arg = rest.trim();
       if (ident.test(arg)) {
         const row = definitions.get(arg);
-        if (row === undefined) throw new AssemblyError(next, '未定义的标号：' + arg);
-        depend(row);
-      } else sum[next] = literal(arg);
-    } else sum[next] = name === '.BYTE' ? operands(next, rest).length : word ? 2 : 0;
+        if (row === undefined) sum[next] = NaN;
+        else depend(row);
+      } else {
+        const value = literal(arg);
+        sum[next] = value >= 0 && value <= (name === '.ORG' ? 255 : 256) ? value : NaN;
+      }
+    } else if (name === '.BYTE') {
+      try { sum[next] = operands(next, rest).length || NaN; }
+      catch (error) {
+        if (!(error instanceof AssemblyError)) throw error;
+        sum[next] = NaN;
+      }
+    } else sum[next] = word ? 2 : 0;
     if (!missing[next]) ready.push(next);
   });
   for (let j = 0; j < ready.length; j++) {
@@ -127,10 +136,13 @@ function layoutLabels(lines: ReturnType<typeof sourceLine>[]) {
       if (--missing[next] === 0) ready.push(next);
     }
   }
-  return (name: string, line: number) => {
+  return (name: string, line: number, layoutDirective: boolean) => {
     const row = definitions.get(name);
     if (row === undefined) throw new AssemblyError(line, '未定义的标号：' + name);
-    if (missing[row]) throw new AssemblyError(line, '标号的位置循环依赖：' + name);
+    if (missing[row]) {
+      if (layoutDirective) throw new AssemblyError(line, '标号的位置循环依赖：' + name);
+      return NaN;
+    }
     return sum[row];
   };
 }
@@ -140,22 +152,24 @@ export function assemble(source: string, isa?: readonly string[]): Assembly {
   let layout: ReturnType<typeof layoutLabels> | undefined;
   const labels = new Map<string, number>(), instructions = new Map<number,number>(), lineAddresses = new Map<number,number>();
   const bytes = Array<number>(256).fill(0), owners = bytes.slice();
-  const pending: { at: number; line: number; token: string; address: boolean }[] = [];
   let cursor = 0;
   const number = (token: string, line: number, min: number, max: number, layoutDirective = false) => {
     let n = literal(token);
     if (ident.test(token)) {
       const address = labels.get(token);
       if (address !== undefined) n = address;
-      else if (layoutDirective) {
+      else {
         layout ??= layoutLabels(lines);
-        n = layout(token, line);
-      } else throw new AssemblyError(line, '未定义的标号或无效操作数：' + token);
+        n = layout(token, line, layoutDirective);
+      }
+      // 标号依赖一个尚未检查的错误布局；继续到实际有错的源行。
+      if (Number.isNaN(n)) return n;
     }
     if (!Number.isInteger(n) || n < min || n > max) throw new AssemblyError(line, '操作数 ' + token + ' 必须是 ' + min + ' 到 ' + max + ' 的整数或标号');
     return n;
   };
   const put = (byte: number, line: number) => {
+    if (Number.isNaN(cursor)) return;
     if (cursor >= 256) throw new AssemblyError(line, '程序超过 256 字节');
     if (owners[cursor]) throw new AssemblyError(line, hex(cursor) + ' 和第 ' + owners[cursor] + ' 行重叠');
     owners[cursor] = line; bytes[cursor++] = byte;
@@ -174,13 +188,16 @@ export function assemble(source: string, isa?: readonly string[]): Assembly {
     if (name === '.ORG' || name === '.ZERO') {
       arity(1);
       if (name === '.ORG') cursor = number(args[0],line,0,255,true);
-      else { const count = number(args[0],line,0,256,true); for (let j=0;j<count;j++) put(0,line); }
+      else {
+        const count = number(args[0],line,0,256,true);
+        if (Number.isNaN(count)) cursor = NaN;
+        for (let j=0;j<count;j++) put(0,line);
+      }
       continue;
     }
-    const defer = (token: string, address: boolean) => { pending.push({ at:cursor, line, token, address }); put(0,line); };
     if (name === '.BYTE') {
       if (!args.length) throw new AssemblyError(line,'.byte 缺少数据');
-      args.forEach(s => defer(s,false)); continue;
+      args.forEach(s => put(number(s,line,-128,255) & 255,line)); continue;
     }
     const variants = encodings.filter(e => e.name === name);
     if (!variants.length) throw new AssemblyError(line,'不认识的助记符：'+word);
@@ -202,9 +219,8 @@ export function assemble(source: string, isa?: readonly string[]): Assembly {
     instructions.set(cursor,line); lineAddresses.set(line,cursor);
     put(variant.opcode * 4 + d,line);
     if (variant.form === 'rr' || variant.form === 'indirect') put(reg(token),line);
-    else if (token !== undefined) defer(token, variant.form === 'direct' || form === 'jump');
+    else if (token !== undefined) put(number(token,line,variant.form === 'direct' || form === 'jump' ? 0 : -128,255) & 255,line);
     else put(0,line);
   }
-  pending.forEach(p => { bytes[p.at] = number(p.token,p.line,p.address ? 0 : -128,255) & 255; });
   return { bytes, owners, labels, instructions, lineAddresses };
 }

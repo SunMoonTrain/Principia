@@ -39,8 +39,8 @@ function StepLog({ index, end, eventsAt, seek }: {
   </details>;
 }
 
-export function StepperBar<P, S>({ player, children, labels = {} }: {
-  player: ReturnType<typeof useMachine<P, S>>; children: ReactNode; labels?: Record<string, ReactNode>;
+export function StepperBar<P, S>({ player, children, labels = {}, afterControls }: {
+  player: ReturnType<typeof useMachine<P, S>>; children: ReactNode; afterControls?: ReactNode; labels?: Record<string, ReactNode>;
 }) {
   const { history, options, pauseIndex } = player;
   const onKey = (event: KeyboardEvent<HTMLElement>) => {
@@ -85,5 +85,6 @@ export function StepperBar<P, S>({ player, children, labels = {} }: {
       </li>)}
     </ul>}
     <StepLog index={history.index} end={player.visited} eventsAt={(i) => history.eventsAt(i)} seek={player.seek} />
+    {afterControls}
   </section>;
 }

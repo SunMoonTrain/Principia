@@ -29,6 +29,9 @@ it('每个用例独立开机；错误、输出、周期上限的两端', () => {
   expect(results('IN R0\nIN R0\nIN R0')[0]).toMatchObject({cycles:2,passed:false,reason:'输入已经读完'});
   expect(results('PUSH R0\nHLT',4)[0]).toMatchObject({cycles:4,passed:false,actual:[]});
   expect(results(program,4)[0]).toMatchObject({cycles:4,passed:false});
+  expect(gradeProgram('.byte 0x44, 0x01',{...sample,isa:['IN','ADD','OUT','HLT']})).toMatchObject({
+    results: sample.tests.map(() => ({passed:false, cycles:0, reason:expect.stringContaining('只开放')})),
+  });
   expect(gradeProgram('NOP\nBAD',sample)).toMatchObject({error:{line:2}});
   expect(gradeProgram(program,{...sample,isa:['IN','HLT']})).toMatchObject({error:{line:3}});
 });

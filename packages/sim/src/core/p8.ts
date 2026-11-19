@@ -99,13 +99,16 @@ function executionText(e: Effect, name: string) {
   return written(e);
 }
 function micro(s: CpuState): StepResult<CpuState> {
-  const finish = (state: CpuState, text: string, kind: SimEvent['kind']='info', touched?: string[]) =>
-    ({ state, events:[{text,kind,touched}], done:state.halted });
+  const finish = (state: CpuState, text: string, kind: SimEvent['kind']='info', touched?: string[], writes?: string[]) => {
+    const events: SimEvent[] = [{text,kind,touched}];
+    if (writes?.length) events.push({kind:'write', touched:writes, text:''});
+    return {state,events,done:state.halted};
+  };
   const fail = (message: string) => finish({...s,halted:true,error:message},message,'error');
   if (s.halted) return finish(s,s.error ?? '已停机');
   if (s.phase === 0) {
     const address=s.pc, next=inc(address), pc=inc(next), first=s.memory[address], second=s.memory[next];
-    return finish({...s,phase:1,pc,frame:{address,first,second}},'取指：读 M['+hex(address)+'] = '+hex(first)+'、M['+hex(next)+'] = '+hex(second)+'，PC 变成 '+hex(pc),'read',['M'+address,'M'+next]);
+    return finish({...s,phase:1,pc,frame:{address,first,second}},'取指：读 M['+hex(address)+'] = '+hex(first)+'、M['+hex(next)+'] = '+hex(second)+'，PC 变成 '+hex(pc),'read',['M'+address,'M'+next,'PC'],['PC','IR']);
   }
   const f=s.frame!;
   if (s.phase === 1) {
@@ -117,19 +120,34 @@ function micro(s: CpuState): StepResult<CpuState> {
     const stack = ['PUSH','POP','CALL','RET'].includes(i.name) ? '，SP = '+hex(s.sp) : '';
     const flag = jumpFlags[i.name];
     const condition = flag ? '，'+flag+' = '+s.flags[flag] : '';
-    return finish({...s,phase:2,frame:{...f,instruction:i}},'译码：'+i.opcode.toString(2).padStart(6,'0')+' 是 '+i.name+d+operand+stack+condition);
+    const reads = ['IR'];
+    if (readsDest) reads.push('R'+i.d);
+    if (i.form==='rr' || i.form==='indirect') reads.push('R'+i.b);
+    if (stack) reads.push('SP');
+    if (flag) reads.push(flag);
+    if (i.name==='CALL') reads.push('PC');
+    return finish({...s,phase:2,frame:{...f,instruction:i}},'译码：'+i.opcode.toString(2).padStart(6,'0')+' 是 '+i.name+d+operand+stack+condition,'read',reads);
   }
   const i=f.instruction!;
   if (s.phase === 2) {
     const e=plan(s,i);
     if (typeof e === 'string') return fail('执行：'+e);
     const read=e.memory && !e.memory.write ? e.memory : undefined;
+    const reads = read ? ['M'+read.address] : e.input ? ['in:'+s.inputIndex] : [];
     return finish({...s,phase:3,cycles:s.cycles+1+(read?10:0),frame:{...f,effect:e}},
-      '执行：'+executionText(e,i.name),read?'read':'info',read?['M'+read.address]:[]);
+      '执行：'+executionText(e,i.name),reads.length?'read':'info',reads,['cycles']);
   }
   const e=f.effect!, n=writeBack(s,e,i.name);
   const collision=(i.name==='PUSH'||i.name==='CALL') && s.boot.image.owners[e.memory!.address];
-  return finish(n,'写回：'+written(e)+(collision?'，栈进入了程序区':''),'write',e.memory?.write?['M'+e.memory.address]:[]);
+  const writes = ['steps','lastCycles'];
+  if (e.dest!==undefined) writes.push('R'+e.dest);
+  if (e.flags) writes.push(...Object.keys(e.flags));
+  if (e.sp!==undefined) writes.push('SP');
+  if (e.pc!==undefined) writes.push('PC');
+  if (e.memory?.write) writes.push('M'+e.memory.address,'cycles');
+  if (e.input) writes.push('in:'+s.inputIndex);
+  if (e.output!==undefined) writes.push('out:'+s.output.length);
+  return finish(n,'写回：'+written(e)+(collision?'，栈进入了程序区':''),'write',writes);
 }
 export const p8Machine: Machine<Boot,CpuState> = {
   init:initialCpu,

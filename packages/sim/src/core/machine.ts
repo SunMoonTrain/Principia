@@ -100,13 +100,13 @@ export class History<P, S> {
     this.seek(current);
   }
 
-  edit(action: unknown): void {
+  edit(action: unknown, written?: string[]): void {
     if (!this.machine.edit) throw new Error('这个模拟器不支持编辑');
     const next = this.machine.edit(this.current, action);
     this.truncate();
     this.current = next;
     this.edits.add(this.cursor);
     this.snapshots.set(this.cursor, next);
-    this.log[this.cursor] = { events: [{ kind: 'info', text: '已从这一步修改状态。' }] };
+    this.log[this.cursor] = { events: [{ kind: written ? 'write' : 'info', touched: written, text: '已从这一步修改状态。' }] };
   }
 }
