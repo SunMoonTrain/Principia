@@ -1,3 +1,4 @@
+import { isHeap, orderedHeap } from '../packages/sim/src/core/tree.ts';
 import { parseOps, OpError } from '../packages/sim/src/core/operations.ts';
 import { pipelineIsa } from '../packages/sim/src/core/pipeline.ts';
 // :::anim 动画组件块，见 docs/plan.md「可复用动画组件库」和「附录：动画组件参数」。
@@ -211,10 +212,13 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
       }
     }
   }
-  if (component === 'memory' && checked) {
-    const p = checked as {structure:string}, field = textAt(y, ['ops'], ctx.diags);
+  if ((component === 'memory' || component === 'tree') && checked) {
+    const p = checked as {structure:string;kind:string;keys:number[]}, field = textAt(y, ['ops'], ctx.diags);
     if (field) try {
-      Object.assign(p, {commands:parseOps(field.value, p.structure)});
+      const commands = parseOps(field.value, component === 'tree' ? p.kind : p.structure);
+      if (component === 'tree' && isHeap(p.kind) && !orderedHeap(p.keys,p.kind) && commands[0]?.name !== 'build')
+        ctx.diags.error(ctx.file,lineOf(y,['keys']),'初始 keys 尚未成堆，第一条操作必须是 build');
+      Object.assign(p, {commands});
     } catch (error) {
       if (!(error instanceof OpError)) throw error;
       ctx.diags.error(ctx.file, field.contentLine + error.line - 1, error.message);

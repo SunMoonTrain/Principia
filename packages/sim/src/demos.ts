@@ -195,6 +195,26 @@ forwarding: `+forwarding})),
   OUT R1
   HLT
 branch: predict-not-taken`},
+  {name:'tree', title:'AVL · 依次插入 1–7', yaml:`kind: avl
+ops: |
+  insert 1 2 3 4 5 6 7
+pauses:
+  - when: rotations == 1
+    text: |-
+      哪个结点成了新的根？`},
+  {name:'tree', title:'BST · 同一串键', yaml:`kind: bst
+ops: |
+  insert 1 2 3 4 5 6 7`},
+  {name:'tree', title:'BST · 删除根 50', yaml:`kind: bst
+keys: [50, 30, 70, 20, 40, 60, 80, 65]
+ops: |
+  delete 50`},
+  {name:'tree', title:'大顶堆 · 建堆、取根、插入', yaml:`kind: max-heap
+keys: [3, 1, 6, 5, 2, 4]
+ops: |
+  build
+  extract
+  insert 7`},
   {name:'memory', title:'动态数组 · 翻倍', yaml:`structure: dynamic-array
 capacity: 1
 growth: 2

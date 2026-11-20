@@ -2,6 +2,7 @@ import type { Op } from './heap.ts';
 export const structures=['dynamic-array','stack','queue','linked-list','hash-open','hash-chain'] as const;
 export type Structure=typeof structures[number];
 const commands:Record<string,readonly string[]>={
+  bst:['insert','find','delete'],avl:['insert','find','delete'],'max-heap':['build','insert','extract'],'min-heap':['build','insert','extract'],
   'dynamic-array':['push','pop','get','set','insert','remove'],stack:['push','pop','peek'],queue:['enqueue','dequeue','peek'],
   'linked-list':['push-front','push-back','find','delete'],'hash-open':['insert','find','delete'],'hash-chain':['insert','find','delete'],
 };
