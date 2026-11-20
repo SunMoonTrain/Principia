@@ -57,7 +57,7 @@ $$
 ### 万能代换
 
 ::anchor{id="def-rational-trig"}
-由$\sin x$、$\cos x$和常数经过有限次四则运算得到的函数，叫作三角函数有理式（rational function of sine and cosine），记作$R(\sin x,\cos x)$。
+由$\sin x$、$\cos x$和常数经过有限次四则运算得到的函数，叫作:term[三角函数有理式]{id="math.calculus.rational-trig-function"}（rational function of sine and cosine），记作$R(\sin x,\cos x)$。
 
 为什么单独起名：前面三种办法各管一类，三角函数有理式还有$\frac1{2+\cos x}$、$\frac{\sin x}{1+\sin x}$这样的，需要一个对整类都管用的办法。边界情况：$\sin x^2$、$x\sin x$不是三角函数有理式，前者是复合，后者乘了$x$本身。
 
@@ -92,7 +92,7 @@ $$
 
 求$\int\frac{\dd x}{1+\sin x+\cos x}$（$-\frac\pi2<x<\pi$）。
 
-**为什么想到这么做**：分母里$\sin x$、$\cos x$都是一次，分不出因子，也不是乘积，前三种办法都用不上；它是三角函数有理式，用万能代换。在所给的范围里$t=\tan\frac x2$有定义，分母也不为$0$。
+**为什么想到这么做**：分母里$\sin x$、$\cos x$都是一次，分不出因子，也不是乘积，前三种办法都用不上；它是:term[三角函数有理式]{id="math.calculus.rational-trig-function"}，用万能代换。在所给的范围里$t=\tan\frac x2$有定义，分母也不为$0$。
 
 **推导**：$1+\frac{2t}{1+t^2}+\frac{1-t^2}{1+t^2}=\frac{2+2t}{1+t^2}$，所以
 

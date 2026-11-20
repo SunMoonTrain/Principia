@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 290" width="640" height="290" font-size="14">
+  <!-- 左：两块水平的平板之间的空气，下板不动，上板以 u₀ 向右平移；各层空气的流速（绿色箭头）从下板的 0 均匀地增大到上板的 u₀，箭头的尖端连成一条斜的细线；水平的虚线标出高度 z₀ 处的水平面。右：把 z₀ 附近放大，三条水平线是 z₀ + λ、z₀、z₀ − λ 三层，绿色箭头是这三层的流速；一个分子（蓝色）从 z₀ + λ 处向下穿过 z₀，带着那一层较大的流速，另一个从 z₀ − λ 处向上穿过，带着较小的流速。示意图，不按比例：λ 实际上远小于两板的间距。 -->
+  <text x="155" y="22" fill="currentColor" text-anchor="middle">两板之间的流动</text>
+  <rect x="40" y="56" width="230" height="8" style="fill: currentColor; stroke: currentColor" fill-opacity="0.2" stroke-width="1.2" />
+  <rect x="40" y="232" width="230" height="8" style="fill: currentColor; stroke: currentColor" fill-opacity="0.2" stroke-width="1.2" />
+  <path d="M 44 240 L 37 249 M 56 240 L 49 249 M 68 240 L 61 249 M 80 240 L 73 249 M 92 240 L 85 249 M 104 240 L 97 249 M 116 240 L 109 249 M 128 240 L 121 249 M 140 240 L 133 249 M 152 240 L 145 249 M 164 240 L 157 249 M 176 240 L 169 249 M 188 240 L 181 249 M 200 240 L 193 249 M 212 240 L 205 249 M 224 240 L 217 249 M 236 240 L 229 249 M 248 240 L 241 249 M 260 240 L 253 249 M 272 240 L 265 249" style="stroke: currentColor" fill="none" stroke-width="1" />
+  <text x="155" y="268" fill="currentColor" text-anchor="middle">下板不动</text>
+  <line x1="160" y1="44" x2="224.0" y2="44" style="stroke: currentColor" stroke-width="1.6" />
+  <path d="M 232.0 44 L 223.0 40 L 223.0 48 Z" style="fill: currentColor" />
+  <text x="150" y="49" fill="currentColor" text-anchor="end">上板</text>
+  <text x="238" y="49" fill="currentColor"><tspan font-style="italic">u</tspan><tspan dy="4" font-size="10">0</tspan></text>
+  <line x1="24" y1="73" x2="24" y2="223" style="stroke: currentColor" stroke-width="1.2" />
+  <path d="M 24 64 L 20 73 L 28 73 Z" style="fill: currentColor" />
+  <path d="M 24 232 L 20 223 L 28 223 Z" style="fill: currentColor" />
+  <line x1="18" y1="64" x2="36" y2="64" style="stroke: currentColor" stroke-width="1" />
+  <line x1="18" y1="232" x2="36" y2="232" style="stroke: currentColor" stroke-width="1" />
+  <text x="13" y="153" fill="currentColor" text-anchor="middle"><tspan font-style="italic">h</tspan></text>
+  <line x1="56" y1="64" x2="56" y2="232" style="stroke: currentColor" stroke-opacity="0.6" stroke-width="1" />
+  <line x1="56" y1="232" x2="252" y2="64" style="stroke: currentColor" stroke-opacity="0.6" stroke-width="1" />
+  <line x1="56" y1="84" x2="220.7" y2="84" style="stroke: var(--good, #059669)" stroke-width="1.8" />
+  <path d="M 228.7 84 L 219.7 80 L 219.7 88 Z" style="fill: var(--good, #059669)" />
+  <line x1="56" y1="116" x2="183.3" y2="116" style="stroke: var(--good, #059669)" stroke-width="1.8" />
+  <path d="M 191.3 116 L 182.3 112 L 182.3 120 Z" style="fill: var(--good, #059669)" />
+  <line x1="56" y1="148" x2="146.0" y2="148" style="stroke: var(--good, #059669)" stroke-width="1.8" />
+  <path d="M 154.0 148 L 145.0 144 L 145.0 152 Z" style="fill: var(--good, #059669)" />
+  <line x1="56" y1="180" x2="108.7" y2="180" style="stroke: var(--good, #059669)" stroke-width="1.8" />
+  <path d="M 116.7 180 L 107.7 176 L 107.7 184 Z" style="fill: var(--good, #059669)" />
+  <line x1="56" y1="212" x2="71.3" y2="212" style="stroke: var(--good, #059669)" stroke-width="1.8" />
+  <path d="M 79.3 212 L 70.3 208 L 70.3 216 Z" style="fill: var(--good, #059669)" />
+  <line x1="40" y1="164" x2="266" y2="164" style="stroke: currentColor" stroke-width="1.2" stroke-dasharray="6 4" />
+  <text x="272" y="169" fill="currentColor"><tspan font-style="italic">z</tspan><tspan dy="4" font-size="10">0</tspan></text>
+  <text x="470" y="22" fill="currentColor" text-anchor="middle">放大：穿过 <tspan font-style="italic">z</tspan><tspan dy="4" font-size="10">0</tspan><tspan dy="-4"> 的分子</tspan></text>
+  <line x1="350" y1="84" x2="628" y2="84" style="stroke: currentColor" stroke-opacity="0.5" stroke-width="1" />
+  <line x1="350" y1="150" x2="628" y2="150" style="stroke: currentColor" stroke-width="1.2" stroke-dasharray="6 4" />
+  <line x1="350" y1="216" x2="628" y2="216" style="stroke: currentColor" stroke-opacity="0.5" stroke-width="1" />
+  <text x="342" y="89" fill="currentColor" text-anchor="end"><tspan font-style="italic">z</tspan><tspan dy="4" font-size="10">0</tspan><tspan dy="-4"> + </tspan><tspan font-style="italic">λ</tspan></text>
+  <text x="342" y="155" fill="currentColor" text-anchor="end"><tspan font-style="italic">z</tspan><tspan dy="4" font-size="10">0</tspan></text>
+  <text x="342" y="221" fill="currentColor" text-anchor="end"><tspan font-style="italic">z</tspan><tspan dy="4" font-size="10">0</tspan><tspan dy="-4"> − </tspan><tspan font-style="italic">λ</tspan></text>
+  <line x1="356" y1="84" x2="453.0" y2="84" style="stroke: var(--good, #059669)" stroke-width="2" />
+  <path d="M 461.0 84 L 452.0 80 L 452.0 88 Z" style="fill: var(--good, #059669)" />
+  <line x1="356" y1="150" x2="423.0" y2="150" style="stroke: var(--good, #059669)" stroke-width="2" />
+  <path d="M 431.0 150 L 422.0 146 L 422.0 154 Z" style="fill: var(--good, #059669)" />
+  <line x1="356" y1="216" x2="393.0" y2="216" style="stroke: var(--good, #059669)" stroke-width="2" />
+  <path d="M 401.0 216 L 392.0 212 L 392.0 220 Z" style="fill: var(--good, #059669)" />
+  <circle cx="485" cy="84" r="5" style="fill: var(--accent, #2563eb)" />
+  <line x1="485" y1="91" x2="485" y2="170.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 485 178 L 481 169 L 489 169 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="495" y="72" fill="currentColor">带着 <tspan font-style="italic">mu</tspan>(<tspan font-style="italic">z</tspan><tspan dy="4" font-size="10">0</tspan><tspan dy="-4">+</tspan><tspan font-style="italic">λ</tspan>)</text>
+  <circle cx="570" cy="216" r="5" style="fill: var(--accent, #2563eb)" />
+  <line x1="570" y1="209" x2="570" y2="130.0" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 570 122 L 566 131 L 574 131 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="600" y="244" fill="currentColor" text-anchor="end">带着 <tspan font-style="italic">mu</tspan>(<tspan font-style="italic">z</tspan><tspan dy="4" font-size="10">0</tspan><tspan dy="-4">−</tspan><tspan font-style="italic">λ</tspan>)</text>
+</svg>

@@ -7,7 +7,7 @@ import path from 'node:path';
 import { parse } from 'yaml';
 import { sourceText } from '../../compiler/markdown.ts';
 import type { Tier } from '../../shared/content-types.ts';
-import { answerKind, EXACT_HELP, OPTION_LABELS, TIER_LABELS } from '../../shared/problem-text.ts';
+import { answerKind, exactHelp, OPTION_LABELS, TIER_LABELS } from '../../shared/problem-text.ts';
 
 export const TIERS: Tier[] = ['easy', 'medium', 'hard', 'thinking'];
 
@@ -101,8 +101,8 @@ interface ProblemSource {
   answer?: { type?: unknown; value?: unknown; multiple?: unknown; exact?: boolean; alphabet?: unknown; options?: unknown; unit?: unknown; starter?: string; tests?: { in?: unknown[]; out: unknown[] }[]; maxCycles?: number; isa?: string[] } | null;
 }
 
-/** 一道题：只取题干、选项、作答方式、单位，别的字段一律不碰。 */
-function problemLines(p: ProblemSource): string[] {
+/** 一道题：只取题干、选项、作答方式、单位，别的字段一律不碰。lessonId 用来按学科给整数题的作答提示。 */
+function problemLines(p: ProblemSource, lessonId: string): string[] {
   const tier = TIERS.includes(p.tier as Tier) ? TIER_LABELS[p.tier as Tier] : String(p.tier);
   const lines = [`### ${String(p.id)}　${tier}`, '', text(p.statement) || '（没有题干）', ''];
   const a = p.answer;
@@ -119,7 +119,7 @@ function problemLines(p: ProblemSource): string[] {
     a.tests?.forEach((test, i) => lines.push('用例 '+(i+1)+'　输入 ['+(test.in ?? []).join(', ')+']，期望输出 ['+test.out.join(', ')+']'));
     lines.push('周期上限 '+(a.maxCycles ?? 10000), '开放指令 '+(a.isa?.join('、') ?? '全部 P8 指令'));
   }
-  if (a?.exact) lines.push(EXACT_HELP);
+  if (a?.exact) lines.push(exactHelp(lessonId));
   if (a?.type === 'sequence' && Array.isArray(a.alphabet)) lines.push('可用记号：' + a.alphabet.join('、'));
   if (a && typeof a.unit === 'string') lines.push(`单位：${text(a.unit)}`);
   lines.push('');
@@ -156,7 +156,7 @@ export function exportStatements(root: string, options: ExportOptions): ExportRe
       }
       const chosen = problems.filter((p) => !tiers.length || tiers.includes(p.tier as Tier));
       if (!chosen.length) continue;
-      domainLines.push(...header, ...chosen.flatMap(problemLines));
+      domainLines.push(...header, ...chosen.flatMap((p) => problemLines(p, lesson.id)));
     }
     if (domainLines.length) out.push(...domainHeader(domain, root, failures), ...domainLines);
   }

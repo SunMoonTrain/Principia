@@ -1,0 +1,214 @@
+- id: p1
+  tier: easy
+  statement: |
+    下面哪些是真命题？这里$\N$表示全体自然数，含$0$。
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\forall x\in\R,\ \exists y\in\R,\quad xy=1$
+      - |
+        $\exists y\in\R,\ \forall x\in\R,\quad x^2<y$
+      - |
+        $\forall x\in\R,\ \exists y\in\R,\quad y^3=x$
+      - |
+        $\forall x\in\N,\ \exists y\in\N,\quad y<x$
+      - |
+        $\exists x\in\R,\ \forall y\in\R,\quad xy=0$
+    value: [3, 5]
+  hints:
+    - |
+      从左往右读：$\forall x\,\exists y$里，$y$可以随$x$变，只要每个$x$都找得到一个；$\exists y\,\forall x$或$\exists x\,\forall y$里，先取定的那一个，要对后面的每一个都管用。
+    - |
+      A、D 看看有没有找不到$y$的$x$，比如$x=0$。B 取定$y$以后，$x$能不能大到$x^2\ge y$？C 想想立方根；E 想想哪个数乘谁都得$0$。
+    - |
+      A：$x=0$时，每个$y$都使$xy=0\ne1$，找不到$y$，假。B：不管$y$取哪个实数，$x=|y|+1$都使$x^2\ge|y|+1>y$，一个$y$管不住所有的$x$，假。C：任给$x$，取$y=\sqrt[3]x$就有$y^3=x$，真。
+
+      D：$x=0$时没有比$0$小的自然数，假。E：取$x=0$，每个$y$都使$0\cdot y=0$，真。所以选 C、E。
+  solution: |
+    A：$x=0$时$xy=0\ne1$，对这个$x$找不到$y$，假。B：任给实数$y$，取$x=|y|+1$，则$x^2\ge|y|+1>y$，所以没有一个$y$能使每个$x$都满足$x^2<y$，假。C：任给实数$x$，取$y=\sqrt[3]x$，则$y^3=x$，真。
+
+    D：$x=0$时没有自然数$y$满足$y<0$，假。E：$x=0$使每个实数$y$都满足$xy=0$，真。选 C、E。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪一个是命题$\forall x\in\R,\ \exists y\in\R,\quad x+y^2>0$的:term[否定]{id="math.logic-sets.negation"}？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        $\forall x\in\R,\ \exists y\in\R,\quad x+y^2\le0$
+      - |
+        $\exists x\in\R,\ \forall y\in\R,\quad x+y^2\le0$
+      - |
+        $\exists x\in\R,\ \exists y\in\R,\quad x+y^2\le0$
+      - |
+        $\exists x\in\R,\ \forall y\in\R,\quad x+y^2<0$
+    value: 2
+  hints:
+    - |
+      照否定多重量词命题的规则：量词逐个否定，任意变存在，存在变任意，取值范围照抄，最后的语句取反。
+    - |
+      从外往里，$\forall x$变成$\exists x$，$\exists y$变成$\forall y$。「$x+y^2>0$」不成立，是$x+y^2<0$还是$x+y^2\le0$？
+    - |
+      两个量词都要换，$x+y^2>0$不成立就是$x+y^2\le0$，所以否定是$\exists x\in\R,\ \forall y\in\R,\quad x+y^2\le0$，选 B。A 没有换量词，C 没有把$\exists y$换成$\forall y$，D 漏了$x+y^2=0$的情形。
+  solution: |
+    由多重量词否定的定理，$\forall x$变成$\exists x$，$\exists y$变成$\forall y$，取值范围$\R$照抄，$x+y^2>0$取反成$x+y^2\le0$，所以否定是$\exists x\in\R,\ \forall y\in\R,\quad x+y^2\le0$，选 B。
+
+    A 只把最后的不等式取反，量词没换；C 只换了$\forall x$，没换$\exists y$；D 的$x+y^2<0$不是$x+y^2>0$的否定，漏了等于$0$的情形。顺便看真假：任给$x$，取$y=|x|+1$，则$y^2\ge|x|+1>-x$，所以原命题为真，它的否定为假。
+
+- id: p3
+  tier: medium
+  statement: |
+    记$P(x,y)$为「$y$是$x$的倍数」，$x$、$y$都是正整数。求最小的正整数$m$，使命题$\exists y\in\{1,2,\dots,m\},\ \forall x\in\{1,2,\dots,6\},\quad P(x,y)$为真。
+  answer:
+    type: number
+    value: 60
+    exact: true
+  hints:
+    - |
+      先用中文说出这个命题：在$1,2,\dots,m$里有一个$y$，它对$1,2,\dots,6$中的每个$x$都管用。
+    - |
+      这样的$y$要同时是$1,2,\dots,6$的倍数，也就是它们的公倍数。$1,2,\dots,6$的最小公倍数是多少？
+    - |
+      $1,2,\dots,6$的最小公倍数是$4\times3\times5=60$。$m\ge60$时取$y=60$，命题为真；$m<60$时，$1,2,\dots,m$都比最小公倍数小，没有一个是公倍数，命题为假。所以最小的$m$是$60$。
+  solution: |
+    命题说的是：$1,2,\dots,m$里有一个$y$，它同时是$1,2,\dots,6$的倍数，也就是它们的公倍数。$1,2,\dots,6$的最小公倍数是$4\times3\times5=60$。$m\ge60$时取$y=60$，命题为真；$m<60$时，$1,2,\dots,m$都比$60$小，没有一个是公倍数，命题为假。所以最小的$m$是$60$。
+
+    交换两个量词，$\forall x\in\{1,2,\dots,6\},\ \exists y\in\{1,2,\dots,m\},\quad P(x,y)$只要求每个$x$各有一个倍数，取$y=x$就行，$m=6$就够了。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$p$、$m$在整数里取值，$S(p)$是一句含有变量$p$的语句，例如「$p$是素数」。下面哪些命题，不管$S(p)$是哪一句，都和「对每个正整数$n$，都有比$n$大的整数$p$使$S(p)$成立」同真同假？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\forall n\in\N^+,\ \exists p\,\bigl(S(p)\land p>n\bigr)$
+      - |
+        $\neg\bigl(\exists n\in\N^+,\ \forall p\,(S(p)\Rightarrow p\le n)\bigr)$
+      - |
+        $\forall n\in\N^+,\ \exists p\,\bigl(S(p)\Rightarrow p>n\bigr)$
+      - |
+        $\forall n\in\N^+,\ \exists m>n,\quad S(m)$
+      - |
+        $\exists p\,\bigl(S(p)\land(\forall n\in\N^+,\ p>n)\bigr)$
+    value: [1, 2, 4]
+  hints:
+    - |
+      先把原话写成符号式：「有比$n$大的整数$p$使$S(p)$」是带条件的存在量词，条件「$p>n$」该用「且」接上，还是用「推出」接上？再逐个看选项和它是不是一个意思。
+    - |
+      原话是$\forall n\in\N^+,\ \exists p\,\bigl(S(p)\land p>n\bigr)$。B 先把否定号一层层移进去；C 想想取$p=n+1$时会怎样；D 的$\exists m>n$是把条件写进了量词；E 里两个量词的先后和原话不同。
+    - |
+      A 就是原话。B：由多重量词否定的定理，$\exists n\in\N^+$变成$\forall n\in\N^+$，带条件$S(p)$的$\forall p$变成$\exists p$，条件照抄，$p\le n$取反成$p>n$，得到的正是 A。D：$\exists m>n,\ S(m)$就是$\exists m\,\bigl(m>n\land S(m)\bigr)$，只是把$p$改叫$m$。
+
+      C：取$p=n+1$，$p>n$成立，「若……则……」为真，所以 C 不管$S(p)$是什么都为真；可$S(p)$为「$p<0$」时原话为假。E 说有一个使$S(p)$成立的整数$p$比每个正整数都大，这样的整数不存在，E 总是假的；可$S(p)$为「$p$是偶数」时原话为真。所以选 A、B、D。
+  solution: |
+    原话是$\forall n\in\N^+,\ \exists p\,\bigl(S(p)\land p>n\bigr)$，即 A。B：否定号移过$\exists n\in\N^+$，它变成$\forall n\in\N^+$；再移过带条件$S(p)$的$\forall p$，它变成$\exists p$，条件照抄，$p\le n$取反成$p>n$，得到的正是 A，所以 B 和原话:term[逻辑等价]{id="math.logic-sets.logical-equivalence"}。D：$\exists m>n,\ S(m)$就是$\exists m\,\bigl(m>n\land S(m)\bigr)$，和 A 只差把$p$改叫$m$。
+
+    C：不管$S(p)$是什么，取$p=n+1$都使$p>n$成立，「若$S(p)$，则$p>n$」为真，所以 C 总是真的；可$S(p)$为「$p<0$」时，没有比$1$大的负整数，原话为假。E：$p$要比每个正整数都大，$p\ge1$时取$n=p$就不行，$p\le0$时取$n=1$就不行，所以 E 总是假的；可$S(p)$为「$p$是偶数」时原话为真，$2n+2$就比$n$大。选 A、B、D。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$n$在正整数里取值，$P(n)$、$Q(n)$是含有变量$n$的语句。「无穷多个」按通常的意思理解，就是不只有限个；严格的说法见[等势与可数集](lesson:math.logic-sets.countable-sets)。
+
+    （1）证明：$\forall N\in\N^+,\ \exists n>N,\quad Q(n)$为真，当且仅当使$Q(n)$成立的$n$有无穷多个。
+
+    （2）由（1）说明：「从某一项起都有$P(n)$」不成立，当且仅当使$P(n)$不成立的$n$有无穷多个。
+  hints:
+    - |
+      两个方向分开证。使$Q(n)$成立的$n$要是都不超过某个$N$，它们至多有几个？反过来，这样的$n$只有有限个时，能不能找到一个$N$，使大于$N$的$n$都不满足$Q(n)$？
+    - |
+      使$Q(n)$成立的$n$都不超过$N$的话，它们都在$1,2,\dots,N$里，至多$N$个。只有有限个时，取$N$为其中最大的，一个也没有就取$N=1$。（2）先写出「从某一项起都有$P(n)$」的否定形式，再在（1）里取$Q(n)$为$\neg P(n)$。
+    - |
+      （1）先证：若使$Q(n)$成立的$n$有无穷多个，则$\forall N\in\N^+,\ \exists n>N,\quad Q(n)$为真。任给正整数$N$，这样的$n$要是都不超过$N$，就都在$1,2,\dots,N$这$N$个数里，只有有限个；现在它们不只有限个，所以总有一个大于$N$。$N$是任给的，所以要证的命题为真。
+
+      再证另一个方向，改证它的:term[逆否命题]{id="math.logic-sets.contrapositive"}（contrapositive，见[蕴含与充要条件](lesson:math.logic-sets.implication#thm-contrapositive)）：若这样的$n$只有有限个，则$\forall N\in\N^+,\ \exists n>N,\quad Q(n)$为假。有的话取$N$为其中最大的，一个也没有就取$N=1$，大于$N$的$n$就都不满足$Q(n)$。所以$\exists N\in\N^+,\ \forall n>N,\quad\neg Q(n)$为真，它正是$\forall N\in\N^+,\ \exists n>N,\quad Q(n)$的否定形式，后者为假。
+
+      （2）「从某一项起都有$P(n)$」是$\exists N\in\N^+,\ \forall n>N,\quad P(n)$，它不成立，就是它的否定形式$\forall N\in\N^+,\ \exists n>N,\quad\neg P(n)$成立。在（1）里取$Q(n)$为$\neg P(n)$，这又和「使$P(n)$不成立的$n$有无穷多个」同真同假。
+  reference: |
+    （1）若使$Q(n)$成立的$n$有无穷多个：任给正整数$N$，这些$n$不会都不超过$N$，否则它们都在$1,2,\dots,N$这$N$个数里，只有有限个。所以有使$Q(n)$成立的$n>N$；$N$是任给的，$\forall N\in\N^+,\ \exists n>N,\quad Q(n)$为真。
+
+    另一个方向证逆否命题：设使$Q(n)$成立的$n$只有有限个，至少有一个时取$N$为其中最大的，一个也没有时取$N=1$。这时每个$n>N$都使$Q(n)$不成立，即$\exists N\in\N^+,\ \forall n>N,\quad\neg Q(n)$为真。它是$\forall N\in\N^+,\ \exists n>N,\quad Q(n)$的否定形式，所以后者为假。
+
+    （2）由多重量词否定的定理，「从某一项起都有$P(n)$」即$\exists N\in\N^+,\ \forall n>N,\quad P(n)$的否定形式是$\forall N\in\N^+,\ \exists n>N,\quad\neg P(n)$。由（1）（取$Q(n)$为$\neg P(n)$），它成立当且仅当使$\neg P(n)$成立的$n$有无穷多个，也就是使$P(n)$不成立的$n$有无穷多个。这正是正文里「从某一项起」那一段说的。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）用量词写出「方程$x^3+x=2$恰有一个实数解」，分成「至少有一个」「至多有一个」两句。
+
+    （2）证明它。
+  hints:
+    - |
+      照本节「恰有一个」的说法：至少有一个是一个:term[存在量词命题]{id="math.logic-sets.existential-statement"}（existential statement）；至多有一个是说，任取两个实数解，它们一定相等。
+    - |
+      至少有一个：试几个简单的整数。至多有一个：设$a$、$b$都是解，两式相减，把$a^3-b^3+a-b$分解因式，看另一个因子能不能是$0$。
+    - |
+      （1）至少有一个：$\exists x\in\R,\ x^3+x=2$；至多有一个：$\forall a\in\R,\ \forall b\in\R,\quad\bigl(a^3+a=2\land b^3+b=2\bigr)\Rightarrow a=b$。
+
+      （2）$x=1$时$1+1=2$，至少有一个。设$a^3+a=2$，$b^3+b=2$，两式相减得$(a-b)(a^2+ab+b^2+1)=0$。而$a^2+ab+b^2+1=\bigl(a+\frac b2\bigr)^2+\frac34b^2+1>0$，所以$a-b=0$，即$a=b$，至多有一个。
+  reference: |
+    （1）恰有一个就是至少有一个、又至多有一个：$\exists x\in\R,\ x^3+x=2$；$\forall a\in\R,\ \forall b\in\R,\quad\bigl(a^3+a=2\land b^3+b=2\bigr)\Rightarrow a=b$。两句都成立，才说恰有一个。
+
+    （2）至少有一个：$x=1$时$1^3+1=2$。至多有一个：任取满足$a^3+a=2$、$b^3+b=2$的实数$a$、$b$，相减得$a^3-b^3+a-b=0$，即$(a-b)(a^2+ab+b^2+1)=0$。配方，$a^2+ab+b^2+1=\bigl(a+\frac b2\bigr)^2+\frac34b^2+1\ge1>0$，所以$a-b=0$，$a=b$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）记$K(y,x)$为「钥匙$y$能打开锁$x$」，$x$在所有的锁里取值，$y$在所有的钥匙里取值。把「每把锁都有一把钥匙能打开它」「有一把钥匙能打开每把锁」写成符号式，并各举一个情形：前一句真、后一句假；两句都真。
+
+    （2）「有一条直线经过任意两点」可以读成两种意思。记$L(\ell,A,B)$为「直线$\ell$经过点$A$和点$B$」，$\ell$在平面上所有的直线里取值，$A$、$B$在平面上所有的点里取值。写出两种读法的符号式，各判断真假。
+
+    （3）把（2）的两种读法各改写成一句不会读错的中文。原句为什么会有两种读法？自己写带「任意」「存在」的话时，怎样避免这种情况？
+  hints:
+    - |
+      （1）照语序从左往右排量词：第一句先说「每把锁」，第二句先说「有一把钥匙」。（2）一种读法照字面的语序，先说「有一条直线」；另一种是平常说这句话时想表达的意思。
+    - |
+      （1）想想每把锁各配一把只开它的钥匙，再想想一把万能钥匙。（2）两点确定一条直线；有没有一条直线经过平面上所有的点？（3）读的人碰到放在句末的「任意」，会把它放在哪一层？
+    - |
+      （1）第一句：$\forall x,\ \exists y,\quad K(y,x)$；第二句：$\exists y,\ \forall x,\quad K(y,x)$。前门、后门各有一把只开自己的钥匙时，第一句真、第二句假；再添一把两扇门都能开的万能钥匙，两句都真。
+
+      （2）照字面的语序是$\exists\ell,\ \forall A,\ \forall B,\quad L(\ell,A,B)$，说有一条直线经过平面上所有的点，假：任取一条直线$\ell$，取不在$\ell$上的点$A$，无论$B$是哪一点，$L(\ell,A,B)$都不成立。想表达的是$\forall A,\ \forall B,\ \exists\ell,\quad L(\ell,A,B)$，真：两点确定一条直线，$A$、$B$重合时经过它的直线也有。
+
+      （3）前一种写成「有一条直线$\ell_0$，平面上每一点都在$\ell_0$上」，后一种写成「对平面上任意两点，都有一条直线经过它们」。照语序，原句先说「有一条直线」，是存在在前；可平常说话时，放在句末的「任意」常常是想放在最前面，两种读法就都说得通。写的时候照符号式的先后说量词：全称在前，就把「对任意……」放在句首，再说「都有……」；存在的东西不随后面的变量变，就先把它说出来、起个名字，再说它对每一个都怎样。
+  reference: |
+    （1）第一句：$\forall x,\ \exists y,\quad K(y,x)$；第二句：$\exists y,\ \forall x,\quad K(y,x)$。前门、后门各有一把只开自己的钥匙，没有能开两扇门的钥匙：每把锁都有钥匙，第一句真；没有一把钥匙开得了所有的锁，第二句假。另有一把万能钥匙时，两句都真。
+
+    （2）照字面的语序，先说「有一条直线」：$\exists\ell,\ \forall A,\ \forall B,\quad L(\ell,A,B)$，即有一条直线经过平面上所有的点。它是假的：任给直线$\ell$，平面上有不在$\ell$上的点$A$，任取一点$B$，$L(\ell,A,B)$都不成立。平常想表达的是$\forall A,\ \forall B,\ \exists\ell,\quad L(\ell,A,B)$：任给两点，都有直线经过它们，这是真的（两点不重合时，经过它们的直线恰有一条；重合时有很多条）。
+
+    （3）改写：前一种是「有一条直线$\ell_0$，平面上每一点都在$\ell_0$上」，后一种是「对平面上任意两点，都有一条直线经过它们」，后一句里的直线可以随两点不同。中文靠语序表达量词的先后，照字面，原句先说「有一条直线」；可平常说话时，句末的「任意」常被当成管着整句话的，原句就有了两种读法。避免的办法：照符号式的先后说量词，全称量词在前时把「对任意……」放在句首，再说「都有……」；存在的东西不随后面的变量变时，先把它说出来并命名，再说它对每一个都怎样。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$n$在正整数里取值，$P(n)$是含有变量$n$的语句。看四句话：甲「从某一项起都有$P(n)$」，乙「有无穷多个$n$使$P(n)$成立」，丙「从某一项起都有$\neg P(n)$」，丁「有无穷多个$n$使$\neg P(n)$成立」。
+
+    （1）把乙写成两层量词的符号式。四句里哪两句互为否定？
+
+    （2）甲和丙能不能都真？能不能都假？乙和丁呢？
+
+    （3）[全称量词与存在量词](lesson:math.logic-sets.quantifiers)第 8 题把「几乎所有$n$都满足$P(n)$」理解成甲。为什么不理解成乙？
+  hints:
+    - |
+      本节说过：「从某一项起都有$P(n)$」的否定形式是$\forall N\in\N^+,\ \exists n>N,\quad\neg P(n)$，也就是有无穷多个$n$使$P(n)$不成立。把这里的$P(n)$换成$\neg P(n)$看看。
+    - |
+      乙是$\forall N\in\N^+,\ \exists n>N,\quad P(n)$。甲、丙要是都真，各有一个$N$，取一个比两个$N$都大的$n$会怎样？都假的例子想想奇偶。乙、丁的情形可以借（1）的结论，由甲、丙的情形推过来。
+    - |
+      （1）乙：$\forall N\in\N^+,\ \exists n>N,\quad P(n)$。甲和丁互为否定，乙和丙互为否定：甲的否定形式$\forall N\in\N^+,\ \exists n>N,\quad\neg P(n)$正是丁，丙的否定形式$\forall N\in\N^+,\ \exists n>N,\quad P(n)$正是乙。
+
+      （2）甲、丙不能都真：设大于$N_1$的$n$都满足$P(n)$，大于$N_2$的$n$都满足$\neg P(n)$，取$n=N_1+N_2+1$，它既满足$P(n)$又满足$\neg P(n)$，不可能。甲、丙可以都假：$P(n)$为「$n$是偶数」时，奇数、偶数都有无穷多个，两句都不成立。由（1），乙、丁都真就是丙、甲都假，可以；乙、丁都假就是丙、甲都真，不可以。
+
+      （3）「几乎所有」应当是说例外很少，「几乎所有$n$都满足$P(n)$」和「几乎所有$n$都满足$\neg P(n)$」不该同时成立。按甲理解，由（2）它们不会同时成立；按乙理解，$P(n)$为「$n$是偶数」时两句都成立，「几乎所有」就失去了意思。甲也比乙强：甲推出乙，反过来不一定。
+  reference: |
+    （1）由第 5 题（1），「有无穷多个$n$使$Q(n)$」和$\forall N\in\N^+,\ \exists n>N,\quad Q(n)$同真同假（取$Q(n)$为$\neg P(n)$时就是正文那一段）。所以乙是$\forall N\in\N^+,\ \exists n>N,\quad P(n)$，丁是$\forall N\in\N^+,\ \exists n>N,\quad\neg P(n)$。甲$\exists N\in\N^+,\ \forall n>N,\quad P(n)$的否定形式正是丁，丙$\exists N\in\N^+,\ \forall n>N,\quad\neg P(n)$的否定形式正是乙（$\neg\neg P(n)$就是$P(n)$）。所以甲与丁、乙与丙互为否定。
+
+    （2）甲、丙不能都真：若大于$N_1$的$n$都满足$P(n)$、大于$N_2$的$n$都满足$\neg P(n)$，则$n=N_1+N_2+1$两者都满足，矛盾。甲、丙可以都假：$P(n)$为「$n$是偶数」，偶数、奇数都没有最后一个。乙、丁：由（1），乙真即丙假，丁真即甲假；乙、丁都真即丙、甲都假，可以（同一例子）；乙、丁都假即丙、甲都真，不可能。所以乙、丁可以都真，不能都假。
+
+    （3）「几乎所有」说的是例外很少，「几乎所有$n$满足$P(n)$」和「几乎所有$n$满足$\neg P(n)$」不应同时成立，并且「几乎所有$n$满足$P(n)$」应当推出「有无穷多个$n$满足$P(n)$」。按甲理解，由（2）两者不同时成立；甲推出乙（$\exists N\,\forall n>N$推出$\forall N'\,\exists n>N'$：取$n=N+N'+1$）。按乙理解，$P(n)$为「$n$是偶数」时「几乎所有$n$是偶数」「几乎所有$n$是奇数」都成立，不合「几乎所有」的本意。所以取甲，即例外只有有限个；数学分析里说「从某一项起」，用的也是甲。

@@ -1,0 +1,169 @@
+- id: p1
+  tier: easy
+  statement: |
+    洛朗级数$\sum_{n=-\infty}^{\infty}\frac{z^n}{2^{|n|}}$收敛的点恰好组成一个圆环$r<|z|<R$。求$r$、$R$，答案依次写$r$、$R$。
+  answer:
+    type: tuple
+    value: [1/2, 2]
+  hints:
+    - |
+      分成非负次幂的部分和负次幂的部分，两部分都是等比级数。
+    - |
+      $\sum_{n\ge0}\bigl(\frac z2\bigr)^n$和$\sum_{n\ge1}\bigl(\frac1{2z}\bigr)^n$各在什么时候收敛？
+    - |
+      公比的模小于$1$时收敛，不小于$1$时通项不趋于$0$，发散。
+  solution: |
+    非负次幂的部分是$\sum_{n\ge0}\bigl(\frac z2\bigr)^n$，$|z|<2$时收敛，$|z|\ge2$时通项的模不小于$1$，发散。负次幂的部分是$\sum_{n\ge1}\frac{z^{-n}}{2^n}$，即$\sum_{n\ge1}\bigl(\frac1{2z}\bigr)^n$，$|z|>\frac12$时收敛，$0<|z|\le\frac12$时发散。两部分同时收敛恰好是$\frac12<|z|<2$，所以$r=\frac12$，$R=2$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $\frac1{z+3}$在$|z|>3$里的洛朗级数是哪一个？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        $\sum_{n=0}^{\infty}\frac{(-1)^nz^n}{3^{n+1}}$
+      - |
+        $\sum_{n=1}^{\infty}3^{n-1}z^{-n}$
+      - |
+        $\sum_{n=1}^{\infty}(-3)^{n-1}z^{-n}$
+      - |
+        $\sum_{n=1}^{\infty}(-3)^nz^{-n}$
+    value: 3
+  hints:
+    - |
+      $|z|>3$时$\bigl|\frac3z\bigr|<1$，应当按$\frac3z$的幂展开。
+    - |
+      $\frac1{z+3}=\frac1z\cdot\frac1{1+\frac3z}$。
+    - |
+      $|w|<1$时$\frac1{1+w}=\sum_{n\ge0}(-w)^n$。
+  solution: |
+    $|z|>3$时$\bigl|\frac3z\bigr|<1$。$\frac1{z+3}=\frac1z\cdot\frac1{1+\frac3z}$，用等比级数展开，得$\frac1z\sum_{n=0}^\infty\bigl(-\frac3z\bigr)^n$，即$\sum_{n=1}^\infty(-3)^{n-1}z^{-n}$；它在$|z|>3$里处处成立，由唯一性就是洛朗级数，选 C。A 是$\frac1{z+3}$在$|z|<3$里的泰勒级数，在$|z|>3$里发散；B 的和是$\frac1{z-3}$，D 的和是$-\frac3{z+3}$。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\frac1{(z-1)(z+2)}$在圆环$1<|z|<2$里的洛朗级数中$z^{-2}$和$z$的系数，答案依次写这两个系数。
+  answer:
+    type: tuple
+    value: [1/3, 1/12]
+  hints:
+    - |
+      写成$\frac A{z-1}+\frac B{z+2}$，通分以后比较分子。
+    - |
+      在$1<|z|<2$里，$\frac1{z-1}$按$\frac1z$的幂展开，$\frac1{z+2}$按$\frac z2$的幂展开。
+    - |
+      $A=\frac13$，$B=-\frac13$；$\frac1{z-1}=\sum_{n\ge1}z^{-n}$，$\frac1{z+2}=\sum_{n\ge0}\frac{(-1)^nz^n}{2^{n+1}}$。
+  solution: |
+    通分以后$1=A(z+2)+B(z-1)$，比较系数得$A+B=0$、$2A-B=1$，所以$A=\frac13$，$B=-\frac13$。在$1<|z|<2$里，$\bigl|\frac1z\bigr|<1$，$\frac1{z-1}=\frac1z\cdot\frac1{1-\frac1z}=\sum_{n\ge1}z^{-n}$；$\bigl|\frac z2\bigr|<1$，$\frac1{z+2}=\frac12\cdot\frac1{1+\frac z2}=\sum_{n\ge0}\frac{(-1)^nz^n}{2^{n+1}}$。所以函数等于$\frac13\sum_{n\ge1}z^{-n}-\frac13\sum_{n\ge0}\frac{(-1)^nz^n}{2^{n+1}}$，由唯一性这就是洛朗级数：$z^{-2}$的系数是$\frac13$，$z$的系数是$-\frac13\cdot\frac{-1}4$，即$\frac1{12}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\frac1{2\pi i}\oint_{|z|=1}z^3e^{1/z}\,\dd z$，圆周取逆时针方向。
+  answer:
+    type: number
+    value: 1/24
+  hints:
+    - |
+      所求的值是$z^3e^{1/z}$在去心圆盘$0<|z|<+\infty$里的洛朗级数的哪一个系数？
+    - |
+      $e^w=\sum_{k\ge0}\frac{w^k}{k!}$对一切$w$成立，令$w=\frac1z$。
+    - |
+      $z^3\cdot\frac{z^{-k}}{k!}$里，$k=4$的一项是$z^{-1}$的项。
+  solution: |
+    $z^3e^{1/z}$在$0<|z|<+\infty$上全纯。由$e^w=\sum_{k\ge0}\frac{w^k}{k!}$，$z\ne0$时$z^3e^{1/z}=\sum_{k\ge0}\frac{z^{3-k}}{k!}$，展开式唯一，这就是它的洛朗级数。由系数公式（$n=-1$，$\rho=1$），所求的值是$z^{-1}$的系数$a_{-1}$；$3-k=-1$即$k=4$，所以$a_{-1}=\frac1{4!}$，即$\frac1{24}$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f(z)=\frac1{\sin z}$。
+
+    （1）说明$f$在去心圆盘$0<|z|<\pi$上全纯，并说明它在这个去心圆盘里的洛朗级数在$|z|>\pi$的点处都发散。
+
+    （2）求这个洛朗级数里前三个不为$0$的项。
+
+    （3）写出$f$在$0$处的主部。
+  hints:
+    - |
+      （1）$\sin z$的零点只有$k\pi$。要是级数在某个$|z_0|>\pi$的点收敛，它在$0<|z|<|z_0|$里处处收敛，和在$\pi$处连续。
+    - |
+      （2）$z\ne0$时令$g(z)=\frac z{\sin z}$，$g(0)=1$，它在$|z|<\pi$上全纯（[全纯函数的幂级数展开](lesson:math.complex-analysis.power-series)第 4 题）。设$g(z)=\sum c_nz^n$，乘以$\frac{\sin z}z$的级数，比较系数。
+    - |
+      （2）$c_0=1$，$c_2=\frac16$，$c_4=\frac7{360}$，奇数次的系数都是$0$；$f=\frac gz$。
+  reference: |
+    （1）$\sin z$的零点只有$k\pi$（$k$是整数，见[复变函数与映射](lesson:math.complex-analysis.complex-functions#thm-sin-modulus)一节），所以$f$在$0<|z|<\pi$上全纯，有洛朗级数。假如它在某个$|z_0|>\pi$的点收敛：非负次幂的部分是幂级数，在$|z|<|z_0|$里收敛；负次幂的部分就是主部，在一切$z\ne0$处收敛。由收敛的定理，级数在$0<|z|<|z_0|$里处处收敛，和$S$在那里全纯，在$\pi$处连续，所以$\pi$附近有界；可在$0<|z|<\pi$里$S=f$，而$z\to\pi$时$|f(z)|\to+\infty$，矛盾。
+
+    （2）$z\ne0$时令$g(z)=\frac z{\sin z}$，$g(0)=1$；由全纯函数的幂级数展开一节第 4 题，$g$在$|z|<\pi$上全纯，等于它在$0$处的泰勒级数$\sum c_nz^n$。$s(z)=\frac{\sin z}z$（$s(0)=1$）是整函数，$s(z)=1-\frac{z^2}6+\frac{z^4}{120}-\cdots$，$gs=1$。用莱布尼茨公式求$(gs)^{(n)}(0)$，比较两边$z^n$的系数：$c_0=1$，$c_1=0$，$c_2-\frac{c_0}6=0$，$c_3-\frac{c_1}6=0$，$c_4-\frac{c_2}6+\frac{c_0}{120}=0$，所以$c_2=\frac16$，$c_3=0$，$c_4=\frac1{36}-\frac1{120}=\frac7{360}$。
+
+    于是$0<|z|<\pi$里$\frac1{\sin z}=\frac{g(z)}z=\frac1z+\frac z6+\frac{7z^3}{360}+\cdots$；右边在去心圆盘里处处成立，由唯一性就是洛朗级数，前三个不为$0$的项是$\frac1z$、$\frac z6$、$\frac{7z^3}{360}$。
+
+    （3）主部是$\frac1z$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$在圆环$r<|z-a|<R$上全纯，洛朗级数是$\sum_{n=-\infty}^{\infty}a_n(z-a)^n$。对$r<\rho<R$，记$M(\rho)$为$|f|$在圆周$|z-a|=\rho$上的最大值。
+
+    （1）证明对每个整数$n$和每个这样的$\rho$，$|a_n|\le\frac{M(\rho)}{\rho^n}$。
+
+    （2）设$f$在去掉原点的平面上全纯，并且有常数$K$，使$z\ne0$时$|f(z)|\le K\bigl(|z|+\frac1{|z|}\bigr)$。证明$f(z)=\frac{a_{-1}}z+a_0+a_1z$，这里$a_n$是$f$在$0<|z|<+\infty$里的洛朗级数的系数。
+  hints:
+    - |
+      （1）在系数公式里用 ML 不等式，圆周长$2\pi\rho$。
+    - |
+      （2）由（1），对一切$\rho>0$，$|a_n|\le K\bigl(\rho^{1-n}+\rho^{-1-n}\bigr)$。
+    - |
+      （2）$n\ge2$时让$\rho\to+\infty$，$n\le-2$时让$\rho\to0^+$。
+  reference: |
+    （1）$C_\rho$上$\Bigl|\frac{f(\zeta)}{(\zeta-a)^{n+1}}\Bigr|\le\frac{M(\rho)}{\rho^{n+1}}$，周长$2\pi\rho$，由 ML 不等式，$|a_n|\le\frac1{2\pi}\cdot\frac{M(\rho)}{\rho^{n+1}}\cdot2\pi\rho=\frac{M(\rho)}{\rho^n}$。
+
+    （2）这里$a=0$，圆环是$0<|z|<+\infty$，$M(\rho)\le K\bigl(\rho+\frac1\rho\bigr)$，由（1），对一切$\rho>0$，$|a_n|\le K\bigl(\rho^{1-n}+\rho^{-1-n}\bigr)$。$n\ge2$时两个指数都是负的，$\rho\to+\infty$时右边趋于$0$；$n\le-2$时两个指数都是正的，$\rho\to0^+$时右边趋于$0$。所以$|n|\ge2$时$a_n=0$，洛朗级数只剩三项，$f(z)=\frac{a_{-1}}z+a_0+a_1z$。$f(z)=z+\frac1z$满足条件（$K=1$），三项都可能出现。
+
+- id: p7
+  tier: thinking
+  statement: |
+    设$f$在圆环$r<|z|<R$上全纯，$r<1<R$，洛朗级数是$\sum_{n=-\infty}^{\infty}a_nz^n$。在单位圆周上记$F(\theta)=f(e^{i\theta})$，它以$2\pi$为周期。
+
+    （1）在系数公式里取$\rho=1$，把$a_n$写成对$\theta$的积分。
+
+    （2）设$F$取实数值，记它的:term[傅里叶系数]{id="math.analysis.fourier-coefficients"}（Fourier coefficients）为$A_n=\frac1\pi\int_{-\pi}^{\pi}F(\theta)\cos n\theta\,\dd\theta$、$B_n=\frac1\pi\int_{-\pi}^{\pi}F(\theta)\sin n\theta\,\dd\theta$，用大写，免得和洛朗级数的系数$a_n$混。用$\cos n\theta=\frac{e^{in\theta}+e^{-in\theta}}2$、$\sin n\theta=\frac{e^{in\theta}-e^{-in\theta}}{2i}$，说明$A_n$、$B_n$怎样由$a_n$、$a_{-n}$算出来。
+
+    （3）$n\to\infty$时，$A_n$、$B_n$趋于$0$有多快？以$2\pi$为周期、在$[-\pi,\pi]$上等于$|\theta|$的函数，$n$为奇数时它的$A_n$是$-\frac4{\pi n^2}$，它能不能是这样的$F$？
+  hints:
+    - |
+      （1）$z=e^{i\theta}$，$\dd z=ie^{i\theta}\,\dd\theta$。
+    - |
+      （2）$\frac1\pi\int_{-\pi}^{\pi}F(\theta)e^{-in\theta}\,\dd\theta=2a_n$。
+    - |
+      （3）由第 6 题（1），$|a_n|\le\frac{M(\rho)}{\rho^n}$，$M(\rho)$是$|f|$在$|z|=\rho$上的最大值；$n>0$时取$\rho>1$，$n<0$时取$\rho<1$。
+  reference: |
+    （1）$z=e^{i\theta}$，$-\pi\le\theta\le\pi$，$\dd z=ie^{i\theta}\,\dd\theta$，所以$a_n=\frac1{2\pi i}\int_{-\pi}^{\pi}\frac{F(\theta)}{e^{i(n+1)\theta}}\,ie^{i\theta}\,\dd\theta=\frac1{2\pi}\int_{-\pi}^{\pi}F(\theta)e^{-in\theta}\,\dd\theta$。洛朗级数在单位圆周上变成$F(\theta)=\sum_{n=-\infty}^{\infty}a_ne^{in\theta}$。
+
+    （2）由（1），$\frac1\pi\int_{-\pi}^{\pi}Fe^{-in\theta}\dd\theta=2a_n$，$\frac1\pi\int_{-\pi}^{\pi}Fe^{in\theta}\dd\theta=2a_{-n}$，所以$A_n=a_n+a_{-n}$，$B_n=i(a_n-a_{-n})$，常数项$\frac{A_0}2=a_0$。$F$是实的，$a_{-n}=\overline{a_n}$，于是$A_n=2\Re a_n$，$B_n=-2\Im a_n$：洛朗级数在单位圆周上就是傅里叶级数，只是把$e^{in\theta}$、$e^{-in\theta}$两项合成了$\cos n\theta$、$\sin n\theta$。
+
+    （3）由第 6 题（1），$|a_n|\le\frac{M(\rho)}{\rho^n}$，$M(\rho)$是$|f|$在$|z|=\rho$上的最大值。取定$1<\rho<R$，$n>0$时$|a_n|\le M(\rho)\bigl(\frac1\rho\bigr)^n$；取定$r<\rho'<1$，$n<0$时$|a_n|\le M(\rho')\rho'^{|n|}$。所以$F$的傅里叶系数至少像公比小于$1$的等比数列那样快地趋于$0$。$\frac4{\pi n^2}$比任何这样的等比数列都慢（$\frac{q^n}{1/n^2}=n^2q^n\to0$），所以$|\theta|$不是这样的$F$；这也说得通：$f(e^{i\theta})$对$\theta$无穷次可导，而$|\theta|$在$0$处有尖角。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）$|z|<1$时$\sum_{n=0}^\infty z^n=\frac1{1-z}$，$|z|>1$时$\sum_{n=1}^\infty z^{-n}=\frac1{z-1}$。两个和函数（sum function）的式子相加是$0$，能不能说$\sum_{n=-\infty}^{\infty}z^n=0$？
+
+    （2）要是规定洛朗级数的「和」可以把两部分各自在不同的地方算出来的式子加起来，洛朗展开的唯一性会出什么问题？
+
+    （3）幂级数至少在中心收敛。洛朗级数有没有这样一个一定收敛的点？
+  hints:
+    - |
+      （1）有没有一个点，两部分在那里都收敛？
+    - |
+      （2）$0$在任何圆环里的洛朗级数是什么？
+    - |
+      （3）负次幂的部分在中心处没有定义。
+  reference: |
+    （1）不能。非负次幂的部分只在$|z|<1$里收敛，负次幂的部分只在$|z|>1$里收敛，$|z|=1$时两部分的通项的模都是$1$，都发散。没有一个点两部分同时收敛，$\sum_{n=-\infty}^{\infty}z^n$在哪里都不收敛；$\frac1{1-z}+\frac1{z-1}=0$只是两个在不相交的范围里成立的式子形式上相加，不是这个级数在任何点的和。
+
+    （2）$0$在任何圆环里全纯，它的洛朗级数的系数全是$0$。要是允许（1）那样相加，系数全是$1$的$\sum z^n$也成了$0$的一个「展开式」，唯一性就不成立了。证明唯一性时，系数靠沿同一个圆周$C_\rho$逐项积分来确定，这要两部分在这个圆周上都一致收敛；两部分在同一个圆环里处处收敛时，由收敛的定理正是这样。
+
+    （3）没有。负次幂的部分在中心处没有定义；两部分的收敛范围可能根本不相交，比如$\sum z^n$；也可能只在一个圆周上相交，比如$\sum_{n\ne0}\frac{z^n}{n^2}$只在$|z|=1$上收敛（讲解里的边界情况）。所以对洛朗级数，要先找到两部分都收敛的圆环，才用得上这一节的定理（和函数全纯、逐项积分、系数和$\rho$无关），这正是这一节只在圆环里讨论的原因。

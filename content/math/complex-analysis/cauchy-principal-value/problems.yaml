@@ -1,0 +1,199 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$\gamma_\varepsilon$是以$1$为圆心、半径为$\varepsilon$的上半圆周，从$1-\varepsilon$沿顺时针走到$1+\varepsilon$。求$\lim_{\varepsilon\to0^+}\int_{\gamma_\varepsilon}\frac{z+3}{z^2-1}\,\dd z$，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [0, -2*pi]
+  hints:
+    - |
+      $1$是$\frac{z+3}{z^2-1}$的什么样的奇点？用讲解里的小半圆引理。
+    - |
+      $z^2-1=(z-1)(z+1)$，所以$(z-1)\cdot\frac{z+3}{z^2-1}=\frac{z+3}{z+1}$在$1$附近全纯，$1$是一阶极点，留数是$\frac{z+3}{z+1}$在$1$处的值。
+    - |
+      留数是$\frac{1+3}{1+1}=2$。由小半圆引理，极限是$-\pi i\cdot2=-2\pi i$：实部$0$，虚部$-2\pi$。
+  solution: |
+    $\frac{z+3}{z^2-1}=\frac{z+3}{(z-1)(z+1)}$，乘以$z-1$得$\frac{z+3}{z+1}$，它在$1$附近全纯，在$1$处的值是$2$。所以$1$是一阶极点，由极点处留数的定理（$m=1$），留数是$2$。
+
+    $\gamma_\varepsilon$是顺时针的上半小半圆，由小半圆引理，积分趋于$-\pi i\cdot2=-2\pi i$：实部是$0$，虚部是$-2\pi\approx-6.283$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列柯西主值中，哪些存在（是一个有限的数）？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\operatorname{P.V.}\int_{-1}^1\frac{\cos x}{x^2}\,\dd x$
+      - |
+        $\operatorname{P.V.}\int_{-1}^2\frac{\dd x}{x^3}$
+      - |
+        $\operatorname{P.V.}\int_{-1}^1\frac{\dd x}{|x|}$
+      - |
+        $\operatorname{P.V.}\int_{-1}^1\frac{e^x}x\,\dd x$
+    value: [2, 4]
+  hints:
+    - |
+      按定义在$0$的两侧各挖去$\varepsilon$，看$\varepsilon\to0^+$时两部分的和有没有极限。$0$两侧的两部分是正负抵消，还是同号相加？
+    - |
+      A、C 在$0$的两侧都是正的，A 里$\cos x\ge\cos1>0$。B 的原函数是$-\frac1{2x^2}$。D 拆成$\frac1x+\frac{e^x-1}x$，后一项在$0$处的极限是$1$，补上这个值就连续。
+    - |
+      A：两侧的积分都不小于$\cos1\cdot\bigl(\frac1\varepsilon-1\bigr)$，和趋于$+\infty$；C：和是$-2\ln\varepsilon\to+\infty$，两个都不存在。B：和是$\bigl(\frac12-\frac1{2\varepsilon^2}\bigr)+\bigl(\frac1{2\varepsilon^2}-\frac18\bigr)=\frac38$；D：$\frac1x$那部分对称地抵消成$0$，剩下的$\int_{-1}^1\frac{e^x-1}x\,\dd x$是普通的积分，两个都存在。选 B、D。
+  solution: |
+    A：在$[-1,1]$上$\cos x\ge\cos1>0$，所以$\int_\varepsilon^1\frac{\cos x}{x^2}\,\dd x\ge\cos1\cdot\bigl(\frac1\varepsilon-1\bigr)$；被积函数是偶函数，左侧也一样，和趋于$+\infty$，不存在。C：两侧都是$\int_\varepsilon^1\frac{\dd x}x=-\ln\varepsilon$，和是$-2\ln\varepsilon\to+\infty$，不存在。
+
+    B：$-\frac1{2x^2}$是$\frac1{x^3}$的原函数，$\int_{-1}^{-\varepsilon}\frac{\dd x}{x^3}=\frac12-\frac1{2\varepsilon^2}$，$\int_\varepsilon^2\frac{\dd x}{x^3}=\frac1{2\varepsilon^2}-\frac18$，和恒为$\frac38$，存在。D：$\frac{e^x}x=\frac1x+\frac{e^x-1}x$，前一项两侧对称地抵消成$0$，后一项在$0$处补上值$1$就在$[-1,1]$上连续，积分是有限的数，存在。
+
+    选 B、D。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\operatorname{P.V.}\int_{-\infty}^{+\infty}\frac{\cos x}{x^2-1}\,\dd x$。
+  answer:
+    type: number
+    value: -pi*sin(1)
+  hints:
+    - |
+      $\cos x$是$e^{ix}$的实部。分母比分子高$2$次，在上半平面没有根，在实轴上有两个单根，用讲解里实轴上有一阶极点的积分那条定理（$\lambda=1$）。
+    - |
+      $\frac{e^{iz}}{z^2-1}$在$\pm1$处都是一阶极点，留数可以用$\frac{p(a)}{q'(a)}$算：$1$处是$\frac{e^i}2$，$-1$处是$-\frac{e^{-i}}2$。
+    - |
+      两个留数之和是$\frac{e^i-e^{-i}}2=i\sin1$，所以$\operatorname{P.V.}\int_{-\infty}^{+\infty}\frac{e^{ix}}{x^2-1}\,\dd x=\pi i\cdot i\sin1=-\pi\sin1$。它的实部$-\pi\sin1\approx-2.644$就是所求；虚部是$0$，和$\frac{\sin x}{x^2-1}$是奇函数相符。
+  solution: |
+    分母$x^2-1$的根$\pm1$都在实轴上，都是单根，上半平面里没有根；分母比分子高$2$次。由讲解里实轴上有一阶极点的积分那条定理（$\lambda=1$），$\operatorname{P.V.}\int_{-\infty}^{+\infty}\frac{e^{ix}}{x^2-1}\,\dd x$等于$\pi i$乘$\pm1$处的留数之和，它的实部就是所求的主值。
+
+    由极点处留数的定理，$\frac{e^{iz}}{z^2-1}$在$1$处的留数是$\frac{e^i}{2\cdot1}=\frac{e^i}2$，在$-1$处是$\frac{e^{-i}}{2\cdot(-1)}=-\frac{e^{-i}}2$，和是$\frac{e^i-e^{-i}}2=i\sin1$。所以主值是$\pi i\cdot i\sin1=-\pi\sin1$，所求的是它的实部$-\pi\sin1\approx-2.644$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\int_0^{+\infty}\frac{\sin2x}{x(x^2+1)}\,\dd x$。
+  answer:
+    type: number
+    value: pi/2*(1-exp(-2))
+  hints:
+    - |
+      被积函数在$0$处的极限是$2$，补上这个值就连续；它是偶函数，所求的是整条实轴上的积分的一半。整条实轴上的积分是$\operatorname{P.V.}\int_{-\infty}^{+\infty}\frac{e^{2ix}}{x(x^2+1)}\,\dd x$的虚部。
+    - |
+      $\frac{e^{2iz}}{z(z^2+1)}$在实轴上有一阶极点$0$，留数是$1$；在上半平面有一阶极点$i$，留数是$\frac{e^{-2}}{i\cdot2i}=-\frac{e^{-2}}2$。用讲解里实轴上有一阶极点的积分那条定理（$\lambda=2$）。
+    - |
+      主值是$2\pi i\cdot\bigl(-\frac{e^{-2}}2\bigr)+\pi i\cdot1=\pi i\bigl(1-e^{-2}\bigr)$，虚部是$\pi\bigl(1-e^{-2}\bigr)$，所求的是它的一半$\frac\pi2\bigl(1-e^{-2}\bigr)\approx1.358$。
+  solution: |
+    被积函数在$0$处的极限是$2$，补上这个值就连续；$x\ge1$时它的绝对值不超过$\frac1{x^3}$，所以积分收敛。$\sin2x$、$x$都是奇函数，被积函数是偶函数，所求的是$\int_{-\infty}^{+\infty}\frac{\sin2x}{x(x^2+1)}\,\dd x$的一半；它就是$\operatorname{P.V.}\int_{-\infty}^{+\infty}\frac{e^{2ix}}{x(x^2+1)}\,\dd x$的虚部（虚部的积分本身收敛，柯西主值就等于它）。
+
+    分母$x(x^2+1)$在实轴上只有单根$0$，在上半平面只有根$i$，分母比分子高$3$次，用讲解里实轴上有一阶极点的积分那条定理（$\lambda=2$）。$\frac{e^{2iz}}{z(z^2+1)}$在$0$处的留数是$\lim_{z\to0}\frac{e^{2iz}}{z^2+1}=1$，在$i$处是$\frac{e^{2i\cdot i}}{i\cdot2i}=-\frac{e^{-2}}2$。
+
+    所以主值是$2\pi i\cdot\bigl(-\frac{e^{-2}}2\bigr)+\pi i\cdot1=\pi i\bigl(1-e^{-2}\bigr)$，虚部是$\pi\bigl(1-e^{-2}\bigr)$，所求的积分是$\frac\pi2\bigl(1-e^{-2}\bigr)\approx1.358$。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）说明$\int_0^{+\infty}\frac{\sin^2x}{x^2}\,\dd x$收敛。
+
+    （2）沿讲解里的围道（实轴上的线段、在$0$处绕开的上半小半圆$\gamma_\varepsilon$、上半圆周$C_R$）积分$\frac{1-e^{2iz}}{z^2}$，证明$\int_0^{+\infty}\frac{\sin^2x}{x^2}\,\dd x=\frac\pi2$。为什么不直接积分$\frac{e^{2iz}}{z^2}$？
+
+    （3）验证$\Bigl(-\frac{\sin^2x}x\Bigr)'=\frac{\sin^2x}{x^2}-\frac{\sin2x}x$，再由例 1 的结果证一次（2）里的等式。
+  hints:
+    - |
+      （1）在$0$处补上值$1$；$x\ge1$时$\frac{\sin^2x}{x^2}\le\frac1{x^2}$。（2）$1-\cos2x=2\sin^2x$。$1-e^{2iz}$在$0$处的泰勒展开（Taylor expansion）从哪一次项开始？（3）两边从$\varepsilon$积到$b$。
+    - |
+      （2）$1-e^{2iz}=-2iz+2z^2+\cdots$，所以$\frac{1-e^{2iz}}{z^2}$在$0$处是一阶极点，留数是$-2i$；$\frac{e^{2iz}}{z^2}$在$0$处是二阶极点，小半圆引理用不上。大半圆上$|1-e^{2iz}|\le1+e^{-2y}\le2$。（3）$\int_\varepsilon^b\frac{\sin^2x}{x^2}\,\dd x=\frac{\sin^2\varepsilon}\varepsilon-\frac{\sin^2b}b+\int_\varepsilon^b\frac{\sin2x}x\,\dd x$。
+    - |
+      （1）$\frac{\sin^2x}{x^2}$在$0$处的极限是$1$，补上这个值就连续；$x\ge1$时它不超过$\frac1{x^2}$，由比较判别法（comparison test），$\int_1^{+\infty}$收敛。
+
+      （2）$\frac{1-e^{2iz}}{z^2}$在去掉$0$的平面上全纯，由柯西积分定理，它沿实轴上的两段、$\gamma_\varepsilon$、$C_R$的积分之和是$0$。两段上被积函数的实部$\frac{1-\cos2x}{x^2}=\frac{2\sin^2x}{x^2}$是偶函数，积分是$4\int_\varepsilon^R\frac{\sin^2x}{x^2}\,\dd x$；虚部$-\frac{\sin2x}{x^2}$是奇函数，积分是$0$。由小半圆引理，$\gamma_\varepsilon$上的积分趋于$-\pi i\cdot(-2i)=-2\pi$；$C_R$上被积函数的模不超过$\frac2{R^2}$，由 ML 不等式，那里的积分的模不超过$\frac{2\pi}R\to0$。所以$4\int_\varepsilon^R\frac{\sin^2x}{x^2}\,\dd x\to2\pi$，所求的积分是$\frac\pi2$。
+
+      直接用$\frac{e^{2iz}}{z^2}$不行：$0$是二阶极点，小半圆上的积分在$\varepsilon\to0^+$时没有极限（讲解里小半圆引理的边界情况）。而且它的实部$\frac{\cos2x}{x^2}$在$0$附近是正的、像$\frac1{x^2}$，连柯西主值都没有。
+
+      （3）由商的求导法则（quotient rule），$\Bigl(-\frac{\sin^2x}x\Bigr)'=-\frac{2x\sin x\cos x-\sin^2x}{x^2}=\frac{\sin^2x}{x^2}-\frac{\sin2x}x$。在$[\varepsilon,b]$上用牛顿-莱布尼茨公式（Newton-Leibniz formula），得上一条提示里的等式。$\varepsilon\to0^+$、$b\to+\infty$时前两项趋于$0$，最后一项令$u=2x$，趋于$\int_0^{+\infty}\frac{\sin u}u\,\dd u=\frac\pi2$（例 1）。
+  reference: |
+    （1）$\frac{\sin^2x}{x^2}\to1$（$x\to0$），补上值$1$在$[0,1]$上连续；$x\ge1$时$0\le\frac{\sin^2x}{x^2}\le\frac1{x^2}$，由比较判别法，$\int_1^{+\infty}$收敛。所以$\int_0^{+\infty}\frac{\sin^2x}{x^2}\,\dd x$收敛。
+
+    （2）$1-e^{2iz}=-2iz+2z^2-\cdots$，$\frac{1-e^{2iz}}{z^2}=-\frac{2i}z+2+\cdots$，$0$是一阶极点，留数$-2i$。它在去掉$0$的平面上全纯，$0$在围道外面，由柯西积分定理，$\int_{[-R,-\varepsilon]\cup[\varepsilon,R]}\frac{1-e^{2ix}}{x^2}\,\dd x+\int_{\gamma_\varepsilon}+\int_{C_R}=0$。
+
+    实轴上两段的实部是$\int\frac{2\sin^2x}{x^2}\,\dd x=4\int_\varepsilon^R\frac{\sin^2x}{x^2}\,\dd x$，虚部的被积函数$-\frac{\sin2x}{x^2}$是奇函数，积分为$0$。由小半圆引理，$\int_{\gamma_\varepsilon}\to-\pi i\cdot(-2i)=-2\pi$；$C_R$上$|1-e^{2iz}|\le2$，$|z^2|=R^2$，由 ML 不等式$\bigl|\int_{C_R}\bigr|\le\frac{2\pi}R\to0$。所以$4\int_0^{+\infty}\frac{\sin^2x}{x^2}\,\dd x=2\pi$，积分是$\frac\pi2$。
+
+    不能直接用$\frac{e^{2iz}}{z^2}$：它在$0$处的主部是$\frac1{z^2}+\frac{2i}z$，$\gamma_\varepsilon$上的积分是$-\frac2\varepsilon+2\pi+o(1)$，没有极限；实部$\frac{\cos2x}{x^2}$在$0$附近大于$\frac{\cos1}{x^2}$，柯西主值不存在。减去$1$正好消掉$\frac1{z^2}$这一项。
+
+    （3）$\Bigl(-\frac{\sin^2x}x\Bigr)'=-\frac{x\cdot2\sin x\cos x-\sin^2x}{x^2}=\frac{\sin^2x}{x^2}-\frac{\sin2x}x$。在$[\varepsilon,b]$上用牛顿-莱布尼茨公式，$\int_\varepsilon^b\frac{\sin^2x}{x^2}\,\dd x=\frac{\sin^2\varepsilon}\varepsilon-\frac{\sin^2b}b+\int_\varepsilon^b\frac{\sin2x}x\,\dd x$。$\frac{\sin^2\varepsilon}\varepsilon\to0$，$\bigl|\frac{\sin^2b}b\bigr|\le\frac1b\to0$，$\int_\varepsilon^b\frac{\sin2x}x\,\dd x=\int_{2\varepsilon}^{2b}\frac{\sin u}u\,\dd u\to\frac\pi2$，所以积分是$\frac\pi2$。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）设$f$在$a$的某个去心圆盘上全纯，$a$是$f$的一阶极点，留数是$c$；$0<\alpha\le2\pi$，$\Gamma_\varepsilon$是圆弧$z=a+\varepsilon e^{it}$，$\theta_0\le t\le\theta_0+\alpha$（逆时针）。证明$\varepsilon\to0^+$时$\int_{\Gamma_\varepsilon}f(z)\,\dd z\to i\alpha c$。
+
+    （2）在第一象限里取这样的闭曲线：从$\varepsilon$沿实轴走到$R$，沿圆弧$z=Re^{it}$（$0\le t\le\frac\pi2$）走到$iR$，沿虚轴（imaginary axis）走到$i\varepsilon$，再沿圆弧$z=\varepsilon e^{it}$（$t$从$\frac\pi2$减小到$0$）回到$\varepsilon$。沿它积分$\frac{e^{iz}}z$，证明$\int_0^{+\infty}\frac{\cos x-e^{-x}}x\,\dd x=0$，并再证一次$\int_0^{+\infty}\frac{\sin x}x\,\dd x=\frac\pi2$。
+  hints:
+    - |
+      （1）照小半圆引理的证明，记$g(z)$是在$a$处补上值以后的$(z-a)f(z)$，先算$\int_{\Gamma_\varepsilon}\frac{\dd z}{z-a}$。（2）$0$在闭曲线外面。在虚轴上$z=iy$，$e^{iz}=e^{-y}$；大圆弧上用[若尔当不等式](lesson:math.complex-analysis.jordan-lemma#thm-jordan-inequality)（Jordan's inequality）。
+    - |
+      （1）$\int_{\Gamma_\varepsilon}\frac{\dd z}{z-a}=i\alpha$，剩下的$\int_{\Gamma_\varepsilon}\frac{g(z)-g(a)}{z-a}\,\dd z$用 ML 不等式。（2）由柯西积分定理，四段上的积分之和是$0$。小圆弧是$t$从$0$到$\frac\pi2$的圆弧反过来走，由（1），积分趋于$-\frac{\pi i}2$；大圆弧上积分的模不超过$\int_0^{\pi/2}e^{-R\sin t}\,\dd t<\frac\pi{2R}$。
+    - |
+      （1）$\int_{\Gamma_\varepsilon}\frac{\dd z}{z-a}=\int_{\theta_0}^{\theta_0+\alpha}\frac{i\varepsilon e^{it}}{\varepsilon e^{it}}\,\dd t=i\alpha$，所以$\int_{\Gamma_\varepsilon}f(z)\,\dd z-i\alpha g(a)=\int_{\Gamma_\varepsilon}\frac{g(z)-g(a)}{z-a}\,\dd z$。$g$在$a$处连续，任给$\delta>0$，$\varepsilon$足够小时$\Gamma_\varepsilon$上$|g(z)-g(a)|<\delta$；$\Gamma_\varepsilon$长$\alpha\varepsilon$，由 ML 不等式，右边的模不超过$\alpha\delta$。所以积分趋于$i\alpha g(a)=i\alpha c$。
+
+      （2）虚轴那一段是$\int_R^\varepsilon\frac{e^{-y}}{iy}\,i\,\dd y=-\int_\varepsilon^R\frac{e^{-y}}y\,\dd y$。四段之和为$0$，令$\varepsilon\to0^+$、$R\to+\infty$，得$\int_\varepsilon^R\frac{e^{ix}-e^{-x}}x\,\dd x\to\frac{\pi i}2$。$\frac{\cos x-e^{-x}}x$、$\frac{\sin x}x$在$0$处的极限都是$1$，补上值就连续，所以两个积分都收敛；实部、虚部给出$\int_0^{+\infty}\frac{\cos x-e^{-x}}x\,\dd x=0$和$\int_0^{+\infty}\frac{\sin x}x\,\dd x=\frac\pi2$。
+  reference: |
+    （1）$g(z)=(z-a)f(z)$在$a$处补上值以后在$a$附近全纯，$g(a)=c$（极点处留数的定理，$m=1$）。$\int_{\Gamma_\varepsilon}\frac{\dd z}{z-a}=\int_{\theta_0}^{\theta_0+\alpha}i\,\dd t=i\alpha$，所以$\int_{\Gamma_\varepsilon}f\,\dd z-i\alpha c=\int_{\Gamma_\varepsilon}\frac{g(z)-g(a)}{z-a}\,\dd z$。任给$\delta>0$，$\varepsilon$足够小时$\Gamma_\varepsilon$上$|g(z)-g(a)|<\delta$，被积函数的模小于$\frac\delta\varepsilon$，$\Gamma_\varepsilon$长$\alpha\varepsilon$，由 ML 不等式，右边的模不超过$\alpha\delta$。所以极限是$i\alpha c$；$\alpha=\pi$、反过来走就是小半圆引理，$\alpha=2\pi$就是留数的定义。
+
+    （2）$\frac{e^{iz}}z$在去掉$0$的平面上全纯，$0$在闭曲线外面，由柯西积分定理，四段之和为$0$。实轴段是$\int_\varepsilon^R\frac{e^{ix}}x\,\dd x$；大圆弧上$\bigl|\frac{e^{iz}}z\,z'(t)\bigr|=e^{-R\sin t}$，由若尔当不等式，积分的模不超过$\int_0^{\pi/2}e^{-2Rt/\pi}\,\dd t<\frac\pi{2R}\to0$。虚轴段上$z=iy$，积分是$\int_R^\varepsilon\frac{e^{-y}}{iy}\,i\,\dd y=-\int_\varepsilon^R\frac{e^{-y}}y\,\dd y$；小圆弧是反过来走的$\alpha=\frac\pi2$的圆弧，留数是$1$，由（1），积分趋于$-\frac{\pi i}2$。
+
+    所以$\int_\varepsilon^R\frac{e^{ix}-e^{-x}}x\,\dd x\to\frac{\pi i}2$。被积函数的实部$\frac{\cos x-e^{-x}}x$和虚部$\frac{\sin x}x$在$0$处补上值$1$都连续，所以$\int_0^{+\infty}\frac{\cos x-e^{-x}}x\,\dd x=0$，$\int_0^{+\infty}\frac{\sin x}x\,\dd x=\frac\pi2$，两个积分都收敛。
+
+- id: p7
+  tier: thinking
+  statement: |
+    讲解里实轴上有一阶极点的积分那条定理，在实轴上的一阶极点$x_j$处用上半小半圆$\gamma_j$从上方绕开。改从下方绕开：记$\gamma_j^-$是下半小半圆$z=x_j+\varepsilon e^{it}$，$t$从$\pi$增加到$2\pi$，即从$x_j-\varepsilon$经过$x_j-i\varepsilon$走到$x_j+\varepsilon$。
+
+    （1）$\varepsilon\to0^+$时，$\int_{\gamma_j^-}f(z)\,\dd z$趋于什么？
+
+    （2）把那条定理的证明里的$\gamma_j$都换成$\gamma_j^-$，重新推导一遍。$x_j$现在在围道里面还是外面？结果变不变？
+
+    （3）两种绕法算出的柯西主值为什么一定相同？把$\gamma_j$反过来走，再接上$\gamma_j^-$，看看是什么曲线。
+  hints:
+    - |
+      （1）照小半圆引理的证明，$\gamma_j^-$是逆时针走的半个圆周。（2）$\gamma_j^-$和实轴上的线段$[x_j-\varepsilon,x_j+\varepsilon]$围着一个小半圆盘，它现在属于围道围成的部分。（3）两条围道在实轴上留下的几段一样。
+    - |
+      （1）$\int_{\gamma_j^-}\frac{\dd z}{z-x_j}=\int_\pi^{2\pi}i\,\dd t=\pi i$。（2）$x_j$在围道里面，留数定理的右边多出$2\pi i\Res_{z=x_j}f(z)$。（3）是绕$x_j$逆时针走一整圈的圆周。
+    - |
+      （1）记$c_j=\Res_{z=x_j}f(z)$，积分趋于$\pi ic_j$。
+
+      （2）$\varepsilon$足够小时，$x_j$都进了围道，下半平面的根仍在外面。由留数定理，$I(\varepsilon,R)+\sum_j\int_{\gamma_j^-}f(z)\,\dd z+\int_{C_R}f(z)\,\dd z=2\pi i\sum_k\Res_{z=z_k}f(z)+2\pi i\sum_jc_j$。令$\varepsilon\to0^+$、$R\to+\infty$，$I(\varepsilon,R)$趋于$2\pi i\sum_k\Res_{z=z_k}f(z)+2\pi i\sum_jc_j-\pi i\sum_jc_j$，和原来的结果一样。
+
+      （3）两条围道只在小半圆上不同。$\gamma_j$反过来走再接上$\gamma_j^-$，是绕$x_j$逆时针的整个小圆周，沿它的积分恰好是$2\pi ic_j$，正好被「$x_j$算不算在围道里」抵掉。实轴上留下的总是对称地挖去以后的那几段，所以柯西主值和从哪边绕无关，从哪边绕只是记账的办法不同。
+  reference: |
+    （1）$f=\frac{g(z)}{z-x_j}$，$g(x_j)=c_j$。$\int_{\gamma_j^-}\frac{\dd z}{z-x_j}=\int_\pi^{2\pi}\frac{i\varepsilon e^{it}}{\varepsilon e^{it}}\,\dd t=\pi i$，剩下的部分照小半圆引理的证明由 ML 不等式趋于$0$，所以积分趋于$\pi ic_j$（也是第 6 题（1）取$\alpha=\pi$）。
+
+    （2）$\varepsilon$小于下半平面各根虚部的绝对值时，新围道围着$z_1,\dots,z_n$和$x_1,\dots,x_m$。由留数定理，$I(\varepsilon,R)+\sum_j\int_{\gamma_j^-}f\,\dd z+\int_{C_R}f\,\dd z=2\pi i\sum_k\Res_{z=z_k}f+2\pi i\sum_jc_j$。$\int_{\gamma_j^-}\to\pi ic_j$，$\int_{C_R}\to0$，所以$I(\varepsilon,R)\to2\pi i\sum_k\Res_{z=z_k}f+\pi i\sum_jc_j$，结果不变。
+
+    （3）两条围道的实轴部分相同，都是对称挖去以后的那几段，柯西主值是同一个量，算出来当然一样。差别只在小半圆：$\int_{\gamma_j^-}-\int_{\gamma_j}$是沿逆时针整个小圆周的积分，等于$2\pi ic_j$（留数的定义），而留数定理右边正好多出这一项。实轴上的一阶极点算「半个」，是因为主值把它放在「里面」和「外面」的正中间：上方绕开时算外面、补$-\pi ic_j$，下方绕开时算里面、补$+\pi ic_j$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$x_0$是实数，$k\ge2$是整数，$\gamma_\varepsilon$是讲解里绕开$x_0$的上半小半圆（从$x_0-\varepsilon$沿顺时针走到$x_0+\varepsilon$）。
+
+    （1）算出$\int_{\gamma_\varepsilon}\frac{\dd z}{(z-x_0)^k}$和$\int_{x_0-1}^{x_0-\varepsilon}\frac{\dd x}{(x-x_0)^k}+\int_{x_0+\varepsilon}^{x_0+1}\frac{\dd x}{(x-x_0)^k}$。$k$是奇数、偶数时，$\varepsilon\to0^+$时它们分别怎样？
+
+    （2）设$f$在$|z-x_0|<2$里除$x_0$外全纯，$x_0$是$f$的极点。$f$在$x_0$处的:term[主部]{id="math.complex-analysis.principal-part"}（principal part）满足什么条件时，$\operatorname{P.V.}\int_{x_0-1}^{x_0+1}f(x)\,\dd x$存在？
+
+    （3）讲解里实轴上有一阶极点的积分那条定理，要求实轴上的极点都是一阶的。这个条件能放宽成什么？结论要不要改？
+  hints:
+    - |
+      （1）$\frac{(z-x_0)^{1-k}}{1-k}$是$(z-x_0)^{-k}$在去掉$x_0$的平面上的原函数，沿曲线积分只看两个端点。（2）把$f$写成主部加上一个在$x_0$附近全纯的函数，逐项看。（3）在讲解的证明里，把每个小半圆上的积分也逐项看。
+    - |
+      （1）小半圆的两个端点处$z-x_0$分别是$-\varepsilon$、$\varepsilon$，积分是$\frac{\varepsilon^{1-k}-(-\varepsilon)^{1-k}}{1-k}$；实轴上两段之和是$\frac{(-\varepsilon)^{1-k}-(-1)^{1-k}+1-\varepsilon^{1-k}}{1-k}$。看$(-1)^{1-k}$是$1$还是$-1$。（2）$(x-x_0)^{-1}$那一项两侧对称地抵消成$0$。
+    - |
+      （1）$k$是奇数时$(-\varepsilon)^{1-k}=\varepsilon^{1-k}$，两个积分都恒为$0$。$k$是偶数时，小半圆上的积分是$-\frac{2\varepsilon^{1-k}}{k-1}$，实轴上两段之和是$\frac{2(\varepsilon^{1-k}-1)}{k-1}$，模都趋于$+\infty$；两者之和是$-\frac2{k-1}$，和$\varepsilon$无关，正像围道上的等式要求的那样一起发散、互相抵消。
+
+      （2）在$x_0$附近$f(z)=\sum_{k=1}^ma_{-k}(z-x_0)^{-k}+h(z)$，$h$补上值以后在$|z-x_0|<2$上全纯，它的积分是普通的积分。奇数次的项（包括$k=1$）两侧对称地抵消成$0$；由（1），偶数次的项给出$\frac{2a_{-k}}{k-1}\bigl(\varepsilon^{1-k}-1\bigr)$，在$a_{-k}\ne0$的偶数$k$里取最大的，那一项压过其余各项。所以柯西主值存在，当且仅当主部里没有偶数次的项：$a_{-2}=a_{-4}=\cdots=0$。
+
+      （3）可以放宽成：$f$在实轴上的每个极点处，主部都只含奇数次的项。证明里每个小半圆上，$(z-x_j)^{-1}$那一项趋于$-\pi i$乘留数，$(z-x_j)^{-3}$、$(z-x_j)^{-5}$……的积分恒为$0$，剩下的部分由 ML 不等式趋于$0$，所以结论不变，实轴上的极点仍按$\pi i$乘留数算。主部含偶数次的项时柯西主值不存在，比如$\frac1{x^2}$。
+  reference: |
+    （1）原函数$\frac{(z-x_0)^{1-k}}{1-k}$单值，$\int_{\gamma_\varepsilon}\frac{\dd z}{(z-x_0)^k}=\frac{\varepsilon^{1-k}-(-\varepsilon)^{1-k}}{1-k}$，实轴上两段之和是$\frac{(-\varepsilon)^{1-k}-(-1)^{1-k}+1-\varepsilon^{1-k}}{1-k}$。$k$奇数：两者恒为$0$。$k$偶数：分别是$-\frac{2\varepsilon^{1-k}}{k-1}\to-\infty$和$\frac{2(\varepsilon^{1-k}-1)}{k-1}\to+\infty$，和恒为$-\frac2{k-1}$（等于沿上半单位圆从$x_0+1$逆时针回到$x_0-1$的积分的相反数，柯西积分定理要求的）。
+
+    （2）主部是$\sum_{k=1}^ma_{-k}(z-x_0)^{-k}$，$h$是$f$减去主部、补上值以后的函数，在$|z-x_0|<2$上全纯。对称挖去后的积分是$h$的积分加上各个偶数$k$的$\frac{2a_{-k}}{k-1}\bigl(\varepsilon^{1-k}-1\bigr)$，奇数次的项都是$0$。若有偶数$k$使$a_{-k}\ne0$，取其中最大的$K$，和式像$\frac{2a_{-K}}{K-1}\varepsilon^{1-K}$那样发散，没有极限；否则极限是$\int_{x_0-1}^{x_0+1}h(x)\,\dd x$。所以主值存在当且仅当$a_{-2}=a_{-4}=\cdots=0$。
+
+    （3）条件可以放宽成「$f$在实轴上的极点处主部只含奇数次的项」：小半圆上$a_{-1}$项给$-\pi ia_{-1}$，奇数次$k\ge3$的项恒为$0$，$h$的部分由 ML 不等式趋于$0$，公式$2\pi i\sum\Res+\pi i\sum\Res$不变。例如$\frac{\sin z}{z^4}$在$0$处的主部是$\frac1{z^3}-\frac1{6z}$，只含奇数次；主部有偶数次的项时（如$\frac1{x^2}$、$\frac{e^{ix}}{x^3}$，后者的主部有$\frac i{z^2}$）主值不存在。小半圆上偶数次的项和实轴上对称挖去后的偶数次项一起发散、互相抵消，围道上的等式仍成立，只是两边分开来都没有极限。

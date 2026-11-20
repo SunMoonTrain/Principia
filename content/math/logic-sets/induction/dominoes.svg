@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 330" width="600" height="330" font-size="14">
+  <!-- 上排：数学归纳法，一排骨牌 P(0)…P(5)，奠基推倒第一块，递推让每一块推倒下一块；下排：强归纳法，2 到 12 的方框，P(12) 靠 P(3)、P(4)，P(4) 靠 P(2) -->
+  <!-- 标题 -->
+  <g fill="currentColor" font-size="15">
+    <text x="16" y="22">数学归纳法</text>
+    <text x="16" y="192">强归纳法</text>
+  </g>
+  <!-- 地面 -->
+  <line x1="183" y1="120" x2="548" y2="120" stroke="currentColor" stroke-width="1" />
+  <!-- 第一块骨牌：被推得向右倾斜（绕右下角转 25°） -->
+  <polygon points="221.36,56.08 234.05,62 207,120 194.31,114.08" fill="none" stroke-width="1.5" style="stroke: var(--accent, #2563eb)" />
+  <!-- 其余骨牌 -->
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <rect x="248" y="56" width="14" height="64" />
+    <rect x="303" y="56" width="14" height="64" />
+    <rect x="358" y="56" width="14" height="64" />
+    <rect x="413" y="56" width="14" height="64" />
+    <rect x="468" y="56" width="14" height="64" />
+  </g>
+  <!-- 省略号：三个小圆点 -->
+  <g fill="currentColor">
+    <circle cx="508" cy="100" r="2" />
+    <circle cx="520" cy="100" r="2" />
+    <circle cx="532" cy="100" r="2" />
+  </g>
+  <!-- 骨牌下的标号 -->
+  <g fill="currentColor" text-anchor="middle">
+    <text x="200" y="142"><tspan font-style="italic">P</tspan>(0)</text>
+    <text x="255" y="142"><tspan font-style="italic">P</tspan>(1)</text>
+    <text x="310" y="142"><tspan font-style="italic">P</tspan>(2)</text>
+    <text x="365" y="142"><tspan font-style="italic">P</tspan>(3)</text>
+    <text x="420" y="142"><tspan font-style="italic">P</tspan>(4)</text>
+    <text x="475" y="142"><tspan font-style="italic">P</tspan>(5)</text>
+  </g>
+  <!-- 递推：每一块推倒下一块 -->
+  <g fill="none" stroke="currentColor" stroke-width="1.3">
+    <path d="M 225.7 50 Q 238.35 26 251 50" />
+    <path d="M 259 50 Q 282.5 26 306 50" />
+    <path d="M 314 50 Q 337.5 26 361 50" />
+    <path d="M 369 50 Q 392.5 26 416 50" />
+    <path d="M 424 50 Q 447.5 26 471 50" />
+  </g>
+  <g fill="currentColor">
+    <polygon points="251,50 244.64,45.44 250.83,42.18" />
+    <polygon points="306,50 298.6,47.45 303.6,42.55" />
+    <polygon points="361,50 353.6,47.45 358.6,42.55" />
+    <polygon points="416,50 408.6,47.45 413.6,42.55" />
+    <polygon points="471,50 463.6,47.45 468.6,42.55" />
+  </g>
+  <!-- 奠基：推倒第一块 -->
+  <line x1="138" y1="88" x2="195.47" y2="88" stroke-width="1.5" style="stroke: var(--accent, #2563eb)" />
+  <polygon points="202.47,88 194.47,92 194.47,84" style="fill: var(--accent, #2563eb)" />
+  <g fill="currentColor">
+    <text x="16" y="93">奠基：推倒第一块</text>
+    <text x="350" y="22" text-anchor="middle">递推：<tspan font-style="italic">P</tspan>(<tspan font-style="italic">k</tspan>) 倒下就推倒 <tspan font-style="italic">P</tspan>(<tspan font-style="italic">k</tspan> + 1)</text>
+  </g>
+  <!-- 下排：2 到 12 的方框，用到的几个用强调色 -->
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <rect x="202" y="252" width="32" height="28" rx="4" />
+    <rect x="248" y="252" width="32" height="28" rx="4" />
+    <rect x="294" y="252" width="32" height="28" rx="4" />
+    <rect x="340" y="252" width="32" height="28" rx="4" />
+    <rect x="386" y="252" width="32" height="28" rx="4" />
+    <rect x="432" y="252" width="32" height="28" rx="4" />
+    <rect x="478" y="252" width="32" height="28" rx="4" />
+  </g>
+  <g fill="none" stroke-width="1.5" style="stroke: var(--accent, #2563eb)">
+    <rect x="64" y="252" width="32" height="28" rx="4" />
+    <rect x="110" y="252" width="32" height="28" rx="4" />
+    <rect x="156" y="252" width="32" height="28" rx="4" />
+    <rect x="524" y="252" width="32" height="28" rx="4" />
+  </g>
+  <g fill="currentColor" text-anchor="middle">
+    <text x="80" y="271">2</text>
+    <text x="126" y="271">3</text>
+    <text x="172" y="271">4</text>
+    <text x="218" y="271">5</text>
+    <text x="264" y="271">6</text>
+    <text x="310" y="271">7</text>
+    <text x="356" y="271">8</text>
+    <text x="402" y="271">9</text>
+    <text x="448" y="271">10</text>
+    <text x="494" y="271">11</text>
+    <text x="540" y="271">12</text>
+  </g>
+  <!-- P(12) 靠 P(3)、P(4)；P(4) 靠 P(2) -->
+  <g fill="none" stroke-width="1.3" style="stroke: var(--accent, #2563eb)">
+    <path d="M 126 248 C 150 200 528 194 550 248" />
+    <path d="M 172 248 C 196 216 506 214 530 248" />
+    <path d="M 80 284 Q 126 318 172 284" />
+  </g>
+  <g style="fill: var(--accent, #2563eb)">
+    <polygon points="550,248 543.28,242.1 550.69,239.08" />
+    <polygon points="530,248 522.12,243.77 528.65,239.16" />
+    <polygon points="172,284 167.94,291.97 163.19,285.54" />
+  </g>
+  <g fill="currentColor">
+    <text x="336" y="192" text-anchor="middle">12 = 3 × 4：<tspan font-style="italic">P</tspan>(12) 靠的是 <tspan font-style="italic">P</tspan>(3)、<tspan font-style="italic">P</tspan>(4)</text>
+    <text x="192" y="314">4 = 2 × 2：<tspan font-style="italic">P</tspan>(4) 靠的是 <tspan font-style="italic">P</tspan>(2)</text>
+  </g>
+</svg>

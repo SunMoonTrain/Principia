@@ -3,8 +3,93 @@ title: |
   广义相对论
 proofPolicy: sketch
 macros:
+  \vb: |
+    \mathbf{#1}
   \dd: |
     \mathop{}\!\mathrm{d}
+  \dv: |
+    \frac{\mathrm{d} #1}{\mathrm{d} #2}
   \pdv: |
     \frac{\partial #1}{\partial #2}
-glossary: []
+glossary:
+  - id: physics.general-relativity.equivalence-principle
+    zh: |
+      等效原理
+    en: |
+      equivalence principle
+    brief: |
+      均匀引力场里做的实验，和远离天体、匀加速的参考系里做的分不出来。
+    definedIn: physics.general-relativity.equivalence-principle
+    anchor: def-equivalence-principle
+  - id: physics.general-relativity.weak-equivalence-principle
+    zh: |
+      弱等效原理
+    en: |
+      weak equivalence principle
+    brief: |
+      同一处只受引力的物体，不论质量、成分如何，加速度都相同；也就是各种物体的引力质量和惯性质量之比都相同。
+    definedIn: physics.general-relativity.equivalence-principle
+    anchor: def-weak-equivalence-principle
+  - id: physics.general-relativity.gravitational-field
+    zh: |
+      引力场
+    en: |
+      gravitational field
+    brief: |
+      空间每一点上的矢量$\vb g$，等于只受引力的物体在那里相对惯性系的加速度；各处$\vb g$都相同的叫均匀引力场。
+    definedIn: physics.general-relativity.equivalence-principle
+    anchor: def-gravitational-field
+  - id: physics.general-relativity.local-inertial-frame
+    zh: |
+      局部惯性系
+    en: |
+      local inertial frame
+    brief: |
+      在引力场里自由下落、不转动的参考系；在足够小的范围、足够短的时间里，只受引力的物体在其中静止或做匀速直线运动。
+    definedIn: physics.general-relativity.einstein-equivalence-principle
+    anchor: def-local-inertial-frame
+  - id: physics.general-relativity.einstein-equivalence-principle
+    zh: |
+      爱因斯坦等效原理
+    en: |
+      Einstein equivalence principle
+    brief: |
+      在任意引力场里，在自由下落、不转动的实验室中，只要范围够小、时间够短，一切非引力的实验都和狭义相对论里的一样。
+    definedIn: physics.general-relativity.einstein-equivalence-principle
+    anchor: def-einstein-equivalence-principle
+  - id: physics.general-relativity.tidal-force
+    zh: |
+      潮汐力
+    en: |
+      tidal force
+    brief: |
+      引力场不均匀时，自由下落的参考系里抵消不掉的那部分引力；在球形天体附近，它使并排的物体靠拢、上下的物体分开。
+    definedIn: physics.general-relativity.einstein-equivalence-principle
+    anchor: def-tidal-force
+  - id: physics.general-relativity.gravitational-redshift
+    zh: |
+      引力红移
+    en: |
+      gravitational redshift
+    brief: |
+      引力场里，光从低处静止的光源传到高处静止的接收器，接收处的钟量出的频率比发出处的低；反过来变高，叫引力蓝移。
+    definedIn: physics.general-relativity.gravitational-redshift
+    anchor: def-gravitational-redshift
+  - id: physics.general-relativity.gravitational-time-dilation
+    zh: |
+      引力时间延缓
+    en: |
+      gravitational time dilation
+    brief: |
+      静态引力场里，静止在低处的钟比静止在高处的钟走得慢；均匀引力场里，高处和低处的钟快慢之比约为$1+\frac{gh}{c^2}$。
+    definedIn: physics.general-relativity.gravitational-redshift
+    anchor: def-gravitational-time-dilation
+  - id: physics.general-relativity.gravitational-potential
+    zh: |
+      引力势
+    en: |
+      gravitational potential
+    brief: |
+      单位质量的引力势能，记作$\Phi$，满足$\vb g=-\nabla\Phi$；取无穷远处为零时，质量为$M$的质点外$\Phi=-\frac{GM}r$。
+    definedIn: physics.general-relativity.gravitational-redshift
+    anchor: def-gravitational-potential

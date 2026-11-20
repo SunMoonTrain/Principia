@@ -72,7 +72,7 @@ z_1z_2&=r_1r_2\bigl[(\cos\theta_1\cos\theta_2-\sin\theta_1\sin\theta_2)+i(\sin\t
 \end{aligned}
 $$
 
-为什么有用：固定$w=r(\cos\theta+i\sin\theta)$，映射$z\mapsto wz$把每个点到原点的距离乘以$r$，把辐角加上$\theta$：乘以一个:term[复数]{id="math.complex-analysis.complex-number"}，就是绕原点转$\theta$角、再伸缩为$r$倍。乘$i$是转$90^\circ$，乘$-1$是转$180^\circ$，$i^2=-1$说的就是「转两次直角等于掉头」。除法反过来，$z_2\ne0$时$\frac{z_1}{z_2}$的模是$\frac{r_1}{r_2}$，辐角是$\theta_1-\theta_2$。边界情况：辐角相加只在差$2\pi$的整数倍的意义下成立，:term[主值]{id="math.complex-analysis.principal-argument"}相加可能跑出$(-\pi,\pi]$，例如$\Arg(-1)+\Arg(-1)=2\pi$，而$\Arg\bigl((-1)(-1)\bigr)=0$。
+为什么有用：固定$w=r(\cos\theta+i\sin\theta)$，:term[映射]{id="math.logic-sets.map"}（map）$z\mapsto wz$把每个点到原点的距离乘以$r$，把辐角加上$\theta$：乘以一个:term[复数]{id="math.complex-analysis.complex-number"}，就是绕原点转$\theta$角、再伸缩为$r$倍。乘$i$是转$90^\circ$，乘$-1$是转$180^\circ$，$i^2=-1$说的就是「转两次直角等于掉头」。除法反过来，$z_2\ne0$时$\frac{z_1}{z_2}$的模是$\frac{r_1}{r_2}$，辐角是$\theta_1-\theta_2$。边界情况：辐角相加只在差$2\pi$的整数倍的意义下成立，:term[主值]{id="math.complex-analysis.principal-argument"}相加可能跑出$(-\pi,\pi]$，例如$\Arg(-1)+\Arg(-1)=2\pi$，而$\Arg\bigl((-1)(-1)\bigr)=0$。
 
 ### 记号$e^{i\theta}$
 
@@ -104,7 +104,7 @@ sliders:
       辐角$\theta$（度）
 :::
 
-这是:term[复平面]{id="math.complex-analysis.complex-plane"}上的方格乘以$w=re^{i\theta}$以后的样子，进度条从$0$拖到底，看平面从原样一点点变过去：网格是方格的像；图例里「e₁ 的像」那支箭头是$1$的像，也就是$w$本身，「e₂ 的像」那支是$i$的像$iw$；「单位圆的像」是虚线画的单位圆乘以$w$以后的样子。拖动$r$、$\theta$：整个平面绕原点转$\theta$角、伸缩为$r$倍，方格仍是方格，e₂ 的像始终和 e₁ 的像垂直、一样长。$\theta=90^\circ$、$r=1$时就是乘$i$；$\theta=180^\circ$时 e₁ 的像指向:term[负实轴]{id="math.complex-analysis.real-axis"}。
+这是:term[复平面]{id="math.complex-analysis.complex-plane"}上的方格乘以$w=re^{i\theta}$以后的样子，进度条从$0$拖到底，看平面从原样一点点变过去：网格是方格的像（image）；图例里「e₁ 的像」那支箭头是$1$的像，也就是$w$本身，「e₂ 的像」那支是$i$的像$iw$；「单位圆的像」是虚线画的单位圆乘以$w$以后的样子。拖动$r$、$\theta$：整个平面绕原点转$\theta$角、伸缩为$r$倍，方格仍是方格，e₂ 的像始终和 e₁ 的像垂直、一样长。$\theta=90^\circ$、$r=1$时就是乘$i$；$\theta=180^\circ$时 e₁ 的像指向:term[负实轴]{id="math.complex-analysis.real-axis"}。
 
 ## 例题
 

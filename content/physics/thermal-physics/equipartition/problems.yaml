@@ -1,0 +1,208 @@
+- id: p1
+  tier: easy
+  statement: |
+    把水蒸气分子看成刚性分子（不计振动），它的三个原子不在一条直线上。把水蒸气当作理想气体，按能量均分定理，它的比热容比$\gamma$是多少？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 8/6
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先数一个分子的能量里有几个平方项：平动有几个，转动有几个？刚性分子不计振动。
+    - |
+      三个原子不在一条直线上时，转动自由度有 3 个，每个转动自由度一个平方项，所以$f=3+3$。再用$\gamma=\frac{f+2}f$。
+    - |
+      $f=6$，$\gamma=\frac{6+2}6=\frac43\approx1.33$。
+  solution: |
+    刚性分子不计振动。平动有 3 个平方项；三个原子不在一条直线上，转动自由度有 3 个，每个一个平方项。所以$f=6$，$C_{V,\mathrm m}=3R$，$C_{p,\mathrm m}=4R$，$\gamma=\frac{f+2}f=\frac43\approx1.33$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法正确？气体都当作理想气体，「刚性」指不计振动，按能量均分定理判断。
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        刚性双原子分子组成的气体，定压摩尔热容（molar heat capacity at constant pressure）$C_{p,\mathrm m}=\frac52R$
+      - |
+        温度相同时，$1\,\mathrm{mol}$氦气的内能是$1\,\mathrm{mol}$刚性氮气的内能的$\frac35$
+      - |
+        刚性双原子分子组成的气体，比热容比大于单原子分子组成的气体
+      - |
+        温度相同时，一个氦原子的平均能量和一个刚性氮分子的平均能量相同
+      - |
+        一个刚性双原子分子的平均转动动能，是它的平均平动动能的$\frac23$
+    value: [2, 5]
+  hints:
+    - |
+      先数平方项：氦原子有几个？刚性氮分子有几个，其中平动、转动各几个？每个平方项平均分到多少能量？
+    - |
+      每个平方项平均分到$\frac12\kB T$，所以内能$U=\frac f2nRT$，$C_{V,\mathrm m}=\frac f2R$，$C_{p,\mathrm m}=C_{V,\mathrm m}+R$，$\gamma=\frac{f+2}f=1+\frac2f$。氦原子$f=3$，刚性氮分子$f=5$（平动 3 个、转动 2 个）。
+    - |
+      A 错：刚性双原子分子$f=5$，$\frac52R$是定容摩尔热容，定压摩尔热容是$\frac72R$。B 对：同温度、同物质的量（amount of substance）时，内能和$f$成正比，氦气的内能是氮气的$\frac35$。
+
+      C 错：$\gamma=1+\frac2f$，$f$越大$\gamma$越小，刚性双原子是$\frac75$，单原子是$\frac53$。D 错：两者的平均平动动能都是$\frac32\kB T$，氮分子还有两个转动平方项，平均多出$\kB T$。E 对：转动的 2 个平方项平均共$\kB T$，平动的 3 个平均共$\frac32\kB T$，前者是后者的$\frac23$。
+  solution: |
+    选 B、E。氦原子$f=3$，刚性氮分子$f=5$（平动 3 个、转动 2 个），每个平方项平均分到$\frac12\kB T$。A 错：$\frac52R$是刚性双原子分子的定容摩尔热容，定压摩尔热容是$\frac72R$。B 对：$U=\frac f2nRT$，同温度、同物质的量（amount of substance）时，氦气的内能是氮气的$\frac35$。
+
+    C 错：$\gamma=\frac{f+2}f=1+\frac2f$，$f$越大$\gamma$越小，刚性双原子是$\frac75$，单原子是$\frac53$。D 错：两者的平均平动动能都是$\frac32\kB T$，可氮分子还有两个转动平方项，平均多出$\kB T$。E 对：转动的 2 个平方项平均共$\kB T$，平动的 3 个平均共$\frac32\kB T$，前者是后者的$\frac23$。
+
+- id: p3
+  tier: medium
+  statement: |
+    $2.0\,\mathrm{mol}$氦气和$3.0\,\mathrm{mol}$氮气混合在一起，都当作理想气体，氮分子不计振动。按能量均分定理，求混合气体的比热容比$\gamma$，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 15.5/10.5
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      混合气体的内能是两种气体的内能之和。先求整个混合气体的定容热容（heat capacity at constant volume）$C_V$，再求定压热容（heat capacity at constant pressure）$C_p$。
+    - |
+      $C_V=n_1\cdot\frac32R+n_2\cdot\frac52R$；整个混合气体满足$pV=(n_1+n_2)RT$，由迈耶公式，$C_p=C_V+(n_1+n_2)R$；$\gamma=\frac{C_p}{C_V}$。
+    - |
+      $C_V=(2.0\times1.5+3.0\times2.5)R=10.5R$，$C_p=10.5R+5.0R=15.5R$，$\gamma=\frac{15.5}{10.5}\approx1.48$。
+  solution: |
+    混合气体的内能是两种气体的内能之和，$U=\bigl(2.0\times\frac32+3.0\times\frac52\bigr)RT=10.5RT$，所以$C_V=10.5R$。整个混合气体满足$pV=(n_1+n_2)RT$，由迈耶公式，$C_p=C_V+(n_1+n_2)R=15.5R$。所以$\gamma=\frac{15.5}{10.5}\approx1.48$。
+
+    把两种气体的$\gamma$按物质的量求平均，得到约$1.51$，是错的：要先把热容加起来，再求比值。
+
+- id: p4
+  tier: medium
+  statement: |
+    按杜隆-珀蒂定律估算铜的比热容（specific heat capacity）。铜的摩尔质量（molar mass）取$63.55\,\mathrm{g/mol}$，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 3*8.31446261815324/0.06355
+    unit: |
+      $\mathrm{J/(kg\cdot K)}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      杜隆-珀蒂定律给出的是摩尔热容。$1\,\mathrm{kg}$铜是多少摩尔？
+    - |
+      摩尔热容约是$3R$；比热容是单位质量的热容，$c=\frac{3R}M$，$M$要换成以$\mathrm{kg/mol}$为单位。
+    - |
+      $c=\frac{3\times8.3145}{0.06355}\,\mathrm{J/(kg\cdot K)}\approx392.5\,\mathrm{J/(kg\cdot K)}$，保留三位有效数字是$393\,\mathrm{J/(kg\cdot K)}$。$R$取$8.314$时得$392.48$，写成$392$也算对。
+  solution: |
+    由杜隆-珀蒂定律，铜的摩尔热容约是$3R\approx24.9\,\mathrm{J/(mol\cdot K)}$。$1\,\mathrm{kg}$铜有$\frac1M$摩尔（$M$以$\mathrm{kg/mol}$为单位），所以比热容$c=\frac{3R}M=\frac{3\times8.3145}{0.06355}\,\mathrm{J/(kg\cdot K)}\approx392.5\,\mathrm{J/(kg\cdot K)}$，保留三位有效数字是$393\,\mathrm{J/(kg\cdot K)}$（$R$取$8.314$时得$392.48$，写成$392$也算对）。实测约$385\,\mathrm{J/(kg\cdot K)}$，只差 2% 左右。
+
+- id: p5
+  tier: hard
+  statement: |
+    按能量均分定理，理想气体的比热容比$\gamma=\frac{f+2}f$。
+
+    （1）证明任何理想气体都满足$1<\gamma\le\frac53$，并说明等号什么时候成立。
+
+    （2）实际上，转动、振动可能只被激发了一部分，$C_{V,\mathrm m}$不一定是$\frac R2$的整数倍。设平动总分到$\frac32\kB T$，其余运动分到的能量不随温度升高而减少。只用这两点和迈耶公式，证明$1<\gamma\le\frac53$仍然成立。
+
+    （3）把氮气从室温加热到约$2000\,\mathrm K$，振动逐渐分到能量。它的$\gamma$怎样变化？振动完全激发时是多少？
+  hints:
+    - |
+      （1）$f$最小可能是多少？把$\gamma$写成$1+\frac2f$。（2）把内能分成平动的部分和其余的部分，各对温度求导。（3）$\gamma=\frac{C_{V,\mathrm m}+R}{C_{V,\mathrm m}}$随$C_{V,\mathrm m}$怎样变？
+    - |
+      （1）分子总能朝三个方向平动，$f\ge3$。（2）$U=\frac32nRT+U'(T)$，$U'$不随温度升高而减少，所以$C_V=\frac32nR+\dv{U'}T\ge\frac32nR$。（3）$C_{V,\mathrm m}$从约$\frac52R$向$\frac72R$增大。
+    - |
+      （1）分子的能量里总有平动的 3 个平方项，转动、振动只会再添平方项，所以$f\ge3$。$\gamma=\frac{f+2}f=1+\frac2f$，$f$越大$\gamma$越小，$f\ge3$给出$\gamma\le1+\frac23=\frac53$，$f$有限又给出$\gamma>1$。等号只在$f=3$时成立，也就是分子只有平动，比如单原子分子组成的气体。
+
+      （2）把内能写成$U=\frac32nRT+U'(T)$，$U'$是转动、振动分到的能量，不随温度升高而减少，$\dv{U'}T\ge0$，所以$C_{V,\mathrm m}=\frac32R+\frac1n\dv{U'}T\ge\frac32R$。由迈耶公式，$\gamma=\frac{C_{V,\mathrm m}+R}{C_{V,\mathrm m}}=1+\frac R{C_{V,\mathrm m}}$，于是$1<\gamma\le1+\frac23=\frac53$。等号在$\dv{U'}T=0$时成立：除了单原子分子组成的气体，转动、振动全被冻住的气体也是这样，比如冷到几十开尔文以下的氢气。
+
+      （3）室温下氮的$C_{V,\mathrm m}\approx\frac52R$，$\gamma\approx1.40$。振动逐渐分到能量，$C_{V,\mathrm m}$向$\frac72R$增大，$\gamma=1+\frac R{C_{V,\mathrm m}}$随着减小；振动完全激发时$\gamma=1+\frac27=\frac97\approx1.29$。
+  reference: |
+    （1）平动的 3 个平方项总在，转动、振动只会增加平方项，$f\ge3$。$\gamma=1+\frac2f$随$f$增大而减小，所以$1<\gamma\le\frac53$，等号当且仅当$f=3$，即只有平动（单原子分子组成的气体）。
+
+    （2）$U=\frac32nRT+U'(T)$，$\dv{U'}T\ge0$，所以$C_{V,\mathrm m}\ge\frac32R$（理想气体$C_V=\dv UT$）。迈耶公式给出$\gamma=1+\frac R{C_{V,\mathrm m}}$，于是$1<\gamma\le\frac53$；等号在$\dv{U'}T=0$时成立，包括转动、振动全被冻住的情形（几十开尔文以下的氢气）。
+
+    （3）$C_{V,\mathrm m}$从约$\frac52R$增大到$\frac72R$，$\gamma$从$1.40$减小到$\frac97\approx1.29$。实测$2000\,\mathrm K$时氮的$C_{p,\mathrm m}$约$36\,\mathrm{J/(mol\cdot K)}$，$\gamma\approx1.30$，振动已经激发了大半。
+
+- id: p6
+  tier: hard
+  statement: |
+    一面很小的镜子用细丝吊着，可以绕细丝扭转。镜子转过角度$\theta$时，细丝的扭转势能是$\frac12\beta\theta^2$，$\beta=1.0\times10^{-13}\,\mathrm{N\cdot m/rad}$叫作扭转系数（torsion constant）。镜子挂在$300\,\mathrm K$的空气里，和空气处在平衡态。
+
+    （1）空气分子不停地撞击镜子，镜子的转角总在$0$附近无规则地抖动。用能量均分定理求转角的方均根值（root-mean-square value）$\sqrt{\overline{\theta^2}}$，横线表示对很长一段时间求平均。
+
+    （2）一束光照到镜子上，反射到$1.0\,\mathrm m$外的标尺上。标尺上的光点抖动的方均根距离约是多少？
+
+    （3）想用这面镜子测一个很小的恒定力矩（torque）$\tau$，它使镜子偏转$\frac\tau\beta$。抖动给能测出的力矩定下了怎样的下限？换一根$\beta$更小的细丝，是更容易还是更难测出$\tau$？
+  hints:
+    - |
+      镜子的转角也是一个自由度，它和空气分子不停地交换能量。扭转势能$\frac12\beta\theta^2$是不是平方项？镜子转过$\theta$，反射光转过多大的角？
+    - |
+      （1）一面镜子长时间的平均，和许多面同样的镜子同一时刻的平均一样，所以$\overline{\tfrac12\beta\theta^2}=\frac12\kB T$。（2）镜面转过$\theta$，法线也转过$\theta$，反射光转过$2\theta$，光点移动约$2\theta\times1.0\,\mathrm m$。（3）偏转$\frac\tau\beta$要比抖动的$\sqrt{\kB T/\beta}$大，才分得出来。
+    - |
+      （1）一面镜子长时间的平均，和许多面同样的镜子同一时刻的平均一样。由能量均分定理，$\overline{\tfrac12\beta\theta^2}=\frac12\kB T$，所以$\sqrt{\overline{\theta^2}}=\sqrt{\frac{\kB T}\beta}=\sqrt{\frac{1.38\times10^{-23}\times300}{1.0\times10^{-13}}}\,\mathrm{rad}\approx2.0\times10^{-4}\,\mathrm{rad}$。
+
+      （2）镜面转过$\theta$，反射光转过$2\theta$，$1.0\,\mathrm m$外的光点移动约$2\theta\times1.0\,\mathrm m$，方均根约$4\times10^{-4}\,\mathrm m$，也就是$0.4\,\mathrm{mm}$。
+
+      （3）力矩造成的偏转$\frac\tau\beta$要比$\sqrt{\frac{\kB T}\beta}$大才分得出来，所以$\tau$要比$\sqrt{\beta\kB T}\approx2\times10^{-17}\,\mathrm{N\cdot m}$大。$\beta$越小，这个下限越低：偏转和$\frac1\beta$成正比，抖动只和$\frac1{\sqrt\beta}$成正比，所以细丝越软越容易测出$\tau$。降低温度也能减小抖动；能量均分定理管的不只是分子，镜子这样的宏观物体的每个平方项也分到$\frac12\kB T$，这给精密测量定下了噪声的下限。
+  reference: |
+    （1）转角的势能$\frac12\beta\theta^2$是平方项，对时间的平均$\overline{\tfrac12\beta\theta^2}=\frac12\kB T$，$\sqrt{\overline{\theta^2}}=\sqrt{\kB T/\beta}=\sqrt{4.14\times10^{-21}/10^{-13}}\,\mathrm{rad}\approx2.0\times10^{-4}\,\mathrm{rad}$。
+
+    （2）反射光转过$2\theta$，光点的方均根位移约$2\times2.0\times10^{-4}\times1.0\,\mathrm m\approx0.41\,\mathrm{mm}$。
+
+    （3）要求$\frac\tau\beta\gtrsim\sqrt{\kB T/\beta}$，即$\tau\gtrsim\sqrt{\beta\kB T}\approx2.0\times10^{-17}\,\mathrm{N\cdot m}$。信号和抖动之比$\frac{\tau}{\sqrt{\beta\kB T}}$随$\beta$减小而增大，所以换更软的丝更容易测出（代价是摆动更慢）；降温也有帮助。宏观物体的自由度同样服从能量均分定理，热运动给测量定下了下限；1931 年卡普勒（Kappler）就用这种扭秤镜子的抖动测出了阿伏伽德罗常量。
+
+- id: p7
+  tier: thinking
+  statement: |
+    能量均分定理的证明思路，靠的是分子之间不停地碰撞、交换能量。
+
+    （1）设想盒子里的双原子分子彼此从不相碰，碰壁时只是垂直于壁的速度分量反向，别的都不变。一开始所有分子都不转动，只沿$x$方向运动。过很久以后，能量会均分到各个平方项上吗？
+
+    （2）[小振动与简正坐标](lesson:physics.analytical-mechanics.small-oscillations)第 7 题提到的费米-帕斯塔-乌拉姆实验（Fermi–Pasta–Ulam experiment）里，振子之间有相互作用，能量为什么还是迟迟不均分？
+
+    （3）理想气体的分子之间「除了碰撞没有相互作用」，可碰撞又是能量均分所必需的。这两句话矛盾吗？
+  hints:
+    - |
+      能量从一个平方项转到另一个平方项，要靠什么？（1）里有没有什么东西能改变分子的$v_y$、$v_z$，或者让它转起来？
+    - |
+      （1）每个分子的$|v_x|$保持不变，$v_y$、$v_z$和转动始终是零。（2）非线性（nonlinearity）很弱时，各种振动几乎各自独立。（3）分清「相互作用的能量」和「相互作用带来的能量交换」。
+    - |
+      （1）不会。碰壁只让$v_x$变号，每个分子的$|v_x|$、$v_y=v_z=0$和不转动的状态都保持原样，平动的$y$、$z$两项和转动的两项一直是零。这盒气体宏观上虽然不再变化，可三个方向的压强（pressure）不一样，谈不上温度，不是能量充分交换后的平衡态：分子之间没有能交换能量的相互作用，定理「各种运动之间能充分交换能量」的条件不成立。
+
+      （2）作用很弱时，各种振动接近互不相干的简谐运动，能量只在少数几种振动之间来回转移，几乎周期性地回到开头，没有被打散到所有振动上。后来的研究发现，非线性足够强、运动变得杂乱无章时，或者等的时间长得多时，能量才会均分。
+
+      （3）不矛盾。理想气体略去的是分子之间相互作用的能量：分子相距很远，只在碰撞的一瞬间才有作用，这部分能量平均下来可以不计，$pV=N\kB T$、$U=\frac f2N\kB T$只用到这一点。碰撞却仍然很频繁，常温常压下每个分子每秒碰撞几十亿次（见[平均自由程](lesson:physics.thermal-physics.mean-free-path)），正是它们让能量在各个平方项之间不断交换，气体才能到达能量均分的平衡态。
+  reference: |
+    （1）不会均分：碰壁只翻转$v_x$，$|v_x|$、$v_y=v_z=0$、转动为零都不变，全部能量一直留在$x$方向的平动里。这盒气体宏观上不再变化，可三个方向的压强不一样，谈不上温度，不是能量充分交换后的平衡态；定理要求各种运动之间能充分交换能量，这里不满足。
+
+    （2）非线性很弱时，系统接近互不相干的简谐振子，运动接近规则的（准周期的）运动，能量只在少数几个振动之间来回，几乎周期性地回到初始的振动。非线性足够强（运动变得混乱）或时间长得多时才会均分。
+
+    （3）不矛盾。理想气体忽略的是相互作用的能量（分子大部分时间离得很远，碰撞只占极短的时间），状态方程和$U=\frac f2N\kB T$只要这一点；碰撞本身仍然频繁（常温常压下每秒几十亿次），负责交换能量、建立平衡。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设大气的温度处处是$T$，空气看成由质量为$m$的一种分子组成的理想气体，$g$不随高度变化。取$z$轴竖直向上，地面处$z=0$，压强随高度按$e^{-mgz/\kB T}$减小（[静止流体中的压强](lesson:physics.newtonian-mechanics.fluid-statics)第 5 题，那里的$H$就是$\frac{\kB T}{mg}$）。本领域的$H$留给焓（enthalpy）。分子的重力势能$mgz$是坐标的一次式，不是平方项。
+
+    （1）由$\dv pz=-\rho g$和理想气体状态方程（ideal gas law）证明：在截面积为$1\,\mathrm{m^2}$的一根竖直气柱里，所有分子的重力势能之和等于$\kB T$乘这根气柱里的分子数，也就是每个分子平均有$\kB T$的重力势能。
+
+    （2）平方项平均分到$\frac12\kB T$，这个一次项却平均分到$\kB T$。猜一猜：势能正比于$|x|^s$时，它的平均值是多少？用$s=1$、$s=2$检验你的猜测。
+
+    （3）把整根气柱缓慢地加热，升温$\Delta T$，地面受的压强（上面全部空气的重量除以面积）不变。按（1），每摩尔空气要吸收多少热量（heat）？和定压摩尔热容比较，说明为什么正好一样。
+  hints:
+    - |
+      （1）高度在$z$到$z+\dd z$之间的那一薄层里有多少个分子，重力势能共多少？由$\dv pz=-\rho g$，$\rho gz\,\dd z$可以写成什么？（3）每个分子的能量里，除了能量均分定理给的那些，还有什么？
+    - |
+      （1）那一薄层里有$\frac\rho m\dd z$个分子，重力势能共$\rho gz\,\dd z=-zp'\,\dd z$。由$(zp)'=p+zp'$，在$0$到$Z$上用牛顿-莱布尼茨公式（Newton–Leibniz formula），再用理想气体的$p=\frac\rho m\kB T$。（2）把两个结果都写成$\kB T$除以一个数。（3）每个分子平均有$\frac f2\kB T+\kB T$的能量。
+    - |
+      （1）高度在$z$到$z+\dd z$之间的薄层里有$\frac\rho m\dd z$个分子，重力势能共$\rho gz\,\dd z$，由$\dv pz=-\rho g$，它等于$-zp'\,\dd z$。由$(zp)'=p+zp'$和牛顿-莱布尼茨公式，
+
+      $$
+      \int_0^Z\rho gz\,\dd z=-\int_0^Zzp'\,\dd z=-Zp(Z)+\int_0^Zp\,\dd z .
+      $$
+
+      $Z$很大时，$p$按指数减小，$Zp(Z)$趋于零。理想气体的$p=\frac NV\kB T=\frac\rho m\kB T$，所以$\int_0^Zp\,\dd z=\kB T\int_0^Z\frac\rho m\,\dd z$，正是$\kB T$乘这根气柱里的分子数：每个分子平均有$\kB T$的重力势能。
+
+      （2）猜$\frac{\kB T}s$：$s=2$时是$\frac12\kB T$，正是能量均分定理；$s=1$时是$\kB T$，正是（1）的结果。势能随坐标增长得越慢，分子越能跑到势能高的地方去，平均势能也就越大。这可以用玻尔兹曼分布（Boltzmann distribution）证明，见[玻尔兹曼分布与配分函数](lesson:physics.thermal-physics.boltzmann-distribution)。
+
+      （3）每个分子平均有$\frac f2\kB T$的内能和$\kB T$的重力势能，外界（surroundings）又不对气柱做功，所以升温$\Delta T$时每摩尔吸热$\bigl(\frac f2+1\bigr)R\Delta T$，正好是$C_{p,\mathrm m}\Delta T$。这不是巧合：地面的压强不变，气柱受热向上膨胀，把自己举高，多吸的热$R\Delta T$变成了重力势能，就像[热容与焓](lesson:physics.thermal-physics.heat-capacity)的几何图像里，定压时多吸的热变成了对外做的功。
+  reference: |
+    （1）薄层$[z,z+\dd z]$里有$\frac\rho m\dd z$个分子，势能$\rho gz\,\dd z=-zp'\,\dd z$。由$(zp)'=p+zp'$，$\int_0^Z\rho gz\,\dd z=-Zp(Z)+\int_0^Zp\,\dd z$；$Z\to+\infty$时$Zp(Z)\to0$（指数衰减），$p=\frac\rho m\kB T$，于是总势能$=\kB T\times$分子数，平均每个分子$\kB T$。也可以直接算$\langle z\rangle=\frac{\int_0^\infty ze^{-z/H_0}\dd z}{\int_0^\infty e^{-z/H_0}\dd z}=H_0=\frac{\kB T}{mg}$。
+
+    （2）一般地，势能正比于$|x|^s$时平均值是$\frac{\kB T}s$（由玻尔兹曼分布，$\int|x|^se^{-c|x|^s/\kB T}\dd x$换元即得），$s=2$给$\frac12\kB T$，$s=1$给$\kB T$。
+
+    （3）每个分子$\bigl(\frac f2+1\bigr)\kB T$，外界不做功，每摩尔吸热$\bigl(\frac f2+1\bigr)R\Delta T=C_{p,\mathrm m}\Delta T$。地面压强等于整根气柱的重量除以面积，不变，相当于定压加热；气柱受热膨胀、整体升高，重力势能增加$nR\Delta T$，正对应定压时对外做的功$p\Delta V=nR\Delta T$。

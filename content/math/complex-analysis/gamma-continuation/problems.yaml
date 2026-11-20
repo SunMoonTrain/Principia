@@ -1,0 +1,186 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\Gamma\bigl(-\frac72\bigr)$。
+  answer:
+    type: number
+    value: 16*sqrt(pi)/105
+  hints:
+    - |
+      $-\frac72$在左半平面，要用延拓公式$\Gamma(z)=\frac{\Gamma(z+n)}{z(z+1)\cdots(z+n-1)}$。$n$至少取多少，分子才落进右半平面？
+    - |
+      取$n=4$：$\Gamma\bigl(-\frac72\bigr)=\frac{\Gamma(\frac12)}{(-\frac72)(-\frac52)(-\frac32)(-\frac12)}$。
+    - |
+      分母是四个负数之积，等于$\frac{7\cdot5\cdot3\cdot1}{16}=\frac{105}{16}$；$\Gamma\bigl(\frac12\bigr)=\sqrt\pi$，所以$\Gamma\bigl(-\frac72\bigr)=\frac{16\sqrt\pi}{105}\approx0.2701$。
+  solution: |
+    $-\frac72+4=\frac12>0$，由延拓的定理取$n=4$。分母$\bigl(-\frac72\bigr)\bigl(-\frac52\bigr)\bigl(-\frac32\bigr)\bigl(-\frac12\bigr)=\frac{105}{16}$，所以$\Gamma\bigl(-\frac72\bigr)=\frac{16}{105}\Gamma\bigl(\frac12\bigr)=\frac{16\sqrt\pi}{105}$，填 `16*sqrt(pi)/105`。
+
+- id: p2
+  tier: easy
+  statement: |
+    $\Gamma$指延拓到$\C\setminus\{0,-1,-2,\dots\}$上的伽马函数。下列说法中，正确的是哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\Gamma\bigl(-\frac13\bigr)=-\frac13\,\Gamma\bigl(\frac23\bigr)$
+      - |
+        $\Gamma$在左半平面$\Re z<0$上处处没有定义
+      - |
+        $\Gamma$在$-3$处的留数是$-\frac16$
+      - |
+        $\Gamma\bigl(\frac12+i\bigr)$可以直接用积分$\int_0^{+\infty}t^{-\frac12+i}e^{-t}\,\dd t$算
+    value: [3, 4]
+  hints:
+    - |
+      A：递推公式是$\Gamma(z+1)=z\Gamma(z)$，取$z=-\frac13$，看$\Gamma\bigl(\frac23\bigr)$在哪一边。B：延拓到了哪里，去掉了哪些点？
+    - |
+      C：$-k$处的留数是$\frac{(-1)^k}{k!}$。D：积分在哪些$z$处收敛？$\frac12+i$的实部是多少？
+    - |
+      A 错：$\Gamma\bigl(\frac23\bigr)=-\frac13\Gamma\bigl(-\frac13\bigr)$，所以$\Gamma\bigl(-\frac13\bigr)=-3\Gamma\bigl(\frac23\bigr)$。B 错：只有$0,-1,-2,\dots$不在定义域里。C 对：$\frac{(-1)^3}{3!}=-\frac16$。D 对：$\Re\bigl(\frac12+i\bigr)=\frac12>0$，$t^{z-1}$正是$t^{-\frac12+i}$。
+  solution: |
+    A：在递推公式里取$z=-\frac13$，得$\Gamma\bigl(\frac23\bigr)=-\frac13\Gamma\bigl(-\frac13\bigr)$，即$\Gamma\bigl(-\frac13\bigr)=-3\Gamma\bigl(\frac23\bigr)$。$\Gamma\bigl(\frac23\bigr)>0$，所以 A 错。B：延拓以后只有$0,-1,-2,\dots$不在定义域里，比如$\Gamma\bigl(-\frac12\bigr)=-2\sqrt\pi$，B 错。
+
+    C：$-3$是一阶极点，留数是$\frac{(-1)^3}{3!}=-\frac16$，C 对。D：$\Re\bigl(\frac12+i\bigr)=\frac12>0$，积分绝对收敛，被积函数里的$t^{z-1}$正是$t^{-\frac12+i}$，D 对。选 C、D。
+
+- id: p3
+  tier: medium
+  statement: |
+    对自然数$N$，记$I_N=\frac1{2\pi i}\oint_{|z|=N+\frac12}\Gamma(z)\,\dd z$，圆周取逆时针方向。求$\lim_{N\to\infty}I_N$。
+  answer:
+    type: number
+    value: exp(-1)
+  hints:
+    - |
+      圆周$|z|=N+\frac12$经过$\Gamma$的极点吗？圆里有哪些极点？
+    - |
+      由留数定理（residue theorem），$I_N$是$0,-1,\dots,-N$处的留数之和，即$\sum_{k=0}^N\frac{(-1)^k}{k!}$。
+    - |
+      这是$e^x$的泰勒级数（Taylor series）$\sum_{k\ge0}\frac{x^k}{k!}$在$x=-1$处的部分和（partial sum），$N\to\infty$时趋于$e^{-1}\approx0.3679$。
+  solution: |
+    非正整数里模小于$N+\frac12$的是$0,-1,\dots,-N$，圆周上没有极点；$\Gamma$在开集$|z|<N+1$上除这$N+1$个点外全纯。由留数定理和讲解里留数的公式，$I_N=\sum_{k=0}^N\frac{(-1)^k}{k!}$。这是$e^x=\sum_{k\ge0}\frac{x^k}{k!}$在$x=-1$处的部分和，所以$\lim_{N\to\infty}I_N=e^{-1}$，填 `exp(-1)`。
+
+- id: p4
+  tier: medium
+  statement: |
+    已知$\Gamma(i)\ne0$。求$\frac{\Gamma(2+i)}{\Gamma(i)}$，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [-1, 1]
+  hints:
+    - |
+      $i$不在右半平面里，$\Gamma(i)$要靠延拓才有定义。递推公式在延拓以后的整个定义域上都成立。
+    - |
+      $\Gamma(2+i)=(1+i)\Gamma(1+i)$，$\Gamma(1+i)=i\,\Gamma(i)$。
+    - |
+      所以$\Gamma(2+i)=(1+i)\,i\,\Gamma(i)$，比值是$(1+i)i=-1+i$：实部$-1$，虚部$1$。
+  solution: |
+    $i$、$1+i$都不是非正整数，由延拓的定理，递推公式在那里成立：$\Gamma(1+i)=i\,\Gamma(i)$，$\Gamma(2+i)=(1+i)\Gamma(1+i)$。所以$\Gamma(2+i)=(1+i)\,i\,\Gamma(i)=(-1+i)\Gamma(i)$，比值是$-1+i$，实部$-1$，虚部$1$。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）证明：$\Re z>0$时，$\int_0^1t^{z-1}e^{-t}\,\dd t=\sum_{k=0}^\infty\frac{(-1)^k}{k!\,(z+k)}$。
+
+    （2）设$F(z)=\sum_{k=0}^\infty\frac{(-1)^k}{k!\,(z+k)}+\int_1^{+\infty}t^{z-1}e^{-t}\,\dd t$。证明$F$在$D=\C\setminus\{0,-1,-2,\dots\}$上全纯，并且在$D$上$F=\Gamma$。
+
+    （3）从$F$的式子直接读出$\Gamma$在$-k$处的留数。
+  hints:
+    - |
+      （1）把$e^{-t}$展开成幂级数，前$N+1$项逐项积分；$0<t\le1$时，余项的模不超过$\frac{e\,t^{N+1}}{(N+1)!}$。
+    - |
+      （2）级数：在不含非正整数的开圆盘上，$k$足够大时$|z+k|\ge\frac k2$，余项对圆盘里所有的$z$一样小，用[高阶导数与莫雷拉定理](lesson:math.complex-analysis.higher-derivatives)一节第 5 题。积分：照讲解里第一个定理的证明估计差商，$[1,+\infty)$上没有$t\to0^+$的麻烦。最后用唯一性定理（identity theorem）。
+    - |
+      （1）$0<t\le1$时$e^{-t}=\sum_{k=0}^N\frac{(-t)^k}{k!}+r_N(t)$，$|r_N(t)|\le\sum_{k>N}\frac{t^k}{k!}$；由$(N+1+j)!\ge(N+1)!\,j!$，它不超过$\frac{t^{N+1}e^t}{(N+1)!}\le\frac{e\,t^{N+1}}{(N+1)!}$。$\Re(z+k)>0$时，$\frac{t^{z+k}}{z+k}$的导数是$t^{z+k-1}$，$t\to0^+$时$|t^{z+k}|\to0$，所以$\int_0^1t^{z+k-1}\,\dd t=\frac1{z+k}$。于是左边和$\sum_{k=0}^N\frac{(-1)^k}{k!\,(z+k)}$之差是$\int_0^1t^{z-1}r_N(t)\,\dd t$，记$x=\Re z$，它的模不超过$\frac e{(N+1)!}\int_0^1t^{x+N}\,\dd t$，趋于$0$。
+
+      （2）级数：取不含非正整数的开圆盘$\Delta$，设$\Delta$里$|z|\le M$。$k\ge\max\{1,2M\}$时$|z+k|\ge k-M\ge\frac k2$，第$k$项的模不超过$\frac2{k!}$，所以$N\ge\max\{1,2M\}$时，$\Delta$上处处有$\bigl|\sum_{k>N}\frac{(-1)^k}{k!\,(z+k)}\bigr|\le\sum_{k>N}\frac2{k!}$，右边和$z$无关、$N\to\infty$时趋于$0$。部分和在$\Delta$上全纯，由高阶导数与莫雷拉定理一节第 5 题，级数的和在$\Delta$上全纯；$D$里每一点都是这样一个圆盘的圆心，所以级数在$D$上全纯。
+
+      积分：$[1,+\infty)$上$|t^{z-1}e^{-t}|=t^{x-1}e^{-t}$，对任何$x$积分都收敛（伽马函数一节定理 1 的证明）。$|h|\le1$、$t\ge1$时$|t^h-1-h\ln t|\le|h|^2(\ln t)^2t$，照讲解里第一个定理的证明，差商和$\int_1^{+\infty}t^{z-1}\ln t\,e^{-t}\,\dd t$之差的模不超过$|h|\int_1^{+\infty}t^x(\ln t)^2e^{-t}\,\dd t$，所以积分是$z$的整函数（entire function）。于是$F$在$D$上全纯；$\Re z>0$时由（1），$F(z)=\int_0^1t^{z-1}e^{-t}\,\dd t+\int_1^{+\infty}t^{z-1}e^{-t}\,\dd t=\Gamma(z)$。$D$是区域，由唯一性定理，$F=\Gamma$在整个$D$上成立。
+
+      （3）在$-k$附近，级数里$\frac{(-1)^k}{k!\,(z+k)}$以外的各项之和全纯（同（2），圆盘取不含其他非正整数的），积分也全纯，所以$\Gamma$在$-k$处的主部（principal part）就是$\frac{(-1)^k}{k!\,(z+k)}$：$-k$是一阶极点，留数是$\frac{(-1)^k}{k!}$，和讲解里的定理一致。
+  reference: |
+    （1）$e^{-t}$展开到第$N$项，余项$|r_N(t)|\le\frac{e\,t^{N+1}}{(N+1)!}$（$0<t\le1$）。$\Re(z+k)>0$时$\int_0^1t^{z+k-1}\,\dd t=\frac1{z+k}$，误差项的模不超过$\frac e{(N+1)!\,(x+N+1)}\to0$。
+
+    （2）在不含非正整数、$|z|\le M$的开圆盘上，$k\ge\max\{1,2M\}$时第$k$项的模不超过$\frac2{k!}$，余项和$z$无关地趋于$0$，由高阶导数与莫雷拉定理一节第 5 题，级数在$D$上全纯。$|h|\le1$时$|t^h-1-h\ln t|\le|h|^2(\ln t)^2t$（$t\ge1$），照讲解里定理的证明，$\int_1^{+\infty}t^{z-1}e^{-t}\,\dd t$是整函数。$\Re z>0$时由（1）$F=\Gamma$，由唯一性定理在$D$上$F=\Gamma$。
+
+    （3）$-k$附近其余各项都全纯，主部是$\frac{(-1)^k}{k!\,(z+k)}$，留数$\frac{(-1)^k}{k!}$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$-1<\Re z<0$。证明$\int_0^{+\infty}t^{z-1}(e^{-t}-1)\,\dd t$绝对收敛，并且等于$\Gamma(z)$。
+  hints:
+    - |
+      $t\ge0$时$0\le1-e^{-t}\le t$，也不超过$1$。分别看$t$在$0$附近、在无穷远处被积函数的模。
+    - |
+      验证$\bigl(t^z(e^{-t}-1)\bigr)'=zt^{z-1}(e^{-t}-1)-t^ze^{-t}$，在$[\varepsilon,A]$上用牛顿-莱布尼茨公式（Newton-Leibniz formula），再令$\varepsilon\to0^+$、$A\to+\infty$。
+    - |
+      记$x=\Re z$，$-1<x<0$。$0<t\le1$时被积函数的模不超过$t^{x-1}\cdot t=t^x$，$\int_0^1t^x\,\dd t$收敛（$-x<1$）；$t\ge1$时不超过$t^{x-1}$，$\int_1^{+\infty}t^{x-1}\,\dd t$收敛（$1-x>1$）。所以积分绝对收敛，记作$J$。
+
+      $t^z=e^{z\ln t}$，沿曲线求导得$(t^z)'=\frac zt\,t^z=zt^{z-1}$，再由乘积的求导法则得提示里的式子。在$[\varepsilon,A]$上用牛顿-莱布尼茨公式：
+
+      $$
+      \begin{aligned}
+      &A^z(e^{-A}-1)-\varepsilon^z(e^{-\varepsilon}-1)\\
+      &\quad=z\int_\varepsilon^At^{z-1}(e^{-t}-1)\,\dd t-\int_\varepsilon^At^ze^{-t}\,\dd t.
+      \end{aligned}
+      $$
+
+      $|A^z(e^{-A}-1)|\le A^x\to0$（$x<0$），$|\varepsilon^z(e^{-\varepsilon}-1)|\le\varepsilon^x\cdot\varepsilon=\varepsilon^{x+1}\to0$（$x>-1$）。$\Re(z+1)=x+1>0$，最后一个积分趋于$\Gamma(z+1)$，所以$0=zJ-\Gamma(z+1)$。$z$不是非正整数，由延拓的定理$\Gamma(z+1)=z\Gamma(z)$，又$z\ne0$，所以$J=\Gamma(z)$。
+  reference: |
+    $|t^{z-1}(e^{-t}-1)|$在$(0,1]$上不超过$t^x$，在$[1,+\infty)$上不超过$t^{x-1}$，$-1<x<0$时两段都收敛。
+
+    $\bigl(t^z(e^{-t}-1)\bigr)'=zt^{z-1}(e^{-t}-1)-t^ze^{-t}$，在$[\varepsilon,A]$上积分，边界项的模分别不超过$A^x$、$\varepsilon^{x+1}$，都趋于$0$，得$zJ=\Gamma(z+1)=z\Gamma(z)$（递推公式在$D$上成立），$z\ne0$，所以$J=\Gamma(z)$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    设$D=\C\setminus\{0,-1,-2,\dots\}$，$f$在$D$上全纯。
+
+    （1）只知道对每个正整数$n$都有$f(n)=(n-1)!$，能断定$f=\Gamma$吗？唯一性定理（identity theorem）为什么用不上？
+
+    （2）只知道$f$在区间$\bigl[1,1+\frac1{100}\bigr]$上等于$\Gamma$呢？
+
+    （3）对照实变量的情形：$(0,+\infty)$上无穷次可导的正函数$f$满足$f(x+1)=xf(x)$，并且在$[1,2]$上等于$\Gamma$，能断定$f=\Gamma$吗？只知道它在$\bigl[1,1+\frac1{100}\bigr]$上等于$\Gamma$呢？「全纯」和「无穷次可导」在这里差在哪里？
+  hints:
+    - |
+      （1）找一个在每个正整数处为$0$、又不恒为$0$的整函数，加到$\Gamma$上。正整数这一列点收敛到$D$里的点吗？
+    - |
+      （2）区间里有收敛到$1$的点列。（3）第一问用递推公式把$x$挪进$[1,2]$；第二问仿照[零点的孤立性与唯一性定理](lesson:math.complex-analysis.identity-theorem)一节几何图像里的$\varphi$，造一个周期为$1$、在$\bigl[0,\frac1{100}\bigr]$上为$0$的光滑函数。
+    - |
+      （1）不能。$\Gamma(z)+\sin\pi z$在$D$上全纯，在正整数处等于$\Gamma(n)=(n-1)!$，却不是$\Gamma$。唯一性定理要一列收敛到$D$中一点的互不相同的点，正整数趋于无穷，没有这样的极限点。
+
+      （2）能。$1+\frac1{100k}$（$k=1,2,\dots$）收敛到$1\in D$，由唯一性定理，$f=\Gamma$在$D$上处处成立，连递推公式都用不着。
+
+      （3）第一问能：$0<x<1$时$f(x)=\frac{f(x+1)}x$，而$f(x+1)=\Gamma(x+1)$，所以$f(x)=\Gamma(x)$；$x>2$时$f(x)=(x-1)f(x-1)$，一步步降到$[1,2)$，同样等于$\Gamma(x)$。第二问不能：取$\varphi$（$u>0$时$e^{-1/u}$，$u\le0$时$0$），令$\psi(s)=\varphi\bigl(s-\frac1{100}\bigr)\varphi(1-s)$（$0\le s<1$），再按周期$1$延拓成$P(x)$。
+
+      $P$无穷次可导，$P\ge0$，在每个$\bigl[k,k+\frac1{100}\bigr]$上为$0$，在$\bigl(\frac1{100},1\bigr)$上为正。$f=\Gamma\cdot(1+P)$满足$f(x+1)=xf(x)$，在$\bigl[1,1+\frac1{100}\bigr]$上等于$\Gamma$，却不是$\Gamma$。全纯函数在一小段上的值就决定了整个区域上的值，靠的是唯一性定理，不靠递推；无穷次可导的函数在一段上的值管不到别处，只能靠递推公式把一整个周期$[1,2]$搬过去。
+  reference: |
+    （1）不能：$\Gamma(z)+\sin\pi z$在正整数处和$\Gamma$相等。正整数趋于无穷，不收敛到$D$中的点，唯一性定理的条件不满足。
+
+    （2）能：$1+\frac1{100k}\to1\in D$，由唯一性定理$f=\Gamma$，不用递推公式。
+
+    （3）实变量时，递推加$[1,2]$上的值能定出$f$（往左除以$x$、往右乘以$x-1$）；只知道$\bigl[1,1+\frac1{100}\bigr]$上的值不能：$f=\Gamma\cdot(1+P)$，$P$是周期$1$、在$\bigl[0,\frac1{100}\bigr]$上为$0$的光滑函数（用$e^{-1/u}$拼出来），满足递推。区别在于全纯函数有唯一性定理，一小段决定整个区域；无穷次可导的函数没有，局部的值管不到别处。讲解里$\Gamma(z)\bigl(1+\frac12\sin2\pi z\bigr)$说明反过来也一样：递推加正整数处的值定不出全纯的$\Gamma$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    看几何图像里的蓝线（实轴上的$\Gamma$）。
+
+    （1）$\Gamma$在$(-1,0)$、$(-2,-1)$、$(-3,-2)$上分别是正的还是负的？为什么每过一个极点就变一次号？用递推公式和留数各说明一次。
+
+    （2）这几段上$|\Gamma(x)|$的最小值一段比一段小。记$(-k-1,-k)$上$|\Gamma(x)|$的最小值为$m_k$，用$\Gamma(x)=\frac{\Gamma(x+1)}x$说明$m_k$为什么变小，并估计它变小的速度。
+  hints:
+    - |
+      （1）$(-1,0)$上$\Gamma(x)=\frac{\Gamma(x+1)}x$，分子、分母各是什么符号？在$-k$附近，$\Gamma(x)$和$\frac{(-1)^k}{k!\,(x+k)}$只差一个有界的量。
+    - |
+      （2）$x\in(-k-1,-k)$时$k<|x|<k+1$，比较$|\Gamma(x)|$和$|\Gamma(x+1)|$；$x+1$落在哪一段里？
+    - |
+      （1）$(-1,0)$上分子$\Gamma(x+1)$是正实数处的积分，为正，分母$x<0$，所以$\Gamma<0$。往左每一段的值都是右边一段的值除以负数$x$，所以符号交替：$(-1,0)$负，$(-2,-1)$正，$(-3,-2)$负。用留数看：$x$从右边靠近$-k$时，$\Gamma(x)$和$\frac{(-1)^k}{k!\,(x+k)}$一起趋于无穷，和$(-1)^k$同号，从左边靠近时异号；相邻两个极点对它们之间那一段给出的符号正好一致，这靠的正是留数正负交替。
+
+      （2）设$k\ge1$。$x\in(-k-1,-k)$时$x+1\in(-k,-k+1)$，$k<|x|<k+1$，所以$\frac{|\Gamma(x+1)|}{k+1}<|\Gamma(x)|<\frac{|\Gamma(x+1)|}k$。取最小值，得$\frac{m_{k-1}}{k+1}\le m_k\le\frac{m_{k-1}}k$，一步步推下去，$\frac{m_0}{(k+1)!}\le m_k\le\frac{m_0}{k!}$：$m_k$大约像$\frac1{k!}$那样变小，和留数$\frac1{k!}$的大小一致。图上$m_0\approx3.54$、$m_1\approx2.30$、$m_2\approx0.89$，都在这个范围里。
+  reference: |
+    （1）$(-1,0)$负，$(-2,-1)$正，$(-3,-2)$负：$\Gamma(x)=\frac{\Gamma(x+1)}x$，每往左一段除以一个负数。留数：$-k$右侧附近$\Gamma$和$(-1)^k$同号，左侧异号；$(-k-1,-k)$的符号由$-k$看是$(-1)^{k+1}$，由$-k-1$看也是$(-1)^{k+1}$，所以留数必须正负交替。
+
+    （2）$\frac{m_{k-1}}{k+1}\le m_k\le\frac{m_{k-1}}k$，所以$\frac{m_0}{(k+1)!}\le m_k\le\frac{m_0}{k!}$，按$\frac1{k!}$的量级变小。数值：$m_0\approx3.545$（$x\approx-0.504$），$m_1\approx2.302$，$m_2\approx0.888$，$m_3\approx0.245$。

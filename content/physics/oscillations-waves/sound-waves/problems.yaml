@@ -1,0 +1,204 @@
+- id: p1
+  tier: easy
+  statement: |
+    水银的密度是$1.36\times10^4\,\mathrm{kg/m^3}$，声波里要用的绝热体积模量约为$2.85\times10^{10}\,\mathrm{Pa}$。求水银中的声速，结果保留三位有效数字。
+  answer:
+    type: number
+    value: sqrt(2.85e10/1.36e4)
+    unit: |
+      $\mathrm{m/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      声速由流体的哪两个量决定？
+    - |
+      $v=\sqrt{K/\rho_0}$，$K$取绝热体积模量。
+    - |
+      $v=\sqrt{\frac{2.85\times10^{10}}{1.36\times10^4}}\,\mathrm{m/s}\approx1.45\times10^3\,\mathrm{m/s}$。
+  solution: |
+    由$v=\sqrt{K/\rho_0}$，$v=\sqrt{\frac{2.85\times10^{10}}{1.36\times10^4}}\,\mathrm{m/s}\approx1.45\times10^3\,\mathrm{m/s}$。水银的体积模量约是水的 13 倍，密度约是水的 14 倍，两者几乎抵消，所以水银里的声速和水里差不多。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面说的都是连续、不计黏性和热传导的流体里振幅很小的声波。哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        某一时刻，$\xi$沿$x$增大的地方（$\xi_x>0$），流体被压缩，压强高于$p_0$
+      - |
+        在$K$、$\rho_0$都不变的同一种流体里，把声波的频率加倍，波长就变为原来的一半
+      - |
+        两种流体里，体积模量大的那种，声速一定大
+      - |
+        两列声波在同一种流体里传播，振幅较大的那列传得快
+      - |
+        两种流体的绝热体积模量之比是 4，密度之比也是 4，两者的声速相同
+    value: [2, 5]
+  hints:
+    - |
+      压强的变化和$\xi_x$是什么关系？声速$v=\sqrt{K/\rho_0}$里有哪些量？
+    - |
+      $p-p_0=-K\xi_x$；$v$里既没有频率，也没有振幅，而$\lambda=\frac vf$。
+    - |
+      A 错：$\xi_x>0$时相邻两层离得更远，$p-p_0<0$；B 对：$v$不变，$f$加倍则$\lambda$减半；C 错：还要看密度。D 错：小振幅时声速和振幅无关；E 对：$\frac K{\rho_0}$相同。
+  solution: |
+    选 B、E。A 错：$\xi_x>0$时相邻两层离得更远，是膨胀，$p-p_0=-K\xi_x<0$；B 对：声速$\sqrt{K/\rho_0}$里没有频率，$\lambda=\frac vf$减为一半，空气里的声音几乎没有:term[色散]{id="physics.oscillations-waves.dispersion"}（dispersion，见[色散关系](lesson:physics.oscillations-waves.dispersion-relations)）。C 错：还要看密度，例如体积模量是 2 倍、密度是 4 倍时，声速只是另一种的$\frac1{\sqrt2}$；D 错：小振幅时声速只由$K$、$\rho_0$决定，和振幅无关；E 对：$\frac K{\rho_0}$相同，声速就相同。
+
+- id: p3
+  tier: medium
+  statement: |
+    A、B 两地相距$600\,\mathrm m$，风从 A 吹向 B，风速$w$处处相同。A 处发出一个短促的声音，B 处$1.635\,\mathrm s$后听到；B 处也发出一个，A 处$1.954\,\mathrm s$后听到。求静止空气中的声速$v$和风速$w$，按这个顺序填写，以$\mathrm{m/s}$为单位，结果都保留三位有效数字。
+  answer:
+    type: tuple
+    value: [300*(1/1.635 + 1/1.954), 300*(1/1.635 - 1/1.954)]
+    unit: |
+      $\mathrm{m/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      声速是相对空气的。空气以$w$从 A 流向 B 时，声音相对地面的速度是多少？
+    - |
+      顺风$v+w=\frac{600}{1.635}\,\mathrm{m/s}$，逆风$v-w=\frac{600}{1.954}\,\mathrm{m/s}$。
+    - |
+      $v+w\approx367.0\,\mathrm{m/s}$，$v-w\approx307.1\,\mathrm{m/s}$；相加除以 2 得$v\approx337\,\mathrm{m/s}$，相减除以 2 得$w\approx30.0\,\mathrm{m/s}$。
+  solution: |
+    声速是相对空气的。由[参考系与相对运动](lesson:physics.newtonian-mechanics.relative-motion#thm-galilean)，顺风时声音相对地面的速度是$v+w=\frac{600}{1.635}\,\mathrm{m/s}\approx367.0\,\mathrm{m/s}$，逆风时是$v-w=\frac{600}{1.954}\,\mathrm{m/s}\approx307.1\,\mathrm{m/s}$。所以$v\approx337\,\mathrm{m/s}$，$w\approx30.0\,\mathrm{m/s}$，填`337, 30.0`。把两个方向的速度（不是两次的时间）平均，正好把风的影响消掉；把两次的时间平均，得到的是$v\bigl(1-\frac{w^2}{v^2}\bigr)\approx334\,\mathrm{m/s}$，偏小。
+
+- id: p4
+  tier: medium
+  statement: |
+    $20\,^\circ\mathrm C$的空气里传着频率为$500\,\mathrm{Hz}$的简谐声波，压强变化的振幅是$0.30\,\mathrm{Pa}$；空气的密度取$1.20\,\mathrm{kg/m^3}$，声速取$343\,\mathrm{m/s}$。求空气层位移的振幅，以$\mu\mathrm m$为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 0.30/(1.20*343*2*pi*500)*1e6
+    unit: |
+      $\mu\mathrm m$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      压强变化的振幅和位移的振幅是什么关系？
+    - |
+      压强变化的振幅是$KkA$；$K=\rho_0v^2$，$k=\frac\omega v$，所以它等于$\rho_0v\omega A$。
+    - |
+      $A=\frac{0.30}{1.20\times343\times2\pi\times500}\,\mathrm m\approx2.32\times10^{-7}\,\mathrm m=0.232\,\mu\mathrm m$。
+  solution: |
+    压强变化的振幅是$KkA=\rho_0v\omega A$，所以$A=\frac{0.30}{1.20\times343\times2\pi\times500}\,\mathrm m\approx2.32\times10^{-7}\,\mathrm m=0.232\,\mu\mathrm m$。这时$|\xi_x|$最大约为$kA=\frac{0.30}{\rho_0v^2}\approx2\times10^{-6}$，小振幅的条件满足得很好。
+
+- id: p5
+  tier: hard
+  statement: |
+    声波沿$x$轴传播。静止时在$x$处的那一层，左边的流体每单位面积以力$p$推它，这个力做功的功率（power）每单位面积是$p\,\xi_t$。
+
+    （1）说明$p_0\xi_t$在一个周期里的平均为零，所以单位时间垂直穿过单位面积的平均能量，即声强（sound intensity），等于$\overline{(p-p_0)\xi_t}$（横线表示对时间求平均）。
+
+    （2）对$\xi=A\cos(\omega t-kx)$，证明声强等于$\frac12\rho_0v\omega^2A^2=\frac{(KkA)^2}{2\rho_0v}$。
+
+    （3）人耳在$1\,\mathrm{kHz}$附近刚能听到的声强约为$1.0\times10^{-12}\,\mathrm{W/m^2}$。$20\,^\circ\mathrm C$的空气取$\rho_0=1.20\,\mathrm{kg/m^3}$、$v=343\,\mathrm{m/s}$，求这时压强变化的振幅和位移的振幅，并和原子的大小（约$10^{-10}\,\mathrm m$）比较。
+  hints:
+    - |
+      $\xi$随时间周期变化，$\xi_t$在一个周期里的平均是多少？（2）先写出$p-p_0$和$\xi_t$。
+    - |
+      $p-p_0=-K\xi_x=-KkA\sin(\omega t-kx)$，$\xi_t=-\omega A\sin(\omega t-kx)$；$\sin^2$在一个周期里的平均是$\frac12$，$Kk=\rho_0v\omega$。
+    - |
+      （1）$\xi_t$在一个周期里的积分是$\xi$在周期两端的差，等于零，所以$p_0\xi_t$的平均为零。$p\,\xi_t=p_0\xi_t+(p-p_0)\xi_t$，左边的流体每单位面积传给右边的平均功率就是$\overline{(p-p_0)\xi_t}$，即声强。
+
+      （2）$p-p_0=-K\xi_x=-KkA\sin(\omega t-kx)$，$\xi_t=-\omega A\sin(\omega t-kx)$，乘积是$Kk\omega A^2\sin^2(\omega t-kx)$，平均是$\frac12Kk\omega A^2$。由$K=\rho_0v^2$、$k=\frac\omega v$，$Kk=\rho_0v\omega$，声强是$\frac12\rho_0v\omega^2A^2$；压强变化的振幅$KkA=\rho_0v\omega A$，代进去就是$\frac{(KkA)^2}{2\rho_0v}$。
+
+      （3）记声强为$I$，压强变化的振幅是$\sqrt{2\rho_0vI}=\sqrt{2\times1.20\times343\times1.0\times10^{-12}}\,\mathrm{Pa}\approx2.87\times10^{-5}\,\mathrm{Pa}$，约是大气压的$2.8\times10^{-10}$。位移的振幅$A=\frac{2.87\times10^{-5}}{1.20\times343\times2\pi\times1000}\,\mathrm m\approx1.11\times10^{-11}\,\mathrm m$，约是原子大小的十分之一：耳朵能察觉的空气振动，比原子还小。
+  reference: |
+    （1）$\xi$随时间周期变化，$\xi_t$在一个周期里的积分是$\xi(t+\text{周期})-\xi(t)=0$，所以$\overline{p_0\xi_t}=0$。左边的流体每单位面积对这一层做功的功率$p\,\xi_t=p_0\xi_t+(p-p_0)\xi_t$，这就是单位时间从左向右穿过单位面积的能量，平均下来只剩$\overline{(p-p_0)\xi_t}$。
+
+    （2）$p-p_0=-K\xi_x=-KkA\sin(\omega t-kx)$，$\xi_t=-\omega A\sin(\omega t-kx)$，$\overline{(p-p_0)\xi_t}=Kk\omega A^2\,\overline{\sin^2(\omega t-kx)}=\frac12Kk\omega A^2$。$Kk=\rho_0v^2\cdot\frac\omega v=\rho_0v\omega$，所以声强$=\frac12\rho_0v\omega^2A^2=\frac{(\rho_0v\omega A)^2}{2\rho_0v}=\frac{(KkA)^2}{2\rho_0v}$。
+
+    （3）压强变化的振幅$\sqrt{2\rho_0vI}=\sqrt{2\times1.20\times343\times10^{-12}}\,\mathrm{Pa}\approx2.87\times10^{-5}\,\mathrm{Pa}$，约是大气压的$2.8\times10^{-10}$；位移的振幅$\frac{2.87\times10^{-5}}{1.20\times343\times2\pi\times1000}\,\mathrm m\approx1.11\times10^{-11}\,\mathrm m$，约是原子大小的$\frac1{10}$。
+
+- id: p6
+  tier: hard
+  statement: |
+    水里均匀地混着许多小气泡，气泡比波长小得多，占总体积的 1%；不计表面张力（surface tension），气泡里的压强和周围的水相同。气泡里空气的体积模量取$1.4\times10^5\,\mathrm{Pa}$、密度取$1.2\,\mathrm{kg/m^3}$，水的取$2.2\times10^9\,\mathrm{Pa}$、$998\,\mathrm{kg/m^3}$。
+
+    （1）一定量的混合物，体积$V$是气泡的体积$V_{\text{气}}$和水的体积$V_{\text{水}}$之和，三者都随压强变。把它们看成压强的函数，对压强求导，证明$\frac1K=\frac{V_{\text{气}}}V\cdot\frac1{K_{\text{气}}}+\frac{V_{\text{水}}}V\cdot\frac1{K_{\text{水}}}$，$K$、$K_{\text{气}}$、$K_{\text{水}}$分别是混合物、空气、水的体积模量。
+
+    （2）求混合物的密度和体积模量。
+
+    （3）求混合物里的声速，和纯水、空气里的比一比。
+
+    （4）为什么一点点气泡就让声速降这么多？
+  hints:
+    - |
+      由$K=-V\dv pV$，$\dv Vp=-\frac VK$（反函数的导数）。混合物的密度按体积比例加权。
+    - |
+      $\dv Vp=\dv{V_{\text{气}}}p+\dv{V_{\text{水}}}p$，每一项都换成$-\frac VK$的形式。$\frac1K$里气泡那一项是$\frac{0.01}{1.4\times10^5}$，水那一项是$\frac{0.99}{2.2\times10^9}$。
+    - |
+      （1）由$K=-V\dv pV$和[反函数的求导法则](lesson:math.calculus.implicit-differentiation#thm-inverse-derivative)，$\dv Vp=-\frac VK$；对气泡、水同样有$\dv{V_{\text{气}}}p=-\frac{V_{\text{气}}}{K_{\text{气}}}$、$\dv{V_{\text{水}}}p=-\frac{V_{\text{水}}}{K_{\text{水}}}$。$V=V_{\text{气}}+V_{\text{水}}$两边对$p$求导，再除以$-V$，就得到要证的式子。
+
+      （2）密度按体积比例加权：$\rho=0.01\times1.2+0.99\times998\approx988\,\mathrm{kg/m^3}$。$\frac1K=\frac{0.01}{1.4\times10^5}+\frac{0.99}{2.2\times10^9}\approx7.19\times10^{-8}\,\mathrm{Pa^{-1}}$，$K\approx1.39\times10^7\,\mathrm{Pa}$。
+
+      （3）$v=\sqrt{\frac{1.39\times10^7}{988}}\,\mathrm{m/s}\approx119\,\mathrm{m/s}$，只有纯水里（约$1.48\times10^3\,\mathrm{m/s}$）的约 8%，比空气里（约$342\,\mathrm{m/s}$）还慢。
+
+      （4）$\frac1K$里气泡那一项约是水那一项的 160 倍，混合物的体积模量几乎全由软的气泡决定，只是空气的约 100 倍；密度却几乎全由重的水决定，是空气的 800 多倍。所以$\frac K\rho$比空气的还小，声速比空气里还慢。
+  reference: |
+    （1）$\dv Vp=-\frac VK$（由$K=-V\dv pV$和反函数的导数），同理$\dv{V_{\text{气}}}p=-\frac{V_{\text{气}}}{K_{\text{气}}}$，$\dv{V_{\text{水}}}p=-\frac{V_{\text{水}}}{K_{\text{水}}}$。$V=V_{\text{气}}+V_{\text{水}}$对$p$求导：$-\frac VK=-\frac{V_{\text{气}}}{K_{\text{气}}}-\frac{V_{\text{水}}}{K_{\text{水}}}$，除以$-V$即得。气泡比波长小得多，各处的压强在一个气泡的范围里看成相同，混合物才能当作一种均匀的流体。
+
+    （2）$\rho=0.01\times1.2+0.99\times998\approx988.0\,\mathrm{kg/m^3}$；$\frac1K=7.143\times10^{-8}+4.5\times10^{-10}\approx7.19\times10^{-8}\,\mathrm{Pa^{-1}}$，$K\approx1.39\times10^7\,\mathrm{Pa}$。
+
+    （3）$v=\sqrt{K/\rho}\approx118.7\,\mathrm{m/s}\approx119\,\mathrm{m/s}$；纯水约$1.48\times10^3\,\mathrm{m/s}$（是它的约 12.5 倍），题给的空气约$\sqrt{1.4\times10^5/1.2}\approx342\,\mathrm{m/s}$。混合物比两者都慢。
+
+    （4）体积模量由软的一方定（$\frac1K$按体积加权，气泡项是水项的约 159 倍，$K$只是空气的约 99 倍），密度由重的一方定（是空气的约 823 倍），$\frac K\rho$比空气的还小。这里空气的体积模量用题给的$1.4\times10^5\,\mathrm{Pa}$，小气泡里的压缩更接近哪种过程，本题不讨论。
+
+- id: p7
+  tier: thinking
+  statement: |
+    一根长管，一端封闭、一端开口，管里是空气。把管里的空气当作讲解里的一柱流体。
+
+    （1）封闭端那一层空气的位移是多少？开口端和外面的大气连着，那里的压强近似是多少，对$\xi$是什么条件？
+
+    （2）弦的端点固定时$y=0$；末端系着能沿光滑竖杆自由滑动的轻环时$y_x=0$（见[波的反射与透射](lesson:physics.oscillations-waves.reflection-transmission)）。管的这两种端点各像弦的哪种端点？
+
+    （3）由此说明，管长为$\ell$时，管里空气柱的固有频率（natural frequency）为什么只有$\frac v{4\ell}$的奇数倍（可以和[驻波](lesson:physics.oscillations-waves.standing-waves)第 5 题对照）。
+  hints:
+    - |
+      封闭端那一层贴着管底，能不能动？开口端外面是大气，那里的压强能不能明显偏离$p_0$？
+    - |
+      封闭端$\xi=0$；开口端$p\approx p_0$，由$p-p_0=-K\xi_x$得$\xi_x=0$。把封闭端放在$x=0$，管里的驻波（standing wave）写成$\xi=B\sin kx\cos(\omega t+\varphi)$：它在$x=0$处为零，代进波动方程可知要$\omega=vk$。
+    - |
+      （1）封闭端那一层贴着管底，不能动，$\xi=0$。开口端和大气连着，压强近似保持$p_0$，由$p-p_0=-K\xi_x$，那里$\xi_x=0$。
+
+      （2）$\xi=0$和弦的固定端$y=0$一样；$\xi_x=0$和弦末端那个能沿光滑竖杆自由滑动的轻环（$y_x=0$）一样。
+
+      （3）$\xi$满足和弦一样的波动方程，两端的条件也一一对应。封闭端放在$x=0$，驻波$\xi=B\sin kx\cos(\omega t+\varphi)$（$\omega=vk$）满足那里的条件；开口端$x=\ell$处$\xi_x=Bk\cos k\ell\cos(\omega t+\varphi)$要始终为零，所以$\cos k\ell=0$，$k\ell=\bigl(n-\frac12\bigr)\pi$，$f=\frac{vk}{2\pi}=\frac{(2n-1)v}{4\ell}$，$n=1,2,3,\dots$。封闭端是位移的波节（node），开口端是波腹（antinode），管长是$\frac\lambda4$的奇数倍；固有频率只有基频（fundamental frequency）$\frac v{4\ell}$的奇数倍，和[驻波](lesson:physics.oscillations-waves.standing-waves)第 5 题里一端固定、一端系轻环的弦一样。
+  reference: |
+    （1）封闭端：那一层贴着管底不能动，$\xi=0$。开口端：和外面的大气连通，压强近似保持$p_0$，由$p-p_0=-K\xi_x$得$\xi_x=0$（管口修正不计）。
+
+    （2）$\xi=0$对应弦的固定端$y=0$；$\xi_x=0$对应系着能沿光滑竖杆自由滑动的轻环的那一端$y_x=0$（轻环受不了竖直方向的力，$-Ty_x=0$；开口端也「推不动」大气，$p-p_0=0$）。
+
+    （3）$\xi$满足$\xi_{tt}=v^2\xi_{xx}$，边界条件和驻波一节第 5 题的弦一一对应，驻波是$B\sin kx\cos(\omega t+\varphi)$（封闭端在$x=0$），开口端要$\cos k\ell=0$，$k\ell=\bigl(n-\frac12\bigr)\pi$，$f=\frac{(2n-1)v}{4\ell}$。封闭端是位移的波节、压强变化的波腹，开口端是位移的波腹、压强变化的波节；固有频率只有基频$\frac v{4\ell}$的奇数倍。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）仿照弦的阻抗（impedance，见[波的反射与透射](lesson:physics.oscillations-waves.reflection-transmission#def-impedance)），说明向右传播的声波$\xi=f(x-vt)$里$p-p_0=Z\xi_t$，$Z=\rho_0v=\sqrt{K\rho_0}$；$Z$叫作声阻抗（acoustic impedance）。
+
+    （2）$20\,^\circ\mathrm C$的空气取$\rho_0=1.20\,\mathrm{kg/m^3}$、$v=343\,\mathrm{m/s}$，水取$K=2.2\times10^9\,\mathrm{Pa}$、$\rho_0=998\,\mathrm{kg/m^3}$，估算两者的声阻抗。声波垂直射到水面上时，界面两侧的位移连续，压强也连续；压强的变化$-K\xi_x$对应弦的横向力，$K$对应张力，所以界面像张力不同的两根弦用轻环相接的地方。[波的反射与透射](lesson:physics.oscillations-waves.reflection-transmission)第 6 题说明这时反射、透射仍只由阻抗决定，照[波的能量与能流](lesson:physics.oscillations-waves.wave-energy#thm-junction-energy)里的推导，透过去的能量占入射的比例仍是$\frac{4Z_1Z_2}{(Z_1+Z_2)^2}$，$Z_1$、$Z_2$是入射一侧和另一侧的声阻抗。为什么在水下几乎听不见岸上的人说话？
+
+    （3）反过来，水下的声音传到空气里，透过去的能量比例一样吗？
+  hints:
+    - |
+      对$f(x-vt)$，$\xi_t$和$\xi_x$有什么关系？再用$p-p_0=-K\xi_x$。
+    - |
+      $\xi_t=-v\xi_x$，所以$p-p_0=\frac Kv\xi_t$，$\frac Kv=\rho_0v=\sqrt{K\rho_0}$。$Z_1\ll Z_2$时，$\frac{4Z_1Z_2}{(Z_1+Z_2)^2}\approx\frac{4Z_1}{Z_2}$。
+    - |
+      （1）$\xi=f(x-vt)$时$\xi_x=f'$，$\xi_t=-vf'$，所以$p-p_0=-K\xi_x=\frac Kv\xi_t$。由$v^2=\frac K{\rho_0}$，$\frac Kv=\rho_0v=\sqrt{K\rho_0}$。和弦一样，$Z$说的是要让介质以单位速度运动，得用多大的压强变化去推。
+
+      （2）空气$Z_1=1.20\times343\,\mathrm{Pa\cdot s/m}\approx4.1\times10^2\,\mathrm{Pa\cdot s/m}$，水$Z_2=\sqrt{2.2\times10^9\times998}\,\mathrm{Pa\cdot s/m}\approx1.48\times10^6\,\mathrm{Pa\cdot s/m}$，水的约是空气的$3.6\times10^3$倍。透过去的比例约为$\frac{4Z_1}{Z_2}\approx1.1\times10^{-3}$，只有约千分之一，其余的都被水面反射回去了。
+
+      （3）$\frac{4Z_1Z_2}{(Z_1+Z_2)^2}$对$Z_1$、$Z_2$是对称的，反过来透过去的比例也一样，约千分之一。所以在水下听岸上的人说话，和在岸上听水下的声音一样难。
+  reference: |
+    （1）$\xi_x=f'$，$\xi_t=-vf'$，$p-p_0=-K\xi_x=\frac Kv\xi_t$；$\frac Kv=\frac{\rho_0v^2}v=\rho_0v=\sqrt{K\rho_0}$。对应弦的$-Ty_x=Zy_t$：压强变化对应横向的力，层的速度对应弦上点的横向速度。
+
+    （2）$Z_{\text{空气}}=1.20\times343\approx412\,\mathrm{Pa\cdot s/m}$，$Z_{\text{水}}=\sqrt{2.2\times10^9\times998}\approx1.48\times10^6\,\mathrm{Pa\cdot s/m}$，比值约$3.6\times10^3$。界面两侧位移连续（流体不分开）、压强连续（界面没有质量），即$\xi$和$K\xi_x$连续，和张力不同的两根弦用轻环相接时的两个条件（$y$和$Ty_x$连续，波的反射与透射一节第 6 题）对应，那里的$r$、$\tau$仍只由阻抗决定，简谐波的平均功率仍是$\frac12Z\omega^2A^2$，所以透射的能量比例照样是$\frac{4Z_1Z_2}{(Z_1+Z_2)^2}\approx1.1\times10^{-3}$，约千分之一，其余 99.9% 被反射。
+
+    （3）表达式对$Z_1$、$Z_2$对称，反过来也是约$1.1\times10^{-3}$。（声音的振幅透射系数两个方向不同，能量的比例相同。）

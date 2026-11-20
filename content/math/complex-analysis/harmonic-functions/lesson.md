@@ -31,7 +31,7 @@ status: reviewed
 ::anchor{id="def-harmonic-conjugate"}
 设$u$是:term[开集]{id="math.complex-analysis.open-set"}$D$上的实值调和函数。如果实函数$v$使$u+iv$在$D$上:term[全纯]{id="math.complex-analysis.holomorphic-function"}，就说$v$是$u$在$D$上的:term[共轭调和函数]{id="math.complex-analysis.harmonic-conjugate"}（harmonic conjugate）。
 
-为什么这样定义：找$u$的共轭调和函数，就是找以$u$为:term[实部]{id="math.complex-analysis.real-part"}的全纯函数，调和函数的问题就能交给全纯函数处理。在:term[区域]{id="math.complex-analysis.domain"}（domain）上，共轭调和函数只能差一个常数：$v_1$、$v_2$都是时，$i(v_1-v_2)$全纯、实部为$0$，由:term[柯西-黎曼方程]{id="math.complex-analysis.cauchy-riemann-equations"}，它的导数为$0$，是常数（[柯西-黎曼方程与全纯函数](lesson:math.complex-analysis.holomorphic)第 5 题）。边界情况：这个关系不对称：$-i(u+iv)=v-iu$全纯，所以$v$的共轭调和函数是$-u$，不是$u$。
+为什么这样定义：找$u$的共轭调和函数，就是找以$u$为:term[实部]{id="math.complex-analysis.real-part"}的全纯函数，调和函数的问题就能交给全纯函数处理。在:term[区域]{id="math.complex-analysis.domain"}（domain）上，共轭调和函数只能差一个常数：$v_1$、$v_2$都是时，$i(v_1-v_2)$全纯、实部为$0$，由:term[柯西-黎曼方程]{id="math.complex-analysis.cauchy-riemann-equations"}，它的导数为$0$，是常数（[柯西-黎曼方程与全纯函数](lesson:math.complex-analysis.holomorphic)第 5 题）。边界情况：这个关系不:term[对称]{id="math.logic-sets.symmetric"}（symmetric）：$-i(u+iv)=v-iu$全纯，所以$v$的共轭调和函数是$-u$，不是$u$。
 
 ### 圆盘里一定有共轭调和函数
 

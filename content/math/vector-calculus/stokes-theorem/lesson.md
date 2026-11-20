@@ -51,7 +51,7 @@ $\vb F$有:term[连续]{id="math.vector-calculus.continuous"}的:term[偏导数]
 
 **证明思路**：任取$D$里的一条:term[闭曲线]{id="math.vector-calculus.closed-curve"}$C$。$D$单连通，$C$能在$D$里连续地缩成一点，缩的过程中$C$扫过一张以$C$为边界的曲面$S$，整个在$D$里。对$S$用:term[斯托克斯公式]{id="math.vector-calculus.stokes-theorem"}，$\oint_C\vb F\cdot\dd\vb r=\iint_S\vb 0\cdot\dd\vb a=0$；每条闭曲线的:term[环量]{id="math.vector-calculus.circulation"}都是零，:term[曲线积分]{id="math.vector-calculus.line-integral"}就和路径无关，$\vb F$是保守场。扫出的曲面可能自己相交、不够光滑，把它修成:term[分片光滑]{id="math.vector-calculus.piecewise-smooth-surface"}的曲面这一步，这里不证。
 
-为什么要单连通：去掉$z$轴的空间不是单连通的。$\vb G=\frac{(-y,x,0)}{x^2+y^2}$在那里:term[旋度]{id="math.vector-calculus.curl"}为零，绕$z$轴一圈的环量却是$2\pi$，和[保守场与路径无关](lesson:math.vector-calculus.conservative-fields)例 2 的平面场一样，所以不是保守场；以这个圈为边界的曲面都要穿过$z$轴（第 8 题）。去掉一个点的空间却是单连通的：绕着那一点的圈可以从旁边滑过去、缩成一点，所以引力场在去掉质点的空间里是保守场。
+为什么要单连通：去掉$z$轴的空间不是单连通的。$\vb G=\frac{(-y,x,0)}{x^2+y^2}$在那里:term[旋度]{id="math.vector-calculus.curl"}为零，绕$z$轴一圈的环量却是$2\pi$，和[保守场与路径无关](lesson:math.vector-calculus.conservative-fields)例 2 的平面场一样，所以不是保守场；以这个圈为边界的曲面都要穿过$z$轴（第 8 题）。去掉一个点的空间却是单连通的：绕着那一点的圈可以从旁边滑过去、缩成一点，所以:term[引力场]{id="physics.general-relativity.gravitational-field"}（gravitational field）在去掉质点的空间里是保守场。
 
 ### 边界相同的两张曲面
 

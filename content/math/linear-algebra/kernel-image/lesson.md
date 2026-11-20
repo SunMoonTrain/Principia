@@ -33,7 +33,7 @@ status: reviewed
 ::anchor{id="def-kernel-image"}
 设$T:V\to W$是:term[线性映射]{id="math.linear-algebra.linear-map"}。$V$中被$T$送到$\vb 0$的向量全体$\{\vb v\in V:T(\vb v)=\vb 0\}$叫作$T$的:term[核]{id="math.linear-algebra.kernel"}（kernel），记作$\ker T$；$V$中所有向量的:term[像]{id="math.linear-algebra.image"}组成的集合$\{T(\vb v):\vb v\in V\}$叫作$T$的像，记作$\im T$。
 
-为什么这样定义：$T(\vb x)=A\vb x$时，$\ker T$就是零空间$N(A)$，$\im T$就是列空间$C(A)$。核管的是$T(\vb v)=\vb w$的解有多少，两个解相减就落在核里；像管的是哪些$\vb w$能解出来。边界情况：把每个向量都送到$\vb 0$的零映射（zero map），核是$V$、像是$\{\vb 0\}$；恒等映射（identity map）$\vb v\mapsto\vb v$的核是$\{\vb 0\}$、像是$V$。
+为什么这样定义：$T(\vb x)=A\vb x$时，$\ker T$就是零空间$N(A)$，$\im T$就是列空间$C(A)$。核管的是$T(\vb v)=\vb w$的解有多少，两个解相减就落在核里；像管的是哪些$\vb w$能解出来。边界情况：把每个向量都送到$\vb 0$的零映射（zero map），核是$V$、像是$\{\vb 0\}$；:term[恒等映射]{id="math.logic-sets.identity-map"}（identity map）$\vb v\mapsto\vb v$的核是$\{\vb 0\}$、像是$V$。
 
 ::anchor{id="thm-subspaces"}
 **核与像都是:term[子空间]{id="math.linear-algebra.subspace"}**　$\ker T$是$V$的子空间，$\im T$是$W$的子空间。
@@ -47,7 +47,7 @@ status: reviewed
 ::anchor{id="def-injective-surjective"}
 如果$V$中不同的向量在$T$下的:term[像]{id="math.linear-algebra.image"}总不相同，就说$T$是:term[单射]{id="math.linear-algebra.injective"}（injective）；如果$W$中每个向量都是某个向量的像，即$\im T=W$，就说$T$是:term[满射]{id="math.linear-algebra.surjective"}（surjective）。
 
-为什么这样定义：单射说的是，对每个$\vb w$，方程$T(\vb v)=\vb w$最多有一个解；满射说的是至少有一个解。求导$D:P_3\to P_2$是满射，却不是单射，因为$p$和$p+1$的导数相同。把$P_2$里的多项式原样看成$P_3$里的元素，这个映射是单射，却不是满射：$x^3$不是任何元素的像。
+为什么这样定义：单射说的是，对每个$\vb w$，方程$T(\vb v)=\vb w$最多有一个解；满射说的是至少有一个解。求导$D:P_3\to P_2$是满射，却不是单射，因为$p$和$p+1$的导数相同。把$P_2$里的多项式原样看成$P_3$里的元素，这个:term[映射]{id="math.logic-sets.map"}（map）是单射，却不是满射：$x^3$不是任何元素的像。
 
 ::anchor{id="thm-injective-kernel"}
 **单射看:term[核]{id="math.linear-algebra.kernel"}**　:term[线性映射]{id="math.linear-algebra.linear-map"}$T$是单射，当且仅当$\ker T=\{\vb 0\}$。

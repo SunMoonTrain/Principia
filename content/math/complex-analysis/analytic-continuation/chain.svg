@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 350" width="490" height="350" font-family="serif" fill="currentColor">
+<circle cx="310" cy="175" r="54" fill="var(--accent, #2563eb)" fill-opacity="0.07" stroke="currentColor" stroke-opacity="0.45" stroke-width="1"/>
+<circle cx="297.9" cy="130" r="54" fill="var(--accent, #2563eb)" fill-opacity="0.07" stroke="currentColor" stroke-opacity="0.45" stroke-width="1"/>
+<circle cx="265" cy="97.1" r="54" fill="var(--accent, #2563eb)" fill-opacity="0.07" stroke="currentColor" stroke-opacity="0.45" stroke-width="1"/>
+<circle cx="220" cy="85" r="54" fill="var(--accent, #2563eb)" fill-opacity="0.07" stroke="currentColor" stroke-opacity="0.45" stroke-width="1"/>
+<circle cx="175" cy="97.1" r="54" fill="var(--accent, #2563eb)" fill-opacity="0.07" stroke="currentColor" stroke-opacity="0.45" stroke-width="1"/>
+<circle cx="142.1" cy="130" r="54" fill="var(--accent, #2563eb)" fill-opacity="0.07" stroke="currentColor" stroke-opacity="0.45" stroke-width="1"/>
+<circle cx="130" cy="175" r="54" fill="var(--accent, #2563eb)" fill-opacity="0.07" stroke="currentColor" stroke-opacity="0.45" stroke-width="1"/>
+<circle cx="142.1" cy="220" r="54" fill="var(--accent, #2563eb)" fill-opacity="0.07" stroke="currentColor" stroke-opacity="0.45" stroke-width="1"/>
+<circle cx="175" cy="252.9" r="54" fill="var(--accent, #2563eb)" fill-opacity="0.07" stroke="currentColor" stroke-opacity="0.45" stroke-width="1"/>
+<circle cx="220" cy="265" r="54" fill="var(--accent, #2563eb)" fill-opacity="0.07" stroke="currentColor" stroke-opacity="0.45" stroke-width="1"/>
+<circle cx="265" cy="252.9" r="54" fill="var(--accent, #2563eb)" fill-opacity="0.07" stroke="currentColor" stroke-opacity="0.45" stroke-width="1"/>
+<circle cx="297.9" cy="220" r="54" fill="var(--accent, #2563eb)" fill-opacity="0.07" stroke="currentColor" stroke-opacity="0.45" stroke-width="1"/>
+<circle cx="310" cy="175" r="54" fill="none" stroke="var(--good, #059669)" stroke-width="2"/>
+<circle cx="220" cy="175" r="90" fill="none" stroke="var(--accent, #2563eb)" stroke-width="2"/>
+<path d="M279.4 107.1L290.7 111.3L283.6 118.4Z" fill="var(--accent, #2563eb)"/>
+<path d="M152.1 115.6L156.3 104.3L163.4 111.4Z" fill="var(--accent, #2563eb)"/>
+<path d="M160.6 242.9L149.3 238.7L156.4 231.6Z" fill="var(--accent, #2563eb)"/>
+<path d="M287.9 234.4L283.7 245.7L276.6 238.6Z" fill="var(--accent, #2563eb)"/>
+<circle cx="310" cy="175" r="2.2"/>
+<circle cx="297.9" cy="130" r="2.2"/>
+<circle cx="265" cy="97.1" r="2.2"/>
+<circle cx="220" cy="85" r="2.2"/>
+<circle cx="175" cy="97.1" r="2.2"/>
+<circle cx="142.1" cy="130" r="2.2"/>
+<circle cx="130" cy="175" r="2.2"/>
+<circle cx="142.1" cy="220" r="2.2"/>
+<circle cx="175" cy="252.9" r="2.2"/>
+<circle cx="220" cy="265" r="2.2"/>
+<circle cx="265" cy="252.9" r="2.2"/>
+<circle cx="297.9" cy="220" r="2.2"/>
+<circle cx="220" cy="175" r="3"/>
+<text x="227" y="192" font-size="15">0</text>
+<text x="374" y="160" font-size="15">出发：√<tspan font-style="italic">z</tspan> = 1</text>
+<text x="374" y="202" font-size="15">回来：√<tspan font-style="italic">z</tspan> = −1</text>
+<text x="68" y="180" font-size="15" text-anchor="end">√<tspan font-style="italic">z</tspan> = <tspan font-style="italic">i</tspan></text>
+</svg>

@@ -1,0 +1,213 @@
+- id: p1
+  tier: easy
+  statement: |
+    冰箱门里夹着一层厚$5.0\,\mathrm{cm}$的泡沫塑料保温层，面积为$0.60\,\mathrm{m^2}$，热导率取$0.025\,\mathrm{W/(m\cdot K)}$。保温层朝冰箱里的一面是$4\,^\circ\mathrm C$，朝外的一面是$24\,^\circ\mathrm C$，温度沿厚度方向均匀地变化。每秒有多少热量穿过这层保温层传进冰箱？
+  answer:
+    type: number
+    value: 0.025*0.60*20/0.050
+    unit: |
+      $\mathrm J$
+  hints:
+    - |
+      热量沿保温层的厚度方向传，用傅里叶定律。温度均匀地变化，温度沿厚度方向的变化率是多少？
+    - |
+      温差$\Delta T=20\,\mathrm K$，厚度$h=0.050\,\mathrm m$，变化率的大小是$\frac{\Delta T}h$；热流密度的大小$|q|=\kappa\frac{\Delta T}h$，乘以面积就是每秒传过的热量。
+    - |
+      $\frac{\Delta T}h=\frac{20}{0.050}\,\mathrm{K/m}=400\,\mathrm{K/m}$，$|q|=0.025\times400\,\mathrm{W/m^2}=10\,\mathrm{W/m^2}$，每秒传进$10\times0.60\,\mathrm J=6.0\,\mathrm J$。
+  solution: |
+    保温层里温度沿厚度方向均匀地变化，变化率的大小是$\frac{20\,\mathrm K}{0.050\,\mathrm m}=400\,\mathrm{K/m}$。由傅里叶定律，热流密度的大小$|q|=0.025\times400\,\mathrm{W/m^2}=10\,\mathrm{W/m^2}$，乘以面积$0.60\,\mathrm{m^2}$，每秒传进冰箱约$6.0\,\mathrm J$的热量。
+
+    泡沫塑料的热导率和空气的差不多：它里面是许多封闭的小气泡，热量主要靠气泡里不流动的气体传导，塑料本身只占很小一部分体积。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法正确？气体都看成理想气体，分子的有效直径（effective diameter）不随温度、压强变化，平均自由程都远小于容器的大小；涉及数量关系的，按讲解里的估算式判断。
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        热导率的单位也可以写成$\mathrm{kg\cdot m/(s^3\cdot K)}$
+      - |
+        温度不变时，把一定量的气体压缩到原来体积的一半，它的扩散系数变为原来的 2 倍
+      - |
+        温度不变时，同一种气体的$\frac{\rho D}\eta$不随压强变化，$\rho$是气体的密度
+      - |
+        同一温度下，各种单原子气体的热导率与黏度之比$\frac\kappa\eta$都相同
+    value: [1, 3]
+  hints:
+    - |
+      A 换算单位；B、C、D 用讲解里的估算式，每一项先看哪些量变了、哪些没变。
+    - |
+      $\mathrm W=\mathrm{J/s}$，$\mathrm J=\mathrm{kg\cdot m^2/s^2}$。$D\approx\frac13v_{\mathrm{rms}}\lambda$，$\lambda\approx\frac{\kB T}{\sqrt2\,\sigma p}$；$\eta\approx\rho D$，$\kappa\approx c_V\eta$，单原子气体的$C_{V,\mathrm m}=\frac32R$。
+    - |
+      A 对：$\mathrm{W/(m\cdot K)}=\frac{\mathrm{kg\cdot m^2/s^3}}{\mathrm{m\cdot K}}=\mathrm{kg\cdot m/(s^3\cdot K)}$。B 错：温度不变时体积变为一半，压强变为 2 倍，平均自由程变为一半，扩散系数也变为原来的一半。C 对：$\eta\approx\rho D$，比值约为 1，和压强无关。D 错：$\frac\kappa\eta\approx c_V=\frac{3R}{2M}$，摩尔质量$M$不同，比值就不同；各种单原子气体都相同的是每个原子的$mc_V=\frac32\kB$，不是单位质量的$c_V$。
+  solution: |
+    选 A、C。A 对：$\mathrm W=\mathrm{J/s}=\mathrm{kg\cdot m^2/s^3}$，所以$\mathrm{W/(m\cdot K)}=\mathrm{kg\cdot m/(s^3\cdot K)}$。B 错：温度不变时体积变为一半，压强变为 2 倍，$D\approx\frac{v_{\mathrm{rms}}\kB T}{3\sqrt2\,\sigma p}$变为原来的一半。
+
+    C 对：$\rho D\approx\frac13\rho v_{\mathrm{rms}}\lambda\approx\eta$；压强变大时$\rho$变大、$D$变小，乘积不变，和$\eta$一样与压强无关。D 错：$\frac\kappa\eta\approx c_V$，单原子气体的$c_V=\frac{C_{V,\mathrm m}}M=\frac{3R}{2M}$，轻的气体比值大：同样是$1\,\mathrm{kg}$，氦的原子数约是氩的 10 倍，升高$1\,\mathrm K$要的热量也约是氩的 10 倍。
+
+- id: p3
+  tier: medium
+  statement: |
+    氩气的温度从$300\,\mathrm K$升到$450\,\mathrm K$，同时压强从$1.0\times10^5\,\mathrm{Pa}$降到$5.0\times10^4\,\mathrm{Pa}$。氩原子的有效直径不变，平均自由程始终远小于容器的大小；扩散系数指做了记号的氩原子在氩气里的扩散系数。按讲解里的估算式，氩气的热导率、扩散系数各变为原来的几倍？依次填两个倍数，用逗号隔开，结果保留三位有效数字。
+  answer:
+    type: tuple
+    value: [sqrt(450/300), (450/300)^1.5*(1.0e5/5.0e4)]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      热导率、扩散系数各和温度、压强有什么关系？氩是单原子气体，定容比热容$c_V$不随温度变化。
+    - |
+      $\kappa\approx\frac{mc_Vv_{\mathrm{rms}}}{3\sqrt2\,\sigma}$，$D\approx\frac{v_{\mathrm{rms}}\kB T}{3\sqrt2\,\sigma p}$，$v_{\mathrm{rms}}=\sqrt{\frac{3\kB T}m}$和$\sqrt T$成正比。
+    - |
+      热导率和压强无关，只和$\sqrt T$成正比：变为$\sqrt{\frac{450}{300}}\approx1.22$倍。扩散系数和$\frac{T^{3/2}}p$成正比：变为$\bigl(\frac{450}{300}\bigr)^{3/2}\times\frac{1.0\times10^5}{5.0\times10^4}\approx1.837\times2\approx3.67$倍。
+  solution: |
+    $\kappa\approx\frac{mc_Vv_{\mathrm{rms}}}{3\sqrt2\,\sigma}$里只有$v_{\mathrm{rms}}\propto\sqrt T$随状态变，压强不影响热导率，所以它变为$\sqrt{1.5}\approx1.22$倍。$D\approx\frac{v_{\mathrm{rms}}\kB T}{3\sqrt2\,\sigma p}$和$\frac{T^{3/2}}p$成正比，变为$1.5^{3/2}\times2\approx3.67$倍。
+
+    扩散系数涨得多：温度升高，原子跑得更快，压强不变时平均自由程也和$T$成正比地变长；压强降为一半，挡路的原子少了一半，平均自由程又变为 2 倍。
+
+- id: p4
+  tier: medium
+  statement: |
+    同一温度下，氦气的热导率是氩气的几倍？氦原子、氩原子的有效直径分别取$2.2\times10^{-10}\,\mathrm m$、$3.6\times10^{-10}\,\mathrm m$，摩尔质量分别取$4.003\,\mathrm{g/mol}$、$39.95\,\mathrm{g/mol}$；两种气体都看成单原子分子组成的理想气体，平均自由程都远小于容器的大小。按讲解里的估算式计算，结果保留三位有效数字。
+  answer:
+    type: number
+    value: sqrt(39.95/4.003)*(3.6/2.2)^2
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      两种都是单原子气体，每个原子的$mc_V$一样大；热导率还和哪些量有关？用得着压强吗？
+    - |
+      $\kappa\approx\frac{mc_Vv_{\mathrm{rms}}}{3\sqrt2\,\sigma}$，单原子气体的$mc_V=\frac32\kB$；$v_{\mathrm{rms}}=\sqrt{\frac{3RT}M}$和$\frac1{\sqrt M}$成正比，$\sigma=\pi d^2$。
+    - |
+      温度相同时，$\kappa$和$\frac{v_{\mathrm{rms}}}\sigma$成正比，也就和$\frac1{\sqrt M\,d^2}$成正比。所以氦和氩的热导率之比是$\sqrt{\frac{39.95}{4.003}}\times\Bigl(\frac{3.6}{2.2}\Bigr)^2\approx3.159\times2.678\approx8.46$。
+  solution: |
+    单原子气体每个原子的$mc_V=\frac{C_{V,\mathrm m}}{N_{\mathrm A}}=\frac32\kB$，两种气体一样；热导率又和压强无关，所以温度相同时，$\kappa\approx\frac{mc_Vv_{\mathrm{rms}}}{3\sqrt2\,\sigma}$只随$\frac{v_{\mathrm{rms}}}\sigma\propto\frac1{\sqrt M\,d^2}$变。氦和氩的热导率之比是$\sqrt{\frac{39.95}{4.003}}\times\bigl(\frac{3.6}{2.2}\bigr)^2\approx8.46$。
+
+    氦原子轻，方均根速率约是氩的 3.2 倍；又小，碰撞截面只有氩的约$\frac1{2.7}$，平均自由程长，两样乘起来，导热好得多。实测的比约为 8.8（$300\,\mathrm K$时氦约$0.155\,\mathrm{W/(m\cdot K)}$，氩约$0.0177\,\mathrm{W/(m\cdot K)}$）：粗估的系数虽然不准，两种气体偏得差不多，比值相当准。
+
+- id: p5
+  tier: hard
+  statement: |
+    两块很大的平板水平放置，相距$h$，中间是某种气体；下板保持温度$T_1$，上板保持较高的温度$T_2$，已经稳定：各处的温度不随时间变化，气体静止，热量只靠热传导沿竖直方向传。$z$轴竖直向上、从下板量起。按讲解里的估算，气体的热导率随温度变化，$\kappa=\kappa_0\sqrt{T/T_0}$，$\kappa_0$、$T_0$是常量。
+
+    （1）取$z$到$z+\Delta z$之间的一薄层气体，说明热流密度$q$处处相同。
+
+    （2）证明$T^{3/2}$随$z$均匀地变化，并用$T_1$、$T_2$、$h$、$\kappa_0$、$T_0$写出$q$。
+
+    （3）$T_1=300\,\mathrm K$、$T_2=600\,\mathrm K$时，两板正中间的温度是多少？为什么它比两板温度的平均值高？
+  hints:
+    - |
+      （1）稳定时这一薄层的内能不变，它又不对外做功；每秒从下面流进来的热量和从上面流出去的热量是什么关系？（2）$\kappa\dv Tz$能不能写成某个函数对$z$的导数？
+    - |
+      （1）设板的面积是$A$，薄层每秒从下表面得到$q(z)A$，从上表面失去$q(z+\Delta z)A$，由热力学第一定律（first law of thermodynamics），两者相等。（2）由链式法则（chain rule），$\dv{}z\bigl(T^{3/2}\bigr)=\frac32\sqrt T\dv Tz$。
+    - |
+      （1）稳定时薄层的温度、内能都不变，它又不做功，由[热力学第一定律](lesson:physics.thermal-physics.first-law#thm-first-law)，它每秒净吸收的热量为零。设板的面积是$A$，薄层每秒从下表面流进$q(z)A$，从上表面流出$q(z+\Delta z)A$，所以$q(z+\Delta z)=q(z)$对任意的$z$、$\Delta z$都成立，$q$处处相同。
+
+      （2）由链式法则，$\dv{}z\bigl(T^{3/2}\bigr)=\frac32\sqrt T\dv Tz$，所以
+
+      $$
+      q=-\kappa_0\sqrt{\frac T{T_0}}\dv Tz=-\frac{2\kappa_0}{3\sqrt{T_0}}\dv{}z\bigl(T^{3/2}\bigr) .
+      $$
+
+      $q$是常数，$T^{3/2}$对$z$的导数也就是常数，所以$T^{3/2}$是$z$的一次函数（[微分中值定理](lesson:math.calculus.mean-value-theorem#thm-same-derivative)的推论 2）：$T^{3/2}=T_1^{3/2}+\bigl(T_2^{3/2}-T_1^{3/2}\bigr)\frac zh$。代回去，$q=-\frac{2\kappa_0\bigl(T_2^{3/2}-T_1^{3/2}\bigr)}{3\sqrt{T_0}\,h}$，负号表示热量向下流。
+
+      （3）正中间$T^{3/2}=\frac12\bigl(300^{3/2}+600^{3/2}\bigr)\,\mathrm{K^{3/2}}\approx9.95\times10^3\,\mathrm{K^{3/2}}$，所以$T\approx462.5\,\mathrm K$，比平均值$450\,\mathrm K$高。$q$处处相同，热的一侧$\kappa$大，温度变化得缓，冷的一侧$\kappa$小，温度变化得陡。所以大部分温差落在靠冷板的那一半里，正中间偏热。
+  reference: |
+    （1）稳态：薄层内能不变、不做功，净吸热为零；下表面流入$q(z)A$，上表面流出$q(z+\Delta z)A$，故$q(z+\Delta z)=q(z)$，$q$为常数。
+
+    （2）$q=-\kappa_0\sqrt{T/T_0}\,T'=-\frac{2\kappa_0}{3\sqrt{T_0}}\bigl(T^{3/2}\bigr)'$，$q$为常数，所以$\bigl(T^{3/2}\bigr)'$为常数，$T^{3/2}$是$z$的一次函数（中值定理推论）：$T^{3/2}=T_1^{3/2}+\bigl(T_2^{3/2}-T_1^{3/2}\bigr)\frac zh$。$q=-\frac{2\kappa_0(T_2^{3/2}-T_1^{3/2})}{3\sqrt{T_0}\,h}<0$，热量向下流。检验：$T_2\to T_1$时$q\approx-\kappa_0\sqrt{T_1/T_0}\frac{T_2-T_1}h$，回到常数热导率的结果。
+
+    （3）$T_{\text{中}}=\Bigl[\frac{300^{3/2}+600^{3/2}}2\Bigr]^{2/3}\approx462.5\,\mathrm K>450\,\mathrm K$。$q=-\kappa T'$处处相同，$\kappa$大的热端$|T'|$小，温度曲线在热端平、在冷端陡，大部分温差落在冷的一半。数值积分（取$\kappa_0=1$、$T_0=300\,\mathrm K$、$h=1$）得中点$462.50\,\mathrm K$，与公式一致。
+
+- id: p6
+  tier: hard
+  statement: |
+    热水管外面包着一层圆筒形的保温材料，内半径$r_1$、外半径$r_2$，长$L$，热导率$\kappa$不随温度变化。已经稳定：保温层内表面的温度比外表面高$\Delta T$，热量沿半径方向向外传，从两端散失的不计。在半径为$r$的圆柱面上，沿半径向外的热流密度处处相同，傅里叶定律写成$q=-\kappa\dv Tr$。
+
+    （1）说明每秒穿过半径为$r$（$r_1<r<r_2$）的圆柱面的热量$\Phi$和$r$无关，并证明$\Phi=\frac{2\pi\kappa L\Delta T}{\ln(r_2/r_1)}$。
+
+    （2）$\kappa=0.040\,\mathrm{W/(m\cdot K)}$，$r_1=5.0\,\mathrm{cm}$，$r_2=8.0\,\mathrm{cm}$，$\Delta T=100\,\mathrm K$。每米长的管子每秒散失多少热量？
+
+    （3）保温层很薄（$r_2-r_1$比$r_1$小得多）时，结果变成什么样子？保温层越加越厚，每再加厚一层，散热减少得越来越少，为什么？
+  hints:
+    - |
+      （1）稳定时，两个圆柱面之间的那一层保温材料内能不变，又不做功；每秒穿过圆柱面的热量是热流密度乘以圆柱面的面积。（3）$x$很小时$\ln(1+x)\approx x$。
+    - |
+      （1）$\Phi=2\pi rL\,q=-2\pi\kappa Lr\dv Tr$是常数，所以$\dv Tr=-\frac\Phi{2\pi\kappa L}\cdot\frac1r$，两边从$r_1$积到$r_2$。（3）$\ln\frac{r_2}{r_1}=\ln\Bigl(1+\frac{r_2-r_1}{r_1}\Bigr)$；外层的圆柱面比内层的大。
+    - |
+      （1）稳定时，半径为$r$和$r+\Delta r$的两个圆柱面之间那一层的内能不变，又不做功，由热力学第一定律，每秒从里面流进来的热量等于从外面流出去的，所以$\Phi$对每个$r$都一样。圆柱面的面积是$2\pi rL$，$\Phi=2\pi rL\,q=-2\pi\kappa Lr\dv Tr$，于是$\dv Tr=-\frac\Phi{2\pi\kappa L}\cdot\frac1r$。由牛顿-莱布尼茨公式（Newton–Leibniz formula）和$\int\frac{\dd r}r=\ln r+C$（见[原函数与不定积分](lesson:math.calculus.antiderivatives)），两边从$r_1$积到$r_2$：
+
+      $$
+      T(r_2)-T(r_1)=-\frac\Phi{2\pi\kappa L}\ln\frac{r_2}{r_1} .
+      $$
+
+      左边是$-\Delta T$，所以$\Phi=\frac{2\pi\kappa L\Delta T}{\ln(r_2/r_1)}$。
+
+      （2）$\frac\Phi L=\frac{2\pi\times0.040\times100}{\ln1.6}\,\mathrm{W/m}\approx53\,\mathrm{W/m}$，每米长的管子每秒散失约$53\,\mathrm J$。
+
+      （3）$r_2-r_1\ll r_1$时，$\ln\frac{r_2}{r_1}=\ln\bigl(1+\frac{r_2-r_1}{r_1}\bigr)\approx\frac{r_2-r_1}{r_1}$（见[微分与线性近似](lesson:math.calculus.differentials#def-linear-approximation)），$\Phi\approx\kappa\cdot2\pi r_1L\cdot\frac{\Delta T}{r_2-r_1}$，正是面积为$2\pi r_1L$、厚$r_2-r_1$的平板按傅里叶定律算出的结果。保温层厚了，越往外圆柱面越大，同样的$\Phi$摊在更大的面积上，外层里温度变化得越来越缓，分到的温差越来越少。$\Phi$和$\ln\frac{r_2}{r_1}$成反比，$r_2$越大减小得越慢：$r_2$从$8\,\mathrm{cm}$加到$11\,\mathrm{cm}$，每米的散热从约$53\,\mathrm W$降到约$32\,\mathrm W$，再加厚$3\,\mathrm{cm}$，只降到约$24\,\mathrm W$。
+  reference: |
+    （1）稳态时$r$与$r+\Delta r$之间的壳层内能不变、不做功，流入等于流出，$\Phi(r)$为常数。$\Phi=2\pi rL\,q=-2\pi\kappa Lr\,T'(r)$，$T'=-\frac\Phi{2\pi\kappa L r}$，由牛顿-莱布尼茨公式从$r_1$积到$r_2$：$-\Delta T=-\frac\Phi{2\pi\kappa L}\ln\frac{r_2}{r_1}$，$\Phi=\frac{2\pi\kappa L\Delta T}{\ln(r_2/r_1)}$。
+
+    （2）$\frac\Phi L=\frac{2\pi\times0.040\times100}{\ln1.6}\approx53.5\,\mathrm{W/m}$。
+
+    （3）$\ln(1+x)\approx x$，$\Phi\approx\kappa(2\pi r_1L)\frac{\Delta T}{r_2-r_1}$，即平板公式。厚层时外层面积大、温度变化得缓，$\Phi\propto1/\ln(r_2/r_1)$只按对数减小：$r_2=8,11,14\,\mathrm{cm}$时每米约$53.5$、$31.9$、$24.4\,\mathrm W$。（保温层外表面还靠空气对流散热；管子很细时，加保温层反而可能使散热增加，即「临界保温半径」，超出本题。）
+
+- id: p7
+  tier: thinking
+  statement: |
+    保温瓶的瓶胆是两层玻璃，中间的夹层被抽成真空，玻璃上还镀了银。
+
+    （1）夹层厚约$5\,\mathrm{mm}$。只把夹层里的空气抽到原来压强的百分之一，几乎挡不住热传导，为什么？大约要抽到多低的压强，夹层里的气体导热才会明显变差？$300\,\mathrm K$、1 标准大气压的空气，平均自由程可以按[平均自由程](lesson:physics.thermal-physics.mean-free-path)例 1 里的氮气估计。
+
+    （2）气体抽得足够稀以后，热量还能怎样穿过夹层？玻璃上镀银是为了什么？
+
+    （3）双层玻璃窗的夹层里常充氩气，不充空气。氩的摩尔质量约为$40\,\mathrm{g/mol}$，氩原子的有效直径和空气分子的差不多，用本节的估算式说说为什么。夹层为什么一般只有一两厘米厚，不做得更厚？
+  hints:
+    - |
+      （1）平均自由程远小于夹层的厚度时，热导率和压强有没有关系？抽到百分之一，平均自由程变为多少？（3）比较氩原子和空气分子的$mc_V$、$v_{\mathrm{rms}}$。
+    - |
+      （1）温度不变时平均自由程和压强成反比，[平均自由程](lesson:physics.thermal-physics.mean-free-path)例 1 的$\lambda\approx6.7\times10^{-8}\,\mathrm m$；要平均自由程比夹层还厚，热量才不再靠分子一层层地传。（2）想想[内能与热量](lesson:physics.thermal-physics.internal-energy#def-heat)里说的另外两种传热方式。（3）$\kappa\approx\frac{mc_Vv_{\mathrm{rms}}}{3\sqrt2\,\sigma}$；空气主要是双原子分子（diatomic molecule），由[热容与焓](lesson:physics.thermal-physics.heat-capacity)的表，$mc_V=\frac{C_{V,\mathrm m}}{N_{\mathrm A}}\approx\frac52\kB$，氩是$\frac32\kB$。夹层厚了，里面的气体会怎样？
+    - |
+      （1）只要平均自由程远小于夹层的厚度，热导率就和压强无关：分子少了，每个分子却从更远的地方带来更大的能量差。抽到百分之一，平均自由程约$6.7\times10^{-6}\,\mathrm m$，仍只有夹层厚度的约千分之一，导热几乎不变。要让平均自由程和夹层一样厚，压强要降到约$1.013\times10^5\times\frac{6.7\times10^{-8}}{5\times10^{-3}}\,\mathrm{Pa}\approx1.4\,\mathrm{Pa}$；再抽稀，分子几乎直接从一层玻璃飞到另一层，导热才随压强一起变差（道理和[气体的黏性](lesson:physics.thermal-physics.viscosity)第 6 题一样），所以保温瓶要抽到$0.1\,\mathrm{Pa}$甚至更低。
+
+      （2）没有分子运送能量了，热量还能靠热辐射穿过夹层；镀银的玻璃像镜子一样把热辐射反射回去，挡住了这条路。剩下的热量主要从瓶口、瓶塞和夹层封口处的玻璃传出去。
+
+      （3）空气分子每个的$mc_V$约为$\frac52\kB$，氩原子只有$\frac32\kB$；氩又重，$v_{\mathrm{rms}}$约是空气分子的$\sqrt{\frac{29}{40}}\approx0.85$倍。有效直径差不多时，氩的热导率约是空气的$\frac35\times0.85\approx0.51$，实测约为$0.68$（$0.0177$比$0.026$），夹层每秒漏的热少了三分之一左右。夹层太厚，里面的气体会因为两面温度不同而慢慢翻滚、形成对流，热量被流动的气体带过去；一两厘米厚时气体几乎不流动，靠的正是热传导慢。
+  reference: |
+    （1）$\lambda\ll$夹层厚度时$\kappa$与压强无关（$\frac NV$减小而$\lambda$等比例增大，能量差变大）。1 atm 时$\lambda\approx6.7\times10^{-8}\,\mathrm m$，抽到$\frac1{100}$时$\lambda\approx6.7\,\mu\mathrm m\ll5\,\mathrm{mm}$，导热不变。$\lambda\approx5\,\mathrm{mm}$对应$p\approx1.013\times10^5\times6.7\times10^{-8}/5\times10^{-3}\approx1.4\,\mathrm{Pa}$；更低时进入分子在两壁间直飞的区域，热流正比于压强（同黏性第 6 题），实际保温瓶抽到约$10^{-1}\sim10^{-2}\,\mathrm{Pa}$以下。
+
+    （2）热辐射；镀银提高反射率、降低发射率，减少辐射传热。其余漏热经瓶口、瓶塞和玻璃封口处的热传导。
+
+    （3）$\kappa\propto mc_V v_{\mathrm{rms}}/\sigma$；双原子空气$mc_V\approx\frac52\kB$，氩$\frac32\kB$；$v_{\mathrm{rms}}\propto M^{-1/2}$，比为$\sqrt{29/40}\approx0.85$；粗估$\kappa_{\text{氩}}/\kappa_{\text{空气}}\approx0.51$，实测$0.0177/0.026\approx0.68$。夹层过厚会出现自然对流（瑞利数随厚度三次方增大），对流传热反超；常用间隙约 12～16 mm，正好在对流起来之前、传导已足够小。氩不活泼、便宜（空气里约占 1%）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    讲解里的粗略估算给出$\eta\approx\rho D$、$\kappa\approx c_V\eta$。
+
+    （1）为什么三个输运系数之间会有这样简单的关系？空气的实测值给出$\frac{\rho D}\eta\approx1.3$，为什么这个比值离 1 不远？
+
+    （2）热导率偏得多：空气的$\frac\kappa{c_V\eta}$约为 2.0，单原子气体约为 2.5。粗估把所有分子的速率都当成$v_{\mathrm{rms}}$，其实快的、慢的都有；想想速率大的分子穿过平面的机会和它带过去的能量，说说为什么这样会低估热导率。
+
+    （3）液体里分子一个挨着一个，$20\,^\circ\mathrm C$的水，$\frac{\rho D}\eta$只有约$2\times10^{-3}$。为什么在液体里，动量比分子本身「走」得快得多？可以参考[气体的黏性](lesson:physics.thermal-physics.viscosity)第 7 题。
+  hints:
+    - |
+      （1）三个系数各是分子把什么从一层带到另一层？带东西的是不是同一批分子、走得是不是一样远？（2）分子的平动动能（translational kinetic energy）和速率是什么关系？（3）液体里，动量要靠分子飞过去才传得过去吗？
+    - |
+      （1）三个式子都是$\frac13v_{\mathrm{rms}}\lambda$乘上每单位体积里被带的东西。（2）单位时间穿过平面的分子里，快的分子占的份额比它在气体里占的大，它的动能又和速率的平方成正比。（3）液体里相邻的分子靠作用力直接推拉，一个分子要挪到别处，却得挣脱邻居的吸引。
+    - |
+      （1）黏性、热传导、扩散都是同一批分子在做同一件事：飞一个平均自由程，把出发那一层的东西带到另一层。带东西的分子一样多、飞得一样远，所以三个系数都正比于$v_{\mathrm{rms}}\lambda$，只差在每单位体积里被带的是动量、能量还是甲分子。每个分子带的流动动量$mu$、「是不是甲分子」都和它自己跑得多快无关，粗估的毛病对$\eta$和$\rho D$差不多，比值就离 1 不远；把分子当作硬球（hard sphere）细算，得$\frac{\rho D}\eta=1.2$，实测约 1.3。
+
+      （2）实际上快的分子单位时间穿过平面的次数多，带的平动动能又和速率的平方成正比，所以穿过平面的能量大半是快的分子运送的；快的分子自由程也略长，带来的是更远处的能量差。动量和甲分子的输运没有这种「越快带得越多」的加权，所以热导率被低估得最多。双原子分子还有转动的能量，它和分子跑得多快无关，这一部分没有额外的加权，所以空气的比值比单原子气体的小。
+
+      （3）气体里，动量和分子都只能靠分子飞过去运送，所以$\eta$和$\rho D$差不多。液体里分子挨得很紧，大部分时间在邻居围成的「笼子」里振动，偶尔才挣脱邻居的吸引、跳到旁边的空位上，分子本身挪得很慢，$D$很小；相邻两层要相对滑动，却处处受到分子之间作用力的阻碍，动量通过这些作用力直接一层层地传过去，不必等分子挪过去，$\eta$很大。两样一除，$\frac{\rho D}\eta$就远小于 1。
+  reference: |
+    （1）三者都是「分子飞约一个$\lambda$、把出发层的量带过平面」，载体与飞行距离相同，所以都$\propto v\lambda$，系数之比只取决于单位体积里被输运的量（$\rho u$、$\rho c_VT$、$\rho_1$）。动量和示踪身份都与分子速率无关，速率分布、速度持续性等修正对$\eta$与$\rho D$大体相同，比值近 1：刚球的查普曼-恩斯科格一级近似$\frac{\rho D}\eta=\frac65$，实际气体 1.3～1.4。
+
+    （2）能量的输运按速率加权：单位时间穿过平面的分子数$\propto v$，携带的平动能$\propto v^2$，快分子的自由程也略长，故平动能的输运被粗估显著低估；严格理论单原子气体$\kappa=\frac52\eta c_V$。内部（转动）能与速率无关，其输运类似扩散，系数约$\frac{\rho D}\eta\approx1.3$（欧肯修正）。空气$c_V$中平动占$\frac35$、转动占$\frac25$：$2.5\times0.6+1.3\times0.4\approx2.0$，与实测一致。
+
+    （3）液体中动量经分子间作用力在近邻之间直接传递，无须分子迁移；而分子扩散靠越过能垒跳入空位（笼子模型），很慢。故$\eta$大、$D$小：水$\rho D/\eta\approx998\times2.0\times10^{-9}/1.0\times10^{-3}\approx2\times10^{-3}$（施密特数约 500）。气体里两者共用同一机制，比值约 1。

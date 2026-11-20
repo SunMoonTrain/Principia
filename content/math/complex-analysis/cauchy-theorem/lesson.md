@@ -40,16 +40,16 @@ $$
 ::anchor{id="thm-deformation"}
 **定理**　设$C_1$、$C_2$是分段光滑的简单闭曲线，都取逆时针方向，$C_2$在$C_1$围成的部分里面；$f$在一个:term[开集]{id="math.complex-analysis.open-set"}上:term[全纯]{id="math.complex-analysis.holomorphic-function"}、$f'$连续，这个开集包含两条曲线和它们之间的部分。则$\oint_{C_1}f\,\dd z=\oint_{C_2}f\,\dd z$。
 
-**证明**：记$R$是两条曲线之间的部分。格林公式对$R$也成立，这时边界的正向是外圈$C_1$逆时针、内圈$C_2$顺时针（[格林公式](lesson:math.vector-calculus.greens-theorem)第 6 题的圆环论证）。照上面的证明，沿$R$的整个边界的积分为$0$，即$\oint_{C_1}f\,\dd z-\oint_{C_2}f\,\dd z=0$。
+**证明**：记$R$是两条曲线之间的部分。格林公式对$R$也成立，这时边界的正向是外圈$C_1$逆时针、内圈$C_2$顺时针（[格林公式](lesson:math.vector-calculus.greens-theorem)第 6 题的:term[圆环]{id="math.complex-analysis.annulus"}（annulus）论证）。照上面的证明，沿$R$的整个边界的积分为$0$，即$\oint_{C_1}f\,\dd z-\oint_{C_2}f\,\dd z=0$。
 
-为什么有用：积分路径可以在全纯的范围里随意变形，只要不越过$f$不全纯的点。特别地，设$C$是分段光滑的简单闭曲线，逆时针方向，点$a$在$C$围成的部分里面，取一个小圆$C_r$：$|z-a|=r$落在$C$里面，由这个定理和[一个最重要的例子](lesson:math.complex-analysis.contour-integrals#thm-power-integral)，$\oint_C\frac{\dd z}{z-a}=\oint_{C_r}\frac{\dd z}{z-a}=2\pi i$；$a$在$C$外面时，由:term[柯西积分定理]{id="math.complex-analysis.cauchy-theorem"}，这个积分是$0$。闭曲线不必简单时，$\oint_C\frac{\dd z}z$的:term[实部]{id="math.complex-analysis.real-part"}（real part）是$\oint_C\frac{x\,\dd x+y\,\dd y}{x^2+y^2}$，它是$\ln\sqrt{x^2+y^2}$的全微分（total differential）沿闭曲线的积分，为$0$；:term[虚部]{id="math.complex-analysis.imaginary-part"}（imaginary part）是$\oint_C\frac{-y\,\dd x+x\,\dd y}{x^2+y^2}$，由[保守场与路径无关](lesson:math.vector-calculus.conservative-fields)第 8 题，等于$2\pi$乘$C$绕原点的圈数，所以$\oint_C\frac{\dd z}z$等于$2\pi i$乘绕数（winding number）。
+为什么有用：积分路径可以在全纯的范围里随意变形，只要不越过$f$不全纯的点。特别地，设$C$是分段光滑的简单闭曲线，逆时针方向，点$a$在$C$围成的部分里面，取一个小圆$C_r$：$|z-a|=r$落在$C$里面，由这个定理和[一个最重要的例子](lesson:math.complex-analysis.contour-integrals#thm-power-integral)，$\oint_C\frac{\dd z}{z-a}=\oint_{C_r}\frac{\dd z}{z-a}=2\pi i$；$a$在$C$外面时，由:term[柯西积分定理]{id="math.complex-analysis.cauchy-theorem"}，这个积分是$0$。闭曲线不必简单时，$\oint_C\frac{\dd z}z$的:term[实部]{id="math.complex-analysis.real-part"}（real part）是$\oint_C\frac{x\,\dd x+y\,\dd y}{x^2+y^2}$，它是$\ln\sqrt{x^2+y^2}$的全微分（total differential）沿闭曲线的积分，为$0$；:term[虚部]{id="math.complex-analysis.imaginary-part"}（imaginary part）是$\oint_C\frac{-y\,\dd x+x\,\dd y}{x^2+y^2}$，由[保守场与路径无关](lesson:math.vector-calculus.conservative-fields)第 8 题，等于$2\pi$乘$C$绕原点的圈数，所以$\oint_C\frac{\dd z}z$等于$2\pi i$乘:term[绕数]{id="math.complex-analysis.winding-number"}（winding number）。
 
 ### 原函数
 
 ::anchor{id="def-antiderivative"}
 设$f$在:term[开集]{id="math.complex-analysis.open-set"}$D$上连续。如果$D$上有:term[全纯函数]{id="math.complex-analysis.holomorphic-function"}（holomorphic function）$F$，使$F'=f$，就说$F$是$f$在$D$上的:term[原函数]{id="math.complex-analysis.antiderivative"}（antiderivative）。
 
-为什么这样定义：和实函数一样，$f$的原函数就是求导以后得到$f$的函数；要求$F$在开集上全纯，是因为在一点求导要用到它周围一整圈的值，下面的定理还要沿$D$里的曲线对$F(z(t))$求导。边界情况：原函数加上任何常数仍是原函数；$D$不连成一片时，还可以在每一块上加不同的常数，例如$D$是两个不相交的圆盘、$f=0$时，在一个圆盘上取$F=0$、另一个圆盘上取$F=1$，这个$F$也是原函数。
+为什么这样定义：和实函数一样，$f$的原函数就是求导以后得到$f$的函数；要求$F$在开集上全纯，是因为在一点求导要用到它周围一整圈的值，下面的定理还要沿$D$里的曲线对$F(z(t))$求导。边界情况：原函数加上任何常数仍是原函数；$D$不连成一片时，还可以在每一块上加不同的常数，例如$D$是两个:term[不相交]{id="math.logic-sets.disjoint"}（disjoint）的圆盘、$f=0$时，在一个圆盘上取$F=0$、另一个圆盘上取$F=1$，这个$F$也是原函数。
 
 ::anchor{id="thm-antiderivative-integral"}
 **定理**　设$F$是$f$在开集$D$上的原函数，$C$是$D$里从$A$到$B$的分段光滑曲线，则$\int_Cf(z)\,\dd z=F(B)-F(A)$；特别地，沿$D$里任何闭曲线的积分为$0$。

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 220" width="640" height="220" font-family="serif" fill="currentColor">
+<path d="M40 180H166A24 24 0 0 1 214 180H340A150 150 0 0 0 40 180Z" fill="var(--accent, #2563eb)" fill-opacity="0.1" stroke="none"/>
+<path d="M14 180H366" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.2"/>
+<path d="M40 180H166A24 24 0 0 1 214 180H340A150 150 0 0 0 40 180" fill="none" stroke="var(--accent, #2563eb)" stroke-width="2"/>
+<path d="M110 180L98 185L98 175Z" fill="var(--accent, #2563eb)"/>
+<path d="M284 180L272 185L272 175Z" fill="var(--accent, #2563eb)"/>
+<path d="M196 156L186 160.5L186 151.5Z" fill="var(--accent, #2563eb)"/>
+<path d="M184 30L196 25L196 35Z" fill="var(--accent, #2563eb)"/>
+<circle cx="190" cy="180" r="3"/>
+<circle cx="246" cy="98" r="3"/>
+<text x="253" y="103" font-size="15" font-style="italic">z<tspan font-size="11" dy="4" font-style="normal">1</tspan></text>
+<text x="40" y="200" font-size="15" text-anchor="middle">−<tspan font-style="italic">R</tspan></text>
+<text x="166" y="200" font-size="15" text-anchor="middle">−<tspan font-style="italic">ε</tspan></text>
+<text x="190" y="200" font-size="15" text-anchor="middle">0</text>
+<text x="214" y="200" font-size="15" font-style="italic" text-anchor="middle">ε</text>
+<text x="340" y="200" font-size="15" font-style="italic" text-anchor="middle">R</text>
+<text x="160" y="158" font-size="16" font-style="italic" text-anchor="end" fill="var(--accent, #2563eb)">γ<tspan font-size="11" dy="4">ε</tspan></text>
+<text x="320" y="70" font-size="16" font-style="italic" fill="var(--accent, #2563eb)">C<tspan font-size="11" dy="4">R</tspan></text>
+<path d="M410 150H624" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.2"/>
+<path d="M458 150A58 58 0 0 0 574 150" fill="none" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.5" stroke-dasharray="5 4"/>
+<path d="M458 150A58 58 0 0 1 574 150" fill="none" stroke="var(--accent, #2563eb)" stroke-width="2"/>
+<path d="M523 92L511 97L511 87Z" fill="var(--accent, #2563eb)"/>
+<circle cx="516" cy="150" r="3"/>
+<text x="516" y="174" font-size="15" font-style="italic" text-anchor="middle">x<tspan font-size="11" dy="4" font-style="normal">0</tspan></text>
+<text x="462" y="104" font-size="16" font-style="italic" text-anchor="end" fill="var(--accent, #2563eb)">γ<tspan font-size="11" dy="4">ε</tspan></text>
+<text x="516" y="40" font-size="14" text-anchor="middle">上半圈（顺时针）→ −π<tspan font-style="italic">i c</tspan></text>
+<text x="516" y="64" font-size="14" text-anchor="middle">整个小圆周（逆时针）：2π<tspan font-style="italic">i c</tspan></text>
+</svg>

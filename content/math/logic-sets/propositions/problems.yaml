@@ -1,0 +1,192 @@
+- id: p1
+  tier: easy
+  statement: |
+    下面哪些是命题？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $x^2-1=0$
+      - |
+        $2^{10}>1000$
+      - |
+        把这道题再算一遍。
+      - |
+        $100$是一个很大的数。
+      - |
+        $\sqrt2+\sqrt3>\sqrt{10}$
+    value: [2, 5]
+  hints:
+    - |
+      命题要能判断真假：先看它是不是陈述句，再看它的真假是不是确定的。
+    - |
+      A 里的$x$取定了吗？D 的「很大」有没有标准？
+    - |
+      A 里的$x$没有取定，$x=1$时成立、$x=0$时不成立，说不上真假；C 是祈使句；D 的「很大」没有标准，这三个都不是命题。B 是真命题：$2^{10}=1024>1000$。E 是假命题：$(\sqrt2+\sqrt3)^2=5+2\sqrt6=5+\sqrt{24}<5+5=10$，所以$\sqrt2+\sqrt3<\sqrt{10}$；假命题也是命题。所以选 B、E。
+  solution: |
+    A 里的$x$没有取定，$x=1$时成立，$x=0$时不成立，说不上真假；C 是祈使句；D 的「很大」没有标准，各人说法不同。B 是真命题：$2^{10}=1024>1000$。E 是假命题：$(\sqrt2+\sqrt3)^2=5+2\sqrt6=5+\sqrt{24}<5+5=10$，所以$\sqrt2+\sqrt3<\sqrt{10}$；假命题也是命题。选 B、E。
+
+- id: p2
+  tier: easy
+  statement: |
+    :term[复合命题]{id="math.logic-sets.compound-proposition"}$\neg P\lor(Q\land R)$的:term[真值表]{id="math.logic-sets.truth-table"}有$8$行。其中有几行为真？
+  answer:
+    type: number
+    value: 5
+    exact: true
+  hints:
+    - |
+      按$P$的真假把$8$行分成两组来数。
+    - |
+      $P$假的$4$行里$\neg P$真；$P$真的$4$行里$\neg P$假，整个式子和$Q\land R$同真假。
+    - |
+      $P$假的$4$行里$\neg P$真，整个式子都真。$P$真的$4$行里$\neg P$假，式子和$Q\land R$同真假，只在$Q$、$R$都真的那$1$行为真。所以一共$4+1=5$行为真。
+  solution: |
+    $P$假的$4$行，$\neg P$真，所以$\neg P\lor(Q\land R)$真。$P$真的$4$行，$\neg P$假，式子和$Q\land R$同真假，只有$Q$、$R$都真的$1$行为真。共$4+1$行，即$5$行。
+
+- id: p3
+  tier: medium
+  statement: |
+    下面哪些复合命题和$\neg(P\lor\neg Q)$:term[逻辑等价]{id="math.logic-sets.logical-equivalence"}？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\neg P\land Q$
+      - |
+        $\neg P\lor Q$
+      - |
+        $Q\land\neg(P\land Q)$
+      - |
+        $\neg(\neg Q\lor P)$
+      - |
+        $P\land\neg Q$
+    value: [1, 3, 4]
+  hints:
+    - |
+      先用:term[德摩根律]{id="math.logic-sets.de-morgan-laws"}化简$\neg(P\lor\neg Q)$，看它在哪几行为真。
+    - |
+      $\neg(P\lor\neg Q)\iff\neg P\land\neg\neg Q$，把$\neg\neg Q$换成$Q$，它和$\neg P\land Q$逻辑等价，只在$P$假、$Q$真的那一行为真。
+    - |
+      由德摩根律，$\neg(P\lor\neg Q)\iff\neg P\land\neg\neg Q$，把$\neg\neg Q$换成$Q$，它和$\neg P\land Q$逻辑等价，只在$P$假、$Q$真时为真，A 就是它；B 在$P$、$Q$都假时也真，E 在$P$真、$Q$假时为真，都不和它逻辑等价。C：由德摩根律，$\neg(P\land Q)\iff\neg P\lor\neg Q$，再由分配律，C 和$(Q\land\neg P)\lor(Q\land\neg Q)$逻辑等价，而$Q\land\neg Q$总是假的，所以 C 和$\neg P\land Q$逻辑等价。D：$\neg Q\lor P$和$P\lor\neg Q$逻辑等价，所以 D 和原式逻辑等价。选 A、C、D。
+  solution: |
+    由德摩根律，$\neg(P\lor\neg Q)\iff\neg P\land\neg\neg Q$，把$\neg\neg Q$换成$Q$，它和$\neg P\land Q$逻辑等价，只在$P$假、$Q$真时为真。A 就是它。B 在$P$、$Q$都假时也真，E 在$P$真、$Q$假时为真，都不和它逻辑等价。
+
+    C：由德摩根律，$\neg(P\land Q)\iff\neg P\lor\neg Q$；再由分配律，$Q\land(\neg P\lor\neg Q)\iff(Q\land\neg P)\lor(Q\land\neg Q)$。$Q\land\neg Q$总是假的，一个「或」里有一部分总是假的，整句就和另一部分同真假，所以 C 和$Q\land\neg P$即$\neg P\land Q$逻辑等价。D：$\neg Q\lor P$和$P\lor\neg Q$逻辑等价，所以 D 和原式逻辑等价。选 A、C、D。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$a$、$b$是两个取定的实数。下面哪些说法可以作为「$a$、$b$中至少有一个是正数」的:term[否定]{id="math.logic-sets.negation"}？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $a\le0$且$b\le0$
+      - |
+        $a\le0$或$b\le0$
+      - |
+        $a$、$b$不都是正数
+      - |
+        $a<0$且$b<0$
+      - |
+        $a$、$b$都不是正数
+    value: [1, 5]
+  hints:
+    - |
+      「$a$、$b$中至少有一个是正数」就是「$a>0$或$b>0$」。
+    - |
+      由:term[德摩根律]{id="math.logic-sets.de-morgan-laws"}，它的否定是「$a$不是正数，且$b$不是正数」；「$a$不是正数」写成不等式是「$a\le0$」，不是「$a<0$」。
+    - |
+      「$a$、$b$中至少有一个是正数」就是「$a>0$或$b>0$」，由德摩根律，它的否定是「$a\le0$且$b\le0$」，也就是「$a$、$b$都不是正数」，所以 A、E 都可以。B、C 说的是至少有一个不是正数：$a=1$、$b=-1$时原句成立，它的否定应当不成立，B、C 却成立。D：$a=0$、$b=-1$时原句不成立，它的否定应当成立，D 却不成立，因为「$a>0$」的否定是「$a\le0$」，不是「$a<0$」。选 A、E。
+  solution: |
+    「$a$、$b$中至少有一个是正数」即「$a>0$或$b>0$」，由德摩根律，它的否定是「$a\le0$且$b\le0$」，也就是「$a$、$b$都不是正数」，所以 A、E 都可以。B、C 说的是至少有一个不是正数：$a=1$、$b=-1$时原句成立，它的否定应当不成立，B、C 却成立。D：$a=0$、$b=-1$时原句不成立，它的否定应当成立，D 却不成立，因为「$a>0$」的否定是「$a\le0$」，不是「$a<0$」。选 A、E。
+
+- id: p5
+  tier: hard
+  statement: |
+    任给一张关于$P$、$Q$、$R$的:term[真值表]{id="math.logic-sets.truth-table"}：$8$行里每一行随意填上「真」或「假」。
+
+    （1）说明总能只用$\neg$、$\land$、$\lor$写出一个复合命题，它的真值表正好是这一张。
+
+    （2）照（1）的办法，写出一个复合命题，它为真当且仅当$P$、$Q$、$R$中恰有一个为真。
+  hints:
+    - |
+      先对付只有一行为真的表：哪个复合命题只在$P$真、$Q$假、$R$真的那一行为真？
+    - |
+      $P\land\neg Q\land R$只在$P$真、$Q$假、$R$真的那一行为真。表里有几行为真，就写几个这样的「且」式，再用「或」把它们连起来。
+    - |
+      （1）对表里每一个为真的行，写一个「且」式：这一行里为真的字母照写，为假的字母前面加$\neg$，三个用$\land$连起来。它在这一行三部分都真，所以为真；别的行里至少有一个字母的真假和这一行不同，对应的那一部分为假，整个「且」式就假。把这些「且」式用$\lor$连起来，得到的「或」式在某一行为真，当且仅当其中某个「且」式在这一行为真，也就是这一行是表里为真的行，所以它的真值表正好是给的那一张。表里没有为真的行时，写$P\land\neg P$，它总是假的。
+
+      （2）为真的行是真假假、假真假、假假真三行，所以可以写
+
+      $$
+      (P\land\neg Q\land\neg R)\lor(\neg P\land Q\land\neg R)\lor(\neg P\land\neg Q\land R).
+      $$
+  reference: |
+    （1）对表里每一个为真的行，写一个「且」式：这一行里为真的字母照写，为假的字母前面加$\neg$，三个用$\land$连起来（「且」满足结合律，括号可以省）。这个「且」式在一行为真，当且仅当三个部分都真，也就是三个字母的真假和这一行一样，所以它只在这一行为真。把这些「且」式用$\lor$连起来：在某一行，「或」式为真当且仅当其中某个「且」式在这一行为真，也就是这一行是表里为真的行；所以它的真值表正好是给的那一张。表里没有为真的行时，写$P\land\neg P$，由本节的定理它总是假的。
+
+    （2）恰有一个为真的行是真假假、假真假、假假真，所以可以写$(P\land\neg Q\land\neg R)\lor(\neg P\land Q\land\neg R)\lor(\neg P\land\neg Q\land R)$。
+
+- id: p6
+  tier: hard
+  statement: |
+    记$P\uparrow Q$为$\neg(P\land Q)$，叫作$P$与$Q$的「与非」（NAND）；数字电路里的与非门（NAND gate）算的就是它。证明：
+
+    （1）$\neg P\iff P\uparrow P$；
+
+    （2）$P\land Q\iff(P\uparrow Q)\uparrow(P\uparrow Q)$；
+
+    （3）$P\lor Q\iff(P\uparrow P)\uparrow(Q\uparrow Q)$。
+  hints:
+    - |
+      按定义把$\uparrow$换回$\neg$和$\land$，再化简；逻辑等价的部分可以互相替换。
+    - |
+      （1）$P\uparrow P$就是$\neg(P\land P)$，而$P\land P\iff P$。（2）由（1），对任何命题$X$都有$X\uparrow X\iff\neg X$，取$X$为$P\uparrow Q$。
+    - |
+      （1）$P\land P$在$P$真时真、$P$假时假，所以$P\land P\iff P$，$P\uparrow P$即$\neg(P\land P)$和$\neg P$逻辑等价。
+
+      （2）由（1），$(P\uparrow Q)\uparrow(P\uparrow Q)\iff\neg(P\uparrow Q)$，而$\neg(P\uparrow Q)$就是$\neg\neg(P\land Q)$，它和$P\land Q$逻辑等价。
+
+      （3）由（1），$P\uparrow P\iff\neg P$，$Q\uparrow Q\iff\neg Q$，所以右边和$\neg(\neg P\land\neg Q)$逻辑等价。由:term[德摩根律]{id="math.logic-sets.de-morgan-laws"}，它和$\neg\neg P\lor\neg\neg Q$逻辑等价，也就是和$P\lor Q$逻辑等价。
+  reference: |
+    （1）$P\land P$在$P$真时真、$P$假时假，所以$P\land P\iff P$；$P\uparrow P$按定义是$\neg(P\land P)$，和$\neg P$逻辑等价。
+
+    （2）由（1），对任何命题$X$，$X\uparrow X\iff\neg X$。取$X$为$P\uparrow Q$，左边是$\neg(P\uparrow Q)$，即$\neg\neg(P\land Q)$，和$P\land Q$逻辑等价。
+
+    （3）把$P\uparrow P$换成和它逻辑等价的$\neg P$，$Q\uparrow Q$换成$\neg Q$（逻辑等价的部分互相替换，整句真假不变），右边和$\neg(\neg P\land\neg Q)$逻辑等价；由德摩根律，它和$\neg\neg P\lor\neg\neg Q$即$P\lor Q$逻辑等价。三条合起来说明：只用$\uparrow$一种联结词，就能写出和任何由$\neg$、$\land$、$\lor$组成的复合命题逻辑等价的复合命题。
+
+- id: p7
+  tier: thinking
+  statement: |
+    看这句话：「这句话是假的。」这里的「这句话」指的就是它自己。它是不是命题？由此说说，命题的定义为什么要写「能判断真假」。
+  hints:
+    - |
+      假设它是真的，它说的是什么？
+    - |
+      设它真，那么它说的「这句话是假的」成立，它就是假的；设它假，那么「这句话是假的」不成立，它又是真的。
+    - |
+      设它真，它说的「这句话是假的」成立，它就是假的；设它假，「这句话是假的」不成立，它又是真的。两种假设都推出自相矛盾，没法给它一个:term[真值]{id="math.logic-sets.truth-value"}，所以它不是命题。这句话引出的矛盾叫作说谎者悖论（liar paradox）。命题的定义要求非真即假，正好把它排除在外；否则从「它真」能推出「它假」，推理就站不住了。
+  reference: |
+    设它真，那么它说的「这句话是假的」成立，它就是假的；设它假，那么「这句话是假的」不成立，它又是真的。两种假设都自相矛盾，没法给它一个真值，所以它不是命题。这句话引出的矛盾叫作说谎者悖论（liar paradox）。
+
+    命题的定义要求「能判断真假」，即非真即假、只取一个真值，正好把这样的句子排除在外。推理要从真的话推出真的话；要是允许它进来，从「它真」就能推出「它假」，本节的「非」「且」「或」和真值表都没法用。它是陈述句，语法上看不出毛病，所以只说「陈述句」还不够，必须要求能判断真假。
+
+- id: p8
+  tier: thinking
+  statement: |
+    只含字母$P$、$Q$的复合命题（单独一个字母也算）有无穷多个，比如$P$、$\neg\neg P$、$P\land P$、$P\land(P\lor Q)$……把互相:term[逻辑等价]{id="math.logic-sets.logical-equivalence"}的归成一类，一共有多少类？为什么？
+  hints:
+    - |
+      两个这样的复合命题逻辑等价，就是它们的真值表一样。
+    - |
+      关于$P$、$Q$的真值表有$4$行，每行填「真」或「假」，一共有几种填法？每种填法都有复合命题实现吗？
+    - |
+      每一类对应一种填法，不同的类对应不同的填法，所以类数不超过$2^4=16$。照第 5 题的办法（换成两个字母），每种填法都能用$\neg$、$\land$、$\lor$写出一个复合命题来实现，所以恰好$16$类。例如四行全真的一类里有$P\lor\neg P$，全假的一类里有$P\land\neg P$，只在第一行为真的一类里有$P\land Q$。
+  reference: |
+    两个复合命题逻辑等价，就是它们的真值表一样，所以每一类对应真值表最后一列的一种填法，不同的类对应不同的填法。$4$行每行两种填法，共$2^4=16$种，类数不超过$16$。
+
+    反过来，照第 5 题的办法（两个字母时「且」式只有两部分），每种填法都能用$\neg$、$\land$、$\lor$写出一个复合命题来实现；全假的那种写$P\land\neg P$。所以恰好有$16$类。例如：全真的一类有$P\lor\neg P$，全假的有$P\land\neg P$，还有$P$、$Q$、$\neg P$、$\neg Q$、$P\land Q$、$P\lor Q$，以及例 1 的「恰有一个为真」等等。

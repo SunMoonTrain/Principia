@@ -1,0 +1,216 @@
+- id: p1
+  tier: easy
+  statement: |
+    下面哪些是真命题？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\forall x\in\R,\ |x|\ge x$
+      - |
+        $\exists x\in\R,\ x^2<x$
+      - |
+        $\forall x\in\R,\ x^2\ge x$
+      - |
+        $\forall n\in\N,\ n^2\ge n$
+      - |
+        $\exists x\in\Z,\ x^2=2x+1$
+    value: [1, 2, 4]
+  hints:
+    - |
+      :term[全称量词命题]{id="math.logic-sets.universal-statement"}要取值范围里每个元素都满足才为真，有一个反例就为假；:term[存在量词命题]{id="math.logic-sets.existential-statement"}找到一个满足的元素就为真。
+    - |
+      B、C 都在比较$x^2$和$x$：试试$0$和$1$之间的数，比如$x=\frac12$。D 别忘了$\N$里有$0$。
+    - |
+      A：$x<0$时$|x|>0>x$，$x\ge0$时$|x|=x$，每个实数都满足，真。B：$x=\frac12$时$x^2=\frac14<\frac12$，真；C：同一个$x=\frac12$是反例，假。
+
+      D：$n=0$时$0\ge0$，$n\ge1$时$n^2\ge n$，真。E：$x^2=2x+1$即$x^2-2x-1=0$，两个根$1\pm\sqrt2$都不是整数，假。所以选 A、B、D。
+  solution: |
+    A：$x\ge0$时$|x|=x$，$x<0$时$|x|=-x>0>x$，每个实数都满足，真。B：$x=\frac12$时$x^2=\frac14<\frac12$，真。C：同一个$x=\frac12$就是反例，假。
+
+    D：$n=0$时$0\ge0$，$n\ge1$时$n^2=n\cdot n\ge n$，每个自然数都满足，真。E：$x^2-2x-1=0$的根是$1\pm\sqrt2$，都不是整数，假。选 A、B、D。
+
+- id: p2
+  tier: easy
+  statement: |
+    设$a$是一个取定的实数。下面哪一句是命题「每个正整数$n$都满足$n^2\ge an$」的:term[否定]{id="math.logic-sets.negation"}？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        每个正整数$n$都满足$n^2<an$
+      - |
+        存在正整数$n$，满足$n^2\ge an$
+      - |
+        存在正整数$n$，满足$n^2\le an$
+      - |
+        存在正整数$n$，满足$n^2<an$
+    value: 4
+  hints:
+    - |
+      否定一个全称量词命题：量词换成存在量词，取值范围不变，后面的语句换成它的否定。
+    - |
+      「$n^2\ge an$」的否定是什么？等号的情形归哪一边？
+    - |
+      原命题的否定是「存在正整数$n$，使$n^2\ge an$不成立」，而$n^2\ge an$不成立就是$n^2<an$，所以选 D。A 没有把全称换成存在，B 没有把后面的语句换成它的否定，C 把$n^2=an$的情形也算了进去，可这时$n^2\ge an$是成立的。
+  solution: |
+    由否定量词命题的定理，原命题的否定是「存在正整数$n$，使$n^2\ge an$不成立」，也就是「存在正整数$n$，满足$n^2<an$」，选 D。
+
+    否定要对每个$a$都和原命题一真一假，别的几句做不到：$a=3$时原命题假（$n=1$时$1<3$），A 也假（$n=3$时$9<9$不成立）；$a=0$时原命题真，B 也真；$a=1$时原命题真（每个正整数都满足$n^2\ge n$），C 也真（$n=1$时$1\le1$）。
+
+- id: p3
+  tier: medium
+  statement: |
+    对整数$k$，考虑命题「$\exists x\in[k,k+1],\ x^2-5x+4<0$」。求所有使它为真的整数$k$。
+  answer:
+    type: set
+    value: [1, 2, 3]
+    exact: true
+  hints:
+    - |
+      先求出使$x^2-5x+4<0$成立的$x$，再看区间$[k,k+1]$里有没有这样的$x$。
+    - |
+      $x^2-5x+4=(x-1)(x-4)$，使它小于$0$的$x$正好是满足$1<x<4$的那些。
+    - |
+      :term[存在量词命题]{id="math.logic-sets.existential-statement"}为真，要$[k,k+1]$里至少有一个$x$满足$1<x<4$。$k=1,2,3$时，区间的中点$k+\frac12$就满足；$k\le0$时区间里的$x\le1$，$k\ge4$时$x\ge4$，都不满足，$k=0$、$k=4$时区间只碰到端点，代进去得$0$。所以$k$是$1$、$2$、$3$。
+  solution: |
+    $x^2-5x+4=(x-1)(x-4)<0$，即$1<x<4$。命题为真，就是$[k,k+1]$里至少有一个$x$满足$1<x<4$。$k=1,2,3$时都有，比如区间的中点$k+\frac12$；$k\le0$时区间里的$x\le k+1\le1$，$k\ge4$时$x\ge k\ge4$，都不满足。所以$k$是$1$、$2$、$3$。
+
+- id: p4
+  tier: medium
+  statement: |
+    下面哪些是真命题？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        有些素数是$4$的倍数。
+      - |
+        方程$x^2+1=0$的每个实数解都大于$100$。
+      - |
+        平方等于自身的实数都是非负数。
+      - |
+        $3$的倍数都是$6$的倍数。
+      - |
+        存在一个实数，它的绝对值等于它的相反数。
+    value: [2, 3, 5]
+  hints:
+    - |
+      先看出每句话里藏着的量词是全称量词还是存在量词，取值范围是什么。
+    - |
+      B 的取值范围是方程$x^2+1=0$的实数解，有几个？C 的取值范围是满足$x^2=x$的实数，有哪些？
+    - |
+      A 是存在量词命题，可$4$的倍数都是偶数，偶素数只有$2$，它不是$4$的倍数，假。B 的取值范围一个元素也没有，全称量词命题为真；C 的取值范围只有$0$、$1$，都是非负数，真。D 是全称量词命题，$3$本身就是反例，假；E 取$x=-1$，$|x|=1=-x$，真。所以选 B、C、E。
+  solution: |
+    A：「有些」是存在量词，可$4$的倍数都是偶数，而偶素数只有$2$，它不是$4$的倍数，所以没有这样的素数，假。B：$x^2+1=0$没有实数解，取值范围是:term[空集]{id="math.logic-sets.empty-set"}，全称量词命题为真。C：$x^2=x$的实数解是$0$和$1$，都是非负数，真。
+
+    D：说的是每个$3$的倍数，而$3$是$3$的倍数，却不是$6$的倍数，假。E：$x=-1$时$|x|=1=-x$，真，$x=0$也行。选 B、C、E。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$x$的取值范围是$A$，$P(x)$、$Q(x)$是含有变量$x$的语句。
+
+    （1）证明：$\forall x\in A,\ \bigl(P(x)\land Q(x)\bigr)$和$\bigl(\forall x\in A,\ P(x)\bigr)\land\bigl(\forall x\in A,\ Q(x)\bigr)$:term[逻辑等价]{id="math.logic-sets.logical-equivalence"}。
+
+    （2）证明：$\exists x\in A,\ \bigl(P(x)\lor Q(x)\bigr)$和$\bigl(\exists x\in A,\ P(x)\bigr)\lor\bigl(\exists x\in A,\ Q(x)\bigr)$逻辑等价。
+
+    （3）把（1）里的「且」都换成「或」，或者把（2）里的「或」都换成「且」，两边还逻辑等价吗？各举一例说明。
+  hints:
+    - |
+      这里的逻辑等价是说：不管$A$是什么、$P(x)$和$Q(x)$是哪两句话，两边总是同真同假。从「左边为真说的是什么」入手。
+    - |
+      （1）左边为真，就是$A$中每个元素都使$P(x)$、$Q(x)$两个都成立。（2）可以照样直接说，也可以对$\neg P(x)$、$\neg Q(x)$用（1），再用否定量词命题的定理和:term[德摩根律]{id="math.logic-sets.de-morgan-laws"}。（3）想想整数的奇偶。
+    - |
+      （1）左边为真，就是$A$中每个元素$a$都使$P(a)$、$Q(a)$都真。这和「每个$a$都使$P(a)$真」「每个$a$都使$Q(a)$真」两句同时成立是一回事，也就是右边为真。所以两边总是同真，也就总是同假。
+
+      （2）左边为真，就是$A$中有某个元素$a$使$P(a)$真或$Q(a)$真。这个$a$使$P(a)$真时，右边前一半为真；使$Q(a)$真时，后一半为真。反过来，右边为真时，有元素使$P(x)$真，或者有元素使$Q(x)$真，这个元素就使$P(x)\lor Q(x)$真，左边为真。
+
+      （3）都不再逻辑等价。取$A=\Z$，$P(x)$为「$x$是奇数」，$Q(x)$为「$x$是偶数」。每个整数不是奇数就是偶数，所以$\forall x\in\Z,\ \bigl(P(x)\lor Q(x)\bigr)$为真；可$\bigl(\forall x\in\Z,\ P(x)\bigr)\lor\bigl(\forall x\in\Z,\ Q(x)\bigr)$为假，两半都是假的。$\bigl(\exists x\in\Z,\ P(x)\bigr)\land\bigl(\exists x\in\Z,\ Q(x)\bigr)$为真，奇数有$1$、偶数有$2$；可没有整数既是奇数又是偶数，$\exists x\in\Z,\ \bigl(P(x)\land Q(x)\bigr)$为假。
+  reference: |
+    （1）左边为真，就是$A$中每个元素$a$都使$P(a)\land Q(a)$为真，即$P(a)$、$Q(a)$都真。这和「每个$a$都使$P(a)$真」与「每个$a$都使$Q(a)$真」同时成立是一回事，也就是右边为真。两边同真，也就同假，所以逻辑等价。$A$是空集时两边都为真，同样成立。
+
+    （2）直接说：左边为真，就是有某个$a\in A$使$P(a)$真或$Q(a)$真；这样的$a$使$P(a)$真时右边前一半为真，使$Q(a)$真时后一半为真。反过来，右边为真时，有元素使$P(x)$真或有元素使$Q(x)$真，这个元素使$P(x)\lor Q(x)$真，左边为真。也可以由（1）推出：对$\neg P(x)$、$\neg Q(x)$用（1），得$\forall x\in A,\ \bigl(\neg P(x)\land\neg Q(x)\bigr)$和$\bigl(\forall x\in A,\ \neg P(x)\bigr)\land\bigl(\forall x\in A,\ \neg Q(x)\bigr)$逻辑等价；由德摩根律，前者和$\forall x\in A,\ \neg\bigl(P(x)\lor Q(x)\bigr)$逻辑等价，再由否定量词命题的定理，它是左边的否定；后者由同一定理是$\neg\bigl(\exists x\in A,\ P(x)\bigr)\land\neg\bigl(\exists x\in A,\ Q(x)\bigr)$，由德摩根律是右边的否定。两边的否定逻辑等价，两边也就逻辑等价。
+
+    （3）都不再逻辑等价。取$A=\Z$，$P(x)$为「$x$是奇数」，$Q(x)$为「$x$是偶数」：$\forall x\in\Z,\ \bigl(P(x)\lor Q(x)\bigr)$为真，$\bigl(\forall x\in\Z,\ P(x)\bigr)\lor\bigl(\forall x\in\Z,\ Q(x)\bigr)$为假；$\bigl(\exists x\in\Z,\ P(x)\bigr)\land\bigl(\exists x\in\Z,\ Q(x)\bigr)$为真（$1$、$2$），$\exists x\in\Z,\ \bigl(P(x)\land Q(x)\bigr)$为假。一般只有一个方向：$\bigl(\forall x\in A,\ P(x)\bigr)\lor\bigl(\forall x\in A,\ Q(x)\bigr)$为真时$\forall x\in A,\ \bigl(P(x)\lor Q(x)\bigr)$一定为真，$\exists x\in A,\ \bigl(P(x)\land Q(x)\bigr)$为真时$\bigl(\exists x\in A,\ P(x)\bigr)\land\bigl(\exists x\in A,\ Q(x)\bigr)$一定为真。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$b$、$c$是取定的实数，考虑命题「$\forall x\in\R,\ x^2+bx+c>0$」。
+
+    （1）证明：$b^2<4c$时，它是真命题。
+
+    （2）设$b^2\ge4c$。写出它的:term[否定]{id="math.logic-sets.negation"}，找出一个使$x^2+bx+c\le0$的实数$x$，由此说明它是假命题。
+  hints:
+    - |
+      配方，把$x^2+bx+c$写成一个平方加上一个常数。
+    - |
+      $x^2+bx+c=\bigl(x+\frac b2\bigr)^2+\frac{4c-b^2}4$。（1）平方不小于$0$；（2）让平方等于$0$。
+    - |
+      （1）对每个实数$x$，$x^2+bx+c=\bigl(x+\frac b2\bigr)^2+\frac{4c-b^2}4\ge\frac{4c-b^2}4$。$b^2<4c$时右端大于$0$，所以每个实数$x$都使$x^2+bx+c>0$，命题为真。
+
+      （2）由否定量词命题的定理，它的否定是$\exists x\in\R,\ x^2+bx+c\le0$。取$x=-\frac b2$，平方等于$0$，$x^2+bx+c=\frac{4c-b^2}4\le0$，所以否定为真，原命题为假；$x=-\frac b2$就是一个反例。
+  reference: |
+    配方：$x^2+bx+c=\bigl(x+\frac b2\bigr)^2+\frac{4c-b^2}4$。
+
+    （1）对每个实数$x$，平方不小于$0$，所以$x^2+bx+c\ge\frac{4c-b^2}4$；$b^2<4c$时右端大于$0$，每个$x$都使$x^2+bx+c>0$，全称量词命题为真。
+
+    （2）否定是$\exists x\in\R,\ x^2+bx+c\le0$（全称换成存在，$>0$换成$\le0$）。取$x=-\frac b2$，平方为$0$，$x^2+bx+c=\frac{4c-b^2}4\le0$，所以否定为真，原命题为假；$x=-\frac b2$是反例。
+
+- id: p7
+  tier: thinking
+  statement: |
+    本节说：取值范围是:term[空集]{id="math.logic-sets.empty-set"}时，:term[全称量词命题]{id="math.logic-sets.universal-statement"}为真，:term[存在量词命题]{id="math.logic-sets.existential-statement"}为假。有人主张：「一个元素都没有，谈不上『所有』，全称量词命题应当算假。」
+
+    （1）照这个主张，取值范围$A$是空集时，$\neg\bigl(\forall x\in A,\ P(x)\bigr)$和$\exists x\in A,\ \neg P(x)$各是真是假？否定量词命题的定理还成立吗？
+
+    （2）证明$\forall x\in A,\ P(x)$时，常把$A$分成两部分$A_1$、$A_2$，分别证明$\forall x\in A_1,\ P(x)$和$\forall x\in A_2,\ P(x)$。照这个主张，$A_2$恰好是空集时，这个办法还行得通吗？由此说明：$A_2$是空集时，$\forall x\in A_2,\ P(x)$只能算真。
+  hints:
+    - |
+      （1）照这个主张，$\forall x\in A,\ P(x)$为假，它的否定就为真。$\exists x\in A,\ \neg P(x)$要在$A$中找到一个元素，找得到吗？
+
+      （2）分开证明时，「对$A$中所有$x$都成立」和「对两部分中所有$x$都成立」应当是什么关系？
+    - |
+      （1）$A$是空集时，$\exists x\in A,\ \neg P(x)$找不到元素，为假，而定理要求它和$\neg\bigl(\forall x\in A,\ P(x)\bigr)$同真同假。
+
+      （2）$A_2$是空集时，$A_1$就是$A$。照这个主张，$\forall x\in A_2,\ P(x)$为假，可$\forall x\in A,\ P(x)$可能为真。拿「每个大于$2$的素数都是奇数」按奇偶分成两部分试试。
+    - |
+      （1）照这个主张，$\forall x\in A,\ P(x)$为假，所以$\neg\bigl(\forall x\in A,\ P(x)\bigr)$为真；可$A$里没有元素，$\exists x\in A,\ \neg P(x)$为假。两边一真一假，定理不再成立。不管$P(x)$是什么都会这样，「所有大于$2$的偶素数都是$7$的倍数」和「所有大于$2$的偶素数都不是$7$的倍数」也都成了假命题。
+
+      （2）分开证明靠的是：$\forall x\in A,\ P(x)$和「$\forall x\in A_1,\ P(x)$且$\forall x\in A_2,\ P(x)$」同真同假。$A_2$是空集时$A_1$就是$A$，「且」的前一半和$\forall x\in A,\ P(x)$是同一句话；照这个主张，后一半为假，整个「且」就假，$\forall x\in A,\ P(x)$即使为真，也没法分两部分证出来。例如证「每个大于$2$的素数都是奇数」时按奇偶分成两部分：奇数那部分显然都是奇数，偶数那部分一个元素也没有，照这个主张「所有大于$2$的偶素数都是奇数」为假，对的命题反倒证不出来了。要这个办法对每一种分法都行得通，$\forall x\in A_2,\ P(x)$在$A_2$是空集时就只能算真。
+
+      这和[蕴含与充要条件](lesson:math.logic-sets.implication)里「条件不成立时算真」是同一个道理：没有能推翻它的元素，就算真。
+  reference: |
+    （1）照这个主张，$A$为空集时$\forall x\in A,\ P(x)$为假，它的否定$\neg\bigl(\forall x\in A,\ P(x)\bigr)$为真；而$\exists x\in A,\ \neg P(x)$要求$A$中有元素，为假。两边一真一假，否定量词命题的定理在空集上不成立，而且对每个$P(x)$都不成立。同时$\forall x\in A,\ P(x)$和$\forall x\in A,\ \neg P(x)$都成了假命题，两句意思相反的话一起假，也很别扭。
+
+    （2）把$A$分成$A_1$、$A_2$分别证明，靠的是「对$A$中所有$x$」等于「对$A_1$中所有$x$」且「对$A_2$中所有$x$」。$A_2$是空集时$A_1=A$，照这个主张后一半为假、整个「且」为假，可$\forall x\in A,\ P(x)$完全可能为真（如$A$是大于$2$的素数、$P(x)$是「$x$是奇数」，按奇偶分开）；分开证明在有一部分恰好是空集时就失灵了，而事先常常不知道哪一部分是空的。要这个等式对每一种分法都成立，$A_2$是空集时$\forall x\in A_2,\ P(x)$只能为真。这和蕴含里「条件不成立时算真」是同一个道理：$\forall x\in A,\ P(x)$说的是「凡是$A$里的$x$都满足$P$」，没有这样的$x$，就没有能推翻它的情形；规定为真，否定量词命题的定理在空集上也成立。
+
+- id: p8
+  tier: thinking
+  statement: |
+    有人说：「几乎所有正整数$n$都满足$n^2>10n$。」
+
+    （1）把它写成$\forall n\in\N^+,\ n^2>10n$，是真是假？写成$\exists n\in\N^+,\ n^2>10n$呢？这两种写法说出了原话的意思吗？
+
+    （2）原话想说的是什么？只用一个量词能说清吗？
+  hints:
+    - |
+      先找出不满足$n^2>10n$的正整数。
+    - |
+      对正整数$n$，$n^2>10n$就是$n>10$，不满足的只有$1,2,\dots,10$。全称的写法不许有一个例外，存在的写法只要有一个满足就行。
+    - |
+      （1）$\forall n\in\N^+,\ n^2>10n$为假，$n=1$就是反例；$\exists n\in\N^+,\ n^2>10n$为真，$n=11$就行。可两种都没说对：前一句不许有例外，说过头了；后一句只要有一个满足，就算只有$n=11$满足也成立，说得太少。
+
+      （2）原话想说的是：不满足的只有有限个，也就是从某个正整数起，后面的都满足。写出来是「存在正整数$N$，使所有大于$N$的正整数$n$都满足$n^2>10n$」，这里取$N=10$就行。它先用「存在」、再用「所有」；原话没说例外到哪里为止，单用全称量词或单用存在量词，都说不出「只有有限个例外」。说「所有大于$10$的正整数都满足」也对，可它比原话多说了界限是$10$。
+
+      这种两个量词连用的话怎样读、怎样否定，见[多重量词](lesson:math.logic-sets.nested-quantifiers)；数学分析里说数列「从某一项起」怎样，也是这个意思。「几乎所有」在不同的书里意思不全一样，这里按「只有有限个例外」理解。
+  reference: |
+    对正整数$n$，$n^2>10n$就是$n>10$，不满足的只有$n=1,2,\dots,10$。
+
+    （1）$\forall n\in\N^+,\ n^2>10n$为假（$n=1$是反例）；$\exists n\in\N^+,\ n^2>10n$为真（$n=11$）。两者都不是原话的意思：全称不许有例外，说过头；存在只要求有一个，即使只有一个$n$满足也为真，说得太少。
+
+    （2）原话说的是例外只有有限个，等价于「从某个正整数起都满足」：存在正整数$N$，使所有大于$N$的正整数$n$都满足$n^2>10n$（取$N=10$）。这要两个量词，先存在后全称；不指明界限时，单用一个量词说不出「只有有限个例外」，指明界限的「所有大于$10$的正整数都满足」又比原话多说了界限。这正是数学分析里「从某一项起」的说法，两个量词连用的读法和否定见多重量词一节。「几乎所有」在别处也可能指别的意思（如例外的比例趋于零），这里按「只有有限个例外」理解。

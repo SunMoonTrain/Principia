@@ -13,4 +13,510 @@ macros:
     \mathbb{R}
   \Pow: |
     \mathcal{P}
-glossary: []
+  \vb: |
+    \mathbf{#1}
+glossary:
+  - id: math.logic-sets.truth-value
+    zh: |
+      真值
+    en: |
+      truth value
+    brief: |
+      命题的真假：成立的命题真值为真，不成立的命题真值为假。
+    definedIn: math.logic-sets.propositions
+    anchor: def-proposition
+  - id: math.logic-sets.negation
+    zh: |
+      否定
+    en: |
+      negation
+    brief: |
+      命题$P$的否定$\neg P$读作「非$P$」：$P$真时它假，$P$假时它真。
+    definedIn: math.logic-sets.propositions
+    anchor: def-negation
+  - id: math.logic-sets.conjunction
+    zh: |
+      合取
+    en: |
+      conjunction
+    brief: |
+      $P\land Q$读作「$P$且$Q$」，只有$P$、$Q$都真时它才真。
+    definedIn: math.logic-sets.propositions
+    anchor: def-and-or
+  - id: math.logic-sets.disjunction
+    zh: |
+      析取
+    en: |
+      disjunction
+    brief: |
+      $P\lor Q$读作「$P$或$Q$」，$P$、$Q$至少有一个真时它就真，两个都真也算真。
+    definedIn: math.logic-sets.propositions
+    anchor: def-and-or
+  - id: math.logic-sets.connective
+    zh: |
+      逻辑联结词
+    en: |
+      logical connective
+    brief: |
+      「非」「且」「或」这样由命题造出新命题的词，分别记作$\neg$、$\land$、$\lor$，简称联结词。
+    definedIn: math.logic-sets.propositions
+    anchor: def-connective
+  - id: math.logic-sets.compound-proposition
+    zh: |
+      复合命题
+    en: |
+      compound proposition
+    brief: |
+      用逻辑联结词连成的命题，如$P\land\neg Q$；它的真假只由组成它的命题的真假决定。
+    definedIn: math.logic-sets.propositions
+    anchor: def-connective
+  - id: math.logic-sets.truth-table
+    zh: |
+      真值表
+    en: |
+      truth table
+    brief: |
+      把各命题的真假组合逐行列出、写出复合命题在每一行的真假的表；$n$个字母有$2^n$行。
+    definedIn: math.logic-sets.propositions
+    anchor: def-truth-table
+  - id: math.logic-sets.logical-equivalence
+    zh: |
+      逻辑等价
+    en: |
+      logical equivalence
+    brief: |
+      两个复合命题在真值表的每一行真假都相同，记作${\iff}$，读作「等价于」。
+    definedIn: math.logic-sets.propositions
+    anchor: def-logical-equivalence
+  - id: math.logic-sets.de-morgan-laws
+    zh: |
+      德摩根律
+    en: |
+      De Morgan's laws
+    brief: |
+      $\neg(P\land Q)\iff\neg P\lor\neg Q$，$\neg(P\lor Q)\iff\neg P\land\neg Q$：否定「且」得「或」、否定「或」得「且」，每部分各取否定。
+    definedIn: math.logic-sets.propositions
+    anchor: thm-de-morgan
+  - id: math.logic-sets.implication
+    zh: |
+      蕴含
+    en: |
+      implication
+    brief: |
+      复合命题「若$P$则$Q$」，记作$P\Rightarrow Q$：$P$真、$Q$假时为假，其余三种情形都为真。
+    definedIn: math.logic-sets.implication
+    anchor: def-implication
+  - id: math.logic-sets.converse
+    zh: |
+      逆命题
+    en: |
+      converse
+    brief: |
+      交换$P\Rightarrow Q$的条件和结论得到的$Q\Rightarrow P$；它和原命题不一定同真同假。
+    definedIn: math.logic-sets.implication
+    anchor: def-converse-contrapositive
+  - id: math.logic-sets.contrapositive
+    zh: |
+      逆否命题
+    en: |
+      contrapositive
+    brief: |
+      $P\Rightarrow Q$的逆否命题是$\neg Q\Rightarrow\neg P$，它和原命题逻辑等价。
+    definedIn: math.logic-sets.implication
+    anchor: def-converse-contrapositive
+  - id: math.logic-sets.sufficient-condition
+    zh: |
+      充分条件
+    en: |
+      sufficient condition
+    brief: |
+      $P\Rightarrow Q$成立时，说$P$是$Q$的充分条件：有了$P$，$Q$就一定成立。
+    definedIn: math.logic-sets.implication
+    anchor: def-sufficient-necessary
+  - id: math.logic-sets.necessary-condition
+    zh: |
+      必要条件
+    en: |
+      necessary condition
+    brief: |
+      $P\Rightarrow Q$成立时，说$Q$是$P$的必要条件：$Q$不成立，$P$就不成立。
+    definedIn: math.logic-sets.implication
+    anchor: def-sufficient-necessary
+  - id: math.logic-sets.necessary-sufficient-condition
+    zh: |
+      充要条件
+    en: |
+      necessary and sufficient condition
+    brief: |
+      $P\Rightarrow Q$和$Q\Rightarrow P$都成立时，说$P$是$Q$的充要条件，记作$P\iff Q$，读作「$P$当且仅当$Q$」。
+    definedIn: math.logic-sets.implication
+    anchor: def-iff
+  - id: math.logic-sets.universal-quantifier
+    zh: |
+      全称量词
+    en: |
+      universal quantifier
+    brief: |
+      「对所有」「任意」「任给」这类表示「每一个都」的词，记作$\forall$。
+    definedIn: math.logic-sets.quantifiers
+    anchor: def-universal
+  - id: math.logic-sets.universal-statement
+    zh: |
+      全称量词命题
+    en: |
+      universal statement
+    brief: |
+      形如$\forall x\in A,\ P(x)$的命题：$A$中每个元素都使$P(x)$成立时为真，有一个不成立就为假。
+    definedIn: math.logic-sets.quantifiers
+    anchor: def-universal
+  - id: math.logic-sets.existential-quantifier
+    zh: |
+      存在量词
+    en: |
+      existential quantifier
+    brief: |
+      「存在」「有一个」「至少有一个」这类词，记作$\exists$。
+    definedIn: math.logic-sets.quantifiers
+    anchor: def-existential
+  - id: math.logic-sets.existential-statement
+    zh: |
+      存在量词命题
+    en: |
+      existential statement
+    brief: |
+      形如$\exists x\in A,\ P(x)$的命题：$A$中至少有一个元素使$P(x)$成立时为真，一个也没有就为假。
+    definedIn: math.logic-sets.quantifiers
+    anchor: def-existential
+  - id: math.logic-sets.direct-proof
+    zh: |
+      直接证明
+    en: |
+      direct proof
+    brief: |
+      从条件出发，每一步都由条件、已经推出的结论或已知的定义、定理得到，一步步推出结论的证明。
+    definedIn: math.logic-sets.direct-proof
+    anchor: def-direct-proof
+  - id: math.logic-sets.proof-by-cases
+    zh: |
+      分情况讨论
+    en: |
+      proof by cases
+    brief: |
+      已知$P\lor Q$成立，又分别由$P$、由$Q$推出$R$，从而断定$R$成立的证法；情形多于两种时，只要合起来不漏。
+    definedIn: math.logic-sets.direct-proof
+    anchor: thm-cases
+  - id: math.logic-sets.remainder-uniqueness
+    zh: |
+      余数的唯一性
+    en: |
+      uniqueness of remainder
+    brief: |
+      设$n$是正整数，把整数$a$写成$a=qn+r$（$q$、$r$是整数，$0\le r<n$）的写法只有一种，所以$a$除以$n$的余数说得清是哪个数。
+    definedIn: math.logic-sets.direct-proof
+    anchor: thm-remainder-unique
+  - id: math.logic-sets.proof-by-contradiction
+    zh: |
+      反证法
+    en: |
+      proof by contradiction
+    brief: |
+      要证$P$，先假设$P$不成立，推出某个命题和它的否定都成立，从而断定$P$成立的证法。
+    definedIn: math.logic-sets.proof-methods
+    anchor: def-proof-by-contradiction
+  - id: math.logic-sets.subset
+    zh: |
+      子集
+    en: |
+      subset
+    brief: |
+      集合$A$的每个元素都属于集合$B$时，说$A$是$B$的子集，记作$A\subseteq B$。
+    definedIn: math.logic-sets.sets
+    anchor: def-subset
+  - id: math.logic-sets.proper-subset
+    zh: |
+      真子集
+    en: |
+      proper subset
+    brief: |
+      $A\subseteq B$且$A\ne B$时，说$A$是$B$的真子集，记作$A\subsetneq B$。
+    definedIn: math.logic-sets.sets
+    anchor: def-proper-subset
+  - id: math.logic-sets.venn-diagram
+    zh: |
+      韦恩图
+    en: |
+      Venn diagram
+    brief: |
+      用平面上封闭曲线围成的区域表示集合、区域里的点表示元素的示意图，课本写作 Venn 图。
+    definedIn: math.logic-sets.sets
+    anchor: def-venn
+  - id: math.logic-sets.empty-set
+    zh: |
+      空集
+    en: |
+      empty set
+    brief: |
+      不含任何元素的集合，记作$\varnothing$；它是任何集合的子集，并且只有一个。
+    definedIn: math.logic-sets.sets
+    anchor: def-empty-set
+  - id: math.logic-sets.power-set
+    zh: |
+      幂集
+    en: |
+      power set
+    brief: |
+      集合$A$的所有子集组成的集合，记作$\Pow(A)$；有$n$个元素的集合有$2^n$个子集。
+    definedIn: math.logic-sets.sets
+    anchor: def-power-set
+  - id: math.logic-sets.mathematical-induction
+    zh: |
+      数学归纳法
+    en: |
+      mathematical induction
+    brief: |
+      证明$P(n)$对所有整数$n\ge n_0$成立的方法：先证$P(n_0)$，再对每个$k\ge n_0$证由$P(k)$能推出$P(k+1)$。
+    definedIn: math.logic-sets.induction
+    anchor: def-induction
+  - id: math.logic-sets.strong-induction
+    zh: |
+      强归纳法
+    en: |
+      strong induction
+    brief: |
+      证明$P(n)$对所有整数$n\ge n_0$成立的方法：先证$P(n_0)$，再对每个$k\ge n_0$，由$n_0\le m\le k$时$P(m)$都成立推出$P(k+1)$；也叫第二数学归纳法。
+    definedIn: math.logic-sets.induction
+    anchor: thm-strong-induction
+  - id: math.logic-sets.union
+    zh: |
+      并集
+    en: |
+      union
+    brief: |
+      属于$A$或属于$B$的元素组成的集合，记作$A\cup B$；同时属于两者的元素也在其中。
+    definedIn: math.logic-sets.set-operations
+    anchor: def-union-intersection
+  - id: math.logic-sets.intersection
+    zh: |
+      交集
+    en: |
+      intersection
+    brief: |
+      既属于$A$又属于$B$的元素组成的集合，记作$A\cap B$。
+    definedIn: math.logic-sets.set-operations
+    anchor: def-union-intersection
+  - id: math.logic-sets.disjoint
+    zh: |
+      不相交
+    en: |
+      disjoint
+    brief: |
+      两个集合没有公共元素，即$A\cap B=\varnothing$；也说互不相交。
+    definedIn: math.logic-sets.set-operations
+    anchor: def-disjoint
+  - id: math.logic-sets.set-difference
+    zh: |
+      差集
+    en: |
+      set difference
+    brief: |
+      属于$A$而不属于$B$的元素组成的集合，记作$A\setminus B$；$B$不必是$A$的子集。
+    definedIn: math.logic-sets.set-operations
+    anchor: def-difference
+  - id: math.logic-sets.universal-set
+    zh: |
+      全集
+    en: |
+      universal set
+    brief: |
+      一个问题里讨论的集合都是它的子集时，这个集合叫全集，常记作$U$；补集要相对全集来取。
+    definedIn: math.logic-sets.set-operations
+    anchor: def-complement
+  - id: math.logic-sets.complement
+    zh: |
+      补集
+    en: |
+      complement
+    brief: |
+      全集$U$中不属于$A$的元素组成的集合，记作$A^{\mathrm c}$，即$U\setminus A$；全集换了，补集也跟着变。
+    definedIn: math.logic-sets.set-operations
+    anchor: def-complement
+  - id: math.logic-sets.family-of-sets
+    zh: |
+      集族
+    en: |
+      family of sets
+    brief: |
+      对指标集$I$的每个元素$i$都给定一个集合$A_i$，这样的一组集合记作$\{A_i\}_{i\in I}$；不同的指标可以给出同一个集合。
+    definedIn: math.logic-sets.indexed-families
+    anchor: def-family
+  - id: math.logic-sets.index-set
+    zh: |
+      指标集
+    en: |
+      index set
+    brief: |
+      集族$\{A_i\}_{i\in I}$里给集合编号用的集合$I$，可以是$\{1,2,\dots,n\}$、$\N$、全体正实数等任意集合。
+    definedIn: math.logic-sets.indexed-families
+    anchor: def-family
+  - id: math.logic-sets.pairwise-disjoint
+    zh: |
+      两两不相交
+    en: |
+      pairwise disjoint
+    brief: |
+      集族中任意两个指标不同的集合都不相交：$i\ne j$时$A_i\cap A_j=\varnothing$；对一些集合组成的集合，就是其中任意两个不同的集合都不相交。
+    definedIn: math.logic-sets.indexed-families
+    anchor: def-pairwise-disjoint
+  - id: math.logic-sets.ordered-pair
+    zh: |
+      有序对
+    en: |
+      ordered pair
+    brief: |
+      两个对象按先后排成的一对$(a,b)$；规定$(a,b)=(c,d)$当且仅当$a=c$且$b=d$。
+    definedIn: math.logic-sets.cartesian-product
+    anchor: def-ordered-pair
+  - id: math.logic-sets.tuple
+    zh: |
+      $n$元组
+    en: |
+      n-tuple
+    brief: |
+      $n$个对象按先后排成的$(a_1,a_2,\dots,a_n)$，如三元组$(a,b,c)$；两个$n$元组相等当且仅当对应的分量都相等。
+    definedIn: math.logic-sets.cartesian-product
+    anchor: def-ordered-pair
+  - id: math.logic-sets.cartesian-product
+    zh: |
+      笛卡儿积
+    en: |
+      Cartesian product
+    brief: |
+      所有有序对$(a,b)$（$a\in A$，$b\in B$）组成的集合，记作$A\times B$；平面$\R^2$就是$\R\times\R$。
+    definedIn: math.logic-sets.cartesian-product
+    anchor: def-cartesian-product
+  - id: math.logic-sets.binary-relation
+    zh: |
+      二元关系
+    en: |
+      binary relation
+    brief: |
+      笛卡儿积$A\times B$的子集$R$叫作从$A$到$B$的二元关系，简称关系；$(a,b)\in R$时记作$a\mathrel{R}b$。
+    definedIn: math.logic-sets.cartesian-product
+    anchor: def-binary-relation
+  - id: math.logic-sets.reflexive
+    zh: |
+      自反性
+    en: |
+      reflexivity
+    brief: |
+      集合$A$上的关系$R$对每个$a\in A$都有$a\mathrel{R}a$时，说$R$具有自反性，也说$R$是自反的。
+    definedIn: math.logic-sets.cartesian-product
+    anchor: def-reflexive
+  - id: math.logic-sets.transitive
+    zh: |
+      传递性
+    en: |
+      transitivity
+    brief: |
+      集合$A$上的关系$R$对所有$a,b,c\in A$，只要$a\mathrel{R}b$且$b\mathrel{R}c$就有$a\mathrel{R}c$时，说$R$具有传递性。
+    definedIn: math.logic-sets.cartesian-product
+    anchor: def-transitive
+  - id: math.logic-sets.symmetric
+    zh: |
+      对称性
+    en: |
+      symmetry
+    brief: |
+      集合$A$上的关系$R$对所有$a,b\in A$，只要$a\mathrel{R}b$就有$b\mathrel{R}a$时，说$R$具有对称性，也说$R$是对称的。
+    definedIn: math.logic-sets.equivalence-relations
+    anchor: def-symmetric
+  - id: math.logic-sets.equivalence-relation
+    zh: |
+      等价关系
+    en: |
+      equivalence relation
+    brief: |
+      集合上自反、对称、传递的二元关系，常记作$\sim$，如整数的模$n$同余、实数的相等。
+    definedIn: math.logic-sets.equivalence-relations
+    anchor: def-equivalence-relation
+  - id: math.logic-sets.equivalence-class
+    zh: |
+      等价类
+    en: |
+      equivalence class
+    brief: |
+      $A$上的等价关系$\sim$下，与$a$等价的元素组成的集合$[a]=\{x\in A:x\sim a\}$；两个等价类要么相等，要么不相交。
+    definedIn: math.logic-sets.equivalence-relations
+    anchor: def-equivalence-class
+  - id: math.logic-sets.representative
+    zh: |
+      代表元
+    en: |
+      representative
+    brief: |
+      把一个等价类写成$[a]$时所取的元素$a$；类里每个元素都能当代表元，$[a]=[b]$当且仅当$a\sim b$。
+    definedIn: math.logic-sets.equivalence-relations
+    anchor: def-representative
+  - id: math.logic-sets.quotient-set
+    zh: |
+      商集
+    en: |
+      quotient set
+    brief: |
+      集合$A$关于等价关系$\sim$的全部等价类组成的集合，记作$A/{\sim}$；它的元素是$A$的子集。
+    definedIn: math.logic-sets.equivalence-relations
+    anchor: def-quotient-set
+  - id: math.logic-sets.partition
+    zh: |
+      划分
+    en: |
+      partition
+    brief: |
+      集合的划分：集合$A$的一些两两不相交的非空子集，并起来是$A$；等价关系的全部等价类就组成$A$的一个划分。
+    definedIn: math.logic-sets.equivalence-relations
+    anchor: def-partition
+  - id: math.logic-sets.map
+    zh: |
+      映射
+    en: |
+      map
+    brief: |
+      设$A$、$B$是集合，$A$的每个元素$x$都恰好对应$B$的一个元素$f(x)$，这样的对应$f:A\to B$叫作从$A$到$B$的映射。
+    definedIn: math.logic-sets.functions
+    anchor: def-map
+  - id: math.logic-sets.domain
+    zh: |
+      定义域
+    en: |
+      domain
+    brief: |
+      映射$f:A\to B$里的集合$A$：$A$的每个元素$x$都要有像$f(x)$；定义域不同，就是不同的映射。
+    definedIn: math.logic-sets.functions
+    anchor: def-map
+  - id: math.logic-sets.codomain
+    zh: |
+      陪域
+    en: |
+      codomain
+    brief: |
+      映射$f:A\to B$里的集合$B$：所有的像都在$B$里，但不必取遍$B$；陪域不同，就是不同的映射。
+    definedIn: math.logic-sets.functions
+    anchor: def-map
+  - id: math.logic-sets.range
+    zh: |
+      像集
+    en: |
+      range
+    brief: |
+      映射$f:A\to B$的所有像组成的集合$f(A)=\{f(x):x\in A\}$，是陪域的子集；数集之间的映射的像集就是值域。
+    definedIn: math.logic-sets.functions
+    anchor: def-range
+  - id: math.logic-sets.identity-map
+    zh: |
+      恒等映射
+    en: |
+      identity map
+    brief: |
+      把集合$A$的每个元素映成它自己的映射$\mathrm{id}_A:A\to A$，$x\mapsto x$。
+    definedIn: math.logic-sets.functions
+    anchor: def-identity-map

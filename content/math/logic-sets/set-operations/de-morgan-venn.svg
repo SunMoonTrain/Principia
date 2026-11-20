@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 362" width="550" height="362" font-size="16">
+  <!-- 德摩根律的两条：每幅是矩形 U 里两个相交的圆 A、B（半径 44，圆心相距 52，交点在圆心连线的中垂线上，离连线 35.5），涂色的是下面写的集合。上排左右涂同一块（两圆外面），下排左右涂同一块（除重叠部分以外的全部） -->
+  <!-- 涂色（先画，边线压在上面）：矩形去掉两圆合起来的部分 / 去掉重叠部分，用 evenodd 挖洞 -->
+  <g fill-rule="evenodd" style="fill: var(--accent, #2563eb); opacity: 0.25">
+    <path d="M 20 12 H 220 V 136 H 20 Z M 120 38.5 A 44 44 0 1 0 120 109.5 A 44 44 0 1 0 120 38.5 Z" />
+    <path d="M 330 12 H 530 V 136 H 330 Z M 430 38.5 A 44 44 0 1 0 430 109.5 A 44 44 0 1 0 430 38.5 Z" />
+    <path d="M 20 196 H 220 V 320 H 20 Z M 120 222.5 A 44 44 0 0 0 120 293.5 A 44 44 0 0 0 120 222.5 Z" />
+    <path d="M 330 196 H 530 V 320 H 330 Z M 430 222.5 A 44 44 0 0 0 430 293.5 A 44 44 0 0 0 430 222.5 Z" />
+  </g>
+  <!-- 边线：矩形 U 和两个圆 -->
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <rect x="20" y="12" width="200" height="124" />
+    <rect x="330" y="12" width="200" height="124" />
+    <rect x="20" y="196" width="200" height="124" />
+    <rect x="330" y="196" width="200" height="124" />
+    <circle cx="94" cy="74" r="44" />
+    <circle cx="146" cy="74" r="44" />
+    <circle cx="404" cy="74" r="44" />
+    <circle cx="456" cy="74" r="44" />
+    <circle cx="94" cy="258" r="44" />
+    <circle cx="146" cy="258" r="44" />
+    <circle cx="404" cy="258" r="44" />
+    <circle cx="456" cy="258" r="44" />
+  </g>
+  <!-- 字母：U 在矩形左上角，A、B 在各自的圆里、不在重叠部分 -->
+  <g fill="currentColor" font-style="italic" text-anchor="middle">
+    <text x="32" y="31" font-size="15">U</text>
+    <text x="342" y="31" font-size="15">U</text>
+    <text x="32" y="215" font-size="15">U</text>
+    <text x="342" y="215" font-size="15">U</text>
+    <text x="70" y="80">A</text>
+    <text x="170" y="80">B</text>
+    <text x="380" y="80">A</text>
+    <text x="480" y="80">B</text>
+    <text x="70" y="264">A</text>
+    <text x="170" y="264">B</text>
+    <text x="380" y="264">A</text>
+    <text x="480" y="264">B</text>
+  </g>
+  <!-- 两幅之间的等号 -->
+  <g fill="currentColor" font-size="26" text-anchor="middle">
+    <text x="275" y="83">=</text>
+    <text x="275" y="267">=</text>
+  </g>
+  <!-- 每幅下面写的集合；上标 c 用小一号的字往上挪，不用组合字符 -->
+  <g fill="currentColor" text-anchor="middle">
+    <text x="120" y="164">(<tspan font-style="italic">A</tspan> ∪ <tspan font-style="italic">B</tspan>)<tspan dx="1" dy="-7" font-size="11">c</tspan></text>
+    <text x="430" y="164"><tspan font-style="italic">A</tspan><tspan dx="2" dy="-7" font-size="11">c</tspan><tspan dy="7"> ∩ </tspan><tspan font-style="italic">B</tspan><tspan dx="2" dy="-7" font-size="11">c</tspan></text>
+    <text x="120" y="348">(<tspan font-style="italic">A</tspan> ∩ <tspan font-style="italic">B</tspan>)<tspan dx="1" dy="-7" font-size="11">c</tspan></text>
+    <text x="430" y="348"><tspan font-style="italic">A</tspan><tspan dx="2" dy="-7" font-size="11">c</tspan><tspan dy="7"> ∪ </tspan><tspan font-style="italic">B</tspan><tspan dx="2" dy="-7" font-size="11">c</tspan></text>
+  </g>
+</svg>

@@ -180,6 +180,15 @@ glossary:
       时空间隔$\Delta s^2=0$：两个事件正好能用一束光连起来。
     definedIn: physics.special-relativity.spacetime-interval
     anchor: def-interval-types
+  - id: physics.special-relativity.clock-hypothesis
+    zh: |
+      时钟假设
+    en: |
+      clock hypothesis
+    brief: |
+      假定一只理想的钟走得多快只取决于它此刻的速度、和加速度无关；加速的钟的固有时因此可以分成小段、按匀速算。
+    definedIn: physics.special-relativity.spacetime-interval
+    anchor: def-clock-hypothesis
   - id: physics.special-relativity.spacetime-diagram
     zh: |
       时空图

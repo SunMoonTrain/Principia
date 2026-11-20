@@ -61,7 +61,7 @@ status: reviewed
 ::anchor{id="def-longitudinal-mode"}
 谐振腔两镜相距$L$、腔里的:term[折射率]{id="physics.optics.refractive-index"}（refractive index）取$1$时，能在腔里来回加强的频率$\nu_m=\frac{mc}{2L}$（$m$是正整数）叫作谐振腔的:term[纵模]{id="physics.optics.longitudinal-mode"}（longitudinal mode）；相邻两个纵模相差$\frac c{2L}$。
 
-为什么这样定义：$\frac c{2L}$就是这个腔的:term[自由光谱范围]{id="physics.optics.free-spectral-range"}（free spectral range，见[法布里-珀罗干涉仪](lesson:physics.optics.fabry-perot#def-fsr)），腔里只容得下这些频率的:term[驻波]{id="physics.oscillations-waves.standing-wave"}（standing wave），每一个是沿轴线的一种振动方式，所以叫纵模。增益介质只在一段频率范围里放大，这段范围里增益高过阈值的纵模才会起振。边界情况：氦氖激光器的增益曲线宽约$1.5\,\mathrm{GHz}$，腔长几十厘米时纵模相差几百兆赫，有两三个模同时起振；把腔做短，或在腔里加别的选频元件，可以只剩一个纵模。
+为什么这样定义：$\frac c{2L}$就是这个腔的:term[自由光谱范围]{id="physics.optics.free-spectral-range"}（free spectral range，见[法布里-珀罗干涉仪](lesson:physics.optics.fabry-perot#def-fsr)），腔里只容得下这些频率的驻波（standing wave），每一个是沿轴线的一种振动方式，所以叫纵模。增益介质只在一段频率范围里放大，这段范围里增益高过阈值的纵模才会起振。边界情况：氦氖激光器的增益曲线宽约$1.5\,\mathrm{GHz}$，腔长几十厘米时纵模相差几百兆赫，有两三个模同时起振；把腔做短，或在腔里加别的选频元件，可以只剩一个纵模。
 
 激光的相干性好，有三层原因。其一，只有一个纵模时，频率范围极窄，可以窄到$1\,\mathrm{MHz}$甚至更窄，由$\tau_c\approx\frac1{\Delta\nu}$，:term[相干长度]{id="physics.optics.coherence-length"}可达几百米（见[相干性](lesson:physics.optics.coherence#thm-coherence-length)）；有几个纵模同时起振时，频率范围按几个模合起来算，相干长度短得多。其二，留在腔里的是沿轴线来回的那一种光，整个光束的截面上是同一列波，:term[空间相干性]{id="physics.optics.spatial-coherence"}（spatial coherence）也很好。其三，光束的发散角只有$\frac\lambda D$的量级（$D$是光束的粗细），功率都集中在极小的立体角（solid angle）和极窄的频率范围里，所以$1\,\mathrm{mW}$的激光在眼睛里会聚成一个小点，比灯泡亮得多。
 

@@ -1,0 +1,185 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\int_0^{2\pi}\frac{\dd\theta}{3+\sin\theta}$。
+  answer:
+    type: number
+    value: pi/sqrt(2)
+  hints:
+    - |
+      令$z=e^{i\theta}$。在单位圆周上$\sin\theta=\frac{z-z^{-1}}{2i}$，再乘上$\frac1{iz}$，化成单位圆周上的积分。
+    - |
+      积分化成$\oint_{|z|=1}\frac{2\,\dd z}{z^2+6iz-1}$，分母的根是$(-3\pm2\sqrt2)i$。哪一个在单位圆里？
+    - |
+      圆里只有$z_1=(-3+2\sqrt2)i$，留数是$\frac2{2z_1+6i}=\frac1{2\sqrt2i}$，积分是$2\pi i\cdot\frac1{2\sqrt2i}=\frac\pi{\sqrt2}$。
+  solution: |
+    令$z=e^{i\theta}$，$3+\sin\theta=3+\frac{z-z^{-1}}{2i}=\frac{z^2+6iz-1}{2iz}$。由讲解里三角函数有理式的定理，积分等于$\oint_{|z|=1}\frac{2iz}{z^2+6iz-1}\cdot\frac{\dd z}{iz}=\oint_{|z|=1}\frac{2\,\dd z}{z^2+6iz-1}$。
+
+    分母的根是$(-3\pm2\sqrt2)i$，模分别约为$0.17$和$5.83$，只有$z_1=(-3+2\sqrt2)i$在圆里。它是分母的单零点，由极点处留数的定理，留数是$\frac2{2z_1+6i}=\frac2{4\sqrt2i}=\frac1{2\sqrt2i}$。由留数定理，积分是$2\pi i\cdot\frac1{2\sqrt2i}=\frac\pi{\sqrt2}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列积分中，能直接用讲解里「有理函数在实轴上的积分」那条定理算出的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\int_{-\infty}^{+\infty}\frac{\dd x}{x^4+1}$
+      - |
+        $\int_{-\infty}^{+\infty}\frac{x^3}{x^4+1}\,\dd x$
+      - |
+        $\int_{-\infty}^{+\infty}\frac{\dd x}{x^2-4}$
+      - |
+        $\int_{-\infty}^{+\infty}\frac{x^2}{x^4+x^2+1}\,\dd x$
+    value: [1, 4]
+  hints:
+    - |
+      那条定理要两个条件：分母没有实根，分母的次数至少比分子的次数高$2$。
+    - |
+      逐个数分子、分母的次数，再看分母在实轴上会不会等于$0$。
+    - |
+      A：$4\ge0+2$，$x^4+1>0$；B：$4<3+2$；C：$x^2-4$有实根$\pm2$；D：$4\ge2+2$，$x^4+x^2+1\ge1$。
+  solution: |
+    A：分母$x^4+1\ge1$，没有实根，次数比分子高$4$，可以用。B：分母只比分子高一次，$x\ge1$时$\frac{x^3}{x^4+1}\ge\frac1{2x}$，积分发散，定理用不上。
+
+    C：分母在$\pm2$处为$0$，被积函数在那里无界，围道会穿过极点，定理用不上。D：分母$x^4+x^2+1\ge1$，没有实根，次数比分子高$2$，可以用。选 A、D。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\int_{-\infty}^{+\infty}\frac{x^2}{(x^2+1)(x^2+4)}\,\dd x$。
+  answer:
+    type: number
+    value: pi/3
+  hints:
+    - |
+      分母比分子高$2$次，没有实根，用讲解里有理函数在实轴上的积分的定理。上半平面里的极点有哪些？
+    - |
+      记被积函数为$f$。上半平面里是一阶极点$i$和$2i$，在一阶极点$a$处的留数是$\lim_{z\to a}(z-a)f(z)$。
+    - |
+      $i$处的留数是$\frac{i^2}{2i(i^2+4)}=-\frac1{6i}$，$2i$处的是$\frac{(2i)^2}{((2i)^2+1)\cdot4i}=\frac1{3i}$，和是$\frac1{6i}$，积分是$2\pi i\cdot\frac1{6i}=\frac\pi3$。
+  solution: |
+    分母是$4$次，比分子高$2$次，根是$\pm i$、$\pm2i$，没有实根，可以用讲解里的定理。上半平面里的根是$i$、$2i$，都是分母的单零点，分子在那里不为$0$，所以是一阶极点。设被积函数是$f$，$(z-i)f(z)=\frac{z^2}{(z+i)(z^2+4)}$在$i$处的值是$\frac{-1}{2i\cdot3}=-\frac1{6i}$；$(z-2i)f(z)=\frac{z^2}{(z^2+1)(z+2i)}$在$2i$处的值是$\frac{-4}{(-3)\cdot4i}=\frac1{3i}$。两个留数之和是$\frac1{6i}$，积分是$2\pi i\cdot\frac1{6i}=\frac\pi3$。
+
+- id: p4
+  tier: medium
+  statement: |
+    求$\int_0^{2\pi}\frac{\cos2\theta}{5-4\cos\theta}\,\dd\theta$。
+  answer:
+    type: number
+    value: pi/6
+  hints:
+    - |
+      $\cos2\theta$是$e^{2i\theta}$的实部。先求$\int_0^{2\pi}\frac{e^{2i\theta}}{5-4\cos\theta}\,\dd\theta$，在单位圆周上$e^{2i\theta}=z^2$。
+    - |
+      它等于$\oint_{|z|=1}\frac{-z^2\,\dd z}{i(2z-1)(z-2)}$，$0$处没有极点。
+    - |
+      圆里只有一阶极点$\frac12$，留数是$\frac{-1/4}{2i\cdot(-3/2)}=\frac1{12i}$，积分是$2\pi i\cdot\frac1{12i}=\frac\pi6$，实部就是$\frac\pi6$。
+  solution: |
+    $\cos2\theta$是$e^{2i\theta}$的实部，先求$J=\int_0^{2\pi}\frac{e^{2i\theta}}{5-4\cos\theta}\,\dd\theta$。在单位圆周上$e^{2i\theta}=z^2$，$5-4\cos\theta=5-2(z+z^{-1})=-\frac{(2z-1)(z-2)}z$；令$F(z)=\frac{-z^2}{i(2z-1)(z-2)}$，代$z=e^{i\theta}$可以验证$F(e^{i\theta})\,ie^{i\theta}=\frac{e^{2i\theta}}{5-4\cos\theta}$。由复积分的定义，$J=\oint_{|z|=1}F(z)\,\dd z$。
+
+    $F$的极点是$\frac12$和$2$，只有$\frac12$在圆里，是一阶极点，留数是$\lim_{z\to\frac12}\frac{-z^2}{2i(z-2)}=\frac{-1/4}{2i\cdot(-3/2)}=\frac1{12i}$。由留数定理，$J=2\pi i\cdot\frac1{12i}=\frac\pi6$，是实数，所以所求的积分是$J$的实部$\frac\pi6$。直接把$\cos2\theta$换成$\frac12(z^2+z^{-2})$也行，那样$0$是二阶极点，要多算一个留数。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$a$、$b$是实数，$b\ne0$。
+
+    （1）$a>|b|$时，用留数求$\int_0^{2\pi}\frac{\dd\theta}{a+b\cos\theta}$。
+
+    （2）$a<-|b|$时，这个积分是多少？
+
+    （3）$|a|\le|b|$时，令$z=e^{i\theta}$化出的$z$的有理函数，极点落在哪里？为什么讲解里三角函数有理式的定理用不上？
+  hints:
+    - |
+      （1）积分化成$\oint_{|z|=1}\frac{2\,\dd z}{i(bz^2+2az+b)}$。二次方程$bz^2+2az+b=0$的两根之积是多少？
+    - |
+      （1）两根$z_\pm=\frac{-a\pm\sqrt{a^2-b^2}}b$是不相等的实数，乘积是$1$，所以恰有一个在单位圆里，验证它是$z_+$。（3）$|a|<|b|$时两根是共轭复数（complex conjugate），乘积仍是$1$。
+    - |
+      （1）$|z_+|=\frac{a-\sqrt{a^2-b^2}}{|b|}<1$，因为$a-|b|<\sqrt{a^2-b^2}$（两边都是正数，平方后就是$|b|<a$）。$z_+$处的留数是$\frac2{ib(z_+-z_-)}=\frac1{i\sqrt{a^2-b^2}}$，积分是$\frac{2\pi}{\sqrt{a^2-b^2}}$。（2）把$a$、$b$换成$-a$、$-b$，积分是$-\frac{2\pi}{\sqrt{a^2-b^2}}$。
+
+      （3）两根都在单位圆周上（$|a|=|b|$时是二重根$-\frac ab$，等于$\pm1$），正对着使$a+b\cos\theta=0$的$\theta$。被积函数在那里没有定义、附近无界，不满足定理的条件。
+  reference: |
+    （1）$a+b\cos\theta=a+\frac b2(z+z^{-1})=\frac{bz^2+2az+b}{2z}$，被积函数乘上$\frac1{iz}$以后是$\frac2{i(bz^2+2az+b)}$；$a>|b|$保证$a+b\cos\theta>0$处处成立，由讲解里三角函数有理式的定理，积分等于它沿单位圆周的积分。判别式$4(a^2-b^2)>0$，两根$z_\pm=\frac{-a\pm\sqrt{a^2-b^2}}b$是不相等的实数，乘积是$1$，所以一个的模小于$1$，另一个的模大于$1$。$|z_+|=\frac{a-\sqrt{a^2-b^2}}{|b|}$，而$a-|b|<\sqrt{a^2-b^2}$（两边都非负，平方后就是$|b|<a$），所以$|z_+|<1$。
+
+    $z_+$是分母的单零点，留数是$\frac2{ib(z_+-z_-)}=\frac2{2i\sqrt{a^2-b^2}}$，积分是$2\pi i\cdot\frac1{i\sqrt{a^2-b^2}}=\frac{2\pi}{\sqrt{a^2-b^2}}$。
+
+    （2）$\frac1{a+b\cos\theta}=-\frac1{(-a)+(-b)\cos\theta}$，而$-a>|-b|$，由（1），积分是$-\frac{2\pi}{\sqrt{a^2-b^2}}$。
+
+    （3）$|a|<|b|$时判别式小于$0$，两根是共轭复数$z_+$、$\bar z_+$，$|z_+|^2=z_+\bar z_+=1$，都在单位圆周上；$|a|=|b|$时是二重根$-\frac ab$，等于$-1$或$1$。它们对应$\cos\theta=-\frac ab\in[-1,1]$的$\theta$，$a+b\cos\theta$在那里为$0$，三角函数有理式在这些$\theta$处没有定义，化出的有理函数在单位圆周上有极点，定理用不上。被积函数在这些点附近无界，积分不是定积分；当作反常积分也发散（$|a|<|b|$时零点是单的，被积函数像$\frac c{\theta-\theta_0}$；$|a|=|b|$时像$\frac c{(\theta-\theta_0)^2}$），见无界函数的反常积分。
+
+- id: p6
+  tier: hard
+  statement: |
+    用扇形的围道求$\int_0^{+\infty}\frac{\dd x}{1+x^3}$：从$0$沿实轴走到$\rho$，沿圆弧$\Gamma_\rho$：$z=\rho e^{it}$（$0\le t\le\frac{2\pi}3$）走到$\rho e^{2\pi i/3}$，再沿线段回到$0$。
+
+    （1）为什么不像讲解里那样用上半圆周围道？
+
+    （2）证明$\rho\to+\infty$时$\int_{\Gamma_\rho}\frac{\dd z}{1+z^3}\to0$，并求出$\int_0^{+\infty}\frac{\dd x}{1+x^3}$。
+  hints:
+    - |
+      （1）$1+x^3$在$x=-1$处为$0$，被积函数也不是偶函数（even function）。（2）在射线$z=te^{2\pi i/3}$上$z^3=t^3$，所以回到$0$的那条线段上的积分是$\int_0^\rho\frac{\dd x}{1+x^3}$的倍数。
+    - |
+      （2）$z^3=-1$的根是$e^{i\pi/3}$、$-1$、$e^{-i\pi/3}$，只有$e^{i\pi/3}$在扇形里，它是一阶极点，留数是$\frac1{3z^2}=-\frac z3$在$z=e^{i\pi/3}$处的值。
+    - |
+      （2）记$I_\rho=\int_0^\rho\frac{\dd x}{1+x^3}$，则$\bigl(1-e^{2\pi i/3}\bigr)I_\rho+\int_{\Gamma_\rho}\frac{\dd z}{1+z^3}=-\frac{2\pi i}3e^{i\pi/3}$；$\Gamma_\rho$上$|1+z^3|\ge\rho^3-1$。由$1-e^{2\pi i/3}=-\sqrt3ie^{i\pi/3}$，解出$\int_0^{+\infty}\frac{\dd x}{1+x^3}=\frac{2\pi}{3\sqrt3}$。
+  reference: |
+    （1）$1+x^3$在$x=-1$处为$0$，线段$[-\rho,\rho]$穿过极点，$\int_{-\infty}^{+\infty}\frac{\dd x}{1+x^3}$不存在；被积函数也不是偶函数，不能由整条实轴上的积分取一半。
+
+    （2）$\Gamma_\rho$长$\frac{2\pi\rho}3$，上面$|1+z^3|\ge|z|^3-1=\rho^3-1$，由 ML 不等式，$\Gamma_\rho$上积分的模不超过$\frac{2\pi\rho}{3(\rho^3-1)}$，趋于$0$。回到$0$的线段取$z=te^{2\pi i/3}$，$t$从$\rho$减到$0$，$z^3=t^3$，积分是$-e^{2\pi i/3}I_\rho$，其中$I_\rho=\int_0^\rho\frac{\dd x}{1+x^3}$。
+
+    $\rho>1$时扇形里只有$1+z^3$的根$a=e^{i\pi/3}$（$-1$、$e^{-i\pi/3}$的辐角是$\pi$、$-\frac\pi3$，不在扇形里，也不在围道上），它是单零点，留数是$\frac1{3a^2}=\frac a{3a^3}=-\frac a3$。由留数定理，$\bigl(1-e^{2\pi i/3}\bigr)I_\rho+\int_{\Gamma_\rho}\frac{\dd z}{1+z^3}=-\frac{2\pi i}3e^{i\pi/3}$。
+
+    $1-e^{2\pi i/3}=e^{i\pi/3}\bigl(e^{-i\pi/3}-e^{i\pi/3}\bigr)=-2i\sin\frac\pi3\,e^{i\pi/3}=-\sqrt3ie^{i\pi/3}$。$\frac1{1+x^3}\le\frac1{x^3}$，积分收敛；令$\rho\to+\infty$，$-\sqrt3ie^{i\pi/3}I=-\frac{2\pi i}3e^{i\pi/3}$，所以$I=\frac{2\pi}{3\sqrt3}$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）$\int_{-\infty}^{+\infty}\frac{\dd x}{x^2+1}$也可以用线段$[-\rho,\rho]$和下半圆周拼成的闭曲线来算。这条闭曲线沿哪个方向走？留数定理要怎样用？结果和讲解里的一样吗？
+
+    （2）例 2 为什么不能改用下半圆周？
+
+    （3）设$\lambda$是不为$0$的实数，$P$、$Q$满足讲解里有理函数那条定理的条件。算$\int_{-\infty}^{+\infty}\frac{P(x)}{Q(x)}e^{i\lambda x}\,\dd x$时，该用哪一边的半圆周？
+  hints:
+    - |
+      （1）从$-\rho$沿实轴走到$\rho$，再沿下半圆周回到$-\rho$，围成的部分在右手边。
+    - |
+      （1）这是顺时针方向，反过来走才是留数定理要的逆时针，所以要添一个负号，用的是$-i$处的留数。（2）$y<0$时$|e^{iz}|=e^{-y}$有多大？
+    - |
+      （1）$-2\pi i\Res_{z=-i}\frac1{z^2+1}=-2\pi i\cdot\bigl(-\frac1{2i}\bigr)=\pi$，一样。（2）在$-i\rho$处$|e^{iz}|=e^\rho$，ML 不等式的界趋于$+\infty$；照算会得到$-2\pi i\Res_{z=-i}\frac{e^{iz}}{z^2+1}=\pi e$，不是$\frac\pi e$。
+
+      （3）要让$|e^{i\lambda z}|=e^{-\lambda y}\le1$：$\lambda>0$用上半圆周，$\lambda<0$用下半圆周。
+  reference: |
+    （1）沿线段从$-\rho$到$\rho$，再沿下半圆周$C_\rho^-$：$z=\rho e^{-it}$（$0\le t\le\pi$）回到$-\rho$，围成的下半圆盘在右手边，是顺时针。反过来走是逆时针，所以顺时针的积分是$-2\pi i$乘里面的留数之和。里面只有$-i$，留数是$\frac1{-2i}$，所以$\int_{-\rho}^{\rho}\frac{\dd x}{x^2+1}+\int_{C_\rho^-}\frac{\dd z}{z^2+1}=-2\pi i\cdot\frac1{-2i}=\pi$；圆弧上的积分由 ML 不等式趋于$0$，结果仍是$\pi$。
+
+    一般地，$P$、$Q$是实系数多项式时，下半平面的根是上半平面的根的共轭，留数也互为共轭；两种算法一致，正对应全部留数之和为$0$。
+
+    （2）$y<0$时$|e^{iz}|=e^{-y}=e^{|y|}$，在$-i\rho$处是$e^\rho$。ML 不等式的界$\frac{\pi\rho e^\rho}{\rho^2-1}\to+\infty$，估计不出来；实际上照算会得到$-2\pi i\Res_{z=-i}\frac{e^{iz}}{z^2+1}=-2\pi i\cdot\frac e{-2i}=\pi e$，而实轴上的积分趋于$\frac\pi e$，所以下半圆周上的积分趋于$\pi e-\frac\pi e\ne0$。
+
+    （3）$|e^{i\lambda z}|=e^{-\lambda y}$。$\lambda>0$时它在上半平面不超过$1$，用上半圆周，积分是$2\pi i$乘上半平面的留数之和；$\lambda<0$时它在下半平面不超过$1$，用下半圆周，积分是$-2\pi i$乘下半平面的留数之和。$Q$的次数至少比$P$高$2$，两种情形大半圆上都能用 ML 不等式。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）$\frac x{x^2+1}$的分母只比分子高一次。照讲解里有理函数那条定理的做法，取线段$[-\rho,\rho]$和上半圆周$C_\rho$拼成的围道：$2\pi i$乘上半平面的留数是多少？$\int_{C_\rho}\frac z{z^2+1}\,\dd z$是多少，$\rho\to+\infty$时趋于$0$吗？
+
+    （2）设$P$、$Q$是实系数多项式，$Q$没有实根，$Q$的次数比$P$的恰好高一次，$P$、$Q$的首项系数之比是$c$。$\rho\to+\infty$时$\int_{C_\rho}\frac{P(z)}{Q(z)}\,\dd z$趋于什么？$\lim_{\rho\to+\infty}\int_{-\rho}^{\rho}\frac{P(x)}{Q(x)}\,\dd x$存在吗？$\int_{-\infty}^{+\infty}\frac{P(x)}{Q(x)}\,\dd x$呢？
+
+    （3）$Q$有实根时（例如$\frac1{x^2-1}$），定理的做法卡在哪里？
+  hints:
+    - |
+      （1）$i$处的留数是$\frac12$；$\frac x{x^2+1}$是奇函数，$\int_{-\rho}^{\rho}$恒为$0$。（2）$\frac{P(z)}{Q(z)}-\frac cz$的分母比分子高几次？
+    - |
+      （1）由留数定理，$\int_{C_\rho}\frac z{z^2+1}\,\dd z=\pi i$，对每个$\rho>1$都一样。（2）$\frac PQ-\frac cz$的分母至少比分子高$2$次，它在$C_\rho$上的积分趋于$0$；$\int_{C_\rho}\frac{\dd z}z=\pi i$。
+    - |
+      （2）$\int_{C_\rho}\frac PQ\,\dd z\to\pi ic$，所以对称的极限存在，等于$2\pi i\sum\Res-\pi ic$；可$x$很大时$\bigl|\frac{P(x)}{Q(x)}\bigr|\ge\frac{|c|}{2x}$，反常积分发散。
+
+      （3）围道穿过$\pm1$，留数定理不允许曲线上有奇点；被积函数在$\pm1$附近无界，$\int_{-\rho}^{\rho}$不是定积分。在$\pm1$两侧对称地挖掉一小段再取极限，见[柯西主值与实轴上的极点](lesson:math.complex-analysis.cauchy-principal-value)一节。
+  reference: |
+    （1）$i$处的留数是$\lim_{z\to i}\frac{z(z-i)}{z^2+1}=\frac i{2i}=\frac12$，$2\pi i\cdot\frac12=\pi i$。$\frac x{x^2+1}$是奇函数，$\int_{-\rho}^{\rho}\frac{x\,\dd x}{x^2+1}=0$，由留数定理，对每个$\rho>1$，$\int_{C_\rho}\frac z{z^2+1}\,\dd z=\pi i$，不趋于$0$。直接算也行：$\frac z{z^2+1}=\frac1z-\frac1{z(z^2+1)}$，$\int_{C_\rho}\frac{\dd z}z=\int_0^\pi i\,\dd t=\pi i$，后一项由 ML 不等式趋于$0$。
+
+    （2）设$Q$是$q$次的，$\frac{P(z)}{Q(z)}-\frac cz=\frac{zP(z)-cQ(z)}{zQ(z)}$，分子里$z^q$的系数抵消，次数不超过$q-1$，分母是$q+1$次，所以$|z|$大时它的模不超过$\frac K{|z|^2}$，在$C_\rho$上的积分趋于$0$。于是$\int_{C_\rho}\frac PQ\,\dd z\to\pi ic$，$\int_{-\rho}^{\rho}\frac PQ\,\dd x=2\pi i\sum\Res-\int_{C_\rho}\frac PQ\,\dd z\to2\pi i\sum\Res-\pi ic$，对称的极限存在。可$x\to+\infty$时$x\frac{P(x)}{Q(x)}\to c\ne0$，$x$足够大时$\frac PQ$和$c$同号、$\bigl|\frac PQ\bigr|\ge\frac{|c|}{2x}$，由比较判别法，$\int_0^{+\infty}\frac PQ\,\dd x$发散，所以$\int_{-\infty}^{+\infty}$发散。（1）是$c=1$、对称极限为$0$的例子。
+
+    （3）$\frac1{x^2-1}$在$\pm1$处无界，线段$[-\rho,\rho]$穿过两个一阶极点，留数定理要求曲线上没有奇点，用不上；$\int_{-\rho}^{\rho}\frac{\dd x}{x^2-1}$作为反常积分也发散（见无界函数的反常积分）。把$\pm1$两侧对称地挖掉$\varepsilon$再取极限，得到的是柯西主值，柯西主值与实轴上的极点一节讲怎样用带小半圆的围道算它；这个例子的主值是$0$。

@@ -1,0 +1,182 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$A=\{1,\{2\},\{1,2\}\}$。下面哪些说法成立？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\{1,2\}\in A$
+      - |
+        $\varnothing\in A$
+      - |
+        $\{1,2\}\subseteq A$
+      - |
+        $\{1,\{2\}\}\subseteq A$
+      - |
+        $\{\{1,2\}\}\subseteq A$
+    value: [1, 4, 5]
+  hints:
+    - |
+      先列出$A$的元素。判断「$\in$」，看左边是不是其中之一；判断「$\subseteq$」，看左边的每个元素是不是都在其中。
+    - |
+      $A$有三个元素：数$1$、集合$\{2\}$和集合$\{1,2\}$。数$2$是其中之一吗？选项 B 的$\varnothing$呢？
+    - |
+      选项 A：$\{1,2\}$正是$A$的第三个元素，成立。选项 B：$A$的三个元素里没有$\varnothing$，不成立，成立的是$\varnothing\subseteq A$。选项 C：$\{1,2\}$的元素$2$不是$A$的元素，不成立。
+
+      选项 D：$1$、$\{2\}$都是$A$的元素，成立。选项 E：$\{\{1,2\}\}$唯一的元素$\{1,2\}$是$A$的元素，成立。所以选 A、D、E。
+  solution: |
+    $A$有三个元素：数$1$、集合$\{2\}$和集合$\{1,2\}$，数$2$不是它的元素。选项 A：$\{1,2\}$是其中之一，所以$\{1,2\}\in A$。选项 B：$\varnothing$不是$A$的三个元素之一，$\varnothing\in A$不成立；:term[空集]{id="math.logic-sets.empty-set"}是$A$的子集，可那是$\varnothing\subseteq A$。选项 C：$\{1,2\}$的元素$2$不属于$A$，所以$\{1,2\}\not\subseteq A$。
+
+    选项 D：$\{1,\{2\}\}$的元素$1$、$\{2\}$都属于$A$，所以$\{1,\{2\}\}\subseteq A$。选项 E：$\{\{1,2\}\}$只有一个元素$\{1,2\}$，它属于$A$，所以$\{\{1,2\}\}\subseteq A$。选 A、D、E；$\{1,2\}$是$A$的元素，却不是$A$的子集，例 2 的$\{1\}$则两者都是。
+
+- id: p2
+  tier: easy
+  statement: |
+    集合$\{k^2-k:k\in\Z,\ -3\le k\le3\}$有几个元素？
+  answer:
+    type: number
+    value: 4
+    exact: true
+  hints:
+    - |
+      把$k=-3,-2,\dots,3$逐个代进$k^2-k$，算出每个值。集合不管重复，相同的值只算一个元素。
+    - |
+      七个$k$依次给出$12,6,2,0,0,2,6$。
+    - |
+      这七个值里互不相同的只有$0$、$2$、$6$、$12$，所以这个集合就是$\{0,2,6,12\}$，有$4$个元素。
+  solution: |
+    $k=-3,-2,-1,0,1,2,3$时，$k^2-k$依次是$12,6,2,0,0,2,6$。$k$和$1-k$给出同一个值，因为$(1-k)^2-(1-k)=k^2-k$，所以重复出现。集合不管重复，它就是$\{0,2,6,12\}$，有$4$个元素。
+
+- id: p3
+  tier: medium
+  statement: |
+    满足$\{1,2\}\subsetneq X\subsetneq\{1,2,3,4,5,6\}$的集合$X$有几个？
+  answer:
+    type: number
+    value: 14
+    exact: true
+  hints:
+    - |
+      $X$一定含有$1$、$2$，又是$\{1,2,3,4,5,6\}$的:term[子集]{id="math.logic-sets.subset"}，所以$X$由$3,4,5,6$里放进了哪几个决定。
+    - |
+      $X$里除了$1$、$2$以外的元素组成$\{3,4,5,6\}$的一个子集$S$。两个「真」各排除了哪一个$S$？
+    - |
+      不同的$X$对应不同的$S$，$\{3,4,5,6\}$的每个子集$S$也对应一个$X$，这样的$S$有$2^4=16$个。$X\ne\{1,2\}$排除了$S=\varnothing$，$X\ne\{1,2,3,4,5,6\}$排除了$S=\{3,4,5,6\}$，所以$X$有$16-2=14$个。
+  solution: |
+    满足$\{1,2\}\subseteq X\subseteq\{1,2,3,4,5,6\}$的$X$，就是$1$、$2$都放进去，$3,4,5,6$各自决定放不放，由乘法原理有$2^4=16$个。两个$\subsetneq$要求$X$既不等于$\{1,2\}$，也不等于$\{1,2,3,4,5,6\}$，各去掉一个。所以$X$有$16-2=14$个。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$A=\{x\in\R:x^2-3x+2=0\}$，$B=\{x\in\R:ax=2\}$，其中$a$是实数。使$B\subseteq A$的实数$a$有几个？
+  answer:
+    type: number
+    value: 3
+    exact: true
+  hints:
+    - |
+      先用列举法写出$A$。$B$是方程$ax=2$的实数解组成的集合，有几个元素，要看$a$是不是$0$。
+    - |
+      $A=\{1,2\}$。$a\ne0$时$B=\{\frac2a\}$；$a=0$时方程$0\cdot x=2$没有实数解，$B$是什么？
+    - |
+      $a=0$时$B=\varnothing$，:term[空集]{id="math.logic-sets.empty-set"}是任何集合的子集，$B\subseteq A$成立。$a\ne0$时$B=\{\frac2a\}$，$B\subseteq A$就是$\frac2a\in\{1,2\}$，即$a=2$或$a=1$。所以$a$是$0$、$1$、$2$，共$3$个。
+  solution: |
+    $x^2-3x+2=(x-1)(x-2)$，所以$A=\{1,2\}$。
+
+    $a\ne0$时，$ax=2$恰有一个实数解$\frac2a$，$B=\{\frac2a\}$；$B\subseteq A$就是$\frac2a=1$或$\frac2a=2$，即$a=2$或$a=1$。$a=0$时，$0\cdot x=2$没有实数解，$B=\varnothing$，而:term[空集]{id="math.logic-sets.empty-set"}是任何集合的子集，所以$B\subseteq A$也成立。$a$是$0$、$1$、$2$，共$3$个；漏掉$a=0$，就是忘了$B$可能是空集。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$A$、$B$是集合。证明：$\Pow(A)\subseteq\Pow(B)$当且仅当$A\subseteq B$。
+  hints:
+    - |
+      两个方向分开证。$X\in\Pow(A)$就是$X\subseteq A$，先把要证的话都翻译成「子集」的说法。
+    - |
+      由$\Pow(A)\subseteq\Pow(B)$推$A\subseteq B$时，想想$A$本身是不是$\Pow(A)$的元素。反方向任取$X\in\Pow(A)$，要证的是$X\subseteq B$。
+    - |
+      先证「若$\Pow(A)\subseteq\Pow(B)$，则$A\subseteq B$」。每个集合都是自己的子集，$A\subseteq A$，所以$A\in\Pow(A)$；由$\Pow(A)\subseteq\Pow(B)$得$A\in\Pow(B)$，即$A\subseteq B$。
+
+      再证「若$A\subseteq B$，则$\Pow(A)\subseteq\Pow(B)$」。任取$X\in\Pow(A)$，即$X\subseteq A$。任取$x\in X$，由$X\subseteq A$得$x\in A$，再由$A\subseteq B$得$x\in B$；所以$X\subseteq B$，即$X\in\Pow(B)$。$X$是任取的，所以$\Pow(A)\subseteq\Pow(B)$。
+  reference: |
+    （⇒）$A\subseteq A$，故$A\in\Pow(A)\subseteq\Pow(B)$，即$A\in\Pow(B)$，也就是$A\subseteq B$。关键是$A$本身是$\Pow(A)$的元素。
+
+    （⇐）任取$X\in\Pow(A)$，即$X\subseteq A$。对每个$x\in X$，有$x\in A$，又$A\subseteq B$，所以$x\in B$，故$X\subseteq B$，$X\in\Pow(B)$。所以$\Pow(A)\subseteq\Pow(B)$。这一步用的是包含关系能「接力」：$X\subseteq A$、$A\subseteq B$推出$X\subseteq B$，由子集的定义逐元素验证即可。
+
+- id: p6
+  tier: hard
+  statement: |
+    证明：$\{2m+3n:m,n\in\N\}=\{k\in\N:k\ne1\}$。
+  hints:
+    - |
+      证互相包含。先让$m$、$n$取$0,1,2$，看左边都有哪些自然数，缺了哪一个。
+    - |
+      左边：$n=0$时是偶数，$n\ge1$时不小于$3$，所以写不出$1$。右边：偶数$k$取$n=0$；不等于$1$的奇数$k$不小于$3$，可以写成$2m+3$。
+    - |
+      记左边为$A$，右边为$B$。任取$x\in A$，有自然数$m$、$n$使$x=2m+3n$，它是自然数。若$n=0$，$x=2m$是偶数，不等于$1$；若$n\ge1$，$x\ge3n\ge3$，也不等于$1$。所以$x\in B$，$A\subseteq B$。
+
+      反过来，任取$k\in B$。$k$是偶数时，$m=\frac k2$是自然数，$k=2m+3\cdot0$；$k$是奇数时，由$k\ne1$得$k\ge3$，$m=\frac{k-3}2$是自然数，$k=2m+3\cdot1$。两种情形都有$k\in A$，所以$B\subseteq A$；互相包含，所以$A=B$。
+  reference: |
+    记左边为$A$，右边为$B$。
+
+    $A\subseteq B$：$x=2m+3n$（$m,n\in\N$）是自然数。$n=0$时$x$是偶数，不等于$1$；$n\ge1$时$x\ge3$。所以$x\ne1$，$x\in B$。
+
+    $B\subseteq A$：设$k\in\N$，$k\ne1$。$k$为偶数时取$m=\frac k2$、$n=0$；$k$为奇数时$k\ge3$，取$m=\frac{k-3}2$、$n=1$。两种情形$m$、$n$都是自然数，且$2m+3n=k$，所以$k\in A$。这里用了分情况讨论，偶数、奇数两种情形合起来不漏。
+
+    互相包含，所以$A=B$。注意$\N$含$0$：若改成$m,n\in\N^+$，左边的最小元素是$5$，结论就不对了。
+
+- id: p7
+  tier: thinking
+  statement: |
+    描述法写成$\{x\in A:P(x)\}$，是从一个已有的集合$A$里挑元素。假如不写$A$，允许「所有满足$P(x)$的对象」都组成一个集合，看看会怎样。
+
+    （1）设「所有不属于自己的集合」组成一个集合$R$，即对每个集合$x$，$x\in R$当且仅当$x\notin x$。$R\in R$成立吗？$R\notin R$呢？
+
+    （2）回到描述法：对一个已有的集合$A$，令$R_A=\{x\in A:x\notin x\}$，同样的推理得出什么？由此说说，描述法为什么要从已有的集合里挑。
+  hints:
+    - |
+      （1）$R$本身也是一个集合，把$x$换成$R$，代进「$x\in R$当且仅当$x\notin x$」。
+    - |
+      代进去得到「$R\in R$当且仅当$R\notin R$」，一个命题和它的否定同真同假，这可能吗？（2）照样把$x$换成$R_A$，可这一次条件里多了一个$R_A\in A$。
+    - |
+      （1）把$x$换成$R$，得到「$R\in R$当且仅当$R\notin R$」。若$R\in R$，则$R\notin R$；若$R\notin R$，则$R\in R$。两种情形都推出一个命题和它的否定同时成立，矛盾，所以这样的集合$R$不存在：「所有满足$P(x)$的对象」不一定组成集合。这就是罗素悖论（Russell's paradox）。
+
+      （2）对每个集合$y$，$y\in R_A$当且仅当$y\in A$且$y\notin y$。设$R_A\in A$，则$R_A\in R_A$当且仅当$R_A\notin R_A$，同样矛盾；所以$R_A\notin A$，这只是一个结论，不再是悖论。由此还知道，没有哪个集合能把所有的集合都当作元素：对任何集合$A$，$R_A$就不在$A$里。
+
+      描述法只从已有的集合里挑，挑出来的总是那个集合的一部分，上面的推理只能推出「挑出来的东西不在原来的集合里」，推不出矛盾。所以要先说好从哪个集合里挑，「所有满足$P(x)$的对象」这种说法不能随便当作集合。
+  reference: |
+    （1）由$R$的定义取$x=R$：$R\in R\iff R\notin R$。若$R\in R$则$R\notin R$，若$R\notin R$则$R\in R$，两种情形都得到$R\in R$与$R\notin R$同时成立，矛盾。所以不存在这样的集合$R$（罗素悖论）：不加限制地用「所有满足$P(x)$的对象」造集合会推出矛盾。
+
+    （2）$y\in R_A\iff(y\in A\land y\notin y)$。若$R_A\in A$，则$R_A\in R_A\iff R_A\notin R_A$，矛盾；所以$R_A\notin A$。这不是悖论，而是一个定理：任何集合$A$都不能包含所有集合（$R_A$就是一个不在$A$里的集合）。
+
+    结论：描述法$\{x\in A:P(x)\}$只从已有的集合$A$中挑元素，罗素的论证在这里只推出「$R_A\notin A$」，不会推出矛盾。这正是公理化集合论里分离公理的想法；本站不讲公理化集合论，只要求描述法写出从哪个集合里挑。
+
+- id: p8
+  tier: thinking
+  statement: |
+    由$A\subseteq B$和$B\subseteq C$能推出$A\subseteq C$：$A$的元素都在$B$里，$B$的元素又都在$C$里。「属于」能不能这样接下去？
+
+    （1）若$a\in B$，$B\in C$，一定有$a\in C$吗？
+
+    （2）若$a\in B$，$B\subseteq C$，一定有$a\in C$吗？若$A\subseteq B$，$B\in C$，一定有$A\in C$吗？
+
+    （3）从定义上说说，为什么$\subseteq$能这样接下去，$\in$却不一定能。
+  hints:
+    - |
+      举例时让$C$的元素是集合，比如$B=\{1\}$，$C=\{\{1\}\}$，看看$1$是不是$C$的元素。
+    - |
+      （1）$C=\{\{1\}\}$只有一个元素，就是集合$\{1\}$。（2）前一句直接用:term[子集]{id="math.logic-sets.subset"}的定义；后一句试试$A=\varnothing$。
+    - |
+      （1）不一定。取$a=1$，$B=\{1\}$，$C=\{\{1\}\}$：$1\in B$，$B\in C$，可$C$唯一的元素是集合$\{1\}$，不是数$1$，所以$1\notin C$。也有接得上的时候，比如$C=\{1,\{1\}\}$，这时$1\in C$。
+
+      （2）前一句一定成立：$a\in B$，而$B$的每个元素都属于$C$，所以$a\in C$。后一句不一定：取$A=\varnothing$，$B=\{1\}$，$C=\{\{1\}\}$，则$\varnothing\subseteq B$，$B\in C$，可$C$唯一的元素$\{1\}$不是$\varnothing$，所以$\varnothing\notin C$。
+
+      （3）$A\subseteq B$是对$A$的每个元素的要求：它们都在$B$里，所以一个元素从$A$到$B$、再从$B$到$C$，一路都在。$B\in C$却只说$B$这个整体是$C$的一个元素，没说$B$里面的元素在不在$C$里，所以由$a\in B$、$B\in C$，既推不出$a\in C$，也推不出$a\notin C$。$\in$接在$\subseteq$前面（$a\in B$、$B\subseteq C$）能推下去，因为后一步说的正是$B$的元素；接在后面（$A\subseteq B$、$B\in C$）就不行。
+  reference: |
+    （1）不一定：$a=1$，$B=\{1\}$，$C=\{\{1\}\}$时$1\in B$、$B\in C$，但$1\notin C$（$C$只有一个元素$\{1\}$，而$1\ne\{1\}$）。也可能成立，如$C=\{1,\{1\}\}$。
+
+    （2）$a\in B$、$B\subseteq C$时一定有$a\in C$（子集的定义）。$A\subseteq B$、$B\in C$时不一定有$A\in C$：$A=\varnothing$，$B=\{1\}$，$C=\{\{1\}\}$，则$\varnothing\subseteq B$、$B\in C$，但$\varnothing\notin C$。
+
+    （3）$\subseteq$是对元素的全称命题：$A\subseteq B$说$\forall x\in A,\ x\in B$，两个这样的命题能逐元素接起来。$B\in C$只关心$B$这个对象本身是否在$C$里，不涉及$B$的元素，所以「属于」不能接力；只有$a\in B$、$B\subseteq C$这种把$\subseteq$用在$B$的元素上的组合能推下去。以后讲关系的传递性时，$\subseteq$是传递的，$\in$不是。

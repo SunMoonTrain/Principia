@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" width="640" height="250" font-size="14">
+  <!-- 左：电子枪在镍晶体正上方，电子沿表面法线向下射到晶体上，被弹回来的电子由探测器在和法线成 θ 角的方向上接收。右：放大的晶体表面，每个圆点代表垂直于纸面的一排原子，相邻两排相距 D；电子沿法线射来，两排原子向 θ 方向散射的射线互相平行，从右边一排向左边那条射线作垂线，左边那条多走的一段是 D sin θ。 -->
+  <rect x="50" y="182" width="180" height="40" style="stroke: currentColor" fill="none" stroke-width="1.4" />
+  <text x="140" y="208" fill="currentColor" text-anchor="middle">镍晶体</text>
+  <rect x="129" y="20" width="22" height="30" style="stroke: currentColor" fill="none" stroke-width="1.4" />
+  <text x="121" y="40" fill="currentColor" text-anchor="end">电子枪</text>
+  <line x1="140" y1="52" x2="140" y2="172" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 140 180.5 L 136 171.5 L 144 171.5 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="143.1" y1="179.4" x2="223.9" y2="111.6" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 230.4 106.2 L 226.1 115 L 220.9 108.9 Z" style="fill: var(--accent, #2563eb)" />
+  <rect x="227.4" y="89.8" width="26" height="16" transform="rotate(50 240.4 97.8)" style="stroke: currentColor" fill="none" stroke-width="1.4" />
+  <text x="260.4" y="85.8" fill="currentColor">探测器</text>
+  <path d="M 140 146 A 36 36 0 0 1 167.6 158.9" style="stroke: currentColor" fill="none" stroke-width="1.2" />
+  <text x="161.1" y="141.7" fill="currentColor" text-anchor="middle" font-style="italic">θ</text>
+  <circle cx="365" cy="196" r="7" style="fill: var(--muted, #6b7280)" />
+  <circle cx="475" cy="196" r="7" style="fill: var(--muted, #6b7280)" />
+  <circle cx="585" cy="196" r="7" style="fill: var(--muted, #6b7280)" />
+  <line x1="365" y1="40" x2="365" y2="179" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 365 187.5 L 361 178.5 L 369 178.5 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="475" y1="40" x2="475" y2="179" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 475 187.5 L 471 178.5 L 479 178.5 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="357" y="52" fill="currentColor" text-anchor="end">入射电子</text>
+  <line x1="371.9" y1="190.2" x2="488.7" y2="92.2" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 495.2 86.7 L 490.9 95.6 L 485.8 89.4 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="481.9" y1="190.2" x2="598.7" y2="92.2" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 605.2 86.7 L 600.9 95.6 L 595.8 89.4 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="475" y1="196" x2="429.6" y2="141.8" style="stroke: var(--muted, #6b7280)" stroke-width="1.2" stroke-dasharray="4 3" />
+  <path d="M 424.2 146.3 L 428.7 151.7 L 434.1 147.2" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1" />
+  <line x1="371.1" y1="190.9" x2="429.6" y2="141.8" style="stroke: var(--good, #059669)" stroke-width="4" />
+  <text x="424" y="132" style="fill: var(--good, #059669)" text-anchor="end"><tspan font-style="italic">D</tspan> sin <tspan font-style="italic">θ</tspan></text>
+  <path d="M 475 166 A 30 30 0 0 1 498 176.7" style="stroke: currentColor" fill="none" stroke-width="1.2" />
+  <text x="493.2" y="162" fill="currentColor" text-anchor="middle" font-style="italic">θ</text>
+  <line x1="365" y1="218" x2="475" y2="218" style="stroke: currentColor" stroke-width="1" />
+  <line x1="365" y1="213" x2="365" y2="223" style="stroke: currentColor" stroke-width="1" />
+  <line x1="475" y1="213" x2="475" y2="223" style="stroke: currentColor" stroke-width="1" />
+  <text x="420" y="237" fill="currentColor" text-anchor="middle" font-style="italic">D</text>
+</svg>

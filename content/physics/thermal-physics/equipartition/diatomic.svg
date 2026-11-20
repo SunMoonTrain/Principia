@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 300" width="660" height="300" font-size="14">
+  <!-- 双原子分子的三种运动：左，平动（质心朝 x、y、z 三个方向）；中，转动（绕两根互相垂直、又都垂直于键的轴：竖直的一根在纸面内，斜的一根和左图的 z 轴平行、垂直于纸面；绕键轴的不计）；右，振动（两个原子沿键反向振动，动能、势能各一个平方项）。示意图，箭头只表示方向。 -->
+  <line x1="220" y1="8" x2="220" y2="252" style="stroke: currentColor" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4 3" />
+  <line x1="440" y1="8" x2="440" y2="252" style="stroke: currentColor" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4 3" />
+  <text x="110" y="26" fill="currentColor" text-anchor="middle">平动：3 个平方项</text>
+  <text x="330" y="26" fill="currentColor" text-anchor="middle">转动：2 个平方项</text>
+  <text x="550" y="26" fill="currentColor" text-anchor="middle">振动：2 个平方项</text>
+
+  <!-- 左：平动 -->
+  <line x1="86.9" y1="156.9" x2="133.1" y2="127.1" style="stroke: currentColor" stroke-width="3" />
+  <circle cx="76" cy="164" r="13" style="fill: currentColor; stroke: currentColor" fill-opacity="0.18" stroke-width="1.5" />
+  <circle cx="144" cy="120" r="13" style="fill: currentColor; stroke: currentColor" fill-opacity="0.18" stroke-width="1.5" />
+  <line x1="110" y1="142" x2="110" y2="76" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <path d="M 110 66 L 115 76 L 105 76 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="110" y1="142" x2="180" y2="142" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <path d="M 190 142 L 180 147 L 180 137 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="110" y1="142" x2="145.7" y2="186.2" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <path d="M 152 194 L 141.8 189.4 L 149.6 183.1 Z" style="fill: var(--accent, #2563eb)" />
+  <circle cx="110" cy="142" r="3" style="fill: currentColor" />
+  <text x="122" y="76" fill="currentColor" text-anchor="start"><tspan font-style="italic">y</tspan></text>
+  <text x="198" y="147" fill="currentColor" text-anchor="start"><tspan font-style="italic">x</tspan></text>
+  <text x="158" y="206" fill="currentColor" text-anchor="start"><tspan font-style="italic">z</tspan></text>
+  <text x="110" y="228" fill="currentColor" text-anchor="middle">质心朝三个方向运动</text>
+
+  <!-- 中：转动 -->
+  <line x1="236" y1="142" x2="273" y2="142" style="stroke: currentColor" stroke-width="1.2" stroke-dasharray="5 4" />
+  <line x1="387" y1="142" x2="424" y2="142" style="stroke: currentColor" stroke-width="1.2" stroke-dasharray="5 4" />
+  <line x1="301" y1="142" x2="359" y2="142" style="stroke: currentColor" stroke-width="3" />
+  <circle cx="288" cy="142" r="13" style="fill: currentColor; stroke: currentColor" fill-opacity="0.18" stroke-width="1.5" />
+  <circle cx="372" cy="142" r="13" style="fill: currentColor; stroke: currentColor" fill-opacity="0.18" stroke-width="1.5" />
+  <line x1="330" y1="62" x2="330" y2="204" style="stroke: currentColor" stroke-width="1.2" />
+  <path d="M 309.3 77.6 L 308.7 78.2 L 308.3 78.9 L 308 79.6 L 308 80.2 L 308.2 80.9 L 308.6 81.6 L 309.1 82.2 L 309.9 82.8 L 310.9 83.4 L 312 84 L 313.3 84.5 L 314.7 85 L 316.3 85.5 L 318 85.9 L 319.8 86.2 L 321.8 86.5 L 323.8 86.7 L 325.8 86.9 L 327.9 87 L 330 87 L 332.1 87 L 334.2 86.9 L 336.2 86.7 L 338.2 86.5 L 340.2 86.2 L 342 85.9 L 343.7 85.5 L 345.3 85 L 346.7 84.5 L 348 84" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="1.8" />
+  <path d="M 350.7 77.6 L 351.3 86.5 L 343.9 83.5 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="358" y="84" fill="currentColor" text-anchor="start"><tspan font-style="italic">ω</tspan><tspan baseline-shift="sub" font-size="10">1</tspan></text>
+  <line x1="291" y1="93.8" x2="371.5" y2="193.3" style="stroke: currentColor" stroke-width="1.2" />
+  <path d="M 344.5 186.8 L 344.4 187.6 L 344.5 188.2 L 344.7 188.8 L 345 189.3 L 345.5 189.6 L 346.1 189.9 L 346.8 190 L 347.6 190 L 348.6 189.9 L 349.6 189.7 L 350.7 189.4 L 351.9 189 L 353.1 188.5 L 354.4 187.9 L 355.8 187.1 L 357.2 186.3 L 358.5 185.5 L 359.9 184.5 L 361.3 183.5 L 362.7 182.5 L 364 181.3 L 365.3 180.2 L 366.5 179 L 367.6 177.9 L 368.7 176.7 L 369.7 175.5 L 370.6 174.4 L 371.3 173.3 L 372 172.2" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="1.8" />
+  <path d="M 370.8 165.6 L 376.2 172.7 L 368.3 174.2 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="381" y="178" fill="currentColor" text-anchor="start"><tspan font-style="italic">ω</tspan><tspan baseline-shift="sub" font-size="10">2</tspan></text>
+  <circle cx="330" cy="142" r="3" style="fill: currentColor" />
+  <text x="330" y="228" fill="currentColor" text-anchor="middle">绕两根垂直于键的轴转动</text>
+  <text x="330" y="250" fill="currentColor" text-anchor="middle">绕键轴（虚线）转动不计</text>
+
+  <!-- 右：振动 -->
+  <path d="M 513 142 L 520 142 L 525 134 L 535 150 L 545 134 L 555 150 L 565 134 L 575 150 L 580 142 L 587 142" fill="none" style="stroke: currentColor" stroke-width="1.6" />
+  <circle cx="500" cy="142" r="13" style="fill: currentColor; stroke: currentColor" fill-opacity="0.18" stroke-width="1.5" />
+  <circle cx="600" cy="142" r="13" style="fill: currentColor; stroke: currentColor" fill-opacity="0.18" stroke-width="1.5" />
+  <line x1="492" y1="112" x2="508" y2="112" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <path d="M 516 112 L 508 116 L 508 108 Z" style="fill: var(--accent, #2563eb)" />
+  <path d="M 484 112 L 492 108 L 492 116 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="592" y1="112" x2="608" y2="112" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <path d="M 616 112 L 608 116 L 608 108 Z" style="fill: var(--accent, #2563eb)" />
+  <path d="M 584 112 L 592 108 L 592 116 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="550" y="228" fill="currentColor" text-anchor="middle">两个原子沿键反向振动</text>
+  <text x="550" y="250" fill="currentColor" text-anchor="middle">动能、势能各一个平方项</text>
+
+  <text x="330" y="284" fill="currentColor" text-anchor="middle">刚性分子 <tspan font-style="italic">f</tspan> = 3 + 2 = 5；算上振动 <tspan font-style="italic">f</tspan> = 3 + 2 + 2 = 7</text>
+</svg>

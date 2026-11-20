@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 310" width="620" height="310" font-size="14">
+  <!-- 左：两个相交的圆 A、B，A 里、B 外有一个圆点 x，说明 A ⊈ B（「不属于」写成汉字：系统无衬线字体里 ∉ 的斜线会错位）。右：{a, b, c} 的 8 个子集按元素个数排成四层，相差一个元素的两个子集连线 -->
+  <!-- 左图：A 里、B 外的那一块涂浅色（先画，边线压在上面） -->
+  <path d="M 121 74.48 A 68 68 0 1 0 121 195.52 A 68 68 0 0 1 121 74.48 Z" style="fill: var(--accent, #2563eb); opacity: 0.15" />
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <circle cx="90" cy="135" r="68" />
+    <circle cx="152" cy="135" r="68" />
+  </g>
+  <g fill="currentColor" font-size="16" font-style="italic">
+    <text x="28" y="70">A</text>
+    <text x="206" y="70">B</text>
+  </g>
+  <circle cx="48" cy="135" r="3.5" fill="currentColor" />
+  <text x="56" y="140" fill="currentColor" font-size="15" font-style="italic">x</text>
+  <text x="121" y="236" fill="currentColor" text-anchor="middle"><tspan font-style="italic">x</tspan> 属于 <tspan font-style="italic">A</tspan>，不属于 <tspan font-style="italic">B</tspan></text>
+  <text x="121" y="262" text-anchor="middle" style="fill: var(--accent, #2563eb)">所以 <tspan font-style="italic">A</tspan> ⊈ <tspan font-style="italic">B</tspan></text>
+  <!-- 右图：连线（从上一层的字下面连到下一层的字上面） -->
+  <g stroke="currentColor" stroke-width="1.2" fill="none">
+    <line x1="470" y1="50" x2="380" y2="90" />
+    <line x1="470" y1="50" x2="470" y2="90" />
+    <line x1="470" y1="50" x2="560" y2="90" />
+    <line x1="380" y1="122" x2="380" y2="162" />
+    <line x1="380" y1="122" x2="470" y2="162" />
+    <line x1="470" y1="122" x2="380" y2="162" />
+    <line x1="470" y1="122" x2="560" y2="162" />
+    <line x1="560" y1="122" x2="470" y2="162" />
+    <line x1="560" y1="122" x2="560" y2="162" />
+    <line x1="380" y1="194" x2="470" y2="234" />
+    <line x1="470" y1="194" x2="470" y2="234" />
+    <line x1="560" y1="194" x2="470" y2="234" />
+  </g>
+  <!-- 右图：8 个子集 -->
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="470" y="40">{<tspan font-style="italic">a</tspan>, <tspan font-style="italic">b</tspan>, <tspan font-style="italic">c</tspan><tspan dx="2">}</tspan></text>
+    <text x="380" y="112">{<tspan font-style="italic">a</tspan>, <tspan font-style="italic">b</tspan><tspan dx="2">}</tspan></text>
+    <text x="470" y="112">{<tspan font-style="italic">a</tspan>, <tspan font-style="italic">c</tspan><tspan dx="2">}</tspan></text>
+    <text x="560" y="112">{<tspan font-style="italic">b</tspan>, <tspan font-style="italic">c</tspan><tspan dx="2">}</tspan></text>
+    <text x="380" y="184">{<tspan font-style="italic">a</tspan><tspan dx="2">}</tspan></text>
+    <text x="470" y="184">{<tspan font-style="italic">b</tspan><tspan dx="2">}</tspan></text>
+    <text x="560" y="184">{<tspan font-style="italic">c</tspan><tspan dx="2">}</tspan></text>
+    <text x="470" y="256">∅</text>
+  </g>
+  <!-- 右图：每层的元素个数 -->
+  <g font-size="13" text-anchor="end" style="fill: var(--muted, #6b7280)">
+    <text x="334" y="40">3 个元素</text>
+    <text x="334" y="112">2 个元素</text>
+    <text x="334" y="184">1 个元素</text>
+    <text x="334" y="256">0 个元素</text>
+  </g>
+  <text x="470" y="296" fill="currentColor" text-anchor="middle">{<tspan font-style="italic">a</tspan>, <tspan font-style="italic">b</tspan>, <tspan font-style="italic">c</tspan><tspan dx="2">}</tspan> 的全部子集</text>
+</svg>

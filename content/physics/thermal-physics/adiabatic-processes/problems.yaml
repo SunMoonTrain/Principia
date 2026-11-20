@@ -1,0 +1,239 @@
+- id: p1
+  tier: easy
+  statement: |
+    一定量的单原子理想气体，温度是$400\,\mathrm K$，准静态地绝热膨胀到原来体积的 8 倍。膨胀后它的温度是多少？
+  answer:
+    type: number
+    value: 400*8^(-2/3)
+    unit: |
+      $\mathrm K$
+  hints:
+    - |
+      单原子理想气体的比热容比是多少？准静态绝热过程中，温度和体积满足什么关系？
+    - |
+      单原子理想气体$C_{V,\mathrm m}=\frac32R$，$C_{p,\mathrm m}=\frac52R$，$\gamma=\frac53$；$TV^{\gamma-1}$不变，所以$T_2=T_1\Bigl(\frac{V_1}{V_2}\Bigr)^{\gamma-1}$。
+    - |
+      $T_2=400\times\Bigl(\frac18\Bigr)^{2/3}\,\mathrm K=\frac{400}4\,\mathrm K=100\,\mathrm K$。
+  solution: |
+    单原子理想气体$C_{V,\mathrm m}=\frac32R$，由迈耶公式$C_{p,\mathrm m}=\frac52R$，$\gamma=\frac53$。准静态绝热过程中$TV^{\gamma-1}$不变，所以$T_2=T_1\Bigl(\frac{V_1}{V_2}\Bigr)^{\gamma-1}=400\times\Bigl(\frac18\Bigr)^{2/3}\,\mathrm K=100\,\mathrm K$。体积变为原来的 8 倍，温度降到原来的四分之一；减少的内能全部变成了气体对外做的功。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法正确？各项里的气体都是理想气体，比热容比不随温度变，除了体积变化的功不做别的功；空气的比热容比取$1.40$。
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        准静态绝热过程中，压强$p$和温度$T$成正比
+      - |
+        在$p$-$V$图上过同一点，绝热线比等温线平缓
+      - |
+        准静态绝热压缩，体积减为原来的一半时，压强变为原来的 2 倍多
+      - |
+        准静态绝热过程中，$T^\gamma$和$p^{\gamma-1}$成正比
+      - |
+        单原子理想气体和空气从同一状态出发，都准静态绝热地膨胀到原来体积的 2 倍，空气的末温更低
+    value: [3, 4]
+  hints:
+    - |
+      A、D 用定理里$p$和$T$之间的那个关系；B 比较两条线的斜率；C 由$pV^\gamma$不变算压强的倍数；E 由$TV^{\gamma-1}$不变比较两种气体降温的多少。
+    - |
+      $p^{1-\gamma}T^\gamma$不变；过同一点，绝热线的斜率是等温线的$\gamma$倍，$\gamma>1$。体积减半时压强变为原来的$2^\gamma$倍；膨胀到 2 倍时温度变为原来的$2^{-(\gamma-1)}$倍，单原子理想气体的$\gamma=\frac53$。
+    - |
+      A 错：$p^{1-\gamma}T^\gamma$不变，$p$和$T^{\gamma/(\gamma-1)}$成正比，不是和$T$成正比；压强和温度成正比的是等容过程（isochoric process）。B 错：绝热线的斜率是$-\gamma\frac pV$，大小是等温线的$\gamma$倍，更陡。C 对：$p_2=2^\gamma p_1$，$\gamma>1$，所以比$2p_1$大，空气约为$2.64p_1$。
+
+      D 对：$p^{1-\gamma}T^\gamma$不变，就是$\frac{T^\gamma}{p^{\gamma-1}}$不变。E 错：$T_2=2^{-(\gamma-1)}T_1$，$\gamma$越大，降得越多；单原子理想气体降到约$0.63T_1$，空气约$0.76T_1$，单原子的更低。
+  solution: |
+    选 C、D。A 错：$p^{1-\gamma}T^\gamma$不变，$p$和$T^{\gamma/(\gamma-1)}$成正比，不是和$T$成正比；压强和温度成正比的是等容过程（isochoric process）。B 错：绝热线的斜率是$-\gamma\frac pV$，大小是等温线的$\gamma$倍，更陡。C 对：$pV^\gamma$不变，$p_2=2^\gamma p_1$，$\gamma>1$，所以比$2p_1$大，空气约为$2.64p_1$：温度也升高了。
+
+    D 对：$p^{1-\gamma}T^\gamma$不变，就是$\frac{T^\gamma}{p^{\gamma-1}}$不变。E 错：$TV^{\gamma-1}$不变，$T_2=2^{-(\gamma-1)}T_1$，$\gamma$越大，降得越多；单原子理想气体降到约$0.63T_1$，空气约$0.76T_1$，单原子的末温更低。
+
+- id: p3
+  tier: medium
+  statement: |
+    气缸里有$3.0\,\mathrm L$空气，压强是$2.0\times10^5\,\mathrm{Pa}$，它准静态地绝热膨胀到$6.0\,\mathrm L$。把空气当作理想气体，比热容比取$1.40$。这一过程中空气对外做了多少功？结果保留三位有效数字。
+  answer:
+    type: number
+    value: (2.0e5*3.0e-3 - 2.0e5*2^(-1.4)*6.0e-3)/0.40
+    unit: |
+      $\mathrm J$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      绝热时不吸热，对外做的功等于内能的减少。能不能只用始末状态的$p$、$V$写出这份功？末态的压强怎样求？
+    - |
+      $W=\frac{p_1V_1-p_2V_2}{\gamma-1}$；由$pV^\gamma$不变，$p_2=p_1\Bigl(\frac{V_1}{V_2}\Bigr)^\gamma=2^{-1.40}p_1$。
+    - |
+      $p_2=2.0\times10^5\times2^{-1.40}\,\mathrm{Pa}\approx7.58\times10^4\,\mathrm{Pa}$。$p_1V_1=600\,\mathrm J$，$p_2V_2\approx454.7\,\mathrm J$，$W\approx\frac{145.3}{0.40}\,\mathrm J\approx363\,\mathrm J$。
+  solution: |
+    由$pV^\gamma$不变，$p_2=p_1\Bigl(\frac{V_1}{V_2}\Bigr)^\gamma=2.0\times10^5\times2^{-1.40}\,\mathrm{Pa}\approx7.58\times10^4\,\mathrm{Pa}$。绝热时$W=-\Delta U=\frac{p_1V_1-p_2V_2}{\gamma-1}$，$p_1V_1=600\,\mathrm J$，$p_2V_2\approx454.7\,\mathrm J$，所以$W\approx\frac{145.3}{0.40}\,\mathrm J\approx363\,\mathrm J$。同样从$3.0\,\mathrm L$等温膨胀到$6.0\,\mathrm L$，气体要做$600\ln2\,\mathrm J\approx416\,\mathrm J$的功，绝热膨胀做的功少：膨胀一侧绝热线比等温线低。
+
+- id: p4
+  tier: medium
+  statement: |
+    一团干燥的空气从地面附近上升，周围的压强越来越小，它随之膨胀。它来不及和周围交换热量，可以看成在做准静态的绝热膨胀，压强时时等于同一高度周围空气的压强，温度也和周围空气相差不多。
+
+    空气当作理想气体，比热容比取$1.40$，摩尔质量（molar mass）取$29\,\mathrm{g/mol}$，$g$取$9.8\,\mathrm{m/s^2}$。这团空气每上升$1\,\mathrm{km}$，温度降低多少？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 1000*(0.40/1.40)*0.029*9.8/(6.02214076e23*1.380649e-23)
+    unit: |
+      $\mathrm K$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      准静态绝热过程里，哪个不变量把温度和压强直接连起来？压强怎样随高度变，周围空气的密度（density）又怎样用压强和温度表示？
+    - |
+      $p^{1-\gamma}T^\gamma$不变，两边对高度$z$求导（$z$轴竖直向上），得$\dv Tz=\frac{\gamma-1}\gamma\cdot\frac Tp\dv pz$。静止的空气里$\dv pz=-\rho g$（见[静止流体中的压强](lesson:physics.newtonian-mechanics.fluid-statics#thm-depth)），周围空气的$\rho=\frac{pM}{RT}$，温度取成这团空气的$T$。
+    - |
+      $p^{1-\gamma}T^\gamma$不变，两边对高度$z$求导（$z$轴竖直向上），再除以$p^{1-\gamma}T^\gamma$，得$(1-\gamma)\frac1p\dv pz+\gamma\frac1T\dv Tz=0$，即
+
+      $$
+      \dv Tz=\frac{\gamma-1}\gamma\cdot\frac Tp\dv pz .
+      $$
+
+      静止的空气里$\dv pz=-\rho g$，周围空气的密度$\rho=\frac{pM}{RT}$，温度取成这团空气的$T$。代进去，$T$和$p$都约掉了，$\dv Tz=-\frac{\gamma-1}\gamma\cdot\frac{Mg}R$，每上升$1\,\mathrm{km}$降低$\frac{0.40}{1.40}\times\frac{0.029\times9.8}{8.314}\times1000\,\mathrm K\approx9.77\,\mathrm K$。
+  solution: |
+    准静态绝热时$p^{1-\gamma}T^\gamma$不变，对高度$z$（竖直向上）求导，再除以$p^{1-\gamma}T^\gamma$，得$\dv Tz=\frac{\gamma-1}\gamma\cdot\frac Tp\dv pz$。静止的空气里$\dv pz=-\rho g$（见[静止流体中的压强](lesson:physics.newtonian-mechanics.fluid-statics#thm-depth)），周围空气的密度（density）$\rho=\frac{pM}{RT}$，温度取成这团空气的$T$，代进去$T$和$p$都约掉了：$\dv Tz=-\frac{\gamma-1}\gamma\cdot\frac{Mg}R$。每上升$1\,\mathrm{km}$降低$\frac{0.40}{1.40}\times\frac{0.029\times9.8}{8.314}\times1000\,\mathrm K\approx9.77\,\mathrm K$，和地面的温度无关。
+
+    气象学里把它叫作干绝热递减率（dry adiabatic lapse rate）。实际大气平均每千米只降约$6.5\,\mathrm K$，一个重要原因是上升的空气里有水汽，凝结时放出热量。
+
+- id: p5
+  tier: hard
+  statement: |
+    气体经历准静态过程时，如果$pV^\alpha$始终不变（$\alpha$是常数），这样的过程叫作多方过程（polytropic process，见[准静态过程与气体的功](lesson:physics.thermal-physics.quasi-static-processes)第 5 题）。下面的气体都是理想气体，$C_{V,\mathrm m}$不随温度变，除了体积变化的功不做别的功，比热容比为$\gamma$，$\alpha\ne1$。
+
+    （1）证明气体沿多方过程变化时的摩尔热容（molar heat capacity）是$C_{\mathrm m}=C_{V,\mathrm m}-\frac R{\alpha-1}$，并化成$C_{\mathrm m}=\frac{(\alpha-\gamma)R}{(\gamma-1)(\alpha-1)}$。
+
+    （2）$\alpha=0$、$\alpha=\gamma$时，$C_{\mathrm m}$各是多少，和哪两种过程对得上？$\alpha$趋于$1$时，$|C_{\mathrm m}|$怎样变，为什么？
+
+    （3）设气体沿多方过程膨胀。证明：$\alpha<\gamma$时气体吸热，$\alpha>\gamma$时气体放热；$\alpha<1$时温度升高，$\alpha>1$时温度降低。$1<\alpha<\gamma$时摩尔热容是负的，这在膨胀时是什么意思？
+  hints:
+    - |
+      摩尔热容是$\frac{\delta Q}{n\,\dd T}$，准静态时$\delta Q=nC_{V,\mathrm m}\dd T+p\,\dd V$。沿多方过程，$\dd V$和$\dd T$有什么关系？可以仿照讲解里推出$TV^{\gamma-1}$不变的办法。
+    - |
+      （1）由$pV^\alpha$不变和$pV=nRT$，$TV^{\alpha-1}$不变，$\frac{\dd T}T=-(\alpha-1)\frac{\dd V}V$，所以$p\,\dd V=-\frac{nR}{\alpha-1}\dd T$；再用$C_{V,\mathrm m}=\frac R{\gamma-1}$。（2）$\alpha=0$是等压过程（isobaric process），$\alpha=\gamma$是准静态的绝热过程，$\alpha=1$是等温过程。（3）$\delta Q=nC_{\mathrm m}\dd T$，把$\dd T$用$\dd V$表示，看$\delta Q$的正负。
+    - |
+      （1）由$pV^\alpha$不变和$pV=nRT$，$TV^{\alpha-1}=\frac{pV^\alpha}{nR}$不变，取对数再求微分，$\frac{\dd T}T=-(\alpha-1)\frac{\dd V}V$。所以$p\,\dd V=nRT\frac{\dd V}V=-\frac{nR}{\alpha-1}\dd T$，$\delta Q=nC_{V,\mathrm m}\dd T+p\,\dd V=n\Bigl(C_{V,\mathrm m}-\frac R{\alpha-1}\Bigr)\dd T$，摩尔热容$C_{\mathrm m}=C_{V,\mathrm m}-\frac R{\alpha-1}$。由迈耶公式，$C_{V,\mathrm m}=\frac R{\gamma-1}$，通分得$C_{\mathrm m}=\frac{(\alpha-\gamma)R}{(\gamma-1)(\alpha-1)}$。
+
+      （2）$\alpha=0$时$p$不变，$C_{\mathrm m}=\frac{\gamma R}{\gamma-1}=\gamma C_{V,\mathrm m}=C_{p,\mathrm m}$，正是等压过程的摩尔热容；$\alpha=\gamma$时$C_{\mathrm m}=0$，正是准静态的绝热过程，不吸热，温度照样变。$\alpha\to1$时多方过程趋于等温过程，$\frac R{\alpha-1}$的绝对值趋于无穷，$|C_{\mathrm m}|\to\infty$：吸了一定的热，温度几乎不变，和等温过程的热容「无穷大」（[热容与焓](lesson:physics.thermal-physics.heat-capacity)第 7 题）对得上。
+
+      （3）$\dd T=-(\alpha-1)T\frac{\dd V}V$，膨胀时$\dd V>0$，所以$\alpha<1$时温度升高，$\alpha>1$时温度降低。$\delta Q=nC_{\mathrm m}\dd T=\frac{(\gamma-\alpha)nRT}{\gamma-1}\cdot\frac{\dd V}V$，膨胀时$\alpha<\gamma$就吸热，$\alpha>\gamma$就放热。$1<\alpha<\gamma$时气体一边吸热一边降温，$\frac{\delta Q}{n\,\dd T}$是负的：对外做的功$p\,\dd V$比吸的热还多，差额由内能的减少补上。
+
+      在$p$-$V$图上从同一状态$(V_0,p_0)$出发向膨胀方向走，多方过程的曲线$p=p_0\bigl(\frac{V_0}V\bigr)^\alpha$在$\alpha<\gamma$时位于绝热线上方，在$\alpha>\gamma$时位于下方。所以膨胀时走在绝热线上方的吸热，走在下方的放热，绝热线正好是两者的分界。
+  reference: |
+    （1）$TV^{\alpha-1}=\frac{pV^\alpha}{nR}$不变，$\frac{\dd T}T=-(\alpha-1)\frac{\dd V}V$，$p\,\dd V=nRT\frac{\dd V}V=-\frac{nR}{\alpha-1}\dd T$。$\delta Q=nC_{V,\mathrm m}\dd T+p\,\dd V=n\bigl(C_{V,\mathrm m}-\frac R{\alpha-1}\bigr)\dd T$，所以$C_{\mathrm m}=C_{V,\mathrm m}-\frac R{\alpha-1}$；代入$C_{V,\mathrm m}=\frac R{\gamma-1}$（迈耶公式），$C_{\mathrm m}=\frac R{\gamma-1}-\frac R{\alpha-1}=\frac{(\alpha-\gamma)R}{(\gamma-1)(\alpha-1)}$。核对：单原子气体$\alpha=\frac43$时$C_{\mathrm m}=-\frac32R$（热容与焓一节第 7 题），$\alpha=-1$（$p=aV$）时$C_{\mathrm m}=C_{V,\mathrm m}+\frac R2$（同一节第 5 题）。
+
+    （2）$\alpha=0$：$C_{\mathrm m}=\frac{\gamma R}{\gamma-1}=C_{p,\mathrm m}$，等压过程。$\alpha=\gamma$：$C_{\mathrm m}=0$，准静态绝热过程。$\alpha\to1$：$|C_{\mathrm m}|\to\infty$（$\alpha\to1^+$时$\to-\infty$，$\alpha\to1^-$时$\to+\infty$），趋于等温过程，吸热而温度不变，热容「无穷大」。另外$\alpha\to\pm\infty$时$C_{\mathrm m}\to C_{V,\mathrm m}$，趋于等容过程。
+
+    （3）$\dd T=-(\alpha-1)T\frac{\dd V}V$，$\delta Q=nC_{\mathrm m}\dd T=\frac{(\gamma-\alpha)nRT}{\gamma-1}\cdot\frac{\dd V}V$。膨胀（$\dd V>0$）时，$\alpha<1$升温、$\alpha>1$降温，$\alpha<\gamma$吸热、$\alpha>\gamma$放热；$1<\alpha<\gamma$时吸热又降温，$C_{\mathrm m}<0$，做功$p\,\dd V$大于吸热，差额来自内能。几何上，膨胀一侧多方曲线$p_0(V_0/V)^\alpha$在$\alpha<\gamma$时在绝热线上方，绝热线是吸热与放热的分界。数值核对：$\gamma=1.4$、$\alpha=1.2$时$C_{\mathrm m}=-2.5R$，$\alpha=2$时$C_{\mathrm m}=1.5R$。
+
+- id: p6
+  tier: hard
+  statement: |
+    一只大玻璃瓶的瓶口竖直地接着一根细玻璃管，管的截面积为$A$，管里放一个质量为$m$的小钢球。钢球和管壁贴合得很好，不漏气，摩擦不计；钢球静止时，瓶里（连同管里钢球下面那一段）空气的体积为$V$。大气压是$p_0$，重力加速度是$g$。把钢球稍稍按下再放开，它就上下振动起来。
+
+    （1）钢球静止时，瓶里空气的压强$p$是多少？
+
+    （2）钢球偏离静止位置$x$（向上为正，$A|x|$比$V$小得多）时，瓶里的空气经历的可以看成准静态的绝热过程。证明钢球受的合力约为$-\frac{\gamma pA^2}Vx$，$\gamma$是空气的比热容比。
+
+    （3）已知物体受的合力为$-kx$（$k>0$是常量）时做简谐运动（simple harmonic motion），周期是$2\pi\sqrt{\frac mk}$（见[简谐运动](lesson:physics.oscillations-waves.simple-harmonic-motion#thm-shm-solution)）。周期记作$\tau$，$T$留给温度。写出由$\tau$求$\gamma$的式子；取$m=16.5\,\mathrm g$、$A=2.01\,\mathrm{cm^2}$、$V=5.00\,\mathrm L$、$p_0=1.01\times10^5\,\mathrm{Pa}$、$g=9.8\,\mathrm{m/s^2}$，测得$\tau=0.755\,\mathrm s$，估算空气的$\gamma$。
+
+    （4）为什么这里的过程可以看成准静态的绝热过程？如果把它当成等温过程，算出的周期是实际周期的几倍？
+  hints:
+    - |
+      （1）钢球受哪几个力？（2）钢球上移$x$，空气的体积变为多少？准静态绝热时，体积的小变化和压强的小变化有什么关系？（4）比较三个时间：振动的周期、压强的变化传遍瓶子的时间、热量传出去要的时间。
+    - |
+      （1）$pA=p_0A+mg$。（2）用$\frac{\dd p}p=-\gamma\frac{\dd V}V$，$\dd V=Ax$，压强改变约$-\gamma p\frac{Ax}V$；静止时合力为零，偏离以后的合力就是压强的改变乘$A$。（3）$k=\frac{\gamma pA^2}V$。（4）等温时$\frac{\dd p}p=-\frac{\dd V}V$。
+    - |
+      （1）钢球受重力$mg$、大气向下的压力$p_0A$和瓶里空气向上的压力$pA$，静止时合力为零，所以$p=p_0+\frac{mg}A$。
+
+      （2）钢球上移$x$，空气的体积由$V$变为$V+Ax$。准静态绝热时$\frac{\dd p}p=-\gamma\frac{\dd V}V$（讲解里绝热线比等温线陡的那条定理），$A|x|\ll V$，所以压强的改变约为$\Delta p=-\gamma p\frac{Ax}V$。钢球受的合力是$(p+\Delta p)A-p_0A-mg=A\,\Delta p\approx-\frac{\gamma pA^2}Vx$，和位移成正比、方向相反。
+
+      （3）$k=\frac{\gamma pA^2}V$，$\tau=2\pi\sqrt{\frac{mV}{\gamma pA^2}}$，所以$\gamma=\frac{4\pi^2mV}{A^2p\tau^2}$。代入数据，$\frac{mg}A\approx804\,\mathrm{Pa}$，$p\approx1.018\times10^5\,\mathrm{Pa}$，
+
+      $$
+      \gamma\approx\frac{4\pi^2\times0.0165\times5.00\times10^{-3}}{(2.01\times10^{-4})^2\times1.018\times10^5\times0.755^2}\approx1.39 ,
+      $$
+
+      和空气的$1.40$很接近。
+
+      （4）振动周期约$0.75\,\mathrm s$。压强的变化以声速传开，传遍瓶子只要约千分之一秒，所以每一时刻瓶里的空气都几乎处在平衡态；空气导热很差，不到一秒里只有贴着瓶壁几毫米厚的一层空气和瓶壁交换热量，所以近似绝热。等温时$\Delta p\approx-p\frac{Ax}V$，$k$只有绝热时的$\frac1\gamma$，周期是实际周期的$\sqrt\gamma\approx1.18$倍，约$0.89\,\mathrm s$，和测得的$0.755\,\mathrm s$对不上。
+  reference: |
+    （1）$pA=p_0A+mg$，$p=p_0+\frac{mg}A$。
+
+    （2）体积$V\to V+Ax$；准静态绝热$\frac{\dd p}p=-\gamma\frac{\dd V}V$，$\Delta p\approx-\gamma p\frac{Ax}V$。合力$(p+\Delta p)A-p_0A-mg=A\Delta p\approx-\frac{\gamma pA^2}Vx$。
+
+    （3）$k=\frac{\gamma pA^2}V$，$\tau=2\pi\sqrt{\frac{mV}{\gamma pA^2}}$，$\gamma=\frac{4\pi^2mV}{A^2p\tau^2}$。$\frac{mg}A=\frac{0.0165\times9.8}{2.01\times10^{-4}}\,\mathrm{Pa}\approx804\,\mathrm{Pa}$，$p\approx1.0180\times10^5\,\mathrm{Pa}$，$\gamma\approx1.389$（$\tau=0.75\,\mathrm s$时约$1.41$，$0.76\,\mathrm s$时约$1.37$）。
+
+    （4）压强以声速传开，$0.2\,\mathrm m$约$0.6\,\mathrm{ms}$，远小于周期$0.75\,\mathrm s$，准静态；热扩散在$0.75\,\mathrm s$里只走几毫米（$\sqrt{2\times10^{-5}\times0.75}\,\mathrm m\approx4\,\mathrm{mm}$），瓶子半径约$10\,\mathrm{cm}$，近似绝热。等温时$k$变为$\frac1\gamma$倍，周期变为$\sqrt\gamma\approx1.18$倍，约$0.89\,\mathrm s$。这是测比热容比的经典办法（Rüchardt 法）；实测值常略低于$1.40$，主要因为摩擦和漏气。
+
+- id: p7
+  tier: thinking
+  statement: |
+    一定量的单原子理想气体开始时处在平衡态，压强、体积、温度分别是$p_1$、$V_1$、$T_1$，容器包着绝热层。用下面三种办法让它膨胀到体积$2V_1$，每一种都等气体最后重新处在平衡态。
+
+    （1）容器是刚性的，另一半原来是真空、体积也是$V_1$；抽掉中间的隔板，气体自由膨胀。
+
+    （2）容器是带活塞的气缸，活塞很轻、没有摩擦。突然把活塞外面的压强降到$\frac38p_1$并一直保持这个值，活塞冲出去、来回晃几下后停下，这时气体的体积正好是$2V_1$。
+
+    （3）同样的气缸，让气体准静态地膨胀到$2V_1$。
+
+    三种办法里，末态的温度各是$T_1$的几倍？按从高到低排列，并说明为什么是这个顺序。在$p$-$V$图上，（1）（2）的末态落在过初态的绝热线上方还是下方？为什么？
+  hints:
+    - |
+      三种办法都不吸热，$Q=0$，气体对外做的功等于内能的减少。各做了多少功？末态的压强、体积和温度有什么关系？和绝热线比较时，看体积同为$2V_1$时谁的压强大。
+    - |
+      （1）气体不推动任何东西，$W=0$。（2）活塞外面的压强不变，外界得到的功是$\frac38p_1\cdot(2V_1-V_1)$，和[准静态过程与气体的功](lesson:physics.thermal-physics.quasi-static-processes)第 6 题的算法一样；末态的压强等于外面的压强。（3）$TV^{\gamma-1}$不变，$\gamma=\frac53$；单原子理想气体的内能是$\frac32nRT=\frac32pV$。
+
+      过初态的绝热线上，体积为$2V_1$的那一点压强是$2^{-5/3}p_1$。
+    - |
+      （1）$W=0$，$Q=0$，所以$\Delta U=0$，理想气体的温度不变，$T_2=T_1$。
+
+      （2）$W=\frac38p_1(2V_1-V_1)=\frac38p_1V_1$。末态压强等于外面的压强$\frac38p_1$，$\frac{T_2}{T_1}=\frac{p_2V_2}{p_1V_1}=\frac38\times2=\frac34$。核对第一定律：$\Delta U=\frac32(p_2V_2-p_1V_1)=-\frac38p_1V_1$，正好等于$-W$。
+
+      （3）$TV^{\gamma-1}$不变，$T_2=2^{-2/3}T_1\approx0.63T_1$；对外做的功$\frac32(p_1V_1-p_2V_2)=\frac32\bigl(1-2^{-2/3}\bigr)p_1V_1\approx0.56p_1V_1$。
+
+      所以（1）最高，（2）其次，（3）最低。三种都不吸热，温度降多少只看对外做了多少功：自由膨胀什么也不推；突然膨胀时活塞外面始终只有$\frac38p_1$的压强顶着；准静态膨胀时外面的压强处处和气体的压强相等，从$p_1$慢慢降到约$0.31p_1$，做的功是曲线下的面积，最多。
+
+      （1）（2）的末态都在过初态的绝热线上方：体积同为$2V_1$时，绝热线上的压强是$2^{-5/3}p_1\approx0.31p_1$，（1）（2）的末压强是$\frac12p_1$和$\frac38p_1$，都比它大。原因是体积相同时，（1）（2）对外做的功比准静态时少，内能减少得少，末温高，由$p=\frac{nRT}V$，压强也就高。以后会看到，这正是熵（entropy）增加的表现，见[熵变的计算与熵增原理](lesson:physics.thermal-physics.entropy-increase)。
+  reference: |
+    （1）$W=Q=0$，$\Delta U=0$，$T_2=T_1$。
+
+    （2）$W=\frac38p_1V_1$；末态$p_2=\frac38p_1$、$V_2=2V_1$，$T_2=\frac34T_1$；第一定律核对$\frac32(p_2V_2-p_1V_1)=-\frac38p_1V_1=-W$。一般地，外压降到$p_2$、末体积为$2V_1$时，由$\frac{p_2V_2-p_1V_1}{\gamma-1}=-p_2V_1$得$p_2=\frac{p_1}{\gamma+1}$，$\frac{T_2}{T_1}=\frac2{\gamma+1}$，单原子时为$\frac34$。
+
+    （3）$T_2=2^{-2/3}T_1\approx0.630T_1$，$W=\frac32(1-2^{-2/3})p_1V_1\approx0.555p_1V_1$，末压强$2^{-5/3}p_1\approx0.315p_1$。
+
+    顺序（1）$1$＞（2）$0.75$＞（3）$0.630$：$Q=0$，降温只看做功，$0<0.375p_1V_1<0.555p_1V_1$。准静态时外压始终等于气体压强（从$p_1$降到$0.315p_1$），突然膨胀时外压恒为$0.375p_1$，所以准静态做功最多。
+
+    绝热线：过初态的绝热线在$2V_1$处压强为$2^{-5/3}p_1\approx0.315p_1$；（1）末压强$0.5p_1$，（2）$0.375p_1$，都在上方，$pV^\gamma$分别是原来的$2^{2/3}\approx1.59$倍和$\frac38\times2^{5/3}\approx1.19$倍。原因：末体积相同，做功少于准静态，末温高于$2^{-2/3}T_1$，压强就高。这是绝热的非准静态过程熵增加的体现：从同一初态出发绝热地变到同一体积，末态不会落在绝热线下方（以后由第二定律证明）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    在$p$-$V$图上画等温线和绝热线。
+
+    （1）一定量的理想气体（$C_{V,\mathrm m}$不随温度变），两条不同的绝热线能不能相交？两条不同的等温线呢？一条等温线和一条绝热线最多有几个交点？
+
+    （2）设想某种物质的两条绝热线交于一点 A，再画一条等温线，和这两条绝热线分别交于 B、C。让这种物质沿 A→B→C→A 准静态地循环，其中 B→C 沿等温线、和一个热库（heat reservoir）接触。一个循环里它从热库吸了多少热，对外做了多少功？这样的机器为什么造不成？
+
+    （3）（2）的论证用到了热力学第一定律以外的什么？
+  hints:
+    - |
+      （1）理想气体的绝热线是$pV^\gamma=$常数，等温线是$pV=$常数，联立看有几个解。（2）三段里只有哪一段和外界交换热量？一个循环里$\Delta U$是多少？
+    - |
+      （1）联立$pV=a$和$pV^\gamma=b$，得$V^{\gamma-1}=\frac ba$。（2）$\Delta U=0$，所以$W=Q$，净功是三段围成的面积；准静态的循环倒过来走，功和热都变号。再看[热力学第一定律](lesson:physics.thermal-physics.first-law#def-perpetual-motion)里第一类永动机（perpetual motion machine of the first kind）那一段的边界情况。
+    - |
+      （1）不能，不能，最多一个。两条绝热线$pV^\gamma=b_1$、$pV^\gamma=b_2$，$b_1\ne b_2$时同一个$V$对应的$p$不同，所以不相交；两条等温线同理。等温线$pV=a$和绝热线$pV^\gamma=b$联立，得$V^{\gamma-1}=\frac ba$，$\gamma>1$，正好有一个正根：沿绝热线温度一直在变，每个温度只经过一次。
+
+      （2）A→B、C→A 是准静态的绝热过程，不吸热，只有 B→C 和热库交换热量$Q$。一个循环回到原来的状态，$\Delta U=0$，所以$W=Q$，净功是三段曲线围成的面积，不是零。准静态的循环倒过来走，功和热都变号，总可以选一个走向使$W>0$：这台机器每个循环从一个热库吸热、全部变成功，除此之外什么都没有变。第一定律并不禁止这样的机器，可它造不成（见[热力学第一定律](lesson:physics.thermal-physics.first-law#def-perpetual-motion)），原因见[热力学第二定律](lesson:physics.thermal-physics.second-law)。
+
+      （3）用到了「不可能在循环中从一个热库吸热、全部变成功而不引起别的变化」，这是热力学第二定律（second law of thermodynamics）的一种说法。所以对理想气体，「绝热线不相交」由$pV^\gamma=$常数直接看得出；对一般的物质，要用第二定律才能证明，也就是说过$p$-$V$图上一点只能有一条绝热线。
+  reference: |
+    （1）不能、不能、恰好一个。$pV^\gamma=b_1$与$pV^\gamma=b_2$（$b_1\ne b_2$）在同一$V$处$p$不同；等温线同理。$pV=a$与$pV^\gamma=b$联立得$V^{\gamma-1}=\frac ba$，唯一正根（$\gamma>1$）。
+
+    （2）只有等温段 B→C 和热库换热$Q$；一个循环$\Delta U=0$，$W=Q$等于三段围成的面积，非零。准静态循环可以反向运行（$W$、$Q$同时变号），取$W>0$的走向，就是从单一热库吸热全部变成功的循环机器。第一定律允许它（热力学第一定律一节第一类永动机那一段的边界情况），但它违反热力学第二定律（开尔文表述），所以两条绝热线不能相交。
+
+    （3）用到了第二定律：不可能从单一热库吸热全部变成功而不引起其他变化。对理想气体，绝热线不相交可由$pV^\gamma=$常数直接验证；对一般物质要用第二定律，推论是过$p$-$V$图上每一点只有一条绝热线（这也是以后定义熵的基础）。

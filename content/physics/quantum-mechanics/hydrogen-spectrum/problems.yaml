@@ -1,0 +1,202 @@
+- id: p1
+  tier: easy
+  statement: |
+    取氢的里德伯常量$R_{\mathrm H}=1.096\,78\times10^7\,\mathrm{m^{-1}}$，求帕邢系线系限的波长（真空中），以 nm 为单位，结果保留四位有效数字。
+  answer:
+    type: number
+    value: 9/1.09678e7*1e9
+    unit: |
+      $\mathrm{nm}$
+  tolerance: { rel: 5.0e-4 }
+  hints:
+    - |
+      线系限是$n_2\to\infty$时谱线波长的极限。帕邢系的$n_1$是几？
+    - |
+      $n_2\to\infty$时$\frac1{n_2^2}\to0$，里德伯公式给出$\frac1\lambda\to\frac{R_{\mathrm H}}{n_1^2}$，线系限是$\frac{n_1^2}{R_{\mathrm H}}$；帕邢系的$n_1=3$。
+    - |
+      $\lambda=\frac9{R_{\mathrm H}}=\frac9{1.096\,78\times10^7}\,\mathrm m\approx8.206\times10^{-7}\,\mathrm m=820.6\,\mathrm{nm}$。
+  solution: |
+    帕邢系的$n_1=3$。$n_2\to\infty$时$\frac1{n_2^2}\to0$，$\frac1\lambda\to\frac{R_{\mathrm H}}9$，所以线系限$\lambda=\frac9{R_{\mathrm H}}=\frac9{1.096\,78\times10^7}\,\mathrm m\approx820.6\,\mathrm{nm}$。它已经在红外，帕邢系的谱线都比它长，所以全在红外。
+
+- id: p2
+  tier: easy
+  statement: |
+    按里德伯公式判断（可见光取 400 到 700 nm），下面哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        把氢气加热到更高的温度，它发出的谱线会整体移向短波
+      - |
+        巴耳末系的谱线全都在可见光范围里
+      - |
+        $\mathrm H_\beta$的波长是$\mathrm H_\alpha$的$\frac{20}{27}$
+      - |
+        巴耳末系里相邻两条谱线的波长之差都大于$10\,\mathrm{nm}$
+      - |
+        里德伯公式里$n_1=4$的那一组谱线全都在红外
+    value: [3, 5]
+  hints:
+    - |
+      每一项都用$\frac1\lambda=R_{\mathrm H}\bigl(\frac1{n_1^2}-\frac1{n_2^2}\bigr)$判断。$\mathrm H_\alpha$、$\mathrm H_\beta$是巴耳末系的头两条，$n_2$分别是 3、4。
+    - |
+      公式里没有温度。巴耳末系的谱线挤向线系限$\frac4{R_{\mathrm H}}$，相邻两条的差从$\mathrm H_\alpha$起依次算几条就知道；$n_1=4$那一组里最短的波长也比它的线系限$\frac{16}{R_{\mathrm H}}$长。
+    - |
+      A 错：按里德伯公式，谱线的波长只由$n_1$、$n_2$决定，和温度无关。B 错：巴耳末系的线系限$\frac4{R_{\mathrm H}}\approx364.7\,\mathrm{nm}$在紫外，$n_2=7$那条已经是$397.1\,\mathrm{nm}$。C 对：$\frac{\lambda_\beta}{\lambda_\alpha}=\frac{1/4-1/9}{1/4-1/16}=\frac{5/36}{3/16}=\frac{20}{27}$。
+
+      D 错：巴耳末系依次是$656.5$、$486.3$、$434.2$、$410.3$、$397.1$、$389.0\,\mathrm{nm}$，相邻之差约为$170.2$、$52.1$、$23.9$、$13.2$、$8.1\,\mathrm{nm}$，$n_2=7$、8 两条只差约$8.1\,\mathrm{nm}$。E 对：$\frac{16}{R_{\mathrm H}}\approx1459\,\mathrm{nm}$，这一组的谱线都比它长，全在红外。
+  solution: |
+    选 C、E。A 错：按里德伯公式，谱线的波长只由$n_1$、$n_2$决定，和温度无关，正因为这样，谱线才能当元素的「指纹」。B 错：巴耳末系挤向线系限$\frac4{R_{\mathrm H}}\approx364.7\,\mathrm{nm}$，在紫外；$n_2=7$那条是$397.1\,\mathrm{nm}$，往后的都不在可见光范围里。C 对：$\frac{\lambda_\beta}{\lambda_\alpha}=\frac{1/4-1/9}{1/4-1/16}=\frac{5/36}{3/16}=\frac{20}{27}$，这个比和$R_{\mathrm H}$取多少无关。
+
+    D 错：巴耳末系依次是$656.5$、$486.3$、$434.2$、$410.3$、$397.1$、$389.0\,\mathrm{nm}$，相邻之差约为$170.2$、$52.1$、$23.9$、$13.2$、$8.1\,\mathrm{nm}$，越往短波越小。E 对：$n_1=4$那一组的线系限$\frac{16}{R_{\mathrm H}}\approx1459\,\mathrm{nm}$，这一组的谱线都比它长，全在红外。
+
+- id: p3
+  tier: medium
+  statement: |
+    天文学家常用氢的一条红外谱线透过星际尘埃（interstellar dust），观测银河系中心附近的气体，它在真空中的波长是$2166.1\,\mathrm{nm}$。取$R_{\mathrm H}=1.096\,78\times10^7\,\mathrm{m^{-1}}$，按里德伯公式，这条谱线的$n_1$、$n_2$各是几？按这个顺序填写。
+  answer:
+    type: tuple
+    value: [4, 7]
+    exact: true
+  hints:
+    - |
+      先算$\frac1{\lambda R_{\mathrm H}}$，它等于$\frac1{n_1^2}-\frac1{n_2^2}$。再从$n_1=1$起逐个试，看哪个$n_1$让$n_2$是整数。
+    - |
+      $\frac1{\lambda R_{\mathrm H}}\approx0.042\,09$。$\frac1{n_1^2}$得比它大，所以$n_1\le4$。同一系里最小的$\frac1{n_1^2}-\frac1{n_2^2}$在$n_2=n_1+1$处取得，$n_1=1$、2、3 时分别是$0.75$、$0.139$、$0.0486$（几何图像里三组圆点的最低处）。
+    - |
+      $\frac1{\lambda R_{\mathrm H}}=\frac1{2166.1\times10^{-9}\times1.096\,78\times10^7}\approx0.042\,09$。$n_1\ge5$时$\frac1{n_1^2}\le0.04$，比它小，不行；$n_1=1$、2、3 时，同一系里最小的值$0.75$、$0.139$、$0.0486$也都比它大，也不行。$n_1=4$时$\frac1{n_2^2}=\frac1{16}-0.042\,09\approx0.020\,41$，$n_2^2\approx49.0$，$n_2=7$。所以$n_1=4$、$n_2=7$。
+  solution: |
+    $\frac1{\lambda R_{\mathrm H}}=\frac1{2166.1\times10^{-9}\times1.096\,78\times10^7}\approx0.042\,09$。$\frac1{n_1^2}$必须比它大，$n_1\le4$；而$n_1=1$、2、3 时，$\frac1{n_1^2}-\frac1{n_2^2}$最小也有$0.75$、$0.139$、$0.0486$（$n_2=n_1+1$时），都比$0.042\,09$大。所以$n_1=4$，$\frac1{n_2^2}=\frac1{16}-0.042\,09\approx0.020\,41\approx\frac1{49}$，$n_2=7$。
+
+    $n_1=4$的这一组谱线叫作布拉开系（Brackett series），这条是它的第三条，天文学上记作 Br$\gamma$。它在近红外，星际尘埃对它的遮挡比对可见光弱得多，所以能透过尘埃看到银河系中心。
+
+- id: p4
+  tier: medium
+  statement: |
+    测得氢的两条谱线在真空中的波长：莱曼系$n_2=2$的那条是$121.57\,\mathrm{nm}$，巴耳末系$n_2=4$的那条（$\mathrm H_\beta$）是$486.27\,\mathrm{nm}$。只用这两个波长，不用$R_{\mathrm H}$的值，求莱曼系$n_2=4$那条谱线在真空中的波长和它的光子能量。依次填写，波长以 nm 为单位，能量以 eV 为单位，结果都保留四位有效数字。
+  answer:
+    type: tuple
+    value: [1/(1/121.57 + 1/486.27), 6.62607015e-34*299792458/1.602176634e-19*1e9*(1/121.57 + 1/486.27)]
+  tolerance: { rel: 5.0e-4 }
+  hints:
+    - |
+      每条谱线的$\frac1\lambda$都是两项$\frac{R_{\mathrm H}}{n^2}$之差。要求的那条是哪两项之差？已知的两条呢？
+    - |
+      $\frac{R_{\mathrm H}}{1^2}-\frac{R_{\mathrm H}}{4^2}=\Bigl(\frac{R_{\mathrm H}}{1^2}-\frac{R_{\mathrm H}}{2^2}\Bigr)+\Bigl(\frac{R_{\mathrm H}}{2^2}-\frac{R_{\mathrm H}}{4^2}\Bigr)$，所以要求的$\frac1\lambda$是已知两条的$\frac1\lambda$之和，光子能量$\frac{hc}\lambda$也是两条的光子能量之和。
+    - |
+      $\frac1\lambda=\frac1{121.57\,\mathrm{nm}}+\frac1{486.27\,\mathrm{nm}}\approx0.008\,2257\,\mathrm{nm^{-1}}+0.002\,0565\,\mathrm{nm^{-1}}=0.010\,2822\,\mathrm{nm^{-1}}$，$\lambda\approx97.26\,\mathrm{nm}$。光子能量$\frac{hc}\lambda\approx1240\,\mathrm{eV\cdot nm}\times0.010\,282\,\mathrm{nm^{-1}}\approx12.75\,\mathrm{eV}$。
+  solution: |
+    按里德伯公式，要求的这条是$\frac{R_{\mathrm H}}{1^2}-\frac{R_{\mathrm H}}{4^2}$，正好等于莱曼系$n_2=2$那条的$\frac{R_{\mathrm H}}{1^2}-\frac{R_{\mathrm H}}{2^2}$加上$\mathrm H_\beta$的$\frac{R_{\mathrm H}}{2^2}-\frac{R_{\mathrm H}}{4^2}$。所以$\frac1\lambda=\frac1{121.57\,\mathrm{nm}}+\frac1{486.27\,\mathrm{nm}}\approx0.010\,2822\,\mathrm{nm^{-1}}$，$\lambda\approx97.26\,\mathrm{nm}$。光子能量也是两条之和：$\frac{1240}{121.57}\,\mathrm{eV}+\frac{1240}{486.27}\,\mathrm{eV}\approx10.20\,\mathrm{eV}+2.550\,\mathrm{eV}\approx12.75\,\mathrm{eV}$。
+
+    共用一项的两条谱线（这里两条都含$\frac{R_{\mathrm H}}{2^2}$这一项），把它们的$\frac1\lambda$相加或相减、消去共用的那一项，就得到另一条谱线的$\frac1\lambda$，这叫作里兹组合原则（Ritz combination principle），是里兹（Walther Ritz）1908 年提出的。它说的正是每条谱线都对应两项之差。
+
+- id: p5
+  tier: hard
+  statement: |
+    1909 年，盖革（Hans Geiger）和马斯登（Ernest Marsden）让$\alpha$粒子打在一块铂板上，发现大约每八千个里就有一个被弹回来，偏转超过$90^\circ$。下面按汤姆孙的原子模型（Thomson model）估计一下。设铂原子的正电荷$78e$均匀分布在半径$R=1.0\times10^{-10}\,\mathrm m$的球里：球外的电场和电荷全集中在球心时一样，球里的电场和离球心的距离成正比（见[用高斯定律求对称电场](lesson:physics.electromagnetism.gauss-applications)例 1）。$\alpha$粒子的电荷是$2e$，质量取$m_\alpha=6.64\times10^{-27}\,\mathrm{kg}$，动能是$K=7.7\,\mathrm{MeV}$；取$e=1.60\times10^{-19}\,\mathrm C$，$\frac1{4\pi\varepsilon_0}=8.99\times10^9\,\mathrm{N\cdot m^2/C^2}$。
+
+    （1）$\alpha$粒子穿过一个铂原子时，正电荷对它的横向作用力最大约多大？这个力大约作用多长时间？由此估计它至多偏转多大的角度。电子的质量不到$\alpha$粒子的七千分之一，碰上电子只会让它偏转很小的角度，这里不计。
+
+    （2）$\alpha$粒子在铂板里停下来以前，要穿过几万层原子，每穿过一层都偏转一点，方向随机。这样累积起来，能不能解释每八千个里就有一个被弹回来？
+
+    （3）按原子的核式结构模型，把铂核看成固定不动的点电荷。$7.7\,\mathrm{MeV}$的$\alpha$粒子正对铂核射去，最近能到多远？这时$\alpha$粒子受的力是（1）里那个最大值的多少倍？
+  hints:
+    - |
+      横向的力在$\alpha$粒子擦着球面经过时最大，约等于点电荷在距离$R$处的库仑力；作用时间约是飞过一个原子直径$2R$所用的时间。冲量（impulse）等于动量（momentum）的改变（见[动量与冲量](lesson:physics.newtonian-mechanics.momentum-impulse)），得到的横向动量约是这个力乘作用时间。偏转角约等于横向动量和原来的动量之比。
+    - |
+      $F_{\max}\approx\frac1{4\pi\varepsilon_0}\frac{(2e)(78e)}{R^2}$，$v=\sqrt{\frac{2K}{m_\alpha}}$，$\Delta t\approx\frac{2R}v$，$\theta\approx\frac{F_{\max}\Delta t}{m_\alpha v}$。把$N$次方向随机的小偏转当矢量相加再平方：各次方向独立，交叉项平均为零，总偏转角平方的平均是一次偏转角平方的$N$倍，所以累积的偏转大约是一次的$\sqrt N$倍。正对铂核时，最近处动能全部变成电势能。
+    - |
+      （1）$\frac1{4\pi\varepsilon_0}\frac{(2e)(78e)}R=\frac{8.99\times10^9\times156\times(1.60\times10^{-19})^2}{1.0\times10^{-10}}\,\mathrm J\approx3.6\times10^{-16}\,\mathrm J$，约$2.2\,\mathrm{keV}$，再除以$R$得$F_{\max}\approx3.6\times10^{-6}\,\mathrm N$。$v=\sqrt{\frac{2\times7.7\times10^6\times1.60\times10^{-19}}{6.64\times10^{-27}}}\,\mathrm{m/s}\approx1.9\times10^7\,\mathrm{m/s}$，$\Delta t\approx\frac{2R}v\approx1.0\times10^{-17}\,\mathrm s$。横向动量等于横向力的冲量，约$F_{\max}\Delta t\approx3.7\times10^{-23}\,\mathrm{kg\cdot m/s}$，原来的动量$m_\alpha v\approx1.3\times10^{-19}\,\mathrm{kg\cdot m/s}$，偏转角至多约$3\times10^{-4}\,\mathrm{rad}$，不到$0.02^\circ$。
+
+      （2）把$N$次方向随机的小偏转当矢量相加再平方：各次方向独立，交叉项平均为零，总偏转角平方的平均是一次偏转角平方的$N$倍，所以累积的偏转大约是一次的$\sqrt N$倍。取$N=5\times10^4$，约$\sqrt{5\times10^4}\times3\times10^{-4}\,\mathrm{rad}\approx0.07\,\mathrm{rad}$，约$4^\circ$。要偏转到$90^\circ\approx1.57\,\mathrm{rad}$，得是这个典型值的二十多倍；许多次独立的小偏转加起来近似服从正态分布（normal distribution），累积的偏转大多在典型值附近，达到它几倍的已经很少，达到二十多倍的几乎不可能，远不到八千分之一。所以汤姆孙模型解释不了被弹回的$\alpha$粒子。
+
+      （3）最近处动能全部变成电势能：$d=\frac1{4\pi\varepsilon_0}\frac{(2e)(78e)}K=\frac{3.6\times10^{-16}\,\mathrm J\times1.0\times10^{-10}\,\mathrm m}{7.7\times10^6\times1.60\times10^{-19}\,\mathrm J}\approx2.9\times10^{-14}\,\mathrm m$，约$29\,\mathrm{fm}$，只有$R$的约三千四百分之一。这时受的力$\frac1{4\pi\varepsilon_0}\frac{(2e)(78e)}{d^2}=F_{\max}\bigl(\frac Rd\bigr)^2\approx42\,\mathrm N$，是（1）里最大值的约$1.2\times10^7$倍。正电荷集中在这么小的核里，才能一次就把$\alpha$粒子推回去。
+  reference: |
+    （1）$\frac1{4\pi\varepsilon_0}\frac{(2e)(78e)}R\approx3.59\times10^{-16}\,\mathrm J$（2.24 keV），$F_{\max}=\frac1{4\pi\varepsilon_0}\frac{(2e)(78e)}{R^2}\approx3.6\times10^{-6}\,\mathrm N$；$v\approx1.93\times10^7\,\mathrm{m/s}$，$\Delta t\approx1.04\times10^{-17}\,\mathrm s$，$\Delta p\approx3.7\times10^{-23}$，$p\approx1.28\times10^{-19}\,\mathrm{kg\cdot m/s}$，$\theta\approx2.9\times10^{-4}\,\mathrm{rad}$。（按冲量近似精确算，均匀球的最大偏转在$b\approx0.93R$处，约$3.0\times10^{-4}\,\mathrm{rad}$，量级相同。）撞上一个静止的电子，偏转角的最大值满足$\sin\theta_{\max}=\frac{m_{\mathrm e}}{m_\alpha}$，约$1.4\times10^{-4}\,\mathrm{rad}$，同样很小。
+
+    （2）随机游走：$\sqrt N\theta\approx0.07\,\mathrm{rad}$（$N\sim5\times10^4$：7.7 MeV 的$\alpha$粒子在铂里的射程约十几微米，原子层间距约 0.25 nm）。$90^\circ$是典型值的约 23 倍，二维高斯分布尾部的概率约$e^{-(1.57/0.067)^2}\approx e^{-550}$，可以看作零，和八千分之一相差悬殊。史实：八千分之一是 1909 年用厚铂板测的（Geiger–Marsden, Proc. R. Soc. A 82, 495），常被误说成金箔。
+
+    （3）$d=\frac1{4\pi\varepsilon_0}\frac{(2e)(78e)}K=\frac{2\times78\times1.44\,\mathrm{MeV\cdot fm}}{7.7\,\mathrm{MeV}}\approx29\,\mathrm{fm}$，$\frac dR\approx2.9\times10^{-4}$；$F=\frac1{4\pi\varepsilon_0}\frac{(2e)(78e)}{d^2}\approx42\,\mathrm N$，是$F_{\max}$的约$1.2\times10^7$倍。核式结构能一次给出大角度偏转。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）证明：在同一个谱线系里，$n_2$越大，相邻两条谱线的波长之差越小。
+
+    （2）一台光谱仪（spectrometer）能分开波长相差不小于$0.10\,\mathrm{nm}$的两条谱线。沿着巴耳末系从$\mathrm H_\alpha$往短波看，它从哪一对相邻的谱线起就分不开了？取$R_{\mathrm H}=1.096\,78\times10^7\,\mathrm{m^{-1}}$。
+  hints:
+    - |
+      把谱线的波长写成$n_2$的函数$\lambda(n)=\frac{n_1^2}{R_{\mathrm H}}\cdot\frac{n^2}{n^2-n_1^2}$，算出相邻两条之差$D(n)=\lambda(n)-\lambda(n+1)$，再比较$D(n+1)$和$D(n)$。
+    - |
+      $\frac{n^2}{n^2-n_1^2}=1+\frac{n_1^2}{n^2-n_1^2}$，相减时 1 消掉。看$\frac{D(n+1)}{D(n)}$是不是小于 1。$n$很大时$D(n)\approx\frac{2n_1^4}{R_{\mathrm H}n^3}$，可以先用它估出大概在哪里。
+    - |
+      （1）由$\lambda(n)=\frac{n_1^2}{R_{\mathrm H}}\bigl(1+\frac{n_1^2}{n^2-n_1^2}\bigr)$，
+
+      $$
+      D(n)=\frac{n_1^4}{R_{\mathrm H}}\cdot\frac{2n+1}{(n^2-n_1^2)\bigl((n+1)^2-n_1^2\bigr)}>0.
+      $$
+
+      于是$\frac{D(n+1)}{D(n)}=\frac{(2n+3)(n^2-n_1^2)}{(2n+1)\bigl((n+2)^2-n_1^2\bigr)}$。把分母和分子展开相减，得$6n^2+12n+4+2n_1^2>0$，所以这个比小于 1，$D(n)$随$n$增大而减小。
+
+      （2）巴耳末系$n_1=2$，$\frac{16}{R_{\mathrm H}}\approx1458.8\,\mathrm{nm}$，$n$很大时$D(n)\approx\frac{2\times1458.8\,\mathrm{nm}}{n^3}$，令它等于$0.10\,\mathrm{nm}$，得$n\approx31$。细算：$D(30)=1458.8\times\frac{61}{896\times957}\,\mathrm{nm}\approx0.104\,\mathrm{nm}$，$D(31)=1458.8\times\frac{63}{957\times1020}\,\mathrm{nm}\approx0.094\,\mathrm{nm}$。由（1），$D$一路减小，所以$n_2=30$、31 两条还分得开，从$n_2=31$、32 这一对起就分不开了。
+  reference: |
+    （1）$\lambda(n)=\frac{n_1^2}{R_{\mathrm H}}\bigl(1+\frac{n_1^2}{n^2-n_1^2}\bigr)$，$D(n)=\frac{n_1^4}{R_{\mathrm H}}\cdot\frac{2n+1}{(n^2-n_1^2)((n+1)^2-n_1^2)}$。$\frac{D(n+1)}{D(n)}=\frac{(2n+3)(n^2-n_1^2)}{(2n+1)((n+2)^2-n_1^2)}$，分母减分子$=6n^2+12n+4+2n_1^2>0$，故$D$严格递减。
+
+    （2）$n_1=2$，$\frac{16}{R_{\mathrm H}}=1458.8\,\mathrm{nm}$；$D(29)\approx0.115$，$D(30)\approx0.1038$，$D(31)\approx0.0942\,\mathrm{nm}$。$n_2=30$、31 相差$0.104\,\mathrm{nm}$可分开，$n_2=31$、32 相差$0.094\,\mathrm{nm}$分不开，此后都分不开。
+
+- id: p7
+  tier: thinking
+  statement: |
+    炽热的氢气（例如高温的放电管、某些星云（nebula））的光谱里，巴耳末系线系限的短波一侧，还能看到一片连续的光。
+
+    （1）按里德伯公式，巴耳末系的谱线能不能落在线系限的短波一侧？
+
+    （2）这片连续的光可能是怎样产生的？
+
+    （3）由此看，「原子的能量是量子化的」这句话要加上什么条件？
+  hints:
+    - |
+      巴耳末系的谱线在线系限的哪一侧？高温下，原子里的电子可能被完全拉出去，成为自由电子（free electron）；自由电子也可能被质子重新抓住。
+    - |
+      $n\to\infty$时$-\frac{hcR_{\mathrm H}}{n^2}\to0$，相当于电子刚好离开原子、在远处静止；离开以后，电子还可以有任意大小的动能$K$。它被抓回、落到能量为$-\frac{hcR_{\mathrm H}}4$的那个值上时，放出的光子能量是多少？
+    - |
+      （1）不能。巴耳末系$\frac1\lambda=R_{\mathrm H}\bigl(\frac14-\frac1{n_2^2}\bigr)<\frac{R_{\mathrm H}}4$，每条谱线都比线系限$\frac4{R_{\mathrm H}}$长，谱线只在长波一侧越挤越密。
+
+      （2）高温下，有些氢原子的电子被完全拉了出去。取电子刚好离开原子、在远处静止时能量为零（就是$n\to\infty$那个值），自由电子的能量就是它的动能$K\ge0$，可以连续地取任意值。它被质子抓回、落到$-\frac{hcR_{\mathrm H}}4$那个值上时，放出的光子能量是$K+\frac{hcR_{\mathrm H}}4\ge\frac{hcR_{\mathrm H}}4$，波长不超过$\frac4{R_{\mathrm H}}$，而且随$K$连续变化，于是在线系限的短波一侧连成一片。
+
+      （3）量子化的是电子还留在原子里时原子的能量；电子离开原子以后，它的动能可以连续变化，能量就不再只取分立的值。线系限正是这两种情形的分界：落到别的值上也一样，每个谱线系的线系限外面都可能有这样一片连续的光。
+  reference: |
+    （1）不能：$\frac1\lambda<\frac{R_{\mathrm H}}4$，所有巴耳末线都在线系限长波一侧。
+
+    （2）复合辐射：自由电子（能量$K\ge0$，连续）被质子俘获到$-\frac{hcR_{\mathrm H}}4$，放出$h\nu=K+\frac{hcR_{\mathrm H}}4$，$\lambda\le\frac4{R_{\mathrm H}}$且连续（巴耳末连续谱）。
+
+    （3）只有电子束缚在原子里时能量才是分立的；电子自由时能量连续。线系限是束缚与自由的分界，各线系限外都可有连续谱。
+
+- id: p8
+  tier: thinking
+  statement: |
+    讲解里说，气体的吸收暗线都落在它发光时某些亮线的位置上，例如太阳光谱里的 C、F 暗线就在氢的$\mathrm H_\alpha$、$\mathrm H_\beta$处。
+
+    （1）用「原子的能量只能取一些分立的值」解释：为什么暗线会落在亮线的位置上？
+
+    （2）要是原子的能量可以连续地变化，白光穿过气体以后，光谱会是什么样子？
+
+    （3）吸收了光的原子过一会儿往往又放出同样波长的光。既然这样，暗线为什么还是暗的？
+  hints:
+    - |
+      原子吸收一个光子，能量就增加这个光子的能量；电子还留在原子里时，吸收前、吸收后，原子的能量都只能是那些分立的值之一。
+    - |
+      电子前后都在原子里时，放出的光子能量是两个能量值之差，吸收的光子能量也得正好是某两个能量值之差。原子再放出的光往哪个方向走是随机的。
+    - |
+      （1）原子吸收一个能量为$h\nu$的光子、电子还留在原子里时，能量从一个允许的值$E_a$升到另一个允许的值$E_b$，所以$h\nu=E_b-E_a$，只有这些频率的光子能这样被吸收。原子从$E_b$回到$E_a$时放出的光子也是$h\nu=E_b-E_a$，所以每条暗线都落在某条亮线的位置上。能把电子拉出去的光子也会被吸收，可电子出去以后能量能连续变化（第 7 题），这种吸收在线系限的短波一侧连成一片，不形成一条条暗线。
+
+      （2）能量能连续变化，原子就能吸收各种能量的光子，不会只挑某几个波长。白光穿过以后，顶多整片变暗一些，不会出现一条条分立的暗线。
+
+      （3）原子再放出的光射向四面八方，只有极少一部分还沿着原来的方向前进，所以顺着白光的方向看，这几个波长的光少了，留下暗线。从侧面看这团气体，反而能在这些波长上看到亮线。
+  reference: |
+    （1）电子留在原子里的吸收：$h\nu=E_b-E_a$，只能是两个允许能量之差；发射时同一对能量给出同一个$h\nu$，所以吸收线与发射线波长相同。把电子拉出去的吸收在线系限短波一侧连续，不成线。
+
+    （2）若能量连续，可吸收任意能量的光子，不会有锐利的暗线，只有整体或连续的减弱。
+
+    （3）再辐射各向同性（且可经别的能量值分几步放出），沿原光束方向的强度减小，形成暗线；侧面观察可见同波长的发射线。
