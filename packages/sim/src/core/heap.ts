@@ -1,7 +1,7 @@
 import type { Machine, SimEvent } from './machine.ts';
 
 export type Region = readonly [number, number];
-export type BlockKind = 'array'|'list'|'slots'|'buckets'|'bst'|'avl'|'red-black'|'trie'|'parents'|'ranks'|'sizes';
+export type BlockKind = 'array'|'list'|'slots'|'buckets'|'bst'|'avl'|'red-black'|'trie'|'parents'|'ranks'|'sizes'|'b-tree';
 export interface Block { at:number; length:number; kind:BlockKind }
 export interface Hole { at:number; length:number }
 export function holes(region:Region, blocks:Block[]):Hole[] {
@@ -19,7 +19,7 @@ export interface Op { name:string; args:number[]; word?:string }
 export const opText=(op:Op)=>[op.name,...(op.word===undefined?op.args:[op.word])].join(' ');
 export interface Picture {
   bytes:Uint8Array; blocks:Block[]; size:number; moves:number; probes:number; resizes:number;
-  rotations:number; compares:number; swaps:number; words?:string[]; reads?:number; compressions?:number;
+  rotations:number; compares:number; swaps:number; words?:string[]; reads?:number; compressions?:number; splits?:number; merges?:number; borrows?:number;
 }
 export const blank=():Picture=>({bytes:new Uint8Array(256),blocks:[],size:0,moves:0,probes:0,resizes:0,rotations:0,compares:0,swaps:0});
 export type Write = [number,number];
@@ -43,17 +43,17 @@ export class Trace {
     this.ticks.push({pic:this.pic,note:{text,reads,writes:changes.map(w=>w[0]),...note}});
   }
   /** 将结果记在当前微步上，避免给只读查询额外计一步。 */
-  finish(text:string, fields:Changes={}) {
+  finish(text:string, fields:Changes={}, reads:number[]=[], reason?:string) {
     const last=this.ticks[this.ticks.length-1];
     this.pic={...this.pic,...fields};
     last.pic=this.pic;
-    last.note={...last.note,text:last.note.text+'。'+text};
+    last.note={...last.note,text:last.note.text+'。'+text,reads:[...new Set([...last.note.reads,...reads])],reason:reason??last.note.reason};
   }
-  allocate(length:number,kind:BlockKind,initial:number[]|null=null) {
+  allocate(length:number,kind:BlockKind,initial:number[]|null=null, alongside?:(at:number)=>Write[]) {
     const free=holes(this.region,this.pic.blocks), at=free.find(h=>h.length>=length)?.at;
     if(at===undefined) throw new OperationFailure('申请 '+length+' 字节失败。空闲 '+free.reduce((n,h)=>n+h.length,0)+' 字节，最大空洞 '+Math.max(0,...free.map(h=>h.length))+' 字节。');
     const block={at,length,kind}, blocks=[...this.pic.blocks,block].sort((a,b)=>a.at-b.at);
-    this.emit('申请 '+length+' 字节：'+addr(at)+'–'+addr(at+length-1),[],initial?.map((v,i)=>[at+i,v])??[],{blocks},
+    this.emit('申请 '+length+' 字节：'+addr(at)+'–'+addr(at+length-1),[],[...(initial?.map((v,i):Write=>[at+i,v])??[]),...(alongside?.(at)??[])],{blocks},
       {blockChange:Array.from({length},(_,i)=>at+i)});
     return at;
   }

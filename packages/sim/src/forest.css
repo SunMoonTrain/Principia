@@ -3,6 +3,8 @@
 .ds-forest .ds-tree .ds-scroll {max-height:188px}
 .ds-forest .ds-memory .ds-scroll {max-height:165px}
 .ds-forest .ds-node {height:28px}
+.ds-forest .ds-node[data-virtual] {height:12px;font-size:0;background:var(--muted)}
+.ds-forest .ds-memory td[data-heap] {border-block-color:var(--accent)}
 .ds-forest .ds-node[data-terminal] {border:4px double currentColor}
 .ds-forest .ds-node[data-slots] {display:flex;align-items:stretch;justify-content:center;border-radius:3px}
 .ds-forest .ds-node span {flex:1;align-content:center}

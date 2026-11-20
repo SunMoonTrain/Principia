@@ -5,7 +5,7 @@ import { ForestViews } from './Forest';
 import { StructurePlayer, useStepScroll, touch, type Display } from './StructurePlayer';
 
 function Arrays({s,selected,select}:{s:Work<UnionConfig>;selected?:number;select:(at:number)=>void}){
-  const b=s.pic.bytes,ref=useStepScroll(s.note,selected);
+  const b=s.pic.bytes,ref=useStepScroll(s.note,selected,true);
   return <section className="ds-panel ds-array"><h4>元素数组</h4><div className="ds-scroll" ref={ref}>
     {(b[1]?[b[0],b[1]]:[b[0]]).map(base=><div key={base}><small>{base===b[0]?'parent':s.params.union==='rank'?'rank':'size'}</small>
       <div className="ds-row">{Array.from({length:s.pic.size},(_,i)=><button type="button" className="ds-cell" key={i}

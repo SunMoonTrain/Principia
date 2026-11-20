@@ -195,6 +195,25 @@ forwarding: `+forwarding})),
   OUT R1
   HLT
 branch: predict-not-taken`},
+  {name:'tree',title:'B 树 · 分裂与根升高',yaml:`kind: b-tree
+ops: |
+  insert 1 2 3 4 5 6 7 8 9 10
+pauses:
+  - when: nodes == 3
+    text: |-
+      第一次分裂后，哪个键留在新根？
+goals:
+  - when: size == 10
+    text: |-
+      插入全部十个键。`},
+  {name:'tree',title:'B 树 · 五次删除',yaml:`kind: b-tree
+keys: [1,2,3,4,5,6,7,8,9,10]
+ops: |
+  delete 1
+  delete 8
+  delete 4
+  delete 3
+  delete 7`},
   {name:'tree',title:'并查集 · 按秩合并与压缩',yaml:`kind: union-find
 n: 8
 ops: |

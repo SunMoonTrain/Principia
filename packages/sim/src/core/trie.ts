@@ -32,7 +32,7 @@ function operate(t:Trace,{name,word}:Op) {
   const found=index===w.length, last=path.at(-1)?.at;
   if(name==='insert') {
     if(found){
-      if(t.b[last!+1])t.finish(w+' 已经是词');
+      if(t.b[last!+1])t.finish(w+' 已经是词',{},[last!+1]);
       else t.emit('已有全部字母，把 '+w+' 标为词尾',[],[[last!+1,1]],{size:t.pic.size+1});
     }
     for(;index<w.length;index++){
@@ -48,6 +48,7 @@ function operate(t:Trace,{name,word}:Op) {
   const terminal=found && !!t.b[last!+1];
   if(name==='prefix'){
     const words:string[]=terminal?[w]:[];
+    if(found)t.finish(terminal?'前缀本身也是词':'从前缀的孩子开始枚举',{},[last!+1,last!+2]);
     const visit=(first:number,prefix:string)=>{
       for(const at of siblings(t.b,first)) {
         const next=prefix+String.fromCharCode(t.b[at]);
@@ -61,7 +62,7 @@ function operate(t:Trace,{name,word}:Op) {
     return;
   }
   if(name==='find'||!terminal) {
-    t.finish(w+(terminal?' 是词':found?' 只是前缀':' 不在树中'));
+    t.finish(w+(terminal?' 是词':found?' 只是前缀':' 不在树中'),{},found?[last!+1]:[]);
     return;
   }
   t.emit('清除 '+w+' 的词尾标记',[],[[last!+1,0]],{size:t.pic.size-1});

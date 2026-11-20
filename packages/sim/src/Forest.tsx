@@ -16,7 +16,7 @@ function layout(nodes:Branch[],roots:number[]) {
     const node=byId.get(at);
     if(!node||seen.has(at))return;
     seen.add(at);
-    const width=node.slots?Math.max(30,node.slots.length*31):node.at===0?14:30;
+    const width=node.slots?Math.max(30,node.slots.length*31):node.at===0?12:30;
     const own=Math.max(width,(node.caption?.length??0)*6+6),y=10+depth*48;
     const p:Position={node,x:start+own/2,y,width,span:own,parent,index};
     points.push(p);
@@ -38,6 +38,8 @@ function layout(nodes:Branch[],roots:number[]) {
   for(const at of [...roots,...byId.keys()]){
     const root=place(at,left,0,0);if(root)left+=root.span+12;
   }
+  // 拓扑顺序会在合并时反转。按地址保持 DOM 顺序，浏览器才能连续插值同一个结点。
+  points.sort((a,b)=>a.node.at-b.node.at);
   return {points,width:Math.max(left,50),height:Math.max(52,...points.map(p=>p.y+44))};
 }
 function Diagram({nodes,roots,note,selected,select,title}:{nodes:Branch[];roots:number[];note:Note;selected?:number;select:(a:number)=>void;title:string}){
@@ -60,13 +62,13 @@ function Diagram({nodes,roots,note,selected,select,title}:{nodes:Branch[];roots:
     <svg width={width} height={height} aria-hidden="true">{points.map(p=>{
       const q=p.parent;if(!q)return null;
       const x=q.node.slots?q.x-q.width/2+q.width*p.index/Math.max(1,q.node.children.length-1):q.x;
-      const d='M '+x+' '+(q.y+27)+' L '+p.x+' '+p.y;
+      const d='M '+x+' '+(q.y+(q.node.at===0?19:27))+' L '+p.x+' '+p.y;
       return <path key={p.node.at} d={d} style={{d:'path("'+d+'")'}}/>;
     })}</svg>
-    {points.map(({node:n,x,y,width:w})=><button type="button" key={n.at} data-node={n.at} className="ds-node" data-terminal={n.terminal||undefined}
+    {points.map(({node:n,x,y,width:w})=><button type="button" key={n.at} data-node={n.at} className="ds-node" data-virtual={n.at===0||undefined} data-terminal={n.terminal||undefined}
       data-slots={n.slots!==undefined||undefined} data-touch={touch(note,...n.bytes)} data-selected={n.at===selected||undefined}
       aria-label={n.label+' '+(n.caption??'')+' '+addr(n.at)} aria-pressed={n.at===selected} onClick={()=>select(n.at)}
-      style={{width:w,transform:'translate('+(x-w/2)+'px,'+y+'px)'}}>
+      style={{width:w,transform:'translate('+(x-w/2)+'px,'+(y+(n.at===0?8:0))+'px)'}}>
       {n.slots?.length?n.slots.map(slot=><span key={slot.at} data-touch={touch(note,slot.at)}>{slot.label}</span>):n.label}
       {n.caption&&<small>{n.caption}</small>}
     </button>)}
@@ -81,7 +83,7 @@ export function ForestViews({pic,note,region,view,nodes,roots,vars,title,array}:
   return <div className="ds-forest">
     {view.includes('tree')&&<Diagram nodes={nodes} roots={roots} note={note} selected={selection?.at} select={setPicked} title={title}/>}
     <div className="ds-forest-lower">{view.includes('array')&&array?.(selection?.at,select)}
-      {view.includes('memory')&&<HeapGrid pic={pic} note={note} vars={vars} region={region} selected={selection?.bytes} select={select}/>}
+      {view.includes('memory')&&<HeapGrid followGroup pic={pic} note={note} vars={vars} region={region} selected={selection?.bytes} select={select}/>}
     </div>
   </div>;
 }

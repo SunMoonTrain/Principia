@@ -25,6 +25,11 @@ it.each([
   ...[['keys: [abc9]',3],['keys: [abcdefghijklmnopq]',3],['region: [0, 15]',3],['region: [16, 19]\nkeys: [ab]',4],
     ['view: [array]',3],['degree: 2',3],['parent: []',3],['n: 8',3],['union: rank',3],['compress: true',3],
     ['goals:\n  - when: root == 0\n    text: |-\n      测试',4]].map(([s,n])=>['tree','kind: trie\n'+s+'\nops: |\n  find a',n]),
+  ...['degree: 1','degree: 4','keys: [256]','keys: [-1]','region: [0, 255]','region: [16, 23]','n: 8','union: rank','compress: true','parent: [0]','view: [array]']
+    .map(field=>['tree','kind: b-tree\n'+field+'\nops: |\n  find 1',3]),
+  ['tree','kind: b-tree\nregion: [16, 33]\nkeys: [1,2,3,4]\nops: |\n  find 1',4],
+  ['tree','kind: b-tree\nops: |\n  insert 256',4],
+  ['tree','kind: b-tree\nops: |\n  find 1\ngoals:\n  - when: matches == 1\n    text: |-\n      测试',6],
   ...['n: 1','n: 33','parent: [1, 1]','parent: [8,1,2,3,4,5,6,7]','parent: [1,0,2,3,4,5,6,7]','keys: []','degree: 2','region: [3, 255]','region: [16, 30]']
     .map(field=>['tree','kind: union-find\n'+field+'\nops: |\n  find 1',3]),
   ...['find 8','union 0','connected 0','connected 0 1 2 3','union 3 8'].map(op=>['tree','kind: union-find\nops: |\n  '+op,4]),
@@ -71,4 +76,20 @@ it('字典树的 keys 和 ops 都先规范化，再按词拆开',()=>{
   expect(errors).toEqual([]);
   const params=JSON.parse((root.children![0].data as {hProperties:{dataParams:string}}).hProperties.dataParams);
   expect(params.keys).toEqual(['car']);expect(params.commands.map((op:{word:string})=>op.word)).toEqual(['dog','cat']);
+});
+
+it('各 kind 的专用字段和 array 视图在字段所在行检查',()=>{
+  const kinds=['bst','avl','red-black','min-heap','max-heap','trie','union-find','b-tree'];
+  const fields:Record<string,string>={degree:'2',n:'8',union:'rank',compress:'true',parent:'[0,1,2,3,4,5,6,7]'};
+  for(const kind of kinds){
+    for(const [field,value] of Object.entries(fields)){
+      const allowed=field==='degree'?kind==='b-tree':kind==='union-find';
+      const errors=compile('tree','kind: '+kind+'\n'+field+': '+value+'\nops: |-\n  ').errors;
+      if(allowed)expect(errors).toEqual([]);
+      else expect(errors).toContainEqual(expect.objectContaining({line:3}));
+    }
+    const errors=compile('tree','kind: '+kind+'\nview: [array]\nops: |-\n  ').errors;
+    if(kind.endsWith('heap')||kind==='union-find')expect(errors).toEqual([]);
+    else expect(errors).toContainEqual(expect.objectContaining({line:3}));
+  }
 });

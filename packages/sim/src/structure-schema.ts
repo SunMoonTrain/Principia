@@ -1,4 +1,6 @@
 import { z } from 'zod';
+import { initialBTree } from './core/b-tree.ts';
+import { OperationFailure } from './core/heap.ts';
 import { treeKinds, isHeap } from './core/tree.ts';
 import { normalizeWord, validWord, structures } from './core/operations.ts';
 import { prime, variables } from './core/memory.ts';
@@ -66,4 +68,17 @@ const unionSchema=z.strictObject({
     if(at!==parent[at]){error('parent','父指针有环');return;}
   }
 });
-export const treeSchema=z.discriminatedUnion('kind',[binarySchema,trieSchema,unionSchema]);
+const bSchema=z.strictObject({
+  ...common, kind:z.literal('b-tree'), degree:z.literal([2,3]).default(2), keys:z.array(byte).default([]), view:treeView,
+}).superRefine((p,ctx)=>{
+  const [lo,hi]=p.region;
+  if(lo<1 || hi-lo+1<4*p.degree+1){
+    ctx.addIssue({code:'custom',path:['region'],message:'堆区须避开 root 并能放下空的叶根'});return;
+  }
+  try { initialBTree(p); }
+  catch(e){
+    if(!(e instanceof OperationFailure))throw e;
+    ctx.addIssue({code:'custom',path:['keys'],message:'按序插入初始键时堆区不足'});
+  }
+});
+export const treeSchema=z.discriminatedUnion('kind',[binarySchema,trieSchema,unionSchema,bSchema]);
