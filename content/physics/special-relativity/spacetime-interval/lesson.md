@@ -64,7 +64,7 @@ $\Delta s^2>0$的间隔叫作:term[类时]{id="physics.special-relativity.timeli
 为什么这样规定：每一小段近似匀速，就按匀速时的公式算，这里默认了钟的快慢和加速度无关。边界情况：每一小段的固有时都和惯性系无关，所以积分也和惯性系无关，换一个惯性系算，结果相同。
 
 ::anchor{id="def-clock-hypothesis"}
-假定一只理想的钟走得多快只取决于它此刻的速度、和加速度无关，这个假定叫作时钟假设（clock hypothesis）。
+假定一只理想的钟走得多快只取决于它此刻的速度、和加速度无关，这个假定叫作:term[时钟假设]{id="physics.special-relativity.clock-hypothesis"}（clock hypothesis）。
 
 时钟假设在很高的精度上成立：欧洲核子研究中心（CERN）的储存环（storage ring）里，缪子（muon）以约$10^{18}$倍重力加速度做圆周运动，寿命仍正好延长$\gamma$倍（例 2）。
 
@@ -124,7 +124,7 @@ sliders:
 
 **为什么想到这么做**：缪子衰变是它自身的「钟」走完一段固有时。圆周运动时速率不变，被积函数$\sqrt{1-\frac{u^2}{c^2}}=\frac1\gamma$是常数。
 
-**推导**：固有时$\tau=\int_0^T\frac{\dd t}{\gamma}=\frac{T}{\gamma}$，所以实验室里平均寿命$T=\gamma\tau=29.33\times2.197\,\mu\mathrm s\approx64.4\,\mu\mathrm s$，和实测一致。速度方向一直在变，加速度极大，结论却只用到速率：这正是时钟假设的检验，实测和预言相差不到千分之一。
+**推导**：固有时$\tau=\int_0^T\frac{\dd t}{\gamma}=\frac{T}{\gamma}$，所以实验室里平均寿命$T=\gamma\tau=29.33\times2.197\,\mu\mathrm s\approx64.4\,\mu\mathrm s$，和实测一致。速度方向一直在变，加速度极大，结论却只用到速率：这正是:term[时钟假设]{id="physics.special-relativity.clock-hypothesis"}的检验，实测和预言相差不到千分之一。
 
 ## 常见误区
 
