@@ -22,6 +22,10 @@ it.each([
     ['kind: max-heap\nkeys: [1,2]',3], ['kind: min-heap\nregion: [16, 17]',3],
     ['kind: bst\nview: [array]',3],['kind: avl\ncapacity: 1',3],['kind: bst\nsliders: []',3],
     ['kind: bst\ngoals:\n  - when: bogus > 1\n    text: |\n      查看',4]].map(([s,n])=>['tree',s+'\nops: |\n  insert 1',n]),
+  ...[['keys: [abc9]',3],['keys: [abcdefghijklmnopq]',3],['region: [0, 15]',3],['region: [16, 19]\nkeys: [ab]',4],
+    ['view: [array]',3],['degree: 2',3],['parent: []',3],['n: 8',3],['union: rank',3],['compress: true',3],
+    ['goals:\n  - when: root == 0\n    text: |-\n      测试',4]].map(([s,n])=>['tree','kind: trie\n'+s+'\nops: |\n  find a',n]),
+  ['tree','kind: trie\nops: |\n  insert car\n  find 42',5],
   ['tree','kind: avl\nops: |\n  extract',4],['tree','kind: max-heap\nops: |\n  find 3',4],
   ...[0,255].map(k=>['memory','structure: hash-open\nops: |\n  insert '+k,4]),
   ['bits', 'width: 12\nvalue: 0', 2], ['bits', 'width: 8\nvalue: 256', 3],
@@ -56,4 +60,11 @@ it('所有计算机画廊内容演示通过小节规格，使用解析后的表�
   expect(demos.find((d) => d.params.mode === 'inspect')?.params.bits).toBe(0x3dcccccd);
   expect(demos.filter((d) => d.params.mode === 'accumulate').map((d) => d.params.start)).toEqual([0, 16777216]);
   expect(demos.find((d) => d.name === 'text-encoding')?.params.show).toEqual(['utf8', 'utf16']);
+});
+
+it('字典树的 keys 和 ops 都先规范化，再按词拆开',()=>{
+  const {root,errors}=compile('tree','kind: trie\nkeys: [ＣＡＲ]\nops: |\n  ＩＮＳＥＲＴ ＤＯＧ ＣＡＴ');
+  expect(errors).toEqual([]);
+  const params=JSON.parse((root.children[0].data as {hProperties:{dataParams:string}}).hProperties.dataParams);
+  expect(params.keys).toEqual(['car']);expect(params.commands.map((op:{word:string})=>op.word)).toEqual(['dog','cat']);
 });

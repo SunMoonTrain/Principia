@@ -195,6 +195,17 @@ forwarding: `+forwarding})),
   OUT R1
   HLT
 branch: predict-not-taken`},
+  {name:'tree',title:'字典树 · 逐字插入与前缀查找',yaml:`kind: trie
+ops: |
+  insert car cat cart dog do
+  find ca
+  prefix ca`},
+  {name:'tree',title:'字典树 · 剪枝与地址复用',yaml:`kind: trie
+keys: [car, cat, cart, dog, do]
+ops: |
+  delete cart
+  delete do
+  insert cab`},
   {name:'tree', title:'AVL · 依次插入 1–7', yaml:`kind: avl
 ops: |
   insert 1 2 3 4 5 6 7

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { treeKinds, isHeap } from './core/tree.ts';
-import { structures } from './core/operations.ts';
+import { normalizeWord, validWord, structures } from './core/operations.ts';
 import { prime, variables } from './core/memory.ts';
 
 const byte = z.int().min(0).max(255);
@@ -26,7 +26,7 @@ export const memorySchema = z.strictObject({
   if (lo < variables(p.structure).length || hi-lo+1 < need) error('region','堆区覆盖变量或放不下初始结构');
 }).transform(p => ({...p, capacity:p.capacity ?? 4, growth:p.growth ?? 2, slots:p.slots ?? 11, probe:p.probe ?? 'linear'}));
 
-export const treeSchema = z.strictObject({
+const binarySchema = z.strictObject({
   ...common, kind:z.enum(treeKinds), keys:z.array(byte).default([]), capacity:capacity.optional(),
   view:z.array(z.enum(['tree','memory','array'])).min(1).optional(),
 }).superRefine((p,ctx)=>{
@@ -38,3 +38,16 @@ export const treeSchema = z.strictObject({
   if(lo<(heap?3:1)||hi<lo)error('region','堆区与变量重叠，或范围颠倒');
   else if(hi-lo+1<minimum)error(p.keys.length?'keys':'region','初始结构放不进堆区');
 }).transform(p=>({...p,capacity:p.capacity??4,view:p.view??(isHeap(p.kind)?['tree','array','memory']:['tree','memory'])}));
+
+const treeView=z.array(z.enum(['tree','memory'])).min(1).default(['tree','memory']);
+const trieSchema=z.strictObject({
+  ...common, kind:z.literal('trie'), view:treeView,
+  keys:z.array(z.string().transform(normalizeWord).refine(validWord,'词限 1–16 个字母 a–z')).default([]),
+}).superRefine((p,ctx)=>{
+  const [lo,hi]=p.region, prefixes=new Set<string>();
+  if(lo<1 || hi<lo)ctx.addIssue({code:'custom',path:['region'],message:'堆区覆盖 root 或范围颠倒'});
+  for(const word of p.keys)for(let i=1;i<=word.length;i++)prefixes.add(word.slice(0,i));
+  if(prefixes.size*4>hi-lo+1)ctx.addIssue({code:'custom',path:['keys'],message:'不同前缀所需的结点放不进堆区'});
+});
+
+export const treeSchema=z.discriminatedUnion('kind',[binarySchema,trieSchema]);

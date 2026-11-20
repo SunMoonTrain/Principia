@@ -1,7 +1,7 @@
 import type { Machine, SimEvent } from './machine.ts';
 
 export type Region = readonly [number, number];
-export type BlockKind = 'array'|'list'|'slots'|'buckets'|'bst'|'avl'|'red-black';
+export type BlockKind = 'array'|'list'|'slots'|'buckets'|'bst'|'avl'|'red-black'|'trie';
 export interface Block { at:number; length:number; kind:BlockKind }
 export interface Hole { at:number; length:number }
 export function holes(region:Region, blocks:Block[]):Hole[] {
@@ -15,11 +15,11 @@ export function holes(region:Region, blocks:Block[]):Hole[] {
   return free;
 }
 export const addr=(n:number)=>'0x'+n.toString(16).toUpperCase().padStart(2,'0');
-export interface Op { name:string; args:number[] }
-export const opText=(op:Op)=>[op.name,...op.args].join(' ');
+export interface Op { name:string; args:number[]; word?:string }
+export const opText=(op:Op)=>[op.name,...(op.word===undefined?op.args:[op.word])].join(' ');
 export interface Picture {
   bytes:Uint8Array; blocks:Block[]; size:number; moves:number; probes:number; resizes:number;
-  rotations:number; compares:number; swaps:number;
+  rotations:number; compares:number; swaps:number; words?:string[];
 }
 export const blank=():Picture=>({bytes:new Uint8Array(256),blocks:[],size:0,moves:0,probes:0,resizes:0,rotations:0,compares:0,swaps:0});
 export type Write = [number,number];
@@ -41,6 +41,13 @@ export class Trace {
     for(const [at,value] of changes) bytes[at]=value;
     this.pic={...this.pic,...fields,bytes};
     this.ticks.push({pic:this.pic,note:{text,reads,writes:changes.map(w=>w[0]),...note}});
+  }
+  /** 将结果记在当前微步上，避免给只读查询额外计一步。 */
+  finish(text:string, fields:Changes={}) {
+    const last=this.ticks[this.ticks.length-1];
+    this.pic={...this.pic,...fields};
+    last.pic=this.pic;
+    last.note={...last.note,text:last.note.text+'。'+text};
   }
   allocate(length:number,kind:BlockKind,initial:number[]|null=null) {
     const free=holes(this.region,this.pic.blocks), at=free.find(h=>h.length>=length)?.at;
