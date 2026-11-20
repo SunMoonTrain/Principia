@@ -164,3 +164,23 @@ it.each([
 ])("graph 的坏参数定位到源行", (body,line)=>{
   expect(compile("graph",String(body)).errors).toContainEqual(expect.objectContaining({line}));
 });
+
+it.each([
+  ["problem: invalid",2],
+  ["problem: lcs\nb: ABC\na: \"\"",4],
+  ["problem: lcs\nb: ABC\na: ABCDEFGHIJKLM",4],
+  ["problem: lcs\nb: ABC\na: \"*\"",4],
+  ["problem: lcs\nb: ABC\ncapacity: 7",4],
+  ["problem: lcs\nb: ABC\nitems: []",4],
+  ["problem: lcs\nb: ABC\nsliders: []",4],
+  ["problem: edit-distance\na: A9\nb: A",3],
+  ["problem: knapsack\nitems: [[1,1]]\ncapacity: 0",4],
+  ["problem: knapsack\nitems: [[1,1]]\ncapacity: 21",4],
+  ["problem: knapsack\ncapacity: 5\nitems: []",4],
+  ["problem: knapsack\ncapacity: 5\nitems: [[21,2]]",4],
+  ["problem: knapsack\ncapacity: 5\nitems: [[1,100]]",4],
+  ["problem: knapsack\ncapacity: 5\na: ABC",4],
+  ["problem: lcs\na: ABC\nb: A\ngoals:\n  - when: rows >= 1\n    text: |-\n      目标",6],
+])("dp-table 的坏参数定位到源行", (body,line)=>{
+  expect(compile("dp-table",String(body)).errors).toContainEqual(expect.objectContaining({line}));
+});

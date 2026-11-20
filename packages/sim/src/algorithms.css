@@ -18,3 +18,10 @@
 
 .grid-board canvas {height:auto;display:block;margin:0 auto;touch-action:none;cursor:crosshair;max-width:100%}
 .algo-editor input[type=number] {width:4em}
+
+.alg-dp svg {display:block;height:auto;max-height:340px;margin:auto}
+.alg-dp text {text-anchor:middle;fill:var(--text);font:12px monospace}
+.alg-dp rect {fill:var(--surface);stroke:var(--border)}
+.alg-dp .current rect {fill:color-mix(in srgb,#db902c 56%,var(--surface))}
+.alg-dp .dep rect {fill:color-mix(in srgb,var(--accent) 35%,var(--surface))}
+.alg-dp .traced rect {fill:color-mix(in srgb,#499871 45%,var(--surface))}

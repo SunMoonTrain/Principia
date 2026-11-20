@@ -398,4 +398,17 @@ edges: |
   c -> t 20
   d -> c 7
   d -> t 4`},
+  {name:'dp-table',title:'公共子序列 · ABCBDAB 与 BDCABA',yaml:`problem: lcs
+a: ABCBDAB
+b: BDCABA
+pauses:
+  - when: filled == 42
+    text: |-
+      两条支路相等时，回溯会先走哪边？
+goals:
+  - when: traced == 8
+    text: |-
+      沿表找回公共子序列。`},
+  {name:'dp-table',title:'0-1 背包 · 容量七',yaml:'problem: knapsack\ncapacity: 7\nitems: [[1,1],[3,4],[4,5],[5,7]]'},
+  {name:'dp-table',title:'编辑距离 · kitten → sitting',yaml:'problem: edit-distance\na: kitten\nb: sitting'},
 ];
