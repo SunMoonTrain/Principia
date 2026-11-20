@@ -122,17 +122,15 @@ export function useMachine<P, S>(machine: Machine<P, S>, params: P, seed: number
     extend();
     refresh();
   };
-  const resetHistory = (inputs: P, keepGoals: boolean) => {
+  const replaceInputs = (inputs: P) => {
     stop();
     const next = fresh(inputs);
-    if (keepGoals) collect(next.state);
-    else setReached(matches(rules.goals, next.state));
+    collect(next.state);
     setGrain(initialGrain);
     setVisited(0);
     setHistory(next);
   };
-  const reset = () => resetHistory(params, true);
-  const replaceInputs = (inputs: P) => resetHistory(inputs, false);
+  const reset = () => replaceInputs(params);
   const edit = (action: unknown, written?: string[]) => {
     stop();
     history.edit(action, written);

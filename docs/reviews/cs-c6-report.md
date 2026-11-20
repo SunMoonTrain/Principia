@@ -115,7 +115,7 @@ sort、grid-search、graph 和 dp-table 均可在小节中使用；20 个画廊�
 | `packages/sim/src/core/algorithm.ts`、`AlgorithmPlayer.tsx` | 共用的确定性轨迹、并排步进、重置和编辑会话。 |
 | `packages/sim/src/core/{sort,grid-search,graph,dp-table}.ts` 和各自的 `.test.ts` | 四个算法内核、验收数字、边界用例和独立参考实现。 |
 | `packages/sim/src/{Sort,GridSearch,Graph,DpTable}.tsx`、`algorithms.css`、`sort.css`、`graph.css` | 柱状图和归并辅助数组、双地图、四种图表示、填表与回溯、读者编辑及当前步高亮。 |
-| `packages/sim/src/kit/useMachine.ts` | 寻路使用按帧计时，四个算法组件在当前播放器内替换历史并重新检查初态目标。原有组件沿用原来的重置和计时方式。 |
+| `packages/sim/src/kit/useMachine.ts` | 寻路使用按帧计时，四个算法组件在当前播放器内替换历史，将新初态满足的目标并入本次打开页面期间已勾选的目标。原有组件沿用原来的重置和计时方式。 |
 | `packages/sim/src/{sort,grid-search,graph,dp-table}-schema.ts`、`specs.ts`、`registry.ts`、`demos.ts` | 参数和观测量检查、按需入口、20 个编译后的画廊演示。 |
 | `compiler/anim.ts`、`compiler/data-sim.test.ts` | 对地图与逐行边表的报错定位到具体源行，四种组件的参数通过真实小节入口验证。 |
 | `docs/plan.md`、本报告、`docs/reviews/cs-c6/` | 参数、计步、平局规则和观测量写回正文，记录验收数字、测量方法和截图。 |
