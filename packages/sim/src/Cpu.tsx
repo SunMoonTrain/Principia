@@ -1,9 +1,11 @@
+import { CacheTable } from './CacheTable';
+import { CycleChart } from './CycleChart';
 import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { AnimProps } from '@principia/anim';
 import type { CpuParams } from './p8-schema';
 import type { Condition } from './core/predicate';
 import { assemble, breakpointAddress, disassemble, hex, inputByte, signed } from './core/p8-asm';
-import { cpuNames, p8Machine, type CpuState } from './core/p8';
+import { cpuNames, cachedCpuNames, p8Machine, type CpuState } from './core/p8';
 import { StepperBar, touchKind } from './kit/StepperBar';
 import { useMachine } from './kit/useMachine';
 import { P8Editor, syntax, useAssembly } from './P8Editor';
@@ -29,11 +31,11 @@ function MicroPanel({s,irTouch}:{s:CpuState;irTouch:ReturnType<typeof touchKind>
 }
 function CpuSession({params,labels,load}:{params:Params;labels:AnimProps<Params>['labels'];load:(source:string,input:number[])=>void}) {
   const image=useMemo(()=>assemble(params.program,params.isa),[params.program,params.isa]);
-  const boot=useMemo(()=>({image,input:params.input,isa:params.isa}),[image,params.input,params.isa]);
+  const boot=useMemo(()=>({image,input:params.input,isa:params.isa,cache:params.cache,fetch:params.fetch}),[image,params.input,params.isa,params.cache,params.fetch]);
   const [marks,setMarks]=useState(()=>new Set(params.breakpoints.map(m=>breakpointAddress(image,m)).filter((a):a is number=>a!==undefined)));
-  const options=useMemo(()=>({names:cpuNames,goals:params.goals,pauses:params.pauses,stepsPerSecond:rate,boundary,
+  const options=useMemo(()=>({names:params.cache?cachedCpuNames:cpuNames,goals:params.goals,pauses:params.pauses,stepsPerSecond:rate,boundary,
     granularities:params.granularity==='micro'?micros:instructions,
-    breakpoint:(s:CpuState)=>boundary(s) && !s.halted && marks.has(s.pc)}),[marks,params.goals,params.pauses,params.granularity]);
+    breakpoint:(s:CpuState)=>boundary(s) && !s.halted && marks.has(s.pc)}),[marks,params.cache,params.goals,params.pauses,params.granularity]);
   const player=useMachine(p8Machine,boot,0,options), s=player.history.state;
   const [source,setSource]=useState(params.program), [input,setInput]=useState(params.input.join(', '));
   const draft=useAssembly(source,params.isa);
@@ -44,7 +46,7 @@ function CpuSession({params,labels,load}:{params:Params;labels:AnimProps<Params>
   const at=s.phase && s.frame?s.frame.address:s.pc;
   const changed=(a:number)=>s.memory[a]!==image.bytes[a] || s.memory[(a+1)&255]!==image.bytes[(a+1)&255];
   const fmt=(a:number)=>disassemble(s.memory[a],s.memory[(a+1)&255]);
-  const show=(view:CpuParams['view'][number])=>params.view.includes(view);
+  const show=(view:CpuParams['view'][number])=>params.view.some(v=>v===view);
   const bits=['Z','N','C','V'];
   const touch = (key:string) => touchKind(player.history.events,key);
   const codePane = useRef<HTMLDivElement>(null);
@@ -62,7 +64,10 @@ function CpuSession({params,labels,load}:{params:Params;labels:AnimProps<Params>
   const stackSize = 255-s.sp, recentCount = Math.min(stackSize,12);
   const stackCell = (a:number) => <li key={a} data-touch={touch('M'+a)}>{hex(a)}　{hex(s.memory[a])} {s.returns.includes(a)?'返回地址':''}</li>;
   const panels = <div className="p8-secondary">
-    {show('memory') && <details><summary>内存</summary><p>P 指令地址 · S 栈指针</p>
+    {s.cache && show('cache') && <details open><summary>缓存</summary><CacheTable title="处理器缓存" cache={s.cache}
+      visits={(s.frame?.visits??[]).filter((_,i)=>touch('cache:'+i))}/><p>缓存记录标记和脏位。内存面板显示最新值，脏块换出才计写回费用。</p></details>}
+    {s.chart && show('chart') && <details open><summary>每条指令的周期</summary><CycleChart bars={s.chart}/></details>}
+    {show('memory') && <details open><summary>内存</summary><p>P 指令地址 · S 栈指针</p>
       <div className="p8-memory-scroll"><table className="p8-memory"><thead><tr><th></th>{s.memory.slice(0,16).map((_,j)=><th key={j}>{j.toString(16).toUpperCase()}</th>)}</tr></thead><tbody>
         {Array.from({length:16},(_,row)=><tr key={row}><th>{hex(row*16)}</th>{s.memory.slice(row*16,row*16+16).map((n,col)=>{
           const a=row*16+col, tag=(a===s.pc||a===((s.pc+1)&255)?'P':'')+(a===s.sp?'S':'');
@@ -70,7 +75,7 @@ function CpuSession({params,labels,load}:{params:Params;labels:AnimProps<Params>
             <button type="button" disabled={locked||!params.editable} aria-label={'内存 '+hex(a)} onClick={()=>{setField('memory');setAddress(hex(a));setRaw(hex(n)); if (editPanel.current) editPanel.current.open=true;}}>
               {hex(n).slice(2)}<sup>{tag}</sup></button></td>;
         })}</tr>)}</tbody></table></div></details>}
-    {show('stack') && <details><summary>栈 · {stackSize} 格{stackSize>0 && ' · 栈顶 '+hex(s.sp+1)}</summary>
+    {show('stack') && <details open={stackSize>0}><summary>栈 · {stackSize} 格{stackSize>0 && ' · 栈顶 '+hex(s.sp+1)}</summary>
       {stackSize===0 ? <p>空栈</p> : <>
         <ol className="p8-stack">{Array.from({length:recentCount},(_,i)=>stackCell(s.sp+recentCount-i))}</ol>
         {stackSize>recentCount && <details><summary>更早的 {stackSize-recentCount} 格</summary>

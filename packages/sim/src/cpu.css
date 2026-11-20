@@ -62,3 +62,10 @@
 .p8-editor textarea { resize:none; color:transparent; background:transparent; caret-color:var(--text); }
 .p8-editor textarea::selection { background:color-mix(in srgb,var(--accent) 30%,transparent); }
 .p8-editor textarea:focus-visible { outline-offset:-2px; }
+.p8-chart { margin:.5rem 0; }
+.p8-chart svg { width:100%; display:block; }
+.p8-chart text { fill:var(--text); font:11px var(--font-mono); }
+.p8-chart line { stroke:var(--border); }
+.p8-chart rect { fill:var(--accent); }
+.p8-chart [data-miss="true"] rect { fill:var(--warn); }
+.p8-chart figcaption span { color:var(--warn); }

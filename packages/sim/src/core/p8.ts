@@ -1,8 +1,12 @@
+import { emptyCache, visitCache, type CacheConfig, type CacheState, type Visit, type Access } from './cache.ts';
 import { decode, disassemble, hex, type Assembly, type Decoded } from './p8-asm.ts';
 import type { Machine, SimEvent, StepResult } from './machine.ts';
 
 export const cpuNames = ['R0','R1','R2','R3','PC','SP','Z','N','C','V','cycles','steps','halted','outCount','lastOut','mem'];
-export interface Boot { image: Assembly; input: number[]; isa?: readonly string[] }
+export const cachedCpuNames = [...cpuNames,'hits','misses'];
+interface ProgramBoot { image: Assembly; input: number[]; isa?: readonly string[] }
+export interface Boot extends ProgramBoot { cache?:CacheConfig; fetch?:'data'|'through-cache' }
+export interface CycleBar { step:number; address:number; cycles:number; miss:boolean }
 type Flags = { Z: number; N: number; C: number; V: number };
 const jumpFlags: Partial<Record<string, keyof Flags>> = {JZ:'Z', JNZ:'Z', JC:'C', JNC:'C', JN:'N', JV:'V'};
 interface Transfer { address: number; value: number; write: boolean }
@@ -13,13 +17,16 @@ interface Effect {
 }
 interface Frame {
   address: number; first: number; second: number; instruction?: Decoded; effect?: Effect;
+  visits?:Visit[]; startCycles?:number; startCache?:CacheState;
 }
 export interface CpuState {
   boot: Boot; registers: number[]; memory: number[]; flags: Flags; pc: number; sp: number;
   inputIndex: number; output: number[]; cycles: number; steps: number; lastCycles: number;
   halted: boolean; error?: string; phase: 0 | 1 | 2 | 3; frame?: Frame; returns: number[];
+  cache?:CacheState; chart?:CycleBar[];
 }
 export const initialCpu = (boot: Boot): CpuState => ({
+  ...(boot.cache && {cache:emptyCache(boot.cache),chart:[]}),
   boot, registers: [0,0,0,0], memory: boot.image.bytes, flags: {Z:0,N:0,C:0,V:0}, pc:0, sp:255,
   inputIndex:0, output:[], cycles:0, steps:0, lastCycles:0, halted:false, phase:0, returns:[],
 });
@@ -65,7 +72,8 @@ function writeBack(s: CpuState, e: Effect, name: string): CpuState {
     flags:e.flags ?? s.flags, pc:e.pc ?? s.pc, sp:e.sp ?? s.sp, halted:!!e.halt };
   if (e.dest !== undefined) { n.registers=s.registers.slice(); n.registers[e.dest]=e.result!; }
   if (e.memory?.write) {
-    n.cycles+=10; n.memory=s.memory.slice(); n.memory[e.memory.address]=e.memory.value;
+    if (!s.cache) n.cycles+=10;
+    n.memory=s.memory.slice(); n.memory[e.memory.address]=e.memory.value;
     n.returns=s.returns.filter(a => a !== e.memory!.address);
     if (name === 'CALL') n.returns=[...n.returns,e.memory.address];
   }
@@ -134,7 +142,7 @@ function micro(s: CpuState): StepResult<CpuState> {
     if (typeof e === 'string') return fail('执行：'+e);
     const read=e.memory && !e.memory.write ? e.memory : undefined;
     const reads = read ? ['M'+read.address] : e.input ? ['in:'+s.inputIndex] : [];
-    return finish({...s,phase:3,cycles:s.cycles+1+(read?10:0),frame:{...f,effect:e}},
+    return finish({...s,phase:3,cycles:s.cycles+1+(read && !s.cache?10:0),frame:{...f,effect:e}},
       '执行：'+executionText(e,i.name),reads.length?'read':'info',reads,['cycles']);
   }
   const e=f.effect!, n=writeBack(s,e,i.name);
@@ -149,18 +157,57 @@ function micro(s: CpuState): StepResult<CpuState> {
   if (e.output!==undefined) writes.push('out:'+s.output.length);
   return finish(n,'写回：'+written(e)+(collision?'，栈进入了程序区':''),'write',writes);
 }
+/** 只在实际发生的微步收取访问费用，frame 保留本条指令的全部访问。 */
+function timedMicro(s:CpuState):StepResult<CpuState> {
+  const result=micro(s);
+  if (!s.cache || s.halted) return result;
+  if (result.state.error) {
+    const frame=s.frame!;
+    return {...result,state:{...result.state,cycles:frame.startCycles!,cache:frame.startCache!,frame:{...frame,visits:[]}},
+      events:[...result.events,{kind:'write',touched:['cycles'],text:frame.visits?.length?'本条指令出错，撤销取指费用和缓存访问。':''}]};
+  }
+  const n=result.state, frame=n.frame!, start=s.phase===0?s.cycles:s.frame!.startCycles!;
+  const accesses:Access[]=[];
+  if (s.phase===0 && s.boot.fetch==='through-cache') {
+    accesses.push({address:s.pc,write:false});
+    const second=inc(s.pc), block=s.cache.config.blockSize;
+    if (Math.floor(s.pc/block)!==Math.floor(second/block)) accesses.push({address:second,write:false});
+  }
+  const transfer=frame.effect?.memory;
+  if (transfer && (s.phase===2 && !transfer.write || s.phase===3 && transfer.write)) accesses.push(transfer);
+  let cache=s.cache, cycles=n.cycles;
+  const visits=s.phase===0?[]:[...(s.frame?.visits??[])];
+  for (const access of accesses) {
+    const next=visitCache(cache,access), v=next.visit;
+    cache=next.cache; cycles+=v.cost;
+    result.events.push({kind:v.hit?'hit':'miss',touched:['cache:'+visits.length],text:cacheNote(v)});
+    visits.push(v);
+  }
+  if (accesses.length) result.events.push({kind:'write',touched:['cycles'],text:''});
+  const state={...n,frame:{...frame,startCycles:start,startCache:s.phase===0?s.cache:s.frame!.startCache,visits},cache,cycles};
+  if (s.phase===3) {
+    state.lastCycles=cycles-start;
+    const bar={step:state.steps,address:frame.address,cycles:state.lastCycles,miss:visits.some(v=>!v.hit)};
+    state.chart=[...(s.chart??[]).slice(-63),bar];
+  }
+  return {...result,state};
+}
+function cacheNote(v:Visit) {
+  return hex(v.address)+(v.hit?' 命中':' 缺失')+(v.dirtyEviction?'并写回脏块':'')+'（+'+v.cost+'）';
+}
 export const p8Machine: Machine<Boot,CpuState> = {
   init:initialCpu,
   step(s,grain) {
-    if (grain === '微步' || s.halted) return micro(s);
+    if (grain === '微步' || s.halted) return timedMicro(s);
     const events: SimEvent[]=[];
     let cost=0;
-    do { const next=micro(s); s=next.state; events.push(...next.events); cost++; } while(s.phase && !s.halted);
+    do { const next=timedMicro(s); s=next.state; events.push(...next.events); cost++; } while(s.phase && !s.halted);
     if (!s.error) {
       const f=s.frame!, e=f.effect!;
-      let summary=events[events.length-1].text.slice(3);
+      let summary=events.find(e=>e.text.startsWith('写回：'))!.text.slice(3);
       if (e.alu) summary=(e.dest!==undefined?'R'+e.dest+' = ':'比较 ')+executionText(e,f.instruction!.name);
       else if ((e.memory && !e.memory.write) || e.branch!==undefined) summary=executionText(e,f.instruction!.name)+'，'+summary;
+      if (f.visits?.length) summary+=' · '+f.visits.map(cacheNote).join('、');
       return {state:s,done:s.halted,previewCost:cost,events:[{kind:'info',text:hex(f.address)+' '+disassemble(f.first,f.second)+'：'+summary},
         ...events.filter(e=>e.touched?.length).map(e=>({...e,text:''}))]};
     }
@@ -179,14 +226,14 @@ export const p8Machine: Machine<Boot,CpuState> = {
     if (Object.hasOwn(s.flags,key) && (value===0||value===1)) return {...s,flags:{...s.flags,[key]:value}};
     throw new Error('无效的编辑位置或值');
   },
-  observe(s) { return {R0:s.registers[0],R1:s.registers[1],R2:s.registers[2],R3:s.registers[3],PC:s.pc,SP:s.sp,...s.flags,
+  observe(s) { const counts:Record<string,number>={}; if(s.cache) {counts.hits=s.cache.hits;counts.misses=s.cache.misses;} return {...counts,R0:s.registers[0],R1:s.registers[1],R2:s.registers[2],R3:s.registers[3],PC:s.pc,SP:s.sp,...s.flags,
     cycles:s.cycles,steps:s.steps,halted:Number(s.halted),outCount:s.output.length,lastOut:s.output.at(-1)??0}; },
   readMemory:(s,address)=>s.memory[address],
 };
 
 /** 判题不建历史、不生成界面事件，译码、执行和写回均和微步共用。 */
-export function runCpu(boot: Boot, limit: number) {
-  let s=initialCpu(boot);
+export function runCpu({image,input,isa}: ProgramBoot, limit: number) {
+  let s=initialCpu({image,input,isa});
   while (!s.halted && s.cycles < limit) {
     const first=s.memory[s.pc], second=s.memory[inc(s.pc)], i=decode(first,second);
     s={...s,pc:(s.pc+2)&255};

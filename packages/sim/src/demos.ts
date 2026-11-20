@@ -1,3 +1,18 @@
+const cachedSum = `program: |
+  LDI R0, arr
+  LDI R1, 16
+  LDI R2, 0
+  loop: LD R3, [R0]
+  ADD R2, R3
+  ADD R0, 1
+  SUB R1, 1
+  JNZ loop
+  OUT R2
+  HLT
+  .org 0x80
+  arr: .byte 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
+cache: {blockSize: 4, sets: 4, ways: 1}`;
+
 /** 每个演示的 YAML 也是小节 anim 块的实际写法。 */
 export const simDemos = [
   { name: 'bits', title: '补码加法 · 127 + 1', yaml: `width: 8
@@ -158,4 +173,6 @@ sets: 4
 ways: 1
 accesses: [w0x00, 0x00, w0x10, 0x04, 0x00]
 compare: {write: write-through}` },
+  { name:'cpu', title:'数组求和 · 数据走缓存', yaml:cachedSum },
+  { name:'cpu', title:'数组求和 · 取指与数据争用缓存', yaml:cachedSum+'\nfetch: through-cache' },
 ];

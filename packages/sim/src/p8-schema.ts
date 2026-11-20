@@ -1,3 +1,4 @@
+import { cacheConfig } from './cache-schema.ts';
 import { z } from 'zod';
 import { inputByte, mnemonics } from './core/p8-asm.ts';
 
@@ -12,7 +13,11 @@ export const p8Isa = z.array(z.string().transform(s => s.toUpperCase()).refine(s
 export const cpuViews = ['code','registers','flags','memory','stack','output','cycles'] as const;
 export const cpuSchema = z.strictObject({
   program:z.string(), input:p8Bytes.default([]), isa:p8Isa.optional(),
-  view:z.array(z.enum(cpuViews)).default([...cpuViews]), granularity:z.enum(['instruction','micro']).default('instruction'),
+  cache:cacheConfig.optional(), fetch:z.enum(['data','through-cache']).optional(),
+  view:z.array(z.enum([...cpuViews,'cache','chart'])).optional(), granularity:z.enum(['instruction','micro']).default('instruction'),
   breakpoints:z.array(z.union([z.string(),z.int().positive()])).default([]), editable:z.boolean().default(true),
-});
+}).superRefine((p,ctx)=>{
+  if (!p.cache && p.fetch==='through-cache') ctx.addIssue({code:'custom',path:['fetch'],message:'取指走缓存必须配置 cache'});
+  if (!p.cache && p.view?.some(v=>v==='cache'||v==='chart')) ctx.addIssue({code:'custom',path:['view'],message:'缓存表和周期柱状图需要 cache'});
+}).transform(p=>({...p,view:p.view??(p.cache?[...cpuViews,'cache','chart'] as const:[...cpuViews])}));
 export type CpuParams = z.output<typeof cpuSchema>;
