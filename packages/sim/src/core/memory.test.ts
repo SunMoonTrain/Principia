@@ -13,6 +13,15 @@ function run(structure:MemoryConfig['structure'],script:string,overrides:Partial
   }
   return {s,ticks,ends,b:s.pic.bytes,free:holes(config.region,s.pic.blocks)};
 }
+it.each([
+  ['dynamic-array',45,1.4,63], ['stack',60,2.05,123], ['queue',50,2.3,115],
+  ['dynamic-array',45,2.8,126], ['dynamic-array',45,1.3999999999999997,62],
+] as const)('%s 从容量 %i 按十进制增长因子 %s 扩到 %i',(structure,capacity,growth,expected)=>{
+  const op=structure==='queue'?'enqueue':'push';
+  const script=op+' '+Array(capacity+1).fill(1).join(' ');
+  const {s}=run(structure,script,{capacity,growth});
+  expect(machine.observe(s)).toMatchObject({size:capacity+1,capacity:expected,resizes:1,moves:capacity});
+});
 it('首次适配逐字节搬运；释放合并并保留旧字节',()=>{
   const script='push '+Array.from({length:20},(_,i)=>i+1).join(' ');
   const a=run('dynamic-array',script,{capacity:1}), ninth=a.ends[9];
@@ -36,6 +45,12 @@ it.each([
   expect(r.ends.slice(1).map((s,i)=>s.pic.probes-r.ends[i].pic.probes)).toEqual(counts);
   expect(r.s.step).toBe(14);
 });
+it.each(['hash-open','hash-chain'] as const)('%s 精确比较装填比例和十进制阈值',kind=>{
+  const slotsAfter=(slots:number,loadLimit:number)=>run(kind,'insert 1',{slots,loadLimit}).b[1];
+  expect(slotsAfter(3,0.3333333333333333)).toBe(7);
+  expect(slotsAfter(3,0.3333333333333334)).toBe(3);
+  expect(slotsAfter(5,0.2)).toBe(5);
+});
 it('跨墓碑查找、回填墓碑，按老槽号迁移',()=>{
   const r=run('hash-open','insert 22 33 44 7 18\ndelete 33\nfind 44\ninsert 55 66');
   expect(r.ends[6].pic.bytes[17]).toBe(255);expect(r.ends[7].pic.probes-r.ends[6].pic.probes).toBe(3);
@@ -51,6 +66,7 @@ it('链式桶：链头、删除的唯一前驱和复用地址；翻倍重挂原�
   expect(after.pic.probes-before.pic.probes).toBe(2);expect(after.pic.bytes[26]).toBe(21);
   expect(holes([16,255],after.pic.blocks)[0]).toEqual({at:23,length:2});expect(r.b[23]).toBe(22);
   const t=run('hash-chain',script+' 1',{slots:5,loadLimit:1});
+  expect([...t.b.slice(16,21)]).toEqual([0,0,0,0,0]);expect(t.s.pic.moves).toBe(6);
   expect(t.b[0]).toBe(33);expect(t.b[1]).toBe(11);
   expect([1,3,6,7,8].map(i=>t.b[t.b[33+i]])).toEqual([12,3,17,7,8]);expect(t.b[t.b[t.b[34]+1]]).toBe(1);
 });

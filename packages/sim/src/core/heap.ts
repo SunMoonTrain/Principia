@@ -84,6 +84,7 @@ export function operationMachine<P extends {region:Region;commands:Op[]}>(
       if(count>1) {
         const steps=tape.slice(s.next,stop);
         const reasons=steps.map(x=>x.note.reason).filter(Boolean);
+        if(note.reason===note.text)reasons.pop();
         note={...note,text:count+' 个微步。'+(reasons.length?reasons.join('；')+'。':'')+note.text,
           blockChange:[...new Set(steps.flatMap(x=>x.note.blockChange??[]))],
           reads:[...new Set(steps.flatMap(x=>x.note.reads))],writes:[...new Set(steps.flatMap(x=>x.note.writes))]};

@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import type { AnimProps } from '@principia/anim';
 import { type Work, addr } from './core/heap';
 import { treeMachine, treeNames, isHeap, type TreeConfig } from './core/tree';
-import { HeapGrid, StructurePlayer, touch, type Display } from './StructurePlayer';
+import { HeapGrid, StructurePlayer, touch, useStepScroll, type Display } from './StructurePlayer';
 import './tree.css';
 
 interface Vertex {at:number;x:number;y:number;parent:number;length:number}
@@ -32,14 +32,18 @@ function Drawing({s,vertices,selected,select}:{s:Work<TreeConfig>;vertices:Verte
   const ref=useRef<HTMLDivElement>(null), b=s.pic.bytes, kind=s.params.kind;
   const height=(at:number)=>at?b[at+3]:0;
   const affected=(v:Vertex)=>v.at===b[0]?[...bytesOf(v),0]:bytesOf(v);
-  const focus=vertices.find(v=>affected(v).some(a=>s.note.writes.includes(a)))??vertices.find(v=>bytesOf(v).some(a=>s.note.reads.includes(a)));
+  const active=vertices.find(v=>affected(v).some(a=>s.note.writes.includes(a)))??vertices.find(v=>bytesOf(v).some(a=>s.note.reads.includes(a)));
+  const previousSelection=useRef(selected);
   useLayoutEffect(()=>{
+    const focus=selected!==previousSelection.current && selected!==undefined
+      ?vertices.find(v=>v.at===selected):active;
+    previousSelection.current=selected;
     const box=ref.current;if(!box||!focus)return;
     if(focus.x-22<box.scrollLeft)box.scrollLeft=focus.x-22;
     else if(focus.x+22>box.scrollLeft+box.clientWidth)box.scrollLeft=focus.x+22-box.clientWidth;
     if(focus.y-22<box.scrollTop)box.scrollTop=focus.y-22;
     else if(focus.y+24>box.scrollTop+box.clientHeight)box.scrollTop=focus.y+24-box.clientHeight;
-  },[focus?.at,focus?.x,focus?.y,s.step]);
+  },[active?.at,active?.x,active?.y,selected,s.step]);
   const width=Math.max(50,...vertices.map(v=>v.x+23)),h=Math.max(55,...vertices.map(v=>v.y+24));
   return <section className="ds-panel ds-tree"><h4>树 <small>{kind}</small></h4><div className="ds-scroll" ref={ref}><div className="ds-canvas" style={{width,height:h}}>
     {!vertices.length && <small>空树</small>}
@@ -58,10 +62,11 @@ function Drawing({s,vertices,selected,select}:{s:Work<TreeConfig>;vertices:Verte
 function Views({s,view}:{s:Work<TreeConfig>;view:string[]}) {
   const [selected,setSelected]=useState<number>(),{params,pic,note}=s,heap=isHeap(params.kind);
   const vertices=positions(s), node=vertices.find(v=>v.at===selected), bytes=node?bytesOf(node):[];
+  const arrayScroll=useStepScroll(note,node?.at);
   const select=(a:number)=>setSelected(vertices.find(v=>a>=v.at&&a<v.at+v.length)?.at);
   return <>{(view.includes('tree')||view.includes('array'))&&<div className="ds-tree-column">
     {view.includes('tree')&&<Drawing s={s} vertices={vertices} selected={node?.at} select={select}/>}
-    {view.includes('array')&&<section className="ds-panel ds-array"><h4>堆数组</h4><div className="ds-scroll">
+    {view.includes('array')&&<section className="ds-panel ds-array"><h4>堆数组</h4><div ref={arrayScroll} className="ds-scroll">
       {pic.blocks.map(block=><div key={block.at} className="ds-row">{Array.from({length:block.length},(_,i)=>{
         const a=block.at+i,live=block.at===pic.bytes[0]?i<pic.size:s.tape?.slice(0,s.next).some(t=>t.note.reads.length&&t.note.writes.includes(a));
         return <button className="ds-cell" key={a} data-touch={touch(note,a)} data-used={!!live} data-selected={bytes.includes(a)||undefined} onClick={()=>select(a)}>

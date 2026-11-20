@@ -13,6 +13,7 @@
 .ds-row,.ds-chain {display:flex;align-items:center;gap:3px;width:max-content;margin:.25rem 0}.ds-chain {display:inline-flex}
 .ds-cell,.ds-chain>span,.ds-bucket>b {display:inline-grid;text-align:center;min-width:30px;padding:1px 4px;border:1px solid var(--border);border-radius:3px}
 .ds-cell {position:relative;line-height:1.1;min-height:32px}.ds-cell em {font:10px monospace;background:var(--accent);color:var(--surface);border-radius:2px}
+.ds-row[data-slots] {width:auto;flex-wrap:wrap}
 .ds-bucket {white-space:nowrap}.ds-ring {position:relative;margin:auto}.ds-ring .ds-cell {position:absolute;transform:translate(-50%,-50%)}
 .ds-counts {margin-top:.4rem}.ds-counts [data-changed] {color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 .ds-legend i {display:inline-block;width:.75em;height:.75em}.ds-editor {display:flex;align-items:center;gap:.4em;flex-wrap:wrap}

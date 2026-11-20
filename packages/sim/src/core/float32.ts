@@ -1,3 +1,5 @@
+import { decimalInput } from './decimal.ts';
+export { decimalInput } from './decimal.ts';
 import type { Machine } from './machine.ts';
 
 export const floatNames = ['bits', 'value', 'exponent', 'ulp', 'step', 'stuck', 'error'];
@@ -71,13 +73,6 @@ export interface AddParams { mode: 'add'; a: number; b: number }
 export interface AccParams { mode: 'accumulate'; start?: number; delta: number; count: number }
 export type FloatSteps = AddParams | AccParams;
 
-/** 以输入十进制数为基准；十进制位数和乘法在整数域保留。 */
-export function decimalInput(value: number) {
-  const [digits, exponent = '0'] = String(value).toLowerCase().split('e');
-  const places = (digits.split('.')[1]?.length ?? 0) - Number(exponent);
-  const numerator = BigInt(digits.replace('.', ''));
-  return { numerator: numerator * 10n ** BigInt(Math.max(0, -places)), places: Math.max(0, places) };
-}
 /** 用同一十进制小数位数保存起点、步长和一个 binary32 最低单位。 */
 function reference(p: AccParams) {
   const start = decimalInput(Number(p.start ?? 0)), delta = decimalInput(Number(p.delta));

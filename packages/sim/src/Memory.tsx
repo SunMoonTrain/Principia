@@ -1,10 +1,11 @@
 import type { AnimProps } from '@principia/anim';
 import { addr, type Block, type Work } from './core/heap';
 import { memoryMachine, memoryNames, variables, type MemoryConfig } from './core/memory';
-import { StructurePlayer, HeapGrid, touch, type Display } from './StructurePlayer';
+import { StructurePlayer, HeapGrid, touch, useStepScroll, type Display } from './StructurePlayer';
 type Params=MemoryConfig & Display;
 function Structure({s}:{s:Work<MemoryConfig>}) {
   const {pic,note,params}=s, b=pic.bytes, kind=params.structure;
+  const scroll=useStepScroll(note);
   const linked=new Set<number>();
   const chain=(head:number)=>{
     const out:number[]=[];
@@ -17,7 +18,7 @@ function Structure({s}:{s:Work<MemoryConfig>}) {
     const ring=queue, radius=Math.max(60,Math.ceil(length*39/(2*Math.PI)));
     return <div key={at}><small>{addr(at)} · {active?'当前块':'新块'} · {length} 格</small>
       {note.probeBase===at && note.probeKey!==undefined && <div className="ds-formula">h({note.probeKey}) = {note.probeKey} mod {length} = {note.probeKey%length}{params.probe==='double'?'，步长 '+(1+note.probeKey%(length-1)):''}</div>}
-      <div className={ring?'ds-ring':'ds-row'} style={ring?{width:2*radius+50,height:2*radius+52}:undefined}>
+      <div className={ring?'ds-ring':'ds-row'} data-slots={block.kind==='slots'||undefined} style={ring?{width:2*radius+50,height:2*radius+52}:undefined}>
       {Array.from({length},(_,i)=>{
         const angle=Math.PI*2*i/length-Math.PI/2, path=note.probeBase===at?note.path:[],value=b[at+i];
         const moving=s.tape && s.tape.slice(0,s.next).some(t=>t.note.reads.length && t.note.writes.includes(at+i));
@@ -30,7 +31,7 @@ function Structure({s}:{s:Work<MemoryConfig>}) {
         </span>;
       })}</div></div>;
   };
-  return <section className="ds-panel ds-structure"><h4>结构 <small>{kind}{kind==='queue'?' · H 队首 / T 下次入队':''}</small></h4><div className="ds-scroll ds-diagram">
+  return <section className="ds-panel ds-structure"><h4>结构 <small>{kind}{kind==='queue'?' · H 队首 / T 下次入队':''}</small></h4><div ref={scroll} className="ds-scroll ds-diagram">
     {kind==='linked-list' && <div><b data-touch={touch(note,0)}>head</b> → {chain(b[0])}</div>}
     {pic.blocks.filter(v=>v.kind!=='list').map(block=>block.kind==='buckets'?<div key={block.at}><small>{addr(block.at)} · 桶</small>{Array.from({length:block.length},(_,i)=><div className="ds-bucket" key={i}><b data-touch={touch(note,block.at+i)}>{i}</b> → {chain(b[block.at+i])}</div>)}</div>:row(block))}
     {pic.blocks.filter(v=>v.kind==='list' && !linked.has(v.at)).map(v=><small key={v.at} data-block-change={note.blockChange?.includes(v.at)||undefined} data-touch={touch(note,v.at,v.at+1)}>游离结点 {addr(v.at)} · {b[v.at]} → {b[v.at+1]?addr(b[v.at+1]):'∅'}</small>)}

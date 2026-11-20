@@ -13,6 +13,23 @@ function shape(p:Picture,a=p.bytes[0]):unknown {
   return a?[p.bytes[a],shape(p,p.bytes[a+1]),shape(p,p.bytes[a+2])]:null;
 }
 const leaf=(n:number)=>[n,null,null];
+it.each([
+  ['avl','delete 1\ndelete 3\ndelete 2',[1,2,3,4,5,6,7]],
+  ['red-black','insert 1 2 3 4 5 6 7 8 9 10',[]],
+  ['red-black','delete 4',[1,2,3,4,5,6,7,8,9,10]],
+] as const)('%s 的整操作说明按顺序保留各微步的理由，结尾只出现一次',(kind,script,keys)=>{
+  const fine=run(kind,script,[...keys]);
+  let state=fine.ends[0];
+  for(const end of fine.ends.slice(1)){
+    const notes=fine.ticks.slice(state.step+1,end.step+1).map(t=>t.note);
+    const lines=notes.flatMap(n=>n.reason?[n.reason]:[]);
+    if(!notes.at(-1)?.reason)lines.push(end.note.text);
+    state=machine.step(state,'一个操作').state;
+    const actual=state.note.text.replace(/^\d+ 个微步。/,'').split(/[；。]/).filter(Boolean);
+    const expected=lines.flatMap(line=>line.split(/[；。]/)).filter(Boolean);
+    expect(actual).toEqual(expected);
+  }
+});
 it('顺序插入在 BST 退化，AVL 的四次右右调节与地址固定',()=>{
   const script='insert 1 2 3 4 5 6 7',a=run('avl',script);
   expect(a.ends.map(s=>s.pic.rotations)).toEqual([0,0,0,1,1,2,3,4]);

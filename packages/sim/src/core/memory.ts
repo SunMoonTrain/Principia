@@ -1,3 +1,4 @@
+import { decimalInput } from './decimal.ts';
 import { Trace, addr, blank, holes, operationMachine, OperationFailure, type Op, type Region, type Write } from './heap.ts';
 import type { Structure } from './operations.ts';
 
@@ -25,7 +26,9 @@ export function initialArray(t:Trace,cap:number,values:number[]=[],queue=false) 
 }
 export function growArray(t:Trace,growth:number,queue=false) {
   const old=t.b[0], size=t.pic.size, capVar=queue?3:2, cap=t.b[capVar], head=queue?t.b[1]:0;
-  const next=Math.max(cap+1,Math.floor(cap*growth)), at=t.allocate(next,'array');
+  const {numerator,places}=decimalInput(growth);
+  const scaled=BigInt(cap)*numerator / (10n ** BigInt(places));
+  const next=Math.max(cap+1,Number(scaled)), at=t.allocate(next,'array');
   for(let i=0;i<size;i++){
     const from=old+(head+i)%cap;
     t.emit('搬元素 '+t.b[from]+'：'+addr(from)+' → '+addr(at+i),[from],[[at+i,t.b[from]]],{moves:t.pic.moves+1});
@@ -68,6 +71,10 @@ function arrayOp(t:Trace,p:MemoryConfig,{name,args:[x,v]}:Op) {
 function probeIndex(c:MemoryConfig,key:number,m:number,i:number) {
   return (key%m+(c.probe==='quadratic'?i*i:c.probe==='double'?i*(1+key%(m-1)):i))%m;
 }
+function exceedsLoad(count:number,slots:number,limit:number) {
+  const {numerator,places}=decimalInput(limit);
+  return BigInt(count)*(10n ** BigInt(places)) > BigInt(slots)*numerator;
+}
 function resizeOpen(t:Trace,p:MemoryConfig) {
   const old=t.b[0], m=t.b[1], n=largerPrime(m), ptr=t.allocate(n,'slots',Array(n).fill(0));
   for(let i=0;i<m;i++){
@@ -105,7 +112,7 @@ function hashOpen(t:Trace,p:MemoryConfig,{name,args:[key]}:Op) {
   if(k<0){t.emit('已探测 '+m+' 次，没有可用槽',[],[],{},{failed:true,path,probeBase:ptr,probeKey:key});return;}
   const size=t.pic.size+1,tombs=t.b[3]-Number(k===tomb);
   t.emit('槽 '+k+' 写入 '+key+(k===tomb?'，复用墓碑':''),[],[[ptr+k,key],[2,size],[3,tombs]],{size},{path,probeBase:ptr,probeKey:key});
-  if((size+tombs)/m>(p.loadLimit??0.5))resizeOpen(t,p);
+  if(exceedsLoad(size+tombs,m,p.loadLimit??0.5))resizeOpen(t,p);
 }
 function resizeChain(t:Trace) {
   const old=t.b[0],m=t.b[1],n=largerPrime(m),at=t.allocate(n,'buckets',Array(n).fill(0));
@@ -145,7 +152,7 @@ function linked(t:Trace,p:MemoryConfig,{name,args:[key]}:Op) {
   t.emit('结点 '+addr(node)+' 写入键 '+key,[],[[node,key]]);
   t.emit('新结点 next 指向 '+addr(t.b[dest]),[dest],[[node+1,t.b[dest]]]);
   t.emit('接入键 '+key+'：'+addr(dest)+' ← '+addr(node),[],[[dest,node],...(hash?[[2,size] as Write]:[])],{size});
-  if(hash && p.loadLimit!==undefined && size/t.b[1]>p.loadLimit)resizeChain(t);
+  if(hash && p.loadLimit!==undefined && exceedsLoad(size,t.b[1],p.loadLimit))resizeChain(t);
 }
 export const memoryMachine=operationMachine<MemoryConfig>(p=>{
   const t=new Trace(blank(),p.region);

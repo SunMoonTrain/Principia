@@ -21,16 +21,34 @@ function blockName(b:Block,bytes:Uint8Array) {
   if(b.kind==='slots')return '表 · '+b.length+' 槽';
   return '结点 '+bytes[b.at];
 }
+/** 只移动面板内部的滚动条，避开横纵滚动条占用的区域。 */
+export function useStepScroll(note:Note, selected?:number) {
+  const ref=useRef<HTMLDivElement>(null);
+  const previousSelection=useRef(selected);
+  useLayoutEffect(()=>{
+    const box=ref.current;
+    if(!box)return;
+    const picked=selected!==previousSelection.current && selected!==undefined;
+    previousSelection.current=selected;
+    const cell=(picked && box.querySelector('[data-selected]')) ||
+      box.querySelector('[data-heap][data-touch="write"]') || box.querySelector('[data-touch="write"]') ||
+      box.querySelector('[data-touch="read"]') || box.querySelector('[data-block-change]');
+    if(!cell){
+      if(!note.text){box.scrollLeft=0;box.scrollTop=0;}
+      return;
+    }
+    const r=cell.getBoundingClientRect(), bounds=box.getBoundingClientRect();
+    const left=bounds.left+box.clientLeft, top=bounds.top+box.clientTop;
+    if(r.left<left)box.scrollLeft+=Math.floor(r.left-left);
+    else if(r.right>left+box.clientWidth)box.scrollLeft+=Math.ceil(r.right-left-box.clientWidth);
+    if(r.top<top)box.scrollTop+=Math.floor(r.top-top);
+    else if(r.bottom>top+box.clientHeight)box.scrollTop+=Math.ceil(r.bottom-top-box.clientHeight);
+  },[note,selected]);
+  return ref;
+}
 export function HeapGrid({pic,note,vars,region,selected,select}:{pic:Picture;note:Note;vars:string[];region:Region;selected?:number[];select?:(at:number)=>void}) {
   const {bytes,blocks}=pic;
-  const scroll=useRef<HTMLDivElement>(null), first=selected?.[0];
-  useLayoutEffect(()=>{
-    const box=scroll.current, cell=box?.querySelector('td[data-at="'+first+'"]');
-    if(!box || !cell)return;
-    const r=cell.getBoundingClientRect(),v=box.getBoundingClientRect();
-    box.scrollLeft+=Math.min(0,r.left-v.left)+Math.max(0,r.right-v.right);
-    box.scrollTop+=Math.min(0,r.top-v.top)+Math.max(0,r.bottom-v.bottom);
-  },[first]);
+  const scroll=useStepScroll(note,selected?.[0]);
   const isPointer=(i:number)=>i===0 && ['head','ptr','root'].includes(vars[i]);
   return <section className="ds-panel ds-memory"><h4>内存 <small>∅ 空指针　· 空槽　† 墓碑</small></h4>
     <div ref={scroll} className="ds-scroll"><table aria-label="256 字节内存"><thead><tr><th>址</th>{Array.from({length:16},(_,i)=><th key={i}>{i.toString(16).toUpperCase()}</th>)}</tr></thead>
@@ -40,7 +58,7 @@ export function HeapGrid({pic,note,vars,region,selected,select}:{pic:Picture;not
         const label=vars[a]??(b?blockName(b,bytes):a>=region[0]&&a<=region[1]?'空洞':'保留');
         const val=pointer?ptr(v):b?.kind==='slots'?(v===0?'·':v===255?'†':v):v;
         const title=addr(a)+' · '+label+' · '+val;
-        return <td key={a} data-at={a} data-block-change={note.blockChange?.includes(a)||undefined} title={title} data-touch={touch(note,a)} data-used={!!b||!!vars[a]} data-start={b?.at===a || undefined} data-end={b && off===b.length-1 || undefined} data-selected={selected?.includes(a)||undefined}>
+        return <td key={a} data-at={a} data-heap={!!b||undefined} data-block-change={note.blockChange?.includes(a)||undefined} title={title} data-touch={touch(note,a)} data-used={!!b||!!vars[a]} data-start={b?.at===a || undefined} data-end={b && off===b.length-1 || undefined} data-selected={selected?.includes(a)||undefined}>
           {select && b?<button title={title} onClick={()=>select(a)}>{val}</button>:val}</td>;
       })}</tr>)}</tbody></table></div>
     <div className="ds-key">{vars.map((name,i)=><span key={i} data-touch={touch(note,i)}>{addr(i)} {name}={isPointer(i)?ptr(bytes[i]):bytes[i]}</span>)}</div>
