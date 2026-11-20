@@ -112,3 +112,27 @@ it.each([
 ])("sort 的坏参数定位到源行", (body,line)=>{
   expect(compile("sort",String(body)).errors).toContainEqual(expect.objectContaining({line}));
 });
+
+it.each([
+  ["map: |\n  S.\nruns: [{algorithm: bfs}]",3],
+  ["map: |\n  S........................................\n  .G\nruns: [{algorithm: bfs}]",3],
+  ["map: |\n  S.\n  ..\nruns: [{algorithm: bfs}]",3],
+  ["map: |\n  SS\n  .G\nruns: [{algorithm: bfs}]",3],
+  ["map: |\n  S.\n  .G\n  ..\n  .G\nruns: [{algorithm: bfs}]",3],
+  ["map: |\n  S.\n  ..G\nruns: [{algorithm: bfs}]",4],
+  ["map: |\n  S.\n  xG\nruns: [{algorithm: bfs}]",4],
+  ["map: |\n  S.\n  .G\nruns: [{algorithm: bfs}]\ncosts: {\".\": 2}",6],
+  ["map: |\n  S.\n  .G\nruns: [{algorithm: bfs}]\ncosts: {\"~\": 10}",6],
+  ["map: |\n  S.\n  .G\nruns: [{algorithm: bfs}]\nmoves: 7",6],
+  ["map: |\n  S.\n  .G\nruns: [{algorithm: bfs}]\nsliders: []",6],
+  ["map: |\n  S.\n  .G\nruns: []",5],
+  ["map: |\n  S.\n  .G\nruns: [{algorithm: bfs},{algorithm: dfs},{algorithm: astar}]",5],
+  ["map: |\n  S.\n  .G\nruns: [{algorithm: other}]",5],
+  ["map: |\n  S.\n  .G\nruns: [{algorithm: dfs, heuristic: zero}]",5],
+  ["map: |\n  S.\n  .G\nruns: [{algorithm: bfs, weight: 2}]",5],
+  ["map: |\n  S.\n  .G\nruns: [{algorithm: astar, weight: 11}]",5],
+  ["map: |\n  S.\n  .G\nruns: [{algorithm: greedy, heuristic: unknown}]",5],
+  ["map: |\n  S.\n  .G\nruns: [{algorithm: dfs}]\npauses:\n  - when: moves > 0\n    text: |-\n      观察",7],
+])("grid-search 的坏参数定位到源行", (body,line)=>{
+  expect(compile("grid-search",String(body)).errors).toContainEqual(expect.objectContaining({line}));
+});

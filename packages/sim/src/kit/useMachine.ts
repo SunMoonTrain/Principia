@@ -8,6 +8,7 @@ export interface PlaybackOptions<S = unknown> {
   goals?: readonly Condition[];
   pauses?: readonly Condition[];
   stepsPerSecond: number | ((grain?: string) => number);
+  frameClock?: boolean;
   boundary?: (state: S) => boolean;
   breakpoint?: (state: S) => boolean;
   granularities?: readonly string[];
@@ -65,13 +66,37 @@ export function useMachine<P, S>(machine: Machine<P, S>, params: P, seed: number
     collect(history.state);
     const pause = matches(rules.pauses, history.state).findIndex((hit, i) => hit && !before[i]);
     setPauseIndex(pause);
-    if (history.done || history.pause || pause >= 0 || options.breakpoint?.(history.state)) setRunning(false);
+    const stopped = history.done || history.pause || pause >= 0 || !!options.breakpoint?.(history.state);
+    if (stopped) setRunning(false);
     extend();
     refresh();
+    return stopped;
   }, [history, grain, rules, matches, collect, extend, options.boundary, options.breakpoint]);
   const rate = typeof options.stepsPerSecond === 'number' ? options.stepsPerSecond : options.stepsPerSecond(grain);
+  const clockVersion = options.frameClock ? 0 : version;
   useEffect(() => {
     if (!running || !inView) return;
+    if (options.frameClock) {
+      const period = 1000 / (speed * rate);
+      let frame = 0, last = 0, elapsed = 0;
+      const draw = (now: number) => {
+        if (last) elapsed += Math.min(now - last, 4 * period);
+        last = now;
+        while (elapsed >= period) {
+          elapsed -= period;
+          if (advance()) return;
+        }
+        frame = requestAnimationFrame(draw);
+      };
+      const schedule = () => {
+        cancelAnimationFrame(frame);
+        last = elapsed = 0;
+        if (!document.hidden) frame = requestAnimationFrame(draw);
+      };
+      document.addEventListener('visibilitychange', schedule);
+      schedule();
+      return () => { document.removeEventListener('visibilitychange', schedule); cancelAnimationFrame(frame); };
+    }
     let timer: number | undefined;
     const schedule = () => {
       window.clearTimeout(timer);
@@ -87,7 +112,7 @@ export function useMachine<P, S>(machine: Machine<P, S>, params: P, seed: number
       document.removeEventListener('visibilitychange', schedule);
       window.clearTimeout(timer);
     };
-  }, [running, inView, speed, rate, advance, version]);
+  }, [running, inView, speed, rate, advance, clockVersion, options.frameClock]);
 
   const seek = (target: number) => {
     stop();

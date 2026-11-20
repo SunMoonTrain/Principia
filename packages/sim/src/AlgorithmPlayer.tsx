@@ -13,11 +13,11 @@ export function useInputs<P>(original:P){
   const apply=(params:P)=>set(s=>({params,id:s.id+1}));
   return {...session,apply,reset:()=>apply(original)};
 }
-export function AlgorithmPlayer<P,F extends Frame>({params,labels,machine,names,rate,reset,editor,children}:{
-  params:P & Controls;labels:AnimProps<P>['labels'];machine:Machine<P,Track<F>[]>;names:string[];rate:number;reset:()=>void;
+export function AlgorithmPlayer<P,F extends Frame>({params,labels,machine,names,rate,frameClock=false,reset,editor,children}:{
+  params:P & Controls;labels:AnimProps<P>['labels'];machine:Machine<P,Track<F>[]>;names:string[];rate:number;frameClock?:boolean;reset:()=>void;
   editor?:ReactNode;children:(tracks:Track<F>[])=>ReactNode;
 }){
-  const options=useMemo(()=>({names,stepsPerSecond:rate,goals:params.goals,pauses:params.pauses}),[names,rate,params.goals,params.pauses]);
+  const options=useMemo(()=>({names,stepsPerSecond:rate,frameClock,goals:params.goals,pauses:params.pauses}),[names,rate,frameClock,params.goals,params.pauses]);
   const player=useMachine(machine,params,0,options);
   return <StepperBar player={{...player,reset}} labels={labels} afterControls={params.editable&&editor}>
     <div className="algo-panels">{children(player.history.state)}</div>

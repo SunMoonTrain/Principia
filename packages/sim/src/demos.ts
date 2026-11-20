@@ -1,3 +1,14 @@
+import { mulberry32 } from './core/rng.ts';
+const gridExample=`  S....#....
+  .##..#.~~.
+  ..#..#.~~.
+  ..#....~~.
+  ..####..#.
+  .......##G`;
+function largeGrid(){
+  const r=mulberry32(11);
+  return Array.from({length:25},(_,y)=>'  '+Array.from({length:40},(_,x)=>!x&&!y?'S':x===39&&y===24?'G':r()<0.28?'#':'.').join('')).join('\n');
+}
 const cachedSum = `program: |
   LDI R0, arr
   LDI R1, 16
@@ -336,4 +347,9 @@ ops: |
     ['插入与选择 · 相等元素的次序','algorithm: insertion\nrace: [selection]\npreset: {kind: few-unique, n: 12, seed: 3}'],
     ['堆排序 · 取出最大值','algorithm: heap\npreset: {kind: random, n: 10, seed: 5}'],
   ].map(([title,yaml])=>({name:'sort',title,yaml})),
+  ...[
+    ['寻路 · A* 与 Dijkstra','[{algorithm: astar}, {algorithm: dijkstra}]'],
+    ['寻路 · 贪心与加权 A*','[{algorithm: greedy}, {algorithm: astar, weight: 2}]'],
+  ].map(([title,runs])=>({name:'grid-search',title,yaml:'map: |\n'+gridExample+'\ncosts: {"~": 5}\nmoves: 4\nruns: '+runs})),
+  {name:'grid-search',title:'寻路 · 40 × 25 障碍地图',yaml:'map: |\n'+largeGrid()+'\nruns: [{algorithm: astar}]'},
 ];

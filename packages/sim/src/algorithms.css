@@ -1,3 +1,5 @@
+/* 画廊连续播放时只绘制邻近的算法演示，浏览器保留已经量过的实际高度。 */
+.gallery-page .sim-demo:has(.algo-panels) {content-visibility:auto;contain-intrinsic-block-size:auto 580px}
 .algo-panels {display:flex;gap:.5rem;align-items:stretch;min-width:0}
 .algo-panel {flex:1 1 0;min-width:0;padding:.5rem;border:1px solid var(--border);border-radius:.45rem;background:var(--surface);color:var(--text)}
 .algo-panel h4 {font-size:.95rem;margin:0 0 .35rem}
@@ -13,3 +15,6 @@
 .sort-bar[data-act=write] i {background:#c07c19}.sort-bar[data-mark=true] {outline:1px dashed var(--text)}
 .sort-aux {display:flex;gap:2px;flex-wrap:wrap;font:11px/1.4 monospace}
 .sort-aux span {padding:1px 2px;border:1px solid var(--border)}
+
+.grid-board canvas {height:auto;display:block;margin:0 auto;touch-action:none;cursor:crosshair;max-width:100%}
+.algo-editor input[type=number] {width:4em}

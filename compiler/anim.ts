@@ -117,7 +117,12 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
       checked = parsed.data;
       reserved = spec.reserved(checked as never);
     } else {
-      reportIssues(y, parsed.error.issues, ctx.diags, [], (path) => `参数 ${path.join('.')}`);
+      for(const issue of parsed.error.issues){
+        if(issue.code==='custom' && typeof issue.params?.row==='number'){
+          const field=textAt(y,issue.path,ctx.diags);
+          if(field)ctx.diags.error(ctx.file,field.contentLine+issue.params.row,issue.message);
+        }else reportIssues(y,[issue],ctx.diags,[],path=>'参数 '+path.join('.'));
+      }
     }
   }
 
