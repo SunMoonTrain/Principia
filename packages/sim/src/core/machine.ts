@@ -17,6 +17,7 @@ export interface StepResult<S> {
 export interface Machine<P, S> {
   init(params: P, seed: number): S;
   step(state: S, granularity?: string): StepResult<S>;
+  atEnd?(state:S):boolean;
   edit?(state: S, action: unknown): S;
   observe(state: S): Record<string, number | boolean>;
   readMemory?(state: S, address: number): number;
@@ -36,7 +37,7 @@ export class History<P, S> {
     if (!Number.isSafeInteger(limit) || limit < 1 || !Number.isSafeInteger(interval) || interval < 1) throw new RangeError('历史容量和检查点间隔必须是正整数');
     this.current = machine.init(params, seed);
     this.snapshots.set(0, this.current);
-    this.log.push({ events: [] });
+    this.log.push({ events: [], done:machine.atEnd?.(this.current) });
   }
 
   get index() { return this.cursor; }

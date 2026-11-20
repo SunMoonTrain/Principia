@@ -195,4 +195,68 @@ forwarding: `+forwarding})),
   OUT R1
   HLT
 branch: predict-not-taken`},
+  {name:'memory', title:'动态数组 · 翻倍', yaml:`structure: dynamic-array
+capacity: 1
+growth: 2
+ops: |
+  push 1 2 3 4 5 6 7 8 9
+pauses:
+  - when: resizes == 1
+    text: |-
+      第一次扩容后，旧块里还存着什么？
+goals:
+  - when: size == 9
+    text: |-
+      放入全部九个元素。`},
+  {name:'memory', title:'动态数组 · 增长 1.5 倍', yaml:`structure: dynamic-array
+capacity: 1
+growth: 1.5
+ops: |
+  push 1 2 3 4 5 6 7 8 9`},
+  {name:'memory', title:'链表 · 删除中间结点', yaml:`structure: linked-list
+ops: |
+  push-front 3 2 1
+  delete 2`},
+  {name:'memory', title:'开放寻址 · 线性探测', yaml:`structure: hash-open
+slots: 11
+probe: linear
+ops: |
+  insert 22 33 44 7 18
+  delete 33
+  find 44
+  insert 55 66`},
+  {name:'memory', title:'开放寻址 · 平方探测', yaml:`structure: hash-open
+slots: 11
+probe: quadratic
+ops: |
+  insert 22 33 44 7 18
+  delete 33
+  find 44
+  insert 55 66`},
+  {name:'memory', title:'开放寻址 · 双重散列', yaml:`structure: hash-open
+slots: 11
+probe: double
+ops: |
+  insert 22 33 44 7 18
+  delete 33
+  find 44
+  insert 55 66`},
+  {name:'memory', title:'桶与链 · 删除 12', yaml:`structure: hash-chain
+slots: 5
+ops: |
+  insert 7 12 17 3 8
+  delete 12`},
+  {name:'memory', title:'栈 · 先进后出', yaml:`structure: stack
+capacity: 2
+ops: |
+  push 8 13 21
+  peek
+  pop`},
+  {name:'memory', title:'环形队列 · 绕回与扩容', yaml:`structure: queue
+capacity: 4
+ops: |
+  enqueue 1 2 3
+  dequeue
+  dequeue
+  enqueue 4 5 6 7`},
 ];

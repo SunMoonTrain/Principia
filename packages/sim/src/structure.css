@@ -1,0 +1,27 @@
+.ds-views {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:.6rem;min-width:0}
+.ds-panel {min-width:0;border:1px solid var(--border);border-radius:.45rem;padding:.45rem;background:var(--surface)}
+.ds-panel h4 {margin:0 0 .3rem;font-size:.94rem}.ds-panel small,.ds-legend {font-size:.73rem;color:var(--muted)}
+.ds-panel h4 small {font-weight:normal}.ds-scroll {max-height:275px;overflow:auto;overscroll-behavior:contain}
+.ds-memory table {border-collapse:separate;border-spacing:0;font:10px/1.4 monospace;width:100%;white-space:nowrap}
+.ds-memory th,.ds-memory td {border:1px solid transparent;padding:0 1px;text-align:center;min-width:14px}
+.ds-memory td[data-used=true] {border-block-color:var(--accent);color:var(--text)}
+.ds-memory td[data-start] {border-left-color:var(--accent)}.ds-memory td[data-end] {border-right-color:var(--accent)}
+.ds-memory td[data-used=false],.ds-cell[data-used=false] {color:var(--muted);background:var(--surface-2)}
+.ds-memory td button {all:unset;cursor:pointer}.ds-memory td button:focus-visible {outline:2px solid var(--accent)}
+.ds-key,.ds-blocks,.ds-counts {display:flex;gap:.2rem .55rem;flex-wrap:wrap;font-size:.75rem}
+.ds-key,.ds-blocks {font:10px/1.5 monospace;margin-top:.3rem}.ds-blocks {max-height:32px;overflow:auto}
+.ds-row,.ds-chain {display:flex;align-items:center;gap:3px;width:max-content;margin:.25rem 0}.ds-chain {display:inline-flex}
+.ds-cell,.ds-chain>span,.ds-bucket>b {display:inline-grid;text-align:center;min-width:30px;padding:1px 4px;border:1px solid var(--border);border-radius:3px}
+.ds-cell {position:relative;line-height:1.1;min-height:32px}.ds-cell em {font:10px monospace;background:var(--accent);color:var(--surface);border-radius:2px}
+.ds-bucket {white-space:nowrap}.ds-ring {position:relative;margin:auto}.ds-ring .ds-cell {position:absolute;transform:translate(-50%,-50%)}
+.ds-counts {margin-top:.4rem}.ds-counts [data-changed] {color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.ds-legend i {display:inline-block;width:.75em;height:.75em}.ds-editor {display:flex;align-items:center;gap:.4em;flex-wrap:wrap}
+.ds-views [data-touch=read],.ds-legend [data-touch=read] {background:color-mix(in srgb,var(--accent) 27%,var(--surface))!important}
+.ds-views [data-touch=write],.ds-legend [data-touch=write] {background:color-mix(in srgb,#e69b27 40%,var(--surface))!important}
+.ds-views [data-selected] {outline:2px solid var(--accent);outline-offset:-2px}
+.ds-formula {font: .76rem/1.4 var(--font-mono)}
+@keyframes ds-count-change {from {transform:translateY(-2px)} to {transform:translateY(0)}}
+@media(prefers-reduced-motion:no-preference){.ds-counts [data-changed] {animation:ds-count-change .24s ease-out}}
+
+.ds-views [data-block-change] {outline:1px dashed var(--muted);outline-offset:-1px}
+.ds-lifetime-key {font-weight:bold}

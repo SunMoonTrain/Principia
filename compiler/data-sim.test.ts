@@ -10,6 +10,15 @@ function compile(name: string, body: string) {
   return { errors: diags.errors, root };
 }
 it.each([
+  ...[
+    ['structure: unknown',2], ['structure: stack\ngrowth: 1',3], ['structure: queue\ncapacity: 65',3],
+    ['structure: stack\nregion: [2, 255]',3], ['structure: queue\nregion: [16, 18]',3], ['structure: linked-list\nregion: [1, 256]',3],
+    ['structure: hash-open\nslots: 4',3], ['structure: hash-open\nslots: 101',3], ['structure: hash-open\nloadLimit: 1',3],
+    ['structure: hash-open\nprobe: quadratic\nloadLimit: 0.51',4], ['structure: hash-chain\nloadLimit: 0',3], ['structure: stack\nprobe: double',3],
+    ['structure: stack\nsliders: []',3], ['structure: stack\ngoals:\n  - when: oops == 0\n    text: |\n      目标',4],
+  ].map(([body,line])=>['memory',body+'\nops: |\n  ',line]),
+  ...['peek 3','push','push 256','popx','enqueue 4','push 1,,2','push '+Array(257).fill(1).join(' ')].map(op=>['memory','structure: stack\nops: |\n  push 1\n  '+op,5]),
+  ...[0,255].map(k=>['memory','structure: hash-open\nops: |\n  insert '+k,4]),
   ['bits', 'width: 12\nvalue: 0', 2], ['bits', 'width: 8\nvalue: 256', 3],
   ['bits', 'width: 4\nvalue: -9', 3], ['bits', 'width: 8\nvalue: 0\nop:\n  kind: rol', 5],
   ['bits', 'width: 8\nvalue: 0\nop: {kind: neg}\ngoals:\n  - when: phantom == 1\n    text: |\n      测试', 6],

@@ -1,3 +1,5 @@
+import { memorySchema } from './structure-schema.ts';
+import { memoryNames } from './core/memory.ts';
 import { pipeNames } from './core/pipeline.ts';
 import { cacheSchema } from './cache-schema.ts';
 import { cacheNames } from './core/cache.ts';
@@ -73,6 +75,7 @@ const circuit = z.strictObject({
 });
 const common = { labels: () => [], check: () => [], reserved: () => [] };
 export const SIM_SPECS: Record<string, ComponentSpec> = {
+  memory: { ...common, schema:memorySchema, observables:()=>memoryNames },
   pipeline: { ...common, schema:pipelineSchema, observables:()=>pipeNames },
   cache: { ...common, schema:cacheSchema, observables:()=>cacheNames },
   cpu: { ...common, schema:cpuSchema, observables:(p:CpuParams) => p.cache?cachedCpuNames:cpuNames },

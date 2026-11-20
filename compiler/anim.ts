@@ -1,3 +1,4 @@
+import { parseOps, OpError } from '../packages/sim/src/core/operations.ts';
 import { pipelineIsa } from '../packages/sim/src/core/pipeline.ts';
 // :::anim 动画组件块，见 docs/plan.md「可复用动画组件库」和「附录：动画组件参数」。
 // 已实现的组件（packages/anim 的 SPECS）查全部参数：结构、式子能不能编译、个数对不对；
@@ -208,6 +209,15 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
         if (!(error instanceof AssemblyError)) throw error;
         ctx.diags.error(ctx.file,field.contentLine+error.line-1,error.message);
       }
+    }
+  }
+  if (component === 'memory' && checked) {
+    const p = checked as {structure:string}, field = textAt(y, ['ops'], ctx.diags);
+    if (field) try {
+      Object.assign(p, {commands:parseOps(field.value, p.structure)});
+    } catch (error) {
+      if (!(error instanceof OpError)) throw error;
+      ctx.diags.error(ctx.file, field.contentLine + error.line - 1, error.message);
     }
   }
   if (component === 'text-encoding') textAt(y, ['text'], ctx.diags);
