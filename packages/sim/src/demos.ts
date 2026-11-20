@@ -175,4 +175,24 @@ accesses: [w0x00, 0x00, w0x10, 0x04, 0x00]
 compare: {write: write-through}` },
   { name:'cpu', title:'数组求和 · 数据走缓存', yaml:cachedSum },
   { name:'cpu', title:'数组求和 · 取指与数据争用缓存', yaml:cachedSum+'\nfetch: through-cache' },
+  ...[true,false].map(forwarding=>({name:'pipeline', title:'ADD 接 ADD · '+(forwarding?'开启':'关闭')+'转发',yaml:`program: |
+  ADD R1, R2
+  ADD R3, R1
+  HLT
+forwarding: `+forwarding})),
+  {name:'pipeline', title:'取数后使用 · 一个气泡',yaml:`program: |
+  LD R1, [0x80]
+  ADD R2, R1
+  HLT
+  .org 0x80
+  .byte 7`},
+  {name:'pipeline', title:'累加 1 到 10 · 预测不跳',yaml:`program: |
+  LDI R0, 10
+  LDI R1, 0
+  loop: ADD R1, R0
+  SUB R0, 1
+  JNZ loop
+  OUT R1
+  HLT
+branch: predict-not-taken`},
 ];

@@ -1,6 +1,7 @@
+import { pipeNames } from './core/pipeline.ts';
 import { cacheSchema } from './cache-schema.ts';
 import { cacheNames } from './core/cache.ts';
-import { cpuSchema, type CpuParams } from './p8-schema.ts';
+import { pipelineSchema, cpuSchema, type CpuParams } from './p8-schema.ts';
 import { cpuNames, cachedCpuNames } from './core/p8.ts';
 import { z } from 'zod';
 import type { ComponentSpec } from '../../anim/src/specs.ts';
@@ -72,6 +73,7 @@ const circuit = z.strictObject({
 });
 const common = { labels: () => [], check: () => [], reserved: () => [] };
 export const SIM_SPECS: Record<string, ComponentSpec> = {
+  pipeline: { ...common, schema:pipelineSchema, observables:()=>pipeNames },
   cache: { ...common, schema:cacheSchema, observables:()=>cacheNames },
   cpu: { ...common, schema:cpuSchema, observables:(p:CpuParams) => p.cache?cachedCpuNames:cpuNames },
   'logic-circuit': { ...common, schema: circuit, observables: (p: Netlist) => [...compileCircuit(p).observed, 'tick', 'stable', 'osc'] },

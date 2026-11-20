@@ -1,0 +1,24 @@
+.pipe-main { min-width:0; }
+.pipe-main h4 { margin:0 0 .5rem; }
+.pipe-scroll { position:relative; overflow:auto; max-height:18rem; border:1px solid var(--border); background:var(--surface); }
+.pipe-scroll svg { display:block; max-width:none; }
+.pipe-scroll text { fill:var(--text); font:12px var(--font-mono); }
+.pipe-scroll rect { fill:var(--surface-2); stroke:var(--border); }
+.pipe-scroll [data-current] rect { fill:var(--accent-soft); stroke:var(--accent); }
+.pipe-scroll [data-held] rect { stroke:var(--warn); stroke-dasharray:3 2; }
+.pipe-scroll [data-flushed] rect { stroke:var(--warn); fill:color-mix(in srgb,var(--warn) 19%,transparent); }
+.pipe-arrow { fill:none; stroke:var(--good); stroke-width:2; }
+.pipe-scroll marker path { fill:var(--good); }
+.pipe-canvas { display:grid; }
+.pipe-canvas > * { grid-area:1/1; }
+.pipe-row-labels { position:sticky; left:0; width:172px; align-self:start; pointer-events:none; }
+.pipe-row-labels > div { position:relative; display:flex; align-items:center; gap:.25rem; padding-left:4px; white-space:nowrap; background:var(--surface); border-right:1px solid var(--border); font:11px var(--font-mono); }
+.pipe-row-labels b { color:var(--warn); }
+.pipe-stats,.pipe-registers { display:flex; flex-wrap:wrap; gap:.3rem 1rem; margin:.5rem 0; font-variant-numeric:tabular-nums; }
+.pipe-main [data-write] { border-bottom:3px solid var(--good); }
+.pipe-output { max-height:3rem; overflow:auto; margin:.3rem 0; }
+.pipe-axis { position:sticky; top:0; z-index:1; display:flex; align-self:start; align-items:start; background:var(--surface); font:12px var(--font-mono); border-bottom:1px solid var(--border); box-sizing:border-box; }
+.pipe-axis span { box-sizing:border-box; text-align:center; line-height:25px; }
+.pipe-axis span:first-child { position:sticky; left:0; text-align:left; padding-left:5px; background:var(--surface); }
+.pipe-axis small { display:block; line-height:24px; font:inherit; }
+.pipe-axis .pipe-bubble { margin:2px; padding:.15rem 0; border:1px dashed var(--warn); border-radius:10px; }

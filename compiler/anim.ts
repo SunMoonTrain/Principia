@@ -1,3 +1,4 @@
+import { pipelineIsa } from '../packages/sim/src/core/pipeline.ts';
 // :::anim 动画组件块，见 docs/plan.md「可复用动画组件库」和「附录：动画组件参数」。
 // 已实现的组件（packages/anim 的 SPECS）查全部参数：结构、式子能不能编译、个数对不对；
 // 附录里的占位组件仍查适用的通用参数；合法时给警告并显示占位框。附录里没有的名字直接报错。
@@ -194,12 +195,12 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
     }
   }
 
-  if (component === 'cpu' && checked) {
+  if ((component === 'cpu' || component === 'pipeline') && checked) {
     const p = checked as CpuParams, field = textAt(y, ['program'], ctx.diags);
     if (field) {
       try {
-        const image = assemble(field.value, p.isa);
-        p.breakpoints.forEach((mark, i) => {
+        const image = assemble(field.value, component==='pipeline'?pipelineIsa:p.isa);
+        if (component==='cpu') p.breakpoints.forEach((mark, i) => {
           if (breakpointAddress(image,mark) === undefined)
             ctx.diags.error(ctx.file,lineOf(y,['breakpoints',i]),'断点没有对应的指令：'+mark);
         });

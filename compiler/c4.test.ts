@@ -25,3 +25,10 @@ it('处理器配置与实际可观测量',()=>{
     expect(errors('cpu',source+options)).toContainEqual(expect.objectContaining({line}));
   expect(errors('cpu',source+'cache: {blockSize: 4, sets: 4, ways: 1}\ngoals:\n  - when: misses > 0\n    text: |-\n      观察')).toEqual([]);
 });
+
+it('流水线子集定位到汇编源行，拒绝未开放的观测量和滑块',()=>{
+  for(const word of ['PUSH R0','POP R0','CALL 0','RET'])
+    expect(errors('pipeline','program: |\n  NOP\n  '+word+'\n  HLT')).toContainEqual(expect.objectContaining({line:4,message:expect.stringContaining('只开放')}));
+  expect(errors('pipeline','program: |\n  HLT\nsliders: []')).toContainEqual(expect.objectContaining({line:4}));
+  expect(errors('pipeline','program: |\n  HLT\ngoals:\n  - when: PC == 0\n    text: |-\n      目标')).toContainEqual(expect.objectContaining({line:5}));
+});

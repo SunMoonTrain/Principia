@@ -21,3 +21,7 @@ export const cpuSchema = z.strictObject({
   if (!p.cache && p.view?.some(v=>v==='cache'||v==='chart')) ctx.addIssue({code:'custom',path:['view'],message:'缓存表和周期柱状图需要 cache'});
 }).transform(p=>({...p,view:p.view??(p.cache?[...cpuViews,'cache','chart'] as const:[...cpuViews])}));
 export type CpuParams = z.output<typeof cpuSchema>;
+
+export const pipelineSchema=z.strictObject({program:z.string(),input:p8Bytes.default([]),
+  forwarding:z.boolean().default(true),branch:z.enum(['stall','predict-not-taken']).default('predict-not-taken')});
+export type PipelineParams=z.output<typeof pipelineSchema>;
