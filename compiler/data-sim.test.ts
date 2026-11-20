@@ -136,3 +136,31 @@ it.each([
 ])("grid-search 的坏参数定位到源行", (body,line)=>{
   expect(compile("grid-search",String(body)).errors).toContainEqual(expect.objectContaining({line}));
 });
+
+it.each([
+  ["nodes: {A: [0,0], B: [1,1]}\nalgorithm: bfs\nsource: A\nedges: |\n  A -- C 1",6],
+  ["nodes: {A: [0,0], B: [1,1]}\nalgorithm: bfs\nsource: A\nedges: |\n  A => B 1",6],
+  ["nodes: {A: [0,0], B: [1,1]}\nalgorithm: bfs\nsource: A\nedges: |\n  A -- B 100",6],
+  ["nodes: {A: [0,0], B: [1,1]}\nalgorithm: bfs\nsource: A\nedges: |\n  A -- B -1",6],
+  ["nodes: {A: [0,0], B: [1,1]}\nalgorithm: bfs\nsource: A\nedges: |\n  A -- B 1\n  B -- A 2",7],
+  ["nodes: {A: [0,0], B: [1,1]}\nalgorithm: bfs\nsource: A\nedges: |\n  A -> B 1\n  B -- A 2",7],
+  ["nodes: {A: [0,0], B: [1,1]}\nsource: A\nsink: B\nalgorithm: prim\nedges: |\n  A -> B 1",7],
+  ["nodes: {A: [0,0], B: [1,1]}\nsource: A\nsink: B\nalgorithm: kruskal\nedges: |\n  A -> B 1",7],
+  ["nodes: {A: [0,0], B: [1,1]}\nsource: A\nsink: B\nalgorithm: topo\nedges: |\n  A -- B 1",7],
+  ["nodes: {A: [0,0], B: [1,1]}\nsource: A\nsink: B\nalgorithm: max-flow\nedges: |\n  A -- B 1",7],
+  ["nodes: {A: [0,0], B: [1,1]}\nsource: A\nsink: B\nalgorithm: max-flow\nedges: |\n  A -> B 0",7],
+  ["nodes: {A: [0,0], B: [1,1]}\nsource: A\nsink: B\nalgorithm: max-flow\nedges: |\n  A -> B 1\n  B -> A 2",8],
+  ["nodes: {A: [0,0]}\nsource: A\nalgorithm: bfs\nedges: |\n  A -- B 1",2],
+  ["nodes: {A: [21,0], B: [1,1]}\nsource: A\nalgorithm: bfs\nedges: |\n  A -- B 1",2],
+  ["nodes: {A: [0,0], \"B!\": [1,1]}\nsource: A\nalgorithm: bfs\nedges: |\n  A -- B 1",2],
+  ["nodes: {A: [0,0], B: [1,1]}\nalgorithm: bfs\nedges: |\n  A -> B 1",3],
+  ["nodes: {A: [0,0], B: [1,1]}\nalgorithm: bfs\nsource: Z\nedges: |\n  A -> B 1",4],
+  ["nodes: {A: [0,0], B: [1,1]}\nalgorithm: max-flow\nsource: A\nedges: |\n  A -> B 1",3],
+  ["nodes: {A: [0,0], B: [1,1]}\nalgorithm: max-flow\nsource: A\nsink: A\nedges: |\n  A -> B 1",5],
+  ["nodes: {A: [0,0], B: [1,1]}\nalgorithm: max-flow\nsource: A\nsink: Z\nedges: |\n  A -> B 1",5],
+  ["nodes: {A: [0,0], B: [1,1]}\nalgorithm: bfs\nsource: A\nsink: B\nedges: |\n  A -> B 1",5],
+  ["nodes: {A: [0,0], B: [1,1]}\nalgorithm: bfs\nsource: A\nsliders: []\nedges: |\n  A -> B 1",5],
+  ["nodes: {A: [0,0], B: [1,1]}\nalgorithm: bfs\nsource: A\ngoals:\n  - when: foo == 1\n    text: |-\n      目标\nedges: |\n  A -> B 1",6],
+])("graph 的坏参数定位到源行", (body,line)=>{
+  expect(compile("graph",String(body)).errors).toContainEqual(expect.objectContaining({line}));
+});

@@ -9,6 +9,17 @@ function largeGrid(){
   const r=mulberry32(11);
   return Array.from({length:25},(_,y)=>'  '+Array.from({length:40},(_,x)=>!x&&!y?'S':x===39&&y===24?'G':r()<0.28?'#':'.').join('')).join('\n');
 }
+const graphExample=`nodes: {A: [0, 1], B: [2, 2], C: [2, 0], D: [4, 2], E: [4, 0], F: [6, 1]}
+edges: |
+  A -- B 4
+  A -- C 2
+  B -- C 1
+  B -- D 5
+  C -- D 8
+  C -- E 10
+  D -- E 2
+  D -- F 6
+  E -- F 2`;
 const cachedSum = `program: |
   LDI R0, arr
   LDI R1, 16
@@ -352,4 +363,39 @@ ops: |
     ['寻路 · 贪心与加权 A*','[{algorithm: greedy}, {algorithm: astar, weight: 2}]'],
   ].map(([title,runs])=>({name:'grid-search',title,yaml:'map: |\n'+gridExample+'\ncosts: {"~": 5}\nmoves: 4\nruns: '+runs})),
   {name:'grid-search',title:'寻路 · 40 × 25 障碍地图',yaml:'map: |\n'+largeGrid()+'\nruns: [{algorithm: astar}]'},
+  ...['bfs','dfs','dijkstra','prim','kruskal'].map(algorithm=>({name:'graph',title:'六结点图 · '+algorithm,
+    yaml:graphExample+'\nalgorithm: '+algorithm+(algorithm==='kruskal'?'':'\nsource: A')+(algorithm==='bfs'?'\nview: [graph, table, adjacency, matrix]':'')})),
+  ...['dijkstra','bellman-ford'].map(algorithm=>({name:'graph',title:'负权边 · '+algorithm,yaml:`nodes: {A: [0, 1], B: [4, 1], C: [2, 3]}
+edges: |
+  A -> B 2
+  A -> C 3
+  C -> B -2
+source: A
+algorithm: `+algorithm})),
+  {name:'graph',title:'拓扑排序 · 穿衣次序',yaml:`algorithm: topo
+nodes: {undershorts: [1, 4], pants: [4, 4], shoes: [8, 5], socks: [5, 6], belt: [7, 3], jacket: [10, 2], shirt: [2, 1], tie: [6, 1], watch: [10, 6]}
+edges: |
+  undershorts -> pants 1
+  undershorts -> shoes 1
+  pants -> belt 1
+  pants -> shoes 1
+  belt -> jacket 1
+  shirt -> belt 1
+  shirt -> tie 1
+  tie -> jacket 1
+  socks -> shoes 1`},
+  {name:'graph',title:'最大流 · 剩余网络增广',yaml:`algorithm: max-flow
+nodes: {s: [0, 1], a: [2, 2], b: [2, 0], c: [4, 2], d: [4, 0], t: [6, 1]}
+source: s
+sink: t
+edges: |
+  s -> a 16
+  s -> b 13
+  a -> c 12
+  b -> a 4
+  b -> d 14
+  c -> b 9
+  c -> t 20
+  d -> c 7
+  d -> t 4`},
 ];

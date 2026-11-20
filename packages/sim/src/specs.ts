@@ -6,6 +6,8 @@ import { sortSchema } from './sort-schema.ts';
 import { sortNames } from './core/sort.ts';
 import { gridSchema } from './grid-search-schema.ts';
 import { gridNames } from './core/grid-search.ts';
+import { graphSchema } from './graph-schema.ts';
+import { graphNames } from './core/graph.ts';
 import { treeSchema, memorySchema } from './structure-schema.ts';
 import { memoryNames } from './core/memory.ts';
 import { pipeNames } from './core/pipeline.ts';
@@ -85,6 +87,7 @@ const common = { labels: () => [], check: () => [], reserved: () => [] };
 export const SIM_SPECS: Record<string, ComponentSpec> = {
   'sort': { ...common, schema:sortSchema, observables:()=>sortNames },
   'grid-search': { ...common, schema:gridSchema, observables:()=>gridNames },
+  'graph': { ...common, schema:graphSchema, observables:()=>graphNames },
   tree: { ...common, schema:treeSchema, observables:(p:{kind:string})=>p.kind==='trie'?trieNames:p.kind==='union-find'?unionNames:p.kind==='b-tree'?bNames:treeNames },
   memory: { ...common, schema:memorySchema, observables:()=>memoryNames },
   pipeline: { ...common, schema:pipelineSchema, observables:()=>pipeNames },
