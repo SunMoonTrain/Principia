@@ -50,4 +50,20 @@ const trieSchema=z.strictObject({
   if(prefixes.size*4>hi-lo+1)ctx.addIssue({code:'custom',path:['keys'],message:'不同前缀所需的结点放不进堆区'});
 });
 
-export const treeSchema=z.discriminatedUnion('kind',[binarySchema,trieSchema]);
+const unionSchema=z.strictObject({
+  ...common, kind:z.literal('union-find'), n:z.int().min(2).max(32).default(8),
+  union:z.enum(['rank','size','simple']).default('rank'), compress:z.boolean().default(true),
+  parent:z.array(byte).max(32).optional(),view:z.array(z.enum(['tree','array','memory'])).min(1).default(['tree','array','memory']),
+}).superRefine((p,ctx)=>{
+  const [lo,hi]=p.region, parent=p.parent;
+  const error=(field:string,message:string)=>ctx.addIssue({code:'custom',path:[field],message});
+  if(lo<4 || hi-lo+1<p.n*(p.union==='simple'?1:2))error('region','堆区覆盖变量或放不下初始数组');
+  if(!parent)return;
+  if(parent.length!==p.n || parent.some(v=>v>=p.n)){error('parent','parent 须有 n 个有效的元素编号');return;}
+  for(let i=0;i<p.n;i++){
+    let at=i,hops=0;
+    while(at!==parent[at] && hops++<p.n)at=parent[at];
+    if(at!==parent[at]){error('parent','父指针有环');return;}
+  }
+});
+export const treeSchema=z.discriminatedUnion('kind',[binarySchema,trieSchema,unionSchema]);

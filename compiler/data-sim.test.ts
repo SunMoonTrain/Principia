@@ -25,6 +25,10 @@ it.each([
   ...[['keys: [abc9]',3],['keys: [abcdefghijklmnopq]',3],['region: [0, 15]',3],['region: [16, 19]\nkeys: [ab]',4],
     ['view: [array]',3],['degree: 2',3],['parent: []',3],['n: 8',3],['union: rank',3],['compress: true',3],
     ['goals:\n  - when: root == 0\n    text: |-\n      测试',4]].map(([s,n])=>['tree','kind: trie\n'+s+'\nops: |\n  find a',n]),
+  ...['n: 1','n: 33','parent: [1, 1]','parent: [8,1,2,3,4,5,6,7]','parent: [1,0,2,3,4,5,6,7]','keys: []','degree: 2','region: [3, 255]','region: [16, 30]']
+    .map(field=>['tree','kind: union-find\n'+field+'\nops: |\n  find 1',3]),
+  ...['find 8','union 0','connected 0','connected 0 1 2 3','union 3 8'].map(op=>['tree','kind: union-find\nops: |\n  '+op,4]),
+  ['tree','kind: union-find\nops: |\n  find 1\npauses:\n  - when: nodes > 0\n    text: |-\n      测试',6],
   ['tree','kind: trie\nops: |\n  insert car\n  find 42',5],
   ['tree','kind: avl\nops: |\n  extract',4],['tree','kind: max-heap\nops: |\n  find 3',4],
   ...[0,255].map(k=>['memory','structure: hash-open\nops: |\n  insert '+k,4]),
@@ -65,6 +69,6 @@ it('所有计算机画廊内容演示通过小节规格，使用解析后的表�
 it('字典树的 keys 和 ops 都先规范化，再按词拆开',()=>{
   const {root,errors}=compile('tree','kind: trie\nkeys: [ＣＡＲ]\nops: |\n  ＩＮＳＥＲＴ ＤＯＧ ＣＡＴ');
   expect(errors).toEqual([]);
-  const params=JSON.parse((root.children[0].data as {hProperties:{dataParams:string}}).hProperties.dataParams);
+  const params=JSON.parse((root.children![0].data as {hProperties:{dataParams:string}}).hProperties.dataParams);
   expect(params.keys).toEqual(['car']);expect(params.commands.map((op:{word:string})=>op.word)).toEqual(['dog','cat']);
 });

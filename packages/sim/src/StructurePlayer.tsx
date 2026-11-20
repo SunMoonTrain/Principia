@@ -9,13 +9,16 @@ import { StepperBar } from './kit/StepperBar';
 import './structure.css';
 
 export interface Display {editable:boolean; granularity:'step'|'op'; view:string[]; goals?:Condition[]; pauses?:Condition[]}
-const titles:Record<string,string>={nodes:'结点',matches:'前缀匹配',ops:'完成操作',step:'微步',size:'个数',capacity:'容量',moves:'搬运',probes:'探测',resizes:'扩容',tombstones:'墓碑',freeBytes:'空闲字节',largestHole:'最大空洞',height:'树高',rotations:'旋转',compares:'比较',swaps:'交换',root:'根键'};
+const titles:Record<string,string>={sets:'集合',reads:'读取',compressions:'压缩改写',nodes:'结点',matches:'前缀匹配',ops:'完成操作',step:'微步',size:'个数',capacity:'容量',moves:'搬运',probes:'探测',resizes:'扩容',tombstones:'墓碑',freeBytes:'空闲字节',largestHole:'最大空洞',height:'树高',rotations:'旋转',compares:'比较',swaps:'交换',root:'根键'};
 export function touch(note:Note, ...at:number[]) {
   return note.writes.some(a=>at.includes(a))?'write':note.reads.some(a=>at.includes(a))?'read':undefined;
 }
 const hex=(n:number)=>n.toString(16).toUpperCase().padStart(2,'0');
 const ptr=(n:number)=>n?'0x'+hex(n):'∅';
 function blockName(b:Block,bytes:Uint8Array) {
+  if(b.kind==='parents')return '父指针数组';
+  if(b.kind==='ranks')return '秩数组';
+  if(b.kind==='sizes')return '大小数组';
   if(b.kind==='trie')return '字母 '+String.fromCharCode(bytes[b.at]);
   if(b.kind==='array')return '数组 · 容量 '+b.length;
   if(b.kind==='buckets')return '桶 · '+b.length;
@@ -50,7 +53,7 @@ export function useStepScroll(note:Note, selected?:number) {
 export function HeapGrid({pic,note,vars,region,selected,select}:{pic:Picture;note:Note;vars:string[];region:Region;selected?:number[];select?:(at:number)=>void}) {
   const {bytes,blocks}=pic;
   const scroll=useStepScroll(note,selected?.[0]);
-  const isPointer=(i:number)=>i===0 && ['head','ptr','root'].includes(vars[i]);
+  const isPointer=(i:number)=>(i===0 && ['head','ptr','root','parent'].includes(vars[i])) || (i===1 && vars[0]==='parent');
   return <section className="ds-panel ds-memory"><h4>内存 <small>∅ 空指针　· 空槽　† 墓碑</small></h4>
     <div ref={scroll} className="ds-scroll"><table aria-label="256 字节内存"><thead><tr><th>址</th>{Array.from({length:16},(_,i)=><th key={i}>{i.toString(16).toUpperCase()}</th>)}</tr></thead>
       <tbody>{Array.from({length:16},(_,row)=><tr key={row}><th>{hex(row*16)}</th>{Array.from({length:16},(_,col)=>{
@@ -66,8 +69,8 @@ export function HeapGrid({pic,note,vars,region,selected,select}:{pic:Picture;not
     <div className="ds-blocks">{blocks.map(b=><span key={b.at}>{addr(b.at)}–{hex(b.at+b.length-1)} {blockName(b,bytes)}</span>)}</div>
   </section>;
 }
-export function StructurePlayer<P extends {region:Region; commands:Op[]}>({params,labels,machine,names,kind,rate,children}:{
-  params:P & Display;labels:AnimProps<P>['labels'];machine:Machine<P,Work<P>>;names:string[];kind:string;rate:number;
+export function StructurePlayer<P extends {region:Region; commands:Op[]}>({params,labels,machine,names,kind,rate,children,n}:{
+  params:P & Display;labels:AnimProps<P>['labels'];machine:Machine<P,Work<P>>;names:string[];kind:string;rate:number;n?:number;
   children:(s:Work<P>)=>ReactNode;
 }) {
   const options=useMemo(()=>({names,goals:params.goals,pauses:params.pauses,boundary,
@@ -76,7 +79,7 @@ export function StructurePlayer<P extends {region:Region; commands:Op[]}>({param
   const previous=s.previous?machine.observe({...s,pic:s.previous,ops:s.previousOps!,step:s.previousStep!}):counts;
   const [draft,setDraft]=useState(''), [error,setError]=useState('');
   const edit=()=>{try{
-    const commands=parseOps(draft,kind);
+    const commands=parseOps(draft,kind,n);
     if(!commands.length)throw Error('请写一条操作');
     player.edit(commands); player.step(); setDraft(''); setError('');
   }catch(e){setError((e as Error).message);}};

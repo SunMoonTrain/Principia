@@ -1,7 +1,7 @@
 import type { Machine, SimEvent } from './machine.ts';
 
 export type Region = readonly [number, number];
-export type BlockKind = 'array'|'list'|'slots'|'buckets'|'bst'|'avl'|'red-black'|'trie';
+export type BlockKind = 'array'|'list'|'slots'|'buckets'|'bst'|'avl'|'red-black'|'trie'|'parents'|'ranks'|'sizes';
 export interface Block { at:number; length:number; kind:BlockKind }
 export interface Hole { at:number; length:number }
 export function holes(region:Region, blocks:Block[]):Hole[] {
@@ -19,7 +19,7 @@ export interface Op { name:string; args:number[]; word?:string }
 export const opText=(op:Op)=>[op.name,...(op.word===undefined?op.args:[op.word])].join(' ');
 export interface Picture {
   bytes:Uint8Array; blocks:Block[]; size:number; moves:number; probes:number; resizes:number;
-  rotations:number; compares:number; swaps:number; words?:string[];
+  rotations:number; compares:number; swaps:number; words?:string[]; reads?:number; compressions?:number;
 }
 export const blank=():Picture=>({bytes:new Uint8Array(256),blocks:[],size:0,moves:0,probes:0,resizes:0,rotations:0,compares:0,swaps:0});
 export type Write = [number,number];

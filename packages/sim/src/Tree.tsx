@@ -3,8 +3,10 @@ import type { AnimProps } from '@principia/anim';
 import { type Work, addr } from './core/heap';
 import { treeMachine, treeNames, isHeap, type TreeConfig } from './core/tree';
 import { HeapGrid, StructurePlayer, touch, useStepScroll, type Display } from './StructurePlayer';
+import type { UnionConfig } from './core/union-find';
 import type { TrieConfig } from './core/trie';
 import './tree.css';
+const UnionFind=lazy(()=>import('./UnionFind'));
 const Trie=lazy(()=>import('./Trie'));
 
 interface Vertex {at:number;x:number;y:number;parent:number;length:number}
@@ -79,7 +81,8 @@ function Views({s,view}:{s:Work<TreeConfig>;view:string[]}) {
   {view.includes('memory')&&<HeapGrid pic={pic} note={note} vars={heap?['ptr','len','cap']:['root']} region={params.region} selected={bytes} select={select}/>}
   </>;
 }
-export default function Tree({params,labels}:AnimProps<(TreeConfig|TrieConfig) & Display>) {
+export default function Tree({params,labels}:AnimProps<(TreeConfig|TrieConfig|UnionConfig) & Display>) {
+  if(params.kind==='union-find')return <UnionFind params={params} labels={labels}/>;
   if(params.kind==='trie')return <Trie params={params} labels={labels}/>;
   return <StructurePlayer params={params} labels={labels} machine={treeMachine} kind={params.kind} names={treeNames} rate={1}>
     {s=><Views s={s} view={params.view}/>}

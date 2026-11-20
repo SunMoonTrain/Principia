@@ -195,6 +195,19 @@ forwarding: `+forwarding})),
   OUT R1
   HLT
 branch: predict-not-taken`},
+  {name:'tree',title:'并查集 · 按秩合并与压缩',yaml:`kind: union-find
+n: 8
+ops: |
+  union 0 1 2 3 1 3
+  find 0
+  union 4 5 6 7 5 7 0 4
+  find 6
+  connected 2 5`},
+  {name:'tree',title:'并查集 · 把一条长链压平',yaml:`kind: union-find
+union: simple
+ops: |
+  union 0 1 1 2 2 3 3 4 4 5 5 6 6 7
+  find 0`},
   {name:'tree',title:'字典树 · 逐字插入与前缀查找',yaml:`kind: trie
 ops: |
   insert car cat cart dog do

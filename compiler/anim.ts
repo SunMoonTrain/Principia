@@ -213,9 +213,9 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
     }
   }
   if ((component === 'memory' || component === 'tree') && checked) {
-    const p = checked as {structure:string;kind:string;keys:number[]}, field = textAt(y, ['ops'], ctx.diags);
+    const p = checked as {structure:string;kind:string;n?:number;keys:number[]}, field = textAt(y, ['ops'], ctx.diags);
     if (field) try {
-      const commands = parseOps(field.value, component === 'tree' ? p.kind : p.structure);
+      const commands = parseOps(field.value, component === 'tree' ? p.kind : p.structure,p.n);
       if (component === 'tree' && isHeap(p.kind) && !orderedHeap(p.keys,p.kind) && commands[0]?.name !== 'build')
         ctx.diags.error(ctx.file,lineOf(y,['keys']),'初始 keys 尚未成堆，第一条操作必须是 build');
       Object.assign(p, {commands});
