@@ -143,4 +143,19 @@ pauses:
   OUT R0
   HLT
 isa: [LDI, ADD, OUT, HLT]` },
+  { name:'cache', title:'冲突缺失 · 直接映射与两路组相联', yaml:`blockSize: 4
+sets: 4
+ways: 1
+accesses: [0x00, 0x04, 0x10, 0x00]
+compare: {sets: 2, ways: 2}` },
+  { name:'cache', title:'空间局部性 · 按列读矩阵', yaml:`blockSize: 4
+sets: 4
+ways: 1
+pattern: {kind: matrix, base: 0x80, rows: 8, cols: 8, order: column}
+compare: {sets: 16}` },
+  { name:'cache', title:'写回与写直达 · 同一串读写', yaml:`blockSize: 4
+sets: 4
+ways: 1
+accesses: [w0x00, 0x00, w0x10, 0x04, 0x00]
+compare: {write: write-through}` },
 ];

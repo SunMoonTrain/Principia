@@ -1,3 +1,5 @@
+import { cacheSchema } from './cache-schema.ts';
+import { cacheNames } from './core/cache.ts';
 import { cpuSchema } from './p8-schema.ts';
 import { cpuNames } from './core/p8.ts';
 import { z } from 'zod';
@@ -70,6 +72,7 @@ const circuit = z.strictObject({
 });
 const common = { labels: () => [], check: () => [], reserved: () => [] };
 export const SIM_SPECS: Record<string, ComponentSpec> = {
+  cache: { ...common, schema:cacheSchema, observables:()=>cacheNames },
   cpu: { ...common, schema:cpuSchema, observables:() => cpuNames },
   'logic-circuit': { ...common, schema: circuit, observables: (p: Netlist) => [...compileCircuit(p).observed, 'tick', 'stable', 'osc'] },
   bits: { ...common, schema: bits, reserved: () => bitNames, observables: (p: BitParams) => p.op ? bitNames : [] },
