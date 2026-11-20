@@ -93,3 +93,22 @@ it('各 kind 的专用字段和 array 视图在字段所在行检查',()=>{
     else expect(errors).toContainEqual(expect.objectContaining({line:3}));
   }
 });
+
+it.each([
+  ["algorithm: bad\ndata: [1,2]",2],
+  ["algorithm: bubble",2],
+  ["algorithm: selection\ndata: [1,2]\npreset: {kind: sorted,n: 2}",4],
+  ["algorithm: merge\ndata: [0,100]",3],
+  ["algorithm: merge\ndata: [3]",3],
+  ["algorithm: merge\npreset: {kind: wrong, n: 8}",3],
+  ["algorithm: merge\npreset: {kind: random, n: 33}",3],
+  ["algorithm: merge\npreset: {kind: few-unique, n: 8}",3],
+  ["algorithm: bubble\ndata: [1,2]\nrace: [xx]",4],
+  ["algorithm: bubble\ndata: [1,2]\nrace: [merge, insertion, heap]",4],
+  ["algorithm: bubble\ndata: [1,2]\npivot: last",4],
+  ["algorithm: bubble\ndata: [1,2]\nsliders: []",4],
+  ["algorithm: quick\ndata: [1,2]\npivot: random",4],
+  ["algorithm: quick\ndata: [1,2]\ngoals:\n  - when: odd > 1\n    text: |-\n      测试",5],
+])("sort 的坏参数定位到源行", (body,line)=>{
+  expect(compile("sort",String(body)).errors).toContainEqual(expect.objectContaining({line}));
+});

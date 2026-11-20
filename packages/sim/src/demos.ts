@@ -329,4 +329,11 @@ ops: |
   dequeue
   dequeue
   enqueue 4 5 6 7`},
+  ...[
+    ['冒泡 · 反序八个数','algorithm: bubble\npreset: {kind: reversed, n: 8}'],
+    ['插入与归并 · 同一组随机数','algorithm: insertion\nrace: [merge]\npreset: {kind: random, n: 16, seed: 7}'],
+    ['快排 · 有序输入与末尾枢轴','algorithm: quick\npreset: {kind: sorted, n: 8}'],
+    ['插入与选择 · 相等元素的次序','algorithm: insertion\nrace: [selection]\npreset: {kind: few-unique, n: 12, seed: 3}'],
+    ['堆排序 · 取出最大值','algorithm: heap\npreset: {kind: random, n: 10, seed: 5}'],
+  ].map(([title,yaml])=>({name:'sort',title,yaml})),
 ];

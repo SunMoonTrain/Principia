@@ -1,0 +1,7 @@
+.sort-bar {position:relative}
+.sort-bar[data-lo=true] {border-inline-start:2px solid var(--muted)}
+.sort-bar[data-hi=true] {border-inline-end:2px solid var(--muted)}
+.sort-bar[data-mid=true] {border-inline-end:1px dashed var(--accent)}
+@media (prefers-reduced-motion:no-preference) {.sort-bar i {transition:height .16s ease-out}}
+
+.sort-scroll {overflow-x:auto;overscroll-behavior:contain}

@@ -2,6 +2,8 @@ import { bNames } from './core/b-tree.ts';
 import { unionNames } from './core/union-find.ts';
 import { trieNames } from './core/trie.ts';
 import { treeNames } from './core/tree.ts';
+import { sortSchema } from './sort-schema.ts';
+import { sortNames } from './core/sort.ts';
 import { treeSchema, memorySchema } from './structure-schema.ts';
 import { memoryNames } from './core/memory.ts';
 import { pipeNames } from './core/pipeline.ts';
@@ -79,6 +81,7 @@ const circuit = z.strictObject({
 });
 const common = { labels: () => [], check: () => [], reserved: () => [] };
 export const SIM_SPECS: Record<string, ComponentSpec> = {
+  'sort': { ...common, schema:sortSchema, observables:()=>sortNames },
   tree: { ...common, schema:treeSchema, observables:(p:{kind:string})=>p.kind==='trie'?trieNames:p.kind==='union-find'?unionNames:p.kind==='b-tree'?bNames:treeNames },
   memory: { ...common, schema:memorySchema, observables:()=>memoryNames },
   pipeline: { ...common, schema:pipelineSchema, observables:()=>pipeNames },

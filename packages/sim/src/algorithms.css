@@ -1,0 +1,15 @@
+.algo-panels {display:flex;gap:.5rem;align-items:stretch;min-width:0}
+.algo-panel {flex:1 1 0;min-width:0;padding:.5rem;border:1px solid var(--border);border-radius:.45rem;background:var(--surface);color:var(--text)}
+.algo-panel h4 {font-size:.95rem;margin:0 0 .35rem}
+.algo-meta,.algo-count {font-size:.77rem;line-height:1.45;margin:.25rem 0;overflow-wrap:anywhere}
+.algo-editor {display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+.algo-editor input {max-width:100%}
+.algo-panels [data-act=read] {background-color:color-mix(in srgb,var(--accent) 38%,var(--surface))}
+.algo-panels [data-act=write] {background-color:color-mix(in srgb,#db902c 56%,var(--surface))}
+.sort-bars {display:flex;align-items:end;height:145px;gap:1px}
+.sort-bar {flex:1;min-width:0;height:100%;display:flex;flex-direction:column;align-items:stretch;justify-content:end;text-align:center;font:clamp(8px,1.4vw,12px)/1.2 monospace}
+.sort-bar i {min-height:3px;background:var(--accent);opacity:.7;border-radius:2px 2px 0 0}
+.sort-bar[data-sorted=true] i {background:#499871}
+.sort-bar[data-act=write] i {background:#c07c19}.sort-bar[data-mark=true] {outline:1px dashed var(--text)}
+.sort-aux {display:flex;gap:2px;flex-wrap:wrap;font:11px/1.4 monospace}
+.sort-aux span {padding:1px 2px;border:1px solid var(--border)}
