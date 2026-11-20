@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 446" width="640" height="446" font-size="14">
+  <!-- 氢原子的能级图，能级的高低按能量的比例画：从下往上是 n = 1（−13.6 eV）、n = 2（−3.40 eV）、n = 3（−1.51 eV）、n = 4（−0.85 eV）、n = 5（−0.54 eV）和 n = ∞（0），越往上越密。向下的箭头是发射：落到 n = 1 的四根是莱曼系，落到 n = 2 的三根是巴耳末系，落到 n = 3 的两根是帕邢系。向上的一根箭头是吸收，从 n = 1 到 n = 2。 -->
+  <line x1="130" y1="40" x2="480" y2="40" style="stroke: currentColor" stroke-width="1.2" stroke-dasharray="6 4" />
+  <line x1="118" y1="22" x2="128" y2="40" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" />
+  <line x1="482" y1="40" x2="494" y2="22" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" />
+  <text x="114" y="27" fill="currentColor" text-anchor="end"><tspan font-style="italic">n</tspan> = ∞</text>
+  <text x="498" y="27" fill="currentColor">0</text>
+  <line x1="130" y1="55.2" x2="480" y2="55.2" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="118" y1="44" x2="128" y2="55.2" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" />
+  <line x1="482" y1="55.2" x2="494" y2="44" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" />
+  <text x="114" y="49" fill="currentColor" text-anchor="end"><tspan font-style="italic">n</tspan> = 5</text>
+  <text x="498" y="49" fill="currentColor">−0.54 eV</text>
+  <line x1="130" y1="63.8" x2="480" y2="63.8" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="118" y1="66" x2="128" y2="63.8" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" />
+  <line x1="482" y1="63.8" x2="494" y2="66" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" />
+  <text x="114" y="71" fill="currentColor" text-anchor="end"><tspan font-style="italic">n</tspan> = 4</text>
+  <text x="498" y="71" fill="currentColor">−0.85 eV</text>
+  <line x1="130" y1="82.3" x2="480" y2="82.3" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="118" y1="88" x2="128" y2="82.3" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" />
+  <line x1="482" y1="82.3" x2="494" y2="88" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" />
+  <text x="114" y="93" fill="currentColor" text-anchor="end"><tspan font-style="italic">n</tspan> = 3</text>
+  <text x="498" y="93" fill="currentColor">−1.51 eV</text>
+  <line x1="130" y1="135.2" x2="480" y2="135.2" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="118" y1="135.2" x2="128" y2="135.2" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" />
+  <line x1="482" y1="135.2" x2="494" y2="135.2" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" />
+  <text x="114" y="140.2" fill="currentColor" text-anchor="end"><tspan font-style="italic">n</tspan> = 2</text>
+  <text x="498" y="140.2" fill="currentColor">−3.40 eV</text>
+  <line x1="130" y1="421" x2="480" y2="421" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="118" y1="421" x2="128" y2="421" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" />
+  <line x1="482" y1="421" x2="494" y2="421" style="stroke: var(--muted, #6b7280)" stroke-width="0.9" />
+  <text x="114" y="426" fill="currentColor" text-anchor="end"><tspan font-style="italic">n</tspan> = 1</text>
+  <text x="498" y="426" fill="currentColor">−13.6 eV</text>
+  <line x1="150" y1="136.2" x2="150" y2="413.5" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 150 420.2 L 146 413 L 154 413 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="172" y1="83.3" x2="172" y2="413.5" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 172 420.2 L 168 413 L 176 413 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="194" y1="64.8" x2="194" y2="413.5" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 194 420.2 L 190 413 L 198 413 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="216" y1="56.2" x2="216" y2="413.5" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 216 420.2 L 212 413 L 220 413 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="262" y1="83.3" x2="262" y2="127.7" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 262 134.4 L 258 127.2 L 266 127.2 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="284" y1="64.8" x2="284" y2="127.7" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 284 134.4 L 280 127.2 L 288 127.2 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="306" y1="56.2" x2="306" y2="127.7" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 306 134.4 L 302 127.2 L 310 127.2 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="362" y1="64.8" x2="362" y2="76.3" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 362 81.5 L 358.5 75.8 L 365.5 75.8 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="384" y1="56.2" x2="384" y2="76.3" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 384 81.5 L 380.5 75.8 L 387.5 75.8 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="440" y1="420" x2="440" y2="142.7" style="stroke: var(--warn, #a8661a)" stroke-width="1.6" />
+  <path d="M 440 136 L 436 143.2 L 444 143.2 Z" style="fill: var(--warn, #a8661a)" />
+  <text x="228" y="292" style="fill: var(--accent, #2563eb)">莱曼系（紫外）</text>
+  <text x="284" y="162" style="fill: var(--accent, #2563eb)" text-anchor="middle">巴耳末系</text>
+  <text x="284" y="184" style="fill: var(--accent, #2563eb)" text-anchor="middle">（含可见光）</text>
+  <text x="344" y="114" style="fill: var(--accent, #2563eb)">帕邢系（红外）</text>
+  <text x="448" y="292" style="fill: var(--warn, #a8661a)">吸收</text>
+</svg>

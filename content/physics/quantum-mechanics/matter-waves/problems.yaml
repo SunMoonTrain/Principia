@@ -1,0 +1,216 @@
+- id: p1
+  tier: easy
+  statement: |
+    中子（neutron）不带电，照样有物质波。动能为$0.0250\,\mathrm{eV}$的热中子（thermal neutron），德布罗意波长是多少？中子的质量取$1.675\times10^{-27}\,\mathrm{kg}$，以 nm 为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 6.62607015e-34/sqrt(2*1.675e-27*0.0250*1.602176634e-19)*1e9
+    unit: |
+      $\mathrm{nm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先由动能求出动量，再用德布罗意关系$\lambda=\frac hp$。
+    - |
+      中子的速率远小于光速，动能$K=\frac{p^2}{2m_{\mathrm n}}$，$m_{\mathrm n}$是中子的质量，所以$\lambda=\frac h{\sqrt{2m_{\mathrm n}K}}$；$K$要换成焦耳，$1\,\mathrm{eV}=1.602\times10^{-19}\,\mathrm J$。
+    - |
+      $K=0.0250\times1.602\times10^{-19}\,\mathrm J\approx4.01\times10^{-21}\,\mathrm J$，$p=\sqrt{2\times1.675\times10^{-27}\times4.01\times10^{-21}}\,\mathrm{kg\cdot m/s}\approx3.66\times10^{-24}\,\mathrm{kg\cdot m/s}$，$\lambda=\frac{6.626\times10^{-34}}{3.66\times10^{-24}}\,\mathrm m\approx1.81\times10^{-10}\,\mathrm m=0.181\,\mathrm{nm}$。
+  solution: |
+    中子的速率远小于光速，动量$p=\sqrt{2m_{\mathrm n}K}$。$K=0.0250\,\mathrm{eV}\approx4.01\times10^{-21}\,\mathrm J$，$p\approx\sqrt{2\times1.675\times10^{-27}\times4.01\times10^{-21}}\,\mathrm{kg\cdot m/s}\approx3.66\times10^{-24}\,\mathrm{kg\cdot m/s}$，所以$\lambda=\frac hp\approx1.81\times10^{-10}\,\mathrm m=0.181\,\mathrm{nm}$。这和晶体里原子的间距差不多，所以热中子也能在晶体上衍射，常用来研究晶体的结构。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于德布罗意波长的说法，哪些正确？A 到 D 里粒子的速率都远小于光速。
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        速度相同的电子和质子，电子的德布罗意波长较短
+      - |
+        动能相同的电子和质子，电子的德布罗意波长较长
+      - |
+        电子的加速电势差变为原来的 4 倍，德布罗意波长也变为原来的 4 倍
+      - |
+        动量相同的电子和中子，中子的德布罗意波长较短
+      - |
+        德布罗意波长为$0.1\,\mathrm{nm}$的电子，速率不到光速的$3\%$，计算时可以不计相对论效应
+    value: [2, 5]
+  hints:
+    - |
+      各项都从$\lambda=\frac hp$出发，看动量怎样随质量、速度、动能变化。
+    - |
+      速率远小于光速时，电子的动量$p=m_{\mathrm e}v$，动能$K=\frac{p^2}{2m_{\mathrm e}}$，所以$p=\sqrt{2m_{\mathrm e}K}$；质子、中子都按各自的质量这样算，质子的质量约是电子的 1836 倍。电子从静止经电势差$\Delta\varphi$加速，$K=e\Delta\varphi$。
+    - |
+      A 错：速度相同时，电子的动量只有质子的$\frac1{1836}$，波长是质子的 1836 倍，较长。B 对：动能相同时动量和质量的平方根成正比，电子的波长约是质子的$\sqrt{1836}\approx43$倍。C 错：$\lambda=\frac h{\sqrt{2m_{\mathrm e}e\Delta\varphi}}$和$\sqrt{\Delta\varphi}$成反比，电势差变为 4 倍，波长变为原来的一半。
+
+      D 错：德布罗意波长只由动量决定，动量相同，波长就相同。E 对：$p=\frac h\lambda\approx6.63\times10^{-24}\,\mathrm{kg\cdot m/s}$，$v=\frac p{m_{\mathrm e}}\approx7.27\times10^6\,\mathrm{m/s}$，约是光速的$2.4\%$；动能约$150\,\mathrm{eV}$，远低于$10\,\mathrm{keV}$，不计相对论效应的误差可以忽略。
+  solution: |
+    选 B、E。A 错：速度相同时，电子的动量只有质子的$\frac1{1836}$，由$\lambda=\frac hp$，电子的波长是质子的 1836 倍，较长。B 对：动能$K$相同时，电子、质子的动量分别是$\sqrt{2m_{\mathrm e}K}$、$\sqrt{2m_{\mathrm p}K}$，电子的动量小，波长约是质子的$\sqrt{1836}\approx43$倍。
+
+    C 错：$\lambda=\frac h{\sqrt{2m_{\mathrm e}e\Delta\varphi}}$和$\sqrt{\Delta\varphi}$成反比，电势差变为 4 倍，波长变为原来的一半。D 错：德布罗意波长只由动量决定，动量相同，波长就相同，和质量无关。E 对：$p=\frac h\lambda\approx6.63\times10^{-24}\,\mathrm{kg\cdot m/s}$，$v=\frac p{m_{\mathrm e}}\approx7.27\times10^6\,\mathrm{m/s}$，约是光速的$2.4\%$；这样的电子动能约$150\,\mathrm{eV}$，远低于$10\,\mathrm{keV}$，不计相对论效应的误差远不到$0.5\%$。
+
+- id: p3
+  tier: medium
+  statement: |
+    做电子的双缝干涉实验：电子从静止经过$5.00\,\mathrm{kV}$的电势差加速后穿过双缝，缝间距是$1.00\,\mu\mathrm m$，屏离双缝$0.500\,\mathrm m$。不计相对论效应，屏上相邻亮纹的间距是多少？以$\mu\mathrm m$为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 0.500*6.62607015e-34/sqrt(2*9.1093837139e-31*1.602176634e-19*5.00e3)/1.00e-6*1e6
+    unit: |
+      $\mu\mathrm m$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先求电子的德布罗意波长，再用杨氏双缝干涉的条纹间距公式。
+    - |
+      $\lambda=\frac h{\sqrt{2m_{\mathrm e}e\Delta\varphi}}$；相邻亮纹的间距$\Delta y=\frac{L\lambda}d$（见[双光束干涉](lesson:physics.optics.two-beam-interference#thm-young)），$L$是屏到双缝的距离，$d$是缝间距。
+    - |
+      $\lambda\approx\frac{1.226\,\mathrm{nm}}{\sqrt{5000}}\approx1.734\times10^{-11}\,\mathrm m$，$\Delta y=\frac{0.500\times1.734\times10^{-11}}{1.00\times10^{-6}}\,\mathrm m\approx8.67\times10^{-6}\,\mathrm m=8.67\,\mu\mathrm m$。
+  solution: |
+    电子的德布罗意波长$\lambda=\frac h{\sqrt{2m_{\mathrm e}e\Delta\varphi}}\approx\frac{1.226\,\mathrm{nm}}{\sqrt{5000}}\approx1.734\times10^{-11}\,\mathrm m$。条纹间距和光的一样，$\Delta y=\frac{L\lambda}d=\frac{0.500\times1.734\times10^{-11}}{1.00\times10^{-6}}\,\mathrm m\approx8.67\,\mu\mathrm m$。这个波长只有可见光的约三万分之一，同样的缝间距下，条纹比光的密得多。
+
+- id: p4
+  tier: medium
+  statement: |
+    一块晶体表面原子排的间距是$0.250\,\mathrm{nm}$。电子从静止加速后沿法线射到这块晶体上，只看表面一层，测得一级亮纹在和表面法线成$30.0^\circ$的方向上。不计相对论效应，加速电势差是多少？以 V 为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: (6.62607015e-34)^2/(2*9.1093837139e-31*1.602176634e-19*(0.250e-9*sin(30*pi/180))^2)
+    unit: |
+      $\mathrm V$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      由亮纹的方向求出电子的波长，再由波长反推加速电势差。
+    - |
+      一级亮纹满足$D\sin\theta=\lambda$；由$\lambda=\frac h{\sqrt{2m_{\mathrm e}e\Delta\varphi}}$，$\Delta\varphi=\frac{h^2}{2m_{\mathrm e}e\lambda^2}$。
+    - |
+      $\lambda=0.250\,\mathrm{nm}\times\sin30.0^\circ=0.125\,\mathrm{nm}$，$\Delta\varphi=\frac{(6.626\times10^{-34})^2}{2\times9.109\times10^{-31}\times1.602\times10^{-19}\times(1.25\times10^{-10})^2}\,\mathrm V$，约为$96.3\,\mathrm V$。
+  solution: |
+    只看表面一层，一级亮纹满足$D\sin\theta=\lambda$，所以$\lambda=0.250\,\mathrm{nm}\times\sin30.0^\circ=0.125\,\mathrm{nm}$。由$\lambda=\frac h{\sqrt{2m_{\mathrm e}e\Delta\varphi}}$，$\Delta\varphi=\frac{h^2}{2m_{\mathrm e}e\lambda^2}\approx96.3\,\mathrm V$。这个电势差远低于$10\,\mathrm{kV}$，不计相对论效应的误差很小。
+
+- id: p5
+  tier: hard
+  statement: |
+    电子从静止经电势差$\Delta\varphi$加速，电势差很高时，要按狭义相对论求它的动量。
+
+    （1）用[四维速度与四维动量](lesson:physics.special-relativity.four-momentum#thm-energy-momentum)里的能量-动量关系（energy–momentum relation）$E^2=p^2c^2+m_{\mathrm e}^2c^4$证明，电子的德布罗意波长是
+
+    $$
+    \lambda=\frac h{\sqrt{2m_{\mathrm e}e\Delta\varphi\,\bigl(1+\frac{e\Delta\varphi}{2m_{\mathrm e}c^2}\bigr)}}.
+    $$
+
+    （2）$\Delta\varphi=100\,\mathrm{kV}$时，不计和计入相对论效应，电子的波长各是多少？电子的静能（rest energy）取$m_{\mathrm e}c^2=511\,\mathrm{keV}$。
+
+    （3）证明$\Delta\varphi\le10\,\mathrm{kV}$时，不计相对论效应算出的波长偏大不到$0.5\%$。
+  hints:
+    - |
+      照[质能关系](lesson:physics.special-relativity.mass-energy#def-rest-energy)，电子的能量$E$等于静能加上动能，动能是$e\Delta\varphi$。把它代进能量-动量关系，解出$p$。比较两种算法时，看两个波长之比。
+    - |
+      $E=e\Delta\varphi+m_{\mathrm e}c^2$，所以$p^2c^2=E^2-m_{\mathrm e}^2c^4=(e\Delta\varphi)^2+2e\Delta\varphi\,m_{\mathrm e}c^2$。不计和计入相对论效应的两个波长之比是$\sqrt{1+x}$，$x=\frac{e\Delta\varphi}{2m_{\mathrm e}c^2}$；而$\bigl(1+\frac x2\bigr)^2\ge1+x$。
+    - |
+      （1）电子的能量$E=e\Delta\varphi+m_{\mathrm e}c^2$，代进$E^2=p^2c^2+m_{\mathrm e}^2c^4$，得$p^2c^2=(e\Delta\varphi)^2+2e\Delta\varphi\,m_{\mathrm e}c^2$，即
+
+      $$
+      p^2c^2=2m_{\mathrm e}c^2e\Delta\varphi\Bigl(1+\frac{e\Delta\varphi}{2m_{\mathrm e}c^2}\Bigr).
+      $$
+
+      两边除以$c^2$再开方，由$\lambda=\frac hp$就得到要证的式子。
+
+      （2）不计相对论效应，$\lambda_0=\frac h{\sqrt{2m_{\mathrm e}e\Delta\varphi}}\approx\frac{1.226\,\mathrm{nm}}{\sqrt{1.00\times10^5}}\approx3.88\,\mathrm{pm}$。计入时，$\frac{e\Delta\varphi}{2m_{\mathrm e}c^2}=\frac{100}{1022}\approx0.0978$，$\lambda=\frac{\lambda_0}{\sqrt{1.0978}}\approx3.70\,\mathrm{pm}$。不计相对论效应算出的波长偏大约$4.8\%$。
+
+      （3）两者之比$\frac{\lambda_0}\lambda=\sqrt{1+x}$，$x=\frac{e\Delta\varphi}{2m_{\mathrm e}c^2}$。由$\bigl(1+\frac x2\bigr)^2=1+x+\frac{x^2}4\ge1+x$，得$\sqrt{1+x}\le1+\frac x2$。$\Delta\varphi\le10\,\mathrm{kV}$时，$x\le\frac{10}{1022}\approx0.0098$，所以$\lambda_0$偏大不超过$\frac x2\approx0.49\%$，不到$0.5\%$。
+  reference: |
+    （1）$E=e\Delta\varphi+m_{\mathrm e}c^2$，$p^2c^2=E^2-m_{\mathrm e}^2c^4=2m_{\mathrm e}c^2e\Delta\varphi\bigl(1+\frac{e\Delta\varphi}{2m_{\mathrm e}c^2}\bigr)$，$\lambda=\frac hp$。
+
+    （2）$\lambda_0=\frac{1.22643\,\mathrm{nm}}{\sqrt{10^5}}=3.878\,\mathrm{pm}$；$x=\frac{100}{1022}=0.09785$，$\lambda=\frac{3.878}{\sqrt{1.09785}}\,\mathrm{pm}=3.701\,\mathrm{pm}$；$\frac{\lambda_0}\lambda-1=4.78\%$。
+
+    （3）$\sqrt{1+x}\le1+\frac x2$；$10\,\mathrm{kV}$时$x=0.009785$，$\sqrt{1+x}-1=0.488\%<0.5\%$。
+
+- id: p6
+  tier: hard
+  statement: |
+    一个电子被关在长为$\ell$的一维「盒子」里，两端是它穿不过去的墙，盒子里它不受力。把它的物质波看成两端固定的弦上的驻波（standing wave，见[驻波](lesson:physics.oscillations-waves.standing-waves#thm-string-modes)），两端都是波节（node）。
+
+    （1）求允许的德布罗意波长和电子的能量，不计相对论效应。
+
+    （2）$\ell=1.0\,\mathrm{nm}$时，最低的三个能量各是多少 eV？
+
+    （3）质量为$1\,\mu\mathrm g$的尘埃关在长$1\,\mathrm{cm}$的盒子里，以$1\,\mathrm{mm/s}$左右的速率来回运动。按同样的办法，相邻两个能量之差和它的动能相比是多大？由此说明，为什么宏观物体的能量看起来可以连续变化。
+  hints:
+    - |
+      两端都是波节，盒子的长度要装下整数个半波长。知道了波长就知道动量，也就知道了动能。
+    - |
+      $\ell=n\frac{\lambda_n}2$，$\lambda_n=\frac{2\ell}n$（$n=1,2,3,\dots$），$p_n=\frac h{\lambda_n}=\frac{nh}{2\ell}$，$E_n=\frac{p_n^2}{2m_{\mathrm e}}=\frac{n^2h^2}{8m_{\mathrm e}\ell^2}$。尘埃的$n$由$E_n$等于它的动能估出，相邻两个能量之差是$E_{n+1}-E_n=(2n+1)E_1$。
+    - |
+      （1）两端都是波节，$\ell$等于半波长的整数倍：$\lambda_n=\frac{2\ell}n$，$n=1,2,3,\dots$。动量$p_n=\frac h{\lambda_n}=\frac{nh}{2\ell}$，能量$E_n=\frac{p_n^2}{2m_{\mathrm e}}=\frac{n^2h^2}{8m_{\mathrm e}\ell^2}$。能量只能取这些分立的值，最低的$E_1$也不为零。
+
+      （2）$E_1=\frac{(6.626\times10^{-34})^2}{8\times9.109\times10^{-31}\times(1.0\times10^{-9})^2}\,\mathrm J$，约为$6.02\times10^{-20}\,\mathrm J$，即$0.376\,\mathrm{eV}$。$E_2=4E_1\approx1.50\,\mathrm{eV}$，$E_3=9E_1\approx3.38\,\mathrm{eV}$，和原子的能级（energy level）差不多大。
+
+      （3）尘埃的质量记作$m_{\text{尘}}=1\times10^{-9}\,\mathrm{kg}$，$E_1=\frac{h^2}{8m_{\text{尘}}\ell^2}\approx\frac{(6.63\times10^{-34})^2}{8\times10^{-9}\times10^{-4}}\,\mathrm J\approx5.5\times10^{-55}\,\mathrm J$。速率为$1\,\mathrm{mm/s}$时动能$\frac12m_{\text{尘}}v^2=5\times10^{-16}\,\mathrm J$，对应$n\approx\sqrt{\frac{5\times10^{-16}}{5.5\times10^{-55}}}\approx3\times10^{19}$。相邻两个能量之差$(2n+1)E_1\approx3.3\times10^{-35}\,\mathrm J$，只有动能的约$6.6\times10^{-20}$，任何仪器都分辨不出，所以宏观物体的能量看起来可以连续变化。
+
+      量子力学里这个问题的正式解法见[无限深方势阱](lesson:physics.quantum-mechanics.infinite-well)，能量和这里的一样。
+  reference: |
+    （1）$\lambda_n=\frac{2\ell}n$，$p_n=\frac{nh}{2\ell}$，$E_n=\frac{n^2h^2}{8m_{\mathrm e}\ell^2}$，$n=1,2,3,\dots$；$E_1\ne0$。
+
+    （2）$\ell=1.0\,\mathrm{nm}$：$E_1=6.025\times10^{-20}\,\mathrm J=0.3760\,\mathrm{eV}$，$E_2=1.504\,\mathrm{eV}$，$E_3=3.384\,\mathrm{eV}$。
+
+    （3）$m_{\text{尘}}=10^{-9}\,\mathrm{kg}$，$\ell=0.01\,\mathrm m$：$E_1=5.49\times10^{-55}\,\mathrm J$；$v=10^{-3}\,\mathrm{m/s}$时$K=5\times10^{-16}\,\mathrm J$，$n\approx3.0\times10^{19}$，$\Delta E\approx(2n+1)E_1\approx3.3\times10^{-35}\,\mathrm J$，$\frac{\Delta E}K\approx\frac2n\approx6.6\times10^{-20}$。和无限深方势阱的$E_n=\frac{n^2\pi^2\hbar^2}{2m_{\mathrm e}\ell^2}$相同。
+
+- id: p7
+  tier: thinking
+  statement: |
+    由德布罗意关系，物质波的频率$\nu=\frac Eh$、波长$\lambda=\frac hp$，两者之积$\lambda\nu=\frac Ep$是这列波的波峰前进的速度，叫作它的相速度（phase velocity）。
+
+    （1）一个不受力的电子以速率$v$运动，$v$远小于光速，$E$取它的动能。相速度是$v$的几倍？
+
+    （2）照[质能关系](lesson:physics.special-relativity.mass-energy#def-rest-energy)，$E$要是算上电子的静能（rest energy），相速度就比光速还大。这和「物体不能跑得比光快」矛盾吗？
+
+    （3）同一个电子，$E$的零点取法不同，相速度就不同。这说明相速度能不能测出来？波长$\lambda$呢？
+
+    （4）既然相速度不是电子的速度，物质波的哪个速度才描述电子本身的运动？
+  hints:
+    - |
+      （1）用$E=\frac{p^2}{2m_{\mathrm e}}$、$p=m_{\mathrm e}v$。（2）相速度描述的是什么在动？能量和信号跟着什么走？（3）衍射、干涉实验量出的是什么？
+    - |
+      （2）算上静能时，照[四维速度与四维动量](lesson:physics.special-relativity.four-momentum#def-four-momentum)，$E=\gamma_um_{\mathrm e}c^2$、$p=\gamma_um_{\mathrm e}v$（$\gamma_u$是洛伦兹因子，Lorentz factor），$\frac Ep=\frac{c^2}v$。一列无限长、处处一样的波，波峰的移动既不带走能量，也传不了信号。（4）许多波长相近的物质波叠在一起，只在一小块地方明显不为零，这一小块整体移动的速度是多少？
+    - |
+      （1）$E=\frac{p^2}{2m_{\mathrm e}}$，$\lambda\nu=\frac Ep=\frac p{2m_{\mathrm e}}$；而$p=m_{\mathrm e}v$，所以相速度是$\frac v2$，只是电子速率的一半。
+
+      （2）$\frac Ep=\frac{\gamma_um_{\mathrm e}c^2}{\gamma_um_{\mathrm e}v}=\frac{c^2}v>c$，但不矛盾。相速度只说一列无限长、处处一样的波上，波峰的位置移动得多快；波峰不是物体，这样的波上也没有哪一处能做记号，靠它送不出信号。相对论限制的是能量、物体和信号的速度。
+
+      （3）$E$加上一个常数，$\nu$和相速度都跟着变，电子的运动却没有变，所以$\nu$和相速度没有确定的值可测，能测的只是两个频率之差。$\lambda=\frac hp$不随能量的零点变，衍射、干涉量出的正是它，所以波长可以测。
+
+      （4）描述电子运动的，是许多波长相近的物质波叠成的波包（wave packet）整体移动的速度，叫作群速度（group velocity），等于$\dv Ep$。非相对论时$\dv Ep=\frac p{m_{\mathrm e}}=v$，计入相对论也是$\dv Ep=\frac{pc^2}E=v$（见[四维速度与四维动量](lesson:physics.special-relativity.four-momentum#thm-energy-momentum)），正是电子的速度（见[波包与不确定关系](lesson:physics.quantum-mechanics.uncertainty-wave-packets)）。
+  reference: |
+    （1）$\frac Ep=\frac p{2m_{\mathrm e}}=\frac v2$。
+
+    （2）$E=\gamma_um_{\mathrm e}c^2$，$p=\gamma_um_{\mathrm e}v$，$\frac Ep=\frac{c^2}v>c$；单色无限长波的相速度不携带能量和信号，不违反相对论。
+
+    （3）$\nu$随能量零点平移，相速度不可观测，只有频率差（拍、干涉的时间依赖）可测；$\lambda$与零点无关，可由衍射测出。
+
+    （4）群速度$v_{\mathrm g}=\dv\omega k=\dv Ep$：非相对论$\frac p{m_{\mathrm e}}=v$，相对论$\frac{pc^2}E=v$；且$v_{\mathrm p}v_{\mathrm g}=c^2$（计入静能时）。分析力学「哈密顿-雅可比方程」第 7 题是同一个讨论。
+
+- id: p8
+  tier: thinking
+  statement: |
+    [圆孔衍射与分辨本领](lesson:physics.optics.resolving-power)说，物体和物镜之间是空气或真空时，显微镜能分辨的两点的最小距离约为$0.61\frac\lambda{\sin u}$，$u$是物镜收进的光锥的半顶角；把物体浸在油里，用可见光最好也只能分辨约$0.2\,\mu\mathrm m$的细节。电子显微镜（electron microscope）用约$200\,\mathrm{kV}$加速的电子成像，电子的德布罗意波长约$2.5\,\mathrm{pm}$。
+
+    （1）把这个波长代进同一个式子，$u$取得再大也不超过$90^\circ$，电子显微镜最好能分辨多小的距离？和原子的大小（约$0.1\,\mathrm{nm}$）比怎样？
+
+    （2）实际上，普通的电子显微镜只能分辨约$0.2\,\mathrm{nm}$，最好的约$0.05\,\mathrm{nm}$，比（1）的估计差得多。电子显微镜用线圈产生的磁场使电子束会聚，这种磁透镜（magnetic lens）的像差（aberration）比玻璃透镜大得多，收进的电子束半顶角只能取约$10\,\mathrm{mrad}$。由此估算分辨的极限，说说差在哪里。
+  hints:
+    - |
+      （1）只是把$\lambda$换成电子的波长，$\sin u$最大是 1。（2）$u$很小时，能分辨的距离怎样变？
+    - |
+      最小距离$d_{\min}\approx0.61\frac\lambda{\sin u}$。$u\approx10\,\mathrm{mrad}$时$\sin u\approx0.01$。
+    - |
+      （1）$\sin u$最大取 1，$d_{\min}\approx0.61\times2.5\,\mathrm{pm}\approx1.5\,\mathrm{pm}$，不到原子大小的五十分之一。只看波长，电子显微镜分辨单个原子绰绰有余。
+
+      （2）$\sin u\approx0.01$时，$d_{\min}\approx\frac{0.61\times2.5\,\mathrm{pm}}{0.01}\approx0.15\,\mathrm{nm}$，正是普通电子显微镜的水平。所以电子显微镜分辨不了更小的距离，主要不是因为波长，而是因为磁透镜的像差：收光的角度一大，像就模糊，只好用很小的角度，能分辨的最小距离就成了（1）算出的约 100 倍。后来用电磁元件校正像差，收进的角度能加大到几十毫弧度，才做到约$0.05\,\mathrm{nm}$。
+  reference: |
+    （1）$d_{\min}=0.61\times2.508\,\mathrm{pm}\approx1.5\,\mathrm{pm}$，约为原子大小的$\frac1{65}$。
+
+    （2）$\sin u\approx0.01$：$d_{\min}\approx0.153\,\mathrm{nm}$，与普通透射电镜的约$0.2\,\mathrm{nm}$一致；限制来自磁透镜的球差，只能用小的收光角。像差校正后$u\approx30\,\mathrm{mrad}$，$d_{\min}\approx0.05\,\mathrm{nm}$。

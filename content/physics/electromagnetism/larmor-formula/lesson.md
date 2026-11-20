@@ -39,7 +39,7 @@ status: reviewed
 
 ### 经典的原子为什么不稳定
 
-按经典的图像，氢原子里的电子绕原子核做圆周运动，有向心加速度，会不断辐射、损失能量，轨道越来越小，最后落到原子核上，辐射的频率也随着轨道缩小而连续变化。按:term[拉莫尔公式]{id="physics.electromagnetism.larmor-formula"}估算，从玻尔半径落到核上只要约$1.6\times10^{-11}\,\mathrm s$（例 2）。可真实的原子是稳定的，发出的光也只有一些分立的频率，经典电磁学和牛顿力学在原子里不再适用。1913 年，玻尔（Niels Bohr）假定电子只在一些特定的轨道上运动，在这些轨道上不辐射，量子力学后来解释了为什么（见[原子光谱与玻尔模型](lesson:physics.quantum-mechanics.bohr-model)）。
+按经典的图像，氢原子里的电子绕原子核做圆周运动，有向心加速度，会不断辐射、损失能量，轨道越来越小，最后落到原子核上，辐射的频率也随着轨道缩小而连续变化。按:term[拉莫尔公式]{id="physics.electromagnetism.larmor-formula"}估算，从:term[玻尔半径]{id="physics.quantum-mechanics.bohr-radius"}（Bohr radius）落到核上只要约$1.6\times10^{-11}\,\mathrm s$（例 2）。可真实的原子是稳定的，发出的光也只有一些分立的频率，经典电磁学和牛顿力学在原子里不再适用。1913 年，玻尔（Niels Bohr）假定电子只在一些特定的轨道上运动，在这些轨道上不辐射，量子力学后来解释了为什么（见[原子光谱与玻尔模型](lesson:physics.quantum-mechanics.bohr-model)）。
 
 ## 几何图像
 
