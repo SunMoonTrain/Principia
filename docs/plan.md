@@ -2148,13 +2148,15 @@ ops: |
 
 - `kind: b-tree`，`degree: 2`（也可取 3），如 `keys: [1, 2, 3]`。键为 0–255，按序插入初始键，重复值略过。支持 insert 多键、find、delete，默认显示 tree、memory。树上只画有效键；键之间的边通往对应的孩子。键槽改写另作标记。内存保留失效的槽，以浅色显示。观测量 `step ops size nodes height compares reads splits merges borrows`，对应键数、结点数、层数、键比较、读结点、分裂、合并和借键次数。空叶根占一个结点，树高 0。
 
-**sort**　`algorithm: insertion`，用 `data: [8, 4, 4, 1]` 或 `preset: {kind: random, n: 16, seed: 7}`。算法为 bubble、insertion、selection、merge、quick、heap。允许 2–32 个 1–99 的整数；预设 sorted、reversed、random、few-unique，后两种需要 seed。主算法 quick 可设 `pivot: random` 和顶层 `seed`，默认 last。`race: [merge, selection]` 可并排另外一至两种算法。观测量 `step compares swaps moves writes done` 取主算法；一侧结束后另一侧继续。重复值标原下标，辅助数组、key、枢轴或堆边界随步更新。编辑数据或打乱从第 0 步重新开始，重置恢复小节原参数。四个算法组件默认 `editable: true`，每步检查 goals、pauses。
+**sort**　`algorithm: insertion`，用 `data: [8, 4, 4, 1]` 或 `preset: {kind: random, n: 16, seed: 7}`。算法为 bubble、insertion、selection、merge、quick、heap。允许 2–32 个 1–99 的整数；预设 sorted、reversed、random、few-unique，后两种需要 seed。主算法 quick 可设 `pivot: random` 和顶层 `seed`，默认 last。`race: [merge, selection]` 可并排另外一至两种算法。观测量 `step compares swaps moves writes done` 取主算法；一侧结束后另一侧继续。重复值标原下标，辅助数组、key、枢轴或堆边界随步更新。编辑数据或打乱从第 0 步重新开始，重置恢复小节原参数。四个算法组件默认 `editable: true`，每步检查 goals、pauses。重置或应用修改会重新计算轨迹，保留播放速度及当前控件的焦点。
 
-**grid-search**　`map: |` 下写 2–25 行、每行 2–40 格，S、G 各一，. 平地、# 墙；自定义地形如 `costs: {"~": 5}`，代价为 1–9。`moves: 4` 或 8；`runs: [{algorithm: astar, heuristic: manhattan}, {algorithm: dijkstra}]` 可写一至两组 bfs、dfs、dijkstra、greedy、astar。greedy/astar 可用 manhattan、euclidean、chebyshev、octile、zero，默认四邻接 manhattan、八邻接 octile；astar 可加 weight（1–10）。观测量 `step expanded frontier cost found done` 取第一组，cost 未找到为 −1，找到后取两位小数。小地图显示 g 和 A* 的 f，大地图点格查 g、h、f、父格。可点或拖动画笔，一笔结束后两图从同一张新地图重新计算。
+**grid-search**　`map: |` 下写 2–25 行、每行 2–40 格，S、G 各一，. 平地、# 墙；自定义地形如 `costs: {"~": 5}`，代价为 1–9。`moves: 4` 或 8；`runs: [{algorithm: astar, heuristic: manhattan}, {algorithm: dijkstra}]` 可写一至两组 bfs、dfs、dijkstra、greedy、astar。greedy/astar 可用 manhattan、euclidean、chebyshev、octile、zero，默认四邻接 manhattan、八邻接 octile；astar 可加 weight（1–10），读者编辑后按回车或移开焦点生效。观测量 `step expanded frontier cost found done` 取第一组，cost 未找到为 −1，找到后取两位小数。小地图显示 g 和 A* 的 f，大地图点格查 g、h、f、父格。可点或拖动画笔，一笔结束后两图从同一张新地图重新计算。
 
-**graph**　`nodes: {A: [0, 1], B: [2, 0]}` 指定 2–16 个结点及 [0,20] 内的位置，y 朝上。名字为 1–12 个字母（含中文）、数字或下划线。`edges: |` 下每行如 `A -- B 4` 或 `A -> B 4`，权 −99…99。一个图的方向一致，无重复边。`algorithm` 取 bfs、dfs、topo、dijkstra、bellman-ford、prim、kruskal、max-flow。除 topo、kruskal 外须给 source；最大流另给不同的 sink，容量 1–99，禁止反平行边。topo 和流网络用有向图，两种生成树用无向图；负权只用于两种最短路及生成树。可改起点/汇点。默认 `view: [graph, table]`，可加入 adjacency、matrix 同步查看。观测量 `step visited relaxed rounds edges weight flow augments cycle negcycle done`，未使用的计数为零；visited 分别计 BFS 取出、DFS 发现、Dijkstra 确定、Prim 入树、topo 输出，relaxed 只计成功松弛。
+**graph**　`nodes: {A: [0, 1], B: [2, 0]}` 指定 2–16 个结点及 [0,20] 内的位置，y 朝上。名字为 1–12 个字母（含中文）、数字或下划线。`edges: |` 下每行如 `A -- B 4` 或 `A -> B 4`，权 −99…99。一个图的方向一致，禁止自环和重复边。`algorithm` 取 bfs、dfs、topo、dijkstra、bellman-ford、prim、kruskal、max-flow。除 topo、kruskal 外须给 source；最大流另给不同的 sink，容量 1–99，禁止反平行边。topo 和流网络用有向图，两种生成树用无向图；负权只用于两种最短路及生成树。可改起点/汇点。默认 `view: [graph, table]`，可加入 adjacency、matrix 同步查看。观测量 `step visited relaxed rounds edges weight flow augments cycle negcycle done`，未使用的计数为零；visited 分别计 BFS 取出、DFS 发现、Dijkstra 确定、Prim 入树、topo 输出，relaxed 只计成功松弛。
 
-**dp-table**　`problem: lcs` 或 `edit-distance`，给 `a: ABCBDAB`、`b: BDCABA`；各 1–12 个字母，lcs 还可用数字（纯数字字符串在 YAML 中加引号）。`problem: knapsack` 给 `capacity: 7`（1–20）及 `items: [[1,1],[3,4],[4,5],[5,7]]`（1–8 个 [重,值]，重 1–20、值 1–99）。默认允许改输入。每步填一格或回溯一次，箭头指向依赖，加粗实际采用的分支，回溯保留路径与已恢复的答案。观测量 `step filled result traced done`，末格填完之前 result 为 −1。画廊里的辗转相除法只用于试步进条。
+**dp-table**　`problem: lcs` 或 `edit-distance`，给 `a: ABCBDAB`、`b: BDCABA`；各 1–12 个字母，lcs 还可用数字（纯数字字符串在 YAML 中加引号）。`problem: knapsack` 给 `capacity: 7`（1–20）及 `items: [[1,1],[3,4],[4,5],[5,7]]`（1–8 个 [重,值]，重 1–20、值 1–99）。默认允许改输入。每步填一格或回溯一次，箭头指向依赖，加粗实际采用的分支，回溯保留路径与已恢复的答案。观测量 `step filled result traced done`，末格填完之前 result 为 −1。
+
+画廊里的辗转相除法只用于试步进条。
 
 步进组件的 `goals` 和 `pauses` 都是可省略的列表。每项有 `when` 和 `text`，如：
 
@@ -2194,7 +2196,7 @@ pauses:
 | 结点-边图 | 结点与邻居按名字的 JS 字符串顺序。BFS 入队标记，取出与发现各一步。DFS 先从 source，再按名补遍历森林，发现与完成各一步并计时；有向图查看已发现端点一步，灰点为回边，黑点按发现早晚分前向/横跨。无向图只计非父边到灰点的回边。Kahn 每次取名字最小的零入度结点，输出与删每条出边各一步；余图无零入度用一步报环。 |
 | 最短路与生成树 | Dijkstra 确定最短的未确定可达点，平手按名；对未确定邻居逐边尝试松弛，严格变小才更新，已确定点不改，负权可导致错误。Bellman-Ford 按输入边序，无向按原方向、反向紧随，各一次一步，未更新则早停。满 n−1 轮且末轮有更新才加检查轮，不改距离，若仍能降低则报告可达负环，检查轮不计入 rounds。Prim 从 source 起按 key、名字选顶点，入树与检查树外邻边各一步，严格下降才换父边，不连通只取起点分量。Kruskal 按 (权, 较小端点名, 较大端点名) 每次查一边；成树即停，不连通输出森林。 |
 | 最大流 | Edmonds–Karp 每次在剩余网络按邻点名 BFS，取出、发现各一步，一发现汇点就停。按路径最小剩余容量增广一步，反向边抵消流量；最后一次找不到汇点的 BFS 也计步。 |
-| 动态规划 | 第 0 行、列在初态填好，此时 filled=0。字符串问题从第 1 行、第 1 列开始。背包每件物品依次计算容量 0 到 capacity，零容量也用一步从上一行确认边界 0，计入 filled（4 件、容量 7 共 32 格）。行内从左到右，一格一步。LCS 字符相同取左上加一，否则取上/左最大；回溯相同走左上，平手走上，遇第 0 行或列停。编辑距离边界为下标，插、删、换各 1，不变为 0；回溯按不变、替换、删除、插入的顺序选最优，一直走到 (0,0)。背包边界为 0，比较上一行同列与上一行少 w 容量加 v，装不下只看同列，平手不取。回溯从最后一件到第一件，每件一步，即使剩余容量为零也查看。回溯操作按正向顺序呈现。 |
+| 动态规划 | 第 0 行、列在初态填好，此时 filled=0。三种问题都从第 1 行、第 1 列开始。背包的 filled 等于已经计算的非边界格数，四件物品、容量 7 共填 28 格。行内从左到右，一格一步。LCS 字符相同取左上加一，否则取上/左最大；回溯相同走左上，平手走上，遇第 0 行或列停。编辑距离边界为下标，插、删、换各 1，不变为 0；回溯按不变、替换、删除、插入的顺序选最优，一直走到 (0,0)。背包边界为 0，比较上一行同列与上一行少 w 容量加 v，装不下只看同列，平手不取。回溯从最后一件到第一件，每件一步，即使剩余容量为零也查看。回溯操作按正向顺序呈现。 |
 | 随机 | 带随机的组件都写 `seed`，用 mulberry32（和星图布局同一种）。 |
 | 速度 | 内容不写速度，读者用菜单调节。1× 时每秒几步：bits 2，float32 1，cpu 2 条指令（微步 4），cache 2 次访问，pipeline 1 个周期，memory 2，tree 1（选「一个操作」时两者都是每秒 1 个操作），sort 4，grid-search 20 次扩展，graph 2，logic-circuit 2 拍，dp-table 4 格。 |
 
@@ -2709,4 +2711,4 @@ memory 增加首次适配的字节堆、六种结构的微步播放和九个画�
 
 ### 计算机台阶 C6
 
-sort 已接入统一步进条和画廊，可并排比较六种排序的逐步读写与计数。grid-search 支持五种算法、读者改图和双配置对照。graph 加入八种图算法、邻接表和矩阵，九个演示覆盖负权反例、穿衣拓扑序和剩余网络。dp-table 逐格填表、画依赖和回溯路径，含 LCS、编辑距离和背包。四个组件均按需加载。背包第 0 列在初态填好，每行再计一次零容量状态的确认，使容量 7、四件物品的演示恰为 32 次填格、4 次回溯。验收数据和页面实测见 [C6 汇报](reviews/cs-c6-report.md)。
+sort 已接入统一步进条和画廊，可并排比较六种排序的逐步读写与计数。grid-search 支持五种算法、读者改图和双配置对照。graph 加入八种图算法、邻接表和矩阵，九个演示覆盖负权反例、穿衣拓扑序和剩余网络。dp-table 逐格填表、画依赖和回溯路径，含 LCS、编辑距离和背包。四个组件均按需加载。背包在初态填好边界，容量 7、四件物品的演示填 28 格、回溯 4 步，共 32 步。验收数据和页面实测见 [C6 汇报](reviews/cs-c6-report.md)。

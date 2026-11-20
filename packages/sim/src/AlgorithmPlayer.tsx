@@ -8,18 +8,29 @@ import type { Track,Frame } from './core/algorithm';
 import './algorithms.css';
 
 export interface Controls {editable:boolean;goals?:Condition[];pauses?:Condition[]}
-export function useInputs<P>(original:P){
-  const [session,set]=useState({params:original,id:0});
-  const apply=(params:P)=>set(s=>({params,id:s.id+1}));
-  return {...session,apply,reset:()=>apply(original)};
+export function useAlgorithm<P extends Controls, F extends Frame>(
+  original: P, machine: Machine<NoInfer<P>, Track<F>[]>, names: string[], rate: number, frameClock = false,
+) {
+  const [params, setParams] = useState(original);
+  const options = useMemo(() => ({
+    names, stepsPerSecond: rate, frameClock, goals: params.goals, pauses: params.pauses,
+  }), [names, rate, frameClock, params.goals, params.pauses]);
+  const player = useMachine(machine, params, 0, options);
+  function apply(next: P) {
+    setParams(next);
+    player.replaceInputs(next);
+  }
+  return { params, player, apply };
 }
-export function AlgorithmPlayer<P,F extends Frame>({params,labels,machine,names,rate,frameClock=false,reset,editor,children}:{
-  params:P & Controls;labels:AnimProps<P>['labels'];machine:Machine<P,Track<F>[]>;names:string[];rate:number;frameClock?:boolean;reset:()=>void;
-  editor?:ReactNode;children:(tracks:Track<F>[])=>ReactNode;
-}){
-  const options=useMemo(()=>({names,stepsPerSecond:rate,frameClock,goals:params.goals,pauses:params.pauses}),[names,rate,frameClock,params.goals,params.pauses]);
-  const player=useMachine(machine,params,0,options);
-  return <StepperBar player={{...player,reset}} labels={labels} afterControls={params.editable&&editor}>
-    <div className="algo-panels">{children(player.history.state)}</div>
+
+export function AlgorithmPlayer<P extends Controls, F extends Frame>({session, labels, reset, editor, children}: {
+  session: ReturnType<typeof useAlgorithm<P, F>>;
+  labels: AnimProps<P>['labels'];
+  reset: () => void;
+  editor?: ReactNode;
+  children: (tracks: Track<F>[]) => ReactNode;
+}) {
+  return <StepperBar player={{...session.player, reset}} labels={labels} afterControls={session.params.editable && editor}>
+    <div className="algo-panels">{children(session.player.history.state)}</div>
   </StepperBar>;
 }

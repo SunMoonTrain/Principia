@@ -32,7 +32,7 @@ export function* dpFrames(p:DpParams):Generator<DpFrame,void>{
     if(i&&cost===table[up]+1)return {chosen:up,deps,value:cost,why:'从上方删除，代价加一',part:'删除 '+a[i-1]};
     return {chosen:left,deps,value:cost,why:'从左方插入，代价加一',part:'插入 '+b[j-1]};
   }
-  for(let i=1;i<height;i++)for(let j=bag?0:1;j<width;j++){
+  for(let i=1;i<height;i++)for(let j=1;j<width;j++){
     const at=i*width+j,c=choice(i,j);table[at]=c.value;filled++;
     yield frame('填 ['+i+']['+j+']：'+c.why+'，写入 '+c.value,at,c.deps,c.chosen);
   }

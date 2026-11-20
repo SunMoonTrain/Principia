@@ -5,7 +5,7 @@ it('LCS、编辑距离、背包的填表时机与回溯',()=>{
   const cases:[DpParams,number,number,number,string[]][]=[
     [{problem:'lcs',a:'ABCBDAB',b:'BDCABA'},42,8,4,['B','C','B','A']],
     [{problem:'edit-distance',a:'kitten',b:'sitting'},42,7,3,['k 换成 s','i 不变','t 不变','t 不变','e 换成 i','n 不变','插入 g']],
-    [{problem:'knapsack',capacity:7,items:[[1,1],[3,4],[4,5],[5,7]]},32,4,9,['2','3']],
+    [{problem:'knapsack',capacity:7,items:[[1,1],[3,4],[4,5],[5,7]]},28,4,9,['2','3']],
   ];
   for(const [p,filled,traced,result,answer] of cases){
     const frames=[...dpFrames(p)];expect(frames).toHaveLength(filled+traced+1);
@@ -35,6 +35,11 @@ it.each([3,77,177])('逐格对照独立递推，种子 %i',seed=>{
         memo.set(key,v);return v;
       }
       const frames=[...dpFrames(p)],last=frames.at(-1)!;
+      const rows=p.problem==='knapsack'?p.items.length:a.length;
+      const cols=p.problem==='knapsack'?p.capacity:b.length;
+      expect(last.filled).toBe(rows*cols);
+      expect(frames.slice(1,1+last.filled).map(f=>f.at)).toEqual(
+        Array.from({length:rows*cols},(_,k)=>(1+Math.floor(k/cols))*(cols+1)+1+k%cols));
       expect([...last.table]).toEqual(Array.from(last.table,(_,k)=>ref(Math.floor(k/last.width),k%last.width)));
       for(let step=1;step<=last.filled;step++){const f=frames[step];expect([f.filled,f.table[f.at]]).toEqual([step,ref(Math.floor(f.at/f.width),f.at%f.width)]);}
     }

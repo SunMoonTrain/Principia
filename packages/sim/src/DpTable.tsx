@@ -1,6 +1,6 @@
 import {useId,useState} from 'react';
 import type {AnimProps} from '@principia/anim';
-import {AlgorithmPlayer,useInputs,type Controls} from './AlgorithmPlayer';
+import {AlgorithmPlayer,useAlgorithm,type Controls} from './AlgorithmPlayer';
 import {dpMachine,dpNames,type DpParams,type DpFrame} from './core/dp-table';
 type Params=DpParams & Controls;
 function Table({p,f}:{p:Params;f:DpFrame}){
@@ -32,22 +32,26 @@ function Table({p,f}:{p:Params;f:DpFrame}){
     {!!f.traced&&<div className="algo-meta">{p.problem==='knapsack'?'取第 '+f.answer.join('、')+' 件':p.problem==='lcs'?'公共子序列 '+f.answer.join(''):f.answer.join('、')}</div>}
   </section>;
 }
-function Session({params,labels,apply,reset}:AnimProps<Params>&{apply:(p:Params)=>void;reset:()=>void}){
-  const p=params,bag=p.problem==='knapsack';
-  const [a,setA]=useState(bag?String(p.capacity):p.a),[b,setB]=useState(bag?p.items.map(e=>e.join(',')).join('; '):p.b);
+function inputValues(p:Params):[string,string]{
+  return p.problem==='knapsack'?[String(p.capacity),p.items.map(e=>e.join(',')).join('; ')]:[p.a,p.b];
+}
+export default function DpTable({params,labels}:AnimProps<Params>){
+  const session=useAlgorithm(params,dpMachine,dpNames,4),p=session.params,bag=p.problem==='knapsack';
+  const [[a,b],setDraft]=useState(()=>inputValues(params));
+  function apply(next:Params){
+    setDraft(inputValues(next));
+    session.apply(next);
+  }
   const first=a.normalize('NFKC').trim(),second=b.normalize('NFKC').trim();
   const items=second.split(/\s*;\s*/).map(pair=>pair.split(/\s*,\s*/));
   const words=p.problem==='lcs'?/^[\p{L}\p{N}]{1,12}$/u:/^\p{L}{1,12}$/u;
   const valid=bag?/^\d+$/.test(first)&&Number(first)>=1&&Number(first)<=20&&items.length<=8&&items.every(v=>v.length===2&&v.every((s,i)=>/^\d+$/.test(s)&&Number(s)>=1&&Number(s)<=(i===0?20:99))):words.test(first)&&words.test(second);
-  return <AlgorithmPlayer params={p} labels={labels} machine={dpMachine} names={dpNames} rate={4} reset={reset} editor={
+  return <AlgorithmPlayer session={session} labels={labels} reset={()=>apply(params)} editor={
     <form className="algo-editor" onSubmit={e=>{e.preventDefault();if(valid)apply(bag?{...p,capacity:Number(first),items:items.map(v=>[Number(v[0]),Number(v[1])])}:{...p,a:first,b:second});}}>
-      <label>{bag?'容量':'行串 a'} <input value={a} size={12} maxLength={40} onChange={e=>setA(e.target.value)}/></label>
-      <label>{bag?'物品（重,值；用分号隔开）':'列串 b'} <input value={b} size={bag?25:12} maxLength={120} onChange={e=>setB(e.target.value)}/></label>
+      <label>{bag?'容量':'行串 a'} <input value={a} size={12} maxLength={40} onChange={e=>setDraft([e.target.value,b])}/></label>
+      <label>{bag?'物品（重,值；用分号隔开）':'列串 b'} <input value={b} size={bag?25:12} maxLength={120} onChange={e=>setDraft([a,e.target.value])}/></label>
       <button disabled={!valid}>应用输入</button>{!valid&&<small role="status">{bag?'容量 1–20；1–8 件，重量 1–20，价值 1–99。':'请输入 1–12 个有效字符。'}</small>}
     </form>}>
     {([r])=><Table p={p} f={r.frame}/>}
   </AlgorithmPlayer>;
-}
-export default function DpTable({params,labels}:AnimProps<Params>){
-  const session=useInputs(params);return <Session key={session.id} {...session} labels={labels}/>;
 }

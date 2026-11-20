@@ -112,16 +112,18 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
       delete specific.goals;
       delete specific.pauses;
     }
+    const rowKey = component === 'grid-search' ? 'map' : component === 'graph' ? 'edges' : undefined;
+    const rowField = rowKey && textAt(y, [rowKey], ctx.diags);
     const parsed = spec.schema.safeParse(specific);
     if (parsed.success) {
       checked = parsed.data;
       reserved = spec.reserved(checked as never);
     } else {
       for(const issue of parsed.error.issues){
-        if(issue.code==='custom' && typeof issue.params?.row==='number'){
-          const field=textAt(y,issue.path,ctx.diags);
-          if(field)ctx.diags.error(ctx.file,field.contentLine+issue.params.row,issue.message);
-        }else reportIssues(y,[issue],ctx.diags,[],path=>'参数 '+path.join('.'));
+        if (rowField && issue.path[0] === rowKey && issue.code === 'custom' && typeof issue.params?.row === 'number') {
+          // 非块标量已在字段行报错，解码出来的换行没有对应的源行。
+          if (rowField.contentLine > rowField.line) ctx.diags.error(ctx.file, rowField.contentLine + issue.params.row, issue.message);
+        } else reportIssues(y,[issue],ctx.diags,[],path=>'参数 '+path.join('.'));
       }
     }
   }

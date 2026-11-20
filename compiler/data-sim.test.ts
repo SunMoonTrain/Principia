@@ -184,3 +184,21 @@ it.each([
 ])("dp-table 的坏参数定位到源行", (body,line)=>{
   expect(compile("dp-table",String(body)).errors).toContainEqual(expect.objectContaining({line}));
 });
+
+it.each(['bfs','dfs','topo','dijkstra','bellman-ford','prim','kruskal','max-flow'])('%s 在原始边行拒绝自环',algorithm=>{
+  const arrow=['prim','kruskal'].includes(algorithm)?'--':'->';
+  const endpoints=(algorithm==='topo'||algorithm==='kruskal')?'':algorithm==='max-flow'?'source: A\nsink: B\n':'source: A\n';
+  const body='nodes: {A: [0,0], B: [1,1]}\nalgorithm: '+algorithm+'\n'+endpoints+'edges: |-\n  A '+arrow+' B 1\n\n  B '+arrow+' B 1';
+  expect(compile('graph',body).errors).toEqual([expect.objectContaining({line:body.split('\n').length+1,message:'图不允许自环'})]);
+});
+
+it.each([
+  ['grid-search','runs: [{algorithm: bfs}]','map','"S.\\n.G"'],
+  ['grid-search','runs: [{algorithm: bfs}]','map','"S.\\n.G\\nxG"'],
+  ['grid-search','runs: [{algorithm: bfs}]','map','>\n  S.\n  .G'],
+  ['graph','nodes: {A: [0,0], B: [1,1]}\nsource: A\nalgorithm: bfs','edges','A -- B 1'],
+  ['graph','nodes: {A: [0,0], B: [1,1]}\nsource: A\nalgorithm: bfs','edges','"A -- B 1\\nB -- C 1"'],
+])('%s 的 %s 后面须使用逐行块', (name,prefix,key,value)=>{
+  const errors=compile(name,prefix+'\n'+key+': '+value).errors;
+  expect(errors).toEqual([expect.objectContaining({line:prefix.split('\n').length+2,message:expect.stringContaining(key+' 要用块写法')})]);
+});

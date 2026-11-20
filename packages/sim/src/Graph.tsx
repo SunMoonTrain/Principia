@@ -1,6 +1,6 @@
 import {useId,useMemo,useState} from 'react';
 import type {AnimProps} from '@principia/anim';
-import {AlgorithmPlayer,useInputs,type Controls} from './AlgorithmPlayer';
+import {AlgorithmPlayer,useAlgorithm,type Controls} from './AlgorithmPlayer';
 import {graphMachine,graphNames,type GraphFrame,type GraphParams} from './core/graph';
 import {useStepScroll} from './StructurePlayer';
 import './graph.css';
@@ -44,6 +44,23 @@ function Diagram({p,f,pick,setPick}:{p:Params;f:GraphFrame;pick:number;setPick:(
     }
     return reverse?24:0;
   }),[p,f.names]);
+  const paths=p.links.map((edge,k)=>{
+    const u=f.names.indexOf(edge.u),v=f.names.indexOf(edge.v),a=pos[u],b=pos[v];
+    const dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy)||1;
+    const cx=(a.x+b.x)/2-dy/len*bends[k],cy=(a.y+b.y)/2+dx/len*bends[k];
+    const startLen=Math.hypot(cx-a.x,cy-a.y)||1,endLen=Math.hypot(cx-b.x,cy-b.y)||1;
+    const start={x:(cx-a.x)/startLen,y:(cy-a.y)/startLen},end={x:(cx-b.x)/endLen,y:(cy-b.y)/endLen};
+    const sx=a.x+start.x*radii[u],sy=a.y+start.y*radii[u];
+    const ex=b.x+end.x*(radii[v]+2),ey=b.y+end.y*(radii[v]+2);
+    return {u,v,start,end,d:'M '+sx+' '+sy+' Q '+cx+' '+cy+' '+ex+' '+ey,lx:(sx+2*cx+ex)/4,ly:(sy+2*cy+ey)/4-3};
+  });
+  // 默认放在圆下方。避开实际曲线的端点切线，防止入边的箭头或出边的线穿过数值。
+  function labelSide(i:number){
+    const incident=paths.flatMap(path=>path.u===i?[path.start]:path.v===i?[path.end]:[]);
+    const sides=[{x:0,y:1},{x:0,y:-1},{x:1,y:0},{x:-1,y:0}];
+    const scored=sides.map(side=>({side,score:Math.max(-1,...incident.map(d=>d.x*side.x+d.y*side.y))}));
+    return (scored.find(s=>s.score<0.5)??scored.reduce((a,b)=>a.score<=b.score?a:b)).side;
+  }
   const chain=new Set<number>(),seen=new Set<number>();
   for(let u=pick;u>=0&&!seen.has(u);u=f.parent[u]){
     seen.add(u);const from=f.names[f.parent[u]],to=f.names[u];
@@ -51,26 +68,25 @@ function Diagram({p,f,pick,setPick}:{p:Params;f:GraphFrame;pick:number;setPick:(
   }
   return <svg className="alg-network" viewBox="0 0 640 226" role="group" aria-label="结点与边">
     <defs>{['plain','read','write','tree'].map(k=><marker key={k} id={marker+k} markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path className={'arrow '+k} d="M0 0 L7 3.5 L0 7 Z"/></marker>)}</defs>
+    {f.names.map((name,i)=>{
+      const side=labelSide(i),r=radii[i];
+      return <text key={name} className="alg-value" data-value-for={name}
+        x={pos[i].x+side.x*(r+5)} y={pos[i].y+(side.y>0?r+12:side.y<0?-r-6:4)}
+        style={{textAnchor:side.x>0?'start':side.x<0?'end':'middle'}}>{value(p,f,i)}</text>;
+    })}
     {p.links.map((e,k)=>{
-      const u=f.names.indexOf(e.u),v=f.names.indexOf(e.v),a=pos[u],b=pos[v],dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy)||1;
-      const bend=bends[k];
-      const cx=(a.x+b.x)/2-dy/len*bend,cy=(a.y+b.y)/2+dx/len*bend;
-      const startLen=Math.hypot(cx-a.x,cy-a.y)||1,endLen=Math.hypot(cx-b.x,cy-b.y)||1;
-      const sx=a.x+(cx-a.x)*radii[u]/startLen,sy=a.y+(cy-a.y)*radii[u]/startLen;
-      const ex=b.x+(cx-b.x)*(radii[v]+2)/endLen,ey=b.y+(cy-b.y)*(radii[v]+2)/endLen;
-      const loop=u===v,d=loop?'M '+(a.x-9)+' '+(a.y-12)+' c -32 -27 32 -27 18 0':'M '+sx+' '+sy+' Q '+cx+' '+cy+' '+ex+' '+ey;
+      const {u,v,d,lx,ly}=paths[k];
       const act=activity(k,f.readEdges,f.writeEdges),kind=act??(chain.has(k)||f.kinds[k]==='树边'||f.path.some((id,j)=>j>0&&((f.path[j-1]===u&&id===v)||(f.path[j-1]===v&&id===u)))?'tree':'plain');
-      const lx=loop?a.x:(sx+2*cx+ex)/4,ly=loop?a.y-29:(sy+2*cy+ey)/4-3;
       return <g key={k} data-edge={k} className={'alg-edge '+kind} data-status={f.kinds[k]}><title>{e.u+' → '+e.v+' '+f.kinds[k]}</title>
         <path d={d} markerEnd={p.directed?'url(#'+marker+kind+')':undefined}/><text x={lx} y={ly}>{p.algorithm==='max-flow'?f.flows[k]+'/'+e.w:e.w}</text></g>;
     })}
     {f.names.map((name,i)=><g key={name} transform={'translate('+pos[i].x+' '+pos[i].y+')'} className="alg-vertex" data-vertex={i}
       data-act={activity(i,f.read,f.write)} data-fixed={f.fixed[i]} data-picked={pick===i} >
-      <circle r={radii[i]}/><text dy="4">{name}</text><text className="alg-value" y={radii[i]+12}>{value(p,f,i)}</text><foreignObject x={-radii[i]} y={-radii[i]} width={2*radii[i]} height={2*radii[i]}><button type="button" className="alg-node-hit" aria-label={'查看 '+name+' 的路径'} onClick={()=>setPick(i)}/></foreignObject></g>)}
+      <circle r={radii[i]}/><text dy="4">{name}</text><foreignObject x={-radii[i]} y={-radii[i]} width={2*radii[i]} height={2*radii[i]}><button type="button" className="alg-node-hit" aria-label={'查看 '+name+' 的路径'} onClick={()=>setPick(i)}/></foreignObject></g>)}
   </svg>;
 }
-function Views({p,f}:{p:Params;f:GraphFrame}){
-  const [pick,setPick]=useState(-1),ns=f.names;
+function Views({p,f,pick,setPick}:{p:Params;f:GraphFrame;pick:number;setPick:(i:number)=>void}){
+  const ns=f.names;
   const note={text:f.text,reads:f.read,writes:f.write};
   const adjScroll=useStepScroll(note,undefined,true),matrixScroll=useStepScroll(note,undefined,true);
   const edgeId=(u:string,v:string)=>p.links.findIndex(e=>e.u===u&&e.v===v||!p.directed&&e.u===v&&e.v===u);
@@ -91,11 +107,13 @@ function Views({p,f}:{p:Params;f:GraphFrame}){
   </section>;
 }
 export default function Graph({params,labels}:AnimProps<Params>){
-  const s=useInputs(params),p=s.params,names=Object.keys(p.nodes).sort();
-  const select=(field:'source'|'sink')=><label>{field==='source'?'起点':'汇点'} <select value={p[field]} onChange={e=>s.apply({...p,[field]:e.target.value})}>
+  const session=useAlgorithm(params,graphMachine,graphNames,2),p=session.params,names=Object.keys(p.nodes).sort();
+  const [pick,setPick]=useState(-1);
+  function apply(next:Params){setPick(-1);session.apply(next);}
+  const select=(field:'source'|'sink')=><label>{field==='source'?'起点':'汇点'} <select value={p[field]} onChange={e=>apply({...p,[field]:e.target.value})}>
     {names.map(n=><option key={n} disabled={p.algorithm==='max-flow'&&n===p[field==='source'?'sink':'source']}>{n}</option>)}</select></label>;
-  return <AlgorithmPlayer key={s.id} params={p} labels={labels} machine={graphMachine} names={graphNames} rate={2} reset={s.reset}
+  return <AlgorithmPlayer session={session} labels={labels} reset={()=>apply(params)}
     editor={<div className="algo-editor">{!['topo','kruskal'].includes(p.algorithm)&&select('source')}{p.algorithm==='max-flow'&&select('sink')}</div>}>
-    {([r])=><Views p={p} f={r.frame}/>}
+    {([r])=><Views p={p} f={r.frame} pick={pick} setPick={setPick}/>}
   </AlgorithmPlayer>;
 }

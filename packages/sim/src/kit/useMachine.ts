@@ -21,12 +21,12 @@ export function useMachine<P, S>(machine: Machine<P, S>, params: P, seed: number
   const playerRef = useRef<HTMLElement>(null);
   const inView = useInView(playerRef, '0px');
   const initialGrain = options.granularities?.[0];
-  const fresh = () => {
-    const history = new History(machine, params, seed);
+  const fresh = (inputs: P) => {
+    const history = new History(machine, inputs, seed);
     history.preview(PREVIEW, initialGrain);
     return history;
   };
-  const [history, setHistory] = useState(fresh);
+  const [history, setHistory] = useState(() => fresh(params));
   const [version, refresh] = useReducer((v: number) => v + 1, 0);
   const [visited, setVisited] = useState(0);
   const [running, setRunning] = useState(false);
@@ -122,14 +122,17 @@ export function useMachine<P, S>(machine: Machine<P, S>, params: P, seed: number
     extend();
     refresh();
   };
-  const reset = () => {
+  const resetHistory = (inputs: P, keepGoals: boolean) => {
     stop();
-    const next = fresh();
-    collect(next.state);
+    const next = fresh(inputs);
+    if (keepGoals) collect(next.state);
+    else setReached(matches(rules.goals, next.state));
     setGrain(initialGrain);
     setVisited(0);
     setHistory(next);
   };
+  const reset = () => resetHistory(params, true);
+  const replaceInputs = (inputs: P) => resetHistory(inputs, false);
   const edit = (action: unknown, written?: string[]) => {
     stop();
     history.edit(action, written);
@@ -151,6 +154,6 @@ export function useMachine<P, S>(machine: Machine<P, S>, params: P, seed: number
     setPauseIndex(-1);
     if (!history.done) setRunning((was) => !was);
   };
-  return { playerRef, history, visited, running, speed, grain, pauseIndex, reached, setSpeed, seek, reset, edit, changeGrain, toggle,
+  return { playerRef, history, visited, running, speed, grain, pauseIndex, reached, setSpeed, seek, reset, replaceInputs, edit, changeGrain, toggle,
     step: () => { stop(); advance(); }, options };
 }

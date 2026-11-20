@@ -14,10 +14,11 @@ export const graphSchema=z.strictObject({algorithm:z.enum(graphAlgos),nodes:z.re
     if(!parts){error('edges','边应写作 A -- B 4 或 A -> B 4',i);continue;}
     const [,u,arrow,v,weight]=parts,w=Number(weight.normalize('NFKC')),d=arrow==='->';
     if(!names.includes(u)||!names.includes(v)){error('edges','边的端点不在 nodes 里',i);continue;}
+    if(u===v){error('edges','图不允许自环',i);continue;}
     if(directed!==undefined&&directed!==d)error('edges','不能混用有向和无向边',i);directed=d;
     const key=(d?[u,v]:[u,v].sort()).join(':');
     if(seen.has(key))error('edges','重复边',i);
-    if(p.algorithm==='max-flow' && (seen.has(v+':'+u)||u===v))error('edges','流网络不允许反平行边或自环',i);
+    if(p.algorithm==='max-flow' && seen.has(v+':'+u))error('edges','流网络不允许反平行边',i);
     if(w < -99||w>99 || (p.algorithm==='max-flow'&&w<1) || (w<0&&!['dijkstra','bellman-ford','prim','kruskal'].includes(p.algorithm)))error('edges','边权不符合算法要求',i);
     if((['prim','kruskal'].includes(p.algorithm)&&d)||(['topo','max-flow'].includes(p.algorithm)&&!d))error('edges','边的方向不符合算法要求',i);
     seen.add(key);links.push({u,v,w});
