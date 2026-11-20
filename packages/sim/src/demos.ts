@@ -209,6 +209,13 @@ ops: |
 keys: [50, 30, 70, 20, 40, 60, 80, 65]
 ops: |
   delete 50`},
+  {name:'tree', title:'红黑树 · 依次插入 1–10', yaml:`kind: red-black
+ops: |
+  insert 1 2 3 4 5 6 7 8 9 10`},
+  {name:'tree', title:'红黑树 · 后继顶替 4', yaml:`kind: red-black
+keys: [1,2,3,4,5,6,7,8,9,10]
+ops: |
+  delete 4`},
   {name:'tree', title:'大顶堆 · 建堆、取根、插入', yaml:`kind: max-heap
 keys: [3, 1, 6, 5, 2, 4]
 ops: |

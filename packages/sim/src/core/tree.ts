@@ -1,7 +1,7 @@
 import { Trace, blank, operationMachine, OperationFailure, type Op, type Picture, type Region } from './heap.ts';
 import { initialArray, growArray } from './memory.ts';
 import { SearchTree, type SearchKind } from './search-tree.ts';
-export const treeKinds=['bst','avl','max-heap','min-heap'] as const;
+export const treeKinds=['bst','avl','red-black','max-heap','min-heap'] as const;
 export type TreeKind=typeof treeKinds[number];
 export interface TreeConfig {kind:TreeKind;keys:number[];capacity:number;region:Region;commands:Op[]}
 export const treeNames=['step','ops','size','height','rotations','compares','swaps','root','mem'];

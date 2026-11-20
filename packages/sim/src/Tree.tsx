@@ -48,10 +48,10 @@ function Drawing({s,vertices,selected,select}:{s:Work<TreeConfig>;vertices:Verte
       const d='M '+p.x+' '+p.y+' L '+v.x+' '+v.y;
       return <path key={v.at} d={d} style={{d:'path("'+d+'")'}}/>;
     })}</svg>
-    {vertices.map(v=><button key={v.at} type="button" className="ds-node" data-node={v.at} data-touch={touch(s.note,...affected(v))} data-selected={selected===v.at||undefined}
+    {vertices.map(v=><button key={v.at} type="button" className="ds-node" data-node={v.at} data-color={kind==='red-black'?(b[v.at+3]?'red':'black'):undefined} data-touch={touch(s.note,...affected(v))} data-selected={selected===v.at||undefined}
       title={addr(v.at)+' · 键 '+b[v.at]} aria-label={'键 '+b[v.at]+'，地址 '+addr(v.at)} aria-pressed={selected===v.at} onClick={()=>select(v.at)}
       style={{transform:'translate('+(v.x-16)+'px,'+(v.y-16)+'px)'}}>
-      {b[v.at]}{kind==='avl'&&<small>BF {height(b[v.at+1])-height(b[v.at+2])}</small>}
+      {b[v.at]}{kind==='red-black'&&<small>{b[v.at+3]?'红':'黑'}</small>}{kind==='avl'&&<small>BF {height(b[v.at+1])-height(b[v.at+2])}</small>}
     </button>)}
   </div></div></section>;
 }

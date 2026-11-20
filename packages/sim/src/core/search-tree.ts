@@ -1,6 +1,8 @@
 import { addr, type Trace, type Write, type Op } from './heap.ts';
 
-export type SearchKind = 'bst'|'avl';
+import { fixInsert, fixDelete } from './red-black.ts';
+
+export type SearchKind = 'bst'|'avl'|'red-black';
 export class SearchTree {
   constructor(readonly t:Trace, readonly kind:SearchKind) {}
   get b(){return this.t.b;}
@@ -47,6 +49,7 @@ export class SearchTree {
   remove(z:number) {
     const slot=this.link(z), left=this.b[z+1],right=this.b[z+2];
     let lowest=this.parent(z), successor=z, x:number, xp:number;
+    let removedColor=this.kind==='red-black'?this.b[z+3]:0;
     const transplant=(link:number,old:number,replacement:number)=>{
       this.t.emit('顶替 '+this.b[old]+'：M['+addr(link)+'] ← '+addr(replacement),[old],[[link,replacement]]);
     };
@@ -58,6 +61,7 @@ export class SearchTree {
         this.t.emit('向左找后继，经过 '+this.b[successor],[successor,successor+1]);
         successor=this.b[successor+1];
       }
+      if(this.kind==='red-black')removedColor=this.b[successor+3];
       x=this.b[successor+2];
       if(successor!==right){
         lowest=this.parent(successor);xp=lowest;
@@ -66,9 +70,11 @@ export class SearchTree {
       }else {lowest=successor;xp=successor;}
       transplant(slot,z,successor);
       this.t.emit('后继接左子树 '+this.b[left],[],[[successor+1,left]]);
+      if(this.kind==='red-black' && removedColor!==this.b[z+3])
+        this.t.emit('后继继承被删结点的颜色',[z+3],[[successor+3,this.b[z+3]]]);
     }
     this.t.release(z,[],{size:this.t.pic.size-1});
-    return {lowest,successor,x,xp};
+    return {lowest,x,xp,removedColor};
   }
   operate({name,args:[key]}:Op) {
     let slot=0,node=this.root,parent=0;
@@ -84,9 +90,11 @@ export class SearchTree {
       node=this.t.allocate(data.length,this.kind,data);
       this.t.emit('接入结点 '+key+'：M['+addr(slot)+'] ← '+addr(node),[],[[slot,node]],{size:this.t.pic.size+1});
       if(this.kind==='avl')this.adjust(parent);
+      if(this.kind==='red-black')fixInsert(this,node);
     }else if(name==='delete' && node) {
       const result=this.remove(node);
       if(this.kind==='avl')this.adjust(result.lowest);
+      if(this.kind==='red-black' && result.removedColor===0)fixDelete(this,result.x,result.xp);
     }else if(!node) {
       if(this.t.ticks.length)this.t.ticks[this.t.ticks.length-1].note.text+='，该方向为空，未找到';
       else this.t.emit('根为空，未找到 '+key,[0]);
