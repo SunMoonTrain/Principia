@@ -22,7 +22,7 @@ status: reviewed
 ::anchor{id="def-doppler"}
 波源或观察者相对介质运动时，观察者接收到的:term[频率]{id="physics.oscillations-waves.frequency"}（frequency）和波源发出的频率不同，这种现象叫作:term[多普勒效应]{id="physics.oscillations-waves.doppler-effect"}（Doppler effect）；接收频率相对发出频率的变化叫作:term[频移]{id="physics.oscillations-waves.frequency-shift"}（frequency shift），接收频率比发出的低叫作:term[红移]{id="physics.oscillations-waves.redshift"}（redshift），比发出的高叫作:term[蓝移]{id="physics.oscillations-waves.blueshift"}（blueshift）。
 
-为什么这样定义：接收到的频率是观察者每秒数到的波峰个数，波源和观察者之间的距离在变，路上的波峰就在变多或变少，每秒数到的个数也就和每秒发出的个数不同。红移、蓝移的名字来自光谱，红光在可见光里频率最低；声波也照样用这两个词。边界情况：波源和观察者都相对介质静止时，不论相距多远，接收频率都等于发出频率。
+为什么这样定义：接收到的频率是观察者每秒数到的波峰个数，波源和观察者之间的距离在变，路上的波峰就在变多或变少，每秒数到的个数也就和每秒发出的个数不同。红移、蓝移的名字来自光谱，红光在可见光里频率最低；:term[声波]{id="physics.oscillations-waves.sound-wave"}也照样用这两个词。边界情况：波源和观察者都相对介质静止时，不论相距多远，接收频率都等于发出频率。
 
 ::anchor{id="thm-doppler"}
 定理：介质里的:term[波速]{id="physics.oscillations-waves.wave-speed"}（wave speed）是$v$，波源发出频率为$f_0$的波，速度都相对介质。（1）观察者静止，波源以速率$u_{\mathrm s}<v$运动，它的速度和它到观察者的连线成$\theta$角，观察者离得足够远时，接收频率$f=\frac{f_0}{1-(u_{\mathrm s}/v)\cos\theta}$；（2）波源静止，观察者以速率$u_{\mathrm o}$运动，他的速度和他到波源的连线成$\theta'$角，$f=f_0\bigl(1+\frac{u_{\mathrm o}}v\cos\theta'\bigr)$。
@@ -36,7 +36,7 @@ status: reviewed
 ::anchor{id="def-mach-cone"}
 波源以大于:term[波速]{id="physics.oscillations-waves.wave-speed"}的速率$u_{\mathrm s}$运动时，它在各个时刻发出的波向四周扩展成一个个球面，这些球面的包络（envelope）是以波源为顶点、向后张开的圆锥面，叫作:term[马赫锥]{id="physics.oscillations-waves.mach-cone"}（Mach cone），$M=\frac{u_{\mathrm s}}v$叫作马赫数（Mach number）；锥面上各个波的扰动叠在一起，形成很强的压强突变，叫作激波（shock wave）。
 
-为什么这样定义：波源比波跑得快，所有的波都落在锥面以内，锥面前方没有任何扰动；超音速飞机飞过头顶时，要等锥面扫到才听到声音，那一下的巨响叫音爆。边界情况：$u_{\mathrm s}$趋于$v$时，各个波都堆在波源正前方，$\frac{f_0}{1-u_{\mathrm s}/v}$也趋于无穷，这就是飞机接近声速时要冲破的「声障」。
+为什么这样定义：波源比波跑得快，所有的波都落在锥面以内，锥面前方没有任何扰动；超音速飞机飞过头顶时，要等锥面扫到才听到声音，那一下的巨响叫音爆。边界情况：$u_{\mathrm s}$趋于$v$时，各个波都堆在波源正前方，$\frac{f_0}{1-u_{\mathrm s}/v}$也趋于无穷，这就是飞机接近:term[声速]{id="physics.oscillations-waves.speed-of-sound"}时要冲破的「声障」。
 
 ::anchor{id="thm-mach-angle"}
 定理：马赫锥的半顶角$\alpha$满足$\sin\alpha=\frac v{u_{\mathrm s}}=\frac1M$。
@@ -53,7 +53,7 @@ status: reviewed
 
 ### 例 1　驶过身边的救护车
 
-救护车的警笛:term[频率]{id="physics.oscillations-waves.frequency"}是$700\,\mathrm{Hz}$，车以$25\,\mathrm{m/s}$驶近、再驶离站在路边的行人，声速取$340\,\mathrm{m/s}$。行人听到的频率各是多少？
+救护车的警笛:term[频率]{id="physics.oscillations-waves.frequency"}是$700\,\mathrm{Hz}$，车以$25\,\mathrm{m/s}$驶近、再驶离站在路边的行人，:term[声速]{id="physics.oscillations-waves.speed-of-sound"}取$340\,\mathrm{m/s}$。行人听到的频率各是多少？
 
 **为什么想到这么做**：观察者静止、波源运动，车正对着行人驶来时$\theta=0$，驶离时$\theta=\pi$，代入定理的（1）。
 
@@ -61,7 +61,7 @@ status: reviewed
 
 ### 例 2　超音速飞机的音爆
 
-飞机以马赫数$2$在离地$9.0\,\mathrm{km}$的高空水平飞行，声速取$300\,\mathrm{m/s}$，并当作不随高度变化。飞机从一个人的头顶飞过以后，再过多久他听到音爆？
+飞机以马赫数$2$在离地$9.0\,\mathrm{km}$的高空水平飞行，:term[声速]{id="physics.oscillations-waves.speed-of-sound"}取$300\,\mathrm{m/s}$，并当作不随高度变化。飞机从一个人的头顶飞过以后，再过多久他听到音爆？
 
 **为什么想到这么做**：音爆在:term[马赫锥]{id="physics.oscillations-waves.mach-cone"}的锥面扫到人的时刻听到；锥面跟着飞机走，先求半顶角，再算锥面扫到地面上这一点时飞机飞到了哪里。
 

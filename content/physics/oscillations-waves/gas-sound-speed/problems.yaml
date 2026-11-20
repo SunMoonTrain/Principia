@@ -1,0 +1,204 @@
+- id: p1
+  tier: easy
+  statement: |
+    二氧化碳的比热容比取$1.29$，摩尔质量取$0.0440\,\mathrm{kg/mol}$，摩尔气体常量取$8.314\,\mathrm{J/(mol\cdot K)}$。把二氧化碳当作理想气体，求$20\,^\circ\mathrm C$（按$273.15$换算成热力学温度）时其中的声速，结果保留三位有效数字。
+  answer:
+    type: number
+    value: sqrt(1.29*8.314*293.15/0.0440)
+    unit: |
+      $\mathrm{m/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      理想气体中的声速由哪几个量决定？温度要用哪一种？
+    - |
+      $v=\sqrt{\gamma RT/M}$，$T=293.15\,\mathrm K$，$M$以$\mathrm{kg/mol}$为单位代入。
+    - |
+      $v=\sqrt{\frac{1.29\times8.314\times293.15}{0.0440}}\,\mathrm{m/s}\approx267\,\mathrm{m/s}$。
+  solution: |
+    由$v=\sqrt{\gamma RT/M}$，$T=293.15\,\mathrm K$，$v=\sqrt{\frac{1.29\times8.314\times293.15}{0.0440}}\,\mathrm{m/s}\approx267\,\mathrm{m/s}$。二氧化碳的摩尔质量约是空气的 1.5 倍，比热容比又小些，所以声音在里面比在同温的空气里（约$343\,\mathrm{m/s}$）慢。
+
+- id: p2
+  tier: easy
+  statement: |
+    把下面的气体都当作比热容比不随温度变的理想气体，声波里的压缩和膨胀都是准静态的绝热过程。哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        温度相同时，氢气（$2.0\,\mathrm{g/mol}$，$\gamma=1.41$）中的声速约是氧气（$32\,\mathrm{g/mol}$，$\gamma=1.39$）中的 4 倍
+      - |
+        把气缸里的空气准静态绝热地压缩到原来体积的一半，压缩刚结束时，其中的声速和压缩前相同
+      - |
+        单原子理想气体（monatomic ideal gas）里，按等温算出的声速是实际声速的$\sqrt{\frac35}$倍
+      - |
+        密封钢瓶里的空气被加热，体积没有变，所以其中的声速也不变
+      - |
+        气体的摄氏温度变为原来的 2 倍时，其中的声速变为原来的$\sqrt2$倍
+    value: [1, 3]
+  hints:
+    - |
+      $v=\sqrt{\gamma RT/M}$里有哪几个量？温度要用哪一种？
+    - |
+      A 比较$\frac\gamma M$；B 准静态绝热时$TV^{\gamma-1}$不变；C 等温时体积模量是$p$，绝热时是$\gamma p$。
+    - |
+      A 对，$\sqrt{\frac{1.41/2.0}{1.39/32}}\approx4.0$；B 错，温度升为约$2^{0.40}\approx1.32$倍，声速约为原来的$2^{0.20}\approx1.15$倍。C 对，两者之比是$\frac1{\sqrt\gamma}=\sqrt{\frac35}$；D 错，温度升高，声速变大；E 错，要用热力学温度。
+  solution: |
+    选 A、C。A 对：$\sqrt{\frac{1.41/2.0}{1.39/32}}\approx4.0$，两种气体的比热容比相近，差别主要来自摩尔质量：氧气的是氢气的 16 倍。B 错：准静态绝热时$TV^{\gamma-1}$不变，体积减半，温度升为约$2^{0.40}\approx1.32$倍，声速约为原来的$2^{0.20}\approx1.15$倍。同一种气体的声速只由温度决定；声速变了，是因为绝热压缩使温度升高。
+
+    C 对：单原子理想气体的$\gamma=\frac53$，按等温算出的$\sqrt{RT/M}$是$\sqrt{\gamma RT/M}$的$\frac1{\sqrt\gamma}=\sqrt{\frac35}$倍。D 错：体积不变，密度也不变，压强却随温度升高，$\sqrt{\gamma p_0/\rho_0}$变大。E 错：声速和热力学温度的平方根成正比，例如从$10\,^\circ\mathrm C$升到$20\,^\circ\mathrm C$，声速只变为原来的约 1.02 倍。
+
+- id: p3
+  tier: medium
+  statement: |
+    $20\,^\circ\mathrm C$（按$273.15$换算）时，测得某种单原子气体中的声速是$319\,\mathrm{m/s}$。把它当作单原子理想气体，摩尔气体常量取$8.314\,\mathrm{J/(mol\cdot K)}$，求它的摩尔质量，以$\mathrm{g/mol}$为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: (5/3)*8.314*293.15/319^2*1000
+    unit: |
+      $\mathrm{g/mol}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      单原子理想气体的比热容比是多少？把声速的公式反过来，解出$M$。
+    - |
+      单原子理想气体的$C_{V,\mathrm m}=\frac32R$，$C_{p,\mathrm m}=\frac52R$，$\gamma=\frac53$；$M=\frac{\gamma RT}{v^2}$。
+    - |
+      $M=\frac53\times\frac{8.314\times293.15}{319^2}\,\mathrm{kg/mol}\approx0.0399\,\mathrm{kg/mol}=39.9\,\mathrm{g/mol}$。
+  solution: |
+    单原子理想气体的$\gamma=\frac53$（见[热容与焓](lesson:physics.thermal-physics.heat-capacity#def-heat-capacity-ratio)后面的表）。由$v=\sqrt{\gamma RT/M}$，$M=\frac{\gamma RT}{v^2}=\frac53\times\frac{8.314\times293.15}{319^2}\,\mathrm{kg/mol}\approx0.0399\,\mathrm{kg/mol}$，即$39.9\,\mathrm{g/mol}$。这正是氩的摩尔质量，量一量声速就能认出这种气体。
+
+- id: p4
+  tier: medium
+  statement: |
+    $20\,^\circ\mathrm C$（按$273.15$换算）、压强为$1.013\times10^5\,\mathrm{Pa}$的空气里，传着一列简谐声波，压强变化的振幅是$1.0\,\mathrm{Pa}$。把各薄层的压缩和膨胀当作准静态的绝热过程，空气的比热容比取$1.40$，求空气温度变化的振幅，以$\mathrm{mK}$为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 293.15*(0.40/1.40)*(1.0/1.013e5)*1000
+    unit: |
+      $\mathrm{mK}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      准静态的绝热过程里，哪个不变量把温度和压强直接连起来？
+    - |
+      把$T$看成$p$的函数：$p^{1-\gamma}T^\gamma$不变（见[绝热过程](lesson:physics.thermal-physics.adiabatic-processes#thm-adiabatic)），取对数后对$p$求导，得$\dv Tp=\frac{\gamma-1}\gamma\cdot\frac Tp$。
+    - |
+      压强变化的振幅只是大气压的约$10^{-5}$，温度变化的振幅约为$\dv Tp$乘它：$293.15\times\frac{0.40}{1.40}\times\frac{1.0}{1.013\times10^5}\,\mathrm K\approx8.27\times10^{-4}\,\mathrm K=0.827\,\mathrm{mK}$。
+  solution: |
+    准静态绝热时$p^{1-\gamma}T^\gamma$不变（见[绝热过程](lesson:physics.thermal-physics.adiabatic-processes#thm-adiabatic)）。把$T$看成$p$的函数，取对数得$(1-\gamma)\ln p+\gamma\ln T$不变，对$p$求导得$\dv Tp=\frac{\gamma-1}\gamma\cdot\frac Tp$。压强变化的振幅只是大气压的约$10^{-5}$，温度变化的振幅约为$293.15\times\frac{0.40}{1.40}\times\frac{1.0}{1.013\times10^5}\,\mathrm K\approx8.27\times10^{-4}\,\mathrm K$，即$0.827\,\mathrm{mK}$。在这么小的温度范围里，$C_{V,\mathrm m}$当然可以当作不变。
+
+- id: p5
+  tier: hard
+  statement: |
+    空气里热量靠热传导传开的快慢，和分子的扩散（diffusion）差不多（见[热传导与扩散](lesson:physics.thermal-physics.heat-conduction-diffusion#thm-transport-relations)）。参照那一节例 2，热量传过距离$L$大约要$\frac{L^2}D$的时间，空气的扩散系数（diffusion coefficient）$D$取$2.0\times10^{-5}\,\mathrm{m^2/s}$。
+
+    （1）频率为$f$的声波里，热量传过半个波长要的时间是半个周期的多少倍？用声速$v$、$f$、$D$表示。
+
+    （2）声速取$343\,\mathrm{m/s}$，求$20\,\mathrm{Hz}$、$1\,\mathrm{kHz}$、$20\,\mathrm{kHz}$时的这个倍数，并说明为什么在开阔的空气里，频率越低越接近绝热。
+
+    （3）这个倍数降到 1 时，频率约是多少？那时的波长和空气分子的平均自由程（约$70\,\mathrm{nm}$）比一比，说明什么。
+  hints:
+    - |
+      半个波长有多长？热量传过它要多久？半个周期又是多久？
+    - |
+      半个波长是$\frac v{2f}$，热量传过它约要$\frac{v^2}{4f^2D}$；半个周期是$\frac1{2f}$。
+    - |
+      （1）热量传过半个波长约要$\Bigl(\frac v{2f}\Bigr)^2\cdot\frac1D=\frac{v^2}{4f^2D}$，半个周期是$\frac1{2f}$，前者是后者的$\frac{v^2}{2fD}$倍。
+
+      （2）$\frac{v^2}{2D}=\frac{343^2}{2\times2.0\times10^{-5}}\,\mathrm{Hz}\approx2.9\times10^9\,\mathrm{Hz}$，所以$20\,\mathrm{Hz}$、$1\,\mathrm{kHz}$、$20\,\mathrm{kHz}$时这个倍数约是$1.5\times10^8$、$2.9\times10^6$、$1.5\times10^5$，都远大于 1，热量远来不及传过半个波长，过程近似绝热。倍数和$f$成反比：频率降低时半个周期变长，热量多走了一些，可它走的距离只和时间的平方根成正比，要走的半个波长却和周期成正比地变长，所以反倒更来不及。
+
+      （3）倍数为 1 时$f=\frac{v^2}{2D}\approx2.9\times10^9\,\mathrm{Hz}$，波长$\frac vf\approx1.2\times10^{-7}\,\mathrm m$，约$120\,\mathrm{nm}$，和平均自由程同一个量级。这时把空气看成连续的描述已经不成立，声波的波动方程本身就失效了。这不是巧合：扩散系数约是方均根速率和平均自由程之积的$\frac13$（见[热传导与扩散](lesson:physics.thermal-physics.heat-conduction-diffusion#thm-diffusion-coefficient)），声速又和方均根速率同一个量级，代进去，倍数为 1 时波长约等于平均自由程。所以在波动方程能用的频率范围里，开阔空气中的声波总是近似绝热的。
+  reference: |
+    （1）半个波长$\frac v{2f}$，热量传过它约要$\frac{v^2}{4f^2D}$；半个周期$\frac1{2f}$；倍数$\frac{v^2}{2fD}$。
+
+    （2）$\frac{v^2}{2D}=\frac{343^2}{4.0\times10^{-5}}\,\mathrm{Hz}\approx2.94\times10^9\,\mathrm{Hz}$，$20\,\mathrm{Hz}$、$1\,\mathrm{kHz}$、$20\,\mathrm{kHz}$时倍数约$1.47\times10^8$、$2.94\times10^6$、$1.47\times10^5$。倍数和$f$成反比：扩散距离$\sqrt{D/(2f)}$只和$f^{-1/2}$成正比，半个波长和$f^{-1}$成正比，频率越低热量越追不上。
+
+    （3）$f\approx2.9\times10^9\,\mathrm{Hz}$，波长$\frac{2D}v\approx1.17\times10^{-7}\,\mathrm m$，是平均自由程（约$70\,\mathrm{nm}$）的约 1.7 倍，同一个量级：连续介质的描述在这里已经失效。由$D\approx\frac13v_{\mathrm{rms}}\times$平均自由程（[热传导与扩散](lesson:physics.thermal-physics.heat-conduction-diffusion#thm-diffusion-coefficient)）和$v=\sqrt{\gamma/3}\,v_{\mathrm{rms}}\approx0.68\,v_{\mathrm{rms}}$，倍数为 1 时波长$\frac{2D}v\approx\frac23\cdot\frac{v_{\mathrm{rms}}}v\times$平均自由程，约等于平均自由程，不是巧合。所以只要波动方程能用，开阔空气中的声波就是绝热的，等温的情形根本轮不到。
+
+- id: p6
+  tier: hard
+  statement: |
+    潜水员下潜很深时，常呼吸氦氧混合气，其中氦占总物质的量（amount of substance）的 80%，氧占 20%。把它当作理想气体，氦的$C_{V,\mathrm m}=\frac32R$，氧的$C_{V,\mathrm m}=\frac52R$，摩尔质量分别取$4.00\,\mathrm{g/mol}$、$32.0\,\mathrm{g/mol}$。
+
+    （1）混合气的内能（internal energy）是两种气体的内能之和。说明混合气的$C_{V,\mathrm m}$是两者按物质的量加权的平均，再求它的比热容比。
+
+    （2）求混合气的平均摩尔质量，并说明算声速时为什么用它。
+
+    （3）$20\,^\circ\mathrm C$（按$273.15$换算）时，这种混合气中的声速是多少？是同温空气中（$343\,\mathrm{m/s}$）的几倍？
+
+    （4）吸了这种气体再说话，声带振动的频率几乎不变，声音却变得又尖又细。把人的声道（vocal tract）粗略地看成一端封闭、一端开口的管子，参照[声波](lesson:physics.oscillations-waves.sound-waves)第 7 题，说明原因。
+  hints:
+    - |
+      $1\,\mathrm{mol}$混合气里各有多少氦、多少氧？升温$\dd T$时内能增加多少？混合气的密度怎样用平均摩尔质量表示？
+    - |
+      $C_{V,\mathrm m}=0.8\times\frac32R+0.2\times\frac52R$，再由迈耶公式（Mayer's relation）$C_{p,\mathrm m}=C_{V,\mathrm m}+R$。平均摩尔质量是$1\,\mathrm{mol}$混合气的质量，$\rho_0=\frac{p_0M}{RT}$照样成立。
+    - |
+      （1）$1\,\mathrm{mol}$混合气里有$0.8\,\mathrm{mol}$氦、$0.2\,\mathrm{mol}$氧，升温$\dd T$时内能增加$\bigl(0.8\times\frac32R+0.2\times\frac52R\bigr)\dd T$，所以$C_{V,\mathrm m}=1.7R$，正是按物质的量加权的平均。混合气整体也满足$pV=nRT$，迈耶公式照样成立，$C_{p,\mathrm m}=2.7R$，$\gamma=\frac{27}{17}\approx1.59$。
+
+      （2）$M=0.8\times4.00\,\mathrm{g/mol}+0.2\times32.0\,\mathrm{g/mol}=9.60\,\mathrm{g/mol}$，是$1\,\mathrm{mol}$混合气的质量。物质的量为$n$的混合气质量是$nM$，所以密度$\rho_0=\frac{p_0M}{RT}$，代入$v=\sqrt{\gamma p_0/\rho_0}$就得$\sqrt{\gamma RT/M}$，用的正是平均摩尔质量。
+
+      （3）$v=\sqrt{\frac{27}{17}\times\frac{8.314\times293.15}{0.00960}}\,\mathrm{m/s}\approx635\,\mathrm{m/s}$，约是空气中的 1.85 倍。
+
+      （4）由[声波](lesson:physics.oscillations-waves.sound-waves)第 7 题，长为$\ell$的这种管子里，气柱的固有频率（natural frequency）是$\frac v{4\ell}$的奇数倍，和声速成正比，所以声道的这些共振频率（resonant frequency）都升为原来的约 1.85 倍。声带振动的频率决定音调（pitch），并没有变；可声音里被声道加强的那些成分整体移到了更高的频率，听起来就又尖又细。
+  reference: |
+    （1）$C_{V,\mathrm m}=0.8\times1.5R+0.2\times2.5R=1.7R$；混合理想气体满足$pV=nRT$，$C_{p,\mathrm m}=2.7R$，$\gamma=\frac{27}{17}\approx1.588$。
+
+    （2）$M=0.8\times4.00+0.2\times32.0=9.60\,\mathrm{g/mol}$；$\rho_0=\frac{nM}V=\frac{p_0M}{RT}$，所以$\sqrt{\gamma p_0/\rho_0}=\sqrt{\gamma RT/M}$里的$M$是平均摩尔质量。
+
+    （3）$v=\sqrt{1.588\times8.314\times293.15/0.00960}\approx635.0\,\mathrm{m/s}$，是$343\,\mathrm{m/s}$的约 1.85 倍。
+
+    （4）声道的共振频率（$\frac v{4\ell}$的奇数倍，$\ell$是声道长）和声速成正比，都升为约 1.85 倍；声带决定的基音不变，但被加强的谐波换成了更高的那些，音色变得尖细，音调没变。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）晴朗无风的夜里，地面附近的空气比上面冷，这叫逆温（temperature inversion），这时远处的声音常常听得特别清楚；晴天的午后反过来，下面的空气比上面热。一列声波的:term[波阵面]{id="physics.oscillations-waves.wavefront"}（wavefront）在声速大的一侧走得快、在声速小的一侧走得慢时，传播方向会怎样转？由此说明这两种情形下，向远处传的声音各往哪边弯。
+
+    （2）风速通常随高度增大。顺风和逆风传出去的声音，各往哪边弯？
+
+    （3）由此说说，为什么夜里常能听见白天听不到的远处的火车声，而逆着风常常听不见远处的声音。
+  hints:
+    - |
+      把波阵面想成一排并肩前进的人，一头走得快、一头走得慢，队伍会朝哪边转？
+    - |
+      传播方向弯向声速小的一侧。由$v=\sqrt{\gamma RT/M}$，热的空气里声速大；有风时，声音相对地面的速度是声速加上风速沿传播方向的分量。
+    - |
+      （1）波阵面上声速大的那一段走得快，整个波阵面朝声速小的一侧转，传播方向也就弯向声速小的一侧。逆温的夜里上面热、声速大，斜着向上传的声音被弯回地面，能贴着地面传到很远；午后下面热、声速大，声音向上弯，离开了地面。
+
+      （2）声音相对地面的速度是声速加上风速沿传播方向的分量。顺风时上面风大，上面的声音相对地面走得快，声音弯向地面；逆风时上面的声音相对地面走得慢，声音弯向天上。
+
+      （3）夜里有逆温，本来斜着向上散掉的声音被弯回地面，周围又安静，远处的火车声就听得见了。白天声音向上弯，离声源远一些的地面上会出现声音几乎到不了的地带，叫作声影区（acoustic shadow zone）；逆风时声音也向上弯，远处的人常常正落在这样的地带里。
+  reference: |
+    （1）波阵面在声速大处前进得快，传播方向弯向声速小的一侧（和光的折射同理）。逆温：上暖下冷，上面声速大，声线弯回地面，声音沿地面传得远；午后：下暖上冷，声线向上弯。
+
+    （2）相对地面的传播速度是$v+\vb w$沿传播方向的分量。顺风：高处的风大，高处相对地面走得快，声线弯向地面；逆风：高处走得慢，声线弯向天上。
+
+    （3）夜里逆温（加上背景噪声小），声音弯回地面、传得远；白天和逆风时声线上弯，远处地面进入声影区，听不见或很弱。温差 10 K 只让声速变约 6 m/s，可传播几千米后，这一点弯曲就够让声线高出或回到地面。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）在很细的管子里，或者在纤维、泡沫这类吸声材料（sound-absorbing material）的细孔里，声波里的压缩比在开阔的空气里更接近等温。为什么？
+
+    （2）[声波](lesson:physics.oscillations-waves.sound-waves)第 6 题里水中的气泡如果很小，气泡里的空气该用哪一种体积模量？那道题算出的声速会偏大还是偏小？
+
+    （3）牛顿的等温声速，在什么情形下反而更接近实际？
+  hints:
+    - |
+      开阔的空气里，热量要传过半个波长，才能和变冷的地方交换；旁边要是有管壁、纤维或水，热量要走多远？
+    - |
+      由第 5 题的估算，半个周期里热量只传开约$\sqrt{\frac D{2f}}$远，$1\,\mathrm{kHz}$时约$0.1\,\mathrm{mm}$。管壁、纤维、水吸收或放出这一点热量，温度几乎不变。
+    - |
+      （1）开阔的空气里，被压缩而变热的地方和膨胀而变冷的地方相距半个波长，热量来不及传过去，所以绝热。细管、细孔里，每一小团空气离管壁或纤维只有零点一毫米上下甚至更近，不比半个周期里热量传开的距离远，热量来得及在空气和壁之间进出；壁吸收或放出这点热量，温度几乎不变，空气的温度也就几乎不变，压缩接近等温。
+
+      （2）小气泡也一样：半径比热量在半个周期里传开的距离（$1\,\mathrm{kHz}$时约$0.1\,\mathrm{mm}$）小得多时，气泡里的空气和周围的水来得及交换热量，压缩接近等温，应该用等温体积模量，它等于压强，约$1.0\times10^5\,\mathrm{Pa}$。那道题用的$1.4\times10^5\,\mathrm{Pa}$偏大，算出的声速也偏大：改用等温的，混合物里的声速约为$1.0\times10^2\,\mathrm{m/s}$，比那道题的$119\,\mathrm{m/s}$小。
+
+      （3）空气离能吸收、放出热量的东西很近，近到半个周期里热量来得及传过去的时候：多孔的吸声材料、细管、水里的小气泡，而且频率越低越是这样。在开阔的空气里，声波总是近似绝热的，牛顿的值偏小。
+  reference: |
+    （1）热扩散在半个周期里走$\sqrt{D/(2f)}$（$1\,\mathrm{kHz}$时约$0.1\,\mathrm{mm}$）；孔径、管径比它小时，空气和固体壁来得及交换热量，壁的热容大、温度几乎不变，压缩近似等温（吸声材料里还因此把声能变成热，这是它吸声的原因之一）。
+
+    （2）小气泡近似等温，$K\approx p\approx1.0\times10^5\,\mathrm{Pa}$；$\frac1K=\frac{0.01}{1.013\times10^5}+\frac{0.99}{2.2\times10^9}$，$K\approx1.0\times10^7\,\mathrm{Pa}$，$v\approx101\,\mathrm{m/s}$，比那道题的$119\,\mathrm{m/s}$小，那道题偏大。
+
+    （3）多孔材料、细管、含小气泡的液体这类「热量能就近进出」的地方（频率越低越明显）；开阔的空气里，由第 5 题，连续介质能用的频率范围内声波都是绝热的。

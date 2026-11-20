@@ -36,7 +36,7 @@ $\lambda f=v$说的是：每过$\frac1f$，波形正好前进一个波长。$x$�
 ::anchor{id="def-transverse-longitudinal"}
 介质里各点振动的方向和波传播的方向垂直的波叫作:term[横波]{id="physics.oscillations-waves.transverse-wave"}（transverse wave），平行的叫作:term[纵波]{id="physics.oscillations-waves.longitudinal-wave"}（longitudinal wave）。
 
-为什么这样定义：两种波可以满足同样的方程，区别在振动的方向，以及介质靠哪种形变把各点拉回来。弦的横向振动靠张力拉回，是横波；[一维链与连续极限](lesson:physics.oscillations-waves.beaded-string)的动画里物块沿链的方向振动，这样的链上传的是纵波，空气里的声波也是纵波。边界情况：水面波经过时，水的质点大致沿圆或椭圆运动，横向、纵向都在动，两种都不是。
+为什么这样定义：两种波可以满足同样的方程，区别在振动的方向，以及介质靠哪种形变把各点拉回来。弦的横向振动靠张力拉回，是横波；[一维链与连续极限](lesson:physics.oscillations-waves.beaded-string)的动画里物块沿链的方向振动，这样的链上传的是纵波，空气里的:term[声波]{id="physics.oscillations-waves.sound-wave"}也是纵波。边界情况：水面波经过时，水的质点大致沿圆或椭圆运动，横向、纵向都在动，两种都不是。
 
 ### 复数形式
 

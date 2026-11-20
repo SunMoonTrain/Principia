@@ -563,3 +563,30 @@ glossary:
       频率是基频整数倍的振动；两端固定的弦的固有频率$f_n=nf_1$叫作第$n$次谐波。
     definedIn: physics.oscillations-waves.standing-waves
     anchor: def-harmonics
+  - id: physics.oscillations-waves.bulk-modulus
+    zh: |
+      体积模量
+    en: |
+      bulk modulus
+    brief: |
+      流体压强的增加和体积相对减小之比$K=-V\dv pV$，单位$\mathrm{Pa}$；水约为$2.2\times10^9\,\mathrm{Pa}$。
+    definedIn: physics.oscillations-waves.sound-waves
+    anchor: def-bulk-modulus
+  - id: physics.oscillations-waves.sound-wave
+    zh: |
+      声波
+    en: |
+      sound wave
+    brief: |
+      在介质里传播声音的机械波，也包括人耳听不到的超声波、次声波；在气体、液体里是纵波。
+    definedIn: physics.oscillations-waves.sound-waves
+    anchor: def-sound-wave
+  - id: physics.oscillations-waves.speed-of-sound
+    zh: |
+      声速
+    en: |
+      speed of sound
+    brief: |
+      声波相对介质传播的速度，也叫音速；不计黏性、导热的流体中振幅很小时$v=\sqrt{K/\rho}$（$K$是绝热体积模量，$\rho$是密度），$20\,^\circ\mathrm C$的空气中约$343\,\mathrm{m/s}$。
+    definedIn: physics.oscillations-waves.sound-waves
+    anchor: def-sound-wave
