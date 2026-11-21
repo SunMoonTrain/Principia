@@ -29,7 +29,7 @@ status: reviewed
 ::anchor{id="def-polarizability"}
 不太强的电场里，原子产生的电偶极矩和电场成正比，$\vb p=\alpha\vb E$，比例系数$\alpha$叫作这种原子的:term[极化率]{id="physics.electromagnetism.polarizability"}（polarizability），单位是$\mathrm{C\,m^2/V}$。
 
-为什么这样定义：电场弱时，电子云被拉开的距离和拉力成正比，像一根弹簧，$\alpha$量的是这根「弹簧」有多软。量子力学算出，基态氢原子的极化率是$\alpha=4.5\times4\pi\varepsilon_0a_0^3\approx7.42\times10^{-41}\,\mathrm{C\,m^2/V}$，$a_0$是玻尔半径（Bohr radius）。边界情况：电场很强时$\vb p$和$\vb E$不再成正比，强到一定程度还会把电子拉走。
+为什么这样定义：电场弱时，电子云被拉开的距离和拉力成正比，像一根弹簧，$\alpha$量的是这根「弹簧」有多软。量子力学算出，基态氢原子的极化率是$\alpha=4.5\times4\pi\varepsilon_0a_0^3\approx7.42\times10^{-41}\,\mathrm{C\,m^2/V}$，$a_0$是:term[玻尔半径]{id="physics.quantum-mechanics.bohr-radius"}（Bohr radius）。边界情况：电场很强时$\vb p$和$\vb E$不再成正比，强到一定程度还会把电子拉走。
 
 ### 极化强度和束缚电荷
 

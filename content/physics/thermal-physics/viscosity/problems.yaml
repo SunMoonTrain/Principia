@@ -1,0 +1,216 @@
+- id: p1
+  tier: easy
+  statement: |
+    两块平行的大平板相距$0.50\,\mathrm{mm}$，中间是黏度为$1.8\times10^{-5}\,\mathrm{Pa\cdot s}$的气体。下板不动，面积为$0.30\,\mathrm{m^2}$的上板以$1.5\,\mathrm{m/s}$匀速平移，要用多大的力拉上板？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 1.8e-5*0.30*1.5/0.50e-3
+    unit: |
+      $\mathrm N$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      两板之间的流速从$0$均匀地增大到上板的速度，流速沿竖直方向的变化率处处相同。
+    - |
+      $\dv uz=\frac{u_0}h$，再用牛顿黏性定律$F=\eta A\dv uz$。
+    - |
+      $\dv uz=\frac{1.5}{0.50\times10^{-3}}\,\mathrm{s^{-1}}=3.0\times10^3\,\mathrm{s^{-1}}$，$F=1.8\times10^{-5}\times0.30\times3.0\times10^3\,\mathrm N\approx1.62\times10^{-2}\,\mathrm N$。
+  solution: |
+    流速从$0$均匀地增大到$u_0$，$\dv uz=\frac{u_0}h=3.0\times10^3\,\mathrm{s^{-1}}$。由牛顿黏性定律，$F=\eta A\dv uz=1.8\times10^{-5}\times0.30\times3.0\times10^3\,\mathrm N$，约为$1.62\times10^{-2}\,\mathrm N$，即$0.0162\,\mathrm N$。下板也受到同样大、向前的拖拽。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法正确？气体都看成理想气体（ideal gas），分子的有效直径不随温度、压强变化，平均自由程都远小于两板的间距；「拖动上板」指讲解开头那种两块平行板的装置。
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        黏度的单位也可以写成$\mathrm{kg/(m\cdot s)}$
+      - |
+        气体和板的面积都不变，两板的间距和上板的速度都变为原来的 2 倍，拖动上板所需的力不变
+      - |
+        同一种气体保持温度不变，平均自由程变为原来的 2 倍时，黏度也变为原来的 2 倍
+      - |
+        温度相同、分子的有效直径也相同时，分子质量大的气体黏度大
+      - |
+        密闭的刚性容器里的气体升温时，黏度不变
+    value: [1, 2, 4]
+  hints:
+    - |
+      B 用牛顿黏性定律；C、D、E 用黏度的估算式，每一项先看哪些量变了、哪些没变。
+    - |
+      $\mathrm{Pa}=\mathrm{N/m^2}$，$\mathrm N=\mathrm{kg\cdot m/s^2}$。$F=\eta A\frac{u_0}h$；$\eta\approx\frac13\rho v_{\mathrm{rms}}\lambda=\frac{mv_{\mathrm{rms}}}{3\sqrt2\,\sigma}$，$v_{\mathrm{rms}}=\sqrt{\frac{3\kB T}m}$。
+    - |
+      A 对：$\mathrm{Pa\cdot s}=\frac{\mathrm{kg\cdot m/s^2}}{\mathrm{m^2}}\cdot\mathrm s=\mathrm{kg/(m\cdot s)}$。B 对：由$F=\eta A\frac{u_0}h$，$u_0$和$h$同时加倍，比值不变。C 错：温度不变时平均自由程加倍，是因为数密度减半，密度$\rho$也减半，$\rho\lambda$不变，黏度不变。
+
+      D 对：$\eta\approx\frac{mv_{\mathrm{rms}}}{3\sqrt2\,\sigma}=\frac{\sqrt{3m\kB T}}{3\sqrt2\,\sigma}$，温度和碰撞截面都相同时，黏度和$\sqrt m$成正比。E 错：刚性容器里数密度不变，平均自由程、密度都不变，可$v_{\mathrm{rms}}$随温度增大，黏度变大。
+  solution: |
+    选 A、B、D。A 对：$\mathrm{Pa\cdot s}=\frac{\mathrm{kg\cdot m/s^2}}{\mathrm{m^2}}\cdot\mathrm s=\mathrm{kg/(m\cdot s)}$。B 对：$F=\eta A\frac{u_0}h$，$u_0$和$h$同时变为 2 倍，力不变。C 错：温度不变时平均自由程变为 2 倍，是因为数密度变为一半，密度也变为一半，$\rho\lambda$不变，黏度不变。
+
+    D 对：$\eta\approx\frac{\sqrt{3m\kB T}}{3\sqrt2\,\sigma}$，温度和碰撞截面相同时和$\sqrt m$成正比，重的分子带的动量多，虽然跑得慢些，还是重的黏度大。E 错：刚性容器里数密度不变，$\rho$和$\lambda$都不变，分子跑得更快，动量运送得更快，黏度随$\sqrt T$增大。
+
+- id: p3
+  tier: medium
+  statement: |
+    氩气的温度是$400\,\mathrm K$，氩原子的有效直径取$3.6\times10^{-10}\,\mathrm m$，氩的摩尔质量取$39.95\,\mathrm{g/mol}$。按讲解里的估算式，氩气的黏度是多少？以$10^{-5}\,\mathrm{Pa\cdot s}$为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: (0.03995/6.02214076e23)*sqrt(3*8.31446261815324*400/0.03995)/(3*sqrt(2)*pi*(3.6e-10)^2)/1e-5
+    unit: |
+      $10^{-5}\,\mathrm{Pa\cdot s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      题里没有给压强：按估算式，黏度和压强无关，用不着它。要的是一个原子的质量、方均根速率和碰撞截面。
+    - |
+      $m=\frac M{N_{\mathrm A}}$，$v_{\mathrm{rms}}=\sqrt{\frac{3RT}M}$，$\sigma=\pi d^2$，$\eta\approx\frac{mv_{\mathrm{rms}}}{3\sqrt2\,\sigma}$。
+    - |
+      $m=\frac{0.03995}{6.022\times10^{23}}\,\mathrm{kg}\approx6.63\times10^{-26}\,\mathrm{kg}$，$v_{\mathrm{rms}}=\sqrt{\frac{3\times8.314\times400}{0.03995}}\,\mathrm{m/s}\approx500\,\mathrm{m/s}$，$\sigma=\pi\times(3.6\times10^{-10})^2\,\mathrm{m^2}\approx4.07\times10^{-19}\,\mathrm{m^2}$。
+
+      $\eta\approx\frac{6.63\times10^{-26}\times500}{3\times1.414\times4.07\times10^{-19}}\,\mathrm{Pa\cdot s}\approx1.92\times10^{-5}\,\mathrm{Pa\cdot s}$。
+  solution: |
+    一个氩原子的质量$m=\frac M{N_{\mathrm A}}\approx6.63\times10^{-26}\,\mathrm{kg}$，$400\,\mathrm K$时的方均根速率$v_{\mathrm{rms}}=\sqrt{\frac{3RT}M}\approx500\,\mathrm{m/s}$，碰撞截面$\sigma=\pi d^2\approx4.07\times10^{-19}\,\mathrm{m^2}$。
+
+    $\eta\approx\frac{mv_{\mathrm{rms}}}{3\sqrt2\,\sigma}\approx1.92\times10^{-5}\,\mathrm{Pa\cdot s}$。不用知道压强：压强大，分子多，可每个分子把动量带得近，两者抵消。实测的氩在$400\,\mathrm K$时约为$2.9\times10^{-5}\,\mathrm{Pa\cdot s}$，粗估偏小，量级是对的。
+
+- id: p4
+  tier: medium
+  statement: |
+    两块平行板之间是某种气体，下板不动，上板以一定的速度匀速平移。气体的温度从$300\,\mathrm K$升到$600\,\mathrm K$，同时压强从$1.0\times10^5\,\mathrm{Pa}$降到$1.0\times10^4\,\mathrm{Pa}$；两板的间距、上板的速度都不变，平均自由程始终远小于两板的间距，分子的有效直径也不变。按讲解里的估算式，拖动上板所需的力变为原来的几倍？结果保留三位有效数字。
+  answer:
+    type: number
+    value: sqrt(2)
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      拖动上板的力和黏度成正比。黏度和哪些量有关，和哪些量无关？
+    - |
+      $\eta\approx\frac{mv_{\mathrm{rms}}}{3\sqrt2\,\sigma}$，式子里没有压强；$v_{\mathrm{rms}}=\sqrt{\frac{3\kB T}m}$。
+    - |
+      压强降为原来的$\frac1{10}$，不影响黏度；温度变为 2 倍，$v_{\mathrm{rms}}$变为$\sqrt2$倍，黏度也变为$\sqrt2$倍。$F=\eta A\frac{u_0}h$里别的量不变，所以力变为原来的$\sqrt2\approx1.41$倍。
+  solution: |
+    由$F=\eta A\frac{u_0}h$，力和黏度成正比。$\eta\approx\frac{mv_{\mathrm{rms}}}{3\sqrt2\,\sigma}$和压强无关，只随$v_{\mathrm{rms}}\propto\sqrt T$变化；温度变为 2 倍，黏度和力都变为原来的$\sqrt2\approx1.41$倍。
+
+    这时数密度只有原来的$\frac1{20}$，平均自由程却变为原来的 20 倍，两者正好抵消；压强降为原来的$\frac1{10}$，拖动上板反而更费力。
+
+- id: p5
+  tier: hard
+  statement: |
+    两块平行的大平板水平放置，相距$h$，下板不动，上板以$u_0$匀速平移，中间的流体已经稳定地流动：高度$z$处的流速$u(z)$沿$x$方向，不随时间变。流体服从牛顿黏性定律，紧贴两块板的流体和板一起运动，压强、重力都不影响沿$x$方向的运动。
+
+    （1）取$z$到$z+\Delta z$之间的一薄层流体，分析它沿$x$方向受的力，证明$\dv uz$处处相同，所以$u(z)=\frac{u_0z}h$；再说明上、下两块板受到流体的拖拽力大小相等、方向相反。
+
+    （2）两板之间换成两层互不相混的液体：上层的黏度为$\eta_1$、厚$h_1$，下层的黏度为$\eta_2$、厚$h_2$，两层在交界面上的流速相同。求交界面处的流速$u_{\mathrm i}$，以及拖动上板时单位面积上要用的力$\frac FA$。
+  hints:
+    - |
+      流动稳定，这一薄层流体的动量不变，它受的合力是多少？它的上表面、下表面各被哪一层流体拖着，往哪边拖？
+    - |
+      记$u'(z)=\dv uz$。上面的流体比它快，沿$+x$方向拖它，单位面积上的力是$\eta u'(z+\Delta z)$；下面的流体比它慢，沿$-x$方向拖它，单位面积上的力是$\eta u'(z)$。（2）每一层液体里流速都随高度均匀变化，交界面两侧单位面积上的拖拽力相等。
+    - |
+      （1）稳定流动时，这一薄层流体沿$x$方向的动量不变，由动量定理，它受的合力为零。上面的流体把它往前拖，单位面积上的力是$\eta u'(z+\Delta z)$；下面的流体把它往后拖，是$\eta u'(z)$。所以$u'(z+\Delta z)=u'(z)$对任意的$z$、$\Delta z$都成立，$u'$是常数。
+
+      导数处处等于常数$c$的函数是$cz+C$（[微分中值定理](lesson:math.calculus.mean-value-theorem#thm-same-derivative)的推论 2）；由$u(0)=0$、$u(h)=u_0$，得$u(z)=\frac{u_0z}h$。紧贴下板的流体把下板往前拖，单位面积上的力是$\eta u'(0)=\eta\frac{u_0}h$；紧贴上板的流体把上板往后拖，大小是$\eta u'(h)=\eta\frac{u_0}h$，两者大小相等、方向相反。
+
+      （2）由（1）的道理，每一层液体里的流速都随高度均匀变化，上层的变化率是$\frac{u_0-u_{\mathrm i}}{h_1}$，下层的是$\frac{u_{\mathrm i}}{h_2}$。对跨过交界面的一薄层用（1）的论证，交界面两侧单位面积上的拖拽力相等，也就等于拖动上板要用的$\frac FA$：
+
+      $$
+      \eta_1\frac{u_0-u_{\mathrm i}}{h_1}=\eta_2\frac{u_{\mathrm i}}{h_2}=\frac FA .
+      $$
+
+      解得$u_{\mathrm i}=\frac{\eta_1h_2}{\eta_1h_2+\eta_2h_1}u_0$，$\frac FA=\frac{u_0}{h_1/\eta_1+h_2/\eta_2}$。两层的$\frac h\eta$相加，就像串联的电阻相加；两层是同一种液体时，回到$\eta\frac{u_0}h$。
+  reference: |
+    （1）薄层动量不变，合力为零：$\eta u'(z+\Delta z)-\eta u'(z)=0$（上层快、向前拖；下层慢、向后拖），对任意$z$、$\Delta z$成立，$u'$为常数。由中值定理的推论，$u=cz+C$，代入$u(0)=0$、$u(h)=u_0$得$u=\frac{u_0z}h$。下板受向前的$\eta u'(0)A$，上板受向后的$\eta u'(h)A$，两者都等于$\eta A\frac{u_0}h$，大小相等、方向相反；也可以对整层流体用合力为零。
+
+    （2）两层内各自线性；跨交界面的薄层合力为零，两侧剪切力相等：$\eta_1\frac{u_0-u_{\mathrm i}}{h_1}=\eta_2\frac{u_{\mathrm i}}{h_2}=\frac FA$。得$u_{\mathrm i}=\frac{\eta_1h_2u_0}{\eta_1h_2+\eta_2h_1}$，$\frac FA=\frac{u_0}{h_1/\eta_1+h_2/\eta_2}=\frac{\eta_1\eta_2u_0}{\eta_1h_2+\eta_2h_1}$。检验：$\eta_1=\eta_2$、$h_1+h_2=h$时$u_{\mathrm i}=\frac{h_2}hu_0$，$\frac FA=\eta\frac{u_0}h$。
+
+- id: p6
+  tier: hard
+  statement: |
+    两块平行板之间是极稀薄的气体，平均自由程比两板的间距$h$大得多，分子几乎不互相碰撞，只在两块板之间来回飞。下板不动，上板以$u_0$平移，$u_0$比分子的方均根速率小得多。设分子撞上一块板再离开时，沿$x$方向的平均速度就变成那块板的速度；仍按「六分之一的分子朝每个方向跑」估算。
+
+    （1）估算上板受到的单位面积上的拖拽力，说明它和$h$无关，温度不变时和压强成正比。
+
+    （2）把结果和讲解里由黏度算出的$\frac FA=\eta\frac{u_0}h$（$\eta\approx\frac13\rho v_{\mathrm{rms}}\lambda$）比较，两者之比是多少？由此说明，讲解里「黏度和压强无关」的结论在什么情况下失效。
+  hints:
+    - |
+      撞上上板的分子都是从下板直接飞来的，它们沿$x$方向的平均速度是多少？离开上板时呢？每个分子从上板带走多少沿$x$方向的动量？
+    - |
+      撞上上板的分子平均带着下板的速度$0$来，带着$u_0$走，每个分子从上板带走$mu_0$的动量。单位时间撞上单位面积上板的分子约有$\frac16\frac NVv_{\mathrm{rms}}$个。
+    - |
+      （1）分子之间几乎不碰撞，撞上上板的分子都是刚离开下板的，沿$x$方向的平均速度是$0$；离开上板时，平均速度变成$u_0$。每个分子从上板带走沿$x$方向的动量$mu_0$，单位时间撞上单位面积上板的约有$\frac16\frac NVv_{\mathrm{rms}}$个，由动量定理，上板受到向后的拖拽力
+
+      $$
+      \frac FA\approx\frac16\cdot\frac NVmv_{\mathrm{rms}}u_0=\frac16\rho v_{\mathrm{rms}}u_0 .
+      $$
+
+      式子里没有$h$：分子不管飞多远，带的都是两块板的速度差。温度不变时$v_{\mathrm{rms}}$不变，$\frac FA$和数密度成正比，也就和压强成正比。
+
+      （2）讲解里的式子给出$\frac FA\approx\frac13\rho v_{\mathrm{rms}}\lambda\frac{u_0}h$，两者之比是
+
+      $$
+      \frac{\frac16\rho v_{\mathrm{rms}}u_0}{\frac13\rho v_{\mathrm{rms}}\lambda u_0/h}=\frac h{2\lambda} ,
+      $$
+
+      $\lambda\gg h$时远小于 1。讲解的推导假定分子带过来的是$\lambda$以外那一层的流速，可两板之间根本没有$\lambda$那么远，分子最多只能带过来另一块板的速度。所以压强低到平均自由程和两板的间距差不多时，「黏度和压强无关」就不成立了，再抽稀，拖拽力随压强一起变小。有一种真空计（vacuum gauge）正是利用这一点，由气体的拖拽测出很低的压强。
+  reference: |
+    （1）无碰撞：射向上板的分子来自下板，平行于板的平均速度为$0$，离开时为$u_0$，每个带走$mu_0$；通量约$\frac16\frac NVv_{\mathrm{rms}}$，故$\frac FA\approx\frac16\rho v_{\mathrm{rms}}u_0$，与$h$无关，$T$一定时正比于$\frac NV$，即正比于$p$。
+
+    （2）比值$\frac{\frac16\rho vu_0}{\frac13\rho v\lambda u_0/h}=\frac h{2\lambda}\ll1$。讲解的推导要求$\lambda\ll h$（分子带来的是$\lambda$以外那一层的流速），$\lambda$与$h$相当时失效：动量最多被带过整个间距，力随压强下降；两端都对的粗略插值是$\frac FA\approx\frac13\rho v\lambda\frac{u_0}{h+2\lambda}$。这是黏滞真空计（如转子真空计）的原理。
+
+- id: p7
+  tier: thinking
+  statement: |
+    空气的黏度随温度升高而增大，水的黏度却随温度升高而减小：$20\,^\circ\mathrm C$时水的黏度约为$1.0\times10^{-3}\,\mathrm{Pa\cdot s}$，$80\,^\circ\mathrm C$时只有约$0.35\times10^{-3}\,\mathrm{Pa\cdot s}$。
+
+    （1）用本节的分子图像说明，气体的黏度为什么随温度升高而增大。
+
+    （2）液体里分子一个挨着一个，彼此吸引得很紧，「飞一个平均自由程再撞」的图像用不上。相邻两层液体要相对滑动，分子得怎样动？温度升高为什么让这件事变得容易？
+
+    （3）由此说说，液体的黏度为什么一般比气体的大得多。
+  hints:
+    - |
+      （1）黏度的估算式里，哪些量随温度变？（2）想象一个分子被周围的邻居围在一个「笼子」里，它要怎样才能挪到下一个位置？
+    - |
+      （1）数密度一定时，平均自由程不变，$v_{\mathrm{rms}}$随$\sqrt T$增大。（2）分子要挣脱邻居的吸引、挤过它们之间的空隙，才能挪到下一个位置；热运动越剧烈，这样「跳一步」越容易。
+    - |
+      （1）由$\eta\approx\frac{mv_{\mathrm{rms}}}{3\sqrt2\,\sigma}$，温度升高，分子跑得更快，单位时间穿过一个面、来回运送动量的分子更多，黏度增大；有效直径随温度略微变小，黏度还会再大一点。
+
+      （2）液体里的分子被邻居紧紧围住，大部分时间只在原地附近振动。相邻两层要相对滑动，分子得一个个地挣脱邻居的吸引、挤过它们之间的空隙，跳到下一个位置；拖得越快，单位时间要跳的次数越多，液体的抵抗越大。温度升高，分子振动得更剧烈，挣脱的机会大大增加，液体不用怎么拖就能流动，黏度变小。
+
+      （3）气体里动量要靠分子飞过去才能运送，分子又稀少；液体里分子紧挨着，相对滑动处处受到邻居吸引的阻碍，动量也直接通过分子之间的作用力传给邻居。所以液体的黏度一般比气体的大得多：$20\,^\circ\mathrm C$时水的黏度约是空气的 55 倍，蜂蜜的又约是水的几千倍。
+  reference: |
+    （1）$\eta\approx\frac{mv_{\mathrm{rms}}}{3\sqrt2\sigma}\propto\sqrt T$（数密度、$\lambda$不变，运送动量的分子更快、更多）；有效直径随温度略减小，实测约$T^{0.7}$。
+
+    （2）液体分子困在邻居组成的「笼子」里，滑动要靠分子越过吸引造成的能垒、跳进相邻的空位；剪切越快，单位时间所需跳跃越多，阻力越大。升温使热运动增强，越过能垒的次数随温度急剧增加（近似按$e^{-E_{\mathrm a}/\kB T}$），黏度随之下降（安德拉德型规律）。
+
+    （3）气体靠稀疏的分子飞行运送动量，效率低；液体分子密堆积、强吸引，动量通过分子间作用力直接传递，滑动处处受阻，所以黏度大两三个数量级（水约为空气的 55 倍，甘油、蜂蜜更大）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    讲解开头的装置里，拉力一直拉着上板匀速移动，两板之间气体的流动稳定以后不再变化。
+
+    （1）每秒拉力做的功是多少？用$\eta$、$A$、$u_0$、$h$表示。气体流动的动能并没有增加，这些能量到哪里去了？
+
+    （2）从分子的角度说说，流动的能量是怎样变成另一种形式的。
+
+    （3）如果两块板都包着隔热层，一直拖下去，气体会怎样？拖动上板所需的力又会怎样变？
+  hints:
+    - |
+      拉力做功的功率是力乘速度。分子从快的一层来到慢的一层，多带着一点向前的速度；它再和周围的分子碰撞，这点有方向的速度会怎样？
+    - |
+      功率$P=Fu_0=\eta A\frac{u_0^2}h$。撞几次以后，这点有方向的速度就被打乱成各个方向的杂乱运动，有序的流动变成了无序的热运动；气体变热以后，黏度怎样随温度变？
+    - |
+      （1）$P=Fu_0=\eta A\frac{u_0^2}h$。流动稳定，每一层的流速不变，流动的动能也不变，这些功变成了气体的:term[内能]{id="physics.thermal-physics.internal-energy"}（internal energy，见[内能与热量](lesson:physics.thermal-physics.internal-energy#def-internal-energy)）：两板之间的气体被慢慢加热，就像摩擦生热一样。
+
+      （2）从上面一层下来的分子，比周围的分子多带着一点向前的速度；撞几次以后，这点有方向的速度就被分散成各个方向的杂乱运动。一层层地这样传下去，上板得到的动量最后交给了不动的下板，拉力做的功则留在气体里，成了分子热运动的能量：有序的流动变成了无序的热运动。[理想流体与伯努利方程](lesson:physics.newtonian-mechanics.bernoulli)第 8 题的水管里，压强差做的功也是这样被黏性耗掉的。
+
+      （3）两板都隔热，热量（heat）传不出去，气体的温度会一直升高；黏度随温度增大，拖动上板所需的力也会慢慢变大。实际的实验里，板是金属的，热量不断从气体传给两板、再传到周围，气体的温度才能保持不变。
+  reference: |
+    （1）$P=Fu_0=\eta Au_0^2/h$。定常流动的宏观动能不变，功全部转化为气体的内能（黏性耗散），相当于摩擦生热；稳态时这些热经两板传走。
+
+    （2）分子从快层进入慢层时带着多余的有向动量，几次碰撞后这部分有向速度被随机化为热运动；动量逐层传到下板（下板受向前的力），能量留在气体里：有序的宏观运动变为无序的微观运动，这也是与熵增、不可逆性相联系的典型过程（不要求说出）。伯努利那一节第 8 题水管中的压强差做功同理被黏性耗散。
+
+    （3）绝热时气体持续升温（单位体积的加热率$\eta(u_0/h)^2$），$\eta\propto\sqrt T$随之增大，所需拉力缓慢增大；实际中两板导热，热量传给板再散到外界，温度维持不变。以例 1 为例，功率约$1.4\times10^{-2}\,\mathrm W$，若完全绝热，$2\times10^{-4}\,\mathrm{m^3}$的空气每秒升温约$0.08\,\mathrm K$。

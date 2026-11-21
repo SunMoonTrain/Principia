@@ -19,7 +19,7 @@ status: reviewed
 
 ### 波阵面
 
-:term[波动方程]{id="physics.oscillations-waves.wave-equation"}（wave equation）推广到三维，是$\psi_{tt}=v^2\nabla^2\psi$，$\psi(\vb r,t)$是空间各点的扰动，例如声波里空气压强的变化，$\nabla^2$是拉普拉斯算子（Laplacian）。均匀、各向同性的介质里的声波满足这样的方程，电磁波也是（见[真空中的电磁波](lesson:physics.electromagnetism.em-waves)）。
+:term[波动方程]{id="physics.oscillations-waves.wave-equation"}（wave equation）推广到三维，是$\psi_{tt}=v^2\nabla^2\psi$，$\psi(\vb r,t)$是空间各点的扰动，例如:term[声波]{id="physics.oscillations-waves.sound-wave"}里空气压强的变化，$\nabla^2$是拉普拉斯算子（Laplacian）。均匀、各向同性的介质里的声波满足这样的方程，电磁波也是（见[真空中的电磁波](lesson:physics.electromagnetism.em-waves)）。
 
 ::anchor{id="def-wavefront"}
 同一时刻振动的:term[相位]{id="physics.oscillations-waves.phase"}（phase）相同的各点连成的面，叫作:term[波阵面]{id="physics.oscillations-waves.wavefront"}（wavefront）；波阵面是一族平行平面的波叫作:term[平面波]{id="physics.oscillations-waves.plane-wave"}（plane wave），是一族同心球面的叫作:term[球面波]{id="physics.oscillations-waves.spherical-wave"}（spherical wave）。
@@ -59,7 +59,7 @@ status: reviewed
 
 ### 例 1　写出斜着传播的平面波
 
-:term[频率]{id="physics.oscillations-waves.frequency"}（frequency）为$680\,\mathrm{Hz}$的声波在空气里沿$xy$平面内、和$x$轴、$y$轴都成$45^\circ$的方向传播，声速取$340\,\mathrm{m/s}$，:term[振幅]{id="physics.oscillations-waves.amplitude"}为$A$。写出这列:term[平面波]{id="physics.oscillations-waves.plane-wave"}，并求同一时刻原点和点$(0.25\,\mathrm m,0,0)$的相位差。
+:term[频率]{id="physics.oscillations-waves.frequency"}（frequency）为$680\,\mathrm{Hz}$的:term[声波]{id="physics.oscillations-waves.sound-wave"}在空气里沿$xy$平面内、和$x$轴、$y$轴都成$45^\circ$的方向传播，:term[声速]{id="physics.oscillations-waves.speed-of-sound"}取$340\,\mathrm{m/s}$，:term[振幅]{id="physics.oscillations-waves.amplitude"}为$A$。写出这列:term[平面波]{id="physics.oscillations-waves.plane-wave"}，并求同一时刻原点和点$(0.25\,\mathrm m,0,0)$的相位差。
 
 **为什么想到这么做**：$\lvert\vb k\rvert=\frac\omega v$，方向沿$\frac1{\sqrt2}(1,1,0)$；两点的相位差是$\vb k\cdot\Delta\vb r$。
 
@@ -67,7 +67,7 @@ status: reviewed
 
 ### 例 2　点声源的远近
 
-点声源向四周均匀地发声。离它$2.0\,\mathrm m$处和$10\,\mathrm m$处，声波的:term[振幅]{id="physics.oscillations-waves.amplitude"}之比和:term[能流]{id="physics.oscillations-waves.energy-flux"}之比各是多少？
+点声源向四周均匀地发声。离它$2.0\,\mathrm m$处和$10\,\mathrm m$处，:term[声波]{id="physics.oscillations-waves.sound-wave"}的:term[振幅]{id="physics.oscillations-waves.amplitude"}之比和:term[能流]{id="physics.oscillations-waves.energy-flux"}之比各是多少？
 
 **为什么想到这么做**：:term[球面波]{id="physics.oscillations-waves.spherical-wave"}的振幅和$r$成反比，能流和振幅的平方成正比。
 

@@ -9,6 +9,8 @@ macros:
     \left\langle #1\right|
   \braket: |
     \left\langle #1\middle| #2\right\rangle
+  \mel: |
+    \left\langle #1\middle| #2\middle| #3\right\rangle
   \expval: |
     \left\langle #1\right\rangle
   \comm: |
@@ -21,4 +23,241 @@ macros:
     \frac{\partial #1}{\partial #2}
   \vb: |
     \mathbf{#1}
-glossary: []
+  \uv: |
+    \hat{\mathbf{#1}}
+  \Re: |
+    \operatorname{Re}
+  \Im: |
+    \operatorname{Im}
+  \tr: |
+    \operatorname{tr}
+  \lap: |
+    \nabla^2
+  \kB: |
+    k_{\mathrm{B}}
+glossary:
+  - id: physics.quantum-mechanics.photon
+    zh: |
+      光子
+    en: |
+      photon
+    brief: |
+      频率为$\nu$的光由一个个能量为$E=h\nu$的光子组成，一个电子一次吸收一整个光子；频率一定时，光越强，光子越多。
+    definedIn: physics.quantum-mechanics.photons
+    anchor: def-photon
+  - id: physics.quantum-mechanics.planck-constant
+    zh: |
+      普朗克常量
+    en: |
+      Planck constant
+    brief: |
+      光子能量$E=h\nu$里的比例常数，$h=6.626\,070\,15\times10^{-34}\,\mathrm{J\cdot s}$，是定义的精确值。
+    definedIn: physics.quantum-mechanics.photons
+    anchor: def-photon
+  - id: physics.quantum-mechanics.photoelectric-effect
+    zh: |
+      光电效应
+    en: |
+      photoelectric effect
+    brief: |
+      光照射金属表面时，电子从表面射出的现象；通常强度的光，频率不低于这种金属的截止频率才能发生。
+    definedIn: physics.quantum-mechanics.photons
+    anchor: def-photoelectric-effect
+  - id: physics.quantum-mechanics.wave-particle-duality
+    zh: |
+      波粒二象性
+    en: |
+      wave–particle duality
+    brief: |
+      光既有波动性，能干涉、衍射，又有粒子性，和物质交换能量时是一个个光子，这叫光的波粒二象性。
+    definedIn: physics.quantum-mechanics.photons
+    anchor: def-wave-particle-duality
+  - id: physics.quantum-mechanics.photoelectron
+    zh: |
+      光电子
+    en: |
+      photoelectron
+    brief: |
+      光电效应中从金属表面射出的电子；吸收一个频率为$\nu$的光子后，最大动能是$h\nu-W_0$，$W_0$是逸出功。
+    definedIn: physics.quantum-mechanics.photons
+    anchor: def-photoelectric-effect
+  - id: physics.quantum-mechanics.stopping-voltage
+    zh: |
+      遏止电压
+    en: |
+      stopping voltage
+    brief: |
+      使光电流恰好减为零的反向电势差的大小$\Delta\varphi_{\mathrm c}$，也叫截止电压；$e\Delta\varphi_{\mathrm c}$等于光电子的最大动能。
+    definedIn: physics.quantum-mechanics.photons
+    anchor: def-stopping-voltage
+  - id: physics.quantum-mechanics.line-spectrum
+    zh: |
+      线状谱
+    en: |
+      line spectrum
+    brief: |
+      只含一些分立的波长、由一条条亮线组成的光谱；每种元素的原子有自己的一组谱线，像指纹一样。
+    definedIn: physics.quantum-mechanics.hydrogen-spectrum
+    anchor: def-line-spectrum
+  - id: physics.quantum-mechanics.rydberg-formula
+    zh: |
+      里德伯公式
+    en: |
+      Rydberg formula
+    brief: |
+      氢原子谱线在真空中的波长满足$\frac1\lambda=R_{\mathrm H}\bigl(\frac1{n_1^2}-\frac1{n_2^2}\bigr)$，$n_1<n_2$都是正整数。
+    definedIn: physics.quantum-mechanics.hydrogen-spectrum
+    anchor: def-rydberg-formula
+  - id: physics.quantum-mechanics.rydberg-constant
+    zh: |
+      里德伯常量
+    en: |
+      Rydberg constant
+    brief: |
+      里德伯公式里的常量，氢的实测值约$1.096\,78\times10^7\,\mathrm{m^{-1}}$；原子核不动时的理论值记作$R_\infty$，见玻尔模型那一节。
+    definedIn: physics.quantum-mechanics.hydrogen-spectrum
+    anchor: def-rydberg-formula
+  - id: physics.quantum-mechanics.spectral-series
+    zh: |
+      谱线系
+    en: |
+      spectral series
+    brief: |
+      里德伯公式里$n_1$相同的一组谱线，如$n_1=2$的巴耳末系；$n_2\to\infty$时波长趋于线系限$\frac{n_1^2}{R_{\mathrm H}}$。
+    definedIn: physics.quantum-mechanics.hydrogen-spectrum
+    anchor: def-spectral-series
+  - id: physics.quantum-mechanics.nuclear-model
+    zh: |
+      原子的核式结构模型
+    en: |
+      nuclear model of the atom
+    brief: |
+      原子的正电荷和几乎全部质量集中在很小的原子核里，电子在核外运动；卢瑟福 1911 年由$\alpha$粒子散射实验提出。
+    definedIn: physics.quantum-mechanics.hydrogen-spectrum
+    anchor: def-nuclear-model
+  - id: physics.quantum-mechanics.quantization
+    zh: |
+      量子化
+    en: |
+      quantization
+    brief: |
+      一个物理量只能取一些分立的值、不能连续变化，例如原子的能量。
+    definedIn: physics.quantum-mechanics.hydrogen-spectrum
+    anchor: def-quantization
+  - id: physics.quantum-mechanics.compton-scattering
+    zh: |
+      康普顿散射
+    en: |
+      Compton scattering
+    brief: |
+      X 射线、$\gamma$射线被物质散射后出现波长变长的成分；被静止的自由电子散射时，$\lambda'-\lambda=\frac h{m_{\mathrm e}c}(1-\cos\theta)$，$\theta$是散射角。
+    definedIn: physics.quantum-mechanics.compton-scattering
+    anchor: def-compton-scattering
+  - id: physics.quantum-mechanics.bohr-model
+    zh: |
+      玻尔模型
+    en: |
+      Bohr model
+    brief: |
+      玻尔 1913 年提出的氢原子模型：电子只在一些特定的圆轨道上绕核运动、不辐射，换轨道时放出或吸收一个光子。
+    definedIn: physics.quantum-mechanics.bohr-model
+    anchor: def-bohr-model
+  - id: physics.quantum-mechanics.stationary-state
+    zh: |
+      定态
+    en: |
+      stationary state
+    brief: |
+      原子能量确定、不辐射的状态；玻尔模型里，电子这时在某个特定的圆轨道上绕核运动。
+    definedIn: physics.quantum-mechanics.bohr-model
+    anchor: def-stationary-state
+  - id: physics.quantum-mechanics.bohr-quantization-condition
+    zh: |
+      玻尔量子化条件
+    en: |
+      Bohr quantization condition
+    brief: |
+      玻尔模型里，电子绕核的角动量只能取$L=n\hbar$，$n=1,2,3,\dots$。
+    definedIn: physics.quantum-mechanics.bohr-model
+    anchor: def-quantization-condition
+  - id: physics.quantum-mechanics.reduced-planck-constant
+    zh: |
+      约化普朗克常量
+    en: |
+      reduced Planck constant
+    brief: |
+      $\hbar=\frac h{2\pi}\approx1.055\times10^{-34}\,\mathrm{J\cdot s}$，$h$是普朗克常量；单位和角动量相同。
+    definedIn: physics.quantum-mechanics.bohr-model
+    anchor: def-quantization-condition
+  - id: physics.quantum-mechanics.energy-level
+    zh: |
+      能级
+    en: |
+      energy level
+    brief: |
+      原子各个定态的能量，只能取一些分立的值；按玻尔模型，氢原子的能级是$E_n\approx-\frac{13.6\,\mathrm{eV}}{n^2}$。
+    definedIn: physics.quantum-mechanics.bohr-model
+    anchor: def-energy-level
+  - id: physics.quantum-mechanics.ground-state
+    zh: |
+      基态
+    en: |
+      ground state
+    brief: |
+      能量最低的定态；氢原子的基态是$n=1$的定态，能量约$-13.6\,\mathrm{eV}$。
+    definedIn: physics.quantum-mechanics.bohr-model
+    anchor: def-energy-level
+  - id: physics.quantum-mechanics.excited-state
+    zh: |
+      激发态
+    en: |
+      excited state
+    brief: |
+      能量高于基态的定态，如氢原子$n\ge2$的定态；原子可以从激发态跃迁到较低的能级，放出光子。
+    definedIn: physics.quantum-mechanics.bohr-model
+    anchor: def-energy-level
+  - id: physics.quantum-mechanics.quantum-number
+    zh: |
+      量子数
+    en: |
+      quantum number
+    brief: |
+      给定态编号的数，玻尔模型里是正整数$n=1,2,3,\dots$，它决定定态的能量和轨道半径。
+    definedIn: physics.quantum-mechanics.bohr-model
+    anchor: def-energy-level
+  - id: physics.quantum-mechanics.transition
+    zh: |
+      跃迁
+    en: |
+      transition
+    brief: |
+      原子从一个定态变到另一个定态；放出或吸收的光子的能量$h\nu$等于两个定态的能量之差。
+    definedIn: physics.quantum-mechanics.bohr-model
+    anchor: def-transition
+  - id: physics.quantum-mechanics.bohr-radius
+    zh: |
+      玻尔半径
+    en: |
+      Bohr radius
+    brief: |
+      原子核不动时，玻尔模型里氢原子基态轨道的半径$a_0=\frac{4\pi\varepsilon_0\hbar^2}{m_{\mathrm e}e^2}\approx5.29\times10^{-11}\,\mathrm m$。
+    definedIn: physics.quantum-mechanics.bohr-model
+    anchor: def-bohr-radius
+  - id: physics.quantum-mechanics.matter-wave
+    zh: |
+      物质波
+    en: |
+      matter wave
+    brief: |
+      能量为$E$、动量为$p$的实物粒子伴随的波，频率$\nu=\frac Eh$、波长$\lambda=\frac hp$，也叫德布罗意波；电子衍射证实了它。
+    definedIn: physics.quantum-mechanics.matter-waves
+    anchor: def-de-broglie
+  - id: physics.quantum-mechanics.de-broglie-wavelength
+    zh: |
+      德布罗意波长
+    en: |
+      de Broglie wavelength
+    brief: |
+      动量为$p$的实物粒子的物质波的波长$\lambda=\frac hp$；经几十伏电势差加速的电子，波长约为$0.1\,\mathrm{nm}$的量级。
+    definedIn: physics.quantum-mechanics.matter-waves
+    anchor: def-de-broglie

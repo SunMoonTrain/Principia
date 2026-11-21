@@ -1,0 +1,209 @@
+- id: p1
+  tier: easy
+  statement: |
+    一座高$450\,\mathrm m$的塔，塔底静止的光源发出的光竖直射到塔顶。塔顶的钟量出的频率$f$比塔底的钟量出的$f_0$低，$\frac{f_0-f}{f_0}$是多少？引力场看作均匀的，$g$取$9.8\,\mathrm{m/s^2}$，$c$取$3.00\times10^8\,\mathrm{m/s}$，以$10^{-14}$为单位。
+  answer:
+    type: number
+    value: 9.8*450/(3.00e8)^2*1e14
+    unit: |
+      $10^{-14}$
+  hints:
+    - |
+      光从低处传到高处，是哪一种频移？塔高和地球半径比，引力场能不能看作均匀的？
+    - |
+      均匀引力场里升高$h$，$\frac{\Delta f}{f_0}\approx-\frac{gh}{c^2}$，所以$\frac{f_0-f}{f_0}\approx\frac{gh}{c^2}$。
+    - |
+      $\frac{gh}{c^2}=\frac{9.8\times450}{(3.00\times10^8)^2}=4.9\times10^{-14}$，以$10^{-14}$为单位是$4.9$。
+  solution: |
+    光从塔底传到塔顶，是从低处传到高处，发生引力红移。塔高比地球半径小得多，引力场看作均匀的，升高$h$时$\frac{\Delta f}{f_0}\approx-\frac{gh}{c^2}$，所以$\frac{f_0-f}{f_0}\approx\frac{gh}{c^2}=\frac{9.8\times450}{(3.00\times10^8)^2}=4.9\times10^{-14}$，以$10^{-14}$为单位是$4.9$。换一种说法：塔顶的钟比塔底的钟走得快，快慢之比约为$1+4.9\times10^{-14}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法对？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        只考虑引力的效应，从地面射向高空卫星的信号发生引力红移，从卫星射向地面的信号发生引力蓝移
+      - |
+        引力红移的相对量$\frac{\Delta f}{f_0}$和光的频率有关，频率越高的光，相对频移越大
+      - |
+        在均匀引力场里，光从高度$0$升到$10\,\mathrm m$的引力红移，和从$100\,\mathrm m$升到$110\,\mathrm m$的一样大
+      - |
+        离地球很远（引力势可以看作$0$）、相对地心静止的钟，比地面上静止的钟走得慢
+      - |
+        只算引力的效应，一直住在高楼顶层的人，比一直住在底层的人老得略快一些
+    value: [1, 3, 5]
+  hints:
+    - |
+      A、C 想一想引力红移只看什么；B 看频移的式子里有没有频率；D 看$\dv{\tau}{t}\approx1+\frac{\Phi}{c^2}$里$\Phi$的正负；E 想一想慢下来的是钟还是时间。
+    - |
+      A：卫星在高处，引力势比地面的大。B：$\frac{gh}{c^2}$、$\frac{\Phi_{\text{收}}-\Phi_{\text{发}}}{c^2}$里都没有$f_0$。C：均匀引力场里频移只看升高了多少。
+
+      D：取很远处的$\Phi=0$，地面上$\Phi<0$。E：由爱因斯坦等效原理，一切钟都一样慢，心跳、新陈代谢也是。
+    - |
+      A、C、E 对，B、D 错。A 对：卫星在高处，信号从地面射向卫星是从低处传到高处，发生引力红移，反过来是引力蓝移。B 错：$\frac{\Delta f}{f_0}\approx-\frac{\Phi_{\text{收}}-\Phi_{\text{发}}}{c^2}$里没有频率，各种频率的光相对频移都一样。C 对：均匀引力场里$\frac{\Delta f}{f_0}\approx-\frac{gh}{c^2}$只看升高了多少，两次都升高$10\,\mathrm m$。
+
+      D 错：由$\dv{\tau}{t}\approx1+\frac{\Phi}{c^2}$，地面上$\Phi<0$，地面上的钟比很远处的走得慢，很远处的钟反而快。E 对：引力时间延缓对一切钟都一样，心跳、新陈代谢也照样，顶层的人时间过得略快，老得也略快。
+  solution: |
+    选 A、C、E。A 对：卫星在高处，信号从地面射向卫星是从低处传到高处，发生引力红移，反过来是引力蓝移。B 错：$\frac{\Delta f}{f_0}\approx-\frac{\Phi_{\text{收}}-\Phi_{\text{发}}}{c^2}$里没有频率，各种频率的光相对频移都一样。C 对：均匀引力场里$\frac{\Delta f}{f_0}\approx-\frac{gh}{c^2}$只看升高了多少，两次都升高$10\,\mathrm m$。
+
+    D 错：由$\dv{\tau}{t}\approx1+\frac{\Phi}{c^2}$，地面上$\Phi<0$，地面上的钟比很远处的走得慢，很远处的钟反而快。E 对：由爱因斯坦等效原理，引力时间延缓对一切钟都一样，心跳、新陈代谢也照样，顶层的人时间过得略快，老得也略快。
+
+- id: p3
+  tier: medium
+  statement: |
+    太阳的质量为$1.99\times10^{30}\,\mathrm{kg}$、半径为$6.96\times10^8\,\mathrm m$，把它当作中心处的质点，$G$取$6.67\times10^{-11}\,\mathrm{N\,m^2/kg^2}$，$c$取$3.00\times10^8\,\mathrm{m/s}$。太阳表面静止的光源发出的光传到很远处（不计别的天体），引力红移的相对量相当于光源以多大速度远离时的一阶纵向多普勒频移？以$\mathrm{m/s}$为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 6.67e-11*1.99e30/(6.96e8*3.00e8)
+    unit: |
+      $\mathrm{m/s}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      从太阳表面到很远处，引力场变化很大，不能按$gh$算，该用哪个式子？光源远离时，一阶的纵向多普勒频移是多少？
+    - |
+      由引力势的定理，$\Phi_{\text{发}}=-\frac{GM}R$，$\Phi_{\text{收}}=0$，$\frac{\Delta f}{f_0}\approx-\frac{GM}{Rc^2}$；光源以$v$远离时，一阶的多普勒频移是$\frac{\Delta f}{f_0}\approx-\frac vc$。
+    - |
+      令$\frac vc=\frac{GM}{Rc^2}$，得$v=\frac{GM}{Rc}=\frac{6.67\times10^{-11}\times1.99\times10^{30}}{6.96\times10^8\times3.00\times10^8}\,\mathrm{m/s}\approx636\,\mathrm{m/s}$。
+  solution: |
+    从太阳表面到很远处，引力场变化很大，要用引力势之差。由引力势的定理，表面处$\Phi_{\text{发}}=-\frac{GM}R$，很远处$\Phi_{\text{收}}=0$，$\frac{\Delta f}{f_0}\approx-\frac{GM}{Rc^2}$；这里$\frac{GM}{Rc^2}\approx2.1\times10^{-6}$，远小于$1$，只保留一阶就够了。光源以$v$远离时，一阶的纵向多普勒频移是$\frac{\Delta f}{f_0}\approx-\frac vc$。
+
+    令两者相等，得$v=\frac{GM}{Rc}=\frac{6.67\times10^{-11}\times1.99\times10^{30}}{6.96\times10^8\times3.00\times10^8}\,\mathrm{m/s}\approx636\,\mathrm{m/s}$。实际测太阳的谱线时，还要扣掉表面气体的翻滚、地球的运动等带来的多普勒频移。
+
+- id: p4
+  tier: medium
+  statement: |
+    [时间延缓](lesson:physics.special-relativity.time-dilation)第 4 题的解答说，哈费尔-基廷实验（Hafele–Keating experiment）测到的钟差里还有引力的效应。实验中的飞机平均约在$9.0\,\mathrm{km}$高处，向东环球飞行约$41\,\mathrm h$。只算高度，机上的钟比地面上的钟多走多少？以$\mathrm{ns}$为单位，结果保留三位有效数字；$g$取$9.8\,\mathrm{m/s^2}$，$c$取$3.00\times10^8\,\mathrm{m/s}$。
+  answer:
+    type: number
+    value: 9.8*9.0e3/(3.00e8)^2*41*3600*1e9
+    unit: |
+      $\mathrm{ns}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      飞行高度和地球半径比小得多，引力场能看作均匀的吗？机上的钟和地面上的钟快慢之比是多少？
+    - |
+      按均匀引力场，快慢之比约为$1+\frac{gh}{c^2}$；飞行时间$\Delta t$里，机上的钟比地面上的多走$\frac{gh}{c^2}\Delta t$。
+    - |
+      $\frac{gh}{c^2}=\frac{9.8\times9.0\times10^3}{(3.00\times10^8)^2}\approx9.8\times10^{-13}$，$\Delta t=41\times3600\,\mathrm s\approx1.48\times10^5\,\mathrm s$，多走约$1.45\times10^{-7}\,\mathrm s$，即约$145\,\mathrm{ns}$。
+  solution: |
+    飞行高度比地球半径小得多，引力场看作均匀的，机上的钟和地面上的钟快慢之比约为$1+\frac{gh}{c^2}$，飞行时间$\Delta t$里机上的钟多走$\frac{gh}{c^2}\Delta t$。代入数值，$\frac{gh}{c^2}=\frac{9.8\times9.0\times10^3}{(3.00\times10^8)^2}\approx9.8\times10^{-13}$，$\Delta t=41\times3600\,\mathrm s\approx1.48\times10^5\,\mathrm s$，多走约$1.45\times10^{-7}\,\mathrm s$，即约$145\,\mathrm{ns}$。
+
+    向西那一趟约$49\,\mathrm h$，同样算得约$173\,\mathrm{ns}$。实验前按实际航线算的引力项是向东$+144\,\mathrm{ns}$、向西$+179\,\mathrm{ns}$，和这样的估计相近。它和[时间延缓](lesson:physics.special-relativity.time-dilation)第 8 题说的几十到几百纳秒的钟差同一量级，引力的效应不能不计。
+
+- id: p5
+  tier: hard
+  statement: |
+    1976 年，引力探测器 A（Gravity Probe A）把一台氢原子钟（hydrogen maser）用火箭竖直送到离地面约$1.0\times10^4\,\mathrm{km}$高处再落回，一路通过无线电和地面上的同类钟比较。取$G=6.67\times10^{-11}\,\mathrm{N\,m^2/kg^2}$，地球的质量为$5.97\times10^{24}\,\mathrm{kg}$、半径为$6.37\times10^6\,\mathrm m$，$c=3.00\times10^8\,\mathrm{m/s}$；把地球当作中心处的质点，不计地球自转。
+
+    （1）只算引力，在最高点处（看作相对地心静止），箭上的钟比地面上的钟快的相对量是多少？
+
+    （2）按$\frac{gh}{c^2}$（$g$取地面的值）估算是多少？两者为什么差这么多？
+
+    （3）上升和下落途中比较两只钟，还有哪些效应要扣掉？
+  hints:
+    - |
+      最高处离地面$10^4\,\mathrm{km}$，和地球半径比不算小，引力场还能看作均匀的吗？
+    - |
+      （1）用引力势的定理，相对量是$\frac{GM}{c^2}\bigl(\frac1R-\frac1{R+h}\bigr)$。（2）地面的$g=\frac{GM}{R^2}$，把两个结果相除看看。（3）箭上的钟在运动，信号也是从运动的箭上发来的。
+    - |
+      （1）$\frac{GM}{c^2}=\frac{6.67\times10^{-11}\times5.97\times10^{24}}{(3.00\times10^8)^2}\,\mathrm m\approx4.42\times10^{-3}\,\mathrm m$，$R+h=1.637\times10^7\,\mathrm m$，$\frac1R-\frac1{R+h}\approx9.59\times10^{-8}\,\mathrm{m^{-1}}$。相对量约为$4.24\times10^{-10}$，箭上的钟快。
+
+      （2）$g=\frac{GM}{R^2}\approx9.81\,\mathrm{m/s^2}$，$\frac{gh}{c^2}\approx1.09\times10^{-9}$，是（1）的约$2.6$倍。两者之比正好是$\frac{R+h}R$：$g$随高度变小，到$10^4\,\mathrm{km}$高处只剩地面的约$15\%$，按地面的$g$算就大大高估了。
+
+      （3）箭在运动，按狭义相对论，它的钟还有时间延缓（time dilation），要按它的速度扣掉。信号从运动的箭上发来，还有一阶的多普勒频移，比引力的效应大得多；实验里让地面发出的信号经箭上转发再传回地面，用往返的信号把它消掉。
+  reference: |
+    （1）$\frac{GM}{c^2}\bigl(\frac1R-\frac1{R+h}\bigr)$，$GM=3.982\times10^{14}\,\mathrm{m^3/s^2}$，$\frac1R-\frac1{R+h}=9.590\times10^{-8}\,\mathrm{m^{-1}}$，得$4.24\times10^{-10}$，箭上的钟快。
+
+    （2）$g=9.81\,\mathrm{m/s^2}$，$\frac{gh}{c^2}=1.09\times10^{-9}$；比值$\frac{R+h}R\approx2.57$，因为$g$随高度减小（顶点处约为地面的$15\%$）。
+
+    （3）钟的运动带来的时间延缓（二阶，$\frac{v^2}{2c^2}$）；信号的一阶多普勒频移（$\frac vc\sim10^{-5}$，远大于引力效应），实验用双向链路（地面信号经箭上应答器转发）扣除。
+
+- id: p6
+  tier: hard
+  statement: |
+    照[四维力与相对论动力学](lesson:physics.special-relativity.four-force)第 8 题的提示，让火箭各处做中心相同的双曲运动（hyperbolic motion），在每一时刻的瞬时静止系（instantaneous rest frame）里长度保持不变：在一个惯性系里，底部、顶部的世界线（world line）是$X^2-c^2t^2=\rho_{\text{下}}^2$和$X^2-c^2t^2=\rho_{\text{上}}^2$（$X$从共同的中心量起，$\rho_{\text{上}}=\rho_{\text{下}}+h$），固有加速度分别是$\frac{c^2}{\rho_{\text{下}}}$、$\frac{c^2}{\rho_{\text{上}}}$。$t=0$时火箭静止，底部发出频率为$f_0$（用底部的钟量）的光，射向顶部。
+
+    （1）求顶部收到光的时刻$t$和那时顶部的速度。
+
+    （2）用纵向多普勒公式证明，顶部的钟量出的频率$f$满足$\frac f{f_0}=\frac{\rho_{\text{下}}}{\rho_{\text{上}}}$，而且在时钟假设下这是精确的。
+
+    （3）把底部的固有加速度记作$\alpha$，把（2）的结果展开到$\frac{\alpha h}{c^2}$的一阶，和讲解里的定理比较；$\frac f{f_0}$和两端固有加速度之比有什么关系？
+  hints:
+    - |
+      光从$X=\rho_{\text{下}}$出发，世界线是$X=\rho_{\text{下}}+ct$，和顶部的双曲线联立。
+    - |
+      （1）由$(\rho_{\text{下}}+ct)^2-c^2t^2=\rho_{\text{上}}^2$解出$t$；对$X^2-c^2t^2=\rho_{\text{上}}^2$做隐函数求导（implicit differentiation），得顶部的速度$\dv Xt=\frac{c^2t}X$。（2）发光时底部静止，收到时顶部背着发光处以$\beta=\frac{ct}X$退开，$\frac f{f_0}=\sqrt{\frac{1-\beta}{1+\beta}}$。（3）$\rho_{\text{下}}=\frac{c^2}\alpha$。
+    - |
+      （1）$(\rho_{\text{下}}+ct)^2-c^2t^2=\rho_{\text{上}}^2$，即$\rho_{\text{下}}^2+2\rho_{\text{下}}ct=\rho_{\text{上}}^2$，得$ct=\frac{\rho_{\text{上}}^2-\rho_{\text{下}}^2}{2\rho_{\text{下}}}$，这时$X=\rho_{\text{下}}+ct=\frac{\rho_{\text{上}}^2+\rho_{\text{下}}^2}{2\rho_{\text{下}}}$。顶部的双曲线上$2X\dv Xt=2c^2t$，速度$\dv Xt=\frac{c^2t}X$，所以$\beta=\frac{ct}X=\frac{\rho_{\text{上}}^2-\rho_{\text{下}}^2}{\rho_{\text{上}}^2+\rho_{\text{下}}^2}$。
+
+      （2）按时钟假设，加速的钟和此刻同速的惯性系里的钟走得一样快。$t=0$时底部静止，发出的光在这个惯性系里的频率就是$f_0$；收到时顶部背着发光处以$\beta$退开，多普勒公式只看相对速度，顶部的钟量出$\frac f{f_0}=\sqrt{\frac{1-\beta}{1+\beta}}$。由（1），$1-\beta=\frac{2\rho_{\text{下}}^2}{\rho_{\text{上}}^2+\rho_{\text{下}}^2}$，$1+\beta=\frac{2\rho_{\text{上}}^2}{\rho_{\text{上}}^2+\rho_{\text{下}}^2}$，所以$\frac f{f_0}=\frac{\rho_{\text{下}}}{\rho_{\text{上}}}$。推导里没有用任何近似，在时钟假设下，这个结果是精确的。
+
+      （3）$\rho_{\text{下}}=\frac{c^2}\alpha$，$\frac f{f_0}=\frac{\rho_{\text{下}}}{\rho_{\text{下}}+h}=\frac1{1+\alpha h/c^2}\approx1-\frac{\alpha h}{c^2}$，取$g=\alpha$就是讲解里的定理。顶部的固有加速度是$\frac{c^2}{\rho_{\text{上}}}$，所以$\frac f{f_0}$正好等于顶部和底部的固有加速度之比。
+  reference: |
+    （1）$ct=\frac{\rho_{\text{上}}^2-\rho_{\text{下}}^2}{2\rho_{\text{下}}}$，$X=\frac{\rho_{\text{上}}^2+\rho_{\text{下}}^2}{2\rho_{\text{下}}}$，$\beta=\frac{ct}X=\frac{\rho_{\text{上}}^2-\rho_{\text{下}}^2}{\rho_{\text{上}}^2+\rho_{\text{下}}^2}$。
+
+    （2）$\sqrt{\frac{1-\beta}{1+\beta}}=\frac{\rho_{\text{下}}}{\rho_{\text{上}}}$，在时钟假设下精确（加速的钟和此刻同速的惯性系里的钟走得一样快：源在发光时静止，频率即$f_0$，顶部的钟量出的等于和它此刻同速的惯性系里量出的；此外只用了相对论多普勒公式，没有近似）。
+
+    （3）$\frac1{1+\alpha h/c^2}\approx1-\frac{\alpha h}{c^2}$，与讲解一致；$\frac f{f_0}=\frac{\alpha_{\text{上}}}{\alpha_{\text{下}}}$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    有一个用能量守恒推引力红移的思想实验（thought experiment）：地面上把质量为$m$的物体全部变成光，光的能量是$mc^2$（见[质能关系](lesson:physics.special-relativity.mass-energy)）；光竖直射到高$h$处，在那里全部变回物体，物体再落回地面。引力场看作均匀的，$gh\ll c^2$。
+
+    （1）如果光到高处时能量不变，这样循环一次，多出了什么？
+
+    （2）为了不违反能量守恒，光到高处时能量要变成多少？减少的比例约是多少？
+
+    （3）光的能量和频率成正比（这是量子力学的内容），由此得出的频率变化和讲解的一致吗？这个论证比讲解多用了哪些假设？
+  hints:
+    - |
+      跟着能量走一圈：开始是静止在地面上的物体，最后又是落回地面的物体，落地时的动能也要算上。
+    - |
+      （1）落回地面时物体多了动能。（2）设光在高处的能量为$E'$，变回的物体质量是$\frac{E'}{c^2}$，落回地面时总能量是$E'\bigl(1+\frac{gh}{c^2}\bigr)$，令它等于$mc^2$。（3）比较$\frac{E'}{mc^2}$和讲解里的$\frac f{f_0}$。
+    - |
+      （1）光到高处能量还是$mc^2$，变回质量为$m$的物体，落回地面时多了动能$mgh$。再变成光、再送上去，每循环一次就凭空多出$mgh$，这是永动机，违反能量守恒。
+
+      （2）设光到高处时能量为$E'$，变回的物体质量是$\frac{E'}{c^2}$，落回地面时总能量是$E'+\frac{E'}{c^2}gh=E'\bigl(1+\frac{gh}{c^2}\bigr)$。能量守恒要求它等于开始的$mc^2$，所以$E'=\frac{mc^2}{1+gh/c^2}\approx mc^2\bigl(1-\frac{gh}{c^2}\bigr)$，减少的比例约为$\frac{gh}{c^2}$。
+
+      （3）光的能量和频率成正比，频率也减少约$\frac{gh}{c^2}$，和讲解里均匀引力场中的$\frac{\Delta f}{f_0}\approx-\frac{gh}{c^2}$一致。这个论证多用了：:term[质能关系]{id="physics.special-relativity.mass-energy-equivalence"}（mass–energy equivalence），物体能全部变成光、再全部变回来；变回的物体照样受重力$\frac{E'}{c^2}g$；光的能量和频率成正比这条量子力学的结论。讲解只用了爱因斯坦等效原理、狭义相对论的多普勒效应和时钟假设，用到的东西更少。
+  reference: |
+    （1）多出$mgh$，成了永动机。
+
+    （2）$E'\bigl(1+\frac{gh}{c^2}\bigr)=mc^2$，$E'\approx mc^2\bigl(1-\frac{gh}{c^2}\bigr)$，减少约$\frac{gh}{c^2}$。
+
+    （3）$E\propto f$，得$\frac{\Delta f}{f_0}\approx-\frac{gh}{c^2}$，一致；多用了质能关系（完全转化与逆转化）、能量守恒并假定变回的物体按$\frac{E'}{c^2}$受重力（弱等效原理）、光的能量正比于频率（量子力学）。讲解只用爱因斯坦等效原理加狭义相对论（多普勒效应、时钟假设）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    天狼星 B（Sirius B）是一颗白矮星（white dwarf），质量约$2.0\times10^{30}\,\mathrm{kg}$。哈勃空间望远镜（Hubble Space Telescope）2005 年测得，它谱线的引力红移相当于光源以约$80\,\mathrm{km/s}$远离时的一阶多普勒频移。取$G=6.67\times10^{-11}\,\mathrm{N\,m^2/kg^2}$，$c=3.00\times10^8\,\mathrm{m/s}$。
+
+    （1）把它当作中心处的质点，由这个数估算它的半径。
+
+    （2）测到的谱线红移里，还混着它绕天狼星 A 转、整个双星系统（binary system）远离或靠近我们带来的多普勒频移。怎样把引力红移分出来？
+
+    （3）讲解里的式子要求$|\Phi|\ll c^2$。估算天狼星 B 表面的$\frac{|\Phi|}{c^2}$；质量约$2.8\times10^{30}\,\mathrm{kg}$、半径约$12\,\mathrm{km}$的中子星（neutron star）表面呢？那里还能放心用这个式子吗？
+  hints:
+    - |
+      （1）表面发出的光传到很远处，引力红移相当于多大的远离速度？它和质量、半径有什么关系？（2）天狼星 A 是普通的恒星，它的谱线能告诉我们什么？（3）$\frac{|\Phi|}{c^2}$就是表面的$\frac{GM}{Rc^2}$。
+    - |
+      （1）由引力势的定理，相当于$v=\frac{GM}{Rc}$，所以$R=\frac{GM}{vc}$。（2）天狼星 A 自己的引力红移很小，它的谱线频移几乎全是多普勒频移；再用双星的轨道算出天狼星 B 此刻相对天狼星 A 的速度。（3）把两颗星的质量、半径代进$\frac{GM}{Rc^2}$，和$1$比。
+    - |
+      （1）表面发出的光传到很远处，$\frac{\Delta f}{f_0}\approx-\frac{GM}{Rc^2}$，相当于远离速度$v=\frac{GM}{Rc}$，所以$R=\frac{GM}{vc}=\frac{6.67\times10^{-11}\times2.0\times10^{30}}{8.0\times10^4\times3.00\times10^8}\,\mathrm m\approx5.6\times10^6\,\mathrm m$。约$5.6\times10^3\,\mathrm{km}$，比地球还小，质量却和太阳差不多。
+
+      （2）天狼星 A 是普通的恒星，它的引力红移只相当于不到$1\,\mathrm{km/s}$，谱线的频移几乎全是多普勒频移，量它就知道天狼星 A 此刻远离或靠近我们的速度。再由多年观测定出的双星轨道，算出天狼星 B 此刻相对天狼星 A 的速度，把这些多普勒频移都扣掉，剩下的就是引力红移。也可以直接拿天狼星 B 的谱线和天狼星 A 的同一条谱线比，再扣掉轨道运动的那一部分。
+
+      （3）天狼星 B 表面$\frac{|\Phi|}{c^2}=\frac vc\approx2.7\times10^{-4}$，远小于$1$，只保留一阶很准。中子星表面$\frac{GM}{Rc^2}=\frac{6.67\times10^{-11}\times2.8\times10^{30}}{1.2\times10^4\times(3.00\times10^8)^2}\approx0.17$，不能算远小于$1$：略去的高阶项相对一阶是$\frac{GM}{Rc^2}$这个量级，算出的频移会差一成左右。一阶的式子只能估个大概，要精确地算，得用以后讲的[史瓦西解](lesson:physics.general-relativity.schwarzschild-solution)（Schwarzschild solution）。
+  reference: |
+    （1）$R=\frac{GM}{vc}=\frac{6.67\times10^{-11}\times2.0\times10^{30}}{8.0\times10^4\times3.00\times10^8}\,\mathrm m\approx5.6\times10^6\,\mathrm m$（现在的测量约$5.6\times10^3\,\mathrm{km}$）。
+
+    （2）天狼星 A 的引力红移约$0.8\,\mathrm{km/s}$，其谱线频移主要是多普勒频移，给出系统的视向速度；双星轨道（周期约 50 年）给出 B 相对 A 的速度；扣除后得引力红移。2018 年的测量直接以天狼星 A 的同一条谱线为参照。
+
+    （3）天狼星 B：$\frac{GM}{Rc^2}\approx2.7\times10^{-4}$，一阶近似可靠；中子星：约$0.17$，高阶项相对一阶是这个量级（下一阶是一阶的$\frac{GM}{2Rc^2}\approx0.09$倍），频移差一成左右（精确的$\sqrt{1-2GM/(Rc^2)}\approx0.809$、频移$0.191$，一阶给$0.827$、频移$0.173$），要用史瓦西解。

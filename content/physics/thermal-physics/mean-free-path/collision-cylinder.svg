@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" width="640" height="280" font-size="14">
+  <!-- 左：先假定别的分子不动，盯住的分子（绿色）沿虚线向右飞，以有效直径 d 为半径的碰撞截面（左端绿色的椭圆）随它扫出一个长 vΔt 的圆柱。中心落在圆柱里的三个分子（蓝色）会被撞上；中心在圆柱外的两个分子是空心的，撞不上，哪怕身子有一部分伸进了圆柱。右：盯住的分子在别的分子之间走出的绿色折线，每一段直线是一段自由程；盯住的分子和别的分子一样画成半径 9 的圆（即这幅图里 d = 18），起点画成实心的绿圆，每个拐弯处画一个淡绿色的圆，是它撞上时的位置，和被撞的分子相切，两个中心相距 d。被撞的三个分子的圆心在拐弯处沿法线离开 18 的地方。示意图，不按比例。 -->
+  <text x="190" y="26" fill="currentColor" text-anchor="middle">碰撞截面扫出的圆柱</text>
+  <rect x="90" y="106" width="220" height="68" style="fill: var(--good, #059669)" fill-opacity="0.08" />
+  <line x1="90" y1="106" x2="310" y2="106" style="stroke: currentColor" stroke-width="1.2" />
+  <line x1="90" y1="174" x2="310" y2="174" style="stroke: currentColor" stroke-width="1.2" />
+  <ellipse cx="310" cy="140" rx="12" ry="34" style="stroke: currentColor" fill="none" stroke-width="1.2" stroke-dasharray="4 3" />
+  <line x1="90" y1="140" x2="328" y2="140" style="stroke: currentColor" stroke-width="1" stroke-dasharray="5 4" />
+  <path d="M 338 140 L 328 135.5 L 328 144.5 Z" style="fill: currentColor" />
+  <ellipse cx="90" cy="140" rx="12" ry="34" style="fill: var(--good, #059669); stroke: var(--good, #059669)" fill-opacity="0.22" stroke-width="1.6" />
+  <circle cx="90" cy="140" r="17" style="fill: var(--good, #059669); stroke: var(--good, #059669)" fill-opacity="0.35" stroke-width="1.4" />
+  <circle cx="90" cy="140" r="2.5" style="fill: currentColor" />
+  <line x1="90" y1="140" x2="90" y2="106" style="stroke: currentColor" stroke-width="1.4" />
+  <text x="72" y="126" fill="currentColor" text-anchor="end" font-style="italic">d</text>
+  <circle cx="155" cy="124" r="17" style="fill: var(--accent, #2563eb); stroke: var(--accent, #2563eb)" fill-opacity="0.4" stroke-width="1.4" />
+  <circle cx="155" cy="124" r="2.5" style="fill: currentColor" />
+  <circle cx="228" cy="158" r="17" style="fill: var(--accent, #2563eb); stroke: var(--accent, #2563eb)" fill-opacity="0.4" stroke-width="1.4" />
+  <circle cx="228" cy="158" r="2.5" style="fill: currentColor" />
+  <circle cx="288" cy="134" r="17" style="fill: var(--accent, #2563eb); stroke: var(--accent, #2563eb)" fill-opacity="0.4" stroke-width="1.4" />
+  <circle cx="288" cy="134" r="2.5" style="fill: currentColor" />
+  <circle cx="212" cy="94" r="17" style="stroke: currentColor" fill="none" stroke-width="1.4" />
+  <circle cx="212" cy="94" r="2.5" style="fill: currentColor" />
+  <circle cx="262" cy="186" r="17" style="stroke: currentColor" fill="none" stroke-width="1.4" />
+  <circle cx="262" cy="186" r="2.5" style="fill: currentColor" />
+  <text x="152" y="94" fill="currentColor" text-anchor="middle">会撞上</text>
+  <text x="236" y="88" fill="currentColor">撞不上</text>
+  <text x="92" y="204" fill="currentColor" text-anchor="middle">截面 <tspan font-style="italic">σ</tspan> = π<tspan font-style="italic">d</tspan><tspan dy="-6" font-size="10">2</tspan></text>
+  <line x1="90" y1="220" x2="90" y2="244" style="stroke: currentColor" stroke-width="1" />
+  <line x1="310" y1="220" x2="310" y2="244" style="stroke: currentColor" stroke-width="1" />
+  <line x1="99" y1="232" x2="301" y2="232" style="stroke: currentColor" stroke-width="1.2" />
+  <path d="M 90 232 L 99 228 L 99 236 Z" style="fill: currentColor" />
+  <path d="M 310 232 L 301 228 L 301 236 Z" style="fill: currentColor" />
+  <text x="200" y="260" fill="currentColor" text-anchor="middle"><tspan font-style="italic">v</tspan>Δ<tspan font-style="italic">t</tspan></text>
+  <text x="490" y="26" fill="currentColor" text-anchor="middle">一个分子的折线路径</text>
+  <circle cx="427.7" cy="110.2" r="9" style="stroke: currentColor" fill="none" stroke-width="1.2" />
+  <circle cx="500.6" cy="221.6" r="9" style="stroke: currentColor" fill="none" stroke-width="1.2" />
+  <circle cx="534.2" cy="60.4" r="9" style="stroke: currentColor" fill="none" stroke-width="1.2" />
+  <circle cx="452" cy="64" r="9" style="stroke: currentColor" fill="none" stroke-width="1.2" />
+  <circle cx="590" cy="222" r="9" style="stroke: currentColor" fill="none" stroke-width="1.2" />
+  <circle cx="470" cy="248" r="9" style="stroke: currentColor" fill="none" stroke-width="1.2" />
+  <circle cx="618" cy="92" r="9" style="stroke: currentColor" fill="none" stroke-width="1.2" />
+  <circle cx="402" cy="92" r="9" style="stroke: currentColor" fill="none" stroke-width="1.2" />
+  <circle cx="560" cy="168" r="9" style="stroke: currentColor" fill="none" stroke-width="1.2" />
+  <circle cx="430" cy="128" r="9" style="fill: var(--good, #059669); stroke: var(--good, #059669)" fill-opacity="0.15" stroke-opacity="0.55" stroke-width="1.2" />
+  <circle cx="497" cy="204" r="9" style="fill: var(--good, #059669); stroke: var(--good, #059669)" fill-opacity="0.15" stroke-opacity="0.55" stroke-width="1.2" />
+  <circle cx="538" cy="78" r="9" style="fill: var(--good, #059669); stroke: var(--good, #059669)" fill-opacity="0.15" stroke-opacity="0.55" stroke-width="1.2" />
+  <polyline points="378,232 430,128 497,204 538,78 597.2,142.6" style="stroke: var(--good, #059669)" fill="none" stroke-width="1.8" />
+  <path d="M 604 150 L 593.9 145.7 L 600.6 139.6 Z" style="fill: var(--good, #059669)" />
+  <circle cx="378" cy="232" r="9" style="fill: var(--good, #059669); stroke: var(--good, #059669)" stroke-width="1.2" />
+  <text x="392" y="172" fill="currentColor" text-anchor="end">自由程</text>
+</svg>

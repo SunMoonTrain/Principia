@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 350" width="460" height="350" font-family="serif" fill="currentColor">
+<path d="M390 175A160 160 0 1 0 70 175A160 160 0 1 0 390 175ZM270 175A40 40 0 1 0 190 175A40 40 0 1 0 270 175Z" fill="var(--accent, #2563eb)" fill-opacity="0.1" fill-rule="evenodd" stroke="none"/>
+<circle cx="230" cy="175" r="160" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.2" stroke-dasharray="5 4"/>
+<circle cx="230" cy="175" r="40" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.2" stroke-dasharray="5 4"/>
+<circle cx="230" cy="175" r="112" fill="none" stroke="var(--accent, #2563eb)" stroke-width="2"/>
+<circle cx="230" cy="175" r="64" fill="none" stroke="var(--good, #059669)" stroke-width="2"/>
+<path d="M230 175L230 135" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.1"/>
+<path d="M230 175L368.6 255" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.1"/>
+<path d="M230 175L144.2 103" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.2"/>
+<path d="M230 175L208.1 235.1" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.2"/>
+<path d="M230 175L312.7 144.9" stroke="currentColor" stroke-width="1.4"/>
+<path d="M271.4 70.7L285.2 72.1L281.3 80.4Z" fill="var(--accent, #2563eb)"/>
+<path d="M172.1 203L163.3 192.4L172 189.2Z" fill="var(--good, #059669)"/>
+<circle cx="230" cy="175" r="3"/>
+<circle cx="312.7" cy="144.9" r="3"/>
+<circle cx="144.2" cy="103" r="3"/>
+<circle cx="208.1" cy="235.1" r="3"/>
+<text x="218" y="188" font-size="16" font-style="italic" text-anchor="end">a</text>
+<text x="318.7" y="141.9" font-size="16" font-style="italic">z</text>
+<text x="131.9" y="97.7" font-size="16" font-style="italic" text-anchor="middle">ζ</text>
+<text x="202.6" y="255.2" font-size="16" font-style="italic" text-anchor="middle">ζ</text>
+<text x="235" y="158" font-size="16" font-style="italic">r</text>
+<text x="377" y="269" font-size="16" font-style="italic">R</text>
+<text x="206.4" y="45.1" font-size="16" font-style="italic" text-anchor="middle" fill="var(--accent, #2563eb)">C<tspan font-size="11" dy="4">ρ</tspan><tspan font-size="9" dy="2" font-style="normal">2</tspan></text>
+<text x="274" y="255.2" font-size="16" font-style="italic" text-anchor="middle" fill="var(--good, #059669)">C<tspan font-size="11" dy="4">ρ</tspan><tspan font-size="9" dy="2" font-style="normal">1</tspan></text>
+</svg>

@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 316" width="600" height="316" font-size="14">
+  <!-- 左：{1, …, 6}² 的 36 个点，横轴是第一个分量 a，纵轴是第二个分量 b；a 整除 b 的点涂实（14 个），其余画空心圆。右：坐标平面里 x < y 的半平面涂色，直线 y = x 画成虚线（不在其中） -->
+  <!-- 左图：a = 1..6 在 x = 85, 120, …, 260；b = 1..6 在 y = 230, 195, …, 55 -->
+  <text x="173" y="20" fill="currentColor" text-anchor="middle">{1, 2, …, 6} 上的整除关系</text>
+  <g stroke="currentColor" fill="none" stroke-width="1.5">
+    <line x1="62" y1="255" x2="284" y2="255" />
+    <line x1="62" y1="255" x2="62" y2="40" />
+  </g>
+  <polygon points="292,255 282,250.5 282,259.5" fill="currentColor" />
+  <polygon points="62,32 57.5,42 66.5,42" fill="currentColor" />
+  <g stroke="currentColor">
+    <line x1="85" y1="255" x2="85" y2="250" />
+    <line x1="120" y1="255" x2="120" y2="250" />
+    <line x1="155" y1="255" x2="155" y2="250" />
+    <line x1="190" y1="255" x2="190" y2="250" />
+    <line x1="225" y1="255" x2="225" y2="250" />
+    <line x1="260" y1="255" x2="260" y2="250" />
+    <line x1="62" y1="230" x2="67" y2="230" />
+    <line x1="62" y1="195" x2="67" y2="195" />
+    <line x1="62" y1="160" x2="67" y2="160" />
+    <line x1="62" y1="125" x2="67" y2="125" />
+    <line x1="62" y1="90" x2="67" y2="90" />
+    <line x1="62" y1="55" x2="67" y2="55" />
+  </g>
+  <g fill="currentColor" text-anchor="middle">
+    <text x="85" y="273">1</text>
+    <text x="120" y="273">2</text>
+    <text x="155" y="273">3</text>
+    <text x="190" y="273">4</text>
+    <text x="225" y="273">5</text>
+    <text x="260" y="273">6</text>
+  </g>
+  <g fill="currentColor" text-anchor="end">
+    <text x="54" y="235">1</text>
+    <text x="54" y="200">2</text>
+    <text x="54" y="165">3</text>
+    <text x="54" y="130">4</text>
+    <text x="54" y="95">5</text>
+    <text x="54" y="60">6</text>
+  </g>
+  <text x="298" y="260" fill="currentColor" font-size="15" font-style="italic">a</text>
+  <text x="50" y="40" fill="currentColor" font-size="15" font-style="italic" text-anchor="end">b</text>
+  <!-- a 整除 b 的 14 个点：实心 -->
+  <g style="fill: var(--accent, #2563eb)">
+    <circle cx="85" cy="230" r="5.5" />
+    <circle cx="85" cy="195" r="5.5" />
+    <circle cx="85" cy="160" r="5.5" />
+    <circle cx="85" cy="125" r="5.5" />
+    <circle cx="85" cy="90" r="5.5" />
+    <circle cx="85" cy="55" r="5.5" />
+    <circle cx="120" cy="195" r="5.5" />
+    <circle cx="120" cy="125" r="5.5" />
+    <circle cx="120" cy="55" r="5.5" />
+    <circle cx="155" cy="160" r="5.5" />
+    <circle cx="155" cy="55" r="5.5" />
+    <circle cx="190" cy="125" r="5.5" />
+    <circle cx="225" cy="90" r="5.5" />
+    <circle cx="260" cy="55" r="5.5" />
+  </g>
+  <!-- 其余 22 个点：空心 -->
+  <g fill="none" stroke="currentColor" stroke-width="1.2">
+    <circle cx="120" cy="230" r="3.5" />
+    <circle cx="120" cy="160" r="3.5" />
+    <circle cx="120" cy="90" r="3.5" />
+    <circle cx="155" cy="230" r="3.5" />
+    <circle cx="155" cy="195" r="3.5" />
+    <circle cx="155" cy="125" r="3.5" />
+    <circle cx="155" cy="90" r="3.5" />
+    <circle cx="190" cy="230" r="3.5" />
+    <circle cx="190" cy="195" r="3.5" />
+    <circle cx="190" cy="160" r="3.5" />
+    <circle cx="190" cy="90" r="3.5" />
+    <circle cx="190" cy="55" r="3.5" />
+    <circle cx="225" cy="230" r="3.5" />
+    <circle cx="225" cy="195" r="3.5" />
+    <circle cx="225" cy="160" r="3.5" />
+    <circle cx="225" cy="125" r="3.5" />
+    <circle cx="225" cy="55" r="3.5" />
+    <circle cx="260" cy="230" r="3.5" />
+    <circle cx="260" cy="195" r="3.5" />
+    <circle cx="260" cy="160" r="3.5" />
+    <circle cx="260" cy="125" r="3.5" />
+    <circle cx="260" cy="90" r="3.5" />
+  </g>
+  <!-- 左图图例 -->
+  <circle cx="90" cy="298" r="5.5" style="fill: var(--accent, #2563eb)" />
+  <text x="102" y="303" fill="currentColor"><tspan font-style="italic">a</tspan> 整除 <tspan font-style="italic">b</tspan></text>
+  <circle cx="190" cy="298" r="3.5" fill="none" stroke="currentColor" stroke-width="1.2" />
+  <text x="200" y="303" fill="currentColor"><tspan font-style="italic">a</tspan> 不整除 <tspan font-style="italic">b</tspan></text>
+  <!-- 右图：原点 (455, 150)，单位长 40；y = x 上方的部分涂色（先画，轴和虚线压在上面） -->
+  <text x="455" y="20" fill="currentColor" text-anchor="middle">实数集上的关系 <tspan font-style="italic">x</tspan> &lt; <tspan font-style="italic">y</tspan></text>
+  <polygon points="355,250 555,50 355,50" style="fill: var(--accent, #2563eb); opacity: 0.15" />
+  <g stroke="currentColor" fill="none" stroke-width="1.5">
+    <line x1="343" y1="150" x2="563" y2="150" />
+    <line x1="455" y1="262" x2="455" y2="40" />
+  </g>
+  <polygon points="571,150 561,145.5 561,154.5" fill="currentColor" />
+  <polygon points="455,32 450.5,42 459.5,42" fill="currentColor" />
+  <line x1="350" y1="255" x2="560" y2="45" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 4" />
+  <text x="577" y="155" fill="currentColor" font-size="15" font-style="italic">x</text>
+  <text x="465" y="45" fill="currentColor" font-size="15" font-style="italic">y</text>
+  <text x="405" y="105" fill="currentColor" font-size="15" text-anchor="middle"><tspan font-style="italic">x</tspan> &lt; <tspan font-style="italic">y</tspan></text>
+  <text x="500" y="133" fill="currentColor"><tspan font-style="italic">y</tspan> = <tspan font-style="italic">x</tspan></text>
+  <text x="455" y="303" fill="currentColor" text-anchor="middle">涂色的是 <tspan font-style="italic">x</tspan> &lt; <tspan font-style="italic">y</tspan> 的点；虚线不在其中</text>
+</svg>

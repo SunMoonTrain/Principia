@@ -1,0 +1,215 @@
+- id: p1
+  tier: easy
+  statement: |
+    GPS 接收机用收到信号的时刻减去信号上写的发出时刻，再乘以$c$，算出到卫星的距离。某颗卫星的钟比约定的时间慢了$25\,\mathrm{ns}$，别的都准确，接收机算出的到这颗卫星的距离比真实的多多少？少了写负数，$c$取$3.00\times10^8\,\mathrm{m/s}$，以$\mathrm m$为单位。
+  answer:
+    type: number
+    value: 25e-9*3.00e8
+    unit: |
+      $\mathrm m$
+  hints:
+    - |
+      卫星的钟慢了，信号上写的发出时刻比真实的早还是晚？算出的传播时间偏长还是偏短？
+    - |
+      卫星的钟慢了$25\,\mathrm{ns}$，写上的发出时刻就早了$25\,\mathrm{ns}$，算出的传播时间多了$25\,\mathrm{ns}$，距离多算$c\times25\,\mathrm{ns}$。
+    - |
+      $3.00\times10^8\times25\times10^{-9}\,\mathrm m=7.5\,\mathrm m$。
+  solution: |
+    卫星的钟比约定的时间慢$25\,\mathrm{ns}$，它在约定的时刻$T$发出信号时，写上的发出时刻是$T-25\,\mathrm{ns}$。接收机用收到的时刻减去它，算出的传播时间比真实的多$25\,\mathrm{ns}$，距离就多算$3.00\times10^8\times25\times10^{-9}\,\mathrm m=7.5\,\mathrm m$。这就是讲解里$1\,\mathrm{ns}$对应约$30\,\mathrm{cm}$的$25$倍。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法对？按讲解里的定理判断，卫星都沿圆轨道运动，不计地球自转。
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        只看速度项，轨道半径是 GPS 卫星 2 倍的卫星，它的钟每天少走的时间是 GPS 卫星的一半
+      - |
+        GPS 卫星的钟比地面的钟走得快，主要是因为卫星在地心参考系里运动得快
+      - |
+        卫星的钟和地面的钟快慢不同，是原子钟的特点；换成别的构造的理想的钟，就没有这个差别
+      - |
+        出厂时调低了频率的卫星钟，发射前在地面上和地面的钟并排放着，比地面的钟走得慢
+      - |
+        卫星做圆周运动有加速度，是这个加速度让卫星的钟变快，所以出厂时要调低频率
+    value: [1, 4]
+  hints:
+    - |
+      A 看速度项和轨道半径的关系；B、E 想一想卫星的钟变快来自哪一项；C 想一想引力对什么样的钟起作用；D 想一想调低了频率的钟放在地面上，和地面的钟还有什么不同。
+    - |
+      A：圆轨道上$u_{\text{星}}^2=\frac{GM}r$，速度项是$\frac{GM}{2rc^2}$。B：速度项让钟变慢，引力项让钟变快。C：由爱因斯坦等效原理（Einstein equivalence principle），引力对一切钟的影响都一样。
+
+      D：在地面上，两只钟的引力势、速度都相同，差别只剩出厂时调的频率。E：按时钟假设，钟的快慢只看此刻的速度，和加速度无关。
+    - |
+      A、D 对，B、C、E 错。A 对：速度项$\frac{u_{\text{星}}^2}{2c^2}=\frac{GM}{2rc^2}$和$r$成反比，半径加倍，每天少走的时间减半。B 错：速度项让卫星的钟变慢，卫星的钟变快靠的是引力项，它所在处的引力势比地面的高。C 错：由爱因斯坦等效原理和狭义相对论，引力时间延缓和时间延缓对一切钟都一样，变的是时间本身，换哪种钟都一样。
+
+      D 对：在地面上，两只钟的引力势、速度都一样，调低了频率的那只就走得慢，相对量约$4.45\times10^{-10}$；升空以后，引力项和速度项合起来正好补上这个差。E 错：按时钟假设，钟的快慢只看此刻的速度，和加速度无关；卫星的钟变快，是因为它所在处的引力势比地面的高。
+  solution: |
+    选 A、D。A 对：速度项$\frac{u_{\text{星}}^2}{2c^2}=\frac{GM}{2rc^2}$和$r$成反比，半径加倍，每天少走的时间减半。B 错：速度项让卫星的钟变慢，卫星的钟变快靠的是引力项，它所在处的引力势比地面的高。C 错：由爱因斯坦等效原理和狭义相对论，引力时间延缓和时间延缓对一切钟都一样，变的是时间本身，换哪种钟都一样。
+
+    D 对：在地面上，两只钟的引力势、速度都一样，调低了频率的那只就走得慢，相对量约$4.45\times10^{-10}$；升空以后，引力项和速度项合起来正好补上这个差。E 错：按时钟假设，钟的快慢只看此刻的速度，和加速度无关；卫星的钟变快，是因为它所在处的引力势比地面的高。
+
+- id: p3
+  tier: medium
+  statement: |
+    地球同步卫星（geostationary satellite）在赤道上空沿圆轨道运动，周期等于地球相对恒星自转一周的时间$86164\,\mathrm s$。它上面的钟每天比地面上的钟快多少？$G$取$6.67\times10^{-11}\,\mathrm{N\,m^2/kg^2}$，地球的质量取$5.97\times10^{24}\,\mathrm{kg}$、半径取$6.37\times10^6\,\mathrm m$，$c$取$3.00\times10^8\,\mathrm{m/s}$，一天按$86400\,\mathrm s$算，不计地面的钟随地球自转的运动。以$\mu\mathrm s$为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 6.67e-11*5.97e24/(3.00e8)^2*(1/6.37e6 - 1.5/cbrt(6.67e-11*5.97e24*86164^2/(4*pi^2)))*86400*1e6
+    unit: |
+      $\mu\mathrm s$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先由周期求出轨道半径，再用讲解里卫星的钟减地面的钟的式子。
+    - |
+      由圆轨道的周期$T=2\pi\sqrt{\frac{r^3}{GM}}$，得$r=\Bigl(\frac{GMT^2}{4\pi^2}\Bigr)^{1/3}$；每天快$\frac{GM}{c^2}\Bigl(\frac1R-\frac3{2r}\Bigr)\times86400\,\mathrm s$。
+    - |
+      $GM\approx3.982\times10^{14}\,\mathrm{m^3/s^2}$，$r\approx4.215\times10^7\,\mathrm m$，约为地球半径的$6.6$倍。$\frac{GM}{c^2}\approx4.424\times10^{-3}\,\mathrm m$，$\frac1R-\frac3{2r}\approx1.214\times10^{-7}\,\mathrm{m^{-1}}$，相对量约$5.37\times10^{-10}$，每天快约$46.4\,\mu\mathrm s$。
+  solution: |
+    同步卫星沿圆轨道运动，由周期$T=2\pi\sqrt{\frac{r^3}{GM}}$得$r=\Bigl(\frac{GMT^2}{4\pi^2}\Bigr)^{1/3}$。$GM\approx3.982\times10^{14}\,\mathrm{m^3/s^2}$，$r\approx4.215\times10^7\,\mathrm m$，约为地球半径的$6.6$倍。
+
+    由讲解里的式子，卫星的钟和地面的钟快慢之差是$\frac{GM}{c^2}\bigl(\frac1R-\frac3{2r}\bigr)$。$\frac{GM}{c^2}\approx4.424\times10^{-3}\,\mathrm m$，$\frac1R-\frac3{2r}\approx1.214\times10^{-7}\,\mathrm{m^{-1}}$，相对量约$5.37\times10^{-10}$，每天快约$46.4\,\mu\mathrm s$。它比 GPS 卫星的钟每天还多快约$8\,\mu\mathrm s$，因为轨道更高，引力项更大、速度项更小。
+
+- id: p4
+  tier: medium
+  statement: |
+    一架飞机在赤道上空$10.0\,\mathrm{km}$高处，相对地面以$250\,\mathrm{m/s}$向东飞了$10.0\,\mathrm h$；地面上的钟放在赤道的海平面上。在地心参考系里算：地面的钟随地球自转的速率取$465\,\mathrm{m/s}$，飞机的速率按$465\,\mathrm{m/s}+250\,\mathrm{m/s}$算；$10\,\mathrm{km}$高度以内的引力场看作均匀的，$g$取$9.8\,\mathrm{m/s^2}$，$c$取$3.00\times10^8\,\mathrm{m/s}$。
+
+    这段时间里，飞机上的钟比地面上的钟多走多少？少走写负数，以$\mathrm{ns}$为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: (9.8*1.00e4/(3.00e8)^2 - ((465+250)^2 - 465^2)/(2*(3.00e8)^2))*3.60e4*1e9
+    unit: |
+      $\mathrm{ns}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      两只钟都用讲解里的定理，在地心参考系里比：高度差带来引力那一项，速率差带来速度那一项。
+    - |
+      均匀场里$\Phi_{\text{机}}-\Phi_{\text{地}}=gh$。飞机上的钟多走$\Bigl(\frac{gh}{c^2}-\frac{u_{\text{机}}^2-u_{\text{地}}^2}{2c^2}\Bigr)\Delta t$，$u_{\text{机}}=715\,\mathrm{m/s}$，$u_{\text{地}}=465\,\mathrm{m/s}$。
+    - |
+      $\frac{gh}{c^2}\approx1.089\times10^{-12}$，$\frac{u_{\text{机}}^2-u_{\text{地}}^2}{2c^2}=\frac{715^2-465^2}{2\times(3.00\times10^8)^2}\approx1.639\times10^{-12}$，两者之差约$-5.50\times10^{-13}$。乘以$\Delta t=3.60\times10^4\,\mathrm s$，约$-1.98\times10^{-8}\,\mathrm s$，即约$-19.8\,\mathrm{ns}$，飞机上的钟少走。
+  solution: |
+    由讲解里的定理，在地心参考系里比较两只钟，飞机上的钟多走$\Bigl(\frac{\Phi_{\text{机}}-\Phi_{\text{地}}}{c^2}-\frac{u_{\text{机}}^2-u_{\text{地}}^2}{2c^2}\Bigr)\Delta t$。均匀场里$\Phi_{\text{机}}-\Phi_{\text{地}}=gh$，$\frac{gh}{c^2}\approx1.089\times10^{-12}$；$u_{\text{机}}=715\,\mathrm{m/s}$，$u_{\text{地}}=465\,\mathrm{m/s}$，$\frac{715^2-465^2}{2\times(3.00\times10^8)^2}\approx1.639\times10^{-12}$。
+
+    两者之差约$-5.50\times10^{-13}$，乘以$\Delta t=3.60\times10^4\,\mathrm s$，约$-1.98\times10^{-8}\,\mathrm s$，即飞机上的钟少走约$19.8\,\mathrm{ns}$，答案是$-19.8$。引力那一项让它多走约$39\,\mathrm{ns}$，速度那一项让它少走约$59\,\mathrm{ns}$；[时间延缓](lesson:physics.special-relativity.time-dilation)第 4 题只算飞机相对地面的速度，速度那一项只有$12.5\,\mathrm{ns}$，可在地心参考系里地面的钟也在动，向东飞的飞机快得更多。
+
+- id: p5
+  tier: hard
+  statement: |
+    GPS 卫星的轨道其实是略扁的椭圆。椭圆轨道上卫星的速率满足$u^2=GM\bigl(\frac2r-\frac1a\bigr)$（见[开普勒定律与轨道方程](lesson:physics.newtonian-mechanics.kepler-orbits)例 2），$r$是卫星到地心的距离，$a$是半长轴（semi-major axis）。把地球当作地心处的质点，不计地球自转。
+
+    （1）用讲解里的定理证明，卫星上的钟满足$\dv{\tau}{t}\approx1-\frac{3GM}{2ac^2}-\frac{2GM}{c^2}\bigl(\frac1r-\frac1a\bigr)$。
+
+    （2）取$GM=3.986\times10^{14}\,\mathrm{m^3/s^2}$、$a=2.66\times10^7\,\mathrm m$、偏心率（eccentricity）$e=0.0200$、$c=3.00\times10^8\,\mathrm{m/s}$。近地点（perigee）、远地点（apogee）到地心的距离分别是$a(1-e)$、$a(1+e)$。卫星的钟在哪一处走得快？两处的$\dv{\tau}{t}$相差多少？
+
+    （3）已知卫星绕一圈，$\frac1r$对时间的平均正好是$\frac1a$。说明出厂时的频率偏置为什么按半径为$a$的圆轨道定；剩下随位置变的那部分，会让钟的读数来回偏多少（估数量级）？对定位有什么影响，怎么办？
+  hints:
+    - |
+      （1）把$\Phi=-\frac{GM}r$和$u^2$代进定理，再按$\frac1r-\frac1a$整理。（2）$\frac1r$越小，钟越快。（3）读数偏多少，是快慢的偏差对时间的积累；这个偏差有多大，多久变一次号？
+    - |
+      （1）$\frac{\Phi}{c^2}-\frac{u^2}{2c^2}=-\frac{2GM}{rc^2}+\frac{GM}{2ac^2}$。（2）两处之差是$\frac{2GM}{c^2}\Bigl(\frac1{a(1-e)}-\frac1{a(1+e)}\Bigr)$。（3）$\frac1r-\frac1a$在约$\pm\frac ea$之间来回变，周期就是轨道周期$T$；把它当作振幅为$\frac ea$、角频率为$\frac{2\pi}T$的余弦，对时间积分。
+    - |
+      （1）由定理，$\dv{\tau}{t}\approx1+\frac{\Phi}{c^2}-\frac{u^2}{2c^2}=1-\frac{GM}{rc^2}-\frac{GM}{c^2}\Bigl(\frac1r-\frac1{2a}\Bigr)=1-\frac{2GM}{rc^2}+\frac{GM}{2ac^2}$。把$-\frac{2GM}{rc^2}$写成$-\frac{2GM}{c^2}\bigl(\frac1r-\frac1a\bigr)-\frac{2GM}{ac^2}$，和$\frac{GM}{2ac^2}$合起来得$-\frac{3GM}{2ac^2}$，就是要证的式子。
+
+      （2）$\frac1r$越小钟越快，远地点走得快。两处之差是$\frac{2GM}{c^2}\Bigl(\frac1{a(1-e)}-\frac1{a(1+e)}\Bigr)=\frac{4GMe}{ac^2(1-e^2)}$；$\frac{GM}{ac^2}\approx1.665\times10^{-10}$，乘以$\frac{4e}{1-e^2}\approx0.0800$，约$1.33\times10^{-11}$。
+
+      （3）一圈里$\frac1r-\frac1a$的平均是零，钟的平均快慢是$1-\frac{3GM}{2ac^2}$，和半径为$a$的圆轨道一样，所以出厂偏置按$r=a$定。剩下的一项约为$-\frac{2GMe}{ac^2}\cos\frac{2\pi t}T$（从近地点起计时），振幅约$6.7\times10^{-12}$；对时间积分，读数来回偏的幅度约$\frac{2GMe}{ac^2}\cdot\frac T{2\pi}$，$T\approx4.32\times10^4\,\mathrm s$，约$4.6\times10^{-8}\,\mathrm s$，折成距离十几米。出厂时调一个固定的频率管不了它，接收机按卫星播发的轨道参数把这一项算出来扣掉。
+  reference: |
+    （1）$1-\frac{GM}{rc^2}-\frac{GM}{c^2}\bigl(\frac1r-\frac1{2a}\bigr)=1-\frac{2GM}{rc^2}+\frac{GM}{2ac^2}=1-\frac{3GM}{2ac^2}-\frac{2GM}{c^2}\bigl(\frac1r-\frac1a\bigr)$。
+
+    （2）远地点快。差$\frac{4GMe}{ac^2(1-e^2)}=1.333\times10^{-11}$（$\frac{GM}{ac^2}=1.6650\times10^{-10}$）。
+
+    （3）$\langle\frac1r\rangle_t=\frac1a$，平均快慢同半径$a$的圆轨道，出厂偏置按它定。一阶下$\frac1r-\frac1a\approx\frac ea\cos nt$，$n=\frac{2\pi}T$；积分得$-\frac{2GMe}{ac^2n}\sin nt=-\frac{2\sqrt{GMa}\,e}{c^2}\sin nt$（精确到$e$的一阶，写成偏近点角$E$时是$-\frac{2\sqrt{GMa}}{c^2}e\sin E$），幅度$45.8\,\mathrm{ns}$，约$13.7\,\mathrm m$。接收机按广播星历算这一项并改正（GPS 的接口文件里称相对论改正项）。数值积分核过：幅度$45.76\,\mathrm{ns}$，$\langle\frac1r\rangle_t\cdot a=1$。
+
+- id: p6
+  tier: hard
+  statement: |
+    以后要在月球上放原子钟计时。在地心参考系里直接用讲解里的定理估算：月球表面的钟所在处的$\Phi$取地球和月球在那里的引力势之和，速率取月球绕地球公转的速率；地面上的钟只算地球的引力势，先不计地球自转。
+
+    取地球的$GM_{\text{地}}=3.986\times10^{14}\,\mathrm{m^3/s^2}$、半径$R=6.37\times10^6\,\mathrm m$，月球的$GM_{\text{月}}=4.90\times10^{12}\,\mathrm{m^3/s^2}$、半径$R_{\text{月}}=1.74\times10^6\,\mathrm m$，地月距离$D=3.84\times10^8\,\mathrm m$，月球公转的速率$u_{\text{月}}=1.02\times10^3\,\mathrm{m/s}$，$c=3.00\times10^8\,\mathrm{m/s}$。
+
+    （1）月球表面的钟比地面上的钟每天快多少？哪一项的贡献最大？
+
+    （2）为什么月球上的钟要算月球自己的引力势，地面上的钟却不算月球在地面处的引力势？
+
+    （3）把地面上的钟放在赤道上，计入它随地球自转以$465\,\mathrm{m/s}$的运动，结果变成多少？在这个模型里只加上这一项，结果就更准了吗？
+  hints:
+    - |
+      （1）把两只钟的$\Phi-\frac{u^2}2$分别算出来再相减。（2）地心参考系跟着地球怎样运动？讲解里太阳、月球的引力是怎样处理的？（3）地面的钟多了速度项；模型里地面的钟用的$R$准到什么程度？
+    - |
+      （1）月球上的钟是$-\frac{GM_{\text{地}}}D-\frac{GM_{\text{月}}}{R_{\text{月}}}-\frac{u_{\text{月}}^2}2$，地面上的钟是$-\frac{GM_{\text{地}}}R$；两者之差除以$c^2$，再乘以$86400\,\mathrm s$。（2）地心参考系跟着地球一起朝月球自由下落，就像跟着地球绕太阳自由下落一样。（3）地面的钟每天再慢$\frac{465^2}{2c^2}\times86400\,\mathrm s$；地球不是正球，$R$改动$10\,\mathrm{km}$，算出的结果每天差多少？
+    - |
+      （1）$\frac{GM_{\text{地}}}R\approx6.257\times10^7\,\mathrm{m^2/s^2}$，$\frac{GM_{\text{地}}}D\approx1.038\times10^6\,\mathrm{m^2/s^2}$，$\frac{GM_{\text{月}}}{R_{\text{月}}}\approx2.816\times10^6\,\mathrm{m^2/s^2}$，$\frac{u_{\text{月}}^2}2\approx5.20\times10^5\,\mathrm{m^2/s^2}$。月球上的钟减地面上的钟，$\Phi-\frac{u^2}2$之差约$5.820\times10^7\,\mathrm{m^2/s^2}$，除以$c^2$约$6.47\times10^{-10}$，每天快约$55.9\,\mu\mathrm s$，2024 年更细的计算得到的也是约$56\,\mu\mathrm s$。贡献最大的是地球的引力势：月球离地球远，这一项让它每天快约$59.1\,\mu\mathrm s$；月球自己的引力势让它慢约$2.7\,\mu\mathrm s$，公转的速度让它慢约$0.50\,\mu\mathrm s$。
+
+      （2）地心参考系跟着地球一起朝月球自由下落，月球的引力在地球附近只剩潮汐力，像讲解里太阳的引力一样，小到可以不计。月球表面却在月球自己的引力场深处，那里月球的引力约$1.6\,\mathrm{m/s^2}$，比地心朝月球下落的加速度（约$3\times10^{-5}\,\mathrm{m/s^2}$）大得多，抵消不掉，要按月球的引力势算进去。
+
+      （3）地面的钟随自转，每天再慢$\frac{465^2}{2\times(3.00\times10^8)^2}\times86400\,\mathrm s\approx0.10\,\mu\mathrm s$，月球上的钟就比它每天快约$56.0\,\mu\mathrm s$。可这只是在「地球当作质点、$R$取$6.37\times10^6\,\mathrm m$」的模型里加上速度项，这个模型本身的误差就和这一项同一量级：地球不是正球，$R$改动$10\,\mathrm{km}$，$\frac{GM_{\text{地}}}R$约变$\frac{GM_{\text{地}}}{R^2}\times10\,\mathrm{km}\approx9.8\times10^4\,\mathrm{m^2/s^2}$，算出的结果每天就差约$0.09\,\mu\mathrm s$。所以只加上这一项不见得更准，结果仍是约$56\,\mu\mathrm s$。
+  reference: |
+    （1）月球钟$\Phi-\frac{u^2}2=-1.0380\times10^6-2.8161\times10^6-5.202\times10^5=-4.3743\times10^6\,\mathrm{m^2/s^2}$，地面$-6.2575\times10^7$；差$5.8200\times10^7$，$\div c^2=6.467\times10^{-10}$，每天$55.87\,\mu\mathrm s$。分项：地球引力势$+59.08$，月球引力势$-2.70$，公转$-0.50\,\mu\mathrm s$。2024 年 Ashby 和 Patla（美国国家标准与技术研究院，The Astronomical Journal）把地月系统当作在太阳引力场里自由下落来算，得月球上的钟比地面上的每天快约$56\,\mu\mathrm s$（$56.02$），美国海军天文台等的独立计算也是约$56\,\mu\mathrm s$。
+
+    （2）地心参考系朝月球自由下落（加速度$\frac{GM_{\text{月}}}{D^2}=3.3\times10^{-5}\,\mathrm{m/s^2}$），月球在地面处的作用只剩潮汐项（约$4\times10^{-17}$）；就算把$-\frac{GM_{\text{月}}}D$整个算进地面的钟，每天也只差$0.012\,\mu\mathrm s$。月球表面的引力$1.62\,\mathrm{m/s^2}$，抵消不掉。参考系加速度带来的线性项在月球处约$\frac{GM_{\text{月}}}D$，同样只有$0.012\,\mu\mathrm s$，不计。月球自转（表面约$4.6\,\mathrm{m/s}$）的贡献约$10^{-5}\,\mu\mathrm s$。
+
+    （3）速度项$+0.104\,\mu\mathrm s$，得$55.98\,\mu\mathrm s$。这只是在质点、$R=6.37\times10^6\,\mathrm m$的模型里加一项，不见得更准：$R$改$10\,\mathrm{km}$，每天差$0.094\,\mu\mathrm s$；计入扁率的实际引力势和$-\frac{GM_{\text{地}}}R$在赤道差约$4.6\times10^4$、在两极差约$6.2\times10^4\,\mathrm{m^2/s^2}$（每天$0.04$、$0.06\,\mu\mathrm s$），和自转项同一量级。56.0 比 55.9 更接近 Ashby–Patla 的 56.02 是凑巧，结果写约$56\,\mu\mathrm s$；这里不说海平面上的钟一样快（那是第 8 题的结论）。
+
+- id: p7
+  tier: thinking
+  statement: |
+    [时间延缓](lesson:physics.special-relativity.time-dilation)例 2 把 GPS 卫星当作以$v$运动的参考系，按狭义相对论说卫星的钟慢。可在卫星上看，地面也以同样的速率在动。
+
+    （1）为什么不能反过来说地面的钟慢？讲解里的定理是在哪个参考系里用的？
+
+    （2）卫星自由下落、不转动，它附近可以看作局部惯性系。为什么也不能在这个参考系里照狭义相对论，去和两万千米外地面上的钟比快慢？
+
+    （3）卫星的钟和地面的钟靠信号一次次地比较，比出的结果为什么没有「双方都说对方慢」的对称？
+  hints:
+    - |
+      狭义相对论里「双方都看对方的钟慢」，说的是两个惯性系，各用自己一套同步好的钟。地心参考系、卫星附近的局部惯性系，各在多大的范围里能当惯性系用？
+    - |
+      （1）地心参考系里，地球的引力由引力势算进去，速度项是对这个参考系说的。（2）局部惯性系只在卫星附近足够小的范围里成立；两万千米外，地球的引力场方向、大小都变了。（3）两只钟一次次比出的读数差，是记录下来的确定的数，和用哪个参考系算无关。
+    - |
+      （1）时间延缓那种「双方都看对方慢」的说法，是两个惯性系之间的；绕地球转的卫星不是惯性系，地面也不是，这种对称的说法用不上。讲解的定理是在地心参考系里用的：它不随地球转，日、月的引力只剩可以不计的潮汐力，地球的引力由引力势算进去，速度项用的是钟相对这个参考系的速度。不计地球自转时，地面的钟在它里面不动，卫星的钟因速度每天慢约$7.2\,\mu\mathrm s$，因引力快约$45.7\,\mu\mathrm s$。
+
+      （2）局部惯性系只在足够小的范围、足够短的时间里成立。地面离卫星两万多千米，地球的引力场在这么大的范围里方向、大小都变了很多，地面上的钟在这个参考系里也不做匀速直线运动；地面又深在地球的引力势里，引力时间延缓没法在这个参考系里照狭义相对论算。所以不能拿它去和远处的钟比快慢。
+
+      （3）卫星绕着地球一圈圈地转，两只钟可以反复通过信号比较，每天的读数差是记录下来的确定的数，和用哪个参考系算无关。这和:term[双生子佯谬]{id="physics.special-relativity.twin-paradox"}（twin paradox，见[双生子佯谬与其他佯谬](lesson:physics.special-relativity.twin-paradox)）里两人重逢时的年龄差一样：两只钟走的是不同的世界线（world line），又处在不同的引力势里，本来就不对称。在地心参考系里算最方便，结果是卫星的钟每天快约$38.5\,\mu\mathrm s$，换别的参考系算对了，也是这个数。
+  reference: |
+    （1）对称的时间延缓只在两个惯性系之间成立；卫星、地面都不是惯性系。定理在地心参考系里用：日、月只剩潮汐力（不计），地球引力由$\Phi$计入，速度项相对地心参考系。
+
+    （2）卫星的局部惯性系只覆盖卫星附近（潮汐力可略的范围）；地面在两万多千米外，引力场不均匀，地面的钟不在其中匀速直线运动，又处在更深的引力势里，不能用狭义相对论的对称时间延缓和它比较。
+
+    （3）反复比较得到的读数差是不依赖参考系的事实（每天约$38.5\,\mu\mathrm s$）；不对称来自两只钟的世界线不同、所处的引力势不同，和双生子佯谬同理。任何参考系算对了都给同一结果，地心参考系最方便。
+
+- id: p8
+  tier: thinking
+  statement: |
+    地球赤道比两极鼓出约$21\,\mathrm{km}$。在地心参考系里，赤道上的地面钟随地球自转以约$465\,\mathrm{m/s}$运动，两极的几乎不动。
+
+    （1）只看速度项，赤道上的钟和两极的钟哪个慢？只看离地心的远近呢？
+
+    （2）实际上，海平面上各处静止的钟几乎走得一样快。用讲解里的定理说明为什么。
+
+    （3）光学原子钟（optical atomic clock）已经能分辨约$10^{-18}$的快慢差别。两只这样的钟放在不同的地方比快慢，能用来量什么？
+  hints:
+    - |
+      （1）速度项看$u$，引力势看离地心的远近。（2）在跟着地球转的参考系里看，静止的海水除了引力还受什么力？静止的海面和合力是什么关系？（3）均匀场里高处的钟快$\frac{gh}{c^2}$。
+    - |
+      （2）设地球自转的角速度为$\omega$，到地轴的距离为$\rho$，地心参考系里地面的钟$u=\omega\rho$，$\dv{\tau}{t}\approx1+\frac1{c^2}\bigl(\Phi-\frac12\omega^2\rho^2\bigr)$。在:term[转动参考系]{id="physics.newtonian-mechanics.rotating-frame"}（rotating frame）里，:term[离心力]{id="physics.newtonian-mechanics.centrifugal-force"}（centrifugal force，见[转动参考系：离心力与科里奥利力](lesson:physics.newtonian-mechanics.rotating-frames)）每单位质量是$\omega^2\rho$、背着地轴，正好是$\frac12\omega^2\rho^2$的梯度（gradient），它和引力的合力是$-\nabla\bigl(\Phi-\frac12\omega^2\rho^2\bigr)$。（3）$10^{-18}$对应多高？
+    - |
+      （1）只看速度项，赤道上的钟以约$465\,\mathrm{m/s}$运动，比两极的慢；只看离地心的远近，赤道离地心远约$21\,\mathrm{km}$，引力势高，赤道上的钟快。两个效应方向相反。
+
+      （2）设地球自转的角速度为$\omega$，到地轴的距离为$\rho$。地心参考系里地面的钟以$u=\omega\rho$运动，由讲解的定理，$\dv{\tau}{t}\approx1+\frac1{c^2}\bigl(\Phi-\frac12\omega^2\rho^2\bigr)$，快慢只由$\Phi-\frac12\omega^2\rho^2$决定。在跟着地球转的参考系里，静止的海水受引力和离心力，单位质量受的合力是$-\nabla\bigl(\Phi-\frac12\omega^2\rho^2\bigr)$；海水静止，海面就处处和这个合力垂直，沿着海面$\Phi-\frac12\omega^2\rho^2$处处相同，所以海平面上各处静止的钟走得一样快。
+
+      赤道鼓出来本来就是自转造成的，赤道上引力势的升高正好抵消速度项。这里不能把地球当作质点、用$-\frac{GM}r$算引力势：地球是扁的，引力势不是这个样子；可不管$\Phi$是什么样，上面的结论都成立。海平面近似就是大地水准面（geoid），说「几乎」，是因为海流、潮汐让海面偏离它一两米。
+
+      （3）均匀场里高处的钟快$\frac{gh}{c^2}$，$10^{-18}$对应$h=\frac{c^2}g\times10^{-18}\approx9\times10^{-3}\,\mathrm m$，约$1\,\mathrm{cm}$。两只这样的钟比快慢，就能量出两处相对大地水准面的高度差，精度约$1\,\mathrm{cm}$，准确说量的是两处$\Phi-\frac12\omega^2\rho^2$之差。
+  reference: |
+    （1）速度项：赤道慢（$\frac{u^2}{2c^2}\approx1.2\times10^{-12}$）；离地心远：赤道快。
+
+    （2）地心参考系里地面钟$\dv{\tau}{t}\approx1+\frac{\Phi-\frac12\omega^2\rho^2}{c^2}$；转动参考系里引力加离心力等于$-\nabla(\Phi-\frac12\omega^2\rho^2)$，静止海面与之垂直，故$\Phi-\frac12\omega^2\rho^2$沿海面为常数，即大地水准面（海面与之差一两米，相当于$10^{-16}$）。不能用质点的$-\frac{GM}r$：按它算赤道和两极的$\Delta\Phi\approx2.1\times10^5\,\mathrm{m^2/s^2}$，实际（计入地球扁率的引力势）约$1.1\times10^5$，正好等于$\frac12\omega^2\rho^2$。
+
+    （3）$h=\frac{c^2}g\times10^{-18}\approx0.9\,\mathrm{cm}$，用钟测相对大地水准面的高度（位势差），精度约$1\,\mathrm{cm}$。

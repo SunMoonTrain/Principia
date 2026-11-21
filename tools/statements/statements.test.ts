@@ -225,6 +225,22 @@ describe('只导出题干', () => {
     expect(text).toContain('作答：填一个数\n单位：m/s');
   });
 
+  it('整数题（exact）的作答提示按学科：数学、物理只说「填整数」（计算机的那句见 compiler/cs.test.ts）', () => {
+    const root = miniContent();
+    const addExact = (file: string, line: string): void => {
+      const full = path.join(root, file);
+      const old = fs.readFileSync(full, 'utf8');
+      expect(old).toContain(line);
+      fs.writeFileSync(full, old.replace(line, `${line}    exact: true\n`));
+    };
+    addExact(ALPHA_FILE, '    value: [1, 2]\n');
+    addExact('content/physics/mech/gamma/problems.yaml', '    value: 6\n');
+    const { text } = exportStatements(root, { scopes: [], tiers: [] });
+    expect(text).toContain('作答：填 2 个数，不分顺序\n填整数\n');
+    expect(text).toContain('作答：填一个数\n填整数\n单位：m/s');
+    expect(text).not.toContain('0x');
+  });
+
   it('不带标准答案、提示、解答和参考解答', () => {
     const { text } = exportStatements(miniContent(), { scopes: [], tiers: [] });
     const problems = [ALPHA, GAMMA].flatMap((src) => parse(src) as Record<string, unknown>[]);

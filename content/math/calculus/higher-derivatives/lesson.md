@@ -39,7 +39,7 @@ $$
 (e^{ax})^{(n)}=a^ne^{ax},\qquad (\sin x)^{(n)}=\sin\Bigl(x+\frac{n\pi}2\Bigr),\qquad (\cos x)^{(n)}=\cos\Bigl(x+\frac{n\pi}2\Bigr).
 $$
 
-第一个由:term[链式法则]{id="math.calculus.chain-rule"}（chain rule，见[链式法则](lesson:math.calculus.chain-rule)），每求一次导多一个因子$a$。第二个是因为$(\sin x)'=\cos x=\sin\bigl(x+\frac\pi2\bigr)$：求一次导，图像向左平移$\frac\pi2$；再求导，再平移（见几何图像）。严格地说，看出规律以后要用数学归纳法证明，例 1 是一个完整的例子。
+第一个由:term[链式法则]{id="math.calculus.chain-rule"}（chain rule，见[链式法则](lesson:math.calculus.chain-rule)），每求一次导多一个因子$a$。第二个是因为$(\sin x)'=\cos x=\sin\bigl(x+\frac\pi2\bigr)$：求一次导，图像向左平移$\frac\pi2$；再求导，再平移（见几何图像）。严格地说，看出规律以后要用:term[数学归纳法]{id="math.logic-sets.mathematical-induction"}（mathematical induction）证明，例 1 是一个完整的例子。
 
 ### 莱布尼茨公式
 
@@ -48,7 +48,7 @@ $$
 ::anchor{id="thm-leibniz"}
 **:term[莱布尼茨公式]{id="math.calculus.leibniz-formula"}（Leibniz rule）**　$u$、$v$都$n$阶:term[可导]{id="math.calculus.differentiable"}时，$(uv)^{(n)}=\sum_{k=0}^n\binom nku^{(n-k)}v^{(k)}$。
 
-道理：和二项式定理的证明一样，用数学归纳法。设$n$时成立，再求一次导，每一项$u^{(n-k)}v^{(k)}$由:term[乘积法则]{id="math.calculus.product-rule"}（product rule）变成$u^{(n-k+1)}v^{(k)}+u^{(n-k)}v^{(k+1)}$。合并同类项时，$u^{(n+1-k)}v^{(k)}$的系数是$\binom nk+\binom n{k-1}=\binom{n+1}k$，就是$n+1$时的公式。
+道理：和二项式定理的证明一样，用:term[数学归纳法]{id="math.logic-sets.mathematical-induction"}。设$n$时成立，再求一次导，每一项$u^{(n-k)}v^{(k)}$由:term[乘积法则]{id="math.calculus.product-rule"}（product rule）变成$u^{(n-k+1)}v^{(k)}+u^{(n-k)}v^{(k+1)}$。合并同类项时，$u^{(n+1-k)}v^{(k)}$的系数是$\binom nk+\binom n{k-1}=\binom{n+1}k$，就是$n+1$时的公式。
 
 它最有用的时候，是有一个因子是多项式：多项式求几次导就变成$0$，和式里只剩前几项（例 2）。边界情况：公式要$u$、$v$各自$n$阶可导；只知道乘积$n$阶可导不够，比如$|x|\cdot|x|=x^2$处处可导，$|x|$在$0$处却不可导。
 
@@ -81,7 +81,7 @@ sliders:
 
 求$f(x)=\frac1{1+x}$的$n$阶导数，再写出$\ln(1+x)$的$n$阶导数（$x>-1$）。
 
-**为什么想到这么做**：$f=(1+x)^{-1}$是整数次幂，每求一次导，指数减$1$、前面多一个因子；先算几阶找规律，再用数学归纳法证明。
+**为什么想到这么做**：$f=(1+x)^{-1}$是整数次幂，每求一次导，指数减$1$、前面多一个因子；先算几阶找规律，再用:term[数学归纳法]{id="math.logic-sets.mathematical-induction"}证明。
 
 **推导**：$f'=-(1+x)^{-2}$，$f''=2(1+x)^{-3}$，$f'''=-6(1+x)^{-4}$，猜$f^{(n)}=(-1)^nn!\,(1+x)^{-n-1}$。$n=1$时成立；设$n$时成立，再求一次导得$(-1)^nn!\cdot(-n-1)(1+x)^{-n-2}=(-1)^{n+1}(n+1)!\,(1+x)^{-n-2}$，$n+1$时也成立。$\bigl(\ln(1+x)\bigr)'=\frac1{1+x}$，所以$n\ge1$时$\bigl(\ln(1+x)\bigr)^{(n)}=f^{(n-1)}=\frac{(-1)^{n-1}(n-1)!}{(1+x)^n}$。
 

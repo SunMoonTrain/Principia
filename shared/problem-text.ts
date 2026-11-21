@@ -2,8 +2,15 @@
 // 网页的题目卡片和「只导出题干」的小工具（tools/statements）共用，两边说法一致。
 
 import type { Tier } from './content-types.ts';
+import { subjectOf } from './ids.ts';
 
-export const EXACT_HELP = '填整数，可以写 0x、0b 开头的十六进制、二进制';
+/**
+ * 整数题（answer.exact）作答框下的提示，按学科分：计算机题常用十六进制、二进制，说一句可以这样写；数学、物理只说填整数。
+ * id 是小节 id（或以它开头的题目 id），cs. 开头的是计算机。
+ */
+export function exactHelp(id: string): string {
+  return subjectOf(id) === 'cs' ? '填整数，可以写 0x、0b 开头的十六进制、二进制' : '填整数';
+}
 
 export const TIER_LABELS: Record<Tier, string> = { easy: '简单', medium: '中等', hard: '难', thinking: '思考' };
 

@@ -1,0 +1,201 @@
+- id: p1
+  tier: easy
+  statement: |
+    把$0.50\,\mathrm{kg}$的铝块从$20\,^\circ\mathrm C$加热到$80\,^\circ\mathrm C$，铝的比热容取$9.0\times10^2\,\mathrm{J/(kg\cdot K)}$。铝块吸收了多少热量？
+  answer:
+    type: number
+    value: 0.50*9.0e2*60
+    unit: |
+      $\mathrm J$
+  hints:
+    - |
+      比热容是单位质量的热容。这块铝的热容是多少？温度升高了多少开尔文？
+    - |
+      热容$C=cm$；温度升高$60\,\mathrm K$，温差用开尔文和用摄氏度表示数值相同。吸收的热量$Q=C\Delta T$。
+    - |
+      $C=9.0\times10^2\times0.50\,\mathrm{J/K}=450\,\mathrm{J/K}$，$Q=450\times60\,\mathrm J=2.7\times10^4\,\mathrm J$。
+  solution: |
+    铝块的热容$C=cm=9.0\times10^2\times0.50\,\mathrm{J/K}=450\,\mathrm{J/K}$。温度从$20\,^\circ\mathrm C$升到$80\,^\circ\mathrm C$，升高$60\,\mathrm K$：温差用开尔文和用摄氏度表示数值相同。所以$Q=C\Delta T=450\times60\,\mathrm J=2.7\times10^4\,\mathrm J$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        理想气体的$C_{p,\mathrm m}-C_{V,\mathrm m}$等于$R$，和气体的种类无关
+      - |
+        两个物体升高同样的温度，比热容大的那个吸收的热量一定多
+      - |
+        一定量的理想气体在等容过程中吸收的热量，等于它的焓的增加
+      - |
+        理想气体的比热容比$\gamma$总大于$1$
+    value: [1, 4]
+  hints:
+    - |
+      A、D 想一想迈耶公式；B 想一想热容和比热容差在哪里；C 先想等容过程中吸的热等于什么，再看焓的增加比它多还是少。
+    - |
+      A 正是迈耶公式说的事；D 由$C_p=C_V+nR$比较$C_p$和$C_V$。B 吸收的热量$Q=cm\Delta T$，还和质量有关。C 等容时$W=0$，$Q=\Delta U$，而$\Delta H=\Delta U+\Delta(pV)$。
+    - |
+      A 对：迈耶公式的推导只用了$pV=nRT$和理想气体的内能只和温度有关，和气体种类无关。B 错：$Q=cm\Delta T$还和质量有关，一滴水升温$1\,\mathrm K$吸的热比一大块铁少得多。
+
+      C 错：等容时$W=0$，$Q=\Delta U$；$\Delta H=\Delta U+\Delta(pV)=\Delta U+nR\Delta T$，比吸的热多$nR\Delta T$。D 对：$C_p=C_V+nR>C_V$，所以$\gamma=\frac{C_p}{C_V}>1$。
+  solution: |
+    选 A、D。A 对：迈耶公式$C_{p,\mathrm m}-C_{V,\mathrm m}=R$的推导只用了$pV=nRT$和理想气体的内能只和温度有关，对哪种理想气体都成立。B 错：吸收的热量$Q=cm\Delta T$还和质量有关，一滴水升温$1\,\mathrm K$吸的热比一大块铁少得多。
+
+    C 错：等容时$W=0$，吸收的热量$Q=\Delta U$；焓的增加$\Delta H=\Delta U+\Delta(pV)=\Delta U+nR\Delta T$，比吸的热多$nR\Delta T$。D 对：$C_p=C_V+nR>C_V$，所以$\gamma=\frac{C_p}{C_V}>1$。
+
+- id: p3
+  tier: medium
+  statement: |
+    $1.20\,\mathrm{mol}$氮气在不变的压强下从$290\,\mathrm K$缓慢地加热到$350\,\mathrm K$。把氮气当作理想气体，定容摩尔热容取$\frac52R$。依次求内能的增加$\Delta U$、气体对外做的功$W$和吸收的热量$Q$。
+  answer:
+    type: tuple
+    value: [1.20*2.5*8.31446261815324*60, 1.20*8.31446261815324*60, 1.20*3.5*8.31446261815324*60]
+    unit: |
+      $\mathrm J$
+  hints:
+    - |
+      理想气体的内能只和温度有关，内能的增加怎样用定容摩尔热容算？等压过程中气体做的功，能不能用温度的变化表示？
+    - |
+      $\Delta U=nC_{V,\mathrm m}\Delta T$；由$pV=nRT$，压强不变时$W=p\Delta V=nR\Delta T$；$Q=\Delta U+W$，也可以直接用$C_{p,\mathrm m}=C_{V,\mathrm m}+R=\frac72R$算。
+    - |
+      $\Delta T=60\,\mathrm K$。$\Delta U=1.20\times\frac52\times8.314\times60\,\mathrm J\approx1497\,\mathrm J$，$W=1.20\times8.314\times60\,\mathrm J\approx599\,\mathrm J$，$Q=1.20\times\frac72\times8.314\times60\,\mathrm J\approx2095\,\mathrm J$，正好等于$\Delta U+W$。
+  solution: |
+    压强不变、缓慢地加热，是等压过程，$\Delta T=60\,\mathrm K$。理想气体的内能只和温度有关，$\Delta U=nC_{V,\mathrm m}\Delta T=1.20\times\frac52\times8.314\times60\,\mathrm J\approx1497\,\mathrm J$。由$pV=nRT$，压强不变时$W=p\Delta V=nR\Delta T\approx599\,\mathrm J$。$Q=\Delta U+W\approx2095\,\mathrm J$，也就是$nC_{p,\mathrm m}\Delta T$，其中$C_{p,\mathrm m}=\frac72R$。
+
+- id: p4
+  tier: medium
+  statement: |
+    某种理想气体的比热容比$\gamma=1.30$。求它的定容摩尔热容$C_{V,\mathrm m}$。
+  answer:
+    type: number
+    value: 8.31446261815324/0.30
+    unit: |
+      $\mathrm{J/(mol\cdot K)}$
+  hints:
+    - |
+      比热容比把$C_{p,\mathrm m}$和$C_{V,\mathrm m}$联系起来，迈耶公式又给出了它们的差：两个方程，两个未知数。
+    - |
+      $C_{p,\mathrm m}=\gamma C_{V,\mathrm m}$，$C_{p,\mathrm m}-C_{V,\mathrm m}=R$，所以$(\gamma-1)C_{V,\mathrm m}=R$。
+    - |
+      $C_{V,\mathrm m}=\frac R{\gamma-1}=\frac{8.314}{0.30}\,\mathrm{J/(mol\cdot K)}\approx27.7\,\mathrm{J/(mol\cdot K)}$。
+  solution: |
+    由比热容比的定义，$C_{p,\mathrm m}=\gamma C_{V,\mathrm m}$；由迈耶公式，$C_{p,\mathrm m}-C_{V,\mathrm m}=R$。代入得$(\gamma-1)C_{V,\mathrm m}=R$，所以$C_{V,\mathrm m}=\frac R{\gamma-1}=\frac{8.314}{0.30}\,\mathrm{J/(mol\cdot K)}\approx27.7\,\mathrm{J/(mol\cdot K)}$。$\gamma$越接近$1$，$C_{V,\mathrm m}$越大。
+
+- id: p5
+  tier: hard
+  statement: |
+    物质的量为$n$的理想气体（$C_{V,\mathrm m}$不随温度变），沿$p$-$V$图（$p$-$V$ diagram）上过原点的直线$p=aV$（$a>0$是常量）准静态地变化。
+
+    （1）证明这一过程中气体的摩尔热容是$C_{V,\mathrm m}+\frac R2$，和温度、$a$都无关。
+
+    （2）单原子理想气体沿这条直线从体积$V_1$膨胀到$2V_1$，开始时压强是$p_1$。用$p_1V_1$表示它吸收的热量；再用$p$-$V$图上的面积算出它对外做的功，验证热力学第一定律。
+
+    （3）这个摩尔热容介于$C_{V,\mathrm m}$和$C_{p,\mathrm m}$之间。为什么沿这条直线升温，比等压升温吸的热少、比等容升温吸的热多？
+  hints:
+    - |
+      摩尔热容是$\frac{\delta Q}{n\,\dd T}$。准静态时$\delta Q$怎样用$\dd T$、$\dd V$表示？沿这条直线，$\dd V$和$\dd T$有什么关系？
+    - |
+      （1）$\delta Q=nC_{V,\mathrm m}\dd T+p\,\dd V$；由$pV=nRT$和$p=aV$得$nRT=aV^2$，取微分，求出$p\,\dd V$和$\dd T$的关系。（2）$T$和$V^2$成正比，体积加倍时温度变成几倍；直线下面是一个梯形。（3）三种过程升温$\dd T$时，内能的增加和做的功各是多少？
+    - |
+      （1）准静态时$\delta Q=nC_{V,\mathrm m}\dd T+p\,\dd V$。由$pV=nRT$和$p=aV$，$nRT=aV^2$，取微分得$nR\,\dd T=2aV\,\dd V=2p\,\dd V$，即$p\,\dd V=\frac12nR\,\dd T$。所以$\delta Q=n\bigl(C_{V,\mathrm m}+\frac R2\bigr)\dd T$，摩尔热容$\frac{\delta Q}{n\,\dd T}=C_{V,\mathrm m}+\frac R2$，和$T$、$a$都无关。
+
+      （2）$T=\frac{aV^2}{nR}$和$V^2$成正比，体积加倍时温度变成$4T_1$，$\Delta T=3T_1$，其中$nRT_1=p_1V_1$。单原子时摩尔热容是$\frac32R+\frac12R=2R$，吸收的热量$Q=n\cdot2R\cdot3T_1=6p_1V_1$。另一方面，$\Delta U=\frac32nR\cdot3T_1=\frac92p_1V_1$；末状态的压强是$2p_1$，直线下面是梯形，$W=\frac{p_1+2p_1}2\cdot V_1=\frac32p_1V_1$，$\Delta U+W=6p_1V_1=Q$。
+
+      （3）三种过程升温$\dd T$时，内能都增加$nC_{V,\mathrm m}\dd T$，差别只在做的功：等容时不做功，等压时做功$nR\,\dd T$，沿这条直线只做$\frac12nR\,\dd T$。沿直线升温时压强也跟着增大，气体膨胀得比等压时少，做的功只有一半，吸的热也就介于两者之间。
+  reference: |
+    （1）准静态时$\delta Q=nC_{V,\mathrm m}\dd T+p\,\dd V$（热容与焓一节的定理）。由$pV=nRT$和$p=aV$，$nRT=aV^2$，取微分得$nR\,\dd T=2aV\,\dd V=2p\,\dd V$，即$p\,\dd V=\frac12nR\,\dd T$。所以$\delta Q=n\bigl(C_{V,\mathrm m}+\frac R2\bigr)\dd T$，摩尔热容$C_{V,\mathrm m}+\frac R2$，和$T$、$a$都无关。
+
+    （2）$T=\frac{aV^2}{nR}$，体积加倍时$T_2=4T_1$，$\Delta T=3T_1$，$nRT_1=p_1V_1$。单原子时摩尔热容$2R$，$Q=n\cdot2R\cdot3T_1=6p_1V_1$。$\Delta U=\frac32nR\cdot3T_1=\frac92p_1V_1$；末压强$2p_1$，梯形面积$W=\frac32p_1V_1$（也可以算$\int_{V_1}^{2V_1}aV\,\dd V=\frac a2\cdot3V_1^2=\frac32p_1V_1$），$\Delta U+W=6p_1V_1=Q$。
+
+    （3）升温$\dd T$时三种过程内能都增加$nC_{V,\mathrm m}\dd T$，做的功依次是$0$（等容）、$\frac12nR\,\dd T$（直线）、$nR\,\dd T$（等压）。沿直线升温时压强同时增大，膨胀得比等压少，所以吸热介于两者之间，摩尔热容依次是$C_{V,\mathrm m}$、$C_{V,\mathrm m}+\frac R2$、$C_{V,\mathrm m}+R$。
+
+- id: p6
+  tier: hard
+  statement: |
+    水平的管子包着绝热层，中间装一个多孔塞（porous plug）。塞子左边气体的压强保持$p_1$，右边保持$p_2$（$p_2<p_1$），气体缓慢而稳定地从左边穿过塞子流到右边，这种过程叫作节流（throttling）。盯住一份气体：它在左边时体积是$V_1$、内能是$U_1$，全部穿过以后体积是$V_2$、内能是$U_2$；流得很慢，它整体运动的动能可以不计。
+
+    （1）这份气体被后面的气体推着穿过塞子，后面的气体对它做了多少功？它到了右边推开前面的气体，又对外做了多少功？
+
+    （2）证明节流前后这份气体的焓相等：$U_1+p_1V_1=U_2+p_2V_2$。
+
+    （3）证明理想气体节流前后温度不变。实验发现，室温的空气节流后温度略有下降，这说明空气的焓除了和温度有关，还和什么有关？
+  hints:
+    - |
+      把这份气体后面的气体看成一个推着它走的活塞，前面的气体看成被它推开的活塞。压强不变时，推过一块体积，做的功是多少？
+    - |
+      （1）后面的气体以不变的压强$p_1$把这份气体全部推过塞子，分界面扫过的体积是$V_1$；在右边，它以压强$p_2$推开前面的气体，扫过的体积是$V_2$。（2）管子绝热，$Q=0$，用$Q=\Delta U+W$。（3）理想气体的焓$H=U+nRT$只和温度有关。
+    - |
+      （1）这份气体后面的分界面在不变的压强$p_1$下向前推进，扫过的体积是$V_1$，后面的气体对它做功$p_1V_1$；它在右边推开前面的气体，压强是$p_2$，扫过的体积是$V_2$，对外做功$p_2V_2$。所以它对外做的净功$W=p_2V_2-p_1V_1$。两边的压强都不变，功只看扫过的体积，和[准静态过程与气体的功](lesson:physics.thermal-physics.quasi-static-processes)第 6 题外压不变时的算法一样；塞子里面的过程不是准静态的，用不着细看。
+
+      （2）管子绝热，$Q=0$；整体运动的动能不计。由$Q=\Delta U+W$，$0=(U_2-U_1)+(p_2V_2-p_1V_1)$，即$U_1+p_1V_1=U_2+p_2V_2$，节流前后的焓相等。
+
+      （3）理想气体的$H=U+nRT$只和温度有关，而且温度越高焓越大，$H_1=H_2$就推出$T_1=T_2$。空气节流后温度变了，可焓没变，说明它的焓不只由温度决定：温度相同时，压强不同，焓也不同。实际气体（real gas）的分子之间有吸引，膨胀以后分子离得远，分子势能增加（[热力学第一定律](lesson:physics.thermal-physics.first-law)第 6 题），这是原因之一；液化空气、冰箱里都用节流降温。
+  reference: |
+    （1）后面的气体对这份气体做功$p_1V_1$（压强$p_1$不变，分界面扫过体积$V_1$），这份气体对前面的气体做功$p_2V_2$；净功$W=p_2V_2-p_1V_1$。和准静态过程与气体的功一节第 6 题一样，外压不变时功只看扫过的体积；塞子里的过程不是准静态的，不用细看。
+
+    （2）绝热，$Q=0$；动能不计。$Q=\Delta U+W$给出$0=(U_2-U_1)+(p_2V_2-p_1V_1)$，即$H_1=H_2$。
+
+    （3）理想气体$H=U+nRT$只和$T$有关且随$T$单调增加（$C_p>0$），所以$T_2=T_1$。空气节流后降温而焓不变，说明焓还和压强（或体积）有关。原因之一：分子间有吸引，分子散开时分子势能升高，内能里分子动能那部分就要减少（热力学第一定律一节第 6 题的$-\frac{an^2}V$）；完整的分析还要看$pV$偏离$nRT$的部分。这就是焦耳-汤姆孙效应，液化空气、制冷都用它。
+
+- id: p7
+  tier: thinking
+  statement: |
+    热容是物体本身的性质吗？
+
+    （1）为什么说一个物体的热容不只由物体决定，还要说清是什么过程？
+
+    （2）一定量的理想气体，在等温过程中、在准静态的绝热过程中，热容各是多少？
+
+    （3）有没有可能气体一边吸热、温度一边降低？如果有，举一个理想气体的例子，说明能量是怎样记账的。
+  hints:
+    - |
+      热容的定义是$\frac{\delta Q}{\dd T}$，分子、分母各由什么决定？等温过程里$\dd T$是多少，绝热过程里$\delta Q$是多少？
+    - |
+      （1）$\delta Q=\dd U+\delta W$，同样升温，做的功不同，吸的热就不同。（2）等温时吸了热、温度不变；绝热时不吸热、温度却在变。（3）只要对外做的功比吸的热还多，内能就减少，理想气体的温度就降低；试试单原子理想气体沿$pV^{4/3}=$常数准静态地膨胀。
+    - |
+      （1）热容$C=\frac{\delta Q}{\dd T}$，分子由第一定律$\delta Q=\dd U+\delta W$定下。同样升温$\dd T$，走不同的过程，做的功不同（理想气体的$\dd U$倒是一样的），吸的热也就不同。所以「物体的热容」要约定过程才有确定的值，常用的是定容、定压两种；固体、常温的水受热时体积变化很小，两种热容相差很少，才常常只说「热容」。
+
+      （2）等温过程中气体吸热或放热，$\dd T=0$，比值没有确定的值，可以说热容是无穷大；准静态的绝热过程中$\delta Q=0$，体积在变，温度也在变，热容是$0$。
+
+      （3）可能。单原子理想气体沿$pV^{4/3}=$常数膨胀，$T\propto pV\propto V^{-1/3}$，$\dd T=-\frac13T\frac{\dd V}V<0$；$\delta Q=\frac32nR\,\dd T+p\,\dd V=-\frac12nRT\frac{\dd V}V+nRT\frac{\dd V}V=\frac12nRT\frac{\dd V}V>0$。它一边吸热一边降温，摩尔热容$\frac{\delta Q}{n\,\dd T}=-\frac32R$，这叫作负热容（negative heat capacity）。记账：对外做的功$nRT\frac{\dd V}V$，一半来自吸的热，一半来自内能的减少。
+  reference: |
+    （1）$C=\frac{\delta Q}{\dd T}$，$\delta Q=\dd U+\delta W$。同样升温，过程不同，做的功不同（一般物质连$\dd U$也不同；理想气体的$\dd U$只看$\dd T$），吸热就不同，所以热容要约定过程才有确定值，常用定容、定压两种；固体、常温的水受热时体积变化很小，$C_p$、$C_V$相差很少，才常只说「热容」（有的液体相差可达几十个百分点，如苯）。
+
+    （2）等温：$\dd T=0$而$\delta Q\ne0$，比值没有确定值，可说热容无穷大。准静态绝热：$\delta Q=0$，$\dd U=-p\,\dd V\ne0$，温度在变，热容为$0$。
+
+    （3）可能。单原子理想气体沿$pV^{4/3}=$常数膨胀：$T\propto V^{-1/3}$，$\dd T=-\frac13T\frac{\dd V}V$；$\delta Q=\frac32nR\,\dd T+p\,\dd V=\frac12nRT\frac{\dd V}V>0$，摩尔热容$-\frac32R$。记账：做功$p\,\dd V=nRT\frac{\dd V}V$，一半由吸的热供给，一半由内能的减少供给。
+
+    一般地，沿$pV^\alpha=$常数，$1<\alpha<\gamma$时摩尔热容都是负的（绝热过程一节第 5 题）。旁白：靠自身引力束缚的恒星向外辐射、失去能量时反而收缩变热，也是一种负热容。
+
+- id: p8
+  tier: thinking
+  statement: |
+    准静态过程中，理想气体吸收的热量是$\delta Q=nC_{V,\mathrm m}\dd T+p\,\dd V$，设$C_{V,\mathrm m}$是常量。
+
+    （1）假如有一个只由状态决定、有连续的二阶偏导数的函数$\Phi(T,V)$，沿任何准静态过程都有$\dd\Phi=\delta Q$。$\Phi$对$T$、$V$的偏导数各是什么？由混合偏导数（mixed partial derivative）相等推出矛盾。
+
+    （2）$\frac{\delta Q}T$是不是某个只由状态决定的函数的微小改变？是的话把它写出来。
+
+    （3）气体从$(T_1,V_1)$变到$(T_1,2V_1)$：一条路线是等温膨胀，另一条是先等压膨胀到$2V_1$、再等容降温到$T_1$。沿这两条路线分别算$\int\delta Q$和$\int\frac{\delta Q}T$，和（1）（2）的结论对照。
+  hints:
+    - |
+      （1）沿等容过程只有$T$在变，沿等温过程只有$V$在变，各自比较$\dd\Phi$和$\delta Q$。（2）$\frac{\delta Q}T$的两项，一项只含$T$，一项只含$V$。（3）等压过程中$\delta Q=nC_{p,\mathrm m}\dd T$，等容过程中$\delta Q=nC_{V,\mathrm m}\dd T$。
+    - |
+      （1）$\Phi_T=nC_{V,\mathrm m}$，$\Phi_V=p=\frac{nRT}V$，再分别对$V$、$T$求偏导数。（2）试试$S=nC_{V,\mathrm m}\ln T+nR\ln V$。（3）最后用迈耶公式。
+    - |
+      （1）沿等容过程$V$不变，$\dd\Phi=\delta Q=nC_{V,\mathrm m}\dd T$，所以$\Phi_T=nC_{V,\mathrm m}$；沿等温过程$T$不变，$\dd\Phi=\delta Q=p\,\dd V$，所以$\Phi_V=\frac{nRT}V$。于是$\Phi_{TV}=0$，$\Phi_{VT}=\frac{nR}V\ne0$，和[偏导数](lesson:math.vector-calculus.partial-derivatives#thm-schwarz)里混合偏导数相等的定理矛盾。所以这样的$\Phi$不存在：$\delta Q$只是一小段过程里吸的热，不是哪个状态函数的微小改变，这正是写$\delta$不写$\dd$的原因。
+
+      （2）是。令$S(T,V)=nC_{V,\mathrm m}\ln T+nR\ln V$，沿任何准静态过程，$\dd S=nC_{V,\mathrm m}\frac{\dd T}T+nR\frac{\dd V}V=\frac{\delta Q}T$（用了$p=\frac{nRT}V$）。除以$T$以后，$\delta Q$变成了一个状态函数的微小改变；以后会知道，这个函数就是熵（entropy），所以记作$S$，见[克劳修斯不等式与熵](lesson:physics.thermal-physics.entropy)，[恰当方程](lesson:math.ode.exact-equations)第 7 题把$\frac1T$叫作积分因子（integrating factor）。
+
+      （3）等温膨胀：$\int\delta Q=nRT_1\ln2$，$\int\frac{\delta Q}T=nR\ln2$。先等压后等容：等压段温度升到$2T_1$，$\int\delta Q=nC_{p,\mathrm m}T_1$，$\int\frac{\delta Q}T=nC_{p,\mathrm m}\ln2$；等容段降回$T_1$，$\int\delta Q=-nC_{V,\mathrm m}T_1$，$\int\frac{\delta Q}T=-nC_{V,\mathrm m}\ln2$。合起来$\int\delta Q=nRT_1$，和等温膨胀的$nRT_1\ln2$不同；$\int\frac{\delta Q}T=n(C_{p,\mathrm m}-C_{V,\mathrm m})\ln2=nR\ln2$，由迈耶公式，和等温膨胀的相同。
+  reference: |
+    （1）等容时$\Phi_T=nC_{V,\mathrm m}$，等温时$\Phi_V=\frac{nRT}V$；$\Phi_{TV}=0\ne\Phi_{VT}=\frac{nR}V$，和施瓦茨定理（混合偏导数连续时相等）矛盾，所以热量不是状态函数，$\delta Q$不是任何状态函数的微小改变。
+
+    （2）$S=nC_{V,\mathrm m}\ln T+nR\ln V$，沿任何准静态过程$\dd S=\frac{\delta Q}T$（对$\ln T(t)$、$\ln V(t)$各用一元的链式法则，不用多元的）。$\frac1T$是积分因子，$S$就是以后的熵（常微分方程恰当方程一节第 7 题、克劳修斯不等式与熵一节）。
+
+    （3）等温：$\int\delta Q=nRT_1\ln2$，$\int\frac{\delta Q}T=nR\ln2$。等压到$(2T_1,2V_1)$再等容到$(T_1,2V_1)$：$\int\delta Q=nC_{p,\mathrm m}T_1-nC_{V,\mathrm m}T_1=nRT_1$，$\int\frac{\delta Q}T=(nC_{p,\mathrm m}-nC_{V,\mathrm m})\ln2=nR\ln2$。热量和路线有关（$nRT_1\ln2\ne nRT_1$），$\int\frac{\delta Q}T$只看始末状态，两条路线相同。

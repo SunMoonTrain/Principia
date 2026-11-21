@@ -1,0 +1,218 @@
+- id: p1
+  tier: easy
+  statement: |
+    氦气的数密度是$2.5\times10^{25}\,\mathrm{m^{-3}}$，氦原子的有效直径取$2.2\times10^{-10}\,\mathrm m$。按讲解里的估算式，氦原子的平均自由程是多少纳米？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 1/(sqrt(2)*pi*(2.2e-10)^2*2.5e25)*1e9
+    unit: |
+      $\mathrm{nm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      平均自由程只由数密度和碰撞截面决定，先由有效直径求碰撞截面。
+    - |
+      $\sigma=\pi d^2$，$\lambda=\frac1{\sqrt2\,\sigma N/V}$。
+    - |
+      $\sigma=\pi\times(2.2\times10^{-10})^2\,\mathrm{m^2}\approx1.52\times10^{-19}\,\mathrm{m^2}$，$\lambda=\frac1{1.414\times1.52\times10^{-19}\times2.5\times10^{25}}\,\mathrm m\approx1.86\times10^{-7}\,\mathrm m$，即约$186\,\mathrm{nm}$。
+  solution: |
+    碰撞截面$\sigma=\pi d^2\approx1.52\times10^{-19}\,\mathrm{m^2}$。由$\lambda=\frac1{\sqrt2\,\sigma N/V}$，代入得$\lambda\approx\frac1{1.414\times1.52\times10^{-19}\times2.5\times10^{25}}\,\mathrm m\approx186\,\mathrm{nm}$。数密度和例 1 差不多，氦原子的碰撞截面却只有例 1 里氮分子的约$\frac13$，所以平均自由程长得多。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法正确？气体都看成理想气体，分子的有效直径不随温度、压强变化。
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        温度不变时，把容器里的气体抽走一半，平均自由程变为原来的一半
+      - |
+        密闭的刚性容器里的气体升温时，平均自由程不变
+      - |
+        温度不变时，压强变为原来的 2 倍，碰撞频率也变为原来的 2 倍
+      - |
+        两种气体的数密度相同，甲的分子有效直径是乙的 2 倍，那么甲的平均自由程是乙的一半
+      - |
+        压强不变时升高温度，平均自由程变长
+    value: [2, 3, 5]
+  hints:
+    - |
+      平均自由程由哪些量决定？碰撞频率又多了哪个量？每一项先看数密度怎样变。
+    - |
+      $\lambda=\frac1{\sqrt2\,\sigma N/V}=\frac{\kB T}{\sqrt2\,\sigma p}$，$\sigma=\pi d^2$；$\frac1\tau=\sqrt2\,\sigma\frac NVv_{\mathrm{rms}}$，同一种气体的$v_{\mathrm{rms}}$只由温度决定。
+    - |
+      A 错：抽走一半，数密度减半，平均自由程变为原来的 2 倍。B 对：密闭的刚性容器里数密度不变，分子跑得快了，撞得更勤，两次碰撞之间却飞得一样远。C 对：温度不变，$v_{\mathrm{rms}}$不变，压强变为 2 倍就是数密度变为 2 倍，碰撞频率随之变为 2 倍。
+
+      D 错：碰撞截面和$d^2$成正比，甲的是乙的 4 倍，甲的平均自由程是乙的$\frac14$。E 对：压强不变时数密度和$T$成反比，升温时数密度变小，平均自由程变长。
+  solution: |
+    选 B、C、E。A 错：温度不变时抽走一半，数密度减半，平均自由程反而变为原来的 2 倍。B 对：密闭的刚性容器里数密度不变，升温时分子跑得快了，撞得更勤，两次碰撞之间却飞得一样远。C 对：温度不变，$v_{\mathrm{rms}}$不变，压强变为 2 倍就是数密度变为 2 倍，$\frac1\tau=\sqrt2\,\sigma\frac NVv_{\mathrm{rms}}$也变为 2 倍。
+
+    D 错：$\sigma=\pi d^2$，甲的碰撞截面是乙的 4 倍，数密度相同时甲的平均自由程是乙的$\frac14$。E 对：由$\lambda=\frac{\kB T}{\sqrt2\,\sigma p}$，压强不变时$\lambda$和$T$成正比，原因是升温时数密度变小了。
+
+- id: p3
+  tier: medium
+  statement: |
+    氧气的温度是$400\,\mathrm K$，压强是$2.0\times10^4\,\mathrm{Pa}$；氧分子的有效直径取$3.6\times10^{-10}\,\mathrm m$，氧的摩尔质量（molar mass）取$32.0\,\mathrm{g/mol}$。按讲解里的估算式，一个氧分子平均每秒碰撞多少次？以$10^9\,\mathrm{s^{-1}}$为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: sqrt(2)*pi*(3.6e-10)^2*2.0e4/(1.380649e-23*400)*sqrt(3*8.31446261815324*400/0.0320)/1e9
+    unit: |
+      $10^9\,\mathrm{s^{-1}}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      碰撞频率要用数密度、碰撞截面和方均根速率三样，数密度由温度和压强求。
+    - |
+      $\frac NV=\frac p{\kB T}$，$\sigma=\pi d^2$，$v_{\mathrm{rms}}=\sqrt{\frac{3RT}M}$，$\frac1\tau=\sqrt2\,\sigma\frac NVv_{\mathrm{rms}}$。
+    - |
+      $\frac NV=\frac{2.0\times10^4}{1.381\times10^{-23}\times400}\,\mathrm{m^{-3}}\approx3.62\times10^{24}\,\mathrm{m^{-3}}$，$\sigma=\pi\times(3.6\times10^{-10})^2\,\mathrm{m^2}\approx4.07\times10^{-19}\,\mathrm{m^2}$，$v_{\mathrm{rms}}=\sqrt{\frac{3\times8.314\times400}{0.0320}}\,\mathrm{m/s}\approx558\,\mathrm{m/s}$。
+
+      $\frac1\tau\approx1.414\times4.07\times10^{-19}\times3.62\times10^{24}\times558\,\mathrm{s^{-1}}\approx1.16\times10^9\,\mathrm{s^{-1}}$。
+  solution: |
+    数密度$\frac NV=\frac p{\kB T}\approx3.62\times10^{24}\,\mathrm{m^{-3}}$，碰撞截面$\sigma=\pi d^2\approx4.07\times10^{-19}\,\mathrm{m^2}$，方均根速率$v_{\mathrm{rms}}=\sqrt{\frac{3RT}M}\approx558\,\mathrm{m/s}$。
+
+    碰撞频率$\frac1\tau=\sqrt2\,\sigma\frac NVv_{\mathrm{rms}}\approx1.16\times10^9\,\mathrm{s^{-1}}$。这时平均自由程$\lambda\approx v_{\mathrm{rms}}\tau\approx4.8\times10^{-7}\,\mathrm m$，比常温常压下长得多，可每个分子每秒仍要撞十亿次以上。
+
+- id: p4
+  tier: medium
+  statement: |
+    一定量的理想气体起初温度为$300\,\mathrm K$。先保持温度不变，把体积压缩为原来的$\frac14$；再保持体积不变，加热到$600\,\mathrm K$。分子的有效直径不变，平均自由程$\lambda$、平均自由时间$\tau$最后各变为原来的几倍？依次填两个倍数，用逗号隔开，结果保留三位有效数字。
+  answer:
+    type: tuple
+    value: [1/4, 1/(4*sqrt(2))]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      两步分开看：每一步里数密度、$v_{\mathrm{rms}}$各怎样变？$\lambda$只由数密度和碰撞截面决定，$\tau\approx\frac\lambda{v_{\mathrm{rms}}}$。
+    - |
+      第一步温度不变、体积变为$\frac14$，数密度变为 4 倍，$v_{\mathrm{rms}}$不变；第二步体积不变，数密度不变，$v_{\mathrm{rms}}$和$\sqrt T$成正比，变为$\sqrt2$倍。
+    - |
+      第一步$\lambda$变为$\frac14$，$\tau$也变为$\frac14$；第二步$\lambda$不变，$\tau$再变为$\frac1{\sqrt2}$。所以$\lambda$变为原来的$\frac14=0.250$倍，$\tau$变为$\frac1{4\sqrt2}\approx0.177$倍。
+  solution: |
+    第一步温度不变、体积变为$\frac14$，数密度变为 4 倍，$\lambda$变为$\frac14$；$v_{\mathrm{rms}}$不变，$\tau\approx\frac\lambda{v_{\mathrm{rms}}}$也变为$\frac14$。第二步体积不变，数密度不变，$\lambda$不变；$v_{\mathrm{rms}}$变为$\sqrt2$倍，$\tau$再变为$\frac1{\sqrt2}$。
+
+    所以$\lambda$变为原来的$\frac14=0.250$倍，$\tau$变为$\frac1{4\sqrt2}\approx0.177$倍。体积不变时，加热只让分子跑得更快、撞得更勤，不改变两次碰撞之间飞多远。
+
+- id: p5
+  tier: hard
+  statement: |
+    一种气体（分子 2）里混有极少量的另一种气体（分子 1），分子 2 的数密度是$\frac{N_2}V$。两种分子都看成小球，有效直径分别是$d_1$、$d_2$，质量分别是$m_1$、$m_2$，它们的平均平动动能（mean translational kinetic energy）都是$\frac32\kB T$。分子 1 很少，只考虑分子 1 和分子 2 之间的碰撞。
+
+    （1）分子 1 和分子 2 的中心相距多远时恰好撞上？写出它们之间的碰撞截面$\sigma_{12}$。
+
+    （2）仿照讲解里的估算，证明分子 1 的平均自由程
+
+    $$
+    \lambda_1\approx\frac{1}{\sigma_{12}\frac{N_2}{V}\sqrt{1+m_1/m_2}} .
+    $$
+
+    （3）两种分子相同时，这个式子是不是回到讲解里的式子？$m_1\ll m_2$时，根号里的因子趋于多少？为什么？
+  hints:
+    - |
+      两个小球的中心相距多远时恰好接触？相对速率仍按方均根估算，只是这次两种分子的$\langle v^2\rangle$不一样。
+    - |
+      $\sigma_{12}=\pi\bigl(\frac{d_1+d_2}2\bigr)^2$。$\bigl\langle|\vb v_1-\vb v_2|^2\bigr\rangle=\langle v_1^2\rangle+\langle v_2^2\rangle-2\langle\vb v_1\cdot\vb v_2\rangle$，最后一项仍是零；$\langle v_1^2\rangle=\frac{3\kB T}{m_1}$，$\langle v_2^2\rangle=\frac{3\kB T}{m_2}$。
+    - |
+      （1）两个小球的半径是$\frac{d_1}2$、$\frac{d_2}2$，中心相距$\frac{d_1+d_2}2$时恰好接触。分子 1 飞行时，分子 2 的中心离分子 1 的中心所走的直线不到$\frac{d_1+d_2}2$就会撞上，所以$\sigma_{12}=\pi\bigl(\frac{d_1+d_2}2\bigr)^2$。
+
+      （2）由$\frac12m\langle v^2\rangle=\frac32\kB T$，$\langle v_1^2\rangle=\frac{3\kB T}{m_1}$，$\langle v_2^2\rangle=\frac{3\kB T}{m_2}$。固定分子 1、对分子 2 求平均，气体整体不流动，$\vb v_1\cdot\vb v_2$平均起来是零，所以相对速率的方均根是$\sqrt{\frac{3\kB T}{m_1}+\frac{3\kB T}{m_2}}=v_{\mathrm{rms},1}\sqrt{1+\frac{m_1}{m_2}}$，$v_{\mathrm{rms},1}=\sqrt{\frac{3\kB T}{m_1}}$是分子 1 的方均根速率。
+
+      $\Delta t$里分子 1 走约$v_{\mathrm{rms},1}\Delta t$，撞约$\sigma_{12}\frac{N_2}Vv_{\mathrm{rms},1}\sqrt{1+\frac{m_1}{m_2}}\,\Delta t$次，相除就是要证的式子。
+
+      （3）两种分子相同时，$d_1=d_2=d$，$\sigma_{12}=\pi d^2$，$\sqrt{1+1}=\sqrt2$，正是讲解里的$\lambda\approx\frac1{\sqrt2\,\sigma N/V}$。$m_1\ll m_2$时因子趋于 1：平均平动动能相同，重的分子 2 比分子 1 慢得多，相对速度差不多就是分子 1 自己的速度，分子 2 像不动的靶子，这正是讲解里先假定别的分子不动的情形。
+  reference: |
+    （1）两球中心相距$\frac{d_1+d_2}2$时接触，$\sigma_{12}=\pi\bigl(\frac{d_1+d_2}2\bigr)^2$。
+
+    （2）$\langle v_i^2\rangle=\frac{3\kB T}{m_i}$；固定$\vb v_1$对分子 2 平均，$\langle\vb v_1\cdot\vb v_2\rangle=\vb v_1\cdot\langle\vb v_2\rangle=0$。相对速率方均根$\sqrt{3\kB T\bigl(\frac1{m_1}+\frac1{m_2}\bigr)}=v_{\mathrm{rms},1}\sqrt{1+m_1/m_2}$。$\Delta t$内路程$v_{\mathrm{rms},1}\Delta t$，碰撞$\sigma_{12}\frac{N_2}Vv_{\mathrm{rms},1}\sqrt{1+m_1/m_2}\,\Delta t$次，相除得$\lambda_1$。
+
+    （3）同种分子：$\sigma_{12}=\pi d^2$，因子$\sqrt2$，回到$\frac1{\sqrt2\,\sigma N/V}$。$m_1\ll m_2$：因子$\to1$，$\lambda_1\approx\frac1{\sigma_{12}N_2/V}$，重分子相当于静止的靶（如电子在气体里）。附注：$\sqrt{1+m_1/m_2}=\sqrt{m_1/\mu}$，$\mu$是约化质量；$m_1\gg m_2$时因子很大，慢的重分子频繁地被轻快的分子撞上。
+
+- id: p6
+  tier: hard
+  statement: |
+    一大群分子刚刚各撞过一次，从这时起跟着它们看。记它们飞过路程$x$时，还没有再撞的分子占这群分子的比例为$g(x)$，$g(0)=1$。设：每飞过很短的一段路程$\Delta x$，还没撞的分子里约有$\frac{\Delta x}\lambda$的比例在这一段里撞上，这个比例和它们已经飞了多远无关。
+
+    （1）把$x$等分成$k$小段，说明$g(x)\approx\bigl(1-\frac x{k\lambda}\bigr)^k$，并由$k\to\infty$时的极限证明$g(x)=e^{-x/\lambda}$。
+
+    （2）自由程比$\lambda$短的分子约占多少？比$2\lambda$、$3\lambda$长的各约占多少？这说明了什么？
+  hints:
+    - |
+      每飞过一小段，还没撞的分子都要乘上同一个比例。求$k\to\infty$时的极限，先取对数，把乘方变成乘法。
+    - |
+      每段长$\frac xk$，飞过一段剩下的比例是$1-\frac x{k\lambda}$，$k$段连乘。$\ln g=k\ln\bigl(1-\frac x{k\lambda}\bigr)$，令$t=-\frac x{k\lambda}$，用$\lim_{t\to0}\frac{\ln(1+t)}t=1$（见[两个重要极限](lesson:math.calculus.special-limits#thm-log-exp-limits)）。
+    - |
+      （1）第一小段里，还没撞的分子有$\frac x{k\lambda}$的比例撞上，剩下$1-\frac x{k\lambda}$。这个比例和已经飞了多远无关，以后每一段都一样，飞完$k$段剩下$g(x)\approx\bigl(1-\frac x{k\lambda}\bigr)^k$。段分得越细，「约有$\frac{\Delta x}\lambda$的比例」越准，所以$g(x)$是$k\to\infty$时的极限。
+
+      取对数，令$t=-\frac x{k\lambda}$，$k\to\infty$时$t\to0$，
+
+      $$
+      k\ln\Bigl(1-\frac x{k\lambda}\Bigr)=-\frac x\lambda\cdot\frac{\ln(1+t)}t\to-\frac x\lambda .
+      $$
+
+      指数函数连续，所以$g(x)=e^{-x/\lambda}$。
+
+      （2）比$\lambda$短的占$1-e^{-1}\approx0.632$，约 63%；比$2\lambda$长的占$e^{-2}\approx0.135$，比$3\lambda$长的占$e^{-3}\approx0.050$。多数自由程比平均值$\lambda$短，少数很长的把平均值拉了上去：单段自由程长短相差很大，「每段都正好走$\lambda$」差得很远。
+  reference: |
+    （1）每段剩$1-\frac x{k\lambda}$，与已飞距离无关，$k$段连乘得$g(x)\approx\bigl(1-\frac x{k\lambda}\bigr)^k$，分段越细越准，$g(x)=\lim_{k\to\infty}\bigl(1-\frac x{k\lambda}\bigr)^k$。$k\ln\bigl(1-\frac x{k\lambda}\bigr)=-\frac x\lambda\cdot\frac{\ln(1+t)}t$，$t=-\frac x{k\lambda}\to0$，由$\frac{\ln(1+t)}t\to1$和指数函数的连续性，$g(x)=e^{-x/\lambda}$。
+
+    （2）$1-e^{-1}\approx63.2\%$的自由程比$\lambda$短；$e^{-2}\approx13.5\%$比$2\lambda$长，$e^{-3}\approx5.0\%$比$3\lambda$长。分布很宽：中位数只有$\lambda\ln2\approx0.69\lambda$，平均值$\lambda$被少数长的自由程拉高。
+
+- id: p7
+  tier: thinking
+  statement: |
+    [电流与欧姆定律](lesson:physics.electromagnetism.current-density)里的德鲁德模型（Drude model）说，金属里的电子平均每隔时间$\tau$碰撞一次，这个$\tau$就是电子的平均自由时间，铜中约$2.5\times10^{-14}\,\mathrm s$。电子杂乱运动的速率约$1.6\times10^6\,\mathrm{m/s}$，两者相乘，铜里电子的平均自由程约$40\,\mathrm{nm}$。这个速率比热运动按经典力学该有的速率大得多：$300\,\mathrm K$时$\sqrt{3\kB T/m_{\mathrm e}}$只约$1.2\times10^5\,\mathrm{m/s}$（$m_{\mathrm e}$是电子的质量），差别来自量子力学。
+
+    铜里每立方米约有$8.5\times10^{28}$个原子，每个原子贡献一个能移动的电子。
+
+    （1）铜原子之间的平均距离约是多少？$40\,\mathrm{nm}$是它的多少倍？
+
+    （2）假如电子像气体分子一样，一个个地撞上铜离子：把电子看成点，把铜离子看成半径约$0.13\,\mathrm{nm}$、几乎不动的小球，平均自由程应该有多长？
+
+    （3）实际的平均自由程长得多，这说明了什么？
+  hints:
+    - |
+      （1）每个原子平均占多大的体积？（2）飞来的是点、靶子不动，碰撞截面和相对速率各是多少？可以对照第 5 题$m_1\ll m_2$的情形。
+    - |
+      （1）平均距离约是$\bigl(\frac VN\bigr)^{1/3}$。（2）电子是点，离子半径为$r$时碰撞截面是$\pi r^2$；离子几乎不动，相对速率就是电子的速率，平均自由程约$\frac1{\pi r^2N/V}$，没有因子$\sqrt2$。
+    - |
+      （1）$\bigl(\frac1{8.5\times10^{28}}\bigr)^{1/3}\,\mathrm m\approx2.3\times10^{-10}\,\mathrm m$，即约$0.23\,\mathrm{nm}$；$40\,\mathrm{nm}$是它的一百七十多倍。
+
+      （2）碰撞截面$\pi\times(0.13\times10^{-9})^2\,\mathrm{m^2}\approx5.3\times10^{-20}\,\mathrm{m^2}$，平均自由程约$\frac1{5.3\times10^{-20}\times8.5\times10^{28}}\,\mathrm m\approx2.2\times10^{-10}\,\mathrm m$，和原子间距差不多。铜原子挤得满满的，按这个图像，电子几乎一出发就撞上下一个离子。
+
+      （3）实际上电子平均要穿过一百多层离子才碰撞一次，可见它并不像小球那样撞上每个离子。按量子力学，电子是一种波，在排得整整齐齐的离子之间传播时根本不被它们散射（scattering）；能散射它的只是排列「不整齐」的地方：离子的热振动、杂质和缺陷。这正是[电流与欧姆定律](lesson:physics.electromagnetism.current-density)里说电子和晶格（lattice）的振动、杂质碰撞的道理；温度越低，离子的振动越弱，平均自由程越长，铜的电阻也越小。
+  reference: |
+    （1）原子间距$\approx(8.5\times10^{28})^{-1/3}\,\mathrm m\approx0.23\,\mathrm{nm}$，$40\,\mathrm{nm}$约是它的 176 倍。
+
+    （2）静止靶、点状电子：$\sigma=\pi r^2\approx5.3\times10^{-20}\,\mathrm{m^2}$，$\lambda\approx\frac1{\sigma N/V}\approx0.22\,\mathrm{nm}$，约一个原子间距。
+
+    （3）实际值大两个数量级：电子不是经典小球，不会逐个撞上离子。完美周期排列的离子不散射电子（布洛赫波），散射只来自晶格振动（声子）、杂质和缺陷；所以电阻随温度降低而减小，极纯的铜在低温下平均自由程还能长得多。经典的热运动速率$\sqrt{3\kB T/m_{\mathrm e}}$也和$1.6\times10^6\,\mathrm{m/s}$对不上（题干里提过），两处都要量子力学来解释。
+
+- id: p8
+  tier: thinking
+  statement: |
+    光风车（克鲁克斯辐射计，Crookes radiometer）是装在抽去大部分空气的玻璃泡里的小风车，叶片一面涂黑、一面光亮。光一照，涂黑的一面吸收的光多，比光亮的一面热，风车就转起来；[电磁场的动量](lesson:physics.electromagnetism.field-momentum)的常见误区说过，推它的不是光的压强，而是叶片两面受热不同引起的气体作用。实际上泡里的气体太多或太少它都几乎不转，压强在$1\,\mathrm{Pa}$上下时转得最好。
+
+    （1）泡里几乎是真空时，它为什么几乎不转？
+
+    （2）泡里是 1 标准大气压、$300\,\mathrm K$的空气时，平均自由程和叶片的大小（约$1\,\mathrm{cm}$）比起来怎样？为什么这时它也几乎不转？
+
+    （3）压强为$1\,\mathrm{Pa}$、温度仍为$300\,\mathrm K$时，空气的平均自由程大约多长？由此说说，平均自由程和叶片大小之比在这里起什么作用。
+  hints:
+    - |
+      叶片受的力来自撞上它、又离开它的分子。[气体动理论](lesson:physics.thermal-physics.kinetic-theory)第 8 题（2）说过，器壁比气体热时，离开的分子更快，器壁受的力更大。分子太少会怎样？分子之间撞得太勤，热的一面附近的气体又会怎样？
+    - |
+      分子离开热的一面以后，要飞过约一个平均自由程才和别的分子相撞。平均自由程比叶片小得多时，离开的快分子很快就把能量交给紧挨着叶片的一层气体，这层气体变热；各处的压强差不多相同，由$p=\frac NV\kB T$，这层气体的数密度变小。
+    - |
+      （1）几乎是真空时，单位时间撞上叶片的分子极少。涂黑的一面虽然把它们弹得更快，推力也和撞上来的分子数一样小，压强越低越小。
+
+      （2）这时空气的平均自由程只有约$70\,\mathrm{nm}$（例 1），是叶片大小的十几万分之一。离开热面的快分子飞不了多远就撞上别的分子，热面附近的一层气体被加热、变稀：分子快了，数密度却小了，压强$p=\frac NV\kB T$和别处差不多。叶片两面受的压强几乎相等，只在叶片边缘约一个平均自由程宽的地方留下一点净的推力，所以几乎不转。
+
+      （3）温度不变时平均自由程和压强成反比，$1\,\mathrm{Pa}$时约是 1 标准大气压时的$10^5$倍，约$7\,\mathrm{mm}$，和叶片差不多大。这时分子离开热面后，往往飞出叶片的范围才再撞上别的分子，热面附近的气体来不及「变稀」，快分子带来的额外推力留了下来；分子又还不算太少，所以推力最大。平均自由程和叶片大小之比决定气体像什么：比值很小时，气体像连续的流体，两面的压强抵消；比值很大时，分子各飞各的，推力随分子数一起变小；比值约为 1 时推力最大。
+  reference: |
+    （1）极稀薄时撞上叶片的分子数正比于压强，热面虽使分子反弹更快，力仍随压强趋于零。
+
+    （2）1 标准大气压、$300\,\mathrm K$：$\lambda\approx70\,\mathrm{nm}\ll1\,\mathrm{cm}$。热面附近的气体被加热后密度降低，$p=\frac NV\kB T$各处近似相同，正面的压强差被抵消，净力只来自边缘约$\lambda$宽的区域（爱因斯坦的边缘效应、热流逸），比例约$\frac\lambda L$，几乎为零。
+
+    （3）$1\,\mathrm{Pa}$：$\lambda\approx67\,\mathrm{nm}\times1.013\times10^5\approx6.8\,\mathrm{mm}$，与叶片相当。分子离开热面后飞出叶片范围才碰撞，热面附近建立不起「低密度层」，反冲差别保留；分子数又足够多。力在$\frac\lambda L\sim1$（克努森数约为 1）时最大，低压端正比于$p$，高压端约正比于$\frac1p$。

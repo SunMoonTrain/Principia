@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" width="560" height="340" font-size="14">
+  <!-- 定容气体温度计：左边的玻璃泡浸在待测物体里，细管把泡里的气体通到水银压强计的左管；右管和左管的下端用软管连着，可以上下移动，让左管的水银面停在标记处。右管水银面比左管高出 h，右管上端通大气。示意图，不按比例。 -->
+  <rect x="31" y="141" width="178" height="138" style="fill: var(--accent, #2563eb)" fill-opacity="0.10" />
+  <line x1="30" y1="141" x2="210" y2="141" style="stroke: var(--accent, #2563eb)" stroke-width="1.4" />
+  <path d="M 30 118 V 280 H 210 V 118" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <path d="M 110 185 V 58 H 300 V 72" style="stroke: currentColor" fill="none" stroke-width="2.2" />
+  <circle cx="110" cy="215" r="30" style="stroke: currentColor; fill: var(--bg, #ffffff)" stroke-width="1.6" />
+  <text x="110" y="220" fill="currentColor" text-anchor="middle">气体</text>
+  <text x="148" y="220" fill="currentColor">玻璃泡</text>
+  <text x="120" y="306" fill="currentColor" text-anchor="middle">待测物体</text>
+  <path d="M 300 250 C 300 314 420 314 420 210" style="stroke: currentColor" fill="none" stroke-width="18" />
+  <path d="M 300 250 C 300 314 420 314 420 210" style="stroke: var(--bg, #ffffff)" fill="none" stroke-width="15" />
+  <path d="M 300 250 C 300 314 420 314 420 210" style="stroke: currentColor" stroke-opacity="0.35" fill="none" stroke-width="15" />
+  <rect x="293" y="150" width="14" height="100" style="fill: currentColor" fill-opacity="0.35" />
+  <rect x="413" y="100" width="14" height="110" style="fill: currentColor" fill-opacity="0.35" />
+  <path d="M 292 250 V 72 H 308 V 250" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <path d="M 412 40 V 210 M 428 40 V 210" style="stroke: currentColor" fill="none" stroke-width="1.6" />
+  <line x1="282" y1="150" x2="318" y2="150" style="stroke: var(--accent, #2563eb)" stroke-width="2" />
+  <text x="276" y="155" fill="currentColor" text-anchor="end">标记</text>
+  <line x1="320" y1="150" x2="476" y2="150" style="stroke: currentColor" stroke-width="1" stroke-dasharray="4 3" />
+  <line x1="430" y1="100" x2="476" y2="100" style="stroke: currentColor" stroke-width="1" stroke-dasharray="4 3" />
+  <line x1="462" y1="108" x2="462" y2="142" style="stroke: currentColor" stroke-width="1.2" />
+  <path d="M 462 101 L 458.5 109 L 465.5 109 Z" style="fill: currentColor" />
+  <path d="M 462 149 L 465.5 141 L 458.5 141 Z" style="fill: currentColor" />
+  <text x="470" y="130" fill="currentColor" font-style="italic">h</text>
+  <line x1="420" y1="8" x2="420" y2="28" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 420 35 L 416.5 27 L 423.5 27 Z" style="fill: currentColor" />
+  <text x="430" y="25" fill="currentColor"><tspan font-style="italic">p</tspan><tspan dy="4" font-size="11">0</tspan></text>
+  <line x1="446" y1="168" x2="446" y2="196" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 446 161 L 442.5 169 L 449.5 169 Z" style="fill: currentColor" />
+  <path d="M 446 203 L 449.5 195 L 442.5 195 Z" style="fill: currentColor" />
+  <text x="456" y="188" fill="currentColor">可上下移动</text>
+  <text x="360" y="328" fill="currentColor" text-anchor="middle">水银</text>
+</svg>

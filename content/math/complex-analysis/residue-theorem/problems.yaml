@@ -1,0 +1,175 @@
+- id: p1
+  tier: easy
+  statement: |
+    求$\Res_{z=1}\frac{z+2}{(z-1)(z+3)}$。
+  answer:
+    type: number
+    value: 3/4
+  hints:
+    - |
+      记$f(z)=\frac{z+2}{(z-1)(z+3)}$。$1$是分母的单零点，分子在$1$处不为$0$，所以$1$是$f$的一阶极点。
+    - |
+      一阶极点处的留数是$\lim_{z\to1}(z-1)f(z)$。
+    - |
+      $z\ne1$时$(z-1)f(z)=\frac{z+2}{z+3}$，令$z\to1$，得$\frac34$。
+  solution: |
+    $1$是分母的单零点，分子在$1$处等于$3\ne0$，所以$1$是一阶极点。$z\ne1$、$-3$时$(z-1)\cdot\frac{z+2}{(z-1)(z+3)}=\frac{z+2}{z+3}$，由讲解里极点处留数的定理（$m=1$），留数是$\lim_{z\to1}\frac{z+2}{z+3}$，即$\frac34$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列函数中，在$0$处的留数为$0$的是哪一个？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        $\frac{e^z}{z^2}$
+      - |
+        $\frac{\sin z}{z^2}$
+      - |
+        $\frac1{z(z-2)}$
+      - |
+        $\frac{\cos z}{z^2}$
+    value: 4
+  hints:
+    - |
+      留数是洛朗级数里$z^{-1}$的系数。分子是$e^z$、$\sin z$、$\cos z$的，把它们的级数除以$z^2$。
+    - |
+      $e^z=1+z+\frac{z^2}2+\cdots$，$\sin z=z-\frac{z^3}6+\cdots$，$\cos z=1-\frac{z^2}2+\cdots$；C 的$0$是一阶极点。
+    - |
+      A、B 的留数都是$1$，C 的是$\lim_{z\to0}\frac1{z-2}=-\frac12$；D 的展开式里没有$z^{-1}$项。
+  solution: |
+    A：$\frac{e^z}{z^2}=z^{-2}+z^{-1}+\frac12+\cdots$，留数是$1$。B：$\frac{\sin z}{z^2}=z^{-1}-\frac z6+\cdots$，留数是$1$。C：$0$是一阶极点，留数是$\lim_{z\to0}z\cdot\frac1{z(z-2)}=-\frac12$。
+
+    D：$\frac{\cos z}{z^2}=z^{-2}-\frac12+\frac{z^2}{24}-\cdots$，$0$是二阶极点，可洛朗级数里没有$z^{-1}$项，留数是$0$。选 D。
+
+- id: p3
+  tier: medium
+  statement: |
+    求$\oint_{|z|=2}\frac{z^2}{(z-1)^2(z+3)}\,\dd z$，圆周取逆时针方向，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [0, 7*pi/8]
+  hints:
+    - |
+      记被积函数为$f$，它的极点是$1$和$-3$，哪些在圆周$|z|=2$里面？
+    - |
+      $1$是二阶极点。令$g(z)=(z-1)^2f(z)=\frac{z^2}{z+3}$，留数是$g'(1)$。
+    - |
+      $g'(z)=\frac{z^2+6z}{(z+3)^2}$，$g'(1)=\frac7{16}$；$-3$在圆外，积分是$2\pi i\cdot\frac7{16}=\frac{7\pi i}8$，实部$0$，虚部$\frac{7\pi}8$。
+  solution: |
+    $|-3|=3>2$，$-3$在圆外；$1$在圆里，是分母的二阶零点，分子在$1$处等于$1\ne0$，所以是二阶极点。令$g(z)=\frac{z^2}{z+3}$，它在$1$附近全纯，由极点处留数的定理（$m=2$），留数是$g'(1)$。$g'(z)=\frac{2z(z+3)-z^2}{(z+3)^2}=\frac{z^2+6z}{(z+3)^2}$，$g'(1)=\frac7{16}$。由留数定理，积分是$2\pi i\cdot\frac7{16}=\frac{7\pi i}8$，实部$0$，虚部$\frac{7\pi}8$。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$C$是圆周$|z-1|=1$，取逆时针方向。求$\oint_C\frac{\dd z}{z^4+1}$，答案依次写实部、虚部。
+  answer:
+    type: tuple
+    value: [0, -pi*sqrt(2)/2]
+  hints:
+    - |
+      $z^4=-1$的四个根是$e^{\pm i\pi/4}$、$e^{\pm3i\pi/4}$。哪几个到$1$的距离小于$1$？
+    - |
+      这四个根都是$z^4+1$的单零点，在根$a$处的留数是$\frac1{4a^3}$；由$a^4=-1$，它等于$-\frac a4$。
+    - |
+      圆里只有$e^{\pm i\pi/4}$，留数之和是$-\frac14\bigl(e^{i\pi/4}+e^{-i\pi/4}\bigr)=-\frac{\sqrt2}4$，积分是$-\frac{\sqrt2\pi i}2$：实部$0$，虚部$-\frac{\sqrt2\pi}2$。
+  solution: |
+    $|e^{i\theta}-1|^2=2-2\cos\theta=4\sin^2\frac\theta2$，所以$e^{\pm i\pi/4}$到$1$的距离是$2\sin\frac\pi8\approx0.77$，在圆里；$e^{\pm3i\pi/4}$到$1$的距离是$2\sin\frac{3\pi}8\approx1.85$，在圆外，圆周上没有极点。$(z^4+1)'=4z^3$在这些根处不为$0$，它们都是单零点，由极点处留数的定理，在根$a$处的留数是$\frac1{4a^3}=\frac a{4a^4}=-\frac a4$。圆里两个留数之和是$-\frac14\bigl(e^{i\pi/4}+e^{-i\pi/4}\bigr)=-\frac12\cos\frac\pi4=-\frac{\sqrt2}4$。由留数定理，积分是$2\pi i\cdot\bigl(-\frac{\sqrt2}4\bigr)=-\frac{\sqrt2\pi i}2$，实部$0$，虚部$-\frac{\sqrt2\pi}2$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$P$、$Q$是多项式，$Q$的次数至少比$P$的次数高$2$。
+
+    （1）证明：$\frac PQ$在它的全部极点处的留数之和是$0$。
+
+    （2）求$\oint_{|z|=2}\frac{\dd z}{(z-3)(z^5-1)}$，圆周取逆时针方向。
+  hints:
+    - |
+      （1）取圆周$|z|=\rho$，$\rho$大于$Q$的每个根的模（modulus）。由留数定理，沿它的积分是$2\pi i$乘全部留数之和，和$\rho$无关；再让$\rho\to+\infty$。
+    - |
+      （1）设$Q$的首项是$b_qz^q$。$|z|$足够大时$|Q(z)|\ge\frac{|b_q|}2|z|^q$，$|P(z)|\le K|z|^{q-2}$，$K$是常数，再用 ML 不等式（ML inequality）估计积分。
+    - |
+      （2）圆里有$z^5=1$的五个根，圆外只有$3$。由（1），圆里五个留数之和是$3$处留数$\frac1{3^5-1}$的相反数，积分是$-\frac{2\pi i}{242}=-\frac{\pi i}{121}$。
+  reference: |
+    （1）设$Q(z)=b_qz^q+\dots+b_1z+b_0$，$b_q\ne0$，$P$的次数是$p\le q-2$。$\frac PQ$的极点都是$Q$的根；分子、分母有公共的根时，那些根可能是可去奇点，留数是$0$，所以全部极点处的留数之和$S$也等于全部根处的留数之和。取$\rho$大于每个根的模，由留数定理，$\oint_{|z|=\rho}\frac PQ\,\dd z=2\pi iS$，和$\rho$无关。
+
+    记$B=|b_0|+\dots+|b_{q-1}|$，$A$是$P$的各系数的模之和。$|z|\ge\max\bigl\{1,\frac{2B}{|b_q|}\bigr\}$时，$|Q(z)-b_qz^q|\le B|z|^{q-1}\le\frac{|b_q|}2|z|^q$，由三角不等式$|Q(z)|\ge\frac{|b_q|}2|z|^q$；又$|P(z)|\le A|z|^p$。所以$\rho$足够大时，圆周$|z|=\rho$上$\bigl|\frac PQ\bigr|\le\frac{2A}{|b_q|}\rho^{p-q}\le\frac{2A}{|b_q|\rho^2}$，由 ML 不等式，$|2\pi iS|\le\frac{2A}{|b_q|\rho^2}\cdot2\pi\rho$，右边趋于$0$，所以$S=0$。
+
+    （2）分母是$6$次，分子是$0$次，满足（1）的条件。$z^5=1$的五个根的模都是$1$，在圆里；$3$在圆外；圆周上没有极点。$3$是一阶极点，留数是$\lim_{z\to3}\frac1{z^5-1}=\frac1{242}$，由（1），圆里五个留数之和是$-\frac1{242}$，所以积分是$2\pi i\cdot\bigl(-\frac1{242}\bigr)=-\frac{\pi i}{121}$，不必逐个算五个根处的留数。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$Q$是$n$次多项式（$n\ge1$），它的$n$个根$z_1,\dots,z_n$互不相同；$P$是次数小于$n$的多项式（也可以是常数）。
+
+    （1）证明：对不是根的$z$，$\frac{P(z)}{Q(z)}=\sum_{k=1}^n\frac{c_k}{z-z_k}$，其中$c_k=\Res_{z=z_k}\frac{P(z)}{Q(z)}=\frac{P(z_k)}{Q'(z_k)}$。
+
+    （2）把$\frac1{z^3-1}$写成这样的和。
+  hints:
+    - |
+      （1）每个$z_k$都是$Q$的单零点。令$H(z)=\frac{P(z)}{Q(z)}-\sum_k\frac{c_k}{z-z_k}$，它在每个$z_k$处是哪一类孤立奇点？
+    - |
+      （1）$\frac PQ$在$z_k$处的主部是$\frac{c_k}{z-z_k}$，其余各项在$z_k$附近全纯，所以$H$在每个$z_k$附近有界。通分以后$H=\frac{N(z)}{Q(z)}$，$N$是次数小于$n$的多项式；$z\to z_k$时$N(z)=H(z)Q(z)\to0$。
+    - |
+      （1）$N$有$n$个不同的根，次数又小于$n$，只能恒为$0$。（2）三个根是$1$、$\omega$、$\omega^2$，$\omega=e^{2\pi i/3}$，$c_k=\frac1{3z_k^2}=\frac{z_k}3$，所以$\frac1{z^3-1}=\frac13\Bigl(\frac1{z-1}+\frac\omega{z-\omega}+\frac{\omega^2}{z-\omega^2}\Bigr)$。
+  reference: |
+    （1）$Q(z)=b(z-z_1)\cdots(z-z_n)$，$b\ne0$，$Q'(z_k)=b\prod_{j\ne k}(z_k-z_j)\ne0$，所以每个$z_k$都是$Q$的单零点，由极点处留数的定理（2），$\Res_{z=z_k}\frac PQ=\frac{P(z_k)}{Q'(z_k)}=c_k$。$(z-z_k)\frac PQ$补上值以后在$z_k$附近全纯，所以$z_k$至多是一阶极点，主部是$\frac{c_k}{z-z_k}$（$c_k=0$时是可去奇点，主部为$0$）。
+
+    令$H=\frac PQ-\sum_j\frac{c_j}{z-z_j}$。在$z_k$附近，$\frac PQ-\frac{c_k}{z-z_k}$是$\frac PQ$减去主部，补上值以后全纯，其余的$\frac{c_j}{z-z_j}$在$z_k$附近全纯，所以$H$在每个$z_k$附近有界。通分，$\frac{c_j}{z-z_j}=\frac{c_jb\prod_{i\ne j}(z-z_i)}{Q(z)}$，所以$H=\frac NQ$，$N=P-b\sum_jc_j\prod_{i\ne j}(z-z_i)$是次数小于$n$的多项式。$z\to z_k$时$N(z)=H(z)Q(z)\to0$，$N$连续，所以$N(z_k)=0$；$N$有$n$个不同的根，次数小于$n$，只能恒为$0$，即$H$恒为$0$。
+
+    （2）$z^3-1$的根是$1$、$\omega$、$\omega^2$，$\omega=e^{2\pi i/3}$，互不相同。$Q'(z)=3z^2$，$c_k=\frac1{3z_k^2}=\frac{z_k}{3z_k^3}=\frac{z_k}3$，所以$\frac1{z^3-1}=\frac13\Bigl(\frac1{z-1}+\frac\omega{z-\omega}+\frac{\omega^2}{z-\omega^2}\Bigr)$。代$z=0$核对：左边是$-1$，右边是$\frac13(-1-1-1)=-1$。这就是复数范围里的部分分式；根有重复时同样可以证明，$\frac PQ$等于各极点处的主部之和。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）讲解里的$\frac1{z^2}$说明，留数为$0$的孤立奇点不一定是可去奇点。一阶极点处的留数可能是$0$吗？有没有留数为$0$的本性奇点？
+
+    （2）$n\ne-1$时$(z-a)^n$在去掉$a$的平面上有原函数，$(z-a)^{-1}$却没有（[柯西积分定理](lesson:math.complex-analysis.cauchy-theorem)一节第 5 题），所以沿小圆周逐项积分时只有$(z-a)^{-1}$这一项有贡献。一般的$f$有没有原函数，也只看这一项：设$f$在去心圆盘$0<|z-a|<R$上全纯，证明$f$在这个去心圆盘上有原函数，当且仅当$\Res_{z=a}f(z)=0$。
+  hints:
+    - |
+      （1）一阶极点处的留数是$\lim_{z\to a}(z-a)f(z)$，对照[极点的阶的定理](lesson:math.complex-analysis.singularities#thm-pole-order)，这个极限可能是$0$吗？本性奇点的洛朗级数只有偶次幂时呢？（2）一个方向沿小圆周积分；另一个方向对洛朗级数逐项求原函数。
+    - |
+      （1）$a$是一阶极点时，在$a$附近$f(z)=\frac{g(z)}{z-a}$，$g$在$a$处全纯、$g(a)\ne0$；试试$e^{1/z^2}$。（2）设洛朗级数是$\sum_na_n(z-a)^n$，$a_{-1}=0$。令$F(z)=\sum_{n\ne-1}\frac{a_n}{n+1}(z-a)^{n+1}$：非负次幂的部分用逐项求导的定理，负次幂的部分令$w=\frac1{z-a}$，看成$w$的幂级数（power series）。
+    - |
+      （1）不可能：由极点的阶的定理，一阶极点附近$f(z)=\frac{g(z)}{z-a}$，$g(a)\ne0$，留数是$\lim_{z\to a}(z-a)f(z)=g(a)\ne0$。有，比如$e^{1/z^2}=\sum_{n\ge0}\frac{z^{-2n}}{n!}$：负次幂有无穷多项，$0$是本性奇点，可它没有奇次幂，留数是$0$（$e^{1/z}$的留数却是$1$）。
+
+      （2）有原函数时，由[沿闭曲线的积分是$0$](lesson:math.complex-analysis.cauchy-theorem#thm-antiderivative-integral)，$\oint_{C_r}f\,\dd z=0$，留数是$0$。反过来，设洛朗级数是$\sum_na_n(z-a)^n$，$a_{-1}=0$。$F_1(z)=\sum_{n\ge0}\frac{a_n}{n+1}(z-a)^{n+1}$逐项求导得$\sum_{n\ge0}a_n(z-a)^n$，它的收敛半径（radius of convergence）至少是$R$，由[逐项求导的定理](lesson:math.complex-analysis.complex-power-series#thm-termwise-complex)，$F_1'$就是它。
+
+      令$w=\frac1{z-a}$，$F_2=\sum_{n\ge2}\frac{a_{-n}}{1-n}w^{n-1}$。$wF_2=\sum_{n\ge2}\frac{a_{-n}}{1-n}w^n$各项的模不超过主部$\sum_{n\ge1}a_{-n}w^n$同次项的模（$|1-n|\ge1$），主部对一切$w$绝对收敛（absolute convergence），所以$wF_2$、$F_2$也对一切$w$收敛。$\frac{\dd F_2}{\dd z}=\frac{\dd F_2}{\dd w}\cdot(-w^2)=\sum_{n\ge2}a_{-n}w^n$，所以$(F_1+F_2)'=f-a_{-1}(z-a)^{-1}=f$。
+  reference: |
+    （1）不可能。$a$是一阶极点时，由极点的阶的定理，在$a$附近$f(z)=\frac{g(z)}{z-a}$，$g$在以$a$为圆心的某个开圆盘上全纯，$g(a)\ne0$；由极点处留数的定理（$m=1$），留数是$\lim_{z\to a}(z-a)f(z)=g(a)\ne0$。本性奇点可以：$e^{1/z^2}=\sum_{n\ge0}\frac{z^{-2n}}{n!}$有无穷多个负次幂，$0$是本性奇点，它只有偶次幂，留数是$0$；$e^{1/z}$在$0$的留数却是$1$。所以留数为$0$的孤立奇点可能是可去奇点、二阶以上的极点或本性奇点，只是不会是一阶极点；留数为$0$只说明绕着这一点的小圆周上积分为$0$。
+
+    （2）若$F'=f$在去心圆盘上成立，由原函数的定理，沿$C_r$的积分是$0$，所以$\Res_{z=a}f(z)=\frac1{2\pi i}\oint_{C_r}f\,\dd z=0$。反过来，设洛朗级数是$\sum_na_n(z-a)^n$，$a_{-1}=0$。令$F_1(z)=\sum_{n\ge0}\frac{a_n}{n+1}(z-a)^{n+1}$，它逐项求导得到$\sum_{n\ge0}a_n(z-a)^n$，由复幂级数一节逐项求导的定理，两者的收敛半径相同，至少是$R$，所以$F_1'=\sum_{n\ge0}a_n(z-a)^n$。
+
+    再令$w=\frac1{z-a}$，$F_2=\sum_{n\ge2}\frac{a_{-n}}{1-n}w^{n-1}$。$wF_2=\sum_{n\ge2}\frac{a_{-n}}{1-n}w^n$每一项的模不超过主部$\sum_{n\ge1}a_{-n}w^n$里同次项的模（$|1-n|\ge1$），主部对一切$w$绝对收敛，所以$wF_2$也对一切$w$收敛；$w\ne0$时$F_2$是它除以$w$，也收敛，$F_2$是$w$的收敛半径为$+\infty$的幂级数。由复合函数的求导法则，$\frac{\dd F_2}{\dd z}=\frac{\dd F_2}{\dd w}\cdot(-w^2)=\sum_{n\ge2}a_{-n}w^n$。于是$F=F_1+F_2$在去心圆盘上全纯，$F'=f-a_{-1}(z-a)^{-1}=f$。
+
+    这也说明了沿小圆周逐项积分时为什么只剩$(z-a)^{-1}$一项：$n\ne-1$的项都有原函数$\frac{(z-a)^{n+1}}{n+1}$，$\frac1{z-a}$没有（它的「原函数」应该是$\log(z-a)$，绕$a$一圈要多出$2\pi i$）。所以留数量的是$f$离「有原函数」还差多少。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$f(z)=\frac1{z^2-1}$。闭曲线$C$由两个圆周接成，形状像横放的「8」：从原点出发，先沿圆周$|z-1|=1$逆时针走一圈回到原点，再沿圆周$|z+1|=1$顺时针走一圈回到原点。
+
+    （1）求$\oint_Cf(z)\,\dd z$。把「$2\pi i$乘$C$里面各奇点的留数之和」照搬过来，会得到什么？
+
+    （2）对一般的不经过奇点的闭曲线，留数定理里「$C$里面的奇点」应该换成什么说法？
+
+    （3）$C$绕点$a$转的圈数（逆时针为正）叫作绕数（winding number），[辐角原理](lesson:math.complex-analysis.argument-principle)一节会讲它。用绕数把（2）的回答写成一个式子；$C$是逆时针的简单闭曲线时，里面、外面的点的绕数各是多少？
+  hints:
+    - |
+      （1）把$C$拆成两个圆周，各用一次留数定理；沿顺时针的圆周积分，要多一个负号。
+    - |
+      （1）$1$在右边的圆里，$-1$在左边的圆里，$f$在这两点的留数是$\frac12$、$-\frac12$。
+    - |
+      （1）积分是$2\pi i\cdot\frac12-2\pi i\cdot\bigl(-\frac12\bigr)=2\pi i$，照搬会得到$0$。（2）（3）每个奇点的留数要乘上$C$绕它的圈数，再相加、乘$2\pi i$；逆时针的简单闭曲线绕里面的点$1$圈，绕外面的点$0$圈。
+  reference: |
+    （1）右边的圆周$|z-1|=1$围着$1$，$-1$到$1$的距离是$2$，在它外面；左边的圆周围着$-1$，$1$在它外面。两个圆周只在原点相接，$f$在原点全纯，圆周都不经过$\pm1$。$\pm1$都是一阶极点，留数是$\lim_{z\to1}\frac1{z+1}=\frac12$和$\lim_{z\to-1}\frac1{z-1}=-\frac12$；沿右边的圆周逆时针积分是$2\pi i\cdot\frac12=\pi i$，沿左边的圆周顺时针积分是逆时针积分的相反数，即$-2\pi i\cdot\bigl(-\frac12\bigr)=\pi i$。
+
+    所以$\oint_Cf\,\dd z=2\pi i$。$\pm1$都被$C$围着，照搬会得到$2\pi i\bigl(\frac12-\frac12\bigr)=0$，不对。
+
+    （2）每个奇点的留数要乘上$C$绕它转的圈数（逆时针为正、顺时针为负），再相加、乘$2\pi i$：这里$C$绕$1$转$1$圈，绕$-1$转$-1$圈；绕$0$圈的点不算。
+
+    （3）记$C$绕$z_k$的绕数是$\operatorname{Ind}_C(z_k)$（辐角原理一节的记号），则$\oint_Cf\,\dd z=2\pi i\sum_k\operatorname{Ind}_C(z_k)\Res_{z=z_k}f(z)$，其中$\operatorname{Ind}_C(z_k)=\frac1{2\pi i}\oint_C\frac{\dd z}{z-z_k}$。证明照留数定理：减去各点的主部，剩下的$g$沿$C$积分为$0$（比如$f$在整个平面上除有限个点外全纯时，$g$是整函数，在包含$C$的大圆盘里有原函数）；每个主部只剩$\frac{a_{-1}}{z-z_k}$一项有贡献，积分是$2\pi i\operatorname{Ind}_C(z_k)a_{-1}$。$C$是逆时针的简单闭曲线时，里面的点绕数是$1$（柯西积分定理一节变形积分路径后面的说明），外面的点绕数是$0$（柯西积分定理），公式就回到留数定理。

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 290" width="640" height="290" font-size="14">
+  <!-- 左：p-V 图上从状态 1 到状态 2 的两条准静态路径。路径 a（绿）先等压膨胀、再等容降压；路径 b（蓝）先等容降压、再等压膨胀。蓝色一块在两条路径下面都有，绿色一块只在路径 a 下面。右：顺时针走的闭合曲线，体积最小、最大的两点（虚线）把它分成上下两段，上段膨胀、下段压缩，围成的面积涂色。示意图，不标数值。 -->
+  <rect x="120" y="170" width="130" height="80" style="fill: var(--accent, #2563eb)" fill-opacity="0.14" />
+  <rect x="120" y="70" width="130" height="100" style="fill: var(--good, #059669)" fill-opacity="0.16" />
+  <line x1="50" y1="250" x2="292" y2="250" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 300 250 L 291 245.5 L 291 254.5 Z" style="fill: currentColor" />
+  <line x1="50" y1="250" x2="50" y2="29" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 50 20 L 45.5 29 L 54.5 29 Z" style="fill: currentColor" />
+  <text x="32" y="32" fill="currentColor" font-style="italic">p</text>
+  <text x="294" y="273" fill="currentColor" font-style="italic">V</text>
+  <text x="33" y="268" fill="currentColor">O</text>
+  <path d="M 120 70 H 250 V 170" style="stroke: var(--good, #059669)" fill="none" stroke-width="2.4" />
+  <path d="M 120 70 V 170 H 250" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="2.4" />
+  <path d="M 190 70 L 181 65.5 L 181 74.5 Z" style="fill: var(--good, #059669)" />
+  <path d="M 250 125 L 245.5 116 L 254.5 116 Z" style="fill: var(--good, #059669)" />
+  <path d="M 120 125 L 115.5 116 L 124.5 116 Z" style="fill: var(--accent, #2563eb)" />
+  <path d="M 190 170 L 181 165.5 L 181 174.5 Z" style="fill: var(--accent, #2563eb)" />
+  <circle cx="120" cy="70" r="4" style="fill: currentColor" />
+  <circle cx="250" cy="170" r="4" style="fill: currentColor" />
+  <text x="100" y="63" fill="currentColor">1</text>
+  <text x="259" y="184" fill="currentColor">2</text>
+  <text x="185" y="55" fill="currentColor" text-anchor="middle">路径 a</text>
+  <text x="109" y="126" fill="currentColor" text-anchor="end">路径 b</text>
+  <ellipse cx="478" cy="140" rx="92" ry="48" transform="rotate(20 478 140)" style="fill: var(--accent, #2563eb); stroke: currentColor" fill-opacity="0.14" stroke-width="2" />
+  <line x1="360" y1="250" x2="592" y2="250" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 600 250 L 591 245.5 L 591 254.5 Z" style="fill: currentColor" />
+  <line x1="360" y1="250" x2="360" y2="29" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 360 20 L 355.5 29 L 364.5 29 Z" style="fill: currentColor" />
+  <text x="342" y="32" fill="currentColor" font-style="italic">p</text>
+  <text x="604" y="273" fill="currentColor" font-style="italic">V</text>
+  <text x="343" y="268" fill="currentColor">O</text>
+  <line x1="390" y1="123" x2="390" y2="250" style="stroke: currentColor" stroke-width="1" stroke-dasharray="4 3" />
+  <line x1="566" y1="168" x2="566" y2="250" style="stroke: currentColor" stroke-width="1" stroke-dasharray="4 3" />
+  <circle cx="390" cy="117.5" r="3.5" style="fill: currentColor" />
+  <circle cx="566" cy="162.5" r="3.5" style="fill: currentColor" />
+  <path d="M 482.3 90.9 L 472.5 93 L 474.7 84.3 Z" style="fill: currentColor" />
+  <path d="M 473.7 189.1 L 483.5 187 L 481.3 195.7 Z" style="fill: currentColor" />
+  <text x="478" y="72" fill="currentColor" text-anchor="middle">膨胀</text>
+  <text x="478" y="219" fill="currentColor" text-anchor="middle">压缩</text>
+  <text x="478" y="136" fill="currentColor" text-anchor="middle">净功＝</text>
+  <text x="478" y="158" fill="currentColor" text-anchor="middle">围成的面积</text>
+</svg>

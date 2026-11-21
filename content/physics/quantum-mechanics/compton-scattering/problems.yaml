@@ -1,0 +1,216 @@
+- id: p1
+  tier: easy
+  statement: |
+    1923 年，康普顿在和入射方向成$135^\circ$的方向上测散射 X 射线的波长。按康普顿公式，这个方向上散射 X 射线的波长比入射 X 射线的长多少？以$\mathrm{pm}$为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 6.62607015e-34/(9.1093837139e-31*299792458)*(1 - cos(3*pi/4))/1e-12
+    unit: |
+      $\mathrm{pm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      散射角就是$135^\circ$，直接用康普顿公式。
+    - |
+      $\lambda'-\lambda=\lambda_{\mathrm C}(1-\cos\theta)$，电子的康普顿波长$\lambda_{\mathrm C}=\frac h{m_{\mathrm e}c}\approx2.426\,\mathrm{pm}$，$\cos135^\circ=-\frac{\sqrt2}2$。
+    - |
+      $1-\cos135^\circ=1+\frac{\sqrt2}2\approx1.707$，$\lambda'-\lambda\approx2.426\,\mathrm{pm}\times1.707\approx4.14\,\mathrm{pm}$。
+  solution: |
+    散射角$\theta=135^\circ$，$1-\cos\theta=1+\frac{\sqrt2}2\approx1.707$。由康普顿公式，$\lambda'-\lambda=\lambda_{\mathrm C}(1-\cos\theta)\approx2.426\,\mathrm{pm}\times1.707\approx4.14\,\mathrm{pm}$。这个改变量和入射 X 射线的波长无关；对波长约$71\,\mathrm{pm}$的钼 X 射线，波长变长约$6\%$。
+
+- id: p2
+  tier: easy
+  statement: |
+    光子被静止的自由电子散射。下面哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        散射角为$60^\circ$时波长的改变量，是散射角为$120^\circ$时的$\frac13$
+      - |
+        入射 X 射线的强度（intensity）加倍，同一散射角下波长的改变量也加倍
+      - |
+        散射角为$180^\circ$时，反冲电子的动量比入射光子的动量大
+      - |
+        散射角为$90^\circ$时，反冲电子沿和入射方向垂直的方向运动
+    value: [1, 3]
+  hints:
+    - |
+      A、B 看康普顿公式里有哪些量；C、D 用动量守恒，把动量沿入射方向和垂直于入射方向分解。
+    - |
+      $\lambda'-\lambda=\lambda_{\mathrm C}(1-\cos\theta)$里只有散射角，强度只决定每秒有多少个光子。$180^\circ$时散射光子沿原路飞回；$90^\circ$时散射光子的动量没有沿入射方向的分量。
+    - |
+      A 对：$\frac{1-\cos60^\circ}{1-\cos120^\circ}=\frac{1/2}{3/2}=\frac13$。B 错：每个光子各自和一个电子碰撞，改变量和光子的多少无关。C 对：沿入射方向，$p=-p'+p_{\mathrm e}'$，所以$p_{\mathrm e}'=p+p'>p$。D 错：反冲电子的动量沿入射方向的分量等于入射光子的动量$p$，不是零，它斜着向前飞。
+  solution: |
+    选 A、C。A 对：改变量正比于$1-\cos\theta$，$\frac{1-\cos60^\circ}{1-\cos120^\circ}=\frac{1/2}{3/2}=\frac13$。B 错：每个光子各自和一个电子碰撞，强度加倍只是光子多了一倍，每次碰撞的改变量不变。
+
+    C 对：$180^\circ$时散射光子沿原路飞回，沿入射方向的动量守恒写成$p=-p'+p_{\mathrm e}'$，所以$p_{\mathrm e}'=p+p'$，比$p$大。D 错：散射光子垂直于入射方向飞出，没有沿入射方向的动量，入射光子沿这个方向的动量$p$全由电子带走，所以电子斜着向前飞，不垂直于入射方向。
+
+- id: p3
+  tier: medium
+  statement: |
+    钴-60 放出能量为$1.33\,\mathrm{MeV}$的$\gamma$光子。这样的光子被静止的自由电子散射，反冲电子的动能最大是多少？取$m_{\mathrm e}c^2=0.511\,\mathrm{MeV}$，以$\mathrm{MeV}$为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 1.33*(2*1.33/0.511)/(1 + 2*1.33/0.511)
+    unit: |
+      $\mathrm{MeV}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      反冲电子的动能等于光子丢掉的能量$E-E'$。散射角为多少时，$E'$最小？
+    - |
+      由$\frac1{E'}-\frac1E=\frac{1-\cos\theta}{m_{\mathrm e}c^2}$，$\theta=180^\circ$时$1-\cos\theta=2$最大，$E'$最小。
+    - |
+      $\frac1{E'}=\frac1{1.33\,\mathrm{MeV}}+\frac2{0.511\,\mathrm{MeV}}\approx4.666\,\mathrm{MeV^{-1}}$，$E'\approx0.214\,\mathrm{MeV}$，最大动能$E-E'\approx1.33\,\mathrm{MeV}-0.214\,\mathrm{MeV}\approx1.12\,\mathrm{MeV}$。
+  solution: |
+    电子原来静止，由能量守恒，散射后它的能量减去静能，也就是它的动能，等于光子丢掉的能量$E-E'$。由$\frac1{E'}=\frac1E+\frac{1-\cos\theta}{m_{\mathrm e}c^2}$，$\theta=180^\circ$时$E'$最小：$\frac1{E'}=\frac1{1.33}+\frac2{0.511}\approx4.666$（单位$\mathrm{MeV^{-1}}$），$E'\approx0.214\,\mathrm{MeV}$。所以反冲电子的动能最大是$1.33\,\mathrm{MeV}-0.214\,\mathrm{MeV}\approx1.12\,\mathrm{MeV}$，这时电子沿入射方向飞出。
+
+    用探测器测这种$\gamma$射线时，光子在探测器里发生康普顿散射、散射光子又逃出去，记下的只是电子的动能，它从零一直分布到$1.12\,\mathrm{MeV}$，到这里陡然降下来。能谱（energy spectrum）上的这个位置叫作康普顿边缘（Compton edge）。
+
+- id: p4
+  tier: medium
+  statement: |
+    波长为$1.00\,\mathrm{pm}$的$\gamma$光子被静止的自由电子散射，散射角是$90^\circ$。求散射光子的能量（以$\mathrm{keV}$为单位）和反冲电子的运动方向与入射方向的夹角（以度为单位），按这个顺序填写，结果都保留三位有效数字。
+  answer:
+    type: tuple
+    value: [6.62607015e-34*299792458/(1.602176634e-16*(1.00e-12 + 6.62607015e-34/(9.1093837139e-31*299792458))), atan(1.00e-12/(1.00e-12 + 6.62607015e-34/(9.1093837139e-31*299792458)))*180/pi]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先用康普顿公式求散射光子的波长，再求它的能量。夹角要用动量守恒：把反冲电子的动量沿入射方向和垂直于入射方向分解。
+    - |
+      $\lambda'=\lambda+\lambda_{\mathrm C}$，$E'=\frac{hc}{\lambda'}$，$hc\approx1240\,\mathrm{eV\cdot nm}=1240\,\mathrm{keV\cdot pm}$。电子的动量沿入射方向的分量是$\frac h\lambda$，垂直方向的分量大小是$\frac h{\lambda'}$，所以$\tan\theta_{\mathrm e}=\frac\lambda{\lambda'}$。
+    - |
+      $\lambda'\approx1.00\,\mathrm{pm}+2.43\,\mathrm{pm}=3.43\,\mathrm{pm}$，$E'\approx\frac{1240}{3.43}\,\mathrm{keV}\approx362\,\mathrm{keV}$；$\tan\theta_{\mathrm e}\approx\frac{1.00}{3.43}\approx0.292$，$\theta_{\mathrm e}\approx16.3^\circ$。
+  solution: |
+    散射光子的波长$\lambda'=\lambda+\lambda_{\mathrm C}(1-\cos90^\circ)\approx1.00\,\mathrm{pm}+2.426\,\mathrm{pm}=3.426\,\mathrm{pm}$，能量$E'=\frac{hc}{\lambda'}\approx\frac{1239.8\,\mathrm{keV\cdot pm}}{3.426\,\mathrm{pm}}\approx362\,\mathrm{keV}$。入射光子约$1240\,\mathrm{keV}$，散射后只剩不到三成。
+
+    散射光子垂直于入射方向飞出。由动量守恒，反冲电子的动量沿入射方向的分量等于$\frac h\lambda$，垂直于入射方向的分量和散射光子的动量等大反向，大小是$\frac h{\lambda'}$。所以$\tan\theta_{\mathrm e}=\frac{h/\lambda'}{h/\lambda}=\frac\lambda{\lambda'}\approx0.292$，$\theta_{\mathrm e}\approx16.3^\circ$，电子斜着向前飞。
+
+- id: p5
+  tier: hard
+  statement: |
+    能量为$E$的光子被静止的自由电子散射，散射角为$\theta$，反冲电子的运动方向和入射方向成$\theta_{\mathrm e}$角。
+
+    （1）证明$0<\theta<180^\circ$时，$\cot\theta_{\mathrm e}=\bigl(1+\frac E{m_{\mathrm e}c^2}\bigr)\tan\frac\theta2$。
+
+    （2）由此说明：反冲电子总是斜着向前飞，$\theta_{\mathrm e}<90^\circ$；散射角越大，$\theta_{\mathrm e}$越小；$\theta\to0$时$\theta_{\mathrm e}\to90^\circ$，$\theta=180^\circ$时$\theta_{\mathrm e}=0$。从动量的角度看，这几条为什么合理？
+  hints:
+    - |
+      把反冲电子的动量沿入射方向和垂直于入射方向分解，用动量守恒写出$\cot\theta_{\mathrm e}$；再用康普顿公式把$\frac p{p'}$写成$\theta$的函数。
+    - |
+      $p_{\mathrm e}'\cos\theta_{\mathrm e}=p-p'\cos\theta$，$p_{\mathrm e}'\sin\theta_{\mathrm e}=p'\sin\theta$；$\frac p{p'}=\frac{\lambda'}\lambda=1+\frac E{m_{\mathrm e}c^2}(1-\cos\theta)$；$\frac{1-\cos\theta}{\sin\theta}=\tan\frac\theta2$。
+    - |
+      （1）入射光子的动量$p=\frac Ec$沿入射方向，散射光子的动量$p'$和入射方向成$\theta$角，反冲电子在入射方向的另一侧。动量守恒：沿入射方向$p_{\mathrm e}'\cos\theta_{\mathrm e}=p-p'\cos\theta$，垂直于入射方向$p_{\mathrm e}'\sin\theta_{\mathrm e}=p'\sin\theta$。两式相除，$\cot\theta_{\mathrm e}=\frac{p/p'-\cos\theta}{\sin\theta}$。
+
+      由康普顿公式，$\frac p{p'}=\frac{\lambda'}\lambda=1+\frac{\lambda_{\mathrm C}}\lambda(1-\cos\theta)$，而$\frac{\lambda_{\mathrm C}}\lambda=\frac h{m_{\mathrm e}c}\cdot\frac E{hc}=\frac E{m_{\mathrm e}c^2}$。代入得$\cot\theta_{\mathrm e}=\bigl(1+\frac E{m_{\mathrm e}c^2}\bigr)\frac{1-\cos\theta}{\sin\theta}$，再由$\frac{1-\cos\theta}{\sin\theta}=\frac{2\sin^2(\theta/2)}{2\sin(\theta/2)\cos(\theta/2)}=\tan\frac\theta2$即得。
+
+      （2）$0<\theta<180^\circ$时右边是正数，$\cot\theta_{\mathrm e}>0$，$\theta_{\mathrm e}<90^\circ$。从动量看：散射光子的能量比入射光子小，$p'<p$，电子沿入射方向的动量分量$p-p'\cos\theta$总是正的，电子总要往前走。$\theta$增大时$\tan\frac\theta2$增大，$\cot\theta_{\mathrm e}$随着增大，$\theta_{\mathrm e}$减小。
+
+      $\theta\to0$时右边趋于$0$，$\theta_{\mathrm e}\to90^\circ$：光子几乎不偏转，$\vb p'$和$\vb p$几乎等长、几乎同向，两者之差是一个很短、几乎垂直于入射方向的矢量，电子就被侧着推出去，得到的动量和能量都很小。$\theta=180^\circ$时散射光子沿原路飞回，垂直于入射方向的动量是零，电子沿入射方向飞出，$\theta_{\mathrm e}=0$，这时它的动量$p+p'$和动能都最大。
+  reference: |
+    （1）动量守恒：$p_{\mathrm e}'\cos\theta_{\mathrm e}=p-p'\cos\theta$，$p_{\mathrm e}'\sin\theta_{\mathrm e}=p'\sin\theta$，相除得$\cot\theta_{\mathrm e}=\frac{p/p'-\cos\theta}{\sin\theta}$。康普顿公式给$\frac p{p'}=\frac{\lambda'}\lambda=1+\frac E{m_{\mathrm e}c^2}(1-\cos\theta)$（$\frac{\lambda_{\mathrm C}}\lambda=\frac E{m_{\mathrm e}c^2}$），代入得$\cot\theta_{\mathrm e}=\bigl(1+\frac E{m_{\mathrm e}c^2}\bigr)\frac{1-\cos\theta}{\sin\theta}=\bigl(1+\frac E{m_{\mathrm e}c^2}\bigr)\tan\frac\theta2$。
+
+    （2）右边为正，$\theta_{\mathrm e}<90^\circ$（$p'<p$，电子沿入射方向的动量分量为正）；右边随$\theta$单调增，$\theta_{\mathrm e}$随$\theta$单调减。$\theta\to0$：$\vb p-\vb p'$短且几乎垂直于入射方向，$\theta_{\mathrm e}\to90^\circ$，电子得到的能量趋于零。$\theta=180^\circ$：光子原路返回，电子沿入射方向，$\theta_{\mathrm e}=0$，动量$p+p'$、动能都最大。
+
+- id: p6
+  tier: hard
+  statement: |
+    高能电子迎面撞上低能光子，能把光子「踢」成高能光子，这叫作逆康普顿散射（inverse Compton scattering）。能量为$E_{\mathrm e}=1.00\,\mathrm{GeV}$的电子和波长为$1064\,\mathrm{nm}$的激光光子迎面相撞，光子被弹回，沿电子原来的运动方向飞出。
+
+    （1）用四维动量守恒求弹回的光子的能量$\varepsilon'$，以$\mathrm{MeV}$为单位。
+
+    （2）记激光光子的能量为$\varepsilon$，电子的洛伦兹因子为$\gamma_u=\frac{E_{\mathrm e}}{m_{\mathrm e}c^2}$。证明$\gamma_u\gg1$且$\gamma_u\varepsilon\ll m_{\mathrm e}c^2$时$\varepsilon'\approx4\gamma_u^2\varepsilon$，并和（1）的结果比较。
+
+    （3）这样的装置可以用来做什么？
+  hints:
+    - |
+      照康普顿公式的证明，把不关心的、散射后电子的四维动量单独放在一边，两边平方。注意入射光子和电子迎面而来。
+    - |
+      得$P_{\mathrm e}\cdot P_\gamma=P_{\mathrm e}\cdot P_\gamma'+P_\gamma\cdot P_\gamma'$。取电子沿$+x$运动，入射光子沿$-x$，弹回的光子沿$+x$：$P_{\mathrm e}\cdot P_\gamma=\frac{\varepsilon(E_{\mathrm e}+p_{\mathrm e}c)}{c^2}$，$P_{\mathrm e}\cdot P_\gamma'=\frac{\varepsilon'(E_{\mathrm e}-p_{\mathrm e}c)}{c^2}$，$P_\gamma\cdot P_\gamma'=\frac{2\varepsilon\varepsilon'}{c^2}$。
+    - |
+      （1）四维动量守恒$P_{\mathrm e}+P_\gamma=P_{\mathrm e}'+P_\gamma'$。把$P_{\mathrm e}'$放一边、两边平方，电子的$P\cdot P$都是$m_{\mathrm e}^2c^2$，光子的都是$0$，得$P_{\mathrm e}\cdot P_\gamma=P_{\mathrm e}\cdot P_\gamma'+P_\gamma\cdot P_\gamma'$。代入第 2 级提示的三个内积，$\varepsilon(E_{\mathrm e}+p_{\mathrm e}c)=\varepsilon'(E_{\mathrm e}-p_{\mathrm e}c+2\varepsilon)$，所以
+
+      $$
+      \varepsilon'=\frac{\varepsilon(E_{\mathrm e}+p_{\mathrm e}c)}{E_{\mathrm e}-p_{\mathrm e}c+2\varepsilon}.
+      $$
+
+      激光光子的能量$\varepsilon=\frac{1240\,\mathrm{eV\cdot nm}}{1064\,\mathrm{nm}}\approx1.165\,\mathrm{eV}$。电子的$E_{\mathrm e}+p_{\mathrm e}c\approx2E_{\mathrm e}=2000\,\mathrm{MeV}$，而$E_{\mathrm e}-p_{\mathrm e}c=\frac{(m_{\mathrm e}c^2)^2}{E_{\mathrm e}+p_{\mathrm e}c}\approx\frac{0.511^2}{2000}\,\mathrm{MeV}\approx131\,\mathrm{eV}$。所以$\varepsilon'\approx\frac{1.165\,\mathrm{eV}\times2000\,\mathrm{MeV}}{131\,\mathrm{eV}+2.33\,\mathrm{eV}}\approx17.5\,\mathrm{MeV}$，是激光光子能量的一千五百万倍左右。
+
+      （2）$\gamma_u\gg1$时$p_{\mathrm e}c\approx E_{\mathrm e}$，$E_{\mathrm e}+p_{\mathrm e}c\approx2\gamma_um_{\mathrm e}c^2$，再由（1）里的式子，$E_{\mathrm e}-p_{\mathrm e}c\approx\frac{m_{\mathrm e}c^2}{2\gamma_u}$，代入得$\varepsilon'\approx\frac{4\gamma_u^2\varepsilon}{1+4\gamma_u\varepsilon/(m_{\mathrm e}c^2)}$。$\gamma_u\varepsilon\ll m_{\mathrm e}c^2$时分母约为$1$，$\varepsilon'\approx4\gamma_u^2\varepsilon$。这里$\gamma_u=\frac{1000}{0.511}\approx1957$，$4\gamma_u^2\varepsilon\approx17.9\,\mathrm{MeV}$，比（1）的精确值大约$2\%$，正是分母里的$\frac{4\gamma_u\varepsilon}{m_{\mathrm e}c^2}\approx0.018$。
+
+      换到电子原来的静止系里看更清楚：光子迎面而来，频率变为原来的约$2\gamma_u$倍（见[相对论多普勒效应](lesson:physics.special-relativity.relativistic-doppler)）；它的能量仍远小于$m_{\mathrm e}c^2$，弹回时几乎不丢能量；回到实验室，频率又变为约$2\gamma_u$倍，一共约$4\gamma_u^2$倍。
+
+      （3）它把普通的激光变成能量高达几到几十$\mathrm{MeV}$、集中在电子运动方向附近的$\gamma$射线束，改变电子的能量就能调节光子的能量，可用来做核物理实验，例如用$\gamma$光子把原子核打散。天文上，高能电子把低能光子「踢」成 X 射线、$\gamma$射线，也是这个过程。
+  reference: |
+    （1）$P_{\mathrm e}\cdot P_\gamma=P_{\mathrm e}\cdot P_\gamma'+P_\gamma\cdot P_\gamma'$，迎面、弹回：$\varepsilon(E_{\mathrm e}+p_{\mathrm e}c)=\varepsilon'(E_{\mathrm e}-p_{\mathrm e}c+2\varepsilon)$，$\varepsilon'=\frac{\varepsilon(E_{\mathrm e}+p_{\mathrm e}c)}{E_{\mathrm e}-p_{\mathrm e}c+2\varepsilon}$。$\varepsilon=1.1653\,\mathrm{eV}$，$E_{\mathrm e}-p_{\mathrm e}c=\frac{(m_{\mathrm e}c^2)^2}{E_{\mathrm e}+p_{\mathrm e}c}\approx130.6\,\mathrm{eV}$，$\varepsilon'\approx\frac{1.1653\times2000}{130.6+2.33}\,\mathrm{MeV}\approx17.54\,\mathrm{MeV}$。
+
+    （2）$\varepsilon'=\frac{4\gamma_u^2\varepsilon}{1+4\gamma_u\varepsilon/(m_{\mathrm e}c^2)}$（$E_{\mathrm e}\gg m_{\mathrm e}c^2$），$\gamma_u\varepsilon\ll m_{\mathrm e}c^2$时$\approx4\gamma_u^2\varepsilon$。$\gamma_u=1957$，$4\gamma_u^2\varepsilon=17.85\,\mathrm{MeV}$，比精确值大$1.8\%$，即$\frac{4\gamma_u\varepsilon}{m_{\mathrm e}c^2}=0.0178$。物理图像：电子静止系里光子蓝移约$2\gamma_u$倍，近似弹性地弹回（汤姆孙散射），回到实验室再蓝移约$2\gamma_u$倍。
+
+    （3）产生能量可调、方向集中的高能$\gamma$射线束（激光康普顿背散射光源），用于核物理（光致核反应）等；天体物理里高能电子把低能光子散射成 X、$\gamma$射线。
+
+- id: p7
+  tier: thinking
+  statement: |
+    :term[光电效应]{id="physics.quantum-mechanics.photoelectric-effect"}（photoelectric effect）里，金属里的电子吸收一整个光子；康普顿散射里，光子只把一部分能量交给电子，自己被散射开。
+
+    （1）[相对论碰撞与衰变](lesson:physics.special-relativity.relativistic-collisions)第 6 题说，自由电子不能吸收一个光子。能量为$6.0\,\mathrm{eV}$的光子从金属里打出一个动能为$1.5\,\mathrm{eV}$的:term[光电子]{id="physics.quantum-mechanics.photoelectron"}（photoelectron），比较光子带来的动量和光电子的动量。吸收前后总动量守恒，光电子的动量由谁抵消？为什么吸收一个光子非得有这样一个「第三者」？
+
+    （2）几$\mathrm{eV}$的可见光、几十$\mathrm{keV}$的 X 射线、几$\mathrm{MeV}$的$\gamma$射线照到物质上，跟电子打交道时，大致各以哪种过程为主？和物质是轻元素还是重元素有没有关系？
+  hints:
+    - |
+      （1）把两个动量都换成以$\mathrm{eV}/c$为单位来比；吸收前金属静止，总动量只有光子带来的那一点。
+
+      （2）把光子的能量和电子受的束缚比一比。
+    - |
+      （1）光子的$pc=6.0\,\mathrm{eV}$；光电子的速度远小于光速，$pc=\sqrt{2m_{\mathrm e}c^2K}\approx1.24\,\mathrm{keV}$。剩下的金属很重，带走大小差不多、方向相反的动量，动能却小得可以不计。
+
+      （2）光子的能量和电子受的束缚差不多时，整个原子都参与进来；远大于束缚时，电子就像自由的。束缚得很紧的内层电子，重元素里多。
+    - |
+      （1）光子的动量$\frac Ec=6.0\,\mathrm{eV}/c$。光电子的速度远小于光速，$pc=\sqrt{2m_{\mathrm e}c^2K}=\sqrt{2\times0.511\times10^6\times1.5}\,\mathrm{eV}\approx1.24\,\mathrm{keV}$，是光子的约 200 倍。吸收前金属静止，总动量只有光子带来的$6.0\,\mathrm{eV}/c$，所以剩下的离子（金属里是整块金属）要带走和电子大小差不多、方向相反的动量。它很重，动能$\frac{p^2}{2M}$小得可以不计，光子的能量几乎全给了电子，一部分花在把电子拉出金属上。
+
+      自由电子吸收光子时没有这个「第三者」：吸收前电子加光子的不变质量（invariant mass）大于$m_{\mathrm e}$，吸收后只剩一个电子，不变质量是$m_{\mathrm e}$，四维动量守恒做不到。有了很重的第三者，它分走动量、几乎不分能量，守恒就配得平。电子被束缚得越紧，越容易和原子核交换动量，吸收越容易发生；光子的能量越接近（但高于）束缚的能量，吸收也越容易。
+
+      （2）几$\mathrm{eV}$的可见光：光子的能量和外层电子受的束缚差不多，电子不能看成自由的，谈不上康普顿散射；光要么被原子、分子吸收（金属表面上就有光电效应），要么被整个原子散射，波长不变。
+
+      几十$\mathrm{keV}$的 X 射线：对碳、水这样的轻元素，电子受的束缚都远小于光子的能量，康普顿散射和光电效应差不多，能量再高就以康普顿散射为主；对铅这样的重元素，内层电子受的束缚有几十$\mathrm{keV}$，光电效应仍占优势。
+
+      几$\mathrm{MeV}$的$\gamma$射线：几乎所有电子都可以看成自由的，光电效应很弱，以康普顿散射为主。能量再高，光子在原子核附近变成一对正负电子的过程越来越重要，重元素里几$\mathrm{MeV}$以上就是这样。
+  reference: |
+    （1）$p_\gamma c=6.0\,\mathrm{eV}$，光电子$pc=\sqrt{2m_{\mathrm e}c^2K}=\sqrt{2\times511\,000\times1.5}\,\mathrm{eV}\approx1.24\,\mathrm{keV}$，约为光子的 206 倍。金属（离子）反冲，带走约$1.24\,\mathrm{keV}/c$的反向动量，动能$\frac{p^2}{2M}$可忽略（单个锌原子约$1.3\times10^{-5}\,\mathrm{eV}$），能量几乎全给电子。自由电子吸收：不变质量$\sqrt{m_{\mathrm e}^2+2m_{\mathrm e}E/c^2}>m_{\mathrm e}$，不可能；要重的第三者分担动量而几乎不分能量。束缚越紧，越易与核交换动量，光子能量越接近（且高于）束缚能，截面越大（光电效应随能量迅速下降、随原子序数迅速上升）。
+
+    （2）可见光：能量与束缚相当，电子非自由，无康普顿散射；吸收或整个原子的弹性散射。几十 keV：轻元素（水）约 30 keV 处光电效应与康普顿散射相当，往上康普顿为主；重元素（铅，K 层约 88 keV）光电效应占优，到约 0.5 MeV。几 MeV：康普顿为主；电子对产生在铅里约 5 MeV 以上占优，水里约 20 MeV 以上。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设想这样一种经典的解释：入射 X 射线的辐射压强（radiation pressure）推着电子沿入射方向运动起来，运动的电子再向四周发出 X 射线；由于[多普勒效应](lesson:physics.oscillations-waves.doppler-effect)（Doppler effect），发向侧面、后面的 X 射线波长变长。
+
+    （1）按这种解释，波长的改变量和入射 X 射线的强度、照射的时间有什么关系？散射谱里变长的那个峰会是尖的吗？
+
+    （2）实验的哪些事实和它对不上？
+
+    （3）后来在云室（cloud chamber）里看到了一条条反冲电子的径迹；逐次地看，反冲电子的方向和同一次散射里光子飞出的方向之间，有动量守恒所要求的关联。这为什么支持光子的图像？
+  hints:
+    - |
+      辐射压强是持续地推：电子的速度随时间怎样变？不同的电子在同一时刻速度一样吗？
+    - |
+      实验上，变长的峰很尖，位置只由散射角决定；换强度、换散射物质都不变。估一估辐射压强能把电子推多快，再想想：要让多普勒效应给出的波长改变量正好是$\lambda_{\mathrm C}(1-\cos\theta)$，电子得有多大的动量？
+    - |
+      （1）辐射压强持续地推，电子越跑越快，多普勒频移（Doppler shift）也越来越大：改变量会随照射时间增大，强度越大增大得越快。各个电子开始受照的时刻、所处的位置不同，速度有快有慢，散射光的波长就连成一片，变长的峰会很宽，不会是尖的。
+
+      （2）实验上，变长的峰是尖的，位置只由散射角决定，正好是$\lambda_{\mathrm C}(1-\cos\theta)$；入射 X 射线的强度、照射时间、散射物质都不影响它。
+
+      辐射压强也太弱。电子每秒从入射波里截下的能量是截面乘强度，吸收能量$U$就得到动量$\frac Uc$（见[电磁场的动量](lesson:physics.electromagnetism.field-momentum#thm-absorbed-momentum)），而汤姆孙散射向前、向后散射得一样多，散射出去的光不带走净动量，所以电子受的力是截面乘强度再除以$c$，再除以$m_{\mathrm e}$就是加速度。按[拉莫尔公式](lesson:physics.electromagnetism.larmor-formula)第 5 题的截面，强度为每平方米 1 瓦时，电子的加速度只有约$2.4\times10^{-7}\,\mathrm{m/s^2}$。要让钼的 X 射线在$90^\circ$方向上变长约$3.4\%$（本节例 1），电子得有约$\frac c{30}$，也就是约$10^7\,\mathrm{m/s}$的速度，要推上$10^{13}\,\mathrm s$以上，也就是一百多万年。
+
+      反过来算，速度不大时多普勒频移给出$\frac{\lambda'-\lambda}\lambda\approx\frac vc(1-\cos\theta)$；要它正好等于$\frac{\lambda_{\mathrm C}}\lambda(1-\cos\theta)$，电子得有$m_{\mathrm e}v\approx\frac h\lambda$，恰好是一个光子的动量。经典的连续推动说不出为什么每个电子都恰好得到这么多动量；光子的图像里，电子就是一次碰撞从一个光子那里得到的。
+
+      （3）云室里的反冲电子一个一个地出现，每个的动能都是一次碰撞突然得到的，不是慢慢攒的；同一次散射里的电子和散射光子，方向像两个相撞的小球那样由动量守恒联系着。光和电子以一个个光子为单位交换能量和动量，这正是光子的图像；经典的连续推动给不出这种一对一的关联。
+  reference: |
+    （1）经典：电子在辐射压强下持续加速，频移随时间、强度增大；各电子速度不同，频移连续分布，峰宽而不尖。
+
+    （2）实验：峰尖锐，位置只依赖散射角，等于$\lambda_{\mathrm C}(1-\cos\theta)$，与强度、时间、散射物质无关。量级：强度取$1\,\mathrm{W/m^2}$，力是截面乘强度再除以$c$，$a\approx\frac{6.65\times10^{-29}\times1}{9.11\times10^{-31}\times3.00\times10^8}\,\mathrm{m/s^2}\approx2.4\times10^{-7}\,\mathrm{m/s^2}$，达到$v\approx0.034c\approx1.0\times10^7\,\mathrm{m/s}$需约$4\times10^{13}\,\mathrm s$。多普勒：$\frac{\Delta\lambda}\lambda\approx\frac vc(1-\cos\theta)$，要等于$\frac{\lambda_{\mathrm C}}\lambda(1-\cos\theta)$须$m_{\mathrm e}v=\frac h\lambda$，正是一个光子的动量（严格地说，让电子以光子和电子的零动量系的速度运动，多普勒的算法给出的正是精确的康普顿公式）。
+
+    （3）云室（威尔逊、博特 1923 年观察到反冲电子；康普顿和西蒙 1925 年逐个事件核对了电子和散射光子的方向）：能量动量是一个个光子为单位、逐次交换的，每次碰撞都满足守恒，经典连续图像给不出这种关联。

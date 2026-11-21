@@ -30,7 +30,7 @@ status: reviewed
 
 两只钟各走了多少，要沿各自的世界线算:term[固有时]{id="physics.special-relativity.proper-time"}（proper time）。由[时空间隔与固有时](lesson:physics.special-relativity.spacetime-interval#thm-max-proper-time)里的定理，连接两个事件的世界线中，匀速直线的那条固有时最长，所以重逢时甲比乙老。
 
-乙掉头时要加速，可这一段可以短到忽略：按[时钟假设](lesson:physics.special-relativity.spacetime-interval#def-clock-hypothesis)（clock hypothesis），钟的快慢只取决于此刻的速度，掉头那一会儿对乙的钟几乎没有贡献。造成年龄差的，是两条世界线的形状不同，不是加速度本身让钟变慢。
+乙掉头时要加速，可这一段可以短到忽略：按:term[时钟假设]{id="physics.special-relativity.clock-hypothesis"}（clock hypothesis，见[时空间隔与固有时](lesson:physics.special-relativity.spacetime-interval#def-clock-hypothesis)），钟的快慢只取决于此刻的速度，掉头那一会儿对乙的钟几乎没有贡献。造成年龄差的，是两条世界线的形状不同，不是加速度本身让钟变慢。
 
 ### 沿世界线累加固有时
 

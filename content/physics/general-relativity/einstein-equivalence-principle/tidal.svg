@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" font-size="14">
+  <!-- 自由下落、不转动的舱里两个小球的加速度（都指向地心）和相对舱的加速度（彩色）。左：并排，互相靠拢；右：上下，互相分开。箭头的长短、倾斜和地球的弯曲都夸大了。 -->
+  <text x="160.0" y="24.0" fill="currentColor" text-anchor="middle">并排的两球</text>
+  <path d="M 70.0 44.0 L 250.0 44.0 L 250.0 204.0 L 70.0 204.0 Z" style="stroke: currentColor" fill="none" stroke-width="1.6" stroke-linejoin="round" />
+  <path d="M 20.0 365.1 A 240.0 240.0 0 0 1 300.0 365.1" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.4" />
+  <text x="480.0" y="24.0" fill="currentColor" text-anchor="middle">上下的两球</text>
+  <path d="M 390.0 44.0 L 570.0 44.0 L 570.0 204.0 L 390.0 204.0 Z" style="stroke: currentColor" fill="none" stroke-width="1.6" stroke-linejoin="round" />
+  <path d="M 340.0 365.1 A 240.0 240.0 0 0 1 620.0 365.1" style="stroke: var(--muted, #6b7280)" fill="none" stroke-width="1.4" />
+  <line x1="110.0" y1="110.0" x2="142.2" y2="400.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="5 4" />
+  <line x1="210.0" y1="110.0" x2="177.8" y2="400.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="5 4" />
+  <line x1="111.1" y1="119.9" x2="116.3" y2="166.7" style="stroke: currentColor" stroke-width="1.6" />
+  <path d="M 117.1 173.6 L 112.5 166.1 L 119.9 165.2 Z" style="fill: currentColor" />
+  <line x1="208.9" y1="119.9" x2="203.7" y2="166.7" style="stroke: currentColor" stroke-width="1.6" />
+  <path d="M 202.9 173.6 L 200.1 165.2 L 207.5 166.1 Z" style="fill: currentColor" />
+  <line x1="119.0" y1="110.0" x2="139.0" y2="110.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 146.0 110.0 L 138.0 113.7 L 138.0 106.3 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="201.0" y1="110.0" x2="181.0" y2="110.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 174.0 110.0 L 182.0 106.3 L 182.0 113.7 Z" style="fill: var(--accent, #2563eb)" />
+  <circle cx="110.0" cy="110.0" r="7.0" style="fill: currentColor" />
+  <circle cx="210.0" cy="110.0" r="7.0" style="fill: currentColor" />
+  <text x="190.0" y="392.0" fill="currentColor">指向地心</text>
+  <text x="36.0" y="392.0" fill="currentColor">地球</text>
+  <line x1="480.0" y1="80.0" x2="480.0" y2="400.0" style="stroke: var(--muted, #6b7280)" stroke-width="1.0" stroke-dasharray="5 4" />
+  <line x1="480.0" y1="90.0" x2="480.0" y2="117.0" style="stroke: currentColor" stroke-width="1.6" />
+  <path d="M 480.0 124.0 L 476.3 116.0 L 483.7 116.0 Z" style="fill: currentColor" />
+  <line x1="480.0" y1="150.0" x2="480.0" y2="187.0" style="stroke: currentColor" stroke-width="1.6" />
+  <path d="M 480.0 194.0 L 476.3 186.0 L 483.7 186.0 Z" style="fill: currentColor" />
+  <line x1="500.0" y1="80.0" x2="500.0" y2="61.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 500.0 54.0 L 503.7 62.0 L 496.3 62.0 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="500.0" y1="140.0" x2="500.0" y2="159.0" style="stroke: var(--accent, #2563eb)" stroke-width="2.0" />
+  <path d="M 500.0 166.0 L 496.3 158.0 L 503.7 158.0 Z" style="fill: var(--accent, #2563eb)" />
+  <circle cx="480.0" cy="80.0" r="7.0" style="fill: currentColor" />
+  <circle cx="480.0" cy="140.0" r="7.0" style="fill: currentColor" />
+  <text x="490.0" y="392.0" fill="currentColor">指向地心</text>
+</svg>

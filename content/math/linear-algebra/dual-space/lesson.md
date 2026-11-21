@@ -13,7 +13,7 @@ status: reviewed
 
 ## 这一节要回答的问题
 
-在$P_2$上取值$p\mapsto p(1)$，在$\R^3$上算$2x-y+3z$，都是把向量变成一个数的:term[线性映射]{id="math.linear-algebra.linear-map"}（linear map）。这样的映射本身能不能相加、:term[数乘]{id="math.linear-algebra.scalar-multiplication"}（scalar multiplication），组成一个新的:term[向量空间]{id="math.linear-algebra.vector-space"}（vector space）？[坐标与基变换](lesson:math.linear-algebra.change-of-basis)讲了换一组:term[基]{id="math.linear-algebra.basis"}（basis）时向量的坐标怎样变，这些「把向量变成数」的东西，坐标又怎样变？
+在$P_2$上取值$p\mapsto p(1)$，在$\R^3$上算$2x-y+3z$，都是把向量变成一个数的:term[线性映射]{id="math.linear-algebra.linear-map"}（linear map）。这样的:term[映射]{id="math.logic-sets.map"}（map）本身能不能相加、:term[数乘]{id="math.linear-algebra.scalar-multiplication"}（scalar multiplication），组成一个新的:term[向量空间]{id="math.linear-algebra.vector-space"}（vector space）？[坐标与基变换](lesson:math.linear-algebra.change-of-basis)讲了换一组:term[基]{id="math.linear-algebra.basis"}（basis）时向量的坐标怎样变，这些「把向量变成数」的东西，坐标又怎样变？
 
 ## 讲解
 

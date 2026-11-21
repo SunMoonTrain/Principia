@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" width="640" height="280" font-size="14">
+  <!-- 三幅并排：分子穿过平面 z₀ 时输运动量（黏性）、能量（热传导）、做了记号的甲分子（扩散）。三条水平线是 z₀ + λ、z₀（虚线）、z₀ − λ。每幅里一个分子从 z₀ + λ 向下、一个从 z₀ − λ 向上穿过 z₀。左：绿色箭头是各层的流速，上大下小。中：灰色横条的长短表示各层的温度，上高下低。右：实心圆点是甲分子，空心的是别的分子，甲分子上多下少。下面写着三个输运系数的估算式。示意图，不按比例。 -->
+  <text x="54" y="81" fill="currentColor" text-anchor="end"><tspan font-style="italic">z</tspan><tspan dy="4" font-size="10">0</tspan><tspan dy="-4"> + </tspan><tspan font-style="italic">λ</tspan></text>
+  <text x="54" y="151" fill="currentColor" text-anchor="end"><tspan font-style="italic">z</tspan><tspan dy="4" font-size="10">0</tspan></text>
+  <text x="54" y="221" fill="currentColor" text-anchor="end"><tspan font-style="italic">z</tspan><tspan dy="4" font-size="10">0</tspan><tspan dy="-4"> − </tspan><tspan font-style="italic">λ</tspan></text>
+  <text x="153" y="26" fill="currentColor" text-anchor="middle">黏性：输运动量</text>
+  <line x1="64" y1="76" x2="242" y2="76" style="stroke: currentColor" stroke-opacity="0.5" stroke-width="1" />
+  <line x1="64" y1="146" x2="242" y2="146" style="stroke: currentColor" stroke-width="1.2" stroke-dasharray="6 4" />
+  <line x1="64" y1="216" x2="242" y2="216" style="stroke: currentColor" stroke-opacity="0.5" stroke-width="1" />
+  <line x1="72" y1="76" x2="134" y2="76" style="stroke: var(--good, #059669)" stroke-width="1.8" />
+  <path d="M 142 76 L 133 72 L 133 80 Z" style="fill: var(--good, #059669)" />
+  <line x1="72" y1="146" x2="111" y2="146" style="stroke: var(--good, #059669)" stroke-width="1.8" />
+  <path d="M 119 146 L 110 142 L 110 150 Z" style="fill: var(--good, #059669)" />
+  <line x1="72" y1="216" x2="88" y2="216" style="stroke: var(--good, #059669)" stroke-width="1.8" />
+  <path d="M 96 216 L 87 212 L 87 220 Z" style="fill: var(--good, #059669)" />
+  <text x="148" y="69" fill="currentColor"><tspan font-style="italic">u</tspan> 大</text>
+  <text x="148" y="209" fill="currentColor"><tspan font-style="italic">u</tspan> 小</text>
+  <circle cx="192" cy="76" r="5" style="fill: var(--accent, #2563eb)" />
+  <line x1="192" y1="83" x2="192" y2="164" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 192 172 L 188 163 L 196 163 Z" style="fill: var(--accent, #2563eb)" />
+  <circle cx="222" cy="216" r="5" style="fill: var(--accent, #2563eb)" />
+  <line x1="222" y1="209" x2="222" y2="128" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 222 120 L 218 129 L 226 129 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="347" y="26" fill="currentColor" text-anchor="middle">热传导：输运能量</text>
+  <line x1="258" y1="76" x2="436" y2="76" style="stroke: currentColor" stroke-opacity="0.5" stroke-width="1" />
+  <line x1="258" y1="146" x2="436" y2="146" style="stroke: currentColor" stroke-width="1.2" stroke-dasharray="6 4" />
+  <line x1="258" y1="216" x2="436" y2="216" style="stroke: currentColor" stroke-opacity="0.5" stroke-width="1" />
+  <rect x="266" y="71" width="70" height="10" style="fill: currentColor" fill-opacity="0.28" />
+  <rect x="266" y="141" width="47" height="10" style="fill: currentColor" fill-opacity="0.28" />
+  <rect x="266" y="211" width="24" height="10" style="fill: currentColor" fill-opacity="0.28" />
+  <text x="342" y="69" fill="currentColor"><tspan font-style="italic">T</tspan> 高</text>
+  <text x="342" y="209" fill="currentColor"><tspan font-style="italic">T</tspan> 低</text>
+  <circle cx="386" cy="76" r="5" style="fill: var(--accent, #2563eb)" />
+  <line x1="386" y1="83" x2="386" y2="164" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 386 172 L 382 163 L 390 163 Z" style="fill: var(--accent, #2563eb)" />
+  <circle cx="416" cy="216" r="5" style="fill: var(--accent, #2563eb)" />
+  <line x1="416" y1="209" x2="416" y2="128" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 416 120 L 412 129 L 420 129 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="541" y="26" fill="currentColor" text-anchor="middle">扩散：输运甲分子</text>
+  <line x1="452" y1="76" x2="630" y2="76" style="stroke: currentColor" stroke-opacity="0.5" stroke-width="1" />
+  <line x1="452" y1="146" x2="630" y2="146" style="stroke: currentColor" stroke-width="1.2" stroke-dasharray="6 4" />
+  <line x1="452" y1="216" x2="630" y2="216" style="stroke: currentColor" stroke-opacity="0.5" stroke-width="1" />
+  <circle cx="466" cy="76" r="5" style="fill: var(--accent, #2563eb)" />
+  <circle cx="484" cy="76" r="5" style="fill: var(--accent, #2563eb)" />
+  <circle cx="502" cy="76" r="5" style="fill: var(--accent, #2563eb)" />
+  <circle cx="520" cy="76" r="5" style="fill: var(--bg, #ffffff); stroke: currentColor" stroke-width="1.2" />
+  <circle cx="466" cy="146" r="5" style="fill: var(--accent, #2563eb)" />
+  <circle cx="484" cy="146" r="5" style="fill: var(--accent, #2563eb)" />
+  <circle cx="502" cy="146" r="5" style="fill: var(--bg, #ffffff); stroke: currentColor" stroke-width="1.2" />
+  <circle cx="520" cy="146" r="5" style="fill: var(--bg, #ffffff); stroke: currentColor" stroke-width="1.2" />
+  <circle cx="466" cy="216" r="5" style="fill: var(--accent, #2563eb)" />
+  <circle cx="484" cy="216" r="5" style="fill: var(--bg, #ffffff); stroke: currentColor" stroke-width="1.2" />
+  <circle cx="502" cy="216" r="5" style="fill: var(--bg, #ffffff); stroke: currentColor" stroke-width="1.2" />
+  <circle cx="520" cy="216" r="5" style="fill: var(--bg, #ffffff); stroke: currentColor" stroke-width="1.2" />
+  <circle cx="580" cy="76" r="5" style="fill: var(--accent, #2563eb)" />
+  <line x1="580" y1="83" x2="580" y2="164" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 580 172 L 576 163 L 584 163 Z" style="fill: var(--accent, #2563eb)" />
+  <circle cx="610" cy="216" r="5" style="fill: var(--bg, #ffffff); stroke: currentColor" stroke-width="1.2" />
+  <line x1="610" y1="209" x2="610" y2="128" style="stroke: var(--accent, #2563eb)" stroke-width="1.6" />
+  <path d="M 610 120 L 606 129 L 614 129 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="153" y="262" fill="currentColor" text-anchor="middle"><tspan font-style="italic">η</tspan> ≈ (1/3)<tspan font-style="italic">ρv</tspan><tspan dy="4" font-size="10">rms</tspan><tspan dy="-4" font-style="italic"> λ</tspan></text>
+  <text x="347" y="262" fill="currentColor" text-anchor="middle"><tspan font-style="italic">κ</tspan> ≈ (1/3)<tspan font-style="italic">ρc</tspan><tspan dy="4" font-size="10" font-style="italic">V</tspan><tspan dy="-4" font-style="italic"> v</tspan><tspan dy="4" font-size="10">rms</tspan><tspan dy="-4" font-style="italic"> λ</tspan></text>
+  <text x="541" y="262" fill="currentColor" text-anchor="middle"><tspan font-style="italic">D</tspan> ≈ (1/3)<tspan font-style="italic">v</tspan><tspan dy="4" font-size="10">rms</tspan><tspan dy="-4" font-style="italic"> λ</tspan></text>
+</svg>

@@ -43,7 +43,7 @@ $y'=3y^{2/3}$出问题的地方在$y=0$附近：$f(y)=3y^{2/3}$在那里陡得�
 ::anchor{id="def-picard-iteration"}
 从常数函数$\varphi_0(x)\equiv y_0$出发，令$\varphi_{n+1}(x)=y_0+\int_{x_0}^{x}f(s,\varphi_n(s))\dd s$，依次得到的函数$\varphi_0,\varphi_1,\varphi_2,\dots$叫作:term[皮卡迭代]{id="math.ode.picard-iteration"}（Picard iteration）。
 
-为什么这样定义：积分方程说的是，解在映射$\varphi\mapsto y_0+\int_{x_0}^{x}f(s,\varphi(s))\dd s$下不变；把这个映射反复作用下去，就像在计算器上对任意一个数反复按$\cos$键，最后会停在方程$\cos x=x$的根上，期望它停在解上。边界情况：对$y'=y$、$y(0)=1$，$\varphi_1=1+x$，$\varphi_2=1+x+\frac{x^2}{2}$，一般地$\varphi_n(x)=\sum_{k=0}^{n}\frac{x^k}{k!}$。下面的定理只保证它们在$0$附近一致收敛（uniformly converge）到解$e^x$；不过这里相邻两项之差$\frac{x^{n+1}}{(n+1)!}$在任何有界区间$|x|\le a$上都不超过$\frac{a^{n+1}}{(n+1)!}$，照定理的证明思路，它们在每个有界区间上都一致收敛到$e^x$，这顺便说明了$e^x=\sum_{k=0}^{\infty}\frac{x^k}{k!}$。
+为什么这样定义：积分方程说的是，解在:term[映射]{id="math.logic-sets.map"}（map）$\varphi\mapsto y_0+\int_{x_0}^{x}f(s,\varphi(s))\dd s$下不变；把这个映射反复作用下去，就像在计算器上对任意一个数反复按$\cos$键，最后会停在方程$\cos x=x$的根上，期望它停在解上。边界情况：对$y'=y$、$y(0)=1$，$\varphi_1=1+x$，$\varphi_2=1+x+\frac{x^2}{2}$，一般地$\varphi_n(x)=\sum_{k=0}^{n}\frac{x^k}{k!}$。下面的定理只保证它们在$0$附近一致收敛（uniformly converge）到解$e^x$；不过这里相邻两项之差$\frac{x^{n+1}}{(n+1)!}$在任何有界区间$|x|\le a$上都不超过$\frac{a^{n+1}}{(n+1)!}$，照定理的证明思路，它们在每个有界区间上都一致收敛到$e^x$，这顺便说明了$e^x=\sum_{k=0}^{\infty}\frac{x^k}{k!}$。
 
 ### 皮卡-林德勒夫定理
 
@@ -53,7 +53,7 @@ $y'=3y^{2/3}$出问题的地方在$y=0$附近：$f(y)=3y^{2/3}$在那里陡得�
 **证明思路**：
 
 - 迭代不出界：若$\varphi_n$的图像留在$R$里，则$|\varphi_{n+1}(x)-y_0|\le M|x-x_0|\le Mh\le b$，所以每个$\varphi_n$都能代进$f$；$h$里的$\frac bM$就是为此取的。
-- 迭代收敛：由利普希茨条件和归纳法，$|\varphi_{n+1}(x)-\varphi_n(x)|\le\frac{ML^n|x-x_0|^{n+1}}{(n+1)!}$，在区间上不超过$c_n=\frac{ML^nh^{n+1}}{(n+1)!}$。$\frac{c_{n+1}}{c_n}=\frac{Lh}{n+2}$在$n\ge2Lh$以后不到$\frac12$，所以$\sum c_n$的部分和（partial sum）单调增，又不超过前面几项加上一个几何级数（geometric series），由单调有界原理（monotone convergence theorem）收敛。由:term[魏尔斯特拉斯判别法]{id="math.analysis.weierstrass-m-test"}（Weierstrass M-test，见[函数项级数](lesson:math.analysis.function-series#thm-weierstrass-m-test)），$\varphi_n$一致收敛到连续函数$\varphi$。细节见第 6 题。
+- 迭代收敛：由利普希茨条件和归纳法（mathematical induction），$|\varphi_{n+1}(x)-\varphi_n(x)|\le\frac{ML^n|x-x_0|^{n+1}}{(n+1)!}$，在区间上不超过$c_n=\frac{ML^nh^{n+1}}{(n+1)!}$。$\frac{c_{n+1}}{c_n}=\frac{Lh}{n+2}$在$n\ge2Lh$以后不到$\frac12$，所以$\sum c_n$的部分和（partial sum）单调增，又不超过前面几项加上一个几何级数（geometric series），由单调有界原理（monotone convergence theorem）收敛。由:term[魏尔斯特拉斯判别法]{id="math.analysis.weierstrass-m-test"}（Weierstrass M-test，见[函数项级数](lesson:math.analysis.function-series#thm-weierstrass-m-test)），$\varphi_n$一致收敛到连续函数$\varphi$。细节见第 6 题。
 - 极限是解：一致收敛时[积分和极限可以交换](lesson:math.analysis.uniform-limit-theorems#thm-integral-interchange)，在迭代式两边取极限，$\varphi$满足积分方程。
 - 解唯一：若$\psi$也是解，$w=|\varphi-\psi|$满足$w(x)\le L\left|\int_{x_0}^{x}w(s)\dd s\right|$，由此可以推出$w\equiv0$，见第 5 题。
 

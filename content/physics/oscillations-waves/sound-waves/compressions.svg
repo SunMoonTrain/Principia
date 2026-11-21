@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 632 196" width="632" height="196" font-size="14">
+  <!-- 上排：静止时一层层空气等间距排开。下排：简谐声波经过时的某一时刻，各层的位置是 x + a cos(2πx/λ)，λ 是 12 个间距，a 是 0.6 个间距；挤紧的地方是密部，疏开的地方是疏部，相邻两个密部相距一个波长。 -->
+  <text x="10" y="36.0" fill="currentColor">静止时</text>
+  <text x="10" y="102.0" fill="currentColor">有声波时</text>
+  <text x="556" y="187" fill="currentColor" text-anchor="end">传播方向</text>
+  <line x1="564" y1="182" x2="606" y2="182" style="stroke: currentColor" stroke-width="1.6" />
+  <path d="M 614.0 182.0 L 605.0 186.0 L 605.0 178.0 Z" style="fill: currentColor" />
+  <line x1="92.0" y1="12" x2="92.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="113.0" y1="12" x2="113.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="134.0" y1="12" x2="134.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="155.0" y1="12" x2="155.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="176.0" y1="12" x2="176.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="197.0" y1="12" x2="197.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="218.0" y1="12" x2="218.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="239.0" y1="12" x2="239.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="260.0" y1="12" x2="260.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="281.0" y1="12" x2="281.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="302.0" y1="12" x2="302.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="323.0" y1="12" x2="323.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="344.0" y1="12" x2="344.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="365.0" y1="12" x2="365.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="386.0" y1="12" x2="386.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="407.0" y1="12" x2="407.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="428.0" y1="12" x2="428.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="449.0" y1="12" x2="449.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="470.0" y1="12" x2="470.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="491.0" y1="12" x2="491.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="512.0" y1="12" x2="512.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="533.0" y1="12" x2="533.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="554.0" y1="12" x2="554.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="575.0" y1="12" x2="575.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="596.0" y1="12" x2="596.0" y2="50" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="104.6" y1="78" x2="104.6" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="123.9" y1="78" x2="123.9" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="140.3" y1="78" x2="140.3" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="155.0" y1="78" x2="155.0" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="169.7" y1="78" x2="169.7" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="186.1" y1="78" x2="186.1" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="205.4" y1="78" x2="205.4" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="228.1" y1="78" x2="228.1" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="253.7" y1="78" x2="253.7" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="281.0" y1="78" x2="281.0" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="308.3" y1="78" x2="308.3" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="333.9" y1="78" x2="333.9" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="356.6" y1="78" x2="356.6" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="375.9" y1="78" x2="375.9" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="392.3" y1="78" x2="392.3" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="407.0" y1="78" x2="407.0" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="421.7" y1="78" x2="421.7" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="438.1" y1="78" x2="438.1" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="457.4" y1="78" x2="457.4" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="480.1" y1="78" x2="480.1" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="505.7" y1="78" x2="505.7" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="533.0" y1="78" x2="533.0" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="560.3" y1="78" x2="560.3" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="585.9" y1="78" x2="585.9" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <line x1="608.6" y1="78" x2="608.6" y2="116" style="stroke: currentColor" stroke-width="1.6" />
+  <path d="M 123.9 123 L 123.9 129 L 186.1 129 L 186.1 123" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="1.6" />
+  <text x="155.0" y="147" style="fill: var(--accent, #2563eb)" text-anchor="middle">密部</text>
+  <path d="M 228.1 123 L 228.1 129 L 333.9 129 L 333.9 123" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="1.6" />
+  <text x="281.0" y="147" style="fill: var(--accent, #2563eb)" text-anchor="middle">疏部</text>
+  <path d="M 375.9 123 L 375.9 129 L 438.1 129 L 438.1 123" style="stroke: var(--accent, #2563eb)" fill="none" stroke-width="1.6" />
+  <text x="407.0" y="147" style="fill: var(--accent, #2563eb)" text-anchor="middle">密部</text>
+  <line x1="155.0" y1="159" x2="155.0" y2="173" style="stroke: currentColor" stroke-width="1.2" />
+  <line x1="407.0" y1="159" x2="407.0" y2="173" style="stroke: currentColor" stroke-width="1.2" />
+  <line x1="163.0" y1="166" x2="399.0" y2="166" style="stroke: currentColor" stroke-width="1.2" />
+  <path d="M 156.0 166.0 L 165.0 170.0 L 165.0 162.0 Z" style="fill: currentColor" />
+  <path d="M 406.0 166.0 L 397.0 170.0 L 397.0 162.0 Z" style="fill: currentColor" />
+  <text x="281.0" y="187" fill="currentColor" text-anchor="middle">一个波长</text>
+</svg>

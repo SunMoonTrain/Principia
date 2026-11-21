@@ -13,16 +13,16 @@ status: reviewed
 
 ## 这一节要回答的问题
 
-一元函数在$a$处导数不为零，就在$a$附近单调，有反函数（inverse function），$(f^{-1})'=\frac1{f'}$。平面到平面的映射，例如$(u,v)\mapsto(e^u\cos v,e^u\sin v)$，什么时候在一点附近能反过来，把$(u,v)$解成$(x,y)$的函数？另一个问题：方程$F(x,y)=0$画出一条曲线，什么时候在一点附近能把它写成$y=y(x)$，$y'$又怎样求？
+一元函数在$a$处导数不为零，就在$a$附近单调，有反函数（inverse function），$(f^{-1})'=\frac1{f'}$。平面到平面的:term[映射]{id="math.logic-sets.map"}（map），例如$(u,v)\mapsto(e^u\cos v,e^u\sin v)$，什么时候在一点附近能反过来，把$(u,v)$解成$(x,y)$的函数？另一个问题：方程$F(x,y)=0$画出一条曲线，什么时候在一点附近能把它写成$y=y(x)$，$y'$又怎样求？
 
 ## 讲解
 
 ### 反函数定理
 
 ::anchor{id="thm-inverse-function"}
-**:term[反函数定理]{id="math.vector-calculus.inverse-function-theorem"}（inverse function theorem）**　设$\vb f$把$\R^n$里的一块区域映到$\R^n$，各分量有:term[连续]{id="math.vector-calculus.continuous"}（continuous）的:term[偏导数]{id="math.vector-calculus.partial-derivative"}（partial derivative），并且$\vb f$在$\vb a$处的:term[雅可比矩阵]{id="math.vector-calculus.jacobian-matrix"}（Jacobian matrix）的行列式不为$0$。则$\vb a$附近和$\vb f(\vb a)$附近各有一小块区域，$\vb f$在这两块之间一一对应，反过来的映射$\vb f^{-1}$也有连续的偏导数，并且$J_{\vb f^{-1}}\bigl(\vb f(\vb x)\bigr)=\bigl(J_{\vb f}(\vb x)\bigr)^{-1}$。这时说$\vb f$在$\vb a$附近局部可逆（locally invertible）。
+**:term[反函数定理]{id="math.vector-calculus.inverse-function-theorem"}（inverse function theorem）**　设$\vb f$把$\R^n$里的一块区域映到$\R^n$，各分量有:term[连续]{id="math.vector-calculus.continuous"}（continuous）的:term[偏导数]{id="math.vector-calculus.partial-derivative"}（partial derivative），并且$\vb f$在$\vb a$处的:term[雅可比矩阵]{id="math.vector-calculus.jacobian-matrix"}（Jacobian matrix）的行列式不为$0$。则$\vb a$附近和$\vb f(\vb a)$附近各有一小块区域，$\vb f$在这两块之间一一对应，反过来的:term[映射]{id="math.logic-sets.map"}$\vb f^{-1}$也有连续的偏导数，并且$J_{\vb f^{-1}}\bigl(\vb f(\vb x)\bigr)=\bigl(J_{\vb f}(\vb x)\bigr)^{-1}$。这时说$\vb f$在$\vb a$附近局部可逆（locally invertible）。
 
-**证明思路**：由:term[局部线性近似]{id="math.vector-calculus.local-linear-approximation"}（local linear approximation），$\vb f(\vb a+\vb h)\approx\vb f(\vb a)+J\vb h$，$J$可逆，所以解$\vb f(\vb x)=\vb y$近似于解线性方程组（system of linear equations）$J\vb h=\vb y-\vb f(\vb a)$，有唯一解；再说明线性近似的误差足够小，用逐次逼近（successive approximation）修正出真正的解，严格的证明这里不证。导数的公式由:term[链式法则]{id="math.vector-calculus.chain-rule"}（chain rule）得到：$\vb f^{-1}\circ\vb f$是恒等映射（identity map），雅可比矩阵是单位矩阵（identity matrix），所以$J_{\vb f^{-1}}J_{\vb f}=I$（见[雅可比矩阵](lesson:math.vector-calculus.jacobian)第 5 题）。
+**证明思路**：由:term[局部线性近似]{id="math.vector-calculus.local-linear-approximation"}（local linear approximation），$\vb f(\vb a+\vb h)\approx\vb f(\vb a)+J\vb h$，$J$可逆，所以解$\vb f(\vb x)=\vb y$近似于解线性方程组（system of linear equations）$J\vb h=\vb y-\vb f(\vb a)$，有唯一解；再说明线性近似的误差足够小，用逐次逼近（successive approximation）修正出真正的解，严格的证明这里不证。导数的公式由:term[链式法则]{id="math.vector-calculus.chain-rule"}（chain rule）得到：$\vb f^{-1}\circ\vb f$是:term[恒等映射]{id="math.logic-sets.identity-map"}（identity map），雅可比矩阵是单位矩阵（identity matrix），所以$J_{\vb f^{-1}}J_{\vb f}=I$（见[雅可比矩阵](lesson:math.vector-calculus.jacobian)第 5 题）。
 
 为什么看行列式：$J$可逆当且仅当$\det J\ne0$（见[行列式的计算与性质](lesson:math.linear-algebra.determinant-properties)），这个行列式以后在[重积分的换元](lesson:math.vector-calculus.change-of-variables)里叫作:term[雅可比行列式]{id="math.vector-calculus.jacobian-determinant"}（Jacobian determinant）。边界情况：结论只管一点附近。$(u,v)\mapsto(e^u\cos v,e^u\sin v)$的雅可比矩阵的行列式处处是$e^{2u}\ne0$，每一点附近都可逆，可$v$和$v+2\pi$映到同一点，整体并不一一对应（例 1）。
 
@@ -45,7 +45,7 @@ status: reviewed
 
 ### 例 1　局部可逆、整体不可逆
 
-$\vb f(u,v)=(e^u\cos v,e^u\sin v)$。说明它在每一点附近都可逆，并求它的反过来的映射在点$(0,1)$处的:term[雅可比矩阵]{id="math.vector-calculus.jacobian-matrix"}。
+$\vb f(u,v)=(e^u\cos v,e^u\sin v)$。说明它在每一点附近都可逆，并求它的反过来的:term[映射]{id="math.logic-sets.map"}在点$(0,1)$处的:term[雅可比矩阵]{id="math.vector-calculus.jacobian-matrix"}。
 
 **为什么想到这么做**：算出雅可比矩阵的行列式，看它是不是处处不为零；反过来的映射的雅可比矩阵，不必解出反函数，用:term[反函数定理]{id="math.vector-calculus.inverse-function-theorem"}里的公式$J_{\vb f^{-1}}=J_{\vb f}^{-1}$。$(0,1)=\vb f\bigl(0,\frac\pi2\bigr)$。
 
@@ -61,7 +61,7 @@ $\vb f(u,v)=(e^u\cos v,e^u\sin v)$。说明它在每一点附近都可逆，并�
 
 ## 常见误区
 
-- 「:term[雅可比矩阵]{id="math.vector-calculus.jacobian-matrix"}的行列式处处不为零，映射就整体可逆。」:term[反函数定理]{id="math.vector-calculus.inverse-function-theorem"}只说每一点附近可逆；例 1 的映射处处满足条件，整体却不是一一对应。
+- 「:term[雅可比矩阵]{id="math.vector-calculus.jacobian-matrix"}的行列式处处不为零，:term[映射]{id="math.logic-sets.map"}就整体可逆。」:term[反函数定理]{id="math.vector-calculus.inverse-function-theorem"}只说每一点附近可逆；例 1 的映射处处满足条件，整体却不是一一对应。
 - 「$F_y=0$的点，曲线一定写不成$y(x)$。」条件只是充分的：$y^3-x=0$在原点$F_y=0$，仍有$y=\sqrt[3]x$，只是不可导。
 - 「求:term[隐函数]{id="math.calculus.implicit-function"}（implicit function）的导数，要先把$y$解出来。」直接用$y'=-\frac{F_x}{F_y}$，例 2 的叶形线根本解不出简单的$y(x)$。
 - 「反函数的:term[偏导数]{id="math.vector-calculus.partial-derivative"}是原来偏导数的倒数。」是整个雅可比矩阵求逆，不是每个元素取倒数：例 1 在$(0,1)$处$\pdv ux=0$，而对应的点$\bigl(0,\frac\pi2\bigr)$处$\pdv xu=e^u\cos v$也是$0$，$0$没有倒数。

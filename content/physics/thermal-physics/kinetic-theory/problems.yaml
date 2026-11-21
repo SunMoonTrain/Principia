@@ -1,0 +1,206 @@
+- id: p1
+  tier: easy
+  statement: |
+    温度为$500\,\mathrm K$的理想气体，分子的平均平动动能是多少？以$10^{-21}\,\mathrm J$为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 1.5*1.380649e-23*500/1e-21
+    unit: |
+      $10^{-21}\,\mathrm J$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      平均平动动能只由温度决定，和是什么气体无关。
+    - |
+      $\langle\varepsilon_{\mathrm t}\rangle=\frac32\kB T$，$\kB=1.380\,649\times10^{-23}\,\mathrm{J/K}$。
+    - |
+      $\langle\varepsilon_{\mathrm t}\rangle=\frac32\times1.380\,649\times10^{-23}\times500\,\mathrm J\approx1.04\times10^{-20}\,\mathrm J$，即约$10.4\times10^{-21}\,\mathrm J$。
+  solution: |
+    由$\langle\varepsilon_{\mathrm t}\rangle=\frac32\kB T$，$\langle\varepsilon_{\mathrm t}\rangle=\frac32\times1.380\,649\times10^{-23}\times500\,\mathrm J\approx10.4\times10^{-21}\,\mathrm J$。不管是氢气、氧气还是氦气，只要温度是$500\,\mathrm K$，分子的平均平动动能都是这么多。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面哪些说法正确？各项里的气体都看成理想气体。
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        热力学温度变为原来的 2 倍，分子的平均平动动能也变为原来的 2 倍
+      - |
+        热力学温度变为原来的 2 倍，分子的方均根速率也变为原来的 2 倍
+      - |
+        温度不变时，把容器里的气体抽走一半，压强减半，分子的平均平动动能也减半
+      - |
+        体积不变、温度升高时，分子每次撞壁平均给器壁的冲量变大，单位时间里撞壁的次数也变多
+      - |
+        温度相同时，氢分子每次撞壁平均给器壁的冲量，比氧分子的大
+    value: [1, 4]
+  hints:
+    - |
+      平均平动动能、方均根速率各和温度是什么关系？分子撞壁一次给器壁多大的冲量，隔多久撞一次？
+    - |
+      $\langle\varepsilon_{\mathrm t}\rangle=\frac32\kB T$，$v_{\mathrm{rms}}=\sqrt{\frac{3\kB T}m}$。速度的$x$分量为$v_x$的分子撞壁一次，给器壁的冲量是$2mv_x$，每隔$\frac{2L}{v_x}$撞同一面壁一次。
+    - |
+      A 对：$\langle\varepsilon_{\mathrm t}\rangle$和热力学温度成正比。B 错：$v_{\mathrm{rms}}$和$\sqrt T$成正比，只变为原来的$\sqrt2$倍。C 错：温度不变，平均平动动能就不变，压强减半是因为数密度减半。
+
+      D 对：分子平均跑得更快，每次的冲量$2mv_x$变大，相邻两次撞同一面壁的间隔$\frac{2L}{v_x}$也变短。E 错：用方均根速率估计，每次的冲量和$mv_{\mathrm{rms}}=\sqrt{3m\kB T}$成正比，同温下分子越重，冲量越大；氢分子轻，撞得勤，每次却撞得轻。
+  solution: |
+    选 A、D。A 对：$\langle\varepsilon_{\mathrm t}\rangle=\frac32\kB T$，和热力学温度成正比。B 错：$v_{\mathrm{rms}}=\sqrt{\frac{3\kB T}m}$，温度变为原来的 2 倍，它只变为原来的$\sqrt2$倍。C 错：平均平动动能只由温度决定，温度不变它就不变；压强减半，是因为数密度减半了。
+
+    D 对：温度升高，分子平均跑得更快，每次撞壁的冲量$2mv_x$变大，相邻两次撞同一面壁的间隔$\frac{2L}{v_x}$也变短，压强的这两个因子都变大。E 错：同温下各种分子的$\frac12m\langle v^2\rangle$相同，用方均根速率估计，每次的冲量和$mv_{\mathrm{rms}}=\sqrt{3m\kB T}$成正比，分子越重，冲量越大。氢分子轻，撞得勤，每次却撞得轻；数密度相同时，两者乘起来，压强和氧气的一样。
+
+- id: p3
+  tier: medium
+  statement: |
+    容器里氦气的数密度是$2.00\times10^{25}\,\mathrm{m^{-3}}$，氦原子的方均根速率是$1300\,\mathrm{m/s}$，氦的摩尔质量取$4.00\,\mathrm{g/mol}$。把氦气看成理想气体，它的压强是多少千帕？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 2.00e25*(4.00e-3/6.02214076e23)*1300^2/3/1000
+    unit: |
+      $\mathrm{kPa}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      压强公式里要用一个氦原子的质量，先由摩尔质量求出它。
+    - |
+      $m=\frac M{N_{\mathrm A}}$，$p=\frac13\cdot\frac NV\,mv_{\mathrm{rms}}^2$。
+    - |
+      $m=\frac{4.00\times10^{-3}}{6.022\times10^{23}}\,\mathrm{kg}\approx6.64\times10^{-27}\,\mathrm{kg}$，$p=\frac13\times2.00\times10^{25}\times6.64\times10^{-27}\times1300^2\,\mathrm{Pa}\approx7.48\times10^4\,\mathrm{Pa}$，即约$74.8\,\mathrm{kPa}$。
+  solution: |
+    一个氦原子的质量$m=\frac M{N_{\mathrm A}}=\frac{4.00\times10^{-3}}{6.022\times10^{23}}\,\mathrm{kg}\approx6.64\times10^{-27}\,\mathrm{kg}$。由压强公式，$p=\frac13\cdot\frac NV\,mv_{\mathrm{rms}}^2=\frac13\times2.00\times10^{25}\times6.64\times10^{-27}\times1300^2\,\mathrm{Pa}\approx74.8\,\mathrm{kPa}$。也可以先求温度，$T=\frac{mv_{\mathrm{rms}}^2}{3\kB}\approx271\,\mathrm K$，再用$p=\frac NV\kB T$，结果一样。
+
+- id: p4
+  tier: medium
+  statement: |
+    月球几乎没有大气。它的逃逸速度约$2.37\,\mathrm{km/s}$（见[引力势能与逃逸速度](lesson:physics.newtonian-mechanics.gravitational-potential)第 1 题），氮气的摩尔质量取$28.01\,\mathrm{g/mol}$。把氮气看成理想气体，温度是多少开尔文时，氮分子的方均根速率才等于这个逃逸速度？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 28.01e-3*2370^2/(3*6.02214076e23*1.380649e-23)
+    unit: |
+      $\mathrm K$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      方均根速率和温度、摩尔质量是什么关系？反过来解出温度。
+    - |
+      由$v_{\mathrm{rms}}=\sqrt{\frac{3RT}M}$，$T=\frac{Mv_{\mathrm{rms}}^2}{3R}$，$v_{\mathrm{rms}}$取逃逸速度。
+    - |
+      $T=\frac{28.01\times10^{-3}\times(2.37\times10^3)^2}{3\times8.314}\,\mathrm K\approx6.31\times10^3\,\mathrm K$，远高于月面白天的约$390\,\mathrm K$。
+  solution: |
+    由$v_{\mathrm{rms}}=\sqrt{\frac{3RT}M}$，$T=\frac{Mv_{\mathrm{rms}}^2}{3R}=\frac{28.01\times10^{-3}\times(2.37\times10^3)^2}{3\times8.314}\,\mathrm K\approx6.31\times10^3\,\mathrm K$。月面白天只有约$390\,\mathrm K$，摩尔质量取$32.00$、$28.01$、$4.003$、$2.016\,\mathrm{g/mol}$，这时氧、氮、氦、氢分子的方均根速率约为$0.55$、$0.59$、$1.56$、$2.20\,\mathrm{km/s}$，都比逃逸速度小。
+
+    可分子的速率各不相同（见[麦克斯韦速率分布](lesson:physics.thermal-physics.maxwell-speed-distribution)）：氢、氦的方均根速率分别是逃逸速度的九成多和约三分之二，比逃逸速度还快的分子不在少数，分别约占 32% 和 7%；氧、氮要达到方均根速率的 4 倍以上，只有极少数。这些分子飞到大气的最外层又没撞上别的分子，就一去不回。几十亿年里一点点地漏，月球即使有过大气也早漏光了，越轻的分子漏得越快：[引力势能与逃逸速度](lesson:physics.newtonian-mechanics.gravitational-potential)第 1 题说气体分子「容易达到」这样的速率，说的是这个意思。
+
+- id: p5
+  tier: hard
+  statement: |
+    长方体气缸里装着理想气体，压强为$p$，右壁是面积为$A$的活塞，其余器壁固定不动。活塞以很小的速度$u$匀速向右移动，气体膨胀，$u$比分子的速率小得多。取向右为$x$轴正方向。
+
+    （1）一个分子速度的$x$分量是$v_x$（$v_x>u$），它撞上活塞弹回后，$x$分量变成多少？略去含$u^2$的项，它的平动动能减少多少？
+
+    （2）证明：活塞移动一小段距离$\Delta x$的过程中，全部分子的平动动能之和减少$pA\Delta x$，正好是气体对活塞做的功。
+
+    （3）气体这样膨胀时，既不吸热也不放热。用分子的图像说明它的温度怎样变。
+  hints:
+    - |
+      跟着活塞一起看，也就是在活塞的参考系（reference frame）里看：分子以$v_x-u$撞上静止的壁、原样弹回。再换回气缸的参考系。
+    - |
+      弹回后$x$分量是$-(v_x-2u)$，平动动能减少约$2muv_x$。气缸长$L$时，第$i$个分子每隔约$\frac{2L}{v_{ix}}$撞一次活塞；对所有分子求和时，想想$\sum_i\frac{mv_{ix}^2}L$是什么。
+    - |
+      （1）在活塞的参考系里，分子以$v_x-u$撞上静止的壁，弹回后是$-(v_x-u)$；换回气缸的参考系再加上$u$，得$-(v_x-u)+u=-(v_x-2u)$，大小比原来少$2u$。$y$、$z$分量不变，平动动能减少$\frac12m\bigl[v_x^2-(v_x-2u)^2\bigr]=2muv_x-2mu^2\approx2muv_x$。
+
+      （2）$\Delta x$比气缸长$L$小得多时，$L$可以看成不变。$\Delta t=\frac{\Delta x}u$里，第$i$个分子撞活塞约$\frac{v_{ix}\Delta t}{2L}$次，平动动能共减少约$2muv_{ix}\cdot\frac{v_{ix}\Delta t}{2L}=\frac{mv_{ix}^2}L\,u\Delta t$。对所有分子求和，$\sum_i\frac{mv_{ix}^2}L$正是活塞受的力$pA$，所以共减少$pAu\Delta t=pA\Delta x$。
+
+      其余器壁不动，分子和它们相撞时平动动能不变；分子都是质点，互相碰撞时平动动能之和也不变。所以减少的只是撞活塞这一部分，它正是气体推活塞做的功$pA\Delta x$。
+
+      （3）温度降低。不吸热也不放热，分子的平动动能之和只在撞活塞时减少，平均平动动能变小，由$\langle\varepsilon_{\mathrm t}\rangle=\frac32\kB T$，温度降低。反过来，活塞向里推时，分子撞上迎面而来的活塞，弹回得更快，气体变热；分析力学[浸渐不变量](lesson:physics.analytical-mechanics.adiabatic-invariants)例 2 算的就是墙向里推的情形。
+  reference: |
+    （1）在活塞的参考系里，分子以$v_x-u$撞上静止的壁，弹回后是$-(v_x-u)$；换回气缸的参考系，加上$u$，得$-(v_x-2u)$，大小少了$2u$。$y$、$z$分量不变，平动动能减少$\frac12m\bigl[v_x^2-(v_x-2u)^2\bigr]=2muv_x-2mu^2\approx2muv_x$。
+
+    （2）$\Delta x\ll L$时，$L$看成不变。$\Delta t=\frac{\Delta x}u$里，第$i$个分子撞活塞约$\frac{v_{ix}\Delta t}{2L}$次，平动动能共减少约$\frac{mv_{ix}^2}L\,u\Delta t$。求和，$\sum_i\frac{mv_{ix}^2}L=\frac{Nm}L\langle v_x^2\rangle=pA$（讲解里右壁受的力），所以减少$pAu\Delta t=pA\Delta x$。其余器壁不动、分子间碰撞不改变平动动能之和，所以这正是气体对活塞做的功。
+
+    （3）温度降低：平动动能之和减少，平均平动动能减小，由$\langle\varepsilon_{\mathrm t}\rangle=\frac32\kB T$，温度降低。压缩时分子撞上迎面而来的活塞，弹回时快了$2u$，气体变热（分析力学「浸渐不变量」例 2 是墙向里推的一维情形，$vL$不变）。
+
+- id: p6
+  tier: hard
+  statement: |
+    一束分子射向一块很大的平板，分子的质量都是$m$，速率都是$v$，速度方向都和平板的法线成$\theta$角，束里的数密度是$\frac NV$。
+
+    （1）分子和平板的碰撞是弹性的：垂直于板的速度分量反向，平行于板的分量不变。求平板受的压强。
+
+    （2）如果分子一碰到平板就被粘住，平板单位面积受的力，垂直于板和平行于板的分量各是多少？
+
+    （3）气体里的分子朝四面八方跑。用（1）的结果说明：气体对器壁的压强为什么是$\frac13\cdot\frac NV\,m\langle v^2\rangle$，系数$\frac13$从哪里来。
+  hints:
+    - |
+      先数一数，一段时间$\Delta t$里有多少个分子打到平板上一块面积$\Delta A$上：$\Delta t$开始时，它们在哪里？
+    - |
+      这些分子都在以$\Delta A$为底、沿速度方向长$v\Delta t$的斜柱体里，斜柱体的高是$v\cos\theta\,\Delta t$。每个分子弹性弹回时，给平板垂直于板的冲量$2mv\cos\theta$。
+    - |
+      （1）斜柱体的体积是$v\cos\theta\,\Delta t\,\Delta A$，里面有$\frac NVv\cos\theta\,\Delta t\,\Delta A$个分子，每个给平板$2mv\cos\theta$的冲量。除以$\Delta t\,\Delta A$，压强是$2\cdot\frac NV\,mv^2\cos^2\theta$；$\cos\theta$出现两次：斜着来，打到板上的分子少了，每个给的冲量也小了。
+
+      （2）粘住时，每个分子把动量全部交给平板：垂直于板的是$mv\cos\theta$，只有弹回时的一半；平行于板的是$mv\sin\theta$。单位面积受的力，垂直于板的分量是$\frac NV\,mv^2\cos^2\theta$，平行于板的分量是$\frac NV\,mv^2\sin\theta\cos\theta$，方向和分子速度平行于板的分量相同。
+
+      （3）把气体分子按速度分成许多组，每组速度相同，就是一束分子。第$k$组朝着器壁跑时，由（1），它给器壁的压强是$2\cdot\frac{N_k}V\,mv_{kx}^2$，$v_{kx}=v_k\cos\theta_k$是垂直于器壁的分量。没有哪个方向特殊，朝着器壁跑的正好是一半分子，它们的$v_x^2$平均起来也是$\langle v_x^2\rangle$。
+
+      所以$p=2\times\frac12\cdot\frac NV\,m\langle v_x^2\rangle=\frac13\cdot\frac NV\,m\langle v^2\rangle$。弹回带来的因子 2，被「只有一半分子朝着器壁跑」抵消了；$\frac13$来自三个方向平分$\langle v^2\rangle$，也就是$\cos^2\theta$对各个方向的平均。
+  reference: |
+    （1）$\Delta t$里打到$\Delta A$上的分子在斜柱体里，体积$v\cos\theta\,\Delta t\,\Delta A$，个数$\frac NVv\cos\theta\,\Delta t\,\Delta A$，每个给垂直冲量$2mv\cos\theta$，压强$2\frac NVmv^2\cos^2\theta$。
+
+    （2）粘住：垂直冲量$mv\cos\theta$，平行冲量$mv\sin\theta$；单位面积的力，垂直分量$\frac NVmv^2\cos^2\theta$（弹性时的一半），平行分量$\frac NVmv^2\sin\theta\cos\theta$，顺着分子平行于板的运动方向。
+
+    （3）按速度分组，朝器壁跑的第$k$组贡献$2\frac{N_k}Vmv_{kx}^2$。各向同性：$v_x>0$的分子占一半，且它们的$v_x^2$之和是全部分子$v_x^2$之和的一半，所以$p=2\cdot\frac1V\cdot\frac12Nm\langle v_x^2\rangle=\frac NVm\langle v_x^2\rangle=\frac13\frac NVm\langle v^2\rangle$。因子 2 和「一半」抵消，$\frac13$是$\langle\cos^2\theta\rangle$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    光可以看成一群光子（photon）：光子都以光速$c$运动，能量为$E$的光子，动量的大小是$\frac Ec$，方向和速度相同。设容器里充满朝四面八方跑的光子，单位体积里光子的总能量是$\varepsilon$；光子碰到器壁时，垂直于壁的动量分量反向、大小不变。
+
+    （1）仿照讲解里推导压强的办法，说明光子气体的压强是$p=\frac\varepsilon3$。
+
+    （2）单原子理想气体的压强，却是单位体积里分子平动动能之和的$\frac23$。同样是粒子撞壁，系数为什么不同？
+  hints:
+    - |
+      讲解里，一个分子给右壁的平均力是$\frac{(mv_x)\,v_x}L$：动量的$x$分量乘速度的$x$分量，再除以$L$。换成光子，这两个量各是多少？
+    - |
+      速度和$x$轴成$\alpha$角的光子，速度的$x$分量是$c\cos\alpha$，动量的$x$分量是$\frac Ec\cos\alpha$，乘积是$E\cos^2\alpha$。朝四面八方跑时，$\cos^2\alpha$平均起来是$\frac13$，和$\langle v_x^2\rangle=\frac13\langle v^2\rangle$同一个道理。
+    - |
+      （1）第$i$个光子给右壁的平均力是$\frac{E_i\cos^2\alpha_i}L$，加起来是$F=\frac1L\sum_iE_i\cos^2\alpha_i$。把能量相同的光子分成一组，每组都朝四面八方跑，$\cos^2\alpha$平均是$\frac13$，所以$F=\frac1{3L}\sum_iE_i$，$p=\frac FA=\frac13\cdot\frac{\sum_iE_i}V=\frac\varepsilon3$。
+
+      （2）两种情况都是$p=\frac13\cdot\frac NV\times$「动量乘速率」的平均。慢的分子动量是$mv$，动量乘速率是$mv^2$，正好是动能$\frac12mv^2$的 2 倍，所以$p$是单位体积平动动能的$\frac23$；光子的动量乘速率是$\frac Ec\cdot c=E$，等于它的能量，所以$p$是单位体积能量的$\frac13$。
+
+      差别在动能和动量的关系上。由动能定理（work-energy theorem），沿直线加速时$\dd K=Fv\,\dd t=v\,\dd P$，$P$是动量的大小：慢的分子速率和动量成正比，积出来带一个$\frac12$；光子的速率始终是$c$，积出来就是$cP$，没有$\frac12$。接近光速的一般情形见[能量-动量张量](lesson:physics.special-relativity.stress-energy-tensor)第 5 题。
+  reference: |
+    （1）光子$i$：动量$x$分量$\frac{E_i}c\cos\alpha_i$，速度$x$分量$c\cos\alpha_i$，平均力$\frac{E_i\cos^2\alpha_i}L$；按能量分组，各向同性时$\langle\cos^2\alpha\rangle=\frac13$，$p=\frac1{3V}\sum E_i=\frac\varepsilon3$。
+
+    （2）一般地$p=\frac13\frac NV\langle(\text{动量})\cdot(\text{速度})\rangle$。低速：动量乘速度$=mv^2=2\times\frac12mv^2$，得$\frac23$乘单位体积动能；光子：$\frac Ec\cdot c=E$，得$\frac13$乘单位体积的能量。根源是$\dd K=v\,\dd P$：$P=mv$时$K=\frac12mv^2$，带$\frac12$；$v\equiv c$时$E=cP$。狭义相对论「能量-动量张量」第 5 题是一般情形，低速时回到$\frac23$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    推导压强公式时用了两个简化：分子之间互不相碰；分子碰壁像光在平面镜上反射，垂直于壁的速度分量反向，平行于壁的分量不变。
+
+    （1）实际上，分子之间的碰撞比撞器壁频繁得多。为什么推导里可以不管这些碰撞？
+
+    （2）实际的器壁也由分子组成，坑坑洼洼，分子碰壁后朝哪个方向弹、以多大的速率离开，都说不准。器壁和气体温度相同、气体处在平衡态（equilibrium state）时，为什么压强仍是$\frac13\cdot\frac NV\,m\langle v^2\rangle$？
+
+    （3）气体很稠密时，只考虑分子本身的大小，（1）的理由哪里不再成立？压强会比$\frac13\cdot\frac NV\,m\langle v^2\rangle$大还是小？
+  hints:
+    - |
+      平衡态下，气体里速度朝哪个方向、多大的分子各有多少，不随时间变。器壁受的力，只看单位时间里打到器壁上的分子带来多少动量、离开的分子带走多少动量。
+    - |
+      （1）一个分子被撞偏、到不了器壁，就有别的分子被撞过来顶替它，碰撞前后总动量不变。（2）紧挨着器壁的气体也要保持各个方向一样。（3）分子有大小时，两个分子相撞，动量一下子从一个分子的中心转到另一个分子的中心。
+    - |
+      （1）碰撞只在分子之间交换动量和动能，总量不变。平衡态下，速度在某个范围里的分子有多少不随时间变：有多少分子被撞出这个范围，就有多少被撞进来。所以单位时间里射向器壁的分子，速度的情况和互不相碰时一样，器壁收到的冲量也一样，只是具体哪个分子撞上去变了。
+
+      （2）平衡态下，紧挨着器壁的气体不随时间变，仍是各个方向一样，所以离开器壁的分子，朝各个方向、以各种速率离开的各有多少，必须和射来的分子镜面反射后一样。单个分子弹得乱七八糟，可单位时间里带走的动量总和和镜面反射时相同，压强也就一样。器壁比气体热时就不是这样：离开的分子更快，器壁受的力更大，气体也在被加热。
+
+      （3）推导时，动量都是分子自己「带着」飞到器壁上的。分子有大小时，两个分子中心相距一个直径就撞上了，动量一下子从一个分子的中心转到另一个分子的中心，相当于不用飞就前进了一个直径。动量传到器壁更快，压强比公式给的大，这正是[理想气体状态方程](lesson:physics.thermal-physics.ideal-gas-law)第 7 题（1）里分子本身体积的效应。
+  reference: |
+    （1）分子间碰撞守恒动量和动能；平衡态下速度分布不随时间变，被撞出某个速度范围的和被撞进来的一样多，射向器壁的分子速度情况不变，器壁收到的冲量不变。
+
+    （2）平衡态要求紧挨器壁的气体保持各向同性、分布不变，所以离开器壁的分子，速度分布必须和镜面反射时一样（细致平衡）；单个分子随机，单位时间带走的动量总和不变，压强不变。器壁更热时离开的分子更快，压强更大，同时有热量从器壁传给气体。
+
+    （3）稠密时分子之间相撞，动量瞬间从一个中心转到另一个中心，跨过约一个直径，这部分动量不靠分子自己飞过去就传向器壁，压强比$\frac13\frac NVm\langle v^2\rangle$大；这就是排除体积的效应，和「理想气体状态方程」第 7 题（1）的结论（$\frac{pV}{nRT}>1$）一致。

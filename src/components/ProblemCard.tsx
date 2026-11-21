@@ -5,7 +5,7 @@
 import { lazy, Suspense, useState, type FormEvent } from 'react';
 import type { Answer, Problem, ProgramAnswer } from '../../shared/content-types';
 import { judgeChoice, judgeNumeric, judgeSequence, type Verdict } from '../../shared/judge';
-import { answerKind, EXACT_HELP, OPTION_LABELS, TIER_LABELS } from '../../shared/problem-text';
+import { answerKind, exactHelp, OPTION_LABELS, TIER_LABELS } from '../../shared/problem-text';
 import {
   applyOp, EMPTY_PROGRESS, type ProgressOp,
   firstResult,
@@ -71,7 +71,7 @@ function FeedbackLine({ feedback }: { feedback: Feedback | null }) {
   );
 }
 
-function TextAnswerForm({ answer, problem, onSubmit }: { answer: Exclude<Answer, ChoiceAnswer | ProgramAnswer>; problem: Problem; onSubmit: (input: string, v: Verdict) => void }) {
+function TextAnswerForm({ answer, problem, lesson, onSubmit }: { answer: Exclude<Answer, ChoiceAnswer | ProgramAnswer>; problem: Problem; lesson: string; onSubmit: (input: string, v: Verdict) => void }) {
   const [input, setInput] = useState('');
   const submit = (e: FormEvent): void => {
     e.preventDefault();
@@ -100,7 +100,7 @@ function TextAnswerForm({ answer, problem, onSubmit }: { answer: Exclude<Answer,
           提交
         </button>
       </div>
-      <p className="answer-help">{answer.type === 'sequence' ? (answer.alphabet ? '可用记号：' + answer.alphabet.join('、') : answerKind(answer)) : answer.exact ? EXACT_HELP : HELP[answer.type]}</p>
+      <p className="answer-help">{answer.type === 'sequence' ? (answer.alphabet ? '可用记号：' + answer.alphabet.join('、') : answerKind(answer)) : answer.exact ? exactHelp(lesson) : HELP[answer.type]}</p>
     </form>
   );
 }
@@ -200,7 +200,7 @@ export function ProblemCard({ problem, index, practice = false }: { problem: Pro
 
       {a?.type === 'choice' && <ChoiceForm answer={a} onSubmit={submit} />}
       {a?.type === 'program' && <Suspense fallback={<p>正在加载编辑器…</p>}><ProgramForm answer={a} onSubmit={submit} /></Suspense>}
-      {a && a.type !== 'choice' && a.type !== 'program' && <TextAnswerForm answer={a} problem={problem} onSubmit={submit} />}
+      {a && a.type !== 'choice' && a.type !== 'program' && <TextAnswerForm answer={a} problem={problem} lesson={lesson} onSubmit={submit} />}
       <FeedbackLine feedback={feedback} />
       {!a && <ProblemWork problem={problem} index={index} record={record} />}
 

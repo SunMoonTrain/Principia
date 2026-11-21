@@ -98,7 +98,7 @@ functions:
 
 **为什么想到这么做**：绕圈的电子相当于一个小电流环：:term[电流]{id="physics.electromagnetism.electric-current"}是每秒经过圆周上某一点的:term[电荷]{id="physics.electromagnetism.electric-charge"}。
 
-**推导**：电子转一圈的时间是$\frac{2\pi r}{v}$，等效电流$I=\frac{ev}{2\pi r}$，磁矩的大小$m=I\pi r^2=\frac{evr}{2}$。角动量的大小$L=m_{\mathrm e}vr$，所以$m=\frac{e}{2m_{\mathrm e}}L$；电子带负电，电流和它的运动方向相反，$\vb m=-\frac{e}{2m_{\mathrm e}}\vb L$，和半径、速率都无关。按玻尔（Niels Bohr）的原子模型，最低的轨道上$L=\hbar$（$\hbar$是约化普朗克常量，reduced Planck constant），磁矩是$\frac{e\hbar}{2m_{\mathrm e}}\approx9.274\times10^{-24}\,\mathrm{J/T}$，这个量叫作玻尔磁子（Bohr magneton），是原子磁矩的天然单位。
+**推导**：电子转一圈的时间是$\frac{2\pi r}{v}$，等效电流$I=\frac{ev}{2\pi r}$，磁矩的大小$m=I\pi r^2=\frac{evr}{2}$。角动量的大小$L=m_{\mathrm e}vr$，所以$m=\frac{e}{2m_{\mathrm e}}L$；电子带负电，电流和它的运动方向相反，$\vb m=-\frac{e}{2m_{\mathrm e}}\vb L$，和半径、速率都无关。按玻尔（Niels Bohr）的原子模型，最低的轨道上$L=\hbar$（$\hbar$是:term[约化普朗克常量]{id="physics.quantum-mechanics.reduced-planck-constant"}，reduced Planck constant），磁矩是$\frac{e\hbar}{2m_{\mathrm e}}\approx9.274\times10^{-24}\,\mathrm{J/T}$，这个量叫作玻尔磁子（Bohr magneton），是原子磁矩的天然单位。
 
 ## 常见误区
 

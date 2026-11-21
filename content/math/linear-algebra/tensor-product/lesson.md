@@ -13,14 +13,14 @@ status: reviewed
 
 ## 这一节要回答的问题
 
-$f(\vb u,\vb v)=u_1v_2-u_2v_1$对$\vb u$是线性的，对$\vb v$也是线性的；可把$(\vb u,\vb v)$看成一个整体，它不是:term[线性映射]{id="math.linear-algebra.linear-map"}（linear map），因为$f(2\vb u,2\vb v)=4f(\vb u,\vb v)$。这种「对每个变量分别线性」的映射，在线性代数和物理里到处都是。能不能造一个更大的:term[向量空间]{id="math.linear-algebra.vector-space"}（vector space），让它们变成那上面真正的线性映射？换:term[基]{id="math.linear-algebra.basis"}（basis）时，这个空间里元素的:term[分量]{id="math.linear-algebra.component"}（component）又怎样变？
+$f(\vb u,\vb v)=u_1v_2-u_2v_1$对$\vb u$是线性的，对$\vb v$也是线性的；可把$(\vb u,\vb v)$看成一个整体，它不是:term[线性映射]{id="math.linear-algebra.linear-map"}（linear map），因为$f(2\vb u,2\vb v)=4f(\vb u,\vb v)$。这种「对每个变量分别线性」的:term[映射]{id="math.logic-sets.map"}（map），在线性代数和物理里到处都是。能不能造一个更大的:term[向量空间]{id="math.linear-algebra.vector-space"}（vector space），让它们变成那上面真正的线性映射？换:term[基]{id="math.linear-algebra.basis"}（basis）时，这个空间里元素的:term[分量]{id="math.linear-algebra.component"}（component）又怎样变？
 
 ## 讲解
 
 ### 双线性映射
 
 ::anchor{id="def-bilinear"}
-设$V$、$W$、$U$是:term[向量空间]{id="math.linear-algebra.vector-space"}，$V\times W$是所有有序对$(\vb v,\vb w)$组成的集合。映射$f:V\times W\to U$如果固定$\vb w$时对$\vb v$是:term[线性映射]{id="math.linear-algebra.linear-map"}、固定$\vb v$时对$\vb w$也是线性映射，就叫作:term[双线性映射]{id="math.linear-algebra.bilinear-map"}（bilinear map）。
+设$V$、$W$、$U$是:term[向量空间]{id="math.linear-algebra.vector-space"}，$V\times W$是所有有序对$(\vb v,\vb w)$组成的集合。:term[映射]{id="math.logic-sets.map"}$f:V\times W\to U$如果固定$\vb w$时对$\vb v$是:term[线性映射]{id="math.linear-algebra.linear-map"}、固定$\vb v$时对$\vb w$也是线性映射，就叫作:term[双线性映射]{id="math.linear-algebra.bilinear-map"}（bilinear map）。
 
 为什么这样定义：两个变量各自保持加法和:term[数乘]{id="math.linear-algebra.scalar-multiplication"}（scalar multiplication），就能和乘法一样展开：取$V$的:term[基]{id="math.linear-algebra.basis"}$\vb b_1,\dots,\vb b_m$、$W$的基$\vb c_1,\dots,\vb c_n$，$\vb v=\sum x_i\vb b_i$、$\vb w=\sum y_j\vb c_j$时，$f(\vb v,\vb w)=\sum_{i,j}x_iy_jf(\vb b_i,\vb c_j)$，$f$由$mn$个值$f(\vb b_i,\vb c_j)$决定。它对整个$(\vb v,\vb w)$一般不是线性的，两个变量同时乘$2$，值乘的是$4$。三个、更多个变量时同样定义，对每个变量都线性的映射也说是:term[多重线性]{id="math.linear-algebra.multilinear"}（multilinear）的，[行列式](lesson:math.linear-algebra.determinant#def-determinant)对它的各列就是这样。
 
@@ -42,7 +42,7 @@ $f(\vb u,\vb v)=u_1v_2-u_2v_1$对$\vb u$是线性的，对$\vb v$也是线性的
 
 **证明思路**：线性映射由:term[基]{id="math.linear-algebra.basis"}的:term[像]{id="math.linear-algebra.image"}决定，令$F(\vb b_i\otimes\vb c_j)=f(\vb b_i,\vb c_j)$。则$F(\vb v\otimes\vb w)=\sum x_iy_jf(\vb b_i,\vb c_j)=f(\vb v,\vb w)$，后一个等号用的是$f$双线性。基向量$\vb b_i\otimes\vb c_j$本身就形如$\vb v\otimes\vb w$，$F$在它们上的值已被定死，所以只有这一个。
 
-所以$V\times W$上的双线性函数（bilinear form），和$V\otimes W$上的:term[线性函数]{id="math.linear-algebra.linear-functional"}（linear functional）一一对应，它们组成$mn$维的:term[对偶空间]{id="math.linear-algebra.dual-space"}（dual space）$(V\otimes W)^*$。三个以上的因子也一样：$V_1\otimes\dots\otimes V_k$以$\vb b_{i_1}\otimes\dots\otimes\vb b_{i_k}$为基，上面的线性映射就是$V_1\times\dots\times V_k$上对每个变量都线性的映射。
+所以$V\times W$上的双线性函数（bilinear form），和$V\otimes W$上的:term[线性函数]{id="math.linear-algebra.linear-functional"}（linear functional）一一对应，它们组成$mn$维的:term[对偶空间]{id="math.linear-algebra.dual-space"}（dual space）$(V\otimes W)^*$。三个以上的因子也一样：$V_1\otimes\dots\otimes V_k$以$\vb b_{i_1}\otimes\dots\otimes\vb b_{i_k}$为基，上面的线性映射就是$V_1\times\dots\times V_k$上对每个变量都线性的:term[映射]{id="math.logic-sets.map"}。
 
 ### 换基时分量怎样变
 

@@ -5,10 +5,563 @@ proofPolicy: sketch
 macros:
   \dd: |
     \mathop{}\!\mathrm{d}
+  \dv: |
+    \frac{\mathrm{d} #1}{\mathrm{d} #2}
   \pdv: |
     \frac{\partial #1}{\partial #2}
   \pdvc: |
     \left(\frac{\partial #1}{\partial #2}\right)_{#3}
   \kB: |
     k_{\mathrm{B}}
-glossary: []
+  \vb: |
+    \mathbf{#1}
+glossary:
+  - id: physics.thermal-physics.state-variable
+    zh: |
+      状态参量
+    en: |
+      state variable
+    brief: |
+      描述系统宏观状态的量，如压强$p$、体积$V$、温度。
+    definedIn: physics.thermal-physics.temperature
+    anchor: def-state-variable
+  - id: physics.thermal-physics.equilibrium-state
+    zh: |
+      平衡态
+    en: |
+      equilibrium state
+    brief: |
+      没有外界影响时，系统的宏观性质长时间不变的状态；只有这时，压强、温度才对整个系统有确定的值。
+    definedIn: physics.thermal-physics.temperature
+    anchor: def-equilibrium-state
+  - id: physics.thermal-physics.thermal-equilibrium
+    zh: |
+      热平衡
+    en: |
+      thermal equilibrium
+    brief: |
+      两个系统接触（或隔着能导热的壁），各自的状态参量都不再变化时，说它们达到了热平衡；没接触的，让它们接触时都不变也算。
+    definedIn: physics.thermal-physics.temperature
+    anchor: def-thermal-equilibrium
+  - id: physics.thermal-physics.zeroth-law
+    zh: |
+      热力学第零定律
+    en: |
+      zeroth law of thermodynamics
+    brief: |
+      若$A$、$B$都和$C$处于热平衡，则$A$和$B$也处于热平衡；也叫热平衡定律。
+    definedIn: physics.thermal-physics.temperature
+    anchor: def-zeroth-law
+  - id: physics.thermal-physics.temperature
+    zh: |
+      温度
+    en: |
+      temperature
+    brief: |
+      互为热平衡的系统共有的宏观性质；两个系统温度相同，当且仅当它们接触时处于热平衡。
+    definedIn: physics.thermal-physics.temperature
+    anchor: def-temperature
+  - id: physics.thermal-physics.temperature-scale
+    zh: |
+      温标
+    en: |
+      temperature scale
+    brief: |
+      给温度标上数值的一套规定：选定测温物质和它随温度变化的性质，再规定固定点的数值。
+    definedIn: physics.thermal-physics.temperature
+    anchor: def-temperature-scale
+  - id: physics.thermal-physics.ideal-gas-temperature-scale
+    zh: |
+      理想气体温标
+    en: |
+      ideal-gas temperature scale
+    brief: |
+      用定容气体温度计的读数$273.16\,\mathrm K\times\frac p{p_3}$在气体越来越稀薄时的共同值定义的温标，和气体种类无关。
+    definedIn: physics.thermal-physics.temperature
+    anchor: def-ideal-gas-scale
+  - id: physics.thermal-physics.thermodynamic-temperature
+    zh: |
+      热力学温度
+    en: |
+      thermodynamic temperature
+    brief: |
+      在气体温度计能用的范围里由理想气体温标给出的温度$T$，单位开尔文，也叫绝对温度；和摄氏温度$t$的关系是$T=t+273.15\,\mathrm K$。
+    definedIn: physics.thermal-physics.temperature
+    anchor: def-thermodynamic-temperature
+  - id: physics.thermal-physics.absolute-zero
+    zh: |
+      绝对零度
+    en: |
+      absolute zero
+    brief: |
+      热力学温度$T=0$，即$-273.15\,^\circ\mathrm C$；只能无限接近，不能达到。
+    definedIn: physics.thermal-physics.temperature
+    anchor: def-absolute-zero
+  - id: physics.thermal-physics.boyles-law
+    zh: |
+      玻意耳定律
+    en: |
+      Boyle's law
+    brief: |
+      一定质量的气体，温度不变时压强和体积成反比，$pV=$常数；压强不太大、温度不太低时成立。
+    definedIn: physics.thermal-physics.ideal-gas-law
+    anchor: def-boyle
+  - id: physics.thermal-physics.pv-diagram
+    zh: |
+      $p$-$V$图
+    en: |
+      p-V diagram
+    brief: |
+      以体积$V$为横轴、压强$p$为纵轴的图；一定量气体的每个平衡态是图上的一个点，温度不变时这些点连成等温线。
+    definedIn: physics.thermal-physics.ideal-gas-law
+    anchor: def-isotherm
+  - id: physics.thermal-physics.isotherm
+    zh: |
+      等温线
+    en: |
+      isotherm
+    brief: |
+      一定量的气体温度不变时，$p$-$V$图上各个平衡态连成的曲线；理想气体的等温线是反比例函数$p=\frac{nRT}V$的图像。
+    definedIn: physics.thermal-physics.ideal-gas-law
+    anchor: def-isotherm
+  - id: physics.thermal-physics.amount-of-substance
+    zh: |
+      物质的量
+    en: |
+      amount of substance
+    brief: |
+      表示一份物质含有多少个粒子的量$n$，单位摩尔（mol）；$1\,\mathrm{mol}$含有$N_{\mathrm A}$个粒子。
+    definedIn: physics.thermal-physics.ideal-gas-law
+    anchor: def-amount-of-substance
+  - id: physics.thermal-physics.avogadro-constant
+    zh: |
+      阿伏伽德罗常量
+    en: |
+      Avogadro constant
+    brief: |
+      $1\,\mathrm{mol}$物质含有的粒子数，$N_{\mathrm A}=6.022\,140\,76\times10^{23}\,\mathrm{mol^{-1}}$（精确值）；也叫阿伏加德罗常数。
+    definedIn: physics.thermal-physics.ideal-gas-law
+    anchor: def-amount-of-substance
+  - id: physics.thermal-physics.molar-mass
+    zh: |
+      摩尔质量
+    en: |
+      molar mass
+    brief: |
+      $1\,\mathrm{mol}$物质的质量$M$，单位$\mathrm{kg/mol}$；空气约为$29\,\mathrm{g/mol}$。
+    definedIn: physics.thermal-physics.ideal-gas-law
+    anchor: def-molar-mass
+  - id: physics.thermal-physics.equation-of-state
+    zh: |
+      状态方程
+    en: |
+      equation of state
+    brief: |
+      一定量的物质处在平衡态时，压强、体积、温度之间的关系；知道其中两个，就能定出第三个。
+    definedIn: physics.thermal-physics.ideal-gas-law
+    anchor: def-equation-of-state
+  - id: physics.thermal-physics.ideal-gas-law
+    zh: |
+      理想气体状态方程
+    en: |
+      ideal gas law
+    brief: |
+      $pV=nRT$，也写成$pV=N\kB T$；$T$必须用热力学温度。
+    definedIn: physics.thermal-physics.ideal-gas-law
+    anchor: def-ideal-gas
+  - id: physics.thermal-physics.ideal-gas
+    zh: |
+      理想气体
+    en: |
+      ideal gas
+    brief: |
+      在任何状态下都严格满足$pV=nRT$的气体；实际气体在压强不太大、温度不太低时近似如此。
+    definedIn: physics.thermal-physics.ideal-gas-law
+    anchor: def-ideal-gas
+  - id: physics.thermal-physics.molar-gas-constant
+    zh: |
+      摩尔气体常量
+    en: |
+      molar gas constant
+    brief: |
+      $pV=nRT$里的常量，$R\approx8.314\,\mathrm{J/(mol\cdot K)}$，也叫气体常量、普适气体常量。
+    definedIn: physics.thermal-physics.ideal-gas-law
+    anchor: def-ideal-gas
+  - id: physics.thermal-physics.boltzmann-constant
+    zh: |
+      玻尔兹曼常量
+    en: |
+      Boltzmann constant
+    brief: |
+      $\kB=\frac R{N_{\mathrm A}}=1.380\,649\times10^{-23}\,\mathrm{J/K}$（精确值），使$pV=N\kB T$。
+    definedIn: physics.thermal-physics.ideal-gas-law
+    anchor: def-boltzmann-constant
+  - id: physics.thermal-physics.number-density
+    zh: |
+      数密度
+    en: |
+      number density
+    brief: |
+      单位体积里的分子数$\frac NV$；理想气体$p=\frac NV\kB T$，同温同压下各种气体的数密度相同。
+    definedIn: physics.thermal-physics.ideal-gas-law
+    anchor: def-number-density
+  - id: physics.thermal-physics.quasi-static-process
+    zh: |
+      准静态过程
+    en: |
+      quasi-static process
+    brief: |
+      进行得足够缓慢、系统时时都几乎处在平衡态的过程；在$p$-$V$图上是一条曲线。
+    definedIn: physics.thermal-physics.quasi-static-processes
+    anchor: def-quasi-static
+  - id: physics.thermal-physics.isothermal-process
+    zh: |
+      等温过程
+    en: |
+      isothermal process
+    brief: |
+      温度始终不变的准静态过程，通常让系统和热库接触、缓慢地变化；在$p$-$V$图上是等温线的一段。
+    definedIn: physics.thermal-physics.quasi-static-processes
+    anchor: def-isoprocesses
+  - id: physics.thermal-physics.isobaric-process
+    zh: |
+      等压过程
+    en: |
+      isobaric process
+    brief: |
+      压强始终不变的准静态过程，只做体积变化的功时气体对外做功$W=p(V_2-V_1)$；在$p$-$V$图上是水平线段。
+    definedIn: physics.thermal-physics.quasi-static-processes
+    anchor: def-isoprocesses
+  - id: physics.thermal-physics.isochoric-process
+    zh: |
+      等容过程
+    en: |
+      isochoric process
+    brief: |
+      体积始终不变的准静态过程，只做体积变化的功时气体不对外做功；在$p$-$V$图上是竖直线段。
+    definedIn: physics.thermal-physics.quasi-static-processes
+    anchor: def-isoprocesses
+  - id: physics.thermal-physics.heat-reservoir
+    zh: |
+      热库
+    en: |
+      heat reservoir
+    brief: |
+      和系统交换能量以后温度几乎不变的大物体，如大气、一大池恒温的水。
+    definedIn: physics.thermal-physics.quasi-static-processes
+    anchor: def-heat-reservoir
+  - id: physics.thermal-physics.cyclic-process
+    zh: |
+      循环过程
+    en: |
+      cyclic process
+    brief: |
+      系统回到原来状态的过程；准静态、只做体积变化的功时，净功大小是$p$-$V$图上不自交的闭合曲线围成的面积，顺时针为正。
+    definedIn: physics.thermal-physics.quasi-static-processes
+    anchor: def-cyclic-process
+  - id: physics.thermal-physics.kinetic-theory
+    zh: |
+      气体动理论
+    en: |
+      kinetic theory of gases
+    brief: |
+      把气体看成大量做热运动的分子，用力学规律和对分子求平均来解释压强、温度等宏观性质的理论。
+    definedIn: physics.thermal-physics.kinetic-theory
+    anchor: def-kinetic-theory
+  - id: physics.thermal-physics.thermal-motion
+    zh: |
+      热运动
+    en: |
+      thermal motion
+    brief: |
+      大量分子永不停息的无规则运动，温度越高越剧烈；整体的流动不算。
+    definedIn: physics.thermal-physics.kinetic-theory
+    anchor: def-thermal-motion
+  - id: physics.thermal-physics.mean-translational-kinetic-energy
+    zh: |
+      平均平动动能
+    en: |
+      mean translational kinetic energy
+    brief: |
+      分子平动动能$\frac12mv^2$对所有分子的平均值$\langle\varepsilon_{\mathrm t}\rangle$；理想气体中等于$\frac32\kB T$。
+    definedIn: physics.thermal-physics.kinetic-theory
+    anchor: def-mean-translational-ke
+  - id: physics.thermal-physics.rms-speed
+    zh: |
+      方均根速率
+    en: |
+      root-mean-square speed
+    brief: |
+      分子速率的平方对所有分子求平均再开方，$v_{\mathrm{rms}}=\sqrt{\langle v^2\rangle}$；理想气体中等于$\sqrt{\frac{3\kB T}m}$。
+    definedIn: physics.thermal-physics.kinetic-theory
+    anchor: def-rms-speed
+  - id: physics.thermal-physics.adiabatic-process
+    zh: |
+      绝热过程
+    en: |
+      adiabatic process
+    brief: |
+      系统和外界之间没有热量交换、只靠做功交换能量的过程，$Q=0$；不要求进行得缓慢。
+    definedIn: physics.thermal-physics.internal-energy
+    anchor: def-adiabatic-process
+  - id: physics.thermal-physics.internal-energy
+    zh: |
+      内能
+    en: |
+      internal energy
+    brief: |
+      系统里所有分子无规则运动的动能和分子之间、分子内部的势能的总和，记作$U$；整体不动时，绝热过程中它的增加等于外界做的功。
+    definedIn: physics.thermal-physics.internal-energy
+    anchor: def-internal-energy
+  - id: physics.thermal-physics.state-function
+    zh: |
+      状态函数
+    en: |
+      state function
+    brief: |
+      由平衡态的状态参量唯一确定的量，如$p$、$V$、$T$、$U$；它的改变量只由初、末状态决定。
+    definedIn: physics.thermal-physics.internal-energy
+    anchor: def-state-function
+  - id: physics.thermal-physics.heat
+    zh: |
+      热量
+    en: |
+      heat
+    brief: |
+      系统和外界之间因温度不同而传递的能量，记作$Q$，吸热为正；不是物体含有的量。
+    definedIn: physics.thermal-physics.internal-energy
+    anchor: def-heat
+  - id: physics.thermal-physics.heat-conduction
+    zh: |
+      热传导
+    en: |
+      heat conduction
+    brief: |
+      物质本身不流动，热量在直接接触的物体之间、或在物体内部，从温度高的地方传到温度低的地方的方式。
+    definedIn: physics.thermal-physics.internal-energy
+    anchor: def-heat
+  - id: physics.thermal-physics.first-law
+    zh: |
+      热力学第一定律
+    en: |
+      first law of thermodynamics
+    brief: |
+      系统整体不动、从一个平衡态变到另一个平衡态时，吸收的热量等于内能的增加加上对外做的功，$Q=\Delta U+W$；实质是能量守恒。
+    definedIn: physics.thermal-physics.first-law
+    anchor: thm-first-law
+  - id: physics.thermal-physics.free-expansion
+    zh: |
+      自由膨胀
+    en: |
+      free expansion
+    brief: |
+      气体在绝热的刚性容器里向真空膨胀，不做功也不吸热，内能不变；不是准静态过程。
+    definedIn: physics.thermal-physics.first-law
+    anchor: def-free-expansion
+  - id: physics.thermal-physics.effective-diameter
+    zh: |
+      有效直径
+    en: |
+      effective diameter
+    brief: |
+      把分子看成小球时小球的直径$d$，两个分子的中心相距$d$时恰好相撞；它是由实验数据反推出来的等效值。
+    definedIn: physics.thermal-physics.mean-free-path
+    anchor: def-cross-section
+  - id: physics.thermal-physics.collision-cross-section
+    zh: |
+      碰撞截面
+    en: |
+      collision cross section
+    brief: |
+      把分子看成有效直径为$d$的小球时，以$d$为半径、垂直于运动方向的圆的面积$\sigma=\pi d^2$；别的分子的中心落进它扫过的地方就会相撞。
+    definedIn: physics.thermal-physics.mean-free-path
+    anchor: def-cross-section
+  - id: physics.thermal-physics.mean-free-path
+    zh: |
+      平均自由程
+    en: |
+      mean free path
+    brief: |
+      分子相邻两次碰撞之间走过的路程的平均值$\lambda$；由同一种分子组成的理想气体中约为$\frac{\kB T}{\sqrt2\,\sigma p}$，$\sigma$是碰撞截面。
+    definedIn: physics.thermal-physics.mean-free-path
+    anchor: def-mean-free-path
+  - id: physics.thermal-physics.transport-phenomena
+    zh: |
+      输运现象
+    en: |
+      transport phenomena
+    brief: |
+      气体各处的流速、温度或成分不均匀时，分子的热运动把动量、能量或分子带到别处的现象，如黏性、热传导、扩散。
+    definedIn: physics.thermal-physics.viscosity
+    anchor: def-transport
+  - id: physics.thermal-physics.viscosity
+    zh: |
+      黏度
+    en: |
+      coefficient of viscosity
+    brief: |
+      相邻两层流体之间单位面积上的拖拽力和流速沿垂直方向的变化率之比$\eta$，单位$\mathrm{Pa\cdot s}$，也叫黏滞系数；常压附近气体的黏度和压强无关。
+    definedIn: physics.thermal-physics.viscosity
+    anchor: def-viscosity
+  - id: physics.thermal-physics.heat-capacity
+    zh: |
+      热容
+    en: |
+      heat capacity
+    brief: |
+      物体升高单位温度吸收的热量$C=\frac{\delta Q}{\dd T}$，单位$\mathrm{J/K}$；同一个物体的热容和加热的过程有关。
+    definedIn: physics.thermal-physics.heat-capacity
+    anchor: def-heat-capacity
+  - id: physics.thermal-physics.specific-heat-capacity
+    zh: |
+      比热容
+    en: |
+      specific heat capacity
+    brief: |
+      单位质量物质的热容$c=\frac Cm$，单位$\mathrm{J/(kg\cdot K)}$，也简称比热；水约为$4.18\times10^3\,\mathrm{J/(kg\cdot K)}$。
+    definedIn: physics.thermal-physics.heat-capacity
+    anchor: def-heat-capacity
+  - id: physics.thermal-physics.molar-heat-capacity
+    zh: |
+      摩尔热容
+    en: |
+      molar heat capacity
+    brief: |
+      $1\,\mathrm{mol}$物质的热容，单位$\mathrm{J/(mol\cdot K)}$，如定容摩尔热容$C_{V,\mathrm m}$、定压摩尔热容$C_{p,\mathrm m}$。
+    definedIn: physics.thermal-physics.heat-capacity
+    anchor: def-heat-capacity
+  - id: physics.thermal-physics.constant-volume-heat-capacity
+    zh: |
+      定容热容
+    en: |
+      heat capacity at constant volume
+    brief: |
+      体积不变时的热容$C_V$，只做体积变化的功时等于$\pdvc UTV$；理想气体在任何过程中都有$\dd U=nC_{V,\mathrm m}\dd T$。
+    definedIn: physics.thermal-physics.heat-capacity
+    anchor: def-cv-cp
+  - id: physics.thermal-physics.constant-pressure-heat-capacity
+    zh: |
+      定压热容
+    en: |
+      heat capacity at constant pressure
+    brief: |
+      压强不变时的热容$C_p$，只做体积变化的功时等于$\pdvc HTp$，$H$是焓；理想气体的$C_{p,\mathrm m}=C_{V,\mathrm m}+R$。
+    definedIn: physics.thermal-physics.heat-capacity
+    anchor: def-cv-cp
+  - id: physics.thermal-physics.enthalpy
+    zh: |
+      焓
+    en: |
+      enthalpy
+    brief: |
+      $H=U+pV$，是状态函数；等压、又只有体积变化的功时，系统吸收的热量等于焓的增加，$Q=\Delta H$。
+    definedIn: physics.thermal-physics.heat-capacity
+    anchor: def-enthalpy
+  - id: physics.thermal-physics.mayers-relation
+    zh: |
+      迈耶公式
+    en: |
+      Mayer's relation
+    brief: |
+      理想气体的$C_{p,\mathrm m}-C_{V,\mathrm m}=R$：定压升温时多吸的热，正好用来对外做功。
+    definedIn: physics.thermal-physics.heat-capacity
+    anchor: thm-mayer
+  - id: physics.thermal-physics.heat-capacity-ratio
+    zh: |
+      比热容比
+    en: |
+      heat capacity ratio
+    brief: |
+      $\gamma=\frac{C_p}{C_V}$，也叫绝热指数；单原子理想气体为$\frac53$，空气约为$1.40$。
+    definedIn: physics.thermal-physics.heat-capacity
+    anchor: def-heat-capacity-ratio
+  - id: physics.thermal-physics.adiabat
+    zh: |
+      绝热线
+    en: |
+      adiabat
+    brief: |
+      只做体积变化的功的准静态绝热过程在$p$-$V$图上画出的曲线；$C_{V,\mathrm m}$不变的理想气体，绝热线是$pV^\gamma=$常数的图像，过同一点时比等温线陡。
+    definedIn: physics.thermal-physics.adiabatic-processes
+    anchor: def-adiabat
+  - id: physics.thermal-physics.diffusion
+    zh: |
+      扩散
+    en: |
+      diffusion
+    brief: |
+      由于分子的热运动，一种分子从它的密度大的地方迁移到密度小的地方、使各处渐渐混合均匀的现象。
+    definedIn: physics.thermal-physics.heat-conduction-diffusion
+    anchor: def-diffusion
+  - id: physics.thermal-physics.diffusion-coefficient
+    zh: |
+      扩散系数
+    en: |
+      diffusion coefficient
+    brief: |
+      菲克定律$j=-D\dv{\rho_1}z$里的比例系数$D$，$j$是单位时间穿过单位面积的扩散的那种分子的质量，$\rho_1$是它们的密度；单位$\mathrm{m^2/s}$，同种气体中约为$\frac13v_{\mathrm{rms}}\lambda$。
+    definedIn: physics.thermal-physics.heat-conduction-diffusion
+    anchor: def-diffusion
+  - id: physics.thermal-physics.degrees-of-freedom
+    zh: |
+      自由度
+    en: |
+      degrees of freedom
+    brief: |
+      确定一个分子里所有原子的位置所需的独立坐标的个数，分成平动、转动、振动自由度；刚性双原子分子有$5$个。
+    definedIn: physics.thermal-physics.equipartition
+    anchor: def-dof
+  - id: physics.thermal-physics.equipartition-theorem
+    zh: |
+      能量均分定理
+    en: |
+      equipartition theorem
+    brief: |
+      各种运动能充分交换能量、经典力学适用时，平衡态中每个平方项平均分到$\frac12\kB T$；平动、转动自由度各一个平方项，振动的两个。
+    definedIn: physics.thermal-physics.equipartition
+    anchor: thm-equipartition
+  - id: physics.thermal-physics.heat-engine
+    zh: |
+      热机
+    en: |
+      heat engine
+    brief: |
+      让工作物质一遍遍地重复同一个循环，每个循环从高温热库吸热、对外做功、向低温热库放热的装置，如蒸汽机、汽油机。
+    definedIn: physics.thermal-physics.heat-engines
+    anchor: def-heat-engine
+  - id: physics.thermal-physics.thermal-efficiency
+    zh: |
+      热机效率
+    en: |
+      thermal efficiency
+    brief: |
+      热机一个循环对外做的净功$W$和从高温热库吸收的热量$Q_{\mathrm H}$之比，$\eta=\frac W{Q_{\mathrm H}}=1-\frac{Q_{\mathrm L}}{Q_{\mathrm H}}$。
+    definedIn: physics.thermal-physics.heat-engines
+    anchor: def-thermal-efficiency
+  - id: physics.thermal-physics.carnot-cycle
+    zh: |
+      卡诺循环
+    en: |
+      Carnot cycle
+    brief: |
+      由两个准静态的等温过程和两个准静态的绝热过程交替组成的循环，两个等温过程的温度分别等于两个热库的温度。
+    definedIn: physics.thermal-physics.heat-engines
+    anchor: def-carnot-cycle
+  - id: physics.thermal-physics.carnot-engine
+    zh: |
+      卡诺热机
+    en: |
+      Carnot engine
+    brief: |
+      按卡诺循环工作的热机，热机效率$\eta=1-\frac{T_{\mathrm L}}{T_{\mathrm H}}$，只由两个热库的热力学温度决定。
+    definedIn: physics.thermal-physics.heat-engines
+    anchor: def-carnot-cycle
+  - id: physics.thermal-physics.refrigerator
+    zh: |
+      制冷机
+    en: |
+      refrigerator
+    brief: |
+      外界对工作物质做功$|W|$，使它循环地从低温热库吸热$Q_{\mathrm L}$、向高温热库放热的装置，如冰箱；制冷系数是$\frac{Q_{\mathrm L}}{|W|}$。
+    definedIn: physics.thermal-physics.heat-engines
+    anchor: def-refrigerator

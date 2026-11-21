@@ -1,0 +1,200 @@
+- id: p1
+  tier: easy
+  statement: |
+    按原子核不动的玻尔模型，氢原子处在$n=3$的定态时，电子的轨道半径是多少？以 nm 为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 9*0.0529177210544
+    unit: |
+      $\mathrm{nm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      第$n$个定态的轨道半径和$n$是什么关系？
+    - |
+      $r_n=n^2a_0$，玻尔半径$a_0\approx5.29\times10^{-11}\,\mathrm m=0.0529\,\mathrm{nm}$。
+    - |
+      $r_3=9a_0\approx9\times0.0529\,\mathrm{nm}\approx0.476\,\mathrm{nm}$。
+  solution: |
+    按玻尔模型，$r_n=n^2a_0$，所以$r_3=9a_0\approx9\times0.052\,92\,\mathrm{nm}\approx0.476\,\mathrm{nm}$，是基态轨道半径的 9 倍。轨道半径随$n^2$增大，量子数稍大一点，原子就大得多。
+
+- id: p2
+  tier: easy
+  statement: |
+    按玻尔模型判断，下面关于氢原子的说法哪些正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        处在$n=3$的氢原子回到基态，可能放出一个光子，也可能先后放出两个光子
+      - |
+        从$n=3$跃迁到$n=2$、放出一个光子以后，电子的动能变小了
+      - |
+        基态的氢原子能吸收一个能量为$11.0\,\mathrm{eV}$的光子，跃迁到能量介于$E_2$和$E_3$之间的某个状态
+      - |
+        处在$n=2$的氢原子吸收一个能量为$3.5\,\mathrm{eV}$的光子，就能电离
+      - |
+        量子数越大，电子绕核转一圈用的时间越短
+    value: [1, 4]
+  hints:
+    - |
+      A、C、D 看能级$E_n\approx-\frac{13.6\,\mathrm{eV}}{n^2}$和频率条件；B 看电子的动能和$E_n$的关系；E 看$r_n$、$v_n$怎样随$n$变化。
+    - |
+      $E_1$、$E_2$、$E_3$约为$-13.6$、$-3.40$、$-1.51\,\mathrm{eV}$。圆轨道上电子的动能是$-E_n$。转一圈的时间是$\frac{2\pi r_n}{v_n}$，$r_n=n^2a_0$，$v_n=\frac{v_1}n$。
+    - |
+      A 对：可以直接跃迁到$n=1$，放出一个约$12.1\,\mathrm{eV}$的光子；也可以先到$n=2$、再到$n=1$，先后放出约$1.89\,\mathrm{eV}$、$10.2\,\mathrm{eV}$的两个光子。B 错：动能从$1.51\,\mathrm{eV}$变成$3.40\,\mathrm{eV}$，变大了，是势能减小得更多。C 错：$11.0\,\mathrm{eV}$不够电离（要$13.6\,\mathrm{eV}$）；电子留在原子里，原子就只能跃迁到另一个定态，而$11.0\,\mathrm{eV}$既不等于$E_2-E_1\approx10.2\,\mathrm{eV}$，也不等于$E_3-E_1\approx12.1\,\mathrm{eV}$，这个光子不被吸收。
+
+      D 对：从$n=2$电离只要$3.40\,\mathrm{eV}$，多出的约$0.1\,\mathrm{eV}$成为电子的动能。E 错：转一圈的时间$\frac{2\pi n^2a_0}{v_1/n}$正比于$n^3$，量子数越大，用的时间越长。
+  solution: |
+    选 A、D。A 对：$n=3$的原子可以直接跃迁到基态，放出一个约$12.1\,\mathrm{eV}$的光子；也可以先跃迁到$n=2$、再到$n=1$，先后放出约$1.89\,\mathrm{eV}$和$10.2\,\mathrm{eV}$的两个光子。B 错：圆轨道上电子的动能是$-E_n$，从$1.51\,\mathrm{eV}$变成$3.40\,\mathrm{eV}$，变大了；放出光子时，势能$2E_n$减小得更多。
+
+    C 错：$11.0\,\mathrm{eV}$不到电离能$13.6\,\mathrm{eV}$，不能把电子打出去；电子留在原子里，原子就只能跃迁到另一个定态，而$11.0\,\mathrm{eV}$既不等于$E_2-E_1\approx10.2\,\mathrm{eV}$，也不等于$E_3-E_1\approx12.1\,\mathrm{eV}$（更高能级和基态的差都比$12.1\,\mathrm{eV}$大），所以这个光子不被吸收。D 对：$E_2\approx-3.40\,\mathrm{eV}$，电离只要$3.40\,\mathrm{eV}$，多出的约$0.1\,\mathrm{eV}$成为电子离开后的动能。E 错：转一圈的时间$\frac{2\pi r_n}{v_n}=\frac{2\pi n^2a_0}{v_1/n}$正比于$n^3$，量子数越大，转一圈用的时间越长。
+
+- id: p3
+  tier: medium
+  statement: |
+    氘（deuterium）是氢的同位素（isotope），原子核由一个质子和一个中子组成，核外也只有一个电子。按玻尔模型，计入原子核的运动，氢和氘从$n=3$跃迁到$n=2$时放出的光子，在真空中的波长相差多少？取$R_\infty=1.097\,373\,2\times10^7\,\mathrm{m^{-1}}$，质子、氘核（deuteron）的质量分别是电子质量的$1836.15$倍、$3670.48$倍。以 nm 为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 36/(5*1.0973732e7)*(1/1836.15 - 1/3670.48)*1e9
+    unit: |
+      $\mathrm{nm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      原子核的质量为$M$时，计入原子核的运动，就是把$m_{\mathrm e}$换成约化质量，把$R_\infty$换成$\frac{R_\infty}{1+m_{\mathrm e}/M}$。
+    - |
+      这条谱线的波长$\lambda=\frac{36}{5R_\infty}\bigl(1+\frac{m_{\mathrm e}}M\bigr)$。氢和氘只差在$M$上，两者之差是$\frac{36}{5R_\infty}\bigl(\frac{m_{\mathrm e}}{m_{\mathrm p}}-\frac{m_{\mathrm e}}{m_{\mathrm d}}\bigr)$，$m_{\mathrm d}$是氘核的质量。
+    - |
+      $\frac{36}{5R_\infty}\approx656.11\,\mathrm{nm}$，$\frac1{1836.15}-\frac1{3670.48}\approx2.7217\times10^{-4}$，所以两者相差约$656.11\,\mathrm{nm}\times2.7217\times10^{-4}\approx0.179\,\mathrm{nm}$，氘的波长较短。
+  solution: |
+    原子核的质量为$M$时，计入原子核的运动，里德伯常量变成$\frac{R_\infty}{1+m_{\mathrm e}/M}$，所以这条谱线的波长$\lambda=\frac{36}{5R_\infty}\bigl(1+\frac{m_{\mathrm e}}M\bigr)$。氢和氘只差在$M$上，两者之差是$\frac{36}{5R_\infty}\bigl(\frac1{1836.15}-\frac1{3670.48}\bigr)\approx656.11\,\mathrm{nm}\times2.7217\times10^{-4}\approx0.179\,\mathrm{nm}$，氘的波长较短。
+
+    尤里（Harold Urey）和同事正是在氢的$\mathrm H_\alpha$等谱线的短波一侧找到了这样的弱谱线，1932 年报告发现了氘。
+
+- id: p4
+  tier: medium
+  statement: |
+    氦离子$\mathrm{He^+}$只有一个电子，原子核带电荷$2e$。把玻尔模型用到这样的类氢离子（hydrogen-like ion）上：原子核带电荷$Ze$时，库仑力里的$e^2$换成$Ze^2$。按原子核不动计算，$\mathrm{He^+}$从$n=4$跃迁到$n=3$时放出的光子在真空中的波长是多少？取$R_\infty=1.097\,373\,2\times10^7\,\mathrm{m^{-1}}$，以 nm 为单位，结果保留四位有效数字。
+  answer:
+    type: number
+    value: 36/(7*1.0973732e7)*1e9
+    unit: |
+      $\mathrm{nm}$
+  tolerance: { rel: 5.0e-4 }
+  hints:
+    - |
+      $e^2$换成$Ze^2$以后，能级公式$E_n=-\frac{m_{\mathrm e}e^4}{2(4\pi\varepsilon_0)^2\hbar^2n^2}$变成什么？
+    - |
+      $e^4$换成$Z^2e^4$，能级都乘上$Z^2$，所以$\frac1\lambda=Z^2R_\infty\bigl(\frac1{n_1^2}-\frac1{n_2^2}\bigr)$，这里$Z=2$、$n_1=3$、$n_2=4$。
+    - |
+      $\frac1\lambda=4R_\infty\bigl(\frac19-\frac1{16}\bigr)=\frac7{36}R_\infty$，$\lambda=\frac{36}{7\times1.097\,373\,2\times10^7}\,\mathrm m\approx4.687\times10^{-7}\,\mathrm m=468.7\,\mathrm{nm}$。
+  solution: |
+    核电荷为$Ze$时，能级公式里的$e^4$换成$Z^2e^4$，能级都是氢的$Z^2$倍，所以$\frac1\lambda=Z^2R_\infty\bigl(\frac1{n_1^2}-\frac1{n_2^2}\bigr)$。对$\mathrm{He^+}$，$Z=2$，$\frac1\lambda=4R_\infty\bigl(\frac19-\frac1{16}\bigr)=\frac7{36}R_\infty$，$\lambda=\frac{36}{7R_\infty}\approx468.7\,\mathrm{nm}$，是蓝光。很热的恒星的光谱里常能看到这条$\mathrm{He^+}$的谱线。
+
+- id: p5
+  tier: hard
+  statement: |
+    按原子核不动的玻尔模型，电子在第$n$个轨道上绕核转动的频率是$f_n=\frac{v_n}{2\pi r_n}$。
+
+    （1）证明：氢原子从$n$跃迁到$n-1$时放出的光子的频率$\nu$和$f_n$之比是$\frac{n(2n-1)}{2(n-1)^2}$。
+
+    （2）算出$n=2$、$10$、$100$时这个比值。经典电磁学说，绕核转动的电子辐射的频率等于它绕核转动的频率，（1）的结果和这个说法有什么关系？
+  hints:
+    - |
+      用$r_n=n^2a_0$、$v_n=\frac{v_1}n$把$f_n$写成$f_1$的倍数，用$E_n=\frac{E_1}{n^2}$写出$h\nu$；再找出$hf_1$和$|E_1|$的关系。
+    - |
+      $f_n=\frac{f_1}{n^3}$，$f_1=\frac{v_1}{2\pi a_0}$。由$m_{\mathrm e}v_1a_0=\hbar$，$hf_1=\frac{\hbar v_1}{a_0}=m_{\mathrm e}v_1^2$；而$|E_1|$等于基态的动能$\frac12m_{\mathrm e}v_1^2$，所以$hf_1=2|E_1|$。
+    - |
+      （1）$h\nu=E_n-E_{n-1}=|E_1|\Bigl(\frac1{(n-1)^2}-\frac1{n^2}\Bigr)=|E_1|\frac{2n-1}{n^2(n-1)^2}$。又$hf_n=\frac{hf_1}{n^3}=\frac{2|E_1|}{n^3}$，两者相除，得$\frac\nu{f_n}=\frac{n(2n-1)}{2(n-1)^2}$。
+
+      （2）$n=2$时是$3$，$n=10$时是$\frac{190}{162}\approx1.17$，$n=100$时是$\frac{19\,900}{19\,602}\approx1.015$。这个比值等于$1+\frac{3n-2}{2(n-1)^2}$，$n$很大时约为$1+\frac3{2n}$，趋于 1。所以量子数很大时，光子的频率趋于绕核转动的频率，回到经典电磁学的结果；量子数小时两者差得很多，经典的说法不能用。量子数很大时量子的结果回到经典的结果，这正是玻尔用来检验模型的对应原理（correspondence principle）。
+  reference: |
+    （1）$f_n=\frac{v_1/n}{2\pi n^2a_0}=\frac{f_1}{n^3}$；$hf_1=\frac{\hbar v_1}{a_0}=m_{\mathrm e}v_1^2=2|E_1|$（$m_{\mathrm e}v_1a_0=\hbar$，$|E_1|=\frac12m_{\mathrm e}v_1^2$）。$h\nu=|E_1|\frac{2n-1}{n^2(n-1)^2}$，相除得$\frac{n(2n-1)}{2(n-1)^2}$。也可用$f_1=2cR_\infty$、$\nu=cR_\infty\frac{2n-1}{n^2(n-1)^2}$核对。
+
+    （2）$n=2$：3；$n=10$：1.173；$n=100$：1.0152；$n=1000$：1.0015。$\frac\nu{f_n}=1+\frac{3n-2}{2(n-1)^2}\to1$。对应原理：大量子数时回到经典的辐射频率；$n\to n-2$的跃迁对应经典辐射的二次谐波，$\nu\approx2f_n$。
+
+- id: p6
+  tier: hard
+  statement: |
+    把计入原子核运动的玻尔模型用到两种奇特原子（exotic atom）上。
+
+    （1）电子偶素（positronium）由一个电子和一个正电子（positron）组成，正电子的质量和电子相同，带电荷$+e$。求它的电离能、从$n=2$跃迁到$n=1$时放出的光子在真空中的波长，以及基态时电子和正电子之间的距离。
+
+    （2）$\mu$子氢（muonic hydrogen）由一个质子和一个$\mu$子（muon）组成，$\mu$子带电荷$-e$，质量是电子的$206.77$倍。求它基态时两者之间的距离和电离能，质子的质量取电子的$1836.15$倍。
+
+    （3）质子的半径约$0.84\,\mathrm{fm}$，按玻尔模型，（2）里的$\mu$子在质子外面绕转。可在量子力学里，绕核的粒子并不沿确定的轨道运动，有一定的机会出现在质子内部（见[氢原子的波函数](lesson:physics.quantum-mechanics.hydrogen-wavefunctions)），这个机会大致和（2）求出的距离的立方成反比；在质子内部，它受的力比点电荷的库仑力小。由此说明，为什么测$\mu$子氢的能级，比测普通氢原子的能级更容易看出质子的大小。
+  hints:
+    - |
+      计入两者的运动，就是把各式里的$m_{\mathrm e}$换成两者的约化质量：能级、电离能和约化质量成正比，两者之间的距离和约化质量成反比，光子的波长和能量成反比。
+    - |
+      电子偶素的约化质量是$\frac{m_{\mathrm e}}2$；$\mu$子氢的约化质量是$\frac{206.77\times1836.15}{206.77+1836.15}m_{\mathrm e}\approx185.84m_{\mathrm e}$。按原子核不动算，氢原子的电离能是$13.606\,\mathrm{eV}$，莱曼系的第一条（$n=2$到$n=1$）波长是$\frac4{3R_\infty}\approx121.50\,\mathrm{nm}$，基态半径是$a_0\approx5.292\times10^{-11}\,\mathrm m$。
+    - |
+      （1）约化质量是$\frac{m_{\mathrm e}}2$，电离能是$\frac{13.606\,\mathrm{eV}}2\approx6.80\,\mathrm{eV}$。能级都减半，光子的能量减半、波长加倍，$n=2$到$n=1$的光子波长是$2\times121.50\,\mathrm{nm}\approx243.0\,\mathrm{nm}$，在紫外。电子和正电子相距$2a_0\approx0.106\,\mathrm{nm}$。
+
+      （2）约化质量约为$185.84m_{\mathrm e}$，基态时两者相距$\frac{a_0}{185.84}\approx\frac{52\,918\,\mathrm{fm}}{185.84}\approx285\,\mathrm{fm}$，电离能是$185.84\times13.606\,\mathrm{eV}\approx2.53\,\mathrm{keV}$。
+
+      （3）$\mu$子离质子的距离只有电子的约$\frac1{186}$，只是质子半径的三百多倍；它出现在质子内部的机会，约是普通氢原子里电子的$186^3\approx6\times10^6$倍。在质子内部受的力比点电荷的小，能级就比按点电荷算出的略高，这个机会越大，偏离越大。所以质子的大小在$\mu$子氢的能级上造成的移动大得多，容易测出来；2010 年就是这样测得质子的半径约为$0.84\,\mathrm{fm}$的。
+  reference: |
+    （1）约化质量$\frac{m_{\mathrm e}}2$：电离能$6.803\,\mathrm{eV}$；$\lambda_{2\to1}=\frac8{3R_\infty}\approx243.0\,\mathrm{nm}$；距离$2a_0\approx1.06\times10^{-10}\,\mathrm m$。
+
+    （2）约化质量$\frac{206.77\times1836.15}{2042.92}m_{\mathrm e}\approx185.84m_{\mathrm e}$；距离$\frac{a_0}{185.84}\approx284.7\,\mathrm{fm}$；电离能$\approx2528.5\,\mathrm{eV}\approx2.53\,\mathrm{keV}$。
+
+    （3）距离是质子半径的约 340 倍（普通氢约 6.3 万倍）；量子力学里 s 态在原点附近的概率密度正比于$\frac1{a^3}$，$\mu$子氢约大$186^3\approx6.4\times10^6$倍。质子内部的电场比点电荷弱，s 能级略升高，移动的大小随质子半径和这个概率增大；2010 年用$\mu$子氢的兰姆位移测得$r_{\mathrm p}\approx0.841\,\mathrm{fm}$（比当时普通氢的值小约 4%，即「质子半径之谜」）。
+
+- id: p7
+  tier: thinking
+  statement: |
+    1914 年，弗兰克（James Franck）和赫兹（Gustav Hertz，不是发现电磁波的那位赫兹）让电子在稀薄的汞蒸气里加速，再测到达收集极（collector）的电流；收集极前有一个很小的反向电势差（retarding potential difference），电子到那里还得剩一点动能才过得去。加速电势差从零慢慢调高，电流先增大，到约$4.9\,\mathrm V$时突然下降，以后每再升高约$4.9\,\mathrm V$又下降一次。同时，汞蒸气发出波长为$253.7\,\mathrm{nm}$的紫外线。
+
+    （1）电流为什么在约$4.9\,\mathrm V$时突然下降？这说明汞原子的能量是怎样的？
+
+    （2）电子的动能小于$4.9\,\mathrm{eV}$时，它和汞原子碰撞，会损失多少动能？
+
+    （3）$253.7\,\mathrm{nm}$和$4.9\,\mathrm{eV}$对得上吗？
+
+    （4）这个实验和光谱给出的证据有什么不同？
+  hints:
+    - |
+      电子的动能要够大，才能把一部分能量交给汞原子、让它升到更高的能级。汞原子能吸收多少能量？吸收不了的时候，碰撞是什么样的？
+    - |
+      汞原子的基态之上约$4.9\,\mathrm{eV}$处有一个激发态（更低处还有一个约$4.67\,\mathrm{eV}$的激发态，电子碰撞很少把原子送上去，这里不管）。电子的动能达到$4.9\,\mathrm{eV}$，就能在碰撞中把这么多能量交给一个汞原子，自己几乎停下来。汞原子的质量约是电子的 37 万倍。
+    - |
+      （1）汞原子的能量只能取分立的值，基态之上约$4.9\,\mathrm{eV}$处有一个激发态。电子加速到动能约$4.9\,\mathrm{eV}$时，一碰汞原子就把这些能量交出去，自己剩不下多少动能，越不过收集极前的反向电势差，电流就下降。电势差再升高$4.9\,\mathrm V$，电子在途中能这样碰两次，所以每隔约$4.9\,\mathrm V$下降一次。
+
+      （2）动能小于$4.9\,\mathrm{eV}$时，电子给不出把汞原子送到这个激发态所需的能量；送到更低处约$4.67\,\mathrm{eV}$那个激发态的碰撞又很少，所以汞原子几乎总留在基态，碰撞几乎都是弹性碰撞（elastic collision）。汞原子的质量约是电子的 37 万倍，电子弹开时几乎不损失动能，损失的至多是动能的$\frac{4m_{\mathrm e}}M\approx10^{-5}$，$M$是汞原子的质量。
+
+      （3）对得上：$\frac{1240\,\mathrm{eV\cdot nm}}{253.7\,\mathrm{nm}}\approx4.89\,\mathrm{eV}$。被撞到这个激发态的汞原子跃迁回基态，放出的正是这个能量的光子。
+
+      （4）光谱靠原子放出或吸收光子，量的是能级之差；这个实验靠电子碰撞把能量直接交给原子，量出的是同样的$4.9\,\mathrm{eV}$。两种完全不同的办法给出同一个数，说明分立的能级是原子本身的性质，不只是发光过程的特点。这就是弗兰克-赫兹实验（Franck–Hertz experiment），两人因此获得了 1925 年度的诺贝尔物理学奖。
+  reference: |
+    （1）汞在基态之上约 4.9 eV 处有激发态$6\,{}^3\mathrm P_1$（退激放出 253.7 nm 的光；更低的 4.67 eV 的$6\,{}^3\mathrm P_0$是亚稳态，电子碰撞激发它的截面小，这里不管）：电子动能达到 4.9 eV 时发生非弹性碰撞，交出几乎全部动能，过不了收集极前的反向电势差，电流下降；电势差每增加 4.9 V，途中可多碰一次，所以周期性下降。能量量子化。
+
+    （2）几乎都是弹性碰撞（激发$6\,{}^3\mathrm P_0$的截面小），相对损失至多$\frac{4m_{\mathrm e}M}{(m_{\mathrm e}+M)^2}\approx\frac{4m_{\mathrm e}}M\approx1.1\times10^{-5}$（$M\approx3.66\times10^5m_{\mathrm e}$）。
+
+    （3）$\frac{hc}\lambda=\frac{1239.84}{253.7}\,\mathrm{eV}\approx4.887\,\mathrm{eV}$，对得上：激发的汞原子退激放出这条紫外线。
+
+    （4）光谱用光子测能级差，弗兰克-赫兹用电子碰撞（机械能的转移）测同一个能量；不同方法一致，说明能级是原子的性质。1925 年度诺贝尔物理学奖。
+
+- id: p8
+  tier: thinking
+  statement: |
+    让白光穿过一团稀薄的气体，气体由氢原子（不是氢分子）组成，温度约$300\,\mathrm K$。这个温度下，原子热运动的平均平动动能（mean translational kinetic energy）只有约$0.04\,\mathrm{eV}$（即$\frac32\kB T$，见[气体动理论](lesson:physics.thermal-physics.kinetic-theory)）。
+
+    （1）透过来的光里，可见光部分能看到巴耳末系（Balmer series）的暗线吗？暗线会出现在哪个谱线系（spectral series）的位置上？
+
+    （2）太阳光谱里却有很深的 C、F 暗线，就在$\mathrm H_\alpha$、$\mathrm H_\beta$处。这说明吸收这些光的氢原子处在什么样的环境里？
+  hints:
+    - |
+      原子吸收一个光子而不电离时，能量从一个能级升到另一个能级。巴耳末系的谱线是哪两类能级之差？吸收它们的原子原来要处在哪个能级上？
+    - |
+      吸收巴耳末系的光，原子原来要处在$n=2$。从基态到$n=2$要$10.2\,\mathrm{eV}$，是热运动平均动能的两百多倍。原子到了激发态，一般很快就放出光子，回到低能级。
+    - |
+      （1）看不到。吸收巴耳末系的光，原子原来要处在$n=2$；可从基态到$n=2$要$10.2\,\mathrm{eV}$，是热运动平均动能的两百多倍，碰撞几乎不能把原子送上去，到了激发态的原子一般也很快放出光子回到低能级，所以几乎所有原子都在基态。它们只能吸收让原子从$n=1$往上跃迁或者电离的光子，暗线都在莱曼系的位置上，全在紫外，可见光部分看不到暗线。
+
+      （2）太阳大气的温度约$6000\,\mathrm K$，平均平动动能约$0.8\,\mathrm{eV}$，仍比$10.2\,\mathrm{eV}$小得多，可激烈的碰撞和强烈的光照能把一小部分氢原子送到$n=2$。太阳大气里的氢极多，这一小部分也足以吸收出很深的 C、F 暗线。所以这两条暗线说明，吸收它们的氢原子处在几千开的高温里。
+  reference: |
+    （1）巴耳末吸收要$n=2$的初态；$300\,\mathrm K$时$\kB T\approx0.026\,\mathrm{eV}$，按玻尔兹曼因子$n=2$的占比约$4e^{-10.2/0.026}\sim10^{-171}$，几乎全在基态，只有莱曼系的吸收线（紫外），可见光无暗线。
+
+    （2）太阳光球约$5800\,\mathrm K$，$\kB T\approx0.5\,\mathrm{eV}$，$n=2$的占比约$4e^{-10.2/0.5}\sim5\times10^{-9}$，虽小，但氢的柱密度极大，足以产生很深的巴耳末吸收线；说明吸收层处在几千开的高温里。

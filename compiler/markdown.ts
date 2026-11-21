@@ -20,7 +20,7 @@ import type { Diagnostics } from './diagnostics.ts';
 import { assemble, AssemblyError } from '../packages/sim/src/core/p8-asm.ts';
 import { highlightCode } from './highlight.ts';
 import { loadSvg } from './svg.ts';
-import { keepPunctuationWithMath, spaceAroundMath } from '../shared/cjk-spacing.ts';
+import { keepPunctuationWithMath, markTermEdges, spaceAroundMath } from '../shared/cjk-spacing.ts';
 import { compileTex, suspectTex } from './tex.ts';
 import type { TextField } from './yaml-text.ts';
 
@@ -213,7 +213,11 @@ function textDirective(node: MdNode, ctx: MdContext, mode: Mode, para: Seen): Md
     if (toString(node as never).trim() === '') ctx.diags.error(ctx.file, line, '术语标记的方括号里要写显示的文字');
     ctx.refs.terms.push({ id, file: ctx.file, line });
     // 同一块（三级标题下）同一个术语只有第一次加下划线、弹浮窗，后面再出现按普通文字显示。
-    if (para.has(id)) return label;
+    // 头尾打上记号，和汉字之间的空格照第一次出现的规则加（shared/cjk-spacing.ts）。
+    if (para.has(id)) {
+      markTermEdges(label);
+      return label;
+    }
     para.add(id);
     node.data = { hName: 'x-term', hProperties: { dataTermId: id } };
     return [node];

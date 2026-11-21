@@ -1,6 +1,7 @@
 // 公式和汉字之间的空格、公式和紧贴它的中文标点不拆行（见 docs/plan.md「排版规范」）。
 // 内容编译器处理正文和题目文字时用，网页的笔记预览也用同一份，两边显示一致。
-// 输入是 mdast 的行内节点：公式节点已经带上 data.hName = 'x-math'。
+// 输入是 mdast 的行内节点：公式节点已经带上 data.hName = 'x-math'，术语标记带上 data.hName = 'x-term'；
+// 同一块里重复出现的术语按普通文字显示，拆进父节点的头尾两个节点带 markTermEdges 打的记号。
 
 export interface InlineNode {
   type: string;
@@ -10,11 +11,26 @@ export interface InlineNode {
 }
 
 const CJK_RE = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u;
-/** 全角标点、中文引号、省略号、破折号：公式挨着它们时不留空格。 */
+/** 全角标点（含全角空格「　」）、中文引号、省略号、破折号：公式挨着它们时不留空格。 */
 const CJK_PUNCT_RE = /[　-〿＀-￯‘-‟…—]/u;
+/**
+ * 公式那一侧要归并的空白。全角空格不算：它和中文标点一样，作者写了就原样保留，公式挨着它也不另加空格
+ * （粗体小标题后面常用它和正文隔开，如「**定理**　$f$ 在……」）。JS 的 \s 包括全角空格，所以要排除：
+ * 下面方括号里 \S 后面那个字符就是全角空格。
+ */
+const TRAILING_SPACE_RE = /[^\S　]+$/u;
+const LEADING_SPACE_RE = /^[^\S　]+/u;
+/** 拉丁字母（含带附加符号的）和阿拉伯数字；全角的字母、数字落在上面的全角范围里，不算。 */
+const LATIN_RE = /[\p{Script=Latin}0-9]/u;
+/** 行内容器：链接、强调、加粗、删除线，和 keepPunctuationWithMath 造的不折行组。术语标记按 hName 另认。 */
+const INLINE_CONTAINERS = new Set(['link', 'emphasis', 'strong', 'delete', 'mathGroup']);
 
 function isCjk(ch: string | undefined): boolean {
   return ch !== undefined && CJK_RE.test(ch);
+}
+
+function isLatin(ch: string | undefined): boolean {
+  return ch !== undefined && LATIN_RE.test(ch) && !CJK_PUNCT_RE.test(ch);
 }
 
 /** 公式这一侧应该是什么空白：汉字 → 一个空格；中文标点 → 不留；其他 → 不动（null）。 */
@@ -40,33 +56,72 @@ function isInlineMath(node: InlineNode): boolean {
   return node.type === 'inlineMath' && node.data?.hName === 'x-math';
 }
 
+function isTerm(node: InlineNode): boolean {
+  return node.data?.hName === 'x-term';
+}
+
+const TERM_EDGE_KEYS = { first: 'termStart', last: 'termEnd' } as const;
+
 /**
- * 行内公式和汉字之间统一留一个空格（作者不用手动写，写了几个都归成一个）；挨着中文标点时去掉空格。
+ * 同一块里重复出现的术语按普通文字显示，编译器把标签的节点直接拆进父节点。给拆出来的头尾节点打上记号，
+ * 这一侧照样按术语标记处理（拉丁字母、数字开头或结尾时和汉字留空格），显示不取决于是不是第一次出现。
+ * 记号只在 mdast 上，转成 hast 时不带出去。
+ */
+export function markTermEdges(label: InlineNode[]): void {
+  const first = label[0];
+  const last = label[label.length - 1];
+  if (first) first.data = { ...first.data, [TERM_EDGE_KEYS.first]: true };
+  if (last) last.data = { ...last.data, [TERM_EDGE_KEYS.last]: true };
+}
+
+/** 这一侧是术语的边：术语标记本身，或重复出现的术语拆出来、打了记号的头尾节点。 */
+function termSide(node: InlineNode, which: 'first' | 'last'): boolean {
+  return isTerm(node) || node.data?.[TERM_EDGE_KEYS[which]] === true;
+}
+
+/**
+ * 节点这一侧是否和行内公式一样处理：公式本身；行内容器（术语标记、链接、强调……）这一侧最外的叶子是公式，
+ * 嵌套的容器逐层往里找；术语这一侧的字符是拉丁字母或数字（只限术语，链接、强调不算；重复出现的术语也算）。
+ */
+function spacedEdge(node: InlineNode | undefined, which: 'first' | 'last'): boolean {
+  if (!node) return false;
+  if (isInlineMath(node)) return true;
+  if (termSide(node, which) && isLatin(edgeChar(node, which))) return true;
+  if (!isTerm(node) && !INLINE_CONTAINERS.has(node.type)) return false;
+  const kids = node.children ?? [];
+  return spacedEdge(which === 'first' ? kids[0] : kids[kids.length - 1], which);
+}
+
+/**
+ * 行内公式和汉字之间统一留一个空格（作者不用手动写，写了几个都归成一个）；挨着中文标点时去掉空格；挨着别的不动。
+ * 全角空格当中文标点：原样保留，公式挨着它不另加空格。
+ * 边上是公式的行内容器、头尾是拉丁字母或数字的术语标记，那一侧也照此处理。普通文字里汉字和英文之间的空格仍由作者手写。
  * 用真正的空格而不是边距：折行时空格会被浏览器去掉，不会在行首行尾留出缩进。
+ * 只改同一层的文字节点（容器里面在处理那一层时已经改过），再跑一遍结果不变。
  */
 export function spaceAroundMath<T extends InlineNode>(children: T[]): T[] {
   const out: InlineNode[] = [];
   children.forEach((node, i) => {
-    if (!isInlineMath(node)) {
-      out.push(node);
-      return;
-    }
-    const prev = out[out.length - 1];
-    if (prev?.type === 'text') {
-      const trimmed = (prev.value ?? '').replace(/\s+$/u, '');
-      const gap = gapFor(trimmed === '' ? edgeChar(out[out.length - 2], 'last') : edgeChar({ type: 'text', value: trimmed }, 'last'));
-      if (gap !== null) prev.value = trimmed + gap;
-    } else if (isCjk(edgeChar(prev, 'last'))) {
-      out.push({ type: 'text', value: ' ' });
+    if (spacedEdge(node, 'first')) {
+      const prev = out[out.length - 1];
+      if (prev?.type === 'text') {
+        const trimmed = (prev.value ?? '').replace(TRAILING_SPACE_RE, '');
+        const gap = gapFor(trimmed === '' ? edgeChar(out[out.length - 2], 'last') : edgeChar({ type: 'text', value: trimmed }, 'last'));
+        if (gap !== null) prev.value = trimmed + gap;
+      } else if (isCjk(edgeChar(prev, 'last'))) {
+        out.push({ type: 'text', value: ' ' });
+      }
     }
     out.push(node);
-    const next = children[i + 1];
-    if (next?.type === 'text') {
-      const trimmed = (next.value ?? '').replace(/^\s+/u, '');
-      const gap = gapFor(trimmed === '' ? edgeChar(children[i + 2], 'first') : edgeChar({ type: 'text', value: trimmed }, 'first'));
-      if (gap !== null) next.value = gap + trimmed;
-    } else if (isCjk(edgeChar(next, 'first'))) {
-      out.push({ type: 'text', value: ' ' });
+    if (spacedEdge(node, 'last')) {
+      const next = children[i + 1];
+      if (next?.type === 'text') {
+        const trimmed = (next.value ?? '').replace(LEADING_SPACE_RE, '');
+        const gap = gapFor(trimmed === '' ? edgeChar(children[i + 2], 'first') : edgeChar({ type: 'text', value: trimmed }, 'first'));
+        if (gap !== null) next.value = gap + trimmed;
+      } else if (isCjk(edgeChar(next, 'first'))) {
+        out.push({ type: 'text', value: ' ' });
+      }
     }
   });
   return out as T[];

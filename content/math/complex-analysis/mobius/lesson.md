@@ -13,7 +13,7 @@ status: reviewed
 
 ## 这一节要回答的问题
 
-[复变函数与映射](lesson:math.complex-analysis.complex-functions)一节里，$\frac1z$把直线映成过原点的圆。有没有一类映射，专门在圆和直线之间互相转换？能不能找到一个映射，把上半平面映成单位圆盘，或者把任意给定的三个点送到另外三个点？
+[复变函数与映射](lesson:math.complex-analysis.complex-functions)一节里，$\frac1z$把直线映成过原点的圆。有没有一类:term[映射]{id="math.logic-sets.map"}（map），专门在圆和直线之间互相转换？能不能找到一个映射，把上半平面映成单位圆盘，或者把任意给定的三个点送到另外三个点？
 
 ## 讲解
 
@@ -47,7 +47,7 @@ $$
 ### 圆和直线的像
 
 ::anchor{id="thm-circles"}
-**定理**　:term[分式线性变换]{id="math.complex-analysis.mobius-transformation"}把圆或直线映成圆或直线。$c\ne0$时，原来的圆或直线经过$-\frac dc$，像就是直线，否则是圆；$c=0$时，圆映成圆，直线映成直线。
+**定理**　:term[分式线性变换]{id="math.complex-analysis.mobius-transformation"}把圆或直线映成圆或直线。$c\ne0$时，原来的圆或直线经过$-\frac dc$，像（image）就是直线，否则是圆；$c=0$时，圆映成圆，直线映成直线。
 
 **证明**：由上面的分解，只要对三种简单变换分别证。平移、旋转伸缩把圆映成圆、直线映成直线。倒数：圆和直线都能写成$A|z|^2+\bar Bz+B\bar z+C=0$，其中$A$、$C$是实数，$|B|^2>AC$（$A\ne0$时配方得圆$\bigl|z+\frac BA\bigr|^2=\frac{|B|^2-AC}{A^2}$，$A=0$时是直线$2\Re(\bar Bz)+C=0$）。令$z=\frac1w$，乘以$|w|^2$得$C|w|^2+Bw+\bar B\bar w+A=0$，形状相同，系数满足同样的不等式，所以像也是圆或直线；$C=0$即原来经过$0$时像是直线。
 
@@ -63,7 +63,7 @@ $$
 ::anchor{id="thm-three-points"}
 **定理**　设$z_1$、$z_2$、$z_3$是扩充复平面上互不相同的三点，$w_1$、$w_2$、$w_3$也是。则恰有一个分式线性变换$T$，使$T(z_k)=w_k$，$k=1,2,3$。
 
-**证明**：存在：记$S(z)=(z,z_1,z_2,z_3)$、$S'(w)=(w,w_1,w_2,w_3)$，$T=S'^{-1}\circ S$把$z_k$先映成$0$、$1$、$\infty$，再映成$w_k$。唯一：设$T_1$、$T_2$都满足，$U=T_2^{-1}\circ T_1$把三个点都映成自己。$U(z)=z$化为$cz^2+(d-a)z-b=0$：$c\ne0$时$U(\infty)=\frac ac\ne\infty$，不动点至多两个；$c=0$时$\infty$是不动点，有限的不动点满足$(a-d)z+b=0$，除非$a=d$、$b=0$，至多一个。三个不动点只能是$c=b=0$、$a=d$，即$U$是恒等映射，$T_1=T_2$。
+**证明**：存在：记$S(z)=(z,z_1,z_2,z_3)$、$S'(w)=(w,w_1,w_2,w_3)$，$T=S'^{-1}\circ S$把$z_k$先映成$0$、$1$、$\infty$，再映成$w_k$。唯一：设$T_1$、$T_2$都满足，$U=T_2^{-1}\circ T_1$把三个点都映成自己。$U(z)=z$化为$cz^2+(d-a)z-b=0$：$c\ne0$时$U(\infty)=\frac ac\ne\infty$，不动点至多两个；$c=0$时$\infty$是不动点，有限的不动点满足$(a-d)z+b=0$，除非$a=d$、$b=0$，至多一个。三个不动点只能是$c=b=0$、$a=d$，即$U$是:term[恒等映射]{id="math.logic-sets.identity-map"}（identity map），$T_1=T_2$。
 
 为什么有用：求变换只要写出$(w,w_1,w_2,w_3)=(z,z_1,z_2,z_3)$，解出$w$。三个点又确定一个圆，所以任何一个圆或直线都能映成任何另一个圆或直线；再看一个内点，就知道:term[区域]{id="math.complex-analysis.domain"}映到哪一边。边界情况：分式线性变换只有四个系数、差一个公共倍数，自由度正好是三个点，再多指定一个点的像一般就做不到。
 

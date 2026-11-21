@@ -1,0 +1,214 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$n$是一个取定的整数，$P$为「$n$是$6$的倍数」，$Q$为「$n$是$3$的倍数」。把下面各句看成由$P$、$Q$组成的:term[复合命题]{id="math.logic-sets.compound-proposition"}，哪些和$P\Rightarrow Q$:term[逻辑等价]{id="math.logic-sets.logical-equivalence"}？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        若$n$不是$3$的倍数，则$n$不是$6$的倍数
+      - |
+        若$n$是$3$的倍数，则$n$是$6$的倍数
+      - |
+        $n$不是$6$的倍数，或$n$是$3$的倍数
+      - |
+        若$n$不是$6$的倍数，则$n$不是$3$的倍数
+      - |
+        $n$是$6$的倍数，且$n$不是$3$的倍数
+    value: [1, 3]
+  hints:
+    - |
+      先把每一句写成$P$、$Q$的式子，例如 A 是$\neg Q\Rightarrow\neg P$。
+    - |
+      B、C、D、E 依次是$Q\Rightarrow P$、$\neg P\lor Q$、$\neg P\Rightarrow\neg Q$、$P\land\neg Q$。本节的定理说了哪几种和$P\Rightarrow Q$逻辑等价？
+    - |
+      A 是:term[逆否命题]{id="math.logic-sets.contrapositive"}，C 是$\neg P\lor Q$，本节都证过和原命题逻辑等价。B 是逆命题，D 是否命题，E 是原命题的否定：它们在$P$假、$Q$真的那一行都假，$P\Rightarrow Q$在这一行却真，所以都不和它逻辑等价。选 A、C。
+  solution: |
+    A 是$\neg Q\Rightarrow\neg P$，即:term[逆否命题]{id="math.logic-sets.contrapositive"}，和$P\Rightarrow Q$逻辑等价；C 是$\neg P\lor Q$，由$P\Rightarrow Q\iff\neg P\lor Q$，也和它逻辑等价。B 是:term[逆命题]{id="math.logic-sets.converse"}$Q\Rightarrow P$，D 是否命题$\neg P\Rightarrow\neg Q$，它们在$P$假、$Q$真时为假，$P\Rightarrow Q$这时却为真，例如$n=3$。E 是$P\land\neg Q$，即$P\Rightarrow Q$的:term[否定]{id="math.logic-sets.negation"}，和它在每一行都相反。选 A、C。
+
+- id: p2
+  tier: easy
+  statement: |
+    设$x$是实数。「$x^2=4$」是「$x=2$」的什么条件？
+  answer:
+    type: choice
+    multiple: false
+    options:
+      - |
+        充分不必要条件
+      - |
+        必要不充分条件
+      - |
+        充要条件
+      - |
+        既不充分也不必要的条件
+    value: 2
+  hints:
+    - |
+      问「$x^2=4$」是不是「$x=2$」的:term[充分条件]{id="math.logic-sets.sufficient-condition"}，就是问由$x^2=4$能不能推出$x=2$；问它是不是:term[必要条件]{id="math.logic-sets.necessary-condition"}，就是问由$x=2$能不能推出$x^2=4$。
+    - |
+      由$x=2$一定能推出$x^2=4$。满足$x^2=4$的$x$只有$2$吗？
+    - |
+      由$x=2$能推出$x^2=4$，所以「$x^2=4$」是「$x=2$」的必要条件。$x=-2$满足$x^2=4$，却不等于$2$，由$x^2=4$推不出$x=2$，所以它不是「$x=2$」的充分条件。选 B。
+  solution: |
+    $x=2$时$x^2=4$，所以「若$x=2$，则$x^2=4$」成立，「$x^2=4$」是「$x=2$」的:term[必要条件]{id="math.logic-sets.necessary-condition"}。$x=-2$满足$x^2=4$，却不等于$2$，所以「若$x^2=4$，则$x=2$」不成立，「$x^2=4$」不是「$x=2$」的:term[充分条件]{id="math.logic-sets.sufficient-condition"}。选 B。
+
+- id: p3
+  tier: medium
+  statement: |
+    下面各句里的$n$表示任意一个整数；一句话「对」，指它对每个整数$n$都对。哪些说法是对的？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        「$n>0$」是「$n^2>0$」的必要条件
+      - |
+        只要$n^2$是$4$的倍数，$n$就是$4$的倍数
+      - |
+        「$n$是$12$的倍数」是「$n$是$4$的倍数」的充分条件
+      - |
+        「$n^2$是奇数」是「$n$是奇数」的必要条件
+      - |
+        只有$n>1$，$n$才是素数
+    value: [3, 4, 5]
+  hints:
+    - |
+      先把每一句翻成「若……则……」，弄清谁推出谁，再看它是不是对每个整数$n$都成立。
+    - |
+      「$X$是$Y$的:term[充分条件]{id="math.logic-sets.sufficient-condition"}」说的是$X\Rightarrow Y$，「$X$是$Y$的:term[必要条件]{id="math.logic-sets.necessary-condition"}」说的是$Y\Rightarrow X$；「只要$X$，就$Y$」说的是$X\Rightarrow Y$，「只有$X$，才$Y$」说的是$Y\Rightarrow X$。
+    - |
+      A 说的是「若$n^2>0$，则$n>0$」，$n=-1$时不对；B 说的是「若$n^2$是$4$的倍数，则$n$是$4$的倍数」，$n=2$时不对。C 说的是「$12$的倍数是$4$的倍数」，$12k=4\cdot3k$，对；D 说的是「奇数的平方是奇数」，两个奇数的积是奇数，对。E 说的是「若$n$是素数，则$n>1$」，素数都大于$1$，对。所以选 C、D、E。
+  solution: |
+    A 说的是「若$n^2>0$，则$n>0$」，可$n=-1$时$n^2=1>0$而$n<0$，不对。B 说的是「若$n^2$是$4$的倍数，则$n$是$4$的倍数」，可$n=2$时$n^2=4$是$4$的倍数，$2$却不是，不对。
+
+    C 说的是「若$n$是$12$的倍数，则$n$是$4$的倍数」：$n=12k$（$k$是整数）时$n=4\cdot3k$，对。D 说的是「若$n$是奇数，则$n^2$是奇数」：两个奇数的积是奇数，对。E 说的是「若$n$是素数，则$n>1$」：素数都大于$1$，对。选 C、D、E。
+
+    B、E 要是把「只要」「只有」读反，判断正好反过来：B 读成「若$n$是$4$的倍数，则$n^2$是$4$的倍数」就对了，E 读成「若$n>1$，则$n$是素数」就错了（$n=4$）。
+
+- id: p4
+  tier: medium
+  statement: |
+    $P$、$Q$、$R$的真假一共有$8$种组合。其中使$(P\Rightarrow Q)\Rightarrow R$为真的有几种？使$P\Rightarrow(Q\Rightarrow R)$为真的有几种？按（前者，后者）的顺序填。
+  answer:
+    type: tuple
+    value: [5, 7]
+    exact: true
+  hints:
+    - |
+      :term[蕴含]{id="math.logic-sets.implication"}只在条件真、结论假时为假。先数为假的组合，比数为真的省事。
+    - |
+      $(P\Rightarrow Q)\Rightarrow R$为假，要$P\Rightarrow Q$真、$R$假；$P\Rightarrow(Q\Rightarrow R)$为假，要$P$真、$Q\Rightarrow R$假。
+    - |
+      $P\Rightarrow Q$在$P$、$Q$的$4$种组合里有$3$种为真，配上$R$假，前者有$3$种为假。$Q\Rightarrow R$为假只有$Q$真、$R$假一种，配上$P$真，后者只有$1$种为假。所以前者有$8-3=5$种为真，后者有$8-1=7$种为真，填$(5,7)$。
+  solution: |
+    $(P\Rightarrow Q)\Rightarrow R$为假，要$P\Rightarrow Q$真且$R$假。$P\Rightarrow Q$在$P$、$Q$的$4$种组合里有$3$种为真，所以前者有$3$种为假，$8-3=5$种为真。$P\Rightarrow(Q\Rightarrow R)$为假，要$P$真且$Q\Rightarrow R$假，即$P$真、$Q$真、$R$假，只有$1$种，所以后者有$8-1=7$种为真。两者的:term[真值表]{id="math.logic-sets.truth-table"}不同，所以几个$\Rightarrow$组成复合命题时，括号不能省。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）证明$(P\land Q)\Rightarrow R$与$P\Rightarrow(Q\Rightarrow R)$:term[逻辑等价]{id="math.logic-sets.logical-equivalence"}。
+
+    （2）由（1）说明：要证「若$P$且$Q$，则$R$」，可以先设$P$成立，再在这个前提下证「若$Q$，则$R$」。
+
+    （3）证明$(P\land Q)\Rightarrow R$与$(P\land\neg R)\Rightarrow\neg Q$也逻辑等价。由此说明：要证「若$P$且$Q$，则$R$」，也可以设$P$成立、$R$不成立，推出$Q$不成立。
+  hints:
+    - |
+      两边都是「若……则……」，:term[蕴含]{id="math.logic-sets.implication"}只在条件真、结论假时为假。分别找出两边在哪几行为假；（3）也可以由（1）和逆否命题一步步换过去。
+    - |
+      $(P\land Q)\Rightarrow R$为假，要$P\land Q$真、$R$假，即$P$、$Q$都真而$R$假。再看$P\Rightarrow(Q\Rightarrow R)$、$(P\land\neg R)\Rightarrow\neg Q$在什么时候为假。对（2），想想$P$假的那几行；对（3），$\neg R\Rightarrow\neg Q$是$Q\Rightarrow R$的:term[逆否命题]{id="math.logic-sets.contrapositive"}。
+    - |
+      （1）左边为假，要$P\land Q$真、$R$假，即$P$真、$Q$真、$R$假，只有这一行。右边为假，要$P$真、$Q\Rightarrow R$假，而$Q\Rightarrow R$为假要$Q$真、$R$假，所以也只有$P$真、$Q$真、$R$假这一行。两边在每一行真假都相同，所以逻辑等价。
+
+      （2）由（1），证$(P\land Q)\Rightarrow R$为真，就是证$P\Rightarrow(Q\Rightarrow R)$为真。$P$假时它自动为真，所以只要在$P$成立的前提下证出$Q\Rightarrow R$，也就是再设$Q$成立，推出$R$。写证明时常这样一个一个地用条件：「设$P$。再设$Q$。……所以$R$。」
+
+      （3）$(P\land\neg R)\Rightarrow\neg Q$为假，要$P\land\neg R$真、$\neg Q$假，即$P$真、$R$假、$Q$真，也只有这一行，所以它和$(P\land Q)\Rightarrow R$逻辑等价。于是证$(P\land Q)\Rightarrow R$，只要证$(P\land\neg R)\Rightarrow\neg Q$：设$P$成立、$R$不成立，推出$Q$不成立。照（2）的看法，这就是在$P$成立的前提下，把「若$Q$，则$R$」改证成它的逆否命题「若非$R$，则非$Q$」，两者同真同假。
+  reference: |
+    （1）左边$(P\land Q)\Rightarrow R$为假，要$P\land Q$真、$R$假，即$P$真、$Q$真、$R$假，只有这一行。右边$P\Rightarrow(Q\Rightarrow R)$为假，要$P$真、$Q\Rightarrow R$假；$Q\Rightarrow R$为假要$Q$真、$R$假，所以也只有$P$真、$Q$真、$R$假这一行。两边在$8$行里真假都相同，由逻辑等价的定义，两者逻辑等价。
+
+    （2）要证的「若$P$且$Q$，则$R$」就是$(P\land Q)\Rightarrow R$为真；由（1），这等于证$P\Rightarrow(Q\Rightarrow R)$为真。$P$假时，由蕴含的定义它自动为真，所以只要在$P$成立的前提下证出$Q\Rightarrow R$为真，也就是再设$Q$成立、推出$R$。两个条件可以一个一个地设：「设$P$。再设$Q$。……所以$R$。」这和一次把$P$、$Q$都设上是一回事。
+
+    （3）$(P\land\neg R)\Rightarrow\neg Q$为假，要$P\land\neg R$真、$\neg Q$假，即$P$真、$R$假、$Q$真，和左边一样只有这一行，所以两者逻辑等价。也可以一步步换：由（1），左边和$P\Rightarrow(Q\Rightarrow R)$逻辑等价；$Q\Rightarrow R$和它的逆否命题$\neg R\Rightarrow\neg Q$在每一行真假相同，换进去得到的$P\Rightarrow(\neg R\Rightarrow\neg Q)$在每一行真假也不变；再把（1）用到$P$、$\neg R$、$\neg Q$上，它和$(P\land\neg R)\Rightarrow\neg Q$逻辑等价。所以要证「若$P$且$Q$，则$R$」，可以设$P$成立、$R$不成立，推出$Q$不成立：这就是在$P$成立的前提下，把「若$Q$，则$R$」改证成它的逆否命题。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$a$、$b$是实数。按必要性、充分性的格式证明：$a>b$的:term[充要条件]{id="math.logic-sets.necessary-sufficient-condition"}是$a^3>b^3$。
+  hints:
+    - |
+      必要性证「若$a>b$，则$a^3>b^3$」，充分性证「若$a^3>b^3$，则$a>b$」。两个方向都要看$a^3-b^3$的正负，先把它因式分解。
+    - |
+      $a^3-b^3=(a-b)(a^2+ab+b^2)$，而$a^2+ab+b^2=\bigl(a+\frac b2\bigr)^2+\frac34b^2\ge0$，等号只在$a=b=0$时成立。
+    - |
+      先因式分解：$a^3-b^3=(a-b)(a^2+ab+b^2)$，而$a^2+ab+b^2=\bigl(a+\frac b2\bigr)^2+\frac34b^2\ge0$，等号只在$a=b=0$时成立。
+
+      必要性：设$a>b$，则$a-b>0$。$a$、$b$不相等，不会都是$0$，所以$a^2+ab+b^2>0$，于是$a^3-b^3=(a-b)(a^2+ab+b^2)>0$，即$a^3>b^3$。
+
+      充分性：设$a^3>b^3$，则$(a-b)(a^2+ab+b^2)>0$。第二个因子不小于$0$，又不能是$0$，否则积为$0$，所以它大于$0$。积和它都是正数，$a-b$也只能是正数，即$a>b$。
+  reference: |
+    先把$a^3-b^3$因式分解：$a^3-b^3=(a-b)(a^2+ab+b^2)$，而$a^2+ab+b^2=\bigl(a+\frac b2\bigr)^2+\frac34b^2\ge0$，等号只在$b=0$且$a+\frac b2=0$，即$a=b=0$时成立。
+
+    必要性（证$a>b\Rightarrow a^3>b^3$）：设$a>b$，则$a-b>0$。$a\ne b$，所以$a$、$b$不会都是$0$，$a^2+ab+b^2>0$；两个正数的积为正，$a^3-b^3>0$，即$a^3>b^3$。
+
+    充分性（证$a^3>b^3\Rightarrow a>b$）：设$a^3>b^3$，则$(a-b)(a^2+ab+b^2)>0$。积不为$0$，所以$a^2+ab+b^2\ne0$，再由它$\ge0$得$a^2+ab+b^2>0$。积为正、这个因子为正，所以$a-b>0$，即$a>b$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    有人主张：「若$1>2$，则$1=3$」这样条件不成立的「若……则……」，既不该算真，也不该算假，应当另设第三种:term[真值]{id="math.logic-sets.truth-value"}（truth value）「不定」；条件成立时，仍照本节的规定判真假。
+
+    （1）照这个主张，「若$n$是$4$的倍数，则$n$是偶数」还能说对每个整数$n$都对吗？
+
+    （2）照这个主张，原命题和它的逆否命题还总是同真同假吗？
+
+    （3）由此说说，本节为什么把条件不成立的情形规定为真。
+  hints:
+    - |
+      （1）取$n=3$，这句话的条件成立吗？照这个主张，它的真值是什么？
+    - |
+      （2）把$P$、$Q$真假的四种组合逐个看：原命题$P\Rightarrow Q$在$P$假时「不定」；:term[逆否命题]{id="math.logic-sets.contrapositive"}$\neg Q\Rightarrow\neg P$的条件是$\neg Q$，它在$Q$真时「不定」。
+    - |
+      （1）$n=3$时条件不成立，这句话「不定」，不再是真的，所以不能再说它对每个整数$n$都对。数学里「对每个$n$，若……则……」形式的定理，几乎都会碰上条件不成立的$n$，这些定理就全说不成了。
+
+      （2）$P$、$Q$都真时，原命题真，逆否命题的条件$\neg Q$假，是「不定」；$P$、$Q$都假时，原命题「不定」，逆否命题的条件、结论都真，是真的。两者不再同真同假，改证逆否命题的办法也就不能用了。
+
+      （3）本节的规定让「若$P$则$Q$」只在被真正推翻（$P$真、$Q$假）时为假。这样，没有反例的「若……则……」对每个$n$都为真，原命题和逆否命题总是同真同假，「若$P$则$Q$」的否定也恰好是「$P$而非$Q$」。
+  reference: |
+    （1）$n=3$时条件「$3$是$4$的倍数」不成立，照这个主张这句话是「不定」，不是真，所以不能再说它对每个整数$n$都对。数学里大量定理是「对每个$n$，若……则……」的形式，几乎都会碰上不满足条件的$n$，照这个主张它们都说不成了。
+
+    （2）逐个看四种组合：$P$真、$Q$真时，原命题真，逆否命题$\neg Q\Rightarrow\neg P$的条件$\neg Q$假，是「不定」；$P$真、$Q$假时，两者都假；$P$假、$Q$真时，两者都「不定」；$P$假、$Q$假时，原命题「不定」，逆否命题的条件$\neg Q$、结论$\neg P$都真，是真的。第一、四种组合里两者不同，所以不再总是同真同假，改证逆否命题的办法也就失效了。
+
+    （3）本节规定条件不成立时为真，「若$P$则$Q$」就只在真正被推翻（$P$真、$Q$假）时为假。这样「没有反例」就等于「对每个$n$都真」，原命题和逆否命题总是同真同假，「若$P$则$Q$」的否定恰好是「$P$而非$Q$」，蕴含也和$\neg P\lor Q$逻辑等价。这些都是推理时要用的，所以这样规定。
+
+- id: p8
+  tier: thinking
+  statement: |
+    要证明$4$条命题$P_1$、$P_2$、$P_3$、$P_4$互相等价，也就是其中任意两条都能互相推出。
+
+    （1）按$P_1\Rightarrow P_2\Rightarrow P_3\Rightarrow P_4\Rightarrow P_1$绕一圈，要证几个「推出」？要是两两之间每个方向都证，要证几个？
+
+    （2）只证了$P_1\Rightarrow P_2\Rightarrow P_3\Rightarrow P_4$，没证$P_4\Rightarrow P_1$，能得出什么，得不出什么？
+
+    （3）要是证了$P_1\Rightarrow P_2$、$P_2\Rightarrow P_1$、$P_3\Rightarrow P_4$、$P_4\Rightarrow P_3$，$4$条互相等价吗？一组「推出」满足什么条件才够？
+  hints:
+    - |
+      每个「推出」只管一个方向。从$4$条里先取一条、再取另一条，有几种取法？
+    - |
+      本节有一条定理：$P\Rightarrow Q$和$Q\Rightarrow R$都成立时，$P\Rightarrow R$也成立。把每个推出画成一个箭头，沿着箭头一步步走，走得到的都推得出来。（2）里的箭头只朝一个方向走；（3）里的箭头分成了互不相连的两组。
+    - |
+      （1）绕一圈要证$4$个；两两之间每个方向都证，要证$4\times3=12$个。
+
+      （2）沿着箭头走，下标小的推得出下标大的，如$P_1\Rightarrow P_3$、$P_1\Rightarrow P_4$；反方向却得不出来。例如对实数$x$，取$P_1$为「$x>3$」，$P_2$为「$x>2$」，$P_3$为「$x>1$」，$P_4$为「$x>0$」，前面的都推出后面的，可$x=\frac12$满足$P_4$，不满足$P_1$。
+
+      （3）不一定：对整数$n$，取$P_1$为「$n$是偶数」，$P_2$为「$n+2$是偶数」，$P_3$为「$n$是$3$的倍数」，$P_4$为「$n+3$是$3$的倍数」，四个推出都对，可$n=2$满足$P_1$，不满足$P_3$。
+
+      一组推出够用，当且仅当从任一条出发，沿着箭头都能走到其余每一条。都走得到时，由本节的定理，每两条都能互推。从某条$P_i$走不到某条$P_j$时，把从$P_i$走得到的各条（连同$P_i$）都取成真、其余的取成假：从真的出发的箭头只指向真的（指向的那条也走得到），从假的出发的推出自动成立，所以给出的推出都成立，$P_i\Rightarrow P_j$却不成立。每条至少要有一个箭头出去、一个箭头进来，所以至少要证$4$个，绕一圈正好是$4$个。
+  reference: |
+    （1）绕一圈要证$P_1\Rightarrow P_2$、$P_2\Rightarrow P_3$、$P_3\Rightarrow P_4$、$P_4\Rightarrow P_1$共$4$个。两两之间每个方向都证，是从$4$条里先取一条、再从其余$3$条里取一条，共$4\times3=12$个。
+
+    （2）由本节「$P\Rightarrow Q$和$Q\Rightarrow R$都成立时，$P\Rightarrow R$也成立」的定理，能得出下标小的推出下标大的：$P_1\Rightarrow P_2$、$P_1\Rightarrow P_3$、$P_1\Rightarrow P_4$、$P_2\Rightarrow P_3$、$P_2\Rightarrow P_4$、$P_3\Rightarrow P_4$。反方向一个也得不出：对实数$x$，取$P_1$为「$x>3$」，$P_2$为「$x>2$」，$P_3$为「$x>1$」，$P_4$为「$x>0$」，这条链成立，可$x=\frac12$满足$P_4$、不满足$P_1$，$x=\frac32$满足$P_3$、不满足$P_2$，等等。
+
+    （3）不一定。对整数$n$，取$P_1$为「$n$是偶数」，$P_2$为「$n+2$是偶数」，$P_3$为「$n$是$3$的倍数」，$P_4$为「$n+3$是$3$的倍数」，四个推出都成立，可$n=2$满足$P_1$、不满足$P_3$。
+
+    把每个推出画成一个箭头，一组推出够用，当且仅当从任一条出发，沿着箭头都能走到其余每一条。都走得到时，由（2）用的那条定理，每两条都能互推；从某条$P_i$走不到某条$P_j$时，把从$P_i$走得到的各条（连同$P_i$）都取成真、其余的取成假，从真的出发的箭头只指向真的，给出的推出都成立，$P_i\Rightarrow P_j$却为假，所以推不出它。每条至少要有一个箭头出去（否则推不出别的）、一个箭头进来（否则别的推不出它），所以至少要$4$个推出，绕一圈正好用$4$个。
