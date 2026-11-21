@@ -31,9 +31,12 @@ export default function Threads({params:original,labels}:AnimProps<Params>) {
   </div>}>
     <div className="os-stack"><section className="os-panel"><div className="os-cols">{p.programs.map((prog,i)=>{
       const t=s.ts[i],last=s.turns.at(-1);
-      return <div key={prog.name}><h4>{prog.name} · <span {...touch('state:'+i)}>{t.wait!==null?'等待 '+t.wait:canRun(s,i)?'就绪':'完成'}</span></h4>
-        <ScrollBox className="os-code-scroll" step={step} label={prog.name+' 指令'}><table><tbody>{prog.code.map((ins,pc)=><tr key={pc} aria-current={pc===t.pc?'step':undefined}
-          {...mark(last?.name===prog.name&&last.pc===pc?'read':pc===t.pc&&s.last===i?'write':undefined)}><th>{pc}</th><td>{ins.source}</td></tr>)}</tbody></table></ScrollBox>
+      const failed=s.error&&s.last===i;
+      const currentPc=failed?last?.pc:t.pc;
+      const moved=s.last===i||s.writes.includes('state:'+i);
+      return <div key={prog.name}><h4>{prog.name} · <span {...touch('state:'+i)}>{failed?'出错':t.wait!==null?'等待 '+t.wait:canRun(s,i)?'就绪':'完成'}</span></h4>
+        <ScrollBox className="os-code-scroll" step={step} label={prog.name+' 指令'}><table><tbody>{prog.code.map((ins,pc)=><tr key={pc} aria-current={pc===currentPc?'step':undefined}
+          {...mark(last?.name===prog.name&&last.pc===pc?'read':pc===currentPc&&moved?'write':undefined)}><th>{pc}</th><td>{ins.source}</td></tr>)}</tbody></table></ScrollBox>
         <p>{t.regs.map((v,r)=><span key={r} {...touch(i+':r'+r)}> r{r}={String(v)} </span>)}</p>
         {p.editable&&<button aria-disabled={s.done||!canRun(s,i)} onClick={()=>{if(!s.done&&canRun(s,i)){player.edit(i);player.step();}}}>{prog.name} 走一步</button>}</div>;
     })}</div><h4>共享状态</h4><p>{Object.entries(s.shared).map(([k,v])=><span key={k} {...touch(k)}>{k} = {String(v)}　</span>)}</p>

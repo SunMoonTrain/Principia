@@ -20,7 +20,7 @@ function Panel({run,f,refs}:{run:ReplacementRun;f:ReplacementFrame;refs:number[]
   const t=f.columns.length-1, order=f.slots.flatMap((p,i)=>p===null?[]:[i]);
   if(run.algorithm==='fifo')order.sort((a,b)=>f.loaded[a]-f.loaded[b]);
   if(run.algorithm==='lru')order.sort((a,b)=>f.used[b]-f.used[a]);
-  return <section className="os-panel"><h4>{run.algorithm.toUpperCase()} · {run.frames} 帧</h4>
+  return <section className="os-panel"><h4>{f.title}</h4>
     <ScrollBox className="os-axis os-replace-axis" step={t+1} label="引用与页框"><table className="os-timeline" style={{width:(3.5+3.15*refs.length)+'rem'}}><colgroup><col style={{width:'3.5rem'}}/>{refs.map((_,i)=><col key={i}/>)}</colgroup><thead><tr><th>引用</th>{refs.map((page,i)=><td key={i} {...mark(i===t?'read':undefined)}>{page}</td>)}</tr></thead><tbody>
       {f.slots.map((_,frame)=><tr key={frame}><th>帧 {frame}</th>{refs.map((_,i)=>{
         const c=f.columns[i];return <td key={i} aria-current={i===t?'step':undefined} {...mark(i===t&&c?.changed===frame?c.hit?'read':'write':undefined)}>

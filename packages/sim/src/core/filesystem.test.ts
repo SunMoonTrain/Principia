@@ -5,8 +5,8 @@ function inputs(ops:string):FsParams {
   const {errors,commands}=parseFsOps(ops.replaceAll(';','\n'));expect(errors).toEqual([]);
   return {ops,commands,inodes:8,blocks:16,direct:4,indirect:4,entries:4,granularity:'io'};
 }
-function run(ops:string){
-  let s=m.init(inputs(ops),0);const states:FsState[]=[];
+function run(ops:string,layout:Partial<Pick<FsParams,'entries'|'direct'>>={}){
+  let s=m.init({...inputs(ops),...layout},0);const states:FsState[]=[];
   while(!m.atEnd!(s)){s=m.step(s,'一个操作').state;states.push(s);}
   return states;
 }
@@ -36,6 +36,26 @@ it('目录的第二块、非空目录、耗尽 inode',()=>{
     'i0 b0 i1 b1 imap / imap b1 i1 i4','i0 b0 i1 b1 imap bmap / imap bmap b3 i1 i5',
     'i0 b0 i1 b1 b3 imap / imap b3 i1 i6','i0 b0 i1 b1 b3 imap bmap / imap bmap b3 b4 i1 i7','i0 b0 imap / ']);
   expect(s[6].disk.inode[1]?.direct).toEqual([1,3]);expect(s[8].disk.imap.every(Boolean)).toBe(true);
+});
+it('目录失败时只读到足以判定的那一步',()=>{
+  const full=run('mkdir /a;touch /b;mkdir /b',{direct:1,entries:3});
+  for(const failed of full.slice(1)){
+    expect(list(failed)).toBe('i0 b0 / ');
+    expect(failed.disk).toEqual(full[0].disk);
+    expect(failed.reason).toBe('父目录的直接指针已用完');
+  }
+  const s=run('mkdir /d;touch /d/a;touch /d/b;rmdir /d;rm /d/a;rmdir /d;read /d',{entries:3});
+  expect(s[2].disk.inode[1]?.direct).toEqual([1,2]);
+  expect([s[3],s[5],s[6]].map(list)).toEqual(['i0 b0 i1 b1 / ','i0 b0 i1 b1 b2 / ','i0 b0 i1 / ']);
+  expect([s[3],s[5],s[6]].map(f=>f.reason)).toEqual(['目录不空','目录不空','操作需要普通文件']);
+});
+it('路径类型不对时在目标 inode 停下，硬链接先检查源',()=>{
+  const s=run('mkdir /d;touch /f;write /f 1;write /d 1;rm /d;ln /d /f/x;rmdir /f;read /');
+  expect(s.slice(3).map(list)).toEqual(['i0 b0 i1 / ','i0 b0 i1 / ','i0 b0 i1 / ','i0 b0 i2 / ','i0 / ']);
+  for(const failed of s.slice(3)){
+    expect(failed.reason).toBeTruthy();
+    expect(failed.disk).toEqual(s[2].disk);
+  }
 });
 // 从根按目录项与指针重建可达集合和入链计数，不读取机器的观测量或内部规划结果。
 function audit(d:Disk){

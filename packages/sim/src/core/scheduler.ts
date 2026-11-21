@@ -43,12 +43,15 @@ interface Process {
 }
 export interface Tick { cpu: number; states: string[] }
 export interface ScheduleFrame {
-  text: string; time: number; ticks: Tick[]; ready: number[]; processes: Process[];
+  title: string; text: string; time: number; ticks: Tick[]; ready: number[]; processes: Process[];
   completed: number; switches: number; preemptions: number; idle: number;
   waiting: number; response: number; turnaround: number;
 }
-export function* schedule(jobs: Job[], config: ScheduleRun): Generator<ScheduleFrame, void> {
+export function* schedule(jobs: Job[], config: ScheduleRun, prefix = ''): Generator<ScheduleFrame, void> {
   const {algorithm, quantum = 4, quanta = [2, 4, 8], allotments = quanta, boost = 0} = config;
+  const detail = algorithm === 'priority' ? (config.preemptive ? '（抢占）' : '（非抢占）') :
+    algorithm === 'rr' ? '（时间片 ' + quantum + '）' : '';
+  const title = prefix + algorithm.toUpperCase() + detail;
   const mlfq = algorithm === 'mlfq';
   const processes = jobs.map(({bursts}): Process => ({
     part: 0, left: bursts[0], wake: -1, level: 0, used: 0, first: -1, finish: -1,
@@ -59,7 +62,7 @@ export function* schedule(jobs: Job[], config: ScheduleRun): Generator<ScheduleF
   let running = -1, last = -1, slice = 0, completed = 0, switches = 0, preemptions = 0, idle = 0;
   let waiting = 0, response = 0, turnaround = 0;
   function snapshot(text: string): ScheduleFrame {
-    return {text, time: ticks.length, ticks, ready: [...ready], processes: processes.map(p => ({...p})),
+    return {title, text: prefix ? title + '：' + text : text, time: ticks.length, ticks, ready: [...ready], processes: processes.map(p => ({...p})),
       completed, switches, preemptions, idle, waiting, response, turnaround};
   }
   function rank(i: number) {
@@ -89,7 +92,7 @@ export function* schedule(jobs: Job[], config: ScheduleRun): Generator<ScheduleF
       else if (mlfq && slice >= quanta[p.level] || algorithm === 'rr' && slice >= quantum) reason = '用满时间片';
       else if (ready.length && (mlfq || algorithm === 'srtf' || algorithm === 'priority' && config.preemptive)
         && rank(best()) < rank(running)) reason = '让给优先运行的作业';
-      if (reason) { notes.push(jobs[running].name + reason + '，回到队尾'); ready.push(running); running = -1; }
+      if (reason) { notes.push(jobs[running].name + ' ' + reason + '，回到队尾'); ready.push(running); running = -1; }
     }
     if (mlfq && boost && t > 0 && t % boost === 0) {
       ready.sort((a, b) => processes[a].level - processes[b].level);
@@ -135,7 +138,7 @@ export function* schedule(jobs: Job[], config: ScheduleRun): Generator<ScheduleF
   }
 }
 export const schedulerMachine = algorithmMachine(
-  (p: ScheduleParams) => p.runs.map(config => schedule(p.tasks, config)),
+  (p: ScheduleParams) => p.runs.map((config, i) => schedule(p.tasks, config, p.runs.length > 1 ? '配置 ' + (i + 1) + ' · ' : '')),
   f => ({completed: f.completed, switches: f.switches, preemptions: f.preemptions, idle: f.idle,
     turnaround: f.turnaround, waiting: f.waiting, response: f.response}),
 );

@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { assembleThread, threadMachine as m, type ThreadParams } from './threads';
+import { assembleThread, canRun, threadMachine as m, type ThreadParams } from './threads';
 import { mulberry32 } from './rng';
 
 const inc='load r0, counter\nadd r0, 1\nstore counter, r0', locked='lock m\n'+inc+'\nunlock m';
@@ -24,11 +24,36 @@ it('丢失更新、阻塞移交及反序加锁',()=>{
   expect([l.turns.map(t=>t.name).join(''),l.shared.counter,l.switches]).toEqual(['ABAAAABBBB',2n,3]);
   const a='lock m1\nlock m2\nunlock m2\nunlock m1',b='lock m2\nlock m1\nunlock m1\nunlock m2';
   const dead=run(params(a,b));
+  expect(dead.ts.map(t=>t.pc)).toEqual([1,1]);
   expect(dead.turns.map(t=>t.name)).toEqual(['A','B','A','B']);
   expect([dead.deadlock,dead.ts.map(t=>t.wait)]).toEqual([true,['m2','m1']]);
   expect(run(params(a,b,'rr',2)).turns.length).toBe(8);
   expect(run(params('lock m\nlock m',undefined))).toMatchObject({deadlock:true,turns:[{},{}]});
   expect(run(params('unlock m',undefined))).toMatchObject({error:true,turns:[{}]});
+});
+it.each([
+  ['lock m\nunlock m','lock m','m'],
+  ['set r0, 0\nsignal full','wait full','full'],
+])('%s 移交资源时才让等待方前进一条指令', (a,wait,resource)=>{
+  for(const tail of ['', '\nset r0, 2']){
+    const initial=m.init(params(a,wait+tail),0);
+    const blocked=m.step(m.step(initial).state).state;
+    expect(blocked.ts[1]).toMatchObject({pc:0,wait:resource});
+    expect(canRun(blocked,1)).toBe(false);
+    expect(m.edit!(blocked,1)).toBe(blocked);
+    const awake=m.step(blocked).state;
+    expect(awake.ts[1]).toMatchObject({pc:1,wait:null});
+    expect(awake.writes).toContain('state:1');
+    expect(awake.turns).toHaveLength(3);
+    expect(awake.done).toBe(!tail);
+    if(tail){
+      const end=m.step(awake).state;
+      expect(end.turns.at(-1)).toEqual({name:'B',pc:1});
+      expect(end.ts[1].regs[0]).toBe(2n);
+    }
+    expect(blocked.ts[1]).toMatchObject({pc:0,wait:resource});
+    expect(m.step(blocked).state).toEqual(awake);
+  }
 });
 it('带标号循环、种子和自旋锁',()=>{
   const a=loop(inc);

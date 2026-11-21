@@ -43,7 +43,8 @@ export function useStepScroll(note:Note, selected?:number, followGroup=false) {
       return;
     }
     const r=cell.getBoundingClientRect(), bounds=box.getBoundingClientRect();
-    const left=bounds.left+box.clientLeft, top=bounds.top+box.clientTop;
+    const inset=parseFloat(getComputedStyle(box).scrollPaddingLeft)||0;
+    const left=bounds.left+box.clientLeft+inset, width=box.clientWidth-inset, top=bounds.top+box.clientTop;
     let x0=r.left,x1=r.right,y0=r.top,y1=r.bottom;
     if(followGroup && !picked){
       const touched=box.querySelectorAll('[data-touch],[data-block-change]');
@@ -51,11 +52,11 @@ export function useStepScroll(note:Note, selected?:number, followGroup=false) {
         const b=other.getBoundingClientRect();
         x0=Math.min(x0,b.left);x1=Math.max(x1,b.right);y0=Math.min(y0,b.top);y1=Math.max(y1,b.bottom);
       }
-      if(x1-x0>box.clientWidth){x0=r.left;x1=r.right;}
+      if(x1-x0>width){x0=r.left;x1=r.right;}
       if(y1-y0>box.clientHeight){y0=r.top;y1=r.bottom;}
     }
     if(x0<left)box.scrollLeft+=Math.floor(x0-left);
-    else if(x1>left+box.clientWidth)box.scrollLeft+=Math.ceil(x1-left-box.clientWidth);
+    else if(x1>left+width)box.scrollLeft+=Math.ceil(x1-left-width);
     if(y0<top)box.scrollTop+=Math.floor(y0-top);
     else if(y1>top+box.clientHeight)box.scrollTop+=Math.ceil(y1-top-box.clientHeight);
   },[note,selected,followGroup]);

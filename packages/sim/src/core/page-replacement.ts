@@ -6,12 +6,13 @@ export interface ReplacementParams {refs:number[];runs:ReplacementRun[];curve?:b
 export const replacementNames=['step','hits','faults','evictions','done'];
 export interface Column {page:number;slots:(number|null)[];changed:number;out:number|null;hit:boolean}
 export interface ReplacementFrame {
-  text:string;columns:Column[];slots:(number|null)[];loaded:number[];used:number[];future:number[];
+  title:string;text:string;columns:Column[];slots:(number|null)[];loaded:number[];used:number[];future:number[];
   bits:number[];hand:number;cleared:number[];hits:number;faults:number;evictions:number;
 }
-export function* replacePages(refs:number[],r:ReplacementRun):Generator<ReplacementFrame,void>{
+export function* replacePages(refs:number[],r:ReplacementRun,prefix=''):Generator<ReplacementFrame,void>{
   const empty=Array<number>(r.frames).fill(0);
-  let f:ReplacementFrame={text:'页框为空',columns:[],slots:empty.map(()=>null),loaded:[...empty],used:[...empty],future:empty.map(()=>Infinity),
+  const title=prefix+r.algorithm.toUpperCase()+' · '+r.frames+' 帧';
+  let f:ReplacementFrame={title,text:'页框为空',columns:[],slots:empty.map(()=>null),loaded:[...empty],used:[...empty],future:empty.map(()=>Infinity),
     bits:[...empty],hand:0,cleared:[],hits:0,faults:0,evictions:0};
   yield f;
   for(const [t,page] of refs.entries()){
@@ -45,10 +46,10 @@ export function* replacePages(refs:number[],r:ReplacementRun):Generator<Replacem
     f.used[at]=t;f.bits[at]=1;
     f.future=f.slots.map(p=>{const i=p===null?-1:refs.indexOf(p,t+1);return i<0?Infinity:i;});
     f.columns=[...f.columns,{page,slots:f.slots,changed:at,out,hit}];
-    f.text='引用 '+page+'：'+reason+'，帧 '+at;yield f;
+    f.text=(prefix?title+'：':'')+'引用 '+page+'：'+reason+'，帧 '+at;yield f;
   }
 }
-export const replacementMachine=algorithmMachine((p:ReplacementParams)=>p.runs.map(r=>replacePages(p.refs,r)),
+export const replacementMachine=algorithmMachine((p:ReplacementParams)=>p.runs.map((r,i)=>replacePages(p.refs,r,p.runs.length>1?'配置 '+(i+1)+' · ':'')),
   f=>({hits:f.hits,faults:f.faults,evictions:f.evictions}));
 export function faultCurve(refs:number[],algorithm:ReplacementRun['algorithm']){
   return Array.from({length:8},(_,i)=>{

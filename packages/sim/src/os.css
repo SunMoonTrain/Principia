@@ -1,7 +1,7 @@
 .os-stack {display:grid;gap:.4rem;width:100%;min-width:0;color:var(--text)}
 .os-panel {border:1px solid var(--border);border-radius:.45rem;padding:.4rem;min-width:0;background:var(--surface);font-size:.79rem}
 .os-panel {line-height:1.45}
-.os-schedule-layout {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:.45rem}
+.os-schedule-layout {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.45rem}
 .os-panel .os-schedule-layout .os-scroll {max-height:195px}
 .os-panel .os-axis td {box-sizing:border-box;min-width:2.7rem;width:2.7rem;max-width:2.7rem}
 .os-panel .os-replace-axis td {min-width:3.15rem;width:3.15rem;max-width:3.15rem}
@@ -10,16 +10,18 @@
 .os-panel .os-disk td {white-space:normal;overflow-wrap:anywhere}
 .os-panel .os-disk table {width:100%}
 .os-dir-bits {background:color-mix(in srgb,#619773 45%,var(--surface))}
-.os-editor button[aria-disabled=true] {opacity:.55}
+.os-editor button[aria-disabled=true],.os-panel button[aria-disabled=true] {opacity:.55;cursor:not-allowed}
 @media(max-width:640px) {
-  .os-panel .os-disk,.os-schedule-layout {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .os-panel .os-disk {grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 .os-panel h4,.os-panel p {margin:.15rem 0}
 .os-scroll {min-width:0;overflow:auto;overscroll-behavior:contain;max-height:176px}
 .os-scroll table,.os-panel table {border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:.73rem}
 .os-panel td,.os-panel th {padding:.07rem .25rem;border:1px solid var(--border);white-space:nowrap;text-align:center}
-.os-panel .os-axis table {table-layout:fixed}
-.os-panel .os-axis,.os-panel .os-schedule-layout .os-axis {max-height:none;overflow-y:hidden}
+.os-panel .os-axis table {table-layout:fixed;border-collapse:separate;border-spacing:0;border-top:1px solid var(--border)}
+.os-panel .os-axis :is(th,td) {border-width:0 1px 1px 0}
+.os-panel .os-axis th:first-child {border-left-width:1px}
+.os-panel .os-axis,.os-panel .os-schedule-layout .os-axis {max-height:none;overflow-y:hidden;scroll-padding-left:3.5rem}
 .os-panel .os-metrics td,.os-panel .os-metrics th {padding-inline:.13rem}
 .os-panel .os-code-scroll {max-height:26rem}
 .os-panel .os-code-scroll td,.os-panel .os-code-scroll th {line-height:1.25;padding-block:.055rem}

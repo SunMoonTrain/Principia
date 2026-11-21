@@ -96,11 +96,15 @@ function execute(s:ThreadState):ThreadState {
   const rr=(r:string)=>{next.reads.push(i+':'+r);return t.regs[reg(r)];};
   const wr=(r:string,v:bigint)=>{next.writes.push(i+':'+r);t.regs[reg(r)]=v;};
   const block=(name:string)=>{
+    t.pc=pc;
     t.wait=name;next.queues[name]=[...next.queues[name],i];next.writes.push(name,'state:'+i);
   };
   const wake=(name:string)=>{
     const [id,...rest]=next.queues[name];
-    if(id!==undefined){ts[id].wait=null;next.queues[name]=rest;next.writes.push('state:'+id);}
+    if(id!==undefined){
+      ts[id].pc++;
+      ts[id].wait=null;next.queues[name]=rest;next.writes.push('state:'+id);
+    }
     next.writes.push(name);return id;
   };
   next.turns=[...s.turns,{name:prog.name,pc}];
