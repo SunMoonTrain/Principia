@@ -1,3 +1,30 @@
 # 每节的学习状态。网站写入，你点「存档」时提交；格式见 docs/plan.md「进度存储」。
 math.analysis.completeness:
   startedAt: 2026-11-08T17:13:36+08:00
+math.analysis.trig-construction:
+  startedAt: 2026-11-12T09:36:38+08:00
+math.calculus.limit-laws:
+  startedAt: 2026-11-16T15:53:42+10:00
+math.calculus.taylor-polynomial:
+  startedAt: 2026-11-18T23:16:09+10:00
+math.linear-algebra.eigenvalues:
+  startedAt: 2026-11-18T23:19:54+10:00
+math.linear-algebra.kernel-image:
+  startedAt: 2026-11-18T23:19:46+10:00
+math.linear-algebra.linear-maps:
+  startedAt: 2026-11-12T10:09:55+08:00
+math.linear-algebra.matrices:
+  startedAt: 2026-11-12T10:09:34+08:00
+math.logic-sets.quantifiers:
+  status: known
+  statusAt: 2026-11-16T15:54:22+10:00
+math.ode.laplace-transform:
+  startedAt: 2026-11-18T23:17:17+10:00
+math.vector-calculus.multivariable-limits:
+  startedAt: 2026-11-16T15:52:05+10:00
+physics.electromagnetism.electrostatic-separation:
+  startedAt: 2026-11-18T23:12:58+10:00
+physics.electromagnetism.multipole-expansion:
+  startedAt: 2026-11-18T23:15:34+10:00
+physics.newtonian-mechanics.circular-motion:
+  startedAt: 2026-11-18T23:18:08+10:00
