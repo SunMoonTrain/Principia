@@ -7,3 +7,5 @@ generated/
 .vite/
 .DS_Store
 Thumbs.db
+# 本机预览服务器配置，里面是临时目录路径
+.claude/launch.json
