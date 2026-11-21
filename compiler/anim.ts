@@ -115,6 +115,7 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
     }
     const rowKey = component === 'grid-search' ? 'map' : component === 'graph' ? 'edges' : component === 'scheduler' ? 'jobs' : undefined;
     const rowPaths: string[][] = rowKey ? [[rowKey]] : [];
+    if (component === 'page-table') rowPaths.push(['table'], ['accesses']);
     const rowFields = new Map(rowPaths.map(path => [JSON.stringify(path), textAt(y, path, ctx.diags)]));
     const threadOrder: string[] = [];
     const programs = component === 'threads' && y.doc.get('threads', true);

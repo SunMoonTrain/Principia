@@ -5,6 +5,7 @@ import type { AnimProps } from '@principia/anim';
 export const SIMULATORS: Record<string, LazyExoticComponent<ComponentType<AnimProps<never>>>> = {
   'scheduler': lazy(() => import('./Scheduler')),
   'threads': lazy(() => import('./Threads')),
+  'page-table': lazy(() => import('./PageTable')),
   'sort': lazy(()=>import('./Sort')),
   'grid-search': lazy(()=>import('./GridSearch')),
   'graph': lazy(()=>import('./Graph')),

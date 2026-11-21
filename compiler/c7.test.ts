@@ -30,6 +30,19 @@ it('threads 校验声明、程序、逐行指令及调度',()=>{
   expect(diagnostics('threads',base.replace('  A: |\n    set r0, 1\n    store x, r0','  {}'))).not.toEqual([]);
 });
 
+it('page-table 位域、越界、重复页、访问行、TLB 和条件',()=>{
+  const base='vaBits: 8\npaBits: 8\npageSize: 16\ntlb: 2\ntable: |\n  6 3\n  7 9\naccesses: |\n  R 100\n  W 128';
+  expect(diagnostics('page-table',base)).toEqual([]);
+  for(const line of ['6 0','16 1','7 16','7 9 w','bad'])rejects('page-table',base.replace('7 9',line),8);
+  for(const line of ['X 1','R 256','R -1','R 0xgg','flush 1'])rejects('page-table',base.replace('W 128',line),11);
+  for(const extra of ['dirBits: 2','sliders: []'])rejects('page-table',base+'\n'+extra,12);
+  rejects('page-table',base+'\nlevels: 2\ndirBits: 4',13);
+  rejects('page-table',base.replace('tlb: 2','tlb: 0')+'\ntlbPolicy: fifo',12);
+  for(const [a,b,line] of [['vaBits: 8','vaBits: 3',2],['pageSize: 16','pageSize: 7',4],['vaBits: 8','vaBits: 16',4],['paBits: 8','paBits: 16',4]] as const)
+    rejects('page-table',base.replace(a,b),line);
+  rejects('page-table',base+'\ngoals:\n  - when: other == 1\n    text: |\n      翻译',13);
+});
+
 it('scheduler 的作业行、算法专用字段与条件定位到源行',()=>{
   const base='jobs: |\n  A 0 2\n  B 1 2\nruns: [{algorithm: rr}]';
   expect(diagnostics('scheduler',base)).toEqual([]);

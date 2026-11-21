@@ -560,4 +560,49 @@ threads:
     store counter, r0
     set r2, 0
     store flag, r2`},
+  {name: 'page-table', title: '连续读数组与 TLB 局部性', yaml: `vaBits: 8
+paBits: 8
+pageSize: 16
+tlb: 4
+table: |
+  6 3
+  7 9
+  8 5
+accesses: |
+  R 100
+  R 104
+  R 108
+  R 112
+  R 116
+  R 120
+  R 124
+  R 128
+  R 132
+  R 136
+goals:
+  - when: hits >= 1
+    text: |-
+      同一页的第二次读取命中了 TLB。`},
+  {name: 'page-table', title: '两级页表、写保护与缺页', yaml: `vaBits: 10
+paBits: 8
+pageSize: 16
+levels: 2
+dirBits: 3
+tlb: 2
+table: |
+  0 2
+  1 7 r
+  9 4
+  63 11
+accesses: |
+  R 0x005
+  R 0x00a
+  W 0x01a
+  R 0x09c
+  W 0x094
+  R 0x3f0
+  R 0x200
+  R 0x004
+  flush
+  R 0x098`},
 ];
