@@ -616,4 +616,50 @@ runs: [{algorithm: opt, frames: 3}, {algorithm: clock, frames: 3}]`},
   {name: 'page-replacement', title: '多一帧为何反而多一次缺页', yaml: `refs: [1,2,3,4,1,2,5,1,2,3,4,5]
 runs: [{algorithm: fifo, frames: 3}, {algorithm: fifo, frames: 4}]
 curve: true`},
+  {name: 'filesystem', title: '目录与硬链接的生命周期', yaml: `inodes: 8
+blocks: 16
+direct: 4
+indirect: 4
+entries: 4
+ops: |
+  mkdir /foo
+  touch /foo/bar
+  write /foo/bar 3
+  read /foo/bar
+  ln /foo/bar /baz
+  rm /foo/bar
+  read /baz
+  rm /baz
+  rmdir /foo
+goals:
+  - when: writes >= 1
+    text: |-
+      找到第一次写盘。`},
+  {name: 'filesystem', title: '越过直接指针的文件', yaml: `inodes: 8
+blocks: 16
+direct: 4
+indirect: 4
+entries: 4
+ops: |
+  touch /big
+  write /big 6
+  read /big
+  write /big 3
+  rm /big`},
+  {name: 'filesystem', title: '目录扩展与 inode 耗尽', yaml: `inodes: 8
+blocks: 16
+direct: 4
+indirect: 4
+entries: 4
+ops: |
+  mkdir /a
+  mkdir /a/b
+  touch /a/b/c
+  read /a/b/c
+  rmdir /a
+  touch /a/x
+  touch /a/y
+  touch /a/z
+  mkdir /a/q
+  touch /last`},
 ];

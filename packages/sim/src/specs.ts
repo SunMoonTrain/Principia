@@ -6,6 +6,8 @@ import { pageSchema } from './page-table-schema.ts';
 import { pageNames } from './core/page-table.ts';
 import { replacementSchema } from './page-replacement-schema.ts';
 import { replacementNames } from './core/page-replacement.ts';
+import { fsSchema } from './filesystem-schema.ts';
+import { fsNames } from './core/filesystem.ts';
 import { bNames } from './core/b-tree.ts';
 import { unionNames } from './core/union-find.ts';
 import { trieNames } from './core/trie.ts';
@@ -33,7 +35,7 @@ import { binaryOps, unaryOps, bitNames, widths, type BitParams } from './core/bi
 import { compileCircuit, WiringError, type Netlist } from './core/netlist.ts';
 import { floatNames, toBits } from './core/float32.ts';
 
-export const SIM_COMPONENTS = ['bits', 'float32', 'text-encoding', 'logic-circuit', 'cpu', 'cache', 'pipeline', 'memory', 'tree', 'sort', 'grid-search', 'graph', 'scheduler', 'threads', 'page-table', 'page-replacement', 'dp-table'] as const;
+export const SIM_COMPONENTS = ['bits', 'float32', 'text-encoding', 'logic-circuit', 'cpu', 'cache', 'pipeline', 'memory', 'tree', 'sort', 'grid-search', 'graph', 'scheduler', 'threads', 'page-table', 'page-replacement', 'filesystem', 'dp-table'] as const;
 export const ConditionList = z.array(z.strictObject({ when: z.string().min(1), text: z.string().min(1) }));
 const numeric = z.union([z.number(), z.string()]).transform((raw, ctx) => {
   const result = evaluateValue(raw);
@@ -99,6 +101,7 @@ export const SIM_SPECS: Record<string, ComponentSpec> = {
   'threads': { ...common, schema: threadsSchema, observables: (p: {shared: object; semaphores: object}) => [...threadNames, ...Object.keys(p.shared), ...Object.keys(p.semaphores)] },
   'page-table': { ...common, schema: pageSchema, observables: () => pageNames },
   'page-replacement': { ...common, schema: replacementSchema, observables: () => replacementNames },
+  'filesystem': { ...common, schema: fsSchema, observables: () => fsNames },
   'sort': { ...common, schema:sortSchema, observables:()=>sortNames },
   'grid-search': { ...common, schema:gridSchema, observables:()=>gridNames },
   'graph': { ...common, schema:graphSchema, observables:()=>graphNames },

@@ -53,6 +53,17 @@ it('page-replacement 引用、算法、帧数、配置数和通用条件',()=>{
   rejects('page-replacement',base+'\ngoals:\n  - when: other == 1\n    text: |\n      引用',5);
 });
 
+it('filesystem 配置、路径及操作错误定位到对应行',()=>{
+  const base='inodes: 8\nblocks: 16\ndirect: 4\nindirect: 4\nentries: 4\nops: |\n  touch /x\n  read /x';
+  for(const [field,value] of [['inodes','3'],['blocks','65'],['direct','0'],['indirect','17'],['entries','2']] as const)
+    rejects('filesystem',base.replace(new RegExp(field+': \\d+'),field+': '+value),['inodes','blocks','direct','indirect','entries'].indexOf(field)+2);
+  for(const op of ['bad /x','read relative','read /a/../b','mkdir /a/b/c/d/e','touch /Upper','rm /toolong12','write /x 0','write /x 21','ln /x y'])
+    rejects('filesystem',base.replace('read /x',op),9);
+  rejects('filesystem',base+'\nsliders: []',10);
+  rejects('filesystem',base+'\ngoals:\n  - when: other == 1\n    text: |\n      检查',11);
+  expect(diagnostics('filesystem',base.replace('read /x','read /absent'))).toEqual([]);
+});
+
 it('scheduler 的作业行、算法专用字段与条件定位到源行',()=>{
   const base='jobs: |\n  A 0 2\n  B 1 2\nruns: [{algorithm: rr}]';
   expect(diagnostics('scheduler',base)).toEqual([]);
