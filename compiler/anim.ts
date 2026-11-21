@@ -112,7 +112,7 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
       delete specific.goals;
       delete specific.pauses;
     }
-    const rowKey = component === 'grid-search' ? 'map' : component === 'graph' ? 'edges' : undefined;
+    const rowKey = component === 'grid-search' ? 'map' : component === 'graph' ? 'edges' : component === 'scheduler' ? 'jobs' : undefined;
     const rowField = rowKey && textAt(y, [rowKey], ctx.diags);
     const parsed = spec.schema.safeParse(specific);
     if (parsed.success) {

@@ -411,4 +411,43 @@ goals:
       沿表找回公共子序列。`},
   {name:'dp-table',title:'0-1 背包 · 容量七',yaml:'problem: knapsack\ncapacity: 7\nitems: [[1,1],[3,4],[4,5],[5,7]]'},
   {name:'dp-table',title:'编辑距离 · kitten → sitting',yaml:'problem: edit-distance\na: kitten\nb: sitting'},
+  {name: 'scheduler', title: '先来先服务与短作业优先', yaml: `jobs: |
+  P1 0 24
+  P2 0 3
+  P3 0 3
+runs: [{algorithm: fcfs}, {algorithm: sjf}]
+goals:
+  - when: switches >= 1
+    text: |-
+      看见第一次切换。
+pauses:
+  - when: completed == 1
+    text: |-
+      第一个作业刚完成。`},
+  {name: 'scheduler', title: '四拍时间片轮转', yaml: `jobs: |
+  P1 0 24
+  P2 0 3
+  P3 0 3
+runs: [{algorithm: rr, quantum: 4}]`},
+  {name: 'scheduler', title: '新作业到达时比较剩余时间', yaml: `jobs: |
+  P1 0 8
+  P2 1 4
+  P3 2 9
+  P4 3 5
+runs: [{algorithm: srtf}]`},
+  {name: 'scheduler', title: '优先级是否抢占', yaml: `jobs: |
+  L 0 6 5
+  H1 1 2 1
+  H2 3 2 1
+  H3 5 2 1
+  H4 7 2 1
+runs: [{algorithm: priority, preemptive: true}, {algorithm: priority}]`},
+  {name: 'scheduler', title: '多级反馈队列与短计算段', yaml: `jobs: |
+  A 0 20
+  B 5 1+3+1+3+1+3+1
+runs: [{algorithm: mlfq, quanta: [2, 4, 8]}]`},
+  {name: 'scheduler', title: '计算与 I/O 重叠', yaml: `jobs: |
+  A 0 5+5+5+5+5
+  B 0 15
+runs: [{algorithm: fcfs}, {algorithm: srtf}]`},
 ];
