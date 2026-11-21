@@ -11,6 +11,25 @@ function diagnostics(component: string, yaml: string) {
 function rejects(component:string, yaml:string, line:number) {
   expect(diagnostics(component,yaml),yaml).toContainEqual(expect.objectContaining({file:'c7.md',line}));
 }
+it('threads 校验声明、程序、逐行指令及调度',()=>{
+  const base='shared: {x: 0}\nthreads:\n  A: |\n    set r0, 1\n    store x, r0\nschedule: rr';
+  for(const bad of ['unknown r0','set r4, 1','load r0, y','lock m','wait s','bne r0, 0, X'])
+    rejects('threads',base.replace('store x, r0',bad),6);
+  rejects('threads',base.replace('set r0, 1','L: set r0, 1').replace('store x, r0','L: jmp L'),6);
+  rejects('threads',base.replace('store x, r0',Array(24).fill('set r0, 1').join('\n    ')),29);
+  rejects('threads',base.replace('  A: |\n    set r0, 1\n    store x, r0','  A: "set r0, 1"'),4);
+  rejects('threads',base.replace('schedule: rr','schedule: [A, B]'),7);
+  rejects('threads',base.replace('schedule: rr','schedule: random\nseed: 4\nquantum: 2'),9);
+  rejects('threads',base+'\nseed: 0',8);
+  rejects('threads',base.replace('{x: 0}','{step: 0}'),2);
+  rejects('threads',base+'\nsemaphores: {x: 1}',8);
+  rejects('threads',base+'\nsliders: []',8);
+  rejects('threads',base+'\ngoals:\n  - when: other == 1\n    text: |\n      观察',9);
+  rejects('threads','shared: {}\nthreads:\n  2: |\n    set r4, 0\nschedule: rr',5);
+  rejects('threads','shared: {}\nthreads:\n'+['A','B','C','D'].map(k=>'  '+k+': |\n    set r0, 1').join('\n')+'\nschedule: rr',4);
+  expect(diagnostics('threads',base.replace('  A: |\n    set r0, 1\n    store x, r0','  {}'))).not.toEqual([]);
+});
+
 it('scheduler 的作业行、算法专用字段与条件定位到源行',()=>{
   const base='jobs: |\n  A 0 2\n  B 1 2\nruns: [{algorithm: rr}]';
   expect(diagnostics('scheduler',base)).toEqual([]);

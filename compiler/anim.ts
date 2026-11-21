@@ -10,6 +10,7 @@ import { assemble, AssemblyError, breakpointAddress } from '../packages/sim/src/
 import type { CpuParams } from '../packages/sim/src/p8-schema.ts';
 import type { ElementContent } from 'hast';
 import { z } from 'zod';
+import { isMap, isScalar } from 'yaml';
 // 用相对路径而不是 @principia/anim/specs：vite.config.ts 加载内容插件时只打包相对路径引入的文件，
 // 包名引入的交给 Node 直接加载，而 Node 22 不认 .ts 文件
 import { compilePredicate } from '../packages/sim/src/core/predicate.ts';
@@ -113,14 +114,29 @@ export function processAnim(node: MdNode, ctx: MdContext): MdNode | null {
       delete specific.pauses;
     }
     const rowKey = component === 'grid-search' ? 'map' : component === 'graph' ? 'edges' : component === 'scheduler' ? 'jobs' : undefined;
-    const rowField = rowKey && textAt(y, [rowKey], ctx.diags);
+    const rowPaths: string[][] = rowKey ? [[rowKey]] : [];
+    const rowFields = new Map(rowPaths.map(path => [JSON.stringify(path), textAt(y, path, ctx.diags)]));
+    const threadOrder: string[] = [];
+    const programs = component === 'threads' && y.doc.get('threads', true);
+    if (isMap(programs)) for (const {key} of programs.items) {
+      if (!isScalar(key) || (typeof key.value !== 'string' && typeof key.value !== 'number')) continue;
+      const name = String(key.value);
+      threadOrder.push(name);
+      rowFields.set(JSON.stringify(['threads', name]), textAt(y, ['threads', key.value], ctx.diags));
+    }
     const parsed = spec.schema.safeParse(specific);
     if (parsed.success) {
       checked = parsed.data;
+      if (component === 'threads') {
+        // 数字形式的对象键在 JS 中会重排，轮转次序仍按 YAML 的书写行。
+        (checked as {programs: {name: string}[]}).programs.sort((a,b) =>
+          threadOrder.indexOf(a.name) - threadOrder.indexOf(b.name));
+      }
       reserved = spec.reserved(checked as never);
     } else {
       for(const issue of parsed.error.issues){
-        if (rowField && issue.path[0] === rowKey && issue.code === 'custom' && typeof issue.params?.row === 'number') {
+        const rowField = rowFields.get(JSON.stringify(issue.path));
+        if (rowField && issue.code === 'custom' && typeof issue.params?.row === 'number') {
           // 非块标量已在字段行报错，解码出来的换行没有对应的源行。
           if (rowField.contentLine > rowField.line) ctx.diags.error(ctx.file, rowField.contentLine + issue.params.row, issue.message);
         } else reportIssues(y,[issue],ctx.diags,[],path=>'参数 '+path.join('.'));

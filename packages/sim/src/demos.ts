@@ -450,4 +450,114 @@ runs: [{algorithm: mlfq, quanta: [2, 4, 8]}]`},
   A 0 5+5+5+5+5
   B 0 15
 runs: [{algorithm: fcfs}, {algorithm: srtf}]`},
+  {name: 'threads', title: '交替执行的丢失更新', yaml: `shared: {counter: 0}
+schedule: [A, B, A, B, A, B]
+threads:
+  A: |
+    load r0, counter
+    add r0, 1
+    store counter, r0
+  B: |
+    load r0, counter
+    add r0, 1
+    store counter, r0
+goals:
+  - when: counter == 1
+    text: |-
+      观察共享写入。`},
+  {name: 'threads', title: '互斥锁保护计数器', yaml: `shared: {counter: 0}
+locks: [m]
+schedule: rr
+threads:
+  A: |
+    lock m
+    load r0, counter
+    add r0, 1
+    store counter, r0
+    unlock m
+  B: |
+    lock m
+    load r0, counter
+    add r0, 1
+    store counter, r0
+    unlock m`},
+  {name: 'threads', title: '反序加锁与死锁', yaml: `shared: {counter: 0}
+locks: [m1, m2]
+schedule: rr
+threads:
+  A: |
+    lock m1
+    lock m2
+    unlock m2
+    unlock m1
+  B: |
+    lock m2
+    lock m1
+    unlock m1
+    unlock m2`},
+  {name: 'threads', title: '随机交错的计数循环', yaml: `shared: {counter: 0}
+schedule: random
+seed: 7
+threads:
+  A: |
+    set r1, 3
+    L: load r0, counter
+    add r0, 1
+    store counter, r0
+    sub r1, 1
+    bne r1, 0, L
+  B: |
+    set r1, 3
+    L: load r0, counter
+    add r0, 1
+    store counter, r0
+    sub r1, 1
+    bne r1, 0, L`},
+  {name: 'threads', title: '两个许可与一个缓冲区', yaml: `shared: {items: 0}
+locks: [m]
+semaphores: {empty: 2, full: 0}
+schedule: rr
+quantum: 2
+threads:
+  A: |
+    set r1, 3
+    L: wait empty
+    lock m
+    load r0, items
+    add r0, 1
+    store items, r0
+    unlock m
+    signal full
+    sub r1, 1
+    bne r1, 0, L
+  B: |
+    set r1, 3
+    L: wait full
+    lock m
+    load r0, items
+    sub r0, 1
+    store items, r0
+    unlock m
+    signal empty
+    sub r1, 1
+    bne r1, 0, L`},
+  {name: 'threads', title: '测试并设置的自旋锁', yaml: `shared: {flag: 0, counter: 0}
+schedule: rr
+threads:
+  A: |
+    L: tas r0, flag
+    bne r0, 0, L
+    load r0, counter
+    add r0, 1
+    store counter, r0
+    set r2, 0
+    store flag, r2
+  B: |
+    L: tas r0, flag
+    bne r0, 0, L
+    load r0, counter
+    add r0, 1
+    store counter, r0
+    set r2, 0
+    store flag, r2`},
 ];
