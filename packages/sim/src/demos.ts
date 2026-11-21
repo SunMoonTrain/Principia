@@ -605,4 +605,15 @@ accesses: |
   R 0x004
   flush
   R 0x098`},
+  {name: 'page-replacement', title: '三帧中的先进先出与最近使用', yaml: `refs: [7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1]
+runs: [{algorithm: fifo, frames: 3}, {algorithm: lru, frames: 3}]
+goals:
+  - when: evictions >= 1
+    text: |-
+      找出第一次被换出的页。`},
+  {name: 'page-replacement', title: '未来引用与时钟指针', yaml: `refs: [7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1]
+runs: [{algorithm: opt, frames: 3}, {algorithm: clock, frames: 3}]`},
+  {name: 'page-replacement', title: '多一帧为何反而多一次缺页', yaml: `refs: [1,2,3,4,1,2,5,1,2,3,4,5]
+runs: [{algorithm: fifo, frames: 3}, {algorithm: fifo, frames: 4}]
+curve: true`},
 ];

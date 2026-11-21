@@ -6,6 +6,7 @@ export const SIMULATORS: Record<string, LazyExoticComponent<ComponentType<AnimPr
   'scheduler': lazy(() => import('./Scheduler')),
   'threads': lazy(() => import('./Threads')),
   'page-table': lazy(() => import('./PageTable')),
+  'page-replacement': lazy(() => import('./PageReplacement')),
   'sort': lazy(()=>import('./Sort')),
   'grid-search': lazy(()=>import('./GridSearch')),
   'graph': lazy(()=>import('./Graph')),

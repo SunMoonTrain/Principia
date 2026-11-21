@@ -43,6 +43,16 @@ it('page-table 位域、越界、重复页、访问行、TLB 和条件',()=>{
   rejects('page-table',base+'\ngoals:\n  - when: other == 1\n    text: |\n      翻译',13);
 });
 
+it('page-replacement 引用、算法、帧数、配置数和通用条件',()=>{
+  const base='refs: [0, 2, 1]\nruns: [{algorithm: clock, frames: 3}]';
+  expect(diagnostics('page-replacement',base)).toEqual([]);
+  for(const refs of ['[100]','[-1]','[]','['+Array(41).fill(5).join(',')+']'])rejects('page-replacement',base.replace('[0, 2, 1]',refs),2);
+  for(const runs of ['[]','[{algorithm: fifo, frames: 0}]','[{algorithm: lru, frames: 9}]','[{algorithm: bad, frames: 2}]','['+Array(3).fill('{algorithm: opt, frames: 2}').join(',')+']'])
+    rejects('page-replacement',base.replace('[{algorithm: clock, frames: 3}]',runs),3);
+  rejects('page-replacement',base+'\nsliders: []',4);
+  rejects('page-replacement',base+'\ngoals:\n  - when: other == 1\n    text: |\n      引用',5);
+});
+
 it('scheduler 的作业行、算法专用字段与条件定位到源行',()=>{
   const base='jobs: |\n  A 0 2\n  B 1 2\nruns: [{algorithm: rr}]';
   expect(diagnostics('scheduler',base)).toEqual([]);
