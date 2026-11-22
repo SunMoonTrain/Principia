@@ -1,0 +1,14 @@
+# math.calculus-of-variations 各题的作答记录。网站写入，你点「存档」时提交；格式见 docs/plan.md「进度存储」。
+math.calculus-of-variations.functionals:
+  p1:
+    attempts:
+      - id: mwrxqep6-tjf5mk3j
+        at: 2026-11-22T22:31:31+08:00
+        input: 19/12
+        result: correct
+  p2:
+    attempts:
+      - id: mwrxr2ov-s82udrn9
+        at: 2026-11-22T22:32:02+08:00
+        input: ABD
+        result: correct
