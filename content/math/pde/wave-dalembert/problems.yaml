@@ -1,0 +1,199 @@
+- id: p1
+  tier: easy
+  statement: |
+    $u$在整个平面上二阶偏导数连续，满足$u_{tt}=4u_{xx}$、$u(x,0)=\frac1{1+x^2}$、$u_t(x,0)=0$。求$u(1,1)$。
+  answer:
+    type: number
+    value: 3/10
+  hints:
+    - |
+      这是$c=2$的:term[波动方程]{id="math.pde.wave-equation"}，初速度为$0$，达朗贝尔公式只剩前一项。
+    - |
+      $u(x,t)=\frac12\bigl[\varphi(x-2t)+\varphi(x+2t)\bigr]$，$\varphi(x)=\frac1{1+x^2}$。$x=1$、$t=1$时，$x-2t$、$x+2t$各是多少？
+    - |
+      $u(1,1)=\frac12\bigl[\varphi(-1)+\varphi(3)\bigr]=\frac12\bigl(\frac12+\frac1{10}\bigr)=\frac3{10}$。
+  solution: |
+    由:term[达朗贝尔公式]{id="math.pde.dalembert-formula"}，$c=2$、$\psi=0$时$u(x,t)=\frac12\bigl[\varphi(x-2t)+\varphi(x+2t)\bigr]$：开始时的形状分成两半，各以速度$2$向左右跑开。所以$u(1,1)=\frac12\bigl[\varphi(-1)+\varphi(3)\bigr]=\frac12\bigl(\frac12+\frac1{10}\bigr)=\frac3{10}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    $\varphi$有连续的二阶导数，$\psi$有连续的导数，它们在区间$[0,1]$以外都是$0$。$u$是$u_{tt}=9u_{xx}$满足$u(x,0)=\varphi(x)$、$u_t(x,0)=\psi(x)$的解，由达朗贝尔公式给出。下列说法中，正确的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        在$x=10$处，$t>4$以后一定有$u=0$
+      - |
+        $t=1$时，$u$只在$[0,1]$上可能不为$0$
+      - |
+        $u(5,1)=0$
+      - |
+        在$x=10$处，$0<t<3$时$u=0$
+      - |
+        $u(-2,1)=\frac16\int_0^1\psi(s)\dd s$
+    value: [3, 4, 5]
+  hints:
+    - |
+      $c=3$。$u(x_0,t_0)$只由:term[依赖区间]{id="math.pde.domain-of-dependence"}$[x_0-3t_0,x_0+3t_0]$上的初值决定：$\varphi$只用到两个端点，$\psi$用到整个区间。
+    - |
+      $\varphi$连续，在$[0,1]$以外都是$0$，所以$\varphi(0)=\varphi(1)=0$。逐个写出依赖区间，看它和$[0,1]$怎样相交。
+    - |
+      A：$t>4$时$x=10$的依赖区间盖住了整个$[0,1]$，两端的$\varphi$是$0$，$u(10,t)=\frac16\int_0^1\psi(s)\dd s$，$\psi$的积分不为$0$时就不是$0$，不对。B：由:term[有限传播速度]{id="math.pde.finite-propagation-speed"}，$t=1$时$u$可能不为$0$的范围是$[-3,4]$，比$[0,1]$大，例如$\psi=0$时$3<x<4$处$u(x,1)=\frac12\varphi(x-3)$，不对。
+
+      C：依赖区间$[2,8]$和$[0,1]$不相交，$u(5,1)=0$，对。D：$0<t<3$时依赖区间$[10-3t,10+3t]$整个在$1$的右边，$u=0$，对。E：依赖区间是$[-5,1]$，$\varphi(-5)=\varphi(1)=0$，$u(-2,1)=\frac16\int_0^1\psi(s)\dd s$，对。选 C、D、E。
+  solution: |
+    $c=3$，$u(x_0,t_0)$只由依赖区间$[x_0-3t_0,x_0+3t_0]$上的初值决定。A：$t>4$时$10-3t<0$，依赖区间盖住整个$[0,1]$，两个端点处$\varphi=0$，所以$u(10,t)=\frac16\int_0^1\psi(s)\dd s$，$\psi$的积分不为$0$时它就不是$0$，不对。B：由有限传播速度，$t=1$时$u$在$[-3,4]$以外是$0$，在$[0,1]$以外却未必是$0$，例如$\psi=0$时，$3<x<4$处$u(x,1)=\frac12\varphi(x-3)$，不对。
+
+    C：依赖区间$[2,8]$和$[0,1]$不相交，$u(5,1)=0$，对。D：$0<t<3$时$10-3t>1$，依赖区间整个在$[0,1]$的右边，$u=0$，对。E：依赖区间是$[-5,1]$，$\varphi(-5)=\varphi(1)=0$，积分那一项是$\frac16\int_{-5}^1\psi(s)\dd s=\frac16\int_0^1\psi(s)\dd s$，对。选 C、D、E。
+
+- id: p3
+  tier: medium
+  statement: |
+    $u$在整个平面上二阶偏导数连续，满足$u_{tt}=u_{xx}$、$u(x,0)=0$、$u_t(x,0)=\frac{2x}{(1+x^2)^2}$。求$u(1,1)$。
+  answer:
+    type: number
+    value: 2/5
+  hints:
+    - |
+      $c=1$，初位移为$0$，:term[达朗贝尔公式]{id="math.pde.dalembert-formula"}只剩积分那一项。
+    - |
+      $u(1,1)=\frac12\int_0^2\frac{2s}{(1+s^2)^2}\dd s$。被积函数是哪个函数的导数？
+    - |
+      由链式法则，$\bigl(-\frac1{1+s^2}\bigr)'=\frac{2s}{(1+s^2)^2}$，所以积分是$-\frac15+1=\frac45$，$u(1,1)=\frac25$。
+  solution: |
+    由:term[达朗贝尔公式]{id="math.pde.dalembert-formula"}，$c=1$、$\varphi=0$时$u(x,t)=\frac12\int_{x-t}^{x+t}\psi(s)\dd s$，在$(1,1)$处积分区间是$[0,2]$。由链式法则，$\bigl(-\frac1{1+s^2}\bigr)'=\frac{2s}{(1+s^2)^2}$，所以$u(1,1)=\frac12\Bigl(-\frac1{1+s^2}\Bigr)\Big|_0^2=\frac12\bigl(1-\frac15\bigr)=\frac25$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $u_{tt}=4u_{xx}$，$u(x,0)=0$，$u_t(x,0)=\psi(x)$，其中$|x|<1$时$\psi(x)=1$，其余$\psi(x)=0$。$\psi$不连续，这样的$u$只是放宽了意思的解，这里直接照达朗贝尔公式算。
+
+    求最小的$t_1\ge0$，使$t\ge t_1$时$u(7,t)$都等于同一个值，再求这个值。依次填$t_1$和这个值。
+  answer:
+    type: tuple
+    value: [4, 1/2]
+  hints:
+    - |
+      $c=2$，$\varphi=0$，$u(7,t)=\frac14\int_{7-2t}^{7+2t}\psi(s)\dd s$，就是$\frac14$乘区间$[7-2t,7+2t]$和$(-1,1)$重叠部分的长度。
+    - |
+      $t>0$时右端点$7+2t>1$，重叠部分只由左端点$7-2t$定：左端点从右往左扫过$(-1,1)$的那段时间里，$u(7,t)$在变。
+    - |
+      $3<t<4$时重叠部分是$(7-2t,1)$，长$2t-6$，$u(7,t)=\frac{t-3}2$在增大；$t\ge4$时$7-2t\le-1$，整个$(-1,1)$都在区间里，$u(7,t)=\frac14\cdot2=\frac12$。所以$t_1=4$，这个值是$\frac12$。
+  solution: |
+    由:term[达朗贝尔公式]{id="math.pde.dalembert-formula"}，$c=2$、$\varphi=0$时$u(7,t)=\frac14\int_{7-2t}^{7+2t}\psi(s)\dd s$，等于$\frac14$乘区间$[7-2t,7+2t]$和$(-1,1)$重叠部分的长度。$t>0$时右端点$7+2t>1$。$t\le3$时左端点$7-2t\ge1$，不重叠，$u=0$；$3<t<4$时重叠部分是$(7-2t,1)$，长$2t-6$，$u(7,t)=\frac{t-3}2$在增大。
+
+    $t\ge4$时$7-2t\le-1$，整个$(-1,1)$都在区间里，$u(7,t)=\frac14\cdot2=\frac12$，不再变化。$t_1$取得比$4$小，$t_1$到$4$之间的$u(7,t)$还在变，所以$t_1=4$，这个值是$\frac12$：初速度带来的扰动走过以后，$x=7$处的弦被抬高了$\frac12$。
+
+- id: p5
+  tier: hard
+  statement: |
+    半无界的弦$x\ge0$，左端固定：$u_{tt}=c^2u_{xx}$（$x>0$），$u(0,t)=0$，开始时的形状和速度是$\varphi(x)$、$\psi(x)$（$x\ge0$）。把$\varphi$、$\psi$延成奇函数，即对$x>0$令$\varphi(-x)=-\varphi(x)$、$\psi(-x)=-\psi(x)$，再把延好的函数代进达朗贝尔公式，得到$u$。
+
+    （1）证明这样得到的$u$在$t>0$时满足$u(0,t)=0$。
+
+    （2）延好的函数要满足定理 2 的条件：$\varphi$有连续的二阶导数，$\psi$有连续的导数。设$\varphi$、$\psi$在$x\ge0$上已经满足，它们在$0$处还要满足什么？
+
+    （3）设$\psi=0$，$\varphi$是集中在$x=5$附近的一个鼓包，在$[4,6]$以外为$0$。描述向左跑的那半个鼓包到达左端以后的样子。
+  hints:
+    - |
+      （1）奇函数$f$满足$f(-s)=-f(s)$，代入$x=0$，看两个$\varphi$项和积分那一项各是什么。（2）延好的$\varphi$在$0$处连续，$\varphi(0)$必须是多少？奇函数的导数是偶函数，二阶导数又是奇函数。
+    - |
+      （1）$x=0$时公式是$\frac12\bigl[\varphi(-ct)+\varphi(ct)\bigr]+\frac1{2c}\int_{-ct}^{ct}\psi(s)\dd s$，奇函数在对称区间上的积分是$0$。（3）延好的$\varphi$在$[-6,-4]$上有一个倒过来的鼓包，它也分成两半，其中一半向右跑。
+    - |
+      （1）$t>0$时，延好以后$\varphi(-ct)=-\varphi(ct)$，两个$\varphi$项相消；$\psi$是奇函数，在对称区间$[-ct,ct]$上的积分是$0$。所以$u(0,t)=0$。在$x\ge0$上延好的初值就是原来的，延好的函数又满足定理 2 的条件时（见（2）），$u$在$x>0$上满足方程和初始条件（initial condition）。
+
+      （2）延好的$\varphi$在$0$处连续，要$\varphi(0)=-\varphi(0)$，即$\varphi(0)=0$；它的导数是偶函数，在$0$处两侧自然接上；它的二阶导数是奇函数，要连续，又得$\varphi''(0)=0$。同样，延好的$\psi$连续要$\psi(0)=0$，它的导数是偶函数，自然接上。所以还要$\varphi(0)=\varphi''(0)=\psi(0)=0$：左端不动，$u$、$u_t$和$u_{tt}=c^2u_{xx}$在$(0,0)$处本来都该是$0$。
+
+      （3）延好的$\varphi$在$[4,6]$上是原来的鼓包，在$[-6,-4]$上是倒过来、左右翻过来的鼓包。$u=\frac12\varphi(x-ct)+\frac12\varphi(x+ct)$：后一项里正的鼓包向左跑，$t>\frac6c$以后全跑到了$x<0$；前一项里倒过来的鼓包向右跑，从$t=\frac4c$起进入$x>0$。在弦上看，向左的半个鼓包碰到左端以后，变成一个倒过来、左右翻过来的半高鼓包，以速度$c$向右跑回去；两者重叠时在$x=0$处正好抵消，端点始终不动。这和[波的反射与透射](lesson:physics.oscillations-waves.reflection-transmission)一节说的一致：弦的末端固定时，「波倒过来弹回，末端始终不动」。
+  reference: |
+    （1）$t>0$时，奇函数$\varphi(-ct)=-\varphi(ct)$，两个$\varphi$项相消；奇函数$\psi$在$[-ct,ct]$上的积分为$0$。所以$u(0,t)=0$。$x\ge0$上延好的初值就是原来的，延好的函数满足定理 2 的条件时（见（2）），$u$在$x>0$上满足方程和初始条件。
+
+    （2）延好的$\varphi$连续要$\varphi(0)=0$；导数是偶函数，自然连续；二阶导数是奇函数，连续要$\varphi''(0)=0$。延好的$\psi$连续要$\psi(0)=0$，导数是偶函数，自然连续。所以要$\varphi(0)=\varphi''(0)=\psi(0)=0$，和$u$、$u_t$、$u_{tt}=c^2u_{xx}$在$(0,0)$处为$0$相容。
+
+    （3）延好的$\varphi$在$[-6,-4]$上是$-\varphi(-x)$。$\frac12\varphi(x+ct)$里的正鼓包向左跑，$t>\frac6c$后全在$x<0$；$\frac12\varphi(x-ct)$里的倒鼓包向右跑，$t=\frac4c$起进入$x>0$。弦上看到：向左的半高鼓包在固定端反射成倒过来、左右翻过来的半高鼓包，以$c$向右跑；重叠时$x=0$处抵消，端点不动。和波的反射与透射一节一致：末端固定时「波倒过来弹回，末端始终不动」。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$\varphi$有连续的二阶导数，$\psi$有连续的导数，$u$由达朗贝尔公式给出。
+
+    （1）证明$u$满足$u_{tt}=c^2u_{xx}$。
+
+    （2）证明$u(x,0)=\varphi(x)$，$u_t(x,0)=\psi(x)$。
+
+    （3）（1）里哪一步要用到$\psi$有连续的导数？如果$\psi$只是连续，积分那一项还有没有连续的一阶偏导数？二阶偏导数呢？
+  hints:
+    - |
+      记$\Psi(x)=\int_0^x\psi(s)\dd s$，积分那一项是$\frac1{2c}\bigl[\Psi(x+ct)-\Psi(x-ct)\bigr]$。由微积分基本定理，$\Psi'=\psi$。
+    - |
+      $u$写成$F(x-ct)+G(x+ct)$的样子，$F=\frac12\varphi-\frac1{2c}\Psi$，$G=\frac12\varphi+\frac1{2c}\Psi$。它们有几阶连续的导数？[偏导数](lesson:math.vector-calculus.partial-derivatives)第 5 题说了什么？
+    - |
+      （1）记$\Psi(x)=\int_0^x\psi(s)\dd s$。$\psi$连续，由微积分基本定理，$\Psi'=\psi$；$\psi$有连续的导数，所以$\Psi''=\psi'$也连续。于是$u=F(x-ct)+G(x+ct)$，$F=\frac12\varphi-\frac1{2c}\Psi$，$G=\frac12\varphi+\frac1{2c}\Psi$，都有连续的二阶导数。由[偏导数](lesson:math.vector-calculus.partial-derivatives)第 5 题（对$x$、$t$各用两次一元的链式法则），$u_{tt}=c^2F''(x-ct)+c^2G''(x+ct)=c^2u_{xx}$。
+
+      （2）$t=0$时两个$\varphi$项都是$\frac12\varphi(x)$，积分那一项是$\frac1{2c}\bigl[\Psi(x)-\Psi(x)\bigr]=0$，所以$u(x,0)=\varphi(x)$。对$t$求导，$\varphi$的两项给出$\frac c2\bigl[\varphi'(x+ct)-\varphi'(x-ct)\bigr]$，$t=0$时是$0$；积分那一项给出$\frac12\bigl[\psi(x+ct)+\psi(x-ct)\bigr]$，$t=0$时是$\psi(x)$。所以$u_t(x,0)=\psi(x)$。
+
+      （3）求$\Psi(x\pm ct)$的二阶偏导数要用$\Psi''=\psi'$，这一步用到$\psi$有连续的导数；$\varphi$有连续的二阶导数，用在$\varphi(x\pm ct)$的二阶偏导数上。$\psi$只连续时，$\Psi'=\psi$照样成立，积分那一项对$t$、$x$的偏导数$\frac12\bigl[\psi(x+ct)+\psi(x-ct)\bigr]$、$\frac1{2c}\bigl[\psi(x+ct)-\psi(x-ct)\bigr]$都连续。可在$x\pm ct$落到$\psi$不可导的点的地方，二阶偏导数就可能不存在：公式仍给出一个函数，只是放宽了意思的解。
+  reference: |
+    （1）$\Psi(x)=\int_0^x\psi(s)\dd s$，$\Psi'=\psi$（微积分基本定理，$\psi$连续），$\Psi''=\psi'$连续（$\psi$有连续的导数）。$u=F(x-ct)+G(x+ct)$，$F=\frac12\varphi-\frac1{2c}\Psi$，$G=\frac12\varphi+\frac1{2c}\Psi$都有连续的二阶导数，由偏导数第 5 题，$u_{tt}=c^2(F''+G'')=c^2u_{xx}$。
+
+    （2）$u(x,0)=\varphi(x)+\frac1{2c}\bigl[\Psi(x)-\Psi(x)\bigr]=\varphi(x)$。$u_t=\frac c2\bigl[\varphi'(x+ct)-\varphi'(x-ct)\bigr]+\frac12\bigl[\psi(x+ct)+\psi(x-ct)\bigr]$，$t=0$时是$\psi(x)$。
+
+    （3）$\Psi(x\pm ct)$的二阶偏导数要$\Psi''=\psi'$，用到$\psi$有连续的导数；$\varphi''$连续用在$\varphi(x\pm ct)$的二阶偏导数上。$\psi$只连续时，积分项的一阶偏导数$\frac12[\psi(x+ct)+\psi(x-ct)]$、$\frac1{2c}[\psi(x+ct)-\psi(x-ct)]$连续，二阶偏导数在$x\pm ct$落到$\psi$不可导的点时可能不存在，只是放宽了意思的解。
+
+- id: p7
+  tier: thinking
+  statement: |
+    像[场的拉格朗日表述](lesson:physics.analytical-mechanics.field-lagrangian)第 4 题那样的三角形脉冲：取$c=1$，$|x|\le1$时$\varphi(x)=1-|x|$，其余$\varphi(x)=0$，$\psi=0$。$\varphi$在$x=-1$、$0$、$1$处有折角，没有导数，照达朗贝尔公式仍写出$u=\frac12\bigl[\varphi(x-t)+\varphi(x+t)\bigr]$。
+
+    （1）在半平面$t>0$上，$u$在哪些点没有二阶偏导数？这些点排成什么样的线？
+
+    （2）在这些线以外，$u$满足波动方程吗？
+
+    （3）这样的$u$，在什么意思下仍可以叫作「解」？
+  hints:
+    - |
+      $\frac12\varphi(x-t)$只在$x-t$落到$\varphi$的折角上时出问题，$\frac12\varphi(x+t)$只在$x+t$落到折角上时出问题。
+    - |
+      画出直线$x-t=-1,0,1$和$x+t=-1,0,1$。在这些线隔开的每一块里，$\varphi(x-t)$、$\varphi(x+t)$是什么样的函数？（3）把折角磨圆一点，会怎样？
+    - |
+      （1）$\frac12\varphi(x-t)$在直线$x-t=-1$、$0$、$1$上沿$x$方向左右的斜率不同，连一阶偏导数都没有，别处有任意阶偏导数；$\frac12\varphi(x+t)$同理，坏在$x+t=-1$、$0$、$1$上。两条线相交处，两项斜率的跳变相加也不是$0$（$\varphi'$在$-1$、$0$、$1$处分别跳$1$、$-2$、$1$，$t>0$时能相交的两项跳变之和是$2$或$-1$）。所以没有二阶偏导数的点，正是从$(-1,0)$、$(0,0)$、$(1,0)$出发的六条:term[特征线]{id="math.pde.characteristic-curve"}：折角沿特征线以速度$1$向左右走。
+
+      （2）在这些线隔开的每一块里，$\varphi(x-t)$、$\varphi(x+t)$都是一次函数或常数，$u$是$x$、$t$的一次式或常数，$u_{tt}=u_{xx}=0$，满足:term[波动方程]{id="math.pde.wave-equation"}。
+
+      （3）有几种看法。$u$仍是$F(x-t)+G(x+t)$的样子，只是$F$、$G$有折角；在那六条特征线以外，它处处满足方程。把$\varphi$的折角磨圆一点，得到有连续二阶导数、和$\varphi$处处相差不超过$\varepsilon$的$\varphi_\varepsilon$，它的解$u_\varepsilon$是真正的解，由达朗贝尔公式$|u_\varepsilon-u|\le\frac\varepsilon2+\frac\varepsilon2=\varepsilon$：$u$是真正的解的极限。真实的弦也没有绝对尖的折角，用$u$描述它，误差要多小有多小；这样放宽「解」的意思，达朗贝尔公式对连续的初值都能用。
+  reference: |
+    （1）$\frac12\varphi(x-t)$在$x-t=-1,0,1$上沿$x$方向斜率跳变（没有一阶偏导数），$\frac12\varphi(x+t)$在$x+t=-1,0,1$上；交点处跳变之和为$2$或$-1$，不抵消。所以没有二阶偏导数的点是从$(-1,0)$、$(0,0)$、$(1,0)$出发的六条特征线（$t>0$），折角沿特征线以速度$1$传播。
+
+    （2）各块里$u$是$x$、$t$的一次式或常数，$u_{tt}=u_{xx}=0$，满足方程。
+
+    （3）$u=F(x-t)+G(x+t)$，$F$、$G$连续但有折角；磨圆折角得$\varphi_\varepsilon$（二阶导数连续，$|\varphi_\varepsilon-\varphi|\le\varepsilon$），真正的解$u_\varepsilon$满足$|u_\varepsilon-u|\le\varepsilon$，$u$是真正的解的一致极限。放宽「解」的意思后，达朗贝尔公式对连续的初值都能用。
+
+- id: p8
+  tier: thinking
+  statement: |
+    有硬度的弦，横向小振动的方程近似是$u_{tt}=c^2u_{xx}-Bu_{xxxx}$，$B>0$是常数（[色散关系](lesson:physics.oscillations-waves.dispersion-relations)第 6 题的钢琴弦方程两边除以线密度（linear density），就是这个样子）。
+
+    （1）推导定理 1 时，哪一步对这个方程不再成立？$F(x-ct)+G(x+ct)$还是它的解吗？
+
+    （2）设$u=F(x-vt)$是它的解，$F$有连续的四阶导数（fourth derivative），$F''$不恒为$0$。$F$只能是什么样的函数？$v$和什么有关？
+
+    （3）开始时只在一段区间里不为$0$的鼓包，还能保持形状、以一个速度平移吗？为什么？
+  hints:
+    - |
+      （1）把$u_{tt}-c^2u_{xx}$换成$-4c^2w_{\xi\eta}$，方程就变成$w_{\xi\eta}=0$；多出的$Bu_{xxxx}$在特征坐标里是什么？（2）代入，比较$F''$和$F''''$。
+    - |
+      （1）$\partial_x$在特征坐标里是$\partial_\xi+\partial_\eta$。（2）记$H=F''$，得$BH''=(c^2-v^2)H$，分$v^2>c^2$、$v^2=c^2$、$v^2<c^2$三种情形解这个常微分方程（ordinary differential equation，见[常系数齐次线性方程](lesson:math.ode.constant-coefficients#thm-constant-coefficients)）。
+    - |
+      （1）定理 1 的证明靠$u_{tt}-c^2u_{xx}=-4c^2w_{\xi\eta}$，把方程变成$w_{\xi\eta}=0$，再推出$w_\xi$只依赖$\xi$。现在方程是$-4c^2w_{\xi\eta}+B(\partial_\xi+\partial_\eta)^4w=0$，推不出$w_{\xi\eta}=0$，这一步不成立。直接代入也看得出：$u=F(x-ct)$时$u_{tt}=c^2u_{xx}$，方程要求$BF''''=0$，所以只有不超过三次的多项式$F$才行，一般的$F(x-ct)+G(x+ct)$不是解。
+
+      （2）$u=F(x-vt)$代入得$v^2F''=c^2F''-BF''''$。记$H=F''$，$BH''=(c^2-v^2)H$，分三种情形解（见[常系数齐次线性方程](lesson:math.ode.constant-coefficients#thm-constant-coefficients)）。$v^2>c^2$时$H''=-\kappa^2H$，$\kappa=\sqrt{(v^2-c^2)/B}$，$H$是周期为$\frac{2\pi}\kappa$的正弦型函数，$F$是同样周期的正弦型函数加一个一次函数或常数，速度$v=\sqrt{c^2+B\kappa^2}$：波长越短，跑得越快。$v^2=c^2$时$H''=0$，$H$是一次函数或不为$0$的常数，$F$是二次或三次多项式；$v^2<c^2$时$H$是$e^{\pm\sqrt{(c^2-v^2)/B}\,s}$的组合，都不是一个鼓包的样子。
+
+      （3）不能。鼓包$F$不恒为$0$，在一段区间以外是$0$，所以$F''$不恒为$0$（否则$F$是一次函数或常数，又在区间外为$0$，只能恒为$0$），而$H=F''$在区间外是$0$；在区间外取一点，那里$H=H'=0$，代进上面三种情形的式子，$H$只能恒为$0$，矛盾。鼓包可以看成许多不同波长的正弦波的叠加（以后用:term[傅里叶变换]{id="math.pde.fourier-transform"}（Fourier transform）来写），它们各以不同的速度跑，跑着跑着就错开了，鼓包边走边变形、散开。这就是:term[色散]{id="physics.oscillations-waves.dispersion"}（dispersion）。
+  reference: |
+    （1）证明靠$u_{tt}-c^2u_{xx}=-4c^2w_{\xi\eta}$得$w_{\xi\eta}=0$；现在是$-4c^2w_{\xi\eta}+B(\partial_\xi+\partial_\eta)^4w=0$，推不出$w_{\xi\eta}=0$。代入$F(x-ct)$得$BF''''=0$，只有不超过三次的多项式才是解。
+
+    （2）$BH''=(c^2-v^2)H$，$H=F''$。$v^2>c^2$：$H$是周期$\frac{2\pi}\kappa$的正弦型函数，$\kappa^2=\frac{v^2-c^2}B$，$F$是正弦型函数加一次函数或常数，$v=\sqrt{c^2+B\kappa^2}$随波长变短而变大；$v^2=c^2$：$F$是二次或三次多项式；$v^2<c^2$：$H$是指数函数的组合。
+
+    （3）不能：鼓包的$F''$在区间外为$0$，而三种情形里在区间上为$0$的$H$只能恒为$0$。鼓包是许多波长的正弦波之和，各自速度不同，会错开、变形散开（色散）。

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 196" width="640" height="196" font-size="14">
+  <!-- 例 2 的斜坡：t = 0、1/2、1、2 时 u 随 x 的形状；第四幅虚线是照特征线硬算的三值形状，强调色竖线是激波 x = 3/2 -->
+  <!-- 每幅 px = X0 + 40(x + 0.5)，py = 160 − 80u；X0 = 30、185、340、495 -->
+  <text x="90" y="28" text-anchor="middle" fill="currentColor"><tspan font-style="italic">t</tspan> = 0</text>
+  <line x1="26" y1="160" x2="154" y2="160" stroke="currentColor" stroke-width="1.2" />
+  <path d="M 161 160 L 153 163.6 L 153 156.4 Z" fill="currentColor" />
+  <line x1="30" y1="164" x2="30" y2="56" stroke="currentColor" stroke-width="1.2" />
+  <path d="M 30 48 L 33.6 56 L 26.4 56 Z" fill="currentColor" />
+  <text x="39" y="60" fill="currentColor"><tspan font-style="italic">u</tspan></text>
+  <text x="161" y="180" text-anchor="middle" fill="currentColor"><tspan font-style="italic">x</tspan></text>
+  <line x1="50" y1="160" x2="50" y2="164" stroke="currentColor" stroke-width="1.2" />
+  <text x="50" y="180" text-anchor="middle" fill="currentColor">0</text>
+  <line x1="90" y1="160" x2="90" y2="164" stroke="currentColor" stroke-width="1.2" />
+  <text x="90" y="180" text-anchor="middle" fill="currentColor">1</text>
+  <line x1="130" y1="160" x2="130" y2="164" stroke="currentColor" stroke-width="1.2" />
+  <text x="130" y="180" text-anchor="middle" fill="currentColor">2</text>
+  <line x1="26" y1="80" x2="30" y2="80" stroke="currentColor" stroke-width="1.2" />
+  <text x="23" y="85" text-anchor="end" fill="currentColor">1</text>
+  <text x="245" y="28" text-anchor="middle" fill="currentColor"><tspan font-style="italic">t</tspan> = 1/2</text>
+  <line x1="181" y1="160" x2="309" y2="160" stroke="currentColor" stroke-width="1.2" />
+  <path d="M 316 160 L 308 163.6 L 308 156.4 Z" fill="currentColor" />
+  <line x1="185" y1="164" x2="185" y2="56" stroke="currentColor" stroke-width="1.2" />
+  <path d="M 185 48 L 188.6 56 L 181.4 56 Z" fill="currentColor" />
+  <text x="194" y="60" fill="currentColor"><tspan font-style="italic">u</tspan></text>
+  <text x="316" y="180" text-anchor="middle" fill="currentColor"><tspan font-style="italic">x</tspan></text>
+  <line x1="205" y1="160" x2="205" y2="164" stroke="currentColor" stroke-width="1.2" />
+  <text x="205" y="180" text-anchor="middle" fill="currentColor">0</text>
+  <line x1="245" y1="160" x2="245" y2="164" stroke="currentColor" stroke-width="1.2" />
+  <text x="245" y="180" text-anchor="middle" fill="currentColor">1</text>
+  <line x1="285" y1="160" x2="285" y2="164" stroke="currentColor" stroke-width="1.2" />
+  <text x="285" y="180" text-anchor="middle" fill="currentColor">2</text>
+  <line x1="181" y1="80" x2="185" y2="80" stroke="currentColor" stroke-width="1.2" />
+  <text x="178" y="85" text-anchor="end" fill="currentColor">1</text>
+  <text x="400" y="28" text-anchor="middle" fill="currentColor"><tspan font-style="italic">t</tspan> = 1</text>
+  <line x1="336" y1="160" x2="464" y2="160" stroke="currentColor" stroke-width="1.2" />
+  <path d="M 471 160 L 463 163.6 L 463 156.4 Z" fill="currentColor" />
+  <line x1="340" y1="164" x2="340" y2="56" stroke="currentColor" stroke-width="1.2" />
+  <path d="M 340 48 L 343.6 56 L 336.4 56 Z" fill="currentColor" />
+  <text x="349" y="60" fill="currentColor"><tspan font-style="italic">u</tspan></text>
+  <text x="471" y="180" text-anchor="middle" fill="currentColor"><tspan font-style="italic">x</tspan></text>
+  <line x1="360" y1="160" x2="360" y2="164" stroke="currentColor" stroke-width="1.2" />
+  <text x="360" y="180" text-anchor="middle" fill="currentColor">0</text>
+  <line x1="400" y1="160" x2="400" y2="164" stroke="currentColor" stroke-width="1.2" />
+  <text x="400" y="180" text-anchor="middle" fill="currentColor">1</text>
+  <line x1="440" y1="160" x2="440" y2="164" stroke="currentColor" stroke-width="1.2" />
+  <text x="440" y="180" text-anchor="middle" fill="currentColor">2</text>
+  <line x1="336" y1="80" x2="340" y2="80" stroke="currentColor" stroke-width="1.2" />
+  <text x="333" y="85" text-anchor="end" fill="currentColor">1</text>
+  <text x="555" y="28" text-anchor="middle" fill="currentColor"><tspan font-style="italic">t</tspan> = 2</text>
+  <line x1="491" y1="160" x2="619" y2="160" stroke="currentColor" stroke-width="1.2" />
+  <path d="M 626 160 L 618 163.6 L 618 156.4 Z" fill="currentColor" />
+  <line x1="495" y1="164" x2="495" y2="56" stroke="currentColor" stroke-width="1.2" />
+  <path d="M 495 48 L 498.6 56 L 491.4 56 Z" fill="currentColor" />
+  <text x="504" y="60" fill="currentColor"><tspan font-style="italic">u</tspan></text>
+  <text x="626" y="180" text-anchor="middle" fill="currentColor"><tspan font-style="italic">x</tspan></text>
+  <line x1="515" y1="160" x2="515" y2="164" stroke="currentColor" stroke-width="1.2" />
+  <text x="515" y="180" text-anchor="middle" fill="currentColor">0</text>
+  <line x1="555" y1="160" x2="555" y2="164" stroke="currentColor" stroke-width="1.2" />
+  <text x="555" y="180" text-anchor="middle" fill="currentColor">1</text>
+  <line x1="595" y1="160" x2="595" y2="164" stroke="currentColor" stroke-width="1.2" />
+  <text x="595" y="180" text-anchor="middle" fill="currentColor">2</text>
+  <line x1="491" y1="80" x2="495" y2="80" stroke="currentColor" stroke-width="1.2" />
+  <text x="488" y="85" text-anchor="end" fill="currentColor">1</text>
+  <path d="M 30 80 L 50 80 L 90 160 L 150 160" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" />
+  <path d="M 185 80 L 225 80 L 245 160 L 305 160" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" />
+  <path d="M 340 80 L 400 80" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" />
+  <path d="M 400 160 L 460 160" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" />
+  <line x1="400" y1="80" x2="400" y2="160" style="stroke: var(--accent, #2563eb)" stroke-width="2.8" />
+  <path d="M 575 80 L 595 80 L 555 160" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="5 4" />
+  <path d="M 495 80 L 575 80" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" />
+  <path d="M 575 160 L 615 160" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" />
+  <line x1="575" y1="80" x2="575" y2="160" style="stroke: var(--accent, #2563eb)" stroke-width="2.8" />
+</svg>

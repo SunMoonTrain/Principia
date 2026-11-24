@@ -1,0 +1,225 @@
+- id: p1
+  tier: easy
+  statement: |
+    三维空间里，开始时的扰动只在两个半径都是$1\,\mathrm m$的小球里：$\varphi=0$，$\psi$在两个小球里是同一个正常数，在别处是$0$。点$P$到两个球心的距离分别是$100\,\mathrm m$、$103\,\mathrm m$，波速$c=340\,\mathrm{m/s}$，照例 1 那样直接用基尔霍夫公式算。$P$处$u$不为零的时间加起来一共多少毫秒？
+  answer:
+    type: number
+    value: 200/17
+    unit: |
+      $\mathrm{ms}$
+  hints:
+    - |
+      方程是线性的，$u$是两个小球各自造成的扰动之和。一个小球造成的扰动，在$P$处什么时候经过？
+    - |
+      由例 1，半径为$a$的小球在离球心$d$（$d>a$）处造成的扰动，只在$\frac{d-a}c<t<\frac{d+a}c$时不为零，在这段时间里是正的。两段时间重叠吗？
+    - |
+      两段分别是$\frac{99}{340}\,\mathrm s<t<\frac{101}{340}\,\mathrm s$和$\frac{102}{340}\,\mathrm s<t<\frac{104}{340}\,\mathrm s$，不重叠，加起来是$\frac4{340}\,\mathrm s=\frac{200}{17}\,\mathrm{ms}\approx11.76\,\mathrm{ms}$。
+  solution: |
+    方程是线性的，由:term[叠加原理]{id="math.pde.superposition-principle"}，$u$是两个小球各自造成的扰动之和。由例 1，半径为$1\,\mathrm m$的小球在离球心$d$处造成的扰动，只在$\frac{d-1}{340}\,\mathrm s<t<\frac{d+1}{340}\,\mathrm s$时不为零，在这段时间里是正的。两段分别是$\frac{99}{340}\,\mathrm s$到$\frac{101}{340}\,\mathrm s$、$\frac{102}{340}\,\mathrm s$到$\frac{104}{340}\,\mathrm s$，不重叠，所以$u$不为零的时间加起来是$\frac4{340}\,\mathrm s=\frac{200}{17}\,\mathrm{ms}\approx11.76\,\mathrm{ms}$。$P$处先后响了两下，中间安静了约$2.9\,\mathrm{ms}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面各项里，初值都足够光滑，$u$是以它们为初值的波动方程$u_{tt}=c^2\Delta u$（$c>0$）的解；三维时$\Delta u=u_{xx}+u_{yy}+u_{zz}$，二维时$\Delta u=u_{xx}+u_{yy}$。下列说法中，正确的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        三维中，以$\vb r$为心、半径为$ct$的球面上处处$\varphi=\psi=0$，那么$u(\vb r,t)=0$
+      - |
+        三维中，$\varphi$、$\psi$只在以原点为心、半径为$a$的球里不为零，那么$t>\frac{2a}c$时，这个球里各点的$u$都是$0$
+      - |
+        二维中，$\varphi$、$\psi$只在以原点为心、半径为$a$的圆盘里不为零，那么$t>\frac{2a}c$时，这个圆盘里各点的$u$都是$0$
+      - |
+        三维中，$\varphi=0$，$\psi$处处不小于$0$，那么$t>0$时处处$u\ge0$
+      - |
+        三维中，$\psi=0$，$\varphi$处处不小于$0$，那么$t>0$时处处$u\ge0$
+    value: [2, 4]
+  hints:
+    - |
+      三维的几项用基尔霍夫公式和惠更斯原理判断，二维的一项想一想圆盘里的初值。A 留意$\varphi$那一项要对$t$求导；D、E 看各项的正负。
+    - |
+      A：试一试$\varphi(\vb r')=|\vb r'|^2-1$、$\psi=0$，看$\vb r=\vb 0$、$ct=1$时。B、C：$t>\frac{2a}c$时，以球（圆盘）里一点为心、半径为$ct$的球面（圆盘）和整块扰动是什么关系？E：想一想[球面波与球对称的初值问题](lesson:math.pde.spherical-waves)第 3 题。
+    - |
+      A：$M_\varphi(\vb 0,\rho)=\rho^2-1$，$u(\vb 0,t)=\pdv{}{t}\bigl[t(c^2t^2-1)\bigr]=3c^2t^2-1$，$ct=1$时是$2$，不对。B：球里一点到扰动各处的距离都不超过$2a<ct$，扰动整个在球面里面，对。C：二维时整个圆盘里的初值都起作用，圆盘盖住扰动以后它们还在起作用，不对。
+
+      D：$u=tM_\psi(\vb r,ct)\ge0$，对。E：那一节第 3 题里$\varphi=e^{-r^2}\ge0$、$c=1$，原点处$t=1$时$u=-e^{-1}<0$，不对。选 B、D。
+  solution: |
+    A：取$\varphi(\vb r')=|\vb r'|^2-1$、$\psi=0$、$\vb r=\vb 0$、$ct=1$，球面$|\vb r'|=1$上$\varphi=\psi=0$。可是$M_\varphi(\vb 0,\rho)=\rho^2-1$，由基尔霍夫公式$u(\vb 0,t)=\pdv{}{t}\bigl[t(c^2t^2-1)\bigr]=3c^2t^2-1$，$ct=1$时是$2$：$\varphi$在球面上为$0$，沿半径的导数却不为$0$，不对。B：设$|\vb r|\le a$，扰动里各点离$\vb r$都不超过$|\vb r|+a\le2a<ct$，扰动整个在半径为$ct$的球面里面，球面附近$\varphi=\psi=0$，由惠更斯原理$u(\vb r,t)=0$，对。
+
+    C：二维时整个圆盘里的初值都起作用，以$\vb r$为心、半径为$ct$的圆盘盖住整块扰动以后，它们仍在起作用。例如$\varphi=0$、$\psi\ge0$不恒为零时，由第 6 题的式子$u>0$，不对。D：$\varphi=0$时$u=tM_\psi(\vb r,ct)$，$\psi\ge0$，所以$u\ge0$，对。
+
+    E：[球面波与球对称的初值问题](lesson:math.pde.spherical-waves)第 3 题里$c=1$、$\varphi=e^{-r^2}\ge0$、$\psi=0$，原点处$t=1$时$u=-e^{-1}<0$，不对。选 B、D。
+
+- id: p3
+  tier: medium
+  statement: |
+    三维的波动方程，$c=3$，$\varphi=0$，$\psi(\vb r)=x^2$，这里$\vb r=(x,y,z)$。用基尔霍夫公式求点$(2,1,0)$处$t=1$时的$u$。
+  answer:
+    type: number
+    value: 7
+  hints:
+    - |
+      $\varphi=0$，公式只剩$tM_\psi(\vb r,ct)$。以$\vb r$为心、半径为$\rho$的球面上的点写成$\vb r+\rho\vb n$，$\vb n$是单位向量，这一点的$x$坐标是$x+\rho n_x$。
+    - |
+      $(x+\rho n_x)^2=x^2+2\rho xn_x+\rho^2n_x^2$。$\vb n$和$-\vb n$成对出现，$n_x$的平均是$0$；$n_x^2$、$n_y^2$、$n_z^2$的平均相等，加起来是$1$。
+    - |
+      $M_\psi(\vb r,\rho)=x^2+\frac{\rho^2}3$，所以$u=t\bigl(x^2+\frac{c^2t^2}3\bigr)$；$x=2$、$c=3$、$t=1$时$u=4+3=7$。
+  solution: |
+    $\varphi=0$，由基尔霍夫公式$u=tM_\psi(\vb r,ct)$。球面上的点写成$\vb r+\rho\vb n$（$|\vb n|=1$），那里$\psi=(x+\rho n_x)^2=x^2+2\rho xn_x+\rho^2n_x^2$。球面上$\vb n$和$-\vb n$成对出现，$n_x$的平均是$0$；$n_x^2$、$n_y^2$、$n_z^2$的平均相等，加起来是$1$，各是$\frac13$。所以$M_\psi(\vb r,\rho)=x^2+\frac{\rho^2}3$。
+
+    $u=t\bigl(x^2+\frac{c^2t^2}3\bigr)=tx^2+3t^3$，在$(2,1,0)$处$t=1$时是$4+3=7$。验算：$u_{tt}=18t$，$c^2\Delta u=9\cdot2t=18t$；$t=0$时$u=0$，$u_t=x^2$。
+
+- id: p4
+  tier: medium
+  statement: |
+    三维的波动方程，$c=1$，$\psi=0$；$|\vb r|<1$时$\varphi(\vb r)=1$，其余$\varphi=0$。$\varphi$不连续，这样的$u$只是放宽了意思的解，这里直接照基尔霍夫公式算。求离原点$10$处$t=10.4$时的$u$。
+  answer:
+    type: number
+    value: -1/50
+  hints:
+    - |
+      $\psi=0$，公式只剩$\pdv{}{t}\bigl[tM_\varphi(\vb r,ct)\bigr]$。$M_\varphi$照例 1 算。
+    - |
+      照例 1，离原点$R$处，$R-1<ct<R+1$时$tM_\varphi(\vb r,ct)=\frac{1-(R-ct)^2}{4cR}$，就是例 1 的$u$里$a=1$、$v_0=1$的情形。再对$t$求导。
+    - |
+      对$t$求导得$\frac{R-ct}{2R}$。$R=10$、$c=1$、$t=10.4$时是$\frac{-0.4}{20}=-\frac1{50}$。
+  solution: |
+    $\psi=0$，由基尔霍夫公式$u=\pdv{}{t}\bigl[tM_\varphi(\vb r,ct)\bigr]$。$\varphi$是半径为$1$的球里的$1$，照例 1，离原点$R$处，$R-1<ct<R+1$时$tM_\varphi(\vb r,ct)=\frac{1-(R-ct)^2}{4cR}$，其余时候是$0$。对$t$求导，得$u=\frac{R-ct}{2R}$（$R-1<ct<R+1$），在$R=10$、$c=1$、$t=10.4$处是$-\frac{0.4}{20}=-\frac1{50}$。
+
+    这里的$u$在$9<t<11$时从$\frac1{20}$均匀地降到$-\frac1{20}$，两端各跳变一次：开始时只往一个方向鼓起，经过这里的扰动却先正后负。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$u$在$t\ge0$时二阶偏导数连续，满足三维的波动方程$u_{tt}=c^2\Delta u$和初值$u(\vb r,0)=\varphi(\vb r)$、$u_t(\vb r,0)=\psi(\vb r)$。固定一点$\vb r$，把$u(\cdot,t)$在以$\vb r$为心、半径为$\rho$的球面上的平均记作$M(\rho,t)$。
+
+    （1）证明$\rho^2\pdv M\rho=\frac1{4\pi}\iiint_{|\vb r'-\vb r|\le\rho}\Delta u(\vb r',t)\dd V'$，再由此证明$\rho M$在$\rho>0$上满足$(\rho M)_{tt}=c^2(\rho M)_{\rho\rho}$。
+
+    （2）用[球面波与球对称的初值问题](lesson:math.pde.spherical-waves)定理 2 的办法和那一节的第 5 题（1），推出基尔霍夫公式，从而说明这样的$u$至多一个。
+
+    （3）反过来，设$\varphi$有连续的三阶偏导数、$\psi$有连续的二阶偏导数，验证基尔霍夫公式给出的$u$满足方程和两个初值。
+  hints:
+    - |
+      （1）把球面上的点写成$\vb r+\rho\vb n$，$\vb n$跑遍单位球面$|\vb n|=1$；面积放大$\rho^2$倍，所以$M=\frac1{4\pi}\oint_{|\vb n|=1}u(\vb r+\rho\vb n,t)\dd a$，$\dd a$是单位球面的面积元（area element）。对$\rho$求导，再变回半径为$\rho$的球面。（2）$W=\rho M$在$\rho\to0^+$时趋于什么？（3）先对一般的$g$证明$(\rho M_g)_{\rho\rho}=\rho\,\Delta M_g$，这里的$\Delta$对$\vb r$求。
+    - |
+      （1）$\pdv{}\rho u(\vb r+\rho\vb n,t)=\nabla u\cdot\vb n$，$\vb n$正是半径为$\rho$的球面的外法向（outward normal），用散度定理（divergence theorem）。再把$\Delta u$换成$\frac1{c^2}u_{tt}$，把球分成一层层球壳，两边对$\rho$求导。（2）$\rho\to0^+$时$W\to0$，开始时$W=\rho M_\varphi(\vb r,\rho)$、$W_t=\rho M_\psi(\vb r,\rho)$，和那一节定理 2 里的$w$一样。（3）$tM_\psi(\vb r,ct)=\frac1c\bigl[\rho M_\psi(\vb r,\rho)\bigr]_{\rho=ct}$。
+    - |
+      （1）$\vb r'=\vb r+\rho\vb n$把单位球面变成半径为$\rho$的球面，面积放大$\rho^2$倍，所以$M=\frac1{4\pi}\oint_{|\vb n|=1}u(\vb r+\rho\vb n,t)\dd a$。$u$的偏导数连续，对$\rho$求导可以移进积分号（区间上的情形见[含参变量积分](lesson:math.analysis.parameter-integrals#thm-leibniz-rule)，球面上同理），由链式法则（chain rule）被积函数变成$\nabla u\cdot\vb n$；变回半径为$\rho$的球面，$\vb n$是它的外法向，由散度定理（divergence theorem）得
+
+      $$
+      \pdv M\rho=\frac1{4\pi\rho^2}\oint_{|\vb r'-\vb r|=\rho}\nabla u\cdot\vb n\,\dd a'=\frac1{4\pi\rho^2}\iiint_{|\vb r'-\vb r|\le\rho}\Delta u\,\dd V' .
+      $$
+
+      把$\Delta u$换成$\frac1{c^2}u_{tt}$，把球分成一层层同心的球壳，三重积分（triple integral）就是$\int_0^\rho\Bigl(\oint_{|\vb r'-\vb r|=s}\frac{u_{tt}}{c^2}\dd a'\Bigr)\dd s$。由微积分基本定理（fundamental theorem of calculus）对$\rho$求导，再把对$t$的求导移出积分号（$u_{tt}$连续），得$(\rho^2M_\rho)_\rho=\frac{\rho^2}{c^2}M_{tt}$，即$\rho^2M_{\rho\rho}+2\rho M_\rho=\frac{\rho^2}{c^2}M_{tt}$。而$(\rho M)_{\rho\rho}=\rho M_{\rho\rho}+2M_\rho$，两边除以$\rho$就是$(\rho M)_{tt}=c^2(\rho M)_{\rho\rho}$。
+
+      （2）记$W=\rho M$；$u$连续，$\rho\to0^+$时$M\to u(\vb r,t)$、$W\to0$，开始时$W=\rho M_\varphi(\vb r,\rho)$、$W_t=\rho M_\psi(\vb r,\rho)$。这正是那一节定理 2 里$w=ru$满足的问题，只是$\varphi(r)$、$\psi(r)$换成了$M_\varphi(\vb r,\rho)$、$M_\psi(\vb r,\rho)$；它们照$\frac1{4\pi}\oint_{|\vb n|=1}\varphi(\vb r+\rho\vb n)\dd a$对一切$\rho$都有定义，是$\rho$的偶函数，满足那里的条件。所以$W$就是把初值延成奇函数、代进达朗贝尔公式得到的那一个，由那一节第 5 题（1），$u(\vb r,t)=\lim_{\rho\to0^+}\frac W\rho=M_\varphi(\vb r,ct)+ct\pdv{M_\varphi}\rho(\vb r,ct)+tM_\psi(\vb r,ct)$。前两项正是$\pdv{}{t}\bigl[tM_\varphi(\vb r,ct)\bigr]$，$u$由$\varphi$、$\psi$完全定出，所以这样的解至多一个。
+
+      （3）对二阶偏导数连续的$g$，（1）的算法给出$(\rho^2\partial_\rho M_g)_\rho=\rho^2M_{\Delta g}$，即$(\rho M_g)_{\rho\rho}=\rho M_{\Delta g}$；把对$\vb r$的求导移进单位球面上的积分，$M_{\Delta g}=\Delta M_g$。$v=tM_\psi(\vb r,ct)$就是$\frac1c\bigl[\rho M_\psi(\vb r,\rho)\bigr]_{\rho=ct}$，所以
+
+      $$
+      v_{tt}=c\bigl[(\rho M_\psi)_{\rho\rho}\bigr]_{\rho=ct}=c\cdot ct\,\Delta M_\psi(\vb r,ct)=c^2\Delta v ,
+      $$
+
+      $t=0$时$v=0$，$v_t=M_\psi(\vb r,0^+)=\psi(\vb r)$。同样，$tM_\varphi(\vb r,ct)$满足方程，初值是$0$和$\varphi$；$\varphi$有连续的三阶偏导数，它对$t$的导数$w$也满足方程，$w(\vb r,0)=\varphi(\vb r)$，$w_t(\vb r,0)$是$c^2\Delta\bigl[tM_\varphi(\vb r,ct)\bigr]$在$t=0$处的值，即$0$。$w+v$就是满足方程和两个初值的解。
+  reference: |
+    （1）$M=\frac1{4\pi}\oint_{|\vb n|=1}u(\vb r+\rho\vb n,t)\dd a$，积分号下对$\rho$求导、用链式法则，$M_\rho=\frac1{4\pi\rho^2}\oint\nabla u\cdot\vb n\,\dd a'$，由散度定理等于$\frac1{4\pi\rho^2}\iiint_{B_\rho}\Delta u\,\dd V'$。换成$\frac1{c^2}u_{tt}$，按球壳分层、对$\rho$求导得$(\rho^2M_\rho)_\rho=\frac{\rho^2}{c^2}M_{tt}$，即$(\rho M)_{tt}=c^2(\rho M)_{\rho\rho}$。
+
+    （2）$W=\rho M$在$\rho\to0^+$时趋于$0$，初值$\rho M_\varphi(\vb r,\rho)$、$\rho M_\psi(\vb r,\rho)$（关于$\rho$是偶函数乘$\rho$，满足球面波一节定理 2 的条件），所以$W$由奇延拓加达朗贝尔公式唯一确定；由那一节第 5 题（1），$u(\vb r,t)=\lim W/\rho=M_\varphi+ct\,\partial_\rho M_\varphi+tM_\psi=\partial_t[tM_\varphi(\vb r,ct)]+tM_\psi(\vb r,ct)$，所以至多一个。
+
+    （3）同样的算法加上$M_{\Delta g}=\Delta M_g$得$(\rho M_g)_{\rho\rho}=\rho\Delta M_g$。$v=tM_\psi(\vb r,ct)=\frac1c[\rho M_\psi]_{\rho=ct}$，$v_{tt}=c[(\rho M_\psi)_{\rho\rho}]_{\rho=ct}=c^2t\Delta M_\psi=c^2\Delta v$，$v(\cdot,0)=0$，$v_t(\cdot,0)=\psi$。$tM_\varphi(\vb r,ct)$同样是解、初值$0$和$\varphi$，它对$t$的导数$w$（要$\varphi$有三阶连续偏导数）也是解，$w(\cdot,0)=\varphi$，$w_t(\cdot,0)=c^2\Delta[tM_\varphi]_{t=0}=0$。$v+w$满足方程和初值。
+
+- id: p6
+  tier: hard
+  statement: |
+    二维的初值问题$u_{tt}=c^2(u_{xx}+u_{yy})$，$u(\vb r,0)=0$，$u_t(\vb r,0)=\psi(\vb r)$，其中$\vb r=(x,y)$，$\psi$有连续的二阶偏导数。把它看成三维里和$z$无关的初值问题来解。
+
+    （1）用基尔霍夫公式证明$t>0$时
+
+    $$
+    u(\vb r,t)=\frac1{2\pi c}\iint_{|\vb r'-\vb r|<ct}\frac{\psi(\vb r')}{\sqrt{c^2t^2-|\vb r'-\vb r|^2}}\dd A' ,
+    $$
+
+    这里$\vb r'$是平面上的点，$\dd A'$是平面上的面积元（area element）。
+
+    （2）设$\psi\ge0$只在以原点为心、半径为$a$的圆盘里不为零，$\iint\psi\,\dd A=Q>0$。说明离原点$R$（$R>a$）处，$t>\frac{R+a}c$以后$u$一直大于$0$，并且$t\to+\infty$时$tu\to\frac Q{2\pi c^2}$。
+  hints:
+    - |
+      （1）三维里沿$z$方向平移解，得到的仍是同一个初值问题的解，由基尔霍夫公式里的唯一性，解和$z$无关，所以$u_{zz}=0$，它满足二维的方程。公式只剩$tM_\psi$一项，把球面分成上、下两半，投到平面上。（2）$t>\frac{R+a}c$时，以$\vb r$为心、半径为$ct$的圆盘和整块扰动是什么关系？
+    - |
+      （1）以$(\vb r,0)$为心、半径为$ct$的上半球面是$z'=h(\vb r')=\sqrt{c^2t^2-s^2}$的图像，$s=|\vb r'-\vb r|$。由[参数曲面与曲面面积](lesson:math.vector-calculus.parametric-surfaces)里函数图像的面积元，$\dd a'=\sqrt{1+h_{x'}^2+h_{y'}^2}\,\dd A'=\frac{ct}{h}\dd A'$；下半球面一样。（2）扰动里各点的$s\le R+a<ct$，所以$\sqrt{c^2t^2-s^2}$夹在$\sqrt{c^2t^2-(R+a)^2}$和$ct$之间。
+    - |
+      （1）三维里沿$z$方向平移解，得到的仍是同一个初值问题的解，由基尔霍夫公式里的唯一性就是它自己，所以解和$z$无关，$u_{zz}=0$，$u$满足二维的方程。由基尔霍夫公式，$u(\vb r,t)=tM_\psi\bigl((\vb r,0),ct\bigr)=\frac1{4\pi c^2t}\oint\psi\,\dd a'$，积分在以$(\vb r,0)$为心、半径为$ct$的球面上，$\psi$只依赖$\vb r'=(x',y')$。上半球面是$z'=h(\vb r')=\sqrt{c^2t^2-s^2}$的图像（$s=|\vb r'-\vb r|<ct$），$h_{x'}=-\frac{x'-x}h$，$h_{y'}=-\frac{y'-y}h$，所以$\dd a'=\sqrt{1+h_{x'}^2+h_{y'}^2}\,\dd A'=\frac{ct}h\dd A'$；下半球面一样，赤道那一圈面积为零。于是
+
+      $$
+      u=\frac{2}{4\pi c^2t}\iint_{s<ct}\frac{ct\,\psi(\vb r')}{\sqrt{c^2t^2-s^2}}\dd A'=\frac1{2\pi c}\iint_{s<ct}\frac{\psi(\vb r')}{\sqrt{c^2t^2-s^2}}\dd A' .
+      $$
+
+      被积函数在圆周$s=ct$附近变大，这是反常积分（improper integral）；用以$\vb r$为心的极坐标（polar coordinates），$\int_0^{ct}\frac{s\,\dd s}{\sqrt{c^2t^2-s^2}}=ct$，$\psi$有界，所以积分收敛。
+
+      （2）$t>\frac{R+a}c$时，扰动里各点到$\vb r$的距离$s\le R+a<ct$，整块扰动都在圆盘里，被积函数在扰动上不再变大。$ct\ge\sqrt{c^2t^2-s^2}\ge\sqrt{c^2t^2-(R+a)^2}>0$，所以$\frac Q{2\pi c^2t}\le u\le\frac Q{2\pi c\sqrt{c^2t^2-(R+a)^2}}$，$u>0$。两边乘$t$，$t\to+\infty$时都趋于$\frac Q{2\pi c^2}$，所以$tu\to\frac Q{2\pi c^2}$：尾巴一直在，按$\frac1t$变弱。三维时，同样的扰动在$t>\frac{R+a}c$以后$u=0$。
+  reference: |
+    （1）$z$方向平移不变加唯一性，解和$z$无关，满足二维方程。$u=tM_\psi((\vb r,0),ct)=\frac1{4\pi c^2t}\oint\psi\,\dd a'$；上下半球面都是$z'=\pm\sqrt{c^2t^2-s^2}$的图像，$\dd a'=\frac{ct}{\sqrt{c^2t^2-s^2}}\dd A'$，两半相加得$u=\frac1{2\pi c}\iint_{s<ct}\frac{\psi}{\sqrt{c^2t^2-s^2}}\dd A'$；圆周附近的反常积分收敛（极坐标下$\int_0^{ct}\frac{s\,\dd s}{\sqrt{c^2t^2-s^2}}=ct$）。
+
+    （2）$t>\frac{R+a}c$时整块扰动在圆盘里，$s\le R+a$，$\frac Q{2\pi c^2t}\le u\le\frac Q{2\pi c\sqrt{c^2t^2-(R+a)^2}}$，所以$u>0$且$tu\to\frac Q{2\pi c^2}$：尾巴按$\frac1t$衰减，永不为零；三维这时$u=0$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    一声雷常常隆隆地响好几秒：闪电的放电通道上每一小段发出的短促声响，按惠更斯原理都干净地经过你，可各段离你远近不同，声音先后到达。把放电通道看成一条从地面竖直向上、长$3\,\mathrm{km}$的线段，通道上各处同时发出一声短促的声响，声速取$c=340\,\mathrm{m/s}$，你站在地面上。
+
+    （1）你离通道的下端$2\,\mathrm{km}$时，雷声大约持续多久？离下端$15\,\mathrm{km}$时呢？站得越远，照这个模型算出的雷声怎样变化？
+
+    （2）要是在$15\,\mathrm{km}$外听到的雷声也隆隆地响了好几秒，放电通道该是什么样子？再想一想，还有什么会把雷声拖长、让它忽大忽小。
+  hints:
+    - |
+      （1）雷声从哪一处的声音到达时开始，到哪一处的声音到达时结束？（2）$t$时刻传到你这里的声音，来自以你为心、半径为$ct$的球面和通道相交的地方；这个球面扫过整条通道要多久，雷声就响多久。离得很远时，这个球面在通道附近差不多是什么样子？
+    - |
+      （1）记通道长$L=3\,\mathrm{km}$，你到下端的距离是$d$；通道上高$z$处到你的距离是$\sqrt{d^2+z^2}$，雷声持续$\frac{\sqrt{d^2+L^2}-d}c$。分子乘上$\sqrt{d^2+L^2}+d$再除回去，看$d$比$L$大得多时怎样。（2）离得远时，那个球面在通道附近差不多是一张和视线垂直的平面，雷声持续的时间约是通道沿视线方向的长度除以$c$。实际的放电通道曲曲折折、带着分叉，云里常有几公里长、差不多水平的部分；附近的山、楼房还会把声音反射回来。
+    - |
+      （1）记通道长$L=3\,\mathrm{km}$，你到下端的距离是$d$。最近的是下端，最远的是上端，雷声从$\frac dc$持续到$\frac{\sqrt{d^2+L^2}}c$，一共
+
+      $$
+      \frac{\sqrt{d^2+L^2}-d}c=\frac{L^2}{c\bigl(\sqrt{d^2+L^2}+d\bigr)} .
+      $$
+
+      $d=2\,\mathrm{km}$时约$\frac{3606-2000}{340}\,\mathrm s\approx4.7\,\mathrm s$；$d=15\,\mathrm{km}$时约$\frac{15297-15000}{340}\,\mathrm s\approx0.87\,\mathrm s$。站得越远越短：$d$比$L$大得多时约为$\frac{L^2}{2cd}$，和$d$成反比。
+
+      （2）离得远时，以你为心、半径为$ct$的球面在通道附近差不多是一张和视线垂直的平面，它扫过通道所用的时间约是通道沿视线方向的长度除以$c$。竖直的通道和视线差不多垂直，沿视线方向只占约$\frac{L^2}{2d}$，所以越远越短；单靠通道的形状，雷声要在$15\,\mathrm{km}$外响好几秒，通道沿视线方向就得伸展一公里以上。实际的放电通道曲曲折折、带着分叉，云里常有几公里长、差不多水平的部分：沿视线方向伸展$3\,\mathrm{km}$的一段，在远处给出约$9\,\mathrm s$的雷声，不随距离变短。
+
+      离你差不多远的几段通道，声音同时到达、叠在一起就特别响，所以雷声忽大忽小。附近的山、楼房会把声音反射回来，同一声响沿长短不同的路先后到达，又把雷声拖长。
+  reference: |
+    （1）$L=3\,\mathrm{km}$，离下端$d$时持续$\frac{\sqrt{d^2+L^2}-d}c=\frac{L^2}{c(\sqrt{d^2+L^2}+d)}$：$d=2\,\mathrm{km}$时约$4.7\,\mathrm s$（距离从$2\,\mathrm{km}$到$\sqrt{13}\,\mathrm{km}\approx3.61\,\mathrm{km}$），$d=15\,\mathrm{km}$时约$0.87\,\mathrm s$；$d\gg L$时约$\frac{L^2}{2cd}$，越远越短。
+
+    （2）远处半径$ct$的球面在通道附近近似是垂直于视线的平面，持续时间约为通道沿视线方向的长度除以$c$，竖直通道沿视线只占约$\frac{L^2}{2d}$。只算通道形状，$15\,\mathrm{km}$外仍响好几秒，通道沿视线方向要伸展一公里以上：实际通道曲折、分叉，云里常有几公里长的近水平段，沿视线方向$3\,\mathrm{km}$给出约$9\,\mathrm s$，不随距离缩短。离观察者差不多远的几段同时到达时声音叠加变响，所以忽大忽小；附近的山、楼房的反射让同一声响沿不同路径先后到达，进一步拖长。
+
+- id: p8
+  tier: thinking
+  statement: |
+    光学的:term[惠更斯原理]{id="physics.optics.huygens-principle"}说，:term[波阵面]{id="physics.optics.wavefront"}（wavefront）上每一点都发出:term[次波]{id="physics.optics.secondary-wavelet"}（secondary wavelet），次波的包络（envelope）就是新的波阵面；可次波向各个方向传，作图时却只取向前的包络。
+
+    （1）设初值只依赖$x$：$\varphi=\varphi(x)$，$\psi=\psi(x)$。用[参数曲面与曲面面积](lesson:math.vector-calculus.parametric-surfaces)第 7 题证明，只依赖$x$的函数$g$的球面平均是$M_g(\vb r,\rho)=\frac1{2\rho}\int_{x-\rho}^{x+\rho}g(s)\dd s$；再证明这时基尔霍夫公式就是一维的达朗贝尔公式。
+
+    （2）沿$x$轴正方向传播的平面波（plane wave）$u=\varphi(x-ct)$，开始时$u_t=-c\varphi'(x)$。用（1）说明：没有初速度、只有初位移时，波会分成向前、向后两半；是什么把向后的一半抵消了？这和光学作图只取向前的包络有什么关系？
+  hints:
+    - |
+      （1）$g$只依赖$x$时，半径为$\rho$的球面上$x$坐标在$s$到$s+\dd s$之间的一条带子，面积是多少？（2）把$\psi=-c\varphi'$代进（1）得到的达朗贝尔公式，两项各是什么？
+    - |
+      （1）由那道题，这条带子的面积是$2\pi\rho\,\dd s$，所以$\oint g\,\dd a'=2\pi\rho\int_{x-\rho}^{x+\rho}g(s)\dd s$。求$\pdv{}{t}\bigl[tM_\varphi(\vb r,ct)\bigr]$时用微积分基本定理。（2）积分那一项是$\frac1{2c}\int_{x-ct}^{x+ct}\bigl(-c\varphi'(s)\bigr)\dd s$。
+    - |
+      （1）球面$|\vb r'-\vb r|=\rho$被两个平面$x'=s$、$x'=s+\dd s$截下的带子，面积是$2\pi\rho\,\dd s$，和$s$无关，所以
+
+      $$
+      M_g(\vb r,\rho)=\frac1{4\pi\rho^2}\cdot2\pi\rho\int_{x-\rho}^{x+\rho}g(s)\dd s=\frac1{2\rho}\int_{x-\rho}^{x+\rho}g(s)\dd s .
+      $$
+
+      于是$tM_\psi(\vb r,ct)=\frac1{2c}\int_{x-ct}^{x+ct}\psi(s)\dd s$，$tM_\varphi(\vb r,ct)=\frac1{2c}\int_{x-ct}^{x+ct}\varphi(s)\dd s$。由微积分基本定理，后者对$t$求导是$\frac12\bigl[\varphi(x+ct)+\varphi(x-ct)\bigr]$，两项相加正是达朗贝尔公式。
+
+      （2）没有初速度、只有初位移时$u=\frac12\varphi(x-ct)+\frac12\varphi(x+ct)$：一半向前、一半向后。加上$\psi=-c\varphi'$，积分那一项是$-\frac12\bigl[\varphi(x+ct)-\varphi(x-ct)\bigr]$，和起来$u=\varphi(x-ct)$：初速度那一项补足了向前的一半，正好抵消向后的一半。
+
+      光学作图把波阵面上每一点当作发出次波的源；如果只看各点偏离了多少，次波向前、向后一样强，可向前走的波阵面上各点还有确定的速度$u_t$，它记着波往哪边走。基尔霍夫公式把$u$和$u_t$都算进去，两部分在前方相加、在后方相消，所以「只取向前的包络」不是另加的规则，而是两部分合起来的结果，光学里给次波加上随方向变化的强弱，道理就在这里。本节的惠更斯原理又保证每个点发出的扰动是一层薄薄的球壳、不拖尾巴，次波的包络才是一个清楚的波阵面。
+  reference: |
+    （1）只依赖$x$时，球面上$x'\in[s,s+\dd s]$的带子面积是$2\pi\rho\,\dd s$（参数曲面一节第 7 题），$M_g=\frac1{2\rho}\int_{x-\rho}^{x+\rho}g$。$tM_\psi(\vb r,ct)=\frac1{2c}\int_{x-ct}^{x+ct}\psi$，$\partial_t[tM_\varphi]=\frac12[\varphi(x+ct)+\varphi(x-ct)]$：正是达朗贝尔公式。
+
+    （2）没有初速度时分成向前、向后两半；$\psi=-c\varphi'$的积分项是$-\frac12[\varphi(x+ct)-\varphi(x-ct)]$，补足向前的一半、抵消向后的一半，$u=\varphi(x-ct)$。光学作图里的次波只记了「偏离多少」，波阵面上还有速度$u_t$，记着传播方向；基尔霍夫公式同时用$u$、$u_t$，向后的贡献相消，所以只取向前的包络（菲涅耳随方向变化的强弱正对应于此）。本节的惠更斯原理保证每个次波是一层薄球壳，包络才清楚；二维时次波拖尾巴。

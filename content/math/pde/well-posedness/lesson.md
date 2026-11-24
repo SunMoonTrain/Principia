@@ -1,9 +1,9 @@
 ---
 id: math.pde.well-posedness
 title: |
-  适定性与能量方法
+  适定性
 goal: |
-  知道什么是适定的问题，并会用能量方法证明波动方程和热方程的解唯一。
-prerequisites: [math.pde.wave-dalembert, math.pde.heat-equation]
+  知道适定的问题要满足哪三条，并会举例说明一个定解问题为什么不适定。
+prerequisites: [math.pde.wave-dalembert, math.pde.heat-equation, math.calculus.hyperbolic-functions]
 status: outline
 ---

@@ -80,7 +80,7 @@ $R$的形状来自施密特正交化的次序：$\vb a_1$只用$\vb q_1$，$\vb 
 
 **为什么想到这么做**：多项式也是向量，定理只用到内积；$[-1,1]$关于原点对称，奇函数的积分是$0$，很多内积直接为$0$。
 
-**推导**：$u_1=1$。$\langle x,1\rangle=\int_{-1}^1x\dd x=0$，所以$u_2=x$。$\langle x^2,1\rangle=\frac23$，$\langle1,1\rangle=2$，$\langle x^2,x\rangle=0$，所以$u_3=x^2-\frac{2/3}2=x^2-\frac13$。三个多项式两两:term[正交]{id="math.linear-algebra.orthogonal"}，乘上适当的常数，就是解偏微分方程（partial differential equation）时会遇到的勒让德多项式（Legendre polynomials，见[球坐标分离变量与勒让德多项式](lesson:math.pde.legendre-polynomials)）。
+**推导**：$u_1=1$。$\langle x,1\rangle=\int_{-1}^1x\dd x=0$，所以$u_2=x$。$\langle x^2,1\rangle=\frac23$，$\langle1,1\rangle=2$，$\langle x^2,x\rangle=0$，所以$u_3=x^2-\frac{2/3}2=x^2-\frac13$。三个多项式两两:term[正交]{id="math.linear-algebra.orthogonal"}，乘上适当的常数，就是解:term[偏微分方程]{id="math.pde.pde"}（partial differential equation）时会遇到的勒让德多项式（Legendre polynomials，见[球坐标分离变量与勒让德多项式](lesson:math.pde.legendre-polynomials)）。
 
 ## 常见误区
 

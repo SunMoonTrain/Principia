@@ -1,0 +1,179 @@
+- id: p1
+  tier: easy
+  statement: |
+    向外传播的:term[球面波]{id="math.pde.spherical-wave"}$u=\frac{F(r-ct)}r$，$c=340\,\mathrm{m/s}$。$t=0$时，$r=2\,\mathrm m$处$u=0.9$。求$t=0.01\,\mathrm s$时$r=5.4\,\mathrm m$处的$u$。
+  answer:
+    type: number
+    value: 1/3
+  hints:
+    - |
+      $F$的形状以速度$c$向外平移，$u$还要除以$r$。两处的$r-ct$各是多少？
+    - |
+      $t=0.01\,\mathrm s$时$ct=3.4\,\mathrm m$，$r=5.4\,\mathrm m$处$r-ct=2\,\mathrm m$，和$t=0$时$r=2\,\mathrm m$处一样，所以两处$F$的值相同，都是$ru=2\times0.9=1.8$。
+    - |
+      $u=\frac{1.8}{5.4}=\frac13\approx0.333$。
+  solution: |
+    $t=0.01\,\mathrm s$时$ct=3.4\,\mathrm m$，$r=5.4\,\mathrm m$处$r-ct=2\,\mathrm m$，和$t=0$时$r=2\,\mathrm m$处一样，两处$F$的值相同，都是$ru=2\times0.9=1.8$。所以$u=\frac{1.8}{5.4}=\frac13$：形状不变地走到$2.7$倍远的地方，高低变为原来的$\frac1{2.7}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    三维的波动方程$u_{tt}=c^2\Delta u$（$c>0$），$r$是到原点的距离。下列说法中，正确的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $u=\frac{\cos(r-ct)}{r^2}$在$r>0$上满足方程
+      - |
+        $u=\frac{\cos(r-ct)}r$在$r>0$上满足方程
+      - |
+        $u=r^2+3c^2t^2$满足方程
+      - |
+        在原点附近有界、在$r>0$上二阶偏导数连续的球面波，向外传播的部分是$\frac{\cos(r-ct)}r$时，向内传播的部分是$-\frac{\cos(r+ct)}r$
+      - |
+        向外传播的球面波$\frac{F(r-ct)}r$（$F$只在一段区间上不为零）在$r=1$处从开始动到又静止用了时间$\tau$，那么在$r=2$处要用$2\tau$
+    value: [2, 3, 4]
+  hints:
+    - |
+      A、B 用定理 1：$u$在$r>0$上满足方程，当且仅当$w=ru$满足$w_{tt}=c^2w_{rr}$。C 没有限定$r>0$，原点也算在内，可以用直角坐标直接算。D 用原点有界时的$G(s)=-F(-s)$。E 想一想$F$的形状怎样走。
+    - |
+      A 的$w=\frac{\cos(r-ct)}r$，B 的$w=\cos(r-ct)$，各算$w_{tt}$和$c^2w_{rr}$；C 的$u=x^2+y^2+z^2+3c^2t^2$，算$u_{tt}$和$c^2\Delta u$。D 里$F(s)=\cos s$。E：$F$只在$[\alpha,\beta]$上不为零时，$r$处的$u$在哪段时间里可能不为零？
+    - |
+      A：$w_{tt}=-\frac{c^2\cos(r-ct)}r$，$c^2w_{rr}$却比它多出$\frac{2c^2\sin(r-ct)}{r^2}+\frac{2c^2\cos(r-ct)}{r^3}$，不满足。B：$w=\cos(r-ct)$是以$c$向右的:term[行波]{id="math.pde.traveling-wave"}（traveling wave），满足。C：$u_{tt}=6c^2$，$\Delta u=2+2+2=6$，$u_{tt}=c^2\Delta u$在每一点（包括原点）都成立。
+
+      D：$G(s)=-F(-s)=-\cos s$，对。E：$r$处只在$\alpha\le r-ct\le\beta$时可能不为零，这段时间长$\frac{\beta-\alpha}c$，和$r$无关，不对。选 B、C、D。
+  solution: |
+    由定理 1，$u$在$r>0$上满足方程当且仅当$w=ru$满足$w_{tt}=c^2w_{rr}$。A：$w=\frac{\cos(r-ct)}r$，$w_{tt}=-\frac{c^2\cos(r-ct)}r$，而$c^2w_{rr}$比它多出$\frac{2c^2\sin(r-ct)}{r^2}+\frac{2c^2\cos(r-ct)}{r^3}$，不满足。B：$w=\cos(r-ct)$是以$c$向右的:term[行波]{id="math.pde.traveling-wave"}，满足。C 没有限定$r>0$，用直角坐标直接算：$u=x^2+y^2+z^2+3c^2t^2$，$u_{tt}=6c^2=c^2\Delta u$，原点也满足。
+
+    D：原点有界要求$G(s)=-F(-s)$，$F(s)=\cos s$时$G(s)=-\cos s$，向内的部分是$-\frac{\cos(r+ct)}r$，对；这时$u=\frac{2\sin r\sin ct}r$，在原点附近确实有界。E：$F$只在$[\alpha,\beta]$上不为零时，$r$处只在$\frac{r-\beta}c\le t\le\frac{r-\alpha}c$时可能动，这段时间长$\frac{\beta-\alpha}c$，和$r$无关，不对。选 B、C、D。
+
+- id: p3
+  tier: medium
+  statement: |
+    $c=1$，$u$是在原点附近有界的球面波，$u(r,0)=e^{-r^2}$，$u_t(r,0)=0$。求原点处$t=1$时的值，即$\lim_{r\to0^+}u(r,1)$。
+  answer:
+    type: number
+    value: -exp(-1)
+  hints:
+    - |
+      由定理 2，$\psi=0$时$u(r,t)=\frac{(r-ct)\varphi(|r-ct|)+(r+ct)\varphi(r+ct)}{2r}$。$r\to0^+$时分子、分母都趋于$0$。
+    - |
+      $t=1$时把分子记作$g(r)=(r-1)e^{-(r-1)^2}+(r+1)e^{-(r+1)^2}$，$g(0)=0$，所以$\lim_{r\to0^+}\frac{g(r)}{2r}=\frac{g'(0)}2$（导数的定义）。
+    - |
+      $\bigl(se^{-s^2}\bigr)'=(1-2s^2)e^{-s^2}$，所以$g'(0)=2(1-2)e^{-1}=-2e^{-1}$，原点处的值是$-e^{-1}\approx-0.368$。
+  solution: |
+    由定理 2，$\psi=0$、$t=1$时$u(r,1)=\frac{g(r)}{2r}$，$g(r)=(r-1)e^{-(r-1)^2}+(r+1)e^{-(r+1)^2}$。$g(0)=0$，由导数的定义，$\lim_{r\to0^+}u(r,1)=\frac{g'(0)}2$。$\bigl(se^{-s^2}\bigr)'=(1-2s^2)e^{-s^2}$在$s=\pm1$处都是$-e^{-1}$，所以$g'(0)=-2e^{-1}$，原点处的值是$-e^{-1}\approx-0.368$：开始时原点附近鼓起，$t=1$时原点处反而凹了下去。
+
+- id: p4
+  tier: medium
+  statement: |
+    $c=2$，$u$是在原点附近有界的球面波，$u(r,0)=0$，$u_t(r,0)=e^{-r^2}$。求$u\bigl(1,\frac12\bigr)$。
+  answer:
+    type: number
+    value: (1-exp(-4))/8
+  hints:
+    - |
+      由定理 2，$\varphi=0$时$u(r,t)=\frac1{2cr}\int_{r-ct}^{r+ct}s\psi(|s|)\dd s$，这里$s\psi(|s|)=se^{-s^2}$。
+    - |
+      $se^{-s^2}$的原函数是$-\frac12e^{-s^2}$。$r=1$、$c=2$、$t=\frac12$时，积分区间是$[0,2]$。
+    - |
+      $u\bigl(1,\frac12\bigr)=\frac14\cdot\frac12\bigl(1-e^{-4}\bigr)=\frac{1-e^{-4}}8\approx0.1227$。
+  solution: |
+    由定理 2，$\varphi=0$时$u(r,t)=\frac1{2cr}\int_{r-ct}^{r+ct}se^{-s^2}\dd s$，而$se^{-s^2}$的原函数是$-\frac12e^{-s^2}$，所以$u(r,t)=\frac{e^{-(r-ct)^2}-e^{-(r+ct)^2}}{4cr}$。$r=1$、$c=2$、$t=\frac12$时$r-ct=0$、$r+ct=2$，得$u\bigl(1,\frac12\bigr)=\frac{1-e^{-4}}8\approx0.1227$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$\varphi$、$\psi$满足定理 2 的条件，$u$是定理 2 给出的解。
+
+    （1）求$t>0$时原点处的值$\lim_{r\to0^+}u(r,t)$，用$\varphi$、$\psi$表示。
+
+    （2）设$\psi=0$，$\varphi\ge0$只在$[R-\delta,R+\delta]$上不为零（$0<\delta<R$），最大值是$h$：开始时，离原点约$R$处有一层厚约$2\delta$的鼓起。用（1）说明$\delta$比$R$小得多时，原点处$u$的最大值比$h$大得多，并估计它大约是$h$的多少倍（只要数量级）。
+  hints:
+    - |
+      （1）$w=ru$在$r=0$处为$0$，所以$\lim_{r\to0^+}\frac{w(r,t)}r$就是$w$在$r=0$处对$r$的偏导数。（2）（1）的式子里，哪一项可能很大？
+    - |
+      （1）记$\Phi(s)=s\varphi(|s|)$、$\Psi(s)=s\psi(|s|)$，则$w=\frac12\bigl[\Phi(r-ct)+\Phi(r+ct)\bigr]+\frac1{2c}\int_{r-ct}^{r+ct}\Psi(s)\dd s$；奇函数的导数是偶函数。（2）$\varphi$在$[R-\delta,R+\delta]$里从$0$升到$h$，由拉格朗日中值定理（mean value theorem），$\varphi'$在某处至少有多大？
+    - |
+      （1）$\Phi$、$\Psi$是奇函数，$w(0,t)=0$，所以$\lim_{r\to0^+}u(r,t)=\lim_{r\to0^+}\frac{w(r,t)-w(0,t)}r=w_r(0,t)$。由微积分基本定理（fundamental theorem of calculus），$w_r=\frac12\bigl[\Phi'(r-ct)+\Phi'(r+ct)\bigr]+\frac1{2c}\bigl[\Psi(r+ct)-\Psi(r-ct)\bigr]$。$r=0$时，$\Phi'$是偶函数，前一项是$\Phi'(ct)$；$\Psi$是奇函数，后一项是$\frac1c\Psi(ct)$。$s>0$时$\Phi'(s)=\varphi(s)+s\varphi'(s)$、$\Psi(s)=s\psi(s)$，所以原点处的值是$\varphi(ct)+ct\varphi'(ct)+t\psi(ct)$。
+
+      （2）$\psi=0$时原点处的值是$\varphi(ct)+ct\varphi'(ct)$。设$\varphi$在$r_0$处取到最大值$h$，$\varphi(R-\delta)=0$，由拉格朗日中值定理，有$s_0\in(R-\delta,r_0)$使$\varphi'(s_0)=\frac h{r_0-R+\delta}\ge\frac h{2\delta}$。取$ct=s_0$，原点处的值不小于$s_0\varphi'(s_0)>\frac{(R-\delta)h}{2\delta}$，$\delta$比$R$小得多时约为$\frac R{2\delta}h$，远大于$h$。另一方面，鼓起的样子寻常时$|\varphi'|$不超过$\frac h\delta$的几倍，原点处的值也就在$\frac R\delta h$这个数量级：薄薄一层球壳里的扰动向内汇聚到原点，被放大了约$\frac R\delta$倍。
+  reference: |
+    （1）$\Phi(s)=s\varphi(|s|)$、$\Psi(s)=s\psi(|s|)$是奇函数，$w(0,t)=0$，$\lim_{r\to0^+}u=w_r(0,t)=\frac12\bigl[\Phi'(-ct)+\Phi'(ct)\bigr]+\frac1{2c}\bigl[\Psi(ct)-\Psi(-ct)\bigr]=\Phi'(ct)+\frac1c\Psi(ct)$。$s>0$时$\Phi'(s)=\varphi(s)+s\varphi'(s)$，$\Psi(s)=s\psi(s)$，得$\varphi(ct)+ct\varphi'(ct)+t\psi(ct)$。
+
+    （2）$\psi=0$时原点处的值是$\varphi(ct)+ct\varphi'(ct)$。最大值点$r_0$、$\varphi(R-\delta)=0$，由中值定理有$s_0$使$\varphi'(s_0)\ge\frac h{2\delta}$，取$ct=s_0$得原点处的值$>\frac{(R-\delta)h}{2\delta}\approx\frac R{2\delta}h$；寻常的鼓起$|\varphi'|\lesssim\frac h\delta$，所以最大值是$\frac R\delta h$的数量级：向内汇聚放大了约$\frac R\delta$倍。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$G$有连续的二阶导数，只在区间$[\alpha,\beta]$上不为零（$0<\alpha<\beta$）。开始时的$u$、$u_t$取得和向内传播的球面波$\frac{G(r+ct)}r$在$t=0$时一样，求在原点附近有界的解。
+
+    （1）写出$u$，说明它在$t<\frac\alpha c$和$t>\frac\beta c$时各是什么样子。
+
+    （2）和[一维波动方程与达朗贝尔公式](lesson:math.pde.wave-dalembert)第 5 题（3）里鼓包在固定端的反射比一比：哪里一样，哪里不一样？
+  hints:
+    - |
+      （1）$\frac{G(r+ct)}r$本身在$r>0$上满足方程，可它走到原点附近就无界了。有界的解里，向内传播的部分配着一个向外传播的部分（定理 2 前面那一段）。（2）想一想$w=ru$满足什么。
+    - |
+      （1）设有界的解是$\frac{F(r-ct)+H(r+ct)}r$，$H(s)=-F(-s)$（$s\ge0$）。$t=0$时和$u=\frac{G(r)}r$、$u_t=\frac{cG'(r)}r$比较，$F$在正半轴上是常数，可以取成$0$，这时$H=G$。（2）$w$在$r=0$处总是$0$，像弦的固定端。
+    - |
+      （1）$t=0$时要$F(r)+H(r)=G(r)$、$-cF'(r)+cH'(r)=cG'(r)$（$r>0$），所以$F'=0$，$F$在正半轴上是常数；常数可以挪给$H$，取$F=0$、$H=G$。原点有界要求$F(s)=-H(-s)=-G(-s)$（$s<0$）；$G$在负半轴上是$0$，这个式子在正半轴上也对，所以$u=\frac{G(r+ct)-G(ct-r)}r$。$t<\frac\alpha c$时$ct-r<\alpha$，第二项是$0$，$u$就是向内传播的$\frac{G(r+ct)}r$，还没到原点。$t>\frac\beta c$时$r+ct>\beta$，第一项是$0$，$u=-\frac{G(ct-r)}r$：一列向外传播的球面波，形状变了号，前后也翻了过来（自变量是$ct-r$），按$\frac1r$越走越矮。
+
+      （2）$w=G(r+ct)-G(ct-r)$满足一维的波动方程和$w(0,t)=0$，和[一维波动方程与达朗贝尔公式](lesson:math.pde.wave-dalembert)第 5 题（3）的固定端是同一回事：鼓包碰到端点，倒过来、前后翻过来跑回去。不一样的是$u=\frac wr$：$w$的鼓包高低不变，$u$向内走时越来越高，到原点附近最大（仍然有限，$\frac\alpha c<t<\frac\beta c$时原点处的值是$2G'(ct)$），出来以后越来越矮；一维的鼓包反射前后一样高。
+  reference: |
+    （1）初值给出$F$在正半轴上是常数，取$F=0$、$H=G$；有界要求$F(s)=-G(-s)$，于是$u=\frac{G(r+ct)-G(ct-r)}r$。$t<\frac\alpha c$时只有向内的$\frac{G(r+ct)}r$；$t>\frac\beta c$时只有$-\frac{G(ct-r)}r$，向外传播，变号、前后翻转，按$\frac1r$衰减。
+
+    （2）$w=ru$就是左端固定的半无界弦，反射时倒过来、前后翻转，和一维第 5 题（3）一样；不同在$u=\frac wr$：向内越来越高，原点处有限（$2G'(ct)$），向外越来越矮，而一维的鼓包高低不变。
+
+- id: p7
+  tier: thinking
+  statement: |
+    例 1 里，球心处的值在$t=\frac ac$时从接近$\frac{v_0a}c$一下子变成$0$，可在每个$r>0$处，$u$都随时间连续地变化。
+
+    （1）开始时初速度在球面$r=a$上有一个跳跃，它的影响以速度$c$向内传，什么时候到达球心？在$0<r<a$处，$u$在$t=\frac{a-r}c$到$\frac{a+r}c$这段时间里怎样变化？用它解释球心处的跳跃。
+
+    （2）把$\psi$换成：$r\le a$时是$v_0$，$a<r<a+\delta$时从$v_0$光滑地降到$0$，$r\ge a+\delta$时是$0$。球心处的值还会跳吗？$\delta$很小时是什么样子？
+  hints:
+    - |
+      （1）例 1 已经算出$0<r<a$处的$u$：先是$v_0t$，然后是第二种情形，最后是$0$。（2）用第 5 题（1）的式子。
+    - |
+      （1）在$\frac{a-r}c<t<\frac{a+r}c$里，$u=\frac{v_0[a^2-(r-ct)^2]}{4cr}$从约$\frac{v_0a}c$降到$0$。这段时间有多长？$r\to0^+$时呢？（2）$\varphi=0$时，球心处的值是$t\psi(ct)$。
+    - |
+      （1）初速度在$r=a$处的跳跃，影响以$c$向内传，$t=\frac ac$时到达球心。由例 1，$0<r<a$处$u$先是$v_0t$；$t=\frac{a-r}c$时，从球的边缘向内传来的影响到达这里，$u$变成$\frac{v_0[a^2-(r-ct)^2]}{4cr}$，在长$\frac{2r}c$的时间里连续地从$\frac{v_0(a-r)}c$降到$0$；$t=\frac{a+r}c$时，经过球心反射出去的影响也离开这里，以后$u=0$。下降的快慢：$u_t=\frac{v_0(r-ct)}{2r}$，在这段时间里约为$-\frac{v_0a}{2r}$，越靠近球心越陡。$r\to0^+$时这段时间缩成$t=\frac ac$这一刻，约$\frac{v_0a}c$的下降就成了跳跃：向内汇聚的影响在球心被放大，$r>0$处只是$u_t$的跳变（折角），到了球心成了$u$本身的跳跃。
+
+      （2）由第 5 题（1），$\varphi=0$时球心处的值是$t\psi(ct)$。$\psi$连续，它也连续：$ct\le a$时是$v_0t$，$a<ct<a+\delta$时随$\psi$从约$\frac{v_0a}c$光滑地降到$0$，之后是$0$。所以不再跳，只是在长$\frac\delta c$的时间里很快地降下来；$\delta$越小降得越陡，$\delta\to0$时变回例 1 的跳跃。例 1 的跳跃来自$\psi$本身的跳跃，是把球的边缘理想化成突变的结果。
+  reference: |
+    （1）边缘的影响$t=\frac ac$到达球心。$0<r<a$处：$t<\frac{a-r}c$时$u=v_0t$；$\frac{a-r}c<t<\frac{a+r}c$时$u=\frac{v_0[a^2-(r-ct)^2]}{4cr}$，在$\frac{2r}c$的时间里从$\frac{v_0(a-r)}c$连续降到$0$，斜率约$-\frac{v_0a}{2r}$；之后$u=0$。$u$连续，只在两端有折角（$u_t$跳变，大小约$\frac{v_0a}{2r}$）。$r\to0$时这段时间缩成一点，下降$\frac{v_0a}c$成了跳跃：汇聚把折角放大成跳跃。
+
+    （2）由第 5 题（1），球心处的值是$t\psi(ct)$，$\psi$连续就连续；在$\frac\delta c$的时间里从约$\frac{v_0a}c$降到$0$，$\delta\to0$时趋于例 1 的跳跃。跳跃来自$\psi$的不连续这一理想化。
+
+- id: p8
+  tier: thinking
+  statement: |
+    半径为$R$的球形空腔里，$u$满足三维的波动方程，壁上$u=0$。只看在球心附近有界的球面波，开始时的$u$、$u_t$足够光滑，并且和壁上的条件相容。
+
+    （1）$w=ru$在$0\le r\le R$上满足什么方程和条件？这和哪一种弦的振动是同一个问题？
+
+    （2）说明不论开始时的$u$、$u_t$怎样，$u$都以$\frac{2R}c$为周期。
+
+    （3）壁上的条件换成$u_r(R,t)=0$。$w$在$r=R$处要满足什么条件？形如$u=\frac{\sin kr}r\cos ckt$（$k>0$）的解里，$k$要满足什么方程？最小的两个$k$之比还是整数吗，（2）的结论还对吗？
+  hints:
+    - |
+      （1）原点有界给出$r=0$处的条件（讲解里定理 2 前面那一段）。（2）照定理 2 的证明，把初值延成奇函数；要$r=R$处也是$0$，还要怎样延？（3）$w_r=u+ru_r$。
+    - |
+      （2）先关于$0$延成奇函数，再关于$R$延成奇函数：$\Phi(-s)=-\Phi(s)$，$\Phi(2R-s)=-\Phi(s)$。两式合起来，$\Phi$以多少为周期？（3）$w=\sin kr\cos ckt$满足一维的波动方程和$w(0,t)=0$，把它代进$r=R$处的条件。
+    - |
+      （1）$w_{tt}=c^2w_{rr}$（$0<r<R$）；原点有界给出$w(0,t)=0$，壁上$w(R,t)=Ru(R,t)=0$。这是长为$R$、两端固定的弦。
+
+      （2）把$r\varphi(r)$、$r\psi(r)$先关于$0$、再关于$R$延成奇函数，记作$\Phi$、$\Psi$：$\Phi(-s)=-\Phi(s)$，$\Phi(2R-s)=-\Phi(s)$，合起来$\Phi(s+2R)=\Phi(s)$，$\Psi$也一样。代进达朗贝尔公式得到的$w$，在$r=0$处为$0$（同定理 2），在$r=R$处两个$\Phi$项也相消、$\Psi$在关于$R$对称的区间上的积分为$0$，所以满足（1）的全部条件。$t$换成$t+\frac{2R}c$，两个$\Phi$项的自变量各变了$\pm2R$，值不变；积分区间两头各多出一个周期，$\Psi$在一个周期上的积分是$\int_{-R}^R\Psi\dd s=0$。所以$w$和$u$都以$\frac{2R}c$为周期，和两端固定的弦一样。
+
+      （3）$w_r=u+ru_r$，壁上$u_r=0$，所以$r=R$处的条件是$w_r=\frac wR$，不再是$w=0$。$w=\sin kr\cos ckt$满足一维的波动方程和$w(0,t)=0$，代进去得$k\cos kR=\frac{\sin kR}R$，即$\tan kR=kR$。它最小的两个正根是$kR\approx4.493$、$7.725$，之比约$1.72$，不是整数，不像两端固定时那样，各个$k$都是最小那个的整数倍。
+
+      这时（2）的结论不对了：单看最小的那个解，$t$每过$\frac{2R}c$，$ckt$就多出$2kR\approx8.99$，不是$2\pi$的整数倍，所以它不以$\frac{2R}c$为周期。$r=R$处的条件把$w$和$w_r$搅在一起，不是固定端，没法像（2）那样靠延成奇函数一次次反射。
+  reference: |
+    （1）$w_{tt}=c^2w_{rr}$，$w(0,t)=0$（原点有界），$w(R,t)=0$：长$R$、两端固定的弦。
+
+    （2）初值关于$0$、关于$R$都延成奇函数，得以$2R$为周期的$\Phi$、$\Psi$；达朗贝尔公式给出的$w$满足两端为零。$t\to t+\frac{2R}c$时$\Phi$项不变，积分多出整周期上的$\int_{-R}^R\Psi=0$，所以以$\frac{2R}c$为周期。
+
+    （3）$w_r(R,t)=\frac{w(R,t)}R$。$w=\sin kr\cos ckt$代入得$\tan kR=kR$，根$kR\approx4.4934$、$7.7253$，比约$1.719$，不是整数。最小的那个解过$\frac{2R}c$相位多$2kR\approx8.987$，不是$2\pi$的整数倍，不以$\frac{2R}c$为周期，（2）的结论不对；条件不是固定端，延拓反射的办法失效。

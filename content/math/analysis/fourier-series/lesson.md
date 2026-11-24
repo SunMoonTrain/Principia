@@ -51,7 +51,7 @@ status: reviewed
 ### 奇函数与偶函数
 
 ::anchor{id="thm-parity"}
-**定理 3**　设$f$在$[-\pi,\pi]$上:term[可积]{id="math.analysis.riemann-integral"}。若$f$是偶函数（even function），则$b_n=0$，$a_n=\frac2\pi\int_0^\pi f(x)\cos nx\dd x$，:term[傅里叶级数]{id="math.analysis.fourier-series"}只含:term[余弦]{id="math.analysis.cosine"}（cosine，cos）项，叫作余弦级数（cosine series）；若$f$是奇函数（odd function），则$a_n=0$，$b_n=\frac2\pi\int_0^\pi f(x)\sin nx\dd x$，级数只含:term[正弦]{id="math.analysis.sine"}（sine，sin）项，叫作正弦级数（sine series）。
+**定理 3**　设$f$在$[-\pi,\pi]$上:term[可积]{id="math.analysis.riemann-integral"}。若$f$是偶函数（even function），则$b_n=0$，$a_n=\frac2\pi\int_0^\pi f(x)\cos nx\dd x$，:term[傅里叶级数]{id="math.analysis.fourier-series"}只含:term[余弦]{id="math.analysis.cosine"}（cosine，cos）项，叫作:term[余弦级数]{id="math.analysis.cosine-series"}（cosine series）；若$f$是奇函数（odd function），则$a_n=0$，$b_n=\frac2\pi\int_0^\pi f(x)\sin nx\dd x$，级数只含:term[正弦]{id="math.analysis.sine"}（sine，sin）项，叫作:term[正弦级数]{id="math.analysis.sine-series"}（sine series）。
 
 **证明**：$f$是偶函数时，$f(x)\sin nx$是奇函数，在对称区间上积分为$0$；$f(x)\cos nx$是偶函数，在$[-\pi,\pi]$上的积分是在$[0,\pi]$上的$2$倍。$f$是奇函数时反过来。
 

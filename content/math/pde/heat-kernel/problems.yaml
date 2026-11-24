@@ -1,0 +1,211 @@
+- id: p1
+  tier: easy
+  statement: |
+    :term[扩散系数]{id="math.pde.diffusion-coefficient"}$D=1\times10^{-5}\,\mathrm{m^2/s}$。热量从一点向两边散开，温度分布的形状是热核$K(x,t)$，宽度按$\sqrt{2Dt}$算。宽度从$1\,\mathrm{cm}$长到$3\,\mathrm{cm}$，要经过多少秒？
+  answer:
+    type: number
+    value: 40
+    unit: |
+      $\mathrm s$
+  hints:
+    - |
+      先分别求出宽度是$1\,\mathrm{cm}$和$3\,\mathrm{cm}$的时刻，再相减。
+    - |
+      $\sqrt{2Dt}=L$给出$t=\frac{L^2}{2D}$；长度换成米，$1\,\mathrm{cm}=0.01\,\mathrm m$。
+    - |
+      $t_1=\frac{0.01^2}{2\times10^{-5}}\,\mathrm s=5\,\mathrm s$，$t_2=\frac{0.03^2}{2\times10^{-5}}\,\mathrm s=45\,\mathrm s$，要经过$45-5=40\,\mathrm s$。宽度变成$3$倍，时刻变成$9$倍。
+  solution: |
+    宽度$\sqrt{2Dt}=L$时$t=\frac{L^2}{2D}$。宽度是$1\,\mathrm{cm}$时，$t_1=\frac{(0.01\,\mathrm m)^2}{2\times10^{-5}\,\mathrm{m^2/s}}=5\,\mathrm s$；宽度是$3\,\mathrm{cm}$时，$t_2=\frac{(0.03\,\mathrm m)^2}{2\times10^{-5}\,\mathrm{m^2/s}}=45\,\mathrm s$。所以要经过$45-5=40\,\mathrm s$。前$1\,\mathrm{cm}$只用了$5\,\mathrm s$，再扩大到$3\,\mathrm{cm}$却要$40\,\mathrm s$：宽度和$\sqrt t$成正比，越往后散开得越慢。
+
+- id: p2
+  tier: easy
+  statement: |
+    设$\varphi$有界，在每个有限区间上分段连续，$K$是热核，$u(x,t)=\int_{-\infty}^{+\infty}K(x-y,t)\varphi(y)\dd y$（$t>0$）。下列说法中，正确的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\varphi$以$2\pi$为周期时，对每个$t>0$，$u$作为$x$的函数也以$2\pi$为周期
+      - |
+        $\varphi$在$x_0$处有跳跃时，对每个$t>0$，$u(x_0,t)=\frac{\varphi(x_0^-)+\varphi(x_0^+)}2$
+      - |
+        $\varphi$在$[-1,1]$上连续、不小于$0$、不恒为$0$，在$[-1,1]$以外为$0$时，$u(5,0.01)=0$
+      - |
+        $\varphi$单调不减时，对每个$t>0$，$u$作为$x$的函数也单调不减
+      - |
+        $\varphi$还:term[绝对可积]{id="math.pde.absolutely-integrable"}时，$\int_{-\infty}^{+\infty}u(x,t)\dd x$不随$t$变
+    value: [1, 4, 5]
+  hints:
+    - |
+      A、D：令$z=x-y$，把$u$写成$\int_{-\infty}^{+\infty}K(z,t)\varphi(x-z)\dd z$，看$x$换成$x+2\pi$、$x+h$时被积函数怎样变。B：例 1 里接触面的温度为什么一直是平均值？C：被积函数$K(5-y,0.01)\varphi(y)$是正是负？E：[卷积与卷积定理](lesson:math.pde.convolution)一节的卷积定理在$\xi=0$处说什么？
+    - |
+      B：取$\varphi$在$0<x<1$上为$1$、其余为$0$，$x_0=0$，比较$u(0,t)$和$\frac12$。C：$K$处处为正，$\varphi$在$[-1,1]$的某一小段上大于$0$。D：$h>0$时$\varphi(x+h-z)\ge\varphi(x-z)$，而$K>0$。E：取$\xi=0$，$\int(f*g)\dd x=\int f\dd x\int g\dd y$，而$\int K\dd x=1$。
+    - |
+      A 对：$\varphi(x+2\pi-z)=\varphi(x-z)$，积分不变。B 不对：取$\varphi$在$0<x<1$上为$1$、其余为$0$，它在$0$处左、右极限的平均是$\frac12$；$K>0$，$u(0,t)=\int_0^1K(-y,t)\dd y$小于$\int_0^{+\infty}K(-y,t)\dd y=\frac12$。例 1 的接触面温度一直是平均值，是因为初温减去平均值以后是奇函数。C 也不对：被积函数在$[-1,1]$的一小段上为正，$u(5,0.01)>0$。
+
+      D 对：$u(x+h,t)-u(x,t)$是$K(z,t)$乘一个不小于$0$的函数的积分。E 对：$\int u\dd x=\int K\dd x\cdot\int\varphi\dd y=\int\varphi\dd y$。选 A、D、E。
+  solution: |
+    A：令$z=x-y$，$u(x,t)=\int_{-\infty}^{+\infty}K(z,t)\varphi(x-z)\dd z$。$\varphi$以$2\pi$为周期，$\varphi(x+2\pi-z)=\varphi(x-z)$，所以$u(x+2\pi,t)=u(x,t)$，对。
+
+    B：取$\varphi$在$0<x<1$上为$1$、其余为$0$，它在$x_0=0$处从$0$跳到$1$，左、右极限的平均是$\frac12$。$K>0$，所以对每个$t>0$，$u(0,t)=\int_0^1K(-y,t)\dd y$小于$\int_0^{+\infty}K(-y,t)\dd y=\frac12$，不对。例 1 里接触面的温度一直是平均值，是因为那里的初温减去平均值以后是奇函数，和偶函数$K(-y,t)$乘起来积分为$0$。
+
+    C：$K>0$处处成立，$\varphi$在$[-1,1]$的某一小段上大于$0$，所以$u(5,0.01)=\int_{-1}^1K(5-y,0.01)\varphi(y)\dd y>0$，不对。D：$h>0$时$\varphi(x+h-z)\ge\varphi(x-z)$，$K>0$，所以$u(x+h,t)-u(x,t)=\int_{-\infty}^{+\infty}K(z,t)\bigl(\varphi(x+h-z)-\varphi(x-z)\bigr)\dd z\ge0$，对。
+
+    E：$K$有界、绝对可积，由[卷积与卷积定理](lesson:math.pde.convolution)一节的卷积定理取$\xi=0$，$\int u\dd x=\int K\dd x\cdot\int\varphi\dd y=\int\varphi\dd y$，对：整条直线上的热量既不产生，也不流失。选 A、D、E。
+
+- id: p3
+  tier: medium
+  statement: |
+    $D=1$，初温$u(x,0)=e^{-x^2}$。在整条直线上解:term[热方程]{id="math.pde.heat-equation"}$u_t=u_{xx}$，求$x=0$处的温度降到初始值一半的时刻$t$。
+  answer:
+    type: number
+    value: 3/4
+  hints:
+    - |
+      解是热核和初温的:term[卷积]{id="math.pde.convolution"}，两者都是高斯函数。[卷积与卷积定理](lesson:math.pde.convolution)一节例 2 算过两个高斯函数的卷积；也可以用$\hat u(\xi,t)=\hat\varphi(\xi)e^{-\xi^2t}$。
+    - |
+      $K(x,t)=\frac1{\sqrt{4\pi t}}e^{-x^2/(4t)}$，用那一节例 2 时取$a=\frac1{4t}$，$b=1$。
+    - |
+      $\frac{ab}{a+b}=\frac1{1+4t}$，$\sqrt{\frac\pi{a+b}}=\sqrt{\frac{4\pi t}{1+4t}}$，再乘$\frac1{\sqrt{4\pi t}}$，得$u(x,t)=\frac1{\sqrt{1+4t}}e^{-x^2/(1+4t)}$。令$u(0,t)=\frac1{\sqrt{1+4t}}=\frac12$，得$1+4t=4$，$t=\frac34$。
+  solution: |
+    由本节的定理，$u(x,t)=\int_{-\infty}^{+\infty}K(x-y,t)e^{-y^2}\dd y$，是$\frac1{\sqrt{4\pi t}}e^{-x^2/(4t)}$和$e^{-x^2}$的卷积。由[卷积与卷积定理](lesson:math.pde.convolution)一节例 2，取$a=\frac1{4t}$、$b=1$，$\frac{ab}{a+b}=\frac1{1+4t}$，$\sqrt{\frac\pi{a+b}}=\sqrt{\frac{4\pi t}{1+4t}}$，所以$u(x,t)=\frac1{\sqrt{1+4t}}e^{-x^2/(1+4t)}$：仍是高斯函数，越来越宽、越来越矮。
+
+    初始值$u(0,0)=1$。令$u(0,t)=\frac1{\sqrt{1+4t}}=\frac12$，得$t=\frac34$。也可以由变换核对：$\hat u=\sqrt\pi e^{-\xi^2/4}e^{-\xi^2t}=\sqrt\pi e^{-(1+4t)\xi^2/4}$，正是$\frac1{\sqrt{1+4t}}e^{-x^2/(1+4t)}$的变换。
+
+- id: p4
+  tier: medium
+  statement: |
+    $D=1$，初温在$0<x<2$上是$1$，在其余地方是$0$。在整条直线上解:term[热方程]{id="math.pde.heat-equation"}$u_t=u_{xx}$，求$u(0,1)$。已知$\operatorname{erf}1\approx0.842701$。
+  answer:
+    type: number
+    value: 0.842701/2
+  hints:
+    - |
+      由本节的定理，$u(0,1)=\int_{-\infty}^{+\infty}K(-y,1)\varphi(y)\dd y$，只要在$0<y<2$上积分。
+    - |
+      $K(-y,1)=\frac1{\sqrt{4\pi}}e^{-y^2/4}$。令$y=2s$换元，化成误差函数定义里的那个积分。
+    - |
+      $u(0,1)=\frac1{\sqrt{4\pi}}\int_0^2e^{-y^2/4}\dd y=\frac1{\sqrt\pi}\int_0^1e^{-s^2}\dd s=\frac12\operatorname{erf}1\approx0.4214$。
+  solution: |
+    初温有界、分段连续，由本节的定理，$u(0,1)=\int_{-\infty}^{+\infty}K(-y,1)\varphi(y)\dd y=\frac1{\sqrt{4\pi}}\int_0^2e^{-y^2/4}\dd y$。令$y=2s$，$\dd y=2\dd s$，它等于$\frac1{\sqrt\pi}\int_0^1e^{-s^2}\dd s=\frac12\operatorname{erf}1\approx0.4214$。
+
+    $x=0$是初温的间断点，左、右极限是$0$、$1$，所以$t\to0^+$时$u(0,t)\to\frac12$；到$t=1$时，热量向两边散开，它降到了约$0.421$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$D>0$，$K(x,t)=\frac1{\sqrt{4\pi Dt}}e^{-x^2/(4Dt)}$。
+
+    （1）验证$t>0$时$K_t=DK_{xx}$。
+
+    （2）设$|\varphi|\le M$，$\varphi$在每个有限区间上分段连续，$u(x,t)=\int_{-\infty}^{+\infty}K(x-y,t)\varphi(y)\dd y$。任取$R>0$和$0<t_1<t_2$。找一个只依赖$y$、连续、在整条直线上积分收敛的函数$g(y)$，使$|x|\le R$、$t_1\le t\le t_2$时，$|K_x(x-y,t)\varphi(y)|$、$|K_{xx}(x-y,t)\varphi(y)|$、$|K_t(x-y,t)\varphi(y)|$都不超过$g(y)$。
+
+    （3）由此说明$t>0$时$u_t=Du_{xx}$。
+  hints:
+    - |
+      （1）$\ln K=-\frac12\ln(4\pi Dt)-\frac{x^2}{4Dt}$，先对它求偏导数，再乘$K$。（2）$|x|\le R$、$|y|\ge2R$时，$|x-y|\ge\frac{|y|}2$。（3）用[含参变量积分](lesson:math.analysis.parameter-integrals#thm-leibniz-improper)的定理 4，正、负半轴分开用。
+    - |
+      （1）$K_x=-\frac x{2Dt}K$，$K_t=\bigl(\frac{x^2}{4Dt^2}-\frac1{2t}\bigr)K$。（2）三个偏导数都是$K$乘一个次数不超过$2$的多项式，系数在$t_1\le t\le t_2$上有界；$K(z,t)\le\frac1{\sqrt{4\pi Dt_1}}e^{-z^2/(4Dt_2)}$。（3）定理 4 要被积函数连续；$\varphi$有间断点时，照它的证明，在每个有限区间上先把间断点分开。
+    - |
+      （1）$K_x=-\frac x{2Dt}K$，$K_{xx}=\bigl(\frac{x^2}{4D^2t^2}-\frac1{2Dt}\bigr)K$。而$\partial_t\ln K=-\frac1{2t}+\frac{x^2}{4Dt^2}$，所以$K_t=\bigl(\frac{x^2}{4Dt^2}-\frac1{2t}\bigr)K=DK_{xx}$。
+
+      （2）记$z=x-y$。$t_1\le t\le t_2$时$K(z,t)\le\frac1{\sqrt{4\pi Dt_1}}e^{-z^2/(4Dt_2)}$，由（1），三个偏导数的绝对值都不超过$C(1+z^2)e^{-z^2/(4Dt_2)}$，常数$C$只依赖$D$、$t_1$、$t_2$。$|y|\ge2R$时$\frac{|y|}2\le|z|\le\frac{3|y|}2$，这个式子不超过$C\bigl(1+\frac94y^2\bigr)e^{-y^2/(16Dt_2)}$；$|y|<2R$时$|z|<3R$，它不超过$C(1+9R^2)$。
+
+      取$g(y)=MC'(1+y^2)e^{-y^2/(16Dt_2)}$，常数$C'\ge\frac94C$，并且大到在$|y|<2R$上也压得住（那里$e^{-y^2/(16Dt_2)}\ge e^{-R^2/(4Dt_2)}$）。$g$连续；$y^2(1+y^2)e^{-y^2/(16Dt_2)}$有界，所以远处$g$不超过常数乘$\frac1{y^2}$，积分收敛。
+
+      （3）定理 4 要被积函数连续。照它的证明，在$[0,n]$上$\varphi$只有有限个间断点，每一段上把$\varphi$在端点处的值换成单侧极限（one-sided limit）就连续，分段用有限区间上的结论；再由$g$令$n\to+\infty$，负半轴同理。所以$u_t=\int_{-\infty}^{+\infty}K_t(x-y,t)\varphi(y)\dd y$，$u_{xx}=\int_{-\infty}^{+\infty}K_{xx}(x-y,t)\varphi(y)\dd y$，由（1），$u_t=Du_{xx}$。
+  reference: |
+    （1）$K_x=-\frac x{2Dt}K$，$K_{xx}=\bigl(\frac{x^2}{4D^2t^2}-\frac1{2Dt}\bigr)K$，$K_t=\bigl(\frac{x^2}{4Dt^2}-\frac1{2t}\bigr)K=DK_{xx}$。
+
+    （2）$z=x-y$，$t\in[t_1,t_2]$时三个偏导数的绝对值$\le C(1+z^2)e^{-z^2/(4Dt_2)}$。$|x|\le R$：$|y|\ge2R$时$|z|\in[\frac{|y|}2,\frac{3|y|}2]$，界$\le C(1+\frac94y^2)e^{-y^2/(16Dt_2)}$；$|y|<2R$时界$\le C(1+9R^2)$。取$g=MC'(1+y^2)e^{-y^2/(16Dt_2)}$，$C'$足够大，连续、可积。
+
+    （3）定理 4（被积函数在$\varphi$的间断点处分段，照其证明取极限）给出$u_t=\int K_t\varphi$、$u_{xx}=\int K_{xx}\varphi$，由（1）$u_t=Du_{xx}$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$|\varphi|\le M$，$\varphi$在每个有限区间上分段连续，$K$是热核，$u(x,t)=\int_{-\infty}^{+\infty}K(x-y,t)\varphi(y)\dd y$。
+
+    （1）设$\delta>0$。证明$t\to0^+$时$\int_\delta^{+\infty}K(z,t)\dd z\to0$。
+
+    （2）设$\varphi$在$x$处连续。证明$t\to0^+$时$u(x,t)\to\varphi(x)$。
+
+    （3）设$\varphi$在$x$处间断。证明$t\to0^+$时$u(x,t)\to\frac{\varphi(x^-)+\varphi(x^+)}2$。
+  hints:
+    - |
+      （1）令$z=\sqrt{4Dt}\,s$换元。（2）令$z=x-y$，$u(x,t)=\int_{-\infty}^{+\infty}K(z,t)\varphi(x-z)\dd z$；用$\int K\dd z=1$把$u(x,t)-\varphi(x)$写成一个积分，分成$|z|<\delta$、$|z|\ge\delta$两部分。（3）$K$是偶函数，$\int_0^{+\infty}K(z,t)\dd z=\frac12$。
+    - |
+      （1）$\int_\delta^{+\infty}K(z,t)\dd z=\frac1{\sqrt\pi}\int_{\delta/\sqrt{4Dt}}^{+\infty}e^{-s^2}\dd s$。（2）近处用$\varphi$在$x$处连续，远处用$|\varphi(x-z)-\varphi(x)|\le2M$和（1）。（3）$z>0$时$x-z$在$x$的左边；把$u(x,t)$减去平均值，拆成$z>0$、$z<0$两半，各照（2）估计。
+    - |
+      （1）令$z=\sqrt{4Dt}\,s$（先在有限区间上换元，再取极限），$\int_\delta^{+\infty}K(z,t)\dd z=\frac1{\sqrt\pi}\int_{\delta/\sqrt{4Dt}}^{+\infty}e^{-s^2}\dd s$。$\int_0^{+\infty}e^{-s^2}\dd s$收敛，$t\to0^+$时下限趋于$+\infty$，这个尾巴趋于$0$。$K$是偶函数，$\int_{-\infty}^{-\delta}K(z,t)\dd z$也一样。
+
+      （2）令$z=x-y$，$u(x,t)=\int K(z,t)\varphi(x-z)\dd z$；由$\int K\dd z=1$，$u(x,t)-\varphi(x)=\int K(z,t)\bigl(\varphi(x-z)-\varphi(x)\bigr)\dd z$。任给$\varepsilon>0$，由连续性取$\delta>0$，使$|z|<\delta$时$|\varphi(x-z)-\varphi(x)|<\varepsilon$，这部分积分的绝对值不超过$\varepsilon\int K\dd z=\varepsilon$。$|z|\ge\delta$的部分不超过$2M\cdot2\int_\delta^{+\infty}K(z,t)\dd z$，由（1），$t$足够小时它小于$\varepsilon$。所以$t$足够小时$|u(x,t)-\varphi(x)|<2\varepsilon$。
+
+      （3）记$a=\varphi(x^-)$，$b=\varphi(x^+)$。$K$是偶函数，$\int_0^{+\infty}K\dd z=\int_{-\infty}^0K\dd z=\frac12$，所以$u(x,t)-\frac{a+b}2=I_1+I_2$，其中$I_1=\int_0^{+\infty}K(z,t)\bigl(\varphi(x-z)-a\bigr)\dd z$，$I_2=\int_{-\infty}^0K(z,t)\bigl(\varphi(x-z)-b\bigr)\dd z$。$z\to0^+$时$x-z$从左边趋于$x$，$\varphi(x-z)\to a$；$z\to0^-$时$\varphi(x-z)\to b$。$I_1$、$I_2$各照（2）分成近处、远处估计，$t\to0^+$时都趋于$0$。
+  reference: |
+    （1）$\int_\delta^\infty K\dd z=\frac1{\sqrt\pi}\int_{\delta/\sqrt{4Dt}}^\infty e^{-s^2}\dd s\to0$（收敛积分的尾巴）。
+
+    （2）$u-\varphi(x)=\int K(z,t)(\varphi(x-z)-\varphi(x))\dd z$；$|z|<\delta$部分$\le\varepsilon$（连续），$|z|\ge\delta$部分$\le4M\int_\delta^\infty K\to0$。
+
+    （3）$\int_0^\infty K=\int_{-\infty}^0K=\frac12$，$u-\frac{a+b}2=\int_0^\infty K(\varphi(x-z)-a)+\int_{-\infty}^0K(\varphi(x-z)-b)$，两半各用单侧极限照（2）估计，都$\to0$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    冬天摸铁栏杆比摸木椅觉得凉，可两者的温度相同（热学[温度与热平衡](lesson:physics.thermal-physics.temperature)一节说是因为「铁导热快」）。把手和铁（或木头）看成例 1 那样在$x=0$处接上的两根长杆：左边是手，:term[热导率]{id="math.pde.thermal-conductivity"}（thermal conductivity）$\kappa_1$、:term[扩散系数]{id="math.pde.diffusion-coefficient"}$D_1$、初温$u_1$；右边分别是$\kappa_2$、$D_2$、$u_2$。接触面上两边的温度相等，流过的热流也相等：$\kappa_1u_x(0^-,t)=\kappa_2u_x(0^+,t)$。
+
+    （1）仿照例 1，设$x<0$时$u=A+B_1\operatorname{erf}\frac x{\sqrt{4D_1t}}$，$x>0$时$u=A+B_2\operatorname{erf}\frac x{\sqrt{4D_2t}}$。由初温和接触面上的条件定出$A$、$B_1$、$B_2$。
+
+    （2）接触面的温度$A$偏向哪一边？由两种材料的什么量决定？热导率大的材料一定摸着更凉吗？
+
+    （3）手的$\sqrt{\kappa c\rho}$约$1.2\times10^3$，铁约$1.7\times10^4$，木头约$4\times10^2$，单位都是$\mathrm{J/(m^2\cdot K\cdot s^{1/2})}$（$c$是比热容，$\rho$是密度）。手是$33\,^\circ\mathrm C$，铁和木头都是$20\,^\circ\mathrm C$，接触面各是多少度？
+  hints:
+    - |
+      （1）由例 1，$\operatorname{erf}\frac x{\sqrt{4Dt}}$满足$u_t=Du_{xx}$；两个式子在$x=0$处都等于$A$。$t\to0^+$时，$x<0$处$\operatorname{erf}\frac x{\sqrt{4D_1t}}\to-1$，$x>0$处$\operatorname{erf}\frac x{\sqrt{4D_2t}}\to1$。（2）（3）看（1）解出的$A$。
+    - |
+      （1）$\dv{}z\operatorname{erf}z=\frac2{\sqrt\pi}e^{-z^2}$，所以$u_x(0^-,t)=\frac{B_1}{\sqrt{\pi D_1t}}$，$u_x(0^+,t)=\frac{B_2}{\sqrt{\pi D_2t}}$；初温给出$A-B_1=u_1$、$A+B_2=u_2$。（2）由$D=\frac\kappa{c\rho}$，$\frac\kappa{\sqrt D}=\sqrt{\kappa c\rho}$。
+    - |
+      （1）由例 1，$\operatorname{erf}\frac x{\sqrt{4Dt}}$满足$u_t=Du_{xx}$，所以设的$u$在两边各满足自己的方程，在$x=0$处两边都等于$A$，温度相等。$t\to0^+$时，$x<0$处$u\to A-B_1$，$x>0$处$u\to A+B_2$，所以$A-B_1=u_1$，$A+B_2=u_2$。由$\dv{}z\operatorname{erf}z=\frac2{\sqrt\pi}e^{-z^2}$，$u_x(0^-,t)=\frac{B_1}{\sqrt{\pi D_1t}}$，$u_x(0^+,t)=\frac{B_2}{\sqrt{\pi D_2t}}$，热流相等给出$\frac{\kappa_1}{\sqrt{D_1}}B_1=\frac{\kappa_2}{\sqrt{D_2}}B_2$：$t$约掉了，$A$确实可以不随时间变。
+
+      记$\beta_i=\frac{\kappa_i}{\sqrt{D_i}}=\sqrt{\kappa_ic_i\rho_i}$（$i=1,2$），解得$A=\frac{\beta_1u_1+\beta_2u_2}{\beta_1+\beta_2}$，$B_1=A-u_1$，$B_2=u_2-A$。
+
+      （2）$A$是$u_1$、$u_2$以$\beta_1$、$\beta_2$为权重的平均，偏向$\beta$大的一边；两边材料相同时，回到例 1 的$\frac{u_1+u_2}2$。决定它的是$\sqrt{\kappa c\rho}$，不只是热导率：$\kappa$相同时，$c\rho$大的材料$\beta$大，摸着更凉，尽管它的扩散系数$\frac\kappa{c\rho}$更小、温度的变化传得更慢。所以热导率大的材料不一定更凉，要和单位体积的热容$c\rho$合起来看。
+
+      （3）摸铁时$A=\frac{1.2\times10^3\times33+1.7\times10^4\times20}{1.2\times10^3+1.7\times10^4}\,^\circ\mathrm C\approx20.9\,^\circ\mathrm C$，几乎就是铁的温度；摸木头时$A=\frac{1.2\times10^3\times33+4\times10^2\times20}{1.2\times10^3+4\times10^2}\,^\circ\mathrm C\approx29.8\,^\circ\mathrm C$，接近手的温度。皮肤感到的是接触面的温度，所以铁摸着凉得多，木头只是微凉。
+  reference: |
+    （1）$\operatorname{erf}\frac x{\sqrt{4Dt}}$满足各自的热方程；$x=0$处两边都是$A$；$t\to0^+$给出$A-B_1=u_1$、$A+B_2=u_2$；$u_x(0^\mp)=\frac{B_{1,2}}{\sqrt{\pi D_{1,2}t}}$，热流相等得$\beta_1B_1=\beta_2B_2$（$\beta=\frac\kappa{\sqrt D}=\sqrt{\kappa c\rho}$，$t$约掉）。$A=\frac{\beta_1u_1+\beta_2u_2}{\beta_1+\beta_2}$，$B_1=A-u_1$，$B_2=u_2-A$。
+
+    （2）$A$偏向$\beta$大的一侧，由$\sqrt{\kappa c\rho}$决定，不只是$\kappa$；$\kappa$相同时$c\rho$大者更凉（虽然$D$更小）。
+
+    （3）铁：$\frac{1200\cdot33+17000\cdot20}{18200}\approx20.86$，约$20.9\,^\circ\mathrm C$；木头：$\frac{1200\cdot33+400\cdot20}{1600}=29.75$，约$29.8\,^\circ\mathrm C$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    一根很长的杆占$x\ge0$，看成半无界的；初温$\varphi(x)$（$x>0$）有界，在每个有限区间上分段连续。
+
+    （1）端点保持$0$度。把$\varphi$延成整条直线上的奇函数$\tilde\varphi$，令$u(x,t)=\int_{-\infty}^{+\infty}K(x-y,t)\tilde\varphi(y)\dd y$。为什么它在$x>0$上满足:term[热方程]{id="math.pde.heat-equation"}、初始条件（initial condition），并且$u(0,t)=0$？初温处处是$u_0$时，$u$是什么？
+
+    （2）端点绝热，$u_x(0,t)=0$。该把$\varphi$延成什么样的函数？为什么？
+
+    （3）长$L$的杆两端都保持$0$度时，只延拓一次不够，该怎样延拓？用$\int_{-\infty}^{+\infty}K(x-y,t)\sin\omega y\dd y$把得到的解写成正弦级数（sine series），各项怎样随时间衰减？初温处处为正时，过了很久温度分布接近什么形状？学到[分离变量法](lesson:math.pde.separation-of-variables)一节时，可以和那里的级数解对照。
+  hints:
+    - |
+      （1）$K(x,t)$是$x$的偶函数，看$u(0,t)$的被积函数的奇偶。初温是常数时，$\tilde\varphi$是例 1 那样的阶跃。（2）偶函数的导数是奇函数。（3）两端都要像（1）那样：关于$x=0$是奇的，关于$x=L$也是奇的；$\sin\omega y$是频率为$\omega$的成分。
+    - |
+      （1）$K(-y,t)\tilde\varphi(y)$是$y$的奇函数；$x>0$处$\tilde\varphi=\varphi$，方程和初始条件由本节的定理得出。（2）延成偶函数，$u$也是$x$的偶函数。（3）先在$(-L,0)$上延成奇函数，再以$2L$为周期延拓。$K$对$x$的傅里叶变换是$e^{-D\xi^2t}$，由此算$\int_{-\infty}^{+\infty}K(x-y,t)\sin\omega y\dd y$，再看哪一项衰减得最慢。
+    - |
+      （1）$K$是偶函数、$\tilde\varphi$是奇函数，$K(-y,t)\tilde\varphi(y)$是$y$的奇函数，积分又绝对收敛（absolutely convergent），所以$u(0,t)=\int_{-\infty}^{+\infty}K(-y,t)\tilde\varphi(y)\dd y=0$。$\tilde\varphi$有界、分段连续，由本节的定理，$u$在$t>0$时满足热方程，$t\to0^+$时在$x>0$里$\varphi$连续的点趋于$\tilde\varphi(x)=\varphi(x)$。初温处处是$u_0$时，$\tilde\varphi$在$x<0$处是$-u_0$、在$x>0$处是$u_0$，由例 1，$u=u_0\operatorname{erf}\frac x{\sqrt{4Dt}}$：端点附近宽约$\sqrt{4Dt}$的一段凉了下来，这一段按$\sqrt t$变宽。
+
+      （2）延成偶函数：$\tilde\varphi(-x)=\varphi(x)$。$K$、$\tilde\varphi$都是偶函数，在积分里令$y\to-y$可知$u(-x,t)=u(x,t)$；$u$对$x$可导，偶函数的导数是奇函数，所以$u_x(0,t)=0$。初温处处是$u_0$时$\tilde\varphi\equiv u_0$，$u\equiv u_0$：热量出不去，温度不变。
+
+      （3）先在$(-L,0)$上延成奇函数，再以$2L$为周期延到整条直线。这样的$\tilde\varphi$关于$0$是奇的，又满足$\tilde\varphi(L+s)=\tilde\varphi(s-L)=-\tilde\varphi(L-s)$，关于$L$也是奇的，照（1）的道理，$u(0,t)=u(L,t)=0$。另一方面，令$z=x-y$并把$\sin\omega(x-z)$展开：$K$是偶函数，$\int K(z,t)\sin\omega z\dd z=0$，$\int K(z,t)\cos\omega z\dd z$是它的变换在$\omega$处的值$e^{-D\omega^2t}$，所以$\int_{-\infty}^{+\infty}K(x-y,t)\sin\omega y\dd y=e^{-D\omega^2t}\sin\omega x$。
+
+      把$\tilde\varphi$展开成正弦级数$\sum b_n\sin\frac{n\pi y}L$，逐项和$K$做卷积（交换求和与积分的条件这里不验证），得$u=\sum b_ne^{-D(n\pi/L)^2t}\sin\frac{n\pi x}L$：第$n$项按$e^{-D(n\pi/L)^2t}$衰减，$n$越大，起伏越密，衰减得越快。初温处处为正时，$b_1=\frac2L\int_0^L\varphi(y)\sin\frac{\pi y}L\dd y>0$，第$n$项的衰减因子是第一项的$e^{-D(n^2-1)\pi^2t/L^2}$倍，过了很久，$u\approx b_1e^{-D\pi^2t/L^2}\sin\frac{\pi x}L$：形状接近半个正弦波，整体按同一个比例降下去。热核的办法相当于在整条直线上摆满一正一反的初温副本，它们散过来的热量在两端正好抵消。
+  reference: |
+    （1）$K$偶、$\tilde\varphi$奇，$u(0,t)=\int K(-y,t)\tilde\varphi(y)\dd y=0$；由定理，$x>0$处满足方程与初始条件。$\varphi\equiv u_0$：$\tilde\varphi=u_0\operatorname{sgn}x$，由例 1，$u=u_0\operatorname{erf}\frac x{\sqrt{4Dt}}$。
+
+    （2）偶延拓：$u$关于$x$为偶函数，$u_x(0,t)=0$；$\varphi\equiv u_0$时$u\equiv u_0$。
+
+    （3）奇延拓后以$2L$为周期延拓，关于$0$和$L$都奇，$u(0,t)=u(L,t)=0$。$K*\sin\omega x=e^{-D\omega^2t}\sin\omega x$，正弦级数逐项卷积得$\sum b_ne^{-D(n\pi/L)^2t}\sin\frac{n\pi x}L$，第$n$项按$e^{-D(n\pi/L)^2t}$衰减，$n$越大越快。$\varphi>0$时$b_1>0$，很久以后$u\approx b_1e^{-D\pi^2t/L^2}\sin\frac{\pi x}L$（半个正弦波整体衰减）。这就是分离变量法的解，学到那一节时可对照。

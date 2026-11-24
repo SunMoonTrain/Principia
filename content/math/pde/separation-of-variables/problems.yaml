@@ -1,0 +1,205 @@
+- id: p1
+  tier: easy
+  statement: |
+    求边值问题$X''+\lambda X=0$、$X(0)=X(3)=0$的第二小的:term[特征值]{id="math.pde.eigenvalue"}。
+  answer:
+    type: number
+    value: 4*pi^2/9
+  hints:
+    - |
+      这是讲解里两端为零的问题，$L=3$。$\lambda\le0$时有没有不恒为零的解？
+    - |
+      $\lambda>0$时$X=C_1\cos\sqrt\lambda x+C_2\sin\sqrt\lambda x$，$X(0)=0$给出$C_1=0$；要$X$不恒为零，$X(3)=0$就要求$\sin3\sqrt\lambda=0$。
+    - |
+      $3\sqrt\lambda=n\pi$，特征值是$\bigl(\frac{n\pi}3\bigr)^2$（$n=1,2,\dots$），第二小的是$n=2$时的$\bigl(\frac{2\pi}3\bigr)^2=\frac{4\pi^2}9\approx4.386$。
+  solution: |
+    由讲解的三种情形，$\lambda\le0$时只有零解。$\lambda>0$时$X(0)=0$给出$X=C_2\sin\sqrt\lambda x$，$C_2\ne0$，$X(3)=0$要求$\sin3\sqrt\lambda=0$，即$\sqrt\lambda=\frac{n\pi}3$。特征值从小到大是$\frac{\pi^2}9$、$\frac{4\pi^2}9$、$\pi^2$……第二小的是$\frac{4\pi^2}9\approx4.386$。
+
+- id: p2
+  tier: easy
+  statement: |
+    杆的左端保持$0$度、右端绝热，对应的边值问题是$X''+\lambda X=0$、$X(0)=0$、$X'(L)=0$。下列函数中，哪些是它的:term[特征函数]{id="math.pde.eigenfunction"}？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $\sin\frac{\pi x}L$
+      - |
+        $\cos\frac{\pi x}{2L}$
+      - |
+        $\sin\frac{\pi x}{2L}$
+      - |
+        $1$
+      - |
+        $\sin\frac{3\pi x}{2L}$
+    value: [3, 5]
+  hints:
+    - |
+      特征函数不恒为零，对某个$\lambda$满足$X''+\lambda X=0$，还要满足两个边界条件。五个选项都满足某个$X''+\lambda X=0$（$1$对应$\lambda=0$），只要查边界条件。
+    - |
+      逐个算$X(0)$和$X'(L)$。$\cos\frac{\pi x}{2L}$和$1$在$x=0$处是多少？$\sin\frac{\pi x}L$的导数在$x=L$处是多少？
+    - |
+      A：$X'(L)=\frac\pi L\cos\pi\ne0$，不是。B、D：$X(0)=1\ne0$，不是。
+
+      C：$X(0)=0$，$X'(L)=\frac\pi{2L}\cos\frac\pi2=0$，是。E：$X(0)=0$，$X'(L)=\frac{3\pi}{2L}\cos\frac{3\pi}2=0$，是。选 C、E。
+  solution: |
+    五个选项都满足某个$X''+\lambda X=0$，只要查边界条件。A：$X(0)=0$，可$X'(L)=\frac\pi L\cos\pi=-\frac\pi L\ne0$，不是。B、D：$X(0)=1\ne0$，不是。
+
+    C：$X(0)=0$，$X'(L)=\frac\pi{2L}\cos\frac\pi2=0$，是，属于特征值$\bigl(\frac\pi{2L}\bigr)^2$。E：$X(0)=0$，$X'(L)=\frac{3\pi}{2L}\cos\frac{3\pi}2=0$，是，属于$\bigl(\frac{3\pi}{2L}\bigr)^2$。选 C、E。
+
+    一般地，这个问题的特征函数是$\sin\frac{(2k-1)\pi x}{2L}$（$k=1,2,\dots$）：正弦曲线要在左端过零、在右端正好到达波峰或波谷，杆长只能是四分之一个周期的奇数倍。
+
+- id: p3
+  tier: medium
+  statement: |
+    两端绝热的杆占$0\le x\le\pi$，温度满足$u_t=u_{xx}$、$u_x(0,t)=u_x(\pi,t)=0$，初温是$u(x,0)=x$。求$u(0,1)$。
+  answer:
+    type: number
+    value: pi/2 - 4/pi*(exp(-1) + exp(-9)/9 + exp(-25)/25)
+  hints:
+    - |
+      两端绝热，:term[特征函数]{id="math.pde.eigenfunction"}是$\cos nx$（$n=0,1,2,\dots$），解是$\frac{a_0}2+\sum_{n=1}^\infty a_ne^{-n^2t}\cos nx$，$a_n=\frac2\pi\int_0^\pi x\cos nx\dd x$。
+    - |
+      $a_0=\pi$；$n\ge1$时分部积分（integration by parts）得$a_n=\frac{2\bigl((-1)^n-1\bigr)}{\pi n^2}$，$n$为奇数时是$-\frac4{\pi n^2}$，为偶数时是$0$（[傅里叶级数](lesson:math.analysis.fourier-series)第 3 题的提示里算过同一个积分）。
+    - |
+      $u(0,1)=\frac\pi2-\frac4\pi\bigl(e^{-1}+\frac{e^{-9}}9+\frac{e^{-25}}{25}+\cdots\bigr)$。第二项起已经很小，$u(0,1)\approx1.570796-1.273240\times0.367893\approx1.10238$。
+  solution: |
+    两端绝热，初值偶延拓，展开成余弦级数：$a_0=\frac2\pi\int_0^\pi x\dd x=\pi$，$n\ge1$时$a_n=\frac2\pi\int_0^\pi x\cos nx\dd x=\frac{2\bigl((-1)^n-1\bigr)}{\pi n^2}$。所以
+
+    $$
+    u(x,t)=\frac\pi2-\frac4\pi\sum_{k=1}^\infty\frac{e^{-(2k-1)^2t}}{(2k-1)^2}\cos(2k-1)x .
+    $$
+
+    $u(0,1)=\frac\pi2-\frac4\pi\bigl(e^{-1}+\frac{e^{-9}}9+\cdots\bigr)\approx1.10238$。过很久，$u$趋于初温的平均值$\frac\pi2$；$t=1$时左端已从$0$升到约$1.10$。
+
+- id: p4
+  tier: medium
+  statement: |
+    $u_t=u_{xx}$（$0<x<\pi$，$t>0$），$u(0,t)=0$，$u(\pi,t)=\pi$，$u(x,0)=0$：开始时杆处处是$0$度，右端从$t=0$起保持$\pi$度。求$u\bigl(\frac\pi2,1\bigr)$。
+  answer:
+    type: number
+    value: pi/2 - 2*exp(-1) + 2/3*exp(-9) - 2/5*exp(-25)
+  hints:
+    - |
+      右端的条件不是齐次的，乘积解不能直接叠加。先找满足两端条件的:term[稳态]{id="math.pde.steady-state"}$w(x)$，再看$v=u-w$满足什么。
+    - |
+      $w''=0$、$w(0)=0$、$w(\pi)=\pi$，所以$w=x$。$v=u-x$满足$v_t=v_{xx}$、$v(0,t)=v(\pi,t)=0$、$v(x,0)=-x$；把$-x$展开成正弦级数（[傅里叶级数](lesson:math.analysis.fourier-series)例 1）。
+    - |
+      $-x$的正弦级数系数是$b_n=\frac{2(-1)^n}n$，所以$u=x+\sum_{n=1}^\infty\frac{2(-1)^n}ne^{-n^2t}\sin nx$。在$x=\frac\pi2$处只剩$n$为奇数的项，$u\bigl(\frac\pi2,1\bigr)=\frac\pi2-2e^{-1}+\frac23e^{-9}-\cdots\approx1.570796-0.735759+0.000082\approx0.83512$。
+  solution: |
+    稳态$w=x$满足方程和两端的条件，$v=u-x$满足$v_t=v_{xx}$、$v(0,t)=v(\pi,t)=0$、$v(x,0)=-x$，两端齐次，可以分离变量。由[傅里叶级数](lesson:math.analysis.fourier-series)例 1，$x$在$(0,\pi)$上的正弦级数是$2\sum_{n=1}^\infty\frac{(-1)^{n+1}}n\sin nx$，所以
+
+    $$
+    u(x,t)=x+\sum_{n=1}^\infty\frac{2(-1)^n}ne^{-n^2t}\sin nx .
+    $$
+
+    $x=\frac\pi2$时$\sin\frac{n\pi}2$在$n$为偶数时为$0$，$u\bigl(\frac\pi2,1\bigr)=\frac\pi2-2e^{-1}+\frac23e^{-9}-\frac25e^{-25}+\cdots\approx0.83512$。过很久$u$趋于稳态$x$，中点趋于$\frac\pi2\approx1.571$，$t=1$时已经过了一半多。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$|b_n|\le C$（$n=1,2,\dots$，$C$是常数），$u(x,t)=\sum_{n=1}^\infty b_ne^{-n^2t}\sin nx$。
+
+    （1）任取$t_0>0$。证明在$0\le x\le\pi$、$t\ge t_0$上，这个级数可以逐项对$t$求一次导数、对$x$求两次导数，所以$t>0$时$u_t=u_{xx}$。写明用了哪些定理。
+
+    （2）证明$t>0$时，$u$对$x$的任意阶偏导数（partial derivative）都存在。$b_n$是一个有跳跃的初温的正弦级数系数时，这说明了什么？
+  hints:
+    - |
+      对固定的$t$，把级数看成$x$的:term[函数项级数]{id="math.analysis.function-series"}（series of functions）；对固定的$x$，看成$t$的。用:term[魏尔斯特拉斯判别法]{id="math.analysis.weierstrass-m-test"}（[函数项级数与魏尔斯特拉斯判别法](lesson:math.analysis.function-series#thm-weierstrass-m-test)）找一个控制各项的收敛级数。
+    - |
+      $t\ge t_0$时，原级数和逐项求导后的级数，第$n$项的绝对值都不超过$Cn^2e^{-n^2t_0}$。再用[一致收敛与极限交换](lesson:math.analysis.uniform-limit-theorems#thm-derivative-interchange)的定理 3：各项的导函数连续、导数的级数一致收敛、原级数收敛，就能逐项求导。
+    - |
+      （1）记$a_n=Cn^2e^{-n^2t_0}$。$t\ge t_0$时，原级数、逐项对$t$求一次导数、逐项对$x$求一次和两次导数后的四个级数，第$n$项的绝对值分别不超过$Ce^{-n^2t_0}$、$Cn^2e^{-n^2t_0}$、$Cne^{-n^2t_0}$、$Cn^2e^{-n^2t_0}$，都不超过$a_n$。$\frac{a_{n+1}}{a_n}=\frac{(n+1)^2}{n^2}e^{-(2n+1)t_0}\to0$，由比值判别法（ratio test），$\sum a_n$收敛；由魏尔斯特拉斯判别法，这四个级数在$0\le x\le\pi$、$t\ge t_0$上都一致收敛（uniform convergence）。
+
+      固定$t$，各项对$x$的导数连续，一阶导数的级数在$[0,\pi]$上一致收敛，原级数也收敛，由定理 3，和可以逐项对$x$求导；对一阶导数的级数再用一次，得$u_{xx}=\sum_{n=1}^\infty(-n^2)b_ne^{-n^2t}\sin nx$。固定$x$，在任一区间$[t_0,t_1]$上同样得$u_t=\sum_{n=1}^\infty(-n^2)b_ne^{-n^2t}\sin nx$。两者相等，所以$u_t=u_{xx}$；$t_0$是任取的，对一切$t>0$都成立。
+
+      （2）对$x$逐项求$k$次导数后，第$n$项的绝对值不超过$Cn^ke^{-n^2t_0}$，$\sum n^ke^{-n^2t_0}$同样由比值判别法收敛，照（1）逐项求导$k$次，所以$t>0$时$u$对$x$的任意阶偏导数都存在。初温即使有跳跃，$b_n$照样有界，过了任意短的时间温度就处处光滑：热方程立刻把跳跃和尖角抹平。
+  reference: |
+    （1）$t\ge t_0$时，原级数、对$t$求一次、对$x$求一次和两次的逐项导数级数，第$n$项都不超过$a_n=Cn^2e^{-n^2t_0}$；比值$\frac{(n+1)^2}{n^2}e^{-(2n+1)t_0}\to0$，$\sum a_n$收敛，由魏尔斯特拉斯判别法四个级数一致收敛。对$x$用两次、对$t$（在$[t_0,t_1]$上）用一次「导函数连续、导数级数一致收敛、原级数收敛则可逐项求导」（一致收敛与极限交换的定理 3），得$u_t=u_{xx}=\sum(-n^2)b_ne^{-n^2t}\sin nx$。
+
+    （2）$k$次导数级数的第$n$项不超过$Cn^ke^{-n^2t_0}$，可和，逐项求导$k$次。初温有跳跃（$b_n$仍有界）时，$t>0$的解也任意阶光滑：热方程的磨光作用。
+
+- id: p6
+  tier: hard
+  statement: |
+    正方形薄板占$0\le x\le\pi$、$0\le y\le\pi$，上下两面绝热，四条边保持$0$度，温度$u(x,y,t)$满足$u_t=u_{xx}+u_{yy}$。
+
+    （1）设$u=X(x)Y(y)T(t)$，逐个分离变量，求出满足方程和四条边的条件、不恒为零的乘积解。
+
+    （2）初温是$\sin x\sin2y+3\sin2x\sin y$时，写出$u$。温度分布的形状怎样随时间变？
+
+    （3）初温换成$\sin x\sin y+\sin2x\sin2y$呢？
+  hints:
+    - |
+      代入得$XYT'=(X''Y+XY'')T$，两边除以$XYT$：$\frac{T'}T=\frac{X''}X+\frac{Y''}Y$。固定$y$、$t$，只改变$x$，哪一项能变？
+    - |
+      $\frac{X''}X=\frac{T'}T-\frac{Y''}Y$，左边只依赖$x$，右边不依赖$x$，所以是常数，记作$-\mu$；同理$\frac{Y''}Y=-\nu$。四条边上$u=0$给出$X(0)=X(\pi)=0$、$Y(0)=Y(\pi)=0$，都是讲解里$L=\pi$的特征值问题。
+    - |
+      （1）由讲解，$\mu=m^2$、$X=\sin mx$，$\nu=n^2$、$Y=\sin ny$（$m$、$n$是正整数），于是$T'=-(m^2+n^2)T$，乘积解是$e^{-(m^2+n^2)t}\sin mx\sin ny$的非零常数倍。它在四条边上为零，代回方程也成立。
+
+      （2）两项分别是$m=1$、$n=2$和$m=2$、$n=1$的乘积解，$m^2+n^2$都是$5$。由叠加原理，$u=e^{-5t}(\sin x\sin2y+3\sin2x\sin y)$：两项衰减得一样快，温度分布的形状始终不变，只是整体按$e^{-5t}$变矮。
+
+      （3）$u=e^{-2t}\sin x\sin y+e^{-8t}\sin2x\sin2y$。第二项衰减快得多，形状逐渐变成$\sin x\sin y$的样子：中心最热、向四边单调降低的一个鼓包。形状变不变，看各项的$m^2+n^2$是否相同。
+  reference: |
+    （1）$\frac{T'}T=\frac{X''}X+\frac{Y''}Y$，$\frac{X''}X=-\mu$、$\frac{Y''}Y=-\nu$都是常数；$X(0)=X(\pi)=0$、$Y(0)=Y(\pi)=0$给出$\mu=m^2$、$\nu=n^2$，乘积解$e^{-(m^2+n^2)t}\sin mx\sin ny$（$m,n\ge1$）。
+
+    （2）两项的$m^2+n^2$都是$5$，$u=e^{-5t}(\sin x\sin2y+3\sin2x\sin y)$，形状不变，整体衰减。
+
+    （3）$u=e^{-2t}\sin x\sin y+e^{-8t}\sin2x\sin2y$，第二项衰减快，形状趋于单峰$\sin x\sin y$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    杯里的热水冷却时，常用牛顿冷却定律（Newton's law of cooling）：把物体看成只有一个温度$\theta$，$\theta'=-k(\theta-\theta_0)$，$\theta_0$是室温，温差按$e^{-kt}$衰减（见[一阶线性方程与积分因子](lesson:math.ode.linear-first-order)）。
+
+    （1）边长为$L$的立方体，比热容$c$、密度$\rho$、:term[热导率]{id="math.pde.thermal-conductivity"}（thermal conductivity）$\kappa$都是常数，放在室温的空气里，表面每单位面积每秒向空气散失的热量是$h(\theta-\theta_0)$，$h$是正常数。假设立方体里各处温度始终相同，由能量守恒求$k$。
+
+    （2）物体里温度的起伏要$\frac{L^2}D$量级的时间才抹平，$D=\frac\kappa{c\rho}$。什么时候（1）的假设合理？写成$h$、$L$、$\kappa$满足的条件。
+
+    （3）（1）的假设合理时，以及反过来表面散热极快、表面几乎一下子就到了室温时，冷却所需的时间各和$L$的几次方成正比？为什么大的物体冷得慢？
+  hints:
+    - |
+      （1）内能的变化率等于表面散热的功率。（2）「各处温度始终相同」要求里面抹平起伏比整体冷却快得多。（3）表面一直保持室温，就是本节两端保持$0$度的那类问题。
+    - |
+      （1）$c\rho L^3\theta'=-6L^2h(\theta-\theta_0)$。（2）比较$\frac{L^2}D$和$\frac1k$。（3）两端为零的杆衰减的快慢是$\frac{D\pi^2}{L^2}$，立方体的也和$\frac D{L^2}$成正比。
+    - |
+      （1）立方体的内能变化率是$c\rho L^3\theta'$，表面积是$6L^2$，所以$c\rho L^3\theta'=-6L^2h(\theta-\theta_0)$，$k=\frac{6h}{c\rho L}$，温差每过$\frac1k=\frac{c\rho L}{6h}$变为原来的$\frac1e$。
+
+      （2）要里面的起伏抹平得比整体冷却快得多：$\frac{L^2}D\ll\frac{c\rho L}{6h}$，代入$D=\frac\kappa{c\rho}$，即$\frac{6hL}\kappa\ll1$，大致说是$\frac{hL}\kappa$远小于$1$。物体小、导热好、表面散热慢时，牛顿冷却定律是好的近似；反过来，表面先冷、里面还热，物体没有「一个温度」。
+
+      （3）牛顿冷却定律适用时，冷却时间$\frac{c\rho L}{6h}\propto L$：要散的热量和体积$L^3$成正比，散热的表面只和$L^2$成正比。表面一下子到室温时，冷却由里面的扩散决定，像本节的杆一样按$e^{-D\pi^2t/L^2}$这样的快慢衰减（立方体的系数不同），时间$\propto L^2$。两种情形下都是$L$越大冷得越慢，扩散主导时还慢得更厉害。
+  reference: |
+    （1）$c\rho L^3\theta'=-6hL^2(\theta-\theta_0)$，$k=\frac{6h}{c\rho L}$。
+
+    （2）要求$\frac{L^2}D\ll\frac1k=\frac{c\rho L}{6h}$，即$\frac{6hL}\kappa\ll1$（毕渥数（Biot number）小）：小物体、导热好、表面散热弱时牛顿冷却定律成立。
+
+    （3）表面散热主导：时间$\propto\frac{c\rho L}h\propto L$（热量$\propto L^3$、表面$\propto L^2$）；内部扩散主导（表面保持室温）：时间$\sim\frac{L^2}{3\pi^2D}\propto L^2$。都是越大冷得越慢。
+
+- id: p8
+  tier: thinking
+  statement: |
+    把$[0,L]$等分成$N+1$段，$h=\frac L{N+1}$，记$X_j=X(jh)$，$X_0=X_{N+1}=0$。用$\frac{2X_j-X_{j-1}-X_{j+1}}{h^2}$近似$-X''(jh)$，边值问题$-X''=\lambda X$、$X(0)=X(L)=0$就近似成$N$阶矩阵$A$的特征值问题$A\vb v=\mu\vb v$，$\vb v=(X_1,\dots,X_N)$。
+
+    （1）写出$A$。验证$X_j=\sin\frac{jn\pi}{N+1}$（$j=1,\dots,N$）给出$A$的特征向量（$n=1,2,\dots,N$），求对应的特征值$\mu_n$。
+
+    （2）把$\mu_n$和$\lambda_n=\bigl(\frac{n\pi}L\bigr)^2$比一比：$n$远小于$N$时怎样？$n=N$时呢？
+
+    （3）用这$N$个分点在计算机上算热方程，初温的哪些成分算得准？算不准的那些要紧吗？
+  hints:
+    - |
+      （1）$A$是三对角（tridiagonal）的：主对角线上是$\frac2{h^2}$，紧挨着的两条斜线上是$-\frac1{h^2}$，其余是$0$。记$\theta=\frac{n\pi}{N+1}$，算$2\sin j\theta-\sin(j-1)\theta-\sin(j+1)\theta$。
+    - |
+      （1）和差化积给出$\sin(j-1)\theta+\sin(j+1)\theta=2\sin j\theta\cos\theta$。（2）$\mu_n$里出现$\sin\frac{n\pi h}{2L}$，$z$很小时$\sin z\approx z$。（3）每个成分按$e^{-D\lambda t}$衰减，$\lambda$大的那些过一会儿还剩多少？
+    - |
+      （1）$A\vb v$的第$j$个分量是$\frac{2X_j-X_{j-1}-X_{j+1}}{h^2}$（$X_0=X_{N+1}=0$）。$X_j=\sin j\theta$时，$2\sin j\theta-\sin(j-1)\theta-\sin(j+1)\theta=2(1-\cos\theta)\sin j\theta=4\sin^2\frac\theta2\sin j\theta$；$j=1$、$j=N$时用到的$X_0=\sin0=0$、$X_{N+1}=\sin n\pi=0$正好也成立。$X_1=\sin\theta\ne0$，所以$\vb v$是特征向量，$\mu_n=\frac4{h^2}\sin^2\frac{n\pi}{2(N+1)}=\frac4{h^2}\sin^2\frac{n\pi h}{2L}$。
+
+      （2）$n$远小于$N$时，$\frac{n\pi h}{2L}$很小，$\sin z\approx z$，$\mu_n\approx\frac4{h^2}\bigl(\frac{n\pi h}{2L}\bigr)^2=\bigl(\frac{n\pi}L\bigr)^2=\lambda_n$；因为$\sin z<z$，$\mu_n$总比$\lambda_n$小一点。$n=N$时$\frac{n\pi h}{2L}$接近$\frac\pi2$，$\mu_N\approx\frac4{h^2}$，而$\lambda_N\approx\frac{\pi^2}{h^2}$，只有它的约$\frac4{\pi^2}\approx0.41$：起伏的间距和$h$差不多的成分，差得很远。
+
+      （3）起伏比分点间距宽得多的成分（$n$小的）算得准；$n$接近$N$的算不准。对热方程这不太要紧：这些成分按$e^{-D\lambda_nt}$衰减得极快，过一会儿不管算得准不准都几乎是$0$，留下的正是算得准的那几个。[一维链与连续极限](lesson:physics.oscillations-waves.beaded-string)里$N$个小球的链，振动的形状也是$\sin\frac{jn\pi}{N+1}$，频率里也有这个$\sin\frac{n\pi}{2(N+1)}$：离散的链也只在频率低的那几种振动上像连续的弦。
+  reference: |
+    （1）$A=\frac1{h^2}\operatorname{tridiag}(-1,2,-1)$；$X_j=\sin j\theta$，$\theta=\frac{n\pi}{N+1}$，$2\sin j\theta-\sin(j-1)\theta-\sin(j+1)\theta=4\sin^2\frac\theta2\sin j\theta$，边界$X_0=X_{N+1}=0$自动满足，$\mu_n=\frac4{h^2}\sin^2\frac{n\pi h}{2L}$。
+
+    （2）$n\ll N$时$\mu_n\approx\lambda_n$（略小，相对误差约$\frac{(n\pi h/L)^2}{12}$）；$n=N$时$\mu_N\approx\frac4{h^2}$，$\lambda_N\approx\frac{\pi^2}{h^2}$，比约$0.41$。
+
+    （3）低次成分准，高次成分不准，但它们衰减极快，对热方程影响小；和一维链的$\omega_n=2\sqrt{\frac T{ma}}\sin\frac{n\pi}{2(N+1)}$、振幅$\propto\sin\frac{jn\pi}{N+1}$同一回事。

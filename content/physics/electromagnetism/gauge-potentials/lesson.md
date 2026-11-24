@@ -104,4 +104,4 @@ sliders:
 - 「矢势只在有:term[磁场]{id="physics.electromagnetism.magnetic-field"}的地方才不为零。」磁场为零的地方矢势也可以不为零，例如长:term[螺线管]{id="physics.electromagnetism.solenoid"}（solenoid）外面（见[感生电场](lesson:physics.electromagnetism.induced-electric-field)第 8 题）；例 1 里磁场处处为零，换一个规范，矢势却随时间增长。
 - 「标势就是:term[电势]{id="physics.electromagnetism.electric-potential"}，两点的标势差就是单位:term[电荷]{id="physics.electromagnetism.electric-charge"}从一点移到另一点:term[电场]{id="physics.electromagnetism.electric-field"}做的功。」场随时间变化时，电场里有$-\pdv{\vb A}t$，它沿闭合路径的积分不为零，功和路径有关，标势差只是其中一部分。
 - 「:term[库仑规范]{id="physics.electromagnetism.coulomb-gauge"}下标势瞬时变化，所以场的变化能比光传得快。」看得见的是电场和磁场，矢势那一部分正好抵消瞬时的那一部分，变化仍以光速传开（见第 8 题）。
-- 「选定了:term[洛伦茨规范]{id="physics.electromagnetism.lorenz-gauge"}，势就唯一了。」还可以再做一次:term[规范变换]{id="physics.electromagnetism.gauge-transformation"}，只要$\chi$满足没有源的波动方程（第 5 题）；例 1 里两组势都满足洛伦茨规范。
+- 「选定了:term[洛伦茨规范]{id="physics.electromagnetism.lorenz-gauge"}，势就唯一了。」还可以再做一次:term[规范变换]{id="physics.electromagnetism.gauge-transformation"}，只要$\chi$满足没有源的:term[波动方程]{id="math.pde.wave-equation"}（第 5 题）；例 1 里两组势都满足洛伦茨规范。

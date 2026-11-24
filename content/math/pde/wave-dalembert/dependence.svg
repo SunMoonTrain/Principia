@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 270" width="640" height="270" font-size="14">
+  <!-- 左：点 (x0, t0) 的依赖区域。两条特征线 x − ct = 常数、x + ct = 常数从 (x0, t0) 往下到 x 轴上的 x0 − ct0、x0 + ct0，围成三角形；底边（依赖区间）加粗。右：x1 的影响区域，从 (x1, 0) 出发的两条特征线向上张开，一直画到图的上边。两幅图里特征线的斜率都画成 ±1.5，只是示意。 -->
+  <!-- 左图：x 轴 y = 230，t 轴 x = 40；顶点 (180, 80)，底边 90 到 270 -->
+  <line x1="30" y1="230" x2="310" y2="230" stroke="currentColor" stroke-width="1.2" />
+  <path d="M 316 230 L 308 233.6 L 308 226.4 Z" fill="currentColor" />
+  <line x1="40" y1="236" x2="40" y2="36" stroke="currentColor" stroke-width="1.2" />
+  <path d="M 40 30 L 43.6 38 L 36.4 38 Z" fill="currentColor" />
+  <text x="314" y="220" text-anchor="end" fill="currentColor"><tspan font-style="italic">x</tspan></text>
+  <text x="48" y="42" fill="currentColor"><tspan font-style="italic">t</tspan></text>
+  <path d="M 90 230 L 180 80 L 270 230 Z" style="fill: var(--accent, #2563eb)" fill-opacity="0.12" />
+  <line x1="90" y1="230" x2="204" y2="40" stroke="currentColor" stroke-width="1.4" />
+  <line x1="270" y1="230" x2="156" y2="40" stroke="currentColor" stroke-width="1.4" />
+  <line x1="90" y1="230" x2="270" y2="230" style="stroke: var(--accent, #2563eb)" stroke-width="3.5" />
+  <circle cx="180" cy="80" r="4" style="fill: var(--accent, #2563eb)" />
+  <circle cx="90" cy="230" r="3.5" style="fill: var(--accent, #2563eb)" />
+  <circle cx="270" cy="230" r="3.5" style="fill: var(--accent, #2563eb)" />
+  <text x="193" y="86" fill="currentColor">(<tspan font-style="italic">x</tspan><tspan baseline-shift="sub" font-size="10">0</tspan>, <tspan font-style="italic">t</tspan><tspan baseline-shift="sub" font-size="10">0</tspan>)</text>
+  <text x="90" y="252" text-anchor="middle" fill="currentColor"><tspan font-style="italic">x</tspan><tspan baseline-shift="sub" font-size="10">0</tspan> − <tspan font-style="italic">ct</tspan><tspan baseline-shift="sub" font-size="10">0</tspan></text>
+  <text x="270" y="252" text-anchor="middle" fill="currentColor"><tspan font-style="italic">x</tspan><tspan baseline-shift="sub" font-size="10">0</tspan> + <tspan font-style="italic">ct</tspan><tspan baseline-shift="sub" font-size="10">0</tspan></text>
+  <text x="180" y="252" text-anchor="middle" style="fill: var(--accent, #2563eb)">依赖区间</text>
+  <text x="180" y="186" text-anchor="middle" fill="currentColor">依赖区域</text>
+  <text x="211" y="45" fill="currentColor"><tspan font-style="italic">x</tspan> − <tspan font-style="italic">ct</tspan> = 常数</text>
+  <text x="149" y="45" text-anchor="end" fill="currentColor"><tspan font-style="italic">x</tspan> + <tspan font-style="italic">ct</tspan> = 常数</text>
+  <!-- 右图：x 轴 y = 230，t 轴 x = 345；顶点 (490, 230)，两条线到 y = 34 -->
+  <line x1="335" y1="230" x2="626" y2="230" stroke="currentColor" stroke-width="1.2" />
+  <path d="M 632 230 L 624 233.6 L 624 226.4 Z" fill="currentColor" />
+  <line x1="345" y1="236" x2="345" y2="36" stroke="currentColor" stroke-width="1.2" />
+  <path d="M 345 30 L 348.6 38 L 341.4 38 Z" fill="currentColor" />
+  <text x="630" y="220" text-anchor="end" fill="currentColor"><tspan font-style="italic">x</tspan></text>
+  <text x="353" y="42" fill="currentColor"><tspan font-style="italic">t</tspan></text>
+  <path d="M 490 230 L 607.6 34 L 372.4 34 Z" style="fill: var(--accent, #2563eb)" fill-opacity="0.12" />
+  <line x1="490" y1="230" x2="607.6" y2="34" stroke="currentColor" stroke-width="1.4" />
+  <line x1="490" y1="230" x2="372.4" y2="34" stroke="currentColor" stroke-width="1.4" />
+  <circle cx="490" cy="230" r="4" style="fill: var(--accent, #2563eb)" />
+  <text x="490" y="252" text-anchor="middle" fill="currentColor"><tspan font-style="italic">x</tspan><tspan baseline-shift="sub" font-size="10">1</tspan></text>
+  <text x="490" y="135" text-anchor="middle" fill="currentColor">影响区域</text>
+</svg>

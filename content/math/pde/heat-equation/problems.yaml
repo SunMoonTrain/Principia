@@ -1,0 +1,193 @@
+- id: p1
+  tier: easy
+  statement: |
+    铜块里某点的温度梯度是$\nabla u=(30,-40,0)\,\mathrm{K/m}$，铜的热导率取$\kappa=400\,\mathrm{W/(m\cdot K)}$。在这一点，每秒穿过垂直于$y$轴的单位面积、沿$y$轴正方向流过的热量是多少？以$\mathrm{kW/m^2}$为单位。
+  answer:
+    type: number
+    value: 16
+    unit: |
+      $\mathrm{kW/m^2}$
+  hints:
+    - |
+      由:term[傅里叶定律]{id="math.pde.fouriers-law"}，热流密度是$\vb q=-\kappa\nabla u$；沿单位向量$\vb n$的方向流过的是$\vb q\cdot\vb n$。
+    - |
+      $\vb n$取$y$轴正方向$(0,1,0)$，所求的是$\vb q$的$y$分量$-\kappa u_y$，注意$u_y=-40\,\mathrm{K/m}$。
+    - |
+      $-\kappa u_y=-400\times(-40)\,\mathrm{W/m^2}=16000\,\mathrm{W/m^2}$，即$16\,\mathrm{kW/m^2}$。温度沿$y$轴正方向下降，热量也朝这个方向流，所以是正的。
+  solution: |
+    由傅里叶定律，$\vb q=-\kappa\nabla u=(-12000,16000,0)\,\mathrm{W/m^2}$。沿$y$轴正方向流过的是$\vb q$的$y$分量$16000\,\mathrm{W/m^2}$，即$16\,\mathrm{kW/m^2}$。温度沿$y$轴正方向在下降（$u_y<0$），热量正是朝这个方向流。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列说法中，正确的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        杆的一端插在冰水混合物里，这一端的边界条件是:term[狄利克雷边界条件]{id="math.pde.dirichlet-boundary-condition"}
+      - |
+        把长度单位从米换成厘米、时间单位不变，同一种材料的:term[扩散系数]{id="math.pde.diffusion-coefficient"}$D$的数值变为原来的$10^4$倍
+      - |
+        温度的单位从摄氏度换成开尔文（各处的读数都加上$273.15$），:term[热方程]{id="math.pde.heat-equation"}$u_t=D\Delta u$的形式不变
+      - |
+        热流密度$\vb q$指向温度升高最快的方向
+      - |
+        :term[热导率]{id="math.pde.thermal-conductivity"}$\kappa$和比热容$c$都变为原来的$2$倍、密度不变时，扩散系数$D$也变为原来的$2$倍
+    value: [1, 2, 3]
+  hints:
+    - |
+      A：冰水混合物的温度保持多少？B：$D$的单位是什么？C：把$u$换成$u+273.15$，$u_t$和$\Delta u$变不变？
+    - |
+      D：看傅里叶定律$\vb q=-\kappa\nabla u$里的负号。E：$D=\frac\kappa{c\rho}$。
+    - |
+      A 给定的是$u$本身的值（$0\,^\circ\mathrm C$），B 中$1\,\mathrm{m^2}=10^4\,\mathrm{cm^2}$，C 中常数的导数为零，这三项都对。D、E 都不对：热流沿$-\nabla u$，$\kappa$和$c$同时加倍时$D$不变。选 A、B、C。
+  solution: |
+    A：冰水混合物保持$0\,^\circ\mathrm C$，边界上给定的是$u$本身的值，是狄利克雷边界条件，对。B：$D$的单位是$\mathrm{m^2/s}$，$1\,\mathrm{m^2/s}=10^4\,\mathrm{cm^2/s}$，数值变为原来的$10^4$倍，对。C：$w=u+273.15$时$w_t=u_t$、$\Delta w=\Delta u$，$w$满足同一个方程，对。
+
+    D：由傅里叶定律$\vb q=-\kappa\nabla u$，热流指向温度下降最快的方向，不对。E：$D=\frac\kappa{c\rho}$，分子、分母都变为原来的$2$倍，$D$不变，不对。选 A、B、C。
+
+- id: p3
+  tier: medium
+  statement: |
+    傍晚室外突然降温。砖墙厚$0.24\,\mathrm m$，砖的热导率$\kappa=0.756\,\mathrm{W/(m\cdot K)}$，比热容$c=840\,\mathrm{J/(kg\cdot K)}$，密度$\rho=1800\,\mathrm{kg/m^3}$。按$t\approx\frac{L^2}D$估计，室外的降温大约要多少小时才传到墙的里侧？
+  answer:
+    type: number
+    value: 32
+    unit: |
+      $\mathrm h$
+  hints:
+    - |
+      先由$\kappa$、$c$、$\rho$求:term[扩散系数]{id="math.pde.diffusion-coefficient"}$D$，再代进$t\approx\frac{L^2}D$，$L$取墙厚。
+    - |
+      $D=\frac\kappa{c\rho}=\frac{0.756}{840\times1800}\,\mathrm{m^2/s}$。
+    - |
+      $D=5.0\times10^{-7}\,\mathrm{m^2/s}$，$t\approx\frac{0.24^2}{5.0\times10^{-7}}\,\mathrm s=1.152\times10^5\,\mathrm s$，除以$3600$得$32\,\mathrm h$。
+  solution: |
+    $D=\frac\kappa{c\rho}=\frac{0.756}{840\times1800}\,\mathrm{m^2/s}=5.0\times10^{-7}\,\mathrm{m^2/s}$。墙厚$L=0.24\,\mathrm m$，$t\approx\frac{L^2}D=\frac{0.0576}{5.0\times10^{-7}}\,\mathrm s=1.152\times10^5\,\mathrm s$，除以$3600$得$32\,\mathrm h$，一天多。这只是数量级的估计，告诉我们墙里侧的温度要隔一天多才明显地跟着变。
+
+- id: p4
+  tier: medium
+  statement: |
+    长$0.2\,\mathrm m$、侧面绝热的杆，热导率$\kappa=0.8\,\mathrm{W/(m\cdot K)}$，里面没有热源。$x=0$一端每秒每平方米有$50\,\mathrm J$的热量从外面流进杆里，$x=0.2\,\mathrm m$一端保持$0\,^\circ\mathrm C$。求:term[稳态]{id="math.pde.steady-state"}时$x=0$一端的温度。
+  answer:
+    type: number
+    value: 12.5
+    unit: |
+      $^\circ\mathrm C$
+  hints:
+    - |
+      稳态时$u_t=0$，一维的热方程变成$u''=0$，$u$是$x$的一次函数。$x=0$一端给的是流进的热量，是哪一类边界条件？
+    - |
+      $x=0$处的外法向指向$x$轴负方向，每秒从单位面积流出的热量是$-\kappa\nabla u\cdot\vb n=\kappa u'(0)$；流进$50\,\mathrm{W/m^2}$，就是$\kappa u'(0)=-50\,\mathrm{W/m^2}$。
+    - |
+      $u'(0)=-\frac{50}{0.8}\,\mathrm{K/m}=-62.5\,\mathrm{K/m}$。$u$是一次函数，斜率处处是$-62.5\,\mathrm{K/m}$，再由$u(0.2)=0$，得$u(0)=62.5\times0.2=12.5$，即$12.5\,^\circ\mathrm C$。
+  solution: |
+    稳态时$u_t=0$，热方程变成$u''=0$，所以$u=C_1x+C_2$。$x=0$一端给的是热流，是:term[诺伊曼边界条件]{id="math.pde.neumann-boundary-condition"}：外法向指向$x$轴负方向，每秒从单位面积流出的热量是$-\kappa\nabla u\cdot\vb n=\kappa u'(0)$，流进$50\,\mathrm{W/m^2}$就是$0.8C_1=-50$，$C_1=-62.5\,\mathrm{K/m}$。
+
+    $x=0.2\,\mathrm m$一端$u=0$，所以$C_2=62.5\times0.2=12.5$，$x=0$一端的温度是$12.5\,^\circ\mathrm C$。也可以这样想：稳态时每个截面每秒都流过同样多的热量，每平方米$50\,\mathrm J$，由傅里叶定律，温度沿杆每米降$62.5\,\mathrm K$。
+
+- id: p5
+  tier: hard
+  statement: |
+    物体占有界区域$V$，表面绝热，里面没有热源，$c$、$\rho$、$\kappa$都是常数，初温是$\varphi(\vb r)$。设$u$、$u_t$以及$u$对位置的一阶、二阶偏导数在$V$连同边界上都连续。
+
+    （1）$V$里的内能是$\iiint_Vc\rho u\,\dd V$加一个常数。证明它不随时间变化，并指出哪一步用了绝热的条件。
+
+    （2）设$t\to+\infty$时，$V$连同边界上$|u(\vb r,t)-m|$的最大值趋于$0$，$m$是常数。证明$m=\frac1{|V|}\iiint_V\varphi\,\dd V$，$|V|$是$V$的体积。
+
+    （3）把绝热换成表面保持$0\,^\circ\mathrm C$，（1）的结论还成立吗？
+  hints:
+    - |
+      （1）对$t$求导，把求导移进积分号，再用热方程把$c\rho u_t$换成$\kappa\Delta u$，$\Delta u=\divg(\nabla u)$。
+    - |
+      （1）由散度定理（divergence theorem），$\iiint_V\divg(\nabla u)\,\dd V=\oint_{\partial V}\nabla u\cdot\dd\vb a$，绝热的表面上$\nabla u\cdot\vb n=0$。（2）$\bigl|\iiint_Vu\,\dd V-m|V|\bigr|=\bigl|\iiint_V(u-m)\,\dd V\bigr|$，用最大值估计它。
+    - |
+      （1）$V$固定、$u_t$连续，求导可以移进积分号（区间上的情形见[含参变量积分](lesson:math.analysis.parameter-integrals#thm-leibniz-rule)，有界区域上同理），再用热方程$c\rho u_t=\kappa\Delta u$：$\dv{}t\iiint_Vc\rho u\,\dd V=\iiint_Vc\rho u_t\,\dd V=\kappa\iiint_V\divg(\nabla u)\,\dd V$。$\nabla u$有连续的偏导数，由散度定理，它等于$\kappa\oint_{\partial V}\nabla u\cdot\dd\vb a$。表面绝热，$\nabla u\cdot\vb n=0$（:term[诺伊曼边界条件]{id="math.pde.neumann-boundary-condition"}），用在这一步，所以导数为零，内能不变。
+
+      （2）由（1），对每个$t\ge0$，$\iiint_Vu\,\dd V$都等于$t=0$时的$\iiint_V\varphi\,\dd V$（$u$在$t=0$处连续）。记$\eta(t)$是$|u(\vb r,t)-m|$的最大值，则$\bigl|\iiint_V\varphi\,\dd V-m|V|\bigr|=\bigl|\iiint_V(u-m)\,\dd V\bigr|\le\eta(t)|V|\to0$。左边不随$t$变，只能是$0$，所以$m=\frac1{|V|}\iiint_V\varphi\,\dd V$：最后的温度是初温的平均值。
+
+      （3）不一定成立。这时导数仍是$\kappa\oint_{\partial V}\nabla u\cdot\dd\vb a$，可表面上$\nabla u\cdot\vb n$一般不为零：里面比表面热时，热量从表面流走，内能减少。例如$V$是立方体$0<x<\pi$、$0<y<\pi$、$0<z<\pi$，$u=e^{-3Dt}\sin x\sin y\sin z$满足热方程，在表面上为$0$，而$\iiint_Vc\rho u\,\dd V=8c\rho e^{-3Dt}$随时间减小。
+  reference: |
+    （1）$V$固定、$u_t$连续，求导移进积分号：$\dv{}t\iiint_Vc\rho u\,\dd V=\iiint_Vc\rho u_t\,\dd V=\kappa\iiint_V\divg(\nabla u)\,\dd V=\kappa\oint_{\partial V}\nabla u\cdot\dd\vb a$（热方程、散度定理）。绝热即$\nabla u\cdot\vb n=0$，用在最后一步，导数为零，内能不变。
+
+    （2）$\iiint_Vu\,\dd V\equiv\iiint_V\varphi\,\dd V$。$\eta(t)=\max|u-m|\to0$，$\bigl|\iiint_V\varphi\,\dd V-m|V|\bigr|\le\eta(t)|V|\to0$，左边是常数，所以为$0$，$m$是初温的平均值。
+
+    （3）不一定。导数是$\kappa\oint_{\partial V}\nabla u\cdot\dd\vb a$，表面保持$0\,^\circ\mathrm C$时$\nabla u\cdot\vb n$一般不为零；里面比表面热时热量流走，内能减少。例：$V$是立方体$(0,\pi)^3$，$u=e^{-3Dt}\sin x\sin y\sin z$（$u_t=-3Du=D\Delta u$，表面上为$0$），$\iiint_Vc\rho u\,\dd V=8c\rho e^{-3Dt}$递减。
+
+- id: p6
+  tier: hard
+  statement: |
+    截面积为$S$的细杆，比热容$c$、密度$\rho$、热导率$\kappa$都是常数，同一个截面上温度相同，记作$u(x,t)$，$u_t$、$u_{xx}$连续。侧面不绝热，向温度为$u_0$（常数）的空气散热：每单位长度每秒散失的热量是$\beta(u-u_0)$，$\beta>0$是常数；杆里没有热源。
+
+    （1）取杆的一段$a\le x\le b$，仿照讲解里的推导，证明$u_t=Du_{xx}-\gamma(u-u_0)$，其中$D=\frac\kappa{c\rho}$，并用$\beta$、$c$、$\rho$、$S$写出$\gamma$。
+
+    （2）证明$w=e^{\gamma t}(u-u_0)$满足$w_t=Dw_{xx}$。
+
+    （3）如果杆上各处的温度始终相同，$u-u_0$怎样随时间变化？$\frac1\gamma$表示什么？
+  hints:
+    - |
+      （1）这一段的内能是$\int_a^bc\rho Su\,\dd x$加一个常数，它的变化来自两端截面上流进、流出的热量和侧面散失的热量。
+    - |
+      （1）$x$处每秒向右流过截面的热量是$-\kappa Su_x$，两端每秒净流进$\kappa S\bigl(u_x(b,t)-u_x(a,t)\bigr)=\kappa S\int_a^bu_{xx}\,\dd x$。（2）把$u-u_0=e^{-\gamma t}w$代进（1）的方程。（3）这时$w_{xx}=0$，用（2）。
+    - |
+      （1）这一段的内能是$\int_a^bc\rho Su\,\dd x$加一个常数。由:term[傅里叶定律]{id="math.pde.fouriers-law"}，$x$处每秒向右流过截面的热量是$-\kappa Su_x$，两端每秒净流进$-\kappa Su_x(a,t)+\kappa Su_x(b,t)=\kappa S\int_a^bu_{xx}\,\dd x$（微积分基本定理，fundamental theorem of calculus），侧面每秒散失$\int_a^b\beta(u-u_0)\,\dd x$。$u_t$连续，求导可以移进积分号（见[含参变量积分](lesson:math.analysis.parameter-integrals#thm-leibniz-rule)），所以$\int_a^b\bigl(c\rho Su_t-\kappa Su_{xx}+\beta(u-u_0)\bigr)\dd x=0$。
+
+      它对每一段$[a,b]$都成立，被积函数又连续，只能处处为零。除以$c\rho S$，得$u_t=Du_{xx}-\gamma(u-u_0)$，$\gamma=\frac\beta{c\rho S}$。
+
+      （2）由$u-u_0=e^{-\gamma t}w$，$u_t=e^{-\gamma t}(w_t-\gamma w)$，$u_{xx}=e^{-\gamma t}w_{xx}$。代入得$e^{-\gamma t}(w_t-\gamma w)=e^{-\gamma t}(Dw_{xx}-\gamma w)$，即$w_t=Dw_{xx}$：侧面散热的效果全在因子$e^{-\gamma t}$里。
+
+      （3）各处温度相同时，$w$也不随$x$变，$w_{xx}=0$，由（2），$w_t=0$，$w$始终等于开始时和空气的温差$\theta_0$。所以$u-u_0=\theta_0e^{-\gamma t}$：温差按指数衰减，每过$\frac1\gamma$的时间变为原来的$\frac1e$。$\gamma$和截面积$S$成反比：$\beta$相同时，杆越细，凉得越快。
+  reference: |
+    （1）$[a,b]$段：$\dv{}t\int_a^bc\rho Su\,\dd x=\kappa S\bigl(u_x(b,t)-u_x(a,t)\bigr)-\int_a^b\beta(u-u_0)\,\dd x$，即$\int_a^b\bigl(c\rho Su_t-\kappa Su_{xx}+\beta(u-u_0)\bigr)\dd x=0$对一切$[a,b]$成立，被积函数连续，处处为零：$u_t=Du_{xx}-\gamma(u-u_0)$，$\gamma=\frac\beta{c\rho S}$。
+
+    （2）$u-u_0=e^{-\gamma t}w$，$u_t=e^{-\gamma t}(w_t-\gamma w)$，$u_{xx}=e^{-\gamma t}w_{xx}$，代入即$w_t=Dw_{xx}$。
+
+    （3）$u$不随$x$变时$w_{xx}=0$，由（2）$w_t=0$，$w\equiv\theta_0$，$u-u_0=\theta_0e^{-\gamma t}$，$\frac1\gamma$是温差降到$\frac1e$的时间；$\gamma\propto\frac1S$，杆越细凉得越快。
+
+- id: p7
+  tier: thinking
+  statement: |
+    地表的温度每天起伏一次，每年也起伏一次（冬冷夏热）。土壤的:term[扩散系数]{id="math.pde.diffusion-coefficient"}约$5\times10^{-7}\,\mathrm{m^2/s}$。
+
+    （1）照$\sqrt{Dt}$的尺度，估计每天的起伏和每年的起伏各能传到地下多深，两者之比约是多少。这个比和$D$有关吗？
+
+    （2）几米深的地窖为什么冬暖夏凉？
+  hints:
+    - |
+      （1）起伏的周期就是时间尺度：一天约$8.64\times10^4\,\mathrm s$，一年约$3.16\times10^7\,\mathrm s$。
+    - |
+      （1）深度之比是一年和一天的秒数之比的平方根。（2）地窖的深度和（1）算出的两个深度比一比：哪种起伏传得到，传到时还剩多少？
+    - |
+      （1）每天：$\sqrt{5\times10^{-7}\times8.64\times10^4}\,\mathrm m\approx0.21\,\mathrm m$；每年：$\sqrt{5\times10^{-7}\times3.16\times10^7}\,\mathrm m\approx4.0\,\mathrm m$。两者之比是$\sqrt{365}\approx19$，$D$约掉了，和土壤是哪一种无关；$D$只决定深度本身，深度和$\sqrt D$成正比。这只是数量级：起伏的幅度随深度逐渐变小，不是到某个深度突然没有了。
+
+      （2）地窖在几米深处，每天的起伏传不到，每年的起伏到那里也已经小了很多，地窖里的温度常年接近全年的平均温度，所以冬天比地面上暖，夏天比地面上凉。起伏往下传还要时间，地窖里剩下的那一点起伏也比地面推迟。
+  reference: |
+    （1）$\sqrt{Dt}$：一天约$0.21\,\mathrm m$，一年约$4.0\,\mathrm m$，之比$\sqrt{365}\approx19$，与$D$无关（深度本身$\propto\sqrt D$）。只是数量级，幅度随深度逐渐衰减。
+
+    （2）几米深处每天的起伏传不到，每年的起伏也衰减很多（精确地按$\sqrt{2D/\omega}$的指数衰减），温度常年接近年平均，冬天比地面暖、夏天比地面凉；起伏还有相位推迟。
+
+- id: p8
+  tier: thinking
+  statement: |
+    :term[热方程]{id="math.pde.heat-equation"}$u_t=D\Delta u$对$t$只有一阶，:term[波动方程]{id="math.pde.wave-equation"}（wave equation）$u_{tt}=u_{xx}$对$t$是二阶的。
+
+    （1）从这一节的推导看，为什么热方程对$t$只有一阶？这一时刻温度变化的快慢由什么决定？和牛顿第二定律比一比。
+
+    （2）设想某种「温度」满足$u_{tt}=a^2u_{xx}$（$a$是正常数）。开始时中间有一个热的鼓包$u(x,0)=\varphi(x)\ge0$，各处$u_t(x,0)=0$，以后会怎样？鼓包移动时，它后半边的热量往哪边流？这和经验相符吗？
+  hints:
+    - |
+      （1）推导用了能量守恒$c\rho u_t=-\divg\vb q$和傅里叶定律，$\vb q$由哪一时刻的什么决定？（2）试试$u=\frac12\bigl[\varphi(x-at)+\varphi(x+at)\bigr]$。
+    - |
+      （1）牛顿第二定律定的是加速度，所以要另外给初速度。（2）这个$u$满足方程和两个初始条件（见[偏导数](lesson:math.vector-calculus.partial-derivatives)第 5 题）；$\varphi''$连续时，二阶偏导数连续的解只有它一个（见[一维波动方程与达朗贝尔公式](lesson:math.pde.wave-dalembert#thm-dalembert)）。它是两个向两边跑的鼓包；对向右跑的那一个，由一维的能量守恒$c\rho u_t=-q_x$求热流$q$。
+    - |
+      （1）能量守恒给出$c\rho u_t=-\divg\vb q$，傅里叶定律说$\vb q$只由同一时刻的$\nabla u$决定，所以$u_t=D\Delta u$：知道了这一时刻的温度分布，温度变化的快慢就定了，不用另外给$u_t$。牛顿第二定律$m\ddot x=F$定的是加速度，速度要另外给，所以运动方程对时间是二阶的。热流没有「惯性」，温度梯度一变，热流立刻跟着变；要是热流对梯度的反应要一段时间，方程里就会出现$u_{tt}$。
+
+      （2）由[偏导数](lesson:math.vector-calculus.partial-derivatives)第 5 题，$F(x-at)+G(x+at)$满足$u_{tt}=a^2u_{xx}$。取$u=\frac12\bigl[\varphi(x-at)+\varphi(x+at)\bigr]$，$t=0$时$u=\varphi$，$u_t=\frac a2\bigl[-\varphi'(x)+\varphi'(x)\bigr]=0$。反过来，$\varphi''$连续时，满足方程和这两个初始条件、二阶偏导数连续的解只有这一个（见[一维波动方程与达朗贝尔公式](lesson:math.pde.wave-dalembert#thm-dalembert)的定理 2，那里的波速$c$就是这里的$a$）。所以鼓包分成两半，各以速度$a$向两边跑，形状不变，一点也不摊平；远处一点的温度在鼓包经过时升高，过后又降回原来的值。
+
+      看向右跑的那一半$\frac12\varphi(x-at)$：$c\rho u_t=-q_x$给出$q=\frac{c\rho a}2\varphi(x-at)\ge0$（取远处$q=0$），热量处处向右流。在鼓包的后半边，温度向右升高，热量却向右流，是从冷处流向热处，和「热量从热的地方流向冷的地方」相反。真实的热方程里，鼓包只会越来越矮、越来越宽。
+  reference: |
+    （1）$c\rho u_t=-\divg\vb q$且$\vb q=-\kappa\nabla u$只由同一时刻的温度分布决定，所以$u_t$由此刻的$u$定死，方程对$t$一阶；牛顿第二定律定的是加速度，要另给速度，所以二阶。热流没有惯性；若热流对梯度的响应有延迟（$\tau\vb q_t+\vb q=-\kappa\nabla u$），就得到含$u_{tt}$的方程。
+
+    （2）$u=\frac12[\varphi(x-at)+\varphi(x+at)]$（$\varphi''$连续时是唯一的解，见达朗贝尔公式那一节的定理 2）：两个半高的鼓包以$a$向两边跑，不摊平。右行的一半对应$q=\frac{c\rho a}2\varphi(x-at)\ge0$，在鼓包后半边$u_x>0$而$q>0$，热量从冷处流向热处，违背经验（热力学第二定律）。

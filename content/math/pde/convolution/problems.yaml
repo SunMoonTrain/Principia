@@ -1,0 +1,195 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$f(x)=e^{-x}$（$x\ge0$），$f(x)=0$（$x<0$）；$g(x)=1$（$0\le x\le1$），$g(x)=0$（其余）。求$(f*g)(2)$。
+  answer:
+    type: number
+    value: exp(-1)-exp(-2)
+  hints:
+    - |
+      照定义，$(f*g)(2)=\int_{-\infty}^{+\infty}f(2-y)g(y)\dd y$。$g(y)$在哪里不为$0$？
+    - |
+      只要在$0\le y\le1$上积分，那里$g(y)=1$；又$2-y\ge1>0$，所以$f(2-y)=e^{-(2-y)}$。
+    - |
+      $(f*g)(2)=\int_0^1e^{y-2}\dd y=e^{-2}(e-1)=e^{-1}-e^{-2}\approx0.2325$。
+  solution: |
+    $f$有界，$g$绝对可积，卷积有定义：$(f*g)(2)=\int_{-\infty}^{+\infty}f(2-y)g(y)\dd y$。$g(y)$只在$0\le y\le1$上不为$0$（等于$1$），这时$2-y\ge1$，$f(2-y)=e^{-(2-y)}$。所以$(f*g)(2)=\int_0^1e^{y-2}\dd y=e^{-2}(e-1)=e^{-1}-e^{-2}\approx0.2325$。
+
+- id: p2
+  tier: easy
+  statement: |
+    设$f$、$g$都绝对可积、有界。下列说法中，正确的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        把$f$、$g$都向右平移$1$，平移后的两个函数的卷积等于$f*g$向右平移$1$
+      - |
+        $f$、$g$都是偶函数时，$f*g$也是偶函数
+      - |
+        $f$在$[0,1]$以外为$0$，$g$在$[0,2]$以外为$0$时，$f*g$在$[0,2]$以外也为$0$
+      - |
+        宽为$1$和宽为$3$、高都是$1$的两个矩形的卷积，图像是梯形
+      - |
+        $f(x)=g(x)=e^{-x}$（$x\ge0$），$f(x)=g(x)=0$（$x<0$）时，$x>0$处$(f*g)(x)=xe^{-x}$
+    value: [2, 4, 5]
+  hints:
+    - |
+      每一项都代进定义$(f*g)(x)=\int_{-\infty}^{+\infty}f(x-y)g(y)\dd y$，需要时换元。D 照例 1 的办法；E 用讲解里$f$、$g$在$x<0$时为$0$的情形。
+    - |
+      A：平移后的卷积是$\int f(x-1-y)g(y-1)\dd y$，令$z=y-1$。B：在$(f*g)(-x)$里令$y=-z$。C：$(f*g)(x)\ne0$时，要有$y$同时满足$0\le y\le2$、$0\le x-y\le1$，$x$最大能到几？D：$(f*g)(x)$是两个区间重叠部分的长度。
+    - |
+      A：令$z=y-1$，得$\int f(x-2-z)g(z)\dd z=(f*g)(x-2)$，平移了$2$，不对。B：$(f*g)(-x)=\int f(-x+z)g(-z)\dd z=\int f(x-z)g(z)\dd z=(f*g)(x)$，对。C：$x$可以到$3$；$f$、$g$在各自的区间上都是$1$时，$(f*g)\bigl(\frac52\bigr)=\frac12$，不对。
+
+      D：较短的区间整个在较长的区间里时，重叠长度一直是$1$，滑出去时线性地减到$0$，是梯形，对。E：$(f*g)(x)=\int_0^xe^{-(x-y)}e^{-y}\dd y=\int_0^xe^{-x}\dd y=xe^{-x}$，对。选 B、D、E。
+  solution: |
+    A：平移后的两个函数是$f(x-1)$、$g(x-1)$，它们的卷积是$\int_{-\infty}^{+\infty}f(x-1-y)g(y-1)\dd y$；令$z=y-1$，得$\int_{-\infty}^{+\infty}f(x-2-z)g(z)\dd z=(f*g)(x-2)$，是$f*g$向右平移$2$，不对。B：在$(f*g)(-x)=\int_{-\infty}^{+\infty}f(-x-y)g(y)\dd y$里令$y=-z$，由$f$、$g$是偶函数，它等于$\int_{-\infty}^{+\infty}f(x-z)g(z)\dd z=(f*g)(x)$，对。C：$(f*g)(x)\ne0$时必有$y$满足$0\le y\le2$、$0\le x-y\le1$，所以$x$在$[0,3]$里，可以超出$[0,2]$；例如$f$、$g$在各自的区间上都是$1$时，$(f*g)\bigl(\frac52\bigr)$是$\bigl[\frac32,\frac52\bigr]$和$[0,2]$重叠部分的长度$\frac12$，不对。
+
+    D：$(f*g)(x)$是一个长$1$的区间和一个长$3$的区间重叠部分的长度；短的整个在长的里面时它一直是$1$，滑出去时线性地减到$0$，图像是梯形，对。E：由讲解里$f$、$g$在$x<0$时为$0$的情形，$x>0$时$(f*g)(x)=\int_0^xe^{-(x-y)}e^{-y}\dd y=\int_0^xe^{-x}\dd y=xe^{-x}$，对。选 B、D、E。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$g(x)=e^{-x^2}$，$h=g*g$。求$(h*g)(0)$。
+  answer:
+    type: number
+    value: pi/sqrt(3)
+  hints:
+    - |
+      例 2 的结果可以用两次：先求出$h$，再求$h*g$。
+    - |
+      例 2 取$a=b=1$，得$h(x)=\sqrt{\frac\pi2}\,e^{-x^2/2}$；再取$a=\frac12$、$b=1$。
+    - |
+      $\frac{ab}{a+b}=\frac13$，$(h*g)(x)=\sqrt{\frac\pi2}\sqrt{\frac{2\pi}3}\,e^{-x^2/3}=\frac\pi{\sqrt3}\,e^{-x^2/3}$，在$0$处是$\frac\pi{\sqrt3}\approx1.814$。
+  solution: |
+    由例 2（$a=b=1$），$h(x)=\sqrt{\frac\pi2}\,e^{-x^2/2}$。$h*g$是$\sqrt{\frac\pi2}$乘$e^{-x^2/2}*e^{-x^2}$，再由例 2（$a=\frac12$，$b=1$，$\frac{ab}{a+b}=\frac13$，$\sqrt{\frac\pi{a+b}}=\sqrt{\frac{2\pi}3}$），$(h*g)(x)=\sqrt{\frac\pi2}\sqrt{\frac{2\pi}3}\,e^{-x^2/3}=\frac\pi{\sqrt3}\,e^{-x^2/3}$，所以$(h*g)(0)=\frac\pi{\sqrt3}\approx1.814$。也可以由卷积定理核对：$h*g$的傅里叶变换是$\hat g(\xi)^3=\pi^{3/2}e^{-3\xi^2/4}$，正是$\frac\pi{\sqrt3}e^{-x^2/3}$的变换。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$g(x)=1$（$|x|<1$），$g(x)=0$（其余），$f(x)=e^{-|x|}$，$h=g*f$。求$h$的傅里叶变换在$\xi=\frac\pi2$处的值$\hat h\bigl(\frac\pi2\bigr)$。
+  answer:
+    type: number
+    value: 32/(pi*(4+pi^2))
+  hints:
+    - |
+      先求出$h$再做变换很麻烦。$g$、$f$满足卷积定理的条件吗？
+    - |
+      两者都绝对可积，$g$有界，所以$\hat h=\hat g\hat f$。$\hat g(\xi)=\frac{2\sin\xi}\xi$（例 1）；$\hat f(\xi)=\frac2{1+\xi^2}$（[傅里叶变换](lesson:math.pde.fourier-transform)一节例 1，$a=1$）。
+    - |
+      $\hat g\bigl(\frac\pi2\bigr)=\frac4\pi$，$\hat f\bigl(\frac\pi2\bigr)=\frac2{1+\pi^2/4}=\frac8{4+\pi^2}$，所以$\hat h\bigl(\frac\pi2\bigr)=\frac{32}{\pi(4+\pi^2)}\approx0.7344$。
+  solution: |
+    $g$、$f$都绝对可积，$g$有界，由卷积定理，$\hat h(\xi)=\hat g(\xi)\hat f(\xi)$。由例 1，$\hat g(\xi)=\frac{2\sin\xi}\xi$，$\hat g\bigl(\frac\pi2\bigr)=\frac2{\pi/2}=\frac4\pi$；由[傅里叶变换](lesson:math.pde.fourier-transform)一节例 1（$a=1$），$\hat f(\xi)=\frac2{1+\xi^2}$，$\hat f\bigl(\frac\pi2\bigr)=\frac8{4+\pi^2}$。所以$\hat h\bigl(\frac\pi2\bigr)=\frac4\pi\cdot\frac8{4+\pi^2}=\frac{32}{\pi(4+\pi^2)}\approx0.7344$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$g(x)=1$（$|x|<1$），$g(x)=0$（其余）。
+
+    （1）设$f$在$\R$上连续、有界。证明$(f*g)(x)=\int_{x-1}^{x+1}f(s)\dd s$，并由此证明$f*g$处处可导，$(f*g)'(x)=f(x+1)-f(x-1)$。
+
+    （2）设$f$有界，在每个有限区间上可积，可以有跳跃。证明$f*g$连续。
+
+    （3）由此说明：例 1 的$g*g$连续，却有几个点不可导；$(g*g)*g$处处有连续的导数。每和$g$卷积一次，函数变得怎样？
+  hints:
+    - |
+      （1）$g(y)$只在$(-1,1)$上不为$0$，再换元$s=x-y$；之后用微积分基本定理（fundamental theorem of calculus）。（2）用（1）的式子估计$(f*g)(x+h)-(f*g)(x)$。（3）对$g*g$用（2），对$(g*g)*g$用（1）。
+    - |
+      （1）记$F(x)=\int_0^xf(s)\dd s$，则$(f*g)(x)=F(x+1)-F(x-1)$。（2）设$|f|\le M$，$(f*g)(x+h)-(f*g)(x)=\int_{x+1}^{x+1+h}f(s)\dd s-\int_{x-1}^{x-1+h}f(s)\dd s$。（3）$g*g=2-|x|$（$|x|\le2$）在哪几点的左右导数（one-sided derivative）不同？
+    - |
+      （1）$(f*g)(x)=\int_{-1}^{1}f(x-y)\dd y$，令$s=x-y$，得$\int_{x-1}^{x+1}f(s)\dd s$。记$F(x)=\int_0^xf(s)\dd s$，$f$连续，由微积分基本定理，$F'=f$；$(f*g)(x)=F(x+1)-F(x-1)$，所以$(f*g)'(x)=f(x+1)-f(x-1)$。
+
+      （2）（1）的第一个等式只用到换元，对有界、在每个有限区间上可积的$f$也成立。设$|f|\le M$，则$\bigl|(f*g)(x+h)-(f*g)(x)\bigr|=\Bigl|\int_{x+1}^{x+1+h}f(s)\dd s-\int_{x-1}^{x-1+h}f(s)\dd s\Bigr|\le2M|h|$，$h\to0$时趋于$0$，所以$f*g$连续。
+
+      （3）$g$有界、有跳跃，由（2），$g*g$连续；由例 1，它在$|x|\le2$上是$2-|x|$，在$x=0$、$\pm2$处左右导数不同，不可导。$g*g$连续、有界，由（1），$(g*g)*g$处处可导，导数$(g*g)(x+1)-(g*g)(x-1)$是两个连续函数之差，也连续。所以每和$g$卷积一次，函数就光滑一级：有跳跃的变成连续的，有折角的变成导数连续的，这就是「抹开」。
+  reference: |
+    （1）$(f*g)(x)=\int_{-1}^1f(x-y)\dd y=\int_{x-1}^{x+1}f(s)\dd s=F(x+1)-F(x-1)$，$F(x)=\int_0^xf$；$f$连续，由微积分基本定理$F'=f$，$(f*g)'(x)=f(x+1)-f(x-1)$。
+
+    （2）第一个等式只用换元，对有界、局部可积的$f$成立；$|f|\le M$时$|(f*g)(x+h)-(f*g)(x)|\le2M|h|\to0$。
+
+    （3）$g$有界，$g*g$连续（（2）），即$2-|x|$（$|x|\le2$），在$0$、$\pm2$处不可导；$g*g$连续有界，由（1），$((g*g)*g)'(x)=(g*g)(x+1)-(g*g)(x-1)$连续。每卷一次光滑一级：跳跃→连续→导数连续。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$g(x)=e^{-|x|}$，$h(x)=e^{-x^2}$。要找连续、绝对可积、在每个有限区间上分段光滑的$f$，使$f*g=h$。
+
+    （1）由卷积定理求出$\hat f$。
+
+    （2）由[傅里叶变换](lesson:math.pde.fourier-transform#thm-fourier-derivative)一节的定理 2，找一个变换是$\hat f$的函数，写出$f$。
+
+    （3）验证你求出的$f$确实满足$f*g=h$，并说明满足题设条件的$f$只有这一个。
+  hints:
+    - |
+      （1）$\hat g(\xi)=\frac2{1+\xi^2}$，$\hat h(\xi)=\sqrt\pi e^{-\xi^2/4}$。（2）$\xi^2$乘一个变换，对应函数求两次导数再变号。（3）可以直接算$h''*g$。
+    - |
+      （1）$\hat f(\xi)\cdot\frac2{1+\xi^2}=\sqrt\pi e^{-\xi^2/4}$。（2）$h''$的变换是$(i\xi)^2\hat h=-\xi^2\hat h$，所以$\frac12(h-h'')$的变换是$\frac{1+\xi^2}2\hat h$。（3）在$y>0$、$y<0$两段上各分部积分两次，注意$\frac{\dd}{\dd y}h'(x-y)=-h''(x-y)$。唯一性用[傅里叶反演公式](lesson:math.pde.fourier-inversion#thm-uniqueness)一节的推论。
+    - |
+      （1）$f$、$g$都绝对可积，$g$有界，由卷积定理，$\hat f(\xi)\hat g(\xi)=\hat h(\xi)$。由[傅里叶变换](lesson:math.pde.fourier-transform)一节例 1，$\hat g(\xi)=\frac2{1+\xi^2}$；由[傅里叶反演公式](lesson:math.pde.fourier-inversion#thm-gaussian-transform)一节定理 1，$\hat h(\xi)=\sqrt\pi e^{-\xi^2/4}$。所以$\hat f(\xi)=\frac{\sqrt\pi}2(1+\xi^2)e^{-\xi^2/4}$。
+
+      （2）$h$、$h'$、$h''$都连续、绝对可积，对$h$、$h'$各用一次定理 2，$h''$的变换是$-\xi^2\hat h$，所以$\frac12(h-h'')$的变换是$\frac12(1+\xi^2)\hat h=\hat f$。$h''(x)=(4x^2-2)e^{-x^2}$，于是$f(x)=\frac12(3-4x^2)e^{-x^2}$。
+
+      （3）在$[0,+\infty)$上分部积分两次，$\int_0^{+\infty}h''(x-y)e^{-y}\dd y=h'(x)-h(x)+\int_0^{+\infty}h(x-y)e^{-y}\dd y$；在$(-\infty,0]$上同样得$-h'(x)-h(x)+\int_{-\infty}^0h(x-y)e^{y}\dd y$。相加，$h''*g=h*g-2h$，所以$f*g=\frac12(h*g-h''*g)=h$。若$f_1$、$f_2$都满足题设，则$\hat f_1\hat g=\hat f_2\hat g$；$\hat g$处处不为$0$，所以$\hat f_1=\hat f_2$，由[傅里叶反演公式](lesson:math.pde.fourier-inversion#thm-uniqueness)一节的推论，$f_1=f_2$。
+  reference: |
+    （1）$\hat f\cdot\frac2{1+\xi^2}=\sqrt\pi e^{-\xi^2/4}$，$\hat f=\frac{\sqrt\pi}2(1+\xi^2)e^{-\xi^2/4}$。
+
+    （2）$\widehat{h''}=-\xi^2\hat h$（定理 2 用两次），$\frac12(h-h'')$的变换是$\hat f$；$h''=(4x^2-2)e^{-x^2}$，$f=\frac12(3-4x^2)e^{-x^2}$。
+
+    （3）$\int_0^\infty h''(x-y)e^{-y}\dd y=h'(x)-h(x)+\int_0^\infty h(x-y)e^{-y}\dd y$，$\int_{-\infty}^0h''(x-y)e^y\dd y=-h'(x)-h(x)+\int_{-\infty}^0h(x-y)e^y\dd y$，相加$h''*g=h*g-2h$，$f*g=h$。唯一：$\hat g=\frac2{1+\xi^2}\ne0$，$\hat f_1=\hat f_2$，由唯一性推论$f_1=f_2$。数值核对：$x=0.6$时$f*g\approx0.697676=e^{-0.36}$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    把照片上一行像素（pixel）的亮度看成$x$的函数$f$。镜头没对准焦时，记录下来的是$F=f*g$，其中$g\ge0$、积分为$1$，描述一个亮点被抹成了什么样子。
+
+    （1）由卷积定理，$\hat F=\hat f\hat g$。能不能算出$\frac{\hat F}{\hat g}$，再做逆变换（inverse Fourier transform），把$f$找回来？$g$是宽为$b$、高为$\frac1b$的矩形时，会碰到什么麻烦？周期为$b$的明暗条纹拍下来会怎样？
+
+    （2）$g(x)=\frac1{\sqrt\pi\sigma}e^{-x^2/\sigma^2}$（$\sigma>0$）时，$\hat g$处处不为$0$。可记录下来的$F$总带着一点误差：设$\hat F$在某个频率$\xi$处差了很小的$\eta$，算出的$\hat f(\xi)$差多少？$\xi$越大会怎样？
+
+    （3）由此说说：为什么糊得越厉害，越难还原？实际去模糊时该怎样取舍？
+  hints:
+    - |
+      （1）$\hat g$在哪些$\xi$处为$0$？在那些频率上，$\hat F$是多少，和$f$还有关系吗？（2）先求$\hat g(\xi)$，再看误差除以$\hat g(\xi)$变成多少。
+    - |
+      （1）$\hat g(\xi)=\frac{\sin(\xi b/2)}{\xi b/2}$，在$\xi=\frac{2n\pi}b$（$n=\pm1,\pm2,\dots$）处为$0$。周期为$b$的条纹$\cos\frac{2\pi x}b$在任何一段长为$b$的区间上平均都是$0$。（2）由[傅里叶反演公式](lesson:math.pde.fourier-inversion#thm-gaussian-transform)一节定理 1，$\hat g(\xi)=e^{-\sigma^2\xi^2/4}$。
+    - |
+      （1）矩形的$\hat g(\xi)=\frac{\sin(\xi b/2)}{\xi b/2}$在$\xi=\frac{2n\pi}b$（$n=\pm1,\pm2,\dots$）处为$0$，那里$\hat F=0$，不论$\hat f$是什么，没法除，$f$在这些频率上的成分全丢了。条纹$w(x)=\cos\frac{2\pi x}b$有界，可以和$g$做卷积，$(w*g)(x)=\frac1b\int_{-b/2}^{b/2}\cos\frac{2\pi(x-y)}b\dd y=0$：条纹被抹得一干二净。所以$f$和$f$加上这样的条纹拍出来一样，单凭$F$分不出来。
+
+      （2）$\hat g(\xi)=e^{-\sigma^2\xi^2/4}$处处为正，可以除，但$\hat F$的误差$\eta$除下来变成$\eta e^{\sigma^2\xi^2/4}$。$\sigma\xi=6$时放大约$e^9\approx8\times10^3$倍，$\xi$再大还要快得多：细节（高频）上的误差会被放大到淹没一切。
+
+      （3）糊得越厉害，$b$或$\sigma$越大，$\hat g$越窄：矩形的第一个零点$\frac{2\pi}b$越靠近$0$，高斯的$e^{-\sigma^2\xi^2/4}$越早变得很小，能可靠还原的频率范围越窄。实际去模糊只在$|\hat g|$不太小的频率上做除法，别处放弃或压低：宁可留一点模糊，也不让误差淹没图像。
+  reference: |
+    （1）矩形$\hat g=\frac{\sin(\xi b/2)}{\xi b/2}$在$\xi=\frac{2n\pi}b$（$n\ne0$）为零，这些频率上$\hat F=0$与$f$无关，信息丢失；周期$b$的条纹和$g$卷积为$0$（整周期平均），$f$与$f$加条纹拍出来相同，不能唯一还原。
+
+    （2）高斯$\hat g=e^{-\sigma^2\xi^2/4}>0$，误差$\eta$变成$\eta e^{\sigma^2\xi^2/4}$，随$\xi$急剧增大（$\sigma\xi=6$约$8100$倍），高频噪声被放大。
+
+    （3）模糊越强，$\hat g$越窄，丢失或被压到噪声以下的频率越多；实际只在$|\hat g|$不太小处除（正则化，例如维纳滤波），放弃最细的细节。
+
+- id: p8
+  tier: thinking
+  statement: |
+    卷积也有「离散」的版本。
+
+    （1）两个多项式$p(z)=\sum_{j=0}^ma_jz^j$、$q(z)=\sum_{k=0}^nb_kz^k$相乘，乘积里$z^l$的系数$c_l$是多少？把它写成和$(f*g)(x)=\int_{-\infty}^{+\infty}f(x-y)g(y)\dd y$相像的样子。
+
+    （2）掷两颗均匀的骰子，点数之和为$l$的概率$P_l$怎样由一颗骰子的概率算出？它和（1）有什么关系？$P_l$随$l$怎样变化，和例 1 有什么相像的地方？
+
+    （3）多项式相乘时，系数之间做的是（1）里那样的「卷积」，多项式本身却只是相乘。这和卷积定理有什么相像的地方？取$z=e^{-i\xi}$，$p(e^{-i\xi})$像什么？
+  hints:
+    - |
+      （1）$z^l$来自所有$j+k=l$的乘积$a_jz^j\cdot b_kz^k$。（2）点数之和为$l$、第一颗是$j$时，第二颗是几？（3）把系数数列看成函数，把多项式看成它的「变换」。
+    - |
+      （1）$c_l=\sum_ja_jb_{l-j}$。（2）$P_l=\sum_jd_jd_{l-j}$，$d_j=\frac16$（$j=1,\dots,6$）是一颗骰子掷出$j$的概率；它是$\bigl(\frac{z+z^2+\cdots+z^6}6\bigr)^2$里$z^l$的系数。（3）$p(e^{-i\xi})=\sum_ja_je^{-ij\xi}$，和$\hat f(\xi)=\int_{-\infty}^{+\infty}f(x)e^{-i\xi x}\dd x$比一比。
+    - |
+      （1）乘积里$z^l$来自所有$j+k=l$的项$a_jz^j\cdot b_kz^k$，所以$c_l=\sum_ja_jb_{l-j}$，$j$取$0\le j\le m$、$0\le l-j\le n$的整数。下标$l$相当于$x$，$j$相当于$y$，求和相当于积分：这正是$\int f(x-y)g(y)\dd y$的样子，是两个系数数列的「卷积」。
+
+      （2）记$d_j=\frac16$（$j=1,\dots,6$）为一颗骰子掷出$j$的概率。两颗骰子互不影响，第一颗是$j$、第二颗是$l-j$的概率是$d_jd_{l-j}$，对$j$求和得$P_l=\sum_jd_jd_{l-j}$，正是（1）的形状：$P_l$是$\bigl(\frac{z+z^2+\cdots+z^6}6\bigr)^2$里$z^l$的系数。算出来$P_l=\frac{6-|l-7|}{36}$（$l=2,\dots,12$），在$7$处最大，向两边线性地降下去：两个「平的」分布卷成了三角形，和例 1 两个矩形卷成三角形一样。
+
+      （3）（1）说：系数做「卷积」，多项式只是相乘。卷积定理说：函数做卷积，傅里叶变换只是相乘。取$z=e^{-i\xi}$，$p(e^{-i\xi})=\sum_ja_je^{-ij\xi}$正像$\hat f(\xi)=\int f(x)e^{-i\xi x}\dd x$，只是对$x$的积分换成了对整数$j$的求和；多项式相乘就是离散的卷积定理。
+  reference: |
+    （1）$c_l=\sum_ja_jb_{l-j}$（$0\le j\le m$，$0\le l-j\le n$），离散的卷积：下标$l\leftrightarrow x$，$j\leftrightarrow y$，求和$\leftrightarrow$积分。
+
+    （2）$P_l=\sum_jd_jd_{l-j}=\frac{6-|l-7|}{36}$（$l=2,\dots,12$），即$\bigl(\frac{z+\cdots+z^6}6\bigr)^2$的系数；三角形，峰在$7$，对应例 1 矩形卷矩形得三角形。
+
+    （3）生成多项式把系数的卷积变成乘积，是离散的卷积定理；$p(e^{-i\xi})=\sum a_je^{-ij\xi}$是数列的「傅里叶变换」（积分换成整点求和，以$2\pi$为周期），和傅里叶级数对应。

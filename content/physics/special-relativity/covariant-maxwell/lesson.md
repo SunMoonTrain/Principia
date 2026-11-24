@@ -66,7 +66,7 @@ status: reviewed
 ::anchor{id="def-dalembertian"}
 算符$\Box=\partial_\mu\partial^\mu=\frac1{c^2}\frac{\partial^2}{\partial t^2}-\nabla^2$叫作达朗贝尔算符（d'Alembert operator）；它由:term[四维梯度]{id="physics.special-relativity.four-gradient"}一上一下配对得到，换:term[惯性系]{id="physics.special-relativity.inertial-frame"}时不变。
 
-为什么这样定义：$\Box f=0$就是以速度$c$传播的波动方程（wave equation），它在每个惯性系里形式相同，正好和光速在每个惯性系里都是$c$相符。边界情况：不随时间变的量，$\Box$就是$-\nabla^2$，例如静电势满足$-\nabla^2\phi=\frac\rho{\varepsilon_0}$。
+为什么这样定义：$\Box f=0$就是以速度$c$传播的:term[波动方程]{id="math.pde.wave-equation"}（wave equation），它在每个惯性系里形式相同，正好和光速在每个惯性系里都是$c$相符。边界情况：不随时间变的量，$\Box$就是$-\nabla^2$，例如静电势满足$-\nabla^2\phi=\frac\rho{\varepsilon_0}$。
 
 ::anchor{id="thm-potential-equation"}
 定理（:term[四维势]{id="physics.special-relativity.four-potential"}的方程）：用四维势表示，有源的方程是$\Box A^\nu-\partial^\nu(\partial_\mu A^\mu)=\mu_0J^\nu$；在洛伦茨规范（Lorenz gauge）$\partial_\mu A^\mu=0$下，就是$\Box A^\nu=\mu_0J^\nu$。

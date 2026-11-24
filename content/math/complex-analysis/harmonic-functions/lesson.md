@@ -51,7 +51,7 @@ status: reviewed
 
 **证明**：由:term[柯西-黎曼方程]{id="math.complex-analysis.cauchy-riemann-equations"}，$\nabla u=(u_x,u_y)$，$\nabla v=(-u_y,u_x)$，所以$\nabla u\cdot\nabla v=-u_xu_y+u_yu_x=0$，而$|\nabla u|=|\nabla v|=|f'(z_0)|\ne0$。等值线在一点的切线和那里的梯度垂直，两条等值线的切线也就互相垂直。
 
-为什么有用：$u$、$v$的等值线织成一张处处直角相交的网；平板上的稳恒温度$u$有:term[共轭调和函数]{id="math.complex-analysis.harmonic-conjugate"}$v$时，$u$的等值线是等温线，$v$的等值线就是热流的路线（第 8 题）。边界情况：$f'(z_0)=0$时可能不正交，见下面的图。
+为什么有用：$u$、$v$的等值线织成一张处处直角相交的网；平板上的:term[稳恒温度]{id="math.pde.steady-state"}（steady-state temperature）$u$有:term[共轭调和函数]{id="math.complex-analysis.harmonic-conjugate"}$v$时，$u$的等值线是等温线，$v$的等值线就是热流的路线（第 8 题）。边界情况：$f'(z_0)=0$时可能不正交，见下面的图。
 
 ## 几何图像
 

@@ -5,8 +5,394 @@ proofPolicy: sketch
 macros:
   \R: |
     \mathbb{R}
+  \vb: |
+    \mathbf{#1}
   \dd: |
     \mathop{}\!\mathrm{d}
+  \dv: |
+    \frac{\mathrm{d} #1}{\mathrm{d} #2}
   \pdv: |
     \frac{\partial #1}{\partial #2}
-glossary: []
+  \divg: |
+    \nabla\cdot
+glossary:
+  - id: math.pde.fourier-transform
+    zh: |
+      傅里叶变换
+    en: |
+      Fourier transform
+    brief: |
+      绝对可积的$f$的$\hat f(\xi)=\int_{-\infty}^{+\infty}f(x)e^{-i\xi x}\dd x$，量$f$里含$e^{i\xi x}$的成分有多少。
+    definedIn: math.pde.fourier-transform
+    anchor: def-fourier-transform
+  - id: math.pde.inverse-fourier-transform
+    zh: |
+      傅里叶逆变换
+    en: |
+      inverse Fourier transform
+    brief: |
+      $\frac1{2\pi}\int_{-\infty}^{+\infty}g(\xi)e^{i\xi x}\dd\xi$，积分不绝对收敛时按对称极限理解；在一定条件下由$\hat f$给回$f$。
+    definedIn: math.pde.fourier-transform
+    anchor: def-inverse-fourier-transform
+  - id: math.pde.absolutely-integrable
+    zh: |
+      绝对可积
+    en: |
+      absolutely integrable
+    brief: |
+      $f$在每个有限区间上可积，并且$\int_{-\infty}^{+\infty}|f(x)|\dd x$收敛；这时$\int_{-\infty}^{+\infty}f(x)e^{-i\xi x}\dd x$对每个$\xi$都收敛。
+    definedIn: math.pde.fourier-transform
+    anchor: def-absolutely-integrable
+  - id: math.pde.frequency-variable
+    zh: |
+      频率变量
+    en: |
+      frequency variable
+    brief: |
+      傅里叶变换$\hat f(\xi)$的自变量$\xi$：$\hat f(\xi)$量的是$f$里按$e^{i\xi x}$变化的成分。
+    definedIn: math.pde.fourier-transform
+    anchor: def-fourier-transform
+  - id: math.pde.pde
+    zh: |
+      偏微分方程
+    en: |
+      partial differential equation
+    abbr: |
+      PDE
+    brief: |
+      含有未知多元函数的偏导数的方程，如$u_t=u_{xx}$；出现的偏导数最高是几阶，方程就是几阶。
+    definedIn: math.pde.pde-basics
+    anchor: def-pde
+  - id: math.pde.linear-pde
+    zh: |
+      线性偏微分方程
+    en: |
+      linear partial differential equation
+    brief: |
+      未知函数$u$和它的各阶偏导数都只以一次的形式出现、系数只依赖自变量的偏微分方程；不含$u$及其偏导数的项为零时叫齐次。
+    definedIn: math.pde.pde-basics
+    anchor: def-linear-pde
+  - id: math.pde.superposition-principle
+    zh: |
+      叠加原理
+    en: |
+      superposition principle
+    brief: |
+      齐次线性偏微分方程的解的线性组合仍是解。
+    definedIn: math.pde.pde-basics
+    anchor: thm-superposition
+  - id: math.pde.elliptic-equation
+    zh: |
+      椭圆型方程
+    en: |
+      elliptic equation
+    brief: |
+      二阶线性偏微分方程$Au_{xx}+2Bu_{xy}+Cu_{yy}+\cdots=f$在$B^2-AC<0$的点叫椭圆型，处处如此就叫椭圆型方程，如$u_{xx}+u_{yy}=0$。
+    definedIn: math.pde.pde-basics
+    anchor: def-classification
+  - id: math.pde.parabolic-equation
+    zh: |
+      抛物型方程
+    en: |
+      parabolic equation
+    brief: |
+      二阶线性偏微分方程$Au_{xx}+2Bu_{xy}+Cu_{yy}+\cdots=f$在$B^2-AC=0$的点叫抛物型，处处如此就叫抛物型方程，如$u_t=u_{xx}$。
+    definedIn: math.pde.pde-basics
+    anchor: def-classification
+  - id: math.pde.hyperbolic-equation
+    zh: |
+      双曲型方程
+    en: |
+      hyperbolic equation
+    brief: |
+      二阶线性偏微分方程$Au_{xx}+2Bu_{xy}+Cu_{yy}+\cdots=f$在$B^2-AC>0$的点叫双曲型，处处如此就叫双曲型方程，如$u_{tt}=u_{xx}$。
+    definedIn: math.pde.pde-basics
+    anchor: def-classification
+  - id: math.pde.initial-value-problem
+    zh: |
+      初值问题
+    en: |
+      initial value problem
+    brief: |
+      给出$t=0$时的$u(x,0)$，方程对$t$二阶时再给$u_t(x,0)$，求以后满足方程的解；也叫柯西问题。
+    definedIn: math.pde.pde-basics
+    anchor: def-ivp-bvp
+  - id: math.pde.boundary-value-problem
+    zh: |
+      边值问题
+    en: |
+      boundary value problem
+    brief: |
+      在自变量取值范围的边界上给出$u$或它的导数要满足的条件，求范围里满足方程的解，如$u''=0$、$u(0)=a$、$u(L)=b$。
+    definedIn: math.pde.pde-basics
+    anchor: def-ivp-bvp
+  - id: math.pde.gaussian-function
+    zh: |
+      高斯函数
+    en: |
+      Gaussian function
+    brief: |
+      $e^{-ax^2}$（$a>0$）以及它的平移和非零倍数$Ae^{-a(x-x_0)^2}$，$A>0$时图像是钟形，$a$越大越窄，积分是$A\sqrt{\pi/a}$。
+    definedIn: math.pde.fourier-inversion
+    anchor: def-gaussian
+  - id: math.pde.fourier-inversion-formula
+    zh: |
+      傅里叶反演公式
+    en: |
+      Fourier inversion formula
+    brief: |
+      $f$绝对可积、在每个有限区间上分段光滑时，$\lim_{R\to+\infty}\frac1{2\pi}\int_{-R}^R\hat f(\xi)e^{i\xi x}\dd\xi=\frac{f(x^-)+f(x^+)}2$；也叫反演公式。
+    definedIn: math.pde.fourier-inversion
+    anchor: thm-inversion
+  - id: math.pde.heat-equation
+    zh: |
+      热方程
+    en: |
+      heat equation
+    brief: |
+      $u_t=D\Delta u$（$D>0$，$\Delta$是拉普拉斯算子），一维是$u_t=Du_{xx}$；由能量守恒和傅里叶定律推出，也叫热传导方程、扩散方程。
+    definedIn: math.pde.heat-equation
+    anchor: def-heat-equation
+  - id: math.pde.fouriers-law
+    zh: |
+      傅里叶定律
+    en: |
+      Fourier's law
+    brief: |
+      各个方向导热一样的材料里，热流密度和温度梯度成正比、方向相反：$\vb q=-\kappa\nabla u$，正常数$\kappa$是热导率。
+    definedIn: math.pde.heat-equation
+    anchor: def-fourier-law
+  - id: math.pde.thermal-conductivity
+    zh: |
+      热导率
+    en: |
+      thermal conductivity
+    brief: |
+      傅里叶定律$\vb q=-\kappa\nabla u$里的正常数$\kappa$，也叫导热系数，单位是$\mathrm{W/(m\cdot K)}$。
+    definedIn: math.pde.heat-equation
+    anchor: def-fourier-law
+  - id: math.pde.diffusion-coefficient
+    zh: |
+      扩散系数
+    en: |
+      diffusion coefficient
+    brief: |
+      $u_t=D\Delta u$里的正常数$D$，单位$\mathrm{m^2/s}$；导热时$D=\frac\kappa{c\rho}$（$c$是比热容，$\rho$是密度）。
+    definedIn: math.pde.heat-equation
+    anchor: def-heat-equation
+  - id: math.pde.steady-state
+    zh: |
+      稳态
+    en: |
+      steady state
+    brief: |
+      不随时间变化的解，即$u_t=0$的解；没有热源时热方程的稳态满足$\Delta u=0$。也叫稳恒。
+    definedIn: math.pde.heat-equation
+    anchor: def-steady-state
+  - id: math.pde.initial-boundary-value-problem
+    zh: |
+      初边值问题
+    en: |
+      initial-boundary value problem
+    brief: |
+      在有界的范围里求方程的解，既给初始条件，又给边界条件，如给定杆的初温和两端的温度。
+    definedIn: math.pde.heat-equation
+    anchor: def-ibvp
+  - id: math.pde.dirichlet-boundary-condition
+    zh: |
+      狄利克雷边界条件
+    en: |
+      Dirichlet boundary condition
+    brief: |
+      边界上给定$u$本身的值，如保持温度不变的边界；也叫第一类边界条件。
+    definedIn: math.pde.heat-equation
+    anchor: def-boundary-conditions
+  - id: math.pde.neumann-boundary-condition
+    zh: |
+      诺伊曼边界条件
+    en: |
+      Neumann boundary condition
+    brief: |
+      边界上给定$\nabla u\cdot\vb n$（$\vb n$是外法向），如给定流出边界的热流，绝热时为$0$；也叫第二类边界条件。
+    definedIn: math.pde.heat-equation
+    anchor: def-boundary-conditions
+  - id: math.pde.transport-equation
+    zh: |
+      输运方程
+    en: |
+      transport equation
+    brief: |
+      $u_t+cu_x=0$（$c$是常数），也叫平流方程；在整个平面上，初值为$\varphi$的可微解是$\varphi(x-ct)$，即初始形状以速度$c$平移。
+    definedIn: math.pde.transport-equation
+    anchor: def-transport
+  - id: math.pde.characteristic-curve
+    zh: |
+      特征线
+    en: |
+      characteristic curve
+    brief: |
+      一阶线性偏微分方程$au_x+bu_y+\gamma u=f$里满足$\dv xs=a$、$\dv ys=b$的曲线；沿它方程化成常微分方程，如$u_t+cu_x=0$的特征线是直线$x-ct=$常数。也叫特征曲线。
+    definedIn: math.pde.transport-equation
+    anchor: def-characteristic
+  - id: math.pde.method-of-characteristics
+    zh: |
+      特征线法
+    en: |
+      method of characteristics
+    brief: |
+      先求出特征线，再沿特征线把一阶线性偏微分方程化成常微分方程来解的办法。
+    definedIn: math.pde.transport-equation
+    anchor: def-method-of-characteristics
+  - id: math.pde.traveling-wave
+    zh: |
+      行波
+    en: |
+      traveling wave
+    brief: |
+      形如$\varphi(x-ct)$的函数：$t$时刻的图像是开始时的图像平移$ct$，形状不变；$c>0$向右，$c<0$向左。
+    definedIn: math.pde.transport-equation
+    anchor: def-traveling-wave
+  - id: math.pde.convolution
+    zh: |
+      卷积
+    en: |
+      convolution
+    brief: |
+      $(f*g)(x)=\int_{-\infty}^{+\infty}f(x-y)g(y)\dd y$（一个有界、在有限区间上可积，另一个绝对可积）：把$f$平移到各处、按$g$加权叠加；两者在负半轴上都为零时，$x>0$处化成$\int_0^xf(x-y)g(y)\dd y$。
+    definedIn: math.pde.convolution
+    anchor: def-convolution
+  - id: math.pde.convolution-theorem
+    zh: |
+      卷积定理
+    en: |
+      convolution theorem
+    brief: |
+      $f$、$g$都绝对可积、其中一个有界时，$f*g$也绝对可积，并且$\widehat{f*g}=\hat f\hat g$：卷积的傅里叶变换等于两个傅里叶变换之积。
+    definedIn: math.pde.convolution
+    anchor: thm-convolution
+  - id: math.pde.error-function
+    zh: |
+      误差函数
+    en: |
+      error function
+    brief: |
+      $\operatorname{erf}z=\frac2{\sqrt\pi}\int_0^ze^{-s^2}\dd s$，奇函数，从$-1$增到$1$；热核在半直线上的面积用它表示。
+    definedIn: math.pde.heat-kernel
+    anchor: def-erf
+  - id: math.pde.separation-of-variables
+    zh: |
+      分离变量法
+    en: |
+      separation of variables
+    brief: |
+      设解是各含一个自变量的函数的乘积，化成常微分方程，由齐次边界条件定出特征值，再把乘积解叠加起来满足初始条件。
+    definedIn: math.pde.separation-of-variables
+    anchor: def-separation-of-variables
+  - id: math.pde.separation-constant
+    zh: |
+      分离常数
+    en: |
+      separation constant
+    brief: |
+      分离变量时，只依赖$t$的一边恒等于只依赖$x$的一边，两边共同等于的常数，如$\frac{T'}{DT}=\frac{X''}X=-\lambda$里的$-\lambda$。
+    definedIn: math.pde.separation-of-variables
+    anchor: def-separation-constant
+  - id: math.pde.eigenvalue
+    zh: |
+      特征值
+    en: |
+      eigenvalue
+    brief: |
+      边值问题如$-X''=\lambda X$、$X(0)=X(L)=0$有不恒为零的解时，$\lambda$叫特征值，这些解叫特征函数。
+    definedIn: math.pde.separation-of-variables
+    anchor: def-eigen
+  - id: math.pde.eigenfunction
+    zh: |
+      特征函数
+    en: |
+      eigenfunction
+    brief: |
+      边值问题如$-X''=\lambda X$、$X(0)=X(L)=0$在$\lambda$取特征值时不恒为零的解，如$\sin\frac{n\pi x}L$。
+    definedIn: math.pde.separation-of-variables
+    anchor: def-eigen
+  - id: math.pde.odd-extension
+    zh: |
+      奇延拓
+    en: |
+      odd extension
+    brief: |
+      把$(0,L)$上的函数按$f(-x)=-f(x)$延到$(-L,0)$上；得到的奇函数的傅里叶级数只含正弦项。
+    definedIn: math.pde.separation-of-variables
+    anchor: def-extension
+  - id: math.pde.even-extension
+    zh: |
+      偶延拓
+    en: |
+      even extension
+    brief: |
+      把$(0,L)$上的函数按$f(-x)=f(x)$延到$(-L,0)$上；得到的偶函数的傅里叶级数只含余弦项和常数项。
+    definedIn: math.pde.separation-of-variables
+    anchor: def-extension
+  - id: math.pde.wave-equation
+    zh: |
+      波动方程
+    en: |
+      wave equation
+    brief: |
+      一维是$u_{tt}=c^2u_{xx}$，三维是$u_{tt}=c^2(u_{xx}+u_{yy}+u_{zz})$，正常数$c$是波速。
+    definedIn: math.pde.wave-dalembert
+    anchor: def-wave-equation
+  - id: math.pde.dalembert-formula
+    zh: |
+      达朗贝尔公式
+    en: |
+      d'Alembert's formula
+    brief: |
+      $\varphi$有连续的二阶导数、$\psi$有连续的导数时，$u_{tt}=c^2u_{xx}$在整个平面上满足$u(x,0)=\varphi(x)$、$u_t(x,0)=\psi(x)$的二阶偏导数连续的解只有一个：$\frac12[\varphi(x-ct)+\varphi(x+ct)]+\frac1{2c}\int_{x-ct}^{x+ct}\psi(s)\dd s$。
+    definedIn: math.pde.wave-dalembert
+    anchor: thm-dalembert
+  - id: math.pde.domain-of-dependence
+    zh: |
+      依赖区域
+    en: |
+      domain of dependence
+    brief: |
+      一维波动方程的解在$(x_0,t_0)$处的值只由$t=0$时$[x_0-ct_0,x_0+ct_0]$上的初值决定；这个区间叫依赖区间，它和$(x_0,t_0)$围成的三角形叫依赖区域。
+    definedIn: math.pde.wave-dalembert
+    anchor: def-domains
+  - id: math.pde.domain-of-influence
+    zh: |
+      影响区域
+    en: |
+      domain of influence
+    brief: |
+      一维波动方程里，$t=0$时$x_0$处的初值只影响$|x-x_0|\le ct$的点：$(x,t)$平面上以$(x_0,0)$为顶点、向上张开的角形区域。
+    definedIn: math.pde.wave-dalembert
+    anchor: def-domains
+  - id: math.pde.finite-propagation-speed
+    zh: |
+      有限传播速度
+    en: |
+      finite propagation speed
+    brief: |
+      波动方程的扰动以不超过$c$的速度传开：初值只在一段区间里不为零时，远处要过一段时间才开始动。
+    definedIn: math.pde.wave-dalembert
+    anchor: thm-finite-speed
+  - id: math.pde.spherical-wave
+    zh: |
+      球面波
+    en: |
+      spherical wave
+    brief: |
+      三维波动方程只依赖时间和到某一点的距离$r$的解；向外传播的形如$\frac{F(r-ct)}r$，向内传播的形如$\frac{G(r+ct)}r$。
+    definedIn: math.pde.spherical-waves
+    anchor: def-spherical-wave
+  - id: math.pde.normal-mode
+    zh: |
+      简正模
+    en: |
+      normal mode
+    brief: |
+      两端固定的弦$u_{tt}=c^2u_{xx}$的乘积解$(A\cos\omega t+B\sin\omega t)\sin\frac{n\pi x}L$，$n$是正整数，$\omega=\frac{n\pi c}L$，$A$、$B$不全为零：各点以同一个角频率振动，形状只整体伸缩。
+    definedIn: math.pde.string-modes
+    anchor: def-normal-mode

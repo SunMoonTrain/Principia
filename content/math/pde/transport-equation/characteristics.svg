@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" font-size="14">
+  <!-- 左：(x, t) 平面上输运方程的特征线 x − ct = x0（c > 0），加粗的一条从点 (x, t) 回到 (x − ct, 0)；右：u_x + 2x u_y = 0 的特征线 y = x² + C（C = −1, 0, 1, 2），箭头是方向 (1, 2x) -->
+  <!-- 左图 px = 50 + 48x，py = 240 − 75t；右图 px = 480 + 68x，py = 205 − 42y -->
+  <line x1="40" y1="240" x2="300" y2="240" stroke="currentColor" stroke-width="1.2" />
+  <path d="M 306 240 L 298 243.6 L 298 236.4 Z" fill="currentColor" />
+  <line x1="50" y1="250" x2="50" y2="56" stroke="currentColor" stroke-width="1.2" />
+  <path d="M 50 50 L 53.6 58 L 46.4 58 Z" fill="currentColor" />
+  <text x="306" y="258" text-anchor="end" fill="currentColor"><tspan font-style="italic">x</tspan></text>
+  <text x="58" y="60" fill="currentColor"><tspan font-style="italic">t</tspan></text>
+  <line x1="78.8" y1="240" x2="189.2" y2="67.5" stroke="currentColor" stroke-width="1.4" />
+  <line x1="136.4" y1="240" x2="246.8" y2="67.5" style="stroke: var(--accent, #2563eb)" stroke-width="2.4" />
+  <line x1="194" y1="240" x2="290" y2="90" stroke="currentColor" stroke-width="1.4" />
+  <line x1="251.6" y1="240" x2="290" y2="180" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 172.4 183.75 L 173.84 173.99 L 180.66 178.35 Z" style="fill: var(--accent, #2563eb)" />
+  <circle cx="213.2" cy="120" r="4" style="fill: var(--accent, #2563eb)" />
+  <circle cx="136.4" cy="240" r="4" style="fill: var(--accent, #2563eb)" />
+  <text x="222.2" y="128" fill="currentColor">(<tspan font-style="italic">x</tspan>, <tspan font-style="italic">t</tspan>)</text>
+  <text x="136.4" y="258" text-anchor="middle" fill="currentColor">(<tspan font-style="italic">x</tspan> − <tspan font-style="italic">ct</tspan>, 0)</text>
+  <text x="246.8" y="54" text-anchor="middle" fill="currentColor"><tspan font-style="italic">x</tspan> − <tspan font-style="italic">ct</tspan> = 常数</text>
+  <text x="170" y="288" text-anchor="middle" fill="currentColor"><tspan font-style="italic">u</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">t</tspan></tspan> + <tspan font-style="italic">cu</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">x</tspan></tspan> = 0 的特征线（<tspan font-style="italic">c</tspan> &gt; 0）</text>
+  <line x1="355" y1="205" x2="606" y2="205" stroke="currentColor" stroke-width="1.2" />
+  <path d="M 612 205 L 604 208.6 L 604 201.4 Z" fill="currentColor" />
+  <text x="612" y="223" text-anchor="end" fill="currentColor"><tspan font-style="italic">x</tspan></text>
+  <line x1="480" y1="262" x2="480" y2="58" style="stroke: var(--accent, #2563eb)" stroke-width="3" />
+  <path d="M 480 50 L 484.05 59 L 475.95 59 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="471" y="62" text-anchor="end" fill="currentColor"><tspan font-style="italic">y</tspan></text>
+  <text x="490" y="62" style="fill: var(--accent, #2563eb)" fill="currentColor">给定 <tspan font-style="italic">u</tspan>(0, <tspan font-style="italic">y</tspan>)</text>
+  <path d="M 361 118.4 L 366 128.9 L 370.9 138.9 L 375.9 148.5 L 380.8 157.7 L 385.8 166.4 L 390.8 174.6 L 395.7 182.5 L 400.7 189.8 L 405.6 196.8 L 410.6 203.2 L 415.5 209.3 L 420.5 214.8 L 425.5 220 L 430.4 224.7 L 435.4 228.9 L 440.3 232.7 L 445.3 236.1 L 450.2 239 L 455.2 241.4 L 460.2 243.4 L 465.1 245 L 470.1 246.1 L 475 246.8 L 480 247 L 485 246.8 L 489.9 246.1 L 494.9 245 L 499.8 243.4 L 504.8 241.4 L 509.8 239 L 514.7 236.1 L 519.7 232.7 L 524.6 228.9 L 529.6 224.7 L 534.5 220 L 539.5 214.8 L 544.5 209.3 L 549.4 203.2 L 554.4 196.8 L 559.3 189.8 L 564.3 182.5 L 569.2 174.6 L 574.2 166.4 L 579.2 157.7 L 584.1 148.5 L 589.1 138.9 L 594 128.9 L 599 118.4" fill="none" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 424.96 219.55 L 416.83 216.24 L 422.05 211.28 Z" fill="currentColor" />
+  <path d="M 540.56 213.76 L 537.65 222.03 L 532.43 217.07 Z" fill="currentColor" />
+  <path d="M 362.2 79 L 367.1 89.3 L 372 99.1 L 376.9 108.5 L 381.9 117.5 L 386.8 126 L 391.7 134.1 L 396.6 141.8 L 401.5 149 L 406.4 155.8 L 411.3 162.1 L 416.2 168 L 421.1 173.5 L 426 178.5 L 430.9 183.1 L 435.8 187.3 L 440.7 191 L 445.6 194.3 L 450.6 197.1 L 455.5 199.5 L 460.4 201.5 L 465.3 203 L 470.2 204.1 L 475.1 204.8 L 480 205 L 484.9 204.8 L 489.8 204.1 L 494.7 203 L 499.6 201.5 L 504.5 199.5 L 509.4 197.1 L 514.4 194.3 L 519.3 191 L 524.2 187.3 L 529.1 183.1 L 534 178.5 L 538.9 173.5 L 543.8 168 L 548.7 162.1 L 553.6 155.8 L 558.5 149 L 563.4 141.8 L 568.3 134.1 L 573.2 126 L 578.1 117.5 L 583.1 108.5 L 588 99.1 L 592.9 89.3 L 597.8 79" fill="none" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 424.96 177.55 L 416.83 174.24 L 422.05 169.28 Z" fill="currentColor" />
+  <path d="M 540.56 171.76 L 537.65 180.03 L 532.43 175.07 Z" fill="currentColor" />
+  <path d="M 383.8 79 L 387.8 85.9 L 391.8 92.4 L 395.9 98.7 L 399.9 104.7 L 403.9 110.4 L 407.9 115.8 L 411.9 120.9 L 415.9 125.7 L 419.9 130.2 L 423.9 134.4 L 427.9 138.4 L 431.9 142 L 435.9 145.4 L 439.9 148.4 L 443.9 151.2 L 447.9 153.7 L 452 155.9 L 456 157.8 L 460 159.4 L 464 160.7 L 468 161.7 L 472 162.4 L 476 162.9 L 480 163 L 484 162.9 L 488 162.4 L 492 161.7 L 496 160.7 L 500 159.4 L 504 157.8 L 508 155.9 L 512.1 153.7 L 516.1 151.2 L 520.1 148.4 L 524.1 145.4 L 528.1 142 L 532.1 138.4 L 536.1 134.4 L 540.1 130.2 L 544.1 125.7 L 548.1 120.9 L 552.1 115.8 L 556.1 110.4 L 560.1 104.7 L 564.1 98.7 L 568.2 92.4 L 572.2 85.9 L 576.2 79" fill="none" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 424.96 135.55 L 416.83 132.24 L 422.05 127.28 Z" fill="currentColor" />
+  <path d="M 540.56 129.76 L 537.65 138.03 L 532.43 133.07 Z" fill="currentColor" />
+  <path d="M 412 79 L 414.8 82.4 L 417.7 85.7 L 420.5 88.8 L 423.3 91.8 L 426.2 94.7 L 429 97.4 L 431.8 99.9 L 434.7 102.3 L 437.5 104.6 L 440.3 106.7 L 443.2 108.7 L 446 110.5 L 448.8 112.2 L 451.7 113.7 L 454.5 115.1 L 457.3 116.3 L 460.2 117.4 L 463 118.4 L 465.8 119.2 L 468.7 119.8 L 471.5 120.3 L 474.3 120.7 L 477.2 120.9 L 480 121 L 482.8 120.9 L 485.7 120.7 L 488.5 120.3 L 491.3 119.8 L 494.2 119.2 L 497 118.4 L 499.8 117.4 L 502.7 116.3 L 505.5 115.1 L 508.3 113.7 L 511.2 112.2 L 514 110.5 L 516.8 108.7 L 519.7 106.7 L 522.5 104.6 L 525.3 102.3 L 528.2 99.9 L 531 97.4 L 533.8 94.7 L 536.7 91.8 L 539.5 88.8 L 542.3 85.7 L 545.2 82.4 L 548 79" fill="none" stroke="currentColor" stroke-width="1.4" />
+  <path d="M 424.96 93.55 L 416.83 90.24 L 422.05 85.28 Z" fill="currentColor" />
+  <path d="M 540.56 87.76 L 537.65 96.03 L 532.43 91.07 Z" fill="currentColor" />
+  <text x="480" y="288" text-anchor="middle" fill="currentColor"><tspan font-style="italic">u</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">x</tspan></tspan> + 2<tspan font-style="italic">xu</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">y</tspan></tspan> = 0 的特征线 <tspan font-style="italic">y</tspan> = <tspan font-style="italic">x</tspan>² + <tspan font-style="italic">C</tspan></text>
+</svg>

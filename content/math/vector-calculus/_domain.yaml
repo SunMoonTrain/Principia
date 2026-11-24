@@ -706,6 +706,15 @@ glossary:
       也叫高斯公式：$\oint_{\partial V}\vb F\cdot\dd\vb a=\iiint_V\divg\vb F\,\dd V$（外法向）；闭曲面上净流出的量等于里面各处散度之和。
     definedIn: math.vector-calculus.divergence-theorem
     anchor: thm-divergence
+  - id: math.vector-calculus.continuity-equation
+    zh: |
+      连续性方程
+    en: |
+      continuity equation
+    brief: |
+      既不产生也不消失的量，密度$\rho$和流动$\vb J$满足的$\pdv\rho t+\divg\vb J=0$：一处的量减少多快，就从那里流出多快。
+    definedIn: math.vector-calculus.divergence-theorem
+    anchor: def-continuity-equation
   - id: math.vector-calculus.stokes-theorem
     zh: |
       斯托克斯公式

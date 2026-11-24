@@ -1,0 +1,195 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$f(x)=3e^{-2x}$（$x>0$），$f(x)=e^x$（$x\le0$），$\hat f$是它的傅里叶变换。求$\lim_{R\to+\infty}\frac1{2\pi}\int_{-R}^{R}\hat f(\xi)\dd\xi$。
+  answer:
+    type: number
+    value: 2
+  hints:
+    - |
+      被积函数里只有$\hat f(\xi)$。这相当于反演公式里的$e^{i\xi x}$取了哪个$x$？
+    - |
+      相当于$x=0$。$f$绝对可积，在每个有限区间上分段光滑；它在$0$处连续吗？
+    - |
+      $f(0^-)=1$，$f(0^+)=3$，由反演公式，极限是$\frac{1+3}2=2$，不是$f(0)=1$。
+  solution: |
+    $f$绝对可积（$x>0$、$x\le0$两段的积分分别是$\frac32$和$1$），在每个有限区间上分段光滑。$e^{i\xi\cdot0}=1$，所求的极限正是反演公式在$x=0$处的值。$f$在$0$处从左边的$1$跳到右边的$3$，由傅里叶反演公式，极限是$\frac{f(0^-)+f(0^+)}2=\frac{1+3}2=2$，和$f(0)=1$不同。
+
+- id: p2
+  tier: easy
+  statement: |
+    下列说法中，正确的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $e^{-(x-1)^2}$的傅里叶变换的模在$\xi=0$处取最大值
+      - |
+        $e^{-x^2}\cos5x$的傅里叶变换在$\xi=0$处取最大值
+      - |
+        $e^{-|x|}$在$x=0$处有尖角，可反演公式在$x=0$处给出的值仍是$1$
+      - |
+        设$f$绝对可积。如果$\hat f$处处取实数值，那么$f$也处处取实数值
+      - |
+        设$f$连续、绝对可积，在每个有限区间上分段光滑。如果$\hat f$恒为$0$，那么$f$恒为$0$
+    value: [1, 3, 5]
+  hints:
+    - |
+      A、B 先由定理 1 写出$e^{-x^2}$的变换，再用[傅里叶变换](lesson:math.pde.fourier-transform#thm-fourier-properties)一节定理 1 的平移性质；C、D、E 对照反演公式和推论。
+    - |
+      A：平移只让变换乘一个模为$1$的因子。B：$\cos5x=\frac12\bigl(e^{5ix}+e^{-5ix}\bigr)$，变换的峰移到了哪里？D：想想例 2。
+    - |
+      A：$e^{-x^2}$的变换是$\sqrt\pi e^{-\xi^2/4}$，平移以后只乘上$e^{-i\xi}$，模仍在$\xi=0$处最大，对。B：变换是$\frac{\sqrt\pi}2\bigl[e^{-(\xi-5)^2/4}+e^{-(\xi+5)^2/4}\bigr]$，峰在$\pm5$附近，不对。
+
+      C：$e^{-|x|}$在$0$处连续，反演公式给出$f(0)=1$，对。D：例 2 中$\xi_0\ne0$时变换是实的，$f$却不是，不对。E：$f$和$0$都满足推论的条件，变换相同，对。选 A、C、E。
+  solution: |
+    A：$e^{-x^2}$的变换是$\sqrt\pi e^{-\xi^2/4}$（定理 1，$a=1$）。由[傅里叶变换](lesson:math.pde.fourier-transform#thm-fourier-properties)一节定理 1（1），$e^{-(x-1)^2}$的变换是$e^{-i\xi}\sqrt\pi e^{-\xi^2/4}$，模是$\sqrt\pi e^{-\xi^2/4}$，在$\xi=0$处最大，对。B：由那一节定理 1（2），变换是$\frac{\sqrt\pi}2\bigl[e^{-(\xi-5)^2/4}+e^{-(\xi+5)^2/4}\bigr]$，在$\pm5$附近约为$0.886$，在$0$处只有$\sqrt\pi e^{-25/4}\approx0.0034$，不对。
+
+    C：$e^{-|x|}$绝对可积，在每个有限区间上分段光滑，在$0$处有尖角但连续，反演公式给出$f(0)=1$，对。D：例 2 中$\xi_0\ne0$时，变换$e^{-(\xi-\xi_0)^2}$处处是实数，$f(x)=\frac1{2\sqrt\pi}e^{-x^2/4}e^{i\xi_0x}$却不是实函数，不对。E：常数$0$也满足推论的条件，它的变换恒为$0$，和$\hat f$相同，由推论$f=0$，对。选 A、C、E。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$f$连续、绝对可积，在每个有限区间上分段光滑，它的傅里叶变换是$\hat f(\xi)=i\xi e^{-\xi^2}$。求$f(1)$。
+  answer:
+    type: number
+    value: -exp(-1/4)/(4*sqrt(pi))
+  hints:
+    - |
+      乘$i\xi$让人想到求导的性质；$e^{-\xi^2}$是哪个函数的变换，例 2 里算过。
+    - |
+      记$g(x)=\frac1{2\sqrt\pi}e^{-x^2/4}$，$\hat g(\xi)=e^{-\xi^2}$。由[傅里叶变换](lesson:math.pde.fourier-transform#thm-fourier-derivative)一节的定理 2，$g'$的变换是$i\xi e^{-\xi^2}$；再由推论，$f=g'$。
+    - |
+      $g'(x)=-\frac x{4\sqrt\pi}e^{-x^2/4}$，所以$f(1)=-\frac{e^{-1/4}}{4\sqrt\pi}\approx-0.1098$。
+  solution: |
+    记$g(x)=\frac1{2\sqrt\pi}e^{-x^2/4}$，由例 2 的推导，$\hat g(\xi)=e^{-\xi^2}$。$g$处处有连续的导数，$g$、$g'$都绝对可积，由[傅里叶变换](lesson:math.pde.fourier-transform#thm-fourier-derivative)一节的定理 2，$\widehat{g'}(\xi)=i\xi\hat g(\xi)=i\xi e^{-\xi^2}=\hat f(\xi)$。$g'$连续、绝对可积、在每个有限区间上分段光滑，由推论，$f=g'$。$g'(x)=-\frac x{4\sqrt\pi}e^{-x^2/4}$，所以$f(1)=-\frac{e^{-1/4}}{4\sqrt\pi}\approx-0.1098$。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$f$连续、绝对可积，在每个有限区间上分段光滑，$\hat f(\xi)=e^{-\xi^2}\cos2\xi$。求$f(2)$。
+  answer:
+    type: number
+    value: (1+exp(-4))/(4*sqrt(pi))
+  hints:
+    - |
+      把$\cos2\xi$拆成两个复指数函数（complex exponential function），每一项都是一个平移过的函数的变换。
+    - |
+      记$g(x)=\frac1{2\sqrt\pi}e^{-x^2/4}$，$\hat g(\xi)=e^{-\xi^2}$（例 2）。由[傅里叶变换](lesson:math.pde.fourier-transform#thm-fourier-properties)一节定理 1（1），$g(x-x_0)$的变换是$e^{-i\xi x_0}\hat g(\xi)$，所以$f(x)=\frac12\bigl[g(x+2)+g(x-2)\bigr]$。
+    - |
+      $f(2)=\frac12\bigl[g(4)+g(0)\bigr]=\frac{1+e^{-4}}{4\sqrt\pi}\approx0.1436$。
+  solution: |
+    $\cos2\xi=\frac12\bigl(e^{2i\xi}+e^{-2i\xi}\bigr)$。记$g(x)=\frac1{2\sqrt\pi}e^{-x^2/4}$，由例 2 的推导，$\hat g(\xi)=e^{-\xi^2}$。由[傅里叶变换](lesson:math.pde.fourier-transform#thm-fourier-properties)一节定理 1（1），$g(x+2)$、$g(x-2)$的变换分别是$e^{2i\xi}\hat g(\xi)$、$e^{-2i\xi}\hat g(\xi)$，所以$\frac12\bigl[g(x+2)+g(x-2)\bigr]$的变换正是$e^{-\xi^2}\cos2\xi$。它连续、绝对可积、在每个有限区间上分段光滑，由推论，它就是$f$，$f(2)=\frac12\bigl[g(4)+g(0)\bigr]=\frac{1+e^{-4}}{4\sqrt\pi}\approx0.1436$。
+
+- id: p5
+  tier: hard
+  statement: |
+    不用复积分（contour integral），由狄利克雷核证明$\int_0^{+\infty}\frac{\sin u}u\dd u=\frac\pi2$（定理 2 的证明要用它）。记$D_N(u)=\frac12+\sum_{n=1}^N\cos nu$，由[傅里叶级数的收敛](lesson:math.analysis.fourier-convergence)第 6 题，$0<u\le\pi$时$D_N(u)=\frac{\sin(N+\frac12)u}{2\sin\frac u2}$。
+
+    （1）证明$\int_0^\pi D_N(u)\dd u=\frac\pi2$。
+
+    （2）令$h(u)=\frac1{2\sin\frac u2}-\frac1u$（$0<u\le\pi$），$h(0)=0$。证明$h$在$[0,\pi]$上连续，并由此证明$N\to\infty$时$\int_0^\pi\frac{\sin(N+\frac12)u}u\dd u\to\frac\pi2$。
+
+    （3）说明反常积分$\int_0^{+\infty}\frac{\sin u}u\dd u$收敛，再由（2）求出它的值。
+  hints:
+    - |
+      （1）逐项积分。（2）$\frac{\sin(N+\frac12)u}u=D_N(u)-h(u)\sin\bigl(N+\frac12\bigr)u$，后一项用黎曼-勒贝格引理。（3）换元$v=\bigl(N+\frac12\bigr)u$。
+    - |
+      （2）通分得$h(u)=\frac{u-2\sin\frac u2}{2u\sin\frac u2}$；由泰勒公式（Taylor's formula），$u\to0^+$时分子约为$\frac{u^3}{24}$，分母约为$u^2$。（3）$\int_1^{+\infty}\frac{\sin u}u\dd u$的收敛见[无穷区间上的反常积分](lesson:math.calculus.improper-integrals)第 6 题；反常积分收敛时，上限沿任何趋于$+\infty$的数列取，积分都趋于它的值。
+    - |
+      （1）$n\ge1$时$\int_0^\pi\cos nu\dd u=\frac{\sin n\pi}n=0$，所以$\int_0^\pi D_N(u)\dd u=\frac12\cdot\pi=\frac\pi2$。
+
+      （2）通分，$h(u)=\frac{u-2\sin\frac u2}{2u\sin\frac u2}$。由泰勒公式，$2\sin\frac u2=u-\frac{u^3}{24}+o(u^3)$，$2u\sin\frac u2=u^2+o(u^2)$，所以$u\to0^+$时$h(u)\to0=h(0)$；$h$在$(0,\pi]$上显然连续，于是在$[0,\pi]$上连续、可积。$0<u\le\pi$时$\frac{\sin(N+\frac12)u}u=D_N(u)-h(u)\sin\bigl(N+\frac12\bigr)u$，由黎曼-勒贝格引理，$\int_0^\pi h(u)\sin\bigl(N+\frac12\bigr)u\dd u\to0$，再由（1），$\int_0^\pi\frac{\sin(N+\frac12)u}u\dd u\to\frac\pi2$。
+
+      （3）$u\to0^+$时$\frac{\sin u}u\to1$，补上这个值后它在$[0,1]$上连续；$\int_1^{+\infty}\frac{\sin u}u\dd u$收敛（[无穷区间上的反常积分](lesson:math.calculus.improper-integrals)第 6 题），所以$\int_0^{+\infty}\frac{\sin u}u\dd u$收敛，记它为$I$。在（2）里令$v=\bigl(N+\frac12\bigr)u$，得$\int_0^{(N+\frac12)\pi}\frac{\sin v}v\dd v\to\frac\pi2$。上限$\bigl(N+\frac12\bigr)\pi\to+\infty$，左边趋于$I$，所以$I=\frac\pi2$。
+  reference: |
+    （1）$\int_0^\pi\cos nu\dd u=0$（$n\ge1$），$\int_0^\pi D_N=\frac\pi2$。
+
+    （2）$h(u)=\frac{u-2\sin(u/2)}{2u\sin(u/2)}$，分子$=\frac{u^3}{24}+o(u^3)$，分母$=u^2+o(u^2)$，$h(0^+)=0$，$h$在$[0,\pi]$上连续。$\frac{\sin(N+\frac12)u}u=D_N-h\sin(N+\frac12)u$，由黎曼-勒贝格引理第二项的积分趋于$0$，所以$\int_0^\pi\frac{\sin(N+\frac12)u}u\dd u\to\frac\pi2$。
+
+    （3）$[0,1]$上补值后连续，$\int_1^\infty\frac{\sin u}u$收敛（无穷区间上的反常积分一节第 6 题），所以$I=\int_0^\infty\frac{\sin u}u$收敛。换元得$\int_0^{(N+\frac12)\pi}\frac{\sin v}v\dd v\to\frac\pi2$，上限趋于$+\infty$，左边趋于$I$，$I=\frac\pi2$。没有用到任何傅里叶变换，所以定理 2 用它不循环。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$连续、绝对可积，在每个有限区间上分段光滑，并且$\hat f$也绝对可积。
+
+    （1）证明$\hat f$的傅里叶变换是$2\pi f(-\xi)$，即$\int_{-\infty}^{+\infty}\hat f(x)e^{-i\xi x}\dd x=2\pi f(-\xi)$。
+
+    （2）由[傅里叶变换](lesson:math.pde.fourier-transform)一节例 1，求$\frac1{1+x^2}$的傅里叶变换。
+
+    （3）复分析[若尔当引理与傅里叶型积分](lesson:math.complex-analysis.jordan-lemma)第 8 题的题干说，用复积分可以算出：对一切实数$\lambda$，$J(\lambda)=\int_{-\infty}^{+\infty}\frac{\cos\lambda x}{x^2+1}\dd x=\pi e^{-|\lambda|}$。说明它和（2）是同一个结果（那里的$\lambda$就是这里的$\xi$）。
+  hints:
+    - |
+      （1）在反演公式里把$x$换成$-\xi$。（2）$e^{-|x|}$满足（1）的条件吗？
+    - |
+      （1）$\hat f$绝对可积，反演公式左边的对称极限就是整条直线上的积分；$f$连续，所以每一点都有$f(x)=\frac1{2\pi}\int_{-\infty}^{+\infty}\hat f(s)e^{isx}\dd s$。（2）$e^{-|x|}$的变换是$\frac2{1+\xi^2}$。（3）$\frac1{1+x^2}$是偶函数。
+    - |
+      （1）$\hat f$绝对可积，所以$\frac1{2\pi}\int_{-\infty}^{+\infty}\hat f(s)e^{isx}\dd s$绝对收敛（absolutely convergent），反演公式左边的对称极限就是它；$f$连续，它在每一点等于$f(x)$。把$x$换成$-\xi$，再把积分变量$s$改写成$x$，就得到$\int_{-\infty}^{+\infty}\hat f(x)e^{-i\xi x}\dd x=2\pi f(-\xi)$。
+
+      （2）$f(x)=e^{-|x|}$连续、绝对可积，在每个有限区间上分段光滑；由那一节例 1，$\hat f(\xi)=\frac2{1+\xi^2}$，它在$|\xi|\ge1$时不超过$\frac2{\xi^2}$，绝对可积。由（1），$\frac2{1+x^2}$的变换是$2\pi e^{-|-\xi|}=2\pi e^{-|\xi|}$，所以$\frac1{1+x^2}$的变换是$\pi e^{-|\xi|}$。
+
+      （3）$\frac1{1+x^2}$是偶函数，变换里乘$\sin\xi x$的那一半积分为$0$，剩下$\int_{-\infty}^{+\infty}\frac{\cos\xi x}{1+x^2}\dd x$，正是$J(\xi)$。两种办法都得$\pi e^{-|\xi|}$：复分析用的是复积分，这里用的是反演公式加上$e^{-|x|}$的变换。
+  reference: |
+    （1）$\hat f$绝对可积，反演公式的对称极限等于绝对收敛的$\frac1{2\pi}\int\hat f(s)e^{isx}\dd s$；$f$连续，它处处等于$f(x)$。$x\to-\xi$、$s\to x$，得$\int\hat f(x)e^{-i\xi x}\dd x=2\pi f(-\xi)$。
+
+    （2）$e^{-|x|}$满足条件，变换$\frac2{1+\xi^2}$绝对可积。由（1），$\mathcal F\bigl\{\frac2{1+x^2}\bigr\}=2\pi e^{-|\xi|}$，$\mathcal F\bigl\{\frac1{1+x^2}\bigr\}=\pi e^{-|\xi|}$。
+
+    （3）偶函数的变换只剩余弦部分$\int\frac{\cos\xi x}{1+x^2}\dd x=J(\xi)=\pi e^{-|\xi|}$，两者一致。
+
+- id: p7
+  tier: thinking
+  statement: |
+    例 1 的矩形在跳跃点$x=\frac b2$处，按对称的极限得到$\frac12$。
+
+    （1）改取$\lim_{R\to+\infty}\frac1{2\pi}\int_{-R}^{2R}\hat f(\xi)e^{i\xi b/2}\dd\xi$，结果是多少？
+
+    （2）在$f$连续的点$x=0$处，这样改会不会改变结果？
+
+    （3）为什么定理 2 要写对称的极限？什么时候怎样取极限都一样？
+  hints:
+    - |
+      （1）用例 1 里实部、虚部的写法，把$\int_{-R}^{2R}$拆成$\int_{-R}^{R}$和$\int_R^{2R}$。
+    - |
+      （1）实部在$[R,2R]$上的积分趋于$0$；虚部$\frac{1-\cos b\xi}\xi$在$[R,2R]$上的积分是$\ln2-\int_R^{2R}\frac{\cos b\xi}\xi\dd\xi$。（2）$x=0$时被积函数是$\frac{2\sin(b\xi/2)}\xi$，它在$[R,2R]$上振荡。
+    - |
+      （1）$\int_{-R}^{R}$那一段照例 1 趋于$\pi$，虚部的积分为$0$。多出的$[R,2R]$上，分部积分（integration by parts）可知$\bigl|\int_R^{2R}\frac{\sin b\xi}\xi\dd\xi\bigr|\le\frac2{bR}$，$\cos$也一样，都趋于$0$；可$\int_R^{2R}\frac{\dd\xi}\xi=\ln2$不随$R$变。所以极限是$\frac1{2\pi}(\pi+i\ln2)=\frac12+\frac{\ln2}{2\pi}i$，连实数都不是。
+
+      （2）$x=0$时被积函数$\frac{2\sin(b\xi/2)}\xi$在$[R,2R]$上的积分也像上面那样不超过一个常数除以$R$，趋于$0$，结果仍是$f(0)=1$：在连续点，怎样截都一样。
+
+      （3）跳跃在$\hat f(\xi)e^{i\xi x}$里留下一个不振荡的、像$\frac1\xi$的部分，（1）里就是$\frac i\xi$，它在$[R,2R]$上的积分总是$i\ln2$，只有对称的区间能让它在两侧正好抵消；在连续点只剩振荡的部分，远处的积分自己就趋于$0$。$\hat f$绝对可积时，远处任何一段上$|\hat f|$的积分都很小，怎样取极限都一样。傅里叶级数也这样：[傅里叶变换](lesson:math.pde.fourier-transform)一节说过，方波在跳跃点$x=0$处只取$n>0$的一半会发散，对称的部分和才两两相消。
+  reference: |
+    （1）$\hat f(\xi)e^{i\xi b/2}=\frac{\sin b\xi}\xi+i\frac{1-\cos b\xi}\xi$。$[-R,R]$上实部积分趋于$\pi$，虚部为$0$；$[R,2R]$上$\int\frac{\sin b\xi}\xi$、$\int\frac{\cos b\xi}\xi$都$\le\frac2{bR}\to0$（分部积分），$\int_R^{2R}\frac{\dd\xi}\xi=\ln2$。极限$=\frac12+\frac{\ln2}{2\pi}i\approx0.5+0.110i$。
+
+    （2）$x=0$：$\hat f=\frac{2\sin(b\xi/2)}\xi$，$\int_R^{2R}$不超过$\frac8{bR}\to0$，仍得$1$。
+
+    （3）跳跃$J=f(x^+)-f(x^-)$使$\hat f(\xi)e^{i\xi x}$含不振荡的$\frac J{i\xi}$（这里$J=-1$，即$\frac i\xi$），它在$[R,2R]$上的积分是$\frac{J\ln2}i$，只有对称截断才两侧抵消；连续点只剩振荡项，任何截法都收敛到同一个值；$\hat f$绝对可积时积分绝对收敛，截法无关。对照复数形式的傅里叶级数用对称部分和（方波在$0$处单边的和发散）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$f$取实数值、绝对可积，在每个有限区间上分段光滑，在点$x$处连续。
+
+    （1）由$\hat f(-\xi)=\overline{\hat f(\xi)}$，说明反演公式可以写成$f(x)=\frac1\pi\lim_{R\to+\infty}\int_0^R\operatorname{Re}\bigl(\hat f(\xi)e^{i\xi x}\bigr)\dd\xi$。
+
+    （2）把（1）写成$f(x)=\lim_{R\to+\infty}\int_0^R\bigl(A(\xi)\cos\xi x+B(\xi)\sin\xi x\bigr)\dd\xi$。$\pi A(\xi)$、$\pi B(\xi)$各是$f$的什么积分？和[傅里叶级数](lesson:math.analysis.fourier-series)的$a_n$、$b_n$对照。
+
+    （3）$f$取复数值时，为什么不能只用$\xi\ge0$的一半？
+  hints:
+    - |
+      （1）把$\int_{-R}^{R}$拆成$\int_{-R}^0$和$\int_0^R$，前一段令$\xi\to-\xi$。（3）想想例 2。
+    - |
+      （1）$\hat f(-\xi)e^{-i\xi x}$是$\hat f(\xi)e^{i\xi x}$的共轭，两者之和是实部的$2$倍。（2）$\hat f(\xi)=\int_{-\infty}^{+\infty}f(t)\cos\xi t\dd t-i\int_{-\infty}^{+\infty}f(t)\sin\xi t\dd t$。
+    - |
+      （1）$\int_{-R}^{0}\hat f(\xi)e^{i\xi x}\dd\xi=\int_0^R\hat f(-\xi)e^{-i\xi x}\dd\xi$。$f$是实的，$\hat f(-\xi)e^{-i\xi x}=\overline{\hat f(\xi)e^{i\xi x}}$，和$\int_0^R$那一段加起来，被积函数成了$2\operatorname{Re}\bigl(\hat f(\xi)e^{i\xi x}\bigr)$。$f$在$x$处连续，由反演公式，$f(x)=\lim_{R\to+\infty}\frac1{2\pi}\int_0^R2\operatorname{Re}\bigl(\hat f(\xi)e^{i\xi x}\bigr)\dd\xi$，就是要的式子。
+
+      （2）记$C(\xi)=\int_{-\infty}^{+\infty}f(t)\cos\xi t\dd t$，$S(\xi)=\int_{-\infty}^{+\infty}f(t)\sin\xi t\dd t$，则$\hat f=C-iS$，$\operatorname{Re}\bigl(\hat f(\xi)e^{i\xi x}\bigr)=C\cos\xi x+S\sin\xi x$，所以$\pi A=C$，$\pi B=S$。周期为$2L$的傅里叶级数是$\frac{a_0}2+\sum_{n\ge1}\bigl(a_n\cos\xi_nx+b_n\sin\xi_nx\bigr)$，$\xi_n=\frac{n\pi}L$，$a_n=\frac1L\int_{-L}^{L}f(t)\cos\xi_nt\dd t$。$f$在$[-L,L]$以外为$0$时，$a_n=A(\xi_n)\cdot\frac\pi L$，$b_n=B(\xi_n)\cdot\frac\pi L$，而$\frac\pi L$正是相邻两个$\xi_n$的间隔：对$n\ge0$求和，变成了对$\xi\ge0$积分。
+
+      （3）$f$取复数值时，$\hat f(-\xi)$和$\hat f(\xi)$一般没有关系，两半各带一份信息。例 2 的$f$在$\xi_0>0$时变换集中在$\xi_0$附近，它的共轭$\bar f$的变换$e^{-(\xi+\xi_0)^2}$却集中在$-\xi_0$附近：只用$\xi\ge0$的一半，$\bar f$几乎什么也剩不下。再说取实部得到的总是实数，变不回取复数值的$f$。
+  reference: |
+    （1）$\int_{-R}^0\hat fe^{i\xi x}\dd\xi=\int_0^R\hat f(-\xi)e^{-i\xi x}\dd\xi=\int_0^R\overline{\hat f(\xi)e^{i\xi x}}\dd\xi$，与$\int_0^R$相加得$\int_0^R2\operatorname{Re}(\hat fe^{i\xi x})$，除以$2\pi$即得。
+
+    （2）$\hat f=C-iS$，$C=\int f\cos\xi t$，$S=\int f\sin\xi t$；$\operatorname{Re}(\hat fe^{i\xi x})=C\cos\xi x+S\sin\xi x$，$A=\frac C\pi$，$B=\frac S\pi$。$f$在$[-L,L]$外为$0$时$a_n=\frac\pi LA(\xi_n)$、$b_n=\frac\pi LB(\xi_n)$，$\frac\pi L=\Delta\xi$：级数对$n\ge0$求和对应积分对$\xi\ge0$。
+
+    （3）复函数的$\hat f(\xi)$、$\hat f(-\xi)$互相独立；例 2 的$\bar f$变换是$e^{-(\xi+\xi_0)^2}$，集中在负半轴，只用$\xi\ge0$会丢掉它；且实部总是实数，不能给出复的$f$。

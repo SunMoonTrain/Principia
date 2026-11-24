@@ -49,7 +49,7 @@ $$
 ::anchor{id="thm-el-2d"}
 定理（二元函数的:term[欧拉-拉格朗日方程]{id="math.calculus-of-variations.euler-lagrange-equation"}）：设$F$有连续的二阶偏导数。如果$J[u]$在$u$处取局部极值，那么在$D$内$F_u-\frac{\partial}{\partial x}F_{u_x}-\frac{\partial}{\partial y}F_{u_y}=0$。
 
-证明思路：局部极值处$\delta J=0$对所有$\eta$成立，由上面的式子和二维的基本引理即得。方程一般是二阶偏微分方程（partial differential equation），边界上的值就是它的边界条件。把$y$换成时间$t$，就是分析力学里场的运动方程（[场的拉格朗日表述](lesson:physics.analytical-mechanics.field-lagrangian)）。
+证明思路：局部极值处$\delta J=0$对所有$\eta$成立，由上面的式子和二维的基本引理即得。方程一般是:term[二阶偏微分方程]{id="math.pde.pde"}（partial differential equation），边界上的值就是它的边界条件。把$y$换成时间$t$，就是分析力学里场的运动方程（[场的拉格朗日表述](lesson:physics.analytical-mechanics.field-lagrangian)）。
 
 ### 狄利克雷积分与拉普拉斯方程
 

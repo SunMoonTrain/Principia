@@ -1,0 +1,201 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$f(x)=1$（$|x|<3$），$f(x)=0$（其余）。求$\hat f\bigl(\frac\pi6\bigr)$。
+  answer:
+    type: number
+    value: 12/pi
+  hints:
+    - |
+      这是宽为$6$、高为$1$的矩形，可以套讲解里矩形的傅里叶变换，也可以直接积分。
+    - |
+      $\hat f(\xi)=\int_{-3}^{3}e^{-i\xi x}\dd x=\frac{2\sin3\xi}\xi$（$\xi\ne0$）。
+    - |
+      $\xi=\frac\pi6$时$\sin3\xi=\sin\frac\pi2=1$，所以$\hat f\bigl(\frac\pi6\bigr)=\frac2{\pi/6}=\frac{12}\pi$。
+  solution: |
+    $\hat f(\xi)=\int_{-3}^{3}e^{-i\xi x}\dd x=\frac{e^{-3i\xi}-e^{3i\xi}}{-i\xi}=\frac{2\sin3\xi}\xi$，也就是讲解里矩形的变换取$a=6$。代入$\xi=\frac\pi6$，$\hat f\bigl(\frac\pi6\bigr)=\frac2{\pi/6}=\frac{12}\pi\approx3.820$。
+
+- id: p2
+  tier: easy
+  statement: |
+    设$f$绝对可积，$\hat f$是它的傅里叶变换。下列说法中，正确的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $f$取实数值、是奇函数时，$\hat f$是奇函数，并且实部处处为$0$
+      - |
+        $f(x-2)$的变换是$e^{-2i\xi}\hat f(\xi)$
+      - |
+        $e^{3ix}f(x)$的变换是$\hat f(\xi+3)$
+      - |
+        $f$连续，除有限个点外可导、导数连续，并且$f'$也绝对可积时，$f'$的变换是$-i\xi\hat f(\xi)$
+      - |
+        $f(2x)$的变换是$2\hat f(2\xi)$
+    value: [1, 2]
+  hints:
+    - |
+      逐项对照讲解里的定理 1、定理 2。
+    - |
+      C：乘上$e^{i\xi_0x}$，变换向哪边平移？E：用定理 1（3），$\alpha=2$。
+    - |
+      A：$f(-x)=-f(x)$，由定理 1（3）取$\alpha=-1$，$\hat f(-\xi)=-\hat f(\xi)$，是奇函数；再由（4），$\overline{\hat f(\xi)}=\hat f(-\xi)=-\hat f(\xi)$，实部为$0$，对。B：定理 1（1）取$x_0=2$，对。C：由定理 1（2），变换向右平移$3$，是$\hat f(\xi-3)$，不对。
+
+      D：由定理 2，应为$i\xi\hat f(\xi)$，不对。E：由定理 1（3）取$\alpha=2$，是$\frac12\hat f\bigl(\frac\xi2\bigr)$，不对。选 A、B。
+  solution: |
+    A：$f(-x)=-f(x)$，由定理 1（3）取$\alpha=-1$，$\hat f(-\xi)=-\hat f(\xi)$，$\hat f$是奇函数；再由（4），$\overline{\hat f(\xi)}=\hat f(-\xi)=-\hat f(\xi)$，所以实部为$0$，对。B：定理 1（1）取$x_0=2$，对。C：由定理 1（2），是$\hat f(\xi-3)$，不对。
+
+    D：由定理 2，应为$i\xi\hat f(\xi)$，不对。E：由定理 1（3），$f(2x)$的变换是$\frac12\hat f\bigl(\frac\xi2\bigr)$，不对。选 A、B。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$f(x)=e^{-|x|}\cos3x$，求$\hat f(3)$。
+  answer:
+    type: number
+    value: 38/37
+  hints:
+    - |
+      把$\cos3x$拆成两个复指数：$\cos3x=\frac12\bigl(e^{3ix}+e^{-3ix}\bigr)$。
+    - |
+      记$g(x)=e^{-|x|}$，由定理 1（2），$\hat f(\xi)=\frac12\hat g(\xi-3)+\frac12\hat g(\xi+3)$；$\hat g$由例 1 取$a=1$得到。
+    - |
+      $\hat g(\xi)=\frac2{1+\xi^2}$，所以$\hat f(3)=\frac12\hat g(0)+\frac12\hat g(6)=1+\frac1{37}=\frac{38}{37}$。
+  solution: |
+    记$g(x)=e^{-|x|}$，由例 1，$\hat g(\xi)=\frac2{1+\xi^2}$。$f(x)=\frac12e^{3ix}g(x)+\frac12e^{-3ix}g(x)$，由定理 1（2），$\hat f(\xi)=\frac12\hat g(\xi-3)+\frac12\hat g(\xi+3)$。所以$\hat f(3)=\frac12\cdot2+\frac12\cdot\frac2{37}=\frac{38}{37}\approx1.027$。
+
+- id: p4
+  tier: medium
+  statement: |
+    三角形$f(x)=1-|x|$（$|x|\le1$），$f(x)=0$（其余）。用求导的性质求$\hat f(\pi)$。
+  answer:
+    type: number
+    value: 4/pi^2
+  hints:
+    - |
+      $f$连续，除$x=-1$、$0$、$1$外可导；$f'$在$(-1,0)$上是$1$，在$(0,1)$上是$-1$，其余为$0$。定理 2 的条件都满足。
+    - |
+      先算$\widehat{f'}(\xi)=\int_{-1}^{0}e^{-i\xi x}\dd x-\int_0^1e^{-i\xi x}\dd x$，再除以$i\xi$。
+    - |
+      $\widehat{f'}(\xi)=\frac{2\cos\xi-2}{i\xi}$，所以$\hat f(\xi)=\frac{2-2\cos\xi}{\xi^2}$；代入$\xi=\pi$，$\cos\pi=-1$，得$\frac4{\pi^2}$。
+  solution: |
+    $f$连续，除$x=-1$、$0$、$1$外可导，$f'$在$(-1,0)$上是$1$、在$(0,1)$上是$-1$、其余为$0$，$f$和$f'$都绝对可积，可以用定理 2。$\int_{-1}^{0}e^{-i\xi x}\dd x=\frac{e^{i\xi}-1}{i\xi}$，$\int_0^1e^{-i\xi x}\dd x=\frac{1-e^{-i\xi}}{i\xi}$，相减得$\widehat{f'}(\xi)=\frac{e^{i\xi}+e^{-i\xi}-2}{i\xi}=\frac{2\cos\xi-2}{i\xi}$。由$\widehat{f'}=i\xi\hat f$，$\hat f(\xi)=\frac{2-2\cos\xi}{\xi^2}$，所以$\hat f(\pi)=\frac4{\pi^2}\approx0.4053$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f$连续，除有限个点外可导、导数连续，并且$f$和$f'$都绝对可积。
+
+    （1）证明$R\to+\infty$时$f(R)\to0$、$f(-R)\to0$，由此补全讲解里定理 2 的证明。
+
+    （2）再设$f'$也连续，$f''$除有限个点外存在且连续，并且也绝对可积。证明对一切$\xi$，$\xi^2|\hat f(\xi)|\le\int_{-\infty}^{+\infty}|f''(x)|\dd x$。
+
+    （3）讲解里矩形的变换只像$\frac1{|\xi|}$那样衰减，例 1 的变换像$\frac1{\xi^2}$那样衰减。对照定理 2 和（2）的条件说一说：「函数越光滑，变换衰减得越快」是什么意思？
+  hints:
+    - |
+      （1）$f(R)=f(0)+\int_0^Rf'(x)\dd x$，右边在$R\to+\infty$时有极限吗？极限不是$0$会怎样？
+    - |
+      （1）设极限是$A\ne0$，那么$x$足够大时$|f(x)|>\frac{|A|}2$，和$f$绝对可积矛盾。（2）对$f'$再用一次定理 2；对绝对可积的$g$，$|\hat g(\xi)|\le\int_{-\infty}^{+\infty}|g(x)|\dd x$（第 6 题（1））。
+    - |
+      （1）$f'$绝对可积，$\int_0^{+\infty}f'(x)\dd x$绝对收敛，从而收敛，所以$f(R)=f(0)+\int_0^Rf'(x)\dd x$在$R\to+\infty$时有极限$A$。若$A\ne0$，有$X$使$x>X$时$|f(x)|>\frac{|A|}2$，于是$\int_X^R|f|\dd x>\frac{|A|}2(R-X)\to+\infty$，和$f$绝对可积矛盾，所以$A=0$；$f(-R)\to0$同理。讲解里分部积分的边界项的模不超过$|f(R)|+|f(-R)|$，趋于$0$，定理 2 得证。
+
+      （2）$f'$满足定理 2 对$f$的要求，所以$\widehat{f''}=i\xi\widehat{f'}=(i\xi)^2\hat f=-\xi^2\hat f$。由第 6 题（1），$|\widehat{f''}(\xi)|\le\int_{-\infty}^{+\infty}|f''(x)|\dd x$，即得。
+
+      （3）矩形不连续，定理 2 用不上，它的变换$\frac{2\sin(\xi a/2)}\xi$只像$\frac1{|\xi|}$那样衰减。$e^{-a|x|}$连续，$f'$在$0$处从$a$跳到$-a$，定理 2 能用、（2）用不上：$\widehat{f'}(\xi)=\frac{2ai\xi}{a^2+\xi^2}$像矩形的变换那样衰减，除以$i\xi$就像$\frac1{\xi^2}$。每多一阶导数连续而且绝对可积，变换就多一个$\frac1{|\xi|}$的因子：函数越光滑，$|\hat f(\xi)|$在$|\xi|\to+\infty$时趋于$0$越快。
+  reference: |
+    （1）$f'$绝对可积，所以$\int_0^{+\infty}f'(x)\dd x$收敛，$f(R)=f(0)+\int_0^Rf'(x)\dd x\to A$。若$A\ne0$，有$X$使$x>X$时$|f(x)|>\frac{|A|}2$，$\int_X^R|f|\dd x>\frac{|A|}2(R-X)\to+\infty$，和$f$绝对可积矛盾；所以$A=0$，$f(-R)\to0$同理。分部积分的边界项$f(R)e^{-i\xi R}-f(-R)e^{i\xi R}$的模不超过$|f(R)|+|f(-R)|\to0$，定理 2 得证。
+
+    （2）$f'$连续，除有限个点外可导、导数连续，$f'$、$f''$都绝对可积，对$f'$用定理 2：$\widehat{f''}=i\xi\widehat{f'}=-\xi^2\hat f$。由第 6 题（1），$\xi^2|\hat f(\xi)|=|\widehat{f''}(\xi)|\le\int|f''|\dd x$。
+
+    （3）矩形不连续，不满足定理 2，变换$\frac{2\sin(\xi a/2)}\xi$只有$\frac1{|\xi|}$的衰减。$e^{-a|x|}$连续，$f'$在$0$处跳跃（$a$到$-a$），满足定理 2、不满足（2）：$\widehat{f'}=\frac{2ai\xi}{a^2+\xi^2}$像$\frac1{|\xi|}$，所以$\hat f$像$\frac1{\xi^2}$，和（2）不矛盾（（2）是充分条件）。每多一阶导数连续、绝对可积，变换多一个$\frac1{|\xi|}$的衰减。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f$绝对可积。
+
+    （1）证明对一切$\xi$，$|\hat f(\xi)|\le\int_{-\infty}^{+\infty}|f(x)|\dd x$。
+
+    （2）证明$\hat f$是连续函数，哪怕$f$本身有跳跃，比如矩形。
+
+    （3）设$f(x)\ge0$。证明$|\hat f(\xi)|$在$\xi=0$处取最大值，最大值就是曲线$y=f(x)$和$x$轴之间的面积。
+  hints:
+    - |
+      （1）把复数$\hat f(\xi)$写成$re^{i\theta}$，$r\ge0$；$r=e^{-i\theta}\hat f(\xi)$是实数，等于被积函数乘$e^{-i\theta}$以后的实部的积分。（2）估计$|\hat f(\xi+h)-\hat f(\xi)|$。
+    - |
+      （2）由（1）的办法，$|\hat f(\xi+h)-\hat f(\xi)|\le\int_{-\infty}^{+\infty}|f(x)|\,|e^{-ihx}-1|\dd x$。把积分分成$|x|\le X$和$|x|>X$两段：前一段用$|e^{-ihx}-1|\le|hx|$，后一段用$|e^{-ihx}-1|\le2$。
+    - |
+      （1）设$g$绝对可积，$\int_{-\infty}^{+\infty}g\dd x=re^{i\theta}$，$r\ge0$。$r=\int_{-\infty}^{+\infty}e^{-i\theta}g\dd x$是实数，等于$e^{-i\theta}g$的实部的积分；实部不超过模$|g|$，所以$\bigl|\int g\dd x\bigr|\le\int|g|\dd x$。取$g(x)=f(x)e^{-i\xi x}$，$|g|=|f|$，即得。
+
+      （2）记$M=\int_{-\infty}^{+\infty}|f|\dd x$，任给$\varepsilon>0$。反常积分收敛，可取$X>0$使$|x|>X$的两段上$|f|$的积分之和小于$\frac\varepsilon4$。由$|e^{i\theta}-1|=2\bigl|\sin\frac\theta2\bigr|\le|\theta|$，$|\hat f(\xi+h)-\hat f(\xi)|\le|h|XM+2\cdot\frac\varepsilon4$；$|h|<\frac\varepsilon{2XM+1}$时它小于$\varepsilon$。所以$\hat f$在每一点连续，和$f$有没有跳跃无关。
+
+      （3）$f\ge0$时$\hat f(0)=\int_{-\infty}^{+\infty}f\dd x=\int_{-\infty}^{+\infty}|f|\dd x$，就是那块面积。由（1），对一切$\xi$都有$|\hat f(\xi)|\le\hat f(0)$。
+  reference: |
+    （1）对绝对可积的$g$，设$\int g=re^{i\theta}$，$r\ge0$，则$r=\int e^{-i\theta}g$是实数，等于$\int\Re(e^{-i\theta}g)\le\int|g|$。取$g=fe^{-i\xi x}$，$|g|=|f|$，得$|\hat f(\xi)|\le\int|f|$。
+
+    （2）$\hat f(\xi+h)-\hat f(\xi)=\int f(x)e^{-i\xi x}(e^{-ihx}-1)\dd x$，由（1）的不等式，模不超过$\int|f||e^{-ihx}-1|$。取$X$使尾巴$\int_{|x|>X}|f|<\frac\varepsilon4$，尾巴上$|e^{-ihx}-1|\le2$，贡献小于$\frac\varepsilon2$；$|x|\le X$上$|e^{-ihx}-1|\le|hx|\le|h|X$，贡献不超过$|h|XM$。$|h|<\frac\varepsilon{2XM+1}$时总和小于$\varepsilon$，$\hat f$（一致）连续，不要求$f$连续。
+
+    （3）$f\ge0$时$\hat f(0)=\int f=\int|f|$，由（1）$|\hat f(\xi)|\le\hat f(0)$，最大值在$0$处取到，等于面积。
+
+- id: p7
+  tier: thinking
+  statement: |
+    把例 2 的$x$换成时间$t$、$\xi$换成角频率$\omega$：声音$e^{i\omega_0t}$只在$|t|<\frac\tau2$这段时间里响。
+
+    （1）变换的峰到最近的零点相距多少？换成每秒振动的次数（单位$\mathrm{Hz}$）是多少？
+
+    （2）$440\,\mathrm{Hz}$和$441\,\mathrm{Hz}$的两个音各响$\tau$秒。$\tau$至少要多长，两个峰才分得开？
+
+    （3）敲一下桌子，声音只持续约$5\,\mathrm{ms}$。为什么听不出它的音高？
+
+    （4）$440\,\mathrm{Hz}$和$441\,\mathrm{Hz}$的两个音同时响，会听到拍（beats，见[振动的叠加与拍](lesson:physics.oscillations-waves.superposition-beats#def-beats)）。拍频（beat frequency）是多少？这和（2）的答案有什么联系？
+  hints:
+    - |
+      （1）例 2 里峰到最近的零点相距$\frac{2\pi}L$，这里$L$换成$\tau$。角频率除以$2\pi$就是每秒振动的次数。
+    - |
+      （2）一个峰落在另一个峰最近的零点上时，可以算刚好分得开。（3）$\tau=5\,\mathrm{ms}$时，峰散开多宽？
+    - |
+      （1）相距$\frac{2\pi}\tau$（角频率），换成每秒振动的次数是$\frac1\tau$。
+
+      （2）两个峰相距$1\,\mathrm{Hz}$，要$\frac1\tau\le1\,\mathrm{Hz}$，即$\tau\ge1\,\mathrm s$：至少要听约$1$秒。听的时间更短，两个峰叠成一团，分不出是两个音。
+
+      （3）$\frac1\tau=200\,\mathrm{Hz}$，频率散开好几百赫兹，没有一个突出的频率，所以听不出音高。声音要持续很多个周期，音高才确定。
+
+      （4）拍频等于两个频率之差（见[振动的叠加与拍](lesson:physics.oscillations-waves.superposition-beats#def-beats)），是$441-440=1\,\mathrm{Hz}$，响度每秒起伏一次，要听出一次起伏也得听约$1$秒。两件事是同一个道理：频率差为$\Delta\nu$的两个音，至少要听约$\frac1{\Delta\nu}$那么久才分得出来。
+  reference: |
+    （1）例 2 中$L\to\tau$：峰到最近零点相距$\frac{2\pi}\tau$（角频率），即$\frac1\tau$赫兹。
+
+    （2）峰相距$1\,\mathrm{Hz}$，按一个峰落在另一个的第一个零点上算分得开，要$\frac1\tau\le1\,\mathrm{Hz}$，$\tau\ge1\,\mathrm s$。
+
+    （3）$\tau=5\,\mathrm{ms}$时频率散开约$200\,\mathrm{Hz}$（到第一个零点），整个峰宽几百赫兹，没有确定的音高。
+
+    （4）拍频$1\,\mathrm{Hz}$，一次起伏要$1\,\mathrm s$；和（2）一样，频率差$\Delta\nu$要约$\frac1{\Delta\nu}$的时间才分辨得出。
+
+- id: p8
+  tier: thinking
+  statement: |
+    常数$1$、$\cos\xi_0x$不绝对可积，在讲解的意义下没有傅里叶变换，可「纯音」$\cos\xi_0x$显然只含频率$\pm\xi_0$。
+
+    （1）设$\varepsilon>0$。用例 1 和定理 1 求$e^{-\varepsilon|x|}e^{i\xi_0x}$的变换。$\varepsilon\to0^+$时，它在$\xi=\xi_0$处、在别处各怎样变化？曲线下的面积是多少？
+
+    （2）由此猜一猜：$e^{i\xi_0x}$、$\cos\xi_0x$、常数$1$的「变换」应该是什么？它们还是普通的函数吗？
+
+    （3）用逆变换的公式把你猜的「变换」变回去，看看是不是正好得到原来的函数。
+  hints:
+    - |
+      （1）例 1 的$a$换成$\varepsilon$，再用定理 1（2）把变换平移$\xi_0$。
+    - |
+      （1）变换是$\frac{2\varepsilon}{\varepsilon^2+(\xi-\xi_0)^2}$。求面积时令$u=\frac{\xi-\xi_0}\varepsilon$，用$\int\frac{\dd u}{1+u^2}=\arctan u+C$（$\arctan x$的导数见[隐函数与反函数的求导](lesson:math.calculus.implicit-differentiation)）。（2）越来越窄、面积不变的尖峰，极限是什么？
+    - |
+      （1）变换是$\frac{2\varepsilon}{\varepsilon^2+(\xi-\xi_0)^2}$：在$\xi_0$处是$\frac2\varepsilon\to+\infty$，在$\xi\ne\xi_0$处趋于$0$。令$u=\frac{\xi-\xi_0}\varepsilon$，面积是$\int_{-\infty}^{+\infty}\frac{2\,\dd u}{1+u^2}=2\pi$，不随$\varepsilon$变。
+
+      （2）这是越来越窄、面积始终为$2\pi$的尖峰，照[狄拉克 δ 函数](lesson:math.calculus.dirac-delta)（Dirac delta function）的说法，它的极限是$2\pi\delta(\xi-\xi_0)$，不是普通的函数。所以$e^{i\xi_0x}$的「变换」是$2\pi\delta(\xi-\xi_0)$。$\cos\xi_0x=\frac12\bigl(e^{i\xi_0x}+e^{-i\xi_0x}\bigr)$的是$\pi[\delta(\xi-\xi_0)+\delta(\xi+\xi_0)]$，两个尖峰在$\pm\xi_0$；常数$1$取$\xi_0=0$，是$2\pi\delta(\xi)$。
+
+      （3）由筛选性质（sifting property），$\frac1{2\pi}\int_{-\infty}^{+\infty}2\pi\delta(\xi-\xi_0)e^{i\xi x}\dd\xi=e^{i\xi_0x}$，正好变回原来的函数。要把这些说严格，得把傅里叶变换推广到普通函数以外的对象上。
+  reference: |
+    （1）由例 1（$a=\varepsilon$）和定理 1（2），变换是$\frac{2\varepsilon}{\varepsilon^2+(\xi-\xi_0)^2}$：$\xi_0$处为$\frac2\varepsilon\to+\infty$，别处$\to0$；面积$\int\frac{2\varepsilon\,\dd\xi}{\varepsilon^2+(\xi-\xi_0)^2}=2\arctan u\big|_{-\infty}^{+\infty}=2\pi$。
+
+    （2）越来越窄、面积$2\pi$不变的尖峰，极限是$2\pi\delta(\xi-\xi_0)$：$\mathcal F\{e^{i\xi_0x}\}=2\pi\delta(\xi-\xi_0)$，$\mathcal F\{\cos\xi_0x\}=\pi[\delta(\xi-\xi_0)+\delta(\xi+\xi_0)]$，$\mathcal F\{1\}=2\pi\delta(\xi)$，都不是普通函数。
+
+    （3）由筛选性质，$\frac1{2\pi}\int2\pi\delta(\xi-\xi_0)e^{i\xi x}\dd\xi=e^{i\xi_0x}$，自洽。严格化要把变换推广到广义函数（分布）上。

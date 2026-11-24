@@ -1,0 +1,223 @@
+- id: p1
+  tier: easy
+  statement: |
+    $u$满足伯格斯方程$u_t+uu_x=0$，初值$u(x,0)=\frac1{1+x^2}$。求破裂时间$t^*$。
+  answer:
+    type: number
+    value: 8/(3*sqrt(3))
+  hints:
+    - |
+      破裂时间是$\frac1m$，$m$是$-\varphi'$的最大值，这里$\varphi(x)=\frac1{1+x^2}$。
+    - |
+      $-\varphi'(x)=\frac{2x}{(1+x^2)^2}$，$x\le0$时不为正。求它在$x>0$上的最大值点。
+    - |
+      $-\varphi'$的导数是$\frac{2(1-3x^2)}{(1+x^2)^3}$，在$x=\frac1{\sqrt3}$处由正变负，最大值$m=\frac{2/\sqrt3}{(4/3)^2}=\frac{3\sqrt3}8$。所以破裂时间$t^*=\frac1m=\frac8{3\sqrt3}\approx1.540$。
+  solution: |
+    $\varphi(x)=\frac1{1+x^2}$有界，导数连续，$-\varphi'(x)=\frac{2x}{(1+x^2)^2}$，$x\le0$时不为正。$x>0$时它的导数$\frac{2(1-3x^2)}{(1+x^2)^3}$在$x=\frac1{\sqrt3}$处由正变负，所以$-\varphi'$在$\eta=\frac1{\sqrt3}$处取得最大值
+
+    $$
+    m=\frac{2/\sqrt3}{(4/3)^2}=\frac{3\sqrt3}8.
+    $$
+
+    破裂时间$t^*=\frac1m=\frac8{3\sqrt3}\approx1.540$。波形最先在从$\frac1{\sqrt3}$出发的:term[特征线]{id="math.pde.characteristic-curve"}上变得竖直，那是鼓包右边的前坡。
+
+- id: p2
+  tier: easy
+  statement: |
+    关于伯格斯方程$u_t+uu_x=0$，下列说法中，正确的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        若$u(x,t)$是可微的解，$c$是常数，则$u(x-ct,t)+c$也是解
+      - |
+        两侧的值是$u_-=4$、$u_+=-2$的激波，以速度$1$向右移动
+      - |
+        从不同的两点出发的两条特征线不平行时，一定在某个$t>0$相交
+      - |
+        初值在一个有限区间外为$0$时，即使出现了激波，$u$在整条直线上的积分$\int_{-\infty}^{+\infty}u\dd x$也不随时间变
+      - |
+        若$u(x,t)$是可微的解，则$u(2x,t)$也是解
+    value: [1, 2, 4]
+  hints:
+    - |
+      A、E 代进方程算；B 用兰金-于戈尼奥条件；C 算两条特征线相交的时刻；D 用积分形式，区间取得足够大。
+    - |
+      A：记$v=u(x-ct,t)+c$，$v_t=u_t-cu_x$，$v_x=u_x$，右边在$(x-ct,t)$处取值。C：从$x_0<x_1$出发的两条在$t=\frac{x_1-x_0}{\varphi(x_0)-\varphi(x_1)}$相交。D：远处的特征线带着$u=0$竖直不动。
+    - |
+      A：$v_t+vv_x=u_t-cu_x+(u+c)u_x=u_t+uu_x=0$，对。E：$w=u(2x,t)$时$w_t+ww_x=u_t+2uu_x=uu_x$，一般不为$0$，如$u=\frac x{1+t}$时是$\frac{2x}{(1+t)^2}$，不对。
+
+      B：$s'=\frac{4+(-2)}2=1>0$，向右移动，对。C：$\varphi(x_0)<\varphi(x_1)$时这个时刻是负的，$t>0$时两条特征线越走越远，不对。
+
+      D：$a$、$b$取得足够远，在所看的那段时间里两端一直有$u=0$，积分形式的右边是$q(0)-q(0)=0$，积分不变，对。所以选 A、B、D。
+  solution: |
+    A：记$v=u(x-ct,t)+c$，$v_t=u_t-cu_x$，$v_x=u_x$（右边都在$(x-ct,t)$处取值），所以$v_t+vv_x=u_t-cu_x+(u+c)u_x=u_t+uu_x=0$，对。在粒子图像里，这相当于给每个粒子都加上同一个速度$c$。
+
+    B：由兰金-于戈尼奥条件，$s'=\frac{4+(-2)}2=1>0$，向右移动，对；$u_->u_+$，:term[特征线]{id="math.pde.characteristic-curve"}从两侧走进它。C：从$x_0<x_1$出发的两条特征线在$t=\frac{x_1-x_0}{\varphi(x_0)-\varphi(x_1)}$相交，$\varphi(x_0)<\varphi(x_1)$时这个时刻是负的，$t>0$时它们越走越远，不对。
+
+    D：远处的特征线带着$u=0$竖直不动，取$a$、$b$离得足够远，在所看的那段时间里那里一直有$u=0$，积分形式给出$\dv{}{t}\int_a^bu\dd x=q(0)-q(0)=0$，对。E：$w=u(2x,t)$时，$w_t+ww_x=u_t+2uu_x=uu_x$，一般不为$0$；例如$u=\frac x{1+t}$时$w=\frac{2x}{1+t}$，$w_t+ww_x=\frac{2x}{(1+t)^2}$，不对。选 A、B、D。
+
+- id: p3
+  tier: medium
+  statement: |
+    伯格斯方程$u_t+uu_x=0$的初值是$\varphi(x)=3$（$x<0$）、$3-2x$（$0\le x\le1$）、$1$（$x>1$）。求$t=2$时激波的位置。
+  answer:
+    type: number
+    value: 4.5
+  hints:
+    - |
+      斜坡上$-\varphi'=2$处处相同，从斜坡出发的:term[特征线]{id="math.pde.characteristic-curve"}什么时候、在哪里交到一起？
+    - |
+      从$x_0\in[0,1]$出发的特征线是$x=x_0+(3-2x_0)t$，$t=\frac12$时都到达$x=\frac32$；以后激波两侧是$u_-=3$、$u_+=1$。
+    - |
+      由兰金-于戈尼奥条件，$s'=\frac{3+1}2=2$，$s(t)=\frac32+2\bigl(t-\frac12\bigr)=2t+\frac12$。所以$t=2$时激波在$x=4.5$处。
+  solution: |
+    从$x_0\in[0,1]$出发的:term[特征线]{id="math.pde.characteristic-curve"}是$x=x_0+(3-2x_0)t$，$t=\frac12$时都到达$x=\frac32$。左边的特征线$x=x_0+3t$（$x_0<0$）、右边的$x=x_0+t$（$x_0>1$）都不会更早和它们相交，所以$t<\frac12$时没有激波，斜坡越来越陡，$t=\frac12$时在$x=\frac32$处竖直。
+
+    以后激波左边$u_-=3$、右边$u_+=1$，由兰金-于戈尼奥条件，$s'=\frac{3+1}2=2$，$s(t)=\frac32+2\bigl(t-\frac12\bigr)=2t+\frac12$。所以$t=2$时激波在$x=4.5$处。$u_->u_+$，特征线从两侧走进激波。
+
+- id: p4
+  tier: medium
+  statement: |
+    伯格斯方程$u_t+uu_x=0$的初值是$u(x,0)=\arctan x$。求$u_t$在$x=1+\frac\pi4$、$t=1$处的值。
+  answer:
+    type: number
+    value: -pi/12
+  hints:
+    - |
+      $\arctan x$有界，导数$\frac1{1+x^2}>0$，定理 1 对一切$t>0$都能用。先找过这一点的:term[特征线]{id="math.pde.characteristic-curve"}从哪里出发：试试$x_0=1$。
+    - |
+      从$x_0=1$出发的特征线是$x=1+\frac\pi4t$，$t=1$时正好到$x=1+\frac\pi4$，所以那里$u=\arctan1=\frac\pi4$。由定理 1，$u_x=\frac{\varphi'(1)}{1+\varphi'(1)}$。
+    - |
+      $\varphi'(1)=\frac12$，$u_x=\frac{1/2}{3/2}=\frac13$。再由方程，$u_t=-uu_x=-\frac\pi4\cdot\frac13=-\frac\pi{12}\approx-0.2618$。
+  solution: |
+    $\varphi(x)=\arctan x$有界，$\varphi'(x)=\frac1{1+x^2}>0$，$1+t\varphi'>0$对一切$t\ge0$成立，定理 1 可以用。$t=1$时$x_0+\arctan x_0$随$x_0$严格递增，$x_0=1$给出$1+\frac\pi4$，所以过这一点的:term[特征线]{id="math.pde.characteristic-curve"}从$x_0=1$出发，$u=\varphi(1)=\frac\pi4$。
+
+    由定理 1，$u_x=\frac{\varphi'(1)}{1+\varphi'(1)}=\frac{1/2}{3/2}=\frac13$；再由方程，$u_t=-uu_x=-\frac\pi4\cdot\frac13=-\frac\pi{12}\approx-0.2618$。也可以对$u=\varphi(x-ut)$两边对$t$求导，得$u_t=\varphi'(x_0)(-u-tu_t)$，解出$u_t=-\frac{u\varphi'(x_0)}{1+t\varphi'(x_0)}$，结果一样。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$u$是守恒律$u_t+q(u)_x=0$的积分形式下的解（$q$有连续的导数），只在可导的曲线$x=s(t)$上跳跃。两侧的可微解连同$u_t$都能连续地延到曲线上，跳跃左、右的值$u_-(t)$、$u_+(t)$不必是常数。
+
+    （1）由积分形式证明兰金-于戈尼奥条件$s'(t)=\frac{q(u_-)-q(u_+)}{u_--u_+}$。
+
+    （2）伯格斯方程两边乘$u$，得$\bigl(\frac{u^2}2\bigr)_t+\bigl(\frac{u^3}3\bigr)_x=0$，守恒的量是$\frac{u^2}2$，流量是$\frac{u^3}3$。证明：两侧的值$u_-\ne u_+$的跳跃，不可能同时满足这个守恒律和伯格斯方程本身的兰金-于戈尼奥条件。这说明了什么？
+  hints:
+    - |
+      （1）取$a<s(t)<b$，把$\int_a^bu\dd x$拆成$\int_a^{s(t)}$、$\int_{s(t)}^b$两段，分别对$t$求导，注意积分限随$t$变。（2）照（1）的推导写出这个守恒律的条件，守恒的量换成$\frac{u^2}2$、流量换成$\frac{u^3}3$，先不要除。再看它能不能和$s'=\frac{u_-+u_+}2$同时成立。
+    - |
+      （1）记$F(t,y)=\int_a^yu\dd x$（$u$取左侧的解，连续地延到曲线上），把求导移进积分号得$F_t=\int_a^yu_t\dd x$（见[含参变量积分](lesson:math.analysis.parameter-integrals#thm-leibniz-rule)），由微积分基本定理（fundamental theorem of calculus）$F_y=u(y,t)$，再用链式法则（chain rule）求$\dv{}{t}F\bigl(t,s(t)\bigr)$。两侧可微，$u_t=-q(u)_x$。
+
+      （2）这个守恒律的条件是$\bigl(\frac{u_-^2}2-\frac{u_+^2}2\bigr)s'=\frac{u_-^3}3-\frac{u_+^3}3$。把$s'=\frac{u_-+u_+}2$代进去，两边约去$u_--u_+$。
+    - |
+      （1）取$a<s(t)<b$。记$F(t,y)=\int_a^yu\dd x$（$u$取左侧的解，连续地延到曲线上），$F_t=\int_a^yu_t\dd x$，$F_y=u(y,t)$，由链式法则，左段$\int_a^{s(t)}u\dd x$对$t$的导数是$\int_a^{s(t)}u_t\dd x+u_-s'$；同理右段的导数是$\int_{s(t)}^bu_t\dd x-u_+s'$。
+
+      两侧可微，$u_t=-q(u)_x$，由牛顿-莱布尼茨公式，$\int_a^{s(t)}u_t\dd x=q\bigl(u(a,t)\bigr)-q(u_-)$，$\int_{s(t)}^bu_t\dd x=q(u_+)-q\bigl(u(b,t)\bigr)$。相加以后和积分形式$\dv{}{t}\int_a^bu\dd x=q\bigl(u(a,t)\bigr)-q\bigl(u(b,t)\bigr)$比较，两端的两项消掉，剩下$(u_--u_+)s'-q(u_-)+q(u_+)=0$，即$s'=\frac{q(u_-)-q(u_+)}{u_--u_+}$。
+
+      （2）照（1）的推导，守恒的量换成$\frac{u^2}2$、流量换成$\frac{u^3}3$，这个守恒律的条件是$\bigl(\frac{u_-^2}2-\frac{u_+^2}2\bigr)s'=\frac{u_-^3}3-\frac{u_+^3}3$。假如它和$s'=\frac{u_-+u_+}2$同时成立，代进去，两边约去$u_--u_+\ne0$，得$\frac{(u_-+u_+)^2}4=\frac{u_-^2+u_-u_++u_+^2}3$，两边乘$12$整理就是$(u_--u_+)^2=0$，矛盾。例如$u_-=1$、$u_+=0$时，这个守恒律给出$s'=\frac{1/3}{1/2}=\frac23$，伯格斯方程给出$\frac12$。
+
+      可微的解同时满足这两个守恒律，有跳跃时却至多满足其中一个：同一个偏微分方程写成不同的守恒律，积分形式下的解就不同，激波的走法也不同。所以要说清守恒的是哪个量；伯格斯方程守恒的是$\int u\dd x$。
+  reference: |
+    （1）$a<s(t)<b$。左段$\dv{}{t}\int_a^{s(t)}u\dd x=\int_a^{s(t)}u_t\dd x+u_-s'$（$F(t,y)=\int_a^yu\dd x$，$F_t$由积分号下求导，$F_y=u$，链式法则），右段$\int_{s(t)}^bu_t\dd x-u_+s'$。用$u_t=-q(u)_x$和牛顿-莱布尼茨公式，两段的积分分别是$q(u(a,t))-q(u_-)$、$q(u_+)-q(u(b,t))$。和积分形式比较，$(u_--u_+)s'=q(u_-)-q(u_+)$。
+
+    （2）条件$\bigl(\frac{u_-^2}2-\frac{u_+^2}2\bigr)s'=\frac{u_-^3-u_+^3}3$，代入$s'=\frac{u_-+u_+}2$、约去$u_--u_+$，得$3(u_-+u_+)^2=4(u_-^2+u_-u_++u_+^2)$，即$(u_--u_+)^2=0$，矛盾（$u_-=1$、$u_+=0$时两个速度是$\frac23$、$\frac12$）。光滑解两种写法等价，有跳跃时不等价：要说清守恒的是哪个量。
+
+- id: p6
+  tier: hard
+  statement: |
+    伯格斯方程$u_t+uu_x=0$的初值是$\varphi(x)=0$（$x<0$）、$1$（$x>0$），左边慢、右边快。
+
+    （1）验证$u=0$（$x\le0$）、$\frac xt$（$0<x<t$）、$1$（$x\ge t$）在$t>0$时连续，并且在两条直线$x=0$、$x=t$以外满足方程，所以是积分形式下的解。
+
+    （2）$u=0$（$x<\frac t2$）、$1$（$x>\frac t2$）在$x=\frac t2$处跳跃。验证它满足兰金-于戈尼奥条件。它两侧的特征线和这个跳跃是什么关系？
+
+    （3）把$\varphi$换成连续的斜坡$\varphi_\varepsilon$：$0$（$x\le0$）、$\frac x\varepsilon$（$0<x<\varepsilon$）、$1$（$x\ge\varepsilon$），$\varepsilon>0$。求解，再令$\varepsilon\to0^+$，得到的是（1）的解还是（2）的解？由此说一说「特征线从两侧走进激波」这一条是做什么用的。
+  hints:
+    - |
+      （1）分三块代进方程，再看两条直线上左右是否接得上。（2）跳跃两侧$u$是常数，那里的:term[特征线]{id="math.pde.characteristic-curve"}比跳跃走得快还是慢？（3）$\varphi_\varepsilon$不减，特征线不相交。
+    - |
+      （1）中间一块$u_t=-\frac x{t^2}$，$uu_x=\frac xt\cdot\frac1t$。（2）左侧特征线$x=x_0$速度为$0$，右侧$x=x_0+t$速度为$1$，跳跃的速度是$\frac12$。（3）从$x_0\in[0,\varepsilon]$出发的特征线是$x=x_0\bigl(1+\frac t\varepsilon\bigr)$。
+    - |
+      （1）$x<0$、$x>t$两块是常数，满足方程；中间$u=\frac xt$，$u_t=-\frac x{t^2}$，$uu_x=\frac x{t^2}$，相加为$0$。在$x=0$处$\frac xt=0$，在$x=t$处$\frac xt=1$，和两侧接上，$u$连续，只在两条直线上有折角，和例 2 一样，整体满足积分形式。这个解由从原点发出的一把特征线$x=vt$（$0\le v\le1$）铺开，叫作稀疏波（rarefaction wave）。
+
+      （2）$s'=\frac{0+1}2=\frac12$，满足兰金-于戈尼奥条件；两侧都是常数，把定理 2 证明思路里的算式倒过来读，积分形式也成立，所以它也是积分形式下的解。可左侧的特征线$x=x_0$不动，右侧的$x=x_0+t$以速度$1$向右，跳跃以$\frac12$前进：左边的特征线被甩在后面，右边的跑在前面，特征线从两侧离开这个跳跃，没有一条走进它。这个跳跃不是特征线相交造成的，不满足「特征线从两侧走进激波」。
+
+      （3）$\varphi_\varepsilon$不减，特征线不相交。从$x_0\in[0,\varepsilon]$出发的特征线是$x=x_0+\frac{x_0}\varepsilon t$，解出$x_0=\frac{\varepsilon x}{\varepsilon+t}$，所以$u=0$（$x\le0$）、$\frac x{\varepsilon+t}$（$0<x<\varepsilon+t$）、$1$（$x\ge\varepsilon+t$）。令$\varepsilon\to0^+$，得到（1）的解，不是（2）的。
+
+      所以积分形式下的解不唯一：（1）、（2）都满足积分形式，初值稍微抹平一点得到的却是（1），（2）那样的跳跃不会实际出现。「特征线从两侧走进激波」这一条，就是用来排除（2）这样的跳跃、挑出合理的解。
+  reference: |
+    （1）两侧常数；中间$u_t+uu_x=-\frac x{t^2}+\frac x{t^2}=0$；在$x=0$、$x=t$处连续，只有折角，满足积分形式。这是稀疏波。
+
+    （2）$s'=\frac{0+1}2=\frac12$，满足兰金-于戈尼奥条件，两侧是常数，倒推回去积分形式成立；左侧特征线速度$0<\frac12$、右侧$1>\frac12$，特征线从两侧离开跳跃，不满足「走进激波」。
+
+    （3）$\varphi_\varepsilon$不减。$x=x_0(1+\frac t\varepsilon)$，$u=\frac x{\varepsilon+t}$（$0<x<\varepsilon+t$），两侧$0$、$1$；$\varepsilon\to0^+$时趋于（1）的解。积分形式下的解不唯一，「特征线走进激波」排除（2）。
+
+- id: p7
+  tier: thinking
+  statement: |
+    讲解开头说，伯格斯方程描述直线上各自匀速运动的粒子：$u(x,t)$是$t$时刻位于$x$处的粒子的速度。
+
+    （1）两条特征线相交，在粒子看来是什么事？
+
+    （2）照特征线硬算，相交以后同一个$x$处有几个$u$。这在粒子看来是怎样的运动？为什么速度场（velocity field）$u(x,t)$描述不了它？
+
+    （3）设$x<0$处的粒子都以速度$u_-$运动，$x>0$处的都以$u_+$运动，$u_->u_+$，两边每单位长度上粒子的质量都是$\rho$。粒子碰上就粘在一起，用动量守恒求粘成的那一团的速度，和兰金-于戈尼奥条件给的激波速度比较。
+  hints:
+    - |
+      （1）伯格斯方程的:term[特征线]{id="math.pde.characteristic-curve"}就是粒子走过的路线。（2）粒子互不理睬、各走各的，会怎样？（3）设那一团以不变的速度$V$运动，算$t$时刻它吸进了左、右各多少粒子。
+    - |
+      （3）左边原来在$x_0<0$的粒子$t$时刻在$x_0+u_-t$，被吸进去要$x_0+u_-t\ge Vt$，所以吸进了原来在$[(V-u_-)t,0]$上的那些，质量$\rho(u_--V)t$；右边同理，质量$\rho(V-u_+)t$。那一团的动量等于这些粒子原来的动量之和。
+    - |
+      （1）两条特征线在某个时刻、某个位置相交，就是两个粒子同时到了同一个地方：后面跑得快的追上了前面跑得慢的，两个粒子相撞。
+
+      （2）硬算相当于粒子互不理睬、穿过彼此各走各的：同一个位置上同时有几个粒子，速度各不相同，像几股粒子流叠在一起。速度场在每一点只给一个速度，描述的是每一点的粒子只有一个速度的流动，所以描述不了这种几股交叠的运动；硬算出的几个$u$，就是这几股粒子流各自的速度。
+
+      （3）那一团从原点出发，设它以不变的速度$V$运动（$u_+<V<u_-$）。$t$时刻它吸进了左边质量$\rho(u_--V)t$、右边质量$\rho(V-u_+)t$的粒子，总质量$\rho(u_--u_+)t$。动量守恒：
+
+      $$
+      \rho(u_--u_+)t\cdot V=\rho(u_--V)t\cdot u_-+\rho(V-u_+)t\cdot u_+,
+      $$
+
+      化简得$2V(u_--u_+)=u_-^2-u_+^2$，$V=\frac{u_-+u_+}2$，正是伯格斯方程的激波速度：激波就是粘成的那一团。不过这里用到了两边一样密；两边每单位长度的质量是$\rho_-$、$\rho_+$时，同样的算法给出$V=\frac{\sqrt{\rho_-}u_-+\sqrt{\rho_+}u_+}{\sqrt{\rho_-}+\sqrt{\rho_+}}$，不再是平均值：伯格斯方程只管速度、不管密度，在这个问题里两边一样密时才和粘在一起的粒子对得上。
+  reference: |
+    （1）两个粒子同时到达同一点：快的追上慢的，相撞。
+
+    （2）硬算 = 粒子互相穿过、各走各的，同一点有几股速度不同的粒子流；速度场每点只有一个速度，描述不了，多出的几个$u$是各股的速度。
+
+    （3）团块速度$V$不变，$t$时刻吸进左边质量$\rho(u_--V)t$、右边$\rho(V-u_+)t$；动量守恒$\rho(u_--u_+)tV=\rho(u_--V)tu_-+\rho(V-u_+)tu_+$，得$V=\frac{u_-+u_+}2$，即兰金-于戈尼奥条件。两边密度$\rho_-\ne\rho_+$时$V=\frac{\sqrt{\rho_-}u_-+\sqrt{\rho_+}u_+}{\sqrt{\rho_-}+\sqrt{\rho_+}}$，对不上：伯格斯方程不管密度。
+
+- id: p8
+  tier: thinking
+  statement: |
+    公路上车流的密度（每千米上的车辆数）是$\rho(x,t)$，车往$x$增大的方向开，车速只由密度决定：$v=v_{\max}\bigl(1-\frac\rho{\rho_{\max}}\bigr)$，$\rho_{\max}$是车辆首尾相接时的密度。车辆数守恒，所以$\rho_t+(\rho v)_x=0$，这是流量为$q(\rho)=\rho v$的守恒律。
+
+    （1）求特征线的速度$q'(\rho)$，说明$\rho>\frac{\rho_{\max}}2$时它是负的。
+
+    （2）所有的车都在往前开，特征线为什么却可能往后走？特征线的速度和车速有什么不同？
+
+    （3）一段车流以密度$\rho_1$（$0<\rho_1<\rho_{\max}$）驶来，前方堵死了（$\rho=\rho_{\max}$，车速为$0$）。堵车的末尾是一个激波，求它的速度，说明它往后退。它满足「特征线从两侧走进激波」吗？
+  hints:
+    - |
+      （1）$q(\rho)=v_{\max}\bigl(\rho-\frac{\rho^2}{\rho_{\max}}\bigr)$，求导。（2）沿:term[特征线]{id="math.pde.characteristic-curve"}什么不变？（3）用兰金-于戈尼奥条件，$u$换成$\rho$。
+    - |
+      （1）$q'(\rho)=v_{\max}\bigl(1-\frac{2\rho}{\rho_{\max}}\bigr)$。（2）沿特征线$\rho$不变：特征线的速度是某个密度值移动的速度，不是哪辆车的速度；$q'(\rho)=v+\rho v'(\rho)$。（3）后方$\rho_-=\rho_1$，前方$\rho_+=\rho_{\max}$，$q(\rho_{\max})=0$。
+    - |
+      （1）$q(\rho)=v_{\max}\bigl(\rho-\frac{\rho^2}{\rho_{\max}}\bigr)$，$q'(\rho)=v_{\max}\bigl(1-\frac{2\rho}{\rho_{\max}}\bigr)$，$\rho>\frac{\rho_{\max}}2$时为负。
+
+      （2）沿特征线$\rho$不变，特征线的速度是某个密度值（一个扰动）传开的速度，不是哪辆车的速度。$q'(\rho)=v+\rho v'(\rho)$，$v'<0$，所以它总比车速小：前车一刹车，后车跟着刹，再后面的车再跟着刹，「刹车」这件事相对车流一辆接一辆往后传。车流很密时，它往后传得比车往前开得快，特征线就往后走，而每辆车一直往前开，穿过这些扰动。
+
+      （3）激波后方$\rho_-=\rho_1$，前方$\rho_+=\rho_{\max}$，$q(\rho_{\max})=0$，由兰金-于戈尼奥条件，
+
+      $$
+      s'=\frac{q(\rho_1)}{\rho_1-\rho_{\max}}=-\frac{v_{\max}\rho_1}{\rho_{\max}}<0,
+      $$
+
+      堵车的末尾以$\frac{v_{\max}\rho_1}{\rho_{\max}}$的速度往后退，来车越密，退得越快。$q'(\rho_1)-s'=v_{\max}\bigl(1-\frac{\rho_1}{\rho_{\max}}\bigr)>0$，$s'-q'(\rho_{\max})=v_{\max}\bigl(1-\frac{\rho_1}{\rho_{\max}}\bigr)>0$，所以$q'(\rho_-)>s'>q'(\rho_+)$，特征线从两侧走进激波，这个激波是合理的。
+  reference: |
+    （1）$q'(\rho)=v_{\max}(1-\frac{2\rho}{\rho_{\max}})$，$\rho>\frac{\rho_{\max}}2$时为负。
+
+    （2）沿特征线$\rho$不变，特征线速度是密度扰动传开的速度；$q'=v+\rho v'<v$，扰动相对车流往后传，车密时比车速还快，所以往后走，车穿过扰动往前开。
+
+    （3）$s'=\frac{q(\rho_1)-0}{\rho_1-\rho_{\max}}=-\frac{v_{\max}\rho_1}{\rho_{\max}}<0$，往后退。$q'(\rho_1)>s'>q'(\rho_{\max})=-v_{\max}$，两个差都是$v_{\max}(1-\frac{\rho_1}{\rho_{\max}})>0$，满足条件。

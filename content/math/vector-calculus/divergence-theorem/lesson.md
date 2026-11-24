@@ -35,7 +35,7 @@ status: reviewed
 ### 守恒律与连续性方程
 
 ::anchor{id="def-continuity-equation"}
-设某个量（例如流体的质量）在空间里的密度是$\rho(\vb r,t)$，它的流动用:term[向量场]{id="math.vector-calculus.vector-field"}（vector field）$\vb J$描述：$\vb J\cdot\vb n\,\Delta a$是每秒穿过一小块面积往$\vb n$方向流过去的量。这个量既不产生也不消失，并且$\rho$、$\pdv\rho t$:term[连续]{id="math.vector-calculus.continuous"}，$\vb J$有连续的:term[偏导数]{id="math.vector-calculus.partial-derivative"}时，$\pdv\rho t+\divg\vb J=0$处处成立，这叫作连续性方程（continuity equation）。
+设某个量（例如流体的质量）在空间里的密度是$\rho(\vb r,t)$，它的流动用:term[向量场]{id="math.vector-calculus.vector-field"}（vector field）$\vb J$描述：$\vb J\cdot\vb n\,\Delta a$是每秒穿过一小块面积往$\vb n$方向流过去的量。这个量既不产生也不消失，并且$\rho$、$\pdv\rho t$:term[连续]{id="math.vector-calculus.continuous"}，$\vb J$有连续的:term[偏导数]{id="math.vector-calculus.partial-derivative"}时，$\pdv\rho t+\divg\vb J=0$处处成立，这叫作:term[连续性方程]{id="math.vector-calculus.continuity-equation"}（continuity equation）。
 
 **证明思路**：任取一块固定的区域$V$，里面的总量$\iiint_V\rho\,\dd V$只因穿过边界的流动而变：$\dv{}t\iiint_V\rho\,\dd V=-\oint_{\partial V}\vb J\cdot\dd\vb a$。$V$固定、$\pdv\rho t$连续，左边的求导可以移进积分号（区间上的情形见[含参变量积分](lesson:math.analysis.parameter-integrals#thm-leibniz-rule)，有界区域上同理）；右边用:term[散度定理]{id="math.vector-calculus.divergence-theorem"}，得$\iiint_V\bigl(\pdv\rho t+\divg\vb J\bigr)\dd V=0$。它对每一块$V$都成立，被积函数又连续，所以处处为零：哪一点为正，在那一点附近取一个小球，积分就会是正的。
 

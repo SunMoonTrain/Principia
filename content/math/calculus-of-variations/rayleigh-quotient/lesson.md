@@ -39,7 +39,7 @@ $$
 为什么这样定义：$R[cy]=R[y]$，所以在所有不恒为零的$y$中求$R$的最小值，和上面带约束的问题是一回事，还免去了约束。它是矩阵那个商的对应物：分部积分得$\int_0^Ly'^2\,\dd x=\int_0^Ly\cdot(-y'')\,\dd x$，$-\dv{^2}{x^2}$扮演$A$的角色。边界情况：两端为零的条件不能少，否则常数$y\equiv1$给出$R=0$，最小值就没有意义了。
 
 ::anchor{id="def-eigenfunction"}
-如果有两端为零、不恒为零的$y$满足$-y''=\lambda y$，就说$\lambda$是这个边值问题（boundary value problem）的特征值，$y$是属于$\lambda$的特征函数（eigenfunction）。
+如果有两端为零、不恒为零的$y$满足$-y''=\lambda y$，就说$\lambda$是这个:term[边值问题]{id="math.pde.boundary-value-problem"}（boundary value problem）的特征值，$y$是属于$\lambda$的特征函数（eigenfunction）。
 
 为什么这样定义：特征函数就是$-\dv{^2}{x^2}$的「特征向量」。上面乘$y$再积分的计算对任何特征函数都适用，所以特征函数的瑞利商等于它的特征值：$R[y]=\lambda$。边界情况：$y\equiv0$总满足方程，所以要求不恒为零；对一般的$\lambda$只有零解，例如$\lambda\le0$时（p5）。
 

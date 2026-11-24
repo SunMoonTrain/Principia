@@ -1,0 +1,211 @@
+- id: p1
+  tier: easy
+  statement: |
+    两端固定的弦长$1.5\,\mathrm m$，弦上的波速是$180\,\mathrm{m/s}$。求它的第$2$个:term[简正模]{id="math.pde.normal-mode"}的角频率。
+  answer:
+    type: number
+    value: 2*pi*180/1.5
+    unit: |
+      $\mathrm{rad/s}$
+  hints:
+    - |
+      第$n$个简正模是$(A_n\cos\omega_nt+B_n\sin\omega_nt)\sin\frac{n\pi x}L$，它的角频率$\omega_n$和$n$、$L$、$c$是什么关系？
+    - |
+      $\omega_n=\frac{n\pi c}L$，这里$n=2$，$L=1.5\,\mathrm m$，$c=180\,\mathrm{m/s}$。
+    - |
+      $\omega_2=\frac{2\pi\times180}{1.5}\,\mathrm{rad/s}=240\pi\,\mathrm{rad/s}\approx754\,\mathrm{rad/s}$。
+  solution: |
+    分离变量时，第$n$个乘积解的时间因子满足$T''+\bigl(\frac{n\pi c}L\bigr)^2T=0$，所以第$n$个简正模的角频率是$\omega_n=\frac{n\pi c}L$。$\omega_2=\frac{2\pi\times180}{1.5}\,\mathrm{rad/s}=240\pi\,\mathrm{rad/s}\approx754\,\mathrm{rad/s}$，对应的频率是$\frac{\omega_2}{2\pi}=120\,\mathrm{Hz}$，是基频$60\,\mathrm{Hz}$的$2$倍。
+
+- id: p2
+  tier: easy
+  statement: |
+    长为$L$、两端固定的弦满足$u_{tt}=c^2u_{xx}$、$u(0,t)=u(L,t)=0$。下列说法中，正确的有哪些？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $u=\sin\frac{3\pi x}L\cos\bigl(\frac{3\pi ct}L+1\bigr)$是一个简正模
+      - |
+        $u=\sin\frac{\pi x}L\cos\frac{2\pi ct}L$是一个简正模
+      - |
+        弦长变为原来的$2$倍、波速不变，新弦第$2$个简正模的角频率等于原来那根弦第$1$个简正模的角频率
+      - |
+        $u=\sin\frac{\pi x}{2L}\cos\frac{\pi ct}{2L}$是一个简正模
+      - |
+        初位移$\varphi=0$、初速度$\psi$满足本节定理的条件时，弦在$t=\frac Lc$时刻整根是直的
+    value: [1, 3, 5]
+  hints:
+    - |
+      简正模要满足方程和两端的条件：形状是某个$\sin\frac{n\pi x}L$，时间因子是$\cos\omega_nt$、$\sin\omega_nt$的组合，并且这个角频率正好是$\omega_n=\frac{n\pi c}L$。
+    - |
+      选项 A：把$\cos\bigl(\frac{3\pi ct}L+1\bigr)$展开。选项 B：形状对应$n=1$，时间因子的角频率对吗？选项 C：$\omega_n=\frac{n\pi c}L$里$L$加倍。
+
+      选项 D：$x=L$处$u$是多少？选项 E：$\varphi=0$时所有$A_n=0$，$t=\frac Lc$时$\sin\omega_nt$是多少？
+    - |
+      选项 A 对：$\cos\bigl(\frac{3\pi ct}L+1\bigr)=\cos1\cos\frac{3\pi ct}L-\sin1\sin\frac{3\pi ct}L$，是$n=3$、$A_3=\cos1$、$B_3=-\sin1$的简正模。选项 B 错：$n=1$的角频率应是$\frac{\pi c}L$，代进方程，$u_{tt}=-\frac{4\pi^2c^2}{L^2}u$，而$c^2u_{xx}=-\frac{\pi^2c^2}{L^2}u$。
+
+      选项 C 对：新弦的$\omega_2=\frac{2\pi c}{2L}=\frac{\pi c}L$。选项 D 错：$x=L$处$\sin\frac\pi2=1$，右端不是固定的。选项 E 对：$u=\sum B_n\sin\omega_nt\sin\frac{n\pi x}L$，$\sin\omega_n\frac Lc=\sin n\pi=0$，每一项都是$0$。选 A、C、E。
+  solution: |
+    选项 A 对：$\cos\bigl(\frac{3\pi ct}L+1\bigr)=\cos1\cos\frac{3\pi ct}L-\sin1\sin\frac{3\pi ct}L$，是第$3$个简正模，$A_3=\cos1$，$B_3=-\sin1$。选项 B 错：形状是$n=1$的，可时间因子的角频率是$\frac{2\pi c}L$，$u_{tt}=-\frac{4\pi^2c^2}{L^2}u\ne c^2u_{xx}=-\frac{\pi^2c^2}{L^2}u$，不满足方程。选项 C 对：$\omega_n=\frac{n\pi c}L$，新弦的$\omega_2=\frac{2\pi c}{2L}=\frac{\pi c}L$，正是原来的$\omega_1$。
+
+    选项 D 错：它满足方程，可$x=L$处$\sin\frac\pi2=1$，不满足$u(L,t)=0$。选项 E 对：$\varphi=0$时所有$A_n=0$，$u=\sum B_n\sin\omega_nt\sin\frac{n\pi x}L$，$t=\frac Lc$时$\sin\omega_nt=\sin n\pi=0$，所以$u=0$；也可以由例 1 末尾的$u\bigl(x,\frac Lc\bigr)=-\varphi(L-x)=0$看出。选 A、C、E。
+
+- id: p3
+  tier: medium
+  statement: |
+    长$\pi$、两端固定的弦，$c=1$。开始时弦在平衡位置（$\varphi=0$），各点的初速度是$\psi(x)=\sin^3x$。求$u\bigl(\frac\pi2,\frac\pi2\bigr)$。
+  answer:
+    type: number
+    value: 2/3
+  hints:
+    - |
+      $\psi$不是一个简正模的形状。先把$\sin^3x$写成几个$\sin nx$的组合，三倍角公式（triple-angle formula）$\sin3x=3\sin x-4\sin^3x$用得上。
+    - |
+      $\sin^3x=\frac34\sin x-\frac14\sin3x$。$L=\pi$、$c=1$时$\omega_n=n$；$\varphi=0$给出$A_n=0$，$u=\sum B_n\sin nt\sin nx$，$u_t(x,0)=\sum nB_n\sin nx$，和$\psi$比较系数。
+    - |
+      $B_1=\frac34$，$3B_3=-\frac14$即$B_3=-\frac1{12}$，其余$B_n=0$。$u=\frac34\sin t\sin x-\frac1{12}\sin3t\sin3x$，$u\bigl(\frac\pi2,\frac\pi2\bigr)=\frac34-\frac1{12}\sin^2\frac{3\pi}2=\frac34-\frac1{12}=\frac23$。
+  solution: |
+    由三倍角公式，$\psi(x)=\sin^3x=\frac34\sin x-\frac14\sin3x$，只含第$1$、$3$个简正模的形状。$\varphi=0$，所以$A_n=0$；$\omega_n=n$，$u_t(x,0)=\sum nB_n\sin nx$要等于$\psi$，由正交性得$B_1=\frac34$，$3B_3=-\frac14$，其余$B_n=0$。
+
+    所以$u(x,t)=\frac34\sin t\sin x-\frac1{12}\sin3t\sin3x$，$u\bigl(\frac\pi2,\frac\pi2\bigr)=\frac34\cdot1\cdot1-\frac1{12}\cdot(-1)\cdot(-1)=\frac23$。
+
+- id: p4
+  tier: medium
+  statement: |
+    弦长$L=2\,\mathrm m$，弦上的波速$c=4\,\mathrm{m/s}$，两端固定。开始时弦静止，形状是$a\bigl(\sin\frac{2\pi x}L+\sin\frac{4\pi x}L\bigr)$，$a$是很小的常数。求弦的运动的最小正周期。
+  answer:
+    type: number
+    value: 1/2
+    unit: |
+      $\mathrm s$
+  hints:
+    - |
+      开始的形状是哪两个简正模的形状？它们的角频率各是多少？$\frac{2L}c$一定是周期，可它是最小的吗？
+    - |
+      是第$2$、$4$个简正模，$\omega_2=\frac{2\pi c}L=4\pi\,\mathrm{rad/s}$，$\omega_4=8\pi\,\mathrm{rad/s}$。若$u(x,t+P)=u(x,t)$对一切$x$、$t$成立，两边乘$\sin\frac{2\pi x}L$在$[0,L]$上积分，由正交性，$\cos\omega_2t$也以$P$为周期。
+    - |
+      $u=a\bigl(\sin\frac{2\pi x}L\cos4\pi t+\sin\frac{4\pi x}L\cos8\pi t\bigr)$（$t$以$\mathrm s$为单位）。$\cos4\pi t$以$P$为周期，$P$只能是$\frac12\,\mathrm s$的整数倍；$P=\frac12\,\mathrm s$时$\cos8\pi t$也回到原样。所以最小正周期是$\frac12\,\mathrm s$，只是$\frac{2L}c=1\,\mathrm s$的一半。
+  solution: |
+    开始的形状是第$2$、$4$个简正模的形状之和，初速度为$0$，所以$u=a\bigl(\sin\frac{2\pi x}L\cos\omega_2t+\sin\frac{4\pi x}L\cos\omega_4t\bigr)$，$\omega_2=\frac{2\pi c}L=4\pi\,\mathrm{rad/s}$，$\omega_4=8\pi\,\mathrm{rad/s}$。若$P>0$是周期，两边乘$\sin\frac{2\pi x}L$在$[0,L]$上积分，由正交性，$\cos\omega_2(t+P)=\cos\omega_2t$对一切$t$成立，$P$是$\frac{2\pi}{\omega_2}=\frac12\,\mathrm s$的整数倍。
+
+    $P=\frac12\,\mathrm s$时$\omega_4P=4\pi$，第二项也回到原样，所以最小正周期是$\frac12\,\mathrm s$。一般的运动以$\frac{2L}c=1\,\mathrm s$为周期；这里只有第$2$、$4$个简正模，两个角频率都是$\omega_2$的整数倍，周期缩短了一半。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$\varphi$、$\psi$满足本节定理的条件，$A_n$、$B_n$、$\omega_n$照定理里的式子。
+
+    （1）证明$A_n=-\bigl(\frac L{n\pi}\bigr)^2\beta_n$、$\omega_nB_n=\frac L{n\pi}\alpha_n$，其中$\beta_n=\frac2L\int_0^L\varphi''(x)\sin\frac{n\pi x}L\dd x$，$\alpha_n=\frac2L\int_0^L\psi'(x)\cos\frac{n\pi x}L\dd x$。
+
+    （2）证明$\sum_{n=1}^\infty n^2\bigl(|A_n|+|B_n|\bigr)$收敛。
+
+    （3）证明定理里的级数可以逐项对$x$、对$t$各求两次偏导数，它的和$u$满足$u_{tt}=c^2u_{xx}$、两端的条件和两个初始条件。
+  hints:
+    - |
+      （1）分部积分，边界项里用到$\varphi$、$\psi$在两端为$0$，还有$\sin n\pi=0$。（2）$\beta_n$、$\alpha_n$分别是$\varphi''$:term[奇延拓]{id="math.pde.odd-extension"}、$\psi'$:term[偶延拓]{id="math.pde.even-extension"}（even extension）以后的傅里叶系数（Fourier coefficients）。延拓后的函数连续吗？
+    - |
+      （2）[傅里叶级数的收敛](lesson:math.analysis.fourier-convergence#thm-fourier-uniform)定理 2 的证明说明：以$2\pi$为周期、连续、分段光滑的函数，傅里叶系数的绝对值之和收敛，周期换成$2L$同理。（3）找一个和$x$、$t$都无关的收敛级数，控制各项和它们的一、二阶偏导数，再用:term[魏尔斯特拉斯判别法]{id="math.analysis.weierstrass-m-test"}（Weierstrass M-test）和[一致收敛与极限交换](lesson:math.analysis.uniform-limit-theorems#thm-derivative-interchange)的定理 3。
+    - |
+      （1）记$k=\frac{n\pi}L$。分部积分，$\int_0^L\varphi\sin kx\dd x=\Bigl[-\frac{\varphi\cos kx}k\Bigr]_0^L+\frac1k\int_0^L\varphi'\cos kx\dd x$，$\varphi(0)=\varphi(L)=0$，边界项为$0$。再分部积分，$\int_0^L\varphi'\cos kx\dd x=\Bigl[\frac{\varphi'\sin kx}k\Bigr]_0^L-\frac1k\int_0^L\varphi''\sin kx\dd x$，$\sin0=\sin n\pi=0$，边界项也是$0$，所以$A_n=-\frac1{k^2}\beta_n$。同样，$\psi(0)=\psi(L)=0$，分部积分一次得$\omega_nB_n=\frac2L\int_0^L\psi\sin kx\dd x=\frac1k\alpha_n$。
+
+      （2）$\varphi''$连续、分段光滑，在两端为$0$，奇延拓、再按周期$2L$延到整条直线上以后处处连续、分段光滑；$\beta_n$是它的傅里叶系数（余弦项的系数都是$0$），由定理 2 的证明，$\sum|\beta_n|$收敛。$\psi'$偶延拓以后，在$0$和$\pm L$两侧的值相同，也连续、分段光滑，$\alpha_n$是它的傅里叶系数，$\sum|\alpha_n|$收敛。于是$n^2|A_n|=\frac{L^2}{\pi^2}|\beta_n|$，$n^2|B_n|=\frac{n^2}{\omega_n}\cdot\frac L{n\pi}|\alpha_n|=\frac{L^2}{\pi^2c}|\alpha_n|$，两个级数都收敛。
+
+      （3）第$n$项是$(A_n\cos\omega_nt+B_n\sin\omega_nt)\sin kx$，它和它的一、二阶偏导数（包括对$x$、$t$各求一次的混合偏导数（mixed partial derivative））的绝对值，都不超过$|A_n|+|B_n|$乘$1$、$k$、$\omega_n$、$k^2$、$k\omega_n$、$\omega_n^2$中的一个，所以都不超过$Cn^2(|A_n|+|B_n|)$，$C$是只和$L$、$c$有关的常数。由（2）和魏尔斯特拉斯判别法，这几个级数在$0\le x\le L$、$t\in\R$上都一致收敛（uniform convergence）；一致收敛的连续函数的级数，和也连续（[一致收敛与极限交换](lesson:math.analysis.uniform-limit-theorems#thm-uniform-limit-continuous)的定理 1，两个自变量时同理）。
+
+      各项的各阶偏导数都连续，所以固定$t$，可以对$x$用两次定理 3，$u_x$、$u_{xx}$等于逐项求导的级数；固定$x$，在任一有界区间上对$t$用两次，$u_t$、$u_{tt}$也一样，对$u_x$的级数再对$t$用一次得$u_{xt}$，所以$u$的二阶偏导数都连续。每一项都满足方程（$\omega_n^2=c^2k^2$），所以$u_{tt}=c^2u_{xx}$；每一项在$x=0$、$x=L$处为$0$，$u$也是。$u(x,0)=\sum A_n\sin kx$是$\varphi$奇延拓后的傅里叶级数，延拓后的函数连续（$\varphi$在两端为$0$）、分段光滑，由狄利克雷定理（[傅里叶级数的收敛](lesson:math.analysis.fourier-convergence#thm-dirichlet)），它就是$\varphi(x)$；$u_t(x,0)=\sum\omega_nB_n\sin kx=\psi(x)$同理。
+  reference: |
+    （1）$k=\frac{n\pi}L$。两次分部积分：第一次的边界项含$\varphi(0)$、$\varphi(L)$，为$0$；第二次的边界项含$\sin0$、$\sin n\pi$，为$0$。得$A_n=-\frac{\beta_n}{k^2}$。$\psi(0)=\psi(L)=0$，一次分部积分得$\omega_nB_n=\frac{\alpha_n}k$。
+
+    （2）$\varphi''$的奇延拓（周期$2L$）连续（要$\varphi''(0)=\varphi''(L)=0$）、分段光滑，傅里叶系数绝对可和（傅里叶级数的收敛定理 2 的证明，用贝塞尔不等式）；$\psi'$的偶延拓自然连续、分段光滑，$\sum|\alpha_n|<\infty$。$n^2|A_n|=\frac{L^2}{\pi^2}|\beta_n|$，$n^2|B_n|=\frac{L^2}{\pi^2c}|\alpha_n|$。
+
+    （3）各项及其至二阶的偏导数都被$Cn^2(|A_n|+|B_n|)$控制，魏尔斯特拉斯判别法给出在$[0,L]\times\R$上一致收敛，和连续。逐项求导定理（一致收敛与极限交换定理 3）对$x$、$t$分别用，得$u_{xx}$、$u_{tt}$、$u_{xt}$都是逐项求导的级数，连续；每项满足方程和边界条件，和也满足。$t=0$：$\sum A_n\sin kx$是连续分段光滑的奇延拓的傅里叶级数，由狄利克雷定理等于$\varphi$；$\sum\omega_nB_n\sin kx=\psi$同理。
+
+- id: p6
+  tier: hard
+  statement: |
+    弦下面垫着一层弹性基底（elastic foundation，见[场的拉格朗日表述](lesson:physics.analytical-mechanics.field-lagrangian)例 1），方程两边除以线密度（linear density）以后可以写成$u_{tt}=c^2u_{xx}-\kappa u$，$\kappa>0$是常数（是那里的$\kappa$除以线密度），两端固定在$x=0$、$x=L$处。
+
+    （1）分离变量，求出满足两端条件、不恒为零的乘积解和它们的角频率$\nu_n$。
+
+    （2）证明$n\ge2$时$\nu_n<n\nu_1$，所以第$n$个角频率不再是最低那个的$n$倍。
+
+    （3）设$u=\sum_{n=1}^\infty A_n\cos\nu_nt\,\sin\frac{n\pi x}L$，$\sum n^2|A_n|$收敛，并且每个$A_n$都不是$0$。证明没有$P>0$使$u(x,t+P)=u(x,t)$对一切$x$、$t$成立：这根弦的运动没有周期。
+  hints:
+    - |
+      （1）照讲解代入$u=X(x)T(t)$，$X$满足的边值问题和讲解里一样吗？（3）假设有这样的$P$，两边乘$\sin\frac{n\pi x}L$在$[0,L]$上积分，看每个$\cos\nu_nt$会怎样。
+    - |
+      （1）$\frac{T''+\kappa T}{c^2T}=\frac{X''}X=-\lambda$。（3）级数一致收敛，可以逐项积分，由正交性，每个$\nu_nP$都是$2\pi$的整数倍。再看相邻两个角频率之差$\nu_{n+1}-\nu_n$：$n\to\infty$时它趋于什么？它能等于这个极限吗？
+    - |
+      （1）代入得$XT''=c^2X''T-\kappa XT$，两边除以$c^2XT$，$\frac{T''+\kappa T}{c^2T}=\frac{X''}X=-\lambda$。$X''+\lambda X=0$、$X(0)=X(L)=0$和讲解里的边值问题一样，$\lambda=\bigl(\frac{n\pi}L\bigr)^2$，$X=\sin\frac{n\pi x}L$。于是$T''+\nu_n^2T=0$，乘积解是$(A_n\cos\nu_nt+B_n\sin\nu_nt)\sin\frac{n\pi x}L$（$A_n$、$B_n$不全为零），$\nu_n=\sqrt{\bigl(\frac{n\pi c}L\bigr)^2+\kappa}$。
+
+      （2）记$a=\frac{\pi c}L$，则$\nu_n^2=n^2a^2+\kappa$。$n\ge2$时$\nu_n^2<n^2a^2+n^2\kappa=n^2\nu_1^2$，所以$\nu_n<n\nu_1$。这只排除了$n$倍，有的角频率之间仍可能成整数比：$\kappa=\frac53a^2$时$\nu_1^2=\frac83a^2$，$\nu_3^2=\frac{32}3a^2=4\nu_1^2$，所以$\nu_3=2\nu_1$。基底给每一小段弦都加了一份回复力，$\frac{\nu_n}{na}=\sqrt{1+\frac\kappa{n^2a^2}}$，最低的几个角频率抬高得最多，高的几乎不变。
+
+      （3）假设有这样的$P$。$\bigl|A_n\cos\nu_nt\sin\frac{n\pi x}L\bigr|\le|A_n|\le n^2|A_n|$，由:term[魏尔斯特拉斯判别法]{id="math.analysis.weierstrass-m-test"}（Weierstrass M-test），级数在$0\le x\le L$上一致收敛，可以逐项积分（[一致收敛与极限交换](lesson:math.analysis.uniform-limit-theorems#thm-integral-interchange)的定理 2）；由正交性，$\frac2L\int_0^Lu(x,t)\sin\frac{n\pi x}L\dd x=A_n\cos\nu_nt$。左边以$P$为周期，$A_n\ne0$，所以$\cos\nu_n(t+P)=\cos\nu_nt$，取$t=0$得$\cos\nu_nP=1$，$\nu_nP=2\pi k_n$，$k_n$是正整数。于是相邻两项之差$d_n=\nu_{n+1}-\nu_n=(k_{n+1}-k_n)\frac{2\pi}P$都是$\frac{2\pi}P$的整数倍。
+
+      另一方面，$d_n=\frac{\nu_{n+1}^2-\nu_n^2}{\nu_{n+1}+\nu_n}=\frac{(2n+1)a^2}{\nu_{n+1}+\nu_n}$，而$\frac{\nu_n}n\to a$，所以$n\to\infty$时$d_n\to a$。从某一项起$|d_n-a|<\frac\pi P$，相邻两项相差不到$\frac{2\pi}P$，又都是$\frac{2\pi}P$的整数倍，只能相等，所以$d_n$从某一项起恒等于极限$a$。可是$\nu_{n+1}=\nu_n+a$两边平方，化简得$\nu_n=na$，即$\kappa=0$，矛盾；所以这根弦的运动没有周期：所有乘积解的角频率不能全都「对齐」。
+  reference: |
+    （1）$\frac{T''+\kappa T}{c^2T}=\frac{X''}X=-\lambda$，$X$的边值问题同讲解，$X=\sin\frac{n\pi x}L$，$T=A_n\cos\nu_nt+B_n\sin\nu_nt$，$\nu_n=\sqrt{(n\pi c/L)^2+\kappa}$。
+
+    （2）$a=\frac{\pi c}L$，$\nu_n^2=n^2a^2+\kappa<n^2(a^2+\kappa)=n^2\nu_1^2$（$n\ge2$）。只排除$n$倍：$\kappa=\frac53a^2$时$\nu_3=2\nu_1$。
+
+    （3）$\sum|A_n|<\infty$，级数一致收敛，逐项积分，由正交性$\frac2L\int_0^Lu\sin\frac{n\pi x}L\dd x=A_n\cos\nu_nt$；周期$P$使每个$\nu_nP\in2\pi\mathbb Z^+$。$d_n=\nu_{n+1}-\nu_n\in\frac{2\pi}P\mathbb Z$，又$d_n=\frac{(2n+1)a^2}{\nu_{n+1}+\nu_n}\to a$，离散集合里收敛的数列最终恒等于极限：$d_n=a$对充分大的$n$成立。$\nu_{n+1}=\nu_n+a$平方得$\nu_n=na$，与$\kappa>0$矛盾。注意只假设无穷多个$A_n\ne0$不够：例如$a^2=2\kappa$时，满足$2n^2+1$是完全平方数的那些$n$（$2,12,70,\dots$），$\nu_n$都是$\sqrt\kappa$的整数倍，只含这些简正模的运动有周期。
+
+- id: p7
+  tier: thinking
+  statement: |
+    :term[初值问题]{id="math.pde.initial-value-problem"}（initial value problem）给出开始时弦的形状和各点的速度。换一种给法：长为$L$、两端固定的弦，只给出两个时刻的形状，$u(x,0)=\varphi(x)$、$u(x,\tau)=\chi(x)$（$\tau>0$），想由此定出弦的运动。
+
+    （1）把运动写成简正模的叠加，$A_n$、$B_n$要满足什么？$\tau=\frac{2L}c$时会怎样？
+
+    （2）$\frac{c\tau}L$是什么样的数时，每个$A_n$、$B_n$都能唯一地定出来？
+
+    （3）设$\tau$比$\frac{2L}c$稍大一点。量$\chi$时有一点误差，算出的初速度会差多少？由此说一说，初值问题为什么给初速度，而不给第二个时刻的形状。
+  hints:
+    - |
+      记$\varphi$、$\chi$的正弦级数的系数为$\varphi_n$、$\chi_n$。第$n$个简正模在$t=0$和$t=\tau$时的系数各是多少？
+    - |
+      $A_n=\varphi_n$，$A_n\cos\omega_n\tau+B_n\sin\omega_n\tau=\chi_n$。要解出$B_n$，得$\sin\omega_n\tau\ne0$，而$\omega_n\tau=n\pi\frac{c\tau}L$。（3）$\tau=\frac{2L}c+\varepsilon$时，$\sin\omega_n\tau$约是多少？
+    - |
+      （1）由正交性，$t=0$和$t=\tau$时第$n$个简正模的系数分别是$\varphi_n$和$\chi_n$，所以$A_n=\varphi_n$，$A_n\cos\omega_n\tau+B_n\sin\omega_n\tau=\chi_n$。$\tau=\frac{2L}c$时$\omega_n\tau=2n\pi$，第二式变成$\varphi_n=\chi_n$，$B_n$根本不出现：$\chi\ne\varphi$时无解，$\chi=\varphi$时初速度取哪个满足定理条件的$\psi$都行，有无穷多个解。道理很简单：弦的运动以$\frac{2L}c$为周期，不论初速度是什么，过一个周期形状都回到原样，第二个时刻的形状里没有初速度的信息。
+
+      （2）要每个$\sin\frac{n\pi c\tau}L\ne0$，即每个$\frac{nc\tau}L$都不是整数。$\frac{c\tau}L=\frac pq$（$p$、$q$是正整数）时取$n=q$就不行，所以$\frac{c\tau}L$得是无理数；这时$B_n=\frac{\chi_n-\varphi_n\cos\omega_n\tau}{\sin\omega_n\tau}$都定得出来。
+
+      （3）$\tau=\frac{2L}c+\varepsilon$，$\varepsilon$很小、$n$不太大时，$\sin\omega_n\tau=\sin\frac{n\pi c\varepsilon}L\approx\frac{n\pi c\varepsilon}L$。$\chi_n$差$\delta$，$B_n$就差$\frac\delta{\sin\omega_n\tau}$，初速度的系数$\omega_nB_n$差约$\frac{n\pi c}L\cdot\frac{L\delta}{n\pi c\varepsilon}=\frac\delta\varepsilon$：$\varepsilon$越小，误差放大得越厉害。$\frac{c\tau}L$是无理数时也躲不开：把$\frac{c\tau}L$、$\frac{2c\tau}L$、……、$\frac{(N+1)c\tau}L$的小数部分放进$N$个等长的小区间，必有两个落在同一个里，它们的序号之差$n\le N$使$\frac{nc\tau}L$离整数不到$\frac1N$，这样的$B_n$对误差极其敏感。
+
+      给初速度就没有这个问题：照讲解延拓以后用达朗贝尔公式，$\varphi$、$\psi$各差不超过$\delta$时，$t$时刻的$u$差不超过$\delta+t\delta$。给两个时刻的形状，$\frac{c\tau}L$是有理数时解可能不存在、可能不唯一，是无理数时解也不随数据连续地变；要有解、解唯一、解随数据连续地变，这三条合起来就是[适定性](lesson:math.pde.well-posedness)一节要讲的适定（well-posed）。
+  reference: |
+    （1）$A_n=\varphi_n$，$A_n\cos\omega_n\tau+B_n\sin\omega_n\tau=\chi_n$。$\tau=\frac{2L}c$：$\sin\omega_n\tau=0$，要$\chi=\varphi$，此时满足定理条件的初速度都行（无穷多解），否则无解；一个周期后形状复原，与初速度无关。
+
+    （2）需要$\frac{nc\tau}L\notin\mathbb Z$对一切$n$，即$\frac{c\tau}L$是无理数。
+
+    （3）$\tau=\frac{2L}c+\varepsilon$：$\sin\omega_n\tau\approx\frac{n\pi c\varepsilon}L$，$\chi_n$的误差$\delta$使$\omega_nB_n$差约$\frac\delta\varepsilon$。无理数时由抽屉原理，对任意$N$有$n\le N$使$\frac{nc\tau}L$离整数小于$\frac1N$，$|\sin\omega_n\tau|<\frac\pi N$，误差放大任意大，解不连续依赖数据。初值问题由达朗贝尔公式$|\Delta u|\le\max|\Delta\varphi|+t\max|\Delta\psi|$，连续依赖。适定性三条：存在、唯一、连续依赖。
+
+- id: p8
+  tier: thinking
+  statement: |
+    弦在空气里振动，会慢慢停下来。设方程是$u_{tt}+2\gamma u_t=c^2u_{xx}$（$\gamma>0$是常数），两端固定。
+
+    （1）分离变量，第$n$个乘积解的时间因子满足什么方程？$\omega_n=\frac{n\pi c}L$比$\gamma$大时，它怎样随时间变？比$\gamma$小呢？
+
+    （2）设$\omega_1>\gamma$。振动的角频率还是$\omega_n$吗？还是最低那个的整数倍吗？哪几个偏离得最多？
+
+    （3）实际的琴弦，角频率越高的简正模衰减得越快。这个方程说明得了吗？把方程改成$u_{tt}+2\gamma u_t-\beta u_{xxt}=c^2u_{xx}$（$\beta>0$是常数）呢？
+  hints:
+    - |
+      （1）设$u=X(x)T(t)$，$X$满足的边值问题和讲解里一样吗？$T$满足的是哪一类常微分方程（ordinary differential equation）？
+    - |
+      （1）$T''+2\gamma T'+\omega_n^2T=0$，特征方程（characteristic equation）的根是$-\gamma\pm\sqrt{\gamma^2-\omega_n^2}$，照[常系数齐次方程的解法](lesson:math.ode.constant-coefficients#thm-constant-coefficients)分情形。（3）把$u=T(t)\sin\frac{n\pi x}L$代进改过的方程，$T'$的系数变成什么？
+    - |
+      （1）$X$满足的边值问题和讲解里一样，$X=\sin\frac{n\pi x}L$，于是$T''+2\gamma T'+\omega_n^2T=0$。$\omega_n>\gamma$时特征方程的根是$-\gamma\pm i\nu_n$，$\nu_n=\sqrt{\omega_n^2-\gamma^2}$，$T=e^{-\gamma t}(A_n\cos\nu_nt+B_n\sin\nu_nt)$：一边振动，一边按$e^{-\gamma t}$衰减。$\omega_n<\gamma$时（只可能是最低的几个）两个根都是负实数，$T$不振动，至多改变一次符号就趋于$0$，是[过阻尼](lesson:math.ode.constant-coefficients#def-damping-cases)（overdamped）；$\omega_n=\gamma$是临界阻尼（critically damped）。
+
+      （2）$\nu_n<\omega_n$，角频率变低了。$n\ge2$时$\nu_n^2=n^2\omega_1^2-\gamma^2>n^2(\omega_1^2-\gamma^2)=n^2\nu_1^2$，所以$\nu_n>n\nu_1$：第$n$个不再是最低那个的$n$倍，各个角频率一般也不再成整数比（$\gamma^2=\frac58\omega_1^2$时碰巧有$\nu_2=3\nu_1$）。$\omega_n-\nu_n=\frac{\gamma^2}{\omega_n+\nu_n}$，$n$越大越小：最低的几个偏离得最多，高的几乎不变。
+
+      （3）说明不了：这个方程里，振动的各个乘积解都按同一个$e^{-\gamma t}$衰减。改过的方程里，代入$u=T(t)\sin\frac{n\pi x}L$得$T''+\bigl(2\gamma+\frac{\beta n^2\pi^2}{L^2}\bigr)T'+\omega_n^2T=0$，振动的那些按$e^{-(\gamma+\beta n^2\pi^2/(2L^2))t}$衰减，$n$越大衰减越快，和实际一致。$n$大到$\gamma+\frac{\beta n^2\pi^2}{2L^2}>\omega_n$时（左边随$n^2$增长，右边只随$n$增长，总会到这一步），这些乘积解干脆不振动了；方程里该加什么项，要看弦的能量怎样损耗，这已经超出了只有张力的理想弦。
+  reference: |
+    （1）$T''+2\gamma T'+\omega_n^2T=0$；$\omega_n>\gamma$：$T=e^{-\gamma t}(A\cos\nu_nt+B\sin\nu_nt)$，$\nu_n=\sqrt{\omega_n^2-\gamma^2}$；$\omega_n<\gamma$：过阻尼，不振动；$\omega_n=\gamma$：临界阻尼。
+
+    （2）$\nu_n<\omega_n$；$\nu_n^2=n^2\omega_1^2-\gamma^2>n^2\nu_1^2$，$\nu_n>n\nu_1$，不再是$n$倍，一般也不成整数比（$\gamma^2=\frac58\omega_1^2$时$\nu_2=3\nu_1$）；$\omega_n-\nu_n=\frac{\gamma^2}{\omega_n+\nu_n}$随$n$减小，低阶偏离最大。
+
+    （3）原方程各振动模衰减率都是$\gamma$，解释不了高阶衰减快。加$-\beta u_{xxt}$后衰减率$\gamma+\frac{\beta n^2\pi^2}{2L^2}$随$n^2$增大；足够高的$n$过阻尼。损耗机制决定方程的形式。
