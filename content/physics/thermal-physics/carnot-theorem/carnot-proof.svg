@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 390" width="680" height="390" font-size="14">
+  <!-- 左：卡诺定理的证明。任意一台热机甲从高温热库吸热 W/η甲，对外做功 W，向低温热库放热 W/η甲 − W；W 全部用来带动倒过来运行的可逆热机乙，乙从低温热库吸热 W/η乙 − W，向高温热库放热 W/η乙。虚线框里两者合起来外界不做功；η甲 > η乙 时高温热库净得到热量，低温热库失去同样多。右：热力学温标的复合律。两台可逆热机经参考热库 θ0 接成一台：上面一台从 θH 吸热 QH、向参考热库放热 Q0、对外做功；下面一台从参考热库吸热 Q0、向 θL 放热 QL、对外做功；参考热库没有净变化。蓝色箭头是热量，绿色箭头是功，长短不按比例。 -->
+  <line x1="340" y1="8" x2="340" y2="382" style="stroke: currentColor" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4 3" />
+
+  <!-- 左：甲带动倒过来的乙 -->
+  <text x="170" y="20" fill="currentColor" text-anchor="middle">甲带动倒过来的乙</text>
+  <rect x="30" y="34" width="280" height="38" style="fill: currentColor; stroke: currentColor" fill-opacity="0.08" stroke-width="1.2" />
+  <text x="170" y="58" fill="currentColor" text-anchor="middle">高温热库</text>
+  <rect x="30" y="338" width="280" height="38" style="fill: currentColor; stroke: currentColor" fill-opacity="0.08" stroke-width="1.2" />
+  <text x="170" y="362" fill="currentColor" text-anchor="middle">低温热库</text>
+  <rect x="58" y="155" width="224" height="100" fill="none" style="stroke: currentColor" stroke-opacity="0.45" stroke-width="1.2" stroke-dasharray="6 4" />
+
+  <circle cx="110" cy="205" r="30" fill="none" style="stroke: currentColor" stroke-width="1.6" />
+  <text x="110" y="210" fill="currentColor" text-anchor="middle">甲</text>
+  <line x1="110" y1="73" x2="110" y2="164" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 110 175 L 104.5 163 L 115.5 163 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="110" y1="236" x2="110" y2="326" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 110 337 L 104.5 325 L 115.5 325 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="100" y="124" fill="currentColor" text-anchor="end"><tspan font-style="italic">W</tspan>/<tspan font-style="italic">η</tspan><tspan baseline-shift="sub" font-size="10">甲</tspan></text>
+  <text x="100" y="300" fill="currentColor" text-anchor="end"><tspan font-style="italic">W</tspan>/<tspan font-style="italic">η</tspan><tspan baseline-shift="sub" font-size="10">甲</tspan> − <tspan font-style="italic">W</tspan></text>
+
+  <line x1="141" y1="205" x2="188" y2="205" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 199 205 L 187 199.5 L 187 210.5 Z" style="fill: var(--good, #059669)" />
+  <text x="170" y="194" fill="currentColor" text-anchor="middle" font-style="italic">W</text>
+
+  <circle cx="230" cy="205" r="30" fill="none" style="stroke: currentColor" stroke-width="1.6" />
+  <text x="230" y="210" fill="currentColor" text-anchor="middle">乙</text>
+  <line x1="230" y1="337" x2="230" y2="247" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 230 236 L 224.5 248 L 235.5 248 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="230" y1="174" x2="230" y2="84" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 230 73 L 224.5 85 L 235.5 85 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="240" y="124" fill="currentColor"><tspan font-style="italic">W</tspan>/<tspan font-style="italic">η</tspan><tspan baseline-shift="sub" font-size="10">乙</tspan></text>
+  <text x="240" y="300" fill="currentColor"><tspan font-style="italic">W</tspan>/<tspan font-style="italic">η</tspan><tspan baseline-shift="sub" font-size="10">乙</tspan> − <tspan font-style="italic">W</tspan></text>
+
+  <!-- 右：两台可逆热机经参考热库接成一台 -->
+  <text x="510" y="20" fill="currentColor" text-anchor="middle">两台可逆热机接成一台</text>
+  <rect x="370" y="34" width="280" height="38" style="fill: currentColor; stroke: currentColor" fill-opacity="0.08" stroke-width="1.2" />
+  <text x="510" y="58" fill="currentColor" text-anchor="middle">高温热库 <tspan font-style="italic">θ</tspan><tspan baseline-shift="sub" font-size="10">H</tspan></text>
+  <rect x="370" y="186" width="280" height="38" style="fill: currentColor; stroke: currentColor" fill-opacity="0.08" stroke-width="1.2" />
+  <text x="510" y="210" fill="currentColor" text-anchor="middle">参考热库 <tspan font-style="italic">θ</tspan><tspan baseline-shift="sub" font-size="10">0</tspan>（没有净变化）</text>
+  <rect x="370" y="338" width="280" height="38" style="fill: currentColor; stroke: currentColor" fill-opacity="0.08" stroke-width="1.2" />
+  <text x="510" y="362" fill="currentColor" text-anchor="middle">低温热库 <tspan font-style="italic">θ</tspan><tspan baseline-shift="sub" font-size="10">L</tspan></text>
+
+  <circle cx="470" cy="129" r="26" fill="none" style="stroke: currentColor" stroke-width="1.6" />
+  <text x="470" y="134" fill="currentColor" text-anchor="middle">热机</text>
+  <line x1="470" y1="73" x2="470" y2="91" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 470 102 L 464.5 90 L 475.5 90 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="482" y="93" fill="currentColor"><tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10">H</tspan></text>
+  <line x1="470" y1="156" x2="470" y2="174" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 470 185 L 464.5 173 L 475.5 173 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="482" y="176" fill="currentColor"><tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10">0</tspan></text>
+  <line x1="497" y1="129" x2="549" y2="129" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 560 129 L 548 123.5 L 548 134.5 Z" style="fill: var(--good, #059669)" />
+
+  <circle cx="470" cy="281" r="26" fill="none" style="stroke: currentColor" stroke-width="1.6" />
+  <text x="470" y="286" fill="currentColor" text-anchor="middle">热机</text>
+  <line x1="470" y1="225" x2="470" y2="243" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 470 254 L 464.5 242 L 475.5 242 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="482" y="245" fill="currentColor"><tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10">0</tspan></text>
+  <line x1="470" y1="308" x2="470" y2="326" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 470 337 L 464.5 325 L 475.5 325 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="482" y="328" fill="currentColor"><tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10">L</tspan></text>
+  <line x1="497" y1="281" x2="549" y2="281" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 560 281 L 548 275.5 L 548 286.5 Z" style="fill: var(--good, #059669)" />
+</svg>

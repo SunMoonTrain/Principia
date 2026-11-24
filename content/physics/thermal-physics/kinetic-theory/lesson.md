@@ -44,7 +44,7 @@ $$
 
 ### 压强从哪里来
 
-本领域的$p$只表示压强，分子的动量（momentum）写成$mv_x$；面积写$A$，$S$留给熵（entropy）；时间间隔写$\Delta t$，$T$是:term[温度]{id="physics.thermal-physics.temperature"}。
+本领域的$p$只表示压强，分子的动量（momentum）写成$mv_x$；面积写$A$，$S$留给:term[熵]{id="physics.thermal-physics.entropy"}（entropy）；时间间隔写$\Delta t$，$T$是:term[温度]{id="physics.thermal-physics.temperature"}。
 
 长方体盒子沿$x$方向长$L$，右壁的面积是$A$（下图）。第$i$个分子以$v_{ix}>0$撞上右壁，弹回后是$-v_{ix}$；由动量定理（impulse–momentum theorem）和牛顿第三定律（Newton's third law），右壁受到沿$x$方向、大小为$2mv_{ix}$的冲量（impulse）。
 

@@ -1,0 +1,211 @@
+- id: p1
+  tier: easy
+  statement: |
+    许多金属在几开尔文以下时，摩尔热容里由电子贡献的那一部分和温度成正比，可以写成$bT$。某种金属的$b=6.9\times10^{-4}\,\mathrm{J/(mol\cdot K^2)}$，压强保持不变。取$T\to0$时的熵为零，只算电子这一部分，求它在$4.0\,\mathrm K$时每摩尔的熵。
+  answer:
+    type: number
+    value: 6.9e-4*4.0
+    unit: |
+      $\mathrm{J/(mol\cdot K)}$
+  hints:
+    - |
+      熵只由状态决定，沿压强不变的可逆过程从接近$0$升温到$4.0\,\mathrm K$来算。这时$\dd S$等于什么？
+    - |
+      $\dd S=\frac{bT\,\dd T}T=b\,\dd T$；从$\varepsilon$积到$4.0\,\mathrm K$，再令$\varepsilon\to0$。
+    - |
+      $S=\lim_{\varepsilon\to0}b\,(4.0\,\mathrm K-\varepsilon)=b\times4.0\,\mathrm K$，即$2.76\times10^{-3}\,\mathrm{J/(mol\cdot K)}$。
+  solution: |
+    沿压强不变的可逆过程升温，$\dd S=\frac{C_{\mathrm m}\dd T}T=b\,\dd T$。从$\varepsilon$积到$4.0\,\mathrm K$，再令$\varepsilon\to0$，得$S=b\times4.0\,\mathrm K=2.76\times10^{-3}\,\mathrm{J/(mol\cdot K)}$。热容和$T$成正比时，熵在数值上正好等于这时的摩尔热容。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法，哪些正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        用等温、绝热交替的办法降温，只要交替的次数足够多，就能在有限步内降到绝对零度
+      - |
+        温度趋于绝对零度时，一块金属在压强不变时的热容趋于零
+      - |
+        等温、绝热交替降温时，把$X$绝热地改回$X_{\mathrm A}$的那一步要是不可逆，末温会比这一步可逆时更低
+      - |
+        温度趋于绝对零度时，同一块固体在两种不同压强下的平衡态，熵之差趋于零
+      - |
+        等温地增强磁场时，顺磁性的盐从热库吸热
+    value: [2, 4]
+  hints:
+    - |
+      对照能斯特表述、热容的推论和讲解里降温的办法。不可逆的绝热过程，熵怎样变？等温过程中，从热库吸的热和熵变有什么关系？
+    - |
+      A 看每一步之后的温度能不能是零；B 对照热容的推论；C 由熵增原理（principle of entropy increase），不可逆的绝热过程熵增加，看末态落在$X_{\mathrm A}$那条曲线的哪里；D 两种压强就是$X$的两个取值；E 同一温度下磁场越强熵越小，盐和热库的总熵又不减少，即$\Delta S-\frac QT\ge0$，可逆时取等号。
+    - |
+      选 B、D。A 错：由能斯特表述，每一步之后的温度都大于零，交替的次数再多，有限步也到不了绝对零度，只能越来越接近。B 对：由本节的推论，保持压强不变的热容在$T\to0$时有极限的话只能是零；实测金属的热容也趋于零，如第 3 题的$aT^3+bT$。C 错：设这一步从$T_1$开始，等温以后熵是$S(T_1,X_{\mathrm B})$；不可逆的绝热过程熵增加，末态的熵比它大，在$X_{\mathrm A}$那条曲线上熵越大温度越高，所以末温比可逆时高。
+
+      D 对：压强就是这里的$X$，同一温度下两种压强对应两个平衡态，由能斯特表述，它们的熵之差趋于零。E 错：同一温度下磁场越强，盐的熵越小，等温地增强磁场时$\Delta S<0$；盐和热库的总熵不减少，$\Delta S-\frac QT\ge0$，所以$Q\le T\Delta S<0$，是盐向热库放热。
+  solution: |
+    选 B、D。A 错：由能斯特表述，每一步之后的温度都大于零，交替多少次都到不了绝对零度。B 对：由本节的推论，保持压强不变的热容在$T\to0$时有极限的话只能是零；实测金属的热容也趋于零，如第 3 题的$aT^3+bT$。C 错：不可逆的绝热过程熵增加，末态的熵大于可逆时的，在$X_{\mathrm A}$那条曲线上温度也就更高。
+
+    D 对：同一温度下两种压强对应两个平衡态，由能斯特表述，熵之差趋于零。E 错：磁场越强熵越小，等温地增强磁场时$\Delta S<0$；盐和热库的总熵不减少，$Q\le T\Delta S<0$，盐向热库放热。
+
+- id: p3
+  tier: medium
+  statement: |
+    某种金属在几开尔文以下、压强不变时的摩尔热容可以写成$C_{\mathrm m}=aT^3+bT$，其中$a=2.0\times10^{-4}\,\mathrm{J/(mol\cdot K^4)}$，$b=1.0\times10^{-3}\,\mathrm{J/(mol\cdot K^2)}$。在压强不变时把$1.0\,\mathrm{mol}$这种金属从$2.0\,\mathrm K$加热到$5.0\,\mathrm K$。
+
+    依次求它吸收的热量（单位$\mathrm J$）和熵变（单位$\mathrm{J/K}$），结果都保留三位有效数字。
+  answer:
+    type: tuple
+    value: [2.0e-4*(5^4-2^4)/4 + 1.0e-3*(5^2-2^2)/2, 2.0e-4*(5^3-2^3)/3 + 1.0e-3*(5-2)]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      压强不变时吸的热是$\int C\,\dd T$。熵变沿压强不变的可逆过程算，是$\int\frac{C\,\dd T}T$。
+    - |
+      温度以$\mathrm K$为单位，
+
+      $$
+      Q=\int_{2.0}^{5.0}(aT^3+bT)\,\dd T ,\qquad \Delta S=\int_{2.0}^{5.0}(aT^2+b)\,\dd T .
+      $$
+    - |
+      $Q=\frac a4\,(5.0^4-2.0^4)+\frac b2\,(5.0^2-2.0^2)=(0.03045+0.0105)\,\mathrm J=0.04095\,\mathrm J$，约$0.0410\,\mathrm J$。
+
+      $\Delta S=\frac a3\,(5.0^3-2.0^3)+b\,(5.0-2.0)=(0.0078+0.0030)\,\mathrm{J/K}=0.0108\,\mathrm{J/K}$。
+  solution: |
+    压强不变时吸的热是$\int C\,\dd T$；熵变沿压强不变的可逆过程算，是$\int\frac{C\,\dd T}T$。温度以$\mathrm K$为单位，
+
+    $$
+    Q=\frac a4\,(5.0^4-2.0^4)+\frac b2\,(5.0^2-2.0^2)=0.04095\,\mathrm J\approx0.0410\,\mathrm J ,
+    $$
+
+    $$
+    \Delta S=\frac a3\,(5.0^3-2.0^3)+b\,(5.0-2.0)=0.0108\,\mathrm{J/K} .
+    $$
+
+    电子那一项$bT$占吸热的约$26\%$、熵变的约$28\%$，这么低的温度下不能忽略。
+
+- id: p4
+  tier: medium
+  statement: |
+    某系统在低温下的熵是$S(T,X_{\mathrm A})=2aT^3$、$S(T,X_{\mathrm B})=aT^3$，$a$是正的常量。照讲解的办法降温：每一步先在当时的温度下等温地把$X$从$X_{\mathrm A}$改成$X_{\mathrm B}$，再可逆、绝热地改回$X_{\mathrm A}$。从$1.0\,\mathrm K$开始，至少要几步，温度才降到$1.0\,\mathrm{mK}$以下？
+  answer:
+    type: number
+    value: 30
+    exact: true
+  hints:
+    - |
+      可逆的绝热过程熵不变。一步之后的温度$T'$和这一步开始时的温度$T$满足什么关系？
+    - |
+      $2aT'^3=aT^3$，所以$T'=2^{-1/3}T$；$k$步之后温度是$2^{-k/3}\times1.0\,\mathrm K$，要它小于$1.0\times10^{-3}\,\mathrm K$。
+    - |
+      $2^{-k/3}<10^{-3}$，即$k>3\log_2 1000\approx29.9$，至少要 30 步：29 步后约$1.23\,\mathrm{mK}$，30 步后约$0.98\,\mathrm{mK}$。
+  solution: |
+    绝热的那一步可逆，熵不变：$2aT'^3=aT^3$，$T'=2^{-1/3}T\approx0.794\,T$。$k$步之后温度是$2^{-k/3}\times1.0\,\mathrm K$，要小于$1.0\times10^{-3}\,\mathrm K$，就要$k>3\log_2 1000\approx29.9$，至少 30 步。每一步温度都乘$0.794$，永远大于零，这是两条曲线在$T=0$汇合的结果。
+
+- id: p5
+  tier: hard
+  statement: |
+    一个系统的熵$S(T,X)$在$X$不变时随$T$连续增大，对任意$T>0$有$S(T,X_{\mathrm A})>S(T,X_{\mathrm B})$，$T\to0$时的极限记作$S(0,X_{\mathrm A})$、$S(0,X_{\mathrm B})$。照讲解的办法降温：在当时的温度下等温地把$X$从$X_{\mathrm A}$改成$X_{\mathrm B}$，再可逆、绝热地改回$X_{\mathrm A}$，这算一步；第$k$步开始时的温度记作$T_k$。
+
+    （1）设$S(0,X_{\mathrm A})=S(0,X_{\mathrm B})$。证明$T_k$一步比一步低，而且$k\to\infty$时$T_k\to0$。
+
+    （2）设$S(0,X_{\mathrm A})>S(0,X_{\mathrm B})$，两条曲线在$T=0$不汇合；又设温度足够高时$S(T,X_{\mathrm B})>S(0,X_{\mathrm A})$。证明可以找到温度$T_1>0$，从它出发一步就降到$T=0$。
+  hints:
+    - |
+      可逆的绝热过程熵不变，所以$S(T_{k+1},X_{\mathrm A})=S(T_k,X_{\mathrm B})$。（1）任取$0<\delta<T_1$，假如每个$T_k$都不小于$\delta$，$S(T,X_{\mathrm A})-S(T,X_{\mathrm B})$在$[\delta,T_1]$上有正的最小值，每一步$S(T_k,X_{\mathrm A})$至少减少多少？（2）找一个温度，使等温以后的熵正好是$S(0,X_{\mathrm A})$。
+    - |
+      （1）$S(T_{k+1},X_{\mathrm A})=S(T_k,X_{\mathrm B})<S(T_k,X_{\mathrm A})$，熵随温度增大，所以$T_{k+1}<T_k$；$T_{k+1}>0$讲解里已经证过。由最值定理（extreme value theorem），那个最小值$m>0$，于是$S(T_{k+1},X_{\mathrm A})\le S(T_1,X_{\mathrm A})-km$。（2）$S(T,X_{\mathrm B})-S(0,X_{\mathrm A})$在很低的温度下是负的、在足够高的温度下是正的，用零点定理（Bolzano's theorem）。
+    - |
+      （1）绝热的那一步可逆，熵不变，所以$S(T_{k+1},X_{\mathrm A})=S(T_k,X_{\mathrm B})$。由题设它小于$S(T_k,X_{\mathrm A})$，而$S(T,X_{\mathrm A})$随$T$增大，所以$T_{k+1}<T_k$。又$S(T_k,X_{\mathrm B})>S(0,X_{\mathrm B})=S(0,X_{\mathrm A})$，所以$S(T_{k+1},X_{\mathrm A})>S(0,X_{\mathrm A})$，$T_{k+1}>0$：温度一步比一步低，却总大于零。
+
+      任取$0<\delta<T_1$。假如每个$T_k$都不小于$\delta$，函数$f(T)=S(T,X_{\mathrm A})-S(T,X_{\mathrm B})$在$[\delta,T_1]$上连续、处处为正，由最值定理有正的最小值$m$。于是每一步$S(T_{k+1},X_{\mathrm A})=S(T_k,X_{\mathrm A})-f(T_k)\le S(T_k,X_{\mathrm A})-m$，$k$步后$S(T_{k+1},X_{\mathrm A})\le S(T_1,X_{\mathrm A})-km$，$k$足够大时比$S(\delta,X_{\mathrm A})$还小，和$T_{k+1}\ge\delta$矛盾。所以总有某个$T_k<\delta$，以后的更小；$\delta$可以任意小，$k\to\infty$时$T_k\to0$。
+
+      （2）记$g(T)=S(T,X_{\mathrm B})-S(0,X_{\mathrm A})$。$T\to0$时$g(T)$趋于$S(0,X_{\mathrm B})-S(0,X_{\mathrm A})<0$，所以有很低的温度$T_a>0$使$g(T_a)<0$；由题设，又有足够高的温度$T_b$使$g(T_b)>0$。$g$在$[T_a,T_b]$上连续，由零点定理有$T_1$使$g(T_1)=0$，即$S(T_1,X_{\mathrm B})=S(0,X_{\mathrm A})$。
+
+      从$T_1$出发，等温以后熵是$S(0,X_{\mathrm A})$；可逆、绝热地改回$X_{\mathrm A}$以后熵不变，而$T>0$时$S(T,X_{\mathrm A})>S(0,X_{\mathrm A})$，所以末温只能是$0$，一步就到了绝对零度。合起来看，两条曲线汇合时温度能无限接近零、有限步却到不了，不汇合时就能到：在这种降温办法里，能斯特表述和绝对零度不能达到原理互相推得出。
+  reference: |
+    （1）$S(T_{k+1},X_{\mathrm A})=S(T_k,X_{\mathrm B})<S(T_k,X_{\mathrm A})$，$S(\cdot,X_{\mathrm A})$严格增，故$T_{k+1}<T_k$；$S(T_k,X_{\mathrm B})>S(0,X_{\mathrm B})=S(0,X_{\mathrm A})$，故$T_{k+1}>0$。设$\delta\in(0,T_1)$且所有$T_k\ge\delta$：$f=S(\cdot,X_{\mathrm A})-S(\cdot,X_{\mathrm B})$在$[\delta,T_1]$上连续且为正，最小值$m>0$（最值定理），$S(T_{k+1},X_{\mathrm A})\le S(T_1,X_{\mathrm A})-km\to-\infty$，与$S(T_{k+1},X_{\mathrm A})\ge S(\delta,X_{\mathrm A})$矛盾。故$T_k$终将小于任意$\delta$，单调减，$T_k\to0$。
+
+    （2）$g(T)=S(T,X_{\mathrm B})-S(0,X_{\mathrm A})$连续，$T\to0^+$时$g\to S(0,X_{\mathrm B})-S(0,X_{\mathrm A})<0$，高温时$g>0$，零点定理给出$T_1>0$，$g(T_1)=0$。从$T_1$等温到$X_{\mathrm B}$后熵为$S(0,X_{\mathrm A})$，可逆绝热回到$X_{\mathrm A}$熵不变，$T>0$时$S(T,X_{\mathrm A})>S(0,X_{\mathrm A})$，故末温为$0$。所以在此降温法中：汇合 ⇒ 不能有限步达到（但可无限接近）；不汇合 ⇒ 一步可达。两种表述等价。
+
+- id: p6
+  tier: hard
+  statement: |
+    用制冷机（refrigerator）把一块晶体从温度$T_1$冷却到$T_2$（$0<T_2<T_1$）。制冷机工作在晶体和温度为$T_{\mathrm H}$的热库之间（$T_{\mathrm H}>T_1$），把从晶体取走的热量连同外界（surroundings）做的功一起放进热库。晶体的热容$C=aT^3$，$a$是正的常量，体积变化不计。
+
+    （1）证明外界至少要做功$|W|=a\Bigl[\frac{T_{\mathrm H}(T_1^3-T_2^3)}3-\frac{T_1^4-T_2^4}4\Bigr]$。什么时候取到？
+
+    （2）$T_2\to0$时这个$|W|$有限吗？要是晶体的热容是不随温度变的$C_0$，结果又怎样？
+
+    （3）[热机与卡诺循环](lesson:physics.thermal-physics.heat-engines)一节说，$T_{\mathrm H}$不变时，$T_{\mathrm L}$越接近绝对零度，制冷越费功。结合（2）说说这句话该怎样理解。外界做的功有限，是不是就能把晶体冷到绝对零度？
+  hints:
+    - |
+      （1）把晶体、制冷机和热库合起来看：它们和别的物体只交换功，制冷机最后复原，可以用熵增原理。（2）分别看$T_2\to0$时式子里各项的极限。（3）在越低的温度下取走一份热量要做的功越多，可要取走的热量本身随温度怎样变？
+    - |
+      （1）晶体放出热量$Q=\int_{T_2}^{T_1}C\,\dd T$，熵减少$\Delta S=\int_{T_2}^{T_1}\frac{C\,\dd T}T$；热库吸热$Q+|W|$，熵增加$\frac{Q+|W|}{T_{\mathrm H}}$。总熵不减少，所以$|W|\ge T_{\mathrm H}\Delta S-Q$。（2）热容为$C_0$时，$\Delta S=C_0\ln\frac{T_1}{T_2}$。（3）由本节的推论，热容在$T\to0$时有极限的话只能趋于零，要取走的热量也随之变少。
+    - |
+      （1）晶体的体积变化不计，从$T_1$降到$T_2$放出热量$Q=\int_{T_2}^{T_1}aT^3\,\dd T=\frac a4(T_1^4-T_2^4)$；熵沿可逆的路径算，减少$\Delta S=\int_{T_2}^{T_1}aT^2\,\dd T=\frac a3(T_1^3-T_2^3)$。制冷机最后复原，熵不变；热库吸收$Q+|W|$，熵增加$\frac{Q+|W|}{T_{\mathrm H}}$。三者合起来和别的物体只交换功，是绝热过程，由熵增原理$-\Delta S+\frac{Q+|W|}{T_{\mathrm H}}\ge0$，即$|W|\ge T_{\mathrm H}\Delta S-Q$，代入就是题中的式子。制冷机可逆、每一刻都在晶体当时的温度下吸热时，总熵不变，取等号。
+
+      （2）$T_2\to0$时$|W|\to a\bigl(\frac{T_{\mathrm H}T_1^3}3-\frac{T_1^4}4\bigr)$，是有限的。热容是不变的$C_0$时，$Q=C_0(T_1-T_2)$，$\Delta S=C_0\ln\frac{T_1}{T_2}$，$|W|=C_0\bigl[T_{\mathrm H}\ln\frac{T_1}{T_2}-(T_1-T_2)\bigr]$，$T_2\to0$时趋于无穷。
+
+      （3）同样的道理，在温度$T$处取走热量$\delta Q$，至少要做功$\frac{T_{\mathrm H}-T}T\,\delta Q$；$T\to0$时这个倍数趋于无穷，这就是「越费功」。可总功还要看低温处要取走多少热量：热容不变时，取走的热量不随温度变少，总功发散；热容像$aT^3$这样趋于零时，越往低温要取走的热量越少，总功有限。所以「越费功」本身推不出到不了零。
+
+      功有限也不等于能冷到零。可逆的制冷机要在晶体当时的温度下吸热，它的工作物质（working substance）得先冷到同样低的温度，这又是同一个问题；由绝对零度不能达到原理，有限步做不到。
+  reference: |
+    （1）$Q=\int_{T_2}^{T_1}C\,\dd T=\frac a4(T_1^4-T_2^4)$，$\Delta S=\int_{T_2}^{T_1}\frac CT\dd T=\frac a3(T_1^3-T_2^3)$。晶体＋制冷机（复原）＋热库只与外界交换功：$\Delta S_{\text{总}}=-\Delta S+\frac{Q+|W|}{T_{\mathrm H}}\ge0$，$|W|\ge T_{\mathrm H}\Delta S-Q$，即题中式子；可逆（制冷机始终在晶体当时温度下吸热）时取等号。
+
+    （2）$T_2\to0$：$|W|\to a\bigl(\frac{T_{\mathrm H}T_1^3}3-\frac{T_1^4}4\bigr)$，有限（$T_{\mathrm H}>T_1$，为正）。$C=C_0$：$|W|=C_0\bigl[T_{\mathrm H}\ln\frac{T_1}{T_2}-(T_1-T_2)\bigr]\to\infty$。
+
+    （3）在温度$T$处取走$\delta Q$至少做功$\frac{T_{\mathrm H}-T}T\,\delta Q$，单位热量的功$\to\infty$（「越费功」）；但$C=aT^3$趋于零得足够快，低温处待取的热量足够少，总功收敛（只有$C\to0$还不够，如$C\propto\frac1{|\ln T|}$时$\int\frac CT\dd T$发散）。故单凭制冷系数趋零推不出不能达到。功有限也不能到$0$：可逆制冷机需在晶体温度下吸热，其工作物质须先降到同样低温，归结为同一问题；由不能达到原理，有限步做不到（开放作答）。
+
+- id: p7
+  tier: thinking
+  statement: |
+    [克劳修斯不等式与熵](lesson:physics.thermal-physics.entropy)一节算出，$C_{V,\mathrm m}$不随温度变、只做体积变化的功的理想气体（ideal gas），熵是$S=nC_{V,\mathrm m}\ln T+nR\ln V+\text{常数}$。
+
+    （1）$T\to0$时这个$S$怎样变？温度不变、体积从$V_1$变到$V_2$时的熵变，在$T\to0$时趋于零吗？
+
+    （2）这和热力学第三定律矛盾吗？问题出在哪里？
+
+    （3）常温下还能用这个式子算理想气体的熵变吗？
+  hints:
+    - |
+      （1）看$\ln T$在$T\to0$时怎样变；温度不变时，式子里只有哪一项变？（2）推出这个式子时用了哪些假设？低温下它们还成立吗？（3）常温下这些假设成立吗，算熵变要用到那个常数吗？
+    - |
+      （1）$nC_{V,\mathrm m}\ln T\to-\infty$；等温时熵变是$nR\ln\frac{V_2}{V_1}$，和$T$无关。（2）式子假设物质在任何温度下都是理想气体、$C_{V,\mathrm m}$一直不变；本节的推论却说热容在$T\to0$时有极限的话只能是零。（3）熵变只用到始末两个状态的熵之差。
+    - |
+      （1）$nC_{V,\mathrm m}>0$，$T\to0$时$\ln T\to-\infty$，所以$S\to-\infty$，不趋于有限的值。温度不变时熵变是$nR\ln\frac{V_2}{V_1}$，和温度无关，$V_2\ne V_1$时不趋于零。照字面看，能斯特表述的两半都不满足。
+
+      （2）不矛盾，出问题的是式子的假设。它假设物质在任何温度下都是理想气体，$C_{V,\mathrm m}$又一直不变；由本节的推论，热容在$T\to0$时有极限的话只能趋于零，$C_{V,\mathrm m}$不可能一直不变到$T\to0$。实际气体（real gas）在低温下早已液化（liquefaction），多数还会凝固（freezing），1 标准大气压（standard atmosphere）下氦也在约$4.2\,\mathrm K$液化；理想气体只是温度不太低、压强不太大时的近似，第三定律管的是真实物质的平衡态。
+
+      （3）能用。常温下气体足够稀薄、所用的温度范围里$C_{V,\mathrm m}$又近似不变时，式子的假设很好；熵变只用到始末两个状态的熵之差，式子里的常数消掉了，算出的熵变是对的。不能用的是$T\to0$的外推，和熵本身的数值：要定出那个常数，得从接近$0$的固体起，像例 1 那样把$\frac CT$一路积上来，再加上熔化（melting）、汽化（vaporization）时的熵变。
+  reference: |
+    （1）$S\to-\infty$；等温熵变$nR\ln\frac{V_2}{V_1}$与$T$无关，不趋于零：两条都违背能斯特表述的字面。
+
+    （2）不矛盾。式子基于「任何温度下都是理想气体、$C_{V,\mathrm m}$为常数」的模型；第三定律推出热容在$T\to0$时有极限的话只能是$0$，常数热容不能延续到$T\to0$；实际气体低温下液化、凝固（氦在 1 标准大气压下约$4.2\,\mathrm K$液化），理想气体模型在低温失效（极稀薄时也有量子效应）。第三定律约束的是真实物质。
+
+    （3）常温、稀薄，所用的温度范围里$C_{V,\mathrm m}$近似不变时可以用：熵变只依赖始末状态之差，常数相消。失效的是$T\to0$的外推和绝对熵；要定常数须从低温固体起积$\frac CT$，并加上熔化、汽化时的熵变（量热熵）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    本节由能斯特表述推出：保持$X$不变的热容在$T\to0$时如果有极限，这个极限是零。
+
+    （1）反过来，一个系统对$X$的每一个取值，保持$X$不变的热容都在$T\to0$时趋于零，$S(T,X)$也都有有限的极限。能由此推出能斯特表述吗？试着构造一个例子。
+
+    （2）低温实验里能测的是热容和热量，熵没法直接测。怎样由测得的量检验某个系统在$X_{\mathrm A}$、$X_{\mathrm B}$两个取值下满足能斯特表述？
+  hints:
+    - |
+      （1）热容只管一条曲线自己怎样随$T$变，能斯特表述管的是不同曲线在$T\to0$时的关系。（2）$S(T,X_{\mathrm A})$、$S(T,X_{\mathrm B})$各自由热容积出来，还差一个常数；哪一步能直接测出两条曲线在同一温度下的熵差？
+    - |
+      （1）试试低温下$S(T,X)=aT^3+bX$，$a>0$、$b\ne0$都是常量。（2）在某个温度$T_1$下让系统和热库接触，等温、可逆地把$X$从$X_{\mathrm A}$改成$X_{\mathrm B}$，测系统吸的热；再从尽量低的温度起，测两种取值下的热容。
+    - |
+      （1）推不出。例如低温下$S(T,X)=aT^3+bX$（$a>0$、$b\ne0$都是常量）：保持$X$不变时$\dd S=3aT^2\,\dd T$，热容$C=T\cdot3aT^2=3aT^3\to0$，$S(0,X)=bX$也是有限的。可同一温度下$S(T,X_{\mathrm B})-S(T,X_{\mathrm A})=b(X_{\mathrm B}-X_{\mathrm A})$，不趋于零，两条曲线在$T=0$不汇合。题设的两条合起来只说每条曲线走到$T=0$时停在一个有限的值上，没说各条曲线停在同一点，所以比能斯特表述弱；这样的系统照第 5 题（2）的办法，一步就能降到绝对零度。
+
+      （2）在某个温度$T_1$（比如几开尔文）下让系统和热库接触，可逆、等温地把$X$从$X_{\mathrm A}$改成$X_{\mathrm B}$，测出它吸的热$Q_1$（放热为负），就得到$S(T_1,X_{\mathrm B})-S(T_1,X_{\mathrm A})=\frac{Q_1}{T_1}$。再从尽量低的温度起分别测两种取值下的热容，像例 1 那样把$\frac CT$从接近$0$积到$T_1$，最低的一段用$C\approx aT^3$这类拟合外推，得出$S(T_1,X)-S(0,X)$。两者合起来，$S(0,X_{\mathrm B})-S(0,X_{\mathrm A})$等于$\frac{Q_1}{T_1}$减去两个积分之差，在误差范围内是零，就检验了能斯特表述。
+  reference: |
+    （1）不能。反例：$S(T,X)=aT^3+bX$（$a>0$，$b\ne0$）：$C_X=T\pdvc STX=3aT^3\to0$，$S(0,X)=bX$有限，但$\Delta S_T=b(X_{\mathrm B}-X_{\mathrm A})\not\to0$。题设的两条（$C\to0$，$S(0,X)$有限）合起来只保证每条$S$-$T$曲线有有限端点，不保证端点重合；能斯特表述更强（这样的系统按第 5 题（2）一步可达$0$）。
+
+    （2）在$T_1$下可逆等温地从$X_{\mathrm A}$变到$X_{\mathrm B}$，测热量$Q_1$：$S(T_1,X_{\mathrm B})-S(T_1,X_{\mathrm A})=\frac{Q_1}{T_1}$。测两种$X$下$C(T)$从尽量低温到$T_1$，低端按$aT^3$等外推，算$\int_0^{T_1}\frac CT\dd T$。则$S(0,X_{\mathrm B})-S(0,X_{\mathrm A})=\frac{Q_1}{T_1}-\bigl[\int_0^{T_1}\frac{C_{\mathrm B}}T\dd T-\int_0^{T_1}\frac{C_{\mathrm A}}T\dd T\bigr]$，为零即验证（历史上用硫、锡的两种晶体在转变温度下的转变热检验）。开放作答。

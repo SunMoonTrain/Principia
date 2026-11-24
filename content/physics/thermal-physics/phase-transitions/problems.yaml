@@ -1,0 +1,252 @@
+- id: p1
+  tier: easy
+  statement: |
+    1 标准大气压（$101\,325\,\mathrm{Pa}$）下，乙醇（ethanol）在$351.4\,\mathrm K$沸腾，每摩尔汽化吸热$38.6\,\mathrm{kJ}$。把乙醇蒸气当作理想气体（ideal gas），液体的体积和蒸气比可以不计，这时汽化曲线的斜率$\dv pT$是多少？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 38600*101325/(8.31446261815324*351.4^2)
+    unit: |
+      $\mathrm{Pa/K}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      用克拉珀龙方程，按$1\,\mathrm{mol}$算潜热和体积的增加。蒸气的体积由什么决定？
+    - |
+      液体的体积不计，$\Delta V\approx\frac{RT}p$，所以$\dv pT=\frac{L_{\mathrm m}}{T\Delta V}=\frac{L_{\mathrm m}p}{RT^2}$。
+    - |
+      代入数：
+
+      $$
+      \dv pT\approx\frac{38\,600\times101\,325}{8.314\times351.4^2}\,\mathrm{Pa/K}\approx3.81\times10^3\,\mathrm{Pa/K} .
+      $$
+  solution: |
+    按$1\,\mathrm{mol}$算，$L_{\mathrm m}=38.6\,\mathrm{kJ}$。蒸气的体积$\frac{RT}p\approx0.0288\,\mathrm{m^3}$，液态乙醇的体积只有它的约千分之二，可以不计，$\Delta V\approx\frac{RT}p$。由克拉珀龙方程，
+
+    $$
+    \dv pT=\frac{L_{\mathrm m}}{T\Delta V}=\frac{L_{\mathrm m}p}{RT^2}\approx3.81\times10^3\,\mathrm{Pa/K} ,
+    $$
+
+    即沸点附近温度每升高$1\,\mathrm K$，乙醇的饱和蒸气压约增加$3.8\,\mathrm{kPa}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法，哪些正确？C、E 里的两相属于同一种物质，只做体积变化的功。
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        冬天气温一直在$0\,^\circ\mathrm C$以下，晾在室外、已经冻硬的湿衣服就不会再变干
+      - |
+        某种物质固、液、气三相点的压强高于 1 标准大气压，在 1 标准大气压下加热它的固体，它不经过液态，直接变成气体
+      - |
+        两相平衡共存时，单位质量的体积大的那一相，单位质量的熵也一定大
+      - |
+        压强足够低时，水在室温下也能沸腾
+      - |
+        测出相平衡曲线上某一点的斜率和两相的密度，就能算出这一温度下单位质量物质的潜热
+    value: [2, 4, 5]
+  hints:
+    - |
+      对照相图和克拉珀龙方程：固体有没有饱和蒸气压？压强低于三相点时，相图上有没有液态的区域？方程里的斜率、潜热和体积的增加，知道两个能不能求第三个？
+    - |
+      A 比一比冰的饱和蒸气压和空气里水蒸气的分压（partial pressure，见[理想气体状态方程](lesson:physics.thermal-physics.ideal-gas-law)第 5 题）；B 在相图上沿这个压强画一条水平线；C 拿冰和水比一比，熔化时$\Delta V$、$\Delta S$各是什么符号；D 汽化曲线一直延伸到三相点，室温对应哪个压强；E 把方程写成$L=T\Delta V\dv pT$。
+    - |
+      选 B、D、E。A 错：冰也有饱和蒸气压，就是升华曲线上的压强；空气里水蒸气的分压比它低时，冰直接升华，冻硬的衣服照样慢慢变干。B 对：压强低于三相点时，相图上这条水平线只穿过升华曲线，没有液态的区域。C 错：冰熔化时体积减小，$\Delta V<0$，熵却增加，$\Delta S=\frac LT>0$，体积大的冰熵反而小。
+
+      D 对：汽化曲线从三相点一直延伸到临界点，室温（如$20\,^\circ\mathrm C$）时水的饱和蒸气压约$2.3\,\mathrm{kPa}$，压强降到它以下，水就沸腾。E 对：由克拉珀龙方程，单位质量的潜热$L=T\Delta V\dv pT$，$\Delta V$是两相密度的倒数之差。
+  solution: |
+    选 B、D、E。A 错：冰也有饱和蒸气压（升华曲线上的压强），空气里水蒸气的分压（partial pressure）比它低时，冰直接升华，冻硬的衣服照样会变干。B 对：压强低于三相点时，沿这个压强的水平线只穿过升华曲线，没有液态。C 错：冰熔化时$\Delta V<0$，$\Delta S=\frac LT>0$，体积大的冰熵反而小。
+
+    D 对：室温时水的饱和蒸气压约$2.3\,\mathrm{kPa}$，压强降到它以下，水就沸腾。E 对：单位质量的潜热$L=T\Delta V\dv pT$，$\Delta V$由两相的密度算出。
+
+- id: p3
+  tier: medium
+  statement: |
+    1 标准大气压（$101\,325\,\mathrm{Pa}$）下，干冰（dry ice，固态的二氧化碳）在$194.7\,\mathrm K$升华，每摩尔升华吸热$25.2\,\mathrm{kJ}$。蒸气当作理想气体，固体的体积和蒸气比可以不计，把升华曲线在这一点附近当作直线。压强降低$5.0\,\mathrm{kPa}$时，升华的温度改变多少（升高为正）？结果保留三位有效数字。
+  answer:
+    type: number
+    value: -5000*8.31446261815324*194.7^2/(101325*25200)
+    unit: |
+      $\mathrm K$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      升华也是相变，克拉珀龙方程照样能用。按$1\,\mathrm{mol}$算，体积的增加约是多少？当作直线时，温度的改变怎样由斜率算出？
+    - |
+      $\Delta V\approx\frac{RT}p$，所以$\dv Tp=\frac{T\Delta V}{L_{\mathrm m}}=\frac{RT^2}{pL_{\mathrm m}}$。当作直线，$\Delta T\approx\dv Tp\,\Delta p$，这里$\Delta p=-5.0\times10^3\,\mathrm{Pa}$。
+    - |
+      代入数：
+
+      $$
+      \dv Tp\approx\frac{8.314\times194.7^2}{101\,325\times25\,200}\,\mathrm{K/Pa}\approx1.234\times10^{-4}\,\mathrm{K/Pa} ,
+      $$
+
+      $\Delta T\approx1.234\times10^{-4}\times(-5000)\,\mathrm K\approx-0.617\,\mathrm K$。
+  solution: |
+    按$1\,\mathrm{mol}$算，$L_{\mathrm m}=25.2\,\mathrm{kJ}$；固体的体积不计，$\Delta V\approx\frac{RT}p\approx0.0160\,\mathrm{m^3}$。由克拉珀龙方程，升华曲线在这一点满足
+
+    $$
+    \dv Tp=\frac{T\Delta V}{L_{\mathrm m}}=\frac{RT^2}{pL_{\mathrm m}}\approx1.234\times10^{-4}\,\mathrm{K/Pa} .
+    $$
+
+    当作直线，压强降低$5.0\,\mathrm{kPa}$时，$\Delta T\approx-0.617\,\mathrm K$，升华的温度降低约$0.62\,\mathrm K$。照第 5 题的办法把方程积分，得到的是$-0.631\,\mathrm K$，和当作直线只差约 2%。
+
+- id: p4
+  tier: medium
+  statement: |
+    镓（gallium）在 1 标准大气压下的熔点是$302.9\,\mathrm K$，每千克熔化吸热$8.01\times10^4\,\mathrm J$；熔点附近，固态镓的密度是$5.91\times10^3\,\mathrm{kg/m^3}$，液态镓的是$6.095\times10^3\,\mathrm{kg/m^3}$。把熔化曲线在这一点附近当作直线，压强增加$1.00\times10^7\,\mathrm{Pa}$时，熔点改变多少（升高为正）？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 302.9*(1/6095 - 1/5910)*1.00e7/80100
+    unit: |
+      $\mathrm K$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      熔点随压强的变化率$\dv Tp$是熔化曲线斜率的倒数。按每千克算，熔化时体积增加多少，是正是负？
+    - |
+      每千克的体积是密度的倒数，$\Delta V=\Bigl(\frac1{6095}-\frac1{5910}\Bigr)\,\mathrm{m^3}$；由克拉珀龙方程，$\dv Tp=\frac{T\Delta V}L$，再乘以$\Delta p$。
+    - |
+      $\Delta V\approx-5.14\times10^{-6}\,\mathrm{m^3}$，$\dv Tp\approx-1.94\times10^{-8}\,\mathrm{K/Pa}$，所以$\Delta T\approx-1.94\times10^{-8}\times1.00\times10^7\,\mathrm K\approx-0.194\,\mathrm K$。
+  solution: |
+    镓和水一样，液态比固态密度大，熔化时体积减小。每千克
+
+    $$
+    \Delta V=\Bigl(\frac1{6095}-\frac1{5910}\Bigr)\,\mathrm{m^3}\approx-5.14\times10^{-6}\,\mathrm{m^3} ,
+    $$
+
+    由克拉珀龙方程，$\dv Tp=\frac{T\Delta V}L\approx-1.94\times10^{-8}\,\mathrm{K/Pa}$。当作直线，压强增加$1.00\times10^7\,\mathrm{Pa}$（约 99 个标准大气压），熔点改变约$-0.194\,\mathrm K$，即降低约$0.19\,\mathrm K$。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）液体的体积和蒸气比可以不计，蒸气当作理想气体，每摩尔的汽化热$L_{\mathrm m}$不随温度变。由克拉珀龙方程证明，汽化曲线上任意两点满足
+
+    $$
+    \ln\frac{p_2}{p_1}=-\frac{L_{\mathrm m}}R\Bigl(\frac1{T_2}-\frac1{T_1}\Bigr) .
+    $$
+
+    这叫作克劳修斯-克拉珀龙方程（Clausius–Clapeyron equation）。
+
+    （2）水的$L_{\mathrm m}$取$40.7\,\mathrm{kJ}$，1 标准大气压下的沸点按$373.15\,\mathrm K$算。珠穆朗玛峰顶的气压约是海平面的$0.33$倍（[静止流体中的压强](lesson:physics.newtonian-mechanics.fluid-statics)第 5 题），水在那里约多少摄氏度沸腾？
+
+    （3）高压锅（pressure cooker）里的压强约是 2 标准大气压，水在锅里约多少摄氏度沸腾？
+  hints:
+    - |
+      （1）把$\Delta V\approx\frac{RT}p$代进克拉珀龙方程，得到$p$对$T$的一阶方程，看能不能分离变量。（2）（3）由（1）解出$\frac1{T_2}$。
+    - |
+      （1）$\dv pT=\frac{L_{\mathrm m}p}{RT^2}$，即$\frac{\dd p}p=\frac{L_{\mathrm m}}R\cdot\frac{\dd T}{T^2}$。（2）（3）$\frac1{T_2}=\frac1{T_1}-\frac R{L_{\mathrm m}}\ln\frac{p_2}{p_1}$，$\frac{p_2}{p_1}$分别是$0.33$和$2$。
+    - |
+      （1）按$1\,\mathrm{mol}$算，液体的体积不计，$\Delta V\approx\frac{RT}p$，代入克拉珀龙方程得$\dv pT=\frac{L_{\mathrm m}p}{RT^2}$。这是可分离变量的方程（separable equation，见[可分离变量的方程](lesson:math.ode.separable)），$p>0$，写成$\frac{\dd p}p=\frac{L_{\mathrm m}}R\cdot\frac{\dd T}{T^2}$。从$(T_1,p_1)$积到$(T_2,p_2)$，$L_{\mathrm m}$不变，就得到要证的等式。
+
+      （2）由（1），$\frac1{T_2}=\frac1{T_1}-\frac R{L_{\mathrm m}}\ln\frac{p_2}{p_1}$。$\frac R{L_{\mathrm m}}=\frac{8.314}{40\,700}\,\mathrm{K^{-1}}\approx2.043\times10^{-4}\,\mathrm{K^{-1}}$，$\ln0.33\approx-1.109$，所以
+
+      $$
+      \frac1{T_2}\approx(2.680\times10^{-3}+2.265\times10^{-4})\,\mathrm{K^{-1}}\approx2.906\times10^{-3}\,\mathrm{K^{-1}} ,
+      $$
+
+      $T_2\approx344\,\mathrm K$，约$71\,^\circ\mathrm C$。
+
+      （3）$\ln2\approx0.693$，
+
+      $$
+      \frac1{T_2}\approx(2.680\times10^{-3}-1.416\times10^{-4})\,\mathrm{K^{-1}}\approx2.538\times10^{-3}\,\mathrm{K^{-1}} ,
+      $$
+
+      $T_2\approx394\,\mathrm K$，约$121\,^\circ\mathrm C$。高压锅里的水比敞口锅里的热约$20\,\mathrm K$，饭熟得快；珠峰顶上的水约$71\,^\circ\mathrm C$就开了，饭不容易煮熟。
+  reference: |
+    （1）$\Delta V\approx\frac{RT}p$，$\dv pT=\frac{L_{\mathrm m}p}{RT^2}$，分离变量$\frac{\dd p}p=\frac{L_{\mathrm m}}R\frac{\dd T}{T^2}$，积分得$\ln\frac{p_2}{p_1}=-\frac{L_{\mathrm m}}R\bigl(\frac1{T_2}-\frac1{T_1}\bigr)$。
+
+    （2）$\frac1{T_2}=\frac1{373.15}-\frac{8.31446}{40700}\ln0.33=2.67989\times10^{-3}+2.26484\times10^{-4}=2.90637\times10^{-3}\,\mathrm{K^{-1}}$，$T_2=344.07\,\mathrm K$，即$70.9\,^\circ\mathrm C$（实测约$71\,^\circ\mathrm C$）。
+
+    （3）$\frac1{T_2}=2.67989\times10^{-3}-2.04287\times10^{-4}\times0.693147=2.53829\times10^{-3}\,\mathrm{K^{-1}}$，$T_2=393.97\,\mathrm K$，即$120.8\,^\circ\mathrm C$（实测约$120\,^\circ\mathrm C$）。
+
+- id: p6
+  tier: hard
+  statement: |
+    （1）证明：在三相点，同样多的物质，升华热等于熔化热加汽化热。
+
+    （2）在三相点附近，固体、液体的体积都比蒸气小得多，可以不计，蒸气当作理想气体。证明在三相点，升华曲线比汽化曲线陡，并用潜热写出两条曲线的斜率之比。
+
+    （3）水在三相点附近每摩尔汽化吸热约$45.0\,\mathrm{kJ}$、熔化吸热约$6.01\,\mathrm{kJ}$。两条曲线在三相点的斜率之比是多少？汽化曲线在三相点的斜率是多少？熔化曲线的斜率（由例 1 的$\dv Tp$取倒数）的绝对值约是它的多少倍？
+  hints:
+    - |
+      （1）从固相出发，可以直接升华，也可以先熔化、再汽化，始末状态相同；三种相变都在同一温度、压强下进行，潜热等于哪个状态函数（state function）的增加？（2）两条曲线的$\Delta V$差不多，斜率之比看什么？（3）用（2）的式子，再和例 1 的$\dv Tp$的倒数比。
+    - |
+      （1）$L=\Delta H$，焓是状态函数。（2）在三相点，两条曲线的斜率都约是$\frac{L_{\mathrm m}p}{RT^2}$，$p$、$T$相同，斜率之比等于潜热之比。（3）升华热约$51.0\,\mathrm{kJ}$；例 1 的$\dv Tp\approx-7.40\times10^{-8}\,\mathrm{K/Pa}$，取倒数。
+    - |
+      （1）在三相点，固、液、气的温度、压强都相同。同样多的物质从固相出发，直接升华和先熔化、再汽化，始末状态相同；三种相变都在同一压强下进行，只做体积变化的功，吸的热各等于焓的增加。焓是状态函数，两条路线的焓的增加相同，所以升华热等于熔化热加汽化热。
+
+      （2）按$1\,\mathrm{mol}$算，升华、汽化时体积的增加都约是蒸气的体积$\frac{RT}p$。由克拉珀龙方程，两条曲线在三相点的斜率都约是$\frac{L_{\mathrm m}p}{RT^2}$，$p$、$T$相同，所以斜率之比$\frac{L_{\text{升华}}}{L_{\text{汽化}}}=1+\frac{L_{\text{熔化}}}{L_{\text{汽化}}}$。熔化热是正的，这个比大于 1，升华曲线比汽化曲线陡。
+
+      （3）升华热约$45.0\,\mathrm{kJ}+6.01\,\mathrm{kJ}\approx51.0\,\mathrm{kJ}$，斜率之比约$\frac{51.0}{45.0}\approx1.13$。汽化曲线在三相点的斜率
+
+      $$
+      \dv pT\approx\frac{45\,000\times611.66}{8.314\times273.16^2}\,\mathrm{Pa/K}\approx44\,\mathrm{Pa/K} ,
+      $$
+
+      升华曲线约$50\,\mathrm{Pa/K}$。例 1 的$\dv Tp\approx-7.40\times10^{-8}\,\mathrm{K/Pa}$，取倒数，熔化曲线的斜率$\dv pT\approx-1.35\times10^7\,\mathrm{Pa/K}$，绝对值约是汽化曲线的$3\times10^5$倍，所以相图上的熔化曲线几乎是竖直的。
+  reference: |
+    （1）三相点处同$T$、$p$；固→气与固→液→气始末相同，等压只做体积功时$L=\Delta H$，$H$是状态函数，$L_{\text{升华}}=L_{\text{熔化}}+L_{\text{汽化}}$（也可用$L=T\Delta S$、$S$是状态函数）。
+
+    （2）$\Delta V\approx\frac{RT}p$（两种都是），$\dv pT\approx\frac{L_{\mathrm m}p}{RT^2}$，比$=\frac{L_{\text{升华}}}{L_{\text{汽化}}}=1+\frac{L_{\text{熔化}}}{L_{\text{汽化}}}>1$。
+
+    （3）$\frac{51.01}{45.0}=1.134$；汽化曲线$\frac{45000\times611.66}{8.31446\times273.16^2}=44.4\,\mathrm{Pa/K}$，升华曲线$50.3\,\mathrm{Pa/K}$；熔化曲线$\frac1{-7.4025\times10^{-8}}=-1.351\times10^7\,\mathrm{Pa/K}$，约$3.0\times10^5$倍。
+
+- id: p7
+  tier: thinking
+  statement: |
+    常听人说：冰刀下的压强很大，把冰的熔点压低，冰化成一层水，所以冰面才那么滑。
+
+    （1）质量$70\,\mathrm{kg}$的人单脚站在冰刀上，冰刀和冰的接触面积约$9\times10^{-4}\,\mathrm{m^2}$，$g$取$9.8\,\mathrm{m/s^2}$。冰刀下的压强比大气压高多少？熔点降低多少？
+
+    （2）冰面的温度是$-5\,^\circ\mathrm C$时，这个说法站得住吗？接触面积要小到多少，才能把熔点压到$-5\,^\circ\mathrm C$？
+
+    （3）那冰为什么滑？说说你的想法。
+  hints:
+    - |
+      （1）压强的增加等于重力除以接触面积；熔点的改变用例 1 的$\dv Tp$。（2）熔点要降低$5\,\mathrm K$，压强要增加多少？（3）冰刀在冰上滑动时，接触处还有什么能产生热？冰的表面本身又是什么样子？
+    - |
+      （1）$\Delta p\approx\frac{70\times9.8}{9\times10^{-4}}\,\mathrm{Pa}$，熔点的改变$\approx-7.40\times10^{-8}\,\mathrm{K/Pa}\times\Delta p$。（2）$\Delta p\approx\frac5{7.40\times10^{-8}}\,\mathrm{Pa}$，面积等于重力除以它。（3）想想摩擦（friction）。
+    - |
+      （1）冰刀下的压强比大气压高$\Delta p\approx\frac{70\times9.8}{9\times10^{-4}}\,\mathrm{Pa}\approx7.6\times10^5\,\mathrm{Pa}$，约 7.5 个标准大气压。由例 1，$\dv Tp\approx-7.40\times10^{-8}\,\mathrm{K/Pa}$，熔点只降低约$0.06\,\mathrm K$。
+
+      （2）站不住。要把熔点压到$-5\,^\circ\mathrm C$，压强要增加约$\frac5{7.40\times10^{-8}}\,\mathrm{Pa}\approx6.8\times10^7\,\mathrm{Pa}$，是（1）的约 90 倍，接触面积要小到约$10\,\mathrm{mm^2}$。冰承受不了这么大的压强，会先被压得变形、接触面积变大，熔点压不到那么低；何况$-20\,^\circ\mathrm C$的冰面照样能滑。这么大的压强下熔化曲线也不再是直线，这里只估数量级。
+
+      （3）开放作答。常见的解释有两条：冰刀滑动时和冰摩擦（friction）生热，接触处的冰化成一层很薄的水；冰的表面即使在零度以下，也有一层很薄、分子排列不整齐、像液体一样的层，叫作表面预熔（surface premelting）。两者各起多大作用，现在还在研究。
+  reference: |
+    （1）$\Delta p=\frac{686}{9\times10^{-4}}=7.62\times10^5\,\mathrm{Pa}$（7.5 atm），$\Delta T=-7.40\times10^{-8}\times7.62\times10^5=-0.056\,\mathrm K$。
+
+    （2）需$\Delta p=\frac5{7.40\times10^{-8}}=6.75\times10^7\,\mathrm{Pa}$，约 89 倍，接触面积$\frac{686}{6.75\times10^7}\approx1.0\times10^{-5}\,\mathrm{m^2}=10\,\mathrm{mm^2}$；冰承受不了这么大的压强，会先被压得变形、接触面积变大，熔点压不到那么低。$-20\,^\circ\mathrm C$照样能滑，压强熔化不是主因（线性外推只是量级估计）。
+
+    （3）开放：摩擦生热熔化（frictional melting）、表面预熔的类液层（premelting / quasi-liquid layer）；近年研究还在讨论各自的贡献。
+
+- id: p8
+  tier: thinking
+  statement: |
+    温度高于临界温度时，液体和气体不再有区别。
+
+    （1）在水的相图上，起点是$20\,^\circ\mathrm C$、1 标准大气压的液态水，终点是$20\,^\circ\mathrm C$、$1\,\mathrm{kPa}$的水蒸气。找一条路线，一路上不穿过任何相平衡曲线，说清每一段怎样加压、加热或降压、降温。
+
+    （2）沿这条路线走，会不会看到沸腾、看到液面？水是在哪一步「变成」水蒸气的？
+
+    （3）能不能用同样的办法，一路上不穿过任何相平衡曲线，把冰变成水？说说你的想法。
+  hints:
+    - |
+      （1）汽化曲线停在临界点，临界点以上没有曲线挡路，可以先往上、再往右、再往下绕过去。（2）不穿过相平衡曲线意味着什么？（3）熔化曲线在高压一端会不会像汽化曲线那样停下来？
+    - |
+      （1）先保持温度、加压到临界点的压强$22.1\,\mathrm{MPa}$以上，再加热到临界温度$647\,\mathrm K$以上，然后保持温度降压，最后在$1\,\mathrm{kPa}$下降温；最后一段要确认碰不到汽化曲线。（2）一路上始终只有一相。（3）冰是晶体（crystal），分子排得整整齐齐，水不是。
+    - |
+      （1）一条路线：先保持$20\,^\circ\mathrm C$，把水加压到$25\,\mathrm{MPa}$，高于临界点的压强，一直是液态；再保持$25\,\mathrm{MPa}$，加热到$400\,^\circ\mathrm C$，高于临界温度；再保持$400\,^\circ\mathrm C$，降压到$1\,\mathrm{kPa}$；最后保持$1\,\mathrm{kPa}$，降温到$20\,^\circ\mathrm C$。第二段在汽化曲线的最高点上方绕过临界点，第三段在临界温度以上；最后一段里各温度的饱和蒸气压都不低于$20\,^\circ\mathrm C$时的约$2.3\,\mathrm{kPa}$，比$1\,\mathrm{kPa}$高，所以也碰不到汽化曲线。
+
+      （2）不会。路线不穿过任何相平衡曲线，一路上始终只有一相，看不到沸腾，也没有液面把两相分开，密度从液体的值连续地变到气体的值。说不出水在哪一步「变成」了水蒸气：液体和气体的区分，只在两相共存、有液面分开时才分明。
+
+      （3）开放作答。一般认为不能：至今没有发现熔化曲线在高压一端像汽化曲线那样停在临界点。冰是晶体，分子按一定的规则排得整整齐齐，水没有这种排列；排列要么有、要么没有，没法一点一点地连续过渡，所以从冰到水总要穿过一条相平衡曲线：不穿过熔化曲线，就得先穿过升华曲线变成水蒸气。液、气之间只差密度这类可以连续变化的量，汽化曲线才可能停在临界点。
+  reference: |
+    （1）例：20 °C 下加压到 25 MPa（> 22.1 MPa，仍为液态，远未到冰的熔化曲线）→ 25 MPa 下加热到 400 °C（> 374 °C，不穿过汽化曲线，因其最高压强 22.1 MPa）→ 400 °C 下降压到 1 kPa（T > T_c，无相平衡曲线）→ 1 kPa 下降温到 20 °C（20 °C 以上饱和蒸气压 ≥ 2.34 kPa > 1 kPa，始终是气）。
+
+    （2）全程单相，无沸腾、无界面，密度连续变化；液、气之分只在临界温度以下两相共存时有意义。
+
+    （3）开放：固液之间涉及晶体的长程有序（对称性），不能连续变化，熔化曲线没有已知的临界点；先升华、再绕过临界点也能到液态水，但要穿过升华曲线；液气只差密度，可以连续过渡。

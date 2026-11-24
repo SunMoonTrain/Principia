@@ -1,0 +1,232 @@
+- id: p1
+  tier: easy
+  statement: |
+    某个化学反应在$300\,\mathrm K$、1 标准大气压下进行，始末的温度、压强都是这两个值，除推开大气以外不做别的功。反应前后系统的焓增加$12.0\,\mathrm{kJ}$，熵增加$50.0\,\mathrm{J/K}$。求系统的吉布斯自由能的改变$\Delta G$。
+  answer:
+    type: number
+    value: 12000 - 300*50
+    unit: |
+      $\mathrm J$
+  hints:
+    - |
+      始末温度相同时，$\Delta G$和焓变$\Delta H$、熵变$\Delta S$有什么关系？注意把$\mathrm{kJ}$化成$\mathrm J$。
+    - |
+      $\Delta G=\Delta H-T\Delta S$，$\Delta H=12000\,\mathrm J$，$T\Delta S=300\times50.0\,\mathrm J$。
+    - |
+      $T\Delta S=15000\,\mathrm J$，所以$\Delta G=12000\,\mathrm J-15000\,\mathrm J=-3000\,\mathrm J$。
+  solution: |
+    始末温度都是$300\,\mathrm K$，$\Delta G=\Delta H-T\Delta S=12000\,\mathrm J-300\times50.0\,\mathrm J=-3000\,\mathrm J$。$\Delta G<0$，合乎吉布斯自由能判据（不做别的功时$G$只减不增），尽管这个反应要吸热：熵增加带来的$T\Delta S$盖过了焓的增加。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的「等温」都按本节的意思理解。哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        等温时，系统对外做的全部功最多是吉布斯自由能的减少$-\Delta G$
+      - |
+        从同一个初态等温地变到同一个末态，不可逆过程（irreversible process）的亥姆霍兹自由能的改变$\Delta F$比可逆过程的大
+      - |
+        把气体等温地压缩，外界对气体做的功至少是气体的亥姆霍兹自由能的改变$\Delta F$
+      - |
+        亥姆霍兹自由能判据（等温、体积不变、不做别的功时$F$只减不增）只适用于可逆过程
+      - |
+        等温、体积不变、除体积变化的功以外不做别的功时，亥姆霍兹自由能不变的过程是可逆过程
+    value: [3, 5]
+  hints:
+    - |
+      最大功的定理里出现的是哪个自由能？$F$是状态函数（state function），$\Delta F$由什么决定？判据是由什么推出来的？
+    - |
+      A 比较$-\Delta F$和$-\Delta G$差在哪一项；B 想想$\Delta F$和过程有没有关系；C 压缩时$W$是负的，把$W\le-\Delta F$两边同乘$-1$；D 推导判据时用到可逆了吗；E 这时总熵变是$-\frac{\Delta F}T$。
+    - |
+      选 C、E。A 错：等温时全部功最多是$-\Delta F$，而$-\Delta G=-\Delta F-\Delta(pV)$只管等压时推开外界以外的功。例如水在$100\,^\circ\mathrm C$、1 标准大气压下汽化（vaporization），和例 1 里$0\,^\circ\mathrm C$的冰水一样$\Delta G=0$，可它推开大气做了正功。B 错：$F$是状态函数，始末相同，$\Delta F$就相同；不可逆时少的是对外做的功。
+
+      C 对：$W\le-\Delta F$，外界对气体做的功$-W\ge\Delta F$，可逆时正好是$\Delta F$。D 错：判据由总熵不减推出，不可逆过程照样适用，这时$F$减少；可逆时$\Delta F=0$。E 对：这时总熵变是$-\frac{\Delta F}T=0$；由熵增原理，过程不可逆时总熵增加，所以它可逆。
+  solution: |
+    选 C、E。A 错：最大功的定理说，等温时对外做的全部功最多是$-\Delta F$；$-\Delta G=-\Delta F-\Delta(pV)$管的只是等压时推开外界以外的功。水在$100\,^\circ\mathrm C$、1 标准大气压下汽化（vaporization）时$\Delta G=0$，可汽化时体积大增，推开大气做了正功。B 错：$F$是状态函数（state function），始末状态相同，$\Delta F$就相同；不可逆时少的是对外做的功$W$。
+
+    C 对：由$W\le-\Delta F$，外界对气体做的功$-W\ge\Delta F$，可逆地压缩时取等号。D 错：判据由系统和热库的总熵不减推出，对不可逆过程照样成立，这时$F$减少；可逆时$\Delta F=0$。E 对：体积不变又不做别的功，总熵变是$-\frac{\Delta F}T$，$\Delta F=0$时总熵不变；由熵增原理，过程不可逆时总熵增加，所以它可逆。
+
+- id: p3
+  tier: medium
+  statement: |
+    氢燃料电池（hydrogen fuel cell）在$298\,\mathrm K$、1 标准大气压下工作，消耗氢气和氧气，生成液态水；参加反应的气体也算在系统里，始末的温度、压强都是这两个值。每生成$1\,\mathrm{mol}$水，系统的焓变$\Delta H=-285.8\,\mathrm{kJ}$，熵变$\Delta S=-163.3\,\mathrm{J/K}$。
+
+    依次求每生成$1\,\mathrm{mol}$水最多能输出的电功、输出这么多电功时向环境放出的热量，单位都是$\mathrm{kJ}$。
+  answer:
+    type: tuple
+    value: [285.8 - 298*0.1633, 298*0.1633]
+    unit: |
+      $\mathrm{kJ}$
+  hints:
+    - |
+      电功是除推开大气以外的功，它最多是哪个量的减少？输出最多的电功时过程是怎样的，系统吸的热和$T\Delta S$有什么关系？
+    - |
+      $W_{\text{其他}}\le-\Delta G$，$\Delta G=\Delta H-T\Delta S$。取等号时过程可逆，系统和环境的总熵不变，系统吸热$Q=T\Delta S$，负的就是放热。
+    - |
+      $\Delta G=-285.8\,\mathrm{kJ}+298\times0.1633\,\mathrm{kJ}\approx-237.1\,\mathrm{kJ}$，最多输出电功约$237.1\,\mathrm{kJ}$。$Q=T\Delta S\approx-48.7\,\mathrm{kJ}$，即向环境放热约$48.7\,\mathrm{kJ}$。
+  solution: |
+    电功是除推开大气以外的功，由吉布斯自由能判据，$W_{\text{其他}}\le-\Delta G$。$\Delta G=\Delta H-T\Delta S=-285.8\,\mathrm{kJ}+298\times0.1633\,\mathrm{kJ}\approx-237.1\,\mathrm{kJ}$，所以最多输出约$237.1\,\mathrm{kJ}$的电功。
+
+    取到最大值时过程可逆，系统和环境的总熵不变，系统吸热$Q=T\Delta S\approx-48.7\,\mathrm{kJ}$，即向环境放热约$48.7\,\mathrm{kJ}$。核对能量：等压时$Q=\Delta U+p\Delta V+W_{\text{其他}}=\Delta H+W_{\text{其他}}$，$-285.8\,\mathrm{kJ}+237.1\,\mathrm{kJ}=-48.7\,\mathrm{kJ}$。最多的电功约是$-\Delta H$的$83\%$，其余的热量非放出去不可：反应让熵减少，要靠放热让环境的熵增加。
+
+- id: p4
+  tier: medium
+  statement: |
+    $1.0\,\mathrm{mol}$理想气体装在气缸里，气缸浸在$300\,\mathrm K$的热库中。气体从$10\,\mathrm L$、$300\,\mathrm K$的平衡态等温地膨胀到$30\,\mathrm L$、$300\,\mathrm K$的平衡态（「等温」按本节的意思）。
+
+    （1）气体最多能对外做多少功？单位是$\mathrm J$。
+
+    （2）如果实际只对外做了$1.5\,\mathrm{kJ}$的功，气体和热库的总熵变是多少？单位是$\mathrm{J/K}$。
+
+    依次填这两个数，都保留三位有效数字。
+  answer:
+    type: tuple
+    value: [8.31446261815324*300*log(3), 8.31446261815324*log(3) - 1500/300]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      （1）最多能做的功是哪个量的减少？（2）实际做功$1.5\,\mathrm{kJ}$时，气体从热库吸了多少热？气体的熵变和实际走的过程有没有关系？
+    - |
+      （1）$-\Delta F=T\Delta S-\Delta U$，理想气体温度不变时$\Delta U=0$，$\Delta S=nR\ln\frac{V_2}{V_1}$。（2）$Q=\Delta U+W=1500\,\mathrm J$，热库的熵变是$-\frac QT$。
+    - |
+      （1）$-\Delta F=1.0\times8.314\times300\times\ln3\,\mathrm J\approx2740\,\mathrm J$。（2）气体的熵变$R\ln3\approx9.134\,\mathrm{J/K}$，热库的$-\frac{1500}{300}\,\mathrm{J/K}=-5.000\,\mathrm{J/K}$，总熵变约$4.134\,\mathrm{J/K}$。
+  solution: |
+    （1）由最大功的定理，最多做功$-\Delta F=T\Delta S-\Delta U$。理想气体温度不变，$\Delta U=0$，$\Delta S=nR\ln\frac{V_2}{V_1}=R\ln3$，所以最多做功$RT\ln3\approx2740\,\mathrm J$，准静态、没有摩擦（friction）的等温膨胀能做到。
+
+    （2）实际过程中$Q=\Delta U+W=1500\,\mathrm J$，热库的熵变是$-5.000\,\mathrm{J/K}$。气体的熵变只看始末状态，仍是$R\ln3\approx9.134\,\mathrm{J/K}$，所以总熵变约$4.134\,\mathrm{J/K}>0$，过程不可逆。
+
+    少做的功$2740\,\mathrm J-1500\,\mathrm J=1240\,\mathrm J$，正好是$T\Delta S_{\text{总}}=300\times4.134\,\mathrm J$。这不是巧合：由$\Delta S_{\text{总}}=\Delta S-\frac QT$，$Q=T\Delta S-T\Delta S_{\text{总}}$，所以等温时$W=Q-\Delta U=-\Delta F-T\Delta S_{\text{总}}$，总熵每多增加$1\,\mathrm{J/K}$，就少做$T$焦耳的功。
+
+- id: p5
+  tier: hard
+  statement: |
+    刚性容器的壁导热，浸在温度为$T$的热库中。容器里一个能无摩擦（friction）滑动的活塞把它分成左右两部分，各装一定量的物质，总体积$V_{\text{总}}$不变，整个容器不对外做功。左边的体积记作$V_1$，右边就是$V_{\text{总}}-V_1$；两边的亥姆霍兹自由能分别是$F_1(T,V_1)$、$F_2(T,V_{\text{总}}-V_1)$。
+
+    （1）由最后到达平衡时总的亥姆霍兹自由能最小，证明这时两边的压强相等。
+
+    （2）两边是同样多的同一种物质，处在同一个状态，压强相等。每部分的压强随它自己的体积变化，记$\pdvc pVT$为这个变化率。证明：$\pdvc pVT<0$时，活塞的这个位置是总的亥姆霍兹自由能的极小值点（local minimum point）；$\pdvc pVT>0$时不是。
+
+    （3）$\pdvc pVT>0$时，活塞稍稍偏离这个位置会怎样？用两边的压强说明。
+  hints:
+    - |
+      （1）总的$F$是$V_1$的函数，最后到达平衡时取最小值，导数等于多少？$F$对体积的偏导数（partial derivative）是什么？（2）再求一次导数，用二阶导数（second derivative）判断极值。（3）$V_1$稍稍增大时，两边的压强各怎样变？
+    - |
+      （1）由$\pdvc FVT=-p$和链式法则（chain rule），$\dv{F_{\text{总}}}{V_1}=-p_1+p_2$。（2）$\frac{\dd^2F_{\text{总}}}{\dd V_1^2}=-\pdvc{p_1}{V_1}T-\pdvc{p_2}{V_2}T$，两边相同时等于$-2\pdvc pVT$。（3）$\pdvc pVT>0$时，$V_1$增大，$p_1$增大、$p_2$减小。
+    - |
+      （1）温度是$T$，总体积不变，不对外做功，由本节的亥姆霍兹自由能判据，最后到达平衡时$F_{\text{总}}(V_1)=F_1(T,V_1)+F_2(T,V_{\text{总}}-V_1)$在能变到的状态里最小。活塞能动，$V_1$能变，$F_{\text{总}}$在这里取极小值，由[费马定理](lesson:math.calculus.local-extrema#thm-fermat)（Fermat's theorem），导数为零。由$\pdvc FVT=-p$和链式法则，$\dv{F_{\text{总}}}{V_1}=-p_1+p_2=0$，所以$p_1=p_2$。
+
+      （2）再求一次导数，右边的体积$V_2=V_{\text{总}}-V_1$对$V_1$的导数是$-1$：
+
+      $$
+      \frac{\dd^2F_{\text{总}}}{\dd V_1^2}=-\pdvc{p_1}{V_1}T-\pdvc{p_2}{V_2}T .
+      $$
+
+      两边相同时它等于$-2\pdvc pVT$，这和[热力学势](lesson:physics.thermal-physics.thermodynamic-potentials)第 6 题（1）的$\bigl(\frac{\partial^2F}{\partial V^2}\bigr)_T=-\pdvc pVT$一致。$\pdvc pVT<0$时二阶导数大于零，由[二阶导数判别法](lesson:math.calculus.concavity#thm-second-derivative-test)（second derivative test），这里是极小值点；$\pdvc pVT>0$时二阶导数小于零，这里是极大值点，移动活塞能让$F_{\text{总}}$减小，系统不会停在这里。
+
+      （3）设活塞稍稍偏离，$V_1$增大一点、$V_2$减小一点。$\pdvc pVT>0$时，$p_1$增大、$p_2$减小，$p_1>p_2$，合力把活塞推得更远，偏离越来越大。$\pdvc pVT<0$时正相反，合力把活塞推回来，像力学里的稳定平衡。所以压缩时压强反而降低的状态不稳定。
+  reference: |
+    （1）$F_{\text{总}}(V_1)=F_1(T,V_1)+F_2(T,V_{\text{总}}-V_1)$，等温、总体积不变、不做别的功，最后到达平衡时$F_{\text{总}}$最小；内部极小值点处导数为零（费马定理），$F_{\text{总}}'=-p_1+p_2=0$，$p_1=p_2$。
+
+    （2）$F_{\text{总}}''=-\partial_{V}p_1-\partial_{V}p_2$（第二项由$\dd V_2/\dd V_1=-1$得两次负号相乘），两边相同时为$-2\pdvc pVT$。$\pdvc pVT<0$：$F''>0$，严格极小（二阶导数判别法）；$\pdvc pVT>0$：$F''<0$，极大，系统不会停在这里。和热力学势第 6 题（1）的$F_{VV}=-\pdvc pVT$一致。
+
+    （3）$\pdvc pVT>0$时，$V_1$增大则$p_1$增大、$p_2$减小，净力指向偏离的方向，偏离加剧，不稳定；$\pdvc pVT<0$时净力把活塞推回。压缩时压强反而降低的状态不稳定；麦克斯韦等面积法则一节用到这一点。
+
+- id: p6
+  tier: hard
+  statement: |
+    系统放在温度为$T_0$、压强为$p_0$的大气里，只和大气交换热量，大气看成热库；系统对外做的功，除了推开大气的那一份，其余的记作$W_{\text{其他}}$。系统的始末都是平衡态，温度、压强不必等于$T_0$、$p_0$。
+
+    （1）证明$W_{\text{其他}}\le-\Delta(U+p_0V-T_0S)$，可逆时取等号。始末的温度、压强都等于$T_0$、$p_0$时，它就是本节的哪个不等式？
+
+    （2）热容（heat capacity）为$C$（不随温度变）、体积不变的物体，开始时温度为$T_1$（$T_1>T_0$）。借助一台热机（heat engine），让它最后冷却到$T_0$，热机也回到原来的状态。最多能对外做多少功？
+
+    （3）$1.0\,\mathrm{kg}$、$100\,^\circ\mathrm C$的水在$20\,^\circ\mathrm C$的大气里这样冷却到$20\,^\circ\mathrm C$，体积变化不计，比热容（specific heat capacity）取$4.18\times10^3\,\mathrm{J/(kg\cdot K)}$，按$0\,^\circ\mathrm C=273.15\,\mathrm K$换算。最多能做多少功？它约是水放出的热量的百分之几？
+  hints:
+    - |
+      （1）照讲解里推最大功的办法：大气的熵变是多少？推开大气的功是多少？（2）把物体和热机合起来当作系统，用（1）的结论。（3）把数代进（2）的结果。
+    - |
+      （1）系统从大气吸热$Q$，大气的熵变是$-\frac Q{T_0}$，总熵不减；大气的压强一直是$p_0$，推开它的功是$p_0\Delta V$；第一定律$Q=\Delta U+p_0\Delta V+W_{\text{其他}}$。（2）热机回到原状，只有物体变了：$\Delta V=0$，$\Delta U=-C(T_1-T_0)$，$\Delta S=-C\ln\frac{T_1}{T_0}$。
+    - |
+      （1）系统从大气吸热$Q$（放热为负），大气的温度$T_0$不变，熵变是$-\frac Q{T_0}$。由熵增原理，$\Delta S-\frac Q{T_0}\ge0$，即$Q\le T_0\Delta S$，可逆时取等号。大气的压强一直是$p_0$，系统推开大气的功是$p_0\Delta V$，和[准静态过程与气体的功](lesson:physics.thermal-physics.quasi-static-processes)第 6 题（2）的算法一样。由第一定律$Q=\Delta U+p_0\Delta V+W_{\text{其他}}$，所以
+
+      $$
+      W_{\text{其他}}=Q-\Delta U-p_0\Delta V\le T_0\Delta S-\Delta U-p_0\Delta V=-\Delta(U+p_0V-T_0S) .
+      $$
+
+      始末的温度、压强都是$T_0$、$p_0$时，$U+p_0V-T_0S$在始末两个状态上就等于$G$，这就是本节吉布斯自由能判据里的$W_{\text{其他}}\le-\Delta G$。
+
+      （2）把物体和热机合起来当作系统。热机回到原来的状态，变化的只有物体：$\Delta V=0$，$\Delta U=-C(T_1-T_0)$，$\Delta S=-C\ln\frac{T_1}{T_0}$。所以最多做功$C(T_1-T_0)-T_0C\ln\frac{T_1}{T_0}$：第一项是物体放出的热量，第二项是至少要放进大气的热量。这和[熵变的计算与熵增原理](lesson:physics.thermal-physics.entropy-increase)第 7 题的道理一样，只是物体越冷，每份热量能变成的功越少。
+
+      （3）$C=4180\,\mathrm{J/K}$，放出的热量$4180\times80\,\mathrm J=334400\,\mathrm J$。$T_0C\ln\frac{T_1}{T_0}=293.15\times4180\times\ln\frac{373.15}{293.15}\,\mathrm J\approx2.957\times10^5\,\mathrm J$，所以最多做功约$3.87\times10^4\,\mathrm J$，约是放出热量的$11.6\%$。按开始时的$100\,^\circ\mathrm C$算，没有摩擦的卡诺热机（Carnot engine）的热机效率（thermal efficiency）是$21.4\%$；物体在变冷，实际的上限低得多。
+  reference: |
+    （1）大气熵变$-\frac Q{T_0}$，熵增原理：$\Delta S-\frac Q{T_0}\ge0$。第一定律$Q=\Delta U+p_0\Delta V+W_{\text{其他}}$（推开大气的功$p_0\Delta V$，外压恒定）。故$W_{\text{其他}}\le T_0\Delta S-\Delta U-p_0\Delta V=-\Delta(U+p_0V-T_0S)$，可逆取等号。始末$T=T_0$、$p=p_0$时即$W_{\text{其他}}\le-\Delta G$。
+
+    （2）系统 = 物体 + 热机（回到原状）。$\Delta V=0$，$\Delta U=-C(T_1-T_0)$，$\Delta S=-C\ln\frac{T_1}{T_0}$，$W_{\max}=C(T_1-T_0)-T_0C\ln\frac{T_1}{T_0}$。等价于没有摩擦的卡诺热机在物体当时的温度$T$和$T_0$之间一小份一小份地工作：$\delta W=\bigl(1-\frac{T_0}T\bigr)(-C\,\dd T)$，从$T_1$到$T_0$积分。
+
+    （3）$Q=334400\,\mathrm J$，$T_0C\ln\frac{T_1}{T_0}\approx295676\,\mathrm J$，$W_{\max}\approx38724\,\mathrm J\approx3.87\times10^4\,\mathrm J$，占$11.58\%$；对照$1-\frac{T_0}{T_1}=21.44\%$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    橡皮筋迅速拉长时会变热，迅速放松时会变凉。把橡皮筋理想化：体积的变化不计，内能（internal energy）只和温度有关，温度越高内能越大，和长度$L$无关；拉力记作$f$（$f>0$），温度不变时，拉得越长拉力越大。把它拉长$\dd L$，外界对它做功$f\,\dd L$。
+
+    （1）在温度为$T$的热库里把它缓慢、可逆地拉长，用最大功的定理说明$f=\pdvc FLT$。拉力从哪里来？
+
+    （2）证明长度不变时$f$和$T$成正比。挂着重物的橡皮筋，加热时会伸长还是缩短？
+
+    （3）为什么迅速拉长时会变热？
+  hints:
+    - |
+      （1）等温、可逆时，橡皮筋对外做的功和$\dd F$是什么关系？再由$F=U-TS$看$\pdvc FLT$由哪两项组成。（2）仿照热力学基本方程（fundamental thermodynamic relation）写出$\dd U$，解出$\dd S$，再用混合偏导数（mixed partial derivative）相等。（3）迅速拉长时来不及传热。
+    - |
+      （1）可逆时最大功的定理取等号，橡皮筋对外做的功$-f\,\dd L=-\dd F$；$f=\pdvc ULT-T\pdvc SLT$，第一项是零。（2）沿可逆过程$\delta Q=T\dd S$，所以$\dd U=T\dd S+f\,\dd L$，$\dd S=\frac{U'(T)}T\dd T-\frac fT\dd L$。（3）绝热时外界做的功全部变成内能。
+    - |
+      （1）等温、可逆时，最大功的定理取等号：橡皮筋对外做的功$-f\,\dd L$等于$-\dd F$，所以温度不变时$\dd F=f\,\dd L$，即$f=\pdvc FLT$。由$F=U-TS$，$f=\pdvc ULT-T\pdvc SLT$；内能和长度无关，第一项为零，$f=-T\pdvc SLT$。$f>0$，所以$\pdvc SLT<0$：拉长时熵减少。
+
+      橡皮里有许多长链分子，松着时卷曲成各种样子，拉长后被拉直，能取的样子少了，熵就小了（熵的统计意义见[玻尔兹曼熵与统计温度](lesson:physics.thermal-physics.statistical-entropy)）。拉力来自熵，不来自内能，这叫熵弹性（entropic elasticity）。理想气体也一样：内能只和温度有关，压强$-\pdvc FVT=T\pdvc SVT$也全来自熵。
+
+      （2）沿可逆过程$\delta Q=T\dd S$，外界做功$f\,\dd L$，所以$\dd U=T\dd S+f\,\dd L$（把热力学基本方程里的$-p\,\dd V$换成$f\,\dd L$）。$U$只和$T$有关，$\dd S=\frac{U'(T)}T\dd T-\frac fT\dd L$。$S$是状态函数，设$f$的偏导数连续，由[施瓦茨定理](lesson:math.vector-calculus.partial-derivatives#thm-schwarz)（Schwarz's theorem），两个混合偏导数相等：$\frac{\partial}{\partial L}\frac{U'(T)}T=0$，所以$\frac{\partial}{\partial T}\bigl(\frac fT\bigr)=0$。
+
+      于是长度不变时$\frac fT$不随温度变，$f=Tg(L)$，和$T$成正比。挂着重物时$f$不变，加热时$T$增大，$g(L)=\frac fT$就要变小；温度不变时拉得越长拉力越大，也就是$g$随$L$增大，所以$L$变小：加热时橡皮筋缩短，和一般的固体受热伸长相反。
+
+      （3）迅速拉长来不及和外界交换热量，近似绝热：外界做的功$f\,\dd L>0$全部变成内能，内能只和温度有关、温度越高内能越大，所以温度升高。也可以从熵看：近似可逆的绝热过程（adiabatic process）熵不变，拉长让熵减少，只能靠升温补上。放松时橡皮筋对外做功，内能减少，就变凉了。
+  reference: |
+    （1）等温可逆：$W=-f\,\dd L=-\dd F$，$f=\pdvc FLT=\pdvc ULT-T\pdvc SLT=-T\pdvc SLT>0$，所以拉长熵减：长链分子被拉直，构象数减少，熵弹性。理想气体的压强同理来自熵。
+
+    （2）$\dd U=T\dd S+f\,\dd L$，$\dd S=\frac{U'(T)}T\dd T-\frac fT\dd L$，混合偏导数相等（设$f$的偏导数连续，施瓦茨定理）：$\partial_T(f/T)=0$，$f=Tg(L)$。恒定负载下升温，$g(L)=f/T$减小，$g$随$L$增（题设：$T$不变时$f$随$L$增），故$L$减小：受热缩短。
+
+    （3）绝热拉长：$\dd U=f\,\dd L>0$，$U=U(T)$递增，故$T$升高；或等熵时拉长使熵减，须升温补偿。放松时对外做功，降温。
+
+- id: p8
+  tier: thinking
+  statement: |
+    本节说：除体积变化的功以外不做别的功，等温、体积不变时用亥姆霍兹自由能$F$判断过程的方向，等温等压时用吉布斯自由能$G$判断。
+
+    （1）装在刚性容器里的孤立系统用什么判断？最后到达平衡时它最大还是最小？
+
+    （2）系统包着绝热壁（adiabatic wall），上面压着能无摩擦滑动的活塞，活塞上的砝码使外界的压强一直是$p$，系统始末的压强也都是$p$，只做体积变化的功。证明系统的焓不变，并说明这时用什么判断方向。
+
+    （3）把这四种情形放在一起：外界固定了系统的哪两个量，哪个函数取最值？和[热力学势](lesson:physics.thermal-physics.thermodynamic-potentials#def-thermodynamic-potential)一节的自然变量（natural variables）对照，你看出什么规律？为什么偏偏是自然变量？
+  hints:
+    - |
+      （1）回想熵增原理。（2）绝热时$Q=0$，体积变化的功是$p\Delta V$，用第一定律；砝码只被举高或降低，它的熵会变吗？（3）由热力学基本方程（fundamental thermodynamic relation），把$\dd S$分别用$\dd U$、$\dd V$和$\dd H$、$\dd p$写出来。自然变量都固定时，可逆的变化让这个函数改变多少？
+    - |
+      （1）$U$、$V$不变，最后到达平衡时熵最大。（2）$0=\Delta U+p\Delta V=\Delta H$；系统加上砝码是孤立系统，砝码的熵不变。（3）$\dd S=\frac{\dd U}T+\frac pT\dd V=\frac{\dd H}T-\frac VT\dd p$；$\dd F=-S\dd T-p\,\dd V$，$\dd G=-S\dd T+V\dd p$。
+    - |
+      （1）孤立系统和外界不交换能量和物质，$U$不变；容器是刚性的，总体积$V$也不变。由熵增原理，它的熵不减少，最后到达平衡时，熵在能变到的状态里最大。
+
+      （2）绝热，$Q=0$；外界的压强一直是$p$，系统对外做功$p\Delta V$。由第一定律$0=\Delta U+p\Delta V$；始末压强都是$p$，所以$\Delta H=\Delta U+\Delta(pV)=\Delta U+p\Delta V=0$，焓不变。系统加上推着它的砝码合起来是孤立系统，砝码只是被举高或降低，熵不变，所以系统自己的熵不减少，最后到达平衡时最大。例如保温瓶里、大气压下进行的化学反应，焓不变，看熵。
+
+      （3）四种情形，最后到达平衡时：$U$、$V$固定，$S$最大；$H$、$p$固定，$S$最大；$T$、$V$固定，$F$最小；$T$、$p$固定，$G$最小。由热力学基本方程，$\dd S=\frac{\dd U}T+\frac pT\dd V=\frac{\dd H}T-\frac VT\dd p$，把$S$写成$U$、$V$的函数，或者$H$、$p$的函数，偏导数都只是$\frac1T$、$\frac pT$、$-\frac VT$，这两组相当于熵的自然变量；$F$、$G$的自然变量是$(T,V)$、$(T,p)$。规律是：外界固定了哪个函数的自然变量，判断方向就看那个函数，最后到达平衡时它取最值。
+
+      为什么是自然变量：自然变量都固定时，这个函数的全微分（total differential）为零，如$\dd F=-S\dd T-p\,\dd V=0$，可逆的变化不改变它；等温等容时，最大功的定理取等号也说明了这一点。能让它变的只有不可逆过程，而这些判据都来自「系统加外界的总熵只增不减」：熵只会增加，$F$、$G$只会减少（讲解里的总熵变是$-\frac{\Delta F}T$、$-\frac{\Delta G}T$），所以最后到达平衡时熵最大，$F$、$G$最小。
+  reference: |
+    （1）刚性容器里的孤立系统：$U$、$V$固定，$S$不减，最后到达平衡时最大。
+
+    （2）$Q=0$，$W=p\Delta V$（外压恒定），$0=\Delta U+p\Delta V=\Delta H$（始末压强为$p$）。砝码熵不变，系统绝热，熵增原理：$S$不减，$H$、$p$固定，最后到达平衡时$S$最大（如保温瓶中常压反应）。
+
+    （3）最后到达平衡时$(U,V)\to S_{\max}$，$(H,p)\to S_{\max}$，$(T,V)\to F_{\min}$，$(T,p)\to G_{\min}$。$\dd S=\frac{\dd U+p\dd V}T=\frac{\dd H-V\dd p}T$，$(U,V)$、$(H,p)$是$S$的「自然变量」。规律：被外界固定的变量是哪个函数的自然变量，就由那个函数取极值判断。原因：自然变量固定时该函数的全微分为零，可逆变化不改变它，只有不可逆过程能改变它，而总熵只增不减（外界为热库时$\Delta S_{\text{总}}=-\Delta F/T$或$-\Delta G/T$，外界熵不变时总熵即系统熵），所以最后到达平衡时$S$最大，$F$、$G$最小。

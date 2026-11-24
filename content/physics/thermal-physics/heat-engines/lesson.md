@@ -22,7 +22,7 @@ status: reviewed
 蒸汽机（steam engine）里，水从炉火吸热变成蒸汽，推动活塞做功，再放热给冷却水，凝结后回到锅炉。炉火和冷却水可以看成两个:term[热库]{id="physics.thermal-physics.heat-reservoir"}（heat reservoir）。
 
 ::anchor{id="def-heat-engine"}
-让一种物质重复同一个:term[循环]{id="physics.thermal-physics.cyclic-process"}（cyclic process），每个循环从高温热库吸热、对外做功、向低温热库放热，这样的装置叫作:term[热机]{id="physics.thermal-physics.heat-engine"}（heat engine），这种物质叫作它的工作物质（working substance）。
+让一种物质重复同一个:term[循环]{id="physics.thermal-physics.cyclic-process"}（cyclic process），每个循环从高温热库吸热、对外做功、向低温热库放热，这样的装置叫作:term[热机]{id="physics.thermal-physics.heat-engine"}（heat engine），这种物质叫作它的:term[工作物质]{id="physics.thermal-physics.working-substance"}（working substance）。
 
 为什么这样定义：机器要一直做功，工作物质就得一次次回到原来的状态。边界情况：:term[理想气体]{id="physics.thermal-physics.ideal-gas"}（ideal gas）:term[等温膨胀]{id="physics.thermal-physics.isothermal-process"}（isothermal expansion）时吸的热全部变成了功，可气体胀大了，没回到原来的状态，单独一次膨胀不是热机。
 
@@ -37,7 +37,7 @@ status: reviewed
 
 ### 卡诺循环
 
-卡诺（Sadi Carnot）设想的理想:term[热机]{id="physics.thermal-physics.heat-engine"}，只在工作物质的:term[温度]{id="physics.thermal-physics.temperature"}和:term[热库]{id="physics.thermal-physics.heat-reservoir"}相同时才让两者交换:term[热量]{id="physics.thermal-physics.heat"}。
+卡诺（Sadi Carnot）设想的理想:term[热机]{id="physics.thermal-physics.heat-engine"}，只在:term[工作物质]{id="physics.thermal-physics.working-substance"}的:term[温度]{id="physics.thermal-physics.temperature"}和:term[热库]{id="physics.thermal-physics.heat-reservoir"}相同时才让两者交换:term[热量]{id="physics.thermal-physics.heat"}。
 
 ::anchor{id="def-carnot-cycle"}
 由两个准静态的:term[等温过程]{id="physics.thermal-physics.isothermal-process"}（isothermal process）和两个准静态的:term[绝热过程]{id="physics.thermal-physics.adiabatic-process"}（adiabatic process）交替组成的:term[循环]{id="physics.thermal-physics.cyclic-process"}，两个等温过程的温度分别等于两个热库的温度$T_{\mathrm H}$、$T_{\mathrm L}$，叫作:term[卡诺循环]{id="physics.thermal-physics.carnot-cycle"}（Carnot cycle）；按卡诺循环工作的热机叫作:term[卡诺热机]{id="physics.thermal-physics.carnot-engine"}（Carnot engine）。
@@ -49,7 +49,7 @@ status: reviewed
 - 3→4：等温压缩，向低温热库放热$Q_{\mathrm L}$；
 - 4→1：绝热压缩，回到状态 1。
 
-为什么这样定义：热量不隔着温差白白流过去；四段都是:term[准静态过程]{id="physics.thermal-physics.quasi-static-process"}（quasi-static process），循环还能倒过来运行，各段的热量和功只改变正负。边界情况：准静态过程无限缓慢，照它造的热机每秒做的功趋于零（第 8 题）。
+为什么这样定义：热量不隔着温差白白流过去；四段都是:term[准静态过程]{id="physics.thermal-physics.quasi-static-process"}（quasi-static process），没有摩擦时还能倒过来运行，各段的热量和功只改变正负。边界情况：准静态过程无限缓慢，照它造的热机每秒做的功趋于零（第 8 题）。
 
 ::anchor{id="thm-carnot-efficiency"}
 定理：卡诺热机的工作物质是一定量的理想气体，它的:term[定容摩尔热容]{id="physics.thermal-physics.constant-volume-heat-capacity"}（molar heat capacity at constant volume）$C_{V,\mathrm m}$不随温度变，又只做体积变化的功时，一个循环里$\frac{Q_{\mathrm L}}{Q_{\mathrm H}}=\frac{T_{\mathrm L}}{T_{\mathrm H}}$，所以:term[热机效率]{id="physics.thermal-physics.thermal-efficiency"}$\eta=1-\frac{T_{\mathrm L}}{T_{\mathrm H}}$。
@@ -62,19 +62,19 @@ $$
 
 两段绝热过程中$TV^{\gamma-1}$不变（见[绝热过程](lesson:physics.thermal-physics.adiabatic-processes#thm-adiabatic)），$T_{\mathrm H}V_2^{\gamma-1}=T_{\mathrm L}V_3^{\gamma-1}$，$T_{\mathrm H}V_1^{\gamma-1}=T_{\mathrm L}V_4^{\gamma-1}$，相除得$\frac{V_2}{V_1}=\frac{V_3}{V_4}$，所以$\frac{Q_{\mathrm L}}{Q_{\mathrm H}}=\frac{T_{\mathrm L}}{T_{\mathrm H}}$。
 
-结果里没有$\gamma$，只有:term[热力学温度]{id="physics.thermal-physics.thermodynamic-temperature"}（thermodynamic temperature）$T_{\mathrm H}$、$T_{\mathrm L}$，不能代摄氏温度（Celsius temperature）。以后会证明，不管工作物质是什么，卡诺热机的热机效率都是$1-\frac{T_{\mathrm L}}{T_{\mathrm H}}$，工作在两个热库之间的热机都不会超过它，由它还能规定和物质无关的:term[温标]{id="physics.thermal-physics.temperature-scale"}（temperature scale），见[热力学第二定律](lesson:physics.thermal-physics.second-law)。
+结果里没有$\gamma$，只有:term[热力学温度]{id="physics.thermal-physics.thermodynamic-temperature"}（thermodynamic temperature）$T_{\mathrm H}$、$T_{\mathrm L}$，不能代摄氏温度（Celsius temperature）。以后会证明，不管工作物质是什么，卡诺热机的热机效率都是$1-\frac{T_{\mathrm L}}{T_{\mathrm H}}$，工作在两个热库之间的热机都不会超过它，由它还能规定和物质无关的:term[温标]{id="physics.thermal-physics.temperature-scale"}（temperature scale），见[卡诺定理与热力学温标](lesson:physics.thermal-physics.carnot-theorem)。
 
 ### 制冷机
 
 冰箱靠压缩机（compressor）做功，把冷藏室里的:term[热量]{id="physics.thermal-physics.heat"}搬出来，从背后放掉。
 
 ::anchor{id="def-refrigerator"}
-外界（surroundings）对工作物质做功，使它在每个:term[循环]{id="physics.thermal-physics.cyclic-process"}里从:term[低温热库]{id="physics.thermal-physics.heat-reservoir"}吸收热量$Q_{\mathrm L}$、向高温热库放出热量$Q_{\mathrm H}$，这样的装置叫作:term[制冷机]{id="physics.thermal-physics.refrigerator"}（refrigerator）；外界一个循环做的净功是$-W=|W|$，比值$\frac{Q_{\mathrm L}}{|W|}$叫作制冷系数（coefficient of performance）。
+外界（surroundings）对:term[工作物质]{id="physics.thermal-physics.working-substance"}做功，使它在每个:term[循环]{id="physics.thermal-physics.cyclic-process"}里从:term[低温热库]{id="physics.thermal-physics.heat-reservoir"}吸收热量$Q_{\mathrm L}$、向高温热库放出热量$Q_{\mathrm H}$，这样的装置叫作:term[制冷机]{id="physics.thermal-physics.refrigerator"}（refrigerator）；外界一个循环做的净功是$-W=|W|$，比值$\frac{Q_{\mathrm L}}{|W|}$叫作:term[制冷系数]{id="physics.thermal-physics.coefficient-of-performance"}（coefficient of performance）。
 
-为什么这样定义：制冷要的是取走的热量，付出的是外界做的功。边界情况：热量不会自发地从低温物体传到高温物体，这是[热力学第二定律](lesson:physics.thermal-physics.second-law)（second law of thermodynamics）的一种说法，所以只靠两个热库，制冷机离不开外界做功。
+为什么这样定义：制冷要的是取走的热量，付出的是外界做的功。边界情况：:term[热力学第二定律]{id="physics.thermal-physics.second-law"}（second law of thermodynamics）说，热量不会自发地从低温物体传到高温物体（见[热力学第二定律](lesson:physics.thermal-physics.second-law#thm-clausius)），所以只靠两个热库，制冷机离不开外界做功。
 
 ::anchor{id="thm-carnot-refrigerator"}
-定理：把:term[卡诺循环]{id="physics.thermal-physics.carnot-cycle"}倒过来运行，就得到一台制冷机，叫作卡诺制冷机（Carnot refrigerator）；工作物质满足上面:term[卡诺热机]{id="physics.thermal-physics.carnot-engine"}那条定理的条件时，它的制冷系数$\frac{Q_{\mathrm L}}{|W|}=\frac{T_{\mathrm L}}{T_{\mathrm H}-T_{\mathrm L}}$。
+定理：把:term[卡诺循环]{id="physics.thermal-physics.carnot-cycle"}倒过来运行，就得到一台制冷机，叫作:term[卡诺制冷机]{id="physics.thermal-physics.carnot-refrigerator"}（Carnot refrigerator）；工作物质满足上面:term[卡诺热机]{id="physics.thermal-physics.carnot-engine"}那条定理的条件时，它的制冷系数$\frac{Q_{\mathrm L}}{|W|}=\frac{T_{\mathrm L}}{T_{\mathrm H}-T_{\mathrm L}}$。
 
 证明思路：倒过来运行时各段的热量和功只改变正负，仍有$\frac{Q_{\mathrm L}}{Q_{\mathrm H}}=\frac{T_{\mathrm L}}{T_{\mathrm H}}$，代入$|W|=Q_{\mathrm H}-Q_{\mathrm L}$即得。以后会证明，不管工作物质是什么，卡诺制冷机的制冷系数都是这个值。
 
@@ -130,5 +130,5 @@ sliders:
 
 ## 常见误区
 
-- 「把摩擦、漏热都减到零，:term[热机效率]{id="physics.thermal-physics.thermal-efficiency"}就能达到 100%。」没有摩擦、不漏热的:term[卡诺热机]{id="physics.thermal-physics.carnot-engine"}，热机效率也只有$1-\frac{T_{\mathrm L}}{T_{\mathrm H}}$：3→4 必须向:term[低温热库]{id="physics.thermal-physics.heat-reservoir"}放热，工作物质才回得到原来的状态。
-- 「制冷系数大于 1，说明:term[制冷机]{id="physics.thermal-physics.refrigerator"}凭空多出了能量。」能量照样守恒，$Q_{\mathrm H}=Q_{\mathrm L}+|W|$：制冷机不只是把功变成:term[热量]{id="physics.thermal-physics.heat"}，还靠做功把热量从低温热库搬到高温热库，搬走的可以比做的功多，冰箱的制冷系数通常就大于 1。
+- 「把摩擦、漏热都减到零，:term[热机效率]{id="physics.thermal-physics.thermal-efficiency"}就能达到 100%。」没有摩擦、不漏热的:term[卡诺热机]{id="physics.thermal-physics.carnot-engine"}，热机效率也只有$1-\frac{T_{\mathrm L}}{T_{\mathrm H}}$：3→4 必须向:term[低温热库]{id="physics.thermal-physics.heat-reservoir"}放热，:term[工作物质]{id="physics.thermal-physics.working-substance"}才回得到原来的状态。
+- 「:term[制冷系数]{id="physics.thermal-physics.coefficient-of-performance"}大于 1，说明:term[制冷机]{id="physics.thermal-physics.refrigerator"}凭空多出了能量。」能量照样守恒，$Q_{\mathrm H}=Q_{\mathrm L}+|W|$：制冷机不只是把功变成:term[热量]{id="physics.thermal-physics.heat"}，还靠做功把热量从低温热库搬到高温热库，搬走的可以比做的功多，冰箱的制冷系数通常就大于 1。

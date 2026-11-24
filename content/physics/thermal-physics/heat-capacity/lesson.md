@@ -59,7 +59,7 @@ $H=U+pV$叫作系统（system）的:term[焓]{id="physics.thermal-physics.enthal
 
 为什么这样定义：等压时体积变化的功已经算在焓里，看焓的改变就知道吸了多少热，手册列出的「焓变」就是它。边界情况：压强在变或有别的功时，吸的热一般不等于焓的增加。本节的$H$专指焓，不是分析力学的:term[哈密顿量]{id="physics.analytical-mechanics.hamiltonian"}（Hamiltonian）。
 
-以后会看到，把$U$看成熵（entropy）和体积的函数时，焓是它的一种:term[勒让德变换]{id="math.vector-calculus.legendre-transform"}（Legendre transform），自变量从体积换成了压强，见[热力学势](lesson:physics.thermal-physics.thermodynamic-potentials)。
+以后会看到，把$U$看成:term[熵]{id="physics.thermal-physics.entropy"}（entropy）和体积的函数时，焓是它的一种:term[勒让德变换]{id="math.vector-calculus.legendre-transform"}（Legendre transform），自变量从体积换成了压强，见[热力学势](lesson:physics.thermal-physics.thermodynamic-potentials)。
 
 ::anchor{id="thm-cp"}
 定理：一定量的物质，除了体积变化的功不做别的功时，把焓$H$看成$T$、$p$的函数，:term[定压热容]{id="physics.thermal-physics.constant-pressure-heat-capacity"}$C_p=\pdvc HTp$。

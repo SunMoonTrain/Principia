@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 320" width="680" height="320" font-size="14">
+  <!-- 两种表述等价的两个方向。左：违反克劳修斯表述的装置（虚线圆）每个循环把 Q_L 从低温热库送到高温热库；热机（实线圆）从高温热库吸热 Q_H、对外做功 W、向低温热库放热 Q_L。虚线框里两者合起来，低温热库没有变化，只从高温热库吸热、全部变成功 W。右：违反开尔文表述的机器（虚线圆）从高温热库吸热 Q、全部变成功 W，用来带动制冷机（实线圆）；制冷机从低温热库吸热 Q_L，向高温热库放热 Q_L + W。虚线框里两者合起来，外界不做功，热量 Q_L 从低温热库到了高温热库。蓝色箭头是热量，绿色箭头是功，长短不按比例。 -->
+  <line x1="340" y1="8" x2="340" y2="312" style="stroke: currentColor" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4 3" />
+
+  <!-- 左：违反克劳修斯表述的装置 + 热机 -->
+  <text x="170" y="18" fill="currentColor" text-anchor="middle">违反克劳修斯表述的装置 + 热机</text>
+  <rect x="30" y="38" width="280" height="40" style="fill: currentColor; stroke: currentColor" fill-opacity="0.08" stroke-width="1.2" />
+  <text x="170" y="63" fill="currentColor" text-anchor="middle">高温热库 <tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="10">H</tspan></text>
+  <rect x="30" y="270" width="280" height="40" style="fill: currentColor; stroke: currentColor" fill-opacity="0.08" stroke-width="1.2" />
+  <text x="170" y="295" fill="currentColor" text-anchor="middle">低温热库 <tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="10">L</tspan></text>
+  <rect x="58" y="124" width="224" height="100" fill="none" style="stroke: currentColor" stroke-opacity="0.45" stroke-width="1.2" stroke-dasharray="6 4" />
+
+  <circle cx="110" cy="174" r="32" fill="none" style="stroke: currentColor" stroke-width="1.6" stroke-dasharray="5 3" />
+  <text x="110" y="179" fill="currentColor" text-anchor="middle">装置</text>
+  <line x1="110" y1="269" x2="110" y2="219" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 110 207 L 104.5 219 L 115.5 219 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="110" y1="141" x2="110" y2="91" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 110 79 L 104.5 91 L 115.5 91 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="120" y="252" fill="currentColor"><tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10">L</tspan></text>
+  <text x="120" y="110" fill="currentColor"><tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10">L</tspan></text>
+
+  <circle cx="230" cy="174" r="32" fill="none" style="stroke: currentColor" stroke-width="1.6" />
+  <text x="230" y="179" fill="currentColor" text-anchor="middle">热机</text>
+  <line x1="230" y1="79" x2="230" y2="129" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 230 141 L 224.5 129 L 235.5 129 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="230" y1="207" x2="230" y2="257" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 230 269 L 224.5 257 L 235.5 257 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="263" y1="174" x2="300" y2="174" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 312 174 L 300 168.5 L 300 179.5 Z" style="fill: var(--good, #059669)" />
+  <text x="240" y="110" fill="currentColor"><tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10">H</tspan></text>
+  <text x="240" y="252" fill="currentColor"><tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10">L</tspan></text>
+  <text x="300" y="160" fill="currentColor" text-anchor="middle" font-style="italic">W</text>
+
+  <!-- 右：违反开尔文表述的机器 + 制冷机 -->
+  <text x="510" y="18" fill="currentColor" text-anchor="middle">违反开尔文表述的机器 + 制冷机</text>
+  <rect x="370" y="38" width="280" height="40" style="fill: currentColor; stroke: currentColor" fill-opacity="0.08" stroke-width="1.2" />
+  <text x="510" y="63" fill="currentColor" text-anchor="middle">高温热库 <tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="10">H</tspan></text>
+  <rect x="370" y="270" width="280" height="40" style="fill: currentColor; stroke: currentColor" fill-opacity="0.08" stroke-width="1.2" />
+  <text x="510" y="295" fill="currentColor" text-anchor="middle">低温热库 <tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="10">L</tspan></text>
+  <rect x="398" y="124" width="224" height="100" fill="none" style="stroke: currentColor" stroke-opacity="0.45" stroke-width="1.2" stroke-dasharray="6 4" />
+
+  <circle cx="450" cy="174" r="32" fill="none" style="stroke: currentColor" stroke-width="1.6" stroke-dasharray="5 3" />
+  <text x="450" y="179" fill="currentColor" text-anchor="middle">机器</text>
+  <line x1="450" y1="79" x2="450" y2="129" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 450 141 L 444.5 129 L 455.5 129 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="460" y="110" fill="currentColor" font-style="italic">Q</text>
+  <line x1="483" y1="174" x2="526" y2="174" style="stroke: var(--good, #059669)" stroke-width="2.2" />
+  <path d="M 537 174 L 525 168.5 L 525 179.5 Z" style="fill: var(--good, #059669)" />
+  <text x="510" y="160" fill="currentColor" text-anchor="middle" font-style="italic">W</text>
+
+  <circle cx="570" cy="174" r="32" fill="none" style="stroke: currentColor" stroke-width="1.6" />
+  <text x="570" y="179" fill="currentColor" text-anchor="middle">制冷机</text>
+  <line x1="570" y1="269" x2="570" y2="219" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 570 207 L 564.5 219 L 575.5 219 Z" style="fill: var(--accent, #2563eb)" />
+  <line x1="570" y1="141" x2="570" y2="91" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 570 79 L 564.5 91 L 575.5 91 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="580" y="252" fill="currentColor"><tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10">L</tspan></text>
+  <text x="580" y="110" fill="currentColor"><tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10">L</tspan> + <tspan font-style="italic">W</tspan></text>
+</svg>

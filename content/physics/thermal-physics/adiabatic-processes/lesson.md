@@ -48,7 +48,7 @@ status: reviewed
 
 证明思路：等温线上$pV=nRT$不变，$p=\frac{nRT}V$，对$V$求导得$-\frac{nRT}{V^2}=-\frac pV$。绝热线上$pV^\gamma$不变，设它经过状态$(V_0,p_0)$，则$p=p_0V_0^\gamma V^{-\gamma}$，求导得$-\gamma p_0V_0^\gamma V^{-\gamma-1}=-\gamma\frac pV$；两边乘$\frac{\dd V}p$，就是最后那个式子。
 
-为什么绝热线更陡：压缩时外界做的功使温度升高，由$p=\frac{nRT}V$，压强比等温时增大得更多；膨胀时温度降低，压强降得更快。$-V\dv pV$说明体积改变一个小的比例时压强改变多少，等温时是$p$，绝热时是$\gamma p$，[声波](lesson:physics.oscillations-waves.sound-waves)一节叫它体积模量（bulk modulus）。
+为什么绝热线更陡：压缩时外界做的功使温度升高，由$p=\frac{nRT}V$，压强比等温时增大得更多；膨胀时温度降低，压强降得更快。$-V\dv pV$说明体积改变一个小的比例时压强改变多少，等温时是$p$，绝热时是$\gamma p$，[声波](lesson:physics.oscillations-waves.sound-waves)一节叫它:term[体积模量]{id="physics.oscillations-waves.bulk-modulus"}（bulk modulus）。
 
 ### 绝热过程中的功
 

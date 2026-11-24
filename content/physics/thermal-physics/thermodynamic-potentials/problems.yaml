@@ -1,0 +1,212 @@
+- id: p1
+  tier: easy
+  statement: |
+    某系统处在一个平衡态，$U=1500\,\mathrm J$，$T=300\,\mathrm K$，$S=8.0\,\mathrm{J/K}$，$p=1.0\times10^5\,\mathrm{Pa}$，$V=2.0\times10^{-3}\,\mathrm{m^3}$，$U$、$S$都从取定的参考态（reference state）算起。依次求这个状态的焓$H$、亥姆霍兹自由能$F$和吉布斯自由能$G$。
+  answer:
+    type: tuple
+    value: [1700, -900, -700]
+    unit: |
+      $\mathrm J$
+  hints:
+    - |
+      三个热力学势的定义各是什么？哪个要加$pV$，哪个要减$TS$？
+    - |
+      $H=U+pV$，$F=U-TS$，$G=H-TS$；先算出$pV$和$TS$。
+    - |
+      $pV=200\,\mathrm J$，$TS=2400\,\mathrm J$，所以$H=1700\,\mathrm J$，$F=-900\,\mathrm J$，$G=1700\,\mathrm J-2400\,\mathrm J=-700\,\mathrm J$。
+  solution: |
+    $pV=1.0\times10^5\times2.0\times10^{-3}\,\mathrm J=200\,\mathrm J$，$TS=300\times8.0\,\mathrm J=2400\,\mathrm J$。于是$H=U+pV=1700\,\mathrm J$，$F=U-TS=-900\,\mathrm J$，$G=H-TS=-700\,\mathrm J$。$F$、$G$是负的并不奇怪：$U$、$S$的零点都是人为取定的，换一个参考态，$F$、$G$的值也跟着变。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的系统都只做体积变化的功，求偏导数时物质的量不变。哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        由$H(S,p)$可以求出$T=\pdvc HSp$，$V=\pdvc HpS$
+      - |
+        两份完全相同、处在同一平衡态的气体合成一份，吉布斯自由能加倍
+      - |
+        对内能$U(S,V)$只把$V$换成压强、$S$不参加变换，得到的是亥姆霍兹自由能
+      - |
+        摩尔体积（molar volume）$\frac Vn$是广延量
+      - |
+        $\pdvc FVT=p$
+    value: [1, 2]
+  hints:
+    - |
+      把各个热力学势的全微分（total differential）写出来，读出偏导数；判断广延量，看两份合成一份时加不加倍。
+    - |
+      A 用$\dd H=T\dd S+V\dd p$；B 看$G=U-TS+pV$里每一项怎样变；C 只对$V$变换，得到的是$U+pV$；D 看分子、分母各怎样变；E 用$\dd F=-S\dd T-p\,\dd V$。
+    - |
+      选 A、B。A 对：$\dd H=T\dd S+V\dd p$，两个偏导数正是$T$和$V$。B 对：$U$、$S$、$V$加倍，$T$、$p$不变，$TS$、$pV$也加倍，所以$G$加倍。C 错：只把$V$换成压强，得到的是焓$H=U+pV$；亥姆霍兹自由能换掉的是$S$。
+
+      D 错：$V$和$n$都加倍，比值不变，摩尔体积是强度量。E 错：$\pdvc FVT=-p$，少了负号。
+  solution: |
+    选 A、B。A 对：由$\dd H=T\dd S+V\dd p$读出$\pdvc HSp=T$、$\pdvc HpS=V$。B 对：两份合成一份时$U$、$S$、$V$加倍，$T$、$p$不变，$G=U-TS+pV$的每一项都加倍，$G$也是广延量。C 错：只换掉$V$得到焓，亥姆霍兹自由能$F=U-TS$换掉的是$S$。
+
+    D 错：两个广延量之比在合成时不变，摩尔体积是强度量。E 错：$\dd F=-S\dd T-p\,\dd V$，所以$\pdvc FVT=-p$。
+
+- id: p3
+  tier: medium
+  statement: |
+    $1.5\,\mathrm{mol}$理想气体，开始时温度是$350\,\mathrm K$、压强是$1.0\times10^5\,\mathrm{Pa}$；最后温度仍是$350\,\mathrm K$，压强变成$4.0\times10^5\,\mathrm{Pa}$。求它的吉布斯自由能的改变$\Delta G$。
+  answer:
+    type: number
+    value: 1.5*8.31446261815324*350*log(4)
+    unit: |
+      $\mathrm J$
+  hints:
+    - |
+      $G$是状态函数（state function），$\Delta G$只看始末状态。温度不变时，$G$随压强怎样变？
+    - |
+      $\pdvc GpT=V=\frac{nRT}p$，在温度为$350\,\mathrm K$时对$p$积分：$\Delta G=\int_{p_1}^{p_2}\frac{nRT}p\,\dd p=nRT\ln\frac{p_2}{p_1}$。
+    - |
+      $\Delta G=1.5\times8.314\times350\times\ln4\,\mathrm J\approx6051\,\mathrm J$。
+  solution: |
+    $G$是状态函数（state function），可以沿温度保持$350\,\mathrm K$的过程算。由$\pdvc GpT=V=\frac{nRT}p$，$\Delta G=nRT\ln\frac{p_2}{p_1}=1.5\times8.314\times350\times\ln4\,\mathrm J\approx6051\,\mathrm J$。也可以这样算：理想气体温度不变时$\Delta H=0$，$\Delta S=nR\ln\frac{p_1}{p_2}=-nR\ln4$，$\Delta G=\Delta H-T\Delta S$，结果一样。
+
+- id: p4
+  tier: medium
+  statement: |
+    空腔里的热辐射（thermal radiation）可以看成一种特别的「气体」，热力学基本方程对它也成立，它的亥姆霍兹自由能是$F(T,V)=-\frac13aVT^4$，$a=7.566\times10^{-16}\,\mathrm{J/(m^3\cdot K^4)}$；这个式子的来历见以后的[黑体辐射与普朗克定律](lesson:physics.thermal-physics.blackbody-radiation)。体积为$1.0\,\mathrm{m^3}$、温度为$3000\,\mathrm K$时，依次求它的压强（单位$\mathrm{Pa}$）和内能（单位$\mathrm J$），结果都保留三位有效数字。
+  answer:
+    type: tuple
+    value: [7.566e-16*3000^4/3, 7.566e-16*3000^4]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      $F$用的是自然变量$T$、$V$：压强、熵都由它的偏导数求出，内能再由$U=F+TS$求。
+    - |
+      $p=-\pdvc FVT=\frac13aT^4$，$S=-\pdvc FTV=\frac43aVT^3$，$U=F+TS=aVT^4$。
+    - |
+      $aT^4=7.566\times10^{-16}\times8.1\times10^{13}\,\mathrm{J/m^3}\approx0.06128\,\mathrm{J/m^3}$，所以$p\approx0.0204\,\mathrm{Pa}$，$U\approx0.0613\,\mathrm J$。
+  solution: |
+    $p=-\pdvc FVT=\frac13aT^4\approx0.0204\,\mathrm{Pa}$。$S=-\pdvc FTV=\frac43aVT^3$，所以$U=F+TS=-\frac13aVT^4+\frac43aVT^4=aVT^4\approx0.0613\,\mathrm J$。可见$p=\frac U{3V}$；压强只和温度有关、和体积无关，这和理想气体很不一样。
+
+- id: p5
+  tier: hard
+  statement: |
+    设一定量的物质只做体积变化的功。
+
+    （1）证明吉布斯-亥姆霍兹方程（Gibbs–Helmholtz equation）：$U=-T^2\pdvc{(F/T)}TV$，$H=-T^2\pdvc{(G/T)}Tp$。
+
+    （2）用例 1 的单原子理想气体验证第一式。
+
+    （3）压强固定时，某种物质在同一温度下可以处在甲、乙两种状态，例如两种不同的晶体（crystal）；在一段温度范围里$G_{\text{乙}}-G_{\text{甲}}=a+bT$，$a$、$b$是常数。求从甲变到乙的焓变$H_{\text{乙}}-H_{\text{甲}}$和熵变$S_{\text{乙}}-S_{\text{甲}}$。
+  hints:
+    - |
+      （1）对$\frac FT$用商的求导法则（quotient rule），再用$\pdvc FTV=-S$和$F=U-TS$；第二式同理。（2）例 1 写出了$F(T,V)$。（3）对甲、乙各用一次第二式，再相减；熵变用$\pdvc GTp=-S$。
+    - |
+      （1）$\pdvc{(F/T)}TV=\frac1T\pdvc FTV-\frac F{T^2}=-\frac{TS+F}{T^2}$。（2）$\frac FT=\frac32nR-\frac32nR\ln T-nR\ln V-\text{常数}$。（3）$\frac{G_{\text{乙}}-G_{\text{甲}}}T=\frac aT+b$。
+    - |
+      （1）$V$固定，由商的求导法则和$\pdvc FTV=-S$，
+
+      $$
+      \pdvc{(F/T)}TV=\frac1T\pdvc FTV-\frac F{T^2}=-\frac{TS+F}{T^2}=-\frac U{T^2} ,
+      $$
+
+      所以$U=-T^2\pdvc{(F/T)}TV$。$p$固定时同理，由$\pdvc GTp=-S$和$G+TS=H$，$\pdvc{(G/T)}Tp=-\frac{TS+G}{T^2}=-\frac H{T^2}$。
+
+      （2）由例 1，$\frac FT=\frac32nR-\frac32nR\ln T-nR\ln V-\text{常数}$，对$T$求偏导数得$-\frac{3nR}{2T}$，乘以$-T^2$得$\frac32nRT$，正是$U$。
+
+      （3）对甲、乙各用一次第二式，再相减：$H_{\text{乙}}-H_{\text{甲}}=-T^2\dv{}T\Bigl(\frac aT+b\Bigr)=a$。由$\pdvc GTp=-S$，$S_{\text{乙}}-S_{\text{甲}}=-\dv{}T(a+bT)=-b$。验算：$a-T\cdot(-b)=a+bT$，正是给的$G_{\text{乙}}-G_{\text{甲}}$。
+  reference: |
+    （1）$\pdvc{(F/T)}TV=\frac{F_T}T-\frac F{T^2}=\frac{-TS-F}{T^2}=-\frac U{T^2}$；同理$\pdvc{(G/T)}Tp=-\frac{TS+G}{T^2}=-\frac H{T^2}$。
+
+    （2）$F=\frac32nRT-T\bigl(\frac32nR\ln T+nR\ln V+c\bigr)$，$\frac FT$对$T$的偏导数是$-\frac{3nR}{2T}$，$-T^2\times\bigl(-\frac{3nR}{2T}\bigr)=\frac32nRT=U$。
+
+    （3）两个状态压强相同、温度相同，各用第二式再相减：$\Delta H=-T^2\dv{}T\frac{\Delta G}T=-T^2\dv{}T\bigl(\frac aT+b\bigr)=a$；$\Delta S=-\dv{\Delta G}T=-b$；检验$\Delta H-T\Delta S=a+bT=\Delta G$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设一定量的物质只做体积变化的功，$C_V$、$C_p$都大于零，$\pdvc pVT<0$（温度不变时压缩物体，压强升高）。
+
+    （1）证明$\bigl(\frac{\partial^2F}{\partial T^2}\bigr)_V=-\frac{C_V}T$，$\bigl(\frac{\partial^2F}{\partial V^2}\bigr)_T=-\pdvc pVT$。
+
+    （2）证明$\bigl(\frac{\partial^2G}{\partial T^2}\bigr)_p=-\frac{C_p}T$，$\bigl(\frac{\partial^2G}{\partial p^2}\bigr)_T=\pdvc VpT$。
+
+    （3）$F$对$T$、对$V$各是凸函数（convex function）还是凹函数（concave function）？$G$对$T$、对$p$呢？讲解里，$C_V>0$时$U$对$S$严格凸，$\pdvc pVS<0$时$U$对$V$严格凸；比一比，参加了勒让德变换的变量和没参加的，各有什么规律？
+  hints:
+    - |
+      先写一阶偏导数：$\pdvc FTV=-S$，$\pdvc FVT=-p$，$\pdvc GTp=-S$，$\pdvc GpT=V$，再求一次偏导数。$\pdvc STV$、$\pdvc STp$分别由$\dd U=T\dd S-p\,\dd V$、$\dd H=T\dd S+V\dd p$求。
+    - |
+      体积不变时$\dd U=T\dd S$，又$C_V=\pdvc UTV$，所以$\pdvc STV=\frac{C_V}T$；压强不变时$\dd H=T\dd S$，又$C_p=\pdvc HTp$，所以$\pdvc STp=\frac{C_p}T$。二阶偏导数（second-order partial derivative）小于零是严格凹，大于零是严格凸。
+    - |
+      （1）$\bigl(\frac{\partial^2F}{\partial T^2}\bigr)_V=-\pdvc STV$。体积不变时$\dd U=T\dd S$，由[热容与焓](lesson:physics.thermal-physics.heat-capacity#thm-cv)，$C_V=\pdvc UTV=T\pdvc STV$，所以它等于$-\frac{C_V}T$。又$\bigl(\frac{\partial^2F}{\partial V^2}\bigr)_T=\pdvc{(-p)}VT=-\pdvc pVT$。
+
+      （2）$\bigl(\frac{\partial^2G}{\partial T^2}\bigr)_p=-\pdvc STp$。压强不变时$\dd H=T\dd S$，由[热容与焓](lesson:physics.thermal-physics.heat-capacity#thm-cp)，$C_p=\pdvc HTp=T\pdvc STp$，所以它等于$-\frac{C_p}T$。又$\bigl(\frac{\partial^2G}{\partial p^2}\bigr)_T=\pdvc VpT$。
+
+      （3）$C_V>0$，$F$对$T$严格凹；$\pdvc pVT<0$，$F$对$V$严格凸。$C_p>0$，$G$对$T$严格凹；温度不变时$V$、$p$互为反函数（inverse function），$\pdvc VpT$是$\pdvc pVT$的倒数，也小于零，$G$对$p$也严格凹。
+
+      规律：换进来的变量（$T$代替$S$，$p$代替$V$）方向上是凹的，没参加变换的$V$方向上仍和$U$一样是凸的。原因是：新函数对$T$的偏导数是$-S$，对$p$的偏导数是$V$；$S$随$T$增加，$V$随$p$减小，两个斜率都越来越小。这和[勒让德变换](lesson:math.vector-calculus.legendre-transform)第 6 题的$(f^*)''=\frac1{f''}>0$只差一个负号（对$V$变换时斜率是$-p$，对$p$求两次导数和对$-p$求两次一样）。
+  reference: |
+    （1）$F_{TT}=-\pdvc STV$，由$\dd U=T\dd S-p\,\dd V$得$C_V=\pdvc UTV=T\pdvc STV$，故$F_{TT}=-\frac{C_V}T$；$F_{VV}=-\pdvc pVT$。
+
+    （2）$G_{TT}=-\pdvc STp$，由$\dd H=T\dd S+V\dd p$得$C_p=\pdvc HTp=T\pdvc STp$，故$G_{TT}=-\frac{C_p}T$；$G_{pp}=\pdvc VpT$。
+
+    （3）$F$对$T$凹、对$V$凸；$G$对$T$、$p$都凹（$\pdvc VpT=1/\pdvc pVT<0$）。规律：变换换进来的强度量方向变成凹，没变换的广延量方向保持凸，因为$-F$对$T$是$U$对$S$的勒让德变换，$(-F)_{TT}=\frac1{U_{SS}}=\frac{C_V}T$，$-G$对$-p$是$F$对$V$的勒让德变换，$(-G)_{pp}=\frac1{F_{VV}}=-\pdvc VpT$，对应勒让德变换第 6 题。
+
+- id: p7
+  tier: thinking
+  statement: |
+    $U$也能写成$T$、$V$的函数，为什么还要做勒让德变换，得到$F(T,V)$？
+
+    （1）单原子理想气体的$U(T,V)=\frac32nRT$。只知道这个函数，能求出压强吗？$\pdvc UVT$等于$-p$吗？
+
+    （2）另有一种气体，$U(T,V)$也是$\frac32nRT$，压强却是$p=\frac{nRT}{V-nb}$，$b$是正的常数；这就是[克劳修斯不等式与熵](lesson:physics.thermal-physics.entropy)第 6 题的气体，那里的$V_0$是$nb$，$C_{V,\mathrm m}$是$\frac32R$。$U(T,V)$里缺了什么信息？
+
+    （3）由那道题求出的熵，写出第二种气体的$F(T,V)$。由$F(T,V)$能把两种气体区分开吗？
+  hints:
+    - |
+      （1）$-p$是$U$的哪个偏导数，下标是什么？（2）两种气体的$U(T,V)$一样，状态方程（equation of state）呢？（3）$F=U-TS$；那道题的熵也可以由$\dd U=T\dd S-p\,\dd V$解出$\dd S$、再积分得到。
+    - |
+      （1）$-p=\pdvc UVS$，体积变时熵不变；$\pdvc UVT$是另一个偏导数，这里是零。（2）同一个$U(T,V)$可以配不同的压强。（3）$\dd S=\frac{\dd U+p\,\dd V}T=\frac32nR\frac{\dd T}T+\frac{nR\,\dd V}{V-nb}$，积分就是那道题的熵。
+    - |
+      （1）不能。$\pdvc UVT=0$，可压强不是零：热力学基本方程给出的是$\pdvc UVS=-p$，保持不变的是熵，不是温度。$U(T,V)=\frac32nRT$里根本没有$V$，看不出$pV=nRT$。
+
+      （2）两种气体的$U(T,V)$完全一样，压强却不同，所以由$U(T,V)$定不出状态方程。原因是：把曲线$U(S)$沿$S$的方向平移，每个温度（切线的斜率）对应的$U$不变，$U(T,V)$也就不变；可各个体积平移的量不一样时，$\pdvc UVS$即$-p$就变了。
+
+      （3）由$\dd U=T\dd S-p\,\dd V$，$\dd S=\frac32nR\frac{\dd T}T+\frac{nR\,\dd V}{V-nb}$，积分得$S=\frac32nR\ln T+nR\ln(V-nb)+\text{常数}$，正是那道题（1）求出的熵；同样的$T$、$V$下，它和第一种气体的熵相差$nR\ln\frac{V-nb}V$（再加一个常数），正是（2）说的随体积变的平移。于是$F=\frac32nRT-T\bigl(\frac32nR\ln T+nR\ln(V-nb)+\text{常数}\bigr)$，$-\pdvc FVT=\frac{nRT}{V-nb}$；例 1 的$F$给出的是$\frac{nRT}V$。两种气体的$F(T,V)$不同，各自的状态方程都在里面。
+
+      所以要用$F(T,V)$：它的自变量也是$T$、$V$，可它是由勒让德变换得到的，什么信息也没丢；直接把$S$换成$T$代进$U$，丢掉的正是这个平移。
+  reference: |
+    （1）不能。$\pdvc UVT=0\ne-p$；$-p=\pdvc UVS$。理想气体的$U(T,V)$不含$V$，推不出状态方程。
+
+    （2）两种气体$U(T,V)$相同而$p$不同，所以由$U(T,V)$定不出状态方程。原因：$U(S,V)\to U(S+h(V),V)$不改变「温度为$T$时的$U$」，即$U(T,V)$不变，却改变$\pdvc UVS=-p$；直接代换丢掉了这个$h(V)$。
+
+    （3）$\dd S=\frac{\dd U+p\dd V}T=\frac32nR\frac{\dd T}T+\frac{nR\dd V}{V-nb}$，$S_2=\frac32nR\ln T+nR\ln(V-nb)+c$，$S_2-S_1=nR\ln\frac{V-nb}V$（就是$h(V)$）。$F_2=\frac32nRT-TS_2$，$-\partial_VF_2=\frac{nRT}{V-nb}$，而$F_1$给$\frac{nRT}V$：$F(T,V)$区分得开。勒让德变换得到的$F(T,V)$不丢信息，所以用它，不用$U(T,V)$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    一定量的某种物质只做体积变化的功。压强固定时，它的焓$H$随熵$S$变化的曲线有一段是直线，斜率是$T_0$；直线两侧的曲线都严格凸。
+
+    （1）这一段上各个状态的温度是多少？沿这一段可逆地吸热时，温度变不变？
+
+    （2）把吉布斯自由能$G=H-TS$看成$T$的函数（压强固定），它在$T_0$处会怎样？由$G(T)$还能变回$H(S)$的这一段吗？
+
+    （3）这让你想到什么现象？
+  hints:
+    - |
+      （1）$\pdvc HSp$是什么？（2）$G$对$T$的斜率是$-S$；$T$稍低于、等于、稍高于$T_0$时，斜率为$T$的切线各切在哪里？（3）什么过程吸热而温度不变？
+    - |
+      （1）$\pdvc HSp=T$，直线段上处处是$T_0$。（2）$T=T_0$时切线和整段直线重合，截距$H-T_0S$对这一段上各点都一样；$T$从下方、上方趋于$T_0$时，切点分别趋于这一段的左端、右端。（3）压强一定时冰的熔化、水的汽化。
+    - |
+      （1）由$\dd H=T\dd S+V\dd p$，压强固定时$\pdvc HSp=T$，直线段上处处是$T_0$。沿这一段可逆地吸热，$\delta Q=T\dd S=\dd H$，熵增加，温度却一直是$T_0$；从一端走到另一端共吸热$T_0(S_2-S_1)$，$S_1<S_2$是两端的熵。
+
+      （2）$T\ne T_0$时斜率为$T$的切线只有一条，切点唯一；$T=T_0$时切线就是这段直线，截距对各点都一样，$G(T_0)$照样确定，$G(T)$在$T_0$处连续。可$\pdvc GTp=-S$：$T$从下方趋于$T_0$时切点趋于左端，斜率趋于$-S_1$；从上方趋于时切点趋于右端，斜率趋于$-S_2$。斜率跳了一下，$G(T)$在$T_0$处有一个折角，不可导。
+
+      反过来，这一段上$H=G(T_0)+T_0S$（$S_1\le S\le S_2$），两端的$S_1$、$S_2$又是$G(T)$在$T_0$两侧斜率的相反数，所以由$G(T)$能把这一段原样变回来，信息没丢。这和[勒让德变换](lesson:math.vector-calculus.legendre-transform)第 8 题不同：那里的函数不凸，变两次回不来。
+
+      （3）压强一定时，冰在熔点熔化、水在沸点汽化，吸热而温度不变：这就是相变（phase transition），直线段上的状态是两种物态共存的状态，见[相变与克拉珀龙方程](lesson:physics.thermal-physics.phase-transitions)。
+  reference: |
+    （1）$\pdvc HSp=T=T_0$；可逆吸热$\delta Q=T\dd S=\dd H$，温度不变，共吸热$T_0(S_2-S_1)$。
+
+    （2）$G(T)=\min_S(H-TS)$。$T\ne T_0$时切点唯一；$T=T_0$时整段相切，$G(T_0)$确定，$G$连续；左右导数分别是$-S_1$、$-S_2$，$G(T)$在$T_0$有折角。反过来$H(S)=G(T_0)+T_0S$（$S_1\le S\le S_2$），可以还原：$H$凸（虽不严格），不丢信息，和勒让德变换第 8 题的不凸情形不同。
+
+    （3）一定压强下的熔化、汽化等相变：吸潜热而温度不变，两相共存的状态在直线段上；$G(T)$的折角处两相的$G$相等。见相变与克拉珀龙方程一节。

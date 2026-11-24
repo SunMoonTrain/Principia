@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" width="680" height="300" font-size="14">
+  <!-- T-S 图，横轴是熵 S，纵轴是温度 T，从 T = 0 画起（横轴的高度）。左：可逆过程从 A 到 B，曲线下的面积（蓝色）就是吸的热。右：没有摩擦的卡诺循环是矩形，1→2 在 T_H 吸热，2→3 等熵，3→4 在 T_L 放热，4→1 等熵，顺时针；矩形（绿色）是净功 W，矩形下边到横轴之间（蓝色）是放热 Q_L，上边以下的整块是吸热 Q_H。 -->
+  <line x1="340" y1="8" x2="340" y2="292" style="stroke: currentColor" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4 3" />
+
+  <!-- 左：可逆过程 -->
+  <text x="170" y="20" fill="currentColor" text-anchor="middle">可逆过程：从 A 到 B</text>
+  <path d="M 100 262 L 100 178 C 150 170 205 135 270 108 L 270 262 Z" style="fill: var(--accent, #2563eb)" fill-opacity="0.16" />
+  <line x1="100" y1="181" x2="100" y2="262" style="stroke: currentColor" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="4 3" />
+  <line x1="270" y1="111" x2="270" y2="262" style="stroke: currentColor" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="4 3" />
+  <path d="M 100 178 C 150 170 205 135 270 108" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 193.3 143.5 L 184.6 153.2 L 180.3 144.2 Z" style="fill: var(--accent, #2563eb)" />
+  <circle cx="100" cy="178" r="3.2" style="fill: currentColor" />
+  <circle cx="270" cy="108" r="3.2" style="fill: currentColor" />
+  <text x="91" y="171" fill="currentColor" text-anchor="end">A</text>
+  <text x="279" y="104" fill="currentColor">B</text>
+  <text x="185" y="208" fill="currentColor" text-anchor="middle">曲线下的面积</text>
+  <text x="185" y="231" fill="currentColor" text-anchor="middle">就是吸的热</text>
+
+  <line x1="50" y1="262" x2="306" y2="262" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 318 262 L 306 257 L 306 267 Z" style="fill: currentColor" />
+  <line x1="50" y1="262" x2="50" y2="54" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 50 42 L 45 54 L 55 54 Z" style="fill: currentColor" />
+  <text x="312" y="284" fill="currentColor" text-anchor="middle" font-style="italic">S</text>
+  <text x="62" y="50" fill="currentColor" font-style="italic">T</text>
+  <text x="42" y="267" fill="currentColor" text-anchor="end">0</text>
+  <text x="100" y="282" fill="currentColor" text-anchor="middle"><tspan font-style="italic">S</tspan><tspan baseline-shift="sub" font-size="10">A</tspan></text>
+  <text x="270" y="282" fill="currentColor" text-anchor="middle"><tspan font-style="italic">S</tspan><tspan baseline-shift="sub" font-size="10">B</tspan></text>
+
+  <!-- 右：卡诺循环 -->
+  <text x="520" y="20" fill="currentColor" text-anchor="middle">没有摩擦的卡诺循环：两段等温、两段等熵</text>
+  <rect x="470" y="185" width="140" height="77" style="fill: var(--accent, #2563eb)" fill-opacity="0.16" />
+  <rect x="470" y="95" width="140" height="90" style="fill: var(--good, #059669)" fill-opacity="0.2" />
+  <line x1="400" y1="95" x2="470" y2="95" style="stroke: currentColor" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="4 3" />
+  <line x1="400" y1="185" x2="470" y2="185" style="stroke: currentColor" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="4 3" />
+  <rect x="470" y="95" width="140" height="90" fill="none" style="stroke: currentColor" stroke-width="1.8" />
+  <path d="M 547 95 L 535 90 L 535 100 Z" style="fill: currentColor" />
+  <path d="M 610 147 L 605 135 L 615 135 Z" style="fill: currentColor" />
+  <path d="M 533 185 L 545 180 L 545 190 Z" style="fill: currentColor" />
+  <path d="M 470 133 L 465 145 L 475 145 Z" style="fill: currentColor" />
+  <text x="461" y="86" fill="currentColor" text-anchor="end">1</text>
+  <text x="619" y="86" fill="currentColor">2</text>
+  <text x="619" y="203" fill="currentColor">3</text>
+  <text x="461" y="203" fill="currentColor" text-anchor="end">4</text>
+  <text x="540" y="81" fill="currentColor" text-anchor="middle">吸热 <tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10">H</tspan></text>
+  <text x="540" y="145" fill="currentColor" text-anchor="middle">净功 <tspan font-style="italic">W</tspan></text>
+  <text x="540" y="229" fill="currentColor" text-anchor="middle">放热 <tspan font-style="italic">Q</tspan><tspan baseline-shift="sub" font-size="10">L</tspan></text>
+
+  <line x1="400" y1="262" x2="656" y2="262" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 668 262 L 656 257 L 656 267 Z" style="fill: currentColor" />
+  <line x1="400" y1="262" x2="400" y2="54" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 400 42 L 395 54 L 405 54 Z" style="fill: currentColor" />
+  <text x="662" y="284" fill="currentColor" text-anchor="middle" font-style="italic">S</text>
+  <text x="412" y="50" fill="currentColor" font-style="italic">T</text>
+  <text x="392" y="267" fill="currentColor" text-anchor="end">0</text>
+  <text x="392" y="100" fill="currentColor" text-anchor="end"><tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="10">H</tspan></text>
+  <text x="392" y="190" fill="currentColor" text-anchor="end"><tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="10">L</tspan></text>
+</svg>

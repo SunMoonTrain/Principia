@@ -1,0 +1,236 @@
+- id: p1
+  tier: easy
+  statement: |
+    $20\,^\circ\mathrm C$附近，水银的体膨胀系数$\alpha=1.81\times10^{-4}\,\mathrm{K^{-1}}$，等温压缩系数$\kappa_T=4.0\times10^{-11}\,\mathrm{Pa^{-1}}$。把水银灌满一个刚性的密闭容器再加热，水银的体积保持不变。温度每升高$1\,\mathrm K$，压强增加多少？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 1.81e-4/4.0e-11
+    unit: |
+      $\mathrm{Pa/K}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      体积不变时，压强随温度的变化率是哪个偏导数？能不能用$\alpha$、$\kappa_T$表示？
+    - |
+      讲解里得到了$\pdvc pTV=\frac\alpha{\kappa_T}$。
+    - |
+      $\pdvc pTV=\frac{1.81\times10^{-4}}{4.0\times10^{-11}}\,\mathrm{Pa/K}=4.525\times10^6\,\mathrm{Pa/K}$，保留三位有效数字是$4.53\times10^6\,\mathrm{Pa/K}$；每升高$1\,\mathrm K$约增加 45 个标准大气压。
+  solution: |
+    由讲解，体积不变时$\pdvc pTV=\frac\alpha{\kappa_T}$。代入数值得$4.525\times10^6\,\mathrm{Pa/K}$，保留三位有效数字是$4.53\times10^6\,\mathrm{Pa/K}$：温度每升高$1\,\mathrm K$，压强就增加约 45 个标准大气压。水银很难压缩，受热又要膨胀，体积被卡住时压强涨得极快，多数液体也是这样；所以液体的定容热容很难直接测，水银温度计的细管里也要给水银留出膨胀的空间。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的系统都处在平衡态，热力学势的二阶偏导数都连续；没说是哪种物质的等式，指对只做体积变化的功的任何一定量物质都成立。哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        某液膜的亥姆霍兹自由能满足$\dd F=-S\dd T+\sigma\,\dd A$，其中$\sigma$是表面张力（surface tension），$A$是液膜两个表面的总面积；那么$\pdvc SAT=-\pdvc\sigma TA$
+      - |
+        $\pdvc SpT=\pdvc VTp$
+      - |
+        两个系统的状态方程$p(T,V)$完全相同，定容热容却可以不同；它们从同样的温度$T$、体积$V_1$等温地膨胀到$V_2$，熵的增加也相同
+      - |
+        $\pdvc VTp\pdvc TVS=1$
+      - |
+        对理想气体，$\pdvc pVT\pdvc VTp\pdvc TpV=-1$
+    value: [1, 3, 5]
+  hints:
+    - |
+      A、B 把对应的全微分写出来，看哪两个偏导数是同一个混合偏导数；C 想想等温时熵变由哪个偏导数决定；D、E 看每个偏导数保持不变的是什么量。
+    - |
+      A 由$\dd F$读出$\pdvc FTA=-S$、$\pdvc FAT=\sigma$；B 用$\dd G=-S\dd T+V\dd p$；C 熵变是$\int_{V_1}^{V_2}\pdvc SVT\dd V$，被积函数能换成什么？D 两个偏导数保持不变的量不同，拿理想气体算一算；E 看循环关系。
+    - |
+      选 A、C、E。A 对：$-\pdvc SAT$和$\pdvc\sigma TA$都是$F$的混合偏导数，连续时相等。B 错：由$\dd G=-S\dd T+V\dd p$得$\pdvc SpT=-\pdvc VTp$，少了负号。C 对：$\pdvc SVT=\pdvc pTV$只由状态方程决定，和定容热容无关，积分出来的熵变也就相同。
+
+      D 错：一个偏导数保持$p$不变，另一个保持$S$不变，不能约分。理想气体$\pdvc VTp=\frac VT$；$C_{V,\mathrm m}$不变时沿绝热线（adiabat）$TV^{\gamma-1}$不变，$\pdvc TVS=-\frac{(\gamma-1)T}V$，乘积是$-(\gamma-1)$。E 对：这正是循环关系；直接算，三个偏导数依次是$-\frac pV$、$\frac VT$、$\frac Tp$，乘积是$-1$。
+  solution: |
+    选 A、C、E。A 对：由$\dd F$，$\pdvc FTA=-S$，$\pdvc FAT=\sigma$，两个混合偏导数连续时相等，得$\pdvc SAT=-\pdvc\sigma TA$。多数液体的表面张力随温度升高而减小，所以等温地拉大液膜时熵增加，要吸热。B 错：由$\dd G=-S\dd T+V\dd p$得$\pdvc SpT=-\pdvc VTp$。
+
+    C 对：$\Delta S=\int_{V_1}^{V_2}\pdvc SVT\dd V=\int_{V_1}^{V_2}\pdvc pTV\dd V$，只由状态方程决定，和定容热容无关。D 错：两个偏导数保持不变的量不同，不能当分数约分；理想气体的乘积是$-(\gamma-1)$。E 对：这是循环关系，理想气体直接算也是$-\frac pV\cdot\frac VT\cdot\frac Tp=-1$。
+
+- id: p3
+  tier: medium
+  statement: |
+    $20\,^\circ\mathrm C$时，把$1.0\,\mathrm{kg}$水从 1 标准大气压缓慢地等温加压到 200 标准大气压，过程可逆。水的体积$V=1.0\times10^{-3}\,\mathrm{m^3}$、体膨胀系数$\alpha=2.07\times10^{-4}\,\mathrm{K^{-1}}$在这个压强范围里都当作不变。依次求水的熵变（单位$\mathrm{J/K}$）和水吸收的热量（heat，单位$\mathrm J$，放热为负），结果都保留三位有效数字；按$0\,^\circ\mathrm C=273.15\,\mathrm K$换算，1 标准大气压取$101\,325\,\mathrm{Pa}$。
+  answer:
+    type: tuple
+    value: [-1.0e-3*2.07e-4*199*101325, -293.15*1.0e-3*2.07e-4*199*101325]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      温度不变时熵随压强怎样变，用哪个麦克斯韦关系？可逆过程吸的热和熵变是什么关系？
+    - |
+      $\pdvc SpT=-\pdvc VTp=-V\alpha$；$V$、$\alpha$当作不变，$\Delta S=-V\alpha(p_2-p_1)$。温度不变、过程可逆，$Q=T\Delta S$。
+    - |
+      $p_2-p_1=199\times101\,325\,\mathrm{Pa}\approx2.0164\times10^7\,\mathrm{Pa}$，所以$\Delta S\approx-1.0\times10^{-3}\times2.07\times10^{-4}\times2.0164\times10^7\,\mathrm{J/K}\approx-4.174\,\mathrm{J/K}$，保留三位有效数字是$-4.17\,\mathrm{J/K}$。$Q=T\Delta S\approx293.15\times(-4.174)\,\mathrm J\approx-1224\,\mathrm J$，保留三位是$-1.22\times10^3\,\mathrm J$，水放热。
+  solution: |
+    温度不变时，由麦克斯韦关系$\pdvc SpT=-\pdvc VTp=-V\alpha$。$V$、$\alpha$当作不变，从$p_1$积分到$p_2$，$\Delta S=-V\alpha(p_2-p_1)$；$p_2-p_1=199\times101\,325\,\mathrm{Pa}$，代入得$\Delta S\approx-4.17\,\mathrm{J/K}$。过程可逆、温度不变，$Q=T\Delta S\approx-1.22\times10^3\,\mathrm J$，水放热。$\alpha>0$时加压，熵减少，这和气体等温压缩要放热是同一个方向。
+
+    $V$、$\alpha$当作不变是近似：加压到 200 标准大气压，真实的水$\alpha$增大到约$2.36\times10^{-4}\,\mathrm{K^{-1}}$，熵变约是$-4.45\,\mathrm{J/K}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    铜在$300\,\mathrm K$时：线膨胀系数（coefficient of linear expansion）是$1.65\times10^{-5}\,\mathrm{K^{-1}}$，体膨胀系数是它的 3 倍；等温的体积模量（bulk modulus）是$1.40\times10^{11}\,\mathrm{Pa}$，也就是$\frac1{\kappa_T}$；摩尔体积是$7.11\times10^{-6}\,\mathrm{m^3/mol}$，$C_{p,\mathrm m}=24.4\,\mathrm{J/(mol\cdot K)}$。一块铜被刚性的壳紧紧包住，体积不能改变，从$300\,\mathrm K$加热到$310\,\mathrm K$，上面这些量都当作不变。依次求铜的压强升高多少（单位$\mathrm{Pa}$）、每摩尔铜吸收多少热量（单位$\mathrm J$），结果都保留三位有效数字。
+  answer:
+    type: tuple
+    value: [3*1.65e-5*1.40e11*10, (24.4-300*7.11e-6*(3*1.65e-5)^2*1.40e11)*10]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      体积不变，压强随温度升得多快？吸的热由哪一种热容算，它和题给的$C_{p,\mathrm m}$差多少？
+    - |
+      $\alpha=3\times1.65\times10^{-5}\,\mathrm{K^{-1}}=4.95\times10^{-5}\,\mathrm{K^{-1}}$，$\frac1{\kappa_T}=1.40\times10^{11}\,\mathrm{Pa}$。压强升高$\frac\alpha{\kappa_T}\Delta T$；每摩尔吸热$C_{V,\mathrm m}\Delta T$，其中$C_{V,\mathrm m}=C_{p,\mathrm m}-TV_{\mathrm m}\alpha^2\cdot\frac1{\kappa_T}$。
+    - |
+      压强升高$4.95\times10^{-5}\times1.40\times10^{11}\times10\,\mathrm{Pa}=6.93\times10^7\,\mathrm{Pa}$。两种摩尔热容之差是$300\times7.11\times10^{-6}\times(4.95\times10^{-5})^2\times1.40\times10^{11}\,\mathrm{J/(mol\cdot K)}\approx0.732\,\mathrm{J/(mol\cdot K)}$，所以$C_{V,\mathrm m}\approx23.67\,\mathrm{J/(mol\cdot K)}$，每摩尔吸热约$237\,\mathrm J$。
+  solution: |
+    体膨胀系数$\alpha=3\times1.65\times10^{-5}\,\mathrm{K^{-1}}=4.95\times10^{-5}\,\mathrm{K^{-1}}$。体积不变时$\pdvc pTV=\frac\alpha{\kappa_T}$，压强升高$\frac\alpha{\kappa_T}\Delta T=6.93\times10^7\,\mathrm{Pa}$，约是 680 个标准大气压。体积不变时吸的热要用$C_{V,\mathrm m}$算：由$C_p-C_V=\frac{TV\alpha^2}{\kappa_T}$，两种摩尔热容相差约$0.732\,\mathrm{J/(mol\cdot K)}$，$C_{V,\mathrm m}\approx23.67\,\mathrm{J/(mol\cdot K)}$，每摩尔吸热$C_{V,\mathrm m}\Delta T\approx237\,\mathrm J$。
+
+    两种热容只差约 3%：固体受热时体积变化很小。可要卡住体积，升温$10\,\mathrm K$就得顶住几百个标准大气压，所以手册上查到的通常是$C_p$；要和理论算出的$C_V$比较时，就用这个式子换算。
+
+- id: p5
+  tier: hard
+  statement: |
+    把讲解里$C_p-C_V$的推导写完整，再往前走一步。设一定量的物质只做体积变化的功，热力学势的二阶偏导数都连续，$C_V>0$，$\kappa_T>0$（温度不变时加压，体积减小）。
+
+    （1）证明$C_p=T\pdvc STp$、$C_V=T\pdvc STV$，再证明$C_p-C_V=\frac{TV\alpha^2}{\kappa_T}$。
+
+    （2）由此说明$C_p\ge C_V$。什么时候两者相等？举一个例子。
+
+    （3）绝热压缩系数（adiabatic compressibility）$\kappa_S=-\frac1V\pdvc VpS$，下标$S$表示熵不变。证明$\frac{C_p}{C_V}=\frac{\kappa_T}{\kappa_S}$，并用理想气体验证。
+  hints:
+    - |
+      （1）沿可逆过程吸的热是$T\dd S$；把$S$看成$T$、$V$的函数，压强不变时$V$随$T$变。（2）看$\frac{TV\alpha^2}{\kappa_T}$每个因子的正负。（3）先设$\alpha\ne0$，对$\pdvc VpT$、$\pdvc VpS$各用一次循环关系，再相除；$\alpha=0$时循环关系用不上，另看。
+    - |
+      （1）由链式法则，$\pdvc STp=\pdvc STV+\pdvc SVT\pdvc VTp$，再用$\pdvc SVT=\frac\alpha{\kappa_T}$。（2）$\alpha^2\ge0$，$T$、$V$、$\kappa_T$都是正的。
+
+      （3）$\alpha\ne0$时，$\pdvc VpT=-\pdvc VTp\pdvc TpV$，$\pdvc VpS=-\pdvc VSp\pdvc SpV$；压强不变时$V$、$S$都随$T$变，$\frac{\pdvc VTp}{\pdvc VSp}=\pdvc STp$。$\alpha=0$时，把$V$看成$T$、$p$的函数，熵不变时$T$随$p$变，对$\pdvc VpS$用链式法则。
+    - |
+      （1）沿可逆过程吸的热$\delta Q=T\dd S$，所以压强不变时$C_p=\frac{\delta Q}{\dd T}=T\pdvc STp$，体积不变时$C_V=T\pdvc STV$。把$S$看成$T$、$V$的函数，压强不变时$V$随$T$变，由链式法则：
+
+      $$
+      \pdvc STp=\pdvc STV+\pdvc SVT\pdvc VTp .
+      $$
+
+      乘以$T$，再用$\pdvc SVT=\pdvc pTV$（麦克斯韦关系）、讲解里的$\pdvc pTV=\frac\alpha{\kappa_T}$和$\pdvc VTp=V\alpha$，得$C_p-C_V=T\cdot\frac\alpha{\kappa_T}\cdot V\alpha=\frac{TV\alpha^2}{\kappa_T}$。
+
+      （2）$T$、$V$、$\kappa_T$都是正的，$\alpha^2\ge0$，所以$C_p\ge C_V$，只在$\alpha=0$时相等。例如常压下的水在约$4\,^\circ\mathrm C$时密度最大，$\alpha=0$，那时$C_p=C_V$。常压下$0$到$4\,^\circ\mathrm C$的水$\alpha<0$，受热收缩，仍然$C_p>C_V$：差和$\alpha^2$成正比，和膨胀还是收缩无关。
+
+      （3）先设$\alpha\ne0$。$C_p\ge C_V>0$，所以$\pdvc STp$、$\pdvc STV$不为零，$\pdvc VTp=V\alpha$、$\pdvc pTV=\frac\alpha{\kappa_T}$也不为零，下面用到的偏导数都不为零。由循环关系$\pdvc VpT\pdvc pTV\pdvc TVp=-1$，得$\pdvc VpT=-\pdvc VTp\pdvc TpV$；同理$\pdvc VpS=-\pdvc VSp\pdvc SpV$。两式相除：
+
+      $$
+      \frac{\kappa_T}{\kappa_S}=\frac{\pdvc VTp}{\pdvc VSp}\cdot\frac{\pdvc TpV}{\pdvc SpV} .
+      $$
+
+      压强不变时$V$、$S$都随$T$变，第一个分式是$\pdvc STp=\frac{C_p}T$；体积不变时$T$、$S$都随$p$变，第二个分式是$\pdvc TSV=\frac T{C_V}$。所以$\frac{\kappa_T}{\kappa_S}=\frac{C_p}{C_V}$。
+
+      再看$\alpha=0$。把$V$看成$T$、$p$的函数，熵不变时$T$随$p$变，由链式法则$\pdvc VpS=\pdvc VpT+\pdvc VTp\pdvc TpS$；$\pdvc VTp=V\alpha=0$，所以$\kappa_S=\kappa_T$。由（1），这时$C_p=C_V$，两个比值都是 1，等式也成立。
+
+      理想气体$\kappa_T=\frac1p$。$C_{V,\mathrm m}$不变时，沿可逆的绝热过程（adiabatic process）$pV^\gamma$不变（见[绝热过程](lesson:physics.thermal-physics.adiabatic-processes#thm-adiabatic)），$\pdvc VpS=-\frac V{\gamma p}$，$\kappa_S=\frac1{\gamma p}$，比值正是$\gamma=\frac{C_p}{C_V}$。
+
+      所以满足题设的物质都有$\kappa_S=\frac{C_V}{C_p}\kappa_T\le\kappa_T$：绝热时不比等温时容易压缩，$\alpha\ne0$时更难压缩。
+  reference: |
+    （1）$\delta Q_{\text{可逆}}=T\dd S$，故$C_p=T(\partial S/\partial T)_p$，$C_V=T(\partial S/\partial T)_V$。$S(T,V(T,p))$对$T$求导：$(\partial S/\partial T)_p=(\partial S/\partial T)_V+(\partial S/\partial V)_T(\partial V/\partial T)_p$。由麦克斯韦关系$(\partial S/\partial V)_T=(\partial p/\partial T)_V$，由讲解$(\partial p/\partial T)_V=-(\partial V/\partial T)_p/(\partial V/\partial p)_T=\alpha/\kappa_T$（只要$(\partial V/\partial p)_T\ne0$，$\alpha=0$也成立），$(\partial V/\partial T)_p=V\alpha$，乘以$T$得$C_p-C_V=TV\alpha^2/\kappa_T$。
+
+    （2）$T,V,\kappa_T>0$，$\alpha^2\ge0$，故$C_p\ge C_V$，等号当且仅当$\alpha=0$，如常压下约$4\,^\circ\mathrm C$的水。$\alpha<0$时差仍为正。
+
+    （3）先设$\alpha\ne0$，又$C_p\ge C_V>0$，用到的偏导数都不为零。循环关系：$(\partial V/\partial p)_T=-(\partial V/\partial T)_p(\partial T/\partial p)_V$，$(\partial V/\partial p)_S=-(\partial V/\partial S)_p(\partial S/\partial p)_V$。相除，$\kappa_T/\kappa_S=(\partial S/\partial T)_p(\partial T/\partial S)_V=C_p/C_V$。
+
+    $\alpha=0$时，$(\partial V/\partial p)_S=(\partial V/\partial p)_T+(\partial V/\partial T)_p(\partial T/\partial p)_S=(\partial V/\partial p)_T$，即$\kappa_S=\kappa_T$；由（1）$C_p=C_V$，等式两边都是 1。理想气体$\kappa_T=1/p$，等熵时$pV^\gamma$不变，$\kappa_S=1/(\gamma p)$，比值$\gamma$，一致。由$C_V>0$、$C_p\ge C_V$得$\kappa_S\le\kappa_T$。
+
+- id: p6
+  tier: hard
+  statement: |
+    设一定量的物质只做体积变化的功，热力学势的二阶偏导数都连续。
+
+    （1）由热力学基本方程（fundamental thermodynamic relation）和麦克斯韦关系，证明能量方程（energy equation）$\pdvc UVT=T\pdvc pTV-p$。
+
+    （2）由它证明：状态方程能写成$p=Tf(V)$（$f$只和体积有关）的物质，温度不变时内能不随体积变。理想气体就是这样，[热力学第一定律](lesson:physics.thermal-physics.first-law#thm-ideal-gas-energy)里这一点是由实验得来的。
+
+    （3）某实际气体（real gas）满足$\bigl(p+\frac{an^2}{V^2}\bigr)(V-nb)=nRT$，$a$、$b$是正的常量，这是范德瓦耳斯方程（van der Waals equation，见[范德瓦耳斯气体与临界点](lesson:physics.thermal-physics.van-der-waals)）。求它的$\pdvc UVT$，说明它的内能可以写成$U=g(T)-\frac{an^2}V$，并和[热力学第一定律](lesson:physics.thermal-physics.first-law)第 6 题给的近似式对照。
+  hints:
+    - |
+      （1）由$\dd U=T\dd S-p\,\dd V$，温度不变时两边除以$\dd V$。（2）把$p=Tf(V)$代进能量方程。（3）先把$p$解出来，再求$\pdvc pTV$。
+    - |
+      （1）$\pdvc UVT=T\pdvc SVT-p$，再用$\pdvc SVT=\pdvc pTV$。（2）$\pdvc pTV=f(V)$，所以$T\pdvc pTV=p$。（3）$p=\frac{nRT}{V-nb}-\frac{an^2}{V^2}$，$T\pdvc pTV=\frac{nRT}{V-nb}$。
+    - |
+      （1）把$U$看成$T$、$V$的函数。由热力学基本方程$\dd U=T\dd S-p\,\dd V$，温度不变时两边除以$\dd V$，得$\pdvc UVT=T\pdvc SVT-p$。再由麦克斯韦关系$\pdvc SVT=\pdvc pTV$，就得到能量方程；右边只用到状态方程。
+
+      （2）$p=Tf(V)$时$\pdvc pTV=f(V)$，$T\pdvc pTV-p=Tf(V)-Tf(V)=0$，温度不变时内能不随体积变。理想气体$p=\frac{nR}V\,T$正是这种形式。热力学第一定律那一节靠自由膨胀（free expansion）的实验，再把理想气体看成气体越来越稀薄时的极限，得出这一点；这里由状态方程和热力学第二定律（second law of thermodynamics）推了出来，前提是$pV=nRT$里的$T$是热力学温度（thermodynamic temperature）。
+
+      （3）由方程解出$p=\frac{nRT}{V-nb}-\frac{an^2}{V^2}$，所以$\pdvc pTV=\frac{nR}{V-nb}$。代入能量方程：
+
+      $$
+      \pdvc UVT=\frac{nRT}{V-nb}-p=\frac{an^2}{V^2} .
+      $$
+
+      温度不变时对$V$积分，$U=g(T)-\frac{an^2}V$，$g(T)$只和温度有关。单原子气体取$g(T)=\frac32nRT$，正是热力学第一定律第 6 题给的近似式：那里的$-\frac{an^2}V$由状态方程就能推出来。$\pdvc UVT>0$，因为分子之间互相吸引，温度不变时体积越大，内能越大。
+  reference: |
+    （1）$\dd U=T\dd S-p\dd V$，$T$固定除以$\dd V$：$(\partial U/\partial V)_T=T(\partial S/\partial V)_T-p=T(\partial p/\partial T)_V-p$。
+
+    （2）$p=Tf(V)$：$T(\partial p/\partial T)_V=Tf=p$，故$(\partial U/\partial V)_T=0$。理想气体$f=nR/V$；这里由第二定律推出，第一定律一节用的是焦耳自由膨胀实验和稀薄极限。前提是$T$为热力学温度。
+
+    （3）$p=nRT/(V-nb)-an^2/V^2$，$(\partial p/\partial T)_V=nR/(V-nb)$，$(\partial U/\partial V)_T=nRT/(V-nb)-p=an^2/V^2$；积分$U=g(T)-an^2/V$。单原子取$g=\frac32nRT$，即第一定律一节第 6 题的式子。
+
+- id: p7
+  tier: thinking
+  statement: |
+    常压附近，水在$0$到$4\,^\circ\mathrm C$之间受热收缩，$\alpha<0$。
+
+    （1）温度保持$2\,^\circ\mathrm C$，缓慢地给水加压（只加到几十个标准大气压，$\alpha$一直是负的），水吸热还是放热？气体这样等温压缩时呢？
+
+    （2）证明$\pdvc TpS=\frac{TV\alpha}{C_p}$。绝热、缓慢地给$2\,^\circ\mathrm C$的水加压（同样只加到几十个标准大气压），温度升高还是降低？
+
+    （3）在（2）里，外界对水做正功，水和外界又不交换热量，水的内能增加了，温度却降低。这矛盾吗？理想气体绝热压缩时为什么一定升温？
+  hints:
+    - |
+      （1）用$\pdvc SpT=-V\alpha$，可逆过程吸的热是$T\dd S$。（2）用由焓（enthalpy）得到的麦克斯韦关系，再把$\pdvc VSp$写成两个对$T$的偏导数之比。（3）内能除了随温度变，还随什么变？
+    - |
+      （1）$\alpha<0$时$\pdvc SpT>0$。（2）$\pdvc TpS=\pdvc VSp=\frac{\pdvc VTp}{\pdvc STp}$，$\pdvc STp=\frac{C_p}T$。（3）可逆绝热时$\dd U=-p\,\dd V$；把$U$看成$T$、$V$的函数，$\dd U=C_V\dd T+\pdvc UVT\dd V$，第 6 题的能量方程给出$\pdvc UVT$。
+    - |
+      （1）只加到几十个标准大气压，$\alpha<0$，$\pdvc SpT=-V\alpha>0$，温度不变时加压，熵增加；过程可逆，$\delta Q=T\dd S>0$，水吸热。压强更大时结论会反过来：$2\,^\circ\mathrm C$的水在约 95 个标准大气压处$\alpha$变号，再加压就放热。气体的$\alpha>0$（理想气体$\alpha=\frac1T$），等温压缩时熵减少、放热，$4\,^\circ\mathrm C$以上的水也一样。
+
+      （2）由$\dd H=T\dd S+V\dd p$得$\pdvc TpS=\pdvc VSp$。压强不变时$V$、$S$都随$T$变，所以$\pdvc VSp=\frac{\pdvc VTp}{\pdvc STp}=\frac{V\alpha}{C_p/T}=\frac{TV\alpha}{C_p}$。$\alpha<0$，绝热、可逆地加压时$\dd p>0$，$\dd T<0$，温度降低；$\alpha>0$时温度升高。
+
+      （3）不矛盾。可逆绝热时$\dd U=-p\,\dd V>0$，内能确实增加；可内能还随体积变，$\dd U=C_V\dd T+\pdvc UVT\dd V$。现在$\dd T<0$、$\dd V<0$，要$\dd U>0$，$\pdvc UVT$必须是负的；由第 6 题的能量方程，$\pdvc UVT=\frac{T\alpha}{\kappa_T}-p$，$\alpha<0$时它确实是负的。
+
+      也就是说，这时温度不变地压缩水，内能反而增加，增加的是分子之间的势能；外界做的功全变成了势能还不够，又从分子的热运动（thermal motion）里拿走了一些，温度就降了。理想气体的内能只和温度有关，$\pdvc UVT=0$，内能增加就意味着温度升高。
+  reference: |
+    （1）几十个标准大气压以内$\alpha<0$，$(\partial S/\partial p)_T=-V\alpha>0$，等温加压熵增，$\delta Q=T\dd S>0$，吸热（$2\,^\circ\mathrm C$的水约 95 标准大气压处$\alpha$变号，再往上结论反过来）；气体$\alpha>0$，放热。
+
+    （2）$(\partial T/\partial p)_S=(\partial V/\partial S)_p=(\partial V/\partial T)_p/(\partial S/\partial T)_p=TV\alpha/C_p<0$，绝热加压降温。
+
+    （3）$\dd U=-p\dd V>0$；$\dd U=C_V\dd T+(\partial U/\partial V)_T\dd V$，$\dd T<0$、$\dd V<0$，需$(\partial U/\partial V)_T<0$；能量方程$(\partial U/\partial V)_T=T\alpha/\kappa_T-p<0$。压缩使分子间势能升高，功和一部分热运动能量变成势能。理想气体$U=U(T)$，$\dd U>0$即$\dd T>0$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    [热容与焓](lesson:physics.thermal-physics.heat-capacity)第 6 题说，气体节流（throttling）前后的焓（enthalpy）相等。
+
+    （1）把熵看成$T$、$p$的函数，由$\dd H=T\dd S+V\dd p$证明焦耳-汤姆孙系数（Joule–Thomson coefficient）$\pdvc TpH=\frac V{C_p}(T\alpha-1)$。
+
+    （2）理想气体节流后温度为什么不变？室温的空气节流后温度略有下降，它的$T\alpha$比 1 大还是小？
+
+    （3）室温的氢气节流后温度反而略有升高。同一种气体节流后升温还是降温，由什么决定？为什么要先把氢气冷到足够低的温度，才能靠节流把它液化（liquefaction）？
+  hints:
+    - |
+      （1）把$\dd S$用$\dd T$、$\dd p$写出来，代进$\dd H$，再令$\dd H=0$。（2）理想气体的$\alpha$是多少？节流时压强降低，$\dd p<0$。（3）$T\alpha-1$的正负会不会随温度变？
+    - |
+      （1）$\dd S=\frac{C_p}T\dd T+\pdvc SpT\dd p=\frac{C_p}T\dd T-V\alpha\,\dd p$。（2）$T\alpha=1$时系数为零；系数为正时，$\dd p<0$给出$\dd T<0$。（3）分子之间的吸引让气体膨胀时降温，分子本身占的体积起相反的作用；温度越高，吸引越不重要。
+    - |
+      （1）由$\pdvc STp=\frac{C_p}T$和麦克斯韦关系$\pdvc SpT=-\pdvc VTp=-V\alpha$，$\dd S=\frac{C_p}T\dd T-V\alpha\,\dd p$。代入$\dd H=T\dd S+V\dd p$，得$\dd H=C_p\dd T+V(1-T\alpha)\,\dd p$。节流前后$\dd H=0$，所以$\pdvc TpH=\frac V{C_p}(T\alpha-1)$。
+
+      （2）理想气体$\alpha=\frac1T$，$T\alpha=1$，系数为零，节流前后温度不变，和[热容与焓](lesson:physics.thermal-physics.heat-capacity)第 6 题第 3 问一致。节流时压强降低，室温的空气温度下降，说明系数是正的，$T\alpha>1$：它受热膨胀得比理想气体还多一点。
+
+      （3）由$T\alpha-1$的正负决定，而它随温度（和压强）变。分子之间的吸引让气体膨胀时降温，像[热力学第一定律](lesson:physics.thermal-physics.first-law)第 6 题的自由膨胀；分子本身占的体积起相反的作用。温度越高，分子的热运动越剧烈，吸引越不重要，$T\alpha-1$就由正变负；变号处的温度叫作转换温度（inversion temperature）。
+
+      用第 6 题的范德瓦耳斯方程估计：把方程乘开、略去$ab$一项，$pV\approx nRT+nbp-\frac{an^2}V$；压强不大，最后一项再代$V\approx\frac{nRT}p$，得$V\approx\frac{nRT}p+nb-\frac{na}{RT}$。代入（1）的式子，系数约为$\frac1{C_{p,\mathrm m}}\bigl(\frac{2a}{RT}-b\bigr)$，转换温度约为$\frac{2a}{Rb}$。氢气的$a=0.02476\,\mathrm{Pa\cdot m^6/mol^2}$、$b=2.661\times10^{-5}\,\mathrm{m^3/mol}$，算出约$220\,\mathrm K$（实测约$200\,\mathrm K$），室温比它高，所以节流升温。先用液氮之类把氢气冷到转换温度以下，节流才降温，一次次节流越来越冷，最后液化。
+  reference: |
+    （1）$\dd S=(C_p/T)\dd T+(\partial S/\partial p)_T\dd p=(C_p/T)\dd T-V\alpha\dd p$；$\dd H=T\dd S+V\dd p=C_p\dd T+V(1-T\alpha)\dd p=0$，得$(\partial T/\partial p)_H=V(T\alpha-1)/C_p$。
+
+    （2）理想气体$T\alpha=1$，系数为零。室温空气节流降温（$\dd p<0$、$\dd T<0$），系数为正，$T\alpha>1$。
+
+    （3）符号由$T\alpha-1$决定，随温度、压强变；高温下吸引不重要，系数变负，变号处是转换温度。范德瓦耳斯气体低压时，方程乘开、略去$ab$一项，$pV_{\mathrm m}\approx RT+bp-a/V_{\mathrm m}$，最后一项代$V_{\mathrm m}\approx RT/p$，得$V_{\mathrm m}\approx RT/p+b-a/(RT)$，$T(\partial V_{\mathrm m}/\partial T)_p-V_{\mathrm m}=2a/(RT)-b$，转换温度约$2a/(Rb)$；氢气约$224\,\mathrm K$（实测约$202\,\mathrm K$）。室温高于它，节流升温；须先预冷（如液氮）到转换温度以下，节流才降温、逐级冷却直至液化。

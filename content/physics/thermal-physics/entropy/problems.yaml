@@ -1,0 +1,230 @@
+- id: p1
+  tier: easy
+  statement: |
+    $1.50\,\mathrm{mol}$理想气体放在$350\,\mathrm K$的热库里，可逆地等温膨胀，从热库吸热$2.10\,\mathrm{kJ}$。气体的熵变是多少？
+  answer:
+    type: number
+    value: 2100/350
+    unit: |
+      $\mathrm{J/K}$
+  hints:
+    - |
+      过程可逆，可以直接用熵的定义。等温时，$\frac{\delta Q}T$里的$T$变不变？
+    - |
+      温度一直是$350\,\mathrm K$，$\Delta S=\int\frac{\delta Q}T=\frac1T\int\delta Q=\frac QT$。
+    - |
+      $\Delta S=\frac{2100\,\mathrm J}{350\,\mathrm K}=6.00\,\mathrm{J/K}$，物质的量（amount of substance）用不着。
+  solution: |
+    过程可逆，可以沿它直接用熵的定义算。温度始终是$350\,\mathrm K$，$\Delta S=\int\frac{\delta Q}T=\frac QT=\frac{2100\,\mathrm J}{350\,\mathrm K}=6.00\,\mathrm{J/K}$。物质的量用不着；用$\Delta S=nR\ln\frac{V_2}{V_1}$算也一样，因为等温时吸的热$Q=nRT\ln\frac{V_2}{V_1}$。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于熵的说法，哪些正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        系统经历任何过程，熵变都等于各小段的$\frac{\delta Q}T$之和，只要$T$取系统自己的温度
+      - |
+        系统经历一个不可逆的循环，回到原来的状态，它的熵变是零
+      - |
+        连接同样两个平衡态的两条可逆路径，沿它们吸收的热量一般不同，$\int\frac{\delta Q}T$却相同
+      - |
+        系统经历可逆循环时，吸收的净热量一定是零
+      - |
+        系统沿可逆过程放热时，它的熵增加
+    value: [2, 3]
+  hints:
+    - |
+      熵是不是状态函数？熵的定义要求沿什么样的过程积分？可逆循环里等于零的是哪个量？
+    - |
+      A 想想叶轮慢慢搅拌绝热容器里的气体；B 回到原来的状态，状态函数怎样变；C 对照定义熵之前的推导；D 分清$\oint\frac{\delta Q}T$和净吸热；E 看$\dd S=\frac{\delta Q}T$的正负。
+    - |
+      选 B、C。A 错：叶轮慢慢搅拌绝热容器里的气体，过程准静态，系统的温度有确定的值，每一小段$\delta Q=0$，熵却增加了，$\dd S=\frac{\delta Q}T$不成立。B 对：熵是状态函数，回到原来的状态，熵也回到原来的值，不管循环可不可逆；克劳修斯不等式说的是$\sum_i\frac{Q_i}{T_i}\le0$（$T_i$是热库的温度），那不是熵变。C 对：由可逆循环的$\oint\frac{\delta Q}T=0$，沿可逆路径的$\int\frac{\delta Q}T$只看始末状态，热量却和路线有关。
+
+      D 错：可逆循环里等于零的是$\oint\frac{\delta Q}T$；一圈下来内能不变，净吸热等于净功，没有摩擦的卡诺循环可逆，净吸热就是它做的功，不是零。E 错：可逆时$\dd S=\frac{\delta Q}T$，热力学温度是正的，放热时$\delta Q<0$，熵减少。
+  solution: |
+    选 B、C。A 错：叶轮慢慢搅拌绝热容器里的气体，温度有确定的值，每一小段都不吸热，熵却增加了：过程不可逆时，各小段的$\frac{\delta Q}T$加起来不一定等于熵变。B 对：熵是状态函数，循环回到原来的状态，熵变是零，可逆不可逆都一样；克劳修斯不等式说的是$\sum_i\frac{Q_i}{T_i}\le0$（$T_i$是热库的温度），那不是熵变。C 对：这正是熵能定义的原因，热量和路线有关，沿可逆路径的$\int\frac{\delta Q}T$只看始末状态。
+
+    D 错：可逆循环里$\oint\frac{\delta Q}T=0$，净吸热却等于净功，没有摩擦的卡诺循环就不是零。E 错：可逆时$\dd S=\frac{\delta Q}T$，$T>0$，放热时熵减少。
+
+- id: p3
+  tier: medium
+  statement: |
+    $2.00\,\mathrm{mol}$单原子理想气体（monatomic ideal gas）从$300\,\mathrm K$、$10.0\,\mathrm L$的平衡态变到$450\,\mathrm K$、$25.0\,\mathrm L$的平衡态，中间经过什么过程不知道。气体的熵变是多少？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 2*(1.5*8.31446261815324*log(450/300) + 8.31446261815324*log(25/10))
+    unit: |
+      $\mathrm{J/K}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      熵是状态函数，熵变只看始末状态，可以沿任意一条可逆路径算。单原子理想气体的$C_{V,\mathrm m}$是多少？
+    - |
+      由$S=nC_{V,\mathrm m}\ln T+nR\ln V+$常数，$\Delta S=nC_{V,\mathrm m}\ln\frac{T_2}{T_1}+nR\ln\frac{V_2}{V_1}$，其中$C_{V,\mathrm m}=\frac32R$。
+    - |
+      升温的一项是$2.00\times\frac32\times8.314\times\ln1.5\,\mathrm{J/K}\approx10.11\,\mathrm{J/K}$，膨胀的一项是$2.00\times8.314\times\ln2.5\,\mathrm{J/K}\approx15.24\,\mathrm{J/K}$，合起来$\Delta S\approx25.35\,\mathrm{J/K}$，保留三位有效数字是$25.4\,\mathrm{J/K}$。
+  solution: |
+    熵是状态函数，不管中间经过什么过程，熵变都能沿一条可逆路径算，直接用讲解里理想气体的$S$：$\Delta S=nC_{V,\mathrm m}\ln\frac{T_2}{T_1}+nR\ln\frac{V_2}{V_1}$。单原子理想气体$C_{V,\mathrm m}=\frac32R$，两项分别约是$10.11\,\mathrm{J/K}$和$15.24\,\mathrm{J/K}$，合起来约$25.35\,\mathrm{J/K}$，保留三位有效数字是$25.4\,\mathrm{J/K}$。比如先在$300\,\mathrm K$下可逆地等温膨胀到$25.0\,\mathrm L$，再保持体积不变、可逆地加热到$450\,\mathrm K$，两段的熵变正好是这两项。
+
+- id: p4
+  tier: medium
+  statement: |
+    一个系统循环工作，每个循环在$600\,\mathrm K$的热库吸热$900\,\mathrm J$，在$400\,\mathrm K$的热库吸热$400\,\mathrm J$，此外只向$250\,\mathrm K$的热库放热。
+
+    依次求每个循环至少要向$250\,\mathrm K$的热库放热多少、对外做功最多多少。
+  answer:
+    type: tuple
+    value: [250*(900/600 + 400/400), 900 + 400 - 250*(900/600 + 400/400)]
+    unit: |
+      $\mathrm J$
+  hints:
+    - |
+      热力学第二定律给放热定了什么下限？一个循环下来内能不变，对外做的功和热量有什么关系？
+    - |
+      记放热为$Q_{\text{放}}$，由克劳修斯不等式，$\frac{900\,\mathrm J}{600\,\mathrm K}+\frac{400\,\mathrm J}{400\,\mathrm K}-\frac{Q_{\text{放}}}{250\,\mathrm K}\le0$。对外做的功$W=900\,\mathrm J+400\,\mathrm J-Q_{\text{放}}$。
+    - |
+      $Q_{\text{放}}\ge250\,\mathrm K\times2.5\,\mathrm{J/K}=625\,\mathrm J$，$W\le1300\,\mathrm J-625\,\mathrm J=675\,\mathrm J$；循环可逆时取等号。
+  solution: |
+    放热记成负的吸热，由克劳修斯不等式，$\frac{900\,\mathrm J}{600\,\mathrm K}+\frac{400\,\mathrm J}{400\,\mathrm K}-\frac{Q_{\text{放}}}{250\,\mathrm K}\le0$，所以$Q_{\text{放}}\ge625\,\mathrm J$。一个循环内能不变，对外做的功等于净吸热，$W=1300\,\mathrm J-Q_{\text{放}}\le675\,\mathrm J$；循环可逆时两处都取等号。这时热机效率是$\frac{675}{1300}\approx0.52$，比只在$600\,\mathrm K$吸热、向$250\,\mathrm K$放热的可逆热机的$1-\frac{250}{600}\approx0.58$低：在$400\,\mathrm K$吸的热，能变成功的比例小一些。
+
+- id: p5
+  tier: hard
+  statement: |
+    讲解里只写了克劳修斯不等式的证明思路，这里把它写完整。系统经历一个循环，其间只和温度为$T_1,\dots,T_k$的热库交换热量，从第$i$个热库吸热$Q_i$（放热时为负）；另有一个温度$T_0$高于各个$T_i$的热库。
+
+    （1）借助$k$台分别工作在$T_0$和各个$T_i$之间的可逆热机，证明$\sum_{i=1}^k\frac{Q_i}{T_i}\le0$。
+
+    （2）证明循环是可逆过程时取等号。
+
+    （3）把不等式里的$T_i$换成摄氏温度（Celsius temperature），还成立吗？举一个例子。
+  hints:
+    - |
+      （1）让每台可逆热机替系统把热库$T_i$的账结清：它要和热库$T_i$、$T_0$各交换多少热量？合起来，整套装置只和哪个热库交换热量？（2）可逆的循环倒过来运行，每个$Q_i$怎样变？（3）拿一台工作在$100\,^\circ\mathrm C$和$50\,^\circ\mathrm C$之间的可逆热机，正着、倒着各试一次。
+    - |
+      （1）第$i$台向热库$T_i$送热$Q_i$，由热力学温标的规定，它从热库$T_0$吸热$\frac{T_0}{T_i}Q_i$。系统和各台热机都回到原来的状态，热库$T_i$没有净变化，整套装置只从热库$T_0$吸热$T_0\sum_i\frac{Q_i}{T_i}$。（2）倒过来的循环从热库$T_i$吸热$-Q_i$。（3）$\frac{Q_{\mathrm L}}{Q_{\mathrm H}}=\frac{323.15}{373.15}$，正着是从$100\,^\circ\mathrm C$的热库吸热$Q_{\mathrm H}$、向$50\,^\circ\mathrm C$的热库放热$Q_{\mathrm L}$，倒过来吸、放对调；两种情形各算一遍，看和的正负。
+    - |
+      （1）第$i$台可逆热机工作在$T_0$和$T_i$之间，调好大小，使它每个循环向热库$T_i$送热$Q_i$；$Q_i<0$时它倒过来当制冷机，从热库$T_i$取走$-Q_i$。由热力学温标的规定，可逆热机和两个热库交换的热量之比等于两者的热力学温度之比，和工作物质（working substance）无关，所以它从热库$T_0$吸热$\frac{T_0}{T_i}Q_i$（$Q_i<0$时是向热库$T_0$放热）。
+
+      让系统走一个循环，各台热机也各走一个循环。系统和各台热机都回到原来的状态，热库$T_i$给了系统$Q_i$、又从热机得回$Q_i$，没有净变化；整套装置只和热库$T_0$交换了热量$Q_0=T_0\sum_i\frac{Q_i}{T_i}$，内能不变，由热力学第一定律，对外做的总功也是$Q_0$。如果$Q_0>0$，就是从单一热库吸热、全部变成了功，此外没有别的变化，违反开尔文表述；所以$Q_0\le0$，又$T_0>0$，得$\sum_i\frac{Q_i}{T_i}\le0$。
+
+      （2）循环可逆时，能倒过来运行，经过同样的状态，和同样的热库交换热量，只是每个$Q_i$变号。对倒过来的循环用（1），得$\sum_i\frac{-Q_i}{T_i}\le0$，和（1）合起来就是$\sum_i\frac{Q_i}{T_i}=0$。
+
+      （3）不成立。工作在$100\,^\circ\mathrm C$和$50\,^\circ\mathrm C$之间的可逆热机，吸热$Q_{\mathrm H}$、放热$Q_{\mathrm L}$（都取正值），$\frac{Q_{\mathrm L}}{Q_{\mathrm H}}=\frac{323.15}{373.15}\approx0.866$。把它倒过来当制冷机，就从$50\,^\circ\mathrm C$的热库吸热$Q_{\mathrm L}$、向$100\,^\circ\mathrm C$的热库放热$Q_{\mathrm H}$；用摄氏温度算，这个循环的和是
+
+      $$
+      \frac{Q_{\mathrm L}}{50}-\frac{Q_{\mathrm H}}{100}\approx Q_{\mathrm H}\Bigl(\frac{0.866}{50}-\frac1{100}\Bigr)\approx0.0073\,Q_{\mathrm H}>0 ,
+      $$
+
+      不等式不成立。正着运行时和约是$-0.0073\,Q_{\mathrm H}$，循环可逆，却不取等号。低温热库在$0\,^\circ\mathrm C$时还会除以零。证明里用的$\frac{T_0}{T_i}$正是热力学温标规定的比值，所以$T_i$必须是热力学温度。
+  reference: |
+    （1）第$i$台可逆热机在$T_0$、$T_i$之间，每循环向热库$T_i$送热$Q_i$（$Q_i<0$时反转为制冷机），由热力学温标从$T_0$吸热$\frac{T_0}{T_i}Q_i$。系统与各热机各走一个循环后都复原，各热库$T_i$净变化为零，整体只从$T_0$吸热$Q_0=T_0\sum_i\frac{Q_i}{T_i}$，由第一定律全部变为功。若$Q_0>0$则违反开尔文表述，故$Q_0\le0$，$\sum_i\frac{Q_i}{T_i}\le0$。
+
+    （2）可逆循环反向运行，与同样的热库交换$-Q_i$，由（1）得$-\sum_i\frac{Q_i}{T_i}\le0$，故取等号。
+
+    （3）不成立。$100\,^\circ\mathrm C$、$50\,^\circ\mathrm C$间的可逆热机$\frac{Q_{\mathrm L}}{Q_{\mathrm H}}=\frac{323.15}{373.15}\approx0.866$，反转为制冷机（从$50\,^\circ\mathrm C$吸热$Q_{\mathrm L}$、向$100\,^\circ\mathrm C$放热$Q_{\mathrm H}$），按摄氏温度$\frac{Q_{\mathrm L}}{50}-\frac{Q_{\mathrm H}}{100}\approx+0.0073Q_{\mathrm H}>0$，违反不等式；正转时约$-0.0073Q_{\mathrm H}$，可逆却不取等号。低温热库为$0\,^\circ\mathrm C$时无意义；在$0\,^\circ\mathrm C$以下时正转就违反，如$-10\,^\circ\mathrm C$，$\frac{Q_{\mathrm H}}{100}+\frac{Q_{\mathrm L}}{10}>0$。$T_i$必须是热力学温度。
+
+- id: p6
+  tier: hard
+  statement: |
+    气体分子本身占有体积（见[理想气体状态方程](lesson:physics.thermal-physics.ideal-gas-law)第 7 题）。设一定量的某种气体满足$p(V-V_0)=nRT$，$V_0$是常量，$V>V_0$；它的内能$U=nC_{V,\mathrm m}T$，$C_{V,\mathrm m}$也是常量，只做体积变化的功。
+
+    （1）写出沿可逆过程吸的热$\delta Q$，证明$\frac{\delta Q}T$是某个函数$S(T,V)$的全微分，并求出$S$。
+
+    （2）可逆的绝热过程中，$T$和$V$的什么组合保持不变？
+
+    （3）气体在温度$T$下可逆地等温膨胀，体积从$V_1$变到$V_2$。先由$S$求它吸的热，再由热力学第一定律直接算一遍，核对两者相同。
+  hints:
+    - |
+      （1）照讲解里理想气体的做法，$p$换成$\frac{nRT}{V-V_0}$；状态平面上$T>0$、$V>V_0$是什么形状？（2）可逆的绝热过程熵不变。（3）等温时$Q=T\Delta S$；这种气体等温膨胀时内能变不变？
+    - |
+      （1）$\frac{\delta Q}T=\frac{nC_{V,\mathrm m}}T\,\dd T+\frac{nR}{V-V_0}\,\dd V$，两个系数各只含一个变量。（2）$\ln T+\frac R{C_{V,\mathrm m}}\ln(V-V_0)$不变。（3）$U$只和$T$有关，等温时$\Delta U=0$，$Q=W=\int p\,\dd V$。
+    - |
+      （1）沿可逆过程，由热力学第一定律，$\delta Q=\dd U+p\,\dd V$，其中$\dd U=nC_{V,\mathrm m}\dd T$，$p=\frac{nRT}{V-V_0}$。除以$T$，$\frac{\delta Q}T=\frac{nC_{V,\mathrm m}}T\,\dd T+\frac{nR}{V-V_0}\,\dd V$，$\dd T$的系数只含$T$，$\dd V$的系数只含$V$，两个系数满足$\frac{\partial}{\partial V}\Bigl(\frac{nC_{V,\mathrm m}}T\Bigr)=\frac{\partial}{\partial T}\Bigl(\frac{nR}{V-V_0}\Bigr)=0$。状态平面上$T>0$、$V>V_0$是矩形，由恰当方程（exact equation）的判别法，它是恰当的，势函数是$S=nC_{V,\mathrm m}\ln T+nR\ln(V-V_0)+$常数，沿任何可逆过程$\dd S=\frac{\delta Q}T$。
+
+      （2）可逆的绝热过程是等熵过程，$S$不变，也就是$\ln T+\frac R{C_{V,\mathrm m}}\ln(V-V_0)$不变，所以$T(V-V_0)^{R/C_{V,\mathrm m}}$保持不变。$V_0=0$时，由$\frac R{C_{V,\mathrm m}}=\gamma-1$，它就是理想气体的$TV^{\gamma-1}$。
+
+      （3）等温时$Q=T\Delta S=nRT\ln\frac{V_2-V_0}{V_1-V_0}$。另一方面，$U$只和$T$有关，$\Delta U=0$，由热力学第一定律$Q=W=\int_{V_1}^{V_2}p\,\dd V$；代入$p=\frac{nRT}{V-V_0}$积分，同样得$nRT\ln\frac{V_2-V_0}{V_1-V_0}$，两者相同。
+  reference: |
+    （1）$\delta Q=nC_{V,\mathrm m}\dd T+\frac{nRT}{V-V_0}\dd V$，$\frac{\delta Q}T=\frac{nC_{V,\mathrm m}}T\dd T+\frac{nR}{V-V_0}\dd V$，系数各只含一个变量，交叉偏导数都为零；区域$T>0$、$V>V_0$是矩形，恰当。$S=nC_{V,\mathrm m}\ln T+nR\ln(V-V_0)+$常数。
+
+    （2）$S$不变：$T(V-V_0)^{R/C_{V,\mathrm m}}=$常数；$V_0=0$时为$TV^{\gamma-1}=$常数。
+
+    （3）$Q=T\Delta S=nRT\ln\frac{V_2-V_0}{V_1-V_0}$；由第一定律，$\Delta U=0$，$Q=W=\int_{V_1}^{V_2}\frac{nRT}{V-V_0}\dd V=nRT\ln\frac{V_2-V_0}{V_1-V_0}$，一致。
+
+- id: p7
+  tier: thinking
+  statement: |
+    [恰当方程](lesson:math.ode.exact-equations#def-exact-integrating-factor)一节说过，积分因子不唯一。
+
+    （1）对$C_{V,\mathrm m}$不随温度变、只做体积变化的功的理想气体，验证$V^{\gamma-1}$也是沿可逆过程吸的热$\delta Q$的积分因子。乘出来的是哪个函数的全微分？把它写成熵$S$的函数。
+
+    （2）一般地，设一元函数$g$有连续的导数，$g'$处处不为零。证明$\frac{g'(S)}T$也是$\delta Q$的积分因子。
+
+    （3）积分因子这么多，热力学里为什么偏偏用$\frac1T$来定义熵？从两方面想：要写出$V^{\gamma-1}$、$\frac{g'(S)}T$和$\frac1T$，各要先知道系统的什么？两种$\gamma$不同的理想气体各装一个气缸，温度始终相同，把它们看成一个系统，可逆地吸热时哪些因子还管用？
+  hints:
+    - |
+      （1）用$C_{V,\mathrm m}(\gamma-1)=R$，把$V^{\gamma-1}\delta Q$凑成某个函数的全微分；想想绝热过程里什么保持不变。（2）$\dd g(S)=g'(S)\,\dd S$。（3）$V^{\gamma-1}$里的$\gamma$、$g'(S)$里的$S$要从哪里来，$\frac1T$又要从哪里来？两种气体看成一个系统吸热时，什么量对两边都一样？
+    - |
+      （1）$\delta Q=nC_{V,\mathrm m}\bigl(\dd T+(\gamma-1)\frac TV\dd V\bigr)$，乘上$V^{\gamma-1}$正好是$nC_{V,\mathrm m}\dd\bigl(TV^{\gamma-1}\bigr)$；再由$S=nC_{V,\mathrm m}\ln T+nR\ln V+$常数解出$TV^{\gamma-1}$。（2）$g'(S)\frac{\delta Q}T=g'(S)\,\dd S$。（3）$\frac1T$量出温度就写得出。两种气体一起吸热$\delta Q=\delta Q_{\mathrm A}+\delta Q_{\mathrm B}$，除以共同的$T$得$\dd S_{\mathrm A}+\dd S_{\mathrm B}$；换成$V_{\mathrm A}^{\gamma_{\mathrm A}-1}$，看看 A 的体积不变时会怎样。
+    - |
+      （1）由$C_{V,\mathrm m}(\gamma-1)=R$，沿可逆过程
+
+      $$
+      \delta Q=nC_{V,\mathrm m}\dd T+\frac{nRT}V\dd V=nC_{V,\mathrm m}\Bigl(\dd T+(\gamma-1)\frac TV\dd V\Bigr) .
+      $$
+
+      乘上$V^{\gamma-1}$，括号里变成$V^{\gamma-1}\dd T+(\gamma-1)TV^{\gamma-2}\dd V=\dd\bigl(TV^{\gamma-1}\bigr)$，所以$V^{\gamma-1}$也是积分因子，乘出来的是$nC_{V,\mathrm m}TV^{\gamma-1}$的全微分。由$S=nC_{V,\mathrm m}\ln T+nR\ln V+$常数，$\ln\bigl(TV^{\gamma-1}\bigr)=\frac S{nC_{V,\mathrm m}}+$常数，所以这个函数是$e^{S/(nC_{V,\mathrm m})}$乘上一个正的常数，随$S$单调增加，它的等值线（level curve）正是绝热线。
+
+      （2）$\dd g(S)=g'(S)\,\dd S=\frac{g'(S)}T\,\delta Q$，$g'$连续、处处不为零，所以$\frac{g'(S)}T$是积分因子；（1）就是$g(S)$取$e^{S/(nC_{V,\mathrm m})}$的常数倍的情形。
+
+      （3）第一，写出$V^{\gamma-1}$要先知道系统是$C_{V,\mathrm m}$不变的理想气体、$\gamma$是多少，换一种$\gamma$不同的理想气体就不管用；写出$\frac{g'(S)}T$要先有熵，没法反过来用它定义熵。写出$\frac1T$只要量出系统的热力学温度，状态方程（equation of state）、热容都不必知道，而对任何物质，$\frac1T$都是积分因子。
+
+      第二，两种气体温度始终相同，$\delta Q=\delta Q_{\mathrm A}+\delta Q_{\mathrm B}$，除以共同的$T$得$\dd S_{\mathrm A}+\dd S_{\mathrm B}$，合起来的熵就是两者之和。$V_{\mathrm A}^{\gamma_{\mathrm A}-1}$就不行：A 的体积不变时，它只是一个常数，乘不乘都一样，而这时$\delta Q$里$\dd T$的系数不含$V_{\mathrm B}$，$\dd V_{\mathrm B}$的系数$\frac{n_{\mathrm B}RT}{V_{\mathrm B}}$却随$T$变，不恰当。取$S=S_{\mathrm A}+S_{\mathrm B}$，$\frac{g'(S)}T$仍是积分因子；可只要$g$不是一次函数，$g(S_{\mathrm A}+S_{\mathrm B})$就不恒等于$g(S_{\mathrm A})+g(S_{\mathrm B})$再加一个常数，这样的量不能把两边的直接相加。
+
+      第三，克劳修斯不等式里用的也是$\frac1T$，熵因此还能用来判断过程的方向，见[熵变的计算与熵增原理](lesson:physics.thermal-physics.entropy-increase)。
+  reference: |
+    （1）$\delta Q=nC_{V,\mathrm m}\bigl(\dd T+(\gamma-1)\frac TV\dd V\bigr)$，$V^{\gamma-1}\delta Q=nC_{V,\mathrm m}\dd\bigl(TV^{\gamma-1}\bigr)$，是积分因子；$TV^{\gamma-1}=\exp\bigl(\frac{S-S_*}{nC_{V,\mathrm m}}\bigr)$，乘出来的函数是$nC_{V,\mathrm m}\exp\bigl(\frac{S-S_*}{nC_{V,\mathrm m}}\bigr)$，随$S$单调增加，等值线是绝热线。
+
+    （2）$\dd g(S)=g'(S)\dd S=\frac{g'(S)}T\delta Q$，系数连续，$g'\ne0$。（1）对应$g\propto e^{S/(nC_{V,\mathrm m})}$。
+
+    （3）写出$V^{\gamma-1}$要先知道状态方程、$C_{V,\mathrm m}$不变和$\gamma$，换了$\gamma$就不是积分因子；写出$\frac{g'(S)}T$要先知道熵；写出$\frac1T$只要量温度，不必知道物质的性质。同温的两个系统合起来时$\frac{\delta Q_{\mathrm A}+\delta Q_{\mathrm B}}T=\dd(S_{\mathrm A}+S_{\mathrm B})$，熵可加；$V_{\mathrm A}^{\gamma_{\mathrm A}-1}$不行（$V_{\mathrm A}$固定时它是常数，而$(n_{\mathrm A}C_{\mathrm A}+n_{\mathrm B}C_{\mathrm B})\dd T+\frac{n_{\mathrm B}RT}{V_{\mathrm B}}\dd V_{\mathrm B}$不恰当，$C_{\mathrm A}$、$C_{\mathrm B}$是两种气体的定容摩尔热容），$\frac{g'(S_{\mathrm A}+S_{\mathrm B})}T$虽是积分因子，$g(S_{\mathrm A}+S_{\mathrm B})=g(S_{\mathrm A})+g(S_{\mathrm B})+$常数只在$g$是一次函数时成立。另外克劳修斯不等式也以$\frac1T$出现，熵因此能判断过程方向。
+
+- id: p8
+  tier: thinking
+  statement: |
+    [热机与卡诺循环](lesson:physics.thermal-physics.heat-engines)第 5 题的奥托循环（Otto cycle）依次是准静态的绝热压缩（1→2）、等容过程（isochoric process）中吸热（2→3）、准静态的绝热膨胀（3→4）、等容过程中放热（4→1），工作物质是$C_{V,\mathrm m}$不随温度变、只做体积变化的功的理想气体，没有摩擦。
+
+    （1）它在$T$-$S$图上是什么形状？两段等容过程在图上各是什么样的曲线？
+
+    （2）换成任意一个对外做正功的可逆循环，一圈里系统的温度始终在$T_{\min}$和$T_{\max}$之间，吸的热总共是$Q_{\mathrm H}$，放的热总共是$Q_{\mathrm L}$（都取正值）。从$T$-$S$图证明它的热机效率$1-\frac{Q_{\mathrm L}}{Q_{\mathrm H}}$不超过$1-\frac{T_{\min}}{T_{\max}}$。什么形状的循环取等号？
+
+    （3）回到奥托循环，最低、最高温度$T_1$、$T_3$不变，压缩比（compression ratio）$r=\frac{V_{\max}}{V_{\min}}$变大时，图形怎样变？从图上说明热机效率为什么提高。每个循环的净功也一直变大吗？
+  hints:
+    - |
+      （1）两段绝热过程可逆，熵不变；等容时$\dd S=nC_{V,\mathrm m}\frac{\dd T}T$，$T$怎样随$S$变？（2）可逆时$\delta Q=T\dd S$，在图上往右走、往左走各是吸热还是放热？走完一圈，往右一共走了多少，往左就一共走了多少。（3）由那一题，$T_2=T_1r^{\gamma-1}$，$T_3=T_4r^{\gamma-1}$，看图形的左右两边、上下两边各怎样变。
+    - |
+      （1）沿等容过程的曲线，$T$随$S$按指数增长，越往右越陡；体积小的那条在上面。（2）往右走的各段熵一共增加$\Delta S$，往左走的各段也一共减少$\Delta S$；把每一段和高为$T_{\max}$或$T_{\min}$的矩形比。（3）$T_2$升高、$T_4$降低，两条竖直线相隔$nC_{V,\mathrm m}\ln\frac{T_3}{T_2}$；净功是围成的面积$nC_{V,\mathrm m}(T_3-T_2-T_4+T_1)$，$T_2T_4$不变。
+    - |
+      （1）两段绝热过程准静态、只做体积变化的功、没有摩擦，是可逆的，在$T$-$S$图上是竖直线段。等容过程准静态、不做功，$\delta Q=\dd U=nC_{V,\mathrm m}\dd T$，所以$\dd S=nC_{V,\mathrm m}\frac{\dd T}T$，等容过程中$T$随$S$按$e^{S/(nC_{V,\mathrm m})}$的比例增长，图上是向右上弯、越来越陡的曲线。熵相同时$TV^{\gamma-1}$相同，体积小，温度就高，所以体积小的那条在上面。
+
+      循环在图上顺时针走：1→2 竖直向上，2→3 沿上面那条曲线向右上，3→4 竖直向下，4→1 沿下面那条曲线向左下。围成的图形左右两边竖直，上下两边是这样的曲线。
+
+      （2）可逆时$\delta Q=T\dd S$，$T>0$，所以往右走（熵增加）的各段吸热，往左走的各段放热。走完一圈，熵回到原来的值，往右走的各段熵一共增加多少，往左走的各段就一共减少多少，记作$\Delta S$；循环做正功，$Q_{\mathrm H}>0$，所以$\Delta S>0$。吸的热是往右走的各段下面的面积之和，温度都不超过$T_{\max}$，$Q_{\mathrm H}\le T_{\max}\Delta S$；放的热是往左走的各段下面的面积之和，温度都不低于$T_{\min}$，$Q_{\mathrm L}\ge T_{\min}\Delta S$。于是$\frac{Q_{\mathrm L}}{Q_{\mathrm H}}\ge\frac{T_{\min}}{T_{\max}}$，热机效率不超过$1-\frac{T_{\min}}{T_{\max}}$。
+
+      要取等号，往右走的各段温度得都是$T_{\max}$，往左走的各段得都是$T_{\min}$，其余各段是等熵过程。曲线不自交时，图形就是矩形，也就是没有摩擦的卡诺循环。奥托循环从$T_2$到$T_3$一路升温吸热、从$T_4$到$T_1$一路降温放热，取不到等号，和那一题（2）一致。
+
+      （3）$T_2=T_1r^{\gamma-1}$，$T_4=T_3r^{1-\gamma}$，$r$变大时$T_2$升高、$T_4$降低。左边的竖直线从$T_1$到$T_2$，右边的从$T_4$到$T_3$，都变长；两条竖直线的熵记作$S_{\text{左}}$、$S_{\text{右}}$，由（1），$S_{\text{右}}-S_{\text{左}}=nC_{V,\mathrm m}\ln\frac{T_3}{T_2}$，图形变窄。上面的曲线从$T_2$升到$T_3$，整段更靠近$T_3$；下面的曲线从$T_1$升到$T_4$，整段更靠近$T_1$。
+
+      $Q_{\mathrm H}$、$Q_{\mathrm L}$是上、下两条曲线下的面积，宽度一样，所以$\frac{Q_{\mathrm L}}{Q_{\mathrm H}}$就是下面、上面两条曲线的平均高度之比。$r$变大，吸热时的温度平均起来更高，放热时的更低，这个比值变小，热机效率就提高，和$\eta=1-r^{1-\gamma}$一致；$T_2$接近$T_3$时，它接近$1-\frac{T_1}{T_3}$。
+
+      净功却不是一直变大。它是围成的面积，$W=nC_{V,\mathrm m}(T_3-T_2-T_4+T_1)$，而$T_2T_4=T_1T_3$不变，$T_2+T_4\ge2\sqrt{T_1T_3}$，所以$T_2=T_4=\sqrt{T_1T_3}$时净功最大。$r$再大，图形变窄占了上风，净功反而减小；$T_2$接近$T_3$时，热机效率接近上限，图形却窄得几乎是一条竖直线，净功趋于零。
+  reference: |
+    （1）绝热段可逆，为竖直线；等容段$\dd S=nC_{V,\mathrm m}\frac{\dd T}T$，$T\propto e^{S/(nC_{V,\mathrm m})}$，向右上弯的指数曲线，体积小的那条在上（同熵时$TV^{\gamma-1}$相同）。循环顺时针：1→2 上，2→3 沿上等容线，3→4 下，4→1 沿下等容线。
+
+    （2）$\delta Q=T\dd S$，一圈$\oint\dd S=0$，熵增加的各段总增量与熵减少的各段总减量相等，记作$\Delta S>0$（$W>0$故$Q_{\mathrm H}>0$）。$Q_{\mathrm H}=\int_{\dd S>0}T\,\dd S\le T_{\max}\Delta S$，$Q_{\mathrm L}=\int_{\dd S<0}T\,|\dd S|\ge T_{\min}\Delta S$，故$\eta\le1-\frac{T_{\min}}{T_{\max}}$。取等号当且仅当吸热全在$T_{\max}$、放热全在$T_{\min}$，其余等熵；曲线不自交时为矩形（卡诺循环）。奥托循环取不到，与热机与卡诺循环第 5 题（2）一致。
+
+    （3）$T_2=T_1r^{\gamma-1}$升、$T_4=T_3r^{1-\gamma}$降，宽$S_{\text{右}}-S_{\text{左}}=nC_{V,\mathrm m}\ln\frac{T_3}{T_2}$减小；吸热的平均温度$\frac{T_3-T_2}{\ln(T_3/T_2)}$升高，放热的平均温度$\frac{T_4-T_1}{\ln(T_4/T_1)}$降低，两者之比$\frac{T_1}{T_2}$变小，$\eta=1-r^{1-\gamma}$提高，趋于$1-\frac{T_1}{T_3}$但取不到。$W=nC_{V,\mathrm m}(T_3-T_2-T_4+T_1)$，$T_2T_4=T_1T_3$，在$T_2=T_4=\sqrt{T_1T_3}$时最大，为$nC_{V,\mathrm m}\bigl(\sqrt{T_3}-\sqrt{T_1}\bigr)^2$；$r\to1$和$T_2\to T_3$时$W\to0$。数值核对（$T_1=300\,\mathrm K$、$T_3=1500\,\mathrm K$、$\gamma=1.40$、$1\,\mathrm{mol}$）：$W$在$r\approx7.48$最大，约$9.53\,\mathrm{kJ}$；$r=20$时约$7.34\,\mathrm{kJ}$，热机效率$0.698$。

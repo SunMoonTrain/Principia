@@ -22,7 +22,7 @@ status: reviewed
 焦耳（James Prescott Joule）用下落的重物带动叶轮，搅动隔热容器里的水，水的:term[温度]{id="physics.thermal-physics.temperature"}（temperature）升高；给水里的电阻丝通电或用火加热，水也能升到同样的温度。他测得约$4.15\,\mathrm J$的功（work）和加热 1 卡（calorie，约让$1\,\mathrm g$水升温$1\,\mathrm K$的热）的效果相同；现在规定$1\,\mathrm{cal}=4.184\,\mathrm J$，课本常写$4.18\,\mathrm J$。
 
 ::anchor{id="def-adiabatic-process"}
-如果隔着一层壁，外界（surroundings）只能靠做功（推活塞、搅拌、通电）改变系统（system）的状态，这层壁叫作绝热壁（adiabatic wall），保温瓶的真空夹层近似如此；被绝热壁包着的系统经历的过程，叫作:term[绝热过程]{id="physics.thermal-physics.adiabatic-process"}（adiabatic process）。
+如果隔着一层壁，外界（surroundings）只能靠做功（推活塞、搅拌、通电）改变系统（system）的状态，这层壁叫作:term[绝热壁]{id="physics.thermal-physics.adiabatic-wall"}（adiabatic wall），保温瓶的真空夹层近似如此；被绝热壁包着的系统经历的过程，叫作:term[绝热过程]{id="physics.thermal-physics.adiabatic-process"}（adiabatic process）。
 
 为什么这样定义：冷热的影响进不来，做功的效果才能单独看。边界情况：绝热过程不要求缓慢，焦耳搅拌水时水流翻滚，不是:term[准静态过程]{id="physics.thermal-physics.quasi-static-process"}（quasi-static process）；准静态的绝热过程见[绝热过程](lesson:physics.thermal-physics.adiabatic-processes)。
 
@@ -44,7 +44,7 @@ status: reviewed
 ### 热量
 
 ::anchor{id="def-heat"}
-:term[温度]{id="physics.thermal-physics.temperature"}不同的两个系统，只要没被绝热壁隔开，即使不做功，:term[内能]{id="physics.thermal-physics.internal-energy"}也会从温度高的一方转到低的一方，这样转移的能量叫作:term[热量]{id="physics.thermal-physics.heat"}（heat），记作$Q$，系统吸热时$Q>0$。热量在直接接触的物体之间或物体内部由高温处传到低温处、物质本身并不流动，这种方式叫作:term[热传导]{id="physics.thermal-physics.heat-conduction"}（heat conduction），如铁勺的柄在热汤里变烫；传热的方式还有靠液体、气体的流动把热量带走的对流（convection）和热辐射（thermal radiation）。
+:term[温度]{id="physics.thermal-physics.temperature"}不同的两个系统，只要没被:term[绝热壁]{id="physics.thermal-physics.adiabatic-wall"}隔开，即使不做功，:term[内能]{id="physics.thermal-physics.internal-energy"}也会从温度高的一方转到低的一方，这样转移的能量叫作:term[热量]{id="physics.thermal-physics.heat"}（heat），记作$Q$，系统吸热时$Q>0$。热量在直接接触的物体之间或物体内部由高温处传到低温处、物质本身并不流动，这种方式叫作:term[热传导]{id="physics.thermal-physics.heat-conduction"}（heat conduction），如铁勺的柄在热汤里变烫；传热的方式还有靠液体、气体的流动把热量带走的对流（convection）和热辐射（thermal radiation）。
 
 为什么这样定义：传热靠温度差，做功靠力推着物体移动，两者要分开记账；热传导单独起名，是因为以后要讲导热的快慢。边界情况：物体并不「含有」热量；热辐射隔着真空也能传，保温瓶的真空夹层挡住的是热传导和对流。
 

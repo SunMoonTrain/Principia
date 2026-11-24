@@ -1,0 +1,261 @@
+- id: p1
+  tier: easy
+  statement: |
+    $100\,^\circ\mathrm C$时水和水蒸气共存，每摩尔液态水的体积约$0.0188\,\mathrm L$，每摩尔水蒸气的约$30.14\,\mathrm L$。容积$3.00\,\mathrm L$的密闭容器里只有$1.00\,\mathrm{mol}$水，温度保持$100\,^\circ\mathrm C$。最后到达平衡时，液态的水占物质的量的比例是多少？结果保留三位有效数字。
+  answer:
+    type: number
+    value: (30.14 - 3.00)/(30.14 - 0.0188)
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      液态水和水蒸气各占一部分体积，加起来等于什么？知道液态水占的比例，水蒸气占的比例也就知道了。
+    - |
+      由$V=\frac{n_{\text{液}}}nV_{\text{液}}+\frac{n_{\text{气}}}nV_{\text{气}}$和$\frac{n_{\text{气}}}n=1-\frac{n_{\text{液}}}n$，解得$\frac{n_{\text{液}}}n=\frac{V_{\text{气}}-V}{V_{\text{气}}-V_{\text{液}}}$。
+    - |
+      一共$1.00\,\mathrm{mol}$，所以$V_{\text{液}}=0.0188\,\mathrm L$，$V_{\text{气}}=30.14\,\mathrm L$，$V=3.00\,\mathrm L$，$\frac{n_{\text{液}}}n=\frac{30.14-3.00}{30.14-0.0188}\approx0.901$。
+  solution: |
+    一共$1.00\,\mathrm{mol}$，全是液体时$V_{\text{液}}=0.0188\,\mathrm L$，全是气体时$V_{\text{气}}=30.14\,\mathrm L$，容积$3.00\,\mathrm L$在两者之间，两相共存。由$V=\frac{n_{\text{液}}}nV_{\text{液}}+\bigl(1-\frac{n_{\text{液}}}n\bigr)V_{\text{气}}$，
+
+    $$
+    \frac{n_{\text{液}}}n=\frac{V_{\text{气}}-V}{V_{\text{气}}-V_{\text{液}}}=\frac{30.14-3.00}{30.14-0.0188}\approx0.901 .
+    $$
+
+    九成的水是液体，可它们只占约$0.017\,\mathrm L$，容器里几乎全被水蒸气占着。
+
+- id: p2
+  tier: easy
+  statement: |
+    单一成分的范德瓦耳斯气体，温度低于临界温度。下面的说法，哪些正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        高度为饱和蒸气压的水平线和范德瓦耳斯等温线有三个交点，中间的交点是液体、气体的物质的量各占一半的共存状态
+      - |
+        两相平衡共存时，液体里每个分子的吉布斯自由能等于气体里每个分子的
+      - |
+        在两相平衡共存的压强下，同样多的物质全是液体和全是气体时，亥姆霍兹自由能相等
+      - |
+        温度升高一点（仍低于临界温度），等面积法则定出的共存压强也升高
+      - |
+        气缸里液体和气体共存，保持温度不变，缓慢增大体积，在液体全部汽化（vaporization）以前，气体的密度一直减小
+    value: [2, 4]
+  hints:
+    - |
+      对照等面积法则的推导：共存的两相哪些量相等？范德瓦耳斯等温线上的一点代表均匀的一相，还是两相的混合物？
+    - |
+      A 看中间的交点上$\pdvc pVT$的正负，再看体积同样大的共存状态里液体占多少；B 用$G=\mu N$；C 由$F_{\text{液}}+p_{\text{饱}}V_{\text{液}}=F_{\text{气}}+p_{\text{饱}}V_{\text{气}}$比较两个$F$；D 共存压强就是饱和蒸气压，用克拉珀龙方程（Clapeyron equation）；E 在水平段上，液体、气体各自的状态变不变？
+    - |
+      选 B、D。A 错：范德瓦耳斯等温线上的点代表均匀的一相，中间的交点上$\pdvc pVT>0$，不稳定。水平段上体积同样大的共存状态是另一个状态，只是在图上也落在这一点；液体占的比例由$V=\frac{n_{\text{液}}}nV_{\text{液}}+\frac{n_{\text{气}}}nV_{\text{气}}$定，也不是一半（例 1 的等温线上，这一点的$V\approx1.09V_{\mathrm c}$，液体约占$\frac{2.349-1.09}{2.349-0.603}\approx0.72$）。
+
+      B 对：两相的化学势相等，化学势就是每个分子的吉布斯自由能。C 错：$F_{\text{液}}-F_{\text{气}}=p_{\text{饱}}(V_{\text{气}}-V_{\text{液}})>0$，液体的亥姆霍兹自由能大。
+
+      D 对：由克拉珀龙方程，$\dv{p_{\text{饱}}}T=\frac L{T\Delta V}$，汽化时潜热（latent heat）$L$和体积的增加$\Delta V$都是正的，所以温度升高，共存压强也升高。E 错：水平段上温度、压强都不变，液体、气体各自的状态也不变，气体的密度不变，变的只是两相各占多少。
+  solution: |
+    选 B、D。A 错：范德瓦耳斯等温线上的点代表均匀的一相，中间的交点上$\pdvc pVT>0$，不稳定。水平段上体积同样大的共存状态是另一个状态，只是在图上也落在这一点；液体占的比例由$V=\frac{n_{\text{液}}}nV_{\text{液}}+\frac{n_{\text{气}}}nV_{\text{气}}$定，也不是一半（例 1 的等温线上约$0.72$）。
+
+    B 对：两相的化学势相等，化学势就是每个分子的吉布斯自由能。C 错：$F_{\text{液}}-F_{\text{气}}=p_{\text{饱}}(V_{\text{气}}-V_{\text{液}})>0$，相等的是$G$，不是$F$。
+
+    D 对：共存压强就是饱和蒸气压，由克拉珀龙方程（Clapeyron equation），$\dv{p_{\text{饱}}}T=\frac L{T\Delta V}$，汽化时潜热（latent heat）$L$、体积的增加$\Delta V$都是正的。E 错：水平段上两相各自的状态不变，气体的密度不变，变的只是两相各占多少。
+
+- id: p3
+  tier: medium
+  statement: |
+    用例 1 的记号，范德瓦耳斯等温线是$p_{\mathrm r}=\frac{8T_{\mathrm r}}{3V_{\mathrm r}-1}-\frac3{V_{\mathrm r}^2}$。有一条等温线，$V_{\mathrm r}=2$的状态正好是过冷蒸气和不稳定的一段的分界。依次求这条等温线的$T_{\mathrm r}$和这个状态的$p_{\mathrm r}$。
+  answer:
+    type: tuple
+    value: [25/32, 1/2]
+  hints:
+    - |
+      这个分界是等温线上的哪一点？那里的斜率是多少？
+    - |
+      分界是回折的最高点，斜率$\pdvc{p_{\mathrm r}}{V_{\mathrm r}}{T_{\mathrm r}}=-\frac{24T_{\mathrm r}}{(3V_{\mathrm r}-1)^2}+\frac6{V_{\mathrm r}^3}$在$V_{\mathrm r}=2$处等于零。由此求出$T_{\mathrm r}$，再代回等温线的式子。
+    - |
+      $V_{\mathrm r}=2$时斜率为零，即$\frac{24T_{\mathrm r}}{25}=\frac68$，$T_{\mathrm r}=\frac{25}{32}$。代回等温线的式子，$p_{\mathrm r}=\frac85\times\frac{25}{32}-\frac34=\frac54-\frac34=\frac12$。
+  solution: |
+    分界是回折的最高点，等温线在那里斜率为零：
+
+    $$
+    \pdvc{p_{\mathrm r}}{V_{\mathrm r}}{T_{\mathrm r}}=-\frac{24T_{\mathrm r}}{(3V_{\mathrm r}-1)^2}+\frac6{V_{\mathrm r}^3}=0 .
+    $$
+
+    代$V_{\mathrm r}=2$，$\frac{24T_{\mathrm r}}{25}=\frac34$，$T_{\mathrm r}=\frac{25}{32}$；再由等温线的式子，$p_{\mathrm r}=\frac{8T_{\mathrm r}}5-\frac34=\frac54-\frac34=\frac12$。斜率的正负由$\frac{(3V_{\mathrm r}-1)^2}{4V_{\mathrm r}^3}-T_{\mathrm r}$决定，$V_{\mathrm r}>1$时它随$V_{\mathrm r}$减小（[范德瓦耳斯气体与临界点](lesson:physics.thermal-physics.van-der-waals)第 6 题（2））。所以$V_{\mathrm r}=2$左边斜率为正、右边为负，确实是最高点：左边不稳定，右边是过冷蒸气。
+
+- id: p4
+  tier: medium
+  statement: |
+    用例 1 的记号，$T_{\mathrm r}=\frac{15}{16}$的范德瓦耳斯等温线和高度$p_{\mathrm r}=\frac34$的水平线交于$V_{\mathrm r}=\frac23$、$1$、$2$三点。两者围成两块，依次求水平线上方的一块、水平线下方的一块的面积（以$p_{\mathrm c}V_{\mathrm c}$为单位），结果都保留三位有效数字。
+  answer:
+    type: tuple
+    value: [5/2*log(5/2) - 9/4, 7/4 - 5/2*log(2)]
+    unit: |
+      $p_{\mathrm c}V_{\mathrm c}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      三个交点之间，等温线在哪一段高过水平线，在哪一段低于水平线？面积是上面的减下面的再积分。
+    - |
+      $T_{\mathrm r}=\frac{15}{16}$时$p_{\mathrm r}=\frac{15}{2(3V_{\mathrm r}-1)}-\frac3{V_{\mathrm r}^2}$，它的一个原函数（antiderivative）是$\frac52\ln(3V_{\mathrm r}-1)+\frac3{V_{\mathrm r}}$。上方的一块在$1$和$2$之间，下方的一块在$\frac23$和$1$之间。
+    - |
+      从$1$到$2$的积分是$\frac52\ln\frac52-\frac32$，减去矩形的面积$\frac34$，上方的一块是$\frac52\ln\frac52-\frac94\approx0.0407$。从$\frac23$到$1$的积分是$\frac52\ln2-\frac32$，矩形的面积是$\frac34\times\frac13=\frac14$，下方的一块是$\frac14-\bigl(\frac52\ln2-\frac32\bigr)=\frac74-\frac52\ln2\approx0.0171$。
+  solution: |
+    $T_{\mathrm r}=\frac{15}{16}$时$p_{\mathrm r}=\frac{15}{2(3V_{\mathrm r}-1)}-\frac3{V_{\mathrm r}^2}$，一个原函数（antiderivative）是$\frac52\ln(3V_{\mathrm r}-1)+\frac3{V_{\mathrm r}}$。$1<V_{\mathrm r}<2$时等温线高过水平线，$\frac23<V_{\mathrm r}<1$时低于水平线，所以
+
+    $$
+    \int_1^2p_{\mathrm r}\,\dd V_{\mathrm r}-\frac34=\frac52\ln\frac52-\frac94\approx0.0407 ,
+    $$
+
+    $$
+    \frac34\times\frac13-\int_{2/3}^1p_{\mathrm r}\,\dd V_{\mathrm r}=\frac74-\frac52\ln2\approx0.0171
+    $$
+
+    依次是上方、下方的一块。上方的一块大，线画低了，共存的压强比$\frac34p_{\mathrm c}$高。照例 1 的办法，下一次的高度取平均压强$\frac34+\frac{0.0407-0.0171}{4/3}\approx0.768$，准确值约$0.7685$。
+
+- id: p5
+  tier: hard
+  statement: |
+    温度固定、低于临界温度。一定量的范德瓦耳斯气体处在均匀状态时，亥姆霍兹自由能$F$是体积$V$的函数；这些物质在共存压强下全是液体、全是气体时，体积是$V_{\text{液}}$、$V_{\text{气}}$，亥姆霍兹自由能是$F_{\text{液}}$、$F_{\text{气}}$。
+
+    （1）总体积为$V$（$V_{\text{液}}<V<V_{\text{气}}$）、分成共存的液体和气体时，亥姆霍兹自由能是两部分之和，记作$F_{\text{混}}$。证明点$(V,F_{\text{混}})$在连接$(V_{\text{液}},F_{\text{液}})$和$(V_{\text{气}},F_{\text{气}})$的线段上。
+
+    （2）在曲线$F(V)$上任取体积为$V_1$、$V_2$（$V_1<V_2$）的两点。证明：连接它们的直线在这两点都和曲线相切（这叫公切线，common tangent），当且仅当两点的压强相等（记作$h$），并且$\int_{V_1}^{V_2}p\,\dd V=h(V_2-V_1)$。
+
+    （3）证明：$V_{\text{液}}<V<V_{\text{气}}$时$F_{\text{混}}<F(V)$。这和[勒让德变换](lesson:math.vector-calculus.legendre-transform)第 8 题的「把两个凹坑之间填平」有什么联系？
+  hints:
+    - |
+      （1）总体积和总的$F$怎样用气体占的比例写出来？（2）曲线$F(V)$在一点的斜率是什么？直线的斜率又是什么？（3）把$F(V)-F_{\text{混}}$看成$V$的函数，它的导数什么时候为正，什么时候为负？
+    - |
+      （1）$V$和$F_{\text{混}}$都是$\frac{n_{\text{气}}}n$的一次函数。（2）$F'(V)=-p$，直线的斜率是$\frac{F(V_2)-F(V_1)}{V_2-V_1}=-\frac1{V_2-V_1}\int_{V_1}^{V_2}p\,\dd V$。（3）由（1）（2），$F_{\text{混}}$对$V$的斜率是$-p_{\text{饱}}$，所以$F(V)-F_{\text{混}}$的导数是$p_{\text{饱}}-p$，看等温线和水平线谁高。
+    - |
+      （1）气体占的比例是$\frac{n_{\text{气}}}n$，液体占$1-\frac{n_{\text{气}}}n$，所以
+
+      $$
+      V=V_{\text{液}}+\frac{n_{\text{气}}}n(V_{\text{气}}-V_{\text{液}}) ,\qquad F_{\text{混}}=F_{\text{液}}+\frac{n_{\text{气}}}n(F_{\text{气}}-F_{\text{液}}) .
+      $$
+
+      $\frac{n_{\text{气}}}n$从$0$变到$1$，点$(V,F_{\text{混}})$就沿直线从$(V_{\text{液}},F_{\text{液}})$走到$(V_{\text{气}},F_{\text{气}})$。
+
+      （2）温度不变时$F'(V)=-p$，曲线在两点的斜率是$-p_1$、$-p_2$；连接两点的直线斜率是$\frac{F(V_2)-F(V_1)}{V_2-V_1}=-\frac1{V_2-V_1}\int_{V_1}^{V_2}p\,\dd V$。直线过这两点，在两点都和曲线相切，就是三个斜率都相等：$p_1=p_2=\frac1{V_2-V_1}\int_{V_1}^{V_2}p\,\dd V$。记这个共同的值为$h$，就是$p_1=p_2=h$并且$\int_{V_1}^{V_2}p\,\dd V=h(V_2-V_1)$；反过来，这两条成立时三个斜率都是$-h$。
+
+      （3）共存的$V_{\text{液}}$、$V_{\text{气}}$处压强都是$p_{\text{饱}}$，又满足等面积法则，由（2），连接它们的直线是公切线，斜率是$-p_{\text{饱}}$；由（1），它就是$F_{\text{混}}$的图像。记$\psi(V)=F(V)-F_{\text{混}}$，则$\psi(V_{\text{液}})=\psi(V_{\text{气}})=0$，$\psi'(V)=p_{\text{饱}}-p$。从$V_{\text{液}}$到中间的交点，等温线低于水平线，$\psi'>0$；从中间的交点到$V_{\text{气}}$，等温线高过水平线，$\psi'<0$。所以$\psi$从零升上去、再降回零，中间处处为正，即$F_{\text{混}}<F(V)$。
+
+      联系：$F$加上一次函数$p_{\text{饱}}V$，弯的方向不变，公切线变成水平的，$F+p_{\text{饱}}V$在$V_{\text{液}}$、$V_{\text{气}}$处是两个一样深的凹坑，分成两相就是把两个凹坑之间填平。$V<V_{\text{液}}$、$V>V_{\text{气}}$时$\pdvc pVT<0$，$F$本来就是凸（convex）的，所以填平以后得到的，正是那道题说的「在$f$下方的最大的凸函数」。
+  reference: |
+    （1）$x=n_{\text{气}}/n$，$V=V_{\text{液}}+x\,\Delta V$，$F_{\text{混}}=F_{\text{液}}+x\,\Delta F$，线性，是线段。
+
+    （2）曲线斜率$F'(V_i)=-p_i$，弦斜率$-\bar p$（$\bar p$是$[V_1,V_2]$上压强的平均值）。弦在两端相切$\iff-p_1=-p_2=-\bar p\iff p_1=p_2=h$且$\int p\,\dd V=h(V_2-V_1)$。
+
+    （3）$\psi=F-F_{\text{混}}$，端点为零，$\psi'=p_{\text{饱}}-p$，在$(V_{\text{液}},V_C)$正、$(V_C,V_{\text{气}})$负（$V_C$是中间的交点），所以内部$\psi>0$，最大值等于线下方（也等于线上方）一块的面积。$F+p_{\text{饱}}V$两坑等深，填平得最大凸下方函数；两端外$\partial p/\partial V<0$，$F$凸。
+
+- id: p6
+  tier: hard
+  statement: |
+    单原子（monatomic）的范德瓦耳斯气体，均匀时的内能（internal energy）是$U=\frac32nRT-\frac{an^2}V$（[热力学第一定律](lesson:physics.thermal-physics.first-law)第 6 题）。温度$T$低于临界温度时，共存的$p_{\text{饱}}$、$V_{\text{液}}$、$V_{\text{气}}$都随$T$变化，设它们对$T$都可导。
+
+    （1）物质从液体全部变成气体，吸收的潜热（latent heat）是$L$。由$L=\Delta H$（$H$是焓，enthalpy）和等面积法则，证明$L=nRT\ln\frac{V_{\text{气}}-nb}{V_{\text{液}}-nb}$。
+
+    （2）把等面积法则的等式两边对$T$求导，证明$\dv{p_{\text{饱}}}T=\frac{nR}{V_{\text{气}}-V_{\text{液}}}\ln\frac{V_{\text{气}}-nb}{V_{\text{液}}-nb}$，再和克拉珀龙方程（Clapeyron equation）比较。
+
+    （3）温度升向临界温度时，$L$趋于多少？由例 1 的结果估计$1\,\mathrm{mol}$氩在$0.9T_{\mathrm c}$时的潜热，氩的$T_{\mathrm c}$取$150.7\,\mathrm K$。
+  hints:
+    - |
+      （1）汽化时温度、压强都不变，$\Delta H=\Delta U+p_{\text{饱}}(V_{\text{气}}-V_{\text{液}})$，后一项用等面积法则换成积分。（2）先把等面积法则左边的积分算出来，再对$T$求导；别忘了$V_{\text{液}}$、$V_{\text{气}}$也随$T$变。（3）温度升向临界温度时，$V_{\text{液}}$、$V_{\text{气}}$各趋于多少？
+    - |
+      （1）$\Delta U=an^2\bigl(\frac1{V_{\text{液}}}-\frac1{V_{\text{气}}}\bigr)$，等面积法则左边的积分是$nRT\ln\frac{V_{\text{气}}-nb}{V_{\text{液}}-nb}$减去这个$\Delta U$。（2）对$T$求导以后，$\dv{V_{\text{气}}}T$、$\dv{V_{\text{液}}}T$的系数正是两端的压强，都等于$p_{\text{饱}}$，和右边的同类项消掉。（3）$nb=\frac13V_{\mathrm c}$，所以$\frac{V_{\text{气}}-nb}{V_{\text{液}}-nb}=\frac{3V_2-1}{3V_1-1}$，$V_1$、$V_2$是例 1 表里最后一行的数。
+    - |
+      （1）汽化时温度不变，$\Delta U=an^2\bigl(\frac1{V_{\text{液}}}-\frac1{V_{\text{气}}}\bigr)$。由等面积法则，
+
+      $$
+      p_{\text{饱}}(V_{\text{气}}-V_{\text{液}})=\int_{V_{\text{液}}}^{V_{\text{气}}}\Bigl(\frac{nRT}{V-nb}-\frac{an^2}{V^2}\Bigr)\dd V=nRT\ln\frac{V_{\text{气}}-nb}{V_{\text{液}}-nb}-\Delta U .
+      $$
+
+      压强不变，$L=\Delta H=\Delta U+p_{\text{饱}}(V_{\text{气}}-V_{\text{液}})$，两式相加，$\Delta U$消掉，就得到要证的式子。
+
+      （2）等面积法则写成
+
+      $$
+      nRT\ln\frac{V_{\text{气}}-nb}{V_{\text{液}}-nb}+\frac{an^2}{V_{\text{气}}}-\frac{an^2}{V_{\text{液}}}=p_{\text{饱}}(V_{\text{气}}-V_{\text{液}}) .
+      $$
+
+      两边对$T$求导。左边由链式法则（chain rule），除了$nR\ln\frac{V_{\text{气}}-nb}{V_{\text{液}}-nb}$，还有$\bigl(\frac{nRT}{V_{\text{气}}-nb}-\frac{an^2}{V_{\text{气}}^2}\bigr)\dv{V_{\text{气}}}T$，再减去把「气」换成「液」的同样一项。两个括号正是气体、液体的压强，都等于$p_{\text{饱}}$，所以后两项合起来是$p_{\text{饱}}\bigl(\dv{V_{\text{气}}}T-\dv{V_{\text{液}}}T\bigr)$。
+
+      右边求导得$\dv{p_{\text{饱}}}T(V_{\text{气}}-V_{\text{液}})$加上同样的$p_{\text{饱}}\bigl(\dv{V_{\text{气}}}T-\dv{V_{\text{液}}}T\bigr)$。消掉以后两边除以$V_{\text{气}}-V_{\text{液}}$，就得到要证的式子。由（1），它就是$\dv{p_{\text{饱}}}T=\frac L{T(V_{\text{气}}-V_{\text{液}})}$，正是克拉珀龙方程。
+
+      （3）温度升向临界温度时，$V_{\text{液}}$、$V_{\text{气}}$都趋于$V_{\mathrm c}$，对数趋于$\ln1=0$，$L$趋于零：到了临界点，液体和气体没有区别，也就没有潜热。$T=0.9T_{\mathrm c}$时，$nb=\frac13V_{\mathrm c}$，
+
+      $$
+      \frac{V_{\text{气}}-nb}{V_{\text{液}}-nb}=\frac{3\times2.349-1}{3\times0.6034-1}\approx7.46 ,
+      $$
+
+      $\ln7.46\approx2.01$，$RT\approx8.314\times0.9\times150.7\,\mathrm J\approx1128\,\mathrm J$，所以$1\,\mathrm{mol}$氩的$L\approx2.01RT\approx2.27\times10^3\,\mathrm J$。实测约$3.87\times10^3\,\mathrm J$，范德瓦耳斯方程的估计偏低约四成，定量上靠不住（见[范德瓦耳斯气体与临界点](lesson:physics.thermal-physics.van-der-waals)第 8 题）。
+  reference: |
+    （1）$\Delta U=an^2(1/V_{\text{液}}-1/V_{\text{气}})$，$p_{\text{饱}}\Delta V=\int p\,\dd V=nRT\ln\frac{V_{\text{气}}-nb}{V_{\text{液}}-nb}-\Delta U$，$L=\Delta U+p_{\text{饱}}\Delta V$即得。
+
+    （2）$E(T)=nRT\ln\frac{V_{\text{气}}-nb}{V_{\text{液}}-nb}+an^2(1/V_{\text{气}}-1/V_{\text{液}})=p_{\text{饱}}\Delta V$。求导：$nR\ln(\cdot)+p_{\text{饱}}V_{\text{气}}'-p_{\text{饱}}V_{\text{液}}'=p_{\text{饱}}'\Delta V+p_{\text{饱}}(V_{\text{气}}'-V_{\text{液}}')$，得$p_{\text{饱}}'=\frac{nR}{\Delta V}\ln(\cdot)=\frac L{T\Delta V}$。
+
+    （3）$L\to0$。$T_{\mathrm r}=0.9$：$(3\times2.34884-1)/(3\times0.60340-1)=7.4630$，$\ln=2.00995$，$RT=8.31446\times135.63=1127.7\,\mathrm J$，$L=2266.6\,\mathrm J\approx2.27\,\mathrm{kJ}$（范德瓦耳斯方程的估计；实测约$3.87\,\mathrm{kJ}$，NIST，$135.6\,\mathrm K$，估计偏低约四成）。数值核对：$\dd p_{\mathrm r}/\dd T_{\mathrm r}=\frac83\times2.00995/(2.34884-0.60340)=3.0708$，和$T_{\mathrm r}=0.9\pm10^{-4}$的共存压强差商一致。
+
+- id: p7
+  tier: thinking
+  statement: |
+    （1）过冷蒸气里每个分子的吉布斯自由能，比同温同压的液体里的高，照理该凝结。可在没有灰尘的干净容器里，水蒸气的压强到了饱和蒸气压的好几倍，还能久久不凝结。这时凝结要从极小的液滴（droplet）开始；极小的液滴和大块的液体有什么不同，使蒸气难以凝结？
+
+    （2）云室（cloud chamber）里装着过冷的水蒸气或酒精蒸气，带电粒子（charged particle）穿过以后，沿它的径迹会出现一串小液滴。为什么？
+
+    （3）液体一侧也有类似的事。求出$\frac T{T_{\mathrm c}}$低于多少时，范德瓦耳斯等温线回折的最低点压强是负的。这时的过热液体处在什么样的状态，现实中的液体真能这样吗？说说你的想法。
+  hints:
+    - |
+      （1）液滴表面的分子和内部的分子，周围的情形一样吗？液滴越小，表面的分子占的份额越大还是越小？（2）带电粒子穿过气体时，沿途留下了什么？（3）回折的最低点上斜率为零，由此把$T_{\mathrm r}$、$p_{\mathrm r}$都用$V_{\mathrm r}$写出来。
+    - |
+      （1）表面的分子少了一侧的邻居，液滴多出一份和表面积成正比的自由能，凝结省下的自由能和体积成正比；半径很小时哪一份占上风？（2）带电粒子沿途留下离子（ion），水分子会聚到离子周围。（3）斜率为零给出$T_{\mathrm r}=\frac{(3V_{\mathrm r}-1)^2}{4V_{\mathrm r}^3}$，代回去得$p_{\mathrm r}=\frac{3V_{\mathrm r}-2}{V_{\mathrm r}^3}$。
+    - |
+      （1）表面的分子少了一侧的邻居，受到的吸引少，所以液滴比同样多的大块液体多出一份和表面积成正比的自由能；凝结省下的自由能和体积成正比。半径很小时表面的一份占上风，液滴越长大总的自由能越高，偶然聚成的小液滴多半又散开；半径超过某个值，体积的一份才占上风，液滴自己长大。这就是浅坑的坑沿：要碰巧一下子聚成够大的液滴才翻得过去，和[贝尔特拉米恒等式与最速降线](lesson:math.calculus-of-variations.beltrami-identity)第 8 题里停在局部极小（local minimum）上的肥皂膜一样。蒸气越接近饱和，需要的液滴越大，越难碰上。
+
+      （2）带电粒子穿过气体，沿途把一些分子的电子打掉，留下一串离子。水、酒精的分子一头偏正、一头偏负，被离子吸引，围着离子聚成的小液滴自由能低得多，坑沿也就低得多，过冷蒸气在这里很快凝结，长成看得见的液滴。灰尘也有这样的作用，它给出现成的表面，液滴不必从极小的开始；离子、灰尘这样的中心叫作凝结核（condensation nucleus）。
+
+      （3）回折的最低点在$V_{\mathrm r}<1$的一侧，斜率为零给出$T_{\mathrm r}=\frac{(3V_{\mathrm r}-1)^2}{4V_{\mathrm r}^3}$（见第 3 题的式子）。代回等温线，$p_{\mathrm r}=\frac{2(3V_{\mathrm r}-1)}{V_{\mathrm r}^3}-\frac3{V_{\mathrm r}^2}=\frac{3V_{\mathrm r}-2}{V_{\mathrm r}^3}$，$V_{\mathrm r}<\frac23$时为负。$\frac13<V_{\mathrm r}<1$时上面的$T_{\mathrm r}$随$V_{\mathrm r}$增大（[范德瓦耳斯气体与临界点](lesson:physics.thermal-physics.van-der-waals)第 6 题（2）），$V_{\mathrm r}=\frac23$对应$T_{\mathrm r}=\frac{27}{32}$，所以$\frac T{T_{\mathrm c}}<\frac{27}{32}\approx0.844$时最低点的压强是负的。
+
+      压强为负，就是液体被拉着：分子之间的吸引让它绷住不散开。它仍是亚稳态，分成液、气两相$F$更小，只是要先出现足够大的气泡。现实中确实有：实验里，没有气泡和杂质的水能承受几百个标准大气压（standard atmosphere）的拉力；一般认为，几十米高的大树能把水提到树顶，靠的就是细管里的水柱被上端拉着、压强是负的，因为大气压（atmospheric pressure）最多只能压起约$10\,\mathrm m$高的水柱。
+  reference: |
+    （1）成核：表面自由能$\propto r^2$，体积自由能减少$\propto r^3$，小$r$时净增加，存在临界半径；过饱和程度越小，临界半径越大，势垒越高。亚稳 = 局部极小，要越过势垒。
+
+    （2）电离留下离子；离子吸引极性的水分子，离子周围的小液滴能量低、势垒低，优先凝结（威尔逊云室）；灰尘同理（异质成核）。
+
+    （3）极值点$T_{\mathrm r}=\frac{(3V-1)^2}{4V^3}$，$p_{\mathrm r}=\frac{3V-2}{V^3}$；液体一侧$V<1$，$p<0\iff V<2/3\iff T_{\mathrm r}<27/32$（$g$在$(1/3,1)$递增）。负压 = 受拉的液体，仍亚稳（$F_{\text{混}}<F$）；水$\frac{27}{32}T_{\mathrm c}\approx546\,\mathrm K$，室温远低于它。实验：布里格斯（1950）离心法测得水约$-28\,\mathrm{MPa}$（约 280 个大气压）；植物木质部的负压（内聚力学说）。开放作答。
+
+- id: p8
+  tier: thinking
+  statement: |
+    （1）麦克斯韦当年这样论证：沿范德瓦耳斯等温线从液体走到气体，再沿水平线走回来，是一个只和一个热库（heat reservoir）交换热量（heat）的可逆循环（reversible cycle）；由热力学第二定律（second law of thermodynamics），沿哪个方向走，净功都不能是正的，所以净功是零，两块面积相等。它和本节的推导都经过了回折上的状态，那些状态却不稳定。这个论证靠得住吗？本节的推导真正用到的是什么？
+
+    （2）找一条从共存的液体走到同一温度$T$的共存气体、只经过稳定状态的路线，算出$F_{\text{气}}-F_{\text{液}}$，看和沿温度$T$的范德瓦耳斯等温线积分的结果是不是一样。可以用单原子范德瓦耳斯气体均匀时的内能$U=\frac32nRT-\frac{an^2}V$，以及[热力学势](lesson:physics.thermal-physics.thermodynamic-potentials)第 5 题的$\pdvc{(F/T)}TV=-\frac U{T^2}$。
+  hints:
+    - |
+      （1）第二定律管的是做得出来的过程；回折上的状态能一个接一个地走过去吗？$F$是状态函数（state function），它的差由什么决定？（2）回折只在临界温度以下才有，能不能像[相变与克拉珀龙方程](lesson:physics.thermal-physics.phase-transitions)第 8 题那样绕过去？
+    - |
+      （1）要的只是两个端点的$F$之差，两个端点都是稳定状态。（2）先保持体积$V_{\text{液}}$加热到高于临界温度的$T'$，再在$T'$等温膨胀到$V_{\text{气}}$，最后保持体积$V_{\text{气}}$冷却到$T$。把$V_{\text{液}}$、$V_{\text{气}}$取定，记$\Delta F(T)=F(T,V_{\text{气}})-F(T,V_{\text{液}})$，$\Delta U$同样，则$\dv{}T\frac{\Delta F}T=-\frac{\Delta U}{T^2}$，而$\Delta U$不随温度变。
+    - |
+      （1）严格说靠不住。回折上的状态不稳定，稍有扰动就分成密、稀两部分，没法沿着它一步步走过去；这个循环做不出来，第二定律管不着它。本节的推导要的只是两个端点的$F$之差，两个端点都是稳定状态，$F$是状态函数，差和怎么走过去无关。沿等温线积分，只是从同一个式子$F(T,V)$算这个差的一种办法。
+
+      真正用到的是：液体和气体由同一个状态方程（equation of state）、同一个$F(T,V)$描述。对范德瓦耳斯气体，这是规定好的。对真实的物质，状态方程光在两端准还不够：只改动它在回折中间的一段，两端照样准，等面积定出的压强却跟着变。要的是两端$F$之差，得看（2）那样只经过稳定状态的路线上，状态方程和内能是不是都准。
+
+      （2）路线：保持体积$V_{\text{液}}$，加热到高于临界温度的$T'$；在$T'$等温膨胀到$V_{\text{气}}$；再保持体积$V_{\text{气}}$，冷却到$T$。温度升高时，共存的两相体积互相靠拢，所以第一段上的液体总比那个温度下共存的液体密，第三段上的气体总比共存的气体稀，都稳定；第二段在临界温度以上，没有回折。
+
+      把$V_{\text{液}}$、$V_{\text{气}}$取定为温度$T$时的共存体积，记$\Delta F(T)=F(T,V_{\text{气}})-F(T,V_{\text{液}})$，$\Delta U=an^2\bigl(\frac1{V_{\text{液}}}-\frac1{V_{\text{气}}}\bigr)$，后者不随温度变。体积不变时$\dv{}T\frac{\Delta F}T=-\frac{\Delta U}{T^2}$，从$T$积到$T'$：
+
+      $$
+      \frac{\Delta F(T')}{T'}-\frac{\Delta F(T)}T=\frac{\Delta U}{T'}-\frac{\Delta U}T .
+      $$
+
+      在$T'$沿等温线积分，$\Delta F(T')=-\int_{V_{\text{液}}}^{V_{\text{气}}}p\,\dd V=-nRT'\ln\frac{V_{\text{气}}-nb}{V_{\text{液}}-nb}+\Delta U$。代进上式，$T'$全部消掉，
+
+      $$
+      F_{\text{气}}-F_{\text{液}}=\Delta F(T)=-nRT\ln\frac{V_{\text{气}}-nb}{V_{\text{液}}-nb}+\Delta U ,
+      $$
+
+      正是在温度$T$沿范德瓦耳斯等温线积分得到的$-\int_{V_{\text{液}}}^{V_{\text{气}}}p\,\dd V$。只经过稳定状态，得到的是同样的结果，所以等面积法则靠得住。
+  reference: |
+    （1）循环经过不稳定状态，不能准静态实现，第二定律（只对可实现的过程）不能直接用，麦克斯韦的论证不严格。本节只用端点的$F$之差；$F(T,V)$的同一个解析式覆盖液体和气体，等温线积分是计算手段。前提：同一个状态方程描述两相（范德瓦耳斯气体的规定；实际物质是近似，光在两端准还不够，要看（2）那样只经过稳定状态的路线上状态方程和内能是不是都准）。
+
+    （2）$V_{\text{液}}$等容升温到$T'>T_{\mathrm c}$，$T'$等温膨胀，$V_{\text{气}}$等容降温到$T$。稳定性：$T$升高时共存的$V_{\text{液}}(T)$增、$V_{\text{气}}(T)$减，所以两段等容线都在共存区外。$\dd(\Delta F/T)/\dd T=-\Delta U/T^2$，$\Delta U=an^2(1/V_{\text{液}}-1/V_{\text{气}})$为常数，$\Delta F(T)/T=\Delta F(T')/T'-\Delta U/T'+\Delta U/T$；$\Delta F(T')=-nRT'\ln(\cdot)+\Delta U$，故$\Delta F(T)=-nRT\ln(\cdot)+\Delta U=-\int_{V_{\text{液}}}^{V_{\text{气}}}p\,\dd V|_T$。数值核对过（$T_{\mathrm r}=0.9$，$T'_{\mathrm r}=1.1$、$1.5$，都得$-1.12930\,p_{\mathrm c}V_{\mathrm c}$）。

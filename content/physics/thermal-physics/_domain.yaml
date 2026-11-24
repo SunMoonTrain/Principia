@@ -553,7 +553,7 @@ glossary:
     en: |
       Carnot engine
     brief: |
-      按卡诺循环工作的热机，热机效率$\eta=1-\frac{T_{\mathrm L}}{T_{\mathrm H}}$，只由两个热库的热力学温度决定。
+      按卡诺循环工作的热机，没有摩擦时热机效率$\eta=1-\frac{T_{\mathrm L}}{T_{\mathrm H}}$，只由两个热库的热力学温度决定。
     definedIn: physics.thermal-physics.heat-engines
     anchor: def-carnot-cycle
   - id: physics.thermal-physics.refrigerator
@@ -565,3 +565,381 @@ glossary:
       外界对工作物质做功$|W|$，使它循环地从低温热库吸热$Q_{\mathrm L}$、向高温热库放热的装置，如冰箱；制冷系数是$\frac{Q_{\mathrm L}}{|W|}$。
     definedIn: physics.thermal-physics.heat-engines
     anchor: def-refrigerator
+  - id: physics.thermal-physics.second-law
+    zh: |
+      热力学第二定律
+    en: |
+      second law of thermodynamics
+    brief: |
+      不可能从单一热库吸热，使之完全变成功，而不引起别的变化（开尔文表述）；它和克劳修斯表述等价。
+    definedIn: physics.thermal-physics.second-law
+    anchor: thm-kelvin
+  - id: physics.thermal-physics.kelvin-statement
+    zh: |
+      开尔文表述
+    en: |
+      Kelvin statement
+    brief: |
+      热力学第二定律的一种说法：不可能从单一热库吸热，使之完全变成功，而不引起别的变化；也叫开尔文-普朗克表述。
+    definedIn: physics.thermal-physics.second-law
+    anchor: thm-kelvin
+  - id: physics.thermal-physics.clausius-statement
+    zh: |
+      克劳修斯表述
+    en: |
+      Clausius statement
+    brief: |
+      热力学第二定律的一种说法：不可能使热量从低温物体传到高温物体，而不引起别的变化。
+    definedIn: physics.thermal-physics.second-law
+    anchor: thm-clausius
+  - id: physics.thermal-physics.reversible-process
+    zh: |
+      可逆过程
+    en: |
+      reversible process
+    brief: |
+      系统经过它以后，还能用别的过程使系统和外界都完全复原的过程；热过程要可逆，得准静态、没有耗散、不隔着有限温差传热。
+    definedIn: physics.thermal-physics.second-law
+    anchor: def-reversible
+  - id: physics.thermal-physics.irreversible-process
+    zh: |
+      不可逆过程
+    en: |
+      irreversible process
+    brief: |
+      不是可逆过程的过程：系统和外界不能都完全复原，如摩擦生热、隔着有限温差的热传导、自由膨胀。
+    definedIn: physics.thermal-physics.second-law
+    anchor: def-reversible
+  - id: physics.thermal-physics.reversible-engine
+    zh: |
+      可逆热机
+    en: |
+      reversible engine
+    brief: |
+      整个循环都是可逆过程的热机，如没有摩擦的卡诺热机；倒过来运行就是制冷机，各段的热量和功只改变正负。
+    definedIn: physics.thermal-physics.second-law
+    anchor: def-reversible-engine
+  - id: physics.thermal-physics.perpetual-motion-first-kind
+    zh: |
+      第一类永动机
+    en: |
+      perpetual motion machine of the first kind
+    brief: |
+      不消耗任何能量、却能不断对外做功的机器；它违反热力学第一定律，造不成。
+    definedIn: physics.thermal-physics.first-law
+    anchor: def-perpetual-motion
+  - id: physics.thermal-physics.carnot-theorem
+    zh: |
+      卡诺定理
+    en: |
+      Carnot's theorem
+    brief: |
+      只和同样两个热库交换热量的热机里，可逆热机的热机效率都相同，和工作物质无关；任何热机的热机效率都不超过它。
+    definedIn: physics.thermal-physics.carnot-theorem
+    anchor: thm-carnot
+  - id: physics.thermal-physics.thermodynamic-temperature-scale
+    zh: |
+      热力学温标
+    en: |
+      thermodynamic temperature scale
+    brief: |
+      规定两个热库的温度$T$之比等于可逆热机在两者之间吸、放热量之比的温标，和工作物质无关；也叫开尔文温标、绝对温标。
+    definedIn: physics.thermal-physics.carnot-theorem
+    anchor: def-thermodynamic-scale
+  - id: physics.thermal-physics.working-substance
+    zh: |
+      工作物质
+    en: |
+      working substance
+    brief: |
+      热机、制冷机里一遍遍经历同一个循环，和热库交换热量、和外界交换功的物质，如蒸汽机里的水。
+    definedIn: physics.thermal-physics.heat-engines
+    anchor: def-heat-engine
+  - id: physics.thermal-physics.coefficient-of-performance
+    zh: |
+      制冷系数
+    en: |
+      coefficient of performance
+    brief: |
+      制冷机一个循环从低温热库吸收的热量和外界做的功之比$\frac{Q_{\mathrm L}}{|W|}$，可以大于 1。
+    definedIn: physics.thermal-physics.heat-engines
+    anchor: def-refrigerator
+  - id: physics.thermal-physics.carnot-refrigerator
+    zh: |
+      卡诺制冷机
+    en: |
+      Carnot refrigerator
+    brief: |
+      倒过来运行的卡诺热机，是一种制冷机；没有摩擦时制冷系数$\frac{Q_{\mathrm L}}{|W|}=\frac{T_{\mathrm L}}{T_{\mathrm H}-T_{\mathrm L}}$，和工作物质无关。
+    definedIn: physics.thermal-physics.heat-engines
+    anchor: thm-carnot-refrigerator
+  - id: physics.thermal-physics.triple-point
+    zh: |
+      三相点
+    en: |
+      triple point
+    brief: |
+      纯水的冰、水和水蒸气平衡共存的唯一状态；多数纯物质也有各自的三相点。
+    definedIn: physics.thermal-physics.temperature
+    anchor: def-gas-thermometer
+  - id: physics.thermal-physics.clausius-inequality
+    zh: |
+      克劳修斯不等式
+    en: |
+      Clausius inequality
+    brief: |
+      系统经历循环、只和热力学温度为$T_i$的热库交换热量，从中吸热$Q_i$（放热为负）时，$\sum_i\frac{Q_i}{T_i}\le0$；可逆循环取等号。
+    definedIn: physics.thermal-physics.entropy
+    anchor: thm-clausius-inequality
+  - id: physics.thermal-physics.entropy
+    zh: |
+      熵
+    en: |
+      entropy
+    brief: |
+      状态函数$S$：两个平衡态的熵之差，等于沿连接它们的任一可逆过程的$\int\frac{\delta Q}{T}$，$T$是热力学温度；单位是$\mathrm{J/K}$。
+    definedIn: physics.thermal-physics.entropy
+    anchor: def-entropy
+  - id: physics.thermal-physics.fundamental-relation
+    zh: |
+      热力学基本方程
+    en: |
+      fundamental thermodynamic relation
+    brief: |
+      一定量的物质只做体积变化的功时，相邻两个平衡态之间$\dd U=T\dd S-p\,\dd V$；由它可读出$\pdvc SUV=\frac1T$。
+    definedIn: physics.thermal-physics.entropy
+    anchor: thm-fundamental-relation
+  - id: physics.thermal-physics.isentropic-process
+    zh: |
+      等熵过程
+    en: |
+      isentropic process
+    brief: |
+      熵保持不变的过程；可逆的绝热过程就是等熵过程，自由膨胀、搅拌这类不可逆的绝热过程熵却增加。
+    definedIn: physics.thermal-physics.entropy
+    anchor: def-isentropic
+  - id: physics.thermal-physics.ts-diagram
+    zh: |
+      $T$-$S$图
+    en: |
+      T-S diagram
+    brief: |
+      以熵$S$为横轴、温度$T$为纵轴的图；可逆过程中$\delta Q=T\dd S$，从左往右走时吸的热是曲线下直到$T=0$的面积，等熵过程是竖直线段。
+    definedIn: physics.thermal-physics.entropy
+    anchor: def-isentropic
+  - id: physics.thermal-physics.isolated-system
+    zh: |
+      孤立系统
+    en: |
+      isolated system
+    brief: |
+      和外界既不交换能量、也不交换物质的系统，如装在刚性、密闭、包着绝热壁的容器里的气体。
+    definedIn: physics.thermal-physics.entropy-increase
+    anchor: def-isolated-system
+  - id: physics.thermal-physics.entropy-increase-principle
+    zh: |
+      熵增原理
+    en: |
+      principle of entropy increase
+    brief: |
+      系统经绝热过程从一个平衡态变到另一个平衡态，熵不减少：可逆时不变，不可逆时增加；孤立系统的熵也不减少。也叫熵增加原理。
+    definedIn: physics.thermal-physics.entropy-increase
+    anchor: thm-entropy-increase
+  - id: physics.thermal-physics.adiabatic-wall
+    zh: |
+      绝热壁
+    en: |
+      adiabatic wall
+    brief: |
+      隔着它，外界只能靠做功改变系统的状态，热量不能通过；保温瓶的真空夹层近似如此。
+    definedIn: physics.thermal-physics.internal-energy
+    anchor: def-adiabatic-process
+  - id: physics.thermal-physics.thermodynamic-potential
+    zh: |
+      热力学势
+    en: |
+      thermodynamic potential
+    brief: |
+      内能$U$、焓$H$、亥姆霍兹自由能$F$、吉布斯自由能$G$的统称；用自然变量写出一个，偏导数存在处能求出其余三个和$T$、$p$、$S$、$V$。
+    definedIn: physics.thermal-physics.thermodynamic-potentials
+    anchor: def-thermodynamic-potential
+  - id: physics.thermal-physics.natural-variables
+    zh: |
+      自然变量
+    en: |
+      natural variables
+    brief: |
+      热力学势的一组特定的自变量，如$U(S,V)$、$H(S,p)$、$F(T,V)$、$G(T,p)$括号里的变量；对它们求偏导数，得到配对的状态量或其相反数。
+    definedIn: physics.thermal-physics.thermodynamic-potentials
+    anchor: def-thermodynamic-potential
+  - id: physics.thermal-physics.helmholtz-free-energy
+    zh: |
+      亥姆霍兹自由能
+    en: |
+      Helmholtz free energy
+    brief: |
+      $F=U-TS$，是能量，不是力；自然变量是$T$、$V$，一定量的物质只做体积变化的功时$\dd F=-S\dd T-p\,\dd V$。也叫自由能、亥姆霍兹函数。
+    definedIn: physics.thermal-physics.thermodynamic-potentials
+    anchor: def-helmholtz
+  - id: physics.thermal-physics.gibbs-free-energy
+    zh: |
+      吉布斯自由能
+    en: |
+      Gibbs free energy
+    brief: |
+      $G=U-TS+pV=H-TS$，自然变量是$T$、$p$，一定量的物质只做体积变化的功时$\dd G=-S\dd T+V\dd p$；也叫吉布斯函数。
+    definedIn: physics.thermal-physics.thermodynamic-potentials
+    anchor: def-gibbs
+  - id: physics.thermal-physics.extensive-quantity
+    zh: |
+      广延量
+    en: |
+      extensive quantity
+    brief: |
+      两份完全相同、处在同一平衡态的系统合成一个时加倍的量，如体积、内能、熵、物质的量。
+    definedIn: physics.thermal-physics.thermodynamic-potentials
+    anchor: def-extensive
+  - id: physics.thermal-physics.intensive-quantity
+    zh: |
+      强度量
+    en: |
+      intensive quantity
+    brief: |
+      两份完全相同、处在同一平衡态的系统合成一个时不变的量，如温度、压强、密度。
+    definedIn: physics.thermal-physics.thermodynamic-potentials
+    anchor: def-extensive
+  - id: physics.thermal-physics.chemical-potential
+    zh: |
+      化学势
+    en: |
+      chemical potential
+    brief: |
+      粒子数能变时热力学基本方程里$\dd N$的系数$\mu=\pdvc UN{S,V}=\pdvc FN{T,V}=\pdvc GN{T,p}$，按每个粒子算；只有一种粒子、不计重力、温度相同、体积不变时，粒子流向化学势低处。
+    definedIn: physics.thermal-physics.chemical-potential
+    anchor: def-chemical-potential
+  - id: physics.thermal-physics.open-system
+    zh: |
+      开放系统
+    en: |
+      open system
+    brief: |
+      和外界能交换物质的系统，它的粒子数可以变；只交换能量、不交换物质的叫封闭系统。
+    definedIn: physics.thermal-physics.chemical-potential
+    anchor: def-open-system
+  - id: physics.thermal-physics.phase
+    zh: |
+      相
+    en: |
+      phase
+    brief: |
+      物质里各处性质相同、和其余部分有明确分界的部分，如冰、水、水蒸气各是一个相。
+    definedIn: physics.thermal-physics.phase-transitions
+    anchor: def-phase
+  - id: physics.thermal-physics.phase-transition
+    zh: |
+      相变
+    en: |
+      phase transition
+    brief: |
+      物质从一个相变成另一个相，如熔化、汽化、升华。
+    definedIn: physics.thermal-physics.phase-transitions
+    anchor: def-phase
+  - id: physics.thermal-physics.phase-equilibrium
+    zh: |
+      相平衡
+    en: |
+      phase equilibrium
+    brief: |
+      一种物质两相共存的平衡态；这时两相的温度、压强、化学势分别相等。
+    definedIn: physics.thermal-physics.phase-transitions
+    anchor: def-phase-equilibrium
+  - id: physics.thermal-physics.coexistence-curve
+    zh: |
+      相平衡曲线
+    en: |
+      coexistence curve
+    brief: |
+      一种物质的两相能平衡共存的那些温度、压强在图上连成的曲线，如汽化曲线、熔化曲线、升华曲线；也叫共存曲线。
+    definedIn: physics.thermal-physics.phase-transitions
+    anchor: def-phase-equilibrium
+  - id: physics.thermal-physics.saturated-vapor-pressure
+    zh: |
+      饱和蒸气压
+    en: |
+      saturated vapor pressure
+    brief: |
+      纯净的液体（或固体）和它的蒸气平衡共存时蒸气的压强，只随温度变；也叫饱和汽压、蒸气压。
+    definedIn: physics.thermal-physics.phase-transitions
+    anchor: def-phase-equilibrium
+  - id: physics.thermal-physics.phase-diagram
+    zh: |
+      相图
+    en: |
+      phase diagram
+    brief: |
+      以温度为横轴、压强为纵轴，画出各相稳定的区域和相平衡曲线的图。
+    definedIn: physics.thermal-physics.phase-transitions
+    anchor: def-phase-diagram
+  - id: physics.thermal-physics.critical-point
+    zh: |
+      临界点
+    en: |
+      critical point
+    brief: |
+      汽化曲线在高温一端的终点；温度高于临界温度时，液体和气体不再有区别，加压也不会分成液、气两相。
+    definedIn: physics.thermal-physics.phase-transitions
+    anchor: def-critical-point
+  - id: physics.thermal-physics.critical-temperature
+    zh: |
+      临界温度
+    en: |
+      critical temperature
+    brief: |
+      临界点的温度$T_{\mathrm c}$；对气液临界点，高于它时无论加多大的压强，气体都不会液化。
+    definedIn: physics.thermal-physics.phase-transitions
+    anchor: def-critical-point
+  - id: physics.thermal-physics.latent-heat
+    zh: |
+      潜热
+    en: |
+      latent heat
+    brief: |
+      一定量的物质在两相能平衡共存的温度、压强下从一相变成另一相时吸收的热；只做体积变化的功时等于焓的增加，也等于$T\Delta S$。
+    definedIn: physics.thermal-physics.phase-transitions
+    anchor: def-latent-heat
+  - id: physics.thermal-physics.van-der-waals-equation
+    zh: |
+      范德瓦耳斯方程
+    en: |
+      van der Waals equation
+    brief: |
+      近似描述实际气体的状态方程$\bigl(p+\frac{an^2}{V^2}\bigr)(V-nb)=nRT$，常量$b$修正分子本身的体积，$a$修正分子之间的吸引；也叫范德华方程。
+    definedIn: physics.thermal-physics.van-der-waals
+    anchor: def-van-der-waals
+  - id: physics.thermal-physics.van-der-waals-gas
+    zh: |
+      范德瓦耳斯气体
+    en: |
+      van der Waals gas
+    brief: |
+      均匀状态严格满足范德瓦耳斯方程的气体，是同时考虑分子本身的大小和分子之间吸引的实际气体模型。
+    definedIn: physics.thermal-physics.van-der-waals
+    anchor: def-van-der-waals
+  - id: physics.thermal-physics.clapeyron-equation
+    zh: |
+      克拉珀龙方程
+    en: |
+      Clapeyron equation
+    brief: |
+      一种物质的两相平衡共存、只做体积变化的功、$\Delta V\ne0$时，相平衡曲线的斜率$\dv pT=\frac L{T\Delta V}$，$L$是潜热，$\Delta V$是体积的增加。
+    definedIn: physics.thermal-physics.phase-transitions
+    anchor: thm-clapeyron
+  - id: physics.thermal-physics.gas-thermometer
+    zh: |
+      定容气体温度计
+    en: |
+      constant-volume gas thermometer
+    brief: |
+      泡里气体的体积保持不变、由压强定读数的温度计；读数和压强成正比，规定水的三相点的读数为$273.16$开尔文。
+    definedIn: physics.thermal-physics.temperature
+    anchor: def-gas-thermometer

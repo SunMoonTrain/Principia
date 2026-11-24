@@ -5,7 +5,7 @@ title: |
 goal: |
   会用热力学第零定律说明温度的含义，并用理想气体温标定义温度。
 prerequisites: []
-minutes: 29
+minutes: 30
 summary: |
   互为热平衡的系统温度相同；理想气体温标用稀薄气体定义温度。
 status: reviewed
@@ -43,7 +43,7 @@ status: reviewed
 ::anchor{id="def-zeroth-law"}
 如果$A$、$B$分别与第三个系统$C$处于:term[热平衡]{id="physics.thermal-physics.thermal-equilibrium"}，那么$A$、$B$也处于热平衡。这条实验规律叫作:term[热力学第零定律]{id="physics.thermal-physics.zeroth-law"}（zeroth law of thermodynamics），也叫热平衡定律。
 
-为什么单列为定律：它不是逻辑上必然的，甲认识丙、乙认识丙，甲乙未必认识。用数学的话说，热平衡是一种等价关系（equivalence relation）。
+为什么单列为定律：它不是逻辑上必然的，甲认识丙、乙认识丙，甲乙未必认识。用数学的话说，热平衡是一种:term[等价关系]{id="math.logic-sets.equivalence-relation"}（equivalence relation）。
 
 ::anchor{id="def-temperature"}
 由第零定律，和同一个系统热平衡的系统可以归成一类，同一类共有的宏观性质叫作:term[温度]{id="physics.thermal-physics.temperature"}（temperature），用一个数标记（为什么行得通，见第 6 题）：两个系统温度相同，当且仅当它们接触时处于热平衡。
@@ -60,7 +60,7 @@ status: reviewed
 ### 理想气体温标
 
 ::anchor{id="def-gas-thermometer"}
-定容气体温度计（constant-volume gas thermometer）如下图：移动右管让左管水银面停在标记处，泡里气体体积不变，压强$p=p_0+\rho_{\text{汞}}gh$，$p_0$是大气压（atmospheric pressure），$h$是右管水银面高出左管的高度。纯水的冰、水和水蒸气共存的唯一状态叫作水的三相点（triple point）；规定读数和压强成正比、三相点的读数为$273.16$开尔文（kelvin，K），读数就是$T^*=273.16\,\mathrm K\times\frac p{p_3}$，$p_3$是泡浸在三相点的水里时的压强。
+:term[定容气体温度计]{id="physics.thermal-physics.gas-thermometer"}（constant-volume gas thermometer）如下图：移动右管让左管水银面停在标记处，泡里气体体积不变，压强$p=p_0+\rho_{\text{汞}}gh$，$p_0$是大气压（atmospheric pressure），$h$是右管水银面高出左管的高度。纯水的冰、水和水蒸气平衡共存的唯一状态叫作水的:term[三相点]{id="physics.thermal-physics.triple-point"}（triple point）；规定读数和压强成正比、三相点的读数为$273.16$开尔文（kelvin，K），读数就是$T^*=273.16\,\mathrm K\times\frac p{p_3}$，$p_3$是泡浸在三相点的水里时的压强。
 
 ![定容气体温度计：玻璃泡浸在待测物体里，接水银压强计，右管可上下移动，水银面比左管高出 h。示意图，不按比例](gas-thermometer.svg)
 
@@ -71,16 +71,16 @@ status: reviewed
 ::anchor{id="def-ideal-gas-scale"}
 用气体越来越稀薄时读数的共同值标定:term[温度]{id="physics.thermal-physics.temperature"}，这样的:term[温标]{id="physics.thermal-physics.temperature-scale"}叫作:term[理想气体温标]{id="physics.thermal-physics.ideal-gas-temperature-scale"}（ideal-gas temperature scale）。
 
-为什么这样定义：它和气体种类无关，适合当标准。边界情况：几开尔文以下几乎所有物质都凝结了，它用不上；和物质无关的定义见[热力学第二定律](lesson:physics.thermal-physics.second-law)。
+为什么这样定义：它和气体种类无关，适合当标准。边界情况：几开尔文以下几乎所有物质都凝结了，它用不上；和物质无关的定义见[卡诺定理与热力学温标](lesson:physics.thermal-physics.carnot-theorem)。
 
 ### 热力学温度与绝对零度
 
 ::anchor{id="def-thermodynamic-temperature"}
-在气体温度计能用的范围里，由:term[理想气体温标]{id="physics.thermal-physics.ideal-gas-temperature-scale"}给出的:term[温度]{id="physics.thermal-physics.temperature"}叫作:term[热力学温度]{id="physics.thermal-physics.thermodynamic-temperature"}（thermodynamic temperature），也叫绝对温度，记作$T$，单位是开尔文。摄氏温度现在由它定义：$T=t+273.15\,\mathrm K$。
+在:term[气体温度计]{id="physics.thermal-physics.gas-thermometer"}能用的范围里，由:term[理想气体温标]{id="physics.thermal-physics.ideal-gas-temperature-scale"}给出的:term[温度]{id="physics.thermal-physics.temperature"}叫作:term[热力学温度]{id="physics.thermal-physics.thermodynamic-temperature"}（thermodynamic temperature），也叫绝对温度，记作$T$，单位是开尔文。摄氏温度现在由它定义：$T=t+273.15\,\mathrm K$。
 
 开尔文得名于威廉·汤姆孙（William Thomson，后来的开尔文勋爵）。本领域的$T$只表示热力学温度。
 
-为什么这样定义：取$273.16$是为了让$1\,\mathrm K$和$1\,^\circ\mathrm C$一样大，温差用两种单位数值相同；冰点比三相点低约$0.01\,\mathrm K$，三位有效数字时取$T\approx t+273\,\mathrm K$。按现在的定义，1 标准大气压下水的沸点是$373.12\,\mathrm K$，即$99.97\,^\circ\mathrm C$。边界情况：只有热力学温度能说「几倍」，$20\,^\circ\mathrm C$的热力学温度只是$10\,^\circ\mathrm C$的$1.035$倍。
+为什么这样定义：取$273.16$是为了让$1\,\mathrm K$和$1\,^\circ\mathrm C$一样大，温差用两种单位数值相同；冰点比:term[三相点]{id="physics.thermal-physics.triple-point"}低约$0.01\,\mathrm K$，三位有效数字时取$T\approx t+273\,\mathrm K$。按现在的定义，1 标准大气压下水的沸点是$373.12\,\mathrm K$，即$99.97\,^\circ\mathrm C$。边界情况：只有热力学温度能说「几倍」，$20\,^\circ\mathrm C$的热力学温度只是$10\,^\circ\mathrm C$的$1.035$倍。
 
 ::anchor{id="def-absolute-zero"}
 $T=0$即$-273.15\,^\circ\mathrm C$，叫作:term[绝对零度]{id="physics.thermal-physics.absolute-zero"}（absolute zero）。
@@ -116,7 +116,7 @@ points:
 
 ### 例 1　外推求水的沸点
 
-用充氮气的定容气体温度计量 1 标准大气压下水的沸点：$p_3=80.00\,\mathrm{kPa}$时沸水里的压强是$109.340\,\mathrm{kPa}$；放掉一些气体后，$p_3=40.00\,\mathrm{kPa}$时是$54.654\,\mathrm{kPa}$。按:term[理想气体温标]{id="physics.thermal-physics.ideal-gas-temperature-scale"}，沸点是多少？
+用充氮气的:term[定容气体温度计]{id="physics.thermal-physics.gas-thermometer"}量 1 标准大气压下水的沸点：$p_3=80.00\,\mathrm{kPa}$时沸水里的压强是$109.340\,\mathrm{kPa}$；放掉一些气体后，$p_3=40.00\,\mathrm{kPa}$时是$54.654\,\mathrm{kPa}$。按:term[理想气体温标]{id="physics.thermal-physics.ideal-gas-temperature-scale"}，沸点是多少？
 
 **为什么想到这么做**：两次读数不同，气体还不够稀薄；读数随$p_3$按直线变，延长到$p_3=0$即可。
 

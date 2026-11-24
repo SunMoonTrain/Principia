@@ -1,0 +1,226 @@
+- id: p1
+  tier: easy
+  statement: |
+    用范德瓦耳斯方程描述甲烷（methane）时，$a=0.2303\,\mathrm{Pa\cdot m^6/mol^2}$，$b=4.31\times10^{-5}\,\mathrm{m^3/mol}$。按范德瓦耳斯方程，甲烷的临界压强是多少？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 0.2303/(27*(4.31e-5)^2)
+    unit: |
+      $\mathrm{Pa}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      临界压强由$a$、$b$怎样决定？回想临界点的定理。
+    - |
+      $p_{\mathrm c}=\frac a{27b^2}$。单位是$\frac{\mathrm{Pa\cdot m^6/mol^2}}{\mathrm{m^6/mol^2}}=\mathrm{Pa}$，代入时不用再换算单位。
+    - |
+      $b^2\approx1.858\times10^{-9}\,\mathrm{m^6/mol^2}$，$27b^2\approx5.016\times10^{-8}\,\mathrm{m^6/mol^2}$，所以$p_{\mathrm c}\approx\frac{0.2303}{5.016\times10^{-8}}\,\mathrm{Pa}\approx4.59\times10^6\,\mathrm{Pa}$。
+  solution: |
+    由临界点的定理，
+
+    $$
+    p_{\mathrm c}=\frac a{27b^2}=\frac{0.2303}{27\times(4.31\times10^{-5})^2}\,\mathrm{Pa}\approx4.59\times10^6\,\mathrm{Pa} ,
+    $$
+
+    约$4.59\,\mathrm{MPa}$。实测甲烷的临界压强约$4.60\,\mathrm{MPa}$，几乎一样；这不奇怪，这组$a$、$b$本来就是由实测的临界温度、临界压强定出的（第 4 题）。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面关于范德瓦耳斯方程和范德瓦耳斯气体的说法，哪些正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        按范德瓦耳斯方程，一定量的气体体积不变时，压强是热力学温度（thermodynamic temperature）的一次函数
+      - |
+        范德瓦耳斯气体的临界等温线在临界点处切线水平，所以压强在那里取极大值或极小值
+      - |
+        按范德瓦耳斯方程，一定量的气体温度不变、体积从大于$nb$的一侧趋于$nb$时，压强趋于正无穷大
+      - |
+        温度低于临界温度时，范德瓦耳斯气体的等温线上，每一个正的压强都对应三个不同的体积
+      - |
+        两种范德瓦耳斯气体的$a$相同，$b$大的那种，临界温度高
+    value: [1, 3]
+  hints:
+    - |
+      把方程解成$p=\frac{nRT}{V-nb}-\frac{an^2}{V^2}$，看它怎样随$T$、$V$变；再回想临界点的定理和几何图像里的等温线。
+    - |
+      A 体积不变时，$\frac{nR}{V-nb}$和$\frac{an^2}{V^2}$都是常数；B 拐点两侧，压强随体积怎样变？C 看第一项的分母；D 比回折的最高点还高的水平线和等温线交几次？E $T_{\mathrm c}=\frac{8a}{27Rb}$。
+    - |
+      选 A、C。A 对：体积不变时$p=\frac{nR}{V-nb}T-\frac{an^2}{V^2}$，$T$的系数和常数项都不变，是一次函数，只是不和$T$成正比。B 错：临界点是拐点，压强在它两侧都随体积增大而减小，不是极值。C 对：$V\to nb$时第一项趋于正无穷大，第二项趋于$\frac a{b^2}$，压强趋于正无穷大，体积压不到$nb$。
+
+      D 错：只有高度落在回折的最低点和最高点之间（又是正的）的水平线才和等温线交于三点，更高或更低的只交一点。E 错：$T_{\mathrm c}=\frac{8a}{27Rb}$，$a$相同时$b$越大，临界温度越低。
+  solution: |
+    选 A、C。A 对：体积不变时$p=\frac{nR}{V-nb}T-\frac{an^2}{V^2}$，是$T$的一次函数，可常数项不为零，压强不和$T$成正比。B 错：临界点是切线水平的拐点，压强在它两侧都随体积增大而减小，不是极值。C 对：$V\to nb$时第一项趋于正无穷大，第二项趋于$\frac a{b^2}$，所以压强趋于正无穷大，气体压不到$nb$那么小。
+
+    D 错：回折的最低点和最高点之间（压强为正）的水平线才和等温线交于三点，更高或更低的只交一点。E 错：$T_{\mathrm c}=\frac{8a}{27Rb}$，$a$相同时$b$越大，临界温度越低。
+
+- id: p3
+  tier: medium
+  statement: |
+    $1.00\,\mathrm{mol}$二氧化碳气体装在容积$0.500\,\mathrm L$的容器里，温度是$300\,\mathrm K$。二氧化碳的$a=0.3640\,\mathrm{Pa\cdot m^6/mol^2}$，$b=4.267\times10^{-5}\,\mathrm{m^3/mol}$。依次求按理想气体状态方程（ideal gas law）、按范德瓦耳斯方程算出的压强，结果都保留三位有效数字。
+  answer:
+    type: tuple
+    value: [8.31446261815324*300/0.500e-3, 8.31446261815324*300/(0.500e-3 - 4.267e-5) - 0.3640/(0.500e-3)^2]
+    unit: |
+      $\mathrm{Pa}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      体积先换成$\mathrm{m^3}$。范德瓦耳斯方程解出$p$是什么样子？两处修正各让压强变大还是变小？
+    - |
+      $V=5.00\times10^{-4}\,\mathrm{m^3}$。理想气体$p=\frac{nRT}V$；范德瓦耳斯方程给出$p=\frac{nRT}{V-nb}-\frac{an^2}{V^2}$，其中$V-nb\approx4.573\times10^{-4}\,\mathrm{m^3}$。
+    - |
+      $nRT\approx2494\,\mathrm J$。按理想气体，$p\approx\frac{2494}{5.00\times10^{-4}}\,\mathrm{Pa}\approx4.99\times10^6\,\mathrm{Pa}$。按范德瓦耳斯方程，第一项$\frac{2494}{4.573\times10^{-4}}\,\mathrm{Pa}\approx5.454\times10^6\,\mathrm{Pa}$，减去$\frac{0.3640}{(5.00\times10^{-4})^2}\,\mathrm{Pa}=1.456\times10^6\,\mathrm{Pa}$，得$p\approx4.00\times10^6\,\mathrm{Pa}$。
+  solution: |
+    $nRT=1.00\times8.314\times300\,\mathrm J\approx2494\,\mathrm J$，$V=5.00\times10^{-4}\,\mathrm{m^3}$。按理想气体，$p=\frac{nRT}V\approx4.99\times10^6\,\mathrm{Pa}$。按范德瓦耳斯方程，
+
+    $$
+    p=\frac{nRT}{V-nb}-\frac{an^2}{V^2}\approx5.454\times10^6\,\mathrm{Pa}-1.456\times10^6\,\mathrm{Pa}\approx4.00\times10^6\,\mathrm{Pa} .
+    $$
+
+    分子本身的体积让压强升高约$0.47\,\mathrm{MPa}$，分子之间的吸引让它降低约$1.46\,\mathrm{MPa}$，吸引占上风，压强约是按理想气体算的$0.80$倍。这和[理想气体状态方程](lesson:physics.thermal-physics.ideal-gas-law)第 7 题说的一致：室温下二氧化碳以吸引为主。
+
+- id: p4
+  tier: medium
+  statement: |
+    实测水的临界温度是$647.1\,\mathrm K$，临界压强是$22.06\,\mathrm{MPa}$。要让范德瓦耳斯方程的临界温度、临界压强正好是这两个值，$a$、$b$应该取多少？依次填$a$（单位$\mathrm{Pa\cdot m^6/mol^2}$）、$b$（单位$\mathrm{m^3/mol}$），结果都保留三位有效数字。
+  answer:
+    type: tuple
+    value: [27*8.31446261815324^2*647.1^2/(64*22.06e6), 8.31446261815324*647.1/(8*22.06e6)]
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      临界温度、临界压强各由$a$、$b$怎样决定？两个方程，解两个未知数。
+    - |
+      $T_{\mathrm c}=\frac{8a}{27Rb}$，$p_{\mathrm c}=\frac a{27b^2}$。两式相除得$\frac{T_{\mathrm c}}{p_{\mathrm c}}=\frac{8b}R$，所以$b=\frac{RT_{\mathrm c}}{8p_{\mathrm c}}$；再由$a=27p_{\mathrm c}b^2$得$a=\frac{27R^2T_{\mathrm c}^2}{64p_{\mathrm c}}$。
+    - |
+      $RT_{\mathrm c}\approx8.314\times647.1\,\mathrm{J/mol}\approx5380\,\mathrm{J/mol}$，$b\approx\frac{5380}{8\times2.206\times10^7}\,\mathrm{m^3/mol}\approx3.049\times10^{-5}\,\mathrm{m^3/mol}$，保留三位是$3.05\times10^{-5}\,\mathrm{m^3/mol}$。再由$a=27p_{\mathrm c}b^2$，
+
+      $$
+      a\approx27\times2.206\times10^7\times(3.049\times10^{-5})^2\,\mathrm{Pa\cdot m^6/mol^2}\approx0.554\,\mathrm{Pa\cdot m^6/mol^2} .
+      $$
+  solution: |
+    由$T_{\mathrm c}=\frac{8a}{27Rb}$、$p_{\mathrm c}=\frac a{27b^2}$，两式相除得$b=\frac{RT_{\mathrm c}}{8p_{\mathrm c}}$，代回得$a=27p_{\mathrm c}b^2=\frac{27R^2T_{\mathrm c}^2}{64p_{\mathrm c}}$。代入数，$b\approx3.05\times10^{-5}\,\mathrm{m^3/mol}$，$a\approx0.554\,\mathrm{Pa\cdot m^6/mol^2}$。
+
+    常用表里水的$a$、$b$正是这一组数：由实测的临界温度、临界压强定出来。用它算临界体积，$3b\approx91\,\mathrm{cm^3/mol}$，实测约$56\,\mathrm{cm^3/mol}$，比氩（例 1）差得更多。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）证明：按范德瓦耳斯方程，气体稀薄、$\frac{nb}V$很小时，
+
+    $$
+    \frac{pV}{nRT}\approx1+\Bigl(b-\frac a{RT}\Bigr)\frac nV ,
+    $$
+
+    略去的是$\bigl(\frac nV\bigr)^2$和更高次的项。
+
+    （2）使（1）里$\frac nV$的系数为零的温度叫作玻意耳温度（Boyle temperature）：在这个温度下，压强不太大时气体很好地满足玻意耳定律（Boyle's law）。证明范德瓦耳斯气体的玻意耳温度是$\frac a{Rb}$，是它的临界温度的$\frac{27}8$倍。
+
+    （3）二氧化碳、氢气、氦气的$a$依次约是$0.3640$、$0.02476$、$0.003457\,\mathrm{Pa\cdot m^6/mol^2}$，$b$依次约是$4.27\times10^{-5}$、$2.66\times10^{-5}$、$2.37\times10^{-5}\,\mathrm{m^3/mol}$。估计它们的玻意耳温度，说明为什么室温下、压强不太大时，二氧化碳的$\frac{pV}{nRT}$小于 1，氢气、氦气的大于 1（[理想气体状态方程](lesson:physics.thermal-physics.ideal-gas-law)第 7 题）。
+  hints:
+    - |
+      （1）把$\frac{pV}{nRT}$写成两项之差，其中一项是$\frac V{V-nb}$；$x$很小时$\frac1{1-x}$约等于多少？（2）令$\frac nV$的系数为零，再和定理里的$T_{\mathrm c}$比。（3）系数的正负由温度高于还是低于玻意耳温度决定。
+    - |
+      （1）$\frac{pV}{nRT}=\frac1{1-nb/V}-\frac a{RT}\cdot\frac nV$，而$\frac1{1-x}=1+x+\frac{x^2}{1-x}$。（2）$b-\frac a{RT}=0$；$T_{\mathrm c}=\frac{8a}{27Rb}$。（3）玻意耳温度是$\frac a{Rb}$，室温约$300\,\mathrm K$。
+    - |
+      （1）由方程，$p=\frac{nRT}{V-nb}-\frac{an^2}{V^2}$，所以$\frac{pV}{nRT}=\frac1{1-nb/V}-\frac a{RT}\cdot\frac nV$。记$x=\frac{nb}V$，$\frac1{1-x}=1+x+\frac{x^2}{1-x}$，最后一项是$\bigl(\frac nV\bigr)^2$的量级，略去它就得到要证的式子。
+
+      （2）系数$b-\frac a{RT}$为零，即$T=\frac a{Rb}$。这时一次项消失，剩下的偏离是$\bigl(\frac nV\bigr)^2$的量级，压强不太大时$pV$几乎不变。临界温度$T_{\mathrm c}=\frac{8a}{27Rb}$，所以玻意耳温度是它的$\frac{27}8$倍。
+
+      （3）代入数，玻意耳温度：二氧化碳约$1030\,\mathrm K$，氢气约$112\,\mathrm K$，氦气约$18\,\mathrm K$。室温约$300\,\mathrm K$，比二氧化碳的低，系数$b-\frac a{RT}$为负，$\frac{pV}{nRT}<1$，吸引占上风；比氢气、氦气的高，系数为正，$\frac{pV}{nRT}>1$，分子本身的体积占上风。实测的玻意耳温度是二氧化碳约$715\,\mathrm K$、氢气约$110\,\mathrm K$、氦气约$23\,\mathrm K$，范德瓦耳斯方程的估计高低次序对，数值只是粗略的。
+  reference: |
+    （1）$pV/(nRT)=V/(V-nb)-an/(RTV)=1/(1-x)-(a/RT)(n/V)$，$x=nb/V$；$1/(1-x)=1+x+x^2/(1-x)$，故$pV/(nRT)=1+(b-a/RT)(n/V)+O((n/V)^2)$（余项$b^2(n/V)^2/(1-x)$）。
+
+    （2）$b=a/(RT)$，玻意耳温度是$a/(Rb)$；$T_{\mathrm c}=8a/(27Rb)$，比值$27/8=3.375$。
+
+    （3）$a/(Rb)$：CO2 $0.3640/(8.31446\times4.27\times10^{-5})=1025\,\mathrm K$；H2 $0.02476/(8.31446\times2.66\times10^{-5})=112.0\,\mathrm K$；He $0.003457/(8.31446\times2.37\times10^{-5})=17.5\,\mathrm K$。300 K 低于 CO2 的、高于 H2、He 的，故 CO2 的$\frac{pV}{nRT}<1$，H2、He 的$\frac{pV}{nRT}>1$。实测玻意耳温度 CO2 714.8 K、H2 约 110 K、He 22.6 K（Atkins 的表）。
+
+- id: p6
+  tier: hard
+  statement: |
+    用临界点的值做单位，令$p=p_{\mathrm r}p_{\mathrm c}$、$V=V_{\mathrm r}V_{\mathrm c}$、$T=T_{\mathrm r}T_{\mathrm c}$。
+
+    （1）证明范德瓦耳斯方程化成$\bigl(p_{\mathrm r}+\frac3{V_{\mathrm r}^2}\bigr)(3V_{\mathrm r}-1)=8T_{\mathrm r}$，里面不再有$a$、$b$。
+
+    （2）证明：$T_{\mathrm r}\ge1$时，等温线上（$V_{\mathrm r}>\frac13$）$p_{\mathrm r}$随$V_{\mathrm r}$增大一直减小；$T_{\mathrm r}<1$时，等温线上有一段$p_{\mathrm r}$随$V_{\mathrm r}$增大而增大。
+
+    （3）由（1），用临界点的值做单位，各种范德瓦耳斯气体的状态方程完全相同。实际气体也近似如此：$T_{\mathrm r}$、$p_{\mathrm r}$相同的两种气体，$V_{\mathrm r}$也差不多，这叫作对比态定律（law of corresponding states）。
+
+    氩的临界点在$150.7\,\mathrm K$、$4.86\,\mathrm{MPa}$，二氧化碳的在$304.1\,\mathrm K$、$7.38\,\mathrm{MPa}$。和$200\,\mathrm K$、$6.00\,\mathrm{MPa}$的氩$T_{\mathrm r}$、$p_{\mathrm r}$都相同的二氧化碳，温度、压强各是多少？两者的$\frac{pV}{nRT}$有什么关系？
+  hints:
+    - |
+      （1）把定理里的三个式子代进方程，看能不能约去一个公共因子。（2）由（1）解出$p_{\mathrm r}$，对$V_{\mathrm r}$求导，看导数的正负由什么决定。（3）先算氩的$T_{\mathrm r}$、$p_{\mathrm r}$。
+    - |
+      （1）$p+\frac{an^2}{V^2}=\frac a{27b^2}\bigl(p_{\mathrm r}+\frac3{V_{\mathrm r}^2}\bigr)$，$V-nb=nb(3V_{\mathrm r}-1)$。（2）导数可以写成$\frac{24}{(3V_{\mathrm r}-1)^2}\bigl(g(V_{\mathrm r})-T_{\mathrm r}\bigr)$，其中$g(V)=\frac{(3V-1)^2}{4V^3}$，求$g$的最大值。（3）$\frac{pV}{nRT}=\frac{p_{\mathrm c}V_{\mathrm c}}{nRT_{\mathrm c}}\cdot\frac{p_{\mathrm r}V_{\mathrm r}}{T_{\mathrm r}}$。
+    - |
+      （1）由定理，$p_{\mathrm c}=\frac a{27b^2}$、$V_{\mathrm c}=3nb$、$T_{\mathrm c}=\frac{8a}{27Rb}$。代入后，$p+\frac{an^2}{V^2}=\frac a{27b^2}\bigl(p_{\mathrm r}+\frac3{V_{\mathrm r}^2}\bigr)$，$V-nb=nb(3V_{\mathrm r}-1)$，$nRT=\frac{8na}{27b}T_{\mathrm r}$。方程两边都含因子$\frac{na}{27b}$，约去就得到要证的式子。
+
+      （2）由（1），$p_{\mathrm r}=\frac{8T_{\mathrm r}}{3V_{\mathrm r}-1}-\frac3{V_{\mathrm r}^2}$，$V_{\mathrm r}>\frac13$。记$g(V)=\frac{(3V-1)^2}{4V^3}$，则
+
+      $$
+      \pdvc{p_{\mathrm r}}{V_{\mathrm r}}{T_{\mathrm r}}=\frac{24\bigl(g(V_{\mathrm r})-T_{\mathrm r}\bigr)}{(3V_{\mathrm r}-1)^2} .
+      $$
+
+      求导得$g'(V)=\frac{3(3V-1)(1-V)}{4V^4}$，$g$在$\bigl(\frac13,1\bigr]$上递增、在$[1,+\infty)$上递减，最大值是$g(1)=1$。$T_{\mathrm r}\ge1$时导数处处不为正，只在$T_{\mathrm r}=1$、$V_{\mathrm r}=1$这一点为零，所以$p_{\mathrm r}$一直减小（见[单调性与极值的判别](lesson:math.calculus.monotonicity#thm-monotonic-derivative)的边界情况）。$T_{\mathrm r}<1$时$g(1)>T_{\mathrm r}$，$g$连续，在$V_{\mathrm r}=1$附近的一段上$g>T_{\mathrm r}$，那里$p_{\mathrm r}$随$V_{\mathrm r}$增大而增大。
+
+      （3）氩的$T_{\mathrm r}=\frac{200}{150.7}\approx1.327$，$p_{\mathrm r}=\frac{6.00}{4.86}\approx1.235$。二氧化碳取同样的$T_{\mathrm r}$、$p_{\mathrm r}$：$T\approx1.327\times304.1\,\mathrm K\approx404\,\mathrm K$，$p\approx1.235\times7.38\,\mathrm{MPa}\approx9.11\,\mathrm{MPa}$。$T_{\mathrm r}>1$，由（2），$V_{\mathrm r}$由$T_{\mathrm r}$、$p_{\mathrm r}$唯一确定，两种气体的也相同；$\frac{pV}{nRT}=\frac{p_{\mathrm c}V_{\mathrm c}}{nRT_{\mathrm c}}\cdot\frac{p_{\mathrm r}V_{\mathrm r}}{T_{\mathrm r}}$，前一个因子都是$\frac38$，所以两者的$\frac{pV}{nRT}$相等。实测的前一个因子，氩约$0.29$，二氧化碳约$0.27$，也差不多，所以符合对比态定律时，它们的$\frac{pV}{nRT}$也差不多相等。
+  reference: |
+    （1）$p=\frac{a}{27b^2}p_{\mathrm r}$，$\frac{an^2}{V^2}=\frac{a}{9b^2V_{\mathrm r}^2}=\frac a{27b^2}\cdot\frac3{V_{\mathrm r}^2}$，$V-nb=nb(3V_{\mathrm r}-1)$，$nRT=\frac{8na}{27b}T_{\mathrm r}$；左边$\frac{na}{27b}(p_{\mathrm r}+3/V_{\mathrm r}^2)(3V_{\mathrm r}-1)$，约去得证。
+
+    （2）$\partial p_{\mathrm r}/\partial V_{\mathrm r}=6/V^3-24T_{\mathrm r}/(3V-1)^2=\frac{24}{(3V-1)^2}(g-T_{\mathrm r})$，$g=(3V-1)^2/(4V^3)$，$g'=3(3V-1)(1-V)/(4V^4)$，$\max g=g(1)=1$。$T_{\mathrm r}\ge1$：导数$\le0$，至多一点为零，严格递减；$T_{\mathrm r}<1$：$g(1)=1>T_{\mathrm r}$，由连续性在 1 附近导数$>0$。
+
+    （3）$T_{\mathrm r}=1.32714$，$p_{\mathrm r}=1.23457$；CO2：$T=403.6\,\mathrm K$，$p=9.111\,\mathrm{MPa}$。$\frac{pV}{nRT}=\frac38p_{\mathrm r}V_{\mathrm r}/T_{\mathrm r}$，$T_{\mathrm r}>1$时$V_{\mathrm r}$唯一（范德瓦耳斯方程给$V_{\mathrm r}\approx2.295$、$\frac{pV}{nRT}\approx0.801$），两者相等。实测$\frac{p_{\mathrm c}V_{\mathrm c}}{nRT_{\mathrm c}}$氩约 0.29、二氧化碳约 0.27，近似相同，对比态定律下$\frac{pV}{nRT}$也近似相等。
+
+- id: p7
+  tier: thinking
+  statement: |
+    温度低于临界温度时，范德瓦耳斯等温线上有一段体积变大、压强反而升高。
+
+    （1）设气缸浸在热库（heat reservoir）里，温度保持不变，活塞能无摩擦（friction）地滑动；缸里的气体处在这一段上的某个状态，活塞外面恒定的压强正好和气体的压强相等。活塞被轻轻往外推了一点，接下来会怎样？往里推一点呢？
+
+    （2）外面的压强是正的，等温线上压强和它相等的状态还有两个，一个在这一段的左边，一个在右边。气体处在这两个状态时，活塞被轻轻推一下，又会怎样？
+
+    （3）这一段上的状态能不能稳定地存在？要稳定，等温线应当满足什么条件？理想气体满足吗？
+  hints:
+    - |
+      （1）体积变大以后，气体的压强和外面的压强谁大？活塞往哪边受力？（2）等温线在那两个状态附近是升还是降？（3）想想什么样的等温线，能让体积变大后的压强差把活塞推回来。
+    - |
+      （1）在这一段上$\pdvc pVT>0$，体积变大，压强也变大。（2）在那两个状态$\pdvc pVT<0$，体积变大，压强变小。（3）看$\pdvc pVT$的正负；理想气体的等温线是$p=\frac{nRT}V$。
+    - |
+      （1）往外推一点，体积变大，在这一段上气体的压强随之升高，比外面的压强大，活塞被推得更远；往里推一点，体积变小，气体的压强降低，外面的压强把活塞压得更里。两种情况都越走越远，直到气体的状态离开这一段，落到两旁压强随体积增大而减小的部分，在那里和外面的压强重新相等。
+
+      （2）这两个状态在回折的两边，那里压强随体积增大而减小。往外推一点，气体的压强降低，比外面的小，活塞被压回来；往里推一点，气体的压强升高，比外面的大，活塞被顶回来。所以两个状态都经得起轻轻一推；（1）里往外推，最后停在右边那个，往里推，最后停在左边那个。推得太远、越过了（1）里的状态，就回不来，会走到另一个状态去。
+
+      （3）不能稳定地存在：任何一点扰动都会被放大，实际上看不到这样的状态。稳定要求等温线上压强随体积增大而减小，$\pdvc pVT<0$时就是这样：体积稍一变大，压强就降低，外面的压强把活塞推回来。理想气体$\pdvc pVT=-\frac{nRT}{V^2}<0$，处处稳定。实际气体在这一段会分成密、稀两部分，也就是液体和气体，见[麦克斯韦等面积法则](lesson:physics.thermal-physics.maxwell-construction)。
+  reference: |
+    （1）往外：$V$增大，$p$增大（这一段$\partial p/\partial V>0$），$p>p_{\text{外}}$，活塞继续外移；往里：$p<p_{\text{外}}$，继续内移。偏离被放大，直到落到$\partial p/\partial V<0$的分支上$p=p_{\text{外}}$处。
+
+    （2）另两个状态在$\partial p/\partial V<0$的分支上：往外推$p<p_{\text{外}}$，往里推$p>p_{\text{外}}$，都被推回，经得起小扰动（外压不等于饱和蒸气压时，其中一个只是亚稳的，见麦克斯韦等面积法则）；推过中间的状态就走到另一个。
+
+    （3）不稳定。力学稳定条件$(\partial p/\partial V)_T<0$；理想气体$-nRT/V^2<0$，稳定。实际上这一段分成液、气两相（等面积法则；以$F$最小再论证一次）。开放作答。
+
+- id: p8
+  tier: thinking
+  statement: |
+    范德瓦耳斯方程给出$\frac{p_{\mathrm c}V_{\mathrm c}}{nRT_{\mathrm c}}=\frac38=0.375$，实测的氩、氮、甲烷约$0.29$，二氧化碳约$0.27$，水约$0.23$，都比它小。
+
+    （1）推导范德瓦耳斯方程时，两处修正各用了什么简化？在临界点附近，分子之间的平均距离只有分子直径的约 1.5 倍，这些简化还靠得住吗？
+
+    （2）$a$、$b$真是常量吗？说说你的想法。
+  hints:
+    - |
+      回到讲解里两处修正是怎样得来的：每一步把什么当作简单的、均匀的？临界点附近，几个分子同时挨在一起的情形多不多？
+    - |
+      $b$：能自由活动的体积写成$V-nb$，挡掉的体积和分子数成正比，相当于每个分子挡掉的体积简单相加。$a$：被拉的分子数、拉它的分子数，都按整个容器平均的数密度算。
+    - |
+      （1）$b$这一项把每个分子挡掉的体积简单相加，只在分子多半两两相遇时才准；$a$这一项假定每个分子周围的分子均匀分布，数密度处处是$\frac NV$。临界点附近分子挤得很近，三四个分子同时挨在一起很常见，挡掉的体积不能简单相加；吸引又让分子成团，各处疏密不同，一团团的区域忽大忽小，大到能散射（scattering）可见光，流体（fluid）变得乳白，这叫作临界乳光（critical opalescence）。所以这两处简化在临界点附近都靠不住，定量上差得多。
+
+      （2）开放作答。拿实测的数去拟合，$a$、$b$会随温度和密度变，不是真正的常量。范德瓦耳斯方程把周围分子的作用换成均匀的平均值，这是一种平均场（mean field）近似，见以后的[伊辛模型与平均场近似](lesson:physics.thermal-physics.ising-model)；物理量的起伏怎样算，见以后的[涨落](lesson:physics.thermal-physics.fluctuations)。工程上常用再多一两个参数的状态方程，例如让$a$随温度变；临界点附近还要更细的理论。
+  reference: |
+    （1）$b$：排除体积按线性相加，只含两体相遇（只到$n/V$的一次项），稠密时三体、多体重叠不可忽略；$a$：平均场，假定周围密度均匀，忽略吸引造成的关联（成团）。临界点附近关联长度发散、密度涨落大（临界乳光），平均场失效，$\frac{p_{\mathrm c}V_{\mathrm c}}{nRT_{\mathrm c}}$偏差大。
+
+    （2）开放：$a$、$b$应随$T$、密度变（如 Redlich–Kwong 让吸引项随温度变）；临界指数、标度理论属于更细的理论（以后统计力学、重整化群）。

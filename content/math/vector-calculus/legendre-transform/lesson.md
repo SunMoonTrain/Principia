@@ -13,7 +13,7 @@ status: reviewed
 
 ## 这一节要回答的问题
 
-一条向上弯的曲线$y=f(x)$，可以用每个$x$处的高度来描述，也可以用它的切线来描述：每个斜率$p$对应一条切线，记下这条切线在$y$轴上的截距就行。能不能把自变量从$x$换成斜率$p=f'(x)$，又不丢失任何信息？分析力学里由:term[拉格朗日量]{id="physics.analytical-mechanics.lagrangian"}（Lagrangian）得到:term[哈密顿量]{id="physics.analytical-mechanics.hamiltonian"}（Hamiltonian），热学里由内能得到自由能（free energy），做的都是这样的变换。
+一条向上弯的曲线$y=f(x)$，可以用每个$x$处的高度来描述，也可以用它的切线来描述：每个斜率$p$对应一条切线，记下这条切线在$y$轴上的截距就行。能不能把自变量从$x$换成斜率$p=f'(x)$，又不丢失任何信息？分析力学里由:term[拉格朗日量]{id="physics.analytical-mechanics.lagrangian"}（Lagrangian）得到:term[哈密顿量]{id="physics.analytical-mechanics.hamiltonian"}（Hamiltonian），热学里由内能得到:term[自由能]{id="physics.thermal-physics.helmholtz-free-energy"}（free energy），做的都是这样的变换。
 
 ## 讲解
 
@@ -24,7 +24,7 @@ status: reviewed
 ::anchor{id="def-legendre-transform"}
 函数$f^*(p)=p\,x(p)-f\bigl(x(p)\bigr)$叫作$f$的:term[勒让德变换]{id="math.vector-calculus.legendre-transform"}（Legendre transform），它的自变量$p$取遍$f'$的值。
 
-为什么这样定义：斜率为$p$的切线过点$\bigl(x(p),f(x(p))\bigr)$，方程是$y=f\bigl(x(p)\bigr)+p\bigl(x-x(p)\bigr)=px-f^*(p)$，所以$-f^*(p)$正是这条切线的截距。另一种看法：$px-f(x)$对$x$的导数是$p-f'(x)$，在$x(p)$处由正变负，所以$f^*(p)=\max_x\bigl(px-f(x)\bigr)$，是直线$y=px$高出曲线最多的那个量。例如$f(x)=\frac{x^2}2$时$x(p)=p$，$f^*(p)=\frac{p^2}2$；$f(x)=e^x$时$x(p)=\ln p$，$f^*(p)=p\ln p-p$（$p>0$）。边界情况：$f$是一次函数时$f'$是常数，解不出$x(p)$，变换做不了；物理和化学的书里常用差一个负号的$f-px$，例如自由能（见[热力学势](lesson:physics.thermal-physics.thermodynamic-potentials)）。
+为什么这样定义：斜率为$p$的切线过点$\bigl(x(p),f(x(p))\bigr)$，方程是$y=f\bigl(x(p)\bigr)+p\bigl(x-x(p)\bigr)=px-f^*(p)$，所以$-f^*(p)$正是这条切线的截距。另一种看法：$px-f(x)$对$x$的导数是$p-f'(x)$，在$x(p)$处由正变负，所以$f^*(p)=\max_x\bigl(px-f(x)\bigr)$，是直线$y=px$高出曲线最多的那个量。例如$f(x)=\frac{x^2}2$时$x(p)=p$，$f^*(p)=\frac{p^2}2$；$f(x)=e^x$时$x(p)=\ln p$，$f^*(p)=p\ln p-p$（$p>0$）。边界情况：$f$是一次函数时$f'$是常数，解不出$x(p)$，变换做不了；物理和化学的书里常用差一个负号的$f-px$，例如:term[自由能]{id="physics.thermal-physics.helmholtz-free-energy"}（见[热力学势](lesson:physics.thermal-physics.thermodynamic-potentials)）。
 
 ### 变换后的导数
 

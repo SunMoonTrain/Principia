@@ -1,0 +1,215 @@
+- id: p1
+  tier: easy
+  statement: |
+    一个孤立系统只有一种粒子，不计重力，分成甲、乙两部分，中间隔着固定的、能透过粒子的壁，两部分的温度都是$300\,\mathrm K$，甲中每摩尔的化学势$N_{\mathrm A}\mu$比乙中的高$500\,\mathrm{J/mol}$。有$0.20\,\mathrm{mol}$粒子从甲流到乙；两部分都很大，这期间各自的温度和化学势几乎不变。求总熵增加了多少，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 0.20*500/300
+    unit: |
+      $\mathrm{J/K}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      用本节推导粒子流向时写出的$\dd S_{\text{总}}$。两部分温度相同、壁又固定不动时，哪几项是零？
+    - |
+      只剩粒子那一项：$\dd S_{\text{总}}=-\frac{\mu_{\text{甲}}-\mu_{\text{乙}}}T\dd N_{\text{甲}}$。流过$0.20\,\mathrm{mol}$粒子，甲的粒子数一共减少$0.20\,\mathrm{mol}\times N_{\mathrm A}$。
+    - |
+      $\Delta S_{\text{总}}=\frac{N_{\mathrm A}(\mu_{\text{甲}}-\mu_{\text{乙}})\times0.20\,\mathrm{mol}}T=\frac{500\times0.20}{300}\,\mathrm{J/K}\approx0.333\,\mathrm{J/K}$。
+  solution: |
+    两部分温度相同，$\dd U_{\text{甲}}$那一项是零；壁固定不动，$\dd V_{\text{甲}}$那一项也是零，只剩$\dd S_{\text{总}}=-\frac{\mu_{\text{甲}}-\mu_{\text{乙}}}T\dd N_{\text{甲}}$。温度、化学势几乎不变，流过$0.20\,\mathrm{mol}$粒子时甲的粒子数减少$0.20\,\mathrm{mol}\times N_{\mathrm A}$，所以$\Delta S_{\text{总}}=\frac{500\,\mathrm{J/mol}\times0.20\,\mathrm{mol}}{300\,\mathrm K}\approx0.333\,\mathrm{J/K}$。总熵增加，这样的流动能自发进行；倒过来从乙流到甲，总熵就要减少。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法，哪些正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        温度、压强都相同时，$1\,\mathrm{mol}$和$2\,\mathrm{mol}$的同一种气体化学势相同
+      - |
+        $\mu=\pdvc GN{T,V}$
+      - |
+        两边温度相同、中间的壁固定不动时，粒子从化学势高的一边流向低的一边，一直流到两边的粒子数相等为止
+      - |
+        密闭的瓶子里装着水，水面上方是水蒸气；只看瓶里液态的水，它是开放系统
+      - |
+        只有一种粒子时，$F=\mu N$
+    value: [1, 4]
+  hints:
+    - |
+      对照本节的几个定理：$\mu$是哪个热力学势（thermodynamic potential）、固定哪两个量时的偏导数？平衡时什么相等？开放系统看的是什么？
+    - |
+      A 用$G=\mu N$；B 写出$\dd G$，看温度、体积不变时加粒子，压强变不变；C 想想流到什么时候为止，同一种气体温度相同时那意味着什么（例 1）；D 看水和水蒸气之间有没有分子进出；E 用$F=G-pV$。
+    - |
+      选 A、D。A 对：只有一种粒子时$G=\mu N$，$\mu$只由温度和压强决定，和物质有多少无关。B 错：$\dd G=-S\dd T+V\dd p+\mu\,\dd N$，温度、体积不变时加粒子，压强也跟着变，多出$V\dd p$一项，对理想气体$\pdvc GN{T,V}=\mu+\kB T$。C 错：流到两边的化学势相等为止；同一种理想气体温度相同时，这就是压强、数密度（number density）相等，两边体积不同，粒子数就不相等。
+
+      D 对：水不断汽化（vaporization）成水蒸气，水蒸气也不断凝结（condensation）回到水里，液态的水和外界有分子进出，是开放系统；整个瓶子才是封闭系统。E 错：$F=G-pV=\mu N-pV$。
+  solution: |
+    选 A、D。A 对：只有一种粒子时$G=\mu N$，化学势只由温度和压强决定。B 错：温度、体积不变时加粒子，压强会变，$\dd G$里多出$V\dd p$；理想气体的$\pdvc GN{T,V}=\mu+\kB T$。C 错：流到两边化学势相等为止，同一种理想气体在同样的温度下就是数密度相等，两边体积不同时粒子数不相等。
+
+    D 对：液态的水和水蒸气之间不断有分子进出，单看水，它是开放系统；整个瓶子才是封闭系统。E 错：$F=G-pV=\mu N-pV$。
+
+- id: p3
+  tier: medium
+  statement: |
+    设大气的温度处处是$280\,\mathrm K$，空气看成摩尔质量（molar mass）$M=0.029\,\mathrm{kg/mol}$的单一成分理想气体，$g$取$9.8\,\mathrm{m/s^2}$，高度$z$从地面算起。在重力场里，平衡时处处相等的不再是化学势本身，而是每摩尔的化学势$N_{\mathrm A}\mu$加上每摩尔的重力势能（gravitational potential energy）$Mgz$（仿照本节推导粒子流向的办法，把分子的重力势能也算进能量，就能得到这一点）。$5.0\,\mathrm{km}$高处的压强是地面的多少倍？结果保留三位有效数字。
+  answer:
+    type: number
+    value: exp(-0.029*9.8*5000/(8.31446261815324*280))
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      由例 1，温度不变时每摩尔的化学势怎样随压强变？把它加上$Mgz$，令$z$处和地面相等。
+    - |
+      $N_{\mathrm A}\kB=R$，所以$N_{\mathrm A}\mu(T,p)=N_{\mathrm A}\mu(T,p_0)+RT\ln\frac p{p_0}$。取$p_0$为地面的压强，条件就是$RT\ln\frac{p(z)}{p_0}+Mgz=0$。
+    - |
+      $\frac{p(z)}{p_0}=e^{-Mgz/(RT)}$，指数是$\frac{0.029\times9.8\times5000}{8.314\times280}\approx0.610$，所以压强约是地面的$0.543$倍。
+  solution: |
+    例 1 的结果乘以$N_{\mathrm A}$，$N_{\mathrm A}\mu(T,p)=N_{\mathrm A}\mu(T,p_0)+RT\ln\frac p{p_0}$。取$p_0$为地面的压强，每摩尔的化学势加$Mgz$处处相等，即$RT\ln\frac{p(z)}{p_0}+Mgz=0$，所以$p(z)=p_0e^{-Mgz/(RT)}$。代入数，指数约$0.610$，$5.0\,\mathrm{km}$高处的压强约是地面的$0.543$倍。这正是[静止流体中的压强](lesson:physics.newtonian-mechanics.fluid-statics)第 5 题的指数分布，那里约$8\,\mathrm{km}$的常量就是$\frac{RT}{Mg}$，这里约$8.19\,\mathrm{km}$。
+
+- id: p4
+  tier: medium
+  statement: |
+    两个容积相同的刚性容器之间隔着一层固定的膜，膜只让氮分子通过；整个装置放在$300\,\mathrm K$的热库（heat reservoir）里，温度始终是$300\,\mathrm K$。开始时左边是$100\,\mathrm{kPa}$的纯氮气，右边是$100\,\mathrm{kPa}$的空气，其中氮的分压（partial pressure）是$78\,\mathrm{kPa}$，其余$22\,\mathrm{kPa}$是别的气体。各种气体都看成理想气体。达到平衡后，依次求左、右两边的压强。
+  answer:
+    type: tuple
+    value: [(100 + 78)/2, (100 + 78)/2 + 22]
+    unit: |
+      $\mathrm{kPa}$
+  hints:
+    - |
+      哪种分子能在两边之间流动？它的化学势由什么决定（例 1）？平衡时什么相等？
+    - |
+      把热库也算进来就是孤立系统；热库也是$300\,\mathrm K$，它和两边交换的能量对总熵的贡献互相抵消，两边容积又不变，只剩氮分子那一项。所以平衡时两边氮的化学势相等，也就是氮的分压相等。氮分子总数不变，两边容积、温度又相同，两边氮的分压之和不变。
+    - |
+      两边氮的分压之和是$100\,\mathrm{kPa}+78\,\mathrm{kPa}=178\,\mathrm{kPa}$，平衡时各是$89\,\mathrm{kPa}$。左边只有氮，压强是$89\,\mathrm{kPa}$；右边再加上别的气体的$22\,\mathrm{kPa}$，是$111\,\mathrm{kPa}$。
+  solution: |
+    把热库也算进来就是孤立系统。热库也是$300\,\mathrm K$，它和两边交换的能量对总熵的贡献互相抵消，两边容积又不变，总熵的改变只剩能穿过膜的氮分子那一项，$\dd S_{\text{总}}=-\frac{\mu_{\text{左}}-\mu_{\text{右}}}T\dd N_{\text{左}}$，$\mu$、$N$都指氮的。所以氮分子从氮的化学势高的一边流向低的一边，平衡时两边氮的化学势相等。由例 1，氮的化学势只和温度、氮的分压有关，所以平衡时两边氮的分压相等。
+
+    氮分子总数不变，两边容积、温度相同，两边氮的分压之和保持$100\,\mathrm{kPa}+78\,\mathrm{kPa}=178\,\mathrm{kPa}$，平衡时各$89\,\mathrm{kPa}$。左边压强$89\,\mathrm{kPa}$，右边$89\,\mathrm{kPa}+22\,\mathrm{kPa}=111\,\mathrm{kPa}$。开始时两边压强相等，氮分子照样从左流到右：推动粒子的是化学势之差，不是压强之差；平衡后两边反倒差$22\,\mathrm{kPa}$，由固定的膜承受。
+
+- id: p5
+  tier: hard
+  statement: |
+    （1）只有一种粒子时，由$G=\mu N$和本节的$\dd G$，证明$S\dd T-V\dd p+N\dd\mu=0$。这叫作吉布斯-杜安关系（Gibbs–Duhem relation）。
+
+    （2）温度不变时，把$1\,\mathrm{mol}$液态的水从 1 标准大气压（standard atmosphere，$101\,325\,\mathrm{Pa}$）加压到 100 标准大气压，它的摩尔体积（molar volume）可以当作$18\,\mathrm{cm^3/mol}$不变。每摩尔的化学势$N_{\mathrm A}\mu$增加多少？
+
+    （3）$300\,\mathrm K$的理想气体，温度不变、压强同样变为原来的 100 倍，每摩尔的化学势增加多少？液体的化学势为什么几乎不随压强变？
+
+    （4）密闭容器里，液态的水和水面上方的水蒸气达到平衡，温度是$300\,\mathrm K$。温度不变，再充进一种不溶于水的气体，使水受的压强增加 99 标准大气压，混合气体看成理想气体。重新平衡后，水蒸气的分压是原来的多少倍？
+  hints:
+    - |
+      （1）对$G=\mu N$求全微分，和$\dd G=-S\dd T+V\dd p+\mu\,\dd N$比较。（2）温度不变时，$\dd\mu$等于什么？（3）用例 1。（4）能穿过水面的只有水分子，充气前、充气后平衡时什么相等？
+    - |
+      （1）$\dd G=\mu\,\dd N+N\dd\mu$。（2）$\dd T=0$时$N\dd\mu=V\dd p$，乘以$\frac{N_{\mathrm A}}N$，每摩尔的化学势变化$V_{\mathrm m}\dd p$，$V_{\mathrm m}$是摩尔体积。（3）每摩尔增加$RT\ln100$。（4）液态的水每摩尔的化学势增加多少，水蒸气的也增加多少，而水蒸气的由它的分压决定（例 1）。
+    - |
+      （1）由$G=\mu N$，$\dd G=\mu\,\dd N+N\dd\mu$；本节的定理给出$\dd G=-S\dd T+V\dd p+\mu\,\dd N$。两式相减，$N\dd\mu=-S\dd T+V\dd p$，即$S\dd T-V\dd p+N\dd\mu=0$。它说明$T$、$p$、$\mu$三个强度量不能各自随意变，知道其中两个怎样变，第三个就定了。
+
+      （2）温度不变时$\dd\mu=\frac VN\dd p$，每摩尔$\dd(N_{\mathrm A}\mu)=V_{\mathrm m}\dd p$。$V_{\mathrm m}$不变，$\Delta(N_{\mathrm A}\mu)=V_{\mathrm m}\Delta p=18\times10^{-6}\times99\times101\,325\,\mathrm{J/mol}\approx181\,\mathrm{J/mol}$。
+
+      （3）由例 1，$\Delta(N_{\mathrm A}\mu)=RT\ln100\approx8.314\times300\times4.605\,\mathrm{J/mol}\approx1.15\times10^4\,\mathrm{J/mol}$，约是液态水的 64 倍。由$\pdvc\mu pT=\frac VN$，化学势随压强变得多快，看每个分子占多大体积：1 标准大气压、$300\,\mathrm K$时气体的摩尔体积约$2.46\times10^4\,\mathrm{cm^3/mol}$，是水的一千多倍；液体的摩尔体积小，又几乎压不动，化学势也就几乎不随压强变。
+
+      （4）和（2）一样，液态的水每摩尔的化学势增加约$181\,\mathrm{J/mol}$。能穿过水面的只有水分子，充气前、充气后平衡时，液态的水和水蒸气的化学势都相等，所以水蒸气每摩尔的化学势也增加这么多。由例 1，水蒸气的化学势只和温度、它的分压有关，设分压变为原来的$x$倍，$RT\ln x\approx181\,\mathrm{J/mol}$，$\ln x\approx\frac{181}{8.314\times300}\approx0.0726$，$x\approx1.075$。水受的压强增加了 99 标准大气压，水蒸气的分压却只变为原来的约 1.075 倍，原因还是液体的摩尔体积小。
+  reference: |
+    （1）$\dd(\mu N)=\mu\dd N+N\dd\mu=-S\dd T+V\dd p+\mu\dd N\Rightarrow N\dd\mu=-S\dd T+V\dd p$。
+
+    （2）$\Delta(N_{\mathrm A}\mu)=V_{\mathrm m}\Delta p=18\times10^{-6}\,\mathrm{m^3/mol}\times99\times101325\,\mathrm{Pa}=180.6\,\mathrm{J/mol}$。
+
+    （3）$RT\ln100=8.314\times300\times4.6052=11.49\,\mathrm{kJ/mol}$，约$63.6$倍。$\pdvc\mu pT=\frac VN$：气体的摩尔体积（$300\,\mathrm K$、1 标准大气压约$24.6\,\mathrm{L/mol}$）是水的约 1370 倍，且随压强增大而减小（$\frac{RT}p$）；液体几乎不可压缩，化学势随压强的变化小得多。
+
+    （4）充气前后水的化学势在两边都相等（只有水分子能穿过水面），所以$RT\ln x=V_{\mathrm m}\Delta p=180.6\,\mathrm{J/mol}$，$x=e^{180.6/2494.3}=1.0751$。
+
+- id: p6
+  tier: hard
+  statement: |
+    $U$、$S$、$V$、$N$都是广延量，所以对任何$\lambda>0$都有$U(\lambda S,\lambda V,\lambda N)=\lambda U(S,V,N)$。
+
+    （1）仿照[多元复合函数的链式法则](lesson:math.vector-calculus.multivariable-chain-rule)第 6 题的证法，证明$U=TS-pV+\mu N$，再推出$G=\mu N$。那道题证的$xf_x+yf_y=kf$，连同它对更多变量的推广，叫作欧拉齐次函数定理（Euler's homogeneous function theorem）。
+
+    （2）有几种粒子时，$U(\lambda S,\lambda V,\lambda N_1,\lambda N_2,\dots)=\lambda U(S,V,N_1,N_2,\dots)$，基本方程里是$\sum_j\mu_j\dd N_j$。$G$等于什么？
+
+    （3）单原子理想气体（monatomic ideal gas）的内能可以写成$U=AN^{5/3}V^{-2/3}e^{2S/(3N\kB)}$，$A$是正的常数。验证它满足题首的等式，由它求出$T$、$p$、$\mu$，并验证$U=TS-pV+\mu N$。
+  hints:
+    - |
+      （1）把等式两边都看成$\lambda$的函数，对$\lambda$求导，再令$\lambda=1$。（2）同样的办法，只是变量多几个。（3）$T$、$-p$、$\mu$分别是$U$对$S$、$V$、$N$的偏导数（其余两个变量不变），对指数函数用链式法则（chain rule）。
+    - |
+      （1）左边对$\lambda$求导是$S\,U_S+V\,U_V+N\,U_N$，偏导数在$(\lambda S,\lambda V,\lambda N)$处取值；右边是$U(S,V,N)$。由开放系统的热力学基本方程，$U_S=T$、$U_V=-p$、$U_N=\mu$。（3）$U_S=\frac{2U}{3N\kB}$，$U_V=-\frac{2U}{3V}$，$U_N=U\Bigl(\frac5{3N}-\frac{2S}{3N^2\kB}\Bigr)$。
+    - |
+      （1）固定$(S,V,N)$，令$\phi(\lambda)=U(\lambda S,\lambda V,\lambda N)$。由链式法则，$\phi'(\lambda)=S\,U_S+V\,U_V+N\,U_N$，各个偏导数在$(\lambda S,\lambda V,\lambda N)$处取值；另一方面$\phi(\lambda)=\lambda U(S,V,N)$，$\phi'(\lambda)=U(S,V,N)$。令$\lambda=1$，由开放系统的热力学基本方程，$U_S=T$、$U_V=-p$、$U_N=\mu$，所以$U=TS-pV+\mu N$。于是$G=U-TS+pV=\mu N$，和讲解里由「$G$和$N$成正比」得到的一样。
+
+      （2）同理，$U=TS-pV+\sum_j\mu_jN_j$，所以$G=\sum_j\mu_jN_j$：每种粒子各贡献$\mu_jN_j$，$\mu_j$是第$j$种粒子在混合物里的化学势。
+
+      （3）$U(\lambda S,\lambda V,\lambda N)=A\lambda^{5/3}N^{5/3}\lambda^{-2/3}V^{-2/3}e^{2S/(3N\kB)}=\lambda U$，满足题首的等式。求偏导数，
+
+      $$
+      T=\frac{2U}{3N\kB} ,\qquad p=\frac{2U}{3V} ,\qquad \mu=\frac{5U}{3N}-\frac{2US}{3N^2\kB} .
+      $$
+
+      前两式就是$U=\frac32N\kB T$和$pV=N\kB T$。于是$TS-pV+\mu N=\frac{2US}{3N\kB}-\frac23U+\frac53U-\frac{2US}{3N\kB}=U$，正是（1）的结论；化学势也可以写成$\mu=\frac52\kB T-\frac{TS}N$。
+  reference: |
+    （1）$\phi(\lambda)=U(\lambda S,\lambda V,\lambda N)=\lambda U$，$\phi'(1)=SU_S+VU_V+NU_N=U$，$U_S=T$，$U_V=-p$，$U_N=\mu$，得$U=TS-pV+\mu N$，$G=U-TS+pV=\mu N$。
+
+    （2）$U=TS-pV+\sum_j\mu_jN_j$，$G=\sum_j\mu_jN_j$。
+
+    （3）指数里$\frac{\lambda S}{\lambda N}$不变，$\lambda^{5/3-2/3}=\lambda$。$T=\frac{2U}{3N\kB}$（即$U=\frac32N\kB T$），$p=\frac{2U}{3V}$（即$pV=N\kB T$），$\mu=\frac{5U}{3N}-\frac{2US}{3N^2\kB}=\frac52\kB T-\frac{TS}N$；$TS-pV+\mu N=\frac{2US}{3N\kB}-\frac23U+\frac53U-\frac{2US}{3N\kB}=U$。
+
+- id: p7
+  tier: thinking
+  statement: |
+    内能、熵都只定到差一个常数（见[克劳修斯不等式与熵](lesson:physics.thermal-physics.entropy#def-entropy)），化学势呢？
+
+    （1）把每个粒子的能量零点降低$\varepsilon_0$，即$U$换成$U+N\varepsilon_0$。由$\mu=\pdvc UN{S,V}$，化学势怎样变？
+
+    （2）熵的参考态也换一个：$S$换成$S+N\zeta_0$，$\zeta_0$是常数。由$G=\mu N$，化学势又怎样变？
+
+    （3）这样看来，比较同一种粒子在两处的化学势、判断它往哪边流，有没有意义？拿氮分子的化学势和氧分子的比呢？单说「某种气体的化学势是负的」，有没有意义？
+  hints:
+    - |
+      （1）$S$、$V$不变，对$U+N\varepsilon_0$求$N$的偏导数。（2）$T=\pdvc US{V,N}$变不变？$G=U-TS+pV$里哪一项变了？（3）本节判断流向、写平衡条件时，比的是什么？
+    - |
+      （1）多出$\varepsilon_0$。（2）$T$不变，$G$变成$G-TN\zeta_0$，所以$\mu$变成$\mu-T\zeta_0$。（3）同一种粒子在温度相同的两处，两个化学势加上的是同一个数。
+    - |
+      （1）$\pdvc{(U+N\varepsilon_0)}N{S,V}=\mu+\varepsilon_0$：化学势跟着能量零点平移，就像重力势能随零点的选取平移。
+
+      （2）$S$换成$S+N\zeta_0$，$U$对熵的偏导数不变，$T$不变；$G$变成$U-T(S+N\zeta_0)+pV=G-TN\zeta_0$，由$G=\mu N$，$\mu$变成$\mu-T\zeta_0$。
+
+      （3）同一种粒子在温度相同的两处，两个化学势都加上$\varepsilon_0-T\zeta_0$，差不变；本节判断流向、写平衡条件用的正是这个差，所以有意义。氮分子和氧分子的零点各取各的，两者化学势的差可以随约定任意改；氮分子也不会变成氧分子，没有哪个判据要比这两个数，所以拿它们比没有意义。
+
+      单说化学势的正负也没有意义，要先约定能量和熵的零点。统计力学里有一套通常的约定，按它算，常温常压下的气体化学势是负的，见以后的[理想气体的配分函数](lesson:physics.thermal-physics.ideal-gas-partition-function)。
+  reference: |
+    （1）$\mu\to\mu+\varepsilon_0$。
+
+    （2）$T=U_S$不变，$G\to G-TN\zeta_0$，$\mu\to\mu-T\zeta_0$。
+
+    （3）同种粒子、同温两处：差不变，判据（$T$相同时比$\mu$，平衡时$\mu$相等）有意义。不同种粒子的零点约定互相独立，又不会互相转化，比较无意义。$\mu$的符号依赖约定；统计力学的约定下（能量从静止的分子算起，熵由微观态数定），常温常压的单原子理想气体$\mu=\kB T\ln\Bigl(\frac NV\lambda_{\mathrm{th}}^3\Bigr)<0$，$\lambda_{\mathrm{th}}=\frac h{\sqrt{2\pi m\kB T}}$是热波长（thermal wavelength），$m$是分子质量。
+
+- id: p8
+  tier: thinking
+  statement: |
+    空腔里的热辐射（thermal radiation）可以看成光子（photon）组成的气体。腔壁不断吸收、发射光子，光子数不守恒。设腔壁和腔里的辐射合起来是孤立系统，两者的温度都是$T$，空腔的容积不变。
+
+    （1）仿照本节推导粒子流向的办法：辐射的光子数增加$\dd N$、能量增加$\dd U$（都由腔壁的吸收、发射造成），写出总熵的改变。平衡时光子的化学势是多少？
+
+    （2）[热力学势](lesson:physics.thermal-physics.thermodynamic-potentials)第 4 题给出热辐射的$F(T,V)=-\frac13aVT^4$。算出$G=F+pV$，它和（1）的结论、和$G=\mu N$对得上吗？
+
+    （3）关在容器里的理想气体，为什么不能照这样推出$\mu=0$？
+  hints:
+    - |
+      （1）辐射的光子数也能变，照样用开放系统的热力学基本方程，容积不变时$\dd S_{\text{辐射}}=\frac{\dd U-\mu\,\dd N}T$；腔壁放出能量$\dd U$，熵怎样变？光子数能不能离开能量单独变？（2）$p=-\pdvc FVT$。（3）气体分子能不能由腔壁造出来、被腔壁吸收掉？
+    - |
+      （1）$\dd S_{\text{壁}}=-\frac{\dd U}T$，加起来$\dd S_{\text{总}}=-\frac{\mu\,\dd N}T$。腔壁可以吸收一个能量大的光子、放出两个能量小的，光子数变了，能量不变。（2）$p=\frac13aT^4$。（3）分子数守恒，$\dd N=0$。
+    - |
+      （1）辐射的光子数能变，容积不变，由开放系统的热力学基本方程，$\dd S_{\text{辐射}}=\frac{\dd U-\mu\,\dd N}T$；腔壁的体积、粒子数都不变，放出能量$\dd U$，$\dd S_{\text{壁}}=-\frac{\dd U}T$。两者温度相同，相加得$\dd S_{\text{总}}=-\frac{\mu\,\dd N}T$。腔壁吸收一个能量大的光子、放出两个能量小的，光子数就变了，能量却可以不变，所以$\dd N$能单独取正负。$\mu$不是零，就有变化使总熵增加，所以平衡时只能$\mu=0$。
+
+      （2）$p=-\pdvc FVT=\frac13aT^4$，所以$G=F+pV=-\frac13aVT^4+\frac13aVT^4=0$。由（1），$\mu=0$，$G=\mu N$也给出$G=0$，两者对得上：热辐射的吉布斯自由能是零。
+
+      （3）容器里的气体分子不会由腔壁造出来，也不会被腔壁吸收掉，$\dd N$只能是零，总熵里没有$\mu\,\dd N$这一项，也就推不出$\mu=0$。它的化学势由温度和压强决定（例 1），可以是别的值。光子气体的更多性质见以后的[黑体辐射与普朗克定律](lesson:physics.thermal-physics.blackbody-radiation)。
+  reference: |
+    （1）$\dd S_{\text{总}}=\frac{\dd U-\mu\dd N}T-\frac{\dd U}T=-\frac{\mu\dd N}T$，$N$可在$U$不变时独立变化（吸收一个高能光子、发射两个低能光子），$\mu\ne0$时总有使总熵增加的变化，所以平衡时$\mu=0$。
+
+    （2）$p=\frac13aT^4$，$G=F+pV=0=\mu N$，一致。
+
+    （3）分子数守恒，$\dd N\equiv0$，总熵的改变里没有$\mu\,\dd N$，不约束$\mu$；$\mu$由$T$、$p$定（例 1）。

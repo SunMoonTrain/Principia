@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 356" width="640" height="356" font-size="14">
+  <!-- 水的相图，示意，不按比例。横轴是温度 T，纵轴是压强 p。三条相平衡曲线交于三相点（圆点）：熔化曲线几乎竖直向上、略向左倾；汽化曲线向右上弯，停在临界点（圆点）；升华曲线向左下。曲线旁用强调色标名字。水平虚线是 1 标准大气压，和熔化曲线、汽化曲线交于熔点、沸点（圆点）。 -->
+
+  <!-- 坐标轴 -->
+  <line x1="70" y1="320" x2="598" y2="320" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 610 320 L 598 315 L 598 325 Z" style="fill: currentColor" />
+  <line x1="70" y1="320" x2="70" y2="34" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 70 22 L 65 34 L 75 34 Z" style="fill: currentColor" />
+  <text x="604" y="342" fill="currentColor" text-anchor="end">温度 <tspan font-style="italic">T</tspan></text>
+  <text x="84" y="30" fill="currentColor">压强 <tspan font-style="italic">p</tspan></text>
+
+  <!-- 1 标准大气压 -->
+  <line x1="70" y1="168" x2="600" y2="168" style="stroke: currentColor" stroke-width="1" stroke-dasharray="5 4" />
+  <text x="600" y="157" fill="currentColor" text-anchor="end">1 标准大气压</text>
+
+  <!-- 升华曲线 -->
+  <path d="M 100.0 312.0 L 105.0 310.7 L 110.0 309.3 L 115.0 307.9 L 120.0 306.5 L 125.0 304.9 L 130.0 303.3 L 135.0 301.7 L 140.0 300.0 L 145.0 298.2 L 150.0 296.3 L 155.0 294.4 L 160.0 292.4 L 165.0 290.2 L 170.0 288.1 L 175.0 285.8 L 180.0 283.4 L 185.0 280.9 L 190.0 278.4 L 195.0 275.7 L 200.0 272.9 L 205.0 270.0 L 210.0 267.0 L 215.0 263.9 L 220.0 260.6 L 225.0 257.2 L 230.0 253.7 L 235.0 250.0 L 240.0 246.1 L 245.0 242.2 L 250.0 238.0" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" stroke-linejoin="round" />
+  <!-- 汽化曲线 -->
+  <path d="M 250.0 238.0 L 255.0 236.5 L 260.0 234.9 L 265.0 233.3 L 270.0 231.7 L 275.0 230.0 L 280.0 228.3 L 285.0 226.5 L 290.0 224.7 L 295.0 222.8 L 300.0 220.9 L 305.0 219.0 L 310.0 217.0 L 315.0 215.0 L 320.0 212.9 L 325.0 210.7 L 330.0 208.5 L 335.0 206.3 L 340.0 204.0 L 345.0 201.6 L 350.0 199.2 L 355.0 196.8 L 360.0 194.2 L 365.0 191.6 L 370.0 189.0 L 375.0 186.3 L 380.0 183.5 L 385.0 180.6 L 390.0 177.7 L 395.0 174.7 L 400.0 171.6 L 405.0 168.5 L 410.0 165.3 L 415.0 162.0 L 420.0 158.6 L 425.0 155.2 L 430.0 151.6 L 435.0 148.0 L 440.0 144.3 L 445.0 140.5 L 450.0 136.6 L 455.0 132.6 L 460.0 128.5 L 465.0 124.3 L 470.0 120.0 L 475.0 115.6 L 480.0 111.1 L 485.0 106.5 L 490.0 101.8 L 495.0 97.0 L 500.0 92.0" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" stroke-linejoin="round" />
+  <!-- 熔化曲线 -->
+  <path d="M 250 238 L 236 30" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+
+  <!-- 曲线的名字 -->
+  <text x="178" y="262" text-anchor="end" style="fill: var(--accent, #2563eb)">升华曲线</text>
+  <text x="346" y="224" style="fill: var(--accent, #2563eb)">汽化曲线</text>
+  <text x="228" y="66" text-anchor="end" style="fill: var(--accent, #2563eb)">熔化曲线</text>
+
+  <!-- 三相点、临界点、熔点、沸点 -->
+  <circle cx="250" cy="238" r="4" style="fill: currentColor" />
+  <circle cx="500" cy="92" r="4" style="fill: currentColor" />
+  <circle cx="245.3" cy="168" r="3.2" style="fill: currentColor" />
+  <circle cx="405.8" cy="168" r="3.2" style="fill: currentColor" />
+
+  <text x="264" y="258" fill="currentColor">三相点</text>
+  <text x="264" y="278" fill="currentColor">273.16 K，611.66 Pa</text>
+  <text x="512" y="88" fill="currentColor">临界点</text>
+  <text x="512" y="108" fill="currentColor">647 K，22.1 MPa</text>
+  <text x="235" y="189" fill="currentColor" text-anchor="end">熔点</text>
+  <text x="417" y="189" fill="currentColor">沸点</text>
+
+  <!-- 各相的区域 -->
+  <text x="150" y="118" fill="currentColor" text-anchor="middle">固（冰）</text>
+  <text x="350" y="118" fill="currentColor" text-anchor="middle">液（水）</text>
+  <text x="480" y="292" fill="currentColor" text-anchor="middle">气（水蒸气）</text>
+</svg>

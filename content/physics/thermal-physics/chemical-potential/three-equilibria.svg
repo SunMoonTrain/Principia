@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 206" width="680" height="206" font-size="14">
+  <!-- 三种壁各让一个强度量相等。每幅是一个长方形容器，中间的壁把它隔成左边的甲、右边的乙。左：固定的、能导热的壁（粗实线），甲的温度高于乙，蓝色箭头穿过壁从甲指向乙，表示热量流动。中：能滑动、能导热的活塞（灰色竖条），两边温度相同，甲的压强高于乙，活塞右边的蓝色箭头表示活塞向乙移动。右：固定的、能透过粒子的壁（虚线），两边温度相同，甲的化学势高于乙，圆点是粒子，蓝色箭头穿过壁从甲指向乙，表示粒子流动。箭头长短不按比例。 -->
+
+  <!-- 左：固定的、能导热的壁 -->
+  <text x="120" y="22" fill="currentColor" text-anchor="middle">固定的、能导热的壁</text>
+  <rect x="20" y="40" width="200" height="104" fill="none" style="stroke: currentColor" stroke-width="1.4" />
+  <line x1="120" y1="40" x2="120" y2="144" style="stroke: currentColor" stroke-width="3.5" />
+  <text x="70" y="74" fill="currentColor" text-anchor="middle"><tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="10">甲</tspan></text>
+  <text x="170" y="74" fill="currentColor" text-anchor="middle"><tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="10">乙</tspan></text>
+  <line x1="84" y1="110" x2="144" y2="110" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 156 110 L 144 104.5 L 144 115.5 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="120" y="170" fill="currentColor" text-anchor="middle"><tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="10">甲</tspan> &gt; <tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="10">乙</tspan></text>
+  <text x="120" y="194" fill="currentColor" text-anchor="middle">热量从甲流向乙</text>
+
+  <!-- 中：能滑动、能导热的活塞 -->
+  <text x="340" y="22" fill="currentColor" text-anchor="middle">能滑动、能导热的活塞</text>
+  <rect x="240" y="40" width="200" height="104" fill="none" style="stroke: currentColor" stroke-width="1.4" />
+  <rect x="335" y="41" width="10" height="102" style="fill: currentColor; stroke: currentColor" fill-opacity="0.35" stroke-width="1" />
+  <text x="288" y="74" fill="currentColor" text-anchor="middle"><tspan font-style="italic">p</tspan><tspan baseline-shift="sub" font-size="10">甲</tspan></text>
+  <text x="392" y="74" fill="currentColor" text-anchor="middle"><tspan font-style="italic">p</tspan><tspan baseline-shift="sub" font-size="10">乙</tspan></text>
+  <line x1="352" y1="110" x2="390" y2="110" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 402 110 L 390 104.5 L 390 115.5 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="340" y="170" fill="currentColor" text-anchor="middle"><tspan font-style="italic">p</tspan><tspan baseline-shift="sub" font-size="10">甲</tspan> &gt; <tspan font-style="italic">p</tspan><tspan baseline-shift="sub" font-size="10">乙</tspan>，温度相同</text>
+  <text x="340" y="194" fill="currentColor" text-anchor="middle">活塞向乙移动</text>
+
+  <!-- 右：固定的、能透过粒子的壁 -->
+  <text x="560" y="22" fill="currentColor" text-anchor="middle">固定的、能透过粒子的壁</text>
+  <rect x="460" y="40" width="200" height="104" fill="none" style="stroke: currentColor" stroke-width="1.4" />
+  <line x1="560" y1="40" x2="560" y2="144" style="stroke: currentColor" stroke-width="2.4" stroke-dasharray="7 5" />
+  <text x="510" y="74" fill="currentColor" text-anchor="middle"><tspan font-style="italic">μ</tspan><tspan baseline-shift="sub" font-size="10">甲</tspan></text>
+  <text x="610" y="74" fill="currentColor" text-anchor="middle"><tspan font-style="italic">μ</tspan><tspan baseline-shift="sub" font-size="10">乙</tspan></text>
+  <circle cx="476" cy="92" r="3" style="fill: currentColor" />
+  <circle cx="500" cy="130" r="3" style="fill: currentColor" />
+  <circle cx="524" cy="92" r="3" style="fill: currentColor" />
+  <circle cx="478" cy="126" r="3" style="fill: currentColor" />
+  <circle cx="542" cy="130" r="3" style="fill: currentColor" />
+  <circle cx="546" cy="90" r="3" style="fill: currentColor" />
+  <circle cx="520" cy="134" r="3" style="fill: currentColor" />
+  <circle cx="590" cy="130" r="3" style="fill: currentColor" />
+  <circle cx="628" cy="92" r="3" style="fill: currentColor" />
+  <circle cx="642" cy="128" r="3" style="fill: currentColor" />
+  <line x1="526" y1="110" x2="584" y2="110" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" />
+  <path d="M 596 110 L 584 104.5 L 584 115.5 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="560" y="170" fill="currentColor" text-anchor="middle"><tspan font-style="italic">μ</tspan><tspan baseline-shift="sub" font-size="10">甲</tspan> &gt; <tspan font-style="italic">μ</tspan><tspan baseline-shift="sub" font-size="10">乙</tspan>，温度相同</text>
+  <text x="560" y="194" fill="currentColor" text-anchor="middle">粒子从甲流向乙</text>
+</svg>

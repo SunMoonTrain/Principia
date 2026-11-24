@@ -37,14 +37,14 @@ $$
 高中课本把第一定律写成$\Delta U=Q+W$，那里的$W$是外界做的功，正好是本领域$W$的相反数。本领域的$Q$只表示热量，不是电荷、:term[品质因数]{id="physics.oscillations-waves.quality-factor"}（quality factor）或:term[广义力]{id="physics.analytical-mechanics.generalized-force"}（generalized force）$Q_j$；$\delta W$和:term[虚功]{id="physics.analytical-mechanics.virtual-work"}（virtual work）无关，$\delta$也不表示变分（variation）。电磁学的焦耳热（Joule heating，见[电流与欧姆定律](lesson:physics.electromagnetism.current-density#thm-joule)）是电场对电阻丝做的功，使它的内能增加，电阻丝再把热量传给周围。
 
 ::anchor{id="def-perpetual-motion"}
-不消耗任何能量、却能不断对外做功的机器，叫作第一类永动机（perpetual motion machine of the first kind）。
+不消耗任何能量、却能不断对外做功的机器，叫作:term[第一类永动机]{id="physics.thermal-physics.perpetual-motion-first-kind"}（perpetual motion machine of the first kind）。
 
 为什么要专门说它：机器要不停地工作就得:term[循环]{id="physics.thermal-physics.cyclic-process"}（cyclic process），回到原来的状态时$\Delta U=0$，$W=Q$，不吸热就做不出功。边界情况：第一定律并不禁止机器在循环中从一个:term[热库]{id="physics.thermal-physics.heat-reservoir"}（heat reservoir）吸热、全部变成功；这样的机器也造不成，原因见[热力学第二定律](lesson:physics.thermal-physics.second-law)。
 
 ### 理想气体的内能
 
 ::anchor{id="def-free-expansion"}
-包着绝热壁（adiabatic wall）的刚性容器用隔板分成两半，一半是气体，一半是真空；抽掉隔板，气体冲进真空，过一会儿又处在:term[平衡态]{id="physics.thermal-physics.equilibrium-state"}。这叫作:term[自由膨胀]{id="physics.thermal-physics.free-expansion"}（free expansion）：它是:term[绝热过程]{id="physics.thermal-physics.adiabatic-process"}，$Q=0$；气体没有推动任何东西，$W=0$；所以$\Delta U=0$。
+包着:term[绝热壁]{id="physics.thermal-physics.adiabatic-wall"}（adiabatic wall）的刚性容器用隔板分成两半，一半是气体，一半是真空；抽掉隔板，气体冲进真空，过一会儿又处在:term[平衡态]{id="physics.thermal-physics.equilibrium-state"}。这叫作:term[自由膨胀]{id="physics.thermal-physics.free-expansion"}（free expansion）：它是:term[绝热过程]{id="physics.thermal-physics.adiabatic-process"}，$Q=0$；气体没有推动任何东西，$W=0$；所以$\Delta U=0$。
 
 为什么起这个名字：气体膨胀时不推动任何东西；体积变了、:term[内能]{id="physics.thermal-physics.internal-energy"}不变，正好用来检验内能和体积有没有关系。边界情况：它不是:term[准静态过程]{id="physics.thermal-physics.quasi-static-process"}，:term[$p$-$V$图]{id="physics.thermal-physics.pv-diagram"}（$p$-$V$ diagram）上只能标出起点和终点。
 

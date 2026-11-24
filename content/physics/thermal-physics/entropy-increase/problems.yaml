@@ -1,0 +1,231 @@
+- id: p1
+  tier: easy
+  statement: |
+    包着绝热壁的刚性容器用隔板分成两部分，一边装着$2.0\,\mathrm{mol}$理想气体，体积是$5.0\,\mathrm L$，另一边是真空。抽掉隔板，气体自由膨胀，充满整个$15\,\mathrm L$的容器，最后又处在平衡态。气体的熵变是多少？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 2*8.31446261815324*log(3)
+    unit: |
+      $\mathrm{J/K}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      自由膨胀不是可逆过程，不能沿它算$\int\frac{\delta Q}T$。始末状态的温度一样吗？换一条什么样的可逆过程来算？
+    - |
+      理想气体自由膨胀以后温度不变，可以沿同一温度下的可逆等温膨胀来算：$\Delta S=nR\ln\frac{V_2}{V_1}$。
+    - |
+      $\Delta S=2.0\times8.314\times\ln\frac{15}{5.0}\,\mathrm{J/K}\approx18.3\,\mathrm{J/K}$。
+  solution: |
+    自由膨胀中$Q=0$、$W=0$，理想气体的内能（internal energy）不变，温度也不变。熵是状态函数，可以沿同一温度下的可逆等温膨胀来算：$\Delta S=nR\ln\frac{V_2}{V_1}=2.0\times8.314\times\ln3\,\mathrm{J/K}\approx18.3\,\mathrm{J/K}$。实际吸的热是零，不能拿它算熵变。
+
+- id: p2
+  tier: easy
+  statement: |
+    下面的说法，哪些正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        孤立系统里发生的任何过程，熵都增加
+      - |
+        热库吸收热量时温度不变，所以它的熵也不变
+      - |
+        理想气体在包着绝热层的管子里穿过多孔塞（porous plug），从高压的一边流到低压的一边，这叫节流（throttling）；节流前后温度不变，那么气体的熵增加了
+      - |
+        可逆过程中，系统的熵不变
+      - |
+        系统经绝热过程从平衡态 A 变到平衡态 B，熵增加了，那么它不可能经绝热过程从 B 回到 A
+    value: [3, 5]
+  hints:
+    - |
+      熵增原理管的是什么样的过程？过程可逆时熵怎样变？热库的熵、节流前后气体的熵，各借什么样的可逆过程来算？
+    - |
+      A 想想孤立系统里的可逆过程；B 热库吸热$Q$时熵变是多少；C 理想气体温度不变、压强变小，体积怎样变；D 想想理想气体在热库里可逆地等温膨胀；E 假如能从 B 绝热地回到 A，熵怎样变。
+    - |
+      选 C、E。A 错：孤立系统里的过程可逆时，熵不变，只有不可逆时才增加。B 错：热库温度$T$不变，吸热$Q$时$\Delta S_{\text{热库}}=\frac QT>0$。C 对：节流见[热容与焓](lesson:physics.thermal-physics.heat-capacity)第 6 题；理想气体温度不变、压强降低，体积变大，$\Delta S=nR\ln\frac{V_2}{V_1}=nR\ln\frac{p_1}{p_2}>0$；也可以这样看，管子绝热，节流不可逆，由熵增原理熵增加。
+
+      D 错：理想气体在热库里可逆地等温膨胀，吸热$Q>0$，熵增加$\frac QT$；不变的是气体和热库合起来的总熵。E 对：要是能从 B 绝热地回到 A，熵就从$S_{\mathrm B}$减少到$S_{\mathrm A}$，违反熵增原理。
+  solution: |
+    选 C、E。A 错：孤立系统里的过程可逆时，熵不变，只有不可逆时才增加。B 错：热库吸热$Q$，熵增加$\frac QT$，温度不变不等于熵不变。C 对：节流见[热容与焓](lesson:physics.thermal-physics.heat-capacity)第 6 题；理想气体温度不变、压强降低，体积变大，$\Delta S=nR\ln\frac{p_1}{p_2}>0$，这正是绝热的不可逆过程熵增加的例子。
+
+    D 错：在热库里可逆地等温膨胀的气体吸热，熵增加了，热库的熵减少同样多，两者的总熵不变。E 对：从 B 绝热地回到 A，熵要减少，违反熵增原理。
+
+- id: p3
+  tier: medium
+  statement: |
+    把质量$0.50\,\mathrm{kg}$、温度$100\,^\circ\mathrm C$的铜块放进$2.0\,\mathrm{kg}$、$20\,^\circ\mathrm C$的水里，容器绝热，它的热容和铜块、水的体积变化都不计。铜和水的比热容分别取$385$、$4.18\times10^3\,\mathrm{J/(kg\cdot K)}$，都不随温度变，按$0\,^\circ\mathrm C=273.15\,\mathrm K$换算。达到热平衡（thermal equilibrium）后，铜块和水的总熵变是多少？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 0.5*385*log(((0.5*385*373.15 + 2*4180*293.15)/(0.5*385 + 2*4180))/373.15) + 2*4180*log(((0.5*385*373.15 + 2*4180*293.15)/(0.5*385 + 2*4180))/293.15)
+    unit: |
+      $\mathrm{J/K}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先由能量守恒求末温：铜块放出的热量等于水吸收的热量。再给铜块、水各找一条可逆的路径，分别算熵变。
+    - |
+      铜块的热容是$192.5\,\mathrm{J/K}$，水的是$8360\,\mathrm{J/K}$；末温$T_{\mathrm f}$满足$192.5\times(373.15-T_{\mathrm f})=8360\times(T_{\mathrm f}-293.15)$。总熵变是$192.5\ln\frac{T_{\mathrm f}}{373.15}+8360\ln\frac{T_{\mathrm f}}{293.15}$（单位$\mathrm{J/K}$）。
+    - |
+      $T_{\mathrm f}\approx294.951\,\mathrm K$，约$21.80\,^\circ\mathrm C$。铜块的熵变约$-45.27\,\mathrm{J/K}$，水的约$+51.19\,\mathrm{J/K}$，总熵变约$5.92\,\mathrm{J/K}$。
+  solution: |
+    铜块的热容$0.50\times385\,\mathrm{J/K}=192.5\,\mathrm{J/K}$，水的$2.0\times4180\,\mathrm{J/K}=8360\,\mathrm{J/K}$。由能量守恒，$192.5\times(373.15-T_{\mathrm f})=8360\times(T_{\mathrm f}-293.15)$，得$T_{\mathrm f}\approx294.951\,\mathrm K$。混合不可逆，可熵是状态函数，铜块、水各沿可逆的路径算：铜块$192.5\ln\frac{T_{\mathrm f}}{373.15}\,\mathrm{J/K}\approx-45.27\,\mathrm{J/K}$，水$8360\ln\frac{T_{\mathrm f}}{293.15}\,\mathrm{J/K}\approx51.19\,\mathrm{J/K}$。
+
+    总熵变约$5.92\,\mathrm{J/K}$，大于零。两项的大小相近，相加时大半抵消，末温要多留几位，否则误差会被放大。
+
+- id: p4
+  tier: medium
+  statement: |
+    把装在密封薄袋里的$1.0\,\mathrm{kg}$、$15\,^\circ\mathrm C$的水放进一大池$90\,^\circ\mathrm C$的热水里，水池看成热库，袋里的水最后也变成$90\,^\circ\mathrm C$。水的比热容取$4.18\times10^3\,\mathrm{J/(kg\cdot K)}$，不随温度变；袋子的热容不计，按$0\,^\circ\mathrm C=273.15\,\mathrm K$换算。
+
+    依次求袋里的水的熵变、水池的熵变，单位都是$\mathrm{J/K}$。
+  answer:
+    type: tuple
+    value: [4180*log(363.15/288.15), -4180*75/363.15]
+    unit: |
+      $\mathrm{J/K}$
+  hints:
+    - |
+      袋里的水的熵变只看始末状态，沿可逆加热的路径算。水池的温度不变，它放出了多少热量？
+    - |
+      水的熵变$mc\ln\frac{363.15}{288.15}$；水池放热$Q=mc\times75\,\mathrm K$，熵变$-\frac Q{363.15\,\mathrm K}$。
+    - |
+      水的熵变$4180\times\ln\frac{363.15}{288.15}\,\mathrm{J/K}\approx966.98\,\mathrm{J/K}$。水池放热$313500\,\mathrm J$，熵变$-\frac{313500}{363.15}\,\mathrm{J/K}\approx-863.28\,\mathrm{J/K}$。
+  solution: |
+    袋里的水从$288.15\,\mathrm K$变到$363.15\,\mathrm K$，沿可逆加热的路径算，熵变$mc\ln\frac{363.15}{288.15}\approx966.98\,\mathrm{J/K}$。水池放热$mc\times75\,\mathrm K=313500\,\mathrm J$，温度始终是$363.15\,\mathrm K$，熵变$-\frac{313500}{363.15}\,\mathrm{J/K}\approx-863.28\,\mathrm{J/K}$。合起来约$+103.7\,\mathrm{J/K}$，大于零：水隔着有限的温差吸热，过程不可逆。
+
+- id: p5
+  tier: hard
+  statement: |
+    热容为$C$（不随温度变）的物体，要从温度$T_0$加热到$T_N$。准备$N$个热库，第$k$个的温度是$T_k=T_0+k\Delta T$（$k=1,2,\dots,N$），$\Delta T=\frac{T_N-T_0}N$；依次把物体放进第 1、2、…、$N$个热库，每次都等它和这个热库达到热平衡再取出，热库的温度始终不变。
+
+    （1）求物体和这$N$个热库的总熵变$\Delta S_{\text{总}}$（可以留着求和号），并证明它大于零。
+
+    （2）证明$\Delta S_{\text{总}}\le\frac{C(T_N-T_0)^2}{NT_0T_N}$，所以$N\to\infty$时$\Delta S_{\text{总}}\to0$。这时的加热过程有什么特点？
+
+    （3）$T_0=300\,\mathrm K$、$T_N=400\,\mathrm K$时，$N=1$、$N=10$的$\Delta S_{\text{总}}$各约是$C$乘以多少？
+  hints:
+    - |
+      （1）物体的熵变只看始末状态；第$k$个热库放出多少热量，熵变多少？（2）把$\ln\frac{T_N}{T_0}$拆成$N$段积分$\int_{T_{k-1}}^{T_k}\frac{\dd T}T$，每一段和$\frac{\Delta T}{T_k}$比较。（3）直接代进去算。
+    - |
+      （1）第$k$个热库把物体从$T_{k-1}$加热到$T_k$，放热$C\Delta T$，熵变$-\frac{C\Delta T}{T_k}$。在$T_{k-1}\le T<T_k$时$\frac1T>\frac1{T_k}$。（2）在这一段上$\frac1T-\frac1{T_k}\le\frac1{T_{k-1}}-\frac1{T_k}$，对$k$加起来，相邻的项相消。
+    - |
+      （1）物体的熵是状态函数，从$T_0$变到$T_N$的熵变沿可逆加热的路径算，是$C\ln\frac{T_N}{T_0}$。第$k$个热库的温度$T_k$不变，它把物体从$T_{k-1}$加热到$T_k$，放热$C\Delta T$，熵变$-\frac{C\Delta T}{T_k}$。加起来，再把$C\ln\frac{T_N}{T_0}$拆成$N$段积分，
+
+      $$
+      \Delta S_{\text{总}}=C\ln\frac{T_N}{T_0}-\sum_{k=1}^N\frac{C\Delta T}{T_k}=C\sum_{k=1}^N\int_{T_{k-1}}^{T_k}\Bigl(\frac1T-\frac1{T_k}\Bigr)\dd T .
+      $$
+
+      第$k$段的被积函数在$[T_{k-1},T_k]$上连续、不小于零，在$T_{k-1}$处大于零，由[定积分的性质](lesson:math.calculus.integral-properties#thm-positive-integral)，这一段积分大于零，所以$\Delta S_{\text{总}}>0$。每一步物体都隔着有限的温差吸热，是不可逆过程。
+
+      （2）在这一段上$\frac1T\le\frac1{T_{k-1}}$，第$k$段积分不超过$\Delta T\bigl(\frac1{T_{k-1}}-\frac1{T_k}\bigr)$。对$k$加起来，相邻的项相消：
+
+      $$
+      \Delta S_{\text{总}}\le C\Delta T\Bigl(\frac1{T_0}-\frac1{T_N}\Bigr)=\frac{C(T_N-T_0)^2}{NT_0T_N} .
+      $$
+
+      $N\to\infty$时右边趋于零，而$\Delta S_{\text{总}}>0$，所以$\Delta S_{\text{总}}\to0$。这时每一步的温差都趋于零，物体时时和所接触的热库几乎同温，加热趋于可逆过程；讲解里「依次接触温度只差一点点的热库」可逆地加热，说的就是这个极限。
+
+      （3）$N=1$时$\Delta S_{\text{总}}=C\bigl(\ln\frac43-\frac{100}{400}\bigr)\approx0.0377C$；$N=10$时约$0.0041C$，只有前者的九分之一左右。这和[RC 电路](lesson:physics.electromagnetism.rc-circuits)第 6 题分$N$步给电容器（capacitor）充电是同一种结构：每一步只隔着一小步的差，损失随$N\to\infty$趋于零。
+  reference: |
+    （1）物体$\Delta S=C\ln\frac{T_N}{T_0}$（状态函数，沿可逆路径），第$k$个热库放热$C\Delta T$，$\Delta S_k=-\frac{C\Delta T}{T_k}$。$\Delta S_{\text{总}}=C\ln\frac{T_N}{T_0}-\sum_k\frac{C\Delta T}{T_k}=C\sum_k\int_{T_{k-1}}^{T_k}\bigl(\frac1T-\frac1{T_k}\bigr)\dd T$，每段被积函数连续、非负、在左端点为正，积分为正，故$\Delta S_{\text{总}}>0$（右端点和小于积分）。
+
+    （2）$\frac1T-\frac1{T_k}\le\frac1{T_{k-1}}-\frac1{T_k}$，求和相消：$0<\Delta S_{\text{总}}\le C\Delta T\bigl(\frac1{T_0}-\frac1{T_N}\bigr)=\frac{C(T_N-T_0)^2}{NT_0T_N}\to0$。$N$大时$\Delta S_{\text{总}}\approx\frac{C(T_N-T_0)^2}{2NT_0T_N}$。温差趋于零，加热趋于可逆。
+
+    （3）$N=1$：$C(\ln\frac43-\frac14)\approx0.03768C$；$N=10$：$\approx0.004126C$（近似式给$0.004167C$）。与电磁学 RC 电路第 6 题（分$N$步充电，焦耳热$\frac{C\mathcal E^2}{2N}$）结构相同。
+
+- id: p6
+  tier: hard
+  statement: |
+    刚性的绝热容器用隔板分成两部分：一边是物质的量（amount of substance）为$n_{\mathrm A}$的理想气体 A，一边是$n_{\mathrm B}$的另一种理想气体 B，两边的温度都是$T$，压强都是$p$。抽掉隔板，两种气体互相扩散（diffusion），最后混合均匀。
+
+    （1）证明混合以后温度仍是$T$。
+
+    （2）证明熵变$\Delta S=-R\bigl(n_{\mathrm A}\ln\frac{n_{\mathrm A}}n+n_{\mathrm B}\ln\frac{n_{\mathrm B}}n\bigr)$，其中$n=n_{\mathrm A}+n_{\mathrm B}$，并说明它大于零。
+
+    （3）两边装的是同一种气体时，抽掉隔板，熵变是多少？能不能直接套用（2）的式子？
+  hints:
+    - |
+      （1）整个容器和外界不交换能量，内能怎样变？（2）理想气体的分子之间除了碰撞没有相互作用，每种气体都像另一种不存在一样：对 A 来说，这个过程像什么？熵变要沿可逆过程算，有了只让 A 或只让 B 通过的膜，怎样可逆地把两种气体混合？（3）抽掉隔板前后，宏观状态变了没有？
+    - |
+      （1）$Q=0$、$W=0$，所以$\Delta U=0$，两种理想气体的内能都只和温度有关。（2）设想在温度为$T$的热库里，把隔板换成两片膜，靠 A 的一片只让 A 通过，靠 B 的一片只让 B 通过，再慢慢移到容器的 A 端、B 端：A 从开始的体积$V_{\mathrm A}$、B 从$V_{\mathrm B}$各自等温膨胀到整个容器的$V$，吸的热分别是$n_{\mathrm A}RT\ln\frac V{V_{\mathrm A}}$、$n_{\mathrm B}RT\ln\frac V{V_{\mathrm B}}$。同温同压下$\frac{V_{\mathrm A}}V=\frac{n_{\mathrm A}}n$。（3）同一种气体，隔板两边的温度、压强、分子数密度（number density）都一样。
+    - |
+      （1）容器是刚性、绝热的，$Q=0$、$W=0$，总内能不变。理想气体的分子之间除了碰撞没有相互作用，总内能是两种气体的内能之和，两份都只和温度有关，温度越高越大。末温高于$T$，总内能就会增加，低于$T$就会减少，所以末温仍是$T$。
+
+      （2）实际的混合不可逆，熵变要沿另一条始末状态相同的可逆过程来算。设想容器放在温度为$T$的热库里，隔板换成叠在一起、能无摩擦地移动的两片膜，靠 A 的一片只让 A 通过，靠 B 的一片只让 B 通过。先把靠 B 的一片缓慢地移到容器的 B 端，再把靠 A 的一片缓慢地移到 A 端，两种气体就混合均匀了。
+
+      压强只由数密度和温度决定，混合气体里每种气体都像另一种不存在一样（[理想气体状态方程](lesson:physics.thermal-physics.ideal-gas-law)第 5 题的分压（partial pressure）就是这样来的）。靠 B 的膜移动时，B 自由穿过它，两边一样密，推力抵消，推它的只有被它挡住的 A；A 从开始的体积$V_{\mathrm A}$可逆地等温膨胀到整个容器的$V$，做功$n_{\mathrm A}RT\ln\frac V{V_{\mathrm A}}$。靠 A 的膜移动时同理，B 从$V_{\mathrm B}$膨胀到$V$，做功$n_{\mathrm B}RT\ln\frac V{V_{\mathrm B}}$。温度不变，内能不变，从热库吸的热等于两份功之和，除以$T$就是熵变，和两种气体各自自由膨胀到整个容器的熵变之和一样：
+
+      $$
+      \Delta S=n_{\mathrm A}R\ln\frac V{V_{\mathrm A}}+n_{\mathrm B}R\ln\frac V{V_{\mathrm B}} .
+      $$
+
+      开始时两边同温同压，体积和物质的量成正比，$\frac{V_{\mathrm A}}V=\frac{n_{\mathrm A}}n$，$\frac{V_{\mathrm B}}V=\frac{n_{\mathrm B}}n$，代进去就是题中的式子。$\frac{n_{\mathrm A}}n$、$\frac{n_{\mathrm B}}n$都小于$1$，对数是负的，所以$\Delta S>0$；例如$1\,\mathrm{mol}$和$3\,\mathrm{mol}$混合时约$18.7\,\mathrm{J/K}$。
+
+      （3）熵变是零。两边是同一种气体，抽掉隔板前后，各处的温度、压强、分子数密度都一样，宏观状态没有变；再把隔板插回去，就回到原来的状态，外界毫无变化。不能套用（2）的式子：那里每种气体都扩散到了原来没有它的地方，这里分子本来就分不出属于哪一边，也没有只让其中一边的分子通过的膜。
+
+      两种气体不管多么相像，混合时的熵变都是（2）的值，完全相同时却一下子变成零，这叫吉布斯佯谬（Gibbs paradox）。统计力学用「同种分子不可分辨」解释它，见[理想气体的配分函数](lesson:physics.thermal-physics.ideal-gas-partition-function)。
+  reference: |
+    （1）刚性绝热，$Q=W=0$，$\Delta U=0$；$U=U_{\mathrm A}(T)+U_{\mathrm B}(T)$随$T$单调增加，故末温为$T$。
+
+    （2）可逆路径：在温度为$T$的热库里，隔板换成叠在一起、无摩擦的两片膜，靠 A 的只让 A 通过，靠 B 的只让 B 通过；先把靠 B 的移到 B 端，再把靠 A 的移到 A 端。理想气体组分互不影响（分压，理想气体状态方程一节第 5 题），每片膜只受被它挡住的那种气体推，A、B 各自从$V_{\mathrm A}$、$V_{\mathrm B}$可逆地等温膨胀到$V$，$\Delta U=0$，吸热$n_{\mathrm A}RT\ln\frac V{V_{\mathrm A}}+n_{\mathrm B}RT\ln\frac V{V_{\mathrm B}}$。所以$\Delta S=n_{\mathrm A}R\ln\frac V{V_{\mathrm A}}+n_{\mathrm B}R\ln\frac V{V_{\mathrm B}}$，和各自自由膨胀到$V$的熵变之和一样。同温同压$\frac{V_{\mathrm A}}V=\frac{n_{\mathrm A}}n$，得$\Delta S=-R\sum_in_i\ln\frac{n_i}n>0$；$1\,\mathrm{mol}$和$3\,\mathrm{mol}$：$18.70\,\mathrm{J/K}$，等量各$1\,\mathrm{mol}$：$2R\ln2\approx11.53\,\mathrm{J/K}$。
+
+    （3）同种气体：宏观状态不变，插回隔板即复原，$\Delta S=0$；（2）的推导前提是每种分子扩散到原先没有它的区域，有膜能把两种分子区分开。不同但相像的气体混合熵与相像程度无关，相同时突变为零：吉布斯佯谬，统计力学用全同粒子（$N!$）解决（理想气体的配分函数一节，大纲）。
+
+- id: p7
+  tier: thinking
+  statement: |
+    环境是$300\,\mathrm K$的大气。有两份热量各$1000\,\mathrm J$可以取用：一份从$1000\,\mathrm K$的热库取，一份从$300\,\mathrm K$的热库取。
+
+    （1）借助热机（heat engine），可以向环境放热，每一份最多能变成多少功？
+
+    （2）每一份热量离开热库时，热库的熵各减少多少？（1）里做出最多功的那台热机，向环境放了多少热，环境的熵增加多少？
+
+    （3）为什么说同样多的能量，温度越高越「有用」？要是让$1000\,\mathrm K$热库的那$1000\,\mathrm J$直接经热传导（heat conduction）流进环境，总熵增加多少？它和损失掉的做功本领有什么关系？
+  hints:
+    - |
+      （1）工作在两个热库之间的热机，热机效率（thermal efficiency）的上限是多少？只有一个温度可用时呢？（2）热库在温度不变时放热，熵变是多少？（3）比较两份热量带走的熵，想想热机至少要把多少热放进环境，才能不让总熵减少。
+    - |
+      （1）上限是没有摩擦的卡诺热机（Carnot engine）的$1-\frac{300}{1000}$；$300\,\mathrm K$的那一份没有更低的温度可以放热。（2）$\frac{1000\,\mathrm J}{1000\,\mathrm K}$、$\frac{1000\,\mathrm J}{300\,\mathrm K}$；可逆热机（reversible engine）向环境放热$300\,\mathrm J$。（3）直接传热时总熵变是$-\frac{1000}{1000}+\frac{1000}{300}$（单位$\mathrm{J/K}$），乘上环境的温度$300\,\mathrm K$看看。
+    - |
+      （1）$1000\,\mathrm K$的那一份：工作在$1000\,\mathrm K$和环境之间的热机，热机效率不超过$1-\frac{300}{1000}=0.7$，最多做功$700\,\mathrm J$，可逆热机能达到。$300\,\mathrm K$的那一份和环境一样热，只从这一个温度吸热、全部变成功，违反开尔文表述（Kelvin statement），一点功也做不出。
+
+      （2）两个热库的熵分别减少$1\,\mathrm{J/K}$和约$3.33\,\mathrm{J/K}$。那台可逆热机向环境放热$300\,\mathrm J$，环境的熵增加$\frac{300}{300}\,\mathrm{J/K}=1\,\mathrm{J/K}$，正好抵消热库减少的熵，总熵不变。一般地，从温度为$T$的热库取热$Q$，至少要向温度为$T_0$的环境放热$T_0\frac QT$，总熵才不减少，所以最多做功$Q-T_0\frac QT$。
+
+      （3）同样$1000\,\mathrm J$，温度越高，带走的熵$\frac QT$越少，必须放进环境的热$T_0\frac QT$就越少，能变成功的就越多，所以说它更「有用」，品质更高。直接经热传导流进环境时，总熵变$-1\,\mathrm{J/K}+3.33\,\mathrm{J/K}\approx2.33\,\mathrm{J/K}$；这时那$1000\,\mathrm J$已到了$300\,\mathrm K$，再也做不出功，损失的做功本领是$700\,\mathrm J$，正是$300\,\mathrm K\times2.33\,\mathrm{J/K}$。
+
+      在温度为$T_0$的环境里，不可逆过程让总熵增加$\Delta S_{\text{总}}$，就有$T_0\Delta S_{\text{总}}$的能量失去了做功的本领：能量还在，只是品质变差了。
+  reference: |
+    （1）$1000\,\mathrm K$：卡诺上限$W_{\max}=1000\times(1-0.3)=700\,\mathrm J$；$300\,\mathrm K$：与环境同温，$W_{\max}=0$（开尔文表述）。
+
+    （2）热库熵减$\frac QT$：$1\,\mathrm{J/K}$、$3.33\,\mathrm{J/K}$。可逆热机向环境放$300\,\mathrm J$，环境熵增$1\,\mathrm{J/K}$，总熵不变。一般$W_{\max}=Q-T_0\frac QT$。
+
+    （3）温度高，单位能量携带的熵少，需排给环境的热少，可做功多。直接传热：$\Delta S_{\text{总}}=-1+\frac{10}3\approx2.33\,\mathrm{J/K}$，损失的做功本领$700\,\mathrm J=T_0\Delta S_{\text{总}}$。一般地，不可逆过程的熵产生$\Delta S_{\text{总}}$使可用功减少$T_0\Delta S_{\text{总}}$（能量品质降低）。
+
+- id: p8
+  tier: thinking
+  statement: |
+    绝热容器里有$1.0\,\mathrm{kg}$、$-10\,^\circ\mathrm C$的过冷水（supercooled water），即冷到$0\,^\circ\mathrm C$以下还没结冰的水。轻轻一碰，一部分水突然结成冰，冰水混在一起，温度升到$0\,^\circ\mathrm C$。水的比热容取$4.18\times10^3\,\mathrm{J/(kg\cdot K)}$，$0\,^\circ\mathrm C$时每千克水结成冰放热$3.34\times10^5\,\mathrm J$；体积变化做的功不计，按$0\,^\circ\mathrm C=273.15\,\mathrm K$换算。
+
+    （1）有多少水结成了冰？
+
+    （2）有人说：冰比水「有序」，结冰让熵减少。这个过程里冰和水的总熵是增加还是减少？算出来。
+
+    （3）由此看，把熵说成「混乱程度」时要注意什么？
+  hints:
+    - |
+      （1）容器绝热，结冰放出的热到哪里去了？（2）熵是状态函数：设想先把过冷水可逆地加热到$0\,^\circ\mathrm C$，再在$0\,^\circ\mathrm C$可逆地让一部分结冰，始末状态和实际过程一样。（3）这个过程里除了「有序」的冰，还发生了什么变化？
+    - |
+      （1）结冰放出的热把全部$1.0\,\mathrm{kg}$水从$-10\,^\circ\mathrm C$加热到$0\,^\circ\mathrm C$，需要$4180\times10\,\mathrm J$。（2）加热一段的熵变$mc\ln\frac{273.15}{263.15}$，结冰一段的熵变$-\frac{41800\,\mathrm J}{273.15\,\mathrm K}$。（3）比较结冰的那一部分和升温的全部。
+    - |
+      （1）容器绝热，体积变化做的功又不计，冰水的内能不变。内能是状态函数，可以想成先把$1.0\,\mathrm{kg}$水从$263.15\,\mathrm K$加热到$273.15\,\mathrm K$，吸热$4180\times10\,\mathrm J=41800\,\mathrm J$，再让质量为$m_{\text{冰}}$的水结冰，放出同样多的热，内能才不变。所以$m_{\text{冰}}=\frac{41800}{3.34\times10^5}\,\mathrm{kg}\approx0.125\,\mathrm{kg}$，约八分之一。
+
+      （2）沿这两段可逆的过程算熵变。加热一段$4180\times\ln\frac{273.15}{263.15}\,\mathrm{J/K}\approx155.90\,\mathrm{J/K}$；结冰一段在$273.15\,\mathrm K$下放热$41800\,\mathrm J$，熵变$-\frac{41800}{273.15}\,\mathrm{J/K}\approx-153.03\,\mathrm{J/K}$。总熵变约$+2.87\,\mathrm{J/K}$，增加了。这和熵增原理一致：容器绝热，过冷水突然结冰是不可逆过程；写成$mc\bigl(\ln x-1+\frac1x\bigr)$（$x=\frac{273.15}{263.15}$），又是$\ln x>1-\frac1x$。
+
+      （3）结成冰的那八分之一确实「更有序」，熵减少了约$153\,\mathrm{J/K}$；可它放出的热让全部的水升温$10\,\mathrm K$，分子的热运动（thermal motion）更剧烈，熵增加得更多。熵不只看排列整不整齐，也看热运动有多剧烈，「混乱程度」只是粗略的比方；熵的统计意义见[玻尔兹曼熵与统计温度](lesson:physics.thermal-physics.statistical-entropy)。判断熵的增减，还是要按定义沿可逆过程算。
+  reference: |
+    （1）绝热，$\Delta H=0$（体积功不计）：$mc\times10\,\mathrm K=m_{\text{冰}}\times3.34\times10^5\,\mathrm{J/kg}$，$m_{\text{冰}}=\frac{41800}{334000}\,\mathrm{kg}\approx0.1251\,\mathrm{kg}$（约$12.5\%$）。
+
+    （2）可逆路径：过冷水升温到$273.15\,\mathrm K$，$\Delta S_1=4180\ln\frac{273.15}{263.15}\approx155.901\,\mathrm{J/K}$；在$273.15\,\mathrm K$结冰$m_{\text{冰}}$，$\Delta S_2=-\frac{41800}{273.15}\approx-153.029\,\mathrm{J/K}$。合计$\approx+2.87\,\mathrm{J/K}>0$，与熵增原理一致；即$mc(\ln x-1+\frac1x)$，$x=\frac{273.15}{263.15}$。
+
+    （3）冰的部分更有序（每千克熵比水低$\frac{3.34\times10^5}{273.15}\approx1223\,\mathrm{J/K}$），但只占$12.5\%$；释放的热使全部水升温，热运动熵的增加更大。熵不能简单等同于「乱」，要按$\int\frac{\delta Q_{\text{可逆}}}T$算；统计意义见玻尔兹曼熵与统计温度一节（大纲）。

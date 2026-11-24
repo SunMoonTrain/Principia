@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 310" width="640" height="310" font-size="14">
+  <!-- S-T 图，横轴是温度 T，纵轴是熵 S（示意，不按比例）。上曲线 X = X_A，下曲线 X = X_B，两条在 T = 0 汇合于纵轴上同一点（圆点）。蓝色折线：竖直向下一步是等温过程（熵减少），水平向左一步是可逆绝热过程（熵不变、温度降低），重复五次，台阶越往左越小，到不了纵轴。 -->
+
+  <!-- 两条 S-T 曲线 -->
+  <path d="M 70.0 255.0 L 80.4 254.4 L 90.8 253.3 L 101.2 251.9 L 111.7 250.2 L 122.1 248.3 L 132.5 246.2 L 142.9 244.0 L 153.3 241.5 L 163.8 238.9 L 174.2 236.2 L 184.6 233.3 L 195.0 230.2 L 205.4 227.1 L 215.8 223.8 L 226.2 220.4 L 236.7 216.9 L 247.1 213.3 L 257.5 209.5 L 267.9 205.7 L 278.3 201.7 L 288.8 197.7 L 299.2 193.6 L 309.6 189.3 L 320.0 185.0 L 330.4 180.6 L 340.8 176.1 L 351.2 171.5 L 361.7 166.8 L 372.1 162.0 L 382.5 157.2 L 392.9 152.2 L 403.3 147.2 L 413.8 142.1 L 424.2 137.0 L 434.6 131.7 L 445.0 126.4 L 455.4 121.0 L 465.8 115.5 L 476.2 110.0 L 486.7 104.4 L 497.1 98.7 L 507.5 92.9 L 517.9 87.1 L 528.3 81.2 L 538.8 75.3 L 549.2 69.2 L 559.6 63.2 L 570.0 57.0" fill="none" style="stroke: currentColor" stroke-width="1.8" stroke-linejoin="round" />
+  <path d="M 70.0 255.0 L 80.4 254.7 L 90.8 254.1 L 101.2 253.4 L 111.7 252.5 L 122.1 251.5 L 132.5 250.4 L 142.9 249.2 L 153.3 247.8 L 163.8 246.4 L 174.2 244.8 L 184.6 243.1 L 195.0 241.4 L 205.4 239.5 L 215.8 237.6 L 226.2 235.5 L 236.7 233.4 L 247.1 231.2 L 257.5 228.9 L 267.9 226.4 L 278.3 223.9 L 288.8 221.3 L 299.2 218.6 L 309.6 215.9 L 320.0 213.0 L 330.4 210.0 L 340.8 207.0 L 351.2 203.8 L 361.7 200.6 L 372.1 197.3 L 382.5 193.9 L 392.9 190.3 L 403.3 186.7 L 413.8 183.0 L 424.2 179.3 L 434.6 175.4 L 445.0 171.4 L 455.4 167.3 L 465.8 163.2 L 476.2 158.9 L 486.7 154.6 L 497.1 150.1 L 507.5 145.6 L 517.9 141.0 L 528.3 136.3 L 538.8 131.4 L 549.2 126.5 L 559.6 121.5 L 570.0 116.4" fill="none" style="stroke: currentColor" stroke-width="1.8" stroke-linejoin="round" />
+  <circle cx="70" cy="255" r="3.2" style="fill: currentColor" />
+  <text x="578" y="62" fill="currentColor"><tspan font-style="italic">X</tspan> = <tspan font-style="italic">X</tspan><tspan baseline-shift="sub" font-size="10">A</tspan></text>
+  <text x="578" y="121" fill="currentColor"><tspan font-style="italic">X</tspan> = <tspan font-style="italic">X</tspan><tspan baseline-shift="sub" font-size="10">B</tspan></text>
+
+  <!-- 等温、绝热交替的台阶 -->
+  <path d="M 545.0 71.7 L 545.0 128.5 L 440.9 128.5 L 440.9 173.0 L 347.8 173.0 L 347.8 204.9 L 270.1 204.9 L 270.1 225.9 L 209.2 225.9 L 209.2 238.8 L 164.1 238.8" fill="none" style="stroke: var(--accent, #2563eb)" stroke-width="2.2" stroke-linejoin="round" />
+  <path d="M 545 105 L 540.5 96 L 549.5 96 Z" style="fill: var(--accent, #2563eb)" />
+  <path d="M 488 128.5 L 497 124 L 497 133 Z" style="fill: var(--accent, #2563eb)" />
+  <text x="534" y="114" fill="currentColor" text-anchor="end">等温</text>
+  <text x="462" y="148" fill="currentColor" text-anchor="middle">绝热</text>
+
+  <!-- 坐标轴 -->
+  <line x1="70" y1="282" x2="598" y2="282" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 610 282 L 598 277 L 598 287 Z" style="fill: currentColor" />
+  <line x1="70" y1="282" x2="70" y2="40" style="stroke: currentColor" stroke-width="1.4" />
+  <path d="M 70 28 L 65 40 L 75 40 Z" style="fill: currentColor" />
+  <text x="604" y="302" fill="currentColor" text-anchor="middle" font-style="italic">T</text>
+  <text x="82" y="38" fill="currentColor" font-style="italic">S</text>
+  <text x="62" y="299" fill="currentColor" text-anchor="end">0</text>
+</svg>
