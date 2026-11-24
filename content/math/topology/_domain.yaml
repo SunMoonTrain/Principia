@@ -13,4 +13,10 @@ macros:
     \mathbb{Z}
   \Int: |
     \operatorname{int}
+  \Pow: |
+    \mathcal{P}
+  \C: |
+    \mathbb{C}
+  \dd: |
+    \mathop{}\!\mathrm{d}
 glossary: []

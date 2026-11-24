@@ -11,4 +11,24 @@ macros:
     \operatorname{Var}
   \Cov: |
     \operatorname{Cov}
+  \N: |
+    \mathbb{N}
+  \Z: |
+    \mathbb{Z}
+  \Q: |
+    \mathbb{Q}
+  \Pow: |
+    \mathcal{P}
+  \dd: |
+    \mathop{}\!\mathrm{d}
+  \dv: |
+    \frac{\mathrm{d} #1}{\mathrm{d} #2}
+  \pdv: |
+    \frac{\partial #1}{\partial #2}
+  \vb: |
+    \mathbf{#1}
+  \T: |
+    ^{\mathsf{T}}
+  \kB: |
+    k_{\mathrm{B}}
 glossary: []
