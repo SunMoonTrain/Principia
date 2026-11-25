@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 342" width="600" height="342" font-size="14">
+  <!-- 上：两排圆圈，上排 4、5、6、7，下排 5、6、7、8，同一列的数相同；每排 3 支后继箭头用强调色（加 3）；从上排的 4 到下排的 5、从上排的 7 到下排的 8 是虚线箭头（加 1）。下左：3 行 5 列的点阵，最上面一行用强调色；下中：它顺时针转 90° 以后，5 行 3 列，最右边一列用强调色；下右：5 行 4 列，虚线把上面 2 行（强调色）和下面 3 行隔开 -->
+  <!-- 上：4 + 3 和 (4 + 1) + 3 -->
+  <g fill="currentColor">
+    <text x="24" y="51">4 + 3：从 4 起走 3 步</text>
+    <text x="24" y="123">(4 + 1) + 3：从 5 起走 3 步</text>
+  </g>
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <circle cx="230" cy="46" r="16" />
+    <circle cx="310" cy="46" r="16" />
+    <circle cx="390" cy="46" r="16" />
+    <circle cx="470" cy="46" r="16" />
+    <circle cx="310" cy="118" r="16" />
+    <circle cx="390" cy="118" r="16" />
+    <circle cx="470" cy="118" r="16" />
+    <circle cx="550" cy="118" r="16" />
+  </g>
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="230" y="51">4</text>
+    <text x="310" y="51">5</text>
+    <text x="390" y="51">6</text>
+    <text x="470" y="51">7</text>
+    <text x="310" y="123">5</text>
+    <text x="390" y="123">6</text>
+    <text x="470" y="123">7</text>
+    <text x="550" y="123">8</text>
+  </g>
+  <g stroke-width="1.8" style="stroke: var(--accent, #2563eb)">
+    <line x1="247.5" y1="46" x2="284.5" y2="46" />
+    <line x1="327.5" y1="46" x2="364.5" y2="46" />
+    <line x1="407.5" y1="46" x2="444.5" y2="46" />
+    <line x1="327.5" y1="118" x2="364.5" y2="118" />
+    <line x1="407.5" y1="118" x2="444.5" y2="118" />
+    <line x1="487.5" y1="118" x2="524.5" y2="118" />
+  </g>
+  <g style="fill: var(--accent, #2563eb)">
+    <polygon points="292.5,46 284.5,50 284.5,42" />
+    <polygon points="372.5,46 364.5,50 364.5,42" />
+    <polygon points="452.5,46 444.5,50 444.5,42" />
+    <polygon points="372.5,118 364.5,122 364.5,114" />
+    <polygon points="452.5,118 444.5,122 444.5,114" />
+    <polygon points="532.5,118 524.5,122 524.5,114" />
+  </g>
+  <g stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 3">
+    <line x1="243.01" y1="57.71" x2="291.05" y2="100.94" />
+    <line x1="483.01" y1="57.71" x2="531.05" y2="100.94" />
+  </g>
+  <g fill="currentColor">
+    <polygon points="296.99,106.29 288.37,103.91 293.72,97.97" />
+    <polygon points="536.99,106.29 528.37,103.91 533.72,97.97" />
+    <text x="277" y="80">+1</text>
+    <text x="517" y="80">+1</text>
+  </g>
+  <!-- 下左：5·3 -->
+  <g style="fill: var(--accent, #2563eb)">
+    <circle cx="56" cy="198" r="5.5" />
+    <circle cx="80" cy="198" r="5.5" />
+    <circle cx="104" cy="198" r="5.5" />
+    <circle cx="128" cy="198" r="5.5" />
+    <circle cx="152" cy="198" r="5.5" />
+  </g>
+  <g fill="currentColor">
+    <circle cx="56" cy="222" r="5.5" />
+    <circle cx="80" cy="222" r="5.5" />
+    <circle cx="104" cy="222" r="5.5" />
+    <circle cx="128" cy="222" r="5.5" />
+    <circle cx="152" cy="222" r="5.5" />
+    <circle cx="56" cy="246" r="5.5" />
+    <circle cx="80" cy="246" r="5.5" />
+    <circle cx="104" cy="246" r="5.5" />
+    <circle cx="128" cy="246" r="5.5" />
+    <circle cx="152" cy="246" r="5.5" />
+  </g>
+  <!-- 转 90° 的箭头 -->
+  <line x1="178" y1="222" x2="226" y2="222" stroke="currentColor" stroke-width="1.4" />
+  <polygon points="234,222 226,226 226,218" fill="currentColor" />
+  <text x="206" y="208" fill="currentColor" text-anchor="middle">转 90°</text>
+  <!-- 下中：3·5 -->
+  <g fill="currentColor">
+    <circle cx="260" cy="174" r="5.5" />
+    <circle cx="284" cy="174" r="5.5" />
+    <circle cx="260" cy="198" r="5.5" />
+    <circle cx="284" cy="198" r="5.5" />
+    <circle cx="260" cy="222" r="5.5" />
+    <circle cx="284" cy="222" r="5.5" />
+    <circle cx="260" cy="246" r="5.5" />
+    <circle cx="284" cy="246" r="5.5" />
+    <circle cx="260" cy="270" r="5.5" />
+    <circle cx="284" cy="270" r="5.5" />
+  </g>
+  <g style="fill: var(--accent, #2563eb)">
+    <circle cx="308" cy="174" r="5.5" />
+    <circle cx="308" cy="198" r="5.5" />
+    <circle cx="308" cy="222" r="5.5" />
+    <circle cx="308" cy="246" r="5.5" />
+    <circle cx="308" cy="270" r="5.5" />
+  </g>
+  <!-- 下右：4·(2 + 3) -->
+  <g style="fill: var(--accent, #2563eb)">
+    <circle cx="424" cy="174" r="5.5" />
+    <circle cx="448" cy="174" r="5.5" />
+    <circle cx="472" cy="174" r="5.5" />
+    <circle cx="496" cy="174" r="5.5" />
+    <circle cx="424" cy="198" r="5.5" />
+    <circle cx="448" cy="198" r="5.5" />
+    <circle cx="472" cy="198" r="5.5" />
+    <circle cx="496" cy="198" r="5.5" />
+  </g>
+  <g fill="currentColor">
+    <circle cx="424" cy="222" r="5.5" />
+    <circle cx="448" cy="222" r="5.5" />
+    <circle cx="472" cy="222" r="5.5" />
+    <circle cx="496" cy="222" r="5.5" />
+    <circle cx="424" cy="246" r="5.5" />
+    <circle cx="448" cy="246" r="5.5" />
+    <circle cx="472" cy="246" r="5.5" />
+    <circle cx="496" cy="246" r="5.5" />
+    <circle cx="424" cy="270" r="5.5" />
+    <circle cx="448" cy="270" r="5.5" />
+    <circle cx="472" cy="270" r="5.5" />
+    <circle cx="496" cy="270" r="5.5" />
+  </g>
+  <line x1="406" y1="210" x2="548" y2="210" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" />
+  <g fill="currentColor">
+    <text x="522" y="191">4·2</text>
+    <text x="522" y="251">4·3</text>
+  </g>
+  <!-- 说明 -->
+  <g fill="currentColor" text-anchor="middle">
+    <text x="104" y="306">5·3</text>
+    <text x="104" y="329">3 行，每行 5 个</text>
+    <text x="284" y="306">3·5</text>
+    <text x="284" y="329">5 行，每行 3 个</text>
+    <text x="476" y="306">4·(2 + 3) = 4·2 + 4·3</text>
+    <text x="476" y="329">5 行分成 2 行和 3 行</text>
+  </g>
+</svg>

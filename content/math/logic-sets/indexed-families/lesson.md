@@ -33,7 +33,7 @@ status: reviewed
 两个集合时，$x\in A_1\cup A_2$就是$x$属于其中某一个，$x\in A_1\cap A_2$就是属于其中每一个；集合有无穷多个时，「或」「且」写不完，这两句却照样说得出。
 
 ::anchor{id="def-family-union-intersection"}
-对:term[集族]{id="math.logic-sets.family-of-sets"}$\{A_i\}_{i\in I}$，属于某一个$A_i$的元素组成的集合，叫作这个集族的并（union），记作$\bigcup_{i\in I}A_i$；$I$不是:term[空集]{id="math.logic-sets.empty-set"}（empty set）时，属于每一个$A_i$的元素组成的集合，叫作这个集族的交（intersection），记作$\bigcap_{i\in I}A_i$。也就是说，$x\in\bigcup_{i\in I}A_i$即$\exists i\in I,\ x\in A_i$，$x\in\bigcap_{i\in I}A_i$即$\forall i\in I,\ x\in A_i$。指标是$1,2,3,\dots$时写成$\bigcup_{n=1}^{\infty}A_n$、$\bigcap_{n=1}^{\infty}A_n$，叫作可数并（countable union）、可数交（countable intersection）；指标只有有限个时叫有限并（finite union）、有限交（finite intersection），不限定:term[指标集]{id="math.logic-sets.index-set"}时也说任意并（arbitrary union）、任意交（arbitrary intersection）。
+对:term[集族]{id="math.logic-sets.family-of-sets"}$\{A_i\}_{i\in I}$，属于某一个$A_i$的元素组成的集合，叫作这个:term[集族的并]{id="math.logic-sets.family-union"}（union），记作$\bigcup_{i\in I}A_i$；$I$不是:term[空集]{id="math.logic-sets.empty-set"}（empty set）时，属于每一个$A_i$的元素组成的集合，叫作这个:term[集族的交]{id="math.logic-sets.family-intersection"}（intersection），记作$\bigcap_{i\in I}A_i$。也就是说，$x\in\bigcup_{i\in I}A_i$即$\exists i\in I,\ x\in A_i$，$x\in\bigcap_{i\in I}A_i$即$\forall i\in I,\ x\in A_i$。指标是$1,2,3,\dots$时写成$\bigcup_{n=1}^{\infty}A_n$、$\bigcap_{n=1}^{\infty}A_n$，叫作可数并（countable union）、可数交（countable intersection）；指标只有有限个时叫有限并（finite union）、有限交（finite intersection），不限定:term[指标集]{id="math.logic-sets.index-set"}时也说任意并（arbitrary union）、任意交（arbitrary intersection）。
 
 为什么这样定义：$I=\{1,2\}$时，$\exists i\in I,\ x\in A_i$就是$x\in A_1\lor x\in A_2$，$\forall i\in I,\ x\in A_i$就是$x\in A_1\land x\in A_2$，正是原来的:term[并集]{id="math.logic-sets.union"}和:term[交集]{id="math.logic-sets.intersection"}；「存在」「对每个」不管集合有多少都说得完。交要求$I$不是空集，原因见第 7 题。
 
@@ -50,10 +50,10 @@ status: reviewed
 
 ### 德摩根律
 
-[集合的运算](lesson:math.logic-sets.set-operations#thm-de-morgan-sets)一节证过，取:term[补集]{id="math.logic-sets.complement"}（complement）会把两个集合的:term[并集]{id="math.logic-sets.union"}、:term[交集]{id="math.logic-sets.intersection"}互换。:term[集族]{id="math.logic-sets.family-of-sets"}的并、交用「存在」「对每个」定义，换用否定量词命题的定理，就能推广过来。
+[集合的运算](lesson:math.logic-sets.set-operations#thm-de-morgan-sets)一节证过，取:term[补集]{id="math.logic-sets.complement"}（complement）会把两个集合的:term[并集]{id="math.logic-sets.union"}、:term[交集]{id="math.logic-sets.intersection"}互换。:term[集族的并]{id="math.logic-sets.family-union"}、:term[集族的交]{id="math.logic-sets.family-intersection"}用「存在」「对每个」定义，换用否定量词命题的定理，就能推广过来。
 
 ::anchor{id="thm-de-morgan-families"}
-**:term[德摩根律]{id="math.logic-sets.de-morgan-laws"}（集族形式）**　设$\{A_i\}_{i\in I}$是集族，$I$不是:term[空集]{id="math.logic-sets.empty-set"}，每个$A_i$都是:term[全集]{id="math.logic-sets.universal-set"}（universal set）$U$的:term[子集]{id="math.logic-sets.subset"}（subset），则$\bigl(\bigcup_{i\in I}A_i\bigr)^{\mathrm c}=\bigcap_{i\in I}A_i^{\mathrm c}$，$\bigl(\bigcap_{i\in I}A_i\bigr)^{\mathrm c}=\bigcup_{i\in I}A_i^{\mathrm c}$。
+**:term[德摩根律]{id="math.logic-sets.de-morgan-laws"}（:term[集族]{id="math.logic-sets.family-of-sets"}形式）**　设$\{A_i\}_{i\in I}$是集族，$I$不是:term[空集]{id="math.logic-sets.empty-set"}，每个$A_i$都是:term[全集]{id="math.logic-sets.universal-set"}（universal set）$U$的:term[子集]{id="math.logic-sets.subset"}（subset），则$\bigl(\bigcup_{i\in I}A_i\bigr)^{\mathrm c}=\bigcap_{i\in I}A_i^{\mathrm c}$，$\bigl(\bigcap_{i\in I}A_i\bigr)^{\mathrm c}=\bigcup_{i\in I}A_i^{\mathrm c}$。
 
 **证明**：两边都是$U$的子集（$I$不是空集，交才有定义），只需看$U$中的$x$。$x\in\bigl(\bigcup_{i\in I}A_i\bigr)^{\mathrm c}$就是$\neg\bigl(\exists i\in I,\ x\in A_i\bigr)$，由[全称量词与存在量词](lesson:math.logic-sets.quantifiers#thm-quantifier-negation)里否定量词命题的定理，它和$\forall i\in I,\ x\notin A_i$同真同假。对$U$中的$x$，$x\notin A_i$就是$x\in A_i^{\mathrm c}$，所以这正是$x\in\bigcap_{i\in I}A_i^{\mathrm c}$；两边的元素完全相同，第一条成立。
 

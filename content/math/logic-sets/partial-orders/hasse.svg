@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 316" width="580" height="316" font-size="14">
+  <!-- 左：12 的正因数按整除的哈斯图，1 在最下，2、3 一层，4、6 一层，12 在最上；链 1, 2, 4, 12 的三条线和四个圈用强调色。右：同样六个数按 ≤ 的哈斯图，一条竖线。圈的半径左 16、右 14，连线都停在圈上 -->
+  <!-- 左图：不在链上的四条线 -->
+  <g stroke="currentColor" stroke-width="1.5" fill="none">
+    <line x1="170.59" y1="240" x2="209.41" y2="196" />
+    <line x1="113.72" y1="175.77" x2="206.28" y2="120.23" />
+    <line x1="220" y1="168" x2="220" y2="128" />
+    <line x1="209.41" y1="100" x2="170.59" y2="56" />
+  </g>
+  <!-- 左图：链 1, 2, 4, 12 -->
+  <g stroke-width="4" fill="none" style="stroke: var(--accent, #2563eb)">
+    <line x1="149.41" y1="240" x2="110.59" y2="196" />
+    <line x1="100" y1="168" x2="100" y2="128" />
+    <line x1="110.59" y1="100" x2="149.41" y2="56" />
+  </g>
+  <!-- 左图：六个圈 -->
+  <g stroke-width="2" fill="none" style="stroke: var(--accent, #2563eb)">
+    <circle cx="160" cy="252" r="16" />
+    <circle cx="100" cy="184" r="16" />
+    <circle cx="100" cy="112" r="16" />
+    <circle cx="160" cy="44" r="16" />
+  </g>
+  <g stroke="currentColor" stroke-width="1.5" fill="none">
+    <circle cx="220" cy="184" r="16" />
+    <circle cx="220" cy="112" r="16" />
+  </g>
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="160" y="257">1</text>
+    <text x="100" y="189">2</text>
+    <text x="220" y="189">3</text>
+    <text x="100" y="117">4</text>
+    <text x="220" y="117">6</text>
+    <text x="160" y="49">12</text>
+  </g>
+  <text x="74" y="153" text-anchor="end" style="fill: var(--accent, #2563eb)">一条链</text>
+  <!-- 右图：一条竖线 -->
+  <g stroke="currentColor" stroke-width="1.5" fill="none">
+    <line x1="430" y1="238" x2="430" y2="224.4" />
+    <line x1="430" y1="196.4" x2="430" y2="182.8" />
+    <line x1="430" y1="154.8" x2="430" y2="141.2" />
+    <line x1="430" y1="113.2" x2="430" y2="99.6" />
+    <line x1="430" y1="71.6" x2="430" y2="58" />
+    <circle cx="430" cy="252" r="14" />
+    <circle cx="430" cy="210.4" r="14" />
+    <circle cx="430" cy="168.8" r="14" />
+    <circle cx="430" cy="127.2" r="14" />
+    <circle cx="430" cy="85.6" r="14" />
+    <circle cx="430" cy="44" r="14" />
+  </g>
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="430" y="257">1</text>
+    <text x="430" y="215.4">2</text>
+    <text x="430" y="173.8">3</text>
+    <text x="430" y="132.2">4</text>
+    <text x="430" y="90.6">6</text>
+    <text x="430" y="49">12</text>
+  </g>
+  <g fill="currentColor" text-anchor="middle">
+    <text x="160" y="300">按整除：2 和 3 不可比</text>
+    <text x="430" y="300">按 ≤：任意两个都可比</text>
+  </g>
+</svg>

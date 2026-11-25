@@ -520,3 +520,401 @@ glossary:
       把集合$A$的每个元素映成它自己的映射$\mathrm{id}_A:A\to A$，$x\mapsto x$。
     definedIn: math.logic-sets.functions
     anchor: def-identity-map
+  - id: math.logic-sets.antisymmetric
+    zh: |
+      反对称性
+    en: |
+      antisymmetry
+    brief: |
+      集合$A$上的关系$R$对所有$a,b\in A$，只要$a\mathrel{R}b$且$b\mathrel{R}a$就有$a=b$时，说$R$具有反对称性，也说$R$是反对称的。
+    definedIn: math.logic-sets.partial-orders
+    anchor: def-antisymmetric
+  - id: math.logic-sets.partial-order
+    zh: |
+      偏序
+    en: |
+      partial order
+    brief: |
+      集合上自反、反对称、传递的二元关系，也叫偏序关系，常记作$\preceq$，如$\Pow(X)$上的$\subseteq$、$\N^+$上的整除。
+    definedIn: math.logic-sets.partial-orders
+    anchor: def-partial-order
+  - id: math.logic-sets.poset
+    zh: |
+      偏序集
+    en: |
+      partially ordered set
+    abbr: |
+      poset
+    brief: |
+      集合$P$连同它上面的一个偏序$\preceq$，记作${(P,\preceq)}$；同一个集合上可以有不同的偏序，所以要写明是哪一个。
+    definedIn: math.logic-sets.partial-orders
+    anchor: def-partial-order
+  - id: math.logic-sets.total-order
+    zh: |
+      全序
+    en: |
+      total order
+    brief: |
+      任意两个元素都可比的偏序，也叫线性序，如$\R$上的$\le$；带着全序的集合叫全序集。
+    definedIn: math.logic-sets.partial-orders
+    anchor: def-total-order
+  - id: math.logic-sets.comparable
+    zh: |
+      可比
+    en: |
+      comparable
+    brief: |
+      偏序集的两个元素$a$、$b$，$a\preceq b$或$b\preceq a$成立时说它们可比；按整除，$2$和$3$就不可比。
+    definedIn: math.logic-sets.partial-orders
+    anchor: def-total-order
+  - id: math.logic-sets.chain
+    zh: |
+      链
+    en: |
+      chain
+    brief: |
+      偏序集的一个子集，其中任意两个元素都可比；空集和只含一个元素的集合也是链。
+    definedIn: math.logic-sets.partial-orders
+    anchor: def-chain
+  - id: math.logic-sets.hasse-diagram
+    zh: |
+      哈斯图
+    en: |
+      Hasse diagram
+    brief: |
+      有限偏序集的图：每个元素画成一点，$a\prec b$并且两者之间没有别的元素时，把$b$画在$a$的上方并连一条线。
+    definedIn: math.logic-sets.partial-orders
+    anchor: def-hasse-diagram
+  - id: math.logic-sets.injective
+    zh: |
+      单射
+    en: |
+      injective
+    brief: |
+      把不同的元素总送到不同的像的映射$f$：由$f(x_1)=f(x_2)$推出$x_1=x_2$，即每个方程$f(x)=y$至多有一个解。
+    definedIn: math.logic-sets.injective-surjective
+    anchor: def-injective
+  - id: math.logic-sets.surjective
+    zh: |
+      满射
+    en: |
+      surjective
+    brief: |
+      像集等于陪域的映射$f:A\to B$：$B$的每个元素都是某个元素的像，即每个方程$f(x)=y$（$y\in B$）至少有一个解。
+    definedIn: math.logic-sets.injective-surjective
+    anchor: def-surjective
+  - id: math.logic-sets.bijective
+    zh: |
+      双射
+    en: |
+      bijective
+    brief: |
+      既是单射又是满射的映射：陪域的每个元素恰是一个元素的像，也就是中学说的一一对应。
+    definedIn: math.logic-sets.injective-surjective
+    anchor: def-bijective
+  - id: math.logic-sets.constant-map
+    zh: |
+      常值映射
+    en: |
+      constant map
+    brief: |
+      把$A$的每个元素都映成$B$的同一个元素$b$的映射$A\to B$。
+    definedIn: math.logic-sets.functions
+    anchor: def-constant-inclusion
+  - id: math.logic-sets.inclusion-map
+    zh: |
+      包含映射
+    en: |
+      inclusion map
+    brief: |
+      $A\subseteq B$时，把$A$的元素当作$B$的元素的映射$A\to B$，$x\mapsto x$。
+    definedIn: math.logic-sets.functions
+    anchor: def-constant-inclusion
+  - id: math.logic-sets.peano-axioms
+    zh: |
+      皮亚诺公理
+    en: |
+      Peano axioms
+    brief: |
+      刻画自然数的五条公理：有$0$；每个数有后继；$0$不是后继；后继相同则数相同；含$0$、又含有其中每个数的后继的子集就是全体。
+    definedIn: math.logic-sets.peano-axioms
+    anchor: def-peano-axioms
+  - id: math.logic-sets.successor
+    zh: |
+      后继
+    en: |
+      successor
+    brief: |
+      皮亚诺公理里，自然数$n$后面紧跟着的那个数$S(n)$；定义了加法以后，它就是$n+1$。
+    definedIn: math.logic-sets.peano-axioms
+    anchor: def-peano-axioms
+  - id: math.logic-sets.recursion-theorem
+    zh: |
+      递归定理
+    en: |
+      recursion theorem
+    brief: |
+      给定$c\in X$和映射$g:X\to X$，恰有一个映射$h:\N\to X$，使$h(0)=c$，并且每个$n$都有$h(S(n))=g(h(n))$，这里$S(n)$是$n$的后继。
+    definedIn: math.logic-sets.peano-axioms
+    anchor: thm-recursion
+  - id: math.logic-sets.recursive-definition
+    zh: |
+      递归定义
+    en: |
+      recursive definition
+    brief: |
+      给出$h(0)\in X$和由$h(n)$得到$h(S(n))$的规则$g:X\to X$来规定映射$h:\N\to X$的办法，$S(n)$是$n$的后继；由递归定理，这样的$h$恰有一个。
+    definedIn: math.logic-sets.peano-axioms
+    anchor: def-recursive-definition
+  - id: math.logic-sets.induction-principle
+    zh: |
+      归纳原理
+    en: |
+      principle of mathematical induction
+    brief: |
+      若$P(0)$成立，并且对每个$k\in\N$，由$P(k)$成立能推出$P(k+1)$成立，则$P(n)$对所有$n\in\N$都成立。
+    definedIn: math.logic-sets.induction
+    anchor: thm-induction-principle
+  - id: math.logic-sets.induction-hypothesis
+    zh: |
+      归纳假设
+    en: |
+      induction hypothesis
+    brief: |
+      用数学归纳法时，为推出$P(k+1)$而假设成立的$P(k)$；强归纳法里，是从起点到$k$的各个命题都成立。
+    definedIn: math.logic-sets.induction
+    anchor: def-induction
+  - id: math.logic-sets.preimage
+    zh: |
+      原像
+    en: |
+      preimage
+    brief: |
+      映射$f:X\to Y$下，被送进$Y$的子集$B$的元素组成的集合$f^{-1}(B)=\{x\in X:f(x)\in B\}$，也叫逆像，任何映射都能取；$f^{-1}(\{y\})$的元素也叫$y$的原像。
+    definedIn: math.logic-sets.image-preimage
+    anchor: def-preimage
+  - id: math.logic-sets.family-union
+    zh: |
+      集族的并
+    en: |
+      union of a family
+    brief: |
+      属于集族$\{A_i\}_{i\in I}$中某一个$A_i$的元素组成的集合，记作$\bigcup_{i\in I}A_i$；指标是$1,2,3,\dots$时叫可数并。
+    definedIn: math.logic-sets.indexed-families
+    anchor: def-family-union-intersection
+  - id: math.logic-sets.family-intersection
+    zh: |
+      集族的交
+    en: |
+      intersection of a family
+    brief: |
+      $I$不是空集时，属于集族$\{A_i\}_{i\in I}$中每一个$A_i$的元素组成的集合，记作$\bigcap_{i\in I}A_i$；指标是$1,2,3,\dots$时叫可数交。
+    definedIn: math.logic-sets.indexed-families
+    anchor: def-family-union-intersection
+  - id: math.logic-sets.composite-map
+    zh: |
+      复合映射
+    en: |
+      composite map
+    brief: |
+      设$f:A\to B$，$g:B\to C$，先做$f$、再做$g$的映射$A\to C$，$x\mapsto g(f(x))$，记作$g\circ f$，先做的写在右边；函数之间的就是复合函数。
+    definedIn: math.logic-sets.composition-inverse
+    anchor: def-composite
+  - id: math.logic-sets.inverse-map
+    zh: |
+      逆映射
+    en: |
+      inverse map
+    brief: |
+      对$f:A\to B$，满足$g\circ f=\mathrm{id}_A$和$f\circ g=\mathrm{id}_B$的映射$g:B\to A$，记作$f^{-1}$；$f$是双射时才有，而且只有一个。数集之间的就是反函数。
+    definedIn: math.logic-sets.composition-inverse
+    anchor: def-inverse
+  - id: math.logic-sets.right-inverse
+    zh: |
+      右逆
+    en: |
+      right inverse
+    brief: |
+      对$f:A\to B$，映射$h:B\to A$满足$f\circ h=\mathrm{id}_B$时，说$h$是$f$的右逆：先做$h$、再做$f$，$B$的每个元素都回到原处。
+    definedIn: math.logic-sets.composition-inverse
+    anchor: def-one-sided-inverse
+  - id: math.logic-sets.greatest-element
+    zh: |
+      最大元
+    en: |
+      greatest element
+    brief: |
+      设$S$是偏序集的子集，$g\in S$，每个$x\in S$都有$x\preceq g$时，$g$叫$S$的最大元；它至多有一个，存在时记作$\max S$。
+    definedIn: math.logic-sets.maximal-elements
+    anchor: def-greatest
+  - id: math.logic-sets.least-element
+    zh: |
+      最小元
+    en: |
+      least element
+    brief: |
+      设$S$是偏序集的子集，$s\in S$，每个$x\in S$都有$s\preceq x$时，$s$叫$S$的最小元；它至多有一个，存在时记作$\min S$。
+    definedIn: math.logic-sets.maximal-elements
+    anchor: def-greatest
+  - id: math.logic-sets.maximal-element
+    zh: |
+      极大元
+    en: |
+      maximal element
+    brief: |
+      设$S$是偏序集的子集，$m\in S$，$S$中没有比$m$大的元素，即$x\in S$且$m\preceq x$推出$x=m$时，$m$叫$S$的极大元；可以有好几个，也可以没有。
+    definedIn: math.logic-sets.maximal-elements
+    anchor: def-maximal
+  - id: math.logic-sets.minimal-element
+    zh: |
+      极小元
+    en: |
+      minimal element
+    brief: |
+      设$S$是偏序集的子集，$m\in S$，$S$中没有比$m$小的元素，即$x\in S$且$x\preceq m$推出$x=m$时，$m$叫$S$的极小元；可以有好几个，也可以没有。
+    definedIn: math.logic-sets.maximal-elements
+    anchor: def-maximal
+  - id: math.logic-sets.upper-bound
+    zh: |
+      上界
+    en: |
+      upper bound
+    brief: |
+      设$S$是偏序集$P$的子集，$u\in P$，每个$x\in S$都有$x\preceq u$时，$u$叫$S$的上界；$u$不必属于$S$，上界可以有很多个，也可以没有。
+    definedIn: math.logic-sets.maximal-elements
+    anchor: def-upper-bound
+  - id: math.logic-sets.lower-bound
+    zh: |
+      下界
+    en: |
+      lower bound
+    brief: |
+      设$S$是偏序集$P$的子集，$l\in P$，每个$x\in S$都有$l\preceq x$时，$l$叫$S$的下界；$l$不必属于$S$，下界可以有很多个，也可以没有。
+    definedIn: math.logic-sets.maximal-elements
+    anchor: def-upper-bound
+  - id: math.logic-sets.cancellation-law
+    zh: |
+      消去律
+    en: |
+      cancellation law
+    brief: |
+      等式两边同加（或同乘）的数可以消去的性质，如自然数的加法：由$m+k=n+k$能推出$m=n$；乘法里消去的数不能是$0$。
+    definedIn: math.logic-sets.natural-arithmetic
+    anchor: thm-cancellation
+  - id: math.logic-sets.equinumerous
+    zh: |
+      等势
+    en: |
+      equinumerous
+    brief: |
+      集合$A$与$B$之间有双射时，说它们等势，记作$|A|=|B|$；对有限集，就是元素个数相同。
+    definedIn: math.logic-sets.countable-sets
+    anchor: def-equinumerous
+  - id: math.logic-sets.finite-set
+    zh: |
+      有限集
+    en: |
+      finite set
+    brief: |
+      空集，或和某个$\{1,2,\dots,n\}$（$n$是正整数）之间有双射的集合；$n$就是它的元素个数，空集的元素个数是$0$。
+    definedIn: math.logic-sets.countable-sets
+    anchor: def-finite-set
+  - id: math.logic-sets.infinite-set
+    zh: |
+      无限集
+    en: |
+      infinite set
+    brief: |
+      不是有限集的集合，也叫无穷集，如$\N$、$\Z$、$\R$。
+    definedIn: math.logic-sets.countable-sets
+    anchor: def-finite-set
+  - id: math.logic-sets.countable-set
+    zh: |
+      可数集
+    en: |
+      countable set
+    brief: |
+      和$\N$等势的集合，也叫可列集：它的元素能不重复、不遗漏地排成一列$a_1,a_2,a_3,\dots$；不包括有限集。
+    definedIn: math.logic-sets.countable-sets
+    anchor: def-countable
+  - id: math.logic-sets.at-most-countable
+    zh: |
+      至多可数集
+    en: |
+      at most countable set
+    brief: |
+      有限集和可数集的统称；有的书说的可数集就是它。
+    definedIn: math.logic-sets.countable-sets
+    anchor: def-countable
+  - id: math.logic-sets.well-defined
+    zh: |
+      良定义
+    en: |
+      well-defined
+    brief: |
+      借代表元规定商集上的映射或运算时，换成同一等价类里别的代表元，结果都不变，就说这个规定是良定义的。
+    definedIn: math.logic-sets.number-constructions
+    anchor: def-well-defined
+  - id: math.logic-sets.axiom-of-choice
+    zh: |
+      选择公理
+    en: |
+      axiom of choice
+    brief: |
+      由非空集合组成的集族$\{A_i\}_{i\in I}$都有选择函数，即有映射$f$，对每个$i\in I$都有$f(i)\in A_i$；它只断言存在，不给出怎样挑。
+    definedIn: math.logic-sets.axiom-of-choice
+    anchor: def-axiom-of-choice
+  - id: math.logic-sets.zorn-lemma
+    zh: |
+      佐恩引理
+    en: |
+      Zorn's lemma
+    brief: |
+      非空的偏序集里，每条非空的链都有上界时，一定有极大元；和选择公理可以互相推出。
+    definedIn: math.logic-sets.axiom-of-choice
+    anchor: thm-zorn
+  - id: math.logic-sets.well-ordering-principle
+    zh: |
+      良序原理
+    en: |
+      well-ordering principle
+    brief: |
+      正整数组成的非空集合里一定有最小的数；它和归纳原理可以互相推出。
+    definedIn: math.logic-sets.induction
+    anchor: def-well-ordering
+  - id: math.logic-sets.uncountable-set
+    zh: |
+      不可数集
+    en: |
+      uncountable set
+    brief: |
+      不是至多可数集的集合，如$\R$：任给它的一列元素，总有元素不在其中。
+    definedIn: math.logic-sets.uncountable-sets
+    anchor: def-uncountable
+  - id: math.logic-sets.cantor-theorem
+    zh: |
+      康托尔定理
+    en: |
+      Cantor's theorem
+    brief: |
+      任何集合都和它的幂集不等势。
+    definedIn: math.logic-sets.uncountable-sets
+    anchor: thm-cantor
+  - id: math.logic-sets.diagonal-argument
+    zh: |
+      对角线论证
+    en: |
+      diagonal argument
+    brief: |
+      任给一列对象，造一个同类的对象，让它和第$n$个在第$n$处不同，由此断定这一列没有排全；编号也可以用别的集合的元素。
+    definedIn: math.logic-sets.uncountable-sets
+    anchor: def-diagonal-argument
+  - id: math.logic-sets.indicator-function
+    zh: |
+      指示函数
+    en: |
+      indicator function
+    brief: |
+      集合$A$的子集$S$的指示函数$\mathbf 1_S:A\to\{0,1\}$：在$S$的元素处取$1$，其余元素处取$0$；也叫示性函数。
+    definedIn: math.logic-sets.functions
+    anchor: def-indicator-function

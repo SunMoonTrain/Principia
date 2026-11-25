@@ -73,7 +73,7 @@ status: reviewed
 
 为什么这样定义：把看成一样的元素粘成一个，新集合的元素就是类。$\Z$关于模$3$同余的商集是$\{[0],[1],[2]\}$：每个整数和它除以$3$的余数同余，而$0$、$1$、$2$两两不同余。边界情况：商集的元素是$A$的:term[子集]{id="math.logic-sets.subset"}（subset），这个商集只有$3$个元素，每个元素却含有无穷多个整数。
 
-借代表元规定商集上的运算，如$[a]+[b]=[a+b]$，要验证换代表元结果不变，见第 6 题和[用等价类构造整数与有理数](lesson:math.logic-sets.number-constructions)。
+借代表元规定商集上的运算，如$[a]+[b]=[a+b]$，要验证换代表元结果不变，见第 6 题和[用等价类构造整数](lesson:math.logic-sets.number-constructions)、[用等价类构造有理数](lesson:math.logic-sets.rational-construction)。
 
 ### 等价关系与划分
 

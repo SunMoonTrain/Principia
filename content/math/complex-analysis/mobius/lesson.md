@@ -29,7 +29,7 @@ status: reviewed
 ::anchor{id="def-mobius"}
 设$a$、$b$、$c$、$d$是:term[复数]{id="math.complex-analysis.complex-number"}，$ad-bc\ne0$。$T(z)=\frac{az+b}{cz+d}$叫作:term[分式线性变换]{id="math.complex-analysis.mobius-transformation"}（Möbius transformation），也叫默比乌斯变换。$c\ne0$时规定$T\bigl(-\frac dc\bigr)=\infty$、$T(\infty)=\frac ac$；$c=0$时规定$T(\infty)=\infty$。
 
-为什么这样定义：条件$ad-bc\ne0$保证$T$是一一的：$T(z)-T(w)=\frac{(ad-bc)(z-w)}{(cz+d)(cw+d)}$，$z\ne w$时不为$0$；$ad-bc=0$时分子分母成比例，$T$是常数。解$w=\frac{az+b}{cz+d}$得$z=\frac{dw-b}{-cw+a}$，所以逆映射也是分式线性变换；直接代入可以验证，两个分式线性变换的复合仍是分式线性变换。导数$T'(z)=\frac{ad-bc}{(cz+d)^2}\ne0$，所以$T$在去掉$-\frac dc$的:term[复平面]{id="math.complex-analysis.complex-plane"}上是:term[共形映射]{id="math.complex-analysis.conformal-map"}（conformal map）。边界情况：$c=0$时$T$就是一次函数$\frac adz+\frac bd$，它把$\infty$映成$\infty$，在整个复平面上共形。
+为什么这样定义：条件$ad-bc\ne0$保证$T$是一一的：$T(z)-T(w)=\frac{(ad-bc)(z-w)}{(cz+d)(cw+d)}$，$z\ne w$时不为$0$；$ad-bc=0$时分子分母成比例，$T$是常数。解$w=\frac{az+b}{cz+d}$得$z=\frac{dw-b}{-cw+a}$，所以:term[逆映射]{id="math.logic-sets.inverse-map"}（inverse map）也是分式线性变换；直接代入可以验证，两个分式线性变换的复合仍是分式线性变换。导数$T'(z)=\frac{ad-bc}{(cz+d)^2}\ne0$，所以$T$在去掉$-\frac dc$的:term[复平面]{id="math.complex-analysis.complex-plane"}上是:term[共形映射]{id="math.complex-analysis.conformal-map"}（conformal map）。边界情况：$c=0$时$T$就是一次函数$\frac adz+\frac bd$，它把$\infty$映成$\infty$，在整个复平面上共形。
 
 ### 分解成三种简单变换
 

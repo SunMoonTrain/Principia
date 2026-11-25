@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 318" width="600" height="318" font-size="14">
+  <!-- N × N 里 n = 0 到 3、x = 0 到 8 的点阵，第 n 列第 x 行的点是有序对 (n, x)，列距 84、行距 25。c = 1、g(x) = 2x：强调色圆点 (0,1)、(1,2)、(2,4)、(3,8) 依次由箭头 (n, x) → (n + 1, 2x) 连起来；空心圆 (0,0)、(1,0)、(2,0)、(3,0) 和 (2,3)、(3,6) 由虚线箭头连起来，它们是满足 (i)、(ii) 的子集里可以多出来的 -->
+  <text x="68" y="38" fill="currentColor" font-style="italic" text-anchor="end">x</text>
+  <g fill="currentColor" text-anchor="end">
+    <text x="70" y="67">8</text>
+    <text x="70" y="92">7</text>
+    <text x="70" y="117">6</text>
+    <text x="70" y="142">5</text>
+    <text x="70" y="167">4</text>
+    <text x="70" y="192">3</text>
+    <text x="70" y="217">2</text>
+    <text x="70" y="242">1</text>
+    <text x="70" y="267">0</text>
+  </g>
+  <g fill="currentColor" text-anchor="middle">
+    <text x="96" y="298">0</text>
+    <text x="180" y="298">1</text>
+    <text x="264" y="298">2</text>
+    <text x="348" y="298">3</text>
+    <text x="388" y="298" font-style="italic">n</text>
+  </g>
+  <!-- 其余的点 -->
+  <g fill="currentColor" opacity="0.4">
+    <circle cx="96" cy="212" r="2" />
+    <circle cx="96" cy="187" r="2" />
+    <circle cx="96" cy="162" r="2" />
+    <circle cx="96" cy="137" r="2" />
+    <circle cx="96" cy="112" r="2" />
+    <circle cx="96" cy="87" r="2" />
+    <circle cx="96" cy="62" r="2" />
+    <circle cx="180" cy="237" r="2" />
+    <circle cx="180" cy="187" r="2" />
+    <circle cx="180" cy="162" r="2" />
+    <circle cx="180" cy="137" r="2" />
+    <circle cx="180" cy="112" r="2" />
+    <circle cx="180" cy="87" r="2" />
+    <circle cx="180" cy="62" r="2" />
+    <circle cx="264" cy="237" r="2" />
+    <circle cx="264" cy="212" r="2" />
+    <circle cx="264" cy="137" r="2" />
+    <circle cx="264" cy="112" r="2" />
+    <circle cx="264" cy="87" r="2" />
+    <circle cx="264" cy="62" r="2" />
+    <circle cx="348" cy="237" r="2" />
+    <circle cx="348" cy="212" r="2" />
+    <circle cx="348" cy="187" r="2" />
+    <circle cx="348" cy="162" r="2" />
+    <circle cx="348" cy="137" r="2" />
+    <circle cx="348" cy="87" r="2" />
+  </g>
+  <!-- 可以多出来的：空心圆和虚线箭头 -->
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <circle cx="96" cy="262" r="5" />
+    <circle cx="180" cy="262" r="5" />
+    <circle cx="264" cy="262" r="5" />
+    <circle cx="348" cy="262" r="5" />
+    <circle cx="264" cy="187" r="5" />
+    <circle cx="348" cy="112" r="5" />
+  </g>
+  <g stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 3">
+    <line x1="102.5" y1="262" x2="165.5" y2="262" />
+    <line x1="186.5" y1="262" x2="249.5" y2="262" />
+    <line x1="270.5" y1="262" x2="333.5" y2="262" />
+    <line x1="268.85" y1="182.67" x2="337.18" y2="121.66" />
+  </g>
+  <g fill="currentColor">
+    <polygon points="173.5,262 165.5,266 165.5,258" />
+    <polygon points="257.5,262 249.5,266 249.5,258" />
+    <polygon points="341.5,262 333.5,266 333.5,258" />
+    <polygon points="343.15,116.33 339.85,124.64 334.52,118.67" />
+  </g>
+  <!-- 走得到的：强调色圆点和箭头 -->
+  <g style="fill: var(--accent, #2563eb)">
+    <circle cx="96" cy="237" r="5.5" />
+    <circle cx="180" cy="212" r="5.5" />
+    <circle cx="264" cy="162" r="5.5" />
+    <circle cx="348" cy="62" r="5.5" />
+    <polygon points="173.29,214 166.76,220.11 164.48,212.44" />
+    <polygon points="257.98,165.58 253.16,173.11 249.06,166.24" />
+    <polygon points="343.5,67.36 341.41,76.06 335.29,70.91" />
+  </g>
+  <g stroke-width="1.8" style="stroke: var(--accent, #2563eb)">
+    <line x1="102.71" y1="235" x2="165.62" y2="216.28" />
+    <line x1="186.02" y1="208.42" x2="251.11" y2="169.67" />
+    <line x1="268.5" y1="156.64" x2="338.35" y2="73.49" />
+  </g>
+  <!-- 图例 -->
+  <circle cx="412" cy="122" r="5.5" style="fill: var(--accent, #2563eb)" />
+  <circle cx="412" cy="192" r="5" fill="none" stroke="currentColor" stroke-width="1.5" />
+  <g fill="currentColor">
+    <text x="426" y="127">从 (0, 1) 走得到的，</text>
+    <text x="426" y="150">取交以后只剩它们</text>
+    <text x="426" y="197">添上它们，(i)、(ii)</text>
+    <text x="426" y="220">照样满足，取交时筛掉</text>
+  </g>
+</svg>

@@ -64,7 +64,7 @@ status: reviewed
 
 单位圆周上，上半圆周温度为$100$，下半圆周温度为$0$。求圆盘里的温度分布和圆心的温度。
 
-**为什么想到这么做**：$w=i\frac{1+z}{1-z}$把单位圆盘映成上半平面，它是[分式线性变换](lesson:math.complex-analysis.mobius)一节例 1 那个:term[映射]{id="math.logic-sets.map"}（map）的逆映射；先看圆周映到哪里。
+**为什么想到这么做**：$w=i\frac{1+z}{1-z}$把单位圆盘映成上半平面，它是[分式线性变换](lesson:math.complex-analysis.mobius)一节例 1 那个:term[映射]{id="math.logic-sets.map"}（map）的:term[逆映射]{id="math.logic-sets.inverse-map"}（inverse map）；先看圆周映到哪里。
 
 **推导**：$z=e^{it}$时，$i\frac{1+e^{it}}{1-e^{it}}=i\frac{e^{-it/2}+e^{it/2}}{e^{-it/2}-e^{it/2}}=-\cot\frac t2$，上半圆周（$0<t<\pi$）映成:term[负实轴]{id="math.complex-analysis.real-axis"}，下半圆周映成正实轴。上半平面里负实轴上为$100$、正实轴上为$0$的解是$\frac{100}\pi\Arg w$，所以$u(z)=\frac{100}\pi\Arg\Bigl(i\frac{1+z}{1-z}\Bigr)$。圆心$z=0$映成$i$，$u(0)=50$，正是边界温度的平均值，和:term[平均值性质]{id="math.complex-analysis.mean-value-property"}（mean value property）的说法一致。
 

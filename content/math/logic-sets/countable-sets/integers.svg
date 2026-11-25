@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 206" width="600" height="206" font-size="14">
+  <!-- 数轴上的整数 -4 到 4，间距 57，0 在 x = 318。强调色的半椭圆弧是排列的次序：上面的弧从 -k 跨到 k + 1（k = 0, 1, 2, 3），下面的弧从 k 跨回 -k（k = 1, 2, 3, 4），半高都是 16 + 0.3 倍半宽，互不相交；弧顶的三角表示走向。点的斜上方是编号 n（从 0 起，强调色），斜下方是整数 f(n) -->
+  <line x1="58" y1="104" x2="584" y2="104" stroke="currentColor" stroke-width="1" opacity="0.45" />
+  <g fill="none" stroke-width="1.6" style="stroke: var(--accent, #2563eb)">
+    <path d="M 318 104 A 28.5 24.55 0 0 1 375 104" />
+    <path d="M 375 104 A 57 33.1 0 0 1 261 104" />
+    <path d="M 261 104 A 85.5 41.65 0 0 1 432 104" />
+    <path d="M 432 104 A 114 50.2 0 0 1 204 104" />
+    <path d="M 204 104 A 142.5 58.75 0 0 1 489 104" />
+    <path d="M 489 104 A 171 67.3 0 0 1 147 104" />
+    <path d="M 147 104 A 199.5 75.85 0 0 1 546 104" />
+    <path d="M 546 104 A 228 84.4 0 0 1 90 104" />
+  </g>
+  <g style="fill: var(--accent, #2563eb)">
+    <polygon points="351.5,79.45 342.5,75.45 342.5,83.45" />
+    <polygon points="351.5,62.35 342.5,58.35 342.5,66.35" />
+    <polygon points="351.5,45.25 342.5,41.25 342.5,49.25" />
+    <polygon points="351.5,28.15 342.5,24.15 342.5,32.15" />
+    <polygon points="313,137.1 322,133.1 322,141.1" />
+    <polygon points="313,154.2 322,150.2 322,158.2" />
+    <polygon points="313,171.3 322,167.3 322,175.3" />
+    <polygon points="313,188.4 322,184.4 322,192.4" />
+  </g>
+  <g fill="currentColor">
+    <circle cx="90" cy="104" r="4.5" />
+    <circle cx="147" cy="104" r="4.5" />
+    <circle cx="204" cy="104" r="4.5" />
+    <circle cx="261" cy="104" r="4.5" />
+    <circle cx="318" cy="104" r="4.5" />
+    <circle cx="375" cy="104" r="4.5" />
+    <circle cx="432" cy="104" r="4.5" />
+    <circle cx="489" cy="104" r="4.5" />
+    <circle cx="546" cy="104" r="4.5" />
+  </g>
+  <!-- 编号 n -->
+  <g style="fill: var(--accent, #2563eb)" text-anchor="end">
+    <text x="82" y="96">8</text>
+    <text x="139" y="96">6</text>
+    <text x="196" y="96">4</text>
+    <text x="253" y="96">2</text>
+    <text x="310" y="96">0</text>
+  </g>
+  <g style="fill: var(--accent, #2563eb)">
+    <text x="383" y="96">1</text>
+    <text x="440" y="96">3</text>
+    <text x="497" y="96">5</text>
+    <text x="554" y="96">7</text>
+    <text x="12" y="96">编号</text>
+  </g>
+  <!-- 整数 f(n) -->
+  <g fill="currentColor" text-anchor="end">
+    <text x="82" y="122">−4</text>
+    <text x="139" y="122">−3</text>
+    <text x="196" y="122">−2</text>
+    <text x="253" y="122">−1</text>
+    <text x="310" y="122">0</text>
+  </g>
+  <g fill="currentColor">
+    <text x="383" y="122">1</text>
+    <text x="440" y="122">2</text>
+    <text x="497" y="122">3</text>
+    <text x="554" y="122">4</text>
+    <text x="12" y="122">整数</text>
+  </g>
+</svg>

@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 274" width="600" height="274" font-size="14">
+  <!-- Z × N⁺ 的点阵：分子 p 横、从 −5 到 5，分母 q 纵、从 1 到 4，(p, q) 画在 (300 + 46p, 236 − 46q)，原点在 (300, 236)。p、q 没有大于 1 的公因数的点是强调色的圆点，别的点空心。四条射线从原点出发，方向依次是 (−1, 1)、(0, 1)、(1, 2)、(2, 1)，末端写着它们表示的有理数 -->
+  <line x1="50" y1="236" x2="550" y2="236" stroke="currentColor" stroke-width="1" opacity="0.45" />
+  <!-- 射线 -->
+  <g stroke="currentColor" stroke-width="1.2" opacity="0.7">
+    <line x1="300" y1="236" x2="93" y2="29" />
+    <line x1="300" y1="236" x2="300" y2="29" />
+    <line x1="300" y1="236" x2="403.5" y2="29" />
+    <line x1="300" y1="236" x2="548.4" y2="111.8" />
+  </g>
+  <circle cx="300" cy="236" r="2.6" fill="currentColor" />
+  <!-- 能约分的 -->
+  <g stroke="currentColor" stroke-width="1.3" style="fill: var(--bg, #ffffff)">
+    <circle cx="116" cy="52" r="4" />
+    <circle cx="208" cy="52" r="4" />
+    <circle cx="300" cy="52" r="4" />
+    <circle cx="392" cy="52" r="4" />
+    <circle cx="484" cy="52" r="4" />
+    <circle cx="162" cy="98" r="4" />
+    <circle cx="300" cy="98" r="4" />
+    <circle cx="438" cy="98" r="4" />
+    <circle cx="116" cy="144" r="4" />
+    <circle cx="208" cy="144" r="4" />
+    <circle cx="300" cy="144" r="4" />
+    <circle cx="392" cy="144" r="4" />
+    <circle cx="484" cy="144" r="4" />
+  </g>
+  <!-- 约到最简的 -->
+  <g style="fill: var(--accent, #2563eb)">
+    <circle cx="70" cy="52" r="5" />
+    <circle cx="162" cy="52" r="5" />
+    <circle cx="254" cy="52" r="5" />
+    <circle cx="346" cy="52" r="5" />
+    <circle cx="438" cy="52" r="5" />
+    <circle cx="530" cy="52" r="5" />
+    <circle cx="70" cy="98" r="5" />
+    <circle cx="116" cy="98" r="5" />
+    <circle cx="208" cy="98" r="5" />
+    <circle cx="254" cy="98" r="5" />
+    <circle cx="346" cy="98" r="5" />
+    <circle cx="392" cy="98" r="5" />
+    <circle cx="484" cy="98" r="5" />
+    <circle cx="530" cy="98" r="5" />
+    <circle cx="70" cy="144" r="5" />
+    <circle cx="162" cy="144" r="5" />
+    <circle cx="254" cy="144" r="5" />
+    <circle cx="346" cy="144" r="5" />
+    <circle cx="438" cy="144" r="5" />
+    <circle cx="530" cy="144" r="5" />
+    <circle cx="70" cy="190" r="5" />
+    <circle cx="116" cy="190" r="5" />
+    <circle cx="162" cy="190" r="5" />
+    <circle cx="208" cy="190" r="5" />
+    <circle cx="254" cy="190" r="5" />
+    <circle cx="300" cy="190" r="5" />
+    <circle cx="346" cy="190" r="5" />
+    <circle cx="392" cy="190" r="5" />
+    <circle cx="438" cy="190" r="5" />
+    <circle cx="484" cy="190" r="5" />
+    <circle cx="530" cy="190" r="5" />
+  </g>
+  <!-- 射线表示的有理数 -->
+  <g fill="currentColor">
+    <text x="84" y="26" text-anchor="end">−1</text>
+    <text x="300" y="20" text-anchor="middle">0</text>
+    <text x="409" y="24">1/2</text>
+    <text x="556" y="112">2</text>
+  </g>
+  <!-- 几个点的 (p, q) -->
+  <g fill="currentColor" font-size="12.5">
+    <text x="349" y="163">(1, 2)</text>
+    <text x="395" y="71">(2, 4)</text>
+    <text x="390" y="209">(2, 1)</text>
+    <text x="482" y="163">(4, 2)</text>
+    <text x="250" y="178">(−1, 1)</text>
+    <text x="204" y="132">(−2, 2)</text>
+  </g>
+  <!-- 两个方向的坐标 -->
+  <g fill="currentColor" text-anchor="middle" opacity="0.75">
+    <text x="70" y="259">−5</text>
+    <text x="116" y="259">−4</text>
+    <text x="162" y="259">−3</text>
+    <text x="208" y="259">−2</text>
+    <text x="254" y="259">−1</text>
+    <text x="300" y="259">0</text>
+    <text x="346" y="259">1</text>
+    <text x="392" y="259">2</text>
+    <text x="438" y="259">3</text>
+    <text x="484" y="259">4</text>
+    <text x="530" y="259">5</text>
+    <text x="572" y="259" font-style="italic">p</text>
+  </g>
+  <g fill="currentColor" text-anchor="end" opacity="0.75">
+    <text x="44" y="195">1</text>
+    <text x="44" y="149">2</text>
+    <text x="44" y="103">3</text>
+    <text x="44" y="57">4</text>
+    <text x="44" y="24" font-style="italic">q</text>
+  </g>
+</svg>

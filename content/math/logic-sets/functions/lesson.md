@@ -5,7 +5,7 @@ title: |
 goal: |
   会用定义域、陪域和对应法则说清一个映射，并区分映射的像集与陪域。
 prerequisites: [math.logic-sets.cartesian-product]
-minutes: 28
+minutes: 29
 summary: |
   映射给定义域的每个元素恰好一个像；像集不一定等于陪域。
 status: reviewed
@@ -19,7 +19,7 @@ status: reviewed
 
 ### 映射
 
-数列$\frac1n$把每个正整数$n$对应到一个实数。有限集（finite set）之间的对应可以逐个列出：$A=\{1,2,3\}$，$B=\{a,b,c,d\}$（$a$、$b$、$c$、$d$互不相同），让$1$、$2$都对应$a$，$3$对应$c$。也有不合格的：把正数$x$对应到满足$y^2=x$的实数$y$，每个$x$对应了两个数；在$\R$上让$x$对应$\frac1x$，$0$没有对应的数。
+数列$\frac1n$把每个正整数$n$对应到一个实数。:term[有限集]{id="math.logic-sets.finite-set"}（finite set）之间的对应可以逐个列出：$A=\{1,2,3\}$，$B=\{a,b,c,d\}$（$a$、$b$、$c$、$d$互不相同），让$1$、$2$都对应$a$，$3$对应$c$。也有不合格的：把正数$x$对应到满足$y^2=x$的实数$y$，每个$x$对应了两个数；在$\R$上让$x$对应$\frac1x$，$0$没有对应的数。
 
 ::anchor{id="def-map"}
 设$A$、$B$是集合。如果按某个对应法则（rule）$f$，$A$的每个元素$x$都恰好对应$B$的一个元素，这个元素记作$f(x)$，就说$f$是从$A$到$B$的:term[映射]{id="math.logic-sets.map"}（map，也叫 mapping），记作$f:A\to B$；$A$叫作$f$的:term[定义域]{id="math.logic-sets.domain"}（domain），$B$叫作$f$的:term[陪域]{id="math.logic-sets.codomain"}（codomain）。
@@ -56,7 +56,7 @@ $A$中所有元素的像组成的集合$\{f(x):x\in A\}$，叫作$f$的:term[像
 ::anchor{id="def-map-equality"}
 设$f:A\to B$，$g:C\to D$。如果$A=C$，$B=D$，并且每个$x\in A$都有$f(x)=g(x)$，就说$f$与$g$相等，记作$f=g$。
 
-为什么陪域也要相同：以后讲满射（surjection）时要问$f$是否取遍了陪域，答案和陪域取哪个有关，见[单射、满射与双射](lesson:math.logic-sets.injective-surjective)。所以$\R\to\R$和$\R\to[0,+\infty)$的$x\mapsto x^2$是两个映射。
+为什么陪域也要相同：以后讲:term[满射]{id="math.logic-sets.surjective"}（surjection）时要问$f$是否取遍了陪域，答案和陪域取哪个有关，见[单射、满射与双射](lesson:math.logic-sets.injective-surjective)。所以$\R\to\R$和$\R\to[0,+\infty)$的$x\mapsto x^2$是两个映射。
 
 边界情况：只看这三样，不看式子。$\frac{x^2-1}{x-1}$的默认:term[定义域]{id="math.logic-sets.domain"}是$\R\setminus\{1\}$，和$x+1$的不同，两者不相等；定义域都取成$\R\setminus\{1\}$、陪域都取$\R$，它们就相等了。
 
@@ -78,14 +78,21 @@ $A$中所有元素的像组成的集合$\{f(x):x\in A\}$，叫作$f$的:term[像
 ::anchor{id="def-identity-map"}
 把集合$A$的每个元素映成它自己的映射$A\to A$，$x\mapsto x$，叫作$A$上的:term[恒等映射]{id="math.logic-sets.identity-map"}（identity map），记作$\mathrm{id}_A$。
 
-为什么单独起名：以后做复合（composition）$g\circ f$时，它就像乘法里的$1$，见[复合映射与逆映射](lesson:math.logic-sets.composition-inverse)。边界情况：$A\ne B$时，$\mathrm{id}_A$和$\mathrm{id}_B$的:term[定义域]{id="math.logic-sets.domain"}不同，是两个映射。
+为什么单独起名：以后做:term[复合]{id="math.logic-sets.composite-map"}（composition）$g\circ f$时，它就像乘法里的$1$，见[复合映射与逆映射](lesson:math.logic-sets.composition-inverse)。边界情况：$A\ne B$时，$\mathrm{id}_A$和$\mathrm{id}_B$的:term[定义域]{id="math.logic-sets.domain"}不同，是两个映射。
 
 ::anchor{id="def-constant-inclusion"}
-设$b\in B$，把$A$的每个元素都映成$b$的映射$A\to B$叫作常值映射（constant map）；$A\subseteq B$时，$A\to B$的$x\mapsto x$叫作包含映射（inclusion map）。
+设$b\in B$，把$A$的每个元素都映成$b$的映射$A\to B$叫作:term[常值映射]{id="math.logic-sets.constant-map"}（constant map）；$A\subseteq B$时，$A\to B$的$x\mapsto x$叫作:term[包含映射]{id="math.logic-sets.inclusion-map"}（inclusion map）。
 
 为什么起名：两者都常用，前者让所有元素共用一个像，后者把$A$的元素当作$B$的元素。边界情况：包含映射和$\mathrm{id}_A$的对应法则一样，$A\ne B$时:term[陪域]{id="math.logic-sets.codomain"}不同，是两个映射。
 
-定义域也可以是:term[笛卡儿积]{id="math.logic-sets.cartesian-product"}：加法是$\Z\times\Z\to\Z$的映射$(a,b)\mapsto a+b$，这时$f((a,b))$简写成$f(a,b)$。定义域是有限集时，映射就是一张对照表，可以画成箭头图（arrow diagram）。
+把偶数映成$1$、奇数映成$0$的映射$\N\to\{0,1\}$，记下了哪些自然数是偶数。
+
+::anchor{id="def-indicator-function"}
+设$S\subseteq A$。在$S$的元素处取$1$、在$A$的其余元素处取$0$的映射$A\to\{0,1\}$，叫作$S$的:term[指示函数]{id="math.logic-sets.indicator-function"}（indicator function，也叫示性函数），记作$\mathbf 1_S$。
+
+为什么起名：「属不属于$S$」就这样成了一个映射，由它又认得出$S$，见例 2。边界情况：$S=\varnothing$、$S=A$时它都是常值映射，一个总取$0$，一个总取$1$。
+
+定义域也可以是:term[笛卡儿积]{id="math.logic-sets.cartesian-product"}：加法是$\Z\times\Z\to\Z$的映射$(a,b)\mapsto a+b$，这时$f((a,b))$简写成$f(a,b)$。定义域是:term[有限集]{id="math.logic-sets.finite-set"}时，映射就是一张对照表，可以画成箭头图（arrow diagram）。
 
 ## 几何图像
 
@@ -136,11 +143,11 @@ $A=\{1,2,3\}$到$\{0,1\}$的:term[映射]{id="math.logic-sets.map"}有几个？�
 
 **为什么想到这么做**：给出映射，就是给每个元素挑一个像，每个元素两种挑法，用乘法原理（multiplication principle）。$f$由「哪些元素的像是$1$」完全确定，这正是挑一个子集。
 
-**推导**：$1$、$2$、$3$的像各有$0$、$1$两种取法，由乘法原理，映射有$2\times2\times2=8$个。每个映射$f$给出子集$\{x\in A:f(x)=1\}$；反过来，子集$S$给出映射：$x\in S$时映成$1$，否则映成$0$，叫作$S$的指示函数（indicator function，也叫示性函数）。两种做法互相还原，所以映射和子集一样多，和[集合与子集](lesson:math.logic-sets.sets#thm-subset-count)里的$2^3$对上。
+**推导**：$1$、$2$、$3$的像各有$0$、$1$两种取法，由乘法原理，映射有$2\times2\times2=8$个。每个映射$f$给出子集$\{x\in A:f(x)=1\}$；反过来，子集$S$给出它的:term[指示函数]{id="math.logic-sets.indicator-function"}$\mathbf 1_S$。两种做法互相还原，所以映射和子集一样多，和[集合与子集](lesson:math.logic-sets.sets#thm-subset-count)里的$2^3$对上。
 
 ## 常见误区
 
 - 「:term[陪域]{id="math.logic-sets.codomain"}就是:term[值域]{id="math.logic-sets.range"}。」不对：值域是像集，是实际取到的值；陪域只要求装得下这些值。例 1 的$f$陪域是$\R$，值域是$[-1,3]$。
 - 「两个:term[映射]{id="math.logic-sets.map"}的式子一样，它们就相等。」不对：:term[定义域]{id="math.logic-sets.domain"}、陪域也要一样。$\Z\to\Z$和$\Z\to\R$的$n\mapsto2n$式子相同，陪域不同，是两个映射。
-- 「映射要求$B$的每个元素都是某个元素的像。」不对：定义只要求$A$的每个元素恰有一个像，$B$的元素可以不是任何元素的像，例如$\R\to\R$的$x\mapsto x^2$，负数都不是像。每个元素都是像，是满射的要求，见[单射、满射与双射](lesson:math.logic-sets.injective-surjective)。
+- 「映射要求$B$的每个元素都是某个元素的像。」不对：定义只要求$A$的每个元素恰有一个像，$B$的元素可以不是任何元素的像，例如$\R\to\R$的$x\mapsto x^2$，负数都不是像。每个元素都是像，是:term[满射]{id="math.logic-sets.surjective"}的要求，见[单射、满射与双射](lesson:math.logic-sets.injective-surjective)。
 - 「$f$和$f(x)$是一回事。」不对：$f$是映射，$f(x)$是$x$的像，是陪域里的一个元素。常说的「函数$f(x)=x^2$」是简便说法，指的是映射$x\mapsto x^2$。

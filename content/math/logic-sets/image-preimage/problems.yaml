@@ -1,0 +1,220 @@
+- id: p1
+  tier: easy
+  statement: |
+    设$X=\{1,2,\dots,20\}$，$f:X\to\N$把$n$送到$n$除以$6$的余数，$A=\{1,2,\dots,10\}$。$f(A)$和$f^{-1}(\{1,4\})$各有几个元素？按（$f(A)$的元素个数，$f^{-1}(\{1,4\})$的元素个数）的顺序填。
+  answer:
+    type: tuple
+    value: [6, 7]
+    exact: true
+  hints:
+    - |
+      $f(A)$由$A$中各数除以$6$的余数组成，重复的只算一个；$f^{-1}(\{1,4\})$由$X$中被送进$\{1,4\}$的数组成。
+    - |
+      $1$到$6$的余数依次是多少，$7$到$10$的余数里有没有新的？$X$中除以$6$余$1$的数是$1,7,13,19$，余$4$的有哪些？
+    - |
+      $1,2,3,4,5,6$除以$6$的余数是$1,2,3,4,5,0$，$7,8,9,10$的余数是$1,2,3,4$，没有新的，所以$f(A)=\{0,1,2,3,4,5\}$，有$6$个元素。$X$中余$1$的是$1,7,13,19$，余$4$的是$4,10,16$，所以$f^{-1}(\{1,4\})=\{1,4,7,10,13,16,19\}$，有$7$个元素。填$(6,7)$。
+  solution: |
+    $1,2,3,4,5,6$除以$6$的余数依次是$1,2,3,4,5,0$，$7,8,9,10$的余数是$1,2,3,4$，集合里重复的只算一个，所以$f(A)=\{0,1,2,3,4,5\}$，有$6$个元素。
+
+    $f^{-1}(\{1,4\})$要在整个$X$里找：除以$6$余$1$的是$1,7,13,19$，余$4$的是$4,10,16$，一共$7$个元素。只在$A$里找，会漏掉$13$、$16$、$19$。答案是$(6,7)$。
+
+- id: p2
+  tier: easy
+  statement: |
+    设$f:\R\to\R$，$f(x)=x^4-4x^2$。$f^{-1}(\{0\})$、$f^{-1}(\{-4\})$、$f^{-1}(\{-5\})$各有几个元素？按这个顺序填三个数。
+  answer:
+    type: tuple
+    value: [3, 2, 0]
+    exact: true
+  hints:
+    - |
+      $f^{-1}(\{y\})$就是方程$f(x)=y$的实数解组成的集合，数一数这个方程有几个解。
+    - |
+      $f(x)=0$可以提出$x^2$；另外两个方程，先配方：$x^4-4x^2=(x^2-2)^2-4$。
+    - |
+      $x^2(x^2-4)=0$的解是$0$、$2$、$-2$，有$3$个。$f(x)=-4$就是$(x^2-2)^2=0$，即$x^2=2$，解是$\sqrt2$、$-\sqrt2$，有$2$个。$f(x)=-5$就是$(x^2-2)^2=-1$，没有实数解，有$0$个。填$(3,2,0)$。
+  solution: |
+    $f(x)=0$就是$x^2(x^2-4)=0$，所以$f^{-1}(\{0\})=\{-2,0,2\}$，有$3$个元素。配方得$f(x)=(x^2-2)^2-4$，$f(x)=-4$就是$x^2=2$，所以$f^{-1}(\{-4\})=\{-\sqrt2,\sqrt2\}$，有$2$个元素。
+
+    $f(x)=-5$就是$(x^2-2)^2=-1$，没有实数解，所以$f^{-1}(\{-5\})=\varnothing$，有$0$个元素：$-5$不是任何实数的像，$f^{-1}(\{-5\})$照样有意义，只是空集。答案是$(3,2,0)$。
+
+- id: p3
+  tier: medium
+  statement: |
+    设$f:X\to Y$是任意一个:term[映射]{id="math.logic-sets.map"}，$A_1$、$A_2$是$X$的任意子集，$B_1$、$B_2$是$Y$的任意子集。下面哪些一定成立？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $f(A_1)\setminus f(A_2)\subseteq f(A_1\setminus A_2)$
+      - |
+        $f(A_1\setminus A_2)\subseteq f(A_1)\setminus f(A_2)$
+      - |
+        $f^{-1}(B_1\setminus B_2)=f^{-1}(B_1)\setminus f^{-1}(B_2)$
+      - |
+        若$f^{-1}(B_1)\subseteq f^{-1}(B_2)$，则$B_1\subseteq B_2$
+      - |
+        若$B_1\cap B_2=\varnothing$，则$f^{-1}(B_1)\cap f^{-1}(B_2)=\varnothing$
+    value: [1, 3, 5]
+  hints:
+    - |
+      成立的，任取一个元素，照像、:term[原像]{id="math.logic-sets.preimage"}的定义把两边翻译出来；不成立的，举一个反例（counterexample），用只有一两个元素的集合试。
+    - |
+      选项 A：$y\in f(A_1)\setminus f(A_2)$时，$A_1$中被送到$y$的元素会不会在$A_2$里？选项 B：两个元素被送到同一处时怎样？选项 C、E：$x\in f^{-1}(B_1)$就是$f(x)\in B_1$。选项 D：$B_1$里的元素要是都不是像呢？
+    - |
+      选项 A：设$y\in f(A_1)\setminus f(A_2)$，有$x\in A_1$使$f(x)=y$；$x$不在$A_2$里，否则$y\in f(A_2)$，所以$x\in A_1\setminus A_2$，$y\in f(A_1\setminus A_2)$，成立。选项 B：$X=\{1,2\}$，$f$把$1$、$2$都送到$a$，取$A_1=\{1\}$，$A_2=\{2\}$，左边是$\{a\}$，右边是$\varnothing$，不成立。选项 C：两边都是「$f(x)\in B_1$而$f(x)\notin B_2$」的那些$x$，成立。
+
+      选项 D：$X=\{1\}$，$Y=\{a,b\}$（$a\ne b$），$f(1)=a$，取$B_1=\{b\}$，$B_2=\varnothing$，两个原像都是$\varnothing$，可$B_1\not\subseteq B_2$，不成立。选项 E：若有$x$属于两个原像，则$f(x)$既属于$B_1$又属于$B_2$，和$B_1\cap B_2=\varnothing$矛盾，所以成立。选 A、C、E。
+  solution: |
+    选项 A：设$y\in f(A_1)\setminus f(A_2)$，有$x\in A_1$使$f(x)=y$。$x$不能属于$A_2$，否则$y\in f(A_2)$，所以$x\in A_1\setminus A_2$，$y\in f(A_1\setminus A_2)$，成立。选项 B：$X=\{1,2\}$，$f(1)=f(2)=a$，$A_1=\{1\}$，$A_2=\{2\}$时，左边是$\{a\}$，右边是$\{a\}\setminus\{a\}=\varnothing$，不成立。
+
+    选项 C：$x\in f^{-1}(B_1\setminus B_2)$就是$f(x)\in B_1$且$f(x)\notin B_2$，即$x\in f^{-1}(B_1)$且$x\notin f^{-1}(B_2)$，成立。选项 D：$B_1$里不是像的元素对原像不起作用，$X=\{1\}$，$Y=\{a,b\}$（$a\ne b$），$f(1)=a$，$B_1=\{b\}$，$B_2=\varnothing$就是反例，不成立。选项 E：由原像保持交，$f^{-1}(B_1)\cap f^{-1}(B_2)=f^{-1}(B_1\cap B_2)=f^{-1}(\varnothing)=\varnothing$，成立。选 A、C、E。
+
+- id: p4
+  tier: medium
+  statement: |
+    设$X=\{1,2,\dots,10\}$，$f:X\to\N$把$n$送到$n$的正因数的个数。$X$有多少个:term[子集]{id="math.logic-sets.subset"}$A$满足$f^{-1}(f(A))=A$？
+  answer:
+    type: number
+    value: 16
+    exact: true
+  hints:
+    - |
+      $A\subseteq f^{-1}(f(A))$总成立，只要看什么时候没有多出来的数。$x\in f^{-1}(f(A))$是说$x$和$A$中的数有什么关系？
+    - |
+      $x\in f^{-1}(f(A))$就是有$a\in A$使$f(x)=f(a)$。所以$A$要满足的是：含有一个数，就含有$X$中所有和它正因数个数相同的数。把$1$到$10$按正因数的个数归在一起，有几组？
+    - |
+      正因数有$1$个的是$1$；有$2$个的是$2,3,5,7$；有$3$个的是$4,9$；有$4$个的是$6,8,10$。$f^{-1}(f(A))=A$，就是每一组要么整组在$A$里，要么整组不在$A$里。$4$组各有两种选法，由乘法原理（multiplication principle），这样的$A$有$2^4=16$个。
+  solution: |
+    $x\in f^{-1}(f(A))$就是有$a\in A$使$f(x)=f(a)$，所以$f^{-1}(f(A))=A$说的是：$A$含有一个数，就含有$X$中所有和它正因数个数相同的数。按正因数的个数，$1$到$10$分成$4$组：$\{1\}$、$\{2,3,5,7\}$、$\{4,9\}$、$\{6,8,10\}$。
+
+    这样的$A$由「放进哪几组」完全确定，每组放或不放，共$2^4=16$个，其中包括空集和$X$。
+
+- id: p5
+  tier: hard
+  statement: |
+    设$f:X\to Y$。如果$X$中不同的元素总有不同的像，就说$f$是:term[单射]{id="math.logic-sets.injective"}（injective），见[单射、满射与双射](lesson:math.logic-sets.injective-surjective)。
+
+    （1）证明：$f$是单射，当且仅当对$X$的任意子集$A_1$、$A_2$都有$f(A_1\cap A_2)=f(A_1)\cap f(A_2)$。
+
+    （2）证明：$f$是单射，当且仅当对$X$的每个子集$A$都有$f^{-1}(f(A))=A$。
+  hints:
+    - |
+      两问都有两个方向。由单射推等式时，一边的包含讲解已经证过，只要证另一边。反过来，等式对任意子集都成立，就挑最小的非空子集来用：只含一个元素的子集。
+    - |
+      （1）$y\in f(A_1)\cap f(A_2)$时，有$x_1\in A_1$、$x_2\in A_2$使$f(x_1)=y=f(x_2)$，单射说明$x_1$和$x_2$有什么关系？反过来，对不同的$x_1$、$x_2$取$A_1=\{x_1\}$，$A_2=\{x_2\}$。（2）$x\in f^{-1}(f(A))$就是有$a\in A$使$f(x)=f(a)$；反过来取$A=\{x_1\}$。
+    - |
+      （1）设$f$是单射。讲解证过$f(A_1\cap A_2)\subseteq f(A_1)\cap f(A_2)$，只要证反过来的包含。任取$y\in f(A_1)\cap f(A_2)$，有$x_1\in A_1$、$x_2\in A_2$使$f(x_1)=y=f(x_2)$。不同的元素有不同的像，所以$x_1=x_2$，它属于$A_1\cap A_2$，$y\in f(A_1\cap A_2)$。
+
+      反过来，设等式对任意两个子集都成立，任取$X$中不同的$x_1$、$x_2$。取$A_1=\{x_1\}$，$A_2=\{x_2\}$，则$\{f(x_1)\}\cap\{f(x_2)\}=f(A_1\cap A_2)=f(\varnothing)=\varnothing$。所以$f(x_1)\ne f(x_2)$，$f$是单射。
+
+      （2）设$f$是单射。讲解证过$A\subseteq f^{-1}(f(A))$，只要证反过来的包含。任取$x\in f^{-1}(f(A))$，即$f(x)\in f(A)$，有$a\in A$使$f(x)=f(a)$；由单射，$x=a\in A$。所以两边相等。
+
+      反过来，设等式对每个子集都成立，任取$X$中不同的$x_1$、$x_2$。取$A=\{x_1\}$，则$f^{-1}(f(A))=\{x_1\}$不含$x_2$，即$f(x_2)\notin f(A)=\{f(x_1)\}$。所以$f(x_2)\ne f(x_1)$，$f$是单射。
+  reference: |
+    （1）（⇒）只需证$f(A_1)\cap f(A_2)\subseteq f(A_1\cap A_2)$：$y=f(x_1)=f(x_2)$，$x_i\in A_i$，单射给出$x_1=x_2\in A_1\cap A_2$，故$y\in f(A_1\cap A_2)$。（⇐）$x_1\ne x_2$时取$A_1=\{x_1\}$，$A_2=\{x_2\}$，$\{f(x_1)\}\cap\{f(x_2)\}=f(\varnothing)=\varnothing$，故$f(x_1)\ne f(x_2)$。
+
+    （2）（⇒）$f(x)\in f(A)$时$f(x)=f(a)$，$a\in A$，单射给出$x=a\in A$，故$f^{-1}(f(A))\subseteq A$，另一边总成立。（⇐）$x_1\ne x_2$时取$A=\{x_1\}$，$x_2\notin A=f^{-1}(f(A))$，故$f(x_2)\ne f(x_1)$。
+
+    关键是反方向挑只含一个元素的子集：对任意子集成立的等式，用在最小的非空子集上就说出了「不同的元素有不同的像」。
+
+- id: p6
+  tier: hard
+  statement: |
+    设$f:X\to Y$。
+
+    （1）证明：对$Y$的每个子集$B$，$f(f^{-1}(B))=B\cap f(X)$。
+
+    （2）由此证明：$f(X)=Y$，当且仅当对$Y$的每个子集$B$都有$f(f^{-1}(B))=B$。满足$f(X)=Y$的$f$叫作:term[满射]{id="math.logic-sets.surjective"}（surjective），见[单射、满射与双射](lesson:math.logic-sets.injective-surjective)。
+
+    （3）证明：对$X$的每个子集$A$和$Y$的每个子集$B$，$f^{-1}(f(f^{-1}(B)))=f^{-1}(B)$，$f(f^{-1}(f(A)))=f(A)$。
+  hints:
+    - |
+      （1）例 2 的等式对$X$的每个子集$A$都成立，$A$取哪个最合适？（2）一个方向直接用（1）；另一个方向，$B$取哪个最合适？（3）不必再逐个元素推，把讲解里的两条包含套进去。
+    - |
+      （1）取$A=X$。（2）取$B=Y$，$f^{-1}(Y)$是什么？（3）$A\subseteq f^{-1}(f(A))$对$X$的每个子集都成立，$f^{-1}(B)$也是$X$的子集；$f(f^{-1}(B))\subseteq B$两边再取原像，用原像保持包含。第二个等式同样。
+    - |
+      （1）在例 2 的等式里取$A=X$。$X\cap f^{-1}(B)=f^{-1}(B)$，所以$f(f^{-1}(B))=f(X)\cap B$。
+
+      （2）设$f(X)=Y$。由（1），对每个$B\subseteq Y$，$f(f^{-1}(B))=B\cap Y=B$。反过来，设等式对每个$B$都成立，取$B=Y$，$f^{-1}(Y)=X$，所以$f(X)=f(f^{-1}(Y))=Y$。
+
+      （3）先证第一个等式。$f^{-1}(B)$是$X$的子集，在$A\subseteq f^{-1}(f(A))$里取$A=f^{-1}(B)$，得$f^{-1}(B)\subseteq f^{-1}(f(f^{-1}(B)))$。又$f(f^{-1}(B))\subseteq B$，两边取原像，由原像保持包含，$f^{-1}(f(f^{-1}(B)))\subseteq f^{-1}(B)$。两边互相包含，所以相等。
+
+      再证第二个等式。$f(A)$是$Y$的子集，在$f(f^{-1}(B))\subseteq B$里取$B=f(A)$，得$f(f^{-1}(f(A)))\subseteq f(A)$。又$A\subseteq f^{-1}(f(A))$，两边取像，由像保持包含，$f(A)\subseteq f(f^{-1}(f(A)))$。两边互相包含，所以相等。
+  reference: |
+    （1）例 2 取$A=X$：$f(f^{-1}(B))=f(X\cap f^{-1}(B))=f(X)\cap B$。也可以直接证：$y\in f(f^{-1}(B))$则$y=f(x)$，$f(x)\in B$，故$y\in B\cap f(X)$；反过来$y\in B\cap f(X)$则$y=f(x)\in B$，$x\in f^{-1}(B)$，$y\in f(f^{-1}(B))$。
+
+    （2）（⇒）由（1）$f(f^{-1}(B))=B\cap Y=B$。（⇐）取$B=Y$：$f(X)=f(f^{-1}(Y))=Y$。
+
+    （3）$f^{-1}(B)\subseteq f^{-1}(f(f^{-1}(B)))$是$A\subseteq f^{-1}(f(A))$取$A=f^{-1}(B)$；反向是对$f(f^{-1}(B))\subseteq B$取原像（保持包含）。$f(f^{-1}(f(A)))\subseteq f(A)$是$f(f^{-1}(B))\subseteq B$取$B=f(A)$；反向是对$A\subseteq f^{-1}(f(A))$取像（保持包含）。
+
+    关键是（3）只用两条包含和两种运算保持包含，不再碰元素：送过去再找回来最多只改一次，再来一次就不变了。
+
+- id: p7
+  tier: thinking
+  statement: |
+    $f(A)$由这样的$y$组成：「有」$A$中的元素被送到$y$。把「有」换成「凡」：设$f:X\to Y$，$A\subseteq X$，令$f_*(A)=\{y\in Y:f^{-1}(\{y\})\subseteq A\}$，它由这样的$y$组成：凡是被送到$y$的元素，都在$A$里。
+
+    （1）$f:\R\to\R$，$f(x)=x^2$，$A=[0,+\infty)$时，$f_*(A)$是什么？负数在不在里面，为什么？
+
+    （2）$f_*(A_1\cap A_2)$和$f_*(A_1)\cap f_*(A_2)$总相等吗？把交都换成并呢？
+
+    （3）证明$f_*(A)=Y\setminus f(X\setminus A)$，再由它和讲解里关于像的定理，重新解释（2）的结果。
+  hints:
+    - |
+      （1）分$y<0$、$y=0$、$y>0$，写出$f^{-1}(\{y\})$，看它是不是整个在$A$里；没有元素被送到$y$时，「凡是被送到$y$的元素，都在$A$里」是真是假？（2）把$f^{-1}(\{y\})\subseteq A_1\cap A_2$拆成两句。（3）$y\notin f_*(A)$是什么意思？
+    - |
+      （1）空集是任何集合的子集。（2）一个集合包含于$A_1\cap A_2$，就是它既包含于$A_1$，又包含于$A_2$；包含于$A_1\cup A_2$，却不必整个在其中一个里，两个元素可以各占一边，试试$f(x)=x^2$。（3）$y\notin f_*(A)$，就是有不属于$A$的元素被送到$y$。
+    - |
+      （1）$y<0$时，$f^{-1}(\{y\})=\varnothing\subseteq A$，没有元素可查，条件自动成立，所以负数都在$f_*(A)$里。$y=0$时，$f^{-1}(\{0\})=\{0\}\subseteq A$，$0$也在。$y>0$时，$-\sqrt y$被送到$y$，却不在$A$里，$y$不在$f_*(A)$里。所以$f_*(A)=(-\infty,0]$。
+
+      （2）交总相等：$f^{-1}(\{y\})\subseteq A_1\cap A_2$，就是$f^{-1}(\{y\})\subseteq A_1$且$f^{-1}(\{y\})\subseteq A_2$，两边的$y$完全相同。并不一定：$f(x)=x^2$，$A_1=(-\infty,0)$，$A_2=[0,+\infty)$时，$f_*(A_1\cup A_2)=f_*(\R)=\R$。而由（1），$f_*(A_2)=(-\infty,0]$；同样可得$f_*(A_1)=(-\infty,0)$，两者的并只是$(-\infty,0]$，$y>0$的来路$\sqrt y$、$-\sqrt y$各占一边，哪一边也装不下全部。
+
+      （3）对$Y$中的$y$，$y\notin f_*(A)$就是$f^{-1}(\{y\})\not\subseteq A$，即有$x\in X\setminus A$使$f(x)=y$，也就是$y\in f(X\setminus A)$。所以$f_*(A)=Y\setminus f(X\setminus A)$：先取补，再取像，再取补。
+
+      取补把并和交互换（:term[德摩根律]{id="math.logic-sets.de-morgan-laws"}），前后各换一次。像保持并，所以$f_*$保持交：$f(X\setminus(A_1\cap A_2))$等于$f(X\setminus A_1)$和$f(X\setminus A_2)$的并，再取一次补，就是$f_*(A_1\cap A_2)=f_*(A_1)\cap f_*(A_2)$。像不一定保持交，所以$f_*$不一定保持并。换成量词（quantifier）的话说，「有」和「或」能换次序，「凡」和「且」能换次序（见[全称量词与存在量词](lesson:math.logic-sets.quantifiers)第 5 题）。
+  reference: |
+    （1）$f_*(A)=(-\infty,0]$。$y<0$时$f^{-1}(\{y\})=\varnothing$，条件自动成立；$y=0$时$\{0\}\subseteq A$；$y>0$时$-\sqrt y\notin A$。
+
+    （2）交总相等：$f^{-1}(\{y\})\subseteq A_1\cap A_2\iff f^{-1}(\{y\})\subseteq A_1\land f^{-1}(\{y\})\subseteq A_2$。并只有$f_*(A_1)\cup f_*(A_2)\subseteq f_*(A_1\cup A_2)$；$f=x^2$，$A_1=(-\infty,0)$，$A_2=[0,+\infty)$时左边是$(-\infty,0]$，右边是$\R$。
+
+    （3）$y\notin f_*(A)\iff\exists x\in f^{-1}(\{y\}),\ x\notin A\iff y\in f(X\setminus A)$。于是$f_*$是「补、像、补」，像保持任意并，由德摩根律$f_*$保持任意交。用量词说：$f(A)$里是$\exists x$，和「或」交换；$f_*(A)$里是$\forall x$，和「且」交换。进一步，$f(A)\subseteq B\iff A\subseteq f^{-1}(B)$，$f^{-1}(B)\subseteq A\iff B\subseteq f_*(A)$，$f^{-1}$夹在中间，所以并、交都保持。
+
+- id: p8
+  tier: thinking
+  statement: |
+    设$f:X\to Y$。把$Y$的每个子集对应到它的原像，就给出了一个映射$\Phi:\Pow(Y)\to\Pow(X)$，$\Phi(B)=f^{-1}(B)$，这里$\Pow(Y)$是$Y$的:term[幂集]{id="math.logic-sets.power-set"}（power set）。
+
+    （1）只给出$\Phi$，不给出$f$，能不能把$f$找回来？
+
+    （2）反过来，设映射$\Phi:\Pow(Y)\to\Pow(X)$满足$\Phi(\varnothing)=\varnothing$，$\Phi(Y)=X$，并且对$Y$的任意一族子集$\{B_i\}_{i\in I}$（$I$不是空集）都有$\Phi\bigl(\bigcup_{i\in I}B_i\bigr)=\bigcup_{i\in I}\Phi(B_i)$，$\Phi\bigl(\bigcap_{i\in I}B_i\bigr)=\bigcap_{i\in I}\Phi(B_i)$。证明：恰有一个$f:X\to Y$，使每个$B\subseteq Y$都有$\Phi(B)=f^{-1}(B)$。
+
+    （3）你的证明里，$\Phi$保持并、保持交这两条各用在哪几步，是对两个集合用，还是对任意多个集合用？要是只知道$\Phi$保持有限多个集合的并和交，$Y$有无穷多个元素时，证明会卡在哪一步？
+  hints:
+    - |
+      （1）$f(x)=y$能不能用$\Phi$说出来？看只含一个元素的集合$\{y\}$的原像。（2）想象$f$已经有了，各个$\Phi(\{y\})=f^{-1}(\{y\})$应当怎样分布在$X$里：会不会重叠，会不会漏？
+    - |
+      （1）$f(x)=y$就是$x\in\Phi(\{y\})$。（2）先证：$y\ne y'$时$\Phi(\{y\})$和$\Phi(\{y'\})$没有公共元素；$Y$不空时，全部$\Phi(\{y\})$并起来是$X$。于是每个$x$恰在一个$\Phi(\{y\})$里，令$f(x)$为这个$y$；再把$B$写成各个$\{y\}$（$y\in B$）的并。
+    - |
+      （1）能。$f(x)=y$就是$x\in f^{-1}(\{y\})=\Phi(\{y\})$，所以$f(x)$就是使$x\in\Phi(\{y\})$的那个$y$；不同的$f$给出不同的$\Phi$。
+
+      （2）先设$Y$不是空集。$y\ne y'$时，$\Phi(\{y\})\cap\Phi(\{y'\})=\Phi(\{y\}\cap\{y'\})=\Phi(\varnothing)=\varnothing$，所以各个$\Phi(\{y\})$:term[两两不相交]{id="math.logic-sets.pairwise-disjoint"}（pairwise disjoint）。又$\bigcup_{y\in Y}\Phi(\{y\})=\Phi\bigl(\bigcup_{y\in Y}\{y\}\bigr)=\Phi(Y)=X$，所以每个$x\in X$恰在一个$\Phi(\{y\})$里，把这个$y$记作$f(x)$，就得到映射$f:X\to Y$，并且$f^{-1}(\{y\})=\Phi(\{y\})$。
+
+      $B$不是空集时，$B=\bigcup_{y\in B}\{y\}$，所以$\Phi(B)=\bigcup_{y\in B}\Phi(\{y\})=\bigcup_{y\in B}f^{-1}(\{y\})=f^{-1}(B)$，最后一步是原像保持并；$B=\varnothing$时，两边都是$\varnothing$。这样的$f$只有一个，因为由（1），$f(x)$只能是使$x\in\Phi(\{y\})$的那个$y$。
+
+      $Y=\varnothing$时，$X=\Phi(Y)=\Phi(\varnothing)=\varnothing$。从$\varnothing$到$\varnothing$的映射恰有一个（见[映射](lesson:math.logic-sets.functions)第 8 题），$Y$的子集又只有$\varnothing$，$\Phi(\varnothing)=\varnothing=f^{-1}(\varnothing)$，结论也成立。
+
+      （3）上面的证明里，保持交只用在一步，是对两个集合用：$\{y\}$和$\{y'\}$（$y\ne y'$）的交是$\varnothing$，所以$\Phi(\{y\})$和$\Phi(\{y'\})$没有公共元素。保持并用在两步，都要对任意多个集合用：由$\Phi(Y)=X$推出每个$x$都在某个$\Phi(\{y\})$里，由各个$\Phi(\{y\})$拼出$\Phi(B)$，$Y$、$B$有无穷多个元素时，都要把$\Phi$和无穷多个集合的并换次序。只知道保持有限多个集合的并，就卡在前一步：说不出每个$x$都落在某个$\Phi(\{y\})$里，也就造不出$f$。
+
+      换一种证法，并和交的角色就对调了：对每个$x$，取所有满足$x\in\Phi(B)$的$B$（$B=Y$就满足）的交$B_x$，由保持任意多个集合的交，$x\in\Phi(B_x)$；而$\Phi(\varnothing)=\varnothing$，所以$B_x$不空。要是$B_x=C\cup D$，其中$C$、$D$不相交、都不空，就有$x\in\Phi(C)\cup\Phi(D)$；不妨设$x\in\Phi(C)$，于是$B_x\subseteq C$，和$D$不空矛盾，所以$B_x$只有一个元素，把它记作$f(x)$。$x\in\Phi(B)$时$B_x\subseteq B$，即$f(x)\in B$；反过来，$f(x)\in B$时$B=B_x\cup B$，$\Phi(B)=\Phi(B_x)\cup\Phi(B)$含有$x$，所以$\Phi(B)=f^{-1}(B)$。这里保持并只对两个集合用，保持交却要对任意多个集合用，只知道保持有限多个集合的交，就卡在$x\in\Phi(B_x)$。
+
+      只知道保持有限多个集合的并和交时，结论确实可以不成立，不过反例要用到选择公理（axiom of choice），这里不讲。
+  reference: |
+    （1）能：$f(x)=y\iff x\in\Phi(\{y\})$。
+
+    （2）$Y\ne\varnothing$时，$\{\Phi(\{y\})\}_{y\in Y}$两两不相交（$\Phi(\{y\})\cap\Phi(\{y'\})=\Phi(\varnothing)=\varnothing$），并是$\Phi(Y)=X$，令$f(x)$为使$x\in\Phi(\{y\})$的唯一的$y$，则$f^{-1}(\{y\})=\Phi(\{y\})$，$\Phi(B)=\bigcup_{y\in B}\Phi(\{y\})=f^{-1}(B)$（$B=\varnothing$时由$\Phi(\varnothing)=\varnothing$）。$Y=\varnothing$时$X=\Phi(Y)=\Phi(\varnothing)=\varnothing$，唯一的映射是空映射。唯一性由（1）。
+
+    （3）上面的证法：保持交只对两个不同的单元素集合用，保持并要对任意多个集合用；只保持有限并、有限交时，$Y$无穷就推不出$\bigcup_{y}\Phi(\{y\})=X$。另一种证法：$B_x$取所有满足$x\in\Phi(B)$的$B$的交，由保持任意交，$x\in\Phi(B_x)$，$B_x$不空；$B_x=C\cup D$（不相交、都不空）时，$x\in\Phi(C)$或$x\in\Phi(D)$，$B_x$包含于其中一个，矛盾，故$B_x$只有一个元素，记作$f(x)$；$x\in\Phi(B)\iff B_x\subseteq B$，反方向用$\Phi(B)=\Phi(B_x)\cup\Phi(B)$。这里保持交要对任意多个集合用，保持并只对两个集合用，只保持有限交就推不出$x\in\Phi(B_x)$。
+
+    两种答法都对，别的证法照它自己用到的答。只保持有限并、有限交时结论确实可以不成立（取$X$只有一个元素，$\Phi(B)=X$当且仅当$B$属于$Y$上一个非主超滤，存在性要用选择公理的某种形式），本站不讲，答到卡在哪一步即可。

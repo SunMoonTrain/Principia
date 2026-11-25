@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 444" width="600" height="444" font-size="14">
+  <!-- 四幅箭头图，两行两列，左边的椭圆是 A，右边的椭圆是 B。左上：1→a，2→b，c 没有箭头（强调色）；右上：1→a，2→a（强调色），3→b；左下：1→b，2→a，3→c；右下：1→a，2→a（强调色），3→b，c 没有箭头（强调色） -->
+  <!-- 左上：单射，不是满射 -->
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <ellipse cx="85" cy="120" rx="27" ry="62" />
+    <ellipse cx="215" cy="120" rx="27" ry="62" />
+  </g>
+  <text x="150" y="24" fill="currentColor" font-size="15" text-anchor="middle">单射，不是满射</text>
+  <g fill="currentColor" font-size="16" font-style="italic" text-anchor="middle">
+    <text x="85" y="50">A</text>
+    <text x="215" y="50">B</text>
+  </g>
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="85" y="108">1</text>
+    <text x="85" y="142">2</text>
+    <text x="215" y="91" font-style="italic">a</text>
+    <text x="215" y="125" font-style="italic">b</text>
+  </g>
+  <g font-size="15" text-anchor="middle" style="fill: var(--accent, #2563eb)">
+    <text x="215" y="159" font-style="italic">c</text>
+  </g>
+  <g stroke="currentColor" stroke-width="1.4">
+    <line x1="95" y1="103" x2="195.6" y2="87.31" />
+    <line x1="95" y1="137" x2="195.6" y2="121.31" />
+  </g>
+  <g fill="currentColor">
+    <polygon points="204,86 196.16,90.87 195.05,83.75" />
+    <polygon points="204,120 196.16,124.87 195.05,117.75" />
+  </g>
+  <text x="150" y="206" fill="currentColor" text-anchor="middle"><tspan font-style="italic">c</tspan> 没有箭头指着</text>
+  <!-- 右上：满射，不是单射 -->
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <ellipse cx="385" cy="120" rx="27" ry="62" />
+    <ellipse cx="515" cy="120" rx="27" ry="62" />
+  </g>
+  <text x="450" y="24" fill="currentColor" font-size="15" text-anchor="middle">满射，不是单射</text>
+  <g fill="currentColor" font-size="16" font-style="italic" text-anchor="middle">
+    <text x="385" y="50">A</text>
+    <text x="515" y="50">B</text>
+  </g>
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="385" y="91">1</text>
+    <text x="385" y="125">2</text>
+    <text x="385" y="159">3</text>
+    <text x="515" y="142" font-style="italic">b</text>
+  </g>
+  <g font-size="15" text-anchor="middle" style="fill: var(--accent, #2563eb)">
+    <text x="515" y="108" font-style="italic">a</text>
+  </g>
+  <g stroke-width="1.6" style="stroke: var(--accent, #2563eb)">
+    <line x1="395" y1="86" x2="495.57" y2="98.92" />
+    <line x1="395" y1="120" x2="495.57" y2="107.08" />
+  </g>
+  <g style="fill: var(--accent, #2563eb)">
+    <polygon points="504,100 495.11,102.49 496.03,95.35" />
+    <polygon points="504,106 496.03,110.65 495.11,103.51" />
+  </g>
+  <g stroke="currentColor" stroke-width="1.4">
+    <line x1="395" y1="154" x2="495.6" y2="138.31" />
+  </g>
+  <g fill="currentColor">
+    <polygon points="504,137 496.16,141.87 495.05,134.75" />
+  </g>
+  <text x="450" y="206" fill="currentColor" text-anchor="middle"><tspan font-style="italic">a</tspan> 被两个箭头指着</text>
+  <!-- 左下：双射 -->
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <ellipse cx="85" cy="342" rx="27" ry="62" />
+    <ellipse cx="215" cy="342" rx="27" ry="62" />
+  </g>
+  <text x="150" y="246" fill="currentColor" font-size="15" text-anchor="middle">双射</text>
+  <g fill="currentColor" font-size="16" font-style="italic" text-anchor="middle">
+    <text x="85" y="272">A</text>
+    <text x="215" y="272">B</text>
+  </g>
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="85" y="313">1</text>
+    <text x="85" y="347">2</text>
+    <text x="85" y="381">3</text>
+    <text x="215" y="313" font-style="italic">a</text>
+    <text x="215" y="347" font-style="italic">b</text>
+    <text x="215" y="381" font-style="italic">c</text>
+  </g>
+  <g stroke="currentColor" stroke-width="1.4">
+    <line x1="95" y1="308" x2="195.84" y2="337.61" />
+    <line x1="95" y1="342" x2="195.84" y2="312.39" />
+    <line x1="95" y1="376" x2="195.5" y2="376" />
+  </g>
+  <g fill="currentColor">
+    <polygon points="204,340 194.83,341.06 196.86,334.15" />
+    <polygon points="204,310 196.86,315.85 194.83,308.94" />
+    <polygon points="204,376 195.5,379.6 195.5,372.4" />
+  </g>
+  <text x="150" y="428" fill="currentColor" text-anchor="middle">每个都恰被一个箭头指着</text>
+  <!-- 右下：两样都不是 -->
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <ellipse cx="385" cy="342" rx="27" ry="62" />
+    <ellipse cx="515" cy="342" rx="27" ry="62" />
+  </g>
+  <text x="450" y="246" fill="currentColor" font-size="15" text-anchor="middle">两样都不是</text>
+  <g fill="currentColor" font-size="16" font-style="italic" text-anchor="middle">
+    <text x="385" y="272">A</text>
+    <text x="515" y="272">B</text>
+  </g>
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="385" y="313">1</text>
+    <text x="385" y="347">2</text>
+    <text x="385" y="381">3</text>
+    <text x="515" y="347" font-style="italic">b</text>
+  </g>
+  <g font-size="15" text-anchor="middle" style="fill: var(--accent, #2563eb)">
+    <text x="515" y="313" font-style="italic">a</text>
+    <text x="515" y="381" font-style="italic">c</text>
+  </g>
+  <g stroke-width="1.6" style="stroke: var(--accent, #2563eb)">
+    <line x1="395" y1="308" x2="495.5" y2="306.16" />
+    <line x1="395" y1="342" x2="495.82" y2="313.33" />
+  </g>
+  <g style="fill: var(--accent, #2563eb)">
+    <polygon points="504,306 495.57,309.76 495.44,302.56" />
+    <polygon points="504,311 496.81,316.79 494.84,309.86" />
+  </g>
+  <g stroke="currentColor" stroke-width="1.4">
+    <line x1="395" y1="376" x2="495.89" y2="344.53" />
+  </g>
+  <g fill="currentColor">
+    <polygon points="504,342 496.96,347.97 494.81,341.09" />
+  </g>
+  <text x="450" y="428" fill="currentColor" text-anchor="middle"><tspan font-style="italic">a</tspan> 被两个箭头指着，<tspan font-style="italic">c</tspan> 没有</text>
+</svg>

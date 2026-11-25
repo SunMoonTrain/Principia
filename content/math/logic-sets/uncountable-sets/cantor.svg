@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 306" width="580" height="306" font-size="15">
+  <!-- A = {1, 2, 3, 4}，f(1) = {1, 2}、f(2) = {1, 3, 4}、f(3) = {2, 3}、f(4) = {1}。第 x 行第 y 格涂色表示 y 属于 f(x)；对角线上的四格加强调色粗框，依次是涂、不涂、涂、不涂；最下面一行是 D，和对角线正好相反，涂的是第 2、4 格 -->
+  <!-- 涂色的格子 -->
+  <g fill="currentColor" fill-opacity="0.55">
+    <rect x="150" y="46" width="42" height="42" />
+    <rect x="192" y="46" width="42" height="42" />
+    <rect x="150" y="88" width="42" height="42" />
+    <rect x="234" y="88" width="42" height="42" />
+    <rect x="276" y="88" width="42" height="42" />
+    <rect x="192" y="130" width="42" height="42" />
+    <rect x="234" y="130" width="42" height="42" />
+    <rect x="150" y="172" width="42" height="42" />
+  </g>
+  <g fill-opacity="0.75" style="fill: var(--accent, #2563eb)">
+    <rect x="192" y="248" width="42" height="42" />
+    <rect x="276" y="248" width="42" height="42" />
+  </g>
+  <!-- 格线 -->
+  <g fill="none" stroke="currentColor" stroke-width="1">
+    <line x1="150" y1="46" x2="318" y2="46" />
+    <line x1="150" y1="88" x2="318" y2="88" />
+    <line x1="150" y1="130" x2="318" y2="130" />
+    <line x1="150" y1="172" x2="318" y2="172" />
+    <line x1="150" y1="214" x2="318" y2="214" />
+    <line x1="150" y1="46" x2="150" y2="214" />
+    <line x1="192" y1="46" x2="192" y2="214" />
+    <line x1="234" y1="46" x2="234" y2="214" />
+    <line x1="276" y1="46" x2="276" y2="214" />
+    <line x1="318" y1="46" x2="318" y2="214" />
+  </g>
+  <g fill="none" stroke-width="1" style="stroke: var(--accent, #2563eb)">
+    <line x1="150" y1="248" x2="318" y2="248" />
+    <line x1="150" y1="290" x2="318" y2="290" />
+    <line x1="150" y1="248" x2="150" y2="290" />
+    <line x1="192" y1="248" x2="192" y2="290" />
+    <line x1="234" y1="248" x2="234" y2="290" />
+    <line x1="276" y1="248" x2="276" y2="290" />
+    <line x1="318" y1="248" x2="318" y2="290" />
+  </g>
+  <!-- 对角线上的粗框 -->
+  <g fill="none" stroke-width="3.5" style="stroke: var(--accent, #2563eb)">
+    <rect x="153" y="49" width="36" height="36" />
+    <rect x="195" y="91" width="36" height="36" />
+    <rect x="237" y="133" width="36" height="36" />
+    <rect x="279" y="175" width="36" height="36" />
+  </g>
+  <!-- 列号 y -->
+  <g fill="currentColor" text-anchor="middle">
+    <text x="171" y="34">1</text>
+    <text x="213" y="34">2</text>
+    <text x="255" y="34">3</text>
+    <text x="297" y="34">4</text>
+  </g>
+  <text x="132" y="34" fill="currentColor" text-anchor="end" font-style="italic">y</text>
+  <!-- 行的名字 -->
+  <g fill="currentColor" text-anchor="end">
+    <text x="132" y="72"><tspan font-style="italic">f</tspan><tspan dx="2">(1) = {1, 2}</tspan></text>
+    <text x="132" y="114"><tspan font-style="italic">f</tspan><tspan dx="2">(2) = {1, 3, 4}</tspan></text>
+    <text x="132" y="156"><tspan font-style="italic">f</tspan><tspan dx="2">(3) = {2, 3}</tspan></text>
+    <text x="132" y="198"><tspan font-style="italic">f</tspan><tspan dx="2">(4) = {1}</tspan></text>
+  </g>
+  <text x="132" y="274" text-anchor="end" style="fill: var(--accent, #2563eb)"><tspan font-style="italic">D</tspan> = {2, 4}</text>
+  <!-- 图例 -->
+  <rect x="364" y="62" width="22" height="22" fill="currentColor" fill-opacity="0.55" stroke="currentColor" stroke-width="1" />
+  <rect x="364" y="104" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1" />
+  <rect x="364" y="146" width="22" height="22" fill="none" stroke-width="3.5" style="stroke: var(--accent, #2563eb)" />
+  <g fill="currentColor">
+    <text x="398" y="79"><tspan font-style="italic">y</tspan> 属于 <tspan font-style="italic">f</tspan><tspan dx="2">(</tspan><tspan font-style="italic">x</tspan><tspan dx="1">)</tspan></text>
+    <text x="398" y="121"><tspan font-style="italic">y</tspan> 不属于 <tspan font-style="italic">f</tspan><tspan dx="2">(</tspan><tspan font-style="italic">x</tspan><tspan dx="1">)</tspan></text>
+    <text x="398" y="163">对角线，<tspan font-style="italic">y</tspan> = <tspan font-style="italic">x</tspan></text>
+  </g>
+  <text x="364" y="274" style="fill: var(--accent, #2563eb)">每一格都和对角线相反</text>
+</svg>

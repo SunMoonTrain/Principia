@@ -81,7 +81,7 @@ $\le$、$<$、$\subseteq$、整除还能一步步接下去，例如由$a\le b$�
 
 **证明**：$a=a\cdot1$，所以$a\mid a$。设$a\mid b$，$b\mid c$，则有整数$k$、$l$使$b=ak$，$c=bl$。于是$c=(ak)l=a(kl)$，$kl$是整数，所以$a\mid c$。
 
-关系的:term[对称性]{id="math.logic-sets.symmetric"}（symmetry）、反对称性（antisymmetry）见[等价关系与商集](lesson:math.logic-sets.equivalence-relations)、[偏序与全序](lesson:math.logic-sets.partial-orders)，那两节也都要用自反性和传递性。
+关系的:term[对称性]{id="math.logic-sets.symmetric"}（symmetry）、:term[反对称性]{id="math.logic-sets.antisymmetric"}（antisymmetry）见[等价关系与商集](lesson:math.logic-sets.equivalence-relations)、[偏序与全序](lesson:math.logic-sets.partial-orders)，那两节也都要用自反性和传递性。
 
 ## 几何图像
 

@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 256" width="600" height="256" font-size="14">
+  <!-- 三幅图都把 f 的箭头倒过来，从 B 指向 A。左：f 是双射（1 ↦ q，2 ↦ p，3 ↦ r），p、q、r 各发出一个箭头；中：f 不是满射（1 ↦ p，2 ↦ r），q 没有箭头发出（强调色）；右：f 不是单射（1、2 ↦ p，3 ↦ q），p 发出两个箭头（强调色） -->
+  <!-- 左：双射 -->
+  <text x="100" y="24" fill="currentColor" font-size="15" text-anchor="middle"><tspan font-style="italic">f</tspan> 是双射</text>
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <ellipse cx="50" cy="120" rx="27" ry="62" />
+    <ellipse cx="150" cy="120" rx="27" ry="62" />
+  </g>
+  <g fill="currentColor" font-size="16" font-style="italic" text-anchor="middle">
+    <text x="50" y="50">A</text>
+    <text x="150" y="50">B</text>
+  </g>
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="50" y="91">1</text>
+    <text x="50" y="125">2</text>
+    <text x="50" y="159">3</text>
+    <text x="150" y="91" font-style="italic">p</text>
+    <text x="150" y="125" font-style="italic">q</text>
+    <text x="150" y="159" font-style="italic">r</text>
+  </g>
+  <g stroke="currentColor" stroke-width="1.4">
+    <line x1="139" y1="86" x2="68.79" y2="116.6" />
+    <line x1="139" y1="120" x2="68.79" y2="89.4" />
+    <line x1="139" y1="154" x2="69.5" y2="154" />
+  </g>
+  <g fill="currentColor">
+    <polygon points="61,120 67.35,113.3 70.23,119.9" />
+    <polygon points="61,86 70.23,86.1 67.35,92.7" />
+    <polygon points="61,154 69.5,150.4 69.5,157.6" />
+  </g>
+  <g fill="currentColor" text-anchor="middle">
+    <text x="100" y="212">每个元素发出一个箭头</text>
+    <text x="100" y="236">倒过来是映射</text>
+  </g>
+  <!-- 中：不是满射 -->
+  <text x="300" y="24" fill="currentColor" font-size="15" text-anchor="middle"><tspan font-style="italic">f</tspan> 不是满射</text>
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <ellipse cx="250" cy="120" rx="27" ry="62" />
+    <ellipse cx="350" cy="120" rx="27" ry="62" />
+  </g>
+  <g fill="currentColor" font-size="16" font-style="italic" text-anchor="middle">
+    <text x="250" y="50">A</text>
+    <text x="350" y="50">B</text>
+  </g>
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="250" y="108">1</text>
+    <text x="250" y="142">2</text>
+    <text x="350" y="91" font-style="italic">p</text>
+    <text x="350" y="159" font-style="italic">r</text>
+  </g>
+  <text x="350" y="125" font-size="15" font-style="italic" text-anchor="middle" style="fill: var(--accent, #2563eb)">q</text>
+  <g stroke="currentColor" stroke-width="1.4">
+    <line x1="339" y1="86" x2="269.31" y2="101.19" />
+    <line x1="339" y1="154" x2="269.31" y2="138.81" />
+  </g>
+  <g fill="currentColor">
+    <polygon points="261,103 268.54,97.67 270.07,104.71" />
+    <polygon points="261,137 270.07,135.29 268.54,142.33" />
+  </g>
+  <g fill="currentColor" text-anchor="middle">
+    <text x="300" y="212"><tspan font-style="italic">q</tspan> 没有箭头发出</text>
+    <text x="300" y="236">倒过来不是映射</text>
+  </g>
+  <!-- 右：不是单射 -->
+  <text x="500" y="24" fill="currentColor" font-size="15" text-anchor="middle"><tspan font-style="italic">f</tspan> 不是单射</text>
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <ellipse cx="450" cy="120" rx="27" ry="62" />
+    <ellipse cx="550" cy="120" rx="27" ry="62" />
+  </g>
+  <g fill="currentColor" font-size="16" font-style="italic" text-anchor="middle">
+    <text x="450" y="50">A</text>
+    <text x="550" y="50">B</text>
+  </g>
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="450" y="91">1</text>
+    <text x="450" y="125">2</text>
+    <text x="450" y="159">3</text>
+    <text x="550" y="142" font-style="italic">q</text>
+  </g>
+  <text x="550" y="108" font-size="15" font-style="italic" text-anchor="middle" style="fill: var(--accent, #2563eb)">p</text>
+  <g stroke-width="1.6" style="stroke: var(--accent, #2563eb)">
+    <line x1="539" y1="100" x2="469.37" y2="87.5" />
+    <line x1="539" y1="106" x2="469.37" y2="118.5" />
+  </g>
+  <g style="fill: var(--accent, #2563eb)">
+    <polygon points="461,86 470,83.96 468.73,91.05" />
+    <polygon points="461,120 468.73,114.95 470,122.04" />
+  </g>
+  <g stroke="currentColor" stroke-width="1.4">
+    <line x1="539" y1="137" x2="469.31" y2="152.19" />
+  </g>
+  <g fill="currentColor">
+    <polygon points="461,154 468.54,148.67 470.07,155.71" />
+  </g>
+  <g fill="currentColor" text-anchor="middle">
+    <text x="500" y="212"><tspan font-style="italic">p</tspan> 发出两个箭头</text>
+    <text x="500" y="236">倒过来不是映射</text>
+  </g>
+</svg>

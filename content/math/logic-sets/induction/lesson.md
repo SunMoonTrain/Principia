@@ -22,7 +22,7 @@ status: reviewed
 推倒第一块骨牌，又保证每一块倒下都推倒下一块，所有的骨牌就都会倒。奇数的和也能这样证：$n=1$时$1=1^2$成立；设对某个正整数$k$成立，即前$k$个奇数的和是$k^2$，两边加上第$k+1$个奇数$2k+1$，右边成了$k^2+2k+1=(k+1)^2$，对$k+1$也成立。于是对$1$成立就对$2$成立，对$2$成立就对$3$成立……一步步走遍所有正整数。本站的$\N$含$0$，下面的原理从$0$说起。
 
 ::anchor{id="thm-induction-principle"}
-**归纳原理（principle of mathematical induction）**　设$P(n)$是含有变量$n$的语句，$n$在$\N$里取值。若$P(0)$成立，并且对每个$k\in\N$，由$P(k)$成立能推出$P(k+1)$成立，则$P(n)$对所有$n\in\N$都成立。
+**:term[归纳原理]{id="math.logic-sets.induction-principle"}（principle of mathematical induction）**　设$P(n)$是含有变量$n$的语句，$n$在$\N$里取值。若$P(0)$成立，并且对每个$k\in\N$，由$P(k)$成立能推出$P(k+1)$成立，则$P(n)$对所有$n\in\N$都成立。
 
 这条原理不是由逻辑规则推出来的，是当作自然数的基本性质承认的：自然数正是从$0$起一次加$1$得到的，原理说的就是这件事，拿它刻画自然数见[皮亚诺公理与递归定义](lesson:math.logic-sets.peano-axioms)。各书的$\N$含不含$0$不一样；从别的整数起，是同一个原理，见下面的定理。
 
@@ -32,7 +32,7 @@ status: reviewed
 **证明**：对$m\in\N$，记$Q(m)$为「$P(n_0+m)$成立」。$Q(0)$就是$P(n_0)$，成立；对每个$m\in\N$，取$k=n_0+m\ge n_0$，由条件，$Q(m)$能推出$Q(m+1)$。由归纳原理，$Q(m)$对所有$m\in\N$成立，即$P(n)$对所有整数$n\ge n_0$成立。
 
 ::anchor{id="def-induction"}
-用归纳原理和上面的定理证明「$P(n)$对所有整数$n\ge n_0$成立」，这种方法叫作:term[数学归纳法]{id="math.logic-sets.mathematical-induction"}（mathematical induction）。它分两步：证明$P(n_0)$成立，叫作归纳奠基（base case）；对每个整数$k\ge n_0$，证明由$P(k)$能推出$P(k+1)$，叫作归纳递推（inductive step），其中假设成立的$P(k)$叫作归纳假设（induction hypothesis）。
+用归纳原理和上面的定理证明「$P(n)$对所有整数$n\ge n_0$成立」，这种方法叫作:term[数学归纳法]{id="math.logic-sets.mathematical-induction"}（mathematical induction）。它分两步：证明$P(n_0)$成立，叫作归纳奠基（base case）；对每个整数$k\ge n_0$，证明由$P(k)$能推出$P(k+1)$，叫作归纳递推（inductive step），其中假设成立的$P(k)$叫作:term[归纳假设]{id="math.logic-sets.induction-hypothesis"}（induction hypothesis）。
 
 为什么要这两步：奠基推倒第一块，递推保证每一块都推倒下一块，少一步都不行。只有递推不行：$P(n)$取「$n>n+1$」，由$k>k+1$得$k+1>k+2$，递推成立，$P(n)$却对哪个$n$都不成立。只有奠基、再多验证几个也不行：[全称量词与存在量词](lesson:math.logic-sets.quantifiers)的常见误区里，$n^2+n+41$在$n=0,1,\dots,39$时都是素数，$n=40$时却不是。
 
@@ -45,7 +45,7 @@ status: reviewed
 再看「每个大于$1$的整数都能写成素数的乘积」，一个素数本身也算。递推时手里只有「$k$能写成素数的乘积」，可$12=3\times4$要用的是$3$和$4$，和$11$不相干：递推时要能用上前面所有的数。
 
 ::anchor{id="thm-strong-induction"}
-**定理（:term[强归纳法]{id="math.logic-sets.strong-induction"}，strong induction）**　设$n_0$是整数，$P(n)$是含有变量$n$的语句，$n$取不小于$n_0$的整数。若$P(n_0)$成立，并且对每个整数$k\ge n_0$，由「$n_0\le m\le k$时$P(m)$都成立」能推出$P(k+1)$，则$P(n)$对所有整数$n\ge n_0$都成立。用这个定理证明的方法叫作强归纳法，也叫第二数学归纳法，它的归纳假设是$P(n_0)$、$P(n_0+1)$、…、$P(k)$都成立。
+**定理（:term[强归纳法]{id="math.logic-sets.strong-induction"}，strong induction）**　设$n_0$是整数，$P(n)$是含有变量$n$的语句，$n$取不小于$n_0$的整数。若$P(n_0)$成立，并且对每个整数$k\ge n_0$，由「$n_0\le m\le k$时$P(m)$都成立」能推出$P(k+1)$，则$P(n)$对所有整数$n\ge n_0$都成立。用这个定理证明的方法叫作强归纳法，也叫第二数学归纳法，它的:term[归纳假设]{id="math.logic-sets.induction-hypothesis"}是$P(n_0)$、$P(n_0+1)$、…、$P(k)$都成立。
 
 **证明**：对整数$n\ge n_0$，记$Q(n)$为「$n_0\le m\le n$时$P(m)$都成立」。$Q(n_0)$就是$P(n_0)$，成立。若$Q(k)$成立，由条件，$P(k+1)$成立，连同$Q(k)$就是$Q(k+1)$。由:term[数学归纳法]{id="math.logic-sets.mathematical-induction"}，$Q(n)$对所有整数$n\ge n_0$成立，其中就有$P(n)$。
 
@@ -61,9 +61,9 @@ status: reviewed
 [反证法与证明方法的选择](lesson:math.logic-sets.proof-methods#thm-prime-divisor)里取最小的因数，靠的是「有限个整数（至少一个）里有最小的」。对无穷多个正整数，也是这样。
 
 ::anchor{id="def-well-ordering"}
-正整数组成的非空集合里一定有最小的数，这叫作良序原理（well-ordering principle）。
+正整数组成的非空集合里一定有最小的数，这叫作:term[良序原理]{id="math.logic-sets.well-ordering-principle"}（well-ordering principle）。
 
-为什么：它和归纳原理可以互相推出，证明见第 5 题，拿哪一条当自然数的基本性质都行。用它证明时常「取最小的反例（counterexample）」：设有不成立的正整数，取最小的一个，推出矛盾。同样，非空的整数集合里的数都不超过某个整数$M$时，其中有最大的数，把每个数$s$换成$M+1-s$就化成上面的情形。边界情况：对正实数不成立，$x>0$时$\frac x2$更小，正实数里没有最小的数。
+为什么：它和:term[归纳原理]{id="math.logic-sets.induction-principle"}可以互相推出，证明见第 5 题，拿哪一条当自然数的基本性质都行。用它证明时常「取最小的反例（counterexample）」：设有不成立的正整数，取最小的一个，推出矛盾。同样，非空的整数集合里的数都不超过某个整数$M$时，其中有最大的数，把每个数$s$换成$M+1-s$就化成上面的情形。边界情况：对正实数不成立，$x>0$时$\frac x2$更小，正实数里没有最小的数。
 
 ## 几何图像
 
@@ -95,4 +95,4 @@ status: reviewed
 
 - 「每一步看起来都对，归纳证明就没问题。」记$P(n)$为「任意$n$匹马颜色都相同」，有人这样「证明」它对所有正整数$n$成立：$P(1)$显然；设$P(k)$成立，任取$k+1$匹马，去掉第一匹、去掉最后一匹，各剩$k$匹，都同色，两组有公共的马，所以全都同色。错在递推并没有对每个$k\ge1$都成立：$k=1$时两组各只有$1$匹，没有公共的马，由$P(1)$推不出$P(2)$。
 - 「验证了$P(1)$、$P(2)$、$P(3)$，再写『依此类推』，就是用了:term[数学归纳法]{id="math.logic-sets.mathematical-induction"}。」不对：「依此类推」只是相信规律会一直保持下去，并没有证明递推。递推要对每个$k\ge n_0$证明由$P(k)$能推出$P(k+1)$，验证再多个$n$也代替不了它。
-- 「:term[强归纳法]{id="math.logic-sets.strong-induction"}的归纳假设多，能证明普通的数学归纳法证不了的命题。」不对：讲解里正是用普通的数学归纳法证明了强归纳法。强归纳法只是让递推好写：要用的不是紧挨着的前一个时，不必自己去造那个命题$Q(n)$。
+- 「:term[强归纳法]{id="math.logic-sets.strong-induction"}的:term[归纳假设]{id="math.logic-sets.induction-hypothesis"}多，能证明普通的数学归纳法证不了的命题。」不对：讲解里正是用普通的数学归纳法证明了强归纳法。强归纳法只是让递推好写：要用的不是紧挨着的前一个时，不必自己去造那个命题$Q(n)$。

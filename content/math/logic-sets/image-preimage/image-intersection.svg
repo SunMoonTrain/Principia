@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 610 316" width="610" height="316" font-size="14">
+  <!-- 箭头图：X = {1, 2, 3}，A₁ = {1, 2}，A₂ = {2, 3}，Y = {p, q, r}；1 ↦ p，2 ↦ q，3 ↦ p。右边虚线圈是 f(A₁) ∩ f(A₂) = {p, q}，实线小圈是 f(A₁ ∩ A₂) = {q}；p 和指向 p 的两个箭头用强调色，r 没有箭头 -->
+  <!-- 两个集合 X、Y 的椭圆 -->
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <ellipse cx="150" cy="140" rx="100" ry="110" />
+    <ellipse cx="420" cy="140" rx="60" ry="110" />
+  </g>
+  <!-- 左边：A₁、A₂ 两个圈 -->
+  <g fill="none" stroke-width="1.5" style="stroke: var(--muted, #6b7280)">
+    <ellipse cx="150" cy="109" rx="46" ry="60" />
+    <ellipse cx="150" cy="171" rx="46" ry="60" />
+  </g>
+  <!-- 右边：虚线圈是两个像的交，实线小圈是交的像；各有一条引线指到标注 -->
+  <g fill="none" stroke="currentColor" stroke-width="1.2">
+    <ellipse cx="420" cy="109" rx="33" ry="60" stroke-dasharray="5 3" />
+    <circle cx="420" cy="140" r="15" />
+    <line x1="450" y1="84" x2="489" y2="84" style="stroke: var(--muted, #6b7280)" />
+    <line x1="435" y1="140" x2="489" y2="140" style="stroke: var(--muted, #6b7280)" />
+  </g>
+  <!-- 箭头 2 → q -->
+  <line x1="163" y1="140" x2="402" y2="140" stroke="currentColor" stroke-width="1.4" />
+  <polygon points="410,140 402,143.6 402,136.4" fill="currentColor" />
+  <!-- 箭头 1 → p、3 → p：强调色 -->
+  <g stroke-width="1.6" style="stroke: var(--accent, #2563eb)">
+    <line x1="163" y1="78" x2="401" y2="78" />
+    <line x1="162" y1="198" x2="401.71" y2="89.3" />
+  </g>
+  <g style="fill: var(--accent, #2563eb)">
+    <polygon points="409,78 401,81.6 401,74.4" />
+    <polygon points="409,86 403.2,92.58 400.22,86.02" />
+  </g>
+  <!-- 集合的名字 -->
+  <g fill="currentColor" font-size="16" font-style="italic" text-anchor="middle">
+    <text x="150" y="22">X</text>
+    <text x="420" y="22">Y</text>
+  </g>
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="82" y="98"><tspan font-style="italic">A</tspan><tspan font-size="10" dy="4">1</tspan></text>
+    <text x="82" y="192"><tspan font-style="italic">A</tspan><tspan font-size="10" dy="4">2</tspan></text>
+  </g>
+  <!-- 元素 -->
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="150" y="83">1</text>
+    <text x="150" y="145">2</text>
+    <text x="150" y="207">3</text>
+    <text x="420" y="145" font-style="italic">q</text>
+    <text x="420" y="207" font-style="italic">r</text>
+  </g>
+  <text x="420" y="83" font-size="15" font-style="italic" text-anchor="middle" style="fill: var(--accent, #2563eb)">p</text>
+  <!-- 右边两个圈的标注 -->
+  <g fill="currentColor">
+    <text x="495" y="89"><tspan font-style="italic">f</tspan><tspan dx="1">(</tspan><tspan font-style="italic">A</tspan><tspan font-size="10" dy="4">1</tspan><tspan dy="-4">) ∩ </tspan><tspan font-style="italic">f</tspan><tspan dx="1">(</tspan><tspan font-style="italic">A</tspan><tspan font-size="10" dy="4">2</tspan><tspan dy="-4">)</tspan></text>
+    <text x="495" y="145"><tspan font-style="italic">f</tspan><tspan dx="1">(</tspan><tspan font-style="italic">A</tspan><tspan font-size="10" dy="4">1</tspan><tspan dy="-4"> ∩ </tspan><tspan font-style="italic">A</tspan><tspan font-size="10" dy="4">2</tspan><tspan dy="-4">)</tspan></text>
+  </g>
+  <!-- 图下面的说明 -->
+  <g fill="currentColor" text-anchor="middle">
+    <text x="285" y="280"><tspan font-style="italic">p</tspan> 是 1 和 3 的像，可 1、3 都不在 <tspan font-style="italic">A</tspan><tspan font-size="10" dy="4">1</tspan><tspan dy="-4"> ∩ </tspan><tspan font-style="italic">A</tspan><tspan font-size="10" dy="4">2</tspan><tspan dy="-4"> 里</tspan></text>
+    <text x="285" y="304"><tspan font-style="italic">r</tspan> 不是任何元素的像，它没有原像</text>
+  </g>
+</svg>

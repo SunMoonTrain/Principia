@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 236" width="620" height="236" font-size="14">
+  <!-- A₁ = {a, b}、A₂ = {c, d}，由全体 (J, f) 组成的偏序集 P（按「g 接着 f 往下挑」排）的哈斯图。下排四个只给一个指标挑好了，从左到右是 f(1) = a、f(2) = c、f(2) = d、f(1) = b；上排四个两个指标都挑好了，从左到右是 a 和 c、a 和 d、b 和 c、b 和 d。八条线：下排的每一个往上连到接着挑的两种结果。上排（极大元）用强调色 -->
+  <g stroke="currentColor" stroke-width="1.5" fill="none">
+    <line x1="80" y1="160" x2="80" y2="96" />
+    <line x1="80" y1="160" x2="233" y2="96" />
+    <line x1="233" y1="160" x2="80" y2="96" />
+    <line x1="233" y1="160" x2="386" y2="96" />
+    <line x1="386" y1="160" x2="233" y2="96" />
+    <line x1="386" y1="160" x2="539" y2="96" />
+    <line x1="539" y1="160" x2="386" y2="96" />
+    <line x1="539" y1="160" x2="539" y2="96" />
+  </g>
+  <!-- 下排：只挑好了一个指标 -->
+  <g stroke="currentColor" stroke-width="1.5" fill="none">
+    <rect x="28" y="160" width="104" height="34" rx="8" />
+    <rect x="181" y="160" width="104" height="34" rx="8" />
+    <rect x="334" y="160" width="104" height="34" rx="8" />
+    <rect x="487" y="160" width="104" height="34" rx="8" />
+  </g>
+  <!-- 上排：两个指标都挑好了 -->
+  <g stroke-width="2.5" style="fill: var(--accent, #2563eb); fill-opacity: 0.15; stroke: var(--accent, #2563eb)">
+    <rect x="14" y="38" width="132" height="58" rx="8" />
+    <rect x="167" y="38" width="132" height="58" rx="8" />
+    <rect x="320" y="38" width="132" height="58" rx="8" />
+    <rect x="473" y="38" width="132" height="58" rx="8" />
+  </g>
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="80" y="62"><tspan font-style="italic">f</tspan><tspan dx="2">(1) = </tspan><tspan font-style="italic">a</tspan></text>
+    <text x="80" y="85"><tspan font-style="italic">f</tspan><tspan dx="2">(2) = </tspan><tspan font-style="italic">c</tspan></text>
+    <text x="233" y="62"><tspan font-style="italic">f</tspan><tspan dx="2">(1) = </tspan><tspan font-style="italic">a</tspan></text>
+    <text x="233" y="85"><tspan font-style="italic">f</tspan><tspan dx="2">(2) = </tspan><tspan font-style="italic">d</tspan></text>
+    <text x="386" y="62"><tspan font-style="italic">f</tspan><tspan dx="2">(1) = </tspan><tspan font-style="italic">b</tspan></text>
+    <text x="386" y="85"><tspan font-style="italic">f</tspan><tspan dx="2">(2) = </tspan><tspan font-style="italic">c</tspan></text>
+    <text x="539" y="62"><tspan font-style="italic">f</tspan><tspan dx="2">(1) = </tspan><tspan font-style="italic">b</tspan></text>
+    <text x="539" y="85"><tspan font-style="italic">f</tspan><tspan dx="2">(2) = </tspan><tspan font-style="italic">d</tspan></text>
+    <text x="80" y="182"><tspan font-style="italic">f</tspan><tspan dx="2">(1) = </tspan><tspan font-style="italic">a</tspan></text>
+    <text x="233" y="182"><tspan font-style="italic">f</tspan><tspan dx="2">(2) = </tspan><tspan font-style="italic">c</tspan></text>
+    <text x="386" y="182"><tspan font-style="italic">f</tspan><tspan dx="2">(2) = </tspan><tspan font-style="italic">d</tspan></text>
+    <text x="539" y="182"><tspan font-style="italic">f</tspan><tspan dx="2">(1) = </tspan><tspan font-style="italic">b</tspan></text>
+  </g>
+  <g fill="currentColor" text-anchor="middle">
+    <text x="310" y="22">两个指标都挑好了：极大元</text>
+    <text x="310" y="221">只挑好了一个指标：还能接着挑</text>
+  </g>
+</svg>

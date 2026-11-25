@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 624 304" width="624" height="304" font-size="14">
+  <!-- a 从 0 到 6，b 从 0 到 4，(a, b) 在 x = 64 + 66a、y = 262 − 50b。直线 1/2、1、3/2 从原点出发；第 2 行：从 a = 0 到 1，再到 3；第 4 行：从 a = 0 到 2，再到 6 -->
+  <line x1="64" y1="262" x2="500" y2="262" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" opacity="0.6" />
+  <g stroke="currentColor" stroke-width="1" opacity="0.6">
+    <line x1="64" y1="162" x2="500" y2="162" />
+    <line x1="64" y1="62" x2="500" y2="62" />
+    <line x1="64" y1="262" x2="64" y2="40" />
+  </g>
+  <g stroke="currentColor" stroke-width="1.4">
+    <line x1="64" y1="262" x2="210.8" y2="39.5" />
+    <line x1="64" y1="262" x2="357.7" y2="39.5" />
+  </g>
+  <line x1="64" y1="262" x2="504.6" y2="39.5" stroke-width="2" style="stroke: var(--accent, #2563eb)" />
+  <!-- 两行上的两段：前一段浓，后一段淡；强调色只给 3/2 -->
+  <g stroke="currentColor" stroke-width="5" opacity="0.75">
+    <line x1="64" y1="162" x2="130" y2="162" />
+    <line x1="64" y1="62" x2="196" y2="62" />
+  </g>
+  <g stroke="currentColor" stroke-width="5" opacity="0.35">
+    <line x1="130" y1="162" x2="262" y2="162" />
+    <line x1="196" y1="62" x2="460" y2="62" />
+  </g>
+  <g fill="currentColor" text-anchor="middle">
+    <text x="214" y="30">1/2</text>
+    <text x="362" y="30">1</text>
+  </g>
+  <!-- 每段的长，标在中点下面；后一段的中点在直线 1 上，往右让开一点 -->
+  <g fill="currentColor" text-anchor="middle">
+    <text x="97" y="181">长 1</text>
+    <text x="203" y="181">长 2</text>
+    <text x="130" y="81">长 2</text>
+    <text x="335" y="81">长 4</text>
+  </g>
+  <text x="510" y="30" text-anchor="middle" font-weight="bold" style="fill: var(--accent, #2563eb)">3/2</text>
+  <g fill="currentColor">
+    <text x="510" y="67">通分到第 4 行</text>
+    <text x="510" y="91">2 + 4 = 6</text>
+    <text x="510" y="167">通分到第 2 行</text>
+    <text x="510" y="191">1 + 2 = 3</text>
+  </g>
+  <g fill="currentColor" text-anchor="middle">
+    <text x="64" y="288">0</text>
+    <text x="130" y="288">1</text>
+    <text x="196" y="288">2</text>
+    <text x="262" y="288">3</text>
+    <text x="328" y="288">4</text>
+    <text x="394" y="288">5</text>
+    <text x="460" y="288">6</text>
+  </g>
+  <g fill="currentColor" text-anchor="end">
+    <text x="48" y="267">0</text>
+    <text x="48" y="217">1</text>
+    <text x="48" y="167">2</text>
+    <text x="48" y="117">3</text>
+    <text x="48" y="67">4</text>
+  </g>
+  <g fill="currentColor" font-size="15" font-style="italic" text-anchor="middle">
+    <text x="490" y="288">a</text>
+    <text x="42" y="32">b</text>
+  </g>
+  <!-- 不在这三条线上的点 -->
+  <g fill="currentColor" opacity="0.4">
+    <circle cx="64" cy="212" r="2" />
+    <circle cx="196" cy="212" r="2" />
+    <circle cx="262" cy="212" r="2" />
+    <circle cx="328" cy="212" r="2" />
+    <circle cx="394" cy="212" r="2" />
+    <circle cx="460" cy="212" r="2" />
+    <circle cx="64" cy="162" r="2" />
+    <circle cx="328" cy="162" r="2" />
+    <circle cx="394" cy="162" r="2" />
+    <circle cx="460" cy="162" r="2" />
+    <circle cx="64" cy="112" r="2" />
+    <circle cx="130" cy="112" r="2" />
+    <circle cx="196" cy="112" r="2" />
+    <circle cx="328" cy="112" r="2" />
+    <circle cx="394" cy="112" r="2" />
+    <circle cx="460" cy="112" r="2" />
+    <circle cx="64" cy="62" r="2" />
+    <circle cx="130" cy="62" r="2" />
+    <circle cx="262" cy="62" r="2" />
+    <circle cx="394" cy="62" r="2" />
+  </g>
+  <!-- 1/2、1 两条线上的点 -->
+  <g fill="currentColor">
+    <circle cx="130" cy="212" r="4.5" />
+    <circle cx="130" cy="162" r="4.5" />
+    <circle cx="196" cy="162" r="4.5" />
+    <circle cx="262" cy="112" r="4.5" />
+    <circle cx="196" cy="62" r="4.5" />
+    <circle cx="328" cy="62" r="4.5" />
+  </g>
+  <!-- 3/2 线上的点 -->
+  <g style="fill: var(--accent, #2563eb)">
+    <circle cx="262" cy="162" r="6.5" />
+    <circle cx="460" cy="62" r="6.5" />
+  </g>
+  <!-- 原点不取 -->
+  <circle cx="64" cy="262" r="4.5" stroke="currentColor" stroke-width="1.4" style="fill: var(--bg, #ffffff)" />
+</svg>

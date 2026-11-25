@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 318" width="660" height="318" font-size="14">
+  <!-- 三幅哈斯图。左：2、3、4、6、12 按整除，12 是最大元。中：2 到 10 按整除，6 到 10 都是极大元，没有最大元，7 单独一点。右：a、b 在下，c、d 在上，四条线全连，{a, b} 的上界 c、d 不可比。圈的半径都是 15，连线停在圈上；左、中的强调色是极大元，右的强调色是 {a, b} 的上界 -->
+  <g fill="currentColor" text-anchor="middle" font-size="15">
+    <text x="85" y="34">有最大元</text>
+    <text x="340" y="34">有极大元，没有最大元</text>
+    <text x="572" y="34">有上界，没有上确界</text>
+  </g>
+  <!-- 左图的线 -->
+  <g stroke="currentColor" stroke-width="1.5" fill="none">
+    <line x1="45" y1="217" x2="45" y2="179" />
+    <line x1="56.43" y1="222.29" x2="113.57" y2="173.71" />
+    <line x1="125" y1="217" x2="125" y2="179" />
+    <line x1="52.61" y1="151.07" x2="77.39" y2="108.93" />
+    <line x1="117.39" y1="151.07" x2="92.61" y2="108.93" />
+  </g>
+  <!-- 中图的线 -->
+  <g stroke="currentColor" stroke-width="1.5" fill="none">
+    <line x1="330" y1="217" x2="330" y2="179" />
+    <line x1="320.67" y1="220.25" x2="285.33" y2="175.75" />
+    <line x1="339.33" y1="220.25" x2="374.67" y2="175.75" />
+    <line x1="254.54" y1="218.06" x2="270.46" y2="177.94" />
+    <line x1="243.46" y1="218.06" x2="227.54" y2="177.94" />
+    <line x1="330" y1="149" x2="330" y2="111" />
+    <line x1="405.46" y1="218.06" x2="389.54" y2="177.94" />
+  </g>
+  <!-- 右图的线 -->
+  <g stroke="currentColor" stroke-width="1.5" fill="none">
+    <line x1="532" y1="200" x2="532" y2="128" />
+    <line x1="541.26" y1="203.2" x2="602.74" y2="124.8" />
+    <line x1="602.74" y1="203.2" x2="541.26" y2="124.8" />
+    <line x1="612" y1="200" x2="612" y2="128" />
+  </g>
+  <!-- 普通的圈 -->
+  <g stroke="currentColor" stroke-width="1.5" fill="none">
+    <circle cx="45" cy="232" r="15" />
+    <circle cx="125" cy="232" r="15" />
+    <circle cx="45" cy="164" r="15" />
+    <circle cx="125" cy="164" r="15" />
+    <circle cx="249" cy="232" r="15" />
+    <circle cx="330" cy="232" r="15" />
+    <circle cx="411" cy="232" r="15" />
+    <circle cx="330" cy="164" r="15" />
+    <circle cx="532" cy="215" r="15" />
+    <circle cx="612" cy="215" r="15" />
+  </g>
+  <!-- 强调色的圈：左图 12，中图 6 到 10，右图 c、d -->
+  <g stroke-width="2.5" style="fill: var(--accent, #2563eb); fill-opacity: 0.15; stroke: var(--accent, #2563eb)">
+    <circle cx="85" cy="96" r="15" />
+    <circle cx="276" cy="164" r="15" />
+    <circle cx="459" cy="232" r="15" />
+    <circle cx="330" cy="96" r="15" />
+    <circle cx="222" cy="164" r="15" />
+    <circle cx="384" cy="164" r="15" />
+    <circle cx="532" cy="113" r="15" />
+    <circle cx="612" cy="113" r="15" />
+  </g>
+  <g fill="currentColor" font-size="15" text-anchor="middle">
+    <text x="45" y="237">2</text>
+    <text x="125" y="237">3</text>
+    <text x="45" y="169">4</text>
+    <text x="125" y="169">6</text>
+    <text x="85" y="101">12</text>
+    <text x="249" y="237">3</text>
+    <text x="330" y="237">2</text>
+    <text x="411" y="237">5</text>
+    <text x="459" y="237">7</text>
+    <text x="222" y="169">9</text>
+    <text x="276" y="169">6</text>
+    <text x="330" y="169">4</text>
+    <text x="384" y="169">10</text>
+    <text x="330" y="101">8</text>
+  </g>
+  <g fill="currentColor" font-size="16" font-style="italic" text-anchor="middle">
+    <text x="532" y="220">a</text>
+    <text x="612" y="220">b</text>
+    <text x="532" y="118">c</text>
+    <text x="612" y="118">d</text>
+  </g>
+  <g fill="currentColor" text-anchor="middle">
+    <text x="85" y="278">12 是最大元，</text>
+    <text x="85" y="302">也是唯一的极大元</text>
+    <text x="340" y="278">6 到 10 都是极大元，</text>
+    <text x="340" y="302">7 同时也是极小元</text>
+    <text x="572" y="278">{<tspan font-style="italic">a</tspan>, <tspan font-style="italic">b</tspan><tspan dx="2">}</tspan> 的上界是 <tspan font-style="italic">c</tspan> 和 <tspan font-style="italic">d</tspan>，</text>
+    <text x="572" y="302">两者不可比，没有最小的</text>
+  </g>
+</svg>

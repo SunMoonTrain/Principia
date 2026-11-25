@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 228" width="600" height="228" font-size="14">
+  <!-- O 在 (300, 26)。上面的线段是开区间 (0, 1)，y = 84，x 从 246 到 354；下面的线段是开区间 (a, b)，y = 196，x 从 141.72 到 458.28，正好是从 O 把上面的线段投影下来的长度（放大 170/58 倍）。从 O 发出的 4 条射线各穿过上面一个点 264、288、312、336 和下面一个点 194.48、264.83、335.17、405.52，最右边一条用强调色；过端点的两条射线画虚线，端点画空心圈，不在区间里 -->
+  <g stroke="currentColor" stroke-width="1.1" stroke-dasharray="4 4" opacity="0.6">
+    <line x1="300" y1="26" x2="249.42" y2="80.34" />
+    <line x1="242.58" y1="87.67" x2="145.12" y2="192.34" />
+    <line x1="300" y1="26" x2="350.58" y2="80.34" />
+    <line x1="357.42" y1="87.67" x2="454.88" y2="192.34" />
+  </g>
+  <g stroke="currentColor" stroke-width="1.2" opacity="0.75">
+    <line x1="300" y1="26" x2="194.48" y2="196" />
+    <line x1="300" y1="26" x2="264.83" y2="196" />
+    <line x1="300" y1="26" x2="335.17" y2="196" />
+  </g>
+  <line x1="300" y1="26" x2="405.52" y2="196" stroke-width="1.8" style="stroke: var(--accent, #2563eb)" />
+  <g stroke="currentColor" stroke-width="2">
+    <line x1="251" y1="84" x2="349" y2="84" />
+    <line x1="146.72" y1="196" x2="453.28" y2="196" />
+  </g>
+  <g fill="none" stroke="currentColor" stroke-width="1.6">
+    <circle cx="246" cy="84" r="5" />
+    <circle cx="354" cy="84" r="5" />
+    <circle cx="141.72" cy="196" r="5" />
+    <circle cx="458.28" cy="196" r="5" />
+  </g>
+  <g fill="currentColor">
+    <circle cx="300" cy="26" r="3.5" />
+    <circle cx="264" cy="84" r="3.5" />
+    <circle cx="288" cy="84" r="3.5" />
+    <circle cx="312" cy="84" r="3.5" />
+    <circle cx="194.48" cy="196" r="3.5" />
+    <circle cx="264.83" cy="196" r="3.5" />
+    <circle cx="335.17" cy="196" r="3.5" />
+  </g>
+  <g style="fill: var(--accent, #2563eb)">
+    <circle cx="336" cy="84" r="4.5" />
+    <circle cx="405.52" cy="196" r="4.5" />
+    <text x="326" y="102" font-style="italic" text-anchor="middle">x</text>
+    <text x="405.52" y="219" text-anchor="middle"><tspan font-style="italic">f</tspan><tspan dx="2">(</tspan><tspan font-style="italic">x</tspan><tspan dx="1">)</tspan></text>
+  </g>
+  <g fill="currentColor">
+    <text x="288" y="26" font-style="italic" text-anchor="end">O</text>
+    <text x="228" y="89" text-anchor="end">0</text>
+    <text x="372" y="89">1</text>
+    <text x="126" y="201" font-style="italic" text-anchor="end">a</text>
+    <text x="474" y="201" font-style="italic">b</text>
+  </g>
+</svg>
