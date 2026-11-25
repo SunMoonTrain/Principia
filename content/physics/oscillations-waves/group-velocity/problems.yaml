@@ -1,0 +1,234 @@
+- id: p1
+  tier: easy
+  statement: |
+    同一个系统里有两列简谐波$y_1=A\cos(59t-1.9x)$和$y_2=A\cos(61t-2.1x)$（国际单位制）。它们叠加以后，波峰前进的速度、包络前进的速度各是多少？以$\mathrm{m/s}$为单位，按这个顺序填写。
+  answer:
+    type: tuple
+    value: [30, 10]
+    unit: |
+      $\mathrm{m/s}$
+  hints:
+    - |
+      用和差化积写成两个余弦的乘积，哪个因子变得快，哪个变得慢？波峰、包络各跟着哪一个走？
+    - |
+      波峰跟着变得快的因子走，速度是$\frac{\bar\omega}{\bar k}$；包络跟着变得慢的因子走，速度是$\frac{\omega_2-\omega_1}{k_2-k_1}$。
+    - |
+      $\bar\omega=60\,\mathrm{rad/s}$，$\bar k=2.0\,\mathrm{rad/m}$，波峰的速度是$\frac{60}{2.0}\,\mathrm{m/s}=30\,\mathrm{m/s}$；包络的速度是$\frac{61-59}{2.1-1.9}\,\mathrm{m/s}=10\,\mathrm{m/s}$。填`30, 10`。
+  solution: |
+    两列波之和是$2A\cos(t-0.1x)\cos(60t-2.0x)$。后一个因子变得快，波峰以$\frac{60}{2.0}\,\mathrm{m/s}=30\,\mathrm{m/s}$前进；前一个因子变得慢，包络$2A\lvert\cos(t-0.1x)\rvert$以$\frac1{0.1}\,\mathrm{m/s}=10\,\mathrm{m/s}$前进，填`30, 10`。波峰比包络快，从每一群的后沿冒出来、到前沿消失，和扔石头激起的水波一样。
+
+- id: p2
+  tier: easy
+  statement: |
+    某系统的色散关系$\omega(k)$在$k\ge0$上有连续的二阶导数，$\omega(0)=0$，$\omega'(0)\ge0$，$k>0$时$\omega''(k)>0$。以$k$为横轴、$\omega$为纵轴画出它的图像，$P$是图像上波数为$k_0>0$的点。一个波包的波数都集中在$k_0$附近很窄的范围里，开始时各部分叠在一处。下面哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        波数为$k_0$的简谐波，相速度是$P$和原点连线的斜率
+      - |
+        这个波包的群速度是$P$和原点连线的斜率
+      - |
+        这个波包的群速度比波数为$k_0$的简谐波的相速度小
+      - |
+        换一个窄波包，波数集中在比$k_0$大的值附近，群速度就比原来的大
+      - |
+        走了一段时间以后，这个波包里波数较大的部分在前面
+    value: [1, 4, 5]
+  hints:
+    - |
+      相速度、群速度各是图像上哪条直线的斜率？
+    - |
+      相速度是$\frac{\omega(k_0)}{k_0}$，群速度是$\omega'(k_0)$。$\omega''>0$说明$\omega'$随$k$增大；由[微分中值定理](lesson:math.calculus.mean-value-theorem#thm-mean-value)（mean value theorem），$\frac{\omega(k_0)}{k_0}$等于$0$和$k_0$之间某一点的$\omega'$。
+    - |
+      A 对：$\frac{\omega(k_0)}{k_0}$正是$P$和原点连线的斜率；B 错：群速度$\omega'(k_0)$是$P$处切线的斜率，两个斜率不相等。C 错：由微分中值定理，有$0<\eta<k_0$使$\frac{\omega(k_0)}{k_0}=\omega'(\eta)<\omega'(k_0)$，群速度比相速度大。D 对：$\omega'$随$k$增大；E 对：波数较大的部分群速度较大，走到了前面。选 A、D、E。
+  solution: |
+    选 A、D、E。A 对、B 错：相速度$\frac{\omega(k_0)}{k_0}$是$P$和原点连线的斜率，群速度$\omega'(k_0)$是$P$处切线的斜率，电磁学[波导](lesson:physics.electromagnetism.waveguides)的几何图像也这样读这两个速度。C 错：由微分中值定理，有$0<\eta<k_0$使$\frac{\omega(k_0)}{k_0}=\omega'(\eta)$；$\omega''>0$时$\omega'$随$k$增大，所以$\omega'(\eta)<\omega'(k_0)$，群速度比相速度大，图像上切线比连线陡。
+
+    D 对：$\omega'$随$k$增大，中心波数大的波包跑得快。E 对：开始时叠在一处，波数较大的部分群速度较大，走一段时间就到了前面。
+
+- id: p3
+  tier: medium
+  statement: |
+    弹性基底上的弦（[色散关系](lesson:physics.oscillations-waves.dispersion-relations)例 2），色散关系是$\omega^2=v^2k^2+\omega_{\mathrm c}^2$，取$v=40\,\mathrm{m/s}$，$\omega_{\mathrm c}=30\,\mathrm{rad/s}$。弦上有一个高斯波包，开始时的复数形式正比于$e^{-x^2/w^2}e^{-ik_0x}$，$k_0=1.0\,\mathrm{rad/m}$，$w=12\,\mathrm m$。展宽要的时间按讲解的估计$\frac{w^2}{2\lvert\omega''(k_0)\rvert}$算，这段时间里波包前进了多远？以$\mathrm m$为单位。
+  answer:
+    type: number
+    value: 200
+    unit: |
+      $\mathrm m$
+  hints:
+    - |
+      前进的距离是群速度乘时间，要先求$\omega'(k_0)$和$\omega''(k_0)$。波数的半宽$\frac2w\approx0.17\,\mathrm{rad/m}$，比$k_0$小得多，说得上群速度。
+    - |
+      $\omega^2=v^2k^2+\omega_{\mathrm c}^2$两边对$k$求导，得$\omega\omega'=v^2k$；再求一次，得$(\omega')^2+\omega\omega''=v^2$。
+    - |
+      $k_0$处$\omega=\sqrt{1600+900}\,\mathrm{rad/s}=50\,\mathrm{rad/s}$，$\omega'=\frac{1600}{50}\,\mathrm{m/s}=32\,\mathrm{m/s}$，$\omega''=\frac{1600-32^2}{50}\,\mathrm{m^2/s}=11.52\,\mathrm{m^2/s}$。时间是$\frac{12^2}{2\times11.52}\,\mathrm s=6.25\,\mathrm s$，前进$32\times6.25\,\mathrm m=200\,\mathrm m$。
+  solution: |
+    色散关系两边对$k$求导，$\omega\omega'=v^2k$；再求一次，$(\omega')^2+\omega\omega''=v^2$。$k_0$处$\omega=50\,\mathrm{rad/s}$，$v_{\mathrm g}=\omega'=\frac{1600}{50}\,\mathrm{m/s}=32\,\mathrm{m/s}$，$\omega''=\frac{1600-32^2}{50}\,\mathrm{m^2/s}=11.52\,\mathrm{m^2/s}$。展宽要约$\frac{12^2}{2\times11.52}\,\mathrm s=6.25\,\mathrm s$，这段时间里前进$32\times6.25\,\mathrm m=200\,\mathrm m$。
+
+    有硬度的弦（[一维波动方程与达朗贝尔公式](lesson:math.pde.wave-dalembert)第 8 题）的色散关系是$\omega^2=c^2k^2+Bk^4$，那里的$B$是[色散关系](lesson:physics.oscillations-waves.dispersion-relations)第 6 题的$B$除以线密度（linear density）。$Bk^2\ll c^2$时$\omega\approx ck+\frac B{2c}k^3$，$\omega''\approx\frac{3Bk_0}c$；那里的鼓包不带快速的振荡，把$k_0$取成它所含波数的大小（约$\frac1w$，$w$是鼓包的半宽），也能这样粗略估计它多久散开。两列斜着走的平面波（plane wave）叠成的波（[平面波与球面波](lesson:physics.oscillations-waves.waves-in-3d)第 6 题），横向的波数固定时，色散关系也是这道题的样子。
+
+- id: p4
+  tier: medium
+  statement: |
+    深水里波长不太短的水波，色散关系是$\omega=\sqrt{gk}$（推导要用流体力学，这里当作已知；$g=9.8\,\mathrm{m/s^2}$是重力加速度，和$v_{\mathrm g}$的下标无关）。远处的一场风暴同时激起各种周期的长浪（swell），每种周期的浪以它的群速度传来。海岸上先测到周期$18\,\mathrm s$的长浪，$10\,\mathrm h$以后测到的是周期$15\,\mathrm s$的。求风暴到海岸的距离，以$\mathrm{km}$为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 9.8*36000/(4*pi*(1/15 - 1/18))/1000
+    unit: |
+      $\mathrm{km}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      先由$\omega=\sqrt{gk}$求群速度，再用周期表示它。
+    - |
+      $v_{\mathrm g}=\dv\omega k=\frac12\sqrt{\frac gk}=\frac g{2\omega}$，$\omega$是$2\pi$除以周期，所以周期长的浪先到。记距离为$D$，两种浪用的时间之差是$10\,\mathrm h=3.6\times10^4\,\mathrm s$。
+    - |
+      走完$D$要的时间是$\frac D{v_{\mathrm g}}=\frac{2\omega D}g$，也就是$\frac{4\pi D}g$除以周期。$\frac{4\pi D}g\Bigl(\frac1{15\,\mathrm s}-\frac1{18\,\mathrm s}\Bigr)=3.6\times10^4\,\mathrm s$，$D\approx2.53\times10^6\,\mathrm m=2.53\times10^3\,\mathrm{km}$。
+  solution: |
+    $v_{\mathrm g}=\dv\omega k=\frac12\sqrt{\frac gk}$，是相速度$\sqrt{\frac gk}$的一半，也等于$\frac g{2\omega}$。走完距离$D$要$\frac{2\omega D}g$，也就是$\frac{4\pi D}g$除以周期，周期长的浪先到。$\frac{4\pi D}g\Bigl(\frac1{15\,\mathrm s}-\frac1{18\,\mathrm s}\Bigr)=3.6\times10^4\,\mathrm s$，解得$D\approx2.53\times10^6\,\mathrm m=2.53\times10^3\,\mathrm{km}$。
+
+    核对：周期$18\,\mathrm s$的浪群速度约$14.0\,\mathrm{m/s}$，走了$50\,\mathrm h$；周期$15\,\mathrm s$的约$11.7\,\mathrm{m/s}$，走了$60\,\mathrm h$。误用相速度会得到$5.05\times10^3\,\mathrm{km}$，是这里的 2 倍。
+
+- id: p5
+  tier: hard
+  statement: |
+    高斯波包$\tilde y(x,0)=e^{-x^2/w^2}e^{-ik_0x}$，色散关系在所含的波数范围里可以写成$\omega(k)=\omega(k_0)+v_{\mathrm g}q+\frac12\omega''q^2$（$q=k-k_0$，系数都是实常数，$\omega''\ne0$），下面就当它对一切$k$成立。
+
+    （1）由[傅里叶反演公式](lesson:math.pde.fourier-inversion#thm-gaussian-transform)写出$\tilde A(k)$，证明$\tilde y(x,t)=\frac w{2\sqrt\pi}\,e^{i(\omega(k_0)t-k_0x)}J(x-v_{\mathrm g}t)$，其中$J(s)=\int_{-\infty}^{+\infty}e^{-pq^2-iqs}\dd q$，$p=\frac{w^2}4-\frac i2\omega''t$。
+
+    （2）证明$J(s)=J(0)e^{-s^2/(4p)}$，并且$\lvert J(0)\rvert^2=\frac\pi{\lvert p\rvert}$。
+
+    （3）由此证明：$t$时刻包络降到峰高$\frac1e$处的半宽是$w(t)=w\sqrt{1+\bigl(\frac{2\omega''t}{w^2}\bigr)^2}$，峰高是$\bigl[1+\bigl(\frac{2\omega''t}{w^2}\bigr)^2\bigr]^{-1/4}$。
+
+    （4）要走的时间$t$定了，开始时的$w$取多大，到达时最窄？那时有多宽？
+  hints:
+    - |
+      （1）把$\tilde A(k)$代进$\tilde y=\int\tilde A(k)e^{i(\omega(k)t-kx)}\dd k$，换成对$q$积分。（2）照[含参变量积分](lesson:math.analysis.parameter-integrals)第 6 题的办法：对参数求导，再分部积分（integration by parts），找出$J'$和$J$的关系。（3）只要算$\frac1{4p}$的实部和$\lvert p\rvert$。
+    - |
+      （1）$\tilde A(k)=\frac w{2\sqrt\pi}e^{-w^2q^2/4}$。（2）由$\bigl(e^{-pq^2}\bigr)'=-2pq\,e^{-pq^2}$得$J'(s)=-\frac s{2p}J(s)$；$J(0)$是$t$的函数，$\dv{J(0)}t=\frac{i\omega''}{4p}J(0)$，再看$J(0)^2p$对$t$的导数。（3）$\lvert e^z\rvert=e^{\Re z}$。（4）$w(t)^2=w^2+\frac{4\omega''^2t^2}{w^2}$，两项的乘积和$w$无关。
+    - |
+      （1）由[傅里叶反演公式](lesson:math.pde.fourier-inversion#thm-gaussian-transform)定理 1（$a=\frac1{w^2}$），$e^{-x^2/w^2}$的变换是$\sqrt\pi\,w\,e^{-w^2\xi^2/4}$；再乘$e^{-ik_0x}$，变换平移成$\sqrt\pi\,w\,e^{-w^2(\xi+k_0)^2/4}$（[傅里叶变换](lesson:math.pde.fourier-transform#thm-fourier-properties)定理 1（2））。取$\xi=-k$，$\tilde A(k)=\frac1{2\pi}\hat f(-k)=\frac w{2\sqrt\pi}e^{-w^2q^2/4}$。令$k=k_0+q$，$\omega(k)t-kx=\omega(k_0)t-k_0x-q(x-v_{\mathrm g}t)+\frac12\omega''q^2t$。前两项提到积分号外，其余的乘$i$，和$-\frac{w^2q^2}4$合成指数$-pq^2-iq(x-v_{\mathrm g}t)$，即得所证。
+
+      （2）被积函数对$s$的偏导数（partial derivative），模不超过$\lvert q\rvert e^{-w^2q^2/4}$，它的积分收敛，由[含参变量积分](lesson:math.analysis.parameter-integrals#thm-leibniz-improper)定理 4（实部、虚部分别用，$q\ge0$、$q\le0$两半也分别用），可以在积分号下求导。$\bigl(e^{-pq^2}\bigr)'=-2pq\,e^{-pq^2}$对复数$p$也成立，分部积分，两头的边界项是零：
+
+      $$
+      J'(s)=\frac i{2p}\int_{-\infty}^{+\infty}\bigl(e^{-pq^2}\bigr)'e^{-iqs}\dd q=-\frac s{2p}J(s).
+      $$
+
+      所以$J(s)e^{s^2/(4p)}$对$s$的导数是零，$J(s)=J(0)e^{-s^2/(4p)}$。$J(0)$只依赖$t$，同样在积分号下对$t$求导（偏导数的模不超过$\frac12\lvert\omega''\rvert q^2e^{-w^2q^2/4}$），再分部积分一次：
+
+      $$
+      \dv{J(0)}t=\frac{i\omega''}2\int_{-\infty}^{+\infty}q^2e^{-pq^2}\dd q=\frac{i\omega''}{4p}J(0).
+      $$
+
+      而$\dv pt=-\frac{i\omega''}2$，所以$\dv{}t\bigl(J(0)^2p\bigr)=\frac{i\omega''}2J(0)^2-\frac{i\omega''}2J(0)^2=0$，$J(0)^2p$不随$t$变。$t=0$时$p=\frac{w^2}4$，由高斯积分（Gaussian integral）$J(0)=\frac{2\sqrt\pi}w$，所以$J(0)^2p=\pi$。两边取模，$\lvert J(0)\rvert^2=\frac\pi{\lvert p\rvert}$。
+
+      （3）$p$的实部是$\frac{w^2}4$，$\Re\frac1{4p}=\frac{w^2}{16\lvert p\rvert^2}$，而$\lvert p\rvert^2=\frac{w^4}{16}\Bigl[1+\bigl(\frac{2\omega''t}{w^2}\bigr)^2\Bigr]$，代进去，$\Re\frac1{4p}=\frac1{w(t)^2}$。包络是$\lvert\tilde y\rvert=\frac w{2\sqrt\pi}\sqrt{\frac\pi{\lvert p\rvert}}\,e^{-(x-v_{\mathrm g}t)^2/w(t)^2}$，在离峰$w(t)$处降到峰高的$\frac1e$；峰高$\frac w{2\sqrt{\lvert p\rvert}}$就是$\bigl[1+\bigl(\frac{2\omega''t}{w^2}\bigr)^2\bigr]^{-1/4}$。峰高的平方乘半宽总等于$w$，正是$\int\lvert\tilde y\rvert^2\dd x$不变；$t=\frac{w^2}{2\lvert\omega''\rvert}$时半宽是$\sqrt2\,w$，和讲解的估计一致。
+
+      （4）$w(t)^2=w^2+\frac{4\omega''^2t^2}{w^2}\ge4\lvert\omega''\rvert t$，$w^2=2\lvert\omega''\rvert t$时取等号。所以开始时取$w=\sqrt{2\lvert\omega''\rvert t}$，到达时最窄，半宽是$2\sqrt{\lvert\omega''\rvert t}$；开始时再窄，波数散得更开，到达时反而更宽。要传得远又少展宽，光纤通信就选各频率成分的群速度几乎相同的那个波长（[介质的色散](lesson:physics.electromagnetism.dispersion)第 8 题）。
+  reference: |
+    （1）$\hat f(\xi)=\sqrt\pi\,w\,e^{-w^2(\xi+k_0)^2/4}$，$\tilde A(k)=\frac1{2\pi}\hat f(-k)=\frac w{2\sqrt\pi}e^{-w^2q^2/4}$；$\omega(k)t-kx=\omega(k_0)t-k_0x-q(x-v_{\mathrm g}t)+\frac12\omega''q^2t$，合并$q^2$的系数得$-p$。
+
+    （2）控制函数$\lvert q\rvert e^{-w^2q^2/4}$、$\frac12\lvert\omega''\rvert q^2e^{-w^2q^2/4}$，定理 4 可用。分部积分得$J'(s)=-\frac s{2p}J(s)$，$J(s)=J(0)e^{-s^2/(4p)}$；$\dv{J(0)}t=\frac{i\omega''}{4p}J(0)$，$\dv pt=-\frac{i\omega''}2$，$J(0)^2p$是常数，$t=0$时是$\frac{4\pi}{w^2}\cdot\frac{w^2}4=\pi$。
+
+    （3）$\Re\frac1{4p}=\frac{w^2}{16\lvert p\rvert^2}=\frac1{w(t)^2}$；峰高$\frac w{2\sqrt\pi}\lvert J(0)\rvert=\frac w{2\sqrt{\lvert p\rvert}}=\bigl[1+\bigl(\frac{2\omega''t}{w^2}\bigr)^2\bigr]^{-1/4}$。
+
+    （4）$w(t)^2=w^2+\frac{4\omega''^2t^2}{w^2}\ge4\lvert\omega''\rvert t$，$w=\sqrt{2\lvert\omega''\rvert t}$时取到，到达时半宽$2\sqrt{\lvert\omega''\rvert t}$，是开始时的$\sqrt2$倍。
+
+- id: p6
+  tier: hard
+  statement: |
+    振源让$x=0$处做$y(0,t)=A(1+b\cos\Omega t)\cos\omega t$的振动（$0<b<1$，$\Omega$比$\omega$小得多）：振幅被慢慢地改变，这叫作调幅（amplitude modulation），$\cos\Omega t$就是要传的信号。波只向$x>0$传，没有衰减，色散关系反过来写成$k=k(\omega)$。
+
+    （1）把$y(0,t)$写成三个余弦之和，写出各自的角频率和振幅。
+
+    （2）记$k$、$k'$、$k''$为$k(\omega)$和它在$\omega$处的一、二阶导数。略去二阶项，取$k(\omega\pm\Omega)\approx k\pm k'\Omega$，证明$y(x,t)=A\Bigl[1+b\cos\Omega\Bigl(t-\frac x{v_{\mathrm g}}\Bigr)\Bigr]\cos(\omega t-kx)$，$v_{\mathrm g}=\frac1{k'}$。信号变形了吗？晚到多久？
+
+    （3）再计入$\frac12k''\Omega^2$（$k''\ne0$），求$y(x,t)$。$b$很小时，传到多远，振幅上就几乎看不出信号了？波没有衰减，信号到哪里去了？
+
+    （4）证明$k''=-\frac{\omega''(k)}{v_{\mathrm g}^3}$，并说明为什么变化越快的信号越怕色散。
+  hints:
+    - |
+      （1）积化和差。（2）一个角频率为$\omega$的成分传到$x$处，相位（phase）落后$k(\omega)x$；三个成分各自传到$x$处，再用和差化积合起来。（3）两边的成分比中间那个多落后了多少？（4）$k(\omega)$是$\omega(k)$的反函数（inverse function）。
+    - |
+      （2）$(\omega\pm\Omega)t-(k\pm k'\Omega)x=(\omega t-kx)\pm\Omega(t-k'x)$。（3）两边的成分都再落后$\frac12k''\Omega^2x$，合起来是$bA\cos\Omega(t-k'x)\cos\bigl(\omega t-kx-\frac12k''\Omega^2x\bigr)$；它的快振动和中间那个成分错开四分之一周期时会怎样？（4）$k'=\frac1{\omega'(k)}$，再对$\omega$求导。
+    - |
+      （1）积化和差，$y(0,t)=A\cos\omega t+\frac{bA}2\cos(\omega+\Omega)t+\frac{bA}2\cos(\omega-\Omega)t$：角频率是$\omega$、$\omega+\Omega$、$\omega-\Omega$，振幅是$A$、$\frac{bA}2$、$\frac{bA}2$。
+
+      （2）传到$x$处，两边的成分变成$\frac{bA}2\cos\bigl[(\omega t-kx)\pm\Omega(t-k'x)\bigr]$，和差化积，合起来是$bA\cos\Omega(t-k'x)\cos(\omega t-kx)$；加上$A\cos(\omega t-kx)$，就是要证的式子。$v_{\mathrm g}=\dv\omega k=\frac1{k'}$见（4）。信号没有变形，只晚到$\frac x{v_{\mathrm g}}$。
+
+      （3）两边的成分都再落后$\frac12k''\Omega^2x$，所以
+
+      $$
+      y=A\cos(\omega t-kx)+bA\cos\Omega(t-k'x)\cos\bigl(\omega t-kx-\tfrac12k''\Omega^2x\bigr).
+      $$
+
+      $\frac12\lvert k''\rvert\Omega^2x=\frac\pi2$，即$x=\frac\pi{\lvert k''\rvert\Omega^2}$时，两项的快振动错开四分之一周期，合成的振幅是$A\sqrt{1+b^2\cos^2\Omega(t-k'x)}$，只起伏$\frac12b^2A$左右，$b$很小时几乎看不出信号。信号没有丢，转到了相位上：记$\theta=\omega t-kx$，$k''>0$时$y\approx A\cos\bigl[\theta-b\cos\Omega(t-k'x)\bigr]$，$k''<0$时减号换成加号。再走同样远，两项反相，$y=A\bigl[1-b\cos\Omega(t-k'x)\bigr]\cos\theta$，信号又回到振幅上，只是强弱对调。
+
+      （4）$k(\omega)$是$\omega(k)$的反函数，$k'=\frac1{\omega'(k)}=\frac1{v_{\mathrm g}}$（[隐函数与反函数的求导](lesson:math.calculus.implicit-differentiation#thm-inverse-derivative)）；再对$\omega$求导，由链式法则（chain rule），$k''=-\frac{\omega''(k)}{\omega'(k)^2}k'=-\frac{\omega''(k)}{v_{\mathrm g}^3}$。（3）里的距离和$\Omega^2$成反比：信号变化的快慢加倍，这个距离就变为原来的$\frac14$。信号变化得越快，三个角频率散得越开，群速度相差越大，和波包越窄展得越快是一个道理；[傅里叶变换](lesson:math.pde.fourier-transform)第 7 题说声音越短、频率散得越开，也是这个意思。
+  reference: |
+    （1）角频率$\omega$、$\omega\pm\Omega$，振幅$A$、$\frac{bA}2$、$\frac{bA}2$。
+
+    （2）$(\omega\pm\Omega)t-(k\pm k'\Omega)x=(\omega t-kx)\pm\Omega(t-k'x)$，和差化积得证；信号不变形，晚到$\frac x{v_{\mathrm g}}$。
+
+    （3）$y=A\cos\theta+bA\cos\Omega(t-k'x)\cos\bigl(\theta-\frac12k''\Omega^2x\bigr)$，$\theta=\omega t-kx$。复数形式的振幅是$1+b\cos\Omega(t-k'x)\,e^{-i\phi}$，$\phi=\frac12k''\Omega^2x$，模约为$1+b\cos\phi\cos\Omega(t-k'x)$：$\lvert\phi\rvert=\frac\pi2$，即$x=\frac\pi{\lvert k''\rvert\Omega^2}$处，振幅只起伏$b^2$的量级，信号在相位上；$\lvert\phi\rvert=\pi$处回到振幅上，强弱对调。
+
+    （4）$k'=\frac1{\omega'(k)}$，$k''=-\frac{\omega''}{\omega'^2}k'=-\frac{\omega''}{v_{\mathrm g}^3}$。距离按$\frac1{\Omega^2}$缩短；信号变化越快，三个角频率散得越开。（数值：第 3 题的弦取$\omega=50\,\mathrm{rad/s}$、$\Omega=2\,\mathrm{rad/s}$、$b=0.1$，$k''\approx-3.52\times10^{-4}\,\mathrm{s^2/m}$，$x\approx2.23\times10^3\,\mathrm m$处振幅的峰谷差从$20\%$降到约$0.6\%$。）
+
+- id: p7
+  tier: thinking
+  statement: |
+    弦、一维链这类系统的运动方程里，对时间只有二阶导数，没有阻尼。
+
+    （1）把一个正在展宽的波包拍成电影倒着放，看到的还是这个系统里能发生的运动吗？
+
+    （2）由此说明，有的波包走着走着会先变窄，再变宽。开始时，波数不同的各部分应该怎样排列？在长水槽的一端造浪，想让浪在远处的某一点聚成一个很高的浪头（深水波$\omega=\sqrt{gk}$，$g$是重力加速度），应该先发长波还是先发短波？
+
+    （3）第 5 题的高斯波包满足$w(t)^2=w^2+\bigl(\frac{2\omega''t}w\bigr)^2$。由此说说，「色散使波包展宽」这句话要补上什么条件才对？为什么说不管怎样安排，最后总要变宽？
+  hints:
+    - |
+      （1）把$t$换成$-t$，对时间求两次导数的项变不变？（2）倒着放一个展宽了的波包，跑得快的部分在哪里？（3）第 5 题的式子对$t<0$也成立。
+    - |
+      （1）$y(x,-t)$也满足运动方程。（2）倒放时波包反向走，原来跑在前面的部分落在后面，一路追上去；深水波$v_{\mathrm g}=\frac12\sqrt{\frac gk}$。（3）$w(t)$在$t=0$时最小；波数的半宽$\frac2w$不随时间变。
+    - |
+      （1）是。设$y(x,t)$是解，把$t$换成$-t$，得到$y(x,-t)$：对时间求两次导数，两个负号乘起来得正，运动方程照样成立。倒着放看到的就是它，一个反方向走、越走越窄的波包。有阻尼时，方程里有对时间求一次导数的项，换成$-t$要变号，倒放的就不是能发生的运动了。
+
+      （2）把展宽了的波包倒着放：原来跑在前面的快的部分，倒放时落在后面，一路追上慢的；追齐时最窄，追过以后又拉开，再变宽。所以开始时要把跑得快的部分排在后面。深水波$v_{\mathrm g}=\dv\omega k=\frac12\sqrt{\frac gk}$，波长越长跑得越快，所以先发短波、后发长波；要在距离$x$处同时到达，波数为$k$的部分就要比到达早$\frac x{v_{\mathrm g}(k)}$发出，到那时各部分叠在一处、步调一致，就是一个很高的浪头。
+
+      （3）除了群速度要随波数变，还要补上「开始时各部分叠在一处、步调一致」：第 5 题的波包在$t=0$时正是这样，那也是它最窄的时刻。同一个式子对$t<0$也成立，从某个$t<0$的时刻看起，波包就先变窄到$w$，再变宽。最后总要变宽，是因为所含的波数和各部分的群速度都不随时间变：追齐以后快的总在前面，越拉越开，$t$很大时$w(t)\approx\frac{2\lvert\omega''\rvert t}w$。第 5 题的波包在任何时刻都窄不过$w$，$w$由波数的半宽$\frac2w$定。
+  reference: |
+    （1）是：$y(x,-t)$也是解，是一个反向走、越走越窄的波包（没有阻尼）。
+
+    （2）跑得快的部分放在后面，走到某处追齐最窄，再拉开。$v_{\mathrm g}=\frac12\sqrt{\frac gk}$，长波快，先发短波、后发长波；波数为$k$的部分比到达早$\frac x{v_{\mathrm g}(k)}$发出。
+
+    （3）除了$\omega''\ne0$（群速度随波数变），条件是开始时各部分叠在一处、步调一致，即开始时正是最窄的时刻。一般的高斯波包（$\omega''$是常数）$w(t)^2=w_{\min}^2+\bigl(\frac{2\omega''(t-t_0)}{w_{\min}}\bigr)^2$，$t_0$可以大于零；过了$t_0$一直变宽。波数的半宽$\frac2{w_{\min}}$和各部分的群速度不随时间变，所以最后总要拉开，最窄也窄不过$w_{\min}$。
+
+- id: p8
+  tier: thinking
+  statement: |
+    一维链上，波数$k$和$k-\frac{2\pi}a$描述的是同一种运动（[色散关系](lesson:physics.oscillations-waves.dispersion-relations)第 8 题）。取$0<k<\frac\pi a$。
+
+    （1）用这两种写法，相速度$\frac\omega k$各是多少，方向一样吗？群速度呢？
+
+    （2）同一种运动，怎么会有两个相速度？小球只在$x=ja$（$j$是整数）处，想一想链上「波峰前进」是怎样看出来的。
+
+    （3）波包的包络有没有这样的含混？由此说说，群速度为什么比相速度更「实在」。
+  hints:
+    - |
+      （1）$\omega(k)$对$k$有没有周期性？（2）小球$j$到最高点以后，小球$j+1$什么时候到最高点？答案是不是只有一个？（3）包络从一个小球到下一个变化大不大？
+    - |
+      （1）两种写法的$\omega$相同，分母的符号相反；$\omega(k)$以$\frac{2\pi}a$为周期，$\dv\omega k$相同。（2）小球$j+1$比小球$j$晚$\frac{ka}\omega$到最高点，它每过$\frac{2\pi}\omega$到一次，所以也可以说早了$\frac{2\pi-ka}\omega$。（3）$e^{-i(k-2\pi/a)ja}=e^{-ikja}$。
+    - |
+      （1）$0<k<\frac\pi a$时$k-\frac{2\pi}a<0$，所以$\frac\omega k>0$，$\frac\omega{k-2\pi/a}<0$：一个说波峰往右，一个说波峰往左。大小也不同：$\bigl\lvert k-\frac{2\pi}a\bigr\rvert>k$，后一个较慢。群速度却相同：$\omega(k)=2\sqrt{\frac T{ma}}\,\bigl\lvert\sin\frac{ka}2\bigr\rvert$以$\frac{2\pi}a$为周期，$\dv\omega k$在$k$和$k-\frac{2\pi}a$处一样，都是$\sqrt{\frac{Ta}m}\cos\frac{ka}2>0$。
+
+      （2）看得到的只是一个个小球的运动。小球$j+1$比小球$j$晚$\frac{ka}\omega$到最高点，它每过$\frac{2\pi}\omega$到一次，所以也可以说早了$\frac{2\pi-ka}\omega$。把小球$j$的这一次最高和小球$j+1$后来的那一次连起来，波峰以$\frac\omega k$往右走；和它先前的那一次连起来，波峰以$\frac\omega{2\pi/a-k}$往左走。两个小球之间没有东西，两种连法都说得通（还可以连到更远的几次），就像[色散关系](lesson:physics.oscillations-waves.dispersion-relations)第 8 题里电影上的车轮，说它正转、倒转都对得上。
+
+      （3）没有。包络从一个小球到下一个几乎不变，哪里振得最厉害、这个地方怎样移动，不用挑连法就看得出来。换一种写法，每个小球的运动不变，提出的因子$e^{-i(k-2\pi/a)ja}=e^{-ikja}$在每个小球处也不变，所以包络和它的速度都不变，和两种写法算出的$\dv\omega k$相同对得上。能量、信号跟着包络走，和怎样写、怎样连无关；相速度却要看怎样连，所以群速度更「实在」。
+  reference: |
+    （1）$\frac\omega k>0$，$\frac\omega{k-2\pi/a}<0$，方向相反、大小不同；$\omega(k)$以$\frac{2\pi}a$为周期，$\dv\omega k$相同，都是$\sqrt{\frac{Ta}m}\cos\frac{ka}2$。
+
+    （2）只看得到各个小球先后到最高点。小球$j+1$比小球$j$晚$\frac{ka}\omega$，也可以说早$\frac{2\pi-ka}\omega$，两种连法给出$\frac\omega k$（往右）和$\frac\omega{2\pi/a-k}$（往左），像倒转的车轮。
+
+    （3）没有：包络从一个小球到下一个几乎不变，连法只有一种；$e^{-i(k-2\pi/a)ja}=e^{-ikja}$，包络和写法无关。能量、信号跟着它走，所以群速度更「实在」。

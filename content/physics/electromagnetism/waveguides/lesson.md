@@ -78,7 +78,7 @@ $$
 由$\cos\frac{\pi x}a\cos(\omega t-kz)=\frac12\bigl[\cos(\omega t-kz-\frac{\pi x}a)+\cos(\omega t-kz+\frac{\pi x}a)\bigr]$，$\mathrm{TE}_{10}$模是两列:term[平面电磁波]{id="physics.electromagnetism.em-wave"}的叠加，波矢（wave vector）分别是$\bigl(\frac\pi a,0,k\bigr)$和$\bigl(-\frac\pi a,0,k\bigr)$，大小都是$\frac\omega c$。两列波在两侧窄壁之间来回反射，沿锯齿形的路线前进，传播方向和管轴的夹角$\alpha$满足$\cos\alpha=\frac{ck}\omega$。频率降到截止频率时$k=0$，$\alpha=90^\circ$，波垂直于窄壁来回反射，不再沿管前进；频率越高，$\alpha$越小，波越接近沿管直走。
 
 ::anchor{id="thm-guide-velocities"}
-定理（波导中的:term[相速度]{id="physics.oscillations-waves.phase-velocity"}和群速度）：$\mathrm{TE}_{mn}$模的相速度（phase velocity）$v_{\mathrm p}=\frac\omega k=\frac{c}{\sqrt{1-\omega_{mn}^2/\omega^2}}$大于$c$，群速度（group velocity）$v_{\mathrm g}=\dv\omega k=c\sqrt{1-\frac{\omega_{mn}^2}{\omega^2}}$小于$c$，$v_{\mathrm p}v_{\mathrm g}=c^2$；管内波长（guide wavelength）$\lambda_{\mathrm g}=\frac{2\pi}k$比真空中同一频率的波长长。
+定理（波导中的:term[相速度]{id="physics.oscillations-waves.phase-velocity"}和:term[群速度]{id="physics.oscillations-waves.group-velocity"}）：$\mathrm{TE}_{mn}$模的相速度（phase velocity）$v_{\mathrm p}=\frac\omega k=\frac{c}{\sqrt{1-\omega_{mn}^2/\omega^2}}$大于$c$，群速度（group velocity）$v_{\mathrm g}=\dv\omega k=c\sqrt{1-\frac{\omega_{mn}^2}{\omega^2}}$小于$c$，$v_{\mathrm p}v_{\mathrm g}=c^2$；管内波长（guide wavelength）$\lambda_{\mathrm g}=\frac{2\pi}k$比真空中同一频率的波长长。
 
 证明思路：$\omega^2=c^2k^2+\omega_{mn}^2$两边对$k$求导，得$\omega\dv\omega k=c^2k$，所以$v_{\mathrm g}=\frac{c^2k}\omega=\frac{c^2}{v_{\mathrm p}}$，再代入$ck=\sqrt{\omega^2-\omega_{mn}^2}$。用两列平面波看更直观：每列波以$c$沿锯齿形路线走，沿管前进的速度是$c\cos\alpha=\frac{c^2k}\omega$，正是群速度；波峰和管轴的交点移动得比$c$快，速度是$\frac c{\cos\alpha}$，正是相速度。
 
@@ -118,7 +118,7 @@ sliders:
       窄边和宽边之比$\frac ba$
 :::
 
-横轴是$k$，以$\frac\pi a$为单位；纵轴是$\omega$，以$\mathrm{TE}_{10}$的截止频率$\omega_{10}$为单位。每条曲线和纵轴的交点是这个模的截止频率；在某个频率处画一条水平线，和它相交的曲线就是这个频率下能传播的模。曲线上一点的斜率是群速度，这一点和原点连线的斜率是相速度，都以$c$为单位：曲线都在直线$\omega=ck$上方，越来越贴近它，所以相速度总大于$c$，群速度总小于$c$。$\frac ba<\frac12$时$\mathrm{TE}_{20}$先于$\mathrm{TE}_{01}$出现，只有$\mathrm{TE}_{10}$能传播的频率范围是$\omega_{10}$到$2\omega_{10}$；$\frac ba>\frac12$时上限变成$\mathrm{TE}_{01}$的截止频率。
+横轴是$k$，以$\frac\pi a$为单位；纵轴是$\omega$，以$\mathrm{TE}_{10}$的截止频率$\omega_{10}$为单位。每条曲线和纵轴的交点是这个模的截止频率；在某个频率处画一条水平线，和它相交的曲线就是这个频率下能传播的模。曲线上一点的斜率是:term[群速度]{id="physics.oscillations-waves.group-velocity"}，这一点和原点连线的斜率是相速度，都以$c$为单位：曲线都在直线$\omega=ck$上方，越来越贴近它，所以相速度总大于$c$，群速度总小于$c$。$\frac ba<\frac12$时$\mathrm{TE}_{20}$先于$\mathrm{TE}_{01}$出现，只有$\mathrm{TE}_{10}$能传播的频率范围是$\omega_{10}$到$2\omega_{10}$；$\frac ba>\frac12$时上限变成$\mathrm{TE}_{01}$的截止频率。
 
 ## 例题
 
@@ -128,11 +128,11 @@ WR-90 是 X 波段（约$8$到$12\,\mathrm{GHz}$）常用的标准矩形波导�
 
 解：$f_{10}=\frac c{2a}=\frac{3.00\times10^8}{2\times0.02286}\,\mathrm{Hz}\approx6.56\,\mathrm{GHz}$，$f_{20}=2f_{10}\approx13.1\,\mathrm{GHz}$，$f_{01}=\frac c{2b}\approx14.8\,\mathrm{GHz}$；$\mathrm{TE}_{11}$更高，约$16.2\,\mathrm{GHz}$。所以$6.56$到$13.1\,\mathrm{GHz}$之间只有$\mathrm{TE}_{10}$一个模能传播。
 
-推荐范围的下限比$f_{10}$高约$25\%$：靠近截止频率时群速度趋于零，管壁的损耗变大，不同频率的群速度也相差很大。上限比$f_{20}$低约$0.7\,\mathrm{GHz}$，离第二个模的截止频率留出余量。
+推荐范围的下限比$f_{10}$高约$25\%$：靠近截止频率时:term[群速度]{id="physics.oscillations-waves.group-velocity"}趋于零，管壁的损耗变大，不同频率的群速度也相差很大。上限比$f_{20}$低约$0.7\,\mathrm{GHz}$，离第二个模的截止频率留出余量。
 
 ### 例 2　管内波长和群速度
 
-上面的 WR-90 传送频率为$10.0\,\mathrm{GHz}$的微波，求管内波长、:term[相速度]{id="physics.oscillations-waves.phase-velocity"}和群速度。
+上面的 WR-90 传送频率为$10.0\,\mathrm{GHz}$的微波，求管内波长、:term[相速度]{id="physics.oscillations-waves.phase-velocity"}和:term[群速度]{id="physics.oscillations-waves.group-velocity"}。
 
 解：$\frac{f_{10}}f\approx0.6562$，$\sqrt{1-0.6562^2}\approx0.7546$。真空中的波长$\lambda=\frac cf=30.0\,\mathrm{mm}$，管内波长$\lambda_{\mathrm g}=\frac{\lambda}{0.7546}\approx39.8\,\mathrm{mm}$；相速度$v_{\mathrm p}=\frac{c}{0.7546}\approx3.98\times10^8\,\mathrm{m/s}$，群速度$v_{\mathrm g}=0.7546c\approx2.26\times10^8\,\mathrm{m/s}$，两者的乘积正是$c^2$。
 
@@ -140,7 +140,7 @@ WR-90 是 X 波段（约$8$到$12\,\mathrm{GHz}$）常用的标准矩形波导�
 
 ## 常见误区
 
-- 「波导里的:term[相速度]{id="physics.oscillations-waves.phase-velocity"}大于$c$，违反相对论。」相速度是波峰沿管移动的速度，不输送能量，也不传递信号；能量和信号以群速度沿管前进，群速度小于$c$（第 6 题）。
+- 「波导里的:term[相速度]{id="physics.oscillations-waves.phase-velocity"}大于$c$，违反相对论。」相速度是波峰沿管移动的速度，不输送能量，也不传递信号；能量和信号以:term[群速度]{id="physics.oscillations-waves.group-velocity"}沿管前进，群速度小于$c$（第 6 题）。
 - 「频率低于截止频率的微波进入波导，能量被管壁吸收了。」理想管壁不吸收能量。这时场沿管按指数衰减，平均起来不向前输送能量（第 6 题），送进来的能量被反射回去。
 - 「管子越粗，截止频率越低，越好用。」粗了，同一频率下能传播的模也多了；几个模的群速度不同，同一个信号分成几路先后到达，波形就变了。所以一般选尺寸，让工作频率只高于$\mathrm{TE}_{10}$的截止频率（例 1）。
 - 「横电波里:term[电场]{id="physics.electromagnetism.electric-field"}和:term[磁场]{id="physics.electromagnetism.magnetic-field"}都垂直于管轴，和平面波一样。」横电波只是电场没有沿管的分量，磁场有$B_z$；空心管里电场、磁场都垂直于管轴的:term[横电磁波]{id="physics.electromagnetism.em-wave"}根本不存在。

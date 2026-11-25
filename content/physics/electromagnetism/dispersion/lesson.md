@@ -95,6 +95,6 @@ sliders:
 
 ## 常见误区
 
-- 「:term[折射率]{id="physics.electromagnetism.refractive-index"}小于 1，光就比真空中的光速快，违反相对论。」大于$c$的是:term[相速度]{id="physics.oscillations-waves.phase-velocity"}（phase velocity），即波峰移动的速度，它不传递信号；等离子体里能量以群速度（group velocity）$cn$传播，比$c$小（见[波包与群速度](lesson:physics.oscillations-waves.group-velocity)和第 6 题）。相对论限制的是信号的速度，任何介质里信号的前沿都不会超过$c$。
+- 「:term[折射率]{id="physics.electromagnetism.refractive-index"}小于 1，光就比真空中的光速快，违反相对论。」大于$c$的是:term[相速度]{id="physics.oscillations-waves.phase-velocity"}（phase velocity），即波峰移动的速度，它不传递信号；等离子体里能量以:term[群速度]{id="physics.oscillations-waves.group-velocity"}（group velocity）$cn$传播，比$c$小（见[波包与群速度](lesson:physics.oscillations-waves.group-velocity)和第 6 题）。相对论限制的是信号的速度，任何介质里信号的前沿都不会超过$c$。
 - 「吸收最强的频率，折射率也最大。」稀薄介质在吸收峰处$n-1$恰好是零，折射率最大和最小的地方在吸收峰两侧。
 - 「只有玻璃、水这样的物质才有:term[色散]{id="physics.electromagnetism.dispersion"}。」有极化的介质都有色散，只有真空没有；空气的折射率只比$1$大万分之三左右，色散很小，但精密测量里照样要考虑。

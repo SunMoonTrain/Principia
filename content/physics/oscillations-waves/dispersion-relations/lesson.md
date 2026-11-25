@@ -86,6 +86,6 @@ sliders:
 
 ## 常见误区
 
-- 「:term[相速度]{id="physics.oscillations-waves.phase-velocity"}就是能量和信号传播的速度。」有:term[色散]{id="physics.oscillations-waves.dispersion"}时，一群波（波包）前进的速度和波峰的速度不同，信号跟着波包走（见[波包与群速度](lesson:physics.oscillations-waves.group-velocity)）。
+- 「:term[相速度]{id="physics.oscillations-waves.phase-velocity"}就是能量和信号传播的速度。」有:term[色散]{id="physics.oscillations-waves.dispersion"}时，一群波（:term[波包]{id="physics.oscillations-waves.wave-packet"}，wave packet）前进的速度和波峰的速度一般不同，信号跟着波包走（见[波包与群速度](lesson:physics.oscillations-waves.group-velocity)）。
 - 「:term[一维链]{id="physics.oscillations-waves.beaded-string"}上，多短的波都能传。」:term[波长]{id="physics.oscillations-waves.wavelength"}最短到$2a$，更短的和某个较长的波是同一种运动；:term[角频率]{id="physics.oscillations-waves.angular-frequency"}也有上限$2\sqrt{\frac T{ma}}$。
 - 「有色散，波就会越走越弱。」单一:term[频率]{id="physics.oscillations-waves.frequency"}的:term[简谐波]{id="physics.oscillations-waves.harmonic-wave"}不会变弱；脉冲里各个频率跑得不一样快，脉冲会摊开、峰值变低，可总能量不变。能量损失要靠阻尼，链和弹性基底上的弦都没有阻尼。

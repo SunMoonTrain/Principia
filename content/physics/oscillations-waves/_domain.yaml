@@ -590,3 +590,39 @@ glossary:
       声波相对介质传播的速度，也叫音速；不计黏性、导热的流体中振幅很小时$v=\sqrt{K/\rho}$（$K$是绝热体积模量，$\rho$是密度），$20\,^\circ\mathrm C$的空气中约$343\,\mathrm{m/s}$。
     definedIn: physics.oscillations-waves.sound-waves
     anchor: def-sound-wave
+  - id: physics.oscillations-waves.envelope
+    zh: |
+      包络
+    en: |
+      envelope
+    brief: |
+      快速振荡的振动或波里缓慢变化的振幅，即把各处峰顶连起来的那条曲线。
+    definedIn: physics.oscillations-waves.group-velocity
+    anchor: def-envelope
+  - id: physics.oscillations-waves.wave-packet
+    zh: |
+      波包
+    en: |
+      wave packet
+    brief: |
+      许多波数集中在某个值附近的简谐波叠成的波，只在有限的一段里明显不为零，外形是缓变的包络乘上快速的振荡。
+    definedIn: physics.oscillations-waves.group-velocity
+    anchor: def-wave-packet
+  - id: physics.oscillations-waves.group-velocity
+    zh: |
+      群速度
+    en: |
+      group velocity
+    brief: |
+      波包的波数范围很窄时，包络前进的速度$v_{\mathrm g}=\dv\omega k$，在波包所含波数的中心取值；没有色散时等于相速度。
+    definedIn: physics.oscillations-waves.group-velocity
+    anchor: def-group-velocity
+  - id: physics.oscillations-waves.timbre
+    zh: |
+      音色
+    en: |
+      timbre
+    brief: |
+      音调、响度、长短、方位都相同的两个声音听起来仍有的差别；持续的周期性声音里主要由各次谐波振幅的相对大小决定。
+    definedIn: physics.oscillations-waves.plucked-string
+    anchor: def-timbre

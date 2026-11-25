@@ -66,7 +66,7 @@ sliders:
       外力的频率$\omega$
 :::
 
-这是$y''+y=\cos\omega x$满足$y(0)=y'(0)=0$的解，横轴可以看成时间。拖动$\omega$：解的振幅在包络（envelope）里时大时小，形成:term[拍]{id="physics.oscillations-waves.beats"}；$\omega$越接近$1$，拍越慢，最大振幅$\frac{2}{|1-\omega^2|}$越大。$\omega=1$时没有拍，是:term[共振]{id="math.ode.resonance"}，解是振幅线性增长的$\frac{x\sin x}{2}$，很快跑出画面。
+这是$y''+y=\cos\omega x$满足$y(0)=y'(0)=0$的解，横轴可以看成时间。拖动$\omega$：解的振幅在:term[包络]{id="physics.oscillations-waves.envelope"}（envelope）里时大时小，形成:term[拍]{id="physics.oscillations-waves.beats"}；$\omega$越接近$1$，拍越慢，最大振幅$\frac{2}{|1-\omega^2|}$越大。$\omega=1$时没有拍，是:term[共振]{id="math.ode.resonance"}，解是振幅线性增长的$\frac{x\sin x}{2}$，很快跑出画面。
 
 ## 例题
 

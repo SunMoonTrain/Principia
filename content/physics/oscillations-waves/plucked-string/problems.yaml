@@ -1,0 +1,235 @@
+- id: p1
+  tier: easy
+  statement: |
+    理想的弦两端固定在$x=0$、$x=\ell$，在$x=\frac\ell6$处拨成三角形，从静止放开。第 3 次谐波的振幅是第 1 次谐波的多少倍？
+  answer:
+    type: number
+    value: 2/9
+  hints:
+    - |
+      各次谐波的$\lvert A_n\rvert$里，哪些因子和$n$有关，哪些是公共的？
+    - |
+      和$n$有关的只有$\frac1{n^2}\sin\frac{n\pi d}\ell$。$d=\frac\ell6$时，$n=3$和$n=1$的正弦各是多少？
+    - |
+      $\sin\frac{3\pi}6=1$，$\sin\frac\pi6=\frac12$，所以$\frac{\lvert A_3\rvert}{\lvert A_1\rvert}=\frac19\cdot\frac1{1/2}=\frac29$。
+  solution: |
+    和$n$有关的因子只有$\frac1{n^2}\sin\frac{n\pi d}\ell$，其余的在比值里消掉，所以$\frac{\lvert A_3\rvert}{\lvert A_1\rvert}=\frac19\cdot\frac{\sin(\pi/2)}{\sin(\pi/6)}=\frac29$。拨点正在第 3 次谐波的波腹上，可$\frac19$把它压得很小，还不到第 1 次的四分之一。第 6、12、18……次谐波在拨点处是波节，都没有。
+
+- id: p2
+  tier: easy
+  statement: |
+    理想的弦两端固定在$x=0$、$x=\ell$，在$x=d$处拨成高$h$的三角形（$h$远小于$d$和$\ell-d$），从静止放开。下面哪些说法正确？
+  answer:
+    type: choice
+    multiple: true
+    options:
+      - |
+        $d=\frac\ell8$时，没有第 4 次谐波
+      - |
+        $d=\frac{3\ell}8$时，没有的谐波里次数最低的是第 8 次
+      - |
+        $d$不变，$h$变为原来的 2 倍（仍然很小），各次谐波的振幅都变为原来的 2 倍，频率不变
+      - |
+        $d$、$h$、弦长和线密度（linear density）都不变，张力变为原来的 4 倍，各次谐波的振幅不变，频率都变为原来的 2 倍
+      - |
+        改在离另一端$d$处拨成同样高的三角形，有的谐波的振幅会变
+    value: [2, 3, 4]
+  hints:
+    - |
+      没有的谐波满足$\sin\frac{n\pi d}\ell=0$。$A_n$的式子里有没有张力？
+    - |
+      选项 A：$\sin\frac{4\pi}8$是多少？选项 B：$\frac{3n}8$什么时候是整数？选项 D：$f_n=\frac{nv}{2\ell}$，$v=\sqrt{T/\mu}$。选项 E：比较$\sin\frac{n\pi(\ell-d)}\ell$和$\sin\frac{n\pi d}\ell$。
+    - |
+      选项 A 错：$\sin\frac\pi2=1$，拨点是第 4 次谐波的波腹，不是波节。选项 B 对：$\frac{3n}8$是整数，$n$得是 8 的倍数。选项 C 对：$A_n$和$h$成正比，频率由弦本身定。选项 D 对：$A_n$里没有张力，$v$变为原来的 2 倍，各个$f_n$都变为原来的 2 倍。
+
+      选项 E 错：$\sin\frac{n\pi(\ell-d)}\ell=(-1)^{n+1}\sin\frac{n\pi d}\ell$，绝对值都不变。选 B、C、D。
+  solution: |
+    选 B、C、D。选项 A 错：$\sin\frac{4\pi}8=1$，拨点是第 4 次谐波的波腹，不是波节；没有的是第 8、16……次。选项 B 对：$\sin\frac{3n\pi}8=0$要$\frac{3n}8$是整数，$n$得是 8 的倍数，最低的是第 8 次。
+
+    选项 C 对：$A_n$和$h$成正比；频率$f_n=\frac{nv}{2\ell}$由弦本身定。选项 D 对：开始的形状不变，$A_n$就不变；$v=\sqrt{T/\mu}$变为原来的 2 倍，各个频率都变为原来的 2 倍。选项 E 错：$\sin\frac{n\pi(\ell-d)}\ell=\sin\bigl(n\pi-\frac{n\pi d}\ell\bigr)=(-1)^{n+1}\sin\frac{n\pi d}\ell$，$d(\ell-d)$也不变，所以各次谐波的振幅都不变。
+
+- id: p3
+  tier: medium
+  statement: |
+    一根理想的弦长$63\,\mathrm{cm}$，两端固定。在某处拨成三角形，从静止放开，测得第 2 次谐波的振幅是第 1 次的$0.45$倍。拨点离较近的一端多远？以$\mathrm{cm}$为单位，结果保留三位有效数字。
+  answer:
+    type: number
+    value: 63*acos(0.9)/pi
+    unit: |
+      $\mathrm{cm}$
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      写出$\frac{\lvert A_2\rvert}{\lvert A_1\rvert}$，它只和$\frac d\ell$有关。
+    - |
+      记$\theta=\frac{\pi d}\ell$，由二倍角公式（double-angle formula）$\sin2\theta=2\sin\theta\cos\theta$，$\frac{\lvert A_2\rvert}{\lvert A_1\rvert}=\frac14\cdot\frac{\lvert\sin2\theta\rvert}{\sin\theta}=\frac12\lvert\cos\theta\rvert$。
+    - |
+      $\lvert\cos\theta\rvert=0.9$。$d$从较近的一端量，$\theta<\frac\pi2$，$\theta=\arccos0.9\approx0.4510$，所以$d=\frac\theta\pi\ell\approx\frac{0.4510}\pi\times63\,\mathrm{cm}\approx9.04\,\mathrm{cm}$。
+  solution: |
+    记$\theta=\frac{\pi d}\ell$，$\frac{\lvert A_2\rvert}{\lvert A_1\rvert}=\frac14\cdot\frac{\lvert\sin2\theta\rvert}{\sin\theta}=\frac12\lvert\cos\theta\rvert=0.45$，所以$\lvert\cos\theta\rvert=0.9$。$d$从较近的一端量，$\theta=\arccos0.9\approx0.4510$，$d=\frac\theta\pi\ell\approx9.04\,\mathrm{cm}$。$\frac12\lvert\cos\theta\rvert$总小于$\frac12$：不论拨在哪里，第 2 次谐波的振幅都不到第 1 次的一半。
+
+- id: p4
+  tier: medium
+  statement: |
+    电吉他的拾音器（pickup）输出的信号，和它正对着的那一点弦的横向速度成正比。把弦看成理想的，长$\ell$，两端固定，琴桥是其中一端；在离琴桥$\frac\ell8$处拨成三角形，从静止放开，拾音器正对着离琴桥$\frac\ell{12}$的那一点。信号里第 2 次谐波的振幅是第 1 次的多少倍？结果保留三位有效数字。
+  answer:
+    type: number
+    value: 2*cos(pi/8)*cos(pi/12)
+  tolerance: { rel: 5.0e-3 }
+  hints:
+    - |
+      信号和横向速度$y_t$成正比，不是和位移成正比。第$n$次谐波在离琴桥$p$处的横向速度是什么？
+    - |
+      它的振幅是$\omega_n\lvert A_n\rvert\bigl\lvert\sin\frac{n\pi p}\ell\bigr\rvert$，$\omega_2=2\omega_1$。代入$d=\frac\ell8$、$p=\frac\ell{12}$。
+    - |
+      比值是$2\cdot\frac14\cdot\frac{\sin(\pi/4)}{\sin(\pi/8)}\cdot\frac{\sin(\pi/6)}{\sin(\pi/12)}$。由二倍角公式，后两个分式是$2\cos\frac\pi8$和$2\cos\frac\pi{12}$，所以比值是$2\cos\frac\pi8\cos\frac\pi{12}\approx1.78$。
+  solution: |
+    从琴桥量起，第$n$次谐波$A_n\sin\frac{n\pi x}\ell\cos\omega_nt$在$x=p$处的横向速度是$-\omega_nA_n\sin\frac{n\pi p}\ell\sin\omega_nt$，振幅是$\omega_n\lvert A_n\rvert\bigl\lvert\sin\frac{n\pi p}\ell\bigr\rvert$，$\omega_n=n\omega_1$。代入$d=\frac\ell8$、$p=\frac\ell{12}$，第 2 次和第 1 次之比是
+
+    $$
+    2\cdot\frac14\cdot\frac{\sin(\pi/4)}{\sin(\pi/8)}\cdot\frac{\sin(\pi/6)}{\sin(\pi/12)}=2\cos\frac\pi8\cos\frac\pi{12}\approx1.78.
+    $$
+
+    弦上第 2 次谐波的振幅不到第 1 次的一半，信号里却比第 1 次还大：速度比位移多一个因子$n$，拾音器靠近琴桥，又多出约一个因子$n$。所以同一根弦，用靠近琴桥的拾音器，声音更亮。
+
+- id: p5
+  tier: hard
+  statement: |
+    理想的弦，张力是$T$，线密度是$\mu$，两端固定在$x=0$、$x=\ell$，在$x=d$处拨成高$h$的三角形，从静止放开，$A_n$照讲解的定理。弦上单位长度的能量是$\frac12\mu y_t^2+\frac12Ty_x^2$，以弦拉直、静止时为零（见[波的能量与能流](lesson:physics.oscillations-waves.wave-energy#def-energy-flux)）。
+
+    （1）$t=0$时$x=d$处的位移是$h$。由此证明$\sum_{n=1}^\infty\frac1{n^2}\sin^2\frac{n\pi d}\ell=\frac{\pi^2d(\ell-d)}{2\ell^2}$。
+
+    （2）弦上只有第$n$次谐波$A_n\sin\frac{n\pi x}\ell\cos\omega_nt$时，弦的总能量$E_n$是多少？证明$\sum_{n=1}^\infty E_n=\frac{Th^2\ell}{2d(\ell-d)}$。
+
+    （3）把弦慢慢拨成三角形，手要做多少功？和（2）比较，说明什么？
+
+    （4）第 1 次谐波的能量占总能量的几分之几？拨在中点时是多少？$d\to0$时呢？
+  hints:
+    - |
+      （1）$t=0$时级数处处收敛到三角形，代入$x=d$。（2）只有一次谐波时，动能、势能各是多少，加起来随不随时间变？（3）拨起$s$时，手要用多大的横向力？
+    - |
+      （1）$h=\sum A_n\sin\frac{n\pi d}\ell$。（2）$\sin^2\frac{n\pi x}\ell$、$\cos^2\frac{n\pi x}\ell$在$[0,\ell]$上的积分都是$\frac\ell2$，$T\bigl(\frac{n\pi}\ell\bigr)^2=\mu\omega_n^2$。（3）两侧的弦拉手的横向力合起来是$T\bigl(\frac sd+\frac s{\ell-d}\bigr)$。
+    - |
+      （1）级数在$t=0$时收敛到三角形，$x=d$处是$h$，所以$h=\sum_{n=1}^\infty A_n\sin\frac{n\pi d}\ell=\frac{2h\ell^2}{\pi^2d(\ell-d)}\sum_{n=1}^\infty\frac1{n^2}\sin^2\frac{n\pi d}\ell$。两边除以$h$，移项就是要证的式子。
+
+      （2）动能是$\frac12\mu\int_0^\ell y_t^2\dd x=\frac14\mu\ell\omega_n^2A_n^2\sin^2\omega_nt$，势能是$\frac12T\int_0^\ell y_x^2\dd x=\frac14T\ell\bigl(\frac{n\pi}\ell\bigr)^2A_n^2\cos^2\omega_nt$。由$v^2=\frac T\mu$，$T\bigl(\frac{n\pi}\ell\bigr)^2=\mu\omega_n^2$，两者之和$E_n=\frac14\mu\ell\omega_n^2A_n^2=\frac{n^2\pi^2T}{4\ell}A_n^2$，不随时间变。代入$A_n$，
+
+      $$
+      E_n=\frac{Th^2\ell^3}{\pi^2d^2(\ell-d)^2}\cdot\frac1{n^2}\sin^2\frac{n\pi d}\ell .
+      $$
+
+      对$n$求和，用（1），$\sum E_n=\frac{Th^2\ell^3}{\pi^2d^2(\ell-d)^2}\cdot\frac{\pi^2d(\ell-d)}{2\ell^2}=\frac{Th^2\ell}{2d(\ell-d)}$。
+
+      （3）拨起$s$时，两侧弦的斜率是$\frac sd$和$-\frac s{\ell-d}$，手要用的横向力是$T\bigl(\frac sd+\frac s{\ell-d}\bigr)$。从$0$到$h$做的功是$\frac12Th^2\bigl(\frac1d+\frac1{\ell-d}\bigr)=\frac{Th^2\ell}{2d(\ell-d)}$，正是（2）的总和。手做的功全部变成弦的能量，放开以后正好分给各次谐波：各次谐波的能量可以分开算，加起来就是总能量。
+
+      （4）$\frac{E_1}{\sum E_n}=\frac{2\ell^2}{\pi^2d(\ell-d)}\sin^2\frac{\pi d}\ell$。拨在中点时是$\frac8{\pi^2}\approx0.81$，绝大部分在第 1 次谐波里；$d\to0$时$\sin\frac{\pi d}\ell\approx\frac{\pi d}\ell$，它约为$\frac{2d}\ell$，趋于$0$，能量散到许多次谐波里。
+  reference: |
+    （1）$t=0$、$x=d$：$h=\sum A_n\sin\frac{n\pi d}\ell=\frac{2h\ell^2}{\pi^2d(\ell-d)}\sum\frac1{n^2}\sin^2\frac{n\pi d}\ell$（级数在$t=0$一致收敛到三角形），移项即得。
+
+    （2）$y=A_n\sin\frac{n\pi x}\ell\cos\omega_nt$：动能$\frac14\mu\ell\omega_n^2A_n^2\sin^2\omega_nt$，势能$\frac14T\ell\bigl(\frac{n\pi}\ell\bigr)^2A_n^2\cos^2\omega_nt$，$T\bigl(\frac{n\pi}\ell\bigr)^2=\mu\omega_n^2$，所以$E_n=\frac14\mu\ell\omega_n^2A_n^2=\frac{Th^2\ell^3}{n^2\pi^2d^2(\ell-d)^2}\sin^2\frac{n\pi d}\ell$。由（1）求和得$\frac{Th^2\ell}{2d(\ell-d)}$。
+
+    （3）横向力$T\bigl(\frac sd+\frac s{\ell-d}\bigr)$，功$\int_0^hT\bigl(\frac sd+\frac s{\ell-d}\bigr)\dd s=\frac{Th^2\ell}{2d(\ell-d)}$，等于$\sum E_n$。也等于三角形的势能$\frac12T\bigl(\frac{h^2}{d^2}d+\frac{h^2}{(\ell-d)^2}(\ell-d)\bigr)$。
+
+    （4）$\frac{2\ell^2}{\pi^2d(\ell-d)}\sin^2\frac{\pi d}\ell$；中点$\frac8{\pi^2}\approx0.81$；$d\to0$时约$\frac{2d}\ell\to0$。
+
+- id: p6
+  tier: hard
+  statement: |
+    用指肚拨弦，折角会被磨圆。设拨好以后弦的形状$y(x,0)$只在$\lvert x-d\rvert<\frac b2$里和讲解的三角形不同：在那里是一段抛物线，两头和两侧的直线段相切（$b<2d$，$b<2(\ell-d)$），仍从静止放开。$y''$表示$y(x,0)$对$x$的二阶导数。
+
+    （1）证明抛物线那一段上$y''=-\frac{h\ell}{b\,d(\ell-d)}$。
+
+    （2）[弦振动与简正模](lesson:math.pde.string-modes)第 5 题（1）对二阶导数连续的形状证明了$A_n=-\frac{2\ell}{n^2\pi^2}\int_0^\ell y''\sin\frac{n\pi x}\ell\dd x$。这里$y''$有跳跃，说明这个式子为什么照样成立，并由此证明$A_n$等于讲解的结果乘$\frac{\sin\theta_n}{\theta_n}$，$\theta_n=\frac{n\pi b}{2\ell}$。
+
+    （3）用第$n$次谐波的波长（wavelength）$\lambda_n$写出$\theta_n$。波长比$b$大得多的、比$b$小的谐波，各受多大影响？$\ell=0.60\,\mathrm m$时，指肚取$b=1.5\,\mathrm{cm}$、拨片取$b=1\,\mathrm{mm}$，因子$\frac{\sin\theta_n}{\theta_n}$降到约一半，各在第几次？由此解释为什么用拨片声音更亮。
+  hints:
+    - |
+      （1）抛物线的斜率是一次函数，从左边直线段的斜率均匀地变到右边的。（2）两个接点处$y$和$y'$都连续，在三段上分别分部积分。
+    - |
+      （1）斜率从$\frac hd$变到$-\frac h{\ell-d}$，中间相隔$b$。（2）直线段上$y''=0$，只要算$\int_{d-b/2}^{d+b/2}\sin\frac{n\pi x}\ell\dd x$，用和差化积。（3）$\lambda_n=\frac{2\ell}n$；$\theta\approx1.90$时$\frac{\sin\theta}\theta=\frac12$。
+    - |
+      （1）抛物线上$y''$是常数。它和两侧的直线段相切，斜率在宽$b$的一段上从$\frac hd$变到$-\frac h{\ell-d}$，所以$y''=\frac1b\bigl(-\frac h{\ell-d}-\frac hd\bigr)=-\frac{h\ell}{b\,d(\ell-d)}$。抛物线两条切线的交点，横坐标总在两个切点的正中间，这里两条直线正好交在$x=d$处，所以这样的抛物线确实存在。
+
+      （2）记$k=\frac{n\pi}\ell$。在三段上各分部积分两次，边界项是$-\frac{y\cos kx}k+\frac{y'\sin kx}{k^2}$；$y$、$y'$在接点处连续，相邻两段的相消，两端$y=0$、$\sin kx=0$，所以边界项全没了，剩下$\int_0^\ell y(x,0)\sin kx\dd x=-\frac1{k^2}\int_0^\ell y''\sin kx\dd x$。乘$\frac2\ell$就是那个式子，用不着$y''$连续。
+
+      直线段上$y''=0$。由和差化积，
+
+      $$
+      \int_{d-b/2}^{d+b/2}\sin kx\dd x=\frac{\cos k\bigl(d-\frac b2\bigr)-\cos k\bigl(d+\frac b2\bigr)}k=\frac2k\sin kd\,\sin\frac{kb}2 .
+      $$
+
+      代入得$A_n=\frac{2\ell}{n^2\pi^2}\cdot\frac{h\ell}{b\,d(\ell-d)}\cdot\frac{2\ell}{n\pi}\sin\frac{n\pi d}\ell\sin\theta_n$，其中$\frac{2\ell}{n\pi b}=\frac1{\theta_n}$，所以它等于$\frac{2h\ell^2}{n^2\pi^2d(\ell-d)}\sin\frac{n\pi d}\ell$乘$\frac{\sin\theta_n}{\theta_n}$。也可以这样看：磨圆后的形状，正是把三角形在每一点左右各$\frac b2$的范围里取平均，$\sin kx$取这样的平均，就是乘$\frac{\sin(kb/2)}{kb/2}$。
+
+      （3）$\lambda_n=\frac{2\ell}n$，$\theta_n=\frac{\pi b}{\lambda_n}$。波长比$b$大得多时$\theta_n$很小，因子约为$1$，几乎不受影响；波长比$b$小时$\theta_n>\pi$，因子的绝对值不超过$\frac1{\theta_n}<\frac1\pi$，振幅改按$\frac1{n^3}$降。因子是一半时$\theta_n\approx1.90$，$n=\frac{2\ell\theta_n}{\pi b}$，指肚约在第 48 次，拨片约在第 724 次。
+
+      基频是$110\,\mathrm{Hz}$的弦，第 48 次约$5.3\,\mathrm{kHz}$，还听得见，更高的被指肚压得更小；第 724 次约$80\,\mathrm{kHz}$，远在人耳听得到的范围以外。所以用拨片时，听得见的高次谐波几乎都在，声音更亮。
+  reference: |
+    （1）抛物线上$y''$为常数，斜率由$\frac hd$变到$-\frac h{\ell-d}$，宽$b$，$y''=-\frac1b\bigl(\frac hd+\frac h{\ell-d}\bigr)=-\frac{h\ell}{b\,d(\ell-d)}$。切线交点的横坐标在两切点正中，与$x=d$一致，抛物线存在。
+
+    （2）$k=\frac{n\pi}\ell$，分三段分部积分两次，$y$、$y'$连续使内部边界项相消，端点$y=0$、$\sin kx=0$，得$A_n=-\frac2{\ell k^2}\int_0^\ell y''\sin kx\dd x$。$\int_{d-b/2}^{d+b/2}\sin kx\dd x=\frac2k\sin kd\sin\frac{kb}2$，于是$A_n=\frac{2h\ell^2}{n^2\pi^2d(\ell-d)}\sin\frac{n\pi d}\ell\cdot\frac{\sin\theta_n}{\theta_n}$，$\theta_n=\frac{kb}2=\frac{n\pi b}{2\ell}$。（等价于和宽$b$的窗口取平均。）
+
+    （3）$\theta_n=\frac{\pi b}{\lambda_n}$。$\lambda_n\gg b$：因子$\approx1$；$\lambda_n<b$：$\bigl\lvert\frac{\sin\theta_n}{\theta_n}\bigr\rvert\le\frac1{\theta_n}<\frac1\pi$，总的按$\frac1{n^3}$降。$\frac{\sin\theta}\theta=\frac12$时$\theta\approx1.8955$，$n=\frac{2\ell\theta}{\pi b}$：指肚$48.3$，拨片$724$。拨片的削弱在可听范围以外，指肚的在几千赫兹就开始，所以拨片更亮。
+
+- id: p7
+  tier: thinking
+  statement: |
+    理想的弦两端固定在$x=0$、$x=\ell$，波速是$v$，在正中间拨成高$h$的三角形，从静止放开。
+
+    （1）照[弦振动与简正模](lesson:math.pde.string-modes)的办法延拓以后，用达朗贝尔公式（d'Alembert's formula）求${t=\frac\ell{2v}}$时弦的形状和各点的速度。
+
+    （2）另一根同样的弦开始时是直的，被一块平板拍了一下，各点同时得到同样的速度。哪些谐波会出现，各次振幅之比是多少？和拨中点比，音色一样吗？
+
+    （3）换成很窄的琴槌（hammer），只让以离一端$d$处为中心、宽$b$的一小段同时得到速度$V$，其余各点不动。波长比$b$大得多、小得多的谐波，振幅各按什么规律降？和在同一点拨比，哪个亮？从开始的形状、速度光滑不光滑说一说。
+  hints:
+    - |
+      （1）把开始的形状奇延拓、按周期$2\ell$延开，记作$Y(x)$。形状关于中点对称时，$Y(x+\ell)$和$Y(x)$有什么关系？（2）（3）开始时弦是直的，$A_n=0$，要算的是$B_n$。
+    - |
+      （1）$Y(x+\ell)=-Y(x)$，代进$y=\frac12\bigl[Y(x-vt)+Y(x+vt)\bigr]$。（2）$\omega_nB_n=\frac2\ell\int_0^\ell y_t(x,0)\sin\frac{n\pi x}\ell\dd x$，各点的速度都是$V$时等于$\frac{2V}{n\pi}(1-\cos n\pi)$。（3）积分只在宽$b$的一段上，结果里有$\sin\frac{n\pi b}{2\ell}$。
+    - |
+      （1）$Y$的周期是$2\ell$，$Y(-x)=-Y(x)$，所以$Y(x+\ell)=Y(x-\ell)=-Y(\ell-x)$；三角形关于中点对称，由此对一切$x$有$Y(\ell-x)=Y(x)$，于是$Y(x+\ell)=-Y(x)$。${t=\frac\ell{2v}}$时$y=\frac12\bigl[Y\bigl(x-\frac\ell2\bigr)+Y\bigl(x+\frac\ell2\bigr)\bigr]=0$，弦是直的。速度是$y_t=\frac v2\bigl[Y'\bigl(x+\frac\ell2\bigr)-Y'\bigl(x-\frac\ell2\bigr)\bigr]=vY'\bigl(x+\frac\ell2\bigr)$；$0<x<\ell$时$x+\frac\ell2$在$\frac\ell2$和$\frac{3\ell}2$之间，那里$Y$是一条斜率为$-\frac{2h}\ell$的直线，所以各点的速度都是$-\frac{2hv}\ell$。
+
+      （2）设各点的速度都是$V$。$A_n=0$，$\omega_nB_n=\frac2\ell\int_0^\ell V\sin\frac{n\pi x}\ell\dd x=\frac{2V}{n\pi}(1-\cos n\pi)$，$n$为偶数时是零，$n$为奇数时是$\frac{4V}{n\pi}$。除以$\omega_n=\frac{n\pi v}\ell$，$B_n=\frac{4V\ell}{n^2\pi^2v}$：只有奇数次，振幅之比是$1:\frac19:\frac1{25}:\cdots$，和拨中点一样，音色也一样。
+
+      原因就在（1）里：拨中点的弦过四分之一周期，正好是直的，各点的速度都是$-\frac{2hv}\ell$，往后的运动和以这个速度被平板拍了的弦完全相同，只差开始的早晚。
+
+      （3）$\omega_nB_n=\frac2\ell\int_{d-b/2}^{d+b/2}V\sin\frac{n\pi x}\ell\dd x=\frac{4V}{n\pi}\sin\frac{n\pi d}\ell\sin\frac{n\pi b}{2\ell}$。波长$\frac{2\ell}n$比$b$大得多时$\sin\frac{n\pi b}{2\ell}\approx\frac{n\pi b}{2\ell}$，$B_n\approx\frac{2Vb}{n\pi v}\sin\frac{n\pi d}\ell$，除去$\sin\frac{n\pi d}\ell$只按$\frac1n$降；波长比$b$小得多时$\lvert B_n\rvert\le\frac{4\lvert V\rvert\ell}{n^2\pi^2v}$，按$\frac1{n^2}$降。在同一点拨，除去同一个正弦，振幅一直按$\frac1{n^2}$降，所以敲的亮：波长比$b$大得多时，第$n$次谐波和第 1 次的比值，敲的是拨的约$n$倍。
+
+      拨给的是有折角的形状，$A_n$按$\frac1{n^2}$降。平板给的是速度，延拓以后在两端有跳跃，$\omega_nB_n$按$\frac1n$降，再除以$\omega_n$，$B_n$也按$\frac1{n^2}$降，和折角相当。琴槌很窄，波长比$b$大得多的谐波看到的速度，像集中在一点的一根尖刺，比跳跃还差一级，$\omega_nB_n$几乎不降，$B_n$只按$\frac1n$降；波长比$b$小得多了，才看出那只是两处跳跃。敲在某次谐波的波节上，那一次同样没有。
+  reference: |
+    （1）$Y$为奇延拓、周期$2\ell$；三角形关于中点对称，$Y(x+\ell)=-Y(x)$。$t=\frac\ell{2v}$：$y=\frac12\bigl[Y(x-\frac\ell2)+Y(x+\frac\ell2)\bigr]=0$，$y_t=vY'(x+\frac\ell2)=-\frac{2hv}\ell$（$0<x<\ell$）：弦是直的，各点速度相同。
+
+    （2）$B_n=\frac2{\omega_n\ell}\int_0^\ell V\sin\frac{n\pi x}\ell\dd x=\frac{4V\ell}{n^2\pi^2v}$（$n$奇），偶数次为零；振幅比$1:\frac19:\frac1{25}$，与拨中点（$\lvert A_n\rvert=\frac{8h}{n^2\pi^2}$）相同，音色相同。它就是（1）那一刻之后的运动，起点相差四分之一周期。
+
+    （3）$B_n=\frac{4V\ell}{n^2\pi^2v}\sin\frac{n\pi d}\ell\sin\frac{n\pi b}{2\ell}$。$\lambda_n\gg b$：$\approx\frac{2Vb}{n\pi v}\sin\frac{n\pi d}\ell$，按$\frac1n$；$\lambda_n\ll b$：不超过$\frac{4\lvert V\rvert\ell}{n^2\pi^2v}$，按$\frac1{n^2}$。拨按$\frac1{n^2}\sin\frac{n\pi d}\ell$，敲的亮。
+
+    光滑程度：形状有折角，$A_n$按$\frac1{n^2}$；速度有跳跃（平板），$\omega_nB_n$按$\frac1n$，$B_n$按$\frac1{n^2}$；速度像尖刺（窄槌、波长远大于$b$），$\omega_nB_n$几乎不降，$B_n$按$\frac1n$。敲在波节上，那次谐波也没有。
+
+- id: p8
+  tier: thinking
+  statement: |
+    理想的弦在正中间拨成三角形，从静止放开，没有偶数次谐波。可在一把真吉他上拨弦的正中间，仪器照样测得到频率为$2f_1$的成分。
+
+    （1）拨点偏离中点一小段$\delta$，第 2 次谐波的振幅约是第 1 次的多少倍？$\ell=0.60\,\mathrm m$、${\delta=3\,\mathrm{mm}}$时是多少？
+
+    （2）弦仍是理想的。形状关于中点对称，从静止放开，就没有偶数次谐波；开始时各点还有速度的话，要补上什么条件，为什么？反过来，偶数次谐波全都没有时，开始的形状和速度一定满足这些条件吗？指肚把折角磨成关于中点对称的一段弧，放手时拨点附近的弦又带着关于中点对称的速度，会带来偶数次谐波吗？
+
+    （3）弦左右粗细不匀、两端固定得不一样牢、拨得太重，这几样里哪些可能带来频率在$2f_1$附近的成分？测到$2f_1$，就能断定第 2 个简正模在振动吗？
+  hints:
+    - |
+      （1）把$d=\frac\ell2+\delta$代进$\frac{\lvert A_2\rvert}{\lvert A_1\rvert}$。（2）偶数次的$\sin\frac{n\pi x}\ell$关于中点有什么对称性，奇数次的呢？（3）左右不对称以后，简正模还关于中点对称或反对称吗？弦往上、往下摆到最远时，张力各怎样变？
+    - |
+      （1）$\frac{\lvert A_2\rvert}{\lvert A_1\rvert}=\frac12\bigl\lvert\cos\frac{\pi d}\ell\bigr\rvert$。（2）$n$取定时，$A_n$、$B_n$正比于形状、速度乘$\sin\frac{n\pi x}\ell$在$[0,\ell]$上的积分；反过来，只含奇数次的级数，和有什么对称性？（3）弦离开平衡位置，不论往哪边都被拉长：一个周期里，张力涨落几次？
+    - |
+      （1）$\frac{\lvert A_2\rvert}{\lvert A_1\rvert}=\frac14\cdot\frac{\lvert\sin(2\pi d/\ell)\rvert}{\sin(\pi d/\ell)}=\frac12\bigl\lvert\cos\frac{\pi d}\ell\bigr\rvert$，$d=\frac\ell2+\delta$时等于$\frac12\sin\frac{\pi\delta}\ell\approx\frac{\pi\delta}{2\ell}$。代入得$\frac{\pi\times3}{2\times600}\approx0.0079$，不到百分之一。
+
+      （2）要补上：速度也关于中点对称。$n$取定时，$A_n$、$B_n$正比于形状、速度乘$\sin\frac{n\pi x}\ell$在$[0,\ell]$上的积分，$n$为偶数时$\sin\frac{n\pi x}\ell$关于中点反对称，对称的乘反对称的，积分是零。反过来也一定满足：没有偶数次谐波时，形状和速度都只含奇数次的$\sin\frac{n\pi x}\ell$，每一项都关于中点对称，和也对称。指肚磨出的弧、放手时的速度都关于中点对称，所以都不带来偶数次谐波。
+
+      （3）三样都可能。弦左右粗细不匀、两端固定得不一样牢，左右就不对称了，简正模不再关于中点对称或反对称，拨中点也激得起第 2 个简正模，它的频率一般也不再正好是$2f_1$。弦的方程把张力当作不变的，是因为伸长只是位移的二次小量（见[一维链与连续极限](lesson:physics.oscillations-waves.beaded-string#thm-chain-equations)）；拨得太重，这一点就略不掉了：弦往上、往下摆到最远时都被拉长，一个周期里张力涨落两次，琴桥受的拉力里就有频率为$2f_1$的成分。
+
+      拨得太重时，只要弦和拨法都左右对称，运动就一直左右对称，第 2 个简正模并没有动。所以测到$2f_1$，断定不了第 2 个简正模在振动；得去看弦本身，例如比较离两端各$\frac\ell4$的两点，均匀的弦上，第 2 个简正模在这两点的振动总是反相的。
+  reference: |
+    （1）$\frac{\lvert A_2\rvert}{\lvert A_1\rvert}=\frac12\bigl\lvert\cos\frac{\pi d}\ell\bigr\rvert=\frac12\sin\frac{\pi\delta}\ell$，约为$\frac{\pi\delta}{2\ell}\approx0.0079$。
+
+    （2）补上$y_t(x,0)$也关于$x=\frac\ell2$对称，两条合起来是充要条件。充分：$n$偶时$\sin\frac{n\pi x}\ell$关于中点反对称，积分为零。必要：只含奇数次的级数每项对称，和对称。手指磨圆、放手时的速度左右对称，都不带来偶数次。
+
+    （3）粗细左右不匀、两端不一样牢：失去左右对称，简正模不再有确定的对称性，拨中点激得起第 2 个简正模（频率一般也不再恰为$2f_1$）。拨得太重：伸长$\propto\int y_x^2\dd x$，张力以$2f_1$涨落，琴桥受力含$2f_1$；左右对称时第 2 个简正模不动。所以测到$2f_1$不能断定第 2 个简正模在振动，可看离两端各$\frac\ell4$的两点是否有反相的成分。
